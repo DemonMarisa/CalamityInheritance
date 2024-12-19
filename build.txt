@@ -1,0 +1,6 @@
+displayName = CalamityInheritance
+author = DemonMarisa
+hideCode = true
+hideResources = false
+modReferences = CalamityMod
+version = 0.3

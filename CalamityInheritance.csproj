@@ -1,0 +1,204 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Import tModLoader mod properties -->
+	<Import Project="..\tModLoader.targets" />
+
+	<!-- General -->
+	<PropertyGroup>
+		
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Buffs\ArmorShattering.png" />
+	  <None Remove="Buffs\CadancesGrace.png" />
+	  <None Remove="Buffs\DraconicSurgeBuff.png" />
+	  <None Remove="Buffs\PenumbraBuff.png" />
+	  <None Remove="Buffs\Revivify.png" />
+	  <None Remove="CICooldowns\DraconicElixirCooldown.png" />
+	  <None Remove="CICooldowns\DraconicElixirCooldownOutline.png" />
+	  <None Remove="CICooldowns\DraconicElixirCooldownOverlay.png" />
+	  <None Remove="CICooldowns\SpongeDurability.png" />
+	  <None Remove="CICooldowns\SpongeOutline.png" />
+	  <None Remove="CICooldowns\SpongeOverlay.png" />
+	  <None Remove="CICooldowns\SpongeRecharge.png" />
+	  <None Remove="CIPlayer\DrawLayers\Backpack_Photoviscerator.png" />
+	  <None Remove="Content\Items\Accessories\CIRampartofDeities.png" />
+	  <None Remove="Content\Items\Accessories\CIRampartofDeities_Shield.png" />
+	  <None Remove="Content\Items\Accessories\CoreOfTheBloodGod.png" />
+	  <None Remove="Content\Items\Accessories\FungalCarapace.png" />
+	  <None Remove="Content\Items\Accessories\KnowledgeDevourerofGods.png" />
+	  <None Remove="Content\Items\Accessories\Melee\ElementalGauntletold.png" />
+	  <None Remove="Content\Items\Accessories\Melee\ElementalGauntletold_HandsOff.png" />
+	  <None Remove="Content\Items\Accessories\Melee\ElementalGauntletold_HandsOn.png" />
+	  <None Remove="Content\Items\Accessories\Ranged\&#xD;&#xA;			.png" />
+	  <None Remove="Content\Items\Accessories\TheSpongeold.png" />
+	  <None Remove="Content\Items\Accessories\TheSpongeReal.png" />
+	  <None Remove="Content\Items\Accessories\TheSpongeShield.png" />
+	  <None Remove="Content\Items\Accessories\TheSpongetest.png" />
+	  <None Remove="Content\Items\Ammo\VanquisherArrowold.png" />
+	  <None Remove="Content\Items\Ammo\VanquisherArrowoldGlow.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeAquaticScourge.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeAstralInfection.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeAstrumAureus.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeAstrumDeus.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeBloodMoon.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeBrainofCthulhu.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeBrimstoneCrag.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeBrimstoneElemental.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCalamitas.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCalamitasClone.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCorruption.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCrabulon.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCrimson.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeCryogen.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeDesertScourge.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeDestroyer.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeDragonfolly.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeDukeFishron.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeEaterofWorlds.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeEyeofCthulhu.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeGolem.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeHiveMind.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeKingSlime.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeLeviathanAnahita.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeLunaticCultist.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeMechs.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeMoonLord.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeOcean.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeOldDuke.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgePerforators.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgePlaguebringerGoliath.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgePlantera.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgePolterghast.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeProvidence.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeQueenBee.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeRavager.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeSentinels.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeSkeletron.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeSkeletronPrime.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeSlimeGod.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeTwins.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeUnderworld.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeWallofFlesh.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeYharon.png" />
+	  <None Remove="Content\Items\Potions\CadancePotion.png" />
+	  <None Remove="Content\Items\Potions\DraconicElixir.png" />
+	  <None Remove="Content\Items\Potions\DraconicElixir_Animated.png" />
+	  <None Remove="Content\Items\Potions\PenumbraPotion.png" />
+	  <None Remove="Content\Items\Potions\RevivifyPotion.png" />
+	  <None Remove="Content\Items\Potions\ShatteringPotion.png" />
+	  <None Remove="Content\Items\test.png" />
+	  <None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
+	  <None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
+	  <None Remove="Content\Items\Weapons\ExoGladius.png" />
+	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
+	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
+	  <None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
+	  <None Remove="Content\Items\Weapons\Magic\VividClarityGlow.png" />
+	  <None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
+	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
+	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\ExampleSwingingEnergySword.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
+	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
+	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlowold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\MurasamaNeweffect.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Murasamaold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\MurasamaSheathed.png" />
+	  <None Remove="Content\Items\Weapons\Melee\SHIVold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\AncientShiv.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\BloodyRupture.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\CosmicShivold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\ElementalShivold.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\ExcaliburShortsword.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\FlameburstShortsword.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\LeechingDagger.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\NightsStabber.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\SporeKnife.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\TerraShiv.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\TrueExcaliburShortsword.png" />
+	  <None Remove="Content\Items\Weapons\Melee\Shortsword\TrueNightsStabber.png" />
+	  <None Remove="Content\Items\Weapons\Melee\TerraEdge.png" />
+	  <None Remove="Content\Items\Weapons\Melee\TrueBloodyEdge.png" />
+	  <None Remove="Content\Items\Weapons\Ranged\DragonsBreathold.png" />
+	  <None Remove="Content\Items\Weapons\Ranged\HeavenlyGaleold.png" />
+	  <None Remove="Content\Items\Weapons\Ranged\Minigun.png" />
+	  <None Remove="Content\Items\Weapons\Ranged\Photovisceratorold.png" />
+	  <None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
+	  <None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
+	  <None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
+	  <None Remove="Content\Projectiles\InvisibleProj.png" />
+	  <None Remove="Content\Projectiles\LaserProj.png" />
+	  <None Remove="Content\Projectiles\LightningProj.png" />
+	  <None Remove="Content\Projectiles\Magic\Climax2.png" />
+	  <None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
+	  <None Remove="Content\Projectiles\Magic\SubsumingTentacle.png" />
+	  <None Remove="Content\Projectiles\Magic\Vortex.png" />
+	  <None Remove="Content\Projectiles\Melee\BloodyEdgeEnergySword.png" />
+	  <None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
+	  <None Remove="Content\Projectiles\Melee\ElementBall.png" />
+	  <None Remove="Content\Projectiles\Melee\ExampleSwingingEnergySwordProjectile.png" />
+	  <None Remove="Content\Projectiles\Melee\Exobeamold.png" />
+	  <None Remove="Content\Projectiles\Melee\Exoboomold.png" />
+	  <None Remove="Content\Projectiles\Melee\ExoGladComet.png" />
+	  <None Remove="Content\Projectiles\Melee\ExoGladProj.png" />
+	  <None Remove="Content\Projectiles\Melee\ExoGladSpears.png" />
+	  <None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
+	  <None Remove="Content\Projectiles\Melee\Galaxia2.png" />
+	  <None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
+	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew.png" />
+	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
+	  <None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
+	  <None Remove="Content\Projectiles\Melee\NightStabber2.png" />
+	  <None Remove="Content\Projectiles\Melee\ShortExcaliburBeam.png" />
+	  <None Remove="Content\Projectiles\Melee\ShortNightBeam.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\AncientShivProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\BloodyRuptureProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\CosmicShivProjold.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\ElementalShivoldProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\EutrophicShankProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\ExcaliburShortswordProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\FlameburstShortswordProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\LeechingDaggerProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\NightsStabberProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\SporeKnifeProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\TerraShivProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueExcaliburShortswordProj.png" />
+	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueNightsStabberProj.png" />
+	  <None Remove="Content\Projectiles\Melee\ShortTerraBeam.png" />
+	  <None Remove="Content\Projectiles\Melee\TerraEdgeBeam.png" />
+	  <None Remove="Content\Projectiles\Melee\TerraEdgeEnergySword.png" />
+	  <None Remove="Content\Projectiles\Melee\TrueBloodyBladeProj.png" />
+	  <None Remove="Content\Projectiles\Melee\TrueBloodyEdgeEnergySword.png" />
+	  <None Remove="Content\Projectiles\Ranged\DragonsBreathRound.png" />
+	  <None Remove="Content\Projectiles\Ranged\ExoSparkold.png" />
+	  <None Remove="Content\Projectiles\StarProj.png" />
+	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
+	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
+	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamold.png" />
+	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamolddownup.png" />
+	  <None Remove="Content\Projectiles\Summon\MidnightSunUFOold.png" />
+	  <None Remove="Content\Projectiles\TornadoProj.png" />
+	  <None Remove="Content\Projectiles\Typeless\TheDeadlyMicrobeProjectile.png" />
+	  <None Remove="Dusts\Sparkle.png" />
+	  <None Remove="ExtraTextures\BlobbyNoise.png" />
+	  <None Remove="ExtraTextures\GreyscaleGradients\Neurons.png" />
+	  <None Remove="ExtraTextures\GreyscaleGradients\TechyNoise.png" />
+	  <None Remove="ExtraTextures\Laser\MidnightSunBeamBegin.png" />
+	  <None Remove="ExtraTextures\Laser\MidnightSunBeamEnd.png" />
+	  <None Remove="ExtraTextures\Laser\MidnightSunBeamMid.png" />
+	  <None Remove="ExtraTextures\SmallGreyscaleCircle.png" />
+	  <None Remove="Localization\zh-Hans_Mods..CalamityInheritance.hjson" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="CalamityMod">
+	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Effect\" />
+	</ItemGroup>
+
+	<!-- References -->
+
+</Project>
