@@ -1,24 +1,9 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Accessories;
-using CalamityMod;
-using CalamityMod.Items.Accessories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Media;
+﻿using CalamityMod;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ModLoader;
-using CalamityInheritance.CICooldowns;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.StatBuffs;
-using Terraria.DataStructures;
-using Mono.Cecil;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.NPCs;
 using Terraria.ID;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Potions;
 
 namespace CalamityInheritance.CIPlayer
 {

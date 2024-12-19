@@ -433,6 +433,11 @@ Items: {
 		// DisplayName: Draconic Elixir
 		// Tooltip: ""
 	}
+
+	PenumbraPotion: {
+		// DisplayName: Penumbra Potion
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -611,5 +616,10 @@ Buffs: {
 	DraconicSurgeBuff: {
 		// DisplayName: Draconic Surge Buff
 		// Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
+	}
+
+	PenumbraBuff: {
+		// DisplayName: Penumbra Buff
+		// Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
 	}
 }

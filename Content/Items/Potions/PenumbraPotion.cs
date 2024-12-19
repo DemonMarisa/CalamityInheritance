@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Buffs;
 
 namespace CalamityInheritance.Content.Items.Potions
 {

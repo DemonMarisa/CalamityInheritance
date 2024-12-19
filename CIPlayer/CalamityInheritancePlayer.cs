@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using Terraria.ModLoader;
 using CalamityMod;
-using CalamityMod.Cooldowns;
 using System.Collections.Generic;
 using Terraria;
 using System;
@@ -9,15 +8,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
-using CalamityInheritance.CICooldowns;
-using System.Linq;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.World;
-using Terraria.DataStructures;
-using Terraria.Localization;
-using CalamityMod.Events;
-using Terraria.Chat;
 using Terraria.GameInput;
 
 namespace CalamityInheritance.CIPlayer
@@ -75,6 +66,7 @@ namespace CalamityInheritance.CIPlayer
         public bool Revivify = false;
         public bool cadence = false;
         public bool draconicSurge = false;
+        public bool penumbra = false;
         #endregion
 
         #region Energy Shields
@@ -158,6 +150,7 @@ namespace CalamityInheritance.CIPlayer
             Revivify = false;
             cadence = false;
             draconicSurge = false;
+            penumbra = false;
             #endregion
         }
         #endregion
@@ -169,6 +162,7 @@ namespace CalamityInheritance.CIPlayer
             Revivify = false;
             cadence = false;
             draconicSurge = false;
+            penumbra = false;
         }
         #endregion
         #region Post Hurt

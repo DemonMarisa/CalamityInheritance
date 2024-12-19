@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;

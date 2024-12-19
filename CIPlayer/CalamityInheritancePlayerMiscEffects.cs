@@ -42,7 +42,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void OtherBuffEffects()
         {
-
+            CalamityPlayer modPlayer = Player.Calamity();
             if (armorShattering)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
@@ -79,6 +79,12 @@ namespace CalamityInheritance.CIPlayer
                     Player.accRunSpeed -= 0.2f;
                     Player.GetDamage<GenericDamageClass>() -= 0.15f;
                 }
+            }
+
+            if (penumbra)
+            {
+                modPlayer.stealthGenStandstill += 0.15f;
+                modPlayer.stealthGenMoving += 0.1f;
             }
         }
         #region Energy Shields
