@@ -335,6 +335,36 @@ Items: {
 		DisplayName: Penumbra Potion
 		Tooltip: ""
 	}
+
+	HolyWrathPotion: {
+		DisplayName: Holy Wrath Potion
+		Tooltip: ""
+	}
+
+	ProfanedRagePotion: {
+		DisplayName: Profaned Rage Potion
+		Tooltip: ""
+	}
+
+	TitanScalePotion: {
+		DisplayName: Titan Scale Potion
+		Tooltip: ""
+	}
+
+	PurifiedJam: {
+		DisplayName: Purified Jam
+		Tooltip: ""
+	}
+
+	TriumphPotion: {
+		DisplayName: Triumph Potion
+		Tooltip: ""
+	}
+
+	YharimsStimulants: {
+		DisplayName: Yharims Stimulants
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -502,5 +532,35 @@ Buffs: {
 	PenumbraBuff: {
 		DisplayName: Penumbra Buff
 		Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
+	}
+
+	HolyWrathBuff: {
+		DisplayName: Holy Wrath Buff
+		Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
+	}
+
+	ProfanedRageBuff: {
+		DisplayName: Profaned Rage Buff
+		Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
+	}
+
+	TitanScale: {
+		DisplayName: Titan Scale
+		Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
+	}
+
+	TriumphBuff: {
+		DisplayName: Triumph Buff
+		Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
+	}
+
+	YharimPower: {
+		DisplayName: Yharim Power
+		Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
+	}
+
+	Invincible: {
+		DisplayName: Invincible
+		Description: Mods.CalamityInheritance.Buffs.Invincible.Description
 	}
 }

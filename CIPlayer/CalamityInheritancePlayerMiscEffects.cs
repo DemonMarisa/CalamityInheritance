@@ -86,6 +86,44 @@ namespace CalamityInheritance.CIPlayer
                 modPlayer.stealthGenStandstill += 0.15f;
                 modPlayer.stealthGenMoving += 0.1f;
             }
+
+            if (profanedRage)
+            {
+                Player.GetCritChance<GenericDamageClass>() += ProfanedRagePotion.CritBoost;
+            }
+
+            if (holyWrath)
+            {
+                Player.GetDamage<GenericDamageClass>() += 0.12f;
+                Player.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+            }
+
+            if (tScale)
+            {
+                Player.endurance += 0.05f;
+                Player.statDefense += 5;
+                Player.kbBuff = true;
+                if (titanBoost > 0)
+                {
+                    Player.statDefense += 20;
+                    Player.endurance += 0.05f;
+                }
+            }
+            else
+            {
+                titanBoost = 0;
+            }
+
+            if (yPower)
+            {
+                Player.endurance += 0.04f;
+                Player.statDefense += 10;
+                Player.pickSpeed -= 0.1f;
+                Player.GetDamage<GenericDamageClass>() += 0.05f;
+                Player.GetCritChance<GenericDamageClass>() += 2;
+                Player.GetKnockback<SummonDamageClass>() += 1f;
+                Player.moveSpeed += 0.075f;
+            }
         }
         #region Energy Shields
         private void CIEnergyShields()
@@ -544,8 +582,14 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
 
+            if (modPlayer.invincible)
+            {
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+                
+            }
             #endregion
-            
+
 
         }
     }

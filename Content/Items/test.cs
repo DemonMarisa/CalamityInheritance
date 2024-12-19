@@ -33,6 +33,7 @@ namespace CalamityInheritance.Content.Items
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 42;
+            Item.scale = 2;
             Item.value = Item.buyPrice(0, 4, 0, 0);
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 12f;

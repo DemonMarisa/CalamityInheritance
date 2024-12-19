@@ -59,6 +59,7 @@ namespace CalamityInheritance.CIPlayer
         }
         private void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
+            #region shield
             // Boss Rush的伤害下限是通过一个不规范的修正器实现的
             // TODO -- 要正确实现这一点，需要重新实现所有的伤害减免（DR）和额外伤害减免（ADR）机制
 
@@ -192,6 +193,13 @@ namespace CalamityInheritance.CIPlayer
                 }
 
             }
+            #endregion
+            //史神无敌
+            if(invincible)
+            {
+                CalamityPlayer modPlayer = Player.Calamity();
+                modPlayer.freeDodgeFromShieldAbsorption = true;
+            }
         }
 
         #region On Hurt
@@ -264,43 +272,43 @@ namespace CalamityInheritance.CIPlayer
             if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
             {
 
-                    SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
+                SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
 
-                    if (Player.HasCooldown(DraconicElixirCooldown.ID))
+                if (Player.HasCooldown(DraconicElixirCooldown.ID))
+                {
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.statLife > Player.statLifeMax2)
+                        Player.statLife = Player.statLifeMax2;
+                }
+
+                if (draconicSurge)
+                {
+
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.statLife > Player.statLifeMax2)
+                        Player.statLife = Player.statLifeMax2;
+
+                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
                     {
-                        Player.statLife += Player.statLifeMax2;
-                        Player.HealEffect(Player.statLifeMax2);
 
-                        if (Player.statLife > Player.statLifeMax2)
-                            Player.statLife = Player.statLifeMax2;
-                    }
+                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
 
-                    if (draconicSurge)
-                    {
-
-                        Player.statLife += Player.statLifeMax2;
-                        Player.HealEffect(Player.statLifeMax2);
-
-                        if (Player.statLife > Player.statLifeMax2)
-                            Player.statLife = Player.statLifeMax2;
-
-                        if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
+                        // Additional potion sickness time
+                        int additionalTime = 0;
+                        for (int i = 0; i < Player.MaxBuffs; i++)
                         {
-
-                            Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-
-                            // Additional potion sickness time
-                            int additionalTime = 0;
-                            for (int i = 0; i < Player.MaxBuffs; i++)
-                            {
-                                if (Player.buffType[i] == BuffID.PotionSickness)
-                                    additionalTime = Player.buffTime[i];
-                            }
-
-                            float potionSicknessTime = 30f + (float)Math.Ceiling(additionalTime / 60D);
-                            Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
+                            if (Player.buffType[i] == BuffID.PotionSickness)
+                                additionalTime = Player.buffTime[i];
                         }
+
+                        float potionSicknessTime = 30f + (float)Math.Ceiling(additionalTime / 60D);
+                        Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
                     }
+                }
 
                 modPlayer.hasSilvaEffect = true;
 
@@ -310,6 +318,13 @@ namespace CalamityInheritance.CIPlayer
                 return false;
             }
             return true;
+        }
+        #endregion
+        #region Modify Hit By NPC
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            if (triumph)
+                contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
         }
         #endregion
     }

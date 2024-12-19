@@ -22,6 +22,7 @@ namespace CalamityInheritance.CIPlayer
         public double contactDamageReduction = 0D;
         public bool FungalCarapace = false;
         public bool ODsulphurskin = false;
+        public int ProjectilHitCounter;
         #region Lore
         public bool kingSlimeLore = false;//
         public bool desertScourgeLore = false;//
@@ -60,13 +61,19 @@ namespace CalamityInheritance.CIPlayer
         public bool crimsonLore = false;//
         public bool underworldLore = false;
         #endregion
-        public int ProjectilHitCounter;
         #region Buffs
         public bool armorShattering = false;
         public bool Revivify = false;
         public bool cadence = false;
         public bool draconicSurge = false;
         public bool penumbra = false;
+        public bool profanedRage = false;
+        public bool holyWrath = false;
+        public bool tScale = false;
+        public int titanBoost = 0;
+        public bool triumph = false;
+        public bool yPower = false;
+        public bool invincible = false;
         #endregion
 
         #region Energy Shields
@@ -151,6 +158,12 @@ namespace CalamityInheritance.CIPlayer
             cadence = false;
             draconicSurge = false;
             penumbra = false;
+            profanedRage = false;
+            holyWrath = false;
+            tScale = false;
+            triumph = false;
+            yPower = false;
+            invincible = false;
             #endregion
         }
         #endregion
@@ -163,6 +176,13 @@ namespace CalamityInheritance.CIPlayer
             cadence = false;
             draconicSurge = false;
             penumbra = false;
+            profanedRage = false;
+            holyWrath = false;
+            tScale = false;
+            titanBoost = 0;
+            triumph = false;
+            yPower = false;
+            invincible = false;
         }
         #endregion
         #region Post Hurt
