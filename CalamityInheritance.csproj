@@ -90,6 +90,8 @@
 	  <None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius.png" />
+	  <None Remove="Content\Items\Weapons\Magic\HadopelagicEcho.png" />
+	  <None Remove="Content\Items\Weapons\Magic\StratusSphere.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
 	  <None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
@@ -131,7 +133,9 @@
 	  <None Remove="Content\Projectiles\LaserProj.png" />
 	  <None Remove="Content\Projectiles\LightningProj.png" />
 	  <None Remove="Content\Projectiles\Magic\Climax2.png" />
+	  <None Remove="Content\Projectiles\Magic\Crescent.png" />
 	  <None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
+	  <None Remove="Content\Projectiles\Magic\StratusSphereProj.png" />
 	  <None Remove="Content\Projectiles\Magic\SubsumingTentacle.png" />
 	  <None Remove="Content\Projectiles\Magic\Vortex.png" />
 	  <None Remove="Content\Projectiles\Melee\BloodyEdgeEnergySword.png" />
@@ -146,7 +150,6 @@
 	  <None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
 	  <None Remove="Content\Projectiles\Melee\Galaxia2.png" />
 	  <None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
-	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
 	  <None Remove="Content\Projectiles\Melee\NightStabber2.png" />

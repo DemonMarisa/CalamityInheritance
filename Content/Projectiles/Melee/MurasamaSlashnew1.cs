@@ -1,7 +1,10 @@
 ﻿using System;
+using CalamityInheritance.CIPlayer;
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.NPCs.Abyss;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
@@ -11,6 +14,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -63,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 if(Projectile.frameCounter == 0)
                 {
                     Projectile.scale = 2;
-                    Projectile.damage = (int)(Projectile.damage * 1);
+                    Projectile.damage = (int)(Projectile.damage * 0.5);
                 }
                 if (Main.getGoodWorld)
                 {
@@ -79,19 +83,24 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Projectile.alpha = 0;
                 time++;
             }
+
             Player player = Main.player[Projectile.owner];
             if (Slash2)
             {
                 SoundEngine.PlaySound(Murasama.Swing with { Pitch = -0.1f }, Projectile.Center);
                 if (hitCooldown == 0)
+                {
                     Slashing = true;
+                }
                 Projectile.numHits = 0;
             }
             else if (Slash3)
             {
                 SoundEngine.PlaySound(Murasama.BigSwing with { Pitch = 0f }, Projectile.Center);
                 if (hitCooldown == 0)
+                {
                     Slashing = true;
+                }
                 Projectile.numHits = 0;
             }
             else if (Slash1)
@@ -228,9 +237,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust2.scale = Main.rand.NextFloat(0.9f, 2.4f);
                 dust2.noGravity = true;
             }
+
+            if (target.type == ModContent.NPCType<BrimstoneHeart>())
+            {
+                Projectile.damage = (Projectile.damage * 1);
+            }
         }
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);
-
         public override bool? CanDamage() => Slashing == false ? false : null;
     }
 }

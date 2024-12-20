@@ -12,6 +12,8 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.CIPlayer;
+using CalamityMod.NPCs.Abyss;
 
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee

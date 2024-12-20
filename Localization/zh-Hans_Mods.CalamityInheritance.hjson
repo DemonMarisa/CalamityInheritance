@@ -468,6 +468,16 @@ Items: {
 		// DisplayName: Yharims Stimulants
 		// Tooltip: ""
 	}
+
+	HadopelagicEcho: {
+		// DisplayName: Hadopelagic Echo
+		// Tooltip: ""
+	}
+
+	StratusSphere: {
+		// DisplayName: Stratus Sphere
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -567,6 +577,10 @@ Projectiles: {
 	// BloodyEdgeEnergySword.DisplayName: Bloody Edge Energy Sword
 	// TrueBloodyBladeProj.DisplayName: True Bloody Blade Proj
 	// TrueBloodyEdgeEnergySword.DisplayName: True Bloody Edge Energy Sword
+	// HadopelagicEcho2.DisplayName: Hadopelagic Echo2
+	// HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
+	// Crescent.DisplayName: Crescent
+	// StratusSphereProj.DisplayName: Stratus Sphere Proj
 }
 
 Configs: {
