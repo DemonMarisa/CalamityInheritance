@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,6 +39,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.EaterofWorldsTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCorruption>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

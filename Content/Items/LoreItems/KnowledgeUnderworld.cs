@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.LoreItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.WallofFleshTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreUnderworld>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

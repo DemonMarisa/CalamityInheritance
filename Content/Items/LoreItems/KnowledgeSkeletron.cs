@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -32,9 +33,13 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.EaterofWorldsTrophy).
+                AddIngredient(ItemID.SkeletronTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreSkeletron>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,6 +34,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.SkeletronPrimeTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreSkeletronPrime>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

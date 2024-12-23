@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
 
@@ -32,6 +33,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.PlanteraTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LorePlantera>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

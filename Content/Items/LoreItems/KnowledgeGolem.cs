@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,9 @@ namespace CalamityInheritance.Content.Items.LoreItems;
                 AddIngredient(ItemID.GolemTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
-        }
+        CreateRecipe().
+AddIngredient<LoreGolem>().
+AddTile(TileID.Bookcases).
+Register();
+    }
     }

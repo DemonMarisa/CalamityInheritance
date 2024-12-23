@@ -21,6 +21,10 @@
 	  <None Remove="CICooldowns\SpongeOverlay.png" />
 	  <None Remove="CICooldowns\SpongeRecharge.png" />
 	  <None Remove="CIPlayer\DrawLayers\Backpack_Photoviscerator.png" />
+	  <None Remove="CIPlayer\DrawLayers\StratusSphereHold.png" />
+	  <None Remove="CIPlayer\DrawLayers\StratusSphereHoldGlow.png" />
+	  <None Remove="Content\Items\Accessories\AsgardsValorold.png" />
+	  <None Remove="Content\Items\Accessories\AsgardsValorold_Shield.png" />
 	  <None Remove="Content\Items\Accessories\CIRampartofDeities.png" />
 	  <None Remove="Content\Items\Accessories\CIRampartofDeities_Shield.png" />
 	  <None Remove="Content\Items\Accessories\CoreOfTheBloodGod.png" />
@@ -76,6 +80,7 @@
 	  <None Remove="Content\Items\LoreItems\KnowledgeSkeletron.png" />
 	  <None Remove="Content\Items\LoreItems\KnowledgeSkeletronPrime.png" />
 	  <None Remove="Content\Items\LoreItems\KnowledgeSlimeGod.png" />
+	  <None Remove="Content\Items\LoreItems\KnowledgeSulphursea.png" />
 	  <None Remove="Content\Items\LoreItems\KnowledgeTwins.png" />
 	  <None Remove="Content\Items\LoreItems\KnowledgeUnderworld.png" />
 	  <None Remove="Content\Items\LoreItems\KnowledgeWallofFlesh.png" />
@@ -126,6 +131,8 @@
 	  <None Remove="Content\Items\Weapons\Ranged\HeavenlyGaleold.png" />
 	  <None Remove="Content\Items\Weapons\Ranged\Minigun.png" />
 	  <None Remove="Content\Items\Weapons\Ranged\Photovisceratorold.png" />
+	  <None Remove="Content\Items\Weapons\Rogue\PhantasmalRuinold.png" />
+	  <None Remove="Content\Items\Weapons\Rogue\PhantomLance.png" />
 	  <None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
 	  <None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
 	  <None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
@@ -175,6 +182,8 @@
 	  <None Remove="Content\Projectiles\Melee\TrueBloodyEdgeEnergySword.png" />
 	  <None Remove="Content\Projectiles\Ranged\DragonsBreathRound.png" />
 	  <None Remove="Content\Projectiles\Ranged\ExoSparkold.png" />
+	  <None Remove="Content\Projectiles\Rogue\PhantasmalRuinGhost.png" />
+	  <None Remove="Content\Projectiles\Rogue\PhantasmalSoulold.png" />
 	  <None Remove="Content\Projectiles\StarProj.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
@@ -199,7 +208,7 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Effect\" />
+	  <Folder Include="Localization\" />
 	</ItemGroup>
 
 	<!-- References -->

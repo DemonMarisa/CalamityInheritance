@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.NPCs;
 using CalamityMod.Items;
+using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -40,6 +41,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<SupremeCalamitasTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCalamitas>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

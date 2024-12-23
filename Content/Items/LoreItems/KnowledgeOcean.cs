@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<AnahitaTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreAbyss>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

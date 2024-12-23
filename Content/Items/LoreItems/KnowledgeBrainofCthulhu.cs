@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -48,6 +49,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.BrainofCthulhuTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreBrainofCthulhu>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

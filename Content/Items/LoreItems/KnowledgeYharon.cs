@@ -1,4 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Rarities;
 using System;
@@ -37,6 +39,11 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             CreateRecipe().
                 AddIngredient<YharonTrophy>().
+                AddTile(TileID.Bookcases).
+                Register();
+            CreateRecipe().
+                AddIngredient<LoreYharon>().
+                AddIngredient<YharonSoulFragment>(5).
                 AddTile(TileID.Bookcases).
                 Register();
         }

@@ -28,6 +28,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+
         public override void PostUpdateMiscEffects()
         {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
@@ -564,6 +565,7 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
                 Player.GetDamage<GenericDamageClass>() += 0.5f;
+                Player.ClearBuff(BuffID.Featherfall);
             }
 
             if (modPlayer.providenceLore)
@@ -586,7 +588,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
-                
             }
             #endregion
 

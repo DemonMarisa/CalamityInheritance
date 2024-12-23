@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Rarities;
 using System;
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<ProvidenceTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreProvidence>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.GameInput;
+using CalamityMod.CalPlayer.Dashes;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -23,6 +24,12 @@ namespace CalamityInheritance.CIPlayer
         public bool FungalCarapace = false;
         public bool ODsulphurskin = false;
         public int ProjectilHitCounter;
+        //dash
+        public int CIdashTimeMod;
+        private const int CIDashDisableCooldown = 12;
+        public bool CIHasReducedDashFirstFrame = false;
+        public bool CIHasIncreasedDashFirstFrame = false;
+        public bool blockAllDashes = false;
         #region Lore
         public bool kingSlimeLore = false;//
         public bool desertScourgeLore = false;//
@@ -93,6 +100,7 @@ namespace CalamityInheritance.CIPlayer
         internal bool CIplayedSpongeShieldSound = false;
 
         #endregion
+
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -114,7 +122,7 @@ namespace CalamityInheritance.CIPlayer
             CIspongeShieldVisible = false;
             FungalCarapace = false;
             ODsulphurskin = false;
-
+            #region Lore
             kingSlimeLore = false;
             desertScourgeLore = false;
             crabulonLore = false;
@@ -151,7 +159,7 @@ namespace CalamityInheritance.CIPlayer
             corruptionLore = false;
             crimsonLore = false;
             underworldLore = false;
-
+            #endregion
             #region Buffs
             armorShattering = false;
             Revivify = false;
@@ -165,6 +173,9 @@ namespace CalamityInheritance.CIPlayer
             yPower = false;
             invincible = false;
             #endregion
+
+            CIDashID = string.Empty;
+            blockAllDashes = false;
         }
         #endregion
 
@@ -250,6 +261,14 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
+        #region PreUpdate
+        public override void PreUpdate()
+        {
+            if (CIHasCustomDash && UsedDash.IsOmnidirectional)
+                Player.maxFallSpeed = 50f;
+
+        }
+        #endregion
         public override void PostUpdateRunSpeeds()
         {
 
@@ -266,8 +285,51 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.runAcceleration *= 0.95f;
             }
-        }
 
+            #region DashEffects
+            if (!string.IsNullOrEmpty(CIDeferredDashID))
+            {
+                CIDashID = CIDeferredDashID;
+                CIDeferredDashID = string.Empty;
+            }
+
+            if (Player.pulley && CIHasCustomDash)
+            {
+                ModDashMovement();
+            }
+
+            else if (Player.grappling[0] == -1 && !Player.tongued)
+            {
+                ModHorizontalMovement();
+
+                if (CIHasCustomDash)
+                    ModDashMovement();
+            }
+            #endregion
+        }
+        #region Limitations
+        private void ForceVariousEffects()
+        {
+            if (blockAllDashes)
+                DisableDashes();
+        }
+        private void DisableDashes()
+        {
+            // Set the player to have no registered dashes.
+            Player.dashType = 0;
+            CIDashID = string.Empty;
+
+            // Put the player in a permanent state of dash cooldown. This is removed 1/5 of a second after disabling the effect.
+            // This is necessary so that arbitrary dashes from other mods are also blocked by Calamity.
+            if (Player.dashDelay >= 0 && Player.dashDelay < CIDashDisableCooldown)
+                Player.dashDelay = CIDashDisableCooldown;
+
+            // Prevent the possibility of Shield of Cthulhu invulnerability exploits.
+            Player.eocHit = -1;
+            if (Player.eocDash != 0)
+                Player.eocDash = 0;
+        }
+        #endregion
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 

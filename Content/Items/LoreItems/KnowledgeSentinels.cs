@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.Placeables.Furniture.Trophies;
+﻿using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Rarities;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<CeaselessVoidTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCeaselessVoid>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

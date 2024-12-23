@@ -15,16 +15,29 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 using Terraria.Graphics.Renderers;
+using CalamityMod.CalPlayer.Dashes;
+using CalamityInheritance.CIPlayer.Dash;
 
 namespace CalamityInheritance
 {
     // Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
     public class CalamityInheritance : Mod
     {
-
+        internal static CalamityInheritance Instance;
         public override void Load()
         {
+            Instance = this;
+            CIPlayerDashManager.Load();
+
             CalamityInheritanceLists.LoadLists();
         }
+        #region Unload
+        public override void Unload()
+        {
+            CIPlayerDashManager.Unload();
+            Instance = null;
+            base.Unload();
+        }
+        #endregion
     }
 }

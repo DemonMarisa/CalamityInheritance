@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -41,6 +42,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.SpazmatismTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreTwins>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

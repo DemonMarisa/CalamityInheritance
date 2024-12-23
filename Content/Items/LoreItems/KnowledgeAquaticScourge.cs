@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
@@ -32,6 +33,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             CreateRecipe().
                 AddIngredient<AquaticScourgeTrophy>().
+                AddTile(TileID.Bookcases).
+                Register();
+            CreateRecipe().
+                AddIngredient<LoreAquaticScourge>().
                 AddTile(TileID.Bookcases).
                 Register();
         }

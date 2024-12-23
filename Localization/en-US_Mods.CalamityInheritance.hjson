@@ -1,12 +1,71 @@
-DamageClasses: {
-	TrueMeleeDamageClass.DisplayName: True Melee Damage Class
-	TrueMeleeNoSpeedDamageClass.DisplayName: True Melee No Speed Damage Class
+Keybinds.BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+
+Buffs: {
+	ArmorShattering: {
+		DisplayName: Armor Shattering
+		Description: Mods.CalamityInheritance.Buffs.ArmorShattering.Description
+	}
+
+	CadancesGrace: {
+		DisplayName: Cadances Grace
+		Description: Mods.CalamityInheritance.Buffs.CadancesGrace.Description
+	}
+
+	DraconicSurgeBuff: {
+		DisplayName: Draconic Surge Buff
+		Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
+	}
+
+	HolyWrathBuff: {
+		DisplayName: Holy Wrath Buff
+		Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
+	}
+
+	Invincible: {
+		DisplayName: Invincible
+		Description: Mods.CalamityInheritance.Buffs.Invincible.Description
+	}
+
+	PenumbraBuff: {
+		DisplayName: Penumbra Buff
+		Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
+	}
+
+	ProfanedRageBuff: {
+		DisplayName: Profaned Rage Buff
+		Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
+	}
+
+	Revivify: {
+		DisplayName: Revivify
+		Description: Mods.CalamityInheritance.Buffs.Revivify.Description
+	}
+
+	TitanScale: {
+		DisplayName: Titan Scale
+		Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
+	}
+
+	TriumphBuff: {
+		DisplayName: Triumph Buff
+		Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
+	}
+
+	YharimPower: {
+		DisplayName: Yharim Power
+		Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
+	}
 }
 
 Items: {
+	AsgardsValorold: {
+		DisplayName: Asgards Valorold
+		Tooltip: ""
+	}
+
 	Accessories: {
 		CIRampartofDeities: {
-			DisplayName: Rampartof Deities
+			DisplayName: C I Rampartof Deities
 			Tooltip: ""
 		}
 
@@ -36,13 +95,209 @@ Items: {
 		Tooltip: ""
 	}
 
+	Ammo: {
+		VanquisherArrowold: {
+			DisplayName: Vanquisher Arrowold
+			Tooltip: ""
+		}
+	}
+
+	Lore: {
+		KnowledgeAquaticScourge.DisplayName: Knowledge Aquatic Scourge
+		KnowledgeAstralInfection.DisplayName: Knowledge Astral Infection
+		KnowledgeAstrumAureus.DisplayName: Knowledge Astrum Aureus
+		KnowledgeAstrumDeus.DisplayName: Knowledge Astrum Deus
+		KnowledgeBloodMoon.DisplayName: Knowledge Blood Moon
+		KnowledgeBrainofCthulhu.DisplayName: Knowledge Brainof Cthulhu
+		KnowledgeBrimstoneCrag.DisplayName: Knowledge Brimstone Crag
+		KnowledgeBrimstoneElemental.DisplayName: Knowledge Brimstone Elemental
+		KnowledgeCalamitas.DisplayName: Knowledge Calamitas
+		KnowledgeCalamitasClone.DisplayName: Knowledge Calamitas Clone
+		KnowledgeCorruption.DisplayName: Knowledge Corruption
+		KnowledgeCrabulon.DisplayName: Knowledge Crabulon
+		KnowledgeCrimson.DisplayName: Knowledge Crimson
+		KnowledgeCryogen.DisplayName: Knowledge Cryogen
+		KnowledgeDesertScourge.DisplayName: Knowledge Desert Scourge
+		KnowledgeDestroyer.DisplayName: Knowledge Destroyer
+		KnowledgeDevourerofGods.DisplayName: Knowledge Devourerof Gods
+		KnowledgeDragonfolly.DisplayName: Knowledge Dragonfolly
+		KnowledgeDukeFishron.DisplayName: Knowledge Duke Fishron
+		KnowledgeEaterofWorlds.DisplayName: Knowledge Eaterof Worlds
+		KnowledgeEyeofCthulhu.DisplayName: Knowledge Eyeof Cthulhu
+		KnowledgeGolem.DisplayName: Knowledge Golem
+		KnowledgeHiveMind.DisplayName: Knowledge Hive Mind
+		KnowledgeKingSlime.DisplayName: Knowledge King Slime
+		KnowledgeLeviathanAnahita.DisplayName: Knowledge Leviathan Anahita
+		KnowledgeLunaticCultist.DisplayName: Knowledge Lunatic Cultist
+		KnowledgeMechs.DisplayName: Knowledge Mechs
+		KnowledgeMoonLord.DisplayName: Knowledge Moon Lord
+		KnowledgeOcean.DisplayName: Knowledge Ocean
+		KnowledgeOldDuke.DisplayName: Knowledge Old Duke
+		KnowledgePerforators.DisplayName: Knowledge Perforators
+		KnowledgePlaguebringerGoliath.DisplayName: Knowledge Plaguebringer Goliath
+		KnowledgePlantera.DisplayName: Knowledge Plantera
+		KnowledgePolterghast.DisplayName: Knowledge Polterghast
+		KnowledgeProvidence.DisplayName: Knowledge Providence
+		KnowledgeQueenBee.DisplayName: Knowledge Queen Bee
+		KnowledgeRavager.DisplayName: Knowledge Ravager
+		KnowledgeSentinels.DisplayName: Knowledge Sentinels
+		KnowledgeSkeletron.DisplayName: Knowledge Skeletron
+		KnowledgeSkeletronPrime.DisplayName: Knowledge Skeletron Prime
+		KnowledgeSlimeGod.DisplayName: Knowledge Slime God
+		KnowledgeTwins.DisplayName: Knowledge Twins
+		KnowledgeUnderworld.DisplayName: Knowledge Underworld
+		KnowledgeWallofFlesh.DisplayName: Knowledge Wallof Flesh
+		KnowledgeYharon.DisplayName: Knowledge Yharon
+		KnowledgeSulphurSea.DisplayName: Knowledge Sulphur Sea
+	}
+
+	CadancePotion: {
+		DisplayName: Cadance Potion
+		Tooltip: ""
+	}
+
+	DraconicElixir: {
+		DisplayName: Draconic Elixir
+		Tooltip: ""
+	}
+
+	HolyWrathPotion: {
+		DisplayName: Holy Wrath Potion
+		Tooltip: ""
+	}
+
+	PenumbraPotion: {
+		DisplayName: Penumbra Potion
+		Tooltip: ""
+	}
+
+	ProfanedRagePotion: {
+		DisplayName: Profaned Rage Potion
+		Tooltip: ""
+	}
+
+	PurifiedJam: {
+		DisplayName: Purified Jam
+		Tooltip: ""
+	}
+
+	RevivifyPotion: {
+		DisplayName: Revivify Potion
+		Tooltip: ""
+	}
+
+	ShatteringPotion: {
+		DisplayName: Shattering Potion
+		Tooltip: ""
+	}
+
+	TitanScalePotion: {
+		DisplayName: Titan Scale Potion
+		Tooltip: ""
+	}
+
+	TriumphPotion: {
+		DisplayName: Triumph Potion
+		Tooltip: ""
+	}
+
+	YharimsStimulants: {
+		DisplayName: Yharims Stimulants
+		Tooltip: ""
+	}
+
+	test: {
+		DisplayName: test
+		Tooltip: ""
+	}
+
+	HadopelagicEcho: {
+		DisplayName: Hadopelagic Echo
+		Tooltip: ""
+	}
+
+	StratusSphere: {
+		DisplayName: Stratus Sphere
+		Tooltip: ""
+	}
+
+	SubsumingVortexold: {
+		DisplayName: Subsuming Vortexold
+		Tooltip: ""
+	}
+
+	Weapons: {
+		Magic: {
+			VividClarity: {
+				DisplayName: Vivid Clarity
+				Tooltip: ""
+			}
+		}
+
+		Melee: {
+			MurasamaNeweffect: {
+				DisplayName: Murasama Neweffect
+				Tooltip: ""
+			}
+
+			Murasamaold: {
+				DisplayName: Murasamaold
+				Tooltip: ""
+			}
+
+			CosmicShivold: {
+				DisplayName: Cosmic Shivold
+				Tooltip: ""
+			}
+
+			ElementalShivold: {
+				DisplayName: Elemental Shivold
+				Tooltip: ""
+			}
+		}
+
+		Ranged: {
+			DragonsBreathold: {
+				DisplayName: Dragons Breathold
+				Tooltip: ""
+			}
+
+			Photovisceratorold: {
+				DisplayName: Photovisceratorold
+				Tooltip: ""
+			}
+		}
+
+		Rogue: {
+			PhantasmalRuinold: {
+				DisplayName: Phantasmal Ruinold
+				Tooltip: ""
+			}
+
+			PhantomLance: {
+				DisplayName: Phantom Lance
+				Tooltip: ""
+			}
+
+			Supernovaold: {
+				DisplayName: Supernovaold
+				Tooltip: ""
+			}
+		}
+	}
+
+	VoidVortex: {
+		DisplayName: Void Vortex
+		Tooltip: ""
+	}
+
 	ArkoftheAncients: {
 		DisplayName: Arkofthe Ancients
 		Tooltip: ""
 	}
 
-	ArkoftheCosmos: {
-		DisplayName: Arkofthe Cosmos
+	ArkoftheCosmosold: {
+		DisplayName: Arkofthe Cosmosold
 		Tooltip: ""
 	}
 
@@ -56,6 +311,16 @@ Items: {
 		Tooltip: ""
 	}
 
+	BloodyEdge: {
+		DisplayName: Bloody Edge
+		Tooltip: ""
+	}
+
+	ExampleSwingingEnergySword: {
+		DisplayName: Example Swinging Energy Sword
+		Tooltip: ""
+	}
+
 	Exobladeold: {
 		DisplayName: Exobladeold
 		Tooltip: ""
@@ -66,147 +331,14 @@ Items: {
 		Tooltip: ""
 	}
 
-	ExoGladius: {
-		DisplayName: Exo Gladius
-		Tooltip: ""
-	}
-
 	FourSeasonsGalaxiaold: {
 		DisplayName: Four Seasons Galaxiaold
 		Tooltip: ""
 	}
 
-	Weapons: {
-		Melee: {
-			MurasamaNeweffect: {
-				DisplayName: Murasama Neweffect
-				Tooltip: ""
-			}
-
-			Murasamaold: {
-				DisplayName: Murasamaold
-				Tooltip: ""
-			}
-
-			ElementalShivold: {
-				DisplayName: Elemental Shivold
-				Tooltip: ""
-			}
-
-			CosmicShivold: {
-				DisplayName: Cosmic Shivold
-				Tooltip: ""
-			}
-		}
-
-		Magic: {
-			VividClarity: {
-				DisplayName: Vivid Clarity
-				Tooltip: ""
-			}
-		}
-
-		Ranged: {
-			Photovisceratorold: {
-				DisplayName: Photovisceratorold
-				Tooltip: ""
-			}
-
-			DragonsBreathold: {
-				DisplayName: Dragons Breathold
-				Tooltip: ""
-			}
-		}
-
-		Rogue: {
-			Supernovaold: {
-				DisplayName: Supernovaold
-				Tooltip: ""
-			}
-		}
-	}
-
 	OmegaBiomeBlade: {
 		DisplayName: Omega Biome Blade
 		Tooltip: ""
-	}
-
-	TrueArkoftheAncients: {
-		DisplayName: True Arkofthe Ancients
-		Tooltip: ""
-	}
-
-	TrueBiomeBlade: {
-		DisplayName: True Biome Blade
-		Tooltip: ""
-	}
-
-	Minigun: {
-		DisplayName: Minigun
-		Tooltip: ""
-	}
-
-	test: {
-		DisplayName: test
-		Tooltip: ""
-	}
-
-	testad: {
-		DisplayName: testad
-		Tooltip: ""
-	}
-
-	VoidVortex: {
-		DisplayName: Void Vortex
-		Tooltip: ""
-	}
-
-	Lore: {
-		KnowledgeKingSlime.DisplayName: Knowledge King Slime
-		KnowledgeCrabulon.DisplayName: Knowledge Crabulon
-		KnowledgeDesertScourge.DisplayName: Knowledge Desert Scourge
-		KnowledgeEaterofWorlds.DisplayName: Knowledge Eaterof Worlds
-		KnowledgeCryogen.DisplayName: Knowledge Cryogen
-		KnowledgeDestroyer.DisplayName: Knowledge Destroyer
-		KnowledgeSkeletron.DisplayName: Knowledge Skeletron
-		KnowledgeAquaticScourge.DisplayName: Knowledge Aquatic Scourge
-		KnowledgeAstrumAureus.DisplayName: Knowledge Astrum Aureus
-		KnowledgeAstrumDeus.DisplayName: Knowledge Astrum Deus
-		KnowledgeDukeFishron.DisplayName: Knowledge Duke Fishron
-		KnowledgeGolem.DisplayName: Knowledge Golem
-		KnowledgeHiveMind.DisplayName: Knowledge Hive Mind
-		KnowledgeLeviathanAnahita.DisplayName: Knowledge Leviathan Anahita
-		KnowledgeLunaticCultist.DisplayName: Knowledge Lunatic Cultist
-		KnowledgeMoonLord.DisplayName: Knowledge Moon Lord
-		KnowledgeSkeletronPrime.DisplayName: Knowledge Skeletron Prime
-		KnowledgePerforators.DisplayName: Knowledge Perforators
-		KnowledgeQueenBee.DisplayName: Knowledge Queen Bee
-		KnowledgePlantera.DisplayName: Knowledge Plantera
-		KnowledgePolterghast.DisplayName: Knowledge Polterghast
-		KnowledgeWallofFlesh.DisplayName: Knowledge Wallof Flesh
-		KnowledgeTwins.DisplayName: Knowledge Twins
-		KnowledgeBrimstoneElemental.DisplayName: Knowledge Brimstone Elemental
-		KnowledgeCalamitasClone.DisplayName: Knowledge Calamitas Clone
-		KnowledgeCalamitas.DisplayName: Knowledge Calamitas
-		KnowledgePlaguebringerGoliath.DisplayName: Knowledge Plaguebringer Goliath
-		KnowledgeOldDuke.DisplayName: Knowledge Old Duke
-		KnowledgeProvidence.DisplayName: Knowledge Providence
-		KnowledgeRavager.DisplayName: Knowledge Ravager
-		KnowledgeBrainofCthulhu.DisplayName: Knowledge Brainof Cthulhu
-		KnowledgeDevourerofGods.DisplayName: Knowledge Devourerof Gods
-		KnowledgeYharon.DisplayName: Knowledge Yharon
-		KnowledgeAstralInfection.DisplayName: Knowledge Astral Infection
-		KnowledgeBloodMoon.DisplayName: Knowledge Blood Moon
-		KnowledgeBrimstoneCrag.DisplayName: Knowledge Brimstone Crag
-		KnowledgeCorruption.DisplayName: Knowledge Corruption
-		KnowledgeCrimson.DisplayName: Knowledge Crimson
-		KnowledgeDragonfolly.DisplayName: Knowledge Dragonfolly
-		KnowledgeEyeofCthulhu.DisplayName: Knowledge Eyeof Cthulhu
-		KnowledgeMechs.DisplayName: Knowledge Mechs
-		KnowledgeOcean.DisplayName: Knowledge Ocean
-		KnowledgeSentinels.DisplayName: Knowledge Sentinels
-		KnowledgeSlimeGod.DisplayName: Knowledge Slime God
-		KnowledgeUnderworld.DisplayName: Knowledge Underworld
 	}
 
 	AncientShiv: {
@@ -229,6 +361,11 @@ Items: {
 		Tooltip: ""
 	}
 
+	ExoGladius: {
+		DisplayName: Exo Gladius
+		Tooltip: ""
+	}
+
 	FlameburstShortsword: {
 		DisplayName: Flameburst Shortsword
 		Tooltip: ""
@@ -239,13 +376,18 @@ Items: {
 		Tooltip: ""
 	}
 
+	NightsStabber: {
+		DisplayName: Nights Stabber
+		Tooltip: ""
+	}
+
 	SporeKnife: {
 		DisplayName: Spore Knife
 		Tooltip: ""
 	}
 
-	NightsStabber: {
-		DisplayName: Nights Stabber
+	TerraShiv: {
+		DisplayName: Terra Shiv
 		Tooltip: ""
 	}
 
@@ -259,50 +401,18 @@ Items: {
 		Tooltip: ""
 	}
 
-	TerraShiv: {
-		DisplayName: Terra Shiv
-		Tooltip: ""
-	}
-
-	ArkoftheCosmosold: {
-		DisplayName: Arkofthe Cosmosold
-		Tooltip: ""
-	}
-
-	ExampleSwingingEnergySword: {
-		DisplayName: Example Swinging Energy Sword
-		Tooltip: ""
-	}
-
 	TerraEdge: {
 		DisplayName: Terra Edge
 		Tooltip: ""
 	}
 
-	HeavenlyGaleold: {
-		DisplayName: Heavenly Galeold
+	TrueArkoftheAncients: {
+		DisplayName: True Arkofthe Ancients
 		Tooltip: ""
 	}
 
-	Ammo: {
-		VanquisherArrowold: {
-			DisplayName: Vanquisher Arrowold
-			Tooltip: ""
-		}
-	}
-
-	SubsumingVortexold: {
-		DisplayName: Subsuming Vortexold
-		Tooltip: ""
-	}
-
-	MidnightSunBeaconold: {
-		DisplayName: Midnight Sun Beaconold
-		Tooltip: ""
-	}
-
-	BloodyEdge: {
-		DisplayName: Bloody Edge
+	TrueBiomeBlade: {
+		DisplayName: True Biome Blade
 		Tooltip: ""
 	}
 
@@ -311,79 +421,66 @@ Items: {
 		Tooltip: ""
 	}
 
-	ShatteringPotion: {
-		DisplayName: Shattering Potion
+	HeavenlyGaleold: {
+		DisplayName: Heavenly Galeold
 		Tooltip: ""
 	}
 
-	RevivifyPotion: {
-		DisplayName: Revivify Potion
+	Minigun: {
+		DisplayName: Minigun
 		Tooltip: ""
 	}
 
-	CadancePotion: {
-		DisplayName: Cadance Potion
-		Tooltip: ""
-	}
-
-	DraconicElixir: {
-		DisplayName: Draconic Elixir
-		Tooltip: ""
-	}
-
-	PenumbraPotion: {
-		DisplayName: Penumbra Potion
-		Tooltip: ""
-	}
-
-	HolyWrathPotion: {
-		DisplayName: Holy Wrath Potion
-		Tooltip: ""
-	}
-
-	ProfanedRagePotion: {
-		DisplayName: Profaned Rage Potion
-		Tooltip: ""
-	}
-
-	TitanScalePotion: {
-		DisplayName: Titan Scale Potion
-		Tooltip: ""
-	}
-
-	PurifiedJam: {
-		DisplayName: Purified Jam
-		Tooltip: ""
-	}
-
-	TriumphPotion: {
-		DisplayName: Triumph Potion
-		Tooltip: ""
-	}
-
-	YharimsStimulants: {
-		DisplayName: Yharims Stimulants
-		Tooltip: ""
-	}
-
-	HadopelagicEcho: {
-		DisplayName: Hadopelagic Echo
-		Tooltip: ""
-	}
-
-	StratusSphere: {
-		DisplayName: Stratus Sphere
+	MidnightSunBeaconold: {
+		DisplayName: Midnight Sun Beaconold
 		Tooltip: ""
 	}
 }
 
 Projectiles: {
+	Magic.CIVividBeam.DisplayName: C I Vivid Beam
+	Climax2.DisplayName: Climax2
+	ClimaxBeam2.DisplayName: Climax Beam2
+	Crescent.DisplayName: Crescent
+	EnormousConsumingVortexold.DisplayName: Enormous Consuming Vortexold
+	HadopelagicEcho2.DisplayName: Hadopelagic Echo2
+	HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
+	StratusSphereProj.DisplayName: Stratus Sphere Proj
+	SubsumingTentacle.DisplayName: Subsuming Tentacle
+	Vortex.DisplayName: Vortex
 	BiomeOrb.DisplayName: Biome Orb
+	BloodyEdgeEnergySword.DisplayName: Bloody Edge Energy Sword
+	BlueAura.DisplayName: Blue Aura
+
+	Melee: {
+		CosmicShivBallold.DisplayName: Cosmic Shiv Ballold
+		CosmicShivBladeold.DisplayName: Cosmic Shiv Bladeold
+		ElementBallShivold.DisplayName: Element Ball Shivold
+		EyeOfNightCell.DisplayName: Eye Of Night Cell
+		GalaxyStarold.DisplayName: Galaxy Starold
+		SHIVold.DisplayName: S H I Vold
+		AncientShivProj.DisplayName: Ancient Shiv Proj
+		BloodyRuptureProj.DisplayName: Bloody Rupture Proj
+		CosmicShivProjold.DisplayName: Cosmic Shiv Projold
+		ElementalShivoldProj.DisplayName: Elemental Shivold Proj
+		EutrophicShankProj.DisplayName: Eutrophic Shank Proj
+		ExcaliburShortswordProj.DisplayName: Excalibur Shortsword Proj
+		ExoGladiusProj.DisplayName: Exo Gladius Proj
+		FlameburstShortswordProj.DisplayName: Flameburst Shortsword Proj
+		LeechingDaggerProj.DisplayName: Leeching Dagger Proj
+		NightsStabberProj.DisplayName: Nights Stabber Proj
+		SporeKnifeProj.DisplayName: Spore Knife Proj
+		TerraShivProj.DisplayName: Terra Shiv Proj
+		TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
+		TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
+	}
+
 	ElementBall.DisplayName: Element Ball
 	EonBeam.DisplayName: Eon Beam
 	EonBeamV2.DisplayName: Eon Beam V2
 	EonBeamV3.DisplayName: Eon Beam V3
 	EonBeamV4.DisplayName: Eon Beam V4
+	ExampleSwingingEnergySwordProjectile.DisplayName: Example Swinging Energy Sword Projectile
 	Exobeamold.DisplayName: Exobeamold
 	Exoboomold.DisplayName: Exoboomold
 	ExoGladComet.DisplayName: Exo Glad Comet
@@ -393,46 +490,28 @@ Projectiles: {
 	Galaxia.DisplayName: Galaxia
 	Galaxia2.DisplayName: Galaxia2
 	MurasamaSlashold.DisplayName: Murasama Slashold
-	OmegaBiomeOrb.DisplayName: Omega Biome Orb
-
-	Melee: {
-		ExoGladiusProj.DisplayName: Exo Gladius Proj
-		AncientShivProj.DisplayName: Ancient Shiv Proj
-		BloodyRuptureProj.DisplayName: Bloody Rupture Proj
-		EutrophicShankProj.DisplayName: Eutrophic Shank Proj
-		ExcaliburShortswordProj.DisplayName: Excalibur Shortsword Proj
-		FlameburstShortswordProj.DisplayName: Flameburst Shortsword Proj
-		LeechingDaggerProj.DisplayName: Leeching Dagger Proj
-		EyeOfNightCell.DisplayName: Eye Of Night Cell
-		SporeKnifeProj.DisplayName: Spore Knife Proj
-		NightsStabberProj.DisplayName: Nights Stabber Proj
-		TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
-		TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
-		TerraShivProj.DisplayName: Terra Shiv Proj
-		ElementBallShivold.DisplayName: Element Ball Shivold
-		ElementalShivoldProj.DisplayName: Elemental Shivold Proj
-		SHIVold.DisplayName: S H I Vold
-		CosmicShivBall.DisplayName: Cosmic Shiv Ball
-		CosmicShivBladeold.DisplayName: Cosmic Shiv Bladeold
-		GalaxyStarold.DisplayName: Galaxy Starold
-		CosmicShivProjold.DisplayName: Cosmic Shiv Projold
-		CosmicShivBallold.DisplayName: Cosmic Shiv Ballold
-	}
-
-	TerraBall.DisplayName: Terra Ball
-	TrueBiomeOrb.DisplayName: True Biome Orb
-	Magic.CIVividBeam.DisplayName: C I Vivid Beam
-	Climax2.DisplayName: Climax2
-	ClimaxBeam2.DisplayName: Climax Beam2
-	TheDeadlyMicrobeProjectile.DisplayName: The Deadly Microbe Projectile
-	BlueAura.DisplayName: Blue Aura
 	NightStabber2.DisplayName: Night Stabber2
+	OmegaBiomeOrb.DisplayName: Omega Biome Orb
 	ShortExcaliburBeam.DisplayName: Short Excalibur Beam
 	ShortNightBeam.DisplayName: Short Night Beam
 	ShortTerraBeam.DisplayName: Short Terra Beam
-	ExampleSwingingEnergySwordProjectile.DisplayName: Example Swinging Energy Sword Projectile
+	TerraBall.DisplayName: Terra Ball
 	TerraEdgeBeam.DisplayName: Terra Edge Beam
 	TerraEdgeEnergySword.DisplayName: Terra Edge Energy Sword
+	TrueBiomeOrb.DisplayName: True Biome Orb
+	TrueBloodyBladeProj.DisplayName: True Bloody Blade Proj
+	TrueBloodyEdgeEnergySword.DisplayName: True Bloody Edge Energy Sword
+
+	Ranged: {
+		DragonsBreathRound.DisplayName: Dragons Breath Round
+		ExoFireold.DisplayName: Exo Fireold
+		ExoFlareClusterold.DisplayName: Exo Flare Clusterold
+		ExoFlareold.DisplayName: Exo Flareold
+		ExoLightold.DisplayName: Exo Lightold
+		ExoSparkold.DisplayName: Exo Sparkold
+		VanquisherArrowoldMain.DisplayName: Vanquisher Arrowold Main
+	}
+
 	ExoArrowBlue.DisplayName: Exo Arrow Blue
 	ExoArrowBlue2.DisplayName: Exo Arrow Blue2
 	ExoArrowGreen.DisplayName: Exo Arrow Green
@@ -441,43 +520,29 @@ Projectiles: {
 	ExoTornado.DisplayName: Exo Tornado
 	OrangeExoArrow.DisplayName: Orange Exo Arrow
 
-	Ranged: {
-		ExoFireold.DisplayName: Exo Fireold
-		ExoFlareClusterold.DisplayName: Exo Flare Clusterold
-		ExoFlareold.DisplayName: Exo Flareold
-		ExoLightold.DisplayName: Exo Lightold
-		ExoSparkold.DisplayName: Exo Sparkold
-		VanquisherArrowoldMain.DisplayName: Vanquisher Arrowold Main
-		DragonsBreathRound.DisplayName: Dragons Breath Round
-	}
-
-	Typeless.VanquisherArrowSplit.DisplayName: Vanquisher Arrow Split
-	EnormousConsumingVortexold.DisplayName: Enormous Consuming Vortexold
-	SubsumingTentacle.DisplayName: Subsuming Tentacle
-	Vortex.DisplayName: Vortex
-
 	Rogue: {
-		SupernovaBomb.DisplayName: Supernova Bomb
+		PhantasmalRuinGhost.DisplayName: Phantasmal Ruin Ghost
+		PhantasmalRuinProjold.DisplayName: Phantasmal Ruin Projold
+		PhantasmalSoulold.DisplayName: Phantasmal Soulold
+		PhantomLanceProj.DisplayName: Phantom Lance Proj
 		SupernovaBombold.DisplayName: Supernova Bombold
-		SupernovaSpike.DisplayName: Supernova Spike
 		SupernovaHoming.DisplayName: Supernova Homing
+		SupernovaSpike.DisplayName: Supernova Spike
 	}
 
 	MidnightSunBeaconProjold.DisplayName: Midnight Sun Beacon Projold
 	MidnightSunBeamold.DisplayName: Midnight Sun Beamold
 	MidnightSunLaserold.DisplayName: Midnight Sun Laserold
 	MidnightSunSkyBeamold.DisplayName: Midnight Sun Sky Beamold
-	MidnightSunUFOold.DisplayName: Midnight Sun U F Oold
-	MidnightSunSkyBeamoldup.DisplayName: Midnight Sun Sky Beamoldup
-	MidnightSunSkyBeamoldupdown.DisplayName: Midnight Sun Sky Beamoldupdown
 	MidnightSunSkyBeamolddownup.DisplayName: Midnight Sun Sky Beamolddownup
-	BloodyEdgeEnergySword.DisplayName: Bloody Edge Energy Sword
-	TrueBloodyBladeProj.DisplayName: True Bloody Blade Proj
-	TrueBloodyEdgeEnergySword.DisplayName: True Bloody Edge Energy Sword
-	HadopelagicEcho2.DisplayName: Hadopelagic Echo2
-	HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
-	Crescent.DisplayName: Crescent
-	StratusSphereProj.DisplayName: Stratus Sphere Proj
+	MidnightSunUFOold.DisplayName: Midnight Sun U F Oold
+
+	Typeless: {
+		HolyExplosionold.DisplayName: Holy Explosionold
+		VanquisherArrowSplit.DisplayName: Vanquisher Arrow Split
+	}
+
+	TheDeadlyMicrobeProjectile.DisplayName: The Deadly Microbe Projectile
 }
 
 Configs: {
@@ -514,67 +579,5 @@ Configs: {
 			Label: Elemental Quiver Splitstyle
 			Tooltip: ""
 		}
-	}
-}
-
-Keybinds: {
-	ActivateAccessoryParry.DisplayName: Activate Accessory Parry
-	BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
-}
-
-Buffs: {
-	ArmorShattering: {
-		DisplayName: Armor Shattering
-		Description: Mods.CalamityInheritance.Buffs.ArmorShattering.Description
-	}
-
-	Revivify: {
-		DisplayName: Revivify
-		Description: Mods.CalamityInheritance.Buffs.Revivify.Description
-	}
-
-	CadancesGrace: {
-		DisplayName: Cadances Grace
-		Description: Mods.CalamityInheritance.Buffs.CadancesGrace.Description
-	}
-
-	DraconicSurgeBuff: {
-		DisplayName: Draconic Surge Buff
-		Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
-	}
-
-	PenumbraBuff: {
-		DisplayName: Penumbra Buff
-		Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
-	}
-
-	HolyWrathBuff: {
-		DisplayName: Holy Wrath Buff
-		Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
-	}
-
-	ProfanedRageBuff: {
-		DisplayName: Profaned Rage Buff
-		Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
-	}
-
-	TitanScale: {
-		DisplayName: Titan Scale
-		Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
-	}
-
-	TriumphBuff: {
-		DisplayName: Triumph Buff
-		Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
-	}
-
-	YharimPower: {
-		DisplayName: Yharim Power
-		Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
-	}
-
-	Invincible: {
-		DisplayName: Invincible
-		Description: Mods.CalamityInheritance.Buffs.Invincible.Description
 	}
 }

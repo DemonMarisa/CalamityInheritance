@@ -240,7 +240,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (target.type == ModContent.NPCType<BrimstoneHeart>())
             {
-                Projectile.damage = (Projectile.damage * 1);
+                if (Projectile.frameCounter == 0)
+                {
+                    Projectile.damage = (Projectile.damage * 2);
+                }
             }
         }
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);

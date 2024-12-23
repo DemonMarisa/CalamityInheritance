@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalamityMod.Items.LoreItems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.SoulofNight, 3).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreBloodMoon>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

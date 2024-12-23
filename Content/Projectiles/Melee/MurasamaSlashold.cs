@@ -2,6 +2,7 @@
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
@@ -63,6 +64,22 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+
+            if (Projectile.frameCounter == 0)
+            {
+                Projectile.scale = 2;
+                Projectile.damage = (int)(Projectile.damage * 0.5);
+            }
+            if (Main.getGoodWorld)
+            {
+                Projectile.scale = 2;
+                Projectile.damage = (int)(Projectile.damage * 1);
+            }
+            if (Main.zenithWorld)
+            {
+                Projectile.scale = 2;
+                Projectile.damage = (int)(Projectile.damage * 2);
+            }
 
             //Frames and crap
             Projectile.frameCounter++;
@@ -140,14 +157,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            int maxDamage = 100000; // 设置最大伤害
 
-            // 如果实际造成的伤害大于最大伤害，限制伤害
-            if (damageDone > maxDamage)
+            if (target.type == ModContent.NPCType<BrimstoneHeart>())
             {
-                damageDone = maxDamage;
+                if (Projectile.frameCounter == 0)
+                {
+                    Projectile.damage = (Projectile.damage * 2);
+                }
             }
-
         }
         public override Color? GetAlpha(Color lightColor) => new Color(200, 0, 0, 0);
 

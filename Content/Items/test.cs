@@ -15,6 +15,7 @@ using CalamityMod.Cooldowns;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -37,6 +38,7 @@ namespace CalamityInheritance.Content.Items
             Item.value = Item.buyPrice(0, 4, 0, 0);
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 12f;
+            Item.shoot = ModContent.ProjectileType<HolyExplosionold>();
         }
         public override bool? UseItem(Player player)
         {

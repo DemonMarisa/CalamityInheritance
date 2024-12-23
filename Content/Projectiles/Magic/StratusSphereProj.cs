@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.DamageType = DamageClass.Magic;
+            Projectile.timeLeft = 500;
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -49,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 if (Projectile.ai[0] > 100)
                 {
                     Projectile.velocity.X = Projectile.velocity.X * 40 / 41;
-                    Projectile.velocity.Y = Projectile.velocity.Y * 45 / 46 - 0.005f;
+                    Projectile.velocity.Y = Projectile.velocity.Y * 50 / 51 - 0.005f;
                 }
             }
             else
@@ -112,7 +113,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 dust_nut = 0;
             }
 
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 12, 35);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 7, 7);
         }
         public override bool PreDraw(ref Color lightColor)
         {

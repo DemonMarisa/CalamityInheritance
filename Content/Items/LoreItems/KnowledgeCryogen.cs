@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
@@ -40,6 +41,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<CryogenTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCynosure>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

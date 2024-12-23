@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.DukeFishronTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreDukeFishron>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.Placeables.Furniture.Trophies;
+﻿using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<DragonfollyTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreDragonfolly>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

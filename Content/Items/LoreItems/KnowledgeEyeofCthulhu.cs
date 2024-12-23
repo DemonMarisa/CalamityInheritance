@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalamityMod.Items.LoreItems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.EyeofCthulhuTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreEyeofCthulhu>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

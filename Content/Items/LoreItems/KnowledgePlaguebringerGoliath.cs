@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<PlaguebringerGoliathTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LorePlaguebringerGoliath>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

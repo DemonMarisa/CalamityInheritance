@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.Placeables.Furniture.Trophies;
+﻿using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<SlimeGodTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreSlimeGod>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

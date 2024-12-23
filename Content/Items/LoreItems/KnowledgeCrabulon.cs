@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
@@ -33,6 +34,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<CrabulonTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCrabulon>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

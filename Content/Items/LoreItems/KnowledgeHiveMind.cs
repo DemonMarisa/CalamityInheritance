@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
@@ -35,6 +36,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<HiveMindTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreHiveMind>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

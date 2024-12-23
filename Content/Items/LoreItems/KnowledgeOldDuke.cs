@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Rarities;
 using Terraria;
@@ -34,6 +35,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<OldDukeTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreOldDuke>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

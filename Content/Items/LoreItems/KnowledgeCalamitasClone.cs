@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<CalamitasCloneTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreCalamitasClone>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

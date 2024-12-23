@@ -37,6 +37,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.KingSlimeTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreKingSlime>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<RavagerTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+            CreateRecipe().
+AddIngredient<LoreRavager>().
+AddTile(TileID.Bookcases).
+Register();
         }
     }
 }
