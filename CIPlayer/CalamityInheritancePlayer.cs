@@ -11,6 +11,8 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.GameInput;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -24,12 +26,12 @@ namespace CalamityInheritance.CIPlayer
         public bool FungalCarapace = false;
         public bool ODsulphurskin = false;
         public int ProjectilHitCounter;
-        //dash
-        public int CIdashTimeMod;
-        private const int CIDashDisableCooldown = 12;
-        public bool CIHasReducedDashFirstFrame = false;
-        public bool CIHasIncreasedDashFirstFrame = false;
-        public bool blockAllDashes = false;
+        #region dash
+        public int dashTimeMod;
+        public bool HasReducedDashFirstFrame = false;
+        public bool HasIncreasedDashFirstFrame = false;
+        public int CIDashDelay;
+        #endregion
         #region Lore
         public bool kingSlimeLore = false;//
         public bool desertScourgeLore = false;//
@@ -82,7 +84,6 @@ namespace CalamityInheritance.CIPlayer
         public bool yPower = false;
         public bool invincible = false;
         #endregion
-
         #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
         public bool CIHasAnyEnergyShield => CIsponge;
@@ -100,7 +101,15 @@ namespace CalamityInheritance.CIPlayer
         internal bool CIplayedSpongeShieldSound = false;
 
         #endregion
-
+        #region Set Bonuses
+        public bool GodSlayerReborn = false;
+        public bool GodSlayerDMGprotect = false;
+        public bool godSlayerReflect = false;
+        public bool godSlayerMagic = false;
+        public bool hasFiredThisFrame = false;
+        public bool godSlayerRangedold = false;
+        public bool godSlayerSummonold = false;
+        #endregion
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -173,9 +182,16 @@ namespace CalamityInheritance.CIPlayer
             yPower = false;
             invincible = false;
             #endregion
-
+            #region Set Bonuses
+            GodSlayerReborn = false;
+            GodSlayerDMGprotect = false;
+            godSlayerReflect = false;
+            godSlayerMagic = false;
+            hasFiredThisFrame = false;
+            godSlayerRangedold = false;
+            godSlayerSummonold = false;
+            #endregion
             CIDashID = string.Empty;
-            blockAllDashes = false;
         }
         #endregion
 
@@ -194,8 +210,35 @@ namespace CalamityInheritance.CIPlayer
             triumph = false;
             yPower = false;
             invincible = false;
+
+            #region Set Bonuses
+            GodSlayerDMGprotect = false;
+            godSlayerReflect = false;
+            godSlayerMagic = false;
+            hasFiredThisFrame = false;
+            godSlayerRangedold = false;
+            godSlayerSummonold = false;
+            #endregion
+        }
+        public override void PreUpdate()
+        {
+            if (HasCustomDash && UsedDash.IsOmnidirectional)
+                Player.maxFallSpeed = 50f;
+
+            if(HasCustomDash)
+            {
+                if (CIDashDelay > 0)
+                {
+                    CIDashDelay--;
+                }
+                else if (CIDashDelay < 0)
+                {
+                    CIDashDelay++;
+                }
+            }
         }
         #endregion
+
         #region Post Hurt
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {
@@ -262,16 +305,20 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
         #region PreUpdate
-        public override void PreUpdate()
-        {
-            if (CIHasCustomDash && UsedDash.IsOmnidirectional)
-                Player.maxFallSpeed = 50f;
 
-        }
         #endregion
+        public Item FindAccessory(int itemID)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (Player.armor[i].type == itemID)
+                    return Player.armor[i];
+            }
+            return new Item();
+        }
         public override void PostUpdateRunSpeeds()
         {
-
+            CalamityPlayer modPlayer = Player.Calamity();
             if (destroyerLore)
             {
                 Player.runAcceleration *= 0.95f;
@@ -287,13 +334,14 @@ namespace CalamityInheritance.CIPlayer
             }
 
             #region DashEffects
-            if (!string.IsNullOrEmpty(CIDeferredDashID))
+
+            if (!string.IsNullOrEmpty(DeferredDashID))
             {
-                CIDashID = CIDeferredDashID;
-                CIDeferredDashID = string.Empty;
+                CIDashID = DeferredDashID;
+                DeferredDashID = string.Empty;
             }
 
-            if (Player.pulley && CIHasCustomDash)
+            if (Player.pulley && HasCustomDash)
             {
                 ModDashMovement();
             }
@@ -302,34 +350,16 @@ namespace CalamityInheritance.CIPlayer
             {
                 ModHorizontalMovement();
 
-                if (CIHasCustomDash)
+                //下面这两行代码会导致弑神冲刺出错，弑神冲刺上下冲刺时无法正常进入cd，也没有特效，但是移除了会导致无法冲刺
+                //加入ID判定后不出错了，为什么dom要这么写ID
+                if (HasCustomDash && modPlayer.DashID != "Godslayer Armor")
+                {
                     ModDashMovement();
+                }
             }
             #endregion
         }
-        #region Limitations
-        private void ForceVariousEffects()
-        {
-            if (blockAllDashes)
-                DisableDashes();
-        }
-        private void DisableDashes()
-        {
-            // Set the player to have no registered dashes.
-            Player.dashType = 0;
-            CIDashID = string.Empty;
 
-            // Put the player in a permanent state of dash cooldown. This is removed 1/5 of a second after disabling the effect.
-            // This is necessary so that arbitrary dashes from other mods are also blocked by Calamity.
-            if (Player.dashDelay >= 0 && Player.dashDelay < CIDashDisableCooldown)
-                Player.dashDelay = CIDashDisableCooldown;
-
-            // Prevent the possibility of Shield of Cthulhu invulnerability exploits.
-            Player.eocHit = -1;
-            if (Player.eocDash != 0)
-                Player.eocDash = 0;
-        }
-        #endregion
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
@@ -338,6 +368,7 @@ namespace CalamityInheritance.CIPlayer
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
             }
         }
+
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (CalamityInheritanceKeybinds.BoCLoreTeleportation.JustPressed && BoCLoreTeleportation == true && Main.myPlayer == Player.whoAmI)

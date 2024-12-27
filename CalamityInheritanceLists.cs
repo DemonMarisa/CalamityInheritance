@@ -58,7 +58,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoTornado>(),
                     ProjectileType<ExoSparkold>(),
                     ProjectileType<ExoLightold>(),
-                    ProjectileType<ExoFireold>(),
+                    ProjectileType<ExoSpearBack>(),
             };
         }
 

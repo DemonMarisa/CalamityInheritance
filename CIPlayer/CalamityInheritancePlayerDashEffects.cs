@@ -1,21 +1,32 @@
-﻿using CalamityMod.Balancing;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Cooldowns;
-using CalamityMod.EntitySources;
-using CalamityMod.Enums;
-using CalamityMod.Items.Mounts;
+﻿using CalamityMod.CalPlayer.Dashes;
 using CalamityMod;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ID;
+using CalamityMod.Cooldowns;
+using CalamityMod.Balancing;
+using CalamityMod.EntitySources;
+using CalamityMod.Enums;
 using Terraria;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Balancing;
 using CalamityInheritance.CIPlayer.Dash;
+using CalamityMod.Items.Mounts;
 
+/* 
+ * 这一段是从灾厄里面复制过来的盾冲实现机制
+ * 但是直接复制过来后会出现bug，只有开始时的特效，没有后续的击中和过程效果
+ * 后续排查中发现为ModDashMovement中的Player.dashDelay与DoADash中的Player.dashDelay没有联动
+ * 导致MDM中的DD始终为0，无法触发效果
+ * 于是新注册了CItestDashDelay用作交换
+ * CIDashDelay可以设置任意值，并且会以1帧1点的速度归零
+ * 如果复制请复制全，不然你会遇到莫名其妙的bug
+ * 而且这一段没有残影绘制，请自己添加
+*/
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
@@ -23,42 +34,42 @@ namespace CalamityInheritance.CIPlayer
         public int VerticalGodslayerDashTimer;
         public int VerticalSpeedBlasterDashTimer;
 
-        private string dashID; //private backing variable
+        public string CIDashID; //private backing variable
 
-        public string CIDashID
-        {
-            get
-            {
-                return (String.IsNullOrEmpty(dashID) && Player.dashType == 0 && CalamityConfig.Instance.DefaultDashEnabled) ? DefaultDash.ID : dashID; //gives default dash ONLY if no custom or vanilla dash.
-            }
-            set => dashID = value;
-        }
-
-        public string CIDeferredDashID;
+        public string DeferredDashID;
 
         public string LastUsedDashID;
-
-        public CIPlayerDashEffect UsedDash
+        //"Asgard's Valor old"
+        public PlayerDashEffect UsedDash
         {
             get
             {
-                CIPlayerDashManager.FindByID(CIDashID, out CIPlayerDashEffect dashEffect);
+                CIPlayerDashManager.FindByID(CIDashID, out PlayerDashEffect dashEffect);
                 return dashEffect;
             }
         }
 
-        public bool CIHasCustomDash => !string.IsNullOrEmpty(CIDashID);
-
+        public bool HasCustomDash => !string.IsNullOrEmpty(CIDashID);
         public void ModDashMovement()
         {
+            
+            //Main.NewText($"CIDashDelay : {CIDashDelay}");
+            /*
+            if (CItestDashDelay < 0)
+            {
+                Main.NewText("当前CItestDashDelay小于0");
+            }
+            */
+            //Main.NewText("正在执行 dash 的移动");
             if (Player.whoAmI != Main.myPlayer)
                 return;
 
             var source = new ProjectileSource_PlayerDashHit(Player);
 
             // Handle collision slam-through effects.
-            if (CIHasCustomDash && Player.dashDelay < 0)
+            if (HasCustomDash && CIDashDelay < 0)
             {
+                //Main.NewText($"CItestDashDelay moddashmovement : {CItestDashDelay}");
                 Rectangle hitArea = new Rectangle((int)(Player.position.X + Player.velocity.X * 0.5 - 4f), (int)(Player.position.Y + Player.velocity.Y * 0.5 - 4), Player.width + 8, Player.height + 8);
                 foreach (NPC n in Main.ActiveNPCs)
                 {
@@ -70,6 +81,7 @@ namespace CalamityInheritance.CIPlayer
                     {
                         if (hitArea.Intersects(n.getRect()) && (n.noTileCollide || Player.CanHit(n)))
                         {
+                            //Main.NewText("正在执行 dash 的碰撞");
                             DashHitContext hitContext = default;
                             UsedDash.OnHitEffects(Player, n, source, ref hitContext);
 
@@ -92,22 +104,29 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (Player.dashDelay > 0) //Speed Blaster
+            if (CIDashDelay > 0) //Speed Blaster
             {
                 VerticalSpeedBlasterDashTimer = 0;
-                LastUsedDashID = string.Empty;
+                LastUsedDashID = CIDashID;
                 return;
             }
 
-            if (Player.dashDelay > 0)
+            if (CIDashDelay > 0)
             {
                 VerticalGodslayerDashTimer = 0;
-                LastUsedDashID = string.Empty;
+                LastUsedDashID = CIDashID;
                 return;
             }
 
-            if (Player.dashDelay < 0)
+            if (CIDashDelay < 0)
+            //if (HasCustomDash /*&& Player.dashDelay < 0*/)
             {
+                //Main.NewText("正在执行 dash 的冷却添加");
+                int dashDelayToApply = CIBalancingConstants.UniversalDashCooldown;
+                if (UsedDash.CollisionType == DashCollisionType.ShieldSlam)
+                    dashDelayToApply = CIBalancingConstants.UniversalShieldSlamCooldown;
+                else if (UsedDash.CollisionType == DashCollisionType.ShieldBonk)
+                    dashDelayToApply = CIBalancingConstants.UniversalShieldBonkCooldown;
 
                 float dashSpeed = 12f;
                 float dashSpeedDecelerationFactor = 0.985f;
@@ -118,14 +137,46 @@ namespace CalamityInheritance.CIPlayer
 
                 // Handle mid-dash effects.
                 UsedDash.MidDashEffects(Player, ref dashSpeed, ref dashSpeedDecelerationFactor, ref runSpeedDecelerationFactor);
-                if (CIHasCustomDash)
+                
+                if (UsedDash.IsOmnidirectional && VerticalGodslayerDashTimer < 25)
+                {
+                    VerticalGodslayerDashTimer++;
+                    if (VerticalGodslayerDashTimer >= 25)
+                    {
+                        Player.dashDelay = dashDelayToApply;//CD
+                        // Stop the player from going flying
+                        Player.velocity *= 0.2f;
+                    }
+                }
+
+                if (UsedDash.IsOmnidirectional && VerticalSpeedBlasterDashTimer < 25)
+                {
+                    VerticalSpeedBlasterDashTimer++;
+                    if (VerticalSpeedBlasterDashTimer >= 25)
+                    {
+                        Player.dashDelay = dashDelayToApply;//CD
+                        // Stop the player from going flying
+                        Player.velocity *= 0.2f;
+                    }
+                }
+                
+                if (CIDashDelay < 0)
                 {
                     Player.vortexStealthActive = false;
+                    // Dash delay depends on the type of dash used.
+                    //2024.12.25这里应该添加成功了
+                    //2024.12.26确实添加成功了
+                    //2024.12.26.1.18飞行期间无法正常添加
+                    //2024.12.26.1.46飞行期间可以正常添加
+                    if (CIDashDelay > -2)
+                    {
+                        CIDashDelay = 30;//CD帧
+                    }
 
                     // Decide the player's facing direction.
                     if (Player.velocity.X != 0f)
                         Player.ChangeDir(Math.Sign(Player.velocity.X));
-
+                    
                     // Handle mid-dash movement.
                     if (UsedDash.IsOmnidirectional)
                     {
@@ -153,7 +204,7 @@ namespace CalamityInheritance.CIPlayer
                             return;
                         }
                     }
-
+                   
                     if (UsedDash.IsOmnidirectional)
                     {
                         if (Player.velocity.Length() < 0f)
@@ -170,7 +221,7 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                     else
-                    {
+                    {//阿斯加德英勇执行的下列代码
                         if (Player.velocity.X < 0f)
                         {
                             Player.velocity.X = -runSpeed;
@@ -184,15 +235,22 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-
+            
             // Handle first-frame effects.
-            else if (CIHasCustomDash && !Player.mount.Active)
+            else if (HasCustomDash && !Player.mount.Active)
             {
                 if (DoADash(UsedDash.CalculateDashSpeed(Player)))
+                {
                     UsedDash.OnDashEffects(Player);
+                    if (CIDashDelay > -2)
+                    {
+                        CIDashDelay = 30; // 冷却时间
+                        //Main.NewText("初始冲刺冷却时间已设置！");
+                    }
+                }
             }
         }
-
+        
         public bool HandleHorizontalDash(out DashDirection direction)
         {
             direction = DashDirection.Directionless;
@@ -238,29 +296,28 @@ namespace CalamityInheritance.CIPlayer
 
             if (dashDirectionToUse == 1)
             {
-                if (CIdashTimeMod > 0 || pressedManualHotkey)
+                if (dashTimeMod > 0 || pressedManualHotkey)
                 {
                     direction = DashDirection.Right;
                     dashWasExecuted = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = 15;
+                    dashTimeMod = 15;
             }
             else if (dashDirectionToUse == -1)
             {
-                if (CIdashTimeMod < 0 || pressedManualHotkey)
+                if (dashTimeMod < 0 || pressedManualHotkey)
                 {
                     direction = DashDirection.Left;
                     dashWasExecuted = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = -15;
+                    dashTimeMod = -15;
             }
             return dashWasExecuted;
         }
-
         public bool HandleOmnidirectionalDash(out DashDirection direction)
         {
             direction = DashDirection.Directionless;
@@ -268,107 +325,109 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.controlUp && Player.controlLeft)
             {
-                if (CIdashTimeMod < 0)
+                if (dashTimeMod < 0)
                 {
                     direction = DashDirection.UpLeft;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = -15;
+                    dashTimeMod = -15;
             }
             else if (Player.controlUp && Player.controlRight)
             {
-                if (CIdashTimeMod > 0)
+                if (dashTimeMod > 0)
                 {
                     direction = DashDirection.UpRight;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = 15;
+                    dashTimeMod = 15;
             }
             else if (Player.controlDown && Player.controlLeft)
             {
-                if (CIdashTimeMod < 0)
+                if (dashTimeMod < 0)
                 {
                     direction = DashDirection.DownLeft;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                     Player.maxFallSpeed = 50f;
                 }
                 else
-                    CIdashTimeMod = -15;
+                    dashTimeMod = -15;
             }
             else if (Player.controlDown && Player.controlRight)
             {
-                if (CIdashTimeMod > 0)
+                if (dashTimeMod > 0)
                 {
                     direction = DashDirection.DownRight;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                     Player.maxFallSpeed = 50f;
                 }
                 else
-                    CIdashTimeMod = 15;
+                    dashTimeMod = 15;
             }
             else if (Player.controlUp)
             {
-                if (CIdashTimeMod < 0)
+                if (dashTimeMod < 0)
                 {
                     direction = DashDirection.Up;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = -15;
+                    dashTimeMod = -15;
             }
             else if (Player.controlDown)
             {
-                if (CIdashTimeMod > 0)
+                if (dashTimeMod > 0)
                 {
                     direction = DashDirection.Down;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                     Player.maxFallSpeed = 50f;
                 }
                 else
-                    CIdashTimeMod = 15;
+                    dashTimeMod = 15;
             }
             else if (Player.controlLeft)
             {
-                if (CIdashTimeMod < 0)
+                if (dashTimeMod < 0)
                 {
                     direction = DashDirection.Left;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = -15;
+                    dashTimeMod = -15;
             }
             else if (Player.controlRight)
             {
-                if (CIdashTimeMod > 0)
+                if (dashTimeMod > 0)
                 {
                     direction = DashDirection.Right;
                     justDashed = true;
-                    CIdashTimeMod = 0;
+                    dashTimeMod = 0;
                 }
                 else
-                    CIdashTimeMod = 15;
+                    dashTimeMod = 15;
             }
             return justDashed;
         }
-
+        
+        
         public bool DoADash(float dashSpeed)
         {
+            //Main.NewText("正在执行 doAdash ");
             bool justDashed;
             bool omnidirectionalDash = UsedDash?.IsOmnidirectional ?? false;
             DashDirection direction;
 
             // Have the dash time incrementally move towards its default state of zero.
-            if (CIdashTimeMod != 0)
-                CIdashTimeMod -= (CIdashTimeMod > 0).ToDirectionInt();
+            if (dashTimeMod != 0)
+                dashTimeMod -= (dashTimeMod > 0).ToDirectionInt();
 
             // Determine dash times.
             if (omnidirectionalDash)
@@ -379,6 +438,9 @@ namespace CalamityInheritance.CIPlayer
             // Make dash movements happen if ready.
             if (justDashed)
             {
+                /*
+                Main.NewText("正在执行 doAdash ");
+                */
                 int totalDirections = 8;
                 Vector2[] possibleVelocities = new Vector2[totalDirections];
                 for (int i = 0; i < totalDirections; i++)
@@ -437,12 +499,20 @@ namespace CalamityInheritance.CIPlayer
                 if (WorldGen.SolidOrSlopedTile(upwardTilePoint.X, upwardTilePoint.Y) || WorldGen.SolidOrSlopedTile(aheadTilePoint.X, aheadTilePoint.Y))
                     Player.velocity.X /= 2f;
 
-                Player.dashDelay = -1;
-            }
+                Player.dashDelay = -15;
 
+                CIDashDelay = Player.dashDelay;
+                /*
+                Main.NewText($"dashDelay doadash部分 : {Player.dashDelay}");
+
+                if (Player.dashDelay != -1)
+                {
+                    Main.NewText($"dashDelay 实际值: {Player.dashDelay}");
+                }
+                */
+            }
             return justDashed;
         }
-
         public void ModHorizontalMovement()
         {
             if (Player.mount.Active && Player.mount.Type == ModContent.MountType<AlicornMount>() && Math.Abs(Player.velocity.X) > Player.mount.DashSpeed - Player.mount.RunSpeed / 2f)

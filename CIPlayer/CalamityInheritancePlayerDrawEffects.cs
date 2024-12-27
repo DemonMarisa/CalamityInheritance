@@ -9,6 +9,7 @@ using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using System;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -73,5 +74,11 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
+        public void SetArmorEffectVisuals(Player Player)
+        {
+            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
+            if (modPlayer.CIDashDelay < 0)
+                Player.armorEffectDrawShadow = true;
+        }
     }
 }

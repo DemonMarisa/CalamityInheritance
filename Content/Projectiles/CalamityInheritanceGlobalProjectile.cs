@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Projectiles.Healing;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -76,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles
             {
                 if (modPlayer.ElementalQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
                 {
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 0)
+                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 1)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
@@ -95,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 1)
+                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 2)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
@@ -112,7 +113,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 2)
+                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 3)
                     {
                         if (Main.rand.Next(200) > 198)
                         {
@@ -131,7 +132,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 3)
+                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 4)
                     {
                         if (Main.rand.Next(200) > 198)
                         {

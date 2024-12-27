@@ -40,14 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 114;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<Violet>();
-            if (CalamityInheritanceConfig.Instance.Exobladeprojectile == false)
-            {
-                Item.shoot = ModContent.ProjectileType<Exobeamold>();
-            }
-            else
-            {
-                Item.shoot = ModContent.ProjectileType<Exobeam>();
-            }
+            Item.shoot = ModContent.ProjectileType<Exobeamold>();
             Item.shootSpeed = 19f;
             Item.rare = ModContent.RarityType<Violet>();
         }
@@ -65,15 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             if (hitCount >= 5)
             {
-                if (CalamityInheritanceConfig.Instance.Exobladeprojectile == false)
-                {
-                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exobeamold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
-                }
-                else
-                {
-                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), damageDone, (int)Item.knockBack, Main.myPlayer);
-                }
-
+                Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
                 hitCount = 0;
             }
 

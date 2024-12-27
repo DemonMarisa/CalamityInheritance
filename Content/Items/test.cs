@@ -16,6 +16,9 @@ using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -23,28 +26,28 @@ namespace CalamityInheritance.Content.Items
     {
         public override void SetDefaults()
         {
-            Item.width = 70;
-            Item.damage = 70;
-            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.useAnimation = 30;
-            Item.useTime = 30;
-            Item.useTurn = true;
+            Item.width = 80;
+            Item.damage = 2500;
+            Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 5f;
+            Item.useTime = 14;
+            Item.useTurn = true;
+            Item.DamageType = DamageClass.Melee;
+            Item.knockBack = 9f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.height = 42;
-            Item.scale = 2;
-            Item.value = Item.buyPrice(0, 4, 0, 0);
-            Item.rare = ItemRarityID.Orange;
-            Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<HolyExplosionold>();
+            Item.height = 114;
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<Violet>();
+            Item.shoot = ModContent.ProjectileType<ExoJet>();
+            Item.shootSpeed = 30;
+            Item.rare = ModContent.RarityType<Violet>();
         }
         public override bool? UseItem(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
 
-            player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+            //player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(30));
 
             return false;
         }

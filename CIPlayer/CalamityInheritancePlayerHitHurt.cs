@@ -3,6 +3,7 @@ using CalamityInheritance.Buffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
@@ -15,6 +16,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.Abyss;
+using CalamityMod.Projectiles.Healing;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -23,6 +25,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.Chat;
 using Terraria.DataStructures;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -56,6 +59,7 @@ namespace CalamityInheritance.CIPlayer
 
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
+
         }
         private void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
@@ -195,10 +199,18 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             //史神无敌
-            if(invincible)
+            if (invincible)
             {
                 CalamityPlayer modPlayer = Player.Calamity();
                 modPlayer.freeDodgeFromShieldAbsorption = true;
+            }
+
+            if (godSlayerReflect && Main.rand.NextBool(50))
+            {
+                CalamityPlayer modPlayer = Player.Calamity();
+                modPlayer.freeDodgeFromShieldAbsorption = true;
+                Player.immune = true;
+                Player.immuneTime = 60;
             }
         }
 
@@ -240,7 +252,18 @@ namespace CalamityInheritance.CIPlayer
                     modPlayer.KillPlayer();
                 }
             }
-
+            if (godSlayerMagic)
+            {
+                if (hurtInfo.Damage > 0)
+                {
+                    var source = Player.GetSource_Misc("1");
+                    SoundEngine.PlaySound(SoundID.Item73, Player.Center);
+                    if (Player.whoAmI == Main.myPlayer)
+                    {
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
+                    }
+                }
+            }
         }
         #endregion
 
@@ -256,6 +279,23 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
+            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+            {
+                if (godSlayerRangedold && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
+                {
+                    int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
+                    if (randomChance >= 1)
+                    {
+                        if(Main.rand.NextBool(100/randomChance))
+                        {
+                            hitInfo.Damage *= 4;
+                        }
+                    }
+                }
+            };
+        }
+        public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
+        {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
@@ -269,6 +309,39 @@ namespace CalamityInheritance.CIPlayer
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             CalamityPlayer modPlayer = Player.Calamity();
+            if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
+            {
+                SoundEngine.PlaySound(SoundID.Item67, Player.Center);
+
+                for (int j = 0; j < 50; j++)
+                {
+                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                    Dust dust = Main.dust[nebulousReviveDust];
+                    dust.position.X += Main.rand.Next(-20, 21);
+                    dust.position.Y += Main.rand.Next(-20, 21);
+                    dust.velocity *= 0.9f;
+                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    // Change this accordingly if we have a proper equipped sprite.
+                    dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
+                    if (Main.rand.NextBool())
+                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                }
+
+                Player.statLife = +100;
+
+                if (draconicSurge)
+                {
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
+                    {
+                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+                    }
+                }
+                Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
+                return false;
+            }
             if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
             {
 
@@ -325,6 +398,17 @@ namespace CalamityInheritance.CIPlayer
         {
             if (triumph)
                 contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+        }
+        #endregion
+        #region Free and Consumable Dodge Hooks
+        public override bool FreeDodge(Player.HurtInfo info)
+        {
+            // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
+            // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
+            if (info.Damage < 1  || (GodSlayerDMGprotect && info.Damage <= 80) )
+                return true;
+            // If no other effects occurred, run vanilla code
+            return base.FreeDodge(info);
         }
         #endregion
     }

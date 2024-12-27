@@ -200,6 +200,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
             CalamityPlayer modPlayer1 = Player.Calamity();
 
+            #region Lore
             if (modPlayer.ElementalQuiver)
                 Player.magicQuiver = true;
 
@@ -583,14 +584,16 @@ namespace CalamityInheritance.CIPlayer
                 modPlayer1.infiniteFlight = true;
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
-
+            #endregion
             if (modPlayer.invincible)
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
             }
             #endregion
+            #region Set Bonuses
 
+            #endregion
 
         }
     }

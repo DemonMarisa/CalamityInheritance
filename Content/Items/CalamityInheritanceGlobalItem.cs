@@ -2,6 +2,7 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items
@@ -40,5 +42,26 @@ namespace CalamityInheritance.Content.Items
                 velocity *= 2;
         }
         #endregion
+        public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
+        {
+            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityPlayer modPlayer1 = player.Calamity();
+            if (modPlayer.godSlayerRangedold && modPlayer1.canFireGodSlayerRangedProjectile)
+            {
+                if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
+                {
+                    modPlayer1.canFireGodSlayerRangedProjectile = false;
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        // God Slayer Ranged Shrapnel: 100%, soft cap starts at 800 base damage
+                        int shrapnelRoundDamage = damage * 2;
+                        shrapnelRoundDamage = player.ApplyArmorAccDamageBonusesTo(shrapnelRoundDamage);
+
+                        Projectile.NewProjectile(source, position, velocity * 1.25f, ModContent.ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.height = 20;
             Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
             Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+
             for (int i = 0; i < 20; i++)
             {
                 int holyDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);

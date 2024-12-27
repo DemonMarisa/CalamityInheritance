@@ -28,13 +28,13 @@ namespace CalamityInheritance
         {
             Instance = this;
             CIPlayerDashManager.Load();
-
             CalamityInheritanceLists.LoadLists();
         }
         #region Unload
         public override void Unload()
         {
             CIPlayerDashManager.Unload();
+            CalamityInheritanceLists.UnloadLists();
             Instance = null;
             base.Unload();
         }

@@ -19,20 +19,21 @@ namespace CalamityInheritance
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => true;
 
         #region General Gameplay Changes
-        [Header("Gameplay")]
 
+        [Header("Gameplay")]
+        /*
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool MusrasamaSlashchange { get; set; }
-
+        */
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool ElementalQuiversplit { get; set; }
-
+        /*
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Exobladeprojectile { get; set; }
-
+        */
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool TheSpongeBarrier { get; set; }
@@ -43,12 +44,19 @@ namespace CalamityInheritance
 
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
-        [Range(0, 3)]
+        [Range(1, 4)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(0)]
         public int ElementalQuiverSplitstyle { get; set; }
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 3)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(0)]
+        public int GodSlayerSetBonusesChange { get; set; }
         #endregion
     }
 }

@@ -89,25 +89,38 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void OnHitEffects()
         {
             SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.4f }, Projectile.position);
-                float spread = 45f * 0.0174f;
-                double startAngle = Math.Atan2(Projectile.velocity.X, Projectile.velocity.Y) - spread / 2;
-                double deltaAngle = spread / 8f;
-                double offsetAngle;
-                if (Projectile.owner == Main.myPlayer)
+            int numberOfProjectiles = Main.rand.Next(10, 12);
+            float spreadAngle = MathHelper.ToRadians(Main.rand.Next(25, 30));
+            float baseAngle = Projectile.velocity.ToRotation();
+
+            float angleStep = spreadAngle / (numberOfProjectiles - 1);
+
+            for (int i = 0; i < numberOfProjectiles; i++)
+            {
+                float randomOffset = Main.rand.NextFloat(-MathHelper.ToRadians(2), MathHelper.ToRadians(1));
+                float currentAngle = baseAngle - spreadAngle / 2 + (angleStep * i) + randomOffset;
+                Vector2 direction = new Vector2((float)Math.Cos(currentAngle), (float)Math.Sin(currentAngle));
+
+                float angleFromBase = Math.Abs(MathHelper.ToDegrees(currentAngle - baseAngle));
+                float randomSpeed;
+                if (angleFromBase < 1f)
                 {
-                    if (Main.player[Projectile.owner].ownedProjectileCounts[ModContent.ProjectileType<PhantasmalSoulold>()] < 4)
-                    {
-                        for (int i = 0; i < 4; i++)
-                        {
-                            float ai1 = Main.rand.NextFloat() + 0.5f;
-                            float randomSpeed = (float)Main.rand.Next(1, 7);
-                            float randomSpeed2 = (float)Main.rand.Next(1, 7);
-                            offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                            int num23 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f) + randomSpeed, ModContent.ProjectileType<PhantasmalSoulold>(), (int)(Projectile.damage * 0.5), 0f, Projectile.owner, 1f, ai1);
-                            int num24 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f) + randomSpeed2, ModContent.ProjectileType<PhantasmalSoulold>(), (int)(Projectile.damage * 0.5), 0f, Projectile.owner, 1f, ai1);
-                        }
-                    }
+                    randomSpeed = Main.rand.NextFloat(55f);
                 }
+                if (angleFromBase < 8f)
+                {
+                    randomSpeed = Main.rand.NextFloat(30f, 45f);
+                }
+                else
+                {
+                    randomSpeed = Main.rand.NextFloat(15f, 25f);
+                }
+
+                Vector2 randomizedVelocity = direction * randomSpeed;
+
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, ModContent.ProjectileType<PhantasmalSoulold>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+
+            }
         }
     }
 }

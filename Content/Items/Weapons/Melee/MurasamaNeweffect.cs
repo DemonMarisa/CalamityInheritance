@@ -48,14 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = false;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ItemRarityID.Red;
-            if (CalamityInheritanceConfig.Instance.MusrasamaSlashchange == true)
-            {
-                Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
-            }
-            else
-            {
-                Item.shoot = ModContent.ProjectileType<MurasamaSlashold>();
-            }
+            Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
             Item.shootSpeed = 24f;
             Item.rare = ModContent.RarityType<Violet>();
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 14));
@@ -126,14 +119,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.MusrasamaSlashchange == true)
-            {
-                type = ModContent.ProjectileType<MurasamaSlashnew1>();
-            }
-            else
-            {
-                type = ModContent.ProjectileType<MurasamaSlashold>();
-            }
+            type = ModContent.ProjectileType<MurasamaSlashnew1>();
 
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             return false;

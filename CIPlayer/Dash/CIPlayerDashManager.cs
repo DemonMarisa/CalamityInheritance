@@ -1,16 +1,19 @@
 ﻿using CalamityMod.CalPlayer.Dashes;
 using System;
 using System.Collections.Generic;
-using CalamityMod;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.ModLoader.Core;
 
 namespace CalamityInheritance.CIPlayer.Dash
 {
+    // TODO -- This can be made into a ModSystem with simple OnModLoad and Unload hooks.
     public static class CIPlayerDashManager
     {
-        internal static Dictionary<string, CIPlayerDashEffect> DashIdentificationTable = new();
+        internal static Dictionary<string, PlayerDashEffect> DashIdentificationTable = new();
 
-        public static bool FindByID(string id, out CIPlayerDashEffect dashEffect)
+        public static bool FindByID(string id, out PlayerDashEffect dashEffect)
         {
             return DashIdentificationTable.TryGetValue(id, out dashEffect);
         }
@@ -24,7 +27,7 @@ namespace CalamityInheritance.CIPlayer.Dash
         /// </summary>
         /// <param name="dashEffect">An instance of the desired dash effect to add.</param>
 
-        public static void TryAddDash(CIPlayerDashEffect dashEffect)
+        public static void TryAddDash(PlayerDashEffect dashEffect)
         {
             //If DashIdentificationTable is not loaded or modder tries to load an abstract type of
             //PlayerDashEffect, then don't add the dash and stop the method.
@@ -44,7 +47,7 @@ namespace CalamityInheritance.CIPlayer.Dash
         internal static void Load()
         {
             DashIdentificationTable = new();
-            Type baseType = typeof(CIPlayerDashEffect);
+            Type baseType = typeof(PlayerDashEffect);
             Type[] types = AssemblyManager.GetLoadableTypes(CalamityInheritance.Instance.Code);
             foreach (Type type in types)
             {
@@ -56,7 +59,7 @@ namespace CalamityInheritance.CIPlayer.Dash
                 // Use reflection to get the static ID manually. This shouldn't be a performance problem, as this only happens at load-time.
                 string id = (string)type.GetProperty("ID").GetValue(null);
 
-                CIPlayerDashEffect dashEffect = (CIPlayerDashEffect)Activator.CreateInstance(type);
+                PlayerDashEffect dashEffect = (PlayerDashEffect)Activator.CreateInstance(type);
                 DashIdentificationTable[id] = dashEffect;
             }
         }
