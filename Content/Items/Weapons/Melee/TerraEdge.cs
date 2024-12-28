@@ -93,6 +93,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
                 return;
         }
-
     }
 }

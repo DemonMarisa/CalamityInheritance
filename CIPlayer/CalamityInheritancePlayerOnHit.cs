@@ -14,6 +14,13 @@ using CalamityMod.Projectiles.Healing;
 using System;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod.Projectiles;
+using CalamityMod.Items.Armor.Vanity;
+using CalamityMod.Projectiles.Magic;
+using Mono.Cecil;
+using Terraria.Audio;
+using CalamityInheritance.Buffs.StatDebuffs;
+using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -26,7 +33,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
 
             CalamityGlobalNPC cgn = target.Calamity();
-
+            #region Lore
             if (perforatorLore)
             {
                 target.AddBuff(BuffID.Ichor, 90);
@@ -43,7 +50,8 @@ namespace CalamityInheritance.CIPlayer
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
             }
-
+            #endregion
+            #region GodSlayer
             if (Main.player[projectile.owner].CalamityInheritance().godSlayerMagic)
             {
                 if (hasFiredThisFrame)
@@ -98,7 +106,7 @@ namespace CalamityInheritance.CIPlayer
                 num10 = num7 / num10;
                 num8 *= num10;
                 num9 *= num10;
-                Projectile.NewProjectile(null,projectile.Center.X, projectile.Center.Y, (int)num8, (int)num9, ModContent.ProjectileType<GodSlayerOrb>(),
+                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, (int)num8, (int)num9, ModContent.ProjectileType<GodSlayerOrb>(),
                     (int)((double)finalDamage * (Main.player[projectile.owner].Calamity().auricSet ? 2.0 : 1.5)), 0, projectile.owner, (float)num6, 0f);
                 if (target.canGhostHeal)
                 {
@@ -132,7 +140,7 @@ namespace CalamityInheritance.CIPlayer
                             }
                         }
                     }
-                    Projectile.NewProjectile(null,projectile.Center.X, projectile.Center.Y, 0, 0, ModContent.ProjectileType<GodSlayerHealOrb>(), 0, 0, projectile.owner, (float)num14, num12);
+                    Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, 0, 0, ModContent.ProjectileType<GodSlayerHealOrb>(), 0, 0, projectile.owner, (float)num14, num12);
                 }
             }
 
@@ -190,7 +198,16 @@ namespace CalamityInheritance.CIPlayer
                 num10 = num7 / num10;
                 num8 *= num10;
                 num9 *= num10;
-                Projectile.NewProjectile(null,projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)((double)finalDamage * 2.0), 0, projectile.owner, (float)num6, 0f);
+                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)((double)finalDamage * 2.0), 0, projectile.owner, (float)num6, 0f);
+            }
+            #endregion
+            var source = projectile.GetSource_FromThis();
+            if (silvaMageold && silvaMageCooldownold <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5))
+            {
+                silvaMageCooldownold = 300;
+                SoundEngine.PlaySound(SoundID.Zombie103, projectile.Center); //So scuffed, just because zombie sounds werent ported normally
+                int silvaBurstDamage = Player.ApplyArmorAccDamageBonusesTo((float)(800.0 + 0.6 * projectile.damage));
+                Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
             }
         }
         #endregion
@@ -205,6 +222,7 @@ namespace CalamityInheritance.CIPlayer
                     CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
                 }
             }
+
         }
         #endregion
 
@@ -249,6 +267,5 @@ namespace CalamityInheritance.CIPlayer
             if (yPower)
                 knockback += item.knockBack * 0.25f;
         }
-
     }
 }

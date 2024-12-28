@@ -13,23 +13,26 @@ using Terraria.GameInput;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Armor.Vanity;
 
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-
-        public bool ElementalQuiver;
-        public bool CoreOfTheBloodGod;
-        public bool fleshTotemold;
+        #region Accessories
+        public bool ElementalQuiver = false;
+        public bool CoreOfTheBloodGod = false;
+        public bool fleshTotemold = false;
         public double contactDamageReduction = 0D;
         public bool FungalCarapace = false;
-        public bool ODsulphurskin = false;
+        public bool PsychoticAmulet = false;
+        #endregion
         public int ProjectilHitCounter;
         #region dash
         public int dashTimeMod;
         public bool HasReducedDashFirstFrame = false;
         public bool HasIncreasedDashFirstFrame = false;
+        //这是一个会自动归零的数值，速度为1帧1点，也许可以用于除冲刺外的计时
         public int CIDashDelay;
         #endregion
         #region Lore
@@ -102,6 +105,7 @@ namespace CalamityInheritance.CIPlayer
 
         #endregion
         #region Set Bonuses
+        #region GodSlayer
         public bool GodSlayerReborn = false;
         public bool GodSlayerDMGprotect = false;
         public bool godSlayerReflect = false;
@@ -110,9 +114,19 @@ namespace CalamityInheritance.CIPlayer
         public bool godSlayerRangedold = false;
         public bool godSlayerSummonold = false;
         #endregion
+        #region Silva
+        public bool silvaMageold = false;
+        public int silvaMageCooldownold = 0;
+        public bool silvaMelee = false;
+        public bool silvaStun = false;
+        public int silvaStunCooldownold = 0;
+        public bool silvaRanged = false;
+        #endregion
+        #endregion
         #region ResetEffects
         public override void ResetEffects()
         {
+            #region Accessories
             int percentMaxLifeIncrease = 0;
 
             ElementalQuiver = false;
@@ -130,7 +144,8 @@ namespace CalamityInheritance.CIPlayer
             CIsponge = false;
             CIspongeShieldVisible = false;
             FungalCarapace = false;
-            ODsulphurskin = false;
+            PsychoticAmulet = false;
+            #endregion
             #region Lore
             kingSlimeLore = false;
             desertScourgeLore = false;
@@ -183,6 +198,7 @@ namespace CalamityInheritance.CIPlayer
             invincible = false;
             #endregion
             #region Set Bonuses
+            #region GodSlayer
             GodSlayerReborn = false;
             GodSlayerDMGprotect = false;
             godSlayerReflect = false;
@@ -191,10 +207,15 @@ namespace CalamityInheritance.CIPlayer
             godSlayerRangedold = false;
             godSlayerSummonold = false;
             #endregion
+            #region Sliva
+            silvaMageold = false;
+            silvaMelee = false;
+            silvaRanged = false;
+            #endregion
+            #endregion
             CIDashID = string.Empty;
         }
         #endregion
-
         #region UpdateDead
         public override void UpdateDead()
         {
@@ -238,7 +259,6 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-
         #region Post Hurt
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {

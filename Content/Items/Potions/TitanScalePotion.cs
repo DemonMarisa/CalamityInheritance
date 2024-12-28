@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Fishing.SunkenSeaCatches;
-using CalamityInheritance.Buffs;
+using CalamityInheritance.Buffs.Potions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {

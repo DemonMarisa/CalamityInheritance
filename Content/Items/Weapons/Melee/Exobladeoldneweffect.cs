@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;
             Item.useTurn = true;
-            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -42,13 +42,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ModContent.RarityType<Violet>();
             Item.shoot = ModContent.ProjectileType<Exobeam>();
             Item.shootSpeed = 19f;
-            Item.rare = ModContent.RarityType<Violet>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(4))
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 107, 0f, 0f, 100, new Color(0, 255, 255));
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, new Color(0, 255, 255));
         }
 
         private int hitCount = 0;

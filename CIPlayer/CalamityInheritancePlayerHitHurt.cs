@@ -1,5 +1,6 @@
 ﻿using System;
-using CalamityInheritance.Buffs;
+using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Potions;
@@ -29,6 +30,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using static CalamityMod.World.CustomConditions;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -292,7 +294,35 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                 }
+
             };
+            if (silvaMelee)
+            {
+                Main.NewText($"触发判定", 255, 255, 255);
+                if (Main.rand.NextBool(4) && proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+                {
+                    Main.NewText($"造成伤害", 255, 255, 255);
+                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+                    {
+                        hitInfo.Damage *= 4;
+                    };
+                }
+            }
+        }
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (silvaMelee)
+            {
+                Main.NewText($"触发判定", 255, 255, 255);
+                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+                {
+                    Main.NewText($"造成伤害", 255, 255, 255);
+                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+                    {
+                        hitInfo.Damage *= 4;
+                    };
+                }
+            }
         }
         public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
         {
@@ -304,6 +334,16 @@ namespace CalamityInheritance.CIPlayer
                     modifiers.SetInstantKill();
                 }
             }
+            #region Silva
+            if (CalamityInheritanceConfig.Instance.silvastun == true)
+            {
+                if (proj.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
+                {
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    silvaStunCooldownold = 1200;
+                }
+            }
+            #endregion
         }
         #region Pre Kill
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -342,6 +382,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
                 return false;
             }
+
             if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
             {
 
@@ -396,8 +437,9 @@ namespace CalamityInheritance.CIPlayer
         #region Modify Hit By NPC
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
+            CalamityPlayer modPlayer = Player.Calamity();
             if (triumph)
-                contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+                modPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
         }
         #endregion
         #region Free and Consumable Dodge Hooks

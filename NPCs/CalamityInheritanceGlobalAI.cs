@@ -15,6 +15,9 @@ using Terraria.GameContent.Events;
 using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
 
 namespace CalamityInheritance.NPCs
 {

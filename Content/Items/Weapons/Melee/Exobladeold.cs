@@ -15,16 +15,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Exobladeold : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Exoblade");
-            /* Tooltip.SetDefault("Ancient blade of Yharim's weapons and armors expert, Draedon\n" +
-                               "Fires an exo beam that homes in on the player and explodes\n" +
-                               "Striking an enemy with the blade causes several comets to fire\n" +
-                               "All attacks briefly freeze enemies hit\n" +
-                               "Enemies hit at very low HP explode into frost energy and freeze nearby enemies"); */
-        }
-
         public override void SetDefaults()
         {
             Item.width = 80;
@@ -48,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(4))
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 107, 0f, 0f, 100, new Color(0, 255, 255));
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, new Color(0, 255, 255));
         }
 
         private int hitCount = 0;

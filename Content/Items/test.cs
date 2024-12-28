@@ -19,6 +19,7 @@ using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -50,6 +51,13 @@ namespace CalamityInheritance.Content.Items
             //player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(30));
 
             return false;
+        }
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.NextBool(5))
+            {
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade);
+            }
         }
     }
 }

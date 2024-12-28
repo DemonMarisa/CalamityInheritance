@@ -40,6 +40,8 @@ namespace CalamityInheritance.CIPlayer
 
             OtherBuffEffects();
 
+            // Standing still effects
+            StandingStillEffects();
         }
         public void OtherBuffEffects()
         {
@@ -195,7 +197,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
 
         #region Misc Effects
-        private void MiscEffects()
+        public void MiscEffects()
         {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
             CalamityPlayer modPlayer1 = Player.Calamity();
@@ -391,7 +393,7 @@ namespace CalamityInheritance.CIPlayer
 
                                         if (flag7 || Main.tileSpelunker[(int)Main.tile[num68, num69].TileType] || (Main.tileAlch[(int)Main.tile[num68, num69].TileType] && Main.tile[num68, num69].TileType != 82))
                                         {
-                                            int num70 = Dust.NewDust(new Vector2((float)(num68 * 16), (float)(num69 * 16)), 16, 16, 204, 0f, 0f, 150, default, 0.3f);
+                                            int num70 = Dust.NewDust(new Vector2((float)(num68 * 16), (float)(num69 * 16)), 16, 16, DustID.TreasureSparkle, 0f, 0f, 150, default, 0.3f);
                                             Main.dust[num70].fadeIn = 0.75f;
                                             Main.dust[num70].velocity *= 0.1f;
                                             Main.dust[num70].noLight = true;
@@ -590,11 +592,82 @@ namespace CalamityInheritance.CIPlayer
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
             }
-            #endregion
-            #region Set Bonuses
 
-            #endregion
+            if (silvaMageCooldownold > 0)
+                silvaMageCooldownold--;
 
+            if (silvaStunCooldownold > 0)
+                silvaStunCooldownold--;
+            if (modPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<MagicDamageClass>() += 0.60f;
+            }
+            if (modPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
+            {
+                modPlayer1.contactDamageReduction += 0.2f;
+            }
+            if (modPlayer.silvaRanged)
+            {
+                if(Player.HasCooldown(SilvaRevive.ID))
+                {
+                    Player.GetDamage<RangedDamageClass>() += 0.40f;
+                }
+            }
         }
+        #endregion
+
+        #region Use Time Mult
+        public override float UseTimeMultiplier(Item item)
+        {
+            if (silvaRanged)
+            {
+                if (item.DamageType == DamageClass.Ranged && item.useTime > 3)
+                    return /*auricSet ? 1.2f :*/ 1.1f;
+            }
+            return 1f;
+        }
+        #endregion
+
+        #region Standing Still Effects
+        private void StandingStillEffects()
+        {
+            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
+            CalamityPlayer modPlayer1 = Player.Calamity();
+            if (modPlayer.PsychoticAmulet)
+            {
+                if (Player.itemAnimation > 0)
+                    modPlayer1.modStealthTimer = 5;
+
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (modPlayer1.modStealthTimer == 0 && modPlayer1.modStealth > 0f)
+                    {
+                        modPlayer1.modStealth -= 0.015f;
+                        if (modPlayer1.modStealth <= 0f)
+                        {
+                            modPlayer1.modStealth = 0f;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
+                    modPlayer1.modStealth += playerVel * 0.0075f;
+                    if (modPlayer1.modStealth > 1f)
+                        modPlayer1.modStealth = 1f;
+                    if (Player.mount.Active)
+                        modPlayer1.modStealth = 1f;
+                }
+
+                Player.GetDamage<ThrowingDamageClass>() += (1f - modPlayer1.modStealth) * 0.2f;
+                Player.GetCritChance<ThrowingDamageClass>() += (int)((1f - modPlayer1.modStealth) * 10f);
+                Player.aggro -= (int)((1f - modPlayer1.modStealth) * 750f);
+                if (modPlayer1.modStealthTimer > 0)
+                    modPlayer1.modStealthTimer--;
+            }
+        }
+        #endregion
     }
 }

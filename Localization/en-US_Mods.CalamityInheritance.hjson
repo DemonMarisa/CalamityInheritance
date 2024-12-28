@@ -55,6 +55,11 @@ Buffs: {
 		DisplayName: Yharim Power
 		Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
 	}
+
+	SilvaStun: {
+		DisplayName: Silva Stun
+		Description: Mods.CalamityInheritance.Buffs.SilvaStun.Description
+	}
 }
 
 Items: {
@@ -472,6 +477,38 @@ Items: {
 				DisplayName: God Slayer Head Summonold
 				Tooltip: ""
 			}
+
+			SilvaArmorold: {
+				DisplayName: Silva Armorold
+				Tooltip: ""
+			}
+
+			SilvaHeadMagicold: {
+				DisplayName: Silva Head Magicold
+				Tooltip: ""
+			}
+
+			SilvaLeggingsold: {
+				DisplayName: Silva Leggingsold
+				Tooltip: ""
+			}
+
+			SilvaHeadSummonold: {
+				DisplayName: Silva Head Summonold
+				Tooltip: ""
+			}
+		}
+
+		Vanity: {
+			SilvaHeadMelee: {
+				DisplayName: Silva Head Melee
+				Tooltip: ""
+			}
+
+			SilvaHeadRanged: {
+				DisplayName: Silva Head Ranged
+				Tooltip: ""
+			}
 		}
 	}
 
@@ -482,6 +519,21 @@ Items: {
 
 	CelestialObliterator: {
 		DisplayName: Celestial Obliterator
+		Tooltip: ""
+	}
+
+	ExoFlail: {
+		DisplayName: Exo Flail
+		Tooltip: ""
+	}
+
+	PsychoticAmulet: {
+		DisplayName: Psychotic Amulet
+		Tooltip: ""
+	}
+
+	LeadCore: {
+		DisplayName: Lead Core
 		Tooltip: ""
 	}
 }
@@ -523,6 +575,7 @@ Projectiles: {
 		TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
 		TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
 		ExoJet.DisplayName: Exo Jet
+		ExoFlailProj.DisplayName: Exo Flail Proj
 	}
 
 	ElementBall.DisplayName: Element Ball
@@ -604,6 +657,9 @@ Projectiles: {
 	ExoSpearTrail.DisplayName: Exo Spear Trail
 	ExoSpearextraProj.DisplayName: Exo Spearextra Proj
 	ExoSpearStealthProj.DisplayName: Exo Spear Stealth Proj
+	ExoFlailEnergy.DisplayName: Exo Flail Energy
+	ExoFlailProj.DisplayName: Exo Flail Proj
+	ExoFlailProj2.DisplayName: Exo Flail Proj2
 }
 
 Configs: {
@@ -643,6 +699,11 @@ Configs: {
 
 		GodSlayerSetBonusesChange: {
 			Label: God Slayer Set Bonuses Change
+			Tooltip: ""
+		}
+
+		silvastun: {
+			Label: silvastun
 			Tooltip: ""
 		}
 	}

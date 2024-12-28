@@ -62,5 +62,4 @@ namespace CalamityInheritance.Utilities
             return proj.GetGlobalProjectile<CalamityInheritanceGlobalProjectile>();
         }
     }
-
 }

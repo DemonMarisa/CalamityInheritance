@@ -57,6 +57,10 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(0)]
         public int GodSlayerSetBonusesChange { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool silvastun { get; set; }
         #endregion
     }
 }

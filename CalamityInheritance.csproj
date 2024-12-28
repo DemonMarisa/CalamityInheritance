@@ -38,8 +38,6 @@
 	  <None Remove="Content\Items\Accessories\Melee\ElementalGauntletold_HandsOn.png" />
 	  <None Remove="Content\Items\Accessories\Ranged\&#xD;&#xA;			.png" />
 	  <None Remove="Content\Items\Accessories\TheSpongeold.png" />
-	  <None Remove="Content\Items\Accessories\TheSpongeReal.png" />
-	  <None Remove="Content\Items\Accessories\TheSpongeShield.png" />
 	  <None Remove="Content\Items\Accessories\TheSpongetest.png" />
 	  <None Remove="Content\Items\Ammo\VanquisherArrowold.png" />
 	  <None Remove="Content\Items\Ammo\VanquisherArrowoldGlow.png" />
@@ -128,7 +126,6 @@
 	  <None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
 	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
-	  <None Remove="Content\Items\Weapons\Melee\ExampleSwingingEnergySword.png" />
 	  <None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
 	  <None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
@@ -172,7 +169,6 @@
 	  <None Remove="Content\Projectiles\Melee\BloodyEdgeEnergySword.png" />
 	  <None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
 	  <None Remove="Content\Projectiles\Melee\ElementBall.png" />
-	  <None Remove="Content\Projectiles\Melee\ExampleSwingingEnergySwordProjectile.png" />
 	  <None Remove="Content\Projectiles\Melee\Exobeamold.png" />
 	  <None Remove="Content\Projectiles\Melee\Exoboomold.png" />
 	  <None Remove="Content\Projectiles\Melee\ExoGladComet.png" />

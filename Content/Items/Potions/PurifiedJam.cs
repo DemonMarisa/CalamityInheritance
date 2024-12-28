@@ -10,7 +10,7 @@ using Terraria;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs;
+using CalamityInheritance.Buffs.Potions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {

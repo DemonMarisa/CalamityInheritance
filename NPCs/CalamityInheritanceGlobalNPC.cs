@@ -9,11 +9,50 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
+using CalamityMod.World;
+using CalamityMod.Events;
+using Microsoft.Xna.Framework;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Potions;
+using CalamityMod.NPCs.BrimstoneElemental;
+using CalamityMod.NPCs.CalClone;
+using CalamityMod.NPCs.HiveMind;
+using CalamityMod.NPCs.Leviathan;
+using CalamityMod.Projectiles.Boss;
+using CalamityMod.Tiles.Furniture;
+using static CalamityMod.NPCs.ExoMechs.Ares.AresBody;
 
 namespace CalamityInheritance.NPCs
 {
     public partial class CalamityInheritanceGlobalNPC : GlobalNPC
     {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public bool silvaStun = false;
+        public override void UpdateLifeRegen(NPC npc, ref int damage)
+        {
+            if (silvaStun)
+            {
+                npc.velocity.Y = 0f;
+                npc.velocity.X = 0f;
+            }
+        }
+        #region Reset Effects
+        public override void ResetEffects(NPC npc)
+        {
+            silvaStun = false;
+        }
+        #endregion
+
         #region Pre AI
         public override bool PreAI(NPC npc)
         {

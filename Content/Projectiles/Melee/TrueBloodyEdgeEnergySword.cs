@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Projectile.penetrate = 3; // 投射物可以穿透并击中3个敌人
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
