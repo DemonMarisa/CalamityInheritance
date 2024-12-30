@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
             if (Projectile.timeLeft % 18 == 0)
             {
-                if (Projectile.owner == Main.myPlayer && Main.player[Projectile.owner].ownedProjectileCounts[ModContent.ProjectileType<VanquisherArrowSplit>()] < 6)
+                if (Projectile.owner == Main.myPlayer)
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.25f, ModContent.ProjectileType<VanquisherArrowSplit>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
         }

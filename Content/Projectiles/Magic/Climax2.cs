@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             // DisplayName.SetDefault("Climax");
             Main.projFrames[Projectile.type] = 5;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if (Projectile.timeLeft < 30)
             {
                 float num7 = (float)Projectile.timeLeft / 30f;
-                Projectile.alpha = (int)(255f - 255f * num7);
+                Projectile.alpha = (int)((255f - 255f * num7) *0.5f);
             }
             return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
         }
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 5);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor * 0.5f, 1);
             return false;
         }
     }

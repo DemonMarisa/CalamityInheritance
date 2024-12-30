@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 600;
+            Projectile.extraUpdates = 1;
             AIType = 132;
         }
 

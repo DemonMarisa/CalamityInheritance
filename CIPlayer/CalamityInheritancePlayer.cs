@@ -14,6 +14,11 @@ using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Armor.Vanity;
+using CalamityMod.Cooldowns;
+using CalamityMod.Dusts;
+using CalamityMod.Items.Armor.Bloodflare;
+using CalamityMod.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -26,6 +31,7 @@ namespace CalamityInheritance.CIPlayer
         public double contactDamageReduction = 0D;
         public bool FungalCarapace = false;
         public bool PsychoticAmulet = false;
+        public bool YharimsInsignia = false;
         #endregion
         public int ProjectilHitCounter;
         #region dash
@@ -34,6 +40,9 @@ namespace CalamityInheritance.CIPlayer
         public bool HasIncreasedDashFirstFrame = false;
         //这是一个会自动归零的数值，速度为1帧1点，也许可以用于除冲刺外的计时
         public int CIDashDelay;
+        public bool elysianAegis = false;
+        public bool elysianGuard = false;
+        public float shieldInvinc = 5f;
         #endregion
         #region Lore
         public bool kingSlimeLore = false;//
@@ -121,6 +130,12 @@ namespace CalamityInheritance.CIPlayer
         public bool silvaStun = false;
         public int silvaStunCooldownold = 0;
         public bool silvaRanged = false;
+        public bool silvaSummonEx = false;
+        public bool silvaRogue = false;
+        #endregion
+        #region Auric
+        public bool AuricDebuffImmune = false;
+        public bool AuricbloodflareRangedSoul = false;
         #endregion
         #endregion
         #region ResetEffects
@@ -145,6 +160,7 @@ namespace CalamityInheritance.CIPlayer
             CIspongeShieldVisible = false;
             FungalCarapace = false;
             PsychoticAmulet = false;
+            YharimsInsignia = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -211,9 +227,17 @@ namespace CalamityInheritance.CIPlayer
             silvaMageold = false;
             silvaMelee = false;
             silvaRanged = false;
+            silvaSummonEx = false;
+            silvaRogue = false;
+            #endregion
+            #region Auric
+            AuricDebuffImmune = false;
+            AuricbloodflareRangedSoul = false;
             #endregion
             #endregion
             CIDashID = string.Empty;
+            elysianAegis = false;
+
         }
         #endregion
         #region UpdateDead
@@ -232,13 +256,29 @@ namespace CalamityInheritance.CIPlayer
             yPower = false;
             invincible = false;
 
+            elysianAegis = false;
+            elysianGuard = false;
+
             #region Set Bonuses
+            #region GodSlayer
             GodSlayerDMGprotect = false;
             godSlayerReflect = false;
             godSlayerMagic = false;
             hasFiredThisFrame = false;
             godSlayerRangedold = false;
             godSlayerSummonold = false;
+            #endregion
+            #region Sliva
+            silvaMageold = false;
+            silvaMelee = false;
+            silvaRanged = false;
+            silvaSummonEx = false;
+            silvaRogue = false;
+            #endregion
+            #region Auric
+            AuricDebuffImmune = false;
+            AuricbloodflareRangedSoul = false;
+            #endregion
             #endregion
         }
         public override void PreUpdate()
@@ -420,10 +460,71 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            if (CalamityKeybinds.ArmorSetBonusHotKey.JustPressed)
+            {
+                if (AuricbloodflareRangedSoul && !Player.HasCooldown(BloodflareRangedSet.ID))
+                {
+                    if (Player.whoAmI == Main.myPlayer)
+                        Player.AddCooldown(BloodflareRangedSet.ID, 1800);
+
+                    SoundEngine.PlaySound(BloodflareHeadRanged.ActivationSound, Player.Center);
+                    for (int d = 0; d < 64; d++)
+                    {
+                        int dust = Dust.NewDust(new Vector2(Player.position.X, Player.position.Y + 16f), Player.width, Player.height - 16, (int)CalamityDusts.Necroplasm, 0f, 0f, 0, default, 1f);
+                        Main.dust[dust].velocity *= 3f;
+                        Main.dust[dust].scale *= 1.15f;
+                    }
+                    int dustAmt = 36;
+                    for (int d = 0; d < dustAmt; d++)
+                    {
+                        Vector2 source = Vector2.Normalize(Player.velocity) * new Vector2((float)Player.width / 2f, (float)Player.height) * 0.75f;
+                        source = source.RotatedBy((double)((float)(d - (dustAmt / 2 - 1)) * MathHelper.TwoPi / (float)dustAmt), default) + Player.Center;
+                        Vector2 dustVel = source - Player.Center;
+                        int phanto = Dust.NewDust(source + dustVel, 0, 0, (int)CalamityDusts.Necroplasm, dustVel.X * 1.5f, dustVel.Y * 1.5f, 100, default, 1.4f);
+                        Main.dust[phanto].noGravity = true;
+                        Main.dust[phanto].noLight = true;
+                        Main.dust[phanto].velocity = dustVel;
+                    }
+                    float spread = 45f * 0.0174f;
+                    double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
+                    double deltaAngle = spread / 8f;
+                    double offsetAngle;
+
+                    int damage = (int)(Player.GetTotalDamage<RangedDamageClass>().ApplyTo(300f));
+                    damage = Player.ApplyArmorAccDamageBonusesTo(damage);
+
+                    if (Player.whoAmI == Main.myPlayer)
+                    {
+                        var source = Player.GetSource_Misc("1");
+                        for (int i = 0; i < 8; i++)
+                        {
+                            float ai1 = Main.rand.NextFloat() + 0.5f;
+                            float randomSpeed = (float)Main.rand.Next(1, 7);
+                            float randomSpeed2 = (float)Main.rand.Next(1, 7);
+                            offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                            int soul = Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f) + randomSpeed, ModContent.ProjectileType<BloodflareSoulold>(), damage, 0f, Player.whoAmI, 0f, ai1);
+                            if (soul.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[soul].DamageType = DamageClass.Generic;
+                            int soul2 = Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f) + randomSpeed2, ModContent.ProjectileType<BloodflareSoulold>(), damage, 0f, Player.whoAmI, 0f, ai1);
+                            if (soul2.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[soul2].DamageType = DamageClass.Generic;
+                        }
+                    }
+                }
+            }
+            if (CalamityInheritanceKeybinds.AegisHotKey.JustPressed)
+            {
+                if (elysianAegis && !Player.mount.Active)
+                {
+                    elysianGuard = !elysianGuard;
+                }
+            }
+
         }
         public override void Initialize()
         {
             ProjectilHitCounter = 0;
         }
+
     }
 }

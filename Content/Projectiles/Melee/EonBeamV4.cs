@@ -24,10 +24,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.tileCollide = false;
             Projectile.penetrate = 3;
-            Projectile.timeLeft = 200;
+            Projectile.timeLeft = 400;
             AIType = ProjectileID.EnchantedBeam;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
+            Projectile.extraUpdates = 1;
         }
 
         public override void AI()

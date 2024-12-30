@@ -170,7 +170,7 @@ namespace CalamityInheritance.CIPlayer
                     //2024.12.26.1.46飞行期间可以正常添加
                     if (CIDashDelay > -2)
                     {
-                        CIDashDelay = 30;//CD帧
+                        CIDashDelay = 20;//CD帧
                     }
 
                     // Decide the player's facing direction.

@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ItemRarityID.Purple;
             Item.shoot = ModContent.ProjectileType<EonBeam>();
-            Item.shootSpeed = 28f;
+            Item.shootSpeed = 14f;
             Item.rare = ModContent.RarityType<Violet>();
         }
 

@@ -61,6 +61,23 @@ namespace CalamityInheritance.Content.Items
                     }
                 }
             }
+
+            if (modPlayer.AuricbloodflareRangedSoul && modPlayer1.canFireBloodflareRangedProjectile)
+            {
+                if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
+                {
+                    modPlayer1.canFireBloodflareRangedProjectile = false;
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        // Bloodflare Ranged Bloodsplosion: 80%, soft cap starts at 150 base damage
+                        // This is intentionally extremely low because this effect can be grossly overpowered with sniper rifles and the like.
+                        int bloodsplosionDamage = (int)(damage * 1.6f);
+                        bloodsplosionDamage = player.ApplyArmorAccDamageBonusesTo(bloodsplosionDamage);
+
+                        Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);
+                    }
+                }
+            }
             return true;
         }
     }

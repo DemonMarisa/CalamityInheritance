@@ -1,4 +1,7 @@
-Keybinds.BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+Keybinds: {
+	BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+	AegisHotKey.DisplayName: Aegis Hot Key
+}
 
 Buffs: {
 	ArmorShattering: {
@@ -60,6 +63,11 @@ Buffs: {
 		DisplayName: Silva Stun
 		Description: Mods.CalamityInheritance.Buffs.SilvaStun.Description
 	}
+
+	ElysianGuard: {
+		DisplayName: Elysian Guard
+		Description: Mods.CalamityInheritance.Buffs.ElysianGuard.Description
+	}
 }
 
 Items: {
@@ -86,6 +94,26 @@ Items: {
 
 		TheSpongetest: {
 			DisplayName: The Spongetest
+			Tooltip: ""
+		}
+
+		ElysianAegisold: {
+			DisplayName: Elysian Aegisold
+			Tooltip: ""
+		}
+
+		AsgardianAegisold: {
+			DisplayName: Asgardian Aegisold
+			Tooltip: ""
+		}
+
+		YharimsInsignia: {
+			DisplayName: Yharims Insignia
+			Tooltip: ""
+		}
+
+		ReaperToothNecklaceold: {
+			DisplayName: Reaper Tooth Necklaceold
 			Tooltip: ""
 		}
 	}
@@ -269,6 +297,11 @@ Items: {
 
 			Photovisceratorold: {
 				DisplayName: Photovisceratorold
+				Tooltip: ""
+			}
+
+			DragonsBreatholdtest: {
+				DisplayName: Dragons Breatholdtest
 				Tooltip: ""
 			}
 		}
@@ -497,6 +530,41 @@ Items: {
 				DisplayName: Silva Head Summonold
 				Tooltip: ""
 			}
+
+			AuricTeslaBodyArmorold: {
+				DisplayName: Auric Tesla Body Armorold
+				Tooltip: ""
+			}
+
+			AuricTeslaCuissesold: {
+				DisplayName: Auric Tesla Cuissesold
+				Tooltip: ""
+			}
+
+			AuricTeslaHeadMelee: {
+				DisplayName: Auric Tesla Head Melee
+				Tooltip: ""
+			}
+
+			AuricTeslaHeadRanged: {
+				DisplayName: Auric Tesla Head Ranged
+				Tooltip: ""
+			}
+
+			AuricTeslaHeadMagic: {
+				DisplayName: Auric Tesla Head Magic
+				Tooltip: ""
+			}
+
+			AuricTeslaHeadRogue: {
+				DisplayName: Auric Tesla Head Rogue
+				Tooltip: ""
+			}
+
+			AuricTeslaHeadSummon: {
+				DisplayName: Auric Tesla Head Summon
+				Tooltip: ""
+			}
 		}
 
 		Vanity: {
@@ -507,6 +575,11 @@ Items: {
 
 			SilvaHeadRanged: {
 				DisplayName: Silva Head Ranged
+				Tooltip: ""
+			}
+
+			SilvaHeadRogue: {
+				DisplayName: Silva Head Rogue
 				Tooltip: ""
 			}
 		}
@@ -534,6 +607,11 @@ Items: {
 
 	LeadCore: {
 		DisplayName: Lead Core
+		Tooltip: ""
+	}
+
+	StarCannonEX: {
+		DisplayName: Star Cannon E X
 		Tooltip: ""
 	}
 }
@@ -660,6 +738,9 @@ Projectiles: {
 	ExoFlailEnergy.DisplayName: Exo Flail Energy
 	ExoFlailProj.DisplayName: Exo Flail Proj
 	ExoFlailProj2.DisplayName: Exo Flail Proj2
+	BloodflareSoulold.DisplayName: Bloodflare Soulold
+	FallenStarProj.DisplayName: Fallen Star Proj
+	DragonsBreathHeld.DisplayName: Dragons Breath Held
 }
 
 Configs: {
@@ -704,6 +785,11 @@ Configs: {
 
 		silvastun: {
 			Label: silvastun
+			Tooltip: ""
+		}
+
+		ExoSperaHitEffect: {
+			Label: Exo Spera Hit Effect
 			Tooltip: ""
 		}
 	}

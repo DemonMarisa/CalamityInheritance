@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Projectile.ai[0] = 0f;
             }
-            int num822 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 173, 0f, 0f, 0, default, 1f);
+            int num822 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
             Dust dust = Main.dust[num822];
             dust.velocity *= 0.1f;
             Main.dust[num822].scale = 1.3f;

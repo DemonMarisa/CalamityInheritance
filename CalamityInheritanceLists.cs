@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Buffs.Cooldowns;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Buffs;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
@@ -13,6 +17,7 @@ namespace CalamityInheritance
     public class CalamityInheritanceLists
     {
         public static List<int> rangedProjectileExceptionList;
+        public static List<int> AuricdebuffList;
         public static void LoadLists()
         {
             rangedProjectileExceptionList = new List<int>
@@ -60,12 +65,73 @@ namespace CalamityInheritance
                     ProjectileType<ExoLightold>(),
                     ProjectileType<ExoSpearBack>(),
             };
+
+            AuricdebuffList = new List<int>()
+            {
+                BuffID.Poisoned,
+                BuffID.Darkness,
+                BuffID.Cursed,
+                BuffID.OnFire,
+                BuffID.Bleeding,
+                BuffID.Confused,
+                BuffID.Slow,
+                BuffID.Weak,
+                BuffID.Silenced,
+                BuffID.BrokenArmor,
+                BuffID.CursedInferno,
+                BuffID.Frostburn,
+                BuffID.Chilled,
+                BuffID.Frozen,
+                BuffID.Burning,
+                BuffID.Suffocation,
+                BuffID.Ichor,
+                BuffID.Venom,
+                BuffID.Blackout,
+                BuffID.Electrified,
+                BuffID.Rabies,
+                BuffID.Webbed,
+                BuffID.Stoned,
+                BuffID.Dazed,
+                BuffID.VortexDebuff,
+                BuffID.WitheredArmor,
+                BuffID.WitheredWeapon,
+                BuffID.OgreSpit,
+                BuffID.BetsysCurse,
+                BuffType<SulphuricPoisoning>(),
+                BuffType<Shadowflame>(),
+                BuffType<BurningBlood>(),
+                BuffType<BrainRot>(),
+                BuffType<ElementalMix>(),
+                BuffType<GlacialState>(),
+                BuffType<GodSlayerInferno>(),
+                BuffType<AstralInfectionDebuff>(),
+                BuffType<HolyFlames>(),
+                BuffType<Irradiated>(),
+                BuffType<Plague>(),
+                BuffType<CrushDepth>(),
+                BuffType<RiptideDebuff>(),
+                BuffType<MarkedforDeath>(),
+                BuffType<AbsorberAffliction>(),
+                BuffType<ArmorCrunch>(),
+                BuffType<Crumbling>(),
+                BuffType<Vaporfied>(),
+                BuffType<Eutrophication>(),
+                BuffType<Dragonfire>(),
+                BuffType<Nightwither>(),
+                BuffType<VulnerabilityHex>(),
+                BuffType<FrozenLungs>(),
+                BuffType<FishAlert>(),
+                BuffType<PopoNoselessBuff>(),
+                BuffType<SearingLava>(),
+                BuffType<Withered>()
+            };
+
         }
 
-        // 卸载列表
         public static void UnloadLists()
         {
             rangedProjectileExceptionList = null;
+            AuricdebuffList = null;
         }
     }
 }

@@ -41,6 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             modPlayer1.CIDashID = AsgardsValorDashold.ID;
+
             player.dashType = 0;
             player.noKnockback = true;
             player.fireWalk = true;

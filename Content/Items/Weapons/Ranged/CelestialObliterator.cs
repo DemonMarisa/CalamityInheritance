@@ -23,13 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         private int shot;
 
         private int burst;
-        /*
-        public override void SetStaticDefaults()
-        {
-            ((ModItem)this).DisplayName.SetDefault("Celestial Obliterator");
-            ((ModItem)this).Tooltip.SetDefault("'Annihilate your foe with a hurricane of lead'\nFires a burst of bullets and a shotgun blast\nOccasionally fires homing exo beams that explode");
-        }
-        */
+
         public override void SetDefaults()
         {
             Item.damage = 620;
@@ -80,8 +74,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 burst = 0;
                 SoundEngine.PlaySound(SoundID.Item38);
-                Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 45.0, default) * 9f;
-                Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -45.0, default) * 9f;
+                Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 60, default) * 9f;
+                Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -60, default) * 9f;
                 Projectile.NewProjectile(source, position.X, position.Y, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
                 Projectile.NewProjectile(source, position.X, position.Y, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
             }

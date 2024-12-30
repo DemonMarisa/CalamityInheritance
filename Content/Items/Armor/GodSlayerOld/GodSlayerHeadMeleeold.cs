@@ -47,7 +47,6 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             CalamityInheritancePlayer modPlayer2 = player.CalamityInheritance();
             var modPlayer = player.Calamity();
-            player.GetAttackSpeed<MeleeDamageClass>() += 0.2f;
             modPlayer.godSlayer = true;
             modPlayer.godSlayerDamage = true;
             modPlayer2.GodSlayerReborn = true;
@@ -59,6 +58,8 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             player.GetDamage<MeleeDamageClass>() += 0.14f;
             player.GetCritChance<MeleeDamageClass>() += 14;
+            player.GetAttackSpeed<MeleeDamageClass>() += 0.20f;
+            player.aggro += 1000;
         }
 
         public override void AddRecipes()

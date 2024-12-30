@@ -38,8 +38,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    Vector2 cinderSpawnPosition = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(5f);
-                    Vector2 cinderVelocity = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(5f);
+                    Vector2 cinderSpawnPosition = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(0f);
+                    Vector2 cinderVelocity = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(0f);
                     Color cinderColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
                     SquishyLightParticle cinder = new(cinderSpawnPosition, cinderVelocity, 1.1f, cinderColor, 32, 1f, 4f);
                     GeneralParticleHandler.SpawnParticle(cinder);
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Color smokeColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
                 smokeColor = Color.Lerp(smokeColor, Color.Gray, 0.55f);
-                HeavySmokeParticle smoke = new(Projectile.Center, Main.rand.NextVector2Circular(2f, 5f), smokeColor, 40, 0.8f, 1f, 0.03f, true, 0.075f);
+                HeavySmokeParticle smoke = new(Projectile.Center, Main.rand.NextVector2Circular(0f, 0f), smokeColor, 40, 0.8f, 1f, 0.03f, true, 0.075f);
                 GeneralParticleHandler.SpawnParticle(smoke);
             }
         }

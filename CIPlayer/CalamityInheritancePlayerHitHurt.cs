@@ -17,7 +17,9 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.Abyss;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Healing;
+using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -154,12 +156,16 @@ namespace CalamityInheritance.CIPlayer
                         int numParticles = Main.rand.Next(2, 6) + (anyShieldBroke ? 6 : 0);
                         for (int i = 0; i < numParticles; i++)
                         {
+                            float maxVelocity = modPlayer.roverDrive ? 14f : 7f;
+                            Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(3f, maxVelocity);
+                            velocity.X += 5f * info.HitDirection;
 
                             float scale = Main.rand.NextFloat(2.5f, 3f);
                             Color particleColor = Main.rand.NextBool() ? new Color(99, 255, 229) : new Color(25, 132, 247);
                             int lifetime = 25;
 
-
+                            var shieldParticle = new TechyHoloysquareParticle(Player.Center, velocity, scale, particleColor, lifetime);
+                            GeneralParticleHandler.SpawnParticle(shieldParticle);
                         }
                     }
                     CalamityPlayer modPlayer1 = Player.Calamity();
@@ -281,6 +287,17 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
+            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+
+            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
+            {
+                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                {
+                    modifiers.SetInstantKill();
+                }
+            }
+
             modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {
                 if (godSlayerRangedold && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
@@ -298,30 +315,66 @@ namespace CalamityInheritance.CIPlayer
             };
             if (silvaMelee)
             {
-                Main.NewText($"触发判定", 255, 255, 255);
+                //Main.NewText($"触发判定", 255, 255, 255);
                 if (Main.rand.NextBool(4) && proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
                 {
-                    Main.NewText($"造成伤害", 255, 255, 255);
+                    //Main.NewText($"造成伤害", 255, 255, 255);
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
                     {
                         hitInfo.Damage *= 4;
                     };
                 }
             }
+
+            if (CalamityInheritanceConfig.Instance.silvastun == true)
+            {
+                if (proj.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
+                {
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    silvaStunCooldownold = 1200;
+                }
+            }
         }
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
         {
+            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+
+            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
+            {
+                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                {
+                    modifiers.SetInstantKill();
+                }
+            }
+
             if (silvaMelee)
             {
-                Main.NewText($"触发判定", 255, 255, 255);
+                //Main.NewText($"触发判定", 255, 255, 255);
                 if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
                 {
-                    Main.NewText($"造成伤害", 255, 255, 255);
+                    //Main.NewText($"造成伤害", 255, 255, 255);
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
                     {
                         hitInfo.Damage *= 4;
                     };
                 }
+            }
+
+            if (CalamityInheritanceConfig.Instance.silvastun == true)
+            {
+                if (item.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
+                {
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    silvaStunCooldownold = 1200;
+                }
+            }
+
+            var source = Player.GetSource_ItemUse(item);
+
+            if (item.DamageType == DamageClass.Melee)
+            {
+                titanBoost = 600;
             }
         }
         public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
@@ -334,21 +387,12 @@ namespace CalamityInheritance.CIPlayer
                     modifiers.SetInstantKill();
                 }
             }
-            #region Silva
-            if (CalamityInheritanceConfig.Instance.silvastun == true)
-            {
-                if (proj.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
-                {
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1200;
-                }
-            }
-            #endregion
         }
         #region Pre Kill
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             CalamityPlayer modPlayer = Player.Calamity();
+            
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
                 SoundEngine.PlaySound(SoundID.Item67, Player.Center);
@@ -382,10 +426,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
                 return false;
             }
-
+            
             if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
             {
-
                 SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
 
                 if (Player.HasCooldown(DraconicElixirCooldown.ID))
@@ -423,12 +466,6 @@ namespace CalamityInheritance.CIPlayer
                         Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
                     }
                 }
-
-                modPlayer.hasSilvaEffect = true;
-
-                if (Player.statLife < 1)
-                    Player.statLife = 1;
-
                 return false;
             }
             return true;

@@ -29,7 +29,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 3;
-            Projectile.timeLeft = 120;
+            Projectile.timeLeft = 240;
+            Projectile.extraUpdates = 1;
             AIType = ProjectileID.LightBeam;
         }
 

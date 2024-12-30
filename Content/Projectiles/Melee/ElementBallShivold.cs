@@ -28,8 +28,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 1;
             Projectile.tileCollide = false;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 180;
             Projectile.aiStyle = ProjAIStyleID.Beam;
+            Projectile.extraUpdates = 1;
         }
 
         public override void AI()
@@ -43,9 +44,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.timeLeft > 50)
-                return false;
-
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 0);
             return false;
         }

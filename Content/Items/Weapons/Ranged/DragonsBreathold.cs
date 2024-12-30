@@ -13,19 +13,22 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using System.Diagnostics.Metrics;
+using CalamityMod.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class DragonsBreathold : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Items.Weapons.Ranged";
-        public const int BetweenShotsPause = 15;
+        public const int BetweenShotsPause = 14;
         public const int PelletsPerShot = 6;
         public const float FullAutoFireRateMult = 0.8f;
         public const float FullAutoDamageMult = 0.8f;
         // note this is extremely low because it's per pellet
         public const float Spread = 0.018f;
 
+        public int Counter = 0;
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -55,11 +58,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ModContent.RarityType<Violet>();
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
         }
+
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > 0.66f;
 
         public override Vector2? HoldoutOffset() => new Vector2(-5, 5);
 
         public override bool AltFunctionUse(Player player) => true;
+
 
         public override bool CanUseItem(Player player)
         {

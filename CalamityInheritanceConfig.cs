@@ -29,6 +29,14 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool ElementalQuiversplit { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 4)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(0)]
+        public int ElementalQuiverSplitstyle { get; set; }
         /*
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
@@ -44,14 +52,6 @@ namespace CalamityInheritance
 
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
-        [Range(1, 4)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(0)]
-        public int ElementalQuiverSplitstyle { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
         [Range(1, 3)]
         [Increment(1)]
         [DrawTicks]
@@ -61,6 +61,10 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool silvastun { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool ExoSperaHitEffect { get; set; }
         #endregion
     }
 }

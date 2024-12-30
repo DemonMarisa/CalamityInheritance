@@ -23,6 +23,8 @@ using CalamityInheritance.Buffs;
 using Terraria.ID;
 using CalamityMod.Cooldowns;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Buffs.Statbuffs;
+using CalamityMod.Dusts;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -42,6 +44,8 @@ namespace CalamityInheritance.CIPlayer
 
             // Standing still effects
             StandingStillEffects();
+
+            ElysianAegisEffects();
         }
         public void OtherBuffEffects()
         {
@@ -98,7 +102,6 @@ namespace CalamityInheritance.CIPlayer
             if (holyWrath)
             {
                 Player.GetDamage<GenericDamageClass>() += 0.12f;
-                Player.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
             }
 
             if (tScale)
@@ -110,6 +113,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.statDefense += 20;
                     Player.endurance += 0.05f;
+                    titanBoost--;
                 }
             }
             else
@@ -126,6 +130,13 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetCritChance<GenericDamageClass>() += 2;
                 Player.GetKnockback<SummonDamageClass>() += 1f;
                 Player.moveSpeed += 0.075f;
+            }
+
+            if (YharimsInsignia)
+            {
+                Player.GetDamage<MeleeDamageClass>() += 0.15f;
+                if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
+                    Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
         }
         #region Energy Shields
@@ -602,27 +613,65 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
             }
+
             if (modPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
             {
                 modPlayer1.contactDamageReduction += 0.2f;
             }
-            if (modPlayer.silvaRanged)
+
+            if (silvaMelee)
             {
-                if(Player.HasCooldown(SilvaRevive.ID))
+                double multiplier = (double)Player.statLife / (double)Player.statLifeMax2;
+                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
+
+                if (modPlayer1.auricSet && silvaMelee)
+                {
+                    double multiplier1 = (double)Player.statLife / (double)Player.statLifeMax2;
+                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
+                }
+
+                if (modPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
                 {
                     Player.GetDamage<RangedDamageClass>() += 0.40f;
                 }
+                if (modPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
+                {
+                    Player.GetCritChance<SummonDamageClass>() += 10;
+                    Player.maxMinions += 2;
+                }
+                if (modPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
+                {
+                    Player.GetDamage<RogueDamageClass>() += 0.40f;
+                }
+
+                if (modPlayer.AuricDebuffImmune)
+                {
+                    foreach (int debuff in CalamityLists.debuffList)
+                        Player.buffImmune[debuff] = true;
+                }
             }
         }
+        
         #endregion
 
         #region Use Time Mult
         public override float UseTimeMultiplier(Item item)
         {
-            if (silvaRanged)
+            CalamityPlayer modPlayer = Player.Calamity();
+            if (silvaRanged && !modPlayer.auricSet)
             {
                 if (item.DamageType == DamageClass.Ranged && item.useTime > 3)
-                    return /*auricSet ? 1.2f :*/ 1.1f;
+                    return 0.9f;
+            }
+            if (silvaRanged && modPlayer.auricSet)
+            {
+                if (item.DamageType == DamageClass.Ranged && item.useTime > 3)
+                    return 0.8f;
+            }
+            if (silvaRogue)
+            {
+                if (Player.statLife > (int)(Player.statLifeMax2 * 0.5) && item.DamageType == ModContent.GetInstance<RogueDamageClass>() && item.useTime > 3)
+                    return 0.9f;
             }
             return 1f;
         }
@@ -667,6 +716,90 @@ namespace CalamityInheritance.CIPlayer
                 if (modPlayer1.modStealthTimer > 0)
                     modPlayer1.modStealthTimer--;
             }
+        }
+        #endregion
+
+        #region Elysian Aegis Effects
+        public void ElysianAegisEffects()
+        {
+            if (elysianAegis)
+            {
+                bool spawnDust = false;
+
+                // Activate buff
+                if (elysianGuard)
+                {
+                    if (Player.whoAmI == Main.myPlayer)
+                        Player.AddBuff(ModContent.BuffType<ElysianGuard>(), 2, false);
+
+                    float shieldBoostInitial = shieldInvinc;
+                    shieldInvinc -= 0.08f;
+                    if (shieldInvinc < 0f)
+                        shieldInvinc = 0f;
+                    else
+                        spawnDust = true;
+
+                    if (shieldInvinc == 0f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
+                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+
+                    float damageBoost = (5f - shieldInvinc) * 0.03f;
+                    Player.GetDamage<GenericDamageClass>() += damageBoost;
+
+                    int critBoost = (int)((5f - shieldInvinc) * 2f);
+                    Player.GetCritChance<GenericDamageClass>() += critBoost;
+
+                    Player.aggro += (int)((5f - shieldInvinc) * 220f);
+                    Player.statDefense += (int)((5f - shieldInvinc) * 8f);
+                    Player.moveSpeed *= 0.85f;
+
+                    if (Player.mount.Active)
+                    {
+                        elysianGuard = false;
+                    }
+                }
+
+                // Remove buff
+                else
+                {
+                    float shieldBoostInitial = shieldInvinc;
+                    shieldInvinc += 0.08f;
+                    if (shieldInvinc > 5f)
+                        shieldInvinc = 5f;
+                    else
+                        spawnDust = true;
+
+                    if (shieldInvinc == 5f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
+                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                }
+
+                // Emit dust
+                if (spawnDust)
+                {
+                    if (Main.rand.NextBool(2))
+                    {
+                        Vector2 vector = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
+                        Dust dust = Main.dust[Dust.NewDust(Player.Center - vector * 30f, 0, 0, (int)CalamityDusts.ProfanedFire, 0f, 0f, 0, default, 1f)];
+                        dust.noGravity = true;
+                        dust.position = Player.Center - vector * (float)Main.rand.Next(5, 11);
+                        dust.velocity = vector.RotatedBy(Math.PI / 2D, default) * 4f;
+                        dust.scale = 0.5f + Main.rand.NextFloat();
+                        dust.fadeIn = 0.5f;
+                    }
+
+                    if (Main.rand.NextBool(2))
+                    {
+                        Vector2 vector2 = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
+                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, 246, 0f, 0f, 0, default, 1f)];
+                        dust2.noGravity = true;
+                        dust2.position = Player.Center - vector2 * 12f;
+                        dust2.velocity = vector2.RotatedBy(-Math.PI / 2D, default) * 2f;
+                        dust2.scale = 0.5f + Main.rand.NextFloat();
+                        dust2.fadeIn = 0.5f;
+                    }
+                }
+            }
+            else
+                elysianGuard = false;
         }
         #endregion
     }

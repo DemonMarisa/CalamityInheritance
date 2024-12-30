@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ItemRarityID.Purple;
             Item.shoot = ModContent.ProjectileType<EonBeam>();
-            Item.shootSpeed = 16f;
+            Item.shootSpeed = 10f;
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
