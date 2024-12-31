@@ -65,6 +65,11 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool ExoSperaHitEffect { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool AmmoConversion { get; set; }
+
         #endregion
     }
 }

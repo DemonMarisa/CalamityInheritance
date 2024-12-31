@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Events;
 using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
@@ -63,9 +66,17 @@ namespace CalamityInheritance.NPCs
 {
     public partial class CalamityInheritanceGlobalNPC : GlobalNPC
     {
+
         #region Modify NPC Loot Main Hook
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            if (npc.type == ModContent.NPCType <IrradiatedSlime> ())
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 33 );
+
+            if (npc.type == ModContent.NPCType <GammaSlime> ())
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 33);
+
+            #region ModBoss
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Crabulon>())
@@ -128,7 +139,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
-
+            #endregion
             // Internal function to determine whether this NPC is the second Twin killed in a fight, regardless of which Twin it is.
             bool IsLastTwinStanding(DropAttemptInfo info)
             {
@@ -154,7 +165,6 @@ namespace CalamityInheritance.NPCs
                 bool lastTwinStanding = IsLastTwinStanding(info);
                 return !NPC.downedMechBossAny && (lastTwinStanding || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime);
             }
-
             switch (npc.type)
             {
                 #region Underground
@@ -162,6 +172,9 @@ namespace CalamityInheritance.NPCs
                 // FungalCarapace @ 14.29% Normal, 25% Expert+
                 case NPCID.AnomuraFungus:
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FungalCarapace>(), 7, 4));
+                break;
+                case NPCID.PossessedArmor:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PsychoticAmulet>(), 40, 20));
                 break;
                 #endregion
 

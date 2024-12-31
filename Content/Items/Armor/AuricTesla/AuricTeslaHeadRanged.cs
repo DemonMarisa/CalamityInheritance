@@ -60,7 +60,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer1.godSlayerRangedold = true;
             modPlayer1.GodSlayerReborn = true;
             modPlayer1.silvaRanged = true;
-            modPlayer1.PsychoticAmulet = true;
             modPlayer1.AuricbloodflareRangedSoul = true;
 
             modPlayer.auricSet = true;
@@ -72,6 +71,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer1.auricBoostold = true;
             modPlayer.auricBoost = true;
             player.GetDamage<RangedDamageClass>() += 0.3f;
             player.GetCritChance<RangedDamageClass>() += 30;

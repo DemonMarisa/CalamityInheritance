@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Projectile.Kill();
 
             // Movement around the owner.
-            float orbitRadiusMultiplier = 3f;
+            float orbitRadiusMultiplier = 2.3f;
             Projectile.Center = owner.Center + OffsetRotation.ToRotationVector2() * (float)Math.Cos(OffsetRotation * 0.3f) * owner.Size * 0.5f * orbitRadiusMultiplier;
             Projectile.rotation = (Projectile.position - Projectile.oldPos[1]).ToRotation();
             OffsetRotation += OffsetSpeed;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/SmallGreyscaleCircle").Value;
+            Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/SmallGreyscaleCircle").Value;
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 16f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;

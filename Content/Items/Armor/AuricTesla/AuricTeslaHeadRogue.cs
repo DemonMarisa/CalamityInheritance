@@ -16,6 +16,7 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -72,6 +73,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer1.auricBoostold = true;
             modPlayer.auricBoost = true;
             player.GetDamage<ThrowingDamageClass>() += 0.2f;
             player.GetCritChance<ThrowingDamageClass>() += 20;

@@ -127,7 +127,6 @@
 		<None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 		<None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
 		<None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
-		<None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaGlowold.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaNeweffect.png" />
@@ -156,7 +155,6 @@
 		<None Remove="Content\Items\Weapons\Rogue\PhantomLance.png" />
 		<None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
 		<None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
-		<None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
 		<None Remove="Content\Projectiles\InvisibleProj.png" />
 		<None Remove="Content\Projectiles\LaserProj.png" />
 		<None Remove="Content\Projectiles\LightningProj.png" />
@@ -345,7 +343,6 @@
 		<None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 		<None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
 		<None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
-		<None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaGlowold.png" />
 		<None Remove="Content\Items\Weapons\Melee\MurasamaNeweffect.png" />
@@ -374,7 +371,6 @@
 		<None Remove="Content\Items\Weapons\Rogue\PhantomLance.png" />
 		<None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
 		<None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
-		<None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
 		<None Remove="Content\Projectiles\InvisibleProj.png" />
 		<None Remove="Content\Projectiles\LaserProj.png" />
 		<None Remove="Content\Projectiles\LightningProj.png" />
@@ -563,7 +559,6 @@
 	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
 	  <None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
-	  <None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlowold.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaNeweffect.png" />
@@ -592,7 +587,6 @@
 	  <None Remove="Content\Items\Weapons\Rogue\PhantomLance.png" />
 	  <None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
 	  <None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
-	  <None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
 	  <None Remove="Content\Projectiles\InvisibleProj.png" />
 	  <None Remove="Content\Projectiles\LaserProj.png" />
 	  <None Remove="Content\Projectiles\LightningProj.png" />
@@ -781,7 +775,6 @@
 	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
 	  <None Remove="Content\Items\Weapons\Melee\Exobladeold.png" />
-	  <None Remove="Content\Items\Weapons\Melee\Exobladeoldneweffect.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlow.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaGlowold.png" />
 	  <None Remove="Content\Items\Weapons\Melee\MurasamaNeweffect.png" />
@@ -810,7 +803,6 @@
 	  <None Remove="Content\Items\Weapons\Rogue\PhantomLance.png" />
 	  <None Remove="Content\Items\Weapons\Rogue\Supernovaold.png" />
 	  <None Remove="Content\Items\Weapons\Summon\MidnightSunBeaconold.png" />
-	  <None Remove="Content\Items\Weapons\TrueBloodyEdge.png" />
 	  <None Remove="Content\Projectiles\InvisibleProj.png" />
 	  <None Remove="Content\Projectiles\LaserProj.png" />
 	  <None Remove="Content\Projectiles\LightningProj.png" />

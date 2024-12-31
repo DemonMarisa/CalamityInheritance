@@ -28,7 +28,7 @@ namespace CalamityInheritance.CIPlayer.Dash
         public override bool IsOmnidirectional => false;
 
         public bool PostHit = false;
-        public override float CalculateDashSpeed(Player player) => 23.3f;
+        public override float CalculateDashSpeed(Player player) => 28f;
 
         public override void OnDashEffects(Player player)
         {

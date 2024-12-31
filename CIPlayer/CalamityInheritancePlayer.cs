@@ -32,6 +32,8 @@ namespace CalamityInheritance.CIPlayer
         public bool FungalCarapace = false;
         public bool PsychoticAmulet = false;
         public bool YharimsInsignia = false;
+        public bool darkSunRingold = false;
+        public bool AMRextra = false;
         #endregion
         public int ProjectilHitCounter;
         #region dash
@@ -136,6 +138,7 @@ namespace CalamityInheritance.CIPlayer
         #region Auric
         public bool AuricDebuffImmune = false;
         public bool AuricbloodflareRangedSoul = false;
+        public bool auricBoostold = false;
         #endregion
         #endregion
         #region ResetEffects
@@ -161,6 +164,7 @@ namespace CalamityInheritance.CIPlayer
             FungalCarapace = false;
             PsychoticAmulet = false;
             YharimsInsignia = false;
+            darkSunRingold = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -233,6 +237,7 @@ namespace CalamityInheritance.CIPlayer
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
+            auricBoostold = false;
             #endregion
             #endregion
             CIDashID = string.Empty;

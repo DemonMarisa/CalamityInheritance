@@ -111,6 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             recipe.AddIngredient(ItemID.Excalibur);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+
             recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<EssenceofSunlight>(), 3);
             recipe.AddIngredient(ModContent.ItemType<EssenceofEleum>(), 3);

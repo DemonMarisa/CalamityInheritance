@@ -1,16 +1,19 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Projectiles.Healing;
+using CalamityMod.Projectiles.Ranged;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles
 {
     public class CalamityInheritanceGlobalProjectile : GlobalProjectile
     {
-                // Force Class Types
+        // Force Class Types
         public bool forceMelee = false;
         public bool forceRanged = false;
         public bool forceMagic = false;
@@ -151,6 +154,30 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
+        }
+        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            Player player = Main.player[projectile.owner];
+            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+
+            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+            {
+                if (modPlayer.AMRextra == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
+                {
+                    IEntitySource source = projectile.GetSource_FromThis();
+                    int extraProjectileAmt = 5;
+                    for (int x = 0; x < extraProjectileAmt; x++)
+                    {
+                        if (projectile.owner == Main.myPlayer)
+                        {
+                            bool fromRight = x > 3;
+                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
+                            CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
+                        }
+                    }
+                    modPlayer.AMRextra = false;
+                }
+            };
         }
     }
 }

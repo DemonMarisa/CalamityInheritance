@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             velocity.Y *= dir * 150;
             velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
             velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<Exocomet>()] < 8)
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<Exocomet>()] < 16)
             {
                 for (int comet = 0; comet < 2; comet++)
                 {
@@ -92,9 +92,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Recipe recipe2 = CreateRecipe();
             recipe2.AddIngredient(ModContent.ItemType<Exoblade>());
             recipe2.Register();
-            Recipe recipe3 = CreateRecipe();
-            recipe3.AddIngredient(ModContent.ItemType<Exobladeoldneweffect>());
-            recipe3.Register();
         }
     }
 }

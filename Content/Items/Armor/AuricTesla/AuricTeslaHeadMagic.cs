@@ -70,11 +70,13 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
             modPlayer.auricBoost = true;
             player.manaCost *= 0.8f;
             player.GetDamage<MagicDamageClass>() += 0.3f;
             player.GetCritChance<MagicDamageClass>() += 20;
             player.statManaMax2 += 100;
+            modPlayer1.auricBoostold = true;
         }
 
         public override void AddRecipes()

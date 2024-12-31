@@ -11,6 +11,7 @@ using CalamityMod.Projectiles.Ranged;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance
 {
@@ -18,6 +19,8 @@ namespace CalamityInheritance
     {
         public static List<int> rangedProjectileExceptionList;
         public static List<int> AuricdebuffList;
+        public static List<int> AMRextraProjList;
+
         public static void LoadLists()
         {
             rangedProjectileExceptionList = new List<int>
@@ -126,12 +129,21 @@ namespace CalamityInheritance
                 BuffType<Withered>()
             };
 
+            AMRextraProjList = new List<int>
+            {
+                ProjectileType<GodSlayerShrapnelRound>(),
+                ProjectileType<BloodflareSoulold>(),
+                ProjectileType<BloodflareSoul>(),
+                ProjectileType<BloodBomb>(),
+                ProjectileType<BloodBombExplosion>(),
+            };
         }
 
         public static void UnloadLists()
         {
             rangedProjectileExceptionList = null;
             AuricdebuffList = null;
+            AMRextraProjList = null;
         }
     }
 }

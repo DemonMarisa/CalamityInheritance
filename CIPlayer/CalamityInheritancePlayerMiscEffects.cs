@@ -138,6 +138,17 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+
+            if (darkSunRingold)
+            {
+                Player.maxMinions += 2;
+                Player.GetDamage<GenericDamageClass>() += 0.12f;
+                Player.GetKnockback<SummonDamageClass>() += 1.2f;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
+                Player.pickSpeed -= 0.12f;
+                if (Main.eclipse || !Main.dayTime)
+                    Player.statDefense += Main.eclipse ? 20 : 20;
+            }
         }
         #region Energy Shields
         private void CIEnergyShields()
@@ -682,7 +693,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
             CalamityPlayer modPlayer1 = Player.Calamity();
-            if (modPlayer.PsychoticAmulet)
+            if (PsychoticAmulet)
             {
                 if (Player.itemAnimation > 0)
                     modPlayer1.modStealthTimer = 5;
@@ -716,6 +727,41 @@ namespace CalamityInheritance.CIPlayer
                 if (modPlayer1.modStealthTimer > 0)
                     modPlayer1.modStealthTimer--;
             }
+            if (auricBoostold)
+            {
+                if (Player.itemAnimation > 0)
+                    modPlayer1.modStealthTimer = 5;
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (modPlayer1.modStealthTimer == 0 && modPlayer1.modStealth > 0f)
+                    {
+                        modPlayer1.modStealth -= 0.015f;
+                        if (modPlayer1.modStealth <= 0f)
+                        {
+                            modPlayer1.modStealth = 0f;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
+                    modPlayer1.modStealth += playerVel * 0.0075f;
+                    if (modPlayer1.modStealth > 1f)
+                        modPlayer1.modStealth = 1f;
+                    if (Player.mount.Active)
+                        modPlayer1.modStealth = 1f;
+                }
+                float damageBoost = (1f - modPlayer1.modStealth) * 20f;
+                Player.GetDamage<GenericDamageClass>() += damageBoost;
+                int critBoost = (int)((1f - modPlayer1.modStealth) * 1000f);
+                Player.GetCritChance<GenericDamageClass>() += critBoost;
+                if (modPlayer1.modStealthTimer > 0)
+                    modPlayer1.modStealthTimer--;
+            }
+            else
+                modPlayer1.modStealth = 1f;
         }
         #endregion
 

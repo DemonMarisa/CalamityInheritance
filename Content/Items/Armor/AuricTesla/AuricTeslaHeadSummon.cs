@@ -18,6 +18,7 @@ using CalamityMod.Projectiles.Summon;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -214,6 +215,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer1.auricBoostold = true;
             modPlayer.auricBoost = true;
             player.maxMinions += 7;
         }

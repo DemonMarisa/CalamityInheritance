@@ -62,7 +62,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer1.silvaMelee = true;
             modPlayer1.godSlayerReflect = true;
             modPlayer1.GodSlayerReborn = true;
-            modPlayer1.PsychoticAmulet = true;
 
             modPlayer.silvaSet = true;
             modPlayer.auricSet = true;
@@ -76,9 +75,12 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer1.auricBoostold = true;
             modPlayer.auricBoost = true;
             player.GetDamage<MeleeDamageClass>() += 0.2f;
             player.GetCritChance<MeleeDamageClass>() += 20;
+            player.GetAttackSpeed<MeleeDamageClass>() += 0.28f;
         }
 
         public override void AddRecipes()

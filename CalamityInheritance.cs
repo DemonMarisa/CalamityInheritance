@@ -17,6 +17,8 @@ using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 using Terraria.Graphics.Renderers;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.CIPlayer.Dash;
+using MonoMod.RuntimeDetour;
+using System.Reflection;
 
 namespace CalamityInheritance
 {
