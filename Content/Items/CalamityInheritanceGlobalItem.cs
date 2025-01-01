@@ -5,6 +5,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,22 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             return true;
+        }
+
+        public override bool InstancePerEntity => true;
+        public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            if (CalamityInheritanceConfig.Instance.turnoffCorner == false)
+            {
+                if (item.ModItem != null && item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
+                {
+                    Texture2D iconTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Mark").Value;
+                    Vector2 iconPosition = position + new Vector2(4f, 4f);
+                    float iconScale = 0.25f;
+
+                    spriteBatch.Draw(iconTexture, iconPosition, null, Color.White, 0f, Vector2.Zero, iconScale, SpriteEffects.None, 0f);
+                }
+            }
         }
     }
 }

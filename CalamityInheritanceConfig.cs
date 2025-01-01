@@ -70,6 +70,10 @@ namespace CalamityInheritance
         [DefaultValue(false)]
         public bool AmmoConversion { get; set; }
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool turnoffCorner { get; set; }
+
         #endregion
     }
 }

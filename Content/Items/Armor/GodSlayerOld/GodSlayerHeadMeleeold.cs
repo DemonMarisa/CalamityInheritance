@@ -50,7 +50,6 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             modPlayer.godSlayer = true;
             modPlayer.godSlayerDamage = true;
             modPlayer2.GodSlayerReborn = true;
-            modPlayer2.GodSlayerDMGprotect = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 

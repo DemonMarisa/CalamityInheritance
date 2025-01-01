@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = Item.buyPrice(0, 80, 0, 0);
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<EonBeam>();
-            Item.shootSpeed = 6f;
+            Item.shootSpeed = 10f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -34,6 +34,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
             modPlayer.godSlayerReflect = true;
+            modPlayer.GodSlayerDMGprotect = true;
             player.thorns += 0.5f;
             player.statLifeMax2 += 60;
             player.GetDamage<GenericDamageClass>() += 0.1f;

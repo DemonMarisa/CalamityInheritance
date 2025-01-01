@@ -62,6 +62,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer1.silvaMelee = true;
             modPlayer1.godSlayerReflect = true;
             modPlayer1.GodSlayerReborn = true;
+            modPlayer1.GodSlayerDMGprotect = true;
 
             modPlayer.silvaSet = true;
             modPlayer.auricSet = true;

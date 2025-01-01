@@ -1,4 +1,4 @@
-﻿Keybinds: {
+Keybinds: {
 	BoCLoreTeleportation.DisplayName: 克苏鲁之脑传送
 	AegisHotKey.DisplayName: 极乐之庇护
 }
@@ -62,6 +62,7 @@ Buffs: {
 	ElysianGuard: {
 		DisplayName: 极乐之庇护
 		Description: 移动速度降低，提高各项属性
+	}
 
 	SilvaStun: {
 		DisplayName: 林海眩晕
@@ -73,8 +74,8 @@ Items: {
 	Accessories: {
 		CIRampartofDeities: {
 			DisplayName: 神之壁垒[legacy]
-			Tooltip: 				
-			    '''
+			Tooltip:
+				'''
 				受到伤害时会召唤星星从天而降并延长受伤后无敌时间
 				根据你已损失的生命值在受伤时获得额外的无敌帧
 				满血时提供10无敌帧，最高提升至25%以下血量时的40无敌帧
@@ -84,7 +85,7 @@ Items: {
 
 		CoreOfTheBloodGod: {
 			DisplayName: 血神核心[legacy]
-			Tooltip: 
+			Tooltip:
 				'''
 				血量上限增加25%
 				治疗药水的效果增加25%
@@ -96,51 +97,52 @@ Items: {
 
 		DarkSunRingold: {
 			DisplayName: 尊日蚀戒[legacy]
-			Tooltip: 
-			'''
-			增加12%伤害
-+1HP/s生命再生和2格最大仆从栏位
-增加仆从击退
-在白天时+3HP/s生命再生
-在夜晚时增加20点防御
-在日食时两种效果会同时触发
-“蕴含着日蚀之阴的力量”
-'''
+			Tooltip:
+				'''
+				增加12%伤害
+				+1HP/s生命再生和2格最大仆从栏位
+				增加仆从击退
+				在白天时+3HP/s生命再生
+				在夜晚时增加20点防御
+				在日食时两种效果会同时触发
+				“蕴含着日蚀之阴的力量”
+				'''
 		}
 
 		AsgardianAegisold: {
 			DisplayName: 阿斯加德之庇护[legacy]
-			Tooltip: 		
-			'''
-		获得被宇宙狱火加强的撞击冲刺能力
-		此冲刺可以在不受伤害的情况下猛击穿过敌怪
-		免疫击退和火块
-		免疫包括弑神怒焰在内的绝大多数减益
-		按[KEY]激活伤害，暴击率和防御增益
-		此增益会降低你的移动速度并增加敌人的仇恨
-		'''
+			Tooltip:
+				'''
+				获得被宇宙狱火加强的撞击冲刺能力
+				此冲刺可以在不受伤害的情况下猛击穿过敌怪
+				免疫击退和火块
+				免疫包括弑神怒焰在内的绝大多数减益
+				按[KEY]激活伤害，暴击率和防御增益
+				此增益会降低你的移动速度并增加敌人的仇恨
+				'''
 		}
 
 		ElysianAegisold: {
 			DisplayName: 极乐之庇护[legacy]
-			Tooltip: 		
-			'''
-		获得被圣火加强的撞击冲刺能力
-		此冲刺可以猛击穿过敌怪但不受伤害
-		免疫击退和火块
-		免疫包括破晓和神圣之火在内的大部分火焰减益
-		被亵渎之火所祝福的盾牌
-		按[KEY]激活伤害，暴击率和防御增益
-		此增益会降低你的移动速度并增加敌人的仇恨
-		'''
+			Tooltip:
+				'''
+				获得被圣火加强的撞击冲刺能力
+				此冲刺可以猛击穿过敌怪但不受伤害
+				免疫击退和火块
+				免疫包括破晓和神圣之火在内的大部分火焰减益
+				被亵渎之火所祝福的盾牌
+				按[KEY]激活伤害，暴击率和防御增益
+				此增益会降低你的移动速度并增加敌人的仇恨
+				'''
 		}
 
 		ElementalGauntletold: {
 			DisplayName: 元素之握[legacy]
-			Tooltip: 
-							'''
+			Tooltip:
+				'''
 				增加15%的近战伤害与暴击概率
 				增加25%的真近战伤害
+				增加15%的近战攻速
 				增加近战武器的击退与尺寸
 				让近战武器可以自动挥舞
 				'''
@@ -148,69 +150,70 @@ Items: {
 
 		YharimsInsignia: {
 			DisplayName: 魔君之证章[legacy]
-			Tooltip: 
-		'''
-		生命值低于50%时增加10%伤害
-		增加10%近战攻速
-		增加10%近战伤害和真近战伤害
-		近战攻击及其弹幕会造成神圣之火减益
-		使你暂时免疫熔岩
-		增加近战击退
-		'''
+			Tooltip:
+				'''
+				生命值低于50%时增加10%伤害
+				增加10%近战攻速
+				增加10%近战伤害和真近战伤害
+				近战攻击及其弹幕会造成神圣之火减益
+				使你暂时免疫熔岩
+				增加近战击退
+				'''
 		}
 
 		ReaperToothNecklaceold: {
 			DisplayName: 猎魂鲨齿项链[legacy]
-			Tooltip: 
-			'''
-			增加15%伤害
-			增加100点护甲穿透
-			“取自顶级掠食者的恐怖战利品”
-			'''
+			Tooltip:
+				'''
+				增加15%伤害
+				增加100点护甲穿透
+				“取自顶级掠食者的恐怖战利品”
+				'''
 		}
 
 		TheSpongetest: {
 			DisplayName: 化绵留香石[legacy]
-			Tooltip: 
-			'''
-				30防御力 15%伤害减免 增加30点魔力上限
-				使你免疫碎甲效果
-				获得百草天香瓶的全部效果
-				被击中时爆出蘑菇孢子与电火花
-				提供15点防御，受击后10s内会短暂移除，并增加移动速度
-				受击会恢复攻击力6.25%的生命值
+			Tooltip:
+				'''
+					30防御力 15%伤害减免 增加30点魔力上限
+					使你免疫碎甲效果
+					获得百草天香瓶的全部效果
+					被击中时爆出蘑菇孢子与电火花
+					提供15点防御，受击后10s内会短暂移除，并增加移动速度
+					受击会恢复攻击力6.25%的生命值
 
-				[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
+					[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
 
-				护盾激活时：
-				玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
-				提供额外的30%伤害减免与30防御力
+					护盾激活时：
+					玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
+					提供额外的30%伤害减免与30防御力
 
-				护盾破碎时：
-				减少50点防御力与25%伤害减免
-				需要更多的时间充能
-				（护盾效果可在配置中关闭）
+					护盾破碎时：
+					减少50点防御力与25%伤害减免
+					需要更多的时间充能
+					（护盾效果可在配置中关闭）
 
-				[c/FFD700:✟感谢世纪小花提供的技术支持✟]
+					[c/FFD700:✟感谢世纪小花提供的技术支持✟]
+					
 				'''
 		}
 	}
 
 	AsgardsValorold: {
 		DisplayName: 阿斯加德之英勇[legacy]
-		Tooltip: 		
-		'''
-		获得撞击冲刺能力
-		此冲刺可以在不受伤害的情况下猛击穿过敌怪
-		免疫击退和火块
-		免疫包括大部分霜火形式减益在内的大多数减益
-		'''
+		Tooltip:
+			'''
+			获得撞击冲刺能力
+			此冲刺可以在不受伤害的情况下猛击穿过敌怪
+			免疫击退和火块
+			免疫包括大部分霜火形式减益在内的大多数减益
+			'''
 	}
 
 	FungalCarapace: {
 		DisplayName: 真菌壳[legacy]
-		Tooltip: 
-					'''
+		Tooltip:
+			'''
 			提供6点防御
 			被击中后会在你周围爆出蘑菇孢子
 			蘑菇孢子5秒后便会爆炸，造成70点基础伤害，可受最强职业加成
@@ -219,13 +222,13 @@ Items: {
 
 	LeadCore: {
 		DisplayName: 铅核[legacy]
-		Tooltip: "免疫辐射减益"
+		Tooltip: 免疫辐射减益
 	}
 
 	ElementalQuiver: {
 		DisplayName: 元素箭袋[legacy]
-		Tooltip: 
-					'''
+		Tooltip:
+			'''
 			增加20%的远程伤害和15%的暴击率，并降低20%弹药消耗几率
 			增加大多数远程弹幕速度
 			允许远程弹幕分裂
@@ -235,21 +238,21 @@ Items: {
 
 	PsychoticAmulet: {
 		DisplayName: 神经元护符[legacy]
-		Tooltip: 
-		'''
-		增加5%远程武器和盗贼武器的伤害和暴击率
-		站定不动时会使玩家逐渐隐身，并且增益更为强力
-		'''
+		Tooltip:
+			'''
+			增加5%远程武器和盗贼武器的伤害和暴击率
+			站定不动时会使玩家逐渐隐身，并且增益更为强力
+			'''
 	}
 
 	Ammo: {
 		VanquisherArrowold: {
 			DisplayName: 湮灭之箭[legacy]
-			Tooltip: 
-					'''
-		穿透物块
-		移动时会分裂出额外的追踪箭矢
-		'''
+			Tooltip:
+				'''
+				穿透物块
+				移动时会分裂出额外的追踪箭矢
+				'''
 		}
 	}
 
@@ -257,87 +260,217 @@ Items: {
 		PostMoonLord: {
 			AuricTeslaBodyArmorold: {
 				DisplayName: 古圣金源盔甲[legacy]
-				Tooltip: 
-				'''
-				+100最大生命值
-				增加8%伤害和5%暴击率
-				移动速度增加25%
-				获得寒冰屏障的能力
-				'''
+				Tooltip:
+					'''
+					+100最大生命值
+					增加8%伤害和5%暴击率
+					移动速度增加25%
+					你有2%的概率闪避来袭的攻击
+					免疫小于80点的伤害
+					获得寒冰屏障的能力
+					'''
 			}
 
 			AuricTeslaCuissesold: {
 				DisplayName: 古圣金源腿甲[legacy]
-				Tooltip: 
-				'''
-				增加50%移速
-				增加12%伤害和5%暴击率
-				获得魔毯的能力
-				'''
+				Tooltip:
+					'''
+					增加50%移速
+					增加12%伤害和5%暴击率
+					获得魔毯的能力
+					'''
 			}
 
 			AuricTeslaHeadMagic: {
 				DisplayName: 金虚万象盔[legacy]
-				Tooltip: 
-				'''
+				Tooltip:
+					'''
 					增加30%魔法伤害和20%魔法暴击率
 					+100最大魔力值并减少20%魔力消耗
-				'''
+					站立不动时会增加伤害与暴击几率
+					'''
+				SetBonus:
+					'''
+					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+					弹幕击中敌人会生成金源光球治疗玩家
+					敌人生成数量降低
+					魔法弹幕每1.5秒击中敌人会有50%的概率治疗玩家
+					魔法武器每1.67秒发射一支幽灵箭，暴击会每2秒产生3个爆炸
+					魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+					魔法弹幕每5秒击中敌人会触发林海爆炸
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					林海无敌结束后，伤害增加60%
+					'''
 			}
 
 			AuricTeslaHeadMelee: {
-				DisplayName: Auric Tesla Head Melee
-				Tooltip: ""
+				DisplayName: 金源耀日盔[legacy]
+				Tooltip:
+					'''
+					增加20%近战伤害和20%近战暴击率
+					增加28%的近战攻速
+					敌人更有可能攻击你
+					站立不动时会增加伤害与暴击几率
+					'''
+				SetBonus:
+					'''
+					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+					按下[KEY]提供龙蒿斗篷增益，在10秒内接触伤害降低50%
+					连续真近战打击会获得鲜血狂怒增益
+					受到超过80点伤害会向八个方向发射弑神飞镖
+					近战武器可以眩晕敌人
+					真近战有25%的概率造成5倍伤害
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					林海无敌结束后，接触伤害降低20%
+					'''
 			}
 
 			AuricTeslaHeadRanged: {
-				DisplayName: Auric Tesla Head Ranged
-				Tooltip: ""
+				DisplayName: 金兜铁面罩[legacy]
+				Tooltip:
+					'''
+					增加30%远程伤害和30%远程暴击率
+					增加28%的近战攻速
+					站立不动时会增加伤害与暴击几率
+					'''
+				SetBonus:
+					'''
+					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+					敌人生成数量降低
+					远程弹幕击中时，会分裂出生命能量与龙蒿爆炸
+					按下[KEY]释放16个血岩灵魂追踪敌人
+					远程武器每2.5秒发射一枚弑神榴弹
+					允许玩家攻击时以溢出的暴击概率造成四倍伤害
+					远程攻击速度增加20%
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					林海无敌结束后，射手伤害增加40%
+					'''
 			}
 
 			AuricTeslaHeadRogue: {
-				DisplayName: Auric Tesla Head Rogue
-				Tooltip: ""
+				DisplayName: 金羽十杀盔[legacy]
+				Tooltip:
+					'''
+					增加20%盗贼伤害和20%盗贼暴击率
+					增加130点潜伏值上限
+					移动速度增加5%
+					站立不动时会增加伤害与暴击几率
+					'''
+				SetBonus:
+					'''
+					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+					敌人生成数量降低
+					每一个debuff都会让盗贼伤害增加10%
+					每25次暴击会获得3秒的龙蒿无敌增益
+					每一次暴击都有50%的概率治疗玩家
+					如果玩家生命值大于80%，获得30点防御力与5%盗贼暴击概率，小于80%时，盗贼伤害增加10%
+					满血时，盗贼伤害，暴击率和射速增加10%
+					当玩家血量大于50%时，攻击速度增加10%
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					林海无敌结束后，盗贼伤害增加40%
+					'''
 			}
 
 			AuricTeslaHeadSummon: {
-				DisplayName: Auric Tesla Head Summon
-				Tooltip: ""
+				DisplayName: 金宇星界盔[legacy]
+				Tooltip: "增加7仆从栏"
+				SetBonus:
+					'''
+					增加1仆从栏和120%召唤伤害
+					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+					敌人生成数量降低
+					在玩家周围召唤生命光环
+					召唤三个幻影地雷围绕玩家
+					玩家生命大于90%时，召唤伤害增加10%，小于50%时获得20防御力和2生命恢复
+					召唤星宇护卫保护玩家，可以进一步扩展
+					仆从击中敌人会出现弑神幻象
+					召唤一个林海水晶，用生命能量轰击敌人
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					林海无敌结束后，暴击几率增加10%，增加2仆从栏
+					'''
 			}
 
 			GodSlayerChestplateold: {
-				DisplayName: God Slayer Chestplateold
-				Tooltip: ""
+				DisplayName: 弑神者胸甲
+				Tooltip: 
+					'''
+					+60最大生命值
+					敌人在攻击你后会受到伤害
+					增加10%伤害和6%暴击
+					移动速度增加15%
+					你有2%的概率闪避来袭的攻击
+					免疫小于80点的伤害
+					'''
 			}
 
 			GodSlayerHeadMeleeold: {
-				DisplayName: God Slayer Head Meleeold
-				Tooltip: ""
+				DisplayName: 弑神者头盔
+				Tooltip: 
+					'''
+					增加14%近战伤害与暴击率
+					增加20%近战攻速
+					'''
+				SetBonus:
+					'''
+					敌人更有可能瞄准你
+					受到超过80点伤害会向八个方向发射弑神飞镖
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					'''
 			}
 
 			GodSlayerHeadRangedold: {
-				DisplayName: God Slayer Head Rangedold
-				Tooltip: ""
+				DisplayName: 弑神者头套
+				Tooltip: "增加14%远程伤害与暴击率"
+				SetBonus:
+					'''
+					远程武器每2.5秒发射一枚弑神榴弹
+					当远程武器暴击几率超过100%时，会根据超过100%的暴击几率再次暴击，造成4倍伤害
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					'''
 			}
 
 			GodSlayerHeadRogueold: {
-				DisplayName: God Slayer Head Rogueold
-				Tooltip: ""
+				DisplayName: 弑神者面具
+				Tooltip: "增加14%盗贼伤害与暴击率"
+				SetBonus:
+					'''
+					远程武器每2.5秒发射一枚弑神榴弹
+					允许玩家攻击时以溢出的暴击概率造成四倍伤害
+					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					'''
 			}
 
 			GodSlayerHeadSummonold: {
-				DisplayName: God Slayer Head Summonold
-				Tooltip: ""
+				DisplayName: 弑神者角盔
+				Tooltip: "增加7仆从栏和65%召唤伤害"
+					SetBonus:
+					'''
+					召唤一条星宇护卫为你而战
+					仆从击中敌人会出现弑神幻象
+					'''
 			}
 
 			GodSlayerLeggingsold: {
-				DisplayName: God Slayer Leggingsold
-				Tooltip: ""
+				DisplayName: 弑神者腿甲
+				Tooltip: 
+				'''
+				增加10%伤害与暴击几率
+				移动速度增加35%
+				'''
 			}
 
 			SilvaArmorold: {
-				DisplayName: Silva Armorold
-				Tooltip: ""
+				DisplayName: 始源林海盔甲
+				Tooltip: 
+				'''
+				增加12%伤害与8%暴击几率
+				移动速度增加35%
+				'''
 			}
 
 			SilvaHeadMagicold: {
@@ -351,31 +484,31 @@ Items: {
 			}
 
 			SilvaLeggingsold: {
-				DisplayName: Silva Leggingsold
+				DisplayName: 始源林海护胫
 				Tooltip: ""
 			}
 		}
 
 		Vanity: {
 			SilvaHeadMelee: {
-				DisplayName: Silva Head Melee
+				DisplayName: 始源林海战盔
 				Tooltip: ""
 			}
 
 			SilvaHeadRanged: {
-				DisplayName: Silva Head Ranged
+				DisplayName: 始源林海角盔
 				Tooltip: ""
 			}
 
 			SilvaHeadRogue: {
-				DisplayName: Silva Head Rogue
+				DisplayName: 始源林海面具
 				Tooltip: ""
 			}
 		}
 	}
 
 	GodSlayerHeadMagicold: {
-		DisplayName: God Slayer Head Magicold
+		DisplayName: 弑神者面罩
 		Tooltip: ""
 	}
 
@@ -907,6 +1040,11 @@ Configs: {
 
 		AmmoConversion: {
 			Label: Ammo Conversion
+			Tooltip: ""
+		}
+
+		turnoffCorner: {
+			Label: turnoff Corner
 			Tooltip: ""
 		}
 	}

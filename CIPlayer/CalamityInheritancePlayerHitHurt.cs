@@ -485,6 +485,7 @@ namespace CalamityInheritance.CIPlayer
             // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
             // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
             if (info.Damage < 1  || (GodSlayerDMGprotect && info.Damage <= 80) )
+
                 return true;
             // If no other effects occurred, run vanilla code
             return base.FreeDodge(info);

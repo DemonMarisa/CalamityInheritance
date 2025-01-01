@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override bool PreDraw(ref Color lightColor)
         {
-			if (Projectile.timeLeft > 195)
+			if (Projectile.timeLeft > 390)
 				return false;
 
 			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
