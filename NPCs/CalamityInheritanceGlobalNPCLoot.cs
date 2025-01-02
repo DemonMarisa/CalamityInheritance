@@ -3,6 +3,8 @@ using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
@@ -52,9 +54,11 @@ using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.Signus;
 using CalamityMod.NPCs.SlimeGod;
 using CalamityMod.NPCs.StormWeaver;
+using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
@@ -70,11 +74,14 @@ namespace CalamityInheritance.NPCs
         #region Modify NPC Loot Main Hook
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            if (npc.type == ModContent.NPCType <IrradiatedSlime> ())
+            if (npc.type == ModContent.NPCType<IrradiatedSlime>())
                 npcLoot.Add(ModContent.ItemType<LeadCore>(), 33 );
 
-            if (npc.type == ModContent.NPCType <GammaSlime> ())
+            if (npc.type == ModContent.NPCType<GammaSlime>())
                 npcLoot.Add(ModContent.ItemType<LeadCore>(), 33);
+
+            if (npc.type == ModContent.NPCType<EutrophicRay>())
+                npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);
 
             #region ModBoss
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
@@ -85,8 +92,11 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedHiveMind, ModContent.ItemType<KnowledgeHiveMind>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<PerforatorHive>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ModContent.ItemType<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
+
             if (npc.type == ModContent.NPCType<SlimeGodCore>())
+                npcLoot.Add(ModContent.ItemType<PurifiedJam>(), 1);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedSlimeGod, ModContent.ItemType<KnowledgeSlimeGod>(), desc: DropHelper.FirstKillText);
+
             if (npc.type == ModContent.NPCType<Cryogen>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ModContent.ItemType<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<BrimstoneElemental> ())

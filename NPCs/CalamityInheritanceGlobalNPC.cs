@@ -70,5 +70,20 @@ namespace CalamityInheritance.NPCs
             return true;
         }
         #endregion
+        #region Edit Spawn Rate
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (player.CalamityInheritance().hiveMindLore)
+            {
+                spawnRate = (int)(spawnRate * 1.3);
+                maxSpawns = (int)(maxSpawns * 0.6f);
+            }
+            if (player.CalamityInheritance().perforatorLore)
+            {
+                spawnRate = (int)(spawnRate * 0.7);
+                maxSpawns = (int)(maxSpawns * 1.8f);
+            }
+        }
+        #endregion
     }
 }

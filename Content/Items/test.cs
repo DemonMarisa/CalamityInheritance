@@ -40,15 +40,12 @@ namespace CalamityInheritance.Content.Items
             Item.height = 114;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<Violet>();
-            Item.shoot = ModContent.ProjectileType<ExoJet>();
-            Item.shootSpeed = 30;
-            Item.rare = ModContent.RarityType<Violet>();
         }
         public override bool? UseItem(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
-
-            //player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(30));
+            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            player.RemoveCooldown(GodSlayerCooldown.ID);
 
             return false;
         }

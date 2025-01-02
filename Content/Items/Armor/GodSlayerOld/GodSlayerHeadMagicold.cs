@@ -41,40 +41,18 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateArmorSet(Player player)
         {
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1)
-            {
-                var modPlayer = player.Calamity();
-                CalamityInheritancePlayer modPlayer2 = player.CalamityInheritance();
-                modPlayer.godSlayer = true;
-                modPlayer2.godSlayerMagic = true;
-                modPlayer2.GodSlayerReborn = true;
-                player.setBonus = this.GetLocalizedValue("SetBonus");
-            }
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2)
-            {
-                var modPlayer = player.Calamity();
-                player.GetAttackSpeed<MeleeDamageClass>() += 0.2f;
-                var hotkey = CalamityKeybinds.GodSlayerDashHotKey.TooltipHotkeyString();
-                player.thorns += 2.5f;
-                player.aggro += 1000;
 
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3)
+            var modPlayer = player.Calamity();
+            CalamityInheritancePlayer modPlayer2 = player.CalamityInheritance();
+            modPlayer.godSlayer = true;
+            modPlayer2.godSlayerMagic = true;
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
-                var modPlayer = player.Calamity();
-                CalamityInheritancePlayer modPlayer2 = player.CalamityInheritance();
-                modPlayer2.godSlayerMagic = true;
                 modPlayer2.GodSlayerReborn = true;
-                player.GetAttackSpeed<MeleeDamageClass>() += 0.2f;
-                var hotkey = CalamityKeybinds.GodSlayerDashHotKey.TooltipHotkeyString();
-                player.thorns += 2.5f;
-                player.aggro += 1000;
-
+            }
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            {
                 if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 {
                     modPlayer.DeferredDashID = GodslayerArmorDash.ID;

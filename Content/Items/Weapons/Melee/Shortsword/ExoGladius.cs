@@ -19,21 +19,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class ExoGladius : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Exo Gladius");
-            /* Tooltip.SetDefault("Do not underestimate the power of Exoblade's younger brother\n" +
-                "Striking an enemy with the blade makes you immune for a short time and summons comets from the sky\n" +
-                "Fires a rainbow orb that summons sword beams on hit"); */
-        }
-
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.useAnimation = Item.useTime = 13;
             Item.width = 56;
             Item.height = 56;
-            Item.damage = 1080;
+            Item.damage = 640;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9.9f;
             Item.UseSound = SoundID.Item1;

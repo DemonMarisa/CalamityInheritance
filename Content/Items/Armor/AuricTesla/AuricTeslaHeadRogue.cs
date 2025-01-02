@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.auricBoost = true;
             player.GetDamage<ThrowingDamageClass>() += 0.2f;
             player.GetCritChance<ThrowingDamageClass>() += 20;
-            player.moveSpeed += 0.05f;
+            player.moveSpeed += 0.25f;
         }
 
         public override void AddRecipes()

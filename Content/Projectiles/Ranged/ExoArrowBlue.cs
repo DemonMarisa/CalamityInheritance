@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(2), 500f, 500f, 0f, 500f, 10f, ModContent.ProjectileType<ExoArrowBlue2>(), (int)(Projectile.damage * 0.7), Projectile.knockBack * 0.7f, Projectile.owner);
+                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(2), 500f, 500f, 0f, 500f, 10f, ModContent.ProjectileType<ExoArrowBlue2>(), (int)(Projectile.damage * 1), Projectile.knockBack * 0.7f, Projectile.owner);
                 }
             }
         }

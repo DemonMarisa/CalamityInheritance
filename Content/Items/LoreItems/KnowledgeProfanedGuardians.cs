@@ -1,13 +1,15 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod.Items.LoreItems;
+﻿using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
-using Terraria;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.ID;
-
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgePerforators : LoreItem
+    public class KnowledgeProfanedGuardians : LoreItem
     {
         public override void SetStaticDefaults()
         {
@@ -18,27 +20,20 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             Item.width = 20;
             Item.height = 20;
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.Purple;
             Item.consumable = false;
-        }
-        public override void UpdateInventory(Player player)
-        {
-            if (player.ZoneCrimson && Item.favorited)
-            {
-                player.CalamityInheritance().perforatorLore = true;
-            }
         }
 
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<PerforatorTrophy>().
+                AddIngredient<ProfanedGuardianTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LorePerforators>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreProfanedGuardians>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

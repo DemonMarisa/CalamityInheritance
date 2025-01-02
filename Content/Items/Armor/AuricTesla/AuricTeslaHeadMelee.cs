@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadMelee : ModItem, ILocalizedModType
     {
+        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityKeybinds.ArmorSetBonusHotKey);
         public new string LocalizationCategory => "Items.Armor.PostMoonLord";
         public override void SetDefaults()
         {

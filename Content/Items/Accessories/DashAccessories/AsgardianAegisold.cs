@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public const int RamExplosionDamage = 1000;
         public const float RamExplosionKnockback = 20f;
-
+        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
         public override void SetDefaults()
         {
             Item.width = 60;

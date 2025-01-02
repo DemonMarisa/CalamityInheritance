@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 1;
             Projectile.tileCollide = false;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = 360;
             Projectile.aiStyle = ProjAIStyleID.Beam;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
         }
 
         public override void AI()

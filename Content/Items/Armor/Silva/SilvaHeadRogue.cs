@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             modPlayer1.silvaRogue = true;
             modPlayer.rogueStealthMax += 1.25f;
             modPlayer.wearingRogueArmor = true;
-            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<SilvaArmorold>("CommonSetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 
         public override void UpdateEquip(Player player)

@@ -59,6 +59,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             player.GetDamage<ThrowingDamageClass>() += 0.14f;
             player.GetCritChance<ThrowingDamageClass>() += 14;
+            player.moveSpeed += 0.18f;
         }
 
         public override void AddRecipes()

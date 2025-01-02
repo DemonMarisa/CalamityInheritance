@@ -91,7 +91,6 @@ Items: {
 				治疗药水的效果增加25%
 				免疫50%的碰撞伤害
 				免伤增加10%
-				伤害与暴击增加12%
 				'''
 		}
 
@@ -175,26 +174,24 @@ Items: {
 			DisplayName: 化绵留香石[legacy]
 			Tooltip:
 				'''
-					30防御力 15%伤害减免 增加30点魔力上限
-					使你免疫碎甲效果
-					获得百草天香瓶的全部效果
-					被击中时爆出蘑菇孢子与电火花
-					提供15点防御，受击后10s内会短暂移除，并增加移动速度
-					受击会恢复攻击力6.25%的生命值
-
-					[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
-
-					护盾激活时：
-					玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
-					提供额外的30%伤害减免与30防御力
-
-					护盾破碎时：
-					减少50点防御力与25%伤害减免
-					需要更多的时间充能
-					（护盾效果可在配置中关闭）
-
-					[c/FFD700:✟感谢世纪小花提供的技术支持✟]
-					
+				30防御力 15%伤害减免 增加30点魔力与生命上限
+				使你免疫碎甲效果
+				获得百草天香瓶的全部效果
+				被击中时爆出蘑菇孢子与电火花
+				提供15点防御，受击后10s内会短暂移除，并增加移动速度
+				受击会恢复攻击力6.25%的生命值
+				 
+				[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
+				 
+				护盾激活时：
+				玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
+				提供额外的30%伤害减免与30防御力
+				 
+				护盾破碎时：
+				减少50点防御力与25%伤害减免
+				需要更多的时间充能
+				（护盾效果可在配置中关闭）
+				[c/FFD700:✟感谢世纪小花提供的技术支持✟]
 				'''
 		}
 	}
@@ -241,7 +238,7 @@ Items: {
 		Tooltip:
 			'''
 			增加5%远程武器和盗贼武器的伤害和暴击率
-			站定不动时会使玩家逐渐隐身，并且增益更为强力
+			站定不动时会使玩家逐渐隐身，且增益更为强力
 			'''
 	}
 
@@ -299,8 +296,8 @@ Items: {
 					魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
 					魔法弹幕每5秒击中敌人会触发林海爆炸
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，持续10秒
-					林海无敌结束后，伤害增加60%
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，魔法伤害增加60%
 					'''
 			}
 
@@ -322,7 +319,7 @@ Items: {
 					近战武器可以眩晕敌人
 					真近战有25%的概率造成5倍伤害
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
 					林海无敌结束后，接触伤害降低20%
 					'''
 			}
@@ -345,7 +342,7 @@ Items: {
 					允许玩家攻击时以溢出的暴击概率造成四倍伤害
 					远程攻击速度增加20%
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
 					林海无敌结束后，射手伤害增加40%
 					'''
 			}
@@ -370,14 +367,14 @@ Items: {
 					满血时，盗贼伤害，暴击率和射速增加10%
 					当玩家血量大于50%时，攻击速度增加10%
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
 					林海无敌结束后，盗贼伤害增加40%
 					'''
 			}
 
 			AuricTeslaHeadSummon: {
 				DisplayName: 金宇星界盔[legacy]
-				Tooltip: "增加7仆从栏"
+				Tooltip: 增加7仆从栏
 				SetBonus:
 					'''
 					增加1仆从栏和120%召唤伤害
@@ -390,14 +387,14 @@ Items: {
 					仆从击中敌人会出现弑神幻象
 					召唤一个林海水晶，用生命能量轰击敌人
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，持续10秒
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
 					林海无敌结束后，暴击几率增加10%，增加2仆从栏
 					'''
 			}
 
 			GodSlayerChestplateold: {
-				DisplayName: 弑神者胸甲
-				Tooltip: 
+				DisplayName: 弑神者胸甲[legacy]
+				Tooltip:
 					'''
 					+60最大生命值
 					敌人在攻击你后会受到伤害
@@ -409,8 +406,8 @@ Items: {
 			}
 
 			GodSlayerHeadMeleeold: {
-				DisplayName: 弑神者头盔
-				Tooltip: 
+				DisplayName: 弑神者头盔[legacy]
+				Tooltip:
 					'''
 					增加14%近战伤害与暴击率
 					增加20%近战攻速
@@ -424,8 +421,8 @@ Items: {
 			}
 
 			GodSlayerHeadRangedold: {
-				DisplayName: 弑神者头套
-				Tooltip: "增加14%远程伤害与暴击率"
+				DisplayName: 弑神者头套[legacy]
+				Tooltip: 增加14%远程伤害与暴击率
 				SetBonus:
 					'''
 					远程武器每2.5秒发射一枚弑神榴弹
@@ -435,8 +432,12 @@ Items: {
 			}
 
 			GodSlayerHeadRogueold: {
-				DisplayName: 弑神者面具
-				Tooltip: "增加14%盗贼伤害与暴击率"
+				DisplayName: 弑神者面具[legacy]
+				Tooltip:
+					'''
+					增加14%盗贼伤害与暴击率
+					移动速度增加20%
+					'''
 				SetBonus:
 					'''
 					远程武器每2.5秒发射一枚弑神榴弹
@@ -446,9 +447,9 @@ Items: {
 			}
 
 			GodSlayerHeadSummonold: {
-				DisplayName: 弑神者角盔
-				Tooltip: "增加7仆从栏和65%召唤伤害"
-					SetBonus:
+				DisplayName: 弑神者角盔[legacy]
+				Tooltip: 增加7仆从栏和65%召唤伤害
+				SetBonus:
 					'''
 					召唤一条星宇护卫为你而战
 					仆从击中敌人会出现弑神幻象
@@ -456,596 +457,1317 @@ Items: {
 			}
 
 			GodSlayerLeggingsold: {
-				DisplayName: 弑神者腿甲
-				Tooltip: 
-				'''
-				增加10%伤害与暴击几率
-				移动速度增加35%
-				'''
+				DisplayName: 弑神者腿甲[legacy]
+				Tooltip:
+					'''
+					增加10%伤害与暴击几率
+					移动速度增加35%
+					'''
 			}
 
 			SilvaArmorold: {
-				DisplayName: 始源林海盔甲
-				Tooltip: 
-				'''
-				增加12%伤害与8%暴击几率
-				移动速度增加35%
-				'''
+				DisplayName: 始源林海盔甲[legacy]
+				Tooltip:
+					'''
+					增加12%伤害与8%暴击几率
+					移动速度增加35%
+					'''
 			}
 
 			SilvaHeadMagicold: {
-				DisplayName: Silva Head Magicold
-				Tooltip: ""
+				DisplayName: 始源林海兜帽[legacy]
+				Tooltip:
+					'''
+					增加13%魔法伤害和13%魔法暴击率
+					+100最大魔力值并减少19%魔力消耗
+					'''
+				SetBonus:
+					'''
+					所有弹幕击中敌人时生成能治疗的林海光球。
+					最大速度和加速度增加5%。
+					魔法弹幕每5秒击中敌人会触发林海爆炸
+					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，伤害增加60%
+					'''
 			}
 
 			SilvaHeadSummonold: {
-				DisplayName: Silva Head Summonold
-				Tooltip: ""
+				DisplayName: 始源林海头盔[legacy]
+				Tooltip: 增加5仆从栏
+				SetBonus:
+					'''
+					所有弹幕击中敌人时生成能治疗的林海光球。
+					最大速度和加速度增加5%。
+					召唤一个林海水晶，用生命能量轰击敌人
+					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，暴击几率增加10%，增加2仆从栏
+					'''
 			}
 
 			SilvaLeggingsold: {
-				DisplayName: 始源林海护胫
-				Tooltip: ""
+				DisplayName: 始源林海护胫[legacy]
+				Tooltip:
+					'''
+					增加12%伤害与7%暴击几率
+					移动速度增加45%
+					'''
 			}
 		}
 
 		Vanity: {
 			SilvaHeadMelee: {
-				DisplayName: 始源林海战盔
-				Tooltip: ""
+				DisplayName: 始源林海战盔[legacy]
+				Tooltip: 增加13%近战伤害与13%暴击几率
+				SetBonus:
+					'''
+					所有弹幕击中敌人时生成能治疗的林海光球。
+					最大速度和加速度增加5%。
+					近战武器可以眩晕敌人
+					真近战有25%的概率造成5倍伤害
+					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，接触伤害降低20%
+					'''
 			}
 
 			SilvaHeadRanged: {
-				DisplayName: 始源林海角盔
-				Tooltip: ""
+				DisplayName: 始源林海角盔[legacy]
+				Tooltip: 增加13%远程伤害与13%暴击几率
+				SetBonus:
+					'''
+					所有弹幕击中敌人时生成能治疗的林海光球。
+					最大速度和加速度增加5%。
+					远程攻击速度增加10%
+					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，射手伤害增加40%
+					'''
 			}
 
 			SilvaHeadRogue: {
-				DisplayName: 始源林海面具
-				Tooltip: ""
+				DisplayName: 始源林海面具[legacy]
+				Tooltip:
+					'''
+					增加13%盗贼伤害与13%暴击几率
+					移动速度增加20%
+					'''
+				SetBonus:
+					'''
+					所有弹幕击中敌人时生成能治疗的林海光球。
+					最大速度和加速度增加5%。
+					当玩家血量大于50%时，攻击速度增加10%
+					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					林海无敌结束后，盗贼伤害增加40%
+					'''
 			}
 		}
 	}
 
 	GodSlayerHeadMagicold: {
-		DisplayName: 弑神者面罩
-		Tooltip: ""
+		DisplayName: 弑神者面罩[legacy]
+		Tooltip:
+			'''
+			增加14%魔法伤害和14%魔法暴击率
+			+100最大魔力值并减少17%魔力消耗
+			'''
+		SetBonus:
+			'''
+			魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+			受到致命伤害时会触发弑神复活，此效果有45秒冷却
+			'''
 	}
 
 	Lore: {
-		KnowledgeAquaticScourge.DisplayName: Knowledge Aquatic Scourge
-		KnowledgeAstralInfection.DisplayName: Knowledge Astral Infection
-		KnowledgeAstrumAureus.DisplayName: Knowledge Astrum Aureus
-		KnowledgeAstrumDeus.DisplayName: Knowledge Astrum Deus
-		KnowledgeBloodMoon.DisplayName: Knowledge Blood Moon
-		KnowledgeBrainofCthulhu.DisplayName: Knowledge Brainof Cthulhu
-		KnowledgeBrimstoneCrag.DisplayName: Knowledge Brimstone Crag
-		KnowledgeBrimstoneElemental.DisplayName: Knowledge Brimstone Elemental
-		KnowledgeCalamitas.DisplayName: Knowledge Calamitas
-		KnowledgeCalamitasClone.DisplayName: Knowledge Calamitas Clone
-		KnowledgeCorruption.DisplayName: Knowledge Corruption
-		KnowledgeCrabulon.DisplayName: Knowledge Crabulon
-		KnowledgeCrimson.DisplayName: Knowledge Crimson
-		KnowledgeCryogen.DisplayName: Knowledge Cryogen
-		KnowledgeDesertScourge.DisplayName: Knowledge Desert Scourge
-		KnowledgeDestroyer.DisplayName: Knowledge Destroyer
-		KnowledgeDevourerofGods.DisplayName: Knowledge Devourerof Gods
-		KnowledgeDragonfolly.DisplayName: Knowledge Dragonfolly
-		KnowledgeDukeFishron.DisplayName: Knowledge Duke Fishron
-		KnowledgeEaterofWorlds.DisplayName: Knowledge Eaterof Worlds
-		KnowledgeEyeofCthulhu.DisplayName: Knowledge Eyeof Cthulhu
-		KnowledgeGolem.DisplayName: Knowledge Golem
-		KnowledgeHiveMind.DisplayName: Knowledge Hive Mind
-		KnowledgeKingSlime.DisplayName: Knowledge King Slime
-		KnowledgeLeviathanAnahita.DisplayName: Knowledge Leviathan Anahita
-		KnowledgeLunaticCultist.DisplayName: Knowledge Lunatic Cultist
-		KnowledgeMechs.DisplayName: Knowledge Mechs
-		KnowledgeMoonLord.DisplayName: Knowledge Moon Lord
-		KnowledgeOcean.DisplayName: Knowledge Ocean
-		KnowledgeOldDuke.DisplayName: Knowledge Old Duke
-		KnowledgePerforators.DisplayName: Knowledge Perforators
-		KnowledgePlaguebringerGoliath.DisplayName: Knowledge Plaguebringer Goliath
-		KnowledgePlantera.DisplayName: Knowledge Plantera
-		KnowledgePolterghast.DisplayName: Knowledge Polterghast
-		KnowledgeProvidence.DisplayName: Knowledge Providence
-		KnowledgeQueenBee.DisplayName: Knowledge Queen Bee
-		KnowledgeRavager.DisplayName: Knowledge Ravager
-		KnowledgeSentinels.DisplayName: Knowledge Sentinels
-		KnowledgeSkeletron.DisplayName: Knowledge Skeletron
-		KnowledgeSkeletronPrime.DisplayName: Knowledge Skeletron Prime
-		KnowledgeSlimeGod.DisplayName: Knowledge Slime God
-		KnowledgeSulphurSea.DisplayName: Knowledge Sulphur Sea
-		KnowledgeTwins.DisplayName: Knowledge Twins
-		KnowledgeUnderworld.DisplayName: Knowledge Underworld
-		KnowledgeWallofFlesh.DisplayName: Knowledge Wallof Flesh
-		KnowledgeYharon.DisplayName: Knowledge Yharon
+		KnowledgeAquaticScourge: {
+			DisplayName: 渊海灾虫[legacy]
+			Lore:
+				'''
+				在污染与贪食之中诞生的恐怖存在。据研究，当前大小的渊海灾虫只是青年时期的。
+				这些灾虫生物是海洋中最大的捕食者，不过它们很少出现在浅海之中。
+				放置在背包中并标记为收藏，获得对硫磺海水的免疫力，并增强吃得好的效果
+				但是，由于你的无尽饥饿，没有饱食增益时，你的各项属性将会下降
+				'''
+		}
+
+		KnowledgeAstralInfection: {
+			DisplayName: 星辉瘟疫[legacy]
+			Lore:
+				'''
+				扭曲的梦幻之景，遍布四周的是参天的奇异巨柱，头顶上方是阴霾笼罩的漆黑苍穹
+				这里的自然规律被彻底颠覆了，你作何感想？
+				'''
+		}
+
+		KnowledgeAstrumAureus: {
+			DisplayName: 白金星舰[legacy]
+			Lore:
+				'''
+				被一位古神腹中排出的星体瘟疫所感染的机械巨神
+				即便是击杀它也无法阻挡瘟疫的传播
+				放置在背包中并标记为收藏，增加你在太空中的跳跃速度
+				'''
+		}
+
+		KnowledgeAstrumDeus: {
+			DisplayName: 星神游龙[legacy]
+			Lore:
+				'''
+				星体之神，星体瘟疫的散播者
+				尽管一度从群星间被击落，现在它的残骸已经积蓄了足够的力量重返它应得的位置——浩瀚宇宙之间
+				放置在背包中并标记为收藏，增加你在太空中的移动速度
+				'''
+		}
+
+		KnowledgeBloodMoon: {
+			DisplayName: 血月[legacy]
+			Lore:
+				'''
+				很久以前，我们都曾害怕过血月的光芒
+				很多人疯了，有些人死了，只有幸存者中的凤毛麟角才得以一窥宇宙运行之法
+				'''
+		}
+
+		KnowledgeBrainofCthulhu: {
+			DisplayName: 克苏鲁之脑[legacy]
+			Lore:
+				'''
+				曾今的眼，如今的脑
+				看起来，另一个怪物很大可能也是自这大块不完整的血肉中诞生的
+				允许你在猩红之地中传送，如同使用混沌传送杖一样
+				混乱减益持续时间内无法传送
+				然而，由于你的脑力透支，传送后会受到若干秒困惑减益
+				只有标记为收藏才能传送
+				'''
+		}
+
+		KnowledgeBrimstoneCrag: {
+			DisplayName: 硫火之崖[legacy]
+			Lore:
+				'''
+				啊...这个地方
+				处处弥漫着痛苦，破灭的承诺和终会死亡的气息...
+				'''
+		}
+
+		KnowledgeBrimstoneElemental: {
+			DisplayName: 硫磺火元素[legacy]
+			Lore:
+				'''
+				所有元素态生命中最强大的存在，一直以来迷失于向毁灭她家乡的猩红狱火复仇的扭曲心智之中
+				死寂下来的她，终于不再会忍受她的追随者死绝的痛苦之中了
+				放置在背包中并标记为收藏，可增强狱火药水的效力
+				'''
+		}
+
+		KnowledgeCalamitas: {
+			DisplayName: 至尊灾厄[legacy]
+			Lore:
+				'''
+				那位无可匹敌的女巫。或许她是我所有部下中我唯一怀疑过的一个
+				你的命运已经注定
+				[c/FF0000:面对我]
+				放置在背包中并标记为收藏，受到的所有攻击都会将你秒杀
+				'''
+		}
+
+		KnowledgeCalamitasClone: {
+			DisplayName: 灾厄之眼[legacy]
+			Lore:
+				'''
+				你确实比我想象的要强不少
+				不过猩红狱火仍然在注视着你，监视着你的发展
+				放置在背包中并标记为收藏，以牺牲一部分最大生命值为代价，增加2仆从栏
+				'''
+		}
+
+		KnowledgeCorruption: {
+			DisplayName: 腐化之地[legacy]
+			Lore:
+				'''
+				呕，这片腐烂破败，持续恶化的腐化生物们的家园，是很久前由一种致命的微生物带来的
+				传闻这种微生物由一个早已灭亡的种族以一次实验创造，用以猎杀泰拉大地上的生灵
+				放置在背包中并标记为收藏，腐化囊将不会自然生成
+				'''
+		}
+
+		KnowledgeCrabulon: {
+			DisplayName: 猩红之地[legacy]
+			Lore:
+				'''
+				形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
+				这地方现如今是一群自地底深处跳动的血泵和奇形怪状的器官中诞生出的丑陋而可怕的怪物家园
+				放置在背包中并标记为收藏，血肉囊将不会自然生成
+				'''
+		}
+
+		KnowledgeCrimson: {
+			DisplayName: 菌生蟹[legacy]
+			Lore:
+				'''
+				螃蟹和蘑菇，一个有爱的故事
+				这些生物，能适应各种特殊环境，真有趣
+				放置在背包中并标记为收藏，身处地下或蘑菇地形时给予与菇共生增益
+				然而，你的身上被真菌覆盖，移动速度降低
+				'''
+		}
+
+		KnowledgeCryogen: {
+			DisplayName: 极地之灵[legacy]
+			Lore:
+				'''
+				羁押大法师的囚笼
+				我不清楚在数十年的禁锢后，它是否失去了部分力量
+				放置在背包中并标记为收藏，获得寒霜冲刺的能力，可以冻结敌人。
+				代价是你的身体变得易碎，轻微降低防御力
+				'''
+		}
+
+		KnowledgeDesertScourge: {
+			DisplayName: 荒漠灾虫[legacy]
+			Lore:
+				'''
+				庞大的海虫似乎从极度的炎热之中存活下来了，甚至完全适应了此处
+				曾于水中畅游的巨兽现如今变成了贪食的一具空壳，不断地寻找着下一顿美餐
+				放置在背包中并标记为收藏，以增加身处沙漠或沉沦之海时的防御
+				然而，在这些地方你的攻击会降低，因为和真正的自己相比你已经变成了一具空壳
+				'''
+		}
+
+		KnowledgeDestroyer: {
+			DisplayName: 钢铁毁灭者[legacy]
+			Lore:
+				'''
+				用强大的战士灵魂激活的机械虫子，用于在各个星球之中挖掘隧道以收集矿产资源
+				如果嘉登不那么执著于把所有东西都变成毁灭机器的话，它本来可以派上大用场
+				放置在背包中并标记为收藏以增加你的挖掘速度
+				然而，你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
+
+		KnowledgeDevourerofGods: {
+			DisplayName: 神明吞噬者[legacy]
+			Lore:
+				'''
+				这条巨蛇和他的小弟们吸收所吞下物体的能量甚至能力，此特性在全宇宙内恐怕绝无仅有
+				倘若他有更多时间去吞噬生物获得力量，我恐怕就不得不把他当作威胁解决掉了
+				放置在背包中并标记为收藏，增加25%真近战伤害
+				然而，由于你莽撞的天性，你将受到额外5%伤害
+				'''
+		}
+
+		KnowledgeDragonfolly: {
+			DisplayName: 痴愚金龙[legacy]
+			Lore:
+				'''
+				野心勃勃科学计划的失败产物；傲慢地认为完全洞悉生命的奥秘或许总是会迎来相似的结果
+				原计划作为丛林龙的克隆体，如今只是一群在丛林中游荡，无差别攻击一切目标的疯狂生物
+				'''
+		}
+
+		KnowledgeDukeFishron: {
+			DisplayName: 猪鲨公爵[legacy]
+			Lore:
+				'''
+				这个来自大海的象征着恐惧的畸变生物，曾是过去某位王者用美食驯服的可靠伙伴
+				很久以前，这只生物绝望的飞离了他曾经的家乡，那片被硫磺火肆虐蒸腾的海，最终安居在了它的新家
+				放置在背包中并标记为收藏，当浸泡在液体中时增加伤害，暴击率和移动速度
+				然而，由于感到失水，你不处于液体环境中时降低伤害，暴击率和移动速度
+				'''
+		}
+
+		KnowledgeEaterofWorlds: {
+			DisplayName: 世界吞噬者[legacy]
+			Lore:
+				'''
+				也许就是被那种微生物感染的虫子，在长达数世纪的吞食和成长中获得了这副腐败的身躯
+				考虑到此地的起源，这很有可能。
+				放置在背包中并标记为收藏，致命的微生物在你周围产生。
+				然而，由于你的皮肤开始腐烂，生命恢复速度降低
+				'''
+		}
+
+		KnowledgeEyeofCthulhu: {
+			DisplayName: 克苏鲁之眼[legacy]
+			Lore:
+				'''
+				这眼睛，多么古怪
+				我感觉你越强大，它就越会警觉地观察你
+				放置在背包中并标记为收藏，增加夜视能力
+				然而，你在日间视物的能力会下降
+				'''
+		}
+
+		KnowledgeGolem: {
+			DisplayName: 神庙傀儡[legacy]
+			Lore:
+				'''
+				原始的造物
+				我欣赏蜥蜴族的足智多谋，然而对如此粗劣的魔像产生信仰注定了他们的覆灭
+				放置在背包中并标记为收藏，不动时增加防御
+				'''
+		}
+
+		KnowledgeHiveMind: {
+			DisplayName: 腐巢意志[legacy]
+			Lore:
+				'''
+				被细菌腐化的生物们的巢穴
+				遗憾的是，我不认为杀掉它就会停止腐化的散播
+				放置在背包中并标记为收藏，你在腐化之地发射的弹幕带有诅咒地狱效果
+				然而，由于你周身散发的极度腐臭，在腐化之地时刷怪速率极大幅度下降
+				'''
+		}
+
+		KnowledgeKingSlime: {
+			DisplayName: 史莱姆王[legacy]
+			Lore:
+				'''
+				只有傻子才会被这种贫弱的生物击败
+				不幸的是，我们的世界不缺这种人
+				放置在背包中并标记为收藏，略微增加移动和跳跃速度
+				然而，由于你胶冻般的身体，防御略微下降
+				'''
+		}
+
+		KnowledgeLeviathanAnahita: {
+			DisplayName: 利维坦和阿娜希塔[legacy]
+			Lore:
+				'''
+				一对诡异的生物。一个在寻找伙伴，另一个在寻找食物
+				或许两个基因怪异的生物被家乡抛弃，并在相互扶持后才安稳了下来
+				放置在背包中并标记为收藏，以增加装备渊洋之心时增加最大生命值以及装备奇光珠时财宝勘探的效力
+				让海洋之灵宠物能够在液体环境外正常移动
+				然而，若你没有被液体浸泡，防御力和伤害减免将下降
+				'''
+		}
+
+		KnowledgeLunaticCultist: {
+			DisplayName: 拜月教邪教徒[legacy]
+			Lore:
+				'''
+				他是个天才，很久以前用他的怪异奥术终结了我的召唤
+				上一个让我如此鄙视其行为的人已经...死了, 他的封印仪式还未完成...做好迎来终结的准备吧
+				你的末日正在逼近...
+				放置在背包中并标记为收藏，增强在四柱事件时的全部属性
+				然而，禁忌的知识侵蚀着你的精神，视力会受到阻碍
+				'''
+		}
+
+		KnowledgeMechs: {
+			DisplayName: 机械动乱[legacy]
+			Lore:
+				'''
+				我看你已唤醒了嘉登的一些小玩具
+				这些曾经大有用处的工具，在嘉登的一次错误调试后程序错乱并暴走了
+				'''
+		}
+
+		KnowledgeMoonLord: {
+			DisplayName: 月球领主[legacy]
+			Lore:
+				'''
+				真是浪费
+				他若是完全恢复了，本可作为我麾下大将。可惜，你击败的只是一具空壳
+				但这丝毫未损藏于他体内的无穷潜力——在他死后改变世界的这股力量
+				放置在背包中并标记为收藏，在使用重力球颠倒重力时给予全属性增幅
+				然而，重力未颠倒时你永久性受到羽落效果影响
+				'''
+		}
+
+		KnowledgeOcean: {
+			DisplayName: 海洋[legacy]
+			Lore:
+				'''
+				小心，莫要惊扰深渊
+				你或许会唤醒比死亡更可怕的东西
+				放置在背包中并标记为收藏，海洋中的神秘水元素将不再自然生成
+				'''
+		}
+
+		KnowledgeOldDuke: {
+			DisplayName: 硫海遗爵[legacy]
+			Lore:
+				'''
+				真是诡异，那大海中的畸变生物尽管特殊，但并非是孤例
+				我曾一度认为猪龙鱼公爵仅和猪龙有亲缘关系，现在看来这或许是错误的
+				放在物品栏中并标记为收藏，当你处于硫磺海或深渊中时
+				可以无限呼吸，提升你的防御与恢复能力，免疫硫磺海的腐蚀，不会受到深渊水压的影响
+				然而，当你离开时，对环境的不适会让你的防御与恢复能力下降
+				'''
+		}
+
+		KnowledgePerforators: {
+			DisplayName: 血肉寄生者和宿主[legacy]
+			Lore:
+				'''
+				一只混合了血肉，骨头和器官的混合体，最初被吸血的虫子所寄生
+				那个大脑所分离的肉块或许已经被这猩红的大地所吸收并重组成了这个东西
+				放置在背包中并标记为收藏，你在猩红之地发射的弹幕带有灵液
+				然而，受到你身体流出的甜美脓液吸引，猩红之地刷怪速率极大幅度增加
+				'''
+		}
+
+		KnowledgePlaguebringerGoliath: {
+			DisplayName: 瘟疫使者歌莉娅[legacy]
+			Lore:
+				'''
+				合金，血肉和瘟疫的完美组合体，能在一场袭击中摧毁整个文明
+				她携带的瘟疫核弹井可以让一片地区数月之间千里无烟寸草不生。其散播的瘟疫甚至已经到了连我们都得设法控制的程度
+				放置在背包中并标记为收藏，以牺牲生命恢复速度为代价增加翅膀飞行时间
+				'''
+		}
+
+		KnowledgePlantera: {
+			DisplayName: 世纪之花[legacy]
+			Lore:
+				'''
+				恭喜你，你干掉了一朵花儿
+				不过，这花儿是一座囚笼，用于给那些到她的厄运亡灵提供一个住所
+				我希望你能够幸运的挺过你胡作非为的恶果
+				放置在背包中并标记为收藏，增加物品拾取范围与弹幕飞行速度
+				'''
+		}
+
+		KnowledgePolterghast: {
+			DisplayName: 噬魂幽花[legacy]
+			Lore:
+				'''
+				仇恨与愤怒催生的生物，数不清人类亡魂的聚合体，以吞噬为唯一目的
+				让如此一股强大的力量在地牢空荡的厅室中漫无目的地闲逛，这近乎是种浪费
+				放置在背包中并标记为收藏，大幅增加物品拾取范围与弹幕飞行速度
+				'''
+		}
+
+		KnowledgeProvidence: {
+			DisplayName: 亵渎天神[legacy]
+			Lore:
+				'''
+				石与火围绕着核心，她的目的就和她的存在形式一样简单
+				若她不是我们的敌人而是盟友，我们本可以联手成就超乎想象的霸业
+				放置在背包中并标记为收藏，使你的弹幕带有渎神之火, 造成额外伤害
+				然而，你需要奉上部分灵魂维持渎神之火的燃烧，最大生命值降低
+				'''
+		}
+
+		KnowledgeProfanedGuardians: {
+			DisplayName: 亵渎守卫[legacy]
+			Lore:
+				'''
+				亵渎火焰那永葆活力的守护者们
+				如同凤凰，死亡仅仅是它们生命循环的一部分
+				为了寻找亵渎天神，我的军队曾无数次摧毁了这种存在
+				'''
+		}
+
+		KnowledgeQueenBee: {
+			DisplayName: 蜂后[legacy]
+			Lore:
+				'''
+				简陋的生物，跟那些巨型昆虫一样，某些情况下她们会证明自身的作用
+				...在被控制的情况下
+				放置在背包中并标记为收藏，使小号的蜜蜂和较弱的黄蜂变得友好
+				'''
+		}
+
+		KnowledgeRavager: {
+			DisplayName: 毁灭魔像[legacy]
+			Lore:
+				'''
+				由扭曲死灵法术打造，曾企图阻挡我的不败之师的血肉魔像
+				它的创造者在赋予它生命之后片刻即被它碾碎，如此邪物还是被毁掉比较好
+				放置在背包中并标记为收藏，大幅增加伤害，但降低翅膀飞行时间，并禁用羽落
+				'''
+		}
+
+		KnowledgeSentinels: {
+			DisplayName: 神之仆从[legacy]
+			Lore:
+				'''
+				西格纳斯，无尽虚空，和风暴编织者
+				每一位都代表着神明吞噬者散播着影响力
+				了结他们的性命，大概会引起神明吞噬者的愤怒，将你作为下一个撕碎的目标
+				'''
+		}
+
+		KnowledgeSkeletron: {
+			DisplayName: 骷髅王[legacy]
+			Lore:
+				'''
+				据传，这个诅咒只对长者有效
+				当他们被诅咒时，他们就成为了地狱中的一个远古恶魔夺舍的躯壳
+				放置在背包中并标记为收藏，增加身处地牢中造成的伤害
+				然而，骷髅王的诅咒使你的最大生命值降低
+				'''
+		}
+
+		KnowledgeSkeletronPrime: {
+			DisplayName: 钢铁骷髅王[legacy]
+			Lore:
+				'''
+				用纯净的恐惧之力打造这么个愚蠢而毫无意义的机器，多么暴殄天物啊
+				很明显，嘉登对他的设计做出了一些微妙的改动，这并不让我感到新奇...尽快摧毁他们吧
+				放置在背包中并标记为收藏，增加护甲穿透
+				然而，你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
+
+		KnowledgeSlimeGod: {
+			DisplayName: 史莱姆之神[legacy]
+			Lore:
+				'''
+				荒谬的是，这是有史以来最令人恐惧，最具威胁性的生命
+				如果这个生物能够融合星球之上所有所有史莱姆的话，它将不可阻挡
+				放置在背包中并标记为收藏，使自己被粘液浸润，能在物块上滑行，代价是减少防御力
+				此效果在坐骑上不起效
+				'''
+		}
+
+		KnowledgeSulphurSea: {
+			DisplayName: 硫磺海[legacy]
+			Lore:
+				'''
+				我还能依稀回想起此处的清风与碧波
+				时光抚平了我年轻时的苦涩创伤，但现在已经太迟太迟了。我绝不能容许这种错误再次发生
+				'''
+		}
+
+		KnowledgeTwins: {
+			DisplayName: 双子魔眼[legacy]
+			Lore:
+				'''
+				夜晚的生化机械看守者，由从人类眼中提取出的灵魂精粹创造而出
+				这种生物不应当存在于这个世界，最好让它们离开
+				放置在背包中并标记为收藏，在夜晚隐形并获得盗贼增益
+				然而，在50%生命值以上时护甲降低，因为你感到身体变软了、
+				生命值在50%以下时你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
+
+		KnowledgeUnderworld: {
+			DisplayName: 地狱[legacy]
+			Lore:
+				'''
+				这些黑曜石塔和狱炎塔，曾经是无数...'人'的家园
+				很遗憾，他们被内心的恶魔们扭曲了，直到他们不值得被救赎
+				放置在背包中并标记为收藏，巫毒恶魔将不再掉落巫毒娃娃
+				'''
+		}
+
+		KnowledgeWallofFlesh: {
+			DisplayName: 血肉之墙[legacy]
+			Lore:
+				'''
+				你做了那件事，我看到了
+				那个污浊的，由血肉和憎恨所融合而成的怪物死了
+				准备迎接潜藏在这世界的光与暗之中的真正的恐惧吧
+				放置在背包中并标记为收藏，小幅增加物品拾取范围与弹幕速度
+				'''
+		}
+
+		KnowledgeYharon: {
+			DisplayName: 丛林龙-犽戎[legacy]
+			Lore:
+				'''
+				我绝无可能忍受一个没有我最忠诚伙伴陪伴的世界
+				幸运的是，命运的安排免去了我忍受这种境遇的痛苦——永不分离，或一同死去
+				放置在背包中并标记为收藏，获得无限的飞行时间，但降低25%伤害
+				'''
+		}
 	}
 
 	CadancePotion: {
-		DisplayName: Cadance Potion
-		Tooltip: ""
+		DisplayName: 韵律药水[legacy]
+		Tooltip:
+			'''
+			获得心率和谐增益
+			增加生命再生速度和25%最大生命值
+			扩大红心拾取范围
+			'''
 	}
 
 	DraconicElixir: {
-		DisplayName: Draconic Elixir
-		Tooltip: ""
+		DisplayName: 龙魂秘药[legacy]
+		Tooltip:
+			'''
+			极大提高翅膀飞翔时间和速度并增加16点防御
+			始源林海套装无敌与弑神复活效果在触发时为你恢复全部的生命值
+			降低丛林龙-犽戎传颂之物的减益
+			如果你触发过以上治疗效果，在60秒内你的各项属性会降低并获得30秒耐药性减益
+			'''
 	}
 
 	HolyWrathPotion: {
-		DisplayName: Holy Wrath Potion
-		Tooltip: ""
+		DisplayName: 圣神之怒药水[legacy]
+		Tooltip:
+			'''
+			提升12%伤害
+			你的攻击会附带神圣之火减益
+			'''
 	}
 
 	PenumbraPotion: {
-		DisplayName: Penumbra Potion
-		Tooltip: ""
+		DisplayName: 半影药水[legacy]
+		Tooltip: 任何时候移动时增加10%盗贼潜行值恢复速度，站立不动时增加15%盗贼潜行值恢复速度
 	}
 
 	ProfanedRagePotion: {
-		DisplayName: Profaned Rage Potion
-		Tooltip: ""
+		DisplayName: 渎神之怒药水[legacy]
+		Tooltip: 提升12%暴击几率
 	}
 
 	PurifiedJam: {
-		DisplayName: Purified Jam
-		Tooltip: ""
+		DisplayName: 净神果酱[legacy]
+		Tooltip:
+			'''
+			让你在10秒钟（死亡模式5秒）内免疫所有伤害和绝大多数减益
+			消耗时玩家获得耐药性减益
+			耐药性状态时无法使用
+			'''
 	}
 
 	RevivifyPotion: {
-		DisplayName: Revivify Potion
-		Tooltip: ""
+		DisplayName: 新生药水[legacy]
+		Tooltip: 让敌人在攻击你时治疗你，治疗量为伤害值的一部分
 	}
 
 	ShatteringPotion: {
-		DisplayName: Shattering Potion
-		Tooltip: ""
+		DisplayName: 粉碎药水[legacy]
+		Tooltip:
+			'''
+			增加8%近战和盗贼伤害，增加8%近战和盗贼暴击几率
+			近战和盗贼攻击会击碎敌人护甲
+			'''
 	}
 
 	TitanScalePotion: {
-		DisplayName: Titan Scale Potion
-		Tooltip: ""
+		DisplayName: 泰坦之鳞药水[legacy]
+		Tooltip:
+			'''
+			增加击退，5防御和5%伤害减免
+			使用真近战武器攻击后几秒内增加20防御和5%伤害减免
+			'''
 	}
 
 	TriumphPotion: {
-		DisplayName: Triumph Potion
-		Tooltip: ""
+		DisplayName: 胜利药水[legacy]
+		Tooltip: 敌怪造成的接触伤害降低，此效果随敌怪生命值降低更加明显
 	}
 
 	YharimsStimulants: {
-		DisplayName: Yharims Stimulants
-		Tooltip: ""
+		DisplayName: 魔君牌兴奋剂[legacy]
+		Tooltip: 给予能增强所有防御和进攻的属性
 	}
 
 	test: {
-		DisplayName: test
-		Tooltip: ""
+		DisplayName: 测试剑
+		Tooltip: DA★ZE
 	}
 
 	HadopelagicEcho: {
-		DisplayName: Hadopelagic Echo
-		Tooltip: ""
+		DisplayName: 冥渊回音[legacy]
+		Tooltip:
+			'''
+			发射一串反射音波
+			音波传播距离越远，伤害便越高
+			击中敌人时反射出更多音波
+			'''
 	}
 
 	StratusSphere: {
-		DisplayName: Stratus Sphere
-		Tooltip: ""
+		DisplayName: 幻云天球[legacy]
+		Tooltip: 发射一个蕴含平流层精华的能量球
 	}
 
 	SubsumingVortexold: {
-		DisplayName: Subsuming Vortexold
-		Tooltip: ""
+		DisplayName: 归元旋涡[legacy]
+		Tooltip:
+			'''
+			释放出一个巨大且缓慢的星流漩涡
+			漩涡会不断释放出星流触手，猛击附近的敌人
+			随后漩涡减速并爆炸
+			'''
 	}
 
 	Weapons: {
 		Magic: {
 			VividClarity: {
-				DisplayName: Vivid Clarity
-				Tooltip: ""
+				DisplayName: 耀界之光[legacy]
+				Tooltip:
+					'''
+					向光标处发射九道彩虹光束
+					击中后会从天空降下星流闪电，并引发大型爆炸
+					爆炸会产生少量的跟踪弹幕
+					“它的威严激发了无与伦比的天才壮举”
+					'''
 			}
 		}
 
 		Melee: {
 			MurasamaNeweffect: {
-				DisplayName: Murasama Neweffect
-				Tooltip: ""
+				DisplayName: 鬼妖村正[legacy]
+				Tooltip:
+					'''
+					鲜血四溅！
+					证明你的价值来拔出此剑
+					'''
 			}
 
 			Murasamaold: {
-				DisplayName: Murasamaold
-				Tooltip: ""
+				DisplayName: 鬼妖村正[legacy]
+				Tooltip:
+					'''
+					鲜血四溅！
+					证明你的价值来拔出此剑
+					旧特效的版本
+					'''
 			}
 
 			CosmicShivold: {
-				DisplayName: Cosmic Shivold
-				Tooltip: ""
+				DisplayName: 宇宙短剑[legacy]
+				Tooltip:
+					'''
+					发射追踪敌人的宇宙能量
+					命中敌人后，会有陨星从天而降，一连串剑刃会反复穿刺目标
+					'''
 			}
 
 			ElementalShivold: {
-				DisplayName: Elemental Shivold
-				Tooltip: ""
+				DisplayName: 元素短剑[legacy]
+				Tooltip: 发射彩虹短剑，击中敌人后会生成额外的短剑弹幕
 			}
 		}
 
 		Ranged: {
 			DragonsBreathold: {
-				DisplayName: Dragons Breathold
-				Tooltip: ""
+				DisplayName: 巨龙之息[legacy]
+				Tooltip:
+					'''
+					左键会连续发射龙息子弹
+					右键会持续使用混合子弹开火
+					66%的几率不消耗弹药
+					'''
 			}
 
 			Photovisceratorold: {
-				DisplayName: Photovisceratorold
-				Tooltip: ""
+				DisplayName: 星火解离者[legacy]
+				Tooltip:
+					'''
+					发射持续性的星流火焰，分解一切
+					按住右键发射追踪星流火焰，可以黏附在敌人身上灼烧它们
+					使用凝胶作为弹药
+					90%几率节省弹药
+					'''
 			}
 		}
 
 		Rogue: {
 			ExoTheApostle: {
-				DisplayName: Exo The Apostle
-				Tooltip: ""
+				DisplayName: 圣火之枪[legacy]
+				Tooltip:
+					'''
+					扔出横贯苍穹的长枪
+					长枪命中敌人会爆出跟踪的能量匕首，同时召唤另一枚长枪追加打击
+					潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪
+					“它所传达的真相，足以让世间为之癫狂”
+					'''
 			}
 
 			PhantasmalRuinold: {
-				DisplayName: Phantasmal Ruinold
-				Tooltip: ""
+				DisplayName: 幻魂归墟[legacy]
+				Tooltip:
+					'''
+					发射巨大的幽魂投矛，并沿途释放跟踪灵魂，命中敌人时会爆炸并放出幽魂
+					潜伏攻击会沿途释放更多的长枪幻影
+					'''
 			}
 
 			PhantomLance: {
-				DisplayName: Phantom Lance
-				Tooltip: ""
+				DisplayName: 幻影投矛[legacy]
+				Tooltip:
+					'''
+					发射一把分裂出迷失幽灵的长矛
+					随着时间缓慢减速后消失
+					迷失幽灵造成的伤害较小
+					潜伏攻击下长矛不会减速并且迷失幽灵具有全额伤害
+					'''
 			}
 
 			Quasar: {
-				DisplayName: Quasar
-				Tooltip: ""
+				DisplayName: 类星体[legacy]
+				Tooltip:
+					'''
+					万象天引！
+					潜伏攻击造成更多爆炸，当敌人处于爆炸范围内时会持续生成落星造成伤害
+					'''
 			}
 
 			Supernovaold: {
-				DisplayName: Supernovaold
-				Tooltip: ""
+				DisplayName: 超新星[legacy]
+				Tooltip:
+					'''
+					命中时产生巨大爆炸，炸出大量的火花和跟踪能量
+					潜伏攻击造成更大的爆炸，并且会沿途生成跟踪火花
+					'''
 			}
 		}
 	}
 
 	VoidVortex: {
-		DisplayName: Void Vortex
-		Tooltip: ""
+		DisplayName: 虚空漩涡[legacy]
+		Tooltip:
+			'''
+			在光标处召唤一个由磁暴球体组成的漩涡
+			球体会在大范围内自动攻击敌人
+			'''
 	}
 
 	ArkoftheAncients: {
-		DisplayName: Arkofthe Ancients
-		Tooltip: ""
+		DisplayName: 远古方舟[legacy]
+		Tooltip: 天堂之剑，用于击败邪恶
 	}
 
 	ArkoftheCosmosold: {
-		DisplayName: Arkofthe Cosmosold
-		Tooltip: ""
+		DisplayName: 鸿蒙方舟[legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			击中敌人后根据环境给予你增益
+			月亮事件中同样会变化
+			'''
 	}
 
 	ArkoftheElements: {
-		DisplayName: Arkofthe Elements
-		Tooltip: ""
+		DisplayName: 元素方舟[legacy]
+		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 	}
 
 	BiomeBlade: {
-		DisplayName: Biome Blade
-		Tooltip: ""
+		DisplayName: 环境之刃[legacy]
+		Tooltip: 根据你所处生态，发射不同的弹幕
 	}
 
 	BloodyEdge: {
-		DisplayName: Bloody Edge
-		Tooltip: ""
+		DisplayName: 血锋[legacy]
+		Tooltip: 攻击敌人时有几率让你回复生命值，并引发鲜血爆炸
 	}
 
 	Exobladeold: {
-		DisplayName: Exobladeold
-		Tooltip: ""
+		DisplayName: 星流之刃[legacy]
+		Tooltip:
+			'''
+			远古之刃，由亚利姆最优秀的工匠嘉登锻造
+			真近战击中敌人会召唤彗星跟踪敌人
+			真近战多次命中敌人会爆炸
+			'''
 	}
 
 	ExoFlail: {
-		DisplayName: Exo Flail
-		Tooltip: ""
+		DisplayName: 星流链刃[legacy]
+		Tooltip:
+			'''
+			攻击时发射不稳定能量追踪你敌人
+			每攻击五次会扔出一个星流链球，命中敌人会产生多次爆炸
+			'''
 	}
 
 	FourSeasonsGalaxiaold: {
-		DisplayName: Four Seasons Galaxiaold
-		Tooltip: ""
+		DisplayName: 银河[legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			击中敌人后根据环境给予你增益
+			月亮事件中同样会变化
+			'''
 	}
 
 	OmegaBiomeBlade: {
-		DisplayName: Omega Biome Blade
-		Tooltip: ""
+		DisplayName: 欧米茄环境之刃[legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			月亮事件中同样会变化
+			'''
 	}
 
 	AncientShiv: {
-		DisplayName: Ancient Shiv
-		Tooltip: ""
+		DisplayName: 远古短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			真近战多次击中敌人后会发射滞留的远古能量
+			'''
 	}
 
 	BloodyRupture: {
-		DisplayName: Bloody Rupture
-		Tooltip: ""
+		DisplayName: 血腥短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			发射跟踪血珠攻击敌人
+			真近战击中敌人后会引发鲜血爆炸
+			'''
 	}
 
 	ColdheartIcicle: {
-		DisplayName: Coldheart Icicle
-		Tooltip: ""
+		DisplayName: 寒心冰柱[legacy]
+		Tooltip:
+			'''
+			按百分比消耗敌人的生命值
+			不能暴击
+			'''
 	}
 
 	EutrophicShank: {
-		DisplayName: Eutrophic Shank
-		Tooltip: ""
+		DisplayName: 水华刺剑[legacy]
+		Tooltip: 发射电火花
 	}
 
 	ExcaliburShortsword: {
-		DisplayName: Excalibur Shortsword
-		Tooltip: ""
+		DisplayName: 胜利誓约之短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			命中敌人时赋予你无敌帧
+			'''
 	}
 
 	ExoGladius: {
-		DisplayName: Exo Gladius
-		Tooltip: ""
+		DisplayName: 星流短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			用剑刃击中敌人时使你短时间内进入无敌时间
+			并召唤彗星从天而降
+			发射能够召唤彩虹剑气域流星的星流光球
+			'''
 	}
 
 	FlameburstShortsword: {
-		DisplayName: Flameburst Shortsword
-		Tooltip: ""
+		DisplayName: 狱炎短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			命中敌人时引发狱炎爆炸
+			'''
 	}
 
 	LeechingDagger: {
-		DisplayName: Leeching Dagger
-		Tooltip: ""
+		DisplayName: 汲血短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			发射高速的暗影之眼
+			'''
 	}
 
 	NightsStabber: {
-		DisplayName: Nights Stabber
-		Tooltip: ""
+		DisplayName: 永夜短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			发射追踪的黑暗能量流
+			'''
 	}
 
 	SporeKnife: {
-		DisplayName: Spore Knife
-		Tooltip: ""
+		DisplayName: 孢子短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			发射树叶弹幕
+			真近战多次击中敌人会发射孢子云
+			'''
 	}
 
 	TerraShiv: {
-		DisplayName: Terra Shiv
-		Tooltip: ""
+		DisplayName: 泰拉短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			发射跟踪弹幕
+			'''
 	}
 
 	TrueExcaliburShortsword: {
-		DisplayName: True Excalibur Shortsword
-		Tooltip: ""
+		DisplayName: 真·誓约胜利短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			带有轻微的弹道矫正
+			'''
 	}
 
 	TrueNightsStabber: {
-		DisplayName: True Nights Stabber
-		Tooltip: ""
+		DisplayName: 真·永夜短剑[legacy]
+		Tooltip:
+			'''
+			不要低估短剑的力量
+			带有轻微的弹道矫正
+			'''
 	}
 
 	TerraEdge: {
-		DisplayName: Terra Edge
-		Tooltip: ""
+		DisplayName: 泰拉之锋[legacy]
+		Tooltip:
+			'''
+			击中敌怪时会治愈玩家
+			发射造成灵液减益的绿色剑气
+			'''
 	}
 
 	TrueArkoftheAncients: {
-		DisplayName: True Arkofthe Ancients
-		Tooltip: ""
+		DisplayName: 真·远古方舟[legacy]
+		Tooltip: 天堂之剑，用于除尽邪恶
 	}
 
 	TrueBiomeBlade: {
-		DisplayName: True Biome Blade
-		Tooltip: ""
+		DisplayName: 真·环境之刃[legacy]
+		Tooltip: 根据你所处生态，发射不同的剑气
 	}
 
 	TrueBloodyEdge: {
-		DisplayName: True Bloody Edge
-		Tooltip: ""
+		DisplayName: 真·血锋[legacy]
+		Tooltip:
+			'''
+			攻击敌人时有几率让你回复生命值，并引发鲜血爆炸
+			发射弹幕的一段时间后会跟踪
+			'''
 	}
 
 	CelestialObliterator: {
-		DisplayName: Celestial Obliterator
-		Tooltip: ""
+		DisplayName: 热寂重组者[legacy]
+		Tooltip:
+			'''
+			发射一连串子弹与散弹
+			定时发射跟踪的星流导弹
+			“用弹幕风暴歼灭你的敌人”
+			'''
 	}
 
 	HeavenlyGaleold: {
-		DisplayName: Heavenly Galeold
-		Tooltip: ""
+		DisplayName: 天堂之风[legacy]
+		Tooltip:
+			'''
+			将木箭转化为 5 支随机的星流箭矢
+			绿色的星流箭矢命中形成星流风暴
+			蓝色的星流箭矢会召唤一系列后续箭矢
+			橙色的星流箭矢会造成火焰爆炸
+			青色的星流箭矢会无限穿透并无视无敌帧
+			使用的任何非木箭都会造成1.25倍的伤害
+			（可在配置文件切换全转化）
+			66% 的几率不消耗弹药
+			'''
 	}
 
 	Minigun: {
-		DisplayName: Minigun
-		Tooltip: ""
+		DisplayName: 速射机枪[legacy]
+		Tooltip: 80% 的几率不消耗弹药
 	}
 
 	Skullmasher: {
-		DisplayName: Skullmasher
-		Tooltip: ""
+		DisplayName: 碎颅者[legacy]
+		Tooltip:
+			'''
+			让他们头痛欲裂
+			发射四发高速子弹，命中后召唤一束额外的高速子弹和普通子弹
+			（可在配置文件切换全转化）
+			'''
 	}
 
 	StarCannonEX: {
-		DisplayName: Star Cannon E X
-		Tooltip: ""
+		DisplayName: 星辰炮EX[legacy]
+		Tooltip: 发射普通、天怒、幻空星辰
 	}
 
 	MidnightSunBeaconold: {
-		DisplayName: Midnight Sun Beaconold
-		Tooltip: ""
+		DisplayName: 极昼信标[legacy]
+		Tooltip: 召唤一个UFO来蒸发你的敌人
 	}
 }
 
 Projectiles: {
-	Magic.CIVividBeam.DisplayName: C I Vivid Beam
-	Climax2.DisplayName: Climax2
-	ClimaxBeam2.DisplayName: Climax Beam2
-	Crescent.DisplayName: Crescent
-	EnormousConsumingVortexold.DisplayName: Enormous Consuming Vortexold
-	HadopelagicEcho2.DisplayName: Hadopelagic Echo2
-	HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
-	StratusSphereProj.DisplayName: Stratus Sphere Proj
-	SubsumingTentacle.DisplayName: Subsuming Tentacle
-	Vortex.DisplayName: Vortex
-	BiomeOrb.DisplayName: Biome Orb
-	BloodyEdgeEnergySword.DisplayName: Bloody Edge Energy Sword
-	BlueAura.DisplayName: Blue Aura
+	Magic.CIVividBeam.DisplayName: 耀界光束
+	Climax2.DisplayName: 磁暴球体
+	ClimaxBeam2.DisplayName: 磁暴射线
+	Crescent.DisplayName: 新月
+	EnormousConsumingVortexold.DisplayName: 星流旋涡
+	HadopelagicEcho2.DisplayName: 冥渊回音
+	HadopelagicEchoSoundwave.DisplayName: 冥渊音波
+	StratusSphereProj.DisplayName: 幻云球体
+	SubsumingTentacle.DisplayName: 归元触手
+	Vortex.DisplayName: 旋涡
+	BiomeOrb.DisplayName: 环境光束
+	BloodyEdgeEnergySword.DisplayName: 血锋
+	BlueAura.DisplayName: 远古能量
 
 	Melee: {
-		CosmicShivBallold.DisplayName: Cosmic Shiv Ballold
-		CosmicShivBladeold.DisplayName: Cosmic Shiv Bladeold
-		ElementBallShivold.DisplayName: Element Ball Shivold
-		ExoFlailProj.DisplayName: Exo Flail Proj
-		EyeOfNightCell.DisplayName: Eye Of Night Cell
-		GalaxyStarold.DisplayName: Galaxy Starold
-		SHIVold.DisplayName: S H I Vold
-		AncientShivProj.DisplayName: Ancient Shiv Proj
-		BloodyRuptureProj.DisplayName: Bloody Rupture Proj
-		ColdheartIcicleProj.DisplayName: Coldheart Icicle Proj
-		CosmicShivProjold.DisplayName: Cosmic Shiv Projold
-		ElementalShivoldProj.DisplayName: Elemental Shivold Proj
-		EutrophicShankProj.DisplayName: Eutrophic Shank Proj
-		ExcaliburShortswordProj.DisplayName: Excalibur Shortsword Proj
-		ExoGladiusProj.DisplayName: Exo Gladius Proj
-		FlameburstShortswordProj.DisplayName: Flameburst Shortsword Proj
-		LeechingDaggerProj.DisplayName: Leeching Dagger Proj
-		NightsStabberProj.DisplayName: Nights Stabber Proj
-		SporeKnifeProj.DisplayName: Spore Knife Proj
-		TerraShivProj.DisplayName: Terra Shiv Proj
-		TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
-		TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
-		ExoJet.DisplayName: Exo Jet
+		CosmicShivBallold.DisplayName: 宇宙能量
+		CosmicShivBladeold.DisplayName: 宇宙刀刃
+		ElementBallShivold.DisplayName: 元素之球
+		ExoFlailProj.DisplayName: 星流链刃
+		EyeOfNightCell.DisplayName: 永夜之眼
+		GalaxyStarold.DisplayName: 天星陨石
+		SHIVold.DisplayName: 元素剑刃
+		AncientShivProj.DisplayName: 远古短剑
+		BloodyRuptureProj.DisplayName: 血腥短剑
+		ColdheartIcicleProj.DisplayName: 寒心冰柱
+		CosmicShivProjold.DisplayName: 宇宙短剑
+		ElementalShivoldProj.DisplayName: 元素短剑
+		EutrophicShankProj.DisplayName: 水化刺剑
+		ExcaliburShortswordProj.DisplayName: 胜利誓约之短剑
+		ExoGladiusProj.DisplayName: 星流短剑
+		FlameburstShortswordProj.DisplayName: 狱炎短剑
+		LeechingDaggerProj.DisplayName: 汲血短剑
+		NightsStabberProj.DisplayName: 永夜短剑
+		SporeKnifeProj.DisplayName: 孢子短剑
+		TerraShivProj.DisplayName: 泰拉短剑
+		TrueExcaliburShortswordProj.DisplayName: 真·胜利誓约之短剑
+		TrueNightsStabberProj.DisplayName: 真·永夜短剑
+		ExoJet.DisplayName: 星流射流
 	}
 
-	ElementBall.DisplayName: Element Ball
-	EonBeam.DisplayName: Eon Beam
-	EonBeamV2.DisplayName: Eon Beam V2
-	EonBeamV3.DisplayName: Eon Beam V3
-	EonBeamV4.DisplayName: Eon Beam V4
-	Exobeamold.DisplayName: Exobeamold
-	Exoboomold.DisplayName: Exoboomold
-	Exoboompersistentold.DisplayName: Exoboompersistentold
-	ExoFlailEnergy.DisplayName: Exo Flail Energy
-	ExoFlailProj2.DisplayName: Exo Flail Proj2
-	ExoGladComet.DisplayName: Exo Glad Comet
-	ExoGladiusBeam.DisplayName: Exo Gladius Beam
-	ExoGladProj.DisplayName: Exo Glad Proj
-	ExoGladSpears.DisplayName: Exo Glad Spears
-	Galaxia.DisplayName: Galaxia
-	Galaxia2.DisplayName: Galaxia2
-	MurasamaSlashold.DisplayName: Murasama Slashold
-	NightStabber2.DisplayName: Night Stabber2
-	OmegaBiomeOrb.DisplayName: Omega Biome Orb
-	ShortExcaliburBeam.DisplayName: Short Excalibur Beam
-	ShortNightBeam.DisplayName: Short Night Beam
-	ShortTerraBeam.DisplayName: Short Terra Beam
-	TerraBall.DisplayName: Terra Ball
-	TerraEdgeBeam.DisplayName: Terra Edge Beam
-	TerraEdgeEnergySword.DisplayName: Terra Edge Energy Sword
+	ElementBall.DisplayName: 元素之球
+	EonBeam.DisplayName: 远古光束
+	EonBeamV2.DisplayName: 远古光束
+	EonBeamV3.DisplayName: 远古光束
+	EonBeamV4.DisplayName: 远古光束
+	Exobeamold.DisplayName: 星流光束
+	Exoboomold.DisplayName: 星流爆炸
+	Exoboompersistentold.DisplayName: 星流爆炸
+	ExoFlailEnergy.DisplayName: 星流能量
+	ExoFlailProj2.DisplayName: 星流链球
+	ExoGladComet.DisplayName: 星流陨石
+	ExoGladiusBeam.DisplayName: 星流射线
+	ExoGladProj.DisplayName: 星流短剑
+	ExoGladSpears.DisplayName: 星流长枪
+	Galaxia.DisplayName: 银河之星
+	Galaxia2.DisplayName: 鸿蒙之星
+	MurasamaSlashold.DisplayName: 鬼妖村正
+	NightStabber2.DisplayName: 黑暗能量
+	OmegaBiomeOrb.DisplayName: 欧米伽环境光束
+	ShortExcaliburBeam.DisplayName: 胜利誓约之光
+	ShortNightBeam.DisplayName: 永夜光束
+	ShortTerraBeam.DisplayName: 泰拉光束
+	TerraBall.DisplayName: 泰拉光球
+	TerraEdgeBeam.DisplayName: 泰拉射线
+	TerraEdgeEnergySword.DisplayName: 泰拉之锋
 	TrueBiomeOrb.DisplayName: True Biome Orb
-	TrueBloodyBladeProj.DisplayName: True Bloody Blade Proj
-	TrueBloodyEdgeEnergySword.DisplayName: True Bloody Edge Energy Sword
-	BloodflareSoulold.DisplayName: Bloodflare Soulold
+	TrueBloodyBladeProj.DisplayName: 血刃
+	TrueBloodyEdgeEnergySword.DisplayName: 真·血锋
+	BloodflareSoulold.DisplayName: 血炎灵魂
 
 	Ranged: {
-		DragonsBreathRound.DisplayName: Dragons Breath Round
-		ExoFireold.DisplayName: Exo Fireold
-		ExoFlareClusterold.DisplayName: Exo Flare Clusterold
-		ExoFlareold.DisplayName: Exo Flareold
-		ExoLightold.DisplayName: Exo Lightold
-		ExoSparkold.DisplayName: Exo Sparkold
-		ExoSpearBack.DisplayName: Exo Spear Back
-		VanquisherArrowoldMain.DisplayName: Vanquisher Arrowold Main
+		DragonsBreathRound.DisplayName: 龙息子弹
+		ExoFireold.DisplayName: 星流火焰
+		ExoFlareClusterold.DisplayName: 星流耀斑集群
+		ExoFlareold.DisplayName: 星流耀斑
+		ExoLightold.DisplayName: 星流之光
+		ExoSparkold.DisplayName: 星流火花
+		ExoSpearBack.DisplayName: 星流火种
+		VanquisherArrowoldMain.DisplayName: 弑神箭矢
 	}
 
-	ExoArrowBlue.DisplayName: Exo Arrow Blue
-	ExoArrowBlue2.DisplayName: Exo Arrow Blue2
-	ExoArrowGreen.DisplayName: Exo Arrow Green
-	ExoArrowTeal.DisplayName: Exo Arrow Teal
-	ExoGunBlast.DisplayName: Exo Gun Blast
-	ExoMark.DisplayName: Exo Mark
-	ExoTornado.DisplayName: Exo Tornado
-	FallenStarProj.DisplayName: Fallen Star Proj
-	OrangeExoArrow.DisplayName: Orange Exo Arrow
-	ExoSpearextraProj.DisplayName: Exo Spearextra Proj
-	ExoSpearProj.DisplayName: Exo Spear Proj
-	ExoSpearStealthProj.DisplayName: Exo Spear Stealth Proj
-	ExoSpearTrail.DisplayName: Exo Spear Trail
+	ExoArrowBlue.DisplayName: 星流箭矢（蓝）
+	ExoArrowBlue2.DisplayName: 星流箭矢（蓝）
+	ExoArrowGreen.DisplayName: 星流箭矢（绿）
+	ExoArrowTeal.DisplayName: 星流箭矢（青）
+	ExoGunBlast.DisplayName: 星流爆炸
+	ExoMark.DisplayName: 星流标记
+	ExoTornado.DisplayName: 星流旋风
+	FallenStarProj.DisplayName: 坠落之星
+	OrangeExoArrow.DisplayName: 星流箭矢（橙）
+	ExoSpearextraProj.DisplayName: 星流长矛
+	ExoSpearProj.DisplayName: 星流长枪
+	ExoSpearStealthProj.DisplayName: 星流长枪
+	ExoSpearTrail.DisplayName: 星流匕首
 
 	Rogue: {
-		PhantasmalRuinGhost.DisplayName: Phantasmal Ruin Ghost
-		PhantasmalRuinProjold.DisplayName: Phantasmal Ruin Projold
-		PhantasmalSoulold.DisplayName: Phantasmal Soulold
-		PhantomLanceProj.DisplayName: Phantom Lance Proj
-		SupernovaBombold.DisplayName: Supernova Bombold
-		SupernovaHoming.DisplayName: Supernova Homing
-		SupernovaSpike.DisplayName: Supernova Spike
+		PhantasmalRuinGhost.DisplayName: 幻影灵魂
+		PhantasmalRuinProjold.DisplayName: 幻魂归墟
+		PhantasmalSoulold.DisplayName: 灵魂
+		PhantomLanceProj.DisplayName: 幻影投矛
+		SupernovaBombold.DisplayName: 超新星爆炸
+		SupernovaHoming.DisplayName: 星流能量
+		SupernovaSpike.DisplayName: 星流火花
 	}
 
-	Quasar2.DisplayName: Quasar2
-	QuasarKnife.DisplayName: Quasar Knife
-	MidnightSunBeaconProjold.DisplayName: Midnight Sun Beacon Projold
-	MidnightSunBeamold.DisplayName: Midnight Sun Beamold
-	MidnightSunLaserold.DisplayName: Midnight Sun Laserold
-	MidnightSunSkyBeamold.DisplayName: Midnight Sun Sky Beamold
-	MidnightSunSkyBeamolddownup.DisplayName: Midnight Sun Sky Beamolddownup
-	MidnightSunUFOold.DisplayName: Midnight Sun U F Oold
-	GodSlayerBlaze.DisplayName: God Slayer Blaze
-	GodSlayerOrb.DisplayName: God Slayer Orb
-	GodSlayerPhantom.DisplayName: God Slayer Phantom
+	Quasar2.DisplayName: 类星体
+	QuasarKnife.DisplayName: 类星体
+	MidnightSunBeaconProjold.DisplayName: 极昼信标
+	MidnightSunBeamold.DisplayName: 极昼光束
+	MidnightSunLaserold.DisplayName: 极昼激光
+	MidnightSunSkyBeamold.DisplayName: 极昼光束
+	MidnightSunSkyBeamolddownup.DisplayName: 极昼光束
+	MidnightSunUFOold.DisplayName: 极昼飞行物
+	GodSlayerBlaze.DisplayName: 弑神火花
+	GodSlayerOrb.DisplayName: 弑神光球
+	GodSlayerPhantom.DisplayName: 弑神灵魂
 
 	Typeless: {
-		HolyExplosionold.DisplayName: Holy Explosionold
-		VanquisherArrowSplit.DisplayName: Vanquisher Arrow Split
+		HolyExplosionold.DisplayName: 圣火爆炸
+		VanquisherArrowSplit.DisplayName: 弑神箭矢
 	}
 
-	TheDeadlyMicrobeProjectile.DisplayName: The Deadly Microbe Projectile
+	TheDeadlyMicrobeProjectile.DisplayName: 腐烂生物
 }
 
 Configs: {
 	CalamityInheritanceConfig: {
-		DisplayName: Calamity Inheritance Config
-		Headers.Gameplay: Gameplay Header
+		DisplayName: Calamity Inheritance 设置
+		Headers.Gameplay: 游戏设置
 
 		ElementalQuiversplit: {
-			Label: Elemental Quiversplit
-			Tooltip: ""
+			Label: 元素箭袋分裂
+			Tooltip: 关闭可以防止卡顿
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: Elemental Quiver Splitstyle
-			Tooltip: ""
+			Label: 元素箭袋分裂样式
+			Tooltip:
+				'''
+				1：每60帧分裂一次，分裂弹幕剩余时间变短
+				2：每60帧分裂一次，弹幕剩余时间与主弹幕相同
+				3：随机分裂，分裂弹幕剩余时间变短
+				4：随机分裂，弹幕剩余时间与主弹幕相同
+				'''
 		}
 
 		TheSpongeBarrier: {
-			Label: The Sponge Barrier
+			Label: 化绵留香石护盾
 			Tooltip: ""
 		}
 
 		BoCLoreUnconditional: {
-			Label: Bo C Lore Unconditional
+			Label: 克苏鲁之脑传颂无需在指定环境
 			Tooltip: ""
 		}
 
 		GodSlayerSetBonusesChange: {
-			Label: God Slayer Set Bonuses Change
-			Tooltip: ""
+			Label: 弑神套装效果切换
+			Tooltip:
+				'''
+				1：只有弑神复活
+				2：只有弑神冲刺
+				3：同时具有冲刺与复活
+				'''
 		}
 
 		silvastun: {
-			Label: silvastun
-			Tooltip: ""
+			Label: 林海眩晕是否开启
+			Tooltip: 关闭后不会造成林海眩晕减益来降低敌怪移动速度
 		}
 
 		ExoSperaHitEffect: {
-			Label: Exo Spera Hit Effect
-			Tooltip: ""
+			Label: 圣火之枪额外弹幕
+			Tooltip: 如果你觉得平A弹幕粒子太多，可以关闭一部分
 		}
 
 		AmmoConversion: {
-			Label: Ammo Conversion
-			Tooltip: ""
+			Label: 弹药转换
+			Tooltip: 关闭后不会转换除火枪子弹外的所有子弹
 		}
 
 		turnoffCorner: {
-			Label: turnoff Corner
-			Tooltip: ""
+			Label: 关闭角标
+			Tooltip: 关闭后，Mod物品右下角不会出现时钟角标
 		}
 	}
 }

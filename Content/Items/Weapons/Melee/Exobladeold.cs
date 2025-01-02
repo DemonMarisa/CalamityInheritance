@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetDefaults()
         {
             Item.width = 80;
-            Item.damage = 2500;
+            Item.damage = 900;
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;

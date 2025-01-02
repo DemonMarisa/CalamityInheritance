@@ -576,7 +576,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.buffImmune[ModContent.BuffType<CrushDepth>()] = true;
                     Player.lifeRegen += 3;
                 }
-                if (!modPlayer1.ZoneAbyss || modPlayer1.ZoneSulphur)
+                if (!modPlayer1.ZoneAbyss || !modPlayer1.ZoneSulphur)
                 {
                     Player.endurance -= 0.1f;
                     Player.statDefense -= 15;

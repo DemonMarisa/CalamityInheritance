@@ -160,10 +160,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 CalamityUtils.HomeInOnNPC(Projectile, true, 2000, 50f, 100);
             }
-            else
-            {
-                //空
-            }
         }
 
         public override bool PreDraw(ref Color lightColor)

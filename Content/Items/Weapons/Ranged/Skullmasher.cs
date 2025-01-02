@@ -67,23 +67,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             for (int projectiles = 0; projectiles < 5; projectiles++)
             {
-                float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
-                float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
-                Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), type, damage, knockback, player.whoAmI);
-                if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
-                {
-                    type = ModContent.ProjectileType<AMRShot>();
-                }
                 if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
                 {
+                    float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
+                    float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), ModContent.ProjectileType<AMRShot>(), damage, knockback, player.whoAmI);
+                }
+                if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+                {
+                    float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
+                    float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), type, damage, knockback, player.whoAmI);
                     if (type == ProjectileID.Bullet)
                     {
                         type = ModContent.ProjectileType<AMRShot>();
                     }
                     if (type != ModContent.ProjectileType<AMRShot>())
-                    {
+                        {
                         modPlayer.AMRextra = true;
                     }
+                    
                 }
             }
             return false;

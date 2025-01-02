@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Items
                 {
                     Texture2D iconTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Mark").Value;
                     Vector2 iconPosition = position + new Vector2(4f, 4f);
-                    float iconScale = 0.25f;
+                    float iconScale = 0.45f;
 
                     spriteBatch.Draw(iconTexture, iconPosition, null, Color.White, 0f, Vector2.Zero, iconScale, SpriteEffects.None, 0f);
                 }

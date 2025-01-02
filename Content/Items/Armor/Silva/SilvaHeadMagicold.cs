@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             var modPlayer = player.Calamity();
             modPlayer.silvaSet = true;
             modPlayer1.silvaMageold = true;
-            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<SilvaArmorold>("CommonSetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 
         public override void UpdateEquip(Player player)

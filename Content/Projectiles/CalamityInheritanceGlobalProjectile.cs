@@ -165,7 +165,7 @@ namespace CalamityInheritance.Content.Projectiles
                 if (modPlayer.AMRextra == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
                 {
                     IEntitySource source = projectile.GetSource_FromThis();
-                    int extraProjectileAmt = 5;
+                    int extraProjectileAmt = 8;
                     for (int x = 0; x < extraProjectileAmt; x++)
                     {
                         if (projectile.owner == Main.myPlayer)

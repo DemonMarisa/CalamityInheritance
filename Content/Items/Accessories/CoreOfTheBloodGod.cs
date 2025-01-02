@@ -40,8 +40,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             modPlayer2.contactDamageReduction += 0.5f;
             modPlayer2.healingPotionMultiplier += 0.25f;
             player.endurance += 0.1f;
-            player.GetDamage<GenericDamageClass>() += 0.12f;
-            player.GetCritChance<GenericDamageClass>() += 12;
         }
 
         public override void AddRecipes()

@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                 modPlayer.silvaSummon = true;
                 modPlayer1.silvaSummonEx = true;
                 modPlayer.WearingPostMLSummonerSet = true;
-                player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<SilvaArmorold>("CommonSetBonus");
+                player.setBonus = this.GetLocalizedValue("SetBonus");
                 if (player.whoAmI == Main.myPlayer)
                 {
                     var source = player.GetSource_ItemUse(Item);

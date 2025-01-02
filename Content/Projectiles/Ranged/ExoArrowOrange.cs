@@ -80,15 +80,15 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
             for (int d = 0; d < 4; d++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 127, 0f, 0f, 50, default, 1f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare, 0f, 0f, 50, default, 1f);
             }
             for (int d = 0; d < 40; d++)
             {
-                int orange = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 127, 0f, 0f, 0, default, 1.5f);
+                int orange = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare, 0f, 0f, 0, default, 1.5f);
                 Main.dust[orange].noGravity = true;
                 Main.dust[orange].noLight = true;
                 Main.dust[orange].velocity *= 3f;
-                orange = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 127, 0f, 0f, 50, default, 1f);
+                orange = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare, 0f, 0f, 50, default, 1f);
                 Main.dust[orange].velocity *= 2f;
                 Main.dust[orange].noGravity = true;
                 Main.dust[orange].noLight = true;
