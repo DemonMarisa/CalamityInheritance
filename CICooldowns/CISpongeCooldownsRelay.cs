@@ -28,7 +28,7 @@ namespace CalamityInheritance.CICooldowns
         public static new string ID => "CISpongeDurabilityRelay";
         public override bool CanTickDown => !instance.player.CalamityInheritance().CIsponge || instance.timeLeft <= 0;
         public override bool ShouldDisplay => instance.player.CalamityInheritance().CIsponge;
-        public override LocalizedText DisplayName => GetText($"UI.Cooldowns.{ID}");
+        public override LocalizedText DisplayName => CalamityInheritanceUtils.GetText($"UI.Cooldowns.{ID}");
         public override string Texture => "CalamityInheritance/CICooldowns/SpongeDurability";
         public override string OutlineTexture => "CalamityInheritance/CICooldowns/SpongeOutline";
         public override string OverlayTexture => "CalamityInheritance/CICooldowns/SpongeOverlay";
@@ -85,7 +85,7 @@ namespace CalamityInheritance.CICooldowns
 
         public static new string ID => "CISpongeRechargeRelay";
         public override bool ShouldDisplay => true;
-        public override LocalizedText DisplayName => GetText($"UI.Cooldowns.{ID}");
+        public override LocalizedText DisplayName => CalamityInheritanceUtils.GetText($"UI.Cooldowns.{ID}");
         public override string Texture => "CalamityInheritance/CICooldowns/SpongeRecharge";
         public override string OutlineTexture => "CalamityInheritance/CICooldowns/SpongeOutline";
         public override string OverlayTexture => "CalamityInheritance/CICooldowns/SpongeOverlay";

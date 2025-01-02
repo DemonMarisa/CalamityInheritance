@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false; // Return false because we've manually created the projectiles.
         }
 
-        private void OnHitEffects(Player player)
+        public void OnHitEffects(Player player)
         {
             if (player.moonLeech)
                 return;

@@ -162,6 +162,7 @@ namespace CalamityInheritance.Content.Projectiles
 
             modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {
+
                 if (modPlayer.AMRextra == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
                 {
                     IEntitySource source = projectile.GetSource_FromThis();

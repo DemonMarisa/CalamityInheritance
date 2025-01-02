@@ -62,7 +62,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.lifeMagnet = true;
                 Player.lifeRegen += 10;
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.25);
+                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 25;
             }
 
             if (draconicSurge)

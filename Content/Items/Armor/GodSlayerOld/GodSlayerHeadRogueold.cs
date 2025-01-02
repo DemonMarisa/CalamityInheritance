@@ -46,12 +46,22 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             var modPlayer = player.Calamity();
-            modPlayer1.GodSlayerReborn = true;
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            {
+                modPlayer1.GodSlayerReborn = true;
+            }
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            {
+                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                {
+                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    player.dash = 0;
+                }
+            }
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
             modPlayer.rogueStealthMax += 1.4f;
             modPlayer.wearingRogueArmor = true;
-            var hotkey = CalamityKeybinds.GodSlayerDashHotKey.TooltipHotkeyString();
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 

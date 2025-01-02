@@ -8,6 +8,9 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Localization\Mods.CalamityMod.UI.hjson" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Remove="Buffs\ArmorShattering.png" />
 		<None Remove="Buffs\CadancesGrace.png" />
 		<None Remove="Buffs\DraconicSurgeBuff.png" />

@@ -1,5 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.TownNPCs;
 using System;
@@ -23,6 +25,10 @@ namespace CalamityInheritance.NPCs
             if (type == ModContent.NPCType<DILF>())
             {
                 shop.AddWithCustomValue(ModContent.ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));
+            }
+            if (type == ModContent.NPCType<THIEF>())
+            {
+                shop.AddWithCustomValue(ModContent.ItemType<SylvanSlasher>(), Item.buyPrice(gold: 100), Condition.DownedMoonLord);
             }
         }
         #endregion

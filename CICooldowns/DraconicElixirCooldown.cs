@@ -19,7 +19,7 @@ namespace CalamityInheritance.CICooldowns
     {
         public static new string ID => "DraconicElixirCooldown";
         public override bool ShouldDisplay => true;
-        public override LocalizedText DisplayName => GetText($"UI.Cooldowns.{ID}");
+        public override LocalizedText DisplayName => CalamityInheritanceUtils.GetText($"UI.Cooldowns.{ID}");
         public override string Texture => "CalamityInheritance/CICooldowns/DraconicElixirCooldown";
         public override string OutlineTexture => "CalamityInheritance/CICooldowns/DraconicElixirCooldownOutline";
         public override string OverlayTexture => "CalamityInheritance/CICooldowns/DraconicElixirCooldownOverlay";

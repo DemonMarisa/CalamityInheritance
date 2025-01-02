@@ -19,6 +19,7 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -286,6 +287,15 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #endregion
         }
+        public override void PostUpdate()
+        {
+            // 检查当前手持武器是否是目标武器
+            if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(Skullmasher))
+            {
+                AMRextra = false;
+            }
+        }
+
         public override void PreUpdate()
         {
             if (HasCustomDash && UsedDash.IsOmnidirectional)

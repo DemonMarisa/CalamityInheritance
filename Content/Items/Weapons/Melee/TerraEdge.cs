@@ -80,6 +80,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 107);
             }
         }
+        public void OnHitEffects(Player player)
+        {
+            if (player.moonLeech)
+                return;
+
+            int healAmount = Main.rand.Next(3) + 3;
+            if (Main.rand.NextBool(2))
+            {
+                player.statLife += healAmount;
+                player.HealEffect(healAmount);
+            }
+        }
+
         public void OnHitHealEffect(int damage)
         {
             int heal = (int)Math.Round(damage * 0.025);

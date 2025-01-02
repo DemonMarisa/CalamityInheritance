@@ -211,7 +211,6 @@ Items: {
 		DisplayName: 真菌壳[legacy]
 		Tooltip:
 			'''
-			提供6点防御
 			被击中后会在你周围爆出蘑菇孢子
 			蘑菇孢子5秒后便会爆炸，造成70点基础伤害，可受最强职业加成
 			'''
@@ -313,7 +312,7 @@ Items: {
 				SetBonus:
 					'''
 					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
-					按下[KEY]提供龙蒿斗篷增益，在10秒内接触伤害降低50%
+					按下{0}提供龙蒿斗篷增益，在10秒内接触伤害降低50%
 					连续真近战打击会获得鲜血狂怒增益
 					受到超过80点伤害会向八个方向发射弑神飞镖
 					近战武器可以眩晕敌人
@@ -337,7 +336,7 @@ Items: {
 					获得龙蒿，血岩，弑神，林海套装的绝大多数效果
 					敌人生成数量降低
 					远程弹幕击中时，会分裂出生命能量与龙蒿爆炸
-					按下[KEY]释放16个血岩灵魂追踪敌人
+					按下{0}释放16个血岩灵魂追踪敌人
 					远程武器每2.5秒发射一枚弑神榴弹
 					允许玩家攻击时以溢出的暴击概率造成四倍伤害
 					远程攻击速度增加20%
@@ -1198,6 +1197,11 @@ Items: {
 					“它的威严激发了无与伦比的天才壮举”
 					'''
 			}
+
+			TheWandold: {
+				DisplayName: 神杖·暴风灼炎[legacy]
+				Tooltip: 一杖御万杖
+			}
 		}
 
 		Melee: {
@@ -1305,6 +1309,16 @@ Items: {
 					'''
 					命中时产生巨大爆炸，炸出大量的火花和跟踪能量
 					潜伏攻击造成更大的爆炸，并且会沿途生成跟踪火花
+					'''
+			}
+
+			SylvanSlasher: {
+				DisplayName: 林海倾绝刃[legacy]
+				Tooltip:
+					'''
+					在光标处召唤一把高速攻击的短剑
+					命中后回复潜行值并向反方向发射剑气
+					不消耗潜行值并且无法产生潜伏攻击
 					'''
 			}
 		}
@@ -1581,10 +1595,34 @@ Items: {
 		DisplayName: 极昼信标[legacy]
 		Tooltip: 召唤一个UFO来蒸发你的敌人
 	}
+
+	GrandDad: {
+		DisplayName: 雄祖之护[legacy]
+		Tooltip:
+			'''
+			击中敌人时使其防御归零
+			将敌人打出空间与时间之外
+			'''
+	}
+
+	SpectreRifle: {
+		DisplayName: 幽灵狙击枪[legacy]
+		Tooltip:
+			'''
+			将火枪子弹转化为强大的追踪灵魂弹
+			（可在配置文件切换全转化）
+			'''
+	}
 }
 
 Projectiles: {
-	Magic.CIVividBeam.DisplayName: 耀界光束
+	Magic: {
+		CIVividBeam.DisplayName: 耀界光束
+		InfernadoFriendlyold.DisplayName: 地狱龙卷
+		InfernadoMarkFriendlyold.DisplayName: 地狱龙卷标记
+		SparkInfernalold.DisplayName: 地狱火花
+	}
+
 	Climax2.DisplayName: 磁暴球体
 	ClimaxBeam2.DisplayName: 磁暴射线
 	Crescent.DisplayName: 新月
@@ -1707,6 +1745,8 @@ Projectiles: {
 	}
 
 	TheDeadlyMicrobeProjectile.DisplayName: 腐烂生物
+	SylvanSlash.DisplayName: 林海倾绝刃
+	SylvanSlashAttack.DisplayName: 林海剑气
 }
 
 Configs: {
@@ -1732,12 +1772,12 @@ Configs: {
 
 		TheSpongeBarrier: {
 			Label: 化绵留香石护盾
-			Tooltip: ""
+			Tooltip: 关闭后可以化棉留香石不再提供护盾
 		}
 
 		BoCLoreUnconditional: {
 			Label: 克苏鲁之脑传颂无需在指定环境
-			Tooltip: ""
+			Tooltip: 关闭后克苏鲁之脑的传颂之物不再限制环境
 		}
 
 		GodSlayerSetBonusesChange: {

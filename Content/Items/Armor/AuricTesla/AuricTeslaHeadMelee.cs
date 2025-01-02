@@ -25,7 +25,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadMelee : ModItem, ILocalizedModType
     {
-        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityKeybinds.ArmorSetBonusHotKey);
         public new string LocalizationCategory => "Items.Armor.PostMoonLord";
         public override void SetDefaults()
         {
@@ -50,7 +49,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+            var hotkey = CalamityKeybinds.ArmorSetBonusHotKey.TooltipHotkeyString();
+            player.setBonus = this.GetLocalization("SetBonus").Format(hotkey);
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer.tarraSet = true;
@@ -62,7 +62,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.silvaMelee = true;
             modPlayer1.godSlayerReflect = true;
-            modPlayer1.GodSlayerReborn = true;
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            {
+                modPlayer1.GodSlayerReborn = true;
+            }
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            {
+                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                {
+                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    player.dash = 0;
+                }
+            }
+
             modPlayer1.GodSlayerDMGprotect = true;
 
             modPlayer.silvaSet = true;

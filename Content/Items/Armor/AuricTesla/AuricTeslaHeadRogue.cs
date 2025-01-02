@@ -58,7 +58,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.godSlayerThrowing = true;
             modPlayer.silvaSet = true;
 
-            modPlayer1.GodSlayerReborn = true;
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            {
+                modPlayer1.GodSlayerReborn = true;
+            }
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            {
+                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                {
+                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    player.dash = 0;
+                }
+            }
+
             modPlayer1.silvaRogue = true;
 
             modPlayer.auricSet = true;

@@ -13,6 +13,8 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using Terraria.UI;
+using Terraria.ID;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -23,8 +25,17 @@ namespace CalamityInheritance.Content.Items
         {
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
-            if (item.type == ModContent.ItemType <AstrumDeusBag> ())
+            if (item.type == ModContent.ItemType<AstrumDeusBag>())
                 itemloot.Add(ModContent.ItemType<Quasar>(), 10);
+
+            switch (item.type)
+            {
+                #region Boss Treasure Bags
+                case ItemID.MoonLordBossBag:
+                    itemloot.Add(ModContent.ItemType<GrandDad>(), 10);
+                    break;
+                #endregion
+            }
         }
     }
 }

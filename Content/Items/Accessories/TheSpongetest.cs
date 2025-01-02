@@ -47,13 +47,14 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             get
             {
-                if (Main.LocalPlayer != null)
+                if (Main.LocalPlayer.statLifeMax2 > 800)
                 {
                     return Main.LocalPlayer.statLifeMax2;
                 }
                 return 800;
             }
         }
+
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(10); // was 6
         public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(5);
         public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(6);

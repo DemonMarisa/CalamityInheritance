@@ -17,6 +17,7 @@ using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityMod.CalPlayer.Dashes;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -58,7 +59,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.silvaMageold = true;
             modPlayer1.godSlayerMagic = true;
-            modPlayer1.GodSlayerReborn = true;
+
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            {
+                modPlayer1.GodSlayerReborn = true;
+            }
+            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            {
+                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                {
+                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    player.dash = 0;
+                }
+            }
 
             modPlayer.silvaSet = true;
             modPlayer.auricSet = true;
