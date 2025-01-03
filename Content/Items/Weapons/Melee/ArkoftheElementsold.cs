@@ -13,7 +13,7 @@ using ElementBall = CalamityInheritance.Content.Projectiles.Melee.ElementBall;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ArkoftheElements : ModItem
+    public class ArkoftheElementsold : ModItem
     {
         public override void SetStaticDefaults()
         {

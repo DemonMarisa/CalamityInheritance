@@ -14,6 +14,7 @@ using CalamityMod.Rarities;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -75,6 +76,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
             recipe.AddTile(ModContent.TileType<CosmicAnvil>());
             recipe.Register();
+            Recipe recipe1 = CreateRecipe();
+            recipe1.AddIngredient(ModContent.ItemType<EidolicWail>());
+            recipe1.AddIngredient(ModContent.ItemType<ReaperTooth>(), 20);
+            recipe1.AddIngredient(ModContent.ItemType<DepthCells>(), 20);
+            recipe1.AddIngredient(ModContent.ItemType<Lumenyl>(), 20);
+            recipe1.AddIngredient(ModContent.ItemType<AuricBarold>());
+            recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
+            recipe1.Register();
         }
     }
 }

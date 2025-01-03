@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (target != null)
             {
-                float inertia = 35f;
+                float inertia = 100f;
                 float homingSpeed = 70f;
                 Vector2 idealVelocity = Projectile.SafeDirectionTo(target.Center, Vector2.UnitX) * homingSpeed;
                 Projectile.velocity = (Projectile.velocity * (inertia - 1f) + idealVelocity) / inertia;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 int ySpawnAdditive = Main.rand.Next(-40, 41);
                 Vector2 toSpawn = target.Center - new Vector2(0f, 800f + ySpawnAdditive).RotatedBy(MathHelper.ToRadians(i * 11f / starMax));
                 Vector2 toTarget = Vector2.Normalize(target.Center - toSpawn) * 35f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), toSpawn, toTarget, ModContent.ProjectileType<GalaxyStarold>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), toSpawn, toTarget, ModContent.ProjectileType<GalaxyStarold>(), Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
             }
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 60);
         }

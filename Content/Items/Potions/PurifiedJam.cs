@@ -31,21 +31,6 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.value = Item.buyPrice(0, 2, 0, 0);
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            if (!CalamityWorld.death)
-            {
-                return;
-            }
-            foreach (TooltipLine item in list)
-            {
-                if (item.Mod == "Terraria" && item.Name == "Tooltip0")
-                {
-                    item.Text = (string)CalamityUtils.GetText("Mods.CalamityInheritance.Item.Tooltip.PurifiedJam");
-                }
-            }
-        }
-
         public override bool CanUseItem(Player player)
         {
             return player.FindBuffIndex(BuffID.PotionSickness) == -1;

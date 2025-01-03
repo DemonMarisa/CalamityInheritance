@@ -38,8 +38,8 @@ namespace CalamityInheritance.Content.Items.LoreItems;
                 AddTile(TileID.Bookcases).
                 Register();
         CreateRecipe().
-AddIngredient<LoreGolem>().
-AddTile(TileID.Bookcases).
-Register();
+            AddIngredient<LoreGolem>().
+            AddTile(TileID.Bookcases).
+            Register();
     }
     }

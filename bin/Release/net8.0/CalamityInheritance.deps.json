@@ -11,6 +11,7 @@
           "tModLoader.CodeAssist": "0.1.5",
           "Basic.Reference.Assemblies.Net80": "1.0.0.0",
           "CalamityMod": "0.0.0.0",
+          "CalamityModMusic": "0.0.0.0",
           "CsvHelper": "2.0.0.0",
           "DotNetZip": "1.16.0.0",
           "FNA": "23.10.0.0",
@@ -100,6 +101,14 @@
       "CalamityMod/0.0.0.0": {
         "runtime": {
           "CalamityMod.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "CalamityModMusic/0.0.0.0": {
+        "runtime": {
+          "CalamityModMusic.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -948,6 +957,11 @@
       "sha512": ""
     },
     "CalamityMod/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CalamityModMusic/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

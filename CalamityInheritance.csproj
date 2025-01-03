@@ -881,6 +881,9 @@
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
+	  <Reference Include="CalamityModMusic">
+	    <HintPath>..\..\ModReader\CalamityModMusic\CalamityModMusic.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Content\Projectiles\Ranged\Holdout\" />

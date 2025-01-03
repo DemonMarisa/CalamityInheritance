@@ -367,7 +367,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (modPlayer.skeletronPrimeLore)
             {
-                Player.GetArmorPenetration(DamageClass.Generic) += 5;
+                Player.GetArmorPenetration(DamageClass.Generic) += 10;
             }
 
             if (modPlayer.leviathanAndSirenLore)
@@ -439,7 +439,7 @@ namespace CalamityInheritance.CIPlayer
             if (modPlayer.golemLore)
             {
                 if (Math.Abs(Player.velocity.X) < 0.05f && Math.Abs(Player.velocity.Y) < 0.05f && Player.itemAnimation == 0)
-                    Player.statDefense += 10;
+                    Player.statDefense += 30;
             }
 
             if (modPlayer.dukeFishronLore)

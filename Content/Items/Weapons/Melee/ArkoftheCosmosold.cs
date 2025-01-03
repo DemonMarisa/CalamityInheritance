@@ -13,6 +13,7 @@ using CalamityMod.Items;
 using CalamityMod;
 using CalamityMod.Rarities;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -117,6 +118,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
             recipe.AddTile(ModContent.TileType<CosmicAnvil>());
             recipe.Register();
+
+            Recipe recipe2 = CreateRecipe();
+            recipe2.AddIngredient(ModContent.ItemType<FourSeasonsGalaxiaold>());
+            recipe2.AddIngredient(ModContent.ItemType<ArkoftheElements>());
+            recipe2.AddIngredient(ModContent.ItemType<AuricBarold>());
+            recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
+            recipe2.Register();
 
             Recipe recipe1 = CreateRecipe();
             recipe1.AddIngredient<ArkoftheCosmos>(1);

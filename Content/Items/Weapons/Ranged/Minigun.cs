@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -52,10 +53,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
+
             CreateRecipe().
                 AddIngredient(ItemID.ChainGun).
                 AddIngredient<ClockGatlignum>().
                 AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.ChainGun).
+                AddIngredient<ClockGatlignum>().
+                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
         }

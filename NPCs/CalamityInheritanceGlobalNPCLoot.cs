@@ -177,15 +177,21 @@ namespace CalamityInheritance.NPCs
             }
             switch (npc.type)
             {
-                #region Underground
+                #region NPC
                 // AnomuraFungus
                 // FungalCarapace @ 14.29% Normal, 25% Expert+
                 case NPCID.AnomuraFungus:
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FungalCarapace>(), 7, 4));
-                break;
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FungalCarapace>(), 7, 4));
+                    break;
                 case NPCID.PossessedArmor:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PsychoticAmulet>(), 40, 20));
-                break;
+                    break;
+                case NPCID.PirateCrossbower:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<RaidersGlory>(), 25, 15));
+                    break;
+                case NPCID.PirateDeadeye:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<RaidersGlory>(), 25, 15));
+                    break;
                 #endregion
 
                 #region LoreItems

@@ -14,6 +14,7 @@ using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -47,10 +48,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         }
         public override void AddRecipes()
         {
+
             CreateRecipe().
                 AddIngredient(ItemID.XenoStaff).
                 AddIngredient(ItemID.MoonlordTurretStaff).
                 AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.XenoStaff).
+                AddIngredient(ItemID.MoonlordTurretStaff).
+                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
         }

@@ -2,6 +2,7 @@
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -34,7 +35,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 19f;
             Item.rare = ModContent.RarityType<Violet>();
         }
-
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            int lifeAmount = player.statLifeMax2 - player.statLife;
+            damage.Flat += lifeAmount;
+            base.ModifyWeaponDamage(player, ref damage);
+        }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(4))

@@ -15,6 +15,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using Terraria.UI;
 using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -27,6 +28,8 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
             if (item.type == ModContent.ItemType<AstrumDeusBag>())
                 itemloot.Add(ModContent.ItemType<Quasar>(), 10);
+            if (item.type == ModContent.ItemType<YharonBag>())
+                itemloot.Add(ModContent.ItemType<VoidVortex>(), 10);
 
             switch (item.type)
             {
@@ -34,7 +37,10 @@ namespace CalamityInheritance.Content.Items
                 case ItemID.MoonLordBossBag:
                     itemloot.Add(ModContent.ItemType<GrandDad>(), 10);
                     break;
-                #endregion
+                case ItemID.GolemBossBag:
+                    itemloot.Add(ModContent.ItemType<LeadWizard>(), 10);
+                    break;
+                    #endregion
             }
         }
     }

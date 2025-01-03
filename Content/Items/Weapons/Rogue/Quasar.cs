@@ -11,6 +11,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -49,6 +51,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             return true;
         }
+        public override void AddRecipes()
+        {
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                Recipe recipe1 = CreateRecipe();
+                recipe1.AddIngredient<LoreAstrumDeus>();
+                recipe1.AddTile(TileID.AncientMythrilBrick);
+                recipe1.Register();
 
+                Recipe recipe2 = CreateRecipe();
+                recipe2.AddIngredient<KnowledgeAstrumDeus>();
+                recipe2.AddTile(TileID.AncientMythrilBrick);
+                recipe2.Register();
+            }
+        }
     }
 }

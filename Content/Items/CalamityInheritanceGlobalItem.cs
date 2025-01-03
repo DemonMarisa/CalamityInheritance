@@ -19,6 +19,9 @@ namespace CalamityInheritance.Content.Items
 {
     public partial class CalamityInheritanceGlobalItem : GlobalItem
     {
+        public override bool InstancePerEntity => true;
+
+        public int timesUsed = 0;
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
@@ -84,7 +87,6 @@ namespace CalamityInheritance.Content.Items
             return true;
         }
 
-        public override bool InstancePerEntity => true;
         public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (CalamityInheritanceConfig.Instance.turnoffCorner == false)

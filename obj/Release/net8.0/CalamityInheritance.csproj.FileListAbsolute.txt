@@ -231,3 +231,5 @@ C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\Calamit
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\refint\CalamityInheritance.dll
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\CalamityInheritance.pdb
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\ref\CalamityInheritance.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\bin\Release\net8.0\CalamityModMusic.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\bin\Release\net8.0\CalamityModMusic.pdb

@@ -1,6 +1,9 @@
-﻿using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using CalamityMod.Items.Weapons.Magic;
@@ -86,11 +89,30 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());
-            recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
-            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe.Register();
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                Recipe recipe = CreateRecipe();
+                recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());
+                recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
+                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe.Register();
+
+                Recipe recipe1 = CreateRecipe();
+                recipe1.AddIngredient(ModContent.ItemType<KnowledgeYharon>());
+                recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe1.Register();
+
+                Recipe recipe2 = CreateRecipe();
+                recipe2.AddIngredient(ModContent.ItemType<LoreYharon>());
+                recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe2.Register();
+
+                Recipe recipe3 = CreateRecipe();
+                recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());
+                recipe.AddIngredient(ModContent.ItemType<AuricBarold>());
+                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe3.Register();
+            }
         }
     }
 }

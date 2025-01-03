@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Player player = Main.player[Projectile.owner];
 
             int infernadoDamage = (int)player.GetTotalDamage<MagicDamageClass>().ApplyTo(TheWand.BaseDamage);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<InfernadoMarkFriendly>(), infernadoDamage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<InfernadoMarkFriendlyold>(), infernadoDamage, Projectile.knockBack, Projectile.owner);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

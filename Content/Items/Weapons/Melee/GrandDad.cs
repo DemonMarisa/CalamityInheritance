@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -36,6 +42,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 target.knockBackResist = 7f;
                 target.defense = 0;
+            }
+        }
+        public override void AddRecipes()
+        {
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                Recipe recipe1 = CreateRecipe();
+                recipe1.AddIngredient<LoreRequiem>();
+                recipe1.AddTile(TileID.AncientMythrilBrick);
+                recipe1.Register();
+
+                Recipe recipe2 = CreateRecipe();
+                recipe2.AddIngredient<KnowledgeMoonLord>();
+                recipe2.AddTile(TileID.AncientMythrilBrick);
+                recipe2.Register();
             }
         }
     }

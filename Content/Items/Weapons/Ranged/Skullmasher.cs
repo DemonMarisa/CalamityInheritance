@@ -20,6 +20,12 @@ using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Utilities;
 using Steamworks;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -90,6 +96,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 }
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                Recipe recipe1 = CreateRecipe();
+                recipe1.AddIngredient(ModContent.ItemType<KnowledgeDevourerofGods>());
+                recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe1.Register();
+
+                Recipe recipe2 = CreateRecipe();
+                recipe2.AddIngredient(ModContent.ItemType<LoreDevourerofGods>());
+                recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe2.Register();
+            }
         }
     }
 }

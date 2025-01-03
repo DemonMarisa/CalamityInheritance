@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.NPCs;
@@ -13,5 +14,6 @@ namespace CalamityInheritance.Utilities
         {
             return player.GetModPlayer<CalamityInheritancePlayer>();
         }
+        public static CalamityInheritanceGlobalItem CalamityInheritance(this Item item) => item.GetGlobalItem<CalamityInheritanceGlobalItem>();
     }
 }

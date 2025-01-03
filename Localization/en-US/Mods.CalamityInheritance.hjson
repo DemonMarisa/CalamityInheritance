@@ -688,16 +688,6 @@ Items: {
 		}
 
 		KnowledgeCrabulon: {
-			DisplayName: 猩红之地[legacy]
-			Lore:
-				'''
-				形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
-				这地方现如今是一群自地底深处跳动的血泵和奇形怪状的器官中诞生出的丑陋而可怕的怪物家园
-				放置在背包中并标记为收藏，血肉囊将不会自然生成
-				'''
-		}
-
-		KnowledgeCrimson: {
 			DisplayName: 菌生蟹[legacy]
 			Lore:
 				'''
@@ -705,6 +695,16 @@ Items: {
 				这些生物，能适应各种特殊环境，真有趣
 				放置在背包中并标记为收藏，身处地下或蘑菇地形时给予与菇共生增益
 				然而，你的身上被真菌覆盖，移动速度降低
+				'''
+		}
+
+		KnowledgeCrimson: {
+		    DisplayName: 猩红之地[legacy]
+			Lore:
+				'''
+				形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
+				这地方现如今是一群自地底深处跳动的血泵和奇形怪状的器官中诞生出的丑陋而可怕的怪物家园
+				放置在背包中并标记为收藏，血肉囊将不会自然生成
 				'''
 		}
 
@@ -1202,6 +1202,11 @@ Items: {
 				DisplayName: 神杖·暴风灼炎[legacy]
 				Tooltip: 一杖御万杖
 			}
+
+			CarnageRay: {
+				DisplayName: Carnage Ray
+				Tooltip: ""
+			}
 		}
 
 		Melee: {
@@ -1346,11 +1351,6 @@ Items: {
 			击中敌人后根据环境给予你增益
 			月亮事件中同样会变化
 			'''
-	}
-
-	ArkoftheElements: {
-		DisplayName: 元素方舟[legacy]
-		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 	}
 
 	BiomeBlade: {
@@ -1566,7 +1566,7 @@ Items: {
 			橙色的星流箭矢会造成火焰爆炸
 			青色的星流箭矢会无限穿透并无视无敌帧
 			使用的任何非木箭都会造成1.25倍的伤害
-			（可在配置文件切换全转化）
+			（可在配置文件切换弹药全转化）
 			66% 的几率不消耗弹药
 			'''
 	}
@@ -1582,7 +1582,7 @@ Items: {
 			'''
 			让他们头痛欲裂
 			发射四发高速子弹，命中后召唤一束额外的高速子弹和普通子弹
-			（可在配置文件切换全转化）
+			（可在配置文件切换弹药全转化）
 			'''
 	}
 
@@ -1610,8 +1610,124 @@ Items: {
 		Tooltip:
 			'''
 			将火枪子弹转化为强大的追踪灵魂弹
-			（可在配置文件切换全转化）
+			（可在配置文件切换弹药全转化）
 			'''
+	}
+
+	Magnum: {
+		DisplayName: 马格南[legacy]
+		Tooltip:
+			'''
+			以马格南弹为弹药
+			Boss战限制只能发射三发弹药
+			每颗子弹附加3%目标生命值的伤害
+			'''
+	}
+
+	GoldenGun: {
+		DisplayName: 灵液枪[legacy]
+		Tooltip: 发射一束以直线飞行的灵液
+	}
+
+	GrenadeRounds: {
+		DisplayName: 榴弹片[legacy]
+		Tooltip: ""
+	}
+
+	MagnumRounds: {
+		DisplayName: 马格南弹[legacy]
+		Tooltip: ""
+	}
+
+	Bazooka: {
+		DisplayName: 巴祖卡[legacy]
+		Tooltip:
+			'''
+			以榴弹片为弹药
+			Boss战限制只能发射两发弹药
+			每颗子弹附加6.8%目标生命值的伤害
+			'''
+	}
+
+	ExplosiveShells: {
+		DisplayName: 爆炸散弹[legacy]
+		Tooltip: ""
+	}
+
+	ElephantKiller: {
+		DisplayName: 猎象者[legacy]
+		Tooltip:
+			'''
+			以马格南弹为弹药
+			Boss战限制只能发射三发弹药
+			每颗子弹附加3%目标生命值的伤害
+			'''
+	}
+
+	Hydra: {
+		DisplayName: 九头蛇[legacy]
+		Tooltip:
+			'''
+			以爆裂散弹为弹药
+			Boss战限制只能发射一发弹药
+			每颗子弹附加12.8%目标生命值的伤害
+			'''
+	}
+
+	LightningHawk: {
+		DisplayName: 闪电鹰[legacy]
+		Tooltip:
+			'''
+			以马格南弹为弹药
+			Boss战限制只能发射三发弹药
+			每颗子弹附加3%目标生命值的伤害
+			'''
+	}
+
+	LeadWizard: {
+		DisplayName: 巫师之祸[legacy]
+		Tooltip:
+			'''
+			有些东西不对劲...
+			33%几率不消耗弹药
+			对近距离敌怪射击时造成额外伤害
+			'''
+	}
+
+	RaidersGlory: {
+		DisplayName: 游骑兵的荣耀[legacy]
+		Tooltip:
+			'''
+			发射高速的灵液箭
+			令怪物掉落更多的钱
+			'''
+	}
+
+	ProporsePistol: {
+		DisplayName: 守恒[legacy]
+		Tooltip: 发射蓝色弹射能量弹
+	}
+
+	Materials: {
+		AuricBarold: {
+			DisplayName: 圣金源锭[legacy]
+			Tooltip: 散发出永恒的璀璨金光
+		}
+	}
+
+	DraedonsForgeold: {
+		DisplayName: 嘉登熔炉[legacy]
+		Tooltip:
+			'''
+			由无尽能源驱动的脉冲格纳米锻造厂
+			具有大部分主要合成站的功能
+			可以视作嘉登熔炉与星宇砧
+			'''
+	}
+
+	ArkoftheElementsold: {
+		DisplayName: 元素方舟
+		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 	}
 }
 
@@ -1621,6 +1737,7 @@ Projectiles: {
 		InfernadoFriendlyold.DisplayName: 地狱龙卷
 		InfernadoMarkFriendlyold.DisplayName: 地狱龙卷标记
 		SparkInfernalold.DisplayName: 地狱火花
+		BloodRayold.DisplayName: Blood Rayold
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -1747,6 +1864,13 @@ Projectiles: {
 	TheDeadlyMicrobeProjectile.DisplayName: 腐烂生物
 	SylvanSlash.DisplayName: 林海倾绝刃
 	SylvanSlashAttack.DisplayName: 林海剑气
+	MagnumRound.DisplayName: 马格南弹
+	GoldenGunProj.DisplayName: 灵液滴
+	GrenadeRound.DisplayName: 榴弹片
+	ExplosiveShotgunShell.DisplayName: 爆裂散弹
+	ProBolt.DisplayName: Pro Bolt
+	BloodBolt.DisplayName: Blood Bolt
+	BloodOrb.DisplayName: Blood Orb
 }
 
 Configs: {
@@ -1809,5 +1933,16 @@ Configs: {
 			Label: 关闭角标
 			Tooltip: 关闭后，Mod物品右下角不会出现时钟角标
 		}
+
+		LegendaryitemsRecipes: {
+			Label: 传奇武器添加合成表
+			Tooltip:
+				'''
+				开启后为传奇武器添加合成表
+				[c/FF0000:（此选项需要重加载）]
+				'''
+		}
 	}
 }
+
+Tiles.DraedonsForgeold.MapEntry: 嘉登熔炉[legacy]

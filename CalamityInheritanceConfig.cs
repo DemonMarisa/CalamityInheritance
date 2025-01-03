@@ -63,7 +63,7 @@ namespace CalamityInheritance
         public bool silvastun { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool ExoSperaHitEffect { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
@@ -74,6 +74,9 @@ namespace CalamityInheritance
         [DefaultValue(false)]
         public bool turnoffCorner { get; set; }
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool LegendaryitemsRecipes { get; set; }
         #endregion
     }
 }
