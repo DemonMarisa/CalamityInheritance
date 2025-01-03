@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -40,6 +41,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<GodSlayerLeggings>().
+                AddIngredient<SilvaLeggings>().
+                AddIngredient<BloodflareCuisses>().
+                AddIngredient<TarragonLeggings>().
+                AddIngredient(ItemID.FlyingCarpet).
+                AddIngredient<AuricBarold>(2).
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<GodSlayerLeggings>().
                 AddIngredient<SilvaLeggings>().

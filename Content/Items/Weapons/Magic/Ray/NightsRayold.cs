@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -22,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void SetDefaults()
         {
-            Item.damage = 24;
+            Item.damage = 54;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 50;
@@ -36,10 +38,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item72;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<NightsRayBeam>();
+            Item.shoot = ModContent.ProjectileType<NightsRayBeamold>();
             Item.shootSpeed = 6f;
         }
 
+        public override Vector2? HoldoutOrigin()
+        {
+            return new Vector2(0, -5);
+        }
 
         public override void AddRecipes()
         {

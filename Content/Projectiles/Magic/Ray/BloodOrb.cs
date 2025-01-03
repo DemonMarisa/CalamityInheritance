@@ -20,13 +20,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.friendly = true;
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 30;
+            Projectile.timeLeft = 1;
             Projectile.DamageType = DamageClass.Magic;
         }
 
         public override void AI()
         {
-            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 24f, 5, ModContent.ProjectileType<BloodBolt>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<BloodBolt>());
         }
     }
 }

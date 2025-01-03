@@ -195,14 +195,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<BloodExplosion>(), Projectile.damage * 2, Projectile.knockBack);
             target.AddBuff(BuffID.BloodButcherer, 120);
 
-            int heal = (int)Math.Round(damageDone * 0.025);
-            if (heal > 100)
-                heal = 100;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<ReaverHealOrb>(), 3000f);
+            Player player = Main.player[base.Projectile.owner];
+            if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
+            {
+                int healAmount = Main.rand.Next(2) + 2;
+                player.statLife += healAmount;
+                player.HealEffect(healAmount);
+            }
         }
         // 从 Main.DrawProj_Excalibur() 方法中提取的代码
         // 查看其他剑类型的源代码。

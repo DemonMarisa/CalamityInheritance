@@ -18,6 +18,7 @@ using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -59,6 +60,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<GodSlayerChestplate>().
+                AddIngredient<SilvaArmor>().
+                AddIngredient<BloodflareBodyArmor>().
+                AddIngredient<TarragonBreastplate>().
+                AddIngredient<FrostBarrier>().
+                AddIngredient<AuricBarold>(2).
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<GodSlayerChestplate>().
                 AddIngredient<SilvaArmor>().

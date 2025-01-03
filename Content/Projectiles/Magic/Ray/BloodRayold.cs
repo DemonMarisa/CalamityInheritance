@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class BloodRayold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Projectiles.Magic";
-        public const int Lifetime = 150;
+        public const int Lifetime = 200;
         public const float MaxExponentialDamageBoost = 3f;
         public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
         public ref float Time => ref Projectile.ai[0];
@@ -41,8 +41,16 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<BloodOrb>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
 
-            Projectile.localAI[0] += 1f;
-            if (Projectile.localAI[0] > 9f)
+            if (InitialDamage == 0f)
+            {
+                InitialDamage = Projectile.damage;
+                Projectile.netUpdate = true;
+            }
+
+            Time++;
+            Projectile.damage = (int)(InitialDamage * Math.Pow(ExponentialDamageBoost, Time));
+
+            if (Time >= 9f)
             {
                 for (int i = 0; i < 2; i++)
                 {

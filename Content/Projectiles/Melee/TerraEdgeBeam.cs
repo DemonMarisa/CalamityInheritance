@@ -48,6 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            Player player = Main.player[base.Projectile.owner];
             target.AddBuff(BuffID.Ichor, 60);
             ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.TerraBlade,
             new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
@@ -59,6 +60,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+            
+            if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
+            {
+                int healAmount = Main.rand.Next(2) + 2;
+                player.statLife += healAmount;
+                player.HealEffect(healAmount);
+            }
         }
 
         [Obsolete]
@@ -79,17 +87,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust.velocity *= 0.05f;
                 num3 = num795;
             }
-        }
-        public void OnHitHealEffect(int damage)
-        {
-            int heal = (int)Math.Round(damage * 0.025);
-            if (heal > 100)
-                heal = 100;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<ReaverHealOrb>(), 3000f);
         }
         public override bool PreDraw(ref Color lightColor)
         {

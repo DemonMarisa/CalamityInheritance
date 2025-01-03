@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -23,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void SetDefaults()
         {
-            Item.damage = 24;
+            Item.damage = 44;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 46;
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<BloodRayold>();
             Item.shootSpeed = 6f;
+        }
+        public override Vector2? HoldoutOrigin()
+        {
+            return new Vector2(0, -5);
         }
 
         public override void AddRecipes()

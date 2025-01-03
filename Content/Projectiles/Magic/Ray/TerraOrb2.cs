@@ -1,5 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
-using CalamityMod;
+﻿using CalamityMod.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod;
+using CalamityMod.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
-    public class NightOrbold : ModProjectile, ILocalizedModType
+    public class TerraOrb2 : ModProjectile
     {
         public new string LocalizationCategory => "Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override void SetStaticDefaults()
+        {
+            // DisplayName.SetDefault("Bolt");
+        }
 
         public override void SetDefaults()
         {
@@ -24,12 +29,17 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.penetrate = -1;
             Projectile.timeLeft = 1;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.ignoreWater = true;
         }
 
         public override void AI()
         {
-            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<NightBoltold>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 6f, 0f, 5, ModContent.ProjectileType<TerraBolt2>());
+            //CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<TerraBolt2>());
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.immune[Projectile.owner] = 8;
         }
     }
 }

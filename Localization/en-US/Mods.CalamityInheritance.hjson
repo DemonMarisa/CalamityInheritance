@@ -180,13 +180,10 @@ Items: {
 				被击中时爆出蘑菇孢子与电火花
 				提供15点防御，受击后10s内会短暂移除，并增加移动速度
 				受击会恢复攻击力6.25%的生命值
-				 
 				[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
-				 
 				护盾激活时：
 				玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
 				提供额外的30%伤害减免与30防御力
-				 
 				护盾破碎时：
 				减少50点防御力与25%伤害减免
 				需要更多的时间充能
@@ -699,7 +696,7 @@ Items: {
 		}
 
 		KnowledgeCrimson: {
-		    DisplayName: 猩红之地[legacy]
+			DisplayName: 猩红之地[legacy]
 			Lore:
 				'''
 				形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
@@ -1204,8 +1201,23 @@ Items: {
 			}
 
 			CarnageRay: {
-				DisplayName: Carnage Ray
-				Tooltip: ""
+				DisplayName: 屠杀射线
+				Tooltip:
+					'''
+					发射纯粹而集中的暗影射线
+					击中敌人时会在其附近产生额外的射线
+					距离敌人越远，伤害越高
+					'''
+			}
+
+			NightsRayold: {
+				DisplayName: 永夜射线
+				Tooltip:
+					'''
+					发射纯粹而集中的暗影射线
+					击中敌人时会在其附近产生额外的射线
+					距离敌人越近，伤害越高
+					'''
 			}
 		}
 
@@ -1729,6 +1741,11 @@ Items: {
 		DisplayName: 元素方舟
 		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 	}
+
+	TerraRay: {
+		DisplayName: Terra Ray
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1737,7 +1754,12 @@ Projectiles: {
 		InfernadoFriendlyold.DisplayName: 地狱龙卷
 		InfernadoMarkFriendlyold.DisplayName: 地狱龙卷标记
 		SparkInfernalold.DisplayName: 地狱火花
-		BloodRayold.DisplayName: Blood Rayold
+		BloodRayold.DisplayName: 屠杀射线
+		NightOrbold.DisplayName: 永夜光球
+		NightsRayBeamold.DisplayName: 永夜射线
+		NightBoltold.DisplayName: 永夜光束
+		TerraBeam.DisplayName: Terra Beam
+		TerraBeamMain.DisplayName: Terra Beam Main
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -1868,9 +1890,14 @@ Projectiles: {
 	GoldenGunProj.DisplayName: 灵液滴
 	GrenadeRound.DisplayName: 榴弹片
 	ExplosiveShotgunShell.DisplayName: 爆裂散弹
-	ProBolt.DisplayName: Pro Bolt
-	BloodBolt.DisplayName: Blood Bolt
-	BloodOrb.DisplayName: Blood Orb
+	ProBolt.DisplayName: 闪电箭
+	BloodBolt.DisplayName: 血腥射线
+	BloodOrb.DisplayName: 血腥光球
+	TerraBeam.DisplayName: Terra Beam
+	TerraBolt.DisplayName: Terra Bolt
+	TerraBolt2.DisplayName: Terra Bolt2
+	TerraOrb.DisplayName: Terra Orb
+	TerraOrb2.DisplayName: Terra Orb2
 }
 
 Configs: {

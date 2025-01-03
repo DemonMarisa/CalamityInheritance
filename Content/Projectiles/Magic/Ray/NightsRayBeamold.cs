@@ -12,6 +12,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
     public class NightsRayBeamold : ModProjectile, ILocalizedModType
     {
+        public const int Lifetime = 200;
+
+        public const float MaxExponentialDamageBoost = 3f;
+
+        public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
+        public ref float InitialDamage => ref Projectile.ai[1];
         public new string LocalizationCategory => "Projectiles.Magic";
         public ref float Time => ref Projectile.ai[0];
         public bool HasFiredSideBeams
@@ -29,13 +35,29 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.ignoreWater = true;
             Projectile.penetrate = 10;
             Projectile.extraUpdates = 100;
-            Projectile.timeLeft = 150;
+            Projectile.timeLeft = Lifetime;
         }
 
         public override void AI()
         {
+            Projectile.localAI[1] += 1f;
+            if (Projectile.localAI[1] >= 29f && Projectile.owner == Main.myPlayer)
+            {
+                Projectile.localAI[1] = 0f;
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<NightOrbold>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+            }
+
+            if (InitialDamage == 0f)
+            {
+                InitialDamage = Projectile.damage;
+                Projectile.netUpdate = true;
+            }
+
             Time++;
-            if (Time >= 10f)
+            Projectile.damage = (int)(InitialDamage / Math.Pow(ExponentialDamageBoost, Time));
+
+            Projectile.localAI[0] += 1f;
+            if (Projectile.localAI[0] > 9f)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -46,21 +68,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                     corruptMagic.noGravity = true;
                     corruptMagic.velocity *= 0.1f;
                 }
-            }
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (!HasFiredSideBeams && Projectile.owner == Main.myPlayer)
-            {
-                Vector2 baseSpawnPositionOffset = Main.rand.NextVector2CircularEdge(40f, 40f);
-                for (int i = 0; i < 4; i++)
-                {
-                    Vector2 spawnPosition = target.Center + baseSpawnPositionOffset.RotatedBy(MathHelper.TwoPi * i / 4f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<NightOrb>(), (int)(Projectile.damage * 0.8), Projectile.knockBack, Projectile.owner);
-                }
-                HasFiredSideBeams = true;
-                Projectile.netUpdate = true;
             }
         }
     }

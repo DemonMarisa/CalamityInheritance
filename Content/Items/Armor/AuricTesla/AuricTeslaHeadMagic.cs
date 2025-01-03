@@ -18,6 +18,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -94,6 +95,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<SilvaHeadMagic>().
+                AddIngredient<GodSlayerHeadMagicold>().
+                AddIngredient<BloodflareHeadMagic>().
+                AddIngredient<TarragonHeadMagic>().
+                AddIngredient<PsychoticAmulet>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<SilvaHeadMagic>().
                 AddIngredient<GodSlayerHeadMagicold>().

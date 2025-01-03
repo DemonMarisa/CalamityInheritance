@@ -20,6 +20,9 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -239,8 +242,20 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             CreateRecipe().
                 AddIngredient<SilvaHeadSummon>().
+                AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<BloodflareHeadSummon>().
                 AddIngredient<TarragonHeadSummon>().
+                AddIngredient<PsychoticAmulet>().
+                AddIngredient<AuricBarold>(1).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<SilvaHeadSummon>().
+                AddIngredient<GodSlayerHeadSummonold>().
+                AddIngredient<BloodflareHeadSummon>().
+                AddIngredient<TarragonHeadSummon>().
+                AddIngredient<PsychoticAmulet>().
                 AddIngredient<AuricBar>(12).
                 AddTile<CosmicAnvil>().
                 Register();
