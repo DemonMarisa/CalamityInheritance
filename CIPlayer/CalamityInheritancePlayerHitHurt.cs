@@ -307,7 +307,7 @@ namespace CalamityInheritance.CIPlayer
                     {
                         if(Main.rand.NextBool(100/randomChance))
                         {
-                            hitInfo.Damage *= 4;
+                            hitInfo.Damage *= 2;
                         }
                     }
                 }
@@ -328,10 +328,17 @@ namespace CalamityInheritance.CIPlayer
 
             if (CalamityInheritanceConfig.Instance.silvastun == true)
             {
+                if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
+                {
+                    //Main.NewText($"触发眩晕TMp", 255, 255, 255);
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    silvaStunCooldownold = 1800;
+                }
                 if (proj.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
                 {
+                    //Main.NewText($"触发眩晕mp", 255, 255, 255);
                     target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1200;
+                    silvaStunCooldownold = 1800;
                 }
             }
         }
@@ -363,10 +370,11 @@ namespace CalamityInheritance.CIPlayer
 
             if (CalamityInheritanceConfig.Instance.silvastun == true)
             {
-                if (item.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
+                if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
                 {
+                    //Main.NewText($"触发眩晕im", 255, 255, 255);
                     target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1200;
+                    silvaStunCooldownold = 1800;
                 }
             }
 
@@ -426,7 +434,82 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
                 return false;
             }
-            
+            //金源套的林海复活，或者说本mod的林海复活
+            if (auricsilvaset && CIsilvaCountdown > 0)
+            {
+                if (silvaRebornMark)
+                {
+                    if (CIsilvaCountdown == CIsilvaReviveDuration && !aurichasSilvaEffect)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+
+                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), CIsilvaReviveDuration);
+
+                        if (modPlayer.silvaWings)
+                        {
+                            Player.statLife += Player.statLifeMax2 / 2;
+                            Player.HealEffect(Player.statLifeMax2 / 2);
+
+                            if (Player.statLife > Player.statLifeMax2)
+                                Player.statLife = Player.statLifeMax2;
+                        }
+                    }
+
+                    aurichasSilvaEffect = true;
+
+                    if (Player.statLife < 1)
+                        Player.statLife = 1;
+
+                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
+                    // Can we please remove this from the game
+                    if (modPlayer.chaliceOfTheBloodGod)
+                    {
+                        modPlayer.chaliceBleedoutBuffer = 0D;
+                        modPlayer.chaliceDamagePointPartialProgress = 0D;
+                    }
+
+                    return false;
+                }
+            }
+                //金源套的林海复活，或者说本mod的林海复活
+            if (auricsilvaset && auricsilvaCountdown > 0 )
+            {
+                if (Player.HasCooldown(GodSlayerCooldown.ID))
+                {
+                    if (auricsilvaCountdown == auricsilvaReviveDuration && !aurichasSilvaEffect)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+
+                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), auricsilvaReviveDuration);
+
+                        if (modPlayer.silvaWings)
+                        {
+                            Player.statLife += Player.statLifeMax2 / 2;
+                            Player.HealEffect(Player.statLifeMax2 / 2);
+
+                            if (Player.statLife > Player.statLifeMax2)
+                                Player.statLife = Player.statLifeMax2;
+                        }
+                    }
+
+                    aurichasSilvaEffect = true;
+
+                    if (Player.statLife < 1)
+                        Player.statLife = 1;
+
+                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
+                    // Can we please remove this from the game
+                    if (modPlayer.chaliceOfTheBloodGod)
+                    {
+                        modPlayer.chaliceBleedoutBuffer = 0D;
+                        modPlayer.chaliceDamagePointPartialProgress = 0D;
+                    }
+
+                    return false;
+                }
+            }
+
+            //目前用于龙魂与原灾金源和复活效果的互动
             if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
             {
                 SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);

@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
 
-            modPlayer.silvaSet = true;
+            modPlayer1.auricsilvaset = true;
             modPlayer.auricSet = true;
             player.thorns += 3f;
             player.ignoreWater = true;

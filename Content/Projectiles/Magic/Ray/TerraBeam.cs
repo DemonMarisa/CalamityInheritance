@@ -34,6 +34,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = 10;
             Projectile.extraUpdates = 100;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
             Projectile.timeLeft = 260;
         }
 

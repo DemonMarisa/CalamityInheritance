@@ -40,11 +40,11 @@ namespace CalamityInheritance.Content.Items
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
 
             if (modPlayer.wallOfFleshLore)
-                velocity *= 1.25f;
+                velocity *= 1.10f;
             if (modPlayer.planteraLore)
-                velocity *= 1.5f;
+                velocity *= 1.15f;
             if (modPlayer.polterghastLore)
-                velocity *= 2;
+                velocity *= 1.20f;
         }
         #endregion
 

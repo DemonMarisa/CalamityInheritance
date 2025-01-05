@@ -76,10 +76,14 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer1.silvaRanged = true;
             modPlayer1.AuricbloodflareRangedSoul = true;
 
-            modPlayer.auricSet = true;
+            modPlayer1.auricsilvaset = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
+            if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
+            {
+                player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
+            }
         }
 
         public override void UpdateEquip(Player player)

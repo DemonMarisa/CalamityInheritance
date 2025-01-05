@@ -18,6 +18,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class SporeKnifeProj : BaseShortswordProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
+        }
         public override void SetDefaults()
         {
             Projectile.Size = new Vector2(14);

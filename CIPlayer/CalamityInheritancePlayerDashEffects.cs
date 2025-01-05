@@ -26,6 +26,10 @@ using CalamityMod.Items.Mounts;
  * CIDashDelay可以设置任意值，并且会以1帧1点的速度归零
  * 如果复制请复制全，不然你会遇到莫名其妙的bug
  * 而且这一段没有残影绘制，请自己添加
+ * 
+ *盾冲朝向排查2025.1.5
+ *与冲刺速度，冲刺mideffect无关
+ *与75行无关
 */
 namespace CalamityInheritance.CIPlayer
 {
@@ -67,6 +71,8 @@ namespace CalamityInheritance.CIPlayer
             var source = new ProjectileSource_PlayerDashHit(Player);
 
             // Handle collision slam-through effects.
+            //和这一块也无关
+            //if (HasCustomDash && Player.dashDelay < 1)
             if (HasCustomDash && CIDashDelay < 0)
             {
                 //Main.NewText($"CItestDashDelay moddashmovement : {CItestDashDelay}");
@@ -104,13 +110,17 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (CIDashDelay > 0) //Speed Blaster
+            //Speed Blaster
+            //if (Player.dashDelay > 0)
+            if (CIDashDelay > 0)
             {
                 VerticalSpeedBlasterDashTimer = 0;
                 LastUsedDashID = CIDashID;
                 return;
             }
 
+            //if (CIDashDelay > 0)
+            //if (Player.dashDelay > 0)
             if (CIDashDelay > 0)
             {
                 VerticalGodslayerDashTimer = 0;
@@ -118,16 +128,17 @@ namespace CalamityInheritance.CIPlayer
                 return;
             }
 
+            //if (Player.dashDelay < 1)
             if (CIDashDelay < 0)
-            //if (HasCustomDash /*&& Player.dashDelay < 0*/)
             {
+                
                 //Main.NewText("正在执行 dash 的冷却添加");
                 int dashDelayToApply = CIBalancingConstants.UniversalDashCooldown;
                 if (UsedDash.CollisionType == DashCollisionType.ShieldSlam)
                     dashDelayToApply = CIBalancingConstants.UniversalShieldSlamCooldown;
                 else if (UsedDash.CollisionType == DashCollisionType.ShieldBonk)
                     dashDelayToApply = CIBalancingConstants.UniversalShieldBonkCooldown;
-
+                
                 float dashSpeed = 12f;
                 float dashSpeedDecelerationFactor = 0.985f;
                 float runSpeed = Math.Max(Player.accRunSpeed, Player.maxRunSpeed);
@@ -136,6 +147,7 @@ namespace CalamityInheritance.CIPlayer
                 LastUsedDashID = CIDashID;
 
                 // Handle mid-dash effects.
+                //盾冲朝向排查2025.1.5
                 UsedDash.MidDashEffects(Player, ref dashSpeed, ref dashSpeedDecelerationFactor, ref runSpeedDecelerationFactor);
                 
                 if (UsedDash.IsOmnidirectional && VerticalGodslayerDashTimer < 25)
@@ -160,6 +172,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
                 
+                //if (HasCustomDash)
                 if (CIDashDelay < 0)
                 {
                     Player.vortexStealthActive = false;
@@ -168,14 +181,19 @@ namespace CalamityInheritance.CIPlayer
                     //2024.12.26确实添加成功了
                     //2024.12.26.1.18飞行期间无法正常添加
                     //2024.12.26.1.46飞行期间可以正常添加
+
                     if (CIDashDelay > -2)
                     {
                         CIDashDelay = 20;//CD帧
                     }
-
+                    
                     // Decide the player's facing direction.
-                    if (Player.velocity.X != 0f)
-                        Player.ChangeDir(Math.Sign(Player.velocity.X));
+
+                    //疑似是这一段
+                    //if (Player.velocity.X != 0f)
+                        //Player.ChangeDir(Math.Sign(Player.velocity.X));
+                    
+
                     
                     // Handle mid-dash movement.
                     if (UsedDash.IsOmnidirectional)
@@ -191,6 +209,8 @@ namespace CalamityInheritance.CIPlayer
                             return;
                         }
                     }
+                    
+                    
                     else
                     {
                         if (Player.velocity.X > dashSpeed || Player.velocity.X < -dashSpeed)
@@ -204,7 +224,9 @@ namespace CalamityInheritance.CIPlayer
                             return;
                         }
                     }
-                   
+                    
+                    Player.dashDelay = dashDelayToApply;
+                    
                     if (UsedDash.IsOmnidirectional)
                     {
                         if (Player.velocity.Length() < 0f)
@@ -220,6 +242,8 @@ namespace CalamityInheritance.CIPlayer
                             return;
                         }
                     }
+                    
+                    
                     else
                     {//阿斯加德英勇执行的下列代码
                         if (Player.velocity.X < 0f)

@@ -20,15 +20,16 @@ using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 
 namespace CalamityInheritance.Content.Items
 {
-    public class test : ModItem
+    public class Test : ModItem
     {
         public override void SetDefaults()
         {
             Item.width = 80;
-            Item.damage = 2500;
+            Item.damage = 900;
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;
@@ -39,6 +40,9 @@ namespace CalamityInheritance.Content.Items
             Item.autoReuse = true;
             Item.height = 114;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<Violet>();
+            Item.shoot = ModContent.ProjectileType<AncientStarCI>();
+            Item.shootSpeed = 19f;
             Item.rare = ModContent.RarityType<Violet>();
         }
         public override bool? UseItem(Player player)

@@ -25,6 +25,8 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
+
         #region Accessories
         public bool ElementalQuiver = false;
         public bool CoreOfTheBloodGod = false;
@@ -115,6 +117,8 @@ namespace CalamityInheritance.CIPlayer
         internal float CIspongeShieldPartialRechargeProgress = 0f;
         internal bool CIplayedSpongeShieldSound = false;
 
+        public int ShieldDurabilityMax = 0;
+
         #endregion
         #region Set Bonuses
         #region GodSlayer
@@ -135,11 +139,18 @@ namespace CalamityInheritance.CIPlayer
         public bool silvaRanged = false;
         public bool silvaSummonEx = false;
         public bool silvaRogue = false;
+        public bool silvaRebornMark = false;
         #endregion
         #region Auric
         public bool AuricDebuffImmune = false;
         public bool AuricbloodflareRangedSoul = false;
         public bool auricBoostold = false;
+        public bool auricsilvaset = false;
+        public bool aurichasSilvaEffect = false;
+        public static int CIsilvaReviveDuration = 900;
+        public int CIsilvaCountdown = CIsilvaReviveDuration;
+        public static int auricsilvaReviveDuration = 600;
+        public int auricsilvaCountdown = auricsilvaReviveDuration;
         #endregion
         #endregion
         #region ResetEffects
@@ -159,6 +170,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (!CIsponge)
                 CISpongeShieldDurability = 0;
+
+            if (!CIsponge)
+                ShieldDurabilityMax = 0;
 
             CIsponge = false;
             CIspongeShieldVisible = false;
@@ -234,11 +248,13 @@ namespace CalamityInheritance.CIPlayer
             silvaRanged = false;
             silvaSummonEx = false;
             silvaRogue = false;
+            silvaRebornMark = false;
             #endregion
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
             auricBoostold = false;
+            auricsilvaset = false;
             #endregion
             #endregion
             CIDashID = string.Empty;
@@ -284,6 +300,9 @@ namespace CalamityInheritance.CIPlayer
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
+            aurichasSilvaEffect = false;
+            auricsilvaCountdown = auricsilvaReviveDuration;
+            CIsilvaCountdown = CIsilvaReviveDuration;
             #endregion
             #endregion
         }
@@ -408,9 +427,18 @@ namespace CalamityInheritance.CIPlayer
                 Player.runAcceleration *= 0.95f;
             }
 
+            if (!Player.mount.Active)
+            {
+                float runAccMult = 1f +
+                    (auricsilvaset ? 0.05f : 0f);
+
+                float runSpeedMult = 1f +
+                    (auricsilvaset ? 0.05f : 0f);
+            }
+
             #region DashEffects
 
-            if (!string.IsNullOrEmpty(DeferredDashID))
+                if (!string.IsNullOrEmpty(DeferredDashID))
             {
                 CIDashID = DeferredDashID;
                 DeferredDashID = string.Empty;
@@ -540,6 +568,15 @@ namespace CalamityInheritance.CIPlayer
         {
             ProjectilHitCounter = 0;
         }
-
+        #region Limitations
+        public void ForceVariousEffects()
+        {
+            if (auricsilvaCountdown > 0 && aurichasSilvaEffect && auricsilvaset && Player.dashDelay < 0 || CIDashDelay < 0)
+            {
+                if (Player.lifeRegen < 0)
+                    Player.lifeRegen = 0;
+            }
+        }
+        #endregion
     }
 }

@@ -52,9 +52,10 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             {
                 var modPlayer1 = player.CalamityInheritance();
                 var modPlayer = player.Calamity();
-                modPlayer.silvaSet = true;
+                modPlayer1.auricsilvaset = true;
                 modPlayer.silvaSummon = true;
                 modPlayer1.silvaSummonEx = true;
+                modPlayer1.silvaRebornMark = true;
                 modPlayer.WearingPostMLSummonerSet = true;
                 player.setBonus = this.GetLocalizedValue("SetBonus");
                 if (player.whoAmI == Main.myPlayer)

@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityMod.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -52,12 +53,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             return false;
         }
 
-        /*
-        public override Vector2? HoldoutOrigin()
-        {
-            return new Vector2(15, 15);
-        }
-        */
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

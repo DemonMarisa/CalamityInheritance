@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.bloodflareThrowing = true;
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
-            modPlayer.silvaSet = true;
+            modPlayer1.auricsilvaset = true;
 
             if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
@@ -91,8 +91,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.auricBoostold = true;
             modPlayer.auricBoost = true;
-            player.GetDamage<ThrowingDamageClass>() += 0.2f;
-            player.GetCritChance<ThrowingDamageClass>() += 20;
+            player.GetDamage<RogueDamageClass>() += 0.2f;
+            player.GetCritChance<RogueDamageClass>() += 20;
             player.moveSpeed += 0.25f;
         }
 

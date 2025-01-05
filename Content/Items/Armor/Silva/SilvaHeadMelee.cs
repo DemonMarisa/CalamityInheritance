@@ -36,7 +36,8 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             var modPlayer1 = player.CalamityInheritance();
             var modPlayer = player.Calamity();
-            modPlayer.silvaSet = true;
+            modPlayer1.auricsilvaset = true;
+            modPlayer1.silvaRebornMark = true;
             modPlayer1.silvaMelee = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }

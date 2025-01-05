@@ -67,17 +67,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 if(Projectile.frameCounter == 0)
                 {
                     Projectile.scale = 2;
-                    Projectile.damage = (int)(Projectile.damage * 0.5);
                 }
                 if (Main.getGoodWorld)
                 {
                     Projectile.scale = 2;
-                    Projectile.damage = (int)(Projectile.damage * 1);
                 }
                 if (Main.zenithWorld)
                 {
                     Projectile.scale = 2;
-                    Projectile.damage = (int)(Projectile.damage * 2);
                 }
                 Projectile.frame = Main.zenithWorld ? 6 : 10;
                 Projectile.alpha = 0;
@@ -236,14 +233,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Dust dust2 = Dust.NewDustPerfect(target.Center + Main.rand.NextVector2Circular(target.width * 0.5f, target.height * 0.5f), dustID, Projectile.velocity.RotatedBy(Slash2 ? -0.45f * Owner.direction : Slash3 ? 0 : Slash1 ? 0.45f * Owner.direction : 0).RotatedByRandom(0.55f) * Main.rand.NextFloat(0.3f, 1.1f));
                 dust2.scale = Main.rand.NextFloat(0.9f, 2.4f);
                 dust2.noGravity = true;
-            }
-
-            if (target.type == ModContent.NPCType<BrimstoneHeart>())
-            {
-                if (Projectile.frameCounter == 0)
-                {
-                    Projectile.damage = (Projectile.damage * 2);
-                }
             }
         }
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);

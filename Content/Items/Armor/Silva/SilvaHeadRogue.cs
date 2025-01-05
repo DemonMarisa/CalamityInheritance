@@ -36,11 +36,16 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             var modPlayer1 = player.CalamityInheritance();
             var modPlayer = player.Calamity();
-            modPlayer.silvaSet = true;
+            modPlayer1.auricsilvaset = true;
             modPlayer1.silvaRogue = true;
+            modPlayer1.silvaRebornMark = true;
             modPlayer.rogueStealthMax += 1.25f;
             modPlayer.wearingRogueArmor = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (player.statLife > (int)(player.statLifeMax2 * 0.5) && player.HeldItem.DamageType == ModContent.GetInstance<RogueDamageClass>() && player.HeldItem.useTime > 3)
+            {
+                player.GetAttackSpeed<RogueDamageClass>() += 0.1f;
+            }
         }
 
         public override void UpdateEquip(Player player)

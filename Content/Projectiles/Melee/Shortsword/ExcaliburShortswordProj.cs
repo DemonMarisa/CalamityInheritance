@@ -16,6 +16,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class ExcaliburShortswordProj : BaseShortswordProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
+        }
         public const int OnHitIFrames = 5;
         public override void SetDefaults()
         {

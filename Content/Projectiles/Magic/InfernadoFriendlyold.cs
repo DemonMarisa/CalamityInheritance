@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.alpha = 255;
             Projectile.timeLeft = 500;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 1;
+            Projectile.idStaticNPCHitCooldown = 3;
             Projectile.DamageType = DamageClass.Magic;
         }
 

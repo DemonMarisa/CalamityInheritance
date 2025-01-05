@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.friendly = true;
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 1;
+            Projectile.timeLeft = 30;
             Projectile.DamageType = DamageClass.Magic;
         }
 
@@ -36,7 +36,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         {
             int shardType = ModContent.ProjectileType<PhotosyntheticShard>();
             int shardDamage = (int)(Projectile.damage * 0.5);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, shardType, shardDamage, Projectile.knockBack, Projectile.owner);
+            if (Projectile.timeLeft <= 2)
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, shardType, shardDamage, Projectile.knockBack, Projectile.owner);
             
         }
 

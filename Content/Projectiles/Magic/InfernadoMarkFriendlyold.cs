@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public static readonly SoundStyle FlareSound = new("CalamityMod/Sounds/Custom/Yharon/YharonInfernado");
 
+        private bool onhitNPC = false;
         public override void SetDefaults()
         {
             Projectile.width = 10;
@@ -96,9 +97,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 return;
             }
         }
-
-        public override void OnKill(int timeLeft)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            onhitNPC = true;
+
             SoundEngine.PlaySound(FlareSound, Projectile.Center);
             int dustAmt = 36;
             for (int i = 0; i < dustAmt; i++)
@@ -141,8 +143,60 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         break;
                     }
                 }
-                int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), (float)(projTileX * 16 + 8), (float)(projTileY * 16 - 24), 0f, 0f, ModContent.ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
+                int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), (float)(projTileX * 16 + 8), (float)(projTileY * 16 + 540), 0f, 0f, ModContent.ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
                 Main.projectile[infernado].netUpdate = true;
+            }
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            if(onhitNPC == false)
+            {
+                SoundEngine.PlaySound(FlareSound, Projectile.Center);
+                int dustAmt = 36;
+                for (int i = 0; i < dustAmt; i++)
+                {
+                    Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
+                    rotate = rotate.RotatedBy((double)((float)(i - (dustAmt / 2 - 1)) * 6.28318548f / (float)dustAmt), default) + Projectile.Center;
+                    Vector2 faceDirection = rotate - Projectile.Center;
+                    int infernadoDust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.CopperCoin, faceDirection.X * 2f, faceDirection.Y * 2f, 100, default, 1.4f);
+                    Main.dust[infernadoDust].noGravity = true;
+                    Main.dust[infernadoDust].noLight = true;
+                    Main.dust[infernadoDust].velocity = faceDirection;
+                }
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    int projTileY = (int)(Projectile.Center.Y / 16f);
+                    int projTileX = (int)(Projectile.Center.X / 16f);
+                    int offsetUpwards = 100;
+                    if (projTileX < 10)
+                    {
+                        projTileX = 10;
+                    }
+                    if (projTileX > Main.maxTilesX - 10)
+                    {
+                        projTileX = Main.maxTilesX - 10;
+                    }
+                    if (projTileY < 10)
+                    {
+                        projTileY = 10;
+                    }
+                    if (projTileY > Main.maxTilesY - offsetUpwards - 10)
+                    {
+                        projTileY = Main.maxTilesY - offsetUpwards - 10;
+                    }
+                    for (int j = projTileY; j < projTileY + offsetUpwards; j++)
+                    {
+                        Tile tile = Main.tile[projTileX, j];
+                        if (tile.HasTile && (Main.tileSolid[(int)tile.TileType] || tile.LiquidAmount != 0))
+                        {
+                            projTileY = j;
+                            break;
+                        }
+                    }
+                    int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), (float)(projTileX * 16 + 8), (float)(projTileY * 16 - 24), 0f, 0f, ModContent.ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
+                    Main.projectile[infernado].netUpdate = true;
+                }
             }
         }
     }

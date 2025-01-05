@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.tarraSummon = true;
             modPlayer.bloodflareSet = true;
             modPlayer.bloodflareSummon = true;
-            modPlayer.silvaSet = true;
+            modplayer1.auricsilvaset = true;
             modPlayer.silvaSummon = true;
             modPlayer.godSlayer = true;
 

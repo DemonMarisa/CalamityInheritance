@@ -16,6 +16,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class AncientShivProj : BaseShortswordProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
+        }
         public override void SetDefaults()
         {
             Projectile.Size = new Vector2(15);

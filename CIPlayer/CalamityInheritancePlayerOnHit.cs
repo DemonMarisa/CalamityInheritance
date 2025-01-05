@@ -21,6 +21,7 @@ using Mono.Cecil;
 using Terraria.Audio;
 using CalamityInheritance.Buffs.StatDebuffs;
 using Terraria.WorldBuilding;
+using CalamityMod.Balancing;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -57,7 +58,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
             #region GodSlayer
-            if (Main.player[projectile.owner].CalamityInheritance().godSlayerMagic)
+            if (Main.player[projectile.owner].CalamityInheritance().godSlayerMagic && projectile.DamageType == DamageClass.Magic)
             {
                 if (hasFiredThisFrame)
                 {
@@ -149,7 +150,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (Main.player[projectile.owner].CalamityInheritance().godSlayerSummonold)
+            if (Main.player[projectile.owner].CalamityInheritance().godSlayerSummonold && projectile.DamageType == DamageClass.Summon)
             {
                 if (hasFiredThisFrame)
                 {
@@ -241,5 +242,26 @@ namespace CalamityInheritance.CIPlayer
             if (yPower)
                 knockback += item.knockBack * 0.25f;
         }
+        #region Lifesteal
+        public void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
+        {
+            CalamityGlobalProjectile modProj = proj.Calamity();
+
+            if (Main.player[Main.myPlayer].lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
+            {
+                if (auricsilvaset)
+                {
+                    double healMult = 0.1;
+                    healMult -= proj.numHits * healMult * 0.5;
+                    int heal = (int)Math.Round(damage * healMult);
+                    if (heal > 100)
+                        heal = 100;
+
+                    if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
+                        CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
+                }
+            }
+        }
+        #endregion
     }
 }

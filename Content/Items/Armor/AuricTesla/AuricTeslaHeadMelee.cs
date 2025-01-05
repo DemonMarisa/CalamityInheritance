@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.GodSlayerDMGprotect = true;
 
-            modPlayer.silvaSet = true;
+            modPlayer1.auricsilvaset = true;
             modPlayer.auricSet = true;
 
             player.thorns += 3f;

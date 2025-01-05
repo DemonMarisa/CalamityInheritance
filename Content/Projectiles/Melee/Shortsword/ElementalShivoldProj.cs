@@ -16,7 +16,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
     public class ElementalShivoldProj : BaseShortswordProjectile
     {
         public override string Texture => "CalamityMod/Items/Weapons/Melee/ElementalShiv";
-
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
+        }
         public override void SetDefaults()
         {
             Projectile.Size = new Vector2(22);

@@ -58,6 +58,8 @@ using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
 using Microsoft.Xna.Framework.Graphics;
+using static MonoMod.Cil.ILContext;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -97,7 +99,16 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<TerraShiv>()).
                 AddIngredient(ModContent.ItemType<GalacticaSingularity>()).
                 AddIngredient(ItemID.LunarBar).
-                AddTile(TileID.AncientMythrilBrick).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<VividClarity>()).
+                AddIngredient(ModContent.ItemType<ElementalRayold>()).
+                AddIngredient(ModContent.ItemType<PhantasmalFury>()).
+                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
+                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+                AddIngredient(ModContent.ItemType<MiracleMatter>()).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
 
             Recipe.Create(ModContent.ItemType<Terratomere>()).
@@ -106,7 +117,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<UelibloomBar>()).
                 AddIngredient(ModContent.ItemType<Floodtide>()).
                 AddIngredient(ItemID.LunarBar).
-                AddTile(TileID.AncientMythrilBrick).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
 
             Recipe.Create(ModContent.ItemType<Exoblade>()).
@@ -117,6 +128,15 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<DubiousPlating>(), 2).
                 AddIngredient(ModContent.ItemType<MysteriousCircuitry>()).
                 AddIngredient(ItemID.CopperBar).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<ElementalRay>()).
+                AddIngredient<TerraRay>().
+                AddIngredient(ItemID.LunarBar, 5).
+                AddIngredient<LifeAlloy>(5).
+                AddIngredient<GalacticaSingularity>(5).
+                AddTile(TileID.LunarCraftingStation).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
 
             #endregion
@@ -492,12 +512,12 @@ namespace CalamityInheritance.Content.Items
 
                 Recipe.Create(ModContent.ItemType<PristineFury>()).
                     AddIngredient<LoreProvidence>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
 
                 Recipe.Create(ModContent.ItemType<PristineFury>()).
                     AddIngredient<KnowledgeProvidence>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
 
                 Recipe.Create(ModContent.ItemType<SeasSearing>()).

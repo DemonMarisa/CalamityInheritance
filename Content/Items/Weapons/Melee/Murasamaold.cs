@@ -108,7 +108,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+            if (Main.getGoodWorld)
+            {
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+            }
+
+            if (Main.zenithWorld)
+            {
+                Projectile.NewProjectile(source, position, velocity, type, damage * 2, knockback, player.whoAmI, 0f, 0f);
+            }
+
+            else
+            {
+                Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 0.5f), knockback, player.whoAmI, 0f, 0f);
+            }
             return false;
         }
     }

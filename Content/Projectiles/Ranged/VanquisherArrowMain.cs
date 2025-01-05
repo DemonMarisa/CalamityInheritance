@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.timeLeft % 18 == 0)
             {
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.25f, ModContent.ProjectileType<VanquisherArrowSplit>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.25f, ModContent.ProjectileType<VanquisherArrowSplit>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
             }
         }
 

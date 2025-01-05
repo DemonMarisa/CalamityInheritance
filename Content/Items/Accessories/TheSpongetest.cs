@@ -34,7 +34,6 @@ namespace CalamityInheritance.Content.Items.Accessories
     public class TheSpongetest : ModItem, ILocalizedModType, IDyeableShaderRenderer
     {
         public new string LocalizationCategory => "Items.Accessories";
-
         public override string Texture => (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) ? "CalamityMod/Items/Accessories/TheSpongeReal" : "CalamityMod/Items/Accessories/TheSponge";
 
         public static Asset<Texture2D> NoiseTex;
@@ -43,17 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly SoundStyle ActivationSound = new("CalamityMod/Sounds/Custom/RoverDriveActivate") { Volume = 0.85f };
         public static readonly SoundStyle BreakSound = new("CalamityMod/Sounds/Custom/RoverDriveBreak") { Volume = 0.75f };
 
-        public static int CIShieldDurabilityMax
-        {
-            get
-            {
-                if (Main.LocalPlayer.statLifeMax2 > 800)
-                {
-                    return Main.LocalPlayer.statLifeMax2;
-                }
-                return 800;
-            }
-        }
+        public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(10); // was 6
         public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(5);

@@ -68,17 +68,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.frameCounter == 0)
             {
                 Projectile.scale = 2;
-                Projectile.damage = (int)(Projectile.damage * 0.5);
             }
             if (Main.getGoodWorld)
             {
                 Projectile.scale = 2;
-                Projectile.damage = (int)(Projectile.damage * 1);
             }
             if (Main.zenithWorld)
             {
                 Projectile.scale = 2;
-                Projectile.damage = (int)(Projectile.damage * 2);
             }
 
             //Frames and crap

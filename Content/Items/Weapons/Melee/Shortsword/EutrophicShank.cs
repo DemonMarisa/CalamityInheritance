@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = Item.buyPrice(0, 2, 0, 0);
             Item.rare = ItemRarityID.Green;
             Item.shoot = ModContent.ProjectileType<EutrophicShankProj>();
-            Item.shootSpeed = 4f;
+            Item.shootSpeed = 2.8f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

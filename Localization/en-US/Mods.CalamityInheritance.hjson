@@ -292,7 +292,7 @@ Items: {
 					魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
 					魔法弹幕每5秒击中敌人会触发林海爆炸
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 					林海无敌结束后，魔法伤害增加60%
 					'''
 			}
@@ -315,7 +315,7 @@ Items: {
 					近战武器可以眩晕敌人
 					真近战有25%的概率造成5倍伤害
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 					林海无敌结束后，接触伤害降低20%
 					'''
 			}
@@ -338,7 +338,7 @@ Items: {
 					允许玩家攻击时以溢出的暴击概率造成四倍伤害
 					远程攻击速度增加20%
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 					林海无敌结束后，射手伤害增加40%
 					'''
 			}
@@ -363,7 +363,7 @@ Items: {
 					满血时，盗贼伤害，暴击率和射速增加10%
 					当玩家血量大于50%时，攻击速度增加10%
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 					林海无敌结束后，盗贼伤害增加40%
 					'''
 			}
@@ -383,7 +383,7 @@ Items: {
 					仆从击中敌人会出现弑神幻象
 					召唤一个林海水晶，用生命能量轰击敌人
 					受到致命伤害时会触发弑神复活，此效果有45秒冷却
-					在冷却时再次死亡，会触发始源林海无敌，使玩家在8秒内不能死亡
+					在冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 					林海无敌结束后，暴击几率增加10%，增加2仆从栏
 					'''
 			}
@@ -482,7 +482,7 @@ Items: {
 					所有弹幕击中敌人时生成能治疗的林海光球。
 					最大速度和加速度增加5%。
 					魔法弹幕每5秒击中敌人会触发林海爆炸
-					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，伤害增加60%
 					'''
 			}
@@ -495,7 +495,7 @@ Items: {
 					所有弹幕击中敌人时生成能治疗的林海光球。
 					最大速度和加速度增加5%。
 					召唤一个林海水晶，用生命能量轰击敌人
-					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，暴击几率增加10%，增加2仆从栏
 					'''
 			}
@@ -520,7 +520,7 @@ Items: {
 					最大速度和加速度增加5%。
 					近战武器可以眩晕敌人
 					真近战有25%的概率造成5倍伤害
-					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，接触伤害降低20%
 					'''
 			}
@@ -533,7 +533,7 @@ Items: {
 					所有弹幕击中敌人时生成能治疗的林海光球。
 					最大速度和加速度增加5%。
 					远程攻击速度增加10%
-					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，射手伤害增加40%
 					'''
 			}
@@ -550,7 +550,7 @@ Items: {
 					所有弹幕击中敌人时生成能治疗的林海光球。
 					最大速度和加速度增加5%。
 					当玩家血量大于50%时，攻击速度增加10%
-					死亡时，会触发始源林海无敌，使玩家在8秒内不能死亡
+					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，盗贼伤害增加40%
 					'''
 			}
@@ -1204,8 +1204,8 @@ Items: {
 				DisplayName: 屠杀射线
 				Tooltip:
 					'''
-					发射纯粹而集中的暗影射线
-					击中敌人时会在其附近产生额外的射线
+					发射纯粹而集中的血腥射线
+					敌人在附近时会在其附近产生额外的射线
 					距离敌人越远，伤害越高
 					'''
 			}
@@ -1215,9 +1215,14 @@ Items: {
 				Tooltip:
 					'''
 					发射纯粹而集中的暗影射线
-					击中敌人时会在其附近产生额外的射线
+					敌人在附近时会在其附近产生额外的射线
 					距离敌人越近，伤害越高
 					'''
+			}
+
+			ElementalRayold: {
+				DisplayName: Elemental Rayold
+				Tooltip: ""
 			}
 		}
 
@@ -1743,7 +1748,17 @@ Items: {
 	}
 
 	TerraRay: {
-		DisplayName: Terra Ray
+		DisplayName: 泰拉射线
+		Tooltip:
+			'''
+			发射纯粹而集中的生命射线
+			敌人在附近时会在其附近产生额外的射线
+			射线消失后会留下可以追踪的生命精华
+			'''
+	}
+
+	Test: {
+		DisplayName: Test
 		Tooltip: ""
 	}
 }
@@ -1760,6 +1775,13 @@ Projectiles: {
 		NightBoltold.DisplayName: 永夜光束
 		TerraBeam.DisplayName: Terra Beam
 		TerraBeamMain.DisplayName: Terra Beam Main
+		ElementalBeamNebula.DisplayName: Elemental Beam Nebula
+		ElementalBeamSolar.DisplayName: Elemental Beam Solar
+		ElementalBeamStardust.DisplayName: Elemental Beam Stardust
+		ElementalBeamVortex.DisplayName: Elemental Beam Vortex
+		ElementalBeam.DisplayName: Elemental Beam
+		ElementalBeamMain.DisplayName: Elemental Beam Main
+		AncientStarCI.DisplayName: Ancient Star C I
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -1898,6 +1920,19 @@ Projectiles: {
 	TerraBolt2.DisplayName: Terra Bolt2
 	TerraOrb.DisplayName: Terra Orb
 	TerraOrb2.DisplayName: Terra Orb2
+	ERNebulaMark.DisplayName: E R Nebula Mark
+	ERSolarMark.DisplayName: E R Solar Mark
+	ERStardustMark.DisplayName: E R Stardust Mark
+	ERVortexMark.DisplayName: E R Vortex Mark
+	ElementalRayMark.DisplayName: Elemental Ray Mark
+	ElementalRayMarkStar.DisplayName: Elemental Ray Mark Star
+	ElementalBoltVortex.DisplayName: Elemental Bolt Vortex
+	ElementalBolt.DisplayName: Elemental Bolt
+	ElementalOrbVortex.DisplayName: Elemental Orb Vortex
+	ElementalOrb.DisplayName: Elemental Orb
+	ElementalRayMarkVortex.DisplayName: Elemental Ray Mark Vortex
+	ElementalBolt2.DisplayName: Elemental Bolt2
+	ElementalLightning.DisplayName: Elemental Lightning
 }
 
 Configs: {

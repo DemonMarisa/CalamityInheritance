@@ -42,7 +42,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.TerraBlade, Projectile.velocity.X, Projectile.velocity.Y);
             }
-            CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 30f, 100);
+            if (Projectile.timeLeft > 200)
+            {
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 14f, 100);
+            }
         }
         public override void PostDraw(Color lightColor)
         {

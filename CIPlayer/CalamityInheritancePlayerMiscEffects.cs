@@ -25,6 +25,8 @@ using CalamityMod.Cooldowns;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Dusts;
+using CalamityMod.Items.Armor.Silva;
+using Terraria.Graphics.Shaders;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -46,6 +48,8 @@ namespace CalamityInheritance.CIPlayer
             StandingStillEffects();
 
             ElysianAegisEffects();
+
+            ShieldDurabilityMax = Player.statLifeMax2;
         }
         public void OtherBuffEffects()
         {
@@ -609,6 +613,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
             #endregion
+            #region ArmorSet
             if (modPlayer.invincible)
             {
                 foreach (int debuff in CalamityLists.debuffList)
@@ -620,6 +625,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (silvaStunCooldownold > 0)
                 silvaStunCooldownold--;
+
             if (modPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
@@ -640,52 +646,101 @@ namespace CalamityInheritance.CIPlayer
                     double multiplier1 = (double)Player.statLife / (double)Player.statLifeMax2;
                     Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
                 }
+            }
 
-                if (modPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
-                {
-                    Player.GetDamage<RangedDamageClass>() += 0.40f;
-                }
-                if (modPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
-                {
-                    Player.GetCritChance<SummonDamageClass>() += 10;
-                    Player.maxMinions += 2;
-                }
-                if (modPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
-                {
-                    Player.GetDamage<RogueDamageClass>() += 0.40f;
-                }
+            if (modPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<RangedDamageClass>() += 0.40f;
+            }
 
-                if (modPlayer.AuricDebuffImmune)
+            if (modPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetCritChance<SummonDamageClass>() += 10;
+                Player.maxMinions += 2;
+            }
+
+            if (modPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<RogueDamageClass>() += 0.40f;
+            }
+
+            if (modPlayer.AuricDebuffImmune)
+            {
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+            }
+
+            // Silva invincibility effects
+            if (auricsilvaCountdown > 0 && aurichasSilvaEffect)
+            {
+                if(auricsilvaset && !silvaRebornMark)
                 {
                     foreach (int debuff in CalamityLists.debuffList)
                         Player.buffImmune[debuff] = true;
+
+                    auricsilvaCountdown -= 1;
+                    if (auricsilvaCountdown <= 0)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
+                    }
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                        Main.dust[green].position.X += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].velocity *= 0.9f;
+                        Main.dust[green].noGravity = true;
+                        Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                        if (Main.rand.NextBool())
+                            Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                    }
+                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && auricsilvaCountdown <= 0)
+                    {
+                        auricsilvaCountdown = 600;
+                        aurichasSilvaEffect = false;
+                    }
                 }
             }
-        }
-        
-        #endregion
 
-        #region Use Time Mult
-        public override float UseTimeMultiplier(Item item)
-        {
-            CalamityPlayer modPlayer = Player.Calamity();
-            if (silvaRanged && !modPlayer.auricSet)
+            if (CIsilvaCountdown > 0 && aurichasSilvaEffect)
             {
-                if (item.DamageType == DamageClass.Ranged && item.useTime > 3)
-                    return 0.9f;
+                if (auricsilvaset && silvaRebornMark)
+                {
+                    foreach (int debuff in CalamityLists.debuffList)
+                        Player.buffImmune[debuff] = true;
+
+                    CIsilvaCountdown -= 1;
+                    if (CIsilvaCountdown <= 0)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
+                    }
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                        Main.dust[green].position.X += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].velocity *= 0.9f;
+                        Main.dust[green].noGravity = true;
+                        Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                        if (Main.rand.NextBool())
+                            Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                    }
+                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && CIsilvaCountdown <= 0)
+                    {
+                        CIsilvaCountdown = 900;
+                        aurichasSilvaEffect = false;
+                    }
+                }
             }
-            if (silvaRanged && modPlayer.auricSet)
-            {
-                if (item.DamageType == DamageClass.Ranged && item.useTime > 3)
-                    return 0.8f;
-            }
-            if (silvaRogue)
-            {
-                if (Player.statLife > (int)(Player.statLifeMax2 * 0.5) && item.DamageType == ModContent.GetInstance<RogueDamageClass>() && item.useTime > 3)
-                    return 0.9f;
-            }
-            return 1f;
+            #endregion
         }
+
         #endregion
 
         #region Standing Still Effects
