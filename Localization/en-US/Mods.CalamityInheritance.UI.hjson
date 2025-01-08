@@ -1,8 +1,8 @@
 Cooldowns: {
-	GodSlayerCooldown: 弑神者之息
-	CISpongeDurability: 护盾值
-	CISpongeRecharge: 护盾基础充能
-	CISpongeDurabilityRelay: 护盾充能延迟
-	CISpongeRechargeRelay: 护盾开始重新充能
-	DraconicElixirCooldown: 龙魂之力正在你的身旁重新聚集
+	GodSlayerCooldown: GodSlayerCooldown
+	CISpongeDurability: CISpongeDurability
+	CISpongeRecharge: CISpongeRecharge
+	CISpongeDurabilityRelay: CISpongeDurabilityRelay
+	CISpongeRechargeRelay: CISpongeRechargeRelay
+	DraconicElixirCooldown: DraconicElixirCooldown
 }
