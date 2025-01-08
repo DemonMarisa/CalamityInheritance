@@ -87,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             float lengthFromStart = Projectile.Distance(target.Center);
 
             int totalShards = (int)MathHelper.Lerp(4, 7, MathHelper.Clamp(lengthFromStart / MaxLaserLength * 1.5f, 0f, 1f));
-            int shardType = ModContent.ProjectileType<GodSlayerOrb>();
+            int shardType = ModContent.ProjectileType<ElementalNer>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             for (int i = 0; i < totalShards; i++)
             {

@@ -187,8 +187,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Slash1)
                 hitbox.Inflate(100, 100);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+
             if (target.Organic())
                 SoundEngine.PlaySound(Murasama.OrganicHit with { Pitch = (Slash2 ? -0.1f : Slash3 ? 0.1f : Slash1 ? -0.15f : 0) }, Projectile.Center);
             else
@@ -235,6 +237,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust2.noGravity = true;
             }
         }
+        
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            int baseDamage = (int)modifiers.SourceDamage.Flat;
+            float damageReduction = baseDamage * 0.5f;
+            modifiers.FinalDamage -= damageReduction;
+        }
+        
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);
         public override bool? CanDamage() => Slashing == false ? false : null;
     }

@@ -7,6 +7,7 @@ using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Balancing;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Cooldowns;
@@ -572,6 +573,55 @@ namespace CalamityInheritance.CIPlayer
                 return true;
             // If no other effects occurred, run vanilla code
             return base.FreeDodge(info);
+        }
+        #endregion
+        #region Modify Hit By Proj
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
+        {
+            CalamityPlayer modPlayer = Player.Calamity();
+            // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
+            // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
+            if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
+            {
+                double dodgeDamageGateValuePercent = 0.05;
+                int dodgeDamageGateValue = (int)Math.Round(Player.statLifeMax2 * dodgeDamageGateValuePercent);
+
+                // Reflects count as dodges. They share the timer and can be disabled by Armageddon right click.
+                if (!modPlayer.disableAllDodges && !Player.HasCooldown(GlobalDodge.ID) && proj.damage >= dodgeDamageGateValue)
+                {
+                    double maxCooldownDurationDamagePercent = 0.5;
+                    int maxCooldownDurationDamageValue = (int)Math.Round(Player.statLifeMax2 * (maxCooldownDurationDamagePercent - dodgeDamageGateValuePercent));
+
+                    // Just in case...
+                    if (maxCooldownDurationDamageValue <= 0)
+                        maxCooldownDurationDamageValue = 1;
+
+                    float cooldownDurationScalar = MathHelper.Clamp((proj.damage - dodgeDamageGateValue) / (float)maxCooldownDurationDamageValue, 0f, 1f);
+
+                    // The Evolution
+                    if (projRef)
+                    {
+                        proj.hostile = false;
+                        proj.friendly = true;
+                        proj.velocity *= -2f;
+                        proj.extraUpdates += 1;
+                        proj.penetrate = 1;
+
+                        // 17APR2024: Ozzatron: The Evolution is a reflect which also functions as a dodge. It uses vanilla dodge iframes and benefits from Cross Necklace.
+                        int evolutionIFrames = Player.ComputeReflectIFrames();
+                        Player.GiveUniversalIFrames(evolutionIFrames, true);
+
+                        modifiers.SetMaxDamage(1);
+                        modPlayer.evolutionLifeRegenCounter = 300;
+                        modPlayer.projTypeJustHitBy = proj.type;
+
+                        int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
+                        Player.AddCooldown(GlobalDodge.ID, cooldownDuration);
+
+                        return;
+                    }
+                }
+            }
         }
         #endregion
     }

@@ -92,8 +92,8 @@ namespace CalamityInheritance.Content.Projectiles
                                 int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].timeLeft = 120;
-                                Main.projectile[projectile3].timeLeft = 120;
+                                Main.projectile[projectile2].timeLeft = 60;
+                                Main.projectile[projectile3].timeLeft = 60;
                                 Main.projectile[projectile2].noDropItem = true;
                                 Main.projectile[projectile3].noDropItem = true;
                             }
@@ -128,8 +128,8 @@ namespace CalamityInheritance.Content.Projectiles
                                 int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].timeLeft = 120;
-                                Main.projectile[projectile3].timeLeft = 120;
+                                Main.projectile[projectile2].timeLeft = 60;
+                                Main.projectile[projectile3].timeLeft = 60;
                                 Main.projectile[projectile2].noDropItem = true;
                                 Main.projectile[projectile3].noDropItem = true;
                             }

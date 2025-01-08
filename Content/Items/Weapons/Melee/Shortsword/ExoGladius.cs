@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ItemRarityID.Red;
             Item.shoot = ModContent.ProjectileType<ExoGladiusProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 4.8f;
             Item.rare = ModContent.RarityType<Violet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;

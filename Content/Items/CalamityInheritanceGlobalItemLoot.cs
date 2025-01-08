@@ -16,6 +16,7 @@ using Terraria.UI;
 using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -30,6 +31,8 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<Quasar>(), 10);
             if (item.type == ModContent.ItemType<YharonBag>())
                 itemloot.Add(ModContent.ItemType<VoidVortex>(), 10);
+            if (item.type == ModContent.ItemType<CeaselessVoidBag>())
+                itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
 
             switch (item.type)
             {

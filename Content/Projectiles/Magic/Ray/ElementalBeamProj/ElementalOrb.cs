@@ -13,6 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
     {
         public new string LocalizationCategory => "Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");

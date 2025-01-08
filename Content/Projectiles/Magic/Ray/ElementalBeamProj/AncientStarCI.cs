@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 360;
-            Projectile.tileCollide = true;
+            Projectile.tileCollide = false;
             Projectile.localNPCHitCooldown = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.DamageType = DamageClass.Magic;

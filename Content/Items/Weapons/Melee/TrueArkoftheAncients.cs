@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             type = Utils.SelectRandom(Main.rand, new int[]
             {
-        ModContent.ProjectileType<EonBeam>(),
-        ModContent.ProjectileType<EonBeamV2>()
+                ModContent.ProjectileType<EonBeam>(),
+                ModContent.ProjectileType<EonBeamV2>()
             });
 
 

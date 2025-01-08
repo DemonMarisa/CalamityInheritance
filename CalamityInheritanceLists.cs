@@ -20,7 +20,7 @@ namespace CalamityInheritance
         public static List<int> rangedProjectileExceptionList;
         public static List<int> AuricdebuffList;
         public static List<int> AMRextraProjList;
-
+        public static List<int> pierceResistExceptionList;
         public static void LoadLists()
         {
             rangedProjectileExceptionList = new List<int>
@@ -67,6 +67,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoSparkold>(),
                     ProjectileType<ExoLightold>(),
                     ProjectileType<ExoSpearBack>(),
+                    ProjectileType<ExoGunBlast>()
             };
 
             AuricdebuffList = new List<int>()
@@ -138,7 +139,10 @@ namespace CalamityInheritance
                 ProjectileType<BloodBombExplosion>(),
             };
         }
+        public static void AddLists()
+        {
 
+        }
         public static void UnloadLists()
         {
             rangedProjectileExceptionList = null;

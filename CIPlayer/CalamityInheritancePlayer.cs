@@ -20,6 +20,11 @@ using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod.Projectiles.Typeless;
+using CalamityMod.Items.Accessories;
+using CalamityMod.World;
+using CalamityInheritance.UI;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -37,8 +42,13 @@ namespace CalamityInheritance.CIPlayer
         public bool YharimsInsignia = false;
         public bool darkSunRingold = false;
         public bool AMRextra = false;
+        public bool projRef = false;
+        public bool AstralBulwark = false;
+        public bool astralArcanum = false;
         #endregion
+        //多个计时器触发
         public int ProjectilHitCounter;
+        public int ProjectilHitCounter2;
         #region dash
         public int dashTimeMod;
         public bool HasReducedDashFirstFrame = false;
@@ -180,6 +190,9 @@ namespace CalamityInheritance.CIPlayer
             PsychoticAmulet = false;
             YharimsInsignia = false;
             darkSunRingold = false;
+            projRef = false;
+            AstralBulwark = false;
+            astralArcanum = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -314,6 +327,35 @@ namespace CalamityInheritance.CIPlayer
                 AMRextra = false;
             }
         }
+        #region TeleportMethods
+        public static Vector2? GetJunglePosition(Player player)
+        {
+            bool canSpawn = false;
+            int teleportStartX = Abyss.AtLeftSideOfWorld ? (int)(Main.maxTilesX * 0.65) : (int)(Main.maxTilesX * 0.2);
+            int teleportRangeX = (int)(Main.maxTilesX * 0.15);
+            int teleportStartY = (int)Main.worldSurface - 75;
+            int teleportRangeY = 50;
+
+            Player.RandomTeleportationAttemptSettings settings = new Player.RandomTeleportationAttemptSettings
+            {
+                mostlySolidFloor = true,
+                avoidAnyLiquid = true,
+                avoidLava = true,
+                avoidHurtTiles = true,
+                avoidWalls = true,
+                attemptsBeforeGivingUp = 1000,
+                maximumFallDistanceFromOrignalPoint = 30
+            };
+
+            Vector2 vector = player.CheckForGoodTeleportationSpot(ref canSpawn, teleportStartX, teleportRangeX, teleportStartY, teleportRangeY, settings);
+
+            if (canSpawn)
+            {
+                return (Vector2?)vector;
+            }
+            return null;
+        }
+        #endregion
 
         public override void PreUpdate()
         {
@@ -340,6 +382,18 @@ namespace CalamityInheritance.CIPlayer
             bool hardMode = Main.hardMode;
             if (Player.whoAmI == Main.myPlayer)
             {
+                if (AstralBulwark)
+                {
+                    var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
+                    int astralStarDamage = (int)Player.GetBestClassDamage().ApplyTo(320);
+                    astralStarDamage = Player.ApplyArmorAccDamageBonusesTo(astralStarDamage);
+                    int starAmt = 5;
+                    for (int n = 0; n < starAmt; n++)
+                    {
+                        CalamityUtils.ProjectileRain(source , Player.Center, 400f, 100f, 500f, 800f, 29f, ModContent.ProjectileType<AstralStar>(), astralStarDamage , 5f, Player.whoAmI);
+                    }
+                }
+
                 if (FungalCarapace)
                 {
                     CalamityPlayer modPlayer = Player.Calamity();
@@ -474,6 +528,10 @@ namespace CalamityInheritance.CIPlayer
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            if (Player.dead)
+                return;
+
+            CalamityPlayer modPlayer = Player.Calamity();
             if (CalamityInheritanceKeybinds.BoCLoreTeleportation.JustPressed && BoCLoreTeleportation == true && Main.myPlayer == Player.whoAmI)
             {
                 if (!Player.chaosState)
@@ -562,11 +620,15 @@ namespace CalamityInheritance.CIPlayer
                     elysianGuard = !elysianGuard;
                 }
             }
-
+            if (CalamityInheritanceKeybinds.AstralArcanumUIHotkey.JustPressed && astralArcanum && !CalamityPlayer.areThereAnyDamnBosses)
+            {
+                AstralArcanumUI.Toggle();
+            }
         }
         public override void Initialize()
         {
             ProjectilHitCounter = 0;
+            ProjectilHitCounter2 = 0;
         }
         #region Limitations
         public void ForceVariousEffects()

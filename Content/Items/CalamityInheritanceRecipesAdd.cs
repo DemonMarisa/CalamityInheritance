@@ -60,6 +60,7 @@ using CalamityInheritance.Content.Items.LoreItems;
 using Microsoft.Xna.Framework.Graphics;
 using static MonoMod.Cil.ILContext;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityMod.Prefixes;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -440,8 +441,20 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<ExoPrism>(5).
                 AddIngredient<AuricBarold>(1).
                 AddTile<DraedonsForgeTiles>().
+                Register(); 
+
+            Recipe.Create(ModContent.ItemType<PlasmaDriveCore>()).
+                AddIngredient(ModContent.ItemType<DubiousPlating>(), 5).
+                AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 10).
+                AddRecipeGroup("AnyMythrilBar", 10).
+                AddTile(TileID.MythrilAnvil).
                 Register();
 
+            Recipe.Create(ModContent.ItemType<SuspiciousScrap>()).
+                AddRecipeGroup("AnyCopperBar", 10).
+                AddRecipeGroup("IronBar", 10).
+                AddTile(TileID.Anvils).
+                Register();
             #endregion
             #region Item
             Recipe.Create(ItemID.TerraBlade).

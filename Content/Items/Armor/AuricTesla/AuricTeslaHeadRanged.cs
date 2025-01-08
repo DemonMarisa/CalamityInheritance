@@ -57,7 +57,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.tarraRanged = true;
             modPlayer.bloodflareSet = true;
             modPlayer.godSlayer = true;
-            modPlayer.silvaSet = true;
 
             modPlayer1.godSlayerRangedold = true;
             if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))

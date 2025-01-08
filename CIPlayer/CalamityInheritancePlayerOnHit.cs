@@ -22,6 +22,7 @@ using Terraria.Audio;
 using CalamityInheritance.Buffs.StatDebuffs;
 using Terraria.WorldBuilding;
 using CalamityMod.Balancing;
+using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 
 namespace CalamityInheritance.CIPlayer
 {

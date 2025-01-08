@@ -76,6 +76,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.auricsilvaset = true;
             modPlayer.auricSet = true;
+
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;

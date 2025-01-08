@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             hitCount++;
 
-            if (hitCount >= 5)
+            if (hitCount >= 10 || target.life <= target.lifeMax * 0.05f)
             {
                 Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
                 hitCount = 0;

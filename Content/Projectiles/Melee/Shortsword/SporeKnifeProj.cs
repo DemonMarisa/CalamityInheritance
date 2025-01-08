@@ -59,21 +59,27 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            int numberOfProjectiles = Main.rand.Next(2, 4);
-            float spreadAngle = MathHelper.ToRadians(Main.rand.Next(10, 30));
-            float baseAngle = Projectile.velocity.ToRotation();
-
-            for (int i = 0; i < numberOfProjectiles; i++)
+            CalamityInheritancePlayer modPlayer = Main.player[Projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
+            modPlayer.ProjectilHitCounter2++;
+            if (modPlayer.ProjectilHitCounter2 >= 2)
             {
-                float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
-                Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+                int numberOfProjectiles = Main.rand.Next(2, 4);
+                float spreadAngle = MathHelper.ToRadians(Main.rand.Next(10, 30));
+                float baseAngle = Projectile.velocity.ToRotation();
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center,randomDirection * 6f,ProjectileID.Leaf,(int)(Projectile.damage * 1),Projectile.knockBack,Projectile.owner);
-
-                if (newProjectileId != Main.maxProjectiles)
+                for (int i = 0; i < numberOfProjectiles; i++)
                 {
-                    Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
+                    float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
+                    Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+
+                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center,randomDirection * 6f,ProjectileID.Leaf,(int)(Projectile.damage * 1),Projectile.knockBack,Projectile.owner);
+
+                    if (newProjectileId != Main.maxProjectiles)
+                    {
+                        Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
+                    }
                 }
+                modPlayer.ProjectilHitCounter2 = 0;
             }
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

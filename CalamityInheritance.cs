@@ -19,6 +19,10 @@ using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.CIPlayer.Dash;
 using MonoMod.RuntimeDetour;
 using System.Reflection;
+using CalamityInheritance.UI;
+using CalamityMod.UI;
+using CalamityMod.Rarities;
+using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance
 {
@@ -26,17 +30,40 @@ namespace CalamityInheritance
     public class CalamityInheritance : Mod
     {
         internal static CalamityInheritance Instance;
+
         public override void Load()
         {
             Instance = this;
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
+
+            if (CalamityLists.pierceResistExceptionList != null)
+            {
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
+            }
+            
         }
+        public void LoadClient()
+        {
+            AstralArcanumUI.Load(this);
+
+            CIInvasionProgressUIManager.LoadGUIs();
+
+            if (CalamityLists.pierceResistExceptionList != null)
+            {
+                CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
+            }
+        }
+
         #region Unload
         public override void Unload()
         {
             CIPlayerDashManager.Unload();
+            AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
+            CIInvasionProgressUIManager.UnloadGUIs();
             Instance = null;
             base.Unload();
         }

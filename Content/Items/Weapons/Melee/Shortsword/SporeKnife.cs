@@ -10,6 +10,8 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.Pets;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.Melee;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {

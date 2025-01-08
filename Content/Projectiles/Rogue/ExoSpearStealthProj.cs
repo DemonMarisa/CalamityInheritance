@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (hitCount < 1)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 2000, 50f, 100);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 2000, 45f, 100f);
             }
         }
 

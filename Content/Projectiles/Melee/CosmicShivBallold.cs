@@ -61,8 +61,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (target != null)
             {
-                float inertia = 100f;
-                float homingSpeed = 70f;
+                float inertia = 20f;
+                float homingSpeed = 48f;
                 Vector2 idealVelocity = Projectile.SafeDirectionTo(target.Center, Vector2.UnitX) * homingSpeed;
                 Projectile.velocity = (Projectile.velocity * (inertia - 1f) + idealVelocity) / inertia;
             }

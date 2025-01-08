@@ -40,13 +40,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             type = Utils.SelectRandom(Main.rand, new int[]
             {
-        ModContent.ProjectileType<Projectiles.Melee.EonBeam>(),
-        ProjectileID.EnchantedBeam
+                ModContent.ProjectileType<Projectiles.Melee.EonBeam>(),
+                ProjectileID.EnchantedBeam
             });
 
             int beam = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer);
             if (Main.projectile[beam].type == ModContent.ProjectileType<Projectiles.Melee.EonBeam>())
                 Main.projectile[beam].penetrate = 2;
+
+            if (Main.projectile[beam].type == ProjectileID.EnchantedBeam)
+                Main.projectile[beam].extraUpdates = 1;
 
             float num72 = Main.rand.Next(18, 25);
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);

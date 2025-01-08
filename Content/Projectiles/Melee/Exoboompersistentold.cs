@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 3, 0, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 4, 0, Projectile.owner, 0f, 0f);
                 }
             }
             target.immune[Projectile.owner] = 0;
@@ -45,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 3, 0, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 4, 0, Projectile.owner, 0f, 0f);
             }
             return true;
         }
@@ -56,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 3, 0, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Exoboomold>(), Projectile.damage / 4, 0, Projectile.owner, 0f, 0f);
                 }
             }
         }

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public new string LocalizationCategory => "Items.Weapons.Ranged";
         public override void SetDefaults()
         {
-            Item.damage = 2310;
+            Item.damage = 510;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 76;
             Item.crit += 5;

@@ -35,7 +35,7 @@ namespace CalamityInheritance
         [Range(1, 4)]
         [Increment(1)]
         [DrawTicks]
-        [DefaultValue(0)]
+        [DefaultValue(1)]
         public int ElementalQuiverSplitstyle { get; set; }
         /*
         [BackgroundColor(192, 54, 64, 192)]

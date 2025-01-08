@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient<UelibloomBar>(10).
-                AddIngredient<DarksunFragment>(20).
+                AddIngredient<DarksunFragment>(100).
                 AddTile<CosmicAnvil>().
                 Register();
         }
