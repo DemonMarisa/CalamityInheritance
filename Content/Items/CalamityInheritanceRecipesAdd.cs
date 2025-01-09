@@ -61,6 +61,7 @@ using Microsoft.Xna.Framework.Graphics;
 using static MonoMod.Cil.ILContext;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityMod.Prefixes;
+using CalamityInheritance.Content.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -277,11 +278,28 @@ namespace CalamityInheritance.Content.Items
                 Register();
             #endregion
             #region Accessories
+
             Recipe.Create(ModContent.ItemType<Radiance>()).
                 AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
                 AddIngredient(ModContent.ItemType<InfectedJewel>()).
                 AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(),4).
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
+                AddIngredient(ModContent.ItemType<AstralArcanum>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
+                AddIngredient(ModContent.ItemType<AstralArcanum>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+                AddIngredient(ModContent.ItemType<AuricBar>(),5).
                 AddTile<CosmicAnvil>().
                 Register();
 

@@ -36,12 +36,12 @@ namespace CalamityInheritance.CIPlayer
         public bool ElementalQuiver = false;
         public bool CoreOfTheBloodGod = false;
         public bool fleshTotemold = false;
-        public double contactDamageReduction = 0D;
         public bool FungalCarapace = false;
         public bool PsychoticAmulet = false;
         public bool YharimsInsignia = false;
         public bool darkSunRingold = false;
         public bool AMRextra = false;
+        public bool AMRextraTy = false;
         public bool projRef = false;
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
@@ -175,8 +175,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (CoreOfTheBloodGod)
                 percentMaxLifeIncrease += 25;
-
-            contactDamageReduction = 0D;
 
             if (!CIsponge)
                 CISpongeShieldDurability = 0;
@@ -325,6 +323,10 @@ namespace CalamityInheritance.CIPlayer
             if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(Skullmasher))
             {
                 AMRextra = false;
+            }
+            if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(TyrannysEndOld))
+            {
+                AMRextraTy = false;
             }
         }
         #region TeleportMethods

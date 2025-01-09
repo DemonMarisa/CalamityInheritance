@@ -117,12 +117,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     return false;
                 return true;
             }
+
         public override void AddRecipes()
         {
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
                 AddIngredient<ClockworkBow>().
+                AddIngredient<Alluvion>().
+                AddIngredient<AstrealDefeat>().
+                AddIngredient<FlarewingBow>().
+                AddIngredient<Phangasm>().
                 AddIngredient<TheBallista>().
                 AddIngredient<MiracleMatter>().
                 AddTile<CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge>().

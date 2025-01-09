@@ -152,24 +152,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.velocity = newVelocity;
         }
         
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-
-            if (target.type == ModContent.NPCType<BrimstoneHeart>())
-            {
-                if (Projectile.frameCounter == 0)
-                {
-                    Projectile.damage = (Projectile.damage * 2);
-                }
-            }
-        }
         public override Color? GetAlpha(Color lightColor) => new Color(200, 0, 0, 0);
-
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            int baseDamage = (int)modifiers.SourceDamage.Flat;
-            float damageReduction = baseDamage * 0.5f;
-            modifiers.FinalDamage -= damageReduction;
-        }
     }
 }

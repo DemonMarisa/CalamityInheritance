@@ -238,13 +238,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
         }
         
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            int baseDamage = (int)modifiers.SourceDamage.Flat;
-            float damageReduction = baseDamage * 0.5f;
-            modifiers.FinalDamage -= damageReduction;
-        }
-        
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);
         public override bool? CanDamage() => Slashing == false ? false : null;
     }

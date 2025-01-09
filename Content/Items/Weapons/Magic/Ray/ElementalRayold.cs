@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         {
             Item.width = 62;
             Item.height = 62;
-            Item.damage = 140;
+            Item.damage = 120;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 18;
             Item.useTime = 15;

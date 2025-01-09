@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useTurn = true;
-            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -54,39 +54,12 @@ namespace CalamityInheritance.Content.Items
 
             return false;
         }
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int panelID = ModContent.ProjectileType<ExoskeletonPanel>();
-
-            // If the player owns a panel, make it fade away.
-            if (player.ownedProjectileCounts[panelID] >= 1)
-            {
-                foreach (Projectile p in Main.ActiveProjectiles)
-                {
-                    if (p.type != panelID || p.owner != player.whoAmI)
-                        continue;
-
-                    p.ai[0] = 1f;
-                    p.netUpdate = true;
-                }
-            }
-
-            // Otherwise, create one. While it doesn't do damage on its own, it does store it for reference by the cannons that might be spawned.
-            else
-            {
-                int panel = Projectile.NewProjectile(source, position, Vector2.Zero, panelID, damage, 0f, player.whoAmI);
-                if (Main.projectile.IndexInRange(panel))
-                    Main.projectile[panel].originalDamage = Item.damage;
-
-                // Also throw a cool mechanical box particle out.
-                Vector2 boxVelocity = -Vector2.UnitY.RotatedByRandom(0.7f) * 6f + Vector2.UnitX * player.direction * 4f;
-                Particle box = new AresSummonCrateParticle(player, boxVelocity, 60);
-                GeneralParticleHandler.SpawnParticle(box);
-            }
-
+            Vector2 targetPosition = Main.MouseWorld;
+            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 0);
             return false;
         }
-
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))

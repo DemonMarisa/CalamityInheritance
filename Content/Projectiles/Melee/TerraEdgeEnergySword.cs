@@ -190,10 +190,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // 设置目标的受击方向为远离玩家的方向，以确保击退效果的方向正确。
             hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;
+
             Player player = Main.player[base.Projectile.owner];
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
-                int healAmount = Main.rand.Next(2) + 2;
+                int healAmount = Main.rand.Next(3) + 2;
                 player.statLife += healAmount;
                 player.HealEffect(healAmount);
             }

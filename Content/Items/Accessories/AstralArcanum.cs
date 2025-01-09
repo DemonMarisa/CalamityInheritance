@@ -47,6 +47,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient<InfectedJewel>().
+                AddIngredient<ArcanumoftheVoid>().
+                AddIngredient<AstralBulwark>().
                 AddIngredient<DarkPlasma>(3).
                 AddIngredient(ItemID.LunarBar, 5).
                 AddTile(TileID.LunarCraftingStation).

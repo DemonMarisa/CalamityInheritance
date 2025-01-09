@@ -37,24 +37,20 @@ namespace CalamityInheritance
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
 
+            if (!Main.dedServ)
+            {
+                LoadClient();
+            }
+
             if (CalamityLists.pierceResistExceptionList != null)
             {
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
-            
         }
         public void LoadClient()
         {
             AstralArcanumUI.Load(this);
-
-            CIInvasionProgressUIManager.LoadGUIs();
-
-            if (CalamityLists.pierceResistExceptionList != null)
-            {
-                CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
-            }
         }
 
         #region Unload
@@ -63,7 +59,11 @@ namespace CalamityInheritance
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
-            CIInvasionProgressUIManager.UnloadGUIs();
+            if (CalamityLists.pierceResistExceptionList != null)
+            {
+                CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
+            }
             Instance = null;
             base.Unload();
         }

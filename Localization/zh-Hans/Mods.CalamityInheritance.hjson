@@ -1,7 +1,7 @@
 Keybinds: {
 	BoCLoreTeleportation.DisplayName: 克苏鲁之脑传送
 	AegisHotKey.DisplayName: 极乐之庇护
-	"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送（有bug）
+	"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送
 }
 
 Buffs: {
@@ -117,6 +117,7 @@ Items: {
 				此冲刺可以在不受伤害的情况下猛击穿过敌怪
 				免疫击退和火块
 				免疫包括弑神怒焰在内的绝大多数减益
+				增加40点最大生命值
 				按[KEY]激活伤害，暴击率和防御增益
 				此增益会降低你的移动速度并增加敌人的仇恨
 				'''
@@ -130,6 +131,7 @@ Items: {
 				此冲刺可以猛击穿过敌怪但不受伤害
 				免疫击退和火块
 				免疫包括破晓和神圣之火在内的大部分火焰减益
+				增加40点最大生命值并增加生命恢复速度
 				被亵渎之火所祝福的盾牌
 				按[KEY]激活伤害，暴击率和防御增益
 				此增益会降低你的移动速度并增加敌人的仇恨
@@ -221,6 +223,8 @@ Items: {
 			此冲刺可以在不受伤害的情况下猛击穿过敌怪
 			免疫击退和火块
 			免疫包括大部分霜火形式减益在内的大多数减益
+			浸没在液体中时增加10%伤害减免
+			+20点最大生命值
 			'''
 	}
 
@@ -471,7 +475,7 @@ Items: {
 
 			GodSlayerHeadSummonold: {
 				DisplayName: 弑神者角盔[Legacy]
-				Tooltip: 增加7仆从栏和65%召唤伤害
+				Tooltip: 增加3仆从栏和65%召唤伤害
 				SetBonus:
 					'''
 					召唤一条星宇护卫为你而战
@@ -1301,6 +1305,11 @@ Items: {
 					90%几率节省弹药
 					'''
 			}
+
+			TyrannysEndOld: {
+				// DisplayName: Tyrannys End Old
+				// Tooltip: ""
+			}
 		}
 
 		Rogue: {
@@ -1692,11 +1701,6 @@ Items: {
 			'''
 	}
 
-	ArkoftheElements: {
-		// DisplayName: Ark of the Elemental Legacy
-		// Tooltip: A heavenly blade forged with the essence of Terraria
-	}
-
 	LeadWizard: {
 		DisplayName: 巫师之祸[Legacy]
 		Tooltip:
@@ -1779,11 +1783,6 @@ Items: {
 			'''
 	}
 
-	test: {
-		// DisplayName: Just For Fun
-		// Tooltip: DA★ZE
-	}
-
 	TerraRay: {
 		DisplayName: 泰拉射线[Legacy]
 		Tooltip:
@@ -1805,6 +1804,16 @@ Items: {
 			'''
 	}
 
+	Test: {
+		DisplayName: 测试剑
+		Tooltip: DA★ZE
+	}
+
+	ArkoftheElementsold: {
+		DisplayName: 元素方舟[Legacy]
+		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
+	}
+
 	GodSlayerHeadMagicold: {
 		DisplayName: 弑神者面罩[Legacy]
 		Tooltip:
@@ -1814,14 +1823,9 @@ Items: {
 			'''
 	}
 
-	Test: {
-		DisplayName: 测试剑
-		Tooltip: DA★ZE
-	}
-
-	ArkoftheElementsold: {
-		DisplayName: 元素方舟[Legacy]
-		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
+	FabstaffOld: {
+		// DisplayName: Fabstaff Old
+		// Tooltip: ""
 	}
 }
 
@@ -1990,6 +1994,9 @@ Projectiles: {
 	ExoboomoldRanged.DisplayName: 星流爆破
 	ExoboompersistentoldRanged.DisplayName: 星流爆破
 	ExoGunBlastsplit.DisplayName: 星流爆炸
+	// FabBoltOld.DisplayName: Fab Bolt Old
+	// FabOrbOld.DisplayName: Fab Orb Old
+	// FabRayOld.DisplayName: Fab Ray Old
 }
 
 Configs: {

@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.width = 60;
             Item.height = 54;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.defense = 12;
+            Item.defense = 28;
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             modPlayer1.CIDashID = AsgardianAegisDashold.ID;
             modPlayer1.elysianAegis = true;
 
-            player.dashType = 0;
+            player.dashType = 1;
 
             // Inherited Ankh Shield effects
             player.noKnockback = true;

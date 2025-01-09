@@ -35,12 +35,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.DamageType = DamageClass.Magic;
             Projectile.ignoreWater = true;
         }
-
         public override void AI()
         {
-
             Lighting.AddLight(Projectile.Center, 0.65f, 0f, 0.1f);
+
             Player player = Main.player[Projectile.owner];
+            player.heldProj = Projectile.whoAmI;
+
             float piConditional = 0f;
             Vector2 playerRotate = player.RotatedRelativePoint(player.MountedCenter, true);
             if (Projectile.spriteDirection == -1)

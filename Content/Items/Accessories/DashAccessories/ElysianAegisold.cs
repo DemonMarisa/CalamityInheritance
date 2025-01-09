@@ -23,11 +23,12 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
     {
         public new string LocalizationCategory => "Items.Accessories";
         public const int ShieldSlamDamage = 500;
-        public const float ShieldSlamKnockback = 12f;
+        public const float ShieldSlamKnockback = 15f;
         public const int ShieldSlamIFrames = 12;
 
         public const int RamExplosionDamage = 500;
-        public const float RamExplosionKnockback = 15f;
+        public const float RamExplosionKnockback = 20f;
+
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
         public override void SetDefaults()
         {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.height = 42;
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
-            Item.defense = 10;
+            Item.defense = 18;
             Item.accessory = true;
         }
 
@@ -62,6 +63,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
             player.buffImmune[BuffID.Daybreak] = true;
             player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            player.statLifeMax2 += 40;
+            player.lifeRegen += 4;
         }
     }
 }

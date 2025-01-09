@@ -27,9 +27,11 @@ namespace CalamityInheritance.System
                 // Astral Arcanum overlay (if open)
                 layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Astral Arcanum UI", delegate ()
                 {
+                    //Main.NewText($"layers.Insert", 255, 255, 255);
                     AstralArcanumUI.UpdateAndDraw(Main.spriteBatch);
                     return true;
                 }, InterfaceScaleType.None));
+                //Main.NewText($"Inserted Astral Arcanum UI at {mouseIndex}", 255, 255, 255);
             }
         }
     }

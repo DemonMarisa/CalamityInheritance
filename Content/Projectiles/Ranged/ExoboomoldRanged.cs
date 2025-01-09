@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Projectile.Kill();
             }
-            float num461 = 25f;
+            float num461 = 15f;
             if (Projectile.ai[0] > 180f)
             {
                 num461 -= (Projectile.ai[0] - 180f) / 2f;

@@ -166,6 +166,21 @@ namespace CalamityInheritance.Content.Projectiles
                 if (modPlayer.AMRextra == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
                 {
                     IEntitySource source = projectile.GetSource_FromThis();
+                    int extraProjectileAmt = 12;
+                    for (int x = 0; x < extraProjectileAmt; x++)
+                    {
+                        if (projectile.owner == Main.myPlayer)
+                        {
+                            bool fromRight = x > 5;
+                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
+                            CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
+                        }
+                    }
+                    modPlayer.AMRextra = false;
+                }
+                if (modPlayer.AMRextraTy == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
+                {
+                    IEntitySource source = projectile.GetSource_FromThis();
                     int extraProjectileAmt = 8;
                     for (int x = 0; x < extraProjectileAmt; x++)
                     {
@@ -176,7 +191,7 @@ namespace CalamityInheritance.Content.Projectiles
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }
-                    modPlayer.AMRextra = false;
+                    modPlayer.AMRextraTy = false;
                 }
             };
         }

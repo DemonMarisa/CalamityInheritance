@@ -82,9 +82,12 @@ namespace CalamityInheritance.CIPlayer.Dash
                 kbFactor *= 1.5f;
 
             int hitDirection = player.direction;
+
             if (player.velocity.X != 0f)
                 hitDirection = Math.Sign(player.velocity.X);
             hitContext.HitDirection = hitDirection;
+
+            hitContext.PlayerImmunityFrames = ElysianAegis.ShieldSlamIFrames;
 
             // Define damage parameters.
             int dashDamage = ElysianAegis.ShieldSlamDamage;

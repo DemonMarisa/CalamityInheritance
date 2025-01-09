@@ -49,8 +49,6 @@ namespace CalamityInheritance.UI
 
         public static void Toggle()
         {
-            Main.NewText($"Toggle", 255, 255, 255);
-
             Open = !Open;
 
             if (Open)
@@ -68,8 +66,6 @@ namespace CalamityInheritance.UI
 
         public static void UpdateAndDraw(SpriteBatch sb)
         {
-
-
             // Don't do anything if not open.
             if (!Open)
                 return;
@@ -142,8 +138,6 @@ namespace CalamityInheritance.UI
 
         public static void DoTeleportation(int circle)
         {
-            Main.NewText($"DoTeleportation", 255, 255, 255);
-
             Open = false;
             Player p = Main.LocalPlayer;
             switch (circle)
@@ -180,9 +174,8 @@ namespace CalamityInheritance.UI
         }
         private static void DrawCircle(SpriteBatch sb, Vector2 center, int circle, CircleStyle style)
         {
-            Main.NewText($"DrawCircle", 255, 255, 255);
-
-            sb.Draw(CircleTextures, center, new Rectangle(circle * CircleTextureSize, (int)style * CircleTextureSize, CircleTextureSize, CircleTextureSize), Color.White, 0f, new Vector2(CircleTextureSize / 2), 1f, SpriteEffects.None, 0f);
+            sb.Draw(CircleTextures, center, new Rectangle(circle * CircleTextureSize, (int)style * CircleTextureSize,
+                CircleTextureSize, CircleTextureSize), Color.White, 0f, new Vector2(CircleTextureSize / 2), 1f, SpriteEffects.None, 0f);
         }
         private class Circle
         {

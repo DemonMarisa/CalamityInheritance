@@ -28,7 +28,10 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
             if (item.type == ModContent.ItemType<AstrumDeusBag>())
+            {
                 itemloot.Add(ModContent.ItemType<Quasar>(), 10);
+                itemloot.Add(ModContent.ItemType<AstralBulwark>(), 1);
+            }
             if (item.type == ModContent.ItemType<YharonBag>())
                 itemloot.Add(ModContent.ItemType<VoidVortex>(), 10);
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())

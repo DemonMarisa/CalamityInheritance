@@ -61,7 +61,9 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[BuffID.Stoned] = true;
             player.statLifeMax2 += 20;
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
-            { player.statDefense += 16; }
+            { 
+                player.endurance += 0.1f;
+            }
         }
 
         public override void AddRecipes()

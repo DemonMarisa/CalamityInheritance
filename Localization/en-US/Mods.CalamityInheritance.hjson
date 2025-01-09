@@ -1293,6 +1293,11 @@ Items: {
 					'It should not be a prism causes ranged damage'
 					'''
 			}
+
+			TyrannysEndOld: {
+				DisplayName: Tyrannys End Old
+				Tooltip: ""
+			}
 		}
 
 		Rogue: {
@@ -1734,6 +1739,16 @@ Items: {
 		DisplayName: Ark of the Elemental Legacy
 		Tooltip: A heavenly blade forged with the essence of Terraria
 	}
+
+	GodSlayerHeadMagicold: {
+		DisplayName: God Slayer Head Magicold
+		Tooltip: ""
+	}
+
+	FabstaffOld: {
+		DisplayName: Fabstaff Old
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1901,6 +1916,9 @@ Projectiles: {
 	ExoboomoldRanged.DisplayName: Exoboomold Ranged
 	ExoboompersistentoldRanged.DisplayName: Exoboompersistentold Ranged
 	ExoGunBlastsplit.DisplayName: Exo Gun Blastsplit
+	FabBoltOld.DisplayName: Fab Bolt Old
+	FabOrbOld.DisplayName: Fab Orb Old
+	FabRayOld.DisplayName: Fab Ray Old
 }
 
 Configs: {

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void AI()
         {
-            CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 6f, 0f, 5, ModContent.ProjectileType<ElementalBoltVortex>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<ElementalBoltVortex>());
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

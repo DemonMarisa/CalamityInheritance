@@ -32,22 +32,26 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.penetrate = 4;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
-            AIType = ProjectileID.TerraBeam;
+            Projectile.usesLocalNPCImmunity = true;
+            AIType = 132;
         }
-
         private int hitCount = 0;
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, 0f, (255 - Projectile.alpha) * 0.75f / 255f, 0f);
             if (Main.rand.NextBool(5))
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.TerraBlade, Projectile.velocity.X, Projectile.velocity.Y);
             }
             if (hitCount < 1)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 14f, 45f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 14f, 90f);
             }
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(0, 200, 0, 0);
+        }
+
         public override void PostDraw(Color lightColor)
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;

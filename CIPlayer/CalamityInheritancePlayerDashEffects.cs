@@ -38,7 +38,7 @@ namespace CalamityInheritance.CIPlayer
         public int VerticalGodslayerDashTimer;
         public int VerticalSpeedBlasterDashTimer;
 
-        public string CIDashID; //private backing variable
+        public string CIDashID;
 
         public string DeferredDashID;
 
