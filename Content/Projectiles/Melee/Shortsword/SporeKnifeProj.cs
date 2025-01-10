@@ -95,9 +95,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 for (int i = 0; i < 8; i++)
                 {
                     float angle = i * baseAngleIncrement + randomAngleOffset;
-                    Vector2 direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+                    Vector2 direction = new((float)Math.Cos(angle), (float)Math.Sin(angle));
                     int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
-                    Projectile.NewProjectile(source, target.Center, direction * 2f, randomProjectileType, Projectile.damage * 1, Projectile.knockBack);
+                    float randomSpeed = Main.rand.NextFloat(1f, 2.5f);
+                    Projectile.NewProjectile(source, target.Center, direction * randomSpeed, randomProjectileType, Projectile.damage * 1, Projectile.knockBack);
                 }
                 target.AddBuff(BuffID.Poisoned, 120);
                 modPlayer.ProjectilHitCounter = 0;

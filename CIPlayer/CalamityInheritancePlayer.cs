@@ -52,7 +52,6 @@ namespace CalamityInheritance.CIPlayer
         public bool AMRextra = false;
         public bool AMRextraTy = false;
         #endregion
-
         #region dash
         public int dashTimeMod;
         public bool HasReducedDashFirstFrame = false;
@@ -166,6 +165,7 @@ namespace CalamityInheritance.CIPlayer
         public static int auricsilvaReviveDuration = 600;
         public int auricsilvaCountdown = auricsilvaReviveDuration;
         #endregion
+        public bool test = false;
         #endregion
         #region Summon
         public bool MagicHatOld = false;
@@ -275,6 +275,7 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             auricsilvaset = false;
             #endregion
+            test = false;
             #endregion
             CIDashID = string.Empty;
             elysianAegis = false;

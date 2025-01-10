@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -15,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Blade of Enmity");
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.25f;
         }
 
         public override void SetDefaults()

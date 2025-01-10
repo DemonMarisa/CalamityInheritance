@@ -15,8 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Coldheart Icicle");
-            // Tooltip.SetDefault("Drains a percentage of enemy health on hit\nCannot inflict critical hits");
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
         }
         public override void SetDefaults()
         {

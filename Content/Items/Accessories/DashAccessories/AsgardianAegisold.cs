@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             modPlayer1.CIDashID = AsgardianAegisDashold.ID;
             modPlayer1.elysianAegis = true;
 
-            player.dashType = 1;
+            player.dashType = 0;
 
             // Inherited Ankh Shield effects
             player.noKnockback = true;

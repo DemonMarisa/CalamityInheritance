@@ -14,8 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
     {
         public override void SetStaticDefaults()
         {
-            //DisplayName.SetDefault("Ancient Shiv");
-            //Tooltip.SetDefault("Enemies release a blue aura cloud on hit");
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
         }
 
         public override void SetDefaults()
@@ -25,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.width = 30;
             Item.height = 30;
             Item.damage = 35;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = DamageClass.Melee;
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

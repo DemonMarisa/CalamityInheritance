@@ -223,6 +223,11 @@ Items: {
 			DisplayName: Astral Bulwark
 			Tooltip: ""
 		}
+
+		NanotechOld: {
+			DisplayName: Nanotech Old
+			Tooltip: ""
+		}
 	}
 
 	AsgardsValorold: {
@@ -1311,6 +1316,11 @@ Items: {
 
 			TyrannysEndOld: {
 				DisplayName: Tyrannys End Old
+				Tooltip: ""
+			}
+
+			SomaPrimeOld: {
+				DisplayName: Soma Prime Old
 				Tooltip: ""
 			}
 		}
