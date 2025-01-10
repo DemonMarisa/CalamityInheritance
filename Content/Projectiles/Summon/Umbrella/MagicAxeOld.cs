@@ -1,5 +1,10 @@
-﻿using CalamityMod.Projectiles.Summon.Umbrella;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
+using CalamityMod.Projectiles.Summon.Umbrella;
+using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,55 +13,53 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
 using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
-    public class MagicUmbrellaOld : ModProjectile
+    public class MagicAxeOld : ModProjectile
     {
         private int counter = 0;
-        private bool canHome = false;
         public override void SetStaticDefaults()
         {
+            // DisplayName.SetDefault("Axe");
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
             ProjectileID.Sets.MinionShot[Projectile.type] = true;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
         public override void SetDefaults()
         {
-            Projectile.width = 14;
-            Projectile.height = 14;
+            Projectile.width = 52;
+            Projectile.height = 52;
             Projectile.netImportant = true;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.minionSlots = 0f;
+            Projectile.minionSlots = 0;
             Projectile.timeLeft = 180;
-            Projectile.penetrate = 10;
-            Projectile.tileCollide = false;
+            Projectile.penetrate = -1;
             Projectile.minion = true;
+            Projectile.tileCollide = false;
+            Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 8;
             Projectile.alpha = 255;
         }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+            CalamityPlayer modPlayer = player.Calamity();
+
             Projectile.rotation += 0.075f;
             Projectile.alpha -= 50;
-            float num633 = MagicHat.Range;
-            float num634 = 1600f;
-            float num635 = 2200f;
-            float num636 = 150f;
+            float num634 = 1200f;
+            float num635 = 2500f;
             float num637 = 0.05f;
             for (int num638 = 0; num638 < Main.projectile.Length; num638++)
             {
-                bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicUmbrella>();
-                if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner &&
-                    flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < (float)Projectile.width)
+                bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicAxe>();
+                if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner && flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < (float)Projectile.width)
                 {
                     if (Projectile.position.X < Main.projectile[num638].position.X)
                     {
@@ -76,25 +79,21 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     }
                 }
             }
-            if (counter <= 30)
+            if (Projectile.ai[1] <= 30)
             {
-                counter++;
-                canHome = true;
-            }
-            else
-            {
-                canHome = true;
+                Projectile.ai[1]++;
+                return;
             }
             bool flag24 = false;
             if (Projectile.ai[0] == 2f)
             {
-                Projectile.ai[1] += 1f;
-                Projectile.extraUpdates = 1;
-                if (Projectile.ai[1] > 40f)
+                counter += 1;
+                Projectile.extraUpdates = 4;
+                if (counter > 30)
                 {
-                    Projectile.ai[1] = 1f;
+                    counter = 1;
                     Projectile.ai[0] = 0f;
-                    Projectile.extraUpdates = 0;
+                    Projectile.extraUpdates = 1;
                     Projectile.numUpdates = 0;
                     Projectile.netUpdate = true;
                 }
@@ -107,23 +106,20 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             {
                 return;
             }
-            if (!canHome)
-            {
-                return;
-            }
             Vector2 vector46 = Projectile.position;
-            bool flag25 = false;
+            float homingRange = MagicHat.Range;
+            bool homeIn = false;
             if (player.HasMinionAttackTargetNPC)
             {
                 NPC npc = Main.npc[player.MinionAttackTargetNPC];
-                if (npc.CanBeChasedBy(Projectile, false) && canHome)
+                if (npc.CanBeChasedBy(Projectile, false))
                 {
                     float num646 = Vector2.Distance(npc.Center, Projectile.Center);
-                    if (!flag25 && num646 < num633)
+                    if (!homeIn && num646 < homingRange)
                     {
-                        num633 = num646;
+                        homingRange = num646;
                         vector46 = npc.Center;
-                        flag25 = true;
+                        homeIn = true;
                     }
                 }
             }
@@ -132,20 +128,20 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 for (int num645 = 0; num645 < Main.npc.Length; num645++)
                 {
                     NPC nPC2 = Main.npc[num645];
-                    if (nPC2.CanBeChasedBy(Projectile, false) && canHome)
+                    if (nPC2.CanBeChasedBy(Projectile, false))
                     {
                         float num646 = Vector2.Distance(nPC2.Center, Projectile.Center);
-                        if (!flag25 && num646 < num633)
+                        if (!homeIn && num646 < homingRange)
                         {
-                            num633 = num646;
+                            homingRange = num646;
                             vector46 = nPC2.Center;
-                            flag25 = true;
+                            homeIn = true;
                         }
                     }
                 }
             }
             float num647 = num634;
-            if (flag25)
+            if (homeIn)
             {
                 num647 = num635;
             }
@@ -154,27 +150,28 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 Projectile.ai[0] = 1f;
                 Projectile.netUpdate = true;
             }
-            if (flag25 && Projectile.ai[0] == 0f)
+            if (homeIn && Projectile.ai[0] == 0f)
             {
                 Vector2 vector47 = vector46 - Projectile.Center;
                 float num648 = vector47.Length();
                 vector47.Normalize();
                 if (num648 > 200f)
                 {
-                    float scaleFactor2 = 9f; //8
+                    float scaleFactor2 = 24f; //8
                     vector47 *= scaleFactor2;
                     Projectile.velocity = (Projectile.velocity * 40f + vector47) / 41f;
                 }
                 else
                 {
-                    float num649 = 4f;
+                    float num649 = 12f; //4
                     vector47 *= -num649;
-                    Projectile.velocity = (Projectile.velocity * 40f + vector47) / 41f;
+                    Projectile.velocity = (Projectile.velocity * 40f + vector47) / 41f; //41
                 }
             }
             else
             {
                 bool flag26 = false;
+                float num636 = 400f;
                 if (!flag26)
                 {
                     flag26 = Projectile.ai[0] == 1f;
@@ -186,23 +183,23 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 }
                 Vector2 center2 = Projectile.Center;
                 Vector2 vector48 = player.Center - center2 + new Vector2(0f, -60f);
-                float num651 = vector48.Length();
-                if (num651 > 200f && num650 < 8f)
+                float playerDist = vector48.Length();
+                if (playerDist > 200f && num650 < 8f)
                 {
                     num650 = 8f;
                 }
-                if (num651 < num636 && flag26 && !Collision.SolidCollision(Projectile.position, Projectile.width, Projectile.height))
+                if (playerDist < num636 && flag26 && !Collision.SolidCollision(Projectile.position, Projectile.width, Projectile.height))
                 {
                     Projectile.ai[0] = 0f;
                     Projectile.netUpdate = true;
                 }
-                if (num651 > 2000f)
+                if (playerDist > 2000f)
                 {
                     Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
                     Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2);
                     Projectile.netUpdate = true;
                 }
-                if (num651 > 70f)
+                if (playerDist > 70f)
                 {
                     vector48.Normalize();
                     vector48 *= num650;
@@ -214,41 +211,56 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     Projectile.velocity.Y = -0.05f;
                 }
             }
-            if (Projectile.ai[1] > 0f)
+            if (counter > 0)
             {
-                Projectile.ai[1] += (float)Main.rand.Next(1, 4);
+                counter += Main.rand.Next(1, 4);
             }
-            if (Projectile.ai[1] > 40f)
+            if (counter > 30)
             {
-                Projectile.ai[1] = 0f;
+                counter = 0;
                 Projectile.netUpdate = true;
             }
             if (Projectile.ai[0] == 0f)
             {
-                if (Projectile.ai[1] == 0f && flag25 && num633 < 500f)
+                if (counter == 0 && homeIn && homingRange < 500f)
                 {
-                    Projectile.ai[1] += 1f;
+                    counter += 1;
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Projectile.ai[0] = 2f;
                         Vector2 value20 = vector46 - Projectile.Center;
                         value20.Normalize();
-                        Projectile.velocity = value20 * 9f; //8
+                        Projectile.velocity = value20 * 16f; //8
                         Projectile.netUpdate = true;
                     }
                 }
             }
         }
-
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(75, 255, 255, Projectile.alpha);
+            return new Color(0, 255, 111, Projectile.alpha);
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(ModContent.BuffType<GlacialState>(), 120);
+            target.AddBuff(ModContent.BuffType<Plague>(), 120);
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(ModContent.BuffType<GlacialState>(), 120);
+            target.AddBuff(ModContent.BuffType<Plague>(), 120);
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
         }
 
         public override void OnKill(int timeLeft)
@@ -258,50 +270,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 Vector2 dspeed = new Vector2(Main.rand.NextFloat(-7f, 7f), Main.rand.NextFloat(-7f, 7f));
                 int dust = Dust.NewDust(Projectile.Center, 1, 1, DustID.RainbowTorch, dspeed.X, dspeed.Y, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 0.75f);
                 Main.dust[dust].noGravity = true;
-            }
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (Main.rand.NextBool(4))
-            {
-                for (int n = 0; n < Main.rand.Next(1, 3); n++) //1 to 2 baseball bats
-                {
-                    float x = target.position.X + (float)Main.rand.Next(-400, 400);
-                    float y = target.position.Y - (float)Main.rand.Next(500, 800);
-                    Vector2 vector = new Vector2(x, y);
-                    float num13 = target.position.X + (float)(target.width / 2) - vector.X;
-                    float num14 = target.position.Y + (float)(target.height / 2) - vector.Y;
-                    num13 += (float)Main.rand.Next(-100, 101);
-                    int num15 = 29;
-                    float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
-                    num16 = (float)num15 / num16;
-                    num13 *= num16;
-                    num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
-                }
-            }
-        }
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-            if (Main.rand.NextBool(4))
-            {
-                for (int n = 0; n < Main.rand.Next(1, 3); n++) //1 to 2 baseball bats
-                {
-                    float x = target.position.X + (float)Main.rand.Next(-400, 400);
-                    float y = target.position.Y - (float)Main.rand.Next(500, 800);
-                    Vector2 vector = new Vector2(x, y);
-                    float num13 = target.position.X + (float)(target.width / 2) - vector.X;
-                    float num14 = target.position.Y + (float)(target.height / 2) - vector.Y;
-                    num13 += (float)Main.rand.Next(-100, 101);
-                    int num15 = 29;
-                    float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
-                    num16 = (float)num15 / num16;
-                    num13 *= num16;
-                    num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
-                }
             }
         }
     }

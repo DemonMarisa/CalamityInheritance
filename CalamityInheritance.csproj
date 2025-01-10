@@ -212,7 +212,6 @@
 		<None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamold.png" />
-		<None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamolddownup.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunUFOold.png" />
 		<None Remove="Content\Projectiles\TornadoProj.png" />
 		<None Remove="Content\Projectiles\Typeless\GodSlayerBlaze.png" />
@@ -428,7 +427,6 @@
 		<None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamold.png" />
-		<None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamolddownup.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunUFOold.png" />
 		<None Remove="Content\Projectiles\TornadoProj.png" />
 		<None Remove="Content\Projectiles\Typeless\GodSlayerBlaze.png" />
@@ -644,7 +642,6 @@
 	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamold.png" />
-	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamolddownup.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunUFOold.png" />
 	  <None Remove="Content\Projectiles\TornadoProj.png" />
 	  <None Remove="Content\Projectiles\Typeless\GodSlayerBlaze.png" />
@@ -860,7 +857,6 @@
 	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamold.png" />
-	  <None Remove="Content\Projectiles\Summon\MidnightSunSkyBeamolddownup.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunUFOold.png" />
 	  <None Remove="Content\Projectiles\TornadoProj.png" />
 	  <None Remove="Content\Projectiles\Typeless\GodSlayerBlaze.png" />

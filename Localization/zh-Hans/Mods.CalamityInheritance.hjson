@@ -69,6 +69,16 @@ Buffs: {
 		DisplayName: 林海眩晕
 		Description: 你无法移动
 	}
+
+	MagicHatBuffOld: {
+		// DisplayName: Magic Hat Buff Old
+		// Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+	}
+
+	MidnightSunBuffOld: {
+		// DisplayName: Midnight Sun Buff Old
+		// Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+	}
 }
 
 Items: {
@@ -1282,6 +1292,11 @@ Items: {
 				DisplayName: 元素短剑[Legacy]
 				Tooltip: 发射彩虹短剑，击中敌人后会生成额外的短剑弹幕
 			}
+
+			ElementalExcalibur: {
+				// DisplayName: Elemental Excalibur
+				// Tooltip: ""
+			}
 		}
 
 		Ranged: {
@@ -1824,7 +1839,29 @@ Items: {
 	}
 
 	FabstaffOld: {
-		// DisplayName: Fabstaff Old
+		DisplayName: 绝学法杖[Legacy]
+		Tooltip: 发射一道在接近敌人时会自动分裂的弹射光束
+	}
+
+	TemporalUmbrellaOld: {
+		DisplayName: 光阴流时伞[Legacy]
+		Tooltip:
+			'''
+			交涉失败，准备动手!
+			召唤一顶魔法礼帽飘在你的头顶上
+			帽子会释放各种物体来攻击你的敌人
+			消耗5召唤栏位\n只能存在一顶帽子
+			（出自游戏：时光之帽）
+			'''
+	}
+
+	Animus: {
+		// DisplayName: Animus
+		// Tooltip: ""
+	}
+
+	BladeofEnmity: {
+		// DisplayName: Bladeof Enmity
 		// Tooltip: ""
 	}
 }
@@ -1882,6 +1919,7 @@ Projectiles: {
 		TrueExcaliburShortswordProj.DisplayName: 真·胜利誓约之短剑
 		TrueNightsStabberProj.DisplayName: 真·永夜短剑
 		ExoJet.DisplayName: 星流射流
+		// ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
 	}
 
 	ElementBall.DisplayName: 元素之球
@@ -1997,6 +2035,14 @@ Projectiles: {
 	// FabBoltOld.DisplayName: Fab Bolt Old
 	// FabOrbOld.DisplayName: Fab Orb Old
 	// FabRayOld.DisplayName: Fab Ray Old
+	// MagicAxeOld.DisplayName: Magic Axe Old
+	// MagicBatOld.DisplayName: Magic Bat Old
+	// MagicBirdOld.DisplayName: Magic Bird Old
+	// MagicBulletOld.DisplayName: Magic Bullet Old
+	// MagicHammerOld.DisplayName: Magic Hammer Old
+	// MagicHatOld.DisplayName: Magic Hat Old
+	// MagicRifleOld.DisplayName: Magic Rifle Old
+	// MagicUmbrellaOld.DisplayName: Magic Umbrella Old
 }
 
 Configs: {

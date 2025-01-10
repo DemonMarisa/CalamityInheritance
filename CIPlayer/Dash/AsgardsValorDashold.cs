@@ -67,6 +67,7 @@ namespace CalamityInheritance.CIPlayer.Dash
                 dust.shader = GameShaders.Armor.GetSecondaryShader(player.cShield, player);
             }
         }
+
         public override void OnHitEffects(Player player, NPC npc, IEntitySource source, ref DashHitContext hitContext)
         {
             // Define hit context variables.

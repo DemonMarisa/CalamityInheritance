@@ -27,6 +27,7 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Silva;
 using Terraria.Graphics.Shaders;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -152,6 +153,11 @@ namespace CalamityInheritance.CIPlayer
                 Player.pickSpeed -= 0.12f;
                 if (Main.eclipse || !Main.dayTime)
                     Player.statDefense += Main.eclipse ? 20 : 20;
+            }
+            if (animusBoost > 1f)
+            {
+                if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
+                    animusBoost = 1f;
             }
         }
         #region Energy Shields

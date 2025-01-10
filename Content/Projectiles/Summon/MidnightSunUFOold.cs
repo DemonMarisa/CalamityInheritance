@@ -14,6 +14,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -50,6 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Lighting.AddLight(Projectile.Center, Color.SkyBlue.ToVector3());
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
+            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             if (Projectile.localAI[0] == 0f)
             {
                 Projectile.velocity.Y = Main.rand.NextFloat(8f, 11f) * Main.rand.NextBool(2).ToDirectionInt();
@@ -57,14 +61,14 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.localAI[0] = 1f;
             }
             bool isProperProjectile = Projectile.type == ModContent.ProjectileType<MidnightSunUFOold>();
-            player.AddBuff(ModContent.BuffType<MidnightSunBuff>(), 3600);
+            player.AddBuff(ModContent.BuffType<MidnightSunBuffOld>(), 3600);
             if (isProperProjectile)
             {
                 if (player.dead)
                 {
-                    modPlayer.midnightUFO = false;
+                    modPlayer1.MidnnightSunBuff = false;
                 }
-                if (modPlayer.midnightUFO)
+                if (modPlayer1.MidnnightSunBuff)
                 {
                     Projectile.timeLeft = 2;
                 }
@@ -137,7 +141,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(potentialTarget.Center) - MathHelper.PiOver2 - totalRadiansNegativeRange, 0.15f);
 
                         Vector2 spawnPosition = Projectile.Center + Utils.NextVector2Unit(Main.rand).RotatedBy(Projectile.rotation) * new Vector2(13f, 6f) / 2f;
-                        int idx = Dust.NewDust(spawnPosition - Vector2.One * 8f, 16, 16, 229, Projectile.velocity.X / 2f, Projectile.velocity.Y / 2f, 0, default, 1f);
+                        int idx = Dust.NewDust(spawnPosition - Vector2.One * 8f, 16, 16, DustID.Vortex, Projectile.velocity.X / 2f, Projectile.velocity.Y / 2f, 0, default, 1f);
                         Main.dust[idx].velocity = Vector2.Normalize(Projectile.Center - spawnPosition) * 2.6f;
                         Main.dust[idx].noGravity = true;
                         Main.dust[idx].scale = 0.9f;

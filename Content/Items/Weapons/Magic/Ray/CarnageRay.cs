@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         }
         public override Vector2? HoldoutOrigin()
         {
-            return new Vector2(0, -5);
+            return new Vector2(0, -2);
         }
 
         public override void AddRecipes()

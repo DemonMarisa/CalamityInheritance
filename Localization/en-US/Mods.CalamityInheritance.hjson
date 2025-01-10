@@ -69,6 +69,16 @@ Buffs: {
 		DisplayName: Silva Stun
 		Description: You are powerless
 	}
+
+	MagicHatBuffOld: {
+		DisplayName: Magic Hat Buff Old
+		Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+	}
+
+	MidnightSunBuffOld: {
+		DisplayName: Midnight Sun Buff Old
+		Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+	}
 }
 
 Items: {
@@ -1271,6 +1281,11 @@ Items: {
 					Shoots a rainbow shiv that spawns additional shivs on hit
 					'''
 			}
+
+			ElementalExcalibur: {
+				DisplayName: Elemental Excalibur
+				Tooltip: ""
+			}
 		}
 
 		Ranged: {
@@ -1749,6 +1764,21 @@ Items: {
 		DisplayName: Fabstaff Old
 		Tooltip: ""
 	}
+
+	TemporalUmbrellaOld: {
+		DisplayName: Temporal Umbrella Old
+		Tooltip: ""
+	}
+
+	Animus: {
+		DisplayName: Animus
+		Tooltip: ""
+	}
+
+	BladeofEnmity: {
+		DisplayName: Bladeof Enmity
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1804,6 +1834,7 @@ Projectiles: {
 		TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
 		TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
 		ExoJet.DisplayName: Exo Jet
+		ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
 	}
 
 	ElementBall.DisplayName: Element Ball
@@ -1919,6 +1950,14 @@ Projectiles: {
 	FabBoltOld.DisplayName: Fab Bolt Old
 	FabOrbOld.DisplayName: Fab Orb Old
 	FabRayOld.DisplayName: Fab Ray Old
+	MagicAxeOld.DisplayName: Magic Axe Old
+	MagicBatOld.DisplayName: Magic Bat Old
+	MagicBirdOld.DisplayName: Magic Bird Old
+	MagicBulletOld.DisplayName: Magic Bullet Old
+	MagicHammerOld.DisplayName: Magic Hammer Old
+	MagicHatOld.DisplayName: Magic Hat Old
+	MagicRifleOld.DisplayName: Magic Rifle Old
+	MagicUmbrellaOld.DisplayName: Magic Umbrella Old
 }
 
 Configs: {

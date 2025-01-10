@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
@@ -20,105 +24,97 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magic Hat");
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 1;
+            // DisplayName.SetDefault("Magic Hat");
+            ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
+            ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 30;
-            projectile.height = 30;
-            projectile.netImportant = true;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
-            projectile.minionSlots = 5f;
-            projectile.timeLeft = 18000;
-            projectile.penetrate = -1;
-            projectile.tileCollide = false;
-            projectile.timeLeft *= 5;
-            projectile.minion = true;
+            Projectile.width = 30;
+            Projectile.height = 30;
+            Projectile.netImportant = true;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
+            Projectile.minionSlots = 5f;
+            Projectile.timeLeft = 18000;
+            Projectile.penetrate = -1;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft *= 5;
+            Projectile.minion = true;
         }
 
         public override void AI()
         {
-            Player player = Main.player[projectile.owner];
+            Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
-            CalamityGlobalProjectile modProj = projectile.Calamity();
-
+            CalamityGlobalProjectile modProj = Projectile.Calamity();
+            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             //set up minion buffs and bools
-            bool hatExists = projectile.type == ModContent.ProjectileType<MagicHatOld>();
-            player.AddBuff(ModContent.BuffType<MagicHatBuff>(), 3600);
+            bool hatExists = Projectile.type == ModContent.ProjectileType<MagicHatOld>();
+            player.AddBuff(ModContent.BuffType<MagicHatBuffOld>(), 3600);
             if (hatExists)
             {
                 if (player.dead)
                 {
-                    modPlayer.magicHat = false;
+                    modPlayer1.MagicHatOld = false;
                 }
-                if (modPlayer.magicHat)
+                if (modPlayer1.MagicHatOld)
                 {
-                    projectile.timeLeft = 2;
+                    Projectile.timeLeft = 2;
                 }
             }
 
             //projectile movement
-            projectile.position.X = player.Center.X - (float)(projectile.width / 2);
-            projectile.position.Y = player.Center.Y - (float)(projectile.height / 2) + player.gfxOffY - 60f;
+            Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
+            Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2) + player.gfxOffY - 60f;
             if (player.gravDir == -1f)
             {
-                projectile.position.Y = projectile.position.Y + 150f;
-                projectile.rotation = MathHelper.Pi;
+                Projectile.position.Y = Projectile.position.Y + 150f;
+                Projectile.rotation = MathHelper.Pi;
             }
             else
             {
-                projectile.rotation = 0f;
+                Projectile.rotation = 0f;
             }
-            projectile.position.X = (float)(int)projectile.position.X;
-            projectile.position.Y = (float)(int)projectile.position.Y;
+            Projectile.position.X = (float)(int)Projectile.position.X;
+            Projectile.position.Y = (float)(int)Projectile.position.Y;
 
             //Change the summons scale size a little bit to make it pulse in and out
             float num395 = (float)Main.mouseTextColor / 200f - 0.35f;
             num395 *= 0.2f;
-            projectile.scale = num395 + 0.95f;
+            Projectile.scale = num395 + 0.95f;
 
             //on summon dust and flexible damage
-            if (projectile.localAI[0] == 0f)
+            if (Projectile.localAI[0] == 0f)
             {
                 int dustAmt = 50;
                 for (int dustIndex = 0; dustIndex < dustAmt; dustIndex++)
                 {
-                    int dustEffects = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, 234, 0f, 0f, 0, default, 1f);
+                    int dustEffects = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 16f), Projectile.width, Projectile.height - 16, DustID.BoneTorch, 0f, 0f, 0, default, 1f);
                     Main.dust[dustEffects].velocity *= 2f;
                     Main.dust[dustEffects].scale *= 1.15f;
                 }
-                modProj.spawnedPlayerMinionDamageValue = player.MinionDamage();
-                modProj.spawnedPlayerMinionProjectileDamageValue = projectile.damage;
-                projectile.localAI[0] += 1f;
-            }
-            if (player.MinionDamage() != modProj.spawnedPlayerMinionDamageValue)
-            {
-                int damage2 = (int)((float)modProj.spawnedPlayerMinionProjectileDamageValue /
-                    modProj.spawnedPlayerMinionDamageValue * player.MinionDamage());
-                projectile.damage = damage2;
+                Projectile.localAI[0] += 1f;
             }
 
             //finding an enemy, then shooting projectiles at it
-            if (projectile.owner == Main.myPlayer)
+            if (Projectile.owner == Main.myPlayer)
             {
-                float projPosX = projectile.position.X;
-                float projPosY = projectile.position.Y;
+                float projPosX = Projectile.position.X;
+                float projPosY = Projectile.position.Y;
                 float detectionRange = Range;
                 bool enemyDetected = false;
                 if (player.HasMinionAttackTargetNPC)
                 {
                     NPC npc = Main.npc[player.MinionAttackTargetNPC];
-                    if (npc.CanBeChasedBy(projectile, false))
+                    if (npc.CanBeChasedBy(Projectile, false))
                     {
                         float xDist = npc.position.X + (float)(npc.width / 2);
                         float yDist = npc.position.Y + (float)(npc.height / 2);
-                        float enemyDist = Math.Abs(projPosX + (float)(projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(projectile.height / 2) - yDist);
+                        float enemyDist = Math.Abs(projPosX + (float)(Projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(Projectile.height / 2) - yDist);
                         if (enemyDist < detectionRange)
                         {
                             detectionRange = enemyDist;
@@ -133,11 +129,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     for (int index = 0; index < Main.npc.Length; index++)
                     {
                         NPC target = Main.npc[index];
-                        if (target.CanBeChasedBy(projectile, true))
+                        if (target.CanBeChasedBy(Projectile, true))
                         {
                             float xDist = target.position.X + (float)(target.width / 2);
                             float yDist = target.position.Y + (float)(target.height / 2);
-                            float enemyDist = Math.Abs(projPosX + (float)(projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(projectile.height / 2) - yDist);
+                            float enemyDist = Math.Abs(projPosX + (float)(Projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(Projectile.height / 2) - yDist);
                             if (enemyDist < detectionRange)
                             {
                                 detectionRange = enemyDist;
@@ -150,23 +146,23 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 }
                 if (enemyDetected)
                 {
-                    projectile.ai[1] += 1f;
-                    if ((projectile.ai[1] % 5f) == 0f)
+                    Projectile.ai[1] += 1f;
+                    if ((Projectile.ai[1] % 5f) == 0f)
                     {
                         int amount = Main.rand.Next(1, 2);
                         for (int i = 0; i < amount; i++)
                         {
                             int projType = Utils.SelectRandom(Main.rand, new int[]
                             {
-                                ModContent.ProjectileType<MagicUmbrella>(),
-                                ModContent.ProjectileType<MagicRifle>(),
-                                ModContent.ProjectileType<MagicHammer>(),
-                                ModContent.ProjectileType<MagicAxe>(),
-                                ModContent.ProjectileType<MagicBird>()
+                                ModContent.ProjectileType<MagicUmbrellaOld>(),
+                                ModContent.ProjectileType<MagicRifleOld>(),
+                                ModContent.ProjectileType<MagicHammerOld>(),
+                                ModContent.ProjectileType<MagicAxeOld>(),
+                                ModContent.ProjectileType<MagicBirdOld>()
                             });
                             float velocityX = Main.rand.NextFloat(-10f, 10f);
                             float velocityY = Main.rand.NextFloat(-15f, -8f);
-                            Projectile.NewProjectile(projectile.oldPosition.X + (float)(projectile.width / 2), projectile.oldPosition.Y + (float)(projectile.height / 2), velocityX, velocityY, projType, projectile.damage, 0f, projectile.owner, 0f, 0f);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + (float)(Projectile.width / 2), Projectile.oldPosition.Y + (float)(Projectile.height / 2), velocityX, velocityY, projType, Projectile.damage, 0f, Projectile.owner, 0f, 0f);
                         }
                     }
                 }
@@ -177,6 +173,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
         public override Color? GetAlpha(Color lightColor) => new Color(200, 200, 200, 200);
 
         //no contact damage
-        public override bool CanDamage() => false;
+        public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of true */ => false;
     }
 }

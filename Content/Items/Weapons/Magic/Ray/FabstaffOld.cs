@@ -42,7 +42,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.shoot = ModContent.ProjectileType<FabRayOld>();
             Item.shootSpeed = 6f;
         }
-
+        public override Vector2? HoldoutOrigin()
+        {
+            return new Vector2(0, -3);
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

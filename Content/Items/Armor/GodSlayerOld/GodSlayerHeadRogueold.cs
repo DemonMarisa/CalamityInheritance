@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage<ThrowingDamageClass>() += 0.14f;
+            player.GetDamage<RogueDamageClass>() += 0.14f;
             player.GetCritChance<ThrowingDamageClass>() += 14;
             player.moveSpeed += 0.18f;
         }

@@ -40,15 +40,19 @@ namespace CalamityInheritance.CIPlayer
         public bool PsychoticAmulet = false;
         public bool YharimsInsignia = false;
         public bool darkSunRingold = false;
-        public bool AMRextra = false;
-        public bool AMRextraTy = false;
         public bool projRef = false;
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
         #endregion
+        #region Weapon
+        public float animusBoost = 1f;
         //多个计时器触发
         public int ProjectilHitCounter;
         public int ProjectilHitCounter2;
+        public bool AMRextra = false;
+        public bool AMRextraTy = false;
+        #endregion
+
         #region dash
         public int dashTimeMod;
         public bool HasReducedDashFirstFrame = false;
@@ -163,6 +167,10 @@ namespace CalamityInheritance.CIPlayer
         public int auricsilvaCountdown = auricsilvaReviveDuration;
         #endregion
         #endregion
+        #region Summon
+        public bool MagicHatOld = false;
+        public bool MidnnightSunBuff = false;
+        #endregion
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -271,6 +279,10 @@ namespace CalamityInheritance.CIPlayer
             CIDashID = string.Empty;
             elysianAegis = false;
 
+            #region Summon
+            MagicHatOld = false;
+            MidnnightSunBuff = false;
+            #endregion
         }
         #endregion
         #region UpdateDead
@@ -316,6 +328,8 @@ namespace CalamityInheritance.CIPlayer
             CIsilvaCountdown = CIsilvaReviveDuration;
             #endregion
             #endregion
+
+            animusBoost = 1f;
         }
         public override void PostUpdate()
         {

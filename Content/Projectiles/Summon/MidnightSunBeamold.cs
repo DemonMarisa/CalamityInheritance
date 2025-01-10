@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;
+            ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 10000;
         }
 
         public override void SetDefaults()
@@ -120,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 float theta = Projectile.velocity.ToRotation() + Main.rand.NextBool(2).ToDirectionInt() * MathHelper.PiOver2;
                 float speed = (float)Main.rand.NextDouble() * 2f + 2f;
                 Vector2 velocity = theta.ToRotationVector2() * speed;
-                Dust dust = Dust.NewDustDirect(beamEndPosiiton, 0, 0, 185, velocity.X, velocity.Y, 0, default, 1f);
+                Dust dust = Dust.NewDustDirect(beamEndPosiiton, 0, 0, DustID.FrostHydra, velocity.X, velocity.Y, 0, default, 1f);
                 dust.noGravity = true;
                 dust.scale = 1.7f;
             }

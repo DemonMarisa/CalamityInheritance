@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
@@ -18,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.height = 8;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 40;
             Projectile.extraUpdates = 100;
             Projectile.timeLeft = 600;
             Projectile.usesLocalNPCImmunity = true;
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 {
                     Vector2 vector33 = Projectile.position;
                     vector33 -= Projectile.velocity * ((float)num447 * 0.25f);
-                    int num448 = Dust.NewDust(vector33, 1, 1, 234, 0f, 0f, 0, default, 1.25f);
+                    int num448 = Dust.NewDust(vector33, 1, 1, DustID.BoneTorch, 0f, 0f, 0, default, 1.25f);
                     Main.dust[num448].noGravity = true;
                     Main.dust[num448].noLight = true;
                     Main.dust[num448].position = vector33;

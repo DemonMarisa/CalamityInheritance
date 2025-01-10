@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void SetDefaults()
         {
-            Item.damage = 108;
+            Item.damage = 148;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 50;
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override Vector2? HoldoutOrigin()
         {
-            return new Vector2(0, -5);
+            return new Vector2(0, -2);
         }
 
         public override void AddRecipes()

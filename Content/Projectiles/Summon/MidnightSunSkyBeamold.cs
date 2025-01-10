@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;
-
+            ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 10000;
         }
 
         public override void SetDefaults()
@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 float theta = Projectile.velocity.ToRotation() + Main.rand.NextBool(2).ToDirectionInt() * MathHelper.PiOver2;
                 float speed = (float)Main.rand.NextDouble() * 2f + 2f;
                 Vector2 velocity = theta.ToRotationVector2() * speed;
-                Dust dust = Dust.NewDustDirect(beamEndPosiiton, 0, 0, 185, velocity.X, velocity.Y, 0, default, 1f);
+                Dust dust = Dust.NewDustDirect(beamEndPosiiton, 0, 0, DustID.FrostHydra, velocity.X, velocity.Y, 0, default, 1f);
                 dust.noGravity = true;
                 dust.scale = 1.7f;
             }
@@ -142,24 +142,22 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             if (Projectile.localAI[1] == 0f)
             {
-                Projectile.localAI[1] = 1000f; // 设置默认激光长度
+                Projectile.localAI[1] = 2000f;
             }
 
             Texture2D laserTailTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamBegin").Value;
             Texture2D laserBodyTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamMid").Value;
-            Texture2D laserHeadTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamMid").Value;
+            Texture2D laserHeadTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamEnd").Value;
 
             float laserLength = Projectile.localAI[1];
             Color drawColor = Color.White * 0.9f;
 
-            // 绘制激光尾部
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            Main.spriteBatch.Draw(laserTailTexture, drawPosition, null, drawColor, Projectile.rotation, laserTailTexture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
+            Main.EntitySpriteDraw(laserTailTexture, drawPosition, null, drawColor, Projectile.rotation, laserTailTexture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
 
-            // 绘制激光主体
             laserLength -= (laserTailTexture.Height / 2 + laserHeadTexture.Height) * Projectile.scale;
             Vector2 centerDelta = Projectile.Center + Projectile.velocity * Projectile.scale * laserTailTexture.Height / 2f;
-            centerDelta -= Main.screenPosition; // 屏幕坐标补正
+            centerDelta -= Main.screenPosition;
 
             if (laserLength > 0f)
             {
@@ -173,7 +171,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         sourceRectangle.Height = (int)(laserLength - laserLengthDelta);
                     }
 
-                    Main.spriteBatch.Draw(laserBodyTexture,centerDelta,new Rectangle?(sourceRectangle),drawColor,Projectile.rotation,new Vector2(sourceRectangle.Width / 2f, 0f), Projectile.scale, SpriteEffects.None,0f);
+                    Main.EntitySpriteDraw(laserBodyTexture, centerDelta, new Rectangle?(sourceRectangle),drawColor,Projectile.rotation,new Vector2(sourceRectangle.Width / 2f, 0f), Projectile.scale, SpriteEffects.None,0f);
 
                     laserLengthDelta += sourceRectangle.Height * Projectile.scale;
                     centerDelta += Projectile.velocity * sourceRectangle.Height * Projectile.scale;
@@ -186,11 +184,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
             }
 
-            // 绘制激光头部
-            Main.spriteBatch.Draw(laserHeadTexture,centerDelta,null,drawColor,Projectile.rotation,laserHeadTexture.Frame(1, 1, 0, 0).Top(), Projectile.scale,SpriteEffects.None,0f);
+            Main.EntitySpriteDraw(laserHeadTexture, centerDelta, null,drawColor,Projectile.rotation,laserHeadTexture.Frame(1, 1, 0, 0).Top(), Projectile.scale,SpriteEffects.None,0f);
 
-            return false; // 不绘制默认内容
+            return false;
         }
+        
         public override void CutTiles()
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
@@ -211,5 +209,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             return false;
         }
+        public override bool ShouldUpdatePosition() => false;
     }
 }
