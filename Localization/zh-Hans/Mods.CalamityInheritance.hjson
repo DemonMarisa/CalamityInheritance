@@ -228,6 +228,26 @@ Items: {
 			// DisplayName: Nanotech Old
 			// Tooltip: ""
 		}
+
+		BadgeofBravery: {
+			// DisplayName: Badgeof Bravery
+			// Tooltip: ""
+		}
+
+		DaedalusEmblem: {
+			// DisplayName: Daedalus Emblem
+			// Tooltip: ""
+		}
+
+		YharimsGiftLegacy: {
+			// Tooltip: ""
+			// DisplayName: Yharims Gift Legacy
+		}
+
+		AeroStoneLegacy: {
+			// Tooltip: ""
+			// DisplayName: Aero Stone Legacy
+		}
 	}
 
 	AsgardsValorold: {
@@ -604,6 +624,21 @@ Items: {
 					死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 					林海无敌结束后，盗贼伤害增加40%
 					'''
+			}
+
+			AncientOmegaBlueChestplate: {
+				// DisplayName: Ancient Omega Blue Chestplate
+				// Tooltip: ""
+			}
+
+			AncientOmegaBlueHelmet: {
+				// DisplayName: Ancient Omega Blue Helmet
+				// Tooltip: ""
+			}
+
+			AncientOmegaBlueLeggings: {
+				// DisplayName: Ancient Omega Blue Leggings
+				// Tooltip: ""
 			}
 		}
 	}
@@ -1262,6 +1297,16 @@ Items: {
 					距离敌人越近，伤害越高
 					'''
 			}
+
+			HeliumFlashLegacy: {
+				// Tooltip: ""
+				// DisplayName: Helium Flash Legacy
+			}
+
+			HeliumFlashOverpowered: {
+				// Tooltip: ""
+				// DisplayName: Helium Flash Overpowered
+			}
 		}
 
 		Melee: {
@@ -1300,6 +1345,11 @@ Items: {
 
 			ElementalExcalibur: {
 				// DisplayName: Elemental Excalibur
+				// Tooltip: ""
+			}
+
+			SoulEdge: {
+				// DisplayName: Soul Edge
 				// Tooltip: ""
 			}
 		}
@@ -1874,6 +1924,56 @@ Items: {
 		// DisplayName: Bladeof Enmity
 		// Tooltip: ""
 	}
+
+	MageWulfrumHoodLegacy: {
+		// DisplayName: Mage Wulfrum Hood Legacy
+		// Tooltip: ""
+	}
+
+	MeleeWulfrumHelmLegacy: {
+		// DisplayName: Melee Wulfrum Helm Legacy
+		// Tooltip: ""
+	}
+
+	RangedWulfrumHeadgearLegacy: {
+		// DisplayName: Ranged Wulfrum Headgear Legacy
+		// Tooltip: ""
+	}
+
+	SummonerWulfrumHelmetLegacy: {
+		// DisplayName: Summoner Wulfrum Helmet Legacy
+		// Tooltip: ""
+	}
+
+	ThrowerWulfrumMaskLegacy: {
+		// DisplayName: Thrower Wulfrum Mask Legacy
+		// Tooltip: ""
+	}
+
+	WulfrumArmorLegacy: {
+		// DisplayName: Wulfrum Armor Legacy
+		// Tooltip: ""
+	}
+
+	WulfrumLeggingsLegacy: {
+		// DisplayName: Wulfrum Leggings Legacy
+		// Tooltip: ""
+	}
+
+	WulfrumAxe: {
+		// DisplayName: Wulfrum Axe
+		// Tooltip: ""
+	}
+
+	WulfrumHammer: {
+		// DisplayName: Wulfrum Hammer
+		// Tooltip: ""
+	}
+
+	WulfrumPickaxe: {
+		// DisplayName: Wulfrum Pickaxe
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1890,6 +1990,9 @@ Projectiles: {
 		NightOrbold.DisplayName: 永夜光球
 		NightsRayBeamold.DisplayName: 永夜射线
 		TerraBeamMain.DisplayName: 泰拉光束
+		// VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
+		// HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
+		// VolatileStarcoreOverpowered.DisplayName: Volatile Starcore Overpowered
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -1930,6 +2033,10 @@ Projectiles: {
 		TrueNightsStabberProj.DisplayName: 真·永夜短剑
 		ExoJet.DisplayName: 星流射流
 		// ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
+		// SoulEdgeSoulLegacy.DisplayName: Soul Edge Soul Legacy
+		// SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
+		// SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
+		// SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
 	}
 
 	ElementBall.DisplayName: 元素之球

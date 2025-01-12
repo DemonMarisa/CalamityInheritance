@@ -2,6 +2,7 @@
 using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
@@ -85,7 +86,10 @@ namespace CalamityInheritance.NPCs
 
             #region ModBoss
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                {
+                    npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                    npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
+                }
             if (npc.type == ModContent.NPCType<Crabulon>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<HiveMind>())
@@ -146,7 +150,9 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ModContent.ItemType<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Yharon>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+            }
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
             #endregion
@@ -283,6 +289,7 @@ namespace CalamityInheritance.NPCs
                 case NPCID.MoonLordCore:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientXerocCuisses>(), 25, 15));
                     break;
                 #endregion
             }

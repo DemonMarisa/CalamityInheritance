@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.MagicQuiver);
-            recipe.AddIngredient(ModContent.ItemType<DeadshotBrooch> ());
+            recipe.AddIngredient(ModContent.ItemType<DaedalusEmblem>());
             recipe.AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4);
             recipe.AddTile(ModContent.TileType<CosmicAnvil>());
             recipe.Register();

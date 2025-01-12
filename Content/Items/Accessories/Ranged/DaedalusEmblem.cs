@@ -1,0 +1,42 @@
+﻿using CalamityMod;
+using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Accessories.Ranged
+{
+    public class DaedalusEmblem : ModItem, ILocalizedModType
+    {
+        public new string LocalizationCategory => "Items.Accessories";
+        public override void SetDefaults()
+        {
+            Item.width = 46;
+            Item.height = 40;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = ItemRarityID.Lime;
+            Item.accessory = true;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.Calamity().deadshotBrooch = true;
+            player.Calamity().rangedAmmoCost *= 0.8f;
+            player.GetDamage<RangedDamageClass>() += 0.1f;
+            player.GetCritChance<RangedDamageClass>() += 5;
+            player.statDefense += 5;
+            player.lifeRegen += 2;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.CelestialStone).
+                AddIngredient<CoreofCalamity>(2).
+                AddIngredient(ItemID.RangerEmblem).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+        }
+    }
+}
