@@ -104,26 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             return false;
         }
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<EssenceofSunlight>(), 3);
-            recipe.AddIngredient(ModContent.ItemType<EssenceofEleum>(), 3);
-            recipe.AddIngredient(ItemID.Starfury);
-            recipe.AddIngredient(ItemID.EnchantedSword);
-            recipe.AddIngredient(ItemID.Excalibur);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-
-            recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<EssenceofSunlight>(), 3);
-            recipe.AddIngredient(ModContent.ItemType<EssenceofEleum>(), 3);
-            recipe.AddIngredient(ItemID.Starfury);
-            recipe.AddIngredient(ItemID.Arkhalis);
-            recipe.AddIngredient(ItemID.Excalibur);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-        }
+        
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
@@ -161,6 +142,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<EssenceofSunlight>(3).
+                AddIngredient<EssenceofEleum>(3).
+                AddIngredient(ItemID.Starfury).
+                AddIngredient(ItemID.EnchantedSword).
+                AddIngredient(ItemID.Excalibur).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            CreateRecipe().
+                AddIngredient<EssenceofSunlight>(3).
+                AddIngredient<EssenceofEleum>(3).
+                AddIngredient(ItemID.Starfury).
+                AddIngredient(ItemID.Arkhalis).
+                AddIngredient(ItemID.Excalibur).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

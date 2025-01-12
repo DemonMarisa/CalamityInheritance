@@ -248,6 +248,16 @@ Items: {
 			Tooltip: ""
 			DisplayName: Aero Stone Legacy
 		}
+
+		LeviathanAmbergrisLegacy: {
+			DisplayName: Leviathan Ambergris Legacy
+			Tooltip: ""
+		}
+
+		VoidofExtinctionLegacy: {
+			DisplayName: Voidof Extinction Legacy
+			Tooltip: ""
+		}
 	}
 
 	AsgardsValorold: {
@@ -1436,6 +1446,16 @@ Items: {
 					Does not consume stealth and cannot stealth strike
 					'''
 			}
+
+			IchorSpearLegacy: {
+				DisplayName: Ichor Spear Legacy
+				Tooltip: ""
+			}
+
+			SpearofDestinyLegacy: {
+				DisplayName: Spearof Destiny Legacy
+				Tooltip: ""
+			}
 		}
 	}
 
@@ -1889,6 +1909,26 @@ Items: {
 		DisplayName: Wulfrum Pickaxe
 		Tooltip: ""
 	}
+
+	AncientXerocCuisses: {
+		DisplayName: Ancient Xeroc Cuisses
+		Tooltip: ""
+	}
+
+	AncientXerocMask: {
+		DisplayName: Ancient Xeroc Mask
+		Tooltip: ""
+	}
+
+	AncientXerocPlateMail: {
+		DisplayName: Ancient Xeroc Plate Mail
+		Tooltip: ""
+	}
+
+	GrandGelatinLegacy: {
+		DisplayName: Grand Gelatin Legacy
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -2017,6 +2057,8 @@ Projectiles: {
 		SupernovaBombold.DisplayName: Supernova Bombold
 		SupernovaHoming.DisplayName: Supernova Homing
 		SupernovaSpike.DisplayName: Supernova Spike
+		IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
+		SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
 	}
 
 	Quasar2.DisplayName: Quasar2

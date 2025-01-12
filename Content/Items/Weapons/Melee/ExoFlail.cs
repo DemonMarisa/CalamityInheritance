@@ -69,15 +69,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<DragonPow>());
-            recipe.AddIngredient(ModContent.ItemType<CrescentMoon>());
-            recipe.AddIngredient(ModContent.ItemType<Mourningstar>());
-            recipe.AddIngredient(ModContent.ItemType<ClamCrusher>());
-            recipe.AddIngredient(ModContent.ItemType<BallOFugu>());
-            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient<DragonPow>().
+                AddIngredient<CrescentMoon>().
+                AddIngredient<Mourningstar>().
+                AddIngredient<ClamCrusher>().
+                AddIngredient<BallOFugu>().
+                AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
         }
     }
 }

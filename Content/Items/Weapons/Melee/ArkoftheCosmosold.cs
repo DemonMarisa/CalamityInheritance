@@ -110,26 +110,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<FourSeasonsGalaxiaold>());
-            recipe.AddIngredient(ModContent.ItemType<ArkoftheElements>());
-            recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
-            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe.Register();
-
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ModContent.ItemType<FourSeasonsGalaxiaold>());
-            recipe2.AddIngredient(ModContent.ItemType<ArkoftheElements>());
-            recipe2.AddIngredient(ModContent.ItemType<AuricBarold>());
-            recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe2.Register();
-
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient<ArkoftheCosmos>(1);
-            recipe1.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -332,5 +313,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 player.AddBuff(BuffID.DryadsWard, 600);
             }
         }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<FourSeasonsGalaxiaold>().
+                AddIngredient<ArkoftheElements>().
+                AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<FourSeasonsGalaxiaold>().
+                AddIngredient<ArkoftheElements>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<ArkoftheCosmos>(1).
+                Register();
+        }
     }
+
 }

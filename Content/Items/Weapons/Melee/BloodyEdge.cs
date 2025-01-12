@@ -72,6 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<PurifiedGel>(5).
                 AddTile(TileID.DemonAltar).
                 Register();
+                
             CreateRecipe().
                 AddIngredient(ItemID.BloodButcherer).
                 AddIngredient(ItemID.Muramasa).

@@ -35,18 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 12f;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<BiomeBlade>());
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 5);
-            recipe.AddIngredient(ItemID.Ectoplasm, 5);
-            recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 10);
-            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 10);
-            recipe.AddIngredient(ModContent.ItemType<Voidstone>(), 5);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -54,6 +43,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<BiomeBlade>().
+                AddIngredient<LivingShard>(5).
+                AddIngredient(ItemID.Ectoplasm, 5).
+                AddIngredient<DepthCells>(10).
+                AddIngredient<Lumenyl>(10).
+                AddIngredient<Voidstone>(5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

@@ -248,6 +248,16 @@ Items: {
 			// Tooltip: ""
 			// DisplayName: Aero Stone Legacy
 		}
+
+		LeviathanAmbergrisLegacy: {
+			// DisplayName: Leviathan Ambergris Legacy
+			// Tooltip: ""
+		}
+
+		VoidofExtinctionLegacy: {
+			// DisplayName: Voidof Extinction Legacy
+			// Tooltip: ""
+		}
 	}
 
 	AsgardsValorold: {
@@ -1446,6 +1456,16 @@ Items: {
 					不消耗潜行值并且无法产生潜伏攻击
 					'''
 			}
+
+			IchorSpearLegacy: {
+				// DisplayName: Ichor Spear Legacy
+				// Tooltip: ""
+			}
+
+			SpearofDestinyLegacy: {
+				// DisplayName: Spearof Destiny Legacy
+				// Tooltip: ""
+			}
 		}
 	}
 
@@ -1974,6 +1994,26 @@ Items: {
 		// DisplayName: Wulfrum Pickaxe
 		// Tooltip: ""
 	}
+
+	AncientXerocCuisses: {
+		// DisplayName: Ancient Xeroc Cuisses
+		// Tooltip: ""
+	}
+
+	AncientXerocMask: {
+		// DisplayName: Ancient Xeroc Mask
+		// Tooltip: ""
+	}
+
+	AncientXerocPlateMail: {
+		// DisplayName: Ancient Xeroc Plate Mail
+		// Tooltip: ""
+	}
+
+	GrandGelatinLegacy: {
+		// DisplayName: Grand Gelatin Legacy
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -2102,6 +2142,8 @@ Projectiles: {
 		SupernovaBombold.DisplayName: 超新星爆炸
 		SupernovaHoming.DisplayName: 星流能量
 		SupernovaSpike.DisplayName: 星流火花
+		// IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
+		// SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
 	}
 
 	Quasar2.DisplayName: 类星体

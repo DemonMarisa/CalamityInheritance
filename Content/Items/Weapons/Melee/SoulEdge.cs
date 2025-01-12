@@ -1,9 +1,6 @@
-﻿using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -69,12 +66,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
-            AddIngredient<RuinousSoul>(10).
-            AddIngredient<Necroplasm>(10).
-            AddIngredient(ItemID.Ectoplasm, 10).
-            AddIngredient<Voidstone>(10).
-            AddTile(TileID.LunarCraftingStation).
-            Register();
+                AddIngredient<RuinousSoul>(10).
+                AddIngredient<Necroplasm>(10).
+                AddIngredient(ItemID.Ectoplasm, 10).
+                AddIngredient<Voidstone>(10).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

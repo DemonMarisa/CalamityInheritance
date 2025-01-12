@@ -45,12 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ModContent.RarityType<Violet>();
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 14));
         }
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<MurasamaNeweffect>());
-            recipe.Register();
-        }
+        
 
         // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 30;
@@ -111,5 +106,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Projectile.NewProjectile(source, position, velocity, type, damage / 2, knockback, player.whoAmI, 0f, 0f);
             return false;
         }
+        
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<MurasamaNeweffect>().
+                Register();
+        }       
+
     }
 }

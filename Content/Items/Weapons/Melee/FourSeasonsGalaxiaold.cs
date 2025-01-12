@@ -57,19 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ModContent.ItemType<OmegaBiomeBlade>());
-            recipe2.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 8);
-            recipe2.AddIngredient(ModContent.ItemType<DarksunFragment>(), 8);
-            recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe2.Register();
-
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ModContent.ItemType<FourSeasonsGalaxia>());
-            recipe1.Register();
-        }
+        
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
@@ -268,6 +256,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 player.AddBuff(BuffID.DryadsWard, 600);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<OmegaBiomeBlade>().
+                AddIngredient<CosmiliteBar>(8).
+                AddIngredient<DarksunFragment>(8).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<FourSeasonsGalaxia>().
+                Register();
         }
     }
 }

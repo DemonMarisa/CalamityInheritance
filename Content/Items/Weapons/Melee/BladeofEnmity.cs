@@ -37,14 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Yellow;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>(), 3);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-        }
+        
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -54,6 +47,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<LifeAlloy>(5).
+                AddIngredient<CoreofCalamity>(3).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }
