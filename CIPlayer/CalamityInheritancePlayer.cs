@@ -43,6 +43,7 @@ namespace CalamityInheritance.CIPlayer
         public bool projRef = false;
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
+        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -165,6 +166,10 @@ namespace CalamityInheritance.CIPlayer
         public static int auricsilvaReviveDuration = 600;
         public int auricsilvaCountdown = auricsilvaReviveDuration;
         #endregion
+        #region AncientXeroc
+        public bool AncientXerocMadness = false;
+        //xeroc套装 
+        #endregion
         public bool test = false;
         #endregion
         #region Summon
@@ -190,6 +195,7 @@ namespace CalamityInheritance.CIPlayer
             if (!CIsponge)
                 ShieldDurabilityMax = 0;
 
+            badgeofBravery = false;
             CIsponge = false;
             CIspongeShieldVisible = false;
             FungalCarapace = false;
@@ -275,6 +281,9 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             auricsilvaset = false;
             #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
+            #endregion
             test = false;
             #endregion
             CIDashID = string.Empty;
@@ -327,6 +336,9 @@ namespace CalamityInheritance.CIPlayer
             aurichasSilvaEffect = false;
             auricsilvaCountdown = auricsilvaReviveDuration;
             CIsilvaCountdown = CIsilvaReviveDuration;
+            #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
             #endregion
             #endregion
 

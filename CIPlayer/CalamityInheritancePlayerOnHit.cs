@@ -222,8 +222,92 @@ namespace CalamityInheritance.CIPlayer
             {
                 titanBoost = 600;
             }
+            
+        #region Xeroc
+        // if (Main.player[(int)Player.FindClosest(projectile.position, projectile.width, projectile.height)].GetModPlayer<>().xerocSet)
+        //     {
+        //         int num = projectile.damage / 2;
+        //         Main.player[(int)Player.FindClosest(projectile.position, projectile.width, projectile.height)].GetModPlayer<CalamityPlayer1Point2>().xerocDmg += (float)num;
+        //         int[] array = new int[200];
+        //         int num3 = 0;
+        //         int num4 = 0;
+        //         for (int i = 0; i < 200; i++)
+        //         {
+        //             if (Main.npc[i].CanBeChasedBy(projectile, false))
+        //             {
+        //                 float num5 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+        //                 if (num5 < 800f)
+        //                 {
+        //                     if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
+        //                     {
+        //                         array[num4] = i;
+        //                         num4++;
+        //                     }
+        //                     else if (num4 == 0)
+        //                     {
+        //                         array[num3] = i;
+        //                         num3++;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         if (num3 == 0 && num4 == 0)
+        //         {
+        //             return;
+        //         }
+        //         int num6;
+        //         if (num4 > 0)
+        //         {
+        //             num6 = array[Main.rand.Next(num4)];
+        //         }
+        //         else
+        //         {
+        //             num6 = array[Main.rand.Next(num3)];
+        //         }
+        //         float num7 = 30f;
+        //         float num8 = (float)Main.rand.Next(-100, 101);
+        //         float num9 = (float)Main.rand.Next(-100, 101);
+        //         float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
+        //         num10 = num7 / num10;
+        //         num8 *= num10;
+        //         num9 *= num10;
+        //         Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, num8, num9, Mod.Find<ModProjectile>("XerocOrb").Type, num, 0f, projectile.owner, (float)num6, 0f);
+        //         float num11 = 0.02f;
+        //         num11 -= (float)projectile.numHits * 0.01f;
+        //         if (num11 <= 0f)
+        //         {
+        //             return;
+        //         }
+        //         float num12 = (float)projectile.damage * num11;
+        //         if ((int)num12 <= 0)
+        //         {
+        //             return;
+        //         }
+        //         if (Main.player[Main.myPlayer].lifeSteal <= 0f)
+        //         {
+        //             return;
+        //         }
+        //         Main.player[Main.myPlayer].lifeSteal -= num12;
+        //         float num13 = 0f;
+        //         int num14 = projectile.owner;
+        //         for (int i = 0; i < 255; i++)
+        //         {
+        //             if (Main.player[i].active && !Main.player[i].dead && ((!Main.player[projectile.owner].hostile && !Main.player[i].hostile) || Main.player[projectile.owner].team == Main.player[i].team))
+        //             {
+        //                 float num15 = Math.Abs(Main.player[i].position.X + (float)(Main.player[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.player[i].position.Y + (float)(Main.player[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+        //                 if (num15 < 1200f && (float)(Main.player[i].statLifeMax2 - Main.player[i].statLife) > num13)
+        //                 {
+        //                     num13 = (float)(Main.player[i].statLifeMax2 - Main.player[i].statLife);
+        //                     num14 = i;
+        //                 }
+        //             }
+        //         }
+        //         Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, 0f, 0f, Mod.Find<ModProjectile>("XerocHealOrb").Type, 0, 0f, projectile.owner, (float)num14, num12);
+        //     }
+        #endregion
         }
         #endregion
+
 
         #region Debuffs
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)

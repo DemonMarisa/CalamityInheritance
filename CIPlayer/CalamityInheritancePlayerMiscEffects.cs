@@ -159,6 +159,15 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
                     animusBoost = 1f;
             }
+            if (badgeofBravery) //如果启用
+            {
+                if(modPlayer.tarraMelee) 
+                {
+                    Player.GetCritChance<MeleeDamageClass>() += 10;
+                    Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                    Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
+                }
+            }
         }
         #region Energy Shields
         private void CIEnergyShields()
@@ -744,6 +753,11 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            if (Player.whoAmI == Main.myPlayer && AncientXerocMadness)
+            {
+                Player.AddBuff(ModContent.BuffType<EmpyreanRage>(),  240);
+                Player.AddBuff(ModContent.BuffType<EmpyreanWrath>(), 240);
+            }
             #endregion
         }
 
@@ -896,7 +910,7 @@ namespace CalamityInheritance.CIPlayer
                     if (Main.rand.NextBool(2))
                     {
                         Vector2 vector2 = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
-                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, 246, 0f, 0f, 0, default, 1f)];
+                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, DustID.GoldCoin, 0f, 0f, 0, default, 1f)];
                         dust2.noGravity = true;
                         dust2.position = Player.Center - vector2 * 12f;
                         dust2.velocity = vector2.RotatedBy(-Math.PI / 2D, default) * 2f;
