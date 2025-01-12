@@ -11,7 +11,7 @@ using Terraria.DataStructures;
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncietnXerocMask : ModItem
+    public class AncientXerocMask : ModItem
     {
         public override void SetStaticDefaults()
         {

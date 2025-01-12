@@ -15,10 +15,10 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class HeliumFlashLegacy : ModItem, ILocalizedModType
+    public class HeliumFlashOverpowered : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Items.Weapons.Magic";
-        internal const float ExplosionDamageMultiplier = 0.65f;
+        internal const float ExplosionDamageMultiplier = 1.5f;
 
         public override void SetStaticDefaults()
         {
@@ -30,11 +30,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 500;
+            Item.damage = 3000;
             Item.knockBack = 9.5f;
-            Item.mana = 15;
-            Item.useAnimation = 30;
-            Item.useTime = 30;
+            Item.mana = 25;
+            Item.useAnimation = 35;
+            Item.useTime = 35;
             Item.autoReuse = true;
             Item.noMelee = true;
 
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<Violet>();
 
-            Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
+            Item.shoot = ModContent.ProjectileType<VolatileStarcoreOverpowered>();
             Item.shootSpeed = 15f;
         }
 
@@ -99,15 +99,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe r = CreateRecipe();
-            r.AddIngredient<VenusianTrident>();
-            r.AddIngredient<LashesofChaos>();
-            r.AddIngredient<ForbiddenSun>();
-            r.AddIngredient(ItemID.FragmentSolar, 20);
-            r.AddIngredient(ItemID.FragmentNebula, 5);
-            r.AddIngredient<AuricBar>(5);
-            r.AddTile<CosmicAnvil>();
-            r.Register();
+
+            CreateRecipe()
+            .AddIngredient<HeliumFlashLegacy>()
+            .AddIngredient<ShadowspecBar>(5)
+            .AddTile<CosmicAnvil>()
+            .Register();
         }
     }
 }
