@@ -41,6 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             recipe.AddIngredient(ItemID.DemoniteBar, 5);
             recipe.AddIngredient(ItemID.RottenChunk, 2);
             recipe.AddIngredient(ModContent.ItemType<RottenMatter>(), 5);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
     }

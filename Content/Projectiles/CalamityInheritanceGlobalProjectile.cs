@@ -2,8 +2,11 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Healing;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -154,6 +157,29 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
+
+            if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
+            {
+                if (projectile.CountsAsClass<RogueDamageClass>())
+                {
+                    if (modPlayer.reaverRogueExProj)
+                    {
+                        if (Main.player[projectile.owner].miscCounter % 30 == 0 && projectile.FinalExtraUpdate())
+                        {
+                            if (projectile.owner == Main.myPlayer)
+                            {
+                                int damage = (int)player.GetTotalDamage<RogueDamageClass>().ApplyTo(60);
+                                damage = player.ApplyArmorAccDamageBonusesTo(damage);
+                                int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhotosyntheticShard>(), damage, 0f, projectile.owner);
+                                if (newProjectileId != Main.maxProjectiles)
+                                {
+                                    Main.projectile[newProjectileId].CalamityInheritance().forceRogue = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -187,7 +213,7 @@ namespace CalamityInheritance.Content.Projectiles
                         if (projectile.owner == Main.myPlayer)
                         {
                             bool fromRight = x > 3;
-                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
+                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }

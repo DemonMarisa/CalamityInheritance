@@ -108,9 +108,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 recipe2.Register();
 
                 Recipe recipe3 = CreateRecipe();
-                recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());
-                recipe.AddIngredient(ModContent.ItemType<AuricBarold>());
-                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe3.AddIngredient(ModContent.ItemType<VoltaicClimax>());
+                recipe3.AddIngredient(ModContent.ItemType<AuricBarold>());
+                recipe3.AddTile(ModContent.TileType<CosmicAnvil>());
                 recipe3.Register();
             }
         }

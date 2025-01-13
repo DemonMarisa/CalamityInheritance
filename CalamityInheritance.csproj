@@ -161,7 +161,6 @@
 		<None Remove="Content\Projectiles\InvisibleProj.png" />
 		<None Remove="Content\Projectiles\LaserProj.png" />
 		<None Remove="Content\Projectiles\LightningProj.png" />
-		<None Remove="Content\Projectiles\Magic\Climax2.png" />
 		<None Remove="Content\Projectiles\Magic\Crescent.png" />
 		<None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
 		<None Remove="Content\Projectiles\Magic\StratusSphereProj.png" />
@@ -376,7 +375,6 @@
 		<None Remove="Content\Projectiles\InvisibleProj.png" />
 		<None Remove="Content\Projectiles\LaserProj.png" />
 		<None Remove="Content\Projectiles\LightningProj.png" />
-		<None Remove="Content\Projectiles\Magic\Climax2.png" />
 		<None Remove="Content\Projectiles\Magic\Crescent.png" />
 		<None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
 		<None Remove="Content\Projectiles\Magic\StratusSphereProj.png" />
@@ -591,7 +589,6 @@
 	  <None Remove="Content\Projectiles\InvisibleProj.png" />
 	  <None Remove="Content\Projectiles\LaserProj.png" />
 	  <None Remove="Content\Projectiles\LightningProj.png" />
-	  <None Remove="Content\Projectiles\Magic\Climax2.png" />
 	  <None Remove="Content\Projectiles\Magic\Crescent.png" />
 	  <None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
 	  <None Remove="Content\Projectiles\Magic\StratusSphereProj.png" />
@@ -806,7 +803,6 @@
 	  <None Remove="Content\Projectiles\InvisibleProj.png" />
 	  <None Remove="Content\Projectiles\LaserProj.png" />
 	  <None Remove="Content\Projectiles\LightningProj.png" />
-	  <None Remove="Content\Projectiles\Magic\Climax2.png" />
 	  <None Remove="Content\Projectiles\Magic\Crescent.png" />
 	  <None Remove="Content\Projectiles\Magic\EnormousConsumingVortexold.png" />
 	  <None Remove="Content\Projectiles\Magic\StratusSphereProj.png" />

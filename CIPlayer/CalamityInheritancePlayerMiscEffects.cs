@@ -159,6 +159,37 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
                     animusBoost = 1f;
             }
+            /*
+             * 原动不封地把战士永恒套提供的“增加10%伤害”并不能契合当前版本的强度，因此此处直接进行了比较超量的数值加强
+             * 但永恒套的怒气Buff本身只能通过受击获得，考虑到其触发条件我并不特别认为这会导致数值能多爆破（吧）
+             * 速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
+             */
+            if (reaverMeleeRage)
+            {
+                Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 10;
+                Player.statDefense += 10;
+            }
+
+            /*
+            同上，但法师永恒套的Buff属于击发式，提供一定量的暴击率加成与减魔耗
+            暴击概率10%,魔力消耗20%
+            */
+            if (reaverMagePower)
+            {
+                Player.manaCost *= 0.80f;
+                Player.GetCritChance<MagicDamageClass>() += 10;
+            }
+
+            if (badgeofBravery) //如果启用
+            {
+                if (modPlayer.tarraMelee)
+                {
+                    Player.GetCritChance<MeleeDamageClass>() += 10;
+                    Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                    Player.GetArmorPenetration<MeleeDamageClass>() += 15;
+                }
+            }
         }
         #region Energy Shields
         private void CIEnergyShields()
@@ -632,6 +663,12 @@ namespace CalamityInheritance.CIPlayer
             if (silvaStunCooldownold > 0)
                 silvaStunCooldownold--;
 
+            if (reaverBlastCooldown > 0)
+                reaverBlastCooldown--; //战士永恒套cd
+
+            if (reaverBurstCooldown > 0)
+                reaverBurstCooldown--; //法师永恒套CD
+
             if (modPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
@@ -745,6 +782,16 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+            if (Player.miscCounter % 150 == 0)
+            {
+                canFireReaverRangedRocket = true;
+            }
+
+            if (Player.whoAmI == Main.myPlayer && AncientXerocMadness)
+            {
+                Player.AddBuff(ModContent.BuffType<EmpyreanRage>(), 240);
+                Player.AddBuff(ModContent.BuffType<EmpyreanWrath>(), 240);
+            }
         }
 
         #endregion
@@ -896,7 +943,7 @@ namespace CalamityInheritance.CIPlayer
                     if (Main.rand.NextBool(2))
                     {
                         Vector2 vector2 = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
-                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, 246, 0f, 0f, 0, default, 1f)];
+                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, DustID.GoldCoin, 0f, 0f, 0, default, 1f)];
                         dust2.noGravity = true;
                         dust2.position = Player.Center - vector2 * 12f;
                         dust2.velocity = vector2.RotatedBy(-Math.PI / 2D, default) * 2f;

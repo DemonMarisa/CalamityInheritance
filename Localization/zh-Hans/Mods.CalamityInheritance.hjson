@@ -70,6 +70,16 @@ Buffs: {
 		Description: 你无法移动
 	}
 
+	ReaverMagePower: {
+		// DisplayName: Reaver Mage Power
+		// Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+	}
+
+	ReaverMeleeRage: {
+		// DisplayName: Reaver Melee Rage
+		// Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+	}
+
 	MagicHatBuffOld: {
 		// DisplayName: Magic Hat Buff Old
 		// Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
@@ -78,6 +88,11 @@ Buffs: {
 	MidnightSunBuffOld: {
 		// DisplayName: Midnight Sun Buff Old
 		// Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+	}
+
+	ReaverSummonSetBuff: {
+		// DisplayName: Reaver Summon Set Buff
+		// Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
 	}
 }
 
@@ -226,6 +241,36 @@ Items: {
 
 		NanotechOld: {
 			// DisplayName: Nanotech Old
+			// Tooltip: ""
+		}
+
+		AeroStoneLegacy: {
+			// DisplayName: Aero Stone Legacy
+			// Tooltip: ""
+		}
+
+		LeviathanAmbergrisLegacy: {
+			// DisplayName: Leviathan Ambergris Legacy
+			// Tooltip: ""
+		}
+
+		BadgeofBravery: {
+			// DisplayName: Badgeof Bravery
+			// Tooltip: ""
+		}
+
+		DaedalusEmblem: {
+			// DisplayName: Daedalus Emblem
+			// Tooltip: ""
+		}
+
+		VoidofExtinctionLegacy: {
+			// DisplayName: Voidof Extinction Legacy
+			// Tooltip: ""
+		}
+
+		YharimsGiftLegacy: {
+			// DisplayName: Yharims Gift Legacy
 			// Tooltip: ""
 		}
 	}
@@ -439,15 +484,6 @@ Items: {
 					'''
 			}
 
-			GodSlayerLeggingsold: {
-				DisplayName: 弑神者腿甲[Legacy]
-				Tooltip:
-					'''
-					增加10%伤害与暴击几率
-					移动速度增加35%
-					'''
-			}
-
 			GodSlayerHeadMeleeold: {
 				DisplayName: 弑神者头盔[Legacy]
 				Tooltip:
@@ -498,17 +534,12 @@ Items: {
 					'''
 			}
 
-			GodSlayerHeadMagicold: {
-				DisplayName: 弑神者面罩[Legacy]
+			GodSlayerLeggingsold: {
+				DisplayName: 弑神者腿甲[Legacy]
 				Tooltip:
 					'''
-					增加14%魔法伤害和14%魔法暴击率
-					+100最大魔力值并减少17%魔力消耗
-					'''
-				SetBonus:
-					'''
-					魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
-					受到致命伤害时会触发弑神复活，此效果有45秒冷却
+					增加10%伤害与暴击几率
+					移动速度增加35%
 					'''
 			}
 
@@ -605,7 +636,36 @@ Items: {
 					林海无敌结束后，盗贼伤害增加40%
 					'''
 			}
+
+			AncientOmegaBlueChestplate: {
+				// DisplayName: Ancient Omega Blue Chestplate
+				// Tooltip: ""
+			}
+
+			AncientOmegaBlueHelmet: {
+				// DisplayName: Ancient Omega Blue Helmet
+				// Tooltip: ""
+			}
+
+			AncientOmegaBlueLeggings: {
+				// DisplayName: Ancient Omega Blue Leggings
+				// Tooltip: ""
+			}
 		}
+	}
+
+	GodSlayerHeadMagicold: {
+		DisplayName: 弑神者面罩[Legacy]
+		Tooltip:
+			'''
+			增加14%魔法伤害和14%魔法暴击率
+			+100最大魔力值并减少17%魔力消耗
+			'''
+		/* SetBonus:
+			'''
+			魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+			受到致命伤害时会触发弑神复活，此效果有45秒冷却
+			''' */
 	}
 
 	Lore: {
@@ -1189,6 +1249,11 @@ Items: {
 		Tooltip: 给予能增强所有防御和进攻的属性
 	}
 
+	test: {
+		// DisplayName: 测试剑
+		// Tooltip: DA★ZE
+	}
+
 	HadopelagicEcho: {
 		DisplayName: 冥渊回音[Legacy]
 		Tooltip:
@@ -1242,6 +1307,16 @@ Items: {
 					'''
 			}
 
+			NightsRayold: {
+				DisplayName: 永夜射线[Legacy]
+				Tooltip:
+					'''
+					发射纯粹而集中的暗影射线
+					敌人在附近时会在其附近产生额外的射线
+					距离敌人越近，伤害越高
+					'''
+			}
+
 			ElementalRayold: {
 				DisplayName: 元素射线[Legacy]
 				Tooltip:
@@ -1253,14 +1328,9 @@ Items: {
 					'''
 			}
 
-			NightsRayold: {
-				DisplayName: 永夜射线[Legacy]
-				Tooltip:
-					'''
-					发射纯粹而集中的暗影射线
-					敌人在附近时会在其附近产生额外的射线
-					距离敌人越近，伤害越高
-					'''
+			HeliumFlashLegacy: {
+				// DisplayName: Helium Flash Legacy
+				// Tooltip: ""
 			}
 		}
 
@@ -1302,6 +1372,11 @@ Items: {
 				// DisplayName: Elemental Excalibur
 				// Tooltip: ""
 			}
+
+			SoulEdge: {
+				// DisplayName: Soul Edge
+				// Tooltip: ""
+			}
 		}
 
 		Ranged: {
@@ -1326,13 +1401,13 @@ Items: {
 					'''
 			}
 
-			TyrannysEndOld: {
-				// DisplayName: Tyrannys End Old
+			SomaPrimeOld: {
+				// DisplayName: Soma Prime Old
 				// Tooltip: ""
 			}
 
-			SomaPrimeOld: {
-				// DisplayName: Soma Prime Old
+			TyrannysEndOld: {
+				// DisplayName: Tyrannys End Old
 				// Tooltip: ""
 			}
 		}
@@ -1395,6 +1470,16 @@ Items: {
 					命中后回复潜行值并向反方向发射剑气
 					不消耗潜行值并且无法产生潜伏攻击
 					'''
+			}
+
+			IchorSpearLegacy: {
+				// DisplayName: Ichor Spear Legacy
+				// Tooltip: ""
+			}
+
+			SpearofDestinyLegacy: {
+				// DisplayName: Spearof Destiny Legacy
+				// Tooltip: ""
 			}
 		}
 	}
@@ -1684,9 +1769,19 @@ Items: {
 			'''
 	}
 
-	ExplosiveShells: {
-		DisplayName: 爆炸散弹[Legacy]
-		Tooltip: ""
+	Magnum: {
+		DisplayName: 马格南[Legacy]
+		Tooltip:
+			'''
+			以马格南弹为弹药
+			Boss战限制只能发射三发弹药
+			每颗子弹附加3%目标生命值的伤害
+			'''
+	}
+
+	GoldenGun: {
+		DisplayName: 灵液枪[Legacy]
+		Tooltip: 发射一束以直线飞行的灵液
 	}
 
 	GrenadeRounds: {
@@ -1699,57 +1794,6 @@ Items: {
 		Tooltip: ""
 	}
 
-	Magnum: {
-		DisplayName: 马格南[Legacy]
-		Tooltip:
-			'''
-			以马格南弹为弹药
-			Boss战限制只能发射三发弹药
-			每颗子弹附加3%目标生命值的伤害
-			'''
-	}
-
-	Materials: {
-		AuricBarold: {
-			DisplayName: 圣金源锭[Legacy]
-			Tooltip: 散发出永恒的璀璨金光
-		}
-	}
-
-	DraedonsForgeold: {
-		DisplayName: 嘉登熔炉[Legacy]
-		Tooltip:
-			'''
-			由无尽能源驱动的脉冲格纳米锻造厂
-			具有大部分主要合成站的功能
-			可以视作嘉登熔炉与星宇砧
-			'''
-	}
-
-	LeadWizard: {
-		DisplayName: 巫师之祸[Legacy]
-		Tooltip:
-			'''
-			有些东西不对劲...
-			33%几率不消耗弹药
-			对近距离敌怪射击时造成额外伤害
-			'''
-	}
-
-	ProporsePistol: {
-		DisplayName: 守恒[Legacy]
-		Tooltip: 发射蓝色弹射能量弹
-	}
-
-	RaidersGlory: {
-		DisplayName: 游骑兵的荣耀[Legacy]
-		Tooltip:
-			'''
-			发射高速的灵液箭
-			令怪物掉落更多的钱
-			'''
-	}
-
 	Bazooka: {
 		DisplayName: 巴祖卡[Legacy]
 		Tooltip:
@@ -1758,6 +1802,11 @@ Items: {
 			Boss战限制只能发射两发弹药
 			每颗子弹附加6.8%目标生命值的伤害
 			'''
+	}
+
+	ExplosiveShells: {
+		DisplayName: 爆炸散弹[Legacy]
+		Tooltip: ""
 	}
 
 	ElephantKiller: {
@@ -1790,9 +1839,50 @@ Items: {
 			'''
 	}
 
-	GoldenGun: {
-		DisplayName: 灵液枪[Legacy]
-		Tooltip: 发射一束以直线飞行的灵液
+	LeadWizard: {
+		DisplayName: 巫师之祸[Legacy]
+		Tooltip:
+			'''
+			有些东西不对劲...
+			33%几率不消耗弹药
+			对近距离敌怪射击时造成额外伤害
+			'''
+	}
+
+	RaidersGlory: {
+		DisplayName: 游骑兵的荣耀[Legacy]
+		Tooltip:
+			'''
+			发射高速的灵液箭
+			令怪物掉落更多的钱
+			'''
+	}
+
+	ProporsePistol: {
+		DisplayName: 守恒[Legacy]
+		Tooltip: 发射蓝色弹射能量弹
+	}
+
+	Materials: {
+		AuricBarold: {
+			DisplayName: 圣金源锭[Legacy]
+			Tooltip: 散发出永恒的璀璨金光
+		}
+	}
+
+	DraedonsForgeold: {
+		DisplayName: 嘉登熔炉[Legacy]
+		Tooltip:
+			'''
+			由无尽能源驱动的脉冲格纳米锻造厂
+			具有大部分主要合成站的功能
+			可以视作嘉登熔炉与星宇砧
+			'''
+	}
+
+	ArkoftheElementsold: {
+		DisplayName: 元素方舟[Legacy]
+		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 	}
 
 	AstralArcanum: {
@@ -1806,6 +1896,51 @@ Items: {
 			在debuff时也能提供生命恢复
 			按[KEY]切换传送 UI
 			'''
+	}
+
+	ReaverCap: {
+		// DisplayName: Reaver Cap
+		// Tooltip: ""
+	}
+
+	ReaverCuisses: {
+		// DisplayName: Reaver Cuisses
+		// Tooltip: ""
+	}
+
+	ReaverHelm: {
+		// DisplayName: Reaver Helm
+		// Tooltip: ""
+	}
+
+	ReaverHelmet: {
+		// DisplayName: Reaver Helmet
+		// Tooltip: ""
+	}
+
+	ReaverMask: {
+		// DisplayName: Reaver Mask
+		// Tooltip: ""
+	}
+
+	ReaverScaleMail: {
+		// DisplayName: Reaver Scale Mail
+		// Tooltip: ""
+	}
+
+	ReaverVisage: {
+		// DisplayName: Reaver Visage
+		// Tooltip: ""
+	}
+
+	Test: {
+		DisplayName: 测试剑
+		Tooltip: DA★ZE
+	}
+
+	FabstaffOld: {
+		DisplayName: 绝学法杖[Legacy]
+		Tooltip: 发射一道在接近敌人时会自动分裂的弹射光束
 	}
 
 	TerraRay: {
@@ -1829,28 +1964,14 @@ Items: {
 			'''
 	}
 
-	Test: {
-		DisplayName: 测试剑
-		Tooltip: DA★ZE
+	Animus: {
+		// DisplayName: Animus
+		// Tooltip: ""
 	}
 
-	ArkoftheElementsold: {
-		DisplayName: 元素方舟[Legacy]
-		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
-	}
-
-	GodSlayerHeadMagicold: {
-		DisplayName: 弑神者面罩[Legacy]
-		Tooltip:
-			'''
-			增加14%魔法伤害和14%魔法暴击率
-			+100最大魔力值并减少17%魔力消耗
-			'''
-	}
-
-	FabstaffOld: {
-		DisplayName: 绝学法杖[Legacy]
-		Tooltip: 发射一道在接近敌人时会自动分裂的弹射光束
+	BladeofEnmity: {
+		// DisplayName: Bladeof Enmity
+		// Tooltip: ""
 	}
 
 	TemporalUmbrellaOld: {
@@ -1865,13 +1986,73 @@ Items: {
 			'''
 	}
 
-	Animus: {
-		// DisplayName: Animus
+	GrandGelatinLegacy: {
+		// DisplayName: Grand Gelatin Legacy
 		// Tooltip: ""
 	}
 
-	BladeofEnmity: {
-		// DisplayName: Bladeof Enmity
+	MageWulfrumHoodLegacy: {
+		// DisplayName: Mage Wulfrum Hood Legacy
+		// Tooltip: ""
+	}
+
+	MeleeWulfrumHelmLegacy: {
+		// DisplayName: Melee Wulfrum Helm Legacy
+		// Tooltip: ""
+	}
+
+	RangedWulfrumHeadgearLegacy: {
+		// DisplayName: Ranged Wulfrum Headgear Legacy
+		// Tooltip: ""
+	}
+
+	SummonerWulfrumHelmetLegacy: {
+		// DisplayName: Summoner Wulfrum Helmet Legacy
+		// Tooltip: ""
+	}
+
+	ThrowerWulfrumMaskLegacy: {
+		// DisplayName: Thrower Wulfrum Mask Legacy
+		// Tooltip: ""
+	}
+
+	WulfrumArmorLegacy: {
+		// DisplayName: Wulfrum Armor Legacy
+		// Tooltip: ""
+	}
+
+	WulfrumLeggingsLegacy: {
+		// DisplayName: Wulfrum Leggings Legacy
+		// Tooltip: ""
+	}
+
+	AncientXerocCuisses: {
+		// DisplayName: Ancient Xeroc Cuisses
+		// Tooltip: ""
+	}
+
+	AncientXerocMask: {
+		// DisplayName: Ancient Xeroc Mask
+		// Tooltip: ""
+	}
+
+	AncientXerocPlateMail: {
+		// DisplayName: Ancient Xeroc Plate Mail
+		// Tooltip: ""
+	}
+
+	WulfrumAxe: {
+		// DisplayName: Wulfrum Axe
+		// Tooltip: ""
+	}
+
+	WulfrumHammer: {
+		// DisplayName: Wulfrum Hammer
+		// Tooltip: ""
+	}
+
+	WulfrumPickaxe: {
+		// DisplayName: Wulfrum Pickaxe
 		// Tooltip: ""
 	}
 }
@@ -1879,17 +2060,24 @@ Items: {
 Projectiles: {
 	Magic: {
 		CIVividBeam.DisplayName: 耀界光束
-		BloodRayold.DisplayName: 屠杀射线
 		InfernadoFriendlyold.DisplayName: 地狱龙卷
 		InfernadoMarkFriendlyold.DisplayName: 地狱龙卷标记
 		SparkInfernalold.DisplayName: 地狱火花
+		BloodRayold.DisplayName: 屠杀射线
+		NightOrbold.DisplayName: 永夜光球
+		NightsRayBeamold.DisplayName: 永夜射线
+		// CISporeGas.DisplayName: C I Spore Gas
+		// CISporeGas2.DisplayName: C I Spore Gas2
+		// CISporeGas3.DisplayName: C I Spore Gas3
 		AncientStarCI.DisplayName: 远古之光
 		ElementalBeam.DisplayName: 元素射线
 		ElementalBeamMain.DisplayName: 元素射线
 		NightBoltold.DisplayName: 永夜光束
-		NightOrbold.DisplayName: 永夜光球
-		NightsRayBeamold.DisplayName: 永夜射线
 		TerraBeamMain.DisplayName: 泰拉光束
+		// ReaverOrbMark.DisplayName: Reaver Orb Mark
+		// ReaverBeam.DisplayName: Reaver Beam
+		// HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
+		// VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -1930,6 +2118,9 @@ Projectiles: {
 		TrueNightsStabberProj.DisplayName: 真·永夜短剑
 		ExoJet.DisplayName: 星流射流
 		// ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
+		// SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
+		// SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
+		// SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
 	}
 
 	ElementBall.DisplayName: 元素之球
@@ -1995,6 +2186,8 @@ Projectiles: {
 		SupernovaBombold.DisplayName: 超新星爆炸
 		SupernovaHoming.DisplayName: 星流能量
 		SupernovaSpike.DisplayName: 星流火花
+		// IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
+		// SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
 	}
 
 	Quasar2.DisplayName: 类星体
@@ -2015,15 +2208,17 @@ Projectiles: {
 	}
 
 	TheDeadlyMicrobeProjectile.DisplayName: 腐烂生物
-	BloodBolt.DisplayName: 血腥射线
-	BloodOrb.DisplayName: 血腥光球
-	ProBolt.DisplayName: 闪电箭
 	SylvanSlash.DisplayName: 林海倾绝刃
 	SylvanSlashAttack.DisplayName: 林海剑气
-	ExplosiveShotgunShell.DisplayName: 爆裂散弹
-	GrenadeRound.DisplayName: 榴弹片
 	MagnumRound.DisplayName: 马格南弹
 	GoldenGunProj.DisplayName: 灵液滴
+	GrenadeRound.DisplayName: 榴弹片
+	ExplosiveShotgunShell.DisplayName: 爆裂散弹
+	ProBolt.DisplayName: 闪电箭
+	BloodBolt.DisplayName: 血腥射线
+	BloodOrb.DisplayName: 血腥光球
+	// MiniRocket.DisplayName: Mini Rocket
+	// reaverRangedRocketMark.DisplayName: reaver Ranged Rocket Mark
 	ElementalBolt.DisplayName: 元素射线
 	ElementalBolt2.DisplayName: 元素射线
 	ElementalBoltVortex.DisplayName: 元素标记
@@ -2033,6 +2228,9 @@ Projectiles: {
 	ElementalOrbVortex.DisplayName: 元素光球
 	ElementalRayMarkStar.DisplayName: 元素标记
 	ElementalRayMarkVortex.DisplayName: 元素标记
+	// FabBoltOld.DisplayName: Fab Bolt Old
+	// FabOrbOld.DisplayName: Fab Orb Old
+	// FabRayOld.DisplayName: Fab Ray Old
 	TerraBeam.DisplayName: 泰拉光束
 	TerraBolt.DisplayName: 泰拉光束
 	TerraBolt2.DisplayName: 泰拉光束
@@ -2042,9 +2240,6 @@ Projectiles: {
 	ExoboomoldRanged.DisplayName: 星流爆破
 	ExoboompersistentoldRanged.DisplayName: 星流爆破
 	ExoGunBlastsplit.DisplayName: 星流爆炸
-	// FabBoltOld.DisplayName: Fab Bolt Old
-	// FabOrbOld.DisplayName: Fab Orb Old
-	// FabRayOld.DisplayName: Fab Ray Old
 	// MagicAxeOld.DisplayName: Magic Axe Old
 	// MagicBatOld.DisplayName: Magic Bat Old
 	// MagicBirdOld.DisplayName: Magic Bird Old
@@ -2053,12 +2248,18 @@ Projectiles: {
 	// MagicHatOld.DisplayName: Magic Hat Old
 	// MagicRifleOld.DisplayName: Magic Rifle Old
 	// MagicUmbrellaOld.DisplayName: Magic Umbrella Old
+	// ReaverBlast.DisplayName: Reaver Blast
+	// ReaverOrbOld.DisplayName: Reaver Orb Old
 }
 
 Configs: {
 	CalamityInheritanceConfig: {
 		DisplayName: Calamity Inheritance 设置
-		Headers.Gameplay: 游戏设置
+
+		Headers: {
+			Gameplay: 游戏设置
+			// Texture: Texture Header
+		}
 
 		ElementalQuiversplit: {
 			Label: "[i:CalamityMod/ElementalQuiver]元素箭袋分裂"
@@ -2123,6 +2324,11 @@ Configs: {
 				开启后为传奇武器添加合成表
 				[c/FF0000:（此选项需要重加载）]
 				'''
+		}
+
+		WulfumTexture: {
+			// Label: Wulfum Texture
+			// Tooltip: ""
 		}
 	}
 }

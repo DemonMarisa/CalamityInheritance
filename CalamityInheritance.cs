@@ -23,6 +23,7 @@ using CalamityInheritance.UI;
 using CalamityMod.UI;
 using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Texture;
 
 namespace CalamityInheritance
 {
@@ -47,6 +48,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
+            CalamityInheritanceTexture.LoadTexture();
         }
         public void LoadClient()
         {
@@ -64,6 +66,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
+            CalamityInheritanceTexture.UnloadTexture();
             Instance = null;
             base.Unload();
         }

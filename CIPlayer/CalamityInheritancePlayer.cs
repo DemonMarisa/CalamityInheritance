@@ -25,6 +25,9 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Items.Accessories;
 using CalamityMod.World;
 using CalamityInheritance.UI;
+using Terraria.GameContent;
+using CalamityInheritance.Content.Items.Armor.Wulfum;
+using CalamityInheritance.Texture;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -43,6 +46,7 @@ namespace CalamityInheritance.CIPlayer
         public bool projRef = false;
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
+        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -165,7 +169,34 @@ namespace CalamityInheritance.CIPlayer
         public static int auricsilvaReviveDuration = 600;
         public int auricsilvaCountdown = auricsilvaReviveDuration;
         #endregion
+        #region Reaver
+        //永恒套
+        public bool reaverRogueExProj = false;
+        //盗贼永恒套的套装奖励
+        public bool reaverMeleeBlast = false;
+        //战士永恒套的套装奖励
+        public int reaverBlastCooldown = 0;
+        //战士永恒套爆炸CD
+        public bool reaverMeleeRage = false;
+        //战士永恒套怒气
+        public bool reaverSummonerOrb = false;
+        public bool reaverSummoner = false;
+        //召唤永恒套的套装奖励
+        public bool reaverMageBurst = false;
+        //法师永恒套的套装奖励
+        public int reaverBurstCooldown = 0;
+        // 法师永恒套内置的弹幕CD
+        public bool reaverMagePower = false;
+        //法师永恒套追加的一个击发式buff
+        public bool reaverRangedRocket = false;
+        //射手永恒套的套装奖励
+        public bool canFireReaverRangedRocket = false;
+        #endregion
         public bool test = false;
+        #region AncientXeroc
+        public bool AncientXerocMadness = false;
+        //xeroc套装 
+        #endregion
         #endregion
         #region Summon
         public bool MagicHatOld = false;
@@ -199,6 +230,7 @@ namespace CalamityInheritance.CIPlayer
             projRef = false;
             AstralBulwark = false;
             astralArcanum = false;
+            badgeofBravery = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -275,6 +307,17 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             auricsilvaset = false;
             #endregion
+            #region Reaver
+            reaverMeleeBlast = false;
+            reaverRangedRocket = false;
+            reaverMageBurst = false;
+            reaverMeleeRage = false;
+            reaverMagePower = false;
+            reaverSummoner = false;
+            #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
+            #endregion
             test = false;
             #endregion
             CIDashID = string.Empty;
@@ -283,6 +326,20 @@ namespace CalamityInheritance.CIPlayer
             #region Summon
             MagicHatOld = false;
             MidnnightSunBuff = false;
+            reaverSummonerOrb = false;
+            #endregion
+            #region Texture
+            if (TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] != null)
+            {
+                if(CalamityInheritanceConfig.Instance.WulfumTexture == true)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] = CalamityInheritanceTexture.WulfumNewBody;
+                }
+                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] = CalamityInheritanceTexture.WulfumOldBody;
+                }
+            }
             #endregion
         }
         #endregion
@@ -327,6 +384,17 @@ namespace CalamityInheritance.CIPlayer
             aurichasSilvaEffect = false;
             auricsilvaCountdown = auricsilvaReviveDuration;
             CIsilvaCountdown = CIsilvaReviveDuration;
+            #endregion
+            #region Reaver
+            reaverMeleeBlast = false;
+            reaverBlastCooldown = 0;
+            reaverMageBurst = false;
+            reaverBurstCooldown = 0;
+            reaverRangedRocket = false;
+            reaverSummoner = false;
+            #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
             #endregion
             #endregion
 
@@ -509,7 +577,7 @@ namespace CalamityInheritance.CIPlayer
 
             #region DashEffects
 
-                if (!string.IsNullOrEmpty(DeferredDashID))
+            if (!string.IsNullOrEmpty(DeferredDashID))
             {
                 CIDashID = DeferredDashID;
                 DeferredDashID = string.Empty;
@@ -656,6 +724,20 @@ namespace CalamityInheritance.CIPlayer
                     Player.lifeRegen = 0;
             }
         }
+        #endregion
+
+        #region MeleeEffects
+        public override void MeleeEffects(Item item, Rectangle hitbox)
+        {
+            if (reaverMeleeBlast) //战士永恒套的近战粒子效果,注意这一效果将同样应用在召唤套装上
+            {
+                if (Main.rand.NextBool(3))
+                {
+                    Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.GreenFairy, Player.velocity.X * 0.2f + (float)(Player.direction * 3), Player.velocity.Y * 0.2f, 100, default, 0.75f);
+                }
+            }
+        }
+
         #endregion
     }
 }

@@ -1,4 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
@@ -81,6 +84,18 @@ namespace CalamityInheritance.Content.Items
                         bloodsplosionDamage = player.ApplyArmorAccDamageBonusesTo(bloodsplosionDamage);
 
                         Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);
+                    }
+                }
+            }
+
+            if (modPlayer.reaverRangedRocket && modPlayer.canFireReaverRangedRocket)
+            {
+                if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
+                {
+                    modPlayer.canFireReaverRangedRocket = false;
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        Projectile.NewProjectile(source, position, velocity* 0.001f, ModContent.ProjectileType<reaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
                     }
                 }
             }

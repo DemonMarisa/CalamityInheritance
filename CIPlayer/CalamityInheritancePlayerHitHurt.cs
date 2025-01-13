@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.Buffs.Melee;
 using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
@@ -272,6 +273,11 @@ namespace CalamityInheritance.CIPlayer
                         Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
                     }
                 }
+            }
+
+            if (reaverMeleeBlast) //受伤后提供战士永恒套怒气buff
+            {
+                Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
             }
         }
         #endregion

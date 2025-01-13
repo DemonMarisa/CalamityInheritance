@@ -133,16 +133,15 @@ namespace CalamityInheritance
             AMRextraProjList = new List<int>
             {
                 ProjectileType<GodSlayerShrapnelRound>(),
+                ProjectileType<GodSlayerShrapnel>(),
                 ProjectileType<BloodflareSoulold>(),
                 ProjectileType<BloodflareSoul>(),
                 ProjectileType<BloodBomb>(),
                 ProjectileType<BloodBombExplosion>(),
+                ProjectileType<TarraEnergy>(),
             };
         }
-        public static void AddLists()
-        {
 
-        }
         public static void UnloadLists()
         {
             rangedProjectileExceptionList = null;

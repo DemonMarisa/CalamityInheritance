@@ -23,6 +23,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Summon.SmallAresArms;
+using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -36,14 +37,14 @@ namespace CalamityInheritance.Content.Items
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useTurn = true;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 42;
             Item.value = Item.buyPrice(0, 4, 0, 0);
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<BiomeOrb>();
+            Item.shoot = ModContent.ProjectileType<CISporeGas>();
             Item.shootSpeed = 12f;
         }
         public override bool? UseItem(Player player)
@@ -54,12 +55,7 @@ namespace CalamityInheritance.Content.Items
 
             return false;
         }
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            Vector2 targetPosition = Main.MouseWorld;
-            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 0);
-            return false;
-        }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))

@@ -23,6 +23,9 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using Terraria.WorldBuilding;
 using CalamityMod.Balancing;
 using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
+using CalamityInheritance.Buffs.Mage;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityMod.Projectiles.Boss;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -222,6 +225,60 @@ namespace CalamityInheritance.CIPlayer
             {
                 titanBoost = 600;
             }
+            #region ReaverSets
+            #region ReaverMage
+            //法师永恒套的套装效果
+
+            CalamityInheritancePlayer reaverMagePlayer = Main.player[projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
+            var reaverMage = projectile.GetSource_FromThis();
+            if (Main.player[projectile.owner].CalamityInheritance().reaverMageBurst)
+            {
+                if (reaverMageBurst) //击发时提供法术增强buff
+                {
+                    Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
+                }
+
+                if (reaverBurstCooldown <= 0)
+                {
+                    int[] projectileTypes = { ModContent.ProjectileType<CISporeGas>(), ModContent.ProjectileType<CISporeGas2>(), ModContent.ProjectileType<CISporeGas3>() };
+                    float baseAngleIncrement = 2 * MathHelper.Pi / 16;
+                    float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
+                    //好像这样伤害还挺低的但我也不知道该不该调整了
+                    int newDamage = Player.ApplyArmorAccDamageBonusesTo(CalamityUtils.DamageSoftCap(15 + 0.15 * projectile.damage, 30));
+
+                    for (int sporecounts = 0; sporecounts < 16; sporecounts++)
+                    {
+                        float angle = sporecounts * baseAngleIncrement + randomAngleOffset;
+                        Vector2 direction = new((float)Math.Cos(angle), (float)Math.Sin(angle));
+                        int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
+                        float randomSpeed = Main.rand.NextFloat(2f, 4f);
+                        Projectile.NewProjectile(source, target.Center, direction * randomSpeed, randomProjectileType, newDamage, projectile.knockBack);
+                    }
+                    target.AddBuff(BuffID.Poisoned, 120);
+                    reaverBurstCooldown = 90;
+                }
+            }
+            #endregion
+            #region ReaverMelee
+            //永恒套的近战爆炸攻击
+            var meleeReaverSrc = projectile.GetSource_FromThis();
+            if (Main.player[projectile.owner].CalamityInheritance().reaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
+            {
+                int BlastDamage = (int)(projectile.damage * 0.4);
+                if (BlastDamage > 2500)
+                {
+                    BlastDamage = 2500;
+                }
+                if (reaverBlastCooldown <= 0)
+                {
+                    SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, projectile.Center);
+                    Projectile.NewProjectile(meleeReaverSrc, projectile.Center, Vector2.Zero, ModContent.ProjectileType<ReaverBlast>(),
+                                            BlastDamage, 0.15f, Player.whoAmI);
+                    reaverBlastCooldown = 10;
+                }
+            }
+            #endregion
+            #endregion
         }
         #endregion
 

@@ -78,5 +78,9 @@ namespace CalamityInheritance
         [DefaultValue(false)]
         public bool LegendaryitemsRecipes { get; set; }
         #endregion
+        [Header("Texture")]
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool WulfumTexture { get; set; }
     }
 }

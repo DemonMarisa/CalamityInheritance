@@ -48,6 +48,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
             recipe.AddTile(ModContent.TileType<DraedonsForge>());
             recipe.Register();
+
+            Recipe recipe1 = CreateRecipe();
+            recipe1.AddIngredient(ModContent.ItemType<GalileoGladius>());
+            recipe1.AddIngredient(ModContent.ItemType<CosmicShiv>());
+            recipe1.AddIngredient(ModContent.ItemType<Lucrecia>());
+            recipe1.AddIngredient(ModContent.ItemType<MiracleMatter>());
+            recipe1.AddTile(ModContent.TileType<DraedonsForge>());
+            recipe1.Register();
         }
     }
 }

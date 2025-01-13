@@ -2,8 +2,11 @@
 using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.Wulfum;
+using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
@@ -58,6 +61,7 @@ using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
+using Microsoft.CodeAnalysis.Simplification;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -83,9 +87,71 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<EutrophicRay>())
                 npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);
 
+            LeadingConditionRule postPolter = npcLoot.DefineConditionalDropSet(DropHelper.PostPolter());
+            if (npc.type == ModContent.NPCType<EidolonWyrmHead>())
+                postPolter.Add(ModContent.ItemType<SoulEdge>(), 1);
+
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumDrone>())
+            {
+                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+            }
+
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumGyrator>())
+            {
+                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+            }
+
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumHovercraft>())
+            {
+                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+            }
+
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumAmplifier>())
+            {
+                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+            }
+
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumRover>())
+            {
+                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
+                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+            }
+
             #region ModBoss
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(), 1);
+            }
             if (npc.type == ModContent.NPCType<Crabulon>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<HiveMind>())
@@ -94,8 +160,10 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ModContent.ItemType<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
 
             if (npc.type == ModContent.NPCType<SlimeGodCore>())
+            {
                 npcLoot.Add(ModContent.ItemType<PurifiedJam>(), 1);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedSlimeGod, ModContent.ItemType<KnowledgeSlimeGod>(), desc: DropHelper.FirstKillText);
+            }
 
             if (npc.type == ModContent.NPCType<Cryogen>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ModContent.ItemType<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
@@ -283,6 +351,7 @@ namespace CalamityInheritance.NPCs
                 case NPCID.MoonLordCore:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientXerocCuisses>(), 25, 15));
                     break;
                 #endregion
             }

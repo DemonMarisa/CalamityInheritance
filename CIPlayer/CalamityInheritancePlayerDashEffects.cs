@@ -172,8 +172,8 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
                 
-                //if (HasCustomDash)
-                if (CIDashDelay < 0)
+                if (HasCustomDash)
+                //if (CIDashDelay < 0)
                 {
                     Player.vortexStealthActive = false;
                     // Dash delay depends on the type of dash used.
@@ -257,6 +257,7 @@ namespace CalamityInheritance.CIPlayer
                             return;
                         }
                     }
+                    
                 }
             }
             
@@ -273,6 +274,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            
         }
         
         public bool HandleHorizontalDash(out DashDirection direction)

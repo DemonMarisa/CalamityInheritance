@@ -63,6 +63,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             recipe.AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4);
             recipe.AddTile(ModContent.TileType<CosmicAnvil>());
             recipe.Register();
+
+            Recipe recipe1 = CreateRecipe();
+            recipe1.AddIngredient(ItemID.MagicQuiver);
+            recipe1.AddIngredient(ModContent.ItemType<DaedalusEmblem>());
+            recipe1.AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4);
+            recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
+            recipe1.Register();
         }
     }
 }

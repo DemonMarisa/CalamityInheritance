@@ -40,6 +40,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<TerraShiv>().
+                AddIngredient(ItemID.LunarBar, 5).
+                AddIngredient<LifeAlloy>(5).
+                AddIngredient<GalacticaSingularity>(5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
                 AddIngredient(ItemID.PiercingStarlight).
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient<LifeAlloy>(5).

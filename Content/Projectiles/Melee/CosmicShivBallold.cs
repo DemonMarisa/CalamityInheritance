@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 173, (float)(Projectile.direction * 2), 0f, 115, Color.White, 1.3f);
+                    int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, (float)(Projectile.direction * 2), 0f, 115, Color.White, 1.3f);
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity *= 0f;
                 }

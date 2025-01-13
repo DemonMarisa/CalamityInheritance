@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalamityInheritance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ab0272e82101966f634066ae720adf7430b608d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea0d8bdcb64a73ab32029872b487a5b4da28d7a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalamityInheritance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalamityInheritance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

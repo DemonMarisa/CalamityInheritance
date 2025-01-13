@@ -45,10 +45,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 for (int i = 0; i < Main.rand.Next(2, 4); i++) //2-3 stars
                 {
                     Vector2 randVector = Vector2.One.RotatedByRandom(Math.PI * 2.0) * 0.7f;
-                    Dust.NewDust(Projectile.Center, 4, 4, 58, randVector.X, randVector.Y, 0, default, 1f);
+                    Dust.NewDust(Projectile.Center, 4, 4, DustID.Enchanted_Pink, randVector.X, randVector.Y, 0, default, 1f);
                 }
             }
             Projectile.rotation += Projectile.velocity.Length() / 19f;
+            CalamityUtils.HomeInOnNPC(Projectile, true, 400f, 14f, 0f);
         }
 
         public override bool PreDraw(ref Color lightColor)
