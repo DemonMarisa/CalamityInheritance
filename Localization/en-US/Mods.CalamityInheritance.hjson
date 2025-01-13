@@ -258,6 +258,28 @@ Items: {
 			DisplayName: Voidof Extinction Legacy
 			Tooltip: ""
 		}
+
+		Wings: {
+			FasterAuricTracers: {
+				DisplayName: Faster Auric Tracers
+				Tooltip: ""
+			}
+
+			FasterGodSlayerTracers: {
+				DisplayName: Faster God Slayer Tracers
+				Tooltip: ""
+			}
+
+			FasterLunarTracers: {
+				DisplayName: Faster Lunar Tracers
+				Tooltip: ""
+			}
+		}
+
+		DeificAmuletLegacy: {
+			DisplayName: Deific Amulet Legacy
+			Tooltip: ""
+		}
 	}
 
 	AsgardsValorold: {

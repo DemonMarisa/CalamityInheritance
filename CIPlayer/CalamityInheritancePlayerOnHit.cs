@@ -224,6 +224,7 @@ namespace CalamityInheritance.CIPlayer
             }
             
         #region Xeroc
+        // if()
         // if (Main.player[(int)Player.FindClosest(projectile.position, projectile.width, projectile.height)].GetModPlayer<>().xerocSet)
         //     {
         //         int num = projectile.damage / 2;

@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Main.rand.NextBool(4))
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 
-                246, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+                DustID.GoldCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             for (int i = 0; i <= 10; i++)
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 
-                246, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
+                DustID.GoldCoin, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
             }
         }
 

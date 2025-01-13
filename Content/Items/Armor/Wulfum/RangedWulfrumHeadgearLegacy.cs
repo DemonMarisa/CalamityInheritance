@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
@@ -19,8 +20,8 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 20000;
-            Item.rare = 1;
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.rare = ItemRarityID.Blue;
             Item.defense = 2; //7
         }
 
@@ -31,8 +32,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "+3 defense\n" +
-                "+5 defense when below 50% life";
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             player.statDefense += 3; //10
             if (player.statLife <= (player.statLifeMax2 * 0.5f))
             {

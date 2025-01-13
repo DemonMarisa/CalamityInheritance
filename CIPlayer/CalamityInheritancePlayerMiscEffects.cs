@@ -33,7 +33,6 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-
         public override void PostUpdateMiscEffects()
         {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
@@ -55,6 +54,7 @@ namespace CalamityInheritance.CIPlayer
         public void OtherBuffEffects()
         {
             CalamityPlayer modPlayer = Player.Calamity();
+            var modplayer1 = Player.CalamityInheritance();
             if (armorShattering)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
@@ -161,11 +161,36 @@ namespace CalamityInheritance.CIPlayer
             }
             if (badgeofBravery) //如果启用
             {
-                if(modPlayer.tarraMelee) 
+                if(modPlayer.tarraMelee && !modPlayer.auricSet) //金源套不再能吃到勇气勋章的效果
                 {
                     Player.GetCritChance<MeleeDamageClass>() += 10;
                     Player.GetDamage<MeleeDamageClass>() += 0.10f;
                     Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
+                }
+            }
+            if (deificAmuletEffect)
+            {
+                Player.pStone = true;
+                Player.longInvince = true;
+                Player.lifeRegen += 1; //生命恢复
+            }
+            if (RoDPaladianShieldActive) //如果佩戴壁垒
+            {
+                // 符合条件就启用圣骑士盾效果
+                if (Player.statLife > Player.statLifeMax2 * 0.25f)
+                {
+                    Player.hasPaladinShield = true;
+                    if (Player.whoAmI != Main.myPlayer && Player.miscCounter % 10 == 0)
+                    {
+                        int myPlayer = Main.myPlayer;
+                        if (Main.player[myPlayer].team == Player.team && Player.team != 0)
+                        {
+                            float teamPlayerXDist = Player.position.X - Main.player[myPlayer].position.X;
+                            float teamPlayerYDist = Player.position.Y - Main.player[myPlayer].position.Y;
+                            if ((float)Math.Sqrt(teamPlayerXDist * teamPlayerXDist + teamPlayerYDist * teamPlayerYDist) < 800f)
+                                Main.player[myPlayer].AddBuff(BuffID.PaladinsShield, 20);
+                        }
+                    }
                 }
             }
         }

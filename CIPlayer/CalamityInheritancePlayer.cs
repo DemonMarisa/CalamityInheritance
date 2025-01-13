@@ -44,6 +44,9 @@ namespace CalamityInheritance.CIPlayer
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
         public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
+        public bool fasterAuricTracers = false; //天界跑鞋无敌帧
+        public bool deificAmuletEffect = false;  //神圣护符的效果
+        public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -202,6 +205,9 @@ namespace CalamityInheritance.CIPlayer
             PsychoticAmulet = false;
             YharimsInsignia = false;
             darkSunRingold = false;
+            fasterAuricTracers = false; //天界跑鞋无敌帧
+            deificAmuletEffect = false; //神圣护符的效果
+            RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾
             projRef = false;
             AstralBulwark = false;
             astralArcanum = false;
@@ -408,9 +414,21 @@ namespace CalamityInheritance.CIPlayer
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {
             Player.Calamity().GemTechState.PlayerOnHitEffects((int)hurtInfo.Damage);
+
+            #region ImmnueFrames
             bool hardMode = Main.hardMode;
             if (Player.whoAmI == Main.myPlayer)
             {
+                int immuneFramesToAdd = 0; //用于存放无敌帧延长的值
+                if(fasterAuricTracers && hurtInfo.Damage >200) //天界跑鞋的无敌帧加成
+                {
+                    immuneFramesToAdd += 30;
+                }
+
+                Player.AddImmuneTime(Player.immuneTime, immuneFramesToAdd); //没Api文档我也不知道这个具体会怎么起效，看着吧
+
+            #endregion ImmnueFrames
+                
                 if (AstralBulwark)
                 {
                     var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
@@ -479,6 +497,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            
         }
         #endregion
         #region PreUpdate

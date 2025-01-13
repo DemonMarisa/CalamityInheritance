@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
+using Terraria.GameContent.UI;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
@@ -19,8 +21,8 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 20000;
-            Item.rare = 1;
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

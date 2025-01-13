@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -21,8 +22,8 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 425000;
-            Item.rare = 9;
+            Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
+            Item.rare = ItemRarityID.Cyan;
             Item.defense = 27;
         }
 
