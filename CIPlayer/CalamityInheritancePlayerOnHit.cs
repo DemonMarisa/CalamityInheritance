@@ -282,6 +282,7 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
 
+
         #region Debuffs
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
         {

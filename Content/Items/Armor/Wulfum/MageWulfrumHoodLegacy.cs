@@ -2,17 +2,22 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
     [AutoloadEquip(EquipType.Head)]
     public class MageWulfrumHoodLegacy : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+        }
+
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 20000;
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
             Item.rare = ItemRarityID.Blue;
             Item.defense = 1; //6
         }
@@ -24,6 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override void UpdateArmorSet(Player player)
         {
+                
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.statDefense += 3; //9
             player.statManaMax2 += 50; //50魔力值

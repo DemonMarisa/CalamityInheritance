@@ -47,6 +47,14 @@ namespace CalamityInheritance.CIPlayer
         public bool AstralBulwark = false;
         public bool astralArcanum = false;
         public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
+        public bool fasterAuricTracers = false; //天界跑鞋无敌帧
+        public bool deificAmuletEffect = false;  //神圣护符的效果
+        public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
+        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
+        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
+        public bool fasterAuricTracers = false; //天界跑鞋无敌帧
+        public bool deificAmuletEffect = false;  //神圣护符的效果
+        public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -192,6 +200,29 @@ namespace CalamityInheritance.CIPlayer
         //射手永恒套的套装奖励
         public bool canFireReaverRangedRocket = false;
         #endregion
+        #region Reaver
+        //永恒套
+        public bool reaverRogueExProj = false;
+        //盗贼永恒套的套装奖励
+        public bool reaverMeleeBlast = false;
+        //战士永恒套的套装奖励
+        public int reaverBlastCooldown = 0;
+        //战士永恒套爆炸CD
+        public bool reaverMeleeRage = false;
+        //战士永恒套怒气
+        public bool reaverSummonerOrb = false;
+        public bool reaverSummoner = false;
+        //召唤永恒套的套装奖励
+        public bool reaverMageBurst = false;
+        //法师永恒套的套装奖励
+        public int reaverBurstCooldown = 0;
+        // 法师永恒套内置的弹幕CD
+        public bool reaverMagePower = false;
+        //法师永恒套追加的一个击发式buff
+        public bool reaverRangedRocket = false;
+        //射手永恒套的套装奖励
+        public bool canFireReaverRangedRocket = false;
+        #endregion
         public bool test = false;
         #region AncientXeroc
         public bool AncientXerocMadness = false;
@@ -221,12 +252,16 @@ namespace CalamityInheritance.CIPlayer
             if (!CIsponge)
                 ShieldDurabilityMax = 0;
 
+            badgeofBravery = false;
             CIsponge = false;
             CIspongeShieldVisible = false;
             FungalCarapace = false;
             PsychoticAmulet = false;
             YharimsInsignia = false;
             darkSunRingold = false;
+            fasterAuricTracers = false; //天界跑鞋无敌帧
+            deificAmuletEffect = false; //神圣护符的效果
+            RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾
             projRef = false;
             AstralBulwark = false;
             astralArcanum = false;
@@ -318,6 +353,17 @@ namespace CalamityInheritance.CIPlayer
             #region Xeroc
             AncientXerocMadness = false;
             #endregion
+            #region Reaver
+            reaverMeleeBlast = false;
+            reaverRangedRocket = false;
+            reaverMageBurst = false;
+            reaverMeleeRage = false;
+            reaverMagePower = false;
+            reaverSummoner = false;
+            #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
+            #endregion
             test = false;
             #endregion
             CIDashID = string.Empty;
@@ -395,6 +441,17 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Xeroc
             AncientXerocMadness = false;
+            #region Reaver
+            reaverMeleeBlast = false;
+            reaverBlastCooldown = 0;
+            reaverMageBurst = false;
+            reaverBurstCooldown = 0;
+            reaverRangedRocket = false;
+            reaverSummoner = false;
+            #endregion
+            #region Xeroc
+            AncientXerocMadness = false;
+            #endregion
             #endregion
             #endregion
 
@@ -464,9 +521,21 @@ namespace CalamityInheritance.CIPlayer
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {
             Player.Calamity().GemTechState.PlayerOnHitEffects((int)hurtInfo.Damage);
+
+            #region ImmnueFrames
             bool hardMode = Main.hardMode;
             if (Player.whoAmI == Main.myPlayer)
             {
+                int immuneFramesToAdd = 0; //用于存放无敌帧延长的值
+                if(fasterAuricTracers && hurtInfo.Damage >200) //天界跑鞋的无敌帧加成
+                {
+                    immuneFramesToAdd += 30;
+                }
+
+                Player.AddImmuneTime(Player.immuneTime, immuneFramesToAdd); //没Api文档我也不知道这个具体会怎么起效，看着吧
+
+            #endregion ImmnueFrames
+                
                 if (AstralBulwark)
                 {
                     var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
@@ -535,6 +604,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            
         }
         #endregion
         #region PreUpdate

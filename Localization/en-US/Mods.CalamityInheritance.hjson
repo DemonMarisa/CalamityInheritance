@@ -236,16 +236,6 @@ Items: {
 			Tooltip: ""
 		}
 
-		AeroStoneLegacy: {
-			DisplayName: Aero Stone Legacy
-			Tooltip: ""
-		}
-
-		LeviathanAmbergrisLegacy: {
-			DisplayName: Leviathan Ambergris Legacy
-			Tooltip: ""
-		}
-
 		BadgeofBravery: {
 			DisplayName: Badgeof Bravery
 			Tooltip: ""
@@ -256,13 +246,45 @@ Items: {
 			Tooltip: ""
 		}
 
+		YharimsGiftLegacy: {
+			Tooltip: ""
+			DisplayName: Yharims Gift Legacy
+		}
+
+		AeroStoneLegacy: {
+			Tooltip: ""
+			DisplayName: Aero Stone Legacy
+		}
+
+		LeviathanAmbergrisLegacy: {
+			DisplayName: Leviathan Ambergris Legacy
+			Tooltip: ""
+		}
+
 		VoidofExtinctionLegacy: {
 			DisplayName: Voidof Extinction Legacy
 			Tooltip: ""
 		}
 
-		YharimsGiftLegacy: {
-			DisplayName: Yharims Gift Legacy
+		Wings: {
+			FasterAuricTracers: {
+				DisplayName: Faster Auric Tracers
+				Tooltip: ""
+			}
+
+			FasterGodSlayerTracers: {
+				DisplayName: Faster God Slayer Tracers
+				Tooltip: ""
+			}
+
+			FasterLunarTracers: {
+				DisplayName: Faster Lunar Tracers
+				Tooltip: ""
+			}
+		}
+
+		DeificAmuletLegacy: {
+			DisplayName: Deific Amulet Legacy
 			Tooltip: ""
 		}
 	}
@@ -638,27 +660,6 @@ Items: {
 				DisplayName: Ancient Omega Blue Helmet
 				Tooltip: ""
 			}
-
-			AncientOmegaBlueLeggings: {
-				DisplayName: Ancient Omega Blue Leggings
-				Tooltip: ""
-			}
-		}
-	}
-
-	GodSlayerHeadMagicold: {
-		DisplayName: 弑神者面罩[legacy]
-		Tooltip:
-			'''
-			增加14%魔法伤害和14%魔法暴击率
-			+100最大魔力值并减少17%魔力消耗
-			'''
-		SetBonus:
-			'''
-			魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
-			受到致命伤害时会触发弑神复活，此效果有45秒冷却
-			'''
-	}
 
 	Lore: {
 		KnowledgeAquaticScourge: {
@@ -1308,6 +1309,16 @@ Items: {
 				DisplayName: Helium Flash Legacy
 				Tooltip: ""
 			}
+
+			HeliumFlashLegacy: {
+				Tooltip: ""
+				DisplayName: Helium Flash Legacy
+			}
+
+			HeliumFlashOverpowered: {
+				Tooltip: ""
+				DisplayName: Helium Flash Overpowered
+			}
 		}
 
 		Melee: {
@@ -1446,16 +1457,6 @@ Items: {
 					命中后回复潜行值并向反方向发射剑气
 					不消耗潜行值并且无法产生潜伏攻击
 					'''
-			}
-
-			IchorSpearLegacy: {
-				DisplayName: Ichor Spear Legacy
-				Tooltip: ""
-			}
-
-			SpearofDestinyLegacy: {
-				DisplayName: Spearof Destiny Legacy
-				Tooltip: ""
 			}
 		}
 	}
@@ -2005,6 +2006,76 @@ Items: {
 		DisplayName: Wulfrum Pickaxe
 		Tooltip: ""
 	}
+
+	MageWulfrumHoodLegacy: {
+		DisplayName: Mage Wulfrum Hood Legacy
+		Tooltip: ""
+	}
+
+	MeleeWulfrumHelmLegacy: {
+		DisplayName: Melee Wulfrum Helm Legacy
+		Tooltip: ""
+	}
+
+	RangedWulfrumHeadgearLegacy: {
+		DisplayName: Ranged Wulfrum Headgear Legacy
+		Tooltip: ""
+	}
+
+	SummonerWulfrumHelmetLegacy: {
+		DisplayName: Summoner Wulfrum Helmet Legacy
+		Tooltip: ""
+	}
+
+	ThrowerWulfrumMaskLegacy: {
+		DisplayName: Thrower Wulfrum Mask Legacy
+		Tooltip: ""
+	}
+
+	WulfrumArmorLegacy: {
+		DisplayName: Wulfrum Armor Legacy
+		Tooltip: ""
+	}
+
+	WulfrumLeggingsLegacy: {
+		DisplayName: Wulfrum Leggings Legacy
+		Tooltip: ""
+	}
+
+	WulfrumAxe: {
+		DisplayName: Wulfrum Axe
+		Tooltip: ""
+	}
+
+	WulfrumHammer: {
+		DisplayName: Wulfrum Hammer
+		Tooltip: ""
+	}
+
+	WulfrumPickaxe: {
+		DisplayName: Wulfrum Pickaxe
+		Tooltip: ""
+	}
+
+	AncientXerocCuisses: {
+		DisplayName: Ancient Xeroc Cuisses
+		Tooltip: ""
+	}
+
+	AncientXerocMask: {
+		DisplayName: Ancient Xeroc Mask
+		Tooltip: ""
+	}
+
+	AncientXerocPlateMail: {
+		DisplayName: Ancient Xeroc Plate Mail
+		Tooltip: ""
+	}
+
+	GrandGelatinLegacy: {
+		DisplayName: Grand Gelatin Legacy
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -2024,10 +2095,6 @@ Projectiles: {
 		ElementalBeamMain.DisplayName: Elemental Beam Main
 		NightBoltold.DisplayName: Night Boltold
 		TerraBeamMain.DisplayName: Terra Beam Main
-		ReaverOrbMark.DisplayName: Reaver Orb Mark
-		ReaverBeam.DisplayName: Reaver Beam
-		HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
-		VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -2068,9 +2135,6 @@ Projectiles: {
 		TrueNightsStabberProj.DisplayName: 真·永夜短剑
 		ExoJet.DisplayName: 星流射流
 		ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
-		SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
-		SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
-		SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
 	}
 
 	ElementBall.DisplayName: 元素之球
@@ -2129,15 +2193,13 @@ Projectiles: {
 	ExoSpearTrail.DisplayName: 星流匕首
 
 	Rogue: {
-		PhantasmalRuinGhost.DisplayName: 幻影灵魂
-		PhantasmalRuinProjold.DisplayName: 幻魂归墟
-		PhantasmalSoulold.DisplayName: 灵魂
-		PhantomLanceProj.DisplayName: 幻影投矛
-		SupernovaBombold.DisplayName: 超新星爆炸
-		SupernovaHoming.DisplayName: 星流能量
-		SupernovaSpike.DisplayName: 星流火花
-		IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
-		SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
+		PhantasmalRuinGhost.DisplayName: Phantasmal Ruin Ghost
+		PhantasmalRuinProjold.DisplayName: Phantasmal Ruin Projold
+		PhantasmalSoulold.DisplayName: Phantasmal Soulold
+		PhantomLanceProj.DisplayName: Phantom Lance Proj
+		SupernovaBombold.DisplayName: Supernova Bombold
+		SupernovaHoming.DisplayName: Supernova Homing
+		SupernovaSpike.DisplayName: Supernova Spike
 	}
 
 	Quasar2.DisplayName: 类星体

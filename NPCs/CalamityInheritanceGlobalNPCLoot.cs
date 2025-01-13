@@ -2,7 +2,7 @@
 using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
-using CalamityInheritance.Content.Items.Armor.Wulfum;
+using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
@@ -148,10 +148,10 @@ namespace CalamityInheritance.NPCs
 
             #region ModBoss
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
-            {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(), 1);
-            }
+                {
+                    npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                    npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
+                }
             if (npc.type == ModContent.NPCType<Crabulon>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<HiveMind>())
@@ -194,6 +194,7 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeificAmuletLegacy>(), 10, 1, 1));
             }
             if (npc.type == ModContent.NPCType<ProfanedGuardianCommander> ())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
@@ -212,9 +213,14 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<OldDuke>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBoomerDuke, ModContent.ItemType<KnowledgeOldDuke>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ModContent.ItemType<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterGodSlayerTracers>(), 1)); //10%掉落
+            }
             if (npc.type == ModContent.NPCType<Yharon>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+            }
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
             #endregion
@@ -350,10 +356,13 @@ namespace CalamityInheritance.NPCs
                     break;
                 case NPCID.MoonLordCore:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientXerocCuisses>(), 25, 15));
-                    break;
+                    {
+                        npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
+                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterLunarTracers>(), 1));
+                        break;
+                    }
                 #endregion
+
             }
         }
         #endregion

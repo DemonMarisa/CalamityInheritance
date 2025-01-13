@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 20000;
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
             Item.rare = ItemRarityID.Blue;
             Item.defense = 1; //6
         }
@@ -33,6 +34,8 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public override void UpdateArmorSet(Player player)
         {
             CalamityPlayer calp = player.Calamity();
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            calp.wearingRogueArmor = true; 
             player.GetDamage<RogueDamageClass>() += 0.03f; //3%盗贼伤害
             calp.rogueStealthMax += 0.5f; //50潜伏值
             player.setBonus = this.GetLocalizedValue("SetBonus");

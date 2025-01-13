@@ -25,8 +25,8 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityRedBuyPrice;
-            Item.rare = ItemRarityID.Red;
+            Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
+            Item.rare = ItemRarityID.Cyan;
             Item.defense = 20; //71
         }
 

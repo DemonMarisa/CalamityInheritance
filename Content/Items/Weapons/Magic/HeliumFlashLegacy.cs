@@ -30,8 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 500;
-            Item.knockBack = 9.5f;
+            Item.SetWeaponValues(500, 9.5f, 10);
             Item.mana = 15;
             Item.useAnimation = 30;
             Item.useTime = 30;

@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class SoulEdge : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Items.Weapons.Melee";
-        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f };
+        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f};
 
         public override void SetDefaults()
         {
@@ -46,8 +46,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int numShots = 2;
             for (int i = 0; i < numShots; ++i)
             {
-                float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
-                float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
+                float SpeedX = velocity.X + (float)Main.rand.Next(-40, 41) * 0.05f;
+                float SpeedY = velocity.Y + (float)Main.rand.Next(-40, 41) * 0.05f;
                 float ai1 = Main.rand.NextFloat() + 0.5f;
                 // TODO -- unchecked type addition math assumes we can guarantee load order
                 // this is extremely unsafe and if TML optimizes autoloading or asset loading it could fail
@@ -69,12 +69,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
-            AddIngredient<RuinousSoul>(10).
-            AddIngredient<Necroplasm>(10).
-            AddIngredient(ItemID.Ectoplasm, 10).
-            AddIngredient<Voidstone>(10).
-            AddTile(TileID.LunarCraftingStation).
-            Register();
+                AddIngredient<RuinousSoul>(10).
+                AddIngredient<Necroplasm>(10).
+                AddIngredient(ItemID.Ectoplasm, 10).
+                AddIngredient<Voidstone>(10).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }
