@@ -57,12 +57,19 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.MagicQuiver);
-            recipe.AddIngredient(ModContent.ItemType<DaedalusEmblem>());
-            recipe.AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4);
-            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.MagicQuiver).
+                AddIngredient<DaedalusEmblem>().
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe(). 
+                AddIngredient(ItemID.MagicQuiver).
+                AddIngredient<DeadshotBrooch>().
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddTile<CosmicAnvil>().
+                Register(); 
         }
     }
 }
