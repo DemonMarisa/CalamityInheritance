@@ -157,7 +157,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
                 // Uncomment this line for a visual representation of the cone. The dusts are not perfect, but it gives a general idea.
                 Terraria.Dust.NewDustPerfect(Projectile.Center + coneRotation2.ToRotationVector2() * coneLength, DustID.Blood, Vector2.Zero);
-                Terraria.Dust.NewDustPerfect(Projectile.Center, DustID.BloodWater, new Vector2((float)Math.Cos(backOfTheSwing) * -Projectile.ai[0], (float)Math.Sin(backOfTheSwing)) * 5f); // Assumes collisionRotation was not changed
 
                 if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength, coneRotation2, maximumAngle))
                 {

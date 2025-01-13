@@ -13,6 +13,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -33,40 +34,37 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.dAmulet = true;
-            player.longInvince = true;
-            player.pStone = true;
-            player.lifeRegen += 4;
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer1.deificAmuletEffect = true; //启用神圣护符的加成。
+            modPlayer1.RoDPaladianShieldActive = true; //启用帕拉丁盾
+            player.lifeRegen += 3;
 
             if (player.statLife <= player.statLifeMax2 * 0.5)
                 player.AddBuff(BuffID.IceBarrier, 5);
-
             player.noKnockback = true;
-            if (player.statLife > player.statLifeMax2 * 0.25f)
-            {
-                player.hasPaladinShield = true;
-                if (player.whoAmI != Main.myPlayer && player.miscCounter % 10 == 0)
-                {
-                    int myPlayer = Main.myPlayer;
-                    if (Main.player[myPlayer].team == player.team && player.team != 0)
-                    {
-                        float teamPlayerXDist = player.position.X - Main.player[myPlayer].position.X;
-                        float teamPlayerYDist = player.position.Y - Main.player[myPlayer].position.Y;
-                        if ((float)Math.Sqrt(teamPlayerXDist * teamPlayerXDist + teamPlayerYDist * teamPlayerYDist) < 800f)
-                            Main.player[myPlayer].AddBuff(BuffID.PaladinsShield, 20);
-                    }
-                }
-            }
+            
         }
 
         public override void AddRecipes()
         {
-            CreateRecipe().
+            CreateRecipe(). //要考虑转移时期吗bro
                 AddIngredient(ItemID.FrozenShield).
                 AddIngredient<DeificAmulet>().
                 AddIngredient<AuricBar>(5).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.FrozenShield).
+                AddIngredient<DeificAmuletLegacy>().
+                AddIngredient<AuricBar>(5).
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<RampartofDeities>().
                 Register();
         }
     }

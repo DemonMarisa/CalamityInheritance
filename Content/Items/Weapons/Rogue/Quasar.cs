@@ -55,15 +55,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient<LoreAstrumDeus>();
-                recipe1.AddTile(TileID.AncientMythrilBrick);
-                recipe1.Register();
+                CreateRecipe().
+                    AddIngredient<LoreAstrumDeus>().
+                    AddTile(TileID.AncientMythrilBrick).
+                    Register();
 
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient<KnowledgeAstrumDeus>();
-                recipe2.AddTile(TileID.AncientMythrilBrick);
-                recipe2.Register();
+                CreateRecipe().
+                    AddIngredient<KnowledgeAstrumDeus>().
+                    AddTile(TileID.AncientMythrilBrick).
+                    Register();
             }
         }
     }

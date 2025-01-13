@@ -93,16 +93,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float dustRotation = Projectile.rotation + Main.rand.NextFloatDirection() * MathHelper.PiOver2 * 0.7f;
             Vector2 dustPosition = Projectile.Center + dustRotation.ToRotationVector2() * 84f * Projectile.scale;
             Vector2 dustVelocity = (dustRotation + Projectile.ai[0] * MathHelper.PiOver2).ToRotationVector2();
-            if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
+            if (Main.rand.NextFloat() * 3f < Projectile.Opacity)
             {
                 // Original Excalibur color: Color.Gold, Color.White
                 Color dustColor = Color.Lerp(Color.SpringGreen, Color.ForestGreen, Main.rand.NextFloat() * 0.3f);
-                Terraria.Dust coloredDust = Terraria.Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.FireworksRGB, dustVelocity * 1f, 100, dustColor, 0.4f);
+                Terraria.Dust coloredDust = Terraria.Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.GreenTorch, dustVelocity * 1f, 100, dustColor, 0.4f);
                 coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
                 coloredDust.noGravity = true;
             }
 
-            if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
+            if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
             {
                 // Original Excalibur color: Color.White
                 Terraria.Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SpringGreen * Projectile.Opacity, 1.2f * Projectile.Opacity);
@@ -157,7 +157,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
                 // Uncomment this line for a visual representation of the cone. The dusts are not perfect, but it gives a general idea.
                 Terraria.Dust.NewDustPerfect(Projectile.Center + coneRotation2.ToRotationVector2() * coneLength, DustID.Enchanted_Pink, Vector2.Zero);
-                Terraria.Dust.NewDustPerfect(Projectile.Center, DustID.BlueFairy, new Vector2((float)Math.Cos(backOfTheSwing) * -Projectile.ai[0], (float)Math.Sin(backOfTheSwing)) * 5f); // Assumes collisionRotation was not changed
 
                 if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength, coneRotation2, maximumAngle))
                 {
@@ -185,8 +184,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
                 Projectile.owner);
 
+            /*
             // 你也可以在敌人位置生成灰尘效果。这里是一个简单的例子：
             Terraria.Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Blood);
+            */
 
             // 设置目标的受击方向为远离玩家的方向，以确保击退效果的方向正确。
             hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;

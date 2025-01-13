@@ -33,22 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 12f;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenSword);
-            recipe.AddIngredient(ItemID.DirtBlock, 20);
-            recipe.AddIngredient(ItemID.SandBlock, 20);
-            recipe.AddIngredient(ItemID.IceBlock, 20); //intentionally not any ice
-            recipe.AddRecipeGroup("AnyEvilBlock", 20);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 20);
-            recipe.AddIngredient(ItemID.Marble, 20);
-            recipe.AddIngredient(ItemID.Granite, 20);
-            recipe.AddIngredient(ItemID.Hellstone, 20);
-            recipe.AddIngredient(ItemID.Coral, 20);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -56,6 +41,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.WoodenSword).
+                AddIngredient(ItemID.DirtBlock, 20).
+                AddIngredient(ItemID.SandBlock, 20).
+                AddIngredient(ItemID.IceBlock, 20). //intentionally not any ice
+                AddRecipeGroup("AnyEvilBlock", 20).
+                AddIngredient(ItemID.GlowingMushroom, 20).
+                AddIngredient(ItemID.Marble, 20).
+                AddIngredient(ItemID.Granite, 20).
+                AddIngredient(ItemID.Hellstone, 20).
+                AddIngredient(ItemID.Coral, 20).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

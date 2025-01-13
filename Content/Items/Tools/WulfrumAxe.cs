@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useStyle = 1;
             Item.knockBack = 3f;
             Item.value = 25000;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }

@@ -53,10 +53,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient(ItemID.Vertebrae, 15).
                 AddTile(TileID.Anvils).
                 Register();
-
-            CreateRecipe().
-                AddIngredient<IchorSpear>().
-                Register();
         }
     }
 }

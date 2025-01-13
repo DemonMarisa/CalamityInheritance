@@ -243,6 +243,63 @@ Items: {
 			// DisplayName: Nanotech Old
 			// Tooltip: ""
 		}
+
+		AeroStoneLegacy: {
+			// DisplayName: Aero Stone Legacy
+			// Tooltip: ""
+		}
+
+		LeviathanAmbergrisLegacy: {
+			// DisplayName: Leviathan Ambergris Legacy
+			// Tooltip: ""
+		}
+
+		BadgeofBravery: {
+			// DisplayName: Badgeof Bravery
+			// Tooltip: ""
+		}
+
+		DaedalusEmblem: {
+			// DisplayName: Daedalus Emblem
+			// Tooltip: ""
+		}
+
+		VoidofExtinctionLegacy: {
+			// DisplayName: Voidof Extinction Legacy
+			// Tooltip: ""
+		}
+
+		YharimsGiftLegacy: {
+			// DisplayName: Yharims Gift Legacy
+			// Tooltip: ""
+		}
+
+		StatisNinjaBeltLegacy: {
+			// DisplayName: Statis Ninja Belt Legacy
+			// Tooltip: ""
+		}
+
+		DeificAmuletLegacy: {
+			// DisplayName: Deific Amulet Legacy
+			// Tooltip: ""
+		}
+
+		Wings: {
+			FasterAuricTracers: {
+				// DisplayName: Faster Auric Tracers
+				// Tooltip: ""
+			}
+
+			FasterGodSlayerTracers: {
+				// DisplayName: Faster God Slayer Tracers
+				// Tooltip: ""
+			}
+
+			FasterLunarTracers: {
+				// DisplayName: Faster Lunar Tracers
+				// Tooltip: ""
+			}
+		}
 	}
 
 	AsgardsValorold: {
@@ -616,6 +673,27 @@ Items: {
 				// DisplayName: Ancient Omega Blue Helmet
 				// Tooltip: ""
 			}
+
+			AncientOmegaBlueLeggings: {
+				// DisplayName: Ancient Omega Blue Leggings
+				// Tooltip: ""
+			}
+		}
+	}
+
+	GodSlayerHeadMagicold: {
+		DisplayName: 弑神者面罩[Legacy]
+		Tooltip:
+			'''
+			增加14%魔法伤害和14%魔法暴击率
+			+100最大魔力值并减少17%魔力消耗
+			'''
+		/* SetBonus:
+			'''
+			魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+			受到致命伤害时会触发弑神复活，此效果有45秒冷却
+			''' */
+	}
 
 	Lore: {
 		KnowledgeAquaticScourge: {
@@ -1281,16 +1359,6 @@ Items: {
 				// DisplayName: Helium Flash Legacy
 				// Tooltip: ""
 			}
-
-			HeliumFlashLegacy: {
-				// Tooltip: ""
-				// DisplayName: Helium Flash Legacy
-			}
-
-			HeliumFlashOverpowered: {
-				// Tooltip: ""
-				// DisplayName: Helium Flash Overpowered
-			}
 		}
 
 		Melee: {
@@ -1329,6 +1397,11 @@ Items: {
 
 			ElementalExcalibur: {
 				// DisplayName: Elemental Excalibur
+				// Tooltip: ""
+			}
+
+			SoulEdge: {
+				// DisplayName: Soul Edge
 				// Tooltip: ""
 			}
 		}
@@ -1424,6 +1497,16 @@ Items: {
 					命中后回复潜行值并向反方向发射剑气
 					不消耗潜行值并且无法产生潜伏攻击
 					'''
+			}
+
+			IchorSpearLegacy: {
+				// DisplayName: Ichor Spear Legacy
+				// Tooltip: ""
+			}
+
+			SpearofDestinyLegacy: {
+				// DisplayName: Spearof Destiny Legacy
+				// Tooltip: ""
 			}
 		}
 	}
@@ -2000,73 +2083,38 @@ Items: {
 		// Tooltip: ""
 	}
 
-	MageWulfrumHoodLegacy: {
-		// DisplayName: Mage Wulfrum Hood Legacy
+	ANewWulfrumArmor: {
+		// DisplayName: A New Wulfrum Armor
 		// Tooltip: ""
 	}
 
-	MeleeWulfrumHelmLegacy: {
-		// DisplayName: Melee Wulfrum Helm Legacy
+	ANewWulfrumHeadgear: {
+		// DisplayName: A New Wulfrum Headgear
 		// Tooltip: ""
 	}
 
-	RangedWulfrumHeadgearLegacy: {
-		// DisplayName: Ranged Wulfrum Headgear Legacy
+	ANewWulfrumHelm: {
+		// DisplayName: A New Wulfrum Helm
 		// Tooltip: ""
 	}
 
-	SummonerWulfrumHelmetLegacy: {
-		// DisplayName: Summoner Wulfrum Helmet Legacy
+	ANewWulfrumHelmet: {
+		// DisplayName: A New Wulfrum Helmet
 		// Tooltip: ""
 	}
 
-	ThrowerWulfrumMaskLegacy: {
-		// DisplayName: Thrower Wulfrum Mask Legacy
+	ANewWulfrumHood: {
+		// DisplayName: A New Wulfrum Hood
 		// Tooltip: ""
 	}
 
-	WulfrumArmorLegacy: {
-		// DisplayName: Wulfrum Armor Legacy
+	ANewWulfrumLeggings: {
+		// DisplayName: A New Wulfrum Leggings
 		// Tooltip: ""
 	}
 
-	WulfrumLeggingsLegacy: {
-		// DisplayName: Wulfrum Leggings Legacy
-		// Tooltip: ""
-	}
-
-	WulfrumAxe: {
-		// DisplayName: Wulfrum Axe
-		// Tooltip: ""
-	}
-
-	WulfrumHammer: {
-		// DisplayName: Wulfrum Hammer
-		// Tooltip: ""
-	}
-
-	WulfrumPickaxe: {
-		// DisplayName: Wulfrum Pickaxe
-		// Tooltip: ""
-	}
-
-	AncientXerocCuisses: {
-		// DisplayName: Ancient Xeroc Cuisses
-		// Tooltip: ""
-	}
-
-	AncientXerocMask: {
-		// DisplayName: Ancient Xeroc Mask
-		// Tooltip: ""
-	}
-
-	AncientXerocPlateMail: {
-		// DisplayName: Ancient Xeroc Plate Mail
-		// Tooltip: ""
-	}
-
-	GrandGelatinLegacy: {
-		// DisplayName: Grand Gelatin Legacy
+	ANewWulfrumMask: {
+		// DisplayName: A New Wulfrum Mask
 		// Tooltip: ""
 	}
 }
@@ -2088,6 +2136,10 @@ Projectiles: {
 		ElementalBeamMain.DisplayName: 元素射线
 		NightBoltold.DisplayName: 永夜光束
 		TerraBeamMain.DisplayName: 泰拉光束
+		// ReaverOrbMark.DisplayName: Reaver Orb Mark
+		// ReaverBeam.DisplayName: Reaver Beam
+		// HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
+		// VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
 	}
 
 	Climax2.DisplayName: 磁暴球体
@@ -2128,6 +2180,9 @@ Projectiles: {
 		TrueNightsStabberProj.DisplayName: 真·永夜短剑
 		ExoJet.DisplayName: 星流射流
 		// ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
+		// SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
+		// SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
+		// SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
 	}
 
 	ElementBall.DisplayName: 元素之球

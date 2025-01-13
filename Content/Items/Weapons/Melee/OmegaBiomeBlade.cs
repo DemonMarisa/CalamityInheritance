@@ -50,24 +50,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<TrueBiomeBlade>());
-            recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>());
-            recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 3);
-            recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>(), 3);
-            recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.Register();
-        }
-
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
             {
                 int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<TrueBiomeBlade>().
+                AddIngredient<CoreofCalamity>().
+                AddIngredient<LifeAlloy>(3).
+                AddIngredient<GalacticaSingularity>(3).
+                AddIngredient(ItemID.LunarBar, 5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

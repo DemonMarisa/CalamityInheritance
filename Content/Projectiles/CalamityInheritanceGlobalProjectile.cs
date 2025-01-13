@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles
@@ -27,6 +28,8 @@ namespace CalamityInheritance.Content.Projectiles
         public bool forceTypeless = false;
 
         public override bool InstancePerEntity => true;
+
+        private bool frameOneHacksExecuted = false;
         public override void AI(Projectile projectile)
         {
             if (rogue)
@@ -78,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles
 
             Player player = Main.player[projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
-
+            CalamityPlayer modPlayer1 = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 if (modPlayer.ElementalQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
@@ -179,6 +182,21 @@ namespace CalamityInheritance.Content.Projectiles
                         }
                     }
                 }
+            }
+            if (!frameOneHacksExecuted)
+            {
+                if (modPlayer.CIdeadshotBrooch && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
+                {
+                    if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
+                        projectile.extraUpdates += 1;
+
+                    if (projectile.type == ProjectileID.MechanicalPiranha)
+                    {
+                        projectile.localNPCHitCooldown *= 2;
+                        projectile.timeLeft *= 2;
+                    }
+                }
+                frameOneHacksExecuted = true;
             }
         }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)

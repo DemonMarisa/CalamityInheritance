@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Armor.Wulfum
+namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 {
     [AutoloadEquip(EquipType.Head)]
     public class ANewWulfrumMask : ModItem

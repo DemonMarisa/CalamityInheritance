@@ -22,10 +22,10 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useAnimation = 14;
             Item.useTurn = true;
             Item.pick = 35;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
             Item.value = 25000;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }

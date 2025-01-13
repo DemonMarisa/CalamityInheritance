@@ -46,14 +46,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             return false;
         }
-
+        //2025.1.13 DemonMarisa 改为灵液怪掉落
+        /*
         public override void AddRecipes()
         {
             CreateRecipe().
                 AddIngredient<SpearofDestiny>(). 
                 Register();
-            
-            
         }
+        */
     }
 }

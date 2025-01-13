@@ -3,12 +3,14 @@ using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Accessories.Wings;
+using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Events;
@@ -264,7 +266,11 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<RaidersGlory>(), 25, 15));
                     break;
                 case NPCID.PirateDeadeye:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<RaidersGlory>(), 25, 15));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ProporsePistol>(), 25, 15));
+                    break;
+                case NPCID.IchorSticker:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<IchorSpearLegacy>(), 100, 50));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpearofDestinyLegacy>(), 200, 100));
                     break;
                 #endregion
 
@@ -358,7 +364,7 @@ namespace CalamityInheritance.NPCs
                     // Lore
                     {
                         npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterLunarTracers>(), 1));
+                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterLunarTracers>(), 10));
                         break;
                     }
                 #endregion

@@ -102,17 +102,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<TrueArkoftheAncients>());
-            recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 5);
-            recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -138,6 +128,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             target.AddBuff(BuffID.Frostburn, 120);
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
             target.AddBuff(ModContent.BuffType<Plague>(), 120);
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<TrueArkoftheAncients>().
+                AddIngredient<GalacticaSingularity>(5).
+                AddIngredient<CoreofCalamity>(5).
+                AddIngredient<LifeAlloy>(5).
+                AddIngredient(ItemID.LunarBar, 5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

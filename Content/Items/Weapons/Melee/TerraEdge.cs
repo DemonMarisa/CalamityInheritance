@@ -56,27 +56,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false; // Return false because we've manually created the projectiles.
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<TrueBloodyEdge>());
-            recipe.AddIngredient(ItemID.TrueExcalibur);
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ItemID.TrueNightsEdge);
-            recipe1.AddIngredient(ItemID.TrueExcalibur);
-            recipe1.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
-            recipe1.AddTile(TileID.MythrilAnvil);
-            recipe1.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 107);
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade);
             }
         }
         public void OnHitEffects(Player player)
@@ -100,6 +86,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
                 return;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<TrueBloodyEdge>().
+                AddIngredient(ItemID.TrueExcalibur).
+                AddIngredient<LivingShard>(7).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.TrueNightsEdge).
+                AddIngredient(ItemID.TrueExcalibur).
+                AddIngredient<LivingShard>(7).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

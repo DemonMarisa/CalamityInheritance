@@ -48,15 +48,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient<LoreRequiem>();
-                recipe1.AddTile(TileID.AncientMythrilBrick);
-                recipe1.Register();
+                CreateRecipe().
+                    AddIngredient<LoreRequiem>().
+                    AddTile(TileID.AncientMythrilBrick).
+                    Register();
 
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient<KnowledgeMoonLord>();
-                recipe2.AddTile(TileID.AncientMythrilBrick);
-                recipe2.Register();
+                CreateRecipe().
+                    AddIngredient<KnowledgeMoonLord>().
+                    AddTile(TileID.AncientMythrilBrick).
+                    Register();
             }
         }
     }

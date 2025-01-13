@@ -70,16 +70,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Wrathwing>());
-            recipe.AddIngredient(ModContent.ItemType<ProfanedPartisan> ());
-            recipe.AddIngredient(ModContent.ItemType<RealityRupture> ());
-            recipe.AddIngredient(ModContent.ItemType<PhantasmalRuin>());
-            recipe.AddIngredient(ModContent.ItemType<EclipsesFall>());
-            recipe.AddIngredient(ModContent.ItemType<TarragonThrowingDart>(),500);
-            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient<Wrathwing>().
+                AddIngredient<ProfanedPartisan>().
+                AddIngredient<RealityRupture>().
+                AddIngredient<PhantasmalRuin>().
+                AddIngredient<EclipsesFall>().
+                AddIngredient<TarragonThrowingDart>(500).
+                AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
         }
     }
 }

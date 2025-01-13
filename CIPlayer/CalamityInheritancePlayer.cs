@@ -50,11 +50,7 @@ namespace CalamityInheritance.CIPlayer
         public bool fasterAuricTracers = false; //天界跑鞋无敌帧
         public bool deificAmuletEffect = false;  //神圣护符的效果
         public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
-        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
-        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
-        public bool fasterAuricTracers = false; //天界跑鞋无敌帧
-        public bool deificAmuletEffect = false;  //神圣护符的效果
-        public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
+        public bool CIdeadshotBrooch = false; //独立出来的神射手徽章加成
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -200,29 +196,6 @@ namespace CalamityInheritance.CIPlayer
         //射手永恒套的套装奖励
         public bool canFireReaverRangedRocket = false;
         #endregion
-        #region Reaver
-        //永恒套
-        public bool reaverRogueExProj = false;
-        //盗贼永恒套的套装奖励
-        public bool reaverMeleeBlast = false;
-        //战士永恒套的套装奖励
-        public int reaverBlastCooldown = 0;
-        //战士永恒套爆炸CD
-        public bool reaverMeleeRage = false;
-        //战士永恒套怒气
-        public bool reaverSummonerOrb = false;
-        public bool reaverSummoner = false;
-        //召唤永恒套的套装奖励
-        public bool reaverMageBurst = false;
-        //法师永恒套的套装奖励
-        public int reaverBurstCooldown = 0;
-        // 法师永恒套内置的弹幕CD
-        public bool reaverMagePower = false;
-        //法师永恒套追加的一个击发式buff
-        public bool reaverRangedRocket = false;
-        //射手永恒套的套装奖励
-        public bool canFireReaverRangedRocket = false;
-        #endregion
         public bool test = false;
         #region AncientXeroc
         public bool AncientXerocMadness = false;
@@ -266,6 +239,7 @@ namespace CalamityInheritance.CIPlayer
             AstralBulwark = false;
             astralArcanum = false;
             badgeofBravery = false;
+            CIdeadshotBrooch = false; //独立出来的神射手徽章加成
             #endregion
             #region Lore
             kingSlimeLore = false;

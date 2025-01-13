@@ -1,4 +1,6 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using Terraria;
@@ -21,7 +23,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.Calamity().deadshotBrooch = true;
+            CalamityPlayer modPlayer = player.Calamity();
+            if (!modPlayer.deadshotBrooch)
+                player.CalamityInheritance().CIdeadshotBrooch = true;
             player.Calamity().rangedAmmoCost *= 0.8f;
             player.GetDamage<RangedDamageClass>() += 0.1f;
             player.GetCritChance<RangedDamageClass>() += 5;

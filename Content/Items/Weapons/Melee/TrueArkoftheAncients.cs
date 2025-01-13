@@ -121,17 +121,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<ArkoftheAncients>());
-            recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>());
-            recipe.AddIngredient(ItemID.BrokenHeroSword);
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 3);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
+        
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -169,6 +159,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<ArkoftheAncients>().
+                AddIngredient<CoreofCalamity>().
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddIngredient<LivingShard>(3).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

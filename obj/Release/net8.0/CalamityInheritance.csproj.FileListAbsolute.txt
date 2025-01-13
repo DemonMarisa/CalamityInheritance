@@ -233,3 +233,12 @@ C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\Calamit
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\refint\CalamityInheritance.dll
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\CalamityInheritance.pdb
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritance\obj\Release\net8.0\ref\CalamityInheritance.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.AssemblyInfo.cs
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.sourcelink.json
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\refint\CalamityInheritance.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\CalamityInheritanceOld\obj\Release\net8.0\CalamityInheritance.pdb

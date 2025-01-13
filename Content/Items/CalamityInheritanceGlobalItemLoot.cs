@@ -34,6 +34,7 @@ namespace CalamityInheritance.Content.Items
             }
             if (item.type == ModContent.ItemType<YharonBag>())
                 itemloot.Add(ModContent.ItemType<VoidVortex>(), 10);
+
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
 

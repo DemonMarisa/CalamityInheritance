@@ -36,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modplayer = player.GetModPlayer<CalamityInheritancePlayer>();
             if (CalamityInheritanceConfig.Instance.ElementalQuiversplit == true)
             {
@@ -51,8 +52,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             player.lifeRegen += 4;
             player.statDefense += 30;
             player.pickSpeed -= 0.15f;
-            CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.deadshotBrooch = true;
+            if (!modPlayer.deadshotBrooch)
+                modplayer.CIdeadshotBrooch = true;
         }
 
         public override void AddRecipes()

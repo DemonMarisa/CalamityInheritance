@@ -5,7 +5,7 @@ using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace CalamityInheritance.Content.Items.Armor.Wulfum
+namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 {
     [AutoloadEquip(EquipType.Head)]
     public class ANewWulfrumHelm : ModItem

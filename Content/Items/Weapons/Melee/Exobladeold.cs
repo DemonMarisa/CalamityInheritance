@@ -86,18 +86,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Terratomere>());
-            recipe.AddIngredient(ModContent.ItemType<AnarchyBlade>());
-            recipe.AddIngredient(ModContent.ItemType<FlarefrostBlade>());
-            recipe.AddIngredient(ModContent.ItemType<EntropicClaymore> ());
-            recipe.AddIngredient(ModContent.ItemType<StellarStriker>());
-            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ModContent.ItemType<Exoblade>());
-            recipe2.Register();
+            CreateRecipe().
+                AddIngredient<Terratomere>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<Exoblade>().
+                Register();
         }
     }
 }
