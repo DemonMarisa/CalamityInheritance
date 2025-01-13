@@ -161,11 +161,11 @@ namespace CalamityInheritance.CIPlayer
             }
             if (badgeofBravery) //如果启用
             {
-                if(modPlayer.tarraMelee &&) //金源套不再能吃到勇气勋章的效果
+                if(modPlayer.tarraMelee) //金源套不再能吃到勇气勋章的效果
                 {
                     if(modPlayer.auricSet)
                     {
-                        return 0;
+                        return;
                     }
                     Player.GetCritChance<MeleeDamageClass>() += 10;
                     Player.GetDamage<MeleeDamageClass>() += 0.10f;
