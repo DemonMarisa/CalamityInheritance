@@ -23,7 +23,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.useAnimation = 21;
             Item.useTime = 21;
-            Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 7.5f;
             Item.UseSound = SoundID.Item1;

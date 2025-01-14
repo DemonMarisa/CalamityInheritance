@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
@@ -6,6 +7,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Healing;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
+using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -167,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles
                 {
                     if (modPlayer.reaverRogueExProj)
                     {
-                        if (Main.player[projectile.owner].miscCounter % 30 == 0 && projectile.FinalExtraUpdate())
+                        if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
@@ -178,6 +180,16 @@ namespace CalamityInheritance.Content.Projectiles
                                 {
                                     Main.projectile[newProjectileId].CalamityInheritance().forceRogue = true;
                                 }
+                            }
+                        }
+                    }
+                    if (modPlayer.nanotechold)
+                    {
+                        if (Main.player[projectile.owner].miscCounter % 30 == 0 && projectile.FinalExtraUpdate())
+                        {
+                            if (projectile.owner == Main.myPlayer)
+                            {
+                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
                             }
                         }
                     }
@@ -196,6 +208,14 @@ namespace CalamityInheritance.Content.Projectiles
                         projectile.timeLeft *= 2;
                     }
                 }
+
+                if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
+                {
+                    int gloveArmorPenAmt = 20;
+                    if (modPlayer.nanotechold)
+                        projectile.ArmorPenetration += gloveArmorPenAmt;
+                }
+
                 frameOneHacksExecuted = true;
             }
         }

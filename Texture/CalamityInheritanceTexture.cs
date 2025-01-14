@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Armor.Wulfum;
+﻿using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Armor.Wulfum;
+using CalamityInheritance.Content.Items.Tools;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -12,22 +14,63 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture
 {
-    public class CalamityInheritanceTexture
+    public class CalamityInheritanceTexture : ModPlayer
     {
-        public static Asset<Texture2D> WulfumNewBody;
+        public static Asset<Texture2D> WulfrumAxeNew;
 
-        public static Asset<Texture2D> WulfumOldBody;
+        public static Asset<Texture2D> WulfrumHammerNew;
 
-    	public static void LoadTexture()
+        public static Asset<Texture2D> WulfrumPickaxeNew;
+
+        public static Asset<Texture2D> WulfrumAxeOld;
+
+        public static Asset<Texture2D> WulfrumHammerOld;
+
+        public static Asset<Texture2D> WulfrumPickaxeOld;
+
+        public static Asset<Texture2D> ArkoftheCosmosNew;
+
+        public static Asset<Texture2D> ArkoftheCosmosOld;
+
+        public static Asset<Texture2D> RampartofDeitiesNew;
+
+        public static Asset<Texture2D> RampartofDeitiesOld;
+        public static void LoadTexture()
         {
-            WulfumNewBody = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Armor/Wulfum/NewTexture/ANewWulfrumArmor");
-            WulfumOldBody = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Armor/Wulfum/WulfrumArmorLegacy");
+            WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
+            WulfrumHammerNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammerNew");
+            WulfrumPickaxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxeNew");
+
+            WulfrumAxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxe");
+            WulfrumHammerOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammer");
+            WulfrumPickaxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxe");
+
+            ArkoftheCosmosNew = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
+            ArkoftheCosmosOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
+
+            RampartofDeitiesNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/CIRampartofDeities");
+            RampartofDeitiesOld = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/RampartofDeitiesOld");
         }
         public static void UnloadTexture()
         {
-            TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] = null;
-            WulfumNewBody = null;
-            WulfumOldBody = null;
+            TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = null;
+            TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = null;
+            TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = null;
+            TextureAssets.Item[ModContent.ItemType<ArkoftheCosmos>()] = null;
+            TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = null;
+            WulfrumAxeNew = null;
+            WulfrumHammerNew = null;
+            WulfrumPickaxeNew = null;
+
+            WulfrumAxeNew = null;
+            WulfrumHammerNew = null;
+            WulfrumPickaxeNew = null;
+
+            ArkoftheCosmosNew = null;
+            ArkoftheCosmosOld = null;
+
+            RampartofDeitiesNew = null;
+            RampartofDeitiesOld = null;
         }
     }
 }

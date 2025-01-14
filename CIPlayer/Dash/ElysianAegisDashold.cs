@@ -15,6 +15,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityMod.Particles;
+using Terraria.ID;
 
 namespace CalamityInheritance.CIPlayer.Dash
 {
@@ -33,7 +34,7 @@ namespace CalamityInheritance.CIPlayer.Dash
             // Spawn fire dust around the player's body.
             for (int d = 0; d < 20; d++)
             {
-                Dust holyFireDashDust = Dust.NewDustDirect(player.position, player.width, player.height, 246, 0f, 0f, 100, default, 3f);
+                Dust holyFireDashDust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.GoldCoin, 0f, 0f, 100, default, 3f);
                 holyFireDashDust.position += Main.rand.NextVector2Square(-5f, 5f);
                 holyFireDashDust.velocity *= 0.2f;
                 holyFireDashDust.scale *= Main.rand.NextFloat(1f, 1.2f);

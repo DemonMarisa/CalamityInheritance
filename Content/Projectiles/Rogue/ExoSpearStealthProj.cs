@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (hitCount < 1)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 2000, 45f, 100f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 45f, 100f);
             }
         }
 
@@ -246,13 +246,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
-                /*
-                if (newProjectileId != Main.maxProjectiles)
-                {
-                    Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
-                }
-                */
+                if (hitCount < 2)
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
             }
         }
 
@@ -267,22 +262,24 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int spearAmt = Main.rand.Next(1, 3);
             int comet = Main.rand.Next(1, 3);
 
-
-            if (Projectile.owner == Main.myPlayer)
+            if(hitCount < 2)
             {
-                for (int i = 0; i < numSwords; ++i)
+                if (Projectile.owner == Main.myPlayer)
                 {
-                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
-                }
+                    for (int i = 0; i < numSwords; ++i)
+                    {
+                        CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                    }
 
-                for (int n = 0; n < spearAmt; n++)
-                {
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
-                }
+                    for (int n = 0; n < spearAmt; n++)
+                    {
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                    }
 
-                for (int j = 0; j < comet; ++j)
-                {
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                    for (int j = 0; j < comet; ++j)
+                    {
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                    }
                 }
             }
         }
