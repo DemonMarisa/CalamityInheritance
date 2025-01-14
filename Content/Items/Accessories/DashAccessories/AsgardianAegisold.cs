@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             modPlayer1.CIDashID = AsgardianAegisDashold.ID;
             modPlayer1.elysianAegis = true;
-
+            player.Calamity().DashID = string.Empty;
             player.dashType = 0;
 
             // Inherited Ankh Shield effects

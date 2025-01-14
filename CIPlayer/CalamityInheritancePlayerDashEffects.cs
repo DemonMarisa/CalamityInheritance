@@ -525,9 +525,14 @@ namespace CalamityInheritance.CIPlayer
                 if (WorldGen.SolidOrSlopedTile(upwardTilePoint.X, upwardTilePoint.Y) || WorldGen.SolidOrSlopedTile(aheadTilePoint.X, aheadTilePoint.Y))
                     Player.velocity.X /= 2f;
 
-                Player.dashDelay = -15;
-
-                CIDashDelay = Player.dashDelay;
+                if (CIDashID == "Statis' Void Sash Old")
+                {
+                    CIDashDelay = -30;
+                }
+                else
+                {
+                    CIDashDelay = -18;
+                }
                 /*
                 Main.NewText($"dashDelay doadash部分 : {Player.dashDelay}");
 

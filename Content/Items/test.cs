@@ -24,6 +24,7 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Summon.SmallAresArms;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -44,15 +45,15 @@ namespace CalamityInheritance.Content.Items
             Item.height = 42;
             Item.value = Item.buyPrice(0, 4, 0, 0);
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<CISporeGas>();
-            Item.shootSpeed = 12f;
+            Item.shoot = ModContent.ProjectileType<NanoFlare>();
+            Item.shootSpeed = 5f;
         }
         public override bool? UseItem(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             player.RemoveCooldown(GodSlayerCooldown.ID);
-
+            modPlayer1.CIDashDelay = -100;
             return false;
         }
 

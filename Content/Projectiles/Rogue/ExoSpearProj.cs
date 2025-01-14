@@ -169,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
             return false;
         }
-
+        private int hitCount = 0;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 0;
@@ -227,7 +227,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                if (CalamityInheritanceConfig.Instance.ExoSperaHitEffect == true)
+                if (CalamityInheritanceConfig.Instance.ExoSperaHitEffect == true && hitCount < 1)
                 {
                     int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                 }
@@ -238,8 +238,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private void OnHitEffects(Vector2 targetPos)
         {
+            hitCount++;
 
-            if (Projectile.owner == Main.myPlayer)
+            if (Projectile.owner == Main.myPlayer && hitCount < 4)
             {
                 var source = Projectile.GetSource_FromThis();
                 float swordKB = Projectile.knockBack;

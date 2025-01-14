@@ -2067,6 +2067,11 @@ Items: {
 		DisplayName: A New Wulfrum Mask
 		Tooltip: ""
 	}
+
+	StatisVoidSash: {
+		DisplayName: Statis Void Sash
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -2200,6 +2205,8 @@ Projectiles: {
 		SupernovaSpike.DisplayName: 星流火花
 		IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
 		SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
+		CosmicScytheOld.DisplayName: Cosmic Scythe Old
+		NanotechOld.DisplayName: Nanotech Old
 	}
 
 	Quasar2.DisplayName: 类星体
@@ -2340,6 +2347,16 @@ Configs: {
 
 		WulfumTexture: {
 			Label: Wulfum Texture
+			Tooltip: ""
+		}
+
+		ArkofCosmosTexture: {
+			Label: Arkof Cosmos Texture
+			Tooltip: ""
+		}
+
+		RampartofDeitiesTexture: {
+			Label: Rampartof Deities Texture
 			Tooltip: ""
 		}
 	}

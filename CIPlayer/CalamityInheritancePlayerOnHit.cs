@@ -26,6 +26,7 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod.Projectiles.Boss;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -279,6 +280,11 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             #endregion
+            if (!projectile.npcProj && !projectile.trap && projectile.friendly)
+            {
+                ProjLifesteal(target, projectile, damageDone, hit.Crit);
+                ProjOnHit(projectile, target.Center, hit.Crit, target.IsAnEnemy(false));
+            }
         }
         #endregion
 
@@ -302,7 +308,7 @@ namespace CalamityInheritance.CIPlayer
                 knockback += item.knockBack * 0.25f;
         }
         #region Lifesteal
-        public void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
+        private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
             CalamityGlobalProjectile modProj = proj.Calamity();
 
@@ -318,6 +324,37 @@ namespace CalamityInheritance.CIPlayer
 
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
+                }
+            }
+        }
+        #endregion
+        #region Proj On Hit
+        public void ProjOnHit(Projectile proj, Vector2 position, bool crit, bool npcCheck)
+        {
+            CalamityGlobalProjectile modProj = proj.Calamity();
+
+            if (proj.CountsAsClass<ThrowingDamageClass>())
+                RogueOnHit(proj, modProj, position, crit, npcCheck);
+        }
+        #endregion
+        #region Rogue
+        private void RogueOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
+        {
+            var spawnSource = proj.GetSource_FromThis();
+
+            CalamityPlayer modPlayer = Player.Calamity();
+
+            if (proj.Calamity().stealthStrike && proj.Calamity().stealthStrikeHitCount < 3)
+            {
+                if (nanotechold)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        Vector2 source = new Vector2(position.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
+                        Vector2 velocity = (position - source) / 40f;
+
+                        Projectile.NewProjectile(spawnSource, source, velocity, ModContent.ProjectileType<NanoFlare>(), (int)(proj.damage * 0.3), 3f, proj.owner);
+                    }
                 }
             }
         }

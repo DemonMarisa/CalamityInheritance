@@ -28,6 +28,8 @@ using CalamityInheritance.UI;
 using Terraria.GameContent;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Texture;
+using CalamityInheritance.Content.Items.Tools;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -51,6 +53,8 @@ namespace CalamityInheritance.CIPlayer
         public bool deificAmuletEffect = false;  //神圣护符的效果
         public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
         public bool CIdeadshotBrooch = false; //独立出来的神射手徽章加成
+        public int statisTimerOld = 0;//虚空饰带的计数器
+        public bool nanotechold = false;//发射纳米技术的额外弹幕
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -240,6 +244,7 @@ namespace CalamityInheritance.CIPlayer
             astralArcanum = false;
             badgeofBravery = false;
             CIdeadshotBrooch = false; //独立出来的神射手徽章加成
+            nanotechold = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -328,6 +333,7 @@ namespace CalamityInheritance.CIPlayer
             AncientXerocMadness = false;
             #endregion
             #region Reaver
+            reaverRogueExProj = false;
             reaverMeleeBlast = false;
             reaverRangedRocket = false;
             reaverMageBurst = false;
@@ -349,15 +355,59 @@ namespace CalamityInheritance.CIPlayer
             reaverSummonerOrb = false;
             #endregion
             #region Texture
-            if (TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] != null)
             {
                 if(CalamityInheritanceConfig.Instance.WulfumTexture == true)
                 {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] = CalamityInheritanceTexture.WulfumNewBody;
+                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CalamityInheritanceTexture.WulfrumAxeNew;
                 }
                 if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
                 {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumArmorLegacy>()] = CalamityInheritanceTexture.WulfumOldBody;
+                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CalamityInheritanceTexture.WulfrumAxeOld;
+                }
+            }
+            if (TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.WulfumTexture == true)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CalamityInheritanceTexture.WulfrumHammerNew;
+                }
+                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CalamityInheritanceTexture.WulfrumHammerOld;
+                }
+            }
+            if (TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.WulfumTexture == true)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CalamityInheritanceTexture.WulfrumPickaxeNew;
+                }
+                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
+                {
+                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CalamityInheritanceTexture.WulfrumPickaxeOld;
+                }
+            }
+            if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.ArkofCosmosTexture == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CalamityInheritanceTexture.ArkoftheCosmosNew;
+                }
+                if (CalamityInheritanceConfig.Instance.ArkofCosmosTexture == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CalamityInheritanceTexture.ArkoftheCosmosOld;
+                }
+            }
+            if (TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.RampartofDeitiesTexture == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CalamityInheritanceTexture.RampartofDeitiesNew;
+                }
+                if (CalamityInheritanceConfig.Instance.RampartofDeitiesTexture == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CalamityInheritanceTexture.RampartofDeitiesOld;
                 }
             }
             #endregion
@@ -381,6 +431,7 @@ namespace CalamityInheritance.CIPlayer
 
             elysianAegis = false;
             elysianGuard = false;
+            statisTimerOld = 0;//虚空饰带的计数器
 
             #region Set Bonuses
             #region GodSlayer

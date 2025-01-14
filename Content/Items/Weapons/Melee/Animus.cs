@@ -34,7 +34,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useAnimation = 11;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 11;
-            Item.useTurn = true;
             Item.knockBack = 20f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

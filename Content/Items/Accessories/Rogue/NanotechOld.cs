@@ -13,6 +13,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories.Rogue
 {
@@ -30,8 +32,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.nanotech = true;
+            modPlayer1.nanotechold = true;
             modPlayer.raiderTalisman = true;
             modPlayer.electricianGlove = true;
             modPlayer.filthyGlove = true;

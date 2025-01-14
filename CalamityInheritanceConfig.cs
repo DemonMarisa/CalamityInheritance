@@ -55,7 +55,7 @@ namespace CalamityInheritance
         [Range(1, 3)]
         [Increment(1)]
         [DrawTicks]
-        [DefaultValue(0)]
+        [DefaultValue(1)]
         public int GodSlayerSetBonusesChange { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
@@ -82,5 +82,22 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool WulfumTexture { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int ArkofCosmosTexture { get; set; }
+
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int RampartofDeitiesTexture { get; set; }
     }
 }

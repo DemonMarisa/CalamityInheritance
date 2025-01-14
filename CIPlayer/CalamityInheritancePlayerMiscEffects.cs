@@ -708,6 +708,9 @@ namespace CalamityInheritance.CIPlayer
             if (reaverBurstCooldown > 0)
                 reaverBurstCooldown--; //法师永恒套CD
 
+            if (statisTimerOld > 0 && CIDashDelay >= 0)
+                statisTimerOld = 0;//斯塔提斯CD
+
             if (modPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
