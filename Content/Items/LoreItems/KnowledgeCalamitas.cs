@@ -1,16 +1,10 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
-using CalamityMod.NPCs.Abyss;
-using CalamityMod.Rarities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.NPCs;
-using CalamityMod.Items;
 using CalamityMod.Items.LoreItems;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -26,7 +20,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
             Item.width = 20;
             Item.height = 20;
             Item.consumable = false;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
         public override void UpdateInventory(Player player)
         {

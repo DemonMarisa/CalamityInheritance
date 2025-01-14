@@ -1,15 +1,9 @@
 ﻿using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -21,8 +15,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.width = 44;
             Item.height = 50;
             Item.accessory = true;
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

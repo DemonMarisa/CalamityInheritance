@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             Item.width = 30;
             Item.height = 26;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
             Item.accessory = true;
         }

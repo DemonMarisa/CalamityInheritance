@@ -15,6 +15,7 @@ using CalamityMod;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -34,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             Item.width = 48;
             Item.height = 42;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 18;
             Item.accessory = true;
         }

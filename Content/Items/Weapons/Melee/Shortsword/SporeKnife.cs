@@ -1,17 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Projectiles.Pets;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -31,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.shoot = ModContent.ProjectileType<SporeKnifeProj>();
             Item.shootSpeed = 3f;
             Item.rare = ItemRarityID.Green;
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

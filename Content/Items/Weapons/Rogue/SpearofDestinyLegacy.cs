@@ -6,7 +6,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items;
 using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
@@ -26,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 52;
-            Item.value = CalamityGlobalItem.RarityLightPurpleBuyPrice;
+            Item.value = CIShopValue.RarityPriceLightPurple;
             Item.rare = ItemRarityID.LightPurple;
             Item.shoot = ModContent.ProjectileType<SpearofDestinyProjectileLegacy>();
             Item.shootSpeed = 20f;

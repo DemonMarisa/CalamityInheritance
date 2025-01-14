@@ -1,23 +1,14 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Rarities;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -53,8 +44,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Item.shoot = ProjectileID.WoodenArrowFriendly;
                 Item.shootSpeed = 12f;
                 Item.useAmmo = AmmoID.Arrow;
-                Item.rare = ModContent.RarityType<Violet>();
-                Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+                Item.rare = ModContent.RarityType<CatalystViolet>();
+                Item.value = CIShopValue.RarityPriceCatalystViolet;
                 Item.Calamity().canFirePointBlankShots = true;
             }
 

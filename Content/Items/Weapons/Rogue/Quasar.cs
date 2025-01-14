@@ -1,9 +1,4 @@
 ﻿using CalamityMod.Items.Weapons.Rogue;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 48;
-            Item.value = Item.buyPrice(0, 95, 0, 0);
+            Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
             Item.shoot = ModContent.ProjectileType<QuasarKnife>();
             Item.shootSpeed = 20f;

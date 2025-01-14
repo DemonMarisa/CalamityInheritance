@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -31,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 62;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
             Item.shoot = ModContent.ProjectileType<OmegaBiomeOrb>();
             Item.shootSpeed = 15f;
@@ -53,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(5))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
             }
         }
         public override void AddRecipes()

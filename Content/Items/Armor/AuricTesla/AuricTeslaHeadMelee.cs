@@ -3,23 +3,16 @@ using CalamityMod.Items.Armor.Auric;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Tarragon;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -31,9 +24,9 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.defense = 54; //132
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

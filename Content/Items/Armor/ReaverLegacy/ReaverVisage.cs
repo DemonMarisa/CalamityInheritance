@@ -13,16 +13,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reaver Visage");
-            /* Tooltip.SetDefault("15% increased ranged damage, 20% decreased ammo usage, and 5% increased ranged critical strike chance\n" +
-                "10% increased movement speed and can move freely through liquids"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 24;
             Item.height = 28;
-            Item.value = Item.buyPrice(0, 30, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.defense = 13; //46
         }
@@ -40,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer1.reaverRangedRocket = true;

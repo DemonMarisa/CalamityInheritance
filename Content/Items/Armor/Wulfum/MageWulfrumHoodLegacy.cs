@@ -1,8 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
@@ -17,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.defense = 1; //6
         }

@@ -1,14 +1,11 @@
 ﻿using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -23,8 +20,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.width = 20;
             Item.height = 22;
             Item.accessory = true;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

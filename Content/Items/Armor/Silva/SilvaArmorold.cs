@@ -1,16 +1,10 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
@@ -22,9 +16,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             Item.width = 24;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 44;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void UpdateEquip(Player player)

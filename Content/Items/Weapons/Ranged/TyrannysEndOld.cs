@@ -1,15 +1,8 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items;
 using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Rarities;
 using CalamityMod.Sounds;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -18,6 +11,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -41,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.UseSound = CommonCalamitySounds.LargeWeaponFireSound;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.Calamity().donorItem = true;
             Item.Calamity().canFirePointBlankShots = true;
         }

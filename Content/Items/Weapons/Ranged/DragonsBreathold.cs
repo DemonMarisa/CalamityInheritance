@@ -1,11 +1,4 @@
-﻿using CalamityMod.Items;
-using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
+﻿using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,8 +6,7 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using System.Diagnostics.Metrics;
-using CalamityMod.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -55,8 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAmmo = AmmoID.Bullet;
             Item.Calamity().canFirePointBlankShots = true;
 
-            Item.rare = ModContent.RarityType<Violet>();
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
         }
 
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > 0.66f;

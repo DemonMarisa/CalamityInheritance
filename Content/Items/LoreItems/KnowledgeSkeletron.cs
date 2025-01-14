@@ -1,8 +1,5 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
 

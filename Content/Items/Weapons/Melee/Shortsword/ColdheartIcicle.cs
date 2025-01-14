@@ -1,10 +1,4 @@
-﻿using CalamityMod.NPCs.Providence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
@@ -29,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.UseSound = SoundID.Item1;
             Item.useTurn = true;
             Item.knockBack = 3f;
-            Item.value = Item.buyPrice(0, 36, 0, 0);
+            Item.value = CIShopValue.RarityPricePink;
             Item.shoot = ModContent.ProjectileType<ColdheartIcicleProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;

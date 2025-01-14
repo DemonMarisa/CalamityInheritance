@@ -1,9 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = Item.buyPrice(0, 4, 0, 0);
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<AncientShivProj>();
             Item.shootSpeed = 3f;

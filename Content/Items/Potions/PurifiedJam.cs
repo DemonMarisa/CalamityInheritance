@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.World;
+﻿using CalamityMod.World;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.Buffs.Potions;
 
 namespace CalamityInheritance.Content.Items.Potions
@@ -28,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.UseSound = SoundID.Item3;
             Item.consumable = true;
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceOrange;
         }
 
         public override bool CanUseItem(Player player)

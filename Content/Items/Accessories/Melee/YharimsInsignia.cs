@@ -1,19 +1,12 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
+﻿using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
@@ -24,9 +17,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             Item.width = 22;
             Item.height = 38;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
+            Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.accessory = true;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = ModContent.RarityType<BlueGreen>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

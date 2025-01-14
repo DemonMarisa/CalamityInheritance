@@ -1,17 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -29,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Green;
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.shoot = ModContent.ProjectileType<NightsStabberProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;

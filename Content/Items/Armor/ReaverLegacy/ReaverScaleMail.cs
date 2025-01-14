@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Armor.ReaverLegacy;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             Item.width = 34;
             Item.height = 22;
-            Item.value = Item.buyPrice(0, 24, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.defense = 19;
         }

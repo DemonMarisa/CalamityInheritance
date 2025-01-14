@@ -1,11 +1,4 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -34,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3.25f;
-            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
+            Item.value = CIShopValue.RarityPriceLightRed;
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item72;
             Item.autoReuse = true;

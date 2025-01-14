@@ -1,7 +1,4 @@
-﻿using CalamityMod.Items;
-using CalamityMod;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -10,11 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
-using CalamityInheritance.CIPlayer;
-using CalamityMod.NPCs.Abyss;
-
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -46,11 +39,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 5;
             Item.knockBack = 6.5f;
             Item.autoReuse = false;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
             Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
             Item.shootSpeed = 24f;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 14));
         }
 

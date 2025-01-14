@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
@@ -24,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 52;
-            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
+            Item.value = CIShopValue.RarityPriceLightRed;
             Item.rare = ItemRarityID.LightRed;
             Item.shoot = ModContent.ProjectileType<IchorSpearProjLegacy>();
             Item.shootSpeed = 20f;

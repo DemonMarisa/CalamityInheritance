@@ -1,21 +1,13 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Rarities;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using System.Text.RegularExpressions;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -39,8 +31,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
 
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
         public override float StealthDamageMultiplier => 1.22f;

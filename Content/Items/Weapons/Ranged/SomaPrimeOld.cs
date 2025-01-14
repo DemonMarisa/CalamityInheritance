@@ -1,9 +1,8 @@
-﻿using CalamityMod;
-using CalamityMod.Items;
+﻿using CalamityInheritance.Rarity;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -34,8 +33,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 30f;
             Item.useAmmo = AmmoID.Bullet;
 
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.value = CIShopValue.RarityPriceDonatorPink;
+            Item.rare = ModContent.RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
             Item.Calamity().canFirePointBlankShots = true;
         }

@@ -1,15 +1,7 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -18,6 +10,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -34,11 +27,11 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 32;
             Item.height = 32;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 10;
             Item.lifeRegen = 1;
             Item.accessory = true;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

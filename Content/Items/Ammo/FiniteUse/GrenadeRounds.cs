@@ -1,9 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -20,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
             Item.maxStack = 9;
             Item.consumable = true;
             Item.knockBack = 10f;
-            Item.value = 15000;
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<GrenadeRound>();
             Item.shootSpeed = 12f;

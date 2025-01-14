@@ -1,9 +1,8 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Rarity;
+using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
@@ -20,9 +19,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             Item.width = 22;
             Item.height = 38;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.accessory = true;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

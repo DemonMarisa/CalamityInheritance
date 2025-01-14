@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         {
             Item.width = 26;
             Item.height = 26;
-            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.accessory = true;
         }

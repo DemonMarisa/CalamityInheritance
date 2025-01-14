@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
@@ -10,15 +9,13 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Wulfrum Armor");
-            // Tooltip.SetDefault("3% increased critical strike chance");
         }
 
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 18000;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.defense = 2;
         }

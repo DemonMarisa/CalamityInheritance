@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.pick = 35;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
-            Item.value = 25000;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

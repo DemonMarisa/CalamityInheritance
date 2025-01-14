@@ -2,11 +2,6 @@
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -33,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Ammo
             Item.maxStack = 9999;
             Item.consumable = true;
             Item.knockBack = 3.5f;
-            Item.value = Item.sellPrice(copper: 28);
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.shoot = ModContent.ProjectileType<VanquisherArrowoldMain>();
             Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Arrow;

@@ -1,21 +1,15 @@
 ﻿using CalamityMod.Buffs.Summon;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
@@ -31,9 +25,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             {
                 Item.width = 28;
                 Item.height = 24;
-                Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+                Item.value = CIShopValue.RarityPriceDeepBlue;
+                Item.rare = ModContent.RarityType<DeepBlue>();
                 Item.defense = 13; //110
-                Item.rare = ModContent.RarityType<DarkBlue>();
             }
 
             public override bool IsArmorSet(Item head, Item body, Item legs)

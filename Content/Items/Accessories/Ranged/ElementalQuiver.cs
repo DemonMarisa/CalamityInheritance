@@ -1,11 +1,9 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
@@ -17,21 +15,15 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Elemental Quiver");
-            /* Tooltip.SetDefault("Ranged projectiles have a chance to split\n" +
-                "Ranged weapons have a chance to instantly kill normal enemies\n" +
-                "10% increased ranged damage, 5% increased ranged critical strike chance, and 20% reduced ammo usage\n" +
-                "5 increased defense, 2 increased life regen, and 15% increased pick speed\n" +
-                "Greatly increases arrow speed and grants a 20% chance to not consume arrows"); */
         }
-
         public override void SetDefaults()
         {
             Item.width = 28;
             Item.height = 32;
             Item.accessory = true;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.defense = 5;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

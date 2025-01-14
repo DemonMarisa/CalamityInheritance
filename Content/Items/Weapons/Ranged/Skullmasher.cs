@@ -1,31 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
+﻿using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Sounds;
-using CalamityMod.Rarities;
 using CalamityMod;
 using Terraria.ID;
-using CalamityMod.Items;
 using Terraria.DataStructures;
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Utilities;
-using Steamworks;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Materials;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -44,12 +32,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
             Item.useAmmo = 97;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
             Item.Calamity().canFirePointBlankShots = true;
         }
 

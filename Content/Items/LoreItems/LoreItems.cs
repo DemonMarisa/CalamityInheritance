@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using CalamityInheritance.CIPlayer;
 using CalamityMod;
 using CalamityMod.Items;
 using Microsoft.Xna.Framework;

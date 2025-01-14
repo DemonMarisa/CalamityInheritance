@@ -1,11 +1,8 @@
 ﻿using System;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod;
-using CalamityMod.Items;
+using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -40,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item73;
 
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
 
             Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
             Item.shootSpeed = 15f;

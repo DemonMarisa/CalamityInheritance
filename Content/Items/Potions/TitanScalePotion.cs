@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.consumable = true;
             Item.buffType = ModContent.BuffType<TitanScale>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceYellow;
         }
 
         public override void AddRecipes()

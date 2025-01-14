@@ -16,9 +16,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         {
             Item.width = 46;
             Item.height = 40;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.accessory = true;
+            Item.defense = 5;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -29,7 +30,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             player.Calamity().rangedAmmoCost *= 0.8f;
             player.GetDamage<RangedDamageClass>() += 0.1f;
             player.GetCritChance<RangedDamageClass>() += 5;
-            player.statDefense += 5;
             player.lifeRegen += 2;
         }
 

@@ -2,7 +2,6 @@
 using CalamityMod.DataStructures;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.World;
@@ -12,9 +11,6 @@ using Microsoft.Xna.Framework;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -22,11 +18,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.Graphics.Effects;
-using CalamityInheritance;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.Buffs.StatDebuffs;
-using Microsoft.Xna.Framework.Media;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -86,8 +80,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetDefaults()
         {
             Item.width = 20;
-            Item.height = 20;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.height= 20;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }

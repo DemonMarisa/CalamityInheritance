@@ -1,14 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Rarities;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -17,6 +9,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -36,11 +29,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 8f;
             Item.UseSound = SoundID.Item15;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<SupernovaBombold>();
             Item.shootSpeed = 16f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override float StealthDamageMultiplier => 1.08f;

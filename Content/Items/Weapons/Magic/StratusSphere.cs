@@ -1,20 +1,12 @@
 ﻿using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityInheritance.Content.Projectiles.Magic;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using CalamityMod;
-using CalamityMod.Projectiles.Magic;
 using Terraria.DataStructures;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -36,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noUseGraphic = true;
             Item.channel = true;
             Item.noMelee = true;
-            Item.value = Item.buyPrice(1, 40, 0, 0);
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
         public override void OnConsumeMana(Player player, int manaConsumed) => player.statMana += manaConsumed;
 

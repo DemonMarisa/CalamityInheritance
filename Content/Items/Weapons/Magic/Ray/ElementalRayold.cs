@@ -1,20 +1,11 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
-using CalamityInheritance.Content.Projectiles.Magic.Ray;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -40,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7.5f;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;

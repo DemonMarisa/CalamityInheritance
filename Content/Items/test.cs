@@ -1,29 +1,12 @@
 ﻿using CalamityInheritance.CIPlayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
-using CalamityInheritance.Content.Projectiles.Melee;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
-using CalamityMod.Cooldowns;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
-using CalamityMod.Particles;
-using CalamityMod.Projectiles.Summon.SmallAresArms;
-using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items
@@ -43,7 +26,7 @@ namespace CalamityInheritance.Content.Items
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 42;
-            Item.value = Item.buyPrice(0, 4, 0, 0);
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<NanoFlare>();
             Item.shootSpeed = 5f;

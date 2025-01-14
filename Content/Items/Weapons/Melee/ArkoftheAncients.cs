@@ -13,8 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Ark of the Ancients(old)");
-            // Tooltip.SetDefault("A heavenly blade forged to vanquish all evil");
+
         }
 
         public override void SetDefaults()

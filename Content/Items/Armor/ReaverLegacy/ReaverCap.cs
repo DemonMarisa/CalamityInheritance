@@ -4,15 +4,7 @@ using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
-using CalamityMod.Items.Accessories;
 using CalamityInheritance.Utilities;
-
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
@@ -21,16 +13,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reaver Headgear");
-            /* Tooltip.SetDefault("15% increased rogue damage, 5% increased rogue velocity and critical strike chance\n" +
-                "20% increased movement speed and can move freely through liquids"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 22;
             Item.height = 22;
-            Item.value = Item.buyPrice(0, 30, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
             Item.defense = 10; //43
         }

@@ -22,9 +22,9 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useAnimation = 16;
             Item.useTurn = true;
             Item.axe = 7;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 3f;
-            Item.value = 25000;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

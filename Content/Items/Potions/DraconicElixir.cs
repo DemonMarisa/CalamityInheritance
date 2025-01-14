@@ -1,18 +1,12 @@
-﻿using CalamityMod.Cooldowns;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
@@ -27,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.height = 44;
             Item.useTurn = true;
             Item.maxStack = 9999;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.useAnimation = 17;
             Item.useTime = 17;
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
@@ -35,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.consumable = true;
             Item.buffType = ModContent.BuffType<DraconicSurgeBuff>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
