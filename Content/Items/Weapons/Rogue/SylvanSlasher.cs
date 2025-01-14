@@ -1,18 +1,12 @@
-﻿using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using CalamityMod;
-using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -32,8 +26,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 3f;
             Item.autoReuse = false;
             Item.height = 78;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.value = CIShopValue.RarityPriceBlueGreen;
+            Item.rare = ModContent.RarityType<BlueGreen>();
             Item.shoot = ModContent.ProjectileType<SylvanSlashAttack>();
             Item.shootSpeed = 24f;
         }

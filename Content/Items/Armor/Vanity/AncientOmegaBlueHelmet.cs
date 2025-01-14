@@ -1,9 +1,8 @@
-﻿using CalamityMod.Rarities;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using CalamityMod;
 using CalamityMod.Items.Materials;
 using Terraria.ID;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.Vanity
 {
@@ -15,8 +14,8 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity
         {
             Item.width = 28;
             Item.height = 20;
-            Item.rare = ModContent.RarityType<DarkBlue>();
-            Item.value = Item.buyPrice(0, 75, 0, 0);
+            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.vanity = true;
         }
 

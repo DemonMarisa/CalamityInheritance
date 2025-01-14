@@ -1,20 +1,15 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Rarities;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -35,12 +30,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 1.5f;
-            Item.value = Item.buyPrice(2, 50, 0, 0);
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<HadopelagicEchoSoundwave>();
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override Vector2? HoldoutOffset()

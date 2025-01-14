@@ -2,7 +2,6 @@
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {

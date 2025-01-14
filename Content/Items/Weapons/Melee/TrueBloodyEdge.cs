@@ -1,10 +1,4 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -26,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;
             Item.height = 64;
-            Item.value = Item.buyPrice(0, 80, 0, 0);
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<TrueBloodyEdgeEnergySword>();
             Item.shootSpeed = 11f;
@@ -38,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 5);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Blood);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

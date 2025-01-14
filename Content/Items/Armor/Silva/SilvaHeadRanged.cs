@@ -1,15 +1,12 @@
 ﻿using CalamityMod.Items.Armor.Silva;
-using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Items;
+using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Placeables;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
@@ -21,9 +18,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             Item.width = 26;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 36; //96
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -55,6 +52,15 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawShadow = true;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<PlantyMush>(6).
+                AddIngredient<EffulgentFeather>(5).
+                AddIngredient<AscendantSpiritEssence>(2).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

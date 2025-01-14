@@ -1,20 +1,13 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Summon;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -36,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
 
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

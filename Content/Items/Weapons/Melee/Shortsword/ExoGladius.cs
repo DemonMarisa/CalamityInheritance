@@ -1,19 +1,11 @@
-﻿using CalamityMod.Items;
-using CalamityMod;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Rarities;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee.Shortswords;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -30,11 +22,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 9.9f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
             Item.shoot = ModContent.ProjectileType<ExoGladiusProj>();
             Item.shootSpeed = 4.8f;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

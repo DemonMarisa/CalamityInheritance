@@ -1,20 +1,14 @@
 ﻿using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Rogue
 {
@@ -25,9 +19,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         {
             Item.width = 46;
             Item.height = 46;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.accessory = true;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -1,24 +1,14 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -46,10 +36,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.width = 112;
             Item.height = 112;
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.value = CIShopValue.RarityPriceDonatorPink;
             Item.shoot = ModContent.ProjectileType<ElementalExcaliburBeam>();
             Item.shootSpeed = 6f;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.rare = ModContent.RarityType<DonatorPink>();
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

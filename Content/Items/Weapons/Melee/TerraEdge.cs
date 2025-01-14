@@ -1,17 +1,10 @@
 ﻿using CalamityMod.Items.Materials;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles.Melee;
-using Terraria.GameContent.Drawing;
 using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
@@ -29,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 6.25f;
             Item.UseSound = SoundID.Item1;
             Item.height = 58;
-            Item.value = Item.buyPrice(0, 80, 0, 0);
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<TerraEdgeEnergySword>();
             Item.shootSpeed = 3f;

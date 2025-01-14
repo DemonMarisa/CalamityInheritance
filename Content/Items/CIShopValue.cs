@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items
         public static int RarityPriceBlueGreen     => RarityPrice12; //蓝绿
         public static int RarityPriceAbsoluteGreen => RarityPrice13; //纯绿
         public static int RarityPriceDeepBlue      => RarityPrice14; //深蓝
-        public static int RarityPriceLegacyViolet  => RarityPrice15; //紫罗兰
+        public static int RarityPriceCatalystViolet  => RarityPrice15; //紫罗兰
         public static int RarityPriceDonatorPink   => RarityPrice16; //捐赠者
         public static int RarityPricePureRed       => RarityPrice17; //灾厄红
         #endregion 

@@ -1,26 +1,16 @@
-﻿using CalamityMod.Items;
-using CalamityMod.Items.Weapons.Rogue;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Items.Weapons.Rogue;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
-using CalamityMod.Rarities;
-using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System.Text.RegularExpressions;
-using CalamityMod.Projectiles.Rogue;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -39,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.UseSound = SoundID.Item1;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;

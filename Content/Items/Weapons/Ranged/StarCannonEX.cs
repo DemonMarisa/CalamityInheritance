@@ -1,10 +1,5 @@
 ﻿using CalamityMod.Projectiles.Typeless;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Lime;
             Item.noMelee = true;
             Item.knockBack = 8f;
-            Item.value = Item.buyPrice(0, 60, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<FallenStarProj>();

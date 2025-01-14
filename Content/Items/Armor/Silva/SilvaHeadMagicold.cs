@@ -1,20 +1,12 @@
 ﻿using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
@@ -26,9 +18,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             Item.width = 24;
             Item.height = 22;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 21; //110
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

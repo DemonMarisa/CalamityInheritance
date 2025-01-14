@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.width = 28;
             Item.height = 32;
             Item.accessory = true;
-            Item.rare = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value= CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }
         

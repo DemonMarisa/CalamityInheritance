@@ -1,7 +1,6 @@
 ﻿using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod;
-using CalamityInheritance.Content.Items.Armor.ReaverLegacy;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,16 +13,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reaver Helm");
-            /* Tooltip.SetDefault("15% increased melee damage, 10% increased melee speed, and 5% increased melee critical strike chance\n" +
-                "10% increased movement speed and can move freely through liquids"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 28;
             Item.height = 30;
-            Item.value = Item.buyPrice(0, 30, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.defense = 27; //60
         }
@@ -41,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.reaverMeleeBlast = true;
             player.thorns += 0.33f;
@@ -55,15 +50,15 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage(DamageClass.Melee) += 0.10f;
+            player.GetDamage<MeleeDamageClass>() += 0.10f;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),8)
+            .AddIngredient<PerennialBar>(8)
             .AddIngredient(ItemID.JungleSpores, 8)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
+            .AddIngredient<EssenceofEleum>(2)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

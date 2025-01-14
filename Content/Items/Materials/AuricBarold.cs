@@ -1,15 +1,10 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Rarity;
 using CalamityMod.Tiles;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -50,8 +45,8 @@ namespace CalamityInheritance.Content.Items.Materials
         public override void SetDefaults()
         {
             Item.DefaultToPlaceableTile(ModContent.TileType<AuricTeslaBar>());
-            Item.value = Item.sellPrice(gold: 60);
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)

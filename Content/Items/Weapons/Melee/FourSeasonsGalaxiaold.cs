@@ -8,11 +8,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -20,10 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Galaxia(old)");
-            /* Tooltip.SetDefault("Fires a spread of homing projectiles that inflict different debuffs depending on what biome you're in\n" +
-                "Upon hitting an enemy you are granted a buff based on what biome you're in\n" +
-                "Projectiles also change based on moon events"); */
         }
 
         public override void SetDefaults()
@@ -38,8 +32,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 70;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.rare = ModContent.RarityType<DeepBlue>();
             Item.shoot = ModContent.ProjectileType<Galaxia>();
             Item.shootSpeed = 24f;
         }
@@ -61,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(5))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
             }
         }
 

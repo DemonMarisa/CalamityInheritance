@@ -1,8 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -11,18 +9,13 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Xeroc Plate Mail");
-            /* Tooltip.SetDefault("+20 max life and mana\n" +
-                "6% increased movement speed\n" +
-                "7% increased rogue damage and critical strike chance\n" +
-                "Armor of the cosmos"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
+            Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
             Item.defense = 27;
         }

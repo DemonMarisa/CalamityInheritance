@@ -1,13 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Pets;
-using CalamityMod.Rarities;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,9 +20,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Orange;
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.shoot = ModContent.ProjectileType<LeechingDaggerProj>();
             Item.shootSpeed = 3f;
-            Item.rare = ModContent.RarityType<Violet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

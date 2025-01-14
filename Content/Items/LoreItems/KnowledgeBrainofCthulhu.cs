@@ -1,12 +1,6 @@
-﻿using CalamityMod.Items;
-using CalamityMod;
-using CalamityMod.Items.Materials;
-using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
 using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.LoreItems

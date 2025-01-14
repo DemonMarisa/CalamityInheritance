@@ -1,14 +1,10 @@
 ﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items;
+using CalamityInheritance.Rarity;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using System;
@@ -23,8 +19,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Void Vortex");
-            // Tooltip.SetDefault("Fires a circular spread of magnetic orbs around the mouse cursor");
             Item.staff[Item.type] = true;
         }
 
@@ -40,14 +34,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 0f;
-            Item.value = Item.buyPrice(2, 50, 0, 0);
-            Item.rare = ItemRarityID.Red;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<Climax2>();
             Item.shootSpeed = 12f;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

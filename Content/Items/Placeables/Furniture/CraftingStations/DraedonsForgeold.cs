@@ -1,14 +1,8 @@
 ﻿using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
-using CalamityMod.Rarities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
@@ -25,9 +19,9 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
-            Item.value = 5000000;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.createTile = ModContent.TileType<Tiles.Furniture.CraftingStations.DraedonsForgeold>();
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override void AddRecipes()

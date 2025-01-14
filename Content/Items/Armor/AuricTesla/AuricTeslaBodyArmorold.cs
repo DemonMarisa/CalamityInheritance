@@ -3,14 +3,7 @@ using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
@@ -19,6 +12,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -40,9 +34,9 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             Item.width = 38;
             Item.height = 34;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.defense = 48;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override void UpdateEquip(Player player)

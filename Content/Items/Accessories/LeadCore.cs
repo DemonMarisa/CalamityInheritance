@@ -1,10 +1,4 @@
 ﻿using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -18,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.width = 26;
             Item.height = 26;
             Item.rare = ItemRarityID.Pink;
-            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            Item.value = CIShopValue.RarityPricePink;
             Item.accessory = true;
         }
 

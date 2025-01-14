@@ -1,5 +1,4 @@
-﻿using CalamityInheritance;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
@@ -14,16 +13,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reaver Mask");
-            /* Tooltip.SetDefault("15% increased magic damage, 12% reduced mana cost, and 5% increased magic critical strike chance\n" +
-                "10% increased movement speed, can move freely through liquids, and +80 max mana"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 22;
-            Item.value = Item.buyPrice(0, 30, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
             Item.defense = 7; //40
         }

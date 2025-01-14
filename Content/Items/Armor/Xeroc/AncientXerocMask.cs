@@ -3,10 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Buffs.StatBuffs; 
-using CalamityMod.CalPlayer;
 using CalamityInheritance.Utilities;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -15,10 +12,6 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Xeroc Mask");
-            /* Tooltip.SetDefault("11% increased rogue damage and critical strike chance\n" +
-                "Immune to lava, cursed, fire, cursed inferno, and chilled\n" +
-                "Wrath of the cosmos"); */
         }
 
         public override void SetDefaults()

@@ -1,19 +1,8 @@
-﻿using CalamityMod.Items;
-using CalamityMod.NPCs;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.NPCs;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
@@ -32,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 77f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityRedBuyPrice;
+            Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ItemRarityID.Red;
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

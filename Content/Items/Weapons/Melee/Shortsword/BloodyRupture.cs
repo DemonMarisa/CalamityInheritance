@@ -1,14 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Pets;
 using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
@@ -26,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = Item.buyPrice(0, 4, 0, 0);
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<BloodyRuptureProj>();
             Item.shootSpeed = 3f;

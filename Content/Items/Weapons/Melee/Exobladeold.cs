@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items;
+using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -28,11 +26,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 114;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.shoot = ModContent.ProjectileType<Exobeamold>();
             Item.shootSpeed = 19f;
-            Item.rare = ModContent.RarityType<Violet>();
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

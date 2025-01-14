@@ -1,20 +1,13 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.Projectiles.Summon.Umbrella;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Summon.Umbrella;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -31,8 +24,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.useTime = Item.useAnimation = 10;
             Item.noMelee = true;
             Item.knockBack = 1f;
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.value = CIShopValue.RarityPriceDonatorPink;
+            Item.rare = ModContent.RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item68;
             Item.shoot = ModContent.ProjectileType<MagicHatOld>();
             Item.shootSpeed = 10f;

@@ -1,17 +1,11 @@
-﻿using CalamityInheritance;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Rarities;
-using Mono.Cecil;
 using CalamityInheritance.Buffs.Summon;
-using CalamityMod.Buffs.Pets;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 
@@ -22,18 +16,14 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reaver Helmet");
-            /* Tooltip.SetDefault("5% increased minion damage, +2 max minions, and increased minion knockback\n" +
-                "10% increased movement speed and can move freely through liquids"); */
-
         }
 
         public override void SetDefaults()
         {
             Item.width = 22;
             Item.height = 22;
-            Item.value = Item.buyPrice(0, 30, 0, 0);
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceLime;
+            Item.rare = ItemRarityID.Lime;
             Item.defense = 7; //40
         }
 
@@ -70,20 +60,17 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
                     Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
                 }
             }
-            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 1.2f;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 1.19f;
             player.GetDamage<SummonDamageClass>() += 0.24f; // 40%召唤伤害，无栏位
-            player.whipRangeMultiplier += 1.2f;
+            player.whipRangeMultiplier += 1.19f;
         }
 
         public override void UpdateEquip(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             player.ignoreWater = true;
             player.GetDamage<SummonDamageClass>() += 0.01f;
-            player.GetCritChance<RangedDamageClass>() += 1;
-            player.GetAttackSpeed<MeleeDamageClass>() +=0.01f;
-            player.manaCost *=0.99f;
-            modPlayer.rogueStealthMax += 0.01f;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.01f;
+            player.whipRangeMultiplier += 0.01f;
         }
 
         public override void AddRecipes()

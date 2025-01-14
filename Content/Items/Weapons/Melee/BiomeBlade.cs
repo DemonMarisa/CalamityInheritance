@@ -10,8 +10,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Biome Blade(old)");
-            // Tooltip.SetDefault("Fires different projectiles based on what biome you're in");
         }
 
         public override void SetDefaults()
@@ -26,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 42;
-            Item.value = Item.buyPrice(0, 4, 0, 0);
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<BiomeOrb>();
             Item.shootSpeed = 12f;
@@ -38,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(5))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 0);
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
             }
         }
         public override void AddRecipes()

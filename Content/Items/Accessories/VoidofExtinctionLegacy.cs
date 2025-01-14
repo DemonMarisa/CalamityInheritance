@@ -1,9 +1,6 @@
-﻿using CalamityMod.Rarities;
-using CalamityMod;
-using CalamityMod.Items;
+﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -24,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 26;
             Item.height = 26;
-            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.accessory = true;
             Item.defense = 12;

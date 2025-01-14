@@ -1,18 +1,11 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -42,10 +35,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.knockBack = 0.5f;
             Item.UseSound = SoundID.Item102;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<SparkInfernalold>();
             Item.shootSpeed = 24f;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override Vector2? HoldoutOrigin()

@@ -1,21 +1,15 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using log4net.Core;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -28,8 +22,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.width = 26;
             Item.height = 26;
             Item.accessory = true;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.value = CIShopValue.RarityPriceBlueGreen;
+            Item.rare = ModContent.RarityType<BlueGreen>();
         }
 
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AstralArcanumUIHotkey);

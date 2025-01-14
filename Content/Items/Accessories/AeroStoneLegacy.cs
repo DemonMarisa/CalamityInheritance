@@ -6,7 +6,6 @@ using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
-using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -23,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 40;
             Item.height = 50;
-            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.accessory = true;
         }

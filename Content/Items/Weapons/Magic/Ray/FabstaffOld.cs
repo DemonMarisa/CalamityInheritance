@@ -1,18 +1,11 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -35,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5f;
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.value = CIShopValue.RarityPriceDonatorPink;
+            Item.rare = ModContent.RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<FabRayOld>();

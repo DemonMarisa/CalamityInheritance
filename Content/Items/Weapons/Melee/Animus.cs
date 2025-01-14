@@ -1,18 +1,11 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -37,9 +30,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 20f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.rare = ModContent.RarityType<HotPink>();
-            Item.rare = ItemRarityID.Red;
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.value = CIShopValue.RarityPriceDonatorPink;
         }
 
         

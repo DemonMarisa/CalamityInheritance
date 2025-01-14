@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 5f;
             Item.rare = ItemRarityID.Red;
-            Item.rare = ModContent.RarityType<Violet>();
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<EnormousConsumingVortexold>();
             Item.shootSpeed = 7f;

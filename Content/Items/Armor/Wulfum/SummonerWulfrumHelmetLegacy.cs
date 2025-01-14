@@ -1,9 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items;
-using Terraria.GameContent.UI;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
@@ -12,16 +10,13 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Wulfrum Helmet");
-            /* Tooltip.SetDefault("6% increased minion damage\n" +
-                               "+1 max minion"); */
         }
 
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
         }
 

@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -17,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.defense = 20;
             Item.width = 20;
             Item.height = 22;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.value = CIShopValue.RarityPriceLime;
             Item.accessory = true;
             Item.rare = ItemRarityID.Lime;
         }
