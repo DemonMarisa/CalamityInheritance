@@ -35,6 +35,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
+            player.pStone = true;
+            player.longInvince =true;
             modPlayer1.deificAmuletEffect = true; //启用神圣护符的加成。
             modPlayer1.RoDPaladianShieldActive = true; //启用帕拉丁盾
             player.lifeRegen += 3;

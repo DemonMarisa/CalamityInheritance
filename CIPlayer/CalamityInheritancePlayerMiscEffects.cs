@@ -174,8 +174,6 @@ namespace CalamityInheritance.CIPlayer
             }
             if (deificAmuletEffect)
             {
-                Player.pStone = true;
-                Player.longInvince = true;
                 Player.lifeRegen += 1; //生命恢复
             }
             if (RoDPaladianShieldActive) //如果佩戴壁垒
