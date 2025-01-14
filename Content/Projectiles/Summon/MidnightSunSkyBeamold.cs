@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.tileCollide = false;
             Projectile.timeLeft = TrueTimeLeft;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 10;
         }
 
         // Netcode for sending and receiving shit

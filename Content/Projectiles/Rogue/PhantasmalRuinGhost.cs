@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantasmalRuinGhost : ModProjectile, ILocalizedModType
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public new string LocalizationCategory => "Projectiles.Rogue";
         public override void SetDefaults()
         {
@@ -34,8 +40,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             // The projectile rapidly fades in as it starts existing
             if (Projectile.timeLeft >= 207)
-                Projectile.alpha += 6;
+                Projectile.alpha -= 6;
 
+            if (Projectile.timeLeft <= 25)
+                Projectile.alpha += 9;
             CalamityUtils.HomeInOnNPC(Projectile, true, 300f, 12f, 40f);
         }
 
@@ -48,6 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
             return false;
         }
     }

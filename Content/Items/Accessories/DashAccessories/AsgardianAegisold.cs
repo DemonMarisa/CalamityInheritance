@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddTile<CosmicAnvil>().
                 Register();
             CreateRecipe().
-                AddIngredient<AsgardianAegisold>().
+                AddIngredient<AsgardsValorold>().
                 AddIngredient<ElysianAegisold>().
                 AddIngredient<CosmiliteBar>(10).
                 AddIngredient<AscendantSpiritEssence>(4).

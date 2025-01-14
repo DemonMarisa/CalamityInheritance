@@ -292,6 +292,11 @@ Items: {
 				Tooltip: ""
 			}
 		}
+
+		PlagueHive: {
+			DisplayName: Plague Hive
+			Tooltip: ""
+		}
 	}
 
 	AsgardsValorold: {
@@ -1380,6 +1385,11 @@ Items: {
 				DisplayName: Soul Edge
 				Tooltip: ""
 			}
+
+			AtaraxiaOld: {
+				DisplayName: Ataraxia Old
+				Tooltip: ""
+			}
 		}
 
 		Ranged: {
@@ -2072,6 +2082,36 @@ Items: {
 		DisplayName: Statis Void Sash
 		Tooltip: ""
 	}
+
+	TyrantPart1: {
+		DisplayName: Tyrant Part1
+		Tooltip: ""
+	}
+
+	DoGLegacy: {
+		DisplayName: Do G Legacy
+		Tooltip: ""
+	}
+
+	DoGNonStop: {
+		DisplayName: Do G Non Stop
+		Tooltip: ""
+	}
+
+	NowStopAskingWhere: {
+		DisplayName: Now Stop Asking Where
+		Tooltip: ""
+	}
+
+	ProvidenceLegacy: {
+		DisplayName: Providence Legacy
+		Tooltip: ""
+	}
+
+	StreamGougeOld: {
+		DisplayName: Stream Gouge Old
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -2138,6 +2178,11 @@ Projectiles: {
 		SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
 		SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
 		SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
+		AtaraxiaHoming.DisplayName: Ataraxia Homing
+		AtaraxiaMainOld.DisplayName: Ataraxia Main Old
+		AtaraxiaSideOld.DisplayName: Ataraxia Side Old
+		AtaraxiaSplitOld.DisplayName: Ataraxia Split Old
+		StreamGougeProjOld.DisplayName: Stream Gouge Proj Old
 	}
 
 	ElementBall.DisplayName: 元素之球
@@ -2269,6 +2314,8 @@ Projectiles: {
 	MagicUmbrellaOld.DisplayName: Magic Umbrella Old
 	ReaverBlast.DisplayName: Reaver Blast
 	ReaverOrbOld.DisplayName: Reaver Orb Old
+	EssenceBeam.DisplayName: Essence Beam
+	StreamGougeProjOld.DisplayName: Stream Gouge Proj Old
 }
 
 Configs: {
@@ -2278,6 +2325,7 @@ Configs: {
 		Headers: {
 			Gameplay: 游戏设置
 			Texture: Texture Header
+			Music: Music Header
 		}
 
 		ElementalQuiversplit: {
@@ -2357,6 +2405,11 @@ Configs: {
 
 		RampartofDeitiesTexture: {
 			Label: Rampartof Deities Texture
+			Tooltip: ""
+		}
+
+		ExtraMusic: {
+			Label: Extra Music
 			Tooltip: ""
 		}
 	}

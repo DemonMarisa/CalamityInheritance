@@ -50,7 +50,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             player.GetCritChance(DamageClass.Ranged) += 15;
             player.ammoCost80 = true;
             player.lifeRegen += 4;
-            player.statDefense += 30;
             player.pickSpeed -= 0.15f;
             if (!modPlayer.deadshotBrooch)
                 modplayer.CIdeadshotBrooch = true;

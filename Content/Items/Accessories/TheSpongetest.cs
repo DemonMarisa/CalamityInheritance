@@ -204,6 +204,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient<RoverDrive>().
+                AddIngredient<AmidiasSpark>().
                 AddIngredient<MysteriousCircuitry>(10).
                 AddIngredient<DubiousPlating>(20).
                 AddIngredient<CosmiliteBar>(5).

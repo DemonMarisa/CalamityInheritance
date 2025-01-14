@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     vector3.Y *= 12f;
                     for (int i = 0; i < 40; i++)
                     {
-                        Dust.NewDust(vector2, 20, 20, 247, vector3.X / 2f, vector3.Y / 2f, 0, default(Color), 1f);
+                        Dust.NewDust(vector2, 20, 20, DustID.PlatinumCoin, vector3.X / 2f, vector3.Y / 2f, 0, default(Color), 1f);
                     }
                     Projectile.position = vector2;
                     Projectile.velocity = vector3;

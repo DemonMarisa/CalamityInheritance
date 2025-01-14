@@ -77,7 +77,9 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool LegendaryitemsRecipes { get; set; }
+
         #endregion
+
         [Header("Texture")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
@@ -99,5 +101,10 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int RampartofDeitiesTexture { get; set; }
+
+        [Header("Music")]
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool ExtraMusic { get; set; }
     }
 }

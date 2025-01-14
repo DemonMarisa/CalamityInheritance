@@ -24,6 +24,7 @@ using CalamityMod.UI;
 using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
+using CalamityModMusic.Items.Placeables;
 
 namespace CalamityInheritance
 {
@@ -35,6 +36,7 @@ namespace CalamityInheritance
         public override void Load()
         {
             Instance = this;
+
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
 

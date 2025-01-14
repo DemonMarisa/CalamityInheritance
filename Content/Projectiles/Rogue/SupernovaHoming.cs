@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -97,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
                 rotate = rotate.RotatedBy((double)((float)(i - (constant / 2 - 1)) * 6.28318548f / (float)constant), default) + Projectile.Center;
                 Vector2 faceDirection = rotate - Projectile.Center;
-                int dust = Dust.NewDust(rotate + faceDirection, 0, 0, 234, faceDirection.X * 0.5f, faceDirection.Y * 0.5f, 100, default, 0.75f);
+                int dust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.BoneTorch, faceDirection.X * 0.5f, faceDirection.Y * 0.5f, 100, default, 0.75f);
                 Main.dust[dust].noGravity = true;
             }
         }
