@@ -287,7 +287,7 @@ Items: {
 			DisplayName: Daedalus Emblem
 			Tooltip:
 				'''
-				+5 defense and 1 HP/s regen speed
+				+1 HP/s life regen speed
 				10% increased ranged damage, 5% increased ranged critical strike chance
 				20% not consumed ammo
 				Greatly increased ranged projectiles speed
@@ -2064,18 +2064,42 @@ Items: {
 	}
 
 	ReaverCap: {
-		DisplayName: Reaver Cap
-		Tooltip: ""
+		DisplayName: Reaver Cap Legacy
+		Tooltip:
+			'''
+			10% increased rogue damage
+			5% increased rogue projectiles velocity
+			'''
+		SetBonus:
+			'''
+			+115 max stealth
+			10% increased rogue critical strike chance, 20% increased movement speed
+			Your rogue projectiles will create life bolt on enemy hits
+			'''	
 	}
 
 	ReaverCuisses: {
-		DisplayName: Reaver Cuisses
-		Tooltip: ""
+		DisplayName: Reaver Cuisses Legacy
+		Tooltip:
+			'''
+			5% increased damage and critical strike chance
+			'''
 	}
 
 	ReaverHelm: {
-		DisplayName: Reaver Helm
-		Tooltip: ""
+		DisplayName: Reaver Helm Legacy
+		Tooltip:
+			'''
+			10% increased melee damage
+			Ability to swim 
+			'''
+		SetBonus:
+			'''
+			30% increased melee speed, 15% increased melee critical strike chance
+			20% increased movement speed
+			Active Reaver Rage if under attack, which will boost your melee speed and damage by 10%
+			Enemies will take some damage when they hit you
+			'''
 	}
 
 	ReaverHelmet: {
@@ -2239,8 +2263,17 @@ Items: {
 	}
 
 	StatisBeltOfCurses: {
-		DisplayName: Statis Belt Of Curses
-		Tooltip: ""
+		DisplayName: Statis' Belt Of Curses
+		Tooltip:
+			'''
+			12% increased damage, 8% increased critical strike chance
+			+4 max minions, dose not stack with downgrades
+			32% increased jump speed, 10% increased movement speed
+			Grants immunity to fall damage
+			Can climb wall, dash, and dodge attacks
+			This dash is weaker than original one, but will spawns more scythes if you dash
+			Uses the same dodge mechanic as Vanilia
+			'''
 	}
 
 	FungalCarapace: {
@@ -2290,7 +2323,16 @@ Items: {
 
 	StatisVoidSash: {
 		DisplayName: Statis Void Sash
-		Tooltip: ""
+		Tooltip:
+			'''
+			12% increased damage, 8% increased critical strike chance
+			+4 max minions, dose not stack with downgrades
+			32% increased jump speed, 10% increased movement speed
+			Grants immunity to fall damage
+			Can climb wall, dash, and dodge attacks
+			This dash is weaker than original one, but will spawns more scythes if you dash
+			Uses the same dodge mechanic as Vanilia 
+			'''
 	}
 
 	TyrantPart1: {

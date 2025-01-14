@@ -1,19 +1,15 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.CalPlayer;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.CalPlayer;
 using CalamityMod;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using Terraria.ID;
 using Terraria.DataStructures;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer.Dash;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -31,8 +27,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.width = 28;
             Item.height = 32;
             Item.accessory = true;
-            Item.value= CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.value= CIShopValue.RarityPriceDeepBlue;
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
         
         public override void UpdateAccessory(Player player, bool hideVisual)
