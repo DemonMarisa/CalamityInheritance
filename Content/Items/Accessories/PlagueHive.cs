@@ -1,12 +1,6 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
@@ -21,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 42;
             Item.height = 48;
-            Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
+            Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
             Item.accessory = true;
         }

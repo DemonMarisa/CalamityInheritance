@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 50;
-            Item.value = Item.buyPrice(0, 48, 0, 0);
+            Item.value = CIShopValue.RarityPriceLightPurple;
             Item.rare = ItemRarityID.LightPurple;
             Item.shoot = ModContent.ProjectileType<Projectiles.Melee.EonBeam>();
             Item.shootSpeed = 7f;

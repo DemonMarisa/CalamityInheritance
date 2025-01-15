@@ -9,7 +9,6 @@ namespace CalamityInheritance.Content.Items.Tools
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Wulfrum Pickaxe");
         }
 
         public override void SetDefaults()

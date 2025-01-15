@@ -1,15 +1,7 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -17,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -38,8 +31,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
 
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.Calamity().donorItem = true;
 
             Item.shoot = ModContent.ProjectileType<AtaraxiaMainOld>();

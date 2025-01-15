@@ -13,8 +13,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Animus");
-            // Tooltip.SetDefault("Randomizes its damage on enemy hits");
         }
 
         public override void SetDefaults()

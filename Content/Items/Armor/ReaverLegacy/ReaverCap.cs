@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void SetDefaults()
         {
             Item.width = 22;
-            Item.height = 22;
+            Item./*  */height = 22;
             Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
             Item.defense = 10; //43
@@ -37,9 +37,9 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void UpdateArmorSet(Player player)
         {
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
-            player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer.rogueStealthMax += 1.15f;
             modPlayer1.reaverRogueExProj = true;
             player.moveSpeed += 0.2f;
