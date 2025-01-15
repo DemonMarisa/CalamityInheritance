@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
-            Item.value = CIShopValue.RarityPriceOrange);
+            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item11;
             Item.autoReuse = true;
