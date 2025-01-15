@@ -146,13 +146,14 @@ namespace CalamityInheritance.CIPlayer
 
             if (darkSunRingold)
             {
+                Player.lifeRegen += 2;
                 Player.maxMinions += 2;
                 Player.GetDamage<GenericDamageClass>() += 0.12f;
                 Player.GetKnockback<SummonDamageClass>() += 1.2f;
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                 Player.pickSpeed -= 0.12f;
                 if (Main.eclipse || !Main.dayTime)
-                    Player.statDefense += Main.eclipse ? 20 : 20;
+                    Player.statDefense += Main.eclipse ? 30 : 20;
             }
             if (animusBoost > 1f)
             {

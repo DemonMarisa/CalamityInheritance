@@ -18,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 60;
             Item.height = 64;
             Item.scale = 1.5f;
+            Item.useTurn = true;
             Item.damage = 190;
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 10;

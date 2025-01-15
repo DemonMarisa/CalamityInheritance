@@ -42,8 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             if (Projectile.owner == Main.myPlayer)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, ModContent.ProjectileType<EssenceBeam>(), damage * 4, kb, Projectile.owner, 0f, 0f);
 
-            // Play a screaming soul sound effect (unused Shadowflame Hex Doll noise)
-            SoundEngine.PlaySound(SoundID.Item104, Projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item20, Projectile.Center);
 
             // Create a circle of purple dust where the projectile comes out, looking like the edge of a portal
             int circleDust = 18;

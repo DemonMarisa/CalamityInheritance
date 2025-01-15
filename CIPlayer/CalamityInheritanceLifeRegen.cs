@@ -50,7 +50,7 @@ namespace CalamityInheritance.CIPlayer
             if (darkSunRingold)
             {
                 if (Main.eclipse || Main.dayTime)
-                    Player.lifeRegen += Main.eclipse ? 3 : 3;
+                    Player.lifeRegen += Main.eclipse ? 6 : 6;
             }
         }
         #endregion

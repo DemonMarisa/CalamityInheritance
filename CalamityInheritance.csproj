@@ -8,6 +8,8 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Items.Weapons.DraedonsArsenal.hjson" />
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Projectiles.Misc.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Status.hjson" />
 	  <AdditionalFiles Remove="Localization\Mods.CalamityMod.UI.hjson" />
 	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Status.hjson" />

@@ -168,7 +168,7 @@ namespace CalamityInheritance.System
 
                     if (NoFade)
                     {
-                        Main.musicFade[CurrentEvent.Song] = 1f;
+                        //Main.musicFade[CurrentEvent.Song] = 1f;
                         NoFade = false;
                     }
 

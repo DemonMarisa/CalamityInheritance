@@ -1,0 +1,69 @@
+﻿using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.Melee;
+
+namespace CalamityInheritance.Content.Items.Weapons.Melee
+{
+    public class NeptunesBountyOld : ModItem, ILocalizedModType
+    {
+        public new string LocalizationCategory => "Items.Weapons.Melee";
+        public override void SetDefaults()
+        {
+            Item.width = 122;
+            Item.height = 122;
+            Item.damage = 270;
+            Item.DamageType = DamageClass.Melee;
+            Item.useAnimation = 22;
+            Item.useTime = 22;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 9f;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<NeptuneOrb>();
+            Item.shootSpeed = 12f;
+
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<PureGreen>();
+        }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 33);
+            }
+        }
+
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+        }
+
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<AbyssBlade>().
+                AddIngredient<ReaperTooth>(6).
+                AddIngredient<RuinousSoul>(5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+        }
+    }
+}
