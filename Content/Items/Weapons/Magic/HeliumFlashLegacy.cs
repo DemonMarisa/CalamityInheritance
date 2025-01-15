@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HeliumFlashLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         internal const float ExplosionDamageMultiplier = 0.65f;
 
         public override void SetStaticDefaults()

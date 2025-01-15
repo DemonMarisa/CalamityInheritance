@@ -1,0 +1,89 @@
+ReaverMagePower: {
+	DisplayName: Reaver Mage Power
+	Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+}
+
+ReaverMeleeRage: {
+	DisplayName: Reaver Melee Rage
+	Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+}
+
+ArmorShattering: {
+	DisplayName: Armor Shattering
+	Description: Mods.CalamityInheritance.Buffs.ArmorShattering.Description
+}
+
+CadancesGrace: {
+	DisplayName: Cadances Grace
+	Description: Mods.CalamityInheritance.Buffs.CadancesGrace.Description
+}
+
+DraconicSurgeBuff: {
+	DisplayName: Draconic Surge Buff
+	Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
+}
+
+HolyWrathBuff: {
+	DisplayName: Holy Wrath Buff
+	Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
+}
+
+Invincible: {
+	DisplayName: Invincible
+	Description: Mods.CalamityInheritance.Buffs.Invincible.Description
+}
+
+PenumbraBuff: {
+	DisplayName: Penumbra Buff
+	Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
+}
+
+ProfanedRageBuff: {
+	DisplayName: Profaned Rage Buff
+	Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
+}
+
+Revivify: {
+	DisplayName: Revivify
+	Description: Mods.CalamityInheritance.Buffs.Revivify.Description
+}
+
+TitanScale: {
+	DisplayName: Titan Scale
+	Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
+}
+
+TriumphBuff: {
+	DisplayName: Triumph Buff
+	Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
+}
+
+YharimPower: {
+	DisplayName: Yharim Power
+	Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
+}
+
+ElysianGuard: {
+	DisplayName: Elysian Guard
+	Description: Mods.CalamityInheritance.Buffs.ElysianGuard.Description
+}
+
+SilvaStun: {
+	DisplayName: Silva Stun
+	Description: Mods.CalamityInheritance.Buffs.SilvaStun.Description
+}
+
+MagicHatBuffOld: {
+	DisplayName: Magic Hat Buff Old
+	Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+}
+
+MidnightSunBuffOld: {
+	DisplayName: Midnight Sun Buff Old
+	Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+}
+
+ReaverSummonSetBuff: {
+	DisplayName: Reaver Summon Set Buff
+	Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
+}

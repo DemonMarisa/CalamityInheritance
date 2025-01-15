@@ -1,1 +1,119 @@
+Animus: {
+	DisplayName: Animus
+	Tooltip: ""
+}
 
+ArkoftheAncients: {
+	DisplayName: Arkofthe Ancients
+	Tooltip: ""
+}
+
+ArkoftheCosmosold: {
+	DisplayName: Arkofthe Cosmosold
+	Tooltip: ""
+}
+
+ArkoftheElementsold: {
+	DisplayName: Arkofthe Elementsold
+	Tooltip: ""
+}
+
+AtaraxiaOld: {
+	DisplayName: Ataraxia Old
+	Tooltip: ""
+}
+
+BiomeBlade: {
+	DisplayName: Biome Blade
+	Tooltip: ""
+}
+
+BladeofEnmity: {
+	DisplayName: Bladeof Enmity
+	Tooltip: ""
+}
+
+BloodyEdge: {
+	DisplayName: Bloody Edge
+	Tooltip: ""
+}
+
+ElementalExcalibur: {
+	DisplayName: Elemental Excalibur
+	Tooltip: ""
+}
+
+Exobladeold: {
+	DisplayName: Exobladeold
+	Tooltip: ""
+}
+
+ExoFlail: {
+	DisplayName: Exo Flail
+	Tooltip: ""
+}
+
+FourSeasonsGalaxiaold: {
+	DisplayName: Four Seasons Galaxiaold
+	Tooltip: ""
+}
+
+GrandDad: {
+	DisplayName: Grand Dad
+	Tooltip: ""
+}
+
+MurasamaNeweffect: {
+	DisplayName: Murasama Neweffect
+	Tooltip: ""
+}
+
+Murasamaold: {
+	DisplayName: Murasamaold
+	Tooltip: ""
+}
+
+NeptunesBountyOld: {
+	DisplayName: Neptunes Bounty Old
+	Tooltip: ""
+}
+
+OmegaBiomeBlade: {
+	DisplayName: Omega Biome Blade
+	Tooltip: ""
+}
+
+SoulEdge: {
+	DisplayName: Soul Edge
+	Tooltip: ""
+}
+
+StreamGougeOld: {
+	DisplayName: Stream Gouge Old
+	Tooltip: ""
+}
+
+TerraEdge: {
+	DisplayName: Terra Edge
+	Tooltip: ""
+}
+
+TrueArkoftheAncients: {
+	DisplayName: True Arkofthe Ancients
+	Tooltip: ""
+}
+
+TrueBiomeBlade: {
+	DisplayName: True Biome Blade
+	Tooltip: ""
+}
+
+TrueBloodyEdge: {
+	DisplayName: True Bloody Edge
+	Tooltip: ""
+}
+
+Test: {
+	DisplayName: Test
+	Tooltip: ""
+}

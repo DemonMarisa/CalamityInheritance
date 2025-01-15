@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
 {
-    public class ExplosiveShotgunShell : ModProjectile
+    public class ExplosiveShotgunShell : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Explosive Shotgun Shell");

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity
     [AutoloadEquip(EquipType.Legs)]
     public class AncientOmegaBlueLeggings: ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Vanity";
+        public new string LocalizationCategory => "Content.Items.Vanity";
         public override void SetDefaults()
         {
             Item.width = 28;

@@ -16,7 +16,8 @@ namespace CalamityInheritance.Tiles.MusicBox
 	// See ExampleMod/Common/Systems/MusicLoadingSystem for an explanation on music.
 	public class DoGNonStopBox: ModTile
 	{
-		public override void SetStaticDefaults() {
+        public new string LocalizationCategory => "Tiles.MusicBox";
+        public override void SetStaticDefaults() {
 			Main.tileFrameImportant[Type] = true;
 			Main.tileObsidianKill[Type] = true;
 			TileID.Sets.DisableSmartCursor[Type] = true;

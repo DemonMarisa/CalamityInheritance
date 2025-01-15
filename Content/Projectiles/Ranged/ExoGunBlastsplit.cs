@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ExoGunBlastsplit : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         private Vector2 randomPos;
 
         private Vector2 direction;

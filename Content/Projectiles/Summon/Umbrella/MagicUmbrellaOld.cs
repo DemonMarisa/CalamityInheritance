@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
     public class MagicUmbrellaOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         private int counter = 0;
         private bool canHome = false;
         public override void SetStaticDefaults()

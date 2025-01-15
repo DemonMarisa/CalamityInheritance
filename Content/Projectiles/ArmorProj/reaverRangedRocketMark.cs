@@ -6,7 +6,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class reaverRangedRocketMark : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public Player Owner => Main.player[Projectile.owner];
         public override string Texture => "CalamityInheritance/Content/Projectiles/ArmorProj/MiniRocket";
         public override void SetDefaults()

@@ -7,8 +7,8 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
 	public class DoGLegacy: ModItem, ILocalizedModType
 	{
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
-		public override void SetStaticDefaults() {
+        public new string LocalizationCategory => "Content.Items.Placeables.MusicBox";
+        public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/DoGLegacy"), ModContent.ItemType<DoGLegacy>(), ModContent.TileType<DoGLegacyBox>());
 		}

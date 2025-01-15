@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class Supernovaold : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static readonly SoundStyle ExplosionSound = new("CalamityMod/Sounds/Item/SupernovaBoom") { Volume = 0.8f };
         public override void SetDefaults()
         {

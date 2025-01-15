@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SpearofDestinyProjectileLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/SpearofDestinyLegacy";
 
         private bool initialized = false;

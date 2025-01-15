@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 {
     public class MidnightSunBeamold : ModProjectile, ILocalizedModType 
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         // How long this laser can exist before it is deleted.
         public const int TrueTimeLeft = 120;
 

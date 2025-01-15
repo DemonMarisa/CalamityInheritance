@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class MurasamaSlashnew1 : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<Murasama>();
         private Player Owner => Main.player[Projectile.owner];
         public ref int hitCooldown => ref Main.player[Projectile.owner].Calamity().murasamaHitCooldown;

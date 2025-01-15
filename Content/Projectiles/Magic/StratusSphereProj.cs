@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class StratusSphereProj : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         int roundsGone = 0;
         int dust_nut = 0;
         public override void SetStaticDefaults()

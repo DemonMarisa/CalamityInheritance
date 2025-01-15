@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class LeadCore : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.width = 26;

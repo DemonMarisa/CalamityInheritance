@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoFlailProj : BaseWhipProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public int Counter = 12;
 
         public override void SetDefaults()

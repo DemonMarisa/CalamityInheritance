@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
 {
     public class NanotechOld : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "ModContent.CalamityInheritance.Content.Items.Accessories.Rogue";
+        public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
         public override void SetDefaults()
         {
             Item.width = 46;

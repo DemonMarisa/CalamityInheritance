@@ -12,9 +12,9 @@ using CalamityMod.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
-    public class TerraBolt2 : ModProjectile
+    public class TerraBolt2 : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public const int Lifetime = 150;

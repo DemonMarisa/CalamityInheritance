@@ -6,7 +6,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ExoboompersistentoldRanged : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
         public override void SetDefaults()
         {

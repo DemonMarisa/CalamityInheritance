@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Murasamaold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public int frameCounter = 0;
         public int frame = 0;
         public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues";

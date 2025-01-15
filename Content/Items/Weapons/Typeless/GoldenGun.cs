@@ -7,13 +7,9 @@ using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
-    public class GoldenGun : ModItem
+    public class GoldenGun : ModItem, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Golden Gun");
-            // Tooltip.SetDefault("Shoots a straight line of ichor");
-        }
+        public new string LocalizationCategory => "Content.Items.Weapons.Typeless";
 
         public override void SetDefaults()
         {

@@ -1,0 +1,128 @@
+AeroStoneLegacy: {
+	DisplayName: Aero Stone Legacy
+	Tooltip: ""
+}
+
+ArcanumoftheVoid: {
+	DisplayName: Arcanumofthe Void
+	Tooltip: ""
+}
+
+AstralBulwark: {
+	DisplayName: Astral Bulwark
+	Tooltip: ""
+}
+
+CIRampartofDeities: {
+	DisplayName: C I Rampartof Deities
+	Tooltip: ""
+}
+
+CoreOfTheBloodGod: {
+	DisplayName: Core Of The Blood God
+	Tooltip: ""
+}
+
+DarkSunRingold: {
+	DisplayName: Dark Sun Ringold
+	Tooltip: ""
+}
+
+DashAccessories: {
+	AsgardianAegisold: {
+		DisplayName: Asgardian Aegisold
+		Tooltip: ""
+	}
+
+	AsgardsValorold: {
+		DisplayName: Asgards Valorold
+		Tooltip: ""
+	}
+
+	ElysianAegisold: {
+		DisplayName: Elysian Aegisold
+		Tooltip: ""
+	}
+
+	StatisNinjaBeltLegacy: {
+		DisplayName: Statis Ninja Belt Legacy
+		Tooltip: ""
+	}
+
+	StatisVoidSash: {
+		DisplayName: Statis Void Sash
+		Tooltip: ""
+	}
+}
+
+DeificAmuletLegacy: {
+	DisplayName: Deific Amulet Legacy
+	Tooltip: ""
+}
+
+FungalCarapace: {
+	DisplayName: Fungal Carapace
+	Tooltip: ""
+}
+
+GrandGelatinLegacy: {
+	DisplayName: Grand Gelatin Legacy
+	Tooltip: ""
+}
+
+LeadCore: {
+	DisplayName: Lead Core
+	Tooltip: ""
+}
+
+LeviathanAmbergrisLegacy: {
+	DisplayName: Leviathan Ambergris Legacy
+	Tooltip: ""
+}
+
+Melee: {
+	BadgeofBravery: {
+		DisplayName: Badgeof Bravery
+		Tooltip: ""
+	}
+
+	ElementalGauntletold: {
+		DisplayName: Elemental Gauntletold
+		Tooltip: ""
+	}
+
+	YharimsInsignia: {
+		DisplayName: Yharims Insignia
+		Tooltip: ""
+	}
+}
+
+PlagueHive: {
+	DisplayName: Plague Hive
+	Tooltip: ""
+}
+
+ReaperToothNecklaceold: {
+	DisplayName: Reaper Tooth Necklaceold
+	Tooltip: ""
+}
+
+TheSpongetest: {
+	DisplayName: The Spongetest
+	Tooltip: ""
+}
+
+VoidofExtinctionLegacy: {
+	DisplayName: Voidof Extinction Legacy
+	Tooltip: ""
+}
+
+YharimsGiftLegacy: {
+	DisplayName: Yharims Gift Legacy
+	Tooltip: ""
+}
+
+AstralArcanum: {
+	DisplayName: Astral Arcanum
+	Tooltip: ""
+}

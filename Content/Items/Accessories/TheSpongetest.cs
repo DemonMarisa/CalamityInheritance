@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
     public class TheSpongetest : ModItem, ILocalizedModType, IDyeableShaderRenderer
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override string Texture => (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) ? "CalamityMod/Items/Accessories/TheSpongeReal" : "CalamityMod/Items/Accessories/TheSponge";
 
         public static Asset<Texture2D> NoiseTex;

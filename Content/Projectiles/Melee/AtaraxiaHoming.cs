@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class AtaraxiaHoming : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         private static int NumAnimationFrames = 5;
         private static int AnimationFrameTime = 9;
         private static float HomingStartRange = 300f;

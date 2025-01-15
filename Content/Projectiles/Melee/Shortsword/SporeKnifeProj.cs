@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class SporeKnifeProj : BaseShortswordProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;

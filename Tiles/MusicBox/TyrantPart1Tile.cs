@@ -15,6 +15,7 @@ namespace CalamityInheritance.Tiles.MusicBox
 {
     public class TyrantPart1Tile : ModTile
     {
+        public new string LocalizationCategory => "Tiles.MusicBox";
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;

@@ -10,8 +10,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
-    public class BloodOrb : ModProjectile
+    public class BloodOrb : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetDefaults()
         {

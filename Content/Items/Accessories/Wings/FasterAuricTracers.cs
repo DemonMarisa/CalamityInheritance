@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     [AutoloadEquip(EquipType.Wings)]
     public class FasterAuricTracers: ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mod.CalamityInheritance.Content.Items.Accessories.Wings";
+        public new string LocalizationCategory => "Content.Items.Accessories.Wings";
 
         public override void SetStaticDefaults()
         {

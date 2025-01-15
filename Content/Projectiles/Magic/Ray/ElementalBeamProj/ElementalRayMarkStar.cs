@@ -14,9 +14,9 @@ using CalamityMod.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
-    public class ElementalRayMarkStar : ModProjectile
+    public class ElementalRayMarkStar : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetStaticDefaults()
         {

@@ -8,11 +8,9 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
-	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Items.Weapons.DraedonsArsenal.hjson" />
-	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Projectiles.Misc.hjson" />
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Content.Items.Weapons.DraedonsArsenal.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Status.hjson" />
 	  <AdditionalFiles Remove="Localization\Mods.CalamityMod.UI.hjson" />
-	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Status.hjson" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Buffs\ArmorShattering.png" />
@@ -882,7 +880,7 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Content\Projectiles\Ranged\Holdout\" />
+	  <Folder Include="Localization\zh-Hans\" />
 	</ItemGroup>
 
 	<!-- References -->

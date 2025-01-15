@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class MidnightSunBeaconold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;

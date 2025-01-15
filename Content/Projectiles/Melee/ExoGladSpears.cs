@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoGladSpears : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         private Color currentColor = Color.Black;
 
         internal ref float FlySpeedMultiplier => ref Projectile.ai[1];

@@ -15,8 +15,9 @@ using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
-    public class StreamGougeProjOld : BaseSpearProjectile
+    public class StreamGougeProjOld : BaseSpearProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;

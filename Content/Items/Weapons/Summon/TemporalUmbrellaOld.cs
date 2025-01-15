@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
     [LegacyName("BensUmbrella")]
     public class TemporalUmbrellaOld : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
         public override void SetDefaults()
         {
             Item.mana = 99;

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class NightStabber2 : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()
         {
             Projectile.width = 4;

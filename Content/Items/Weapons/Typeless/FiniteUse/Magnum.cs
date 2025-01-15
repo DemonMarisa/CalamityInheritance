@@ -14,8 +14,10 @@ using CalamityInheritance.Content.Items.Ammo.FiniteUse;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 {
-    public class Magnum : ModItem
+    public class Magnum : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Items.Weapons.Typeless";
+
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Item/Magnum");
         public override void SetDefaults()
         {

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class PhantomLance : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

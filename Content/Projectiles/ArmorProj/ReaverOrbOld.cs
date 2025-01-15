@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class ReaverOrbOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public int dust = 3;
 
         public override void SetStaticDefaults()

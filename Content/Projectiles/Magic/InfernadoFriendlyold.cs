@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class InfernadoFriendlyold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         bool intersectingSomething = false;
         public override void SetStaticDefaults()
         {

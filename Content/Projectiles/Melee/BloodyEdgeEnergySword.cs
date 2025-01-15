@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class BloodyEdgeEnergySword : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
             // 如果我们想要，可以使用默认的纹理，而不是提供我们自己的纹理

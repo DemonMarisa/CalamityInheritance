@@ -1,1 +1,74 @@
+AncientShiv: {
+	DisplayName: Ancient Shiv
+	Tooltip: ""
+}
 
+BloodyRupture: {
+	DisplayName: Bloody Rupture
+	Tooltip: ""
+}
+
+ColdheartIcicle: {
+	DisplayName: Coldheart Icicle
+	Tooltip: ""
+}
+
+CosmicShivold: {
+	DisplayName: Cosmic Shivold
+	Tooltip: ""
+}
+
+ElementalShivold: {
+	DisplayName: Elemental Shivold
+	Tooltip: ""
+}
+
+EutrophicShank: {
+	DisplayName: Eutrophic Shank
+	Tooltip: ""
+}
+
+ExcaliburShortsword: {
+	DisplayName: Excalibur Shortsword
+	Tooltip: ""
+}
+
+ExoGladius: {
+	DisplayName: Exo Gladius
+	Tooltip: ""
+}
+
+FlameburstShortsword: {
+	DisplayName: Flameburst Shortsword
+	Tooltip: ""
+}
+
+LeechingDagger: {
+	DisplayName: Leeching Dagger
+	Tooltip: ""
+}
+
+NightsStabber: {
+	DisplayName: Nights Stabber
+	Tooltip: ""
+}
+
+SporeKnife: {
+	DisplayName: Spore Knife
+	Tooltip: ""
+}
+
+TerraShiv: {
+	DisplayName: Terra Shiv
+	Tooltip: ""
+}
+
+TrueExcaliburShortsword: {
+	DisplayName: True Excalibur Shortsword
+	Tooltip: ""
+}
+
+TrueNightsStabber: {
+	DisplayName: True Nights Stabber
+	Tooltip: ""
+}

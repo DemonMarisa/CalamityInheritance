@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
     public class TyrantPart1 : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
+        public new string LocalizationCategory => "Content.Items.Placeables.MusicBox";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla

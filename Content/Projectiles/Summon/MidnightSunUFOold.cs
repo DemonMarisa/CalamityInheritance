@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 {
     public class MidnightSunUFOold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public const float DistanceToCheck = 2600f;
         public override void SetStaticDefaults()
         {

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
     [AutoloadEquip(EquipType.Body)]
     public class AncientXerocPlateMail : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
+        public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

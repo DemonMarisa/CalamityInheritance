@@ -12,8 +12,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal
 {
-    public class PulseRifleShotOld : ModProjectile
+    public class PulseRifleShotOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.DraedonsArsenal";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         private int dust1 = 27; //purple

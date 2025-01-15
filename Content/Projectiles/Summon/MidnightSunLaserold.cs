@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 {
     public class MidnightSunLaserold : ModProjectile,ILocalizedModType 
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Laser");

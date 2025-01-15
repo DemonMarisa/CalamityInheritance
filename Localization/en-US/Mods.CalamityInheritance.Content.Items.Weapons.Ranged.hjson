@@ -1,1 +1,69 @@
+CelestialObliterator: {
+	DisplayName: Celestial Obliterator
+	Tooltip: ""
+}
 
+ConclaveCrossfire: {
+	DisplayName: Conclave Crossfire
+	Tooltip: ""
+}
+
+DragonsBreathold: {
+	DisplayName: Dragons Breathold
+	Tooltip: ""
+}
+
+HeavenlyGaleold: {
+	DisplayName: Heavenly Galeold
+	Tooltip: ""
+}
+
+LeadWizard: {
+	DisplayName: Lead Wizard
+	Tooltip: ""
+}
+
+Minigun: {
+	DisplayName: Minigun
+	Tooltip: ""
+}
+
+Photovisceratorold: {
+	DisplayName: Photovisceratorold
+	Tooltip: ""
+}
+
+ProporsePistol: {
+	DisplayName: Proporse Pistol
+	Tooltip: ""
+}
+
+RaidersGlory: {
+	DisplayName: Raiders Glory
+	Tooltip: ""
+}
+
+Skullmasher: {
+	DisplayName: Skullmasher
+	Tooltip: ""
+}
+
+SomaPrimeOld: {
+	DisplayName: Soma Prime Old
+	Tooltip: ""
+}
+
+SpectreRifle: {
+	DisplayName: Spectre Rifle
+	Tooltip: ""
+}
+
+StarCannonEX: {
+	DisplayName: Star Cannon E X
+	Tooltip: ""
+}
+
+TyrannysEndOld: {
+	DisplayName: Tyrannys End Old
+	Tooltip: ""
+}

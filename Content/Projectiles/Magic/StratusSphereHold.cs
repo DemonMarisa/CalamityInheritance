@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class StratusSphereHold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<StratusSphere>();
         public override void SetStaticDefaults()
         {

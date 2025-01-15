@@ -15,8 +15,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
-    public class EssenceBeam : ModProjectile
+    public class EssenceBeam : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Essence Beam");

@@ -1,0 +1,24 @@
+DoGLegacy: {
+	DisplayName: Do G Legacy
+	Tooltip: ""
+}
+
+DoGNonStop: {
+	DisplayName: Do G Non Stop
+	Tooltip: ""
+}
+
+NowStopAskingWhere: {
+	DisplayName: Now Stop Asking Where
+	Tooltip: ""
+}
+
+ProvidenceLegacy: {
+	DisplayName: Providence Legacy
+	Tooltip: ""
+}
+
+TyrantPart1: {
+	DisplayName: Tyrant Part1
+	Tooltip: ""
+}

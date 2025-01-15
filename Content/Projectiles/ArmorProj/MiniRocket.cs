@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class MiniRocket : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Rocket");

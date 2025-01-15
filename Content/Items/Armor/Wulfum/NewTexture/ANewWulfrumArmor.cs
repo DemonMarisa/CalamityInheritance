@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
     [AutoloadEquip(EquipType.Body)]
     public class ANewWulfrumArmor : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Wulfrum";
+        public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetDefaults()
         {
             Item.width = 18;

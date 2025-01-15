@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
     public class PsychoticAmulet : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Ranged";
+        public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         public override void SetDefaults()
         {
             Item.width = 26;

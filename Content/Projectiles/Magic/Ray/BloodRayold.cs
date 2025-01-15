@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
     public class BloodRayold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public const int Lifetime = 200;
         public const float MaxExponentialDamageBoost = 3f;
         public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);

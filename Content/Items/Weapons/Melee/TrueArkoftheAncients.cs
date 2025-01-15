@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class TrueArkoftheAncients : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("True Ark of the Ancients(old)");

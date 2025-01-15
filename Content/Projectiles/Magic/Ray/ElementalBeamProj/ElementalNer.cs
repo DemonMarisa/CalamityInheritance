@@ -10,9 +10,9 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
-    public class ElementalNer : ModProjectile
+    public class ElementalNer : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetDefaults()
         {

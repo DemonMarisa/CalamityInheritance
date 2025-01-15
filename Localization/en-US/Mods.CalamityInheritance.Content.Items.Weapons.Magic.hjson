@@ -1,1 +1,69 @@
+HadopelagicEcho: {
+	DisplayName: Hadopelagic Echo
+	Tooltip: ""
+}
 
+HeliumFlashLegacy: {
+	DisplayName: Helium Flash Legacy
+	Tooltip: ""
+}
+
+PhantasmalFuryOld: {
+	DisplayName: Phantasmal Fury Old
+	Tooltip: ""
+}
+
+CarnageRay: {
+	DisplayName: Carnage Ray
+	Tooltip: ""
+}
+
+ElementalRayold: {
+	DisplayName: Elemental Rayold
+	Tooltip: ""
+}
+
+FabstaffOld: {
+	DisplayName: Fabstaff Old
+	Tooltip: ""
+}
+
+NightsRayold: {
+	DisplayName: Nights Rayold
+	Tooltip: ""
+}
+
+TerraRay: {
+	DisplayName: Terra Ray
+	Tooltip: ""
+}
+
+StratusSphere: {
+	DisplayName: Stratus Sphere
+	Tooltip: ""
+}
+
+SubsumingVortexold: {
+	DisplayName: Subsuming Vortexold
+	Tooltip: ""
+}
+
+TheWandold: {
+	DisplayName: The Wandold
+	Tooltip: ""
+}
+
+VehemencOld: {
+	DisplayName: Vehemenc Old
+	Tooltip: ""
+}
+
+VividClarity: {
+	DisplayName: Vivid Clarity
+	Tooltip: ""
+}
+
+VoidVortex: {
+	DisplayName: Void Vortex
+	Tooltip: ""
+}

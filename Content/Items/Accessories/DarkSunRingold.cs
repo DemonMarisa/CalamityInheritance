@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class DarkSunRingold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 6));

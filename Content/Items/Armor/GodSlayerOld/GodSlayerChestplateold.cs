@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
     [AutoloadEquip(EquipType.Body)]
     public class GodSlayerChestplateold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
+        public new string LocalizationCategory => "Content.Items.Armor";
         public const int DashIFrames = 12;
 
         public override void SetDefaults()

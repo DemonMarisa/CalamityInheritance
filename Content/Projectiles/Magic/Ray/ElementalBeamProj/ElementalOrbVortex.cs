@@ -9,9 +9,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
-    public class ElementalOrbVortex : ModProjectile
+    public class ElementalOrbVortex : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetStaticDefaults()
         {

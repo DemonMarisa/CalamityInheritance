@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantasmalSoulold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         private int originDamage;
         private int divider = 10;
         public override void SetStaticDefaults()

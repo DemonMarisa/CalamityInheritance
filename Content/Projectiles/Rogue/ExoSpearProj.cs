@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class ExoSpearProj : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle Hitsound = new("CalamityInheritance/Sounds/Custom/ExoApostleStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
 
         public override string Texture => "CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProj";

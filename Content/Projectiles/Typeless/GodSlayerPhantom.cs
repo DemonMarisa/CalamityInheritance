@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 {
     public class GodSlayerPhantom : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3;

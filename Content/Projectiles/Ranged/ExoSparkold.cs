@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     // Photoviscerator left click splitting homing projectile
     public class ExoSparkold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public static readonly int[] FrameToDustIDTable = new int[]
         {
             107,

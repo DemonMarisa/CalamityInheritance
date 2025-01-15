@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 
         public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
         public ref float InitialDamage => ref Projectile.ai[1];
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public ref float Time => ref Projectile.ai[0];
         public bool HasFiredSideBeams
         {

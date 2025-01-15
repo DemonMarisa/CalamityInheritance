@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Potions
 {
     public class CadancePotion : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Potions";
+        public new string LocalizationCategory => "Content.Items.Potions";
         public override void SetDefaults()
         {
             

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class Exobeamold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         private int counter = 0;
 
         public override void SetStaticDefaults()

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class Climax2 : ModProjectile, ILocalizedModType   
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         private double timeElapsed = 0.0;
         private double circleSize = 1.0;
         private double circleGrowth = 0.02;

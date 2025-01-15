@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class BiomeOrb : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         private int dustType = 3;
         Color color = default;
 

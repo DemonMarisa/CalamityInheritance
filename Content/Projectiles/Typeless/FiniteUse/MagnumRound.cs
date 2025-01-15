@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
 {
-    public class MagnumRound : ModProjectile
+    public class MagnumRound : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetDefaults()
         {
             Projectile.width = 4;

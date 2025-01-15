@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class SoulEdgeSoulLegacyMedium: ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

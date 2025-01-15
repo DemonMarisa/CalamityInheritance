@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 {
     public class HolyExplosionold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Typeless";
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

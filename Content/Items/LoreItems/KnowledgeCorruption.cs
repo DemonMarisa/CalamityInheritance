@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
 {
     public class KnowledgeCorruption : LoreItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
+        public new string LocalizationCategory => "Content.Items.Lores";
         public static bool state = false;
         public override void SetStaticDefaults()
         {

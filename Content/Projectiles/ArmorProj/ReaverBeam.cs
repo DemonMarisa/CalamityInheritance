@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class ReaverBeam : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

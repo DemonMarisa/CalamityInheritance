@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 {
     public class GodSlayerBlaze : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetDefaults()
         {
             Projectile.width = 250;

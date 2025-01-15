@@ -11,8 +11,9 @@ using Microsoft.Xna.Framework;
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
 
-    public class BloodBolt : ModProjectile
+    public class BloodBolt : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public const int Lifetime = 150;

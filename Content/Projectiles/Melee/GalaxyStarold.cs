@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class GalaxyStarold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public bool madeCoolMagicSound = false;
         public override void SetStaticDefaults()
         {

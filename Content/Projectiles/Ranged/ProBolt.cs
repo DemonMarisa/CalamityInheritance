@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ProBolt : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");

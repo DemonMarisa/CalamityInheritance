@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     // Photoviscerator left click side projectile (waving light)
     public class ExoLightold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public Vector2 InitialCenter;

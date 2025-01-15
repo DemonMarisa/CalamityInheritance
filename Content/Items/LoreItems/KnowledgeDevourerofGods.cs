@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
 {
     public class KnowledgeDevourerofGods : LoreItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
+        public new string LocalizationCategory => "Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

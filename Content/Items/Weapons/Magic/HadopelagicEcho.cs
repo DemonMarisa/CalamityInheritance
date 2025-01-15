@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HadopelagicEcho : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         private int counter = 0;
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Custom/WyrmScream") { Volume = 1f };
         public override void SetDefaults()

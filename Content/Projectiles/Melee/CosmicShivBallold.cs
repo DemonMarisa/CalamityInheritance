@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class CosmicShivBallold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         // TODO -- Please for the love of god refactor this at some point. It is ancient.
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 

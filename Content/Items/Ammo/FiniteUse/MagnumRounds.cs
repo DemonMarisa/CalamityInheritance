@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {
     public class MagnumRounds : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Ammo";
+        public new string LocalizationCategory => "Content.Items.Ammo";
         public override void SetDefaults()
         {
             Item.damage = 80;

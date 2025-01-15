@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class StreamGougeOld : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static float ProjShootSpeed = 20f;
         public static int FadeoutSpeed = 20;
 

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AeroStoneLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mod.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Legs)]
     public class AuricTeslaCuissesold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
+        public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetDefaults()
         {
             Item.width = 18;

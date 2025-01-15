@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
 {
-    public class GrenadeRound : ModProjectile
+    public class GrenadeRound : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetDefaults()
         {
             Projectile.width = 14;

@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
     public class ElementalQuiver : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Ranged";
+        public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         public override void SetStaticDefaults()
         {
         }

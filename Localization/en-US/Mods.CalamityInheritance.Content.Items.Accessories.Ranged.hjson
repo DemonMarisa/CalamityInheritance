@@ -1,1 +1,14 @@
+DaedalusEmblem: {
+	DisplayName: Daedalus Emblem
+	Tooltip: ""
+}
 
+ElementalQuiver: {
+	DisplayName: Elemental Quiver
+	Tooltip: ""
+}
+
+PsychoticAmulet: {
+	DisplayName: Psychotic Amulet
+	Tooltip: ""
+}

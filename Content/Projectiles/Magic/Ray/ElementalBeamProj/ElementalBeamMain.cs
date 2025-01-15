@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
     public class ElementalBeamMain : BaseLaserbeamProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override float MaxScale => 1f;
         public override float MaxLaserLength => 1500f;
         public override float Lifetime => 30f;

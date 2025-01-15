@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
     [AutoloadEquip(EquipType.Shield)]
     public class CIRampartofDeities : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.width = 64;

@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Tools
 {
     public class WulfrumHammer : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Tools";
+        public new string LocalizationCategory => "Content.Items.Tools";
         public override void SetStaticDefaults()
         {
         }

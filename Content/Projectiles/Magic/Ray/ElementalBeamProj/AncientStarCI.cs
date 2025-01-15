@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
     public class AncientStarCI : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public ref float Time => ref Projectile.ai[0];
         public override void SetStaticDefaults()
         {

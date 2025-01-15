@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
     public class MagicBatOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Baseball Bat");

@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ExoFlail : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static int BaseDamage = 3000;
 
         public static float Speed = 34f;

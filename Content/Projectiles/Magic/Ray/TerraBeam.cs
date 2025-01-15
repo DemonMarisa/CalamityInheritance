@@ -13,13 +13,13 @@ using CalamityMod.Projectiles.BaseProjectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
-    public class TerraBeam : ModProjectile
+    public class TerraBeam : ModProjectile, ILocalizedModType
     {
         public ref float ShardCooldown => ref Projectile.ai[1];
 
         public int Time = 0;
         public ref float Timer => ref Projectile.ai[0];
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetStaticDefaults()
         {

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class VolatileStarcoreLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         private static int Lifetime = 240;
         private static int NumAnimationFrames = 6;
         private static int AnimationFrameTime = 2;

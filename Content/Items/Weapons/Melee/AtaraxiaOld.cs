@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class AtaraxiaOld : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetDefaults()
         {
             Item.width = 94;

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class StratusSphere : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetDefaults()
         {
             Item.damage = 251;

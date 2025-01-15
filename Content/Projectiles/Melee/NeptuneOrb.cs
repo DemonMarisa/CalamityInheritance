@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class NeptuneOrb : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityMod/Projectiles/Melee/DepthOrb";
 
         public override void SetDefaults()

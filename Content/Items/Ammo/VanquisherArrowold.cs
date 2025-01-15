@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Ammo
 {
     public class VanquisherArrowold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Ammo";
+        public new string LocalizationCategory => "Content.Items.Ammo";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

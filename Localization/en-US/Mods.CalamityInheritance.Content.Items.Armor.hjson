@@ -1,1 +1,154 @@
+AuricTeslaBodyArmorold: {
+	DisplayName: Auric Tesla Body Armorold
+	Tooltip: ""
+}
 
+AuricTeslaCuissesold: {
+	DisplayName: Auric Tesla Cuissesold
+	Tooltip: ""
+}
+
+AuricTeslaHeadMagic: {
+	DisplayName: Auric Tesla Head Magic
+	Tooltip: ""
+}
+
+AuricTeslaHeadMelee: {
+	DisplayName: Auric Tesla Head Melee
+	Tooltip: ""
+}
+
+AuricTeslaHeadRanged: {
+	DisplayName: Auric Tesla Head Ranged
+	Tooltip: ""
+}
+
+AuricTeslaHeadRogue: {
+	DisplayName: Auric Tesla Head Rogue
+	Tooltip: ""
+}
+
+AuricTeslaHeadSummon: {
+	DisplayName: Auric Tesla Head Summon
+	Tooltip: ""
+}
+
+GodSlayerChestplateold: {
+	DisplayName: God Slayer Chestplateold
+	Tooltip: ""
+}
+
+GodSlayerHeadMagicold: {
+	DisplayName: God Slayer Head Magicold
+	Tooltip: ""
+}
+
+GodSlayerHeadMeleeold: {
+	DisplayName: God Slayer Head Meleeold
+	Tooltip: ""
+}
+
+GodSlayerHeadRangedold: {
+	DisplayName: God Slayer Head Rangedold
+	Tooltip: ""
+}
+
+GodSlayerHeadRogueold: {
+	DisplayName: God Slayer Head Rogueold
+	Tooltip: ""
+}
+
+GodSlayerHeadSummonold: {
+	DisplayName: God Slayer Head Summonold
+	Tooltip: ""
+}
+
+GodSlayerLeggingsold: {
+	DisplayName: God Slayer Leggingsold
+	Tooltip: ""
+}
+
+ReaverCap: {
+	DisplayName: Reaver Cap
+	Tooltip: ""
+}
+
+ReaverCuisses: {
+	DisplayName: Reaver Cuisses
+	Tooltip: ""
+}
+
+ReaverHelm: {
+	DisplayName: Reaver Helm
+	Tooltip: ""
+}
+
+ReaverHelmet: {
+	DisplayName: Reaver Helmet
+	Tooltip: ""
+}
+
+ReaverMask: {
+	DisplayName: Reaver Mask
+	Tooltip: ""
+}
+
+ReaverScaleMail: {
+	DisplayName: Reaver Scale Mail
+	Tooltip: ""
+}
+
+ReaverVisage: {
+	DisplayName: Reaver Visage
+	Tooltip: ""
+}
+
+SilvaArmorold: {
+	DisplayName: Silva Armorold
+	Tooltip: ""
+}
+
+SilvaHeadMagicold: {
+	DisplayName: Silva Head Magicold
+	Tooltip: ""
+}
+
+SilvaHeadMelee: {
+	DisplayName: Silva Head Melee
+	Tooltip: ""
+}
+
+SilvaHeadRanged: {
+	DisplayName: Silva Head Ranged
+	Tooltip: ""
+}
+
+SilvaHeadRogue: {
+	DisplayName: Silva Head Rogue
+	Tooltip: ""
+}
+
+SilvaHeadSummonold: {
+	DisplayName: Silva Head Summonold
+	Tooltip: ""
+}
+
+SilvaLeggingsold: {
+	DisplayName: Silva Leggingsold
+	Tooltip: ""
+}
+
+AncientXerocCuisses: {
+	DisplayName: Ancient Xeroc Cuisses
+	Tooltip: ""
+}
+
+AncientXerocMask: {
+	DisplayName: Ancient Xeroc Mask
+	Tooltip: ""
+}
+
+AncientXerocPlateMail: {
+	DisplayName: Ancient Xeroc Plate Mail
+	Tooltip: ""
+}

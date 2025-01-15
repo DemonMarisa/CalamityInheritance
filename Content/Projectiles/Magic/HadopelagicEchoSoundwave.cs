@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class HadopelagicEchoSoundwave : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityMod/Projectiles/Magic/EidolicWailSoundwave";
 
         private int echoCooldown = 0;

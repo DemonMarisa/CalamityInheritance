@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
     [AutoloadEquip(EquipType.Shield)]
     public class ElysianAegisold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritanceContent.Items.Accessories.DashAccessories";
+        public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         public const int ShieldSlamDamage = 500;
         public const float ShieldSlamKnockback = 15f;
         public const int ShieldSlamIFrames = 12;

@@ -16,6 +16,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
     public class DraedonsForgeold : ModTile
     {
+        public new string LocalizationCategory => "Tiles.Furniture.CraftingStations";
         public override void SetStaticDefaults()
         {
             AnimationFrameHeight = 36;

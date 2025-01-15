@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantasmalRuinGhost : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;

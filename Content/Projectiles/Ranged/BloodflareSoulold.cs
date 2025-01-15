@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class BloodflareSoulold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

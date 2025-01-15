@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Potions
 {
     public class DraconicElixir : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Potions";
+        public new string LocalizationCategory => "Content.Items.Potions";
         public int frameCounter = 0;
         public int frame = 0;
 

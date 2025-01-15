@@ -1,1 +1,14 @@
+FasterAuricTracers: {
+	DisplayName: Faster Auric Tracers
+	Tooltip: ""
+}
 
+FasterGodSlayerTracers: {
+	DisplayName: Faster God Slayer Tracers
+	Tooltip: ""
+}
+
+FasterLunarTracers: {
+	DisplayName: Faster Lunar Tracers
+	Tooltip: ""
+}

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class Vortex : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public float TargetCheckCooldown
         {
             get => Projectile.localAI[0];

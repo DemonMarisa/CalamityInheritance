@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class ExoSpearTrail : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         private int bounces = 4;
 
         private bool firstTick = true;

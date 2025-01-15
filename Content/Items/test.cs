@@ -11,8 +11,9 @@ using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items
 {
-    public class Test : ModItem
+    public class Test : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetDefaults()
         {
             Item.width = 42;

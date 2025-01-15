@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     [AutoloadEquip(EquipType.Head)]
     public class ReaverHelmet : ModItem, ILocalizedModType 
     {
-        public new string LocalizationCategory => "Items.Armor.PostMoonLord";
+        public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

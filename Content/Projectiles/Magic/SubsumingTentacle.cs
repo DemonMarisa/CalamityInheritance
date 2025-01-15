@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class SubsumingTentacle : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public int AlphaFade
         {
             get => (int)Projectile.localAI[0];

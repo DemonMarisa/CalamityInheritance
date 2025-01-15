@@ -11,16 +11,11 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 {
-    public class Bazooka : ModItem
+    public class Bazooka : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Items.Weapons.Typeless";
+
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Item/BazookaFull");
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Bazooka");
-            /* Tooltip.SetDefault("Uses Grenade Shells\n" +
-                "Does more damage to inorganic enemies\n" +
-                "Can be used twice per boss battle"); */
-        }
 
         public override void SetDefaults()
         {

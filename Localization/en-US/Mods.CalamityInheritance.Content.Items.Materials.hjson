@@ -1,1 +1,9 @@
+AuricBarold: {
+	DisplayName: Auric Barold
+	Tooltip: ""
+}
 
+NebulaBar: {
+	DisplayName: Nebula Bar
+	Tooltip: ""
+}

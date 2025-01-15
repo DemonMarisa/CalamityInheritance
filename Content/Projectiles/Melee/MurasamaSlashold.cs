@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class MurasamaSlashold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public int frameX = 0;
         public int frameY = 0;
 

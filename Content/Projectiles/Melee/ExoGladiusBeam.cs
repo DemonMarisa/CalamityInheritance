@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoGladiusBeam : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         private int penetrationAmt = 6;
         private Color currentColor = Color.Black;
         public const float maxScale = 1.8f;

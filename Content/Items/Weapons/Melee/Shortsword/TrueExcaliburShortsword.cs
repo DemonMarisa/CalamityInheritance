@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class TrueExcaliburShortsword : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

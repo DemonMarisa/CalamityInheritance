@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class CosmicScytheOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityMod/Projectiles/Boss/SignusScythe";
 
         private int originalDamage;

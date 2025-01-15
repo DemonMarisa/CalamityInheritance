@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class FungalCarapace : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.defense = 6;

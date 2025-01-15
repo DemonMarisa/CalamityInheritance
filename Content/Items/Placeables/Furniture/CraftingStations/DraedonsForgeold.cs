@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
 {
     public class DraedonsForgeold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
+        public new string LocalizationCategory => "Content.Items.Placeables.Furniture.CraftingStations";
         public override void SetDefaults()
         {
             Item.width = 30;
