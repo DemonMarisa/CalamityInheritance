@@ -9,11 +9,10 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items;
 using CalamityMod;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -21,10 +20,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Ark of the Cosmos(old)");
-            /* Tooltip.SetDefault("Fires different homing projectiles based on what biome you're in\n" +
-                "Upon hitting an enemy you are granted a buff based on what biome you're in\n" +
-                "Projectiles also change based on moon events"); */
         }
 
         public override void SetDefaults()
@@ -40,11 +35,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;
             Item.height = 102;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ItemRarityID.Purple;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<EonBeam>();
             Item.shootSpeed = 14f;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

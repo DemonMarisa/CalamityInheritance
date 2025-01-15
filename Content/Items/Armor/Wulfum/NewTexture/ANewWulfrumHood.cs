@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 20000;
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.defense = 1; //6
         }
