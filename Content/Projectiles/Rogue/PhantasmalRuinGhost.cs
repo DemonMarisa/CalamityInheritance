@@ -1,11 +1,6 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
@@ -14,12 +9,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantasmalRuinGhost : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-        public new string LocalizationCategory => "Projectiles.Rogue";
         public override void SetDefaults()
         {
             Projectile.width = 30;

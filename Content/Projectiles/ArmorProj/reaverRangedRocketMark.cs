@@ -1,18 +1,12 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework;
-using Mono.Cecil;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
-    public class reaverRangedRocketMark : ModProjectile
+    public class reaverRangedRocketMark : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public Player Owner => Main.player[Projectile.owner];
         public override string Texture => "CalamityInheritance/Content/Projectiles/ArmorProj/MiniRocket";
         public override void SetDefaults()

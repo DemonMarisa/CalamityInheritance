@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class ExcaliburShortsword : ModItem
+    public class ExcaliburShortsword : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

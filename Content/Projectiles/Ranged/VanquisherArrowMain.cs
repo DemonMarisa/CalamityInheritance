@@ -2,11 +2,6 @@
 using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
@@ -16,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class VanquisherArrowoldMain : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Items/Ammo/VanquisherArrowold";
 
         public override void SetDefaults()

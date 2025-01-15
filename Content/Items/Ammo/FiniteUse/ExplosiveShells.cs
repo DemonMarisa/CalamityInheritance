@@ -5,8 +5,10 @@ using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
 
 namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {
-    public class ExplosiveShells : ModItem
+    public class ExplosiveShells : ModItem, ILocalizedModType
     {
+
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Ammo";
         public override void SetDefaults()
         {
             Item.damage = 30;

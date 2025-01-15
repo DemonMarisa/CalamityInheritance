@@ -1,17 +1,15 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class GodSlayerOrb : ModProjectile
+    public class GodSlayerOrb : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -25,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 
         public override void AI()
         {
-            int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 173, 0f, 0f, 100, default, 2f);
+            int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
             Main.dust[num469].noGravity = true;
             Main.dust[num469].velocity *= 0f;
             float num472 = Projectile.Center.X;

@@ -2,11 +2,6 @@
 using CalamityMod.Particles;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 
@@ -14,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class ExoJet : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

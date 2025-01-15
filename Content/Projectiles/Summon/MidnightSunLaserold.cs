@@ -1,21 +1,14 @@
-﻿using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
-using CalamityMod.NPCs;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class MidnightSunLaserold : ModProjectile
+    public class MidnightSunLaserold : ModProjectile,ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Laser");

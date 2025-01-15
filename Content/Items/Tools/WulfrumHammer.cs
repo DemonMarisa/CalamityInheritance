@@ -5,8 +5,9 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Tools
 {
-    public class WulfrumHammer : ModItem
+    public class WulfrumHammer : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Tools";
         public override void SetStaticDefaults()
         {
         }

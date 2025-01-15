@@ -1,10 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ExoFlareClusterold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public const float MinDistanceFromTarget = 45f;

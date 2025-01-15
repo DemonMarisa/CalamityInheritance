@@ -13,9 +13,10 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
-    public class StatisVoidSash : ModItem
+    public class StatisVoidSash : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+
+        public new string LocalizationCategory => "Mods.CalamityInheritanceContent.Items.Accessories.DashAccessories";
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 3));

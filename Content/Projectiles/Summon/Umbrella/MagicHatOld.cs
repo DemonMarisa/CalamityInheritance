@@ -1,13 +1,7 @@
-﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.Summon.Umbrella;
+﻿using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,11 +9,13 @@ using CalamityMod;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using SteelSeries.GameSense;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
-    public class MagicHatOld : ModProjectile
+    public class MagicHatOld : ModProjectile, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public const float Range = 1500.0001f;
 
         public override void SetStaticDefaults()

@@ -11,8 +11,9 @@ using ElementBall = CalamityInheritance.Content.Projectiles.Melee.ElementBall;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ArkoftheElementsold : ModItem
+    public class ArkoftheElementsold : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
         }

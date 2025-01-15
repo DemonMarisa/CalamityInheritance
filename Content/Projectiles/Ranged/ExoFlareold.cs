@@ -1,12 +1,7 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -17,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     // Photoviscerator right click split projectile (attached flares to the flare cluster)
     public class ExoFlareold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public float OffsetSpeed

@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,8 +7,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ExoMark : ModProjectile
+    public class ExoMark : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
         public override void SetDefaults()
         {
@@ -48,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 value81.X *= -1f;
                 Vector2 value82 = new Vector2(2f, 10f);
                 Vector2 position4 = Projectile.Center + new Vector2(60f, 200f) * value81 * 0.5f + value82;
-                Dust dust34 = Main.dust[Dust.NewDust(position4, 0, 0, 107, 0f, 0f, 0, default, 0.5f)];
+                Dust dust34 = Main.dust[Dust.NewDust(position4, 0, 0, DustID.TerraBlade, 0f, 0f, 0, default, 0.5f)];
                 dust34.position = position4;
                 dust34.customData = Projectile.Center + value82;
                 dust34.fadeIn = 1f;
@@ -98,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Main.rand.NextBool(10))
                 {
                     Vector2 value83 = Vector2.UnitY.RotatedBy((double)((float)num1135 * 3.14159274f), default).RotatedBy((double)Projectile.rotation, default);
-                    Dust dust35 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, 107, 0f, 0f, 225, newColor3, 1f)];
+                    Dust dust35 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.TerraBlade, 0f, 0f, 225, newColor3, 1f)];
                     dust35.noGravity = true;
                     dust35.noLight = true;
                     dust35.scale = Projectile.Opacity * Projectile.localAI[0];
@@ -111,7 +107,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Main.rand.NextBool(10))
                 {
                     Vector2 value84 = Vector2.UnitY.RotatedBy((double)((float)num1136 * 3.14159274f), default);
-                    Dust dust36 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, 107, 0f, 0f, 225, newColor3, 1.5f)];
+                    Dust dust36 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.TerraBlade, 0f, 0f, 225, newColor3, 1.5f)];
                     dust36.noGravity = true;
                     dust36.noLight = true;
                     dust36.scale = Projectile.Opacity * Projectile.localAI[0];

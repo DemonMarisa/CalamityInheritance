@@ -12,8 +12,9 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class StarCannonEX : ModItem
+    public class StarCannonEX : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public override void SetDefaults()
         {
             Item.damage = 95;

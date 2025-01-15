@@ -9,12 +9,11 @@ using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class TerraRay : ModItem
+    public class TerraRay : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Terra Ray");
-            // Tooltip.SetDefault("Casts an energy ray that splits if enemies are near it");
             Item.staff[Item.type] = true;
         }
 

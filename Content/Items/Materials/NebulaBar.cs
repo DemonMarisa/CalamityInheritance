@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
-	public class NebulaBar: ModItem
+	public class NebulaBar: ModItem, ILocalizedModType
 	{
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Materials";
 		public override void SetStaticDefaults()
 		{
 		}

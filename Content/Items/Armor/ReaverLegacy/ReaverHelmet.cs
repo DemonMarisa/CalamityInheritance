@@ -8,12 +8,14 @@ using Terraria.ModLoader;
 using CalamityInheritance.Buffs.Summon;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using SteelSeries.GameSense;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelmet : ModItem
+    public class ReaverHelmet : ModItem, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Items.Armor.PostMoonLord";
         public override void SetStaticDefaults()
         {
         }

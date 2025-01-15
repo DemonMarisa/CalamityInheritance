@@ -1,21 +1,15 @@
 ﻿using CalamityMod.Projectiles;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Buffs.DamageOverTime;
-using Terraria.ID;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ExoArrowBlue : ModProjectile
+    public class ExoArrowBlue : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
         public override void SetDefaults()
         {

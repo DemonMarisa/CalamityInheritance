@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
+﻿using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -13,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class AtaraxiaMainOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private static int NumAnimationFrames = 5;
         private static int AnimationFrameTime = 9;
 

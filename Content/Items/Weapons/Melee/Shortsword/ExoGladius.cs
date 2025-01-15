@@ -9,8 +9,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class ExoGladius : ModItem
+    public class ExoGladius : ModItem, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

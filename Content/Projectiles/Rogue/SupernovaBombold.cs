@@ -1,15 +1,9 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SupernovaBombold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Rogue";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/Supernovaold";
 
         public override void SetStaticDefaults()
@@ -146,10 +140,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             for (int d = 0; d < 9; d++)
             {
-                int fire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 6, 0f, 0f, 100, default, 3f);
+                int fire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 3f);
                 Main.dust[fire].noGravity = true;
                 Main.dust[fire].velocity *= 5f;
-                fire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 6, 0f, 0f, 100, default, 2f);
+                fire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 2f);
                 Main.dust[fire].velocity *= 2f;
             }
 

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ArcanumoftheVoid : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.width = 26;

@@ -11,7 +11,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
     public class BadgeofBravery : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+
+        public new string LocalizationCategory => "Content.Items.Accessories.Melee";
         public override void SetDefaults()
         {
             Item.width = 30;

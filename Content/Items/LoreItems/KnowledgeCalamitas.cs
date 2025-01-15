@@ -8,8 +8,10 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeCalamitas : LoreItem
+    
+    public class KnowledgeCalamitas : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

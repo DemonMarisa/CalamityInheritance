@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
     [LegacyName("SilvaHelmet")]
         public class SilvaHeadSummonold : ModItem, ILocalizedModType
         {
-            public new string LocalizationCategory => "Items.Armor.PostMoonLord";
+            public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
             public static readonly SoundStyle ActivationSound = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation");
             public static readonly SoundStyle DispelSound = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaDispel");
 

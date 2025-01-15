@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientXerocCuisses : ModItem
+    public class AncientXerocCuisses : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

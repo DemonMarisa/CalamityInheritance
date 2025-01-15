@@ -1,18 +1,15 @@
-﻿using CalamityMod.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Buffs.DamageOverTime;
-using Mono.Cecil;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ExoGladProj : ModProjectile
+    public class ExoGladProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Orb");

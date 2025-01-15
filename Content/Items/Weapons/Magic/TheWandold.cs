@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class TheWandold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
         // The actual base damage of The Wand. The damage reported on the item is just the spark, which is irrelevant.
         public static int BaseDamage = 999;
 

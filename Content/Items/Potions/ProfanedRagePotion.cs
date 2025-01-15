@@ -7,8 +7,9 @@ using CalamityInheritance.Buffs.Potions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class ProfanedRagePotion : ModItem
+    public class ProfanedRagePotion : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Potions";
         internal static readonly int CritBoost = 12;
         public override void SetDefaults()
         {

@@ -3,11 +3,6 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Projectiles;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -16,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class DragonsBreathRound : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -47,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 float num93 = Projectile.velocity.X / 3f;
                 float num94 = Projectile.velocity.Y / 3f;
                 int num95 = 4;
-                int idx = Dust.NewDust(new Vector2(Projectile.position.X + (float)num95, Projectile.position.Y + (float)num95), Projectile.width - num95 * 2, Projectile.height - num95 * 2, 127, 0f, 0f, 100, default, 2f);
+                int idx = Dust.NewDust(new Vector2(Projectile.position.X + (float)num95, Projectile.position.Y + (float)num95), Projectile.width - num95 * 2, Projectile.height - num95 * 2, DustID.Flare, 0f, 0f, 100, default, 2f);
                 Dust dust = Main.dust[idx];
                 dust.noGravity = true;
                 dust.velocity *= 0.1f;
@@ -58,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Main.rand.NextBool(20))
                 {
                     int num97 = 4;
-                    int num98 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num97, Projectile.position.Y + (float)num97), Projectile.width - num97 * 2, Projectile.height - num97 * 2, 127, 0f, 0f, 100, default, 0.6f);
+                    int num98 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num97, Projectile.position.Y + (float)num97), Projectile.width - num97 * 2, Projectile.height - num97 * 2, DustID.Flare, 0f, 0f, 100, default, 0.6f);
                     Main.dust[num98].velocity *= 0.25f;
                     Main.dust[num98].velocity += Projectile.velocity * 0.5f;
                 }

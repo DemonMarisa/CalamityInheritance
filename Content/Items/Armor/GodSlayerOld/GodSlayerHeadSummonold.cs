@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
     [AutoloadEquip(EquipType.Head)]
     public class GodSlayerHeadSummonold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Armor.PostMoonLord";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetDefaults()
         {
             Item.width = 18;

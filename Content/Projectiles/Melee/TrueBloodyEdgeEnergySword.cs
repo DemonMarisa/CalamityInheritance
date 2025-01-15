@@ -1,24 +1,19 @@
-﻿using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityMod.Projectiles.Melee;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles;
 using CalamityInheritance.Dusts;
-using Mono.Cecil;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class TrueBloodyEdgeEnergySword : ModProjectile
+    public class TrueBloodyEdgeEnergySword : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // 如果我们想要，可以使用默认的纹理，而不是提供我们自己的纹理

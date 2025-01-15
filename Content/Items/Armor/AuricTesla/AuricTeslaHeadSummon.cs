@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadSummon : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Armor.PostMoonLord";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetDefaults()
         {
             Item.width = 18;

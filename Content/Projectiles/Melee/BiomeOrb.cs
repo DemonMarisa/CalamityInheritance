@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
@@ -12,8 +11,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class BiomeOrb : ModProjectile
+    public class BiomeOrb : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private int dustType = 3;
         Color color = default;
 

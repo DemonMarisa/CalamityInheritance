@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
     [AutoloadEquip(EquipType.Body)]
-    public class WulfrumArmorLegacy : ModItem
+    public class WulfrumArmorLegacy : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
         }

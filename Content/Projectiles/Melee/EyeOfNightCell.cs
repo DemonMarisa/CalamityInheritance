@@ -1,5 +1,4 @@
 ﻿using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class EyeOfNightCell : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;

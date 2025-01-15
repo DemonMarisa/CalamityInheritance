@@ -1,14 +1,6 @@
-﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,8 +12,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class MidnightSunUFOold : ModProjectile
+    public class MidnightSunUFOold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public const float DistanceToCheck = 2600f;
         public override void SetStaticDefaults()
         {

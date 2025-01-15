@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class ReaverBlast : ModProjectile
+    public class ReaverBlast : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Blast");

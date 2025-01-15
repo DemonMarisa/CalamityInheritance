@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityMod;
+﻿using CalamityMod;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -11,8 +10,9 @@ using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
-    public class BloodyRuptureProj : BaseShortswordProjectile
+    public class BloodyRuptureProj : BaseShortswordProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;

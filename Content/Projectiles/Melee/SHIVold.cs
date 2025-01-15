@@ -1,9 +1,4 @@
 ﻿using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -13,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class SHIVold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
@@ -38,14 +33,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.velocity.Length() < 25f && Projectile.timeLeft % 2 == 0)
                 Projectile.velocity *= 2.08f;
 
-            int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 66, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
+            int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
             Main.dust[rainbow].noGravity = true;
             Main.dust[rainbow].velocity = Vector2.Zero;
         }
 
         public override void OnKill(int timeLeft)
         {
-            int rainbow = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 66, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
+            int rainbow = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
             Main.dust[rainbow].noGravity = true;
         }
 

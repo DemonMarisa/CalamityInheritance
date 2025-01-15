@@ -1,6 +1,5 @@
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -12,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class SoulEdgeSoulLegacySmall: ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

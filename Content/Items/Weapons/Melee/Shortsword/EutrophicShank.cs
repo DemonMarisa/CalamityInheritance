@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class EutrophicShank : ModItem
+    public class EutrophicShank : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

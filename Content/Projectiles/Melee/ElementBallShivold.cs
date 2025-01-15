@@ -1,10 +1,5 @@
-﻿using CalamityMod.Projectiles.Melee;
-using CalamityMod;
+﻿using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -14,12 +9,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ElementBallShivold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-        public new string LocalizationCategory => "Projectiles.Melee";
         public override void SetDefaults()
         {
             Projectile.width = 20;

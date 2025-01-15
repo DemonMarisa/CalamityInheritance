@@ -12,8 +12,9 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     [LegacyName("BensUmbrella")]
-    public class TemporalUmbrellaOld : ModItem
+    public class TemporalUmbrellaOld : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Summon";
         public override void SetDefaults()
         {
             Item.mana = 99;

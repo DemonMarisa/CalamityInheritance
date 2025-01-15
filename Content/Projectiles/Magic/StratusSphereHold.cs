@@ -1,13 +1,7 @@
-﻿using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,8 +11,9 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class StratusSphereHold : ModProjectile
+    public class StratusSphereHold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<StratusSphere>();
         public override void SetStaticDefaults()
         {

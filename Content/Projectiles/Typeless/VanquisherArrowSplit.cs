@@ -2,11 +2,6 @@
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 
@@ -14,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 {
     public class VanquisherArrowSplit : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Typeless";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Items/Ammo/VanquisherArrowold";
 
         public override void SetDefaults()

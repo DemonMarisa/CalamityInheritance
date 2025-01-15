@@ -8,12 +8,11 @@ using CalamityMod.Items.Placeables;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class TrueBiomeBlade : ModItem
+    public class TrueBiomeBlade : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("True Biome Blade(old)");
-            // Tooltip.SetDefault("Fires different projectiles based on what biome you're in");
         }
 
         public override void SetDefaults()

@@ -1,11 +1,6 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class CosmicShivBallold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         // TODO -- Please for the love of god refactor this at some point. It is ancient.
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 

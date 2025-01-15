@@ -12,8 +12,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class CelestialObliterator : ModItem
+    public class CelestialObliterator : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         private int shot;
 
         private int burst;

@@ -9,8 +9,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class FabstaffOld : ModItem
+    public class FabstaffOld : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

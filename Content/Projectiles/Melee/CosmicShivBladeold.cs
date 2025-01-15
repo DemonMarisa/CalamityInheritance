@@ -1,10 +1,6 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
@@ -14,13 +10,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class CosmicShivBladeold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
-        public new string LocalizationCategory => "Projectiles.Melee";
         public const int penetrateMax = 12;
         public const float maxScale = 1.8f;
         public bool initialized = false;
@@ -97,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                         Vector2 randomCirclePointLerped = Vector2.Lerp(randomCirclePointVector, randomCirclePointRotated, k / 20f);
                         float lerpMultiplier = MathHelper.Lerp(lerpStart, lerpEnd, k / 20f) * 4f;
                         int dustIndex = Dust.NewDust(Projectile.Center, 0, 0,
-                            173,
+                            DustID.ShadowbeamStaff,
                             0f, 0f, 100, default, 1.1f);
                         Main.dust[dustIndex].velocity *= 0.1f;
                         Main.dust[dustIndex].noGravity = true;

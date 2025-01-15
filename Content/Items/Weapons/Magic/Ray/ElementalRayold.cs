@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class ElementalRayold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

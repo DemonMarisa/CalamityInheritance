@@ -1,10 +1,5 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -12,8 +7,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class Vortex : ModProjectile
+    public class Vortex : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public float TargetCheckCooldown
         {
             get => Projectile.localAI[0];

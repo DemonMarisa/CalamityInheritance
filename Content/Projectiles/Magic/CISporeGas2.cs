@@ -1,12 +1,4 @@
-﻿using CalamityMod.World;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -16,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class CISporeGas2 : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;

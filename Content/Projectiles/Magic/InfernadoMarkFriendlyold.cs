@@ -1,9 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class InfernadoMarkFriendlyold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public static readonly SoundStyle FlareSound = new("CalamityMod/Sounds/Custom/Yharon/YharonInfernado");

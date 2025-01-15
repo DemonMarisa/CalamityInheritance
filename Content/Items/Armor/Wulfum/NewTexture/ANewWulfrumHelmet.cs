@@ -6,8 +6,9 @@ using CalamityMod.Items.Materials;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ANewWulfrumHelmet : ModItem
+    public class ANewWulfrumHelmet : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
         }

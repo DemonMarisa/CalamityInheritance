@@ -1,10 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -13,8 +8,9 @@ using CalamityInheritance.Dusts;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class TrueBloodyBladeProj : ModProjectile
+    public class TrueBloodyBladeProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

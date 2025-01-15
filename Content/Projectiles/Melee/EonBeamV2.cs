@@ -8,8 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class EonBeamV2 : ModProjectile
+    public class EonBeamV2 : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Beam");

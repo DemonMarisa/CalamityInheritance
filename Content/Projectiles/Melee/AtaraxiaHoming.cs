@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -12,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class AtaraxiaHoming : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private static int NumAnimationFrames = 5;
         private static int AnimationFrameTime = 9;
         private static float HomingStartRange = 300f;

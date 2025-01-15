@@ -2,12 +2,7 @@
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
@@ -15,8 +10,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class HadopelagicEchoSoundwave : ModProjectile
+    public class HadopelagicEchoSoundwave : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/Magic/EidolicWailSoundwave";
 
         private int echoCooldown = 0;

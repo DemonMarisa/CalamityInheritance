@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Materials
 {
     public class AuricBarold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Materials";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Materials";
         public static Asset<Texture2D> GlowTexture { get; private set; }
 
         public override void Load()

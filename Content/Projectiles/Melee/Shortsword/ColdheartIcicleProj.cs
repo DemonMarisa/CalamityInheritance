@@ -1,22 +1,16 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
 using CalamityMod.NPCs.Providence;
-using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
-    public class ColdheartIcicleProj : BaseShortswordProjectile
+    public class ColdheartIcicleProj : BaseShortswordProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;

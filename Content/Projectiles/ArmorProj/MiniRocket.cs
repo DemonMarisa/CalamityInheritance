@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
-using Microsoft.Xna.Framework.Graphics;
 using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
-    public class MiniRocket : ModProjectile
+    public class MiniRocket : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Rocket");

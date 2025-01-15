@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
@@ -12,8 +7,9 @@ using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class BloodflareSoulold : ModProjectile
+    public class BloodflareSoulold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class Photovisceratorold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public const float AmmoNotConsumeChance = 0.9f;
         private const float AltFireShootSpeed = 17f;
 

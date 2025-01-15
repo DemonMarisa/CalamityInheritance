@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class OmegaBiomeBlade : ModItem
+    public class OmegaBiomeBlade : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Omega Biome Blade(old)");

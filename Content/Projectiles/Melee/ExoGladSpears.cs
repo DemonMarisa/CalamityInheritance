@@ -1,8 +1,5 @@
-﻿using CalamityMod.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -12,8 +9,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ExoGladSpears : ModProjectile
+    public class ExoGladSpears : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private Color currentColor = Color.Black;
 
         internal ref float FlySpeedMultiplier => ref Projectile.ai[1];

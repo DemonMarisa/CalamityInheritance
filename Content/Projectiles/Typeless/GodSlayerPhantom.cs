@@ -1,21 +1,16 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class GodSlayerPhantom : ModProjectile
+    public class GodSlayerPhantom : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3;

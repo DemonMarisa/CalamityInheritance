@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ArkoftheAncients : ModItem
+    public class ArkoftheAncients : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
 

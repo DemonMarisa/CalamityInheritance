@@ -1,10 +1,6 @@
 ﻿using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,8 +9,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class SylvanSlashAttack : ModProjectile
+    public class SylvanSlashAttack : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Sylvan Slash");
@@ -84,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Lighting.AddLight(vector14, 0.2f, 2f, 3f);
             if (Main.rand.NextBool(3))
             {
-                int num30 = Dust.NewDust(vector14 - Projectile.Size / 2f, Projectile.width, Projectile.height, 111, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 2f);
+                int num30 = Dust.NewDust(vector14 - Projectile.Size / 2f, Projectile.width, Projectile.height, DustID.Clentaminator_Cyan, Projectile.velocity.X, Projectile.velocity.Y, 100, default, 2f);
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= Projectile.velocity;
             }

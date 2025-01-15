@@ -8,8 +8,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ProporsePistol : ModItem
+    public class ProporsePistol : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public override void SetDefaults()
         {
             Item.damage = 90;

@@ -1,13 +1,16 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
+using Microsoft.CodeAnalysis.Operations;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeAstrumAureus : LoreItem
+    public class KnowledgeAstrumAureus : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

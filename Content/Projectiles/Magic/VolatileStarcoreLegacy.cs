@@ -1,7 +1,4 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Weapons.Magic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -12,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class VolatileStarcoreLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private static int Lifetime = 240;
         private static int NumAnimationFrames = 6;
         private static int AnimationFrameTime = 2;

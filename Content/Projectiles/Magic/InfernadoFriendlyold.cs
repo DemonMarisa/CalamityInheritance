@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,8 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class InfernadoFriendlyold : ModProjectile, ILocalizedModType
     {
-
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         bool intersectingSomething = false;
         public override void SetStaticDefaults()
         {

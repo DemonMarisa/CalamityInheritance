@@ -1,21 +1,17 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityInheritance;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Projectiles.Magic;
-using Mono.Cecil;
 using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
-    public class ReaverOrbOld : ModProjectile
+    public class ReaverOrbOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public int dust = 3;
 
         public override void SetStaticDefaults()

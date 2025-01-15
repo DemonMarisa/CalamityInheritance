@@ -1,18 +1,15 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class GodSlayerBlaze : ModProjectile
+    public class GodSlayerBlaze : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetDefaults()
         {
             Projectile.width = 250;

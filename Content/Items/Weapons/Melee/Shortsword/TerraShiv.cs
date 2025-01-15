@@ -6,8 +6,9 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class TerraShiv : ModItem
+    public class TerraShiv : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

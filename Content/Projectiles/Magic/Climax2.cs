@@ -1,6 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -11,8 +9,9 @@ using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class Climax2 : ModProjectile
+    public class Climax2 : ModProjectile, ILocalizedModType   
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private double timeElapsed = 0.0;
         private double circleSize = 1.0;
         private double circleGrowth = 0.02;

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AstralArcanum : ModItem
     {
-
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.defense = 12;

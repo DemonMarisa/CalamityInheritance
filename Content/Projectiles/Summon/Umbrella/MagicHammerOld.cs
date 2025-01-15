@@ -1,12 +1,6 @@
 ﻿using CalamityMod.Projectiles.Summon.Umbrella;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -14,8 +8,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
-    public class MagicHammerOld : ModProjectile
+    public class MagicHammerOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private int counter = 0;
         public override void SetStaticDefaults()
         {

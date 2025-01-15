@@ -9,8 +9,9 @@ using CalamityInheritance.Utilities;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelm : ModItem
+    public class ReaverHelm : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

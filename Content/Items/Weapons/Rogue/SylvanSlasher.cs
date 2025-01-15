@@ -10,8 +10,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class SylvanSlasher : RogueWeapon
+    public class SylvanSlasher : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Rogue";
         public override void SetDefaults()
         {
             Item.width = 72;

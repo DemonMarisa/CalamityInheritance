@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class TheDeadlyMicrobeProjectile : ModProjectile
+    public class TheDeadlyMicrobeProjectile : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Star");
@@ -190,7 +191,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 Vector2 vector6 = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
                 vector6 = vector6.RotatedBy((double)((float)(num227 - (num226 / 2 - 1)) * 6.28318548f / (float)num226), default) + Projectile.Center;
                 Vector2 vector7 = vector6 - Projectile.Center;
-                int num228 = Dust.NewDust(vector6 + vector7, 0, 0, 44, vector7.X, vector7.Y, 100, default, 0.5f);
+                int num228 = Dust.NewDust(vector6 + vector7, 0, 0, DustID.JungleSpore, vector7.X, vector7.Y, 100, default, 0.5f);
                 Main.dust[num228].noGravity = true;
                 Main.dust[num228].noLight = true;
                 Main.dust[num228].velocity = vector7;

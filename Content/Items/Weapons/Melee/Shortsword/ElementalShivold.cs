@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class ElementalShivold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword";
 
         public override void SetDefaults()
         {

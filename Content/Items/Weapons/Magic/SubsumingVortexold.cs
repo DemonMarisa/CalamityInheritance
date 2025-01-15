@@ -13,8 +13,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class SubsumingVortexold : ModItem
+    public class SubsumingVortexold : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Magic";
         public override void SetDefaults()
         {
             Item.damage = 242;

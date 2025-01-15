@@ -5,10 +5,11 @@ using CalamityInheritance.Tiles.MusicBox;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Items.Materials;
 
-namespace CalamityInheritance.Content.Items.MusicBox
+namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
-	public class NowStopAskingWhere: ModItem
+	public class NowStopAskingWhere: ModItem, ILocalizedModType
 	{
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
 		public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/NowStopAskingWhere"), ModContent.ItemType<NowStopAskingWhere>(), ModContent.TileType<NowStopAskingWhereBox>());

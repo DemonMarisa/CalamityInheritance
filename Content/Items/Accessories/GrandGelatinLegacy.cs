@@ -6,8 +6,9 @@ using Terraria.ID;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class GrandGelatinLegacy : ModItem
+    public class GrandGelatinLegacy : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
         }

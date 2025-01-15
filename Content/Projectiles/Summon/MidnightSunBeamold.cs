@@ -1,12 +1,7 @@
-﻿using CalamityMod.Projectiles.Summon;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,8 +9,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class MidnightSunBeamold : ModProjectile
+    public class MidnightSunBeamold : ModProjectile, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         // How long this laser can exist before it is deleted.
         public const int TrueTimeLeft = 120;
 

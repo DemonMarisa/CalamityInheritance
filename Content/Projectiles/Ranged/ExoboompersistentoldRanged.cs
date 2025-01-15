@@ -1,19 +1,12 @@
-﻿using CalamityMod.Projectiles.Melee;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.Ranged 
 {
-    public class ExoboompersistentoldRanged : ModProjectile
+    public class ExoboompersistentoldRanged : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
         public override void SetDefaults()
         {

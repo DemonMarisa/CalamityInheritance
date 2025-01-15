@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ExoArrowBlue2 : ModProjectile
+    public class ExoArrowBlue2 : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
 
         public override void SetDefaults()

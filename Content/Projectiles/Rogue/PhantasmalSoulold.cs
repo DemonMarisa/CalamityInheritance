@@ -1,24 +1,16 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityMod.NPCs;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantasmalSoulold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Rogue";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private int originDamage;
         private int divider = 10;
         public override void SetStaticDefaults()
@@ -78,7 +70,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Main.dust[num822].noGravity = true;
             float num953 = 40f * Projectile.ai[1];
             float scaleFactor12 = 8f * Projectile.ai[1]; //5
-            float num954 = 2000f;
             Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) - 1.57f;
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)

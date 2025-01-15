@@ -1,21 +1,15 @@
-﻿using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod;
-using CalamityMod.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ExoGunBlast : ModProjectile
+    public class ExoGunBlast : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private Vector2 randomPos;
 
         private Vector2 direction;

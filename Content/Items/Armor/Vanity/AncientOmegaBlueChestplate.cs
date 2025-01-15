@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity
     [AutoloadEquip(EquipType.Body)]
     public class AncientOmegaBlueChestplate : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Armor.Vanity";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Vanity";
         public override void SetDefaults()
         {
             Item.width = 28;
