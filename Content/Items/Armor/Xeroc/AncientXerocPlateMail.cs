@@ -1,6 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityMod.Items.Materials;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -17,13 +19,21 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
-            Item.defense = 27;
+            Item.defense = 24;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.statLifeMax2 += 20;
-            player.GetCritChance<GenericDamageClass>() += 7;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<NebulaBar>(12).
+                AddIngredient<GalacticaSingularity>(8).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+                
         }
     }
 }

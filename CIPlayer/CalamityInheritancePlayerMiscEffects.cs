@@ -821,11 +821,6 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (Player.whoAmI == Main.myPlayer && AncientXerocMadness)
-            {
-                Player.AddBuff(ModContent.BuffType<EmpyreanRage>(),  240);
-                Player.AddBuff(ModContent.BuffType<EmpyreanWrath>(), 240);
-            }
             #endregion
             if (Player.miscCounter % 150 == 0)
             {
