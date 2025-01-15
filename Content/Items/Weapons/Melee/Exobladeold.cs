@@ -12,8 +12,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class Exobladeold : ModItem
+    public class Exobladeold : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Melee";
         public override void SetDefaults()
         {
             Item.width = 80;

@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class GoldenGunProj : ModProjectile
+    public class GoldenGunProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public override void SetStaticDefaults()
@@ -48,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                     float num588 = Projectile.velocity.X / 6f * (float)num587;
                     float num589 = Projectile.velocity.Y / 6f * (float)num587;
                     int num590 = 6;
-                    int num591 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num590, Projectile.position.Y + (float)num590), Projectile.width - num590 * 2, Projectile.height - num590 * 2, 170, 0f, 0f, 75, default, 1.2f);
+                    int num591 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num590, Projectile.position.Y + (float)num590), Projectile.width - num590 * 2, Projectile.height - num590 * 2, DustID.Ichor, 0f, 0f, 75, default, 1.2f);
                     Dust dust = Main.dust[num591];
                     if (Main.rand.NextBool(2))
                     {
@@ -74,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 if (Main.rand.NextBool(4))
                 {
                     int num592 = 6;
-                    int num593 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num592, Projectile.position.Y + (float)num592), Projectile.width - num592 * 2, Projectile.height - num592 * 2, 170, 0f, 0f, 75, default, 0.65f);
+                    int num593 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num592, Projectile.position.Y + (float)num592), Projectile.width - num592 * 2, Projectile.height - num592 * 2, DustID.Ichor, 0f, 0f, 75, default, 0.65f);
                     Dust dust = Main.dust[num593];
                     dust.velocity *= 0.5f;
                     dust.velocity += Projectile.velocity * 0.5f;
@@ -89,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             int num3;
             for (int num362 = 0; num362 < 100; num362 = num3 + 1)
             {
-                int num363 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 170, 0f, 0f, 75, default, 1.2f);
+                int num363 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Ichor, 0f, 0f, 75, default, 1.2f);
                 Dust dust = Main.dust[num363];
                 if (Main.rand.NextBool(2))
                 {

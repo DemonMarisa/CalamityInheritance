@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeYharon : LoreItem
+    public class KnowledgeYharon : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

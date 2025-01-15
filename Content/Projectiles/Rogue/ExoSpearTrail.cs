@@ -13,8 +13,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class ExoSpearTrail : ModProjectile
+    public class ExoSpearTrail : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         private int bounces = 4;
 
         private bool firstTick = true;

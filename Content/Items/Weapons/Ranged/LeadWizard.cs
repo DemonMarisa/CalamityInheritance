@@ -9,8 +9,9 @@ using CalamityMod.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class LeadWizard : ModItem
+    public class LeadWizard : ModItem, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public override void SetDefaults()
         {
             Item.damage = 58;

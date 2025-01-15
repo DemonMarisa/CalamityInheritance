@@ -12,9 +12,9 @@ using CalamityInheritance.CIPlayer.Dash;
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class AsgardsValorold : ModItem
+    public class AsgardsValorold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+        public new string LocalizationCategory => "Mods.CalamityInheritanceContent.Items.Accessories.DashAccessories";
         public const int ShieldSlamDamage = 200;
         public const float ShieldSlamKnockback = 9f;
         public const int ShieldSlamIFrames = 12;

@@ -12,95 +12,96 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class HeavenlyGaleold : ModItem
+    public class HeavenlyGaleold : ModItem, ILocalizedModType
     {
-            public const float NormalArrowDamageMult = 1.25f;
-            private static int[] ExoArrows;
-            public override void SetStaticDefaults()
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
+        public const float NormalArrowDamageMult = 1.25f;
+        private static int[] ExoArrows;
+        public override void SetStaticDefaults()
+        {
+            ExoArrows = new int[]
             {
-                ExoArrows = new int[]
-                {
-                ModContent.ProjectileType<ExoArrowTeal>(),
-                ModContent.ProjectileType<OrangeExoArrow>(),
-                ModContent.ProjectileType<ExoArrowGreen>(),
-                ModContent.ProjectileType<ExoArrowBlue>()
-                };
-                CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            }
+            ModContent.ProjectileType<ExoArrowTeal>(),
+            ModContent.ProjectileType<OrangeExoArrow>(),
+            ModContent.ProjectileType<ExoArrowGreen>(),
+            ModContent.ProjectileType<ExoArrowBlue>()
+            };
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
 
-            public override void SetDefaults()
+        public override void SetDefaults()
+        {
+            Item.damage = 198;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 44;
+            Item.height = 58;
+            Item.useTime = 9;
+            Item.useAnimation = 18;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item5;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileID.WoodenArrowFriendly;
+            Item.shootSpeed = 12f;
+            Item.useAmmo = AmmoID.Arrow;
+            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
+            Item.Calamity().canFirePointBlankShots = true;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Vector2 source = player.RotatedRelativePoint(player.MountedCenter, true);
+            Vector2 baseOffset = velocity;
+            baseOffset.Normalize();
+            baseOffset *= 40f;
+
+            float piOver10 = MathHelper.Pi / 10f;
+            bool againstWall = !Collision.CanHit(source, 0, 0, source + baseOffset, 0, 0);
+
+            int numArrows = 5;
+            float dmgMult = 1f;
+
+            for (int i = 0; i < numArrows; i++)
             {
-                Item.damage = 198;
-                Item.DamageType = DamageClass.Ranged;
-                Item.width = 44;
-                Item.height = 58;
-                Item.useTime = 9;
-                Item.useAnimation = 18;
-                Item.useStyle = ItemUseStyleID.Shoot;
-                Item.noMelee = true;
-                Item.knockBack = 4f;
-                Item.UseSound = SoundID.Item5;
-                Item.autoReuse = true;
-                Item.shoot = ProjectileID.WoodenArrowFriendly;
-                Item.shootSpeed = 12f;
-                Item.useAmmo = AmmoID.Arrow;
-                Item.rare = ModContent.RarityType<CatalystViolet>();
-                Item.value = CIShopValue.RarityPriceCatalystViolet;
-                Item.Calamity().canFirePointBlankShots = true;
-            }
+                float offsetAmt = i - (numArrows - 1f) / 2f;
+                Vector2 offset = baseOffset.RotatedBy(piOver10 * offsetAmt);
 
-            public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+                if (againstWall)
+                    offset -= baseOffset;
+
+                int thisArrowType = type;
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
             {
-                Vector2 source = player.RotatedRelativePoint(player.MountedCenter, true);
-                Vector2 baseOffset = velocity;
-                baseOffset.Normalize();
-                baseOffset *= 40f;
-
-                float piOver10 = MathHelper.Pi / 10f;
-                bool againstWall = !Collision.CanHit(source, 0, 0, source + baseOffset, 0, 0);
-
-                int numArrows = 5;
-                float dmgMult = 1f;
-
-                for (int i = 0; i < numArrows; i++)
-                {
-                    float offsetAmt = i - (numArrows - 1f) / 2f;
-                    Vector2 offset = baseOffset.RotatedBy(piOver10 * offsetAmt);
-
-                    if (againstWall)
-                        offset -= baseOffset;
-
-                    int thisArrowType = type;
-                if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
-                {
-                    if (type == ProjectileID.WoodenArrowFriendly)
-                    {
-                        thisArrowType = Main.rand.Next(ExoArrows);
-
-                        dmgMult = thisArrowType == ModContent.ProjectileType<ExoArrowTeal>() ? 0.66f : 1f;
-                    }
-                    else
-                    {
-                        dmgMult = NormalArrowDamageMult;
-                    }
-                }
-                if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+                if (type == ProjectileID.WoodenArrowFriendly)
                 {
                     thisArrowType = Main.rand.Next(ExoArrows);
+
                     dmgMult = thisArrowType == ModContent.ProjectileType<ExoArrowTeal>() ? 0.66f : 1f;
                 }
-
-                    int finalDamage = (int)(damage * dmgMult);
-                    int proj = Projectile.NewProjectile(spawnSource, source + offset, velocity, thisArrowType, finalDamage, knockback, player.whoAmI);
-
-                    if (type != ProjectileID.WoodenArrowFriendly)
-                    {
-                        Main.projectile[proj].noDropItem = true;
-                    }
+                else
+                {
+                    dmgMult = NormalArrowDamageMult;
                 }
-
-                return false;
             }
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            {
+                thisArrowType = Main.rand.Next(ExoArrows);
+                dmgMult = thisArrowType == ModContent.ProjectileType<ExoArrowTeal>() ? 0.66f : 1f;
+            }
+
+                int finalDamage = (int)(damage * dmgMult);
+                int proj = Projectile.NewProjectile(spawnSource, source + offset, velocity, thisArrowType, finalDamage, knockback, player.whoAmI);
+
+                if (type != ProjectileID.WoodenArrowFriendly)
+                {
+                    Main.projectile[proj].noDropItem = true;
+                }
+            }
+
+            return false;
+        }
 
             public override bool CanConsumeAmmo(Item ammo, Player player)
             {

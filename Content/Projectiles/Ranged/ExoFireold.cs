@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     // Photoviscerator left click main projectile (the flamethrower itself)
     public class ExoFireold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public bool ProducedAcceleration = false;

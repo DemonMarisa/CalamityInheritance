@@ -3,11 +3,13 @@ using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeOcean : LoreItem
+    public class KnowledgeOcean : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public static bool state = false;
         public override void SetStaticDefaults()
         {

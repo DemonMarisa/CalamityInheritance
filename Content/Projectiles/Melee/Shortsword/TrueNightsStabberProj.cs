@@ -1,9 +1,5 @@
 ﻿using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,8 +9,9 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
-    public class TrueNightsStabberProj : BaseShortswordProjectile
+    public class TrueNightsStabberProj : BaseShortswordProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;

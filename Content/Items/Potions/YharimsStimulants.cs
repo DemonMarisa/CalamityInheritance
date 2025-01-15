@@ -7,8 +7,9 @@ using CalamityInheritance.Buffs.Potions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class YharimsStimulants : ModItem
+    public class YharimsStimulants : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Potions";
         public override void SetDefaults()
         {
             Item.width = 40;

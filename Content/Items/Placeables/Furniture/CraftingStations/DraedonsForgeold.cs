@@ -6,8 +6,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
-    public class DraedonsForgeold : ModItem
+    public class DraedonsForgeold : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
         public override void SetDefaults()
         {
             Item.width = 30;

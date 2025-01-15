@@ -9,8 +9,9 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverVisage : ModItem
+    public class ReaverVisage : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

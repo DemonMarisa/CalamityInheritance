@@ -1,25 +1,19 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Projectiles;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using Terraria.Audio;
-using CalamityMod.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class ExoSpearProj : ModProjectile
+    public class ExoSpearProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public static readonly SoundStyle Hitsound = new("CalamityInheritance/Sounds/Custom/ExoApostleStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
 
         public override string Texture => "CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProj";

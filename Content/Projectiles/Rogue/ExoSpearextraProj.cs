@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,8 +10,9 @@ using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class ExoSpearextraProj : ModProjectile
+    public class ExoSpearextraProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public static readonly SoundStyle Hitsound = new("CalamityMod/Sounds/Item/RealityRuptureStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
         public override string Texture => "CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProj";
 

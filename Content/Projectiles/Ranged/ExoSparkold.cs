@@ -1,10 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
@@ -15,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     // Photoviscerator left click splitting homing projectile
     public class ExoSparkold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public static readonly int[] FrameToDustIDTable = new int[]
         {
             107,

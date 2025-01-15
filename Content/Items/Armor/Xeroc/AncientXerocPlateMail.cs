@@ -7,8 +7,9 @@ using CalamityInheritance.Content.Items.Materials;
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientXerocPlateMail : ModItem
+    public class AncientXerocPlateMail : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }

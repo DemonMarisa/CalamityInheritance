@@ -14,8 +14,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
-    public class PsychoticAmulet : ModItem
+    public class PsychoticAmulet : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Ranged";
         public override void SetDefaults()
         {
             Item.width = 26;

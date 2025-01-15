@@ -11,8 +11,9 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class PhantasmalRuinold : RogueWeapon
+    public class PhantasmalRuinold : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Rogue";
         public override void SetDefaults()
         {
             Item.damage = 955;

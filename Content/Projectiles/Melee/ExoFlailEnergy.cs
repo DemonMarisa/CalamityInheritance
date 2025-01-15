@@ -11,8 +11,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ExoFlailEnergy : ModProjectile
+    public class ExoFlailEnergy : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
 
         private NPC target;
 

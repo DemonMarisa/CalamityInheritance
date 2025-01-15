@@ -1,25 +1,19 @@
 ﻿using System;
-using CalamityInheritance.CIPlayer;
 using CalamityMod;
-using CalamityMod.Dusts;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.NPCs.Abyss;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class MurasamaSlashnew1 : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<Murasama>();
         private Player Owner => Main.player[Projectile.owner];
         public ref int hitCooldown => ref Main.player[Projectile.owner].Calamity().murasamaHitCooldown;

@@ -3,10 +3,11 @@ using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Tiles.MusicBox;
 
-namespace CalamityInheritance.Content.Items.MusicBox
+namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
-	public class DoGNonStop: ModItem
+	public class DoGNonStop: ModItem, ILocalizedModType
 	{
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Placeables";
 		public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/DoGNonstopRemix"), ModContent.ItemType<DoGNonStop>(), ModContent.TileType<DoGNonStopBox>());

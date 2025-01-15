@@ -6,8 +6,9 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class FungalCarapace : ModItem
+    public class FungalCarapace : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.defense = 6;

@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent.Drawing;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -14,8 +9,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ShortNightBeam : ModProjectile
+    public class ShortNightBeam : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;

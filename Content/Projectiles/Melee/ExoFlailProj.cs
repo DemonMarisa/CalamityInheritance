@@ -1,16 +1,8 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.BaseProjectiles;
-using CalamityMod.Projectiles.Melee;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Projectiles.BaseProjectiles;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 using Terraria.Audio;
 using Terraria.ID;
 
@@ -18,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoFlailProj : BaseWhipProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public int Counter = 12;
 
         public override void SetDefaults()

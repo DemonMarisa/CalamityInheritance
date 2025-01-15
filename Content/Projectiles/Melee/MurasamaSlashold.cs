@@ -1,22 +1,18 @@
 ﻿using System;
 using CalamityMod;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.Particles;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MurasamaSlashold : ModProjectile
+    public class MurasamaSlashold : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public int frameX = 0;
         public int frameY = 0;
 

@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class IchorSpearProjLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Rogue";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/IchorSpearLegacy";
 
         public override void SetDefaults()

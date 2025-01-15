@@ -1,9 +1,5 @@
 ﻿using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class GalaxyStarold : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public bool madeCoolMagicSound = false;
         public override void SetStaticDefaults()
         {

@@ -11,8 +11,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
-    public class ElementalQuiver : ModItem
+    public class ElementalQuiver : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Ranged";
         public override void SetStaticDefaults()
         {
         }

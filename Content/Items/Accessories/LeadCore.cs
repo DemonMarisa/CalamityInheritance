@@ -5,8 +5,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class LeadCore : ModItem
+    public class LeadCore : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.width = 26;

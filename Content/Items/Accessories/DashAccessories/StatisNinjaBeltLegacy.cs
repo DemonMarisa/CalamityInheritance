@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
     public class StatisNinjaBeltLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+        public new string LocalizationCategory => "Mods.CalamityInheritanceContent.Items.Accessories.DashAccessories";
 
         public override void SetDefaults()
         {

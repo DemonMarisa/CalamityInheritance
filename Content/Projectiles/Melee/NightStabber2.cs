@@ -1,21 +1,15 @@
-﻿using CalamityMod.Projectiles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Melee;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class NightStabber2 : ModProjectile
+    public class NightStabber2 : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -34,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int num468 = 0; num468 < 2; num468++)
                 {
-                    int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 14, 0f, 0f, 100, default, 1f);
+                    int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 100, default, 1f);
                     Main.dust[num469].noGravity = true;
                     Main.dust[num469].velocity *= 0f;
                 }
@@ -45,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 14, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

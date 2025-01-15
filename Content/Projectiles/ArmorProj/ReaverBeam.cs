@@ -1,9 +1,4 @@
 ﻿using CalamityMod.Particles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -13,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class ReaverBeam : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

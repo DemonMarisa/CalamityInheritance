@@ -2,11 +2,13 @@
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeMoonLord : LoreItem
+    public class KnowledgeMoonLord : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

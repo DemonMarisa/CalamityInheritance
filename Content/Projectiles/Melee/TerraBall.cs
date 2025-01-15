@@ -1,7 +1,5 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class TerraBall : ModProjectile
+    public class TerraBall : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Terra Star");
@@ -30,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-            int num469 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, 0f, 0f, 100, default, 0.8f);
+            int num469 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 100, default, 0.8f);
             Main.dust[num469].noGravity = true;
 
             if (Projectile.soundDelay == 0)
@@ -73,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
             for (int num621 = 0; num621 < 5; num621++)
             {
-                int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 74, 0f, 0f, 100, default, 1.2f);
+                int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 100, default, 1.2f);
                 Main.dust[num622].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -83,10 +82,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             for (int num623 = 0; num623 < 5; num623++)
             {
-                int num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 74, 0f, 0f, 100, default, 1.7f);
+                int num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 100, default, 1.7f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 74, 0f, 0f, 100, default, 1f);
+                num624 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 100, default, 1f);
                 Main.dust[num624].velocity *= 2f;
             }
             for (int num480 = 0; num480 < 3; num480++)

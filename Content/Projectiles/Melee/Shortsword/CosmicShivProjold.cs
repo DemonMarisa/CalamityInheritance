@@ -2,10 +2,6 @@
 using CalamityMod.Projectiles.BaseProjectiles;
 using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -13,8 +9,9 @@ using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
-    public class CosmicShivProjold : BaseShortswordProjectile
+    public class CosmicShivProjold : BaseShortswordProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -54,14 +51,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override void ExtraBehavior()
         {
-            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 173);
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.ShadowbeamStaff);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             for (int k = 0; k < 36; k++)
             {
-                int dustID = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height - 16, 173, 0f, 0f, 0, default, 1f);
+                int dustID = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height - 16, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
                 Main.dust[dustID].velocity *= 3f;
                 Main.dust[dustID].scale *= 2f;
             }
@@ -72,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             for (int k = 0; k < 36; k++)
             {
-                int dustID = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height - 16, 173, 0f, 0f, 0, default, 1f);
+                int dustID = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height - 16, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
                 Main.dust[dustID].velocity *= 3f;
                 Main.dust[dustID].scale *= 2f;
             }

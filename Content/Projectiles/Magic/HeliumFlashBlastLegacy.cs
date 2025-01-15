@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class HeliumFlashBlastLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         private static int Lifetime = 40;

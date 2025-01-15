@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
-using CalamityInheritance.Utilities;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ElementBall : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetDefaults()
         {
             Projectile.width = 8;

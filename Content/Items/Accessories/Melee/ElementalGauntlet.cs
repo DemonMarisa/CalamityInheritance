@@ -14,7 +14,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
     [AutoloadEquip(new EquipType[] { EquipType.HandsOn, EquipType.HandsOff })]
     public class ElementalGauntletold : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Melee";
         public override void SetDefaults()
         {
             Item.width = 22;

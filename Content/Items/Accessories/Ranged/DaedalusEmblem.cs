@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
     public class DaedalusEmblem : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Accessories.Ranged";
         public override void SetDefaults()
         {
             Item.width = 46;

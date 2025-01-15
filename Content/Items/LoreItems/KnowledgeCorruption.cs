@@ -2,11 +2,13 @@
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeCorruption : LoreItem
+    public class KnowledgeCorruption : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public static bool state = false;
         public override void SetStaticDefaults()
         {

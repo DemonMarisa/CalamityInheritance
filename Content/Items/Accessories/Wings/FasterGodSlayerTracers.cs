@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     [AutoloadEquip(EquipType.Wings)]
     public class FasterGodSlayerTracers: ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories.Wings";
+        public new string LocalizationCategory => "Mod.CalamityInheritance.Content.Items.Accessories.Wings";
 
         public override void SetStaticDefaults()
         {

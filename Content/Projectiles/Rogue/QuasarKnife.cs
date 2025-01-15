@@ -1,16 +1,9 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Dusts;
 using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,8 +12,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class QuasarKnife : ModProjectile
+    public class QuasarKnife : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Quasar");

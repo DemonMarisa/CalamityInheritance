@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
     [AutoloadEquip(EquipType.Head)]
     public class SilvaHeadRanged : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Armor.Vanity";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Armor";
         public override void SetDefaults()
         {
             Item.width = 26;

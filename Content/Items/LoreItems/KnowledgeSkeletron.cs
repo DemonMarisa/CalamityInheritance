@@ -2,11 +2,13 @@
 using Terraria.ID;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeSkeletron : LoreItem
+    public class KnowledgeSkeletron : LoreItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Lores";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

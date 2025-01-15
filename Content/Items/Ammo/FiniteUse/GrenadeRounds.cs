@@ -5,8 +5,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {
-    public class GrenadeRounds : ModItem
+    public class GrenadeRounds : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Ammo";
         public override void SetDefaults()
         {
             Item.damage = 200;

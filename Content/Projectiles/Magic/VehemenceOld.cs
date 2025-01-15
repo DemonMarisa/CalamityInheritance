@@ -1,11 +1,4 @@
-﻿using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,8 +7,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class VehemenceOld : ModProjectile
+    public class VehemenceOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -40,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Lighting.AddLight(Projectile.Center, 0.45f, 0f, 0.45f);
             for (int num457 = 0; num457 < 2; num457++)
             {
-                int num458 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 65, 0f, 0f, 100, default, 2f);
+                int num458 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 2f);
                 Main.dust[num458].noGravity = true;
                 Main.dust[num458].velocity *= 0.15f;
                 Main.dust[num458].velocity += Projectile.velocity * 0.1f;
@@ -52,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SoundEngine.PlaySound(SoundID.Item74, Projectile.position);
             for (int j = 0; j <= 25; j++)
             {
-                int num459 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 65, 0f, 0f, 100, default, 1f);
+                int num459 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 1f);
                 Main.dust[num459].noGravity = true;
                 Main.dust[num459].velocity *= 0.1f;
             }

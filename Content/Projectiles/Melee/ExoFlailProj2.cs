@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Rogue;
-using Mono.Cecil;
-using CalamityMod.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ExoFlailProj2 : ModProjectile
+    public class ExoFlailProj2 : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
 
         public override void SetDefaults()
         {

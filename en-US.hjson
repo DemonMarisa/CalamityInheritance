@@ -1,0 +1,1457 @@
+Mods: {
+	CalamityInheritance: {
+		Keybinds: {
+			BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+			AegisHotKey.DisplayName: Aegis Hot Key
+			"Astral Arcanum UI Toggle.DisplayName": Astral  Arcanum  U I  Toggle
+		}
+
+		Tiles.DraedonsForgeold.MapEntry: Draedons Forgeold
+
+		Buffs: {
+			ReaverMagePower: {
+				DisplayName: Reaver Mage Power
+				Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+			}
+
+			ReaverMeleeRage: {
+				DisplayName: Reaver Melee Rage
+				Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+			}
+
+			ArmorShattering: {
+				DisplayName: Armor Shattering
+				Description: Mods.CalamityInheritance.Buffs.ArmorShattering.Description
+			}
+
+			CadancesGrace: {
+				DisplayName: Cadances Grace
+				Description: Mods.CalamityInheritance.Buffs.CadancesGrace.Description
+			}
+
+			DraconicSurgeBuff: {
+				DisplayName: Draconic Surge Buff
+				Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
+			}
+
+			HolyWrathBuff: {
+				DisplayName: Holy Wrath Buff
+				Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
+			}
+
+			Invincible: {
+				DisplayName: Invincible
+				Description: Mods.CalamityInheritance.Buffs.Invincible.Description
+			}
+
+			PenumbraBuff: {
+				DisplayName: Penumbra Buff
+				Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
+			}
+
+			ProfanedRageBuff: {
+				DisplayName: Profaned Rage Buff
+				Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
+			}
+
+			Revivify: {
+				DisplayName: Revivify
+				Description: Mods.CalamityInheritance.Buffs.Revivify.Description
+			}
+
+			TitanScale: {
+				DisplayName: Titan Scale
+				Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
+			}
+
+			TriumphBuff: {
+				DisplayName: Triumph Buff
+				Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
+			}
+
+			YharimPower: {
+				DisplayName: Yharim Power
+				Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
+			}
+
+			ElysianGuard: {
+				DisplayName: Elysian Guard
+				Description: Mods.CalamityInheritance.Buffs.ElysianGuard.Description
+			}
+
+			SilvaStun: {
+				DisplayName: Silva Stun
+				Description: Mods.CalamityInheritance.Buffs.SilvaStun.Description
+			}
+
+			MagicHatBuffOld: {
+				DisplayName: Magic Hat Buff Old
+				Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+			}
+
+			MidnightSunBuffOld: {
+				DisplayName: Midnight Sun Buff Old
+				Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+			}
+
+			ReaverSummonSetBuff: {
+				DisplayName: Reaver Summon Set Buff
+				Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
+			}
+		}
+
+		Mod: {
+			CalamityInheritance: {
+				Content: {
+					Items: {
+						Accessories: {
+							AeroStoneLegacy: {
+								DisplayName: Aero Stone Legacy
+								Tooltip: ""
+							}
+
+							Wings: {
+								FasterAuricTracers: {
+									DisplayName: Faster Auric Tracers
+									Tooltip: ""
+								}
+
+								FasterGodSlayerTracers: {
+									DisplayName: Faster God Slayer Tracers
+									Tooltip: ""
+								}
+
+								FasterLunarTracers: {
+									DisplayName: Faster Lunar Tracers
+									Tooltip: ""
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		Mods: {
+			CalamityInheritance: {
+				Content: {
+					Items: {
+						Accessories: {
+							ArcanumoftheVoid: {
+								DisplayName: Arcanumofthe Void
+								Tooltip: ""
+							}
+
+							AstralBulwark: {
+								DisplayName: Astral Bulwark
+								Tooltip: ""
+							}
+
+							CIRampartofDeities: {
+								DisplayName: C I Rampartof Deities
+								Tooltip: ""
+							}
+
+							CoreOfTheBloodGod: {
+								DisplayName: Core Of The Blood God
+								Tooltip: ""
+							}
+
+							DarkSunRingold: {
+								DisplayName: Dark Sun Ringold
+								Tooltip: ""
+							}
+
+							DeificAmuletLegacy: {
+								DisplayName: Deific Amulet Legacy
+								Tooltip: ""
+							}
+
+							FungalCarapace: {
+								DisplayName: Fungal Carapace
+								Tooltip: ""
+							}
+
+							GrandGelatinLegacy: {
+								DisplayName: Grand Gelatin Legacy
+								Tooltip: ""
+							}
+
+							LeadCore: {
+								DisplayName: Lead Core
+								Tooltip: ""
+							}
+
+							LeviathanAmbergrisLegacy: {
+								DisplayName: Leviathan Ambergris Legacy
+								Tooltip: ""
+							}
+
+							Melee: {
+								BadgeofBravery: {
+									DisplayName: Badgeof Bravery
+									Tooltip: ""
+								}
+
+								ElementalGauntletold: {
+									DisplayName: Elemental Gauntletold
+									Tooltip: ""
+								}
+
+								YharimsInsignia: {
+									DisplayName: Yharims Insignia
+									Tooltip: ""
+								}
+							}
+
+							PlagueHive: {
+								DisplayName: Plague Hive
+								Tooltip: ""
+							}
+
+							Ranged: {
+								DaedalusEmblem: {
+									DisplayName: Daedalus Emblem
+									Tooltip: ""
+								}
+
+								ElementalQuiver: {
+									DisplayName: Elemental Quiver
+									Tooltip: ""
+								}
+
+								PsychoticAmulet: {
+									DisplayName: Psychotic Amulet
+									Tooltip: ""
+								}
+							}
+
+							ReaperToothNecklaceold: {
+								DisplayName: Reaper Tooth Necklaceold
+								Tooltip: ""
+							}
+
+							TheSpongetest: {
+								DisplayName: The Spongetest
+								Tooltip: ""
+							}
+
+							VoidofExtinctionLegacy: {
+								DisplayName: Voidof Extinction Legacy
+								Tooltip: ""
+							}
+
+							YharimsGiftLegacy: {
+								DisplayName: Yharims Gift Legacy
+								Tooltip: ""
+							}
+						}
+
+						Ammo: {
+							ExplosiveShells: {
+								DisplayName: Explosive Shells
+								Tooltip: ""
+							}
+
+							GrenadeRounds: {
+								DisplayName: Grenade Rounds
+								Tooltip: ""
+							}
+
+							MagnumRounds: {
+								DisplayName: Magnum Rounds
+								Tooltip: ""
+							}
+
+							VanquisherArrowold: {
+								DisplayName: Vanquisher Arrowold
+								Tooltip: ""
+							}
+						}
+
+						Armor: {
+							AuricTeslaBodyArmorold: {
+								DisplayName: Auric Tesla Body Armorold
+								Tooltip: ""
+							}
+
+							AuricTeslaCuissesold: {
+								DisplayName: Auric Tesla Cuissesold
+								Tooltip: ""
+							}
+
+							AuricTeslaHeadMagic: {
+								DisplayName: Auric Tesla Head Magic
+								Tooltip: ""
+							}
+
+							AuricTeslaHeadMelee: {
+								DisplayName: Auric Tesla Head Melee
+								Tooltip: ""
+							}
+
+							AuricTeslaHeadRanged: {
+								DisplayName: Auric Tesla Head Ranged
+								Tooltip: ""
+							}
+
+							AuricTeslaHeadRogue: {
+								DisplayName: Auric Tesla Head Rogue
+								Tooltip: ""
+							}
+
+							AuricTeslaHeadSummon: {
+								DisplayName: Auric Tesla Head Summon
+								Tooltip: ""
+							}
+
+							GodSlayerChestplateold: {
+								DisplayName: God Slayer Chestplateold
+								Tooltip: ""
+							}
+
+							GodSlayerHeadMagicold: {
+								DisplayName: God Slayer Head Magicold
+								Tooltip: ""
+							}
+
+							GodSlayerHeadMeleeold: {
+								DisplayName: God Slayer Head Meleeold
+								Tooltip: ""
+							}
+
+							GodSlayerHeadRangedold: {
+								DisplayName: God Slayer Head Rangedold
+								Tooltip: ""
+							}
+
+							GodSlayerHeadRogueold: {
+								DisplayName: God Slayer Head Rogueold
+								Tooltip: ""
+							}
+
+							GodSlayerHeadSummonold: {
+								DisplayName: God Slayer Head Summonold
+								Tooltip: ""
+							}
+
+							GodSlayerLeggingsold: {
+								DisplayName: God Slayer Leggingsold
+								Tooltip: ""
+							}
+
+							ReaverCap: {
+								DisplayName: Reaver Cap
+								Tooltip: ""
+							}
+
+							ReaverCuisses: {
+								DisplayName: Reaver Cuisses
+								Tooltip: ""
+							}
+
+							ReaverHelm: {
+								DisplayName: Reaver Helm
+								Tooltip: ""
+							}
+
+							ReaverMask: {
+								DisplayName: Reaver Mask
+								Tooltip: ""
+							}
+
+							ReaverScaleMail: {
+								DisplayName: Reaver Scale Mail
+								Tooltip: ""
+							}
+
+							ReaverVisage: {
+								DisplayName: Reaver Visage
+								Tooltip: ""
+							}
+
+							SilvaArmorold: {
+								DisplayName: Silva Armorold
+								Tooltip: ""
+							}
+
+							SilvaHeadMagicold: {
+								DisplayName: Silva Head Magicold
+								Tooltip: ""
+							}
+
+							SilvaHeadMelee: {
+								DisplayName: Silva Head Melee
+								Tooltip: ""
+							}
+
+							SilvaHeadRanged: {
+								DisplayName: Silva Head Ranged
+								Tooltip: ""
+							}
+
+							SilvaHeadRogue: {
+								DisplayName: Silva Head Rogue
+								Tooltip: ""
+							}
+
+							SilvaHeadSummonold: {
+								DisplayName: Silva Head Summonold
+								Tooltip: ""
+							}
+
+							SilvaLeggingsold: {
+								DisplayName: Silva Leggingsold
+								Tooltip: ""
+							}
+
+							AncientXerocCuisses: {
+								DisplayName: Ancient Xeroc Cuisses
+								Tooltip: ""
+							}
+
+							AncientXerocMask: {
+								DisplayName: Ancient Xeroc Mask
+								Tooltip: ""
+							}
+
+							AncientXerocPlateMail: {
+								DisplayName: Ancient Xeroc Plate Mail
+								Tooltip: ""
+							}
+						}
+
+						Vanity: {
+							AncientOmegaBlueChestplate: {
+								DisplayName: Ancient Omega Blue Chestplate
+								Tooltip: ""
+							}
+
+							AncientOmegaBlueHelmet: {
+								DisplayName: Ancient Omega Blue Helmet
+								Tooltip: ""
+							}
+
+							AncientOmegaBlueLeggings: {
+								DisplayName: Ancient Omega Blue Leggings
+								Tooltip: ""
+							}
+						}
+
+						Wulfrum: {
+							MageWulfrumHoodLegacy: {
+								DisplayName: Mage Wulfrum Hood Legacy
+								Tooltip: ""
+							}
+
+							MeleeWulfrumHelmLegacy: {
+								DisplayName: Melee Wulfrum Helm Legacy
+								Tooltip: ""
+							}
+
+							ANewWulfrumArmor: {
+								DisplayName: A New Wulfrum Armor
+								Tooltip: ""
+							}
+
+							ANewWulfrumHeadgear: {
+								DisplayName: A New Wulfrum Headgear
+								Tooltip: ""
+							}
+
+							ANewWulfrumHelm: {
+								DisplayName: A New Wulfrum Helm
+								Tooltip: ""
+							}
+
+							ANewWulfrumHelmet: {
+								DisplayName: A New Wulfrum Helmet
+								Tooltip: ""
+							}
+
+							ANewWulfrumHood: {
+								DisplayName: A New Wulfrum Hood
+								Tooltip: ""
+							}
+
+							ANewWulfrumLeggings: {
+								DisplayName: A New Wulfrum Leggings
+								Tooltip: ""
+							}
+
+							ANewWulfrumMask: {
+								DisplayName: A New Wulfrum Mask
+								Tooltip: ""
+							}
+
+							RangedWulfrumHeadgearLegacy: {
+								DisplayName: Ranged Wulfrum Headgear Legacy
+								Tooltip: ""
+							}
+
+							SummonerWulfrumHelmetLegacy: {
+								DisplayName: Summoner Wulfrum Helmet Legacy
+								Tooltip: ""
+							}
+
+							ThrowerWulfrumMaskLegacy: {
+								DisplayName: Thrower Wulfrum Mask Legacy
+								Tooltip: ""
+							}
+
+							WulfrumArmorLegacy: {
+								DisplayName: Wulfrum Armor Legacy
+								Tooltip: ""
+							}
+
+							WulfrumLeggingsLegacy: {
+								DisplayName: Wulfrum Leggings Legacy
+								Tooltip: ""
+							}
+						}
+
+						Lores: {
+							KnowledgeAquaticScourge.DisplayName: Knowledge Aquatic Scourge
+							KnowledgeAstralInfection.DisplayName: Knowledge Astral Infection
+							KnowledgeAstrumAureus.DisplayName: Knowledge Astrum Aureus
+							KnowledgeAstrumDeus.DisplayName: Knowledge Astrum Deus
+							KnowledgeBloodMoon.DisplayName: Knowledge Blood Moon
+							KnowledgeBrainofCthulhu.DisplayName: Knowledge Brainof Cthulhu
+							KnowledgeBrimstoneCrag.DisplayName: Knowledge Brimstone Crag
+							KnowledgeBrimstoneElemental.DisplayName: Knowledge Brimstone Elemental
+							KnowledgeCalamitas.DisplayName: Knowledge Calamitas
+							KnowledgeCalamitasClone.DisplayName: Knowledge Calamitas Clone
+							KnowledgeCorruption.DisplayName: Knowledge Corruption
+							KnowledgeCrabulon.DisplayName: Knowledge Crabulon
+							KnowledgeCrimson.DisplayName: Knowledge Crimson
+							KnowledgeCryogen.DisplayName: Knowledge Cryogen
+							KnowledgeDesertScourge.DisplayName: Knowledge Desert Scourge
+							KnowledgeDestroyer.DisplayName: Knowledge Destroyer
+							KnowledgeDevourerofGods.DisplayName: Knowledge Devourerof Gods
+							KnowledgeDragonfolly.DisplayName: Knowledge Dragonfolly
+							KnowledgeDukeFishron.DisplayName: Knowledge Duke Fishron
+							KnowledgeEaterofWorlds.DisplayName: Knowledge Eaterof Worlds
+							KnowledgeEyeofCthulhu.DisplayName: Knowledge Eyeof Cthulhu
+							KnowledgeGolem.DisplayName: Knowledge Golem
+							KnowledgeHiveMind.DisplayName: Knowledge Hive Mind
+							KnowledgeKingSlime.DisplayName: Knowledge King Slime
+							KnowledgeLeviathanAnahita.DisplayName: Knowledge Leviathan Anahita
+							KnowledgeLunaticCultist.DisplayName: Knowledge Lunatic Cultist
+							KnowledgeMechs.DisplayName: Knowledge Mechs
+							KnowledgeMoonLord.DisplayName: Knowledge Moon Lord
+							KnowledgeOcean.DisplayName: Knowledge Ocean
+							KnowledgeOldDuke.DisplayName: Knowledge Old Duke
+							KnowledgePerforators.DisplayName: Knowledge Perforators
+							KnowledgePlaguebringerGoliath.DisplayName: Knowledge Plaguebringer Goliath
+							KnowledgePlantera.DisplayName: Knowledge Plantera
+							KnowledgePolterghast.DisplayName: Knowledge Polterghast
+							KnowledgeProfanedGuardians.DisplayName: Knowledge Profaned Guardians
+							KnowledgeProvidence.DisplayName: Knowledge Providence
+							KnowledgeQueenBee.DisplayName: Knowledge Queen Bee
+							KnowledgeRavager.DisplayName: Knowledge Ravager
+							KnowledgeSentinels.DisplayName: Knowledge Sentinels
+							KnowledgeSkeletron.DisplayName: Knowledge Skeletron
+							KnowledgeSkeletronPrime.DisplayName: Knowledge Skeletron Prime
+							KnowledgeSlimeGod.DisplayName: Knowledge Slime God
+							KnowledgeSulphurSea.DisplayName: Knowledge Sulphur Sea
+							KnowledgeTwins.DisplayName: Knowledge Twins
+							KnowledgeUnderworld.DisplayName: Knowledge Underworld
+							KnowledgeWallofFlesh.DisplayName: Knowledge Wallof Flesh
+							KnowledgeYharon.DisplayName: Knowledge Yharon
+						}
+
+						Materials: {
+							AuricBarold: {
+								DisplayName: Auric Barold
+								Tooltip: ""
+							}
+
+							NebulaBar: {
+								DisplayName: Nebula Bar
+								Tooltip: ""
+							}
+						}
+
+						Placeables: {
+							DraedonsForgeold: {
+								DisplayName: Draedons Forgeold
+								Tooltip: ""
+							}
+
+							DoGLegacy: {
+								DisplayName: Do G Legacy
+								Tooltip: ""
+							}
+
+							DoGNonStop: {
+								DisplayName: Do G Non Stop
+								Tooltip: ""
+							}
+
+							NowStopAskingWhere: {
+								DisplayName: Now Stop Asking Where
+								Tooltip: ""
+							}
+
+							ProvidenceLegacy: {
+								DisplayName: Providence Legacy
+								Tooltip: ""
+							}
+
+							TyrantPart1: {
+								DisplayName: Tyrant Part1
+								Tooltip: ""
+							}
+						}
+
+						Potions: {
+							CadancePotion: {
+								DisplayName: Cadance Potion
+								Tooltip: ""
+							}
+
+							DraconicElixir: {
+								DisplayName: Draconic Elixir
+								Tooltip: ""
+							}
+
+							HolyWrathPotion: {
+								DisplayName: Holy Wrath Potion
+								Tooltip: ""
+							}
+
+							PenumbraPotion: {
+								DisplayName: Penumbra Potion
+								Tooltip: ""
+							}
+
+							ProfanedRagePotion: {
+								DisplayName: Profaned Rage Potion
+								Tooltip: ""
+							}
+
+							PurifiedJam: {
+								DisplayName: Purified Jam
+								Tooltip: ""
+							}
+
+							RevivifyPotion: {
+								DisplayName: Revivify Potion
+								Tooltip: ""
+							}
+
+							ShatteringPotion: {
+								DisplayName: Shattering Potion
+								Tooltip: ""
+							}
+
+							TitanScalePotion: {
+								DisplayName: Titan Scale Potion
+								Tooltip: ""
+							}
+
+							TriumphPotion: {
+								DisplayName: Triumph Potion
+								Tooltip: ""
+							}
+
+							YharimsStimulants: {
+								DisplayName: Yharims Stimulants
+								Tooltip: ""
+							}
+						}
+
+						Tools: {
+							WulfrumAxe: {
+								DisplayName: Wulfrum Axe
+								Tooltip: ""
+							}
+
+							WulfrumHammer: {
+								DisplayName: Wulfrum Hammer
+								Tooltip: ""
+							}
+
+							WulfrumPickaxe: {
+								DisplayName: Wulfrum Pickaxe
+								Tooltip: ""
+							}
+						}
+
+						Weapons: {
+							Magic: {
+								HadopelagicEcho: {
+									DisplayName: Hadopelagic Echo
+									Tooltip: ""
+								}
+
+								HeliumFlashLegacy: {
+									DisplayName: Helium Flash Legacy
+									Tooltip: ""
+								}
+
+								PhantasmalFuryOld: {
+									DisplayName: Phantasmal Fury Old
+									Tooltip: ""
+								}
+
+								CarnageRay: {
+									DisplayName: Carnage Ray
+									Tooltip: ""
+								}
+
+								ElementalRayold: {
+									DisplayName: Elemental Rayold
+									Tooltip: ""
+								}
+
+								FabstaffOld: {
+									DisplayName: Fabstaff Old
+									Tooltip: ""
+								}
+
+								NightsRayold: {
+									DisplayName: Nights Rayold
+									Tooltip: ""
+								}
+
+								TerraRay: {
+									DisplayName: Terra Ray
+									Tooltip: ""
+								}
+
+								StratusSphere: {
+									DisplayName: Stratus Sphere
+									Tooltip: ""
+								}
+
+								SubsumingVortexold: {
+									DisplayName: Subsuming Vortexold
+									Tooltip: ""
+								}
+
+								TheWandold: {
+									DisplayName: The Wandold
+									Tooltip: ""
+								}
+
+								VehemencOld: {
+									DisplayName: Vehemenc Old
+									Tooltip: ""
+								}
+
+								VividClarity: {
+									DisplayName: Vivid Clarity
+									Tooltip: ""
+								}
+
+								VoidVortex: {
+									DisplayName: Void Vortex
+									Tooltip: ""
+								}
+							}
+
+							Melee: {
+								Animus: {
+									DisplayName: Animus
+									Tooltip: ""
+								}
+
+								ArkoftheAncients: {
+									DisplayName: Arkofthe Ancients
+									Tooltip: ""
+								}
+
+								ArkoftheCosmosold: {
+									DisplayName: Arkofthe Cosmosold
+									Tooltip: ""
+								}
+
+								ArkoftheElementsold: {
+									DisplayName: Arkofthe Elementsold
+									Tooltip: ""
+								}
+
+								AtaraxiaOld: {
+									DisplayName: Ataraxia Old
+									Tooltip: ""
+								}
+
+								BiomeBlade: {
+									DisplayName: Biome Blade
+									Tooltip: ""
+								}
+
+								BladeofEnmity: {
+									DisplayName: Bladeof Enmity
+									Tooltip: ""
+								}
+
+								BloodyEdge: {
+									DisplayName: Bloody Edge
+									Tooltip: ""
+								}
+
+								ElementalExcalibur: {
+									DisplayName: Elemental Excalibur
+									Tooltip: ""
+								}
+
+								Exobladeold: {
+									DisplayName: Exobladeold
+									Tooltip: ""
+								}
+
+								ExoFlail: {
+									DisplayName: Exo Flail
+									Tooltip: ""
+								}
+
+								FourSeasonsGalaxiaold: {
+									DisplayName: Four Seasons Galaxiaold
+									Tooltip: ""
+								}
+
+								GrandDad: {
+									DisplayName: Grand Dad
+									Tooltip: ""
+								}
+
+								MurasamaNeweffect: {
+									DisplayName: Murasama Neweffect
+									Tooltip: ""
+								}
+
+								Murasamaold: {
+									DisplayName: Murasamaold
+									Tooltip: ""
+								}
+
+								OmegaBiomeBlade: {
+									DisplayName: Omega Biome Blade
+									Tooltip: ""
+								}
+
+								Shortsword: {
+									AncientShiv: {
+										DisplayName: Ancient Shiv
+										Tooltip: ""
+									}
+
+									BloodyRupture: {
+										DisplayName: Bloody Rupture
+										Tooltip: ""
+									}
+
+									ColdheartIcicle: {
+										DisplayName: Coldheart Icicle
+										Tooltip: ""
+									}
+
+									CosmicShivold: {
+										DisplayName: Cosmic Shivold
+										Tooltip: ""
+									}
+
+									ElementalShivold: {
+										DisplayName: Elemental Shivold
+										Tooltip: ""
+									}
+
+									EutrophicShank: {
+										DisplayName: Eutrophic Shank
+										Tooltip: ""
+									}
+
+									ExcaliburShortsword: {
+										DisplayName: Excalibur Shortsword
+										Tooltip: ""
+									}
+
+									ExoGladius: {
+										DisplayName: Exo Gladius
+										Tooltip: ""
+									}
+
+									FlameburstShortsword: {
+										DisplayName: Flameburst Shortsword
+										Tooltip: ""
+									}
+
+									LeechingDagger: {
+										DisplayName: Leeching Dagger
+										Tooltip: ""
+									}
+
+									NightsStabber: {
+										DisplayName: Nights Stabber
+										Tooltip: ""
+									}
+
+									SporeKnife: {
+										DisplayName: Spore Knife
+										Tooltip: ""
+									}
+
+									TerraShiv: {
+										DisplayName: Terra Shiv
+										Tooltip: ""
+									}
+
+									TrueExcaliburShortsword: {
+										DisplayName: True Excalibur Shortsword
+										Tooltip: ""
+									}
+
+									TrueNightsStabber: {
+										DisplayName: True Nights Stabber
+										Tooltip: ""
+									}
+								}
+
+								SoulEdge: {
+									DisplayName: Soul Edge
+									Tooltip: ""
+								}
+
+								StreamGougeOld: {
+									DisplayName: Stream Gouge Old
+									Tooltip: ""
+								}
+
+								TerraEdge: {
+									DisplayName: Terra Edge
+									Tooltip: ""
+								}
+
+								TrueArkoftheAncients: {
+									DisplayName: True Arkofthe Ancients
+									Tooltip: ""
+								}
+
+								TrueBiomeBlade: {
+									DisplayName: True Biome Blade
+									Tooltip: ""
+								}
+
+								TrueBloodyEdge: {
+									DisplayName: True Bloody Edge
+									Tooltip: ""
+								}
+							}
+
+							Ranged: {
+								CelestialObliterator: {
+									DisplayName: Celestial Obliterator
+									Tooltip: ""
+								}
+
+								DragonsBreathold: {
+									DisplayName: Dragons Breathold
+									Tooltip: ""
+								}
+
+								HeavenlyGaleold: {
+									DisplayName: Heavenly Galeold
+									Tooltip: ""
+								}
+
+								LeadWizard: {
+									DisplayName: Lead Wizard
+									Tooltip: ""
+								}
+
+								Minigun: {
+									DisplayName: Minigun
+									Tooltip: ""
+								}
+
+								Photovisceratorold: {
+									DisplayName: Photovisceratorold
+									Tooltip: ""
+								}
+
+								ProporsePistol: {
+									DisplayName: Proporse Pistol
+									Tooltip: ""
+								}
+
+								RaidersGlory: {
+									DisplayName: Raiders Glory
+									Tooltip: ""
+								}
+
+								Skullmasher: {
+									DisplayName: Skullmasher
+									Tooltip: ""
+								}
+
+								SomaPrimeOld: {
+									DisplayName: Soma Prime Old
+									Tooltip: ""
+								}
+
+								SpectreRifle: {
+									DisplayName: Spectre Rifle
+									Tooltip: ""
+								}
+
+								StarCannonEX: {
+									DisplayName: Star Cannon E X
+									Tooltip: ""
+								}
+
+								TyrannysEndOld: {
+									DisplayName: Tyrannys End Old
+									Tooltip: ""
+								}
+							}
+
+							Rogue: {
+								ExoTheApostle: {
+									DisplayName: Exo The Apostle
+									Tooltip: ""
+								}
+
+								IchorSpearLegacy: {
+									DisplayName: Ichor Spear Legacy
+									Tooltip: ""
+								}
+
+								PhantasmalRuinold: {
+									DisplayName: Phantasmal Ruinold
+									Tooltip: ""
+								}
+
+								PhantomLance: {
+									DisplayName: Phantom Lance
+									Tooltip: ""
+								}
+
+								Quasar: {
+									DisplayName: Quasar
+									Tooltip: ""
+								}
+
+								SpearofDestinyLegacy: {
+									DisplayName: Spearof Destiny Legacy
+									Tooltip: ""
+								}
+
+								Supernovaold: {
+									DisplayName: Supernovaold
+									Tooltip: ""
+								}
+
+								SylvanSlasher: {
+									DisplayName: Sylvan Slasher
+									Tooltip: ""
+								}
+							}
+
+							Summon: {
+								MidnightSunBeaconold: {
+									DisplayName: Midnight Sun Beaconold
+									Tooltip: ""
+								}
+
+								TemporalUmbrellaOld: {
+									DisplayName: Temporal Umbrella Old
+									Tooltip: ""
+								}
+							}
+						}
+					}
+
+					Content: {
+						Projectiles: {
+							MiniRocket.DisplayName: Mini Rocket
+							ReaverBeam.DisplayName: Reaver Beam
+							ReaverOrbOld.DisplayName: Reaver Orb Old
+							reaverRangedRocketMark.DisplayName: reaver Ranged Rocket Mark
+							CISporeGas.DisplayName: C I Spore Gas
+							CISporeGas2.DisplayName: C I Spore Gas2
+							CISporeGas3.DisplayName: C I Spore Gas3
+							CIVividBeam.DisplayName: C I Vivid Beam
+							Climax2.DisplayName: Climax2
+							ClimaxBeam2.DisplayName: Climax Beam2
+							Crescent.DisplayName: Crescent
+							EnormousConsumingVortexold.DisplayName: Enormous Consuming Vortexold
+							HadopelagicEcho2.DisplayName: Hadopelagic Echo2
+							HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
+							HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
+							InfernadoFriendlyold.DisplayName: Infernado Friendlyold
+							InfernadoMarkFriendlyold.DisplayName: Infernado Mark Friendlyold
+							PhantasmalFuryProjOld.DisplayName: Phantasmal Fury Proj Old
+							SparkInfernalold.DisplayName: Spark Infernalold
+							StratusSphereProj.DisplayName: Stratus Sphere Proj
+							SubsumingTentacle.DisplayName: Subsuming Tentacle
+							VehemenceOld.DisplayName: Vehemence Old
+							VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
+							Vortex.DisplayName: Vortex
+							AtaraxiaHoming.DisplayName: Ataraxia Homing
+							AtaraxiaMainOld.DisplayName: Ataraxia Main Old
+							AtaraxiaSideOld.DisplayName: Ataraxia Side Old
+							AtaraxiaSplitOld.DisplayName: Ataraxia Split Old
+							BiomeOrb.DisplayName: Biome Orb
+							BloodyEdgeEnergySword.DisplayName: Bloody Edge Energy Sword
+							BlueAura.DisplayName: Blue Aura
+							CosmicShivBallold.DisplayName: Cosmic Shiv Ballold
+							CosmicShivBladeold.DisplayName: Cosmic Shiv Bladeold
+							ElementalExcaliburBeam.DisplayName: Elemental Excalibur Beam
+							ElementBall.DisplayName: Element Ball
+							ElementBallShivold.DisplayName: Element Ball Shivold
+							EonBeam.DisplayName: Eon Beam
+							EonBeamV2.DisplayName: Eon Beam V2
+							EonBeamV3.DisplayName: Eon Beam V3
+							EonBeamV4.DisplayName: Eon Beam V4
+							Exobeamold.DisplayName: Exobeamold
+							Exoboomold.DisplayName: Exoboomold
+							Exoboompersistentold.DisplayName: Exoboompersistentold
+							ExoFlailEnergy.DisplayName: Exo Flail Energy
+							ExoFlailProj.DisplayName: Exo Flail Proj
+							ExoFlailProj2.DisplayName: Exo Flail Proj2
+							ExoGladComet.DisplayName: Exo Glad Comet
+							ExoGladiusBeam.DisplayName: Exo Gladius Beam
+							ExoGladProj.DisplayName: Exo Glad Proj
+							ExoGladSpears.DisplayName: Exo Glad Spears
+							EyeOfNightCell.DisplayName: Eye Of Night Cell
+							Galaxia.DisplayName: Galaxia
+							Galaxia2.DisplayName: Galaxia2
+							GalaxyStarold.DisplayName: Galaxy Starold
+							MurasamaSlashold.DisplayName: Murasama Slashold
+							NightStabber2.DisplayName: Night Stabber2
+							OmegaBiomeOrb.DisplayName: Omega Biome Orb
+							SHIVold.DisplayName: S H I Vold
+							ShortExcaliburBeam.DisplayName: Short Excalibur Beam
+							ShortNightBeam.DisplayName: Short Night Beam
+							AncientShivProj.DisplayName: Ancient Shiv Proj
+							BloodyRuptureProj.DisplayName: Bloody Rupture Proj
+							ColdheartIcicleProj.DisplayName: Coldheart Icicle Proj
+							CosmicShivProjold.DisplayName: Cosmic Shiv Projold
+							ElementalShivoldProj.DisplayName: Elemental Shivold Proj
+							EutrophicShankProj.DisplayName: Eutrophic Shank Proj
+							ExcaliburShortswordProj.DisplayName: Excalibur Shortsword Proj
+							ExoGladiusProj.DisplayName: Exo Gladius Proj
+							FlameburstShortswordProj.DisplayName: Flameburst Shortsword Proj
+							LeechingDaggerProj.DisplayName: Leeching Dagger Proj
+							NightsStabberProj.DisplayName: Nights Stabber Proj
+							SporeKnifeProj.DisplayName: Spore Knife Proj
+							TerraShivProj.DisplayName: Terra Shiv Proj
+							TrueExcaliburShortswordProj.DisplayName: True Excalibur Shortsword Proj
+							TrueNightsStabberProj.DisplayName: True Nights Stabber Proj
+							ShortTerraBeam.DisplayName: Short Terra Beam
+							SoulEdgeSoulLegacyLarge.DisplayName: Soul Edge Soul Legacy Large
+							SoulEdgeSoulLegacyMedium.DisplayName: Soul Edge Soul Legacy Medium
+							SoulEdgeSoulLegacySmall.DisplayName: Soul Edge Soul Legacy Small
+							TerraBall.DisplayName: Terra Ball
+							TerraEdgeBeam.DisplayName: Terra Edge Beam
+							TerraEdgeEnergySword.DisplayName: Terra Edge Energy Sword
+							TrueBiomeOrb.DisplayName: True Biome Orb
+							TrueBloodyBladeProj.DisplayName: True Bloody Blade Proj
+							TrueBloodyEdgeEnergySword.DisplayName: True Bloody Edge Energy Sword
+							BloodflareSoulold.DisplayName: Bloodflare Soulold
+							DragonsBreathRound.DisplayName: Dragons Breath Round
+							ExoArrowBlue.DisplayName: Exo Arrow Blue
+							ExoArrowBlue2.DisplayName: Exo Arrow Blue2
+							ExoArrowGreen.DisplayName: Exo Arrow Green
+							ExoArrowTeal.DisplayName: Exo Arrow Teal
+							ExoboomoldRanged.DisplayName: Exoboomold Ranged
+							ExoboompersistentoldRanged.DisplayName: Exoboompersistentold Ranged
+							ExoFireold.DisplayName: Exo Fireold
+							ExoFlareClusterold.DisplayName: Exo Flare Clusterold
+							ExoFlareold.DisplayName: Exo Flareold
+							ExoGunBlast.DisplayName: Exo Gun Blast
+							ExoGunBlastsplit.DisplayName: Exo Gun Blastsplit
+							ExoLightold.DisplayName: Exo Lightold
+							ExoMark.DisplayName: Exo Mark
+							ExoSparkold.DisplayName: Exo Sparkold
+							ExoSpearBack.DisplayName: Exo Spear Back
+							ExoTornado.DisplayName: Exo Tornado
+							FallenStarProj.DisplayName: Fallen Star Proj
+							OrangeExoArrow.DisplayName: Orange Exo Arrow
+							ProBolt.DisplayName: Pro Bolt
+							VanquisherArrowoldMain.DisplayName: Vanquisher Arrowold Main
+							CosmicScytheOld.DisplayName: Cosmic Scythe Old
+							ExoJet.DisplayName: Exo Jet
+							ExoSpearextraProj.DisplayName: Exo Spearextra Proj
+							ExoSpearProj.DisplayName: Exo Spear Proj
+							ExoSpearStealthProj.DisplayName: Exo Spear Stealth Proj
+							ExoSpearTrail.DisplayName: Exo Spear Trail
+							IchorSpearProjLegacy.DisplayName: Ichor Spear Proj Legacy
+							NanotechOld.DisplayName: Nanotech Old
+							PhantasmalRuinGhost.DisplayName: Phantasmal Ruin Ghost
+							PhantasmalRuinProjold.DisplayName: Phantasmal Ruin Projold
+							PhantasmalSoulold.DisplayName: Phantasmal Soulold
+							PhantomLanceProj.DisplayName: Phantom Lance Proj
+							Quasar2.DisplayName: Quasar2
+							QuasarKnife.DisplayName: Quasar Knife
+							SpearofDestinyProjectileLegacy.DisplayName: Spearof Destiny Projectile Legacy
+							SupernovaBombold.DisplayName: Supernova Bombold
+							SupernovaHoming.DisplayName: Supernova Homing
+							SupernovaSpike.DisplayName: Supernova Spike
+							SylvanSlash.DisplayName: Sylvan Slash
+							SylvanSlashAttack.DisplayName: Sylvan Slash Attack
+							MidnightSunBeamold.DisplayName: Midnight Sun Beamold
+							MidnightSunLaserold.DisplayName: Midnight Sun Laserold
+							MidnightSunSkyBeamold.DisplayName: Midnight Sun Sky Beamold
+							MidnightSunUFOold.DisplayName: Midnight Sun U F Oold
+							MagicAxeOld.DisplayName: Magic Axe Old
+							MagicBatOld.DisplayName: Magic Bat Old
+							MagicBirdOld.DisplayName: Magic Bird Old
+							MagicBulletOld.DisplayName: Magic Bullet Old
+							MagicHammerOld.DisplayName: Magic Hammer Old
+							MagicHatOld.DisplayName: Magic Hat Old
+							MagicRifleOld.DisplayName: Magic Rifle Old
+							MagicUmbrellaOld.DisplayName: Magic Umbrella Old
+							GodSlayerBlaze.DisplayName: God Slayer Blaze
+							GodSlayerOrb.DisplayName: God Slayer Orb
+							GodSlayerPhantom.DisplayName: God Slayer Phantom
+							GoldenGunProj.DisplayName: Golden Gun Proj
+							ReaverBlast.DisplayName: Reaver Blast
+							TheDeadlyMicrobeProjectile.DisplayName: The Deadly Microbe Projectile
+							VanquisherArrowSplit.DisplayName: Vanquisher Arrow Split
+						}
+					}
+				}
+			}
+
+			CalamityInheritanceContent: {
+				Items: {
+					Accessories: {
+						DashAccessories: {
+							AsgardianAegisold: {
+								DisplayName: Asgardian Aegisold
+								Tooltip: ""
+							}
+
+							AsgardsValorold: {
+								DisplayName: Asgards Valorold
+								Tooltip: ""
+							}
+
+							ElysianAegisold: {
+								DisplayName: Elysian Aegisold
+								Tooltip: ""
+							}
+
+							StatisNinjaBeltLegacy: {
+								DisplayName: Statis Ninja Belt Legacy
+								Tooltip: ""
+							}
+
+							StatisVoidSash: {
+								DisplayName: Statis Void Sash
+								Tooltip: ""
+							}
+						}
+					}
+				}
+			}
+		}
+
+		Items: {
+			AstralArcanum: {
+				DisplayName: Astral Arcanum
+				Tooltip: ""
+			}
+
+			Armor: {
+				PostMoonLord: {
+					ReaverHelmet: {
+						DisplayName: Reaver Helmet
+						Tooltip: ""
+					}
+				}
+			}
+
+			Test: {
+				DisplayName: Test
+				Tooltip: ""
+			}
+
+			Bazooka: {
+				DisplayName: Bazooka
+				Tooltip: ""
+			}
+
+			ElephantKiller: {
+				DisplayName: Elephant Killer
+				Tooltip: ""
+			}
+
+			Hydra: {
+				DisplayName: Hydra
+				Tooltip: ""
+			}
+
+			LightningHawk: {
+				DisplayName: Lightning Hawk
+				Tooltip: ""
+			}
+
+			Magnum: {
+				DisplayName: Magnum
+				Tooltip: ""
+			}
+
+			GoldenGun: {
+				DisplayName: Golden Gun
+				Tooltip: ""
+			}
+		}
+
+		ModContent: {
+			CalamityInheritance: {
+				Content: {
+					Items: {
+						Accessories: {
+							Rogue: {
+								NanotechOld: {
+									DisplayName: Nanotech Old
+									Tooltip: ""
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		Projectiles: {
+			Magic: {
+				ReaverOrbMark.DisplayName: Reaver Orb Mark
+				BloodRayold.DisplayName: Blood Rayold
+				AncientStarCI.DisplayName: Ancient Star C I
+				ElementalBeam.DisplayName: Elemental Beam
+				ElementalBeamMain.DisplayName: Elemental Beam Main
+				NightBoltold.DisplayName: Night Boltold
+				NightOrbold.DisplayName: Night Orbold
+				NightsRayBeamold.DisplayName: Nights Ray Beamold
+				TerraBeamMain.DisplayName: Terra Beam Main
+			}
+
+			BloodBolt.DisplayName: Blood Bolt
+			BloodOrb.DisplayName: Blood Orb
+			ElementalBolt.DisplayName: Elemental Bolt
+			ElementalBolt2.DisplayName: Elemental Bolt2
+			ElementalBoltVortex.DisplayName: Elemental Bolt Vortex
+			ElementalLightning.DisplayName: Elemental Lightning
+			ElementalNer.DisplayName: Elemental Ner
+			ElementalOrb.DisplayName: Elemental Orb
+			ElementalOrbVortex.DisplayName: Elemental Orb Vortex
+			ElementalRayMarkStar.DisplayName: Elemental Ray Mark Star
+			ElementalRayMarkVortex.DisplayName: Elemental Ray Mark Vortex
+			FabBoltOld.DisplayName: Fab Bolt Old
+			FabOrbOld.DisplayName: Fab Orb Old
+			FabRayOld.DisplayName: Fab Ray Old
+			TerraBeam.DisplayName: Terra Beam
+			TerraBolt.DisplayName: Terra Bolt
+			TerraBolt2.DisplayName: Terra Bolt2
+			TerraOrb.DisplayName: Terra Orb
+			TerraOrb2.DisplayName: Terra Orb2
+			EssenceBeam.DisplayName: Essence Beam
+			Melee.StreamGougeProjOld.DisplayName: Stream Gouge Proj Old
+			MidnightSunBeaconProjold.DisplayName: Midnight Sun Beacon Projold
+			ExplosiveShotgunShell.DisplayName: Explosive Shotgun Shell
+			GrenadeRound.DisplayName: Grenade Round
+			MagnumRound.DisplayName: Magnum Round
+			Typeless.HolyExplosionold.DisplayName: Holy Explosionold
+		}
+
+		Configs: {
+			CalamityInheritanceConfig: {
+				DisplayName: Calamity Inheritance Config
+
+				Headers: {
+					Gameplay: Gameplay Header
+					Texture: Texture Header
+					Music: Music Header
+				}
+
+				ElementalQuiversplit: {
+					Label: Elemental Quiversplit
+					Tooltip: ""
+				}
+
+				ElementalQuiverSplitstyle: {
+					Label: Elemental Quiver Splitstyle
+					Tooltip: ""
+				}
+
+				TheSpongeBarrier: {
+					Label: The Sponge Barrier
+					Tooltip: ""
+				}
+
+				BoCLoreUnconditional: {
+					Label: Bo C Lore Unconditional
+					Tooltip: ""
+				}
+
+				GodSlayerSetBonusesChange: {
+					Label: God Slayer Set Bonuses Change
+					Tooltip: ""
+				}
+
+				silvastun: {
+					Label: silvastun
+					Tooltip: ""
+				}
+
+				ExoSperaHitEffect: {
+					Label: Exo Spera Hit Effect
+					Tooltip: ""
+				}
+
+				AmmoConversion: {
+					Label: Ammo Conversion
+					Tooltip: ""
+				}
+
+				turnoffCorner: {
+					Label: turnoff Corner
+					Tooltip: ""
+				}
+
+				LegendaryitemsRecipes: {
+					Label: Legendaryitems Recipes
+					Tooltip: ""
+				}
+
+				WulfumTexture: {
+					Label: Wulfum Texture
+					Tooltip: ""
+				}
+
+				ArkofCosmosTexture: {
+					Label: Arkof Cosmos Texture
+					Tooltip: ""
+				}
+
+				RampartofDeitiesTexture: {
+					Label: Rampartof Deities Texture
+					Tooltip: ""
+				}
+
+				ExtraMusic: {
+					Label: Extra Music
+					Tooltip: ""
+				}
+			}
+		}
+
+		Content: {
+			Items: {
+				Accessories: {
+					Melee: {
+						BadgeofBravery: {
+							DisplayName: Badgeof Bravery
+							Tooltip: ""
+						}
+					}
+				}
+			}
+		}
+	}
+}

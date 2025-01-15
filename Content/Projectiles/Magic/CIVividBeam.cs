@@ -3,10 +3,6 @@ using CalamityMod.Projectiles.Magic;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class CIVividBeam : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         private bool initialized = false;

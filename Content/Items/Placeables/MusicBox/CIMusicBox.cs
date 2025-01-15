@@ -4,8 +4,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
-    public abstract class CIMusicBox : ModItem
+    public abstract class CIMusicBox : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         public abstract int MusicBoxTile { get; }
         public virtual bool Obtainable { get; } = true;
 

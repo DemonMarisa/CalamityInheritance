@@ -9,8 +9,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class SpectreRifle : ModItem
+    public class SpectreRifle : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public override void SetDefaults()
         {
             Item.damage = 150;

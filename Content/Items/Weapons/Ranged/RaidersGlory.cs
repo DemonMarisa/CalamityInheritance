@@ -7,8 +7,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class RaidersGlory : ModItem
+    public class RaidersGlory : ModItem, ILocalizedModType 
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Items.Weapons.Ranged";
         public override void SetDefaults()
         {
             Item.damage = 44;

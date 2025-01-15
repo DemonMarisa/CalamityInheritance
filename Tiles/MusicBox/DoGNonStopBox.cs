@@ -1,4 +1,4 @@
-using CalamityInheritance.Content.Items.MusicBox;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

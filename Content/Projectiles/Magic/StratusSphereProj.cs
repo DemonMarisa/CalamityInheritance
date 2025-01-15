@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -11,8 +6,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class StratusSphereProj : ModProjectile
+    public class StratusSphereProj : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Mods.CalamityInheritance.Content.Content.Projectiles";
         int roundsGone = 0;
         int dust_nut = 0;
         public override void SetStaticDefaults()
@@ -92,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = Projectile.Center;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 226, 0f, 0f, 0, new Color(255, 255, 255), 0.7236842f)];
+                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, DustID.Electric, 0f, 0f, 0, new Color(255, 255, 255), 0.7236842f)];
             }
 
             dust_nut++;
@@ -105,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Vector2 spinningpoint = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f * 0.5f;
                     spinningpoint = spinningpoint.RotatedBy((double)((float)(i - (num20 / 2 - 1)) * 6.28318548f / (float)num20), default(Vector2)) + Projectile.Center;
                     Vector2 vector = spinningpoint - Projectile.Center;
-                    int num21 = Dust.NewDust(spinningpoint + vector, 0, 0, 226, vector.X * 2f, vector.Y * 2f, 0, new Color(255, 255, 255), 0.7236842f);
+                    int num21 = Dust.NewDust(spinningpoint + vector, 0, 0, DustID.Electric, vector.X * 2f, vector.Y * 2f, 0, new Color(255, 255, 255), 0.7236842f);
                     Main.dust[num21].noGravity = true;
                     Main.dust[num21].noLight = true;
                     Main.dust[num21].velocity = Vector2.Normalize(vector) * 3f;
