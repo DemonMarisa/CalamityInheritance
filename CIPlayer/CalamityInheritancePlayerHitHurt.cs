@@ -269,16 +269,9 @@ namespace CalamityInheritance.CIPlayer
                 {
                     if (SCalLore)
                     {
-                        string key = "Mods.CalamityMod.SupremeBossText2";
-                        Color messageColor = Color.Orange;
-                        if (Main.netMode == NetmodeID.SinglePlayer)
-                        {
-                            Main.NewText(Language.GetTextValue(key), messageColor);
-                        }
-                        else if (Main.netMode == NetmodeID.Server)
-                        {
-                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-                        }
+                        string key = "Mods.CalamityInheritance.Status.SCAL";
+                        Color messageColor = Color.DarkRed;
+                        CalamityUtils.DisplayLocalizedText(key, messageColor);
                     }
                     modPlayer.KillPlayer();
                 }
@@ -339,7 +332,6 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                 }
-
             };
             if (silvaMelee)
             {

@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -40,8 +41,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
             Item.height = 100;
-            Item.value = Item.buyPrice(1, 80, 0, 0);
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.rare = ModContent.RarityType<DeepBlue>();
             Item.shoot = ModContent.ProjectileType<StreamGougeProjOld>();
             Item.shootSpeed = 12f;
         }

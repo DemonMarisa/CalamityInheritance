@@ -8,7 +8,9 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Status.hjson" />
 	  <AdditionalFiles Remove="Localization\Mods.CalamityMod.UI.hjson" />
+	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Status.hjson" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Buffs\ArmorShattering.png" />

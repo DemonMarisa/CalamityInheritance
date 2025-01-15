@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             Projectile.extraUpdates = 5;
             Projectile.timeLeft = 600;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1;
+            Projectile.localNPCHitCooldown = 0;
         }
 
         public override void AI()
