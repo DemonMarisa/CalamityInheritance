@@ -1,360 +1,461 @@
 AuricTeslaBodyArmorold: {
-	DisplayName: ��ʥ��Դ����[Legacy]
+	DisplayName: Auric Tesla Body Armor Legacy
 	Tooltip:
-		'''
-		+100�������ֵ
-		����8%�˺���5%������
-		�ƶ��ٶ�����25%
-		����2%�ĸ���������Ϯ�Ĺ���
-		����С��80����˺�
-		��ú������ϵ�����
-		'''
+			'''
+			8% increased damage, 5% increased critical strike chance
+			25% increased movement speed
+			+100 max life
+			Frost Barrier effect
+			'''
 }
 
 AuricTeslaCuissesold: {
-	DisplayName: ��ʥ��Դ�ȼ�[Legacy]
+	DisplayName: Auric Tesla Cuisses Legacy
 	Tooltip:
-		'''
-		����50%����
-		����12%�˺���5%������
-		���ħ̺������
-		'''
+			'''
+			12% increased damage, 5% increased critical strike chance
+			50% increased movement speed
+			Magic carpet effect
+			'''
 }
 
 AuricTeslaHeadMagic: {
-	DisplayName: ���������[Legacy]
+	DisplayName: Auric Tesla Wire-Hemmed Visage Legacy
 	Tooltip:
-		'''
-		����30%ħ���˺���20%ħ��������
-		+100���ħ��ֵ������20%ħ������
-		վ������ʱ�������˺��뱩������
-		'''
+			'''
+			30% increased magic damage, 20% increased magic critical chance
+			+100 max mana, 20% reduced mana usage
+			Not moving boosts all damage and critical strike chance 
+			'''
 	SetBonus:
-		'''
-		������Ѫ�ң�߱���ֺ���װ�ľ������Ч��
-		��Ļ���е��˻����ɽ�Դ�����������
-		����������������
-		ħ����Ļÿ1.5����е��˻���50%�ĸ����������
-		ħ������ÿ1.67�뷢��һ֧�������������ÿ2�����3����ը
-		ħ����Ļ���е��˻����߱����棬��������߱������������
-		ħ����Ļÿ5����е��˻ᴥ���ֺ���ը
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		����ȴʱ�ٴ��������ᴥ��ʼԴ�ֺ��޵У�ʹ�����10���ڲ�������
-		�ֺ��޵н�����ħ���˺�����60%
-		'''
+			'''
+			Magic Tarragon, Bloodflare, God Slayer and Silva armor effects
+			10% increased max run speed and acceleration
+			All projectiles spawn healing auric orbs on enemy hits
+			'''
 }
 
 AuricTeslaHeadMelee: {
-	DisplayName: ��Դҫ�տ�[Legacy]
+	DisplayName: Auric Tesla Royal Helm Legacy
 	Tooltip:
-		'''
-		����20%��ս�˺���20%��ս������
-		����28%�Ľ�ս����
-		���˸��п��ܹ�����
-		վ������ʱ�������˺��뱩������
-		'''
+			'''
+			20% increased melee damage and critical strike chance
+			28% increased melee speed
+			Not moving boost all damage and critical strike chance
+			'''
 	SetBonus:
-		'''
-		������Ѫ�ң�߱���ֺ���װ�ľ������Ч��
-		����{0}�ṩ���ﶷ�����棬��10���ڽӴ��˺�����50%
-		�������ս���������Ѫ��ŭ����
-		�ܵ�����80���˺�����˸�������߱�����
-		��ս��������ѣ�ε���
-		���ս��25%�ĸ������5���˺�
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		����ȴʱ�ٴ��������ᴥ��ʼԴ�ֺ��޵У�ʹ�����10���ڲ�������
-		�ֺ��޵н����󣬽Ӵ��˺�����20%
-		'''
+			'''
+			Melee Tarragon, Bloodflare, God Slayer and Silva armor effect
+			10% increased max run speed and acceleration
+			Enemies are more likely to target you
+			Multiplie melee damage based on your current HP is, at full HP effect is at max
+			'''
 }
 
 AuricTeslaHeadRanged: {
-	DisplayName: ��������[Legacy]
+	DisplayName: Auric Tesla Hooded Facemask Legacy
 	Tooltip:
-		'''
-		����30%Զ���˺���30%Զ�̱�����
-		վ������ʱ�������˺��뱩������
-		'''
+			'''
+			30% increased ranged damage and critical strike chance
+			Not moving boost all damage and critical strike chance 
+			'''
 	SetBonus:
-		'''
-		������Ѫ�ң�߱���ֺ���װ�ľ������Ч��
-		����������������
-		Զ�̵�Ļ����ʱ������ѳ��������������ﱬը
-		����{0}�ͷ�16��Ѫ�����׷�ٵ���
-		Զ������ÿ2.5�뷢��һö߱����
-		������ҹ���ʱ������ı�����������ı��˺�
-		Զ�̹����ٶ�����20%
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		����ȴʱ�ٴ��������ᴥ��ʼԴ�ֺ��޵У�ʹ�����10���ڲ�������
-		�ֺ��޵н����������˺�����40%
-		'''
+			'''
+			Ranged Tarragon, Bloodflare, God Slayer and Silva armor effects
+			10% increased max run speed and acceleration
+			All projectiles spawn healing auric orbs on enemy hits
+			'''
 }
 
 AuricTeslaHeadRogue: {
-	DisplayName: ����ʮɱ��[Legacy]
+	DisplayName: Auric Tesla Pulmed Helm Legacy
 	Tooltip:
-		'''
-		����20%�����˺���20%����������
-		����130��Ǳ��ֵ����
-		�ƶ��ٶ�����5%
-		վ������ʱ�������˺��뱩������
-		'''
+			'''
+			20% increased rogue damage and critical strike chance
+			25% increased movement speed
+			Not moving boost all damage and critical strike	chance 
+			'''
 	SetBonus:
-		'''
-		������Ѫ�ң�߱���ֺ���װ�ľ������Ч��
-		����������������
-		ÿһ��debuff�����õ����˺�����10%
-		ÿ25�α�������3��������޵�����
-		ÿһ�α�������50%�ĸ����������
-		����������ֵ����80%�����30���������5%�����������ʣ�С��80%ʱ�������˺�����10%
-		��Ѫʱ�������˺��������ʺ���������10%
-		�����Ѫ������50%ʱ�������ٶ�����10%
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		����ȴʱ�ٴ��������ᴥ��ʼԴ�ֺ��޵У�ʹ�����10���ڲ�������
-		�ֺ��޵н����󣬵����˺�����40%
-		'''
+			'''
+			+130 maxinum stealth
+			Rogue Tarragon, Bloodflare, God Slayer and Silva armor effects
+			10% increased max run speed and acceleration
+			All projectiles spawn healing auric orbs on enemy hits
+			Rogue weapon critical strike will do 1.25 times damage while you are above 50% HP
+			'''
 }
 
 AuricTeslaHeadSummon: {
-	DisplayName: �����ǽ��[Legacy]
-	Tooltip: ����7�ʹ���
+	DisplayName: Auric Tesla Head Summon
+	Tooltip:
+			'''
+			+7 max minions
+			Not moving boosts all damage and critical strike chance
+			'''
 	SetBonus:
-		'''
-		����1�ʹ�����120%�ٻ��˺�
-		������Ѫ�ң�߱���ֺ���װ�ľ������Ч��
-		����������������
-		�������Χ�ٻ������⻷
-		�ٻ�������Ӱ����Χ�����
-		�����������90%ʱ���ٻ��˺�����10%��С��50%ʱ���20��������2�����ָ�
-		�ٻ������������ң����Խ�һ����չ
-		�ʹӻ��е��˻����߱�����
-		�ٻ�һ���ֺ�ˮ���������������������
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		����ȴʱ�ٴ��������ᴥ��ʼԴ�ֺ��޵У�ʹ�����10���ڲ�������
-		�ֺ��޵н����󣬱�����������10%������2�ʹ���
-		'''
+			'''
+			120% increased summon damage
+			+1 max minion
+			Summon Tarragon, Bloodflare, God Slayer and Silva armor effect
+			10% increased max run speed and acceleration
+			All projectiles spawn healing auric orbs on enemy hits
+			'''
 }
 
 GodSlayerChestplateold: {
-	DisplayName: ߱�����ؼ�[Legacy]
+	DisplayName: God Slayer Chestplate Legacy
 	Tooltip:
-		'''
-		+60�������ֵ
-		�����ڹ��������ܵ��˺�
-		����10%�˺���6%����
-		�ƶ��ٶ�����15%
-		����2%�ĸ���������Ϯ�Ĺ���
-		����С��80����˺�
-		'''
+			'''
+			10% increased damage, 6% increased critical strike chance
+			15% increased movement speed
+			+60 max life
+			Enemies take damage when they hit you
+			Attack have a 2% chance to do no damage to you 
+			'''
 }
 
 GodSlayerHeadMagicold: {
-	DisplayName: ߱��������[Legacy]
+	DisplayName: God Slayer	Visage Legacy
 	Tooltip:
-		'''
-		����14%ħ���˺���14%ħ��������
-		+100���ħ��ֵ������17%ħ������
-		'''
+			'''
+			14% increased magicc damage and critical strike chance	
+			+100 max mana, 17% reduced mana usage
+			'''
 	SetBonus:
-		'''
-		ħ����Ļ���е��˻����߱����棬��������߱������������
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		'''
+			'''
+			You will revive and be healed 150 HP if an attack would have killed you
+			This effect has 45 seconds cooldown
+			Halves all life regen if revive cooldown is triggered
+			Enemies will release god slayer flames and healing flames when under magic attacks
+			Taking damage will cause you release a magical god slayer explosion 
+			'''
 }
 
 GodSlayerHeadMeleeold: {
-	DisplayName: ߱����ͷ��[Legacy]
+	DisplayName: God Slayer Horned Greathelm Legacy
 	Tooltip:
-		'''
-		����14%��ս�˺��뱩����
-		����20%��ս����
-		'''
+			'''
+			14% increased melee damage and critical strike chance	
+			20% increased melee speed 
+			Enemies are more likely to target you
+			'''
 	SetBonus:
-		'''
-		���˸��п�����׼��
-		�ܵ�����80���˺�����˸�������߱�����
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		'''
+			'''
+			You will revive and be healed 150 HP if an attack would killed you
+			This effect has 45 seconds cooldown
+			Taking over 80 damage in one hit will cause you release a swarm of high-damage god killer dart
+			Attack deals 80 damage or less will have its damage reduced to 1  
+			Enemies takes even more damage when they hit you
+			'''
 }
 
 GodSlayerHeadRangedold: {
-	DisplayName: ߱����ͷ��[Legacy]
-	Tooltip: ����14%Զ���˺��뱩����
+	DisplayName: God Slayer Helmet Legacy
+	Tooltip: 
+	  		'''
+			14% increased ranged damage and critical strike chance
+			'''
 	SetBonus:
-		'''
-		Զ������ÿ2.5�뷢��һö߱����
-		��Զ�������������ʳ���100%ʱ������ݳ���100%�ı��������ٴα��������4���˺�
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		'''
+			'''
+			You will revive and be healed 150 HP if an attack would killed you
+			This effect has 45 seconds cooldown
+			Allows your ranged hit can deal 4x damage with excess critical strike chance
+			You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
+			'''
 }
 
 GodSlayerHeadRogueold: {
-	DisplayName: ߱�������[Legacy]
+	DisplayName: God Slayer Mask Legacy
 	Tooltip:
-		'''
-		����14%�����˺��뱩����
-		�ƶ��ٶ�����20%
-		'''
+			'''
+			14% increased rogue damage and critical strike chance
+			18% increased movement speed
+			'''
 	SetBonus:
-		'''
-		������ҹ���ʱ������ı�����������ı��˺�
-		�ܵ������˺�ʱ�ᴥ��߱�񸴻��Ч����45����ȴ
-		'''
+			'''
+			+140 maxinum stealth
+			You will revive and be healed 150 HP if an attack would killed you
+			This effect has 45 seconds cooldown
+			Boost all of your rogue stats by 10% at full HP.
+			Grants extra immunity frames if you take over 80 damage in one hit
+			'''
 }
 
 GodSlayerHeadSummonold: {
-	DisplayName: ߱���߽ǿ�[Legacy]
-	Tooltip: ����3�ʹ�����65%�ٻ��˺�
+	DisplayName: God Slayer Horned Helm Legacy
+	Tooltip:
+			'''
+			65% increased summon damage
+			+3 max minions
+			'''
 	SetBonus:
-		'''
-		�ٻ�һ�������Ϊ���ս
-		�ʹӻ��е��˻����߱�����
-		'''
+			'''
+			You will revive and be healed 150 HP if an attack would killed you
+			This effect has 45 seconds cooldown
+			Hitting enemies will summon god slayer phantoms
+			Summon a god-eating mechworm fight for you
+			'''
 }
 
 GodSlayerLeggingsold: {
-	DisplayName: ߱�����ȼ�[Legacy]
+	DisplayName: God Slayer Leggings Legacy
 	Tooltip:
-		'''
-		����10%�˺��뱩������
-		�ƶ��ٶ�����35%
-		'''
+			'''
+			10% increased damage, 10% increased critical strike chance
+			35% increased movement speed
+			'''
 }
 
 ReaverCap: {
-	DisplayName: �Ӷ���ͷ��[Revamped]
+	DisplayName: Reaver Cap Legacy
 	Tooltip:
-		'''
-		����15%�����˺���5%������Ļ�����ٶȺͱ�����
-		����20%�ƶ��ٶȣ���Һ�����ж������谭"
-		'''
+			'''
+			10% increased rogue damage
+			5% increased rogue projectiles velocity
+			'''
 	SetBonus:
-		'''
-		������Ļÿ60֡������һö������Ƭ
-		������Ƭ����ٵ���
-		'''
+			'''
+			+115 max stealth
+			10% increased rogue critical strike chance, 20% increased movement speed
+			Your rogue projectiles will create life bolt on enemy hit
+			'''
 }
 
 ReaverCuisses: {
-	DisplayName: �Ӷ��߻���[Legacy]
+	DisplayName: Reaver Cuisses Legacy
 	Tooltip:
-		'''
-		����5%�˺��ͱ�����
-		����12%�ƶ��ٶ�
-		'''
+			'''
+			5% increased damage and critical strike chancechacne 
+			12% increased movment speed
+			'''
 }
 
 ReaverHelm: {
-	DisplayName: �Ӷ���ս��[Revamped]
+	DisplayName: Reaver Helm Legacy
 	Tooltip:
-		'''
-		����15%��ս�˺���10%��ս���ٺ�5%������
-		����10%�ƶ��ٶȣ���Һ�����ж������谭
-		'''
+			'''
+			10% increased melee damage
+			Ability to swim
+			'''
 	SetBonus:
-		'''
-		��ս��Ļ���е���ʱ������ը�������������
-		����ʱ�ṩ�Ӷ���֮ŭ���棬�����Ĺ������������
-		'''
+			'''
+			30% increased melee speed, 20% increased movement speed
+			15% increased melee critical strike chance
+			Taking damage will boost your defense by 15, melee speed and damage by 10%
+			Enemies take some damage when they hit you
+			'''
 }
 
 ReaverHelmet: {
-	DisplayName: �Ӷ���ͷ��[Revamped]
+	DisplayName: Reaver Helmet Legacy
 	Tooltip:
-		'''
-		����10%�ٻ��˺���60%���ӹ��������
-		����10%�ƶ��ٶȣ���Һ�����ж������谭
-		'''
+			'''
+			1% increased summon damage	
+			60% increased whip speed and range
+			'''
 	SetBonus:
-		'''
-		���ӹ���������һ������60%
-		�ٻ�һ�����㱦���Զ����������ĵ���
-		'''
+			'''
+			No minion bonuses
+			24% increased summon damage
+			60% increased whip speed and rage
+			Summon a powerful reaver orb
+			'''
 }
 
 ReaverMask: {
-	DisplayName: �Ӷ������[Revamped]
+	DisplayName: Reaver Mask Legacy
 	Tooltip:
-		'''
-		����10%ħ���˺���5%ħ����������
-		ħ�����Ľ���12%��ħ����������80
-		����10%�ƶ��ٶȣ���Һ�����ж������谭
-		'''
+			'''
+			10% increased magic damage, 5% increased magic critical strike chance
+			+80 max mana and 12% reduced mana usage
+			10% increased movment speed
+			'''
 	SetBonus:
-		'''
-		����10%ħ���˺���10%ħ����������
-		ħ���䵯���е���ʱ���ṩ���棬����20%ħ�����ģ�����10%ħ���˺�
-		'''
+			'''
+			10% increased magic damage and critical strike chance
+			Spawns spore gas upon hitting enemy by magic projectiles
+			Strikng an enemy will also boost your magic power
+			'''
 }
 
 ReaverScaleMail: {
-	DisplayName: �Ӷ����ۼ�[Legacy]
+	DisplayName: Reaver Scale Mail Legacy
 	Tooltip:
-		'''
-		����9%�˺���4%������
-		����20���������ֵ
-		'''
+			'''
+			10% increased damage
+			5% increased critical strike chance
+			'''
 }
 
 ReaverVisage: {
-	DisplayName: �Ӷ�������[Revamped]
+	DisplayName: Reaver Visage Legacy
 	Tooltip:
-		'''
-		����15%Զ���˺�������20%��ҩ������,����5%Զ�̱�����
-		����10%�ƶ��ٶȣ���Һ�����ж������谭
-		'''
+			'''
+			10% increased ranged damage, 5% increased ranged critical strike chance
+			10% increased movment speed, 80% chance to not consume ammo 
+			Ability to swim
+			'''
 	SetBonus:
-		'''
-		����10%Զ���˺���5%Զ�̱�����
-		����ʱÿ��һ��ʱ��ᷢ����ö����׷������
-		'''
+			'''
+			10% increased ranged damage and critical strike chance
+			Spawns reaver rocket on enemy hits with ranged projectiles 
+			'''
 }
 
 SilvaArmorold: {
-	DisplayName: Silva Armorold
-	Tooltip: ""
+	DisplayName: Silva Armor Legacy
+	Tooltip:
+			'''
+			+80 max life
+			12% increased damage, 8% increased critical strike chance
+			20% increased movement speed
+			'''
 }
 
 SilvaHeadMagicold: {
 	DisplayName: Silva Head Magicold
-	Tooltip: ""
+	Tooltip:
+			'''
+			13% increased magic damage and critical strike chance
+			+100 max mana, 19% reduced mana usage
+			'''
+	SetBonus:
+			'''
+			5% increased max run speed and acceleration
+			All projectiles spawn healing leaf orbs on enemy hits
+			Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
+			Taking fatal damage while the effect is active will let you lose 100 max HP
+			Invincibility effect will be disabled if you are reduce to 400 max life or less.
+			Your max life will be restored if you die
+			Magic projectiles have a 10% chance to cause a massive explosion on enmey hits
+			Your magic weapons will do 10% more damage after the silva invulnerability time
+			'''
 }
 
 SilvaHeadMelee: {
-	DisplayName: Silva Head Melee
-	Tooltip: ""
+	DisplayName: Silva Helm Legacy
+	Tooltip: 
+	  		'''
+			13% increased melee damage and critical strike chance
+			'''
+	SetBonus:
+			'''
+			5% increased max run speed and acceleration
+			All projectiles spawn healing leaf orbs on enemy hits
+			Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
+			Taking fatal damage while the effect is active will let you lose 100 max HP
+			Invincibility effect will be disabled if you are reduce to 400 max life or less.
+			Your max life will be restored if you die
+			Melee projectiles have a 25% chance to stun enemies for a very brief moment
+			True melee strikes have a 25% chance to do 5 times damage
+			You will take 20% less contact damage after the silva invulnerability
+			'''
 }
 
 SilvaHeadRanged: {
-	DisplayName: Silva Head Ranged
-	Tooltip: ""
+	DisplayName: Silva Horned Helmet Legacy
+	Tooltip: 
+	  		'''
+			13% increased ranged damage and critical strike chance
+			'''
+	SetBonus:
+			'''
+			5% increased max run speed and acceleration
+			All projectiles spawn healing leaf orbs on enemy hits
+			Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
+			Taking fatal damage while the effect is active will let you lose 100 max HP
+			Invincibility effect will be disabled if you are reduce to 400 max life or less.
+			Your max life will be restored if you die
+			Increased your rate of fire with all ranged weapons 
+			Your ranged weapons will do 10% more damage after the silva invulnerability time
+			'''
 }
 
 SilvaHeadRogue: {
-	DisplayName: Silva Head Rogue
-	Tooltip: ""
+	DisplayName: Silva Mask Legacy
+	Tooltip:
+			'''
+			13% increased rogue damage and critical strike chance
+			20% increased movment speed
+			'''
+	SetBonus:
+			'''
+			+125 maxinum stealth
+			5% increased max run speed and acceleration
+			All projectiles spawn healing leaf orbs on enemy hits
+			Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
+			Taking fatal damage while the effect is active will let you lose 100 max HP
+			Invincibility effect will be disabled if you are reduce to 400 max life or less.
+			Your max life will be restored if you die
+			Faster throwing rate for your rogue weapon while you are above 50% HP
+			Your rogue weapons will do 10% more damage after the silva invulnerability time	
+			'''
 }
 
 SilvaHeadSummonold: {
-	DisplayName: Silva Head Summonold
-	Tooltip: ""
+	DisplayName: Silva Helmet Legacy
+	Tooltip: 
+	  		'''
+			+5 max minions
+			'''
+	SetBonus:
+			'''
+			75% increased summon damage
+			5% increased max run speed and acceleration
+			All projectiles spawn healing leaf orbs on enemy hits
+			Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
+			Taking fatal damage while the effect is active will let you lose 100 max HP
+			Invincibility effect will be disabled if you are reduce to 400 max life or less.
+			Your max life will be restored if you die
+			Summons an ancient leaf prism to blast your enemies with life energy
+			Your summon weapons will do 10% more damage after the silva invulnerability time
+			'''
 }
 
 SilvaLeggingsold: {
-	DisplayName: Silva Leggingsold
-	Tooltip: ""
+	DisplayName: Silva Leggings Legacy
+	Tooltip:
+			'''
+			12% increased damage and 7% increased critical strike chance 
+			45% increased movement speed
+			'''
 }
 
 AncientXerocCuisses: {
 	DisplayName: Ancient Xeroc Cuisses
-	Tooltip: ""
+	Tooltip:
+			'''
+			+100 max life
+			+100 max mana
+			15% increased movment speed
+			'''
 }
 
 AncientXerocMask: {
 	DisplayName: Ancient Xeroc Mask
-	Tooltip: ""
+	Tooltip:
+			'''
+			+3 max minions
+			10% increased damage and critical strike chance
+			'''
+	SetBonus:
+			'''
+			Counts as rogue armor, can deal stealth strikes.
+			+110 maxinum stealth
+			20% reduced mana usage, 10% increased rogue velocity
+			Change damage stats base on your current HP is:
+			Lower than 80% of max life will increases damage and critical strike chance by 5%
+			Lower than 60% of max life will increases damage and critical strike chance by 10%
+			Lower than 35% of max life will increases damage and critical strike chance by 35%, healing potion are 10% more	effective too 
+			Lower than 15% of max life will decreases damage and critical strike chance by 40%
+			Wrath of the cosmos
+			'''
 }
 
 AncientXerocPlateMail: {
 	DisplayName: Ancient Xeroc Plate Mail
-	Tooltip: ""
+	Tooltip:
+	  		'''
+			+20 max life
+			'''
 }

@@ -14,10 +14,6 @@ MagnumRounds: {
 }
 
 VanquisherArrowold: {
-	DisplayName: ����֮��[Legacy]
-	Tooltip:
-		'''
-		��͸���
-		�ƶ�ʱ����ѳ������׷�ټ�ʸ
-		'''
+	DisplayName: Vanquisher Arrow Legacy
+	Tooltip: ""
 }

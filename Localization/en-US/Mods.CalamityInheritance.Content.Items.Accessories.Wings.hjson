@@ -1,52 +1,65 @@
 FasterAuricTracers: {
-	DisplayName: ����֮ѥ[Legacy]
+	DisplayName: Celestial Tracers Legacy
 	Tooltip:
 		'''
-		���ӻĵ����ٶȣ�
-		�������
-		ˮƽ�����ٶ�: 12
-		���ٱ���: 3
-		���ѵĴ�ֱ�����ٶ�
-		����ʱ��:280
-		�ڱ��ϴ�����ӻ�����
-		����50%���ٶ�
-		����ˮ���ҽ�������
-		�����ʱ���ҽ���������
-		�ܵ�����200����˺�����������޵�ʱ��
+		Counts as wings
+		Horizontal speed: 12.00
+		Acceleration multiplier: 3.0
+		Excellent vertical speed
+		Rocket Boosts effect
+		Flight time: 280
+		24% increased running acceleration
+		Greater mobility on ice
+		Water and lava walking
+		Immunity to the On Fire! debuff
+		Temporary immunity to lava
+		Being hit for over 200 damage will make you immune for an extended period of time
+		'Taking speed EVEN FURTHER BEYOND!'
 		'''
 }
 
 FasterGodSlayerTracers: {
-	DisplayName: ����֮ѥ[Legacy]
+	DisplayName: Elysian Tracers Legacy
 	Tooltip:
-		'''
-		�ĵ����ٶȣ�
-		�������
-		ˮƽ�����ٶ�: 10.5
-		���ٱ���: 2.75
-		���޵Ĵ�ֱ�����ٶ�
-		����ʱ��: 180
-		����36%���ٶ�
-		�ڱ��ϴ�����ӻ�����
-		����ˮ���ҽ�������
-		�����ʱ���ҽ���������
-		'''
+			'''
+			Counts as wings
+			Horizontal speed: 10.50
+			Acceleration multiplier: 2.75
+			Great vertical speed
+			Rocket Boosts effect
+			Flight time: 160
+			1.05x running acceleration
+			Greater mobility on ice
+			Water and lava walking
+			Immunity to the On Fire! debuff
+			Temporary immunity to lava
+			'Ludicrous speed!'
+			'''
 }
 
 FasterLunarTracers: {
-	DisplayName: ������ʹ֮ѥ[Legacy]
+	DisplayName: Seraph Tracers Legacy
 	Tooltip:
-		'''
-		�ĵ����ٶȣ�
-		�������
-		ˮƽ�����ٶ�: 9
-		���ٱ���: 2.5
-		�����Ĵ�ֱ�����ٶ�
-		����ʱ��: 160
-		�ĵ����ٶȣ�
-		����24%���ٶ�
-		�ڱ��ϴ�����ӻ�����
-		����ˮ���ҽ�������
-		�����ʱ���ҽ���������
-		'''
+			'''
+			Counts as wings
+			Horizontal speed: 9.00
+			Acceleration multiplier: 2.5
+			Good vertical speed
+			Flight time: 120
+			24% increased running acceleration
+			Greater mobility on ice
+			Water and lava walking
+			Immunity to the On Fire! debuff
+			Temporary immunity to lava
+			'Ludicrous speed!'
+			'''
+}
+
+AncientXerocWings: {
+	DisplayName: Ancient Xeroc Wings
+	Tooltip:
+			'''
+			Same wings stats as Solar wings
+			Boost your damage and critical strike chance by 50% while wearing Xeroc Armor, if you are at 20% of your max life.
+			'''
 }

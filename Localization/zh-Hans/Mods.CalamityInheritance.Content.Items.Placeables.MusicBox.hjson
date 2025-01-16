@@ -1,40 +1,40 @@
 DoGLegacy: {
-	DisplayName: Music Box(Devourer of Gods Theme - Legacy)
-	Tooltip:
+	// DisplayName: Music Box(Devourer of Gods Theme - Legacy)
+	/* Tooltip:
 		'''
 		Play [c/9400D3:Last Battle (Ballos Mix)](06:27) by DM DOKURO
 		A legacy theme for Devourer of Gods in the early days of Calamity.
-		'''
+		''' */
 }
 
 DoGNonStop: {
-	DisplayName: Music Box(Devourer of Gods Theme - Nonstop Version)
-	Tooltip:
+	// DisplayName: Music Box(Devourer of Gods Theme - Nonstop Version)
+	/* Tooltip:
 		'''
 		Play [c/9400D3:Devourer of Gods Nonstop Remix](13:36) by DM DOKURO
 		A theme for Devourer of Gods, and his Sentinels.
-		'''
+		''' */
 }
 
 NowStopAskingWhere: {
-	DisplayName: Music Box(Supreme Calamitas Theme - Legacy)
-	Tooltip:
+	// DisplayName: Music Box(Supreme Calamitas Theme - Legacy)
+	/* Tooltip:
 		'''
 		Play [c/CD0000:Now Stop Asking Where](03:03) by DM DOKURO
 		An early theme for Supreme Calamitas, not that Witch
-		'''
+		''' */
 }
 
 ProvidenceLegacy: {
-	DisplayName: Music Box(Providence, the Profaned Goddess Theme - Legacy)
-	Tooltip:
+	// DisplayName: Music Box(Providence, the Profaned Goddess Theme - Legacy)
+	/* Tooltip:
 		'''
 		Play [c/FFA500:Adventure's End](01:59) by 下村陽子/Shimomura Yōko
 		A theme for Providence in the early days of Calamity
-		'''
+		''' */
 }
 
 TyrantPart1: {
-	DisplayName: Tyrant Part1
-	Tooltip: ""
+	// DisplayName: Tyrant Part1
+	// Tooltip: ""
 }

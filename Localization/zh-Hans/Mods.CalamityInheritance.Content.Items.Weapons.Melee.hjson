@@ -1,56 +1,56 @@
 Animus: {
-	DisplayName: Animus
-	Tooltip: ""
+	// DisplayName: Animus
+	// Tooltip: ""
 }
 
 ArkoftheAncients: {
-	DisplayName: Ark of the Ancients Legacy
-	Tooltip: A heavenly blade forged to vanquish all evil
+	// DisplayName: Ark of the Ancients Legacy
+	// Tooltip: A heavenly blade forged to vanquish all evil
 }
 
 ArkoftheCosmosold: {
-	DisplayName: Ark of the Cosmos Legacy
-	Tooltip:
+	// DisplayName: Ark of the Cosmos Legacy
+	/* Tooltip:
 		'''
 		Fires different homing projectiles based on what biome you're in
 		Upon hitting an enemy you are granted a buff based on what biome you're in
 		Projectiles also change based on moon events
-		'''
+		''' */
 }
 
 ArkoftheElementsold: {
-	DisplayName: Ark of the Elements Legacy
-	Tooltip: A heavenly blade forged by essence of Terraria
+	// DisplayName: Ark of the Elements Legacy
+	// Tooltip: A heavenly blade forged by essence of Terraria
 }
 
 AtaraxiaOld: {
-	DisplayName: Ataraxia Legacy
-	Tooltip: "1"
+	// DisplayName: Ataraxia Legacy
+	// Tooltip: "1"
 }
 
 BiomeBlade: {
-	DisplayName: Biome Blade Legacy
-	Tooltip: Fires different projectiles based on what biome you're in
+	// DisplayName: Biome Blade Legacy
+	// Tooltip: Fires different projectiles based on what biome you're in
 }
 
 BladeofEnmity: {
-	DisplayName: Blade of Enmity
-	Tooltip: "1"
+	// DisplayName: Blade of Enmity
+	// Tooltip: "1"
 }
 
 BloodyEdge: {
-	DisplayName: Bloody Edge
-	Tooltip: Chance to heal the player on enemy hits, causes bloody expolsion
+	// DisplayName: Bloody Edge
+	// Tooltip: Chance to heal the player on enemy hits, causes bloody expolsion
 }
 
 ElementalExcalibur: {
-	DisplayName: Elemental Excalibur Legacy
-	Tooltip: "1"
+	// DisplayName: Elemental Excalibur Legacy
+	// Tooltip: "1"
 }
 
 Exobladeold: {
-	DisplayName: Exoblade Legacy
-	Tooltip:
+	// DisplayName: Exoblade Legacy
+	/* Tooltip:
 		'''
 		Ancient blade of Yharim's weapons and armors expert, Draedon
 		Fires an exo beam that homes in on the player and explodes
@@ -58,106 +58,106 @@ Exobladeold: {
 		All attacks briefly freeze enemies hit
 		Enemies hit at very low HP explode into frost energy and freeze nearby enemies
 		The lower your HP the more damage this blade does and heals the player on enemy hits
-		'''
+		''' */
 }
 
 ExoFlail: {
-	DisplayName: Exo Flail
-	Tooltip:
+	// DisplayName: Exo Flail
+	/* Tooltip:
 		'''
 		Fires a chain sword that discharges unstable energy on enemy hits
 		The flail's chain is surrounded in plasma, allowing it to deal damage
-		'''
+		''' */
 }
 
 FourSeasonsGalaxiaold: {
-	DisplayName: Galaxia Legacy
-	Tooltip:
+	// DisplayName: Galaxia Legacy
+	/* Tooltip:
 		'''
 		Fires different homing projectiles based on what biome you're in
 		Upon hitting an enemy you are granted a buff based on what biome you're in
 		Projectiles also change based on moon events
-		'''
+		''' */
 }
 
 GrandDad: {
-	DisplayName: Grand Dad
-	Tooltip: ""
+	// DisplayName: Grand Dad
+	// Tooltip: ""
 }
 
 MurasamaNeweffect: {
-	DisplayName: Murasama Revamped
-	Tooltip:
+	// DisplayName: Murasama Revamped
+	/* Tooltip:
 		'''
 		[c/FF0000:THERE WILL BE BLOOD!]
 		Prove your strength to wield this sword
 		Legacy size and stats with revamped slash effect
-		'''
+		''' */
 }
 
 Murasamaold: {
-	DisplayName: Murasama Legacy
-	Tooltip:
+	// DisplayName: Murasama Legacy
+	/* Tooltip:
 		'''
 		[c/FF0000:THERE WILL BE BLOOD!]
 		Prove your strength to wield this sword
 		Legacy slash effect
-		'''
+		''' */
 }
 
 NeptunesBountyOld: {
-	DisplayName: Neptunes Bounty Legacy
-	Tooltip: "1"
+	// DisplayName: Neptunes Bounty Legacy
+	// Tooltip: "1"
 }
 
 OmegaBiomeBlade: {
-	DisplayName: Omega Biome Blade Legacy
-	Tooltip:
+	// DisplayName: Omega Biome Blade Legacy
+	/* Tooltip:
 		'''
 		Fires different homing projectiles based on what biome you're in
 		Projectiles also change based on moon events
-		'''
+		''' */
 }
 
 SoulEdge: {
-	DisplayName: Soul Edge Legacy
-	Tooltip: "1"
+	// DisplayName: Soul Edge Legacy
+	// Tooltip: "1"
 }
 
 StreamGougeOld: {
-	DisplayName: Stream Gouge Legacy
-	Tooltip: "1"
+	// DisplayName: Stream Gouge Legacy
+	// Tooltip: "1"
 }
 
 TerraEdge: {
-	DisplayName: Terra Edge
-	Tooltip:
+	// DisplayName: Terra Edge
+	/* Tooltip:
 		'''
 		Fires a green beam that inflicts ichor for a short time
 		Heals the player on enemy hits
-		'''
+		''' */
 }
 
 TrueArkoftheAncients: {
-	DisplayName: True Ark of the Ancients Legacy
-	Tooltip: A heavenly blade forged to vanquish all evil
+	// DisplayName: True Ark of the Ancients Legacy
+	// Tooltip: A heavenly blade forged to vanquish all evil
 }
 
 TrueBiomeBlade: {
-	DisplayName: True Biome Blade Legacy
-	Tooltip: Fires different homing projectiles based on what biome you're in
+	// DisplayName: True Biome Blade Legacy
+	// Tooltip: Fires different homing projectiles based on what biome you're in
 }
 
 TrueBloodyEdge: {
-	DisplayName: True Bloody Edge
-	Tooltip:
+	// DisplayName: True Bloody Edge
+	/* Tooltip:
 		'''
 		Releases bloody explosion upon striking enemies with blade
 		Fires bloody orbs home in to enemy
-		'''
+		''' */
 }
 
 Test: {
-	DisplayName: Test
-	Tooltip: ""
+	// DisplayName: Test
+	// Tooltip: ""
 }

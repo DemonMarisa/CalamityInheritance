@@ -1,78 +1,78 @@
 ExoTheApostle: {
-	DisplayName: Exo The Apostle
-	Tooltip:
+	// DisplayName: Exo The Apostle
+	/* Tooltip:
 		'''
 		Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes 
 		Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins
 		'The messanger of a truth that consigns all who hear it to oblivion'
-		'''
+		''' */
 }
 
 IchorSpearLegacy: {
-	DisplayName: Ichor Spear Legacy
-	Tooltip:
+	// DisplayName: Ichor Spear Legacy
+	/* Tooltip:
 		'''
 		Throws an ichor tipped trident
 		Stealth strikes are showered in splashes of ichor
-		'''
+		''' */
 }
 
 PhantasmalRuinold: {
-	DisplayName: Phantasmal Ruin Legacy
-	Tooltip:
+	// DisplayName: Phantasmal Ruin Legacy
+	/* Tooltip:
 		'''
 		Fires an enormous ghost lance that leaves lost souls in its wake
 		Explodes into phantom spirits on enemy hits
 		Stealth strikes summon ghost clones instead of lost souls
-		'''
+		''' */
 }
 
 PhantomLance: {
-	DisplayName: Phantom Lance
-	Tooltip:
+	// DisplayName: Phantom Lance
+	/* Tooltip:
 		'''
 		Fires a spectral javelin that rapidly releases lost souls
 		Fades away and slows down over time
 		Lost souls released later deal less damage
 		Stealth strikes don't slow down and souls always deal full damage
-		'''
+		''' */
 }
 
 Quasar: {
-	DisplayName: Quasar
-	Tooltip:
+	// DisplayName: Quasar
+	/* Tooltip:
 		'''
 		Succ everything
 		Stealth strikes spawn more explosions
-		'''
+		''' */
 }
 
 SpearofDestinyLegacy: {
-	DisplayName: Spear of Destiny Legacy
-	Tooltip:
+	// DisplayName: Spear of Destiny Legacy
+	/* Tooltip:
 		'''
 		Throws three spears with the outer two having homing capabilities
 		Stealth strikes cause all three spears to home in, ignore tiles, and pierce more
-		'''
+		''' */
 }
 
 Supernovaold: {
-	DisplayName: Supernova Legacy
-	Tooltip:
+	// DisplayName: Supernova Legacy
+	/* Tooltip:
 		'''
 		Creates a massive explosion on impact
 		Explodes into spikes and homing energy
 		Stealth strikes release energy as they fly
 		'Nerf Supernova sprite size'
-		'''
+		''' */
 }
 
 SylvanSlasher: {
-	DisplayName: Sylvan Slasher
-	Tooltip:
+	// DisplayName: Sylvan Slasher
+	/* Tooltip:
 		'''
 		Summons a slash attack at the cursor's position
 		Enemy hits build stealth and cause sword waves to fire from the player in the opposite direction
 		Does not consume stealth and cannot stealth strike
-		'''
+		''' */
 }
