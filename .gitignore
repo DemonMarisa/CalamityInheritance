@@ -1,40 +1,9 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
 
-# User-specific files
-*.rsuser
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
- 
-# User-specific files (MonoDevelop/Xamarin Studio)
-*.userprefs
- 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-/.vs/CalamityInheritance/FileContentIndex
 /.vs
-/obj
 /bin
-/.vs/CalamityInheritance/v17
-/.vs/CalamityInheritance
-/.vs
+/obj
 .vs/CalamityInheritance/v17/DocumentLayout.json
-/obj
-/obj
-/.vs/CalamityInheritance
-/.vs/CalamityInheritance/v17
-/.vs
+.vs/CalamityInheritance/v17/DocumentLayout.json
+obj/Release/net8.0/CalamityInheritance.AssemblyInfo.cs
+obj/Release/net8.0/CalamityInheritance.AssemblyInfoInputs.cache
+obj/Release/net8.0/CalamityInheritance.csproj.AssemblyReference.cache
