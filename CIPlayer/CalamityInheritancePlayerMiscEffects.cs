@@ -50,6 +50,31 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisEffects();
 
             ShieldDurabilityMax = Player.statLifeMax2;
+            if(ancientXerocSet)
+            {
+                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
+                {
+                    Player.GetDamage<GenericDamageClass>() +=0.05f;
+                    Player.GetCritChance<GenericDamageClass>() += 5;
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.35f))
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.10f; //玩家血量60%下的数值加成：20%伤害与20%暴击率
+                    Player.GetCritChance<GenericDamageClass>() += 10;
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.35f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
+                    Player.GetCritChance<GenericDamageClass>() += 35;
+                    modPlayer1.healingPotionMultiplier += 0.10f;    //追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
+                {
+                    Player.GetDamage<GenericDamageClass>() -= 0.20f; //低于20%血量时-20%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                    Player.GetCritChance<GenericDamageClass>() -= 20;
+                }
+            }   
+
         }
         public void OtherBuffEffects()
         {
