@@ -33,14 +33,13 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void AddRecipes()
         {
-            //Scarlet:修改成了全局伤害加成而非纯盗贼伤害，因此材料上多扔了一个复仇者徽章
+            //Scarlet:移除复仇者徽章，合成站改为普通的铁砧
             CreateRecipe().
                 AddIngredient(ItemID.MasterNinjaGear).
                 AddIngredient(ItemID.FrogFlipper).
                 AddIngredient<PurifiedGel>(50).
-                AddIngredient(ItemID.Ectoplasm, 5). //Scarlet:我也忘了之前要多少灵气合成了，随便写个吧
-                AddIngredient(ItemID.AvengerEmblem).
-                AddTile(TileID.LunarCraftingStation).
+                AddIngredient(ItemID.Ectoplasm, 5).
+                AddTile(TileID.Anvils).
                 Register();
 
             CreateRecipe().
@@ -49,8 +48,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddIngredient(ItemID.FrogGear).
                 AddIngredient<PurifiedGel>(50).
                 AddIngredient(ItemID.Ectoplasm, 5).
-                AddIngredient(ItemID.AvengerEmblem).
-                AddTile(TileID.LunarCraftingStation).
+                AddTile(TileID.Anvils).
                 Register();
         }
     }

@@ -46,6 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.Calamity().wearingRogueArmor = true;
             //25盗贼暴击，25盗贼伤害,115潜伏值
             //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片
+            //Scarlet:我算的是总加成
         }
 
         public override void UpdateEquip(Player player)

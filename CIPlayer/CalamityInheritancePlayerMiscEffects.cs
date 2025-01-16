@@ -832,8 +832,9 @@ namespace CalamityInheritance.CIPlayer
             {
                 //克希洛克翅膀将会使克希洛克套在低于15%生命值时的负面效果转为增加10%全局伤害与暴击概率。
                 //实际上就是在倒扣的输出上面加上了50%的伤害和暴击。
-                Player.GetDamage<GenericDamageClass>() += 0.5f;
-                Player.GetCritChance<GenericDamageClass>() += 50;
+                //Scarlet:将克希洛克套的套装惩罚从40%下调至10%了，因此此处修改为增加30%全局伤害与暴击概率
+                Player.GetDamage<GenericDamageClass>() += 0.3f;
+                Player.GetCritChance<GenericDamageClass>() += 30;
             }
         }
 
