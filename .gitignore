@@ -27,7 +27,14 @@ bld/
 [Ll]og/
 /.vs/CalamityInheritance/FileContentIndex
 /.vs
+/obj
+/bin
+/.vs/CalamityInheritance/v17
+/.vs/CalamityInheritance
 /.vs
-/.vs
+.vs/CalamityInheritance/v17/DocumentLayout.json
 /obj
 /obj
+/.vs/CalamityInheritance
+/.vs/CalamityInheritance/v17
+/.vs
