@@ -187,24 +187,9 @@ LeviathanAmbergrisLegacy: {
 
 Melee: {
 	BadgeofBravery: {
-		DisplayName: 勇气勋章[Legacy]
-		Tooltip:
-			'''
-			增加15%近战攻速
-			穿着龙蒿套装时增加近战伤害，近战攻速，暴击率和护甲穿透
-			'''
 	}
 
 	ElementalGauntletold: {
-		DisplayName: 元素之握[Legacy]
-		Tooltip:
-			'''
-			增加15%的近战伤害与暴击概率
-			增加25%的真近战伤害
-			增加15%的近战攻速
-			增加近战武器的击退与尺寸
-			让近战武器可以自动挥舞
-			'''
 	}
 
 	YharimsInsignia: {
@@ -290,6 +275,7 @@ AstralArcanum: {
 	DisplayName: 星辉秘术[Legacy]
 	Tooltip:
 		'''
+		按[KEY]打开传送UI
 		受到伤害时会召唤彗星从天而降
 		免疫幻星感染减益
 		你会反弹来犯的弹幕

@@ -1,7 +1,9 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
 
-/.vs/CalamityInheritance/FileContentIndex
-/obj/CalamityInheritance/FileContentIndex
-/bin/CalamityInheritance/FileContentIndex
+/.vs
+/bin
+/obj
+.vs/CalamityInheritance/v17/DocumentLayout.json
+.vs/CalamityInheritance/v17/DocumentLayout.json
+obj/Release/net8.0/CalamityInheritance.AssemblyInfo.cs
+obj/Release/net8.0/CalamityInheritance.AssemblyInfoInputs.cache
+obj/Release/net8.0/CalamityInheritance.csproj.AssemblyReference.cache
