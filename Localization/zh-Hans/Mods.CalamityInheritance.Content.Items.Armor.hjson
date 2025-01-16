@@ -247,17 +247,32 @@ ReaverHelmet: {
 	// DisplayName: Reaver Helmet Legacy
 	/* Tooltip:
 		'''
-		10% increased magic damage, 5% increased magic critical strike chance
-		+80 max mana and 12% reduced mana usage
-		10% increased movment speed
+		1% increased summon damage	
+		60% increased whip speed and range
 		''' */
-	// SetBonus: 10% increased magic damage and critical strike chance
+	/* SetBonus:
+		'''
+		No minion bonuses
+		24% increased summon damage
+		60% increased whip speed and rage
+		Summon a powerful reaver orb
+		''' */
 }
 
 ReaverMask: {
 	// DisplayName: Reaver Mask Legacy
-	// Tooltip: 1% increased damage
-	// SetBonus: 1%
+	/* Tooltip:
+		'''
+		10% increased magic damage, 5% increased magic critical strike chance
+		+80 max mana and 12% reduced mana usage
+		10% increased movment speed
+		''' */
+	/* SetBonus:
+		'''
+		10% increased magic damage and critical strike chance
+		Spawns spore gas upon hitting enemy by magic projectiles
+		Strikng an enemy will also boost your magic power
+		''' */
 }
 
 ReaverScaleMail: {
@@ -333,7 +348,7 @@ SilvaHeadMelee: {
 
 SilvaHeadRanged: {
 	// DisplayName: Silva Horned Helmet Legacy
-	// Tooltip: "13% increased ranged damage and critical strike chance "
+	// Tooltip: 13% increased ranged damage and critical strike chance
 	/* SetBonus:
 		'''
 		5% increased max run speed and acceleration
@@ -417,10 +432,10 @@ AncientXerocMask: {
 		+110 maxinum stealth
 		20% reduced mana usage, 10% increased rogue velocity
 		Change damage stats base on your current HP is:
-		If your HP is lower than 80% of max life, increases damage and critical strike chance by  5%
-		If your HP is lower than 60% of max life, increases damage and critical strike chance by 15%
-		If your HP is lower than 40% of max life, increases damage and critical strike chance by 30%
-		If your HP is lower than 20% of max life, decreases damage and critical strike chance by 40%
+		Lower than 80% of max life will increases damage and critical strike chance by 5%
+		Lower than 60% of max life will increases damage and critical strike chance by 10%
+		Lower than 35% of max life will increases damage and critical strike chance by 35%, healing potion are 10% more	effective too 
+		Lower than 15% of max life will decreases damage and critical strike chance by 40%
 		Wrath of the cosmos
 		''' */
 }

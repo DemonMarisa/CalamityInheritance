@@ -1,20 +1,18 @@
 FasterAuricTracers: {
-	// DisplayName: Celestial Tracers Legacy
+	// DisplayName: ����֮ѥ[Legacy]
 	/* Tooltip:
 		'''
-		Counts as wings
-		Horizontal speed: 12.00
-		Acceleration multiplier: 3.0
-		Excellent vertical speed
-		Rocket Boosts effect
-		Flight time: 280
-		24% increased running acceleration
-		Greater mobility on ice
-		Water and lava walking
-		Immunity to the On Fire! debuff
-		Temporary immunity to lava
-		Being hit for over 200 damage will make you immune for an extended period of time
-		'Taking speed EVEN FURTHER BEYOND!'
+		���ӻĵ����ٶȣ�
+		�������
+		ˮƽ�����ٶ�: 12
+		���ٱ���: 3
+		���ѵĴ�ֱ�����ٶ�
+		����ʱ��:280
+		�ڱ��ϴ�����ӻ�����
+		����50%���ٶ���24%�ƶ��ٶ�
+		����ˮ���ҽ�������
+		�����ʱ���ҽ���������
+		�ܵ�����200����˺�����������޵�ʱ��
 		''' */
 }
 
@@ -57,5 +55,9 @@ FasterLunarTracers: {
 
 AncientXerocWings: {
 	// DisplayName: Ancient Xeroc Wings
-	// Tooltip: ""
+	/* Tooltip:
+		'''
+		Same wings stats as Solar wings
+		Boost your damage and critical strike chance by 50% while wearing Xeroc Armor, if you are at 20% of your max life.
+		''' */
 }

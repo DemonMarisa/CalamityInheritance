@@ -1,39 +1,35 @@
 FasterAuricTracers: {
-	DisplayName: ����֮ѥ[Legacy]
+	DisplayName: 天神之靴[Legacy]
 	Tooltip:
 		'''
-		Counts as wings
-		Horizontal speed: 12.00
-		Acceleration multiplier: 3.0
-		Excellent vertical speed
-		Rocket Boosts effect
-		Flight time: 280
-		24% increased running acceleration
-		Greater mobility on ice
-		Water and lava walking
-		Immunity to the On Fire! debuff
-		Temporary immunity to lava
-		Being hit for over 200 damage will make you immune for an extended period of time
-		'Taking speed EVEN FURTHER BEYOND!'
+		更加荒诞的速度！
+		算作翅膀
+		水平飞行速度: 12
+		加速倍率: 3
+		绝佳的垂直飞行速度
+		飞行时间:280
+		在冰上大幅增加机动性
+		增加50%加速度与24%移动速度
+		能在水和岩浆上行走
+		获得暂时的岩浆免疫能力
+		受到超过200点的伤害会增加你的无敌时间
 		'''
 }
 
 FasterGodSlayerTracers: {
-	DisplayName: Elysian Tracers Legacy
+	DisplayName: 极乐之靴[Legacy]
 	Tooltip:
 			'''
-			Counts as wings
-			Horizontal speed: 10.50
-			Acceleration multiplier: 2.75
-			Great vertical speed
-			Rocket Boosts effect
-			Flight time: 160
-			1.05x running acceleration
-			Greater mobility on ice
-			Water and lava walking
-			Immunity to the On Fire! debuff
-			Temporary immunity to lava
-			'Ludicrous speed!'
+			荒诞的速度！
+			算作翅膀
+			水平飞行速度: 10.5
+			加速倍率: 2.75
+			很赞的垂直飞行速度
+			飞行时间: 180
+			增加36%加速度
+			在冰上大幅增加机动性
+			能在水和岩浆上行走
+			获得暂时的岩浆免疫能力
 			'''
 }
 

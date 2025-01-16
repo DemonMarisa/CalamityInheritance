@@ -1,0 +1,158 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\items\\accessories\\wings\\fasteraurictracers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\items\\accessories\\wings\\fasteraurictracers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\localization\\en-us\\mods.calamityinheritance.content.items.accessories.wings.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:localization\\en-us\\mods.calamityinheritance.content.items.accessories.wings.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\localization\\en-us\\mods.calamityinheritance.content.items.accessories.summon.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:localization\\en-us\\mods.calamityinheritance.content.items.accessories.summon.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\localization\\en-us\\mods.calamityinheritance.content.items.accessories.rogue.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:localization\\en-us\\mods.calamityinheritance.content.items.accessories.rogue.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\localization\\en-us\\mods.calamityinheritance.content.items.accessories.ranged.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:localization\\en-us\\mods.calamityinheritance.content.items.accessories.ranged.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\localization\\en-us\\mods.calamityinheritance.content.items.accessories.magic.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:localization\\en-us\\mods.calamityinheritance.content.items.accessories.magic.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FasterAuricTracers.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Accessories\\Wings\\FasterAuricTracers.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Accessories\\Wings\\FasterAuricTracers.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Accessories\\Wings\\FasterAuricTracers.cs",
+              "RelativeToolTip": "Content\\Items\\Accessories\\Wings\\FasterAuricTracers.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAUwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T12:41:04.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Mods.CalamityInheritance.Content.Items.Accessories.Wings.hjson",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Wings.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Wings.hjson",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Wings.hjson*",
+              "RelativeToolTip": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Wings.hjson*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-16T12:40:26.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Mods.CalamityInheritance.Content.Items.Accessories.Summon.hjson",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Summon.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Summon.hjson",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Summon.hjson",
+              "RelativeToolTip": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Summon.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-16T12:40:25.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mods.CalamityInheritance.Content.Items.Accessories.Rogue.hjson",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Rogue.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Rogue.hjson",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Rogue.hjson",
+              "RelativeToolTip": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Rogue.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-16T12:40:24.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Mods.CalamityInheritance.Content.Items.Accessories.Ranged.hjson",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Ranged.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Ranged.hjson",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Ranged.hjson",
+              "RelativeToolTip": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Ranged.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-16T12:40:22.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Mods.CalamityInheritance.Content.Items.Accessories.Magic.hjson",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Magic.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Magic.hjson",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Magic.hjson",
+              "RelativeToolTip": "Localization\\en-US\\Mods.CalamityInheritance.Content.Items.Accessories.Magic.hjson",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-16T12:40:21.434Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1370,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1422,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
