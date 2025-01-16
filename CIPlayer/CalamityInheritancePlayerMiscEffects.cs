@@ -216,7 +216,7 @@ namespace CalamityInheritance.CIPlayer
             if (reaverMagePower)
             {
                 Player.manaCost *= 0.80f;
-                Player.GetCritChance<MagicDamageClass>() += 10;
+                Player.GetDamage<MagicDamageClass>() += 0.1f;
             }
 
             if (badgeofBravery) //如果启用

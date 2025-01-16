@@ -292,7 +292,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<RampartofDeities>()).
                 AddIngredient(ItemID.FrozenShield).
-                AddIngredient<DeificAmulet>().
+                AddIngredient<DeificAmuletLegacy>().
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile<CosmicAnvil>().

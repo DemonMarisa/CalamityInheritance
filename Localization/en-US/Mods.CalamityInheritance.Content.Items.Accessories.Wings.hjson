@@ -1,14 +1,52 @@
 FasterAuricTracers: {
-	DisplayName: Faster Auric Tracers
-	Tooltip: ""
+	DisplayName: ����֮ѥ[Legacy]
+	Tooltip:
+		'''
+		���ӻĵ����ٶȣ�
+		�������
+		ˮƽ�����ٶ�: 12
+		���ٱ���: 3
+		���ѵĴ�ֱ�����ٶ�
+		����ʱ��:280
+		�ڱ��ϴ�����ӻ�����
+		����50%���ٶ�
+		����ˮ���ҽ�������
+		�����ʱ���ҽ���������
+		�ܵ�����200����˺�����������޵�ʱ��
+		'''
 }
 
 FasterGodSlayerTracers: {
-	DisplayName: Faster God Slayer Tracers
-	Tooltip: ""
+	DisplayName: ����֮ѥ[Legacy]
+	Tooltip:
+		'''
+		�ĵ����ٶȣ�
+		�������
+		ˮƽ�����ٶ�: 10.5
+		���ٱ���: 2.75
+		���޵Ĵ�ֱ�����ٶ�
+		����ʱ��: 180
+		����36%���ٶ�
+		�ڱ��ϴ�����ӻ�����
+		����ˮ���ҽ�������
+		�����ʱ���ҽ���������
+		'''
 }
 
 FasterLunarTracers: {
-	DisplayName: Faster Lunar Tracers
-	Tooltip: ""
+	DisplayName: ������ʹ֮ѥ[Legacy]
+	Tooltip:
+		'''
+		�ĵ����ٶȣ�
+		�������
+		ˮƽ�����ٶ�: 9
+		���ٱ���: 2.5
+		�����Ĵ�ֱ�����ٶ�
+		����ʱ��: 160
+		�ĵ����ٶȣ�
+		����24%���ٶ�
+		�ڱ��ϴ�����ӻ�����
+		����ˮ���ҽ�������
+		�����ʱ���ҽ���������
+		'''
 }

@@ -62,17 +62,17 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
                     Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
                 }
             }
-            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 1.19f;
-            player.GetDamage<SummonDamageClass>() += 0.24f; // 40%召唤伤害，无栏位
-            player.whipRangeMultiplier += 1.19f;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.6f;
+            player.GetDamage<SummonDamageClass>() += 0.15f; // 40%召唤伤害，无栏位
+            player.whipRangeMultiplier += 0.6f;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage<SummonDamageClass>() += 0.01f;
-            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.01f;
-            player.whipRangeMultiplier += 0.01f;
+            player.GetDamage<SummonDamageClass>() += 0.10f;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.6f;
+            player.whipRangeMultiplier += 0.6f;
         }
 
         public override void AddRecipes()

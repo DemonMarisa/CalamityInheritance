@@ -10,6 +10,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -36,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             CalamityPlayer modPlayer = player.Calamity();
-            player.GetDamage<GenericDamageClass>() += 0.12f;
-            player.GetCritChance<GenericDamageClass>() += 8;
+            player.GetDamage<GenericDamageClass>() += 0.8f;
+            player.GetCritChance<GenericDamageClass>() += 4;
             modPlayer.nucleogenesis = true;
             player.jumpSpeedBoost += 3.2f;
             player.moveSpeed += 0.10f;
@@ -52,19 +53,19 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void AddRecipes()
         {
-            CreateRecipe()
-            .AddIngredient(ItemID.EyeoftheGolem)
-            .AddIngredient<Nucleogenesis>()
-            .AddIngredient<StatisNinjaBeltLegacy>()
-            .AddTile<CosmicAnvil>()
-            .Register();
+            CreateRecipe().
+                AddIngredient<StatisNinjaBelt>().
+                AddIngredient<TwistingNether>(10).
+                AddIngredient<NightmareFuel>(20).
+                AddTile<CosmicAnvil>().
+                Register();
 
-            CreateRecipe()
-            .AddIngredient<CalamityMod.Items.Accessories.StatisVoidSash>()
-            .AddIngredient<Nucleogenesis>()
-            .AddIngredient(ItemID.DestroyerEmblem)
-            .AddTile<CosmicAnvil>()
-            .Register();
+            CreateRecipe().
+                AddIngredient<StatisNinjaBeltLegacy>().
+                AddIngredient<TwistingNether>(10).
+                AddIngredient<NightmareFuel>(20).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

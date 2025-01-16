@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 else
                 {
                     player.GetDamage<GenericDamageClass>() += 0.1f;
-                    player.statDefense += 10;
-                    player.moveSpeed += 0.3f;
+                    player.statDefense += 20;
+                    player.moveSpeed += 0.75f;
                 }
             }
             if ((double)player.velocity.X > 0 || (double)player.velocity.Y > 0 || (double)player.velocity.X < -0.1 || (double)player.velocity.Y < -0.1)
@@ -79,13 +79,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                 }
             }
             seaCounter++;
-        }
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-            .AddIngredient<LeviathanAmbergris>(1)
-            .AddTile(TileID.Anvils)
-            .Register();
         }
     }
 }

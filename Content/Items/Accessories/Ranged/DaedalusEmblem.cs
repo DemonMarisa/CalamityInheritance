@@ -30,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             player.Calamity().rangedAmmoCost *= 0.8f;
             player.GetDamage<RangedDamageClass>() += 0.1f;
             player.GetCritChance<RangedDamageClass>() += 5;
+            player.pickSpeed -= 0.15f;
             player.lifeRegen += 2;
         }
 

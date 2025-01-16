@@ -8,17 +8,25 @@ using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Typeless;
+using CalamityInheritance.System;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items
 {
     public class Test : ModItem, ILocalizedModType
     {
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+        }
+
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+
         public override void SetDefaults()
         {
             Item.width = 42;
             Item.damage = 55;
-            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useTurn = true;
@@ -29,24 +37,24 @@ namespace CalamityInheritance.Content.Items
             Item.height = 42;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<NanoFlare>();
-            Item.shootSpeed = 5f;
         }
+        public override bool AltFunctionUse(Player player) => true;
+
         public override bool? UseItem(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            player.RemoveCooldown(GodSlayerCooldown.ID);
-            modPlayer1.CIDashDelay = -100;
-            return false;
-        }
-
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(5))
+            if (player.altFunctionUse == 2)
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade);
+                CIMusicEventSystem.PlayedEvents.Add("YharonDefeated");
+                Main.NewText("r");
             }
+            else
+            {
+                CIMusicEventSystem.PlayedEvents.Remove("YharonDefeated");
+                Main.NewText("l");
+            }
+            return base.CanUseItem(player);
         }
     }
 }

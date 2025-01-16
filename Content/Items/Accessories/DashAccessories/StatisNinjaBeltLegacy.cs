@@ -22,8 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.autoJump = true;
-            player.jumpSpeedBoost += 0.4f;
-            player.GetDamage<GenericDamageClass>() += 0.10f;
+            player.jumpSpeedBoost += 0.32f;
             player.extraFall += 35;
             player.blackBelt = true;
             player.dashType = 1;
@@ -39,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddIngredient(ItemID.MasterNinjaGear).
                 AddIngredient(ItemID.FrogFlipper).
                 AddIngredient<PurifiedGel>(50).
-                AddIngredient(ItemID.Ectoplasm, 50). //Scarlet:我也忘了之前要多少灵气合成了，随便写个吧
+                AddIngredient(ItemID.Ectoplasm, 5). //Scarlet:我也忘了之前要多少灵气合成了，随便写个吧
                 AddIngredient(ItemID.AvengerEmblem).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
@@ -49,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddIngredient(ItemID.BlackBelt).
                 AddIngredient(ItemID.FrogGear).
                 AddIngredient<PurifiedGel>(50).
-                AddIngredient(ItemID.Ectoplasm, 50).
+                AddIngredient(ItemID.Ectoplasm, 5).
                 AddIngredient(ItemID.AvengerEmblem).
                 AddTile(TileID.LunarCraftingStation).
                 Register();

@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            modPlayer1.AstralBulwark = true;
             modPlayer1.astralArcanum = true;
             modPlayer1.projRef = true;
             player.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = true;

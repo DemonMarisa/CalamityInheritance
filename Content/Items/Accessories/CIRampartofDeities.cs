@@ -55,10 +55,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
-
-            CreateRecipe().
-                AddIngredient<RampartofDeities>().
-                Register();
         }
     }
 }

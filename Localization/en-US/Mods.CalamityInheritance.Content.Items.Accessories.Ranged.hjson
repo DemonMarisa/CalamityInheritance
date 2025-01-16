@@ -1,14 +1,28 @@
 DaedalusEmblem: {
-	DisplayName: Daedalus Emblem
-	Tooltip: ""
+	DisplayName: ��������˹����[Legacy]
+	Tooltip:
+		'''
+		����10%Զ���˺���5%Զ�̱����ʲ�����20%��ҩ������
+		����5�����, ����2�������ָ��ٶȺ�15%�ھ��ٶ�
+		'''
 }
 
 ElementalQuiver: {
-	DisplayName: Elemental Quiver
-	Tooltip: ""
+	DisplayName: Ԫ�ؼ���[Legacy]
+	Tooltip:
+		'''
+		����20%��Զ���˺���15%�ı����ʣ�������20%��ҩ���ļ���
+		���Ӵ����Զ�̵�Ļ�ٶ�
+		����Զ�̵�Ļ����
+		�����ѿ��������йرգ�
+		'''
 }
 
 PsychoticAmulet: {
-	DisplayName: Psychotic Amulet
-	Tooltip: ""
+	DisplayName: ��Ԫ����[Legacy]
+	Tooltip:
+		'''
+		����5%Զ�������͵����������˺��ͱ�����
+		վ������ʱ��ʹ������������������Ϊǿ��
+		'''
 }

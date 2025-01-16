@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.jumpSpeedBoost +=0.1f;
+            player.jumpSpeedBoost +=0.2f;
             player.moveSpeed += 0.1f;
             player.wingTime += 0.1f;
         }

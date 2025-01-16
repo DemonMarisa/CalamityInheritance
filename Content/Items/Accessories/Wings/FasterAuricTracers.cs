@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             }
             CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance(); 
-            player.accRunSpeed = 12f;
+            player.accRunSpeed = 10f;
             player.rocketBoots = 3;
             player.moveSpeed += 0.24f;
             player.iceSkate = true;
@@ -83,7 +83,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<TracersSeraph>(5).
+                AddIngredient<TracersElysian>().
+                AddIngredient<DrewsWings>().
+                AddIngredient<AuricBar>(5).
                 AddTile<CosmicAnvil>().
                 Register();
         }

@@ -24,10 +24,15 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<AstralBulwark>(), 1);
             }
             if (item.type == ModContent.ItemType<YharonBag>())
+            {
                 itemloot.Add(ModContent.ItemType<VoidVortex>(), 10);
-
+                itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
+            }
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
+
+            if (item.type == ModContent.ItemType<LeviathanBag>())
+                itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 1);
 
             switch (item.type)
             {

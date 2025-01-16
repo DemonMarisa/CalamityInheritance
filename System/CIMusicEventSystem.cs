@@ -92,7 +92,7 @@ namespace CalamityInheritance.System
                 oldWorld = false;
             }
 
-            //PlayedEvents.Remove("MLDefeated");
+            //PlayedEvents.Remove("YharonDefeated");
 
             // If the event has just finished, we want a little silence before fading back to normal
             if (TrackEnd is not null)
@@ -228,7 +228,7 @@ namespace CalamityInheritance.System
         public override void LoadWorldData(TagCompound tag)
         {
             PlayedEvents.Clear();
-
+            
             if (tag.TryGet("CIcalamityPlayedMusicEventCount", out int playedMusicEventCount))
             {
                 for (int i = 0; i < playedMusicEventCount; i++)
@@ -237,7 +237,7 @@ namespace CalamityInheritance.System
                         PlayedEvents.Add(playedEvent);
                 }
             }
-
+            
             oldWorld = false;
         }
 

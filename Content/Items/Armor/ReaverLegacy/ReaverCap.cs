@@ -43,17 +43,18 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CalamityInheritance();
             modPlayer.rogueStealthMax += 1.15f;
             modPlayer1.reaverRogueExProj = true;
-            player.moveSpeed += 0.2f;
-            player.GetCritChance<RogueDamageClass>() += 0.10f;
             player.Calamity().wearingRogueArmor = true;
             //25盗贼暴击，25盗贼伤害,115潜伏值
+            //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片
         }
 
         public override void UpdateEquip(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
             player.ignoreWater = true;
-            player.GetDamage<RogueDamageClass>() += 0.10f;
+            player.GetDamage<RogueDamageClass>() += 0.15f;
+            player.GetCritChance<RogueDamageClass>() += 0.5f;
+            player.moveSpeed += 0.2f;
             modPlayer.rogueVelocity += 0.05f;
         }
 

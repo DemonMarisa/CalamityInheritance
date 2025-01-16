@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.CursedInferno, 60);
+            target.AddBuff(BuffID.CursedInferno, 120);
         }
         
     }

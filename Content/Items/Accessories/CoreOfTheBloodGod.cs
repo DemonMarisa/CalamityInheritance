@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
             player.statLifeMax2 += (int)(player.statLifeMax * 0.25);
             CalamityPlayer modPlayer2 = player.Calamity();
-            modPlayer2.contactDamageReduction += 0.5f;
+            modPlayer2.fleshTotem = true;
             modPlayer2.healingPotionMultiplier += 0.25f;
             player.endurance += 0.1f;
         }

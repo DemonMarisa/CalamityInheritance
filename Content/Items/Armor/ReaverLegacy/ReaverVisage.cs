@@ -41,14 +41,16 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CalamityInheritance();
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer1.reaverRangedRocket = true;
-            player.GetDamage<RangedDamageClass>() += 0.10f; //35远程伤害，30暴击概率
-            player.GetCritChance<RangedDamageClass>() += 10;
+            //35远程伤害，30暴击概率
+            //怎么可能给这么多
+            player.GetDamage<RangedDamageClass>() += 0.10f;
+            player.GetCritChance<RangedDamageClass>() += 5;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage<RangedDamageClass>() += 0.10f;
+            player.GetDamage<RangedDamageClass>() += 0.15f;
             player.GetCritChance<RangedDamageClass>() += 5;
             player.ammoCost80 = true;
             player.moveSpeed += 0.1f;

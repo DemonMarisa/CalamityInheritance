@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -36,12 +37,15 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.voidOfCalamity = true;
             modPlayer.voidOfExtinction = true;
-            modPlayer.abaddon = true;
             player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.fireWalk = true;
             player.lavaImmune = true;
-            player.GetDamage<GenericDamageClass>() += 0.12f;
+            player.GetDamage<GenericDamageClass>() += 0.15f;
+            if (player.lavaWet)
+            {
+                player.GetDamage<GenericDamageClass>() += 0.25f;
+            }
             if (player.immune)
             {
                 if (player.miscCounter % 10 == 0)
@@ -91,9 +95,12 @@ namespace CalamityInheritance.Content.Items.Accessories
         }
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<VoidofExtinction>().
-                Register();
+            CreateRecipe()
+                .AddIngredient<CoreofCalamity>()
+                .AddIngredient<CoreofHavoc>()
+                .AddIngredient<ScoriaBar>(3)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void SetStaticDefaults()
         {
-            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(120, 9f, 2.5f);
+            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(160, 9f, 2.5f);
         }
 
         public override void SetDefaults()

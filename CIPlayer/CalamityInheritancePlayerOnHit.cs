@@ -266,9 +266,9 @@ namespace CalamityInheritance.CIPlayer
             if (Main.player[projectile.owner].CalamityInheritance().reaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
             {
                 int BlastDamage = (int)(projectile.damage * 0.4);
-                if (BlastDamage > 2500)
+                if (BlastDamage > 30)
                 {
-                    BlastDamage = 2500;
+                    BlastDamage = 30;
                 }
                 if (reaverBlastCooldown <= 0)
                 {

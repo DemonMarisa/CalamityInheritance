@@ -38,9 +38,11 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient<GrandGelatin>(1)
-            .AddTile(TileID.Anvils)
-            .Register();
+                .AddIngredient<CleansingJelly>()
+                .AddIngredient<LifeJelly>()
+                .AddIngredient<VitalJelly>()
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

@@ -1,89 +1,89 @@
-ReaverMagePower: {
-	DisplayName: Reaver Mage Power
-	Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+﻿ReaverMagePower: {
+	DisplayName: 掠夺者之力[Legacy]
+	Description: 你的法师技艺提升了
 }
 
 ReaverMeleeRage: {
-	DisplayName: Reaver Melee Rage
-	Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+	DisplayName: 掠夺者之怒[Legacy]
+	Description: 你充满愤怒
 }
 
 ArmorShattering: {
-	DisplayName: Armor Shattering
-	Description: Mods.CalamityInheritance.Buffs.ArmorShattering.Description
+	DisplayName: 护甲粉碎[Legacy]
+	Description: 近战和盗贼攻击会粉碎敌人的护甲
 }
 
 CadancesGrace: {
-	DisplayName: Cadances Grace
-	Description: Mods.CalamityInheritance.Buffs.CadancesGrace.Description
+	DisplayName: 心律和谐[Legacy]
+	Description: 你心灵纯净
 }
 
 DraconicSurgeBuff: {
-	DisplayName: Draconic Surge Buff
-	Description: Mods.CalamityInheritance.Buffs.DraconicSurgeBuff.Description
+	DisplayName: 龙魂加持[Legacy]
+	Description: 神龙的力量流灌注全身
 }
 
 HolyWrathBuff: {
-	DisplayName: Holy Wrath Buff
-	Description: Mods.CalamityInheritance.Buffs.HolyWrathBuff.Description
+	DisplayName: 圣神之怒[Legacy]
+	Description: 提高伤害，所有攻击附带神圣之火减益
 }
 
 Invincible: {
-	DisplayName: Invincible
-	Description: Mods.CalamityInheritance.Buffs.Invincible.Description
+	DisplayName: 无敌[Legacy]
+	Description: 无敌，并且免疫绝大多数debuff
 }
 
 PenumbraBuff: {
-	DisplayName: Penumbra Buff
-	Description: Mods.CalamityInheritance.Buffs.PenumbraBuff.Description
+	DisplayName: 半影[Legacy]
+	Description: 移动时的潜行值恢复速度增加15%，在夜晚，静止时的潜行值恢复速度增加15%，日食期间，两者都会增加20%
 }
 
 ProfanedRageBuff: {
-	DisplayName: Profaned Rage Buff
-	Description: Mods.CalamityInheritance.Buffs.ProfanedRageBuff.Description
+	DisplayName: 渎神之怒[Legacy]
+	Description: 提高暴击率
 }
 
 Revivify: {
-	DisplayName: Revivify
-	Description: Mods.CalamityInheritance.Buffs.Revivify.Description
+	DisplayName: 重振精神[Legacy]
+	Description: 你受到的部分伤害会被治愈
 }
 
 TitanScale: {
-	DisplayName: Titan Scale
-	Description: Mods.CalamityInheritance.Buffs.TitanScale.Description
+	DisplayName: 泰坦之鳞[Legacy]
+	Description: 你感觉可以坦住成年幻海妖龙
 }
 
 TriumphBuff: {
-	DisplayName: Triumph Buff
-	Description: Mods.CalamityInheritance.Buffs.TriumphBuff.Description
+	DisplayName: 胜利之战[Legacy]
+	Description: 降低敌怪的接触伤害，生命值越低，降低幅度越大
 }
 
 YharimPower: {
-	DisplayName: Yharim Power
-	Description: Mods.CalamityInheritance.Buffs.YharimPower.Description
+	DisplayName: 亚利姆之力[Legacy]
+	Description: 你感觉可以把世界撕成了两半……空手足矣！
 }
 
 ElysianGuard: {
-	DisplayName: Elysian Guard
-	Description: Mods.CalamityInheritance.Buffs.ElysianGuard.Description
+	DisplayName: 极乐之庇护[Legacy]
+	Description: 移动速度降低，提高各项属性
 }
 
 SilvaStun: {
-	DisplayName: Silva Stun
-	Description: Mods.CalamityInheritance.Buffs.SilvaStun.Description
+	DisplayName: 林海眩晕[Legacy]
+	Description: 你无法移动
 }
 
 MagicHatBuffOld: {
-	DisplayName: Magic Hat Buff Old
-	Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+	DisplayName: 魔法礼帽[Legacy]
+	Description: 我会一直留着你的灵魂当人质，但你找到的东西都得留下！
 }
 
 MidnightSunBuffOld: {
-	DisplayName: Midnight Sun Buff Old
-	Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+	DisplayName: 极昼信标[Legacy]
+	Description: 一个奇怪的UFO在观察你，这令你很不舒服
 }
 
 ReaverSummonSetBuff: {
-	DisplayName: Reaver Summon Set Buff
-	Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
+	DisplayName: 掠夺宝珠[Legacy]
+	Description: 掠夺者宝珠会照亮你的前路
 }

@@ -1,19 +1,23 @@
-ExplosiveShells: {
-	DisplayName: Explosive Shells
+﻿ExplosiveShells: {
+	DisplayName: ��ըɢ��[Legacy]
 	Tooltip: ""
 }
 
 GrenadeRounds: {
-	DisplayName: Grenade Rounds
+	DisplayName: ��Ƭ[Legacy]
 	Tooltip: ""
 }
 
 MagnumRounds: {
-	DisplayName: Magnum Rounds
+	DisplayName: �����ϵ�[Legacy]
 	Tooltip: ""
 }
 
 VanquisherArrowold: {
-	DisplayName: Vanquisher Arrowold
-	Tooltip: ""
+	DisplayName: ����֮��[Legacy]
+	Tooltip:
+		'''
+		��͸���
+		�ƶ�ʱ����ѳ������׷�ټ�ʸ
+		'''
 }

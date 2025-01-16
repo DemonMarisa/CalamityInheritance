@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -23,9 +24,12 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CalamityInheritance();
+            var modPlayer = player.Calamity();
             player.pStone = true;
             player.longInvince = true;
             modPlayer1.deificAmuletEffect = true;
+            player.GetArmorPenetration<GenericDamageClass>() += 10;
+            modPlayer.jellyfishNecklace = true;
         }
 
         public override void AddRecipes()

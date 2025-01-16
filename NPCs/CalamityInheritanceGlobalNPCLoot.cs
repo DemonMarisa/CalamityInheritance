@@ -196,7 +196,6 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeificAmuletLegacy>(), 10, 1, 1));
             }
             if (npc.type == ModContent.NPCType<ProfanedGuardianCommander> ())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
@@ -217,7 +216,6 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ModContent.ItemType<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterGodSlayerTracers>(), 1)); //10%掉落
             }
             if (npc.type == ModContent.NPCType<Yharon>())
             {
@@ -364,7 +362,6 @@ namespace CalamityInheritance.NPCs
                     // Lore
                     {
                         npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FasterLunarTracers>(), 10));
                         break;
                     }
                 #endregion
