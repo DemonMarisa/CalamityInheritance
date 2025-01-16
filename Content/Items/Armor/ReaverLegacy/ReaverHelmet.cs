@@ -62,16 +62,17 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
                     Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
                 }
             }
-            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 1.2f;
-            player.whipRangeMultiplier += 1.2f;
-            //Scarlet:将伤害加成全部转移至头盔，鞭子加成转移至套装奖励（因为原版就这么做的）
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.8f;
+            player.whipRangeMultiplier += 0.5f;
+            //Scarlet:平摊数值加成，鞭 速度110%，鞭 距离100%，20%召唤伤害
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.moveSpeed += 0.1f;
-            player.GetDamage<SummonDamageClass>() += 0.25f; //总40%伤害加成
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.5f;
+            player.whipRangeMultiplier += 0.5f;
+            player.GetDamage<SummonDamageClass>() += 0.05f; //
         }
 
         public override void AddRecipes()
