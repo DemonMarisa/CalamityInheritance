@@ -104,3 +104,8 @@ VoidVortex: {
 	DisplayName: Void Vortex Legacy
 	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
 }
+
+Lazinator: {
+	DisplayName: Lazinator
+	Tooltip: ""
+}

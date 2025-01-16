@@ -42,7 +42,8 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer1.reaverRangedRocket = true;
             //Scarlet:远程伤害降低至30%，暴击概率降低至20%
-            player.GetDamage<RangedDamageClass>() += 0.10f;
+            player.GetDamage<RangedDamageClass>() += 0.20f;
+            player.GetCritChance<RangedDamageClass>() += 0.10f;
         }
 
         public override void UpdateEquip(Player player)

@@ -63,7 +63,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
         }
 
-        [Obsolete]
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
@@ -84,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.timeLeft == 600)
+            if (Projectile.timeLeft >= 598)
             {
                 return false;
             }

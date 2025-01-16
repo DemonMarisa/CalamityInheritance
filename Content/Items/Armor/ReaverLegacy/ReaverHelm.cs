@@ -41,17 +41,21 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.reaverMeleeBlast = true;
             player.thorns += 0.33f;
-            player.GetAttackSpeed<MeleeDamageClass>() +=0.40f;
-            player.GetCritChance<MeleeDamageClass>() += 10;
+            player.GetAttackSpeed<MeleeDamageClass>() +=0.30f;
+            player.GetCritChance<MeleeDamageClass>() += 5;
             player.moveSpeed += 0.20f;
             //Scarlet:近战暴击概率下调至10%，常驻的总伤害下调至20%，但是常驻攻速上升至40%
+            //DemonMarisa:改了
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage<MeleeDamageClass>() += 0.5f;
+            player.moveSpeed += 0.1f;
+            player.GetDamage<MeleeDamageClass>() += 0.15f;
+            player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
+            player.GetCritChance<MeleeDamageClass>() += 5;
         }
 
         public override void AddRecipes()

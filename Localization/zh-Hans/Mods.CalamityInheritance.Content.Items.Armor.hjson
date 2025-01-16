@@ -1,411 +1,413 @@
 AuricTeslaBodyArmorold: {
-	// DisplayName: Auric Tesla Body Armor Legacy
+	// DisplayName: 古圣金源盔甲[legacy]
 	/* Tooltip:
 		'''
-		8% increased damage, 5% increased critical strike chance
-		25% increased movement speed
-		+100 max life
-		Frost Barrier effect
+		+100最大生命值
+		增加8%伤害和5%暴击率
+		移动速度增加25%
+		你有2%的概率闪避来袭的攻击
+		免疫小于80点的伤害
+		获得寒冰屏障的能力
 		''' */
 }
 
 AuricTeslaCuissesold: {
-	// DisplayName: Auric Tesla Cuisses Legacy
+	// DisplayName: 古圣金源腿甲[legacy]
 	/* Tooltip:
 		'''
-		12% increased damage, 5% increased critical strike chance
-		50% increased movement speed
-		Magic carpet effect
+		增加50%移速
+		增加12%伤害和5%暴击率
+		获得魔毯的能力
 		''' */
 }
 
 AuricTeslaHeadMagic: {
-	// DisplayName: Auric Tesla Wire-Hemmed Visage Legacy
+	// DisplayName: 金虚万象盔[legacy]
 	/* Tooltip:
 		'''
-		30% increased magic damage, 20% increased magic critical chance
-		+100 max mana, 20% reduced mana usage
-		Not moving boosts all damage and critical strike chance 
+		增加30%魔法伤害和20%魔法暴击率
+		+100最大魔力值并减少20%魔力消耗
+		站立不动时会增加伤害与暴击几率
 		''' */
 	/* SetBonus:
 		'''
-		Magic Tarragon, Bloodflare, God Slayer and Silva armor effects
-		10% increased max run speed and acceleration
-		All projectiles spawn healing auric orbs on enemy hits
+		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+		弹幕击中敌人会生成金源光球治疗玩家
+		敌人生成数量降低
+		魔法弹幕每1.5秒击中敌人会有50%的概率治疗玩家
+		魔法武器每1.67秒发射一支幽灵箭，暴击会每2秒产生3个爆炸
+		魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+		你被击中时会出现弑神爆炸伤害敌人
+		魔法弹幕每5秒击中敌人会触发林海爆炸
+		受到致命伤害时会触发弑神复活，此效果有45秒冷却
+		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
+		林海无敌结束后，魔法伤害增加60%
 		''' */
 }
 
 AuricTeslaHeadMelee: {
-	// DisplayName: Auric Tesla Royal Helm Legacy
+	// DisplayName: 金源耀日盔[legacy]
 	/* Tooltip:
 		'''
-		20% increased melee damage and critical strike chance
-		28% increased melee speed
-		Not moving boost all damage and critical strike chance
+		增加20%近战伤害和20%近战暴击率
+		增加28%的近战攻速
+		敌人更有可能攻击你
+		站立不动时会增加伤害与暴击几率
 		''' */
 	/* SetBonus:
 		'''
-		Melee Tarragon, Bloodflare, God Slayer and Silva armor effect
-		10% increased max run speed and acceleration
-		Enemies are more likely to target you
-		Multiplie melee damage based on your current HP is, at full HP effect is at max
+		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+		按下{0}提供龙蒿斗篷增益，在10秒内接触伤害降低50%
+		连续真近战打击会获得鲜血狂怒增益
+		受到超过80点伤害会向八个方向发射弑神飞镖
+		近战武器可以眩晕敌人
+		真近战有25%的概率造成5倍伤害
+		受到致命伤害时会触发弑神复活，此效果有45秒冷却
+		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
+		林海无敌结束后，接触伤害降低20%
 		''' */
 }
 
 AuricTeslaHeadRanged: {
-	// DisplayName: Auric Tesla Hooded Facemask Legacy
+	// DisplayName: 金兜铁面罩[legacy]
 	/* Tooltip:
 		'''
-		30% increased ranged damage and critical strike chance
-		Not moving boost all damage and critical strike chance 
+		增加30%远程伤害和30%远程暴击率
+		增加28%的近战攻速
+		站立不动时会增加伤害与暴击几率
 		''' */
 	/* SetBonus:
 		'''
-		Ranged Tarragon, Bloodflare, God Slayer and Silva armor effects
-		10% increased max run speed and acceleration
-		All projectiles spawn healing auric orbs on enemy hits
+		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+		敌人生成数量降低
+		远程弹幕击中时，会分裂出生命能量与龙蒿爆炸
+		按下{0}释放16个血岩灵魂追踪敌人
+		远程武器每2.5秒发射一枚弑神榴弹
+		允许玩家攻击时以溢出的暴击概率造成四倍伤害
+		远程攻击速度增加20%
+		受到致命伤害时会触发弑神复活，此效果有45秒冷却
+		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
+		林海无敌结束后，射手伤害增加40%
 		''' */
 }
 
 AuricTeslaHeadRogue: {
-	// DisplayName: Auric Tesla Pulmed Helm Legacy
+	// DisplayName: 金羽十杀盔[legacy]
 	/* Tooltip:
 		'''
-		20% increased rogue damage and critical strike chance
-		25% increased movement speed
-		Not moving boost all damage and critical strike	chance 
+		增加20%盗贼伤害和20%盗贼暴击率
+		增加130点潜伏值上限
+		移动速度增加5%
+		站立不动时会增加伤害与暴击几率
 		''' */
 	/* SetBonus:
 		'''
-		+130 maxinum stealth
-		Rogue Tarragon, Bloodflare, God Slayer and Silva armor effects
-		10% increased max run speed and acceleration
-		All projectiles spawn healing auric orbs on enemy hits
-		Rogue weapon critical strike will do 1.25 times damage while you are above 50% HP
+		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+		敌人生成数量降低
+		每一个debuff都会让盗贼伤害增加10%
+		每25次暴击会获得3秒的龙蒿无敌增益
+		每一次暴击都有50%的概率治疗玩家
+		如果玩家生命值大于80%，获得30点防御力与5%盗贼暴击概率，小于80%时，盗贼伤害增加10%
+		满血时，盗贼伤害，暴击率和射速增加10%
+		当玩家血量大于50%时，攻击速度增加10%
+		受到致命伤害时会触发弑神复活，此效果有45秒冷却
+		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
+		林海无敌结束后，盗贼伤害增加40%
 		''' */
 }
 
 AuricTeslaHeadSummon: {
-	// DisplayName: Auric Tesla Head Summon
-	/* Tooltip:
-		'''
-		+7 max minions
-		Not moving boosts all damage and critical strike chance
-		''' */
+	// DisplayName: 金宇星界盔[legacy]
+	// Tooltip: 增加7仆从栏
 	/* SetBonus:
 		'''
-		120% increased summon damage
-		+1 max minion
-		Summon Tarragon, Bloodflare, God Slayer and Silva armor effect
-		10% increased max run speed and acceleration
-		All projectiles spawn healing auric orbs on enemy hits
+		增加1仆从栏和120%召唤伤害
+		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
+		敌人生成数量降低
+		在玩家周围召唤生命光环
+		召唤三个幻影地雷围绕玩家
+		玩家生命大于90%时，召唤伤害增加10%，小于50%时获得20防御力和2生命恢复
+		召唤星宇护卫保护玩家，可以进一步扩展
+		仆从击中敌人会出现弑神幻象
+		召唤一个林海水晶，用生命能量轰击敌人
+		受到致命伤害时会触发弑神复活，此效果有45秒冷却
+		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
+		林海无敌结束后，暴击几率增加10%，增加2仆从栏
 		''' */
 }
 
 GodSlayerChestplateold: {
-	// DisplayName: God Slayer Chestplate Legacy
+	// DisplayName: 弑神者胸甲[legacy]
 	/* Tooltip:
 		'''
-		10% increased damage, 6% increased critical strike chance
-		15% increased movement speed
-		+60 max life
-		Enemies take damage when they hit you
-		Attack have a 2% chance to do no damage to you 
+		+60最大生命值
+		敌人在攻击你后会受到伤害
+		增加10%伤害和6%暴击
+		移动速度增加15%
+		你有2%的概率闪避来袭的攻击
+		免疫小于80点的伤害
 		''' */
 }
 
 GodSlayerHeadMagicold: {
-	// DisplayName: '''God Slayer	Visage Legacy'''
+	// DisplayName: 弑神者面罩[legacy]
 	/* Tooltip:
 		'''
-		14% increased magicc damage and critical strike chance	
-		+100 max mana, 17% reduced mana usage
+		增加14%魔法伤害和14%魔法暴击率
+		+100最大魔力值并减少17%魔力消耗
 		''' */
 	/* SetBonus:
 		'''
-		You will revive and be healed 150 HP if an attack would have killed you
-		This effect has 45 seconds cooldown
-		Halves all life regen if revive cooldown is triggered
-		Enemies will release god slayer flames and healing flames when under magic attacks
-		Taking damage will cause you release a magical god slayer explosion 
+		魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
+		你被击中时会出现弑神爆炸伤害敌人
+		你在受到致命伤害时会免疫死亡，并且恢复100点血量
+		此效果有45秒冷却
 		''' */
 }
 
 GodSlayerHeadMeleeold: {
-	// DisplayName: God Slayer Horned Greathelm Legacy
+	// DisplayName: 弑神者头盔[legacy]
 	/* Tooltip:
 		'''
-		14% increased melee damage and critical strike chance	
-		20% increased melee speed 
-		Enemies are more likely to target you
+		增加14%近战伤害与暴击率
+		增加20%近战攻速
 		''' */
 	/* SetBonus:
 		'''
-		You will revive and be healed 150 HP if an attack would killed you
-		This effect has 45 seconds cooldown
-		Taking over 80 damage in one hit will cause you release a swarm of high-damage god killer dart
-		Attack deals 80 damage or less will have its damage reduced to 1  
-		Enemies takes even more damage when they hit you
+		敌人更有可能瞄准你
+		受到超过80点伤害会向八个方向发射弑神飞镖
+		你在受到致命伤害时会免疫死亡，并且恢复100点血量
+		此效果有45秒冷却
 		''' */
 }
 
 GodSlayerHeadRangedold: {
-	// DisplayName: God Slayer Helmet Legacy
-	// Tooltip: 14% increased ranged damage and critical strike chance
+	// DisplayName: 弑神者头套[legacy]
+	// Tooltip: 增加14%远程伤害与暴击率
 	/* SetBonus:
 		'''
-		You will revive and be healed 150 HP if an attack would killed you
-		This effect has 45 seconds cooldown
-		Allows your ranged hit can deal 4x damage with excess critical strike chance
-		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
+		远程武器每2.5秒发射一枚弑神榴弹
+		当远程武器暴击几率超过100%时，会根据超过100%的暴击几率再次暴击
+		你在受到致命伤害时会免疫死亡，并且恢复100点血量
+		此效果有45秒冷却
 		''' */
 }
 
 GodSlayerHeadRogueold: {
-	// DisplayName: God Slayer Mask Legacy
+	// DisplayName: 弑神者面具[legacy]
 	/* Tooltip:
 		'''
-		14% increased rogue damage and critical strike chance
-		18% increased movement speed
+		增加14%盗贼伤害与暴击率
+		移动速度增加20%
 		''' */
 	/* SetBonus:
 		'''
-		+140 maxinum stealth
-		You will revive and be healed 150 HP if an attack would killed you
-		This effect has 45 seconds cooldown
-		Boost all of your rogue stats by 10% at full HP.
-		Grants extra immunity frames if you take over 80 damage in one hit
+		最大潜伏值+140
+		当受到的伤害超过80点时，会获得额外30无敌帧
+		你在受到致命伤害时会免疫死亡，并且恢复100点血量
+		此效果有45秒冷却
 		''' */
 }
 
 GodSlayerHeadSummonold: {
-	// DisplayName: God Slayer Horned Helm Legacy
-	/* Tooltip:
-		'''
-		65% increased summon damage
-		+3 max minions
-		''' */
+	// DisplayName: 弑神者角盔[legacy]
+	// Tooltip: 增加7仆从栏和65%召唤伤害
 	/* SetBonus:
 		'''
-		You will revive and be healed 150 HP if an attack would killed you
-		This effect has 45 seconds cooldown
-		Hitting enemies will summon god slayer phantoms
-		Summon a god-eating mechworm fight for you
+		召唤一条星宇护卫为你而战
+		仆从击中敌人会出现弑神幻象
+		你在受到致命伤害时会免疫死亡，并且恢复100点血量
+		此效果有45秒冷却
 		''' */
 }
 
 GodSlayerLeggingsold: {
-	// DisplayName: God Slayer Leggings Legacy
+	// DisplayName: 弑神者腿甲[legacy]
 	/* Tooltip:
 		'''
-		10% increased damage, 10% increased critical strike chance
-		35% increased movement speed
+		增加10%伤害与暴击几率
+		移动速度增加35%
 		''' */
 }
 
 ReaverCap: {
-	// DisplayName: Reaver Cap Legacy
+	// DisplayName: 掠夺者头饰[Revamped]
 	/* Tooltip:
 		'''
-		10% increased rogue damage
-		5% increased rogue projectiles velocity
+		增加15%盗贼伤害，5%盗贼弹幕飞行速度和暴击率
+		增加20%移动速度，在液体中行动不受阻碍
 		''' */
 	/* SetBonus:
 		'''
-		+115 max stealth
-		10% increased rogue critical strike chance, 20% increased movement speed
-		Your rogue projectiles will create life bolt on enemy hit
+		增加115最大潜行值
+		弹幕弹幕每60帧会分裂出生命裂片跟踪敌人
 		''' */
 }
 
 ReaverCuisses: {
-	// DisplayName: Reaver Cuisses Legacy
+	// DisplayName: 掠夺者护胫[legacy]
 	/* Tooltip:
 		'''
-		5% increased damage and critical strike chancechacne 
-		12% increased movment speed
+		增加5%伤害与暴击率
+		增加12%移动速度
 		''' */
 }
 
 ReaverHelm: {
-	// DisplayName: Reaver Helm Legacy
+	// DisplayName: 掠夺者战盔[Revamped]
 	/* Tooltip:
 		'''
-		10% increased melee damage
-		Ability to swim
+		增加15%近战伤害，10%近战攻速和5%暴击率
+		增加10%移动速度，在液体中行动不受阻碍
 		''' */
 	/* SetBonus:
 		'''
-		30% increased melee speed, 20% increased movement speed
-		15% increased melee critical strike chance
-		Taking damage will boost your defense by 15, melee speed and damage by 10%
-		Enemies take some damage when they hit you
+		增加30%近战攻速和5%暴击率
+		近战射弹击中敌人后引发永恒爆炸，造成咒火减益
+		受伤时获得掠夺者之怒增益，增强你的防御与输出
 		''' */
 }
 
 ReaverHelmet: {
-	// DisplayName: Reaver Helmet Legacy
+	// DisplayName: 掠夺者头盔[Revamped]
 	/* Tooltip:
 		'''
-		1% increased summon damage	
-		60% increased whip speed and range
+		增加25%召唤伤害
+		增加10%移动速度，在液体中行动不受阻碍
 		''' */
 	/* SetBonus:
 		'''
-		No minion bonuses
-		24% increased summon damage
-		60% increased whip speed and rage
-		Summon a powerful reaver orb
+		增加120%鞭子攻击速度与攻击距离
+		召唤一个掠夺者宝珠保护你
 		''' */
 }
 
 ReaverMask: {
-	// DisplayName: Reaver Mask Legacy
+	// DisplayName: 掠夺者面具[Revamped]
 	/* Tooltip:
 		'''
-		10% increased magic damage, 5% increased magic critical strike chance
-		+80 max mana and 12% reduced mana usage
-		10% increased movment speed
+		增加10%魔法伤害,减少12%魔力值消耗, 增加5%暴击率
+		增加10%移动速度，增加80点最大魔力值，在液体中行动不受阻碍
 		''' */
 	/* SetBonus:
 		'''
-		10% increased magic damage and critical strike chance
-		Spawns spore gas upon hitting enemy by magic projectiles
-		Strikng an enemy will also boost your magic power
+		击中敌人时每隔一段时间会爆出孢子云
+		并且会获得掠夺者之力增益，增加10%魔法伤害，降低20%魔力消耗
 		''' */
 }
 
 ReaverScaleMail: {
-	// DisplayName: Reaver Scale Mail Legacy
+	// DisplayName: 掠夺者鳞甲[Revamped]
 	/* Tooltip:
 		'''
-		10% increased damage
-		5% increased critical strike chance
+		增加10%伤害和5%暴击率
+		增加20点最大生命值
 		''' */
 }
 
 ReaverVisage: {
-	// DisplayName: Reaver Visage Legacy
+	// DisplayName: 掠夺者面罩[Revamped]
 	/* Tooltip:
 		'''
-		10% increased ranged damage, 5% increased ranged critical strike chance
-		10% increased movment speed, 80% chance to not consume ammo 
-		Ability to swim
+		增加10%远程伤害，减少20%弹药消耗率,增加10%远程暴击率
+		增加10%移动速度，在液体中行动不受阻碍
 		''' */
 	/* SetBonus:
 		'''
-		10% increased ranged damage and critical strike chance
-		Spawns reaver rocket on enemy hits with ranged projectiles 
+		增加20%远程伤害和10%远程暴击率
+		远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
 		''' */
 }
 
 SilvaArmorold: {
-	// DisplayName: Silva Armor Legacy
+	// DisplayName: 始源林海盔甲[Legacy]
 	/* Tooltip:
 		'''
-		+80 max life
-		12% increased damage, 8% increased critical strike chance
-		20% increased movement speed
+		增加12%伤害与8%暴击几率
+		移动速度增加35%
 		''' */
 }
 
 SilvaHeadMagicold: {
-	// DisplayName: Silva Head Magicold
+	// DisplayName: 始源林海兜帽[Legacy]
 	/* Tooltip:
 		'''
-		13% increased magic damage and critical strike chance
-		+100 max mana, 19% reduced mana usage
+		增加13%魔法伤害和13%魔法暴击率
+		+100最大魔力值并减少19%魔力消耗
 		''' */
 	/* SetBonus:
 		'''
-		5% increased max run speed and acceleration
-		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
-		Magic projectiles have a 10% chance to cause a massive explosion on enmey hits
-		Your magic weapons will do 10% more damage after the silva invulnerability time
+		所有弹幕击中敌人时生成能治疗的林海光球。
+		最大速度和加速度增加5%。
+		魔法弹幕每5秒击中敌人会触发林海爆炸
+		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
+		林海无敌结束后，伤害增加60%
 		''' */
 }
 
 SilvaHeadMelee: {
-	// DisplayName: Silva Helm Legacy
-	// Tooltip: 13% increased melee damage and critical strike chance
+	// DisplayName: 始源林海战盔[Legacy]
+	// Tooltip: 增加13%近战伤害与13%暴击几率
 	/* SetBonus:
 		'''
-		5% increased max run speed and acceleration
-		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
-		Melee projectiles have a 25% chance to stun enemies for a very brief moment
-		True melee strikes have a 25% chance to do 5 times damage
-		You will take 20% less contact damage after the silva invulnerability
+		所有弹幕击中敌人时生成能治疗的林海光球。
+		最大速度和加速度增加5%。
+		近战武器可以眩晕敌人
+		真近战有25%的概率造成5倍伤害
+		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
+		林海无敌结束后，接触伤害降低20%
 		''' */
 }
 
 SilvaHeadRanged: {
-	// DisplayName: Silva Horned Helmet Legacy
-	// Tooltip: 13% increased ranged damage and critical strike chance
+	// DisplayName: 始源林海角盔[Legacy]
+	// Tooltip: 增加13%远程伤害与13%暴击几率
 	/* SetBonus:
 		'''
-		5% increased max run speed and acceleration
-		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
-		Increased your rate of fire with all ranged weapons 
-		Your ranged weapons will do 10% more damage after the silva invulnerability time
+		所有弹幕击中敌人时生成能治疗的林海光球。
+		最大速度和加速度增加5%。
+		远程攻击速度增加10%
+		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
+		林海无敌结束后，射手伤害增加40%
 		''' */
 }
 
 SilvaHeadRogue: {
-	// DisplayName: Silva Mask Legacy
+	// DisplayName: 始源林海面具[Legacy]
 	/* Tooltip:
 		'''
-		13% increased rogue damage and critical strike chance
-		20% increased movment speed
+		增加13%盗贼伤害与13%暴击几率
+		移动速度增加20%
 		''' */
 	/* SetBonus:
 		'''
-		+125 maxinum stealth
-		5% increased max run speed and acceleration
-		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
-		Faster throwing rate for your rogue weapon while you are above 50% HP
-		Your rogue weapons will do 10% more damage after the silva invulnerability time	
+		所有弹幕击中敌人时生成能治疗的林海光球。
+		最大速度和加速度增加5%。
+		当玩家血量大于50%时，攻击速度增加10%
+		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
+		林海无敌结束后，盗贼伤害增加40%
 		''' */
 }
 
 SilvaHeadSummonold: {
-	// DisplayName: Silva Helmet Legacy
-	// Tooltip: +5 max minions
+	// DisplayName: 始源林海头盔[Legacy]
+	// Tooltip: 增加5仆从栏
 	/* SetBonus:
 		'''
-		75% increased summon damage
-		5% increased max run speed and acceleration
-		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
-		Summons an ancient leaf prism to blast your enemies with life energy
-		Your summon weapons will do 10% more damage after the silva invulnerability time
+		所有弹幕击中敌人时生成能治疗的林海光球。
+		最大速度和加速度增加5%。
+		召唤一个林海水晶，用生命能量轰击敌人
+		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
+		林海无敌结束后，暴击几率增加10%，增加2仆从栏
 		''' */
 }
 
 SilvaLeggingsold: {
-	// DisplayName: Silva Leggings Legacy
+	// DisplayName: 始源林海护胫[Legacy]
 	/* Tooltip:
 		'''
-		12% increased damage and 7% increased critical strike chance 
-		45% increased movement speed
+		增加12%伤害与7%暴击几率
+		移动速度增加45%
 		''' */
 }
 

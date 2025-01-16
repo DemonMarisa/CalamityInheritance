@@ -161,3 +161,28 @@ Test: {
 	// DisplayName: Test
 	// Tooltip: ""
 }
+
+GalaxySmasherMelee: {
+	// DisplayName: Galaxy Smasher Melee
+	// Tooltip: ""
+}
+
+StellarContemptOld: {
+	// DisplayName: Stellar Contempt Old
+	// Tooltip: ""
+}
+
+FallenPaladinsHammerOld: {
+	// DisplayName: Fallen Paladins Hammer Old
+	// Tooltip: ""
+}
+
+Trinity: {
+	// DisplayName: Trinity
+	// Tooltip: ""
+}
+
+TerratomereOld: {
+	// DisplayName: Terratomere Old
+	// Tooltip: ""
+}

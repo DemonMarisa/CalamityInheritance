@@ -70,6 +70,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
+            player.moveSpeed += 0.1f;
             player.GetDamage<SummonDamageClass>() += 0.25f; //总40%伤害加成
         }
 

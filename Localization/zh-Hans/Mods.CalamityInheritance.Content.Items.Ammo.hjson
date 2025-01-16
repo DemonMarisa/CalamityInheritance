@@ -1,19 +1,38 @@
 ExplosiveShells: {
-	// DisplayName: ��ըɢ��[Legacy]
+	// DisplayName: 爆炸散弹[Legacy]
 	// Tooltip: ""
 }
 
 GrenadeRounds: {
-	// DisplayName: ��Ƭ[Legacy]
+	// DisplayName: 榴弹片[Legacy]
 	// Tooltip: ""
 }
 
 MagnumRounds: {
-	// DisplayName: �����ϵ�[Legacy]
+	// DisplayName: 马格南弹[Legacy]
 	// Tooltip: ""
 }
 
 VanquisherArrowold: {
-	// DisplayName: Vanquisher Arrow Legacy
+	// DisplayName: 湮灭之箭[Legacy]
+	/* Tooltip:
+		'''
+		穿透物块
+		移动时会分裂出额外的追踪箭矢
+		''' */
+}
+
+ElysianArrowOld: {
+	// DisplayName: Elysian Arrow Old
+	// Tooltip: ""
+}
+
+HolyFireBulletOld: {
+	// DisplayName: Holy Fire Bullet Old
+	// Tooltip: ""
+}
+
+HyperiusBulletOld: {
+	// DisplayName: Hyperius Bullet Old
 	// Tooltip: ""
 }

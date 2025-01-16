@@ -205,7 +205,7 @@ namespace CalamityInheritance.CIPlayer
             if (reaverMeleeRage)
             {
                 Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                Player.GetAttackSpeed<MeleeDamageClass>() += 10;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                 Player.statDefense += 10;
             }
 
