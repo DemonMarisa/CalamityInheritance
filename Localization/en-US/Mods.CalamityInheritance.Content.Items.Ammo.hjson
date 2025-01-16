@@ -1,19 +1,23 @@
-﻿ExplosiveShells: {
-	DisplayName: ��ըɢ��[Legacy]
-	Tooltip: ""
-}
+﻿	ExplosiveShells: {
+		DisplayName: 爆炸散弹[Legacy]
+		Tooltip: ""
+	}
 
-GrenadeRounds: {
-	DisplayName: ��Ƭ[Legacy]
-	Tooltip: ""
-}
+	GrenadeRounds: {
+		DisplayName: 榴弹片[Legacy]
+		Tooltip: ""
+	}
 
-MagnumRounds: {
-	DisplayName: �����ϵ�[Legacy]
-	Tooltip: ""
-}
+	MagnumRounds: {
+		DisplayName: 马格南弹[Legacy]
+		Tooltip: ""
+	}
 
 VanquisherArrowold: {
-	DisplayName: Vanquisher Arrow Legacy
-	Tooltip: ""
+			DisplayName: 湮灭之箭[Legacy]
+			Tooltip:
+				'''
+				穿透物块
+				移动时会分裂出额外的追踪箭矢
+				'''
 }

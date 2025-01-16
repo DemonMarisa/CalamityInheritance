@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.reaverMeleeBlast = true;
             player.thorns += 0.33f;
-            player.GetAttackSpeed<MeleeDamageClass>() +=0.30f;
+            player.GetAttackSpeed<MeleeDamageClass>() +=0.40f;
             player.GetCritChance<MeleeDamageClass>() += 15;
             player.moveSpeed += 0.20f;
             //25+10近战伤害,15暴击率，30+10近战攻速
