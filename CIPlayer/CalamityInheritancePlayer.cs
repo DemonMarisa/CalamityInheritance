@@ -203,7 +203,6 @@ namespace CalamityInheritance.CIPlayer
         public bool test = false;
         #region AncientXeroc
         public bool ancientXerocSet     = false;
-        public bool ancientXerocMadness = false;
         //克希洛克套的远古狂怒效果
         //xeroc套装 
         #endregion
@@ -333,7 +332,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
-            ancientXerocMadness = false;
             #endregion
             test = false;
             #endregion
@@ -457,7 +455,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
-            ancientXerocMadness = false;
             #endregion
             #endregion
 

@@ -45,27 +45,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             modPlayer1.ancientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if(player.statLife<=(player.statLifeMax2 * 0.8f) && player.statLife > (player.statLifeMax2 * 0.6f))
-            {
-                player.GetDamage<GenericDamageClass>() +=0.05f;
-                player.GetCritChance<GenericDamageClass>() += 5;
-            }
-            else if(player.statLife<=(player.statLifeMax2 * 0.6f) && player.statLife > (player.statLifeMax2 * 0.35f))
-            {
-                player.GetDamage<GenericDamageClass>() += 0.10f; //玩家血量60%下的数值加成：20%伤害与20%暴击率
-                player.GetCritChance<GenericDamageClass>() += 10;
-            }
-            else if(player.statLife<=(player.statLifeMax2 * 0.35f) && player.statLife > (player.statLifeMax2 * 0.15f))
-            {
-                player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
-                player.GetCritChance<GenericDamageClass>() += 35;
-                modPlayer.healingPotionMultiplier += 0.10f;
-            }
-            else if(player.statLife<=(player.statLifeMax2 *0.15f))
-            {
-                player.GetDamage<GenericDamageClass>() -= 0.20f; //低于20%血量时-20%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                player.GetCritChance<GenericDamageClass>() -= 20;
-            }
+
             player.manaCost *= 0.2f;
             modPlayer.rogueVelocity += 0.10f;
         }
