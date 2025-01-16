@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Armor.Xeroc;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
