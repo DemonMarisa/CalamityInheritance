@@ -50,6 +50,7 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisEffects();
 
             ShieldDurabilityMax = Player.statLifeMax2;
+            CalamityPlayer modPlayer1 = Player.Calamity();
             if(ancientXerocSet)
             {
                 if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
