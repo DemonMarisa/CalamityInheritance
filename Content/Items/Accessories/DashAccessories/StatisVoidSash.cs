@@ -36,10 +36,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            CalamityPlayer modPlayer = player.Calamity();
-            player.GetDamage<GenericDamageClass>() += 0.8f;
-            player.GetCritChance<GenericDamageClass>() += 4;
-            modPlayer.nucleogenesis = true;
+            player.GetDamage<GenericDamageClass>() += 0.10f;
+            //Scarlet:移除栏位加成，伤害加成上调至10%，移除暴击概率加成（已经够多了)
             player.jumpSpeedBoost += 3.2f;
             player.moveSpeed += 0.10f;
             player.spikedBoots = 2;
@@ -57,13 +55,16 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddIngredient<StatisNinjaBelt>().
                 AddIngredient<TwistingNether>(10).
                 AddIngredient<NightmareFuel>(20).
+                AddIngredient(ItemID.AvengerEmblem, 1).
                 AddTile<CosmicAnvil>().
                 Register();
+                //Scarlet:合成材料增加复仇者徽章
 
             CreateRecipe().
                 AddIngredient<StatisNinjaBeltLegacy>().
                 AddIngredient<TwistingNether>(10).
                 AddIngredient<NightmareFuel>(20).
+                AddIngredient(ItemID.AvengerEmblem, 1).
                 AddTile<CosmicAnvil>().
                 Register();
         }

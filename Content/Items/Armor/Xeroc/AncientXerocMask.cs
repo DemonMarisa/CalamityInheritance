@@ -63,8 +63,8 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             }
             else if(player.statLife<=(player.statLifeMax2 *0.15f))
             {
-                player.GetDamage<GenericDamageClass>() -= 0.40f; //低于20%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                player.GetCritChance<GenericDamageClass>() -= 40;
+                player.GetDamage<GenericDamageClass>() -= 0.20f; //低于20%血量时-20%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                player.GetCritChance<GenericDamageClass>() -= 20;
             }
             player.manaCost *= 0.2f;
             modPlayer.rogueVelocity += 0.10f;
