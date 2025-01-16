@@ -19,43 +19,43 @@ FasterAuricTracers: {
 FasterGodSlayerTracers: {
 	DisplayName: 极乐之靴[Legacy]
 	Tooltip:
-			'''
-			荒诞的速度！
-			算作翅膀
-			水平飞行速度: 10.5
-			加速倍率: 2.75
-			很赞的垂直飞行速度
-			飞行时间: 180
-			增加36%加速度
-			在冰上大幅增加机动性
-			能在水和岩浆上行走
-			获得暂时的岩浆免疫能力
-			'''
+		'''
+		荒诞的速度！
+		算作翅膀
+		水平飞行速度: 10.5
+		加速倍率: 2.75
+		很赞的垂直飞行速度
+		飞行时间: 180
+		增加36%加速度
+		在冰上大幅增加机动性
+		能在水和岩浆上行走
+		获得暂时的岩浆免疫能力
+		'''
 }
 
 FasterLunarTracers: {
-	DisplayName: Seraph Tracers Legacy
+	DisplayName: 六翼天使之靴[Legacy]
 	Tooltip:
-			'''
-			Counts as wings
-			Horizontal speed: 9.00
-			Acceleration multiplier: 2.5
-			Good vertical speed
-			Flight time: 120
-			24% increased running acceleration
-			Greater mobility on ice
-			Water and lava walking
-			Immunity to the On Fire! debuff
-			Temporary immunity to lava
-			'Ludicrous speed!'
-			'''
+		'''
+		荒诞的速度！
+		算作翅膀
+		水平飞行速度: 9
+		加速倍率: 2.5
+		不错的垂直飞行速度
+		飞行时间: 160
+		荒诞的速度！
+		增加24%加速度
+		在冰上大幅增加机动性
+		能在水和岩浆上行走
+		获得暂时的岩浆免疫能力
+		'''
 }
 
 AncientXerocWings: {
 	DisplayName: Ancient Xeroc Wings
 	Tooltip:
-			'''
-			Same wings stats as Solar wings
-			Boost your damage and critical strike chance by 50% while wearing Xeroc Armor, if you are at 20% of your max life.
-			'''
+		'''
+		Same wings stats as Solar wings
+		Boost your damage and critical strike chance by 50% while wearing Xeroc Armor, if you are at 20% of your max life.
+		'''
 }
