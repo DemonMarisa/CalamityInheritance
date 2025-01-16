@@ -290,6 +290,7 @@ AstralArcanum: {
 	DisplayName: 星辉秘术[Legacy]
 	Tooltip:
 		'''
+		按[KEY]打开传送UI
 		受到伤害时会召唤彗星从天而降
 		免疫幻星感染减益
 		你会反弹来犯的弹幕
