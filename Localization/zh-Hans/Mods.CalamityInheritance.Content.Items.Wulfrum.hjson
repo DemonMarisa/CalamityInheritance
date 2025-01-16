@@ -1,0 +1,69 @@
+MageWulfrumHoodLegacy: {
+	// DisplayName: Mage Wulfrum Hood Legacy
+	// Tooltip: ""
+}
+
+MeleeWulfrumHelmLegacy: {
+	// DisplayName: Melee Wulfrum Helm Legacy
+	// Tooltip: ""
+}
+
+ANewWulfrumArmor: {
+	// DisplayName: A New Wulfrum Armor
+	// Tooltip: ""
+}
+
+ANewWulfrumHeadgear: {
+	// DisplayName: A New Wulfrum Headgear
+	// Tooltip: ""
+}
+
+ANewWulfrumHelm: {
+	// DisplayName: A New Wulfrum Helm
+	// Tooltip: ""
+}
+
+ANewWulfrumHelmet: {
+	// DisplayName: A New Wulfrum Helmet
+	// Tooltip: ""
+}
+
+ANewWulfrumHood: {
+	// DisplayName: A New Wulfrum Hood
+	// Tooltip: ""
+}
+
+ANewWulfrumLeggings: {
+	// DisplayName: A New Wulfrum Leggings
+	// Tooltip: ""
+}
+
+ANewWulfrumMask: {
+	// DisplayName: A New Wulfrum Mask
+	// Tooltip: ""
+}
+
+RangedWulfrumHeadgearLegacy: {
+	// DisplayName: Ranged Wulfrum Headgear Legacy
+	// Tooltip: ""
+}
+
+SummonerWulfrumHelmetLegacy: {
+	// DisplayName: Summoner Wulfrum Helmet Legacy
+	// Tooltip: ""
+}
+
+ThrowerWulfrumMaskLegacy: {
+	// DisplayName: Thrower Wulfrum Mask Legacy
+	// Tooltip: ""
+}
+
+WulfrumArmorLegacy: {
+	// DisplayName: Wulfrum Armor Legacy
+	// Tooltip: ""
+}
+
+WulfrumLeggingsLegacy: {
+	// DisplayName: Wulfrum Leggings Legacy
+	// Tooltip: ""
+}

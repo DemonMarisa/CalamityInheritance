@@ -1,0 +1,19 @@
+ExplosiveShells: {
+	// DisplayName: Explosive Shells
+	// Tooltip: ""
+}
+
+GrenadeRounds: {
+	// DisplayName: Grenade Rounds
+	// Tooltip: ""
+}
+
+MagnumRounds: {
+	// DisplayName: Magnum Rounds
+	// Tooltip: ""
+}
+
+VanquisherArrowold: {
+	// DisplayName: Vanquisher Arrow Legacy
+	// Tooltip: ""
+}

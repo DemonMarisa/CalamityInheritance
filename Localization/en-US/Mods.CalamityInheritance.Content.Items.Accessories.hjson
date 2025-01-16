@@ -1,47 +1,108 @@
 AeroStoneLegacy: {
 	DisplayName: Aero Stone Legacy
-	Tooltip: ""
+	Tooltip:
+			'''
+			10% increased movement and jump speed
+			10% increased wings flight time
+			'Pure stats should be much better'
+			'''
 }
 
 ArcanumoftheVoid: {
-	DisplayName: Arcanumofthe Void
-	Tooltip: ""
+	DisplayName: Arcanum of the Void Legacy
+	Tooltip:
+			'''
+			You reflect projectiles when they hit you
+			Reflected projectiles deal no damage to you
+			Reflect has 90 second cooldown, shared with all other dodge and reflects
+			'''
 }
 
 AstralBulwark: {
-	DisplayName: Astral Bulwark
-	Tooltip: ""
+	DisplayName: Astral Bulwark Legacy
+	Tooltip:
+		'''
+		Taking damage drops astral stars from the sky
+		Grants immnuity to astral infection
+		'''
 }
 
 CIRampartofDeities: {
-	DisplayName: C I Rampartof Deities
-	Tooltip: ""
+	DisplayName: Rampart of Deities Legacy
+	Tooltip:
+		'''
+		Causes stars to fall and increases length of invincibility after taking damage
+		Grants the effects from Frozen Turtel Shell and Paladin Shield
+		+2 HP/s life regen and reduces the cooldown of healings potions by 25%
+		'Strongest defensive accessory ever'
+		'''
 }
 
 CoreOfTheBloodGod: {
-	DisplayName: Core Of The Blood God
-	Tooltip: ""
+	DisplayName: Core of the Blood God Legacy
+	Tooltip:
+		'''
+		Increases max HP by 25%
+		Healing Potions are 25% more effective
+		Halves contact damage all the time
+		10% increased damage reduction
+		'Better than a cup'
+		'''
 }
 
 DarkSunRingold: {
-	DisplayName: Dark Sun Ringold
-	Tooltip: ""
+	DisplayName: Dark Sun Ring Legacy
+	Tooltip:
+		'''
+		12% increased damage and melee speed
+		+1 HP/s life regen, +2 max minions
+		Increased minion knockback
+		During the day, grants +3 HP/s life regen
+		During the night, grants +20 defense
+		Provides both bonuses during a Solar Eclipse
+		'Contains the power of the dark sun'
+		'''
 }
 
 DashAccessories: {
 	AsgardianAegisold: {
-		DisplayName: Asgardian Aegisold
-		Tooltip: ""
+		DisplayName: Asgardian Aegis Legacy
+		Tooltip:
+				'''
+				Allows the ability to ram dash, empowered by the cosmic inferno
+				This dash can slam through enemies without taking damage
+				Grants immunity to knockback and fire blocks
+				Grants immunity to the vast majority of debuffs, including God Slayer Inferno
+				Press [KEY] to receive the Elysian Guard buff
+				This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
+				Enemies are more likely to target you while the buff is being active
+				'''
 	}
 
 	AsgardsValorold: {
-		DisplayName: Asgards Valorold
-		Tooltip: ""
+		DisplayName: Asgard's Valor Legacy
+		Tooltip:
+				'''
+				Allows the ability to ram dash
+				The dash can slam through enemies without taking damage
+				Grants immunity to knockback and fire blocks
+				Grants immunity to most debuffs, including most forms of frost and flame	
+				'''
 	}
 
 	ElysianAegisold: {
-		DisplayName: Elysian Aegisold
-		Tooltip: ""
+		DisplayName: Elysian Aegis Legacy
+		Tooltip:
+				'''
+				Allows the ability to ram dash, empowered by holy fire
+				This dash can slam through enemies without taking damage
+				Grants immunity to knockback and fire blocks
+				Grants immunity to most debuffs, including Daybreak and Holy Flames 
+				Press [KEY] to receive the Elysian Guard buff
+				This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
+				Enemies are more likely to target you while the buff is being active
+				Blessed by the Profaned Flame
+				'''
 	}
 
 	StatisNinjaBeltLegacy: {
@@ -62,7 +123,11 @@ DeificAmuletLegacy: {
 
 FungalCarapace: {
 	DisplayName: Fungal Carapace
-	Tooltip: ""
+	Tooltip:
+			'''
+			When you are hit, you emit a mushroom spore explosion
+			Explosion will casue 70 base damage, affected by the highest damage stats
+			'''
 }
 
 GrandGelatinLegacy: {
@@ -72,28 +137,42 @@ GrandGelatinLegacy: {
 
 LeadCore: {
 	DisplayName: Lead Core
-	Tooltip: ""
+	Tooltip:
+	  		'''
+			Grants immunity to Irradiated
+			'''
 }
 
 LeviathanAmbergrisLegacy: {
 	DisplayName: Leviathan Ambergris Legacy
-	Tooltip: ""
+	Tooltip:
+			'''
+			You leave behind poisonous seawater as you move
+			+10 defense, 10% increased damage and 30% increased movement speed  while submerged in liquid
+			Taking damage while submerged in liquid will gain a damaging aura for a short time
+			Being outside of liquid increases all damage by 5% and increases damage reduction by 5%
+			'''
 }
 
 Melee: {
 	BadgeofBravery: {
-		DisplayName: Badgeof Bravery
-		Tooltip: ""
 	}
 
 	ElementalGauntletold: {
-		DisplayName: Elemental Gauntletold
-		Tooltip: ""
 	}
 
 	YharimsInsignia: {
 		DisplayName: Yharims Insignia
-		Tooltip: ""
+		Tooltip:
+				'''
+				10% increased melee damage and speed
+				10% increased true melee damage
+				10% increased damage while below 50% HP
+				Increases melee knockback power
+				Your melee strikes and projectiles inflict Holy Flame 
+				Grants temporary immunity to lava
+				'Movement or damage?'
+				'''
 	}
 }
 
@@ -103,23 +182,62 @@ PlagueHive: {
 }
 
 ReaperToothNecklaceold: {
-	DisplayName: Reaper Tooth Necklaceold
-	Tooltip: ""
+	DisplayName: Reaper Tooth Necklace Legacy
+	Tooltip:
+			'''
+			15% increased damage	
+			increased armor penetration by 100
+			'A grisly trophy from the apex predator'
+			'''
 }
 
 TheSpongetest: {
-	DisplayName: The Spongetest
-	Tooltip: ""
+	DisplayName: The Sponge Revamped
+	Tooltip:
+			'''
+			30 defense and max mana
+			15% increased damage reduction
+			Grants the immunity of Armor Crunch
+			All effects from Ambrosial Ampoule
+			You emit a mushroom spore and spark explosion when you are hit
+			Extra 15 defense that would be disabled in 10 seconds if you are hit, and boost your movement speed
+			6.25% of the damage from enemy attacks is absorbed and converted into healing
+			[c/FFA500:When equipping, active a barrier can absorbe damage, which durability is the same as your max HP]
+			If barrier is formed:
+			Damage taken will not overflow HP
+			Halves Adrenaline lost on hit if the barrier fully absorbes the damage
+			Grants 30 defense and 30% damage reduction
+
+			If barrier is cracked：
+			You will lose 50 defense and taken 25% more damage from enemies hit
+			Takes up more time to recharge your barrier
+			Barrier effect can be disabled in config
+			[c/FFD700:✟Thanks for the support by Plantare✟]
+			'''
 }
 
 VoidofExtinctionLegacy: {
-	DisplayName: Voidof Extinction Legacy
-	Tooltip: ""
+	DisplayName: Void of Extinction Legacy
+	Tooltip:
+			'''
+			Drops brimstone fireballs from the sky occasionally
+			12% increase to all damage
+			All attacks inflict Brimstone Flames
+			Brimstone fire rains down after getting hit
+			Reduces damage from touching lava
+			Grants immunity to Burning, On Fire!, Brimstone Flames and Searing Lava
+			'''
 }
 
 YharimsGiftLegacy: {
 	DisplayName: Yharims Gift Legacy
-	Tooltip: ""
+	Tooltip:
+			'''
+			15% increased damage and movement speed
+			Flaming meteors rain down after getting hit
+			Exploding dragon dust is left behind as you move
+			The power to kill a god pulses from within this artifact
+			'''
 }
 
 AstralArcanum: {

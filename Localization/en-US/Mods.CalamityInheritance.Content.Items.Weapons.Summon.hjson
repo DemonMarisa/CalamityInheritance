@@ -1,9 +1,13 @@
 MidnightSunBeaconold: {
-	DisplayName: Midnight Sun Beaconold
-	Tooltip: ""
+	DisplayName: Midnight Sun Beacon Legacy
+	Tooltip:
+		'''
+		Summons a UFO to vaporize enemies
+		'BUFF MSB NOW'
+		'''
 }
 
 TemporalUmbrellaOld: {
-	DisplayName: Temporal Umbrella Old
-	Tooltip: ""
+	DisplayName: Temporal Umbrella Legacy
+	Tooltip: '''1	'''
 }

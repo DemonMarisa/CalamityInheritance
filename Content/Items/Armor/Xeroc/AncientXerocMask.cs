@@ -42,28 +42,29 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer.wearingRogueArmor = true;
-            modPlayer.xerocSet = true;
-            modPlayer.rogueStealthMax += 1.15f;
+            modPlayer1.ancientXerocSet = true;
+            modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             if(player.statLife<=(player.statLifeMax2 * 0.8f) && player.statLife > (player.statLifeMax2 * 0.6f))
             {
                 player.GetDamage<GenericDamageClass>() +=0.05f;
                 player.GetCritChance<GenericDamageClass>() += 5;
             }
-            else if(player.statLife<=(player.statLifeMax2 * 0.6f) && player.statLife > (player.statLifeMax2 * 0.4f))
+            else if(player.statLife<=(player.statLifeMax2 * 0.6f) && player.statLife > (player.statLifeMax2 * 0.35f))
             {
-                player.GetDamage<GenericDamageClass>() += 0.15f; //玩家血量40%下的数值加成：25%伤害与25%暴击率
-                player.GetCritChance<GenericDamageClass>() += 15;
+                player.GetDamage<GenericDamageClass>() += 0.10f; //玩家血量60%下的数值加成：20%伤害与20%暴击率
+                player.GetCritChance<GenericDamageClass>() += 10;
             }
-            else if(player.statLife<=(player.statLifeMax2 * 0.4f) && player.statLife > (player.statLifeMax2 * 0.2f))
+            else if(player.statLife<=(player.statLifeMax2 * 0.35f) && player.statLife > (player.statLifeMax2 * 0.15f))
             {
-                player.GetDamage<GenericDamageClass>() += 0.30f; //玩家血量40%下的数值加成：40%伤害与40%暴击率
-                player.GetCritChance<GenericDamageClass>() += 30;
+                player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
+                player.GetCritChance<GenericDamageClass>() += 35;
+                modPlayer.healingPotionMultiplier += 0.10f;
             }
-            else if(player.statLife<=(player.statLifeMax2 *0.2f))
+            else if(player.statLife<=(player.statLifeMax2 *0.15f))
             {
-                player.GetDamage<GenericDamageClass>() -= 0.30f; //低于20%血量时-30%伤害与暴击率
-                player.GetCritChance<GenericDamageClass>() -= 30;
+                player.GetDamage<GenericDamageClass>() -= 0.40f; //低于20%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                player.GetCritChance<GenericDamageClass>() -= 40;
             }
             player.manaCost *= 0.2f;
             modPlayer.rogueVelocity += 0.10f;

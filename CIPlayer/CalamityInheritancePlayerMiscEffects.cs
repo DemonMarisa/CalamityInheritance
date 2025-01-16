@@ -828,10 +828,12 @@ namespace CalamityInheritance.CIPlayer
                 canFireReaverRangedRocket = true;
             }
 
-            if (Player.whoAmI == Main.myPlayer && AncientXerocMadness)
+            if (Player.whoAmI == Main.myPlayer && ancientXerocMadness && Player.statLife <= Player.statLifeMax2 * 0.15)
             {
-                Player.AddBuff(ModContent.BuffType<EmpyreanRage>(), 240);
-                Player.AddBuff(ModContent.BuffType<EmpyreanWrath>(), 240);
+                //克希洛克翅膀将会使克希洛克套在低于15%生命值时的负面效果转为增加10%全局伤害与暴击概率。
+                //实际上就是在倒扣的输出上面加上了50%的伤害和暴击。
+                Player.GetDamage<GenericDamageClass>() += 0.5f;
+                Player.GetCritChance<GenericDamageClass>() += 50;
             }
         }
 

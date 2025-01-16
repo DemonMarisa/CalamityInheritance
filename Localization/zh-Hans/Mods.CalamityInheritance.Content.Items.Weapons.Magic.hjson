@@ -1,34 +1,34 @@
 HadopelagicEcho: {
-	DisplayName: Hadopelagic Echo
-	Tooltip: ""
+	// DisplayName: Hadopelagic Echo
+	// Tooltip: ""
 }
 
 HeliumFlashLegacy: {
-	DisplayName: Helium Flash Legacy
-	Tooltip:
+	// DisplayName: Helium Flash Legacy
+	/* Tooltip:
 		'''
 		Launches volatile star cores which erupt into colossal fusion blasts
 		'The power of a galaxy, if only for mere moments'
-		'''
+		''' */
 }
 
 PhantasmalFuryOld: {
-	DisplayName: Phantasmal Fury Legacy
-	Tooltip: "1"
+	// DisplayName: Phantasmal Fury Legacy
+	// Tooltip: "1"
 }
 
 CarnageRay: {
-	DisplayName: Carnage Ray
-	Tooltip:
+	// DisplayName: Carnage Ray
+	/* Tooltip:
 		'''
 		Fires a wretched, bloody ray
 		The farther along the ray hit enemies are, the more damage they take
-		'''
+		''' */
 }
 
 ElementalRayold: {
-	DisplayName: Elemental Ray Revamped
-	Tooltip:
+	// DisplayName: Elemental Ray Revamped
+	/* Tooltip:
 		'''
 		Casts out a ray of pure, concentrated elements
 		[c/4169E1:Stardust] fragments chase to your enemy when ray fades
@@ -37,70 +37,70 @@ ElementalRayold: {
 		[c/FF00FF:Nebula] fire will follow up to cause an additional hit
 		[c/00FF00:Now we are talking...]
 
-		'''
+		''' */
 }
 
 FabstaffOld: {
-	DisplayName: Fabstaff Legacy
-	Tooltip:
+	// DisplayName: Fabstaff Legacy
+	/* Tooltip:
 		'''
 		Fires a ray of pure, concentrated darkness
 		Will release dark beams around the ray
-		'''
+		''' */
 }
 
 NightsRayold: {
-	DisplayName: Nights Ray Legacy
-	Tooltip:
+	// DisplayName: Nights Ray Legacy
+	/* Tooltip:
 		'''
 		Fires a ray of pure, concentrated darkness
 		Will release dark beams around the ray
-		'''
+		''' */
 }
 
 TerraRay: {
-	DisplayName: Terra Ray Legacy
-	Tooltip: "1"
+	// DisplayName: Terra Ray Legacy
+	// Tooltip: "1"
 }
 
 StratusSphere: {
-	DisplayName: Stratus Sphere Revamped
-	Tooltip: Fires an energy orb containing the essence of our stratosphere
+	// DisplayName: Stratus Sphere Revamped
+	// Tooltip: Fires an energy orb containing the essence of our stratosphere
 }
 
 SubsumingVortexold: {
-	DisplayName: Subsuming Vortex Legacy
-	Tooltip:
+	// DisplayName: Subsuming Vortex Legacy
+	/* Tooltip:
 		'''
 		Releases a gigantic, slow-moving vortex
 		The vortex releases exo tentacles that thrash at nearby enemies
 		After a few seconds the vortex slows down, becomes unstable, and explodes
 		'Calamity Version 1.4.5.7'
-		'''
+		''' */
 }
 
 TheWandold: {
-	DisplayName: The Wand Legacy
-	Tooltip: This is a good stick.
+	// DisplayName: The Wand Legacy
+	// Tooltip: This is a good stick.
 }
 
 VehemencOld: {
-	DisplayName: Vehemenc Legacy
-	Tooltip: "1"
+	// DisplayName: Vehemenc Legacy
+	// Tooltip: "1"
 }
 
 VividClarity: {
-	DisplayName: Vivid Clarity Revapmed
-	Tooltip:
+	// DisplayName: Vivid Clarity Revapmed
+	/* Tooltip:
 		'''
 		Fires five randomized beams of elemental energy at the cursor
 		On enmey and tile hits, beams either explode into a big flash
 		Summon an additional laser from the sky, or spilt into energy orbs
 		'High IQ increases the weapon's potential'
-		'''
+		''' */
 }
 
 VoidVortex: {
-	DisplayName: Void Vortex Legacy
-	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
+	// DisplayName: Void Vortex Legacy
+	// Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
 }

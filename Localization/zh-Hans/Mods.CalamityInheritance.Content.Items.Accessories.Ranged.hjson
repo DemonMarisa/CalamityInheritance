@@ -1,0 +1,32 @@
+DaedalusEmblem: {
+	// DisplayName: Daedalus Emblem Legacy
+	/* Tooltip:
+		'''
+		+1 HP/s life regen speed
+		10% increased ranged damage, 5% increased ranged critical strike chance
+		20% not consumed ammo
+		Greatly increased ranged projectiles speed
+		''' */
+}
+
+ElementalQuiver: {
+	// DisplayName: Elemental Quiver Legacy
+	/* Tooltip:
+		'''
+		20% increased ranged damage, 15% increased ranged critical strike chance
+		+2 HP/s life regen speed, 15% increased mining speed
+		20% chance not consume ammo 
+		Greatly increases all ranged projectiles velocity
+		Allows your ranged projectiles split
+		This effect is toggleable in config 
+		''' */
+}
+
+PsychoticAmulet: {
+	// DisplayName: Psychotic Amulet Legacy
+	/* Tooltip:
+		'''
+		5% increased ranged and rogue damage and critical strike chance
+		Grants a massive boost to these stats if you are not moving
+		''' */
+}

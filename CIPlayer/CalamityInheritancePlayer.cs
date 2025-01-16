@@ -202,7 +202,9 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public bool test = false;
         #region AncientXeroc
-        public bool AncientXerocMadness = false;
+        public bool ancientXerocSet     = false;
+        public bool ancientXerocMadness = false;
+        //克希洛克套的远古狂怒效果
         //xeroc套装 
         #endregion
         #endregion
@@ -330,19 +332,8 @@ namespace CalamityInheritance.CIPlayer
             reaverSummoner = false;
             #endregion
             #region Xeroc
-            AncientXerocMadness = false;
-            #endregion
-            #region Reaver
-            reaverRogueExProj = false;
-            reaverMeleeBlast = false;
-            reaverRangedRocket = false;
-            reaverMageBurst = false;
-            reaverMeleeRage = false;
-            reaverMagePower = false;
-            reaverSummoner = false;
-            #endregion
-            #region Xeroc
-            AncientXerocMadness = false;
+            ancientXerocSet     = false;
+            ancientXerocMadness = false;
             #endregion
             test = false;
             #endregion
@@ -465,18 +456,8 @@ namespace CalamityInheritance.CIPlayer
             reaverSummoner = false;
             #endregion
             #region Xeroc
-            AncientXerocMadness = false;
-            #region Reaver
-            reaverMeleeBlast = false;
-            reaverBlastCooldown = 0;
-            reaverMageBurst = false;
-            reaverBurstCooldown = 0;
-            reaverRangedRocket = false;
-            reaverSummoner = false;
-            #endregion
-            #region Xeroc
-            AncientXerocMadness = false;
-            #endregion
+            ancientXerocSet     = false;
+            ancientXerocMadness = false;
             #endregion
             #endregion
 
