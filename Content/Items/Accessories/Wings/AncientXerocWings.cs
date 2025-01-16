@@ -1,8 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Armor.Xeroc;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -33,15 +31,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if(player.armor[0].type == ModContent.ItemType<AncientXerocMask>() && 
-               player.armor[1].type == ModContent.ItemType<AncientXerocPlateMail>() &&
-               player.armor[2].type == ModContent.ItemType<AncientXerocCuisses>())
-            {
+            var modplayer1 = player.CalamityInheritance();
 
-                //Scarlet：现在克希洛克翅膀应该能正确地抵消克希洛克盔甲的伤害惩罚了。
-                player.GetDamage<GenericDamageClass>() += 0.3f;
-                player.GetCritChance<GenericDamageClass>() += 30;
-            }
+            if(modplayer1.ancientXerocSet)
+            modplayer1.ancientXerocMadness = true;
+            //与克希洛克盔甲搭配时提供克希洛克之怒效果
 
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)
             {
