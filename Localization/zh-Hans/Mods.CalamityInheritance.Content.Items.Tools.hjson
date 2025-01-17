@@ -12,3 +12,13 @@ WulfrumPickaxe: {
 	// DisplayName: Wulfrum Pickaxe
 	// Tooltip: ""
 }
+
+Moonlight: {
+	// DisplayName: Moonlight
+	// Tooltip: ""
+}
+
+Daylight: {
+	// DisplayName: Daylight
+	// Tooltip: ""
+}

@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items
                     if (player.whoAmI == Main.myPlayer)
                     {
                         // God Slayer Ranged Shrapnel: 100%, soft cap starts at 800 base damage
-                        int shrapnelRoundDamage = damage * 2;
+                        int shrapnelRoundDamage = CalamityUtils.DamageSoftCap(damage * 2, 1500);
                         shrapnelRoundDamage = player.ApplyArmorAccDamageBonusesTo(shrapnelRoundDamage);
 
                         Projectile.NewProjectile(source, position, velocity * 1.25f, ModContent.ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items
                     {
                         // Bloodflare Ranged Bloodsplosion: 80%, soft cap starts at 150 base damage
                         // This is intentionally extremely low because this effect can be grossly overpowered with sniper rifles and the like.
-                        int bloodsplosionDamage = (int)(damage * 1.6f);
+                        int bloodsplosionDamage = CalamityUtils.DamageSoftCap(damage * 0.8, 1200);
                         bloodsplosionDamage = player.ApplyArmorAccDamageBonusesTo(bloodsplosionDamage);
 
                         Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);

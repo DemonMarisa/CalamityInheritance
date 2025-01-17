@@ -67,3 +67,8 @@ AncientXerocWings: {
 		当你的生命值处于20%以下，且穿着克希洛克套装时，增加50%伤害与暴击率
 		''' */
 }
+
+AureateBoosterRevamped: {
+	// DisplayName: Aureate Booster Revamped
+	// Tooltip: ""
+}

@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 3;
-            player.GetDamage<GenericDamageClass>()     += 0.1f;
+            player.GetDamage<GenericDamageClass>() += 0.1f;
             player.GetCritChance<GenericDamageClass>() += 10;
             player.lavaImmune = true;
             player.buffImmune[BuffID.OnFire] = true;

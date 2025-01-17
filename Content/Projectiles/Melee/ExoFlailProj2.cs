@@ -143,7 +143,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
                 else
                 {
-                    Explode(Projectile.Center, startAngle, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+
+                    Explode(Projectile.Center, startAngle, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                    Explode(Projectile.Center, startAngle, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
+                    Explode(Projectile.Center, startAngle, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
                     //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
@@ -153,7 +156,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else
             {
                 float startAngle2 = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
-                Explode(target.Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(Projectile.Center, startAngle2, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(Projectile.Center, startAngle2, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
+                Explode(Projectile.Center, startAngle2, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
                 //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
             }

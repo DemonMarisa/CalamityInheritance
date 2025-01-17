@@ -1,544 +1,495 @@
-KnowledgeAquaticScourge.DisplayName: Knowledge Aquatic Scourge
-KnowledgeAstralInfection.DisplayName: Knowledge Astral Infection
-KnowledgeAstrumAureus.DisplayName: Knowledge Astrum Aureus
-KnowledgeAstrumDeus.DisplayName: Knowledge Astrum Deus
-KnowledgeBloodMoon.DisplayName: Knowledge Blood Moon
-KnowledgeBrainofCthulhu.DisplayName: Knowledge Brainof Cthulhu
-KnowledgeBrimstoneCrag.DisplayName: Knowledge Brimstone Crag
-KnowledgeBrimstoneElemental.DisplayName: Knowledge Brimstone Elemental
-KnowledgeCalamitas.DisplayName: Knowledge Calamitas
-KnowledgeCalamitasClone.DisplayName: Knowledge Calamitas Clone
-KnowledgeCorruption.DisplayName: Knowledge Corruption
-KnowledgeCrabulon.DisplayName: Knowledge Crabulon
-KnowledgeCrimson.DisplayName: Knowledge Crimson
-KnowledgeCryogen.DisplayName: Knowledge Cryogen
-KnowledgeDesertScourge.DisplayName: Knowledge Desert Scourge
-KnowledgeDestroyer.DisplayName: Knowledge Destroyer
-KnowledgeDevourerofGods.DisplayName: Knowledge Devourerof Gods
-KnowledgeDragonfolly.DisplayName: Knowledge Dragonfolly
-KnowledgeDukeFishron.DisplayName: Knowledge Duke Fishron
-KnowledgeEaterofWorlds.DisplayName: Knowledge Eaterof Worlds
-KnowledgeGolem.DisplayName: Knowledge Golem
-KnowledgeHiveMind.DisplayName: Knowledge Hive Mind
-KnowledgeKingSlime.DisplayName: Knowledge King Slime
-KnowledgeLeviathanAnahita.DisplayName: Knowledge Leviathan Anahita
-KnowledgeLunaticCultist.DisplayName: Knowledge Lunatic Cultist
-KnowledgeMechs.DisplayName: Knowledge Mechs
-KnowledgeMoonLord.DisplayName: Knowledge Moon Lord
-KnowledgeOcean.DisplayName: Knowledge Ocean
-KnowledgeOldDuke.DisplayName: Knowledge Old Duke
-KnowledgePerforators.DisplayName: Knowledge Perforators
-KnowledgePlaguebringerGoliath.DisplayName: Knowledge Plaguebringer Goliath
-KnowledgePlantera.DisplayName: Knowledge Plantera
-KnowledgePolterghast.DisplayName: Knowledge Polterghast
-KnowledgeProfanedGuardians.DisplayName: Knowledge Profaned Guardians
-KnowledgeProvidence.DisplayName: Knowledge Providence
-KnowledgeQueenBee.DisplayName: Knowledge Queen Bee
-KnowledgeRavager.DisplayName: Knowledge Ravager
-KnowledgeSentinels.DisplayName: Knowledge Sentinels
-KnowledgeSkeletron.DisplayName: Knowledge Skeletron
-KnowledgeSkeletronPrime.DisplayName: Knowledge Skeletron Prime
-KnowledgeSlimeGod.DisplayName: Knowledge Slime God
-KnowledgeSulphurSea.DisplayName: Knowledge Sulphur Sea
-KnowledgeTwins.DisplayName: Knowledge Twins
-KnowledgeUnderworld.DisplayName: Knowledge Underworld
-KnowledgeWallofFlesh.DisplayName: Knowledge Wallof Flesh
-KnowledgeYharon.DisplayName: Knowledge Yharon
-KnowledgeEyeofCthulhu.DisplayName: Knowledge Eyeof Cthulhu
+KnowledgeAquaticScourge: {
+			DisplayName: 渊海灾虫[legacy]
+			Lore:
+				'''
+				在污染与贪食之中诞生的恐怖存在。据研究，当前大小的渊海灾虫只是青年时期的。
+				这些灾虫生物是海洋中最大的捕食者，不过它们很少出现在浅海之中。
+				放置在背包中并标记为收藏，获得对硫磺海水的免疫力，并增强吃得好的效果
+				但是，由于你的无尽饥饿，没有饱食增益时，你的各项属性将会下降
+				'''
+		}
 
-Lore: {
-	KnowledgeAquaticScourge: {
-		DisplayName: Aquatic Scourge legacy
-		Lore:
-			'''
-			A horror born of pollution and insatiable hunger; based on size alone this was merely a juvenile.
-			These scourge creatures are the largest aquatic predators and very rarely do they frequent such shallow waters.
-			[c/00B2EE:Favorite] this item to gain immunity to the sulphurous waters and increase the stat gains from the Well Fed buff.
-			However, without the Well Fed buff your stats will decrease due to your insatiable hunger.
-			'''
-	}
+		KnowledgeAstralInfection: {
+			DisplayName: 星辉瘟疫[legacy]
+			Lore:
+				'''
+				扭曲的梦幻之景，遍布四周的是参天的奇异巨柱，头顶上方是阴霾笼罩的漆黑苍穹
+				这里的自然规律被彻底颠覆了，你作何感想？
+				'''
+		}
 
-	KnowledgeAstralInfection: {
-		DisplayName: Astral Infection legacy
-		Lore:
-			'''
-			This twisted dreamscape, surrounded by unnatural pillars under a dark and hazy sky.
-			Natural law has been upturned. What will you make of it?
-			'''
-	}
+		KnowledgeAstrumAureus: {
+			DisplayName: 白金星舰[legacy]
+			Lore:
+				'''
+				被一位古神腹中排出的星体瘟疫所感染的机械巨神
+				即便是击杀它也无法阻挡瘟疫的传播
+				放置在背包中并标记为收藏，增加你在太空中的跳跃速度
+				'''
+		}
 
-	KnowledgeAstrumAureus: {
-		DisplayName: Astrum Aureus Legacy
-		Lore:
-			'''
-			A titanic cyborg infected by a star-borne disease expelled from the belly of an ancient god.
-			The destruction of this creature will not prevent the spread of the disease.
-			[c/00B2EE:Favorite] this item to gain 10% increased jump speed in space.
-			'''
-	}
+		KnowledgeAstrumDeus: {
+			DisplayName: 星神游龙[legacy]
+			Lore:
+				'''
+				星体之神，星体瘟疫的散播者
+				尽管一度从群星间被击落，现在它的残骸已经积蓄了足够的力量重返它应得的位置——浩瀚宇宙之间
+				放置在背包中并标记为收藏，增加你在太空中的移动速度
+				'''
+		}
 
-	KnowledgeAstrumDeus: {
-		DisplayName: Astrum Deus legacy
-		Lore:
-			'''
-			God of the stars and largest vessel for the Astral Infection.
-			Though struck down from its place among the stars its remnants have gathered strength, aiming to take its rightful place in the cosmos once more.
-			[c/00B2EE:Favorite] this item to gain increased movement speed in space.
-			'''
-	}
+		KnowledgeBloodMoon: {
+			DisplayName: 血月[legacy]
+			Lore:
+				'''
+				很久以前，我们都曾害怕过血月的光芒
+				很多人疯了，有些人死了，只有幸存者中的凤毛麟角才得以一窥宇宙运行之法
+				'''
+		}
 
-	KnowledgeBloodMoon: {
-		DisplayName: The Red Moon legacy
-		Lore:
-			'''
-			We long ago feared the light of the red moon.
-			Many went mad, others died, but a scant few became blessed with a wealth of cosmic understanding.
-			'''
-	}
+		KnowledgeBrainofCthulhu: {
+			DisplayName: 克苏鲁之脑[legacy]
+			Lore:
+				'''
+				曾今的眼，如今的脑
+				看起来，另一个怪物很大可能也是自这大块不完整的血肉中诞生的
+				允许你在猩红之地中传送，如同使用混沌传送杖一样
+				混乱减益持续时间内无法传送
+				然而，由于你的脑力透支，传送后会受到若干秒困惑减益
+				只有标记为收藏才能传送
+				'''
+		}
 
-	KnowledgeBrainofCthulhu: {
-		DisplayName: The Brain of Cthulhu legacy
-		Lore:
-			'''
-			An eye and now a brain.
-			Most likely another abomination spawned from this inchoate mass of flesh.
-			[c/00B2EE:Favorite] this item allows you to teleport similar to the Rod of Discord while in the crimson. Place in your hotbar to use it.
-			Teleportation is disabled while Chaos State is active.
-			However, you become confused for a few seconds after you use it due to your overwhelming brain power.
-			'''
-	}
+		KnowledgeBrimstoneCrag: {
+			DisplayName: 硫火之崖[legacy]
+			Lore:
+				'''
+				啊...这个地方
+				处处弥漫着痛苦，破灭的承诺和终会死亡的气息...
+				'''
+		}
 
-	KnowledgeBrimstoneCrag: {
-		DisplayName: Brimstone Crag legacy
-		Lore:
-			'''
-			Ah...this place.
-			The scent of broken promises, pain, and eventual death is heavy in the air...
-			'''
-	}
+		KnowledgeBrimstoneElemental: {
+			DisplayName: 硫磺火元素[legacy]
+			Lore:
+				'''
+				所有元素态生命中最强大的存在，一直以来迷失于向毁灭她家乡的猩红狱火复仇的扭曲心智之中
+				死寂下来的她，终于不再会忍受她的追随者死绝的痛苦之中了
+				放置在背包中并标记为收藏，可增强狱火药水的效力
+				'''
+		}
 
-	KnowledgeBrimstoneElemental: {
-		DisplayName: Brimstone Elemental legacy
-		Lore:
-			'''
-			The most powerful of the elementals, bent on exacting revenge upon the bloody inferno that demolished her home.
-			Finally put to rest, she will suffer no longer from the grief caused by the deaths of her people.
-			[c/00B2EE:Favorite] this item to improve the inferno potion effect.
-			'''
-	}
+		KnowledgeCalamitas: {
+			DisplayName: 至尊灾厄[legacy]
+			Lore:
+				'''
+				那位无可匹敌的女巫。或许她是我所有部下中我唯一怀疑过的一个
+				你的命运已经注定
+				[c/FF0000:面对我]
+				放置在背包中并标记为收藏，受到的所有攻击都会将你秒杀
+				'''
+		}
 
-	KnowledgeCalamitas: {
-		DisplayName: Calamitas legacy
-		Lore:
-			'''
-			The witch unrivaled. Perhaps the only one amongst my cohorts to have ever given me cause for doubt.
-			Now that you have defeated her your destiny is clear.
-			[c/FF0000:Come now, face me.]
-			Favorite this item to die instantly from every hit.
-			'''
-	}
+		KnowledgeCalamitasClone: {
+			DisplayName: 灾厄之眼[legacy]
+			Lore:
+				'''
+				你确实比我想象的要强不少
+				不过猩红狱火仍然在注视着你，监视着你的发展
+				放置在背包中并标记为收藏，以牺牲一部分最大生命值为代价，增加2仆从栏
+				'''
+		}
 
-	KnowledgeCalamitasClone: {
-		DisplayName: Calamitas Clone legacy
-		Lore:
-			'''
-			You are indeed stronger than I thought.
-			Though the bloody inferno still lingers, observing your progress.
-			[c/00B2EE:Favorite] this item to gain a boost to your minion slots but at the cost of reduced max health.
-			'''
-	}
+		KnowledgeCorruption: {
+			DisplayName: 腐化之地[legacy]
+			Lore:
+				'''
+				呕，这片腐烂破败，持续恶化的腐化生物们的家园，是很久前由一种致命的微生物带来的
+				传闻这种微生物由一个早已灭亡的种族以一次实验创造，用以猎杀泰拉大地上的生灵
+				放置在背包中并标记为收藏，腐化囊将不会自然生成
+				'''
+		}
 
-	KnowledgeCorruption: {
-		DisplayName: The Corruption legacy
-		Lore:
-			'''
-			The rotten and forever-deteriorating landscape of infected life, brought upon by a deadly microbe long ago.
-			It is rumored that the microbe was created through experimentation by a long-dead race, predating the Terrarians.
-			[c/00B2EE:Favorite] this item to prevent hive cysts from spawning.
-			'''
-	}
+		KnowledgeCrabulon: {
+			DisplayName: 菌生蟹[legacy]
+			Lore:
+				'''
+				螃蟹和蘑菇，一个有爱的故事
+				这些生物，能适应各种特殊环境，真有趣
+				放置在背包中并标记为收藏，身处地下或蘑菇地形时给予与菇共生增益
+				然而，你的身上被真菌覆盖，移动速度降低
+				'''
+		}
 
-	KnowledgeCrabulon: {
-		DisplayName: Crabulon legacy
-		Lore:
-			'''
-			A crab and its mushrooms, a love story.
-			It's interesting how creatures can adapt given certain circumstances.
-			[c/00B2EE:Favorite] this item to gain the Mushy buff while underground or in the mushroom biome.
-			However, your movement speed will be decreased while in these areas due to you being covered in fungi.
-			'''
-	}
+		KnowledgeCrimson: {
+			DisplayName: 猩红之地[legacy]
+			Lore:
+				'''
+				形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
+				这地方现如今是一群自地底深处跳动的血泵和奇形怪状的器官中诞生出的丑陋而可怕的怪物家园
+				放置在背包中并标记为收藏，血肉囊将不会自然生成
+				'''
+		}
 
-	KnowledgeCrimson: {
-		DisplayName: The Crimson legacy
-		Lore:
-			'''
-			This bloody hell, spawned from a formless mass of flesh that fell from the stars eons ago.
-			It is now home to many hideous creatures, spawned from the pumping blood and lurching organs deep within.
-			[c/00B2EE:Favorite] this item to prevent perforator cysts from spawning.
-			'''
-	}
+		KnowledgeCryogen: {
+			DisplayName: 极地之灵[legacy]
+			Lore:
+				'''
+				羁押大法师的囚笼
+				我不清楚在数十年的禁锢后，它是否失去了部分力量
+				放置在背包中并标记为收藏，获得寒霜冲刺的能力，可以冻结敌人。
+				代价是你的身体变得易碎，轻微降低防御力
+				'''
+		}
 
-	KnowledgeCryogen: {
-		DisplayName: Cryogen legacy
-		Lore:
-			'''
-			The archmage's prison.
-			I am unsure if it has grown weaker over the decades of imprisonment.
-			[c/00B2EE:Favorite] this item to gain a frost dash that freezes enemies, at the cost of slightly reduced defense due to your brittle body.
-			'''
-	}
+		KnowledgeDesertScourge: {
+			DisplayName: 荒漠灾虫[legacy]
+			Lore:
+				'''
+				庞大的海虫似乎从极度的炎热之中存活下来了，甚至完全适应了此处
+				曾于水中畅游的巨兽现如今变成了贪食的一具空壳，不断地寻找着下一顿美餐
+				放置在背包中并标记为收藏，以增加身处沙漠或沉沦之海时的防御
+				然而，在这些地方你的攻击会降低，因为和真正的自己相比你已经变成了一具空壳
+				'''
+		}
 
-	KnowledgeDesertScourge: {
-		DisplayName: The Desert Scourge legacy
-		Lore:
-			'''
-			The great sea worm appears to have survived the extreme heat and has even adapted to it.
-			What used to be a majestic beast swimming through the water has now become a dried-up and
-			gluttonous husk, constantly on a voracious search for its next meal.
-			[c/00B2EE:Favorite] this item for an increase to defense while in the desert or sunken sea.
-			However, you will deal decreased damage while in these areas due to being a husk of your former self.
-			'''
-	}
+		KnowledgeDestroyer: {
+			DisplayName: 钢铁毁灭者[legacy]
+			Lore:
+				'''
+				用强大的战士灵魂激活的机械虫子，用于在各个星球之中挖掘隧道以收集矿产资源
+				如果嘉登不那么执著于把所有东西都变成毁灭机器的话，它本来可以派上大用场
+				放置在背包中并标记为收藏以增加你的挖掘速度
+				然而，你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
 
-	KnowledgeDestroyer: {
-		DisplayName: The Destroyer legacy
-		Lore:
-			'''
-			A machine brought to life by the mighty souls of warriors, and built to excavate massive tunnels in planets to gather resources.
-			Could have proven useful if Draedon didn't have an obsession with turning everything into a tool of destruction.
-			[C/00B2EE:Favorite] this item to gain a boost to your pick speed.
-			However, your max acceleration is decreased slightly due to you feeling heavier.
-			'''
-	}
+		KnowledgeDevourerofGods: {
+			DisplayName: 神明吞噬者[legacy]
+			Lore:
+				'''
+				这条巨蛇和他的小弟们吸收所吞下物体的能量甚至能力，此特性在全宇宙内恐怕绝无仅有
+				倘若他有更多时间去吞噬生物获得力量，我恐怕就不得不把他当作威胁解决掉了
+				放置在背包中并标记为收藏，增加25%真近战伤害
+				然而，由于你莽撞的天性，你将受到额外5%伤害
+				'''
+		}
 
-	KnowledgeDevourerofGods: {
-		DisplayName: The Devourer of Gods legacy
-		Lore:
-			'''
-			This serpent’s power to assimilate the abilities and energy of those it consumed is unique in almost all the known cosmos, save for its lesser brethren.
-			I would have soon had to eliminate it as a threat had it been given more time and creatures to feast upon.
-			[c/00B2EE:Favorite] this item to boost the power of your true melee strikes by 25%.
-			However, due to your reckless nature you will take 5% increased damage.
-			'''
-	}
+		KnowledgeDragonfolly: {
+			DisplayName: 痴愚金龙[legacy]
+			Lore:
+				'''
+				野心勃勃科学计划的失败产物；傲慢地认为完全洞悉生命的奥秘或许总是会迎来相似的结果
+				原计划作为丛林龙的克隆体，如今只是一群在丛林中游荡，无差别攻击一切目标的疯狂生物
+				'''
+		}
 
-	KnowledgeDragonfolly: {
-		DisplayName: The Dragonfolly legacy
-		Lore:
-			'''
-			A failure of twisted scientific ambition
-			it appears our faulted arrogance over life has shown once more in the results.
-			Originally intended to be a clone of the Jungle Dragon, these were left to roam about the jungle, attacking anything in their path.
-			'''
-	}
+		KnowledgeDukeFishron: {
+			DisplayName: 猪鲨公爵[legacy]
+			Lore:
+				'''
+				这个来自大海的象征着恐惧的畸变生物，曾是过去某位王者用美食驯服的可靠伙伴
+				很久以前，这只生物绝望的飞离了他曾经的家乡，那片被硫磺火肆虐蒸腾的海，最终安居在了它的新家
+				放置在背包中并标记为收藏，当浸泡在液体中时增加伤害，暴击率和移动速度
+				然而，由于感到失水，你不处于液体环境中时降低伤害，暴击率和移动速度
+				'''
+		}
 
-	KnowledgeDukeFishron: {
-		DisplayName: Duke Fishron legacy
-		Lore:
-			'''
-			The mutant terror of the sea was once the trusted companion of an old king; he tamed it using its favorite treat.
-			Long ago, the creature flew in desperation from the raging bloody inferno consuming its home, ultimately finding its way to the ocean.
-			[c/00B2EE:Favorite] this item for an increase to all damage, crit and movement speed while submerged in liquid.
-			However, while not submerged in liquid you will have slightly decreased damage, crit and movement speed due to feeling dried out.
-			'''
-	}
+		KnowledgeEaterofWorlds: {
+			DisplayName: 世界吞噬者[legacy]
+			Lore:
+				'''
+				也许就是被那种微生物感染的虫子，在长达数世纪的吞食和成长中获得了这副腐败的身躯
+				考虑到此地的起源，这很有可能。
+				放置在背包中并标记为收藏，致命的微生物在你周围产生。
+				然而，由于你的皮肤开始腐烂，生命恢复速度降低
+				'''
+		}
 
-	KnowledgeEaterofWorlds: {
-		DisplayName: The Eater of Worlds legacy
-		Lore:
-			'''
-			Perhaps it was just a giant worm infected by the microbe, given centuries to feed and grow its festering body.
-			Seems likely, given the origins of this place.
-			[c/00B2EE:Favorite] this item to spawn deadly microbes around you.
-			However, you will have decreased life regen due to your skin rotting off.
-			'''
-	}
+		KnowledgeEyeofCthulhu: {
+			DisplayName: 克苏鲁之眼[legacy]
+			Lore:
+				'''
+				这眼睛，多么古怪
+				我感觉你越强大，它就越会警觉地观察你
+				放置在背包中并标记为收藏，增加夜视能力
+				然而，你在日间视物的能力会下降
+				'''
+		}
 
-	KnowledgeEyeofCthulhu: {
-		DisplayName: The Eye of Cthulhu legacy
-		Lore:
-			'''
-			That eye...how peculiar.
-			I sensed it watching you more intensely as you grew stronger.
-			[c/00B2EE:Favorite] this item for night vision at night.
-			However, your vision is reduced during the day.
-			'''
-	}
+		KnowledgeGolem: {
+			DisplayName: 神庙傀儡[legacy]
+			Lore:
+				'''
+				原始的造物
+				我欣赏蜥蜴族的足智多谋，然而对如此粗劣的魔像产生信仰注定了他们的覆灭
+				放置在背包中并标记为收藏，不动时增加防御
+				'''
+		}
 
-	KnowledgeGolem: {
-		DisplayName: Golem legacy
-		Lore:
-			'''
-			A primitive construct.
-			I admire the lihzahrd race for their ingenuity, though finding faith in such a flawed idol would invariably lead to their downfall.
-			[c/00B2EE:Favorite] this item to gain increased defense while standing still.
-			'''
-	}
+		KnowledgeHiveMind: {
+			DisplayName: 腐巢意志[legacy]
+			Lore:
+				'''
+				被细菌腐化的生物们的巢穴
+				遗憾的是，我不认为杀掉它就会停止腐化的散播
+				放置在背包中并标记为收藏，你在腐化之地发射的弹幕带有诅咒地狱效果
+				然而，由于你周身散发的极度腐臭，在腐化之地时刷怪速率极大幅度下降
+				'''
+		}
 
-	KnowledgeHiveMind: {
-		DisplayName: The Hive Mind legacy
-		Lore:
-			'''
-			A hive of clustered microbial-infected flesh.
-			I do not believe killing it will lessen the corruption here.
-			[c/00B2EE:Favorite] this item for all of your projectiles to inflict cursed flames when in the corruption.
-			However, enemy spawn rates will be greatly reduced while in the corruption due to your overwhelmingly-putrid odor.
-			'''
-	}
+		KnowledgeKingSlime: {
+			DisplayName: 史莱姆王[legacy]
+			Lore:
+				'''
+				只有傻子才会被这种贫弱的生物击败
+				不幸的是，我们的世界不缺这种人
+				放置在背包中并标记为收藏，略微增加移动和跳跃速度
+				然而，由于你胶冻般的身体，防御略微下降
+				'''
+		}
 
-	KnowledgeKingSlime: {
-		DisplayName: King Slime legacy
-		Lore:
-			'''
-			Only a fool could be caught by this pitiful excuse for a hunter.
-			Unfortunately, our world has no shortage of those.
-			[c/00B2EE:Favorite] this item to gain 5% increased movement speed and 2% increased jump speed.
-			However, your defense is reduced by 3 due to your gelatinous body.
-			'''
-	}
+		KnowledgeLeviathanAnahita: {
+			DisplayName: 利维坦和阿娜希塔[legacy]
+			Lore:
+				'''
+				一对诡异的生物。一个在寻找伙伴，另一个在寻找食物
+				或许两个基因怪异的生物被家乡抛弃，并在相互扶持后才安稳了下来
+				放置在背包中并标记为收藏，以增加装备渊洋之心时增加最大生命值以及装备奇光珠时财宝勘探的效力
+				让海洋之灵宠物能够在液体环境外正常移动
+				然而，若你没有被液体浸泡，防御力和伤害减免将下降
+				'''
+		}
 
-	KnowledgeLeviathanAnahita: {
-		DisplayName: Leviathan and Anahita legacy
-		Lore:
-			'''
-			An odd pair of creatures; one seeking companionship and the other seeking sustenance.
-			Perhaps two genetic misfits outcast from their homes that found comfort in assisting one another.
-			[c/00B2EE:Favorite] this item to gain increased max health while wearing the aquatic heart and treasure detect while wearing the strange orb.
-			Allows the young Ocean Spirit light pet to move normally while outside of liquids.
-			However, if you're not submerged in liquid you will have decreased defense and damage reduction.
-			'''
-	}
+		KnowledgeLunaticCultist: {
+			DisplayName: 拜月教邪教徒[legacy]
+			Lore:
+				'''
+				他是个天才，很久以前用他的怪异奥术终结了我的召唤
+				上一个让我如此鄙视其行为的人已经...死了, 他的封印仪式还未完成...做好迎来终结的准备吧
+				你的末日正在逼近...
+				放置在背包中并标记为收藏，增强在四柱事件时的全部属性
+				然而，禁忌的知识侵蚀着你的精神，视力会受到阻碍
+				'''
+		}
 
-	KnowledgeLunaticCultist: {
-		DisplayName: Lunatic Cultist legacy
-		Lore:
-			'''
-			The gifted one that terminated my grand summoning so long ago with his uncanny powers over the arcane.
-			Someone I once held in such contempt for his actions is now...deceased, his sealing ritual undone...prepare for the end.
-			Your impending doom approaches...
-			[c/00B2EE:Favorite] this item for an increase to all stats during the lunar event.
-			However, your vision is decreased due to eldritch knowledge damaging your mind.
-			'''
-	}
+		KnowledgeMechs: {
+			DisplayName: 机械动乱[legacy]
+			Lore:
+				'''
+				我看你已唤醒了嘉登的一些小玩具
+				这些曾经大有用处的工具，在嘉登的一次错误调试后程序错乱并暴走了
+				'''
+		}
 
-	KnowledgeMechs: {
-		DisplayName: The Mechanical Bosses legacy
-		Lore:
-			'''
-			I see you have awakened Draedon's old toys.
-			Once useful tools turned into savage beasts when their AIs went rogue, a mistake that Draedon failed to rectify in time.
-			'''
-	}
+		KnowledgeMoonLord: {
+			DisplayName: 月球领主[legacy]
+			Lore:
+				'''
+				真是浪费
+				他若是完全恢复了，本可作为我麾下大将。可惜，你击败的只是一具空壳
+				但这丝毫未损藏于他体内的无穷潜力——在他死后改变世界的这股力量
+				放置在背包中并标记为收藏，在使用重力球颠倒重力时给予全属性增幅
+				然而，重力未颠倒时你永久性受到羽落效果影响
+				'''
+		}
 
-	KnowledgeMoonLord: {
-		DisplayName: Moon Lord legacy
-		Lore:
-			'''
-			What a waste.
-			Had it been fully restored it would have been a force to behold, but what you fought was an empty shell.
-			However, that doesn't diminish the immense potential locked within it, released upon its death.
-			[c/00B2EE:Favorite] this item to gain an improved Gravity Globe that gives you an increase to all stats while upside down.
-			However, while not upside down you have permanent featherfall.
-			'''
-	}
+		KnowledgeOcean: {
+			DisplayName: 海洋[legacy]
+			Lore:
+				'''
+				小心，莫要惊扰深渊
+				你或许会唤醒比死亡更可怕的东西
+				放置在背包中并标记为收藏，海洋中的神秘水元素将不再自然生成
+				'''
+		}
 
-	KnowledgeOcean: {
-		DisplayName: The Ocean legacy
-		Lore:
-			'''
-			Take care to not disturb the deep waters of this world.
-			You may awaken something more terrifying than death itself.
-			[c/00B2EE:Favorite] this item to prevent the mysterious water elemental from spawning.
-			'''
-	}
+		KnowledgeOldDuke: {
+			DisplayName: 硫海遗爵[legacy]
+			Lore:
+				'''
+				真是诡异，那大海中的畸变生物尽管特殊，但并非是孤例
+				我曾一度认为猪龙鱼公爵仅和猪龙有亲缘关系，现在看来这或许是错误的
+				放在物品栏中并标记为收藏，当你处于硫磺海或深渊中时
+				可以无限呼吸，提升你的防御与恢复能力，免疫硫磺海的腐蚀，不会受到深渊水压的影响
+				然而，当你离开时，对环境的不适会让你的防御与恢复能力下降
+				'''
+		}
 
-	KnowledgeOldDuke: {
-		DisplayName: Old Duke Legacy
-		Lore:
-			'''
-			Strange, to find out that the mutant terror of the seas was not alone in its unique biology.
-			Perhaps I was mistaken to classify the creature from its relation to pigrons alone.
-			[c/00B2EE:Favorite] this item will let you resist almost all negative effects from sulphurous seas and abyss when within both biomes.
-			You also grants unlimited breathing time, increased defense and life regen speed.
-			However, if you leave, your defesne and life regen will be reduced due to the discomfort with the environment.
-			'''
-	}
+		KnowledgePerforators: {
+			DisplayName: 血肉寄生者和宿主[legacy]
+			Lore:
+				'''
+				一只混合了血肉，骨头和器官的混合体，最初被吸血的虫子所寄生
+				那个大脑所分离的肉块或许已经被这猩红的大地所吸收并重组成了这个东西
+				放置在背包中并标记为收藏，你在猩红之地发射的弹幕带有灵液
+				然而，受到你身体流出的甜美脓液吸引，猩红之地刷怪速率极大幅度增加
+				'''
+		}
 
-	KnowledgePerforators: {
-		DisplayName: The Perforators and their Hive Legacy
-		Lore:
-			'''
-			An abomination of comingled flesh, bone, and organ, infested primarily by blood-slurping worms.
-			[c/00B2EE:Favorite] this item for all of your projectiles to inflict ichor when in the crimson.
-			However, enemy spawn rates will be greatly increased while in the crimson due to your body excreting a sweet-smelling pus.
-			'''
-	}
+		KnowledgePlaguebringerGoliath: {
+			DisplayName: 瘟疫使者歌莉娅[legacy]
+			Lore:
+				'''
+				合金，血肉和瘟疫的完美组合体，能在一场袭击中摧毁整个文明
+				她携带的瘟疫核弹井可以让一片地区数月之间千里无烟寸草不生。其散播的瘟疫甚至已经到了连我们都得设法控制的程度
+				放置在背包中并标记为收藏，以牺牲生命恢复速度为代价增加翅膀飞行时间
+				'''
+		}
 
-	KnowledgePlaguebringerGoliath: {
-		DisplayName: The Plaguebringer Goliath Legacy
-		Lore:
-			'''
-			A horrific amalgam of steel, flesh, and infection, capable of destroying an entire civilization in just one onslaught.
-			Its plague nuke barrage can leave an entire area uninhabitable for months. A shame that it came to this but the plague must be contained.
-			[c/00B2EE:Favorite] this item to gain increased wing flight time, but at the cost of reduced life regen.
-			'''
-	}
+		KnowledgePlantera: {
+			DisplayName: 世纪之花[legacy]
+			Lore:
+				'''
+				恭喜你，你干掉了一朵花儿
+				不过，这花儿是一座囚笼，用于给那些到她的厄运亡灵提供一个住所
+				我希望你能够幸运的挺过你胡作非为的恶果
+				放置在背包中并标记为收藏，增加物品拾取范围与弹幕飞行速度
+				'''
+		}
 
-	KnowledgePlantera: {
-		DisplayName: Plantera Legacy
-		Lore:
-			'''
-			Well done, you killed a plant.
-			It was used as a vessel to house the spirits of those unfortunate enough to find their way down here.
-			I wish you luck in dealing with the fallout.
-			[c/00B2EE:Favorite] this item to increases your item grab range and projectiles travel speed.
-			'''
-	}
+		KnowledgePolterghast: {
+			DisplayName: 噬魂幽花[legacy]
+			Lore:
+				'''
+				仇恨与愤怒催生的生物，数不清人类亡魂的聚合体，以吞噬为唯一目的
+				让如此一股强大的力量在地牢空荡的厅室中漫无目的地闲逛，这近乎是种浪费
+				放置在背包中并标记为收藏，大幅增加物品拾取范围与弹幕飞行速度
+				'''
+		}
 
-	KnowledgePolterghast: {
-		DisplayName: Polterghast Legacy
-		Lore:
-			'''
-			A creature born of hatred and anger, formed by countless human souls with all of their energy entirely devoted to consuming others.
-			It seems a waste to have had such a potent source of power ravage mindlessly through these empty halls.
-			[c/00B2EE:Favorite] this item to massively increases your item grab range and projectiles travel speed.
-			'''
-	}
+		KnowledgeProvidence: {
+			DisplayName: 亵渎天神[legacy]
+			Lore:
+				'''
+				石与火围绕着核心，她的目的就和她的存在形式一样简单
+				若她不是我们的敌人而是盟友，我们本可以联手成就超乎想象的霸业
+				放置在背包中并标记为收藏，使你的弹幕带有渎神之火, 造成额外伤害
+				然而，你需要奉上部分灵魂维持渎神之火的燃烧，最大生命值降低
+				'''
+		}
 
-	KnowledgeProvidence: {
-		DisplayName: Providence, the Profaned Goddess Legacy
-		Lore:
-			'''
-			A core surrounded by stone and flame, a simple origin and a simple goal.
-			What would have become of us had she not been defeated is a frightening concept to consider.
-			[c/00B2EE:Favorite] this item to imbue all projectiles with profaned flames, causing them to inflict extra damage.
-			However, your max life is decreased due to a part of your soul being required to fuel the profaned flames.
-			'''
-	}
+		KnowledgeProfanedGuardians: {
+			DisplayName: 亵渎守卫[legacy]
+			Lore:
+				'''
+				亵渎火焰那永葆活力的守护者们
+				如同凤凰，死亡仅仅是它们生命循环的一部分
+				为了寻找亵渎天神，我的军队曾无数次摧毁了这种存在
+				'''
+		}
 
-	KnowledgeProfanedGuardians: {
-		DisplayName: The Profaned Guardians Legacy
-		Lore:
-			'''
-			The ever-rejuvenating guardians of the profaned flame.
-			Much like a phoenix from the ashes their deaths are simply a part of their life cycle.
-			Many times my forces have had to destroy these beings in search of the Profaned Goddess.
-			'''
-	}
+		KnowledgeQueenBee: {
+			DisplayName: 蜂后[legacy]
+			Lore:
+				'''
+				简陋的生物，跟那些巨型昆虫一样，某些情况下她们会证明自身的作用
+				...在被控制的情况下
+				放置在背包中并标记为收藏，使小号的蜜蜂和较弱的黄蜂变得友好
+				'''
+		}
 
-	KnowledgeQueenBee: {
-		DisplayName: Queen Bee Legacy
-		Lore:
-			'''
-			As crude as the giant insects are they can prove useful in certain situations...given the ability to control them.
-			[c/00B2EE:Favorite] this item to make small bees and weak hornets friendly.
-			'''
-	}
+		KnowledgeRavager: {
+			DisplayName: 毁灭魔像[legacy]
+			Lore:
+				'''
+				由扭曲死灵法术打造，曾企图阻挡我的不败之师的血肉魔像
+				它的创造者在赋予它生命之后片刻即被它碾碎，如此邪物还是被毁掉比较好
+				放置在背包中并标记为收藏，大幅增加伤害，但降低翅膀飞行时间，并禁用羽落
+				'''
+		}
 
-	KnowledgeRavager: {
-		DisplayName: Ravager Legacy
-		Lore:
-			'''
-			The flesh golem constructed using twisted necromancy during the time of my conquest to counter my unstoppable forces.
-			Its creators were slaughtered by it moments after its conception. It is for the best that it has been destroyed.
-			[c/00B2EE:Favorite] this item will significantly boost your damage.
-			However, your wings will be broken in half, and feather falling also is disabled.
-			'''
-	}
+		KnowledgeSentinels: {
+			DisplayName: 神之仆从[legacy]
+			Lore:
+				'''
+				西格纳斯，无尽虚空，和风暴编织者
+				每一位都代表着神明吞噬者散播着影响力
+				了结他们的性命，大概会引起神明吞噬者的愤怒，将你作为下一个撕碎的目标
+				'''
+		}
 
-	KnowledgeSentinels: {
-		DisplayName: The Sentinels of the Devourer Legacy
-		Lore:
-			'''
-			Signus. The Void. The Weaver.
-			Each represent one of the Devourer’s largest spheres of influence.
-			Dispatching them has most likely invoked its anger and marked you as a target for destruction.
-			'''
-	}
+		KnowledgeSkeletron: {
+			DisplayName: 骷髅王[legacy]
+			Lore:
+				'''
+				据传，这个诅咒只对长者有效
+				当他们被诅咒时，他们就成为了地狱中的一个远古恶魔夺舍的躯壳
+				放置在背包中并标记为收藏，增加身处地牢中造成的伤害
+				然而，骷髅王的诅咒使你的最大生命值降低
+				'''
+		}
 
-	KnowledgeSkeletron: {
-		DisplayName: Skeletron Legacy
-		Lore:
-			'''
-			The curse is said to only affect the elderly.
-			After they are afflicted they become an immortal vessel for an ancient demon of the underworld.
-			[c/00B2EE:Favorite] this item to gain increased damage while in the dungeon.
-			However, your max health is decreased due to Skeletron's curse.
-			'''
-	}
+		KnowledgeSkeletronPrime: {
+			DisplayName: 钢铁骷髅王[legacy]
+			Lore:
+				'''
+				用纯净的恐惧之力打造这么个愚蠢而毫无意义的机器，多么暴殄天物啊
+				很明显，嘉登对他的设计做出了一些微妙的改动，这并不让我感到新奇...尽快摧毁他们吧
+				放置在背包中并标记为收藏，增加护甲穿透
+				然而，你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
 
-	KnowledgeSkeletronPrime: {
-		DisplayName: Skeletron Prime Legacy
-		Lore:
-			'''
-			What a silly and pointless contraption for something created with the essence of pure terror.
-			Draedon obviously took several liberties with its design...I am not impressed.
-			[c/00B2EE:Favorite] this item to gain a boost to your armor penetration.
-			However, your max acceleration is decreased due to you feeling heavier.
-			'''
-	}
+		KnowledgeSlimeGod: {
+			DisplayName: 史莱姆之神[legacy]
+			Lore:
+				'''
+				荒谬的是，这是有史以来最令人恐惧，最具威胁性的生命
+				如果这个生物能够融合星球之上所有所有史莱姆的话，它将不可阻挡
+				放置在背包中并标记为收藏，使自己被粘液浸润，能在物块上滑行，代价是减少防御力
+				此效果在坐骑上不起效
+				'''
+		}
 
-	KnowledgeSlimeGod: {
-		DisplayName: The Slime God Legacy
-		Lore:
-			'''
-			It is a travesty, one of the most threatening biological terrors ever created.
-			If this creature were allowed to combine every slime on the planet it would become nearly unstoppable.
-			[c/00B2EE:Favorite] this item to become slimed and able to slide around on tiles, at the cost of reduced defense.
-			This effect does not work with mounts.
-			'''
-	}
+		KnowledgeSulphurSea: {
+			DisplayName: 硫磺海[legacy]
+			Lore:
+				'''
+				我还能依稀回想起此处的清风与碧波
+				时光抚平了我年轻时的苦涩创伤，但现在已经太迟太迟了。我绝不能容许这种错误再次发生
+				'''
+		}
 
-	KnowledgeSulphurSea: {
-		DisplayName: Sulphur Sea Legacy
-		Lore:
-			'''
-			I remember the serene waves and the clear breeze.
-			The bitterness of my youth has long since subsided, but it is far too late. I must never repeat a mistake like this again.
-			'''
-	}
+		KnowledgeTwins: {
+			DisplayName: 双子魔眼[legacy]
+			Lore:
+				'''
+				夜晚的生化机械看守者，由从人类眼中提取出的灵魂精粹创造而出
+				这种生物不应当存在于这个世界，最好让它们离开
+				放置在背包中并标记为收藏，在夜晚隐形并获得盗贼增益
+				然而，在50%生命值以上时护甲降低，因为你感到身体变软了、
+				生命值在50%以下时你的加速度会降低，因为你感到身体变得沉重了
+				'''
+		}
 
-	KnowledgeTwins: {
-		DisplayName: The Twins Legacy
-		Lore:
-			'''
-			The bio-mechanical watchers of the night, originally created as security using the souls extracted from human eyes.
-			These creatures did not belong in this world, it's best to be rid of them.
-			[c/00B2EE:Favorite] this item to gain invisibility and rogue bonuses at night.
-			However, your defense is reduced while above 50% life due to you feeling softer.
-			Your max acceleration is reduced while below 50% life due to you feeling heavier.
-			'''
-	}
+		KnowledgeUnderworld: {
+			DisplayName: 地狱[legacy]
+			Lore:
+				'''
+				这些黑曜石塔和狱炎塔，曾经是无数...'人'的家园
+				很遗憾，他们被内心的恶魔们扭曲了，直到他们不值得被救赎
+				放置在背包中并标记为收藏，巫毒恶魔将不再掉落巫毒娃娃
+				'''
+		}
 
-	KnowledgeUnderworld: {
-		DisplayName: The Underworld Legacy
-		Lore:
-			'''
-			These obsidian and hellstone towers were once home to thousands of...'people'.
-			Unfortunately for them, they were twisted by their inner demons until they were beyond saving.
-			[c/00B2EE:Favorite] this item to prevent voodoo demons from dropping voodoo dolls.
-			'''
-	}
+		KnowledgeWallofFlesh: {
+			DisplayName: 血肉之墙[legacy]
+			Lore:
+				'''
+				你做了那件事，我看到了
+				那个污浊的，由血肉和憎恨所融合而成的怪物死了
+				准备迎接潜藏在这世界的光与暗之中的真正的恐惧吧
+				放置在背包中并标记为收藏，小幅增加物品拾取范围与弹幕速度
+				'''
+		}
 
-	KnowledgeWallofFlesh: {
-		DisplayName: Wall of Flesh Legacy
-		Lore:
-			'''
-			I see the deed is done.
-			The unholy amalgamation of flesh and hatred has been defeated.
-			Prepare to face the terrors that lurk in the light and dark parts of this world.
-			[c/00B2EE:Favorite] this item to gain increased item grab range.
-			'''
-	}
-
-	KnowledgeYharon: {
-		DisplayName: Jungle Dragon, Yharon Legacy
-		Lore:
-			'''
-			I would not be able to bear a world without my faithful companion by my side.
-			Fortunately, fate will have it so that it is a world I shall never have to see, for better or for worse.
-			[0/00B2EE:Favorite] this item to gain infinite wing flight time, but at the cost of a 25% decrease to all damage.
-			'''
-	}
-}
+		KnowledgeYharon: {
+			DisplayName: 丛林龙-犽戎[legacy]
+			Lore:
+				'''
+				我绝无可能忍受一个没有我最忠诚伙伴陪伴的世界
+				幸运的是，命运的安排免去了我忍受这种境遇的痛苦——永不分离，或一同死去
+				放置在背包中并标记为收藏，获得无限的飞行时间，但降低25%伤害
+				'''
+		}

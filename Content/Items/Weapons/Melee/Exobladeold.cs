@@ -89,6 +89,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
+
             CreateRecipe().
                 AddIngredient<Terratomere>().
                 AddIngredient<AnarchyBlade>().
@@ -98,9 +99,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
-            
+
             CreateRecipe().
-                AddIngredient<Exoblade>().
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
                 Register();
         }
     }

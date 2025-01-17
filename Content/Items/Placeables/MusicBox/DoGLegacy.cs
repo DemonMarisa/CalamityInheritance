@@ -22,8 +22,8 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 			CreateRecipe().
 				AddIngredient<GalacticaSingularity>(10).	
 				AddIngredient(ItemID.LunarBar, 10).
-				AddTile(TileID.LunarCraftingStation).
-				Register();
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

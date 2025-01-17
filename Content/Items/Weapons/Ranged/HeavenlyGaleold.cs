@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.knockBack = 4f;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.WoodenArrowFriendly;ai
+            Item.shoot = ProjectileID.WoodenArrowFriendly;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
             Item.rare = ModContent.RarityType<CatalystViolet>();

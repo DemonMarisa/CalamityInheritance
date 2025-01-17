@@ -42,13 +42,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer1.reaverRangedRocket = true;
             //Scarlet:总远程伤害降低至30%，暴击概率降低至20%
-            player.GetDamage<RangedDamageClass>() += 0.10f;
+            //DemonMarisa:套装加成移动到头盔
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage<RangedDamageClass>() += 0.05f;
+            player.GetDamage<RangedDamageClass>() += 0.15f;
             player.GetCritChance<RangedDamageClass>() += 5;
             player.ammoCost80 = true;
             player.moveSpeed += 0.1f;

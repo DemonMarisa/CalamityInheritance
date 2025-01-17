@@ -6,7 +6,10 @@ Mods: {
 			// "Astral Arcanum UI Toggle.DisplayName": Astral  Arcanum  U I  Toggle
 		}
 
-		// Tiles.DraedonsForgeold.MapEntry: Draedons Forgeold
+		Tiles: {
+			// DraedonsForgeold.MapEntry: Draedons Forgeold
+			// $parentVal: Mods.CalamityInheritance.Tiles
+		}
 
 		Buffs: {
 			ReaverMagePower: {
@@ -1311,6 +1314,13 @@ Mods: {
 				// DisplayName: Impaler
 				// Tooltip: ""
 			}
+
+			Placeables: {
+				Malice: {
+					// DisplayName: Malice
+					// Tooltip: ""
+				}
+			}
 		}
 
 		ModContent: {
@@ -1467,6 +1477,50 @@ Mods: {
 
 						ElementalGauntletold: {
 							// DisplayName: Elemental Gauntletold
+							// Tooltip: ""
+						}
+
+						SamuraiBadge: {
+							// DisplayName: Samurai Badge
+							// Tooltip: ""
+						}
+					}
+				}
+
+				Placeables: {
+					Vanity: {
+						BloodIdol: {
+							// DisplayName: Blood Idol
+							// Tooltip: ""
+						}
+
+						Armageddon: {
+							// DisplayName: Armageddon
+							// Tooltip: ""
+						}
+
+						Death: {
+							// DisplayName: Death
+							// Tooltip: ""
+						}
+
+						IronHeart: {
+							// DisplayName: Iron Heart
+							// Tooltip: ""
+						}
+
+						DefiledRune: {
+							// DisplayName: Defiled Rune
+							// Tooltip: ""
+						}
+
+						Revenge: {
+							// DisplayName: Revenge
+							// Tooltip: ""
+						}
+
+						MLGRune: {
+							// DisplayName: M L G Rune
 							// Tooltip: ""
 						}
 					}

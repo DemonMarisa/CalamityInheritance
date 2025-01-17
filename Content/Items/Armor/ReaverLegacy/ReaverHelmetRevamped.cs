@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
                     Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
                 }
             }
-            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.8f;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.6f;
             player.whipRangeMultiplier += 0.5f;
             //Scarlet:平摊数值加成，鞭 速度110%，鞭 距离100%，20%召唤伤害
         }

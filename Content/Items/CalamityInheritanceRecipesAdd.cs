@@ -110,7 +110,13 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             Recipe.Create(ModContent.ItemType<Exoblade>()).
-                AddIngredient(ModContent.ItemType<Exobladeold>()).         
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<MiracleMatter>().
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
 
             Recipe.Create(ModContent.ItemType<DraedonPowerCell>(), 333).

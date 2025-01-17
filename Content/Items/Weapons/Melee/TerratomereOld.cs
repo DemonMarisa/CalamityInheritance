@@ -89,10 +89,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<TrueNightsStabber>().
-                AddIngredient<TrueExcaliburShortsword>().
-                AddIngredient<LivingShard>(7).
-                AddTile(TileID.MythrilAnvil).
+                AddIngredient<Floodtide>().
+                AddIngredient<Hellkite>().
+                AddIngredient(ItemID.TerraBlade).
+                AddIngredient<UelibloomBar>(7).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
+                AddIngredient<Floodtide>().
+                AddIngredient<Hellkite>().
+                AddIngredient<TerraEdge>().
+                AddIngredient<UelibloomBar>(7).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

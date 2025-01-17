@@ -230,95 +230,6 @@ GodSlayerLeggingsold: {
 		''' */
 }
 
-ReaverCap: {
-	// DisplayName: 掠夺者头饰[Revamped]
-	/* Tooltip:
-		'''
-		增加15%盗贼伤害，5%盗贼弹幕飞行速度和暴击率
-		增加20%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
-		'''
-		增加115最大潜行值
-		弹幕弹幕每60帧会分裂出生命裂片跟踪敌人
-		''' */
-}
-
-ReaverCuisses: {
-	// DisplayName: 掠夺者护胫[legacy]
-	/* Tooltip:
-		'''
-		增加5%伤害与暴击率
-		增加12%移动速度
-		''' */
-}
-
-ReaverHelm: {
-	// DisplayName: 掠夺者战盔[Revamped]
-	/* Tooltip:
-		'''
-		增加15%近战伤害，10%近战攻速和5%暴击率
-		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
-		'''
-		增加30%近战攻速和5%暴击率
-		近战射弹击中敌人后引发永恒爆炸，造成咒火减益
-		受伤时获得掠夺者之怒增益，增强你的防御与输出
-		''' */
-}
-
-ReaverHelmet: {
-	// DisplayName: 掠夺者头盔[Revamped]
-	/* Tooltip:
-		'''
-		增加25%召唤伤害
-		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
-		'''
-		增加120%鞭子攻击速度与攻击距离
-		召唤一个掠夺者宝珠保护你
-		''' */
-}
-
-ReaverMask: {
-	// DisplayName: 掠夺者面具[Revamped]
-	/* Tooltip:
-		'''
-		增加10%魔法伤害,减少12%魔力值消耗, 增加5%暴击率
-		增加10%移动速度，增加80点最大魔力值，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
-		'''
-		击中敌人时每隔一段时间会爆出孢子云
-		并且会获得掠夺者之力增益，增加10%魔法伤害，降低20%魔力消耗
-		''' */
-}
-
-ReaverScaleMail: {
-	// DisplayName: 掠夺者鳞甲[Revamped]
-	/* Tooltip:
-		'''
-		增加10%伤害和5%暴击率
-		增加20点最大生命值
-		''' */
-}
-
-ReaverVisage: {
-	// DisplayName: 掠夺者面罩[Revamped]
-	/* Tooltip:
-		'''
-		增加10%远程伤害，减少20%弹药消耗率,增加10%远程暴击率
-		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
-		'''
-		增加20%远程伤害和10%远程暴击率
-		远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
-		''' */
-}
-
 SilvaArmorold: {
 	// DisplayName: 始源林海盔甲[Legacy]
 	/* Tooltip:
@@ -412,37 +323,122 @@ SilvaLeggingsold: {
 }
 
 AncientXerocCuisses: {
-	// DisplayName: Ancient Xeroc Cuisses
+	// DisplayName: 克希洛克护胫[legacy]
 	/* Tooltip:
 		'''
-		+100 max life
-		+100 max mana
-		15% increased movment speed
+		增加100点生命上限
+		增加100点最大魔力
+		增加15%移动速度
 		''' */
 }
 
 AncientXerocMask: {
-	// DisplayName: Ancient Xeroc Mask
+	// DisplayName: 克希洛克面具[legacy]
 	/* Tooltip:
 		'''
-		+3 max minions
-		10% increased damage and critical strike chance
+		增加3仆从栏
+		增加10%伤害与暴击率
+		使你免疫岩浆，着火，咒火，诅咒，冷冻
 		''' */
 	/* SetBonus:
 		'''
-		Counts as rogue armor, can deal stealth strikes.
-		+110 maxinum stealth
-		20% reduced mana usage, 10% increased rogue velocity
-		Change damage stats base on your current HP is:
-		Lower than 80% of max life will increases damage and critical strike chance by 5%
-		Lower than 60% of max life will increases damage and critical strike chance by 10%
-		Lower than 35% of max life will increases damage and critical strike chance by 35%, healing potion are 10% more	effective too 
-		Lower than 15% of max life will decreases damage and critical strike chance by 40%
-		Wrath of the cosmos
+		+110最大潜伏值
+		降低20%魔力消耗，增加10%盗贼弹幕速度
+		在你生命值的各个阶段会改变你的伤害
+		生命值低于80%，大于60%时，增加5%伤害与暴击率
+		生命值低于60%，大于35%时，增加10%伤害与暴击率
+		生命值低于35%，大于15%时，增加35%伤害与暴击率，增加药水10%治疗量
+		生命值低于15%，降低40%伤害与暴击率
+		宇宙之怒
 		''' */
 }
 
 AncientXerocPlateMail: {
-	// DisplayName: Ancient Xeroc Plate Mail
-	// Tooltip: +20 max life
+	// DisplayName: 克希洛克鳞甲[legacy]
+	// Tooltip: 增加20点最大生命值
+}
+
+ReaverCapRevamped: {
+	// DisplayName: 掠夺者头饰[Revamped]
+	/* Tooltip:
+		'''
+		增加15%盗贼伤害，5%盗贼弹幕飞行速度和暴击率
+		增加20%移动速度，在液体中行动不受阻碍
+		''' */
+	/* SetBonus:
+		'''
+		增加115最大潜行值
+		弹幕弹幕每60帧会分裂出生命裂片跟踪敌人
+		''' */
+}
+
+ReaverCuissesRevamped: {
+	// DisplayName: 掠夺者护胫[legacy]
+	/* Tooltip:
+		'''
+		增加5%伤害与暴击率
+		增加12%移动速度
+		''' */
+}
+
+ReaverHelmetRevamped: {
+	// DisplayName: 掠夺者头盔[Revamped]
+	/* Tooltip:
+		'''
+		增加5%召唤伤害，鞭子攻击速度与范围增加50%
+		增加10%移动速度，在液体中行动不受阻碍
+		''' */
+	/* SetBonus:
+		'''
+		增加50%鞭子攻击距离与60%攻击速度
+		召唤一个掠夺者宝珠保护你
+		''' */
+}
+
+ReaverHelmRevamped: {
+	// DisplayName: 掠夺者战盔[Revamped]
+	/* Tooltip:
+		'''
+		增加10%近战伤害，10%近战攻速和5%暴击率
+		增加10%移动速度，在液体中行动不受阻碍
+		''' */
+	/* SetBonus:
+		'''
+		增加30%近战攻速，5%暴击率与5%近战伤害
+		近战射弹击中敌人后引发永恒爆炸，造成咒火减益
+		受伤时获得掠夺者之怒增益，增强你的防御与输出
+		''' */
+}
+
+ReaverMaskRevamped: {
+	// DisplayName: 掠夺者面具[Revamped]
+	/* Tooltip:
+		'''
+		增加10%魔法伤害,减少12%魔力值消耗, 增加5%暴击率
+		增加10%移动速度，增加80点最大魔力值，在液体中行动不受阻碍
+		''' */
+	/* SetBonus:
+		'''
+		击中敌人时每隔一段时间会爆出孢子云
+		并且会获得掠夺者之力增益，增加10%魔法伤害，降低20%魔力消耗
+		''' */
+}
+
+ReaverScaleMailRevamped: {
+	// DisplayName: 掠夺者鳞甲[Revamped]
+	/* Tooltip:
+		'''
+		增加10%伤害和5%暴击率
+		增加20点最大生命值
+		''' */
+}
+
+ReaverVisageRevamped: {
+	// DisplayName: 掠夺者面罩[Revamped]
+	/* Tooltip:
+		'''
+		增加15%远程伤害，减少20%弹药消耗率,增加5%远程暴击率
+		增加10%移动速度，在液体中行动不受阻碍
+		''' */
+	// SetBonus: 远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
 }
