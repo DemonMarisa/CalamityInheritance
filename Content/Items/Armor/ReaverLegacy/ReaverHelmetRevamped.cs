@@ -13,7 +13,7 @@ using SteelSeries.GameSense;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelmet : ModItem, ILocalizedModType 
+    public class ReaverHelmetRevamped : ModItem, ILocalizedModType 
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMail>() && legs.type == ModContent.ItemType<ReaverCuisses>();
+            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)

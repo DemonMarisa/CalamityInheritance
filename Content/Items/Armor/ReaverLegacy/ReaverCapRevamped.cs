@@ -1,15 +1,15 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverVisage : ModItem, ILocalizedModType
+    public class ReaverCapRevamped : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -18,16 +18,16 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void SetDefaults()
         {
-            Item.width = 24;
-            Item.height = 28;
-            Item.value = CIShopValue.RarityPriceLime;
+            Item.width = 22;
+            Item./*  */height = 22;
+            Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 13; //46
+            Item.defense = 10; //43
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMail>() && legs.type == ModContent.ItemType<ReaverCuisses>();
+            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -38,27 +38,31 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void UpdateArmorSet(Player player)
         {
-            var modPlayer1 = player.CalamityInheritance();
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            modPlayer1.reaverRangedRocket = true;
-            //Scarlet:远程伤害降低至30%，暴击概率降低至20%
-            player.GetDamage<RangedDamageClass>() += 0.20f;
-            player.GetCritChance<RangedDamageClass>() += 0.10f;
+            CalamityPlayer modPlayer = player.Calamity();
+            var modPlayer1 = player.CalamityInheritance();
+            modPlayer.rogueStealthMax += 1.15f;
+            modPlayer1.reaverRogueExProj = true;
+            player.Calamity().wearingRogueArmor = true;
+            //25盗贼暴击，25盗贼伤害,115潜伏值
+            //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片
+            //Scarlet:我算的是总加成
         }
 
         public override void UpdateEquip(Player player)
         {
+            CalamityPlayer modPlayer = player.Calamity();
             player.ignoreWater = true;
-            player.GetDamage<RangedDamageClass>() += 0.10f;
-            player.GetCritChance<RangedDamageClass>() += 10;
-            player.ammoCost80 = true;
-            player.moveSpeed += 0.1f;
+            player.GetDamage<RogueDamageClass>() += 0.15f;
+            player.GetCritChance<RogueDamageClass>() += 0.5f;
+            player.moveSpeed += 0.2f;
+            modPlayer.rogueVelocity += 0.05f;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),10)
+            .AddIngredient(ModContent.ItemType<PerennialBar>(),8)
             .AddIngredient(ItemID.JungleSpores, 8)
             .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
             .AddTile(TileID.MythrilAnvil)

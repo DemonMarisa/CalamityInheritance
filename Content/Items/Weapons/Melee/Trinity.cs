@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 54;
-            Item.value = Item.buyPrice(0, 36, 0, 0);
+            Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ProjectileID.RubyBolt;
             Item.shootSpeed = 11f;
