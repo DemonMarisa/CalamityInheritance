@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -33,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.damage = 198;
             Item.DamageType = DamageClass.Ranged;
-            Item.width = 44;
-            Item.height = 58;
+            Item.width = 46;
+            Item.height = 98;
             Item.useTime = 9;
             Item.useAnimation = 18;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.knockBack = 4f;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.WoodenArrowFriendly;
+            Item.shoot = ProjectileID.WoodenArrowFriendly;ai
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
             Item.rare = ModContent.RarityType<CatalystViolet>();
@@ -102,8 +103,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             return false;
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HeavenlyGaleoldGlow").Value);
 
-            public override bool CanConsumeAmmo(Item ammo, Player player)
+        public override bool CanConsumeAmmo(Item ammo, Player player)
             {
                 if (Main.rand.Next(0, 100) < 66)
                     return false;

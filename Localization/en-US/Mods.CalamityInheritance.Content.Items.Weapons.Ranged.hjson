@@ -120,3 +120,8 @@ ChargedDartRifle: {
 	DisplayName: Charged Dart Rifle
 	Tooltip: ""
 }
+
+PhangasmOS: {
+	DisplayName: Phangasm O S
+	Tooltip: ""
+}

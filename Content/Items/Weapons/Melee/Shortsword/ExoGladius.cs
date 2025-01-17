@@ -6,6 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -32,6 +35,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.noUseGraphic = true;
         }
         public override bool MeleePrefix() => true;
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExoGladiusGlow").Value);
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

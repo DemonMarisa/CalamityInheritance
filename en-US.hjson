@@ -1371,6 +1371,7 @@ Mods: {
 			Typeless.HolyExplosionold.DisplayName: Holy Explosionold
 			Ranged.ElysianArrowProjOld.DisplayName: Elysian Arrow Proj Old
 			StellarContemptHammerOld.DisplayName: Stellar Contempt Hammer Old
+			PhangasmBowOld.DisplayName: Phangasm Bow Old
 		}
 
 		Configs: {

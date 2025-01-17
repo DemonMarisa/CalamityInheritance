@@ -12,6 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using CalamityMod.Projectiles.Typeless;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 
 namespace CalamityInheritance
 {
@@ -71,6 +72,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoSpearBack>(),
                     ProjectileType<ExoGunBlast>(),
                     ProjectileType<KingsbaneHoldout>(),
+                    ProjectileType<PhangasmBowOld>(),
             };
 
             AuricdebuffList = new List<int>()

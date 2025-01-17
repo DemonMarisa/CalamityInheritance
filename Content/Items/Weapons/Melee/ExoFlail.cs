@@ -8,6 +8,8 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -60,7 +62,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             return false;
         }
-
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ExoFlailGlow").Value);
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -137,7 +137,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.alpha = 255 - teleportticks * 8;
             Lighting.AddLight(Projectile.Center, 1f, 1f, 1f);
         }
+        public override void PostDraw(Color lightColor)
+        {
+            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProjGlow").Value;
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (Projectile.spriteDirection == -1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, spriteEffects, 0);
+        }
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteEffects effects = SpriteEffects.None;

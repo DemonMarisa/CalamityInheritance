@@ -9,6 +9,8 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -76,7 +78,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             return false;
         }
-
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/CelestialObliteratorGlow").Value);
+        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-35f, -6f);

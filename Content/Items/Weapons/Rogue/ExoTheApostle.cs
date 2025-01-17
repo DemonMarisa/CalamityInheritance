@@ -11,6 +11,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -58,6 +59,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 return false;
             }
             return true;
+        }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/ExoTheApostleGlow").Value);
         }
         public override void AddRecipes()
         {
