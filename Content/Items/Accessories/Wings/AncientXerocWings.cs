@@ -41,8 +41,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                )
             {
                 //Scarlet: 这次真的抵消掉伤害惩罚了
-                player.GetDamage<GenericDamageClass>() += 0.3f;
-                player.GetCritChance<GenericDamageClass>() += 30;
+                player.GetDamage<GenericDamageClass>() += 0.5f;
+                player.GetCritChance<GenericDamageClass>() += 50;
             }
 
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)

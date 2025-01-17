@@ -67,12 +67,14 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 35;
-                    modPlayer1.healingPotionMultiplier += 0.10f;    //追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    modPlayer1.healingPotionMultiplier += 0.10f;
+                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
                 {
-                    Player.GetDamage<GenericDamageClass>() -= 0.20f; //低于20%血量时-20%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                    Player.GetCritChance<GenericDamageClass>() -= 20;
+                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                    Player.GetCritChance<GenericDamageClass>() -= 40;
                     ancientXerocWrath = true;
                 }
             }   

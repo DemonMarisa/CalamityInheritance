@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             Item.height = 22;
             Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 7; //40
+            Item.defense = 5; //40 → 38 让他变得相对更脆
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -42,8 +42,10 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.reaverMageBurst = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.GetDamage<MagicDamageClass>() += 0.10f; //35+10魔法伤害，30暴击率,20
+            player.GetDamage<MagicDamageClass>() += 0.10f;
             player.GetCritChance<MagicDamageClass>() += 10;
+            //Scarlet:修复法师永恒套错误地提供了更高的魔力上线的数值(不小心给到80了)
+            //永恒法师套现在提供60魔力上限，合计30+10%的伤害与25%的暴击概率
         }
 
         public override void UpdateEquip(Player player)
@@ -53,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.GetCritChance<MagicDamageClass>() += 5;
             player.manaCost *= 0.88f;
             player.moveSpeed += 0.1f;
-            player.statManaMax2 += 80;
+            player.statManaMax2 += 60;
         }
 
         public override void AddRecipes()
