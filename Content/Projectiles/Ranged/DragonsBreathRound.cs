@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 float num93 = Projectile.velocity.X / 3f;
                 float num94 = Projectile.velocity.Y / 3f;
                 int num95 = 4;
-                int idx = Dust.NewDust(new Vector2(Projectile.position.X + (float)num95, Projectile.position.Y + (float)num95), Projectile.width - num95 * 2, Projectile.height - num95 * 2, DustID.Flare, 0f, 0f, 100, default, 2f);
+                int idx = Dust.NewDust(new Vector2(Projectile.position.X + num95, Projectile.position.Y + num95), Projectile.width - num95 * 2, Projectile.height - num95 * 2, DustID.Flare, 0f, 0f, 100, default, 2f);
                 Dust dust = Main.dust[idx];
                 dust.noGravity = true;
                 dust.velocity *= 0.1f;
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Main.rand.NextBool(20))
                 {
                     int num97 = 4;
-                    int num98 = Dust.NewDust(new Vector2(Projectile.position.X + (float)num97, Projectile.position.Y + (float)num97), Projectile.width - num97 * 2, Projectile.height - num97 * 2, DustID.Flare, 0f, 0f, 100, default, 0.6f);
+                    int num98 = Dust.NewDust(new Vector2(Projectile.position.X + num97, Projectile.position.Y + num97), Projectile.width - num97 * 2, Projectile.height - num97 * 2, DustID.Flare, 0f, 0f, 100, default, 0.6f);
                     Main.dust[num98].velocity *= 0.25f;
                     Main.dust[num98].velocity += Projectile.velocity * 0.5f;
                 }

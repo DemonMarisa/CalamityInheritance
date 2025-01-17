@@ -89,11 +89,11 @@ namespace CalamityInheritance.Content.Projectiles
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
                             float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(((Entity)projectile).velocity.X, ((Entity)projectile).velocity.Y) - (double)(spread / 2f);
+                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
                             if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
                             {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                                 Main.projectile[projectile2].timeLeft = 60;
@@ -108,11 +108,11 @@ namespace CalamityInheritance.Content.Projectiles
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
                             float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(((Entity)projectile).velocity.X, ((Entity)projectile).velocity.Y) - (double)(spread / 2f);
+                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
                             if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
                             {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                                 Main.projectile[projectile2].noDropItem = true;
@@ -125,11 +125,11 @@ namespace CalamityInheritance.Content.Projectiles
                         if (Main.rand.Next(200) > 198)
                         {
                             float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(((Entity)projectile).velocity.X, ((Entity)projectile).velocity.Y) - (double)(spread / 2f);
+                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
                             if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
                             {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                                 Main.projectile[projectile2].timeLeft = 60;
@@ -144,11 +144,11 @@ namespace CalamityInheritance.Content.Projectiles
                         if (Main.rand.Next(200) > 198)
                         {
                             float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(((Entity)projectile).velocity.X, ((Entity)projectile).velocity.Y) - (double)(spread / 2f);
+                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
                             if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
                             {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), ((Entity)projectile).Center.X, ((Entity)projectile).Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)((double)projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                                 Main.projectile[projectile2].DamageType = DamageClass.Default;
                                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                                 Main.projectile[projectile2].noDropItem = true;
@@ -232,7 +232,7 @@ namespace CalamityInheritance.Content.Projectiles
                         if (projectile.owner == Main.myPlayer)
                         {
                             bool fromRight = x > 5;
-                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
+                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }
@@ -247,7 +247,7 @@ namespace CalamityInheritance.Content.Projectiles
                         if (projectile.owner == Main.myPlayer)
                         {
                             bool fromRight = x > 3;
-                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)((float)projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
+                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }

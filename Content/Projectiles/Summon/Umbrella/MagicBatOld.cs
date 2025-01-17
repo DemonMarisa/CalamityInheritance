@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
         }
         public override void AI()
         {
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 0.785f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
         }
 
         public override Color? GetAlpha(Color lightColor)

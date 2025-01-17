@@ -49,13 +49,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Vector2 vectorBruh = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
                 if (player.direction != 1)
                 {
-                    vectorBruh.X = (float)player.bodyFrame.Width - vectorBruh.X;
+                    vectorBruh.X = player.bodyFrame.Width - vectorBruh.X;
                 }
                 if (player.gravDir != 1f)
                 {
-                    vectorBruh.Y = (float)player.bodyFrame.Height - vectorBruh.Y;
+                    vectorBruh.Y = player.bodyFrame.Height - vectorBruh.Y;
                 }
-                vectorBruh -= new Vector2((float)(player.bodyFrame.Width - player.width), (float)(player.bodyFrame.Height - 42)) / 2f;
+                vectorBruh -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
                 Vector2 newCenter = player.RotatedRelativePoint(Main.player[Projectile.owner].position + vectorBruh, true) + Projectile.velocity;
                 int moonDamage = (int)(Projectile.damage * 0.5f);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), newCenter.X, newCenter.Y, 0f, 0f, ModContent.ProjectileType<ExoFlailEnergy>(), moonDamage, 0f, Projectile.owner, 0f, 0f);
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)(MathHelper.ToRadians(360 / Streams * i) + StartAngle), default(Vector2));
                     vector.X *= ProjSpeed;
                     vector.Y *= ProjSpeed;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Location.X, Location.Y, vector.X, vector.Y, type, (int)((float)Projectile.damage * damageMult), 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Location.X, Location.Y, vector.X, vector.Y, type, (int)(Projectile.damage * damageMult), 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else
             {
                 float startAngle2 = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
-                Explode(((Entity)target).Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(target.Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
             }
             target.ExoDebuffs();

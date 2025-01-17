@@ -31,12 +31,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-            Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X + Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y + Projectile.height / 2;
             Projectile.width = 20;
             Projectile.height = 20;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
 
             for (int i = 0; i < 20; i++)
             {
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 if (Main.rand.NextBool())
                 {
                     Main.dust[holyDust].scale = 0.5f;
-                    Main.dust[holyDust].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[holyDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
             for (int j = 0; j < 40; j++)

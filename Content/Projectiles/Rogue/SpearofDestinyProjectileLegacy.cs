@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 if (Main.npc[i].CanBeChasedBy(Projectile, false))
                 {
-                    float extraDistance = (float)(Main.npc[i].width / 2) + (float)(Main.npc[i].height / 2);
+                    float extraDistance = Main.npc[i].width / 2 + (float)(Main.npc[i].height / 2);
                     bool canHit = Projectile.Calamity().stealthStrike || Collision.CanHit(Projectile.Center, 1, 1, Main.npc[i].Center, 1, 1);
 
                     if (Vector2.Distance(Main.npc[i].Center, Projectile.Center) < (maxDistance + extraDistance) && canHit)

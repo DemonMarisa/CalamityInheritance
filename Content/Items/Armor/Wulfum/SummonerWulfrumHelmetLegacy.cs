@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.statDefense += 3; //8
-            if (player.statLife <= (int)((double)player.statLifeMax2 * 0.5))
+            if (player.statLife <= (int)(player.statLifeMax2 * 0.5))
             {
                 player.statDefense += 5; //13
             }

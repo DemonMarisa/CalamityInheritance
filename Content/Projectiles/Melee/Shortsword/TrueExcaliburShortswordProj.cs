@@ -48,13 +48,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ModContent.ProjectileType<ShortExcaliburBeam>(), (int)(Projectile.damage * 1), Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ModContent.ProjectileType<ShortExcaliburBeam>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
         public override void ExtraBehavior()
         {
             if (Main.rand.NextBool(3))
             {
-                int Enchanted_Gold = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Enchanted_Gold, (float)(Projectile.direction * 2), 0f, 15, default, 1.3f);
+                int Enchanted_Gold = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Enchanted_Gold, Projectile.direction * 2, 0f, 15, default, 1.3f);
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

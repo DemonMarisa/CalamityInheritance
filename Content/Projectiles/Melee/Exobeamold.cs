@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 for (int l = 0; l < 12; l++)
                 {
                     Vector2 vector3 = Vector2.UnitX * (float)-(float)Projectile.width / 2f;
-                    vector3 += -Vector2.UnitY.RotatedBy((double)((float)l * 3.14159274f / 6f), default) * new Vector2(8f, 16f);
+                    vector3 += -Vector2.UnitY.RotatedBy((double)(l * 3.14159274f / 6f), default) * new Vector2(8f, 16f);
                     vector3 = vector3.RotatedBy((double)(Projectile.rotation - 1.57079637f), default);
                     int num9 = Dust.NewDust(Projectile.Center, 0, 0, DustID.TerraBlade, 0f, 0f, 160, new Color(0, 255, 255), 1f);
                     Main.dust[num9].scale = 1.1f;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Projectile.localAI[0] = 0f;
                     Projectile.ai[0] = 2f;
-                    Projectile.ai[1] = (float)Player.FindClosest(Projectile.position, Projectile.width, Projectile.height);
+                    Projectile.ai[1] = Player.FindClosest(Projectile.position, Projectile.width, Projectile.height);
                     Projectile.netUpdate = true;
                 }
             }
@@ -135,7 +135,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     }
                 }
             }
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 0.785f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -164,8 +164,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 192;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             Projectile.maxPenetrate = -1;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;

@@ -203,6 +203,7 @@ namespace CalamityInheritance.CIPlayer
         public bool test = false;
         #region AncientXeroc
         public bool ancientXerocSet     = false;
+        public bool ancientXerocWrath   = false;
         //克希洛克套的远古狂怒效果
         //xeroc套装 
         #endregion
@@ -332,6 +333,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
+            ancientXerocWrath   = false;
             #endregion
             test = false;
             #endregion
@@ -455,6 +457,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
+            ancientXerocWrath   = false;
             #endregion
             #endregion
 
@@ -523,7 +526,7 @@ namespace CalamityInheritance.CIPlayer
         #region Post Hurt
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {
-            Player.Calamity().GemTechState.PlayerOnHitEffects((int)hurtInfo.Damage);
+            Player.Calamity().GemTechState.PlayerOnHitEffects(hurtInfo.Damage);
 
             #region ImmnueFrames
             bool hardMode = Main.hardMode;
@@ -695,24 +698,24 @@ namespace CalamityInheritance.CIPlayer
                 if (!Player.chaosState)
                 {
                     Vector2 vector31;
-                    vector31.X = (float)Main.mouseX + Main.screenPosition.X;
+                    vector31.X = Main.mouseX + Main.screenPosition.X;
                     if (Player.gravDir == 1f)
                     {
-                        vector31.Y = (float)Main.mouseY + Main.screenPosition.Y - (float)Player.height;
+                        vector31.Y = Main.mouseY + Main.screenPosition.Y - Player.height;
                     }
                     else
                     {
-                        vector31.Y = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY;
+                        vector31.Y = Main.screenPosition.Y + Main.screenHeight - Main.mouseY;
                     }
-                    vector31.X -= (float)(Player.width / 2);
-                    if (vector31.X > 50f && vector31.X < (float)(Main.maxTilesX * 16 - 50) && vector31.Y > 50f && vector31.Y < (float)(Main.maxTilesY * 16 - 50))
+                    vector31.X -= Player.width / 2;
+                    if (vector31.X > 50f && vector31.X < Main.maxTilesX * 16 - 50 && vector31.Y > 50f && vector31.Y < Main.maxTilesY * 16 - 50)
                     {
                         int num275 = (int)(vector31.X / 16f);
                         int num276 = (int)(vector31.Y / 16f);
-                        if ((Main.tile[num275, num276].WallType != 87 || (double)num276 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector31, Player.width, Player.height))
+                        if ((Main.tile[num275, num276].WallType != 87 || num276 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector31, Player.width, Player.height))
                         {
                             Player.Teleport(vector31, 1, 0);
-                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector31.X, vector31.Y, 1, 0, 0);
+                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector31.X, vector31.Y, 1, 0, 0);
                             Player.AddBuff(BuffID.ChaosState, 480, true);
                             Player.AddBuff(BuffID.Confused, 150, true);
                         }
@@ -736,8 +739,8 @@ namespace CalamityInheritance.CIPlayer
                     int dustAmt = 36;
                     for (int d = 0; d < dustAmt; d++)
                     {
-                        Vector2 source = Vector2.Normalize(Player.velocity) * new Vector2((float)Player.width / 2f, (float)Player.height) * 0.75f;
-                        source = source.RotatedBy((double)((float)(d - (dustAmt / 2 - 1)) * MathHelper.TwoPi / (float)dustAmt), default) + Player.Center;
+                        Vector2 source = Vector2.Normalize(Player.velocity) * new Vector2(Player.width / 2f, Player.height) * 0.75f;
+                        source = source.RotatedBy((double)((d - (dustAmt / 2 - 1)) * MathHelper.TwoPi / dustAmt), default) + Player.Center;
                         Vector2 dustVel = source - Player.Center;
                         int phanto = Dust.NewDust(source + dustVel, 0, 0, (int)CalamityDusts.Necroplasm, dustVel.X * 1.5f, dustVel.Y * 1.5f, 100, default, 1.4f);
                         Main.dust[phanto].noGravity = true;
@@ -758,8 +761,8 @@ namespace CalamityInheritance.CIPlayer
                         for (int i = 0; i < 8; i++)
                         {
                             float ai1 = Main.rand.NextFloat() + 0.5f;
-                            float randomSpeed = (float)Main.rand.Next(1, 7);
-                            float randomSpeed2 = (float)Main.rand.Next(1, 7);
+                            float randomSpeed = Main.rand.Next(1, 7);
+                            float randomSpeed2 = Main.rand.Next(1, 7);
                             offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                             int soul = Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f) + randomSpeed, ModContent.ProjectileType<BloodflareSoulold>(), damage, 0f, Player.whoAmI, 0f, ai1);
                             if (soul.WithinBounds(Main.maxProjectiles))
@@ -806,7 +809,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (Main.rand.NextBool(3))
                 {
-                    Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, DustID.GreenFairy, Player.velocity.X * 0.2f + (float)(Player.direction * 3), Player.velocity.Y * 0.2f, 100, default, 0.75f);
+                    Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GreenFairy, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 0.75f);
                 }
             }
         }

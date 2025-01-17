@@ -64,12 +64,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnKill(int timeLeft)
         {
-            Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X + Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y + Projectile.height / 2;
             Projectile.width = 50;
             Projectile.height = 50;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int num621 = 0; num621 < 5; num621++)
             {
                 int num622 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GreenFairy, 0f, 0f, 100, default, 1.2f);
@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 if (Main.rand.NextBool(2))
                 {
                     Main.dust[num622].scale = 0.5f;
-                    Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
             for (int num623 = 0; num623 < 5; num623++)

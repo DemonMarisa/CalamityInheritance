@@ -69,8 +69,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             int num3;
             for (int num795 = 4; num795 < 31; num795 = num3 + 1)
             {
-                float num796 = Projectile.oldVelocity.X * (30f / (float)num795);
-                float num797 = Projectile.oldVelocity.Y * (30f / (float)num795);
+                float num796 = Projectile.oldVelocity.X * (30f / num795);
+                float num797 = Projectile.oldVelocity.Y * (30f / num795);
                 int num798 = Terraria.Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
                 Main.dust[num798].noGravity = true;
                 Terraria.Dust dust = Main.dust[num798];

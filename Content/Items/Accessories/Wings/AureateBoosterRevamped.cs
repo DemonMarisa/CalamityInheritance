@@ -60,18 +60,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                     int type = 6;
                     float scale = 1.75f;
                     int alpha = 100;
-                    float x = player.position.X + (float)(player.width / 2) + 16f;
+                    float x = player.position.X + player.width / 2 + 16f;
                     if (player.direction > 0)
                     {
-                        x = player.position.X + (float)(player.width / 2) - 26f;
+                        x = player.position.X + player.width / 2 - 26f;
                     }
-                    float dustYPos = player.position.Y + (float)player.height - 18f;
+                    float dustYPos = player.position.Y + player.height - 18f;
                     if (i == 1 || i == 3)
                     {
-                        x = player.position.X + (float)(player.width / 2) + 8f;
+                        x = player.position.X + player.width / 2 + 8f;
                         if (player.direction > 0)
                         {
-                            x = player.position.X + (float)(player.width / 2) - 20f;
+                            x = player.position.X + player.width / 2 - 20f;
                         }
                         dustYPos += 6f;
                     }

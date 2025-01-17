@@ -62,17 +62,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             for (int i = 0; i < 2; i = inc + 1)
             {
                 int dustScale = (int)(10f * Projectile.scale);
-                int greenDust = Dust.NewDust(Projectile.Center - Vector2.One * (float)dustScale, dustScale * 2, dustScale * 2, DustID.TerraBlade, 0f, 0f, 0, default, 1f);
+                int greenDust = Dust.NewDust(Projectile.Center - Vector2.One * dustScale, dustScale * 2, dustScale * 2, DustID.TerraBlade, 0f, 0f, 0, default, 1f);
                 Dust nanoDust = Main.dust[greenDust];
                 Vector2 dustDirection = Vector2.Normalize(nanoDust.position - Projectile.Center);
-                nanoDust.position = Projectile.Center + dustDirection * (float)dustScale * Projectile.scale;
+                nanoDust.position = Projectile.Center + dustDirection * dustScale * Projectile.scale;
                 if (i < 30)
                 {
                     nanoDust.velocity = dustDirection * nanoDust.velocity.Length();
                 }
                 else
                 {
-                    nanoDust.velocity = dustDirection * (float)Main.rand.Next(45, 91) / 10f;
+                    nanoDust.velocity = dustDirection * Main.rand.Next(45, 91) / 10f;
                 }
                 nanoDust.color = Main.hslToRgb((float)(0.40000000596046448 + Main.rand.NextDouble() * 0.20000000298023224), 0.9f, 0.5f);
                 nanoDust.color = Color.Lerp(nanoDust.color, Color.White, 0.3f);

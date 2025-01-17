@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     possibleTarget = Main.npc[i];
                     distance = (possibleTarget.Center - Projectile.Center).Length();
-                    if (distance < maxDistance && possibleTarget.active && !possibleTarget.dontTakeDamage && possibleTarget.chaseable && !possibleTarget.friendly && possibleTarget.lifeMax > 5 && !possibleTarget.immortal && Collision.CanHit(Projectile.Center, 0, 0, ((Entity)possibleTarget).Center, 0, 0))
+                    if (distance < maxDistance && possibleTarget.active && !possibleTarget.dontTakeDamage && possibleTarget.chaseable && !possibleTarget.friendly && possibleTarget.lifeMax > 5 && !possibleTarget.immortal && Collision.CanHit(Projectile.Center, 0, 0, possibleTarget.Center, 0, 0))
                     {
                         target = Main.npc[i];
                         foundTarget = true;
@@ -138,8 +138,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SoundEngine.PlaySound(SoundID.Zombie103, Projectile.position);
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 80;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int num193 = 0; num193 < 2; num193++)
             {
                 Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.TerraBlade, 0f, 0f, 100, new Color(0, 255, 255), 1.5f);

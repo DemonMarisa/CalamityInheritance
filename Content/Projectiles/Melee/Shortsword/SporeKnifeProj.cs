@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             if (Main.rand.NextBool(5))
             {
-                int Grass = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Grass, (float)(Projectile.direction * 2), 0f, 15, default, 1.3f);
+                int Grass = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Grass, Projectile.direction * 2, 0f, 15, default, 1.3f);
             }
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                     float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                     Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center,randomDirection * 6f,ProjectileID.Leaf,(int)(Projectile.damage * 1),Projectile.knockBack,Projectile.owner);
+                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center,randomDirection * 6f,ProjectileID.Leaf, Projectile.damage * 1, Projectile.knockBack,Projectile.owner);
 
                     if (newProjectileId != Main.maxProjectiles)
                     {

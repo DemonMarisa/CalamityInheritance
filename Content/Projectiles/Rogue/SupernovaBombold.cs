@@ -77,8 +77,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 128;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             SoundEngine.PlaySound(Supernova.ExplosionSound, Projectile.Center);
 
             //spawn projectiles
@@ -135,7 +135,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Main.rand.NextBool())
                 {
                     Main.dust[exo].scale = 0.5f;
-                    Main.dust[exo].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[exo].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
             for (int d = 0; d < 9; d++)

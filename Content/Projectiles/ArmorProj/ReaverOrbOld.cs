@@ -70,8 +70,8 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 }
             }
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0f / 255f, (255 - Projectile.alpha) * 1f / 255f, (255 - Projectile.alpha) * 0f / 255f);
-            Projectile.position.X = Main.player[Projectile.owner].Center.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Main.player[Projectile.owner].Center.Y - (float)(Projectile.height / 2) + Main.player[Projectile.owner].gfxOffY - 60f;
+            Projectile.position.X = Main.player[Projectile.owner].Center.X - Projectile.width / 2;
+            Projectile.position.Y = Main.player[Projectile.owner].Center.Y - Projectile.height / 2 + Main.player[Projectile.owner].gfxOffY - 60f;
             if (Main.player[Projectile.owner].gravDir == -1f)
             {
                 Projectile.position.Y = Projectile.position.Y + 120f;
@@ -81,8 +81,8 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             {
                 Projectile.rotation = 0f;
             }
-            Projectile.position.X = (float)(int)Projectile.position.X;
-            Projectile.position.Y = (float)(int)Projectile.position.Y;
+            Projectile.position.X = (int)Projectile.position.X;
+            Projectile.position.Y = (int)Projectile.position.Y;
             if (Projectile.owner == Main.myPlayer)
             {
                 if (Projectile.ai[0] != 0f)
@@ -96,9 +96,9 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 {
                     if (Main.npc[num512].CanBeChasedBy(Projectile, false))
                     {
-                        float num513 = Main.npc[num512].position.X + (float)(Main.npc[num512].width / 2);
-                        float num514 = Main.npc[num512].position.Y + (float)(Main.npc[num512].height / 2);
-                        float num515 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num513) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num514);
+                        float num513 = Main.npc[num512].position.X + Main.npc[num512].width / 2;
+                        float num514 = Main.npc[num512].position.Y + Main.npc[num512].height / 2;
+                        float num515 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num513) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num514);
                         if (num515 < num508 && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[num512].position, Main.npc[num512].width, Main.npc[num512].height))
                         {
                             num508 = num515;

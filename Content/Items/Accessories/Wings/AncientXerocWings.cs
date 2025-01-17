@@ -36,10 +36,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
             if(player.armor[0].type == ModContent.ItemType<AncientXerocMask>() && 
                player.armor[1].type == ModContent.ItemType<AncientXerocPlateMail>() &&
-               player.armor[2].type == ModContent.ItemType<AncientXerocCuisses>())
+               player.armor[2].type == ModContent.ItemType<AncientXerocCuisses>() &&
+               modplayer1.ancientXerocWrath
+               )
             {
-
-                //Scarlet：现在克希洛克翅膀应该能正确地抵消克希洛克盔甲的伤害惩罚了。
+                //Scarlet: 这次真的抵消掉伤害惩罚了
                 player.GetDamage<GenericDamageClass>() += 0.3f;
                 player.GetCritChance<GenericDamageClass>() += 30;
             }

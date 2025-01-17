@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class ElementalExcaliburBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        private int alpha = 50;
+        private readonly int alpha = 50;
         private bool playedSound = false;
 
         public override void SetStaticDefaults()
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 case 1: // Orange, curve back to player
                     color = new Color(255, 128, 0, alpha);
 
-                    int p = (int)Player.FindClosest(Projectile.Center, 1, 1);
+                    int p = Player.FindClosest(Projectile.Center, 1, 1);
                     Projectile.ai[1] += 1f;
                     if (Projectile.ai[1] < 220f && Projectile.ai[1] > 60f)
                     {

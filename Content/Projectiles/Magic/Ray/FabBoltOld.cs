@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 Main.dust[num448].position = vector33;
                 Main.dust[num448].noGravity = true;
                 Main.dust[num448].noLight = true;
-                Main.dust[num448].scale = (float)Main.rand.Next(70, 110) * 0.013f;
+                Main.dust[num448].scale = Main.rand.Next(70, 110) * 0.013f;
                 Main.dust[num448].velocity *= 0.1f;
             }
         }

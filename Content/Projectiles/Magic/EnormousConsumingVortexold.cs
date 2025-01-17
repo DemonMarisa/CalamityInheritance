@@ -93,7 +93,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public void ProduceSubsumingHentai()
         {
-            int tentacleDamage = (int)(Projectile.damage * 0.25f);
             float xStartingAcceleration = Utils.NextFloat(Main.rand, 0.001f, 0.04f) * Utils.ToDirectionInt(Utils.NextBool(Main.rand, 2));
             float yStartingAcceleration = Utils.NextFloat(Main.rand, 0.001f, 0.04f) * Utils.ToDirectionInt(Utils.NextBool(Main.rand, 2));
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, Utils.RotatedByRandom(Vector2.UnitY, 6.2831854820251465) * Utils.NextFloat(Main.rand, 9f, 13f), ModContent.ProjectileType<SubsumingTentacle>(), (int)(Projectile.damage * 0.6), Projectile.knockBack * 0.6f, this.Projectile.owner, xStartingAcceleration, yStartingAcceleration, 0f).tileCollide = false;
@@ -130,7 +129,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public void ExplodeEffect()
         {
-            SoundEngine.PlaySound(SoundID.Item29, (Vector2?)((Entity)((ModProjectile)this).Projectile).Center, (SoundUpdateCallback)null);
+            SoundEngine.PlaySound(SoundID.Item29, (Vector2?)Projectile.Center, null);
             if (!Main.dedServ)
             {
                 for (int i = 0; i < 200; i++)
@@ -153,10 +152,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Vector2 velocity2 = Utils.RotatedBy(Vector2.UnitY, (double)rotation, default(Vector2));
                     if (closestTarget != null)
                     {
-                        velocity2 = Utils.RotatedByRandom(((Entity)((ModProjectile)this).Projectile).DirectionTo(((Entity)closestTarget).Center), 0.4);
+                        velocity2 = Utils.RotatedByRandom(Projectile.DirectionTo(closestTarget.Center), 0.4);
                     }
                     velocity2 *= Utils.NextFloat(Main.rand, 3f, 5f);
-                    Projectile.NewProjectileDirect(((Entity)((ModProjectile)this).Projectile).GetSource_FromThis((string)null), ((Entity)((ModProjectile)this).Projectile).Center, velocity2, ModContent.ProjectileType<Vortex>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.7), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, Utils.NextFloat(Main.rand, 0.5f, 1.8f), 0f);
+                    Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, velocity2, ModContent.ProjectileType<Vortex>(), (int)(Projectile.damage * 0.7), this.Projectile.knockBack, this.Projectile.owner, 0f, Utils.NextFloat(Main.rand, 0.5f, 1.8f), 0f);
                 }
             }
         }

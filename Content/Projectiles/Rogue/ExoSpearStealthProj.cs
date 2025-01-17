@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 for (int i = 0; i < Streams; i++)
                 {
-                    Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians((float)(360 / Streams * i) + StartAngle), default(Vector2));
+                    Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default(Vector2));
                     vector.X *= ProjSpeed;
                     vector.Y *= ProjSpeed;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ModContent.ProjectileType<ExoSpearTrail>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
@@ -77,8 +77,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     Vector2 vector = new Vector2(400f, 400f);
                     vector = Utils.RotatedByRandom(vector, (double)MathHelper.ToRadians(360f));
-                    Vector2 vector2 = ((Entity)teleportTarget).position + vector;
-                    Vector2 vector3 = ((Entity)teleportTarget).position - vector2;
+                    Vector2 vector2 = teleportTarget.position + vector;
+                    Vector2 vector3 = teleportTarget.position - vector2;
                     vector3.Normalize();
                     vector3.X *= 12f;
                     vector3.Y *= 12f;
@@ -128,8 +128,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default(Vector2));
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)((double)Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)((double)Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
                     increment = 0;
                 }
                 splits++;
@@ -170,11 +170,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             vector.Y = 35f;
             Color alpha = Projectile.GetAlpha(lightColor);
             Main.spriteBatch.Draw(texture2D, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), rectangle, alpha, Projectile.rotation, vector, Projectile.scale, effects, 0f);
-            Vector2 origin = new Vector2((float)TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, (float)TextureAssets.Projectile[Projectile.type].Value.Height * 0.5f);
+            Vector2 origin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, TextureAssets.Projectile[Projectile.type].Value.Height * 0.5f);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 Vector2 position = Projectile.oldPos[i] - Main.screenPosition + vector;
-                Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
+                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                 Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, position, default(Rectangle), color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0f);
             }
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);

@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                         {
                             Vector2 spawn = baseSpawn;
                             spawn.X += i * 30 - (FireProjectiles * 15);
-                            Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / (float)FireProjectiles)));
+                            Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / FireProjectiles)));
                             velocity.X = velocity.X + 3 * Main.rand.NextFloat() - 1.5f;
                             int damage = (int)player.GetBestClassDamage().ApplyTo(100);
                             Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstoneHellfireballFriendly2>(), damage, 5f, Main.myPlayer, 0f, 0f);

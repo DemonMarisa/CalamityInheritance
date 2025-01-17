@@ -42,8 +42,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             int num6 = Main.rand.Next(1, 3);
             for (int index = 0; index < num6; ++index)
             {
-                float SpeedX = velocity.X + (float)Main.rand.Next(-15, 16) * 0.05f;
-                float SpeedY = velocity.Y + (float)Main.rand.Next(-15, 16) * 0.05f;
+                float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
+                float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
                 type = Utils.SelectRandom(Main.rand, new int[]
                 {
                     ModContent.ProjectileType<AstralStar>(),

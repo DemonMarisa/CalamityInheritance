@@ -53,8 +53,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Vector2 playerPos = player.RotatedRelativePoint(player.MountedCenter, true);
             float speed = Item.shootSpeed;
-            float xPos = (float)Main.mouseX + Main.screenPosition.X - playerPos.X;
-            float yPos = (float)Main.mouseY + Main.screenPosition.Y - playerPos.Y;
+            float xPos = Main.mouseX + Main.screenPosition.X - playerPos.X;
+            float yPos = Main.mouseY + Main.screenPosition.Y - playerPos.Y;
             float f = Main.rand.NextFloat() * MathHelper.TwoPi;
             float sourceVariationLow = 120f;
             float sourceVariationHigh = 180f;

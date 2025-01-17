@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GoldCoin, 
                 Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 0.785f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
             if (Projectile.spriteDirection == -1)
             {
                 Projectile.rotation -= 1.57f;

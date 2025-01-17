@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             if (Projectile.timeLeft < 30)
             {
-                float num7 = (float)Projectile.timeLeft / 30f;
+                float num7 = Projectile.timeLeft / 30f;
                 Projectile.alpha = (int)((255f - 255f * num7) *0.5f);
             }
             return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
             int num214 = TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type];
             int y6 = num214 * Projectile.frame;
-            Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), Projectile.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), Projectile.scale, SpriteEffects.None, 0f);
         }
         public override bool PreDraw(ref Color lightColor)
         {

@@ -33,7 +33,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
             player.statLifeMax2 += (int)(player.statLifeMax * 0.25);
             CalamityPlayer modPlayer2 = player.Calamity();
             modPlayer2.fleshTotem = true;

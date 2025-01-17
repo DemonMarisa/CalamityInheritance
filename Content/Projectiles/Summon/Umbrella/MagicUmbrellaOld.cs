@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             {
                 bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicUmbrella>();
                 if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner &&
-                    flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < (float)Projectile.width)
+                    flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < Main.projectile[num638].position.X)
                     {
@@ -193,8 +193,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 }
                 if (num651 > 2000f)
                 {
-                    Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
-                    Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2);
+                    Projectile.position.X = player.Center.X - Projectile.width / 2;
+                    Projectile.position.Y = player.Center.Y - Projectile.height / 2;
                     Projectile.netUpdate = true;
                 }
                 if (num651 > 70f)
@@ -211,7 +211,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             }
             if (Projectile.ai[1] > 0f)
             {
-                Projectile.ai[1] += (float)Main.rand.Next(1, 4);
+                Projectile.ai[1] += Main.rand.Next(1, 4);
             }
             if (Projectile.ai[1] > 40f)
             {
@@ -262,15 +262,15 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             {
                 for (int n = 0; n < Main.rand.Next(1, 3); n++) //1 to 2 baseball bats
                 {
-                    float x = target.position.X + (float)Main.rand.Next(-400, 400);
-                    float y = target.position.Y - (float)Main.rand.Next(500, 800);
+                    float x = target.position.X + Main.rand.Next(-400, 400);
+                    float y = target.position.Y - Main.rand.Next(500, 800);
                     Vector2 vector = new Vector2(x, y);
-                    float num13 = target.position.X + (float)(target.width / 2) - vector.X;
-                    float num14 = target.position.Y + (float)(target.height / 2) - vector.Y;
-                    num13 += (float)Main.rand.Next(-100, 101);
+                    float num13 = target.position.X + target.width / 2 - vector.X;
+                    float num14 = target.position.Y + target.height / 2 - vector.Y;
+                    num13 += Main.rand.Next(-100, 101);
                     int num15 = 29;
                     float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
-                    num16 = (float)num15 / num16;
+                    num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
@@ -284,15 +284,15 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             {
                 for (int n = 0; n < Main.rand.Next(1, 3); n++) //1 to 2 baseball bats
                 {
-                    float x = target.position.X + (float)Main.rand.Next(-400, 400);
-                    float y = target.position.Y - (float)Main.rand.Next(500, 800);
+                    float x = target.position.X + Main.rand.Next(-400, 400);
+                    float y = target.position.Y - Main.rand.Next(500, 800);
                     Vector2 vector = new Vector2(x, y);
-                    float num13 = target.position.X + (float)(target.width / 2) - vector.X;
-                    float num14 = target.position.Y + (float)(target.height / 2) - vector.Y;
-                    num13 += (float)Main.rand.Next(-100, 101);
+                    float num13 = target.position.X + target.width / 2 - vector.X;
+                    float num14 = target.position.Y + target.height / 2 - vector.Y;
+                    num13 += Main.rand.Next(-100, 101);
                     int num15 = 29;
                     float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
-                    num16 = (float)num15 / num16;
+                    num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);

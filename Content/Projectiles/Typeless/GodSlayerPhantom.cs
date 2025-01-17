@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             float num953 = 40f * Projectile.ai[1]; //100
             float scaleFactor12 = 8f * Projectile.ai[1]; //5
             float num954 = 600f;
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) - 1.57f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
             {
@@ -72,9 +72,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 {
                     if (Main.npc[num475].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
                     {
-                        float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                        float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                        float num478 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num476) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num477);
+                        float num476 = Main.npc[num475].position.X + Main.npc[num475].width / 2;
+                        float num477 = Main.npc[num475].position.Y + Main.npc[num475].height / 2;
+                        float num478 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num476) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num477);
                         if (num478 < num474)
                         {
                             num474 = num478;
@@ -87,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 if (flag17)
                 {
                     float num483 = 15f;
-                    Vector2 vector35 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
+                    Vector2 vector35 = new Vector2(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
                     float num484 = num472 - vector35.X;
                     float num485 = num473 - vector35.Y;
                     float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
@@ -117,8 +117,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             if (Projectile.timeLeft < 85)
             {
                 byte b2 = (byte)(Projectile.timeLeft * 3);
-                byte a2 = (byte)(100f * ((float)b2 / 255f));
-                return new Color((int)b2, (int)b2, (int)b2, (int)a2);
+                byte a2 = (byte)(100f * (b2 / 255f));
+                return new Color(b2, b2, b2, a2);
             }
             return new Color(255, 255, 255, 100);
         }
@@ -131,13 +131,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 40;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             int num226 = 36;
             for (int num227 = 0; num227 < num226; num227++)
             {
-                Vector2 vector6 = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
-                vector6 = vector6.RotatedBy((double)((float)(num227 - (num226 / 2 - 1)) * 6.28318548f / (float)num226), default) + Projectile.Center;
+                Vector2 vector6 = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
+                vector6 = vector6.RotatedBy((double)((num227 - (num226 / 2 - 1)) * 6.28318548f / num226), default) + Projectile.Center;
                 Vector2 vector7 = vector6 - Projectile.Center;
                 int num228 = Dust.NewDust(vector6 + vector7, 0, 0, DustID.ShadowbeamStaff, vector7.X * 1.5f, vector7.Y * 1.5f, 100, default, 0.5f);
                 Main.dust[num228].noGravity = true;

@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 2.355f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 2.355f;
             if (Projectile.spriteDirection == -1)
             {
                 Projectile.rotation -= 1.57f;
@@ -45,9 +45,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 if (Main.npc[num475].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1) && !CalamityPlayer.areThereAnyDamnBosses)
                 {
-                    float npcCenterX = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                    float npcCenterY = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                    float num478 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - npcCenterX) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - npcCenterY);
+                    float npcCenterX = Main.npc[num475].position.X + Main.npc[num475].width / 2;
+                    float npcCenterY = Main.npc[num475].position.Y + Main.npc[num475].height / 2;
+                    float num478 = Math.Abs(Projectile.position.X + Projectile.width / 2 - npcCenterX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - npcCenterY);
                     if (num478 < num474)
                     {
                         if (Main.npc[num475].position.X < num472)

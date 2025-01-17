@@ -64,8 +64,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             }
 
             //projectile movement
-            Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2) + player.gfxOffY - 60f;
+            Projectile.position.X = player.Center.X - Projectile.width / 2;
+            Projectile.position.Y = player.Center.Y - Projectile.height / 2 + player.gfxOffY - 60f;
             if (player.gravDir == -1f)
             {
                 Projectile.position.Y = Projectile.position.Y + 150f;
@@ -75,11 +75,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             {
                 Projectile.rotation = 0f;
             }
-            Projectile.position.X = (float)(int)Projectile.position.X;
-            Projectile.position.Y = (float)(int)Projectile.position.Y;
+            Projectile.position.X = (int)Projectile.position.X;
+            Projectile.position.Y = (int)Projectile.position.Y;
 
             //Change the summons scale size a little bit to make it pulse in and out
-            float num395 = (float)Main.mouseTextColor / 200f - 0.35f;
+            float num395 = Main.mouseTextColor / 200f - 0.35f;
             num395 *= 0.2f;
             Projectile.scale = num395 + 0.95f;
 
@@ -108,9 +108,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     NPC npc = Main.npc[player.MinionAttackTargetNPC];
                     if (npc.CanBeChasedBy(Projectile, false))
                     {
-                        float xDist = npc.position.X + (float)(npc.width / 2);
-                        float yDist = npc.position.Y + (float)(npc.height / 2);
-                        float enemyDist = Math.Abs(projPosX + (float)(Projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(Projectile.height / 2) - yDist);
+                        float xDist = npc.position.X + npc.width / 2;
+                        float yDist = npc.position.Y + npc.height / 2;
+                        float enemyDist = Math.Abs(projPosX + Projectile.width / 2 - xDist) + Math.Abs(projPosY + Projectile.height / 2 - yDist);
                         if (enemyDist < detectionRange)
                         {
                             detectionRange = enemyDist;
@@ -127,9 +127,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                         NPC target = Main.npc[index];
                         if (target.CanBeChasedBy(Projectile, true))
                         {
-                            float xDist = target.position.X + (float)(target.width / 2);
-                            float yDist = target.position.Y + (float)(target.height / 2);
-                            float enemyDist = Math.Abs(projPosX + (float)(Projectile.width / 2) - xDist) + Math.Abs(projPosY + (float)(Projectile.height / 2) - yDist);
+                            float xDist = target.position.X + target.width / 2;
+                            float yDist = target.position.Y + target.height / 2;
+                            float enemyDist = Math.Abs(projPosX + Projectile.width / 2 - xDist) + Math.Abs(projPosY + Projectile.height / 2 - yDist);
                             if (enemyDist < detectionRange)
                             {
                                 detectionRange = enemyDist;
@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                             });
                             float velocityX = Main.rand.NextFloat(-10f, 10f);
                             float velocityY = Main.rand.NextFloat(-15f, -8f);
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + (float)(Projectile.width / 2), Projectile.oldPosition.Y + (float)(Projectile.height / 2), velocityX, velocityY, projType, Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, velocityX, velocityY, projType, Projectile.damage, 0f, Projectile.owner, 0f, 0f);
                         }
                     }
                 }

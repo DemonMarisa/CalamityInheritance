@@ -37,9 +37,9 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = (float)Main.DiscoR / 255f;
-            g = (float)Main.DiscoG / 255f;
-            b = (float)Main.DiscoB / 255f;
+            r = Main.DiscoR / 255f;
+            g = Main.DiscoG / 255f;
+            b = Main.DiscoB / 255f;
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
