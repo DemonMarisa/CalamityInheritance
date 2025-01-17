@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             bool isActive = false;
             if (Projectile.ai[1] <= 0f)
             {
-                Projectile.ai[1] = (float)(soundDelayer - soundDelayMult * aiSoundDelay);
+                Projectile.ai[1] = soundDelayer - soundDelayMult * aiSoundDelay;
                 isActive = true;
             }
             bool canUseItem = !player.CantUseHoldout();
@@ -165,10 +165,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     weaponKnockback2 = player.GetWeaponKnockback(player.ActiveItem(), weaponKnockback2);
                     float scaleFactor12 = player.ActiveItem().shootSpeed * Projectile.scale;
                     Vector2 playerRotateCopy = playerRotate;
-                    Vector2 projSpawnDirection = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - playerRotateCopy;
+                    Vector2 projSpawnDirection = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - playerRotateCopy;
                     if (player.gravDir == -1f)
                     {
-                        projSpawnDirection.Y = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - playerRotateCopy.Y;
+                        projSpawnDirection.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - playerRotateCopy.Y;
                     }
                     Vector2 projSpawnDirectNormalize = Vector2.Normalize(projSpawnDirection);
                     if (float.IsNaN(projSpawnDirectNormalize.X) || float.IsNaN(projSpawnDirectNormalize.Y))
@@ -203,7 +203,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             player.heldProj = Projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
-            player.itemRotation = (float)Math.Atan2((double)(Projectile.velocity.Y * (float)Projectile.direction), (double)(Projectile.velocity.X * (float)Projectile.direction));
+            player.itemRotation = (float)Math.Atan2((double)(Projectile.velocity.Y * Projectile.direction), (double)(Projectile.velocity.X * Projectile.direction));
         }
 
         public override void PostDraw(Color lightColor)

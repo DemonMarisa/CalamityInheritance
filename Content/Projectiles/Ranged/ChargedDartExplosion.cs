@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         if (Main.rand.NextBool(2))
                         {
                             Main.dust[num622].scale = 0.5f;
-                            Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                            Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                         }
                     }
                     for (int num623 = 0; num623 < 10; num623++)
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         if (Main.rand.NextBool(2))
                         {
                             Main.dust[num622].scale = 0.5f;
-                            Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                            Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                         }
                     }
                     for (int num623 = 0; num623 < 20; num623++)

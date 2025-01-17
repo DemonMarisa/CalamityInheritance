@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -39,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     player.moveSpeed += 0.75f;
                 }
             }
-            if ((double)player.velocity.X > 0 || (double)player.velocity.Y > 0 || (double)player.velocity.X < -0.1 || (double)player.velocity.Y < -0.1)
+            if ((double)player.velocity.X > 0 || (double)player.velocity.Y > 0 || player.velocity.X < -0.1 || player.velocity.Y < -0.1)
             {
                 if (player.whoAmI == Main.myPlayer)
                 {

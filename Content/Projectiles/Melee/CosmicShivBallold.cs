@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, (float)(Projectile.direction * 2), 0f, 115, Color.White, 1.3f);
+                    int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.direction * 2, 0f, 115, Color.White, 1.3f);
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity *= 0f;
                 }
@@ -130,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float scale = Main.rand.NextFloat(1f, 1.35f);
             for (float k = 0f; k < MathHelper.TwoPi; k += 0.05f)
             {
-                Vector2 velocity = k.ToRotationVector2() * (2f + (float)(Math.Sin((double)(rand2PI + k * (float)petalCount)) + 1.0) * speed) * Main.rand.NextFloat(0.95f, 1.05f);
+                Vector2 velocity = k.ToRotationVector2() * (2f + (float)(Math.Sin((double)(rand2PI + k * petalCount)) + 1.0) * speed) * Main.rand.NextFloat(0.95f, 1.05f);
                 Dust dust = Dust.NewDustPerfect(Projectile.Center, 173, new Vector2?(velocity), 0, default, scale);
                 dust.customData = 0.025f;
             }

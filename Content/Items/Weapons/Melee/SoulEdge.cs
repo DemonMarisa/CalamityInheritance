@@ -41,8 +41,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int numShots = 2;
             for (int i = 0; i < numShots; ++i)
             {
-                float SpeedX = velocity.X + (float)Main.rand.Next(-40, 41) * 0.05f;
-                float SpeedY = velocity.Y + (float)Main.rand.Next(-40, 41) * 0.05f;
+                float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
+                float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                 float ai1 = Main.rand.NextFloat() + 0.5f;
                 // TODO -- unchecked type addition math assumes we can guarantee load order
                 // this is extremely unsafe and if TML optimizes autoloading or asset loading it could fail

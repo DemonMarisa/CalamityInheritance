@@ -33,6 +33,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
         {
             CalamityPlayer calp = player.Calamity();
             player.GetDamage<RogueDamageClass>() += 0.03f; //3%盗贼伤害
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             calp.rogueStealthMax += 0.5f; //50潜伏值
             calp.wearingRogueArmor = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");

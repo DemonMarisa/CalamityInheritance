@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                         dustType = 269;
                     }
                     Vector2 offset = Vector2.UnitX * -12f;
-                    offset = -Vector2.UnitY.RotatedBy((double)(counter * 0.1308997f + (float)i * MathHelper.Pi), default) * value7;
+                    offset = -Vector2.UnitY.RotatedBy((double)(counter * 0.1308997f + i * MathHelper.Pi), default) * value7;
                     int exo = Dust.NewDust(Projectile.Center, 0, 0, dustType, 0f, 0f, 160, default, 1.5f);
                     Main.dust[exo].noGravity = true;
                     Main.dust[exo].position = Projectile.Center + offset;
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             });
             for (int k = 0; k < 4; k++)
             {
-                int exo = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, dustType, (float)(Projectile.direction * 2), 0f, 150, default, 1f);
+                int exo = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, dustType, Projectile.direction * 2, 0f, 150, default, 1f);
                 Main.dust[exo].noGravity = true;
             }
         }

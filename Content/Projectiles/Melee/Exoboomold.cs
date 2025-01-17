@@ -76,11 +76,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             num461 *= 0.7f;
             Projectile.ai[0] += 4f;
             int num462 = 0;
-            while ((float)num462 < num461)
+            while (num462 < num461)
             {
-                float num463 = (float)Main.rand.Next(-30, 31);
-                float num464 = (float)Main.rand.Next(-30, 31);
-                float num465 = (float)Main.rand.Next(9, 27);
+                float num463 = Main.rand.Next(-30, 31);
+                float num464 = Main.rand.Next(-30, 31);
+                float num465 = Main.rand.Next(9, 27);
                 float num466 = (float)Math.Sqrt((double)(num463 * num463 + num464 * num464));
                 num466 = num465 / num466;
                 num463 *= num466;
@@ -90,8 +90,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust.noGravity = true;
                 dust.position.X = Projectile.Center.X;
                 dust.position.Y = Projectile.Center.Y;
-                dust.position.X += (float)Main.rand.Next(-10, 11);
-                dust.position.Y += (float)Main.rand.Next(-10, 11);
+                dust.position.X += Main.rand.Next(-10, 11);
+                dust.position.Y += Main.rand.Next(-10, 11);
                 dust.velocity.X = num463;
                 dust.velocity.Y = num464;
                 num462++;

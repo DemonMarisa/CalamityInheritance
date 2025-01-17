@@ -66,11 +66,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             num461 *= 0.7f;
             Projectile.ai[0] += 4f;
             int num462 = 0;
-            while ((float)num462 < num461)
+            while (num462 < num461)
             {
-                float num463 = (float)Main.rand.Next(-10, 11);
-                float num464 = (float)Main.rand.Next(-10, 11);
-                float num465 = (float)Main.rand.Next(3, 9);
+                float num463 = Main.rand.Next(-10, 11);
+                float num464 = Main.rand.Next(-10, 11);
+                float num465 = Main.rand.Next(3, 9);
                 float num466 = (float)Math.Sqrt((double)(num463 * num463 + num464 * num464));
                 num466 = num465 / num466;
                 num463 *= num466;
@@ -80,9 +80,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 Main.dust[num467].position.X = Projectile.Center.X;
                 Main.dust[num467].position.Y = Projectile.Center.Y;
                 Dust expr_149DF_cp_0 = Main.dust[num467];
-                expr_149DF_cp_0.position.X += (float)Main.rand.Next(-10, 11);
+                expr_149DF_cp_0.position.X += Main.rand.Next(-10, 11);
                 Dust expr_14A09_cp_0 = Main.dust[num467];
-                expr_14A09_cp_0.position.Y += (float)Main.rand.Next(-10, 11);
+                expr_14A09_cp_0.position.Y += Main.rand.Next(-10, 11);
                 Main.dust[num467].velocity.X = num463;
                 Main.dust[num467].velocity.Y = num464;
                 num462++;

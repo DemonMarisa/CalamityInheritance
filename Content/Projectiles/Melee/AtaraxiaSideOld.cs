@@ -9,8 +9,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class AtaraxiaSideOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        private static int NumAnimationFrames = 5;
-        private static int AnimationFrameTime = 9;
+        private static readonly int NumAnimationFrames = 5;
+        private static readonly int AnimationFrameTime = 9;
 
         public override void SetStaticDefaults()
         {

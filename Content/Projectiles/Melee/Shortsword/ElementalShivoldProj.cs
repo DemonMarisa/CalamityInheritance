@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             if (Main.rand.NextBool(5))
             {
-                int num250 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.RainbowTorch, (float)(Projectile.direction * 2), 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
+                int num250 = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
                 Main.dust[num250].velocity *= 0.2f;
                 Main.dust[num250].noGravity = true;
             }

@@ -9,7 +9,7 @@ using CalamityInheritance.Utilities;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelm : ModItem, ILocalizedModType
+    public class ReaverHelmRevamped : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -22,12 +22,14 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             Item.height = 30;
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 27; //60
+            Item.defense = 12; //60 + (10) → 42 + (10)
+            //Scarlet:保持伤害上限的基础上削弱其防御力，使其失去与日耀盔甲竞争的优势
+            //不过要是有人拿着这套脆皮打亵渎的话我也没办法拦着他，他比较牛逼吧（
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMail>() && legs.type == ModContent.ItemType<ReaverCuisses>();
+            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -42,10 +44,12 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             modPlayer1.reaverMeleeBlast = true;
             player.thorns += 0.33f;
             player.GetAttackSpeed<MeleeDamageClass>() +=0.30f;
+            player.GetDamage<MeleeDamageClass>() += 0.05f;
             player.GetCritChance<MeleeDamageClass>() += 5;
             player.moveSpeed += 0.20f;
-            //Scarlet:近战暴击概率下调至10%，常驻的总伤害下调至20%，但是常驻攻速上升至40%
             //DemonMarisa:改了
+            //Scarlet: 修复了永恒套提供的数值出错的问题
+            //现在战士永恒套总加成：近战伤害25%+10%,，40+10攻速，15暴击
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 
@@ -53,9 +57,8 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             player.ignoreWater = true;
             player.moveSpeed += 0.1f;
-            player.GetDamage<MeleeDamageClass>() += 0.15f;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
-            player.GetCritChance<MeleeDamageClass>() += 5;
+            player.GetDamage<MeleeDamageClass>() += 0.05f;
         }
 
         public override void AddRecipes()

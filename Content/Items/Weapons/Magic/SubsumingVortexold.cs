@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(((ModItem)this).Item, 0, (string)null), position, velocity, type, damage, knockback, ((Entity)player).whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
         }
 

@@ -54,8 +54,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            double lifeAmount = (double)target.life;
-            double lifeMax = (double)target.lifeMax;
+            double lifeAmount = target.life;
+            double lifeMax = target.lifeMax;
             double damageMult = lifeAmount / lifeMax * 7;
 
             modifiers.SourceDamage.Flat += target.life / 7;

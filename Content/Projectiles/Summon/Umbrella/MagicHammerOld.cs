@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 if (player.HasMinionAttackTargetNPC)
                 {
                     NPC npc = Main.npc[player.MinionAttackTargetNPC];
-                    if (npc.CanBeChasedBy(Projectile, false) && (Projectile.ai[0] == 0f || Projectile.ai[0] == (float)(player.MinionAttackTargetNPC + 1)))
+                    if (npc.CanBeChasedBy(Projectile, false) && (Projectile.ai[0] == 0f || Projectile.ai[0] == player.MinionAttackTargetNPC + 1))
                     {
                         Vector2 center4 = npc.Center;
                         float num719 = Vector2.Distance(center4, vector59);
@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     for (int num718 = 0; num718 < Main.npc.Length; num718++)
                     {
                         NPC nPC6 = Main.npc[num718];
-                        if (nPC6.CanBeChasedBy(Projectile, false) && (Projectile.ai[0] == 0f || Projectile.ai[0] == (float)(num718 + 1)))
+                        if (nPC6.CanBeChasedBy(Projectile, false) && (Projectile.ai[0] == 0f || Projectile.ai[0] == num718 + 1))
                         {
                             Vector2 center4 = nPC6.Center;
                             float num719 = Vector2.Distance(center4, vector59);
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 }
                 if (num716 >= 0)
                 {
-                    Projectile.ai[0] = (float)(num716 + 1);
+                    Projectile.ai[0] = num716 + 1;
                     Projectile.netUpdate = true;
                 }
             }
@@ -112,9 +112,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 int num720 = (int)(Projectile.ai[0] - 1f);
                 if (Main.npc[num720].active && !Main.npc[num720].dontTakeDamage && Main.npc[num720].immune[Projectile.owner] == 0)
                 {
-                    float num721 = Main.npc[num720].position.X + (float)(Main.npc[num720].width / 2);
-                    float num722 = Main.npc[num720].position.Y + (float)(Main.npc[num720].height / 2);
-                    float num723 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num721) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num722);
+                    float num721 = Main.npc[num720].position.X + Main.npc[num720].width / 2;
+                    float num722 = Main.npc[num720].position.Y + Main.npc[num720].height / 2;
+                    float num723 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num721) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num722);
                     if (num723 < MagicHat.Range * 1.25f)
                     {
                         flag32 = true;

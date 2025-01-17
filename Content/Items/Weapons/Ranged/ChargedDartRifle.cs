@@ -1,11 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using CalamityMod.Projectiles.Ranged;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -69,8 +64,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 int num6 = Main.rand.Next(2, 5);
                 for (int index = 0; index < num6; ++index)
                 {
-                    float SpeedX = velocity.X + (float)Main.rand.Next(-40, 41) * 0.05f;
-                    float SpeedY = velocity.Y + (float)Main.rand.Next(-40, 41) * 0.05f;
+                    float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
+                    float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                     int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage / 2, knockback, player.whoAmI, 0f, 0f);
                 }
                 Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ChargedBlast>(), damage, knockback, player.whoAmI, 0f, 0f);

@@ -9,7 +9,7 @@ using CalamityInheritance.Utilities;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverCap : ModItem, ILocalizedModType
+    public class ReaverCapRevamped : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMail>() && legs.type == ModContent.ItemType<ReaverCuisses>();
+            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -47,6 +47,8 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             //25盗贼暴击，25盗贼伤害,115潜伏值
             //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片
             //Scarlet:我算的是总加成
+            //Scarlet:修复……数值错误。
+            //总之现在盗贼永恒套总加成：30%伤害，20%暴击，5%弹幕速度，115潜伏值
         }
 
         public override void UpdateEquip(Player player)
@@ -54,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             CalamityPlayer modPlayer = player.Calamity();
             player.ignoreWater = true;
             player.GetDamage<RogueDamageClass>() += 0.15f;
-            player.GetCritChance<RogueDamageClass>() += 0.5f;
+            player.GetCritChance<RogueDamageClass>() += 5;
             player.moveSpeed += 0.2f;
             modPlayer.rogueVelocity += 0.05f;
         }

@@ -94,8 +94,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 32;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
             {
@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Main.rand.NextBool())
                 {
                     Main.dust[dust].scale = 0.5f;
-                    Main.dust[dust].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[dust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
             for (int j = 0; j < 2; j++)

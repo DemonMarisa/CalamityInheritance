@@ -157,8 +157,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 //If abnormally far, teleport to the player
                 if (playerDist > 2000f)
                 {
-                    Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
-                    Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2);
+                    Projectile.position.X = player.Center.X - Projectile.width / 2;
+                    Projectile.position.Y = player.Center.Y - Projectile.height / 2;
                     Projectile.netUpdate = true;
                 }
                 //Move toward player if more than 70 pixels away

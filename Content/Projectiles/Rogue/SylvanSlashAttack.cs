@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 vector13.Normalize();
                 if (vector13.HasNaNs())
                 {
-                    vector13 = Vector2.UnitX * (float)player.direction;
+                    vector13 = Vector2.UnitX * player.direction;
                 }
                 vector13 *= scaleFactor6;
                 if (vector13.X != Projectile.velocity.X || vector13.Y != Projectile.velocity.Y)
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             player.heldProj = Projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
-            player.itemRotation = (float)Math.Atan2((double)(Projectile.velocity.Y * (float)Projectile.direction), (double)(Projectile.velocity.X * (float)Projectile.direction));
+            player.itemRotation = (float)Math.Atan2((double)(Projectile.velocity.Y * Projectile.direction), (double)(Projectile.velocity.X * Projectile.direction));
             if (Projectile.ai[0] > 0)
                 Projectile.ai[0]--;
         }

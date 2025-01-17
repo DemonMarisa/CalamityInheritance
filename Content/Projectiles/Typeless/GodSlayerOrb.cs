@@ -34,9 +34,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             {
                 if (Main.npc[num475].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
                 {
-                    float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                    float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                    float num478 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num476) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num477);
+                    float num476 = Main.npc[num475].position.X + Main.npc[num475].width / 2;
+                    float num477 = Main.npc[num475].position.Y + Main.npc[num475].height / 2;
+                    float num478 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num476) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num477);
                     if (num478 < num474)
                     {
                         num474 = num478;
@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             if (flag17)
             {
                 float num483 = 12f;
-                Vector2 vector35 = new Vector2(Projectile.position.X + (float)Projectile.width * 0.5f, Projectile.position.Y + (float)Projectile.height * 0.5f);
+                Vector2 vector35 = new Vector2(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
                 float num484 = num472 - vector35.X;
                 float num485 = num473 - vector35.Y;
                 float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));

@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            Projectile.rotation += 0.5f * (float)Projectile.direction;
+            Projectile.rotation += 0.5f * Projectile.direction;
             int shadow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 1f);
             Main.dust[shadow].noGravity = true;
             Main.dust[shadow].velocity *= 0f;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Main.rand.NextBool())
                 {
                     Main.dust[shadow].scale = 0.5f;
-                    Main.dust[shadow].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[shadow].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
             for (int d = 0; d < 12; d++)

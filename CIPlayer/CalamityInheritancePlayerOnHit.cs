@@ -81,7 +81,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     if (Main.npc[i].CanBeChasedBy(projectile, false))
                     {
-                        float num5 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+                        float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - projectile.position.Y + projectile.height / 2);
                         if (num5 < 800f)
                         {
                             if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
@@ -111,23 +111,23 @@ namespace CalamityInheritance.CIPlayer
                     num6 = array[Main.rand.Next(num3)];
                 }
                 float num7 = 20f;
-                float num8 = (float)Main.rand.Next(-100, 101);
-                float num9 = (float)Main.rand.Next(-100, 101);
+                float num8 = Main.rand.Next(-100, 101);
+                float num9 = Main.rand.Next(-100, 101);
                 float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
                 num10 = num7 / num10;
                 num8 *= num10;
                 num9 *= num10;
                 Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, (int)num8, (int)num9, ModContent.ProjectileType<GodSlayerOrb>(),
-                    (int)((double)finalDamage * (Main.player[projectile.owner].Calamity().auricSet ? 2.0 : 1.5)), 0, projectile.owner, (float)num6, 0f);
+                    (int)(finalDamage * (Main.player[projectile.owner].Calamity().auricSet ? 2.0 : 1.5)), 0, projectile.owner, num6, 0f);
                 if (target.canGhostHeal)
                 {
                     float num11 = Main.player[projectile.owner].Calamity().auricSet ? 0.03f : 0.06f; //0.2
-                    num11 -= (float)projectile.numHits * 0.015f; //0.05
+                    num11 -= projectile.numHits * 0.015f; //0.05
                     if (num11 <= 0f)
                     {
                         return;
                     }
-                    float num12 = (float)projectile.damage * num11;
+                    float num12 = projectile.damage * num11;
                     if ((int)num12 <= 0)
                     {
                         return;
@@ -143,15 +143,15 @@ namespace CalamityInheritance.CIPlayer
                     {
                         if (Main.player[i].active && !Main.player[i].dead && ((!Main.player[projectile.owner].hostile && !Main.player[i].hostile) || Main.player[projectile.owner].team == Main.player[i].team))
                         {
-                            float num15 = Math.Abs(Main.player[i].position.X + (float)(Main.player[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.player[i].position.Y + (float)(Main.player[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
-                            if (num15 < 1200f && (float)(Main.player[i].statLifeMax2 - Main.player[i].statLife) > num13)
+                            float num15 = Math.Abs(Main.player[i].position.X + Main.player[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.player[i].position.Y + Main.player[i].height / 2 - projectile.position.Y + projectile.height / 2);
+                            if (num15 < 1200f && Main.player[i].statLifeMax2 - Main.player[i].statLife > num13)
                             {
-                                num13 = (float)(Main.player[i].statLifeMax2 - Main.player[i].statLife);
+                                num13 = Main.player[i].statLifeMax2 - Main.player[i].statLife;
                                 num14 = i;
                             }
                         }
                     }
-                    Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, 0, 0, ModContent.ProjectileType<GodSlayerHealOrb>(), 0, 0, projectile.owner, (float)num14, num12);
+                    Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, 0, 0, ModContent.ProjectileType<GodSlayerHealOrb>(), 0, 0, projectile.owner, num14, num12);
                 }
             }
 
@@ -173,7 +173,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     if (Main.npc[i].CanBeChasedBy(projectile, false))
                     {
-                        float num5 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+                        float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - projectile.position.Y + projectile.height / 2);
                         if (num5 < 800f)
                         {
                             if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
@@ -203,13 +203,13 @@ namespace CalamityInheritance.CIPlayer
                     num6 = array[Main.rand.Next(num3)];
                 }
                 float num7 = 20f;
-                float num8 = (float)Main.rand.Next(-100, 101);
-                float num9 = (float)Main.rand.Next(-100, 101);
+                float num8 = Main.rand.Next(-100, 101);
+                float num9 = Main.rand.Next(-100, 101);
                 float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
                 num10 = num7 / num10;
                 num8 *= num10;
                 num9 *= num10;
-                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)((double)finalDamage * 2.0), 0, projectile.owner, (float)num6, 0f);
+                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)(finalDamage * 2.0), 0, projectile.owner, num6, 0f);
             }
             #endregion
             var source = projectile.GetSource_FromThis();

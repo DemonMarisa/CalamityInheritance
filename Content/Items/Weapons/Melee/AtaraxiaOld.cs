@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int numSplits = 5;
             int trueMeleeID = ModContent.ProjectileType<AtaraxiaHoming>();
             int trueMeleeDamage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(0.1f * Item.damage);
-            float angleVariance = MathHelper.TwoPi / (float)numSplits;
+            float angleVariance = MathHelper.TwoPi / numSplits;
             float spinOffsetAngle = MathHelper.Pi / (2f * numSplits);
             var source = player.GetSource_ItemUse(Item);
             Vector2 posVec = new Vector2(8f, 0f).RotatedByRandom(MathHelper.TwoPi);

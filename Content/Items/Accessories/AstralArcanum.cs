@@ -30,7 +30,6 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             modPlayer1.AstralBulwark = true;
             modPlayer1.astralArcanum = true;

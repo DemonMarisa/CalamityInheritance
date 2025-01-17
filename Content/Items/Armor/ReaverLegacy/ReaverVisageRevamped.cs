@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverMask : ModItem, ILocalizedModType
+    public class ReaverVisageRevamped : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -18,16 +18,16 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void SetDefaults()
         {
-            Item.width = 18;
-            Item.height = 22;
-            Item.value = CIShopValue.RarityPriceLime; 
+            Item.width = 24;
+            Item.height = 28;
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 7; //40
+            Item.defense = 13; //46
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMail>() && legs.type == ModContent.ItemType<ReaverCuisses>();
+            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -38,22 +38,20 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
-            modPlayer1.reaverMageBurst = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.GetDamage<MagicDamageClass>() += 0.10f; //35+10魔法伤害，30暴击率,20
-            player.GetCritChance<MagicDamageClass>() += 10;
+            modPlayer1.reaverRangedRocket = true;
+            //Scarlet:总远程伤害降低至30%，暴击概率降低至20%
+            player.GetDamage<RangedDamageClass>() += 0.10f;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.ignoreWater = true;
-            player.GetDamage<MagicDamageClass>() += 0.10f;
-            player.GetCritChance<MagicDamageClass>() += 5;
-            player.manaCost *= 0.88f;
+            player.GetDamage<RangedDamageClass>() += 0.05f;
+            player.GetCritChance<RangedDamageClass>() += 5;
+            player.ammoCost80 = true;
             player.moveSpeed += 0.1f;
-            player.statManaMax2 += 80;
         }
 
         public override void AddRecipes()

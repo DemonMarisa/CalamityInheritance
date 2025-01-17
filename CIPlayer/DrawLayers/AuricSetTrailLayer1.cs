@@ -33,7 +33,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
             float movementSpeedInterpolant = CobaltArmorSetChange.CalculateMovementSpeedInterpolant(drawPlayer);
             for (float i = 0f; i < drawPlayer.Calamity().OldPositions.Length; i += 1.7f)
             {
-                float completionRatio = i / (float)drawPlayer.Calamity().OldPositions.Length;
+                float completionRatio = i / drawPlayer.Calamity().OldPositions.Length;
                 float scale = MathHelper.Lerp(1f, 0.6f, completionRatio);
                 float opacity = MathHelper.Lerp(0.12f, 0.03f, completionRatio) * movementSpeedInterpolant;
                 List<DrawData> afterimages = new List<DrawData>();

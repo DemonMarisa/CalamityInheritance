@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Main.dust[ghostlyDust].noGravity = true;
             float projVelocityFactor = 30f * Projectile.ai[1]; //100
             float scaleFactor = 6f * Projectile.ai[1]; //5
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) - 1.57f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
             {
@@ -88,8 +88,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.timeLeft < 85)
             {
                 byte b2 = (byte)(Projectile.timeLeft * 3);
-                byte a2 = (byte)(100f * ((float)b2 / 255f));
-                return new Color((int)b2, (int)b2, (int)b2, (int)a2);
+                byte a2 = (byte)(100f * (b2 / 255f));
+                return new Color(b2, b2, b2, a2);
             }
             return new Color(255, 255, 255, 100);
         }
@@ -103,8 +103,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 112;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             Projectile.maxPenetrate = -1;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
@@ -114,8 +114,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             int dustAmt = 36;
             for (int i = 0; i < dustAmt; i++)
             {
-                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
-                rotate = rotate.RotatedBy((double)((float)(i - (dustAmt / 2 - 1)) * 6.28318548f / (float)dustAmt), default) + Projectile.Center;
+                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
+                rotate = rotate.RotatedBy((double)((i - (dustAmt / 2 - 1)) * 6.28318548f / dustAmt), default) + Projectile.Center;
                 Vector2 faceDirection = rotate - Projectile.Center;
                 int killedDust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.ShadowbeamStaff, faceDirection.X * 1.5f, faceDirection.Y * 1.5f, 100, default, 2f);
                 Main.dust[killedDust].noGravity = true;

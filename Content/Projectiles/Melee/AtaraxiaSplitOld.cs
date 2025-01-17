@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.alpha += 5;
 
             // Light which scales down as it fades
-            float lightFactor = (255f - (float)Projectile.alpha) / 255f;
+            float lightFactor = (255f - Projectile.alpha) / 255f;
             Lighting.AddLight(Projectile.Center, 0.3f * lightFactor, 0.05f * lightFactor, 0.2f * lightFactor);
 
             // Spawn dust, with less dust as it fades away

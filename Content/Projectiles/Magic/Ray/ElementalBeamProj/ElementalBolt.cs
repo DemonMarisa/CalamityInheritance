@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 for (int i = 0; i < 1; i++)
                 {
                     Vector2 vector2 = Vector2.UnitX * -12f;
-                    vector2 = -Vector2.UnitY.RotatedBy(base.Projectile.ai[0] * (MathF.PI / 24f) + (float)i * MathF.PI) * vector - base.Projectile.rotation.ToRotationVector2() * 10f;
+                    vector2 = -Vector2.UnitY.RotatedBy(base.Projectile.ai[0] * (MathF.PI / 24f) + i * MathF.PI) * vector - base.Projectile.rotation.ToRotationVector2() * 10f;
                     int num = Dust.NewDust(base.Projectile.Center, 0, 0, 66, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
                     Main.dust[num].scale = 0.75f;
                     Main.dust[num].noGravity = true;
@@ -80,11 +80,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 for (int j = 0; j < 1; j++)
                 {
                     Vector2 position = base.Projectile.position;
-                    position -= base.Projectile.velocity * ((float)j * 0.25f);
+                    position -= base.Projectile.velocity * (j * 0.25f);
                     int num2 = Dust.NewDust(position, 1, 1, DustID.RainbowTorch, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
                     Main.dust[num2].noGravity = true;
                     Main.dust[num2].position = position;
-                    Main.dust[num2].scale = (float)Main.rand.Next(70, 110) * 0.013f;
+                    Main.dust[num2].scale = Main.rand.Next(70, 110) * 0.013f;
                     Main.dust[num2].velocity *= 0.1f;
                 }
             }

@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Vector2 vector = player.Center - Projectile.Center;
             float num = vector.Length();
             Projectile.rotation = Utils.ToRotation(vector);
-            if (player.dead || !((Entity)player).active)
+            if (player.dead || !player.active)
             {
                 Projectile.Kill();
                 return;
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 player.ChangeDir(1);
                 Projectile.direction = 1;
                 Projectile.spriteDirection = 1;
-                Projectile projectile = ((ModProjectile)this).Projectile;
+                Projectile projectile = this.Projectile;
                 projectile.rotation += (float)Math.PI;
             }
             else
@@ -55,14 +55,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             player.itemRotation = Utils.ToRotation(-1f * vector * Projectile.direction);
             player.itemAnimation = 6;
             player.itemTime = 6;
-            if (Projectile.ai[0] == 0f && num < ExoFlail.MaxRange && ((Entity)player).whoAmI == Main.myPlayer)
+            if (Projectile.ai[0] == 0f && num < ExoFlail.MaxRange && player.whoAmI == Main.myPlayer)
             {
                 Vector2 value = Main.MouseWorld - Projectile.Center;
                 value.Normalize();
                 value.X *= ExoFlail.MouseHomingAcceleration;
                 value.Y *= ExoFlail.MouseHomingAcceleration;
-                Projectile projectile2 = ((ModProjectile)this).Projectile;
-                ((Entity)projectile2).velocity = ((Entity)projectile2).velocity + value;
+                Projectile projectile2 = this.Projectile;
+                projectile2.velocity = projectile2.velocity + value;
                 Projectile.velocity = Utils.SafeNormalize(Projectile.velocity, -Vector2.UnitY) * ExoFlail.Speed;
             }
             if (Projectile.ai[0] == 0f && num > ExoFlail.MaxRange)
@@ -78,8 +78,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
                 if (Projectile.ai[0] == 1f)
                 {
-                    Projectile projectile3 = ((ModProjectile)this).Projectile;
-                    ((Entity)projectile3).velocity = ((Entity)projectile3).velocity + Utils.SafeNormalize(vector, Vector2.Zero) * (ExoFlail.ReturnSpeed / 20f);
+                    Projectile projectile3 = this.Projectile;
+                    projectile3.velocity = projectile3.velocity + Utils.SafeNormalize(vector, Vector2.Zero) * (ExoFlail.ReturnSpeed / 20f);
                 }
                 if (Projectile.velocity.Length() >= ExoFlail.ReturnSpeed || Projectile.ai[0] == 2f)
                 {
@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.alpha = ((Projectile.ai[1] <= 5f) ? 255 : 0);
             if (Projectile.ai[1] % 6f == 0f && Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.05f, ModContent.ProjectileType<ExoFlailEnergy>(), (int)((float)Projectile.damage * 0.1f), Projectile.owner, 0, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.05f, ModContent.ProjectileType<ExoFlailEnergy>(), (int)(Projectile.damage * 0.1f), Projectile.owner, 0, 0f);
             }
         }
 
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)(MathHelper.ToRadians(360 / Streams * i) + StartAngle), default(Vector2));
                     vector.X *= ProjSpeed;
                     vector.Y *= ProjSpeed;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Location.X, Location.Y, vector.X, vector.Y, type, (int)((float)Projectile.damage * damageMult), 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Location.X, Location.Y, vector.X, vector.Y, type, (int)(Projectile.damage * damageMult), 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -117,9 +117,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             Player player = Main.player[Projectile.owner];
-            Utils.RotatedBy(new Vector2(1.5f, 0f), (double)Projectile.rotation, default(Vector2));
+            Utils.RotatedBy(new Vector2(1.5f, 0f), Projectile.rotation, default(Vector2));
             float num = 0f;
-            if (Collision.CheckAABBvLineCollision(Utils.TopLeft(targetHitbox), Utils.Size(targetHitbox), Projectile.Center, ((Entity)player).Center, 22f, ref num))
+            if (Collision.CheckAABBvLineCollision(Utils.TopLeft(targetHitbox), Utils.Size(targetHitbox), Projectile.Center, player.Center, 22f, ref num))
             {
                 Projectile.localAI[0] = 1f;
                 return true;
@@ -147,13 +147,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-                Vector2 v = ((Entity)Main.player[Projectile.owner]).Center - Projectile.Center;
+                Vector2 v = Main.player[Projectile.owner].Center - Projectile.Center;
                 Projectile.velocity = Utils.SafeNormalize(v, Vector2.Zero) * ExoFlail.ReturnSpeed;
             }
             else
             {
                 float startAngle2 = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
-                Explode(((Entity)target).Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(target.Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
                 //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
             }
@@ -167,7 +167,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Texture2D texture2 = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Melee/ExoFlailProj2_Base").Value;
             Vector2 vector = Projectile.Center;
             Rectangle? sourceRectangle = null;
-            Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)texture.Height * 0.5f);
+            Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
             Vector2 vector2 = mountedCenter - vector;
             float num = (float)Math.Atan2(vector2.Y, vector2.X) - (float)Math.PI / 2f;
             float num2 = (float)Math.Atan2(vector2.Y, vector2.X) - (float)Math.PI / 2f;
@@ -181,7 +181,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 flag = false;
             }
-            while (flag && vector2.Length() >= (float)texture.Height + 1f)
+            while (flag && vector2.Length() >= texture.Height + 1f)
             {
                 Vector2 value2 = Utils.SafeNormalize(vector2, Vector2.Zero);
                 vector += value2 * texture.Height;

@@ -67,12 +67,15 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 35;
-                    modPlayer1.healingPotionMultiplier += 0.10f;    //追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    modPlayer1.healingPotionMultiplier += 0.10f;
+                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
                 {
-                    Player.GetDamage<GenericDamageClass>() -= 0.20f; //低于20%血量时-20%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                    Player.GetCritChance<GenericDamageClass>() -= 20;
+                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                    Player.GetCritChance<GenericDamageClass>() -= 40;
+                    ancientXerocWrath = true;
                 }
             }   
 
@@ -506,8 +509,8 @@ namespace CalamityInheritance.CIPlayer
                             {
                                 if (Main.rand.NextBool(4))
                                 {
-                                    Vector2 vector = new Vector2((float)(num66 - num68), (float)(num67 - num69));
-                                    if (vector.Length() < (float)num65 && num68 > 0 && num68 < Main.maxTilesX - 1 && num69 > 0 && num69 < Main.maxTilesY - 1 && Main.tile[num68, num69] != null && Main.tile[num68, num69].HasTile)
+                                    Vector2 vector = new Vector2(num66 - num68, num67 - num69);
+                                    if (vector.Length() < num65 && num68 > 0 && num68 < Main.maxTilesX - 1 && num69 > 0 && num69 < Main.maxTilesY - 1 && Main.tile[num68, num69] != null && Main.tile[num68, num69].HasTile)
                                     {
                                         bool flag7 = false;
                                         if (Main.tile[num68, num69].TileType == 185 && Main.tile[num68, num69].TileFrameY == 18)
@@ -518,9 +521,9 @@ namespace CalamityInheritance.CIPlayer
                                         else if (Main.tile[num68, num69].TileType == 186 && Main.tile[num68, num69].TileFrameX >= 864 && Main.tile[num68, num69].TileFrameX <= 1170)
                                             flag7 = true;
 
-                                        if (flag7 || Main.tileSpelunker[(int)Main.tile[num68, num69].TileType] || (Main.tileAlch[(int)Main.tile[num68, num69].TileType] && Main.tile[num68, num69].TileType != 82))
+                                        if (flag7 || Main.tileSpelunker[Main.tile[num68, num69].TileType] || (Main.tileAlch[Main.tile[num68, num69].TileType] && Main.tile[num68, num69].TileType != 82))
                                         {
-                                            int num70 = Dust.NewDust(new Vector2((float)(num68 * 16), (float)(num69 * 16)), 16, 16, DustID.TreasureSparkle, 0f, 0f, 150, default, 0.3f);
+                                            int num70 = Dust.NewDust(new Vector2(num68 * 16, num69 * 16), 16, 16, DustID.TreasureSparkle, 0f, 0f, 150, default, 0.3f);
                                             Main.dust[num70].fadeIn = 0.75f;
                                             Main.dust[num70].velocity *= 0.1f;
                                             Main.dust[num70].noLight = true;
@@ -748,12 +751,12 @@ namespace CalamityInheritance.CIPlayer
 
             if (silvaMelee)
             {
-                double multiplier = (double)Player.statLife / (double)Player.statLifeMax2;
+                double multiplier = Player.statLife / (double)Player.statLifeMax2;
                 Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
 
                 if (modPlayer1.auricSet && silvaMelee)
                 {
-                    double multiplier1 = (double)Player.statLife / (double)Player.statLifeMax2;
+                    double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
                     Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
                 }
             }
@@ -798,14 +801,14 @@ namespace CalamityInheritance.CIPlayer
                     for (int j = 0; j < 2; j++)
                     {
                         int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += (float)Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
                         Main.dust[green].velocity *= 0.9f;
                         Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                         Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
                         if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                     }
                     if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && auricsilvaCountdown <= 0)
                     {
@@ -832,14 +835,14 @@ namespace CalamityInheritance.CIPlayer
                     for (int j = 0; j < 2; j++)
                     {
                         int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += (float)Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += (float)Main.rand.Next(-20, 21);
+                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
                         Main.dust[green].velocity *= 0.9f;
                         Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                         Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
                         if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                     }
                     if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && CIsilvaCountdown <= 0)
                     {
@@ -996,7 +999,7 @@ namespace CalamityInheritance.CIPlayer
                         Vector2 vector = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
                         Dust dust = Main.dust[Dust.NewDust(Player.Center - vector * 30f, 0, 0, (int)CalamityDusts.ProfanedFire, 0f, 0f, 0, default, 1f)];
                         dust.noGravity = true;
-                        dust.position = Player.Center - vector * (float)Main.rand.Next(5, 11);
+                        dust.position = Player.Center - vector * Main.rand.Next(5, 11);
                         dust.velocity = vector.RotatedBy(Math.PI / 2D, default) * 4f;
                         dust.scale = 0.5f + Main.rand.NextFloat();
                         dust.fadeIn = 0.5f;

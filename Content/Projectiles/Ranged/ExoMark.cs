@@ -60,9 +60,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Projectile.localAI[0] = 0.8f;
                 Projectile.direction = 1;
                 Point point9 = Projectile.Center.ToTileCoordinates();
-                Projectile.Center = new Vector2((float)(point9.X * 16 + 8), (float)(point9.Y * 16 + 8));
+                Projectile.Center = new Vector2(point9.X * 16 + 8, point9.Y * 16 + 8);
             }
-            Projectile.rotation = Projectile.localAI[1] / 40f * 6.28318548f * (float)Projectile.direction;
+            Projectile.rotation = Projectile.localAI[1] / 40f * 6.28318548f * Projectile.direction;
             if (Projectile.localAI[1] < 33f)
             {
                 if (Projectile.alpha > 0)
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 if (Main.rand.NextBool(10))
                 {
-                    Vector2 value83 = Vector2.UnitY.RotatedBy((double)((float)num1135 * 3.14159274f), default).RotatedBy((double)Projectile.rotation, default);
+                    Vector2 value83 = Vector2.UnitY.RotatedBy((double)(num1135 * 3.14159274f), default).RotatedBy(Projectile.rotation, default);
                     Dust dust35 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.TerraBlade, 0f, 0f, 225, newColor3, 1f)];
                     dust35.noGravity = true;
                     dust35.noLight = true;
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 if (Main.rand.NextBool(10))
                 {
-                    Vector2 value84 = Vector2.UnitY.RotatedBy((double)((float)num1136 * 3.14159274f), default);
+                    Vector2 value84 = Vector2.UnitY.RotatedBy((double)(num1136 * 3.14159274f), default);
                     Dust dust36 = Main.dust[Dust.NewDust(Projectile.Center, 0, 0, DustID.TerraBlade, 0f, 0f, 225, newColor3, 1.5f)];
                     dust36.noGravity = true;
                     dust36.noLight = true;
@@ -133,8 +133,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Color color25 = Lighting.GetColor((int)((double)Projectile.position.X + (double)Projectile.width * 0.5) / 16, (int)(((double)Projectile.position.Y + (double)Projectile.height * 0.5) / 16.0));
-            Vector2 vector38 = Projectile.position + new Vector2((float)Projectile.width, (float)Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+            Color color25 = Lighting.GetColor((int)(Projectile.position.X + Projectile.width * 0.5) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
+            Vector2 vector38 = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
             Texture2D texture2D27 = ModContent.Request<Texture2D>(Texture).Value;
             Rectangle rectangle11 = texture2D27.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
             Color alpha5 = Projectile.GetAlpha(color25);

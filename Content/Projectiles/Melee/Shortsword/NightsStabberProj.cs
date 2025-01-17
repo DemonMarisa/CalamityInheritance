@@ -48,12 +48,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             if (Main.rand.NextBool(3))
             {
-                int Demonite = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, (float)(Projectile.direction * 4), 0f, 15, default, 1.3f);
+                int Demonite = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Demonite, Projectile.direction * 4, 0f, 15, default, 1.3f);
             }
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<NightStabber2>(), (int)(Projectile.damage * 1), Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<NightStabber2>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

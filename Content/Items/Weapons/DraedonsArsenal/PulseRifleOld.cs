@@ -26,11 +26,10 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
         public new string LocalizationCategory => "Content.Items.Weapons.DraedonsArsenal";
         public static readonly SoundStyle FireSound = new("CalamityMod/Sounds/Item/PulseRifleFire");
 
-        private int BaseDamage = 1200;
+        private readonly int BaseDamage = 1200;
 
         public override void SetDefaults()
         {
-            CalamityGlobalItem modItem = Item.Calamity();
 
             Item.width = 62;
             Item.height = 22;
@@ -65,8 +64,8 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
                 velocity *= 5f;
             }
 
-            float SpeedX = velocity.X + (float)Main.rand.Next(-1, 2) * 0.05f;
-            float SpeedY = velocity.Y + (float)Main.rand.Next(-1, 2) * 0.05f;
+            float SpeedX = velocity.X + Main.rand.Next(-1, 2) * 0.05f;
+            float SpeedY = velocity.Y + Main.rand.Next(-1, 2) * 0.05f;
 
             Projectile.NewProjectile(source, position, new Vector2(SpeedX, SpeedY), ModContent.ProjectileType<PulseRifleShotOld>(), damage, knockback, player.whoAmI, 0f, 0f);
             return false;

@@ -5,36 +5,35 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class ReaverScaleMail : ModItem, ILocalizedModType
+    [AutoloadEquip(EquipType.Legs)]
+    public class ReaverCuissesRevamped : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
         }
-
         public override void SetDefaults()
         {
-            Item.width = 34;
-            Item.height = 22;
+            Item.width = 22;
+            Item.height = 18;
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 19;
+            Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 20;
-            player.GetDamage<GenericDamageClass>() += 0.10f;
             player.GetCritChance<GenericDamageClass>() += 5;
+            player.GetDamage<GenericDamageClass>() += 0.05f;
+            player.moveSpeed += 0.12f;
         }
 
         public override void AddRecipes()
-        { 
+        {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),10)
-            .AddIngredient(ItemID.JungleSpores, 8)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
+            .AddIngredient(ModContent.ItemType<PerennialBar>(),5)
+            .AddIngredient(ItemID.JungleSpores, 4)
+            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 1)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

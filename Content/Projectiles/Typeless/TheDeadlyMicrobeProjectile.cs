@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 
         public override void AI()
         {
-            float num944 = 1f - (float)Projectile.alpha / 255f;
+            float num944 = 1f - Projectile.alpha / 255f;
             num944 *= Projectile.scale;
             Lighting.AddLight(Projectile.Center, 0.25f * num944, 0.025f * num944, 0.275f * num944);
             Projectile.localAI[0] += 1f;
@@ -149,9 +149,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             {
                 if (Main.npc[num949].CanBeChasedBy(Projectile, false))
                 {
-                    float num950 = Main.npc[num949].position.X + (float)(Main.npc[num949].width / 2);
-                    float num951 = Main.npc[num949].position.Y + (float)(Main.npc[num949].height / 2);
-                    float num952 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num950) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num951);
+                    float num950 = Main.npc[num949].position.X + Main.npc[num949].width / 2;
+                    float num951 = Main.npc[num949].position.Y + Main.npc[num949].height / 2;
+                    float num952 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num950) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num951);
                     if (num952 < num948)
                     {
                         num948 = num952;
@@ -183,13 +183,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 56;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             int num226 = 36;
             for (int num227 = 0; num227 < num226; num227++)
             {
-                Vector2 vector6 = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
-                vector6 = vector6.RotatedBy((double)((float)(num227 - (num226 / 2 - 1)) * 6.28318548f / (float)num226), default) + Projectile.Center;
+                Vector2 vector6 = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
+                vector6 = vector6.RotatedBy((double)((num227 - (num226 / 2 - 1)) * 6.28318548f / num226), default) + Projectile.Center;
                 Vector2 vector7 = vector6 - Projectile.Center;
                 int num228 = Dust.NewDust(vector6 + vector7, 0, 0, DustID.JungleSpore, vector7.X, vector7.Y, 100, default, 0.5f);
                 Main.dust[num228].noGravity = true;

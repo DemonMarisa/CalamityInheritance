@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (!initialized)
             {
-                startYVelSign = (float)Math.Sign(Projectile.velocity.Y) * 0.35f;
+                startYVelSign = Math.Sign(Projectile.velocity.Y) * 0.35f;
                 initialized = true;
             }
             if (Projectile.penetrate == penetrateMax && Projectile.timeLeft < 245)
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else
             {
-                Projectile.scale += (maxScale - 1) / (float)penetrateMax;
+                Projectile.scale += (maxScale - 1) / penetrateMax;
             }
             Projectile.ai[1] = 5 + Main.rand.Next(-2, 3);
             target.immune[Projectile.owner] = 0; //so that all blades can hit the enemy
@@ -81,8 +81,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnKill(int timeLeft)
         {
             Vector2 randomCirclePointVector = Vector2.One.RotatedByRandom(MathHelper.ToRadians(32f));
-            float lerpStart = (float)Main.rand.Next(12, 17);
-            float lerpEnd = (float)Main.rand.Next(3, 7);
+            float lerpStart = Main.rand.Next(12, 17);
+            float lerpEnd = Main.rand.Next(3, 7);
             for (float i = 0; i < 9f; ++i)
             {
                 for (int j = 0; j < 2; ++j)

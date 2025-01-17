@@ -65,13 +65,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 64;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int dustIndex = 0; dustIndex <= 30; dustIndex++)
             {
-                float num463 = (float)Main.rand.Next(-10, 11);
-                float num464 = (float)Main.rand.Next(-10, 11);
-                float num465 = (float)Main.rand.Next(3, 9);
+                float num463 = Main.rand.Next(-10, 11);
+                float num464 = Main.rand.Next(-10, 11);
+                float num465 = Main.rand.Next(3, 9);
                 float num466 = (float)Math.Sqrt((double)(num463 * num463 + num464 * num464));
                 num466 = num465 / num466;
                 num463 *= num466;
@@ -81,8 +81,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust.noGravity = true;
                 dust.position.X = Projectile.Center.X;
                 dust.position.Y = Projectile.Center.Y;
-                dust.position.X += (float)Main.rand.Next(-10, 11);
-                dust.position.Y += (float)Main.rand.Next(-10, 11);
+                dust.position.X += Main.rand.Next(-10, 11);
+                dust.position.Y += Main.rand.Next(-10, 11);
                 dust.velocity.X = num463;
                 dust.velocity.Y = num464;
             }

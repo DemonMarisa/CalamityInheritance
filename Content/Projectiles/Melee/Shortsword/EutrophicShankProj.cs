@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             if (Main.rand.NextBool(3))
             {
-                int UnusedWhiteBluePurple = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, (float)(Projectile.direction * 4), 0f, 15, default, 1.3f);
+                int UnusedWhiteBluePurple = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Projectile.direction * 4, 0f, 15, default, 1.3f);
             }
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                 Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 12f, ModContent.ProjectileType<EutrophicSpark>(), (int)(Projectile.damage * 1), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 12f, ModContent.ProjectileType<EutrophicSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
             };
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             for (int num638 = 0; num638 < Main.projectile.Length; num638++)
             {
                 bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicAxe>();
-                if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner && flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < (float)Projectile.width)
+                if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner && flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < Main.projectile[num638].position.X)
                     {
@@ -190,8 +190,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                 }
                 if (playerDist > 2000f)
                 {
-                    Projectile.position.X = player.Center.X - (float)(Projectile.width / 2);
-                    Projectile.position.Y = player.Center.Y - (float)(Projectile.height / 2);
+                    Projectile.position.X = player.Center.X - Projectile.width / 2;
+                    Projectile.position.Y = player.Center.Y - Projectile.height / 2;
                     Projectile.netUpdate = true;
                 }
                 if (playerDist > 70f)

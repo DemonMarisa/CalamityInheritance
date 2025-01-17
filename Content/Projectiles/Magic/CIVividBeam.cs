@@ -38,10 +38,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 initialized = true;
                 float dustAmt = 16f;
                 int d = 0;
-                while ((float)d < dustAmt)
+                while (d < dustAmt)
                 {
                     Vector2 offset = Vector2.UnitX * 0f;
-                    offset += -Vector2.UnitY.RotatedBy((double)((float)d * (MathHelper.TwoPi / dustAmt)), default) * new Vector2(1f, 4f);
+                    offset += -Vector2.UnitY.RotatedBy((double)(d * (MathHelper.TwoPi / dustAmt)), default) * new Vector2(1f, 4f);
                     offset = offset.RotatedBy((double)Projectile.velocity.ToRotation(), default);
                     int i = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
                     Main.dust[i].scale = 1.5f;
@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 for (int d = 0; d < 2; d++)
                 {
                     Vector2 offset = Vector2.UnitX * -12f;
-                    offset = -Vector2.UnitY.RotatedBy((double)(Projectile.ai[0] * pi / 24f + (float)d * pi), default) * new Vector2(5f, 10f) - Projectile.rotation.ToRotationVector2() * 10f;
+                    offset = -Vector2.UnitY.RotatedBy((double)(Projectile.ai[0] * pi / 24f + d * pi), default) * new Vector2(5f, 10f) - Projectile.rotation.ToRotationVector2() * 10f;
                     int i = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
                     Main.dust[i].scale = 0.75f;
                     Main.dust[i].noGravity = true;
@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 for (int d = 0; d < 2; d++)
                 {
                     Vector2 source = Projectile.position;
-                    source -= Projectile.velocity * ((float)d * 0.25f);
+                    source -= Projectile.velocity * (d * 0.25f);
                     int i = Dust.NewDust(source, 1, 1, DustID.RainbowTorch, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
                     Main.dust[i].noGravity = true;
                     Main.dust[i].position = source;

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (!initialized)
             {
-                startYVelSign = (float)Math.Sign(Projectile.velocity.Y) * 0.35f;
+                startYVelSign = Math.Sign(Projectile.velocity.Y) * 0.35f;
                 initialized = true;
             }
             if (Projectile.penetrate == penetrationAmt && Projectile.timeLeft < 245)
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
 
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 0.785f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
             Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
             if (currentColor == Color.Black)
             {
@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.scale += (maxScale - 1) / (float)penetrationAmt;
+            Projectile.scale += (maxScale - 1) / penetrationAmt;
             Projectile.ai[1] = 5 + Main.rand.Next(-2, 3);
 
             target.AddBuff(BuffID.Frostburn, 300);

@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             if (Main.rand.NextBool(5))
             {
-                int MagicMirror = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.MagicMirror, (float)(Projectile.direction * 2), 0f, 15, default, 1.3f);
+                int MagicMirror = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.MagicMirror, Projectile.direction * 2, 0f, 15, default, 1.3f);
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

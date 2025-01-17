@@ -9,8 +9,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class AtaraxiaMainOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        private static int NumAnimationFrames = 5;
-        private static int AnimationFrameTime = 9;
+        private static readonly int NumAnimationFrames = 5;
+        private static readonly int AnimationFrameTime = 9;
 
         public override void SetStaticDefaults()
         {
@@ -72,8 +72,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             // Transform the projectile's hitbox into a big explosion
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 140;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
 
             Vector2 corner = new Vector2(Projectile.position.X, Projectile.position.Y);
             for (int i = 0; i < 50; i++)

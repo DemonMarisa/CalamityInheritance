@@ -9,14 +9,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class AtaraxiaHoming : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        private static int NumAnimationFrames = 5;
-        private static int AnimationFrameTime = 9;
-        private static float HomingStartRange = 300f;
-        private static float HomingBreakRange = 1000f;
+        private static readonly int NumAnimationFrames = 5;
+        private static readonly int AnimationFrameTime = 9;
+        private static readonly float HomingStartRange = 300f;
+        private static readonly float HomingBreakRange = 1000f;
 
-        private static int Lifespan = 180;
-        private static int IntangibleFrames = 12;
-
+        private static readonly int Lifespan = 180;
+        private static readonly int IntangibleFrames = 12;
+        //Scarlet：
+        //将这些固定的变量（或者说能当作宏一类的东西）设置为只读
+        // 可以很好的避免可能会存在的一些函数对上述变量进行修改的数据践踏，也一定程度上可以保证稳定
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = NumAnimationFrames;
@@ -71,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
                 // If at least one valid target was found, set ai[1] to store its index plus one.
                 if (foundTarget)
-                    Projectile.ai[1] = (float)(targetIndex + 1);
+                    Projectile.ai[1] = targetIndex + 1;
             }
 
             // This is always the case after that loop for some reason.

@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     if (Main.npc[i].CanBeChasedBy(Projectile, false))
                     {
-                        float extraDistance = (float)(Main.npc[i].width / 2) + (float)(Main.npc[i].height / 2);
+                        float extraDistance = Main.npc[i].width / 2 + (float)(Main.npc[i].height / 2);
 
                         if (Vector2.Distance(Main.npc[i].Center, Projectile.Center) < (maxDistance + extraDistance) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[i].Center, 1, 1))
                         {
@@ -85,13 +85,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 24;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             int constant = 36;
             for (int i = 0; i < constant; i++)
             {
-                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
-                rotate = rotate.RotatedBy((double)((float)(i - (constant / 2 - 1)) * 6.28318548f / (float)constant), default) + Projectile.Center;
+                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
+                rotate = rotate.RotatedBy((double)((i - (constant / 2 - 1)) * 6.28318548f / constant), default) + Projectile.Center;
                 Vector2 faceDirection = rotate - Projectile.Center;
                 int dust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.BoneTorch, faceDirection.X * 0.5f, faceDirection.Y * 0.5f, 100, default, 0.75f);
                 Main.dust[dust].noGravity = true;

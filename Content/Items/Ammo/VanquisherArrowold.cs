@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Ammo
             Item.maxStack = 9999;
             Item.consumable = true;
             Item.knockBack = 3.5f;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.value = Item.sellPrice(silver: 32);
             Item.shoot = ModContent.ProjectileType<VanquisherArrowoldMain>();
             Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Arrow;

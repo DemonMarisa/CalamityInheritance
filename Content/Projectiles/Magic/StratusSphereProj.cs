@@ -13,9 +13,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         int dust_nut = 0;
         public override void SetStaticDefaults()
         {
-            Main.projFrames[base.Projectile.type] = 6;
-            ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 5;
-            ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+            Main.projFrames[Projectile.type] = 6;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
         {
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = Projectile.Center;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, DustID.Electric, 0f, 0f, 0, new Color(255, 255, 255), 0.7236842f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, DustID.Electric, 0f, 0f, 0, new Color(255, 255, 255), 0.7236842f)];
             }
 
             dust_nut++;
@@ -98,8 +98,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 int num20 = 36;
                 for (int i = 0; i < num20; i++)
                 {
-                    Vector2 spinningpoint = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f * 0.5f;
-                    spinningpoint = spinningpoint.RotatedBy((double)((float)(i - (num20 / 2 - 1)) * 6.28318548f / (float)num20), default(Vector2)) + Projectile.Center;
+                    Vector2 spinningpoint = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f * 0.5f;
+                    spinningpoint = spinningpoint.RotatedBy((double)((i - (num20 / 2 - 1)) * 6.28318548f / num20), default(Vector2)) + Projectile.Center;
                     Vector2 vector = spinningpoint - Projectile.Center;
                     int num21 = Dust.NewDust(spinningpoint + vector, 0, 0, DustID.Electric, vector.X * 2f, vector.Y * 2f, 0, new Color(255, 255, 255), 0.7236842f);
                     Main.dust[num21].noGravity = true;

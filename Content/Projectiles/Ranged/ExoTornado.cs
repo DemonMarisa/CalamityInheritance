@@ -56,8 +56,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Collision.ExpandVertically(point8.X, point8.Y, out num1129, out num1130, (int)num1127, (int)num1128);
             num1129++;
             num1130--;
-            Vector2 value72 = new Vector2((float)point8.X, (float)num1129) * 16f + new Vector2(8f);
-            Vector2 value73 = new Vector2((float)point8.X, (float)num1130) * 16f + new Vector2(8f);
+            Vector2 value72 = new Vector2(point8.X, num1129) * 16f + new Vector2(8f);
+            Vector2 value73 = new Vector2(point8.X, num1130) * 16f + new Vector2(8f);
             Vector2 vector146 = Vector2.Lerp(value72, value73, 0.5f);
             Vector2 value74 = new Vector2(0f, value73.Y - value72.Y);
             value74.X = value74.Y * 0.2f;
@@ -110,8 +110,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             num230++;
             num231--;
             float num232 = 0.2f;
-            Vector2 value32 = new Vector2((float)point5.X, (float)num230) * 16f + new Vector2(8f);
-            Vector2 value33 = new Vector2((float)point5.X, (float)num231) * 16f + new Vector2(8f);
+            Vector2 value32 = new Vector2(point5.X, num230) * 16f + new Vector2(8f);
+            Vector2 value33 = new Vector2(point5.X, num231) * 16f + new Vector2(8f);
             Vector2.Lerp(value32, value33, 0.5f);
             Vector2 vector33 = new Vector2(0f, value33.Y - value32.Y);
             vector33.X = vector33.Y * num232;
@@ -124,7 +124,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             float num234 = 0f;
             float num235 = 5.1f;
             Color value34 = new Color(0, 250, 0);
-            for (float num236 = (float)(int)value33.Y; num236 > (float)(int)value32.Y; num236 -= num235)
+            for (float num236 = (int)value33.Y; num236 > (int)value32.Y; num236 -= num235)
             {
                 num234 += num235;
                 float num237 = num234 / vector33.Y;
@@ -138,7 +138,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     color39 = Color.Lerp(Color.Transparent, value34, 2f - num237 * 2f);
                 }
-                color39.A = (byte)((float)color39.A * 0.5f);
+                color39.A = (byte)(color39.A * 0.5f);
                 color39 *= scale5;
                 vector34 *= value35 * 100f;
                 vector34.Y = 0f;

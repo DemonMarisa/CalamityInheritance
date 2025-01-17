@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 2.355f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 2.355f;
             if (Projectile.spriteDirection == -1)
             {
                 Projectile.rotation -= 1.57f;
@@ -45,9 +45,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 if (Main.npc[num475].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1) && !CalamityPlayer.areThereAnyDamnBosses)
                 {
-                    float num476 = Main.npc[num475].position.X + (float)(Main.npc[num475].width / 2);
-                    float num477 = Main.npc[num475].position.Y + (float)(Main.npc[num475].height / 2);
-                    float num478 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num476) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num477);
+                    float num476 = Main.npc[num475].position.X + Main.npc[num475].width / 2;
+                    float num477 = Main.npc[num475].position.Y + Main.npc[num475].height / 2;
+                    float num478 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num476) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num477);
                     if (num478 < num474)
                     {
                         if (Main.npc[num475].position.X < num472)
@@ -78,13 +78,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     for (int i = 0; i < numProj + 1; i++)
                     {
-                        Vector2 speed = new Vector2((float)Main.rand.Next(-50, 51), (float)Main.rand.Next(-50, 51));
+                        Vector2 speed = new Vector2(Main.rand.Next(-50, 51), Main.rand.Next(-50, 51));
                         while (speed.X == 0f && speed.Y == 0f)
                         {
-                            speed = new Vector2((float)Main.rand.Next(-50, 51), (float)Main.rand.Next(-50, 51));
+                            speed = new Vector2(Main.rand.Next(-50, 51), Main.rand.Next(-50, 51));
                         }
                         speed.Normalize();
-                        speed *= (float)Main.rand.Next(30, 61) * 0.1f * 2.5f;
+                        speed *= Main.rand.Next(30, 61) * 0.1f * 2.5f;
                         int knife = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speed.X, speed.Y, ModContent.ProjectileType<Quasar2>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                         Main.projectile[knife].Calamity().stealthStrike = Projectile.Calamity().stealthStrike;
                         if (Projectile.Calamity().stealthStrike)
