@@ -1485,6 +1485,21 @@ Mods: {
 							Tooltip: ""
 						}
 					}
+
+					AmbrosialAmpouleOld: {
+						DisplayName: Ambrosial Ampoule Old
+						Tooltip: ""
+					}
+
+					SeaShell: {
+						DisplayName: Sea Shell
+						Tooltip: ""
+					}
+
+					TheAbsorberOld: {
+						DisplayName: The Absorber Old
+						Tooltip: ""
+					}
 				}
 
 				Placeables: {

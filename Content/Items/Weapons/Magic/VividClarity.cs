@@ -84,6 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/VividClarityGlow").Value);
+
         }
 
         public override void AddRecipes()

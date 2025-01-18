@@ -1,14 +1,14 @@
-AncientOmegaBlueChestplate: {
-	// DisplayName: Ancient Omega Blue Chestplate
-	// Tooltip: ""
+﻿AncientOmegaBlueChestplate: {
+	DisplayName: 远古蓝色欧米伽胸甲
+	Tooltip: ""
 }
 
 AncientOmegaBlueHelmet: {
-	// DisplayName: Ancient Omega Blue Helmet
-	// Tooltip: ""
+	DisplayName: 远古蓝色欧米伽头盔
+	Tooltip: ""
 }
 
 AncientOmegaBlueLeggings: {
-	// DisplayName: Ancient Omega Blue Leggings
-	// Tooltip: ""
+	DisplayName: 远古蓝色欧米伽触手
+	Tooltip: ""
 }

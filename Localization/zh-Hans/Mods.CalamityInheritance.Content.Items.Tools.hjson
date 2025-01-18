@@ -1,24 +1,24 @@
-WulfrumAxe: {
-	// DisplayName: Wulfrum Axe
-	// Tooltip: ""
+﻿WulfrumAxe: {
+	DisplayName: 钨钢斧[Legacy]
+	Tooltip: 比铜斧更强
 }
 
 WulfrumHammer: {
-	// DisplayName: Wulfrum Hammer
-	// Tooltip: ""
+	DisplayName: 钨钢锤[Legacy]
+	Tooltip: 比铜锤更强
 }
 
 WulfrumPickaxe: {
-	// DisplayName: Wulfrum Pickaxe
-	// Tooltip: ""
+	DisplayName: 钨钢镐[Legacy]
+	Tooltip: 比铜镐更强
 }
 
 Moonlight: {
-	// DisplayName: Moonlight
-	// Tooltip: ""
+	DisplayName: 夜光[Legacy]
+	Tooltip: 可以跳过白天，召唤月亮
 }
 
 Daylight: {
-	// DisplayName: Daylight
-	// Tooltip: ""
+	DisplayName: 白昼[Legacy]
+	Tooltip: 可以跳过晚上，召唤太阳
 }

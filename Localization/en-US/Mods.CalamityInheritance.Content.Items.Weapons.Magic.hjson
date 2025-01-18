@@ -1,6 +1,12 @@
 HadopelagicEcho: {
 	DisplayName: Hadopelagic Echo
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a string of bouncing sound waves
+		Sound waves fired later in the chain deal more damage
+		Sound waves echo additional soud sound waves on enemy hits
+		Sound waves deal more damage the more they pierce
+		'''
 }
 
 HeliumFlashLegacy: {
@@ -14,7 +20,7 @@ HeliumFlashLegacy: {
 
 PhantasmalFuryOld: {
 	DisplayName: Phantasmal Fury Legacy
-	Tooltip: "1"
+	Tooltip: Casts a phantasmal bolt that explodes into more bolts
 }
 
 CarnageRay: {
@@ -60,7 +66,11 @@ NightsRayold: {
 
 TerraRay: {
 	DisplayName: Terra Ray Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		Casts a brilliant ray that dissolves into energy on enemy hits
+		More energy is created the farther along the ray the hit enemy is
+		'''
 }
 
 StratusSphere: {
@@ -86,7 +96,14 @@ TheWandold: {
 
 VehemencOld: {
 	DisplayName: Vehemenc Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		Casts an intense energy blast
+		Does far more damage the more HP an enemy has left
+		Max damage is capped at 1,000,000
+		If an enemy has full HP it will inflict several long-lasting debuffs
+		Revengence drop, for a while
+		'''
 }
 
 VividClarity: {
@@ -107,10 +124,10 @@ VoidVortex: {
 
 Lazinator: {
 	DisplayName: Lazinator
-	Tooltip: ""
+	Tooltip: Zap
 }
 
 WulfrumStaff: {
+	Tooltip: Casts a slow green bolt
 	DisplayName: Wulfrum Staff
-	Tooltip: ""
 }

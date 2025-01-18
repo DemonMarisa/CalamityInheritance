@@ -12,6 +12,13 @@ using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
+using CalamityInheritance.Content.Projectiles.Magic;
+using Mono.Cecil;
+using System.Security.Policy;
+using Microsoft.Xna.Framework.Graphics;
+using CalamityMod;
+using Terraria.GameContent;
+using System.Drawing;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -42,12 +49,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.shoot = ModContent.ProjectileType<WulfrumBoltOld>();
             Item.shootSpeed = 9f;
         }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-14, -1);
+        }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI);
+            
             Vector2 targetPosition = Main.MouseWorld;
-            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 10);
+            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, -18);
             return false;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -1,9 +1,9 @@
-AuricBarold: {
-	// DisplayName: ʥ��Դ��[legacy]
-	// Tooltip: ɢ����������貽��
+﻿AuricBarold: {
+	DisplayName: 圣金源锭[legacy]
+	Tooltip: 散发出永恒的璀璨金光
 }
 
 NebulaBar: {
-	// DisplayName: ���ƺϽ�[legacy]
-	// Tooltip: ""
+	DisplayName: 星云合金[legacy]
+	Tooltip: 来自宇宙深处
 }

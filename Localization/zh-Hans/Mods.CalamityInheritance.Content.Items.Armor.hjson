@@ -1,6 +1,6 @@
 AuricTeslaBodyArmorold: {
-	// DisplayName: 古圣金源盔甲[legacy]
-	/* Tooltip:
+	DisplayName: 古圣金源盔甲[legacy]
+	Tooltip:
 		'''
 		+100最大生命值
 		增加8%伤害和5%暴击率
@@ -8,28 +8,28 @@ AuricTeslaBodyArmorold: {
 		你有2%的概率闪避来袭的攻击
 		免疫小于80点的伤害
 		获得寒冰屏障的能力
-		''' */
+		'''
 }
 
 AuricTeslaCuissesold: {
-	// DisplayName: 古圣金源腿甲[legacy]
-	/* Tooltip:
+	DisplayName: 古圣金源腿甲[legacy]
+	Tooltip:
 		'''
 		增加50%移速
 		增加12%伤害和5%暴击率
 		获得魔毯的能力
-		''' */
+		'''
 }
 
 AuricTeslaHeadMagic: {
-	// DisplayName: 金虚万象盔[legacy]
-	/* Tooltip:
+	DisplayName: 金虚万象盔[legacy]
+	Tooltip:
 		'''
 		增加30%魔法伤害和20%魔法暴击率
 		+100最大魔力值并减少20%魔力消耗
 		站立不动时会增加伤害与暴击几率
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
 		弹幕击中敌人会生成金源光球治疗玩家
@@ -42,19 +42,19 @@ AuricTeslaHeadMagic: {
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 		林海无敌结束后，魔法伤害增加60%
-		''' */
+		'''
 }
 
 AuricTeslaHeadMelee: {
-	// DisplayName: 金源耀日盔[legacy]
-	/* Tooltip:
+	DisplayName: 金源耀日盔[legacy]
+	Tooltip:
 		'''
 		增加20%近战伤害和20%近战暴击率
 		增加28%的近战攻速
 		敌人更有可能攻击你
 		站立不动时会增加伤害与暴击几率
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
 		按下{0}提供龙蒿斗篷增益，在10秒内接触伤害降低50%
@@ -65,18 +65,18 @@ AuricTeslaHeadMelee: {
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 		林海无敌结束后，接触伤害降低20%
-		''' */
+		'''
 }
 
 AuricTeslaHeadRanged: {
-	// DisplayName: 金兜铁面罩[legacy]
-	/* Tooltip:
+	DisplayName: 金兜铁面罩[legacy]
+	Tooltip:
 		'''
 		增加30%远程伤害和30%远程暴击率
 		增加28%的近战攻速
 		站立不动时会增加伤害与暴击几率
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
 		敌人生成数量降低
@@ -88,19 +88,19 @@ AuricTeslaHeadRanged: {
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 		林海无敌结束后，射手伤害增加40%
-		''' */
+		'''
 }
 
 AuricTeslaHeadRogue: {
-	// DisplayName: 金羽十杀盔[legacy]
-	/* Tooltip:
+	DisplayName: 金羽十杀盔[legacy]
+	Tooltip:
 		'''
 		增加20%盗贼伤害和20%盗贼暴击率
 		增加130点潜伏值上限
 		移动速度增加5%
 		站立不动时会增加伤害与暴击几率
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
 		敌人生成数量降低
@@ -113,13 +113,13 @@ AuricTeslaHeadRogue: {
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 		林海无敌结束后，盗贼伤害增加40%
-		''' */
+		'''
 }
 
 AuricTeslaHeadSummon: {
-	// DisplayName: 金宇星界盔[legacy]
-	// Tooltip: 增加7仆从栏
-	/* SetBonus:
+	DisplayName: 金宇星界盔[legacy]
+	Tooltip: 增加7仆从栏
+	SetBonus:
 		'''
 		增加1仆从栏和120%召唤伤害
 		获得龙蒿，血岩，弑神，林海套装的绝大多数效果
@@ -133,12 +133,12 @@ AuricTeslaHeadSummon: {
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
 		林海无敌结束后，暴击几率增加10%，增加2仆从栏
-		''' */
+		'''
 }
 
 GodSlayerChestplateold: {
-	// DisplayName: 弑神者胸甲[legacy]
-	/* Tooltip:
+	DisplayName: 弑神者胸甲[legacy]
+	Tooltip:
 		'''
 		+60最大生命值
 		敌人在攻击你后会受到伤害
@@ -146,120 +146,120 @@ GodSlayerChestplateold: {
 		移动速度增加15%
 		你有2%的概率闪避来袭的攻击
 		免疫小于80点的伤害
-		''' */
+		'''
 }
 
 GodSlayerHeadMagicold: {
-	// DisplayName: 弑神者面罩[legacy]
-	/* Tooltip:
+	DisplayName: 弑神者面罩[legacy]
+	Tooltip:
 		'''
 		增加14%魔法伤害和14%魔法暴击率
 		+100最大魔力值并减少17%魔力消耗
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		魔法弹幕击中敌人会出现弑神火焰，并且生成弑神光束治疗玩家
 		你被击中时会出现弑神爆炸伤害敌人
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
-		''' */
+		'''
 }
 
 GodSlayerHeadMeleeold: {
-	// DisplayName: 弑神者头盔[legacy]
-	/* Tooltip:
+	DisplayName: 弑神者头盔[legacy]
+	Tooltip:
 		'''
 		增加14%近战伤害与暴击率
 		增加20%近战攻速
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		敌人更有可能瞄准你
 		受到超过80点伤害会向八个方向发射弑神飞镖
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
-		''' */
+		'''
 }
 
 GodSlayerHeadRangedold: {
-	// DisplayName: 弑神者头套[legacy]
-	// Tooltip: 增加14%远程伤害与暴击率
-	/* SetBonus:
+	DisplayName: 弑神者头套[legacy]
+	Tooltip: 增加14%远程伤害与暴击率
+	SetBonus:
 		'''
 		远程武器每2.5秒发射一枚弑神榴弹
 		当远程武器暴击几率超过100%时，会根据超过100%的暴击几率再次暴击
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
-		''' */
+		'''
 }
 
 GodSlayerHeadRogueold: {
-	// DisplayName: 弑神者面具[legacy]
-	/* Tooltip:
+	DisplayName: 弑神者面具[legacy]
+	Tooltip:
 		'''
 		增加14%盗贼伤害与暴击率
 		移动速度增加20%
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		最大潜伏值+140
 		当受到的伤害超过80点时，会获得额外30无敌帧
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
-		''' */
+		'''
 }
 
 GodSlayerHeadSummonold: {
-	// DisplayName: 弑神者角盔[legacy]
-	// Tooltip: 增加7仆从栏和65%召唤伤害
-	/* SetBonus:
+	DisplayName: 弑神者角盔[legacy]
+	Tooltip: 增加7仆从栏和65%召唤伤害
+	SetBonus:
 		'''
 		召唤一条星宇护卫为你而战
 		仆从击中敌人会出现弑神幻象
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
-		''' */
+		'''
 }
 
 GodSlayerLeggingsold: {
-	// DisplayName: 弑神者腿甲[legacy]
-	/* Tooltip:
+	DisplayName: 弑神者腿甲[legacy]
+	Tooltip:
 		'''
 		增加10%伤害与暴击几率
 		移动速度增加35%
-		''' */
+		'''
 }
 
 SilvaArmorold: {
-	// DisplayName: 始源林海盔甲[Legacy]
-	/* Tooltip:
+	DisplayName: 始源林海盔甲[Legacy]
+	Tooltip:
 		'''
 		增加12%伤害与8%暴击几率
 		移动速度增加35%
-		''' */
+		'''
 }
 
 SilvaHeadMagicold: {
-	// DisplayName: 始源林海兜帽[Legacy]
-	/* Tooltip:
+	DisplayName: 始源林海兜帽[Legacy]
+	Tooltip:
 		'''
 		增加13%魔法伤害和13%魔法暴击率
 		+100最大魔力值并减少19%魔力消耗
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
 		最大速度和加速度增加5%。
 		魔法弹幕每5秒击中敌人会触发林海爆炸
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 		林海无敌结束后，伤害增加60%
-		''' */
+		'''
 }
 
 SilvaHeadMelee: {
-	// DisplayName: 始源林海战盔[Legacy]
-	// Tooltip: 增加13%近战伤害与13%暴击几率
-	/* SetBonus:
+	DisplayName: 始源林海战盔[Legacy]
+	Tooltip: 增加13%近战伤害与13%暴击几率
+	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
 		最大速度和加速度增加5%。
@@ -267,80 +267,80 @@ SilvaHeadMelee: {
 		真近战有25%的概率造成5倍伤害
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 		林海无敌结束后，接触伤害降低20%
-		''' */
+		'''
 }
 
 SilvaHeadRanged: {
-	// DisplayName: 始源林海角盔[Legacy]
-	// Tooltip: 增加13%远程伤害与13%暴击几率
-	/* SetBonus:
+	DisplayName: 始源林海角盔[Legacy]
+	Tooltip: 增加13%远程伤害与13%暴击几率
+	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
 		最大速度和加速度增加5%。
 		远程攻击速度增加10%
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 		林海无敌结束后，射手伤害增加40%
-		''' */
+		'''
 }
 
 SilvaHeadRogue: {
-	// DisplayName: 始源林海面具[Legacy]
-	/* Tooltip:
+	DisplayName: 始源林海面具[Legacy]
+	Tooltip:
 		'''
 		增加13%盗贼伤害与13%暴击几率
 		移动速度增加20%
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
 		最大速度和加速度增加5%。
 		当玩家血量大于50%时，攻击速度增加10%
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 		林海无敌结束后，盗贼伤害增加40%
-		''' */
+		'''
 }
 
 SilvaHeadSummonold: {
-	// DisplayName: 始源林海头盔[Legacy]
-	// Tooltip: 增加5仆从栏
-	/* SetBonus:
+	DisplayName: 始源林海头盔[Legacy]
+	Tooltip: 增加5仆从栏
+	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
 		最大速度和加速度增加5%。
 		召唤一个林海水晶，用生命能量轰击敌人
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
 		林海无敌结束后，暴击几率增加10%，增加2仆从栏
-		''' */
+		'''
 }
 
 SilvaLeggingsold: {
-	// DisplayName: 始源林海护胫[Legacy]
-	/* Tooltip:
+	DisplayName: 始源林海护胫[Legacy]
+	Tooltip:
 		'''
 		增加12%伤害与7%暴击几率
 		移动速度增加45%
-		''' */
+		'''
 }
 
 AncientXerocCuisses: {
-	// DisplayName: 克希洛克护胫[legacy]
-	/* Tooltip:
+	DisplayName: 克希洛克护胫[legacy]
+	Tooltip:
 		'''
 		增加100点生命上限
 		增加100点最大魔力
 		增加15%移动速度
-		''' */
+		'''
 }
 
 AncientXerocMask: {
-	// DisplayName: 克希洛克面具[legacy]
-	/* Tooltip:
+	DisplayName: 克希洛克面具[legacy]
+	Tooltip:
 		'''
 		增加3仆从栏
 		增加10%伤害与暴击率
 		使你免疫岩浆，着火，咒火，诅咒，冷冻
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		+110最大潜伏值
 		降低20%魔力消耗，增加10%盗贼弹幕速度
@@ -350,95 +350,95 @@ AncientXerocMask: {
 		生命值低于35%，大于15%时，增加35%伤害与暴击率，增加药水10%治疗量
 		生命值低于15%，降低40%伤害与暴击率
 		宇宙之怒
-		''' */
+		'''
 }
 
 AncientXerocPlateMail: {
-	// DisplayName: 克希洛克鳞甲[legacy]
-	// Tooltip: 增加20点最大生命值
+	DisplayName: 克希洛克鳞甲[legacy]
+	Tooltip: 增加20点最大生命值
 }
 
 ReaverCapRevamped: {
-	// DisplayName: 掠夺者头饰[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者头饰[Revamped]
+	Tooltip:
 		'''
 		增加15%盗贼伤害，5%盗贼弹幕飞行速度和暴击率
 		增加20%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		增加115最大潜行值
 		弹幕弹幕每60帧会分裂出生命裂片跟踪敌人
-		''' */
+		'''
 }
 
 ReaverCuissesRevamped: {
-	// DisplayName: 掠夺者护胫[legacy]
-	/* Tooltip:
+	DisplayName: 掠夺者护胫[legacy]
+	Tooltip:
 		'''
 		增加5%伤害与暴击率
 		增加12%移动速度
-		''' */
+		'''
 }
 
 ReaverHelmetRevamped: {
-	// DisplayName: 掠夺者头盔[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者头盔[Revamped]
+	Tooltip:
 		'''
 		增加5%召唤伤害，鞭子攻击速度与范围增加50%
 		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		增加50%鞭子攻击距离与60%攻击速度
 		召唤一个掠夺者宝珠保护你
-		''' */
+		'''
 }
 
 ReaverHelmRevamped: {
-	// DisplayName: 掠夺者战盔[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者战盔[Revamped]
+	Tooltip:
 		'''
 		增加10%近战伤害，10%近战攻速和5%暴击率
 		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		增加30%近战攻速，5%暴击率与5%近战伤害
 		近战射弹击中敌人后引发永恒爆炸，造成咒火减益
 		受伤时获得掠夺者之怒增益，增强你的防御与输出
-		''' */
+		'''
 }
 
 ReaverMaskRevamped: {
-	// DisplayName: 掠夺者面具[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者面具[Revamped]
+	Tooltip:
 		'''
 		增加10%魔法伤害,减少12%魔力值消耗, 增加5%暴击率
 		增加10%移动速度，增加80点最大魔力值，在液体中行动不受阻碍
-		''' */
-	/* SetBonus:
+		'''
+	SetBonus:
 		'''
 		击中敌人时每隔一段时间会爆出孢子云
 		并且会获得掠夺者之力增益，增加10%魔法伤害，降低20%魔力消耗
-		''' */
+		'''
 }
 
 ReaverScaleMailRevamped: {
-	// DisplayName: 掠夺者鳞甲[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者鳞甲[Revamped]
+	Tooltip:
 		'''
 		增加10%伤害和5%暴击率
 		增加20点最大生命值
-		''' */
+		'''
 }
 
 ReaverVisageRevamped: {
-	// DisplayName: 掠夺者面罩[Revamped]
-	/* Tooltip:
+	DisplayName: 掠夺者面罩[Revamped]
+	Tooltip:
 		'''
 		增加15%远程伤害，减少20%弹药消耗率,增加5%远程暴击率
 		增加10%移动速度，在液体中行动不受阻碍
-		''' */
-	// SetBonus: 远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
+		'''
+	SetBonus: 远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
 }

@@ -1,187 +1,177 @@
 AeroStoneLegacy: {
-	DisplayName: 天蓝石[Legacy]
+	DisplayName: Aero Stone Legacy
 	Tooltip:
 		'''
-		远古遗物之一
-		增加10%移动速度，20%跳跃速度和10%飞行时间
+		One of the ancient relic
+		20% increased jump speed
+		10% increased movment speed and wing flight time
 		'''
 }
 
 ArcanumoftheVoid: {
-	DisplayName: 虚空秘术[Legacy]
+	DisplayName: Arcanum of the Void Legacy
 	Tooltip:
 		'''
-		你会反弹来犯的弹幕
-		被反弹的弹幕不会对你造成伤害
-		反弹具有90秒冷却时间，并且该反弹与其他的闪避或反弹效果共享冷却时间
+		You reflect projectiles when they hit you
+		Reflected projectiles deal no damage to you
+		Reflect has 90 second cooldown, shared with all other dodge and reflects
 		'''
 }
 
 AstralBulwark: {
-	DisplayName: 幻星秘盾[Legacy]
+	DisplayName: Astral Bulwark Legacy
 	Tooltip:
 		'''
-		受到伤害会召唤幻星从天而降
-		免疫幻星感染减益
+		Taking damage drops astral stars from the sky
+		Grants immnuity to astral infection
 		'''
 }
 
 CIRampartofDeities: {
-	DisplayName: 神之壁垒[Legacy]
+	DisplayName: Rampart of Deities Legacy
 	Tooltip:
 		'''
-		受到伤害时会召唤星星从天而降并延长受伤后无敌时间
-		根据你已损失的生命值在受伤时获得额外的无敌帧
-		满血时提供10无敌帧，最高提升至25%以下血量时的40无敌帧
-		减少治疗药水25%的冷却时间
+		Causes stars to fall and increases length of invincibility after taking damage
+		Frozen Turtel Shell and Paladin Shield effects
+		+2 HP/s life regen speed and reduces the cooldown of healings potion by 25%
+		Increases armor penetration by 25
+		'Strongest defensive accessory ever'
 		'''
 }
 
 CoreOfTheBloodGod: {
-	DisplayName: 血神核心[Legacy]
+	DisplayName: Core of the Blood God Legacy
 	Tooltip:
 		'''
-		血量上限增加25%
-		治疗药水的效果增加25%
-		获得血肉图腾的效果
-		免伤增加10%
+		Increases max HP by 25%
+		Healing potions are 25% more effective
+		Havles contact damage, this effect has 20 seconds cooldown if triggered
+		10% increased damage reduction
+		'Better than a chalice'
 		'''
 }
 
 DarkSunRingold: {
-	DisplayName: 蚀日尊戒[Legacy]
+	DisplayName: Dark Sun Ring Legacy
 	Tooltip:
 		'''
-		增加12%伤害
-		+1HP/s生命再生和2格最大仆从栏位
-		增加仆从击退
-		在白天时+3HP/s生命再生
-		在夜晚时增加30点防御
-		在日食时两种效果会同时触发
-		“蕴含着日蚀之阴的力量”
+		12% increased damage and melee speed
+		+1 HP/s life regen, +2 max minions
+		Increased minion knockback
+		During the day, grants +3 HP/s life regen
+		During the night, grants +20 defense
+		Provides both bonuses during a Solar Eclipse
+		'Contains the power of the dark sun'
 		'''
 }
 
 DashAccessories: {
 	AsgardianAegisold: {
-		DisplayName: 阿斯加德之庇护[Legacy]
+		DisplayName: Asgardian Aegis Legacy
 		Tooltip:
 			'''
-			获得被宇宙狱火加强的撞击冲刺能力
-			此冲刺可以在不受伤害的情况下猛击穿过敌怪
-			免疫击退和火块
-			免疫包括弑神怒焰在内的绝大多数减益
-			增加40点最大生命值
-			按[KEY]激活伤害，暴击率和防御增益
-			此增益会降低你的移动速度并增加敌人的仇恨
+			Allows the ability to ram dash, empowered by the cosmic inferno
+			This dash can slam through enemies without taking damage
+			Grants immunity to knockback and fire blocks
+			Grants immunity to the vast majority of debuffs, including God Slayer Inferno
+			Press [KEY] to receive the Elysian Guard buff
+			This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
+			Enemies are more likely to target you while the buff is being active
 			'''
 	}
 
 	AsgardsValorold: {
-		DisplayName: 极乐之庇护[Legacy]
+		DisplayName: Asgard's Valor Legacy
 		Tooltip:
 			'''
-			获得被圣火加强的撞击冲刺能力
-			此冲刺可以猛击穿过敌怪但不受伤害
-			免疫击退和火块
-			免疫包括破晓和神圣之火在内的大部分火焰减益
-			增加40点最大生命值并增加生命恢复速度
-			被亵渎之火所祝福的盾牌
-			按[KEY]激活伤害，暴击率和防御增益
-			此增益会降低你的移动速度并增加敌人的仇恨
+			Allows the ability to ram dash
+			The dash can slam through enemies without taking damage
+			Grants immunity to knockback and fire blocks
+			Grants immunity to most debuffs, including most forms of frost and flame
 			'''
 	}
 
 	ElysianAegisold: {
-		DisplayName: 极乐之庇护[Legacy]
+		DisplayName: Elysian Aegis Legacy
 		Tooltip:
 			'''
-			获得被圣火加强的撞击冲刺能力
-			此冲刺可以猛击穿过敌怪但不受伤害
-			免疫击退和火块
-			免疫包括破晓和神圣之火在内的大部分火焰减益
-			增加40点最大生命值并增加生命恢复速度
-			被亵渎之火所祝福的盾牌
-			按[KEY]激活伤害，暴击率和防御增益
-			此增益会降低你的移动速度并增加敌人的仇恨
+			Allows the ability to ram dash, empowered by holy fire
+			This dash can slam through enemies without taking damage
+			Grants immunity to knockback and fire blocks
+			Grants immunity to most debuffs, including Daybreak and Holy Flames 
+			Press [KEY] to receive the Elysian Guard buff
+			This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
+			Enemies are more likely to target you while the buff is being active
+			Blessed by the Profaned Flame
 			'''
 	}
 
 	StatisNinjaBeltLegacy: {
-		DisplayName: 斯塔提斯忍者腰带[Legacy]
+		DisplayName: Statis' Ninja Belt Legacy
 		Tooltip:
 			'''
-			增加32%跳跃高度并允许自动跳跃
-			使你获得水下游泳能力
-			增加35格摔落伤害抗性
-			可以攀爬、冲刺和闪避攻击
-			低于最大生命值5%伤害的攻击不会触发闪避
-			根据被闪避的攻击伤害，闪避有15到90秒的冷却时间
-			该冷却时间与其他的闪避或反弹效果共享
+			32% increased jump speed and allows constant jumping
+			Increases fall damage resistance by 35 blocks
+			Can climb wall, dash, swim and dodge attacks
+			Uses the same dodge mechanic as Calamity mod
 			'''
 	}
 
 	StatisVoidSash: {
-		DisplayName: 斯塔提斯虚空饰带[Revamped]
+		DisplayName: Statis' Void Sash Revamped
 		Tooltip:
 			'''
-			增加8%伤害与4%暴击几率
-			增加32%跳跃速度并允许自动跳跃
-			使你免疫摔落伤害
-			可以攀爬、冲刺和闪避攻击
-			低于最大生命值5%伤害的攻击不会触发闪避
-			根据被闪避的攻击伤害，闪避有15到90秒的冷却时间
-			该冷却时间与其他的闪避或反弹效果共享
-			冲刺时会在轨迹上留下追踪镰刀
+			32% increased jump speed and allows constant jumping
+			Grants immnuity to fall damage
+			Can climb wall, dash, swim and dodge attacks
+			Dashes leave homing scythes in your wake
+			Uses the same dodge mechanic as Calamity mod
 			'''
 	}
 }
 
 DeificAmuletLegacy: {
-	DisplayName: 神圣护符[Legacy]
+	DisplayName: Deific Amulet Legacy
 	Tooltip:
 		'''
-		增加10点护甲穿透并减少治疗药水的冷却时间
-		受到伤害时会召唤星星从天而降并延长受伤后无敌时间
-		根据你已损失的生命值在受伤时获得额外的无敌帧
-		满血时提供10无敌帧，最高提升至25%以下血量时的40无敌帧
-		在水下发光并在深渊提供微量光芒
+		Causes stars to fall and grants increased immune time when damaged
+		+0.5 HP/s life regen, reduces the cooldown of healing potions
+		Jellyfish Necklace effect and increases armor penetration by 10
 		'''
 }
 
 FungalCarapace: {
-	DisplayName: 真菌壳[Legacy]
+	DisplayName: Fungal Carapace Legacy
 	Tooltip:
 		'''
-		被击中后会在你周围爆出蘑菇孢子
-		蘑菇孢子5秒后会爆炸，造成70点基础伤害，可受最强职业加成
+		When you are hit, you emit a mushroom spore explosion
+		Explosion will casue 70 base damage, affected by the highest damage stats
 		'''
 }
 
 GrandGelatinLegacy: {
-	DisplayName: 绚彩凝胶[Legacy]
+	DisplayName: Grand Gelatin Legacy
 	Tooltip:
 		'''
-		增加10%移动速度
-		增加40%跳跃速度
-		+20点最大生命值和法力值
-		站立不动时增加生命和法力恢复速度
+		10% increased movement speed, 40% increased jump speed
+		+20 max life and mana
+		Boosts your life and mana regen speed whlie standing still
 		'''
 }
 
 LeadCore: {
-	DisplayName: 铅核[Legacy]
-	Tooltip: 免疫辐射减益
+	DisplayName: Lead Core
+	Tooltip: Grants immunity to Irradiated
 }
 
 LeviathanAmbergrisLegacy: {
-	DisplayName: 利维坦龙涎香[Legacy]
+	DisplayName: Leviathan Ambergris Legacy
 	Tooltip:
 		'''
-		移动时从背后释放有毒的海水
-		浸没在液体中时增加75%移动速度，10%伤害和20点防御
-		如果你在液体中受伤，那你会短时间内获得获得一个伤害光环
-		不在水中时，增加5%伤害和伤害减免
+		You leave behind poisonous seawater as you move
+		+10 defense, 10% increased damage and 30% increased movement speed  while submerged in liquid
+		Taking damage while submerged in liquid will gain a damaging aura for a short time
+		Being outside of liquid increases all damage by 5% and increases damage reduction by 5%
 		'''
 }
 
@@ -193,96 +183,103 @@ Melee: {
 	}
 
 	YharimsInsignia: {
-		DisplayName: 魔君之证章[Legacy]
+		DisplayName: Yharims' Insigna Legacy
 		Tooltip:
 			'''
-			生命值低于50%时增加10%伤害
-			增加10%近战攻速
-			增加10%近战伤害和真近战伤害
-			近战攻击及其弹幕会造成神圣之火减益
-			使你暂时免疫熔岩
-			增加近战击退
+			10% increased melee damage and speed
+			10% increased true melee damage
+			10% increased damage while below 50% HP
+			Increases melee knockback power
+			Your melee strikes and projectiles inflict Holy Flame
+			Grants temporary immunity to lava
+			'Movement or damage?'
 			'''
 	}
 }
 
 PlagueHive: {
-	DisplayName: 瘟疫蜂巢[Legacy]
+	DisplayName: Plague Hive
 	Tooltip:
 		'''
-		所有攻击都会造成瘟疫减益，并使你免疫瘟疫减益
-		受到伤害时会释放能够造成瘟疫减益的蜜蜂
-		弹幕在击中敌人时会释放瘟疫搜寻者
+		All attacks inflict the Plague and grants immunity to the Plague
+		Releases bees when damaged that inflict the Plague
+		Projectiles spawn plague seekers on enemy hits
 		'''
 }
 
 ReaperToothNecklaceold: {
-	DisplayName: 猎魂鲨齿项链[Legacy]
+	DisplayName: Reaper Tooth Necklace Legacy
 	Tooltip:
 		'''
-		增加15%伤害
-		增加100点护甲穿透
-		“取自顶级掠食者的恐怖战利品”
+		15% increased damage
+		Increases armor penetration by 100
+		'A grisly trophy from the apex predator'
 		'''
 }
 
 TheSpongetest: {
-	DisplayName: 化绵留香石[Revamped]
+	DisplayName: Sponge Revamped
 	Tooltip:
 		'''
-		30防御力 15%伤害减免 增加30点魔力与生命上限
-		使你免疫碎甲效果
-		获得百草天香瓶的全部效果
-		被击中时爆出蘑菇孢子与电火花
-		提供15点防御，受击后10s内会短暂移除，并增加移动速度
-		受击会恢复攻击力6.25%的生命值
-		[c/FFA500:装备饰品后激活一个耐久度与生命值上限相关的护盾。可以吸收玩家受到的伤害]
-		护盾激活时：
-		玩家受到的伤害不会溢出至生命值，且只会减少肾上腺素50%的充能
-		提供额外的30%伤害减免与30防御力
-		护盾破碎时：
-		减少50点防御力与25%伤害减免
-		需要更多的时间充能
-		（护盾效果可在配置中关闭）
-		[c/FFD700:✟感谢世纪小花提供的技术支持✟]
+		Legacy Sponge:
+		30 defense and max mana
+		15% increased damage reduction
+		Grants the immunity of Armor Crunch
+		All effects from Ambrosial Ampoule
+		You emit a mushroom spore and spark explosion when you are hit
+		Extra 15 defense that would be disabled in 10 seconds if you are hit, and boost your movement speed
+		6.25% of the damage from enemy attacks is absorbed and converted into healing
+
+		[c/FFA500:Rework Sponge if toggle 'Sponge Barrier' in config, which will disable Legacy Sponge]
+		Reworked Sponge:
+		Active a barrier can absorb damage, which durability is the same as your max HP
+		When barrier is formed:
+		Damage taken will not overflow HP
+		Halves Adrenaline lost on hit if barrier fully absorbed the damage
+		+30 defense, increases damage reduction by 30%
+		WHen barrier is cracked:
+		You will lose 50 defense and taken 25% more damage from enemies hit
+		Takes up more time to recharge your barrier
+		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''
 }
 
 VoidofExtinctionLegacy: {
-	DisplayName: 终结虚空[Legacy]
+	DisplayName: Void of Extinction Legacy
 	Tooltip:
 		'''
-		不再受到诅咒
-		时不时会有硫磺火球从天而降
-		增加15%伤害
-		进入无敌时间后硫磺火会从天而降
-		获得暂时的岩浆免疫能力，大幅削弱岩浆烧灼伤害，浸没在岩浆里时增加25%的伤害
+		No longer cursed.
+		15% increase to all damage
+		Drops brimstone fireballs from the sky occasionally
+		All attacks inflict Brimstone Flames
+		Brimstone fire rains down after getting hit
+		Temporary immunity to lava, greatly reduces lava burn damage, and 25% increased damage while in lava
+		Grants immunity to Burning, On Fire!, Brimstone Flames and Searing Lava		
 		'''
 }
 
 YharimsGiftLegacy: {
-	DisplayName: 魔君的礼物[Legacy]
+	DisplayName: Yharim's Gift Legacy
 	Tooltip:
 		'''
-		神的力量蕴藏于其中
-		受伤后无敌时间内降下燃火流星
-		移动时身后留下易爆裂的龙之尘
-		增加30点防御和15%伤害
+		15% increased damage and movement speed
+		Flaming meteors rain down after getting hit
+		Exploding dragon dust is left behind as you move
+		The power to kill a god pulses from within this artifact
 		'''
 }
 
 AstralArcanum: {
-	DisplayName: 星辉秘术[Legacy]
+	DisplayName: Astral Arcanum Legacy
 	Tooltip:
 		'''
-		按[KEY]打开传送UI
-		受到伤害时会召唤彗星从天而降
-		免疫幻星感染减益
-		你会反弹来犯的弹幕
-		被反弹的弹幕不会对你造成伤害
-		根据被反弹的弹幕伤害，反弹有15到90秒的冷却时间
-		该冷却时间与其他的闪避或反弹效果共享
-		即使在受到伤害性减益的影响时也能增加生命恢复速度
-		当受到伤害性减益效果时，你将获得20点防御
+		Taking damage drops astral stars from the sky
+		Provides immunity to the astral infection debuff
+		You reflect projectiles when they hit you
+		Reflected projectiles deal no damage to you
+		This reflect has a 90 second cooldown which is shared with all other dodges and reflects
+		Boosts life regen even while under the effects of a damaging debuff
+		While under the effects of a damaging debuff you will gain 20 defense
+		Press [KEY] UI Toggle to toggle teleportation UI while no bosses are alive
 		'''
 }

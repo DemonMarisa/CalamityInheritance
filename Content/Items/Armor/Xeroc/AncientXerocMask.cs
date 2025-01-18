@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             modPlayer1.ancientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.manaCost *= 0.2f;
+            player.manaCost *= 0.8f;
             modPlayer.rogueVelocity += 0.10f;
         }
 

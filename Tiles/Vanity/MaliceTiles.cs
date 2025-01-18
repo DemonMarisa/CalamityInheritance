@@ -33,19 +33,19 @@ namespace CalamityInheritance.Tiles.Vanity
             }
             RegisterItemDrop(ModContent.ItemType<Malice>());
             Main.tileFrameImportant[Type] = true;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Width = 5;
             TileObjectData.newTile.Height = 4;
-            TileObjectData.newTile.Origin = new Point16(3, 2);
-            TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16, 16, 16, 16, 16, 16];
+            TileObjectData.newTile.Origin = new Point16(2, 1);
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16 };
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, 5, 0);
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(64, 8, 12));
+            AddMapEntry(new Color(50, 127, 209));
 
-            DustType = (int)CalamityDusts.Brimstone;
+            DustType = (int)CalamityDusts.BlueCosmilite;
             AnimationFrameHeight = 72;
         }
 
@@ -57,7 +57,7 @@ namespace CalamityInheritance.Tiles.Vanity
                 frameCounter = 0;
                 if (++frame >= 8)
                 {
-                    frame = 0;
+                    frame = 1;
                 }
             }
         }
@@ -83,7 +83,7 @@ namespace CalamityInheritance.Tiles.Vanity
         {
             int x = i - Main.tile[i, j].TileFrameX / 18 % 5;
             int y = j - Main.tile[i, j].TileFrameY / 18 % 4;
-            int tileXX18 = 18 * 5;
+            int tileXX18 = 18 * 4;
             for (int l = x; l < x + 5; l++)
             {
                 for (int m = y; m < y + 4; m++)

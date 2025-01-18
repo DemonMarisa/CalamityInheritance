@@ -1,193 +1,235 @@
-Animus: {
-	// DisplayName: Animus
-	// Tooltip: ""
+﻿Animus: {
+	DisplayName: 敌意[Legacy]
+	Tooltip: 击中敌人时武器伤害随机变化
 }
 
 ArkoftheAncients: {
-	// DisplayName: Ark of the Ancients Legacy
-	// Tooltip: A heavenly blade forged to vanquish all evil
+	DisplayName: 远古方舟[Legacy]
+	Tooltip: 天堂之剑，用于击败邪恶
 }
 
 ArkoftheCosmosold: {
-	// DisplayName: Ark of the Cosmos Legacy
-	/* Tooltip:
-		'''
-		Fires different homing projectiles based on what biome you're in
-		Upon hitting an enemy you are granted a buff based on what biome you're in
-		Projectiles also change based on moon events
-		''' */
+		DisplayName: 鸿蒙方舟[Legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			击中敌人后根据环境给予你增益
+			月亮事件中同样会变化
+			'''
 }
 
 ArkoftheElementsold: {
-	// DisplayName: Ark of the Elements Legacy
-	// Tooltip: A heavenly blade forged by essence of Terraria
+		DisplayName: 元素方舟[Legacy]
+		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 }
 
 AtaraxiaOld: {
-	// DisplayName: Ataraxia Legacy
-	// Tooltip: "1"
+	DisplayName: 禅心剑[Legacy]
+	Tooltip: 安宁
 }
 
 BiomeBlade: {
-	// DisplayName: Biome Blade Legacy
-	// Tooltip: Fires different projectiles based on what biome you're in
+		DisplayName: 环境之刃[Legacy]
+		Tooltip: 根据你所处生态，发射不同的弹幕
 }
 
 BladeofEnmity: {
-	// DisplayName: Blade of Enmity
-	// Tooltip: "1"
+	DisplayName: 憎恨之锋[Legacy]
+	Tooltip: 
+	'''
+	攻击附带硫磺火
+	近战攻速加成对此武器只生效25%
+	'''
 }
 
 BloodyEdge: {
-	// DisplayName: Bloody Edge
-	// Tooltip: Chance to heal the player on enemy hits, causes bloody expolsion
+		DisplayName: 血锋[Legacy]
+		Tooltip: 攻击敌人时会让你回复生命值，并引发鲜血爆炸
 }
 
 ElementalExcalibur: {
-	// DisplayName: Elemental Excalibur Legacy
-	// Tooltip: "1"
+	DisplayName: 元素圣剑[Legacy]
+	Tooltip: 
+	'''
+	真近战击中敌人时使其冻结并治疗自己
+	发射彩虹光束，效果取决于它们的颜色
+	右击施展真近战攻击
+	'''
 }
 
 Exobladeold: {
-	// DisplayName: Exoblade Legacy
-	/* Tooltip:
+		DisplayName: 星流之刃[Legacy]
+		Tooltip:
+			'''
+			远古之刃，由亚利姆最优秀的工匠嘉登锻造
+			真近战击中敌人会召唤彗星跟踪敌人
+			真近战多次命中敌人会爆炸
+			'''
+	DisplayName: Exoblade Legacy
+	Tooltip:
 		'''
-		Ancient blade of Yharim's weapons and armors expert, Draedon
-		Fires an exo beam that homes in on the player and explodes
-		Striking an enemy with the blade causes several comets to fire
-		All attacks briefly freeze enemies hit
-		Enemies hit at very low HP explode into frost energy and freeze nearby enemies
-		The lower your HP the more damage this blade does and heals the player on enemy hits
-		''' */
+		远古之刃，由亚利姆最优秀的工匠嘉登锻造
+		发射会跟踪玩家并在击中敌人时产生爆炸的星流光束
+		用剑刃攻击敌人会召唤彗星陨落
+		所有攻击短暂地把敌人冻在原地
+		真近战连续击中敌人会引发星流爆炸
+		敌人血量低于10%也会引发爆炸
+		随着你血量的降低而增加伤害，攻击敌人时会治疗玩家
+		'''
 }
 
 ExoFlail: {
-	// DisplayName: Exo Flail
-	/* Tooltip:
-		'''
-		Fires a chain sword that discharges unstable energy on enemy hits
-		The flail's chain is surrounded in plasma, allowing it to deal damage
-		''' */
+		DisplayName: 星流链刃[Legacy]
+		Tooltip:
+			'''
+			攻击时发射不稳定能量追踪你敌人
+			每攻击五次会扔出一个星流链球，命中敌人会产生多次爆炸
+			'''
 }
 
 FourSeasonsGalaxiaold: {
-	// DisplayName: Galaxia Legacy
-	/* Tooltip:
-		'''
-		Fires different homing projectiles based on what biome you're in
-		Upon hitting an enemy you are granted a buff based on what biome you're in
-		Projectiles also change based on moon events
-		''' */
+		DisplayName: 银河[Legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			击中敌人后根据环境给予你增益
+			月亮事件中同样会变化
+			'''
 }
 
 GrandDad: {
-	// DisplayName: Grand Dad
-	// Tooltip: ""
+		DisplayName: 雄祖之护[Legacy]
+		Tooltip:
+			'''
+			击中敌人时使其防御归零
+			将敌人打出空间与时间之外
+			'''
 }
 
 MurasamaNeweffect: {
-	// DisplayName: Murasama Revamped
-	/* Tooltip:
+	DisplayName: 鬼妖村正[Revamped]
+	Tooltip:
 		'''
 		[c/FF0000:THERE WILL BE BLOOD!]
-		Prove your strength to wield this sword
-		Legacy size and stats with revamped slash effect
-		''' */
+		证明你的价值来拔出此剑
+		旧版的射弹大小
+		'''
 }
 
 Murasamaold: {
-	// DisplayName: Murasama Legacy
-	/* Tooltip:
+	DisplayName: 鬼妖村正[Legacy]
+	Tooltip:
 		'''
 		[c/FF0000:THERE WILL BE BLOOD!]
-		Prove your strength to wield this sword
-		Legacy slash effect
-		''' */
+		证明你的价值来拔出此剑
+		旧版的特效版本
+		'''
 }
 
 NeptunesBountyOld: {
-	// DisplayName: Neptunes Bounty Legacy
-	// Tooltip: "1"
+	DisplayName: 海神之馈赠[Legacy]
+	Tooltip: 
+	'''
+	发射一支三叉戟，飞行过程中降下额外的三叉戟
+	击中敌人会造成深渊水压减益
+	敌人的防御越低，此减益造成伤害越高
+	'''
 }
 
 OmegaBiomeBlade: {
-	// DisplayName: Omega Biome Blade Legacy
-	/* Tooltip:
-		'''
-		Fires different homing projectiles based on what biome you're in
-		Projectiles also change based on moon events
-		''' */
+		DisplayName: 欧米茄环境之刃[Legacy]
+		Tooltip:
+			'''
+			根据所处环境发射不同的跟踪弹幕
+			月亮事件中同样会变化
+			'''
 }
 
 SoulEdge: {
-	// DisplayName: Soul Edge Legacy
-	// Tooltip: "1"
+	DisplayName: 灵魂之锋[Legacy]
+	Tooltip: 	
+	'''
+	发射出深渊原住民的的恐惧幽魂
+	'''
 }
 
 StreamGougeOld: {
-	// DisplayName: Stream Gouge Legacy
-	// Tooltip: "1"
+	DisplayName: 宇宙暗流[Legacy]
+	Tooltip: 
+	'''
+	发射可以无限穿透的宇宙能量
+	无视目标无敌帧
+	'''
 }
 
 TerraEdge: {
-	// DisplayName: Terra Edge
-	/* Tooltip:
-		'''
-		Fires a green beam that inflicts ichor for a short time
-		Heals the player on enemy hits
-		''' */
+	DisplayName: 泰拉之锋[Legacy]
+	Tooltip:
+			'''
+			发射造成灵液减益的绿色剑气
+			击中敌怪时会治愈玩家
+			'''
 }
 
 TrueArkoftheAncients: {
-	// DisplayName: True Ark of the Ancients Legacy
-	// Tooltip: A heavenly blade forged to vanquish all evil
+		DisplayName: 真·远古方舟[Legacy]
+		Tooltip: 天堂之剑，用于除尽邪恶
 }
 
 TrueBiomeBlade: {
-	// DisplayName: True Biome Blade Legacy
-	// Tooltip: Fires different homing projectiles based on what biome you're in
+		DisplayName: 真·环境之刃[Legacy]
+		Tooltip: 根据你所处生态，发射不同的剑气
 }
 
 TrueBloodyEdge: {
-	// DisplayName: True Bloody Edge
-	/* Tooltip:
-		'''
-		Releases bloody explosion upon striking enemies with blade
-		Fires bloody orbs home in to enemy
-		''' */
+		DisplayName: 真·血锋[Legacy]
+		Tooltip:
+			'''
+			攻击敌人时有几率让你回复生命值，并引发鲜血爆炸
+			发射弹幕的一段时间后会跟踪
+			'''
 }
 
 Test: {
-	// DisplayName: Test
-	// Tooltip: ""
+	DisplayName: 测试剑
+	Tooltip: 
+	'''
+	DA★ZE
+	可能随着不同版本不同功能
+	'''
 }
 
 GalaxySmasherMelee: {
-	// DisplayName: Galaxy Smasher Melee
-	// Tooltip: ""
+	DisplayName: 银河溃灭者[Legacy]
+	Tooltip: 击中敌人时爆炸并释放死亡射线
 }
 
 StellarContemptOld: {
-	// DisplayName: Stellar Contempt Old
-	// Tooltip: ""
+	DisplayName: 星体击碎者[Legacy]
+	Tooltip: 击中敌人时天降月炎射线
 }
 
 FallenPaladinsHammerOld: {
-	// DisplayName: Fallen Paladins Hammer Old
-	// Tooltip: ""
+	DisplayName: 堕落圣骑士锤[Legacy]
+	Tooltip: 击中敌人时爆炸
 }
 
 Trinity: {
-	// DisplayName: Trinity
-	// Tooltip: ""
+	DisplayName: 三元寒刃[Legacy]
+	Tooltip: 发射三个能量球
 }
 
 TerratomereOld: {
-	// DisplayName: Terratomere Old
-	// Tooltip: ""
+	DisplayName: 泰拉巨剑[Legacy]
+	Tooltip:
+	'''
+	与泰拉瑞亚世界之精华相连
+	击中敌人时会治愈玩家
+	发射数个追踪剑气，冻结敌人
+	'''
 }
 
 WulfrumBlade: {
-	// DisplayName: Wulfrum Blade
-	// Tooltip: ""
+	DisplayName: 钨钢阔剑[Legacy]
+	Tooltip: 比铜阔剑更好
 }

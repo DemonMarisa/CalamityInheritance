@@ -1,9 +1,9 @@
 AuricBarold: {
-	DisplayName: ʥ��Դ��[legacy]
-	Tooltip: ɢ����������貽��
+	DisplayName: Auric Bar Legacy
+	Tooltip: Boundless power emanates from the metal
 }
 
 NebulaBar: {
-	DisplayName: ���ƺϽ�[legacy]
+	DisplayName: Nebular Bar
 	Tooltip: ""
 }

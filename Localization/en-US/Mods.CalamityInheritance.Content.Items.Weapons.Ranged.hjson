@@ -10,7 +10,11 @@ CelestialObliterator: {
 
 ConclaveCrossfire: {
 	DisplayName: Conclave Crossfire
-	Tooltip: ""
+	Tooltip:
+		'''
+		50% chance to not consume ammo
+		Fires two spreads of bullets, one from the gun and one from the sky
+		'''
 }
 
 DragonsBreathold: {
@@ -67,7 +71,7 @@ Photovisceratorold: {
 
 ProporsePistol: {
 	DisplayName: Proporse Pistol
-	Tooltip: ""
+	Tooltip: Fires a blue energy blast that bounces
 }
 
 RaidersGlory: {
@@ -89,8 +93,16 @@ Skullmasher: {
 }
 
 SomaPrimeOld: {
-	DisplayName: Soma Prime Old
-	Tooltip: ""
+	DisplayName: Soma Prime Legacy
+	Tooltip:
+		'''
+		This weapon can supercrit if its crit chance is over 100%
+		All bullets fired inflict Shred, a stacking bleed debuff
+		Shred deals 150 DPS per stack and scales with your ranged stats
+		Damage ticks of Shred can also critically strike or supercrit
+		Replaces standard bullets with High Velocity Bullets
+		80% chance to not consume ammo
+		'''
 }
 
 SpectreRifle: {
@@ -112,21 +124,35 @@ StarCannonEX: {
 }
 
 TyrannysEndOld: {
-	DisplayName: Tyrannys End Old
-	Tooltip: One shot.
+	DisplayName: Tyranny's End Legacy
+	Tooltip:
+		'''
+		Pierce the heart of even the most heavily-armored foe
+		Fires a .70 caliber sniper round that bypasses enemy defense and DR
+		Rounds mark enemies for death and summon a swarm of additional bullets on crits
+		'One shot'
+		'''
 }
 
 ChargedDartRifle: {
 	DisplayName: Charged Dart Rifle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a shotgun spread of darts and a splitting energy blast
+		Right click to fire a more powerful exploding energy blast that bounces
+		'''
 }
 
 PhangasmOS: {
-	DisplayName: Phangasm O S
-	Tooltip: ""
+	DisplayName: Phangasm Legacy
+	Tooltip:
+		'''
+		Fires a spread of 5 arrows and emits phantom arrows on enemy hits
+		66% chance to save ammo
+		'''
 }
 
 WulfrumBow: {
-	DisplayName: Wulfrum Bow
 	Tooltip: ""
+	DisplayName: Wulfrum Bow
 }

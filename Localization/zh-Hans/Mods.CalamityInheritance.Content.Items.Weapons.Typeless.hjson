@@ -1,29 +1,29 @@
 Bazooka: {
-	// DisplayName: Bazooka
-	// Tooltip: ""
+	DisplayName: Bazooka
+	Tooltip: ""
 }
 
 ElephantKiller: {
-	// DisplayName: Elephant Killer
-	// Tooltip: ""
+	DisplayName: Elephant Killer
+	Tooltip: ""
 }
 
 Hydra: {
-	// DisplayName: Hydra
-	// Tooltip: ""
+	DisplayName: Hydra
+	Tooltip: ""
 }
 
 LightningHawk: {
-	// DisplayName: Lightning Hawk
-	// Tooltip: ""
+	DisplayName: Lightning Hawk
+	Tooltip: ""
 }
 
 Magnum: {
-	// DisplayName: Magnum
-	// Tooltip: ""
+	DisplayName: Magnum
+	Tooltip: ""
 }
 
 GoldenGun: {
-	// DisplayName: Golden Gun
-	// Tooltip: ""
+	DisplayName: Golden Gun
+	Tooltip: ""
 }

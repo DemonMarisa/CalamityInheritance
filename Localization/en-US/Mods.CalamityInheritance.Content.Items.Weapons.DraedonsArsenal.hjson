@@ -1,4 +1,11 @@
 PulseRifleOld: {
 	DisplayName: Pulse Rifle Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires an enhanced pulse beam that dissipates into 4 high-frequency pulse orbs on hit
+		Pulse orbs aggressively track nearby targets and track faster the more they hit
+		Pulse orb pierce will not decrease when killing enemies or dealing low damage
+		[c/1FFBFF:'My own personal weapon, used to stamp out failed creations.]
+		[c/1FFBFF:I have backed up the schematics in the event of the original's destruction.']
+		'''
 }

@@ -1,6 +1,6 @@
 FasterAuricTracers: {
-	// DisplayName: 天神之靴[Legacy]
-	/* Tooltip:
+	DisplayName: 天神之靴[Legacy]
+	Tooltip:
 		'''
 		更加荒诞的速度！
 		算作翅膀
@@ -13,12 +13,12 @@ FasterAuricTracers: {
 		能在水和岩浆上行走
 		获得暂时的岩浆免疫能力
 		受到超过200点的伤害会增加你的无敌时间
-		''' */
+		'''
 }
 
 FasterGodSlayerTracers: {
-	// DisplayName: 极乐之靴[Legacy]
-	/* Tooltip:
+	DisplayName: 极乐之靴[Legacy]
+	Tooltip:
 		'''
 		荒诞的速度！
 		算作翅膀
@@ -30,12 +30,12 @@ FasterGodSlayerTracers: {
 		在冰上大幅增加机动性
 		能在水和岩浆上行走
 		获得暂时的岩浆免疫能力
-		''' */
+		'''
 }
 
 FasterLunarTracers: {
-	// DisplayName: 六翼天使之靴[Legacy]
-	/* Tooltip:
+	DisplayName: 六翼天使之靴[Legacy]
+	Tooltip:
 		'''
 		荒诞的速度！
 		算作翅膀
@@ -48,12 +48,12 @@ FasterLunarTracers: {
 		在冰上大幅增加机动性
 		能在水和岩浆上行走
 		获得暂时的岩浆免疫能力
-		''' */
+		'''
 }
 
 AncientXerocWings: {
-	// DisplayName: 克希洛克之翼[Legacy]
-	/* Tooltip:
+	DisplayName: 克希洛克之翼[Legacy]
+	Tooltip:
 		'''
 		荒诞的速度！
 		水平飞行速度: 9
@@ -65,10 +65,10 @@ AncientXerocWings: {
 		能在水和岩浆上行走
 		获得暂时的岩浆免疫能力
 		当你的生命值处于20%以下，且穿着克希洛克套装时，增加50%伤害与暴击率
-		''' */
+		'''
 }
 
 AureateBoosterRevamped: {
-	// DisplayName: Aureate Booster Revamped
-	// Tooltip: ""
+	DisplayName: Aureate Booster Revamped
+	Tooltip: ""
 }

@@ -1,6 +1,15 @@
 Animus: {
 	DisplayName: Animus
-	Tooltip: ""
+	Tooltip:
+		'''
+		Randomizes its damage on enemy hits
+		25% chance of 800 damage
+		25% chance of 1,200 damage
+		20% chance of 1,800 damage
+		15% chance of 3,000 damage
+		10% chance of 6,000 damage
+		5% chance of 10,000 damage
+		'''
 }
 
 ArkoftheAncients: {
@@ -25,7 +34,7 @@ ArkoftheElementsold: {
 
 AtaraxiaOld: {
 	DisplayName: Ataraxia Legacy
-	Tooltip: "1"
+	Tooltip: "[c/BA55D3:Equanimity Legacy]"
 }
 
 BiomeBlade: {
@@ -35,7 +44,7 @@ BiomeBlade: {
 
 BladeofEnmity: {
 	DisplayName: Blade of Enmity
-	Tooltip: "1"
+	Tooltip: ""
 }
 
 BloodyEdge: {
@@ -45,7 +54,12 @@ BloodyEdge: {
 
 ElementalExcalibur: {
 	DisplayName: Elemental Excalibur Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		True melee strikes freeze enemies
+		Fires rainbow beams that change their behavior based on their color
+		Press Right Click for true melee
+		'''
 }
 
 Exobladeold: {
@@ -82,7 +96,12 @@ FourSeasonsGalaxiaold: {
 
 GrandDad: {
 	DisplayName: Grand Dad
-	Tooltip: ""
+	Tooltip:
+		'''
+		Lowers enemy defense to 0 when they are struck
+		Yeets enemies across space and time
+		7
+		'''
 }
 
 MurasamaNeweffect: {
@@ -107,7 +126,12 @@ Murasamaold: {
 
 NeptunesBountyOld: {
 	DisplayName: Neptunes Bounty Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		Fires a trident that rains additional tridents as it travels
+		Hitting enemies will inflict the crush depth debuff
+		The lower the enemies' defense, the more damage they take from this debuff
+		'''
 }
 
 OmegaBiomeBlade: {
@@ -121,12 +145,20 @@ OmegaBiomeBlade: {
 
 SoulEdge: {
 	DisplayName: Soul Edge Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		Fires the ghastly souls of long-deceased abyss dwellers
+		Striking with the blade summons additional souls from below
+		'''
 }
 
 StreamGougeOld: {
 	DisplayName: Stream Gouge Legacy
-	Tooltip: "1"
+	Tooltip:
+		'''
+		Fires an essence spear clone
+		Ignores immunity frames
+		'''
 }
 
 TerraEdge: {
@@ -163,31 +195,36 @@ Test: {
 }
 
 GalaxySmasherMelee: {
-	DisplayName: Galaxy Smasher Melee
-	Tooltip: ""
+	DisplayName: Galaxy Smasher Melee Legacy
+	Tooltip: Explodes and summons death lasers on enemy hits
 }
 
 StellarContemptOld: {
-	DisplayName: Stellar Contempt Old
-	Tooltip: ""
+	DisplayName: Stellar Contempt Melee Legacy
+	Tooltip: Lunar flares rain down on enemy hits
 }
 
 FallenPaladinsHammerOld: {
-	DisplayName: Fallen Paladins Hammer Old
-	Tooltip: ""
+	DisplayName: Fallen Paladin's Hammer Melee Legacy
+	Tooltip: Explodes on enemy hits
 }
 
 Trinity: {
 	DisplayName: Trinity
-	Tooltip: ""
+	Tooltip: Fires a spread of energy bolts
 }
 
 TerratomereOld: {
 	DisplayName: Terratomere Old
-	Tooltip: ""
+	Tooltip:
+		'''
+		Linked to the essence of Terraria
+		Heals the player on true melee hits
+		Fires a barrage of homing beams that inflict several debuffs
+		'''
 }
 
 WulfrumBlade: {
-	DisplayName: Wulfrum Blade
 	Tooltip: ""
+	DisplayName: Wulfrum Blade
 }

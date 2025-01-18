@@ -15,10 +15,10 @@ WulfrumPickaxe: {
 
 Moonlight: {
 	DisplayName: Moonlight
-	Tooltip: ""
+	Tooltip: Advances time to the night
 }
 
 Daylight: {
 	DisplayName: Daylight
-	Tooltip: ""
+	Tooltip: Advances time to the day
 }

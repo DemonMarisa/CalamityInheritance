@@ -1,31 +1,31 @@
 CelestialObliterator: {
-	// DisplayName: Celestial Obliterator
-	/* Tooltip:
+	DisplayName: Celestial Obliterator
+	Tooltip:
 		'''
 		Shoots a stream of spreading bullets
 		Automatically launch a homing exo missile at regular intervals
 		'Shatter your enemy with your bullet hell'
-		''' */
+		'''
 }
 
 ConclaveCrossfire: {
-	// DisplayName: Conclave Crossfire
-	// Tooltip: ""
+	DisplayName: Conclave Crossfire
+	Tooltip: ""
 }
 
 DragonsBreathold: {
-	// DisplayName: Dragon's Breath Legacy
-	/* Tooltip:
+	DisplayName: Dragon's Breath Legacy
+	Tooltip:
 		'''
 		Shoots a spread of exploding fire bullets
 		80% chance to not consume ammo 
 		'No longer an akaward flamethower now'
-		''' */
+		'''
 }
 
 HeavenlyGaleold: {
-	// DisplayName: Heavenly Gale Legacy
-	/* Tooltip:
+	DisplayName: Heavenly Gale Legacy
+	Tooltip:
 		'''
 		Fires a barrage of 5 random exo arrows
 		Green exo arrows explode into a tornado on death
@@ -34,99 +34,99 @@ HeavenlyGaleold: {
 		Teal exo arrows ignore enemy immunity frames
 		66% chance to not consume ammo
 		Will not convertes into exo arrows if Ammo Conversion is disabled
-		''' */
+		'''
 }
 
 LeadWizard: {
-	// DisplayName: Lead Wizard
-	/* Tooltip:
+	DisplayName: Lead Wizard
+	Tooltip:
 		'''
 		Something...is not right.
 		33% chance to not consume ammo
-		''' */
+		'''
 }
 
 Minigun: {
-	// DisplayName: Minigun Legacy
-	/* Tooltip:
+	DisplayName: Minigun Legacy
+	Tooltip:
 		'''
 		80% chance to not consume ammo
 		'Wondering if someone DO need a homing weapon in Exo Mech fight and use Kingsbane'
-		''' */
+		'''
 }
 
 Photovisceratorold: {
-	// DisplayName: Photoviscerator Legacy
-	/* Tooltip:
+	DisplayName: Photoviscerator Legacy
+	Tooltip:
 		'''
 		Fires a stream of exo flames and light that explodes into homing sparks
 		Right click to fire homing flare while stack to enemies and incinerate them
 		'It should not be a prism causes ranged damage'
-		''' */
+		'''
 }
 
 ProporsePistol: {
-	// DisplayName: Proporse Pistol
-	// Tooltip: ""
+	DisplayName: Proporse Pistol
+	Tooltip: ""
 }
 
 RaidersGlory: {
-	// DisplayName: Raider's Glory
-	/* Tooltip:
+	DisplayName: Raider's Glory
+	Tooltip:
 		'''
 		Shoots hyper ichor arrow
 		Make enemies drop more money on death
-		''' */
+		'''
 }
 
 Skullmasher: {
-	// DisplayName: Skullmasher
-	/* Tooltip:
+	DisplayName: Skullmasher
+	Tooltip:
 		'''
 		Sniper shotgun, because why not?
 		If you crit the target a second swarm of bullets will fire near the target
-		''' */
+		'''
 }
 
 SomaPrimeOld: {
-	// DisplayName: Soma Prime Old
-	// Tooltip: ""
+	DisplayName: Soma Prime Old
+	Tooltip: ""
 }
 
 SpectreRifle: {
-	// DisplayName: Spectre Rifle
-	/* Tooltip:
+	DisplayName: Spectre Rifle
+	Tooltip:
 		'''
 		Converts musket into powerful homing soul bullet
 		This effect toggleable in config
-		''' */
+		'''
 }
 
 StarCannonEX: {
-	// DisplayName: Star Cannon E X
-	/* Tooltip:
+	DisplayName: Star Cannon E X
+	Tooltip:
 		'''
 		Fires a mix of normal, starfury, and astral stars
 		'Why did Re-logic create Super Star Shooter when I would suffice?'
-		''' */
+		'''
 }
 
 TyrannysEndOld: {
-	// DisplayName: Tyrannys End Old
-	// Tooltip: One shot.
+	DisplayName: Tyrannys End Old
+	Tooltip: One shot.
 }
 
 ChargedDartRifle: {
-	// DisplayName: Charged Dart Rifle
-	// Tooltip: ""
+	DisplayName: Charged Dart Rifle
+	Tooltip: ""
 }
 
 PhangasmOS: {
-	// DisplayName: Phangasm O S
-	// Tooltip: ""
+	DisplayName: Phangasm O S
+	Tooltip: ""
 }
 
 WulfrumBow: {
-	// DisplayName: Wulfrum Bow
-	// Tooltip: ""
+	DisplayName: Wulfrum Bow
+	Tooltip: ""
 }

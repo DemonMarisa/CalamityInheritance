@@ -9,10 +9,17 @@ MidnightSunBeaconold: {
 
 TemporalUmbrellaOld: {
 	DisplayName: Temporal Umbrella Legacy
-	Tooltip: '''1	'''
+	Tooltip: 
+		'''
+		[c/00BFFF:Surprisingly sturdy, I reckon this could defeat the Mafia in a single blow]
+		Summons a magic hat to hover above your head
+		The hat will release a variety of objects to assault your foes
+		Requires 5 minion slots to use
+		There can only be one
+		'''
 }
 
 WulfrumControllerOld: {
+	Tooltip: "Summons a wulfrum droid to fight for you"
 	DisplayName: Wulfrum Controller Old
-	Tooltip: ""
 }

@@ -1,40 +1,58 @@
 DoGLegacy: {
-	// DisplayName: Music Box(Devourer of Gods Theme - Legacy)
-	/* Tooltip:
+	DisplayName: 音乐盒(Devourer of Gods Theme - Legacy)
+	Tooltip:
 		'''
-		Play [c/9400D3:Last Battle (Ballos Mix)](06:27) by DM DOKURO
-		A legacy theme for Devourer of Gods in the early days of Calamity.
-		''' */
+		播放 [c/9400D3:Last Battle (Ballos Mix)](06:27) 由DM DOKURO制作
+		神明吞噬者早期主题曲
+		'''
 }
 
 DoGNonStop: {
-	// DisplayName: Music Box(Devourer of Gods Theme - Nonstop Version)
-	/* Tooltip:
+	DisplayName: 音乐盒(Devourer of Gods Theme - Nonstop Version)
+	Tooltip:
 		'''
-		Play [c/9400D3:Devourer of Gods Nonstop Remix](13:36) by DM DOKURO
-		A theme for Devourer of Gods, and his Sentinels.
-		''' */
+		播放 [c/9400D3:Devourer of Gods Nonstop Remix](13:36) 由DM DOKURO制作
+		神明吞噬者与他的使徒曲目合集
+		'''
 }
 
 NowStopAskingWhere: {
-	// DisplayName: Music Box(Supreme Calamitas Theme - Legacy)
-	/* Tooltip:
+	DisplayName: 音乐盒(Supreme Calamitas Theme - Legacy)
+	Tooltip:
 		'''
-		Play [c/CD0000:Now Stop Asking Where](03:03) by DM DOKURO
-		An early theme for Supreme Calamitas, not that Witch
-		''' */
+		播放 [c/CD0000:Now Stop Asking Where](03:03) 由DM DOKURO制作
+		至尊灾厄早期主题曲
+		'''
 }
 
 ProvidenceLegacy: {
-	// DisplayName: Music Box(Providence, the Profaned Goddess Theme - Legacy)
-	/* Tooltip:
+	DisplayName: 音乐盒(Providence, the Profaned Goddess Theme - Legacy)
+	Tooltip:
 		'''
-		Play [c/FFA500:Adventure's End](01:59) by 下村陽子/Shimomura Yōko
-		A theme for Providence in the early days of Calamity
-		''' */
+		播放 [c/FFA500:Adventure's End](01:59) 由 下村陽子/Shimomura Yōko 制作
+		亵渎天神早期主题曲
+		'''
 }
 
 TyrantPart1: {
-	// DisplayName: Tyrant Part1
-	// Tooltip: ""
+	DisplayName: 音乐盒(Tyrant - Part 1)
+	Tooltip:
+		'''
+		播放 [c/FFA500:Tyrant - Part 1](01:54) 由DM DOKURO制作
+		噢-王啊，你为什么让你的挚亲逝去
+		无人回应你的呼唤
+		噢-王啊，当它的余晖从天空散落时
+		它仍有消息要传达给你
+		'''
+}
+
+RequiemsOfACruelWorld: {
+	DisplayName: 音乐盒(Requiems Of A Cruel World)
+	Tooltip: 
+		'''
+		播放 [c/00FFFF:Requiems Of A Cruel World](06:04) 由PinpinNero制作
+		残酷世界的安魂曲
+		迄今为止喷洒的血液已经让这片大陆变得陈腐无比，毫无生气
+		你也挥洒了自己的鲜血，但这可能足以带来一个新的时代......是什么，我不知道。但那一定是我所渴望看到的时代
+		'''
 }

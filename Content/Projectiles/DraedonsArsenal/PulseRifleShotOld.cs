@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal
                 }
             }
 
-            modifiers.SourceDamage.Flat += target.lifeMax / 250;
+            modifiers.SourceDamage.Flat += target.lifeMax / 500;
         }
 
         public override void OnKill(int timeLeft)

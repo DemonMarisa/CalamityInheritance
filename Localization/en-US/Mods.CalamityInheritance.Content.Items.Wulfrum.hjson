@@ -1,69 +1,139 @@
 MageWulfrumHoodLegacy: {
-	DisplayName: Mage Wulfrum Hood Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Hood
+	Tooltip: 3% increased magic damage
+	SetBonus:
+		'''
+		+3 defense, +50 max mana 
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 MeleeWulfrumHelmLegacy: {
-	DisplayName: Melee Wulfrum Helm Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Helm
+	Tooltip: 3% increased melee damage
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 ANewWulfrumArmor: {
-	DisplayName: A New Wulfrum Armor
-	Tooltip: ""
+	DisplayName: Wulfrum Armor Legacy
+	Tooltip: '''3% increased critical strike chance	'''
 }
 
 ANewWulfrumHeadgear: {
-	DisplayName: A New Wulfrum Headgear
-	Tooltip: ""
+	DisplayName: Wulfrum Headgear Legacy
+	Tooltip: 3% increased ranged damage
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 ANewWulfrumHelm: {
-	DisplayName: A New Wulfrum Helm
-	Tooltip: ""
+	DisplayName: Wulfrum Helm Legacy
+	Tooltip: 3% increased melee damage
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 ANewWulfrumHelmet: {
-	DisplayName: A New Wulfrum Helmet
-	Tooltip: ""
+	DisplayName: Wulfrum Helmet Legacy
+	Tooltip:
+		'''
+		+1 max minion
+		6% increased summon damage
+		'''
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed	
+		'''
 }
 
 ANewWulfrumHood: {
-	DisplayName: A New Wulfrum Hood
-	Tooltip: ""
+	DisplayName: Wulfrum Hood Legacy
+	Tooltip: 3% increased magic damage
+	SetBonus:
+		'''
+		+3 defense, +50 max mana 
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 ANewWulfrumLeggings: {
-	DisplayName: A New Wulfrum Leggings
-	Tooltip: ""
+	DisplayName: Wulfrum Leggings Legacy
+	Tooltip: 5% increased movement speed
 }
 
 ANewWulfrumMask: {
-	DisplayName: A New Wulfrum Mask
-	Tooltip: ""
+	DisplayName: Wulfrum Mask Legacy
+	Tooltip: 10% increased movement speed
+	SetBonus:
+		'''
+		+3 defense, 3% increased rogue damage
+		+50 maxinum stealth	
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 RangedWulfrumHeadgearLegacy: {
-	DisplayName: Ranged Wulfrum Headgear Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Headgear
+	Tooltip: 3% increased ranged damage
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 SummonerWulfrumHelmetLegacy: {
-	DisplayName: Summoner Wulfrum Helmet Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Helmet
+	Tooltip:
+		'''
+		+1 max minion
+		6% increased summon damage
+		'''
+	SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed	
+		'''
 }
 
 ThrowerWulfrumMaskLegacy: {
-	DisplayName: Thrower Wulfrum Mask Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Mask
+	Tooltip: 10% increased movement speed
+	SetBonus:
+		'''
+		+3 defense, 3% increased rogue damage
+		+50 maxinum stealth	
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		'''
 }
 
 WulfrumArmorLegacy: {
-	DisplayName: Wulfrum Armor Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Armor
+	Tooltip: "3% increased critical strike chance "
 }
 
 WulfrumLeggingsLegacy: {
-	DisplayName: Wulfrum Leggings Legacy
-	Tooltip: ""
+	DisplayName: Ancient Wulfrum Leggings
+	Tooltip: 5% increased movement speed
 }

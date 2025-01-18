@@ -1,28 +1,32 @@
 DaedalusEmblem: {
-	DisplayName: 阿尔特弥斯纹章[Legacy]
+	DisplayName: Daedalus Emblem Legacy
 	Tooltip:
 		'''
-		增加10%远程伤害，5%远程暴击率并减少20%弹药消耗率
-		增加5点防御, 增加2点生命恢复速度和15%挖掘速度
+		+1 HP/s life regen speed
+		10% increased ranged damage, 5% increased ranged critical strike chance
+		20% not consumed ammo
+		Greatly increased ranged projectiles speed
 		'''
 }
 
 ElementalQuiver: {
-	DisplayName: 元素箭袋[Legacy]
+	DisplayName: Elemental Quiver Legacy
 	Tooltip:
 		'''
-		增加20%的远程伤害和15%的暴击率，并降低20%弹药消耗几率
-		增加大多数远程弹幕速度
-		允许远程弹幕分裂
-		（分裂可在配置中关闭）
+		20% increased ranged damage, 15% increased ranged critical strike chance
+		+2 HP/s life regen speed, 15% increased mining speed
+		20% chance not consume ammo 
+		Greatly increases all ranged projectiles velocity
+		Allows your ranged projectiles split
+		This effect is toggleable in config
 		'''
 }
 
 PsychoticAmulet: {
-	DisplayName: 神经元护符[Legacy]
+	DisplayName: Psychotic Amulet Legacy
 	Tooltip:
 		'''
-		增加5%远程武器和盗贼武器的伤害和暴击率
-		站定不动时会使玩家逐渐隐身，且增益更为强力
+		5% increased ranged and rogue damage and critical strike chance
+		Grants a massive boost to these stats if you are not moving
 		'''
 }
