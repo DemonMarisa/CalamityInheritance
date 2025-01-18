@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
     {
         public int frameCounter = 0;
         public int frame = 0;
-        public new string LocalizationCategory => "Items.Placeables";
+        public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
         public override void SetDefaults()
         {
             Item.width = 82;

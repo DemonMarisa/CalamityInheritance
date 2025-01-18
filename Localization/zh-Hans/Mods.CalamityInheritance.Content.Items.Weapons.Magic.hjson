@@ -1,11 +1,11 @@
-﻿HadopelagicEcho: {
+HadopelagicEcho: {
 	DisplayName: 冥渊回音[Legacy]
-	Tooltip: 
-	'''
-	发射一串反射音波
-	音波传播距离越远，伤害便越高
-	击中敌人时反射出更多音波
-	'''
+	Tooltip:
+		'''
+		发射一串反射音波
+		音波传播距离越远，伤害便越高
+		击中敌人时反射出更多音波
+		'''
 }
 
 HeliumFlashLegacy: {
@@ -19,62 +19,62 @@ HeliumFlashLegacy: {
 
 PhantasmalFuryOld: {
 	DisplayName: 幻象之怒[Legacy]
-	Tooltip: 
-	'''
-	释放会分裂的幻象球
-	幻象球不再跟踪
-	'''
+	Tooltip:
+		'''
+		释放会分裂的幻象球
+		幻象球不再跟踪
+		'''
 }
 
 CarnageRay: {
 	DisplayName: 屠杀射线[Legacy]
 	Tooltip:
-					'''
-					发射纯粹而集中的血腥射线
-					敌人在附近时会在其附近产生额外的射线
-					距离敌人越远，伤害越高
-					'''
+		'''
+		发射纯粹而集中的血腥射线
+		敌人在附近时会在其附近产生额外的射线
+		距离敌人越远，伤害越高
+		'''
 }
 
 ElementalRayold: {
-				DisplayName: 元素射线[Legacy]
-				Tooltip:
-					'''
-					发射纯粹而集中的元素射线
-					射线消失时会留下远古之光跟踪敌人
-					敌人在附近时会有元素闪电从天而降
-					击中敌人会出现星云火焰与耀斑爆炸
-					'''
+	DisplayName: 元素射线[Legacy]
+	Tooltip:
+		'''
+		发射纯粹而集中的元素射线
+		射线消失时会留下远古之光跟踪敌人
+		敌人在附近时会有元素闪电从天而降
+		击中敌人会出现星云火焰与耀斑爆炸
+		'''
 }
 
 FabstaffOld: {
-		DisplayName: 绝学法杖[Legacy]
-		Tooltip: 发射一道在接近敌人时会自动分裂的弹射光束
+	DisplayName: 绝学法杖[Legacy]
+	Tooltip: 发射一道在接近敌人时会自动分裂的弹射光束
 }
 
 NightsRayold: {
-				DisplayName: 永夜射线[Legacy]
-				Tooltip:
-					'''
-					发射纯粹而集中的暗影射线
-					敌人在附近时会在其附近产生额外的射线
-					距离敌人越近，伤害越高
-					'''
+	DisplayName: 永夜射线[Legacy]
+	Tooltip:
+		'''
+		发射纯粹而集中的暗影射线
+		敌人在附近时会在其附近产生额外的射线
+		距离敌人越近，伤害越高
+		'''
 }
 
 TerraRay: {
-		DisplayName: 泰拉射线[Legacy]
-		Tooltip:
-			'''
-			发射纯粹而集中的生命射线
-			敌人在附近时会在其附近产生额外的射线
-			射线消失后会留下可以追踪的生命精华
-			'''
+	DisplayName: 泰拉射线[Legacy]
+	Tooltip:
+		'''
+		发射纯粹而集中的生命射线
+		敌人在附近时会在其附近产生额外的射线
+		射线消失后会留下可以追踪的生命精华
+		'''
 }
 
 StratusSphere: {
-		DisplayName: 幻云天球[Legacy]
-		Tooltip: 
+	DisplayName: 幻云天球[Legacy]
+	Tooltip:
 		'''
 		发射一个蕴含平流层精华的能量球
 		现在会自动跟踪敌人
@@ -82,53 +82,53 @@ StratusSphere: {
 }
 
 SubsumingVortexold: {
-		DisplayName: 归元旋涡[Legacy]
-		Tooltip:
-			'''
-			释放出一个巨大且缓慢的星流漩涡
-			漩涡会不断释放出星流触手，猛击附近的敌人
-			随后漩涡减速并爆炸
-			'''
+	DisplayName: 归元旋涡[Legacy]
+	Tooltip:
+		'''
+		释放出一个巨大且缓慢的星流漩涡
+		漩涡会不断释放出星流触手，猛击附近的敌人
+		随后漩涡减速并爆炸
+		'''
 }
 
 TheWandold: {
-				DisplayName: 神杖·暴风灼炎[Legacy]
-				Tooltip: 
-				'''
-				一杖御万杖
-				击中敌人或墙壁时龙卷生成位置更靠下
-				'''
+	DisplayName: 神杖·暴风灼炎[Legacy]
+	Tooltip:
+		'''
+		一杖御万杖
+		击中敌人或墙壁时龙卷生成位置更靠下
+		'''
 }
 
 VehemencOld: {
-		DisplayName: 爆裂[Legacy]
-		Tooltip:
-			'''
-			释放一个毁灭性的能量波
-			基础伤害为敌人当前血量的七分之一
-			伤害不会超过一百万
-			如果击中满血敌人，则此能量波会施加一些持续时间较长的减益
-			'''
+	DisplayName: 爆裂[Legacy]
+	Tooltip:
+		'''
+		释放一个毁灭性的能量波
+		基础伤害为敌人当前血量的七分之一
+		伤害不会超过一百万
+		如果击中满血敌人，则此能量波会施加一些持续时间较长的减益
+		'''
 }
 
 VividClarity: {
-				DisplayName: 耀界之光[Revapmed]
-				Tooltip:
-					'''
-					向光标处发射九道彩虹光束
-					击中后会从天空降下星流闪电，并引发大型爆炸
-					爆炸会产生少量的跟踪弹幕
-					“它的威严激发了无与伦比的天才壮举”
-					'''
+	DisplayName: 耀界之光[Revapmed]
+	Tooltip:
+		'''
+		向光标处发射九道彩虹光束
+		击中后会从天空降下星流闪电，并引发大型爆炸
+		爆炸会产生少量的跟踪弹幕
+		“它的威严激发了无与伦比的天才壮举”
+		'''
 }
 
 VoidVortex: {
-		DisplayName: 虚空漩涡[Legacy]
-		Tooltip:
-			'''
-			在光标处召唤一个由磁暴球体组成的漩涡
-			球体会在大范围内自动攻击敌人
-			'''
+	DisplayName: 虚空漩涡[Legacy]
+	Tooltip:
+		'''
+		在光标处召唤一个由磁暴球体组成的漩涡
+		球体会在大范围内自动攻击敌人
+		'''
 }
 
 Lazinator: {
@@ -137,6 +137,6 @@ Lazinator: {
 }
 
 WulfrumStaff: {
-	DisplayName: 钨钢法杖[Legacy]
 	Tooltip: 比紫晶更强
+	DisplayName: 钨钢法杖[Legacy]
 }

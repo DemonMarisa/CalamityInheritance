@@ -1,82 +1,82 @@
-﻿CadancePotion: {
-		DisplayName: 韵律药水[legacy]
-		Tooltip:
-			'''
-			获得心率和谐增益
-			增加生命再生速度和25%最大生命值
-			扩大红心拾取范围
-			'''
-	}
+CadancePotion: {
+	DisplayName: 韵律药水[legacy]
+	Tooltip:
+		'''
+		获得心率和谐增益
+		增加生命再生速度和25%最大生命值
+		扩大红心拾取范围
+		'''
+}
 
-	DraconicElixir: {
-		DisplayName: 龙魂秘药[legacy]
-		Tooltip:
-			'''
-			极大提高翅膀飞翔时间和速度并增加16点防御
-			始源林海套装无敌与弑神复活效果在触发时为你恢复全部的生命值
-			降低丛林龙-犽戎传颂之物的减益
-			如果你触发过以上治疗效果，在60秒内你的各项属性会降低并获得30秒耐药性减益
-			'''
-	}
+DraconicElixir: {
+	DisplayName: 龙魂秘药[legacy]
+	Tooltip:
+		'''
+		极大提高翅膀飞翔时间和速度并增加16点防御
+		始源林海套装无敌与弑神复活效果在触发时为你恢复全部的生命值
+		降低丛林龙-犽戎传颂之物的减益
+		如果你触发过以上治疗效果，在60秒内你的各项属性会降低并获得30秒耐药性减益
+		'''
+}
 
-	HolyWrathPotion: {
-		DisplayName: 圣神之怒药水[legacy]
-		Tooltip:
-			'''
-			提升12%伤害
-			你的攻击会附带神圣之火减益
-			'''
-	}
+HolyWrathPotion: {
+	DisplayName: 圣神之怒药水[legacy]
+	Tooltip:
+		'''
+		提升12%伤害
+		你的攻击会附带神圣之火减益
+		'''
+}
 
-	PenumbraPotion: {
-		DisplayName: 半影药水[legacy]
-		Tooltip: 任何时候移动时增加10%盗贼潜行值恢复速度，站立不动时增加15%盗贼潜行值恢复速度
-	}
+PenumbraPotion: {
+	DisplayName: 半影药水[legacy]
+	Tooltip: 任何时候移动时增加10%盗贼潜行值恢复速度，站立不动时增加15%盗贼潜行值恢复速度
+}
 
-	ProfanedRagePotion: {
-		DisplayName: 渎神之怒药水[legacy]
-		Tooltip: 提升12%暴击几率
-	}
+ProfanedRagePotion: {
+	DisplayName: 渎神之怒药水[legacy]
+	Tooltip: 提升12%暴击几率
+}
 
-	PurifiedJam: {
-		DisplayName: 净神果酱[legacy]
-		Tooltip:
-			'''
-			让你在10秒钟（死亡模式5秒）内免疫所有伤害和绝大多数减益
-			消耗时玩家获得耐药性减益
-			耐药性状态时无法使用
-			'''
-	}
+PurifiedJam: {
+	DisplayName: 净神果酱[legacy]
+	Tooltip:
+		'''
+		让你在10秒钟（死亡模式5秒）内免疫所有伤害和绝大多数减益
+		消耗时玩家获得耐药性减益
+		耐药性状态时无法使用
+		'''
+}
 
-	RevivifyPotion: {
-		DisplayName: 新生药水[legacy]
-		Tooltip: 让敌人在攻击你时治疗你，治疗量为伤害值的一部分
-	}
+RevivifyPotion: {
+	DisplayName: 新生药水[legacy]
+	Tooltip: 让敌人在攻击你时治疗你，治疗量为伤害值的一部分
+}
 
-	ShatteringPotion: {
-		DisplayName: 粉碎药水[legacy]
-		Tooltip:
-			'''
-			增加8%近战和盗贼伤害，增加8%近战和盗贼暴击几率
-			近战和盗贼攻击会击碎敌人护甲
-			'''
-	}
+ShatteringPotion: {
+	DisplayName: 粉碎药水[legacy]
+	Tooltip:
+		'''
+		增加8%近战和盗贼伤害，增加8%近战和盗贼暴击几率
+		近战和盗贼攻击会击碎敌人护甲
+		'''
+}
 
-	TitanScalePotion: {
-		DisplayName: 泰坦之鳞药水[legacy]
-		Tooltip:
-			'''
-			增加击退，5防御和5%伤害减免
-			使用真近战武器攻击后几秒内增加20防御和5%伤害减免
-			'''
-	}
+TitanScalePotion: {
+	DisplayName: 泰坦之鳞药水[legacy]
+	Tooltip:
+		'''
+		增加击退，5防御和5%伤害减免
+		使用真近战武器攻击后几秒内增加20防御和5%伤害减免
+		'''
+}
 
-	TriumphPotion: {
-		DisplayName: 胜利药水[legacy]
-		Tooltip: 敌怪造成的接触伤害降低，此效果随敌怪生命值降低更加明显
-	}
+TriumphPotion: {
+	DisplayName: 胜利药水[legacy]
+	Tooltip: 敌怪造成的接触伤害降低，此效果随敌怪生命值降低更加明显
+}
 
-	YharimsStimulants: {
-		DisplayName: 魔君牌兴奋剂[legacy]
-		Tooltip: 给予能增强所有防御和进攻的属性
-	}
+YharimsStimulants: {
+	DisplayName: 魔君牌兴奋剂[legacy]
+	Tooltip: 给予能增强所有防御和进攻的属性
+}

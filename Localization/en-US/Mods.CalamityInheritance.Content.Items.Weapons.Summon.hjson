@@ -9,7 +9,7 @@ MidnightSunBeaconold: {
 
 TemporalUmbrellaOld: {
 	DisplayName: Temporal Umbrella Legacy
-	Tooltip: 
+	Tooltip:
 		'''
 		[c/00BFFF:Surprisingly sturdy, I reckon this could defeat the Mafia in a single blow]
 		Summons a magic hat to hover above your head
@@ -20,6 +20,6 @@ TemporalUmbrellaOld: {
 }
 
 WulfrumControllerOld: {
-	Tooltip: "Summons a wulfrum droid to fight for you"
+	Tooltip: Summons a wulfrum droid to fight for you
 	DisplayName: Wulfrum Controller Old
 }

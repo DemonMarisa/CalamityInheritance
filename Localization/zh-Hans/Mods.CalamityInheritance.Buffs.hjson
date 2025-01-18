@@ -1,72 +1,89 @@
-﻿	ArmorShattering: {
-		DisplayName: 护甲粉碎
-		Description: 近战和盗贼攻击会粉碎敌人的护甲
-	}
+ReaverMagePower: {
+	// DisplayName: Reaver Mage Power
+	// Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+}
 
-	CadancesGrace: {
-		DisplayName: 心律和谐
-		Description: 你心灵纯净
-	}
+ReaverMeleeRage: {
+	// DisplayName: Reaver Melee Rage
+	// Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+}
 
-	DraconicSurgeBuff: {
-		DisplayName: 龙魂加持
-		Description: 神龙的力量流灌注全身
-	}
+ArmorShattering: {
+	DisplayName: 护甲粉碎
+	Description: 近战和盗贼攻击会粉碎敌人的护甲
+}
 
-	HolyWrathBuff: {
-		DisplayName: 圣神之怒
-		Description: 提高伤害，所有攻击附带神圣之火减益
-	}
+CadancesGrace: {
+	DisplayName: 心律和谐
+	Description: 你心灵纯净
+}
 
-	Invincible: {
-		DisplayName: 无敌
-		Description: 无敌，并且免疫绝大多数debuff
-	}
+DraconicSurgeBuff: {
+	DisplayName: 龙魂加持
+	Description: 神龙的力量流灌注全身
+}
 
-	PenumbraBuff: {
-		DisplayName: 半影
-		Description: 移动时的潜行值恢复速度增加15%，在夜晚，静止时的潜行值恢复速度增加15%，日食期间，两者都会增加20%
-	}
+HolyWrathBuff: {
+	DisplayName: 圣神之怒
+	Description: 提高伤害，所有攻击附带神圣之火减益
+}
 
-	ProfanedRageBuff: {
-		DisplayName: 渎神之怒
-		Description: 提高暴击率
-	}
+Invincible: {
+	DisplayName: 无敌
+	Description: 无敌，并且免疫绝大多数debuff
+}
 
-	Revivify: {
-		DisplayName: 重振精神
-		Description: 你受到的伤害一小部分会得到治愈
-	}
+PenumbraBuff: {
+	DisplayName: 半影
+	Description: 移动时的潜行值恢复速度增加15%，在夜晚，静止时的潜行值恢复速度增加15%，日食期间，两者都会增加20%
+}
 
-	TitanScale: {
-		DisplayName: 泰坦之鳞
-		Description: 你感觉可以坦住成年幻海妖龙
-	}
+ProfanedRageBuff: {
+	DisplayName: 渎神之怒
+	Description: 提高暴击率
+}
 
-	TriumphBuff: {
-		DisplayName: 胜利之战
-		Description: 降低敌怪的接触伤害，生命值越低，降低幅度越大
-	}
+Revivify: {
+	DisplayName: 重振精神
+	Description: 你受到的伤害一小部分会得到治愈
+}
 
-	YharimPower: {
-		DisplayName: 亚利姆之力
-		Description: 你感觉可以把世界撕成了两半……空手足矣！
-	}
+TitanScale: {
+	DisplayName: 泰坦之鳞
+	Description: 你感觉可以坦住成年幻海妖龙
+}
 
-	ElysianGuard: {
-		DisplayName: 极乐之庇护
-		Description: 移动速度降低，提高各项属性
-	}
+TriumphBuff: {
+	DisplayName: 胜利之战
+	Description: 降低敌怪的接触伤害，生命值越低，降低幅度越大
+}
 
-	SilvaStun: {
-		DisplayName: 林海眩晕
-		Description: 你无法移动
-	}
+YharimPower: {
+	DisplayName: 亚利姆之力
+	Description: 你感觉可以把世界撕成了两半……空手足矣！
+}
+
+ElysianGuard: {
+	DisplayName: 极乐之庇护
+	Description: 移动速度降低，提高各项属性
+}
+
+SilvaStun: {
+	DisplayName: 林海眩晕
+	Description: 你无法移动
+}
+
 MagicHatBuffOld: {
+	// DisplayName: Magic Hat Buff Old
+	// Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
 }
 
 MidnightSunBuffOld: {
+	// DisplayName: Midnight Sun Buff Old
+	// Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
 }
 
 ReaverSummonSetBuff: {
+	// DisplayName: Reaver Summon Set Buff
+	// Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
 }

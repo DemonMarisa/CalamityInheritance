@@ -444,6 +444,10 @@ ReaverVisageRevamped: {
 }
 
 SilvaLeggingsold: {
-	DisplayName: Silva Leggingsold
-	Tooltip: ""
+	DisplayName: Silva Leggings Legacy
+	Tooltip:
+		'''
+		12% increased damage, 7% increased critical strike chance
+		45% increased movement speed
+		'''
 }

@@ -1,11 +1,23 @@
 MageWulfrumHoodLegacy: {
 	DisplayName: Mage Wulfrum Hood Legacy
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense, +50 max mana 
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 MeleeWulfrumHelmLegacy: {
 	DisplayName: Melee Wulfrum Helm Legacy
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 ANewWulfrumArmor: {
@@ -16,21 +28,45 @@ ANewWulfrumArmor: {
 ANewWulfrumHeadgear: {
 	DisplayName: A New Wulfrum Headgear
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 ANewWulfrumHelm: {
 	DisplayName: A New Wulfrum Helm
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 ANewWulfrumHelmet: {
 	DisplayName: A New Wulfrum Helmet
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed	
+		''' */
 }
 
 ANewWulfrumHood: {
 	DisplayName: A New Wulfrum Hood
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense, +50 max mana 
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 ANewWulfrumLeggings: {
@@ -41,21 +77,47 @@ ANewWulfrumLeggings: {
 ANewWulfrumMask: {
 	DisplayName: A New Wulfrum Mask
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense, 3% increased rogue damage
+		+50 maxinum stealth	
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 RangedWulfrumHeadgearLegacy: {
 	DisplayName: Ranged Wulfrum Headgear Legacy
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 SummonerWulfrumHelmetLegacy: {
 	DisplayName: Summoner Wulfrum Helmet Legacy
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed	
+		''' */
 }
 
 ThrowerWulfrumMaskLegacy: {
 	DisplayName: Thrower Wulfrum Mask Legacy
 	Tooltip: ""
+	/* SetBonus:
+		'''
+		+3 defense, 3% increased rogue damage
+		+50 maxinum stealth	
+		+5 defense when below 50% max life
+		10% increased mining speed and movement speed
+		''' */
 }
 
 WulfrumArmorLegacy: {

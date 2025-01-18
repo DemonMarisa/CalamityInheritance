@@ -13,6 +13,6 @@ TemporalUmbrellaOld: {
 }
 
 WulfrumControllerOld: {
-	DisplayName: Wulfrum Controller Old
 	Tooltip: ""
+	DisplayName: Wulfrum Controller Old
 }

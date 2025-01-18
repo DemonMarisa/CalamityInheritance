@@ -78,6 +78,6 @@ SylvanSlasher: {
 }
 
 WulfrumKnifeOld: {
-	DisplayName: Wulfrum Knife Old
 	Tooltip: ""
+	DisplayName: Wulfrum Knife Old
 }

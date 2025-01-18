@@ -127,6 +127,11 @@ PhangasmOS: {
 }
 
 WulfrumBow: {
-	DisplayName: Wulfrum Bow
 	Tooltip: ""
+	DisplayName: Wulfrum Bow
+}
+
+Impaler: {
+	// DisplayName: Impaler
+	// Tooltip: ""
 }

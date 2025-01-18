@@ -185,27 +185,6 @@ LeviathanAmbergrisLegacy: {
 		'''
 }
 
-Melee: {
-	BadgeofBravery: {
-	}
-
-	ElementalGauntletold: {
-	}
-
-	YharimsInsignia: {
-		DisplayName: 魔君之证章[Legacy]
-		Tooltip:
-			'''
-			生命值低于50%时增加10%伤害
-			增加10%近战攻速
-			增加10%近战伤害和真近战伤害
-			近战攻击及其弹幕会造成神圣之火减益
-			使你暂时免疫熔岩
-			增加近战击退
-			'''
-	}
-}
-
 PlagueHive: {
 	DisplayName: 瘟疫蜂巢[Legacy]
 	Tooltip:
@@ -285,4 +264,40 @@ AstralArcanum: {
 		即使在受到伤害性减益的影响时也能增加生命恢复速度
 		当受到伤害性减益效果时，你将获得20点防御
 		'''
+}
+
+AmbrosialAmpouleOld: {
+	// DisplayName: Ambrosial Ampoule Legacy
+	/* Tooltip:
+		'''
+		25% increased mining speed
+		You emit light
+		5% increased damage reduction and increased life regen
+		Poison, Freeze, Chill, Frostburn, and Venom immunity
+		Honey-like life regen with no speed penalty
+		Most bee/hornet enemies and projectiles do 75% damage to you
+		''' */
+}
+
+SeaShell: {
+	// DisplayName: Sea Shell
+	// Tooltip: +3 defense, 5% increased damage reduction and 10% increased movement when submerged in liquid
+}
+
+TheAbsorberOld: {
+	// DisplayName: The Absorber Legacy
+	/* Tooltip:
+		'''
+		12% increased movement speed
+		24% increased jump speed
+		+20 max life and mana
+		Standing still boosts life and mana regen
+		Increased defense and damage reduction when submerged in liquid
+		Increased movement speed when submerged in liquid
+		Enemies take damage when they hit you
+		Taking a hit will make you move very fast for a short time
+		You emit a mushroom spore and spark explosion when you are hit
+		5% increased damage reduction
+		Enemy attacks will have part of their damage absorbed and used to heal you
+		''' */
 }
