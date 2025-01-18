@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
             Recipe recipe1 = CreateRecipe();
             recipe1.AddIngredient(ModContent.ItemType<ElementalRayold>());
-            recipe1.AddIngredient(ModContent.ItemType<PhantasmalFury>());
+            recipe1.AddIngredient(ModContent.ItemType<PhantasmalFuryOld>());
             recipe1.AddIngredient(ModContent.ItemType<ShadowboltStaff>());
             recipe1.AddIngredient(ModContent.ItemType<UltraLiquidator>());
             recipe1.AddIngredient(ModContent.ItemType<MiracleMatter>());

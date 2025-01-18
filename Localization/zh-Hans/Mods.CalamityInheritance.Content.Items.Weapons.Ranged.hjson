@@ -125,3 +125,8 @@ PhangasmOS: {
 	// DisplayName: Phangasm O S
 	// Tooltip: ""
 }
+
+WulfrumBow: {
+	// DisplayName: Wulfrum Bow
+	// Tooltip: ""
+}

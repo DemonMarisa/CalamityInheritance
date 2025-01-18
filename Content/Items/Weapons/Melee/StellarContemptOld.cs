@@ -51,6 +51,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<FallenPaladinsHammerOld>().
+                AddIngredient(ItemID.LunarBar, 5).
+                AddIngredient(ItemID.FragmentSolar, 10).
+                AddIngredient(ItemID.FragmentNebula, 10).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
                 AddIngredient<FallenPaladinsHammer>().
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient(ItemID.FragmentSolar, 10).

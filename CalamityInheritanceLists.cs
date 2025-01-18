@@ -13,6 +13,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using CalamityMod.Projectiles.Typeless;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityMod.NPCs.PlaguebringerGoliath;
+using CalamityMod.NPCs.PlagueEnemies;
+using CalamityMod.Projectiles.Boss;
 
 namespace CalamityInheritance
 {
@@ -23,7 +26,8 @@ namespace CalamityInheritance
         public static List<int> AMRextraProjList;
         public static List<int> pierceResistExceptionList;
         public static List<int> ProjNoCIdeadshotBrooch;
-
+        public static List<int> beeProjectileList;
+        public static List<int> beeEnemyList;
         public static void LoadLists()
         {
             rangedProjectileExceptionList = new List<int>
@@ -153,6 +157,31 @@ namespace CalamityInheritance
                 ProjectileType<RicoshotCoin>()
             };
 
+            beeEnemyList = new List<int>()
+            {
+                NPCID.GiantMossHornet,
+                NPCID.BigMossHornet,
+                NPCID.LittleMossHornet,
+                NPCID.TinyMossHornet,
+                NPCID.MossHornet,
+                NPCID.VortexHornetQueen,
+                NPCID.VortexHornet,
+                NPCID.Bee,
+                NPCID.BeeSmall,
+                NPCID.QueenBee,
+                NPCType<PlaguebringerGoliath>(),
+                NPCType<PlaguebringerMiniboss>(),
+                NPCType<PlagueChargerLarge>(),
+                NPCType<PlagueCharger>()
+            };
+            beeProjectileList = new List<int>()
+            {
+                ProjectileID.Stinger,
+                ProjectileID.HornetStinger,
+                ProjectileType<PlagueStingerGoliath>(),
+                ProjectileType<PlagueStingerGoliathV2>(),
+                ProjectileType<PlagueExplosion>()
+            };
         }
 
         public static void UnloadLists()
@@ -161,6 +190,8 @@ namespace CalamityInheritance
             AuricdebuffList = null;
             AMRextraProjList = null;
             ProjNoCIdeadshotBrooch = null;
+            beeEnemyList = null;
+            beeProjectileList = null;
         }
     }
 }

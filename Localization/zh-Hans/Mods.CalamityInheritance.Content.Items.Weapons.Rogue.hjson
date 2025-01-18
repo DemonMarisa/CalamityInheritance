@@ -76,3 +76,8 @@ SylvanSlasher: {
 		Does not consume stealth and cannot stealth strike
 		''' */
 }
+
+WulfrumKnifeOld: {
+	// DisplayName: Wulfrum Knife Old
+	// Tooltip: ""
+}

@@ -116,6 +116,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.statManaMax2 += 30;
             player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
             player.statLifeMax += 30;
+            player.jumpSpeedBoost += 0.5f;
             if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
             {
                 if (modPlayer1.CISpongeShieldDurability == 0)
@@ -123,11 +124,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                     player.endurance -= 0.25f;
                     player.statDefense -= 50;
                 }
-            }
-            else
-            {
-                player.endurance -= 0f;
-                player.statDefense -= 0;
             }
         }
 
@@ -196,6 +192,15 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<RoverDrive>().
+                AddIngredient<TheAbsorberOld>().
+                AddIngredient<AmbrosialAmpouleOld>().
+                AddIngredient<CosmiliteBar>(15).
+                AddIngredient<AscendantSpiritEssence>(5).
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<RoverDrive>().
                 AddIngredient<AmidiasSpark>().

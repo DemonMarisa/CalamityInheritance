@@ -8,10 +8,12 @@ using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Events;
@@ -223,7 +225,10 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
             }
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<VehemencOld>(), 1);
+            }
             #endregion
             // Internal function to determine whether this NPC is the second Twin killed in a fight, regardless of which Twin it is.
             bool IsLastTwinStanding(DropAttemptInfo info)
@@ -270,6 +275,12 @@ namespace CalamityInheritance.NPCs
                 case NPCID.IchorSticker:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<IchorSpearLegacy>(), 100, 50));
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpearofDestinyLegacy>(), 200, 100));
+                    break;
+                case NPCID.VortexRifleman:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ConclaveCrossfire>(), 100, 50));
+                    break;
+                case NPCID.SeaSnail:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SeaShell>(), 2, 1));
                     break;
                 #endregion
 

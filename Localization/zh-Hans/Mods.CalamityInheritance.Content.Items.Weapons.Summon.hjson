@@ -11,3 +11,8 @@ TemporalUmbrellaOld: {
 	// DisplayName: Temporal Umbrella Legacy
 	// Tooltip: '''1	'''
 }
+
+WulfrumControllerOld: {
+	// DisplayName: Wulfrum Controller Old
+	// Tooltip: ""
+}

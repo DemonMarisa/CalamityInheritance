@@ -232,7 +232,7 @@ namespace CalamityInheritance.CIPlayer
             //海绵
             if (Modplayer1.CIsponge)
             {
-                int healAmt = (int)(hurtInfo.Damage / (CIsponge ? 16D : 20D));
+                int healAmt = (int)(hurtInfo.Damage / 15D);
                 Player.statLife += healAmt;
                 Player.HealEffect(healAmt);
             }
@@ -240,6 +240,13 @@ namespace CalamityInheritance.CIPlayer
             if (Modplayer1.Revivify)
             {
                 int healAmt = (int)(hurtInfo.Damage / 15D);
+                Player.statLife += healAmt;
+                Player.HealEffect(healAmt);
+            }
+            //阴阳石
+            if (Modplayer1.TheAbsorberOld)
+            {
+                int healAmt = (int)(hurtInfo.Damage / 20D);
                 Player.statLife += healAmt;
                 Player.HealEffect(healAmt);
             }
@@ -580,6 +587,11 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer modPlayer = Player.Calamity();
             if (triumph)
                 modPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+            if (beeResist)
+            {
+                if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
+                    modPlayer.contactDamageReduction += 0.25;
+            }
         }
         #endregion
         #region Free and Consumable Dodge Hooks
@@ -640,6 +652,12 @@ namespace CalamityInheritance.CIPlayer
                         return;
                     }
                 }
+            }
+
+            if (beeResist)
+            {
+                if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))
+                    modPlayer.projectileDamageReduction += 0.25;
             }
         }
         #endregion

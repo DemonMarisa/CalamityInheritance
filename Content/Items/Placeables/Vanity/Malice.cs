@@ -55,8 +55,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<CosmiliteBar>(15).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.DemonAltar).
                 Register();
         }
     }

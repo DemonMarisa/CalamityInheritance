@@ -8,6 +8,7 @@ using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.Melee;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -34,6 +35,8 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<LeviathanBag>())
                 itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 1);
 
+            if (item.type == ModContent.ItemType<ProvidenceBag>())
+                itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
             switch (item.type)
             {
                 #region Boss Treasure Bags

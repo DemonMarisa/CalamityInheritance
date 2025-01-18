@@ -119,6 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Main.dust[num458].noGravity = true;
             Main.dust[num458].velocity *= 0.5f;
             Main.dust[num458].velocity += Projectile.velocity * 0.1f;
+            CalamityUtils.HomeInOnNPC(Projectile, true, 400f, 12f, 20f);
         }
 
         public override Color? GetAlpha(Color lightColor)

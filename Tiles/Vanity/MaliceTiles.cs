@@ -18,6 +18,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Enums;
 using CalamityMod;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
 
 namespace CalamityInheritance.Tiles.Vanity
 {
@@ -30,11 +31,12 @@ namespace CalamityInheritance.Tiles.Vanity
             {
                 Glow = ModContent.Request<Texture2D>("CalamityInheritance/Tiles/Vanity/MaliceTilesGlow", AssetRequestMode.AsyncLoad);
             }
-            RegisterItemDrop(ModContent.ItemType<BossRushMonolith>());
+            RegisterItemDrop(ModContent.ItemType<Malice>());
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
             TileObjectData.newTile.Width = 5;
-            TileObjectData.newTile.Origin = new Point16(3, 3);
+            TileObjectData.newTile.Height = 4;
+            TileObjectData.newTile.Origin = new Point16(3, 2);
             TileObjectData.newTile.CoordinateHeights = [16, 16, 16, 16, 16, 16, 16, 16, 16];
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.UsesCustomCanPlace = true;
@@ -65,7 +67,7 @@ namespace CalamityInheritance.Tiles.Vanity
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<BossRushMonolith>();
+            player.cursorItemIconID = ModContent.ItemType<Malice>();
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
@@ -80,11 +82,11 @@ namespace CalamityInheritance.Tiles.Vanity
         public override void HitWire(int i, int j)
         {
             int x = i - Main.tile[i, j].TileFrameX / 18 % 5;
-            int y = j - Main.tile[i, j].TileFrameY / 18 % 5;
+            int y = j - Main.tile[i, j].TileFrameY / 18 % 4;
             int tileXX18 = 18 * 5;
             for (int l = x; l < x + 5; l++)
             {
-                for (int m = y; m < y + 5; m++)
+                for (int m = y; m < y + 4; m++)
                 {
                     if (Main.tile[l, m].HasTile && Main.tile[l, m].TileType == Type)
                     {
@@ -99,7 +101,7 @@ namespace CalamityInheritance.Tiles.Vanity
             {
                 for (int o = 0; o < 5; o++)
                 {
-                    for (int p = 0; p < 5; p++)
+                    for (int p = 0; p < 4; p++)
                     {
                         Wiring.SkipWire(x + 0, x + p);
                     }

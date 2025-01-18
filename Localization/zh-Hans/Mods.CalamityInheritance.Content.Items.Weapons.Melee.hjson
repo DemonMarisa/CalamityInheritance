@@ -186,3 +186,8 @@ TerratomereOld: {
 	// DisplayName: Terratomere Old
 	// Tooltip: ""
 }
+
+WulfrumBlade: {
+	// DisplayName: Wulfrum Blade
+	// Tooltip: ""
+}

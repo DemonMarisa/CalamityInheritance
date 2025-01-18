@@ -14,7 +14,7 @@ using Terraria.Enums;
 
 namespace CalamityInheritance.Tiles.Vanity
 {
-    public class IronHeartTiles : ModTile
+    public class RevengeTiles : ModTile
     {
         public override void SetStaticDefaults()
         {
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Tiles.Vanity
 
             TileObjectData.addTile(Type);
             AddMapEntry(Color.DarkGray, CalamityInheritanceUtils.GetText("Tiles"));
-            DustType = 226;
+            DustType = 115;
         }
 
         public override bool CanExplode(int i, int j) => false;

@@ -10,6 +10,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.Utilities;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -40,9 +42,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.shoot = ModContent.ProjectileType<WulfrumBoltOld>();
             Item.shootSpeed = 9f;
         }
-
-        public override Vector2? HoldoutOffset() => new Vector2(-3, 0);
-
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Vector2 targetPosition = Main.MouseWorld;
+            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 10);
+            return false;
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

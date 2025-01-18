@@ -55,6 +55,8 @@ namespace CalamityInheritance.CIPlayer
         public bool CIdeadshotBrooch = false; //独立出来的神射手徽章加成
         public int statisTimerOld = 0;//虚空饰带的计数器
         public bool nanotechold = false;//发射纳米技术的额外弹幕
+        public bool TheAbsorberOld = false;//阴阳石受击回血
+        public bool beeResist = false;//降低蜜蜂对玩家的伤害
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -247,6 +249,8 @@ namespace CalamityInheritance.CIPlayer
             badgeofBravery = false;
             CIdeadshotBrooch = false; //独立出来的神射手徽章加成
             nanotechold = false;
+            TheAbsorberOld = false;//阴阳石受击回血
+            beeResist = false;//降低蜜蜂对玩家的伤害
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -424,6 +428,8 @@ namespace CalamityInheritance.CIPlayer
             elysianGuard = false;
             statisTimerOld = 0;//虚空饰带的计数器
 
+            TheAbsorberOld = false;//阴阳石受击回血
+            beeResist = false;//降低蜜蜂对玩家的伤害
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;

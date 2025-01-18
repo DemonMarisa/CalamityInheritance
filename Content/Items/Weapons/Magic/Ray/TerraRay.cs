@@ -53,12 +53,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
-            recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<CarnageRay>());
-            recipe.AddIngredient(ModContent.ItemType<ValkyrieRay>());
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+
+            Recipe recipe1 = CreateRecipe();
+            recipe1.AddIngredient(ModContent.ItemType<CarnageRay>());
+            recipe1.AddIngredient(ModContent.ItemType<ValkyrieRay>());
+            recipe1.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
+            recipe1.AddTile(TileID.MythrilAnvil);
+            recipe1.Register();
         }
     }
 }
