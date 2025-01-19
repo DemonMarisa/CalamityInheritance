@@ -61,5 +61,22 @@ namespace CalamityInheritance.Utilities
         {
             return proj.GetGlobalProjectile<CalamityInheritanceGlobalProjectile>();
         }
+
+        /// <summary>
+        /// Gets the total amount of extra immunity frames from a hit granted by various Calamity effects.
+        /// </summary>
+        /// <param name="player">The player whose extra immunity frames are being computed.</param>
+        /// <returns>The amount of extra immunity frames to grant.</returns>
+        public static int GetExtraHitIFrames(this Player player, HurtInfo hurtInfo)
+        {
+            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            int extraIFrames = 0;
+            // Ozzatron 20FEB2024: Moved extra iframes from Seraph Tracers to Rampart of Deities to counteract its loss of Charm of Myths
+            // This stacks with the above Deific Amulet effect
+            if (modPlayer.fasterAuricTracers && hurtInfo.Damage > 200)
+                extraIFrames += 30;
+
+            return extraIFrames;
+        }
     }
 }

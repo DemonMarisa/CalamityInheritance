@@ -539,19 +539,10 @@ namespace CalamityInheritance.CIPlayer
         {
             Player.Calamity().GemTechState.PlayerOnHitEffects(hurtInfo.Damage);
 
-            #region ImmnueFrames
             bool hardMode = Main.hardMode;
             if (Player.whoAmI == Main.myPlayer)
             {
-                int immuneFramesToAdd = 0; //用于存放无敌帧延长的值
-                if(fasterAuricTracers && hurtInfo.Damage >200) //天界跑鞋的无敌帧加成
-                {
-                    immuneFramesToAdd += 30;
-                }
 
-                Player.AddImmuneTime(Player.immuneTime, immuneFramesToAdd); //没Api文档我也不知道这个具体会怎么起效，看着吧
-
-            #endregion ImmnueFrames
                 
                 if (AstralBulwark)
                 {

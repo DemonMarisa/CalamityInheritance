@@ -69,6 +69,13 @@ AncientXerocWings: {
 }
 
 AureateBoosterRevamped: {
-	DisplayName: Aureate Booster Revamped
-	Tooltip: ""
+	DisplayName: 玉金喷射器[Revamped]
+	Tooltip:
+		'''
+		水平飞行速度: 8
+		加速倍率: 1.5
+		非常快速度
+		飞行时间: 120
+		装备掠夺者套装时，增加50%渔力，50%挖掘速度
+		'''
 }
