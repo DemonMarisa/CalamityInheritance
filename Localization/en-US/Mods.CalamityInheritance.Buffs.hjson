@@ -1,0 +1,89 @@
+ReaverMagePower: {
+	DisplayName: Reaver Mage Power
+	Description: 10% increased magic damage, 20% reduced mana usage
+}
+
+ReaverMeleeRage: {
+	DisplayName: Reaver Melee Rage
+	Description: +10 defense, 10% increased melee damage and speed
+}
+
+ArmorShattering: {
+	DisplayName: Armor Shattering
+	Description: Allows Melee and Rogue attack shattered enemies armor
+}
+
+CadancesGrace: {
+	DisplayName: Cadances Grace
+	Description: Your heart is purified
+}
+
+DraconicSurgeBuff: {
+	DisplayName: Draconic Surge
+	Description: The power of dragon is boiling your vein
+}
+
+HolyWrathBuff: {
+	DisplayName: Holy Wrath
+	Description: Damage increased, attack inflicts Holy Flame
+}
+
+Invincible: {
+	DisplayName: Invincible
+	Description: I'M FKING INVINCBLE!!!! (Now Playing: Red Sun)
+}
+
+PenumbraBuff: {
+	DisplayName: Penumbra
+	Description: Faster stealth generate speed
+}
+
+ProfanedRageBuff: {
+	DisplayName: Profaned Rage
+	Description: Critical strike chance increased
+}
+
+Revivify: {
+	DisplayName: Revivify
+	Description: Causes enemy attacks to heal you for a fraction of their damage
+}
+
+TitanScale: {
+	DisplayName: Titan Scale
+	Description: No you can't tank Primoridial Wyrm!
+}
+
+TriumphBuff: {
+	DisplayName: Triumph Buff
+	Description: Lower enemies' contact damage
+}
+
+YharimPower: {
+	DisplayName: Yharim's Power
+	Description: Tear the world with bare hands.
+}
+
+ElysianGuard: {
+	DisplayName: Elysian Guard
+	Description: Boosts all stats expect movement speed
+}
+
+SilvaStun: {
+	DisplayName: Silva Stun
+	Description: You are powerless
+}
+
+MagicHatBuffOld: {
+	DisplayName: Magic Hat Legacy
+	Description: The hat carries your soul, bound by a contract
+}
+
+MidnightSunBuffOld: {
+	DisplayName: Midnight Sun UFO Legacy
+	Description: A strange UFO is observing you, and it's making you very uncomfortable
+}
+
+ReaverSummonSetBuff: {
+	DisplayName: Reaver Orb Revamped
+	Description: Reaver Orb will fight a way for you
+}
