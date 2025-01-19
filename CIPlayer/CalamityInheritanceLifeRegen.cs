@@ -52,6 +52,18 @@ namespace CalamityInheritance.CIPlayer
                 if (Main.eclipse || Main.dayTime)
                     Player.lifeRegen += Main.eclipse ? 6 : 6;
             }
+
+            if (AmbrosialAmpouleOld)
+            {
+                if (!Player.honey && Player.lifeRegen < 0)
+                {
+                    Player.lifeRegen += 2;
+                    if (Player.lifeRegen > 0)
+                        Player.lifeRegen = 0;
+                }
+                Player.lifeRegenTime += 1;
+                Player.lifeRegen += 2;
+            }
         }
         #endregion
     }

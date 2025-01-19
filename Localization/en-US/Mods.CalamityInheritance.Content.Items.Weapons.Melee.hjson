@@ -225,7 +225,7 @@ TerratomereOld: {
 }
 
 WulfrumBlade: {
-	Tooltip: "Better than Copper Shortsword at least"
+	Tooltip: ""
 	DisplayName: Wulfrum Blade
 }
 

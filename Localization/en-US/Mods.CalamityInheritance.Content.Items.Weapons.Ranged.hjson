@@ -159,9 +159,5 @@ WulfrumBow: {
 
 Impaler: {
 	DisplayName: Impaler
-	Tooltip:
-		'''
-		Fires explosive and flaming stakes
-		Instantly kills vampires and vampire bats
-		'''
+	Tooltip: ""
 }

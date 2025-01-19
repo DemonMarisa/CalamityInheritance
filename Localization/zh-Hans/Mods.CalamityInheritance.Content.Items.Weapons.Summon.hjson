@@ -1,17 +1,17 @@
 MidnightSunBeaconold: {
-	DisplayName: �����ű�[Legacy]
-	Tooltip: �ٻ�һ��UFO������ĵ����˼����
+	DisplayName: 极昼信标[Legacy]
+	Tooltip: 召唤一个UFO，让你的敌人人间蒸发
 }
 
 TemporalUmbrellaOld: {
-	DisplayName: ����ʱ��ɡ[Legacy]
+	DisplayName: 光阴时流伞[Legacy]
 	Tooltip:
 		'''
-		����ʧ�ܣ�׼������!
-		�ٻ�һ��ħ����ñƮ�����ͷ����
-		ñ�ӻ��ͷŸ���������������ĵ���
-		����5�ٻ���λ
-		ֻ�ܴ���һ��ñ��
+		交涉失败，准备动手!
+		召唤一顶魔法礼帽飘在你的头顶上
+		帽子会释放各种物体来攻击你的敌人
+		消耗5召唤栏位
+		只能存在一顶帽子
 		'''
 }
 

@@ -1,5 +1,5 @@
 KnowledgeAquaticScourge: {
-	DisplayName: 渊海灾虫[legacy]
+	DisplayName: 渊海灾虫[Legacy]
 	Lore:
 		'''
 		在污染与贪食之中诞生的恐怖存在。据研究，当前大小的渊海灾虫只是青年时期的。
@@ -10,7 +10,7 @@ KnowledgeAquaticScourge: {
 }
 
 KnowledgeAstralInfection: {
-	DisplayName: 星辉瘟疫[legacy]
+	DisplayName: 星辉瘟疫[Legacy]
 	Lore:
 		'''
 		扭曲的梦幻之景，遍布四周的是参天的奇异巨柱，头顶上方是阴霾笼罩的漆黑苍穹
@@ -19,7 +19,7 @@ KnowledgeAstralInfection: {
 }
 
 KnowledgeAstrumAureus: {
-	DisplayName: 白金星舰[legacy]
+	DisplayName: 白金星舰[Legacy]
 	Lore:
 		'''
 		被一位古神腹中排出的星体瘟疫所感染的机械巨神
@@ -29,7 +29,7 @@ KnowledgeAstrumAureus: {
 }
 
 KnowledgeAstrumDeus: {
-	DisplayName: 星神游龙[legacy]
+	DisplayName: 星神游龙[Legacy]
 	Lore:
 		'''
 		星体之神，星体瘟疫的散播者
@@ -39,7 +39,7 @@ KnowledgeAstrumDeus: {
 }
 
 KnowledgeBloodMoon: {
-	DisplayName: 血月[legacy]
+	DisplayName: 血月[Legacy]
 	Lore:
 		'''
 		很久以前，我们都曾害怕过血月的光芒
@@ -48,7 +48,7 @@ KnowledgeBloodMoon: {
 }
 
 KnowledgeBrainofCthulhu: {
-	DisplayName: 克苏鲁之脑[legacy]
+	DisplayName: 克苏鲁之脑[Legacy]
 	Lore:
 		'''
 		曾今的眼，如今的脑
@@ -61,7 +61,7 @@ KnowledgeBrainofCthulhu: {
 }
 
 KnowledgeBrimstoneCrag: {
-	DisplayName: 硫火之崖[legacy]
+	DisplayName: 硫火之崖[Legacy]
 	Lore:
 		'''
 		啊...这个地方
@@ -70,7 +70,7 @@ KnowledgeBrimstoneCrag: {
 }
 
 KnowledgeBrimstoneElemental: {
-	DisplayName: 硫磺火元素[legacy]
+	DisplayName: 硫磺火元素[Legacy]
 	Lore:
 		'''
 		所有元素态生命中最强大的存在，一直以来迷失于向毁灭她家乡的猩红狱火复仇的扭曲心智之中
@@ -80,7 +80,7 @@ KnowledgeBrimstoneElemental: {
 }
 
 KnowledgeCalamitas: {
-	DisplayName: 至尊灾厄[legacy]
+	DisplayName: 至尊灾厄[Legacy]
 	Lore:
 		'''
 		那位无可匹敌的女巫。或许她是我所有部下中我唯一怀疑过的一个
@@ -91,7 +91,7 @@ KnowledgeCalamitas: {
 }
 
 KnowledgeCalamitasClone: {
-	DisplayName: 灾厄之眼[legacy]
+	DisplayName: 灾厄之眼[Legacy]
 	Lore:
 		'''
 		你确实比我想象的要强不少
@@ -101,7 +101,7 @@ KnowledgeCalamitasClone: {
 }
 
 KnowledgeCorruption: {
-	DisplayName: 腐化之地[legacy]
+	DisplayName: 腐化之地[Legacy]
 	Lore:
 		'''
 		呕，这片腐烂破败，持续恶化的腐化生物们的家园，是很久前由一种致命的微生物带来的
@@ -111,7 +111,7 @@ KnowledgeCorruption: {
 }
 
 KnowledgeCrabulon: {
-	DisplayName: 菌生蟹[legacy]
+	DisplayName: 菌生蟹[Legacy]
 	Lore:
 		'''
 		螃蟹和蘑菇，一个有爱的故事
@@ -122,7 +122,7 @@ KnowledgeCrabulon: {
 }
 
 KnowledgeCrimson: {
-	DisplayName: 猩红之地[legacy]
+	DisplayName: 猩红之地[Legacy]
 	Lore:
 		'''
 		形成这个猩红地狱的，是无数团数世纪前自星空落下的，无形无相的血肉
@@ -132,7 +132,7 @@ KnowledgeCrimson: {
 }
 
 KnowledgeCryogen: {
-	DisplayName: 极地之灵[legacy]
+	DisplayName: 极地之灵[Legacy]
 	Lore:
 		'''
 		羁押大法师的囚笼
@@ -143,7 +143,7 @@ KnowledgeCryogen: {
 }
 
 KnowledgeDesertScourge: {
-	DisplayName: 荒漠灾虫[legacy]
+	DisplayName: 荒漠灾虫[Legacy]
 	Lore:
 		'''
 		庞大的海虫似乎从极度的炎热之中存活下来了，甚至完全适应了此处
@@ -154,7 +154,7 @@ KnowledgeDesertScourge: {
 }
 
 KnowledgeDestroyer: {
-	DisplayName: 钢铁毁灭者[legacy]
+	DisplayName: 钢铁毁灭者[Legacy]
 	Lore:
 		'''
 		用强大的战士灵魂激活的机械虫子，用于在各个星球之中挖掘隧道以收集矿产资源
@@ -165,7 +165,7 @@ KnowledgeDestroyer: {
 }
 
 KnowledgeDevourerofGods: {
-	DisplayName: 神明吞噬者[legacy]
+	DisplayName: 神明吞噬者[Legacy]
 	Lore:
 		'''
 		这条巨蛇和他的小弟们吸收所吞下物体的能量甚至能力，此特性在全宇宙内恐怕绝无仅有
@@ -176,7 +176,7 @@ KnowledgeDevourerofGods: {
 }
 
 KnowledgeDragonfolly: {
-	DisplayName: 痴愚金龙[legacy]
+	DisplayName: 痴愚金龙[Legacy]
 	Lore:
 		'''
 		野心勃勃科学计划的失败产物；傲慢地认为完全洞悉生命的奥秘或许总是会迎来相似的结果
@@ -185,7 +185,7 @@ KnowledgeDragonfolly: {
 }
 
 KnowledgeDukeFishron: {
-	DisplayName: 猪鲨公爵[legacy]
+	DisplayName: 猪鲨公爵[Legacy]
 	Lore:
 		'''
 		这个来自大海的象征着恐惧的畸变生物，曾是过去某位王者用美食驯服的可靠伙伴
@@ -196,7 +196,7 @@ KnowledgeDukeFishron: {
 }
 
 KnowledgeEaterofWorlds: {
-	DisplayName: 世界吞噬者[legacy]
+	DisplayName: 世界吞噬者[Legacy]
 	Lore:
 		'''
 		也许就是被那种微生物感染的虫子，在长达数世纪的吞食和成长中获得了这副腐败的身躯
@@ -207,7 +207,7 @@ KnowledgeEaterofWorlds: {
 }
 
 KnowledgeEyeofCthulhu: {
-	DisplayName: 克苏鲁之眼[legacy]
+	DisplayName: 克苏鲁之眼[Legacy]
 	Lore:
 		'''
 		这眼睛，多么古怪
@@ -218,7 +218,7 @@ KnowledgeEyeofCthulhu: {
 }
 
 KnowledgeGolem: {
-	DisplayName: 神庙傀儡[legacy]
+	DisplayName: 神庙傀儡[Legacy]
 	Lore:
 		'''
 		原始的造物
@@ -228,7 +228,7 @@ KnowledgeGolem: {
 }
 
 KnowledgeHiveMind: {
-	DisplayName: 腐巢意志[legacy]
+	DisplayName: 腐巢意志[Legacy]
 	Lore:
 		'''
 		被细菌腐化的生物们的巢穴
@@ -239,7 +239,7 @@ KnowledgeHiveMind: {
 }
 
 KnowledgeKingSlime: {
-	DisplayName: 史莱姆王[legacy]
+	DisplayName: 史莱姆王[Legacy]
 	Lore:
 		'''
 		只有傻子才会被这种贫弱的生物击败
@@ -250,7 +250,7 @@ KnowledgeKingSlime: {
 }
 
 KnowledgeLeviathanAnahita: {
-	DisplayName: 利维坦和阿娜希塔[legacy]
+	DisplayName: 利维坦和阿娜希塔[Legacy]
 	Lore:
 		'''
 		一对诡异的生物。一个在寻找伙伴，另一个在寻找食物
@@ -262,7 +262,7 @@ KnowledgeLeviathanAnahita: {
 }
 
 KnowledgeLunaticCultist: {
-	DisplayName: 拜月教邪教徒[legacy]
+	DisplayName: 拜月教邪教徒[Legacy]
 	Lore:
 		'''
 		他是个天才，很久以前用他的怪异奥术终结了我的召唤
@@ -274,7 +274,7 @@ KnowledgeLunaticCultist: {
 }
 
 KnowledgeMechs: {
-	DisplayName: 机械动乱[legacy]
+	DisplayName: 机械动乱[Legacy]
 	Lore:
 		'''
 		我看你已唤醒了嘉登的一些小玩具
@@ -283,7 +283,7 @@ KnowledgeMechs: {
 }
 
 KnowledgeMoonLord: {
-	DisplayName: 月球领主[legacy]
+	DisplayName: 月球领主[Legacy]
 	Lore:
 		'''
 		真是浪费
@@ -295,7 +295,7 @@ KnowledgeMoonLord: {
 }
 
 KnowledgeOcean: {
-	DisplayName: 海洋[legacy]
+	DisplayName: 海洋[Legacy]
 	Lore:
 		'''
 		小心，莫要惊扰深渊
@@ -305,7 +305,7 @@ KnowledgeOcean: {
 }
 
 KnowledgeOldDuke: {
-	DisplayName: 硫海遗爵[legacy]
+	DisplayName: 硫海遗爵[Legacy]
 	Lore:
 		'''
 		真是诡异，那大海中的畸变生物尽管特殊，但并非是孤例
@@ -317,7 +317,7 @@ KnowledgeOldDuke: {
 }
 
 KnowledgePerforators: {
-	DisplayName: 血肉寄生者和宿主[legacy]
+	DisplayName: 血肉寄生者和宿主[Legacy]
 	Lore:
 		'''
 		一只混合了血肉，骨头和器官的混合体，最初被吸血的虫子所寄生
@@ -328,7 +328,7 @@ KnowledgePerforators: {
 }
 
 KnowledgePlaguebringerGoliath: {
-	DisplayName: 瘟疫使者歌莉娅[legacy]
+	DisplayName: 瘟疫使者歌莉娅[Legacy]
 	Lore:
 		'''
 		合金，血肉和瘟疫的完美组合体，能在一场袭击中摧毁整个文明
@@ -338,7 +338,7 @@ KnowledgePlaguebringerGoliath: {
 }
 
 KnowledgePlantera: {
-	DisplayName: 世纪之花[legacy]
+	DisplayName: 世纪之花[Legacy]
 	Lore:
 		'''
 		恭喜你，你干掉了一朵花儿
@@ -349,7 +349,7 @@ KnowledgePlantera: {
 }
 
 KnowledgePolterghast: {
-	DisplayName: 噬魂幽花[legacy]
+	DisplayName: 噬魂幽花[Legacy]
 	Lore:
 		'''
 		仇恨与愤怒催生的生物，数不清人类亡魂的聚合体，以吞噬为唯一目的
@@ -359,7 +359,7 @@ KnowledgePolterghast: {
 }
 
 KnowledgeProvidence: {
-	DisplayName: 亵渎天神[legacy]
+	DisplayName: 亵渎天神[Legacy]
 	Lore:
 		'''
 		石与火围绕着核心，她的目的就和她的存在形式一样简单
@@ -370,7 +370,7 @@ KnowledgeProvidence: {
 }
 
 KnowledgeProfanedGuardians: {
-	DisplayName: 亵渎守卫[legacy]
+	DisplayName: 亵渎守卫[Legacy]
 	Lore:
 		'''
 		亵渎火焰那永葆活力的守护者们
@@ -380,7 +380,7 @@ KnowledgeProfanedGuardians: {
 }
 
 KnowledgeQueenBee: {
-	DisplayName: 蜂后[legacy]
+	DisplayName: 蜂后[Legacy]
 	Lore:
 		'''
 		简陋的生物，跟那些巨型昆虫一样，某些情况下她们会证明自身的作用
@@ -390,7 +390,7 @@ KnowledgeQueenBee: {
 }
 
 KnowledgeRavager: {
-	DisplayName: 毁灭魔像[legacy]
+	DisplayName: 毁灭魔像[Legacy]
 	Lore:
 		'''
 		由扭曲死灵法术打造，曾企图阻挡我的不败之师的血肉魔像
@@ -400,7 +400,7 @@ KnowledgeRavager: {
 }
 
 KnowledgeSentinels: {
-	DisplayName: 神之仆从[legacy]
+	DisplayName: 神之仆从[Legacy]
 	Lore:
 		'''
 		西格纳斯，无尽虚空，和风暴编织者
@@ -410,7 +410,7 @@ KnowledgeSentinels: {
 }
 
 KnowledgeSkeletron: {
-	DisplayName: 骷髅王[legacy]
+	DisplayName: 骷髅王[Legacy]
 	Lore:
 		'''
 		据传，这个诅咒只对长者有效
@@ -421,7 +421,7 @@ KnowledgeSkeletron: {
 }
 
 KnowledgeSkeletronPrime: {
-	DisplayName: 钢铁骷髅王[legacy]
+	DisplayName: 钢铁骷髅王[Legacy]
 	Lore:
 		'''
 		用纯净的恐惧之力打造这么个愚蠢而毫无意义的机器，多么暴殄天物啊
@@ -432,7 +432,7 @@ KnowledgeSkeletronPrime: {
 }
 
 KnowledgeSlimeGod: {
-	DisplayName: 史莱姆之神[legacy]
+	DisplayName: 史莱姆之神[Legacy]
 	Lore:
 		'''
 		荒谬的是，这是有史以来最令人恐惧，最具威胁性的生命
@@ -443,7 +443,7 @@ KnowledgeSlimeGod: {
 }
 
 KnowledgeSulphurSea: {
-	DisplayName: 硫磺海[legacy]
+	DisplayName: 硫磺海[Legacy]
 	Lore:
 		'''
 		我还能依稀回想起此处的清风与碧波
@@ -452,7 +452,7 @@ KnowledgeSulphurSea: {
 }
 
 KnowledgeTwins: {
-	DisplayName: 双子魔眼[legacy]
+	DisplayName: 双子魔眼[Legacy]
 	Lore:
 		'''
 		夜晚的生化机械看守者，由从人类眼中提取出的灵魂精粹创造而出
@@ -464,7 +464,7 @@ KnowledgeTwins: {
 }
 
 KnowledgeUnderworld: {
-	DisplayName: 地狱[legacy]
+	DisplayName: 地狱[Legacy]
 	Lore:
 		'''
 		这些黑曜石塔和狱炎塔，曾经是无数...'人'的家园
@@ -474,7 +474,7 @@ KnowledgeUnderworld: {
 }
 
 KnowledgeWallofFlesh: {
-	DisplayName: 血肉之墙[legacy]
+	DisplayName: 血肉之墙[Legacy]
 	Lore:
 		'''
 		你做了那件事，我看到了
@@ -485,7 +485,7 @@ KnowledgeWallofFlesh: {
 }
 
 KnowledgeYharon: {
-	DisplayName: 丛林龙-犽戎[legacy]
+	DisplayName: 丛林龙-犽戎[Legacy]
 	Lore:
 		'''
 		我绝无可能忍受一个没有我最忠诚伙伴陪伴的世界

@@ -1,5 +1,5 @@
 CadancePotion: {
-	DisplayName: 韵律药水[legacy]
+	DisplayName: 韵律药水[Legacy]
 	Tooltip:
 		'''
 		获得心率和谐增益
@@ -9,7 +9,7 @@ CadancePotion: {
 }
 
 DraconicElixir: {
-	DisplayName: 龙魂秘药[legacy]
+	DisplayName: 龙魂秘药[Legacy]
 	Tooltip:
 		'''
 		极大提高翅膀飞翔时间和速度并增加16点防御
@@ -20,7 +20,7 @@ DraconicElixir: {
 }
 
 HolyWrathPotion: {
-	DisplayName: 圣神之怒药水[legacy]
+	DisplayName: 圣神之怒药水[Legacy]
 	Tooltip:
 		'''
 		提升12%伤害
@@ -29,17 +29,17 @@ HolyWrathPotion: {
 }
 
 PenumbraPotion: {
-	DisplayName: 半影药水[legacy]
+	DisplayName: 半影药水[Legacy]
 	Tooltip: 任何时候移动时增加10%盗贼潜行值恢复速度，站立不动时增加15%盗贼潜行值恢复速度
 }
 
 ProfanedRagePotion: {
-	DisplayName: 渎神之怒药水[legacy]
+	DisplayName: 渎神之怒药水[Legacy]
 	Tooltip: 提升12%暴击几率
 }
 
 PurifiedJam: {
-	DisplayName: 净神果酱[legacy]
+	DisplayName: 净神果酱[Legacy]
 	Tooltip:
 		'''
 		让你在10秒钟（死亡模式5秒）内免疫所有伤害和绝大多数减益
@@ -49,12 +49,12 @@ PurifiedJam: {
 }
 
 RevivifyPotion: {
-	DisplayName: 新生药水[legacy]
+	DisplayName: 新生药水[Legacy]
 	Tooltip: 让敌人在攻击你时治疗你，治疗量为伤害值的一部分
 }
 
 ShatteringPotion: {
-	DisplayName: 粉碎药水[legacy]
+	DisplayName: 粉碎药水[Legacy]
 	Tooltip:
 		'''
 		增加8%近战和盗贼伤害，增加8%近战和盗贼暴击几率
@@ -63,7 +63,7 @@ ShatteringPotion: {
 }
 
 TitanScalePotion: {
-	DisplayName: 泰坦之鳞药水[legacy]
+	DisplayName: 泰坦之鳞药水[Legacy]
 	Tooltip:
 		'''
 		增加击退，5防御和5%伤害减免
@@ -72,11 +72,11 @@ TitanScalePotion: {
 }
 
 TriumphPotion: {
-	DisplayName: 胜利药水[legacy]
+	DisplayName: 胜利药水[Legacy]
 	Tooltip: 敌怪造成的接触伤害降低，此效果随敌怪生命值降低更加明显
 }
 
 YharimsStimulants: {
-	DisplayName: 魔君牌兴奋剂[legacy]
+	DisplayName: 魔君牌兴奋剂[Legacy]
 	Tooltip: 给予能增强所有防御和进攻的属性
 }

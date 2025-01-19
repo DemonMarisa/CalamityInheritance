@@ -1,36 +1,36 @@
 Armageddon: {
-	DisplayName: Armageddon (Furniture)
-	Tooltip: Used to active Armageddon mode, which literally is Calamity no-hit mode
+	DisplayName: Armageddon
+	Tooltip: ""
 }
 
 BloodIdol: {
-	DisplayName: Blood Idol (Furniture)
-	Tooltip: Used to summon Blood Moon, which is replaced by Blood Tear in Terraria 1.4
+	DisplayName: Blood Idol
+	Tooltip: ""
 }
 
 Death: {
-	DisplayName: Death Totem (Furniture)
-	Tooltip: Used to active Death Mode, which is removed as Difficulty Indicator UI is introduced
+	DisplayName: Death
+	Tooltip: ""
 }
 
 DefiledRune: {
-	DisplayName: Defiled Rune (Furniture)
-	Tooltip: Used to active Defiled Mode, which will disable your wings
+	DisplayName: Defiled Rune
+	Tooltip: ""
 }
 
 IronHeart: {
-	DisplayName: Iron Heart (Furniture)
-	Tooltip: Used to active Iron Heart, which will disable life regen
+	DisplayName: Iron Heart
+	Tooltip: ""
 }
 
 MLGRune: {
-	DisplayName: Demon Trophy (Furniture)
-	Tooltip: Used to increases enemy spawn rates, and cannot be reversed
+	DisplayName: M L G Rune
+	Tooltip: ""
 }
 
 Revenge: {
-	DisplayName: Blood Fountain of Revengence (Furniture)
-	Tooltip: Used to active Revengence Mode, which is removed as Difficulty Indicator is introduced
+	DisplayName: Revenge
+	Tooltip: ""
 }
 
 Malice: {

@@ -187,13 +187,24 @@ LeviathanAmbergrisLegacy: {
 
 Melee: {
 	BadgeofBravery: {
-		// DisplayName: Badgeof Bravery
-		// Tooltip: ""
+		DisplayName: 勇气勋章[Legacy]
+		Tooltip:
+			'''
+			增加15%近战攻速
+			当穿着龙蒿套装时，额外增加10%近战暴击，10%近战伤害，15点护甲穿透
+			'''
 	}
 
 	ElementalGauntletold: {
-		// DisplayName: Elemental Gauntletold
-		// Tooltip: ""
+		DisplayName: 元素之握[Legacy]
+		Tooltip:
+			'''
+			增加15%的近战伤害与暴击概率
+			增加25%的真近战伤害
+			增加15%的近战攻速
+			增加近战武器的击退与尺寸
+			让近战武器可以自动挥舞
+			'''
 	}
 
 	YharimsInsignia: {
@@ -210,8 +221,12 @@ Melee: {
 	}
 
 	SamuraiBadge: {
-		// DisplayName: Samurai Badge
-		// Tooltip: ""
+		DisplayName: 武士勋章[Legacy]
+		Tooltip:
+			'''
+			离敌人越近，近战伤害、真近战伤害和近战攻速越高
+			最高增加30%近战伤害、真近战伤害和近战攻速
+			'''
 	}
 }
 
@@ -297,52 +312,33 @@ AstralArcanum: {
 }
 
 AmbrosialAmpouleOld: {
-	// DisplayName: Ambrosial Ampoule Legacy
-	/* Tooltip:
+	DisplayName: 百草天香瓶[Legacy]
+	Tooltip:
 		'''
-		25% increased mining speed
-		You emit light
-		5% increased damage reduction and increased life regen
-		Poison, Freeze, Chill, Frostburn, and Venom immunity
-		Honey-like life regen with no speed penalty
-		Most bee/hornet enemies and projectiles do 75% damage to you
-		''' */
+		你会发光
+		增加50%挖掘速度
+		增加5%伤害
+		增加1点生命恢复速度
+		免疫中毒，冷冻，冰冻，霜冻和酸性毒液减益
+		大多数蜜蜂、马蜂及其弹幕对你造成的伤害减少25%
+		'''
 }
 
 SeaShell: {
-	// DisplayName: Sea Shell
-	// Tooltip: +3 defense, 5% increased damage reduction and 10% increased movement when submerged in liquid
+	DisplayName: 海螺壳[Legacy]
+	Tooltip: 浸没在液体中时额外增加防御，伤害减免和移动速度
 }
 
 TheAbsorberOld: {
-	// DisplayName: The Absorber Legacy
-	/* Tooltip:
+	DisplayName: 阴阳吸星石[Legacy]
+	Tooltip:
 		'''
-		12% increased movement speed
-		24% increased jump speed
-		+20 max life and mana
-		Standing still boosts life and mana regen
-		Increased defense and damage reduction when submerged in liquid
-		Increased movement speed when submerged in liquid
-		Enemies take damage when they hit you
-		Taking a hit will make you move very fast for a short time
-		You emit a mushroom spore and spark explosion when you are hit
-		5% increased damage reduction
-		Enemy attacks will have part of their damage absorbed and used to heal you
-		''' */
-}
-
-AmbrosialAmpouleOld: {
-	// DisplayName: Ambrosial Ampoule Old
-	// Tooltip: ""
-}
-
-SeaShell: {
-	// DisplayName: Sea Shell
-	// Tooltip: ""
-}
-
-TheAbsorberOld: {
-	// DisplayName: The Absorber Old
-	// Tooltip: ""
+		+12%移动速度，+24%跳跃速度，+20点最大生命值和法力值
+		站立不动时会增加生命及法力恢复速度
+		浸没在液体中时增加防御，伤害减免和移动速度
+		与你接触的敌人会受到伤害
+		受到伤害会短时间大幅增加移动速度并释放孢子爆炸
+		增加5%伤害减免
+		你会吸收敌人的一部分伤害并治疗自己
+		'''
 }

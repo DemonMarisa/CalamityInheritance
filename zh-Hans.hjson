@@ -1,27 +1,32 @@
 Mods: {
 	CalamityInheritance: {
 		Keybinds: {
-			BoCLoreTeleportation.DisplayName: BoC Lore Teleportation
-			AegisHotKey.DisplayName: Elysian Guard
-			"Astral Arcanum UI Toggle.DisplayName": Astral Arcanum Teleportation
+			BoCLoreTeleportation.DisplayName: 克苏鲁之脑传送
+			AegisHotKey.DisplayName: 极乐之庇护
+			"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送UI
 		}
 
 		Tiles: {
 			$parentVal: Mods.CalamityInheritance.Tiles
-			// DraedonsForgeold.MapEntry: Draedons Forgeold
+
+			DraedonsForgeold: {
+				$parentVal: 嘉登熔炉[Legacy]
+			}
+
+			DoGLegacyBox: 音乐盒-神明吞噬者[Legacy]
 			DoGNonStopBox: 音乐盒-神明吞噬者合集[Legacy]
 			NosStopAskingWhereBox: 音乐盒-至尊灾厄[Legacy]
 			ProvidenceLegacyBox: 音乐盒-亵渎天神[Legacy]
 			RequiemsOfACruelWorldTile: 音乐盒-残酷世界的安魂曲
-			TyrantPart1Tile: 音乐盒-暴君-阶段1
-			ArmageddonTiles: 末日玩偶[Legacy]
-			BloodIdolTiles: 血祸古符[Legacy]
-			DeathTiles: 死亡圣杯[Legacy]
-			DefiledRuneTiles: 污秽符文[Legacy]
-			IronHeartTiles: 钢铁之心[Legacy]
-			MaliceTiles: 恶意虐脑[Legacy]
-			MLGRuneTiles: 恶魔证章[Legacy]
-			RevengeTiles: 复仇血泉[Legacy]
+			TyrantPart1Tile: 音乐盒-暴君 阶段1
+			ArmageddonTiles: 末日玩偶
+			BloodIdolTiles: 血祸古符
+			DeathTiles: 死亡之核
+			DefiledRuneTiles: 污秽符文
+			IronHeartTiles: 钢铁之心
+			MaliceTiles: 恶意虐脑
+			MLGRuneTiles: 恶魔证章
+			RevengeTiles: 复仇血泉
 		}
 	}
 }

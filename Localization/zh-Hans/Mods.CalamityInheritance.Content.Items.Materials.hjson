@@ -1,14 +1,14 @@
 AuricBarold: {
-	DisplayName: 圣金源锭[legacy]
+	DisplayName: 圣金源锭[Legacy]
 	Tooltip: 散发出永恒的璀璨金光
 }
 
 NebulaBar: {
-	DisplayName: 星云合金[legacy]
+	DisplayName: 星云合金[Legacy]
 	Tooltip: 来自宇宙深处
 }
 
 CalamitousEssence: {
-	DisplayName: 灾厄精华[legacy]
+	DisplayName: 灾厄精华[Legacy]
 	Tooltip: 来自旧日最深邃，最黑暗的疯狂
 }

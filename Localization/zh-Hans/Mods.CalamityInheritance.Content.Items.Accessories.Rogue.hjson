@@ -1,5 +1,5 @@
 NanotechOld: {
-	DisplayName: 纳米技术[Legacy]
+	DisplayName: 纳米技术[Revamped]
 	Tooltip:
 		'''
 		盗贼武器弹幕会留下纳米叶片
@@ -8,6 +8,6 @@ NanotechOld: {
 		增加12%盗贼伤害和15%弹幕速度
 		每当你用盗贼武器暴击敌人时增加你的伤害
 		此效果可叠加150次
-		至多增加1.1倍盗贼伤害
+		至多增加1.15倍盗贼伤害
 		'''
 }

@@ -8,20 +8,25 @@ Mods: {
 
 		Tiles: {
 			$parentVal: Mods.CalamityInheritance.Tiles
-			DraedonsForgeold.MapEntry: Draedons Forgeold
-			DoGNonStopBox: Mods.CalamityInheritance.Tiles.DoGNonStopBox
-			NosStopAskingWhereBox: Mods.CalamityInheritance.Tiles.NosStopAskingWhereBox
-			ProvidenceLegacyBox: Mods.CalamityInheritance.Tiles.ProvidenceLegacyBox
-			RequiemsOfACruelWorldTile: Mods.CalamityInheritance.Tiles.RequiemsOfACruelWorldTile
-			TyrantPart1Tile: Mods.CalamityInheritance.Tiles.TyrantPart1Tile
-			ArmageddonTiles: Mods.CalamityInheritance.Tiles.ArmageddonTiles
-			BloodIdolTiles: Mods.CalamityInheritance.Tiles.BloodIdolTiles
-			DeathTiles: Mods.CalamityInheritance.Tiles.DeathTiles
-			DefiledRuneTiles: Mods.CalamityInheritance.Tiles.DefiledRuneTiles
-			IronHeartTiles: Mods.CalamityInheritance.Tiles.IronHeartTiles
-			MaliceTiles: Mods.CalamityInheritance.Tiles.MaliceTiles
-			MLGRuneTiles: Mods.CalamityInheritance.Tiles.MLGRuneTiles
-			RevengeTiles: Mods.CalamityInheritance.Tiles.RevengeTiles
+
+			DraedonsForgeold: {
+				$parentVal: Draedons Forge[Legacy]
+			}
+
+			DoGLegacyBox: DoGLegacyBox[Legacy]
+			DoGNonStopBox: DoGNonStopBox[Legacy]
+			NosStopAskingWhereBox: NosStopAskingWhereBox[Legacy]
+			ProvidenceLegacyBox: ProvidenceLegacyBox[Legacy]
+			RequiemsOfACruelWorldTile: RequiemsOfACruelWorldTile
+			TyrantPart1Tile: TyrantPart1Tile
+			ArmageddonTiles: ArmageddonTiles
+			BloodIdolTiles: BloodIdolTiles
+			DeathTiles: DeathTiles
+			DefiledRuneTiles: DefiledRuneTiles
+			IronHeartTiles: IronHeartTiles
+			MaliceTiles: MaliceTiles
+			MLGRuneTiles: MLGRuneTiles
+			RevengeTiles: RevengeTiles
 		}
 	}
 }

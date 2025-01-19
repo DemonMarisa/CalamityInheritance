@@ -35,7 +35,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             // bool left in for abyss light purposes and life regen effects
-            modPlayer.aAmpoule = true;
             player.pickSpeed = 0.5f;
             player.endurance = 0.05f;
             // Inherits all effects of Honey Dew and Living Dew (except standing regen is not honey exclusive anymore)
@@ -43,6 +42,13 @@ namespace CalamityInheritance.Content.Items.Accessories
             modPlayer.honeyDewHalveDebuffs = true;
             modPlayer.livingDewHalveDebuffs = true;
             modPlayer1.beeResist = true;
+            modPlayer1.AmbrosialAmpouleOld = true;
+
+            player.buffImmune[BuffID.Venom] = true;
+            player.buffImmune[BuffID.Frozen] = true;
+            player.buffImmune[BuffID.Chilled] = true;
+            player.buffImmune[BuffID.Frostburn] = true;
+            player.buffImmune[BuffID.Poisoned] = true;
 
             // Add light if the other accessories aren't equipped and visibility is turned on
             if (!(modPlayer.rOoze || modPlayer.purity) && !hideVisual)

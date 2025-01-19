@@ -1,5 +1,5 @@
 ExoTheApostle: {
-	DisplayName: The Apostle
+	DisplayName: Exo The Apostle
 	Tooltip:
 		'''
 		Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes 
@@ -78,9 +78,6 @@ SylvanSlasher: {
 }
 
 WulfrumKnifeOld: {
-	Tooltip:
-		'''
-		Stealth Strikes makes the knife fly further and hits several times at once
-		'''
+	Tooltip: ""
 	DisplayName: Wulfrum Knife Old
 }

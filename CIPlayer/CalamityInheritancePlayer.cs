@@ -57,6 +57,8 @@ namespace CalamityInheritance.CIPlayer
         public bool nanotechold = false;//发射纳米技术的额外弹幕
         public bool TheAbsorberOld = false;//阴阳石受击回血
         public bool beeResist = false;//降低蜜蜂对玩家的伤害
+        public bool AmbrosialAmpouleOld = false;//百草瓶回血
+        public int raiderStack = 0;//纳米技术击中计数器
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -251,6 +253,7 @@ namespace CalamityInheritance.CIPlayer
             nanotechold = false;
             TheAbsorberOld = false;//阴阳石受击回血
             beeResist = false;//降低蜜蜂对玩家的伤害
+            AmbrosialAmpouleOld = false;//百草瓶回血
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -430,6 +433,8 @@ namespace CalamityInheritance.CIPlayer
 
             TheAbsorberOld = false;//阴阳石受击回血
             beeResist = false;//降低蜜蜂对玩家的伤害
+            AmbrosialAmpouleOld = false;//百草瓶回血
+            raiderStack = 0;//纳米技术击中计数器
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;
@@ -686,6 +691,10 @@ namespace CalamityInheritance.CIPlayer
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (nanotechold && raiderStack < 150)
+            {
+                raiderStack++;
+            }
 
             if (providenceLore)
             {

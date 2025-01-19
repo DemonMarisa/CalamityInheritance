@@ -856,6 +856,12 @@ namespace CalamityInheritance.CIPlayer
             {
                 canFireReaverRangedRocket = true;
             }
+            //纳米技术
+            if (nanotechold)
+            {
+                float damageMult =  0.15f;
+                Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
+            }
 
         }
 

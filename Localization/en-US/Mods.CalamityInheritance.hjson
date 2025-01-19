@@ -6,25 +6,6 @@ Mods: {
 Keybinds: {
 }
 
-Items: {
-	Placeables: {
-		Malice: {
-			DisplayName: Malice
-			Tooltip: ""
-		}
-	}
-
-	Impaler: {
-		DisplayName: Impaler
-		Tooltip: ""
-	}
-}
-
-Projectiles: {
-	StellarContemptHammerOld.DisplayName: Stellar Contempt Hammer Old
-	PhangasmBowOld.DisplayName: Phangasm Bow Old
-}
-
 Configs: {
 	CalamityInheritanceConfig: {
 		DisplayName: Calamity Inheritance Config
@@ -97,11 +78,6 @@ Configs: {
 
 		RampartofDeitiesTexture: {
 			Label: Rampartof Deities Texture
-			Tooltip: ""
-		}
-
-		ExtraMusic: {
-			Label: Extra Music
 			Tooltip: ""
 		}
 

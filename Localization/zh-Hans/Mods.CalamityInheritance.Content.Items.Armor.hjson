@@ -1,5 +1,5 @@
 AuricTeslaBodyArmorold: {
-	DisplayName: 古圣金源盔甲[legacy]
+	DisplayName: 古圣金源盔甲[Legacy]
 	Tooltip:
 		'''
 		+100最大生命值
@@ -12,7 +12,7 @@ AuricTeslaBodyArmorold: {
 }
 
 AuricTeslaCuissesold: {
-	DisplayName: 古圣金源腿甲[legacy]
+	DisplayName: 古圣金源腿甲[Legacy]
 	Tooltip:
 		'''
 		增加50%移速
@@ -22,7 +22,7 @@ AuricTeslaCuissesold: {
 }
 
 AuricTeslaHeadMagic: {
-	DisplayName: 金虚万象盔[legacy]
+	DisplayName: 金虚万象盔[Legacy]
 	Tooltip:
 		'''
 		增加30%魔法伤害和20%魔法暴击率
@@ -46,7 +46,7 @@ AuricTeslaHeadMagic: {
 }
 
 AuricTeslaHeadMelee: {
-	DisplayName: 金源耀日盔[legacy]
+	DisplayName: 金源耀日盔[Legacy]
 	Tooltip:
 		'''
 		增加20%近战伤害和20%近战暴击率
@@ -69,7 +69,7 @@ AuricTeslaHeadMelee: {
 }
 
 AuricTeslaHeadRanged: {
-	DisplayName: 金兜铁面罩[legacy]
+	DisplayName: 金兜铁面罩[Legacy]
 	Tooltip:
 		'''
 		增加30%远程伤害和30%远程暴击率
@@ -91,7 +91,7 @@ AuricTeslaHeadRanged: {
 }
 
 AuricTeslaHeadRogue: {
-	DisplayName: 金羽十杀盔[legacy]
+	DisplayName: 金羽十杀盔[Legacy]
 	Tooltip:
 		'''
 		增加20%盗贼伤害和20%盗贼暴击率
@@ -116,7 +116,7 @@ AuricTeslaHeadRogue: {
 }
 
 AuricTeslaHeadSummon: {
-	DisplayName: 金宇星界盔[legacy]
+	DisplayName: 金宇星界盔[Legacy]
 	Tooltip: 增加7仆从栏
 	SetBonus:
 		'''
@@ -136,7 +136,7 @@ AuricTeslaHeadSummon: {
 }
 
 GodSlayerChestplateold: {
-	DisplayName: 弑神者胸甲[legacy]
+	DisplayName: 弑神者胸甲[Legacy]
 	Tooltip:
 		'''
 		+60最大生命值
@@ -149,7 +149,7 @@ GodSlayerChestplateold: {
 }
 
 GodSlayerHeadMagicold: {
-	DisplayName: 弑神者面罩[legacy]
+	DisplayName: 弑神者面罩[Legacy]
 	Tooltip:
 		'''
 		增加14%魔法伤害和14%魔法暴击率
@@ -165,7 +165,7 @@ GodSlayerHeadMagicold: {
 }
 
 GodSlayerHeadMeleeold: {
-	DisplayName: 弑神者头盔[legacy]
+	DisplayName: 弑神者头盔[Legacy]
 	Tooltip:
 		'''
 		增加14%近战伤害与暴击率
@@ -181,7 +181,7 @@ GodSlayerHeadMeleeold: {
 }
 
 GodSlayerHeadRangedold: {
-	DisplayName: 弑神者头套[legacy]
+	DisplayName: 弑神者头套[Legacy]
 	Tooltip: 增加14%远程伤害与暴击率
 	SetBonus:
 		'''
@@ -193,7 +193,7 @@ GodSlayerHeadRangedold: {
 }
 
 GodSlayerHeadRogueold: {
-	DisplayName: 弑神者面具[legacy]
+	DisplayName: 弑神者面具[Legacy]
 	Tooltip:
 		'''
 		增加14%盗贼伤害与暴击率
@@ -209,7 +209,7 @@ GodSlayerHeadRogueold: {
 }
 
 GodSlayerHeadSummonold: {
-	DisplayName: 弑神者角盔[legacy]
+	DisplayName: 弑神者角盔[Legacy]
 	Tooltip: 增加7仆从栏和65%召唤伤害
 	SetBonus:
 		'''
@@ -221,7 +221,7 @@ GodSlayerHeadSummonold: {
 }
 
 GodSlayerLeggingsold: {
-	DisplayName: 弑神者腿甲[legacy]
+	DisplayName: 弑神者腿甲[Legacy]
 	Tooltip:
 		'''
 		增加10%伤害与暴击几率
@@ -313,7 +313,7 @@ SilvaHeadSummonold: {
 }
 
 AncientXerocCuisses: {
-	DisplayName: 克希洛克护胫[legacy]
+	DisplayName: 克希洛克护胫[Legacy]
 	Tooltip:
 		'''
 		增加100点生命上限
@@ -323,7 +323,7 @@ AncientXerocCuisses: {
 }
 
 AncientXerocMask: {
-	DisplayName: 克希洛克面具[legacy]
+	DisplayName: 克希洛克面具[Legacy]
 	Tooltip:
 		'''
 		增加3仆从栏
@@ -344,7 +344,7 @@ AncientXerocMask: {
 }
 
 AncientXerocPlateMail: {
-	DisplayName: 克希洛克鳞甲[legacy]
+	DisplayName: 克希洛克鳞甲[Legacy]
 	Tooltip: 增加20点最大生命值
 }
 
@@ -363,7 +363,7 @@ ReaverCapRevamped: {
 }
 
 ReaverCuissesRevamped: {
-	DisplayName: 掠夺者护胫[legacy]
+	DisplayName: 掠夺者护胫[Legacy]
 	Tooltip:
 		'''
 		增加5%伤害与暴击率
