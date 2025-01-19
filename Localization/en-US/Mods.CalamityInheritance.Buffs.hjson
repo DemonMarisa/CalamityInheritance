@@ -1,89 +1,89 @@
 ReaverMagePower: {
 	DisplayName: Reaver Mage Power
-	Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
+	Description: 10% increased magic damage, 20% reduced mana usage
 }
 
 ReaverMeleeRage: {
 	DisplayName: Reaver Melee Rage
-	Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
+	Description: +10 defense, 10% increased melee damage and speed
 }
 
 ArmorShattering: {
-	DisplayName: ���׷���
-	Description: ��ս�͵��������������˵Ļ���
+	DisplayName: Armor Shattering
+	Description: Allows Melee and Rogue attack shattered enemies armor
 }
 
 CadancesGrace: {
-	DisplayName: ���ɺ�г
-	Description: �����鴿��
+	DisplayName: Cadances Grace
+	Description: Your heart is purified
 }
 
 DraconicSurgeBuff: {
-	DisplayName: ����ӳ�
-	Description: ��������������עȫ��
+	DisplayName: Draconic Surge
+	Description: The power of dragon is boiling your vein
 }
 
 HolyWrathBuff: {
-	DisplayName: ʥ��֮ŭ
-	Description: ����˺������й���������ʥ֮�����
+	DisplayName: Holy Wrath
+	Description: Damage increased, attack inflicts Holy Flame
 }
 
 Invincible: {
-	DisplayName: �޵�
-	Description: �޵У��������߾������debuff
+	DisplayName: Invincible
+	Description: I'M FKING INVINCBLE!!!! (Now Playing: Red Sun)
 }
 
 PenumbraBuff: {
-	DisplayName: ��Ӱ
-	Description: �ƶ�ʱ��Ǳ��ֵ�ָ��ٶ�����15%����ҹ������ֹʱ��Ǳ��ֵ�ָ��ٶ�����15%����ʳ�ڼ䣬���߶�������20%
+	DisplayName: Penumbra
+	Description: Faster stealth generate speed
 }
 
 ProfanedRageBuff: {
-	DisplayName: ����֮ŭ
-	Description: ��߱�����
+	DisplayName: Profaned Rage
+	Description: Critical strike chance increased
 }
 
 Revivify: {
-	DisplayName: ������
-	Description: ���ܵ����˺�һС���ֻ�õ�����
+	DisplayName: Revivify
+	Description: Causes enemy attacks to heal you for a fraction of their damage
 }
 
 TitanScale: {
-	DisplayName: ̩̹֮��
-	Description: ��о�����̹ס����ú�����
+	DisplayName: Titan Scale
+	Description: No you can't tank Primoridial Wyrm!
 }
 
 TriumphBuff: {
-	DisplayName: ʤ��֮ս
-	Description: ���͵йֵĽӴ��˺�������ֵԽ�ͣ����ͷ���Խ��
+	DisplayName: Triumph Buff
+	Description: Lower enemies' contact damage
 }
 
 YharimPower: {
-	DisplayName: ����ķ֮��
-	Description: ��о����԰�����˺�������롭���������ӣ�
+	DisplayName: Yharim's Power
+	Description: Tear the world with bare hands.
 }
 
 ElysianGuard: {
-	DisplayName: ����֮�ӻ�
-	Description: �ƶ��ٶȽ��ͣ���߸�������
+	DisplayName: Elysian Guard
+	Description: Boosts all stats expect movement speed
 }
 
 SilvaStun: {
-	DisplayName: �ֺ�ѣ��
-	Description: ���޷��ƶ�
+	DisplayName: Silva Stun
+	Description: You are powerless
 }
 
 MagicHatBuffOld: {
-	DisplayName: Magic Hat Buff Old
-	Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
+	DisplayName: Magic Hat Legacy
+	Description: The hat carries your soul, bound by a contract
 }
 
 MidnightSunBuffOld: {
-	DisplayName: Midnight Sun Buff Old
-	Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
+	DisplayName: Midnight Sun UFO Legacy
+	Description: A strange UFO is observing you, and it's making you very uncomfortable
 }
 
 ReaverSummonSetBuff: {
-	DisplayName: Reaver Summon Set Buff
-	Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
+	DisplayName: Reaver Orb Revamped
+	Description: Reaver Orb will fight a way for you
 }

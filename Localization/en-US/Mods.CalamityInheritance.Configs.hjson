@@ -1,0 +1,112 @@
+CalamityInheritanceConfig: {
+	DisplayName: Calamity Inheritance Config
+
+	Headers: {
+		Gameplay: Mechanic
+		Texture: Texture
+		Music: Music
+	}
+
+	ElementalQuiversplit: {
+		Label: Disable Elemental Quiver Split Effect
+		Tooltip: Disables EQ Split Effect. Use if lag is an issue.
+	}
+
+	ElementalQuiverSplitstyle: {
+		Label: Elemental Quiver Splitstyle
+		Tooltip:
+			'''
+			Determines the style of projectile spilt.
+			This only affect legacy EQ.
+			1:Splits in every 60 frames, reduced split projectile life time.
+			2:Splits in every 60 frames.
+			3:Randomly Splits, reduced split projectile life time.
+			4:Randomly Splits.
+			'''
+	}
+
+	TheSpongeBarrier: {
+		Label: Toggle Sponge's Barrier
+		Tooltip: Enables Sponge's barrier, reworks The Sponge.
+	}
+
+	BoCLoreUnconditional: {
+		Label: Toggle BoC Lore Effect
+		Tooltip: Disables the BoC Lore effect only works in specific biomes
+	}
+
+	GodSlayerSetBonusesChange: {
+		Label: God Slayer Set Bonuses Change
+		Tooltip:
+			'''
+			Determines the bonuses of God Slayer Armor
+			1: God Slayer Revive only.
+			2: God Slayer Dash only.
+			3: Both revive and dash.
+			This only affect legacy God Slayer and Auric armor 
+			'''
+	}
+
+	silvastun: {
+		Label: Toggle Silva Stun
+		Tooltip: Disables Silva Stun while equipping legacy Silva and Auric armor
+	}
+
+	ExoSperaHitEffect: {
+		Label: Reduced Exo Spera Hit Effect
+		Tooltip: Enables to reduce effect of The Apostle
+	}
+
+	AmmoConversion: {
+		Label: Toggle Ammo Conversion
+		Tooltip: Disables not to convertes all ammunitions expect Musket.
+	}
+
+	turnoffCorner: {
+		Label: Toggle Corner Icon
+		Tooltip: Disables the corner badge for mod items.
+	}
+
+	LegendaryitemsRecipes: {
+		Label: Legendary Item Recipes
+		Tooltip: Enables recipes of Legendary items.
+	}
+
+
+	WulfumTexture: {
+		Label: Wulfum Texture
+		Tooltip:
+			'''
+			Determines the sprites of legacy Wulfrum Tools and Weapons
+			1: Legacy Sprite
+			2: Ancient Sprite
+			'''
+	}
+
+	ArkofCosmosTexture: {
+		Label: Ark of the Cosmos Legacy Sprite
+		Tooltip:
+			'''
+			Determines the sprite of Ark of the Cosmos Legacy
+			'''
+	}
+
+	RampartofDeitiesTexture: {
+		Label: Rampart of Deities Sprite
+		Tooltip:
+			'''
+			Determines sprite of Rampart of Deities Legacy
+			1: Normal sprite
+			2: Legacy sprite
+			'''
+	}
+
+	ExtraMusic: {
+		Label: Custom Music Events
+		Tooltip:
+			'''
+			Enables to play custom music after Yharon fight,
+			replace certain music with custom music Exo and SCal fight
+			'''
+	}
+}

@@ -21,8 +21,8 @@ MeleeWulfrumHelmLegacy: {
 }
 
 ANewWulfrumArmor: {
-	DisplayName: 钨钢盔甲[Legacy]
-	Tooltip: 增加3%暴击几率
+	DisplayName: �ٸֿ���[Legacy]
+	Tooltip: ����3%��������
 }
 
 ANewWulfrumHeadgear: {
@@ -74,8 +74,8 @@ ANewWulfrumHood: {
 }
 
 ANewWulfrumLeggings: {
-	DisplayName: 钨钢护胫[Legacy]
-	Tooltip: 增加5%移动速度
+	DisplayName: �ٸֻ���[Legacy]
+	Tooltip: ����5%�ƶ��ٶ�
 }
 
 ANewWulfrumMask: {
@@ -129,11 +129,11 @@ ThrowerWulfrumMaskLegacy: {
 }
 
 WulfrumArmorLegacy: {
-	DisplayName: 远古钨钢盔甲[Legacy]
-	Tooltip: 增加3%暴击几率
+	DisplayName: Զ���ٸֿ���[Legacy]
+	Tooltip: ����3%��������
 }
 
 WulfrumLeggingsLegacy: {
-	DisplayName: 远古钨钢护胫[Legacy]
-	Tooltip: 增加5%移动速度
+	DisplayName: Զ���ٸֻ���[Legacy]
+	Tooltip: ����5%�ƶ��ٶ�
 }

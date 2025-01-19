@@ -1,0 +1,44 @@
+BadgeofBravery: {
+	DisplayName: Badge of Bravery Legacy
+	Tooltip:
+		'''
+		15% increased melee speed
+		10% increased melee damage, critical strike chance and 15 armor penetration while wearing melee tarragon set
+		'''
+}
+
+ElementalGauntletold: {
+	DisplayName: Elemental Gauntlet Legacy
+	Tooltip:
+		'''
+		15% increased melee damage and critical strike chance
+		25% increased true melee damage
+		Increased melee knockback
+		Increases the size of melee weapon
+		Enables auto swing for melee weapon
+		'Just a little more crits'
+		'''
+}
+
+SamuraiBadge: {
+	DisplayName: Samurai Badge
+	Tooltip:
+		'''
+		Increases melee damage, speed and true melee damage  the closer you are to enemies
+		Max boost is 30% increased melee damage, speed and true melee damage
+		'''
+}
+
+YharimsInsignia: {
+	DisplayName: Yharims Insignia
+	Tooltip:
+		'''
+		10% increased melee damage and speed
+		10% increased true melee damage
+		10% increased damage while below 50% HP
+		Increases melee knockback power
+		Your melee strikes and projectiles inflict Holy Flame 
+		Grants temporary immunity to lava
+		'Movement or damage?'
+		'''
+}

@@ -297,6 +297,42 @@ AstralArcanum: {
 }
 
 AmbrosialAmpouleOld: {
+	// DisplayName: Ambrosial Ampoule Legacy
+	/* Tooltip:
+		'''
+		25% increased mining speed
+		You emit light
+		5% increased damage reduction and increased life regen
+		Poison, Freeze, Chill, Frostburn, and Venom immunity
+		Honey-like life regen with no speed penalty
+		Most bee/hornet enemies and projectiles do 75% damage to you
+		''' */
+}
+
+SeaShell: {
+	// DisplayName: Sea Shell
+	// Tooltip: +3 defense, 5% increased damage reduction and 10% increased movement when submerged in liquid
+}
+
+TheAbsorberOld: {
+	// DisplayName: The Absorber Legacy
+	/* Tooltip:
+		'''
+		12% increased movement speed
+		24% increased jump speed
+		+20 max life and mana
+		Standing still boosts life and mana regen
+		Increased defense and damage reduction when submerged in liquid
+		Increased movement speed when submerged in liquid
+		Enemies take damage when they hit you
+		Taking a hit will make you move very fast for a short time
+		You emit a mushroom spore and spark explosion when you are hit
+		5% increased damage reduction
+		Enemy attacks will have part of their damage absorbed and used to heal you
+		''' */
+}
+
+AmbrosialAmpouleOld: {
 	// DisplayName: Ambrosial Ampoule Old
 	// Tooltip: ""
 }
