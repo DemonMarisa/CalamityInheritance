@@ -1,8 +1,0 @@
-Cooldowns: {
-	GodSlayerCooldown: GodSlayerCooldown
-	CISpongeDurability: CISpongeDurability
-	CISpongeRecharge: CISpongeRecharge
-	CISpongeDurabilityRelay: CISpongeDurabilityRelay
-	CISpongeRechargeRelay: CISpongeRechargeRelay
-	DraconicElixirCooldown: DraconicElixirCooldown
-}
