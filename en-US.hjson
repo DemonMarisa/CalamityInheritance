@@ -10,7 +10,7 @@ Mods: {
 			$parentVal: Mods.CalamityInheritance.Tiles
 
 			DraedonsForgeold: {
-				$parentVal: Draedons Forge[Legacy]
+				$parentVal: Draedons Forge Legacy
 			}
 
 			DoGLegacyBox: DoGLegacyBox[Legacy]
