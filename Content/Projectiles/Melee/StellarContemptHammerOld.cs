@@ -14,8 +14,9 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class StellarContemptHammerOld : ModProjectile
+    public class StellarContemptHammerOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/StellarContemptOld";
 
         private static float RotationIncrement = 0.22f;

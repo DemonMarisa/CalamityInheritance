@@ -1,4 +1,4 @@
-﻿WulfrumAxe: {
+WulfrumAxe: {
 	DisplayName: 钨钢斧[Legacy]
 	Tooltip: 比铜斧更强
 }
@@ -21,4 +21,15 @@ Moonlight: {
 Daylight: {
 	DisplayName: 白昼[Legacy]
 	Tooltip: 可以跳过晚上，召唤太阳
+}
+
+MusicMarkChange: {
+	DisplayName: 音乐事件标记切换
+	Tooltip:
+		'''
+		左键删除所有音乐标记
+		右键添加所有音乐标记
+		如果boss已经被击败，删除音乐标记会导致音乐一直播放
+		请搭配Imogen's Qol或者DragonLen修改世界进度使用
+		'''
 }

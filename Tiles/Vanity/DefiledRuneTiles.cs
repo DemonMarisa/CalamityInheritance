@@ -25,7 +25,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(Color.DarkGray, CalamityInheritanceUtils.GetText("Tiles"));
+            AddMapEntry(Color.Green, CalamityInheritanceUtils.GetText("Tiles.DefiledRuneTiles"));
             TileID.Sets.FramesOnKillWall[Type] = true;
             DustType = 75;
         }

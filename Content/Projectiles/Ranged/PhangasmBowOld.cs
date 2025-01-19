@@ -15,8 +15,9 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class PhangasmBowOld : ModProjectile
+    public class PhangasmBowOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Ranged/PhangasmOS";
 
         public override void SetDefaults()

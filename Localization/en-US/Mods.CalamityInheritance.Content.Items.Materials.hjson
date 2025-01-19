@@ -7,3 +7,8 @@ NebulaBar: {
 	DisplayName: Nebular Bar
 	Tooltip: ""
 }
+
+CalamitousEssence: {
+	DisplayName: Calamitous Essence
+	Tooltip: ""
+}

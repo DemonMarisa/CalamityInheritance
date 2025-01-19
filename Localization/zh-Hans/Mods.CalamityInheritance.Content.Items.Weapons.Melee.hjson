@@ -1,4 +1,4 @@
-﻿Animus: {
+Animus: {
 	DisplayName: 敌意[Legacy]
 	Tooltip: 击中敌人时武器伤害随机变化
 }
@@ -9,18 +9,18 @@ ArkoftheAncients: {
 }
 
 ArkoftheCosmosold: {
-		DisplayName: 鸿蒙方舟[Legacy]
-		Tooltip:
-			'''
-			根据所处环境发射不同的跟踪弹幕
-			击中敌人后根据环境给予你增益
-			月亮事件中同样会变化
-			'''
+	DisplayName: 鸿蒙方舟[Legacy]
+	Tooltip:
+		'''
+		根据所处环境发射不同的跟踪弹幕
+		击中敌人后根据环境给予你增益
+		月亮事件中同样会变化
+		'''
 }
 
 ArkoftheElementsold: {
-		DisplayName: 元素方舟[Legacy]
-		Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
+	DisplayName: 元素方舟[Legacy]
+	Tooltip: 在天堂之剑中注入泰拉瑞亚的精华
 }
 
 AtaraxiaOld: {
@@ -29,43 +29,36 @@ AtaraxiaOld: {
 }
 
 BiomeBlade: {
-		DisplayName: 环境之刃[Legacy]
-		Tooltip: 根据你所处生态，发射不同的弹幕
+	DisplayName: 环境之刃[Legacy]
+	Tooltip: 根据你所处生态，发射不同的弹幕
 }
 
 BladeofEnmity: {
 	DisplayName: 憎恨之锋[Legacy]
-	Tooltip: 
-	'''
-	攻击附带硫磺火
-	近战攻速加成对此武器只生效25%
-	'''
+	Tooltip:
+		'''
+		攻击附带硫磺火
+		近战攻速加成对此武器只生效25%
+		'''
 }
 
 BloodyEdge: {
-		DisplayName: 血锋[Legacy]
-		Tooltip: 攻击敌人时会让你回复生命值，并引发鲜血爆炸
+	DisplayName: 血锋[Legacy]
+	Tooltip: 攻击敌人时会让你回复生命值，并引发鲜血爆炸
 }
 
 ElementalExcalibur: {
 	DisplayName: 元素圣剑[Legacy]
-	Tooltip: 
-	'''
-	真近战击中敌人时使其冻结并治疗自己
-	发射彩虹光束，效果取决于它们的颜色
-	右击施展真近战攻击
-	'''
+	Tooltip:
+		'''
+		真近战击中敌人时使其冻结并治疗自己
+		发射彩虹光束，效果取决于它们的颜色
+		右击施展真近战攻击
+		'''
 }
 
 Exobladeold: {
-		DisplayName: 星流之刃[Legacy]
-		Tooltip:
-			'''
-			远古之刃，由亚利姆最优秀的工匠嘉登锻造
-			真近战击中敌人会召唤彗星跟踪敌人
-			真近战多次命中敌人会爆炸
-			'''
-	DisplayName: Exoblade Legacy
+	DisplayName: 星流之刃[Revapmed]
 	Tooltip:
 		'''
 		远古之刃，由亚利姆最优秀的工匠嘉登锻造
@@ -79,31 +72,31 @@ Exobladeold: {
 }
 
 ExoFlail: {
-		DisplayName: 星流链刃[Legacy]
-		Tooltip:
-			'''
-			攻击时发射不稳定能量追踪你敌人
-			每攻击五次会扔出一个星流链球，命中敌人会产生多次爆炸
-			'''
+	DisplayName: 星流链刃[Revapmed]
+	Tooltip:
+		'''
+		攻击时发射不稳定能量追踪你敌人
+		每攻击五次会扔出一个星流链球，命中敌人会产生多次爆炸
+		'''
 }
 
 FourSeasonsGalaxiaold: {
-		DisplayName: 银河[Legacy]
-		Tooltip:
-			'''
-			根据所处环境发射不同的跟踪弹幕
-			击中敌人后根据环境给予你增益
-			月亮事件中同样会变化
-			'''
+	DisplayName: 银河[Legacy]
+	Tooltip:
+		'''
+		根据所处环境发射不同的跟踪弹幕
+		击中敌人后根据环境给予你增益
+		月亮事件中同样会变化
+		'''
 }
 
 GrandDad: {
-		DisplayName: 雄祖之护[Legacy]
-		Tooltip:
-			'''
-			击中敌人时使其防御归零
-			将敌人打出空间与时间之外
-			'''
+	DisplayName: 雄祖之护[Legacy]
+	Tooltip:
+		'''
+		击中敌人时使其防御归零
+		将敌人打出空间与时间之外
+		'''
 }
 
 MurasamaNeweffect: {
@@ -128,75 +121,72 @@ Murasamaold: {
 
 NeptunesBountyOld: {
 	DisplayName: 海神之馈赠[Legacy]
-	Tooltip: 
-	'''
-	发射一支三叉戟，飞行过程中降下额外的三叉戟
-	击中敌人会造成深渊水压减益
-	敌人的防御越低，此减益造成伤害越高
-	'''
+	Tooltip:
+		'''
+		发射一支三叉戟，飞行过程中降下额外的三叉戟
+		击中敌人会造成深渊水压减益
+		敌人的防御越低，此减益造成伤害越高
+		'''
 }
 
 OmegaBiomeBlade: {
-		DisplayName: 欧米茄环境之刃[Legacy]
-		Tooltip:
-			'''
-			根据所处环境发射不同的跟踪弹幕
-			月亮事件中同样会变化
-			'''
+	DisplayName: 欧米茄环境之刃[Legacy]
+	Tooltip:
+		'''
+		根据所处环境发射不同的跟踪弹幕
+		月亮事件中同样会变化
+		'''
 }
 
 SoulEdge: {
 	DisplayName: 灵魂之锋[Legacy]
-	Tooltip: 	
-	'''
-	发射出深渊原住民的的恐惧幽魂
-	'''
+	Tooltip: 发射出深渊原住民的的恐惧幽魂
 }
 
 StreamGougeOld: {
 	DisplayName: 宇宙暗流[Legacy]
-	Tooltip: 
-	'''
-	发射可以无限穿透的宇宙能量
-	无视目标无敌帧
-	'''
+	Tooltip:
+		'''
+		发射可以无限穿透的宇宙能量
+		无视目标无敌帧
+		'''
 }
 
 TerraEdge: {
 	DisplayName: 泰拉之锋[Legacy]
 	Tooltip:
-			'''
-			发射造成灵液减益的绿色剑气
-			击中敌怪时会治愈玩家
-			'''
+		'''
+		发射造成灵液减益的绿色剑气
+		击中敌怪时会治愈玩家
+		'''
 }
 
 TrueArkoftheAncients: {
-		DisplayName: 真·远古方舟[Legacy]
-		Tooltip: 天堂之剑，用于除尽邪恶
+	DisplayName: 真·远古方舟[Legacy]
+	Tooltip: 天堂之剑，用于除尽邪恶
 }
 
 TrueBiomeBlade: {
-		DisplayName: 真·环境之刃[Legacy]
-		Tooltip: 根据你所处生态，发射不同的剑气
+	DisplayName: 真·环境之刃[Legacy]
+	Tooltip: 根据你所处生态，发射不同的剑气
 }
 
 TrueBloodyEdge: {
-		DisplayName: 真·血锋[Legacy]
-		Tooltip:
-			'''
-			攻击敌人时有几率让你回复生命值，并引发鲜血爆炸
-			发射弹幕的一段时间后会跟踪
-			'''
+	DisplayName: 真·血锋[Legacy]
+	Tooltip:
+		'''
+		攻击敌人时有几率让你回复生命值，并引发鲜血爆炸
+		发射弹幕的一段时间后会跟踪
+		'''
 }
 
 Test: {
 	DisplayName: 测试剑
-	Tooltip: 
-	'''
-	DA★ZE
-	可能随着不同版本不同功能
-	'''
+	Tooltip:
+		'''
+		DA★ZE
+		可能随着不同版本不同功能
+		'''
 }
 
 GalaxySmasherMelee: {
@@ -222,14 +212,19 @@ Trinity: {
 TerratomereOld: {
 	DisplayName: 泰拉巨剑[Legacy]
 	Tooltip:
-	'''
-	与泰拉瑞亚世界之精华相连
-	击中敌人时会治愈玩家
-	发射数个追踪剑气，冻结敌人
-	'''
+		'''
+		与泰拉瑞亚世界之精华相连
+		击中敌人时会治愈玩家
+		发射数个追踪剑气，冻结敌人
+		'''
 }
 
 WulfrumBlade: {
-	DisplayName: 钨钢阔剑[Legacy]
 	Tooltip: 比铜阔剑更好
+	DisplayName: 钨钢阔剑[Legacy]
+}
+
+MusicMarkChange: {
+	// DisplayName: Music Mark Change
+	// Tooltip: ""
 }

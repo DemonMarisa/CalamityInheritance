@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -25,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<MLGRuneTiles>();
+            Item.rare = ModContent.RarityType<PureRed>();
         }
     }
 }

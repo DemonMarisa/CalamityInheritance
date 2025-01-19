@@ -34,7 +34,7 @@ HolyFireBulletOld: {
 
 HyperiusBulletOld: {
 	DisplayName: 海伯里斯弹[Legacy]
-	Tooltip: 
+	Tooltip:
 		'''
 		你的敌人不会好过了...
 		击中敌人后在敌人两侧产生额外弹幕

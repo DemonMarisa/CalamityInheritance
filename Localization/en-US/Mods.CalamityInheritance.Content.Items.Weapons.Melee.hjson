@@ -228,3 +228,8 @@ WulfrumBlade: {
 	Tooltip: ""
 	DisplayName: Wulfrum Blade
 }
+
+MusicMarkChange: {
+	DisplayName: Music Mark Change
+	Tooltip: ""
+}

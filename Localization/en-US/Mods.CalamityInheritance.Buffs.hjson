@@ -1,53 +1,89 @@
 ReaverMagePower: {
+	DisplayName: Reaver Mage Power
+	Description: Mods.CalamityInheritance.Buffs.ReaverMagePower.Description
 }
 
 ReaverMeleeRage: {
+	DisplayName: Reaver Melee Rage
+	Description: Mods.CalamityInheritance.Buffs.ReaverMeleeRage.Description
 }
 
 ArmorShattering: {
+	DisplayName: ���׷���
+	Description: ��ս�͵��������������˵Ļ���
 }
 
 CadancesGrace: {
+	DisplayName: ���ɺ�г
+	Description: �����鴿��
 }
 
 DraconicSurgeBuff: {
+	DisplayName: ����ӳ�
+	Description: ��������������עȫ��
 }
 
 HolyWrathBuff: {
+	DisplayName: ʥ��֮ŭ
+	Description: ����˺������й���������ʥ֮�����
 }
 
 Invincible: {
+	DisplayName: �޵�
+	Description: �޵У��������߾������debuff
 }
 
 PenumbraBuff: {
+	DisplayName: ��Ӱ
+	Description: �ƶ�ʱ��Ǳ��ֵ�ָ��ٶ�����15%����ҹ������ֹʱ��Ǳ��ֵ�ָ��ٶ�����15%����ʳ�ڼ䣬���߶�������20%
 }
 
 ProfanedRageBuff: {
+	DisplayName: ����֮ŭ
+	Description: ��߱�����
 }
 
 Revivify: {
+	DisplayName: ������
+	Description: ���ܵ����˺�һС���ֻ�õ�����
 }
 
 TitanScale: {
+	DisplayName: ̩̹֮��
+	Description: ��о�����̹ס����ú�����
 }
 
 TriumphBuff: {
+	DisplayName: ʤ��֮ս
+	Description: ���͵йֵĽӴ��˺�������ֵԽ�ͣ����ͷ���Խ��
 }
 
 YharimPower: {
+	DisplayName: ����ķ֮��
+	Description: ��о����԰�����˺�������롭���������ӣ�
 }
 
 ElysianGuard: {
+	DisplayName: ����֮�ӻ�
+	Description: �ƶ��ٶȽ��ͣ���߸�������
 }
 
 SilvaStun: {
+	DisplayName: �ֺ�ѣ��
+	Description: ���޷��ƶ�
 }
 
 MagicHatBuffOld: {
+	DisplayName: Magic Hat Buff Old
+	Description: Mods.CalamityInheritance.Buffs.MagicHatBuffOld.Description
 }
 
 MidnightSunBuffOld: {
+	DisplayName: Midnight Sun Buff Old
+	Description: Mods.CalamityInheritance.Buffs.MidnightSunBuffOld.Description
 }
 
 ReaverSummonSetBuff: {
+	DisplayName: Reaver Summon Set Buff
+	Description: Mods.CalamityInheritance.Buffs.ReaverSummonSetBuff.Description
 }

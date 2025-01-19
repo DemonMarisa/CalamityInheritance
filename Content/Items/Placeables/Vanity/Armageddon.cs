@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Tiles.Vanity;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -28,6 +29,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<ArmageddonTiles>();
+            Item.rare = ModContent.RarityType<DonatorPink>();
         }
 
         public override void AddRecipes()

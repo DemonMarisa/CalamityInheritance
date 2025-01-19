@@ -1,69 +1,139 @@
 MageWulfrumHoodLegacy: {
-	DisplayName: Mage Wulfrum Hood Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢面罩[Legacy]
+	Tooltip: 增加3%魔法伤害
+	SetBonus:
+		'''
+		增加3防御力与50点魔力上限
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 MeleeWulfrumHelmLegacy: {
-	DisplayName: Melee Wulfrum Helm Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢头盔[Legacy]
+	Tooltip: 增加3%近战伤害
+	SetBonus:
+		'''
+		增加5防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ANewWulfrumArmor: {
-	DisplayName: A New Wulfrum Armor
-	Tooltip: ""
+	DisplayName: 钨钢盔甲[Legacy]
+	Tooltip: 增加3%暴击几率
 }
 
 ANewWulfrumHeadgear: {
-	DisplayName: A New Wulfrum Headgear
-	Tooltip: ""
+	DisplayName: 钨钢头套[Legacy]
+	Tooltip: 增加3%远程伤害
+	SetBonus:
+		'''
+		增加3防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ANewWulfrumHelm: {
-	DisplayName: A New Wulfrum Helm
-	Tooltip: ""
+	DisplayName: 钨钢头盔[Legacy]
+	Tooltip: 增加3%近战伤害
+	SetBonus:
+		'''
+		增加5防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ANewWulfrumHelmet: {
-	DisplayName: A New Wulfrum Helmet
-	Tooltip: ""
+	DisplayName: 钨钢头盔[Legacy]
+	Tooltip:
+		'''
+		增加1个仆从栏
+		增加6%召唤伤害
+		'''
+	SetBonus:
+		'''
+		增加3防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ANewWulfrumHood: {
-	DisplayName: A New Wulfrum Hood
-	Tooltip: ""
+	DisplayName: 钨钢面罩[Legacy]
+	Tooltip: 增加3%魔法伤害
+	SetBonus:
+		'''
+		增加3防御力与50点魔力上限
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ANewWulfrumLeggings: {
-	DisplayName: A New Wulfrum Leggings
-	Tooltip: ""
+	DisplayName: 钨钢护胫[Legacy]
+	Tooltip: 增加5%移动速度
 }
 
 ANewWulfrumMask: {
-	DisplayName: A New Wulfrum Mask
-	Tooltip: ""
+	DisplayName: 钨钢面具[Legacy]
+	Tooltip: 增加3%盗贼伤害
+	SetBonus:
+		'''
+		增加3防御力与3%盗贼伤害
+		增加50点潜伏值上限
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 RangedWulfrumHeadgearLegacy: {
-	DisplayName: Ranged Wulfrum Headgear Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢头套[Legacy]
+	Tooltip: 增加3%远程伤害
+	SetBonus:
+		'''
+		增加3防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 SummonerWulfrumHelmetLegacy: {
-	DisplayName: Summoner Wulfrum Helmet Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢头盔[Legacy]
+	Tooltip:
+		'''
+		增加1个仆从栏
+		增加6%召唤伤害
+		'''
+	SetBonus:
+		'''
+		增加3防御力
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 ThrowerWulfrumMaskLegacy: {
-	DisplayName: Thrower Wulfrum Mask Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢面具[Legacy]
+	Tooltip: 增加3%盗贼伤害
+	SetBonus:
+		'''
+		增加3防御力与3%盗贼伤害
+		增加50点潜伏值上限
+		生命值低于50%时增加5防御力
+		增加10%挖掘速度与10%移动速度
+		'''
 }
 
 WulfrumArmorLegacy: {
-	DisplayName: Wulfrum Armor Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢盔甲[Legacy]
+	Tooltip: 增加3%暴击几率
 }
 
 WulfrumLeggingsLegacy: {
-	DisplayName: Wulfrum Leggings Legacy
-	Tooltip: ""
+	DisplayName: 远古钨钢护胫[Legacy]
+	Tooltip: 增加5%移动速度
 }

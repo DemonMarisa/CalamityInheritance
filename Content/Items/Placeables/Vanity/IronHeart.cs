@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<IronHeartTiles>();
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()

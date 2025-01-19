@@ -1,1 +1,123 @@
+Mods: {
+	CalamityInheritance: {
+	}
+}
 
+Keybinds: {
+}
+
+Items: {
+	Placeables: {
+		Malice: {
+			DisplayName: Malice
+			Tooltip: ""
+		}
+	}
+
+	Impaler: {
+		DisplayName: Impaler
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	StellarContemptHammerOld.DisplayName: Stellar Contempt Hammer Old
+	PhangasmBowOld.DisplayName: Phangasm Bow Old
+}
+
+Configs: {
+	CalamityInheritanceConfig: {
+		DisplayName: Calamity Inheritance Config
+
+		Headers: {
+			Gameplay: Gameplay Header
+			Texture: Texture Header
+			Music: Music Header
+		}
+
+		ElementalQuiversplit: {
+			Label: Elemental Quiversplit
+			Tooltip: ""
+		}
+
+		ElementalQuiverSplitstyle: {
+			Label: Elemental Quiver Splitstyle
+			Tooltip: ""
+		}
+
+		TheSpongeBarrier: {
+			Label: The Sponge Barrier
+			Tooltip: ""
+		}
+
+		BoCLoreUnconditional: {
+			Label: Bo C Lore Unconditional
+			Tooltip: ""
+		}
+
+		GodSlayerSetBonusesChange: {
+			Label: God Slayer Set Bonuses Change
+			Tooltip: ""
+		}
+
+		silvastun: {
+			Label: silvastun
+			Tooltip: ""
+		}
+
+		ExoSperaHitEffect: {
+			Label: Exo Spera Hit Effect
+			Tooltip: ""
+		}
+
+		AmmoConversion: {
+			Label: Ammo Conversion
+			Tooltip: ""
+		}
+
+		turnoffCorner: {
+			Label: turnoff Corner
+			Tooltip: ""
+		}
+
+		LegendaryitemsRecipes: {
+			Label: Legendaryitems Recipes
+			Tooltip: ""
+		}
+
+		WulfumTexture: {
+			Label: Wulfum Texture
+			Tooltip: ""
+		}
+
+		ArkofCosmosTexture: {
+			Label: Arkof Cosmos Texture
+			Tooltip: ""
+		}
+
+		RampartofDeitiesTexture: {
+			Label: Rampartof Deities Texture
+			Tooltip: ""
+		}
+
+		ExtraMusic: {
+			Label: Extra Music
+			Tooltip: ""
+		}
+
+		Tyrant1: {
+			Label: Tyrant1
+			Tooltip: ""
+		}
+
+		Exomechs: {
+			Label: Exomechs
+			Tooltip: ""
+		}
+
+		Scal: {
+			Label: Scal
+			Tooltip: ""
+		}
+	}
+}

@@ -36,7 +36,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.addAlternate(1);
 
             TileObjectData.addTile(Type);
-            AddMapEntry(Color.DarkGray, CalamityInheritanceUtils.GetText("Tiles"));
+            AddMapEntry(Color.Blue, CalamityInheritanceUtils.GetText("Tiles.IronHeartTiles"));
             DustType = 226;
         }
 

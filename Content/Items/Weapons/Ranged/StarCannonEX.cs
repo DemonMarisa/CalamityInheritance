@@ -47,7 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 type = Utils.SelectRandom(Main.rand, new int[]
                 {
                     ModContent.ProjectileType<AstralStar>(),
-                    ProjectileID.Starfury,
+                    ProjectileID.StarCannonStar,
+                    ProjectileID.SuperStar,
                     ModContent.ProjectileType<FallenStarProj>()
                 });
                 int star = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);

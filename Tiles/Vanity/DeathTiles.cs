@@ -40,7 +40,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.addAlternate(1);
 
             TileObjectData.addTile(Type);
-            AddMapEntry(Color.DarkGray, CalamityInheritanceUtils.GetText("Tiles"));
+            AddMapEntry(Color.Purple, CalamityInheritanceUtils.GetText("Tiles.DeathTiles"));
         }
 
         public override bool CanExplode(int i, int j) => false;

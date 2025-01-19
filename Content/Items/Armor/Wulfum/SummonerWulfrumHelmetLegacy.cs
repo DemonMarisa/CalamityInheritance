@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.statDefense += 3; //8
+            player.statDefense += 5; //8
             if (player.statLife <= (int)(player.statLifeMax2 * 0.5))
             {
                 player.statDefense += 5; //13

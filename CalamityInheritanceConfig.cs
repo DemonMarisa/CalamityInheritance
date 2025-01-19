@@ -105,6 +105,14 @@ namespace CalamityInheritance
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
-        public bool ExtraMusic { get; set; }
+        public bool Tyrant1 { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool Exomechs { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool Scal { get; set; }
     }
 }

@@ -1,29 +1,54 @@
 Bazooka: {
-	DisplayName: Bazooka
-	Tooltip: ""
+	DisplayName: 巴祖卡[Legacy]
+	Tooltip:
+		'''
+		以榴弹片为弹药
+		Boss战限制只能发射两发弹药
+		每颗子弹附加6.8%目标生命值的伤害
+		'''
 }
 
 ElephantKiller: {
-	DisplayName: Elephant Killer
-	Tooltip: ""
+	DisplayName: 猎象者[Legacy]
+	Tooltip:
+		'''
+		以马格南弹为弹药
+		Boss战限制只能发射三发弹药
+		每颗子弹附加3%目标生命值的伤害
+		'''
 }
 
 Hydra: {
-	DisplayName: Hydra
-	Tooltip: ""
+	DisplayName: 九头蛇[Legacy]
+	Tooltip:
+		'''
+		以爆裂散弹为弹药
+		Boss战限制只能发射一发弹药
+		每颗子弹附加12.8%目标生命值的伤害
+		'''
 }
 
 LightningHawk: {
-	DisplayName: Lightning Hawk
-	Tooltip: ""
+	DisplayName: 闪电鹰[Legacy]
+	Tooltip:
+		'''
+		以马格南弹为弹药
+		Boss战限制只能发射三发弹药
+		每颗子弹附加3%目标生命值的伤害
+		'''
 }
 
 Magnum: {
-	DisplayName: Magnum
-	Tooltip: ""
+	DisplayName: 马格南[Legacy]
+	Tooltip:
+		'''
+		以马格南弹为弹药
+		Boss战限制只能发射三发弹药
+		每颗子弹附加3%目标生命值的伤害
+		'''
 }
 
 GoldenGun: {
-	DisplayName: Golden Gun
-	Tooltip: ""
+	DisplayName: 灵液枪[Legacy]
+	Tooltip: 发射一束以直线飞行的灵液
 }

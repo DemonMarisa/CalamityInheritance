@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Magic;
@@ -228,6 +229,7 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<VehemencOld>(), 1);
+                npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1);
             }
             #endregion
             // Internal function to determine whether this NPC is the second Twin killed in a fight, regardless of which Twin it is.

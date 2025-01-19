@@ -1,128 +1,134 @@
 AncientShiv: {
-	DisplayName: Ancient Shiv
+	DisplayName: 远古短剑[legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Releases ancient energy upon striking enemies with blade
+		不要低估短剑的力量
+		真近战多次击中敌人后会生成远古能量
+		只会受到33%攻速加成
 		'''
 }
 
 BloodyRupture: {
-	DisplayName: Bloody Rupture
+	DisplayName: 血腥短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Fires bloody orbs home in to enemy
-		Releases bloody explosion upon striking enemies with blade
+		不要低估短剑的力量
+		发射跟踪血珠攻击敌人
+		真近战击中敌人后会引发鲜血爆炸
 		'''
 }
 
 ColdheartIcicle: {
-	DisplayName: Coldheart Icicle
+	DisplayName: 寒心冰柱[Legacy]
 	Tooltip:
 		'''
-		Drains a percentage of enemy health on hit
-		Cannot inflict critical hits
+		不要低估短剑的力量
+		击中敌人时让其失去2%的生命
+		不能造成暴击
 		'''
 }
 
 CosmicShivold: {
-	DisplayName: Cosmic Shiv Legacy
+	DisplayName: 宇宙短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Fires a cosmic beams that homes in on enemies
-		Upon hitting an enemy, a barrage of offscreen objects home in on the enemy as well as raining stars 
+		不要低估短剑的力量
+		发射追踪敌人的宇宙能量
+		命中敌人后，会有陨星从天而降，一连串剑刃会反复穿刺目标
 		'''
 }
 
 ElementalShivold: {
-	DisplayName: Elemental Shiv Legacy
+	DisplayName: 元素短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Shoots a rainbow shiv that spawn additional shivs on hit
+		不要低估短剑的力量
+		发射彩虹短剑，击中敌人后会生成额外的短剑弹幕
 		'''
 }
 
 EutrophicShank: {
-	DisplayName: Eutrophic Shank
-	Tooltip: Releases electronic sparks
+	DisplayName: 水华刺剑[Legacy]
+	Tooltip:
+		'''
+		不要低估短剑的力量
+		发射电火花
+		'''
 }
 
 ExcaliburShortsword: {
-	DisplayName: Excalibur Shortsword
+	DisplayName: 胜利誓约之短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Grants immunity frames on enemy hits
+		不要低估短剑的力量
+		命中敌人时赋予你无敌帧
 		'''
 }
 
 ExoGladius: {
-	DisplayName: Exo Gladius
+	DisplayName: 星流短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of Exoblade's younger brother
-		Striking an enemy with the blade makes you immune for a brief time and summons comets from the sky
-		Fires a rainbow orb that summons sword beams on hit
-		'Quest: Bring back the Exo Gladius (3/100)'
+		不要低估短剑的力量
+		用剑刃击中敌人时使你短时间内进入无敌时间
+		并召唤彗星从天而降
+		发射能够召唤彩虹剑气域流星的星流光球
 		'''
 }
 
 FlameburstShortsword: {
-	DisplayName: Flameburst Shortsword
+	DisplayName: 狱炎短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Enemies explode on hit
+		不要低估短剑的力量
+		命中敌人时引发狱炎爆炸
 		'''
 }
 
 LeechingDagger: {
-	DisplayName: Leeching Dagger
+	DisplayName: 汲血短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Fires hyper shadow eyes
+		不要低估短剑的力量
+		发射高速的暗影之眼
+		真近战击中敌人出现腐烂血肉
 		'''
 }
 
 NightsStabber: {
-	DisplayName: Nights Stabber
+	DisplayName: 永夜短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Fires homing dark energy stream
+		不要低估短剑的力量
+		发射追踪的黑暗能量流
 		'''
 }
 
 SporeKnife: {
-	DisplayName: Spore Knife
+	DisplayName: 孢子短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of shivs...
-		Fires a swarm of deadly leaves
-		This effect dose not affect by melee speed
-		Releases spore clouds upon hitting enemy with blade
+		不要低估短剑的力量
+		发射树叶弹幕
+		真近战多次击中敌人会发射孢子云
 		'''
 }
 
 TerraShiv: {
-	DisplayName: Terra Shiv
+	DisplayName: 泰拉短剑[Legacy]
 	Tooltip:
 		'''
-		Do not underestimate the power of the younger brother of Terra Edge...
-		Fires a powerful viridian beam homes on to your enemy
+		不要低估短剑的力量
+		发射追踪敌人的泰拉能量
 		'''
 }
 
 TrueExcaliburShortsword: {
-	DisplayName: True Excalibur Shortsword
-	Tooltip: Do not underestimate the power of shivs...
+	DisplayName: 真·誓约胜利短剑[Legacy]
+	Tooltip: 不要低估短剑的力量
 }
 
 TrueNightsStabber: {
-	DisplayName: True Nights Stabber
-	Tooltip: Do not underestimate the power of shivs...
+	DisplayName: 真·永夜短剑[Legacy]
+	Tooltip: 不要低估短剑的力量
 }

@@ -10,6 +10,7 @@ using Terraria.Utilities;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.MusicBox
 {
@@ -30,7 +31,7 @@ namespace CalamityInheritance.Tiles.MusicBox
             TileObjectData.newTile.StyleLineSkip = 2;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(191, 142, 111), Language.GetText("ItemName.MusicBox"));
+            AddMapEntry(Color.Blue, CalamityInheritanceUtils.GetText("Tiles.RequiemsOfACruelWorldTile"));
         }
 
         public override void MouseOver(int i, int j)

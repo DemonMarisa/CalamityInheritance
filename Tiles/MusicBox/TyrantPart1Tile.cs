@@ -10,12 +10,12 @@ using Terraria.Utilities;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.MusicBox
 {
     public class TyrantPart1Tile : ModTile
     {
-        public new string LocalizationCategory => "Tiles.MusicBox";
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Tiles.MusicBox
             TileObjectData.newTile.StyleLineSkip = 2;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(191, 142, 111), Language.GetText("ItemName.MusicBox"));
+            AddMapEntry(Color.Gold, CalamityInheritanceUtils.GetText("Tiles.TyrantPart1Tile"));
         }
 
         public override void MouseOver(int i, int j)

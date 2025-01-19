@@ -73,7 +73,6 @@ AuricTeslaHeadRanged: {
 	Tooltip:
 		'''
 		增加30%远程伤害和30%远程暴击率
-		增加28%的近战攻速
 		站立不动时会增加伤害与暴击几率
 		'''
 	SetBonus:
@@ -313,15 +312,6 @@ SilvaHeadSummonold: {
 		'''
 }
 
-SilvaLeggingsold: {
-	DisplayName: 始源林海护胫[Legacy]
-	Tooltip:
-		'''
-		增加12%伤害与7%暴击几率
-		移动速度增加45%
-		'''
-}
-
 AncientXerocCuisses: {
 	DisplayName: 克希洛克护胫[legacy]
 	Tooltip:
@@ -441,4 +431,13 @@ ReaverVisageRevamped: {
 		增加10%移动速度，在液体中行动不受阻碍
 		'''
 	SetBonus: 远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
+}
+
+SilvaLeggingsold: {
+	DisplayName: 始源林海护胫[Legacy]
+	Tooltip:
+		'''
+		增加12%伤害与7%暴击几率
+		移动速度增加45%
+		'''
 }

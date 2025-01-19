@@ -22,3 +22,8 @@ Daylight: {
 	DisplayName: Daylight
 	Tooltip: Advances time to the day
 }
+
+MusicMarkChange: {
+	DisplayName: Music Mark Change
+	Tooltip: ""
+}

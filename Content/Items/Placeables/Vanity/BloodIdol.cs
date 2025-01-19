@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Tiles.Vanity;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Vanity;
 using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.FurnitureExo;
@@ -28,6 +29,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<BloodIdolTiles>();
+            Item.rare = ModContent.RarityType<PureRed>();
         }
 
         public override void AddRecipes()

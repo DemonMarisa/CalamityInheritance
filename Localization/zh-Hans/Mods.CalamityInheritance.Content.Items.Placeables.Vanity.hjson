@@ -1,1 +1,65 @@
+Armageddon: {
+	DisplayName: 末日玩偶[Legacy]
+	Tooltip:
+		'''
+		曾被用来开启末日模式
+		（开启或关闭末日模式，此模式可以在任何模式中开启）
+		（此模式下Boss会一击秒杀你）
+		（首次击杀Boss时，如果开启此模式，会掉落额外的5个宝藏袋）
+		（即使不在专家模式中，boss也会掉落这些宝藏袋）
+		'''
+}
 
+BloodIdol: {
+	DisplayName: 血祸古符[Legacy]
+	Tooltip: 曾被用来召唤血月
+}
+
+Death: {
+	DisplayName: 死亡之核[Legacy]
+	Tooltip: 曾被用来开启死亡模式
+}
+
+DefiledRune: {
+	DisplayName: 污秽符文[Legacy]
+	Tooltip:
+		'''
+		曾被用来开启神殇模式
+		（开启神殇模式，翅膀无效，敌人可以对你造成暴击）
+		（增加大部分稀有物品的掉率，敌人掉1.5倍金钱）
+		'''
+}
+
+IronHeart: {
+	DisplayName: 钢铁之心[Legacy]
+	Tooltip:
+		'''
+		曾被用来开启铁心模式
+		（治疗药水和自然生命恢复被禁用）
+		（敌人伤害随着你的最大生命值而增长）
+		'''
+}
+
+MLGRune: {
+	DisplayName: 恶魔证章[Legacy]
+	Tooltip:
+		'''
+		曾被用来永久增加刷怪率
+		（刷怪率x1.25）
+		（效果不可逆）
+		'''
+}
+
+Revenge: {
+	DisplayName: 复仇血泉[Legacy]
+	Tooltip: 曾被用来开启复仇模式
+}
+
+Malice: {
+	DisplayName: 恶意虐脑[Legacy]
+	Tooltip:
+		'''
+		可曾享受地狱之旅？
+		曾被用来开启恶意模式
+		'''
+}

@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -16,7 +17,6 @@ namespace CalamityInheritance.Tiles.MusicBox
 	// See ExampleMod/Common/Systems/MusicLoadingSystem for an explanation on music.
 	public class DoGNonStopBox: ModTile
 	{
-        public new string LocalizationCategory => "Tiles.MusicBox";
         public override void SetStaticDefaults() {
 			Main.tileFrameImportant[Type] = true;
 			Main.tileObsidianKill[Type] = true;
@@ -29,8 +29,8 @@ namespace CalamityInheritance.Tiles.MusicBox
 			TileObjectData.newTile.StyleLineSkip = 2;
 			TileObjectData.addTile(Type);
 
-			AddMapEntry(new Color(191, 142, 111), Language.GetText("ItemName.MusicBox"));
-		}
+            AddMapEntry(Color.DeepPink, CalamityInheritanceUtils.GetText("Tiles.DoGNonStopBox"));
+        }
 
 		public override void MouseOver(int i, int j) {
 			Player player = Main.LocalPlayer;

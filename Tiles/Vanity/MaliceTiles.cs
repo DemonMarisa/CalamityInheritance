@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Enums;
 using CalamityMod;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.Vanity
 {
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, 5, 0);
             TileObjectData.addTile(Type);
 
-            AddMapEntry(new Color(50, 127, 209));
+            AddMapEntry(Color.Yellow, CalamityInheritanceUtils.GetText("Tiles.MaliceTiles"));
 
             DustType = (int)CalamityDusts.BlueCosmilite;
             AnimationFrameHeight = 72;

@@ -1,48 +1,48 @@
-CISporeGas.DisplayName: C I Spore Gas
+﻿CISporeGas.DisplayName: C I Spore Gas
 CISporeGas2.DisplayName: C I Spore Gas2
 CISporeGas3.DisplayName: C I Spore Gas3
-CIVividBeam.DisplayName: C I Vivid Beam
-Climax2.DisplayName: Climax2
-ClimaxBeam2.DisplayName: Climax Beam2
-Crescent.DisplayName: Crescent
-EnormousConsumingVortexold.DisplayName: Enormous Consuming Vortexold
-HadopelagicEcho2.DisplayName: Hadopelagic Echo2
-HadopelagicEchoSoundwave.DisplayName: Hadopelagic Echo Soundwave
-HeliumFlashBlastLegacy.DisplayName: Helium Flash Blast Legacy
-InfernadoFriendlyold.DisplayName: Infernado Friendlyold
-InfernadoMarkFriendlyold.DisplayName: Infernado Mark Friendlyold
-PhantasmalFuryProjOld.DisplayName: Phantasmal Fury Proj Old
-BloodRayold.DisplayName: Blood Rayold
-AncientStarCI.DisplayName: Ancient Star C I
-ElementalBeam.DisplayName: Elemental Beam
-ElementalBeamMain.DisplayName: Elemental Beam Main
-NightBoltold.DisplayName: Night Boltold
-NightOrbold.DisplayName: Night Orbold
-NightsRayBeamold.DisplayName: Nights Ray Beamold
-TerraBeamMain.DisplayName: Terra Beam Main
-TerraBeam.DisplayName: Terra Beam
-SparkInfernalold.DisplayName: Spark Infernalold
-StratusSphereProj.DisplayName: Stratus Sphere Proj
-SubsumingTentacle.DisplayName: Subsuming Tentacle
-VehemenceOld.DisplayName: Vehemence Old
-VolatileStarcoreLegacy.DisplayName: Volatile Starcore Legacy
-Vortex.DisplayName: Vortex
-BloodBolt.DisplayName: Blood Bolt
-BloodOrb.DisplayName: Blood Orb
-ElementalBolt.DisplayName: Elemental Bolt
-ElementalBolt2.DisplayName: Elemental Bolt2
-ElementalBoltVortex.DisplayName: Elemental Bolt Vortex
-ElementalLightning.DisplayName: Elemental Lightning
-ElementalNer.DisplayName: Elemental Ner
-ElementalOrb.DisplayName: Elemental Orb
-ElementalOrbVortex.DisplayName: Elemental Orb Vortex
-ElementalRayMarkStar.DisplayName: Elemental Ray Mark Star
-ElementalRayMarkVortex.DisplayName: Elemental Ray Mark Vortex
-FabBoltOld.DisplayName: Fab Bolt Old
-FabOrbOld.DisplayName: Fab Orb Old
-FabRayOld.DisplayName: Fab Ray Old
-TerraBolt.DisplayName: Terra Bolt
-TerraBolt2.DisplayName: Terra Bolt2
-TerraOrb.DisplayName: Terra Orb
-TerraOrb2.DisplayName: Terra Orb2
-WulfrumBoltOld.DisplayName: Wulfrum Bolt Old
+CIVividBeam.DisplayName: 星流光束
+Climax2.DisplayName: 磁暴球体
+ClimaxBeam2.DisplayName: 磁暴射线
+Crescent.DisplayName: 新月
+EnormousConsumingVortexold.DisplayName: 星流旋涡
+HadopelagicEcho2.DisplayName: 冥渊回音
+HadopelagicEchoSoundwave.DisplayName: 冥渊声波
+HeliumFlashBlastLegacy.DisplayName: 挥发性星核
+InfernadoFriendlyold.DisplayName: 地狱龙卷
+InfernadoMarkFriendlyold.DisplayName: 地狱标记
+PhantasmalFuryProjOld.DisplayName: 愤怒幽魂
+BloodRayold.DisplayName: 血腥射线
+AncientStarCI.DisplayName: 远古之光
+ElementalBeam.DisplayName: 元素射线
+ElementalBeamMain.DisplayName: 元素射线
+NightBoltold.DisplayName: 永夜射线
+NightOrbold.DisplayName: 永夜光球
+NightsRayBeamold.DisplayName: 永夜射线
+TerraBeamMain.DisplayName: 泰拉射线
+TerraBeam.DisplayName: 泰拉射线
+SparkInfernalold.DisplayName: 地狱火花
+StratusSphereProj.DisplayName: 幻云天球
+SubsumingTentacle.DisplayName: 星流触手
+VehemenceOld.DisplayName: 爆裂能量
+VolatileStarcoreLegacy.DisplayName: 宇宙爆炸
+Vortex.DisplayName: 星流旋涡
+BloodBolt.DisplayName: 血腥射线
+BloodOrb.DisplayName: 血腥光球
+ElementalBolt.DisplayName: 元素光球
+ElementalBolt2.DisplayName: 元素光球
+ElementalBoltVortex.DisplayName: 元素射线
+ElementalLightning.DisplayName: 元素闪电
+ElementalNer.DisplayName: 星云元素
+ElementalOrb.DisplayName: 元素光球
+ElementalOrbVortex.DisplayName: 元素光球
+ElementalRayMarkStar.DisplayName: 元素标记
+ElementalRayMarkVortex.DisplayName: 元素标记
+FabBoltOld.DisplayName: 绝学射线
+FabOrbOld.DisplayName: 绝学光球
+FabRayOld.DisplayName: 绝学射线
+TerraBolt.DisplayName: 泰拉射线
+TerraBolt2.DisplayName: 泰拉射线
+TerraOrb.DisplayName: 泰拉光球
+TerraOrb2.DisplayName: 泰拉光球
+WulfrumBoltOld.DisplayName: 钨钢光球

@@ -58,6 +58,12 @@ using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
+using CalamityMod.Items.Tools;
+using CalamityMod.Items.Armor.Demonshade;
+using CalamityMod.Projectiles.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityMod.Items.Dyes;
+using CalamityModMusic.Items.Placeables;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -165,6 +171,160 @@ namespace CalamityInheritance.Content.Items
                 AddTile<DraedonsForgeTiles>().
                 Register();
 
+            #region CalamitousEssence
+
+            Recipe.Create(ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<SomaPrime>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<SomaPrimeOld>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AngelicAlliance>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<LoreCynosure>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<KnowledgeCalamitas>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Apotheosis>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Azathoth>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Contagion>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<CrystylCrusher>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DemonshadeBreastplate>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DemonshadeGreaves>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DemonshadeHelm>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DraconicDestruction>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Earth>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Endogenesis>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Eternity>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Fabstaff>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<FabstaffOld>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<FlamsteedRing>()).
+                AddIngredient<CalamitousEssence>().
+            Register();
+
+            Recipe.Create(ModContent.ItemType<IllustriousKnives>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<NanoblackReaper>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<RainbowPartyCannon>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<RedSun>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<ScarletDevil>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<StaffofBlushie>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Svantechnical>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TemporalUmbrella>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TemporalUmbrellaOld> ()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TheDanceofLight>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<UniverseSplitter>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Voidragon>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<ShadowspecDye>(),10).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<BossRushTier1MusicBox>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<BossRushTier2MusicBox>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<BossRushTier3MusicBox>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<BossRushTier4MusicBox>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<BossRushTier5MusicBox>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+            #endregion
             #endregion
             #region Exo Weapon
 

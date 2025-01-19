@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -29,8 +30,8 @@ namespace CalamityInheritance.Tiles.MusicBox
 			TileObjectData.newTile.StyleLineSkip = 2;
 			TileObjectData.addTile(Type);
 
-			AddMapEntry(new Color(191, 142, 111), Language.GetText("ItemName.MusicBox"));
-		}
+            AddMapEntry(Color.Pink, CalamityInheritanceUtils.GetText("Tiles.DoGLegacyBox"));
+        }
 
 		public override void MouseOver(int i, int j) {
 			Player player = Main.LocalPlayer;

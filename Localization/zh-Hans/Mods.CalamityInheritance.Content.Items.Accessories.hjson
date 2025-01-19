@@ -187,9 +187,13 @@ LeviathanAmbergrisLegacy: {
 
 Melee: {
 	BadgeofBravery: {
+		// DisplayName: Badgeof Bravery
+		// Tooltip: ""
 	}
 
 	ElementalGauntletold: {
+		// DisplayName: Elemental Gauntletold
+		// Tooltip: ""
 	}
 
 	YharimsInsignia: {
@@ -203,6 +207,11 @@ Melee: {
 			使你暂时免疫熔岩
 			增加近战击退
 			'''
+	}
+
+	SamuraiBadge: {
+		// DisplayName: Samurai Badge
+		// Tooltip: ""
 	}
 }
 
@@ -285,4 +294,19 @@ AstralArcanum: {
 		即使在受到伤害性减益的影响时也能增加生命恢复速度
 		当受到伤害性减益效果时，你将获得20点防御
 		'''
+}
+
+AmbrosialAmpouleOld: {
+	// DisplayName: Ambrosial Ampoule Old
+	// Tooltip: ""
+}
+
+SeaShell: {
+	// DisplayName: Sea Shell
+	// Tooltip: ""
+}
+
+TheAbsorberOld: {
+	// DisplayName: The Absorber Old
+	// Tooltip: ""
 }

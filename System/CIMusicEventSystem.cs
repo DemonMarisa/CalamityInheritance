@@ -62,13 +62,13 @@ namespace CalamityInheritance.System
             }
 
             AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.1709d),
-                () => DownedBossSystem.downedYharon, () => CalamityInheritanceConfig.Instance.ExtraMusic);
+                () => DownedBossSystem.downedYharon, () => CalamityInheritanceConfig.Instance.Tyrant1);
 
             AddEntry("ScalDefeated", "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(365d),
-                () => CalamityGlobalNPC.SCalAcceptance != -1, () => CalamityInheritanceConfig.Instance.ExtraMusic);
+                () => CalamityGlobalNPC.SCalAcceptance != -1, () => CalamityInheritanceConfig.Instance.Scal);
 
             AddEntry("ExoMechsDefeated", "RequiemsOfACruelWorld", TimeSpan.FromSeconds(364.032d),
-                () => DownedBossSystem.downedExoMechs, () => CalamityInheritanceConfig.Instance.ExtraMusic);
+                () => DownedBossSystem.downedExoMechs, () => CalamityInheritanceConfig.Instance.Exomechs);
         }
 
         public override void Unload() => EventCollection.Clear();

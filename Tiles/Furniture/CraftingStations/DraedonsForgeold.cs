@@ -11,12 +11,12 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
     public class DraedonsForgeold : ModTile
     {
-        public new string LocalizationCategory => "Tiles.Furniture.CraftingStations";
         public override void SetStaticDefaults()
         {
             AnimationFrameHeight = 36;
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
             TileObjectData.addTile(Type);
             LocalizedText name = CreateMapEntryName();
-            AddMapEntry(new Color(0, 255, 0), name);
+            AddMapEntry(Color.Gold, CalamityInheritanceUtils.GetText("Tiles.DraedonsForgeold"));
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Anvils, TileID.Furnaces, TileID.WorkBenches, TileID.LunarCraftingStation,
                 TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, ModContent.TileType<DraedonsForge>(), ModContent.TileType<CosmicAnvil>() };

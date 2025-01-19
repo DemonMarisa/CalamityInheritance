@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Tiles.Vanity;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Vanity;
+using CalamityMod.Rarities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.createTile = ModContent.TileType<DefiledRuneTiles>();
+            Item.rare = ModContent.RarityType<PureGreen>();
         }
 
         public override void AddRecipes()
