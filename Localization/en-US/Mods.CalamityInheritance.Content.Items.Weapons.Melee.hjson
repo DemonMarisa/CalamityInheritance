@@ -1,0 +1,235 @@
+Animus: {
+	DisplayName: Animus
+	Tooltip:
+		'''
+		Randomizes its damage on enemy hits
+		25% chance of 800 damage
+		25% chance of 1,200 damage
+		20% chance of 1,800 damage
+		15% chance of 3,000 damage
+		10% chance of 6,000 damage
+		5% chance of 10,000 damage
+		'''
+}
+
+ArkoftheAncients: {
+	DisplayName: Ark of the Ancients Legacy
+	Tooltip: A heavenly blade forged to vanquish all evil
+}
+
+ArkoftheCosmosold: {
+	DisplayName: Ark of the Cosmos Legacy
+	Tooltip:
+		'''
+		Fires different homing projectiles based on what biome you're in
+		Upon hitting an enemy you are granted a buff based on what biome you're in
+		Projectiles also change based on moon events
+		'''
+}
+
+ArkoftheElementsold: {
+	DisplayName: Ark of the Elements Legacy
+	Tooltip: A heavenly blade forged by essence of Terraria
+}
+
+AtaraxiaOld: {
+	DisplayName: Ataraxia Legacy
+	Tooltip: "[c/BA55D3:Equanimity Legacy]"
+}
+
+BiomeBlade: {
+	DisplayName: Biome Blade Legacy
+	Tooltip: Fires different projectiles based on what biome you're in
+}
+
+BladeofEnmity: {
+	DisplayName: Blade of Enmity
+	Tooltip: ""
+}
+
+BloodyEdge: {
+	DisplayName: Bloody Edge
+	Tooltip: Chance to heal the player on enemy hits, causes bloody expolsion
+}
+
+ElementalExcalibur: {
+	DisplayName: Elemental Excalibur Legacy
+	Tooltip:
+		'''
+		True melee strikes freeze enemies
+		Fires rainbow beams that change their behavior based on their color
+		Press Right Click for true melee
+		'''
+}
+
+Exobladeold: {
+	DisplayName: Exoblade Legacy
+	Tooltip:
+		'''
+		Ancient blade of Yharim's weapons and armors expert, Draedon
+		Fires an exo beam that homes in on the player and explodes
+		Striking an enemy with the blade causes several comets to fire
+		All attacks briefly freeze enemies hit
+		Enemies hit at very low HP explode into frost energy and freeze nearby enemies
+		The lower your HP the more damage this blade does and heals the player on enemy hits
+		'''
+}
+
+ExoFlail: {
+	DisplayName: Exo Flail
+	Tooltip:
+		'''
+		Fires a chain sword that discharges unstable energy on enemy hits
+		The flail's chain is surrounded in plasma, allowing it to deal damage
+		'''
+}
+
+FourSeasonsGalaxiaold: {
+	DisplayName: Galaxia Legacy
+	Tooltip:
+		'''
+		Fires different homing projectiles based on what biome you're in
+		Upon hitting an enemy you are granted a buff based on what biome you're in
+		Projectiles also change based on moon events
+		'''
+}
+
+GrandDad: {
+	DisplayName: Grand Dad
+	Tooltip:
+		'''
+		Lowers enemy defense to 0 when they are struck
+		Yeets enemies across space and time
+		7
+		'''
+}
+
+MurasamaNeweffect: {
+	DisplayName: Murasama Revamped
+	Tooltip:
+		'''
+		[c/FF0000:THERE WILL BE BLOOD!]
+		Prove your strength to wield this sword
+		Legacy size and stats with revamped slash effect
+		'''
+}
+
+Murasamaold: {
+	DisplayName: Murasama Legacy
+	Tooltip:
+		'''
+		[c/FF0000:THERE WILL BE BLOOD!]
+		Prove your strength to wield this sword
+		Legacy slash effect
+		'''
+}
+
+NeptunesBountyOld: {
+	DisplayName: Neptunes Bounty Legacy
+	Tooltip:
+		'''
+		Fires a trident that rains additional tridents as it travels
+		Hitting enemies will inflict the crush depth debuff
+		The lower the enemies' defense, the more damage they take from this debuff
+		'''
+}
+
+OmegaBiomeBlade: {
+	DisplayName: Omega Biome Blade Legacy
+	Tooltip:
+		'''
+		Fires different homing projectiles based on what biome you're in
+		Projectiles also change based on moon events
+		'''
+}
+
+SoulEdge: {
+	DisplayName: Soul Edge Legacy
+	Tooltip:
+		'''
+		Fires the ghastly souls of long-deceased abyss dwellers
+		Striking with the blade summons additional souls from below
+		'''
+}
+
+StreamGougeOld: {
+	DisplayName: Stream Gouge Legacy
+	Tooltip:
+		'''
+		Fires an essence spear clone
+		Ignores immunity frames
+		'''
+}
+
+TerraEdge: {
+	DisplayName: Terra Edge
+	Tooltip:
+		'''
+		Fires a green beam that inflicts ichor for a short time
+		Heals the player on enemy hits
+		'''
+}
+
+TrueArkoftheAncients: {
+	DisplayName: True Ark of the Ancients Legacy
+	Tooltip: A heavenly blade forged to vanquish all evil
+}
+
+TrueBiomeBlade: {
+	DisplayName: True Biome Blade Legacy
+	Tooltip: Fires different homing projectiles based on what biome you're in
+}
+
+TrueBloodyEdge: {
+	DisplayName: True Bloody Edge
+	Tooltip:
+		'''
+		Releases bloody explosion upon striking enemies with blade
+		Fires bloody orbs home in to enemy
+		'''
+}
+
+Test: {
+	DisplayName: Test
+	Tooltip: ""
+}
+
+GalaxySmasherMelee: {
+	DisplayName: Galaxy Smasher Melee Legacy
+	Tooltip: Explodes and summons death lasers on enemy hits
+}
+
+StellarContemptOld: {
+	DisplayName: Stellar Contempt Melee Legacy
+	Tooltip: Lunar flares rain down on enemy hits
+}
+
+FallenPaladinsHammerOld: {
+	DisplayName: Fallen Paladin's Hammer Melee Legacy
+	Tooltip: Explodes on enemy hits
+}
+
+Trinity: {
+	DisplayName: Trinity
+	Tooltip: Fires a spread of energy bolts
+}
+
+TerratomereOld: {
+	DisplayName: Terratomere Old
+	Tooltip:
+		'''
+		Linked to the essence of Terraria
+		Heals the player on true melee hits
+		Fires a barrage of homing beams that inflict several debuffs
+		'''
+}
+
+WulfrumBlade: {
+	Tooltip: ""
+	DisplayName: Wulfrum Blade
+}
+
+MusicMarkChange: {
+	DisplayName: Music Mark Change
+	Tooltip: ""
+}

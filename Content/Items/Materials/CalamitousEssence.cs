@@ -22,6 +22,8 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetStaticDefaults()
         {
+            Item.width = 20;
+            Item.height = 34;
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
         }

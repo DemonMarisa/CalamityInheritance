@@ -1,0 +1,50 @@
+Bazooka: {
+	DisplayName: Bazooka
+	Tooltip:
+		'''
+		Uses Grenade Shells
+		Can be used twice per boss battle
+		'''
+}
+
+ElephantKiller: {
+	DisplayName: Elephant Killer
+	Tooltip:
+		'''
+		Uses Magnum Rounds
+		Can be used thrice per boss battle
+		'''
+}
+
+Hydra: {
+	DisplayName: Hydra
+	Tooltip:
+		'''
+		Uses Explosive Shotgun Shells
+		Deals more damage to everything
+		Can be used once per boss battle
+		'''
+}
+
+LightningHawk: {
+	DisplayName: Lightning Hawk
+	Tooltip:
+		'''
+		Uses Magnum Rounds
+		Can be used thrice per boss battle
+		'''
+}
+
+Magnum: {
+	DisplayName: Magnum
+	Tooltip:
+		'''
+		Uses Magnum Rounds
+		Can be used thrice per boss battle
+		'''
+}
+
+GoldenGun: {
+	DisplayName: Golden Gun
+	Tooltip: Shoots a straight line of pure ichor
+}

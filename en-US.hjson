@@ -11,6 +11,7 @@ Mods: {
 
 			DraedonsForgeold: {
 				$parentVal: Draedons Forge Legacy
+				MapEntry: Draedons Forgeold
 			}
 
 			DoGLegacyBox: DoGLegacyBox[Legacy]

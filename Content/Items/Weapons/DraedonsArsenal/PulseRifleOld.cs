@@ -30,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 
         public override void SetDefaults()
         {
+            CalamityGlobalItem modItem = Item.Calamity();
 
             Item.width = 62;
             Item.height = 22;
@@ -49,11 +50,11 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 
             Item.shoot = ModContent.ProjectileType<PulseRifleShotOld>();
             Item.shootSpeed = 5f;
-            /*
+            
             modItem.UsesCharge = true;
             modItem.MaxCharge = 250f;
             modItem.ChargePerUse = 0.24f;
-            */
+            
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

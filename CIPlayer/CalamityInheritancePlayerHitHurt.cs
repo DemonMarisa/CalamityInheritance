@@ -338,6 +338,13 @@ namespace CalamityInheritance.CIPlayer
                             hitInfo.Damage *= 2;
                         }
                     }
+                    else
+                    {
+                        if (Main.rand.NextBool(20))
+                        {
+                            hitInfo.Damage *= 4;
+                        }
+                    }
                 }
             };
             if (silvaMelee)

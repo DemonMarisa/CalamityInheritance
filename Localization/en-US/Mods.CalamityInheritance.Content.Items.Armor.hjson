@@ -88,7 +88,7 @@ AuricTeslaHeadRogue: {
 }
 
 AuricTeslaHeadSummon: {
-	DisplayName: 金宇星界盔[legacy]
+	DisplayName: Auric Tesla Space Helmet Legacy
 	Tooltip:
 		'''
 		+7 max minions
@@ -158,7 +158,8 @@ GodSlayerHeadRangedold: {
 		'''
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
-		Allows your ranged hit can deal 4x damage with excess critical strike chance
+		Allows your ranged hit can deal 2x damage with excess critical strike chance
+		If the critical strike chance does not excess 100%, the critical strike has a 5% chance can deal 4x damage
 		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
 		'''
 }

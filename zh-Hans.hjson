@@ -11,6 +11,7 @@ Mods: {
 
 			DraedonsForgeold: {
 				$parentVal: 嘉登熔炉[Legacy]
+				// MapEntry: Draedons Forgeold
 			}
 
 			DoGLegacyBox: 音乐盒-神明吞噬者[Legacy]

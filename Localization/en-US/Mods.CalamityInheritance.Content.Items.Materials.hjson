@@ -1,0 +1,14 @@
+AuricBarold: {
+	DisplayName: Auric Bar Legacy
+	Tooltip: Boundless power emanates from the metal
+}
+
+NebulaBar: {
+	DisplayName: Nebular Bar
+	Tooltip: ""
+}
+
+CalamitousEssence: {
+	DisplayName: Calamitous Essence
+	Tooltip: ""
+}

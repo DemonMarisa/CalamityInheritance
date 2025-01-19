@@ -1,0 +1,42 @@
+BadgeofBravery: {
+	DisplayName: 勇气勋章[Legacy]
+	Tooltip:
+		'''
+		增加15%近战攻速
+		当穿着龙蒿套装时，额外增加10%近战暴击，10%近战伤害，15点护甲穿透
+		'''
+}
+
+ElementalGauntletold: {
+	DisplayName: 元素之握[Legacy]
+	Tooltip:
+				'''
+				增加15%的近战伤害与暴击概率
+				增加25%的真近战伤害
+				增加15%的近战攻速
+				增加近战武器的击退与尺寸
+				让近战武器可以自动挥舞
+				'''
+}
+
+SamuraiBadge: {
+	DisplayName: 武士勋章[Legacy]
+	Tooltip:
+		'''
+		离敌人越近，近战伤害、真近战伤害和近战攻速越高
+		最高增加30%近战伤害、真近战伤害和近战攻速
+		'''
+}
+
+YharimsInsignia: {
+	DisplayName: 魔君之证章[Legacy]
+	Tooltip:
+		'''
+		生命值低于50%时增加10%伤害
+		增加10%近战攻速
+		增加10%近战伤害和真近战伤害
+		近战攻击及其弹幕会造成神圣之火减益
+		使你暂时免疫熔岩
+		增加近战击退
+		'''
+}

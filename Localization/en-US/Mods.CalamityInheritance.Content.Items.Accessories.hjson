@@ -293,21 +293,6 @@ AstralArcanum: {
 		'''
 }
 
-AstralArcanum: {
-	DisplayName: Astral Arcanum Legacy
-	Tooltip:
-		'''
-		Taking damage drops astral stars from the sky
-		Provides immunity to the astral infection debuff
-		You reflect projectiles when they hit you
-		Reflected projectiles deal no damage to you
-		This reflect has a 90 second cooldown which is shared with all other dodges and reflects
-		Boosts life regen even while under the effects of a damaging debuff
-		While under the effects of a damaging debuff you will gain 20 defense
-		Press [KEY] UI Toggle to toggle teleportation UI while no bosses are alive
-		'''
-}
-
 AmbrosialAmpouleOld: {
 	DisplayName: Ambrosial Ampoule Legacy
 	Tooltip:

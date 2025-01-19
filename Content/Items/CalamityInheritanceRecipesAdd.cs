@@ -64,6 +64,8 @@ using CalamityMod.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityMod.Items.Dyes;
 using CalamityModMusic.Items.Placeables;
+using CalamityMod.Items.Tools.ClimateChange;
+using CalamityInheritance.Content.Items.Tools;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -869,6 +871,14 @@ namespace CalamityInheritance.Content.Items
                     AddTile(TileID.MythrilAnvil).
                     Register();
             }
+            #endregion
+            #region Tools
+            Recipe.Create(ModContent.ItemType<Cosmolight>()).
+                AddIngredient(ModContent.ItemType<Moonlight>()).
+                AddIngredient(ModContent.ItemType<Daylight>()).
+                AddIngredient(ItemID.FallenStar).
+                AddTile(TileID.Anvils).
+                Register();
             #endregion
         }
     }

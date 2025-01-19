@@ -1,0 +1,29 @@
+WulfrumAxe: {
+	DisplayName: Wulfrum Axe
+	Tooltip: ""
+}
+
+WulfrumHammer: {
+	DisplayName: Wulfrum Hammer
+	Tooltip: ""
+}
+
+WulfrumPickaxe: {
+	DisplayName: Wulfrum Pickaxe
+	Tooltip: ""
+}
+
+Moonlight: {
+	DisplayName: Moonlight
+	Tooltip: Advances time to the night
+}
+
+Daylight: {
+	DisplayName: Daylight
+	Tooltip: Advances time to the day
+}
+
+MusicMarkChange: {
+	DisplayName: Music Mark Change
+	Tooltip: ""
+}

@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.autoReuse = true;
             Item.height = 42;
             Item.value = CIShopValue.RarityPriceBlue;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ItemRarityID.LightRed;
         }
         public override bool AltFunctionUse(Player player) => true;
 
