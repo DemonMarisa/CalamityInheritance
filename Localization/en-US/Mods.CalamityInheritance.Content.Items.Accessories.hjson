@@ -255,15 +255,15 @@ TheSpongetest: {
 		Extra 15 defense that would be disabled in 10 seconds if you are hit, and boost your movement speed
 		6.25% of the damage from enemy attacks is absorbed and converted into healing
 
-		[c/FFA500:Rework Sponge if toggle 'Sponge Barrier' in config, which will disable Legacy Sponge]
-		Reworked Sponge:
+		[c/FFA500:Active Sponge Barrier if toggle 'Sponge Barrier' in config]
 		Active a barrier can absorb damage, which durability is the same as your max HP
 		When barrier is formed:
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
 		+30 defense, increases damage reduction by 30%
-		WHen barrier is cracked:
+		When barrier is cracked:
 		You will lose 50 defense and taken 25% more damage from enemies hit
+		This effect will be removed when your barrier is fully recharged
 		Takes up more time to recharge your barrier
 		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''

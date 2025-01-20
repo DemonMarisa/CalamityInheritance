@@ -87,3 +87,13 @@ ReaverSummonSetBuff: {
 	DisplayName: Reaver Orb Revamped
 	Description: Reaver Orb will fight a way for you
 }
+
+AncientXerocMadness: {
+	DisplayName: Ancient Xeroc Madness
+	Description: Mods.CalamityInheritance.Buffs.AncientXerocMadness.Description
+}
+
+AncientXerocShame: {
+	DisplayName: Ancient Xeroc Shame
+	Description: Mods.CalamityInheritance.Buffs.AncientXerocShame.Description
+}

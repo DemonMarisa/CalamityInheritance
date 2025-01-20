@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Armor.Xeroc;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
@@ -41,6 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                )
             {
                 //Scarlet: 这次真的抵消掉伤害惩罚了
+                player.buffImmune[ModContent.BuffType<AncientXerocShame>()] = true;
                 player.GetDamage<GenericDamageClass>() += 0.5f;
                 player.GetCritChance<GenericDamageClass>() += 50;
             }

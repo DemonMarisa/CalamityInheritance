@@ -66,6 +66,8 @@ using CalamityMod.Items.Dyes;
 using CalamityModMusic.Items.Placeables;
 using CalamityMod.Items.Tools.ClimateChange;
 using CalamityInheritance.Content.Items.Tools;
+using CalamityInheritance.Content.Items.Potions;
+using Steamworks;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -860,6 +862,10 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.FallenStar).
                 AddTile(TileID.Anvils).
                 Register();
+            #endregion
+
+            #region Potions Recipe Blood Orb Support
+            
             #endregion
         }
     }
