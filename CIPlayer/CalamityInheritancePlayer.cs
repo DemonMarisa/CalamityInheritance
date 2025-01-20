@@ -60,6 +60,7 @@ namespace CalamityInheritance.CIPlayer
         public bool beeResist = false;//降低蜜蜂对玩家的伤害
         public bool AmbrosialAmpouleOld = false;//百草瓶回血
         public int raiderStack = 0;//纳米技术击中计数器
+        public int nanoTechStackDurability = 0;
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -448,6 +449,7 @@ namespace CalamityInheritance.CIPlayer
             beeResist = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
             raiderStack = 0;//纳米技术击中计数器
+            nanoTechStackDurability = 0;//纳米技术充能进度
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;

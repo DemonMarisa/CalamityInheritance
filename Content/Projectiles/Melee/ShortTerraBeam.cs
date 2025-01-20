@@ -55,6 +55,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            if (Projectile.timeLeft >= 359)
+                return false;
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }

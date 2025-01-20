@@ -22,14 +22,14 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetStaticDefaults()
         {
-            Item.width = 20;
-            Item.height = 34;
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
         }
 
         public override void SetDefaults()
         {
+            Item.width = 20;
+            Item.height = 34;
             Item.maxStack = 1;
             Item.value = CIShopValue.RarityPricePureRed;
             Item.rare = ModContent.RarityType<PureRed>();
@@ -37,12 +37,6 @@ namespace CalamityInheritance.Content.Items.Materials
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Materials/CalamitousEssence_Glow").Value);
-        }
-
-        public override void Update(ref float gravity, ref float maxFallSpeed)
-        {
-            float brightness = Main.essScale * Main.rand.NextFloat(0.9f, 1.1f);
-            Lighting.AddLight(Item.Center, 0.15f * brightness, 0.05f * brightness, 0.5f * brightness);
         }
     }
 }

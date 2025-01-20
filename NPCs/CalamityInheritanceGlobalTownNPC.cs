@@ -1,6 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Items.Ammo.FiniteUse;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
+using CalamityMod.Items.Dyes;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.TownNPCs;
@@ -29,6 +31,12 @@ namespace CalamityInheritance.NPCs
             if (type == ModContent.NPCType<THIEF>())
             {
                 shop.AddWithCustomValue(ModContent.ItemType<SylvanSlasher>(), Item.buyPrice(gold: 100), Condition.DownedMoonLord);
+            }
+            if (type == NPCID.ArmsDealer)
+            {
+                shop.AddWithCustomValue(ModContent.ItemType<MagnumRounds>(), Item.buyPrice(gold: 10))
+                .AddWithCustomValue(ModContent.ItemType<GrenadeRounds>(), Item.buyPrice(gold: 25))
+                .AddWithCustomValue(ModContent.ItemType<ExplosiveShells>(), Item.buyPrice(gold: 50));
             }
         }
         #endregion

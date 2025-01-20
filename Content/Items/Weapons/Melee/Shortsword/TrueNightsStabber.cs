@@ -31,7 +31,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<NightsStabber>());
-            recipe.AddIngredient(ItemID.BrokenHeroSword);
+            recipe.AddIngredient(ItemID.SoulofSight, 30);
+            recipe.AddIngredient(ItemID.SoulofMight, 30);
+            recipe.AddIngredient(ItemID.SoulofFright, 30);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

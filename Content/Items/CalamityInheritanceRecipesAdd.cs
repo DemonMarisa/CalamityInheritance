@@ -175,6 +175,14 @@ namespace CalamityInheritance.Content.Items
 
             #region CalamitousEssence
 
+            Recipe.Create(ModContent.ItemType<ElementalExcalibur>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
             Recipe.Create(ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>()).
                 AddIngredient<CalamitousEssence>().
                 Register();

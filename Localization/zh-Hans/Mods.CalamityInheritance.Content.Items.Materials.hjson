@@ -10,5 +10,9 @@ NebulaBar: {
 
 CalamitousEssence: {
 	DisplayName: 灾厄精华[Legacy]
-	Tooltip: 来自旧日最深邃，最黑暗的疯狂
+	Tooltip:
+		'''
+		来自旧日最深邃，最黑暗的疯狂
+		只有星流巨械被击败后才会掉落
+		'''
 }

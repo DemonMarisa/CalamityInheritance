@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<ExcaliburShortsword>());
-            recipe.AddIngredient(ItemID.BrokenHeroSword);
+            recipe.AddIngredient(ItemID.ChlorophyteBar,24);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

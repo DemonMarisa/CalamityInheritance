@@ -40,20 +40,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
 
-            // 发射 TerraEdgeEnergySword
             Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, adjustedItemScale);
 
-            // 如果 velocity 是 (0, 0)，根据玩家面向方向设置默认速度
             if (velocity == Vector2.Zero)
             {
-                velocity = new Vector2(player.direction, 0f); // 设置为水平方向
+                velocity = new Vector2(player.direction, 0f);
             }
 
-            // 确保速度归一化并设置合适的弹幕速度
             Vector2 beamVelocity = Vector2.Normalize(velocity) * 20f;
-            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TrueBloodyBladeProj>(), damage / 2, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TrueBloodyBladeProj>(), damage, knockback, player.whoAmI);
 
-            // Multiplayer 同步
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 
             return false; // Return false because we've manually created the projectiles.

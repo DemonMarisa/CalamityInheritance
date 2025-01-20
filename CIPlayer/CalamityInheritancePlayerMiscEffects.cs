@@ -28,6 +28,7 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Silva;
 using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Accessories.Rogue;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -41,6 +42,8 @@ namespace CalamityInheritance.CIPlayer
 
             // Misc effects, because I don't know what else to call it
             MiscEffects();
+            //纳米技术堆叠UI
+            NanoTechUI();
 
             OtherBuffEffects();
 
@@ -50,6 +53,7 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisEffects();
 
             ShieldDurabilityMax = Player.statLifeMax2;
+
             CalamityPlayer modPlayer1 = Player.Calamity();
             if(ancientXerocSet)
             {
@@ -256,6 +260,24 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetDamage<MeleeDamageClass>() += 0.10f;
                     Player.GetArmorPenetration<MeleeDamageClass>() += 15;
                 }
+            }
+        }
+        private void NanoTechUI()
+        {
+            if(nanotechold)
+            {
+                CalamityPlayer modPlayer = Player.Calamity();
+                Player.AddCooldown(NanotechUI.ID, NanotechOld.nanotechDMGStack);
+                
+                if (nanoTechStackDurability >= 0 && nanoTechStackDurability < 150)
+                {
+                    //储存了攻击的积攒数量。
+                    nanoTechStackDurability = raiderStack;
+
+                    if (modPlayer.cooldowns.TryGetValue(NanotechUI.ID, out var nanoDurability))
+                        nanoDurability.timeLeft = nanoTechStackDurability;
+                }
+                
             }
         }
         #region Energy Shields

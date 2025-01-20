@@ -229,7 +229,7 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<VehemencOld>(), 1);
-                npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1);
+                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedExoMechs, ModContent.ItemType<CalamitousEssence>());
             }
             #endregion
             // Internal function to determine whether this NPC is the second Twin killed in a fight, regardless of which Twin it is.

@@ -19,11 +19,13 @@ namespace CalamityInheritance
         public static RecipeGroup ElementalRayRecipeGroup;
         public static RecipeGroup PhantasmalFuryRecipeGroup;
         public static RecipeGroup HeliumFlashRecipeGroup;
+        public static RecipeGroup WoodenSwordRecipeGroup;
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
             PhantasmalFuryRecipeGroup = null;
             HeliumFlashRecipeGroup = null;
+            WoodenSwordRecipeGroup = null;
         }
         public override void AddRecipeGroups()
         {
@@ -38,6 +40,9 @@ namespace CalamityInheritance
 
             HeliumFlashRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<HeliumFlash>())}",
                 ModContent.ItemType<HeliumFlash>(), ModContent.ItemType<HeliumFlashLegacy>());
+
+            WoodenSwordRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.WoodenSword)}",
+                ModContent.ItemType<HeliumFlash>(), ModContent.ItemType<HeliumFlashLegacy>(),ModContent.ItemType<HeliumFlashLegacy>());
 
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);

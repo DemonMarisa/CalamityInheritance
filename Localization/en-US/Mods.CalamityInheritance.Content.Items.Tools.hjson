@@ -25,7 +25,7 @@ Daylight: {
 
 MusicMarkChange: {
 	DisplayName: Music Mark Change
-	Tooltip: 
+	Tooltip:
 		'''
 		Left-click to delete all music event markers
 		Right-click to add all music event markers
