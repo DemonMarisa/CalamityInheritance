@@ -87,3 +87,13 @@ ReaverSummonSetBuff: {
 	DisplayName: 掠夺者宝珠[legacy]
 	Description: 掠夺者宝珠会开辟你的前路
 }
+
+AncientXerocMadness: {
+	// DisplayName: Ancient Xeroc Madness
+	// Description: Mods.CalamityInheritance.Buffs.AncientXerocMadness.Description
+}
+
+AncientXerocShame: {
+	// DisplayName: Ancient Xeroc Shame
+	// Description: Mods.CalamityInheritance.Buffs.AncientXerocShame.Description
+}

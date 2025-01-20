@@ -28,6 +28,8 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Silva;
 using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using Microsoft.Xna.Framework.Audio;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -49,35 +51,9 @@ namespace CalamityInheritance.CIPlayer
 
             ElysianAegisEffects();
 
+            AncientXerocEffect();//克希洛克套装的函数封装
             ShieldDurabilityMax = Player.statLifeMax2;
-            CalamityPlayer modPlayer1 = Player.Calamity();
-            if(ancientXerocSet)
-            {
-                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
-                {
-                    Player.GetDamage<GenericDamageClass>() +=0.05f;
-                    Player.GetCritChance<GenericDamageClass>() += 5;
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.35f))
-                {
-                    Player.GetDamage<GenericDamageClass>() += 0.10f; //玩家血量60%下的数值加成：20%伤害与20%暴击率
-                    Player.GetCritChance<GenericDamageClass>() += 10;
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.35f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
-                {
-                    Player.GetDamage<GenericDamageClass>() += 0.35f; //玩家血量40%下的数值加成：45%伤害与45%暴击率
-                    Player.GetCritChance<GenericDamageClass>() += 35;
-                    modPlayer1.healingPotionMultiplier += 0.10f;
-                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
-                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
-                {
-                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                    Player.GetCritChance<GenericDamageClass>() -= 40;
-                    ancientXerocWrath = true;
-                }
-            }   
+               
 
         }
         public void OtherBuffEffects()
@@ -863,7 +839,7 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
             }
-
+            //克希洛克的相关buff
         }
 
         #endregion
@@ -1028,5 +1004,43 @@ namespace CalamityInheritance.CIPlayer
                 elysianGuard = false;
         }
         #endregion
+
+        public void AncientXerocEffect()
+        {
+            CalamityPlayer modPlayer1 = Player.Calamity();
+            if(ancientXerocSet)
+            {   
+                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
+                {
+                    Player.GetDamage<GenericDamageClass>() +=0.10f;
+                    Player.GetCritChance<GenericDamageClass>() += 10;
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.15f; //玩家血量60%下的数值加成：25%伤害与25%暴击率
+                    Player.GetCritChance<GenericDamageClass>() += 15;
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
+                {
+                    //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
+                    //TO DO:在这个血量区间增加一个提示来提醒玩家此时伤害加成最高
+                    ancientXerocMadness = true;
+                    Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
+                    Player.GetCritChance<GenericDamageClass>() += 40;
+                    Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
+                    modPlayer1.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
+                    modPlayer1.healingPotionMultiplier += 0.10f;
+                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
+                {
+                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                    Player.GetCritChance<GenericDamageClass>() -= 40;
+                    Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
+                    ancientXerocWrath = true;
+                }
+            }
+        }
     }
 }
