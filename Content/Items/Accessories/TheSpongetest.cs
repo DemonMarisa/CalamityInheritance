@@ -36,7 +36,9 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly SoundStyle ActivationSound = new("CalamityMod/Sounds/Custom/RoverDriveActivate") { Volume = 0.85f };
         public static readonly SoundStyle BreakSound = new("CalamityMod/Sounds/Custom/RoverDriveBreak") { Volume = 0.75f };
 
-        public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
+
+        public static int CIShieldDurabilityMax => Main.LocalPlayer.TryGetModPlayer(out CalamityInheritancePlayer modPlayer)? modPlayer.ShieldDurabilityMax: 0 ;
+        // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(10); // was 6
         public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(5);
@@ -104,19 +106,23 @@ namespace CalamityInheritance.Content.Items.Accessories
             }
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.spongeShieldVisible = !hideVisual;
-            modPlayer.aAmpoule = true;
-            modPlayer.alwaysHoneyRegen = true;
-            modPlayer.honeyDewHalveDebuffs = true;
-            modPlayer.livingDewHalveDebuffs = true;
-            modPlayer.aSpark = true;
-            modPlayer.gShell = true;
-            modPlayer1.FungalCarapace = true;
-            player.endurance += 0.15f;
-            player.statDefense += 30;
-            player.statManaMax2 += 30;
-            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
-            player.statLifeMax += 30;
-            player.jumpSpeedBoost += 0.5f;
+            if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == false)
+            {
+                modPlayer.aAmpoule = true;
+                modPlayer.alwaysHoneyRegen = true;
+                modPlayer.honeyDewHalveDebuffs = true;
+                modPlayer.livingDewHalveDebuffs = true;
+                modPlayer.aSpark = true;
+                modPlayer.gShell = true;
+                modPlayer1.FungalCarapace = true;
+                player.endurance += 0.15f;
+                player.statDefense += 30;
+                player.statManaMax2 += 30;
+                player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
+                player.statLifeMax += 30;
+                player.jumpSpeedBoost += 0.5f;
+            }
+            
             if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
             {
                 if (modPlayer1.CISpongeShieldDurability == 0)

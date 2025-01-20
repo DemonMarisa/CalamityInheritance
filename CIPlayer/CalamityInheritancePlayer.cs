@@ -30,6 +30,7 @@ using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.CICooldowns;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -140,7 +141,9 @@ namespace CalamityInheritance.CIPlayer
         public int CITotalMaxShieldDurability => CIsponge ? TheSpongetest.CIShieldDurabilityMax : 0;
 
         public int CISpongeShieldDurability = 0;
-
+        internal bool CISpongeIfFirstCharge = false; // 海绵是否第一次使用
+        internal bool CIspongeSetFirstChargeStats = false; //第一次使用时不会减少玩家防御数值
+        internal bool CISpongeFullyChargeFlag = false; //完全充能时的Flag
         public bool CIsponge = false;
         public bool CIspongeShieldVisible = false;
         internal float CIspongeShieldPartialRechargeProgress = 0f;
@@ -225,6 +228,14 @@ namespace CalamityInheritance.CIPlayer
             ElementalQuiver = false;
             fleshTotemold = false;
             CoreOfTheBloodGod = false;
+            if(CISpongeIfFirstCharge == true) //第一次使用
+            {
+                CIspongeSetFirstChargeStats = true; //取Stas=True
+            }
+            else if(CISpongeShieldDurability == TheSpongetest.CIShieldDurabilityMax) //完全充能的Flag
+            {
+                CISpongeIfFirstCharge = false;
+            }
 
             if (CoreOfTheBloodGod)
                 percentMaxLifeIncrease += 25;
@@ -234,6 +245,8 @@ namespace CalamityInheritance.CIPlayer
 
             if (!CIsponge)
                 ShieldDurabilityMax = 0;
+
+            
 
             badgeofBravery = false;
             CIsponge = false;

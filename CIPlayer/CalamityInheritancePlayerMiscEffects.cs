@@ -264,6 +264,7 @@ namespace CalamityInheritance.CIPlayer
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。
             bool shieldAddedLight = false;
 
+
             // 如果“海绵”装备没有装备，则消除其耐久冷却时间。
             // 故意保留充电冷却时间以防止快速切换来重新充电护盾。
             if (!CIsponge)

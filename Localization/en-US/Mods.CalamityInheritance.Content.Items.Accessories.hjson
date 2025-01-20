@@ -177,13 +177,25 @@ LeviathanAmbergrisLegacy: {
 
 Melee: {
 	BadgeofBravery: {
-		DisplayName: Badgeof Bravery
-		Tooltip: ""
+		DisplayName: Badge of Bravery Legacy
+		Tooltip:
+			'''
+			15% increased melee speed
+			10% increased melee damage, critical strike chance and 15 armor penetration while wearing melee tarragon set
+			'''
 	}
 
 	ElementalGauntletold: {
-		DisplayName: Elemental Gauntletold
-		Tooltip: ""
+		DisplayName: Elemental Gauntlet Legacy
+		Tooltip:
+			'''
+			15% increased melee damage and critical strike chance
+			25% increased true melee damage
+			Increased melee knockback
+			Increases the size of melee weapon
+			Enables auto swing for melee weapon
+			'Just a little more crits'
+			'''
 	}
 
 	YharimsInsignia: {
@@ -202,7 +214,11 @@ Melee: {
 
 	SamuraiBadge: {
 		DisplayName: Samurai Badge
-		Tooltip: ""
+		Tooltip:
+			'''
+			Increases melee damage, speed and true melee damage  the closer you are to enemies
+			Max boost is 30% increased melee damage, speed and true melee damage
+			'''
 	}
 }
 

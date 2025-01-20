@@ -27,14 +27,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             player.GetDamage<MeleeDamageClass>() += 0.15f;
             player.GetCritChance<MeleeDamageClass>() += 15;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
             player.kbGlove = true;
             player.autoReuseGlove = true;
             player.meleeScaleGlove = true;
-            modPlayer.gloveLevel = 5;
             player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
         }
 
