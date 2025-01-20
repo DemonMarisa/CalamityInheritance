@@ -279,8 +279,8 @@ namespace CalamityInheritance.CIPlayer
                         string key = "Mods.CalamityInheritance.Status.SCAL";
                         Color messageColor = Color.DarkRed;
                         CalamityUtils.DisplayLocalizedText(key, messageColor);
+                        modPlayer.KillPlayer();
                     }
-                    modPlayer.KillPlayer();
                 }
             }
 

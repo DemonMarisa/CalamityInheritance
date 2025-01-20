@@ -41,8 +41,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(10); // was 6
-        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(5);
-        public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(6);
+        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(6);
+        public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(9);
 
         // While active, The Sponge gives 30 defense and 10% DR
         public static int ShieldActiveDefense = 30;
@@ -106,8 +106,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             }
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.spongeShieldVisible = !hideVisual;
-            if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == false)
-            {
                 modPlayer.aAmpoule = true;
                 modPlayer.alwaysHoneyRegen = true;
                 modPlayer.honeyDewHalveDebuffs = true;
@@ -121,7 +119,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
                 player.statLifeMax += 30;
                 player.jumpSpeedBoost += 0.5f;
-            }
+            
             
             if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
             {

@@ -5,6 +5,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -89,23 +90,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<ElementalRay>());
-            recipe.AddIngredient(ModContent.ItemType<PhantasmalFury>());
-            recipe.AddIngredient(ModContent.ItemType<ShadowboltStaff>());
-            recipe.AddIngredient(ModContent.ItemType<UltraLiquidator>());
-            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
-
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ModContent.ItemType<ElementalRayold>());
-            recipe1.AddIngredient(ModContent.ItemType<PhantasmalFuryOld>());
-            recipe1.AddIngredient(ModContent.ItemType<ShadowboltStaff>());
-            recipe1.AddIngredient(ModContent.ItemType<UltraLiquidator>());
-            recipe1.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe1.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe1.Register();
+            CreateRecipe().
+            AddRecipeGroup("CalamityInheritance:AnyElementalRay").
+            AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+            AddIngredient(ModContent.ItemType<ArchAmaryllis>()).
+            AddIngredient(ModContent.ItemType<AsteroidStaff>()).
+            AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
+            AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+            AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
+            AddIngredient(ModContent.ItemType<MiracleMatter>()).
+            AddTile(ModContent.TileType<DraedonsForge>()).
+            Register();
         }
     }
 }

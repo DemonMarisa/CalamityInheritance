@@ -33,3 +33,7 @@ MusicMarkChange: {
 		请搭配Imogen's Qol或者DragonLen修改世界进度使用
 		'''
 }
+ChargerItem: {
+	DisplayName: 便携充能物品
+	Tooltip: 使用后，瞬间充能身上所有的嘉登军械库武器
+}

@@ -331,35 +331,8 @@ namespace CalamityInheritance.Content.Items
             #region Exo Weapon
 
             Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddIngredient(ModContent.ItemType<ElementalRayold>()).
-                AddIngredient(ModContent.ItemType<PhantasmalFuryOld>()).
-                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
-                AddIngredient(ModContent.ItemType<MiracleMatter>()).
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddIngredient(ModContent.ItemType<ElementalRay>()).
-                AddIngredient(ModContent.ItemType<PhantasmalFuryOld>()).
-                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
-                AddIngredient(ModContent.ItemType<MiracleMatter>()).
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddIngredient(ModContent.ItemType<ElementalRayold>()).
-                AddIngredient(ModContent.ItemType<PhantasmalFury>()).
-                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
-                AddIngredient(ModContent.ItemType<MiracleMatter>()).
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddIngredient(ModContent.ItemType<ElementalRay>()).
-                AddIngredient(ModContent.ItemType<PhantasmalFuryOld>()).
+                AddRecipeGroup("CalamityInheritance:AnyElementalRay").
+                AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
                 AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
                 AddIngredient(ModContent.ItemType<UltraLiquidator>()).
                 AddIngredient(ModContent.ItemType<MiracleMatter>()).

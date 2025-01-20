@@ -25,5 +25,16 @@ Daylight: {
 
 MusicMarkChange: {
 	DisplayName: Music Mark Change
-	Tooltip: ""
+	Tooltip: 
+		'''
+		Left-click to delete all music event markers
+		Right-click to add all music event markers
+		If the boss has already been defeated, removing the music event marker will cause the music to play all the time
+		Use it with Imogen's Qol or DragonLen to Change your world progression
+		'''
+}
+
+ChargerItem: {
+	DisplayName: Charger Item
+	Tooltip: After use, it instantly recharges all Draedon's Arsenal weapons
 }
