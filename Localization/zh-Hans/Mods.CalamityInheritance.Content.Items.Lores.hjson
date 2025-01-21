@@ -494,4 +494,11 @@ KnowledgeYharon: {
 		'''
 }
 
-KnowledgeExoMechs.DisplayName: 星流巨械[Legacy]
+KnowledgeExoMechs: {
+	DisplayName: 星流巨械[Legacy]
+	Lore:
+		'''
+		精湛的工艺和最优化的成果，创造的目的只是为了毁灭
+		然而最终，他们所取得的成就并不比最初的设计多多少
+		'''
+}

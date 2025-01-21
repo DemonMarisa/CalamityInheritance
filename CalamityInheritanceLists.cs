@@ -16,6 +16,13 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.NPCs.PlaguebringerGoliath;
 using CalamityMod.NPCs.PlagueEnemies;
 using CalamityMod.Projectiles.Boss;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Summon;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance
 {
@@ -28,6 +35,7 @@ namespace CalamityInheritance
         public static List<int> ProjNoCIdeadshotBrooch;
         public static List<int> beeProjectileList;
         public static List<int> beeEnemyList;
+        public static List<int> exoDraedibsArsenalWeapon;
         public static void LoadLists()
         {
             rangedProjectileExceptionList = new List<int>
@@ -182,6 +190,18 @@ namespace CalamityInheritance
                 ProjectileType<PlagueStingerGoliathV2>(),
                 ProjectileType<PlagueExplosion>()
             };
+            exoDraedibsArsenalWeapon = new List<int>()
+            {
+                ItemType<Exoblade>(),
+                ItemType<Celestus>(),
+                ItemType<CosmicImmaterializer>(),
+                ItemType<HeavenlyGale>(),
+                ItemType<MagnomalyCannon>(),
+                ItemType<Photoviscerator>(),
+                ItemType<SubsumingVortex>(),
+                ItemType<Supernova>(),
+                ItemType<VividClarity>(),
+            };
         }
 
         public static void UnloadLists()
@@ -192,6 +212,7 @@ namespace CalamityInheritance
             ProjNoCIdeadshotBrooch = null;
             beeEnemyList = null;
             beeProjectileList = null;
+            exoDraedibsArsenalWeapon = null;
         }
     }
 }

@@ -63,6 +63,8 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer modPlayer = Player.Calamity();
             var modplayer1 = Player.CalamityInheritance();
+            Player player = Main.player[Main.myPlayer];
+            Item item = player.HeldItem;
             if (armorShattering)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
@@ -234,6 +236,13 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetCritChance<MeleeDamageClass>() += 10;
                     Player.GetDamage<MeleeDamageClass>() += 0.10f;
                     Player.GetArmorPenetration<MeleeDamageClass>() += 15;
+                }
+            }
+            if (exoMechLore)
+            {
+                if (CalamityInheritanceLists.exoDraedibsArsenalWeapon?.Contains(item.type) ?? false)
+                {
+                    draedonsWeaponboost = true;
                 }
             }
         }
@@ -860,7 +869,11 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
             }
-            //克希洛克的相关buff
+            if(draedonsWeaponboost)
+            {
+                Main.NewText("draedonsWeaponboost增伤开启");
+                Player.GetDamage<GenericDamageClass>() *= 1.5f;
+            }
         }
 
         #endregion

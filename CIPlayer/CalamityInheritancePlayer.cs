@@ -117,6 +117,8 @@ namespace CalamityInheritance.CIPlayer
         public bool corruptionLore = false;//
         public bool crimsonLore = false;//
         public bool underworldLore = false;
+        public bool exoMechLore = false;//星三王传颂
+        public bool draedonsWeaponboost = false;//星三王武器加强
         #endregion
         #region Buffs
         public bool armorShattering = false;
@@ -312,6 +314,8 @@ namespace CalamityInheritance.CIPlayer
             corruptionLore = false;
             crimsonLore = false;
             underworldLore = false;
+            exoMechLore = false;//星三王传颂
+            draedonsWeaponboost = false;//星三王武器加强
             #endregion
             #region Buffs
             armorShattering = false;

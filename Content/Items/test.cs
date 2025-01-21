@@ -10,6 +10,8 @@ using CalamityMod;
 using CalamityMod.Projectiles.Typeless;
 using CalamityInheritance.System;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Melee;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -42,18 +44,6 @@ namespace CalamityInheritance.Content.Items
 
         public override bool? UseItem(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            if (player.altFunctionUse == 2)
-            {
-                CIMusicEventSystem.PlayedEvents.Add("YharonDefeated");
-                Main.NewText("r");
-            }
-            else
-            {
-                CIMusicEventSystem.PlayedEvents.Remove("YharonDefeated");
-                Main.NewText("l");
-            }
             return base.CanUseItem(player);
         }
     }

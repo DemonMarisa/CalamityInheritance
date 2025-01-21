@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().SCalLore = true;
+                player.CalamityInheritance().exoMechLore = true;
             }
         }
         public override void AddRecipes()
