@@ -1,39 +1,70 @@
 Armageddon: {
-	DisplayName: Armageddon
-	Tooltip: ""
+	DisplayName: Armageddon Doll Furniture
+	Tooltip:	
+		'''
+		Used to activate Armageddon Mode, which is literally no-hit mode in the early days of Calamity
+		Now it is just for decoration
+		'''
 }
 
 BloodIdol: {
-	DisplayName: Blood Idol
-	Tooltip: ""
+	DisplayName: Blood Idol Furniture
+	Tooltip:	
+		'''
+		Used to summon Blood Moon, but removed due to Blood Tear's addition
+		'''
 }
 
 Death: {
-	DisplayName: Death
-	Tooltip: ""
+	DisplayName: Death Totem Furniture
+	Tooltip:
+		'''
+		Used to activate Death Mode, removed due to Difficulty Indicator was introduced
+		Now it is just for decoration
+		'''
 }
 
 DefiledRune: {
-	DisplayName: Defiled Rune
-	Tooltip: ""
+	DisplayName: Defiled Rune Furniture
+	Tooltip:
+		'''
+		Used to activate Defiled Mode, which disables all the wings ability
+		Now it is just for decoration
+		'''
 }
 
 IronHeart: {
-	DisplayName: Iron Heart
-	Tooltip: ""
+	DisplayName: Iron Heart Furniture
+	Tooltip:
+		'''
+		Used to activate Iron Heart, which disables your life regeneration
+		Now it is just for decoration
+		'''
 }
 
 MLGRune: {
-	DisplayName: M L G Rune
-	Tooltip: ""
+	DisplayName: Demon Trophy Furniture
+	Tooltip:
+		'''
+		Used to be a consumable item, which will boost the spawn rates of enemies by 1.25x
+		Now it is just for decoration
+		'''
 }
 
 Revenge: {
-	DisplayName: Revenge
-	Tooltip: ""
+	DisplayName: Blood Fountain of Revengeance Furniture 
+	Tooltip:
+		'''
+		Used to activate Revengeance Mode, removed due to Difficulty Indicator was introduced
+		Now it is just for decoration
+		'''
 }
 
 Malice: {
-	DisplayName: Malice
-	Tooltip: ""
+	DisplayName: Malice Brain Furniture
+	Tooltip:
+		'''
+		Used to activate Malice Mode, which literally makes all bosses become stuipidly and cheapy hard
+		Now it is just for decoration
+		'''
 }

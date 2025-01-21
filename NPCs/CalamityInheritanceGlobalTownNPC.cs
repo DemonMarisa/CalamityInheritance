@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
 using CalamityMod.NPCs.TownNPCs;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs

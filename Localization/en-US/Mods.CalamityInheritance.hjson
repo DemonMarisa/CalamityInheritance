@@ -123,7 +123,11 @@ Configs: {
 
 		CustomShimmer: {
 			Label: Custom Shimmer
-			Tooltip: ""
+			Tooltip:	
+			 	'''
+				Determins all shimmer method for mod items
+				Disables will enbales recipe for them
+				'''
 		}
 	}
 }
