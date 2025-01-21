@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,10 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MageWulfrumHoodLegacy>()] = ModContent.ItemType<ANewWulfrumHood>();
+            }
         }
 
         public override void SetDefaults()
@@ -23,7 +28,11 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            bool wulLegacy = body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            bool wulNew = body.type == ModContent.ItemType<ANewWulfrumArmor>() && legs.type == ModContent.ItemType<ANewWulfrumLeggings>();
+            bool wullegacynew = body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<ANewWulfrumLeggings>();
+            bool wulnewlegacy = body.type == ModContent.ItemType<ANewWulfrumArmor>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            return wulLegacy || wulNew || wullegacynew || wulnewlegacy;
         }
 
         public override void UpdateArmorSet(Player player)

@@ -55,7 +55,5 @@ namespace CalamityInheritance.Content.Items.Accessories
             );
             return false;
         }
-
-        public override 
     }
 }

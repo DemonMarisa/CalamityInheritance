@@ -18,6 +18,14 @@ namespace CalamityInheritance.Content.Items.Accessories
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
 
+        public override void SetStaticDefaults()
+        {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidofExtinction>()] = ModContent.ItemType<VoidofExtinctionLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidofExtinctionLegacy>()] = ModContent.ItemType<VoidofExtinction>();
+            }
+        }
         public override void SetDefaults()
         {
             Item.width = 26;
