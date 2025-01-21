@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.CodeAnalysis.CSharp;
@@ -22,12 +23,14 @@ namespace CalamityInheritance
         public static RecipeGroup PhantasmalFuryRecipeGroup;
         public static RecipeGroup HeliumFlashRecipeGroup;
         public static RecipeGroup WoodSwordRecipeGroup;
+        public static RecipeGroup ExoTropyGroup;
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
             PhantasmalFuryRecipeGroup = null;
             HeliumFlashRecipeGroup = null;
             WoodSwordRecipeGroup = null;
+            ExoTropyGroup = null;
         }
         public override void AddRecipeGroups()
         {
@@ -45,23 +48,25 @@ namespace CalamityInheritance
             WoodSwordRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.WoodenSword)}",
                                                    ItemID.WoodenSword,
                                                    ItemID.AshWoodSword,
-                                                   ItemID.,
-                                                   ItemID.WoodenSword,
-                                                   ItemID.WoodenSword,
-                                                   ItemID.WoodenSword,
-                                                   ItemID.WoodenSword,
+                                                   ItemID.BorealWoodSword,
+                                                   ItemID.EbonwoodSword,
+                                                   ItemID.ShadewoodSword,
+                                                   ItemID.PearlwoodSword,
+                                                   ItemID.PalmWoodSword,
                                                    ModContent.ItemType<Basher>());
+
+            ExoTropyGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<AresTrophy>())}",
+                ModContent.ItemType<ThanatosTrophy>(), 
+                ModContent.ItemType<ApolloTrophy>(),
+                ModContent.ItemType<ArtemisTrophy>(),
+                ModContent.ItemType<AresTrophy>());
 
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalFury", PhantasmalFuryRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyHeliumFlash", HeliumFlashRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyWoodenSword", WoodSwordRecipeGroup);
-        }
-
-        public void ItemTrain()
-        {
-            
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyExoTropy", ExoTropyGroup);
         }
     }
 }

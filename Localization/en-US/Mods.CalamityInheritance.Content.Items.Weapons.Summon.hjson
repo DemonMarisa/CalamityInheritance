@@ -23,3 +23,8 @@ WulfrumControllerOld: {
 	Tooltip: Summons a wulfrum droid to fight for you
 	DisplayName: Wulfrum Controller Old
 }
+
+CosmicImmaterializerOld: {
+	DisplayName: Cosmic Immaterializer Old
+	Tooltip: ""
+}

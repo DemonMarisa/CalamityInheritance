@@ -23,3 +23,8 @@ WulfrumControllerOld: {
 		'''
 	DisplayName: 钨钢控制器[Legacy]
 }
+
+CosmicImmaterializerOld: {
+	// DisplayName: Cosmic Immaterializer Old
+	// Tooltip: ""
+}

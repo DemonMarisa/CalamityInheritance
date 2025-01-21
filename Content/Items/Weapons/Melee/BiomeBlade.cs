@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.WoodenSword).
+                AddRecipeGroup("CalamityInheritance:AnyWoodenSword").
                 AddIngredient(ItemID.DirtBlock, 20).
                 AddIngredient(ItemID.SandBlock, 20).
                 AddIngredient(ItemID.IceBlock, 20). //intentionally not any ice

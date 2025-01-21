@@ -1,44 +1,49 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
 using CalamityMod;
-using Terraria.Audio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class Supernovaold : RogueWeapon, ILocalizedModType
+    public class Celestusold : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
-        public static readonly SoundStyle ExplosionSound = new("CalamityMod/Sounds/Item/SupernovaBoom") { Volume = 0.8f };
         public override void SetDefaults()
         {
-            Item.width = 34;
-            Item.height = 36;
-            Item.damage = 675;
+            Item.damage = 280;
+            Item.knockBack = 6f;
+            Item.useAnimation = Item.useTime = 20;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.autoReuse = true;
+            Item.shootSpeed = 25f;
+            Item.shoot = ModContent.ProjectileType<CelestusBoomerang>();
+
+            Item.width = 106;
+            Item.height = 94;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.UseSound = SoundID.Item1;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = 24;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 24;
-            Item.knockBack = 8f;
-            Item.UseSound = SoundID.Item15;
-            Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.shoot = ModContent.ProjectileType<SupernovaBombold>();
-            Item.shootSpeed = 16f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
-        public override float StealthDamageMultiplier => 1.08f;
+        public override float StealthDamageMultiplier => 0.8f;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -53,15 +58,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/SupernovaoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/CelestusoldGlow").Value);
         }
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<SealedSingularity>().
-                AddIngredient<StarofDestruction>().
-                AddIngredient<TotalityBreakers>().
-                AddIngredient<BallisticPoisonBomb>().
+                AddIngredient<ElementalDisk>().
+                AddIngredient<MoltenAmputator>().
+                AddIngredient<SubductionSlicer>().
+                AddIngredient<EnchantedAxe>().
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();

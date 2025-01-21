@@ -81,3 +81,8 @@ WulfrumKnifeOld: {
 	Tooltip: ""
 	DisplayName: Wulfrum Knife Old
 }
+
+Celestusold: {
+	DisplayName: Celestusold
+	Tooltip: ""
+}

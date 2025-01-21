@@ -50,7 +50,7 @@ namespace CalamityInheritance.CICooldowns
             base.DrawExpanded(spriteBatch, position, opacity, scale);
 
             float Xoffset = instance.timeLeft > 9 ? -10f : -5;
-            DrawBorderStringEightWay(spriteBatch, FontAssets.MouseText.Value, instance.timeLeft.ToString(), position + new Vector2(Xoffset, 4) * scale, Color.Lerp(ringColorLerpStart, Color.DarkGreen, 1 - instance.Completion), Color.Black, scale);
+            DrawBorderStringEightWay(spriteBatch, FontAssets.MouseText.Value, instance.timeLeft.ToString(), position + new Vector2(Xoffset, 4) * scale, Color.Lerp(ringColorLerpEnd, Color.ForestGreen, 1 - instance.Completion), Color.Black, scale);
         }
 
         public override void DrawCompact(SpriteBatch spriteBatch, Vector2 position, float opacity, float scale)

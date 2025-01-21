@@ -29,5 +29,10 @@ Mods: {
 			MLGRuneTiles: 恶魔证章
 			RevengeTiles: 复仇血泉
 		}
+
+		Projectiles: {
+			// CosmicBlastBigOld.DisplayName: Cosmic Blast Big Old
+			// CosmicBlastOld.DisplayName: Cosmic Blast Old
+		}
 	}
 }

@@ -82,3 +82,8 @@ WulfrumKnifeOld: {
 	Tooltip: 比板砖更强
 	DisplayName: 钨钢飞刀[Legacy]
 }
+
+Celestusold: {
+	// DisplayName: Celestusold
+	// Tooltip: ""
+}

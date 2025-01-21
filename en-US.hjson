@@ -29,5 +29,10 @@ Mods: {
 			MLGRuneTiles: MLGRuneTiles
 			RevengeTiles: RevengeTiles
 		}
+
+		Projectiles: {
+			CosmicBlastBigOld.DisplayName: Cosmic Blast Big Old
+			CosmicBlastOld.DisplayName: Cosmic Blast Old
+		}
 	}
 }

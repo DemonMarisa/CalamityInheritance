@@ -284,6 +284,9 @@ namespace CalamityInheritance.NPCs
                 case NPCID.SeaSnail:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SeaShell>(), 2, 1));
                     break;
+                case NPCID.DarkCaster:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientShiv>(), 50, 25));
+                    break;
                 #endregion
 
                 #region LoreItems

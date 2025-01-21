@@ -224,6 +224,7 @@ namespace CalamityInheritance.CIPlayer
         #region Summon
         public bool MagicHatOld = false;
         public bool MidnnightSunBuff = false;
+        public bool cosmicEnergy = false;
         #endregion
         #region ResetEffects
         public override void ResetEffects()
@@ -372,6 +373,7 @@ namespace CalamityInheritance.CIPlayer
             MagicHatOld = false;
             MidnnightSunBuff = false;
             reaverSummonerOrb = false;
+            cosmicEnergy = false;
             #endregion
             #region Texture
             if (TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] != null)

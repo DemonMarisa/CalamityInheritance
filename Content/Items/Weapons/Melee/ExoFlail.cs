@@ -29,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         private int hitCount = 0;
         public override void SetDefaults()
         {
-            Item.width = 76;
-            Item.height = 82;
+            Item.width = 54;
+            Item.height = 90;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.damage = 3000;
             Item.knockBack = 9f;

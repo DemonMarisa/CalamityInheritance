@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetDefaults()
         {
             Item.width = 72;
-            Item.damage = 320;
+            Item.damage = 60;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
