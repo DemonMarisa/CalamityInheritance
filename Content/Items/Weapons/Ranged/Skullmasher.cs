@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
             Item.useAmmo = 97;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.Calamity().canFirePointBlankShots = true;
         }
 

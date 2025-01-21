@@ -65,8 +65,11 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalFury", PhantasmalFuryRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyHeliumFlash", HeliumFlashRecipeGroup);
-            RecipeGroup.RegisterGroup("CalamityInheritance:AnyWoodenSword", WoodSwordRecipeGroup);
-            RecipeGroup.RegisterGroup("CalamityInheritance:AnyExoTropy", ExoTropyGroup);
+        }
+
+        public void ItemTrain()
+        {
+            
         }
     }
 }

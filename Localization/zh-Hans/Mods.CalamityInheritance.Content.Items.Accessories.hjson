@@ -131,6 +131,11 @@ DashAccessories: {
 			冲刺时会在轨迹上留下追踪镰刀
 			'''
 	}
+
+	AncientStatisBeltofCursedStatis: {
+		// DisplayName: Ancient Statis Beltof Cursed Statis
+		// Tooltip: ""
+	}
 }
 
 DeificAmuletLegacy: {
@@ -338,4 +343,25 @@ TheAbsorberOld: {
 		增加5%伤害减免
 		你会吸收敌人的一部分伤害并治疗自己
 		'''
+}
+
+AncientCotBG: {
+	// DisplayName: Ancient Core of the Blood God
+	/* Tooltip:
+		'''
+		5% increased damage reduction, 10% increased damage
+		Halves the contact damage, this effect has 20 seconds cooldown
+		15% increased damage if you are below 100 defense
+		''' */
+}
+
+AncientReaperToothNecklace: {
+	// DisplayName: Ancient Reaper Tooth Necklace
+	/* Tooltip:
+		'''
+		+100 armor penetration
+		25% increased damage and critical strike chance
+		Your damage reduction and defense will be reduced by a tentn.
+		'I don't think this should exist...'
+		''' */
 }

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -49,7 +50,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient(ModContent.ItemType<AuguroftheElements>()).AddIngredient(ModContent.ItemType<EventHorizon>()).AddIngredient(ModContent.ItemType<TearsofHeaven>()).AddIngredient(ModContent.ItemType<MiracleMatter>()).AddTile(ModContent.TileType<DraedonsForge>()).Register();
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<AuguroftheElements>())
+            .AddIngredient(ModContent.ItemType<EventHorizon>())
+            .AddIngredient(ModContent.ItemType<TearsofHeaven>())
+            .AddIngredient(ModContent.ItemType<MiracleMatter>())
+            .AddTile(ModContent.TileType<DraedonsForge>()).
+            Register();
+
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<AuguroftheElements>())
+            .AddIngredient(ModContent.ItemType<EventHorizon>())
+            .AddIngredient(ModContent.ItemType<TearsofHeaven>())
+            .AddIngredient<AncientMiracleMatter>()
+            .AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter)
+            .AddTile(ModContent.TileType<DraedonsForge>()).
+            Register();
         }
     }
 }

@@ -90,12 +90,12 @@ ReaverSummonSetBuff: {
 
 AncientXerocMadness: {
 	// DisplayName: Ancient Xeroc Madness
-	// Description: Mods.CalamityInheritance.Buffs.AncientXerocMadness.Description
+	// Description: The sensation of pain makes your blood boil
 }
 
 AncientXerocShame: {
 	// DisplayName: Ancient Xeroc Shame
-	// Description: Mods.CalamityInheritance.Buffs.AncientXerocShame.Description
+	// Description: Declining physical state leaves you feeling helpless
 }
 
 CosmicEnergyOld: {

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
@@ -99,6 +100,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddIngredient(ModContent.ItemType<UltraLiquidator>()).
             AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
             AddIngredient(ModContent.ItemType<MiracleMatter>()).
+            AddTile(ModContent.TileType<DraedonsForge>()).
+            Register();
+
+            CreateRecipe().
+            AddRecipeGroup("CalamityInheritance:AnyElementalRay").
+            AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+            AddIngredient(ModContent.ItemType<ArchAmaryllis>()).
+            AddIngredient(ModContent.ItemType<AsteroidStaff>()).
+            AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
+            AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+            AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
+            AddIngredient<AncientMiracleMatter>().
+            AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
             AddTile(ModContent.TileType<DraedonsForge>()).
             Register();
         }

@@ -12,6 +12,7 @@ using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -74,6 +75,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<EclipsesFall>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<Wrathwing>().
+                AddIngredient<ProfanedPartisan>().
+                AddIngredient<RealityRupture>().
+                AddIngredient<PhantasmalRuin>().
+                AddIngredient<EclipsesFall>().
+                AddIngredient<TarragonThrowingDart>(500).
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

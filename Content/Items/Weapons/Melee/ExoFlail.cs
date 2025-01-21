@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -75,6 +76,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<ClamCrusher>().
                 AddIngredient<BallOFugu>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+
+             CreateRecipe().
+                AddIngredient<DragonPow>().
+                AddIngredient<CrescentMoon>().
+                AddIngredient<Mourningstar>().
+                AddIngredient<ClamCrusher>().
+                AddIngredient<BallOFugu>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

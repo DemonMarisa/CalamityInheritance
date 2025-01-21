@@ -6,6 +6,8 @@ using Terraria;
 using CalamityMod;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -25,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 5f;
             Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
+            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.UseSound = SoundID.Item31;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.BulletHighVelocity;

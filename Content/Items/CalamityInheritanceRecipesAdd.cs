@@ -49,25 +49,16 @@ using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using VividClarity = CalamityMod.Items.Weapons.Magic.VividClarity;
 using VoidVortex = CalamityMod.Items.Weapons.Magic.VoidVortex;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using ReLogic.Peripherals.RGB;
-using CalamityMod.Projectiles.Summon;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Projectiles.Pets;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Armor.Demonshade;
-using CalamityMod.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityMod.Items.Dyes;
 using CalamityModMusic.Items.Placeables;
 using CalamityMod.Items.Tools.ClimateChange;
 using CalamityInheritance.Content.Items.Tools;
-using CalamityInheritance.Content.Items.Potions;
-using Steamworks;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -82,11 +73,55 @@ namespace CalamityInheritance.Content.Items
     //recipe.AddTile(ModContent.TileType<CosmicAnvil>());
 
     //recipe.Register();
+
+    //Scarlet：几乎为所有大面积的玩意合成添加封装成了不同类型的函数。
+    //同时使旧奇迹物质支持所有星流物品
     public class CalamityInheritanceRecipesAdd : ModSystem
     {
         public override void AddRecipes()
         {
+            ExoWeaponTrain();//嘟嘟嘟，星流武器开火车咯！
+            AllAuricStuffTrain();//金源物品火车
+            LegendaryItemTrain();//传奇物品火车
+            AllShadowSpecTrain();//魔影武器火车
+            AllShadowSpecCustomTrain();//魔影特殊材料合成火车
+
+
             #region WeaponsConvertandrecipeadd
+            // Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
+            //     AddIngredient<StellarContempt>().
+            //     AddIngredient<CosmiliteBar>(10).
+            //     AddTile<DraedonsForgeTiles>().
+            //     Register();
+
+            // Recipe.Create(ModContent.ItemType<StellarContempt>()).
+            //     AddIngredient<FallenPaladinsHammer>().
+            //     AddIngredient<GalacticaSingularity>(5).
+            //     AddIngredient(ItemID.PaladinsHammer).
+            //     AddTile<DraedonsForgeTiles>().
+            //     Register();
+
+            // Recipe.Create(ModContent.ItemType<FallenPaladinsHammer>()).
+            //     AddIngredient<Pwnagehammer>().
+            //     AddIngredient<AshesofCalamity>(5).
+            //     AddIngredient<ScoriaBar>(5).
+            //     AddTile<DraedonsForgeTiles>().
+            //     Register();
+            //todo:我不知道你这一段啥意思，反正这几个锤子合成表纯乱来了。用月后的夜明锭合成月前的锤子我是第一次见
+            //甚至还有用嘉登熔炉合成全部锤子的设定的，夸张哦
+            //要是有意为之的话就把我下面加的这一大段注释掉吧
+            Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
+                AddIngredient<StellarContemptOld>().
+                AddIngredient<CosmiliteBar>(10).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<StellarContempt>()).
+                AddIngredient<FallenPaladinsHammerOld>().
+                AddIngredient<GalacticaSingularity>(5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
             Recipe.Create(ModContent.ItemType<Murasama>()).
                 AddIngredient(ModContent.ItemType<MurasamaNeweffect>()).
                 Register();
@@ -107,15 +142,7 @@ namespace CalamityInheritance.Content.Items
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 
-            Recipe.Create(ModContent.ItemType<Exoblade>()).
-                AddIngredient<TerratomereOld>().
-                AddIngredient<AnarchyBlade>().
-                AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
-                AddIngredient<StellarStriker>().
-                AddIngredient<MiracleMatter>().
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
+            
 
             Recipe.Create(ModContent.ItemType<DraedonPowerCell>(), 333).
                 AddIngredient(ModContent.ItemType<DubiousPlating>(), 2).
@@ -145,46 +172,684 @@ namespace CalamityInheritance.Content.Items
                 AddTile(TileID.MythrilAnvil).
                 Register();
             #endregion
-            #region Demonshade  Weapon
 
+            #region Accessories
+            //辐辉
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
+                AddIngredient(ModContent.ItemType<InfectedJewel>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
+                AddIngredient(ModContent.ItemType<InfectedJewel>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(),4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
+                AddIngredient(ModContent.ItemType<AstralArcanum>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
+                AddIngredient(ModContent.ItemType<AstralArcanum>()).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+                AddIngredient(ModContent.ItemType<AuricBar>(),5).
+                AddTile<CosmicAnvil>().
+                Register();
+            //神壁
+            Recipe.Create(ModContent.ItemType<RampartofDeities>()).
+                AddIngredient(ItemID.FrozenShield).
+                AddIngredient<DeificAmuletLegacy>().
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TracersSeraph>()).
+                AddIngredient<UtensilPoker>().
+                AddIngredient(ItemID.LifeCrystal).
+                AddIngredient(ItemID.Bone, 92).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TheSponge>()).
+                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
+                AddIngredient(ModContent.ItemType<TheAbsorberOld>()).
+                AddIngredient<MysteriousCircuitry>(10).
+                AddIngredient<DubiousPlating>(20).
+                AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15).
+                AddTile<CosmicAnvil>().
+                Register();
+            #endregion
+            #region placeable
+
+
+            Recipe.Create(ModContent.ItemType<ThaumaticChair>()).
+                AddIngredient<AbyssChair>().
+                AddIngredient<AcidwoodChair>().
+                AddIngredient<AncientChair>().
+                AddIngredient<AshenChair>().
+                AddIngredient<BotanicChair>().
+                AddIngredient<CosmiliteChair>().
+                AddIngredient<EutrophicChair>().
+                AddIngredient<ExoChair>().
+                AddIngredient<MonolithChair>().
+                AddIngredient<SacrilegiousChair>().
+                AddIngredient<OtherworldlyChair>().
+                AddIngredient<PlaguedPlateChair>().
+                AddIngredient<ProfanedChair>().
+                AddIngredient<SilvaChair>().
+                AddIngredient<StatigelChair>().
+                AddIngredient<StratusChair>().
+                AddIngredient<VoidChair>().
+                AddIngredient<WulfrumChair>().
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+            Register();
+
+            #endregion
+            
+            #region materials
+
+            Recipe.Create(ModContent.ItemType<MiracleMatter>()).
+                AddIngredient<ExoPrism>(5).
+                AddIngredient<AuricBarold>().
+                AddIngredient<LifeAlloy>().
+                AddIngredient<CoreofCalamity>().
+                AddIngredient<AscendantSpiritEssence>().
+                AddIngredient<GalacticaSingularity>(3).
+                AddTile<DraedonsForgeTiles>().
+                Register();
+
+
+            Recipe.Create(ModContent.ItemType<PlasmaDriveCore>()).
+                AddIngredient(ModContent.ItemType<DubiousPlating>(), 5).
+                AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 10).
+                AddRecipeGroup("AnyMythrilBar", 10).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<SuspiciousScrap>()).
+                AddRecipeGroup("AnyCopperBar", 10).
+                AddRecipeGroup("IronBar", 10).
+                AddTile(TileID.Anvils).
+                Register();
+            #endregion
+            #region Item
+            Recipe.Create(ItemID.TerraBlade).
+                AddIngredient(ModContent.ItemType<TrueBloodyEdge>()).
+                AddIngredient(ItemID.TrueExcalibur).
+                AddIngredient(ModContent.ItemType<LivingShard>(),7).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            Recipe.Create(ItemID.Zenith).
+                AddIngredient(ItemID.TerraBlade).
+                AddIngredient(ItemID.Meowmere).
+                AddIngredient(ItemID.StarWrath).
+                AddIngredient(ItemID.InfluxWaver).
+                AddIngredient(ItemID.TheHorsemansBlade).
+                AddIngredient(ItemID.Seedler).
+                AddIngredient(ItemID.Starfury).
+                AddIngredient(ItemID.BeeKeeper).
+                AddIngredient(ItemID.EnchantedSword).
+                AddIngredient(ItemID.CopperShortsword).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+            #endregion
+            
+            #region Tools
+            Recipe.Create(ModContent.ItemType<Cosmolight>()).
+                AddIngredient(ModContent.ItemType<Moonlight>()).
+                AddIngredient(ModContent.ItemType<Daylight>()).
+                AddIngredient(ItemID.FallenStar).
+                AddTile(TileID.Anvils).
+                Register();
+            #endregion
+        }
+        public static void ExoWeaponTrain()
+        {
+            #region ExoWeapons
+            //星流之刃
+            Recipe.Create(ModContent.ItemType<Exoblade>()).
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<MiracleMatter>().
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+            
+            Recipe.Create(ModContent.ItemType<Exoblade>()).
+                AddIngredient<Terratomere>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Exoblade>()).
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+
+            //超级诺瓦天体球
+            Recipe.Create(ModContent.ItemType<Supernova>()).
+                AddIngredient<SealedSingularity>().
+                AddIngredient<StarofDestruction>().
+                AddIngredient<TotalityBreakers>().
+                AddIngredient<BallisticPoisonBomb>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+            
+            //星神之杀
+            Recipe.Create(ModContent.ItemType<Celestus>()).
+                AddIngredient<ElementalDisk>().
+                AddIngredient<MoltenAmputator>().
+                AddIngredient<SubductionSlicer>().
+                AddIngredient<EnchantedAxe>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+
+            //天堂之风
+            Recipe.Create(ModContent.ItemType<HeavenlyGale>()).
+                AddIngredient<PlanetaryAnnihilation>().
+                AddIngredient<TelluricGlare>().
+                AddIngredient<ClockworkBow>().
+                AddIngredient<TheBallista>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+            
+            //星火解离者
+            Recipe.Create(ModContent.ItemType<Photoviscerator>()).
+                AddIngredient<ElementalEruption>().
+                AddIngredient<DeadSunsWind>().
+                AddIngredient<HalleysInferno>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+            
+            //磁极异变
+            Recipe.Create(ModContent.ItemType<MagnomalyCannon>()).
+                AddIngredient<ThePack>().
+                AddIngredient<ScorchedEarth>().
+                AddIngredient(ItemID.ElectrosphereLauncher).
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+            
+            //去他妈的法师板砖
+            Recipe.Create(ModContent.ItemType<SubsumingVortex>()).
+                AddIngredient<AuguroftheElements>().
+                AddIngredient<EventHorizon>().
+                AddIngredient<TearsofHeaven>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+                
+            //星流大棒
+            Recipe.Create(ModContent.ItemType<VividClarity>()).
+                AddRecipeGroup("CalamityInheritance:AnyElementalRay").
+                AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
+                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+                AddIngredient(ModContent.ItemType<MiracleMatter>()).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<VividClarity>()).
+                AddRecipeGroup("CalamityInheritance:AnyElementalRay").
+                AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
+                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
+
+            //宇宙之灵
+            Recipe.Create(ModContent.ItemType<CosmicImmaterializer>()).
+                AddIngredient<ElementalAxe>().
+                AddIngredient<EtherealSubjugator>().
+                AddIngredient<Cosmilamp>().
+                AddIngredient<CalamarisLament>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                Register();
+            
+            Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).
+                AddIngredient(ItemID.TrueExcalibur).
+                AddIngredient<Orderbringer>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddIngredient<AshesofAnnihilation>(5).
+                AddTile<DraedonsForgeTiles>().
+                Register();
+            #endregion
+        }
+        public static void LegendaryItemTrain()
+        {
+            #region LegendaryItems
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+
+                Recipe.Create(ModContent.ItemType<ConclaveCrossfire>()).
+                    AddIngredient(ItemID.FragmentVortex).
+                    AddIngredient<LoreGolem>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
+                //庇护之刃
+                Recipe.Create(ModContent.ItemType<AegisBlade>()).
+                    AddIngredient<LoreGolem>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<AegisBlade>()).
+                    AddIngredient<KnowledgeGolem>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //海爵剑
+                Recipe.Create(ModContent.ItemType<BrinyBaron> ()).
+                    AddIngredient<LoreDukeFishron>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<BrinyBaron>()).
+                    AddIngredient<KnowledgeDukeFishron>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //宙寒弹刃
+                Recipe.Create(ModContent.ItemType<CosmicDischarge> ()).
+                    AddIngredient<LoreDevourerofGods>().
+                    AddTile(ModContent.TileType<CosmicAnvil>()).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<CosmicDischarge>()).
+                    AddIngredient<KnowledgeDevourerofGods>().
+                    AddTile(ModContent.TileType<CosmicAnvil>()).
+                    Register();
+                //叶流
+                Recipe.Create(ModContent.ItemType<BlossomFlux> ()).
+                    AddIngredient<LorePlantera>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<BlossomFlux>()).
+                    AddIngredient<KnowledgePlantera>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //纯原
+                Recipe.Create(ModContent.ItemType<PristineFury>()).
+                    AddIngredient<LoreProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<PristineFury>()).
+                    AddIngredient<KnowledgeProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
+                //海灼
+                Recipe.Create(ModContent.ItemType<SeasSearing>()).
+                    AddIngredient<LoreAquaticScourge>().
+                    AddTile(TileID.Anvils).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<SeasSearing>()).
+                    AddIngredient<KnowledgeAquaticScourge>().
+                    AddTile(TileID.Anvils).
+                    Register();
+                //维苏威阿斯
+                Recipe.Create(ModContent.ItemType<Vesuvius>()).
+                    AddIngredient(ItemID.DefenderMedal).
+                    AddIngredient<ScoriaBar>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<Vesuvius>()).
+                    AddIngredient(ItemID.DefenderMedal).
+                    AddIngredient<ScoriaBar>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //魔君水晶
+                Recipe.Create(ModContent.ItemType<YharimsCrystal>()).
+                    AddIngredient<LoreYharon>().
+                    AddTile(ModContent.TileType<CosmicAnvil>()).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<YharimsCrystal>()).
+                    AddIngredient<KnowledgeYharon>().
+                    AddTile(ModContent.TileType<CosmicAnvil>()).
+                    Register();
+                //冰寒神性
+                Recipe.Create(ModContent.ItemType<GlacialEmbrace> ()).
+                    AddIngredient<LoreArchmage>().
+                    AddTile(TileID.Anvils).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<GlacialEmbrace>()).
+                    AddIngredient<KnowledgeCryogen>().
+                    AddTile(TileID.Anvils).
+                    Register();
+                //狮源流星
+                Recipe.Create(ModContent.ItemType<LeonidProgenitor> ()).
+                    AddIngredient<LoreAstrumAureus>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<LeonidProgenitor>()).
+                    AddIngredient<KnowledgeAstrumAureus>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //孔雀翎
+                Recipe.Create(ModContent.ItemType<Malachite>()).
+                    AddIngredient<LorePlaguebringerGoliath>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<Malachite>()).
+                    AddIngredient<KnowledgePlaguebringerGoliath>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+                //归一
+                Recipe.Create(ModContent.ItemType<TheCommunity>()).
+                    AddIngredient<LoreLeviathanAnahita>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+
+                Recipe.Create(ModContent.ItemType<TheCommunity>()).
+                    AddIngredient<KnowledgeLeviathanAnahita>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+            }
+            #endregion
+        }
+
+        public static void AllAuricStuffTrain()
+        {
+            #region AuricSet
+            Recipe.Create(ModContent.ItemType<AuricTeslaBodyArmor>()).
+                AddIngredient<GodSlayerChestplate>().
+                AddIngredient<BloodflareBodyArmor>().
+                AddIngredient<TarragonBreastplate>().
+                AddIngredient<AuricBarold>(2).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaBodyArmor>()).
+                AddIngredient<SilvaArmor>().
+                AddIngredient<BloodflareBodyArmor>().
+                AddIngredient<TarragonBreastplate>().
+                AddIngredient<AuricBarold>(2).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaCuisses>()).
+                AddIngredient<GodSlayerLeggings>().
+                AddIngredient<BloodflareCuisses>().    
+                AddIngredient<TarragonLeggings>().    
+                AddIngredient(ItemID.FlyingCarpet).
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaCuisses>()).
+                AddIngredient<SilvaLeggings>().
+                AddIngredient<BloodflareCuisses>().
+                AddIngredient<TarragonLeggings>().
+                AddIngredient(ItemID.FlyingCarpet).
+                AddIngredient<AuricBarold>(2).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaHoodedFacemask>()).
+                AddIngredient<GodSlayerHeadRanged>().
+                AddIngredient<BloodflareHeadRanged>().
+                AddIngredient<TarragonHeadRanged>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaPlumedHelm>()).
+                AddIngredient<GodSlayerHeadRogue>().
+                AddIngredient<BloodflareHeadRogue>().
+                AddIngredient<TarragonHeadRogue>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaRoyalHelm>()).
+                AddIngredient<GodSlayerHeadMelee>().
+                AddIngredient<BloodflareHeadMelee>().
+                AddIngredient<TarragonHeadMelee>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaSpaceHelmet>()).
+                AddIngredient<SilvaHeadSummon>().
+                AddIngredient<BloodflareHeadSummon>().
+                AddIngredient<TarragonHeadSummon>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricTeslaWireHemmedVisage>()).
+                AddIngredient<SilvaHeadMagic>().
+                AddIngredient<BloodflareHeadMagic>().
+                AddIngredient<TarragonHeadMagic>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricToilet>()).
+                AddIngredient<BotanicChair>().
+                AddIngredient<BotanicChair>().
+                AddIngredient<SilvaChair>().
+                AddIngredient<AuricBarold>().
+                AddTile<CosmicAnvil>().
+                Register();
+            #endregion
+            #region Auric Weapon
+            Recipe.Create(ModContent.ItemType<ArkoftheCosmos>()).
+                AddIngredient(ModContent.ItemType<ArkoftheElements>()).
+                AddIngredient(ModContent.ItemType<FourSeasonsGalaxia>()).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Seraphim>()).
+                AddIngredient(ModContent.ItemType<ShatteredSun>()).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AcesHigh>()).
+                AddIngredient(ItemID.Revolver).
+                AddIngredient(ModContent.ItemType<ClaretCannon>()).
+                AddIngredient(ModContent.ItemType<FantasyTalisman>(),52).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AetherfluxCannon>()).
+                AddIngredient(ModContent.ItemType<NanoPurge>()).
+                AddIngredient(ModContent.ItemType<PurgeGuzzler>()).
+                AddIngredient(ModContent.ItemType<UelibloomBar>(),12).
+                AddIngredient(ModContent.ItemType<DivineGeode>(),8).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AltarOfTheAccursedItem>()).
+                AddIngredient(ModContent.ItemType<BrimstoneSlag>(),30).
+                AddIngredient(ModContent.ItemType<CoreofCalamity>()).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Ataraxia>()).
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddIngredient(ModContent.ItemType<CosmiliteBar>(),8).
+                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(),2).
+                AddIngredient(ModContent.ItemType<NightmareFuel>(),20).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DragonPow>()).
+                AddIngredient<Mourningstar>().
+                AddIngredient(ItemID.DaoofPow).
+                AddIngredient(ItemID.FlowerPow).
+                AddIngredient(ItemID.Flairon).
+                AddIngredient<BallOFugu>().
+                AddIngredient<Tumbleweed>().
+                AddIngredient<UrchinFlail>().
+                AddIngredient<YharonSoulFragment>(4).
+                AddIngredient<AuricBarold>().
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Drataliornus>()).
+                AddIngredient(ModContent.ItemType<BlossomFlux>()).
+                AddIngredient(ModContent.ItemType<EffulgentFeather>(),12).
+                AddIngredient(ModContent.ItemType<YharonSoulFragment>(),4).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DynamicPursuer>()).
+                AddIngredient(ModContent.ItemType<Eradicator>()).
+                AddIngredient(ModContent.ItemType<TrackingDisk>()).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<DynamicPursuer>()).
+                AddIngredient(ModContent.ItemType<Eradicator>()).
+                AddIngredient(ModContent.ItemType<TrackingDisk>()).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<HeliumFlash>()).
+                AddIngredient(ModContent.ItemType<VenusianTrident>()).
+                AddIngredient(ModContent.ItemType<LashesofChaos>()).
+                AddIngredient(ModContent.ItemType<ForbiddenSun>()).
+                AddIngredient(ItemID.FragmentSolar,20).
+                AddIngredient(ItemID.FragmentNebula,5).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Kingsbane>()).
+                AddIngredient(ItemID.ChainGun).
+                AddIngredient<P90>().
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<MidnightSunBeacon>()).
+                AddIngredient(ItemID.XenoStaff).
+                AddIngredient(ItemID.MoonlordTurretStaff).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<Nadir>()).
+                AddIngredient(ModContent.ItemType<ElementalLance>()).
+                AddIngredient(ModContent.ItemType<TwistingNether>(),5).
+                AddIngredient(ModContent.ItemType<DarksunFragment>(),8).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TheOracle> ()).
+                AddIngredient<BurningRevelation>().
+                AddIngredient<TheObliterator>().
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<TyrannysEnd>()).
+                AddIngredient<GoldenEagle>().
+                AddIngredient<AntiMaterielRifle>().
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<VoidVortex> ()).
+                AddIngredient<VoltaicClimax> ().
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile<CosmicAnvil>().
+                Register();
+            #endregion
+            #region AuricPlaceable
+            Recipe.Create(ModContent.ItemType<DraedonsForge>()).
+                AddIngredient(ModContent.ItemType<DraedonsForgeold>()).
+                AddIngredient(ModContent.ItemType<ExoPrism>(), 5).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<AuricQuantumCoolingCell>()).
+                AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 8).
+                AddIngredient(ModContent.ItemType<DubiousPlating>(), 8).
+                AddIngredient(ModContent.ItemType<EndothermicEnergy>(), 40).
+                AddIngredient(ModContent.ItemType<CoreofEleum>(), 6).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
+            #endregion
+        }
+
+        public static void AllShadowSpecTrain()
+        {
+            #region Demonshade  Weapon
             Recipe.Create(ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>()).
                 AddIngredient<GalaxySmasherMelee>().
                 AddIngredient(ItemID.SoulofMight, 30).
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForgeTiles>().
             Register();
-
-            Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
-                AddIngredient<StellarContempt>().
-                AddIngredient<CosmiliteBar>(10).
+            
+            Recipe.Create(ModContent.ItemType<ShadowspecBar>(),5).
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddIngredient<AuricBarold>(1).
                 AddTile<DraedonsForgeTiles>().
-                Register();
+                Register(); 
+            #endregion
+        }
 
-            Recipe.Create(ModContent.ItemType<StellarContempt>()).
-                AddIngredient<FallenPaladinsHammer>().
-                AddIngredient<GalacticaSingularity>(5).
-                AddIngredient(ItemID.PaladinsHammer).
-                AddTile<DraedonsForgeTiles>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<FallenPaladinsHammer>()).
-                AddIngredient<Pwnagehammer>().
-                AddIngredient<AshesofCalamity>(5).
-                AddIngredient<ScoriaBar>(5).
-                AddIngredient(ItemID.LunarBar).
-                AddTile<DraedonsForgeTiles>().
-                Register();
-
-            #region CalamitousEssence
-
-            Recipe.Create(ModContent.ItemType<ElementalExcalibur>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
+        public static void AllShadowSpecCustomTrain()
+        {
+         #region CalamitousEssence
             Recipe.Create(ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
@@ -336,536 +1001,14 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ModContent.ItemType<BossRushTier5MusicBox>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
-            #endregion
-            #endregion
-            #region Exo Weapon
-
-            Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddRecipeGroup("CalamityInheritance:AnyElementalRay").
-                AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
-                AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-                AddIngredient(ModContent.ItemType<UltraLiquidator>()).
-                AddIngredient(ModContent.ItemType<MiracleMatter>()).
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
-
-            #endregion
-            #region Auric Weapon
-
-            Recipe.Create(ModContent.ItemType<ArkoftheCosmos>()).
-                AddIngredient(ModContent.ItemType<ArkoftheElements>()).
-                AddIngredient(ModContent.ItemType<FourSeasonsGalaxia>()).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Seraphim>()).
-                AddIngredient(ModContent.ItemType<ShatteredSun>()).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AcesHigh>()).
-                AddIngredient(ItemID.Revolver).
-                AddIngredient(ModContent.ItemType<ClaretCannon>()).
-                AddIngredient(ModContent.ItemType<FantasyTalisman>(),52).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AetherfluxCannon>()).
-                AddIngredient(ModContent.ItemType<NanoPurge>()).
-                AddIngredient(ModContent.ItemType<PurgeGuzzler>()).
-                AddIngredient(ModContent.ItemType<UelibloomBar>(),12).
-                AddIngredient(ModContent.ItemType<DivineGeode>(),8).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AltarOfTheAccursedItem>()).
-                AddIngredient(ModContent.ItemType<BrimstoneSlag>(),30).
-                AddIngredient(ModContent.ItemType<CoreofCalamity>()).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Ataraxia>()).
-                AddIngredient(ItemID.BrokenHeroSword).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddIngredient(ModContent.ItemType<CosmiliteBar>(),8).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(),2).
-                AddIngredient(ModContent.ItemType<NightmareFuel>(),20).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<DragonPow>()).
-                AddIngredient<Mourningstar>().
-                AddIngredient(ItemID.DaoofPow).
-                AddIngredient(ItemID.FlowerPow).
-                AddIngredient(ItemID.Flairon).
-                AddIngredient<BallOFugu>().
-                AddIngredient<Tumbleweed>().
-                AddIngredient<UrchinFlail>().
-                AddIngredient<YharonSoulFragment>(4).
-                AddIngredient<AuricBarold>().
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Drataliornus>()).
-                AddIngredient(ModContent.ItemType<BlossomFlux>()).
-                AddIngredient(ModContent.ItemType<EffulgentFeather>(),12).
-                AddIngredient(ModContent.ItemType<YharonSoulFragment>(),4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<DynamicPursuer>()).
-                AddIngredient(ModContent.ItemType<Eradicator>()).
-                AddIngredient(ModContent.ItemType<TrackingDisk>()).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<DynamicPursuer>()).
-                AddIngredient(ModContent.ItemType<Eradicator>()).
-                AddIngredient(ModContent.ItemType<TrackingDisk>()).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<HeliumFlash>()).
-                AddIngredient(ModContent.ItemType<VenusianTrident>()).
-                AddIngredient(ModContent.ItemType<LashesofChaos>()).
-                AddIngredient(ModContent.ItemType<ForbiddenSun>()).
-                AddIngredient(ItemID.FragmentSolar,20).
-                AddIngredient(ItemID.FragmentNebula,5).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Kingsbane>()).
-                AddIngredient(ItemID.ChainGun).
-                AddIngredient<P90>().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<MidnightSunBeacon>()).
-                AddIngredient(ItemID.XenoStaff).
-                AddIngredient(ItemID.MoonlordTurretStaff).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Nadir>()).
-                AddIngredient(ModContent.ItemType<ElementalLance>()).
-                AddIngredient(ModContent.ItemType<TwistingNether>(),5).
-                AddIngredient(ModContent.ItemType<DarksunFragment>(),8).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<TheOracle> ()).
-                AddIngredient<BurningRevelation>().
-                AddIngredient<TheObliterator>().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<TyrannysEnd>()).
-                AddIngredient<GoldenEagle>().
-                AddIngredient<AntiMaterielRifle>().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<VoidVortex> ()).
-                AddIngredient<VoltaicClimax> ().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-            #endregion
-            #region Accessories
-            //辐辉
-            Recipe.Create(ModContent.ItemType<Radiance>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
-                AddIngredient(ModContent.ItemType<InfectedJewel>()).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Radiance>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
-                AddIngredient(ModContent.ItemType<InfectedJewel>()).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(),4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Radiance>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
-                AddIngredient(ModContent.ItemType<AstralArcanum>()).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Radiance>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpoule>()).
-                AddIngredient(ModContent.ItemType<AstralArcanum>()).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
-                AddIngredient(ModContent.ItemType<AuricBar>(),5).
-                AddTile<CosmicAnvil>().
-                Register();
-            //神壁
-            Recipe.Create(ModContent.ItemType<RampartofDeities>()).
-                AddIngredient(ItemID.FrozenShield).
-                AddIngredient<DeificAmuletLegacy>().
-                AddIngredient<AscendantSpiritEssence>(4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<TracersSeraph>()).
-                AddIngredient<UtensilPoker>().
-                AddIngredient(ItemID.LifeCrystal).
-                AddIngredient(ItemID.Bone, 92).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<TheSponge>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
-                AddIngredient(ModContent.ItemType<TheAbsorberOld>()).
-                AddIngredient<MysteriousCircuitry>(10).
-                AddIngredient<DubiousPlating>(20).
-                AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15).
-                AddTile<CosmicAnvil>().
-                Register();
-            #endregion
-            #region placeable
-
-            Recipe.Create(ModContent.ItemType<DraedonsForge>()).
-                AddIngredient(ModContent.ItemType<DraedonsForgeold>()).
-                AddIngredient(ModContent.ItemType<ExoPrism>(), 5).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricQuantumCoolingCell>()).
-                AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 8).
-                AddIngredient(ModContent.ItemType<DubiousPlating>(), 8).
-                AddIngredient(ModContent.ItemType<EndothermicEnergy>(), 40).
-                AddIngredient(ModContent.ItemType<CoreofEleum>(), 6).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<ThaumaticChair>()).
-                AddIngredient<AbyssChair>().
-                AddIngredient<AcidwoodChair>().
-                AddIngredient<AncientChair>().
-                AddIngredient<AshenChair>().
-                AddIngredient<BotanicChair>().
-                AddIngredient<CosmiliteChair>().
-                AddIngredient<EutrophicChair>().
-                AddIngredient<ExoChair>().
-                AddIngredient<MonolithChair>().
-                AddIngredient<SacrilegiousChair>().
-                AddIngredient<OtherworldlyChair>().
-                AddIngredient<PlaguedPlateChair>().
-                AddIngredient<ProfanedChair>().
-                AddIngredient<SilvaChair>().
-                AddIngredient<StatigelChair>().
-                AddIngredient<StratusChair>().
-                AddIngredient<VoidChair>().
-                AddIngredient<WulfrumChair>().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-            Register();
-
-            #endregion
-            #region AuricSet
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaBodyArmor>()).
-                AddIngredient<GodSlayerChestplate>().
-                AddIngredient<BloodflareBodyArmor>().
-                AddIngredient<TarragonBreastplate>().
-                AddIngredient<AuricBarold>(2).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaBodyArmor>()).
-                AddIngredient<SilvaArmor>().
-                AddIngredient<BloodflareBodyArmor>().
-                AddIngredient<TarragonBreastplate>().
-                AddIngredient<AuricBarold>(2).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaCuisses>()).
-                AddIngredient<GodSlayerLeggings>().
-                AddIngredient<BloodflareCuisses>().    
-                AddIngredient<TarragonLeggings>().    
-                AddIngredient(ItemID.FlyingCarpet).
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaCuisses>()).
-                AddIngredient<SilvaLeggings>().
-                AddIngredient<BloodflareCuisses>().
-                AddIngredient<TarragonLeggings>().
-                AddIngredient(ItemID.FlyingCarpet).
-                AddIngredient<AuricBarold>(2).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaHoodedFacemask>()).
-                AddIngredient<GodSlayerHeadRanged>().
-                AddIngredient<BloodflareHeadRanged>().
-                AddIngredient<TarragonHeadRanged>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaPlumedHelm>()).
-                AddIngredient<GodSlayerHeadRogue>().
-                AddIngredient<BloodflareHeadRogue>().
-                AddIngredient<TarragonHeadRogue>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaRoyalHelm>()).
-                AddIngredient<GodSlayerHeadMelee>().
-                AddIngredient<BloodflareHeadMelee>().
-                AddIngredient<TarragonHeadMelee>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaSpaceHelmet>()).
-                AddIngredient<SilvaHeadSummon>().
-                AddIngredient<BloodflareHeadSummon>().
-                AddIngredient<TarragonHeadSummon>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricTeslaWireHemmedVisage>()).
-                AddIngredient<SilvaHeadMagic>().
-                AddIngredient<BloodflareHeadMagic>().
-                AddIngredient<TarragonHeadMagic>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<AuricToilet>()).
-                AddIngredient<BotanicChair>().
-                AddIngredient<BotanicChair>().
-                AddIngredient<SilvaChair>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-            #endregion
-            #region materials
-
-            Recipe.Create(ModContent.ItemType<MiracleMatter>()).
-                AddIngredient<ExoPrism>(5).
-                AddIngredient<AuricBarold>().
-                AddIngredient<LifeAlloy>().
-                AddIngredient<CoreofCalamity>().
-                AddIngredient<AscendantSpiritEssence>().
-                AddIngredient<GalacticaSingularity>(3).
-                AddTile<DraedonsForgeTiles>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<ShadowspecBar>(),5).
-                AddIngredient<ExoPrism>(5).
-                AddIngredient<AuricBarold>(1).
-                AddTile<DraedonsForgeTiles>().
-                Register(); 
-
-            Recipe.Create(ModContent.ItemType<PlasmaDriveCore>()).
-                AddIngredient(ModContent.ItemType<DubiousPlating>(), 5).
-                AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 10).
-                AddRecipeGroup("AnyMythrilBar", 10).
-                AddTile(TileID.MythrilAnvil).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<SuspiciousScrap>()).
-                AddRecipeGroup("AnyCopperBar", 10).
-                AddRecipeGroup("IronBar", 10).
-                AddTile(TileID.Anvils).
-                Register();
-            #endregion
-            #region Item
-            Recipe.Create(ItemID.TerraBlade).
-                AddIngredient(ModContent.ItemType<TrueBloodyEdge>()).
-                AddIngredient(ItemID.TrueExcalibur).
-                AddIngredient(ModContent.ItemType<LivingShard>(),7).
-                AddTile(TileID.MythrilAnvil).
-                Register();
-
-            Recipe.Create(ItemID.Zenith).
-                AddIngredient(ItemID.TerraBlade).
-                AddIngredient(ItemID.Meowmere).
-                AddIngredient(ItemID.StarWrath).
-                AddIngredient(ItemID.InfluxWaver).
-                AddIngredient(ItemID.TheHorsemansBlade).
-                AddIngredient(ItemID.Seedler).
-                AddIngredient(ItemID.Starfury).
-                AddIngredient(ItemID.BeeKeeper).
-                AddIngredient(ItemID.EnchantedSword).
-                AddIngredient(ItemID.CopperShortsword).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-            #endregion
-            #region LegendaryItems
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
-            {
-
-                Recipe.Create(ModContent.ItemType<ConclaveCrossfire>()).
-                    AddIngredient(ItemID.FragmentVortex).
-                    AddIngredient<LoreGolem>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-                //庇护之刃
-                Recipe.Create(ModContent.ItemType<AegisBlade>()).
-                    AddIngredient<LoreGolem>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<AegisBlade>()).
-                    AddIngredient<KnowledgeGolem>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //海爵剑
-                Recipe.Create(ModContent.ItemType<BrinyBaron> ()).
-                    AddIngredient<LoreDukeFishron>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<BrinyBaron>()).
-                    AddIngredient<KnowledgeDukeFishron>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //宙寒弹刃
-                Recipe.Create(ModContent.ItemType<CosmicDischarge> ()).
-                    AddIngredient<LoreDevourerofGods>().
-                    AddTile(ModContent.TileType<CosmicAnvil>()).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<CosmicDischarge>()).
-                    AddIngredient<KnowledgeDevourerofGods>().
-                    AddTile(ModContent.TileType<CosmicAnvil>()).
-                    Register();
-                //叶流
-                Recipe.Create(ModContent.ItemType<BlossomFlux> ()).
-                    AddIngredient<LorePlantera>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<BlossomFlux>()).
-                    AddIngredient<KnowledgePlantera>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //纯原
-                Recipe.Create(ModContent.ItemType<PristineFury>()).
-                    AddIngredient<LoreProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<PristineFury>()).
-                    AddIngredient<KnowledgeProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-                //海灼
-                Recipe.Create(ModContent.ItemType<SeasSearing>()).
-                    AddIngredient<LoreAquaticScourge>().
-                    AddTile(TileID.Anvils).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<SeasSearing>()).
-                    AddIngredient<KnowledgeAquaticScourge>().
-                    AddTile(TileID.Anvils).
-                    Register();
-                //维苏威阿斯
-                Recipe.Create(ModContent.ItemType<Vesuvius>()).
-                    AddIngredient(ItemID.DefenderMedal).
-                    AddIngredient<ScoriaBar>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<Vesuvius>()).
-                    AddIngredient(ItemID.DefenderMedal).
-                    AddIngredient<ScoriaBar>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //魔君水晶
-                Recipe.Create(ModContent.ItemType<YharimsCrystal>()).
-                    AddIngredient<LoreYharon>().
-                    AddTile(ModContent.TileType<CosmicAnvil>()).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<YharimsCrystal>()).
-                    AddIngredient<KnowledgeYharon>().
-                    AddTile(ModContent.TileType<CosmicAnvil>()).
-                    Register();
-                //冰寒神性
-                Recipe.Create(ModContent.ItemType<GlacialEmbrace> ()).
-                    AddIngredient<LoreArchmage>().
-                    AddTile(TileID.Anvils).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<GlacialEmbrace>()).
-                    AddIngredient<KnowledgeCryogen>().
-                    AddTile(TileID.Anvils).
-                    Register();
-                //狮源流星
-                Recipe.Create(ModContent.ItemType<LeonidProgenitor> ()).
-                    AddIngredient<LoreAstrumAureus>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<LeonidProgenitor>()).
-                    AddIngredient<KnowledgeAstrumAureus>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //孔雀翎
-                Recipe.Create(ModContent.ItemType<Malachite>()).
-                    AddIngredient<LorePlaguebringerGoliath>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<Malachite>()).
-                    AddIngredient<KnowledgePlaguebringerGoliath>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-                //归一
-                Recipe.Create(ModContent.ItemType<TheCommunity>()).
-                    AddIngredient<LoreLeviathanAnahita>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-
-                Recipe.Create(ModContent.ItemType<TheCommunity>()).
-                    AddIngredient<KnowledgeLeviathanAnahita>().
-                    AddTile(TileID.MythrilAnvil).
-                    Register();
-            }
-            #endregion
-            #region Tools
-            Recipe.Create(ModContent.ItemType<Cosmolight>()).
-                AddIngredient(ModContent.ItemType<Moonlight>()).
-                AddIngredient(ModContent.ItemType<Daylight>()).
-                AddIngredient(ItemID.FallenStar).
-                AddTile(TileID.Anvils).
-                Register();
-            #endregion
-
-            #region Potions Recipe Blood Orb Support
             
+            Recipe.Create(ModContent.ItemType<ElementalExcalibur>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
+
+            Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).
+                AddIngredient<CalamitousEssence>().
+                Register();
             #endregion
         }
     }

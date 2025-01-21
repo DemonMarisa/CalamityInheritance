@@ -117,11 +117,6 @@ VividClarity: {
 		'''
 }
 
-VoidVortex: {
-	DisplayName: Void Vortex Legacy
-	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
-}
-
 Lazinator: {
 	DisplayName: Lazinator
 	Tooltip: Zap
@@ -130,4 +125,9 @@ Lazinator: {
 WulfrumStaff: {
 	Tooltip: Casts a slow green bolt
 	DisplayName: Wulfrum Staff
+}
+
+VoidVortexLegacy: {
+	DisplayName: Void Vortex Legacy
+	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
 }

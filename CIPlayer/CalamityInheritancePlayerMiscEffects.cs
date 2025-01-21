@@ -31,30 +31,42 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using Microsoft.Xna.Framework.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
+
+//Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
+//灾厄Player的变量名现在统一为calPlayer。本模组player的变量名统一为usPlayer
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public override void PostUpdateMiscEffects()
         {
-            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
-            // Update energy shields
+            //海绵的护盾
             CIEnergyShields();
 
-            // Misc effects, because I don't know what else to call it
+            //非常冗余的其他效果
             MiscEffects();
             //纳米技术堆叠UI
             NanoTechUI();
 
+            //Buff效果
             OtherBuffEffects();
 
-            // Standing still effects
+            //饰品数值
+            AccessoriesStatsFunc();
+
+            //站立不动时玩家可以获得的效果
             StandingStillEffects();
 
+            //😡
             ElysianAegisEffects();
 
-            AncientXerocEffect();//克希洛克套装的函数封装
+            //各种套装效果的封装
+            ArmorSetBonusEffects();
+
+            //克希洛克套装效果的封装(因为太长了所以单独封装起来了)
+            AncientXerocEffect();
             ShieldDurabilityMax = Player.statLifeMax2;
                
 
@@ -105,8 +117,8 @@ namespace CalamityInheritance.CIPlayer
 
             if (penumbra)
             {
-                modPlayer.stealthGenStandstill += 0.15f;
-                modPlayer.stealthGenMoving += 0.1f;
+                calPlayer.stealthGenStandstill += 0.15f;
+                calPlayer.stealthGenMoving += 0.1f;
             }
 
             if (profanedRage)
@@ -147,6 +159,20 @@ namespace CalamityInheritance.CIPlayer
                 Player.moveSpeed += 0.075f;
             }
 
+            
+            if (animusBoost > 1f)
+            {
+                if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
+                    animusBoost = 1f;
+            }
+            
+           
+        }
+        #region AccessoriesStats
+        private void AccessoriesStatsFunc()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            var usPlayer = Player.CalamityInheritance();
             if (YharimsInsignia)
             {
                 Player.GetDamage<MeleeDamageClass>() += 0.15f;
@@ -165,16 +191,12 @@ namespace CalamityInheritance.CIPlayer
                 if (Main.eclipse || !Main.dayTime)
                     Player.statDefense += Main.eclipse ? 30 : 20;
             }
-            if (animusBoost > 1f)
-            {
-                if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
-                    animusBoost = 1f;
-            }
+            
             if (badgeofBravery) //如果启用
             {
-                if(modPlayer.tarraMelee) //金源套不再能吃到勇气勋章的效果
+                if(calPlayer.tarraMelee) //金源套不再能吃到勇气勋章的效果
                 {
-                    if(modPlayer.auricSet)
+                    if(calPlayer.auricSet)
                     {
                         return;
                     }
@@ -183,6 +205,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
                 }
             }
+            
             if (deificAmuletEffect)
             {
                 Player.lifeRegen += 1; //生命恢复
@@ -206,36 +229,25 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-
-            /*
-             * 原动不封地把战士永恒套提供的“增加10%伤害”并不能契合当前版本的强度，因此此处直接进行了比较超量的数值加强
-             * 但永恒套的怒气Buff本身只能通过受击获得，考虑到其触发条件我并不特别认为这会导致数值能多爆破（吧）
-             * 速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
-             */
-            if (reaverMeleeRage)
+            if (usPlayer.ElementalQuiver)
+                Player.magicQuiver = true;
+            
+            if(ancientReaperToothNeclace)
             {
-                Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
-                Player.statDefense += 10;
+                Player.GetArmorPenetration<GenericDamageClass>() += 100;
+                Player.GetDamage<GenericDamageClass>() += 0.25f;
+                Player.GetCritChance<GenericDamageClass>() += 25;
+                Player.endurance *= 0.1f;
+                Player.statDefense /= 10;
             }
-
-            /*
-            同上，但法师永恒套的Buff属于击发式，提供一定量的暴击率加成与减魔耗
-            暴击概率10%,魔力消耗20%
-            */
-            if (reaverMagePower)
+            if(ancientCoreofTheBloodGod)
             {
-                Player.manaCost *= 0.80f;
-                Player.GetDamage<MagicDamageClass>() += 0.1f;
-            }
-
-            if (badgeofBravery) //如果启用
-            {
-                if (modPlayer.tarraMelee)
+                calPlayer.fleshTotem = true;
+                Player.endurance += 0.05f;
+                Player.GetDamage<GenericDamageClass>() += 0.1f;
+                if(Player.statDefense < 100)
                 {
-                    Player.GetCritChance<MeleeDamageClass>() += 10;
-                    Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                    Player.GetArmorPenetration<MeleeDamageClass>() += 15;
+                    Player.GetDamage<GenericDamageClass>() += 0.15f;
                 }
             }
             if (exoMechLore)
@@ -264,6 +276,8 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
+
+        #endregion
         #region Energy Shields
         private void CIEnergyShields()
         {
@@ -275,8 +289,8 @@ namespace CalamityInheritance.CIPlayer
             // 故意保留充电冷却时间以防止快速切换来重新充电护盾。
             if (!CIsponge)
             {
-                CalamityPlayer modPlayer = Player.Calamity();
-                if (modPlayer.cooldowns.TryGetValue(CISpongeDurability.ID, out var cdDurability))
+                CalamityPlayer calPlayer = Player.Calamity();
+                if (calPlayer.cooldowns.TryGetValue(CISpongeDurability.ID, out var cdDurability))
                     cdDurability.timeLeft = 0;
 
                 // 由于“海绵”的护盾可能处于部分充电状态，这里是为了安全起见。
@@ -287,13 +301,13 @@ namespace CalamityInheritance.CIPlayer
             }
             else
             {
-                CalamityPlayer modPlayer = Player.Calamity();
+                CalamityPlayer calPlayer = Player.Calamity();
                 // 如果“海绵”的护盾已经耗尽且还没有开始其充电延迟，则开始充电延迟。
-                if (CISpongeShieldDurability == 0 && !modPlayer.cooldowns.ContainsKey(CISpongeRecharge.ID))
+                if (CISpongeShieldDurability == 0 && !calPlayer.cooldowns.ContainsKey(CISpongeRecharge.ID))
                     Player.AddCooldown(CISpongeRecharge.ID, TheSpongetest.CIShieldRechargeDelay);
 
                 // 如果护盾的耐久度大于0但耐久度冷却时间不在冷却时间字典中，则将其添加到冷却时间字典中。
-                if (CISpongeShieldDurability > 0 && !modPlayer.cooldowns.ContainsKey(CISpongeDurability.ID))
+                if (CISpongeShieldDurability > 0 && !calPlayer.cooldowns.ContainsKey(CISpongeDurability.ID))
                 {
                     var durabilityCooldown = Player.AddCooldown(CISpongeDurability.ID, TheSpongetest.CIShieldRechargeDelay);
                     durabilityCooldown.timeLeft = CISpongeShieldDurability;
@@ -301,7 +315,7 @@ namespace CalamityInheritance.CIPlayer
 
                 // 如果护盾的耐久度大于0且不在充电延迟中，则主动补充护盾点数。
                 // 在第一次发生这种情况时播放声音。
-                if (CISpongeShieldDurability > 0 && !modPlayer.cooldowns.ContainsKey(CISpongeRechargeRelay.ID))
+                if (CISpongeShieldDurability > 0 && !calPlayer.cooldowns.ContainsKey(CISpongeRechargeRelay.ID))
                 {
                     if (!CIplayedSpongeShieldSound)
                         SoundEngine.PlaySound(TheSpongetest.ActivationSound, Player.Center);
@@ -318,7 +332,7 @@ namespace CalamityInheritance.CIPlayer
                     CIspongeShieldPartialRechargeProgress -= pointsActuallyRecharged;
 
                     // 更新冷却时间字典中的耐久度指示器。
-                    if (modPlayer.cooldowns.TryGetValue(CISpongeDurability.ID, out var cdDurability))
+                    if (calPlayer.cooldowns.TryGetValue(CISpongeDurability.ID, out var cdDurability))
                         cdDurability.timeLeft = CISpongeShieldDurability;
                 }
 
@@ -333,24 +347,43 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
 
+        #region ArmorSetBonusEffect
+        public void ArmorSetBonusEffects()
+        {
+            if (reaverMagePower)
+            {
+                Player.manaCost *= 0.80f;
+                Player.GetDamage<MagicDamageClass>() += 0.1f;
+            }
+            /*
+            * 原动不封地把战士永恒套提供的“增加10%伤害”并不能契合当前版本的强度，因此此处直接进行了比较超量的数值加强
+            * 但永恒套的怒气Buff本身只能通过受击获得，考虑到其触发条件我并不特别认为这会导致数值能多爆破（吧）
+            * 速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
+            */
+            if (reaverMeleeRage)
+            {
+                Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
+                Player.statDefense += 10;
+            }
+
+        }
+        #endregion
         #region Misc Effects
         public void MiscEffects()
         {
-            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
-            CalamityPlayer modPlayer1 = Player.Calamity();
+            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityPlayer calPlayer = Player.Calamity();
 
             #region Lore
-            if (modPlayer.ElementalQuiver)
-                Player.magicQuiver = true;
-
-            if (modPlayer.kingSlimeLore)
+            if (usPlayer.kingSlimeLore)
             {
                 Player.moveSpeed += 0.05f;
                 Player.jumpSpeedBoost += Player.autoJump ? 0f : 0.1f;
                 Player.statDefense -= 3;
             }
 
-            if (modPlayer.desertScourgeLore)
+            if (usPlayer.desertScourgeLore)
             {
                 if (Player.ZoneDesert || Player.Calamity().ZoneSunkenSea)
                 {
@@ -359,7 +392,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (modPlayer.crabulonLore)
+            if (usPlayer.crabulonLore)
             {
                 if (Player.ZoneGlowshroom || Player.ZoneDirtLayerHeight || Player.ZoneRockLayerHeight)
                 {
@@ -370,7 +403,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (modPlayer.eaterOfWorldsLore)
+            if (usPlayer.eaterOfWorldsLore)
             {
                 int damage = (int)(15 * Player.GetBestClassDamage().ApplyTo(1));
                 damage = Player.ApplyArmorAccDamageBonusesTo(damage);
@@ -448,18 +481,18 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (modPlayer.skeletronLore)
+            if (usPlayer.skeletronLore)
             {
                 Player.GetDamage<GenericDamageClass>() += 0.1f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
             }
 
-            if (modPlayer.destroyerLore)
+            if (usPlayer.destroyerLore)
             {
                 Player.pickSpeed -= 0.05f;
             }
 
-            if (modPlayer.aquaticScourgeLore)
+            if (usPlayer.aquaticScourgeLore)
             {
                 if (Player.wellFed)
                 {
@@ -480,12 +513,12 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (modPlayer.skeletronPrimeLore)
+            if (usPlayer.skeletronPrimeLore)
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 10;
             }
 
-            if (modPlayer.leviathanAndSirenLore)
+            if (usPlayer.leviathanAndSirenLore)
             {
                 CalamityPlayer modplayer = Player.Calamity();
                 if (Player.IsUnderwater())
@@ -500,7 +533,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance -= 0.05f;
                 }
 
-                if (modPlayer1.sirenPet)
+                if (calPlayer.sirenPet)
                 {
                     Player.spelunkerTimer += 1;
                     if (Player.spelunkerTimer >= 10)
@@ -545,19 +578,19 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.ZoneSkyHeight)
             {
-                if (modPlayer.astrumDeusLore)
+                if (usPlayer.astrumDeusLore)
                     Player.moveSpeed += 0.2f;
-                if (modPlayer.astrumAureusLore)
+                if (usPlayer.astrumAureusLore)
                     Player.jumpSpeedBoost += 0.5f;
             }
 
-            if (modPlayer.golemLore)
+            if (usPlayer.golemLore)
             {
                 if (Math.Abs(Player.velocity.X) < 0.05f && Math.Abs(Player.velocity.Y) < 0.05f && Player.itemAnimation == 0)
                     Player.statDefense += 30;
             }
 
-            if (modPlayer.dukeFishronLore)
+            if (usPlayer.dukeFishronLore)
             {
                 if (Player.IsUnderwater())
                 {
@@ -568,12 +601,12 @@ namespace CalamityInheritance.CIPlayer
                 else
                 {
                     Player.GetDamage(DamageClass.Generic) -= 0.02f;
-                    modPlayer.Player.GetCritChance<GenericDamageClass>() -= 2;
+                    usPlayer.Player.GetCritChance<GenericDamageClass>() -= 2;
                     Player.moveSpeed -= 0.04f;
                 }
             }
 
-            if (modPlayer.lunaticCultistLore)
+            if (usPlayer.lunaticCultistLore)
             {
                 Player.blind = true;
                 Player.endurance += 0.04f;
@@ -584,7 +617,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.moveSpeed += 0.1f;
             }
 
-            if (modPlayer.moonLordLore)
+            if (usPlayer.moonLordLore)
             {
                 if (Player.gravDir == -1f && Player.gravControl2)
                 {
@@ -599,7 +632,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.slowFall = true;
             }
 
-            if (modPlayer.twinsLore)
+            if (usPlayer.twinsLore)
             {
                 if (!Main.dayTime)
                 {
@@ -612,12 +645,12 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense -= 10;
             }
 
-            if (modPlayer.wallOfFleshLore)
+            if (usPlayer.wallOfFleshLore)
             {
                 Player.GetDamage<GenericDamageClass>() -= 0.03f;
             }
 
-            if (modPlayer.planteraLore)
+            if (usPlayer.planteraLore)
             {
                 if (Player.statLife >= (int)(Player.statLifeMax2 * 0.5))
                 {
@@ -631,17 +664,17 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (modPlayer.polterghastLore)
+            if (usPlayer.polterghastLore)
             {
                 Player.GetDamage<GenericDamageClass>() -= 0.1f;
             }
             // Brimstone Elemental lore inferno potion boost
-            if ((modPlayer.brimstoneElementalLore || modPlayer1.ataxiaBlaze) && Player.inferno)
+            if ((usPlayer.brimstoneElementalLore || calPlayer.ataxiaBlaze) && Player.inferno)
             {
                 const int FramesPerHit = 30;
 
                 // Constantly increment the timer every frame.
-                modPlayer1.brimLoreInfernoTimer = (modPlayer1.brimLoreInfernoTimer + 1) % FramesPerHit;
+                calPlayer.brimLoreInfernoTimer = (calPlayer.brimLoreInfernoTimer + 1) % FramesPerHit;
 
                 // Only run this code for the client which is wearing the armor.
                 // Brimstone flames is applied every single frame, but direct damage is only dealt twice per second.
@@ -661,27 +694,27 @@ namespace CalamityInheritance.CIPlayer
                         if (Vector2.Distance(Player.Center, Npc.Center) <= range)
                         {
                             Npc.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
-                            if (modPlayer1.brimLoreInfernoTimer == 0)
+                            if (calPlayer.brimLoreInfernoTimer == 0)
                                 Projectile.NewProjectileDirect(entitySource, Npc.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), damage, 0f, Player.whoAmI, i);
                         }
                     }
                 }
             }
 
-            if (modPlayer.calamitasCloneLore)
+            if (usPlayer.calamitasCloneLore)
             {
                 Player.maxMinions += 2;
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75);
             }
-            if (modPlayer.plaguebringerGoliathLore)
+            if (usPlayer.plaguebringerGoliathLore)
             {
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 1.25);
             }
 
-            if (modPlayer.boomerDukeLore)
+            if (usPlayer.boomerDukeLore)
             {
-                if (modPlayer1.ZoneAbyss || modPlayer1.ZoneSulphur)
+                if (calPlayer.ZoneAbyss || calPlayer.ZoneSulphur)
                 {
                     Player.breath = Player.breathMax + 91;
                     Player.endurance += 0.2f;
@@ -691,7 +724,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.buffImmune[ModContent.BuffType<CrushDepth>()] = true;
                     Player.lifeRegen += 3;
                 }
-                if (!modPlayer1.ZoneAbyss || !modPlayer1.ZoneSulphur)
+                if (!calPlayer.ZoneAbyss || !calPlayer.ZoneSulphur)
                 {
                     Player.endurance -= 0.1f;
                     Player.statDefense -= 15;
@@ -700,7 +733,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (modPlayer.ravagerLore)
+            if (usPlayer.ravagerLore)
             {
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
@@ -708,24 +741,24 @@ namespace CalamityInheritance.CIPlayer
                 Player.ClearBuff(BuffID.Featherfall);
             }
 
-            if (modPlayer.providenceLore)
+            if (usPlayer.providenceLore)
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
                 Player.GetDamage<GenericDamageClass>() += 0.25f;
             }
 
-            if (modPlayer.DoGLore)
+            if (usPlayer.DoGLore)
             {
                 Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
             }
-            if (modPlayer.yharonLore)
+            if (usPlayer.yharonLore)
             {
-                modPlayer1.infiniteFlight = true;
+                calPlayer.infiniteFlight = true;
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
             #endregion
             #region ArmorSet
-            if (modPlayer.invincible)
+            if (usPlayer.invincible)
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
@@ -746,14 +779,14 @@ namespace CalamityInheritance.CIPlayer
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD
 
-            if (modPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
             }
 
-            if (modPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
             {
-                modPlayer1.contactDamageReduction += 0.2f;
+                calPlayer.contactDamageReduction += 0.2f;
             }
 
             if (silvaMelee)
@@ -761,30 +794,30 @@ namespace CalamityInheritance.CIPlayer
                 double multiplier = Player.statLife / (double)Player.statLifeMax2;
                 Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
 
-                if (modPlayer1.auricSet && silvaMelee)
+                if (calPlayer.auricSet && silvaMelee)
                 {
                     double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
                     Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
                 }
             }
 
-            if (modPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<RangedDamageClass>() += 0.40f;
             }
 
-            if (modPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetCritChance<SummonDamageClass>() += 10;
                 Player.maxMinions += 2;
             }
 
-            if (modPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<RogueDamageClass>() += 0.40f;
             }
 
-            if (modPlayer.AuricDebuffImmune)
+            if (usPlayer.AuricDebuffImmune)
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
@@ -881,21 +914,21 @@ namespace CalamityInheritance.CIPlayer
         #region Standing Still Effects
         private void StandingStillEffects()
         {
-            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
-            CalamityPlayer modPlayer1 = Player.Calamity();
+            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityPlayer calPlayer = Player.Calamity();
             if (PsychoticAmulet)
             {
                 if (Player.itemAnimation > 0)
-                    modPlayer1.modStealthTimer = 5;
+                    calPlayer.modStealthTimer = 5;
 
                 if (Player.StandingStill(0.1f) && !Player.mount.Active)
                 {
-                    if (modPlayer1.modStealthTimer == 0 && modPlayer1.modStealth > 0f)
+                    if (calPlayer.modStealthTimer == 0 && calPlayer.modStealth > 0f)
                     {
-                        modPlayer1.modStealth -= 0.015f;
-                        if (modPlayer1.modStealth <= 0f)
+                        calPlayer.modStealth -= 0.015f;
+                        if (calPlayer.modStealth <= 0f)
                         {
-                            modPlayer1.modStealth = 0f;
+                            calPlayer.modStealth = 0f;
                             if (Main.netMode == NetmodeID.MultiplayerClient)
                                 NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                         }
@@ -904,31 +937,31 @@ namespace CalamityInheritance.CIPlayer
                 else
                 {
                     float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    modPlayer1.modStealth += playerVel * 0.0075f;
-                    if (modPlayer1.modStealth > 1f)
-                        modPlayer1.modStealth = 1f;
+                    calPlayer.modStealth += playerVel * 0.0075f;
+                    if (calPlayer.modStealth > 1f)
+                        calPlayer.modStealth = 1f;
                     if (Player.mount.Active)
-                        modPlayer1.modStealth = 1f;
+                        calPlayer.modStealth = 1f;
                 }
 
-                Player.GetDamage<ThrowingDamageClass>() += (1f - modPlayer1.modStealth) * 0.2f;
-                Player.GetCritChance<ThrowingDamageClass>() += (int)((1f - modPlayer1.modStealth) * 10f);
-                Player.aggro -= (int)((1f - modPlayer1.modStealth) * 750f);
-                if (modPlayer1.modStealthTimer > 0)
-                    modPlayer1.modStealthTimer--;
+                Player.GetDamage<ThrowingDamageClass>() += (1f - calPlayer.modStealth) * 0.2f;
+                Player.GetCritChance<ThrowingDamageClass>() += (int)((1f - calPlayer.modStealth) * 10f);
+                Player.aggro -= (int)((1f - calPlayer.modStealth) * 750f);
+                if (calPlayer.modStealthTimer > 0)
+                    calPlayer.modStealthTimer--;
             }
             if (auricBoostold)
             {
                 if (Player.itemAnimation > 0)
-                    modPlayer1.modStealthTimer = 5;
+                    calPlayer.modStealthTimer = 5;
                 if (Player.StandingStill(0.1f) && !Player.mount.Active)
                 {
-                    if (modPlayer1.modStealthTimer == 0 && modPlayer1.modStealth > 0f)
+                    if (calPlayer.modStealthTimer == 0 && calPlayer.modStealth > 0f)
                     {
-                        modPlayer1.modStealth -= 0.015f;
-                        if (modPlayer1.modStealth <= 0f)
+                        calPlayer.modStealth -= 0.015f;
+                        if (calPlayer.modStealth <= 0f)
                         {
-                            modPlayer1.modStealth = 0f;
+                            calPlayer.modStealth = 0f;
                             if (Main.netMode == NetmodeID.MultiplayerClient)
                                 NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                         }
@@ -937,21 +970,21 @@ namespace CalamityInheritance.CIPlayer
                 else
                 {
                     float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    modPlayer1.modStealth += playerVel * 0.0075f;
-                    if (modPlayer1.modStealth > 1f)
-                        modPlayer1.modStealth = 1f;
+                    calPlayer.modStealth += playerVel * 0.0075f;
+                    if (calPlayer.modStealth > 1f)
+                        calPlayer.modStealth = 1f;
                     if (Player.mount.Active)
-                        modPlayer1.modStealth = 1f;
+                        calPlayer.modStealth = 1f;
                 }
-                float damageBoost = (1f - modPlayer1.modStealth) * 20f;
+                float damageBoost = (1f - calPlayer.modStealth) * 20f;
                 Player.GetDamage<GenericDamageClass>() += damageBoost;
-                int critBoost = (int)((1f - modPlayer1.modStealth) * 1000f);
+                int critBoost = (int)((1f - calPlayer.modStealth) * 1000f);
                 Player.GetCritChance<GenericDamageClass>() += critBoost;
-                if (modPlayer1.modStealthTimer > 0)
-                    modPlayer1.modStealthTimer--;
+                if (calPlayer.modStealthTimer > 0)
+                    calPlayer.modStealthTimer--;
             }
             else
-                modPlayer1.modStealth = 1f;
+                calPlayer.modStealth = 1f;
         }
         #endregion
 
@@ -1041,34 +1074,46 @@ namespace CalamityInheritance.CIPlayer
 
         public void AncientXerocEffect()
         {
-            CalamityPlayer modPlayer1 = Player.Calamity();
+            CalamityPlayer calPlayer= Player.Calamity();
             if(ancientXerocSet)
             {   
-                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
+                if(Player.statLife > Player.statLifeMax2 * 0.8f)
+                {
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
                 {
                     Player.GetDamage<GenericDamageClass>() +=0.10f;
                     Player.GetCritChance<GenericDamageClass>() += 10;
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
                 {
                     Player.GetDamage<GenericDamageClass>() += 0.15f; //玩家血量60%下的数值加成：25%伤害与25%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 15;
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
                 {
                     //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
                     //TO DO:在这个血量区间增加一个提示来提醒玩家此时伤害加成最高
-                    ancientXerocMadness = true;
+                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 72000);
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
                     Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 40;
                     Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
-                    modPlayer1.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
-                    modPlayer1.healingPotionMultiplier += 0.10f;
+                    calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
+                    calPlayer.healingPotionMultiplier += 0.10f;
                     //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
                     //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
                 {
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
+                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 72000);
                     Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
                     Player.GetCritChance<GenericDamageClass>() -= 40;
                     Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死

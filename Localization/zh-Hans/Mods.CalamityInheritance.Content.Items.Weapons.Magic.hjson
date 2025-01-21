@@ -122,15 +122,6 @@ VividClarity: {
 		'''
 }
 
-VoidVortex: {
-	DisplayName: 虚空漩涡[Legacy]
-	Tooltip:
-		'''
-		在光标处召唤一个由磁暴球体组成的漩涡
-		球体会在大范围内自动攻击敌人
-		'''
-}
-
 Lazinator: {
 	DisplayName: 地狱光枪[Legacy]
 	Tooltip: biu biu
@@ -139,4 +130,13 @@ Lazinator: {
 WulfrumStaff: {
 	Tooltip: 比紫晶更强
 	DisplayName: 钨钢法杖[Legacy]
+}
+
+VoidVortexLegacy: {
+	DisplayName: 虚空漩涡[Legacy]
+	Tooltip:
+		'''
+		在光标处召唤一个由磁暴球体组成的漩涡
+		球体会在大范围内自动攻击敌人
+		'''
 }
