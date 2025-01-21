@@ -10,6 +10,7 @@ namespace CalamityInheritance.Content.Items.Materials
         public new string LocalizationCategory => "Content.Items.Materials";
         public override void SetStaticDefaults()
 		{
+			Item.ResearchUnlockCount = 25;
 		}
 			
 		public override void SetDefaults()

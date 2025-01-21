@@ -12,3 +12,18 @@ CalamitousEssence: {
 	DisplayName: Calamitous Essence
 	Tooltip: ""
 }
+
+AncientMiracleMatter: {
+	DisplayName: Ancient Miracle Matter
+	Tooltip:
+		'''
+		Its amorphous from contains untold potential
+		One is required for every Exo Weapons
+		Not consumed when used to crafting
+		'''
+}
+
+AncientVictideBar: {
+	DisplayName: Ancient Victide Bar
+	Tooltip: ""
+}

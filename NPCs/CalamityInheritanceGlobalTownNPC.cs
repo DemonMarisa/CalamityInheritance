@@ -2,17 +2,8 @@
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
-using CalamityMod.Items.Dyes;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.TownNPCs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs

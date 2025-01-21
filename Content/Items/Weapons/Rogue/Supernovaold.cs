@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
@@ -63,6 +64,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<TotalityBreakers>().
                 AddIngredient<BallisticPoisonBomb>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<SealedSingularity>().
+                AddIngredient<StarofDestruction>().
+                AddIngredient<TotalityBreakers>().
+                AddIngredient<BallisticPoisonBomb>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

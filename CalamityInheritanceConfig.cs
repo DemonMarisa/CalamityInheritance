@@ -76,7 +76,13 @@ namespace CalamityInheritance
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
+        [ReloadRequired]
         public bool LegendaryitemsRecipes { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CustomShimmer{ get; set; } //微光嬗变
 
         #endregion
 

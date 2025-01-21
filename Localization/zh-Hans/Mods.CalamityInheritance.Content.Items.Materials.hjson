@@ -16,3 +16,18 @@ CalamitousEssence: {
 		只有星流巨械被击败后才会掉落
 		'''
 }
+
+AncientMiracleMatter: {
+	// DisplayName: Ancient Miracle Matter
+	/* Tooltip:
+		'''
+		Its amorphous from contains untold potential
+		One is required for every Exo Weapons
+		Not consumed when used to crafting
+		''' */
+}
+
+AncientVictideBar: {
+	// DisplayName: Ancient Victide Bar
+	// Tooltip: ""
+}

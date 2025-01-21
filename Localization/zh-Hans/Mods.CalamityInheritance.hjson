@@ -131,5 +131,10 @@ Configs: {
 				会反复播放
 				'''
 		}
+
+		CustomShimmer: {
+			// Label: Custom Shimmer
+			// Tooltip: ""
+		}
 	}
 }

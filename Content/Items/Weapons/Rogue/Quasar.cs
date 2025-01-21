@@ -8,6 +8,7 @@ using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -29,11 +30,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.height = 48;
             Item.value = CIShopValue.RarityPriceCyan;
-            Item.rare = ItemRarityID.Cyan;
+            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.shoot = ModContent.ProjectileType<QuasarKnife>();
             Item.shootSpeed = 20f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Item.rare = ItemRarityID.Cyan;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -33,6 +33,8 @@ namespace CalamityInheritance.Content.Items
         private static readonly int RarityPrice17 = Item.buyPrice (3,20,0,0);
         #endregion
 
+        private static readonly int RarityPrice18 = Item.buyPrice (0,50,0,0);
+
         private static readonly int[] RarityPriceTrain = [
             RarityPrice0 ,
             RarityPrice1 ,
@@ -52,6 +54,7 @@ namespace CalamityInheritance.Content.Items
             RarityPrice15,
             RarityPrice16,
             RarityPrice17,
+            RarityPrice18,
         ];
         //Scarlet:下面才是能够用来调用的稀有度价格清单。如果后续有新物品（如果有）的话直接用这里的稀有度就行了
         public static int RarityPriceWhite       =>  RarityPrice0; //白色
@@ -73,6 +76,7 @@ namespace CalamityInheritance.Content.Items
         public static int RarityPriceCatalystViolet  => RarityPrice15; //紫罗兰
         public static int RarityPriceDonatorPink   => RarityPrice16; //捐赠者
         public static int RarityPricePureRed       => RarityPrice17; //灾厄红
+        public static int RarityMaliceDrop         => RarityPrice18; //恶意掉落
         #endregion 
     }
 }

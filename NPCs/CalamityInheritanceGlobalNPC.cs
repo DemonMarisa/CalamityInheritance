@@ -1,29 +1,7 @@
-﻿using CalamityMod.NPCs;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.CalPlayer;
-using CalamityMod.World;
-using CalamityMod.Events;
-using Microsoft.Xna.Framework;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Potions;
-using CalamityMod.NPCs.BrimstoneElemental;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.HiveMind;
-using CalamityMod.NPCs.Leviathan;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Tiles.Furniture;
-using static CalamityMod.NPCs.ExoMechs.Ares.AresBody;
 
 namespace CalamityInheritance.NPCs
 {

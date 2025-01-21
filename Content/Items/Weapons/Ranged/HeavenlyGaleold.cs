@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -125,6 +126,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Phangasm>().
                 AddIngredient<TheBallista>().
                 AddIngredient<MiracleMatter>().
+                AddTile<CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<PlanetaryAnnihilation>().
+                AddIngredient<TelluricGlare>().
+                AddIngredient<ClockworkBow>().
+                AddIngredient<Alluvion>().
+                AddIngredient<AstrealDefeat>().
+                AddIngredient<FlarewingBow>().
+                AddIngredient<Phangasm>().
+                AddIngredient<TheBallista>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge>().
                 Register();
         }

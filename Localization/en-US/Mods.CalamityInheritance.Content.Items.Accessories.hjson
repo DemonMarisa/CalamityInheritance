@@ -128,6 +128,11 @@ DashAccessories: {
 			Uses the same dodge mechanic as Calamity mod
 			'''
 	}
+
+	AncientStatisBeltofCursedStatis: {
+		DisplayName: Ancient Statis Beltof Cursed Statis
+		Tooltip: ""
+	}
 }
 
 DeificAmuletLegacy: {
@@ -342,5 +347,26 @@ TheAbsorberOld: {
 		You emit a mushroom spore and spark explosion when you are hit
 		5% increased damage reduction
 		Enemy attacks will have part of their damage absorbed and used to heal you
+		'''
+}
+
+AncientCotBG: {
+	DisplayName: Ancient Core of the Blood God
+	Tooltip:
+		'''
+		5% increased damage reduction, 10% increased damage
+		Halves the contact damage, this effect has 20 seconds cooldown
+		15% increased damage if you are below 100 defense
+		'''
+}
+
+AncientReaperToothNecklace: {
+	DisplayName: Ancient Reaper Tooth Necklace
+	Tooltip:
+		'''
+		+100 armor penetration
+		25% increased damage and critical strike chance
+		Your damage reduction and defense will be reduced by a tentn.
+		'I don't think this should exist...'
 		'''
 }

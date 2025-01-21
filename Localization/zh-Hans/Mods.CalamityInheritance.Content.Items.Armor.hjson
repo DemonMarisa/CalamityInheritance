@@ -443,3 +443,85 @@ SilvaLeggingsold: {
 		移动速度增加45%
 		'''
 }
+
+AncientVictideBreastplate: {
+	// DisplayName: Victide Chestplate Legacy
+	/* Tooltip:
+		'''
+		5% increased damage reduction and critical strike chance
+		+5 defense and 10% increased damage reduction while submerged in liquid
+		''' */
+}
+
+AncientVictideHeadMagic: {
+	// DisplayName: Victide Helmet Legacy
+	// Tooltip: 5% increased magic damage
+	/* SetBonus:
+		'''
+		+1.5 HP/s life regen and 10% increased magic damage while submerged in liquid
+		When using any weapon you have a 10% chance to throw a returning seashell projectile
+		This seashell does true damage and does not benefit from any damage class
+		Provides increased underwater mobility and slightly reduces breath loss in the abyss
+		''' */
+}
+
+AncientVictideHeadMelee: {
+	// DisplayName: Victide Helm Legacy
+	// Tooltip: '''5% increased melee damage	'''
+	/* SetBonus:
+		'''
+		Enemies are more likely to target you
+		+1.5 HP/s life regen and 10% increased melee damage while submerged in liquid
+		When using any weapon you have a 10% chance to throw a returning seashell projectile
+		This seashell does true damage and does not benefit from any damage class
+		Provides increased underwater mobility and slightly reduces breath loss in the abyss
+		''' */
+}
+
+AncientVictideHeadRanged: {
+	// DisplayName: Victide Visage Legacy
+	// Tooltip: 5% increased ranged damage
+	/* SetBonus:
+		'''
+		+1.5 HP/s life regen and 10% increased ranged damage while submerged in liquid
+		When using any weapon you have a 10% chance to throw a returning seashell projectile
+		This seashell does true damage and does not benefit from any damage class
+		Provides increased underwater mobility and slightly reduces breath loss in the abyss
+		''' */
+}
+
+AncientVictideHeadRogue: {
+	// DisplayName: Victide Headgear Legacy
+	// Tooltip: 5% increased rogue damage
+	/* SetBonus:
+		'''
+		+60 maximum stealth
+		+1.5 HP/s life regen and 10% increased rogue damage while submerged in liquid
+		When using any weapon you have a 10% chance to throw a returning seashell projectile
+		This seashell does true damage and does not benefit from any damage class
+		Provides increased underwater mobility and slightly reduces breath loss in the abyss
+		''' */
+}
+
+AncientVictideHeadSummon: {
+	// DisplayName: Victide Mask Legacy
+	// Tooltip: 10% increased summon damage
+	/* SetBonus:
+		'''
+		+1 max minion
+		Summons a sea snail to protect you
+		+1.5 HP/s life regen and 10% increased summon damage while submerged in liquid
+		When using any weapon you have a 10% chance to throw a returning seashell projectile
+		This seashell does true damage and does not benefit from any damage class
+		Provides increased underwater mobility and slightly reduces breath loss in the abyss
+		''' */
+}
+
+AncientVictideLeggings: {
+	// DisplayName: Victide Leggings Legacy
+	/* Tooltip:
+		'''
+		Movement speed increased by 8%
+		Movement speed increased by 30% while submerged in liquid
+		''' */
+}

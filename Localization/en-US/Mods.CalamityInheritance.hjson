@@ -120,5 +120,10 @@ Configs: {
 			Label: Post-SCal Music Event
 			Tooltip: Replaced post-SCal music with custom mod music
 		}
+
+		CustomShimmer: {
+			Label: Custom Shimmer
+			Tooltip: ""
+		}
 	}
 }

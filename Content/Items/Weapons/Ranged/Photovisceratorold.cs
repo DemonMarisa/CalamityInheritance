@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -113,6 +114,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<CleansingBlaze>().
                 AddIngredient<HalleysInferno>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<ElementalEruption>().
+                AddIngredient<CleansingBlaze>().
+                AddIngredient<HalleysInferno>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

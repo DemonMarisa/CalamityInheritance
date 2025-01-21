@@ -1,23 +1,8 @@
-﻿using CalamityMod.NPCs.AcidRain;
-using CalamityMod.NPCs.Astral;
-using CalamityMod.NPCs.Crags;
-using CalamityMod.NPCs.NormalNPCs;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Items.LoreItems;
-using CalamityMod.Tiles.Ores;
-using CalamityMod.World;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.GameContent.Events;
-using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.CalPlayer;
 
 namespace CalamityInheritance.NPCs
 {

@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -23,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ItemRarityID.Red;
+            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {

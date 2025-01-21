@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -107,6 +108,28 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<Terratomere>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }
