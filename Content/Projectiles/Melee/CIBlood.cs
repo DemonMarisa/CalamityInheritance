@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Dusts;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -16,6 +18,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+
+        public const int Lifetime = 150;
+        public ref float Time => ref Projectile.ai[0];
 
         public override void SetDefaults()
         {
@@ -36,9 +41,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int blood = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Blood, 0f, 0f, 100, default, 1f);
-                    Main.dust[blood].noGravity = true;
-                    Main.dust[blood].velocity *= 0f;
+                    int dustType = Main.rand.NextBool(4) ? 182 : (int)CalamityDusts.Brimstone;
+                    Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
+                    Dust crimtameMagic = Dust.NewDustPerfect(dustSpawnPos, dustType);
+                    crimtameMagic.scale = Main.rand.NextFloat(0.96f, 1.04f) * MathHelper.Lerp(1f, 1.7f, Time / Lifetime);
+                    crimtameMagic.noGravity = true;
+                    crimtameMagic.velocity *= 0.1f;
                 }
             }
 

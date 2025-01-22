@@ -24,7 +24,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
-            Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
 

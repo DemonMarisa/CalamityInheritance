@@ -9,13 +9,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
     public class BloodyRupture : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
+        }
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.useAnimation = Item.useTime = 15;
             Item.width = 28;
             Item.height = 28;
-            Item.damage = 33;
+            Item.damage = 22;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item1;

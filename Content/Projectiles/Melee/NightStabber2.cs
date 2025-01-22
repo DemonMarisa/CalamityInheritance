@@ -4,6 +4,9 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
+using CalamityInheritance.CIPlayer;
+using System;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -26,14 +29,17 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 4f)
             {
-                for (int num468 = 0; num468 < 2; num468++)
+                for (int i = 0; i < 2; i++)
                 {
-                    int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Demonite, 0f, 0f, 100, default, 1f);
-                    Main.dust[num469].noGravity = true;
-                    Main.dust[num469].velocity *= 0f;
+                    Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
+                    Dust corruptMagic = Dust.NewDustPerfect(dustSpawnPos, 27);
+                    corruptMagic.color = Color.Lerp(Color.Fuchsia, Color.Magenta, Main.rand.NextFloat(0.6f));
+                    corruptMagic.scale = Main.rand.NextFloat(0.96f, 1.04f);
+                    corruptMagic.noGravity = true;
+                    corruptMagic.velocity *= 0.1f;
                 }
             }
-            CalamityUtils.HomeInOnNPC(Projectile, true, 400f, 7f, 20f);
+            CalamityUtils.HomeInOnNPC(Projectile, true, 600f, 12f, 20f);
         }
         public override void OnKill(int timeLeft)
         {
@@ -58,6 +64,36 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+
+            float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+            Vector2 tentacleVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+
+            Vector2 tentacleRandVelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+            tentacleRandVelocity.Normalize();
+            tentacleVelocity = tentacleVelocity * 4f + tentacleRandVelocity;
+            tentacleVelocity.Normalize();
+            tentacleVelocity *= 5f;
+
+            float tentacleYDirection = Main.rand.Next(10, 80) * 0.001f;
+            if (Main.rand.NextBool())
+            {
+                tentacleYDirection *= -1f;
+            }
+            float tentacleXDirection = Main.rand.Next(10, 80) * 0.001f;
+            if (Main.rand.NextBool())
+            {
+                tentacleXDirection *= -1f;
+            }
+
+            // 从弹幕位置发射新的暗影触手
+            int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, tentacleXDirection,  tentacleYDirection);
+            if (newProjectileId != Main.maxProjectiles)
+            {
+                Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
+            }
         }
     }
 }

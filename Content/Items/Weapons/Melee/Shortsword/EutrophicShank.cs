@@ -9,13 +9,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
     public class EutrophicShank : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
+        }
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.useAnimation = Item.useTime = 14;
             Item.width = 42;
             Item.height = 38;
-            Item.damage = 70;
+            Item.damage = 35;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 4f;
             Item.UseSound = SoundID.Item1;
