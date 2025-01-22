@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Items
             }
             if (item.type == ModContent.ItemType<YharonBag>())
             {
+                itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
                 itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
             }

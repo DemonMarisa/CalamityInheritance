@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -42,7 +43,6 @@ namespace CalamityInheritance.Content.Items
                 velocity *= 1.20f;
         }
         #endregion
-
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();

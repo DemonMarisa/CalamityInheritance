@@ -73,7 +73,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void OtherBuffEffects()
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             var modplayer1 = Player.CalamityInheritance();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
@@ -250,13 +250,6 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetDamage<GenericDamageClass>() += 0.15f;
                 }
             }
-            if (exoMechLore)
-            {
-                if (CalamityInheritanceLists.exoDraedibsArsenalWeapon?.Contains(item.type) ?? false)
-                {
-                    draedonsWeaponboost = true;
-                }
-            }
         }
         private void NanoTechUI()
         {
@@ -374,6 +367,8 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
+            Player player = Main.player[Main.myPlayer];
+            Item item = player.HeldItem;
 
             #region Lore
             if (usPlayer.kingSlimeLore)
@@ -901,11 +896,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
-            }
-            if(draedonsWeaponboost)
-            {
-                Main.NewText("draedonsWeaponboost增伤开启");
-                Player.GetDamage<GenericDamageClass>() *= 1.5f;
             }
         }
 

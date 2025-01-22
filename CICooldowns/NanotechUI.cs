@@ -21,8 +21,8 @@ namespace CalamityInheritance.CICooldowns
 {
     public class NanotechUI : CooldownHandler
     {
-        private static Color ringColorLerpStart = new Color(0,255,110);
-        private static Color ringColorLerpEnd = new Color(30, 49, 36);
+        private static Color ringColorLerpStart = new Color(30, 49, 36);
+        private static Color ringColorLerpEnd = new Color(0, 255, 110);
         private float AdjustedCompletion => instance.timeLeft / (float)NanotechOld.nanotechDMGStack;
         public static new string ID => "NanotechUI";
         public override bool CanTickDown => !instance.player.CalamityInheritance().nanotechold || instance.timeLeft <= 0;
@@ -48,28 +48,22 @@ namespace CalamityInheritance.CICooldowns
         public override void DrawExpanded(SpriteBatch spriteBatch, Vector2 position, float opacity, float scale)
         {
             base.DrawExpanded(spriteBatch, position, opacity, scale);
-
             float Xoffset = instance.timeLeft > 9 ? -10f : -5;
             DrawBorderStringEightWay(spriteBatch, FontAssets.MouseText.Value, instance.timeLeft.ToString(), position + new Vector2(Xoffset, 4) * scale, Color.Lerp(ringColorLerpEnd, Color.ForestGreen, 1 - instance.Completion), Color.Black, scale);
         }
-
         public override void DrawCompact(SpriteBatch spriteBatch, Vector2 position, float opacity, float scale)
         {
             Texture2D sprite = Request<Texture2D>(Texture).Value;
             Texture2D outline = Request<Texture2D>(OutlineTexture).Value;
             Texture2D overlay = Request<Texture2D>(OverlayTexture).Value;
-
             // Draw the outline
             spriteBatch.Draw(outline, position, null, OutlineColor * opacity, 0, outline.Size() * 0.5f, scale, SpriteEffects.None, 0f);
-
             // Draw the icon
             spriteBatch.Draw(sprite, position, null, Color.White * opacity, 0, sprite.Size() * 0.5f, scale, SpriteEffects.None, 0f);
-
             // Draw the small overlay
             int lostHeight = (int)Math.Ceiling(overlay.Height * AdjustedCompletion);
             Rectangle crop = new Rectangle(0, lostHeight, overlay.Width, overlay.Height - lostHeight);
             spriteBatch.Draw(overlay, position + Vector2.UnitY * lostHeight * scale, crop, OutlineColor * opacity * 0.9f, 0, sprite.Size() * 0.5f, scale, SpriteEffects.None, 0f);
-
             float Xoffset = instance.timeLeft > 9 ? -10f : -5;
             DrawBorderStringEightWay(spriteBatch, FontAssets.MouseText.Value, instance.timeLeft.ToString(), position + new Vector2(Xoffset, 4) * scale, Color.Lerp(ringColorLerpStart, Color.OrangeRed, 1 - instance.Completion), Color.Black, scale);
         }

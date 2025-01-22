@@ -88,28 +88,7 @@ namespace CalamityInheritance.Content.Items
 
 
             #region WeaponsConvertandrecipeadd
-            // Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
-            //     AddIngredient<StellarContempt>().
-            //     AddIngredient<CosmiliteBar>(10).
-            //     AddTile<DraedonsForgeTiles>().
-            //     Register();
 
-            // Recipe.Create(ModContent.ItemType<StellarContempt>()).
-            //     AddIngredient<FallenPaladinsHammer>().
-            //     AddIngredient<GalacticaSingularity>(5).
-            //     AddIngredient(ItemID.PaladinsHammer).
-            //     AddTile<DraedonsForgeTiles>().
-            //     Register();
-
-            // Recipe.Create(ModContent.ItemType<FallenPaladinsHammer>()).
-            //     AddIngredient<Pwnagehammer>().
-            //     AddIngredient<AshesofCalamity>(5).
-            //     AddIngredient<ScoriaBar>(5).
-            //     AddTile<DraedonsForgeTiles>().
-            //     Register();
-            //todo:我不知道你这一段啥意思，反正这几个锤子合成表纯乱来了。用月后的夜明锭合成月前的锤子我是第一次见
-            //甚至还有用嘉登熔炉合成全部锤子的设定的，夸张哦
-            //要是有意为之的话就把我下面加的这一大段注释掉吧
             Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
                 AddIngredient<StellarContemptOld>().
                 AddIngredient<CosmiliteBar>(10).
