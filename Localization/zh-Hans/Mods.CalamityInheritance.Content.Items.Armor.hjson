@@ -3,7 +3,7 @@ AuricTeslaBodyArmorold: {
 	Tooltip:
 		'''
 		+100最大生命值
-		增加8%伤害和5%暴击率
+		增加8%伤害和5%暴击概率
 		移动速度增加25%
 		你有2%的概率闪避来袭的攻击
 		免疫小于80点的伤害
@@ -16,7 +16,7 @@ AuricTeslaCuissesold: {
 	Tooltip:
 		'''
 		增加50%移速
-		增加12%伤害和5%暴击率
+		增加12%伤害和5%暴击概率
 		获得魔毯的能力
 		'''
 }
@@ -25,9 +25,9 @@ AuricTeslaHeadMagic: {
 	DisplayName: 金虚万象盔[Legacy]
 	Tooltip:
 		'''
-		增加30%魔法伤害和20%魔法暴击率
+		增加30%魔法伤害和20%魔法暴击概率
 		+100最大魔力值并减少20%魔力消耗
-		站立不动时会增加伤害与暴击几率
+		站立不动时会增加伤害与暴击概率
 		'''
 	SetBonus:
 		'''
@@ -49,10 +49,10 @@ AuricTeslaHeadMelee: {
 	DisplayName: 金源耀日盔[Legacy]
 	Tooltip:
 		'''
-		增加20%近战伤害和20%近战暴击率
+		增加20%近战伤害和暴击概率
 		增加28%的近战攻速
 		敌人更有可能攻击你
-		站立不动时会增加伤害与暴击几率
+		站立不动时会增加伤害与暴击概率
 		'''
 	SetBonus:
 		'''
@@ -72,8 +72,8 @@ AuricTeslaHeadRanged: {
 	DisplayName: 金兜铁面罩[Legacy]
 	Tooltip:
 		'''
-		增加30%远程伤害和30%远程暴击率
-		站立不动时会增加伤害与暴击几率
+		增加30%远程伤害和暴击概率
+		站立不动时会增加伤害与暴击概率
 		'''
 	SetBonus:
 		'''
@@ -95,10 +95,10 @@ AuricTeslaHeadRogue: {
 	DisplayName: 金羽十杀盔[Legacy]
 	Tooltip:
 		'''
-		增加20%盗贼伤害和20%盗贼暴击率
+		增加20%盗贼伤害和暴击概率
 		增加130点潜伏值上限
 		移动速度增加5%
-		站立不动时会增加伤害与暴击几率
+		站立不动时会增加伤害与暴击概率
 		'''
 	SetBonus:
 		'''
@@ -108,7 +108,7 @@ AuricTeslaHeadRogue: {
 		每25次暴击会获得3秒的龙蒿无敌增益
 		每一次暴击都有50%的概率治疗玩家
 		如果玩家生命值大于80%，获得30点防御力与5%盗贼暴击概率，小于80%时，盗贼伤害增加10%
-		满血时，盗贼伤害，暴击率和射速增加10%
+		满血时获得10%盗贼伤害，暴击概率和弹幕速度加成
 		当玩家血量大于50%时，攻击速度增加10%
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
@@ -132,7 +132,7 @@ AuricTeslaHeadSummon: {
 		召唤一个林海水晶，用生命能量轰击敌人
 		受到致命伤害时会触发弑神复活，此效果有45秒冷却
 		在弑神复活冷却时再次死亡，会触发始源林海无敌，使玩家在10秒内不能死亡
-		林海无敌结束后，暴击几率增加10%，增加2仆从栏
+		林海无敌结束后，暴击概率增加10%，增加2仆从栏
 		'''
 }
 
@@ -153,8 +153,8 @@ GodSlayerHeadMagicold: {
 	DisplayName: 弑神者面罩[Legacy]
 	Tooltip:
 		'''
-		增加14%魔法伤害和14%魔法暴击率
-		+100最大魔力值并减少17%魔力消耗
+		增加14%魔法伤害和暴击概率
+		增加100点最大魔力值，减少17%魔力消耗
 		'''
 	SetBonus:
 		'''
@@ -169,7 +169,7 @@ GodSlayerHeadMeleeold: {
 	DisplayName: 弑神者头盔[Legacy]
 	Tooltip:
 		'''
-		增加14%近战伤害与暴击率
+		增加14%近战伤害与暴击概率
 		增加20%近战攻速
 		'''
 	SetBonus:
@@ -183,11 +183,11 @@ GodSlayerHeadMeleeold: {
 
 GodSlayerHeadRangedold: {
 	DisplayName: 弑神者头套[Legacy]
-	Tooltip: 增加14%远程伤害与暴击率
+	Tooltip: 增加14%远程伤害与暴击概率
 	SetBonus:
 		'''
 		远程武器每2.5秒发射一枚弑神榴弹
-		当远程武器暴击几率超过100%时，会根据超过100%的暴击几率再次暴击
+		当远程武器暴击概率超过100%时，会根据超过100%的暴击概率再次暴击
 		如果暴击没有超过100%，则暴击有5%的概率造成四倍伤害
 		你在受到致命伤害时会免疫死亡，并且恢复100点血量
 		此效果有45秒冷却
@@ -198,7 +198,7 @@ GodSlayerHeadRogueold: {
 	DisplayName: 弑神者面具[Legacy]
 	Tooltip:
 		'''
-		增加14%盗贼伤害与暴击率
+		增加14%盗贼伤害与暴击概率
 		移动速度增加20%
 		'''
 	SetBonus:
@@ -226,7 +226,7 @@ GodSlayerLeggingsold: {
 	DisplayName: 弑神者腿甲[Legacy]
 	Tooltip:
 		'''
-		增加10%伤害与暴击几率
+		增加10%伤害与暴击概率
 		移动速度增加35%
 		'''
 }
@@ -235,7 +235,7 @@ SilvaArmorold: {
 	DisplayName: 始源林海盔甲[Legacy]
 	Tooltip:
 		'''
-		增加12%伤害与8%暴击几率
+		增加12%伤害与8%暴击概率
 		移动速度增加35%
 		'''
 }
@@ -244,8 +244,8 @@ SilvaHeadMagicold: {
 	DisplayName: 始源林海兜帽[Legacy]
 	Tooltip:
 		'''
-		增加13%魔法伤害和13%魔法暴击率
-		+100最大魔力值并减少19%魔力消耗
+		增加13%魔法伤害和暴击概率
+		增加100点魔力上限并减少19%魔力消耗
 		'''
 	SetBonus:
 		'''
@@ -259,7 +259,7 @@ SilvaHeadMagicold: {
 
 SilvaHeadMelee: {
 	DisplayName: 始源林海战盔[Legacy]
-	Tooltip: 增加13%近战伤害与13%暴击几率
+	Tooltip: 增加13%近战伤害与13%暴击概率
 	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
@@ -273,7 +273,7 @@ SilvaHeadMelee: {
 
 SilvaHeadRanged: {
 	DisplayName: 始源林海角盔[Legacy]
-	Tooltip: 增加13%远程伤害与13%暴击几率
+	Tooltip: 增加13%远程伤害与暴击概率
 	SetBonus:
 		'''
 		所有弹幕击中敌人时生成能治疗的林海光球。
@@ -288,7 +288,7 @@ SilvaHeadRogue: {
 	DisplayName: 始源林海面具[Legacy]
 	Tooltip:
 		'''
-		增加13%盗贼伤害与13%暴击几率
+		增加13%盗贼伤害与13%暴击概率
 		移动速度增加20%
 		'''
 	SetBonus:
@@ -310,7 +310,7 @@ SilvaHeadSummonold: {
 		最大速度和加速度增加5%。
 		召唤一个林海水晶，用生命能量轰击敌人
 		死亡时，会触发始源林海无敌，使玩家在15秒内不能死亡
-		林海无敌结束后，暴击几率增加10%，增加2仆从栏
+		林海无敌结束后，暴击概率增加10%，增加2仆从栏
 		'''
 }
 
@@ -329,7 +329,7 @@ AncientXerocMask: {
 	Tooltip:
 		'''
 		增加3仆从栏
-		增加10%伤害与暴击率
+		增加10%伤害与暴击概率
 		使你免疫岩浆，着火，咒火，诅咒，冷冻
 		'''
 	SetBonus:
@@ -337,10 +337,10 @@ AncientXerocMask: {
 		+110最大潜伏值
 		降低20%魔力消耗，增加10%盗贼弹幕速度
 		在你生命值的各个阶段会改变你的状态
-		80%-60%血量时提高10%伤害与10%暴击（总加成20%伤害20%暴击）
-		60%-25%血量时提高15%伤害与15%暴击（总加成25%伤害与25%暴击）
-		25%-15%时：50%伤害与暴击概率，90%魔力不消耗，盗贼潜伏攻击只消耗一半潜伏值。
-		15%以下追加削减防御力50点的debuff
+		80%-60%血量时提高10%伤害与暴击概率
+		60%-25%血量时提高15%伤害与暴击概率
+		25%-15%时：40%伤害与暴击概率，使用魔法武器几乎不消耗魔力，盗贼潜伏攻击只消耗一半潜伏值，并提高10%治疗药水的恢复量。
+		15%血量及以下时，降低40%伤害与暴击概率，
 		宇宙之怒
 		'''
 }
@@ -354,7 +354,7 @@ ReaverCapRevamped: {
 	DisplayName: 掠夺者头饰[Revamped]
 	Tooltip:
 		'''
-		增加15%盗贼伤害，5%盗贼弹幕飞行速度和暴击率
+		增加15%盗贼伤害，5%盗贼弹幕飞行速度和概率
 		增加20%移动速度，在液体中行动不受阻碍
 		'''
 	SetBonus:
@@ -368,7 +368,7 @@ ReaverCuissesRevamped: {
 	DisplayName: 掠夺者护胫[Legacy]
 	Tooltip:
 		'''
-		增加5%伤害与暴击率
+		增加5%伤害与暴击概率
 		增加12%移动速度
 		'''
 }
@@ -391,12 +391,12 @@ ReaverHelmRevamped: {
 	DisplayName: 掠夺者战盔[Revamped]
 	Tooltip:
 		'''
-		增加10%近战伤害，10%近战攻速和5%暴击率
+		增加10%近战伤害和攻速，5%近战暴击概率
 		增加10%移动速度，在液体中行动不受阻碍
 		'''
 	SetBonus:
 		'''
-		增加30%近战攻速，5%暴击率与5%近战伤害
+		增加30%近战攻速，5%近战伤害和暴击概率
 		近战射弹击中敌人后引发永恒爆炸，造成咒火减益
 		受伤时获得掠夺者之怒增益，增强你的防御与输出
 		'''
@@ -406,8 +406,9 @@ ReaverMaskRevamped: {
 	DisplayName: 掠夺者面具[Revamped]
 	Tooltip:
 		'''
-		增加10%魔法伤害,减少12%魔力值消耗, 增加5%暴击率
-		增加10%移动速度，增加80点最大魔力值，在液体中行动不受阻碍
+		增加10%魔法伤害，5%魔法暴击概率
+		增加60点最大魔力上限，减少12%魔力消耗
+		增加10%移动速度，在液体中行动不受阻碍
 		'''
 	SetBonus:
 		'''
@@ -429,7 +430,7 @@ ReaverVisageRevamped: {
 	DisplayName: 掠夺者面罩[Revamped]
 	Tooltip:
 		'''
-		增加15%远程伤害，减少20%弹药消耗率,增加5%远程暴击率
+		增加15%远程伤害，5%远程暴击概率，减少20%弹药消耗率
 		增加10%移动速度，在液体中行动不受阻碍
 		'''
 	SetBonus: 远程武器每攻击一段时间便会发射三枚导弹跟踪敌人
@@ -439,89 +440,89 @@ SilvaLeggingsold: {
 	DisplayName: 始源林海护胫[Legacy]
 	Tooltip:
 		'''
-		增加12%伤害与7%暴击几率
+		增加12%伤害与7%暴击概率
 		移动速度增加45%
 		'''
 }
 
 AncientVictideBreastplate: {
-	// DisplayName: Victide Chestplate Legacy
-	/* Tooltip:
+	DisplayName: 胜潮胸甲[Legacy]
+	Tooltip:
 		'''
-		5% increased damage reduction and critical strike chance
-		+5 defense and 10% increased damage reduction while submerged in liquid
-		''' */
+		获得5%伤害减免和暴击率
+		在液体中时获得5防御力和10%伤害减免
+		'''
 }
 
 AncientVictideHeadMagic: {
-	// DisplayName: Victide Helmet Legacy
-	// Tooltip: 5% increased magic damage
-	/* SetBonus:
+	DisplayName: 胜潮头盔[Legacy]
+	Tooltip: 增加5%魔法伤害
+	SetBonus:
 		'''
-		+1.5 HP/s life regen and 10% increased magic damage while submerged in liquid
-		When using any weapon you have a 10% chance to throw a returning seashell projectile
-		This seashell does true damage and does not benefit from any damage class
-		Provides increased underwater mobility and slightly reduces breath loss in the abyss
-		''' */
+		在液体中时获得+3生命恢复和10%魔法伤害加成 
+		使用任何武器时都有10%的几率发射回旋贝壳弹幕
+		贝壳造成真实伤害，不受任何职业伤害加成影响
+		增加水下的移动速度并略微降低深渊中的氧气消耗 
+		'''
 }
 
 AncientVictideHeadMelee: {
-	// DisplayName: Victide Helm Legacy
-	// Tooltip: '''5% increased melee damage	'''
-	/* SetBonus:
+	DisplayName: 胜潮战盔[Legacy]
+	Tooltip: 增加5%近战伤害
+	SetBonus:
 		'''
-		Enemies are more likely to target you
-		+1.5 HP/s life regen and 10% increased melee damage while submerged in liquid
-		When using any weapon you have a 10% chance to throw a returning seashell projectile
-		This seashell does true damage and does not benefit from any damage class
-		Provides increased underwater mobility and slightly reduces breath loss in the abyss
-		''' */
+		敌人更有可能攻击你。
+		在液体中时获得+3生命恢复和10%近战伤害加成 
+		使用任何武器时都有10%的几率发射回旋贝壳弹幕
+		贝壳造成真实伤害，不受任何职业伤害加成影响
+		增加水下的移动速度并略微降低深渊中的氧气消耗 
+		'''
 }
 
 AncientVictideHeadRanged: {
-	// DisplayName: Victide Visage Legacy
-	// Tooltip: 5% increased ranged damage
-	/* SetBonus:
+	DisplayName: 胜潮面罩[Legacy]
+	Tooltip: 增加5%远程伤害
+	SetBonus:
 		'''
-		+1.5 HP/s life regen and 10% increased ranged damage while submerged in liquid
-		When using any weapon you have a 10% chance to throw a returning seashell projectile
-		This seashell does true damage and does not benefit from any damage class
-		Provides increased underwater mobility and slightly reduces breath loss in the abyss
-		''' */
+		在液体中时获得+3生命恢复和10%远程伤害加成 
+		使用任何武器时都有10%的几率发射回旋贝壳弹幕
+		贝壳造成真实伤害，不受任何职业伤害加成影响
+		增加水下的移动速度并略微降低深渊中的氧气消耗 
+		'''
 }
 
 AncientVictideHeadRogue: {
-	// DisplayName: Victide Headgear Legacy
-	// Tooltip: 5% increased rogue damage
-	/* SetBonus:
+	DisplayName: 胜潮头套[Legacy]
+	Tooltip: 增加5%盗贼伤害
+	SetBonus:
 		'''
-		+60 maximum stealth
-		+1.5 HP/s life regen and 10% increased rogue damage while submerged in liquid
-		When using any weapon you have a 10% chance to throw a returning seashell projectile
-		This seashell does true damage and does not benefit from any damage class
-		Provides increased underwater mobility and slightly reduces breath loss in the abyss
-		''' */
+		+60点最大潜伏值
+		在液体中时获得+3生命恢复和10%盗贼伤害加成 
+		使用任何武器时都有10%的几率发射回旋贝壳弹幕
+		贝壳造成真实伤害，不受任何职业伤害加成影响
+		增加水下的移动速度并略微降低深渊中的氧气消耗 
+		'''
 }
 
 AncientVictideHeadSummon: {
-	// DisplayName: Victide Mask Legacy
-	// Tooltip: 10% increased summon damage
-	/* SetBonus:
+	DisplayName: 胜潮面具[Legacy]
+	Tooltip: 增加10%召唤伤害
+	SetBonus:
 		'''
-		+1 max minion
-		Summons a sea snail to protect you
-		+1.5 HP/s life regen and 10% increased summon damage while submerged in liquid
-		When using any weapon you have a 10% chance to throw a returning seashell projectile
-		This seashell does true damage and does not benefit from any damage class
-		Provides increased underwater mobility and slightly reduces breath loss in the abyss
-		''' */
+		+1召唤栏
+		召唤一只海胆为你而战
+		在液体中时获得+3生命恢复和10%远程伤害加成 
+		使用任何武器时都有10%的几率发射回旋贝壳弹幕
+		贝壳造成真实伤害，不受任何职业伤害加成影响
+		增加水下的移动速度并略微降低深渊中的氧气消耗 
+		'''
 }
 
 AncientVictideLeggings: {
-	// DisplayName: Victide Leggings Legacy
-	/* Tooltip:
+	DisplayName: 胜潮护腿[Legacy]
+	Tooltip:
 		'''
-		Movement speed increased by 8%
-		Movement speed increased by 30% while submerged in liquid
-		''' */
+		增加8%移速
+		在液体中时增加30%移动速度
+		'''
 }

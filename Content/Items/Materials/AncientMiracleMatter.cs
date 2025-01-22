@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Materials
         {
             CreateRecipe().
                 AddIngredient<ExoPrism>(10).
-                AddIngredient<AuricBarold>(2).
+                AddIngredient<AuricBarold>(4).
                 AddIngredient<CosmiliteBar>(10).
                 AddIngredient<LifeAlloy>(10).
                 AddIngredient<CoreofCalamity>(10).
@@ -100,11 +100,11 @@ namespace CalamityInheritance.Content.Items.Materials
 
             CreateRecipe().
                 AddIngredient<ExoPrism>(10).
-                AddIngredient<AuricBar>(12).
+                AddIngredient<AuricBar>(24).
                 AddIngredient<CosmiliteBar>(10).
                 AddIngredient<LifeAlloy>(10).
                 AddIngredient<CoreofCalamity>(10).
-                AddIngredient<AscendantSpiritEssence>(10).
+                AddIngredient<AscendantSpiritEssence>(30).
                 AddIngredient<GalacticaSingularity>(10).
                 AddTile<DraedonsForge>().
                 Register();

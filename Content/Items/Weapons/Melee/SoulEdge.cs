@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -17,6 +18,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f};
 
+        public override void SetStaticDefaults()
+        {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+             //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidEdge>()] = ModContent.ItemType<SoulEdge>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<SoulEdge>()] = ModContent.ItemType<VoidEdge>();
+            }
+        }
         public override void SetDefaults()
         {
             Item.width = 88;
@@ -63,13 +73,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<RuinousSoul>(10).
-                AddIngredient<Necroplasm>(10).
-                AddIngredient(ItemID.Ectoplasm, 10).
-                AddIngredient<Voidstone>(10).
-                AddTile(TileID.LunarCraftingStation).
-                Register();
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+             //关闭微光转化后，灵魂边锋启用合成表
+            {
+                CreateRecipe().
+                    AddIngredient<RuinousSoul>(10).
+                    AddIngredient<Necroplasm>(10).
+                    AddIngredient(ItemID.Ectoplasm, 10).
+                    AddIngredient<Voidstone>(10).
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
+            }
         }
     }
 }

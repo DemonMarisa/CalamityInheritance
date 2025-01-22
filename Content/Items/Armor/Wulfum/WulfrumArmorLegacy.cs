@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<WulfrumArmorLegacy>()] = ModContent.ItemType<ANewWulfrumArmor>();
         }
 
         public override void SetDefaults()

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeWulfrumHelmLegacy>()] = ModContent.ItemType<ANewWulfrumHelmet>();
         }
 
         public override void SetDefaults()
@@ -23,7 +25,11 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            bool wulLegacy = body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            bool wulNew = body.type == ModContent.ItemType<ANewWulfrumArmor>() && legs.type == ModContent.ItemType<ANewWulfrumLeggings>();
+            bool wullegacynew = body.type == ModContent.ItemType<WulfrumArmorLegacy>() && legs.type == ModContent.ItemType<ANewWulfrumLeggings>();
+            bool wulnewlegacy = body.type == ModContent.ItemType<ANewWulfrumArmor>() && legs.type == ModContent.ItemType<WulfrumLeggingsLegacy>();
+            return wulLegacy || wulNew || wullegacynew || wulnewlegacy;
         }
 
         public override void UpdateArmorSet(Player player)

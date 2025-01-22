@@ -89,13 +89,13 @@ ReaverSummonSetBuff: {
 }
 
 AncientXerocMadness: {
-	// DisplayName: Ancient Xeroc Madness
-	// Description: The sensation of pain makes your blood boil
+	DisplayName: 远古克希洛克之怒[legacy]
+	Description: 对痛楚的感受使你血脉喷张
 }
 
 AncientXerocShame: {
-	// DisplayName: Ancient Xeroc Shame
-	// Description: Declining physical state leaves you feeling helpless
+	DisplayName: 远古克希洛克残念[legacy]
+	Description: 身体状况的下滑使你力不从心
 }
 
 CosmicEnergyOld: {

@@ -74,7 +74,7 @@ namespace CalamityInheritance.CIPlayer
         public void OtherBuffEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            var modplayer1 = Player.CalamityInheritance();
+            var usPlayer = Player.CalamityInheritance();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
             if (armorShattering)

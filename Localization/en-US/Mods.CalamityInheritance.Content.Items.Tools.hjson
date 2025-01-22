@@ -35,6 +35,6 @@ MusicMarkChange: {
 }
 
 ChargerItem: {
-	DisplayName: Charger Item
-	Tooltip: After use, it instantly recharges all Draedon's Arsenal weapons
+	DisplayName: Instant Charger
+	Tooltip: Instantly recharges all Draedon's Arsenal weapons if used
 }

@@ -35,11 +35,18 @@ ProvidenceLegacy: {
 }
 
 TyrantPart1: {
-	DisplayName: Tyrant Part1
-	Tooltip: ""
+	DisplayName: Music Box(Tyrant - Part 1)
+	Tooltip:
+		'''
+		Play [c/FFA500:Tyrant - Part 1](01:54) by DM DOKURO
+		Oh king, why'd you have to let your loved ones dies?
+		No family to run back home to...
+		Ohh king, while their ashes still linger through the sky
+		A message still try to get through you...
+		'''
 }
 
 RequiemsOfACruelWorld: {
-	DisplayName: Requiems Of A Cruel World
-	Tooltip: ""
+	DisplayName: Music Box(Requiems of A Cruel World)
+	Tooltip: Play [c/002BEE:Requiems of a Cruel World] by PinpinNero
 }

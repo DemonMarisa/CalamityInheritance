@@ -31,9 +31,8 @@ CIRampartofDeities: {
 	Tooltip:
 		'''
 		受到伤害时会召唤星星从天而降并延长受伤后无敌时间
-		根据你已损失的生命值在受伤时获得额外的无敌帧
-		满血时提供10无敌帧，最高提升至25%以下血量时的40无敌帧
-		减少治疗药水25%的冷却时间
+		+0.5HP/s生命再生，减少治疗药水25%的冷却时间
+		增加25点盔甲穿透
 		'''
 }
 
@@ -44,7 +43,7 @@ CoreOfTheBloodGod: {
 		血量上限增加25%
 		治疗药水的效果增加25%
 		获得血肉图腾的效果
-		免伤增加10%
+		提高10%伤害减免
 		'''
 }
 
@@ -52,8 +51,8 @@ DarkSunRingold: {
 	DisplayName: 蚀日尊戒[Legacy]
 	Tooltip:
 		'''
-		增加12%伤害
-		+1HP/s生命再生和2格最大仆从栏位
+		增加12%伤害与近战攻速
+		+1HP/s生命再生，+2仆从上限
 		增加仆从击退
 		在白天时+3HP/s生命再生
 		在夜晚时增加30点防御
@@ -121,10 +120,10 @@ DashAccessories: {
 		DisplayName: 斯塔提斯虚空饰带[Revamped]
 		Tooltip:
 			'''
-			增加8%伤害与4%暴击几率
-			增加32%跳跃速度并允许自动跳跃
+			增加10%伤害
+			增加32%跳跃速度，10%移动速度
 			使你免疫摔落伤害
-			可以攀爬、冲刺和闪避攻击
+			允许自动跳跃、攀爬、冲刺和闪避攻击
 			低于最大生命值5%伤害的攻击不会触发闪避
 			根据被闪避的攻击伤害，闪避有15到90秒的冷却时间
 			该冷却时间与其他的闪避或反弹效果共享
@@ -144,8 +143,6 @@ DeificAmuletLegacy: {
 		'''
 		增加10点护甲穿透并减少治疗药水的冷却时间
 		受到伤害时会召唤星星从天而降并延长受伤后无敌时间
-		根据你已损失的生命值在受伤时获得额外的无敌帧
-		满血时提供10无敌帧，最高提升至25%以下血量时的40无敌帧
 		在水下发光并在深渊提供微量光芒
 		'''
 }
@@ -346,22 +343,22 @@ TheAbsorberOld: {
 }
 
 AncientCotBG: {
-	// DisplayName: Ancient Core of the Blood God
-	/* Tooltip:
+	DisplayName: 远古血神核心[Legacy]
+	Tooltip:
 		'''
-		5% increased damage reduction, 10% increased damage
-		Halves the contact damage, this effect has 20 seconds cooldown
-		15% increased damage if you are below 100 defense
-		''' */
+		提高10%伤害与5%伤害减免
+		使碰撞伤害减半，这个效果有20秒的冷却时间
+		低于100防御力时提高15%伤害
+		'''
 }
 
 AncientReaperToothNecklace: {
-	// DisplayName: Ancient Reaper Tooth Necklace
-	/* Tooltip:
+	DisplayName: 远古猎魂鲨牙项链[Legacy]
+	Tooltip:
 		'''
-		+100 armor penetration
-		25% increased damage and critical strike chance
-		Your damage reduction and defense will be reduced by a tentn.
-		'I don't think this should exist...'
-		''' */
+		增加200点护甲穿透
+		提高25%伤害与暴击概率
+		你的防御值与伤害减免会被减少至原本的1/10
+		'这玩意应该存在吗...?'
+		'''
 }

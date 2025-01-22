@@ -9,6 +9,7 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -56,6 +57,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             recipe1.AddIngredient(ModContent.ItemType<MiracleMatter>());
             recipe1.AddTile(ModContent.TileType<DraedonsForge>());
             recipe1.Register();
+
+            CreateRecipe().
+                AddIngredient(ModContent.ItemType<GalileoGladius>()).
+                AddIngredient(ModContent.ItemType<CosmicShiv>()).
+                AddIngredient(ModContent.ItemType<Lucrecia>()).
+                AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
+                AddTile(ModContent.TileType<DraedonsForge>()).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ModContent.ItemType<GalileoGladius>()).
+                AddIngredient(ModContent.ItemType<CosmicShivold>()).
+                AddIngredient(ModContent.ItemType<Lucrecia>()).
+                AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
+                AddTile(ModContent.TileType<DraedonsForge>()).
+                Register();
         }
     }
 }

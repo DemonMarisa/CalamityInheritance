@@ -28,13 +28,23 @@ namespace CalamityInheritance.Content.Items
             {
                 itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
-                itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
+                if(CalamityInheritanceConfig.Instance.CustomShimmer == false) 
+                {
+                    itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
+                    itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
+                //关闭微光转化后，魔君礼物与旧龙息将正常掉落
+                }
             }
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
 
             if (item.type == ModContent.ItemType<LeviathanBag>())
-                itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 1);
+            {
+                if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+                {
+                    itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
+                }
+            }
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);

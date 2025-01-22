@@ -9,6 +9,7 @@ using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -24,6 +25,15 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const float RamExplosionKnockback = 20f;
 
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
+        public override void SetStaticDefaults()
+        {
+
+            // if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            // {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegis>()] = ModContent.ItemType<ElysianAegisold>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegisold>()] = ModContent.ItemType<ElysianAegis>();
+            // }
+        }
         public override void SetDefaults()
         {
             Item.width = 48;

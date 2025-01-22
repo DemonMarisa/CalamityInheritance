@@ -14,6 +14,7 @@ using CalamityMod.Items;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -26,6 +27,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Spears[Item.type] = true;
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StreamGouge>()] = ModContent.ItemType<StreamGougeOld>();
+            }
         }
 
         public override void SetDefaults()
@@ -57,10 +62,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 14);
-            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe.Register();
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+            {
+                Recipe recipe = CreateRecipe();
+                recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 14);
+                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                recipe.Register();
+            }
         }
     }
 }
