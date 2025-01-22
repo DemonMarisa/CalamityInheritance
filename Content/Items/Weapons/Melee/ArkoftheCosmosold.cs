@@ -313,21 +313,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             CreateRecipe().
                 AddIngredient<FourSeasonsGalaxiaold>().
                 AddIngredient<ArkoftheElementsold>().
-                AddIngredient<AuricBar>(5).
+                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
 
             CreateRecipe().
                 AddIngredient<FourSeasonsGalaxiaold>().
                 AddIngredient<ArkoftheElementsold>().
-                AddIngredient<AuricBarold>().
+                AddIngredient<AuricBar>(5).
                 AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<ArkoftheCosmos>(1).
                 Register();
         }
     }
-
 }

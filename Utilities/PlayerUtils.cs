@@ -75,6 +75,8 @@ namespace CalamityInheritance.Utilities
             // This stacks with the above Deific Amulet effect
             if (modPlayer.fasterAuricTracers && hurtInfo.Damage > 200)
                 extraIFrames += 30;
+            if (modPlayer.RoDPaladianShieldActive)
+                extraIFrames += 30;
 
             return extraIFrames;
         }

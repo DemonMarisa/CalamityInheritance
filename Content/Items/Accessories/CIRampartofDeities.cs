@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -43,6 +44,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient(ItemID.FrozenShield).
                 AddIngredient<DeificAmulet>().
                 AddIngredient<AuricBar>(5).
+                AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
@@ -50,7 +52,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             CreateRecipe().
                 AddIngredient(ItemID.FrozenShield).
                 AddIngredient<DeificAmuletLegacy>().
-                AddIngredient<AuricBar>(5).
+                AddIngredient<AuricBarold>(1).
+                AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();

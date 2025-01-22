@@ -188,17 +188,16 @@ namespace CalamityInheritance.Content.Items
             //神壁
             Recipe.Create(ModContent.ItemType<RampartofDeities>()).
                 AddIngredient(ItemID.FrozenShield).
-                AddIngredient<DeificAmuletLegacy>().
+                AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile<CosmicAnvil>().
                 Register();
 
             Recipe.Create(ModContent.ItemType<TracersSeraph>()).
-                AddIngredient<UtensilPoker>().
-                AddIngredient(ItemID.LifeCrystal).
-                AddIngredient(ItemID.Bone, 92).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddIngredient<TracersElysian>().
+                AddIngredient<DrewsWings>().
+                AddIngredient<AuricBar>(5).
                 AddTile<CosmicAnvil>().
                 Register();
 
@@ -617,15 +616,6 @@ namespace CalamityInheritance.Content.Items
                 AddTile<CosmicAnvil>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<AuricTeslaCuisses>()).
-                AddIngredient<SilvaLeggings>().
-                AddIngredient<BloodflareCuisses>().
-                AddIngredient<TarragonLeggings>().
-                AddIngredient(ItemID.FlyingCarpet).
-                AddIngredient<AuricBarold>(2).
-                AddTile<CosmicAnvil>().
-                Register();
-
             Recipe.Create(ModContent.ItemType<AuricTeslaHoodedFacemask>()).
                 AddIngredient<GodSlayerHeadRanged>().
                 AddIngredient<BloodflareHeadRanged>().
@@ -738,13 +728,6 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<BlossomFlux>()).
                 AddIngredient(ModContent.ItemType<EffulgentFeather>(),12).
                 AddIngredient(ModContent.ItemType<YharonSoulFragment>(),4).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<DynamicPursuer>()).
-                AddIngredient(ModContent.ItemType<Eradicator>()).
-                AddIngredient(ModContent.ItemType<TrackingDisk>()).
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile(ModContent.TileType<CosmicAnvil>()).
                 Register();

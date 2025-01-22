@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
@@ -104,6 +105,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             r.AddIngredient<AuricBar>(5);
             r.AddTile<CosmicAnvil>();
             r.Register();
+
+            Recipe r1 = CreateRecipe();
+            r1.AddIngredient<VenusianTrident>();
+            r1.AddIngredient<LashesofChaos>();
+            r1.AddIngredient<ForbiddenSun>();
+            r1.AddIngredient(ItemID.FragmentSolar, 20);
+            r1.AddIngredient(ItemID.FragmentNebula, 5);
+            r1.AddIngredient<AuricBarold>(1);
+            r1.AddTile<CosmicAnvil>();
+            r1.Register();
         }
     }
 }

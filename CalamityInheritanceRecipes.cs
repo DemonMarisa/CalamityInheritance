@@ -1,6 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+﻿using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
@@ -25,7 +27,8 @@ namespace CalamityInheritance
         public static RecipeGroup HeliumFlashRecipeGroup;
         public static RecipeGroup WoodSwordRecipeGroup;
         public static RecipeGroup ExoTropyGroup;
-        public static RecipeGroup CosmicShivGroup;
+        public static RecipeGroup CosmicShivGroup; 
+        public static RecipeGroup DeificAmuletGroup;
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
@@ -34,6 +37,7 @@ namespace CalamityInheritance
             WoodSwordRecipeGroup = null;
             ExoTropyGroup = null;
             CosmicShivGroup = null;
+            DeificAmuletGroup = null;
         }
         public override void AddRecipeGroups()
         {
@@ -67,6 +71,9 @@ namespace CalamityInheritance
             CosmicShivGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<CosmicShiv>())}",
                 ModContent.ItemType<CosmicShiv>(), ModContent.ItemType<CosmicShivold>());
 
+            DeificAmuletGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<DeificAmulet>())}",
+                ModContent.ItemType<DeificAmulet>(), ModContent.ItemType<DeificAmuletLegacy>());
+
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalFury", PhantasmalFuryRecipeGroup);
@@ -74,6 +81,7 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyWoodenSword", WoodSwordRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyExoTropy", ExoTropyGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyCosmicShiv", CosmicShivGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyDeificAmulet", DeificAmuletGroup);
         }
 
         public void ItemTrain()

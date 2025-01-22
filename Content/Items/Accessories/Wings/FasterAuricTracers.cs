@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items;
@@ -82,6 +83,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<TracersElysian>().
+                AddIngredient<DrewsWings>().
+                AddIngredient<AuricBarold>(1).
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<TracersElysian>().
                 AddIngredient<DrewsWings>().

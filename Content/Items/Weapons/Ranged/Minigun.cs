@@ -53,18 +53,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-
             CreateRecipe().
                 AddIngredient(ItemID.ChainGun).
                 AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBar>(5).
+                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
 
             CreateRecipe().
                 AddIngredient(ItemID.ChainGun).
                 AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBarold>().
+                AddIngredient<AuricBar>(5).
                 AddTile<CosmicAnvil>().
                 Register();
         }

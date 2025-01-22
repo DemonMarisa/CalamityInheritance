@@ -30,7 +30,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
                     player.Calamity().disableVoodooSpawns = false;
                 else
                     player.Calamity().disableVoodooSpawns = true;
-                state = player.Calamity().disableVoodooSpawns;
             }
         }
         public override void AddRecipes()

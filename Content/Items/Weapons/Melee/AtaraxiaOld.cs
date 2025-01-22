@@ -10,6 +10,7 @@ using Terraria;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -130,6 +131,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddIngredient<AuricBarold>(1).
+                AddIngredient<CosmiliteBar>(8).
+                AddIngredient<AscendantSpiritEssence>(2).
+                AddIngredient<NightmareFuel>(20).
+                AddTile<CosmicAnvil>().
+                Register();
+
             CreateRecipe().
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddIngredient<AuricBar>(5).
