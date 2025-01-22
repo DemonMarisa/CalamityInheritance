@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles.Magic.ExoLore;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;

@@ -1,6 +1,9 @@
-﻿using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
@@ -10,6 +13,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,6 +39,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<Exobeamold>();
             Item.shootSpeed = 19f;
         }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            if (usPlayer.exoMechLore)
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExobeamoldExoLore>(), damage, knockback, player.whoAmI, 0f);
+            }
+            else
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<Exobeamold>(), damage, knockback, player.whoAmI, 0f);
+            }
+            return false;
+        }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             int lifeAmount = player.statLifeMax2 - player.statLife;
@@ -50,13 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         private int hitCount = 0;
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            hitCount++;
-
-            if (hitCount >= 5 || target.life <= target.lifeMax * 0.1f)
-            {
-                Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
-                hitCount = 0;
-            }
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
             SoundEngine.PlaySound(SoundID.Item88, player.Center);
             float xPos = player.position.X + 800 * Main.rand.NextBool(2).ToDirectionInt();
@@ -68,12 +79,48 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             velocity.Y *= dir * 150;
             velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
             velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<Exocomet>()] < 16)
+
+            if (usPlayer.exoMechLore)
+            {
+                hitCount++;
+
+                if (hitCount >= 5 || target.life <= target.lifeMax * 0.15f)
+                {
+                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
+                    hitCount = 0;
+                }
+                for (int comet = 0; comet < 2; comet++)
+                {
+                    float ai1 = Main.rand.NextFloat() + 0.5f;
+                    Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<CIExocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
+                }
+            }
+            else
+            {
+                if (target.life <= target.lifeMax * 0.05f)
+                {
+                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
+                    hitCount = 0;
+                }
+            }
+
+            if(usPlayer.exoMechLore)
             {
                 for (int comet = 0; comet < 2; comet++)
                 {
                     float ai1 = Main.rand.NextFloat() + 0.5f;
                     Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<Exocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
+                }
+            }
+            else
+            {
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<Exocomet>()] < 8)
+                {
+                    for (int comet = 0; comet < 2; comet++)
+                    {
+                        float ai1 = Main.rand.NextFloat() + 0.5f;
+                        Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<Exocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
+                    }
                 }
             }
 
@@ -83,6 +130,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int healAmount = Main.rand.Next(3) + 5;
             player.statLife += healAmount;
             player.HealEffect(healAmount);
+
+            target.ExoDebuffs();
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

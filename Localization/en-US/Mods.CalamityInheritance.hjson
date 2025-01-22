@@ -133,5 +133,10 @@ Configs: {
 				Disables will makes them have other ways to optain
 				'''
 		}
+
+		EtherealTalismancTexture: {
+			Label: Ethereal Talismanc Texture
+			Tooltip: ""
+		}
 	}
 }

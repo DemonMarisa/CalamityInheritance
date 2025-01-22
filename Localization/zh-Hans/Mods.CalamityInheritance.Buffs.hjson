@@ -99,6 +99,6 @@ AncientXerocShame: {
 }
 
 CosmicEnergyOld: {
-	// DisplayName: Cosmic Energy Old
-	// Description: Mods.CalamityInheritance.Buffs.CosmicEnergyOld.Description
+	DisplayName: 归虚之灵[legacy]
+	Description: 归虚之灵会保护你
 }

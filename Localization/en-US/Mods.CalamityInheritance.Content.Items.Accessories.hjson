@@ -128,11 +128,6 @@ DashAccessories: {
 			Uses the same dodge mechanic as Calamity mod
 			'''
 	}
-
-	AncientStatisBeltofCursedStatis: {
-		DisplayName: Ancient Statis Beltof Cursed Statis
-		Tooltip: ""
-	}
 }
 
 DeificAmuletLegacy: {

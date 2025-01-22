@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -29,6 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public float counter = 0f;
         public override void AI()
         {
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
             Vector2 value7 = new Vector2(5f, 10f);
             counter += 1f;
@@ -56,8 +60,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.dust[dusters].velocity *= 0f;
                 }
             }
-
-            CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 12f, 20f);
+            if (usPlayer.exoMechLore)
+            {
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 18f, 10f);
+            }
+            else
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 12f, 20f);
         }
 
         public override void OnKill(int timeLeft)
@@ -79,15 +87,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.ai[0] != 1f)
             {
-                target.AddBuff(BuffID.Frostburn, 300);
-                target.AddBuff(BuffID.OnFire, 300);
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-                target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+                target.ExoDebuffs();
                 OnHitEffects(target.Center);
             }
         }
         private void OnHitEffects(Vector2 targetPos)
         {
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             var source = Projectile.GetSource_FromThis();
             float swordKB = Projectile.knockBack;
             int swordDmg = (int)(Projectile.damage * 0.25);
@@ -105,10 +112,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, -1000f, -800f, 29f, ModContent.ProjectileType<ExoGladSpears>(), swordDmg, swordKB, Projectile.owner);
                 }
-                
-                for (int j = 0; j < comet; ++j)
+                if(usPlayer.exoMechLore)
                 {
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), swordDmg, swordKB, Projectile.owner);
+                    for (int j = 0; j < comet; ++j)
+                    {
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), swordDmg, swordKB, Projectile.owner);
+                    }
                 }
             }
         }

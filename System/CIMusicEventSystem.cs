@@ -61,7 +61,7 @@ namespace CalamityInheritance.System
                 EventCollection.Add(entry);
             }
 
-            AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.1709d),
+            AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.5d),
                 () => DownedBossSystem.downedYharon, () => CalamityInheritanceConfig.Instance.Tyrant1);
 
             AddEntry("ScalDefeated", "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(365d),

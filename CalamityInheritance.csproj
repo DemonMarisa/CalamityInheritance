@@ -126,8 +126,6 @@
 		<None Remove="Content\Items\Weapons\Magic\StratusSphere.png" />
 		<None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
 		<None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
-		<None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
-		<None Remove="Content\Items\Weapons\Magic\VividClarityGlow.png" />
 		<None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
 		<None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 		<None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
@@ -340,8 +338,6 @@
 		<None Remove="Content\Items\Weapons\Magic\StratusSphere.png" />
 		<None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
 		<None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
-		<None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
-		<None Remove="Content\Items\Weapons\Magic\VividClarityGlow.png" />
 		<None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
 		<None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 		<None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
@@ -554,8 +550,6 @@
 	  <None Remove="Content\Items\Weapons\Magic\StratusSphere.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
-	  <None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
-	  <None Remove="Content\Items\Weapons\Magic\VividClarityGlow.png" />
 	  <None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
 	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />
@@ -768,8 +762,6 @@
 	  <None Remove="Content\Items\Weapons\Magic\StratusSphere.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexold.png" />
 	  <None Remove="Content\Items\Weapons\Magic\SubsumingVortexoldGlow.png" />
-	  <None Remove="Content\Items\Weapons\Magic\VividClarity.png" />
-	  <None Remove="Content\Items\Weapons\Magic\VividClarityGlow.png" />
 	  <None Remove="Content\Items\Weapons\Magic\VoidVortex.png" />
 	  <None Remove="Content\Items\Weapons\Melee\BloodyEdge.png" />
 	  <None Remove="Content\Items\Weapons\Melee\ElementBallShivold.png" />

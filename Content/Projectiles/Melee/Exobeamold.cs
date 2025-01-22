@@ -1,5 +1,8 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -140,10 +143,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.Frostburn, 300);
-            target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            target.ExoDebuffs();
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -83,6 +83,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoLightold>(),
                     ProjectileType<ExoSpearBack>(),
                     ProjectileType<ExoGunBlast>(),
+                    ProjectileType<ExoGunBlastsplit>(),
                     ProjectileType<KingsbaneHoldout>(),
                     ProjectileType<PhangasmBowOld>(),
             };

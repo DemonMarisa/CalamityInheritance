@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
@@ -15,6 +16,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
@@ -178,7 +180,10 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Bumblefuck>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ModContent.ItemType<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Providence>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<ElysianAegisold>(), 1);
+            }
             if (npc.type == ModContent.NPCType<StormWeaverHead>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
             if (npc.type == ModContent.NPCType<CeaselessVoid>())

@@ -494,10 +494,11 @@ KnowledgeYharon: {
 }
 
 KnowledgeExoMechs: {
-	DisplayName: ExoMechs[Legacy]
+	DisplayName: ExoMechs Revamped
 	Lore:
 		'''
 		The fruits of masterful craftsmanship and optimization, created only with the objective to destroy.
 		Yet in the end, they achieved little more than the original designs they were derived from.
+		These Knowledge aren't finished.
 		'''
 }

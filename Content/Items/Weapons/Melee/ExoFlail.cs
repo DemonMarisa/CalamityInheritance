@@ -11,13 +11,14 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ExoFlail : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-        public static int BaseDamage = 3000;
 
         public static float Speed = 34f;
 
@@ -33,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 54;
             Item.height = 90;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = 3000;
+            Item.damage = 1000;
             Item.knockBack = 9f;
             Item.useAnimation = 15;
             Item.useTime = 15;
@@ -50,16 +51,24 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            hitCount++;
-            float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
-            if (hitCount >= 5)
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            if(usPlayer.exoMechLore)
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
-                hitCount = 0;
+                hitCount++;
+                float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
+                if (hitCount >= 5)
+                {
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
+                    hitCount = 0;
+                }
+                else
+                {
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, ai3);
+                }
             }
             else
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, ai3);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
             }
             return false;
         }

@@ -9,6 +9,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Rogue;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -34,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             if (!initialized)
             {
-                SoundEngine.PlaySound(VividClarity.BeamSound, Projectile.Center);
+                SoundEngine.PlaySound(VividClarityOld.BeamSound, Projectile.Center);
                 initialized = true;
                 float dustAmt = 16f;
                 int d = 0;
@@ -102,17 +105,17 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 SummonLasers();
             }
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
-            target.AddBuff(BuffID.Frostburn, 300);
-            target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            target.ExoDebuffs();
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
             if (Projectile.owner == Main.myPlayer)
             {
-                SummonLasers();
+                    SummonLasers();
             }
             target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
             target.AddBuff(BuffID.Frostburn, 300);
@@ -127,11 +130,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 case 0f:
                     CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 100f, 400f, 640f, 12f, ModContent.ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 1f:
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 2f:
@@ -145,7 +147,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
             }
         }

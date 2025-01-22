@@ -31,6 +31,7 @@ using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.CICooldowns;
+using CalamityInheritance.Content.Items.Accessories.Magic;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -435,6 +436,17 @@ namespace CalamityInheritance.CIPlayer
                 if (CalamityInheritanceConfig.Instance.RampartofDeitiesTexture == 2)
                 {
                     TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CalamityInheritanceTexture.RampartofDeitiesOld;
+                }
+            }
+            if (TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.EtherealTalismancTexture == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CalamityInheritanceTexture.EtherealTalismanNew;
+                }
+                if (CalamityInheritanceConfig.Instance.EtherealTalismancTexture == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CalamityInheritanceTexture.EtherealTalismanOld;
                 }
             }
             #endregion

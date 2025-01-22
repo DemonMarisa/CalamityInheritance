@@ -46,5 +46,6 @@ TerraBolt2.DisplayName: 泰拉射线
 TerraOrb.DisplayName: 泰拉光球
 TerraOrb2.DisplayName: 泰拉光球
 WulfrumBoltOld.DisplayName: 钨钢光球
-// EnormousConsumingVortexoldExoLore.DisplayName: Enormous Consuming Vortexold Exo Lore
-// VortexExoLore.DisplayName: Vortex Exo Lore
+EnormousConsumingVortexoldExoLore.DisplayName: 星流螺旋
+VortexExoLore.DisplayName: 星流旋涡
+CIVividBeamExoLore.DisplayName: 星爆射线

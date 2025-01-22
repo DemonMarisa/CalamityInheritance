@@ -35,6 +35,10 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> RampartofDeitiesNew;
 
         public static Asset<Texture2D> RampartofDeitiesOld;
+
+        public static Asset<Texture2D> EtherealTalismanNew;
+
+        public static Asset<Texture2D> EtherealTalismanOld;
         public static void LoadTexture()
         {
             WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
@@ -50,6 +54,9 @@ namespace CalamityInheritance.Texture
 
             RampartofDeitiesNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/CIRampartofDeities");
             RampartofDeitiesOld = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/RampartofDeitiesOld");
+
+            EtherealTalismanNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/EtherealTalisman");
+            EtherealTalismanOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/AncientEtherealTalisman");
         }
         public static void UnloadTexture()
         {
@@ -71,6 +78,9 @@ namespace CalamityInheritance.Texture
 
             RampartofDeitiesNew = null;
             RampartofDeitiesOld = null;
+
+            EtherealTalismanNew = null;
+            EtherealTalismanOld = null;
         }
     }
 }

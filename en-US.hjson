@@ -33,6 +33,8 @@ Mods: {
 		Projectiles: {
 			CosmicBlastBigOld.DisplayName: Cosmic Blast Big Old
 			CosmicBlastOld.DisplayName: Cosmic Blast Old
+			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
+			Melee.CIExocomet.DisplayName: C I Exocomet
 		}
 	}
 }

@@ -44,31 +44,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<GalileoGladius>());
-            recipe.AddIngredient(ModContent.ItemType<CosmicShivold>());
+            recipe.AddRecipeGroup("CalamityInheritance:AnyCosmicShiv");
             recipe.AddIngredient(ModContent.ItemType<Lucrecia>());
             recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
             recipe.AddTile(ModContent.TileType<DraedonsForge>());
             recipe.Register();
 
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ModContent.ItemType<GalileoGladius>());
-            recipe1.AddIngredient(ModContent.ItemType<CosmicShiv>());
-            recipe1.AddIngredient(ModContent.ItemType<Lucrecia>());
-            recipe1.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe1.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe1.Register();
-
             CreateRecipe().
                 AddIngredient(ModContent.ItemType<GalileoGladius>()).
-                AddIngredient(ModContent.ItemType<CosmicShiv>()).
-                AddIngredient(ModContent.ItemType<Lucrecia>()).
-                AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
-                AddTile(ModContent.TileType<DraedonsForge>()).
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ModContent.ItemType<GalileoGladius>()).
-                AddIngredient(ModContent.ItemType<CosmicShivold>()).
+                AddRecipeGroup("CalamityInheritance:AnyCosmicShiv").
                 AddIngredient(ModContent.ItemType<Lucrecia>()).
                 AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
                 AddTile(ModContent.TileType<DraedonsForge>()).

@@ -12,6 +12,8 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -48,6 +50,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
             float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
             int num = 10;
@@ -70,12 +74,24 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (burst >= 5)
             {
-                burst = 0;
-                SoundEngine.PlaySound(SoundID.Item38);
-                Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 60, default) * 9f;
-                Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -60, default) * 9f;
-                Projectile.NewProjectile(source, position.X, position.Y, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
-                Projectile.NewProjectile(source, position.X, position.Y, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
+                if(usPlayer.exoMechLore)
+                {
+                    burst = 0;
+                    SoundEngine.PlaySound(SoundID.Item38);
+                    Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 60, default) * 9f;
+                    Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -60, default) * 9f;
+                    Projectile.NewProjectile(source, position.X, position.Y, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
+                }
+                else
+                {
+                    burst = 0;
+                    SoundEngine.PlaySound(SoundID.Item38);
+                    Vector2 vector4 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 45, default) * 9f;
+                    Vector2 vector5 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -45, default) * 9f;
+                    Projectile.NewProjectile(source, position.X, position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 0f, 0f);
+                }
             }
             return false;
         }
