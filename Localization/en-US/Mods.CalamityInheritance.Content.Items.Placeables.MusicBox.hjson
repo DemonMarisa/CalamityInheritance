@@ -48,8 +48,5 @@ TyrantPart1: {
 
 RequiemsOfACruelWorld: {
 	DisplayName: Music Box(Requiems of A Cruel World)
-	Tooltip:
-		'''
-		Play [c/002BEE:Requiems of a Cruel World] by PinpinNero
-		'''
+	Tooltip: Play [c/002BEE:Requiems of a Cruel World] by PinpinNero
 }

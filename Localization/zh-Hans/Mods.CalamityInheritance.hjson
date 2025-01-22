@@ -133,7 +133,7 @@ Configs: {
 		}
 
 		CustomShimmer: {
-			Label: "自定义微光转化"
+			Label: 自定义微光转化
 			Tooltip:
 				'''
 				为模组内部分回归物品添加微光转化配方

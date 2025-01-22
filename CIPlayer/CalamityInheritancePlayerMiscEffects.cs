@@ -73,8 +73,8 @@ namespace CalamityInheritance.CIPlayer
         }
         public void OtherBuffEffects()
         {
-            CalamityPlayer modPlayer = Player.Calamity();
-            var modplayer1 = Player.CalamityInheritance();
+            CalamityPlayer calPlayer = Player.Calamity();
+            var usPlayer = Player.CalamityInheritance();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
             if (armorShattering)
@@ -250,13 +250,13 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetDamage<GenericDamageClass>() += 0.15f;
                 }
             }
-            if (exoMechLore)
-            {
-                if (CalamityInheritanceLists.exoDraedibsArsenalWeapon?.Contains(item.type) ?? false)
-                {
-                    draedonsWeaponboost = true;
-                }
-            }
+            // if (exoMechLore)
+            // {
+            //     if (CalamityInheritanceLists.exoDraedibsArsenalWeapon?.Contains(item.type) ?? false)
+            //     {
+            //         draedonsWeaponboost = true;
+            //     }
+            // }
         }
         private void NanoTechUI()
         {

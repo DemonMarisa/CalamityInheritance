@@ -29,9 +29,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<TrueBiomeOrb>();
             Item.shootSpeed = 12f;
         }
-
-        
-
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))

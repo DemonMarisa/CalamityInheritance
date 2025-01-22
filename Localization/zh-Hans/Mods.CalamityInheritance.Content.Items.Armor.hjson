@@ -468,7 +468,7 @@ AncientVictideHeadMagic: {
 
 AncientVictideHeadMelee: {
 	DisplayName: 胜潮战盔[Legacy]
-	Tooltip: '''增加5%近战伤害'''
+	Tooltip: 增加5%近战伤害
 	SetBonus:
 		'''
 		敌人更有可能攻击你。
@@ -505,7 +505,7 @@ AncientVictideHeadRogue: {
 }
 
 AncientVictideHeadSummon: {
-    DisplayName: 胜潮面具[Legacy]
+	DisplayName: 胜潮面具[Legacy]
 	Tooltip: 增加10%召唤伤害
 	SetBonus:
 		'''

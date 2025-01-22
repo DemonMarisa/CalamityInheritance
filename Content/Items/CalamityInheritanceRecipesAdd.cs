@@ -308,14 +308,31 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile(ModContent.TileType<CosmicAnvil>()).
                 Register();
+
+            Recipe.Create(ItemID.Zenith).
+                AddIngredient<TerraEdge>(). //为天顶剑添加泰拉边锋的合成路线
+                AddIngredient(ItemID.Meowmere).
+                AddIngredient(ItemID.StarWrath).
+                AddIngredient(ItemID.InfluxWaver).
+                AddIngredient(ItemID.TheHorsemansBlade).
+                AddIngredient(ItemID.Seedler).
+                AddIngredient(ItemID.Starfury).
+                AddIngredient(ItemID.BeeKeeper).
+                AddIngredient(ItemID.EnchantedSword).
+                AddIngredient(ItemID.CopperShortsword).
+                AddIngredient(ModContent.ItemType<AuricBarold>()).
+                AddTile(ModContent.TileType<CosmicAnvil>()).
+                Register();
             #endregion
             
             #region Tools
             Recipe.Create(ModContent.ItemType<Cosmolight>()).
                 AddIngredient(ModContent.ItemType<Moonlight>()).
-                AddIngredient(ModContent.ItemType<Daylight>()).
+                AddIngredient(ModContent.ItemType<Daylight>()). 
                 AddIngredient(ItemID.FallenStar).
-                AddTile(TileID.Anvils).
+                // AddTile(TileID.Anvils).
+                AddTile(TileID.CrystalBall). 
+                //Scarlet 1/22:修改合成站为水晶球，防止玩家在困难模式前就能通过宇宙之光微光拆解获得肉后魂
                 Register();
             #endregion
         }

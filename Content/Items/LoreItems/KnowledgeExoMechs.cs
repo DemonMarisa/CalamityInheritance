@@ -35,16 +35,16 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 player.CalamityInheritance().exoMechLore = true;
             }
         }
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                AddIngredient<LoreExoMechs>().
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyExoTropy").
-                AddTile(TileID.Bookcases).
-                Register();
-        }
+        // public override void AddRecipes()
+        // {
+        //     CreateRecipe().
+        //         AddIngredient<LoreExoMechs>().
+        //         AddTile(TileID.Bookcases).
+        //         Register();
+        //     CreateRecipe().
+        //         AddRecipeGroup("CalamityInheritance:AnyExoTropy").
+        //         AddTile(TileID.Bookcases).
+        //         Register();
+        // }
     }
 }

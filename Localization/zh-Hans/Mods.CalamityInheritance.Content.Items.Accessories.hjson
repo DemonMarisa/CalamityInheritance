@@ -130,6 +130,11 @@ DashAccessories: {
 			冲刺时会在轨迹上留下追踪镰刀
 			'''
 	}
+
+	AncientStatisBeltofCursedStatis: {
+		// DisplayName: Ancient Statis Beltof Cursed Statis
+		// Tooltip: ""
+	}
 }
 
 DeificAmuletLegacy: {

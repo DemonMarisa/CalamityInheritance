@@ -7,6 +7,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -24,6 +25,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) 
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DragonsBreath>()] = ModContent.ItemType<DragonsBreathold>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DragonsBreathold>()] = ModContent.ItemType<DragonsBreath>();
+                //开启微光转化时，使老龙息与新龙息能相互转化，关闭后则正常掉落
+            }
         }
 
         public override void SetDefaults()

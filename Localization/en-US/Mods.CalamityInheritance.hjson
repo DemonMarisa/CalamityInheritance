@@ -36,7 +36,7 @@ Configs: {
 
 		TheSpongeBarrier: {
 			Label: "[i:CalamityMod/TheSponge]Toggle Sponge's Barrier"
-			Tooltip: 
+			Tooltip: Determines wheteher the Legacy Sponge can active barrier or not
 		}
 
 		BoCLoreUnconditional: {
@@ -62,10 +62,7 @@ Configs: {
 
 		silvastun: {
 			Label: "[i:CalamityMod/SilvaArmor]Toggle Silva Stun"
-			Tooltip:
-				'''
-				Determines mobs can be inflicted Silva Stun
-				'''
+			Tooltip: Determines mobs can be inflicted Silva Stun
 		}
 
 		ExoSperaHitEffect: {
@@ -130,8 +127,8 @@ Configs: {
 
 		CustomShimmer: {
 			Label: Custom Shimmer
-			Tooltip:	
-			 	'''
+			Tooltip:
+				'''
 				Determines all shimmer method for mod items
 				Disables will makes them have other ways to optain
 				'''

@@ -16,6 +16,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
+        public override void SetStaticDefaults()
+        {
+            
+        }
         public override void SetDefaults()
         {
             Item.width = 22;
@@ -41,13 +45,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             CreateRecipe().
                 AddIngredient(ItemID.FireGauntlet).
                 AddIngredient(ItemID.LunarBar, 8).
+                AddIngredient<YharimsInsignia>().
                 AddIngredient<GalacticaSingularity>(4).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient<ElementalGauntlet>(1);
-            recipe.Register();
         }
     }
 }

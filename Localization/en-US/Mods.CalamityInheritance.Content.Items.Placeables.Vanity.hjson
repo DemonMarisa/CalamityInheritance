@@ -1,6 +1,6 @@
 Armageddon: {
 	DisplayName: Armageddon Doll Furniture
-	Tooltip:	
+	Tooltip:
 		'''
 		Used to activate Armageddon Mode, which is literally no-hit mode in the early days of Calamity
 		Now it is just for decoration
@@ -9,10 +9,7 @@ Armageddon: {
 
 BloodIdol: {
 	DisplayName: Blood Idol Furniture
-	Tooltip:	
-		'''
-		Used to summon Blood Moon, but removed due to Blood Tear's addition
-		'''
+	Tooltip: Used to summon Blood Moon, but removed due to Blood Tear's addition
 }
 
 Death: {
@@ -52,7 +49,7 @@ MLGRune: {
 }
 
 Revenge: {
-	DisplayName: Blood Fountain of Revengeance Furniture 
+	DisplayName: Blood Fountain of Revengeance Furniture
 	Tooltip:
 		'''
 		Used to activate Revengeance Mode, removed due to Difficulty Indicator was introduced

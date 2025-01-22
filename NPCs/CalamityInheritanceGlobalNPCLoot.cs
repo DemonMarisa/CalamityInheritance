@@ -178,7 +178,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Bumblefuck>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ModContent.ItemType<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Providence>())
-               {npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
+                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<StormWeaverHead>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
             if (npc.type == ModContent.NPCType<CeaselessVoid>())

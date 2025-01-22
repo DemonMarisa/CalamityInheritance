@@ -12,6 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RangedWulfrumHeadgearLegacy>()] = ModContent.ItemType<ANewWulfrumHeadgear>();
         }
 
         public override void SetDefaults()
