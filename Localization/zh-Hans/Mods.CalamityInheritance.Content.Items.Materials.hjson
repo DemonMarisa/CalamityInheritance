@@ -18,16 +18,16 @@ CalamitousEssence: {
 }
 
 AncientMiracleMatter: {
-	// DisplayName: Ancient Miracle Matter
-	/* Tooltip:
+	DisplayName: 奇迹物质[Legacy]
+	Tooltip:
 		'''
-		Its amorphous from contains untold potential
-		One is required for every Exo Weapons
-		Not consumed when used to crafting
-		''' */
+		无所定形，但潜力无穷
+		每把星流武器需要一个
+		用于制作时不会被消耗
+		'''
 }
 
 AncientVictideBar: {
-	// DisplayName: Ancient Victide Bar
-	// Tooltip: ""
+	DisplayName: 胜朝锭[Legacy]
+	Tooltip: ""
 }

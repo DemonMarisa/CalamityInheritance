@@ -1,4 +1,8 @@
 DraedonsForgeold: {
 	DisplayName: Draedon's Forge Legacy
-	Tooltip: Used to craft uber-tier items
+	Tooltip:
+	 	'''
+		Used to craft uber-tier items
+		Counted as Cosmic Anvil
+		'''
 }

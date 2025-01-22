@@ -58,7 +58,7 @@ Configs: {
 		}
 
 		ExoSperaHitEffect: {
-			Label: "[i:FragmentStardust]圣火之枪额外弹幕"
+			Label: "[i:FragmentStardust]星焰弧光额外弹幕"
 			Tooltip: 如果你觉得平A弹幕粒子太多，可以关闭一部分
 		}
 
@@ -133,8 +133,13 @@ Configs: {
 		}
 
 		CustomShimmer: {
-			// Label: Custom Shimmer
-			// Tooltip: ""
+			Label: "自定义微光转化"
+			Tooltip:
+				'''
+				为模组内部分回归物品添加微光转化配方
+				关闭后回归物品将采用其他的获取来源
+				[c/FF0000:（此选项需要重加载）]
+				'''
 		}
 	}
 }

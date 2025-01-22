@@ -17,12 +17,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: Disable Elemental Quiver Split Effect
+			Label: "[i:CalamityMod/ElementalQuiver]Disable Elemental Quiver Split Effect"
 			Tooltip: Disables EQ Split Effect. Use if lag is an issue.
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: Elemental Quiver Splitstyle
+			Label: "[i:CalamityMod/ElementalQuiver]Elemental Quiver Splitstyle"
 			Tooltip:
 				'''
 				Determines the style of projectile spilt.
@@ -35,17 +35,21 @@ Configs: {
 		}
 
 		TheSpongeBarrier: {
-			Label: Toggle Sponge's Barrier
-			Tooltip: Enables Sponge's barrier, reworks The Sponge.
+			Label: "[i:CalamityMod/TheSponge]Toggle Sponge's Barrier"
+			Tooltip: 
 		}
 
 		BoCLoreUnconditional: {
-			Label: Toggle BoC Lore Effect
-			Tooltip: Disables the BoC Lore effect only works in specific biomes
+			Label: "[i:CalamityMod/LoreBrainofCthulhu]Toggle BoC Lore Effect"
+			Tooltip:
+				'''
+				Determines whether BoC Lore effect can be active outside Crimson or not
+				Disables by default
+				'''
 		}
 
 		GodSlayerSetBonusesChange: {
-			Label: God Slayer Set Bonuses Change
+			Label: "[i:CalamityMod/NebulousCore]God Slayer Set Bonuses Change"
 			Tooltip:
 				'''
 				Determines the bonuses of God Slayer Armor
@@ -57,27 +61,30 @@ Configs: {
 		}
 
 		silvastun: {
-			Label: Toggle Silva Stun
-			Tooltip: Disables Silva Stun while equipping legacy Silva and Auric armor
+			Label: "[i:CalamityMod/SilvaArmor]Toggle Silva Stun"
+			Tooltip:
+				'''
+				Determines mobs can be inflicted Silva Stun
+				'''
 		}
 
 		ExoSperaHitEffect: {
-			Label: Reduced Exo Spera Hit Effect
+			Label: "[i:FragmentStardust]Reduced Exo Spera Hit Effect"
 			Tooltip: Enables to reduce effect of The Apostle
 		}
 
 		AmmoConversion: {
-			Label: Toggle Ammo Conversion
+			Label: "[i:AmmoBox]Toggle Ammo Conversion"
 			Tooltip: Disables not to convertes all ammunitions expect Musket.
 		}
 
 		turnoffCorner: {
-			Label: Toggle Corner Icon
-			Tooltip: Disables the corner badge for mod items.
+			Label: "[i:CalamityInheritance/KnowledgeCalamitas]Toggle Corner Icon"
+			Tooltip: Determines whether the corner badge can be shown for mod items.
 		}
 
 		LegendaryitemsRecipes: {
-			Label: Legendary Item Recipes
+			Label: "[i:CalamityMod/CosmicAnvilItem]Legendary Item Recipes"
 			Tooltip: Enables recipes of Legendary items.
 		}
 
@@ -107,17 +114,17 @@ Configs: {
 		}
 
 		Tyrant1: {
-			Label: Post-Yharon Custom Music
+			Label: "[i:MusicBox]Post-Yharon Custom Music"
 			Tooltip: Player custom mod music after Yharon fight
 		}
 
 		Exomechs: {
-			Label: Post-Exo Music Event
+			Label: "[i:musicBox]Post-Exo Music Event"
 			Tooltip: '''Replaced post-Exo music with custom mod music	'''
 		}
 
 		Scal: {
-			Label: Post-SCal Music Event
+			Label: "[i:MusicBox]Post-SCal Music Event"
 			Tooltip: Replaced post-SCal music with custom mod music
 		}
 
@@ -125,8 +132,8 @@ Configs: {
 			Label: Custom Shimmer
 			Tooltip:	
 			 	'''
-				Determins all shimmer method for mod items
-				Disables will enbales recipe for them
+				Determines all shimmer method for mod items
+				Disables will makes them have other ways to optain
 				'''
 		}
 	}
