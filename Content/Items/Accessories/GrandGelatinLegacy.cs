@@ -47,6 +47,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 .AddIngredient<CleansingJelly>()
                 .AddIngredient<LifeJelly>()
                 .AddIngredient<VitalJelly>()
+                .AddIngredient(ItemID.SoulBottleLight,7)
+                .AddIngredient(ItemID.SoulBottleNight,7)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

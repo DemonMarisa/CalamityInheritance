@@ -25,6 +25,11 @@ WulfrumControllerOld: {
 }
 
 CosmicImmaterializerOld: {
-	// DisplayName: Cosmic Immaterializer Old
-	// Tooltip: ""
+	DisplayName: 归虚之灵
+	Tooltip:
+		'''
+		召唤一个宇宙之灵为你而战
+		宇宙之灵在探测到敌人时会发射大量的跟踪能源箭
+		需要至少10格仆从栏位才能使用并且同时只能存在至多一个宇宙之灵
+		'''
 }

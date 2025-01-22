@@ -480,6 +480,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.GetDamage<GenericDamageClass>() += 0.1f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
+                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.90);
             }
 
             if (usPlayer.destroyerLore)

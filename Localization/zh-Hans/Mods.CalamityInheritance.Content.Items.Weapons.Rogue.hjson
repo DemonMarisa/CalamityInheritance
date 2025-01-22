@@ -84,6 +84,10 @@ WulfrumKnifeOld: {
 }
 
 Celestusold: {
-	// DisplayName: Celestusold
-	// Tooltip: ""
+	DisplayName: 星神之杀[Legacy]
+	Tooltip:
+		'''
+		掷出一把高速的星流镰刀——星神之杀，击中敌怪时分裂出数把幻影镰刀
+		潜伏攻击使星神之杀在回归玩家后可逆转方向再度追踪敌人
+		'''
 }
