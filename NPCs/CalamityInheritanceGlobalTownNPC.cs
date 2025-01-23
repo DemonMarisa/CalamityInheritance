@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Ammo.FiniteUse;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
@@ -23,6 +24,15 @@ namespace CalamityInheritance.NPCs
             if (type == ModContent.NPCType<THIEF>())
             {
                 shop.AddWithCustomValue(ModContent.ItemType<SylvanSlasher>(), Item.buyPrice(gold: 100), Condition.DownedMoonLord);
+            }
+            if (type == ModContent.NPCType<FAP>())
+            {
+                shop.AddWithCustomValue(ModContent.ItemType<ProvidenceLegacy>(), Item.buyPrice(gold: 10), CalamityConditions.DownedProvidence);
+                shop.AddWithCustomValue(ModContent.ItemType<DoGNonStop>(), Item.buyPrice(gold: 10), CalamityConditions.DownedDevourerOfGods);
+                shop.AddWithCustomValue(ModContent.ItemType<DoGLegacy>(), Item.buyPrice(gold: 10), CalamityConditions.DownedDevourerOfGods);
+                shop.AddWithCustomValue(ModContent.ItemType<TyrantPart1>(), Item.buyPrice(gold: 10), CalamityConditions.DownedYharon);
+                shop.AddWithCustomValue(ModContent.ItemType<RequiemsOfACruelWorld>(), Item.buyPrice(gold: 10), CalamityConditions.DownedExoMechs);
+                shop.AddWithCustomValue(ModContent.ItemType<NowStopAskingWhere>(), Item.buyPrice(gold: 10), CalamityConditions.DownedSupremeCalamitas);
             }
             if (type == NPCID.ArmsDealer)
             {

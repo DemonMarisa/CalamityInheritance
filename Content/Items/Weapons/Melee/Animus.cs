@@ -6,6 +6,7 @@ using Terraria;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -104,6 +105,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
+
             CreateRecipe().
                 AddIngredient<BladeofEnmity>().
                 AddIngredient<ShadowspecBar>(5).

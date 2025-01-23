@@ -817,12 +817,13 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForgeTiles>().
             Register();
-            
-            Recipe.Create(ModContent.ItemType<ShadowspecBar>(),5).
+
+            Recipe.Create(ModContent.ItemType<ShadowspecBar>(), 5).
+                AddIngredient<AuricBarold>().
+                AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
-                AddIngredient<AuricBarold>(1).
-                AddTile<DraedonsForgeTiles>().
-                Register(); 
+                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
+                Register();
             #endregion
         }
 

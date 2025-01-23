@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items
     {
         public static void DConsumeMatter(Recipe recipe, int type, ref int amount)
         {
-            if(type==ModContent.ItemType<AncientMiracleMatter>())
+            if (type == ModContent.ItemType<AncientMiracleMatter>())
             {
                 amount = 0;
             }

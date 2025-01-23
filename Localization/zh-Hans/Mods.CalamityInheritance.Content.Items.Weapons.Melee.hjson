@@ -44,10 +44,7 @@ BladeofEnmity: {
 
 BloodyEdge: {
 	DisplayName: 血锋[Legacy]
-	Tooltip: 
-	'''
-	攻击敌人时会让你回复生命值，并引发鲜血爆炸
-	'''
+	Tooltip: 攻击敌人时会让你回复生命值，并引发鲜血爆炸
 }
 
 ElementalExcalibur: {

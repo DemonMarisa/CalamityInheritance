@@ -44,6 +44,7 @@ namespace CalamityInheritance
         public static RecipeGroup SilvaHeadMagicGroup;
         public static RecipeGroup SilvaHeadSummonGroup;
 
+        public static RecipeGroup AmbrosialAmpoule;
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
