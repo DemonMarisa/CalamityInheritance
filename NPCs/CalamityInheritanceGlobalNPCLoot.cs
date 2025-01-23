@@ -16,6 +16,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod;
+using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
@@ -45,6 +46,7 @@ using CalamityMod.NPCs.StormWeaver;
 using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
+using CalamityMod.World;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -54,7 +56,12 @@ namespace CalamityInheritance.NPCs
 {
     public partial class CalamityInheritanceGlobalNPC : GlobalNPC
     {
-
+        public static bool ShouldNotDropThings(NPC npc) => npc.Calamity().newAI[0] == 0f || ((CalamityWorld.death || BossRushEvent.BossRushActive) && npc.Calamity().newAI[0] != 3f);
+        public static bool LastAnLStanding()
+        {
+            int count = NPC.CountNPCS(ModContent.NPCType<Anahita>()) + NPC.CountNPCS(ModContent.NPCType<Leviathan>());
+            return count <= 1;
+        }
         #region Modify NPC Loot Main Hook
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
@@ -127,6 +134,7 @@ namespace CalamityInheritance.NPCs
             }
 
             #region ModBoss
+
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
                 {
                     npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
@@ -161,8 +169,9 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedLeviathan, ModContent.ItemType<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedLeviathan, ModContent.ItemType<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
+                bool shouldDropLore(DropAttemptInfo info) => !DownedBossSystem.downedLeviathan && LastAnLStanding();
+                npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
+                npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
             }
             if (npc.type == ModContent.NPCType<AstrumAureus>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumAureus, ModContent.ItemType<KnowledgeAstrumAureus>(), desc: DropHelper.FirstKillText);
@@ -172,11 +181,12 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<AstrumDeusHead>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumDeus, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
+                npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
+                npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
             }
             if (npc.type == ModContent.NPCType<ProfanedGuardianCommander> ())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
+                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Bumblefuck>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ModContent.ItemType<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<Providence>())

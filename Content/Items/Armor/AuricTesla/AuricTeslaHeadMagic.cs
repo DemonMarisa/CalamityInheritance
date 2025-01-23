@@ -80,7 +80,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
-            modPlayer.auricBoost = true;
             player.manaCost *= 0.8f;
             player.GetDamage<MagicDamageClass>() += 0.3f;
             player.GetCritChance<MagicDamageClass>() += 20;
@@ -90,8 +89,9 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void AddRecipes()
         {
+
             CreateRecipe().
-                AddIngredient<SilvaHeadMagic>().
+                AddRecipeGroup("CalamityInheritance:AnySilvaHeadMagic").
                 AddIngredient<GodSlayerHeadMagicold>().
                 AddIngredient<BloodflareHeadMagic>().
                 AddIngredient<TarragonHeadMagic>().
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddIngredient<SilvaHeadMagic>().
+                AddRecipeGroup("CalamityInheritance:AnySilvaHeadMagic").
                 AddIngredient<GodSlayerHeadMagicold>().
                 AddIngredient<BloodflareHeadMagic>().
                 AddIngredient<TarragonHeadMagic>().

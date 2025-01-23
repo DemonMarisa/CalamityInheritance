@@ -194,7 +194,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Player player = Main.player[base.Projectile.owner];
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
-                int healAmount = Main.rand.Next(5) + 5;
+                int healAmount = Main.rand.Next(2) + 3;
                 player.statLife += healAmount;
                 player.HealEffect(healAmount);
             }

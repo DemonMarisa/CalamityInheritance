@@ -907,52 +907,18 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
-            if (PsychoticAmulet)
-            {
-                if (Player.itemAnimation > 0)
-                    calPlayer.modStealthTimer = 5;
 
-                if (Player.StandingStill(0.1f) && !Player.mount.Active)
-                {
-                    if (calPlayer.modStealthTimer == 0 && calPlayer.modStealth > 0f)
-                    {
-                        calPlayer.modStealth -= 0.015f;
-                        if (calPlayer.modStealth <= 0f)
-                        {
-                            calPlayer.modStealth = 0f;
-                            if (Main.netMode == NetmodeID.MultiplayerClient)
-                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                        }
-                    }
-                }
-                else
-                {
-                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    calPlayer.modStealth += playerVel * 0.0075f;
-                    if (calPlayer.modStealth > 1f)
-                        calPlayer.modStealth = 1f;
-                    if (Player.mount.Active)
-                        calPlayer.modStealth = 1f;
-                }
-
-                Player.GetDamage<ThrowingDamageClass>() += (1f - calPlayer.modStealth) * 0.2f;
-                Player.GetCritChance<ThrowingDamageClass>() += (int)((1f - calPlayer.modStealth) * 10f);
-                Player.aggro -= (int)((1f - calPlayer.modStealth) * 750f);
-                if (calPlayer.modStealthTimer > 0)
-                    calPlayer.modStealthTimer--;
-            }
+            // Auric bonus
             if (auricBoostold)
             {
-                if (Player.itemAnimation > 0)
-                    calPlayer.modStealthTimer = 5;
                 if (Player.StandingStill(0.1f) && !Player.mount.Active)
                 {
-                    if (calPlayer.modStealthTimer == 0 && calPlayer.modStealth > 0f)
+                    if (modStealth > 0)
                     {
-                        calPlayer.modStealth -= 0.015f;
-                        if (calPlayer.modStealth <= 0f)
+                        modStealth -= 20;
+                        if (modStealth <= 0)
                         {
-                            calPlayer.modStealth = 0f;
+                            modStealth = 0;
                             if (Main.netMode == NetmodeID.MultiplayerClient)
                                 NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                         }
@@ -961,21 +927,43 @@ namespace CalamityInheritance.CIPlayer
                 else
                 {
                     float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    calPlayer.modStealth += playerVel * 0.0075f;
-                    if (calPlayer.modStealth > 1f)
-                        calPlayer.modStealth = 1f;
-                    if (Player.mount.Active)
-                        calPlayer.modStealth = 1f;
+                    modStealth += (int)(playerVel * 5);
+                    if (modStealth > 1000)
+                        modStealth = 1000;
                 }
-                float damageBoost = (1f - calPlayer.modStealth) * 20f;
-                Player.GetDamage<GenericDamageClass>() += damageBoost;
-                int critBoost = (int)((1f - calPlayer.modStealth) * 1000f);
-                Player.GetCritChance<GenericDamageClass>() += critBoost;
-                if (calPlayer.modStealthTimer > 0)
-                    calPlayer.modStealthTimer--;
+
+                Player.GetDamage<GenericDamageClass>() += (1000 - modStealth) * 0.0003f;
+
+                Player.GetCritChance<GenericDamageClass>() += (int)((1000 -modStealth) * 0.015f);
             }
-            else
-                calPlayer.modStealth = 1f;
+            
+            if (PsychoticAmulet)
+            {
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (modStealth > 0)
+                    {
+                        modStealth -= 20;
+                        if (modStealth <= 0)
+                        {
+                            modStealth = 0;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
+                    modStealth += (int)(playerVel * 5);
+                    if (modStealth > 1000)
+                        modStealth = 1000;
+                }
+
+                Player.GetDamage<RogueDamageClass>() += (1000 - modStealth) * 0.0005f;
+                Player.GetCritChance<RogueDamageClass>() += (int)((1000 - modStealth) * 0.015f);
+                Player.aggro -= ((1000 - modStealth) * 750);
+            }
         }
         #endregion
 

@@ -30,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StreamGouge>()] = ModContent.ItemType<StreamGougeOld>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StreamGougeOld>()] = ModContent.ItemType<StreamGouge>();
             }
         }
 
@@ -62,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
             {
                 Recipe recipe = CreateRecipe();
                 recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 14);

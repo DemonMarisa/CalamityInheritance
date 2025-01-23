@@ -10,6 +10,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityMod.Projectiles.Magic;
 using Mono.Cecil;
 using CalamityInheritance.Utilities;
+using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -61,6 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            SoundEngine.PlaySound(SoundID.Item103, target.Center);
             // Vanilla has several particles that can easily be used anywhere.
             // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
             // Use auto complete to see the other ParticleOrchestraType types there are.
@@ -75,6 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+
 
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
@@ -99,7 +102,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 tentacleXDirection *= -1f;
             }
 
-            // 从弹幕位置发射新的暗影触手
             int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
             if (newProjectileId != Main.maxProjectiles)
             {

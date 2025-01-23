@@ -84,7 +84,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.auricBoostold = true;
-            modPlayer.auricBoost = true;
             player.GetDamage<RogueDamageClass>() += 0.2f;
             player.GetCritChance<RogueDamageClass>() += 20;
             player.moveSpeed += 0.25f;
@@ -94,7 +93,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             CreateRecipe().
                 AddIngredient<SilvaHeadRogue>().
-                AddIngredient<GodSlayerHeadRogue>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRogue").
                 AddIngredient<BloodflareHeadRogue>().
                 AddIngredient<TarragonHeadRogue>().
                 AddIngredient<PsychoticAmulet>().
@@ -104,7 +103,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             CreateRecipe().
                 AddIngredient<SilvaHeadRogue>().
-                AddIngredient<GodSlayerHeadRogue>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRogue").
                 AddIngredient<BloodflareHeadRogue>().
                 AddIngredient<TarragonHeadRogue>().
                 AddIngredient<PsychoticAmulet>().

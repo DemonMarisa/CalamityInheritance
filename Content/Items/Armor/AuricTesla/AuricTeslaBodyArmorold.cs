@@ -59,22 +59,12 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<GodSlayerChestplate>().
-                AddIngredient<SilvaArmor>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerBody").
+                AddRecipeGroup("CalamityInheritance:AnySilvaBody").
                 AddIngredient<BloodflareBodyArmor>().
                 AddIngredient<TarragonBreastplate>().
                 AddIngredient<FrostBarrier>().
                 AddIngredient<AuricBarold>(2).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<GodSlayerChestplate>().
-                AddIngredient<SilvaArmor>().
-                AddIngredient<BloodflareBodyArmor>().
-                AddIngredient<TarragonBreastplate>().
-                AddIngredient<FrostBarrier>().
-                AddIngredient<AuricBar>(18).
                 AddTile<CosmicAnvil>().
                 Register();
         }

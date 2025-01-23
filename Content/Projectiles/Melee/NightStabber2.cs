@@ -7,6 +7,7 @@ using Terraria.ID;
 using CalamityInheritance.CIPlayer;
 using System;
 using CalamityInheritance.Utilities;
+using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -50,6 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            SoundEngine.PlaySound(SoundID.Item103, target.Center);
             // Vanilla has several particles that can easily be used anywhere.
             // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
             // Use auto complete to see the other ParticleOrchestraType types there are.

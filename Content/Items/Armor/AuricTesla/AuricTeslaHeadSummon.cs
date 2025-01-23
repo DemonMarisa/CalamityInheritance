@@ -229,14 +229,13 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.auricBoostold = true;
-            modPlayer.auricBoost = true;
             player.maxMinions += 7;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<SilvaHeadSummon>().
+                AddRecipeGroup("CalamityInheritance:AnySilvaHeadSummon").
                 AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<BloodflareHeadSummon>().
                 AddIngredient<TarragonHeadSummon>().
@@ -246,7 +245,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddIngredient<SilvaHeadSummon>().
+                AddRecipeGroup("CalamityInheritance:AnySilvaHeadSummon").
                 AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<BloodflareHeadSummon>().
                 AddIngredient<TarragonHeadSummon>().

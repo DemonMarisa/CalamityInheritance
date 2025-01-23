@@ -85,7 +85,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.auricBoostold = true;
-            modPlayer.auricBoost = true;
             player.GetDamage<MeleeDamageClass>() += 0.2f;
             player.GetCritChance<MeleeDamageClass>() += 20;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.28f;
@@ -96,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             CreateRecipe().
                 AddIngredient<TarragonHeadMelee>().
                 AddIngredient<BloodflareHeadMelee>().
-                AddIngredient<GodSlayerHeadMelee>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadMelee").
                 AddIngredient<SilvaHeadMelee>().
                 AddIngredient<PsychoticAmulet>().
                 AddIngredient<AuricBarold>(1).
@@ -106,7 +105,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             CreateRecipe().
                 AddIngredient<TarragonHeadMelee>().
                 AddIngredient<BloodflareHeadMelee>().
-                AddIngredient<GodSlayerHeadMelee>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadMelee").
                 AddIngredient<SilvaHeadMelee>().
                 AddIngredient<PsychoticAmulet>().
                 AddIngredient<AuricBar>(12).

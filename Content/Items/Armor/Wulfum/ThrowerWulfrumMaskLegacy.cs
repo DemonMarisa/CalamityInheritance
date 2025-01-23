@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed += 10;
+            player.moveSpeed += 0.1f;
         }
     }
 }

@@ -84,7 +84,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer1.auricBoostold = true;
-            modPlayer.auricBoost = true;
             player.GetDamage<RangedDamageClass>() += 0.3f;
             player.GetCritChance<RangedDamageClass>() += 30;
         }
@@ -92,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<GodSlayerHeadRanged>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRanged").
                 AddIngredient<SilvaHeadRanged>().
                 AddIngredient<BloodflareHeadRanged>().
                 AddIngredient<TarragonHeadRanged>().
@@ -102,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddIngredient<GodSlayerHeadRanged>().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRanged").
                 AddIngredient<SilvaHeadRanged>().
                 AddIngredient<BloodflareHeadRanged>().
                 AddIngredient<TarragonHeadRanged>().

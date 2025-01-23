@@ -70,6 +70,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             target.immune[Projectile.owner] = 9;
             target.AddBuff(ModContent.BuffType<BurningBlood>(), 60);
             target.AddBuff(BuffID.Ichor, 60);
+
+            Player player = Main.player[base.Projectile.owner];
+            if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
+            {
+                int healAmount = Main.rand.Next(2) + 1;
+                player.statLife += healAmount;
+                player.HealEffect(healAmount);
+            }
         }
     }
 }

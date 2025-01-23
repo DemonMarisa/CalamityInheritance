@@ -32,13 +32,20 @@ using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories.Magic;
+using CalamityMod.Items.Armor.TitanHeart;
+using CalamityMod.Items.Potions.Alcohol;
 
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
+        #region Timer and Counter
+        public int modStealth = 1000;
 
+        public int ProjectilHitCounter;
+        public int ProjectilHitCounter2;
+        #endregion
         #region Accessories
         public bool ElementalQuiver = false;
         public bool CoreOfTheBloodGod = false;
@@ -68,8 +75,6 @@ namespace CalamityInheritance.CIPlayer
         #region Weapon
         public float animusBoost = 1f;
         //多个计时器触发
-        public int ProjectilHitCounter;
-        public int ProjectilHitCounter2;
         public bool AMRextra = false;
         public bool AMRextraTy = false;
         #endregion
@@ -501,6 +506,7 @@ namespace CalamityInheritance.CIPlayer
             aurichasSilvaEffect = false;
             auricsilvaCountdown = auricsilvaReviveDuration;
             CIsilvaCountdown = CIsilvaReviveDuration;
+            auricBoostold = false;
             #endregion
             #region Reaver
             reaverMeleeBlast = false;

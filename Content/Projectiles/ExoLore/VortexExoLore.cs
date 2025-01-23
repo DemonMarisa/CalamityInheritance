@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.alpha = 255;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = 1;
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 4;
             Projectile.timeLeft = 115 * Projectile.extraUpdates;

@@ -304,6 +304,9 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
         {
+            if (auricBoostold)
+                knockback.Flat += item.knockBack * ((1f - modStealth) * 0.5f);
+
             if (yPower)
                 knockback += item.knockBack * 0.25f;
         }

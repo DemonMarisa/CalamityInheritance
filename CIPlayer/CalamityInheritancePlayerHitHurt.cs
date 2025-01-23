@@ -355,7 +355,7 @@ namespace CalamityInheritance.CIPlayer
                     //Main.NewText($"造成伤害", 255, 255, 255);
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
                     {
-                        hitInfo.Damage *= 4;
+                        hitInfo.Damage *= 5;
                     };
                 }
             }
@@ -397,7 +397,7 @@ namespace CalamityInheritance.CIPlayer
                     //Main.NewText($"造成伤害", 255, 255, 255);
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
                     {
-                        hitInfo.Damage *= 4;
+                        hitInfo.Damage *= 5;
                     };
                 }
             }
