@@ -78,11 +78,15 @@ SylvanSlasher: {
 }
 
 WulfrumKnifeOld: {
-	Tooltip: ""
-	DisplayName: Wulfrum Knife Old
+	Tooltip: Stealth Strikes makes the knife fly further and hits several times at once
+	DisplayName: Wulfrum Knife Legacy
 }
 
 Celestusold: {
-	DisplayName: Celestusold
-	Tooltip: ""
+	DisplayName: Celestus Legacy
+	Tooltip:
+		'''
+		Throws a high-velocity scythe that splits into multiple phantom scythes on enemy hits
+		Stealth strikes reverse direction and home in on enemies after returning to the player
+		'''
 }

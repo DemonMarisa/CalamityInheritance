@@ -33,3 +33,8 @@ CosmicImmaterializerOld: {
 		需要至少10格仆从栏位才能使用并且同时只能存在至多一个宇宙之灵
 		'''
 }
+
+MountedScannerLegacy: {
+	// DisplayName: Mounted Scanner Legacy
+	// Tooltip: Summons a powerful scanner module above your head that fires lasers at nearby enemies
+}

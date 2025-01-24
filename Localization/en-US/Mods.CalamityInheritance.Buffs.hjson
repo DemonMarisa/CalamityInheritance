@@ -102,3 +102,8 @@ CosmicEnergyOld: {
 	DisplayName: Cosmic Energy Legacy
 	Description: The cosmic energy will protect you
 }
+
+MountedScannerLegacyBuff: {
+	DisplayName: Mounted Scanner Legacy Buff
+	Description: Mods.CalamityInheritance.Buffs.MountedScannerLegacyBuff.Description
+}
