@@ -130,7 +130,7 @@ ThrowerWulfrumMaskLegacy: {
 
 WulfrumArmorLegacy: {
 	DisplayName: Ancient Wulfrum Armor
-	Tooltip: "3% increased critical strike chance "
+	Tooltip: 3% increased critical strike chance
 }
 
 WulfrumLeggingsLegacy: {

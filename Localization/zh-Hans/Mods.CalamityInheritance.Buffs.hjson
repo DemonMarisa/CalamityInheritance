@@ -102,3 +102,8 @@ CosmicEnergyOld: {
 	DisplayName: 归虚之灵[legacy]
 	Description: 归虚之灵会保护你
 }
+
+MountedScannerLegacyBuff: {
+	// DisplayName: Mounted Scanner Legacy Buff
+	// Description: Mods.CalamityInheritance.Buffs.MountedScannerLegacyBuff.Description
+}

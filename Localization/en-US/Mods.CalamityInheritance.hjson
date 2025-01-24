@@ -18,7 +18,7 @@ Configs: {
 
 		ElementalQuiversplit: {
 			Label: "[i:CalamityMod/ElementalQuiver]Disable Elemental Quiver Split Effect"
-			Tooltip: Disables EQ Split Effect. Use if lag is an issue.
+			Tooltip: Determines EQ Split Effect. Use if lag is an issue.
 		}
 
 		ElementalQuiverSplitstyle: {
@@ -36,7 +36,11 @@ Configs: {
 
 		TheSpongeBarrier: {
 			Label: "[i:CalamityMod/TheSponge]Toggle Sponge's Barrier"
-			Tooltip: Determines wheteher the Legacy Sponge can active barrier or not
+			Tooltip:
+				'''
+				Determines wheteher the Legacy Sponge can active barrier or not
+				Enbales by default
+				'''
 		}
 
 		BoCLoreUnconditional: {
@@ -62,17 +66,29 @@ Configs: {
 
 		silvastun: {
 			Label: "[i:CalamityMod/SilvaArmor]Toggle Silva Stun"
-			Tooltip: Determines mobs can be inflicted Silva Stun
+			Tooltip:
+				'''
+				Determines mobs can be inflicted Silva Stun
+				Enables by default
+				'''
 		}
 
 		ExoSperaHitEffect: {
 			Label: "[i:FragmentStardust]Reduced Exo Spera Hit Effect"
-			Tooltip: Enables to reduce effect of The Apostle
+			Tooltip:
+				'''
+				Determines the effect of The Apostle
+				Disable by default
+				'''
 		}
 
 		AmmoConversion: {
 			Label: "[i:AmmoBox]Toggle Ammo Conversion"
-			Tooltip: Disables not to convertes all ammunitions expect Musket.
+			Tooltip:
+				'''
+				Disables not to convertes all ammunitions expect Musket.
+				Enable by default
+				'''
 		}
 
 		turnoffCorner: {
@@ -135,8 +151,17 @@ Configs: {
 		}
 
 		EtherealTalismancTexture: {
-			Label: Ethereal Talismanc Texture
-			Tooltip: ""
+			Label: Ethereal Talisman Texture
+			Tooltip: Toggle the sprite style of Legacy Ethereal Talisman
+		}
+
+		DoGLegacyMusic: {
+			Label: Devouer of Gods Legacy Theme
+			Tooltip:
+				'''
+				Plays Devouer of Gods Legacy theme in DoG Fight
+				Disable by default
+				'''
 		}
 	}
 }

@@ -150,5 +150,14 @@ Configs: {
 				2：旧材质
 				'''
 		}
+
+		DoGLegacyMusic: {
+			// Label: Devouer of Gods Legacy Theme
+			/* Tooltip:
+				'''
+				Plays Devouer of Gods Legacy theme in DoG Fight
+				Disable by default
+				''' */
+		}
 	}
 }

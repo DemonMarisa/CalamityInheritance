@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Summon;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -67,6 +68,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<ElementalAxe>().
+                AddIngredient<EtherealSubjugator>().
+                AddIngredient<Cosmilamp>().
+                AddIngredient<CalamarisLament>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

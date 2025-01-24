@@ -25,6 +25,16 @@ WulfrumControllerOld: {
 }
 
 CosmicImmaterializerOld: {
-	DisplayName: Cosmic Immaterializer Old
-	Tooltip: ""
+	DisplayName: Cosmic Immaterializer Legacy
+	Tooltip:
+		'''
+		Summons a cosmic energy spiral to fight for you
+		The orb will fire swarms of homing energy bolts when enemies are detected by it
+		Requires 10 minion slots, only one energy spiral can be summoned
+		'''
+}
+
+MountedScannerLegacy: {
+	DisplayName: Mounted Scanner Legacy
+	Tooltip: Summons a powerful scanner module above your head that fires lasers at nearby enemies
 }

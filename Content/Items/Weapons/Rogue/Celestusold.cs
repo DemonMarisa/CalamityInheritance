@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -68,6 +69,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
                 AddIngredient<MiracleMatter>().
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<ElementalDisk>().
+                AddIngredient<MoltenAmputator>().
+                AddIngredient<SubductionSlicer>().
+                AddIngredient<EnchantedAxe>().
+                AddIngredient<AncientMiracleMatter>().
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

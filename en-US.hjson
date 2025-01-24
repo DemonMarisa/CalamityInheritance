@@ -36,5 +36,8 @@ Mods: {
 			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
 			Melee.CIExocomet.DisplayName: C I Exocomet
 		}
+
+		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
+		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 	}
 }

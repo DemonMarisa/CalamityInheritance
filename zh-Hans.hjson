@@ -36,5 +36,8 @@ Mods: {
 			Rogue.SupernovaBoomOld.DisplayName: 星耀爆破
 			Melee.CIExocomet.DisplayName: 星流彗星
 		}
+
+		// Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
+		// Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 	}
 }
