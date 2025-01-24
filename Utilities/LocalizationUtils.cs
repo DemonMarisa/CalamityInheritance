@@ -18,5 +18,9 @@ namespace CalamityInheritance.Utilities
         {
             return Language.GetOrRegister("Mods.CalamityInheritance." + key);
         }
+        public static string GetTextValue(string key)
+        {
+            return Language.GetTextValue("Mods.CalamityInheritance." + key);
+        }
     }
 }

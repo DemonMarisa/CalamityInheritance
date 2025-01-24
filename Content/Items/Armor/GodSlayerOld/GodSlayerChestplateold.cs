@@ -5,6 +5,8 @@ using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
@@ -25,6 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateEquip(Player player)
         {
+            CalamityPlayer modPlayer1 = player.Calamity();
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
             modPlayer.godSlayerReflect = true;
             modPlayer.GodSlayerDMGprotect = true;

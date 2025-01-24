@@ -14,6 +14,8 @@ using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -103,7 +105,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             return new Vector2(-35f, -6f);
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.CelestialObliterator.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

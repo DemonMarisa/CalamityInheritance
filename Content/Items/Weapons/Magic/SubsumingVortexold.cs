@@ -10,9 +10,11 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
@@ -22,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetDefaults()
         {
-            Item.damage = 242;
+            Item.damage = 121;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 78;
             Item.width = 38;
@@ -58,7 +60,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             }
             return false;
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.SubsumingVortexold.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe()

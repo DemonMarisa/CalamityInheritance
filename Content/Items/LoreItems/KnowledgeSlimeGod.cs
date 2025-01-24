@@ -23,18 +23,18 @@ namespace CalamityInheritance.Content.Items.LoreItems
         }
         public override void UpdateInventory(Player player)
         {
-            if (player.mount.Active || !Item.favorited)
-                return;
+            if(Item.favorited)
+            {
+                if (player.dashDelay < 0)
+                    player.velocity.X *= 0.9f;
 
-            if (player.dashDelay < 0)
-                player.velocity.X *= 0.9f;
+                player.slippy2 = true;
 
-            player.slippy2 = true;
+                if (Main.myPlayer == player.whoAmI)
+                    player.AddBuff(BuffID.Slimed, 2);
 
-            if (Main.myPlayer == player.whoAmI)
-                player.AddBuff(BuffID.Slimed, 2);
-
-            player.statDefense -= 10;
+                player.statDefense -= 10;
+            }
         }
 
         public override void AddRecipes()

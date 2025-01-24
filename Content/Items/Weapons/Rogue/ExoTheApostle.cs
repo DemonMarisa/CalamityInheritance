@@ -13,6 +13,11 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -23,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public static readonly SoundStyle ThrowSound2 = new("CalamityInheritance/Sounds/Custom/ExoApostleStealth") { Volume = 1.2f, PitchVariance = 0.3f };
         public override void SetDefaults()
         {
-            Item.damage = 920;
+            Item.damage = 1460;
             Item.width = 92;
             Item.height = 100;
             Item.useTime = 60;
@@ -42,28 +47,52 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (!player.Calamity().StealthStrikeAvailable())
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            if(usPlayer.exoMechLore)
             {
-                Projectile p = Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-            }
-            SoundEngine.PlaySound(ThrowSound1, player.Center);
-            if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
-            {
-                Projectile p = Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-                int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
-                SoundEngine.PlaySound(ThrowSound2, player.Center);
-                if (stealth.WithinBounds(Main.maxProjectiles))
+                if (!player.Calamity().StealthStrikeAvailable())
                 {
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-                    Main.projectile[stealth].usesLocalNPCImmunity = true;
+                    Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
                 }
-                return false;
+                SoundEngine.PlaySound(ThrowSound1, player.Center);
+                if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
+                {
+                    Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
+                    SoundEngine.PlaySound(ThrowSound2, player.Center);
+                    if (stealth.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[stealth].Calamity().stealthStrike = true;
+                        Main.projectile[stealth].usesLocalNPCImmunity = true;
+                    }
+                }
             }
-            return true;
+            else
+            {
+                Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                if (player.Calamity().StealthStrikeAvailable())
+                {
+                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                }
+            }
+            return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/ExoTheApostleGlow").Value);
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.ExoTheApostle.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
         }
         public override void AddRecipes()
         {

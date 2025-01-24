@@ -13,10 +13,12 @@ using CalamityMod.Projectiles.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
@@ -36,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 90;
             Item.height = 112;
-            Item.damage = 605;
+            Item.damage = 180;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 40;
             Item.useTime = 6;
@@ -137,6 +139,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/VividClarityOldGlow").Value);
 
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.VividClarityOld.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
         }
 
         public override void AddRecipes()

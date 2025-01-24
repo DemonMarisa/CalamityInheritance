@@ -20,9 +20,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 80;
+            Projectile.timeLeft = 240;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 0;
+            Projectile.idStaticNPCHitCooldown = 10;
         }
 
         public override void AI()

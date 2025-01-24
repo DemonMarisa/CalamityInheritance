@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -75,6 +76,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnKill(int timeLeft)
         {
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 128;
             Projectile.position.X = Projectile.position.X - Projectile.width / 2;
@@ -104,7 +108,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaStealthBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                if(usPlayer.exoMechLore)
+                {
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaStealthBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                }
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                 for (int i = 0; i < projAmt; i++)
                 {
                     Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);

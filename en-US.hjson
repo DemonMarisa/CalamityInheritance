@@ -33,6 +33,8 @@ Mods: {
 		Projectiles: {
 			Melee.CIExocomet.DisplayName: C I Exocomet
 			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
+			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor
+			ExoSpearTrailNor.DisplayName: Exo Spear Trail Nor
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy

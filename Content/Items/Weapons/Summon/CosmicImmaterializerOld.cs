@@ -20,6 +20,9 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Summon;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -59,7 +62,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 Main.projectile[p].originalDamage = (int)(Item.damage * (hasSummonerSet ? 1f : 0.66f));
             return false;
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Summon.CosmicImmaterializerOld.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

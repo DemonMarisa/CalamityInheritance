@@ -73,6 +73,14 @@ Exobladeold: {
 		Enemies hit at very low HP explode into frost energy and freeze nearby enemies
 		The lower your HP the more damage this blade does and heals the player on enemy hits
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		召唤星流彗星的上限移除
+		星流光束命中后也会召唤彗星
+		真近战多次击中敌人会出现寰宇爆炸
+		爆炸的血量标准被提高到15%
+		'''
 }
 
 ExoFlail: {
@@ -81,6 +89,12 @@ ExoFlail: {
 		'''
 		Fires a chain sword that discharges unstable energy on enemy hits
 		The flail's chain is surrounded in plasma, allowing it to deal damage
+		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		每攻击五次会扔出一个星流链球
+		命中敌人会产生多次爆炸
 		'''
 }
 

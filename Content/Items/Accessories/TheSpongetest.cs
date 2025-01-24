@@ -125,8 +125,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             {
                 if (modPlayer1.CISpongeShieldDurability == 0)
                 {
-                    player.endurance -= 0.25f;
-                    player.statDefense -= 50;
+                    player.endurance *= 0.5f;
+                    player.statDefense /= 2;
                 }
             }
         }

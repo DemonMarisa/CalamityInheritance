@@ -29,7 +29,7 @@ ExplodingStake.DisplayName: 星流火花
 FlamingStake.DisplayName: 爆炸尖桩
 PhangasmBowOld.DisplayName: 幻魔
 PhotovisceratorCrystal.DisplayName: 星火碎片
-// ExoArrowBlueExoLore.DisplayName: Exo Arrow Blue Exo Lore
-// ExoArrowGreenExoLore.DisplayName: Exo Arrow Green Exo Lore
-// ExoArrowOrangeExoLore.DisplayName: Exo Arrow Orange Exo Lore
-// ExoArrowTealExoLore.DisplayName: Exo Arrow Teal Exo Lore
+ExoArrowBlueExoLore.DisplayName: 共振箭矢
+ExoArrowGreenExoLore.DisplayName: 风暴箭矢
+ExoArrowOrangeExoLore.DisplayName: 星怒箭矢
+ExoArrowTealExoLore.DisplayName: 超位箭矢

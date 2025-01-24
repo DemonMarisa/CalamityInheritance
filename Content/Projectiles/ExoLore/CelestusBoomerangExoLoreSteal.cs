@@ -17,13 +17,14 @@ using Mono.Cecil;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
-    public class CelestusBoomerangExoLore : ModProjectile, ILocalizedModType
+    public class CelestusBoomerangExoLoreSteal : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/Celestusold";
 
         private bool initialized = false;
         private float speed = 25f;
+        private int counter;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
@@ -48,6 +49,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[Projectile.owner];
 
+            counter++;
+
             if (!initialized)
             {
                 speed = Projectile.velocity.Length();
@@ -61,6 +64,11 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 Projectile.soundDelay = 8;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+            }
+            if(counter == 15)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                counter = 0;
             }
             switch (Projectile.ai[0])
             {
@@ -168,8 +176,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 1.4f), (float)(Math.Cos(offsetAngle) * 1.4f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 1.4f), (float)(-Math.Cos(offsetAngle) * 1.4f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
                 }
             }
             SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);

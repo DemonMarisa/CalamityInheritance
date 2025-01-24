@@ -31,6 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.timeLeft = 180;
+            Projectile.extraUpdates = 1;
+            Projectile.MaxUpdates = 1;
         }
 
         public override void AI()

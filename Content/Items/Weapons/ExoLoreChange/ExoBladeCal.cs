@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             var usPlayer = player.CalamityInheritance();
             if (usPlayer.exoMechLore)
             {
-                damage.Base = 3500;
+                damage.Base = 2500;
             }
         }
     }

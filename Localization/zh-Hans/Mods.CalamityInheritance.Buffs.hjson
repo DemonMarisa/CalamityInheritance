@@ -104,6 +104,6 @@ CosmicEnergyOld: {
 }
 
 MountedScannerLegacyBuff: {
-	// DisplayName: Mounted Scanner Legacy Buff
-	// Description: Mods.CalamityInheritance.Buffs.MountedScannerLegacyBuff.Description
+	DisplayName: 架式扫射机[legacy]
+	Description: 强大的机械环绕在你的身边
 }

@@ -32,6 +32,12 @@ CosmicImmaterializerOld: {
 		The orb will fire swarms of homing energy bolts when enemies are detected by it
 		Requires 10 minion slots, only one energy spiral can be summoned
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		发射更多的宇宙能量
+		宇宙能量会在发射一段时间后跟踪
+		'''
 }
 
 MountedScannerLegacy: {

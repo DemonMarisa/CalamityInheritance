@@ -11,10 +11,12 @@ using CalamityMod.Projectiles.Melee;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
@@ -89,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                     Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
                     hitCount = 0;
                 }
-                for (int comet = 0; comet < 2; comet++)
+                for (int comet = 0; comet < 1; comet++)
                 {
                     float ai1 = Main.rand.NextFloat() + 0.5f;
                     Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<CIExocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
@@ -137,6 +139,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ExobladeoldGlow").Value);
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.Exobladeold.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
+
         public override void AddRecipes()
         {
 

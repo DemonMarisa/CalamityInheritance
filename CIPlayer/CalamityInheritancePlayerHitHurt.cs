@@ -599,14 +599,17 @@ namespace CalamityInheritance.CIPlayer
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
                     modPlayer.contactDamageReduction += 0.25;
             }
+
         }
         #endregion
         #region Free and Consumable Dodge Hooks
         public override bool FreeDodge(Player.HurtInfo info)
         {
+            Player player = Main.player[Main.myPlayer];
+            CalamityPlayer modPlayer1 = player.Calamity();
             // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
             // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
-            if (info.Damage < 1  || (GodSlayerDMGprotect && info.Damage <= 80) )
+            if (GodSlayerDMGprotect && info.Damage <= 80 && !modPlayer1.chaliceOfTheBloodGod)
 
                 return true;
             // If no other effects occurred, run vanilla code

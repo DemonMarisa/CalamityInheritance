@@ -47,6 +47,7 @@ namespace CalamityInheritance.CIPlayer
 
             //非常冗余的其他效果
             MiscEffects();
+
             //纳米技术堆叠UI
             NanoTechUI();
 

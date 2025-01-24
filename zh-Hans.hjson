@@ -31,11 +31,13 @@ Mods: {
 		}
 
 		Projectiles: {
-			// Melee.CIExocomet.DisplayName: C I Exocomet
-			// Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
+			Melee.CIExocomet.DisplayName: 星流流星
+			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
+			ExoSpearProjNor.DisplayName: 圣火之枪
+			ExoSpearTrailNor.DisplayName: 圣火投刀
 		}
 
-		// Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
-		// Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
+		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
 	}
 }

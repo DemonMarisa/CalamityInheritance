@@ -87,6 +87,12 @@ SubsumingVortexold: {
 		After a few seconds the vortex slows down, becomes unstable, and explodes
 		'Calamity Version 1.4.5.7'
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		初始弹幕速度更快
+		在发射出去一段时间后会逐渐加速跟踪敌人
+		'''
 }
 
 TheWandold: {
@@ -114,6 +120,12 @@ VividClarityOld: {
 		On enmey and tile hits, beams either explode into a big flash
 		Summon an additional laser from the sky, or spilt into energy orbs
 		'High IQ increases the weapon's potential'
+		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		发射9道星流光束，每一道光束击中敌人都会产生爆炸
+		光束散步更大
 		'''
 }
 

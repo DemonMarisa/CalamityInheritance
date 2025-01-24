@@ -6,6 +6,12 @@ CelestialObliterator: {
 		Automatically launch a homing exo missile at regular intervals
 		'Shatter your enemy with your bullet hell'
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		向后发射跟踪的星流导弹
+		星流导弹在开始跟踪时会分裂出额外的导弹
+		'''
 }
 
 ConclaveCrossfire: {
@@ -39,6 +45,13 @@ HeavenlyGaleold: {
 		66% chance to not consume ammo
 		Will not convertes into exo arrows if Ammo Conversion is disabled
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		绿色箭矢与橙色箭矢会跟踪敌人
+		青色箭矢不再会受到穿透减伤的影响
+		蓝色箭矢获得额外穿透
+		'''
 }
 
 LeadWizard: {
@@ -66,6 +79,11 @@ Photovisceratorold: {
 		Fires a stream of exo flames and light that explodes into homing sparks
 		Right click to fire homing flare while stack to enemies and incinerate them
 		'It should not be a prism causes ranged damage'
+		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		使用时会在玩家后方发射跟踪水晶
 		'''
 }
 

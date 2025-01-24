@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 4;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 30;
             Projectile.timeLeft = 85;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }

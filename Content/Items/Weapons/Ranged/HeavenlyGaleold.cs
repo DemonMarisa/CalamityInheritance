@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -34,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             ExoArrowsExoLore =
             [
             ModContent.ProjectileType<ExoArrowTealExoLore>(),
+            ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
             ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
             ModContent.ProjectileType<ExoArrowGreenExoLore>(),
             ModContent.ProjectileType<ExoArrowBlueExoLore>()
@@ -136,6 +139,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     return false;
                 return true;
             }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.HeavenlyGaleold.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
 
         public override void AddRecipes()
         {

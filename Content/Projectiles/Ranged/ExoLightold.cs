@@ -51,6 +51,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
             Projectile.alpha = 127;
+            Projectile.extraUpdates = 1;
+            Projectile.MaxUpdates = 1;
         }
 
         public override void SendExtraAI(BinaryWriter writer)

@@ -6,6 +6,13 @@ ExoTheApostle: {
 		Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins
 		'The messanger of a truth that consigns all who hear it to oblivion'
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		攻击会无限穿透
+		长枪命中敌人会爆出跟踪的能量匕首，同时召唤另一枚长枪追加打击
+		潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪
+		'''
 }
 
 IchorSpearLegacy: {
@@ -65,6 +72,11 @@ Supernovaold: {
 		Stealth strikes release energy as they fly
 		'Nerf Supernova sprite size'
 		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		潜伏攻击会产生更大的爆炸
+		'''
 }
 
 SylvanSlasher: {
@@ -88,5 +100,11 @@ Celestusold: {
 		'''
 		Throws a high-velocity scythe that splits into multiple phantom scythes on enemy hits
 		Stealth strikes reverse direction and home in on enemies after returning to the player
+		'''
+	ExoLoreOn:
+		'''
+		星流巨械传颂之物改变：
+		攻击时会从上方生成一个复制镰刀
+		潜伏攻击会沿途生成跟踪的金源镰刀
 		'''
 }

@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.height = 5;
             Projectile.friendly = true;
             Projectile.alpha = 255;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 5;
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = 300;
             Projectile.DamageType = DamageClass.Ranged;

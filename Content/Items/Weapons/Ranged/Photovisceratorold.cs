@@ -15,6 +15,8 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -130,7 +132,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             return false;
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.Photovisceratorold.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
+        }
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

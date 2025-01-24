@@ -12,6 +12,10 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -55,6 +59,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/SupernovaoldGlow").Value);
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.Supernovaold.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
         }
         public override void AddRecipes()
         {
