@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed += 10;
+            player.moveSpeed += 0.10f;
         }
 
         public override void AddRecipes()

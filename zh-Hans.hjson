@@ -31,10 +31,8 @@ Mods: {
 		}
 
 		Projectiles: {
-			CosmicBlastBigOld.DisplayName: 宇宙爆裂
-			CosmicBlastOld.DisplayName: 宇宙爆炸
-			Rogue.SupernovaBoomOld.DisplayName: 星耀爆破
-			Melee.CIExocomet.DisplayName: 星流彗星
+			// Melee.CIExocomet.DisplayName: C I Exocomet
+			// Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
 		}
 	}
 }

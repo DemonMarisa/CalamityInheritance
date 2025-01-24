@@ -25,6 +25,7 @@ using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
 using CalamityModMusic.Items.Placeables;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance
 {
@@ -49,6 +50,7 @@ namespace CalamityInheritance
             {
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
             }
             CalamityInheritanceTexture.LoadTexture();
         }

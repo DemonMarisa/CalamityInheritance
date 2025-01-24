@@ -11,14 +11,21 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class Photovisceratorold : ModItem, ILocalizedModType
     {
+        public int OwnerIndex;
+        public Player Owner => Main.player[OwnerIndex];
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public const float AmmoNotConsumeChance = 0.9f;
         private const float AltFireShootSpeed = 17f;
+        private int PhotoLight;
 
         public override void SetStaticDefaults()
         {
@@ -51,8 +58,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (player.altFunctionUse == 2)
             {
+                //Item.useTime = 2;
+                //Item.useAnimation = 10;
                 Item.shoot = ModContent.ProjectileType<ExoFlareClusterold>();
-                Item.useTime = Item.useAnimation = 27;
+                Item.useTime = 2;
+                Item.useAnimation = 27;
             }
             else
             {
@@ -70,26 +80,42 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Alt fire: Shoot an Exo Flare Cluster.
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            // PhotovisceratorCrystal发射逻辑
+            if (usPlayer.exoMechLore)
+            {
+
+                    Vector2 spawnPosition = Owner.Center + Main.rand.NextVector2Circular(Owner.width, Owner.height) * 1.35f;
+                    Vector2 shootVelocity = spawnPosition * 0.04f;
+                    if (shootVelocity.Length() < 6f)
+                        shootVelocity = shootVelocity.SafeNormalize(Vector2.UnitY) * 6f;
+
+                    spawnPosition -= shootVelocity.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(15f, 50f);
+                    Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), spawnPosition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage, 0f, OwnerIndex);
+
+            }
+
             if (player.altFunctionUse == 2)
             {
-                int projID = ModContent.ProjectileType<ExoFlareClusterold>();
-
-                position += velocity.ToRotation().ToRotationVector2() * 80f;
-                Projectile.NewProjectile(source, position, velocity.SafeNormalize(Vector2.Zero) * AltFireShootSpeed, projID, damage, knockback, player.whoAmI);
+                if (player.itemAnimation >= Item.useAnimation - Item.useTime)
+                {
+                    position += velocity.ToRotation().ToRotationVector2() * 80f;
+                    Projectile.NewProjectile(source, position, velocity.SafeNormalize(Vector2.Zero) * AltFireShootSpeed, type, damage, knockback, player.whoAmI);
+                }
                 return false;
             }
 
-            // Left click: Exo Fire, with a chance of Exo Light Bombs.
+
             for (int i = 0; i < 2; i++)
             {
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             }
-            if (player.itemAnimation == 2)
+            
+            if (--PhotoLight <= 0)
             {
                 for (int i = 0; i < 2; i++)
                 {
-
                     position += velocity.ToRotation().ToRotationVector2() * 64f;
                     int yDirection = (i == 0).ToDirectionInt();
                     velocity = velocity.RotatedBy(0.2f * yDirection);
@@ -98,7 +124,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     lightBomb.localAI[1] = yDirection;
                     lightBomb.netUpdate = true;
                 }
+
+                PhotoLight = 10;
             }
+
             return false;
         }
 

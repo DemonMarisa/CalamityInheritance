@@ -70,6 +70,16 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.Center = owner.Center + OffsetRotation.ToRotationVector2() * (float)Math.Cos(OffsetRotation * 0.3f) * owner.Size * 0.5f * orbitRadiusMultiplier;
             Projectile.rotation = (Projectile.position - Projectile.oldPos[1]).ToRotation();
             OffsetRotation += OffsetSpeed;
+
+            if(Projectile.timeLeft >= 120)
+            {
+                Projectile.alpha += 15;
+                if (Projectile.alpha >= 255)
+                {
+                    Projectile.alpha = 255;
+                    return;
+                }
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

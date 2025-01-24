@@ -11,6 +11,8 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -19,15 +21,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public const float NormalArrowDamageMult = 1.25f;
         private static int[] ExoArrows;
+        private static int[] ExoArrowsExoLore;
         public override void SetStaticDefaults()
         {
-            ExoArrows = new int[]
-            {
+            ExoArrows =
+            [
             ModContent.ProjectileType<ExoArrowTeal>(),
             ModContent.ProjectileType<OrangeExoArrow>(),
             ModContent.ProjectileType<ExoArrowGreen>(),
             ModContent.ProjectileType<ExoArrowBlue>()
-            };
+            ];
+            ExoArrowsExoLore =
+            [
+            ModContent.ProjectileType<ExoArrowTealExoLore>(),
+            ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
+            ModContent.ProjectileType<ExoArrowGreenExoLore>(),
+            ModContent.ProjectileType<ExoArrowBlueExoLore>()
+            ];
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
@@ -54,6 +64,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
             Vector2 source = player.RotatedRelativePoint(player.MountedCenter, true);
             Vector2 baseOffset = velocity;
             baseOffset.Normalize();
@@ -78,9 +90,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 if (type == ProjectileID.WoodenArrowFriendly)
                 {
-                    thisArrowType = Main.rand.Next(ExoArrows);
-
-                    dmgMult = thisArrowType == ModContent.ProjectileType<ExoArrowTeal>() ? 0.66f : 1f;
+                        if (usPlayer.exoMechLore)
+                        {
+                            thisArrowType = Main.rand.Next(ExoArrowsExoLore);
+                        }
+                        else
+                        {
+                            thisArrowType = Main.rand.Next(ExoArrows);
+                        }
                 }
                 else
                 {
@@ -89,9 +106,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
             {
-                thisArrowType = Main.rand.Next(ExoArrows);
-                dmgMult = thisArrowType == ModContent.ProjectileType<ExoArrowTeal>() ? 0.66f : 1f;
-            }
+                    if (usPlayer.exoMechLore)
+                    {
+                        thisArrowType = Main.rand.Next(ExoArrowsExoLore);
+                    }
+                    else
+                    {
+                        thisArrowType = Main.rand.Next(ExoArrows);
+                    }
+                }
 
                 int finalDamage = (int)(damage * dmgMult);
                 int proj = Projectile.NewProjectile(spawnSource, source + offset, velocity, thisArrowType, finalDamage, knockback, player.whoAmI);

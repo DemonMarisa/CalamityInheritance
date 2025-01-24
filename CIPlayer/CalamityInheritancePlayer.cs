@@ -74,9 +74,9 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region Weapon
         public float animusBoost = 1f;
-        //多个计时器触发
         public bool AMRextra = false;
         public bool AMRextraTy = false;
+        public bool photovisceratorCrystal = false;
         #endregion
         #region dash
         public int dashTimeMod;

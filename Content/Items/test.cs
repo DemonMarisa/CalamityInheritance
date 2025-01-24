@@ -12,6 +12,7 @@ using CalamityInheritance.System;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Melee;
 using Terraria.DataStructures;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -39,6 +40,7 @@ namespace CalamityInheritance.Content.Items
             Item.height = 42;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
+            Item.shoot = ModContent.ProjectileType<PhotovisceratorCrystal>();
         }
         public override bool AltFunctionUse(Player player) => true;
 

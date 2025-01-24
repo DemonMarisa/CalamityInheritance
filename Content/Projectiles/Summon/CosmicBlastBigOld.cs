@@ -14,8 +14,9 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class CosmicBlastBigOld : ModProjectile
+    public class CosmicBlastBigOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;

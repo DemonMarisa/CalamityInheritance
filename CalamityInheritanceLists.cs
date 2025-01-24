@@ -163,7 +163,8 @@ namespace CalamityInheritance
             {
                 ProjectileType<ExoFlareold>(),
                 ProjectileType<ExoLightold>(),
-                ProjectileType<RicoshotCoin>()
+                ProjectileType<RicoshotCoin>(),
+                ProjectileType<ExoFlareClusterold>()
             };
 
             beeEnemyList = new List<int>()

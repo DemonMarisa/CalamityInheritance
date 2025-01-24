@@ -7,7 +7,7 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ExoArrowTealExoLore : ModProjectile, ILocalizedModType
+    public class ExoArrowTeal : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";

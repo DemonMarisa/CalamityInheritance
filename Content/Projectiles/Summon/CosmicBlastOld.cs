@@ -15,8 +15,9 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class CosmicBlastOld : ModProjectile
+    public class CosmicBlastOld : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

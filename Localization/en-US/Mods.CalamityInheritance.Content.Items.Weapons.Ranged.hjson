@@ -31,7 +31,7 @@ HeavenlyGaleold: {
 	DisplayName: Heavenly Gale Legacy
 	Tooltip:
 		'''
-		Fires a barrage of 5 random exo arrows
+		Fires a barrage of 4 random exo arrows
 		Green exo arrows explode into a tornado on death
 		Blue exo arrows cause a second group of arrows to fire on enemy hits
 		Orange exo arrows cause explosions on death
