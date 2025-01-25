@@ -89,9 +89,8 @@ SubsumingVortexold: {
 		'''
 	ExoLoreOn:
 		'''
-		星流巨械传颂之物改变：
-		初始弹幕速度更快
-		在发射出去一段时间后会逐渐加速跟踪敌人
+		[c/00B2EE:Projectile speed is faster]
+		[c/00B2EE:Will gradually accelerate to track enemies]
 		'''
 }
 
@@ -123,9 +122,9 @@ VividClarityOld: {
 		'''
 	ExoLoreOn:
 		'''
-		星流巨械传颂之物改变：
-		发射9道星流光束，每一道光束击中敌人都会产生爆炸
-		光束散步更大
+		[c/00B2EE:Fires nine beams instead of five]
+		[c/00B2EE:Every beams will release a cosmic explosion on enmey hits]
+		[c/00B2EE:Beams spread a little wide]
 		'''
 }
 

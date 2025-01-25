@@ -109,3 +109,38 @@ Celestusold: {
 		潜伏攻击会沿途生成跟踪的金源镰刀
 		'''
 }
+
+RogueTypeFallenPaladinsHammer: {
+	DisplayName: 真圣骑士锤·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		盗贼版本的真圣骑士之锤
+		击中敌人时爆炸
+		'''
+}
+
+RogueTypeGalaxySmasher: {
+	DisplayName: 银河溃灭者·盗贼版本[Legacy]
+		'''
+		盗贼版本的银河溃灭者
+		击中敌人时爆炸并释放死亡射线
+		'''
+}
+
+RogueTypeStellarContempt: {
+	DisplayName: 星体击碎者·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		盗贼版本的星体击碎者
+		击中敌人时天降月炎射线
+		'''
+}
+
+RogueTypeTriactisTruePaladinianMageHammerofMight: {
+	DisplayName: 真·泰阿克提斯之圣骑士魔锤·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		盗贼版本的……超级无敌大锤子
+		击中敌人时爆炸
+		'''
+}

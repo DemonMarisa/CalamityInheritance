@@ -1,17 +1,16 @@
 ExoTheApostle: {
-	DisplayName: Exo The Apostle
+	DisplayName: The Apostle
 	Tooltip:
 		'''
-		Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes 
-		Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins
+		Striking an enemy will summon more javelins around for additional hits
+		Stealth strikes will summon more javelins, and burst into homing energy daggers
 		'The messanger of a truth that consigns all who hear it to oblivion'
 		'''
 	ExoLoreOn:
 		'''
-		星流巨械传颂之物改变：
-		攻击会无限穿透
-		长枪命中敌人会爆出跟踪的能量匕首，同时召唤另一枚长枪追加打击
-		潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪
+		[c/00B2EE:Your attack can infinite pierce]
+		[c/00B2EE:Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes]
+		[c/00B2EE:Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins]
 		'''
 }
 
@@ -72,11 +71,7 @@ Supernovaold: {
 		Stealth strikes release energy as they fly
 		'Nerf Supernova sprite size'
 		'''
-	ExoLoreOn:
-		'''
-		星流巨械传颂之物改变：
-		潜伏攻击会产生更大的爆炸
-		'''
+	ExoLoreOn: "[c/00B2EE:Stealth strikes casue an even bigger expolsion]"
 }
 
 SylvanSlasher: {
@@ -103,8 +98,43 @@ Celestusold: {
 		'''
 	ExoLoreOn:
 		'''
-		星流巨械传颂之物改变：
-		攻击时会从上方生成一个复制镰刀
-		潜伏攻击会沿途生成跟踪的金源镰刀
+		[c/00B2EE:Upon attacking, a duplicate sickle will spawn from above]
+		[c/00B2EE:Stealth strikes will spawn tracking Auric sickle along the path]
+		'''
+}
+
+RogueTypeFallenPaladinsHammer: {
+	DisplayName: True Paladin's Hammer Legacy Rogue
+	Tooltip:
+		'''
+		Legacy True Paladin's Hammer for Rogue class
+		Explodes on enemy hits
+		'''
+}
+
+RogueTypeGalaxySmasher: {
+	DisplayName: Galaxy Smasher Legacy Rogue
+	Tooltip:
+		'''
+		Legacy Galaxy Smasher for Rogue class
+		Explodes and summons death lasers on enemy hits
+		'''
+}
+
+RogueTypeStellarContempt: {
+	DisplayName: Stellar Contempt Legacy Rogue
+	Tooltip:
+		'''
+		Legacy Stellar Contempt for Rogue class
+		Lunar flares rain down on enemy hits
+		'''
+}
+
+RogueTypeTriactisTruePaladinianMageHammerofMight: {
+	DisplayName: Triactis' True Paladinian Mage Hammer of Might Legacy Rogue
+	Tooltip:
+		'''
+		Legacy...uh, really GIANT BIG hammer for Rogue class
+		Explodes on enemy hits
 		'''
 }

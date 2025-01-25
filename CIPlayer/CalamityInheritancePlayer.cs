@@ -454,6 +454,18 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CalamityInheritanceTexture.EtherealTalismanOld;
                 }
             }
+            if (TextureAssets.Item[ModContent.ItemType<Skullmasher>()] != null)
+            {
+                if(CalamityInheritanceConfig.Instance.SkullmasherResprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CalamityInheritanceTexture.Skullmasher1p5;
+                }
+                if(CalamityInheritanceConfig.Instance.SkullmasherResprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CalamityInheritanceTexture.Skullmasher;
+                }
+
+            }
             #endregion
         }
         #endregion

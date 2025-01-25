@@ -24,6 +24,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void SetStaticDefaults()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(160, 9f, 2.5f);
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersCelestial>()] = ModContent.ItemType<FasterLunarTracers>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterLunarTracers>()] = ModContent.ItemType<TracersCelestial>();
+            }
         }
 
         public override void SetDefaults()
@@ -78,10 +83,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<TracersSeraph>().
-                AddTile(TileID.LunarCraftingStation).
-                Register();
+
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                CreateRecipe().
+                    AddIngredient<TracersCelestial>().
+                    Register();
+            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

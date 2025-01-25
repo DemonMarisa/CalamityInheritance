@@ -494,11 +494,12 @@ KnowledgeYharon: {
 }
 
 KnowledgeExoMechs: {
-	DisplayName: ExoMechs Revamped
+	DisplayName: Exo-Mechs Revamped
 	Lore:
 		'''
 		The fruits of masterful craftsmanship and optimization, created only with the objective to destroy.
 		Yet in the end, they achieved little more than the original designs they were derived from.
 		These Knowledge aren't finished.
+		[c/00B2ee:Favorite] this item will make your Exo weapons become... much more deadly.
 		'''
 }
