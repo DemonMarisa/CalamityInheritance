@@ -23,11 +23,10 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void Load()
         {
             // All code below runs only if we're not loading on a server
-            if (Main.netMode != NetmodeID.Server)
-            {
-                // Add equip textures
-                EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/AuricTesla/AuricTeslaBodyArmorold_Back", EquipType.Back, this);
-            }
+            if (Main.netMode == NetmodeID.Server)
+                return;
+            // Add equip textures
+            EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/AuricTesla/AuricTeslaBodyArmorold_Back", EquipType.Back, this);
         }
 
         public override void SetStaticDefaults()

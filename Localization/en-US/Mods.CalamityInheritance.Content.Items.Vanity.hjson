@@ -12,3 +12,38 @@ AncientOmegaBlueLeggings: {
 	DisplayName: Ancient Omega Blue Leggings
 	Tooltip: "'Calamity 1.4.0.1'"
 }
+
+AncientAuricTeslaBodyArmor: {
+	DisplayName: Ancient Auric Tesla Body Armor
+	Tooltip: ""
+}
+
+AncientAuricTeslaCuisses: {
+	DisplayName: Ancient Auric Tesla Cuisses
+	Tooltip: ""
+}
+
+AncientAuricTeslaHelm: {
+	DisplayName: Ancient Auric Tesla Helm
+	Tooltip: ""
+}
+
+AncientAuricTeslaHoodedFacemask: {
+	DisplayName: Ancient Auric Tesla Hooded Facemask
+	Tooltip: ""
+}
+
+AncientAuricTeslaPlumedHelm: {
+	DisplayName: Ancient Auric Tesla Plumed Helm
+	Tooltip: ""
+}
+
+AncientAuricTeslaSpaceHelmet: {
+	DisplayName: Ancient Auric Tesla Space Helmet
+	Tooltip: ""
+}
+
+AncientAuricTeslaWireHemmedVisage: {
+	DisplayName: Ancient Auric Tesla Wire Hemmed Visage
+	Tooltip: ""
+}

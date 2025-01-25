@@ -22,6 +22,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using Terraria.Localization;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -128,18 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/CelestusoldGlow").Value);
         }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
-            {
-                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.Celestusold.ExoLoreOn");
-
-                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
-            }
-        }
         public override void AddRecipes()
         {
             CreateRecipe().

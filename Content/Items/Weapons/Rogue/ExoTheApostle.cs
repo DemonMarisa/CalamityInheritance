@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public static readonly SoundStyle ThrowSound2 = new("CalamityInheritance/Sounds/Custom/ExoApostleStealth") { Volume = 1.2f, PitchVariance = 0.3f };
         public override void SetDefaults()
         {
-            Item.damage = 1460;
+            Item.damage = 1560;
             Item.width = 92;
             Item.height = 100;
             Item.useTime = 60;

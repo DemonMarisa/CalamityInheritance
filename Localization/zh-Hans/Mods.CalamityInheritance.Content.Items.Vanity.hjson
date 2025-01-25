@@ -1,4 +1,4 @@
-﻿AncientOmegaBlueChestplate: {
+AncientOmegaBlueChestplate: {
 	DisplayName: 远古蓝色欧米茄胸甲
 	Tooltip: ""
 }
@@ -11,4 +11,39 @@ AncientOmegaBlueHelmet: {
 AncientOmegaBlueLeggings: {
 	DisplayName: 远古蓝色欧米茄触手
 	Tooltip: ""
+}
+
+AncientAuricTeslaBodyArmor: {
+	// DisplayName: Ancient Auric Tesla Body Armor
+	// Tooltip: ""
+}
+
+AncientAuricTeslaCuisses: {
+	// DisplayName: Ancient Auric Tesla Cuisses
+	// Tooltip: ""
+}
+
+AncientAuricTeslaHelm: {
+	// DisplayName: Ancient Auric Tesla Helm
+	// Tooltip: ""
+}
+
+AncientAuricTeslaHoodedFacemask: {
+	// DisplayName: Ancient Auric Tesla Hooded Facemask
+	// Tooltip: ""
+}
+
+AncientAuricTeslaPlumedHelm: {
+	// DisplayName: Ancient Auric Tesla Plumed Helm
+	// Tooltip: ""
+}
+
+AncientAuricTeslaSpaceHelmet: {
+	// DisplayName: Ancient Auric Tesla Space Helmet
+	// Tooltip: ""
+}
+
+AncientAuricTeslaWireHemmedVisage: {
+	// DisplayName: Ancient Auric Tesla Wire Hemmed Visage
+	// Tooltip: ""
 }
