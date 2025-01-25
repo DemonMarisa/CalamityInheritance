@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             get => Projectile.GetByUUID(Projectile.owner, Projectile.ai[1]);
             set => Projectile.ai[1] = value;
         }
-        public override float MaxScale => 0.7f + (float)Math.Cos(Main.GlobalTimeWrappedHourly * 10f) * 0.07f;
+        public override float MaxScale => 0.75f + (float)Math.Cos(Main.GlobalTimeWrappedHourly * 10f) * 0.07f;
         public override float MaxLaserLength => 960f;
         public override float Lifetime => 70f;
         public override Color LaserOverlayColor => Color.Red * 0.8f;
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 18;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.DamageType = DamageClass.Summon;
         }

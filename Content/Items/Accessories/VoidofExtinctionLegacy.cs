@@ -103,12 +103,15 @@ namespace CalamityInheritance.Content.Items.Accessories
         }
         public override void AddRecipes()
         {
-            CreateRecipe()
-                .AddIngredient<CoreofCalamity>()
-                .AddIngredient<CoreofHavoc>()
-                .AddIngredient<ScoriaBar>(3)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                CreateRecipe()
+                    .AddIngredient<CoreofCalamity>()
+                    .AddIngredient<CoreofHavoc>()
+                    .AddIngredient<ScoriaBar>(3)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
     }
 }

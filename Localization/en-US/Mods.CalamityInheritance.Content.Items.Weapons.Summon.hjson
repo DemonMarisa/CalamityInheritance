@@ -32,15 +32,14 @@ CosmicImmaterializerOld: {
 		The orb will fire swarms of homing energy bolts when enemies are detected by it
 		Requires 10 minion slots, only one energy spiral can be summoned
 		'''
-	ExoLoreOn:
-		'''
-		星流巨械传颂之物改变：
-		发射更多的宇宙能量
-		宇宙能量会在发射一段时间后跟踪
-		'''
+	ExoLoreOn: "[c/00B2EE:Fires more cosmic energy bolts]"
 }
 
 MountedScannerLegacy: {
 	DisplayName: Mounted Scanner Legacy
-	Tooltip: Summons a powerful scanner module above your head that fires lasers at nearby enemies
+	Tooltip:
+	 	'''
+		Summons a powerful scanner module above your head that fires lasers at nearby enemies
+		Requires 1.25 minions to use
+		'''
 }

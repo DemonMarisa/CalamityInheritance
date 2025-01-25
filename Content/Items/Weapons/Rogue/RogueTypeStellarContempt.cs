@@ -10,29 +10,29 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Projectiles;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
-namespace CalamityInheritance.Content.Items.Weapons.Melee
+namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class StellarContemptOld : ModItem, ILocalizedModType
+    public class RogueTypeStellarContempt : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContempt>()] = ModContent.ItemType<StellarContemptOld>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContemptOld>()] = ModContent.ItemType<StellarContempt>();
-            }
+            
         }
 
         public override void SetDefaults()
         {
             Item.width = 74;
             Item.height = 74;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.damage = BaseDamage;
             Item.knockBack = 9f;
             Item.useTime = 13;
@@ -47,32 +47,32 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ItemRarityID.Red;
 
-            Item.shoot = ModContent.ProjectileType<StellarContemptHammerOld>();
+            Item.shoot = ModContent.ProjectileType<StellarContemptHammerRogue>();
             Item.shootSpeed = Speed;
         }
 
         public override void AddRecipes()
         {
+
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            {
             CreateRecipe().
-                AddIngredient<FallenPaladinsHammerOld>().
+                AddIngredient<FallenPaladinsHammer>().
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient(ItemID.FragmentSolar, 10).
                 AddIngredient(ItemID.FragmentNebula, 10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
+            }
 
 
-
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            {
                 CreateRecipe().
-                    AddIngredient<FallenPaladinsHammer>().
+                    AddIngredient<RogueTypeFallenPaladinsHammer>().
                     AddIngredient(ItemID.LunarBar, 5).
                     AddIngredient(ItemID.FragmentSolar, 10).
                     AddIngredient(ItemID.FragmentNebula, 10).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
-            }
         }
     }
 }

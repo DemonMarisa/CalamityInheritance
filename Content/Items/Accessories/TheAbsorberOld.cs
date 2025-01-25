@@ -1,17 +1,10 @@
 ﻿using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
-using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
@@ -21,6 +14,9 @@ namespace CalamityInheritance.Content.Items.Accessories
     public class TheAbsorberOld : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

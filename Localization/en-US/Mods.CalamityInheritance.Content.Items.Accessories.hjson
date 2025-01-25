@@ -359,7 +359,7 @@ AncientReaperToothNecklace: {
 	DisplayName: Ancient Reaper Tooth Necklace
 	Tooltip:
 		'''
-		+100 armor penetration
+		+200 armor penetration
 		25% increased damage and critical strike chance
 		Your damage reduction and defense will be reduced by a tentn.
 		'I don't think this should exist...'

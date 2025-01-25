@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             Item.width = 26;
             Item.height = 26;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 36;
+            Item.damage = 42;
             Item.knockBack = 2f;
             Item.mana = 10;
             Item.useTime = Item.useAnimation = 24;

@@ -11,12 +11,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatin>()] = ModContent.ItemType<GrandGelatinLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatinLegacy>()] = ModContent.ItemType<GrandGelatin>();
-            }
-            
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatin>()] = ModContent.ItemType<GrandGelatinLegacy>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatinLegacy>()] = ModContent.ItemType<GrandGelatin>();
         }
 
         public override void SetDefaults()
@@ -43,14 +39,18 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-            CreateRecipe()
-                .AddIngredient<CleansingJelly>()
-                .AddIngredient<LifeJelly>()
-                .AddIngredient<VitalJelly>()
-                .AddIngredient(ItemID.SoulBottleLight,7)
-                .AddIngredient(ItemID.SoulBottleNight,7)
-                .AddTile(TileID.Anvils)
-                .Register();
+
+            // if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            // {
+                CreateRecipe()
+                    .AddIngredient<CleansingJelly>()
+                    .AddIngredient<LifeJelly>()
+                    .AddIngredient<VitalJelly>()
+                    .AddIngredient(ItemID.SoulofLight,4)
+                    .AddIngredient(ItemID.SoulofNight,4)
+                    .AddTile(TileID.Anvils)
+                    .Register();
+            // }
         }
     }
 }

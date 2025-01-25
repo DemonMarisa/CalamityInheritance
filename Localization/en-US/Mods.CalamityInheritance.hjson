@@ -163,5 +163,10 @@ Configs: {
 				Disable by default
 				'''
 		}
+
+		SkullmasherResprite: {
+			Label: Skullmasher Resprite
+			Tooltip: Determines the sprite style of Skullmasher
+		}
 	}
 }

@@ -12,6 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -22,6 +23,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void SetStaticDefaults()
         {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersElysian>()] = ModContent.ItemType<FasterGodSlayerTracers>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterGodSlayerTracers>()] = ModContent.ItemType<TracersElysian>();
+            }
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 10.5f, 2.75f);
         }
 
@@ -78,10 +84,24 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void AddRecipes()
         {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            {
             CreateRecipe().
-                AddIngredient<TracersElysian>().
+                AddIngredient<TracersCelestial>().
+                AddIngredient<ElysianWings>().
+                AddIngredient<CosmiliteBar>(5).
+                AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
+            CreateRecipe().
+                AddIngredient<FasterLunarTracers>().
+                AddIngredient<ElysianWings>().
+                AddIngredient<CosmiliteBar>(5).
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

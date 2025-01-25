@@ -753,6 +753,7 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.infiniteFlight = true;
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
+
             #endregion
             #region ArmorSet
             if (usPlayer.invincible)

@@ -1,15 +1,8 @@
 ﻿using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.Rarities;
 using CalamityMod;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;

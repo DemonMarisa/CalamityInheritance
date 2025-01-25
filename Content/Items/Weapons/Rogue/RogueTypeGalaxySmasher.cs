@@ -1,44 +1,34 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
-namespace CalamityInheritance.Content.Items.Weapons.Melee
+namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class GalaxySmasherMelee : ModItem, ILocalizedModType
+    public class RogueTypeGalaxySmasher : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasher>()] = ModContent.ItemType<GalaxySmasherMelee>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasherMelee>()] = ModContent.ItemType<GalaxySmasher>();
-            }
+            
         }
 
         public override void SetDefaults()
         {
             Item.width = 86;
             Item.height = 72;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.damage = BaseDamage;
             Item.knockBack = 9f;
             Item.useAnimation = 13;
@@ -53,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
 
-            Item.shoot = ModContent.ProjectileType<GalaxySmasherHammerOld>();
+            Item.shoot = ModContent.ProjectileType<GalaxySmasherHammerRogue>();
             Item.shootSpeed = Speed;
         }
 
@@ -65,21 +55,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            {
             CreateRecipe().
-                AddIngredient<StellarContempt>().
+                AddIngredient<RogueTypeStellarContempt>().
                 AddIngredient<CosmiliteBar>(10).
                 AddTile<CosmicAnvil>().
                 Register();
-            }
 
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            {
                 CreateRecipe().
-                    AddIngredient<StellarContemptOld>().
+                    AddIngredient<StellarContempt>().
                     AddIngredient<CosmiliteBar>(10).
                     AddTile<CosmicAnvil>().
                     Register();
+            }
         }
     }
 }

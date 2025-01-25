@@ -1,24 +1,25 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
-namespace CalamityInheritance.Content.Items.Weapons.Melee
+namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class FallenPaladinsHammerOld : ModItem, ILocalizedModType
+    public class RogueTypeFallenPaladinsHammer : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override void SetStaticDefaults()
         {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammerOld>()] = ModContent.ItemType<RogueTypeFallenPaladinsHammer>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RogueTypeFallenPaladinsHammer>()] = ModContent.ItemType<FallenPaladinsHammerOld>();
+            }
         }
 
         public override void SetDefaults()
@@ -33,11 +34,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 13;
             Item.knockBack = 20f;
             Item.UseSound = SoundID.Item1;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.height = 28;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<FallenPaladinsHammerProjOld>();
+            Item.shoot = ModContent.ProjectileType<FallenPaladinsHammerProjRogue>();
             Item.shootSpeed = 14f;
         }
 

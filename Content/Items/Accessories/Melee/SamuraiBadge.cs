@@ -1,25 +1,12 @@
 ﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items;
 using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Materials;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {

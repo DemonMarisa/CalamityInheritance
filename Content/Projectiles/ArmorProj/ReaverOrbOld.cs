@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles;
+using CalamityInheritance.Content.Projectiles.Summon;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
@@ -114,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                         Main.projectile[spore].minion = true;
                         Main.projectile[spore].minionSlots = 0f;
                         int numberOfProjectiles = Main.rand.Next(6, 8);
-                        int[] projectileTypes = { ModContent.ProjectileType<CISporeGas>(), ModContent.ProjectileType<CISporeGas2>(), ModContent.ProjectileType<CISporeGas3>() };
+                        int[] projectileTypes = { ModContent.ProjectileType<CISporeGasSummon>(), ModContent.ProjectileType<CISporeGasSummon2>(), ModContent.ProjectileType<CISporeGasSummon3>() };
                         float baseAngleIncrement = 2 * MathHelper.Pi / numberOfProjectiles;
                         float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
                         float randomOffset = Main.rand.NextFloat(-MathHelper.ToRadians(2), MathHelper.ToRadians(1));

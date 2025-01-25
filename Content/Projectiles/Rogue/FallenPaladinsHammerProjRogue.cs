@@ -8,12 +8,12 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace CalamityInheritance.Content.Projectiles.Melee
+namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class FallenPaladinsHammerProjOld : ModProjectile, ILocalizedModType
+    public class FallenPaladinsHammerProjRogue : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/FallenPaladinsHammerOld";
+        public new string LocalizationCategory => "Content.Projectiles.Rogue";
+        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeFallenPaladinsHammer";
 
         public override void SetStaticDefaults()
         {
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.width = 62;
             Projectile.height = 62;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.MeleeNoSpeed;
+            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 2;
@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
                 if (proj.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[proj].DamageType = DamageClass.MeleeNoSpeed;
+                    Main.projectile[proj].DamageType = ModContent.GetInstance<RogueDamageClass>();
             }
         }
 

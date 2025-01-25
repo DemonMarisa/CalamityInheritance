@@ -1,14 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,12 +9,16 @@ using CalamityMod;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PhangasmOS : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+        }
         public override void SetDefaults()
         {
             Item.width = 48;

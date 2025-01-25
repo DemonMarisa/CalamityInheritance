@@ -68,12 +68,7 @@ ExoGladius: {
 		Fires a rainbow orb that summons sword beams on hit
 		'Quest: Bring back the Exo Gladius (3/100)'
 		'''
-	ExoLoreOn:
-		'''
-		星流巨械传颂之物改变：
-		普通攻击也会从天而降跟踪彗星
-		跟踪能力更强
-		'''
+	ExoLoreOn: "[c/00B2EE:You don't need to strike your enemy with the blade to summon comets now]"
 }
 
 FlameburstShortsword: {
