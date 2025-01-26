@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -44,6 +45,10 @@ namespace CalamityInheritance.Content.Items
                 {
                     itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
                 }
+            }
+            if (item.type == ModContent.ItemType<CryogenBag>())
+            {
+                itemloot.Add(ModContent.ItemType<CryoBar>(), 3, 5, 15); //33%概率，数量5-15
             }
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())

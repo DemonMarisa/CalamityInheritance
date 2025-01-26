@@ -264,7 +264,47 @@ namespace CalamityInheritance.Content.Items
                 AddTile(TileID.Anvils).
                 Register();
             #endregion
+            
             #region Item
+            Recipe.Create(ModContent.ItemType<FrostcrushValari>()).
+                AddIngredient<Kylie>().
+                AddIngredient<CryoBar>(6).
+                AddIngredient<Voidstone>(40).
+                AddIngredient<CoreofEleum>(5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            Recipe.Create(ModContent.ItemType<IceBarrage>()).
+                AddIngredient(ItemID.BlizzardStaff, 1).
+                AddIngredient(ItemID.IceRod, 1).
+                AddIngredient<IcicleStaff>().
+                AddIngredient<EndothermicEnergy>(23).
+                AddIngredient<CryoBar>(18).
+                AddTile<CosmicAnvil>().
+                Register();
+            
+            Recipe.Create(ModContent.ItemType<FlarefrostBlade>()).
+                AddIngredient(ItemID.HellstoneBar, 8).
+                AddIngredient<CryoBar>(8).
+                AddIngredient(ItemID.SoulofLight, 3).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+            int[] frostArmor =
+            [
+                ItemID.FrostBreastplate,
+                ItemID.FrostHelmet,
+                ItemID.FrostLeggings,
+            ];
+
+            foreach(var forstArmorCustomCraft in frostArmor)
+            {
+                Recipe.Create(forstArmorCustomCraft).
+                    AddIngredient<CryoBar>(10).
+                    AddIngredient(ItemID.FrostCore, 2).
+                    AddTile(TileID.IceMachine).
+                    Register();
+            }
+
             Recipe.Create(ItemID.TerraBlade).
                 AddIngredient(ModContent.ItemType<TrueBloodyEdge>()).
                 AddIngredient(ItemID.TrueExcalibur).

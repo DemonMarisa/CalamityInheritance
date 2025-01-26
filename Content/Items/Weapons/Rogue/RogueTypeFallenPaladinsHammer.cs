@@ -7,10 +7,11 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueTypeFallenPaladinsHammer : ModItem, ILocalizedModType
+    public class RogueTypeFallenPaladinsHammer : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override void SetStaticDefaults()

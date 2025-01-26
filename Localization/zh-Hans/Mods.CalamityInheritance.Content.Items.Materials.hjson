@@ -31,3 +31,8 @@ AncientVictideBar: {
 	DisplayName: 胜朝锭[Legacy]
 	Tooltip: 远古海洋碎片
 }
+
+CryoBar: {
+	// Tooltip: ""
+	// DisplayName: Cryo Bar
+}

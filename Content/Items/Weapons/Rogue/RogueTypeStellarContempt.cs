@@ -14,10 +14,11 @@ using CalamityMod;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueTypeStellarContempt : ModItem, ILocalizedModType
+    public class RogueTypeStellarContempt : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static int BaseDamage = 300;
