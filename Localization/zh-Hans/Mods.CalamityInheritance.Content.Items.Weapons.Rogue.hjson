@@ -145,3 +145,8 @@ RogueTypeTriactisTruePaladinianMageHammerofMight: {
 		击中敌人时爆炸
 		'''
 }
+
+ScourgeoftheCosmosRogue: {
+	// DisplayName: Scourgeofthe Cosmos Rogue
+	// Tooltip: ""
+}

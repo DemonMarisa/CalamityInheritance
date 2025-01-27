@@ -245,3 +245,20 @@ MusicMarkChange: {
 	DisplayName: Music Mark Change
 	Tooltip: ""
 }
+
+KelvinCatalystMelee: {
+	DisplayName: Kelvin Catalyst Legacy Melee
+	Tooltip:
+		'''
+		Throws an icy blade that splits into multiple ice stars on enemy hits
+		Ice stars are extremely agressive on chasing their enemy
+		'''
+}
+
+SubductionSlicerMelee: {
+	Tooltip:
+		'''
+		Throws a scythe that explodes on enemy hits	
+		'''
+	DisplayName: Subduction Slicer Legacy Melee
+}

@@ -181,3 +181,8 @@ Impaler: {
 		不是尖桩风暴——也不能说完全不是
 		'''
 }
+
+P90Legacy: {
+	// DisplayName: P90 Legacy
+	// Tooltip: ""
+}

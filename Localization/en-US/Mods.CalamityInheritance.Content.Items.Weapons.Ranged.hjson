@@ -177,3 +177,12 @@ Impaler: {
 		Instantly kills vampires and vampire bats
 		'''
 }
+
+P90Legacy: {
+	DisplayName: P90 Legacy
+	Tooltip:
+		'''
+		33% chance to not use ammo
+		It's a bullet hose
+		'''
+}

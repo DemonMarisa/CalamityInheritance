@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CreateRecipe().
                 AddIngredient<Kingsbane>().
-                AddIngredient<ClockGatlignum>().
+                AddIngredient<P90Legacy>().
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
                 Register();

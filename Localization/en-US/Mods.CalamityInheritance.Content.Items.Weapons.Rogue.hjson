@@ -138,3 +138,12 @@ RogueTypeTriactisTruePaladinianMageHammerofMight: {
 		Explodes on enemy hits
 		'''
 }
+
+ScourgeoftheCosmosRogue: {
+	DisplayName: Scourge of the Cosmos Legacy Rogue
+	Tooltip:
+		'''
+		Throws a bouncing cosmic scourge that emits tiny homing cosmic scourges on enemy and tile hits
+		Stealth strikes will bounces more times, emits more deadly homing cosmic on hits
+		'''
+}

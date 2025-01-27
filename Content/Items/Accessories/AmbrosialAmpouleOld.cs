@@ -63,6 +63,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().
                 AddIngredient<StarblightSoot>(15).
+                AddIngredient<CryonicBar>(5).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -72,6 +73,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().
                 AddIngredient<StarblightSoot>(15).
+                AddIngredient<CryonicBar>(5).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

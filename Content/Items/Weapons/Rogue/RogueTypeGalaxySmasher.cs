@@ -10,10 +10,11 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueTypeGalaxySmasher : ModItem, ILocalizedModType
+    public class RogueTypeGalaxySmasher : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static int BaseDamage = 300;

@@ -2,6 +2,7 @@
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -10,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueTypeTriactisTruePaladinianMageHammerofMight : ModItem, ILocalizedModType
+    public class RogueTypeTriactisTruePaladinianMageHammerofMight : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override void SetDefaults()
