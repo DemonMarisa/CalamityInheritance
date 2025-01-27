@@ -66,10 +66,19 @@ namespace CalamityInheritance.NPCs
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             if (npc.type == ModContent.NPCType<IrradiatedSlime>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 33 );
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 3 );
 
             if (npc.type == ModContent.NPCType<GammaSlime>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 33);
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 3);
+
+            if (npc.type == ModContent.NPCType<CragmawMire>())
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 2);
+
+            if (npc.type == ModContent.NPCType<Mauler>())
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 2);
+
+            if (npc.type == ModContent.NPCType<NuclearTerror>())
+                npcLoot.Add(ModContent.ItemType<LeadCore>(), 1);
 
             if (npc.type == ModContent.NPCType<EutrophicRay>())
                 npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);

@@ -88,6 +88,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<TracersSeraph>().
+                AddCustomShimmerResult(ModContent.ItemType<DrewsWings>(), 1).
+                AddCustomShimmerResult(ModContent.ItemType<AuricBarold>(), 1).
+                AddCustomShimmerResult(ModContent.ItemType<FasterGodSlayerTracers>(), 1).
+                Register();
 
             CreateRecipe().
                 AddIngredient<TracersSeraph>().

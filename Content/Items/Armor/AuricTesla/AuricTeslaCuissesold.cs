@@ -41,6 +41,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 AddIngredient<BloodflareCuisses>().
                 AddIngredient<TarragonLeggings>().
                 AddIngredient(ItemID.FlyingCarpet).
+                AddIngredient<AuricBar>(15).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddRecipeGroup("CalamityInheritance:AnyGodSlayerLeg").
+                AddRecipeGroup("CalamityInheritance:AnySilvaLeg").
+                AddIngredient<BloodflareCuisses>().
+                AddIngredient<TarragonLeggings>().
+                AddIngredient(ItemID.FlyingCarpet).
                 AddIngredient<AuricBarold>(2).
                 AddTile<CosmicAnvil>().
                 Register();

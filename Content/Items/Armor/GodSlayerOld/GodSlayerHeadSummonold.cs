@@ -45,6 +45,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
             modplayer1.godSlayerSummonold = true;
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modplayer1.GodSlayerReborn = true;

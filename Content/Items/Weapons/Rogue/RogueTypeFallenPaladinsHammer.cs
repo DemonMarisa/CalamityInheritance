@@ -15,11 +15,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammerOld>()] = ModContent.ItemType<RogueTypeFallenPaladinsHammer>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RogueTypeFallenPaladinsHammer>()] = ModContent.ItemType<FallenPaladinsHammerOld>();
-            }
         }
 
         public override void SetDefaults()

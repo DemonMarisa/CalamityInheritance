@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Onyxia>().
                 AddIngredient<UniversalGenesis>().
                 AddIngredient<ElementalBlaster>().
-                AddIngredient<Infinity>().
+                AddIngredient<PearlGod>().
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Onyxia>().
                 AddIngredient<UniversalGenesis>().
                 AddIngredient<ElementalBlaster>().
-                AddIngredient<Infinity>().
+                AddIngredient<PearlGod>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().

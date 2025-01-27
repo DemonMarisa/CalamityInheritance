@@ -87,13 +87,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             // PhotovisceratorCrystal发射逻辑
             if (usPlayer.exoMechLore)
             {
+                float Direction = player.direction;
+                float SpawnX = player.direction * 15f;
+                float SpawnY = player.direction * 50f;
 
-                    Vector2 spawnPosition = Owner.Center + Main.rand.NextVector2Circular(Owner.width, Owner.height) * 1.35f;
+                Vector2 spawnPosition = Owner.Center + Main.rand.NextVector2Circular(Owner.width, Owner.height) * 1.35f;
                     Vector2 shootVelocity = spawnPosition * 0.04f;
                     if (shootVelocity.Length() < 6f)
                         shootVelocity = shootVelocity.SafeNormalize(Vector2.UnitY) * 6f;
 
-                    spawnPosition -= shootVelocity.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(15f, 50f);
+                    spawnPosition -= shootVelocity.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(SpawnX, SpawnY);
                     Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), spawnPosition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage, 0f, OwnerIndex);
 
             }

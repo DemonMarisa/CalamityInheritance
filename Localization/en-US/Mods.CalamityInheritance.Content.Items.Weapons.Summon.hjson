@@ -38,7 +38,7 @@ CosmicImmaterializerOld: {
 MountedScannerLegacy: {
 	DisplayName: Mounted Scanner Legacy
 	Tooltip:
-	 	'''
+		'''
 		Summons a powerful scanner module above your head that fires lasers at nearby enemies
 		Requires 1.25 minions to use
 		'''

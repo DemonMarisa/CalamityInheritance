@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -19,6 +20,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
+            if (CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammerOld>()] = ModContent.ItemType<RogueTypeFallenPaladinsHammer>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RogueTypeFallenPaladinsHammer>()] = ModContent.ItemType<FallenPaladinsHammerOld>();
+            }
         }
 
         public override void SetDefaults()

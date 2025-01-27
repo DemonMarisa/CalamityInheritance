@@ -34,13 +34,17 @@ CosmicImmaterializerOld: {
 		'''
 	ExoLoreOn:
 		'''
-		星流巨械传颂之物改变：
-		发射更多的宇宙能量
-		宇宙能量会在发射一段时间后跟踪
+		[c/00B2EE:星流巨械传颂之物改变：]
+		[c/00B2EE:发射更多的宇宙能量]
+		[c/00B2EE:宇宙能量会在发射一段时间后跟踪]
 		'''
 }
 
 MountedScannerLegacy: {
 	DisplayName: 架式扫射机[Legacy]
-	Tooltip: 在头顶召唤强大的扫描模块向附近的敌人发射激光
+	Tooltip:
+		'''
+		在头顶召唤强大的扫描模块向附近的敌人发射激光
+		每个召唤物消耗1.25召唤栏
+		'''
 }

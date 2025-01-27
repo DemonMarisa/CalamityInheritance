@@ -93,6 +93,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
+
             CreateRecipe().
                 AddIngredient<FasterLunarTracers>().
                 AddIngredient<ElysianWings>().

@@ -84,12 +84,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void AddRecipes()
         {
 
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
                 CreateRecipe().
-                    AddIngredient<TracersCelestial>().
+                    AddIngredient<AngelTreads>().
+                    AddRecipeGroup("AnyWings").
+                    AddIngredient(ItemID.LunarBar, 5).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
-            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

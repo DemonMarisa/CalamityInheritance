@@ -4,12 +4,14 @@ using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,7 @@ namespace CalamityInheritance
         public static RecipeGroup ExoTropyGroup;
         public static RecipeGroup CosmicShivGroup; 
         public static RecipeGroup DeificAmuletGroup;
+        public static RecipeGroup PhantasmalRuinGroup;
 
         public static RecipeGroup GodSlayerBodyGroup;
         public static RecipeGroup GodSlayerLegGroup;
@@ -54,6 +57,7 @@ namespace CalamityInheritance
             ExoTropyGroup = null;
             CosmicShivGroup = null;
             DeificAmuletGroup = null;
+            AmbrosialAmpoule = null;
 
             GodSlayerBodyGroup = null;
             GodSlayerLegGroup = null;
@@ -68,6 +72,7 @@ namespace CalamityInheritance
         }
         public override void AddRecipeGroups()
         {
+            #region 其它组
             // 创建并存储一个配方组
             // Language.GetTextValue("LegacyMisc.37") 是英文中的 "Any" 一词，并对应其他语言中的相应词汇
             ElementalRayRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<ElementalRay>())}",
@@ -100,7 +105,7 @@ namespace CalamityInheritance
 
             DeificAmuletGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<DeificAmulet>())}",
                 ModContent.ItemType<DeificAmulet>(), ModContent.ItemType<DeificAmuletLegacy>());
-
+            #endregion
             #region 新旧弑神
             GodSlayerBodyGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<GodSlayerChestplate>())}",
                 ModContent.ItemType<GodSlayerChestplateold>(), ModContent.ItemType<GodSlayerChestplate>());
@@ -131,6 +136,14 @@ namespace CalamityInheritance
                 ModContent.ItemType<SilvaHeadSummonold>(), ModContent.ItemType<SilvaHeadSummon>());
 
             #endregion
+            #region 武器组
+
+            PhantasmalRuinGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<PhantasmalRuinold>())}",
+                ModContent.ItemType<PhantasmalRuin>(), ModContent.ItemType<PhantasmalRuinold>());
+
+            #endregion
+
+            #region 其它组
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalFury", PhantasmalFuryRecipeGroup);
@@ -139,6 +152,7 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyExoTropy", ExoTropyGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyCosmicShiv", CosmicShivGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyDeificAmulet", DeificAmuletGroup);
+            #endregion
             #region 新旧弑神
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyGodSlayerBody", GodSlayerBodyGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyGodSlayerLeg", GodSlayerLegGroup);
@@ -151,6 +165,9 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnySilvaLeg", SilvaLegGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnySilvaHeadMagic", SilvaHeadMagicGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnySilvaHeadSummon", SilvaHeadSummonGroup);
+            #endregion
+            #region 武器组
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalRuin", PhantasmalRuinGroup);
             #endregion
         }
 

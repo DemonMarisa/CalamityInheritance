@@ -98,9 +98,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CreateRecipe().
                 AddIngredient<Wrathwing>().
-                AddIngredient<ProfanedPartisan>().
                 AddIngredient<RealityRupture>().
-                AddIngredient<PhantasmalRuin>().
+                AddIngredient<ShardofAntumbra>(500).
+                AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
                 AddIngredient<EclipsesFall>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<MiracleMatter>().
@@ -109,9 +109,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             
             CreateRecipe().
                 AddIngredient<Wrathwing>().
-                AddIngredient<ProfanedPartisan>().
                 AddIngredient<RealityRupture>().
-                AddIngredient<PhantasmalRuin>().
+                AddIngredient<ShardofAntumbra>(500).
+                AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
                 AddIngredient<EclipsesFall>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<AncientMiracleMatter>().

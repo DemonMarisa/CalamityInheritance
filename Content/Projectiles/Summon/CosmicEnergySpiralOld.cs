@@ -223,11 +223,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     if(usPlayer.exoMechLore)
                     {
                         SoundEngine.PlaySound(SoundID.Item105, Projectile.position);
-                        int blastAmt = Main.rand.Next(10, 15);
+                        int blastAmt = Main.rand.Next(12, 18);
                         for (int b = 0; b < blastAmt; b++)
                         {
                             Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastExoLore>(), Projectile.damage, 2f, Projectile.owner, (float)target, 0f);
+                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastExoLore>(), Projectile.damage / 2, 2f, Projectile.owner, (float)target, 0f);
                             if (Main.projectile.IndexInRange(p2))
                                 Main.projectile[p2].originalDamage = Projectile.originalDamage;
                         }
@@ -239,19 +239,20 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         num404 *= num406;
                         num405 *= num406;
 
-                        Vector2 adjustedVelocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(-140));
-                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity * 4, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
+                        Vector2 velocity1 = CalamityUtils.RandomVelocity(100f, 100f, 100f);
+                        Vector2 adjustedVelocity = velocity1.RotatedBy(MathHelper.ToRadians(-140));
+                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p3))
-                            Main.projectile[p3].originalDamage = Projectile.originalDamage * 2;
+                            Main.projectile[p3].originalDamage = Projectile.originalDamage;
 
-                        Vector2 adjustedVelocity2 = Projectile.velocity.RotatedBy(MathHelper.ToRadians(140));
-                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2 * 4, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
+                        Vector2 adjustedVelocity2 = velocity1.RotatedBy(MathHelper.ToRadians(140));
+                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p4))
-                            Main.projectile[p4].originalDamage = Projectile.originalDamage * 2;
+                            Main.projectile[p4].originalDamage = Projectile.originalDamage;
 
-                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, num404 * 4, num405 * 4, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 3f, Projectile.owner, (float)target, 0f);
+                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, num404 * 2, num405 * 2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 3f, Projectile.owner, (float)target, 0f);
                         if (Main.projectile.IndexInRange(p))
-                            Main.projectile[p].originalDamage = Projectile.originalDamage * 2;
+                            Main.projectile[p].originalDamage = Projectile.originalDamage;
                         Projectile.ai[0] = 60f;
                     }
                     else

@@ -14,36 +14,36 @@ AncientOmegaBlueLeggings: {
 }
 
 AncientAuricTeslaBodyArmor: {
-	// DisplayName: Ancient Auric Tesla Body Armor
-	// Tooltip: ""
+	DisplayName: 远古古圣金源盔甲
+	Tooltip: ""
 }
 
 AncientAuricTeslaCuisses: {
-	// DisplayName: Ancient Auric Tesla Cuisses
-	// Tooltip: ""
+	DisplayName: 远古古圣金源腿甲
+	Tooltip: ""
 }
 
 AncientAuricTeslaHelm: {
-	// DisplayName: Ancient Auric Tesla Helm
-	// Tooltip: ""
+	DisplayName: 远古金源耀日盔
+	Tooltip: ""
 }
 
 AncientAuricTeslaHoodedFacemask: {
-	// DisplayName: Ancient Auric Tesla Hooded Facemask
-	// Tooltip: ""
+	DisplayName: 远古金兜铁面罩
+	Tooltip: ""
 }
 
 AncientAuricTeslaPlumedHelm: {
-	// DisplayName: Ancient Auric Tesla Plumed Helm
-	// Tooltip: ""
+	DisplayName: 远古金羽十杀盔
+	Tooltip: ""
 }
 
 AncientAuricTeslaSpaceHelmet: {
-	// DisplayName: Ancient Auric Tesla Space Helmet
-	// Tooltip: ""
+	DisplayName: 远古金宇星界盔
+	Tooltip: ""
 }
 
 AncientAuricTeslaWireHemmedVisage: {
-	// DisplayName: Ancient Auric Tesla Wire Hemmed Visage
-	// Tooltip: ""
+	DisplayName: 远古金虚万象盔
+	Tooltip: ""
 }
