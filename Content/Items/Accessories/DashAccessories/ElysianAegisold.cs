@@ -10,6 +10,11 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.LoreItems;
+using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -69,6 +74,18 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
             player.statLifeMax2 += 40;
             player.lifeRegen += 4;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                    AddIngredient<LoreProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
+
+            CreateRecipe().
+                    AddIngredient<KnowledgeProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
         }
     }
 }

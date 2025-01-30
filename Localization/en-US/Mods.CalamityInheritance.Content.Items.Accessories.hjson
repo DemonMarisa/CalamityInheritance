@@ -260,9 +260,7 @@ TheSpongetest: {
 		When barrier is formed:
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
-		+30 defense, increases damage reduction by 30%
 		When barrier is cracked:
-		You will lose 50 defense and taken 25% more damage from enemies hit
 		This effect will be removed when your barrier is fully recharged
 		Takes up more time to recharge your barrier
 		[c/FFD700:✟Thanks for the support by Plantare✟]

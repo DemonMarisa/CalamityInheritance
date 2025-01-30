@@ -7,3 +7,8 @@ DraedonsForgeold: {
 		可以视作嘉登熔炉与星宇砧
 		'''
 }
+
+SCalAltarItem: {
+	DisplayName: 诅咒祭坛[Legacy]
+	Tooltip: 用于放置早期版本，更窄的诅咒祭坛
+}

@@ -99,11 +99,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             {
                 modPlayer1.CIsponge = false;
             }
-            if (modPlayer1.CISpongeShieldDurability > 0)
-            {
-                player.statDefense += ShieldActiveDefense;
-                player.endurance += ShieldActiveDamageReduction;
-            }
+
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.spongeShieldVisible = !hideVisual;
                 modPlayer.aAmpoule = true;
@@ -119,16 +115,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
                 player.statLifeMax += 30;
                 player.jumpSpeedBoost += 0.5f;
-            
-            
-            if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
-            {
-                if (modPlayer1.CISpongeShieldDurability == 0)
-                {
-                    player.endurance *= 0.5f;
-                    player.statDefense /= 2;
-                }
-            }
+           
         }
 
         // In vanity, provides a visual shield but no actual functionality

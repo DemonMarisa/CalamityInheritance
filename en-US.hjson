@@ -35,6 +35,7 @@ Mods: {
 			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
 			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor
 			ExoSpearTrailNor.DisplayName: Exo Spear Trail Nor
+			ExoSpearProjNorSteal.DisplayName: Exo Spear Proj Nor Steal
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy

@@ -201,14 +201,6 @@ namespace CalamityInheritance.Content.Items
                 AddTile<CosmicAnvil>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<TheSponge>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
-                AddIngredient(ModContent.ItemType<TheAbsorberOld>()).
-                AddIngredient<MysteriousCircuitry>(10).
-                AddIngredient<DubiousPlating>(20).
-                AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15).
-                AddTile<CosmicAnvil>().
-                Register();
             #endregion
             #region placeable
 
@@ -254,7 +246,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ModContent.ItemType<PlasmaDriveCore>()).
                 AddIngredient(ModContent.ItemType<DubiousPlating>(), 5).
                 AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 10).
-                AddRecipeGroup("AnyMythrilBar", 10).
+                AddRecipeGroup("AnyCopperBar", 10).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 

@@ -70,8 +70,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             else
             {
-                Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
                 if (player.Calamity().StealthStrikeAvailable())
+                {
+                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
+                }
+                else
                 {
                     Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
                 }

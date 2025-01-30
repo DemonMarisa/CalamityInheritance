@@ -183,10 +183,10 @@ Impaler: {
 }
 
 P90Legacy: {
-	// DisplayName: P90 Legacy
-	/* Tooltip:
+	DisplayName: P90[Legacy]
+	Tooltip:
 		'''
-		33% chance to not use ammo
-		It's a bullet hose
-		''' */
+		33%的几率不消耗弹药
+		“这是根子弹管”
+		'''
 }

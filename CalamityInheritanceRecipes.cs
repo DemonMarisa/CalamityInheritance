@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Weapons.Magic;
@@ -48,6 +49,9 @@ namespace CalamityInheritance
         public static RecipeGroup SilvaHeadSummonGroup;
 
         public static RecipeGroup AmbrosialAmpoule;
+        public static RecipeGroup ElysianAegis;
+        public static RecipeGroup AsgardsValor;
+
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
@@ -58,6 +62,8 @@ namespace CalamityInheritance
             CosmicShivGroup = null;
             DeificAmuletGroup = null;
             AmbrosialAmpoule = null;
+            ElysianAegis = null;
+            AsgardsValor = null;
 
             GodSlayerBodyGroup = null;
             GodSlayerLegGroup = null;
@@ -142,7 +148,15 @@ namespace CalamityInheritance
                 ModContent.ItemType<PhantasmalRuin>(), ModContent.ItemType<PhantasmalRuinold>());
 
             #endregion
+            #region 饰品
 
+            ElysianAegis = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<ElysianAegisold>())}",
+                ModContent.ItemType<ElysianAegis>(), ModContent.ItemType<ElysianAegisold>());
+
+            AsgardsValor = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<AsgardsValorold>())}",
+                ModContent.ItemType<AsgardsValor>(), ModContent.ItemType<AsgardsValorold>());
+
+            #endregion
             #region 其它组
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);
@@ -168,6 +182,10 @@ namespace CalamityInheritance
             #endregion
             #region 武器组
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalRuin", PhantasmalRuinGroup);
+            #endregion
+            #region 饰品
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyElysianAegis", ElysianAegis);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyAsgardsValor", AsgardsValor);
             #endregion
         }
 

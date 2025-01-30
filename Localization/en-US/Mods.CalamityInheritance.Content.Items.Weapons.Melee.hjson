@@ -241,11 +241,6 @@ WulfrumBlade: {
 	DisplayName: Wulfrum Blade
 }
 
-MusicMarkChange: {
-	DisplayName: Music Mark Change
-	Tooltip: ""
-}
-
 KelvinCatalystMelee: {
 	DisplayName: Kelvin Catalyst Legacy Melee
 	Tooltip:

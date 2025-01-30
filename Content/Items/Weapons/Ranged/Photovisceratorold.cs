@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (usPlayer.exoMechLore)
             {
                 float Direction = player.direction;
-                float SpawnX = player.direction * 15f;
+                float SpawnX = 15f;
                 float SpawnY = player.direction * 50f;
 
                 Vector2 spawnPosition = Owner.Center + Main.rand.NextVector2Circular(Owner.width, Owner.height) * 1.35f;

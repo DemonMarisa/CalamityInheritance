@@ -6,3 +6,8 @@ DraedonsForgeold: {
 		Counted as Cosmic Anvil
 		'''
 }
+
+SCalAltarItem: {
+	DisplayName: Altar of the Accursed Legacy
+	Tooltip: Place a narrower Altar of the Accursed
+}

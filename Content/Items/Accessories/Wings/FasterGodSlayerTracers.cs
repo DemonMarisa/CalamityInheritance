@@ -84,8 +84,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void AddRecipes()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            {
             CreateRecipe().
                 AddIngredient<TracersCelestial>().
                 AddIngredient<ElysianWings>().
@@ -102,7 +100,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 AddTile<CosmicAnvil>().
                 Register();
 
-            }
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

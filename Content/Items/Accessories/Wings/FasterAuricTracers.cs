@@ -9,6 +9,7 @@ using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -89,17 +90,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<TracersSeraph>().
-                AddCustomShimmerResult(ModContent.ItemType<DrewsWings>(), 1).
-                AddCustomShimmerResult(ModContent.ItemType<AuricBarold>(), 1).
-                AddCustomShimmerResult(ModContent.ItemType<FasterGodSlayerTracers>(), 1).
+                AddIngredient<FasterGodSlayerTracers>().
+                AddIngredient<DrewsWings>().
+                AddIngredient<AuricBarold>(1).
+                AddTile<CosmicAnvil>().
                 Register();
 
             CreateRecipe().
-                AddIngredient<TracersSeraph>().
-                AddCustomShimmerResult(ModContent.ItemType<DrewsWings>(), 1).
-                AddCustomShimmerResult(ModContent.ItemType<AuricBar>(), 5).
-                AddCustomShimmerResult(ModContent.ItemType<FasterGodSlayerTracers>(), 1).
+                AddIngredient<TracersElysian>().
+                AddIngredient<DrewsWings>().
+                AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
                 Register();
         }
 
