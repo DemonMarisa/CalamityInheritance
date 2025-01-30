@@ -107,3 +107,8 @@ MountedScannerLegacyBuff: {
 	DisplayName: Mounted Scanner Legacy Buff
 	Description: Powerful machinery surrounds you
 }
+
+BloodyBoost: {
+	DisplayName: Bloody Boost
+	Description: Mods.CalamityInheritance.Buffs.BloodyBoost.Description
+}

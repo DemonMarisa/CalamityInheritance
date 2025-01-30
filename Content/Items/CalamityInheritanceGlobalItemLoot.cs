@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Armor.YharimAuric;
 
 namespace CalamityInheritance.Content.Items
 {

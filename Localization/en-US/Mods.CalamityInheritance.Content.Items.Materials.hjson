@@ -29,6 +29,6 @@ AncientVictideBar: {
 }
 
 CryoBar: {
-	Tooltip: "Cold to the touch"
+	Tooltip: Cold to the touch
 	DisplayName: Cryo Bar
 }

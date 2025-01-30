@@ -242,11 +242,15 @@ MusicMarkChange: {
 }
 
 KelvinCatalystMelee: {
-	// DisplayName: Kelvin Catalyst Melee
-	// Tooltip: ""
+	DisplayName: 冰灵旋刃·战士版本[Legacy]
+	Tooltip:
+		'''
+		Throws an icy blade that splits into multiple ice stars on enemy hits
+		冰星具有极度强烈的索敌欲望
+		'''
 }
 
 SubductionSlicerMelee: {
-	// Tooltip: ""
-	// DisplayName: Subduction Slicer Melee
+	// Tooltip: '''Throws a scythe that explodes on enemy hits	'''
+	// DisplayName: Subduction Slicer Legacy Melee
 }

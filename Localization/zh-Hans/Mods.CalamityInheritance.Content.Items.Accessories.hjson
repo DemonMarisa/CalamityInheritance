@@ -363,3 +363,8 @@ AncientReaperToothNecklace: {
 		'这玩意应该存在吗...?'
 		'''
 }
+
+BloodPactLegacy: {
+	// DisplayName: Blood Pact Legacy
+	// Tooltip: ""
+}

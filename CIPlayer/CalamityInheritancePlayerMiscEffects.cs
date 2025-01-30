@@ -296,6 +296,10 @@ namespace CalamityInheritance.CIPlayer
             else
             {
                 CalamityPlayer calPlayer = Player.Calamity();
+                if(calPlayer.chaliceOfTheBloodGod)
+                {
+                    return; //佩戴血杯时直接禁用护盾
+                }
                 // 如果“海绵”的护盾已经耗尽且还没有开始其充电延迟，则开始充电延迟。
                 if (CISpongeShieldDurability == 0 && !calPlayer.cooldowns.ContainsKey(CISpongeRecharge.ID))
                     Player.AddCooldown(CISpongeRecharge.ID, TheSpongetest.CIShieldRechargeDelay);
@@ -773,6 +777,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (reaverBurstCooldown > 0)
                 reaverBurstCooldown--; //法师永恒套CD
+            
+            if (auricYharimHealCooldown > 0)
+                auricYharimHealCooldown--;
 
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD
@@ -899,6 +906,26 @@ namespace CalamityInheritance.CIPlayer
             {
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
+            }
+            if(auricYharimSet)
+            {
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
+                calPlayer.healingPotionMultiplier += 0.50f;
+                Player.noKnockback = true;
+                Player.lifeRegen += 40;
+                Player.shinyStone = true;
+                Player.lifeRegenTime = 1800f;
+
+                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                {
+                    Player.lifeRegen += 120;
+                    Player.statDefense += 60;
+                }
+            }
+            if(ancientBloodFact)
+            {
+                Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
+                calPlayer.healingPotionMultiplier += 1.0f;
             }
         }
 

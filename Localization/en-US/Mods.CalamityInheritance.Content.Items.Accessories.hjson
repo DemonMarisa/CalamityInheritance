@@ -365,3 +365,8 @@ AncientReaperToothNecklace: {
 		'I don't think this should exist...'
 		'''
 }
+
+BloodPactLegacy: {
+	DisplayName: Blood Pact Legacy
+	Tooltip: ""
+}

@@ -256,9 +256,6 @@ KelvinCatalystMelee: {
 }
 
 SubductionSlicerMelee: {
-	Tooltip:
-		'''
-		Throws a scythe that explodes on enemy hits	
-		'''
+	Tooltip: '''Throws a scythe that explodes on enemy hits	'''
 	DisplayName: Subduction Slicer Legacy Melee
 }
