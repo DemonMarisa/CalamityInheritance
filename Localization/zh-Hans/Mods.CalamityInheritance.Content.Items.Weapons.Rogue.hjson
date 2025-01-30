@@ -147,6 +147,10 @@ RogueTypeTriactisTruePaladinianMageHammerofMight: {
 }
 
 ScourgeoftheCosmosRogue: {
-	// DisplayName: Scourgeofthe Cosmos Rogue
-	// Tooltip: ""
+	DisplayName: 灾劫宙怨·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		掷出一个宇宙灾虫，击中敌人和方块时反弹并释放出追踪的小宇宙灾虫
+		潜伏攻击会反弹更多次数，弹出更多的小宇宙灾虫
+		'''
 }

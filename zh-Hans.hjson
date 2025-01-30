@@ -35,6 +35,7 @@ Mods: {
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
 			ExoSpearProjNor.DisplayName: 圣火之枪
 			ExoSpearTrailNor.DisplayName: 圣火投刀
+			ExoSpearProjNorSteal.DisplayName: 圣火之枪
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

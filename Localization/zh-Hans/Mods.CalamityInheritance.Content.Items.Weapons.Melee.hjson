@@ -236,17 +236,16 @@ WulfrumBlade: {
 	DisplayName: 钨钢阔剑[Legacy]
 }
 
-MusicMarkChange: {
-	// DisplayName: Music Mark Change
-	// Tooltip: ""
-}
-
 KelvinCatalystMelee: {
-	// DisplayName: Kelvin Catalyst Melee
-	// Tooltip: ""
+	DisplayName: 冰灵旋刃
+	Tooltip:
+		'''
+		投出一把冰刃，击中敌人时碎成若干个冰星
+		冰星会在一段时间后快速跟踪敌人
+		'''
 }
 
 SubductionSlicerMelee: {
-	// Tooltip: ""
-	// DisplayName: Subduction Slicer Melee
+	Tooltip: 扔出会在击中敌人时爆炸的飞镰
+	DisplayName: 板块斩切者·战士版本
 }

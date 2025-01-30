@@ -18,6 +18,6 @@ CosmicBlastBigOld.DisplayName: 宇宙爆裂
 CosmicBlastOld.DisplayName: 宇宙爆炸
 CosmicBlastBigExoLore.DisplayName: 鸿蒙爆裂
 CosmicBlastExoLore.DisplayName: 寰宇爆炸
-// CISporeGasSummon.DisplayName: C I Spore Gas Summon
-// CISporeGasSummon2.DisplayName: C I Spore Gas Summon2
-// CISporeGasSummon3.DisplayName: C I Spore Gas Summon3
+CISporeGasSummon.DisplayName: 孢子云
+CISporeGasSummon2.DisplayName: 孢子云
+CISporeGasSummon3.DisplayName: 孢子云

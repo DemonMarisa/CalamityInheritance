@@ -42,15 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe(). //要考虑转移时期吗bro
                 AddIngredient(ItemID.FrozenShield).
-                AddIngredient<AuricBar>(5).
-                AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
-                AddIngredient<AscendantSpiritEssence>(4).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ItemID.FrozenShield).
-                AddIngredient<AuricBarold>(1).
+                AddIngredient<CosmiliteBar>(10).
                 AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().

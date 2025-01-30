@@ -68,6 +68,6 @@ TerratomereProjectile.DisplayName: 泰拉巨刃
 StellarContemptHammerOld.DisplayName: 星体击碎者
 CIBlood.DisplayName: 血珠
 ExobeamoldExoLore.DisplayName: 星寒光束
-// KelvinCatalystBoomerangMelee.DisplayName: Kelvin Catalyst Boomerang Melee
-// KelvinCatalystStarMelee.DisplayName: Kelvin Catalyst Star Melee
-// SubductionSlicerProjMelee.DisplayName: Subduction Slicer Proj Melee
+KelvinCatalystBoomerangMelee.DisplayName: 冰灵爆炸
+KelvinCatalystStarMelee.DisplayName: 极寒之星
+SubductionSlicerProjMelee.DisplayName: 板块斩切者

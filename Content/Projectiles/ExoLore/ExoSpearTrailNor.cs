@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         private bool foundTarget;
 
-        private float maxDistance = 900f;
+        private float maxDistance = 1500f;
 
         private float distance;
 

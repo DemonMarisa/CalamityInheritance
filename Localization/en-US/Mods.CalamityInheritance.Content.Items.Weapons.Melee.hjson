@@ -241,11 +241,6 @@ WulfrumBlade: {
 	DisplayName: Wulfrum Blade
 }
 
-MusicMarkChange: {
-	DisplayName: Music Mark Change
-	Tooltip: ""
-}
-
 KelvinCatalystMelee: {
 	DisplayName: Kelvin Catalyst Legacy Melee
 	Tooltip:
@@ -256,9 +251,6 @@ KelvinCatalystMelee: {
 }
 
 SubductionSlicerMelee: {
-	Tooltip:
-		'''
-		Throws a scythe that explodes on enemy hits	
-		'''
+	Tooltip: '''Throws a scythe that explodes on enemy hits	'''
 	DisplayName: Subduction Slicer Legacy Melee
 }

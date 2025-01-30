@@ -15,6 +15,8 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityMod.NPCs.ExoMechs;
+using CalamityMod.Items.Weapons.DraedonsArsenal;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -94,20 +96,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<DragonPow>().
+                AddIngredient<PulseDragon>().
                 AddIngredient<CrescentMoon>().
-                AddIngredient<Mourningstar>().
                 AddIngredient<ClamCrusher>().
-                AddIngredient<BallOFugu>().
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
 
              CreateRecipe().
                 AddIngredient<DragonPow>().
+                AddIngredient<PulseDragon>().
                 AddIngredient<CrescentMoon>().
-                AddIngredient<Mourningstar>().
                 AddIngredient<ClamCrusher>().
-                AddIngredient<BallOFugu>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().

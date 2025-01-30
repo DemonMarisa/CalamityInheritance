@@ -152,7 +152,7 @@ Configs: {
 		}
 
 		DoGLegacyMusic: {
-			Label: 神明吞噬者旧版战斗音乐
+			Label: "[i:MusicBox]神明吞噬者旧版战斗音乐"
 			Tooltip: 在神明吞噬者战时播放旧音乐
 		}
 
