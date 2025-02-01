@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
 
 
-            for (int num108 = 0; num108 < Main.rand.Next(1, 3); num108++)
+            for (int num108 = 0; num108 < Main.rand.Next(2, 4); num108++)
             {
                 vector2 = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
                 vector2.X = (vector2.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
@@ -109,12 +109,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float speedY2 = num79 + Main.rand.Next(-160, 161) * 0.02f;
 
 
-                int proj = Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ProjectileID.HallowStar, damage / 3, adjustedKnockback, i, 0f, Main.rand.Next(10));
+                int proj = Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ProjectileID.HallowStar, damage / 2, adjustedKnockback, i, 0f, Main.rand.Next(10));
 
 
                 speedX2 = num78 + Main.rand.Next(-80, 81) * 0.02f;
                 speedY2 = num79 + Main.rand.Next(-80, 81) * 0.02f;
-                Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ModContent.ProjectileType<TerraBall>(), damage / 3, adjustedKnockback, i, 0f, Main.rand.Next(5));
+                Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ModContent.ProjectileType<TerraBall>(), damage, adjustedKnockback, i, 0f, Main.rand.Next(5));
             }
 
             return false;
