@@ -362,6 +362,12 @@ AncientReaperToothNecklace: {
 }
 
 BloodPactLegacy: {
-	// DisplayName: Blood Pact Legacy
-	// Tooltip: ""
+	DisplayName: 血契[Legacy]
+	Tooltip:
+		'''
+		令你的最大生命值翻倍
+		你有25%的几率受到暴击
+		被暴击之后你会获得多种增益效果，持续10秒
+		此期间增加50%治疗药水的治疗量
+		'''
 }

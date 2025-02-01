@@ -314,7 +314,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.Heal((int)(hurtInfo.Damage * 2f));
                     auricYharimHealCooldown = 600;
                 }
-            }   
+            }
         }
         #endregion
         #region Kill Player

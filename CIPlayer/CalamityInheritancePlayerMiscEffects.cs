@@ -167,7 +167,15 @@ namespace CalamityInheritance.CIPlayer
                     animusBoost = 1f;
             }
             
-           
+           if(bloodPactBoost)
+           {
+                calPlayer.healingPotionMultiplier += 0.5f;
+                Player.GetDamage<GenericDamageClass>() += 0.05f;
+                Player.statDefense += 20;
+                Player.endurance += 0.1f;
+                Player.longInvince = true;
+                Player.crimsonRegen = true;
+            }
         }
         #region AccessoriesStats
         private void AccessoriesStatsFunc()
@@ -929,7 +937,6 @@ namespace CalamityInheritance.CIPlayer
             if(ancientBloodFact)
             {
                 Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
-                calPlayer.healingPotionMultiplier += 1.0f;
             }
         }
 

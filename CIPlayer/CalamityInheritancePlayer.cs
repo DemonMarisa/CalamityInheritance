@@ -340,6 +340,7 @@ namespace CalamityInheritance.CIPlayer
             triumph = false;
             yPower = false;
             invincible = false;
+            bloodPactBoost = false;
             #endregion
             #region Set Bonuses
             #region GodSlayer
@@ -488,6 +489,7 @@ namespace CalamityInheritance.CIPlayer
             triumph = false;
             yPower = false;
             invincible = false;
+            bloodPactBoost = false;
 
             elysianAegis = false;
             elysianGuard = false;
@@ -901,6 +903,10 @@ namespace CalamityInheritance.CIPlayer
             if (Player.body == EquipLoader.GetEquipSlot(Mod, "AuricTeslaBodyArmorold", EquipType.Body))
             {
                 Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "AuricTeslaBodyArmorold", EquipType.Back);
+            }
+            if (Player.body == EquipLoader.GetEquipSlot(Mod, "YharimAuricTeslaBodyArmor", EquipType.Body))
+            {
+                Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "YharimAuricTeslaBodyArmor", EquipType.Back);
             }
         }
         #endregion

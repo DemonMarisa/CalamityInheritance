@@ -133,7 +133,7 @@ Configs: {
 		}
 
 		CustomShimmer: {
-			Label: 自定义微光转化
+			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
 			Tooltip:
 				'''
 				为模组内部分回归物品添加微光转化配方
@@ -162,8 +162,8 @@ Configs: {
 		}
 
 		CalBossesCanDropSoul: {
-			// Tooltip: ""
-			// Label: Cal Bosses Can Drop Soul
+			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
+			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
 		}
 	}
 }

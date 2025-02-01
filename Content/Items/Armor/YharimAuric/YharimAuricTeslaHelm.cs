@@ -4,6 +4,12 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Terraria;
+using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Armor.AuricTesla;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityMod.CalPlayer.Dashes;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
@@ -52,7 +58,9 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			modPlayer.auricBoostold = true;
 			modPlayer.auricYharimSet = true;
 
-			player.thorns += 10f;
+            calPlayer.WearingPostMLSummonerSet = true;
+
+            player.thorns += 10f;
 			player.ignoreWater = true;
 			player.crimsonRegen = true;
 
@@ -63,33 +71,61 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 				player.statDefense += 30;
 				player.lifeRegen += 10;
 			}
-		}
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+            {
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
+            }
+			//法师
+            calPlayer.tarraMage = true;
+            calPlayer.bloodflareMage = true;
+            modPlayer.silvaMageold = true;
+            modPlayer.godSlayerMagic = true;
+			//战士
+            calPlayer.tarraMelee = true;
+            calPlayer.bloodflareMelee = true;
+            calPlayer.godSlayerDamage = true;
+            modPlayer.silvaMelee = true;
+			//射手
+            calPlayer.tarraRanged = true;
+            modPlayer.godSlayerRangedold = true;
+            modPlayer.silvaRanged = true;
+            modPlayer.AuricbloodflareRangedSoul = true;
+            if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
+            {
+                player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
+            }
+            //盗贼
+            calPlayer.tarraThrowing = true;
+            calPlayer.bloodflareThrowing = true;
+            calPlayer.godSlayerThrowing = true;
+            modPlayer.silvaRogue = true;
+            //召唤
+            modPlayer.godSlayerSummonold = true;
+        }
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.maxMinions += 3;
-			player.maxTurrets += 6;
+			player.maxMinions += 10;
+			player.maxTurrets += 5;
 			player.GetDamage<GenericDamageClass>() += 0.3f;
 			player.GetCritChance<GenericDamageClass>() += 30;
 		}
 
-		// public override void AddRecipes()
-		// {
-		// 	Recipe recipe = CreateRecipe();
-		// 	recipe.AddIngredient(null, "SilvaHelm");
-		// 	recipe.AddIngredient(null, "GodSlayerHelm");
-		// 	recipe.AddIngredient(null, "BloodflareMask");
-		// 	recipe.AddIngredient(null, "TarragonHelm");
-		// 	recipe.AddIngredient(null, "EndothermicEnergy", 200);
-		// 	recipe.AddIngredient(null, "NightmareFuel", 200);
-		// 	recipe.AddIngredient(null, "Phantoplasm", 70);
-		// 	recipe.AddIngredient(null, "DarksunFragment", 30);
-		// 	recipe.AddIngredient(null, "BarofLife", 20);
-		// 	recipe.AddIngredient(null, "CoreofCalamity", 15);
-		// 	recipe.AddIngredient(null, "GalacticaSingularity", 10);
-		// 	recipe.AddIngredient(null, "PsychoticAmulet");
-		// 	recipe.AddTile(null, "DraedonsForge");
-		// 	recipe.Register();
-		// }
+		public override void AddRecipes()
+		{
+			if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+			{
+				CreateRecipe().
+				AddIngredient<AuricTeslaHeadMagic>().
+				AddIngredient<AuricTeslaHeadMelee>().
+				AddIngredient<AuricTeslaHeadRogue>().
+				AddIngredient<AuricTeslaHeadRanged>().
+				AddIngredient<AuricTeslaHeadSummon>().
+				AddIngredient<AuricBarold>(12).
+				AddTile<DraedonsForgeold>().
+				Register();
+			}
+        }
 	}
 }

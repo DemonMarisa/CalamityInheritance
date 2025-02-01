@@ -43,14 +43,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-10, 0);
+            if (CalamityInheritanceConfig.Instance.SkullmasherResprite == 1)
+                return new Vector2(-40, 0);
+            else
+                return new Vector2(-15, 0);
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 300);
 
             target.Calamity().miscDefenseLoss = 25;
-
         }
 
 

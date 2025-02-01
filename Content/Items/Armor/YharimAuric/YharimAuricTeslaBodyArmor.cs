@@ -8,12 +8,28 @@ using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Armor.Bloodflare;
+using CalamityMod.Items.Armor.Tarragon;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Armor.AuricTesla;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
     [AutoloadEquip(EquipType.Body)]
     public class YharimAuricTeslaBodyArmor : ModItem, ILocalizedModType
     {
+        public override void Load()
+        {
+            // All code below runs only if we're not loading on a server
+            if (Main.netMode == NetmodeID.Server)
+                return;
+            // Add equip textures
+            EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/YharimAuric/YharimAuricTeslaBodyArmor_Back", EquipType.Back, this);
+        }
+
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetDefaults()
         {
@@ -30,23 +46,17 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             player.moveSpeed += 0.25f;
         }
 
-        // public override void AddRecipes()
-        // {
-        //     Recipe recipe = CreateRecipe();
-        //     recipe.AddIngredient(null, "SilvaArmor");
-        //     recipe.AddIngredient(null, "GodSlayerChestplate");
-        //     recipe.AddIngredient(null, "BloodflareBodyArmor");
-        //     recipe.AddIngredient(null, "TarragonBreastplate");
-        //     recipe.AddIngredient(null, "EndothermicEnergy", 400);
-        //     recipe.AddIngredient(null, "NightmareFuel", 400);
-        //     recipe.AddIngredient(null, "Phantoplasm", 140);
-        //     recipe.AddIngredient(null, "DarksunFragment", 60);
-        //     recipe.AddIngredient(null, "BarofLife", 40);
-        //     recipe.AddIngredient(null, "CoreofCalamity", 30);
-        //     recipe.AddIngredient(null, "GalacticaSingularity", 20);
-        //     recipe.AddIngredient(null, "FrostBarrier");
-        //     recipe.AddTile(null, "DraedonsForge");
-        //     recipe.Register();
-        // }
+        public override void AddRecipes()
+        {
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                CreateRecipe().
+                AddIngredient<AuricTeslaBodyArmorold>().
+                AddIngredient<YharimsGiftLegacy>().
+                AddIngredient<AuricBarold>(18).
+                AddTile<DraedonsForgeold>().
+                Register();
+            }
+        }
     }
 }

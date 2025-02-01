@@ -203,7 +203,7 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             var source = projectile.GetSource_FromThis();
-            if (silvaMageold && silvaMageCooldownold <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5))
+            if (silvaMageold && silvaMageCooldownold <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
             {
                 silvaMageCooldownold = 300;
                 SoundEngine.PlaySound(SoundID.Zombie103, projectile.Center); //So scuffed, just because zombie sounds werent ported normally

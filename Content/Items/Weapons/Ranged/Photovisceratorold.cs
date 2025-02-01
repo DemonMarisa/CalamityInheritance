@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            // PhotovisceratorCrystal发射逻辑
+            // PhotovisceratorCrystal的发射逻辑
             if (usPlayer.exoMechLore)
             {
                 float Direction = player.direction;
@@ -98,7 +98,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
                     spawnPosition -= shootVelocity.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(SpawnX, SpawnY);
                     Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), spawnPosition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage, 0f, OwnerIndex);
-
             }
 
             if (player.altFunctionUse == 2)
@@ -130,7 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     lightBomb.netUpdate = true;
                 }
 
-                PhotoLight = 10;
+                PhotoLight = 5;
             }
 
             return false;

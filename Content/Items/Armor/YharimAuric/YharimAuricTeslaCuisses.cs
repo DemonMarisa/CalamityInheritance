@@ -2,6 +2,11 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Armor.AuricTesla;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
@@ -26,23 +31,16 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             player.carpet = true;
         }
 
-        // public override void AddRecipes()
-        // {
-        //     Recipe recipe = CreateRecipe();
-        //     recipe.AddIngredient(null, "SilvaLeggings");
-        //     recipe.AddIngredient(null, "GodSlayerLeggings");
-        //     recipe.AddIngredient(null, "BloodflareCuisses");
-        //     recipe.AddIngredient(null, "TarragonLeggings");
-        //     recipe.AddIngredient(null, "EndothermicEnergy", 300);
-        //     recipe.AddIngredient(null, "NightmareFuel", 300);
-        //     recipe.AddIngredient(null, "Phantoplasm", 105);
-        //     recipe.AddIngredient(null, "DarksunFragment", 45);
-        //     recipe.AddIngredient(null, "BarofLife", 30);
-        //     recipe.AddIngredient(null, "CoreofCalamity", 20);
-        //     recipe.AddIngredient(null, "GalacticaSingularity", 15);
-        //     recipe.AddIngredient(ItemID.FlyingCarpet);
-        //     recipe.AddTile(null, "DraedonsForge");
-        //     recipe.Register();
-        // }
+        public override void AddRecipes()
+        {
+            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                CreateRecipe().
+                AddIngredient<AuricTeslaCuissesold>().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+            }
+        }
     }
 }

@@ -528,7 +528,7 @@ AncientVictideLeggings: {
 }
 
 YharimAuricTeslaBodyArmor: {
-	DisplayName: 魔君护甲
+	DisplayName: 魔君护甲[Revamped]
 	Tooltip:
 		'''
 		增加600点最大生命上限与最大魔力上限
@@ -537,7 +537,7 @@ YharimAuricTeslaBodyArmor: {
 }
 
 YharimAuricTeslaCuisses: {
-	DisplayName: 魔君护腿
+	DisplayName: 魔君护腿[Revamped]
 	Tooltip:
 		'''
 		增加50%移动速度
@@ -546,19 +546,20 @@ YharimAuricTeslaCuisses: {
 }
 
 YharimAuricTeslaHelm: {
-	DisplayName: 魔君战盔
+	DisplayName: 魔君战盔[Revamped]
 	Tooltip:
 		'''
 		增加30%伤害与暴击概率
-		+3最大仆从栏，+5最大哨兵栏
+		+10最大仆从栏，+5最大哨兵栏
 		'来自灾厄1.2'
 		'''
 	SetBonus:
 		'''
-
 		+120 最大潜伏值
 		视作盗贼盔甲，可以进行潜伏攻击
-		获得血腥、龙蒿、血炎、弑神与林海盔甲和闪亮石的效果
+		获得全部龙蒿、血炎、弑神与林海盔甲的效果
+		（不会召唤星宇护卫与林海水晶）
+		获得闪亮石的效果
 		获得40HP/s生命再生，且大幅度加强你的自然生命恢复速度
 		低于50%最大生命值时，获得60点防御力与60HP/s生命再生
 		免疫岩浆与击退，当你浸入岩浆时获得30点防御力与10HP/s生命再生
