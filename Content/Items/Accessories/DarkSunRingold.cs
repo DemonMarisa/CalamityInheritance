@@ -29,7 +29,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.height = 32;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 10;
-            Item.lifeRegen = 1;
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }

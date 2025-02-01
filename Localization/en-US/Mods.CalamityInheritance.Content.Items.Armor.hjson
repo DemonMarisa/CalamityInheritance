@@ -332,12 +332,13 @@ AncientXerocMask: {
 		Counts as rogue armor, can deal stealth strikes.
 		+110 maxinum stealth
 		20% reduced mana usage, 10% increased rogue velocity
+		Stealth strikes only expand 50% of your max stealth
 		Change damage stats base on your current HP is:
 		Lower than 80% of max life will increases damage and critical strike chance by 10%
 		Lower than 60% of max life will increases damage and critical strike chance by 15%
 		If you are lower than 25% of your max life:
 		Increases damage and critical strike chance by 40%, healing potion are 10% more effective,
-		Using magic weapons will not reduce your mana, stealth strikes only expand 50% of your max stealth
+		Using magic weapons will not reduce your mana
 		Lower than 15% of max life will decreases your defense by 50, damage and critical strike chance by 40%
 		Wrath of the cosmos
 		'''
@@ -560,7 +561,7 @@ YharimAuricTeslaHelm: {
 	Tooltip:
 		'''
 		30% increased damage and critical strike chance
-		+3 max minion slots
+		+10 max minion slots
 		+5 max sentry slots
 		'From Calamity 1.2'
 		'''
@@ -568,14 +569,16 @@ YharimAuricTeslaHelm: {
 		'''
 		+120 max stealth
 		Counts as rogue armor, can use stealth strikes
-		Crimson, Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
-		+40 HP/s life regen speed and Massively boosts your natural life regen speed
-		Lava does no damage to you, +30 defense and +10 HP/s life regen speed while submerged into lava
-		Grants immnuity to knockBack
-		1.05x your max life, healing potions are now 50% more effective
+		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
+		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
+		This effect has 30 seconds cooldown
+		Grants immnuity to lava and knockback
+		1.05x your max life, healing potions are 70% more effective
+		+30 HP/s life regen speed and massively boosts your natural life regen speed
 		+60 HP/s life regen speed and +60 defense if your are lower than 50% of max life
-		If you takes over 600 damage from your enemy attack, you will be heal by 2x of it
-		This effect has 10 seconds cooldown
+		+30 defense and +30 HP/s life regen speed while submerged into lava
+		Taking over 600 damage from an attack will be double and converted into healing
+		This effect has 10 seconds cooldown if is triggered
 		'No, I won't let you down'
 		'''
 }

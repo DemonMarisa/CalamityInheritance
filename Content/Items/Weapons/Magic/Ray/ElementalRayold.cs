@@ -15,6 +15,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            // if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            // {
+            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRay>()] = ModContent.ItemType<ElementalRayold>();
+            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRayold>()] = ModContent.ItemType<ElementalRay>();
+            // }
         }
 
         public override void SetDefaults()
@@ -49,20 +54,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<Photosynthesis>().
-                AddIngredient(ItemID.LunarBar, 5).
-                AddIngredient<LifeAlloy>(5).
-                AddIngredient<GalacticaSingularity>(5).
-                AddTile(TileID.LunarCraftingStation).
-                Register();
-
-            CreateRecipe().
                 AddIngredient<TerraRay>().
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient<LifeAlloy>(5).
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
+            // CreateRecipe().
+            //     AddIngredient<Photosynthesis>().
+            //     AddIngredient(ItemID.LunarBar, 5).
+            //     AddIngredient<LifeAlloy>(5).
+            //     AddIngredient<GalacticaSingularity>(5).
+            //     AddTile(TileID.LunarCraftingStation).
+            //     Register();
         }
     }
 }

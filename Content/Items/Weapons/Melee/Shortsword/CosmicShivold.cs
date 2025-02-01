@@ -38,11 +38,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<ElementalShiv>().
-                AddIngredient<CosmiliteBar>(8).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
-                Register();
+            // CreateRecipe().
+            //     AddIngredient<ElementalShiv>().
+            //     AddIngredient<CosmiliteBar>(8).
+            //     AddTile(ModContent.TileType<CosmicAnvil>()).
+            //     Register();
 
             CreateRecipe().
                 AddIngredient<ElementalShivold>().

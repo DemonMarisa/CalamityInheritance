@@ -107,6 +107,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             CreateRecipe().

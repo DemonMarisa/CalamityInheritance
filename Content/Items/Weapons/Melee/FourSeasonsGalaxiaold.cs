@@ -259,10 +259,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<DarksunFragment>(8).
                 AddTile<CosmicAnvil>().
                 Register();
-
-            CreateRecipe().
-                AddIngredient<FourSeasonsGalaxia>().
-                Register();
         }
     }
 }

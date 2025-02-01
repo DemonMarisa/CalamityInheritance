@@ -66,6 +66,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.BladeofGrass).
                 AddIngredient(ItemID.FieryGreatsword).
                 AddIngredient<PurifiedGel>(5).
+                DisableDecraft().
                 AddTile(TileID.DemonAltar).
                 Register();
                 

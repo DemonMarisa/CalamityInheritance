@@ -36,6 +36,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             recipe.AddIngredient(ModContent.ItemType<LivingShard>(),5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.PiercingStarlight, 1).
+                AddIngredient<LivingShard>(5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

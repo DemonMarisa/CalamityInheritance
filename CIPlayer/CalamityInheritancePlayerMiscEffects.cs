@@ -40,6 +40,8 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        public static int darkSunRingDayRegen = 6;
+        public static int darkSunRingNightDefense = 20;
         public override void PostUpdateMiscEffects()
         {
             //海绵的护盾
@@ -166,6 +168,15 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
                     animusBoost = 1f;
             }
+
+            if (yharimOfPerunBuff)
+            {
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f;
+                Player.GetAttackSpeed<RangedDamageClass>() += 0.10f;
+                Player.GetAttackSpeed<MagicDamageClass>() += 0.15f;
+                Player.manaCost *= 0.35f;
+                Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
+            }
             
            if(bloodPactBoost)
            {
@@ -197,8 +208,12 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetKnockback<SummonDamageClass>() += 1.2f;
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                 Player.pickSpeed -= 0.12f;
-                if (Main.eclipse || !Main.dayTime)
-                    Player.statDefense += Main.eclipse ? 30 : 20;
+                // if (Main.eclipse || !Main.dayTime)
+                //     Player.statDefense += Main.eclipse ? 30 : 20;
+                // if (Main.eclipse || Main.dayTime)
+                //     Player.lifeRegen += 6;
+                if(Main.eclipse || !Main.dayTime)
+                    Player.statDefense += darkSunRingNightDefense;
             }
             
             if (badgeofBravery) //如果启用
@@ -788,6 +803,9 @@ namespace CalamityInheritance.CIPlayer
             
             if (auricYharimHealCooldown > 0)
                 auricYharimHealCooldown--;
+            
+            if (yharimOfPerunStrikesCooldown > 0)
+                yharimOfPerunStrikesCooldown--;
 
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD
@@ -920,7 +938,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
                 calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
                 Player.noKnockback = true;
-                Player.lifeRegen += 40;
+                Player.lifeRegen += 60;
                 Player.shinyStone = true;
                 Player.lifeRegenTime = 1800f;
                 if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
@@ -1096,6 +1114,8 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer= Player.Calamity();
             if(ancientXerocSet)
             {   
+
+                calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
                 if(Player.statLife > Player.statLifeMax2 * 0.8f)
                 {
                     Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
@@ -1108,23 +1128,23 @@ namespace CalamityInheritance.CIPlayer
                     Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
                     Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                 }
+
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
                 {
-                    Player.GetDamage<GenericDamageClass>() += 0.15f; //玩家血量60%下的数值加成：25%伤害与25%暴击率
+                    Player.GetDamage<GenericDamageClass>() +=0.15f;
                     Player.GetCritChance<GenericDamageClass>() += 15;
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                     Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
+                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                 }
+                
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
                 {
                     //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
-                    //TO DO:在这个血量区间增加一个提示来提醒玩家此时伤害加成最高
                     Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 72000);
                     Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
                     Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 40;
                     Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
-                    calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
                     calPlayer.healingPotionMultiplier += 0.10f;
                     //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
                     //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。

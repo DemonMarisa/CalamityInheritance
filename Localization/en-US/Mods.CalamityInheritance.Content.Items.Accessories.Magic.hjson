@@ -2,7 +2,7 @@ AncientEtherealTalisman: {
 	DisplayName: Ethereal Talisman Legacy
 	Tooltip:
 		'''
-		10% increased magic damage and magic critical strike chance
+		20% increased magic damage, 15% increased magic critical strike chance
 		20% reduced mana usage, +150 max mana
 		Increases pickup range for mana stars
 		+0.5 HP/s life regen speed, reduces the cooldown of healing potions
