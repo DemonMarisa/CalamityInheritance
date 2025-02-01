@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Armor.YharimAuric;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -53,7 +54,30 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<CryogenBag>())
             {
                 itemloot.Add(ModContent.ItemType<CryoBar>(), 3, 5, 15); //33%概率，数量5-15
+
+                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                {
+                    itemloot.Add(ItemID.SoulofMight, 1, 35, 45);
+                }
             }
+            if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
+            {
+
+                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                {
+                    itemloot.Add(ItemID.SoulofFright, 1, 35, 45);
+                }
+            }
+
+            if (item.type == ModContent.ItemType<AquaticScourgeBag>())
+            {
+
+                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                {
+                    itemloot.Add(ItemID.SoulofSight, 1, 35, 45);
+                }
+            }
+            //1.31 Scarlet:灾三王现在再次掉三王魂（可用config开关），掉魂的类型依据灾三王的boss主题色。掉落量为35-45随机
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);

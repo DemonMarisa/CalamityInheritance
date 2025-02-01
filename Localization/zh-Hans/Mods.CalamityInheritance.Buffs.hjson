@@ -107,3 +107,8 @@ MountedScannerLegacyBuff: {
 	DisplayName: 架式扫射机[legacy]
 	Description: 强大的机械环绕在你的身边
 }
+
+BloodyBoost: {
+	// DisplayName: Bloody Boost
+	// Description: Mods.CalamityInheritance.Buffs.BloodyBoost.Description
+}

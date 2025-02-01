@@ -1,27 +1,25 @@
 ﻿using System;
 using CalamityInheritance.Buffs.Melee;
 using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Armor.YharimAuric;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Balancing;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
-using CalamityMod.Enums;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -62,6 +60,12 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
             if (modPlayer1.desertScourgeLore) // Dimensional Soul Artifact increases incoming damage by 15%.
                 damageMult += 0.05;
+
+            if(ancientBloodFact && Main.rand.NextBool(4))
+            {
+                Player.AddBuff(ModContent.BuffType<BloodyBoost>(), 600);
+                damageMult += 1.25;
+            }
 
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
@@ -301,6 +305,16 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
             }
+            if(auricYharimSet)
+            {
+                if(hurtInfo.Damage> 600 && auricYharimHealCooldown == 0) 
+                //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
+                {
+                    SoundEngine.PlaySound(SoundMenu.ancientXerocMadnessActive, Player.Center, null);
+                    Player.Heal((int)(hurtInfo.Damage * 2f));
+                    auricYharimHealCooldown = 600;
+                }
+            }   
         }
         #endregion
         #region Kill Player
@@ -434,7 +448,6 @@ namespace CalamityInheritance.CIPlayer
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             CalamityPlayer modPlayer = Player.Calamity();
-            
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
                 SoundEngine.PlaySound(SoundID.Item67, Player.Center);

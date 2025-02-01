@@ -536,3 +536,46 @@ AncientVictideLeggings: {
 		Movement speed increased by 30% while submerged in liquid
 		'''
 }
+
+YharimAuricTeslaBodyArmor: {
+	DisplayName: Yharim's Body Armor
+	Tooltip:
+		'''
+		+600 max life and max mana
+		25% increased movement speed
+		'''
+}
+
+YharimAuricTeslaCuisses: {
+	DisplayName: Yharim's Cuisses
+	Tooltip:
+		'''
+		50% increased movement speed
+		Magic Crapet effect
+		'''
+}
+
+YharimAuricTeslaHelm: {
+	DisplayName: Yharim's Royal Helm
+	Tooltip:
+		'''
+		30% increased damage and critical strike chance
+		+3 max minion slots
+		+5 max sentry slots
+		'From Calamity 1.2'
+		'''
+	SetBonus:
+		'''
+		+120 max stealth
+		Counts as rogue armor, can use stealth strikes
+		Crimson, Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
+		+40 HP/s life regen speed and Massively boosts your natural life regen speed
+		Lava does no damage to you, +30 defense and +10 HP/s life regen speed while submerged into lava
+		Grants immnuity to knockBack
+		1.05x your max life, healing potions are now 50% more effective
+		+60 HP/s life regen speed and +60 defense if your are lower than 50% of max life
+		If you takes over 600 damage from your enemy attack, you will be heal by 2x of it
+		This effect has 10 seconds cooldown
+		'No, I won't let you down'
+		'''
+}

@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.Armor.Xeroc;
+using CalamityInheritance.Content.Items.Armor.YharimAuric;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
@@ -220,6 +221,10 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Yharon>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+                var yharimArmorLoot = ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaHelm>(), 100);
+                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
+                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
+                npcLoot.Add(yharimArmorLoot);
             }
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
             {

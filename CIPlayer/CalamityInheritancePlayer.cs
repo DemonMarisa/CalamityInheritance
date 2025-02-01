@@ -71,6 +71,7 @@ namespace CalamityInheritance.CIPlayer
         public int nanoTechStackDurability = 0;//纳米技术充能进度
         public bool ancientReaperToothNeclace = false;//速杀项链
         public bool ancientCoreofTheBloodGod = false; //肃杀核心
+        public bool ancientBloodFact = false;
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -140,6 +141,7 @@ namespace CalamityInheritance.CIPlayer
         public bool triumph = false;
         public bool yPower = false;
         public bool invincible = false;
+        public bool bloodPactBoost = false;
         #endregion
         #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
@@ -188,6 +190,9 @@ namespace CalamityInheritance.CIPlayer
         public bool AuricbloodflareRangedSoul = false;
         public bool auricBoostold = false;
         public bool auricsilvaset = false;
+        public bool auricYharimSet = false; //暴君套
+        public int auricYharimHealCooldown = 0; //暴君套回血CD
+        public bool auricYharimAntiSummonerDMGReduction = false; //暴君套直接数值对撞抗召唤减伤
         public bool aurichasSilvaEffect = false;
         public static int CIsilvaReviveDuration = 900;
         public int CIsilvaCountdown = CIsilvaReviveDuration;
@@ -261,9 +266,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (!CIsponge)
                 ShieldDurabilityMax = 0;
-
-            
-
             badgeofBravery = false;
             CIsponge = false;
             CIspongeShieldVisible = false;
@@ -285,6 +287,7 @@ namespace CalamityInheritance.CIPlayer
             AmbrosialAmpouleOld = false;//百草瓶回血
             ancientReaperToothNeclace= false;//肃杀项链
             ancientCoreofTheBloodGod = false ;//肃杀核心
+            ancientBloodFact = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -361,6 +364,7 @@ namespace CalamityInheritance.CIPlayer
             AuricbloodflareRangedSoul = false;
             auricBoostold = false;
             auricsilvaset = false;
+            auricYharimSet = false;
             #endregion
             #region Reaver
             reaverMeleeBlast = false;
@@ -496,6 +500,7 @@ namespace CalamityInheritance.CIPlayer
             nanoTechStackDurability = 0;//纳米技术充能进度
             ancientReaperToothNeclace = false; //肃杀项链
             ancientCoreofTheBloodGod = false; //肃杀核心
+            ancientBloodFact = false;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;
@@ -519,6 +524,8 @@ namespace CalamityInheritance.CIPlayer
             auricsilvaCountdown = auricsilvaReviveDuration;
             CIsilvaCountdown = CIsilvaReviveDuration;
             auricBoostold = false;
+            auricYharimSet = false;
+            auricYharimHealCooldown = 0;
             #endregion
             #region Reaver
             reaverMeleeBlast = false;

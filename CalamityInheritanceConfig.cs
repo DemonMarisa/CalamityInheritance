@@ -84,6 +84,11 @@ namespace CalamityInheritance
         [ReloadRequired]
         public bool CustomShimmer{ get; set; } //微光嬗变
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
+
         #endregion
 
         [Header("Texture")]
@@ -123,6 +128,7 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int SkullmasherResprite{ get; set; }
+
 
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]

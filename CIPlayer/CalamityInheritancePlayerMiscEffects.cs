@@ -235,9 +235,9 @@ namespace CalamityInheritance.CIPlayer
             
             if(ancientReaperToothNeclace)
             {
-                Player.GetArmorPenetration<GenericDamageClass>() += 100;
-                Player.GetDamage<GenericDamageClass>() += 0.25f;
-                Player.GetCritChance<GenericDamageClass>() += 25;
+                Player.GetArmorPenetration<GenericDamageClass>() += 250;
+                Player.GetDamage<GenericDamageClass>() += 0.50f;
+                Player.GetCritChance<GenericDamageClass>() += 50;
                 Player.endurance *= 0.1f;
                 Player.statDefense /= 10;
             }
@@ -296,6 +296,10 @@ namespace CalamityInheritance.CIPlayer
             else
             {
                 CalamityPlayer calPlayer = Player.Calamity();
+                if(calPlayer.chaliceOfTheBloodGod)
+                {
+                    return; //佩戴血杯时直接禁用护盾
+                }
                 // 如果“海绵”的护盾已经耗尽且还没有开始其充电延迟，则开始充电延迟。
                 if (CISpongeShieldDurability == 0 && !calPlayer.cooldowns.ContainsKey(CISpongeRecharge.ID))
                     Player.AddCooldown(CISpongeRecharge.ID, TheSpongetest.CIShieldRechargeDelay);
@@ -773,6 +777,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (reaverBurstCooldown > 0)
                 reaverBurstCooldown--; //法师永恒套CD
+            
+            if (auricYharimHealCooldown > 0)
+                auricYharimHealCooldown--;
 
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD
@@ -899,6 +906,30 @@ namespace CalamityInheritance.CIPlayer
             {
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
+            }
+            if(auricYharimSet)
+            {
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
+                calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
+                Player.noKnockback = true;
+                Player.lifeRegen += 40;
+                Player.shinyStone = true;
+                Player.lifeRegenTime = 1800f;
+                if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
+                {
+                    Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
+                }
+
+                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                {
+                    Player.lifeRegen += 120;
+                    Player.statDefense += 60;
+                }
+            }
+            if(ancientBloodFact)
+            {
+                Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
+                calPlayer.healingPotionMultiplier += 1.0f;
             }
         }
 

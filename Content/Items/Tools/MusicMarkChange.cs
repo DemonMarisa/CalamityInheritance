@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public override void SetDefaults()
         {
             Item.width = 42;
-            Item.damage = 55;
+            Item.damage = 1; //55->1 这玩意前期能变真近战武器而非调试工具了
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 30;
             Item.useTime = 30;
