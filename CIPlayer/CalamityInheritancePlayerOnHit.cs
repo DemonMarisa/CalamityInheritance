@@ -6,8 +6,6 @@ using Terraria.ID;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using CalamityMod.Buffs.Potions;
-using CalamityMod.Cooldowns;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Healing;
@@ -15,18 +13,10 @@ using System;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Projectiles;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Projectiles.Magic;
-using Mono.Cecil;
 using Terraria.Audio;
-using CalamityInheritance.Buffs.StatDebuffs;
-using Terraria.WorldBuilding;
-using CalamityMod.Balancing;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.CIPlayer
 {

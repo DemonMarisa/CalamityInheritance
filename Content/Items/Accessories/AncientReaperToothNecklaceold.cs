@@ -34,8 +34,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CalamityInheritance();
-            player.GetDamage<GenericDamageClass>() += 0.15f;
-            player.GetArmorPenetration<GenericDamageClass>() += 150;
             usPlayer.ancientReaperToothNeclace = true;
         }
         public override void AddRecipes()

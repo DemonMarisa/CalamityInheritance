@@ -160,5 +160,10 @@ Configs: {
 			Label: 碎颅者贴图切换
 			Tooltip: 切换碎颅者的贴图
 		}
+
+		CalBossesCanDropSoul: {
+			// Tooltip: ""
+			// Label: Cal Bosses Can Drop Soul
+		}
 	}
 }

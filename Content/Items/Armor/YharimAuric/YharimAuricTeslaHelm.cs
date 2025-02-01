@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 		public override void UpdateEquip(Player player)
 		{
 			player.maxMinions += 3;
-			player.maxTurrets += 5;
+			player.maxTurrets += 6;
 			player.GetDamage<GenericDamageClass>() += 0.3f;
 			player.GetCritChance<GenericDamageClass>() += 30;
 		}
