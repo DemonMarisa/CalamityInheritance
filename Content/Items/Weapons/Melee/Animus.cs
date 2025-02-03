@@ -106,14 +106,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
-                Register();
-
-            CreateRecipe().
                 AddIngredient<BladeofEnmity>().
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
         }
     }

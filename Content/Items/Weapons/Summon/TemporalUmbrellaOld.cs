@@ -64,6 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
         }
     }

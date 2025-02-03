@@ -39,8 +39,14 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> EtherealTalismanNew;
 
         public static Asset<Texture2D> EtherealTalismanOld;
+
         public static Asset<Texture2D> Skullmasher1p5;
+
         public static Asset<Texture2D> Skullmasher;
+
+        public static Asset<Texture2D> P90;
+
+        public static Asset<Texture2D> P90Legacy;
         public static void LoadTexture()
         {
             WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
@@ -59,8 +65,12 @@ namespace CalamityInheritance.Texture
 
             EtherealTalismanNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/EtherealTalisman");
             EtherealTalismanOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/AncientEtherealTalisman");
+
             Skullmasher1p5= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/Skullmasher1p5");
             Skullmasher   = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/Skullmasher");
+
+            P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90");
+            P90Legacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/P90Legacy");
         }
         public static void UnloadTexture()
         {
@@ -83,6 +93,9 @@ namespace CalamityInheritance.Texture
 
             Skullmasher1p5 = null;
             Skullmasher    = null;
+
+            P90 = null;
+            P90Legacy = null;
         }
     }
 }

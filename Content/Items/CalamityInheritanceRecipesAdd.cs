@@ -121,8 +121,6 @@ namespace CalamityInheritance.Content.Items
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 
-            
-
             Recipe.Create(ModContent.ItemType<DraedonPowerCell>(), 333).
                 AddIngredient(ModContent.ItemType<DubiousPlating>(), 2).
                 AddIngredient(ModContent.ItemType<MysteriousCircuitry>()).
@@ -136,15 +134,15 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-            //泰拉射线
-            Recipe.Create(ModContent.ItemType<TerraRay>()).
+            //光合射线[泰拉射线]
+            Recipe.Create(ModContent.ItemType<Photosynthesis>()).
                 AddIngredient<CarnageRay>().
                 AddIngredient<ValkyrieRay>().
                 AddIngredient<LivingShard>().
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
-            Recipe.Create(ModContent.ItemType<TerraRay>()).
+            Recipe.Create(ModContent.ItemType<Photosynthesis>()).
                 AddIngredient<NightsRayold>().
                 AddIngredient<ValkyrieRay>().
                 AddIngredient<LivingShard>().
@@ -861,22 +859,12 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<SomaPrimeOld>()).
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
-                Register();
-
             Recipe.Create(ModContent.ItemType<AngelicAlliance>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
 
             Recipe.Create(ModContent.ItemType<LoreCynosure>()).
                 AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<KnowledgeCalamitas>()).
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<Apotheosis>()).
@@ -927,11 +915,6 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<FabstaffOld>()).
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
-                Register();
-
             Recipe.Create(ModContent.ItemType<FlamsteedRing>()).
                 AddIngredient<CalamitousEssence>().
             Register();
@@ -968,11 +951,6 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<TemporalUmbrellaOld> ()).
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
-                Register();
-
             Recipe.Create(ModContent.ItemType<TheDanceofLight>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
@@ -1007,11 +985,6 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<BossRushTier5MusicBox>()).
                 AddIngredient<CalamitousEssence>().
-                Register();
-            
-            Recipe.Create(ModContent.ItemType<ElementalExcalibur>()).
-                AddIngredient<CalamitousEssence>().
-                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).

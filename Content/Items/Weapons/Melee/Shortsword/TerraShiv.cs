@@ -31,12 +31,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             CreateRecipe().
-            AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
-            AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
-            AddIngredient(ModContent.ItemType<LivingShard>(),5).
-            AddIngredient(ItemID.BrokenHeroSword).
-            AddTile(TileID.MythrilAnvil).
-            Register();
+                AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
+                AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
+                AddIngredient(ModContent.ItemType<LivingShard>(),5).
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.PiercingStarlight, 1).
+                AddIngredient<LivingShard>(5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

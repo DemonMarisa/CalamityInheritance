@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.GodSlayer;
@@ -13,6 +14,7 @@ using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.CodeAnalysis.CSharp;
 using System;
@@ -43,6 +45,8 @@ namespace CalamityInheritance
         public static RecipeGroup ElementalShivGroup;
         public static RecipeGroup TerraRayGroup;
         public static RecipeGroup NightsRayGroup;
+        public static RecipeGroup MiniGunGroup;
+        public static RecipeGroup P90Group;
 
         public static RecipeGroup GodSlayerBodyGroup;
         public static RecipeGroup GodSlayerLegGroup;
@@ -75,6 +79,8 @@ namespace CalamityInheritance
             ElementalShivGroup = null;
             TerraRayGroup = null;
             NightsRayGroup = null;
+            MiniGunGroup = null;
+            P90Group = null;
 
             GodSlayerBodyGroup = null;
             GodSlayerLegGroup = null;
@@ -169,6 +175,12 @@ namespace CalamityInheritance
 
             NightsRayGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<NightsRayold>())}",
                 ModContent.ItemType<NightsRay>(), ModContent.ItemType<NightsRayold>());
+
+            MiniGunGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<Minigun>())}",
+                ModContent.ItemType<Kingsbane>(), ModContent.ItemType<Minigun>());
+
+            P90Group = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<P90Legacy>())}",
+                ModContent.ItemType<P90>(), ModContent.ItemType<P90Legacy>());
 
             #endregion
             #region 饰品

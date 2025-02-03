@@ -51,6 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
         }
     }

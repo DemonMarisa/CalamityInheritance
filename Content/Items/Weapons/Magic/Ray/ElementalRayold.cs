@@ -60,13 +60,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-            // CreateRecipe().
-            //     AddIngredient<Photosynthesis>().
-            //     AddIngredient(ItemID.LunarBar, 5).
-            //     AddIngredient<LifeAlloy>(5).
-            //     AddIngredient<GalacticaSingularity>(5).
-            //     AddTile(TileID.LunarCraftingStation).
-            //     Register();
         }
     }
 }

@@ -462,7 +462,17 @@ namespace CalamityInheritance.CIPlayer
                 {
                     TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CalamityInheritanceTexture.Skullmasher;
                 }
-
+            }
+            if (TextureAssets.Item[ModContent.ItemType<P90Legacy>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.P90Resprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CalamityInheritanceTexture.P90;
+                }
+                if (CalamityInheritanceConfig.Instance.P90Resprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CalamityInheritanceTexture.P90Legacy;
+                }
             }
             #endregion
         }

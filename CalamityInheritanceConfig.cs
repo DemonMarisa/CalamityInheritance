@@ -130,6 +130,14 @@ namespace CalamityInheritance
         public int SkullmasherResprite{ get; set; }
 
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int P90Resprite { get; set; }
+
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
