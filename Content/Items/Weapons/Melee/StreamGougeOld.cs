@@ -27,11 +27,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Spears[Item.type] = true;
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StreamGouge>()] = ModContent.ItemType<StreamGougeOld>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StreamGougeOld>()] = ModContent.ItemType<StreamGouge>();
-            }
         }
 
         public override void SetDefaults()

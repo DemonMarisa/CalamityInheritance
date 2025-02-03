@@ -11,12 +11,21 @@ using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class AtaraxiaOld : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public override void SetStaticDefaults()
+        {
+            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();
+            }
+        }
         public override void SetDefaults()
         {
             Item.width = 94;

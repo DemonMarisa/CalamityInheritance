@@ -110,5 +110,10 @@ MountedScannerLegacyBuff: {
 
 BloodyBoost: {
 	// DisplayName: Bloody Boost
-	// Description: Mods.CalamityInheritance.Buffs.BloodyBoost.Description
+	// Description: Increased offensive and defensive stats, healing potions grant more health
+}
+
+yharimOfPerun: {
+	// DisplayName: Thunder Strike
+	// Description: Greatly boost your attack power
 }

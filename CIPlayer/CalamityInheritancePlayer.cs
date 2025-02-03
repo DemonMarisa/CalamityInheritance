@@ -10,30 +10,20 @@ using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.GameInput;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Items.Accessories;
 using CalamityMod.World;
 using CalamityInheritance.UI;
 using Terraria.GameContent;
-using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories.Magic;
-using CalamityMod.Items.Armor.TitanHeart;
-using CalamityMod.Items.Potions.Alcohol;
+
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -193,6 +183,8 @@ namespace CalamityInheritance.CIPlayer
         public bool auricYharimSet = false; //暴君套
         public int auricYharimHealCooldown = 0; //暴君套回血CD
         public bool auricYharimAntiSummonerDMGReduction = false; //暴君套直接数值对撞抗召唤减伤
+        public int yharimOfPerunStrikesCooldown = 0; //暴君套打击cd
+        public bool yharimOfPerunBuff= false;
         public bool aurichasSilvaEffect = false;
         public static int CIsilvaReviveDuration = 900;
         public int CIsilvaCountdown = CIsilvaReviveDuration;
@@ -366,6 +358,7 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             auricsilvaset = false;
             auricYharimSet = false;
+            yharimOfPerunBuff = false;
             #endregion
             #region Reaver
             reaverMeleeBlast = false;
@@ -503,6 +496,7 @@ namespace CalamityInheritance.CIPlayer
             ancientReaperToothNeclace = false; //肃杀项链
             ancientCoreofTheBloodGod = false; //肃杀核心
             ancientBloodFact = false;
+            yharimOfPerunBuff = false;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;
@@ -528,6 +522,8 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             auricYharimSet = false;
             auricYharimHealCooldown = 0;
+            yharimOfPerunStrikesCooldown = 0;
+            yharimOfPerunBuff = false;
             #endregion
             #region Reaver
             reaverMeleeBlast = false;

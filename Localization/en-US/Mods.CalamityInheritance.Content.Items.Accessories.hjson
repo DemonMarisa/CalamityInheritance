@@ -74,6 +74,7 @@ DashAccessories: {
 			This dash can slam through enemies without taking damage
 			Grants immunity to knockback and fire blocks
 			Grants immunity to the vast majority of debuffs, including God Slayer Inferno
+			+40 max life
 			Press [KEY] to receive the Elysian Guard buff
 			This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
 			Enemies are more likely to target you while the buff is being active
@@ -99,6 +100,7 @@ DashAccessories: {
 			This dash can slam through enemies without taking damage
 			Grants immunity to knockback and fire blocks
 			Grants immunity to most debuffs, including Daybreak and Holy Flames 
+			+40 max life
 			Press [KEY] to receive the Elysian Guard buff
 			This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
 			Enemies are more likely to target you while the buff is being active
@@ -121,6 +123,7 @@ DashAccessories: {
 		DisplayName: Statis' Void Sash Revamped
 		Tooltip:
 			'''
+			10% increased damage
 			32% increased jump speed and allows constant jumping
 			Grants immnuity to fall damage
 			Can climb wall, dash, swim and dodge attacks
@@ -169,7 +172,7 @@ LeviathanAmbergrisLegacy: {
 	Tooltip:
 		'''
 		You leave behind poisonous seawater as you move
-		+10 defense, 10% increased damage and 30% increased movement speed  while submerged in liquid
+		+10 defense, 10% increased damage and 75% increased movement speed  while submerged in liquid
 		Taking damage while submerged in liquid will gain a damaging aura for a short time
 		Being outside of liquid increases all damage by 5% and increases damage reduction by 5%
 		'''
@@ -247,22 +250,18 @@ TheSpongetest: {
 	Tooltip:
 		'''
 		Legacy Sponge:
-		30 defense and max mana
-		15% increased damage reduction
+		+30 defense and max mana, 15% increased damage reduction
 		Grants the immunity of Armor Crunch
-		All effects from Ambrosial Ampoule
+		All effects from Ambrosial Ampoule Legacy
 		You emit a mushroom spore and spark explosion when you are hit
 		Extra 15 defense that would be disabled in 10 seconds if you are hit, and boost your movement speed
 		6.25% of the damage from enemy attacks is absorbed and converted into healing
 
 		[c/FFA500:Active Sponge Barrier if toggle 'Sponge Barrier' in config]
 		Active a barrier can absorb damage, which durability is the same as your max HP
-		When barrier is formed:
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
-		When barrier is cracked:
-		This effect will be removed when your barrier is fully recharged
-		Takes up more time to recharge your barrier
+		Takes up more time to recharge if your barrier is broken
 		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''
 }
@@ -311,9 +310,9 @@ AmbrosialAmpouleOld: {
 	DisplayName: Ambrosial Ampoule Legacy
 	Tooltip:
 		'''
-		25% increased mining speed
+		50% increased mining speed
 		You emit light
-		5% increased damage reduction and increased life regen
+		5% increased damage reduction and +0.5HP/s life regen
 		Poison, Freeze, Chill, Frostburn, and Venom immunity
 		Honey-like life regen with no speed penalty
 		Most bee/hornet enemies and projectiles do 75% damage to you
@@ -366,5 +365,11 @@ AncientReaperToothNecklace: {
 
 BloodPactLegacy: {
 	DisplayName: Blood Pact Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Doubles your max HP
+		Allows you to be critically hit 25% of the time
+		After a critical hit, you gain various buffs for ten seconds
+		Any healing potions consumed during this time period heal 50% more health
+		'''
 }

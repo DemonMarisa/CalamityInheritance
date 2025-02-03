@@ -142,11 +142,11 @@ Configs: {
 		}
 
 		CustomShimmer: {
-			Label: Custom Shimmer
+			Label: "[i:BottomlessShimmerBucket]Custom Shimmer"
 			Tooltip:
 				'''
 				Determines all shimmer method for mod items
-				Disables will makes them have other ways to optain
+				Disables will makes them have other ways to obtain
 				'''
 		}
 
@@ -170,8 +170,13 @@ Configs: {
 		}
 
 		CalBossesCanDropSoul: {
-			Tooltip: ""
-			Label: Cal Bosses Can Drop Soul
+			Tooltip:
+				'''
+				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
+				This is a feature from Calamity 1.4(and before)
+				Enbales by default
+				'''
+			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
 		}
 	}
 }

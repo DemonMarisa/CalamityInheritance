@@ -863,6 +863,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<SomaPrimeOld>()).
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<AngelicAlliance>()).
@@ -875,6 +876,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<KnowledgeCalamitas>()).
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<Apotheosis>()).
@@ -927,6 +929,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<FabstaffOld>()).
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<FlamsteedRing>()).
@@ -967,6 +970,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<TemporalUmbrellaOld> ()).
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<TheDanceofLight>()).
@@ -1007,6 +1011,7 @@ namespace CalamityInheritance.Content.Items
             
             Recipe.Create(ModContent.ItemType<ElementalExcalibur>()).
                 AddIngredient<CalamitousEssence>().
+                DisableDecraft().
                 Register();
 
             Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).

@@ -25,6 +25,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             AIType = ProjectileID.DeathSickle;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 300;
             Projectile.usesLocalNPCImmunity = true;

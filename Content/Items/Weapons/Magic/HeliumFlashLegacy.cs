@@ -16,10 +16,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class HeliumFlashLegacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        internal const float ExplosionDamageMultiplier = 0.65f;
+        internal const float ExplosionDamageMultiplier = 0.56f;
 
         public override void SetStaticDefaults()
         {
+            if (CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlash>()] = ModContent.ItemType<HeliumFlashLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlashLegacy>()] = ModContent.ItemType<HeliumFlash>();
+            }
+
             Item.staff[Item.type] = true;
         }
 
@@ -28,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.SetWeaponValues(500, 9.5f, 10);
+            Item.SetWeaponValues(480, 9.5f, 10);
             Item.mana = 15;
             Item.useAnimation = 30;
             Item.useTime = 30;

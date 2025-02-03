@@ -50,7 +50,6 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			calPlayer.auricSet = true;
 			calPlayer.wearingRogueArmor = true;
 			calPlayer.rogueStealthMax += 1.2f;
-			calPlayer.stealthStrikeHalfCost = true;
 			modPlayer.GodSlayerReborn = true;
 			modPlayer.auricsilvaset = true;
 			modPlayer.GodSlayerDMGprotect = true;
@@ -69,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			if (player.lavaWet == true)
 			{
 				player.statDefense += 30;
-				player.lifeRegen += 10;
+				player.lifeRegen += 60;
 			}
             if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {

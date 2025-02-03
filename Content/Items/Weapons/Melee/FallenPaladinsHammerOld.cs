@@ -22,8 +22,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (CalamityInheritanceConfig.Instance.CustomShimmer == true)
             {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammerOld>()] = ModContent.ItemType<RogueTypeFallenPaladinsHammer>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RogueTypeFallenPaladinsHammer>()] = ModContent.ItemType<FallenPaladinsHammerOld>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammerOld>()] = ModContent.ItemType<FallenPaladinsHammer>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<FallenPaladinsHammerOld>();
             }
         }
 
