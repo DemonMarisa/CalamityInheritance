@@ -9,6 +9,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -169,6 +170,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<ShadowspecBar>(5).
                 AddIngredient<AscendantSpiritEssence>(5).
                 AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
                 Register();
         }
     }

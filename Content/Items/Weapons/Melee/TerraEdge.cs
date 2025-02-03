@@ -87,6 +87,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<TrueBloodyEdge>().
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient<LivingShard>(7).
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -94,6 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.TrueNightsEdge).
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient<LivingShard>(7).
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

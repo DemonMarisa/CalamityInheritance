@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
@@ -77,6 +78,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<P90Legacy>().
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
                 Register();
         }
     }

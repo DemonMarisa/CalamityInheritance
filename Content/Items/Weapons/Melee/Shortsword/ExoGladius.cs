@@ -71,6 +71,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
                 AddRecipeGroup("CalamityInheritance:AnyCosmicShiv").
                 AddIngredient(ModContent.ItemType<Lucrecia>()).
                 AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
+                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForge>()).
                 Register();
         }

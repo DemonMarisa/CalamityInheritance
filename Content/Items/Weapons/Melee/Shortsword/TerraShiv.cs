@@ -30,12 +30,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<TrueNightsStabber>());
-            recipe.AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>());
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(),5);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+            AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
+            AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
+            AddIngredient(ModContent.ItemType<LivingShard>(),5).
+            AddIngredient(ItemID.BrokenHeroSword).
+            AddTile(TileID.MythrilAnvil).
+            Register();
         }
     }
 }

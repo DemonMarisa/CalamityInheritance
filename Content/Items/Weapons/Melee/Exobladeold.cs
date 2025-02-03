@@ -154,19 +154,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-
             CreateRecipe().
-                AddIngredient<Terratomere>().
-                AddIngredient<AnarchyBlade>().
-                AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
-                AddIngredient<StellarStriker>().
-                AddIngredient<MiracleMatter>().
-                AddTile<DraedonsForge>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<TerratomereOld>().
+                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
@@ -176,18 +165,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Register();
             
             CreateRecipe().
-                AddIngredient<TerratomereOld>().
-                AddIngredient<AnarchyBlade>().
-                AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
-                AddIngredient<StellarStriker>().
-                AddIngredient<AncientMiracleMatter>().
-                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
-                AddTile<DraedonsForge>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<Terratomere>().
+                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().

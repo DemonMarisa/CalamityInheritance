@@ -351,7 +351,7 @@ namespace CalamityInheritance.Content.Items
             #region ExoWeapons
             //星流之刃
             Recipe.Create(ModContent.ItemType<Exoblade>()).
-                AddIngredient<TerratomereOld>().
+                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
@@ -361,22 +361,13 @@ namespace CalamityInheritance.Content.Items
                 Register();
             
             Recipe.Create(ModContent.ItemType<Exoblade>()).
-                AddIngredient<Terratomere>().
+                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
-                AddTile(ModContent.TileType<DraedonsForgeTiles>()).
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Exoblade>()).
-                AddIngredient<TerratomereOld>().
-                AddIngredient<AnarchyBlade>().
-                AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
-                AddIngredient<StellarStriker>().
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
 

@@ -64,11 +64,6 @@ namespace CalamityInheritance.Texture
         }
         public static void UnloadTexture()
         {
-            TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = null;
-            TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = null;
-            TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = null;
-            TextureAssets.Item[ModContent.ItemType<ArkoftheCosmos>()] = null;
-            TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = null;
             WulfrumAxeNew = null;
             WulfrumHammerNew = null;
             WulfrumPickaxeNew = null;

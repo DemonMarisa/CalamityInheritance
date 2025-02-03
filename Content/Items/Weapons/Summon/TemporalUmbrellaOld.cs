@@ -8,6 +8,7 @@ using Terraria;
 using CalamityInheritance.Content.Projectiles.Summon.Umbrella;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -60,6 +61,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             recipe.AddIngredient(ModContent.ItemType<ShadowspecBar>(), 4);
             recipe.AddTile(ModContent.TileType<DraedonsForge>());
             recipe.Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
         }
     }
 }

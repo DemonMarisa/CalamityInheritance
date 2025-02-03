@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod.Items.Accessories;
@@ -36,7 +37,12 @@ namespace CalamityInheritance
         public static RecipeGroup ExoTropyGroup;
         public static RecipeGroup CosmicShivGroup; 
         public static RecipeGroup DeificAmuletGroup;
+
         public static RecipeGroup PhantasmalRuinGroup;
+        public static RecipeGroup TerratomereGroup;
+        public static RecipeGroup ElementalShivGroup;
+        public static RecipeGroup TerraRayGroup;
+        public static RecipeGroup NightsRayGroup;
 
         public static RecipeGroup GodSlayerBodyGroup;
         public static RecipeGroup GodSlayerLegGroup;
@@ -55,7 +61,6 @@ namespace CalamityInheritance
         public override void Unload()
         {
             ElementalRayRecipeGroup = null;
-            PhantasmalFuryRecipeGroup = null;
             HeliumFlashRecipeGroup = null;
             WoodSwordRecipeGroup = null;
             ExoTropyGroup = null;
@@ -64,6 +69,12 @@ namespace CalamityInheritance
             AmbrosialAmpoule = null;
             ElysianAegis = null;
             AsgardsValor = null;
+
+            PhantasmalFuryRecipeGroup = null;
+            TerratomereGroup = null;
+            ElementalShivGroup = null;
+            TerraRayGroup = null;
+            NightsRayGroup = null;
 
             GodSlayerBodyGroup = null;
             GodSlayerLegGroup = null;
@@ -147,6 +158,18 @@ namespace CalamityInheritance
             PhantasmalRuinGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<PhantasmalRuinold>())}",
                 ModContent.ItemType<PhantasmalRuin>(), ModContent.ItemType<PhantasmalRuinold>());
 
+            TerratomereGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<TerratomereOld>())}",
+                ModContent.ItemType<Terratomere>(), ModContent.ItemType<TerratomereOld>());
+
+            ElementalShivGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<ElementalShivold>())}",
+                ModContent.ItemType<ElementalShiv>(), ModContent.ItemType<ElementalShivold>());
+
+            TerraRayGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<TerraRay>())}",
+                ModContent.ItemType<Photosynthesis>(), ModContent.ItemType<TerraRay>());
+
+            NightsRayGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<NightsRayold>())}",
+                ModContent.ItemType<NightsRay>(), ModContent.ItemType<NightsRayold>());
+
             #endregion
             #region 饰品
 
@@ -182,6 +205,10 @@ namespace CalamityInheritance
             #endregion
             #region 武器组
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyPhantasmalRuin", PhantasmalRuinGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyTerratomere", TerratomereGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalShiv", ElementalShivGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyTerraRay", TerraRayGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyNightsRay", NightsRayGroup);
             #endregion
             #region 饰品
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElysianAegis", ElysianAegis);

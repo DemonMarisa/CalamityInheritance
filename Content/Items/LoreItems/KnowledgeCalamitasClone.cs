@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Microsoft.CodeAnalysis.Operations;
@@ -38,9 +40,13 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreCalamitasClone>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreCalamitasClone>().
+                AddTile(TileID.Bookcases).
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
         }
     }
 }

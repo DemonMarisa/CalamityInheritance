@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -47,6 +48,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             recipe.AddIngredient(ModContent.ItemType<ShadowspecBar>(), 50);
             recipe.AddTile(ModContent.TileType<DraedonsForge>());
             recipe.Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
         }
     }
 }
