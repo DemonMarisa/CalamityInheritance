@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityMod;
@@ -26,9 +27,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = 10;
+            Item.useAnimation = 5;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 10;
+            Item.useTime = 5;
             Item.knockBack = 3f;
             Item.UseSound = SoundID.Item39;
             Item.autoReuse = true;
@@ -106,6 +107,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<CoreofCalamity>(2).
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
                 Register();
         }
     }

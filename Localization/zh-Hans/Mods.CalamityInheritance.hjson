@@ -172,13 +172,13 @@ Configs: {
 		}
 
 		GodSlayerKnivesResprite: {
-			// Label: God Slayer Knives Resprite
-			// Tooltip: ""
+			Label: 苍穹飞刀·盗贼版本贴图切换
+			Tooltip: 切换苍穹飞刀·盗贼版本的贴图
 		}
 
 		ShadowspecKnivesResprite: {
-			// Label: Shadowspec Knives Resprite
-			// Tooltip: ""
+			Label: 圣光飞刀·盗贼版本贴图切换
+			Tooltip: 切换圣光飞刀·盗贼版本的贴图
 		}
 	}
 }

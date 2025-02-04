@@ -186,18 +186,12 @@ Configs: {
 
 		GodSlayerKnivesResprite: {
 			Label: Empyrean Knives Resprite
-			Tooltip:
-				'''
-				Determines the sprite of Empyrean Knives Legacy Rogue
-				'''
+			Tooltip: Determines the sprite of Empyrean Knives Legacy Rogue
 		}
 
 		ShadowspecKnivesResprite: {
 			Label: Illustrious Knives Resprite
-			Tooltip:
-				'''
-				Determines the sprite of Illustrious Knives Legacy Rogue
-				'''
+			Tooltip: Determines the sprite of Illustrious Knives Legacy Rogue
 		}
 	}
 }
