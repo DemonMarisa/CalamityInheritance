@@ -7,7 +7,9 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Texture;
+using CalamityMod.Buffs.Pets;
 using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Pets;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
@@ -108,17 +110,29 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //TODO Scarlet:射弹的贴图并未正确替换，等我之后知道啥原因了可能就会弄好了
+            //改好了
+            #region knives
             if (TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 1)
                 {
                     TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesLegacyType;
-                    TextureAssets.Item[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesLegacyTypeProj;
                 }
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 2)
                 {
                     TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesAlterType;
-                    TextureAssets.Item[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesAlterTypeProj;
+                }
+            }
+
+            if (TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesLegacyTypeProj;
+                }
+                if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesAlterTypeProj;
                 }
             }
 
@@ -127,17 +141,54 @@ namespace CalamityInheritance.CIPlayer
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 1)
                 {
                     TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesLegacyType;
-                    TextureAssets.Item[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesLegacyTypeProj;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 2)
                 {
                     TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterType;
-                    TextureAssets.Item[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProj;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 3)
                 {
                     TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeSecond;
-                    TextureAssets.Item[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjSecond;
+                }
+            }
+
+            if (TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesLegacyTypeProj;
+                }
+                if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProj;
+                }
+                if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite== 3)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjSecond;
+                }
+            }
+            #endregion
+            if (TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite == 1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CalamityInheritanceTexture.FateGirlOriginal;
+                }
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite == 2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CalamityInheritanceTexture.FateGirlLegacy;
+                }
+            }
+
+            if (TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite == 1)
+                {
+                    TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CalamityInheritanceTexture.FateGirlOriginalBuff;
+                }
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite == 2)
+                {
+                    TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CalamityInheritanceTexture.FateGirlLegacyBuff;
                 }
             }
             #endregion

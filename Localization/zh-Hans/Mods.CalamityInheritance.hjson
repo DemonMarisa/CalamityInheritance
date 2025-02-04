@@ -180,5 +180,10 @@ Configs: {
 			Label: 圣光飞刀·盗贼版本贴图切换
 			Tooltip: 切换圣光飞刀·盗贼版本的贴图
 		}
+
+		FateGirlSprite: {
+			Label: 曙纹始灵仆从贴图切换
+			Tooltip: 切换曙纹始灵仆从的贴图
+		}
 	}
 }

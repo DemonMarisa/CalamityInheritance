@@ -376,5 +376,9 @@ BloodPactLegacy: {
 
 HeartoftheElements: {
 	DisplayName: Heartofthe Elements
-	Tooltip: ""
+	Tooltip:
+		'''
+		仅作占位符
+		Just a placeholder.
+		'''
 }
