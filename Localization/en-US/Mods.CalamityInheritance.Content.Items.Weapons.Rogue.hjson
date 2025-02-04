@@ -147,3 +147,24 @@ ScourgeoftheCosmosRogue: {
 		Stealth strikes will bounces more times, emits more deadly homing cosmic on hits
 		'''
 }
+
+EmpyreanKnivesLegacyRogue: {
+	DisplayName: Empyrean Knives Legacy Rogue
+	Tooltip:
+		'''
+		Legacy Empyrean Knives for Rogue class
+		Throws a flurry of bouncing knives that can heal the use
+		Knives are now deal more damage, and travel speed is much faster
+		'''
+}
+
+ShadowspecKnivesLegacyRogue: {
+	DisplayName: Shadowspec Knives Legacy Rogue
+	Tooltip:
+		'''
+		Legacy Illustrious Knives for Rogue class
+		Throws a flurry of homing knives that can heal the user
+		Knives are now deal more damage, and travel speed is much faster
+		Healing is more effective too
+		'''
+}

@@ -170,5 +170,15 @@ Configs: {
 			Label: P90贴图切换
 			Tooltip: 切换P90的贴图
 		}
+
+		GodSlayerKnivesResprite: {
+			// Label: God Slayer Knives Resprite
+			// Tooltip: ""
+		}
+
+		ShadowspecKnivesResprite: {
+			// Label: Shadowspec Knives Resprite
+			// Tooltip: ""
+		}
 	}
 }

@@ -23,6 +23,9 @@ using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Accessories.Magic;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityMod.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -235,6 +238,7 @@ namespace CalamityInheritance.CIPlayer
         #region ResetEffects
         public override void ResetEffects()
         {
+            RespriteOptions(); //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
             #region Accessories
             int percentMaxLifeIncrease = 0;
 
@@ -385,96 +389,7 @@ namespace CalamityInheritance.CIPlayer
             reaverSummonerOrb = false;
             cosmicEnergy = false;
             #endregion
-            #region Texture
-            if (TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] != null)
-            {
-                if(CalamityInheritanceConfig.Instance.WulfumTexture == true)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CalamityInheritanceTexture.WulfrumAxeNew;
-                }
-                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CalamityInheritanceTexture.WulfrumAxeOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.WulfumTexture == true)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CalamityInheritanceTexture.WulfrumHammerNew;
-                }
-                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CalamityInheritanceTexture.WulfrumHammerOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.WulfumTexture == true)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CalamityInheritanceTexture.WulfrumPickaxeNew;
-                }
-                if (CalamityInheritanceConfig.Instance.WulfumTexture == false)
-                {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CalamityInheritanceTexture.WulfrumPickaxeOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.ArkofCosmosTexture == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CalamityInheritanceTexture.ArkoftheCosmosNew;
-                }
-                if (CalamityInheritanceConfig.Instance.ArkofCosmosTexture == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CalamityInheritanceTexture.ArkoftheCosmosOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.RampartofDeitiesTexture == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CalamityInheritanceTexture.RampartofDeitiesNew;
-                }
-                if (CalamityInheritanceConfig.Instance.RampartofDeitiesTexture == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CalamityInheritanceTexture.RampartofDeitiesOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.EtherealTalismancTexture == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CalamityInheritanceTexture.EtherealTalismanNew;
-                }
-                if (CalamityInheritanceConfig.Instance.EtherealTalismancTexture == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CalamityInheritanceTexture.EtherealTalismanOld;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<Skullmasher>()] != null)
-            {
-                if(CalamityInheritanceConfig.Instance.SkullmasherResprite == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CalamityInheritanceTexture.Skullmasher1p5;
-                }
-                if(CalamityInheritanceConfig.Instance.SkullmasherResprite == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CalamityInheritanceTexture.Skullmasher;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<P90Legacy>()] != null)
-            {
-                if (CalamityInheritanceConfig.Instance.P90Resprite == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CalamityInheritanceTexture.P90;
-                }
-                if (CalamityInheritanceConfig.Instance.P90Resprite == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CalamityInheritanceTexture.P90Legacy;
-                }
-            }
-            #endregion
+            
         }
         #endregion
         #region UpdateDead

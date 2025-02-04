@@ -278,7 +278,10 @@ namespace CalamityInheritance.CIPlayer
                 ProjOnHit(projectile, target.Center, hit.Crit, target.IsAnEnemy(false));
             }
             #region AuricYharim
-            if(auricYharimSet)
+            if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
+                && Player.Calamity().StealthStrikeAvailable()
+                && yharimOfPerunStrikesCooldown == 0
+                && auricYharimSet) 
             {
                 if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && Player.Calamity().StealthStrikeAvailable() && yharimOfPerunStrikesCooldown == 0)
                 {

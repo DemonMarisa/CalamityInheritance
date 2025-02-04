@@ -227,7 +227,7 @@ Trinity: {
 }
 
 TerratomereOld: {
-	DisplayName: Terratomere Old
+	DisplayName: Terratomere Legacy
 	Tooltip:
 		'''
 		Linked to the essence of Terraria
@@ -245,12 +245,71 @@ KelvinCatalystMelee: {
 	DisplayName: Kelvin Catalyst Legacy Melee
 	Tooltip:
 		'''
+		Legacy Kelvin Catalyst for Melee class
 		Throws an icy blade that splits into multiple ice stars on enemy hits
 		Ice stars are extremely agressive on chasing their enemy
 		'''
 }
 
 SubductionSlicerMelee: {
-	Tooltip: '''Throws a scythe that explodes on enemy hits	'''
+	Tooltip:
+		'''
+		Legacy Subduction Slicer for Melee class
+		Throws a scythe that explodes on enemy hits
+		'''
 	DisplayName: Subduction Slicer Legacy Melee
+}
+
+NanoblackReaperLegacyMelee: {
+	DisplayName: Nanoblack Reaper Legacy Melee
+	Tooltip:
+		'''
+		Legacy Nanoblack Reaper for Melee class
+		Unleashes a storm of nanoblack energy blades
+		Blades target bosses whenever possible and extremely agressive
+		[c/56FFDD:'She smothered them in Her hatred']
+		'''
+}
+
+ElementalDiskLegacyMelee: {
+	DisplayName: Elemental Disk Legacy Melee
+	Tooltip:
+		'''
+		Legacy Elemental Disk for Melee class
+		Throws a disk that has a chance to generate a bunch of disks if enemies are near it
+		Disks are ignore immunity frames
+		'''
+}
+
+EradicatorLegacyMelee: {
+	DisplayName: Eradicator Legacy Melee
+	Tooltip:
+		'''
+		Legacy Eradicator for Melee class
+		Throws a disk that fires nebula lasers to your enemies
+		'''
+}
+
+MangroveChakramLegacyMelee: {
+	DisplayName: Mangrove Chakram Legacy Melee
+	Tooltip: Legacy Mangrove Chakram for Melee class
+}
+
+CorpusAvertorLegacyMelee: {
+	DisplayName: Corpus Avertor Legacy Melee
+	Tooltip:
+		'''
+		Legacy Corpus Avertor for Melee class
+		Attacks grant lifesteal based on damage dealt
+		The lower your HP, the more damage those and heals the player on enemy hits
+		'''
+}
+
+TerraDiskMeleeLegacy: {
+	DisplayName: Terra Disk Melee Legacy
+	Tooltip:
+		'''
+		Legacy Terra Disk/Samsara Slicer for Melee class
+		Throws a disk that has a chance to generate several disks if enemies are near it
+		'''
 }

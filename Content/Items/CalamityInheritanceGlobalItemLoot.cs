@@ -54,6 +54,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<CryogenBag>())
             {
                 itemloot.Add(ModContent.ItemType<CryoBar>(), 3, 5, 15); //33%概率，数量5-15
+                itemloot.Add(ItemID.FrostStaff, 3, 1, 1); //冰灵宝藏袋临时添加寒霜法杖，不然某些人做冰灵旋刃得坐大的，过会回归了那个被移除的法杖这个就会换掉
 
                 if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
                 {
@@ -81,6 +82,24 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
+            if (item.type == ModContent.ItemType<DevourerofGodsBag>())
+            {
+                //Scarlet:只有在微光关闭的时候这玩意才会正常掉落
+                if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+                {
+                    itemloot.Add(ModContent.ItemType<EradicatorLegacyMelee>(), 3);
+                }
+            }
+
+            if (item.type == ModContent.ItemType<RavagerBag>())
+            {
+
+                if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+                {
+                    itemloot.Add(ModContent.ItemType<CorpusAvertorLegacyMelee>(), 3);
+                }
+
+            }
             switch (item.type)
             {
                 #region Boss Treasure Bags

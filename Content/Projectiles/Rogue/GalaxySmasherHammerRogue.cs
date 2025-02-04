@@ -192,9 +192,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             // Three death lasers (aka "Nebula Shots") swarm the target.
             int laserID = ModContent.ProjectileType<RogueNebulaShot>();
-            int laserDamage = (int)(0.2f * Projectile.damage);
+            int laserDamage = (int)(0.4f * Projectile.damage);
             float laserKB = 2.5f;
-            int numLasers = 3;
+            int numLasers = 6;
             for (int i = 0; i < numLasers; ++i)
             {
                 float startDist = Main.rand.NextFloat(260f, 270f);
@@ -209,7 +209,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPoint, velocity, laserID, laserDamage, laserKB, Projectile.owner);
                     if (proj.WithinBounds(Main.maxProjectiles))
                     {
-                        Main.projectile[proj].DamageType = DamageClass.MeleeNoSpeed;
+                        Main.projectile[proj].DamageType = ModContent.GetInstance<RogueDamageClass>();
                         Main.projectile[proj].tileCollide = false;
                         Main.projectile[proj].timeLeft = 30;
                     }

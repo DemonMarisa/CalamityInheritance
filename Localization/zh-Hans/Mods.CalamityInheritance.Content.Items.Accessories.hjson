@@ -371,3 +371,8 @@ BloodPactLegacy: {
 		此期间增加50%治疗药水的治疗量
 		'''
 }
+
+HeartoftheElements: {
+	// DisplayName: Heartofthe Elements
+	// Tooltip: ""
+}

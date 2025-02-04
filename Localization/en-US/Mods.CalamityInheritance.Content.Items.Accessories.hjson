@@ -373,3 +373,8 @@ BloodPactLegacy: {
 		Any healing potions consumed during this time period heal 50% more health
 		'''
 }
+
+HeartoftheElements: {
+	DisplayName: Heartofthe Elements
+	Tooltip: ""
+}

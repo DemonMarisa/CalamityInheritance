@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.height = 72;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.damage = BaseDamage;
+            //星云射线现在一次生成9个
             Item.knockBack = 9f;
             Item.useAnimation = 13;
             Item.useTime = 13;
