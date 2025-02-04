@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
         }
-
+        public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
@@ -57,10 +58,10 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             if (Projectile.timeLeft < 170)
             {
                 float maxSpeed = 20f;
-                float acceleration = 0.1f * 8f;
+                float acceleration = 0.1f * 5f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
 
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, homeInSpeed, 15f);
+                CalamityInheritanceUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, homeInSpeed, 0, MathHelper.ToRadians(10f));
             }
         }
 

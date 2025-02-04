@@ -52,27 +52,23 @@ namespace CalamityInheritance.Content.Items.Tools
             if (player.altFunctionUse == 2)
             {
                 CIMusicEventSystem.PlayedEvents.Add("YharonDefeated");
-                CIMusicEventSystem.PlayedEvents.Add("ScalDefeated");
                 CIMusicEventSystem.PlayedEvents.Add("ExoMechsDefeated");
                 //灾厄的音乐事件
                 MusicEventSystem.PlayedEvents.Add("CloneDefeated");
                 MusicEventSystem.PlayedEvents.Add("MLDefeated");
                 MusicEventSystem.PlayedEvents.Add("YharonDefeated");
                 MusicEventSystem.PlayedEvents.Add("DoGDefeated");
-                MusicEventSystem.PlayedEvents.Add("ScalDefeated");
                 Main.NewText("添加所有音乐事件标记");
             }
             else
             {
                 CIMusicEventSystem.PlayedEvents.Remove("YharonDefeated");
-                CIMusicEventSystem.PlayedEvents.Remove("ScalDefeated");
                 CIMusicEventSystem.PlayedEvents.Remove("ExoMechsDefeated");
                 //灾厄的音乐事件
                 MusicEventSystem.PlayedEvents.Remove("CloneDefeated");
                 MusicEventSystem.PlayedEvents.Remove("MLDefeated");
                 MusicEventSystem.PlayedEvents.Remove("YharonDefeated");
                 MusicEventSystem.PlayedEvents.Remove("DoGDefeated");
-                MusicEventSystem.PlayedEvents.Remove("ScalDefeated");
 
                 Main.NewText("清除所有音乐事件标记");
             }

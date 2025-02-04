@@ -13,6 +13,9 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Melee;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using Terraria.Audio;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -40,10 +43,15 @@ namespace CalamityInheritance.Content.Items
             Item.height = 42;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<PhotovisceratorCrystal>();
+            Item.shootSpeed = 10;
+            Item.shoot = ModContent.ProjectileType<MiniRocket>();
         }
-        public override bool AltFunctionUse(Player player) => true;
-
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<MiniRocket>(), damage, knockback, player.whoAmI);
+            return false;
+        }
         public override bool? UseItem(Player player)
         {
             return base.CanUseItem(player);

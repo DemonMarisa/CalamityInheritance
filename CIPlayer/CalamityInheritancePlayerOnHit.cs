@@ -278,25 +278,26 @@ namespace CalamityInheritance.CIPlayer
                 ProjOnHit(projectile, target.Center, hit.Crit, target.IsAnEnemy(false));
             }
             #region AuricYharim
-            if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
-                && Player.Calamity().StealthStrikeAvailable()
-                && yharimOfPerunStrikesCooldown == 0) 
+            if(auricYharimSet)
             {
-                SoundEngine.PlaySound(SoundMenu.auricYharimDeadlyStrikes);
-                for (int j = 0; j < 50; j++)
+                if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && Player.Calamity().StealthStrikeAvailable() && yharimOfPerunStrikesCooldown == 0)
                 {
-                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                    Dust dust = Main.dust[nebulousReviveDust];
-                    dust.position.X += Main.rand.Next(-20, 21);
-                    dust.position.Y += Main.rand.Next(-20, 21);
-                    dust.velocity *= 0.9f;
-                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    if (Main.rand.NextBool())
+                    SoundEngine.PlaySound(SoundMenu.auricYharimDeadlyStrikes);
+                    for (int j = 0; j < 50; j++)
+                    {
+                        int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                        Dust dust = Main.dust[nebulousReviveDust];
+                        dust.position.X += Main.rand.Next(-20, 21);
+                        dust.position.Y += Main.rand.Next(-20, 21);
+                        dust.velocity *= 0.9f;
                         dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                }
-                Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-                yharimOfPerunStrikesCooldown = 1800;
+                        if (Main.rand.NextBool())
+                            dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    }
+                    Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
+                    yharimOfPerunStrikesCooldown = 1800;
 
+                }
             }
             #endregion
         }

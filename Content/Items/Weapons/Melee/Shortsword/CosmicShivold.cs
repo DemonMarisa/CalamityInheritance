@@ -36,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.Calamity().donorItem = true; //Yatagarasu#0001
         }
 
+        public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
             CreateRecipe().

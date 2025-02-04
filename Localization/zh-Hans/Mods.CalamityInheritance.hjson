@@ -165,5 +165,10 @@ Configs: {
 			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
 			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
 		}
+
+		P90Resprite: {
+			Label: P90贴图切换
+			Tooltip: 切换P90的贴图
+		}
 	}
 }

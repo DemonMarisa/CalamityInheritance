@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.GameContent.Drawing;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -29,6 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.extraUpdates = 1;
             AIType = ProjectileID.Excalibur;
         }
+        private int hitcount;
         public override void AI()
         {
             Projectile.velocity.Y += Projectile.ai[0];
@@ -36,6 +38,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PinkFairy, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
+            if(hitcount < 1)
+                CalamityInheritanceUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, MathHelper.ToRadians(0.14f));
         }
         public override void PostDraw(Color lightColor)
         {
@@ -58,6 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            hitcount++;
             target.immune[Projectile.owner] = 7;
             // Vanilla has several particles that can easily be used anywhere.
             // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.

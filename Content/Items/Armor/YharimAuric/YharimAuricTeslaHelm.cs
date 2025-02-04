@@ -70,11 +70,13 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 				player.statDefense += 30;
 				player.lifeRegen += 60;
 			}
-            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;
             }
+
 			//法师
             calPlayer.tarraMage = true;
             calPlayer.bloodflareMage = true;

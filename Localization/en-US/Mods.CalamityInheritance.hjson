@@ -178,5 +178,10 @@ Configs: {
 				'''
 			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
 		}
+
+		P90Resprite: {
+			Label: P90 Resprite
+			Tooltip: ""
+		}
 	}
 }
