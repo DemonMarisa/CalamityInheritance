@@ -131,10 +131,18 @@ TerraShiv: {
 
 TrueExcaliburShortsword: {
 	DisplayName: 真·誓约胜利短剑[Legacy]
-	Tooltip: 不要低估短剑的力量
+	Tooltip:
+		'''
+		不要低估短剑的力量
+		弹幕带有轻微的弹道矫正
+		'''
 }
 
 TrueNightsStabber: {
 	DisplayName: 真·永夜短剑[Legacy]
-	Tooltip: 不要低估短剑的力量
+	Tooltip:
+		'''
+		不要低估短剑的力量
+		弹幕带有轻微的弹道矫正
+		'''
 }
