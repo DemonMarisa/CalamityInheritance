@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.Tools;
+using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -16,6 +17,7 @@ namespace CalamityInheritance.Texture
 {
     public class CalamityInheritanceTexture : ModPlayer
     {
+        #region 贴图火车
         public static Asset<Texture2D> WulfrumAxeNew;
 
         public static Asset<Texture2D> WulfrumHammerNew;
@@ -47,6 +49,26 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> P90;
 
         public static Asset<Texture2D> P90Legacy;
+        //下：无记名灵基
+        public static Asset<Texture2D> FateGirlLegacy;
+        public static Asset<Texture2D> FateGirlLegacyBuff;
+        public static Asset<Texture2D> FateGirlOriginal;
+        public static Asset<Texture2D> FateGirlOriginalBuff;
+
+        #region 各种飞刀的贴图
+        public static Asset<Texture2D> GodSlayerKnivesLegacyType; //苍穹飞刀的第二版本贴图(现在的版本)
+        public static Asset<Texture2D> GodSlayerKnivesLegacyTypeProj; //苍穹飞刀的第二版射弹(现在的版本)
+        //下面的编排与上方的一样。
+        public static Asset<Texture2D> GodSlayerKnivesAlterType;  //苍穹飞刀的初版贴图
+        public static Asset<Texture2D> GodSlayerKnivesAlterTypeProj;
+        public static Asset<Texture2D> ShadowspecKnivesLegacyType; //圣光飞刀的第三版本贴图(灾厄现在的是第四版)
+        public static Asset<Texture2D> ShadowspecKnivesLegacyTypeProj;
+        public static Asset<Texture2D> ShadowspecKnivesAlterType;  //圣光飞刀的第二版本贴图
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProj;
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeSecond; //圣光飞刀的初版贴图
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjSecond;
+        #endregion
+        #endregion
         public static void LoadTexture()
         {
             WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
@@ -71,6 +93,28 @@ namespace CalamityInheritance.Texture
 
             P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90");
             P90Legacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/P90Legacy");
+
+            /*下方为飞刀的各种贴图，排版与上述定义时相同*/
+            //苍穹飞刀(现)
+            GodSlayerKnivesLegacyType = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/EmpyreanKnivesLegacyRogue");
+            GodSlayerKnivesLegacyTypeProj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/EmpyreanKnivesProjectileLegacyRogue");
+            //苍穹飞刀(初)
+            GodSlayerKnivesAlterType = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesLegacyRogueAlterStyle1");
+            GodSlayerKnivesAlterTypeProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesProjectileLegacyRogueAlterStyle1");
+            //圣光飞刀(三)
+            ShadowspecKnivesLegacyType = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/ShadowspecKnivesLegacyRogue");
+            ShadowspecKnivesLegacyTypeProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/ShadowspecKnivesProjectileLegacyRogue");
+            //圣光飞刀(二)
+            ShadowspecKnivesAlterType= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesLegacyRogueAlterStyle1");
+            ShadowspecKnivesAlterTypeProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesProjectileLegacyRogueAlterStyle1");
+            //圣光飞刀(初)
+            ShadowspecKnivesAlterTypeSecond = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesLegacyRogueAlterStyle2");
+            ShadowspecKnivesAlterTypeProjSecond = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesProjectileLegacyRogueAlterStyle2");
+            //无记名灵基
+            FateGirlOriginal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Pets/DaawnlightSpiritOriginMinion");
+            FateGirlOriginalBuff = ModContent.Request<Texture2D>("CalamityMod/Buffs/Pets/ArcherofLunamoon");
+            FateGirlLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlReal"); 
+            FateGirlLegacyBuff = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlBuff"); 
         }
         public static void UnloadTexture()
         {
@@ -96,6 +140,27 @@ namespace CalamityInheritance.Texture
 
             P90 = null;
             P90Legacy = null;
+
+            //飞刀，排版同上
+            GodSlayerKnivesLegacyType = null;
+            GodSlayerKnivesLegacyTypeProj = null;
+
+            GodSlayerKnivesAlterType = null;
+            GodSlayerKnivesAlterTypeProj = null;
+
+            ShadowspecKnivesLegacyType = null;
+            ShadowspecKnivesLegacyTypeProj = null;
+
+            ShadowspecKnivesAlterType = null;
+            ShadowspecKnivesAlterTypeProj = null;
+
+            ShadowspecKnivesAlterTypeSecond = null;
+            ShadowspecKnivesAlterTypeProjSecond = null;
+
+            FateGirlLegacy = null;
+            FateGirlLegacyBuff = null;
+            FateGirlOriginal = null;
+            FateGirlOriginalBuff = null;
         }
     }
 }

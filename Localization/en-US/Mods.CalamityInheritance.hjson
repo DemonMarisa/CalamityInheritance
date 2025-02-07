@@ -181,7 +181,22 @@ Configs: {
 
 		P90Resprite: {
 			Label: P90 Resprite
-			Tooltip: ""
+			Tooltip: Determines the sprite of P90 Legacy
+		}
+
+		GodSlayerKnivesResprite: {
+			Label: Empyrean Knives Resprite
+			Tooltip: Determines the sprite of Empyrean Knives Legacy Rogue
+		}
+
+		ShadowspecKnivesResprite: {
+			Label: Illustrious Knives Resprite
+			Tooltip: Determines the sprite of Illustrious Knives Legacy Rogue
+		}
+
+		FateGirlSprite: {
+			Label: Daawnlight Spirit Origin Minion Resprite
+			Tooltip: Determines the sprite of Daawnlight Spirite Origin Minion
 		}
 	}
 }

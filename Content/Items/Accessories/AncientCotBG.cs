@@ -50,9 +50,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     AddIngredient<AscendantSpiritEssence>(1).
                     AddTile<CosmicAnvil>().
                     Register();
-
             }
         }
-
     }
 }

@@ -170,5 +170,20 @@ Configs: {
 			Label: P90贴图切换
 			Tooltip: 切换P90的贴图
 		}
+
+		GodSlayerKnivesResprite: {
+			Label: 苍穹飞刀·盗贼版本贴图切换
+			Tooltip: 切换苍穹飞刀·盗贼版本的贴图
+		}
+
+		ShadowspecKnivesResprite: {
+			Label: 圣光飞刀·盗贼版本贴图切换
+			Tooltip: 切换圣光飞刀·盗贼版本的贴图
+		}
+
+		FateGirlSprite: {
+			Label: 曙纹始灵仆从贴图切换
+			Tooltip: 切换曙纹始灵仆从的贴图
+		}
 	}
 }

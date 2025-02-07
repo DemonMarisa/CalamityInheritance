@@ -16,7 +16,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class HeliumFlashLegacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        internal const float ExplosionDamageMultiplier = 0.56f;
+        internal const float ExplosionDamageMultiplier = 0.42f;
+        public static readonly int HeliumFlashDamage = 380;
+        public static readonly int HeliumFlashManaCost = 21;
+        //Scarlet:这玩意裸奔跑10w dps数值还真就那个直接被爆破了
+        //面板：480→380，爆炸伤害倍率0.56f→0.42f，魔力消耗15→21
 
         public override void SetStaticDefaults()
         {
@@ -34,8 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.SetWeaponValues(480, 9.5f, 10);
-            Item.mana = 15;
+            Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 10);
+            Item.mana = HeliumFlashManaCost;
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.autoReuse = true;
@@ -57,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Vector2 dir = velocity;
             double angle = Math.Atan2(velocity.Y, velocity.X) + MathHelper.PiOver4;
             dir = dir.SafeNormalize(Vector2.Zero);
-            dir *= 80f * (float)Math.Sqrt(2); // distance to gleaming point on staff
+            dir *= 80f * (float)Math.Sqrt(2);
             Vector2 dustPos = position + dir;
 
             int dustType = 162;

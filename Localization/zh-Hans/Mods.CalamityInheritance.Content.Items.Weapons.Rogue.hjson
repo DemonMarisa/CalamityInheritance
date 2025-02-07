@@ -154,3 +154,24 @@ ScourgeoftheCosmosRogue: {
 		潜伏攻击会反弹更多次数，弹出更多的小宇宙灾虫
 		'''
 }
+
+EmpyreanKnivesLegacyRogue: {
+	DisplayName: 苍穹飞刀·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		盗贼版本的苍穹飞刀
+		投出一簇能够弹射并治疗玩家的飞刀
+		飞刀现在造成更多的伤害，而且飞行速度也更快了
+		'''
+}
+
+ShadowspecKnivesLegacyRogue: {
+	DisplayName: 圣光飞刀·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		盗贼版本的圣光飞刀
+		投出一簇能够弹射并治疗玩家的飞刀
+		飞刀现在造成更多的伤害，而且飞行速度也更快了
+		治疗的效率也更强了
+		'''
+}

@@ -15,12 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
         public override void SetStaticDefaults()
         {
-            // //微光嬗变config开启时允许这个原灾的空灵护符与该物品相互转化
-            // if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
-            // {
-            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<EtherealTalisman>()] = ModContent.ItemType<AncientEtherealTalisman>();
-            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientEtherealTalisman>()] = ModContent.ItemType<EtherealTalisman>();
-            // }
+
         }
         public override void SetDefaults()
         {

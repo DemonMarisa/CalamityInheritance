@@ -112,7 +112,15 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             int type = ModContent.ProjectileType<HeliumFlashBlastLegacy>();
             int damage = (int)(HeliumFlashLegacy.ExplosionDamageMultiplier * Projectile.damage);
             float kb = 9.5f;
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, type, damage, kb, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(),
+                                     Projectile.Center,
+                                     Vector2.Zero,
+                                     type,
+                                     damage,
+                                     kb,
+                                     Projectile.owner,
+                                     0f,
+                                     0f);
         }
     }
 }

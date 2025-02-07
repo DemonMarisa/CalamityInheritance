@@ -237,15 +237,74 @@ WulfrumBlade: {
 }
 
 KelvinCatalystMelee: {
-	DisplayName: 冰灵旋刃
+	DisplayName: 冰灵旋刃·近战版本[Legacy]
 	Tooltip:
 		'''
+		近战版本的冰灵旋刃
 		投出一把冰刃，击中敌人时碎成若干个冰星
 		冰星会在一段时间后快速跟踪敌人
 		'''
 }
 
 SubductionSlicerMelee: {
-	Tooltip: 扔出会在击中敌人时爆炸的飞镰
-	DisplayName: 板块斩切者·战士版本
+	Tooltip:
+		'''
+		近战版本的板块斩切者
+		扔出会在击中敌人时爆炸的飞镰
+		'''
+	DisplayName: 板块斩切者·近战版本[Legacy]
+}
+
+NanoblackReaperLegacyMelee: {
+	DisplayName: 纳米黑死神·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的纳米黑死神
+		释放纳米黑能量刀刃风暴
+		刀刃永远优先以Boss为目标, 且攻击欲望极强
+		[c/3A5FCD:“生灵在她的无尽仇恨中溺亡”]
+		'''
+}
+
+ElementalDiskLegacyMelee: {
+	DisplayName: 元素飞盘·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的元素飞盘
+		掷出元素飞盘，敌怪在附近时有几率生成数个新的元素飞盘
+		飞盘无视无敌帧
+		'''
+}
+
+EradicatorLegacyMelee: {
+	DisplayName: 湮灭·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的湮灭
+		投出一个向敌人发射星云激光的飞盘
+		'''
+}
+
+MangroveChakramLegacyMelee: {
+	DisplayName: 红木环刃·近战版本[Legacy]
+	Tooltip: 近战版本的红木环刃
+}
+
+CorpusAvertorLegacyMelee: {
+	DisplayName: 憎恶血刃·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的憎恶血刃
+		基于造成的伤害吸取生命
+		你的生命值越低，这把武器的伤害和吸血效果越高
+		'''
+}
+
+TerraDiskMeleeLegacy: {
+	DisplayName: 泰拉飞盘·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的泰拉飞盘, 或者说, 回春环刃
+		掷出泰拉飞盘，有敌人在附近时有几率分裂出新的飞盘
+		'''
 }
