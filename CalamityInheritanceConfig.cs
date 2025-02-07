@@ -90,7 +90,7 @@ namespace CalamityInheritance
         public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
 
         #endregion
-
+        #region 材质
         [Header("Texture")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
@@ -148,7 +148,7 @@ namespace CalamityInheritance
         
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
-        [Range(1, 3)]
+        [Range(1, 4)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
@@ -162,6 +162,15 @@ namespace CalamityInheritance
         [DefaultValue(1)]
         public int FateGirlSprite{ get; set; }
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int StellarContemptResprite { get; set; }
+        #endregion
+        #region 音乐
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -178,5 +187,6 @@ namespace CalamityInheritance
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool DoGLegacyMusic { get; set; }
+        #endregion
     }
 }

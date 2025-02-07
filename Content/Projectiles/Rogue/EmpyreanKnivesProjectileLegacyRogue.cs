@@ -15,8 +15,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly int GodSlayerKnivesLifeStealCap = 500;
         public static readonly int GodSlayerKnivesLifeTime = 900;
         public static readonly float GodSlayerKnivesLifeStealRange = 3000f;
-        public static readonly float GodSlayerKnivesChasingSpeed = 24f;
-        public static readonly float GodSlayerKnivesChasingRange = 600f;
+        public static readonly float GodSlayerKnivesChasingSpeed = 9f;
+        public static readonly float GodSlayerKnivesChasingRange = 1500f;
         //更逆天的追踪速度与追踪距离，同时三倍其存在时间
         private int bounce = 3;
 
@@ -33,14 +33,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.penetrate = 1;
-            Projectile.timeLeft = GodSlayerKnivesLifeTime;
+            Projectile.timeLeft = 900;
             Projectile.extraUpdates = 1;
         }
 
         public override void AI()
         {
             Projectile.ai[0] += 1f;
-            if (Projectile.ai[0] >= 75f)
+            if (Projectile.ai[0] >= 360f)
             {
                 Projectile.alpha += 10;
                 Projectile.damage = (int)(Projectile.damage * 0.95);
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.alpha >= 255)
                     Projectile.active = false;
             }
-            if (Projectile.ai[0] < 75f)
+            if (Projectile.ai[0] < 360f)
                 Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver2;
             else
             {

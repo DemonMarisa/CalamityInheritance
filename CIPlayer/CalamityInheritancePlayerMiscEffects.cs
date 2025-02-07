@@ -44,6 +44,7 @@ namespace CalamityInheritance.CIPlayer
         public static int darkSunRingNightDefense = 20;
         public override void PostUpdateMiscEffects()
         {
+            CalamityPlayer calPlayer = Player.Calamity();
             //海绵的护盾
             CIEnergyShields();
 
@@ -70,9 +71,14 @@ namespace CalamityInheritance.CIPlayer
 
             //克希洛克套装效果的封装(因为太长了所以单独封装起来了)
             AncientXerocEffect();
-            ShieldDurabilityMax = Player.statLifeMax2;
-               
 
+            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod)
+                ShieldDurabilityMax = Player.statLifeMax2;
+            else
+                ShieldDurabilityMax = 800;
+
+            if (calPlayer.chaliceOfTheBloodGod)
+                ShieldDurabilityMax = 15;
         }
         public void OtherBuffEffects()
         {
@@ -319,10 +325,6 @@ namespace CalamityInheritance.CIPlayer
             else
             {
                 CalamityPlayer calPlayer = Player.Calamity();
-                if(calPlayer.chaliceOfTheBloodGod)
-                {
-                    return; //佩戴血杯时直接禁用护盾
-                }
                 // 如果“海绵”的护盾已经耗尽且还没有开始其充电延迟，则开始充电延迟。
                 if (CISpongeShieldDurability == 0 && !calPlayer.cooldowns.ContainsKey(CISpongeRecharge.ID))
                     Player.AddCooldown(CISpongeRecharge.ID, TheSpongetest.CIShieldRechargeDelay);
@@ -367,7 +369,6 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-
         #region ArmorSetBonusEffect
         public void ArmorSetBonusEffects()
         {
@@ -759,6 +760,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (usPlayer.ravagerLore)
             {
+                calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
                 Player.GetDamage<GenericDamageClass>() += 0.5f;

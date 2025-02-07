@@ -25,10 +25,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (target.Organic())
-            {
-                modifiers.SourceDamage.Flat += target.lifeMax / 35;//75
-            } // 400 + 80 = 480 + (100000 / 75 = 1333) = 1813 = 1.813% of boss HP
-        }//现在是4左右%
+            modifiers.SourceDamage.Flat += target.lifeMax / 35;//75
+            // 400 + 80 = 480 + (100000 / 75 = 1333) = 1813 = 1.813% of boss HP
+            //现在是4左右%
+        }
     }
 }

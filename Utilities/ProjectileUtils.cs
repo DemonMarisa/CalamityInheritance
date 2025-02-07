@@ -21,13 +21,13 @@ namespace CalamityInheritance.Utilities
     {
         /// <summary>
         /// 从灾厄那里搬过来的跟踪算法，加了一个角度限制.
-        /// </summary>
         /// <param name="projectile">弹幕类型.</param>
         /// <param name="ignoreTiles">是否无视墙壁.</param>
         /// <param name="distanceRequired">跟踪范围.</param>
         /// <param name="homingVelocity">跟踪速度.</param>
         /// <param name="inertia">惯性.</param>
-        /// <param name="maxTurnAngle">角度限制（不写默认不限制）.</param>
+        /// <param name="maxAngleChange">角度限制（不写默认不限制）.</param>
+        /// </summary>
         public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null)
         {
             if (!projectile.friendly)

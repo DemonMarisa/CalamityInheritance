@@ -64,7 +64,8 @@ namespace CalamityInheritance.CIPlayer
         public int nanoTechStackDurability = 0;//纳米技术充能进度
         public bool ancientReaperToothNeclace = false;//速杀项链
         public bool ancientCoreofTheBloodGod = false; //肃杀核心
-        public bool ancientBloodFact = false;
+        public bool ancientBloodFact = false;//血契
+        public bool elementalGauntlet = false;//元素之握
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -283,7 +284,8 @@ namespace CalamityInheritance.CIPlayer
             AmbrosialAmpouleOld = false;//百草瓶回血
             ancientReaperToothNeclace= false;//肃杀项链
             ancientCoreofTheBloodGod = false ;//肃杀核心
-            ancientBloodFact = false;
+            ancientBloodFact = false;//血契
+            elementalGauntlet = false;//元素之握
             #endregion
             #region Lore
             kingSlimeLore = false;

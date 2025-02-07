@@ -10,6 +10,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.damage = 420;
             Item.DamageType = DamageClass.Melee;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 15;
+            Item.useTime = 14;
             Item.useAnimation = 23;
             Item.knockBack = 5.5f;
             Item.UseSound = SoundID.Item1;
@@ -44,6 +45,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = ModContent.RarityType<AbsoluteGreen>();
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.name == "Shizuku" || player.name == "shizuku")
+            {
+                Item.damage = 1600;
+                Item.useTime = 10;
+                Item.useAnimation = 10;
+            }
+            else
+            {
+                Item.useTime = 23;
+                Item.useAnimation = 23;
+            }
+            return base.CanUseItem(player);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

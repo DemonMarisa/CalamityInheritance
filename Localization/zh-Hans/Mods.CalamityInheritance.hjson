@@ -82,12 +82,12 @@ Configs: {
 		}
 
 		WulfumTexture: {
-			Label: 钨钢工具材质
+			Label: "[i:CalamityInheritance/WulfrumPickaxe]钨钢工具材质"
 			Tooltip: 切换钨钢工具材质到旧版
 		}
 
 		ArkofCosmosTexture: {
-			Label: 鸿蒙方舟材质
+			Label: "[i:CalamityInheritance/ArkoftheCosmosold]鸿蒙方舟材质"
 			Tooltip:
 				'''
 				1：重做前一个版本
@@ -96,7 +96,7 @@ Configs: {
 		}
 
 		RampartofDeitiesTexture: {
-			Label: 神之壁垒材质
+			Label: "[i:CalamityInheritance/CIRampartofDeities]神之壁垒材质"
 			Tooltip:
 				'''
 				1：1.5重绘后
@@ -105,7 +105,7 @@ Configs: {
 		}
 
 		Tyrant1: {
-			Label: "[i:MusicBox]插曲：暴君 阶段1"
+			Label: "[i:CalamityInheritance/TyrantPart1]插曲：暴君 阶段1"
 			Tooltip:
 				'''
 				丛林龙后播放，并未禁用灾厄丛林龙后播放
@@ -114,7 +114,7 @@ Configs: {
 		}
 
 		Exomechs: {
-			Label: "[i:MusicBox]插曲：残酷世界的安魂曲"
+			Label: "[i:CalamityInheritance/RequiemsOfACruelWorld]插曲：残酷世界的安魂曲"
 			Tooltip:
 				'''
 				击败嘉登后播放
@@ -123,7 +123,7 @@ Configs: {
 		}
 
 		Scal: {
-			Label: "[i:MusicBox]插曲：灾厄前的灾难"
+			Label: "[i:CalamityModMusic/Interlude3MusicBox]插曲：灾厄前的灾难"
 			Tooltip:
 				'''
 				击败終灾后播放
@@ -143,7 +143,7 @@ Configs: {
 		}
 
 		EtherealTalismancTexture: {
-			Label: 空灵护符材质
+			Label: "[i:CalamityInheritance/AncientEtherealTalisman]空灵护符材质"
 			Tooltip:
 				'''
 				1：新材质
@@ -152,12 +152,12 @@ Configs: {
 		}
 
 		DoGLegacyMusic: {
-			Label: "[i:MusicBox]神明吞噬者旧版战斗音乐"
+			Label: "[i:CalamityInheritance/DoGLegacy]神明吞噬者旧版战斗音乐"
 			Tooltip: 在神明吞噬者战时播放旧音乐
 		}
 
 		SkullmasherResprite: {
-			Label: 碎颅者贴图切换
+			Label: "[i:CalamityInheritance/Skullmasher]碎颅者贴图切换"
 			Tooltip: 切换碎颅者的贴图
 		}
 
@@ -167,23 +167,28 @@ Configs: {
 		}
 
 		P90Resprite: {
-			Label: P90贴图切换
+			Label: "[i:CalamityInheritance/P90Legacy]P90贴图切换"
 			Tooltip: 切换P90的贴图
 		}
 
 		GodSlayerKnivesResprite: {
-			Label: 苍穹飞刀·盗贼版本贴图切换
+			Label: "[i:CalamityInheritance/EmpyreanKnivesLegacyRogue]苍穹飞刀·盗贼版本贴图切换"
 			Tooltip: 切换苍穹飞刀·盗贼版本的贴图
 		}
 
 		ShadowspecKnivesResprite: {
-			Label: 圣光飞刀·盗贼版本贴图切换
+			Label: "[i:CalamityInheritance/ShadowspecKnivesLegacyRogue]圣光飞刀·盗贼版本贴图切换"
 			Tooltip: 切换圣光飞刀·盗贼版本的贴图
 		}
 
 		FateGirlSprite: {
-			Label: 曙纹始灵仆从贴图切换
+			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]曙纹始灵仆从贴图切换"
 			Tooltip: 切换曙纹始灵仆从的贴图
+		}
+
+		StellarContemptResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeStellarContempt]星体击碎者贴图切换"
+			Tooltip: 切换星体击碎者的贴图
 		}
 	}
 }

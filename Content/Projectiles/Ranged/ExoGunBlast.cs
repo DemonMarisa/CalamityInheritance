@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 float acceleration = 0.1f * 2f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
 
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, homeInSpeed, 15f);
+                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3500f, homeInSpeed, 15f);
             }
             if (Projectile.timeLeft == 500)
             {

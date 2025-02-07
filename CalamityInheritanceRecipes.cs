@@ -221,6 +221,8 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalShiv", ElementalShivGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyTerraRay", TerraRayGroup);
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyNightsRay", NightsRayGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyMiniGun", MiniGunGroup);
+            RecipeGroup.RegisterGroup("CalamityInheritance:AnyP90", P90Group);
             #endregion
             #region 饰品
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElysianAegis", ElysianAegis);

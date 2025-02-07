@@ -112,7 +112,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         {
                             if (modPlayer.rogueStealth < modPlayer.rogueStealthMax)
                             {
-                                modPlayer.rogueStealth += 0.05f;
+                                modPlayer.rogueStealth += 0.1f;
                                 Projectile.ai[0] = 3f;
                                 if (modPlayer.rogueStealth > modPlayer.rogueStealthMax)
                                     modPlayer.rogueStealth = modPlayer.rogueStealthMax;
@@ -142,7 +142,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     {
                         if (modPlayer.rogueStealth < modPlayer.rogueStealthMax)
                         {
-                            modPlayer.rogueStealth += 0.05f;
+                            modPlayer.rogueStealth += 0.1f;
                             if (modPlayer.rogueStealth > modPlayer.rogueStealthMax)
                                 modPlayer.rogueStealth = modPlayer.rogueStealthMax;
                         }

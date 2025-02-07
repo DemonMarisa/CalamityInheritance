@@ -15,9 +15,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly int ShadowknivesLifeStealCap = 1000;
-        public static readonly float ShadowknivesLifeStealRange = 3000f;
-        public static readonly float ShadowknivesChasingSpeed = 36f;
-        public static readonly float ShadowknivesChasingRange = 3000f;
+        public static readonly float ShadowknivesLifeStealRange = 15000;
+        public static readonly float ShadowknivesChasingSpeed = 12f;
+        public static readonly float ShadowknivesChasingRange = 2000f;
         //更逆天的索敌速度与索敌距离。以及回血。
         public override void SetStaticDefaults()
         {

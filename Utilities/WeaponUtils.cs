@@ -18,6 +18,7 @@ namespace CalamityInheritance.Utilities
         //调用
         //Vector2 targetPosition = Main.MouseWorld;
         //player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 7);
+        //还有这一段jb纯屎山，以后有机会要重构
         public static float CalculateItemRotation(Player player, Vector2 mouseWorld, float rotationOffsetDegrees)
         {
             // 获取玩家位置

@@ -33,6 +33,6 @@ AncientVictideBar: {
 }
 
 CryoBar: {
-	// Tooltip: Cold to the touch
-	// DisplayName: Cryo Bar
+	Tooltip: 摸起来很冷
+	DisplayName: 极寒锭[Legacy]
 }

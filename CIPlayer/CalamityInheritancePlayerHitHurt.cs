@@ -20,6 +20,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.Particles;
+using CalamityMod.Projectiles.Melee;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -159,20 +160,21 @@ namespace CalamityInheritance.CIPlayer
                     }
                     else
                     {
-                        int numParticles = Main.rand.Next(2, 6) + (anyShieldBroke ? 6 : 0);
+                        int numParticles = Main.rand.Next(18, 24) + (anyShieldBroke ? 16 : 0);
                         for (int i = 0; i < numParticles; i++)
                         {
-                            float maxVelocity = modPlayer.roverDrive ? 14f : 7f;
-                            Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(3f, maxVelocity);
+                            float maxVelocity = 28f;
+                            Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(5f, maxVelocity);
                             velocity.X += 5f * info.HitDirection;
 
-                            float scale = Main.rand.NextFloat(2.5f, 3f);
+                            float scale = Main.rand.NextFloat(3f, 5f);
                             Color particleColor = Main.rand.NextBool() ? new Color(99, 255, 229) : new Color(25, 132, 247);
-                            int lifetime = 25;
+                            int lifetime = 35;
 
                             var shieldParticle = new TechyHoloysquareParticle(Player.Center, velocity, scale, particleColor, lifetime);
                             GeneralParticleHandler.SpawnParticle(shieldParticle);
                         }
+                        SpongeHurtEffect();
                     }
                     CalamityPlayer modPlayer1 = Player.Calamity();
                     // 在冷却条上更新海绵的耐久度。
@@ -227,7 +229,71 @@ namespace CalamityInheritance.CIPlayer
                 Player.immuneTime = 60;
             }
         }
+        public static void SpongeHurtEffect()
+        {
+            Player player = Main.player[Main.myPlayer];
+            #region 真菌壳
+            SoundEngine.PlaySound(SoundID.NPCHit45, player.position);
 
+            float spread = 45f * 0.0174f;
+            double startAngle = Math.Atan2(player.velocity.X, player.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 8f;
+            double offsetAngle;
+            int fDamage = (int)player.GetBestClassDamage().ApplyTo(70);
+
+            if (player.whoAmI == Main.myPlayer)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    // 确定生成位置
+                    float xPos = Main.rand.NextBool() ? player.Center.X + 100 : player.Center.X - 100;
+                    Vector2 spawnPos = new Vector2(xPos, player.Center.Y + Main.rand.Next(-100, 101));
+
+                    // 计算角度
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+
+                    // 创建弹幕
+                    var spore1 = Projectile.NewProjectileDirect(player.GetSource_FromThis(), spawnPos, new Vector2((float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f)), ProjectileID.TruffleSpore, fDamage, 1.25f, player.whoAmI
+                    );
+                    var spore2 = Projectile.NewProjectileDirect(player.GetSource_FromThis(), spawnPos, new Vector2((float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f)), ProjectileID.TruffleSpore, fDamage, 1.25f, player.whoAmI
+                    );
+                    // 设置时间
+                    spore1.timeLeft = 300;
+                    spore2.timeLeft = 300;
+                }
+            }
+            #endregion
+                SoundEngine.PlaySound(SoundID.Item93, player.Center);
+                float spread1 = 45f * 0.0174f;
+                double startAngle1 = Math.Atan2(player.velocity.X, player.velocity.Y) - spread1 / 2;
+                double deltaAngle1 = spread / 8f;
+                double offsetAngle1;
+
+                // Start with base damage, then apply the best damage class you can
+                int sDamage = 50;
+                sDamage = (int)player.GetBestClassDamage().ApplyTo(sDamage);
+                sDamage = player.ApplyArmorAccDamageBonusesTo(sDamage);
+
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                    offsetAngle1 = startAngle1 + deltaAngle1 * (i + i * i) / 2f + 32f * i;
+                        int spark1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
+                        int spark2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
+                        if (spark1.WithinBounds(Main.maxProjectiles))
+                        {
+                            Main.projectile[spark1].timeLeft = 120;
+                            Main.projectile[spark1].DamageType = DamageClass.Generic;
+                        }
+                        if (spark2.WithinBounds(Main.maxProjectiles))
+                        {
+                            Main.projectile[spark2].timeLeft = 120;
+                            Main.projectile[spark2].DamageType = DamageClass.Generic;
+                        }
+                    }
+                }
+        }
         #region On Hurt
         public override void OnHurt(Player.HurtInfo hurtInfo)
         {
@@ -274,18 +340,13 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (CalamityWorld.armageddon || SCalLore || (BossRushEvent.BossRushActive))
+            if (SCalLore)
             {
-                if (CalamityPlayer.areThereAnyDamnBosses || SCalLore || (BossRushEvent.BossRushActive))
-                {
-                    if (SCalLore)
-                    {
-                        string key = "Mods.CalamityInheritance.Status.SCAL";
-                        Color messageColor = Color.DarkRed;
-                        CalamityUtils.DisplayLocalizedText(key, messageColor);
-                        modPlayer.KillPlayer();
-                    }
-                }
+                string key = "Mods.CalamityInheritance.Status.SCAL";
+                Color messageColor = Color.DarkRed;
+                CalamityUtils.DisplayLocalizedText(key, messageColor);
+                modPlayer.freeDodgeFromShieldAbsorption = false;
+                KillPlayer();
             }
 
             if (godSlayerMagic)
@@ -320,10 +381,94 @@ namespace CalamityInheritance.CIPlayer
         #region Kill Player
         public void KillPlayer()
         {
-            PlayerDeathReason damageSource = PlayerDeathReason.ByOther(Player.Male ? 14 : 15);
-            if (SCalLore)
+            var source = Player.GetSource_Death();
+            Player.lastDeathPostion = Player.Center;
+            Player.lastDeathTime = DateTime.Now;
+            Player.showLastDeath = true;
+            int coinsOwned = (int)Utils.CoinsCount(out bool flag, Player.inventory, new int[0]);
+            if (Main.myPlayer == Player.whoAmI)
             {
-                damageSource = PlayerDeathReason.ByCustomReason(Player.Male ? Player.name + " was consumed by his inner hatred." : Player.name + " was consumed by her inner hatred.");
+                Player.lostCoins = coinsOwned;
+                Player.lostCoinString = Main.ValueToCoins(Player.lostCoins);
+            }
+            if (Main.myPlayer == Player.whoAmI)
+            {
+                Main.mapFullscreen = false;
+            }
+            if (Main.myPlayer == Player.whoAmI)
+            {
+                Player.trashItem.SetDefaults(0, false);
+                if (Player.difficulty == PlayerDifficultyID.SoftCore || Player.difficulty == PlayerDifficultyID.Creative)
+                {
+                    for (int i = 0; i < 59; i++)
+                    {
+                        if (Player.inventory[i].stack > 0 && ((Player.inventory[i].type >= ItemID.LargeAmethyst && Player.inventory[i].type <= ItemID.LargeDiamond) || Player.inventory[i].type == ItemID.LargeAmber))
+                        {
+                            int droppedLargeGem = Item.NewItem(source, (int)Player.position.X, (int)Player.position.Y, Player.width, Player.height, Player.inventory[i].type, 1, false, 0, false, false);
+                            Main.item[droppedLargeGem].netDefaults(Player.inventory[i].netID);
+                            Main.item[droppedLargeGem].Prefix((int)Player.inventory[i].prefix);
+                            Main.item[droppedLargeGem].stack = Player.inventory[i].stack;
+                            Main.item[droppedLargeGem].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
+                            Main.item[droppedLargeGem].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
+                            Main.item[droppedLargeGem].noGrabDelay = 100;
+                            Main.item[droppedLargeGem].favorited = false;
+                            Main.item[droppedLargeGem].newAndShiny = false;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                            {
+                                NetMessage.SendData(MessageID.SyncItem, -1, -1, null, droppedLargeGem, 0f, 0f, 0f, 0, 0, 0);
+                            }
+                            Player.inventory[i].SetDefaults(0, false);
+                        }
+                    }
+                }
+                else if (Player.difficulty == PlayerDifficultyID.MediumCore)
+                {
+                    Player.DropItems();
+                }
+                else if (Player.difficulty == PlayerDifficultyID.Hardcore)
+                {
+                    Player.DropItems();
+                    Player.KillMeForGood();
+                }
+            }
+            SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);
+            Player.headVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
+            Player.bodyVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
+            Player.legVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
+            Player.headVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
+            Player.bodyVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
+            Player.legVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
+            if (Player.stoned)
+            {
+                Player.headPosition = Vector2.Zero;
+                Player.bodyPosition = Vector2.Zero;
+                Player.legPosition = Vector2.Zero;
+            }
+            for (int j = 0; j < 100; j++)
+            {
+                Dust.NewDust(Player.position, Player.width, Player.height, DustID.LifeDrain, (float)(2 * 0), -2f, 0, default, 1f);
+            }
+            Player.mount.Dismount(Player);
+            Player.dead = true;
+            Player.respawnTimer = 600;
+            if (Main.expertMode)
+            {
+                Player.respawnTimer = (int)(Player.respawnTimer * 1.5);
+            }
+            Player.immuneAlpha = 0;
+            Player.palladiumRegen = false;
+            Player.iceBarrier = false;
+            Player.crystalLeaf = false;
+
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                try
+                {
+                    WorldGen.saveToonWhilePlaying();
+                }
+                catch
+                {
+                }
             }
         }
         #endregion
@@ -623,8 +768,8 @@ namespace CalamityInheritance.CIPlayer
             // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
             // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
             if (GodSlayerDMGprotect && info.Damage <= 80 && !modPlayer1.chaliceOfTheBloodGod)
-
                 return true;
+
             // If no other effects occurred, run vanilla code
             return base.FreeDodge(info);
         }

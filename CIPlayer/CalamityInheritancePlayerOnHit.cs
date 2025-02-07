@@ -25,6 +25,15 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        #region On Hit NPC With Item
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
+        {
+            if (Player.whoAmI != Main.myPlayer)
+                return;
+            NPCDebuffs(target, item.CountsAsClass<MeleeDamageClass>(), item.CountsAsClass<RangedDamageClass>(), item.CountsAsClass<MagicDamageClass>(), item.CountsAsClass<SummonDamageClass>(), item.CountsAsClass<ThrowingDamageClass>(), item.CountsAsClass<SummonMeleeSpeedDamageClass>());
+        }
+        #endregion
+
         #region On Hit NPC With Proj
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
@@ -302,9 +311,10 @@ namespace CalamityInheritance.CIPlayer
                         yharimOfPerunStrikesCooldown = 1800;
 
                 }
-             }
+            }
+            #endregion
+            NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
         }
-        #endregion
         #endregion
 
 
@@ -318,7 +328,19 @@ namespace CalamityInheritance.CIPlayer
                     CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
                 }
             }
-
+            if (melee && !noFlask)
+            {
+                if (elementalGauntlet)
+                {
+                    target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
+                    target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
+                    target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
+                    target.AddBuff(BuffID.Frostburn, 300);
+                    target.AddBuff(BuffID.CursedInferno, 300);
+                    target.AddBuff(BuffID.Inferno, 300);
+                    target.AddBuff(BuffID.Venom, 300);
+                }
+            }
         }
         #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)

@@ -67,6 +67,11 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProj;
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeSecond; //圣光飞刀的初版贴图
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjSecond;
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeOne; //圣光飞刀的现版贴图
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjOne;
+        //星体击碎者
+        public static Asset<Texture2D> StellarContemptNew;//新版本
+        public static Asset<Texture2D> StellarContemptOld;//旧版本
         #endregion
         #endregion
         public static void LoadTexture()
@@ -101,6 +106,9 @@ namespace CalamityInheritance.Texture
             //苍穹飞刀(初)
             GodSlayerKnivesAlterType = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesLegacyRogueAlterStyle1");
             GodSlayerKnivesAlterTypeProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesProjectileLegacyRogueAlterStyle1");
+            //圣光飞刀(现)
+            ShadowspecKnivesAlterTypeOne = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesLegacyRogueAlterStyle3");
+            ShadowspecKnivesAlterTypeProjOne = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesProjectileLegacyRogueAlterStyle3");
             //圣光飞刀(三)
             ShadowspecKnivesLegacyType = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/ShadowspecKnivesLegacyRogue");
             ShadowspecKnivesLegacyTypeProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/ShadowspecKnivesProjectileLegacyRogue");
@@ -114,7 +122,10 @@ namespace CalamityInheritance.Texture
             FateGirlOriginal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Pets/DaawnlightSpiritOriginMinion");
             FateGirlOriginalBuff = ModContent.Request<Texture2D>("CalamityMod/Buffs/Pets/ArcherofLunamoon");
             FateGirlLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlReal"); 
-            FateGirlLegacyBuff = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlBuff"); 
+            FateGirlLegacyBuff = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlBuff");
+            //星体击碎者
+            StellarContemptNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/StellarContemptOld");
+            StellarContemptOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeStellarContempt");
         }
         public static void UnloadTexture()
         {
@@ -157,10 +168,16 @@ namespace CalamityInheritance.Texture
             ShadowspecKnivesAlterTypeSecond = null;
             ShadowspecKnivesAlterTypeProjSecond = null;
 
+            ShadowspecKnivesAlterTypeOne = null;
+            ShadowspecKnivesAlterTypeProjOne = null;
+
             FateGirlLegacy = null;
             FateGirlLegacyBuff = null;
             FateGirlOriginal = null;
             FateGirlOriginalBuff = null;
+            //星体击碎者
+            StellarContemptNew = null;
+            StellarContemptOld = null;
         }
     }
 }

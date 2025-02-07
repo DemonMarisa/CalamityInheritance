@@ -44,6 +44,9 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
 
+            if (item.type == ModContent.ItemType<RavagerBag>())
+                itemloot.Add(ModContent.ItemType<BloodPactLegacy>(), 10);
+
             if (item.type == ModContent.ItemType<LeviathanBag>())
             {
                 if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落

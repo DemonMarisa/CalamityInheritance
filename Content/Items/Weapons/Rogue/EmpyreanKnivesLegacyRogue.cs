@@ -23,13 +23,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 18;
             Item.height = 20;
-            Item.damage = 200;
+            Item.damage = 400;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = 8;
+            Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 8; //使用时间15->8, 面板伤害360->200
+            Item.useTime = 10; //使用时间15->8, 面板伤害360->200
+            //使用时间8-10，伤害200-400
             Item.knockBack = 3f;
             Item.UseSound = SoundID.Item39;
             Item.autoReuse = true;

@@ -198,5 +198,10 @@ Configs: {
 			Label: Daawnlight Spirit Origin Minion Resprite
 			Tooltip: Determines the sprite of Daawnlight Spirite Origin Minion
 		}
+
+		StellarContemptResprite: {
+			Label: Stellar Contempt Resprite
+			Tooltip: ""
+		}
 	}
 }

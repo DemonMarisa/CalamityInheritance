@@ -77,7 +77,8 @@ namespace CalamityInheritance.Utilities
                 extraIFrames += 30;
             if (modPlayer.RoDPaladianShieldActive)
                 extraIFrames += 30;
-
+            if(modPlayer.YharimsInsignia)
+                extraIFrames += 40;
             return extraIFrames;
         }
     }
