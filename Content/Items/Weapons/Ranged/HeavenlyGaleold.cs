@@ -150,6 +150,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            {
+                string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
+
+                tooltips.Add(new TooltipLine(Mod, "AmmoConversionCIWeapon", AmmoConversionOn));
+            }
         }
 
         public override void AddRecipes()

@@ -12,6 +12,8 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -85,6 +87,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 {
                     modPlayer.AMRextraTy = true;
                 }
+            }
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            {
+                string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
+
+                tooltips.Add(new TooltipLine(Mod, "AmmoConversionCIWeapon", AmmoConversionOn));
             }
         }
     }

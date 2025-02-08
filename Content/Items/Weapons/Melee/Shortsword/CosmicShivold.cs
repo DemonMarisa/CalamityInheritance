@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useTime = 13;
             Item.width = 44;
             Item.height = 44;
-            Item.damage = 218;
+            Item.damage = 148;
             Item.knockBack = 9f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

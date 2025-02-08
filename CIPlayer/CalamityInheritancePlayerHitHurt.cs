@@ -160,16 +160,16 @@ namespace CalamityInheritance.CIPlayer
                     }
                     else
                     {
-                        int numParticles = Main.rand.Next(18, 24) + (anyShieldBroke ? 16 : 0);
+                        int numParticles = Main.rand.Next(24, 28) + (anyShieldBroke ? 16 : 0);
                         for (int i = 0; i < numParticles; i++)
                         {
-                            float maxVelocity = 28f;
-                            Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(5f, maxVelocity);
+                            float maxVelocity = 36f;
+                            Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(8f, maxVelocity);
                             velocity.X += 5f * info.HitDirection;
 
-                            float scale = Main.rand.NextFloat(3f, 5f);
+                            float scale = Main.rand.NextFloat(4f, 7f);
                             Color particleColor = Main.rand.NextBool() ? new Color(99, 255, 229) : new Color(25, 132, 247);
-                            int lifetime = 35;
+                            int lifetime = Main.rand.Next(35, 60);
 
                             var shieldParticle = new TechyHoloysquareParticle(Player.Center, velocity, scale, particleColor, lifetime);
                             GeneralParticleHandler.SpawnParticle(shieldParticle);
@@ -342,10 +342,28 @@ namespace CalamityInheritance.CIPlayer
             }
             if (SCalLore)
             {
-                string key = "Mods.CalamityInheritance.Status.SCAL";
+                int randomMessage = Main.rand.Next(1, 5);
                 Color messageColor = Color.DarkRed;
-                CalamityUtils.DisplayLocalizedText(key, messageColor);
-                modPlayer.freeDodgeFromShieldAbsorption = false;
+                if (randomMessage == 1)
+                {
+                    string key1 = "Mods.CalamityInheritance.Status.SCAL1";
+                    CalamityUtils.DisplayLocalizedText(key1, messageColor);
+                }
+                if (randomMessage == 2)
+                {
+                    string key2 = "Mods.CalamityInheritance.Status.SCAL2";
+                    CalamityUtils.DisplayLocalizedText(key2, messageColor);
+                }
+                if (randomMessage == 3)
+                {
+                    string key3 = "Mods.CalamityInheritance.Status.SCAL3";
+                    CalamityUtils.DisplayLocalizedText(key3, messageColor);
+                }
+                if (randomMessage == 4)
+                {
+                    string key4 = "Mods.CalamityInheritance.Status.SCAL4";
+                    CalamityUtils.DisplayLocalizedText(key4, messageColor);
+                }
                 KillPlayer();
             }
 

@@ -6,6 +6,8 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -60,7 +62,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             return false;
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            {
+                string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 
+                tooltips.Add(new TooltipLine(Mod, "AmmoConversionCIWeapon", AmmoConversionOn));
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

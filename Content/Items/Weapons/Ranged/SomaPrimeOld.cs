@@ -6,9 +6,11 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
@@ -70,7 +72,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
 
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > 0.8f;
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            {
+                string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 
+                tooltips.Add(new TooltipLine(Mod, "AmmoConversionCIWeapon", AmmoConversionOn));
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe().
