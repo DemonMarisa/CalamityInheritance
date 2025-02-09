@@ -1,16 +1,5 @@
 using CalamityMod.CalPlayer;
-using CalamityMod.Graphics.Primitives;
-using CalamityMod.Items;
-using CalamityMod.Particles;
-using CalamityMod.Projectiles;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent;
-using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.GameContent.Animations.IL_Actions.NPCs;
@@ -26,6 +15,10 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
 using CalamityModMusic.Items.Placeables;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.CIPlayer;
+using System;
+using System.Linq;
+using Terraria.GameContent.Drawing;
 
 namespace CalamityInheritance
 {
@@ -33,6 +26,8 @@ namespace CalamityInheritance
     public class CalamityInheritance : Mod
     {
         internal static CalamityInheritance Instance;
+
+        public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
 
         public override void Load()
         {
@@ -53,6 +48,13 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
             }
             CalamityInheritanceTexture.LoadTexture();
+            #region Hook
+            MethodInfo originalMethod = typeof(CalamityPlayer).GetMethod("ModDashMovement",BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+            MethodInfo hookMethod = typeof(CalamityInheritancePlayer).GetMethod("ModDashMovement_Hook",BindingFlags.Static | BindingFlags.Public);
+
+            new Hook(originalMethod, hookMethod).Apply();
+            #endregion
         }
         public void LoadClient()
         {

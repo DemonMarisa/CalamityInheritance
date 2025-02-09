@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             target.statDefense -= (int)target.statDefense;
             target.endurance = 0f;
         }
-
+        public override bool MeleePrefix() => true;
         // LATER -- Providence specifically is immune to Coldheart Icicle. There is probably a better way to do this
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {

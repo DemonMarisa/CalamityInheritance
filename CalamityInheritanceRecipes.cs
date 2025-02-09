@@ -192,6 +192,7 @@ namespace CalamityInheritance
                 ModContent.ItemType<AsgardsValor>(), ModContent.ItemType<AsgardsValorold>());
 
             #endregion
+
             #region 其它组
             // 为了避免名称冲突，当模组物品是配方组的标志性或第一个物品时，命名配方组为：ModName:ItemName
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyElementalRay", ElementalRayRecipeGroup);

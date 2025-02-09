@@ -63,16 +63,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
                 AddTile<CosmicAnvil>().
                 Register();
 
-
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭后，将禁用原灾合成的合成表
-            {
                 CreateRecipe(). 
                     AddIngredient(ItemID.MagicQuiver).
                     AddIngredient<DeadshotBrooch>().
                     AddIngredient<AscendantSpiritEssence>(4).
                     AddTile<CosmicAnvil>().
                     Register(); 
-            }
         }
     }
 }

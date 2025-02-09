@@ -50,8 +50,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 14));
         }
-        
 
+        public override bool MeleePrefix() => true;
         // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 30;
 

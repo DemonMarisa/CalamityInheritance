@@ -1,6 +1,6 @@
 AmmoConversion:
 	'''
-	弹药全转化已开启
-	这里实现方法可能会有mod冲突
+	Ammo Conversion is enabled
+	There may be mod conflicts with the implementation here
 	'''
-AmmoConversionCIWeapon: 弹药全转化已开启
+AmmoConversionCIWeapon: Ammo Conversion is enabled
