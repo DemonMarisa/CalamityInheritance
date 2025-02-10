@@ -8,6 +8,8 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Projectiles.Magic;
+using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

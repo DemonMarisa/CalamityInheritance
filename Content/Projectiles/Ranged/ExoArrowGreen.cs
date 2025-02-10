@@ -64,7 +64,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool PreDraw(ref Color lightColor) => Projectile.DrawBeam(40f, 1.5f, lightColor);
 
-        [Obsolete]
         public override void OnKill(int timeLeft)
         {
             if (Projectile.owner == Main.myPlayer)

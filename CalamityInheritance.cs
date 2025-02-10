@@ -19,6 +19,13 @@ using CalamityInheritance.CIPlayer;
 using System;
 using System.Linq;
 using Terraria.GameContent.Drawing;
+using CalamityInheritance.Content.Projectiles.CalProjChange;
+using CalamityMod.Projectiles.Ranged;
+using CalamityMod.EntitySources;
+using CalamityMod.Enums;
+using Terraria.ID;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Common;
 
 namespace CalamityInheritance
 {
@@ -28,6 +35,8 @@ namespace CalamityInheritance
         internal static CalamityInheritance Instance;
 
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+
+        internal Mod infernumMode = null;
 
         public override void Load()
         {
@@ -41,6 +50,9 @@ namespace CalamityInheritance
                 LoadClient();
             }
 
+            infernumMode = null;
+            ModLoader.TryGetMod("InfernumMode", out infernumMode);
+
             if (CalamityLists.pierceResistExceptionList != null)
             {
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
@@ -48,13 +60,11 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
             }
             CalamityInheritanceTexture.LoadTexture();
+
             #region Hook
-            MethodInfo originalMethod = typeof(CalamityPlayer).GetMethod("ModDashMovement",BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-            MethodInfo hookMethod = typeof(CalamityInheritancePlayer).GetMethod("ModDashMovement_Hook",BindingFlags.Static | BindingFlags.Public);
-
-            new Hook(originalMethod, hookMethod).Apply();
+            CalamityInheritanceHook.Load(this);
             #endregion
+
         }
         public void LoadClient()
         {
@@ -73,6 +83,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
             CalamityInheritanceTexture.UnloadTexture();
+            infernumMode = null;
             Instance = null;
             base.Unload();
         }
