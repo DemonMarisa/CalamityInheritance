@@ -300,9 +300,12 @@ AncientCotBG: {
 	DisplayName: 远古血神核心[Legacy]
 	Tooltip:
 		'''
-		提高10%伤害与5%伤害减免
+		提高10%最大生命上限
+		提高5%伤害与伤害减免
 		使碰撞伤害减半，这个效果有20秒的冷却时间
-		低于100防御力时提高15%伤害
+		低于50%最大生命值提高10%伤害与5%伤害减免
+		低于15%最大生命值提高30%伤害与15%伤害减免
+		低于100防御力时提高20%伤害并提高10%全局攻速
 		'''
 }
 
@@ -328,11 +331,30 @@ BloodPactLegacy: {
 		'''
 }
 
-HeartoftheElements: {
-	// DisplayName: Heartofthe Elements
-	/* Tooltip:
+BloodflareCoreLegacy: {
+	Tooltip:
 		'''
-		仅作占位符
-		Just a placeholder.
-		''' */
+		低于50%最大生命值时提高10%伤害与5%伤害减免
+		低于15%最大生命值时提高20%伤害与10%伤害减免
+		低于100点防御力时提高15%伤害
+		'''
+	DisplayName: 血炎晶核[Legacy]
+}
+
+WaifuHeart: {
+	DisplayName: 元灵之心[Legacy]
+	Tooltip:
+		'''
+		召唤所有的元素之灵保护你
+		[STATSBUFF]
+		关闭可见性时会稍微地加强基础数值
+		'''
+	StatsBuff:
+		'''
+		+{0}最大生命上限与魔力上限, +{1}HP/s生命恢复速度
+		提高{2}%移动速度与伤害减免
+		提高{3}%伤害与暴击概率
+		提高{4}%跳跃速度
+		{5}%魔力不消耗
+		'''
 }

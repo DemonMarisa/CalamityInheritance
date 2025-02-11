@@ -13,9 +13,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
 
         private int bounce = 3;
-        private int stealthBounce = 6;
-        private int miniStealthDevouers = 9;
-        private int miniStealthDevouersTilesBounce = 6;
+        private int stealthBounce = 9;
+        private readonly int miniStealthDevouers = 9;
+        private readonly int miniStealthDevouersTilesBounce = 2 ;
 
         public override void SetStaticDefaults()
         {
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            int projectileDamage = Projectile.Calamity().stealthStrike? Projectile.damage: (int)(Projectile.damage * 0.75f);
+            int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.60f) : (int)(Projectile.damage * 1.10f);
             if(Projectile.Calamity().stealthStrike == false)
             {
                 if (bounce <= 0)
@@ -90,11 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.velocity.Y = -oldVelocity.Y;
                     if (Projectile.owner == Main.myPlayer)
                     {
-                        int minisAmt = 1;
-                        if(Projectile.Calamity().stealthStrike)
-                        minisAmt = miniStealthDevouersTilesBounce;
-                        if (Main.rand.NextBool(10))
-                            minisAmt++;
+                        int minisAmt = 3;
                         int inc;
                         for (int j = 0; j < minisAmt; j = inc + 1)
                         {
@@ -110,7 +106,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                                                      ModContent.ProjectileType<ScourgeoftheCosmosMiniRogue>(),
                                                      projectileDamage,
                                                      Projectile.knockBack * 0.35f,
-                                                     Main.myPlayer);
+                                                     Main.myPlayer,
+                                                     5);
                             inc = j;
                         }
                     }
@@ -131,9 +128,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.velocity.Y = -oldVelocity.Y;
                     if (Projectile.owner == Main.myPlayer)
                     {
-                        int minisAmt = 1;
-                        if(Projectile.Calamity().stealthStrike)
-                        minisAmt = miniStealthDevouersTilesBounce;
+                        int minisAmt = miniStealthDevouersTilesBounce;
                         if (Main.rand.NextBool(10))
                             minisAmt++;
                         int inc;
@@ -148,7 +143,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                                                      Projectile.position.Y,
                                                      randXDirect,
                                                      randYDirect,
-                                                     ModContent.ProjectileType<ScourgeoftheCosmosMiniRogue>(),
+                                                     ModContent.ProjectileType<ScourgeoftheCosmosMiniRogueClone>(),
                                                      projectileDamage,
                                                      Projectile.knockBack * 0.35f,
                                                      Main.myPlayer);
@@ -187,7 +182,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.owner == Main.myPlayer)
             {
                 int minisAmt = 3;
-                int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 1.45f): (int)(Projectile.damage * 0.75f);
+                int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.55f): (int)(Projectile.damage * 1.45f);
                 if(Projectile.Calamity().stealthStrike)
                 minisAmt = miniStealthDevouers;
                 if (Main.rand.NextBool(10))
@@ -198,7 +193,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float randYDirect = Main.rand.Next(-35, 36) * 0.02f;
                     randXDirect *= 10f;
                     randYDirect *= 10f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),   
                                              Projectile.position.X,
                                              Projectile.position.Y,
                                              randXDirect,

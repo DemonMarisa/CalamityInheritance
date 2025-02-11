@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
             Item.rare = ItemRarityID.Cyan;
-            Item.defense = 16; //50
+            Item.defense = 10; //50
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -45,15 +45,13 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             modPlayer1.ancientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.manaCost *= 0.8f;
             modPlayer.rogueVelocity += 0.10f;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.maxMinions += 3;
-            player.GetDamage<GenericDamageClass>() += 0.1f;
-            player.GetCritChance<GenericDamageClass>() += 10;
+            player.GetDamage<GenericDamageClass>() += 0.05f;
+            player.GetCritChance<GenericDamageClass>() += 5;
             player.lavaImmune = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.CursedInferno] = true;

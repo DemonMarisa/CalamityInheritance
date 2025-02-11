@@ -168,9 +168,80 @@ namespace CalamityInheritance
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
-        public int StellarContemptResprite { get; set; }
-        #endregion
-        #region 音乐
+        public int GalacticaSingularityResprite{ get; set; }
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int NucleogenesisResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int NecroplasmResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int BloodOrangeResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int MiracleFruitResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int ElderberryResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int DragonfruitResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int CometShardResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int EtherealCoreResprite{ get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int PhantomHeartResprite{ get; set; }
+        
+
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]

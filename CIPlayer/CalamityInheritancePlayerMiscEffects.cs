@@ -271,13 +271,83 @@ namespace CalamityInheritance.CIPlayer
                 Player.statDefense /= 10;
             }
             if(ancientCoreofTheBloodGod)
+            /*
+            远古血神加强：
+            ·+10%血上限
+            ·10%常驻增伤和5%免伤与血肉图腾效果
+            ·少于50%血量5%免伤，10%增伤
+            ·少于15%血量10%免伤，20%增伤
+            ·低于100防御20%增伤
+            ·低于100防御追加一个10%的全局攻速加成
+            ↑上述效果可以与返厂的旧血炎叠加.
+            */
             {
                 calPlayer.fleshTotem = true;
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.1f);
                 Player.endurance += 0.05f;
-                Player.GetDamage<GenericDamageClass>() += 0.1f;
-                if(Player.statDefense < 100)
+                Player.GetDamage<GenericDamageClass>() += 0.5f;
+                if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
+                {
+                    Player.endurance += 0.05f;
+                    Player.GetDamage<GenericDamageClass>() += 0.1f;
+                    if(Player.statLife <= (int)(Player.statLifeMax2 * 0.15f))
+                    {
+                        Player.endurance += 0.10f;
+                        Player.GetDamage<GenericDamageClass>() += 0.20f;
+                    }
+                }
+                if(Player.statDefense <= 100)
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.20f;
+                    Player.GetAttackSpeed<GenericDamageClass>() += 0.1f;
+                }
+            }
+
+            if(bloodflareCoreLegacy)
+            /*旧血炎：低于50%血量5%免伤与10%增伤，低于15%血量10免伤与20增伤。低于100防御力20增伤*/
+            {
+                if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
+                {
+                    Player.endurance += 0.05f;
+                    Player.GetDamage<GenericDamageClass>() += 0.1f;
+                    if(Player.statLife <= (int)(Player.statLifeMax2 * 0.15f))
+                    {
+                        Player.endurance += 0.10f;
+                        Player.GetDamage<GenericDamageClass>() += 0.20f;
+                    }
+                }
+                if(Player.statDefense <= 100)
                 {
                     Player.GetDamage<GenericDamageClass>() += 0.15f;
+                }
+            }
+            if(hotEStats)
+            {
+                //Scarlet：改了。
+                //在召唤物开着的时候这buff怎么可能会给这么多
+                //而且尤其是元素之心的基础伤害是150的情况下？
+                Player.statLifeMax2 += 15;
+                Player.statManaMax2 += 15;
+                Player.lifeRegen += 2;
+                Player.moveSpeed += 0.05f;
+                Player.endurance += 0.05f;
+                Player.GetDamage<GenericDamageClass>() += 0.05f;
+                Player.GetCritChance<GenericDamageClass>() += 5;
+                Player.jumpSpeedBoost += 0.5f;
+                Player.manaCost *=0.95f;
+                if(buffEStats) //关闭元素之心的召唤物的情况下
+                {
+                    Player.statLifeMax2 += 25;  //40(15+25)HP
+                    Player.statManaMax2 += 25;  //40(15+25)魔力
+                    Player.lifeRegen += 8;      //5(1+4)HP/s
+                    Player.moveSpeed += 0.05f;   //10(5+5)%移速
+                    Player.endurance += 0.05f;  //10(5+5)%免伤
+                    Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
+                    Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
+                    Player.jumpSpeedBoost += 1.0f;  //150(50+100)%跳跃速度
+                    Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
+                    //由于返回值的原因导致Buff数值反而不能乱写。
+                    //所以现在这些个的buff值都是5的系数了。
                 }
             }
         }
@@ -1115,35 +1185,25 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer= Player.Calamity();
             if(ancientXerocSet)
-            {   
-
+            {
                 calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
-                if(Player.statLife > Player.statLifeMax2 * 0.8f)
-                {
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
+     
+                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
                 {
                     Player.GetDamage<GenericDamageClass>() +=0.10f;
                     Player.GetCritChance<GenericDamageClass>() += 10;
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                 }
 
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
                 {
                     Player.GetDamage<GenericDamageClass>() +=0.15f;
                     Player.GetCritChance<GenericDamageClass>() += 15;
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
                 }
                 
                 else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
                 {
                     //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
-                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 72000);
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocShame>());
+                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
                     Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
                     Player.GetCritChance<GenericDamageClass>() += 40;
                     Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
@@ -1153,11 +1213,11 @@ namespace CalamityInheritance.CIPlayer
                 }
                 else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
                 {
-                    Player.ClearBuff(ModContent.BuffType<AncientXerocMadness>());
-                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 72000);
+                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
                     Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
                     Player.GetCritChance<GenericDamageClass>() -= 40;
-                    Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
+                    // Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
+                    //25.2.11:移除防御力削减的负面效果，我也不知道我是出于什么心态才加的
                     ancientXerocWrath = true;
                 }
             }

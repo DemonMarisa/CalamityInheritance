@@ -20,13 +20,14 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
-            Item.defense = 10;
+            Item.defense = 16;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 100;
-            player.statManaMax2 += 100;
+            player.maxMinions += 3;
+            player.statLifeMax2 += 40;
+            player.statManaMax2 += 40;
             player.moveSpeed += 0.15f;
         }
 

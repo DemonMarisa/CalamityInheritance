@@ -25,7 +25,11 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
 
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 20;
+            player.GetDamage<GenericDamageClass>() += 0.1f;
+            player.GetCritChance<GenericDamageClass>() += 10;
+            player.manaCost *= 0.8f;
+            player.statLifeMax2 += 80;
+            player.statManaMax2 += 60;
         }
         public override void AddRecipes()
         {

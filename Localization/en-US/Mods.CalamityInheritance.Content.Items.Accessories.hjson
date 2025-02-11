@@ -299,9 +299,12 @@ AncientCotBG: {
 	DisplayName: Ancient Core of the Blood God
 	Tooltip:
 		'''
-		5% increased damage reduction, 10% increased damage
+		Increases your max HP by 10% 
+		5% increased damage reduction and damage
 		Halves the contact damage, this effect has 20 seconds cooldown
-		15% increased damage if you are below 100 defense
+		5% increased damage reduction and 10% increased damage when below 50% of max life
+		10% increased damage reduction and 20% increased damage when below 15% of max life
+		20% increased damage and 10% increased generic attack speed if you are below 100 defense
 		'''
 }
 
@@ -327,11 +330,30 @@ BloodPactLegacy: {
 		'''
 }
 
-HeartoftheElements: {
-	DisplayName: Heartofthe Elements
+BloodflareCoreLegacy: {
 	Tooltip:
 		'''
-		仅作占位符
-		Just a placeholder.
+		5% increased damage reduction and 10% increased damage when below 50% of max life
+		10% increased damage reduction and 20% increased damage when below 15% of max life
+		15% increased damage if you are below 100 defense
+		'''
+	DisplayName: Bloodflare Core Legacy
+}
+
+WaifuHeart: {
+	DisplayName: Heart of the Elements Legacy
+	Tooltip:
+		'''
+		Summons all elementals to protect you
+		[STATSBUFF]
+		These stat buffs will be slightly stronger if visibility is off.
+		'''
+	StatsBuff:
+		'''
+		+{0} max HP and mana, +{1}HP/s life regen speed
+		{2}% increased movement speed and damage reduction
+		{3}% increased damage and critical strike chance
+		{4}% increased jump speed
+		{5}% reduced mana usage
 		'''
 }

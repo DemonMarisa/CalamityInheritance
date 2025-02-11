@@ -144,7 +144,8 @@ ScourgeoftheCosmosRogue: {
 	Tooltip:
 		'''
 		Throws a bouncing cosmic scourge that emits tiny homing cosmic scourges on enemy and tile hits
-		Stealth strikes will bounces more times, emits more deadly homing cosmic on hits
+		Stealth strikes will bounces more times, tiny scourges are much faster on chasing their enemies,
+		and will spawns additional two upon enemies hit
 		'''
 }
 
@@ -159,7 +160,7 @@ EmpyreanKnivesLegacyRogue: {
 }
 
 ShadowspecKnivesLegacyRogue: {
-	DisplayName: Shadowspec Knives Legacy Rogue
+	DisplayName: Illustrious Knives Legacy Rogue
 	Tooltip:
 		'''
 		Legacy Illustrious Knives for Rogue class

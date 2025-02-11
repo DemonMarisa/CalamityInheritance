@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 88;
             Item.height = 88;
-            Item.damage = 420;
+            Item.damage = 380;
             Item.DamageType = DamageClass.Melee;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;
@@ -65,6 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int numShots = 2;
+            int soulDamage = (int)(damage * 0.8f);
             for (int i = 0; i < numShots; ++i)
             {
                 float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
@@ -72,7 +73,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float ai1 = Main.rand.NextFloat() + 0.5f;
                 // TODO -- unchecked type addition math assumes we can guarantee load order
                 // this is extremely unsafe and if TML optimizes autoloading or asset loading it could fail
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, Main.rand.Next(type, type + 3), damage, knockback, player.whoAmI, 0.0f, ai1);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, Main.rand.Next(type, type + 3), soulDamage, knockback, player.whoAmI, 0.0f, ai1);
             }
             return false;
         }

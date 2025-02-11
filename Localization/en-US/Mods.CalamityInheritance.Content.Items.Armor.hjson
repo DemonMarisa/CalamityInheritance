@@ -313,8 +313,8 @@ AncientXerocCuisses: {
 	DisplayName: Ancient Xeroc Cuisses
 	Tooltip:
 		'''
-		+100 max life
-		+100 max mana
+		+3 max minions
+		+40 max life and max mana
 		15% increased movement speed
 		'''
 }
@@ -323,15 +323,15 @@ AncientXerocMask: {
 	DisplayName: Ancient Xeroc Mask
 	Tooltip:
 		'''
-		+3 max minions
-		10% increased damage and critical strike chance
+		5% increased damage and critical strike chance
+		Grants immnuity to Lava, On Fire!, Curseflame, Cursed and Chilled
 		'''
 	SetBonus:
 		'''
 
 		Counts as rogue armor, can deal stealth strikes.
 		+110 maxinum stealth
-		20% reduced mana usage, 10% increased rogue velocity
+		10% increased rogue velocity
 		Stealth strikes only expand 50% of your max stealth
 		Change damage stats base on your current HP is:
 		Lower than 80% of max life will increases damage and critical strike chance by 10%
@@ -339,14 +339,19 @@ AncientXerocMask: {
 		If you are lower than 25% of your max life:
 		Increases damage and critical strike chance by 40%, healing potion are 10% more effective,
 		Using magic weapons will not reduce your mana
-		Lower than 15% of max life will decreases your defense by 50, damage and critical strike chance by 40%
+		Lower than 15% of max life will decreases your damage and critical strike chance by 40%
 		Wrath of the cosmos
 		'''
 }
 
 AncientXerocPlateMail: {
 	DisplayName: Ancient Xeroc Plate Mail
-	Tooltip: +20 max life
+	Tooltip:
+		'''
+		+80 max HP, +60 max mana
+		10% increased damage and critical strike chance
+		20% reduced mana usage
+		'''
 }
 
 ReaverCapRevamped: {

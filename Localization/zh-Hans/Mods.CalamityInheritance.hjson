@@ -190,5 +190,55 @@ Configs: {
 			Label: "[i:CalamityInheritance/RogueTypeStellarContempt]星体击碎者贴图切换"
 			Tooltip: 切换星体击碎者的贴图
 		}
+
+		PhantomHeartResprite: {
+			// Tooltip: Determines the sprite of Phantom Heart
+			// Label: Phantom Heart Resprite
+		}
+
+		EtherealCoreResprite: {
+			// Tooltip: Determines the spirte of Ethereal Core
+			// Label: Ethereal Core Resprite
+		}
+
+		CometShardResprite: {
+			// Tooltip: Determines the spirte of Comet Shard
+			// Label: Comet Shard Resprite
+		}
+
+		DragonfruitResprite: {
+			// Tooltip: Determines the spirte of Dragonfruit
+			// Label: Dragonfruit Resprite
+		}
+
+		ElderberryResprite: {
+			// Tooltip: Determines the sprite of Elderberry
+			// Label: Elderberry Resprite
+		}
+
+		MiracleFruitResprite: {
+			// Tooltip: Determines the sprite of Miracle Fruit
+			// Label: Miracle Fruit Resprite
+		}
+
+		BloodOrangeResprite: {
+			// Tooltip: Determines the sprite of Blood Orange
+			// Label: Blood Orange Resprite
+		}
+
+		NecroplasmResprite: {
+			// Tooltip: Determines the sprite of Necroplasm
+			// Label: Necroplasm Resprite
+		}
+
+		NucleogenesisResprite: {
+			// Tooltip: Determines the sprite of Nucleogenesis
+			// Label: Nucleogenesis Resprite
+		}
+
+		GalacticaSingularityResprite: {
+			// Tooltip: Determines the sprite of Galactica Singularity
+			// Label: Galactica Singularity Resprite
+		}
 	}
 }

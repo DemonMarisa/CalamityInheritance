@@ -7,6 +7,7 @@ using CalamityMod.Items.Accessories;
 using Terraria.ID;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -16,11 +17,11 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ChaliceOfTheBloodGod>()] = ModContent.ItemType<AncientCotBG>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientCotBG>()] = ModContent.ItemType<ChaliceOfTheBloodGod>();
-            }
+            // if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            // {
+            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ChaliceOfTheBloodGod>()] = ModContent.ItemType<AncientCotBG>();
+            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientCotBG>()] = ModContent.ItemType<ChaliceOfTheBloodGod>();
+            // }
         }
         public override void SetDefaults()
         {
@@ -40,17 +41,18 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {   
             //微光嬗变config关闭时使用这个合成表
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            {
+            // if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            // {
+            //Scarlet:旧血核与旧血契的加入已经没有必要微光转化了
                 CreateRecipe().
-                    AddIngredient<BloodPact>().
-                    AddIngredient<BloodflareCore>().
+                    AddIngredient<BloodPactLegacy>().
+                    AddIngredient<BloodflareCoreLegacy>().
                     AddIngredient<BloodyWormScarf>().
-                    AddIngredient<BloodstoneCore>(5).
-                    AddIngredient<AscendantSpiritEssence>(1).
+                    AddIngredient<CosmiliteBar>(5).
+                    AddIngredient<Necroplasm>(5).
                     AddTile<CosmicAnvil>().
                     Register();
-            }
+            // }
         }
     }
 }

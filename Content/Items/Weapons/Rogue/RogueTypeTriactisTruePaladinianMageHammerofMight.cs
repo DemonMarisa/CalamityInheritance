@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.rare = ModContent.RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
         }
+        public override float StealthDamageMultiplier => 2.8f   ;
 
         public override void AddRecipes()
         {

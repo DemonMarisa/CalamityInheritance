@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.Tools;
+using CalamityInheritance.Rarity;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework.Graphics;
@@ -67,12 +68,43 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProj;
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeSecond; //圣光飞刀的初版贴图
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjSecond;
-        public static Asset<Texture2D> ShadowspecKnivesAlterTypeOne; //圣光飞刀的现版贴图
-        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjOne;
-        //星体击碎者
-        public static Asset<Texture2D> StellarContemptNew;//新版本
-        public static Asset<Texture2D> StellarContemptOld;//旧版本
         #endregion
+        #region 材料
+        //星系异石
+        public static Asset<Texture2D> GS;
+        public static Asset<Texture2D> GSAlter;
+        //核子
+        public static Asset<Texture2D> SummonNuke;
+        public static Asset<Texture2D> SummonNukeAlter;
+        //红色的那个鬼魂
+        public static Asset<Texture2D> RedSoul;
+        public static Asset<Texture2D> RedSoulAlter;
+        #endregion
+        #endregion
+        #region 永久增益
+        /*加血的。血橙、奇迹果、蓝莓和龙果*/
+        public static Asset<Texture2D> HealthOrange;
+        public static Asset<Texture2D> HealthOrangeAlter;
+        //血橙
+        public static Asset<Texture2D> HealthMira;
+        public static Asset<Texture2D> HealthMiraAlter;
+        //奇迹果
+        public static Asset<Texture2D> HealthBerry;
+        public static Asset<Texture2D> HealthBerryAlter;
+        //蓝莓
+        public static Asset<Texture2D> HealthDragon;
+        public static Asset<Texture2D> HealthDragonAlter;
+        //龙果
+        /*加魔力的，一个肉后初期的，一个星神游龙后的和魂花后的 */
+        public static Asset<Texture2D> ManaShard;
+        public static Asset<Texture2D> ManaShardAlter;
+        //肉后初期的
+        public static Asset<Texture2D> ManaCore;
+        public static Asset<Texture2D> ManaCoreAlter;
+        //游龙后的
+        public static Asset<Texture2D> ManaHeart;
+        public static Asset<Texture2D> ManaHeartAlter;
+        //魂花后的
         #endregion
         public static void LoadTexture()
         {
@@ -126,6 +158,37 @@ namespace CalamityInheritance.Texture
             //星体击碎者
             StellarContemptNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/StellarContemptOld");
             StellarContemptOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeStellarContempt");
+            /*各类材料*/
+            GS = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/GalacticaSingularity");
+            GSAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/GalacticaSingularityAlter");
+
+            SummonNuke = ModContent.Request<Texture2D>("CalamityMod/Items/Accessories/Nucleogenesis");
+            SummonNukeAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/NucleogenesisAlter");
+
+            RedSoul = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/Necroplasm");
+            RedSoulAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantoplasmAlter");
+            //增益
+            HealthOrange = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/BloodOrange");
+            HealthOrangeAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/BloodOrangeAlter");
+
+            HealthMira = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/MiracleFruit");
+            HealthMiraAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/MiracleFruitAlter");
+
+            HealthBerry = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/Elderberry");
+            HealthBerryAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/ElderberryAlter");
+
+            HealthDragon = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/Dragonfruit");
+            HealthDragonAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/DragonfruitAlter");
+
+            ManaShard = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/CometShard");
+            ManaShardAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/CometShardAlter");
+            
+            ManaCore = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/EtherealCore");
+            ManaCoreAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/EtherealCoreAlter");
+
+            ManaHeart = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/PhantomHeart");
+            ManaHeartAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantomHeartAlter");
+
         }
         public static void UnloadTexture()
         {
@@ -178,6 +241,34 @@ namespace CalamityInheritance.Texture
             //星体击碎者
             StellarContemptNew = null;
             StellarContemptOld = null;
+            //材料
+            GS = null;
+            GSAlter = null;
+            SummonNuke = null;
+            SummonNukeAlter = null;
+            RedSoul = null;
+            RedSoulAlter = null;
+            //增益
+            HealthOrange = null;
+            HealthOrangeAlter = null;
+
+            HealthMira = null;
+            HealthMiraAlter = null;
+
+            HealthBerry = null;
+            HealthBerryAlter = null;
+            
+            HealthDragon = null;
+            HealthDragonAlter =null;
+
+            ManaShard =null;
+            ManaShardAlter = null;
+
+            ManaCore = null;
+            ManaCoreAlter = null;
+            
+            ManaHeart = null;
+            ManaHeartAlter = null;
         }
     }
 }

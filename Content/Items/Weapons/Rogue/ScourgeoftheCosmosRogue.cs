@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = Item.useTime = 16;
+            Item.useAnimation = Item.useTime = 13;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item109;

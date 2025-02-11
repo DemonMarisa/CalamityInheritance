@@ -7,3 +7,7 @@
 obj/Release/net8.0/CalamityInheritance.AssemblyInfo.cs
 obj/Release/net8.0/CalamityInheritance.AssemblyInfoInputs.cache
 obj/Release/net8.0/CalamityInheritance.csproj.AssemblyReference.cache
+obj/project.nuget.cache
+obj/project.assets.json
+obj/CalamityInheritance.csproj.nuget.g.props
+obj/CalamityInheritance.csproj.nuget.dgspec.json

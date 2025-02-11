@@ -66,6 +66,7 @@ namespace CalamityInheritance.CIPlayer
         public bool ancientCoreofTheBloodGod = false; //肃杀核心
         public bool ancientBloodFact = false;//血契
         public bool elementalGauntlet = false;//元素之握
+        public bool fuckAllofYouEHeart = false;
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -136,6 +137,9 @@ namespace CalamityInheritance.CIPlayer
         public bool yPower = false;
         public bool invincible = false;
         public bool bloodPactBoost = false;
+        public bool bloodflareCoreLegacy = false;//旧血炎
+        public bool hotEStats = false;
+        public bool buffEStats = false;
         #endregion
         #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
@@ -286,6 +290,10 @@ namespace CalamityInheritance.CIPlayer
             ancientCoreofTheBloodGod = false ;//肃杀核心
             ancientBloodFact = false;//血契
             elementalGauntlet = false;//元素之握
+            bloodflareCoreLegacy = false;
+            hotEStats = false;
+            buffEStats = false;
+            fuckAllofYouEHeart = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -424,6 +432,9 @@ namespace CalamityInheritance.CIPlayer
             ancientCoreofTheBloodGod = false; //肃杀核心
             ancientBloodFact = false;
             yharimOfPerunBuff = false;
+            bloodflareCoreLegacy = false;
+            hotEStats = false;
+            buffEStats = false;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;
