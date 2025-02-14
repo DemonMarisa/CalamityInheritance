@@ -64,6 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Item.useAnimation = 54;
                 Item.reuseDelay = 25;
                 Item.useLimitPerAnimation = 9;
+                Item.damage = 260;
             }
             else
             {

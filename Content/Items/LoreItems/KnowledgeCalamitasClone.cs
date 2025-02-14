@@ -43,10 +43,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<LoreCalamitasClone>().
                 AddTile(TileID.Bookcases).
                 Register();
-
-            CreateRecipe().
-                AddIngredient<CalamitousEssence>().
-                Register();
         }
     }
 }

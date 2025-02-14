@@ -64,12 +64,12 @@ namespace CalamityInheritance.Content.Items.Tools
             {
                 CIMusicEventSystem.PlayedEvents.Remove("YharonDefeated");
                 CIMusicEventSystem.PlayedEvents.Remove("ExoMechsDefeated");
+                CIMusicEventSystem.PlayedEvents.Remove("ScalDefeatedL");
                 //灾厄的音乐事件
                 MusicEventSystem.PlayedEvents.Remove("CloneDefeated");
                 MusicEventSystem.PlayedEvents.Remove("MLDefeated");
                 MusicEventSystem.PlayedEvents.Remove("YharonDefeated");
                 MusicEventSystem.PlayedEvents.Remove("DoGDefeated");
-
                 Main.NewText("清除所有音乐事件标记");
             }
             return base.CanUseItem(player);

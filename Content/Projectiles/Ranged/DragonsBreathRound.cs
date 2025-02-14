@@ -73,6 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Dragonfire>(), 300);
+            target.AddBuff(BuffID.OnFire3, 600);
         }
 
         public override bool PreDraw(ref Color lightColor)

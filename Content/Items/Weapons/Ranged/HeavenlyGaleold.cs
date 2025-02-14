@@ -64,6 +64,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.Calamity().canFirePointBlankShots = true;
         }
+        public override bool CanUseItem(Player player)
+        {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            if (usPlayer.exoMechLore)
+            {
+                Item.damage = 298;
+            }
+            else
+            {
+                Item.damage = 198;
+            }
+            return base.CanUseItem(player);
+        }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -119,8 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     }
                 }
 
-                int finalDamage = (int)(damage * dmgMult);
-                int proj = Projectile.NewProjectile(spawnSource, source + offset, velocity, thisArrowType, finalDamage, knockback, player.whoAmI);
+                int proj = Projectile.NewProjectile(spawnSource, source + offset, velocity, thisArrowType, damage, knockback, player.whoAmI);
 
                 if (type != ProjectileID.WoodenArrowFriendly)
                 {

@@ -19,7 +19,7 @@ using CalamityInheritance.Balancing;
 
 namespace CalamityInheritance.Common
 {
-    public static class CalamityInheritanceHook
+    public static class CalamityInheritanceDashHook
     {
         public static void Load(Mod mod)
         {

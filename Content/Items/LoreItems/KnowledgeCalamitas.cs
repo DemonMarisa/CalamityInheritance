@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -44,6 +45,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
             CreateRecipe().
                 AddIngredient<LoreCynosure>().
                 AddTile(TileID.Bookcases).
+                Register();
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
                 Register();
         }
     }

@@ -144,7 +144,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 int vortexDamage = (int)(Projectile.damage * 0.75f);
                 NPC closestTarget = Projectile.Center.ClosestNPCAt(1600f, true, true);
 
-                for (int j = 0; j < 18; j++)
+                for (int j = 0; j < 12; j++)
                 {
                     float rotation = Main.rand.NextFloat((float)Math.PI * 2f);
                     Vector2 velocity2 = Vector2.UnitY.RotatedBy((double)rotation, default);

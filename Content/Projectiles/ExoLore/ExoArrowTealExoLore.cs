@@ -18,11 +18,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.friendly = true;
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 0;
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = 300;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
             Projectile.arrow = true;
             Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
         }

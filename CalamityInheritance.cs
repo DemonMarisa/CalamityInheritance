@@ -62,7 +62,7 @@ namespace CalamityInheritance
             CalamityInheritanceTexture.LoadTexture();
 
             #region Hook
-            CalamityInheritanceHook.Load(this);
+            CalamityInheritanceDashHook.Load(this);
             #endregion
 
         }

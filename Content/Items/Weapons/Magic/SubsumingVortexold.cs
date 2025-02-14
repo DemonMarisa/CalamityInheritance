@@ -41,6 +41,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<EnormousConsumingVortexold>();
             Item.shootSpeed = 7f;
         }
+        public override bool CanUseItem(Player player)
+        {
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            if (usPlayer.exoMechLore)
+            {
+                Item.damage = 121;
+            }
+            else
+            {
+                Item.damage = 195;
+            }
+            return base.CanUseItem(player);
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
