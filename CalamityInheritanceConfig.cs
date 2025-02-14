@@ -161,29 +161,35 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int FateGirlSprite{ get; set; }
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int StellarContemptResprite{ get; set; }
+        // [BackgroundColor(192, 54, 64, 192)]
+        // [SliderColor(224, 165, 56, 128)]
+        // [Range(1, 2)]
+        // [Increment(1)]
+        // [DrawTicks]
+        // [DefaultValue(1)]
+        // public int GalacticaSingularityResprite{ get; set; }
+        // [BackgroundColor(192, 54, 64, 192)]
+        // [SliderColor(224, 165, 56, 128)]
+        // [Range(1, 2)]
+        // [Increment(1)]
+        // [DrawTicks]
+        // [DefaultValue(1)]
+        // public int NucleogenesisResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int GalacticaSingularityResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int NucleogenesisResprite{ get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int NecroplasmResprite{ get; set; }
+        // [BackgroundColor(192, 54, 64, 192)]
+        // [SliderColor(224, 165, 56, 128)]
+        // [Range(1, 2)]
+        // [Increment(1)]
+        // [DrawTicks]
+        // [DefaultValue(1)]
+        // public int NecroplasmResprite{ get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]

@@ -152,7 +152,7 @@ namespace CalamityInheritance.CIPlayer
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 3)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterType;
+                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeOne;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 4)
                 {
@@ -172,7 +172,7 @@ namespace CalamityInheritance.CIPlayer
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 3)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProj;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjOne;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 4)
                 {
@@ -194,11 +194,11 @@ namespace CalamityInheritance.CIPlayer
 
             if (TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] != null)
             {
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite== 1)
                 {
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CalamityInheritanceTexture.FateGirlOriginalBuff;
                 }
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
+                if (CalamityInheritanceConfig.Instance.FateGirlSprite== 2)
                 {
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CalamityInheritanceTexture.FateGirlLegacyBuff;
                 }
