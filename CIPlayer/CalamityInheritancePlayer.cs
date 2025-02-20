@@ -26,6 +26,7 @@ using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -140,6 +141,9 @@ namespace CalamityInheritance.CIPlayer
         public bool bloodflareCoreLegacy = false;//旧血炎
         public bool hotEStats = false;
         public bool buffEStats = false;
+        public bool backFireDebuff = false;   //淬火
+        public int StepToolShadowChairSmallCD = 0;
+        public int StepToolShadowChairSmallFireCD = 0;
         #endregion
         #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
@@ -294,6 +298,8 @@ namespace CalamityInheritance.CIPlayer
             hotEStats = false;
             buffEStats = false;
             fuckAllofYouEHeart = false;
+            StepToolShadowChairSmallCD = 0;
+            StepToolShadowChairSmallFireCD = 0;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -347,6 +353,7 @@ namespace CalamityInheritance.CIPlayer
             yPower = false;
             invincible = false;
             bloodPactBoost = false;
+            backFireDebuff = false;
             #endregion
             #region Set Bonuses
             #region GodSlayer
@@ -435,6 +442,8 @@ namespace CalamityInheritance.CIPlayer
             bloodflareCoreLegacy = false;
             hotEStats = false;
             buffEStats = false;
+            StepToolShadowChairSmallCD = 0;
+            StepToolShadowChairSmallFireCD = 0;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;

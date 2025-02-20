@@ -117,3 +117,13 @@ yharimOfPerun: {
 	// DisplayName: Thunder Strike
 	// Description: Greatly boost your attack power
 }
+
+StepToolDebuff: {
+	DisplayName: 梯凳驾到
+	Description: 梯凳的压迫感让你站立不能……
+}
+
+Backfire: {
+	DisplayName: 淬火
+	Description: 血液被过度加热，足以融化掉你的心脏
+}

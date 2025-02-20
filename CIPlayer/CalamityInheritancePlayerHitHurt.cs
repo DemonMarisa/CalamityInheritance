@@ -7,6 +7,7 @@ using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.YharimAuric;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
@@ -21,6 +22,7 @@ using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
@@ -393,6 +395,22 @@ namespace CalamityInheritance.CIPlayer
                     Player.Heal((int)(hurtInfo.Damage * 2f));
                     auricYharimHealCooldown = 600;
                 }
+            }
+
+            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
+            {
+                foreach(Projectile p in Main.ActiveProjectiles)
+                {
+                    if (p.type == ModContent.ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
+                    {
+                        p.Kill();
+                        break;
+                    }
+                }
+                /*玩家受击时飞行时间直接置成50f*/
+                if (Player.wingTime > 50f)
+                    Player.wingTime = 50f;
+                Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
             }
         }
         #endregion

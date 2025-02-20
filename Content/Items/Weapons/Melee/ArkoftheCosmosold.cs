@@ -148,7 +148,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             if (pumpkinMoon)
             {
-                player.AddBuff(BuffID.WellFed, 600);
+                player.AddBuff(BuffID.WellFed3, 600);   //改成了大饱食度
             }
             if (astral)
             {

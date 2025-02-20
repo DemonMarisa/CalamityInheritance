@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.NPCs;
 
 namespace CalamityInheritance.NPCs
 {
@@ -16,12 +17,24 @@ namespace CalamityInheritance.NPCs
         }
 
         public bool silvaStun = false;
+        //梯凳之怒
+        public bool rageOfChair = false;
+        public static int rageOfChairDoTDamage = 50000;
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (silvaStun)
             {
                 npc.velocity.Y = 0f;
                 npc.velocity.X = 0f;
+            }
+            if (rageOfChair)
+            {
+                if(npc.lifeRegen > 0)
+                npc.lifeRegen = 0;
+                //敌方有涂油的话梯凳驾到的dot伤害+20000
+                if(npc.HasBuff(BuffID.Oiled))
+                npc.lifeRegen -= rageOfChairDoTDamage+20000;
+                npc.lifeRegen -= rageOfChairDoTDamage;
             }
         }
         #region Reset Effects
