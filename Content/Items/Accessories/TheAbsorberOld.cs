@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.statLifeMax2 += 20;
             player.statManaMax2 += 20;
             player.accRunSpeed += 0.12f;
-            player.jumpSpeedBoost += 0.24f;
+            player.jumpSpeedBoost += 0.50f;
         }
 
         public override void AddRecipes()

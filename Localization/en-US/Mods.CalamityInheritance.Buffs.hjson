@@ -117,3 +117,13 @@ yharimOfPerun: {
 	DisplayName: Thunder Strike
 	Description: Greatly boost your attack power
 }
+
+StepToolDebuff: {
+	DisplayName: Step Tool Debuff
+	Description: Mods.CalamityInheritance.Buffs.StepToolDebuff.Description
+}
+
+Backfire: {
+	DisplayName: Backfire
+	Description: Your blood is overheated, melting your heart
+}

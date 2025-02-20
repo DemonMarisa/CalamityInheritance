@@ -32,6 +32,7 @@ using Microsoft.Xna.Framework.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using CalamityInheritance.Content.Projectiles.Magic;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -875,7 +876,12 @@ namespace CalamityInheritance.CIPlayer
 
             if (reaverBurstCooldown > 0)
                 reaverBurstCooldown--; //法师永恒套CD
-            
+
+            if (StepToolShadowChairSmallCD > 0)
+                StepToolShadowChairSmallCD--;
+
+            if (StepToolShadowChairSmallFireCD > 0)
+                StepToolShadowChairSmallFireCD--; 
             if (auricYharimHealCooldown > 0)
                 auricYharimHealCooldown--;
             
@@ -1030,6 +1036,19 @@ namespace CalamityInheritance.CIPlayer
             if(ancientBloodFact)
             {
                 Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
+            }
+            if(backFireDebuff)
+            {
+                //获得淬火Debuff后，玩家的伤害将被0.5倍率乘算
+                Player.GetDamage<GenericDamageClass>() *= 0.5f;
+                //生命将会高速流失。直到低于生命值上线的1/3为止
+                if(Player.statLife > Player.statLifeMax2/3)
+                   Player.statLife -= 5;
+                //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
+                Player.endurance -= 0.2f;
+                //玩家的防御力取50%
+                Player.statDefense *= 0.5f;
+                //玩家的翅膀飞行时间将会被设置为0
             }
         }
 

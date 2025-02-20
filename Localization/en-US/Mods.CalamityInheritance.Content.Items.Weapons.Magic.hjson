@@ -142,3 +142,14 @@ VoidVortexLegacy: {
 	DisplayName: Void Vortex Legacy
 	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
 }
+
+StepToolShadow: {
+	DisplayName: Supreme Step Stool of Eternity, Olympustine
+	Tooltip:
+		'''
+		Swing a godly chair destory your enemy
+		Summon some small chair upon enemy hits
+		Never understimate the potential power of Step Stool.
+		Developer Item: TrueScarlet
+		'''
+}
