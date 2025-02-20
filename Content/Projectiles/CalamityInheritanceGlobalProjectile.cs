@@ -15,68 +15,11 @@ namespace CalamityInheritance.Content.Projectiles
 {
     public class CalamityInheritanceGlobalProjectile : GlobalProjectile
     {
-        // Force Class Types
-        public bool forceMelee = false;
-        public bool forceRanged = false;
-        public bool forceMagic = false;
-        public bool forceRogue = false;
-        public bool forceMinion = false;
-        public bool forceHostile = false;
-        public bool rogue = false;
-        public bool forceTypeless = false;
-
         public override bool InstancePerEntity => true;
 
         private bool frameOneHacksExecuted = false;
         public override void AI(Projectile projectile)
         {
-            if (rogue)
-            {
-                projectile.DamageType = (DamageClass)(object)ModContent.GetInstance<RogueDamageClass>();
-            }
-            if (forceMelee)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-                projectile.DamageType = DamageClass.Melee;
-            }
-            else if (forceRanged)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-                projectile.DamageType = DamageClass.Ranged;
-            }
-            else if (forceMagic)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-                projectile.DamageType = DamageClass.Magic;
-                rogue = false;
-            }
-            else if (forceMinion)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-                projectile.DamageType = DamageClass.Summon;
-                rogue = false;
-            }
-            else if (forceRogue)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-                projectile.DamageType = DamageClass.Throwing;
-            }
-            else if (forceTypeless)
-            {
-                projectile.hostile = false;
-                projectile.friendly = true;
-            }
-            else if (forceHostile)
-            {
-                projectile.hostile = true;
-                projectile.friendly = false;
-            }
-
             Player player = Main.player[projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
             CalamityPlayer modPlayer1 = player.Calamity();
@@ -172,10 +115,7 @@ namespace CalamityInheritance.Content.Projectiles
                                 int damage = (int)player.GetTotalDamage<RogueDamageClass>().ApplyTo(60);
                                 damage = player.ApplyArmorAccDamageBonusesTo(damage);
                                 int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhotosyntheticShard>(), damage, 0f, projectile.owner);
-                                if (newProjectileId != Main.maxProjectiles)
-                                {
-                                    Main.projectile[newProjectileId].CalamityInheritance().forceRogue = true;
-                                }
+                                Main.projectile[newProjectileId].DamageType = ModContent.GetInstance<RogueDamageClass>();
                             }
                         }
                     }

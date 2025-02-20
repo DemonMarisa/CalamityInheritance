@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
                 if (boom.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[boom].CalamityInheritance().forceRanged = true;
+                    Main.projectile[boom].DamageType = DamageClass.Ranged;
             }
         }
 

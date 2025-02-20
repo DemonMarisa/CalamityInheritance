@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useAnimation = Item.useTime = 13;
             Item.width = 42;
             Item.height = 42;
-            Item.damage = 105;
+            Item.damage = 140;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;

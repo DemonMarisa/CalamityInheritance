@@ -65,6 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int projectile = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer);
             Main.projectile[projectile].timeLeft = 160;
             Main.projectile[projectile].tileCollide = false;
+
             float num72 = Main.rand.Next(22, 30);
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = Main.mouseX + Main.screenPosition.X + vector2.X;
@@ -154,59 +155,59 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 player.AddBuff(ModContent.BuffType<GravityNormalizerBuff>(), 600);
             }
-            else if (jungle)
+            if (jungle)
             {
                 player.AddBuff(BuffID.Thorns, 600);
             }
-            else if (snow)
+            if (snow)
             {
                 player.AddBuff(BuffID.Warmth, 600);
             }
-            else if (beach)
+            if (beach)
             {
                 player.AddBuff(BuffID.Wet, 600);
             }
-            else if (corrupt)
+            if (corrupt)
             {
                 player.AddBuff(BuffID.Wrath, 600);
             }
-            else if (crimson)
+            if (crimson)
             {
                 player.AddBuff(BuffID.Rage, 600);
             }
-            else if (dungeon)
+            if (dungeon)
             {
                 player.AddBuff(BuffID.Dangersense, 600);
             }
-            else if (desert)
+            if (desert)
             {
                 player.AddBuff(BuffID.Endurance, 600);
             }
-            else if (glow)
+            if (glow)
             {
                 player.AddBuff(BuffID.Spelunker, 600);
             }
-            else if (hell)
+            if (hell)
             {
                 player.AddBuff(BuffID.Inferno, 600);
             }
-            else if (holy)
+            if (holy)
             {
                 player.AddBuff(BuffID.Heartreach, 600);
             }
-            else if (nebula)
+            if (nebula)
             {
                 player.AddBuff(BuffID.MagicPower, 600);
             }
-            else if (stardust)
+            if (stardust)
             {
                 player.AddBuff(BuffID.Summoning, 600);
             }
-            else if (solar)
+            if (solar)
             {
                 player.AddBuff(BuffID.Titan, 600);
             }
-            else if (vortex)
+            if (vortex)
             {
                 player.AddBuff(BuffID.AmmoReservation, 600);
             }
@@ -251,55 +252,55 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 player.AddBuff(BuffID.Thorns, 600);
             }
-            else if (snow)
+            if (snow)
             {
                 player.AddBuff(BuffID.Warmth, 600);
             }
-            else if (beach)
+            if (beach)
             {
                 player.AddBuff(BuffID.Wet, 600);
             }
-            else if (corrupt)
+            if (corrupt)
             {
                 player.AddBuff(BuffID.Wrath, 600);
             }
-            else if (crimson)
+             if (crimson)
             {
                 player.AddBuff(BuffID.Rage, 600);
             }
-            else if (dungeon)
+             if (dungeon)
             {
                 player.AddBuff(BuffID.Dangersense, 600);
             }
-            else if (desert)
+             if (desert)
             {
                 player.AddBuff(BuffID.Endurance, 600);
             }
-            else if (glow)
+             if (glow)
             {
                 player.AddBuff(BuffID.Spelunker, 600);
             }
-            else if (hell)
+             if (hell)
             {
                 player.AddBuff(BuffID.Inferno, 600);
             }
-            else if (holy)
+             if (holy)
             {
                 player.AddBuff(BuffID.Heartreach, 600);
             }
-            else if (nebula)
+             if (nebula)
             {
                 player.AddBuff(BuffID.MagicPower, 600);
             }
-            else if (stardust)
+             if (stardust)
             {
                 player.AddBuff(BuffID.Summoning, 600);
             }
-            else if (solar)
+             if (solar)
             {
                 player.AddBuff(BuffID.Titan, 600);
             }
-            else if (vortex)
+             if (vortex)
             {
                 player.AddBuff(BuffID.AmmoReservation, 600);
             }

@@ -8,6 +8,7 @@ using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer.Dash;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -52,7 +53,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[BuffID.Darkness] = true;
             player.buffImmune[BuffID.WindPushed] = true;
             player.buffImmune[BuffID.Stoned] = true;
+            player.buffImmune[BuffID.Daybreak] = true;
+            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
             player.statLifeMax2 += 20;
+
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             { 
                 player.endurance += 0.1f;

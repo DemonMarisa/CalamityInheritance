@@ -253,39 +253,37 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             //核子与星系是动图（现灾厄）不能直接用
-            // if (TextureAssets.Item[ModContent.ItemType<Nucleogenesis>()] != null)
-            // {
-            //     if (CalamityInheritanceConfig.Instance.NucleogenesisResprite == 1)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<Nucleogenesis>()] = CalamityInheritanceTexture.SummonNuke;
-            //     }
-            //     if (CalamityInheritanceConfig.Instance.NucleogenesisResprite == 2)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<Nucleogenesis>()] = CalamityInheritanceTexture.SummonNukeAlter;
-            //     }
-            // }
-            // if (TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] != null)
-            // {
-            //     if (CalamityInheritanceConfig.Instance.GalacticaSingularityResprite== 1)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CalamityInheritanceTexture.GS;
-            //     }
-            //     if (CalamityInheritanceConfig.Instance.GalacticaSingularityResprite== 2)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CalamityInheritanceTexture.GSAlter;
-            //     }
-            // }
-            // if (TextureAssets.Item[ModContent.ItemType<Necroplasm>()] != null)
-            // {
-            //     if (CalamityInheritanceConfig.Instance.NecroplasmResprite== 1)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CalamityInheritanceTexture.RedSoul;
-            //     }
-            //     if (CalamityInheritanceConfig.Instance.NecroplasmResprite== 2)
-            //     {
-            //         TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CalamityInheritanceTexture.RedSoulAlter;
-            //     }
-            // }
+            /*DemonMarisa: 开修
+             *单独去注册hook替换帧图算法了
+             *应该是修完了
+             *把核子的删了，改成了单独注册了
+             *星系异石和灵质不会改，保留了注册，删除了贴图读取
+             */
+            /*
+            if (TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.GalacticaSingularityResprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CalamityInheritanceTexture.GS;
+                }
+                if (CalamityInheritanceConfig.Instance.GalacticaSingularityResprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CalamityInheritanceTexture.GSAlter;
+                }
+            }
+
+            if (TextureAssets.Item[ModContent.ItemType<Necroplasm>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.NecroplasmResprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CalamityInheritanceTexture.RedSoul;
+                }
+                if (CalamityInheritanceConfig.Instance.NecroplasmResprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CalamityInheritanceTexture.RedSoulAlter;
+                }
+            }
+            */
             #region  增益道具
             if (TextureAssets.Item[ModContent.ItemType<BloodOrange>()] != null)
             {

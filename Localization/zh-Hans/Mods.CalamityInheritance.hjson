@@ -192,53 +192,48 @@ Configs: {
 		}
 
 		PhantomHeartResprite: {
-			// Tooltip: Determines the sprite of Phantom Heart
-			// Label: Phantom Heart Resprite
+			Tooltip: 切换幻影之心的贴图
+			Label: "[i:CalamityMod/PhantomHeart]幻影之心贴图切换"
 		}
 
 		EtherealCoreResprite: {
-			// Tooltip: Determines the spirte of Ethereal Core
-			// Label: Ethereal Core Resprite
+			Tooltip: 切换飘渺之核的贴图
+			Label: "[i:CalamityMod/EtherealCore]飘渺之核贴图切换"
 		}
 
 		CometShardResprite: {
-			// Tooltip: Determines the spirte of Comet Shard
-			// Label: Comet Shard Resprite
+			Tooltip: 切换彗星碎片的贴图
+			Label: "[i:CalamityMod/CometShard]彗星碎片贴图切换"
 		}
 
 		DragonfruitResprite: {
-			// Tooltip: Determines the spirte of Dragonfruit
-			// Label: Dragonfruit Resprite
+			Tooltip: 切换龙果的贴图
+			Label: "[i:CalamityMod/Dragonfruit]龙果贴图切换"
 		}
 
 		ElderberryResprite: {
-			// Tooltip: Determines the sprite of Elderberry
-			// Label: Elderberry Resprite
+			Tooltip: 切换旧神浆果的贴图
+			Label: "[i:CalamityMod/Elderberry]旧神浆果贴图切换"
 		}
 
 		MiracleFruitResprite: {
-			// Tooltip: Determines the sprite of Miracle Fruit
-			// Label: Miracle Fruit Resprite
+			Tooltip: 切换奇迹之果的贴图
+			Label: "[i:CalamityMod/MiracleFruit]奇迹之果贴图切换"
 		}
 
 		BloodOrangeResprite: {
-			// Tooltip: Determines the sprite of Blood Orange
-			// Label: Blood Orange Resprite
+			Tooltip: 切换血橙的贴图
+			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
 		}
 
 		NecroplasmResprite: {
-			// Tooltip: Determines the sprite of Necroplasm
-			// Label: Necroplasm Resprite
-		}
-
-		NucleogenesisResprite: {
-			// Tooltip: Determines the sprite of Nucleogenesis
-			// Label: Nucleogenesis Resprite
+			Tooltip: 切换灵质的贴图
+			Label: 灵质贴图切换（已废弃，你不应该看到）
 		}
 
 		GalacticaSingularityResprite: {
-			// Tooltip: Determines the sprite of Galactica Singularity
-			// Label: Galactica Singularity Resprite
+			Tooltip: 切换星系异石的贴图
+			Label: 星系异石（已废弃，你不应该看到）
 		}
 	}
 }

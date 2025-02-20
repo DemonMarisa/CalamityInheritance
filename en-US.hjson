@@ -40,5 +40,23 @@ Mods: {
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+
+		Items: {
+			Materials: {
+				NecroplasmTextureChangeHook: {
+					DisplayName: Necroplasm Texture Change Hook
+					Tooltip: ""
+				}
+			}
+
+			Accessories: {
+				Summon: {
+					NucleogenesisLegacy: {
+						DisplayName: Nucleogenesis Legacy
+						Tooltip: ""
+					}
+				}
+			}
+		}
 	}
 }

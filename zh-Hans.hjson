@@ -40,5 +40,23 @@ Mods: {
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+
+		Items: {
+			Materials: {
+				NecroplasmTextureChangeHook: {
+					// DisplayName: Necroplasm Texture Change Hook
+					// Tooltip: ""
+				}
+			}
+
+			Accessories: {
+				Summon: {
+					NucleogenesisLegacy: {
+						// DisplayName: Nucleogenesis Legacy
+						// Tooltip: ""
+					}
+				}
+			}
+		}
 	}
 }

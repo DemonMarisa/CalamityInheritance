@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
             {
                 int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LostSoulFriendly, damage, knockback, player.whoAmI, 2f, 0f);
-                Main.projectile[proj].CalamityInheritance().forceRanged = true;
+                Main.projectile[proj].DamageType = DamageClass.Ranged;
                 Main.projectile[proj].extraUpdates += 2;
             }
             if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 if (type == ProjectileID.Bullet)
                 {
                     int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LostSoulFriendly, damage, knockback, player.whoAmI, 2f, 0f);
-                    Main.projectile[proj].CalamityInheritance().forceRanged = true;
+                    Main.projectile[proj].DamageType = DamageClass.Ranged;
                     Main.projectile[proj].extraUpdates += 2;
                 }
                 else

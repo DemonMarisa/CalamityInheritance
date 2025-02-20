@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         damageMult = 0.7f;
                     int soulDamage = (int)(Projectile.damage * damageMult);
                     int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
-                    Main.projectile[soul].CalamityInheritance().forceRogue = true;
+                    Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
                     if (soul.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();

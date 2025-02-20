@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
                     if (newProjectileId != Main.maxProjectiles)
                     {
-                        Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
+                        Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
                     }
                 }
                 modPlayer.ProjectilHitCounter2 = 0;

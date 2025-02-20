@@ -68,14 +68,16 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProj;
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeSecond; //圣光飞刀的初版贴图
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjSecond;
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeOne; //圣光飞刀的初版贴图
+        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjOne;
+        //星体击碎者
+        public static Asset<Texture2D> StellarContemptNew; //圣光飞刀的初版贴图
+        public static Asset<Texture2D> StellarContemptOld;
         #endregion
         #region 材料
         //星系异石
         public static Asset<Texture2D> GS;
         public static Asset<Texture2D> GSAlter;
-        //核子
-        public static Asset<Texture2D> SummonNuke;
-        public static Asset<Texture2D> SummonNukeAlter;
         //红色的那个鬼魂
         public static Asset<Texture2D> RedSoul;
         public static Asset<Texture2D> RedSoulAlter;
@@ -161,10 +163,7 @@ namespace CalamityInheritance.Texture
             /*各类材料*/
             GS = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/GalacticaSingularity");
             GSAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/GalacticaSingularityAlter");
-
-            SummonNuke = ModContent.Request<Texture2D>("CalamityMod/Items/Accessories/Nucleogenesis");
-            SummonNukeAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/NucleogenesisAlter");
-
+            //灵质
             RedSoul = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/Necroplasm");
             RedSoulAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantoplasmAlter");
             //增益
@@ -244,8 +243,7 @@ namespace CalamityInheritance.Texture
             //材料
             GS = null;
             GSAlter = null;
-            SummonNuke = null;
-            SummonNukeAlter = null;
+
             RedSoul = null;
             RedSoulAlter = null;
             //增益

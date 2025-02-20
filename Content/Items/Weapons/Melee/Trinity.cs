@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 int proj = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.6), knockback, Main.myPlayer);
                 if (proj.WithinBounds(Main.maxProjectiles))
                 {
-                    Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                    Main.projectile[proj].DamageType = DamageClass.Melee;
                     Main.projectile[proj].penetrate = 1;
                 }
             }

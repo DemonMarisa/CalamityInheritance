@@ -168,15 +168,19 @@ namespace CalamityInheritance
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
-        public int GalacticaSingularityResprite{ get; set; }
+        public int StellarContemptResprite { get; set; }
+        
+        #region 材料/物品贴图
+        /*星系异石
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 2)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
-        public int NucleogenesisResprite{ get; set; }
-
+        public int GalacticaSingularityResprite{ get; set; }
+        */
+        /*灵质
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 2)]
@@ -184,7 +188,7 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int NecroplasmResprite{ get; set; }
-
+        */
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 2)]
@@ -240,7 +244,8 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int PhantomHeartResprite{ get; set; }
-        
+
+        #endregion
 
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]

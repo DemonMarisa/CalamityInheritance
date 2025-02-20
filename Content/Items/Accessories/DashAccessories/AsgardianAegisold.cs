@@ -90,6 +90,11 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
             // Immune to God Slayer Inferno itself
             player.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = true;
+
+            if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
+            {
+                player.endurance += 0.1f;
+            }
         }
 
         public override void AddRecipes()

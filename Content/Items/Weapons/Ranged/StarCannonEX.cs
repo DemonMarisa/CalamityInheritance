@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 });
                 int star = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
                 if (star.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[star].CalamityInheritance().forceRanged = true;
+                    Main.projectile[star].DamageType = DamageClass.Ranged;
             }
             return false;
         }

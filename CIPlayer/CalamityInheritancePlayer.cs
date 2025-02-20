@@ -35,7 +35,7 @@ namespace CalamityInheritance.CIPlayer
         public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
         #region Timer and Counter
         public int modStealth = 1000;
-
+        public int summonProjCooldown = 0;
         public int ProjectilHitCounter;
         public int ProjectilHitCounter2;
         #endregion
@@ -67,6 +67,7 @@ namespace CalamityInheritance.CIPlayer
         public bool ancientBloodFact = false;//血契
         public bool elementalGauntlet = false;//元素之握
         public bool fuckAllofYouEHeart = false;
+        public bool nucleogenesisLegacy = false;//核子之源
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -151,9 +152,7 @@ namespace CalamityInheritance.CIPlayer
         public int CITotalMaxShieldDurability => CIsponge ? TheSpongetest.CIShieldDurabilityMax : 0;
 
         public int CISpongeShieldDurability = 0;
-        internal bool CISpongeIfFirstCharge = false; // 海绵是否第一次使用
-        internal bool CIspongeSetFirstChargeStats = false; //第一次使用时不会减少玩家防御数值
-        internal bool CISpongeFullyChargeFlag = false; //完全充能时的Flag
+
         public bool CIsponge = false;
         public bool CIspongeShieldVisible = false;
         internal float CIspongeShieldPartialRechargeProgress = 0f;
@@ -244,20 +243,13 @@ namespace CalamityInheritance.CIPlayer
         public override void ResetEffects()
         {
             RespriteOptions(); //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
+
             #region Accessories
             int percentMaxLifeIncrease = 0;
 
             ElementalQuiver = false;
             fleshTotemold = false;
             CoreOfTheBloodGod = false;
-            if(CISpongeIfFirstCharge == true) //第一次使用
-            {
-                CIspongeSetFirstChargeStats = true; //取Stas=True
-            }
-            else if(CISpongeShieldDurability == TheSpongetest.CIShieldDurabilityMax) //完全充能的Flag
-            {
-                CISpongeIfFirstCharge = false;
-            }
 
             if (CoreOfTheBloodGod)
                 percentMaxLifeIncrease += 25;
@@ -294,6 +286,7 @@ namespace CalamityInheritance.CIPlayer
             hotEStats = false;
             buffEStats = false;
             fuckAllofYouEHeart = false;
+            nucleogenesisLegacy = false;//核子
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -787,7 +780,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (CalamityInheritanceKeybinds.AegisHotKey.JustPressed)
             {
-                if (elysianAegis && !Player.mount.Active)
+                if (elysianAegis)
                 {
                     elysianGuard = !elysianGuard;
                 }

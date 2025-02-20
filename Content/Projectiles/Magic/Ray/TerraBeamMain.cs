@@ -118,6 +118,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 while (Collision.SolidCollision((target.Center + spawnOffset).ToTileCoordinates().ToVector2(), 4, 4) && tries < 10);
 
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center + spawnOffset, Main.rand.NextVector2CircularEdge(6f, 6f), shardType, shardDamage, Projectile.knockBack, Projectile.owner);
+                
             }
 
             ShardCooldown = 3f;

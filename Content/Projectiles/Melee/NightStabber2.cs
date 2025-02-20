@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, tentacleXDirection,  tentacleYDirection);
             if (newProjectileId != Main.maxProjectiles)
             {
-                Main.projectile[newProjectileId].CalamityInheritance().forceMelee = true;
+                Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
             }
         }
     }

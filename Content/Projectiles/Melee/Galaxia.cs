@@ -142,14 +142,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 1200);
                 player.AddBuff(ModContent.BuffType<GravityNormalizerBuff>(), 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<AstralStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (jungle)
             {
                 target.AddBuff(ModContent.BuffType<Plague>(), 1200);
                 player.AddBuff(BuffID.Thorns, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.Leaf, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (snow)
             {
@@ -162,7 +162,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 target.AddBuff(ModContent.BuffType<CrushDepth>(), 1200);
                 player.AddBuff(BuffID.Wet, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity * 0.25f, ProjectileID.FlaironBubble, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (corrupt)
             {
@@ -172,7 +172,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Main.projectile[ball].penetrate = 1;
                 }
-                Main.projectile[ball].CalamityInheritance().forceMelee = true;
+                Main.projectile[ball].DamageType = DamageClass.Melee;
             }
             else if (crimson)
             {
@@ -182,7 +182,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Main.projectile[ball].penetrate = 1;
                 }
-                Main.projectile[ball].CalamityInheritance().forceMelee = true;
+                Main.projectile[ball].DamageType = DamageClass.Melee;
             }
             else if (dungeon)
             {
@@ -193,28 +193,28 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Main.projectile[ball].penetrate = 1;
                 }
-                Main.projectile[ball].CalamityInheritance().forceMelee = true;
+                Main.projectile[ball].DamageType = DamageClass.Melee;
             }
             else if (desert)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 1200);
                 player.AddBuff(BuffID.Endurance, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.BlackBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (glow)
             {
                 target.AddBuff(ModContent.BuffType<TemporalSadness>(), 30);
                 player.AddBuff(BuffID.Spelunker, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.Mushroom, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (hell)
             {
                 target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 1200);
                 player.AddBuff(BuffID.Inferno, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.BallofFire, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (holy)
             {
@@ -226,13 +226,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.projectile[proj].usesLocalNPCImmunity = true;
                     Main.projectile[proj].localNPCHitCooldown = -1;
                 }
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (nebula)
             {
                 player.AddBuff(BuffID.MagicPower, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.NebulaBlaze1, Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (stardust)
             {
@@ -242,7 +242,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Main.projectile[ball].penetrate = 1;
                 }
-                Main.projectile[ball].CalamityInheritance().forceMelee = true;
+                Main.projectile[ball].DamageType = DamageClass.Melee;
             }
             else if (solar)
             {
@@ -258,7 +258,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.projectile[proj].usesLocalNPCImmunity = true;
                     Main.projectile[proj].localNPCHitCooldown = -1;
                 }
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else
             {
@@ -269,7 +269,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     Main.projectile[proj].penetrate = 1;
                 }
-                Main.projectile[proj].CalamityInheritance().forceMelee = true;
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
         }
 

@@ -468,7 +468,10 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
-
+            #region 计数器
+            if (summonProjCooldown > 0f)
+                summonProjCooldown -= 1;
+            #endregion
             #region Lore
             if (usPlayer.kingSlimeLore)
             {
@@ -1129,11 +1132,6 @@ namespace CalamityInheritance.CIPlayer
                     Player.aggro += (int)((5f - shieldInvinc) * 220f);
                     Player.statDefense += (int)((5f - shieldInvinc) * 8f);
                     Player.moveSpeed *= 0.85f;
-
-                    if (Player.mount.Active)
-                    {
-                        elysianGuard = false;
-                    }
                 }
 
                 // Remove buff

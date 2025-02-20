@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 int soulDamage = (int)(Projectile.damage * 0.7f);
                 int projID = ss ? ModContent.ProjectileType<PhantasmalRuinGhost>() : ModContent.ProjectileType<LostSoulFriendly>();
                 int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[soul].CalamityInheritance().forceRogue = true;
+                Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
                 int damage = (int)(Projectile.damage * 0.25f);
                 float kb = Projectile.knockBack * (ss ? 1f : 0.25f);
                 Vector2 velocity = ss

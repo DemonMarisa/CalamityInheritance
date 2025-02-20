@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CreateRecipe().
                 AddIngredient(ItemID.StarVeil).
                 AddIngredient(ItemID.CharmofMyths).
-                AddIngredient<AstralBar>(10).
+                AddIngredient(ItemID.MeteoriteBar, 10).
                 AddIngredient<SeaPrism>(15).
                 AddTile(TileID.LunarCraftingStation).
                 Register();

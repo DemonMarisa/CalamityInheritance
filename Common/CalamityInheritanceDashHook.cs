@@ -26,6 +26,7 @@ namespace CalamityInheritance.Common
             MethodInfo originalMethod = typeof(CalamityPlayer).GetMethod(nameof(CalamityPlayer.ModDashMovement));
             MonoModHooks.Add(originalMethod, new Action<CalamityPlayer>(ModDashMovement_Hook));
         }
+
         public static int DashCoolDown = CalamityInheritance.Instance.infernumMode == null ? 30 : 20;
         //用于修改原灾冲刺的hook
         public static void ModDashMovement_Hook(CalamityPlayer self)

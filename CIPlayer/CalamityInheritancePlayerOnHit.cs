@@ -20,6 +20,9 @@ using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Summon;
+using System.Collections.Generic;
+using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -52,7 +55,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (providenceLore)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+                target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
             }
             if (holyWrath)
             {
@@ -63,7 +66,6 @@ namespace CalamityInheritance.CIPlayer
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
             }
             #endregion
-
             #region GodSlayer
             if (Main.player[projectile.owner].CalamityInheritance().godSlayerMagic && projectile.DamageType == DamageClass.Magic)
             {
@@ -214,6 +216,7 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)(finalDamage * 2.0), 0, projectile.owner, num6, 0f);
             }
             #endregion
+
             var source = projectile.GetSource_FromThis();
             if (silvaMageold && silvaMageCooldownold <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
             {
@@ -341,6 +344,17 @@ namespace CalamityInheritance.CIPlayer
                     target.AddBuff(BuffID.Venom, 300);
                 }
             }
+            if (summon)
+            {
+                if (nucleogenesisLegacy)
+                {
+                    target.AddBuff(BuffID.Electrified, 120);
+                    target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
+                    target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300, false);
+                    target.AddBuff(ModContent.BuffType<Irradiated>(), 300, false);
+                    target.AddBuff(ModContent.BuffType<Shadowflame>(), 300, false);
+                }
+            }
         }
         #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
@@ -360,8 +374,8 @@ namespace CalamityInheritance.CIPlayer
                     double healMult = 0.1;
                     healMult -= proj.numHits * healMult * 0.5;
                     int heal = (int)Math.Round(damage * healMult);
-                    if (heal > 100)
-                        heal = 100;
+                    if (heal > 25)
+                        heal = 25;
 
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
@@ -376,6 +390,8 @@ namespace CalamityInheritance.CIPlayer
 
             if (proj.CountsAsClass<ThrowingDamageClass>())
                 RogueOnHit(proj, modProj, position, crit, npcCheck);
+            if (proj.CountsAsClass<SummonDamageClass>() && !proj.CountsAsClass<SummonMeleeSpeedDamageClass>())
+                SummonOnHit(proj, modProj, position, crit, npcCheck);
         }
         #endregion
         #region Rogue
@@ -400,5 +416,30 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
+        private static void SummonOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
+        {
+            Player player = Main.player[proj.owner];
+
+            var source = proj.GetSource_FromThis();
+
+            CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
+
+            List<int> summonExceptionList = new List<int>()
+            {
+                ModContent.ProjectileType<ApparatusExplosion>(),
+            };
+
+            if (summonExceptionList.TrueForAll(x => proj.type != x))
+            {
+                if (CIplayer.summonProjCooldown <= 0)
+                {
+                    if (CIplayer.nucleogenesisLegacy)
+                    {
+                        Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
+                        CIplayer.summonProjCooldown = 25;
+                    }
+                }
+            }
+        }
     }
 }

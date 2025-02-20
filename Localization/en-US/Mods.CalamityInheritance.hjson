@@ -244,11 +244,6 @@ Configs: {
 			Label: Necroplasm Resprite
 		}
 
-		NucleogenesisResprite: {
-			Tooltip: Determines the sprite of Nucleogenesis
-			Label: Nucleogenesis Resprite
-		}
-
 		GalacticaSingularityResprite: {
 			Tooltip: Determines the sprite of Galactica Singularity
 			Label: Galactica Singularity Resprite
