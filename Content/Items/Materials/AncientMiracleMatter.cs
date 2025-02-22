@@ -1,7 +1,6 @@
 ﻿using System;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

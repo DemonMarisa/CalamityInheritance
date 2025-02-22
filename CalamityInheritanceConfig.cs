@@ -1,11 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Runtime.Serialization;
-using CalamityMod;
-using CalamityMod.UI;
-using CalamityMod.UI.DraedonsArsenal;
-using CalamityMod.UI.Rippers;
-using CalamityMod.UI.SulphurousWaterMeter;
-using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader.Config;
 

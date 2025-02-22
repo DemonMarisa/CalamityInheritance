@@ -1,14 +1,8 @@
 ﻿using CalamityMod.CalPlayer.Dashes;
 using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod.Cooldowns;
-using CalamityMod.Balancing;
 using CalamityMod.EntitySources;
 using CalamityMod.Enums;
 using Terraria;
@@ -16,8 +10,6 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Balancing;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityMod.Items.Mounts;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.Utilities;
 
 /* 
  * 这一段是从灾厄里面复制过来的盾冲实现机制

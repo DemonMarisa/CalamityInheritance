@@ -10,9 +10,6 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
 

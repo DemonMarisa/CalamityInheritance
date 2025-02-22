@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Accessories;
 using Terraria;
 using Terraria.ModLoader;
 

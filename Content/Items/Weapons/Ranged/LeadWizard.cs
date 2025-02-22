@@ -6,7 +6,6 @@ using Terraria;
 using CalamityMod;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged

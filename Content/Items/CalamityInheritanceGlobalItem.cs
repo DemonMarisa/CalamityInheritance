@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Utilities;
 using CalamityMod;

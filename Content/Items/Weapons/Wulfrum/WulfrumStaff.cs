@@ -1,10 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -12,13 +6,6 @@ using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Magic;
-using Mono.Cecil;
-using System.Security.Policy;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityMod;
-using Terraria.GameContent;
-using System.Drawing;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {

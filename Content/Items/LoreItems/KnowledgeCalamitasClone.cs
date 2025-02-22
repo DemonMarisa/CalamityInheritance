@@ -1,9 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
-using Microsoft.CodeAnalysis.Operations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

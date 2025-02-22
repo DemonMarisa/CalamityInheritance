@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityMod.NPCs;
 
 namespace CalamityInheritance.NPCs
 {

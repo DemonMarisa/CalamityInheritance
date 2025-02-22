@@ -1,18 +1,10 @@
-﻿using CalamityMod.Items.Weapons.Melee;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.Ranged;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow

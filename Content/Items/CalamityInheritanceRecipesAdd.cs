@@ -90,13 +90,13 @@ namespace CalamityInheritance.Content.Items
             #region WeaponsConvertandrecipeadd
 
             Recipe.Create(ModContent.ItemType<GalaxySmasher>()).
-                AddIngredient<StellarContemptOld>().
+                AddIngredient<MeleeTypeHammerStellarContemptLegacy>().
                 AddIngredient<CosmiliteBar>(10).
                 AddTile<CosmicAnvil>().
                 Register();
 
             Recipe.Create(ModContent.ItemType<StellarContempt>()).
-                AddIngredient<FallenPaladinsHammerOld>().
+                AddIngredient<MeleeTypeHammerFallenPaladinsLegacy>().
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
@@ -833,7 +833,7 @@ namespace CalamityInheritance.Content.Items
         {
             #region Demonshade  Weapon
             Recipe.Create(ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>()).
-                AddIngredient<GalaxySmasherMelee>().
+                AddIngredient<MeleeTypeHammerGalaxySmasherLegacy>().
                 AddIngredient(ItemID.SoulofMight, 30).
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForgeTiles>().

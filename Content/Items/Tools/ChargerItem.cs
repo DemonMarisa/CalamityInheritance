@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
 using Terraria.Audio;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.DraedonMisc;
-using static System.Collections.Specialized.BitVector32;
-using CalamityMod.Tiles.DraedonStructures;
 using CalamityMod.Items.Placeables.DraedonStructures;
 
 namespace CalamityInheritance.Content.Items.Tools

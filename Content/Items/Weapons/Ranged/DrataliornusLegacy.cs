@@ -1,18 +1,13 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -91,6 +86,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 int flameID = ModContent.ProjectileType<DragonBowFlame>();
                 const int numFlames = 7;
                 int flameDamage = (int)(damage * RightClickDamageRatio);
+                if(Main.zenithWorld)
+                    flameDamage += flameDamage; //处于天顶世界时这玩意弹幕右键基础面板会被双倍
 
                 const float fifteenHundredthPi = 0.471238898f;
                 Vector2 spinningpoint = velocity;

@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Projectiles;
-using System;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;

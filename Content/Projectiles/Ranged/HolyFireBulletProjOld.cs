@@ -1,14 +1,8 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Ammo;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Projectiles;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;

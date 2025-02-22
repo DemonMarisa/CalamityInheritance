@@ -1,16 +1,5 @@
-﻿using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
-using MonoMod.Core.Utils;
-using Terraria.Audio;
-using Terraria.ID;
-using CalamityMod.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {

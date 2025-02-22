@@ -202,18 +202,18 @@ Test: {
 }
 
 GalaxySmasherMelee: {
-	DisplayName: 银河溃灭者[Legacy]
-	Tooltip: 击中敌人时爆炸并释放死亡射线
+	// DisplayName: Galaxy Smasher Legacy Melee
+	// Tooltip: Explodes and summons death lasers on enemy hits
 }
 
 StellarContemptOld: {
-	DisplayName: 星体击碎者[Legacy]
-	Tooltip: 击中敌人时天降月炎射线
+	// DisplayName: Stellar Contempt Legacy Melee
+	// Tooltip: Lunar flares rain down on enemy hits
 }
 
 FallenPaladinsHammerOld: {
-	DisplayName: 堕落圣骑士锤[Legacy]
-	Tooltip: 击中敌人时爆炸
+	// DisplayName: Fallen Paladin's Hammer Legacy Melee
+	// Tooltip: Explodes on enemy hits
 }
 
 Trinity: {
@@ -236,7 +236,60 @@ WulfrumBlade: {
 	DisplayName: 钨钢阔剑[Legacy]
 }
 
-KelvinCatalystMelee: {
+TerraDiskMeleeLegacy: {
+	// DisplayName: Terra Disk Melee Legacy
+	/* Tooltip:
+		'''
+		Legacy Terra Disk/Samsara Slicer for Melee class
+		Throws a disk that has a chance to generate several disks if enemies are near it
+		''' */
+}
+
+MeleeTypeCorpusAvertor: {
+	DisplayName: 憎恶血刃·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的憎恶血刃
+		基于造成的伤害吸取生命
+		你的生命值越低，这把武器的伤害和吸血效果越高
+		'''
+}
+
+MeleeTypeElementalDisk: {
+	DisplayName: 元素飞盘·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的元素飞盘
+		掷出元素飞盘，敌怪在附近时有几率生成数个新的元素飞盘
+		飞盘无视无敌帧
+		'''
+}
+
+MeleeTypeEradicator: {
+	DisplayName: 湮灭·近战版本[Legacy]
+	Tooltip:
+		'''
+		近战版本的湮灭
+		投出一个向敌人发射星云激光的飞盘
+		'''
+}
+
+MeleeTypeHammerFallenPaladinsLegacy: {
+	DisplayName: 堕落圣骑士锤[Legacy]
+	Tooltip: 击中敌人时爆炸
+}
+
+MeleeTypeHammerGalaxySmasherLegacy: {
+	DisplayName: 银河溃灭者[Legacy]
+	Tooltip: 击中敌人时爆炸并释放死亡射线
+}
+
+MeleeTypeHammerStellarContemptLegacy: {
+	DisplayName: 星体击碎者[Legacy]
+	Tooltip: 击中敌人时天降月炎射线
+}
+
+MeleeTypeKelvinCatalyst: {
 	DisplayName: 冰灵旋刃·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -246,16 +299,12 @@ KelvinCatalystMelee: {
 		'''
 }
 
-SubductionSlicerMelee: {
-	Tooltip:
-		'''
-		近战版本的板块斩切者
-		扔出会在击中敌人时爆炸的飞镰
-		'''
-	DisplayName: 板块斩切者·近战版本[Legacy]
+MeleeTypeMangroveChakram: {
+	DisplayName: 红木环刃·近战版本[Legacy]
+	Tooltip: 近战版本的红木环刃
 }
 
-NanoblackReaperLegacyMelee: {
+MeleeTypeNanoblackReaper: {
 	DisplayName: 纳米黑死神·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -266,45 +315,25 @@ NanoblackReaperLegacyMelee: {
 		'''
 }
 
-ElementalDiskLegacyMelee: {
-	DisplayName: 元素飞盘·近战版本[Legacy]
+MeleeTypeSubductionSlicer: {
+	DisplayName: 板块斩切者·近战版本[Legacy]
 	Tooltip:
 		'''
-		近战版本的元素飞盘
-		掷出元素飞盘，敌怪在附近时有几率生成数个新的元素飞盘
-		飞盘无视无敌帧
+		近战版本的板块斩切者
+		扔出会在击中敌人时爆炸的飞镰
 		'''
 }
 
-EradicatorLegacyMelee: {
-	DisplayName: 湮灭·近战版本[Legacy]
-	Tooltip:
-		'''
-		近战版本的湮灭
-		投出一个向敌人发射星云激光的飞盘
-		'''
-}
-
-MangroveChakramLegacyMelee: {
-	DisplayName: 红木环刃·近战版本[Legacy]
-	Tooltip: 近战版本的红木环刃
-}
-
-CorpusAvertorLegacyMelee: {
-	DisplayName: 憎恶血刃·近战版本[Legacy]
-	Tooltip:
-		'''
-		近战版本的憎恶血刃
-		基于造成的伤害吸取生命
-		你的生命值越低，这把武器的伤害和吸血效果越高
-		'''
-}
-
-TerraDiskMeleeLegacy: {
+MeleeTypeTerraDisk: {
 	DisplayName: 泰拉飞盘·近战版本[Legacy]
 	Tooltip:
 		'''
 		近战版本的泰拉飞盘, 或者说, 回春环刃
 		掷出泰拉飞盘，有敌人在附近时有几率分裂出新的飞盘
 		'''
+}
+
+MeleeTypeHammerPwnageLegacy: {
+	// Tooltip: ""
+	// DisplayName: Melee Type Hammer Pwnage Legacy
 }

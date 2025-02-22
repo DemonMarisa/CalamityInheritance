@@ -1,19 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Projectiles.Magic;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityMod.Projectiles.Typeless;
-using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {

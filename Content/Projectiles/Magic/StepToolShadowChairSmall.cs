@@ -1,10 +1,8 @@
 using System;
-using System.Drawing;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

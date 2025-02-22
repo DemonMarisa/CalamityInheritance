@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod.Items;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 namespace CalamityInheritance.Content.Items.Accessories

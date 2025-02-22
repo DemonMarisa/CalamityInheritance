@@ -1,11 +1,6 @@
 ﻿using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;

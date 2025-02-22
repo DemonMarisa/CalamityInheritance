@@ -1,12 +1,6 @@
 ﻿using CalamityMod.Dusts;
-using CalamityMod.Items.Placeables.Furniture.Monoliths;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.ObjectInteractions;
@@ -17,7 +11,6 @@ using Terraria.ObjectData;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Enums;
-using CalamityMod;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Utilities;
 

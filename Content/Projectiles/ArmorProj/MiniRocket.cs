@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj

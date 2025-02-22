@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;

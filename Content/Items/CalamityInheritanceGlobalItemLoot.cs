@@ -10,7 +10,6 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Armor.YharimAuric;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -91,7 +90,7 @@ namespace CalamityInheritance.Content.Items
                 //Scarlet:只有在微光关闭的时候这玩意才会正常掉落
                 if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
                 {
-                    itemloot.Add(ModContent.ItemType<EradicatorLegacyMelee>(), 3);
+                    itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
                 }
             }
 
@@ -100,7 +99,7 @@ namespace CalamityInheritance.Content.Items
 
                 if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
                 {
-                    itemloot.Add(ModContent.ItemType<CorpusAvertorLegacyMelee>(), 3);
+                    itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
                 }
 
             }

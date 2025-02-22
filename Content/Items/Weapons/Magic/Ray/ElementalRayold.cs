@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.ID;

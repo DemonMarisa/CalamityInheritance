@@ -7,8 +7,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories

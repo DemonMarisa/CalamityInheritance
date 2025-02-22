@@ -4,7 +4,6 @@ using CalamityMod;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Enums;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;

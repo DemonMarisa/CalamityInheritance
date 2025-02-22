@@ -4,7 +4,6 @@ using CalamityMod;
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.DraedonsArsenal;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

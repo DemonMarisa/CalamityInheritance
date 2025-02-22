@@ -1,12 +1,10 @@
-﻿using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

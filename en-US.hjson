@@ -59,6 +59,15 @@ Mods: {
 					}
 				}
 			}
+
+			Weapons: {
+				Rogue: {
+					RogueTypeHammerPwnageLegacy: {
+						Tooltip: ""
+						DisplayName: Rogue Type Hammer Pwnage Legacy
+					}
+				}
+			}
 		}
 
 		NPCs: {

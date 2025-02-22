@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.Content.Items.Weapons.DraedonsArsenal;
 using CalamityMod;
-using CalamityMod.Buffs.Summon;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria;

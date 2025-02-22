@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             if (Projectile.Calamity().stealthStrike)
             {
-                Texture2D tex = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/SpearofDestinyGlowLegacy").Value;
+                Texture2D tex = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/SpearofDestinyProjectileLegacyGlow").Value;
                 Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, 
                 tex.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             }

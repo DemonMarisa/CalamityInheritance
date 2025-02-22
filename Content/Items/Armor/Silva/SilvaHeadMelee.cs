@@ -3,7 +3,6 @@ using CalamityMod.Items.Materials;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;

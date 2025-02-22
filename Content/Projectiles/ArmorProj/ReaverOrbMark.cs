@@ -1,15 +1,7 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityInheritance;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles.Magic.Ray;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {

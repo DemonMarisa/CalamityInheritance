@@ -5,8 +5,6 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Content.Projectiles.Summon;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj

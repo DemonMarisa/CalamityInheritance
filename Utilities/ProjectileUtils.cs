@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using CalamityMod;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Melee.Yoyos;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.Utilities
 {
@@ -96,5 +84,62 @@ namespace CalamityInheritance.Utilities
                 projectile.extraUpdates = projectile.Calamity().defExtraUpdates;
             }
         }
+        ///<summary>
+        ///用于回旋镖的返程AI.
+        ///注:这一函数不会实现回旋镖返程至玩家身上时消失的效果
+        ///<param name="player">
+        ///玩家本身</param>
+        ///<param name="boomerang">回旋镖本身.</param>
+        ///<param name="rSpeed">返程速度.</param>
+        ///<param name="acceleration">返程加速度.</param>
+        ///<param name="minKillRangeBoomerangToPlr">使回旋镖执行kill()之前回旋镖与玩家之间的最小距离.默认3000f</param>
+        ///</summary>
+        public static void BoomerangReturningAI(Player player, Projectile boomerang, float rSpeed, float acceleration, float? minKillRangeBoomerangToPlr = 3000f)
+        {
+            boomerang.tileCollide = false;
+            Vector2 playerCenter = player.Center;
+            float xDist = playerCenter.X - boomerang.Center.X;
+            float yDist = playerCenter.Y - boomerang.Center.Y;
+            float dist = (float)Math.Sqrt(xDist * xDist + yDist * yDist);
+            if(minKillRangeBoomerangToPlr.HasValue)
+            {
+                if(dist>minKillRangeBoomerangToPlr.Value)
+                boomerang.Kill();
+            }
+            else
+            {
+                if(dist > 3000f)
+                boomerang.Kill();
+            }
+
+            dist = rSpeed / dist;
+            xDist *= dist;
+            yDist *= dist;
+            
+            if (boomerang.velocity.X < xDist)
+            {
+                boomerang.velocity.X += acceleration;
+                if (boomerang.velocity.X < 0f && xDist > 0f)
+                    boomerang.velocity.X += acceleration;
+            }
+            else if (boomerang.velocity.X > xDist)
+            {
+                boomerang.velocity.X -= acceleration;
+                if (boomerang.velocity.X > 0f && xDist < 0f)
+                    boomerang.velocity.X -= acceleration;
+            }
+            if (boomerang.velocity.Y < yDist)
+            {
+                boomerang.velocity.Y += acceleration;
+                if (boomerang.velocity.Y < 0f && yDist > 0f)
+                    boomerang.velocity.Y += acceleration;
+            }
+            else if (boomerang.velocity.Y > yDist)
+            {
+                boomerang.velocity.Y -= acceleration;
+                if (boomerang.velocity.Y > 0f && yDist < 0f)
+                    boomerang.velocity.Y -= acceleration;
+            }
+        } 
     }
 }

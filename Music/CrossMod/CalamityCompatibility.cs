@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using CalamityMod.NPCs.DevourerofGods;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Music.CrossMod
@@ -8,17 +7,13 @@ namespace CalamityInheritance.Music.CrossMod
     public class CalamityCompatibility : ModSystem
     {
         /// <summary>
-        /// Evil mod
+        /// Fuck You Calamity
         /// </summary>
         public static Mod CalamityMod { get; set; }
 
         #region Mechs types
         public static int DoGHead{ get; private set; }
-        // public static int DoGBody{ get; private set; }
-        // public static int DoGTail{ get; private set; }
-        // public static int DoGHeadP2{ get; private set; }
-        // public static int DoGBodyP2{ get; private set; }
-        // public static int DoGTailP2{ get; private set; }
+
 
         public static readonly int[] ExoMechNpcTypes =
         [

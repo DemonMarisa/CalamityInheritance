@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee

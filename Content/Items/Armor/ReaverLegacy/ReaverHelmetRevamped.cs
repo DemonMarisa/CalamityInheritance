@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 using CalamityInheritance.Buffs.Summon;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using SteelSeries.GameSense;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {

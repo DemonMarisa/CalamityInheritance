@@ -1,22 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using CalamityMod.Balancing;
-using CalamityMod.CalPlayer;
-using CalamityMod.Cooldowns;
-using CalamityMod.Events;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Potions.Alcohol;
-using CalamityMod.World;
-using Microsoft.Xna.Framework;
+﻿using CalamityMod.CalPlayer;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod.Enums;
 using static Terraria.Player;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
-using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles;
 
 namespace CalamityInheritance.Utilities

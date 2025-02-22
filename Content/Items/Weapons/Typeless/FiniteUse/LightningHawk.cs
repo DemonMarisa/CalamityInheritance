@@ -1,7 +1,6 @@
 using CalamityInheritance.Content.Items.Ammo.FiniteUse;
 using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Terraria;

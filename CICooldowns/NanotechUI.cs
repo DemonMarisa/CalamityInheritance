@@ -1,16 +1,10 @@
 ﻿using System;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
 using CalamityMod.Cooldowns;
-using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.Localization;

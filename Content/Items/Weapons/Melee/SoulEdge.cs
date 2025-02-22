@@ -10,7 +10,6 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

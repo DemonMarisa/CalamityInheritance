@@ -110,52 +110,50 @@ Celestusold: {
 		'''
 }
 
-RogueTypeFallenPaladinsHammer: {
-	DisplayName: 真圣骑士锤·盗贼版本[Legacy]
-	Tooltip:
-		'''
-		盗贼版本的真圣骑士之锤
-		击中敌人时爆炸
-		'''
-}
-
-RogueTypeGalaxySmasher: {
+RogueTypeHammerGalaxySmasher: {
 	DisplayName: 银河溃灭者·盗贼版本[Legacy]
 	Tooltip:
 		'''
 		盗贼版本的银河溃灭者
 		击中敌人时爆炸并释放死亡射线
+		潜伏攻击使锤子在回归玩家后逆转方向并挂在距离最近的敌人身上
+		而后锤子将会收回并被再次投出以追击敌人
 		'''
 }
 
-RogueTypeStellarContempt: {
+RogueTypeHammerStellarContempt: {
 	DisplayName: 星体击碎者·盗贼版本[Legacy]
 	Tooltip:
 		'''
 		盗贼版本的星体击碎者
 		击中敌人时天降月炎射线
+		潜伏攻击使锤子在回归玩家后逆转方向并挂在距离最近的敌人身上
+		挂在敌人身上时会持续天降月炎射线
 		'''
 }
 
-RogueTypeTriactisTruePaladinianMageHammerofMight: {
+RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 	DisplayName: 真·泰阿克提斯之圣骑士魔锤·盗贼版本[Legacy]
 	Tooltip:
 		'''
 		盗贼版本的……超级无敌大锤子
 		击中敌人时爆炸
+		潜伏攻击使锤子在回归玩家后逆转方向并挂在距离最近的敌人身上
+		挂载的时间非常长, 且也会不断地造成爆炸
 		'''
 }
 
-ScourgeoftheCosmosRogue: {
-	DisplayName: 灾劫宙怨·盗贼版本[Legacy]
+RogueTypeHammerTruePaladins: {
+	DisplayName: 真圣骑士锤·盗贼版本[Legacy]
 	Tooltip:
 		'''
-		掷出一个宇宙灾虫，击中敌人和方块时反弹并释放出追踪的小宇宙灾虫
-		潜伏攻击会反弹更多次数，弹出更多的小宇宙灾虫
+		盗贼版本的真圣骑士之锤/堕落圣骑士锤
+		击中敌人时爆炸
+		潜伏攻击会同时投出两个锤子, 其中一个锤子返程后会逆转方向并追踪敌人
 		'''
 }
 
-EmpyreanKnivesLegacyRogue: {
+RogueTypeKnivesEmpyrean: {
 	DisplayName: 苍穹飞刀·盗贼版本[Legacy]
 	Tooltip:
 		'''
@@ -165,13 +163,22 @@ EmpyreanKnivesLegacyRogue: {
 		'''
 }
 
-ShadowspecKnivesLegacyRogue: {
+RogueTypeKnivesShadowspec: {
 	DisplayName: 圣光飞刀·盗贼版本[Legacy]
 	Tooltip:
 		'''
 		盗贼版本的圣光飞刀
 		投出一簇能够弹射并治疗玩家的飞刀
 		飞刀现在造成更多的伤害，而且飞行速度也更快了
-		治疗的效率也更强了
+		'''
+}
+
+RogueTypeScourgeoftheCosmos: {
+	DisplayName: 灾劫宙怨·盗贼版本[Legacy]
+	Tooltip:
+		'''
+		掷出一个宇宙灾虫，击中敌人和方块时反弹并释放出追踪的小宇宙灾虫
+		潜伏攻击会反弹更多次数，弹出更多的小宇宙灾虫
+		小宇宙灾虫击中敌人时会弹开并再次追击
 		'''
 }

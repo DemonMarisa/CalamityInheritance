@@ -1,9 +1,6 @@
 ﻿using CalamityMod.CalPlayer.Dashes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader.Core;
 
 namespace CalamityInheritance.CIPlayer.Dash

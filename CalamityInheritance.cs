@@ -1,30 +1,12 @@
-using CalamityMod.CalPlayer;
 using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
-using static Terraria.GameContent.Animations.IL_Actions.NPCs;
-using Terraria.Graphics.Renderers;
-using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.CIPlayer.Dash;
-using MonoMod.RuntimeDetour;
 using System.Reflection;
 using CalamityInheritance.UI;
-using CalamityMod.UI;
-using CalamityMod.Rarities;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
-using CalamityModMusic.Items.Placeables;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.CIPlayer;
-using System;
-using System.Linq;
-using Terraria.GameContent.Drawing;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.EntitySources;
-using CalamityMod.Enums;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
 using CalamityInheritance.Common;
 
 namespace CalamityInheritance

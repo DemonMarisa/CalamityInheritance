@@ -207,17 +207,17 @@ Test: {
 }
 
 GalaxySmasherMelee: {
-	DisplayName: Galaxy Smasher Melee Legacy
+	DisplayName: Galaxy Smasher Legacy Melee
 	Tooltip: Explodes and summons death lasers on enemy hits
 }
 
 StellarContemptOld: {
-	DisplayName: Stellar Contempt Melee Legacy
+	DisplayName: Stellar Contempt Legacy Melee
 	Tooltip: Lunar flares rain down on enemy hits
 }
 
 FallenPaladinsHammerOld: {
-	DisplayName: Fallen Paladin's Hammer Melee Legacy
+	DisplayName: Fallen Paladin's Hammer Legacy Melee
 	Tooltip: Explodes on enemy hits
 }
 
@@ -241,7 +241,60 @@ WulfrumBlade: {
 	DisplayName: Wulfrum Blade
 }
 
-KelvinCatalystMelee: {
+TerraDiskMeleeLegacy: {
+	DisplayName: Terra Disk Melee Legacy
+	Tooltip:
+		'''
+		Legacy Terra Disk/Samsara Slicer for Melee class
+		Throws a disk that has a chance to generate several disks if enemies are near it
+		'''
+}
+
+MeleeTypeCorpusAvertor: {
+	DisplayName: Corpus Avertor Legacy Melee
+	Tooltip:
+		'''
+		Legacy Corpus Avertor for Melee class
+		Attacks grant lifesteal based on damage dealt
+		The lower your HP, the more damage those and heals the player on enemy hits
+		'''
+}
+
+MeleeTypeElementalDisk: {
+	DisplayName: Elemental Disk Legacy Melee
+	Tooltip:
+		'''
+		Legacy Elemental Disk for Melee class
+		Throws a disk that has a chance to generate a bunch of disks if enemies are near it
+		Disks are ignore immunity frames
+		'''
+}
+
+MeleeTypeEradicator: {
+	DisplayName: Eradicator Legacy Melee
+	Tooltip:
+		'''
+		Legacy Eradicator for Melee class
+		Throws a disk that fires nebula lasers to your enemies
+		'''
+}
+
+MeleeTypeHammerFallenPaladinsLegacy: {
+	DisplayName: Fallen Paladin's Hammer Melee Legacy
+	Tooltip: Explodes on enemy hits
+}
+
+MeleeTypeHammerGalaxySmasherLegacy: {
+	DisplayName: Galaxy Smasher Melee Legacy
+	Tooltip: Explodes and summons death lasers on enemy hits
+}
+
+MeleeTypeHammerStellarContemptLegacy: {
+	DisplayName: Stellar Contempt Melee Legacy
+	Tooltip: Lunar flares rain down on enemy hits
+}
+
+MeleeTypeKelvinCatalyst: {
 	DisplayName: Kelvin Catalyst Legacy Melee
 	Tooltip:
 		'''
@@ -251,16 +304,12 @@ KelvinCatalystMelee: {
 		'''
 }
 
-SubductionSlicerMelee: {
-	Tooltip:
-		'''
-		Legacy Subduction Slicer for Melee class
-		Throws a scythe that explodes on enemy hits
-		'''
-	DisplayName: Subduction Slicer Legacy Melee
+MeleeTypeMangroveChakram: {
+	DisplayName: Mangrove Chakram Legacy Melee
+	Tooltip: Legacy Mangrove Chakram for Melee class
 }
 
-NanoblackReaperLegacyMelee: {
+MeleeTypeNanoblackReaper: {
 	DisplayName: Nanoblack Reaper Legacy Melee
 	Tooltip:
 		'''
@@ -271,45 +320,25 @@ NanoblackReaperLegacyMelee: {
 		'''
 }
 
-ElementalDiskLegacyMelee: {
-	DisplayName: Elemental Disk Legacy Melee
+MeleeTypeSubductionSlicer: {
+	DisplayName: Subduction Slicer Legacy Melee
 	Tooltip:
 		'''
-		Legacy Elemental Disk for Melee class
-		Throws a disk that has a chance to generate a bunch of disks if enemies are near it
-		Disks are ignore immunity frames
+		Legacy Subduction Slicer for Melee class
+		Throws a scythe that explodes on enemy hits
 		'''
 }
 
-EradicatorLegacyMelee: {
-	DisplayName: Eradicator Legacy Melee
-	Tooltip:
-		'''
-		Legacy Eradicator for Melee class
-		Throws a disk that fires nebula lasers to your enemies
-		'''
-}
-
-MangroveChakramLegacyMelee: {
-	DisplayName: Mangrove Chakram Legacy Melee
-	Tooltip: Legacy Mangrove Chakram for Melee class
-}
-
-CorpusAvertorLegacyMelee: {
-	DisplayName: Corpus Avertor Legacy Melee
-	Tooltip:
-		'''
-		Legacy Corpus Avertor for Melee class
-		Attacks grant lifesteal based on damage dealt
-		The lower your HP, the more damage those and heals the player on enemy hits
-		'''
-}
-
-TerraDiskMeleeLegacy: {
-	DisplayName: Terra Disk Melee Legacy
+MeleeTypeTerraDisk: {
+	DisplayName: Terra Disk Legacy Melee
 	Tooltip:
 		'''
 		Legacy Terra Disk/Samsara Slicer for Melee class
 		Throws a disk that has a chance to generate several disks if enemies are near it
 		'''
+}
+
+MeleeTypeHammerPwnageLegacy: {
+	Tooltip: ""
+	DisplayName: Melee Type Hammer Pwnage Legacy
 }

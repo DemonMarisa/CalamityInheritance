@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

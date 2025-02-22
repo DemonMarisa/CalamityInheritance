@@ -1,11 +1,8 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.AuricTesla;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
