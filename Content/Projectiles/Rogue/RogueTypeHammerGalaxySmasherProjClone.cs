@@ -14,10 +14,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerGalaxySmasher";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
-        private static float RotationIncrement = 0.20f;
-        private static int Lifetime = 260;
+        private static readonly float RotationIncrement = 0.20f;
+        private static readonly int Lifetime = 320;
         private static readonly float canHomingCounter = 65f;
-        private float stealthSpeed = 27f;
+        private readonly float stealthSpeed = 27f;
         public int hitCounter = 30;
 
         public override void SetStaticDefaults()
@@ -37,11 +37,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 18;
+            Projectile.localNPCHitCooldown = 15;
             Projectile.timeLeft = Lifetime;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 230 && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 300 && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 Projectile.ai[0] = canHomingCounter;
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 44f, MathHelper.ToRadians(15f));
+                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 40f, MathHelper.ToRadians(17f));
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         public int addFlares = 1;
         private static readonly float RotationIncrement = 0.20f;
-        private static readonly int Lifetime = 250;
+        private static readonly int Lifetime = 275;
         private static readonly float canHomingCounter = 65f;
         private readonly float stealthSpeed = 24f;
 
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = Lifetime;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 240 && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 265 && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -84,10 +84,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.ai[0] = canHomingCounter;
                 CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
                 Projectile.ai[2] += 1f;
-                if(Projectile.ai[2] == 35f) //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
+                if(Projectile.ai[2] == 50f) //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
                 {
                    Projectile.ai[2] = 0;
-                   addFlares += 2; //每次+2
+                   addFlares += 1; //每次+2
                 }
             }
             else
@@ -193,8 +193,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // Play the Lunar Flare sound centered on the user, not the target (consistent with Lunar Flare and Stellar Striker)
             Player user = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
-            int numFlares = addFlares; //每次ai[2]总是等于35f时, 都会增加月耀的弹幕量
-            int flareDamage = (int)(0.3f*Projectile.damage);
+            int numFlares = addFlares; //每次ai[2]总是等于50f时, 都会增加月耀的弹幕量
+            int flareDamage = (int)(0.2f*Projectile.damage) * addFlares; //伤害跑高
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)
             {
