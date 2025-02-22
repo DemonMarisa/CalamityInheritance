@@ -1,13 +1,10 @@
 using System;
-using Microsoft.Build.Construction;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;

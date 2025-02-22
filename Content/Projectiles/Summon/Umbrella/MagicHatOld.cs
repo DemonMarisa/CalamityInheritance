@@ -9,7 +9,6 @@ using CalamityMod;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using SteelSeries.GameSense;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {

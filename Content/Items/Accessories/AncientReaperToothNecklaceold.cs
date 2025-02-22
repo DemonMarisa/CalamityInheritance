@@ -1,7 +1,6 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using Terraria.ID;
 using CalamityMod.Items.Accessories;

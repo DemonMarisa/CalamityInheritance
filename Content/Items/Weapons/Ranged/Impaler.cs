@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Pets;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
 

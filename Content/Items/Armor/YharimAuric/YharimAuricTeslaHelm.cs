@@ -1,13 +1,10 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Terraria;
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.AuricTesla;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.CalPlayer.Dashes;
 

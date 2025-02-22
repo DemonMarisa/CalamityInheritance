@@ -7,8 +7,6 @@ using Terraria;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Terraria.GameContent.Drawing;
 using CalamityInheritance.CIPlayer;
-using CalamityMod.Projectiles.Magic;
-using Mono.Cecil;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
 

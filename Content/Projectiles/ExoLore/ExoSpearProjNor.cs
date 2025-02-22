@@ -1,7 +1,5 @@
 using System;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod;
-using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

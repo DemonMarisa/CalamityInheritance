@@ -1,9 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Armor.Victide;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Armor.Victide;
-using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

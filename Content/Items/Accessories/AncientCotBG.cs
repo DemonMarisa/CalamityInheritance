@@ -4,10 +4,8 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
-using Terraria.ID;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

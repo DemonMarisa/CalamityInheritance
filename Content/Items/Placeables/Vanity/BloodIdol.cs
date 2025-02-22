@@ -1,14 +1,6 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Vanity;
-using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.FurnitureExo;
-using CalamityMod.Tiles.FurnitureExo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 

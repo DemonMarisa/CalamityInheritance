@@ -103,53 +103,49 @@ Celestusold: {
 		'''
 }
 
-RogueTypeFallenPaladinsHammer: {
-	DisplayName: True Paladin's Hammer Legacy Rogue
-	Tooltip:
-		'''
-		Legacy True Paladin's Hammer for Rogue class
-		Explodes on enemy hits
-		'''
-}
-
-RogueTypeGalaxySmasher: {
+RogueTypeHammerGalaxySmasher: {
 	DisplayName: Galaxy Smasher Legacy Rogue
 	Tooltip:
 		'''
 		Legacy Galaxy Smasher for Rogue class
 		Explodes and summons death lasers on enemy hits
+		Stealth strike reverse direction and stick to the nearest enemy for a while upon returning to the player
+		Then return to the player again and reverse direction for additional hit
 		'''
 }
 
-RogueTypeStellarContempt: {
+RogueTypeHammerStellarContempt: {
 	DisplayName: Stellar Contempt Legacy Rogue
 	Tooltip:
 		'''
-		Legacy Stellar Contempt for Rogue class
+		Legacy Stellar Contempt for Rogue Class
 		Lunar flares rain down on enemy hits
+		Stealth strike reverse direction and stick to the nearest enemy for a while upon returning to the player
 		'''
 }
 
-RogueTypeTriactisTruePaladinianMageHammerofMight: {
+RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 	DisplayName: Triactis' True Paladinian Mage Hammer of Might Legacy Rogue
 	Tooltip:
 		'''
-		Legacy...uh, really GIANT BIG hammer for Rogue class
+		Legacy...really GIANT BIG Hammer for Rogue class
 		Explodes on enemy hits
+		Stealth strike reverse direction and stick to the nearest enemy for a while upon returning to the player
+		Continuosly casuing explosions if stuck
 		'''
 }
 
-ScourgeoftheCosmosRogue: {
-	DisplayName: Scourge of the Cosmos Legacy Rogue
+RogueTypeHammerTruePaladins: {
+	DisplayName: True Paladin's Hammer Legacy Rogue
 	Tooltip:
 		'''
-		Throws a bouncing cosmic scourge that emits tiny homing cosmic scourges on enemy and tile hits
-		Stealth strikes will bounces more times, tiny scourges are much faster on chasing their enemies,
-		and will spawns additional two upon enemies hit
+		Legacy True Paladin's Hammer/Fallen Paladin's Hammer for Rogue class
+		Explodes on enemy hits
+		Stealth strikes throws two of them, one will reverse its direction for an additional hit.
 		'''
 }
 
-EmpyreanKnivesLegacyRogue: {
+RogueTypeKnivesEmpyrean: {
 	DisplayName: Empyrean Knives Legacy Rogue
 	Tooltip:
 		'''
@@ -159,13 +155,22 @@ EmpyreanKnivesLegacyRogue: {
 		'''
 }
 
-ShadowspecKnivesLegacyRogue: {
+RogueTypeKnivesShadowspec: {
 	DisplayName: Illustrious Knives Legacy Rogue
 	Tooltip:
 		'''
 		Legacy Illustrious Knives for Rogue class
 		Throws a flurry of homing knives that can heal the user
 		Knives are now deal more damage, and travel speed is much faster
-		Healing is more effective too
+		'''
+}
+
+RogueTypeScourgeoftheCosmos: {
+	DisplayName: Scourge of the Cosmos Legacy Rogue
+	Tooltip:
+		'''
+		Throws a bouncing cosmic scourge that emits tiny homing cosmic scourges on enemy and tile hits
+		Stealth strikes will bounces more times, tiny scourges are much faster on chasing their enemies
+		Will spawns additional two upon enemies hit
 		'''
 }

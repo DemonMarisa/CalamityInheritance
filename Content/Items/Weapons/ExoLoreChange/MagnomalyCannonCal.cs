@@ -1,15 +1,7 @@
-﻿using CalamityMod.Items.Weapons.Melee;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Magic;
-using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

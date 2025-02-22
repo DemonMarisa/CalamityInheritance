@@ -13,7 +13,6 @@ using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;

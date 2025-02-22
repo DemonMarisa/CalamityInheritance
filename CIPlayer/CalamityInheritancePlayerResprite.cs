@@ -1,18 +1,13 @@
-
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Texture;
 using CalamityMod.Buffs.Pets;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.PermanentBoosters;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
 using Terraria.GameContent;
 using Terraria.ModLoader;
@@ -116,67 +111,67 @@ namespace CalamityInheritance.CIPlayer
             //TODO Scarlet:射弹的贴图并未正确替换，等我之后知道啥原因了可能就会弄好了
             //改好了
             #region knives
-            if (TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 1)
                 {
-                    TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesLegacyType;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CalamityInheritanceTexture.EmpyreanKnivesCalamity;
                 }
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<EmpyreanKnivesLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesAlterType;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CalamityInheritanceTexture.EmpyreanKnivesAlterTypeOne;
                 }
             }
 
-            if (TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] != null)
+            if (TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 1)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesLegacyTypeProj;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CalamityInheritanceTexture.EmpyreanKnivesCalamityProj;
                 }
                 if (CalamityInheritanceConfig.Instance.GodSlayerKnivesResprite == 2)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<EmpyreanKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.GodSlayerKnivesAlterTypeProj;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CalamityInheritanceTexture.EmpyreanKnivesAlterTypeOneProj;
                 }
             }
 
-            if (TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 1)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeOne;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CalamityInheritanceTexture.ShadowspecKnivesCalamity;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesLegacyType;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterThird;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 3)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeOne;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterSec;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 4)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ShadowspecKnivesLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeSecond;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterFirst;
                 }
             }
 
-            if (TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] != null)
+            if (TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 1)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjOne;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CalamityInheritanceTexture.ShadowspecKnivesCalamityProj;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 2)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesLegacyTypeProj;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterThirdProj;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 3)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjOne;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterSecProj;
                 }
                 if (CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite == 4)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<ShadowspecKnivesProjectileLegacyRogue>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterTypeProjSecond;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CalamityInheritanceTexture.ShadowspecKnivesAlterThirdProj;
                 }
             }
             #endregion
@@ -204,51 +199,53 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #region 星体击碎者
-            if (TextureAssets.Item[ModContent.ItemType<StellarContemptOld>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
                 {
-                    TextureAssets.Item[ModContent.ItemType<StellarContemptOld>()] = CalamityInheritanceTexture.StellarContemptNew;
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CalamityInheritanceTexture.StellarContemptNew;
                 }
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<StellarContemptOld>()] = CalamityInheritanceTexture.StellarContemptOld;
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CalamityInheritanceTexture.StellarContemptOld;
                 }
             }
 
-            if (TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerOld>()] != null)
+            if (TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerOld>()] = CalamityInheritanceTexture.StellarContemptNew;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CalamityInheritanceTexture.StellarContemptNew;
                 }
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerOld>()] = CalamityInheritanceTexture.StellarContemptOld;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CalamityInheritanceTexture.StellarContemptOld;
                 }
             }
             //盗贼
-            if (TextureAssets.Item[ModContent.ItemType<RogueTypeStellarContempt>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeStellarContempt>()] = CalamityInheritanceTexture.StellarContemptNew;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] = CalamityInheritanceTexture.StellarContemptNew;
                 }
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeStellarContempt>()] = CalamityInheritanceTexture.StellarContemptOld;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] = CalamityInheritanceTexture.StellarContemptOld;
                 }
             }
 
-            if (TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerRogue>()] != null)
+            if (TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] != null)
             {
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerRogue>()] = CalamityInheritanceTexture.StellarContemptNew;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CalamityInheritanceTexture.StellarContemptNew;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CalamityInheritanceTexture.StellarContemptNew;
                 }
                 if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<StellarContemptHammerRogue>()] = CalamityInheritanceTexture.StellarContemptOld;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CalamityInheritanceTexture.StellarContemptOld;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CalamityInheritanceTexture.StellarContemptOld;
                 }
             }
             #endregion

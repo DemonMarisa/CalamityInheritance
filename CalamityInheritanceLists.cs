@@ -9,20 +9,15 @@ using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Ranged;
 using Terraria.ID;
-using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using CalamityMod.Projectiles.Typeless;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.NPCs.PlaguebringerGoliath;
 using CalamityMod.NPCs.PlagueEnemies;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance
 {

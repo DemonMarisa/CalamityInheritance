@@ -4,20 +4,13 @@ using CalamityMod.Enums;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Typeless;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Content.Items.Accessories;
 using Terraria.ID;
-using Terraria.Audio;
 
 namespace CalamityInheritance.CIPlayer.Dash
 {

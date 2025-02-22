@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria;
 using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 

@@ -1,5 +1,3 @@
-using CalamityMod;
-using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -61,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
         {
             modifiers.SourceDamage.Flat += target.lifeMax / 50;
             // 500 + 200 = 700 + (100000 / 100 = 1000) = 1700 * 2 (explosion) = 3400 = 3.4% of boss HP
-            //ÏÖÔÚÊÇ6.8%
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6.8%
         }
 
         public override void OnKill(int timeLeft)

@@ -1,10 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod;
 using Terraria.ModLoader;
 using Terraria;
 

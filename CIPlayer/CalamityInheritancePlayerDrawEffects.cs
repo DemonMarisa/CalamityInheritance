@@ -7,8 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using System;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.CIPlayer

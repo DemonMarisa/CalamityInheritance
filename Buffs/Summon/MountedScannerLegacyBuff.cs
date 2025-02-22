@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.DraedonsArsenal;
 using Terraria;
 using Terraria.ModLoader;
 

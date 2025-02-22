@@ -19,7 +19,6 @@ using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Buffs.Statbuffs;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
 using CalamityMod.Buffs.StatBuffs;

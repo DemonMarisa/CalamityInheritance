@@ -3,19 +3,12 @@ using CalamityMod.CalPlayer;
 using CalamityMod.EntitySources;
 using CalamityMod.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System.Reflection;
-using CalamityInheritance.Balancing;
 
 namespace CalamityInheritance.Common
 {

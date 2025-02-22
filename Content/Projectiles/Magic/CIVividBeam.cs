@@ -8,7 +8,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;

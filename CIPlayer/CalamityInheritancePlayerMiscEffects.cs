@@ -1,9 +1,7 @@
 ﻿using System;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityMod;
-using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Media;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -12,14 +10,9 @@ using CalamityMod.CalPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.StatBuffs;
 using Terraria.DataStructures;
-using Mono.Cecil;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.NPCs.Abyss;
-using CalamityInheritance.Buffs;
 using Terraria.ID;
 using CalamityMod.Cooldowns;
 using CalamityInheritance.Content.Items.Potions;
@@ -28,11 +21,7 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Silva;
 using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
-using Microsoft.Xna.Framework.Audio;
-using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using CalamityInheritance.Content.Projectiles.Magic;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡

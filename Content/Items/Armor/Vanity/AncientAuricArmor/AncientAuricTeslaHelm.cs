@@ -1,19 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Accessories.Ranged;
-using CalamityInheritance.Content.Items.Armor.AuricTesla;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.Auric;
-using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Armor.Tarragon;
-using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 

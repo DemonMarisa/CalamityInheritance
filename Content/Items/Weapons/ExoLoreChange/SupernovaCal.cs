@@ -1,10 +1,4 @@
-﻿using CalamityMod.Items.Weapons.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;

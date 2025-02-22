@@ -1,4 +1,3 @@
-using CalamityMod;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
         {
             modifiers.SourceDamage.Flat += target.lifeMax / 35;//75
             // 400 + 80 = 480 + (100000 / 75 = 1333) = 1813 = 1.813% of boss HP
-            //ÏÖÔÚÊÇ4×óÓÒ%
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½%
         }
     }
 }

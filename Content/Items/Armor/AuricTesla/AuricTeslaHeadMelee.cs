@@ -1,7 +1,6 @@
 ﻿using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Items.Armor.Auric;
 using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.ModLoader;

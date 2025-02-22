@@ -1,14 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 

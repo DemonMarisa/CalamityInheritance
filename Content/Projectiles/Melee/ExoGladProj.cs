@@ -1,9 +1,7 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 

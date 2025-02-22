@@ -1,9 +1,5 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;

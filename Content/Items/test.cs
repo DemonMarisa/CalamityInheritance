@@ -3,18 +3,8 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Projectiles.Typeless;
-using CalamityInheritance.System;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Melee;
 using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 namespace CalamityInheritance.Content.Items

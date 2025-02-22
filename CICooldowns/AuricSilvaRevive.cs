@@ -1,11 +1,4 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod.Cooldowns;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Cooldowns;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;

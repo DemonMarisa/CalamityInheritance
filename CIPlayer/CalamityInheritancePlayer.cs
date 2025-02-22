@@ -18,15 +18,6 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using Terraria.GameContent;
-using CalamityInheritance.Texture;
-using CalamityInheritance.Content.Items.Tools;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Accessories.Magic;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Buffs.StatDebuffs;
 
 
 namespace CalamityInheritance.CIPlayer

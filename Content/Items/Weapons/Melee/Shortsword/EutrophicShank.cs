@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.Xml;
-using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
