@@ -182,3 +182,8 @@ RogueTypeScourgeoftheCosmos: {
 		小宇宙灾虫击中敌人时会弹开并再次追击
 		'''
 }
+
+RogueTypeHammerPwnageLegacy: {
+	// DisplayName: Rogue Type Hammer Pwnage Legacy
+	// Tooltip: ""
+}

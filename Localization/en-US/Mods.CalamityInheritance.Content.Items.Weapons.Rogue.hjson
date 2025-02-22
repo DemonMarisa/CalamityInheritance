@@ -174,3 +174,8 @@ RogueTypeScourgeoftheCosmos: {
 		Will spawns additional two upon enemies hit
 		'''
 }
+
+RogueTypeHammerPwnageLegacy: {
+	DisplayName: Rogue Type Hammer Pwnage Legacy
+	Tooltip: ""
+}

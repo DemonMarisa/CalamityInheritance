@@ -66,7 +66,7 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             #region GodSlayer
-            if (Main.player[projectile.owner].CalamityInheritance().godSlayerMagic && projectile.DamageType == DamageClass.Magic)
+            if (godSlayerMagic && projectile.DamageType == DamageClass.Magic)
             {
                 if (hasFiredThisFrame)
                 {
@@ -77,88 +77,14 @@ namespace CalamityInheritance.CIPlayer
                 int weaponDamage = player.HeldItem.damage;
                 int finalDamage = 200 + weaponDamage / 2;
 
-                int[] array = new int[200];
-                int num3 = 0;
-                int num4 = 0;
-                for (int i = 0; i < 200; i++)
-                {
-                    if (Main.npc[i].CanBeChasedBy(projectile, false))
-                    {
-                        float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - projectile.position.Y + projectile.height / 2);
-                        if (num5 < 800f)
-                        {
-                            if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
-                            {
-                                array[num4] = i;
-                                num4++;
-                            }
-                            else if (num4 == 0)
-                            {
-                                array[num3] = i;
-                                num3++;
-                            }
-                        }
-                    }
-                }
-                if (num3 == 0 && num4 == 0)
-                {
-                    return;
-                }
-                int num6;
-                if (num4 > 0)
-                {
-                    num6 = array[Main.rand.Next(num4)];
-                }
-                else
-                {
-                    num6 = array[Main.rand.Next(num3)];
-                }
-                float num7 = 20f;
-                float num8 = Main.rand.Next(-100, 101);
-                float num9 = Main.rand.Next(-100, 101);
-                float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
-                num10 = num7 / num10;
-                num8 *= num10;
-                num9 *= num10;
-                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, (int)num8, (int)num9, ModContent.ProjectileType<GodSlayerOrb>(),
-                    (int)(finalDamage * (Main.player[projectile.owner].Calamity().auricSet ? 2.0 : 1.5)), 0, projectile.owner, num6, 0f);
-                if (target.canGhostHeal)
-                {
-                    float num11 = Main.player[projectile.owner].Calamity().auricSet ? 0.03f : 0.06f; //0.2
-                    num11 -= projectile.numHits * 0.015f; //0.05
-                    if (num11 <= 0f)
-                    {
-                        return;
-                    }
-                    float num12 = projectile.damage * num11;
-                    if ((int)num12 <= 0)
-                    {
-                        return;
-                    }
-                    if (Main.player[Main.myPlayer].lifeSteal <= 0f)
-                    {
-                        return;
-                    }
-                    Main.player[Main.myPlayer].lifeSteal -= num12 * 1.5f;
-                    float num13 = 0f;
-                    int num14 = projectile.owner;
-                    for (int i = 0; i < 255; i++)
-                    {
-                        if (Main.player[i].active && !Main.player[i].dead && ((!Main.player[projectile.owner].hostile && !Main.player[i].hostile) || Main.player[projectile.owner].team == Main.player[i].team))
-                        {
-                            float num15 = Math.Abs(Main.player[i].position.X + Main.player[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.player[i].position.Y + Main.player[i].height / 2 - projectile.position.Y + projectile.height / 2);
-                            if (num15 < 1200f && Main.player[i].statLifeMax2 - Main.player[i].statLife > num13)
-                            {
-                                num13 = Main.player[i].statLifeMax2 - Main.player[i].statLife;
-                                num14 = i;
-                            }
-                        }
-                    }
-                    Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, 0, 0, ModContent.ProjectileType<GodSlayerHealOrb>(), 0, 0, projectile.owner, num14, num12);
-                }
+                int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
+                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
+                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
+                float randomSpeed = Main.rand.NextFloat(12f, 16f);
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
             }
 
-            if (Main.player[projectile.owner].CalamityInheritance().godSlayerSummonold && projectile.DamageType == DamageClass.Summon)
+            if (godSlayerSummonold && projectile.DamageType == DamageClass.Summon)
             {
                 if (hasFiredThisFrame)
                 {
@@ -169,50 +95,11 @@ namespace CalamityInheritance.CIPlayer
                 int weaponDamage = player.HeldItem.damage;
                 int finalDamage = 200 + weaponDamage / 2;
 
-                int[] array = new int[200];
-                int num3 = 0;
-                int num4 = 0;
-                for (int i = 0; i < 200; i++)
-                {
-                    if (Main.npc[i].CanBeChasedBy(projectile, false))
-                    {
-                        float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - projectile.position.Y + projectile.height / 2);
-                        if (num5 < 800f)
-                        {
-                            if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
-                            {
-                                array[num4] = i;
-                                num4++;
-                            }
-                            else if (num4 == 0)
-                            {
-                                array[num3] = i;
-                                num3++;
-                            }
-                        }
-                    }
-                }
-                if (num3 == 0 && num4 == 0)
-                {
-                    return;
-                }
-                int num6;
-                if (num4 > 0)
-                {
-                    num6 = array[Main.rand.Next(num4)];
-                }
-                else
-                {
-                    num6 = array[Main.rand.Next(num3)];
-                }
-                float num7 = 20f;
-                float num8 = Main.rand.Next(-100, 101);
-                float num9 = Main.rand.Next(-100, 101);
-                float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
-                num10 = num7 / num10;
-                num8 *= num10;
-                num9 *= num10;
-                Projectile.NewProjectile(null, projectile.Center.X, projectile.Center.Y, num8, num9, ModContent.ProjectileType<GodSlayerPhantom>(), (int)(finalDamage * 2.0), 0, projectile.owner, num6, 0f);
+                int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
+                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
+                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
+                float randomSpeed = Main.rand.NextFloat(6f, 8f);
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
             }
             #endregion
 
@@ -378,6 +265,17 @@ namespace CalamityInheritance.CIPlayer
 
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
+                }
+                if (godSlayerMagic)
+                {
+                    double healMult = 0.1;
+                    healMult -= proj.numHits * healMult * 0.5;
+                    int heal = (int)Math.Round(damage * healMult);
+                    if (heal > 25)
+                        heal = 25;
+
+                    if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
+                        CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<GodSlayerHealOrb>(), 3000f, 2f);
                 }
             }
         }

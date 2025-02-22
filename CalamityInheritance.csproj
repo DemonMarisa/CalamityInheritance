@@ -10,9 +10,11 @@
 	<ItemGroup>
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Content.Items.Accessories.Melee.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Content.Items.Weapons.DraedonsArsenal.hjson" />
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Name.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Status.hjson" />
 	  <AdditionalFiles Remove="Localization\Mods.CalamityMod.UI.hjson" />
 	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Content.Items.Accessories.Melee.hjson" />
+	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Name.hjson" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Buffs\ArmorShattering.png" />

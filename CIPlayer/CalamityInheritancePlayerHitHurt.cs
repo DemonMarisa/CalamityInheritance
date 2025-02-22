@@ -517,9 +517,9 @@ namespace CalamityInheritance.CIPlayer
                 if (godSlayerRangedold && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
                 {
                     int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
-                    if (randomChance >= 1)
+                    if (randomChance > 1)
                     {
-                        if(Main.rand.NextBool(100/randomChance))
+                        if(Main.rand.Next(1,101) <= randomChance)
                         {
                             hitInfo.Damage *= 2;
                         }

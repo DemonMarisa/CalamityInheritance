@@ -9,42 +9,31 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod;
-using CalamityMod.World;
 using Terraria.GameContent.Bestiary;
-using CalamityMod.Items.Armor.Vanity;
-using Terraria.GameContent.Events;
 using Terraria.Localization;
 using Terraria.Utilities;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Ammo;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityMod.Items.Ammo;
 using CalamityInheritance.Content.Items.MiscItem;
-using Newtonsoft.Json.Linq;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityMod.Items.DraedonMisc;
-using System.Collections;
-using Terraria.ModLoader.Core;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Projectiles.NPCProj.Friendly;
-using System.Threading;
 using CalamityMod.Dusts;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.NPCs.TownNPCs;
-using CalamityMod.Items.Potions.Alcohol;
-using System.Security.Policy;
 using CalamityMod.Items.SummonItems;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.CalClone;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityMod.BiomeManagers;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -76,10 +65,9 @@ namespace CalamityInheritance.NPCs.TownNPC
             NPCID.Sets.AttackAverageChance[NPC.type] = 1;
             NPCID.Sets.ShimmerTownTransform[Type] = false;
             NPC.Happiness
-                .SetBiomeAffection<SnowBiome>(AffectionLevel.Like)
-                .SetBiomeAffection<DesertBiome>(AffectionLevel.Dislike)
-                .SetNPCAffection(NPCID.Wizard, AffectionLevel.Like)
-                .SetNPCAffection(NPCID.Cyborg, AffectionLevel.Dislike);
+                .SetBiomeAffection<BrimstoneCragsBiome>(AffectionLevel.Like)
+                .SetNPCAffection(ModContent.NPCType<SEAHOE>(), AffectionLevel.Like)
+                .SetNPCAffection(NPCID.Wizard, AffectionLevel.Like);
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
@@ -112,7 +100,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
             {
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
                 new FlavorTextBestiaryInfoElement("Mods.CalamityInheritance.Bestiary.ScalNPC")
             });
         }
@@ -559,7 +547,10 @@ namespace CalamityInheritance.NPCs.TownNPC
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = 15000;
+            if (DownedBossSystem.downedCalamitas)
+                damage = 15000;
+            else
+                damage = 50;
             knockback = 10f;
         }
 

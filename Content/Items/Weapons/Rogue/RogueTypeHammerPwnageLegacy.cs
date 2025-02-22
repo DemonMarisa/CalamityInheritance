@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueTypeHammerPwnageLegacy: RogueWeapon
+    public class RogueTypeHammerPwnageLegacy: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory =>"Content.Items.Weapons.Rogue";
         public static readonly float Speed = 12f;
