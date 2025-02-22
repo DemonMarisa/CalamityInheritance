@@ -15,9 +15,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerGalaxySmasher";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
-        private static float RotationIncrement = 0.22f;
-        private static int Lifetime = 240;
-        private static float ReboundTime = 48f;
+        public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.35f }; //Item88:使用流星法杖的音效
+        private static readonly float RotationIncrement = 0.22f;
+        private static readonly int Lifetime = 240;
+        private static readonly float ReboundTime = 48f;
         bool ifSummonClone = false;
 
         public override void SetStaticDefaults()
@@ -67,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // The hammer makes sound while flying.
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 16;
+                Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
 
@@ -152,11 +153,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //Applies God Slayer Inferno on contact.
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
             SpawnDust(target.Center);
-            if(ifSummonClone) //如果允许生成克隆弑神锤子
-            StealthOnHit();
-            else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f) //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线 
-            OnHitEffect(target.Center);
+            if(ifSummonClone) StealthOnHit();  //如果允许生成克隆弑神锤子
+            else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f)  OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
             else if(Projectile.ai[2] == -2f) OnAddition(); //只会让挂载过的锤子执行这个函数
+            else SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
 
         }
 

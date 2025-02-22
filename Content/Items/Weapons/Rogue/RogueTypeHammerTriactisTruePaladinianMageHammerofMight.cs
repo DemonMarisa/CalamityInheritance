@@ -40,14 +40,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(),  damage , knockback, player.whoAmI, 0f, 0f);
+            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(),  damage , knockback, player.whoAmI, 0f, 0f);
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
                 int stealth = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage*1.14f), knockback, player.whoAmI);
                 if(stealth.WithinBounds(Main.maxProjectiles))
                     Main.projectile[stealth].Calamity().stealthStrike = true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public override void AddRecipes()

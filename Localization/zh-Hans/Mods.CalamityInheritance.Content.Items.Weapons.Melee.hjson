@@ -332,3 +332,8 @@ MeleeTypeTerraDisk: {
 		掷出泰拉飞盘，有敌人在附近时有几率分裂出新的飞盘
 		'''
 }
+
+MeleeTypeHammerPwnageLegacy: {
+	// Tooltip: ""
+	// DisplayName: Melee Type Hammer Pwnage Legacy
+}

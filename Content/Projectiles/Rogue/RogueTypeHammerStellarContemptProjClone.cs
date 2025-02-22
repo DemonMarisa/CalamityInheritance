@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using Microsoft.Build.Evaluation;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -15,10 +16,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerStellarContempt";
 
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
-        private static float RotationIncrement = 0.20f;
-        private static int Lifetime = 200;
+        public int addFlares = 1;
+        private static readonly float RotationIncrement = 0.20f;
+        private static readonly int Lifetime = 250;
         private static readonly float canHomingCounter = 65f;
-        private float stealthSpeed = 24f;
+        private readonly float stealthSpeed = 24f;
 
         public override void SetStaticDefaults()
         {
@@ -41,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = Lifetime;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 190 && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 240 && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -52,6 +54,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             DrawOriginOffsetX = 0;
 
             Lighting.AddLight(Projectile.Center, 0.7f, 0.3f, 0.6f);
+
+            
 
             //锤子飞行过程中应当有声音
             if (Projectile.soundDelay == 0)
@@ -79,6 +83,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Projectile.ai[0] = canHomingCounter;
                 CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
+                Projectile.ai[2] += 1f;
+                if(Projectile.ai[2] == 35f) //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
+                {
+                   Projectile.ai[2] = 0;
+                   addFlares += 2; //每次+2
+                }
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
@@ -171,15 +181,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             SpawnFlares(target.Center, target.width, target.height);
         }
+        public override bool PreKill(int timeLeft)
+        {
+            //克隆锤子被击杀之前重置月耀的生成数量, 一般情况下应该不会出问题不过以防万一
+            addFlares = 3;
+            return true;
+        }
 
         private void SpawnFlares(Vector2 targetPos, int width, int height)
         {
             // Play the Lunar Flare sound centered on the user, not the target (consistent with Lunar Flare and Stellar Striker)
             Player user = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
-
-
-            int numFlares = 3;
+            int numFlares = addFlares; //每次ai[2]总是等于35f时, 都会增加月耀的弹幕量
             int flareDamage = (int)(0.3f*Projectile.damage);
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)
@@ -216,7 +230,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     if (proj.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[proj].DamageType = ModContent.GetInstance<RogueDamageClass>();
-                        Main.projectile[proj].tileCollide = true;
+                        Main.projectile[proj].tileCollide = false;
                     }
                 }
             }

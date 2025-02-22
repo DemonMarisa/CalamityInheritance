@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // The hammer makes sound while flying.
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 8;
+                Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
 

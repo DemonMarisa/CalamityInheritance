@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -85,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else
             {
                 Projectile.tileCollide = false;
-                float returnSpeed = GalaxySmasher.Speed;
+                float returnSpeed = MeleeTypeHammerGalaxySmasherLegacy.Speed;
                 float acceleration = 3.2f;
                 Player owner = Main.player[Projectile.owner];
                 CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);

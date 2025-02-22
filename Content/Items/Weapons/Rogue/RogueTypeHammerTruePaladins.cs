@@ -46,8 +46,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 int stealth = Projectile.NewProjectile(source, position, velocity*1.5f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
                 if(stealth.WithinBounds(Main.maxProjectiles))
                     Main.projectile[stealth].Calamity().stealthStrike = true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public override void AddRecipes()

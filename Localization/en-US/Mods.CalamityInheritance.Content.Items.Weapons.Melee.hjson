@@ -337,3 +337,8 @@ MeleeTypeTerraDisk: {
 		Throws a disk that has a chance to generate several disks if enemies are near it
 		'''
 }
+
+MeleeTypeHammerPwnageLegacy: {
+	Tooltip: ""
+	DisplayName: Melee Type Hammer Pwnage Legacy
+}

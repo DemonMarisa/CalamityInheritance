@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //锤子飞行过程中应当有声音
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 8;
+                Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
             Projectile.ai[0] += 1f;
