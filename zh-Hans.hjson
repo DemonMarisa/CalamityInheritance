@@ -36,6 +36,8 @@ Mods: {
 			ExoSpearProjNor.DisplayName: 圣火之枪
 			ExoSpearTrailNor.DisplayName: 圣火投刀
 			ExoSpearProjNorSteal.DisplayName: 圣火之枪
+			// BrimstoneExplosion.DisplayName: Brimstone Explosion
+			// HellblastFriendly.DisplayName: Hellblast Friendly
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
@@ -55,6 +57,27 @@ Mods: {
 						// DisplayName: Nucleogenesis Legacy
 						// Tooltip: ""
 					}
+				}
+			}
+		}
+
+		NPCs: {
+			CalamitasNPCLegacy: {
+				// DisplayName: Calamitas N P C Legacy
+
+				TownNPCMood: {
+					// Content: 我很满足。
+					// NoHome: 我讨厌没有家。
+					// FarFromHome: 我离家太远了。
+					// LoveSpace: 我非常喜欢有这么大的空间。
+					// DislikeCrowded: 我不喜欢这么拥挤。
+					// HateCrowded: 我讨厌这么拥挤。
+					// LikeBiome: 我喜欢{BiomeName}。
+					// DislikeBiome: 我不喜欢{BiomeName}。
+					// LikeNPC: 我喜欢{NPCName}。
+					// DislikeNPC: 我不喜欢{NPCName}。
+					// LikeNPC_Princess: 我喜欢 {NPCName}。
+					// Princess_LovesNPC: 我喜欢 {NPCName}。
 				}
 			}
 		}

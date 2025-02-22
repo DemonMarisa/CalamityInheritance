@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -59,6 +60,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.Nanites, 400).
                 AddTile<DraedonsForge>().
                 Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
+
         }
     }
 }

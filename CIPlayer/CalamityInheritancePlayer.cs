@@ -39,6 +39,10 @@ namespace CalamityInheritance.CIPlayer
         public int summonProjCooldown = 0;
         public int ProjectilHitCounter;
         public int ProjectilHitCounter2;
+        //是否给过灾厄精华
+        //1就是没给
+        //2就是给了
+        public int giveScalEssence = 1;
         #endregion
         #region Accessories
         public bool ElementalQuiver = false;

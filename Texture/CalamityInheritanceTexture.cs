@@ -68,8 +68,6 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjOne;
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeSecond; //圣光飞刀的初版贴图
         public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjSecond;
-        public static Asset<Texture2D> ShadowspecKnivesAlterTypeOne; //圣光飞刀的初版贴图
-        public static Asset<Texture2D> ShadowspecKnivesAlterTypeProjOne;
         //星体击碎者
         public static Asset<Texture2D> StellarContemptNew; //圣光飞刀的初版贴图
         public static Asset<Texture2D> StellarContemptOld;

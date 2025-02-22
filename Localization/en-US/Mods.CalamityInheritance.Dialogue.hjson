@@ -1,0 +1,53 @@
+ScalloreShopOption: LoreShop
+ScalPotionShopOption: PotionShop
+ScalAmmoShopOption: AmmoShop
+ScalMiscShopOption: MiscShop
+ScalItemShopOption: ItemShop
+Scalbutton2Option: Next
+ScalChatOption: Chat
+DownedAnySentinels: DownedAnySentinels
+ScalHomelessChat1: Welp, you died again. I guess you need to train more before we confront him.
+ScalHomelessChat2: Nice going, you beat me again. We might just have a shot at defeating him after all.
+ScalHomelessChat3: You didn't die at all huh? Welp, you probably cheated then.but here's your reward I guess.
+ScalHomelessChat4: Finish it already... oh... your not going to kill me are you? In that case, please allow me to join you.
+ScalHomelessChat5: I don't have anything more for you.
+ScalHomelessChat6: Finish it already...？
+ScalHomelessChat7: Maybe we can talk about something else.
+ScalChatNor1: The Sepulcher is actually a dark magic construct...  you can stop acting like you've run over my pet dog now, sheesh
+ScalChatNor2: Now can you tell everyone to stop asking where I am?
+ScalChatNor3: I can only imagine how many tables Lord Yharim has flipped by now. He was always one to cause property damage upon recieving bad news.
+ScalChatNor4: I once glued googly eyes to Yharim's Auric Tesla armor, now THAT was funny!
+ScalChatNor5: Why the hell did it take so long for Yharim to decide to melt Auric Steel into bars like every other metal?
+ScalChatNor6: Arent the little soul seekers just the cutest things?
+DayTime1: It's sorta strange, it's been years since I havent had to report to someone at a moments notice.
+DayTime2: What do you want, i'm busy creating a countercurse.
+DayTime3: Everyone seems to vacate the premises when I am around, but it guess that's to be expected...
+DayTime4: Yharim's Curse? I'm sorry, but it's still too painful to talk about.
+DayTime5: If used imperfectly, Necromancy will have disastrous results. I'd advise against attempting it.
+NightTime1: It's hard to describe, but the moon looks more peaceful, now that the god once sealed there is vanquished.
+NightTime2: Some forms of magic are stronger at night, and vice versa. Necromancy for example benefits from the lack of the sun.
+NightTime3: There was once a magical serpent that was so so large it could be mistaken for a constellation. It was killed by the Devourer himself in the earlier days of Yharim's rule.
+NightTime4: If you encounter one of those clones, obliterate it with extreme prejudice!
+NightTime5: Me? I don't need to sleep, one of the benefits of having access to magic.
+NightTime6: What are you doing up at this hour? Can I not get some peace and quiet around here??
+eclipse1: The powers of the dark sun run rampant at times like these. I'd tell you to be cautious but if you're able to beat me then you can probably handle yourself.
+BloodMoon1: Stay on your guard, we are being watched
+BloodMoon2: You can stop looking at me like i'm about to stab you, the blood moon doesn't effect me like it does the rest anymore
+ScalFAPChat: What's the deal with Cirrus anyway? Not even Yharim knew where she comes from.
+ScalSeahoeChat: I would have expected Amidias to hold more of a grudge, but he has been one of the most welcoming.
+armdealer1: I Swear, how do the rest of you put up with
+armdealer2: "'s flirting. I am THIS close to vaporizing him on the spot."
+PreDownScal: Why am I here, aren't you supposed to have to beat me in a fight first?
+ScalLoreChat: Get rid of that message, it's a trap!
+ScalUrnChat: That Urn is a symbol of challenge. Since you still have it, I assume you want me to be your sparring partner. I accept.
+ScalCalCloneChat: I am going to enjoy tearing that clone to shreds.
+ScalSWChat: This was the one that impersonated me online. lets make this hurt
+ScalOtherLoreChat1BloodMoon: The blood moons of this world are said to be caused by the gaze of an entity far beyond ourselves. Contrary to the beliefs of most, the late Profaned Goddess was actually related to this entity.
+ScalOtherLoreChat2: My biggest regret is not having the willpower to resist the curse, instead, I stayed obedient and destroyed so much in the name of the Tyrant King...
+ScalOtherLoreChat3: The Jungle Dragon has a magical bond to Yharim. As long as Yharim lives, his dragon will be resurrected from the dead. There may be a way to sever this bond, but Yharim would certainly destroy you in revenge.
+ScalOtherLoreChat4: Somewhere out in the universe is a weapon of power beyond even that of Lord Yharim, with no will but to destroy everything. Even I shudder to think about what could happen if it is activated.
+ScalOtherLoreChat5: I must applaud you for eliminating the Devourer of Gods. His dimensional travel has in the past threatened to destroy much more then just this planet.
+ScalOtherLoreChat6: Lord Yharim has the ability to make himself virtually Invincible. I wouldn't be suprised if he utilizes it while fighting you.
+ScalOtherLoreChat7: Yharim was once far weaker than he is now. The cyborg Draedon's enhancements can be credited for his current godlike strength.
+ScalOtherLoreChat8: The soul of Silva, the first dryad, is trapped at the bottom of the Abyss. In theory, reconstructing it and reviving her is possible, but I do not know of a suitable method of doing so.
+ScalOtherLoreChat9: Trust me when I say that you are not yet ready to face the Jungle Tyrant. You should prepare and train more first.

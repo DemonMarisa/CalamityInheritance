@@ -277,6 +277,7 @@ namespace CalamityInheritance.NPCs
                 bool lastTwinStanding = IsLastTwinStanding(info);
                 return !NPC.downedMechBossAny && (lastTwinStanding || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime);
             }
+
             switch (npc.type)
             {
                 #region NPC

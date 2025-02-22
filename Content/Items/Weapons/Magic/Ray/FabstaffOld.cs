@@ -7,6 +7,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -36,6 +37,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<FabRayOld>();
             Item.shootSpeed = 6f;
+
+            Item.Calamity().devItem = true;
         }
         public override Vector2? HoldoutOrigin()
         {

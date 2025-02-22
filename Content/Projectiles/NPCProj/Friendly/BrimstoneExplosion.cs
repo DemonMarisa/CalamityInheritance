@@ -1,0 +1,54 @@
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ModLoader;
+using Terraria;
+using Terraria.ID;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
+
+namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
+{
+    public class BrimstoneExplosion : ModProjectile
+    {
+        private int Dusts = 5;
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 120;
+            Projectile.height = 120;
+            Projectile.penetrate = -1;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.alpha = 254;
+            Projectile.friendly = true;
+            Projectile.timeLeft = 50;
+            Projectile.extraUpdates = 2;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 1;
+        }
+
+        public override void AI()
+        {
+            for (int i = 0; i < Dusts; i++)
+            {
+                Vector2 vector = new Vector2(Main.rand.Next(15), 0f);
+                vector = Utils.RotatedByRandom(vector, (double)MathHelper.ToRadians(360f));
+                int num = Dust.NewDust(Projectile.Center, Main.rand.Next(40) - 20, Main.rand.Next(40) - 20, DustID.Clentaminator_Red, vector.X, vector.Y, 0, new Color(255, 0, 0), 2f);
+                Main.dust[num].noGravity = true;
+            }
+            Lighting.AddLight(Projectile.Center, 2.8f, 0f, 0f);
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.immune[Projectile.owner] = 2;
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 600, false);
+            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 600, false);
+            target.AddBuff(ModContent.BuffType<RancorBurn>(), 600, false);
+            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 600, false);
+        }
+    }
+}
