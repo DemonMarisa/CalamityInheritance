@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity*2.4f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
+                int stealth = Projectile.NewProjectile(source, position, velocity*1.6f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
                 int stealth2 = Projectile.NewProjectile(source, position, velocity*2.8f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
                 
                 if(stealth.WithinBounds(Main.maxProjectiles))

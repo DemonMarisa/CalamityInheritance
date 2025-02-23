@@ -75,8 +75,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
-            if(Projectile.ai[0] < 60f && Projectile.ai[0] > 5f) //大锤子会在飞行过程中缩小一点, 直到ai[0] = 45f为止
-            Projectile.scale -= 0.07f;
+            if(Projectile.ai[0] < 45f) //大锤子会在飞行过程中缩小一点, 直到ai[0] = 45f为止
+            Projectile.scale -= 0.05f;
 
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {

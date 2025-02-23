@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 2;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 30;
+            Projectile.localNPCHitCooldown = 25;
         }
 
         public override void AI()
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 case 1f:
                     Projectile.tileCollide = false;
-                    float returnSpeed = 16f;
+                    float returnSpeed = 26f;
                     float acceleration = 3.2f;
                     CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                     if (Main.myPlayer == Projectile.owner)

@@ -178,7 +178,7 @@ RogueTypeScourgeoftheCosmos: {
 
 RogueTypeHammerPwnageLegacy: {
 	DisplayName: Pwnagehammer Legacy Rogue
-	Tooltip: 
+	Tooltip:
 		'''
 		Legacy Pwnagehammer for Rogue class
 		Throws a stronge hammer

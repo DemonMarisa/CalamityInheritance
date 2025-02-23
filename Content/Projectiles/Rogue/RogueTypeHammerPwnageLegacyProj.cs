@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 
                 case 2f:
                     Projectile.usesIDStaticNPCImmunity = true;
-                    Projectile.idStaticNPCHitCooldown = 18;
+                    Projectile.idStaticNPCHitCooldown = 10;
                     OnChasingDust();
                     CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, 10f, 16f); //挂载只会在计时器小于120f时进行
                     if(Projectile.timeLeft < LifeTime)
