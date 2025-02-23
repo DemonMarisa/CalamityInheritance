@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
 {
     public class NucleogenesisLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories.Summon";
+        public new string LocalizationCategory => "Content.Items.Accessories.Summon";
 
         public override void SetDefaults()
         {
@@ -37,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
 
             CIplayer.nucleogenesisLegacy = true;

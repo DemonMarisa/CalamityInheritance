@@ -43,33 +43,6 @@ Mods: {
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 
-		Items: {
-			Materials: {
-				NecroplasmTextureChangeHook: {
-					DisplayName: Necroplasm Texture Change Hook
-					Tooltip: ""
-				}
-			}
-
-			Accessories: {
-				Summon: {
-					NucleogenesisLegacy: {
-						DisplayName: Nucleogenesis Legacy
-						Tooltip: ""
-					}
-				}
-			}
-
-			Weapons: {
-				Rogue: {
-					RogueTypeHammerPwnageLegacy: {
-						Tooltip: ""
-						DisplayName: Rogue Type Hammer Pwnage Legacy
-					}
-				}
-			}
-		}
-
 		NPCs: {
 			CalamitasNPCLegacy: {
 				DisplayName: Calamitas N P C Legacy
@@ -87,6 +60,17 @@ Mods: {
 					DislikeNPC: 我不喜欢{NPCName}。
 					LikeNPC_Princess: 我喜欢 {NPCName}。
 					Princess_LovesNPC: 我喜欢 {NPCName}。
+				}
+			}
+		}
+
+		Items: {
+			Weapons: {
+				Rogue: {
+					RogueTypeHammerPwnageLegacy: {
+						DisplayName: Rogue Type Hammer Pwnage Legacy
+						Tooltip: ""
+					}
 				}
 			}
 		}

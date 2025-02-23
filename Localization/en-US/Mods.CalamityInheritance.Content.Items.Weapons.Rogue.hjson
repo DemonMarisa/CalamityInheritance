@@ -131,7 +131,8 @@ RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 		Legacy...really GIANT BIG Hammer for Rogue class
 		Explodes on enemy hits
 		Stealth strike reverse direction and stick to the nearest enemy for a while upon returning to the player
-		Continuosly casuing explosions if stuck
+		Continuosly split multiple hammers if stuck
+		Hammers that stuck on enemies are shared the same immnuity
 		'''
 }
 
@@ -141,7 +142,7 @@ RogueTypeHammerTruePaladins: {
 		'''
 		Legacy True Paladin's Hammer/Fallen Paladin's Hammer for Rogue class
 		Explodes on enemy hits
-		Stealth strikes throws two of them, one will reverse its direction for an additional hit.
+		Stealth strikes throws two of them, both will reverse its direction for an additional hit.
 		'''
 }
 
@@ -172,5 +173,15 @@ RogueTypeScourgeoftheCosmos: {
 		Throws a bouncing cosmic scourge that emits tiny homing cosmic scourges on enemy and tile hits
 		Stealth strikes will bounces more times, tiny scourges are much faster on chasing their enemies
 		Will spawns additional two upon enemies hit
+		'''
+}
+
+RogueTypeHammerPwnageLegacy: {
+	DisplayName: Pwnagehammer Legacy Rogue
+	Tooltip: 
+		'''
+		Legacy Pwnagehammer for Rogue class
+		Throws a stronge hammer
+		Stealth strikes keeps chasing and sticking on its enemy
 		'''
 }

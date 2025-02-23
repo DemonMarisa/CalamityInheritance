@@ -143,9 +143,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // Some dust gets produced on impact.
             int dustCount = Main.rand.Next(20, 24);
             int dustRadius = 6;
-            Vector2 corner = new Vector2(target.Center.X - dustRadius, target.Center.Y - dustRadius);
-            //从灾厄上抄下来的，只有返程追踪的锤子击中时才会生成这些粒子
-            if(Projectile.ai[0] == 2f)
+            Vector2 corner = new(target.Center.X - dustRadius, target.Center.Y - dustRadius);
+            if(Projectile.ai[0] == 2f)  //从灾厄上抄下来的，只有返程追踪的锤子击中时才会生成这些粒子
             {
                 float numberOfDusts = 40f;
                 float rotFactor = 360f / numberOfDusts;
@@ -247,9 +246,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 velocity = offsetTarget - startPoint;
                 velocity.Normalize();
                 velocity *= flareSpeed;
-                //如果是返程追踪的锤子，落下的月曜射弹的速度将会被1.5f倍率
+                //如果是返程追踪的锤子，落下的月曜射弹的速度将会被2.5f倍率
                 if(Projectile.ai[0] == 2f)
-                velocity *= 1.5f;
+                velocity *= 2.5f;
 
                 float AI1 = Main.rand.Next(3);
                 if (Projectile.owner == Main.myPlayer)

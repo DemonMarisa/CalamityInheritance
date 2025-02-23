@@ -40,12 +40,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>(),  damage , knockback, player.whoAmI, 0f, 0f);
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity*1.5f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
+                int stealth = Projectile.NewProjectile(source, position, velocity*2.4f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
+                int stealth2 = Projectile.NewProjectile(source, position, velocity*2.8f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
+                
                 if(stealth.WithinBounds(Main.maxProjectiles))
+                {
                     Main.projectile[stealth].Calamity().stealthStrike = true;
+                    Main.projectile[stealth2].Calamity().stealthStrike = true;
+                }
                 return false;
             }
             return true;
@@ -55,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CreateRecipe().
                 AddIngredient(ItemID.PaladinsHammer).
-                AddIngredient<Pwnagehammer>().
+                AddIngredient<RogueTypeHammerPwnageLegacy>().
                 AddIngredient<ScoriaBar>(5).
                 AddIngredient<AshesofCalamity>(5).
                 AddTile(TileID.MythrilAnvil).

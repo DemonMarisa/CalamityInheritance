@@ -14,8 +14,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerGalaxySmasher";
+
+        private const float V = 2f;
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
-        public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.35f }; //Item88:使用流星法杖的音效
+        public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.45f }; //Item88:使用流星法杖的音效
         private static readonly float RotationIncrement = 0.22f;
         private static readonly int Lifetime = 240;
         private static readonly float ReboundTime = 48f;
@@ -86,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.ai[1] += 1f;
                     if (Projectile.ai[1] == ReboundTime-5&& Projectile.ai[2] == -2f)
                     {
-                        SoundEngine.PlaySound(SoundID.Item4, Projectile.position); //收回并拐弯的时候播放声音
+                        SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); //收回并拐弯的时候播放使用落星的声音
                         ReturnDust();//采用与返程时相同的粒子AI
                     }
                     if (Projectile.ai[1] >= ReboundTime)
@@ -103,7 +105,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                        Rectangle mplrHitbox = new((int)owner.position.X, (int)owner.position.Y, owner.width, owner.height);
+                        Rectangle mplrHitbox = new((int)owner.position.X,
+                                                   (int)owner.position.Y,
+                                                   Projectile.ai[2]==-2f ? owner.width * 2  : owner.width,
+                                                   Projectile.ai[2]==-2f ? owner.height * 2 : owner.height);
+                    
                         if (projHitbox.Intersects(mplrHitbox))
                         {
                             if(Projectile.ai[2] == -2f) //只有挂载过的锤子才会在返回玩家手上的时候展示一些粒子

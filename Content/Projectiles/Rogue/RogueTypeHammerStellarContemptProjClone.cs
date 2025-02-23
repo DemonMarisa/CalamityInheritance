@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         public int addFlares = 1;
         private static readonly float RotationIncrement = 0.20f;
-        private static readonly int Lifetime = 275;
+        private static readonly int Lifetime = 340;
         private static readonly float canHomingCounter = 65f;
         private readonly float stealthSpeed = 24f;
 
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = Lifetime;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 265 && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < Lifetime -10 && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //锤子飞行过程中应当有声音
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 8;
+                Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
             Projectile.ai[0] += 1f;

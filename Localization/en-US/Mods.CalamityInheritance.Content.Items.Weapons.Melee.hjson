@@ -339,6 +339,6 @@ MeleeTypeTerraDisk: {
 }
 
 MeleeTypeHammerPwnageLegacy: {
-	Tooltip: ""
-	DisplayName: Melee Type Hammer Pwnage Legacy
+	Tooltip: Throws a strong hammer
+	DisplayName: Pwnagehammer Legacy
 }

@@ -147,12 +147,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 int dType = Main.rand.NextBool(2)? 226 : 272;
                 float rot = MathHelper.ToRadians(i * rotFactor);
-                Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 4.1f));
-                Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 4.1f));
+                Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));
+                Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));
                 Dust dust = Dust.NewDustPerfect(Projectile.Center + offset, dType, new Vector2(velOffset.X, velOffset.Y), 0, default, 0.3f);
                 dust.noGravity = true;
                 dust.velocity = velOffset;
-                dust.scale = Main.rand.NextFloat(1.5f, 3.2f);
+                dust.scale = 1.2f;
             }
 
             // 固定造成弑神怒焰的debuff
