@@ -383,10 +383,10 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<KnowledgeCrabulon>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, CalamityConditions.DownedCrabulon)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeEaterofWorlds>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedEaterOfWorlds)
-                .Add(new Item(ModContent.ItemType<KnowledgeCorruption>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedEaterOfWorlds)
+                //.Add(new Item(ModContent.ItemType<KnowledgeCorruption>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedEaterOfWorlds)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeBrainofCthulhu>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedBrainOfCthulhu)
-                .Add(new Item(ModContent.ItemType<KnowledgeCrimson>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedBrainOfCthulhu)
+                //.Add(new Item(ModContent.ItemType<KnowledgeCrimson>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedBrainOfCthulhu)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeHiveMind>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedHiveMind)
 
@@ -403,15 +403,15 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedDestroyer)
                 .Add(new Item(ModContent.ItemType<KnowledgeSkeletronPrime>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletronPrime)
                 .Add(new Item(ModContent.ItemType<KnowledgeTwins>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedTwins)
-                .Add(new Item(ModContent.ItemType<KnowledgeMechs>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMechBossAny)
+                //.Add(new Item(ModContent.ItemType<KnowledgeMechs>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMechBossAny)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeCryogen>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedCryogen)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeBrimstoneElemental>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedBrimstoneElemental)
-                .Add(new Item(ModContent.ItemType<KnowledgeBrimstoneCrag>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedBrimstoneElemental)
+                //.Add(new Item(ModContent.ItemType<KnowledgeBrimstoneCrag>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedBrimstoneElemental)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeAquaticScourge>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedAquaticScourge)
-                .Add(new Item(ModContent.ItemType<KnowledgeSulphurSea>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedAquaticScourge)
+                //.Add(new Item(ModContent.ItemType<KnowledgeSulphurSea>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedAquaticScourge)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeCalamitasClone>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedCalamitasClone)
 
@@ -420,7 +420,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<KnowledgeAstrumAureus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedPlaguebringer)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeLeviathanAnahita>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedLeviathan)
-                .Add(new Item(ModContent.ItemType<KnowledgeOcean>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedLeviathan)
+                //.Add(new Item(ModContent.ItemType<KnowledgeOcean>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedLeviathan)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeGolem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedGolem)
                 .Add(new Item(ModContent.ItemType<KnowledgeDukeFishron>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedDukeFishron)
@@ -428,14 +428,14 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<KnowledgeRavager>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedRavager)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeAstrumDeus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedAstrumDeus)
-                .Add(new Item(ModContent.ItemType<KnowledgeAstralInfection>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedAstrumDeus)
+                //.Add(new Item(ModContent.ItemType<KnowledgeAstralInfection>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedAstrumDeus)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeLunaticCultist>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedCultist)
                 .Add(new Item(ModContent.ItemType<KnowledgeMoonLord>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedMoonLord)
                 .Add(new Item(ModContent.ItemType<KnowledgeProfanedGuardians>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedGuardians)
                 .Add(new Item(ModContent.ItemType<KnowledgeDragonfolly>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedBumblebird)
                 .Add(new Item(ModContent.ItemType<KnowledgeProvidence>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<KnowledgeSentinels>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, tierThreeCondition)
+                //.Add(new Item(ModContent.ItemType<KnowledgeSentinels>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, tierThreeCondition)
                 .Add(new Item(ModContent.ItemType<KnowledgePolterghast>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedPolterghast)
                 .Add(new Item(ModContent.ItemType<KnowledgeOldDuke>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedOldDuke)
                 .Add(new Item(ModContent.ItemType<KnowledgeDevourerofGods>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedDevourerOfGods)
