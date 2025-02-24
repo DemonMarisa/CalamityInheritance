@@ -235,5 +235,15 @@ Configs: {
 			Tooltip: 切换星系异石的贴图
 			Label: 星系异石（已废弃，你不应该看到）
 		}
+
+		TriactisHammerResprite: {
+			// Label: Triactis Hammer Resprite
+			// Tooltip: ""
+		}
+
+		PwnagehammerResprite: {
+			// Label: Pwnagehammer Resprite
+			// Tooltip: ""
+		}
 	}
 }

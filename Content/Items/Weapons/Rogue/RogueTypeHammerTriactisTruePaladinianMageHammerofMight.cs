@@ -15,11 +15,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMight : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public static readonly int HammerDamage = 1950;
         public override void SetDefaults()
         {
             Item.width = 160;
             Item.height = 160;
-            Item.damage = 2000;
+            Item.damage = HammerDamage;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = true;
@@ -36,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.rare = ModContent.RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
         }
-        public override float StealthDamageMultiplier => 2.8f   ;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Vector2 velocity, int type, int damage, float knockback)
         {

@@ -34,7 +34,7 @@ namespace CalamityInheritance.CIPlayer
         //1就是没给
         //2就是给了
         public int giveScalEssence = 1;
-        public int HammerCounts = 0; //用于锤子打击次数的计时
+
         #endregion
         #region Accessories
         public bool ElementalQuiver = false;

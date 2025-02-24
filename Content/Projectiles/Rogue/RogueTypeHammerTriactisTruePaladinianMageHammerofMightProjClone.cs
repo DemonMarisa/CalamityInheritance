@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Formats.Tar;
 using System.Numerics;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -16,12 +17,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
-        public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
+        public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
         private static readonly float RotationIncrement = 0.14f;
         private readonly float stealthSpeed = 24f;
         private static readonly int Lifetime = 3000;
         private static readonly float canHomingCounter = 100f; //大锤子体积过大，因此开始追踪前飞行的距离应当更长
         public ref int HitCounts => ref Main.player[Projectile.owner].CalamityInheritance().HammerCounts;
+        public float HitSpins = 0f;
 
         public override void SetStaticDefaults()
         {
@@ -40,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 3;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesIDStaticNPCImmunity= true;
-            Projectile.idStaticNPCHitCooldown = 7;
+            Projectile.idStaticNPCHitCooldown = 8;
             Projectile.timeLeft = Lifetime;
         }
 
@@ -75,20 +77,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
-            if(Projectile.ai[0] < 45f) //大锤子会在飞行过程中缩小一点, 直到ai[0] = 45f为止
-            Projectile.scale -= 0.05f;
+            if(Projectile.ai[0] < 30f) //大锤子会在飞行过程中缩小一点, 直到ai[0] = 45f为止 ->克隆的锤子现在飞行过程中会尝试变得更小
+            Projectile.scale -= 0.07f;
 
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 Projectile.ai[0] = canHomingCounter;
                 CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
-                NPC target = Main.npc[(int)Projectile.ai[1]];
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
             Projectile.rotation += RotationIncrement * 0.5f;//大锤子的旋转增长速度比他下位的锤子更慢
-
-
 
             //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
             if (Main.rand.NextBool())
@@ -125,7 +124,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(250, 250, 250, 50);
+            return new Color(93, 226, 231, 45);
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -145,17 +144,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
             SpawnDust(); 
-            // SpawnExplosion();
-            SpawnAdditionHammer(target.Center);
+            SpawnAdditionHammer();
         }
         public override void OnKill(int timeLeft)
         {
             //kill掉后锤子会尝试收回
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 34f, -1f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(), (int)(RogueTypeHammerTriactisTruePaladinianMageHammerofMight.HammerDamage * 0.15), Projectile.knockBack, Projectile.owner, 0f, 34f, -1f);
         }
         private void SpawnDust()
         {
-            CalamityInheritanceUtils.DustCircle(Projectile.Center, 45f, Main.rand.NextFloat(1.6f, 2.0f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 12f);
+            CalamityInheritanceUtils.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.6f, 1.7f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 15f);
         }
         private void SpawnExplosion()
         {
@@ -169,26 +167,38 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
             }
         }
-        private void SpawnAdditionHammer(Vector2 tarPos)
+        private void SpawnAdditionHammer()
         {
-            float angleX = Main.rand.NextBool(2)? Main.rand.NextFloat(-7f, -5f) : Main.rand.NextFloat(4f, 8f);
-            float angleY = Main.rand.NextBool(2)? Main.rand.NextFloat(-7f, -5f) : Main.rand.NextFloat(4f, 8f);
-            float mainDir= Main.rand.NextBool(2)? 1f: -1f;
-            float altDir = Main.rand.NextBool(2)? 1f: -1f;
-            if(Projectile.owner == Main.myPlayer && HitCounts > 1)
+            int hammerType = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>();
+            int hammerDamage = (int)(Projectile.damage * 0.9f);
+            float hammerAngle = 8f; 
+            float hammerVelocity = 8f;
+            float rotArg = 360f / hammerAngle;
+            float rotateAngel = MathHelper.ToRadians(rotArg * Main.rand.NextFloat(0f,8f));
+
+            Vector2 hammerVelOffset = new Vector2(hammerVelocity, 0f).RotatedBy(rotateAngel);
+            Vector2 hammerVelOffsetAlt= new Vector2(0f, hammerVelocity).RotatedBy(rotateAngel);
+            if(Projectile.owner == Main.myPlayer && HitCounts > 2)
             {
                 SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center);
-                int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(angleX,angleY) * mainDir, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(), (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner);
+                int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[newHammer].netUpdate = true;
 
-                int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(angleX * altDir ,angleY), ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(), (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner);
+                int newHammerAlter = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset.RotatedBy(MathHelper.PiOver2), hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
+                Main.projectile[newHammerAlter].localAI[0] = Math.Sign(Projectile.velocity.X);
+                Main.projectile[newHammerAlter].netUpdate = true;
+
+                int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[altHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;
+
+                int altHammerAlter = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset.RotatedBy(MathHelper.PiOver2), hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
+                Main.projectile[altHammerAlter].localAI[0] = Math.Sign(Projectile.velocity.X);
+                Main.projectile[altHammerAlter].netUpdate = true;
                 HitCounts = 0;
             }
             else HitCounts++;
         }
     }
 }
-        
