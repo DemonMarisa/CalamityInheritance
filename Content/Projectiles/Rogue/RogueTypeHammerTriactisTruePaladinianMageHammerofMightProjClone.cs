@@ -182,7 +182,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[newHammer].netUpdate = true;
 
-                int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(angleX * altDir ,angleY), ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(), (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner);
+                int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(angleX, angleY) * mainDir * -1, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(), (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner);
                 Main.projectile[altHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;
                 HitCounts = 0;

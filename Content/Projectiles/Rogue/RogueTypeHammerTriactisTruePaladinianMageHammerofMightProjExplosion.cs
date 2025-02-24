@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using Terraria.ModLoader;
+
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion : ModProjectile, ILocalizedModType

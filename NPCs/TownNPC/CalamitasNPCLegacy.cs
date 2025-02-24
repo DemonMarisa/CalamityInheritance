@@ -533,6 +533,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void ItemShop_List()
         {
             var ItemShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalItemShopOption"))
+                .Add(new Item(ModContent.ItemType<AmidiasSpark>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDesertScourge)
                 .Add(new Item(ItemID.FlyingCarpet) { shopCustomPrice = Item.buyPrice(gold: 5) })
                 .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletron)
                 .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.Hardmode)

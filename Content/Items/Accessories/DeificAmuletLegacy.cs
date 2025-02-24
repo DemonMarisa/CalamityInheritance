@@ -48,16 +48,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient(ItemID.CharmofMyths).
                 AddIngredient(ItemID.MeteoriteBar, 10).
                 AddIngredient<SeaPrism>(15).
-                AddTile(TileID.LunarCraftingStation).
+                AddTile(TileID.MythrilAnvil).
                 Register();
-            
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                CreateRecipe().
-                    AddIngredient(ItemID.CharmofMyths).
-                    AddIngredient<DeificAmulet>().
-                    Register();
-            }
         }
     }
 }

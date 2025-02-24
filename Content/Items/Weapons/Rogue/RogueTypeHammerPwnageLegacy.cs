@@ -36,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shootSpeed = 12f;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
+            Item.autoReuse = true;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
