@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Texture;
 using CalamityMod.Buffs.Pets;
@@ -107,6 +108,77 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CalamityInheritanceTexture.P90Legacy;
                 }
             }
+
+            if(TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()]!=null)
+            {
+                if(CalamityInheritanceConfig.Instance.TriactisHammerResprite ==1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                }
+                if(CalamityInheritanceConfig.Instance.TriactisHammerResprite ==2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CalamityInheritanceTexture.TriactisHammerAlter;
+                    
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                }
+            }
+
+            if(TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()]!=null)
+            {
+                if(CalamityInheritanceConfig.Instance.TriactisHammerResprite ==1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                }
+                if(CalamityInheritanceConfig.Instance.TriactisHammerResprite ==2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CalamityInheritanceTexture.TriactisHammerCalamity;
+                }
+            }
+
+            if(TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()]!=null)
+            {
+                if(CalamityInheritanceConfig.Instance.PwnagehammerResprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                }
+                if(CalamityInheritanceConfig.Instance.PwnagehammerResprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CalamityInheritanceTexture.HallowedHammerAlter;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CalamityInheritanceTexture.HallowedHammerAlter;
+                    
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                }
+            }
+
+            if(TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()]!=null ||
+               TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()]!=null)
+            {
+                if(CalamityInheritanceConfig.Instance.PwnagehammerResprite == 1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                }
+                if(CalamityInheritanceConfig.Instance.PwnagehammerResprite == 2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CalamityInheritanceTexture.HallowedHammerCalamity;
+                }
+            }
+
 
             //TODO Scarlet:射弹的贴图并未正确替换，等我之后知道啥原因了可能就会弄好了
             //改好了

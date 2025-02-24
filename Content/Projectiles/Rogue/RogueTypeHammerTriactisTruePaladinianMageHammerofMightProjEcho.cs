@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         public float speed = 28f;
         public static readonly float HitRange = 70f;
-        public static readonly int LifeTime = 600;
+        public static readonly int LifeTime = 350;
         public static readonly float DefualtRotatoin = 0.22f;
         bool ifSummonClone = false;
         public override void SetStaticDefaults()
@@ -36,15 +36,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
-            Projectile.extraUpdates = 2;
+            Projectile.extraUpdates = 3;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown= -1;
+            Projectile.localNPCHitCooldown = -1;
             Projectile.timeLeft = LifeTime;
             Projectile.scale *= 0.6f;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < (LifeTime - 50) && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < (LifeTime - 80) && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -54,15 +54,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ai[0] += 1f;
             if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
             {   
-                Projectile.extraUpdates = 2;
-                if(Projectile.ai[0] == HitRange)
-                ReturnDust(); //使Echo飞行之顶点时释放粒子提示
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, speed, 20f);
+                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, speed, 25f, MathHelper.ToRadians(10f));
             }
 
-            if(Projectile.ai[0] < HitRange - 25f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
+            if(Projectile.ai[0] < HitRange - 35f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
             {
-                Projectile.velocity.Y *=1.01f;
+                Projectile.velocity.X *=1.01f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]*0.7f) * Projectile.localAI[0];
 
                 NPC tar  = Main.npc[(int)Projectile.ai[1]];
@@ -73,10 +70,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
 
             }
-            else if(Projectile.ai[0] > HitRange - 25f && Projectile.ai[0] < HitRange)//echo达到一定距离后, 速度将会不断缩短
+            else if(Projectile.ai[0] > HitRange - 35f && Projectile.ai[0] < HitRange)//echo达到一定距离后, 速度将会不断缩短
             {
-                Projectile.extraUpdates = 3;
-                Projectile.velocity.Y *= 0.86f;
+                Projectile.velocity.X *= 0.05f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.5f) * Projectile.localAI[0];
             }
 
@@ -87,7 +83,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
             Projectile.rotation += DefualtRotatoin;
-
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -126,44 +121,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private void ReturnDust()
         {
-            for (int i = 0; i < 50; i++)
-            {
-                Dust fire = Dust.NewDustPerfect(Projectile.Center, DustID.GemEmerald);
-                fire.velocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedByRandom(0.8f) * new Vector2(4f, 1.25f) * Main.rand.NextFloat(0.9f, 1f);
-                fire.velocity = fire.velocity.RotatedBy(Projectile.rotation - MathHelper.PiOver2);
-                fire.velocity += Projectile.velocity/4 *(5*0.04f);
-                fire.noGravity = true;
-                fire.scale = Main.rand.NextFloat(0.6f, 0.9f) * 5;
-                fire = Dust.CloneDust(fire);
-                fire.velocity = Main.rand.NextVector2Circular(3f, 3f);
-                fire.velocity += Projectile.velocity/2*(5*0.04f);
-            }
+            CalamityInheritanceUtils.DustCircle(Projectile.position, 12f, 1.5f, DustID.GemSapphire, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
         }
 
         //正常击中敌人生成粒子
         private void SpawnDust()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                int triactisDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 1.2f);
-                Main.dust[triactisDust].velocity *= 3f;
-                if (Main.rand.NextBool(2))
-                {
-                    Main.dust[triactisDust].scale = 0.5f;
-                    Main.dust[triactisDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
-                }
-            }
-
-            for (int j = 0; j < 5; j++)
-            {
-                int triactisDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 1.5f);
-                Main.dust[triactisDust2].noGravity = true;
-                Main.dust[triactisDust2].velocity *= 5f;
-                triactisDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 1f);
-                Main.dust[triactisDust2].velocity *= 2f;
-            }
+            CalamityInheritanceUtils.DustCircle(Projectile.position, 12f, 1.5f, DustID.GemSapphire, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
         }
-
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

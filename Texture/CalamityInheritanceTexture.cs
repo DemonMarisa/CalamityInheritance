@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityMod.Items.Accessories;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -38,6 +39,16 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> P90;
 
         public static Asset<Texture2D> P90Legacy;
+
+        public static Asset<Texture2D> TriactisHammerAlter;
+        public static Asset<Texture2D> TriactisHammerAlterProj;
+        public static Asset<Texture2D> TriactisHammerCalamity;
+        public static Asset<Texture2D> TriactisHammerCalamityProj;
+
+        public static Asset<Texture2D> HallowedHammerCalamity;
+        public static Asset<Texture2D> HallowedHammerCalamityProj;
+        public static Asset<Texture2D> HallowedHammerAlter;
+        public static Asset<Texture2D> HallowedHammerAlterProj;
         //下：无记名灵基
         public static Asset<Texture2D> FateGirlLegacy;
         public static Asset<Texture2D> FateGirlLegacyBuff;
@@ -121,6 +132,17 @@ namespace CalamityInheritance.Texture
             P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90");
             P90Legacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/P90Legacy");
 
+            TriactisHammerCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/TriactisHammerCalamity");
+            TriactisHammerCalamityProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/TriactisHammerCalamity");
+            TriactisHammerAlter = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            TriactisHammerAlterProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            
+
+            HallowedHammerCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
+            HallowedHammerCalamityProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
+            HallowedHammerAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
+            HallowedHammerAlterProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
+
             /*下方为飞刀的各种贴图，排版与上述定义时相同*/
             //苍穹飞刀(现)
             EmpyreanKnivesCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesEmpyrean");
@@ -201,6 +223,9 @@ namespace CalamityInheritance.Texture
 
             P90 = null;
             P90Legacy = null;
+
+            TriactisHammerCalamity = null;
+            TriactisHammerAlter = null;
 
             //飞刀，排版同上
             EmpyreanKnivesCalamity = null;

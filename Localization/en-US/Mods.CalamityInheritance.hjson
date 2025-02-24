@@ -248,5 +248,15 @@ Configs: {
 			Tooltip: Determines the sprite of Galactica Singularity
 			Label: Galactica Singularity Resprite
 		}
+
+		TriactisHammerResprite: {
+			Label: Triactis Hammer Resprite
+			Tooltip: ""
+		}
+
+		PwnagehammerResprite: {
+			Label: Pwnagehammer Resprite
+			Tooltip: ""
+		}
 	}
 }
