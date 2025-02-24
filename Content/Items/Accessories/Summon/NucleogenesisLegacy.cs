@@ -37,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
 
             CIplayer.nucleogenesisLegacy = true;

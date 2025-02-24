@@ -46,7 +46,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>(),  damage , knockback, player.whoAmI, 0f, 0f);
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
                 int stealth = Projectile.NewProjectile(source, position, velocity ,type, damage, knockback, player.whoAmI);

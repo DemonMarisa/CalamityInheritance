@@ -217,8 +217,3 @@ DrataliornusLegacy: {
 		Meteors deals 210% of weapon damage if is summoned by homing fireballs, deals 170% of weapon damage instead 
 		'''
 }
-
-DragonRanged: {
-	DisplayName: Dragon Ranged
-	Tooltip: ""
-}

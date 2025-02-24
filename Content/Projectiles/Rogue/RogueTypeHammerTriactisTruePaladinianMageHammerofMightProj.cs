@@ -3,6 +3,7 @@ using CalamityMod;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
+using rail;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -31,8 +32,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 10;
+            Projectile.usesLocalNPCImmunity= true;
+            Projectile.localNPCHitCooldown= 10;
             Projectile.timeLeft = 1000;
         }
 
@@ -45,7 +46,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.soundDelay = 8;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
-
+            /********************大锤子潜伏ai**********************
+            *大锤子的潜伏ai可以说是相当暴力
+            *如大部分锤子一样, ai[0]用于记录锤子是(1f)否(0f)处于返程
+            *允许潜伏时, 返程的时候会使用类似于星神之杀的ai
+            *
+            *
+            *
+            *
+            *
+            */
             switch (Projectile.ai[0])
             {
                 case 0f:
@@ -66,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                        Rectangle mplrHitbox = new((int)owner.position.X, (int)owner.position.Y, owner.width, owner.height);
+                        Rectangle mplrHitbox = new((int)owner.position.X, (int)owner.position.Y, (int)(owner.width * 1.5f), (int)(owner.height*1.5f));
                         if (projHitbox.Intersects(mplrHitbox))
                         {
                             if(Projectile.Calamity().stealthStrike && Projectile.ai[2] != -1f) //挂载过的锤子不会再执行一次追踪
@@ -81,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                             else if(Projectile.ai[2] == -1f) //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
                             {
                                 ReturnDust(); //只有挂载在敌人身上的锤子回收在玩家身上的时候才会生成粒子
-                                Projectile.ai[2] = -2f;
+                                Projectile.ai[2] = 0f;
                             }
                             else
                             Projectile.Kill();
@@ -90,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
                 
                 case 2f:
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1250f, 20, 20f);
+                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1250f, 20f, 20f);
                     ifSummonClone = true;
                     break;
 
@@ -110,9 +120,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
             if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X*0.85f, Projectile.velocity.Y*0.85f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.75), Projectile.knockBack, Projectile.owner, 0f, 0f);
-            ifSummonClone = false;
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X*0.85f, Projectile.velocity.Y*0.85f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.75), Projectile.knockBack, Main.myPlayer);
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+
+            ifSummonClone = false;
+            if(Projectile.Calamity().stealthStrike || Projectile.ai[2] == -1f) //潜伏时生成的粒子被压制到一个非常非常低的值
+            StealthSpawnDust();
+            else
             SpawnDust();
         }
 
@@ -123,7 +137,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             SpawnDust();
         }
-
 
         private void ReturnDust()
         {
@@ -141,6 +154,28 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
 
+        private void StealthSpawnDust() //潜伏攻击的粒子, 被削减至一个非常非常低的值
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                int triactisDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 2f);
+                Main.dust[triactisDust].velocity *= 3f;
+                if (Main.rand.NextBool(2))
+                {
+                    Main.dust[triactisDust].scale = 0.5f;
+                    Main.dust[triactisDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                }
+            }
+            for (int j = 0; j < 10; j++)
+            {
+                int triactisDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 3f);
+                Main.dust[triactisDust2].noGravity = true;
+                Main.dust[triactisDust2].velocity *= 5f;
+                triactisDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 2f);
+                Main.dust[triactisDust2].velocity *= 2f;
+            }
+
+        }
         //正常击中敌人生成粒子
         private void SpawnDust()
         {
@@ -148,7 +183,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 int triactisDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? DustID.GemEmerald : DustID.Vortex, 0f, 0f, 100, default, 2f);
                 Main.dust[triactisDust].velocity *= 3f;
-                if (Main.rand.NextBool())
+                if (Main.rand.NextBool(2))
                 {
                     Main.dust[triactisDust].scale = 0.5f;
                     Main.dust[triactisDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
