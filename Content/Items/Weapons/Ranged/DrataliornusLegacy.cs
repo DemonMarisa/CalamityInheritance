@@ -27,7 +27,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
-
+        /************龙弓: 最后的爆改**************
+        *龙弓与元素箭袋(旧)/金源射手套联动:
+        *左键每次发射的弹幕+1 和 右键同时发射10个且两份复制的龙焰火球
+        *龙弓·左键现在根据玩家破甲与防御值提供乘算增伤
+        *算法为(1 + 玩家穿甲数/150 + (1 - 玩家护甲值/100)), 这一效果会直接加在武器上
+        *爆改了龙弓的火球AI, 现在龙弓的火球能保证追踪
+        *严格按照Tooltip的描述重新分配了伤害倍率
+        *总之, 这一套下来能让龙弓突破千万dps大关
+        *纯输出的情况下预估dps(左键)可能可以突破至亿, 视情况而定
+        *之后不对龙弓做任何的修改
+        *题外话:
+        *我都不知道为什么要跟别的模组卷谁的数值高, 到底是图什么?
+        *********************************************/
         public override void SetDefaults()
         {
             Item.width = 64;
@@ -84,9 +96,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             //更强大的海啸
             if (player.altFunctionUse == 2)
             {
-              
-                const int numFlames = 5;
-                int flameID = ModContent.ProjectileType<DragonBowFlame>();
+                var usPlayer = player.CalamityInheritance();
+                int numFlames = 5;
+                if(usPlayer.godSlayerRangedold && usPlayer.auricsilvaset) //佩戴金源射手时
+                numFlames = 10;
+                int flameID = ModContent.ProjectileType<DragonBowFlameRework>();
                 int flameDamage = (int)(damage * (RightClickDamageRatio));
                 //直接增加伤害倍率, 即0.65f(右键倍率) + 经过穿甲计算后的倍率, 对于20穿甲的玩家, 这一倍率是0.99≈1f, 即取武器本身的伤害
                 //对于30穿甲则取1.15f别率.
@@ -103,6 +117,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     float piArrowOffset = i - (numFlames - 1) / 2;
                     Vector2 offsetSpawn = spinningpoint.RotatedBy(fifteenHundredthPi * piArrowOffset, new Vector2());
                     Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.7f, velocity.Y * 0.7f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
+                    if(usPlayer.godSlayerRangedold && usPlayer.auricsilvaset) //佩戴金源射手时
+                    Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.9f, velocity.Y * 0.9f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
                 }
             }
             else

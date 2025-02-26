@@ -1,128 +1,69 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
+using System.Drawing;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
+
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class DragonBowFlame: ModProjectile, ILocalizedModType
+    public class DragonBowFlameRework: ModProjectile, ILocalizedModType 
     {
-        public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        public override string Texture => "CalamityInheritance/Content/Projectiles/Ranged/DragonBowFlame";
         public override void SetDefaults()
         {
             Projectile.width = 18;
             Projectile.height = 18;
             Projectile.scale = 1.5f;
+            Projectile.DamageType = DamageClass.Ranged;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = false;
-            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.tileCollide = true;
+            Projectile.penetrate = 1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
             Projectile.arrow = true;
             Projectile.hide = true;
             Projectile.timeLeft = 160;
         }
-
+        //及其暴力的重写了龙弓的射弹AI
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation();
-
-            if (Projectile.hide) //called on first AI tick only - more initializations
+            if(Projectile.hide)
             {
                 Projectile.hide = false;
-                Projectile.ai[1] = -1f;
-
-                if (Projectile.ai[0] != 0f) //if empowered fireball
+                Projectile.localAI[0] = Main.rand.Next(30); //让localAI[0]计数器在0~30内随机取一个
+                if(Projectile.ai[0] != 0f)
                 {
-                    Projectile.extraUpdates = 1;
-                    Projectile.localAI[0] = Main.rand.Next(30);
-
-                    if (Projectile.ai[0] == 2f) //if homing fireball
-                        Projectile.timeLeft += 180;
+                    Projectile.extraUpdates = 2;
+                    if(Projectile.ai[0] == 2f)
+                    {
+                        Projectile.timeLeft += 240;
+                    }
                 }
-
-                Projectile.netUpdate = true;
             }
-
-            //intangible until it's in completely open space
-            if (!Projectile.tileCollide && !Collision.SolidCollision(Projectile.position, Projectile.width, Projectile.height))
-            {
-                Projectile.tileCollide = true;
-                Projectile.netUpdate = true;
-            }
-
             Projectile.localAI[0]++;
-            if (Projectile.localAI[0] > 60f) //dragon dust trail counter, but only empowered proj spawns it
+            if(Projectile.localAI[0]>60f && Projectile.ai[2] >= 0f)
             {
                 Projectile.localAI[0] = 0f;
-
-                //只有:射弹是追踪射弹属性，才会以一定概率生成一个额外的追踪射弹，且射弹速度为1.0倍率，伤害为1.2f，执行这条指令后生成的新射弹将无法在执行这条指令
-                if (Projectile.ai[0] == 0f && Projectile.ai[2] == 1f && Projectile.owner == Main.myPlayer && Main.rand.NextBool(3))
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),
-                                             Projectile.Center,
-                                             Projectile.velocity,
-                                             ModContent.ProjectileType<DragonBowFlame>(),
-                                             (int)(DrataliornusLegacy.WeaponDamage * 1.2f),
-                                             Projectile.knockBack * 3f,
-                                             Projectile.owner,
-                                             2f,
-                                             0,
-                                             -1f);
+                if(Projectile.ai[0] == 2f && Main.rand.NextBool(3))
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, Projectile.type, (int)(Projectile.damage * 1.8f), Projectile.knockBack, Projectile.owner, 2f, 0f, -1f);
             }
-
-            Projectile.localAI[1]++;
-            if (Projectile.localAI[1] > 8f) //homing counter, checks every 8/2=4 ticks
+            Projectile.netUpdate = true;
+            if(Projectile.ai[0] == 2f)
             {
-                Projectile.localAI[1] = 0f;
-
-                if (Projectile.ai[0] == 2f && Projectile.ai[1] < 0f) //if homing fireball and no target
-                {
-                    int possibleTarget = -1;
-                    float closestDistance = 50000f;
-
-                    foreach (NPC npc in Main.ActiveNPCs)
-                    {
-                        if (npc.chaseable && npc.lifeMax > 0 && !npc.dontTakeDamage && !npc.friendly &&
-                            !npc.immortal && Collision.CanHit(Projectile.Center, 0, 0, npc.Center, 0, 0))
-                        {
-                            float distance = Vector2.Distance(Projectile.Center, npc.Center);
-
-                            if (closestDistance > distance)
-                            {
-                                closestDistance = distance;
-                                possibleTarget = npc.whoAmI;
-                            }
-                        }
-                    }
-
-                    Projectile.ai[1] = possibleTarget;
-                    Projectile.netUpdate = true;
-                }
+                float homingSpeed = Main.rand.NextFloat(12f, 19f);
+                float inhertiaSpeed = Main.rand.NextFloat(12f, 19f);
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, homingSpeed, inhertiaSpeed);
             }
-
-            if (Projectile.ai[1] != -1f) //if has target
-            {
-                NPC npc = Main.npc[(int)Projectile.ai[1]];
-                //追踪的速度从10f至18f随机
-                float homingSpeed = Main.rand.NextFloat(10f, 18f);
-                //惯性也一样
-                float inertiaSpeed = Main.rand.NextFloat(10f, 18f);
-
-                if (npc.active && npc.chaseable && !npc.dontTakeDamage) //do homing
-                {
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, homingSpeed, inertiaSpeed);
-                }
-                else //target not valid, stop homing
-                {
-                    Projectile.ai[1] = -1;
-                    Projectile.netUpdate = true;
-                }
-            }
-
             int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Flare, Projectile.velocity.X, Projectile.velocity.Y, 0, default, 1.5f + Main.rand.NextFloat());
             Main.dust[d].noGravity = true;
 
@@ -145,7 +86,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (timeLeft != 0)
             {
-                SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+                if(Projectile.soundDelay <=0)
+                {
+                    Projectile.soundDelay = 30;
+                    SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+                }
 
                 if (Projectile.ai[0] != 0f && Projectile.owner == Main.myPlayer) //if empowered, make exo arrow and dragon dust
                 {
@@ -222,6 +167,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     vel *= 30f;
                     //发射的射弹如果是追踪的,天降的陨石伤害取2.1f，否则取1.7f
                     int skyFlareDamage = Projectile.ai[0] == 2f? (int)(Projectile.damage * 2.1f) : (int)(Projectile.damage * 1.7f);
+                    if(Main.rand.NextBool(2))
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ModContent.ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }

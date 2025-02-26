@@ -46,27 +46,22 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-            // On the frame the disc begins returning, send a net update.
             if (Projectile.timeLeft == Lifetime - ReboundTime)
                 Projectile.netUpdate = true;
 
-            // The disc runs its returning AI if it has existed longer than ReboundTime frames.
             if (Projectile.timeLeft <= Lifetime - ReboundTime)
             {
                 float returnSpeed = Eradicator.Speed * 1.3f;
                 float acceleration = 0.25f;
                 Player owner = Main.player[Projectile.owner];
                 CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
-                // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)
                     if (Projectile.Hitbox.Intersects(owner.Hitbox))
                         Projectile.Kill();
             }
 
-            // Lighting.
             Lighting.AddLight(Projectile.Center, 0.35f, 0f, 0.25f);
 
-            // Rotate the disc as it flies.
             float spin = Projectile.direction <= 0 ? -1f : 1f;
             Projectile.rotation += spin * RotationIncrement;
             

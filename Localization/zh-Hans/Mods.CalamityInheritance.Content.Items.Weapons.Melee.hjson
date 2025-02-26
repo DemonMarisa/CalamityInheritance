@@ -339,6 +339,20 @@ MeleeTypeHammerPwnageLegacy: {
 }
 
 PhoenixBlade: {
-	DisplayName: 凤凰之刃
-	Tooltip: 敌人死亡时会爆炸并留下恢复之火
+	DisplayName: 凤凰之刃[Legacy]
+	Tooltip:
+		'''
+		敌人死亡时会爆炸并留下恢复之火
+		对血量高于75%最大生命值的敌怪造成4倍伤害
+		"比毁灭剑更大"
+		'''
+}
+
+GlacialCrusher: {
+	Tooltip:
+		'''
+		发射四个冰霜弹, 在片刻后会高速追踪并冻结敌人
+		剑刃对被冻结的敌人造成巨额伤害
+		'''
+	DisplayName: 冰川之刃[Revamped]
 }

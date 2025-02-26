@@ -41,7 +41,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlame>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlameRework>());
             }
             CalamityInheritanceTexture.LoadTexture();
 

@@ -345,5 +345,19 @@ MeleeTypeHammerPwnageLegacy: {
 
 PhoenixBlade: {
 	DisplayName: Phoenix Blade
-	Tooltip: Enemies explode and emit healing flames on death
+	Tooltip:
+		'''
+		Enemies explode and emit healing flames on death
+		4x of your damage if you enemy is at 70% of max HP or higher
+		'''
+}
+
+GlacialCrusher: {
+	Tooltip:
+		'''
+		Fires 4 frost projectiles home in on your enemy after a while
+		Your projectiles can freeze your victim
+		True melee strikes cause tremendous damage to frozen enemies
+		'''
+	DisplayName: Glacial Crusher Revamped
 }

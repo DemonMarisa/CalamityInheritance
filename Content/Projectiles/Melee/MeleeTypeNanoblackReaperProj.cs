@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.extraUpdates = 2;
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = 8; //无敌帧10→8
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
         }
 
@@ -109,13 +109,17 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public int GetBladeDelay()
         {
-            return Main.rand.Next(MinBladeTimer, MaxBladeTimer + 1);
+            return Main.rand.Next(MinBladeTimer, MaxBladeTimer + 1); 
+            //有趣的是, 原灾的分裂弹幕与旧灾的一样, 都是采用一个随机返回的int型数据
+            //但区别在于, 因为1.4tmod与1.3tmod的区别, 这一个timer实际上搬运到1.4之后反而变长了
+            //一言以蔽之, 1.4tmod一些东西的修改让这个武器分裂的频率变慢了
+            //现在分裂的最短刻从12f->9f, 最长刻从15->12f, 略微匹配1.3tmod的版本
+            //无敌帧的事情应该不用担心, 毕竟每个镰刀只有4hit.
         }
-
         public void SpawnEnergyBlade()
         {
             int bladeID = ModContent.ProjectileType<MeleeTypeNanoblackReaperProjSplit>();
-            int bladeDamage = Projectile.damage / 2;
+            int bladeDamage = (int)(Projectile.damage * 0.8f); //分裂刀片的伤害从弹幕的1/2修改为弹幕的0.8f
             float bladeKB = 3f;
             float spin = Projectile.direction <= 0 ? -1f : 1f;
             float d = 16f;
@@ -124,15 +128,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Vector2 velocityOffset = Main.rand.NextFloat(-velocityMult, velocityMult) * Projectile.velocity;
             Vector2 pos = Projectile.Center + directOffset + velocityOffset;
             if (Projectile.owner == Main.myPlayer)
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(),
-                                         pos,
-                                         Vector2.Zero,
-                                         bladeID,
-                                         bladeDamage,
-                                         bladeKB,
-                                         Projectile.owner,
-                                         0f,
-                                         spin);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, Vector2.Zero, bladeID, bladeDamage, bladeKB, Projectile.owner, 0f, spin);
         }
     }
 }

@@ -171,10 +171,10 @@ namespace CalamityInheritance.CIPlayer
 
             if (yharimOfPerunBuff)
             {
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f;
-                Player.GetAttackSpeed<RangedDamageClass>() += 0.10f;
-                Player.GetAttackSpeed<MagicDamageClass>() += 0.15f;
-                Player.manaCost *= 0.35f;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; //基于近战武器55%的全局攻速
+                Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; //给予远程武器45%的全局攻速
+                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f; //更新:给予法师武器65%的攻速
+                Player.manaCost *= 0.05f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
             }
             
@@ -186,6 +186,14 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.1f;
                 Player.longInvince = true;
                 Player.crimsonRegen = true;
+            }
+            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
+            {
+                float armorBoost = Player.GetTotalArmorPenetration<RangedDamageClass>();
+                int totalArmor = Player.GetCurrentDefense();
+                float damageBoost = armorBoost / 100f + (1 - totalArmor/100);
+                float actualDamage = 1.0f + damageBoost; 
+                player.GetDamage<RangedDamageClass>() *= actualDamage;
             }
         }
         #region AccessoriesStats

@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Pink;
             Item.Calamity().donorItem = true;
             Item.shoot = ModContent.ProjectileType<MeleeTypeKelvinCatalystProj>();
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = 18f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }
         public override void AddRecipes()
@@ -42,13 +43,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             CreateRecipe().
                 AddIngredient<IceStar>(200).
                 AddIngredient<Avalanche>(2).
+                AddIngredient<GlacialCrusher>(2).
                 AddIngredient<HoarfrostBow>(2).
                 AddIngredient<Icebreaker>(2).
                 AddIngredient<SnowstormStaff>(2).
+                AddIngredient<BittercoldStaff>(2).
                 AddIngredient<SoulofCryogen>(2).
                 AddIngredient<FrostFlare>(2).
                 AddIngredient<CryoStone>(2).
-                AddIngredient(ItemID.FrostStaff, 2).
                 AddIngredient(ItemID.FrostCore, 2).
                 AddIngredient(ItemID.FrozenKey, 2).
                 AddIngredient<EssenceofEleum>(20).

@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 3;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity= true;
-            Projectile.localNPCHitCooldown= 10;
+            Projectile.localNPCHitCooldown= 6; //8->6
             Projectile.timeLeft = 1000;
         }
 
@@ -46,16 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.soundDelay = 8;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
-            /********************大锤子潜伏ai**********************
-            *大锤子的潜伏ai可以说是相当暴力, 但也非常有效
-            *如大部分锤子一样, ai[0]用于记录锤子是(1f)否(0f)处于返程
-            *允许潜伏时, 返程的时候会使用类似于星神之杀的ai
-            *回击后会生成一个克隆锤子, 使用类似于圣时之锤的挂载效果
-            *而后, 大锤子将会不断地分裂出多个
-            *
-            *
-            *
-            */
+
             switch (Projectile.ai[0])
             {
                 case 0f:
@@ -120,7 +111,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
             if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X*1.25f, Projectile.velocity.Y*1.05f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.8f), Projectile.knockBack, Main.myPlayer);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X*1.25f, Projectile.velocity.Y*1.05f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.7f), Projectile.knockBack, Main.myPlayer);
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 
             ifSummonClone = false;

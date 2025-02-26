@@ -180,7 +180,7 @@ namespace CalamityInheritance.CIPlayer
             if (auricYharimSet)
             {
                 if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
-                    && Main.projectile[projectile.owner].Calamity().stealthStrike
+                    && projectile.Calamity().stealthStrike
                     && yharimOfPerunStrikesCooldown == 0
                     ) 
                 {

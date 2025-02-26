@@ -166,3 +166,8 @@ StepToolShadow: {
 		[c/CD661D:开发者物品: TrueScarlet]
 		'''
 }
+
+BittercoldStaff: {
+	DisplayName: 苦寒法杖[Legacy]
+	Tooltip: 散射出跟踪寒冰碎片
+}

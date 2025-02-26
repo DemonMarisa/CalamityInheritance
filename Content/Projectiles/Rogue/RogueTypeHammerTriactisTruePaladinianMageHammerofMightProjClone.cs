@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
         private static readonly float RotationIncrement = 0.14f;
-        private readonly float stealthSpeed = 24f;
+        private readonly float stealthSpeed = 32f; //追踪速度24->32f
         private static readonly int Lifetime = 3000;
         private static readonly float canHomingCounter = 100f; //大锤子体积过大，因此开始追踪前飞行的距离应当更长
         public ref int HitCounts => ref Main.player[Projectile.owner].CalamityInheritance().HammerCounts;
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 2;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesIDStaticNPCImmunity= true;
-            Projectile.idStaticNPCHitCooldown = 8;
+            Projectile.idStaticNPCHitCooldown = 5; //挂载锤倍率0.8->0.7, 但是, 无敌帧8->5
             Projectile.timeLeft = Lifetime;
         }
 

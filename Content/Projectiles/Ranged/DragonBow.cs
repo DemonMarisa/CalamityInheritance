@@ -1,5 +1,6 @@
 ﻿using System;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Summon;
 using Microsoft.Xna.Framework;
@@ -99,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
                     player.PickAmmo(player.ActiveItem(), out type, out scaleFactor, out damage, out knockBack, out _);
 
-                    type = ModContent.ProjectileType<DragonBowFlame>();
+                    type = ModContent.ProjectileType<DragonBowFlameRework>();
                     knockBack = player.GetWeaponKnockback(player.ActiveItem(), knockBack);
 
                     Vector2 playerPosition = player.RotatedRelativePoint(player.MountedCenter, true);
@@ -114,31 +115,35 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     float variation = (1f + Projectile.localAI[0]) * 3f; //variation increases as fire rate increases
                     Vector2 position = playerPosition + Utils.RandomVector2(Main.rand, -variation, variation);
                     Vector2 speed = Projectile.velocity * scaleFactor * (0.6f + Main.rand.NextFloat() * 0.6f);
-                    int homingDamage = Projectile.damage * 2;
-                    Vector2 homingSpeed = Projectile.velocity;
-                    float ai0 = 0f, ai2 = 1f;
+                    var usPlayer = player.CalamityInheritance();
+                    float ai0;
                     //数值调整:
                     //全部弹幕的速度下调, 将伤害细分成多个小模块
-                    if (Projectile.ai[0] < 0f) //if fully spun up
+                    if (Projectile.ai[0] < 0f)
                     {
 
                         if (Main.rand.NextBool(2))//当允许追踪时
                         {
                             ai0 = 2f;
-                            //以1/2的概率再发射一个新的追踪射弹，这一射弹的倍率将会乘以0.75f
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, homingSpeed * 1.5f, type, (int)(homingDamage * 0.75f), knockBack, Projectile.owner, ai0, 0f, ai2);
+                            if(Main.rand.NextBool(3))
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f);
+                            if(usPlayer.ElementalQuiver) //装备元素箭袋时必定多发送一个追踪弹幕
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f);
+                            damage *= (int)1.2f; 
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, ai0, 0f);
                         }
                         else
                         {
                             ai0 = 1f;
-                            //以1/4的概率额外发射一个不追踪的极高速射弹(原本速度的1.2f),但是只造成0.60f倍率的伤害
                             if(Main.rand.NextBool(4))
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*1.2f, type, (int)(damage * 0.6f), knockBack, Projectile.owner, ai0, 0f, ai2);
-                            /*无法追踪的射弹暴力1.2*/
-                            damage *= (int)1.20f; 
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*2.0f, type, (int)(damage * 0.65f), knockBack, Projectile.owner, ai0, 0f);
+                            if(usPlayer.ElementalQuiver) //装备元素箭袋时必定多发送一个非追踪弹幕
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f);
+                            damage *= (int)1.30f; 
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*1.2f, type, damage, knockBack, Projectile.owner, ai0, 0f);
                         }
                     }
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, ai0, 0f, ai2);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, 0f, 0f);
                     Projectile.netUpdate = true;
                 }
                 else

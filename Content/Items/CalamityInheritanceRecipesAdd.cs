@@ -74,6 +74,7 @@ namespace CalamityInheritance.Content.Items
             LegendaryItemTrain();//传奇物品火车
             AllShadowSpecTrain();//魔影武器火车
             AllShadowSpecCustomTrain();//魔影特殊材料合成火车
+            AllCyroBarsTrain(); //冰灵锭可以合成的东西
 
 
             #region WeaponsConvertandrecipeadd
@@ -980,5 +981,49 @@ namespace CalamityInheritance.Content.Items
                 Register();
             #endregion
         }
+        public static void AllCyroBarsTrain()
+        {
+            Recipe.Create(ModContent.ItemType<HoarfrostBow>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<Avalanche>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<Icebreaker>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<SnowstormStaff>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<SoulofCryogen>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<FrostFlare>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ModContent.ItemType<CryoStone>()).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+            Recipe.Create(ItemID.FrostStaff).
+                AddIngredient<CryoBar>(10).
+                DisableDecraft().
+                AddTile(TileID.IceMachine).
+                Register();
+        }
+
     }
 }

@@ -35,33 +35,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.penetrate = 1;
             Projectile.timeLeft = 650;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
         }
 
         public override void AI()
         {
             Player projOwner = Main.player[Projectile.owner];;
-            float Ai2 = Projectile.ai[2];
-            if(Projectile.Calamity().stealthStrike)
-            {
-                Projectile.ai[1] += 1f;
-                Projectile.ai[0] += 1f;
-                if(Projectile.ai[1] < 60f && Projectile.ai[2] < 4f)
-                {
-                    if(Projectile.ai[0] == 20f)
-                    {
-                        Projectile.ai[0] = 0f;
-                        Ai2 += 1f;
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * 0.75f, ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Main.myPlayer, 0f, 0f, Ai2);
-                    }
-                }
-                else
-                {
-                    CIFunction.DustCircle(Projectile.position, 8, 0.5f, DustID.GemEmerald, false, 4f);
-                    
-                    (Projectile, true, 4800f, 1600f, 18f, 20f);
-                }
-            }
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 240f)
             {

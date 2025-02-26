@@ -153,3 +153,8 @@ StepToolShadow: {
 		Developer Item: TrueScarlet
 		'''
 }
+
+BittercoldStaff: {
+	DisplayName: Bittercold Staff
+	Tooltip: Fires a spread of homing ice spikes
+}

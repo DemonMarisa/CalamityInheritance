@@ -29,25 +29,22 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
-            Projectile.MaxUpdates = 2;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.coldDamage = true;
+            Projectile.extraUpdates = 1; //给了一个额外更新
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15 * Projectile.MaxUpdates; //15 effective, 30 total
+            Projectile.localNPCHitCooldown = 15;
         }
-
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(Projectile.localAI[0]);
             writer.Write(AIState);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             Projectile.localAI[0] = reader.ReadSingle();
             AIState = reader.ReadInt32();
         }
-
         public override void AI()
         {
             VisualAudioEffects();
@@ -60,38 +57,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 case 0:
                     Projectile.localAI[0] += 1f;
-                    if (Projectile.localAI[0] >= 75f)
-                    {
-                        ResetStats(Projectile.Calamity().stealthStrike);
-                    }
+                    if (Projectile.localAI[0] >= 60f)
+                        ResetStats();
                     break;
                 case 1:
                     ReturnToPlayer();
                     break;
-                case 2:
-                    // Will target the targetted NPC that minions use btw
-                    Projectile.ChargingMinionAI(1200f,
-                                                1500f,
-                                                2200f,
-                                                150f,
-                                                1,
-                                                40f,
-                                                12f,
-                                                6f,
-                                                new Vector2(0f, -60f),
-                                                40f,
-                                                12f,
-                                                true,
-                                                true);
-                    Projectile.localAI[0] += 1f;
-                    if (Projectile.localAI[0] >= 180)
-                    {
-                        ResetStats(false);
-                    }
-                    break;
             }
         }
-
         private void ReturnToPlayer()
         {
             Player player = Main.player[Projectile.owner];
@@ -102,7 +75,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 if (Projectile.Hitbox.Intersects(player.Hitbox))
                     Projectile.Kill();
         }
-
         private void VisualAudioEffects()
         {
             Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.3f / 255f, Main.DiscoR * 0.4f / 255f, Main.DiscoR * 0.5f / 255f);
@@ -119,38 +91,33 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             Projectile.rotation += 0.25f;
         }
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            ResetStats(Projectile.Calamity().stealthStrike);
+            ResetStats();
             if (Projectile.velocity.X != oldVelocity.X)
                 Projectile.velocity.X = -oldVelocity.X;
             if (Projectile.velocity.Y != oldVelocity.Y)
                 Projectile.velocity.Y = -oldVelocity.Y;
             return false;
         }
-
-        private void ResetStats(bool chaseEnemies)
+        private void ResetStats()
         {
-            AIState = chaseEnemies ? 2 : 1;
+            AIState = 1;
             Projectile.localAI[0] = 0f;
             Projectile.width = Projectile.height = 60;
             Projectile.tileCollide = false;
             Projectile.netUpdate = true;
         }
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Frostburn2, 240);
             OnHitEffects();
         }
-
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffID.Frostburn2, 240);
             OnHitEffects();
         }
-
         private void OnHitEffects()
         {
             int maxSpawns =  3;
@@ -163,14 +130,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                                              Projectile.Center,
                                              velocity,
                                              ModContent.ProjectileType<MeleeTypeKelvinCatalystProjStar>(),
-                                             (int)(Projectile.damage * 0.5f),
+                                             (int)(Projectile.damage * 0.7f), //冰星伤害0.5→0.7
                                              Projectile.knockBack * 0.5f,
                                              Projectile.owner);
                 }
                 SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
             }
         }
-
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 2);

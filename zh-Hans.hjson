@@ -39,6 +39,7 @@ Mods: {
 			BrimstoneExplosion.DisplayName: 硫火爆炸
 			HellblastFriendly.DisplayName: 无际裂变
 			// PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
+			// DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

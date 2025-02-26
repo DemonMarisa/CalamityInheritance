@@ -39,6 +39,7 @@ Mods: {
 			BrimstoneExplosion.DisplayName: Brimstone Explosion
 			HellblastFriendly.DisplayName: Hellblast Friendly
 			PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
+			DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
