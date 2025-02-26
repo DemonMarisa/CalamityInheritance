@@ -30,7 +30,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.extraUpdates = 1;
             AIType = ProjectileID.LightBeam;
         }
-        private int hitcount;
         public override void AI()
         {
             Projectile.velocity.Y += Projectile.ai[0];
@@ -38,8 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.VilePowder, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
-            if (hitcount < 1)
-                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, MathHelper.ToRadians(0.14f));
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, 0.3f);
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -61,7 +59,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            hitcount++;
             target.immune[Projectile.owner] = 7;
             // Vanilla has several particles that can easily be used anywhere.
             // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.

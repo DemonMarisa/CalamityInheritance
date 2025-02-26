@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 Projectile.ai[0] = canHomingCounter;
-                CIFunction.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
+                CIFunction.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, 20f);
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Utilities
     {
         #region Cooldowns
 
-        // 移除冷却从
+        // 移除冷却
         public static void RemoveCooldown(this Player player, string id)
         {
                 CalamityPlayer calamityPlayer = player.Calamity();

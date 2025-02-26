@@ -339,6 +339,6 @@ MeleeTypeHammerPwnageLegacy: {
 }
 
 PhoenixBlade: {
-	// DisplayName: Phoenix Blade
-	// Tooltip: ""
+	DisplayName: 凤凰之刃
+	Tooltip: 敌人死亡时会爆炸并留下恢复之火
 }

@@ -58,7 +58,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 else
                 {
                     CIFunction.DustCircle(Projectile.position, 8, 0.5f, DustID.GemEmerald, false, 4f);
-                    CIFunction.HomeInOnNPC(Projectile, true, 4800f, 1600f, 18f, 20f);
+                    
+                    (Projectile, true, 4800f, 1600f, 18f, 20f);
                 }
             }
             Projectile.ai[0] += 1f;

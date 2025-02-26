@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         float enemyRange = Math.Abs(Projectile.position.X + Projectile.width/2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height/2 - enemyY);
                         if (enemyRange < 10000f && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
                         {
-                            CIFunction.HomeInOnNPC(Projectile, false, 10000f, 24f, 16f, null);
+                            CIFunction.HomeInOnNPC(Projectile, false, 10000f, 24f, 16f);
                             flyHoming = true;
                         }
                     }

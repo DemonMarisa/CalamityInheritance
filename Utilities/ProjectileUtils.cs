@@ -68,9 +68,12 @@ namespace CalamityInheritance.Utilities
                     float targetAngle = (float)Math.Atan2(newVelocity.Y, newVelocity.X);
                     float angleDifference = MathHelper.WrapAngle(targetAngle - currentAngle);
 
-                    if (Math.Abs(angleDifference) > maxAngleChange.Value)
+                    // 添加了转换角度为弧度，以便进行比较和限制。如果角度差大于最大允许的角度变化，则将速度限制在最大角度变化的范围内。
+                    // 不需要手动转换了
+                    float maxChangeRadians = MathHelper.ToRadians(maxAngleChange.Value);
+                    if (Math.Abs(angleDifference) > maxChangeRadians)
                     {
-                        float clampedAngle = currentAngle + Math.Sign(angleDifference) * maxAngleChange.Value;
+                        float clampedAngle = currentAngle + Math.Sign(angleDifference) * maxChangeRadians;
                         float speed = newVelocity.Length();
                         newVelocity = new Vector2((float)Math.Cos(clampedAngle), (float)Math.Sin(clampedAngle)) * speed;
                     }

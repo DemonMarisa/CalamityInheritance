@@ -345,5 +345,5 @@ MeleeTypeHammerPwnageLegacy: {
 
 PhoenixBlade: {
 	DisplayName: Phoenix Blade
-	Tooltip: ""
+	Tooltip: Enemies explode and emit healing flames on death
 }
