@@ -9,6 +9,7 @@ using Terraria.GameContent.Drawing;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -76,34 +77,34 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 
+            int tentacleNum = 3;
 
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
-
-            float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
-            Vector2 tentacleVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
-
-            Vector2 tentacleRandVelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
-            tentacleRandVelocity.Normalize();
-            tentacleVelocity = tentacleVelocity * 4f + tentacleRandVelocity;
-            tentacleVelocity.Normalize();
-            tentacleVelocity *= 5f;
-
-            float tentacleYDirection = Main.rand.Next(10, 80) * 0.001f;
-            if (Main.rand.NextBool())
+            for (int i = 0; i < tentacleNum; i++)
             {
-                tentacleYDirection *= -1f;
-            }
-            float tentacleXDirection = Main.rand.Next(10, 80) * 0.001f;
-            if (Main.rand.NextBool())
-            {
-                tentacleXDirection *= -1f;
-            }
+                float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+                Vector2 tentacleVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-            int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
-            if (newProjectileId != Main.maxProjectiles)
-            {
-                Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
+                Vector2 tentacleRandVelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                tentacleRandVelocity.Normalize();
+                tentacleVelocity = tentacleVelocity * 4f + tentacleRandVelocity;
+                tentacleVelocity.Normalize();
+                tentacleVelocity *= 5f;
+
+                float tentacleYDirection = Main.rand.Next(10, 80) * 0.001f;
+                if (Main.rand.NextBool())
+                {
+                    tentacleYDirection *= -1f;
+                }
+                float tentacleXDirection = Main.rand.Next(10, 80) * 0.001f;
+                if (Main.rand.NextBool())
+                {
+                    tentacleXDirection *= -1f;
+                }
+
+                int newProjectileId1 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+                Main.projectile[newProjectileId1].DamageType = DamageClass.Melee;
             }
         }
     }

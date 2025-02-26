@@ -39,6 +39,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
                 AddTile(TileID.Anvils).
                 Register();
         }
-
     }
 }
