@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer.rogueStealthMax += 1.15f;
-            modPlayer1.reaverRogueExProj = true;
+            modPlayer1.ReaverRogueExProj = true;
             player.Calamity().wearingRogueArmor = true;
             //25盗贼暴击，25盗贼伤害,115潜伏值
             //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片

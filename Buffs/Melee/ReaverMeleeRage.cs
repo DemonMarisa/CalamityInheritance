@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.Melee
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().reaverMeleeRage = true;
+            player.CalamityInheritance().ReaverMeleeRage = true;
         }
     }
 }

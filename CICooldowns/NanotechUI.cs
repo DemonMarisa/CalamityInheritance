@@ -21,7 +21,7 @@ namespace CalamityInheritance.CICooldowns
         public static new string ID => "NanotechUI";
         public override bool CanTickDown => !instance.player.CalamityInheritance().nanotechold || instance.timeLeft <= 0;
         public override bool ShouldDisplay => instance.player.CalamityInheritance().nanotechold;
-        public override LocalizedText DisplayName => CalamityInheritanceUtils.GetText($"UI.Cooldowns.{ID}");
+        public override LocalizedText DisplayName => CIFunction.GetText($"UI.Cooldowns.{ID}");
         public override string Texture => "CalamityInheritance/CICooldowns/NanotechUI";
         public override string OutlineTexture => "CalamityInheritance/CICooldowns/NanotechUIOutline";
         public override string OverlayTexture => "CalamityInheritance/CICooldowns/NanotechUIOverlay";

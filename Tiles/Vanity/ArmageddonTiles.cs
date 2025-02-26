@@ -33,7 +33,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.addAlternate(1);
 
             TileObjectData.addTile(Type);
-            AddMapEntry(Color.Purple, CalamityInheritanceUtils.GetText("Tiles.ArmageddonTiles"));
+            AddMapEntry(Color.Purple, CIFunction.GetText("Tiles.ArmageddonTiles"));
         }
 
         public override bool CanExplode(int i, int j) => false;

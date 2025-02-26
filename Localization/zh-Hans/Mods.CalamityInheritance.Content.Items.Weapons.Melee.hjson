@@ -337,3 +337,8 @@ MeleeTypeHammerPwnageLegacy: {
 	Tooltip: 掷出一个强大的锤子
 	DisplayName: 圣时之锤[Legacy]
 }
+
+PhoenixBlade: {
+	// DisplayName: Phoenix Blade
+	// Tooltip: ""
+}

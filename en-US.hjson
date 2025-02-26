@@ -38,6 +38,7 @@ Mods: {
 			ExoSpearProjNorSteal.DisplayName: Exo Spear Proj Nor Steal
 			BrimstoneExplosion.DisplayName: Brimstone Explosion
 			HellblastFriendly.DisplayName: Hellblast Friendly
+			PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy

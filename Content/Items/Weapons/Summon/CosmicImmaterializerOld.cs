@@ -70,7 +70,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<Sirius>().
+                AddIngredient<AncientIceChunk>().
                 AddIngredient<ElementalAxe>().
+                AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
@@ -79,7 +82,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 Register();
 
             CreateRecipe().
+                AddIngredient<Sirius>().
+                AddIngredient<AncientIceChunk>().
                 AddIngredient<ElementalAxe>().
+                AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().

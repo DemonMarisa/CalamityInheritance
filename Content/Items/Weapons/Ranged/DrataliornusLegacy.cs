@@ -1,6 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Accessories;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
@@ -19,8 +21,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     public class DrataliornusLegacy: ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
-        private const double RightClickDamageRatio = 0.65;   //右键龙弓，倍率0.65，采用海啸的攻击模板
-        private const int WeaponDamage = 174;
+        private const double RightClickDamageRatio = 0.35;
+        public const int WeaponDamage = 700; //2/25 Fuck You, 开摆 武器面板174→700 右键倍率现在只允许取0.35, 太他妈傻逼了
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -62,8 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (player.altFunctionUse == 2)
             {
-                //右键采用海啸的方式
-                Item.noUseGraphic = false;
+                Item.noUseGraphic = false;  //右键采用海啸的方式
                 Item.reuseDelay = 48;
             }
             else
@@ -83,9 +84,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             //更强大的海啸
             if (player.altFunctionUse == 2)
             {
+              
+                const int numFlames = 5;
                 int flameID = ModContent.ProjectileType<DragonBowFlame>();
-                const int numFlames = 7;
-                int flameDamage = (int)(damage * RightClickDamageRatio);
+                int flameDamage = (int)(damage * (RightClickDamageRatio));
+                //直接增加伤害倍率, 即0.65f(右键倍率) + 经过穿甲计算后的倍率, 对于20穿甲的玩家, 这一倍率是0.99≈1f, 即取武器本身的伤害
+                //对于30穿甲则取1.15f别率.
+                
                 if(Main.zenithWorld)
                     flameDamage += flameDamage; //处于天顶世界时这玩意弹幕右键基础面板会被双倍
 

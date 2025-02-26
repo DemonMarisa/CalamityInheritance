@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 player.armor[0].type == ModContent.ItemType<ReaverHelmetRevamped>()     ||
                 player.armor[0].type == ModContent.ItemType<ReaverMaskRevamped>()       ||
                 player.armor[0].type == ModContent.ItemType<ReaverVisageRevamped>())    &&
-                player.armor[1].type == ModContent.ItemType<ReaverScaleMailRevamped>()  ||
+                player.armor[1].type == ModContent.ItemType<ReaverScaleMailRevamped>()  &&//这个判定给我看呆了
                 player.armor[2].type == ModContent.ItemType<ReaverCuissesRevamped>())
             {
                 player.pickSpeed -= 0.5f;

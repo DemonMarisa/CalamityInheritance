@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
 
-    [AutoloadEquip(new EquipType[] { EquipType.HandsOn, EquipType.HandsOff })]
+    [AutoloadEquip([EquipType.HandsOn, EquipType.HandsOff])]
     public class ElementalGauntletold : ModItem, ILocalizedModType
     {
 

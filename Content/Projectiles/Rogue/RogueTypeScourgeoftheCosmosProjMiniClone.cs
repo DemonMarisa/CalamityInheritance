@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         float enemyDistance = Math.Abs(Projectile.position.X + Projectile.width / 2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - enemyY);
                         if (enemyDistance < ChasingRange  && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
                         {
-                            CalamityInheritanceUtils.HomeInOnNPC(Projectile, false, ChasingRange, ChasingSpeed, 16f, null);
+                            CIFunction.HomeInOnNPC(Projectile, false, ChasingRange, ChasingSpeed, 16f, null);
                             isHoming = true;
                         }
                     }

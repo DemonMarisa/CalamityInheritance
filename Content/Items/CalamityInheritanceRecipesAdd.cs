@@ -62,17 +62,6 @@ using CalamityInheritance.Content.Items.Tools;
 
 namespace CalamityInheritance.Content.Items
 {
-    //Recipe recipe = CreateRecipe();
-
-    //recipe.AddIngredient(ModContent.ItemType<TrueNightsStabber>());
-    //recipe.AddIngredient(ItemID.BrokenHeroSword);
-
-    //recipe.AddTile(TileID.MythrilAnvil);
-    //recipe.AddTile(TileID.DemonAltar);
-    //recipe.AddTile(ModContent.TileType<DraedonsForge>());
-    //recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-
-    //recipe.Register();
 
     //Scarlet：几乎为所有大面积的玩意合成添加封装成了不同类型的函数。
     //同时使旧奇迹物质支持所有星流物品
@@ -298,7 +287,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemID.TerraBlade).
                 AddIngredient(ModContent.ItemType<TrueBloodyEdge>()).
                 AddIngredient(ItemID.TrueExcalibur).
-                AddIngredient(ModContent.ItemType<LivingShard>(),7).
+                AddIngredient(ModContent.ItemType<LivingShard>(),7). //我不是很清楚为啥这个生命碎片还留着
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -338,7 +327,6 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<Moonlight>()).
                 AddIngredient(ModContent.ItemType<Daylight>()). 
                 AddIngredient(ItemID.FallenStar).
-                // AddTile(TileID.Anvils).
                 AddTile(TileID.CrystalBall). 
                 //Scarlet 1/22:修改合成站为水晶球，防止玩家在困难模式前就能通过宇宙之光微光拆解获得肉后魂
                 Register();

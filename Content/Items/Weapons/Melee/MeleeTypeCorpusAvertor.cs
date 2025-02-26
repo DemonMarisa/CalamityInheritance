@@ -40,8 +40,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 8.5f;
             Item.DamageType = DamageClass.Melee;
         }
-
-        // Gains 10% of missing health as base damage.
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             int lifeAmount = player.statLifeMax2 - player.statLife;

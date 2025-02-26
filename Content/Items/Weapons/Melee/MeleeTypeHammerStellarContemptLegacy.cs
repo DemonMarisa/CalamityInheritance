@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -49,9 +50,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<MeleeTypeHammerFallenPaladinsLegacy>().
-                AddIngredient(ItemID.LunarBar, 5).
-                AddIngredient(ItemID.FragmentSolar, 10).
-                AddIngredient(ItemID.FragmentNebula, 10).
+                AddIngredient(ItemID.LunarBar, 10).
+                AddIngredient<GalacticaSingularity>(10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 

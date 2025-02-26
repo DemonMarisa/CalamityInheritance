@@ -12,7 +12,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         /// <summary>
         /// A hitbox that should approximately represent the tip of the mouse cursor. Used for UI stuff.

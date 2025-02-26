@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float returnSpeed = MeleeTypeHammerPwnageLegacy.Speed;
                 float acceleration = 1.6f;
                 //返程
-                CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                 //接触玩家时kill
                 if(Main.myPlayer == Projectile.owner)
                 {

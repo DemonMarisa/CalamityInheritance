@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float rSpeed = 16f;
                 float accele = 3.2f;
                 Player plr = Main.player[Projectile.owner];
-                CalamityInheritanceUtils.BoomerangReturningAI(plr, Projectile, rSpeed, accele);
+                CIFunction.BoomerangReturningAI(plr, Projectile, rSpeed, accele);
                 if (Main.myPlayer == Projectile.owner)
                 {
                     Rectangle rectangle = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);

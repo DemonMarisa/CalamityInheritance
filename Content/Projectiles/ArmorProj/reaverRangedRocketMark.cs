@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
-    public class reaverRangedRocketMark : ModProjectile, ILocalizedModType
+    public class ReaverRangedRocketMark : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public Player Owner => Main.player[Projectile.owner];

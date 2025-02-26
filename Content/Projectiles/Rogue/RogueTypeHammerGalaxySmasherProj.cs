@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 case 1f:
                     Projectile.tileCollide = false;
-                    CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                    CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
@@ -134,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                     break;
                 case 2f:
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1250f, 25f/2, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, 25f/2, 20f);
                     ifSummonClone = false;
                     if(Projectile.ai[2] != -2f) //使挂载过的锤子不会再试图进行一次挂载
                     ifSummonClone = true;

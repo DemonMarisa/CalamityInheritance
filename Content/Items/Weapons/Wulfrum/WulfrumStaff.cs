@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI);
             
             Vector2 targetPosition = Main.MouseWorld;
-            player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, -18);
+            player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, -18);
             return false;
         }
 

@@ -28,7 +28,7 @@ namespace CalamityInheritance.Tiles.MusicBox
             TileObjectData.newTile.StyleLineSkip = 2;
             TileObjectData.addTile(Type);
 
-            AddMapEntry(Color.Gold, CalamityInheritanceUtils.GetText("Tiles.TyrantPart1Tile"));
+            AddMapEntry(Color.Gold, CIFunction.GetText("Tiles.TyrantPart1Tile"));
         }
 
         public override void MouseOver(int i, int j)

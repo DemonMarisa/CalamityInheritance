@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Projectile.NewProjectile(projSource, source, velocityReal, ModContent.ProjectileType<CIVividBeamExoLore>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
 
                 Vector2 targetPosition = Main.MouseWorld;
-                player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 7);
+                player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
             }
             else
             {
@@ -127,7 +127,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Projectile.NewProjectile(projSource, sourceExoLore, velocityReal, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
 
                 Vector2 targetPosition = Main.MouseWorld;
-                player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 7);
+                player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
             }
 
             return false;

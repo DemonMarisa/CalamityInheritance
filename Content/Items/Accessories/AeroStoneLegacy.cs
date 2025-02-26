@@ -20,6 +20,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，肉后的天蓝石将会与本mod的天蓝石转化，关闭时则由沙虫正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AeroStone>()] = ModContent.ItemType<AeroStoneLegacy>();
+                if(DownedBossSystem.downedDesertScourge && Main.hardMode) //干掉肉山后这俩就可以互转了
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AeroStoneLegacy>()] = ModContent.ItemType<AeroStone>();
             }
         }
 

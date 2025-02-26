@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.setBonus = this.GetLocalizedValue("SetBonus");
             //我不知道咋写仆从，先留在这里后面在考虑改了
             //2025,1,12在改了
-            modPlayer1.reaverSummoner = true;
+            modPlayer1.ReaverSummoner = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 int baseDamage = player.ApplyArmorAccDamageBonusesTo(80);

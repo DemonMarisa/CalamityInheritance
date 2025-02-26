@@ -54,8 +54,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             }
             int seaCounter = 0;
             Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0f, 0.5f, 1.25f);
-            int num = BuffID.Venom;
-            float num2 = 200f;
+            int tryGeyBuff = BuffID.Venom;
+            float distance = 200f;
             bool flag = seaCounter % 60 == 0;
             int auraDamage = (int)player.GetBestClassDamage().ApplyTo(15);
             int random = Main.rand.Next(5);
@@ -65,18 +65,18 @@ namespace CalamityInheritance.Content.Items.Accessories
                 {
                     for (int l = 0; l < Main.maxNPCs; l++)
                     {
-                        NPC nPC = Main.npc[l];
-                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.buffImmune[num] && Vector2.Distance(player.Center, nPC.Center) <= num2)
+                        NPC tryGetNPC = Main.npc[l];
+                        if (tryGetNPC.active && !tryGetNPC.friendly && tryGetNPC.damage > 0 && !tryGetNPC.dontTakeDamage && !tryGetNPC.buffImmune[tryGeyBuff] && Vector2.Distance(player.Center, tryGetNPC.Center) <= distance)
                         {
-                            if (nPC.FindBuffIndex(num) == -1)
+                            if (tryGetNPC.FindBuffIndex(tryGeyBuff) == -1)
                             {
-                                nPC.AddBuff(num, 300, false);
+                                tryGetNPC.AddBuff(tryGeyBuff, 300, false);
                             }
                             if (flag)
                             {
                                 if (player.whoAmI == Main.myPlayer)
                                 {
-                                    Projectile.NewProjectileDirect(source, nPC.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
+                                    Projectile.NewProjectileDirect(source, tryGetNPC.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
                                 }
                             }
                         }

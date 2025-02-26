@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             Player player = Main.player[Projectile.owner];
             var modPlayer = player.CalamityInheritance();
 
-            if (!modPlayer.reaverSummoner)
+            if (!modPlayer.ReaverSummoner)
             {
                 Projectile.active = false;
                 return;
@@ -51,9 +51,9 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             {
                 if (player.dead)
                 {
-                    modPlayer.reaverSummonerOrb = false;
+                    modPlayer.ReaverSummonerOrb = false;
                 }
-                if (modPlayer.reaverSummonerOrb)
+                if (modPlayer.ReaverSummonerOrb)
                 {
                     Projectile.timeLeft = 2;
                 }

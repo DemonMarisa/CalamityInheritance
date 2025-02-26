@@ -21,14 +21,12 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             player.ignoreWater = true;
             if (player.IsUnderwater())
             {
                 player.statDefense += 3;
                 player.endurance += 0.05f;
                 player.moveSpeed += 0.1f;
-                player.ignoreWater = true;
             }
         }
 

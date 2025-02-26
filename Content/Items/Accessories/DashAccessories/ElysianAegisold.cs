@@ -48,27 +48,22 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            usPlayer.CIDashID = ElysianAegisDashold.ID;
+            usPlayer.ElysianAegis = true;
+            usPlayer.ElysianAegisImmnue = true;
+            
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.OnFire3] = true;
+            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
 
-            // Elysian Aegis ram dash
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            modPlayer1.CIDashID = ElysianAegisDashold.ID;
-            modPlayer1.elysianAegis = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
 
-            // Vaguely inherited Ankh Shield effects I guess
             player.noKnockback = true;
             player.fireWalk = true;
-
-            // Debuff immunities
-            player.buffImmune[BuffID.OnFire] = true;
-            player.buffImmune[BuffID.OnFire3] = true;
-            player.buffImmune[BuffID.CursedInferno] = true;
-            player.buffImmune[BuffID.ShadowFlame] = true;
-            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
-            player.buffImmune[BuffID.Daybreak] = true;
-            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            
             player.statLifeMax2 += 40;
             player.lifeRegen += 4;
         }

@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Player player = Main.player[Projectile.owner];
             float returnSpeed = 20f;
             float acceleration = 2f;
-            CalamityInheritanceUtils.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
+            CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
             if (Main.myPlayer == Projectile.owner)
                 if (Projectile.Hitbox.Intersects(player.Hitbox))
                     Projectile.Kill();

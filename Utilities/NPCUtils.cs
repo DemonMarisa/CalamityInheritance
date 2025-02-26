@@ -3,7 +3,7 @@ using Terraria;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         public static CalamityInheritanceGlobalNPC CalamityInheritance(this NPC npc)
         {

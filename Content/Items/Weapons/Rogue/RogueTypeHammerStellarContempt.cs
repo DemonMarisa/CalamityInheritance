@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.Items.Weapons.Rogue;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -58,13 +59,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override void AddRecipes()
         {
-                CreateRecipe().
-                    AddIngredient<RogueTypeHammerTruePaladins>().
-                    AddIngredient(ItemID.LunarBar, 5).
-                    AddIngredient(ItemID.FragmentSolar, 10).
-                    AddIngredient(ItemID.FragmentNebula, 10).
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
+            CreateRecipe().
+                AddIngredient<RogueTypeHammerTruePaladins>().
+                AddIngredient(ItemID.LunarBar, 10).
+                AddIngredient<GalacticaSingularity>(5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

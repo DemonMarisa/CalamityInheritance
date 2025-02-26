@@ -18,6 +18,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -65,6 +66,11 @@ namespace CalamityInheritance.CIPlayer
         public bool elementalGauntlet = false;//元素之握
         public bool fuckAllofYouEHeart = false;
         public bool nucleogenesisLegacy = false;//核子之源
+        public bool AnkhImmnue = false; //占位符
+        public bool AsgardsValorImmnue = false; //阿斯加德英勇单独免疫的debuff
+        public bool ElysianAegisImmnue = false; //亵渎盾单独免疫的debuff
+        public bool AmbrosialImmnue= false; //百草瓶的免疫
+        public bool AmbrosialStats = false; //百草瓶的一些数据
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -78,8 +84,8 @@ namespace CalamityInheritance.CIPlayer
         public bool HasIncreasedDashFirstFrame = false;
         //这是一个会自动归零的数值，速度为1帧1点，也许可以用于除冲刺外的计时
         public int CIDashDelay;
-        public bool elysianAegis = false;
-        public bool elysianGuard = false;
+        public bool ElysianAegis = false;
+        public bool ElysianGuard = false;
         public float shieldInvinc = 5f;
         #endregion
         #region Lore
@@ -200,24 +206,24 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region Reaver
         //永恒套
-        public bool reaverRogueExProj = false;
+        public bool ReaverRogueExProj = false;
         //盗贼永恒套的套装奖励
-        public bool reaverMeleeBlast = false;
+        public bool ReaverMeleeBlast = false;
         //战士永恒套的套装奖励
-        public int reaverBlastCooldown = 0;
+        public int ReaverBlastCooldown = 0;
         //战士永恒套爆炸CD
-        public bool reaverMeleeRage = false;
+        public bool ReaverMeleeRage = false;
         //战士永恒套怒气
-        public bool reaverSummonerOrb = false;
-        public bool reaverSummoner = false;
+        public bool ReaverSummonerOrb = false;
+        public bool ReaverSummoner = false;
         //召唤永恒套的套装奖励
-        public bool reaverMageBurst = false;
+        public bool ReaverMageBurst = false;
         //法师永恒套的套装奖励
-        public int reaverBurstCooldown = 0;
+        public int ReaverBurstCooldown = 0;
         // 法师永恒套内置的弹幕CD
-        public bool reaverMagePower = false;
+        public bool ReaverMagePower = false;
         //法师永恒套追加的一个击发式buff
-        public bool reaverRangedRocket = false;
+        public bool ReaverRangedRocket = false;
         //射手永恒套的套装奖励
         public bool canFireReaverRangedRocket = false;
         #endregion
@@ -247,6 +253,7 @@ namespace CalamityInheritance.CIPlayer
             #region Accessories
             int percentMaxLifeIncrease = 0;
 
+            AnkhImmnue = false;
             ElementalQuiver = false;
             fleshTotemold = false;
             CoreOfTheBloodGod = false;
@@ -289,6 +296,10 @@ namespace CalamityInheritance.CIPlayer
             nucleogenesisLegacy = false;//核子
             StepToolShadowChairSmallCD = 0;
             StepToolShadowChairSmallFireCD = 0;
+            AsgardsValorImmnue = false;
+            ElysianAegisImmnue = false;
+            AmbrosialImmnue = false;
+            AmbrosialStats = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -371,12 +382,12 @@ namespace CalamityInheritance.CIPlayer
             yharimOfPerunBuff = false;
             #endregion
             #region Reaver
-            reaverMeleeBlast = false;
-            reaverRangedRocket = false;
-            reaverMageBurst = false;
-            reaverMeleeRage = false;
-            reaverMagePower = false;
-            reaverSummoner = false;
+            ReaverMeleeBlast = false;
+            ReaverRangedRocket = false;
+            ReaverMageBurst = false;
+            ReaverMeleeRage = false;
+            ReaverMagePower = false;
+            ReaverSummoner = false;
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
@@ -387,12 +398,12 @@ namespace CalamityInheritance.CIPlayer
             test = false;
             #endregion
             CIDashID = string.Empty;
-            elysianAegis = false;
+            ElysianAegis = false;
 
             #region Summon
             MagicHatOld = false;
             MidnnightSunBuff = false;
-            reaverSummonerOrb = false;
+            ReaverSummonerOrb = false;
             cosmicEnergy = false;
             #endregion
             
@@ -401,6 +412,8 @@ namespace CalamityInheritance.CIPlayer
         #region UpdateDead
         public override void UpdateDead()
         {
+
+            AnkhImmnue = false;
             armorShattering = false;
             Revivify = false;
             cadence = false;
@@ -415,8 +428,8 @@ namespace CalamityInheritance.CIPlayer
             invincible = false;
             bloodPactBoost = false;
 
-            elysianAegis = false;
-            elysianGuard = false;
+            ElysianAegis = false;
+            ElysianGuard = false;
             statisTimerOld = 0;//虚空饰带的计数器
 
             TheAbsorberOld = false;//阴阳石受击回血
@@ -433,6 +446,8 @@ namespace CalamityInheritance.CIPlayer
             buffEStats = false;
             StepToolShadowChairSmallCD = 0;
             StepToolShadowChairSmallFireCD = 0;
+            AsgardsValorImmnue = false;
+            ElysianAegisImmnue = false;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;
@@ -462,12 +477,12 @@ namespace CalamityInheritance.CIPlayer
             yharimOfPerunBuff = false;
             #endregion
             #region Reaver
-            reaverMeleeBlast = false;
-            reaverBlastCooldown = 0;
-            reaverMageBurst = false;
-            reaverBurstCooldown = 0;
-            reaverRangedRocket = false;
-            reaverSummoner = false;
+            ReaverMeleeBlast = false;
+            ReaverBlastCooldown = 0;
+            ReaverMageBurst = false;
+            ReaverBurstCooldown = 0;
+            ReaverRangedRocket = false;
+            ReaverSummoner = false;
             #endregion
             #region Xeroc
             ancientXerocSet     = false;
@@ -719,9 +734,9 @@ namespace CalamityInheritance.CIPlayer
                     vector31.X -= Player.width / 2;
                     if (vector31.X > 50f && vector31.X < Main.maxTilesX * 16 - 50 && vector31.Y > 50f && vector31.Y < Main.maxTilesY * 16 - 50)
                     {
-                        int num275 = (int)(vector31.X / 16f);
-                        int num276 = (int)(vector31.Y / 16f);
-                        if ((Main.tile[num275, num276].WallType != 87 || num276 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector31, Player.width, Player.height))
+                        int tileX = (int)(vector31.X / 16f);
+                        int tileY = (int)(vector31.Y / 16f);
+                        if ((Main.tile[tileX, tileY].WallType != 87 || tileY <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector31, Player.width, Player.height))
                         {
                             Player.Teleport(vector31, 1, 0);
                             NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector31.X, vector31.Y, 1, 0, 0);
@@ -785,9 +800,9 @@ namespace CalamityInheritance.CIPlayer
             }
             if (CalamityInheritanceKeybinds.AegisHotKey.JustPressed)
             {
-                if (elysianAegis)
+                if (ElysianAegis)
                 {
-                    elysianGuard = !elysianGuard;
+                    ElysianGuard = !ElysianGuard;
                 }
             }
             if (CalamityInheritanceKeybinds.AstralArcanumUIHotkey.JustPressed && astralArcanum && !CalamityPlayer.areThereAnyDamnBosses)
@@ -814,7 +829,7 @@ namespace CalamityInheritance.CIPlayer
         #region MeleeEffects
         public override void MeleeEffects(Item item, Rectangle hitbox)
         {
-            if (reaverMeleeBlast) //战士永恒套的近战粒子效果,注意这一效果将同样应用在召唤套装上
+            if (ReaverMeleeBlast) //战士永恒套的近战粒子效果,注意这一效果将同样应用在召唤套装上
             {
                 if (Main.rand.NextBool(3))
                 {

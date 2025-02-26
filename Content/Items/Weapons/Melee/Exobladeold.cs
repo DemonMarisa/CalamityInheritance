@@ -159,6 +159,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
+                AddIngredient<PhoenixBlade>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
@@ -169,6 +170,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
+                AddIngredient<PhoenixBlade>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).

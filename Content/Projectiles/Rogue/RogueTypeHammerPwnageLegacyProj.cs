@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.tileCollide = false;
                     float returnSpeed = MeleeTypeHammerPwnageLegacy.Speed;
                     float acceleration = 1.6f;
-                    CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                    CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                     if(Main.myPlayer == Projectile.owner)
                     {
                         if(Projectile.Hitbox.Intersects(owner.Hitbox))
@@ -103,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.usesIDStaticNPCImmunity = true;
                     Projectile.idStaticNPCHitCooldown = 10;
                     OnChasingDust();
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, 10f, 16f); //挂载只会在计时器小于120f时进行
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 10f, 16f); //挂载只会在计时器小于120f时进行
                     if(Projectile.timeLeft < LifeTime)
                     {
                         Projectile.velocity = new Vector2(0, Main.rand.NextBool(2)? 4f : -4f) ;
@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
 
                 case 3f:
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, StealthSpeed, 4f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, StealthSpeed, 4f);
                     OnChasingDust();
                     break;
                 default:
@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if(Projectile.ai[0] == 3f)
             {
-                CalamityInheritanceUtils.DustCircle(Projectile.position, 42f, 2.2f, 269, true, 9f);
+                CIFunction.DustCircle(Projectile.position, 42f, 2.2f, 269, true, 9f);
                 SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.2f});
             }
         }
@@ -152,7 +152,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private void OnStuckEffect()
         {
-            CalamityInheritanceUtils.DustCircle(Projectile.position, 16f, 2.2f, 269, true, 9f, default, default, 6f);
+            CIFunction.DustCircle(Projectile.position, 16f, 2.2f, 269, true, 9f, default, default, 6f);
             SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f});
         }
         private void OnChasingDust()

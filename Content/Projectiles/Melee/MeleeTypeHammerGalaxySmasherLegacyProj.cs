@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float returnSpeed = MeleeTypeHammerGalaxySmasherLegacy.Speed;
                 float acceleration = 3.2f;
                 Player owner = Main.player[Projectile.owner];
-                CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                 
                 // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)

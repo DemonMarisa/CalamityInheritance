@@ -37,7 +37,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop, 5, 0);
             TileObjectData.addTile(Type);
 
-            AddMapEntry(Color.Yellow, CalamityInheritanceUtils.GetText("Tiles.MaliceTiles"));
+            AddMapEntry(Color.Yellow, CIFunction.GetText("Tiles.MaliceTiles"));
 
             DustType = (int)CalamityDusts.BlueCosmilite;
             AnimationFrameHeight = 72;

@@ -5,6 +5,7 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Custom;
@@ -373,7 +374,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (reaverMeleeBlast) //受伤后提供战士永恒套怒气buff
+            if (ReaverMeleeBlast) //受伤后提供战士永恒套怒气buff
             {
                 Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
             }
@@ -536,7 +537,7 @@ namespace CalamityInheritance.CIPlayer
             if (silvaMelee)
             {
                 //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+                if (Main.rand.NextBool(4) && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
                 {
                     //Main.NewText($"造成伤害", 255, 255, 255);
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
@@ -723,7 +724,6 @@ namespace CalamityInheritance.CIPlayer
                         modPlayer.chaliceBleedoutBuffer = 0D;
                         modPlayer.chaliceDamagePointPartialProgress = 0D;
                     }
-
                     return false;
                 }
             }

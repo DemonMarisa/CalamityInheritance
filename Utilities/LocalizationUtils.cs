@@ -2,7 +2,7 @@
 
 namespace CalamityInheritance.Utilities
 {
-    public partial class CalamityInheritanceUtils
+    public partial class CIFunction
     {
         /// <param name="key">The language key. This will have "Mods.CalamityMod." appended behind it.</param>
         /// <returns>

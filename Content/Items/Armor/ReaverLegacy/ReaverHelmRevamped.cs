@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CalamityInheritance();
-            modPlayer1.reaverMeleeBlast = true;
+            modPlayer1.ReaverMeleeBlast = true;
             player.thorns += 0.33f;
             player.GetAttackSpeed<MeleeDamageClass>() +=0.30f;
             player.GetDamage<MeleeDamageClass>() += 0.05f;

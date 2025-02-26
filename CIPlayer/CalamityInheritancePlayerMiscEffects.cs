@@ -22,6 +22,7 @@ using CalamityMod.Items.Armor.Silva;
 using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -44,6 +45,9 @@ namespace CalamityInheritance.CIPlayer
             //纳米技术堆叠UI
             NanoTechUI();
 
+            //lore效果
+            LoreEffects();
+
             //Buff效果
             OtherBuffEffects();
 
@@ -54,7 +58,7 @@ namespace CalamityInheritance.CIPlayer
             StandingStillEffects();
 
             //😡
-            ElysianAegisEffects();
+            RamShieldEffects();
 
             //各种套装效果的封装
             ArmorSetBonusEffects();
@@ -316,6 +320,7 @@ namespace CalamityInheritance.CIPlayer
                 //Scarlet：改了。
                 //在召唤物开着的时候这buff怎么可能会给这么多
                 //而且尤其是元素之心的基础伤害是150的情况下？
+                //跳跃速度砍了一刀，影响到实际用途了
                 Player.statLifeMax2 += 15;
                 Player.statManaMax2 += 15;
                 Player.lifeRegen += 2;
@@ -323,7 +328,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.5f;
+                Player.jumpSpeedBoost += 0.12f;
                 Player.manaCost *=0.95f;
                 if(buffEStats) //关闭元素之心的召唤物的情况下
                 {
@@ -334,11 +339,29 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
                     Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 1.0f;  //150(50+100)%跳跃速度
+                    Player.jumpSpeedBoost += 0.20f;  //32(12+20)%跳跃速度
                     Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
                     //由于返回值的原因导致Buff数值反而不能乱写。
                     //所以现在这些个的buff值都是5的系数了。
                 }
+            }
+
+            if(AmbrosialImmnue)
+            {
+                Player.buffImmune[BuffID.Venom] = true;
+                Player.buffImmune[BuffID.Frozen] = true;
+                Player.buffImmune[BuffID.Chilled] = true;
+                Player.buffImmune[BuffID.Frostburn] = true;
+                Player.buffImmune[BuffID.Frostburn2] = true; //加了一个霜冻
+                Player.buffImmune[BuffID.Venom] = true;
+                calPlayer.alwaysHoneyRegen = true;
+                calPlayer.honeyDewHalveDebuffs = true;
+                calPlayer.livingDewHalveDebuffs = true;
+            }
+            if(AmbrosialStats)
+            {
+                Player.lifeRegen += 2;
+                Player.pickSpeed -= 0.5f; //这样会使挖矿速度上下位不能叠加, 但是有一说一都到四柱/神后了, 挖矿速度又不缺这点
             }
         }
         private void NanoTechUI()
@@ -432,7 +455,7 @@ namespace CalamityInheritance.CIPlayer
         #region ArmorSetBonusEffect
         public void ArmorSetBonusEffects()
         {
-            if (reaverMagePower)
+            if (ReaverMagePower)
             {
                 Player.manaCost *= 0.80f;
                 Player.GetDamage<MagicDamageClass>() += 0.1f;
@@ -442,7 +465,7 @@ namespace CalamityInheritance.CIPlayer
             * 但永恒套的怒气Buff本身只能通过受击获得，考虑到其触发条件我并不特别认为这会导致数值能多爆破（吧）
             * 速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
             */
-            if (reaverMeleeRage)
+            if (ReaverMeleeRage)
             {
                 Player.GetDamage<MeleeDamageClass>() += 0.10f;
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
@@ -462,6 +485,424 @@ namespace CalamityInheritance.CIPlayer
             if (summonProjCooldown > 0f)
                 summonProjCooldown -= 1;
             #endregion
+            
+            #region ArmorSet
+            if (usPlayer.invincible)
+            {
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+            }
+
+            if (silvaMageCooldownold > 0)
+                silvaMageCooldownold--;
+
+            if (silvaStunCooldownold > 0)
+                silvaStunCooldownold--;
+
+            if (ReaverBlastCooldown > 0)
+                ReaverBlastCooldown--; //战士永恒套cd
+
+            if (ReaverBurstCooldown > 0)
+                ReaverBurstCooldown--; //法师永恒套CD
+
+            if (StepToolShadowChairSmallCD > 0)
+                StepToolShadowChairSmallCD--;
+
+            if (StepToolShadowChairSmallFireCD > 0)
+                StepToolShadowChairSmallFireCD--; 
+            if (auricYharimHealCooldown > 0)
+                auricYharimHealCooldown--;
+            
+            if (yharimOfPerunStrikesCooldown > 0)
+                yharimOfPerunStrikesCooldown--;
+
+            if (statisTimerOld > 0 && CIDashDelay >= 0)
+                statisTimerOld = 0;//斯塔提斯CD
+
+            if (usPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<MagicDamageClass>() += 0.60f;
+            }
+
+            if (usPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
+            {
+                calPlayer.contactDamageReduction += 0.2f;
+            }
+
+            if (silvaMelee)
+            {
+                double multiplier = Player.statLife / (double)Player.statLifeMax2;
+                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
+
+                if (calPlayer.auricSet && silvaMelee)
+                {
+                    double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
+                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
+                }
+            }
+
+            if (usPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<RangedDamageClass>() += 0.40f;
+            }
+
+            if (usPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetCritChance<SummonDamageClass>() += 10;
+                Player.maxMinions += 2;
+            }
+
+            if (usPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
+            {
+                Player.GetDamage<RogueDamageClass>() += 0.40f;
+            }
+
+            if (usPlayer.AuricDebuffImmune)
+            {
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+            }
+
+            // Silva invincibility effects
+            if (auricsilvaCountdown > 0 && aurichasSilvaEffect)
+            {
+                if(auricsilvaset && !silvaRebornMark)
+                {
+                    foreach (int debuff in CalamityLists.debuffList)
+                        Player.buffImmune[debuff] = true;
+
+                    auricsilvaCountdown -= 1;
+                    if (auricsilvaCountdown <= 0)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
+                    }
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
+                        Main.dust[green].velocity *= 0.9f;
+                        Main.dust[green].noGravity = true;
+                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                        if (Main.rand.NextBool())
+                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    }
+                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && auricsilvaCountdown <= 0)
+                    {
+                        auricsilvaCountdown = 600;
+                        aurichasSilvaEffect = false;
+                    }
+                }
+            }
+
+            if (CIsilvaCountdown > 0 && aurichasSilvaEffect)
+            {
+                if (auricsilvaset && silvaRebornMark)
+                {
+                    foreach (int debuff in CalamityLists.debuffList)
+                        Player.buffImmune[debuff] = true;
+
+                    CIsilvaCountdown -= 1;
+                    if (CIsilvaCountdown <= 0)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
+                    }
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
+                        Main.dust[green].velocity *= 0.9f;
+                        Main.dust[green].noGravity = true;
+                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                        if (Main.rand.NextBool())
+                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    }
+                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && CIsilvaCountdown <= 0)
+                    {
+                        CIsilvaCountdown = 900;
+                        aurichasSilvaEffect = false;
+                    }
+                }
+            }
+            #endregion
+            if (Player.miscCounter % 150 == 0)
+            {
+                canFireReaverRangedRocket = true;
+            }
+            //纳米技术
+            if (nanotechold)
+            {
+                float damageMult =  0.15f;
+                Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
+            }
+            if(auricYharimSet)
+            {
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
+                calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
+                Player.noKnockback = true;
+                Player.lifeRegen += 60;
+                Player.shinyStone = true;
+                Player.lifeRegenTime = 1800f;
+                if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
+                {
+                    Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
+                }
+
+                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                {
+                    Player.lifeRegen += 120;
+                    Player.statDefense += 60;
+                }
+            }
+            if(ancientBloodFact)
+            {
+                Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
+            }
+            /*
+            *2/25:
+            *移除淬火debuff的伤害削减, 因为龙弓承伤后的resueDelay惩罚已经足够高了 
+            *使拥有龙魂秘药效果的玩家免疫淬火debuff的超高速烧血效果, 但以削减生命恢复作为代价
+            *下调玩家的防御数据惩罚, 防御力乘算从0.3 -> 0.7, 免伤降低从0.3→0.2
+            */
+            if(backFireDebuff)
+            {
+                if(Player.statLife > Player.statLifeMax2/3)
+                {
+                    if(draconicSurge)
+                    player.lifeRegen -= 10; //龙魂秘药使烧血转化为削减5HP/s的生命恢复
+                    else
+                    Player.statLife -= 5;
+                }
+
+                Player.endurance -= 0.2f;  //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
+                Player.statDefense *= 0.7f; //玩家的防御力取70%
+            }
+        }
+
+        #endregion
+
+        #region Standing Still Effects
+        private void StandingStillEffects()
+        {
+            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityPlayer calPlayer = Player.Calamity();
+
+            // Auric bonus
+            if (auricBoostold)
+            {
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (modStealth > 0)
+                    {
+                        modStealth -= 20;
+                        if (modStealth <= 0)
+                        {
+                            modStealth = 0;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
+                    modStealth += (int)(playerVel * 5);
+                    if (modStealth > 1000)
+                        modStealth = 1000;
+                }
+
+                Player.GetDamage<GenericDamageClass>() += (1000 - modStealth) * 0.0003f;
+
+                Player.GetCritChance<GenericDamageClass>() += (int)((1000 -modStealth) * 0.015f);
+            }
+            
+            if (PsychoticAmulet)
+            {
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (modStealth > 0)
+                    {
+                        modStealth -= 20;
+                        if (modStealth <= 0)
+                        {
+                            modStealth = 0;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
+                    modStealth += (int)(playerVel * 5);
+                    if (modStealth > 1000)
+                        modStealth = 1000;
+                }
+
+                Player.GetDamage<RogueDamageClass>() += (1000 - modStealth) * 0.0005f;
+                Player.GetCritChance<RogueDamageClass>() += (int)((1000 - modStealth) * 0.015f);
+                Player.aggro -= ((1000 - modStealth) * 750);
+            }
+        }
+        #endregion
+
+        #region Elysian Aegis Effects
+        public void RamShieldEffects()
+        {
+            if(ElysianAegisImmnue)
+            {
+                Player.buffImmune[BuffID.CursedInferno] = true; //是的, 就是这么少
+                Player.buffImmune[BuffID.ShadowFlame] = true;
+                Player.buffImmune[ModContent.BuffType<Nightwither>()] = true;
+                Player.buffImmune[BuffID.Daybreak] = true;
+            }
+            if(AsgardsValorImmnue)
+            {
+                Player.buffImmune[BuffID.Chilled] = true;
+                Player.buffImmune[BuffID.Frostburn] = true;
+                Player.buffImmune[BuffID.Frostburn2] = true;
+                Player.buffImmune[BuffID.Frozen] = true;
+                Player.buffImmune[BuffID.Weak] = true;
+                Player.buffImmune[BuffID.BrokenArmor] = true;
+                Player.buffImmune[BuffID.Bleeding] = true;
+                Player.buffImmune[BuffID.Poisoned] = true;
+                Player.buffImmune[BuffID.Slow] = true;
+                Player.buffImmune[BuffID.Confused] = true;
+                Player.buffImmune[BuffID.Silenced] = true;
+                Player.buffImmune[BuffID.Cursed] = true;
+                Player.buffImmune[BuffID.Darkness] = true;
+                Player.buffImmune[BuffID.WindPushed] = true;
+                Player.buffImmune[BuffID.Stoned] = true;
+                Player.buffImmune[BuffID.Daybreak] = true;
+            }
+            if (ElysianAegis)
+            {
+                bool spawnDust = false;
+
+                // Activate buff
+                if (ElysianGuard)
+                {
+                    if (Player.whoAmI == Main.myPlayer)
+                        Player.AddBuff(ModContent.BuffType<ElysianGuard>(), 2, false);
+
+                    float shieldBoostInitial = shieldInvinc;
+                    shieldInvinc -= 0.08f;
+                    if (shieldInvinc < 0f)
+                        shieldInvinc = 0f;
+                    else
+                        spawnDust = true;
+
+                    if (shieldInvinc == 0f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
+                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+
+                    float damageBoost = (5f - shieldInvinc) * 0.03f;
+                    Player.GetDamage<GenericDamageClass>() += damageBoost;
+
+                    int critBoost = (int)((5f - shieldInvinc) * 2f);
+                    Player.GetCritChance<GenericDamageClass>() += critBoost;
+
+                    Player.aggro += (int)((5f - shieldInvinc) * 220f);
+                    Player.statDefense += (int)((5f - shieldInvinc) * 8f);
+                    Player.moveSpeed *= 0.85f;
+                }
+
+                // Remove buff
+                else
+                {
+                    float shieldBoostInitial = shieldInvinc;
+                    shieldInvinc += 0.08f;
+                    if (shieldInvinc > 5f)
+                        shieldInvinc = 5f;
+                    else
+                        spawnDust = true;
+
+                    if (shieldInvinc == 5f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
+                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                }
+
+                // Emit dust
+                if (spawnDust)
+                {
+                    if (Main.rand.NextBool(2))
+                    {
+                        Vector2 vector = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
+                        Dust dust = Main.dust[Dust.NewDust(Player.Center - vector * 30f, 0, 0, (int)CalamityDusts.ProfanedFire, 0f, 0f, 0, default, 1f)];
+                        dust.noGravity = true;
+                        dust.position = Player.Center - vector * Main.rand.Next(5, 11);
+                        dust.velocity = vector.RotatedBy(Math.PI / 2D, default) * 4f;
+                        dust.scale = 0.5f + Main.rand.NextFloat();
+                        dust.fadeIn = 0.5f;
+                    }
+
+                    if (Main.rand.NextBool(2))
+                    {
+                        Vector2 vector2 = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
+                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, DustID.GoldCoin, 0f, 0f, 0, default, 1f)];
+                        dust2.noGravity = true;
+                        dust2.position = Player.Center - vector2 * 12f;
+                        dust2.velocity = vector2.RotatedBy(-Math.PI / 2D, default) * 2f;
+                        dust2.scale = 0.5f + Main.rand.NextFloat();
+                        dust2.fadeIn = 0.5f;
+                    }
+                }
+            }
+            else
+                ElysianGuard = false;
+        }
+        #endregion
+
+        public void AncientXerocEffect()
+        {
+            CalamityPlayer calPlayer= Player.Calamity();
+            if(ancientXerocSet)
+            {
+                calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
+     
+                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
+                {
+                    Player.GetDamage<GenericDamageClass>() +=0.10f;
+                    Player.GetCritChance<GenericDamageClass>() += 10;
+                }
+
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
+                {
+                    Player.GetDamage<GenericDamageClass>() +=0.15f;
+                    Player.GetCritChance<GenericDamageClass>() += 15;
+                }
+                
+                else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
+                {
+                    //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
+                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
+                    Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
+                    Player.GetCritChance<GenericDamageClass>() += 40;
+                    Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
+                    calPlayer.healingPotionMultiplier += 0.10f;
+                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
+                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
+                }
+                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
+                {
+                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
+                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
+                    Player.GetCritChance<GenericDamageClass>() -= 40;
+                    // Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
+                    //25.2.11:移除防御力削减的负面效果，我也不知道我是出于什么心态才加的
+                    ancientXerocWrath = true;
+                }
+            }
+        }
+        public void LoreEffects()
+        {
+            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityPlayer calPlayer = Player.Calamity();
             #region Lore
             if (usPlayer.kingSlimeLore)
             {
@@ -498,65 +939,65 @@ namespace CalamityInheritance.CIPlayer
 
                 if (Main.rand.NextBool(15))
                 {
-                    int num = 0;
+                    int defualtProj = 0;
 
                     for (int i = 0; i < Main.maxProjectiles; i++)
                     {
                         if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].type == ModContent.ProjectileType<TheDeadlyMicrobeProjectile>())
-                            num++;
+                            defualtProj++;
                     }
 
-                    if (Main.rand.Next(15) >= num && num < 6)
+                    if (Main.rand.Next(15) >= defualtProj && defualtProj < 6)
                     {
-                        int num2 = 50;
-                        int num3 = 24;
-                        int num4 = 90;
+                        int projFirstStack = 50;
+                        int projSecStack = 24;
+                        int projThirdStack = 90;
 
-                        for (int j = 0; j < num2; j++)
+                        for (int j = 0; j < projFirstStack; j++)
                         {
-                            int num5 = Main.rand.Next(200 - j * 2, 400 + j * 2);
+                            int projPos = Main.rand.Next(200 - j * 2, 400 + j * 2);
                             Vector2 center = Player.Center;
-                            center.X += Main.rand.NextFloat(-num5, num5 + 1);
-                            center.Y += Main.rand.NextFloat(-num5, num5 + 1);
+                            center.X += Main.rand.NextFloat(-projPos, projPos + 1);
+                            center.Y += Main.rand.NextFloat(-projPos, projPos + 1);
 
-                            if (!Collision.SolidCollision(center, num3, num3) && !Collision.WetCollision(center, num3, num3))
+                            if (!Collision.SolidCollision(center, projSecStack, projSecStack) && !Collision.WetCollision(center, projSecStack, projSecStack))
                             {
-                                center.X += num3 / 2;
-                                center.Y += num3 / 2;
+                                center.X += projSecStack / 2;
+                                center.Y += projSecStack / 2;
 
                                 if (Collision.CanHit(Player.Center, 1, 1, center, 1, 1) || Collision.CanHit(new Vector2(Player.Center.X, Player.position.Y - 50f), 1, 1, center, 1, 1))
                                 {
-                                    int num6 = (int)center.X / 16;
-                                    int num7 = (int)center.Y / 16;
-                                    bool flag = false;
+                                    int tileX = (int)center.X / 16;
+                                    int tileY = (int)center.Y / 16;
+                                    bool ifBounce = false;
 
-                                    if (Main.rand.NextBool(3) && Main.tile[num6, num7] != null && Main.tile[num6, num7].WallType > 0)
-                                        flag = true;
+                                    if (Main.rand.NextBool(3) && Main.tile[tileX, tileY] != null && Main.tile[tileX, tileY].WallType > 0)
+                                        ifBounce = true;
                                     else
                                     {
-                                        center.X -= num4 / 2;
-                                        center.Y -= num4 / 2;
+                                        center.X -= projThirdStack / 2;
+                                        center.Y -= projThirdStack / 2;
 
-                                        if (Collision.SolidCollision(center, num4, num4))
+                                        if (Collision.SolidCollision(center, projThirdStack, projThirdStack))
                                         {
-                                            center.X += num4 / 2;
-                                            center.Y += num4 / 2;
-                                            flag = true;
+                                            center.X += projThirdStack / 2;
+                                            center.Y += projThirdStack / 2;
+                                            ifBounce = true;
                                         }
                                     }
 
-                                    if (flag)
+                                    if (ifBounce)
                                     {
                                         for (int k = 0; k < Main.maxProjectiles; k++)
                                         {
                                             if (Main.projectile[k].active && Main.projectile[k].owner == Player.whoAmI && Main.projectile[k].type == ModContent.ProjectileType<TheDeadlyMicrobeProjectile>() && (center - Main.projectile[k].Center).Length() < 48f)
                                             {
-                                                flag = false;
+                                                ifBounce = false;
                                                 break;
                                             }
                                         }
 
-                                        if (flag && Main.myPlayer == Player.whoAmI)
+                                        if (ifBounce && Main.myPlayer == Player.whoAmI)
                                         {
                                             IEntitySource entitySource = Player.GetSource_ItemUse(Player.HeldItem);
                                             Projectile.NewProjectile(entitySource, center.X, center.Y, 0f, 0f, ModContent.ProjectileType<TheDeadlyMicrobeProjectile>(), damage, knockBack, Player.whoAmI, 0f, 0f);
@@ -627,34 +1068,34 @@ namespace CalamityInheritance.CIPlayer
                     if (Player.spelunkerTimer >= 10)
                     {
                         Player.spelunkerTimer = 0;
-                        int num65 = 30;
-                        int num66 = (int)Player.Center.X / 16;
-                        int num67 = (int)Player.Center.Y / 16;
+                        int offset = 30;
+                        int playerSpriteX = (int)Player.Center.X / 16;
+                        int playerSpriteY = (int)Player.Center.Y / 16;
 
-                        for (int num68 = num66 - num65; num68 <= num66 + num65; num68++)
+                        for (int i = playerSpriteX - offset; i <= playerSpriteX + offset; i++)
                         {
-                            for (int num69 = num67 - num65; num69 <= num67 + num65; num69++)
+                            for (int j = playerSpriteY - offset; j <= playerSpriteY + offset; j++)
                             {
                                 if (Main.rand.NextBool(4))
                                 {
-                                    Vector2 vector = new Vector2(num66 - num68, num67 - num69);
-                                    if (vector.Length() < num65 && num68 > 0 && num68 < Main.maxTilesX - 1 && num69 > 0 && num69 < Main.maxTilesY - 1 && Main.tile[num68, num69] != null && Main.tile[num68, num69].HasTile)
+                                    Vector2 vector = new(playerSpriteX - i, playerSpriteY - j);
+                                    if (vector.Length() < offset && i > 0 && i < Main.maxTilesX - 1 && j > 0 && j < Main.maxTilesY - 1 && Main.tile[i, j] != null && Main.tile[i, j].HasTile)
                                     {
-                                        bool flag7 = false;
-                                        if (Main.tile[num68, num69].TileType == 185 && Main.tile[num68, num69].TileFrameY == 18)
+                                        bool ifSubm = false;
+                                        if (Main.tile[i, j].TileType == 185 && Main.tile[i, j].TileFrameY == 18)
                                         {
-                                            if (Main.tile[num68, num69].TileFrameX >= 576 && Main.tile[num68, num69].TileFrameX <= 882)
-                                                flag7 = true;
+                                            if (Main.tile[i, j].TileFrameX >= 576 && Main.tile[i, j].TileFrameX <= 882)
+                                                ifSubm = true;
                                         }
-                                        else if (Main.tile[num68, num69].TileType == 186 && Main.tile[num68, num69].TileFrameX >= 864 && Main.tile[num68, num69].TileFrameX <= 1170)
-                                            flag7 = true;
+                                        else if (Main.tile[i, j].TileType == 186 && Main.tile[i, j].TileFrameX >= 864 && Main.tile[i, j].TileFrameX <= 1170)
+                                            ifSubm = true;
 
-                                        if (flag7 || Main.tileSpelunker[Main.tile[num68, num69].TileType] || (Main.tileAlch[Main.tile[num68, num69].TileType] && Main.tile[num68, num69].TileType != 82))
+                                        if (ifSubm || Main.tileSpelunker[Main.tile[i, j].TileType] || (Main.tileAlch[Main.tile[i, j].TileType] && Main.tile[i, j].TileType != 82))
                                         {
-                                            int num70 = Dust.NewDust(new Vector2(num68 * 16, num69 * 16), 16, 16, DustID.TreasureSparkle, 0f, 0f, 150, default, 0.3f);
-                                            Main.dust[num70].fadeIn = 0.75f;
-                                            Main.dust[num70].velocity *= 0.1f;
-                                            Main.dust[num70].noLight = true;
+                                            int dType = Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.TreasureSparkle, 0f, 0f, 150, default, 0.3f);
+                                            Main.dust[dType].fadeIn = 0.75f;
+                                            Main.dust[dType].velocity *= 0.1f;
+                                            Main.dust[dType].noLight = true;
                                         }
                                     }
                                 }
@@ -847,386 +1288,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             #endregion
-            #region ArmorSet
-            if (usPlayer.invincible)
-            {
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
-            }
-
-            if (silvaMageCooldownold > 0)
-                silvaMageCooldownold--;
-
-            if (silvaStunCooldownold > 0)
-                silvaStunCooldownold--;
-
-            if (reaverBlastCooldown > 0)
-                reaverBlastCooldown--; //战士永恒套cd
-
-            if (reaverBurstCooldown > 0)
-                reaverBurstCooldown--; //法师永恒套CD
-
-            if (StepToolShadowChairSmallCD > 0)
-                StepToolShadowChairSmallCD--;
-
-            if (StepToolShadowChairSmallFireCD > 0)
-                StepToolShadowChairSmallFireCD--; 
-            if (auricYharimHealCooldown > 0)
-                auricYharimHealCooldown--;
             
-            if (yharimOfPerunStrikesCooldown > 0)
-                yharimOfPerunStrikesCooldown--;
-
-            if (statisTimerOld > 0 && CIDashDelay >= 0)
-                statisTimerOld = 0;//斯塔提斯CD
-
-            if (usPlayer.silvaMageold && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<MagicDamageClass>() += 0.60f;
-            }
-
-            if (usPlayer.silvaMelee && Player.HasCooldown(SilvaRevive.ID))
-            {
-                calPlayer.contactDamageReduction += 0.2f;
-            }
-
-            if (silvaMelee)
-            {
-                double multiplier = Player.statLife / (double)Player.statLifeMax2;
-                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
-
-                if (calPlayer.auricSet && silvaMelee)
-                {
-                    double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
-                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
-                }
-            }
-
-            if (usPlayer.silvaRanged && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<RangedDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.silvaSummonEx && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetCritChance<SummonDamageClass>() += 10;
-                Player.maxMinions += 2;
-            }
-
-            if (usPlayer.silvaRogue && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<RogueDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.AuricDebuffImmune)
-            {
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
-            }
-
-            // Silva invincibility effects
-            if (auricsilvaCountdown > 0 && aurichasSilvaEffect)
-            {
-                if(auricsilvaset && !silvaRebornMark)
-                {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    auricsilvaCountdown -= 1;
-                    if (auricsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && auricsilvaCountdown <= 0)
-                    {
-                        auricsilvaCountdown = 600;
-                        aurichasSilvaEffect = false;
-                    }
-                }
-            }
-
-            if (CIsilvaCountdown > 0 && aurichasSilvaEffect)
-            {
-                if (auricsilvaset && silvaRebornMark)
-                {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    CIsilvaCountdown -= 1;
-                    if (CIsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && aurichasSilvaEffect && CIsilvaCountdown <= 0)
-                    {
-                        CIsilvaCountdown = 900;
-                        aurichasSilvaEffect = false;
-                    }
-                }
-            }
-            #endregion
-            if (Player.miscCounter % 150 == 0)
-            {
-                canFireReaverRangedRocket = true;
-            }
-            //纳米技术
-            if (nanotechold)
-            {
-                float damageMult =  0.15f;
-                Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
-            }
-            if(auricYharimSet)
-            {
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
-                calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
-                Player.noKnockback = true;
-                Player.lifeRegen += 60;
-                Player.shinyStone = true;
-                Player.lifeRegenTime = 1800f;
-                if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
-                {
-                    Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
-                }
-
-                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
-                {
-                    Player.lifeRegen += 120;
-                    Player.statDefense += 60;
-                }
-            }
-            if(ancientBloodFact)
-            {
-                Player.statLifeMax2 +=(int)(player.statLifeMax * 2);
-            }
-            if(backFireDebuff)
-            {
-                //获得淬火Debuff后，玩家的伤害将被0.5倍率乘算
-                Player.GetDamage<GenericDamageClass>() *= 0.5f;
-                //生命将会高速流失。直到低于生命值上线的1/3为止
-                if(Player.statLife > Player.statLifeMax2/3)
-                   Player.statLife -= 5;
-                //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
-                Player.endurance -= 0.2f;
-                //玩家的防御力取50%
-                Player.statDefense *= 0.5f;
-                //玩家的翅膀飞行时间将会被设置为0
-            }
-        }
-
-        #endregion
-
-        #region Standing Still Effects
-        private void StandingStillEffects()
-        {
-            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
-            CalamityPlayer calPlayer = Player.Calamity();
-
-            // Auric bonus
-            if (auricBoostold)
-            {
-                if (Player.StandingStill(0.1f) && !Player.mount.Active)
-                {
-                    if (modStealth > 0)
-                    {
-                        modStealth -= 20;
-                        if (modStealth <= 0)
-                        {
-                            modStealth = 0;
-                            if (Main.netMode == NetmodeID.MultiplayerClient)
-                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                        }
-                    }
-                }
-                else
-                {
-                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    modStealth += (int)(playerVel * 5);
-                    if (modStealth > 1000)
-                        modStealth = 1000;
-                }
-
-                Player.GetDamage<GenericDamageClass>() += (1000 - modStealth) * 0.0003f;
-
-                Player.GetCritChance<GenericDamageClass>() += (int)((1000 -modStealth) * 0.015f);
-            }
-            
-            if (PsychoticAmulet)
-            {
-                if (Player.StandingStill(0.1f) && !Player.mount.Active)
-                {
-                    if (modStealth > 0)
-                    {
-                        modStealth -= 20;
-                        if (modStealth <= 0)
-                        {
-                            modStealth = 0;
-                            if (Main.netMode == NetmodeID.MultiplayerClient)
-                                NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                        }
-                    }
-                }
-                else
-                {
-                    float playerVel = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                    modStealth += (int)(playerVel * 5);
-                    if (modStealth > 1000)
-                        modStealth = 1000;
-                }
-
-                Player.GetDamage<RogueDamageClass>() += (1000 - modStealth) * 0.0005f;
-                Player.GetCritChance<RogueDamageClass>() += (int)((1000 - modStealth) * 0.015f);
-                Player.aggro -= ((1000 - modStealth) * 750);
-            }
-        }
-        #endregion
-
-        #region Elysian Aegis Effects
-        public void ElysianAegisEffects()
-        {
-            if (elysianAegis)
-            {
-                bool spawnDust = false;
-
-                // Activate buff
-                if (elysianGuard)
-                {
-                    if (Player.whoAmI == Main.myPlayer)
-                        Player.AddBuff(ModContent.BuffType<ElysianGuard>(), 2, false);
-
-                    float shieldBoostInitial = shieldInvinc;
-                    shieldInvinc -= 0.08f;
-                    if (shieldInvinc < 0f)
-                        shieldInvinc = 0f;
-                    else
-                        spawnDust = true;
-
-                    if (shieldInvinc == 0f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
-                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-
-                    float damageBoost = (5f - shieldInvinc) * 0.03f;
-                    Player.GetDamage<GenericDamageClass>() += damageBoost;
-
-                    int critBoost = (int)((5f - shieldInvinc) * 2f);
-                    Player.GetCritChance<GenericDamageClass>() += critBoost;
-
-                    Player.aggro += (int)((5f - shieldInvinc) * 220f);
-                    Player.statDefense += (int)((5f - shieldInvinc) * 8f);
-                    Player.moveSpeed *= 0.85f;
-                }
-
-                // Remove buff
-                else
-                {
-                    float shieldBoostInitial = shieldInvinc;
-                    shieldInvinc += 0.08f;
-                    if (shieldInvinc > 5f)
-                        shieldInvinc = 5f;
-                    else
-                        spawnDust = true;
-
-                    if (shieldInvinc == 5f && shieldBoostInitial != shieldInvinc && Main.netMode == NetmodeID.MultiplayerClient)
-                        NetMessage.SendData(MessageID.PlayerStealth, -1, -1, null, Player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                }
-
-                // Emit dust
-                if (spawnDust)
-                {
-                    if (Main.rand.NextBool(2))
-                    {
-                        Vector2 vector = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
-                        Dust dust = Main.dust[Dust.NewDust(Player.Center - vector * 30f, 0, 0, (int)CalamityDusts.ProfanedFire, 0f, 0f, 0, default, 1f)];
-                        dust.noGravity = true;
-                        dust.position = Player.Center - vector * Main.rand.Next(5, 11);
-                        dust.velocity = vector.RotatedBy(Math.PI / 2D, default) * 4f;
-                        dust.scale = 0.5f + Main.rand.NextFloat();
-                        dust.fadeIn = 0.5f;
-                    }
-
-                    if (Main.rand.NextBool(2))
-                    {
-                        Vector2 vector2 = Vector2.UnitY.RotatedByRandom(Math.PI * 2D);
-                        Dust dust2 = Main.dust[Dust.NewDust(Player.Center - vector2 * 30f, 0, 0, DustID.GoldCoin, 0f, 0f, 0, default, 1f)];
-                        dust2.noGravity = true;
-                        dust2.position = Player.Center - vector2 * 12f;
-                        dust2.velocity = vector2.RotatedBy(-Math.PI / 2D, default) * 2f;
-                        dust2.scale = 0.5f + Main.rand.NextFloat();
-                        dust2.fadeIn = 0.5f;
-                    }
-                }
-            }
-            else
-                elysianGuard = false;
-        }
-        #endregion
-
-        public void AncientXerocEffect()
-        {
-            CalamityPlayer calPlayer= Player.Calamity();
-            if(ancientXerocSet)
-            {
-                calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
-     
-                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
-                {
-                    Player.GetDamage<GenericDamageClass>() +=0.10f;
-                    Player.GetCritChance<GenericDamageClass>() += 10;
-                }
-
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
-                {
-                    Player.GetDamage<GenericDamageClass>() +=0.15f;
-                    Player.GetCritChance<GenericDamageClass>() += 15;
-                }
-                
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
-                {
-                    //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
-                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
-                    Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
-                    Player.GetCritChance<GenericDamageClass>() += 40;
-                    Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
-                    calPlayer.healingPotionMultiplier += 0.10f;
-                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
-                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
-                {
-                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
-                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                    Player.GetCritChance<GenericDamageClass>() -= 40;
-                    // Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
-                    //25.2.11:移除防御力削减的负面效果，我也不知道我是出于什么心态才加的
-                    ancientXerocWrath = true;
-                }
-            }
         }
     }
 }

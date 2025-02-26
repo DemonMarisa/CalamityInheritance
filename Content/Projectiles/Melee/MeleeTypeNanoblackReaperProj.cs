@@ -18,8 +18,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private const float RotationIncrement = 0.22f;
         private const int Lifetime = 240;
         private const float ReboundTime = 50f;
-        private const int MinBladeTimer = 13;
-        private const int MaxBladeTimer = 18;
+        private const int MinBladeTimer = 9;
+        private const int MaxBladeTimer = 12;
 
 
         public override void SetStaticDefaults()
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float returnSpeed = MeleeTypeNanoblackReaper.Speed;
                 float acceleration = 2.4f;
                 Player owner = Main.player[Projectile.owner];
-                CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                 // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)
                     if (Projectile.Hitbox.Intersects(owner.Hitbox))
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public void SpawnEnergyBlade()
         {
             int bladeID = ModContent.ProjectileType<MeleeTypeNanoblackReaperProjSplit>();
-            int bladeDamage = Projectile.damage / 5;
+            int bladeDamage = Projectile.damage / 2;
             float bladeKB = 3f;
             float spin = Projectile.direction <= 0 ? -1f : 1f;
             float d = 16f;

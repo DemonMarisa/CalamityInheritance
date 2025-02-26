@@ -18,7 +18,7 @@ namespace CalamityInheritance.NPCs
         public bool silvaStun = false;
         //梯凳之怒
         public bool rageOfChair = false;
-        public static int rageOfChairDoTDamage = 50000;
+        public static int rageOfChairDoTDamage = 30000;
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (silvaStun)

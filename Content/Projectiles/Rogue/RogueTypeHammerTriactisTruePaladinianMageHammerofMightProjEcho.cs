@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Buffs.Statbuffs;
+﻿using System;
+using System.Numerics;
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Typeless;
@@ -10,6 +12,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -17,8 +20,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
-        public float speed = 28f;
-        public static readonly float HitRange = 70f;
+        public float speed = 24f;
+        public static readonly float HitRange = 90f;
         public static readonly int LifeTime = 350;
         public static readonly float DefualtRotatoin = 0.22f;
         bool ifSummonClone = false;
@@ -51,31 +54,44 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Player owner = Main.player[Projectile.owner];
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.75f);
 
+            /********************大锤子EchoAI逻辑**********************
+            *Echo只会由Clone生成, 且每次都是同时生成两个, 两个都会飞往相反的方向
+            *Echo的AI逻辑近似于原灾从锤子重击(不过我没有参考过他们代码), 但差别更大
+            *因为, Clone会以一个非常高的频率不断生成Echo, 因此Echo的行为使用了3eU, 速度更为暴力
+            *Echo采用ai[0]的计时器, 在ai[0] < 25f(HitRange - 40f)时, Echo会以1.02的倍率加速, 转角速度会随着计时器的自增而变得更快
+            *而后在ai[0]于(25f, 55f)的区间内, 速度倍率0.05f即大幅度的减速, 且转速也会调整的更慢
+            *而后在55f~80f的时候, Echo将会停止, 需注意的是, 因为采用了3eU, 这里在视觉上应该仅仅一瞬间而已
+            *在80f的位置播放音效与释放提醒粒子, 而后Echo将会以24f的速度重击敌人, 且这个过程也会被计时器增速
+            */
             Projectile.ai[0] += 1f;
-            if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
-            {   
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1800f, speed, 25f, MathHelper.ToRadians(10f));
-            }
-
-            if(Projectile.ai[0] < HitRange - 35f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
+            if(Projectile.ai[0] < HitRange - 60f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
             {
-                Projectile.velocity.X *=1.01f;
-                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]*0.7f) * Projectile.localAI[0];
-
-                NPC tar  = Main.npc[(int)Projectile.ai[1]];
-                if(Projectile.timeLeft < LifeTime - 300) 
-                {
-                    if(!tar.CanBeChasedBy(Projectile, false) || !tar.active)  //无论如何, 如果大锤子在低于这个lifetime的时候未检索到目标的话, 锤子都应该被击杀了
-                    Projectile.Kill();
-                }
-
+                Projectile.velocity.X *=1.02f;
+                Projectile.velocity.Y *=1.02f;
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]*0.9f) * Projectile.localAI[0];
             }
-            else if(Projectile.ai[0] > HitRange - 35f && Projectile.ai[0] < HitRange)//echo达到一定距离后, 速度将会不断缩短
+            else if(Projectile.ai[0] > HitRange - 60f && Projectile.ai[0] < HitRange - 30f)//echo达到一定距离后, 速度将会不断缩短
             {
                 Projectile.velocity.X *= 0.05f;
-                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.5f) * Projectile.localAI[0];
+                Projectile.velocity.Y *= 0.05f;
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.3f) * Projectile.localAI[0];
             }
-
+            else if(Projectile.ai[0] > HitRange - 30f && Projectile.ai[0] < 5f)
+            {
+                Projectile.velocity.X = 0f; //Echo达到这个距离后停止加速
+                Projectile.velocity.Y = 0f;
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.1f) * Projectile.localAI[0];
+            }
+            if(Projectile.ai[0] == HitRange - 5f)
+            {
+                SpawnDust(DustID.GemEmerald);
+                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center); //现在只有Echo才会播放落星的声音
+            }
+            if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
+            {
+                ReturnDust(Projectile);
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + (Projectile.ai[0] - 80f), 0f);
+            }
             //无论何时, Echo都应该一直播放飞行的声音
             if (Projectile.soundDelay == 0)
             {
@@ -96,19 +112,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             SpawnExplosion();
-            SpawnDust();
+            SpawnDust(DustID.GemSapphire);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-            SpawnDust();
+            SpawnDust(DustID.GemSapphire);
         }
     
         private void SpawnExplosion()
         {
             Projectile.netUpdate = true;
-            SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+            SoundEngine.PlaySound(SoundID.Item88 with {Volume = 0.35f}, Projectile.position);
             if (Projectile.owner == Main.myPlayer)
             {
                 int explo = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.45), Projectile.knockBack, Projectile.owner, 0f, 0f);
@@ -119,15 +135,26 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
 
-        private void ReturnDust()
+        private static void ReturnDust(Projectile projectile)
         {
-            CalamityInheritanceUtils.DustCircle(Projectile.position, 12f, 1.5f, DustID.GemSapphire, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
-        }
+            Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.width, projectile.height) / 2f; 
 
+            for(int i = 0; i < 4 ; i++)
+            {
+                Dust dust1 = Dust.NewDustPerfect(dustPosition, DustID.GemEmerald);
+                Dust dust2 = Dust.NewDustPerfect(dustPosition, DustID.Vortex);
+                dust1.velocity = projectile.DirectionFrom(dustPosition);
+                dust1.noGravity = true;
+                dust1.scale = 1.4f;
+                dust2.velocity = projectile.DirectionFrom(dustPosition);
+                dust2.noGravity = true;
+                dust2.scale = 1.4f;
+            }
+        }
         //正常击中敌人生成粒子
-        private void SpawnDust()
+        private void SpawnDust(int dustID)
         {
-            CalamityInheritanceUtils.DustCircle(Projectile.position, 12f, 1.5f, DustID.GemSapphire, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
+            CIFunction.DustCircle(Projectile.position, 12f, 1.5f, dustID, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
         }
         public override bool PreDraw(ref Color lightColor)
         {

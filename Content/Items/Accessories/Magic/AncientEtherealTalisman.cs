@@ -45,19 +45,15 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
 
         public override void AddRecipes()
         {
-            // //关闭则启用普通的合成表
-            // if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            // {
-                CreateRecipe().
-                    AddIngredient<SigilofCalamitas>().
-                    AddRecipeGroup("AnyManaFlower").
-                    AddIngredient(ItemID.CharmofMyths).
-                    AddIngredient(ItemID.LunarBar, 8).
-                    AddIngredient<GalacticaSingularity>(4).
-                    AddIngredient<AscendantSpiritEssence>(4).
-                    AddTile<CosmicAnvil>().
-                    Register();
-            // }
+            CreateRecipe().
+                AddIngredient<SigilofCalamitas>().
+                AddRecipeGroup("AnyManaFlower").
+                AddIngredient(ItemID.CharmofMyths).
+                AddIngredient(ItemID.LunarBar, 8).
+                AddIngredient<GalacticaSingularity>(4).
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

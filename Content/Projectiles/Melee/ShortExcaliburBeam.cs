@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PinkFairy, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
             if(hitcount < 1)
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, MathHelper.ToRadians(0.14f));
+                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, MathHelper.ToRadians(0.14f));
         }
         public override void PostDraw(Color lightColor)
         {

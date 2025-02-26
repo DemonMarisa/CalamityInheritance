@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         //以向右开火/使用为准
         //调用
         //Vector2 targetPosition = Main.MouseWorld;
-        //player.itemRotation = CalamityInheritanceUtils.CalculateItemRotation(player, targetPosition, 7);
+        //player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
         //还有这一段jb纯屎山，以后有机会要重构
         public static float CalculateItemRotation(Player player, Vector2 mouseWorld, float rotationOffsetDegrees)
         {
@@ -68,5 +68,6 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(ModContent.BuffType<Plague>(), 300);
         }
 
+        
     }
 }

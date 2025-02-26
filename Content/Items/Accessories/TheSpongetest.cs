@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly SoundStyle BreakSound = new("CalamityMod/Sounds/Custom/RoverDriveBreak") { Volume = 0.75f };
 
 
-        public static int CIShieldDurabilityMax => Main.LocalPlayer.TryGetModPlayer(out CalamityInheritancePlayer modPlayer)? modPlayer.ShieldDurabilityMax: 0 ;
+        public static int CIShieldDurabilityMax => Main.LocalPlayer.TryGetModPlayer(out CalamityInheritancePlayer calPlayer)? calPlayer.ShieldDurabilityMax: 0 ;
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(15); // was 6
@@ -60,13 +60,13 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (player.outOfRange || player.dead)
                         continue;
 
-                    CalamityPlayer modPlayer = player.Calamity();
-                    CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+                    CalamityPlayer calPlayer = player.Calamity();
+                    CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
                     // Do not render the shield if its visibility is off (or it does not exist)
-                    bool isVanityOnly = modPlayer1.CIspongeShieldVisible && !modPlayer1.CIsponge;
-                    bool shieldExists = isVanityOnly || modPlayer1.CISpongeShieldDurability > 0;
-                    bool shouldntDraw = !modPlayer.spongeShieldVisible || modPlayer.drawnAnyShieldThisFrame || !shieldExists;
+                    bool isVanityOnly = usPlayer.CIspongeShieldVisible && !usPlayer.CIsponge;
+                    bool shieldExists = isVanityOnly || usPlayer.CISpongeShieldDurability > 0;
+                    bool shouldntDraw = !calPlayer.spongeShieldVisible || calPlayer.drawnAnyShieldThisFrame || !shieldExists;
                     result |= !shouldntDraw;
                 }
                 return result;
@@ -83,6 +83,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 20;
             Item.height= 20;
+            Item.defense = 30; //转移至基础属性
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DarkBlue>();
@@ -90,32 +91,50 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
             {
-                modPlayer1.CIsponge = true;
+                usPlayer.CIsponge = true;
             }
             else
             {
-                modPlayer1.CIsponge = false;
+                usPlayer.CIsponge = false;
             }
 
-            CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.spongeShieldVisible = !hideVisual;
-                modPlayer.aAmpoule = true;
-                modPlayer.alwaysHoneyRegen = true;
-                modPlayer.honeyDewHalveDebuffs = true;
-                modPlayer.livingDewHalveDebuffs = true;
-                modPlayer.aSpark = true;
-                modPlayer.gShell = true;
-                modPlayer1.FungalCarapace = true;
-                player.endurance += 0.15f;
-                player.statDefense += 30;
-                player.statManaMax2 += 30;
-                player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
-                player.statLifeMax += 30;
-                player.jumpSpeedBoost += 0.5f;
-           
+            CalamityPlayer calPlayer = player.Calamity();
+            calPlayer.spongeShieldVisible = !hideVisual;
+            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
+            //百草瓶继承
+            calPlayer.aAmpoule = true;
+            usPlayer.beeResist = true;
+            usPlayer.AmbrosialStats = true;
+            usPlayer.AmbrosialImmnue = true;
+            player.lifeRegen += 2;
+
+            //下方由阴阳石继承
+            calPlayer.aSpark = true;
+            calPlayer.gShell = true;
+            usPlayer.FungalCarapace = true;
+            player.endurance += 0.15f; //加强5%
+            player.jumpSpeedBoost += 0.5f;
+            player.statManaMax2 += 30; //+10
+            player.statLifeMax += 30;
+            player.moveSpeed += 0.1f;
+            player.accRunSpeed += 0.12f;
+            //海贝壳继承
+            player.ignoreWater = true;
+            if (player.IsUnderwater())
+            {
+                player.statDefense += 12;
+                player.endurance += 0.10f;
+                player.moveSpeed += 0.20f;
+            }
+            //大凝胶继承，实际上就一个效果
+            if ((double)Math.Abs(player.velocity.X) < 0.05 && (double)Math.Abs(player.velocity.Y) < 0.05 && player.itemAnimation == 0)
+            {
+                player.lifeRegen += 2;
+                player.manaRegenBonus += 2;
+            }
         }
 
         // In vanity, provides a visual shield but no actual functionality
@@ -220,13 +239,13 @@ namespace CalamityInheritance.Content.Items.Accessories
                 if (player.outOfRange || player.dead)
                     continue;
 
-                CalamityPlayer modPlayer = player.Calamity();
-                CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+                CalamityPlayer calPlayer = player.Calamity();
+                CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
                 // 如果护盾的可见性关闭（或不存在），则不渲染护盾
-                bool isVanityOnly = modPlayer.spongeShieldVisible && !modPlayer1.CIsponge;
-                bool shieldExists = isVanityOnly || modPlayer1.CISpongeShieldDurability > 0;
-                if (!modPlayer.spongeShieldVisible || modPlayer.drawnAnyShieldThisFrame || !shieldExists)
+                bool isVanityOnly = calPlayer.spongeShieldVisible && !usPlayer.CIsponge;
+                bool shieldExists = isVanityOnly || usPlayer.CISpongeShieldDurability > 0;
+                if (!calPlayer.spongeShieldVisible || calPlayer.drawnAnyShieldThisFrame || !shieldExists)
                     continue;
 
                 // 缩放绘制护盾的比例。海绵护盾会轻微地变大和缩小，这种变化应该几乎无法察觉。
@@ -287,7 +306,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 }
 
                 alreadyDrawnShieldForPlayer = true;
-                modPlayer.drawnAnyShieldThisFrame = true;
+                calPlayer.drawnAnyShieldThisFrame = true;
 
                 // Fetch shield noise overlay texture (this is the polygons fed to the shader)
                 NoiseTex ??= ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/GreyscaleGradients/TechyNoise");

@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         internal static void Visuals(Projectile projectile, ref Color c)
         {
-            CalamityInheritanceUtils.IterateDisco(ref c, ref projectile.localAI[0], 15);
+            CIFunction.IterateDisco(ref c, ref projectile.localAI[0], 15);
             Vector3 compositeColor = 0.1f * Color.White.ToVector3() + 0.05f * c.ToVector3();
             Lighting.AddLight(projectile.Center, compositeColor);
         }

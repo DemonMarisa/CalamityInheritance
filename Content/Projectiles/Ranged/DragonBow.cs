@@ -1,6 +1,7 @@
 ﻿using System;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -113,35 +114,31 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     float variation = (1f + Projectile.localAI[0]) * 3f; //variation increases as fire rate increases
                     Vector2 position = playerPosition + Utils.RandomVector2(Main.rand, -variation, variation);
                     Vector2 speed = Projectile.velocity * scaleFactor * (0.6f + Main.rand.NextFloat() * 0.6f);
-
+                    int homingDamage = Projectile.damage * 2;
+                    Vector2 homingSpeed = Projectile.velocity;
                     float ai0 = 0f, ai2 = 1f;
+                    //数值调整:
+                    //全部弹幕的速度下调, 将伤害细分成多个小模块
                     if (Projectile.ai[0] < 0f) //if fully spun up
                     {
+
                         if (Main.rand.NextBool(2))//当允许追踪时
                         {
                             ai0 = 2f;
-                            //以1/2的概率发射一个新的追踪射弹，这一射弹的倍率将会乘以0.75f
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f, ai2);
-                            damage *=(int)1.20f; //允许追踪的射弹弹幕倍率为1.20f
+                            //以1/2的概率再发射一个新的追踪射弹，这一射弹的倍率将会乘以0.75f
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, homingSpeed * 1.5f, type, (int)(homingDamage * 0.75f), knockBack, Projectile.owner, ai0, 0f, ai2);
                         }
                         else
                         {
                             ai0 = 1f;
-                            //以1/4的概率额外发射一个不追踪的极高速射弹(原本速度的2.4f),但是只造成0.60f倍率的伤害 //请注意：某个追踪射弹将会获得极具夸张的速度增幅
+                            //以1/4的概率额外发射一个不追踪的极高速射弹(原本速度的1.2f),但是只造成0.60f倍率的伤害
                             if(Main.rand.NextBool(4))
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*2.4f, type, (int)(damage * 0.6f), knockBack, Projectile.owner, ai0, 0f, ai2);
-
-                            /*无论怎样,总会有一个无法追踪的射弹将会被1.10倍其速度数据*/
-                            speed *=(int)1.10f;
-                            /*无法追踪的射弹永远取1.30倍率*/
-                            damage *= (int)1.30f; 
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*1.2f, type, (int)(damage * 0.6f), knockBack, Projectile.owner, ai0, 0f, ai2);
+                            /*无法追踪的射弹暴力1.2*/
+                            damage *= (int)1.20f; 
                         }
                     }
-                    //无论射弹属性,速度值都会在0.6f ~ 0.8f倍率内随机
-                    //注：这是因为射弹的速度本身就已经飞快，影响到实际动画播放了
-                    speed *= Main.rand.NextFloat(0.6f, 0.8f);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, ai0, 0f, ai2);
-
                     Projectile.netUpdate = true;
                 }
                 else

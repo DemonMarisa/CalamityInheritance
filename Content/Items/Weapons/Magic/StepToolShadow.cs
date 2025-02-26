@@ -6,6 +6,10 @@ using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.Weapons.Rogue;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using CalamityMod;
+using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -18,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 960;
             Item.height = 1120;
-            Item.damage = 1500;
+            Item.damage = 2570;
             Item.DamageType = DamageClass.Magic;
             Item.useTime = 30;
             Item.useAnimation = 30;
@@ -34,6 +38,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<StepToolShadowChair>();
             Item.rare = ModContent.RarityType<PureRed>();
             Item.value = CIShopValue.RarityPricePureRed;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            float getTrueMeleeBoost = player.GetTotalDamage<TrueMeleeDamageClass>().ApplyTo(Item.damage); //梯凳现在可以吃到真近战伤害加成
+            Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity, type, (int)getTrueMeleeBoost, knockback, player.whoAmI);
+            return false;
         }
         public override void AddRecipes()
         {

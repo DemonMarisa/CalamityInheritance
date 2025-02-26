@@ -20,9 +20,9 @@ namespace CalamityInheritance.Buffs.Summon
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             if (player.ownedProjectileCounts[ModContent.ProjectileType<ReaverOrbOld>()] > 0)
             {
-                modPlayer1.reaverSummonerOrb = true;
+                modPlayer1.ReaverSummonerOrb = true;
             }
-            if (!modPlayer1.reaverSummonerOrb)
+            if (!modPlayer1.ReaverSummonerOrb)
             {
                 player.DelBuff(buffIndex);
                 buffIndex--;

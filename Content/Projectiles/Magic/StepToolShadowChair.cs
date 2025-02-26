@@ -9,13 +9,16 @@ using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod.NPCs.Abyss;
+using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.SupremeCalamitas;
 
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class StepToolShadowChair: ModProjectile, ILocalizedModType
     {
-        private static readonly int TrueDamage = 20000;
+        private static readonly int TrueDamage = 25000;
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetDefaults()
         {
@@ -30,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.alpha = 255;
             Projectile.hide = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 8;
         }
         public override void AI()
         {
@@ -94,8 +97,17 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if(modPlayer.StepToolShadowChairSmallCD <= 0)
             SpawnChair();//无视CD生成椅子
 
-            //无视敌怪的防御数据，每次真“近战”击中时必定扣除其两万点血量
-            target.life -= 20000;
+            //掠夺鲨、神长、地守和终灾会被直接秒杀.别问我为什么.
+            if(target.type == ModContent.NPCType<ReaperShark>() || 
+               target.type == ModContent.NPCType<DevourerofGodsHead>() ||
+               target.type == ModContent.NPCType<DevourerofGodsBody>() ||
+               target.type == ModContent.NPCType<DevourerofGodsTail>() ||
+               target.type == ModContent.NPCType<SupremeCalamitas>() ||
+               target.type == NPCID.DungeonGuardian)
+            target.life -= target.lifeMax;
+
+            //无视敌怪的防御数据，每次真“近战”a击中时必定扣除其固定点血量, 代码是这么写的.
+            
             target.AddBuff(ModContent.BuffType<StepToolDebuff>(), 1145); //梯凳驾到
         }
         private void SpawnChair()
@@ -113,30 +125,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                                          Projectile.Center,
                                          velocity,
                                          ModContent.ProjectileType<StepToolShadowChairSmall>(),
-                                         Projectile.damage / 4,
+                                         Projectile.damage,
                                          Projectile.knockBack / 4f,
                                          Projectile.owner);
             }
             //给小凳子的生成加了等同于无敌帧的cd，不然打蠕虫怪的时候电脑会爆炸
-            Main.player[Projectile.owner].CalamityInheritance().StepToolShadowChairSmallCD = 10;
+            Main.player[Projectile.owner].CalamityInheritance().StepToolShadowChairSmallCD = 9;
         }
-        // private void FireChair()
-        // {
-        //     int angleCounts = Main.rand.Next(3, 14);
-        //     float angle = MathHelper.TwoPi / angleCounts;
-        //     float speed = 24f;
-        //     Vector2 velocity = new Vector2(0f, speed);
-        //     velocity = velocity.RotatedBy(angle * Main.rand.NextFloat(0.9f,1.1f));
-        //     Projectile.NewProjectile(Projectile.GetSource_FromThis(),
-        //                                 Projectile.Center,
-        //                                 velocity,
-        //                                 ModContent.ProjectileType<StepToolShadowChairSmall>(),
-        //                                 Projectile.damage / 2,
-        //                                 Projectile.knockBack,
-        //                                 Projectile.owner);
-        //     //给小凳子的生成加cd，不然电脑会爆炸
-        //     Main.player[Projectile.owner].CalamityInheritance().StepToolShadowChairSmallFireCD = 12000;
-        // }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[Projectile.owner];

@@ -6,7 +6,7 @@ using Terraria.ID;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         internal static Texture2D AuroraTexture
         {

@@ -44,11 +44,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
                         num247 = Projectile.velocity.X * 0.5f;
                         num248 = Projectile.velocity.Y * 0.5f;
                     }
-                    int num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, 6, 0f, 0f, 100, default, 1f);
+                    int num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Torch, 0f, 0f, 100, default, 1f);
                     Main.dust[num249].scale *= 2f + Main.rand.Next(10) * 0.1f;
                     Main.dust[num249].velocity *= 0.2f;
                     Main.dust[num249].noGravity = true;
-                    num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, 31, 0f, 0f, 100, default, 0.5f);
+                    num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Smoke, 0f, 0f, 100, default, 0.5f);
                     Main.dust[num249].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
                     Main.dust[num249].velocity *= 0.05f;
                 }
@@ -71,14 +71,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
             Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int num193 = 0; num193 < 6; num193++)
             {
-                Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 31, 0f, 0f, 100, default, 1.5f);
+                Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1.5f);
             }
             for (int num194 = 0; num194 < 60; num194++)
             {
-                int num195 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 0, default, 2.5f);
+                int num195 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 0, default, 2.5f);
                 Main.dust[num195].noGravity = true;
                 Main.dust[num195].velocity *= 3f;
-                num195 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default, 1.5f);
+                num195 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default, 1.5f);
                 Main.dust[num195].velocity *= 2f;
                 Main.dust[num195].noGravity = true;
             }

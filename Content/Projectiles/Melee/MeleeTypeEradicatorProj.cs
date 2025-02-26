@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float returnSpeed = Eradicator.Speed * 1.3f;
                 float acceleration = 0.25f;
                 Player owner = Main.player[Projectile.owner];
-                CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                 // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)
                     if (Projectile.Hitbox.Intersects(owner.Hitbox))

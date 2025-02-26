@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
@@ -23,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.arrow = true;
             Projectile.hide = true;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = 160;
         }
 
         public override void AI()
@@ -59,13 +60,13 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Projectile.localAI[0] = 0f;
 
-                //只有:射弹是追踪射弹属性，才会以一定概率生成一个额外的追踪射弹，且射弹速度为1.5f倍率，伤害为1.8f，执行这条指令后生成的新射弹将无法在执行这条指令
+                //只有:射弹是追踪射弹属性，才会以一定概率生成一个额外的追踪射弹，且射弹速度为1.0倍率，伤害为1.2f，执行这条指令后生成的新射弹将无法在执行这条指令
                 if (Projectile.ai[0] == 0f && Projectile.ai[2] == 1f && Projectile.owner == Main.myPlayer && Main.rand.NextBool(3))
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                                              Projectile.Center,
-                                             Projectile.velocity * 1.5f,
+                                             Projectile.velocity,
                                              ModContent.ProjectileType<DragonBowFlame>(),
-                                             (int)(Projectile.damage * 1.8f),
+                                             (int)(DrataliornusLegacy.WeaponDamage * 1.2f),
                                              Projectile.knockBack * 3f,
                                              Projectile.owner,
                                              2f,
@@ -113,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
                 if (npc.active && npc.chaseable && !npc.dontTakeDamage) //do homing
                 {
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 50000f, homingSpeed, inertiaSpeed);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, homingSpeed, inertiaSpeed);
                 }
                 else //target not valid, stop homing
                 {
@@ -246,7 +247,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     vel.Normalize();
                     vel *= 30f;
                     //发射的射弹如果是追踪的,且并非衍生追踪射弹,天降的陨石伤害取2.4f，否则取1.7f
-                    int skyFlareDamage = (Projectile.ai[0] == 2f && Projectile.ai[2] != 1f)? (int)(Projectile.damage * 2.1f) : (int)(Projectile.damage * 1.7f);
+                    int skyFlareDamage = (Projectile.ai[0] == 2f && Projectile.ai[2] != 1f)? (int)(Projectile.damage * 2.4f) : (int)(Projectile.damage * 1.7f);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ModContent.ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }

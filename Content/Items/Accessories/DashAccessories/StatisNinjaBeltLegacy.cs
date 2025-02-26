@@ -23,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             player.autoJump = true;
             player.jumpSpeedBoost += 0.32f;
+            player.moveSpeed += 0.1f; //斯塔提斯腰带怎么少了10%移速
             player.extraFall += 35;
             player.blackBelt = true;
             player.dashType = 1;

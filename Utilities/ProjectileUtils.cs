@@ -5,7 +5,7 @@ using Terraria;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         /// <summary>
         /// 从灾厄那里搬过来的跟踪算法，加了一个角度限制.
@@ -141,5 +141,27 @@ namespace CalamityInheritance.Utilities
                     boomerang.velocity.Y -= acceleration;
             }
         } 
+
+        /// <summary>
+        /// 纯纯懒鬼写法, 用这个可以快速设置射弹部分属性
+        /// </summary>
+        /// <param name="projectile">弹幕类型</param>
+        /// <param name="projWidth">弹幕宽度</param>
+        /// <param name="projHeight">弹幕高度</param>
+        /// <param name="projLifeTime">弹幕生命</param>
+        /// <param name="projPeneTime">弹幕穿透, 默认取1</param>
+        /// <param name="projEU">弹幕额外更新, 默认取0</param>
+        /// <param name="canHitNPC">是否能日友好NPC, 默认取否</param>
+        /// <param name="ignoreTile">是否无视物块, 默认取否</param>
+        public static void FastDefaultSetProj(Projectile projectile,int projWidth, int projHeight, int projLifeTime, int? projPeneTime = 1, int? projEU = 0, bool? canHitNPC = false , bool? ignoreTile = false)
+        {
+            projectile.width = projWidth;
+            projectile.height= projHeight;
+            projectile.timeLeft = projLifeTime;
+            projectile.penetrate = projPeneTime ?? 1;
+            projectile.extraUpdates = projEU?? 0;
+            projectile.friendly = canHitNPC?? false;
+            projectile.tileCollide = ignoreTile?? false;
+        }
     }
 }

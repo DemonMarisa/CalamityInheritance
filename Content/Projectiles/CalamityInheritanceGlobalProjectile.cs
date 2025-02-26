@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles
             {
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
-                    if (modPlayer.reaverRogueExProj)
+                    if (modPlayer.ReaverRogueExProj)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {

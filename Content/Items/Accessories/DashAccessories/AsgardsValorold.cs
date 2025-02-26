@@ -32,30 +32,18 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            modPlayer1.CIDashID = AsgardsValorDashold.ID;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            usPlayer.CIDashID = AsgardsValorDashold.ID;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
             player.noKnockback = true;
             player.fireWalk = true;
-            player.buffImmune[BuffID.OnFire] = true;
-            player.buffImmune[BuffID.Chilled] = true;
-            player.buffImmune[BuffID.Frostburn] = true;
-            player.buffImmune[BuffID.Weak] = true;
-            player.buffImmune[BuffID.BrokenArmor] = true;
-            player.buffImmune[BuffID.Bleeding] = true;
-            player.buffImmune[BuffID.Poisoned] = true;
-            player.buffImmune[BuffID.Slow] = true;
-            player.buffImmune[BuffID.Confused] = true;
-            player.buffImmune[BuffID.Silenced] = true;
-            player.buffImmune[BuffID.Cursed] = true;
-            player.buffImmune[BuffID.Darkness] = true;
-            player.buffImmune[BuffID.WindPushed] = true;
-            player.buffImmune[BuffID.Stoned] = true;
-            player.buffImmune[BuffID.Daybreak] = true;
-            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            usPlayer.AsgardsValorImmnue = true;
             player.statLifeMax2 += 20;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.OnFire3] = true; //出于不知名原因，阿斯加德英勇不免疫地狱之火
+            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true; //以及硫磺火
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             { 

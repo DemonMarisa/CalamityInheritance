@@ -26,26 +26,18 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            // bool left in for abyss light purposes and life regen effects
-            player.pickSpeed = 0.5f;
+            CalamityPlayer calPlayer = player.Calamity();
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             player.endurance = 0.05f;
-            // Inherits all effects of Honey Dew and Living Dew (except standing regen is not honey exclusive anymore)
-            modPlayer.alwaysHoneyRegen = true;
-            modPlayer.honeyDewHalveDebuffs = true;
-            modPlayer.livingDewHalveDebuffs = true;
-            modPlayer1.beeResist = true;
-            modPlayer1.AmbrosialAmpouleOld = true;
+            //我忽然发现白草瓶是不是没生命恢复?
+            player.lifeRegen += 2;
+            
+            usPlayer.beeResist = true;
+            usPlayer.AmbrosialAmpouleOld = true;
+            usPlayer.AmbrosialImmnue = true;
+            usPlayer.AmbrosialStats = true;
 
-            player.buffImmune[BuffID.Venom] = true;
-            player.buffImmune[BuffID.Frozen] = true;
-            player.buffImmune[BuffID.Chilled] = true;
-            player.buffImmune[BuffID.Frostburn] = true;
-            player.buffImmune[BuffID.Poisoned] = true;
-
-            // Add light if the other accessories aren't equipped and visibility is turned on
-            if (!(modPlayer.rOoze || modPlayer.purity) && !hideVisual)
+            if (!(calPlayer.rOoze || calPlayer.purity) && !hideVisual)
                 Lighting.AddLight(player.Center, new Vector3(1.2f, 1.2f, 0.72f));
         }
 

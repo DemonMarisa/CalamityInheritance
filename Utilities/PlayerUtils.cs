@@ -7,7 +7,7 @@ using CalamityInheritance.Content.Projectiles;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         #region Cooldowns
 

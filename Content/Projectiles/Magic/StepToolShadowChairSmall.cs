@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         float enemyRange = Math.Abs(Projectile.position.X + Projectile.width/2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height/2 - enemyY);
                         if (enemyRange < 10000f && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
                         {
-                            CalamityInheritanceUtils.HomeInOnNPC(Projectile, false, 10000f, 24f, 16f, null);
+                            CIFunction.HomeInOnNPC(Projectile, false, 10000f, 24f, 16f, null);
                             flyHoming = true;
                         }
                     }
@@ -69,7 +69,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
             //击中时梯凳驾到
             target.AddBuff(ModContent.BuffType<StepToolDebuff>(), 1145);
             //生成粒子
@@ -77,14 +76,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void OnKill(int timeLeft)
         {
-            //小凳子在消失后恢复玩家2点或4点血量
+            //小凳子在消失后恢复玩家18点或24点血量
             Player player = Main.player[Projectile.owner];
-            player.Heal(Main.rand.NextBool(2)? 4 : 2);
+            player.Heal(Main.rand.NextBool(2)? 24 : 18);
             for(int i = 0; i < 10; i++)
             {
                     int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height,
                                                DustID.WoodFurniture, Projectile.direction * 2, 0f, 150,
-                                               Microsoft.Xna.Framework.Color.Brown , 2.0f);
+                                               Color.Brown , 2.0f);
                     Main.dust[rainbow].noGravity = false;
                     Main.dust[rainbow].velocity *= 1f;
             }

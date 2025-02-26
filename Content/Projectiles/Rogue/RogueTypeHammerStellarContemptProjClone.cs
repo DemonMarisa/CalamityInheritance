@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 Projectile.ai[0] = canHomingCounter;
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
+                CIFunction.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
                 Projectile.ai[2] += 1f;
                 if(Projectile.ai[2] == 50f) //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
                 {

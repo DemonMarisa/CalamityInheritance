@@ -29,7 +29,7 @@ namespace CalamityInheritance.Tiles.MusicBox
 			TileObjectData.newTile.StyleLineSkip = 2;
 			TileObjectData.addTile(Type);
 
-            AddMapEntry(Color.Orange, CalamityInheritanceUtils.GetText("Tiles.ProvidenceLegacyBox"));
+            AddMapEntry(Color.Orange, CIFunction.GetText("Tiles.ProvidenceLegacyBox"));
         }
 
 		public override void MouseOver(int i, int j) {

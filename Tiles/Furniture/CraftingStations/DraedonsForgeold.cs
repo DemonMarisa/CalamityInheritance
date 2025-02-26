@@ -23,7 +23,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
             TileObjectData.addTile(Type);
             LocalizedText name = CreateMapEntryName();
-            AddMapEntry(Color.Gold, CalamityInheritanceUtils.GetText("Tiles.DraedonsForgeold"));
+            AddMapEntry(Color.Gold, CIFunction.GetText("Tiles.DraedonsForgeold"));
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Anvils, TileID.Furnaces, TileID.WorkBenches, TileID.LunarCraftingStation,
                 TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, ModContent.TileType<DraedonsForge>(), ModContent.TileType<CosmicAnvil>() };

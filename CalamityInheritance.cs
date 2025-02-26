@@ -8,6 +8,7 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Common;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance
 {
@@ -40,6 +41,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlame>());
             }
             CalamityInheritanceTexture.LoadTexture();
 

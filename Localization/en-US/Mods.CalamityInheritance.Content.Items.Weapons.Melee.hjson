@@ -342,3 +342,8 @@ MeleeTypeHammerPwnageLegacy: {
 	Tooltip: Throws a strong hammer
 	DisplayName: Pwnagehammer Legacy
 }
+
+PhoenixBlade: {
+	DisplayName: Phoenix Blade
+	Tooltip: ""
+}

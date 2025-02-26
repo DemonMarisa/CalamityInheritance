@@ -3,7 +3,7 @@ using Terraria;
 
 namespace CalamityInheritance.Utilities
 {
-    public static partial class CalamityInheritanceUtils
+    public static partial class CIFunction
     {
         /// <summary>
         /// 一个固定用来往外扩展出圆形粒子的函数(具体参考圣时之锤)

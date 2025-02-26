@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient(ItemID.PaladinsHammer).
-                AddIngredient<Pwnagehammer>().
+                AddIngredient<MeleeTypeHammerPwnageLegacy>(). //改成旧锤子
                 AddIngredient<ScoriaBar>(5).
                 AddIngredient<AshesofCalamity>(5).
                 AddTile(TileID.MythrilAnvil).

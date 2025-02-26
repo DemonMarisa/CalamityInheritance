@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
-            modPlayer1.reaverMageBurst = true;
+            modPlayer1.ReaverMageBurst = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.GetDamage<MagicDamageClass>() += 0.10f;
             player.GetCritChance<MagicDamageClass>() += 10;

@@ -25,7 +25,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public const int RamExplosionDamage = 1000;
         public const float RamExplosionKnockback = 20f;
-        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            base.ModifyTooltips(tooltips);
+        }
         public override void SetDefaults()
         {
             Item.width = 60;
@@ -41,54 +44,34 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             CalamityPlayer modPlayer = player.Calamity();
 
             // Asgardian Aegis ram dash
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            modPlayer1.CIDashID = AsgardianAegisDashold.ID;
-            modPlayer1.elysianAegis = true;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            usPlayer.CIDashID = AsgardianAegisDashold.ID;
+            usPlayer.ElysianAegis = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
-
-            // Inherited Ankh Shield effects
             player.noKnockback = true;
             player.fireWalk = true;
-            player.buffImmune[BuffID.Weak] = true;
-            player.buffImmune[BuffID.BrokenArmor] = true;
-            player.buffImmune[BuffID.Bleeding] = true;
-            player.buffImmune[BuffID.Poisoned] = true;
-            player.buffImmune[BuffID.Slow] = true;
-            player.buffImmune[BuffID.Confused] = true;
-            player.buffImmune[BuffID.Silenced] = true;
-            player.buffImmune[BuffID.Cursed] = true;
-            player.buffImmune[BuffID.Darkness] = true;
-            player.buffImmune[BuffID.WindPushed] = true;
-            player.buffImmune[BuffID.Stoned] = true;
+            //启用共享且不重复的debuff免疫
+            usPlayer.AsgardsValorImmnue = true;
+            usPlayer.ElysianAegisImmnue = true;
 
-            // Additional debuff immunities (Counterparts, similar debuffs to vanilla Ankh Shield debuffs, or upgrades thereof)
-            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true; // "Stronger" Broken Armor
-            player.buffImmune[ModContent.BuffType<BrainRot>()] = true; // Counterpart to Burning Blood
-            player.buffImmune[ModContent.BuffType<BurningBlood>()] = true; // "Stronger" Bleeding
-            player.buffImmune[BuffID.Venom] = true; // "Stronger" Poisoned
-            player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true; // "Stronger" Poisoned
-            player.buffImmune[BuffID.Webbed] = true; // "Stronger" Slow
-            player.buffImmune[BuffID.Blackout] = true; // "Stronger" Darkness
-
-            // Additional debuff immunities (Everything from Ornate Shield + Asgard's Valor)
+            //上述两者共享的debuff免疫单独打表:
             player.buffImmune[BuffID.OnFire] = true;
-            player.buffImmune[BuffID.OnFire3] = true;
-            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
-            player.buffImmune[BuffID.Chilled] = true;
-            player.buffImmune[BuffID.Frozen] = true;
-            player.buffImmune[BuffID.Frostburn] = true;
-            player.buffImmune[BuffID.Frostburn2] = true;
-
-            // Additional debuff immunities (Everything from Elysian Aegis + thematic counterparts)
-            player.buffImmune[BuffID.CursedInferno] = true;
-            player.buffImmune[BuffID.ShadowFlame] = true;
-            player.buffImmune[BuffID.Daybreak] = true;
-            player.buffImmune[ModContent.BuffType<Nightwither>()] = true;
+            player.buffImmune[BuffID.OnFire3] = true; //出于某些原因我没有看到阿斯加德本身免疫狱火
             player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
-
-            // Immune to God Slayer Inferno itself
+            //阿斯加德庇佑本身免疫弑神怒火
             player.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = true;
+            
+            //所谓的. 更强的"Debuff"
+            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true; // 更强的, 碎甲
+            player.buffImmune[ModContent.BuffType<BrainRot>()] = true; // 更强的"流血"
+            player.buffImmune[ModContent.BuffType<BurningBlood>()] = true; // 同上
+            player.buffImmune[BuffID.Venom] = true; // 更强的"剧毒"
+            player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true; // 更强的"剧毒"
+            player.buffImmune[BuffID.Webbed] = true; // 更强的"缓慢"
+            player.buffImmune[BuffID.Blackout] = true; // 更强的"黑暗"
+
+
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             {

@@ -187,7 +187,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             if (pumpkinMoon)
             {
-                player.AddBuff(BuffID.WellFed, 600);
+                player.AddBuff(BuffID.WellFed2, 600);
             }
             if (jungle)
             {

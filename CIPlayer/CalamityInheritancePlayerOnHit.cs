@@ -36,13 +36,14 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
 
-        #region On Hit NPC With Proj
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
+            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityGlobalNPC cgn = target.Calamity();
+            Player player = Main.player[projectile.owner];
             if (Player.whoAmI != Main.myPlayer)
                 return;
 
-            CalamityGlobalNPC cgn = target.Calamity();
             #region Lore
             if (perforatorLore)
             {
@@ -65,6 +66,7 @@ namespace CalamityInheritance.CIPlayer
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
             }
             #endregion
+            #region Armorset
             #region GodSlayer
             if (godSlayerMagic && projectile.DamageType == DamageClass.Magic)
             {
@@ -73,7 +75,6 @@ namespace CalamityInheritance.CIPlayer
                     return;
                 }
                 hasFiredThisFrame = true;
-                Player player = Main.player[projectile.owner];
                 int weaponDamage = player.HeldItem.damage;
                 int finalDamage = 200 + weaponDamage / 2;
 
@@ -91,7 +92,7 @@ namespace CalamityInheritance.CIPlayer
                     return;
                 }
                 hasFiredThisFrame = true;
-                Player player = Main.player[projectile.owner];
+                player = Main.player[projectile.owner];
                 int weaponDamage = player.HeldItem.damage;
                 int finalDamage = 200 + weaponDamage / 2;
 
@@ -112,8 +113,7 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
             }
 
-            CalamityPlayer modPlayer = Player.Calamity();
-            if (projectile.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+            if (projectile.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || projectile.type == ModContent.ProjectileType<StepToolShadowChair>())
             {
                 titanBoost = 600;
             }
@@ -121,16 +121,16 @@ namespace CalamityInheritance.CIPlayer
             #region ReaverMage
             //法师永恒套的套装效果
 
-            CalamityInheritancePlayer reaverMagePlayer = Main.player[projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
-            var reaverMage = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CalamityInheritance().reaverMageBurst)
+            CalamityInheritancePlayer ReaverMagePlayer = Main.player[projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
+            var ReaverMage = projectile.GetSource_FromThis();
+            if (Main.player[projectile.owner].CalamityInheritance().ReaverMageBurst)
             {
-                if (reaverMageBurst) //击发时提供法术增强buff
+                if (ReaverMageBurst) //击发时提供法术增强buff
                 {
                     Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
                 }
 
-                if (reaverBurstCooldown <= 0)
+                if (ReaverBurstCooldown <= 0)
                 {
                     int[] projectileTypes = { ModContent.ProjectileType<CISporeGas>(), ModContent.ProjectileType<CISporeGas2>(), ModContent.ProjectileType<CISporeGas3>() };
                     float baseAngleIncrement = 2 * MathHelper.Pi / 16;
@@ -147,26 +147,26 @@ namespace CalamityInheritance.CIPlayer
                         Projectile.NewProjectile(source, target.Center, direction * randomSpeed, randomProjectileType, newDamage, projectile.knockBack);
                     }
                     target.AddBuff(BuffID.Poisoned, 120);
-                    reaverBurstCooldown = 90;
+                    ReaverBurstCooldown = 90;
                 }
             }
             #endregion
             #region ReaverMelee
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CalamityInheritance().reaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
+            if (Main.player[projectile.owner].CalamityInheritance().ReaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
             {
                 int BlastDamage = (int)(projectile.damage * 0.4);
                 if (BlastDamage > 30)
                 {
                     BlastDamage = 30;
                 }
-                if (reaverBlastCooldown <= 0)
+                if (ReaverBlastCooldown <= 0)
                 {
                     SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, projectile.Center);
                     Projectile.NewProjectile(meleeReaverSrc, projectile.Center, Vector2.Zero, ModContent.ProjectileType<ReaverBlast>(),
                                             BlastDamage, 0.15f, Player.whoAmI);
-                    reaverBlastCooldown = 10;
+                    ReaverBlastCooldown = 10;
                 }
             }
             #endregion
@@ -202,11 +202,9 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+            #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
         }
-        #endregion
-
-
         #region Debuffs
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
         {

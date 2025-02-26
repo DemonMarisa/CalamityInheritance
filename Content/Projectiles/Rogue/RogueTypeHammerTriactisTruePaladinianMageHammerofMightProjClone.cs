@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
-            Projectile.extraUpdates = 3;
+            Projectile.extraUpdates = 2;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesIDStaticNPCImmunity= true;
             Projectile.idStaticNPCHitCooldown = 8;
@@ -83,14 +83,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 Projectile.ai[0] = canHomingCounter;
-                CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
+                CIFunction.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, MathHelper.ToRadians(20f));
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
             Projectile.rotation += RotationIncrement * 0.5f;//大锤子的旋转增长速度比他下位的锤子更慢
 
             //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
-            if (Main.rand.NextBool())
+            if (Main.rand.NextBool() && Projectile.ai[0] < canHomingCounter)
             {
                 Vector2 offset = new Vector2(16f, 0).RotatedByRandom(MathHelper.ToRadians(360f));
                 Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 dust.noGravity = true;
             }
 
-            if (Main.rand.NextBool(6))
+            if (Main.rand.NextBool(6) && Projectile.ai[0] < canHomingCounter)
             {
                 Vector2 offset = new Vector2(16f, 0).RotatedByRandom(MathHelper.ToRadians(360f));
                 Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
@@ -153,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         private void SpawnDust()
         {
-            CalamityInheritanceUtils.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.6f, 1.7f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 15f);
+            CIFunction.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.6f, 1.7f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 15f);
         }
         private void SpawnExplosion()
         {
@@ -170,9 +170,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void SpawnAdditionHammer()
         {
             int hammerType = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>();
-            int hammerDamage = (int)(Projectile.damage * 0.9f);
+            int hammerDamage = (int)(Projectile.damage * 1.1f);
             float hammerAngle = 8f; 
-            float hammerVelocity = 8f;
+            float hammerVelocity = 11f;
             float rotArg = 360f / hammerAngle;
             float rotateAngel = MathHelper.ToRadians(rotArg * Main.rand.NextFloat(0f,8f));
 
@@ -180,22 +180,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Vector2 hammerVelOffsetAlt= new Vector2(0f, hammerVelocity).RotatedBy(rotateAngel);
             if(Projectile.owner == Main.myPlayer && HitCounts > 2)
             {
-                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center);
                 int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[newHammer].netUpdate = true;
 
-                int newHammerAlter = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset.RotatedBy(MathHelper.PiOver2), hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[newHammerAlter].localAI[0] = Math.Sign(Projectile.velocity.X);
-                Main.projectile[newHammerAlter].netUpdate = true;
-
                 int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[altHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
+                Main.projectile[altHammer].localAI[0] = -Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;
-
-                int altHammerAlter = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset.RotatedBy(MathHelper.PiOver2), hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[altHammerAlter].localAI[0] = Math.Sign(Projectile.velocity.X);
-                Main.projectile[altHammerAlter].netUpdate = true;
                 HitCounts = 0;
             }
             else HitCounts++;

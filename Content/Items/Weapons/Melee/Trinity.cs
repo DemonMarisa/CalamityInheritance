@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(3))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkFairy);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkFairy);
             }
         }
 

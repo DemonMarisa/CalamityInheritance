@@ -19,9 +19,9 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.width = 38;
             Item.height = 28;
             Item.rare = ItemRarityID.LightRed;
-            Item.useAnimation = 9;
-            Item.useTime = 9;
-            Item.autoReuse = false; // Explicitly not autofire, since it can be used quickly now
+            Item.useAnimation = 14; //加了一点使用时间来避免这东西被(我)按114514次
+            Item.useTime = 14;
+            Item.autoReuse = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.UseSound = SoundID.Item60;
             Item.consumable = false;

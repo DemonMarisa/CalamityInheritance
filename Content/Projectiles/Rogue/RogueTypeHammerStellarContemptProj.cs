@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.tileCollide = false;
                     float returnSpeed = StellarContempt.Speed;
                     float acceleration = 3.2f;
-                    CalamityInheritanceUtils.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
+                    CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
                 
                 case 2f:
-                    CalamityInheritanceUtils.HomeInOnNPC(Projectile, true, 1250f, stealthSpeed/2, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, stealthSpeed/2, 20f);
                     ifSummonClone = true;
                     break;
                 default:
