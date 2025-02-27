@@ -10,13 +10,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoGunBlast : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        private Vector2 randomPos;
-
-        private Vector2 direction;
-
-        private float projectileAcceleration = 4f;
-
-        private float topSpeed = 8f;
 
         public override void SetStaticDefaults()
         {

@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tC74UDVQEf0=",
-  "success": true,
+  "dgSpecHash": "oiTCg82sYX4=",
+  "success": false,
   "projectFilePath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\CalamityInheritance.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
-  ],
-  "logs": []
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "无法读取“CalamityInheritance”的项目信息: 无效的框架标识符“”。"
+    }
+  ]
 }

@@ -2,6 +2,8 @@
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -17,8 +19,26 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             var usPlayer = player.CalamityInheritance();
             if (usPlayer.exoMechLore)
             {
-                damage.Base = 800;
+                damage.Base = 330;
             }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+
+            var CIPlayer = player.CalamityInheritance();
+
+            if (CIPlayer.exoMechLore)
+            {
+                item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
+                item.useAnimation = item.useTime = 67;
+            }
+            else
+            {
+                item.useTime = 15;
+                item.useAnimation = 15;
+                item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
+            }
+            return base.CanUseItem(item , player);
         }
     }
 }

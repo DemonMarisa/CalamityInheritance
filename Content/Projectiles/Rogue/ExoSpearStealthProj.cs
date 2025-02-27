@@ -21,8 +21,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private int phase;
 
-        private int phasecounter;
-
         private NPC teleportTarget;
 
         private int penetrates = 5;
@@ -41,8 +39,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void SetDefaults()
         {
             Projectile.arrow = false;
-            Projectile.width = 20;
-            Projectile.height = 20;
+            Projectile.width = 5;
+            Projectile.height = 5;
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
@@ -69,6 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private int hitCount = 0;
         public override void AI()
         {
+            Projectile.ExpandHitboxBy(45);
             Projectile.rotation = Utils.ToRotation(Projectile.velocity) + MathHelper.ToRadians(135f);
             if (phase == 1)
             {
@@ -151,7 +150,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (hitCount < 1)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 45f, 100f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 45f, 15f);
             }
         }
         public override void PostDraw(Color lightColor)

@@ -17,8 +17,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private static float MaxRotationSpeed = 0.25f;
         private static float MaxSpeed = 28f;//使其机动性能追杀炼狱丛林龙
 
-        private static float HomingStartRange = 36000f; //半 图 仇 恨
-        private static float HomingBreakRange = 36000f;
+        private static float HomingStartRange = 3600f; //半 图 仇 恨
+        //36000f-3600f，我觉得你可能会把玩家电脑炸了
         private static float HomingBonusRangeCap = 2000f;
         private static float BaseHomingFactor = 1.6f;
         private static float MaxHomingFactor = 6.6f;

@@ -19,7 +19,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 
         private bool justSpawned = true;
 
-        private int shootcounter;
         public override void SetStaticDefaults()
         {
             Main.projPet[Projectile.type] = true;
@@ -280,6 +279,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             if(usPlayer.exoMechLore)
             {
+                Projectile.netUpdate = true;
                 return new Color(255, 255, 255, 255);
             }
             else

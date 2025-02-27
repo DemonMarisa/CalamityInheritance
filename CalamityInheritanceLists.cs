@@ -25,7 +25,6 @@ namespace CalamityInheritance
     {
         public static List<int> rangedProjectileExceptionList;
         public static List<int> AuricdebuffList;
-        public static List<int> AMRextraProjList;
         public static List<int> pierceResistExceptionList;
         public static List<int> ProjNoCIdeadshotBrooch;
         public static List<int> beeProjectileList;
@@ -143,17 +142,6 @@ namespace CalamityInheritance
                 BuffType<Withered>()
             };
 
-            AMRextraProjList = new List<int>
-            {
-                ProjectileType<GodSlayerShrapnelRound>(),
-                ProjectileType<GodSlayerShrapnel>(),
-                ProjectileType<BloodflareSoulold>(),
-                ProjectileType<BloodflareSoul>(),
-                ProjectileType<BloodBomb>(),
-                ProjectileType<BloodBombExplosion>(),
-                ProjectileType<TarraEnergy>(),
-            };
-
             ProjNoCIdeadshotBrooch = new List<int>
             {
                 ProjectileType<ExoFlareold>(),
@@ -205,7 +193,6 @@ namespace CalamityInheritance
         {
             rangedProjectileExceptionList = null;
             AuricdebuffList = null;
-            AMRextraProjList = null;
             ProjNoCIdeadshotBrooch = null;
             beeEnemyList = null;
             beeProjectileList = null;
