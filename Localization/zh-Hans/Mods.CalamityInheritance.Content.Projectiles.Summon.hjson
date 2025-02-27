@@ -21,10 +21,10 @@ CosmicBlastExoLore.DisplayName: 寰宇爆炸
 CISporeGasSummon.DisplayName: 孢子云
 CISporeGasSummon2.DisplayName: 孢子云
 CISporeGasSummon3.DisplayName: 孢子云
-// BrimWaifu.DisplayName: Brim Waifu
-// BrimWaifuKid.DisplayName: Brim Waifu Kid
-// CloudWaifu.DisplayName: Cloud Waifu
-// SandWaifu.DisplayName: Sand Waifu
+BrimWaifu.DisplayName: Brim Waifu
+BrimWaifuKid.DisplayName: Brim Waifu Kid
+CloudWaifu.DisplayName: Cloud Waifu
+SandWaifu.DisplayName: Sand Waifu
 // SandWaifuBolt.DisplayName: Sand Waifu Bolt
 // SandWaifuHealer.DisplayName: Sand Waifu Healer
 // SandWaifuMark.DisplayName: Sand Waifu Mark

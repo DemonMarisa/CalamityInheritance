@@ -74,8 +74,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region Weapon
         public float animusBoost = 1f;
-        public bool AMRextra = false;
-        public bool AMRextraTy = false;
+
         public bool photovisceratorCrystal = false;
         #endregion
         #region dash
@@ -495,14 +494,15 @@ namespace CalamityInheritance.CIPlayer
         public override void PostUpdate()
         {
             // 检查当前手持武器是否是目标武器
-            if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(Skullmasher))
-            {
-                AMRextra = false;
-            }
-            if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(TyrannysEndOld))
-            {
-                AMRextraTy = false;
-            }
+            //if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(Skullmasher))
+            //{
+            //    AMRextra = false;
+            //}
+            //if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(TyrannysEndOld))
+            //{
+            //    AMRextraTy = false;
+            //}
+            //现在不需要了，也许以后需要呢
         }
         #region TeleportMethods
         public static Vector2? GetJunglePosition(Player player)

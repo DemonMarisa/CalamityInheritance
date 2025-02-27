@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityMod.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.CalProjChange;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -29,23 +31,32 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.PurificationPowder;
+            //Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.Calamity().canFirePointBlankShots = true;
+            //Item.Calamity().canFirePointBlankShots = true;
+
+            Item.channel = true;
+            Item.noUseGraphic = true;
+            Item.UseSound = null;
         }
 
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-10, 0);
         }
-
+        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
-            float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
-            Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+            //float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
+            //float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
+            //Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+
+            Projectile holdout = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<KingsbaneHoldoutReal>(), damage, knockback, player.whoAmI, 0f, 0f);
+            holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+
             return false;
         }
 

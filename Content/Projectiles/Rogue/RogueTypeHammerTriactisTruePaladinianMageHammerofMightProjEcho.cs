@@ -24,7 +24,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly float HitRange = 90f;
         public static readonly int LifeTime = 350;
         public static readonly float DefualtRotatoin = 0.22f;
-        bool ifSummonClone = false;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;

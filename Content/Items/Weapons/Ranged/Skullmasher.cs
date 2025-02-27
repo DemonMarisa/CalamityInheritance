@@ -82,9 +82,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     }
                     if (type != ModContent.ProjectileType<AMRShot>())
                     {
-                        modPlayer.AMRextra = true;
+                        proj.CalamityInheritance().AMRextra = true;
                     }
-                    
                 }
             }
             return false;

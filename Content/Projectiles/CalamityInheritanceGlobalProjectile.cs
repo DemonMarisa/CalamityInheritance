@@ -18,6 +18,10 @@ namespace CalamityInheritance.Content.Projectiles
         public override bool InstancePerEntity => true;
 
         private bool frameOneHacksExecuted = false;
+
+        public bool AMRextra = false;
+
+        public bool AMRextraTy = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -163,22 +167,22 @@ namespace CalamityInheritance.Content.Projectiles
             modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {
 
-                if (modPlayer.AMRextra == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
+                if (AMRextra == true && hitInfo.Crit)
                 {
                     IEntitySource source = projectile.GetSource_FromThis();
-                    int extraProjectileAmt = 12;
+                    int extraProjectileAmt = 4;
                     for (int x = 0; x < extraProjectileAmt; x++)
                     {
                         if (projectile.owner == Main.myPlayer)
                         {
-                            bool fromRight = x > 5;
+                            bool fromRight = x > 2;
                             Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }
-                    modPlayer.AMRextra = false;
+                    AMRextra = false;
                 }
-                if (modPlayer.AMRextraTy == true && hitInfo.Crit && CalamityInheritanceLists.AMRextraProjList.TrueForAll(x => projectile.type != x))
+                if (AMRextraTy == true && hitInfo.Crit)
                 {
                     IEntitySource source = projectile.GetSource_FromThis();
                     int extraProjectileAmt = 8;
@@ -191,7 +195,7 @@ namespace CalamityInheritance.Content.Projectiles
                             CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                         }
                     }
-                    modPlayer.AMRextraTy = false;
+                    AMRextraTy = false;
                 }
             };
         }

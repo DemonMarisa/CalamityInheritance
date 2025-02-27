@@ -33,6 +33,6 @@ ExoArrowBlueExoLore.DisplayName: 共振箭矢
 ExoArrowGreenExoLore.DisplayName: 风暴箭矢
 ExoArrowOrangeExoLore.DisplayName: 星怒箭矢
 ExoArrowTealExoLore.DisplayName: 超位箭矢
-// DragonBowExoArrow.DisplayName: Dragon Bow Exo Arrow
-// DragonBowFlame.DisplayName: Dragon Bow Flame
-// DragonRangedFireball.DisplayName: Dragon Ranged Fireball
+DragonBowExoArrow.DisplayName: 龙怒箭矢
+DragonBowFlame.DisplayName: 神龙怒焰
+DragonRangedFireball.DisplayName: 龙火陨石

@@ -14,6 +14,8 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using System.Collections.Generic;
 using Terraria.Localization;
+using Mono.Cecil;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -68,8 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddTile<CosmicAnvil>().
                 Register();
         }
-
-        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
 
@@ -85,10 +86,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 }
                 if (type != ModContent.ProjectileType<PiercingBullet>())
                 {
-                    modPlayer.AMRextraTy = true;
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
+                    proj.CalamityInheritance().AMRextraTy = true;
                 }
             }
+            return false;
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             if (CalamityInheritanceConfig.Instance.AmmoConversion == true)

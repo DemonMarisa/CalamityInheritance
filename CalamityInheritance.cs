@@ -9,6 +9,7 @@ using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Common;
 using CalamityMod.Items.Accessories;
+using CalamityMod.World;
 
 namespace CalamityInheritance
 {
@@ -43,6 +44,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlame>());
             }
+
             CalamityInheritanceTexture.LoadTexture();
 
             #region Hook
