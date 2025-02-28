@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
-        public float speed = 2f;
+        public float speed = 25f;
         public static readonly float HitRange = 90f;
         public static readonly int LifeTime = 350;
         public static readonly float DefualtRotatoin = 0.22f;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
             {
                 ReturnDust(Projectile);
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + (Projectile.ai[0]/80f), 0f);
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + 10f, 0f);
             }
             //无论何时, Echo都应该一直播放飞行的声音
             if (Projectile.soundDelay == 0)
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true);
             float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);
             getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f);
-            Vector2 splatterDirection = Projectile.velocity * 1.2f;
+            Vector2 splatterDirection = Projectile.velocity * 1.3f;
             for (int i = 0; i < 15; i++)
             {
                 int getSparkTime = Main.rand.Next(10, 20);

@@ -94,3 +94,10 @@ Echo锤子现在取挂在锤子的1.1 -> 1.4倍, 且挂载的锤子每次进行�
 幻影锤增加重击火花,校准了幻影锤达到顶点时的提示粒子和提示音效, 克隆锤生成的圆形粒子往外扩展更多
 修改了除挂载外潜伏攻击的命中音效
 ##
+
+Balance:
+Buffed homing speed of Terra Shiv from 16 to 18;
+Nerfed Nanoblack Reaper Legacy Melee damage from 450 to 425
+Rebalance Triatis Hammer Legacy Rogue, damage nerfed from 1850 to 1650, non-stealth strikes' local immnuity frames from 6 to 7
+but buffed use time from 10 to 8, stealth strike now grants 135% damage multiple, and stealth strikes hammer hits now have a chance to restore your 25% of your max stealth
+Rebalance Galaxy Smasher Legacy Rogue, 
