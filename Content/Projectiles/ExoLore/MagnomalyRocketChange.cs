@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -14,6 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,6 +23,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class MagnomalyRocketChange : GlobalProjectile
     {
+
+        private bool spawnedAura = false;
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
         {
@@ -40,7 +44,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             var CIPlayer = player.CalamityInheritance();
 
-            bool spawnedAura = false;
             //Lighting
             Lighting.AddLight(projectile.Center, Main.DiscoR * 0.25f / 255f, Main.DiscoG * 0.25f / 255f, Main.DiscoB * 0.25f / 255f);
 
@@ -60,14 +63,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
             projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * projectile.direction;
 
-            if(CIPlayer.exoMechLore)
+            if (CIPlayer.exoMechLore)
             {
                 projectile.extraUpdates = 1;
                 if(projectile.timeLeft < 275)
-                CalamityUtils.HomeInOnNPC(projectile, true, 1500f, 12f, 20f);
+                CIFunction.HomeInOnNPC(projectile, true, 2500f, 12f, 20f, 10f);
             }
             else
-                CalamityUtils.HomeInOnNPC(projectile, true, 300f, 12f, 20f);
+                CIFunction.HomeInOnNPC(projectile, true, 300f, 12f, 20f);
 
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
@@ -98,6 +101,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Main.dust[exo].noLight = true;
             }
             return false;
+        }
+        public override void OnKill(Projectile projectile, int timeLeft)
+        {
+            Player player = Main.player[projectile.owner];
+            var CIPlayer = player.CalamityInheritance();
+
+            SoundEngine.PlaySound(CIPlayer.exoMechLore ? CISoundMenu.MagnomalyHitsound : SoundID.Item14, projectile.Center);
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {

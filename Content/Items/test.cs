@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.CICooldowns;
+using CalamityMod.Cooldowns;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -44,6 +46,7 @@ namespace CalamityInheritance.Content.Items
         }
         public override bool? UseItem(Player player)
         {
+            player.RemoveCalCooldown(GodSlayerDash.ID);
             return base.CanUseItem(player);
         }
     }

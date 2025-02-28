@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             var modPlayer = Main.player[Projectile.owner].CalamityInheritance();
             if (Projectile.localAI[0] == 0f)
             {
-                SoundEngine.PlaySound(SoundMenu.StepBonk, Projectile.Center);
+                SoundEngine.PlaySound(CISoundMenu.StepBonk, Projectile.Center);
             }
 
             if(modPlayer.StepToolShadowChairSmallCD <= 0)

@@ -8,6 +8,8 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
+using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -39,10 +41,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.shootSpeed = 6f;
 
             Item.Calamity().devItem = true;
-        }
-        public override Vector2? HoldoutOrigin()
-        {
-            return new Vector2(0, -3);
         }
         public override void AddRecipes()
         {

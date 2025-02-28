@@ -4,12 +4,19 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Ranged;
+using Terraria.Audio;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.CIPlayer;
+using System.Collections.Generic;
+using Terraria.Localization;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
     public class MagnomalyCannonCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
+
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
             return item.type == ModContent.ItemType<MagnomalyCannon>();
@@ -22,6 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 damage.Base = 330;
             }
         }
+
         public override bool CanUseItem(Item item, Player player)
         {
 
@@ -31,14 +39,28 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             {
                 item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
                 item.useAnimation = item.useTime = 67;
+                item.UseSound = CISoundMenu.MagnomalyShootSound;
             }
             else
             {
                 item.useTime = 15;
                 item.useAnimation = 15;
                 item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
+                item.UseSound = SoundID.Item11;
             }
             return base.CanUseItem(item , player);
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
+            if (usPlayer.exoMechLore == true)
+            {
+                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.MagnomalyCannon.ExoLoreOn");
+
+                tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
+            }
         }
     }
 }

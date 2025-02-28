@@ -237,8 +237,8 @@ Configs: {
 		}
 
 		SetAllLegacySprite: {
-			// Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
-			// Label: "[i:CalamityInheritance/Death]All Legacy Sprite Settin1g"
+			Tooltip: 改变下列全部贴图选择到旧版本
+			Label: "[i:CalamityInheritance/Death]全部旧版贴图切换"
 		}
 	}
 }

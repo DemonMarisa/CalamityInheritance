@@ -14,8 +14,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private bool firstTick = true;
 
-        private float direction;
-
         private float projectileAcceleration = 8f;
 
         private float topSpeed = 24f;

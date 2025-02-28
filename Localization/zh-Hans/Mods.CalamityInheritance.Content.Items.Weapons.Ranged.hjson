@@ -15,6 +15,14 @@ CelestialObliterator: {
 		'''
 }
 
+MagnomalyCannon.ExoLoreOn:
+	'''
+	[c/00B2EE:星流巨械传颂之物改变：]
+	[c/00B2EE:攻击频率降低]
+	[c/00B2EE:导弹的跟踪范围更大，速度更快]
+	[c/00B2EE:导弹命中敌人后会分裂出更多的跟踪导弹]
+	'''
+
 ConclaveCrossfire: {
 	DisplayName: 交叉集火[Legacy]
 	Tooltip:
@@ -214,4 +222,13 @@ DrataliornusLegacy: {
 		[c/FFA550:“区区之事，无伤尔”]
 		'''
 	StreamsDetail: no
+}
+
+ACTMinigun: {
+	DisplayName: 速射机枪[ACalTweak]
+	Tooltip:
+		'''
+		来自旧日的特殊礼物
+		[c/9370DB:此物品更改属于旧模组: 灾厄平衡重置]
+		'''
 }

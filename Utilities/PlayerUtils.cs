@@ -10,33 +10,28 @@ namespace CalamityInheritance.Utilities
     public static partial class CIFunction
     {
         #region Cooldowns
-
-        // 移除冷却
+        public static void RemoveCalCooldown(this Player player, string id)
+        {
+            CalamityPlayer calamityPlayer = player.Calamity();
+            if (calamityPlayer != null)
+            {
+                RemoveCooldownFromModPlayer(calamityPlayer, id);
+            }
+        }
+        // 移除UI冷却
         public static void RemoveCooldown(this Player player, string id)
         {
-                CalamityPlayer calamityPlayer = player.Calamity();
-                CalamityInheritancePlayer inheritancePlayer = player.CalamityInheritance();
-
-                if (calamityPlayer != null)
-                {
-                    RemoveCooldownFromModPlayer(calamityPlayer, id);
-                }
-
-                if (inheritancePlayer != null)
-                {
-                    RemoveCooldownFromModPlayer(inheritancePlayer, id);
-                }
+            CalamityInheritancePlayer inheritancePlayer = player.CalamityInheritance();
+            if (inheritancePlayer != null)
+            {
+                RemoveCooldownFromModPlayer(inheritancePlayer, id);
+            }
         }
-        private static void RemoveCooldownFromModPlayer(dynamic player, string id)
+        public static void RemoveCooldownFromModPlayer(dynamic player, string id)
         {
             if (player.cooldowns.ContainsKey(id))
             {
                 player.cooldowns.Remove(id);
-                //Main.NewText($"成功移除冷却: {id}", 0, 255, 0);
-            }
-            else
-            {
-                //Main.NewText($"冷却 {id} 不存在，无法移除", 255, 0, 0);
             }
         }
         #endregion

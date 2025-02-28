@@ -13,6 +13,13 @@ CelestialObliterator: {
 		'''
 }
 
+MagnomalyCannon.ExoLoreOn:
+	'''
+	[c/00B2EE:Attack frequency decreased]
+	[c/00B2EE:The missile has a greater homein range and is faster]
+	[c/00B2EE:Missiles that hit an enemy will split into more missiles]
+	'''
+
 ConclaveCrossfire: {
 	DisplayName: Conclave Crossfire
 	Tooltip:
@@ -207,4 +214,9 @@ DrataliornusLegacy: {
 		[c/FFA550:'Just don't get hit']
 		'''
 	StreamsDetail: no
+}
+
+ACTMinigun: {
+	DisplayName: A C T Minigun
+	Tooltip: ""
 }

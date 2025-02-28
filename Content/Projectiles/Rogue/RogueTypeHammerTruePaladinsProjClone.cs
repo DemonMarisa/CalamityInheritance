@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 2;
             Projectile.timeLeft = Lifetime;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 3; //两次额外更新，实际无敌帧为6
+            Projectile.idStaticNPCHitCooldown = 5; //两次额外更新，实际无敌帧为10
         }
 
         public override void AI()

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -59,11 +60,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
             if (Projectile.timeLeft < 500)
             {
-                float maxSpeed = 20f;
+                float maxSpeed = 15f;
                 float acceleration = 0.1f * 2f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
 
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3500f, homeInSpeed, 15f);
+                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3500f, homeInSpeed, 15f, 10f);
             }
         }
 

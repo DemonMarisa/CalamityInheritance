@@ -18,8 +18,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
 		private int phase;
 
-		private int phasecounter;
-
 		private NPC teleportTarget;
 
 		private int penetrates = 5;

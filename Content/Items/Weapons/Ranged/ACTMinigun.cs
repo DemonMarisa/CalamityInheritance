@@ -1,25 +1,29 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.CalProjChange;
+using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
-using Terraria;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityMod.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
+using Terraria;
+using CalamityMod;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class Minigun : ModItem, ILocalizedModType
+    public class ACTMinigun : ModItem, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
             ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
         }
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetDefaults()
@@ -36,12 +40,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.PurificationPowder;
             Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.Calamity().canFirePointBlankShots = true;
+
+            Item.channel = true;
+            Item.noUseGraphic = true;
+            Item.UseSound = null;
         }
 
         public override Vector2? HoldoutOffset()
@@ -51,29 +57,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
-            float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
-            Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+            Projectile holdout = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<KingsbaneHoldoutReal>(), damage, knockback, player.whoAmI, 0f, 0f);
+            holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+
             return false;
         }
 
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > 0.8f;
-
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                AddIngredient(ItemID.ChainGun).
-                AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBarold>().
-                AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ItemID.ChainGun).
-                AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBar>(5).
-                AddTile<CosmicAnvil>().
-                Register();
-        }
     }
 }
