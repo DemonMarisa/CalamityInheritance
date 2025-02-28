@@ -4,11 +4,13 @@ using System.Numerics;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
@@ -24,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static readonly float canHomingCounter = 100f; //大锤子体积过大，因此开始追踪前飞行的距离应当更长
         public ref int HitCounts => ref Main.player[Projectile.owner].CalamityInheritance().HammerCounts;
         public float HitSpins = 0f;
+        public float GetStealth = 0f; //获取潜伏值的缓存
 
         public override void SetStaticDefaults()
         {
@@ -42,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 2;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesIDStaticNPCImmunity= true;
-            Projectile.idStaticNPCHitCooldown = 5; //挂载锤倍率0.8->0.7, 但是, 无敌帧8->5
+            Projectile.idStaticNPCHitCooldown = 8;
             Projectile.timeLeft = Lifetime;
         }
 
@@ -68,6 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
 
             //使克隆锤子在发起跟踪之前受到重力影响
+            //备注：这一段其实纯史山
             float pVelAcceleration = 0.147f;
             if(Projectile.ai[0] < 15f)
             {
@@ -142,14 +146,23 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            //现在只有生成锤子的时候才会生成一圈圆形的粒子
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-            SpawnDust(); 
             SpawnAdditionHammer();
+            RestoreRogueStealth(target);
+        }
+        public override bool PreKill(int timeLeft)
+        {
+            Player player = Main.player[Projectile.owner];
+            player.CalamityInheritance().IfCloneHtting = false; //挂载锤子被击杀前应当取消挂载状态标记
+
+            return true;
         }
         public override void OnKill(int timeLeft)
         {
             //kill掉后锤子会尝试收回
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(), (int)(RogueTypeHammerTriactisTruePaladinianMageHammerofMight.HammerDamage * 0.15), Projectile.knockBack, Projectile.owner, 0f, 34f, -1f);
+            
         }
         private void SpawnDust()
         {
@@ -167,23 +180,42 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
             }
         }
+        private void RestoreRogueStealth(NPC target)
+        {
+            Player player = Main.player[Projectile.owner];
+            CalamityPlayer modPlayer = player.Calamity();
+            if ((target.damage > 5 || target.boss) && !target.SpawnedFromStatue)
+            {
+                if (modPlayer.wearingRogueArmor && modPlayer.rogueStealthMax != 0 && HitCounts == 1)
+                {
+                    if (modPlayer.rogueStealth < modPlayer.rogueStealthMax)
+                    {
+                        float getRestore = modPlayer.rogueStealthMax * 0.25f;
+                        if(modPlayer.rogueStealth > modPlayer.rogueStealthMax * 0.5f)
+                        getRestore = 0f;
+                        modPlayer.rogueStealth += getRestore;
+                    }
+                }
+            }
+        }
         private void SpawnAdditionHammer()
         {
             int hammerType = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>();
-            int hammerDamage = (int)(Projectile.damage * 1.1f);
+            int hammerDamage = (int)(Projectile.damage * 1.4f);
             float hammerAngle = 8f; 
             float hammerVelocity = 11f;
             float rotArg = 360f / hammerAngle;
             float rotateAngel = MathHelper.ToRadians(rotArg * Main.rand.NextFloat(0f,8f));
-
+            Player player = Main.player[Projectile.owner];
+            player.CalamityInheritance().IfCloneHtting = true;
             Vector2 hammerVelOffset = new Vector2(hammerVelocity, 0f).RotatedBy(rotateAngel);
-            Vector2 hammerVelOffsetAlt= new Vector2(0f, hammerVelocity).RotatedBy(rotateAngel);
             if(Projectile.owner == Main.myPlayer && HitCounts > 2)
             {
                 int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[newHammer].netUpdate = true;
-
+                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center); //现在只有Echo才会播放落星的声音
+                CIFunction.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.8f, 2.1f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 11f);
                 int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[altHammer].localAI[0] = -Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;

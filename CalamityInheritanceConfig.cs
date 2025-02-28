@@ -84,10 +84,15 @@ namespace CalamityInheritance
 
         #endregion
         #region 材质
+
         [Header("Texture")]
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool WulfumTexture { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool SetAllLegacySprite{ get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
@@ -174,24 +179,6 @@ namespace CalamityInheritance
         public int StellarContemptResprite { get; set; }
         
         #region 材料/物品贴图
-        /*星系异石
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int GalacticaSingularityResprite{ get; set; }
-        */
-        /*灵质
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int NecroplasmResprite{ get; set; }
-        */
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 2)]

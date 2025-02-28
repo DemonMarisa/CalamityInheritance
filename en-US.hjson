@@ -28,6 +28,12 @@ Mods: {
 			MaliceTiles: MaliceTiles
 			MLGRuneTiles: MLGRuneTiles
 			RevengeTiles: RevengeTiles
+			AcceleratorT1Tile.MapEntry: Accelerator T1 Tile
+			AcceleratorT1: Partical Accelerator Level 1
+			AcceleratorT2Tile.MapEntry: Accelerator T2 Tile
+			AcceleratorT2: Partical Accelerator Level 2
+			AcceleratorT3Tile.MapEntry: Accelerator T3 Tile
+			AcceleratorT3: Partical Accelerator Level 3
 		}
 
 		Projectiles: {

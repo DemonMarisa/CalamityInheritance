@@ -210,16 +210,8 @@ DrataliornusLegacy: {
 		你将会以极快的速度损失生命值, 直到低于最大生命上限的33%为止
 		右键点击则发射两团毁灭性的非追踪强力火球
 		非追踪强力火球具备"火球激流"的非追踪龙焰火球特性，但只造成武器的65%伤害
+		按住 Left Shift 来查看火球激流效果的具体细节
 		[c/FFA550:“区区之事，无伤尔”]
 		'''
-	/* Streams:
-		'''
-		Your fireballs has 50% of chance to home in on enemy
-		Homing fireballs deal 120% of weapon damage, has a chance of 50% to fire another one that deals 75% of weapon damage
-		Homing fireballs has a chance of 33% to leave a split homing fireball while travelling, dealing 180% of homing fireball damage
-		Split homing fireball will not split a new one again
-		Regular fireball deal 130% of weapon damage, with a chance of 25% to fire a hyper one deals 65% of weapon damage
-		Will rain meteors, launch additional hyper exo lasers bolts regardless of the types of fireballs
-		Meteors deals 210% of weapon damage if is summoned by homing fireballs, deals 170% of weapon damage instead 
-		''' */
+	StreamsDetail: no
 }

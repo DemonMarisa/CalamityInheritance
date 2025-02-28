@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeHammerStellarContempt: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
-        public static int BaseDamage = 300;
+        public static int BaseDamage = 375;
         public static float Speed = 18f;
 
         public override void SetStaticDefaults()
@@ -44,6 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>();
             Item.shootSpeed = Speed;
         }
+        public override float StealthDamageMultiplier => 1.10f;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

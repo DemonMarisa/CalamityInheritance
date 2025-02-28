@@ -12,6 +12,7 @@ using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -25,10 +26,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public const int RamExplosionDamage = 1000;
         public const float RamExplosionKnockback = 20f;
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            base.ModifyTooltips(tooltips);
-        }
         public override void SetDefaults()
         {
             Item.width = 60;
@@ -78,7 +75,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 player.endurance += 0.1f;
             }
         }
-
         public override void AddRecipes()
         {
             CreateRecipe().

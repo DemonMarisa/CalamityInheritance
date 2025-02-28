@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 78;
             Item.height = 64;
-            Item.damage = 450;
+            Item.damage = 425;
             Item.knockBack = Knockback;
             Item.useTime = 6;
             Item.useAnimation = 6;

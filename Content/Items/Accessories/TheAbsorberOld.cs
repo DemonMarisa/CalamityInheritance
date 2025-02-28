@@ -39,10 +39,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             usPlayer.beeResist = true;
             usPlayer.AmbrosialImmnue = true;
             usPlayer.AmbrosialStats = true;
+            usPlayer.AmbrosialAmpouleOld = true;
 
             //等一下, 阴阳石的免伤数据呢?
             player.endurance = 0.10f;
-            player.lifeRegen += 2;
             
             //继承至大凝胶:
             player.statLifeMax2 += 20;
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             calPlayer.aSpark = true;
             usPlayer.FungalCarapace = true;
             usPlayer.TheAbsorberOld = true;
-            //海贝壳继承
+            //海贝壳继承a
             if (player.IsUnderwater())
             {
                 player.statDefense += 3;

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             // Slightly ignores iframes so it can easily hit twice.
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = 12;
         }
 
         public override void AI()
@@ -163,10 +163,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f)  OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
             else if(Projectile.ai[2] == -2f) OnAddition(); //只会让挂载过的锤子执行这个函数
             else SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
-
         }
-
-
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             // Applies God Slayer Inferno on contact.

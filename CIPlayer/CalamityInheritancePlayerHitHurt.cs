@@ -383,7 +383,7 @@ namespace CalamityInheritance.CIPlayer
                 if(hurtInfo.Damage> 600 && auricYharimHealCooldown == 0) 
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
                 {
-                    SoundEngine.PlaySound(SoundMenu.ancientXerocMadnessActive, Player.Center, null);
+                    SoundEngine.PlaySound(SoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 2f));
                     auricYharimHealCooldown = 600;
                 }

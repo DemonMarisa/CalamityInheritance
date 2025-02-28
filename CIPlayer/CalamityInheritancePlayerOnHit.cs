@@ -184,7 +184,7 @@ namespace CalamityInheritance.CIPlayer
                     && yharimOfPerunStrikesCooldown == 0
                     ) 
                 {
-                        SoundEngine.PlaySound(SoundMenu.auricYharimDeadlyStrikes);
+                        SoundEngine.PlaySound(SoundMenu.YharimsThuner with {Volume = 0.5f});
                         for (int j = 0; j < 50; j++)
                         {
                             int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);

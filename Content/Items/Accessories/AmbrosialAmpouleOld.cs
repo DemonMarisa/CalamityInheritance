@@ -8,6 +8,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -29,8 +30,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer calPlayer = player.Calamity();
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             player.endurance = 0.05f;
-            //我忽然发现白草瓶是不是没生命恢复?
-            player.lifeRegen += 2;
             
             usPlayer.beeResist = true;
             usPlayer.AmbrosialAmpouleOld = true;
@@ -49,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().
                 AddIngredient<StarblightSoot>(15).
-                AddIngredient<CryonicBar>(5).
+                AddIngredient<CryoBar>(5). //修改为冰灵锭
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -59,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().
                 AddIngredient<StarblightSoot>(15).
-                AddIngredient<CryonicBar>(5).
+                AddIngredient<CryoBar>(5).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

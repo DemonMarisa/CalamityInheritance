@@ -23,6 +23,9 @@ using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -31,40 +34,40 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-        public static int darkSunRingDayRegen = 6;
-        public static int darkSunRingNightDefense = 20;
+        public static readonly int darkSunRingDayRegen = 6;
+        public static readonly int darkSunRingNightDefense = 20;
         public override void PostUpdateMiscEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
             //海绵的护盾
-            CIEnergyShields();
+            Sponge();
 
             //非常冗余的其他效果
             MiscEffects();
 
             //纳米技术堆叠UI
-            NanoTechUI();
+            Nanotechs();
 
             //lore效果
             LoreEffects();
 
             //Buff效果
-            OtherBuffEffects();
+            Buffs();
 
             //饰品数值
-            AccessoriesStatsFunc();
+            Accessories();
 
             //站立不动时玩家可以获得的效果
-            StandingStillEffects();
+            StandingStill();
 
-            //😡
-            RamShieldEffects();
+            //盾冲饰品的一些数值效果(e.g:阿斯加德 )
+            RamShield();
 
             //各种套装效果的封装
-            ArmorSetBonusEffects();
+            ArmorSetbonus();
 
             //克希洛克套装效果的封装(因为太长了所以单独封装起来了)
-            AncientXerocEffect();
+            XerocSetbouns();
 
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Player.statLifeMax2;
@@ -74,7 +77,7 @@ namespace CalamityInheritance.CIPlayer
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = 15;
         }
-        public void OtherBuffEffects()
+        public void Buffs()
         {
             CalamityPlayer calPlayer = Player.Calamity();
             var usPlayer = Player.CalamityInheritance();
@@ -196,8 +199,7 @@ namespace CalamityInheritance.CIPlayer
                 player.GetDamage<RangedDamageClass>() *= actualDamage;
             }
         }
-        #region AccessoriesStats
-        private void AccessoriesStatsFunc()
+        private void Accessories()
         {
             CalamityPlayer calPlayer = Player.Calamity();
             var usPlayer = Player.CalamityInheritance();
@@ -210,16 +212,11 @@ namespace CalamityInheritance.CIPlayer
 
             if (darkSunRingold)
             {
-                Player.lifeRegen += 2;
                 Player.maxMinions += 2;
                 Player.GetDamage<GenericDamageClass>() += 0.12f;
                 Player.GetKnockback<SummonDamageClass>() += 1.2f;
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                 Player.pickSpeed -= 0.12f;
-                // if (Main.eclipse || !Main.dayTime)
-                //     Player.statDefense += Main.eclipse ? 30 : 20;
-                // if (Main.eclipse || Main.dayTime)
-                //     Player.lifeRegen += 6;
                 if(Main.eclipse || !Main.dayTime)
                     Player.statDefense += darkSunRingNightDefense;
             }
@@ -331,7 +328,6 @@ namespace CalamityInheritance.CIPlayer
                 //跳跃速度砍了一刀，影响到实际用途了
                 Player.statLifeMax2 += 15;
                 Player.statManaMax2 += 15;
-                Player.lifeRegen += 2;
                 Player.moveSpeed += 0.05f;
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
@@ -342,7 +338,6 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.statLifeMax2 += 25;  //40(15+25)HP
                     Player.statManaMax2 += 25;  //40(15+25)魔力
-                    Player.lifeRegen += 8;      //5(1+4)HP/s
                     Player.moveSpeed += 0.05f;   //10(5+5)%移速
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
@@ -361,23 +356,21 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffID.Chilled] = true;
                 Player.buffImmune[BuffID.Frostburn] = true;
                 Player.buffImmune[BuffID.Frostburn2] = true; //加了一个霜冻
-                Player.buffImmune[BuffID.Venom] = true;
                 calPlayer.alwaysHoneyRegen = true;
                 calPlayer.honeyDewHalveDebuffs = true;
                 calPlayer.livingDewHalveDebuffs = true;
             }
             if(AmbrosialStats)
             {
-                Player.lifeRegen += 2;
                 Player.pickSpeed -= 0.5f; //这样会使挖矿速度上下位不能叠加, 但是有一说一都到四柱/神后了, 挖矿速度又不缺这点
             }
         }
-        private void NanoTechUI()
+        private void Nanotechs()
         {
             if(nanotechold)
             {
                 CalamityPlayer modPlayer = Player.Calamity();
-                Player.AddCooldown(NanotechUI.ID, NanotechOld.nanotechDMGStack);
+                Player.AddCooldown(NanotechUI.ID, Content.Items.Accessories.Rogue.NanotechOld.nanotechDMGStack);
                 
                 if (nanoTechStackDurability >= 0 && nanoTechStackDurability < 150)
                 {
@@ -390,10 +383,7 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
-
-        #endregion
-        #region Energy Shields
-        private void CIEnergyShields()
+        private void Sponge()
         {
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。
             bool shieldAddedLight = false;
@@ -459,9 +449,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
         }
-        #endregion
-        #region ArmorSetBonusEffect
-        public void ArmorSetBonusEffects()
+        public void ArmorSetbonus()
         {
             if (ReaverMagePower)
             {
@@ -481,19 +469,20 @@ namespace CalamityInheritance.CIPlayer
             }
 
         }
-        #endregion
-        #region Misc Effects
         public void MiscEffects()
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            if(IfCloneHtting) //大锤子如果正在攻击
+            {
+                BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
+            }
             #region 计数器
             if (summonProjCooldown > 0f)
                 summonProjCooldown -= 1;
             #endregion
-            
             #region ArmorSet
             if (usPlayer.invincible)
             {
@@ -653,21 +642,9 @@ namespace CalamityInheritance.CIPlayer
             if(auricYharimSet)
             {
                 Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
-                calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
                 Player.noKnockback = true;
-                Player.lifeRegen += 60;
-                Player.shinyStone = true;
-                Player.lifeRegenTime = 1800f;
-                if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
-                {
-                    Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
-                }
-
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
-                {
-                    Player.lifeRegen += 120;
                     Player.statDefense += 60;
-                }
             }
             if(ancientBloodFact)
             {
@@ -692,12 +669,19 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance -= 0.2f;  //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
                 Player.statDefense *= 0.7f; //玩家的防御力取70%
             }
+            if(IfCloneHtting && BuffExoApolste)
+            {
+                if(Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProj>()] != 0 ||
+                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearBack>()] != 0 ||
+                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearStealthProj>()]!= 0 ||
+                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProjNorSteal>()] != 0 ||
+                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProjNor>()] != 0)
+                {
+                    Player.CalamityInheritance().ForceHammerStealth = Player.CalamityInheritance().ForceStealthStrike(); //强制启用潜伏判定
+                }
+            }
         }
-
-        #endregion
-
-        #region Standing Still Effects
-        private void StandingStillEffects()
+        private void StandingStill()
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
@@ -759,10 +743,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.aggro -= ((1000 - modStealth) * 750);
             }
         }
-        #endregion
-
-        #region Elysian Aegis Effects
-        public void RamShieldEffects()
+        public void RamShield()
         {
             if(ElysianAegisImmnue)
             {
@@ -864,9 +845,7 @@ namespace CalamityInheritance.CIPlayer
             else
                 ElysianGuard = false;
         }
-        #endregion
-
-        public void AncientXerocEffect()
+        public void XerocSetbouns()
         {
             CalamityPlayer calPlayer= Player.Calamity();
             if(ancientXerocSet)

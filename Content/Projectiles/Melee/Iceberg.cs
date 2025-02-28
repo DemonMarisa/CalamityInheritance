@@ -38,22 +38,46 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if(Projectile.ai[0] > 30f) //冰雹在飞行到30f的时候速度将会大幅度自减
             {
                 if(Projectile.ai[0]>31f && Projectile.ai[0]<42f)
-                Projectile.velocity *= 0.9f;
+                Projectile.velocity *= 0.8f;
                 if(Projectile.ai[0] == 42f && Projectile.ai[1] == 0f)
                 {
-                    SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
+                    SoundEngine.PlaySound(SoundID.Item30 with {Volume = 0.4f}, Projectile.Center);
                     SignalDust();
                 }
-                if(Projectile.ai[0] > 42f) //计时器自增到这一步的时候获得5eu, 直接追踪敌人, 衍生弹幕什么的都是一样
+                if(Projectile.ai[0] > 42f && Projectile.ai[2] < 0f) //计时器自增到这一步的时候获得5eu, 直接追踪敌人, 衍生弹幕什么的都是一样
                 {
+                    int getTar = -1;
                     if(Projectile.ai[0] > 50f)
                        Projectile.ai[0] = 50f;
-                    Projectile.extraUpdates = 5;
-                    Projectile.rotation +=0.8f;
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 15f + Projectile.ai[0]/5f, 30f, 5f);
-                    TrailDustHoming();
-                    
+                    foreach(NPC npc in Main.ActiveNPCs) //遍历npc数组寻找追踪目标
+                    {
+                        if(npc.chaseable && npc.lifeMax>5 && !npc.dontTakeDamage && !npc.friendly &&
+                           npc.immortal && Collision.CanHit(Projectile.Center, 0, 0, npc.Center, 0, 0))
+                        {
+                            float getDist = Vector2.Distance(Projectile.Center, npc.Center);
+                            if(getDist < 1800f)
+                               getTar = npc.whoAmI;
+                        }
+                    }
+                    Projectile.ai[2] = getTar; //有目标就把这个目标存放到ai[2]内
+                    Projectile.netUpdate = true;
                 }
+                if(Projectile.ai[2] != -1f) //如果ai[2]内有目标
+                {
+                    NPC getNPC = Main.npc[(int)Projectile.ai[2]];
+                    if(getNPC.active && !getNPC.dontTakeDamage) //且npc并没有无敌还是什么
+                    {
+                        Projectile.extraUpdates = 5; //获得5eu，直接超高速跟踪
+                        Projectile.rotation += 0.8f;
+                        CIFunction.HomeInOnNPC(Projectile, true, 1800f, 15f + Projectile.ai[0]/5f, 45f, 5f);
+                        TrailDustHoming();
+                    }
+                }
+                else
+                {
+                    Projectile.ai[2] = -1f;
+                    Projectile.netUpdate = true;
+                } 
             }
             else if(Projectile.ai[1] == 0f)//其他状态下让这个傻逼东西一直转啊转, 并不断衍生各种好玩的弹幕
             {
@@ -108,7 +132,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public void SignalDust()
         {
-            CIFunction.DustCircle(Projectile.Center, 15f, 1.2f, DustID.SnowflakeIce, true, 10f);
+            CIFunction.DustCircle(Projectile.Center, 32f, 1.2f, DustID.SnowflakeIce, true, 10f);
         }
     }
 }

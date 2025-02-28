@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static float RotationIncrement = 0.22f;
         private static int Lifetime = 240;
         private float stealthSpeed = 25f;
-        private static float ReboundTime = 34f;
+        private static float ReboundTime = 40f;
         bool ifSummonClone = false;
 
         public override void SetStaticDefaults()

@@ -12,3 +12,33 @@ SCalAltarItem: {
 	DisplayName: 诅咒祭坛[Legacy]
 	Tooltip: 用于放置早期版本，更窄的诅咒祭坛
 }
+
+AcceleratorT1: {
+	DisplayName: 粒子加速器-等级1
+	Tooltip:
+		'''
+		困难模式前灾厄模组内所有家具合成台的集成合成站
+		也可以用于合成一些其他的东西
+		"这儿有粒子加速器, 等级1!"
+		'''
+}
+
+AcceleratorT2: {
+	DisplayName: 粒子加速器-等级2
+	Tooltip:
+		'''
+		月球领主前灾厄模组内所有家具合成台的集成合成站
+		继承了粒子加速器-等级1的效果
+		"发现[c/00B2EE:粒子加速器, 等级2!]"
+		'''
+}
+
+AcceleratorT3: {
+	DisplayName: 粒子加速器-等级3
+	Tooltip:
+		'''
+		灾厄模组内所有家具合成台的集成合成站
+		也继承了粒子加速器-等级2的效果
+		"发现一台[c/CC6CE7:粒子加速器, 等级3]!"
+		'''
+}

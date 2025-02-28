@@ -26,6 +26,10 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
+        #region CIRogue
+        public float ForceStealthConsumption = 1f; //玩家潜伏消耗乘算
+        public float ForceStealthDamageMultiple = 1f;  //强制玩家进入潜伏值乘算
+        #endregion
         #region Timer and Counter
         public int modStealth = 1000;
         public int summonProjCooldown = 0;
@@ -47,7 +51,7 @@ namespace CalamityInheritance.CIPlayer
         public bool darkSunRingold = false;
         public bool projRef = false;
         public bool AstralBulwark = false;
-        public bool astralArcanum = false;
+        public bool AstralArcanumEffect = false;
         public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
         public bool fasterAuricTracers = false; //天界跑鞋无敌帧
         public bool deificAmuletEffect = false;  //神圣护符的效果
@@ -248,10 +252,11 @@ namespace CalamityInheritance.CIPlayer
         public override void ResetEffects()
         {
             RespriteOptions(); //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
-
+            ForceHammerStealth = false;
             #region Accessories
             int percentMaxLifeIncrease = 0;
-
+            BuffExoApolste = false;
+            IfCloneHtting = false; //克隆大锤子是否正在攻击
             AnkhImmnue = false;
             ElementalQuiver = false;
             fleshTotemold = false;
@@ -277,7 +282,7 @@ namespace CalamityInheritance.CIPlayer
             RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾
             projRef = false;
             AstralBulwark = false;
-            astralArcanum = false;
+            AstralArcanumEffect = false;
             badgeofBravery = false;
             CIdeadshotBrooch = false; //独立出来的神射手徽章加成
             nanotechold = false;
@@ -411,7 +416,9 @@ namespace CalamityInheritance.CIPlayer
         #region UpdateDead
         public override void UpdateDead()
         {
-
+            ForceHammerStealth = false;
+            BuffExoApolste = false;
+            IfCloneHtting = false; //克隆大锤子是否在攻击
             AnkhImmnue = false;
             armorShattering = false;
             Revivify = false;
@@ -582,6 +589,7 @@ namespace CalamityInheritance.CIPlayer
                     {
                         // 播放声音
                         SoundEngine.PlaySound(SoundID.NPCHit45, Player.position);
+                        Player.moveSpeed += 0.2f;
 
                         // 弹幕生成参数
                         float spread = 45f * 0.0174f;
@@ -805,7 +813,7 @@ namespace CalamityInheritance.CIPlayer
                     ElysianGuard = !ElysianGuard;
                 }
             }
-            if (CalamityInheritanceKeybinds.AstralArcanumUIHotkey.JustPressed && astralArcanum && !CalamityPlayer.areThereAnyDamnBosses)
+            if (CalamityInheritanceKeybinds.AstralArcanumUIHotkey.JustPressed && AstralArcanumEffect && !CalamityPlayer.areThereAnyDamnBosses)
             {
                 AstralArcanumUI.Toggle();
             }
@@ -857,5 +865,62 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
+
+        #region 盗贼潜伏
+        /// <summary>
+        /// 强制玩家使用本模组的潜伏判定进行潜伏攻击,
+        //  这一操作应当与原灾的SteathStrikeAvalible进行或操作
+        /// </summary>
+        /// <returns></returns>
+        public bool ForceStealthStrike()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            if(calPlayer.rogueStealthMax <= 0f && !calPlayer.wearingRogueArmor) //玩家连潜伏值, 以及连盗贼盔甲都没穿, 直接取否返回
+                return false;
+            float stealthConsumeMultipler = 0.25f;
+            #region 将原灾的降潜伏饰品单独加入进来计算
+            if(calPlayer.stealthStrike85Cost)   stealthConsumeMultipler *= 0.85f;
+            if(calPlayer.stealthStrike75Cost)   stealthConsumeMultipler *= 0.75f;
+            if(calPlayer.stealthStrikeHalfCost) stealthConsumeMultipler *= 0.50f;
+            //附:假定玩家同时佩戴了三个不同的潜伏饰品, 那么这一乘算系数将会变成0.15f
+            //即不经过任何处理的前提下, 只需要大于15%最大潜伏值即可触发本模组的潜伏攻击
+            //让原灾物品触发潜伏我并不知道有什么办法, 只能先这样待定
+            #endregion
+            stealthConsumeMultipler *= ForceStealthConsumption; //与本模组的潜伏消耗量再乘算
+            if(stealthConsumeMultipler < 0.1f) //触发潜伏攻击的最低条件是潜伏值的10%
+                stealthConsumeMultipler = 0.1f;
+            return calPlayer.rogueStealth >= calPlayer.rogueStealthMax * stealthConsumeMultipler; 
+        }
+        #endregion
+
+        public void ForceStealthOnUseConsume()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            calPlayer.stealthStrikeThisFrame = true;
+            calPlayer.stealthAcceleration = 1f;
+            /*
+            *他这个是先把潜伏*100f(相当于转成一个int整数后再取倒数来获得潜伏的消耗比例) -> (1)
+            *而后, 把你潜伏最大值乘以这个倒数. (??????) -> (2)
+            *然后你当前最大的潜伏值再减去损失的潜伏值 -> (3)
+            *按理来说, 以潜伏值1.20f为例, 他会先进行第一步变成1/120, 然后再用1.20f去乘以这个1/120得到实际消耗值后, 再用最大的潜伏值-实际消耗值便能损失的潜伏值
+            *WHAT???
+            *附:翻译成自然语言的话:
+            *(1)1.20 * 100 = 120后取倒数变成1/120
+            *(2)120/100 * 1/120 得到 1/100(也就是1.20f * 1/120 = 1/100) 
+            *(3)最大潜伏值减去这个值, 按理来说这样计算之后应该是1.20f - 0.01f = 1.19 便是减少潜伏值的数量
+            *WHAT?
+            *Comment: (1)和(2)完全没必要, 你不想让他低于1潜伏值你直接tm的取消耗的潜伏值=最大潜伏值-0.01f不就完事了,  为什么还要tm取倒数又大搞计算?
+            */
+            // float getReduceRatio = calPlayer.flatStealthLossReduction / (calPlayer.rogueStealthMax * 100f); //(1)
+            // float leftStealth = calPlayer.rogueStealthMax * getReduceRatio; //(2）
+
+            float minStealthPoint = 0.01f;
+            float lostStealthAlt = calPlayer.rogueStealthMax - minStealthPoint;//(3)
+
+            if(ForceStealthConsumption < 1f)
+            calPlayer.rogueStealth -= ForceStealthConsumption * lostStealthAlt;
+
+            else calPlayer.rogueStealth -= lostStealthAlt;
+        }
     }
 }

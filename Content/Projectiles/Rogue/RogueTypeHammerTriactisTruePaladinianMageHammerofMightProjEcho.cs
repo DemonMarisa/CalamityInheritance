@@ -1,13 +1,8 @@
-﻿using System;
-using System.Numerics;
-using CalamityInheritance.Buffs.Statbuffs;
+﻿using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles.Typeless;
-using Microsoft.Build.Evaluation;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
-using rail;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -20,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
-        public float speed = 24f;
+        public float speed = 2f;
         public static readonly float HitRange = 90f;
         public static readonly int LifeTime = 350;
         public static readonly float DefualtRotatoin = 0.22f;
@@ -43,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.timeLeft = LifeTime;
-            Projectile.scale *= 0.6f;
+            Projectile.scale *= 0.5f;
         }
 
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < (LifeTime - 80) && target.CanBeChasedBy(Projectile);
@@ -61,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             *而后在ai[0]于(25f, 55f)的区间内, 速度倍率0.05f即大幅度的减速, 且转速也会调整的更慢
             *而后在55f~80f的时候, Echo将会停止, 需注意的是, 因为采用了3eU, 这里在视觉上应该仅仅一瞬间而已
             *在80f的位置播放音效与释放提醒粒子, 而后Echo将会以24f的速度重击敌人, 且这个过程也会被计时器增速
-            */
+            ***********************************************************/
             Projectile.ai[0] += 1f;
             if(Projectile.ai[0] < HitRange - 60f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
             {
@@ -81,15 +76,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.velocity.Y = 0f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.1f) * Projectile.localAI[0];
             }
-            if(Projectile.ai[0] == HitRange - 5f)
-            {
-                SpawnDust(DustID.GemEmerald);
-                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center); //现在只有Echo才会播放落星的声音
-            }
             if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
             {
                 ReturnDust(Projectile);
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + (Projectile.ai[0] - 80f), 0f);
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + (Projectile.ai[0]/80f), 0f);
             }
             //无论何时, Echo都应该一直播放飞行的声音
             if (Projectile.soundDelay == 0)
@@ -108,10 +98,30 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
-            SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+            SoundEngine.PlaySound(SoundMenu.HammerSmashID1 with {Volume = Main.rand.NextBool(2)? 0.5f : 0.65f}, Projectile.position);
+            
             SpawnExplosion();
-            SpawnDust(DustID.GemSapphire);
+            SpawnSpark(hit);
+        }
+
+        private void SpawnSpark(NPC.HitInfo hit)
+        {
+            float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true);
+            float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);
+            getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f);
+            Vector2 splatterDirection = Projectile.velocity * 1.2f;
+            for (int i = 0; i < 15; i++)
+            {
+                int getSparkTime = Main.rand.Next(10, 20);
+                float getSparkSize = Main.rand.NextFloat(0.7f, Main.rand.NextFloat(3.3f, 5.5f)) + getDMGLerp * 0.85f;
+                Color getColor = Color.Lerp(Color.Green, Color.Aquamarine, Main.rand.NextFloat(0.7f));
+                getColor = Color.Lerp(getColor, Color.ForestGreen, Main.rand.NextFloat());
+
+                Vector2 getVelocity = splatterDirection.RotatedByRandom(0.3f) * Main.rand.NextFloat(1f, 1.2f);
+                getVelocity.Y -= 7f;
+                SparkParticle spark = new SparkParticle(Projectile.Center, getVelocity, false, getSparkTime, getSparkSize, getColor);
+                GeneralParticleHandler.SpawnParticle(spark);
+            }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -136,9 +146,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private static void ReturnDust(Projectile projectile)
         {
-            Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.width, projectile.height) / 2f; 
+            Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.velocity.X, projectile.velocity.Y) / 2f; 
 
-            for(int i = 0; i < 4 ; i++)
+            for(int i = 0; i < 5 ; i++)
             {
                 Dust dust1 = Dust.NewDustPerfect(dustPosition, DustID.GemEmerald);
                 Dust dust2 = Dust.NewDustPerfect(dustPosition, DustID.Vortex);
@@ -151,9 +161,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
         //正常击中敌人生成粒子
+        private void SignalDust(int dustID)
+        {
+            CIFunction.DustCircle(Projectile.position, 20f, 2.5f, dustID, true, 6f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
+        }
         private void SpawnDust(int dustID)
         {
-            CIFunction.DustCircle(Projectile.position, 12f, 1.5f, dustID, true, 8f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
+            CIFunction.DustCircle(Projectile.position, 32f, 1.5f, dustID, true, 15f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
         }
         public override bool PreDraw(ref Color lightColor)
         {

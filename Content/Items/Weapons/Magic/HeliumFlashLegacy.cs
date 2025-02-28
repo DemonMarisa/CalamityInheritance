@@ -17,10 +17,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         internal const float ExplosionDamageMultiplier = 0.42f;
-        public static readonly int HeliumFlashDamage = 380;
-        public static readonly int HeliumFlashManaCost = 21;
-        //Scarlet:这玩意裸奔跑10w dps数值还真就那个直接被爆破了
-        //面板：480→380，爆炸伤害倍率0.56f→0.42f，魔力消耗15→21
+        public static readonly int HeliumFlashDamage = 410;
+        public static readonly int HeliumFlashManaCost = 18;
 
         public override void SetStaticDefaults()
         {
@@ -40,8 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.DamageType = DamageClass.Magic;
             Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 10);
             Item.mana = HeliumFlashManaCost;
-            Item.useAnimation = 30;
-            Item.useTime = 30;
+            Item.useAnimation = 27;
+            Item.useTime = 274;
             Item.autoReuse = true;
             Item.noMelee = true;
 
@@ -55,7 +53,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shootSpeed = 15f;
         }
 
-        // Creates dust at the tip of the staff when used.
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 dir = velocity;

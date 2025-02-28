@@ -151,8 +151,8 @@ Configs: {
 		}
 
 		EtherealTalismancTexture: {
-			Label: Ethereal Talisman Texture
-			Tooltip: Toggle the sprite style of Legacy Ethereal Talisman
+			Label: "[i:CalamityInheritance/AncientEtherealTalisman]Ethereal Talisman Resprite"
+			Tooltip: Change the spirte style of Ethereal Talisman
 		}
 
 		DoGLegacyMusic: {
@@ -165,7 +165,7 @@ Configs: {
 		}
 
 		SkullmasherResprite: {
-			Label: Skullmasher Resprite
+			Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
 			Tooltip: Determines the sprite style of Skullmasher
 		}
 
@@ -180,83 +180,78 @@ Configs: {
 		}
 
 		P90Resprite: {
-			Label: P90 Resprite
+			Label: "[i:CalamityInheritance/P90Legacy]P90 Resprite"
 			Tooltip: Determines the sprite of P90 Legacy
 		}
 
 		GodSlayerKnivesResprite: {
-			Label: Empyrean Knives Resprite
+			Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]Empyrean Knives Resprite"
 			Tooltip: Determines the sprite of Empyrean Knives Legacy Rogue
 		}
 
 		ShadowspecKnivesResprite: {
-			Label: Illustrious Knives Resprite
+			Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]Illustrious Knives Resprite"
 			Tooltip: Determines the sprite of Illustrious Knives Legacy Rogue
 		}
 
 		FateGirlSprite: {
-			Label: Daawnlight Spirit Origin Minion Resprite
+			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]Daawnlight Spirit Origin Minion Resprite"
 			Tooltip: Determines the sprite of Daawnlight Spirite Origin Minion
 		}
 
 		StellarContemptResprite: {
-			Label: Stellar Contempt Resprite
-			Tooltip: ""
+			Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]Stellar Contempt Resprite"
+			Tooltip: Determines the sprite of Stellar Contempt
 		}
 
 		PhantomHeartResprite: {
 			Tooltip: Determines the sprite of Phantom Heart
-			Label: Phantom Heart Resprite
+			Label: "[i:CalamityMod/PhantomHeart]Phantom Heart Resprite"
 		}
 
 		EtherealCoreResprite: {
 			Tooltip: Determines the spirte of Ethereal Core
-			Label: Ethereal Core Resprite
+			Label: "[i:CalamityMod/EtherealCore]Ethereal Core Resprite"
 		}
 
 		CometShardResprite: {
 			Tooltip: Determines the spirte of Comet Shard
-			Label: Comet Shard Resprite
+			Label: "[i:CalamityMod/CometShard]Comet Shard Resprite"
 		}
 
 		DragonfruitResprite: {
 			Tooltip: Determines the spirte of Dragonfruit
-			Label: Dragonfruit Resprite
+			Label: "[i:CalamityMod/Dragonfruit]Dragonfruit Resprite"
 		}
 
 		ElderberryResprite: {
 			Tooltip: Determines the sprite of Elderberry
-			Label: Elderberry Resprite
+			Label: "[i:CalamityMod/Elderberry]Elderberry Resprite"
 		}
 
 		MiracleFruitResprite: {
 			Tooltip: Determines the sprite of Miracle Fruit
-			Label: Miracle Fruit Resprite
+			Label: "[i:CalamityMod/MiracleFruit]Miracle Fruit Resprite"
 		}
 
 		BloodOrangeResprite: {
 			Tooltip: Determines the sprite of Blood Orange
-			Label: Blood Orange Resprite
-		}
-
-		NecroplasmResprite: {
-			Tooltip: Determines the sprite of Necroplasm
-			Label: Necroplasm Resprite
-		}
-
-		GalacticaSingularityResprite: {
-			Tooltip: Determines the sprite of Galactica Singularity
-			Label: Galactica Singularity Resprite
+			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
 		}
 
 		TriactisHammerResprite: {
-			Label: Triactis Hammer Resprite
-			Tooltip: ""
+			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]Triactis' Hammer Resprite"
+			Tooltip: Determines the sprite of Triactis' Hammer
 		}
 
 		PwnagehammerResprite: {
-			Label: Pwnagehammer Resprite
-			Tooltip: ""
+			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]Pwnagehammer Resprite"
+			Tooltip: Determines the sprite of Pwnagehammer
+		}
+
+		SetAllLegacySprite: {
+			Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
+			Label: "[i:CalamityInheritance/Death]All Legacy Sprite Settin1g"
 		}
 	}
 }

@@ -38,17 +38,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>();
             Item.shootSpeed = 14f;
         }
+        
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity*1.6f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
-                int stealth2 = Projectile.NewProjectile(source, position, velocity*2.8f ,type, (int)(damage*1.14f), knockback, player.whoAmI, 0f, 0f, -3f);
+                int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.3f ,type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
+                int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.1f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), damage, knockback, player.whoAmI, 0f, 0f, -3f);
                 
-                if(stealth.WithinBounds(Main.maxProjectiles))
+                if(onlyHoming.WithinBounds(Main.maxProjectiles))
                 {
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-                    Main.projectile[stealth2].Calamity().stealthStrike = true;
+                    Main.projectile[onlyHoming].Calamity().stealthStrike = true;
+                    Main.projectile[homeAndHanging].Calamity().stealthStrike = true;
                 }
                 return false;
             }

@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.CIPlayer;
+﻿using System.Collections.Generic;
+using System.IO;
+using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
@@ -11,9 +13,11 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
@@ -21,6 +25,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     public class DrataliornusLegacy: ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
+
         private const double RightClickDamageRatio = 0.35;
         public const int WeaponDamage = 700; //2/25 Fuck You, 开摆 武器面板174→700 右键倍率现在只允许取0.35, 太他妈傻逼了
         public override void SetStaticDefaults()
@@ -67,6 +73,31 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         /*为啥我不能在SetDefaults里设置武器的暴击率啊?*/
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 6;
 
+        // public override void ModifyTooltips(List<TooltipLine> tooltips)
+        // {
+        //     if (Main.keyState.IsKeyDown(Keys.LeftShift)) //由于某些原因这里并没成功，只能先搁置
+        //     {
+        //         int tooltipIndex = -1;  //tooltip数组
+        //         int tooltipCount = 0;   //tooltip总字符数
+        //         for (int i = 0; i < tooltips.Count; i++) //眼熟到不行的经典的遍历
+        //         {
+        //             //Tooltip一般情况下从"Tooltip"开始
+        //             //实际上，现实中你遇到的字符都是用一个巨大的数组存放起来的，所以他这里相当于从第一个字符开始遍历
+        //             if (tooltips[i].Name.StartsWith("Tooltip")) 
+        //             {
+        //                 if (tooltipIndex == -1)
+        //                     tooltipIndex = i;
+        //                 tooltipCount++; //经过这个循环之后，最后应该可以得出这一数组内的总字符数
+        //             }
+        //         }
+        //         if (tooltipIndex != -1)
+        //         {
+        //             tooltips.RemoveRange(tooltipIndex, tooltipCount); //感谢tmod，有移除数组内容的函数封装
+        //             TooltipLine getStreams = new(Mod, "CalamityInheritance:SteamsDetail", SteamsDetail); //然后，搜灾厄内本身的tooltip
+        //             tooltips.Insert(tooltipIndex, getStreams); //安置，感谢tmod封装
+        //         }
+        //     }
+        // }
         public override bool AltFunctionUse(Player player)
         {
             return true;

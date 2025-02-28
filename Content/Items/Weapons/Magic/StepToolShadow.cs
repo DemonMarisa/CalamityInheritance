@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.Items.Placeables.Banners;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -51,12 +52,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
                 AddIngredient(ItemID.PortableStool, 5).
                 AddIngredient(ItemID.Wood, 100).
-                AddIngredient<ReaperTooth>(50).
                 AddIngredient<DepthCells>(50).
-                AddIngredient<CosmiliteBar>(50).
-                AddIngredient<ShadowspecBar>(10).
+                AddIngredient<ReaperSharkBanner>(1).
+                AddIngredient<ReaperTooth>(50).
                 AddIngredient<Valediction>(1).
                 AddIngredient<DeepSeaDumbbell>(1).
+                AddIngredient<CosmiliteBar>(50).
+                AddIngredient<ShadowspecBar>(10).
                 AddIngredient<KnowledgeCalamitas>(1).
                 AddTile(TileID.HeavyWorkBench).
                 Register();

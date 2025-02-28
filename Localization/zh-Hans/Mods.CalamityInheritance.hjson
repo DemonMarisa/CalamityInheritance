@@ -172,12 +172,12 @@ Configs: {
 		}
 
 		GodSlayerKnivesResprite: {
-			Label: "[i:CalamityInheritance/EmpyreanKnivesLegacyRogue]苍穹飞刀·盗贼版本贴图切换"
+			Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]苍穹飞刀·盗贼版本贴图切换"
 			Tooltip: 切换苍穹飞刀·盗贼版本的贴图
 		}
 
 		ShadowspecKnivesResprite: {
-			Label: "[i:CalamityInheritance/ShadowspecKnivesLegacyRogue]圣光飞刀·盗贼版本贴图切换"
+			Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]圣光飞刀·盗贼版本贴图切换"
 			Tooltip: 切换圣光飞刀·盗贼版本的贴图
 		}
 
@@ -187,7 +187,7 @@ Configs: {
 		}
 
 		StellarContemptResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeStellarContempt]星体击碎者贴图切换"
+			Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]星体击碎者贴图切换"
 			Tooltip: 切换星体击碎者的贴图
 		}
 
@@ -226,24 +226,19 @@ Configs: {
 			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
 		}
 
-		NecroplasmResprite: {
-			Tooltip: 切换灵质的贴图
-			Label: 灵质贴图切换（已废弃，你不应该看到）
-		}
-
-		GalacticaSingularityResprite: {
-			Tooltip: 切换星系异石的贴图
-			Label: 星系异石（已废弃，你不应该看到）
-		}
-
 		TriactisHammerResprite: {
-			// Label: Triactis Hammer Resprite
-			// Tooltip: ""
+			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]真·泰阿克提斯之圣骑士魔锤·盗贼版本贴图切换"
+			Tooltip: 切换真·泰阿克提斯之圣骑士魔锤·盗贼版本的贴图
 		}
 
 		PwnagehammerResprite: {
-			// Label: Pwnagehammer Resprite
-			// Tooltip: ""
+			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]圣时之锤贴图切换"
+			Tooltip: 切换圣时之锤的贴图
+		}
+
+		SetAllLegacySprite: {
+			// Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
+			// Label: "[i:CalamityInheritance/Death]All Legacy Sprite Settin1g"
 		}
 	}
 }

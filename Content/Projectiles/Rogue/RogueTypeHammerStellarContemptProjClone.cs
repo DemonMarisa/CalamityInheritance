@@ -198,7 +198,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)
             {
-                float flareSpeed = Main.rand.NextFloat(8f, 11f);
+                float flareSpeed = Main.rand.NextFloat(9f, 13f);
 
                 // Flares never come from straight up, there is always at least an 80 pixel horizontal offset
                 float xDist = Main.rand.NextFloat(80f, 320f) * (Main.rand.NextBool() ? -1f : 1f);
@@ -225,7 +225,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 //由于锤子会在敌怪身上旋转一段时间造成持续性的伤害, 因此这里生成的月耀射弹将会是取1/2的概率
                 if (Projectile.owner == Main.myPlayer)
                 {
-
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPoint, velocity, ProjectileID.LunarFlare, flareDamage, flareKB, Main.myPlayer, 0f, AI1);
                     if (proj.WithinBounds(Main.maxProjectiles))
                     {

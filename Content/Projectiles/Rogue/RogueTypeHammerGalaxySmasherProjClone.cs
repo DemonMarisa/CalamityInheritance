@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerGalaxySmasher";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         private static readonly float RotationIncrement = 0.20f;
-        private static readonly int Lifetime = 320;
+        private static readonly int Lifetime = 360;
         private static readonly float canHomingCounter = 65f;
         private readonly float stealthSpeed = 27f;
         public int hitCounter = 30;
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 12;
             Projectile.timeLeft = Lifetime;
         }
 
@@ -97,36 +97,39 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.rotation += RotationIncrement;//无论状态，锤子都应当在飞行过程中旋转, 但旋转的速度会慢一些
 
             //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
-            if (Main.rand.NextBool())
+            if(Projectile.ai[0] < canHomingCounter)
             {
-                Vector2 offset = new Vector2(12, 0).RotatedByRandom(MathHelper.ToRadians(360f));
-                Vector2 velOffset = new Vector2(4, 0).RotatedBy(offset.ToRotation());
-                float dFlyVelX = Projectile.velocity.X * 0.4f + velOffset.X;
-                float dFlyVelY = Projectile.velocity.Y * 0.4f + velOffset.Y;
+                if (Main.rand.NextBool())
+                {
+                    Vector2 offset = new Vector2(12, 0).RotatedByRandom(MathHelper.ToRadians(360f));
+                    Vector2 velOffset = new Vector2(4, 0).RotatedBy(offset.ToRotation());
+                    float dFlyVelX = Projectile.velocity.X * 0.4f + velOffset.X;
+                    float dFlyVelY = Projectile.velocity.Y * 0.4f + velOffset.Y;
 
-                //克隆锤子在追踪时生成的粒子速度要更快也更大一点
-                dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
-                dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
-                offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
-                float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
-                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 272, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
-                dust.noGravity = true;
-            }
+                    //克隆锤子在追踪时生成的粒子速度要更快也更大一点
+                    dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
+                    dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
+                    offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
+                    float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
+                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 272, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                    dust.noGravity = true;
+                }
 
-            if (Main.rand.NextBool(6))
-            {
-                Vector2 offset = new Vector2(12, 0).RotatedByRandom(MathHelper.ToRadians(360f));
-                Vector2 velOffset = new Vector2(4, 0).RotatedBy(offset.ToRotation());
-                float dFlyVelX = Projectile.velocity.X * 0.5f + velOffset.X;
-                float dFlyVelY = Projectile.velocity.Y * 0.5f + velOffset.Y;
+                if (Main.rand.NextBool(6))
+                {
+                    Vector2 offset = new Vector2(12, 0).RotatedByRandom(MathHelper.ToRadians(360f));
+                    Vector2 velOffset = new Vector2(4, 0).RotatedBy(offset.ToRotation());
+                    float dFlyVelX = Projectile.velocity.X * 0.5f + velOffset.X;
+                    float dFlyVelY = Projectile.velocity.Y * 0.5f + velOffset.Y;
 
-                //克隆锤子在追踪时生成的粒子速度更快, 粒子大小更大, 且偏移也会更大一些
-                dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
-                dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
-                offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
-                float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
-                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 226, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
-                dust.noGravity = true;
+                    //克隆锤子在追踪时生成的粒子速度更快, 粒子大小更大, 且偏移也会更大一些
+                    dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
+                    dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
+                    offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
+                    float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
+                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 226, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                    dust.noGravity = true;
+                }
             }
         }
 

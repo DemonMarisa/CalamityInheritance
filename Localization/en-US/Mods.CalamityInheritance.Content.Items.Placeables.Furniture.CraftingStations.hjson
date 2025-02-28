@@ -11,3 +11,33 @@ SCalAltarItem: {
 	DisplayName: Altar of the Accursed Legacy
 	Tooltip: Place a narrower Altar of the Accursed
 }
+
+AcceleratorT1: {
+	DisplayName: Partical Accelerator Level 1
+	Tooltip:
+		'''
+		Combines the functionality of all Pre-Hardmode crafting station for furniture in Calamity Mod
+		Also contains some custom recipe
+		'Partical Accelerator here! Level 1.'
+		'''
+}
+
+AcceleratorT2: {
+	DisplayName: Partical Accelerator Level 2
+	Tooltip:
+		'''
+		Combines the functionality of all Pre-MoonLord crafting station for furniture in Calamity Mod
+		Also including Partical Accelerator Level 1
+		'Found Partical Accelerator, Level 2.'
+		'''
+}
+
+AcceleratorT3: {
+	DisplayName: Partical Accelerator Level 3
+	Tooltip:
+		'''
+		Combines the functionality of all crafting station for furniture in Calamity Mod
+		Also including Partical Accelerator Level 2
+		'I found a Partical Accelerator here, Level 3.'
+		'''
+}

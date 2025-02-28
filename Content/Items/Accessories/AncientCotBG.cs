@@ -26,26 +26,21 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             usPlayer.ancientCoreofTheBloodGod = true;
         }
 
         public override void AddRecipes()
         {   
-            //微光嬗变config关闭时使用这个合成表
-            // if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
-            // {
             //Scarlet:旧血核与旧血契的加入已经没有必要微光转化了
-                CreateRecipe().
-                    AddIngredient<BloodPactLegacy>().
-                    AddIngredient<BloodflareCoreLegacy>().
-                    AddIngredient<BloodyWormScarf>().
-                    AddIngredient<CosmiliteBar>(5).
-                    AddIngredient<Necroplasm>(5).
-                    AddTile<CosmicAnvil>().
-                    Register();
-            // }
+            CreateRecipe().
+                AddIngredient<BloodPactLegacy>().
+                AddIngredient<BloodflareCoreLegacy>().
+                AddIngredient<BloodyWormScarf>().
+                AddIngredient<CosmiliteBar>(5).
+                AddIngredient<Necroplasm>(5).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

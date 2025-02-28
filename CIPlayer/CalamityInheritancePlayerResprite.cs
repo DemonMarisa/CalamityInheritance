@@ -19,6 +19,23 @@ namespace CalamityInheritance.CIPlayer
     {
         public static void RespriteOptions()
         {
+            #region 
+            if(CalamityInheritanceConfig.Instance.SetAllLegacySprite == true) //这个用于快速把一些物品转为1457版本的贴图
+            {
+                CalamityInheritanceConfig.Instance.RampartofDeitiesTexture = 2;
+                CalamityInheritanceConfig.Instance.TriactisHammerResprite = 2;
+                CalamityInheritanceConfig.Instance.ShadowspecKnivesResprite = 2;
+                CalamityInheritanceConfig.Instance.BloodOrangeResprite = 2;
+                CalamityInheritanceConfig.Instance.MiracleFruitResprite= 2;
+                CalamityInheritanceConfig.Instance.ElderberryResprite  = 2;
+                CalamityInheritanceConfig.Instance.DragonfruitResprite = 2;
+                CalamityInheritanceConfig.Instance.CometShardResprite = 2;
+                CalamityInheritanceConfig.Instance.EtherealCoreResprite = 2;
+                CalamityInheritanceConfig.Instance.PhantomHeartResprite = 2;
+                CalamityInheritanceConfig.Instance.StellarContemptResprite  = 2;
+                CalamityInheritanceConfig.Instance.FateGirlSprite = 2;
+            }
+            #endregion
             #region Texture
             if (TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] != null)
             {

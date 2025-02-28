@@ -206,14 +206,5 @@ DrataliornusLegacy: {
 		Press Right Click to fire two devastating barrages of six empowered fireballs
 		[c/FFA550:'Just don't get hit']
 		'''
-	Streams:
-		'''
-		Your fireballs has 50% of chance to home in on enemy
-		Homing fireballs deal 120% of weapon damage, has a chance of 50% to fire another one that deals 75% of weapon damage
-		Homing fireballs has a chance of 33% to leave a split homing fireball while travelling, dealing 180% of homing fireball damage
-		Split homing fireball will not split a new one again
-		Regular fireball deal 130% of weapon damage, with a chance of 25% to fire a hyper one deals 65% of weapon damage
-		Will rain meteors, launch additional hyper exo lasers bolts regardless of the types of fireballs
-		Meteors deals 210% of weapon damage if is summoned by homing fireballs, deals 170% of weapon damage instead 
-		'''
+	StreamsDetail: no
 }

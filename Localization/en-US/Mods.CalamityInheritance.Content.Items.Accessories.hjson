@@ -202,19 +202,32 @@ TheSpongetest: {
 	DisplayName: Sponge Revamped
 	Tooltip:
 		'''
-		Legacy Sponge:
-		+30 defense and max mana, 15% increased damage reduction
+		+30 max HP and mana, +2 HP/s life regen speed and 15% increased damage redcution
+		10% increased movement speed, 12% increased running speed and 50% increased jump speed
+		Grants 15 defense that will be disabled for 10 seconds if taking damage, increasing movement speed
 		Grants the immunity of Armor Crunch
-		All effects from Ambrosial Ampoule Legacy
-		You emit a mushroom spore and spark explosion when you are hit
-		Extra 15 defense that would be disabled in 10 seconds if you are hit, and boost your movement speed
+		[c/7DDA58:Inherited from SeaShell:][i:CalamityInheritance/SeaShell]
+		Ability to swin, +12 defense, 10% increased damage reduction and 20% increased movement speed while submerged in liquid
+		[c/7DDA58:Inherited from FungalCarapace:][i:CalamityInheritance/FungalCarapace]
+		20% increased movement speed, emit a mushroom spore and spark explosion when you are hit
+		[c/7DDA58:Inherited from Grand Gelatin Legacy:][i:CalamityInheritance/GrandGelatinLegacy]
+		+1 HP/s life regen speed and increases your mana regen speed when you are not moveing
+		[c/7DDA58:Inherited from Ambrosial Ampoule:][i:CalamityInheritance/AmbrosialAmpouleOld]
+		50% increased mining speed
+		Grants immnuity of Poison, Freeze, Chill, Frostburn, Frostbit and Venom
+		Honey-like life regen with no speed penalty
+		Most bee/hornet enemies and projectiles do 75% damage to you
+		Halves how long you are afflicted with fire and sickness debuffs
+		[c/7DDA58:Inherited from The Absorber Legacy:][i:CalamityInheritance/TheAbsorberOld]
+		Grants immnuity of knockback
+		Enemies take damage when they hit you
 		6.25% of the damage from enemy attacks is absorbed and converted into healing
-
 		[c/FFA500:Active Sponge Barrier if toggle 'Sponge Barrier' in config]
 		Active a barrier can absorb damage, which durability is the same as your max HP
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
 		Takes up more time to recharge if your barrier is broken
+		[c/FF3030:Significantly reduce durability of shield while being equipped with an accessory that being eager for a drop of blood]
 		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''
 }
@@ -263,10 +276,10 @@ AmbrosialAmpouleOld: {
 	DisplayName: Ambrosial Ampoule Legacy
 	Tooltip:
 		'''
-		50% increased mining speed
 		You emit light
-		5% increased damage reduction and +0.5HP/s life regen
-		Poison, Freeze, Chill, Frostburn, and Venom immunity
+		50% increased mining speed, 5% increased damage redcution
+		+2 HP/s life regen speed
+		Grants immnuity of Poison, Freeze, Chill, Frostburn, Frostbit and Venom
 		Honey-like life regen with no speed penalty
 		Most bee/hornet enemies and projectiles do 75% damage to you
 		'''
@@ -281,17 +294,22 @@ TheAbsorberOld: {
 	DisplayName: The Absorber Legacy
 	Tooltip:
 		'''
-		12% increased movement speed
-		24% increased jump speed
-		+20 max life and mana
-		Standing still boosts life and mana regen
-		Increased defense and damage reduction when submerged in liquid
-		Increased movement speed when submerged in liquid
+		+20 max HP and mana, +1 HP/s life regen speed and 10% increased damage reduction
+		10% increased movement speed, 12% increased running speed and 50% increased jump speed
+		Grants immnuity of knockback
 		Enemies take damage when they hit you
-		Taking a hit will make you move very fast for a short time
-		You emit a mushroom spore and spark explosion when you are hit
-		5% increased damage reduction
-		Enemy attacks will have part of their damage absorbed and used to heal you
+		5% of the damage from enemy attacks is  absorbed and converted into healing
+		[c/7DDA58:Inherited from SeaShell:][i:CalamityInheritance/SeaShell]
+		Ability to swin, +3 defense, 5% increased damage reduction, 10% increased movement speed while submerged in liquid
+		[c/7DDA58:Inherited from FungalCarapace:][i:CalamityInheritance/FungalCarapace]
+		20% increased movement speed, emit a mushroom spore and spark explosion when you are hit
+		[c/7DDA58:Inherited from Grand Gelatin Legacy:][i:CalamityInheritance/GrandGelatinLegacy]
+		+1 HP/s life regen speed and increases your mana regen speed when you are not moveing
+		[c/7DDA58:Inherited from Ambrosial Ampoule:][i:CalamityInheritance/AmbrosialAmpouleOld]
+		50% increased mining speed
+		Grants immnuity of Poison, Freeze, Chill, Frostburn, Frostbit and Venom
+		Honey-like life regen with no speed penalty
+		Most bee/hornet enemies and projectiles do 75% damage to you
 		'''
 }
 

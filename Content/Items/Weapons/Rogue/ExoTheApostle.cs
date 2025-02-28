@@ -48,6 +48,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            //圣锤潜伏挂载敌怪时, 星焰弧光的潜伏弹幕伤害将被2.5x
+            int getBuffDamage =  usPlayer.BuffExoApolste? (int)(damage * 2.5f) : damage;
             if (usPlayer.exoMechLore)
             {
                 if (!player.Calamity().StealthStrikeAvailable())
@@ -58,8 +60,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 SoundEngine.PlaySound(ThrowSound1, player.Center);
                 if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
                 {
-                    Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), getBuffDamage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), getBuffDamage, knockback, player.whoAmI);
                     SoundEngine.PlaySound(ThrowSound2, player.Center);
                     if (stealth.WithinBounds(Main.maxProjectiles))
                     {
@@ -72,8 +74,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 if (player.Calamity().StealthStrikeAvailable())
                 {
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), getBuffDamage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), getBuffDamage, knockback, player.whoAmI);
                 }
                 else
                 {

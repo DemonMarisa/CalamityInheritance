@@ -28,6 +28,12 @@ Mods: {
 			MaliceTiles: 恶意虐脑
 			MLGRuneTiles: 恶魔证章
 			RevengeTiles: 复仇血泉
+			AcceleratorT1Tile.MapEntry: 粒子加速器-等级1
+			AcceleratorT1: 粒子加速器-等级1
+			AcceleratorT2Tile.MapEntry: 粒子加速器-等级2
+			AcceleratorT2: 粒子加速器-等级2
+			AcceleratorT3Tile.MapEntry: 粒子加速器-等级3
+			AcceleratorT3: 粒子加速器-等级3
 		}
 
 		Projectiles: {

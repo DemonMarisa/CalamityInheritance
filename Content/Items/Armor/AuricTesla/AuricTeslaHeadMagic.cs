@@ -12,6 +12,8 @@ using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -35,6 +37,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             return isAuricSetNEW || isAuricSetOLD;
         }
 
+        
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawOutlines = true;
@@ -43,33 +46,34 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
-            modPlayer.tarraSet = true;
-            modPlayer.tarraMage = true;
-            modPlayer.bloodflareSet = true;
-            modPlayer.bloodflareMage = true;
-            modPlayer.godSlayer = true;
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CalamityInheritance();
 
-            modPlayer1.silvaMageold = true;
-            modPlayer1.godSlayerMagic = true;
+            calPlayer.tarraSet = true;
+            calPlayer.tarraMage = true;
 
+            calPlayer.bloodflareSet = true;
+            calPlayer.bloodflareMage = true;
+
+            calPlayer.godSlayer = true;
+
+            usPlayer.silvaMageold = true;
+            usPlayer.godSlayerMagic = true;
+
+            calPlayer.auricSet = true;
+            usPlayer.auricsilvaset = true;
             if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
-                modPlayer1.GodSlayerReborn = true;
+                usPlayer.GodSlayerReborn = true;
             }
             if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
             {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                     player.dash = 0;
                 }
             }
-
-            modPlayer1.auricsilvaset = true;
-            modPlayer.auricSet = true;
-
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
@@ -77,13 +81,13 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CalamityInheritance();
             player.manaCost *= 0.8f;
             player.GetDamage<MagicDamageClass>() += 0.3f;
             player.GetCritChance<MagicDamageClass>() += 20;
             player.statManaMax2 += 100;
-            modPlayer1.auricBoostold = true;
+            usPlayer.auricBoostold = true;
         }
 
         public override void AddRecipes()

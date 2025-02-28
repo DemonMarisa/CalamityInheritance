@@ -25,8 +25,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeartoftheElements>()] = ModContent.ItemType<WaifuHeart>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<WaifuHeart>()] = ModContent.ItemType<HeartoftheElements>();
+            ItemID.Sets.ShimmerTransformToItem[ItemType<HeartoftheElements>()] = ItemType<WaifuHeart>();
+            ItemID.Sets.ShimmerTransformToItem[ItemType<WaifuHeart>()] = ItemType<HeartoftheElements>();
         }
 
         public override void SetDefaults()
@@ -152,9 +152,6 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            
-            // int buffStatMultipler = IfVisualIsOff();
-
             int lifeAndManaStat         = fuckYouEHeart ? BasicLifeStatAndManaStatBuff      :   BasicLifeStatAndManaStatBuff+25;
             int lifeRegenStat           = fuckYouEHeart ? BasicLifeRegenSpeedStatBuff/20    : ((BasicLifeRegenSpeedStatBuff+80)/20);
             int movementSpeedAndDRStat  = fuckYouEHeart ? BasicMovementSpeedAndDRStatBuff   :   BasicMovementSpeedAndDRStatBuff+5;

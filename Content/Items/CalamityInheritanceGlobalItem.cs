@@ -20,11 +20,11 @@ namespace CalamityInheritance.Content.Items
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             int itemGrabRangeBoost = 0 +
-                (modPlayer.wallOfFleshLore ? 100 : 0) +
-                (modPlayer.planteraLore ? 150 : 0) +
-                (modPlayer.polterghastLore ? 300 : 0);
+                (usPlayer.wallOfFleshLore ? 100 : 0) +
+                (usPlayer.planteraLore ? 150 : 0) +
+                (usPlayer.polterghastLore ? 300 : 0);
 
             grabRange += itemGrabRangeBoost;
         }
@@ -32,25 +32,26 @@ namespace CalamityInheritance.Content.Items
         #region Shoot
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (modPlayer.wallOfFleshLore)
+            if (usPlayer.wallOfFleshLore)
                 velocity *= 1.10f;
-            if (modPlayer.planteraLore)
+            if (usPlayer.planteraLore)
                 velocity *= 1.15f;
-            if (modPlayer.polterghastLore)
+            if (usPlayer.polterghastLore)
                 velocity *= 1.20f;
         }
         #endregion
+        
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
-            CalamityPlayer modPlayer1 = player.Calamity();
-            if (modPlayer.godSlayerRangedold && modPlayer1.canFireGodSlayerRangedProjectile)
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityPlayer calPlayer = player.Calamity();
+            if (usPlayer.godSlayerRangedold && calPlayer.canFireGodSlayerRangedProjectile)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
                 {
-                    modPlayer1.canFireGodSlayerRangedProjectile = false;
+                    calPlayer.canFireGodSlayerRangedProjectile = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
                         // God Slayer Ranged Shrapnel: 100%, soft cap starts at 800 base damage
@@ -62,11 +63,11 @@ namespace CalamityInheritance.Content.Items
                 }
             }
 
-            if (modPlayer.AuricbloodflareRangedSoul && modPlayer1.canFireBloodflareRangedProjectile)
+            if (usPlayer.AuricbloodflareRangedSoul && calPlayer.canFireBloodflareRangedProjectile)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
                 {
-                    modPlayer1.canFireBloodflareRangedProjectile = false;
+                    calPlayer.canFireBloodflareRangedProjectile = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
                         // Bloodflare Ranged Bloodsplosion: 80%, soft cap starts at 150 base damage
@@ -79,11 +80,11 @@ namespace CalamityInheritance.Content.Items
                 }
             }
 
-            if (modPlayer.ReaverRangedRocket && modPlayer.canFireReaverRangedRocket)
+            if (usPlayer.ReaverRangedRocket && usPlayer.canFireReaverRangedRocket)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
                 {
-                    modPlayer.canFireReaverRangedRocket = false;
+                    usPlayer.canFireReaverRangedRocket = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
                         Projectile.NewProjectile(source, position, velocity* 0.001f, ModContent.ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);

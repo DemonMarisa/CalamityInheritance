@@ -131,7 +131,7 @@ RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 		Legacy...really GIANT BIG Hammer for Rogue class
 		Explodes on enemy hits
 		Stealth strike reverse direction and stick to the nearest enemy for a while upon returning to the player
-		Continuosly split multiple hammers if stuck
+		Continuosly split multiple hammers and restore your stealth if stuck
 		Hammers that stuck on enemies are shared the same immnuity
 		'''
 }

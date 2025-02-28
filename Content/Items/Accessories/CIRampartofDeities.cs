@@ -24,12 +24,11 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modPlayer1= player.CalamityInheritance();
+            var usPlayer= player.CalamityInheritance();
             player.pStone = true;
             player.longInvince =true;
-            modPlayer1.deificAmuletEffect = true; //启用神圣护符的加成。
-            modPlayer1.RoDPaladianShieldActive = true; //启用帕拉丁盾
-            player.lifeRegen += 3;
+            usPlayer.RoDPaladianShieldActive = true; //启用帕拉丁盾
+            player.lifeRegen += 4;
             player.GetArmorPenetration<GenericDamageClass>() += 25;
             if (player.statLife <= player.statLifeMax2 * 0.5)
                 player.AddBuff(BuffID.IceBarrier, 5);
@@ -38,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-            CreateRecipe(). //要考虑转移时期吗bro
+            CreateRecipe(). //
                 AddIngredient(ItemID.FrozenShield).
                 AddIngredient<CosmiliteBar>(10).
                 AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").

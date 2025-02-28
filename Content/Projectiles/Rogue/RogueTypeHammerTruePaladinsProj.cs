@@ -19,7 +19,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Fallen Paladin's Hammer");
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
@@ -72,6 +71,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
 
                 case 1f:
+                    if(Projectile.Calamity().stealthStrike)
+                    Projectile.extraUpdates = 3; //潜伏返程时给予3eu
                     Projectile.tileCollide = false;
                     float returnSpeed = 26f;
                     float acceleration = 3.2f;

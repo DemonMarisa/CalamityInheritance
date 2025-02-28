@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (hitCount < 1)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 14f, 90f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 16f, 90f);
             }
         }
         public override Color? GetAlpha(Color lightColor)

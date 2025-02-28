@@ -27,10 +27,11 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient(ItemID.SoulofNight, 3).
                 AddTile(TileID.Bookcases).
                 Register();
+                 
             CreateRecipe().
-AddIngredient<LoreBloodMoon>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreBloodMoon>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

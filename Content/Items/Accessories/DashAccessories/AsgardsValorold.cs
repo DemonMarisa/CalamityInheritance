@@ -9,6 +9,8 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityMod.Buffs.DamageOverTime;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -29,7 +31,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.defense = 16;
             Item.accessory = true;
         }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();

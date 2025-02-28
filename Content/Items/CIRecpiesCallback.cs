@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Materials;
 using Terraria;
@@ -33,6 +35,12 @@ namespace CalamityInheritance.Content.Items
             {
                 amount = 0;
             }
+        }
+
+        public static void IfDragonBow(Recipe recipe, int type, ref int amount)
+        {
+            if(type == ModContent.ItemType<HeavenlyGaleold>()) amount = 0;
+            if(type == ModContent.ItemType<AscendantSpiritEssence>()) amount = 0;
         }
     }
 }

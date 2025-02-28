@@ -202,24 +202,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-            CreateRecipe().
+            CreateRecipe(). //修改：旧海绵现在只采用旧百草+旧阴阳的合成表 我当时看到一个不用阴阳但是用下为材料的，惊呆了给我
                 AddIngredient<RoverDrive>().
                 AddIngredient<TheAbsorberOld>().
                 AddIngredient<AmbrosialAmpouleOld>().
                 AddIngredient<CosmiliteBar>(15).
-                AddIngredient<AscendantSpiritEssence>(5).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<RoverDrive>().
-                AddIngredient<AmidiasSpark>().
-                AddIngredient<MysteriousCircuitry>(10).
                 AddIngredient<DubiousPlating>(20).
                 AddIngredient<CosmiliteBar>(5).
-                AddIngredient<AscendantSpiritEssence>(4).
-                AddIngredient<FungalCarapace>().
-                AddIngredient<AmbrosialAmpoule>().
+                AddIngredient<AscendantSpiritEssence>(5).
                 AddTile<CosmicAnvil>().
                 Register();
         }

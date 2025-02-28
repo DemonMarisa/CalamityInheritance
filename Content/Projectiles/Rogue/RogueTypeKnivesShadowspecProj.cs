@@ -1,10 +1,8 @@
 ﻿using System;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles;
 using CalamityMod.Projectiles.Healing;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
