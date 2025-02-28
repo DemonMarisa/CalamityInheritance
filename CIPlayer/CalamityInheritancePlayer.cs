@@ -75,6 +75,7 @@ namespace CalamityInheritance.CIPlayer
         public bool ElysianAegisImmnue = false; //亵渎盾单独免疫的debuff
         public bool AmbrosialImmnue= false; //百草瓶的免疫
         public bool AmbrosialStats = false; //百草瓶的一些数据
+        public bool DraedonsHeartLegacyBuff = false;
         #endregion
         #region Weapon
         public float animusBoost = 1f;
@@ -304,6 +305,7 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisImmnue = false;
             AmbrosialImmnue = false;
             AmbrosialStats = false;
+            DraedonsHeartLegacyBuff = false;
             #endregion
             #region Lore
             kingSlimeLore = false;
@@ -454,6 +456,7 @@ namespace CalamityInheritance.CIPlayer
             StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
+            DraedonsHeartLegacyBuff = false;
             #region Set Bonuses
             #region GodSlayer
             GodSlayerDMGprotect = false;

@@ -18,6 +18,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         bool ifSummonClone = false;
+        public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
+        
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -48,7 +50,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.soundDelay = 30;
                 SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
             }
-
             switch (Projectile.ai[0])
             {
                 case 0f:
@@ -121,10 +122,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 //潜伏专属效果：大幅度压制的爆炸粒子
                 StealthSpawnDust();
                 SpawnSparks(hit);
-                SoundEngine.PlaySound(SoundMenu.HammerSmashID2 with {Volume = 0.5f}, Projectile.Center);
+                SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
                 if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
                 {
-                    SoundEngine.PlaySound(SoundMenu.HammerSmashID2 with {Volume = 0.5f}, Projectile.Center);
+                    SoundEngine.PlaySound(SoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
                     SpawnSparks(hit);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
                 }

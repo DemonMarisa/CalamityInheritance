@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            SoundEngine.PlaySound(SoundMenu.HammerSmashID1 with {Volume = Main.rand.NextBool(2)? 0.5f : 0.65f}, Projectile.position);
+            SoundEngine.PlaySound(SoundMenu.HammerSmashID1 with {Volume = Main.rand.NextBool(2)? 0.75f : 0.90f}, Projectile.position);
             
             SpawnExplosion();
             SpawnSpark(hit);

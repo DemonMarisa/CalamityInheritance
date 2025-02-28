@@ -375,3 +375,13 @@ WaifuHeart: {
 		{5}% reduced mana usage
 		'''
 }
+
+DraedonsHeartLegacy: {
+	DisplayName: Draedons Heart Legacy
+	Tooltip:
+		'''
+		Reduced defense damage by 99%
+		+8 HP/s life regen speed, 75% increased defense and 50% reduced damage while standing still
+		'Who the...put defense damage into the game?'
+		'''
+}

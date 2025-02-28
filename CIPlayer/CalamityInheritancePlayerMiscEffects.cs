@@ -680,12 +680,25 @@ namespace CalamityInheritance.CIPlayer
                     Player.CalamityInheritance().ForceHammerStealth = Player.CalamityInheritance().ForceStealthStrike(); //强制启用潜伏判定
                 }
             }
+
+           
         }
         private void StandingStill()
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
+            if(DraedonsHeartLegacyBuff) //嘉登之心的站立不动提供的效果
+            {
+                if(Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    int getDefense = Player.GetCurrentDefense();
+                    Player.GetDamage<GenericDamageClass>() *= DraedonsHeartLegacy.DamageReduceRatio;
+                    int buffDefense = (int)(getDefense * DraedonsHeartLegacy.DefenseMultipler);
+                    Player.statDefense += buffDefense;
+                    Player.lifeRegen += DraedonsHeartLegacy.LifeRegenSpeed;
+                }
 
+            }
             // Auric bonus
             if (auricBoostold)
             {

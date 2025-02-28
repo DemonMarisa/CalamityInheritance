@@ -794,7 +794,12 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer modPlayer1 = player.Calamity();
             // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
             // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
-            if (GodSlayerDMGprotect && info.Damage <= 80 && !modPlayer1.chaliceOfTheBloodGod)
+            // 装备嘉登之心[Legacy]时禁用弑神免伤。
+            // 我是说真的。
+            if (GodSlayerDMGprotect
+                && info.Damage <= 80
+                && !modPlayer1.chaliceOfTheBloodGod
+                && !player.CalamityInheritance().DraedonsHeartLegacyBuff)
                 return true;
 
             // If no other effects occurred, run vanilla code
