@@ -1,4 +1,4 @@
-displayName = Calamity Inheritance
+﻿displayName = Calamity Inheritance（灾厄遗产）
 author = DemonMarisa
 hideCode = false
 hideResources = false
