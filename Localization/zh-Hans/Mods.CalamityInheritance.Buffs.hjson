@@ -114,8 +114,8 @@ BloodyBoost: {
 }
 
 yharimOfPerun: {
-	// DisplayName: Thunder Strike
-	// Description: Greatly boost your attack power
+	DisplayName: 魔君之怒
+	Description: 你的攻击被极大地强化了
 }
 
 StepToolDebuff: {

@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs
 {
-    public partial class CalamityInheritanceGlobalNPC : GlobalNPC
+    public partial class CIGlobalNPC : GlobalNPC
     {
         #region Shop Stuff
         public override void ModifyShop(NPCShop shop)
