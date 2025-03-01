@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Vqjintyyovk=",
+  "dgSpecHash": "tC74UDVQEf0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\25239\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\CalamityInheritance.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\CalamityInheritance.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\25239\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
   "logs": []
 }

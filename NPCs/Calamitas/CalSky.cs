@@ -6,7 +6,8 @@ using Terraria.GameContent;
 using Terraria.Graphics.Effects;
 using Terraria.ModLoader;
 
-namespace CalamityMod.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas
+
 {
     public class CalSky : CustomSky
     {
@@ -48,7 +49,7 @@ namespace CalamityMod.NPCs.Calamitas
 
         private bool UpdateCalIndex()
         {
-            int CalType = ModContent.NPCType<CalamitasRun3>();
+            int CalType = ModContent.NPCType<CalamitasPhase2Legacy>();
             if (CalIndex >= 0 && Main.npc[CalIndex].active && Main.npc[CalIndex].type == CalType)
             {
                 return true;

@@ -22,8 +22,11 @@ namespace CalamityInheritance.NPCs
         internal object newAI;
         internal const int MaxAIMode = 4;
         public float[] BossNewAI = new float[MaxAIMode];
-            public int BossAITimer = 0;
-
+        public int BossAITimer = 0; 
+        //获取whoami
+        public static int CalamitasCloneWhoAmI = -1;
+        public static int CatalysmCloneWhoAmI = -1;
+        public static int CatastropheCloneWhoAmI = -1;
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (silvaStun)

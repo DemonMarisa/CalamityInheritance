@@ -3,7 +3,8 @@ using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 
-namespace CalamityMod.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas
+
 {
     public class CalScreenShaderData : ScreenShaderData
     {
@@ -16,7 +17,7 @@ namespace CalamityMod.NPCs.Calamitas
 
         private void UpdateCalIndex()
         {
-            int CalType = ModContent.NPCType<CalamitasRun3>();
+            int CalType = ModContent.NPCType<CalamitasPhase2Legacy>();
             if (CalIndex >= 0 && Main.npc[CalIndex].active && Main.npc[CalIndex].type == CalType)
             {
                 return;

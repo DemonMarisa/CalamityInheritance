@@ -6,6 +6,7 @@ using CalamityMod.Dusts;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -14,14 +15,19 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Calamitas
 {
 	[AutoloadBossHead]
-    public class Calamitas : ModNPC
+    public class CalamitasLegacy : ModNPC
     {
+        public static Asset<Texture2D> GlowTexture;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Calamitas");
             Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
-		}
+            if (!Main.dedServ)
+            {
+                GlowTexture = ModContent.Request<Texture2D>(Texture + "Glow", AssetRequestMode.AsyncLoad);
+            }
+        }
 
         public override void SetDefaults()
         {
@@ -86,61 +92,65 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void AI()
         {
-			CICalCloneLegacyAI.CalCloneAI(NPC, Mod, false);
+			CICalCloneLegacyAI.CalCloneAI(NPC, Mod, 15, false);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			SpriteEffects spriteEffects = SpriteEffects.None;
-			if (NPC.spriteDirection == 1)
-				spriteEffects = SpriteEffects.FlipHorizontally;
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (NPC.spriteDirection == 1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
-			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
-			Vector2 vector11 = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
-			Color color36 = Color.White;
-			float amount9 = 0.5f;
-			int num153 = 7;
+            Texture2D texture = TextureAssets.Npc[NPC.type].Value;
+            Vector2 origin = new Vector2((float)(texture.Width / 2), (float)(texture.Height / Main.npcFrameCount[NPC.type] / 2));
+            Color white = Color.White;
+            float colorLerpAmt = 0.5f;
+            int afterimageAmt = 7;
 
-			if (CalamityConfig.Instance.Afterimages)
-			{
-				for (int num155 = 1; num155 < num153; num155 += 2)
-				{
-					Color color38 = lightColor;
-					color38 = Color.Lerp(color38, color36, amount9);
-					color38 = NPC.GetAlpha(color38);
-					color38 *= (num153 - num155) / 15f;
-					Vector2 vector41 = NPC.oldPos[num155] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
-					vector41 -= new Vector2(texture2D15.Width, texture2D15.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-					vector41 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (CalamityConfig.Instance.Afterimages)
+            {
+                for (int i = 1; i < afterimageAmt; i += 2)
+                {
+                    Color afterimageColor = drawColor;
+                    afterimageColor = Color.Lerp(afterimageColor, white, colorLerpAmt);
+                    afterimageColor = NPC.GetAlpha(afterimageColor);
+                    afterimageColor *= (float)(afterimageAmt - i) / 15f;
+                    Vector2 offset = NPC.oldPos[i] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - screenPos;
+                    offset -= new Vector2((float)texture.Width, (float)(texture.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
+                    offset += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+                    spriteBatch.Draw(texture, offset, NPC.frame, afterimageColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			Vector2 vector43 = NPC.Center - Main.screenPosition;
-			vector43 -= new Vector2(texture2D15.Width, texture2D15.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(lightColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            Vector2 npcOffset = NPC.Center - screenPos;
+            npcOffset -= new Vector2((float)texture.Width, (float)(texture.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
+            npcOffset += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+            spriteBatch.Draw(texture, npcOffset, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.GetTexture("CalamityMod/NPCs/Calamitas/CalamitasGlow");
-			Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
+            texture = GlowTexture.Value;
+            Color color = Color.Lerp(Color.White, Color.Red, 0.5f);
+            if (Main.zenithWorld)
+            {
+                color = Color.CornflowerBlue;
+            }
 
-			if (CalamityConfig.Instance.Afterimages)
-			{
-				for (int num163 = 1; num163 < num153; num163++)
-				{
-					Color color41 = color37;
-					color41 = Color.Lerp(color41, color36, amount9);
-					color41 *= (num153 - num163) / 15f;
-					Vector2 vector44 = NPC.oldPos[num163] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
-					vector44 -= new Vector2(texture2D15.Width, texture2D15.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-					vector44 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector44, NPC.frame, color41, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (CalamityConfig.Instance.Afterimages)
+            {
+                for (int i = 1; i < afterimageAmt; i++)
+                {
+                    Color extraAfterimageColor = color;
+                    extraAfterimageColor = Color.Lerp(extraAfterimageColor, white, colorLerpAmt);
+                    extraAfterimageColor *= (float)(afterimageAmt - i) / 15f;
+                    Vector2 offset = NPC.oldPos[i] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - screenPos;
+                    offset -= new Vector2((float)texture.Width, (float)(texture.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
+                    offset += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+                    spriteBatch.Draw(texture, offset, NPC.frame, extraAfterimageColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            spriteBatch.Draw(texture, npcOffset, NPC.frame, color, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
-			return false;
+            return false;
 		}
 
 		public override bool PreKill()
@@ -154,7 +164,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             {
                 for (int k = 0; k < 5; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hitDirection, -1f, 0, default, 1f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
                 }
             }
             else
@@ -185,20 +195,21 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
             }
         }
-
-        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
-        {
-            NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
-            NPC.damage = (int)(NPC.damage * 0.8f);
-        }
+        //DemonMarisa:难度差异杀了
+        //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+        //{
+        //    NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
+        //    NPC.damage = (int)(NPC.damage * 0.8f);
+        //}
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            if (CalamityConditions.revenge)
-            {
-                player.AddBuff(ModContent.BuffType<Horror>(), 180, true);
-            }
-            player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
+            //DemonMarisa: 恐惧debuff已经似啦
+            //if (CalamityConditions.revenge)
+            //{
+            //    player.AddBuff(ModContent.BuffType<Horror>(), 180, true);
+            //}
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
         }
     }
 }

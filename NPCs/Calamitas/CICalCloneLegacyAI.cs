@@ -4,9 +4,10 @@ using System.Globalization;
 using System.Numerics;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Events;
 using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.NPCs.Calamitas;
+using CalamityMod.NPCs;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.Projectiles.Summon;
@@ -28,7 +29,7 @@ namespace CalamityInheritance.NPCs.Calamitas
     /*
     *一些基本修改查阅:
     *判定boss击倒的类从CalamityWorld转给CalamityCondition了, 调用的时候要在CalamityCondion.成员名后增加.IsMet();
-    *
+    *DemonMarisa: 不知道改没改，但是提一句DownBossSystem
     */
     
     public class CICalCloneLegacyAI
@@ -87,7 +88,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             //提示boss进入二阶段, 并多人同步
             if(getLifePercent <= 0.75f && Main.netMode != NetmodeID.MultiplayerClient && !ifPhase2)
             {
-                NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2>(), npc.whoAmI);
+                NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2Legacy>(), npc.whoAmI);
                 //这里需要一个发送进入二阶段的文本，旧灾的哪个
                 // if(Main.netMode == NetmodeID.SinglePlayer); //如果是单人游戏，直接发送
                 // else if(Main.netMode == NetmodeID.Server); //如果不是，采用netMessage.BroadcastChatMessage进行多人同步
@@ -107,7 +108,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             if(ifPhase2)
             {
                 //试图生成探魂眼环
-                CIGlobalAI.CalamitasCloneWhoAmI = npc.whoAmI; //get这个AI
+                CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI; //get这个AI
                 //将calamitas的AI存到这个自建的数组里面
                 if(getNPC.BossNewAI[1] == 0f && getLifePercent <= 0.35f && ifExpert) 
                 {
@@ -195,10 +196,10 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //先根据是否处于二阶段AI存放普灾的防御值, CalCloneDefense是二阶段的普灾防御力
                 int defenseStored = ifPhase2 ? calCloneDefense : calCloneDefense - 15;
                 int defenseBuff = 0;
-                defenseBuff += (CIGlobalAI.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalAI.CatalysmCloneWhoAmI].active)?  255 : 0;
-                defenseBuff += (CIGlobalAI.CatastropheCloneWhoAmI != -1 && Main.npc[CIGlobalAI.CatastropheCloneWhoAmI].active)? 255 : 0;
+                defenseBuff += (CIGlobalNPC.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active)?  255 : 0;
+                defenseBuff += (CIGlobalNPC.CatastropheCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active)? 255 : 0;
                 //有兄弟在场都行
-                if((CIGlobalAI.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalAI.CatalysmCloneWhoAmI].active) || (CIGlobalAI.CatastropheCloneWhoAmI != -1 && Main.npc[CIGlobalAI.CatastropheCloneWhoAmI].active))
+                if((CIGlobalNPC.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active) || (CIGlobalNPC.CatastropheCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active))
                     ifBrotherAlive = true;
                 //不出意外的话，双兄弟都死球的时候，这里应该只会直接返回defenseStored.
                 npc.defense = ifProviDowned ? defenseStored + defenseBuff : (defenseStored + defenseBuff) * 50;
@@ -405,18 +406,20 @@ namespace CalamityInheritance.NPCs.Calamitas
         #region Calamitas Clone
 		public static void CalamitasCloneAI(NPC npc, Mod mod, bool phase2)
 		{
-			CIGlobalNPC calamityGlobalNPC = npc.CalamityInheritance();
+			CIGlobalNPC ciGlobalNPC = npc.CalamityInheritance();
 
-			// Emit light
-			Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
+            CalamityGlobalNPC calGlobalNPC = npc.Calamity();
 
-			// Percent life remaining
+            // 发光
+            Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
+
+			// 剩余生命百分比
 			float lifeRatio = npc.life / (float)npc.lifeMax;
 
-			// Spawn phase 2 Cal
+			// 召唤二阶段普灾
 			if (lifeRatio <= 0.75f && Main.netMode != NetmodeID.MultiplayerClient && !phase2)
 			{
-				NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasRun3>(), npc.whoAmI);
+				NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2Legacy>(), npc.whoAmI);
 				string key = "Mods.CalamityMod.CalamitasBossText";
 				Color messageColor = Color.Orange;
 				if (Main.netMode == NetmodeID.SinglePlayer)
@@ -432,30 +435,30 @@ namespace CalamityInheritance.NPCs.Calamitas
 				return;
 			}
 
-			// Variables for increasing difficulty
-			bool death = CalamityWorld.death || CalamityWorld.bossRushActive;
-			bool revenge = CalamityWorld.revenge || CalamityWorld.bossRushActive;
-			bool expertMode = Main.expertMode || CalamityWorld.bossRushActive;
-			bool dayTime = Main.dayTime && !CalamityWorld.bossRushActive;
-			bool provy = CalamityWorld.downedProvidence && !CalamityWorld.bossRushActive;
+			// 难度变量
+			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
 
 			// Variable for live brothers
 			bool brotherAlive = false;
 
 			if (phase2)
 			{
-				// For seekers
-				CalamityGlobalNPC.calamitas = npc.whoAmI;
+                // For seekers
+                CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI;
 
 				// Seeker ring
-				if (calamityGlobalNPC.newAI[1] == 0f && lifeRatio <= 0.35f && expertMode)
+				if (calGlobalNPC.newAI[1] == 0f && lifeRatio <= 0.35f && expertMode)
 				{
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 74);
-						for (int I = 0; I < 5; I++)
+                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+                        for (int I = 0; I < 5; I++)
 						{
-							int FireEye = NPC.NewNPC((int)(npc.Center.X + (Math.Sin(I * 72) * 150)), (int)(npc.Center.Y + (Math.Cos(I * 72) * 150)), ModContent.NPCType<SoulSeeker>(), npc.whoAmI, 0, 0, 0, -1);
+							int FireEye = NPC.NewNPC(npc.GetSource_FromAI(), (int)(npc.Center.X + (Math.Sin(I * 72) * 150)), (int)(npc.Center.Y + (Math.Cos(I * 72) * 150)), ModContent.NPCType<SoulSeeker>(), npc.whoAmI, 0, 0, 0, -1);
 							NPC Eye = Main.npc[FireEye];
 							Eye.ai[0] = I * 72;
 						}
@@ -468,25 +471,25 @@ namespace CalamityInheritance.NPCs.Calamitas
 					else if (Main.netMode == NetmodeID.Server)
 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
 
-					calamityGlobalNPC.newAI[1] = 1f;
+                    calGlobalNPC.newAI[1] = 1f;
 				}
 
 				// Spawn brothers
-				if (calamityGlobalNPC.newAI[0] == 0f && npc.life > 0)
-					calamityGlobalNPC.newAI[0] = npc.lifeMax;
+				if (calGlobalNPC.newAI[0] == 0f && npc.life > 0)
+                    calGlobalNPC.newAI[0] = npc.lifeMax;
 
 				if (npc.life > 0)
 				{
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int num660 = (int)(npc.lifeMax * 0.3); //70%, 40%, and 10%
-						if ((npc.life + num660) < calamityGlobalNPC.newAI[0])
+						if ((npc.life + num660) < calGlobalNPC.newAI[0])
 						{
-							calamityGlobalNPC.newAI[0] = npc.life;
-							if (calamityGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.1)
+                            calGlobalNPC.newAI[0] = npc.life;
+							if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.1)
 							{
-								NPC.NewNPC((int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasRun>(), npc.whoAmI);
-								NPC.NewNPC((int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasRun2>(), npc.whoAmI);
+								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
+								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
 
 								string key = "Mods.CalamityMod.CalamitasBossText2";
 								Color messageColor = Color.Orange;
@@ -495,10 +498,10 @@ namespace CalamityInheritance.NPCs.Calamitas
 								else if (Main.netMode == NetmodeID.Server)
 									ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
 							}
-							else if (calamityGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.4)
-								NPC.NewNPC((int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasRun2>(), npc.whoAmI);
+							else if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.4)
+								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
 							else
-								NPC.NewNPC((int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasRun>(), npc.whoAmI);
+								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
 						}
 					}
 				}
@@ -621,7 +624,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 				// Reduce acceleration if target is holding a true melee weapon
 				Item targetSelectedItem = player.inventory[player.selectedItem];
-				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || CalamityMod.trueMeleeProjectileList.Contains(targetSelectedItem.shoot)))
+				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
 				{
 					num824 *= 0.5f;
 				}
@@ -631,7 +634,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num823 *= 1.25f;
 					num824 *= 1.25f;
 				}
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 				{
 					num823 *= 1.5f;
 					num824 *= 1.5f;
@@ -639,7 +642,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 				Vector2 vector82 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 				float num825 = player.position.X + (player.width / 2) - vector82.X;
-				float num826 = player.position.Y + (player.height / 2) - ((CalamityWorld.bossRushActive ? 400f : 300f) + (phase2 ? 60f : 0f)) - vector82.Y;
+				float num826 = player.position.Y + (player.height / 2) - ((BossRushEvent.BossRushActive ? 400f : 300f) + (phase2 ? 60f : 0f)) - vector82.Y;
 				float num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
 				num827 = num823 / num827;
 				num825 *= num827;
@@ -698,12 +701,14 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] > 180f)
 						{
 							npc.localAI[1] = 0f;
-							float num828 = CalamityWorld.bossRushActive ? 16f : (expertMode ? 14f : 12.5f);
-							if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-								num828 += 5f;
-
-							int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42;
-							int num830 = ModContent.ProjectileType<BrimstoneHellfireball>();
+							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 14f : 12.5f);
+							//DemonMarisa: 这啥啊，ban了
+							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+							//	num828 += 5f;
+                            //暂时ban一下
+                            //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42;
+                            int num829 = 42;
+                            int num830 = ModContent.ProjectileType<BrimstoneHellfireball>();
 							num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
 							num827 = num828 / num827;
 							num825 *= num827;
@@ -712,11 +717,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 							vector82.Y += num826 * 6f;
 							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 							{
-								int proj = Projectile.NewProjectile(vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+								int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
 								Main.projectile[proj].tileCollide = false;
 							}
 							else
-								Projectile.NewProjectile(vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+								Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 					else
@@ -727,16 +732,21 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] > 180f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 						{
 							npc.localAI[1] = 0f;
-							float num828 = CalamityWorld.bossRushActive ? 16f : (expertMode ? 13f : 10.5f);
-							int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35;
-							int num830 = ModContent.ProjectileType<BrimstoneLaser>();
-							num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
+							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 13f : 10.5f);
+                            //DemonMarisa: 同上，暂时ban了
+                            //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35;
+                            int num829 = 35;
+                            //暂时发射其它弹幕SCalBrimstoneFireblast
+                            //int num830 = ModContent.ProjectileType<BrimstoneLaser>();
+                            int num830 = ModContent.ProjectileType<SCalBrimstoneFireblast>();
+
+                            num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
 							num827 = num828 / num827;
 							num825 *= num827;
 							num826 *= num827;
 							vector82.X += num825 * 12f;
 							vector82.Y += num826 * 12f;
-							Projectile.NewProjectile(vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+							Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 				}
@@ -764,8 +774,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 				// Reduce acceleration if target is holding a true melee weapon
 				Item targetSelectedItem = player.inventory[player.selectedItem];
-				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || CalamityMod.trueMeleeProjectileList.Contains(targetSelectedItem.shoot)))
-				{
+				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
+                {
 					num833 *= 0.5f;
 				}
 
@@ -774,14 +784,14 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num832 *= 1.25f;
 					num833 *= 1.25f;
 				}
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 				{
 					num832 *= 1.5f;
 					num833 *= 1.5f;
 				}
 
 				Vector2 vector83 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num834 = player.position.X + (player.width / 2) + (num831 * (CalamityWorld.bossRushActive ? 460 : 360)) - vector83.X;
+				float num834 = player.position.X + (player.width / 2) + (num831 * (BossRushEvent.BossRushActive ? 460 : 360)) - vector83.X;
 				float num835 = player.position.Y + (player.height / 2) - vector83.Y;
 				float num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
 				num836 = num832 / num836;
@@ -825,8 +835,9 @@ namespace CalamityInheritance.NPCs.Calamitas
 						{
 							if (revenge)
 								npc.localAI[1] += 0.5f;
-							if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-								npc.localAI[1] += 0.5f;
+							//DemonMarisa: 同样ban了，先修完再考虑差分
+							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+							//	npc.localAI[1] += 0.5f;
 							if (expertMode)
 								npc.localAI[1] += 0.5f;
 						}
@@ -834,10 +845,15 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 						{
 							npc.localAI[1] = 0f;
-							float num837 = CalamityWorld.bossRushActive ? 15f : 11f;
-							int num838 = brotherAlive ? (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) : (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35);
-							int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneLaser>();
-							num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
+							float num837 = BossRushEvent.BossRushActive ? 15f : 11f;
+							//DemonMarisa:同上
+							//int num838 = brotherAlive ? (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) : (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35);
+							//int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneLaser>();
+
+                            int num838 = 35;
+                            int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneHellfireball>();
+
+                            num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
 							num836 = num837 / num836;
 							num834 *= num836;
 							num835 *= num836;
@@ -845,11 +861,12 @@ namespace CalamityInheritance.NPCs.Calamitas
 							vector83.Y += num835 * 12f;
 							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 							{
-								int proj = Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-								Main.projectile[proj].tileCollide = false;
+								//int proj = Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+                                int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), 42 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+                                Main.projectile[proj].tileCollide = false;
 							}
 							else
-								Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+								Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 					else
@@ -860,16 +877,19 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 						{
 							npc.localAI[1] = 0f;
-							float num837 = CalamityWorld.bossRushActive ? 14f : 10.5f;
-							int num838 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(20, 1.5) : 24;
-							int num839 = ModContent.ProjectileType<BrimstoneLaser>();
-							num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
+							float num837 = BossRushEvent.BossRushActive ? 14f : 10.5f;
+							//DemonMarisa:怎么这么多差分啊
+							//int num838 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(20, 1.5) : 24;
+							//int num839 = ModContent.ProjectileType<BrimstoneLaser>();
+                            int num838 =  24;
+                            int num839 = ModContent.ProjectileType<BrimstoneHellfireball>();
+                            num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
 							num836 = num837 / num836;
 							num834 *= num836;
 							num835 *= num836;
 							vector83.X += num834 * 12f;
 							vector83.Y += num835 * 12f;
-							Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+							Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 				}
@@ -887,12 +907,12 @@ namespace CalamityInheritance.NPCs.Calamitas
 			{
 				npc.rotation = num803;
 
-				float chargeVelocity = (CalamityWorld.death || CalamityWorld.bossRushActive) ? 27f : 25f;
+				float chargeVelocity = (CalamityWorld.death || BossRushEvent.BossRushActive) ? 27f : 25f;
 
 				if (provy)
 					chargeVelocity *= 1.25f;
 
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 					chargeVelocity *= 1.5f;
 
 				Vector2 vector = Vector2.Normalize(player.Center + player.velocity * 10f - npc.Center);
@@ -905,7 +925,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 				npc.ai[2] += 1f;
 
 				float chargeTime = 70f;
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 					chargeTime *= 0.8f;
 
 				if (npc.ai[2] >= chargeTime)
@@ -937,16 +957,19 @@ namespace CalamityInheritance.NPCs.Calamitas
 			else
 			{
 				int num62 = 500;
-				float num63 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive)) ? 20f : 14f;
-				float num64 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive)) ? 0.5f : 0.35f;
+				//DemonMarisa:BR差分还在追我，我草
+				//float num63 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 20f : 14f;
+				//float num64 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 0.5f : 0.35f;
+                float num63 = 14f;
+                float num64 = 0.35f;
 
-				if (provy)
+                if (provy)
 				{
 					num63 *= 1.25f;
 					num64 *= 1.25f;
 				}
 
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 				{
 					num63 *= 1.5f;
 					num64 *= 1.5f;
@@ -1010,11 +1033,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 			CalamityGlobalNPC.cataclysm = npc.whoAmI;
 
-			bool death = CalamityWorld.death || CalamityWorld.bossRushActive;
-			bool revenge = CalamityWorld.revenge || CalamityWorld.bossRushActive;
-			bool expertMode = Main.expertMode || CalamityWorld.bossRushActive;
-			bool dayTime = Main.dayTime && !CalamityWorld.bossRushActive;
-			bool provy = CalamityWorld.downedProvidence && !CalamityWorld.bossRushActive;
+			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
 
 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
 				npc.TargetClosest(true);
@@ -1093,7 +1116,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num861 *= 1.25f;
 					num862 *= 1.25f;
 				}
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 				{
 					num861 *= 1.5f;
 					num862 *= 1.5f;
@@ -1104,7 +1127,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num863 = -1;
 
 				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num864 = player.position.X + (player.width / 2) + (num863 * (CalamityWorld.bossRushActive ? 270 : 180)) - vector86.X;
+				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
 				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
 				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
 
@@ -1152,9 +1175,10 @@ namespace CalamityInheritance.NPCs.Calamitas
 					if (npc.velocity.Y > 0f && num865 < 0f)
 						npc.velocity.Y -= num862;
 				}
-
-				npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive)) ? 2f : 1f;
-				if (npc.ai[2] >= 240f)
+				// DemonMarisa : 还有还有
+				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
+                npc.ai[2] += 1f;
+                if (npc.ai[2] >= 240f)
 				{
 					npc.TargetClosest(true);
 					npc.ai[1] = 1f;
@@ -1170,8 +1194,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 					if (npc.localAI[2] > 22f)
 					{
 						npc.localAI[2] = 0f;
-						Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 34);
-					}
+                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+                    }
 
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
@@ -1182,9 +1206,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] > 12f)
 						{
 							npc.localAI[1] = 0f;
-							float num867 = CalamityWorld.bossRushActive ? 9f : 6f;
-							int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(30, 1.5) : 38;
-							int num869 = ModContent.ProjectileType<BrimstoneFire>();
+							float num867 = BossRushEvent.BossRushActive ? 9f : 6f;
+							//DemonMarisa:
+							//int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(30, 1.5) : 38;
+                            int num868 = 38;
+                            int num869 = ModContent.ProjectileType<BrimstoneFire>();
 							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 							num864 = player.position.X + (player.width / 2) - vector86.X;
 							num865 = player.position.Y + (player.height / 2) - vector86.Y;
@@ -1196,7 +1222,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 							num864 += npc.velocity.X * 0.5f;
 							vector86.X -= num864 * 1f;
 							vector86.Y -= num865 * 1f;
-							Projectile.NewProjectile(vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+							Projectile.NewProjectile(npc.GetSource_FromAI(), vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 				}
@@ -1205,8 +1231,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 			{
 				if (npc.ai[1] == 1f)
 				{
-					Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
-					npc.rotation = num842;
+                    SoundEngine.PlaySound(SoundID.Item109, npc.Center);
+                    npc.rotation = num842;
 
 					float num870 = 14f;
 					if (expertMode)
@@ -1215,11 +1241,13 @@ namespace CalamityInheritance.NPCs.Calamitas
 						num870 += 2f;
 					if (death)
 						num870 += 2f;
-					if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-						num870 += 4f;
+					//DemonMarisa:BR
+					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+					//	num870 += 4f;
+
 					if (provy)
 						num870 *= 1.15f;
-					if (CalamityWorld.bossRushActive)
+					if (BossRushEvent.BossRushActive)
 						num870 *= 1.25f;
 
 					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -1240,7 +1268,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 						npc.ai[2] += 0.25f;
 					if (revenge)
 						npc.ai[2] += 0.25f;
-					if (CalamityWorld.bossRushActive)
+					if (BossRushEvent.BossRushActive)
 						npc.ai[2] += 0.25f;
 
 					if (npc.ai[2] >= 75f)
@@ -1283,11 +1311,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 			CalamityGlobalNPC.catastrophe = npc.whoAmI;
 
-			bool death = CalamityWorld.death || CalamityWorld.bossRushActive;
-			bool revenge = CalamityWorld.revenge || CalamityWorld.bossRushActive;
-			bool expertMode = Main.expertMode || CalamityWorld.bossRushActive;
-			bool dayTime = Main.dayTime && !CalamityWorld.bossRushActive;
-			bool provy = CalamityWorld.downedProvidence && !CalamityWorld.bossRushActive;
+			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
 
 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
 				npc.TargetClosest(true);
@@ -1366,7 +1394,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num861 *= 1.25f;
 					num862 *= 1.25f;
 				}
-				if (CalamityWorld.bossRushActive)
+				if (BossRushEvent.BossRushActive)
 				{
 					num861 *= 1.5f;
 					num862 *= 1.5f;
@@ -1377,7 +1405,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 					num863 = -1;
 
 				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num864 = player.position.X + (player.width / 2) + (num863 * (CalamityWorld.bossRushActive ? 270 : 180)) - vector86.X;
+				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
 				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
 				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
 
@@ -1425,9 +1453,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 					if (npc.velocity.Y > 0f && num865 < 0f)
 						npc.velocity.Y -= num862;
 				}
+				//DemonMarisa:沟槽的br
+				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
+                npc.ai[2] += 1f;
 
-				npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive)) ? 2f : 1f;
-				if (npc.ai[2] >= 180f)
+                if (npc.ai[2] >= 180f)
 				{
 					npc.TargetClosest(true);
 					npc.ai[1] = 1f;
@@ -1443,8 +1473,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 					if (npc.localAI[2] > 36f)
 					{
 						npc.localAI[2] = 0f;
-						Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 34);
-					}
+                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+                    }
 
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
@@ -1455,9 +1485,11 @@ namespace CalamityInheritance.NPCs.Calamitas
 						if (npc.localAI[1] > 50f)
 						{
 							npc.localAI[1] = 0f;
-							float num867 = CalamityWorld.bossRushActive ? 18f : 12f;
-							int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(29, 1.5) : 36;
-							int num869 = ModContent.ProjectileType<BrimstoneBall>();
+							float num867 = BossRushEvent.BossRushActive ? 18f : 12f;
+                            //DemonMarisa:差分
+                            //int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(29, 1.5) : 36;
+                            int num868 = 36;
+                            int num869 = ModContent.ProjectileType<BrimstoneBall>();
 							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
 							num864 = player.position.X + (player.width / 2) - vector86.X;
 							num865 = player.position.Y + (player.height / 2) - vector86.Y;
@@ -1469,7 +1501,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 							num864 += npc.velocity.X * 0.5f;
 							vector86.X -= num864 * 1f;
 							vector86.Y -= num865 * 1f;
-							Projectile.NewProjectile(vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+							Projectile.NewProjectile(npc.GetSource_FromAI() ,vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
 						}
 					}
 				}
@@ -1478,8 +1510,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 			{
 				if (npc.ai[1] == 1f)
 				{
-					Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
-					npc.rotation = num842;
+                    SoundEngine.PlaySound(SoundID.Item109, npc.Center);
+                    npc.rotation = num842;
 
 					float num870 = 16f;
 					if (expertMode)
@@ -1488,11 +1520,12 @@ namespace CalamityInheritance.NPCs.Calamitas
 						num870 += 2f;
 					if (death)
 						num870 += 2f;
-					if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-						num870 += 4f;
+					//DemonMarisa:差分
+					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+					//	num870 += 4f;
 					if (provy)
 						num870 *= 1.15f;
-					if (CalamityWorld.bossRushActive)
+					if (BossRushEvent.BossRushActive)
 						num870 *= 1.25f;
 
 					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -1513,7 +1546,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 						npc.ai[2] += 0.25f;
 					if (revenge)
 						npc.ai[2] += 0.25f;
-					if (CalamityWorld.bossRushActive)
+					if (BossRushEvent.BossRushActive)
 						npc.ai[2] += 0.25f;
 
 					if (npc.ai[2] >= 60f) //50

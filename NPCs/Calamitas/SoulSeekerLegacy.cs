@@ -1,29 +1,42 @@
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.NPCs.Calamitas;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
+using CalamityMod.Events;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityMod.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas
 {
-    public class SoulSeeker : ModNPC
+    public class SoulSeekerLegacy : ModNPC
     {
         private int timer = 0;
         private bool start = true;
-
+        public static Asset<Texture2D> GlowTexture;
+        /* DemonMarisa : 修复了SoulSeeker中的错误，还未测试
+         * num664这里不知道以前不填默认是什么，我随便填了个FromAI
+         * 尸块暂时禁用
+         */
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Soul Seeker");
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
-		}
+            if (!Main.dedServ)
+            {
+                GlowTexture = ModContent.Request<Texture2D>(Texture + "Glow", AssetRequestMode.AsyncLoad);
+            }
+        }
 
         public override void SetDefaults()
         {
@@ -38,7 +51,7 @@ namespace CalamityMod.NPCs.Calamitas
             NPC.defense = 10;
 			NPC.DR_NERD(0.1f);
             NPC.lifeMax = 2500;
-            if (CalamityConditions.bossRushActive)
+            if (BossRushEvent.BossRushActive)
             {
                 NPC.lifeMax = 150000;
             }
@@ -56,16 +69,17 @@ namespace CalamityMod.NPCs.Calamitas
 			NPC.buffImmune[BuffID.DryadsWardDebuff] = false;
 			NPC.buffImmune[BuffID.Oiled] = false;
 			NPC.buffImmune[BuffID.BoneJavelin] = false;
-            NPC.buffImmune[ModContent.BuffType<AbyssalFlames>()] = false;
+            //NPC.buffImmune[ModContent.BuffType<AbyssalFlames>()] = false;
 			NPC.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = false;
             NPC.buffImmune[ModContent.BuffType<ArmorCrunch>()] = false;
-            NPC.buffImmune[ModContent.BuffType<DemonFlames>()] = false;
+            //NPC.buffImmune[ModContent.BuffType<DemonFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = false;
             NPC.buffImmune[ModContent.BuffType<HolyFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<Nightwither>()] = false;
             NPC.buffImmune[ModContent.BuffType<Plague>()] = false;
             NPC.buffImmune[ModContent.BuffType<Shred>()] = false;
             NPC.buffImmune[ModContent.BuffType<WhisperingDeath>()] = false;
+            //林海眩晕是legacy版本
             NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
             NPC.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = false;
             NPC.HitSound = SoundID.NPCHit4;
@@ -77,13 +91,15 @@ namespace CalamityMod.NPCs.Calamitas
 			// Setting this in SetDefaults will disable expert mode scaling, so put it here instead
 			NPC.damage = 0;
 
-			bool expertMode = Main.expertMode;
-			if (CalamityGlobalNPC.calamitas < 0 || !Main.npc[CalamityGlobalNPC.calamitas].active)
+            bool expertMode = Main.expertMode;
+            
+			if (CIGlobalNPC.CalamitasCloneWhoAmI < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].active)
 			{
 				NPC.active = false;
 				NPC.netUpdate = true;
 				return false;
 			}
+            
 			if (start)
             {
                 for (int num621 = 0; num621 < 15; num621++)
@@ -96,30 +112,31 @@ namespace CalamityMod.NPCs.Calamitas
             NPC.TargetClosest(true);
             Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
             direction.Normalize();
-            direction *= CalamityConditions.bossRushActive ? 14f : 9f;
+            direction *= BossRushEvent.BossRushActive ? 14f : 9f;
             NPC.rotation = direction.ToRotation();
             timer++;
             if (timer > 60)
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CalamityGlobalNPC.calamitas].ai[1] < 2f)
+                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].ai[1] < 2f)
                 {
-                    if (NPC.CountNPCS(ModContent.NPCType<LifeSeeker>()) < 3)
+                    if (NPC.CountNPCS(ModContent.NPCType<LifeSeekerLegacy>()) < 3)
                     {
                         int x = (int)(NPC.position.X + Main.rand.Next(NPC.width - 25));
                         int y = (int)(NPC.position.Y + Main.rand.Next(NPC.height - 25));
-                        int num663 = ModContent.NPCType<LifeSeeker>();
-                        int num664 = NPC.NewNPC(x, y, num663, 0, 0f, 0f, 0f, 0f, 255);
+                        int num663 = ModContent.NPCType<LifeSeekerLegacy>();
+                        //这里不知道以前不填默认是什么，我随便填了个FromAI
+                        int num664 = NPC.NewNPC(NPC.GetSource_Death(), x, y, num663, 0, 0f, 0f, 0f, 0f, 255);
                     }
                     for (int num621 = 0; num621 < 3; num621++)
                     {
                         int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, 235, 0f, 0f, 100, default, 2f);
                     }
                     int damage = expertMode ? 25 : 30;
-                    Projectile.NewProjectile(NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<BrimstoneBarrage>(), damage, 1f, NPC.target);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<BrimstoneBarrage>(), damage, 1f, NPC.target);
                 }
                 timer = 0;
             }
-            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<CalamitasRun3>())];
+            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<CalamitasPhase2Legacy>())];
             double deg = NPC.ai[1];
             double rad = deg * (Math.PI / 180);
             double dist = 150;
@@ -133,14 +150,15 @@ namespace CalamityMod.NPCs.Calamitas
         {
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hitDirection, -1f, 0, default, 1f);
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
             }
             if (NPC.life <= 0)
             {
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper2"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper3"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper4"), 1f);
+                //尸块暂时禁用
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper2"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper3"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper4"), 1f);
                 NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
                 NPC.position.Y = NPC.position.Y + (float)(NPC.height / 2);
                 NPC.width = 50;
@@ -175,56 +193,58 @@ namespace CalamityMod.NPCs.Calamitas
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			SpriteEffects spriteEffects = SpriteEffects.None;
-			if (NPC.spriteDirection == 1)
-				spriteEffects = SpriteEffects.FlipHorizontally;
+            //草拟吗傻逼山猪，怎么全是numxxx，从现在的复制过来了
+            //你们这不是会写其它变量名吗
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (NPC.spriteDirection == 1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
-			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
-			Vector2 vector11 = new Vector2((float)(TextureAssets.Npc[NPC.type].Value.Width / 2), (float)(TextureAssets.Npc[NPC.type].Value.Height / 2));
-			Color color36 = Color.White;
-			float amount9 = 0.5f;
-			int num153 = 5;
+            Texture2D texture = TextureAssets.Npc[NPC.type].Value;
+            Vector2 origin = new Vector2(texture.Width / 2f, texture.Height / Main.npcFrameCount[NPC.type] / 2f);
+            Color white = Color.White;
+            float colorLerpAmt = 0.5f;
+            int afterImageAmt = 5;
 
-			if (CalamityConfig.Instance.Afterimages)
-			{
-				for (int num155 = 1; num155 < num153; num155 += 2)
-				{
-					Color color38 = lightColor;
-					color38 = Color.Lerp(color38, color36, amount9);
-					color38 = NPC.GetAlpha(color38);
-					color38 *= (float)(num153 - num155) / 15f;
-					Vector2 vector41 = NPC.oldPos[num155] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector41 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-					vector41 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (CalamityConfig.Instance.Afterimages)
+            {
+                for (int a = 1; a < afterImageAmt; a += 2)
+                {
+                    Color afterImageColor = drawColor;
+                    afterImageColor = Color.Lerp(afterImageColor, white, colorLerpAmt);
+                    afterImageColor = NPC.GetAlpha(afterImageColor);
+                    afterImageColor *= (afterImageAmt - a) / 15f;
+                    Vector2 afterimagePos = NPC.oldPos[a] + new Vector2(NPC.width, NPC.height) / 2f - screenPos;
+                    afterimagePos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+                    afterimagePos += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+                    spriteBatch.Draw(texture, afterimagePos, NPC.frame, afterImageColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			Vector2 vector43 = NPC.Center - Main.screenPosition;
-			vector43 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(lightColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            Vector2 drawPos = NPC.Center - screenPos;
+            drawPos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+            drawPos += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+            spriteBatch.Draw(texture, drawPos, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.GetTexture("CalamityMod/NPCs/Calamitas/SoulSeekerGlow");
-			Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
+            texture = GlowTexture.Value;
+            Color glow = Color.Lerp(Color.White, Color.Red, colorLerpAmt);
 
-			if (CalamityConfig.Instance.Afterimages)
-			{
-				for (int num163 = 1; num163 < num153; num163++)
-				{
-					Color color41 = color37;
-					color41 = Color.Lerp(color41, color36, amount9);
-					color41 *= (float)(num153 - num163) / 15f;
-					Vector2 vector44 = NPC.oldPos[num163] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector44 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-					vector44 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector44, NPC.frame, color41, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (CalamityConfig.Instance.Afterimages)
+            {
+                for (int a = 1; a < afterImageAmt; a++)
+                {
+                    Color glowColor = glow;
+                    glowColor = Color.Lerp(glowColor, white, colorLerpAmt);
+                    glowColor *= (afterImageAmt - a) / 15f;
+                    Vector2 afterimagePos = NPC.oldPos[a] + new Vector2(NPC.width, NPC.height) / 2f - screenPos;
+                    afterimagePos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+                    afterimagePos += origin * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+                    spriteBatch.Draw(texture, afterimagePos, NPC.frame, glowColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            spriteBatch.Draw(texture, drawPos, NPC.frame, white, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
-			return false;
+            return false;
 		}
 	}
 }

@@ -14,3 +14,8 @@ CalamitasNPCLegacy: {
 		Princess_LovesNPC: 我喜欢 {NPCName}。
 	}
 }
+
+CalamitasLegacy.DisplayName: Calamitas Legacy
+CalamitasPhase2Legacy.DisplayName: Calamitas Phase2 Legacy
+LifeSeekerLegacy.DisplayName: Life Seeker Legacy
+SoulSeekerLegacy.DisplayName: Soul Seeker Legacy

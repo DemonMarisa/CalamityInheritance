@@ -11,7 +11,7 @@
         /// <returns>返回一个浮点数，记录刻度</returns>
         public static float SecConvertTicks(int Sec)
         {
-            return (float)(sec * 60);
+            return (Sec * 60);
         }
     }
 }

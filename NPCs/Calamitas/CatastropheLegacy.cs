@@ -1,8 +1,9 @@
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
-using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,27 +11,29 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace CalamityMod.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas
+
 {
-	[AutoloadBossHead]
-    public class CalamitasRun : ModNPC
+    //[AutoloadBossHead]
+    public class CatastropheLegacy// : ModNPC
     {
+        /*DemonMarisa: 兄弟要修复的东西一样，先全杀了
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Cataclysm");
+            // DisplayName.SetDefault("Catastrophe");
             Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
 		}
 
         public override void SetDefaults()
         {
-            NPC.damage = 60;
+            NPC.damage = 65;
             NPC.npcSlots = 5f;
             NPC.width = 120;
             NPC.height = 120;
             NPC.defense = 10;
 			NPC.DR_NERD(0.15f);
-            NPC.LifeMaxNERB(9000, 13200, 800000);
+			NPC.LifeMaxNERB(7500, 11025, 800000);
             if (CalamityConditions.downedProvidence && !CalamityConditions.bossRushActive)
             {
                 NPC.damage *= 3;
@@ -42,6 +45,8 @@ namespace CalamityMod.NPCs.Calamitas
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
+            NPC.noGravity = true;
+            NPC.noTileCollide = true;
             for (int k = 0; k < NPC.buffImmune.Length; k++)
             {
                 NPC.buffImmune[k] = true;
@@ -56,8 +61,8 @@ namespace CalamityMod.NPCs.Calamitas
 			NPC.buffImmune[BuffID.DryadsWardDebuff] = false;
 			NPC.buffImmune[BuffID.Oiled] = false;
 			NPC.buffImmune[BuffID.BoneJavelin] = false;
-            NPC.buffImmune[ModContent.BuffType<AbyssalFlames>()] = false;
 			NPC.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = false;
+            NPC.buffImmune[ModContent.BuffType<AbyssalFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<ArmorCrunch>()] = false;
             NPC.buffImmune[ModContent.BuffType<DemonFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = false;
@@ -68,15 +73,8 @@ namespace CalamityMod.NPCs.Calamitas
             NPC.buffImmune[ModContent.BuffType<WhisperingDeath>()] = false;
             NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
             NPC.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = false;
-            NPC.noGravity = true;
-            NPC.noTileCollide = true;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath14;
-            Mod calamityModMusic = ModLoader.GetMod("CalamityModMusic");
-            if (calamityModMusic != null)
-                Music = calamityModMusic.GetSoundSlot(SoundType.Music, "Sounds/Music/Calamitas");
-            else
-                Music = MusicID.Boss2;
         }
 
 		public override void FindFrame(int frameHeight)
@@ -89,7 +87,7 @@ namespace CalamityMod.NPCs.Calamitas
 
         public override void AI()
         {
-			CalamityAI.CataclysmAI(NPC, Mod);
+			CalamityAI.CatastropheAI(NPC, Mod);
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -124,7 +122,7 @@ namespace CalamityMod.NPCs.Calamitas
 			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
 			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(lightColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.GetTexture("CalamityMod/NPCs/Calamitas/CalamitasRunGlow");
+			texture2D15 = ModContent.GetTexture("CalamityMod/NPCs/Calamitas/CalamitasRun2Glow");
 			Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
 			if (CalamityConfig.Instance.Afterimages)
@@ -147,15 +145,14 @@ namespace CalamityMod.NPCs.Calamitas
 		}
 
 		public override bool CheckActive()
-        {
-            return NPC.Calamity().newAI[0] == 1f;
-        }
+		{
+			return NPC.Calamity().newAI[0] == 1f;
+		}
 
-        public override void OnKill()
+		public override void OnKill()
         {
-            DropHelper.DropItemChance(NPC, ModContent.ItemType<CataclysmTrophy>(), 10);
-            DropHelper.DropItemChance(NPC, ModContent.ItemType<BrimstoneFlamesprayer>(), Main.expertMode ? 10 : 12);
-            DropHelper.DropItemChance(NPC, ModContent.ItemType<BrimstoneFlameblaster>(), Main.expertMode ? 10 : 12);
+            DropHelper.DropItemChance(NPC, ModContent.ItemType<CatastropheTrophy>(), 10);
+            DropHelper.DropItemChance(NPC, ModContent.ItemType<CrushsawCrasher>(), Main.expertMode ? 10 : 12);
         }
 
         public override void HitEffect(NPC.HitInfo hit)
@@ -166,11 +163,11 @@ namespace CalamityMod.NPCs.Calamitas
             }
             if (NPC.life <= 0)
             {
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Cataclysm"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Cataclysm2"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Cataclysm3"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Cataclysm4"), 1f);
-                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Cataclysm5"), 1f);
+                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Catastrophe"), 1f);
+                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Catastrophe2"), 1f);
+                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Catastrophe3"), 1f);
+                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Catastrophe4"), 1f);
+                Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Catastrophe5"), 1f);
                 NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
                 NPC.position.Y = NPC.position.Y + (float)(NPC.height / 2);
                 NPC.width = 100;
@@ -207,5 +204,6 @@ namespace CalamityMod.NPCs.Calamitas
             }
             player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
         }
+        */
     }
 }

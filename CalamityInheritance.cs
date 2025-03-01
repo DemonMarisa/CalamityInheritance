@@ -22,9 +22,15 @@ namespace CalamityInheritance
 
         internal Mod infernumMode = null;
 
+        // 灾厄音乐包获取
+        internal Mod musicMod = null;
+        internal bool MusicAvailable => musicMod is not null;
         public override void Load()
         {
             Instance = this;
+            // 获取灾厄音乐
+            musicMod = null;
+            ModLoader.TryGetMod("CalamityModMusic", out musicMod);
 
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
@@ -60,6 +66,9 @@ namespace CalamityInheritance
         #region Unload
         public override void Unload()
         {
+            //卸载灾厄音乐
+            musicMod = null;
+
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
@@ -74,5 +83,8 @@ namespace CalamityInheritance
             base.Unload();
         }
         #endregion
+
+        // 从灾厄音乐包获取BGM，但是现在灾厄是强引用音乐包，所以最好以后改成直接引用
+        public int? GetMusicFromMusicMod(string songFilename) => MusicAvailable ? MusicLoader.GetMusicSlot(musicMod, "Sounds/Music/" + songFilename) : null;
     }
 }
