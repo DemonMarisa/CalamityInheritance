@@ -6,8 +6,11 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs
 {
-    public class CalamityInheritanceGlobalAI : GlobalNPC
+    public class CIGlobalAI : GlobalNPC
     {
+        public static int CalamitasCloneWhoAmI = -1;
+        public static int CatalysmCloneWhoAmI = -1;
+        public static int CatastropheCloneWhoAmI = -1;
         #region Queen Bee Lore AI Changes
         public static void QueenBeeLoreEffect(NPC npc)
         {

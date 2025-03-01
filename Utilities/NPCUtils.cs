@@ -5,9 +5,9 @@ namespace CalamityInheritance.Utilities
 {
     public static partial class CIFunction
     {
-        public static CalamityInheritanceGlobalNPC CalamityInheritance(this NPC npc)
+        public static CIGlobalNPC CalamityInheritance(this NPC npc)
         {
-            return npc.GetGlobalNPC<CalamityInheritanceGlobalNPC>();
+            return npc.GetGlobalNPC<CIGlobalNPC>();
         }
     }
 }

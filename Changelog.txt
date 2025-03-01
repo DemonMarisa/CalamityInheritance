@@ -95,9 +95,5 @@ Echo锤子现在取挂在锤子的1.1 -> 1.4倍, 且挂载的锤子每次进行�
 修改了除挂载外潜伏攻击的命中音效
 ##
 
-Balance:
-Buffed homing speed of Terra Shiv from 16 to 18;
-Nerfed Nanoblack Reaper Legacy Melee damage from 450 to 425
-Rebalance Triatis Hammer Legacy Rogue, damage nerfed from 1850 to 1650, non-stealth strikes' local immnuity frames from 6 to 7
-but buffed use time from 10 to 8, stealth strike now grants 135% damage multiple, and stealth strikes hammer hits now have a chance to restore your 25% of your max stealth
-Rebalance Galaxy Smasher Legacy Rogue, 
+3/1:
+移除海绵路线的疾跑加速度加成效果, 因为这个效果影响到实际游玩了

@@ -5,7 +5,7 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.NPCs
 {
-    public partial class CalamityInheritanceGlobalNPC : GlobalNPC
+    public partial class CIGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity
         {
@@ -19,6 +19,11 @@ namespace CalamityInheritance.NPCs
         //梯凳之怒
         public bool rageOfChair = false;
         public static int rageOfChairDoTDamage = 30000;
+        internal object newAI;
+        internal const int MaxAIMode = 4;
+        public float[] BossNewAI = new float[MaxAIMode];
+            public int BossAITimer = 0;
+
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (silvaStun)
@@ -53,7 +58,7 @@ namespace CalamityInheritance.NPCs
             {
                 if (Main.player[npc.target].CalamityInheritance().queenBeeLore)
                 {
-                    CalamityInheritanceGlobalAI.QueenBeeLoreEffect(npc);
+                    CIGlobalAI.QueenBeeLoreEffect(npc);
                     return false;
                 }
             }

@@ -53,7 +53,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs
 {
-    public partial class CalamityInheritanceGlobalNPC : GlobalNPC
+    public partial class CIGlobalNPC : GlobalNPC
     {
         public static bool ShouldNotDropThings(NPC npc) => npc.Calamity().newAI[0] == 0f || ((CalamityWorld.death || BossRushEvent.BossRushActive) && npc.Calamity().newAI[0] != 3f);
         public static bool LastAnLStanding()

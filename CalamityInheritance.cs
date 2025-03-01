@@ -45,7 +45,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlameRework>());
             }
 
-            CalamityInheritanceTexture.LoadTexture();
+            CIResprite.LoadTexture();
 
             #region Hook
             CalamityInheritanceDashHook.Load(this);
@@ -68,7 +68,7 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
-            CalamityInheritanceTexture.UnloadTexture();
+            CIResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
             base.Unload();
