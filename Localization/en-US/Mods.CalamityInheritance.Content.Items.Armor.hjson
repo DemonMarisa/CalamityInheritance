@@ -587,3 +587,19 @@ YharimAuricTeslaHelm: {
 		'No, I won't let you down'
 		'''
 }
+
+AncientAstralBreastplate: {
+	DisplayName: Ancient Astral Breastplate
+	Tooltip: ""
+}
+
+AncientAstralHelm: {
+	DisplayName: Ancient Astral Helm
+	Tooltip: Increased.
+	SetBonus: damageincreasedby
+}
+
+AncientAstralLeggings: {
+	DisplayName: Ancient Astral Leggings
+	Tooltip: ""
+}

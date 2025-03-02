@@ -127,3 +127,8 @@ Backfire: {
 	DisplayName: Backfire
 	Description: Your blood is overheated, melting your heart
 }
+
+AncientAstralBuff: {
+	DisplayName: Ancient Astral Buff
+	Description: Mods.CalamityInheritance.Buffs.AncientAstralBuff.Description
+}

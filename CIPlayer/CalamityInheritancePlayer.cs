@@ -19,6 +19,7 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Items.Armor.AncientAstral;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -243,6 +244,13 @@ namespace CalamityInheritance.CIPlayer
         
         //xeroc套装 
         #endregion
+        #region 远古星辉套(Revamped)
+        public bool AncientAstralSet = false;
+        public int AncientAstralHealCD = 0;
+        public int AncientAstralCritsCounts = 0;
+        public bool AncientAstralStatBuff = false;
+        public int AncientConstantHeal = 0;
+        #endregion
         #endregion
         #region Summon
         public bool MagicHatOld = false;
@@ -401,6 +409,12 @@ namespace CalamityInheritance.CIPlayer
             ancientXerocMadness = false;
             AncientXerocShame   = false;
             #endregion
+
+            AncientAstralSet = false;
+            AncientAstralHealCD = 0;
+            AncientAstralCritsCounts = 0;
+            AncientAstralStatBuff = false;
+            AncientConstantHeal = 0;
             test = false;
             #endregion
             CIDashID = string.Empty;
@@ -497,6 +511,11 @@ namespace CalamityInheritance.CIPlayer
             ancientXerocSet     = false;
             ancientXerocWrath   = false;
             #endregion
+            AncientAstralSet = false;
+            AncientAstralHealCD = 0; //回血CD, 准备用
+            AncientAstralCritsCounts = 0;   //潜伏重击
+            AncientAstralStatBuff = false; //buff
+            AncientConstantHeal = 0; 
             #endregion
 
             animusBoost = 1f;

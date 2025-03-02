@@ -13,8 +13,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<LeviathanAmbergris>()] = ModContent.ItemType<LeviathanAmbergrisLegacy>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<LeviathanAmbergrisLegacy>()] = ModContent.ItemType<LeviathanAmbergris>();
+            
         }
         public override void SetDefaults()
         {

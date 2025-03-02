@@ -25,8 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            ItemID.Sets.ShimmerTransformToItem[ItemType<HeartoftheElements>()] = ItemType<WaifuHeart>();
-            ItemID.Sets.ShimmerTransformToItem[ItemType<WaifuHeart>()] = ItemType<HeartoftheElements>();
+            
         }
 
         public override void SetDefaults()

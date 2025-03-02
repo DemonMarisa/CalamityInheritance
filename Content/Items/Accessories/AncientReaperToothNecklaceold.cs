@@ -17,8 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             //微光嬗变config开启时允许这个原灾的鲨牙项链与这一项链相互转化
             if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
             {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ReaperToothNecklace>()] = ModContent.ItemType<AncientReaperToothNecklace>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientReaperToothNecklace>()] = ModContent.ItemType<ReaperToothNecklace>();
+               
             }
         }
         public override void SetDefaults()

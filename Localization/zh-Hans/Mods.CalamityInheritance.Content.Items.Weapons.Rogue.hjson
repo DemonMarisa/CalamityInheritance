@@ -1,5 +1,5 @@
 ExoTheApostle: {
-	DisplayName: 星焰弧光[Revapmed]
+	DisplayName: 星焰弧光[Revamped]
 	Tooltip:
 		'''
 		扔出横贯苍穹的长枪
@@ -12,7 +12,7 @@ ExoTheApostle: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:星流巨械传颂之物改变：]
+		[c/00B2EE:星流巨械传颂之物已启用：]
 		[c/00B2EE:攻击会无限穿透]
 		[c/00B2EE:长枪命中敌人会爆出跟踪的能量匕首，同时召唤另一枚长枪追加打击]
 		[c/00B2EE:潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪]
@@ -76,7 +76,7 @@ Supernovaold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:星流巨械传颂之物改变：]
+		[c/00B2EE:星流巨械传颂之物已启用：]
 		[c/00B2EE:潜伏攻击会产生更大的爆炸]
 		'''
 }
@@ -105,7 +105,7 @@ Celestusold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:星流巨械传颂之物改变：]
+		[c/00B2EE:星流巨械传颂之物已启用：]
 		[c/00B2EE:攻击时会从上方生成一个复制镰刀]
 		[c/00B2EE:潜伏攻击会沿途生成跟踪的金源镰刀]
 		'''

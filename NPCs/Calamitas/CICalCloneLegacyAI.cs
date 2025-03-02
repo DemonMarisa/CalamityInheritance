@@ -32,7 +32,7 @@ namespace CalamityInheritance.NPCs.Calamitas
     *DemonMarisa: 不知道改没改，但是提一句DownBossSystem
     */
     
-    public class CICalCloneLegacyAI
+    public static class CICalCloneLegacyAI
     {
         public static readonly int CalCloneDefense = 25;
         //一阶段普灾发射火球的转角速度
@@ -77,18 +77,21 @@ namespace CalamityInheritance.NPCs.Calamitas
         public static void CalCloneAI(NPC npc, Mod mod, int calCloneDefense, bool ifPhase2)
         {
             CIGlobalNPC getNPC = npc.CalamityInheritance();     
-
+			Main.NewText("1\n");
+			Main.worldEventUpdates = 1;
             Vector2 getCalPos = new((int)((npc.position.X + (npc.width/2))/16f), (int)((npc.position.Y + (npc.height/2))/16f));
             float CalClonePosX = npc.position.X;
             float CalClonePosY = npc.position.Y;
             //发光
             Lighting.AddLight(getCalPos, TorchID.Red);
             //查看剩余血量
+			Main.NewText("2\n");
             float getLifePercent = npc.life / (float)npc.lifeMax;
             //提示boss进入二阶段, 并多人同步
             if(getLifePercent <= 0.75f && Main.netMode != NetmodeID.MultiplayerClient && !ifPhase2)
             {
                 NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2Legacy>(), npc.whoAmI);
+				Main.NewText("2\n");
                 //这里需要一个发送进入二阶段的文本，旧灾的哪个
                 // if(Main.netMode == NetmodeID.SinglePlayer); //如果是单人游戏，直接发送
                 // else if(Main.netMode == NetmodeID.Server); //如果不是，采用netMessage.BroadcastChatMessage进行多人同步
@@ -104,6 +107,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             bool ifProviDowned = CalamityConditions.DownedProvidence.IsMet();
             //查看兄弟是否还在
             bool ifBrotherAlive = false;
+			Main.NewText("3\n");
             //二阶段的AI们
             if(ifPhase2)
             {
@@ -114,6 +118,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 {
                     if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
+						Main.NewText("4\n");
                         SoundEngine.PlaySound(SoundID.Item74, new Vector2(npc.position.X, npc.position.Y)); //播报生成音
                         for(int i = 0; i<5; i++) //生成5个
                         {
@@ -123,6 +128,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                         }
                     }
                     string key = "这里需要三阶段的文本";
+					Main.NewText("5\n");
                     Color getTextColor = Color.Orange;
                     //多人同步
                     if(Main.netMode == NetmodeID.SinglePlayer)
@@ -131,10 +137,12 @@ namespace CalamityInheritance.NPCs.Calamitas
                         ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), getTextColor);
                     //生成完毕后将数组内ai置1
                     getNPC.BossNewAI[1] = 1f;
+					Main.NewText("6\n");
                 }
                 //生成兄弟
                 if(getNPC.BossNewAI[0] == 0f && npc.life>0)
                     getNPC.BossNewAI[0] = npc.lifeMax; //将calClone的最大生命值存放进去
+					Main.NewText("7\n");
                 if(npc.life >0)
                 {
                     if(Main.netMode != NetmodeID.MultiplayerClient)
@@ -212,6 +220,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             if(npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
                 npc.TargetClosest(true);
 
+			Main.NewText("6");
+
             Player player = Main.player[npc.target];
 
             //贴图旋转, 还是number大佬
@@ -220,6 +230,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             float tarRotateReal = (float)Math.Atan2(tarRotateX, tarRotateY) + MathHelper.PiOver2;
             if(tarRotateReal < 0f) tarRotateReal += MathHelper.TwoPi;
             else if(tarRotateReal > MathHelper.TwoPi) tarRotateReal -= MathHelper.TwoPi;
+
+			Main.NewText("7");
 
             float getRotateSpeed = 0.1f; //WHAT?
             if(npc.rotation < tarRotateReal) //npc的转角<需要的转角时
@@ -248,6 +260,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 npc.rotation = tarRotateReal;
             #endregion
             #region 普灾退场(非击杀)
+			Main.NewText("8");
             if(!player.active || player.dead || (ifDayTime && !Main.eclipse))
             {
                 npc.TargetClosest(false); //取消普灾索敌
@@ -277,6 +290,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             #region 普灾攻击AI:漂浮在玩家头上,发射激光与火球
             
 
+			Main.NewText("9");
             //这下面原代码一点注释都没，还全是num战神   
             //我家姑奶奶来了都不会他妈把相同的代码复制四份再配上if else
             if(npc.ai[1] < 2f)
@@ -300,6 +314,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                         break;
                 }
 
+			Main.NewText("10");
                 //玩家如果手持真近战武器，降低普灾的加速度
                 Item ifHeldingTrueMelee = player.inventory[player.selectedItem];
                 if(ifHeldingTrueMelee.CountsAsClass<TrueMeleeDamageClass>()) calCloneAccle *= 0.5f;
@@ -340,6 +355,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(npc.velocity.Y > 0f && getDistToPlrY < 0f)
                         npc.velocity.Y -= calCloneAccle;
                 }
+			Main.NewText("11");
 				#endregion
                 //这里，ai[2]应该是作为一个计时器使用, 用来表示普灾在水平方向上发射弹幕的CD
                 npc.ai[2] += 1f;
@@ -390,6 +406,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                         int fireBall = Projectile.NewProjectile(npc.GetSource_FromThis(), calCloneStart, projVel, getProjType, projDMG + (ifProviDowned?200:0), 0f, npc.whoAmI);
                         if(!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                         Main.projectile[fireBall].tileCollide = false;
+			Main.NewText("12");
                     }
                 }
                 #endregion
@@ -403,1182 +420,1184 @@ namespace CalamityInheritance.NPCs.Calamitas
             #endregion
             #endregion
         }
-        #region Calamitas Clone
-		public static void CalamitasCloneAI(NPC npc, Mod mod, bool phase2)
-		{
-			CIGlobalNPC ciGlobalNPC = npc.CalamityInheritance();
-
-            CalamityGlobalNPC calGlobalNPC = npc.Calamity();
-
-            // 发光
-            Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
-
-			// 剩余生命百分比
-			float lifeRatio = npc.life / (float)npc.lifeMax;
-
-			// 召唤二阶段普灾
-			if (lifeRatio <= 0.75f && Main.netMode != NetmodeID.MultiplayerClient && !phase2)
-			{
-				NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2Legacy>(), npc.whoAmI);
-				string key = "Mods.CalamityMod.CalamitasBossText";
-				Color messageColor = Color.Orange;
-				if (Main.netMode == NetmodeID.SinglePlayer)
-				{
-					Main.NewText(Language.GetTextValue(key), messageColor);
-				}
-				else if (Main.netMode == NetmodeID.Server)
-				{
-					ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-				}
-				npc.active = false;
-				npc.netUpdate = true;
-				return;
-			}
-
-			// 难度变量
-			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
-			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
-			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
-			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
-			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
-
-			// Variable for live brothers
-			bool brotherAlive = false;
-
-			if (phase2)
-			{
-                // For seekers
-                CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI;
-
-				// Seeker ring
-				if (calGlobalNPC.newAI[1] == 0f && lifeRatio <= 0.35f && expertMode)
-				{
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
-                        for (int I = 0; I < 5; I++)
-						{
-							int FireEye = NPC.NewNPC(npc.GetSource_FromAI(), (int)(npc.Center.X + (Math.Sin(I * 72) * 150)), (int)(npc.Center.Y + (Math.Cos(I * 72) * 150)), ModContent.NPCType<SoulSeeker>(), npc.whoAmI, 0, 0, 0, -1);
-							NPC Eye = Main.npc[FireEye];
-							Eye.ai[0] = I * 72;
-						}
-					}
-
-					string key = "Mods.CalamityMod.CalamitasBossText3";
-					Color messageColor = Color.Orange;
-					if (Main.netMode == NetmodeID.SinglePlayer)
-						Main.NewText(Language.GetTextValue(key), messageColor);
-					else if (Main.netMode == NetmodeID.Server)
-						ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-
-                    calGlobalNPC.newAI[1] = 1f;
-				}
-
-				// Spawn brothers
-				if (calGlobalNPC.newAI[0] == 0f && npc.life > 0)
-                    calGlobalNPC.newAI[0] = npc.lifeMax;
-
-				if (npc.life > 0)
-				{
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						int num660 = (int)(npc.lifeMax * 0.3); //70%, 40%, and 10%
-						if ((npc.life + num660) < calGlobalNPC.newAI[0])
-						{
-                            calGlobalNPC.newAI[0] = npc.life;
-							if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.1)
-							{
-								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
-								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
-
-								string key = "Mods.CalamityMod.CalamitasBossText2";
-								Color messageColor = Color.Orange;
-								if (Main.netMode == NetmodeID.SinglePlayer)
-									Main.NewText(Language.GetTextValue(key), messageColor);
-								else if (Main.netMode == NetmodeID.Server)
-									ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-							}
-							else if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.4)
-								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
-							else
-								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
-						}
-					}
-				}
-
-				// Huge defense boost if brothers are alive
-				int num568 = 0;
-				if (expertMode)
-				{
-					if (CalamityGlobalNPC.cataclysm != -1)
-					{
-						if (Main.npc[CalamityGlobalNPC.cataclysm].active)
-						{
-							brotherAlive = true;
-							num568 += 255;
-						}
-					}
-					if (CalamityGlobalNPC.catastrophe != -1)
-					{
-						if (Main.npc[CalamityGlobalNPC.catastrophe].active)
-						{
-							brotherAlive = true;
-							num568 += 255;
-						}
-					}
-					npc.defense += num568 * 50;
-					if (!brotherAlive)
-						npc.defense = provy ? 150 : 25;
-				}
-
-				// Disable homing if brothers are alive
-				npc.chaseable = !brotherAlive;
-			}
-
-			// Get a target
-			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-				npc.TargetClosest(true);
-
-			// Target variable
-			Player player = Main.player[npc.target];
-
-			// Rotation
-			float num801 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
-			float num802 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
-			float num803 = (float)Math.Atan2(num802, num801) + MathHelper.PiOver2;
-            //控制普灾朝向是否对头的
-            //不是哥们，为什么你朝向错了要原地旋转360度啊?
-			if (num803 < 0f)
-				num803 += MathHelper.TwoPi;
-			else if (num803 > MathHelper.TwoPi)
-				num803 -= MathHelper.TwoPi;
-
-			float num804 = 0.1f;
-			if (npc.rotation < num803)
-			{
-				if ((num803 - npc.rotation) > MathHelper.Pi)
-					npc.rotation -= num804;
-				else
-					npc.rotation += num804;
-			}
-			else if (npc.rotation > num803)
-			{
-				if ((npc.rotation - num803) > MathHelper.Pi)
-					npc.rotation += num804;
-				else
-					npc.rotation -= num804;
-			}
-
-			if (npc.rotation > num803 - num804 && npc.rotation < num803 + num804)
-				npc.rotation = num803;
-			if (npc.rotation < 0f)
-				npc.rotation += MathHelper.TwoPi;
-			else if (npc.rotation > MathHelper.TwoPi)
-				npc.rotation -= MathHelper.TwoPi;
-			if (npc.rotation > num803 - num804 && npc.rotation < num803 + num804)
-				npc.rotation = num803;
-
-			// Despawn
-			if (!player.active || player.dead || (dayTime && !Main.eclipse))
-			{
-				npc.TargetClosest(false);
-				player = Main.player[npc.target];
-				if (!player.active || player.dead || (dayTime && !Main.eclipse))
-				{
-					if (npc.velocity.Y > 3f)
-						npc.velocity.Y = 3f;
-					npc.velocity.Y -= 0.1f;
-					if (npc.velocity.Y < -12f)
-						npc.velocity.Y = -12f;
-
-					if (npc.timeLeft > 60)
-						npc.timeLeft = 60;
-
-					if (npc.ai[1] != 0f)
-					{
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.netUpdate = true;
-					}
-					return;
-				}
-			}
-			else if (npc.timeLeft < 1800)
-				npc.timeLeft = 1800;
-
-			// Float above target and fire lasers or fireballs
-			if (npc.ai[1] == 0f)
-			{
-				float num823 = expertMode ? 9.5f : 8f;
-				float num824 = expertMode ? 0.175f : 0.15f;
-				if (phase2)
-				{
-					num823 = expertMode ? 10f : 8.5f;
-					num824 = expertMode ? 0.18f : 0.155f;
-				}
-				if (death)
-				{
-					num823 += 1f;
-					num824 += 0.02f;
-				}
-
-				// Reduce acceleration if target is holding a true melee weapon
-				Item targetSelectedItem = player.inventory[player.selectedItem];
-				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
-				{
-					num824 *= 0.5f;
-				}
-
-				if (provy)
-				{
-					num823 *= 1.25f;
-					num824 *= 1.25f;
-				}
-				if (BossRushEvent.BossRushActive)
-				{
-					num823 *= 1.5f;
-					num824 *= 1.5f;
-				}
-
-				Vector2 vector82 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num825 = player.position.X + (player.width / 2) - vector82.X;
-				float num826 = player.position.Y + (player.height / 2) - ((BossRushEvent.BossRushActive ? 400f : 300f) + (phase2 ? 60f : 0f)) - vector82.Y;
-				float num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
-				num827 = num823 / num827;
-				num825 *= num827;
-				num826 *= num827;
-
-				if (npc.velocity.X < num825)
-				{
-					npc.velocity.X += num824;
-					if (npc.velocity.X < 0f && num825 > 0f)
-						npc.velocity.X += num824;
-				}
-				else if (npc.velocity.X > num825)
-				{
-					npc.velocity.X -= num824;
-					if (npc.velocity.X > 0f && num825 < 0f)
-						npc.velocity.X -= num824;
-				}
-				if (npc.velocity.Y < num826)
-				{
-					npc.velocity.Y += num824;
-					if (npc.velocity.Y < 0f && num826 > 0f)
-						npc.velocity.Y += num824;
-				}
-				else if (npc.velocity.Y > num826)
-				{
-					npc.velocity.Y -= num824;
-					if (npc.velocity.Y > 0f && num826 < 0f)
-						npc.velocity.Y -= num824;
-				}
-
-				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (phase2 ? 200f : 300f))
-				{
-					npc.ai[1] = 1f;
-					npc.ai[2] = 0f;
-					npc.TargetClosest(true);
-					npc.netUpdate = true;
-				}
-
-				num825 = player.position.X + (player.width / 2) - vector82.X;
-				num826 = player.position.Y + (player.height / 2) - vector82.Y;
-
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					npc.localAI[1] += 1f;
-					if (phase2)
-					{
-						if (!brotherAlive)
-						{
-							if (expertMode)
-								npc.localAI[1] += death ? 1f : 1f * (1f - lifeRatio);
-							if (revenge)
-								npc.localAI[1] += 0.5f;
-						}
-
-						if (npc.localAI[1] > 180f)
-						{
-							npc.localAI[1] = 0f;
-							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 14f : 12.5f);
-							//DemonMarisa: 这啥啊，ban了
-							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-							//	num828 += 5f;
-                            //暂时ban一下
-                            //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42;
-                            int num829 = 42;
-                            int num830 = ModContent.ProjectileType<BrimstoneHellfireball>();
-							num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
-							num827 = num828 / num827;
-							num825 *= num827;
-							num826 *= num827;
-							vector82.X += num825 * 6f;
-							vector82.Y += num826 * 6f;
-							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-							{
-								int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-								Main.projectile[proj].tileCollide = false;
-							}
-							else
-								Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-					else
-					{
-						if (revenge)
-							npc.localAI[1] += 0.5f;
-
-						if (npc.localAI[1] > 180f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-						{
-							npc.localAI[1] = 0f;
-							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 13f : 10.5f);
-                            //DemonMarisa: 同上，暂时ban了
-                            //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35;
-                            int num829 = 35;
-                            //暂时发射其它弹幕SCalBrimstoneFireblast
-                            //int num830 = ModContent.ProjectileType<BrimstoneLaser>();
-                            int num830 = ModContent.ProjectileType<SCalBrimstoneFireblast>();
-
-                            num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
-							num827 = num828 / num827;
-							num825 *= num827;
-							num826 *= num827;
-							vector82.X += num825 * 12f;
-							vector82.Y += num826 * 12f;
-							Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-				}
-			}
-
-			// Float to the side of the target and fire lasers
-			else if (npc.ai[1] == 1f)
-			{
-				int num831 = 1;
-				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
-					num831 = -1;
-
-				float num832 = expertMode ? 9.5f : 8f;
-				float num833 = expertMode ? 0.25f : 0.2f;
-				if (phase2)
-				{
-					num832 = expertMode ? 10f : 8.5f;
-					num833 = expertMode ? 0.255f : 0.205f;
-				}
-				if (death)
-				{
-					num832 += 1f;
-					num833 += 0.02f;
-				}
-
-				// Reduce acceleration if target is holding a true melee weapon
-				Item targetSelectedItem = player.inventory[player.selectedItem];
-				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
-                {
-					num833 *= 0.5f;
-				}
-
-				if (provy)
-				{
-					num832 *= 1.25f;
-					num833 *= 1.25f;
-				}
-				if (BossRushEvent.BossRushActive)
-				{
-					num832 *= 1.5f;
-					num833 *= 1.5f;
-				}
-
-				Vector2 vector83 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num834 = player.position.X + (player.width / 2) + (num831 * (BossRushEvent.BossRushActive ? 460 : 360)) - vector83.X;
-				float num835 = player.position.Y + (player.height / 2) - vector83.Y;
-				float num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
-				num836 = num832 / num836;
-				num834 *= num836;
-				num835 *= num836;
-
-				if (npc.velocity.X < num834)
-				{
-					npc.velocity.X += num833;
-					if (npc.velocity.X < 0f && num834 > 0f)
-						npc.velocity.X += num833;
-				}
-				else if (npc.velocity.X > num834)
-				{
-					npc.velocity.X -= num833;
-					if (npc.velocity.X > 0f && num834 < 0f)
-						npc.velocity.X -= num833;
-				}
-				if (npc.velocity.Y < num835)
-				{
-					npc.velocity.Y += num833;
-					if (npc.velocity.Y < 0f && num835 > 0f)
-						npc.velocity.Y += num833;
-				}
-				else if (npc.velocity.Y > num835)
-				{
-					npc.velocity.Y -= num833;
-					if (npc.velocity.Y > 0f && num835 < 0f)
-						npc.velocity.Y -= num833;
-				}
-
-				num834 = player.position.X + (player.width / 2) - vector83.X;
-				num835 = player.position.Y + (player.height / 2) - vector83.Y;
-
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					npc.localAI[1] += 1f;
-					if (phase2)
-					{
-						if (!brotherAlive)
-						{
-							if (revenge)
-								npc.localAI[1] += 0.5f;
-							//DemonMarisa: 同样ban了，先修完再考虑差分
-							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-							//	npc.localAI[1] += 0.5f;
-							if (expertMode)
-								npc.localAI[1] += 0.5f;
-						}
-
-						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-						{
-							npc.localAI[1] = 0f;
-							float num837 = BossRushEvent.BossRushActive ? 15f : 11f;
-							//DemonMarisa:同上
-							//int num838 = brotherAlive ? (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) : (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35);
-							//int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneLaser>();
-
-                            int num838 = 35;
-                            int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneHellfireball>();
-
-                            num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
-							num836 = num837 / num836;
-							num834 *= num836;
-							num835 *= num836;
-							vector83.X += num834 * 12f;
-							vector83.Y += num835 * 12f;
-							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-							{
-								//int proj = Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-                                int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), 42 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-                                Main.projectile[proj].tileCollide = false;
-							}
-							else
-								Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-					else
-					{
-						if (revenge)
-							npc.localAI[1] += 0.5f;
-
-						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-						{
-							npc.localAI[1] = 0f;
-							float num837 = BossRushEvent.BossRushActive ? 14f : 10.5f;
-							//DemonMarisa:怎么这么多差分啊
-							//int num838 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(20, 1.5) : 24;
-							//int num839 = ModContent.ProjectileType<BrimstoneLaser>();
-                            int num838 =  24;
-                            int num839 = ModContent.ProjectileType<BrimstoneHellfireball>();
-                            num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
-							num836 = num837 / num836;
-							num834 *= num836;
-							num835 *= num836;
-							vector83.X += num834 * 12f;
-							vector83.Y += num835 * 12f;
-							Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-				}
-
-				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (phase2 ? 120f : 180f))
-				{
-					npc.ai[1] = phase2 && !brotherAlive && lifeRatio < 0.7f && revenge ? 4f : 0f;
-					npc.ai[2] = 0f;
-					npc.TargetClosest(true);
-					npc.netUpdate = true;
-				}
-			}
-			else if (npc.ai[1] == 2f)
-			{
-				npc.rotation = num803;
-
-				float chargeVelocity = (CalamityWorld.death || BossRushEvent.BossRushActive) ? 27f : 25f;
-
-				if (provy)
-					chargeVelocity *= 1.25f;
-
-				if (BossRushEvent.BossRushActive)
-					chargeVelocity *= 1.5f;
-
-				Vector2 vector = Vector2.Normalize(player.Center + player.velocity * 10f - npc.Center);
-				npc.velocity = vector * chargeVelocity;
-
-				npc.ai[1] = 3f;
-			}
-			else if (npc.ai[1] == 3f)
-			{
-				npc.ai[2] += 1f;
-
-				float chargeTime = 70f;
-				if (BossRushEvent.BossRushActive)
-					chargeTime *= 0.8f;
-
-				if (npc.ai[2] >= chargeTime)
-				{
-					npc.velocity *= 0.93f;
-					if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
-						npc.velocity.X = 0f;
-					if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
-						npc.velocity.Y = 0f;
-				}
-				else
-					npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
-
-				if (npc.ai[2] >= chargeTime + 15f)
-				{
-					npc.ai[3] += 1f;
-					npc.ai[2] = 0f;
-					npc.target = 255;
-					npc.rotation = num803;
-					if (npc.ai[3] > 1f)
-					{
-						npc.ai[1] = 0f;
-						npc.ai[3] = 0f;
-						return;
-					}
-					npc.ai[1] = 4f;
-				}
-			}
-			else
-			{
-				int num62 = 500;
-				//DemonMarisa:BR差分还在追我，我草
-				//float num63 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 20f : 14f;
-				//float num64 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 0.5f : 0.35f;
-                float num63 = 14f;
-                float num64 = 0.35f;
-
-                if (provy)
-				{
-					num63 *= 1.25f;
-					num64 *= 1.25f;
-				}
-
-				if (BossRushEvent.BossRushActive)
-				{
-					num63 *= 1.5f;
-					num64 *= 1.5f;
-				}
-
-				int num408 = 1;
-				if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-					num408 = -1;
-
-				Vector2 vector11 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num65 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num62 * num408) - vector11.X;
-				float num66 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector11.Y;
-				float num67 = (float)Math.Sqrt(num65 * num65 + num66 * num66);
-
-				num67 = num63 / num67;
-				num65 *= num67;
-				num66 *= num67;
-
-				if (npc.velocity.X < num65)
-				{
-					npc.velocity.X += num64;
-					if (npc.velocity.X < 0f && num65 > 0f)
-						npc.velocity.X += num64;
-				}
-				else if (npc.velocity.X > num65)
-				{
-					npc.velocity.X -= num64;
-					if (npc.velocity.X > 0f && num65 < 0f)
-						npc.velocity.X -= num64;
-				}
-				if (npc.velocity.Y < num66)
-				{
-					npc.velocity.Y += num64;
-					if (npc.velocity.Y < 0f && num66 > 0f)
-						npc.velocity.Y += num64;
-				}
-				else if (npc.velocity.Y > num66)
-				{
-					npc.velocity.Y -= num64;
-					if (npc.velocity.Y > 0f && num66 < 0f)
-						npc.velocity.Y -= num64;
-				}
-
-				npc.ai[2] += 1f;
-				if (npc.ai[2] >= 45f)
-				{
-					npc.TargetClosest(true);
-					npc.ai[1] = 2f;
-					npc.ai[2] = 0f;
-					npc.netUpdate = true;
-				}
-			}
-		}
-
-		public static void CataclysmAI(NPC npc, Mod mod)
-		{
-			CalamityGlobalNPC calamityGlobalNPC = npc.Calamity();
-
-			// Emit light
-			Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
-
-			CalamityGlobalNPC.cataclysm = npc.whoAmI;
-
-			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
-			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
-			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
-			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
-			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
-
-			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-				npc.TargetClosest(true);
-
-			Player player = Main.player[npc.target];
-
-			float num840 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
-			float num841 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
-			float num842 = (float)Math.Atan2(num841, num840) + MathHelper.PiOver2;
-			if (num842 < 0f)
-				num842 += MathHelper.TwoPi;
-			else if (num842 > MathHelper.TwoPi)
-				num842 -= MathHelper.TwoPi;
-
-			float num843 = 0.15f;
-			if (npc.rotation < num842)
-			{
-				if ((num842 - npc.rotation) > MathHelper.Pi)
-					npc.rotation -= num843;
-				else
-					npc.rotation += num843;
-			}
-			else if (npc.rotation > num842)
-			{
-				if ((npc.rotation - num842) > MathHelper.Pi)
-					npc.rotation += num843;
-				else
-					npc.rotation -= num843;
-			}
-
-			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
-				npc.rotation = num842;
-			if (npc.rotation < 0f)
-				npc.rotation += MathHelper.TwoPi;
-			else if (npc.rotation > MathHelper.TwoPi)
-				npc.rotation -= MathHelper.TwoPi;
-			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
-				npc.rotation = num842;
-
-			if (!player.active || player.dead || (dayTime && !Main.eclipse))
-			{
-				npc.TargetClosest(false);
-				player = Main.player[npc.target];
-				if (!player.active || player.dead || (dayTime && !Main.eclipse))
-				{
-					if (npc.velocity.Y > 3f)
-						npc.velocity.Y = 3f;
-					npc.velocity.Y -= 0.1f;
-					if (npc.velocity.Y < -12f)
-						npc.velocity.Y = -12f;
-
-					calamityGlobalNPC.newAI[0] = 1f;
-
-					if (npc.timeLeft > 60)
-						npc.timeLeft = 60;
-
-					if (npc.ai[1] != 0f)
-					{
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.ai[3] = 0f;
-						npc.netUpdate = true;
-					}
-					return;
-				}
-			}
-			else
-				calamityGlobalNPC.newAI[0] = 0f;
-
-			if (npc.ai[1] == 0f)
-			{
-				float num861 = 5f;
-				float num862 = 0.1f;
-				if (provy)
-				{
-					num861 *= 1.25f;
-					num862 *= 1.25f;
-				}
-				if (BossRushEvent.BossRushActive)
-				{
-					num861 *= 1.5f;
-					num862 *= 1.5f;
-				}
-
-				int num863 = 1;
-				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
-					num863 = -1;
-
-				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
-				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
-				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
-
-				if (expertMode || provy)
-				{
-					if (num866 > 300f)
-						num861 += 0.5f;
-					if (num866 > 400f)
-						num861 += 0.5f;
-					if (num866 > 500f)
-						num861 += 0.55f;
-					if (num866 > 600f)
-						num861 += 0.55f;
-					if (num866 > 700f)
-						num861 += 0.6f;
-					if (num866 > 800f)
-						num861 += 0.6f;
-				}
-
-				num866 = num861 / num866;
-				num864 *= num866;
-				num865 *= num866;
-
-				if (npc.velocity.X < num864)
-				{
-					npc.velocity.X += num862;
-					if (npc.velocity.X < 0f && num864 > 0f)
-						npc.velocity.X += num862;
-				}
-				else if (npc.velocity.X > num864)
-				{
-					npc.velocity.X -= num862;
-					if (npc.velocity.X > 0f && num864 < 0f)
-						npc.velocity.X -= num862;
-				}
-				if (npc.velocity.Y < num865)
-				{
-					npc.velocity.Y += num862;
-					if (npc.velocity.Y < 0f && num865 > 0f)
-						npc.velocity.Y += num862;
-				}
-				else if (npc.velocity.Y > num865)
-				{
-					npc.velocity.Y -= num862;
-					if (npc.velocity.Y > 0f && num865 < 0f)
-						npc.velocity.Y -= num862;
-				}
-				// DemonMarisa : 还有还有
-				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= 240f)
-				{
-					npc.TargetClosest(true);
-					npc.ai[1] = 1f;
-					npc.ai[2] = 0f;
-					npc.target = 255;
-					npc.netUpdate = true;
-				}
-
-				bool fireDelay = npc.ai[2] > 120f || npc.life < npc.lifeMax * 0.9;
-				if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height) && fireDelay)
-				{
-					npc.localAI[2] += 1f;
-					if (npc.localAI[2] > 22f)
-					{
-						npc.localAI[2] = 0f;
-                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
-                    }
-
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						npc.localAI[1] += 1f;
-						if (revenge)
-							npc.localAI[1] += 0.5f;
-
-						if (npc.localAI[1] > 12f)
-						{
-							npc.localAI[1] = 0f;
-							float num867 = BossRushEvent.BossRushActive ? 9f : 6f;
-							//DemonMarisa:
-							//int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(30, 1.5) : 38;
-                            int num868 = 38;
-                            int num869 = ModContent.ProjectileType<BrimstoneFire>();
-							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-							num864 = player.position.X + (player.width / 2) - vector86.X;
-							num865 = player.position.Y + (player.height / 2) - vector86.Y;
-							num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
-							num866 = num867 / num866;
-							num864 *= num866;
-							num865 *= num866;
-							num865 += npc.velocity.Y * 0.5f;
-							num864 += npc.velocity.X * 0.5f;
-							vector86.X -= num864 * 1f;
-							vector86.Y -= num865 * 1f;
-							Projectile.NewProjectile(npc.GetSource_FromAI(), vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-				}
-			}
-			else
-			{
-				if (npc.ai[1] == 1f)
-				{
-                    SoundEngine.PlaySound(SoundID.Item109, npc.Center);
-                    npc.rotation = num842;
-
-					float num870 = 14f;
-					if (expertMode)
-						num870 += 2f;
-					if (revenge)
-						num870 += 2f;
-					if (death)
-						num870 += 2f;
-					//DemonMarisa:BR
-					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-					//	num870 += 4f;
-
-					if (provy)
-						num870 *= 1.15f;
-					if (BossRushEvent.BossRushActive)
-						num870 *= 1.25f;
-
-					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-					float num871 = player.position.X + (player.width / 2) - vector87.X;
-					float num872 = player.position.Y + (player.height / 2) - vector87.Y;
-					float num873 = (float)Math.Sqrt(num871 * num871 + num872 * num872);
-					num873 = num870 / num873;
-					npc.velocity.X = num871 * num873;
-					npc.velocity.Y = num872 * num873;
-					npc.ai[1] = 2f;
-					return;
-				}
-
-				if (npc.ai[1] == 2f)
-				{
-					npc.ai[2] += 1f;
-					if (expertMode)
-						npc.ai[2] += 0.25f;
-					if (revenge)
-						npc.ai[2] += 0.25f;
-					if (BossRushEvent.BossRushActive)
-						npc.ai[2] += 0.25f;
-
-					if (npc.ai[2] >= 75f)
-					{
-						npc.velocity.X *= 0.93f;
-						npc.velocity.Y *= 0.93f;
-
-						if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
-							npc.velocity.X = 0f;
-						if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
-							npc.velocity.Y = 0f;
-					}
-					else
-						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
-
-					if (npc.ai[2] >= 105f)
-					{
-						npc.ai[3] += 1f;
-						npc.ai[2] = 0f;
-						npc.target = 255;
-						npc.rotation = num842;
-						if (npc.ai[3] >= 3f)
-						{
-							npc.ai[1] = 0f;
-							npc.ai[3] = 0f;
-							return;
-						}
-						npc.ai[1] = 1f;
-					}
-				}
-			}
-		}
-
-		public static void CatastropheAI(NPC npc, Mod mod)
-		{
-			CalamityGlobalNPC calamityGlobalNPC = npc.Calamity();
-
-			// Emit light
-			Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
-
-			CalamityGlobalNPC.catastrophe = npc.whoAmI;
-
-			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
-			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
-			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
-			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
-			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
-
-			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-				npc.TargetClosest(true);
-
-			Player player = Main.player[npc.target];
-
-			float num840 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
-			float num841 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
-			float num842 = (float)Math.Atan2(num841, num840) + MathHelper.PiOver2;
-			if (num842 < 0f)
-				num842 += MathHelper.TwoPi;
-			else if (num842 > MathHelper.TwoPi)
-				num842 -= MathHelper.TwoPi;
-
-			float num843 = 0.15f;
-			if (npc.rotation < num842)
-			{
-				if ((num842 - npc.rotation) > MathHelper.Pi)
-					npc.rotation -= num843;
-				else
-					npc.rotation += num843;
-			}
-			else if (npc.rotation > num842)
-			{
-				if ((npc.rotation - num842) > MathHelper.Pi)
-					npc.rotation += num843;
-				else
-					npc.rotation -= num843;
-			}
-
-			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
-				npc.rotation = num842;
-			if (npc.rotation < 0f)
-				npc.rotation += MathHelper.TwoPi;
-			else if (npc.rotation > MathHelper.TwoPi)
-				npc.rotation -= MathHelper.TwoPi;
-			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
-				npc.rotation = num842;
-
-			if (!player.active || player.dead || (dayTime && !Main.eclipse))
-			{
-				npc.TargetClosest(false);
-				player = Main.player[npc.target];
-				if (!player.active || player.dead || (dayTime && !Main.eclipse))
-				{
-					if (npc.velocity.Y > 3f)
-						npc.velocity.Y = 3f;
-					npc.velocity.Y -= 0.1f;
-					if (npc.velocity.Y < -12f)
-						npc.velocity.Y = -12f;
-
-					calamityGlobalNPC.newAI[0] = 1f;
-
-					if (npc.timeLeft > 60)
-						npc.timeLeft = 60;
-
-					if (npc.ai[1] != 0f)
-					{
-						npc.ai[1] = 0f;
-						npc.ai[2] = 0f;
-						npc.ai[3] = 0f;
-						npc.netUpdate = true;
-					}
-					return;
-				}
-			}
-			else
-				calamityGlobalNPC.newAI[0] = 0f;
-
-			if (npc.ai[1] == 0f)
-			{
-				float num861 = 4.5f;
-				float num862 = 0.2f;
-				if (provy)
-				{
-					num861 *= 1.25f;
-					num862 *= 1.25f;
-				}
-				if (BossRushEvent.BossRushActive)
-				{
-					num861 *= 1.5f;
-					num862 *= 1.5f;
-				}
-
-				int num863 = 1;
-				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
-					num863 = -1;
-
-				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
-				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
-				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
-
-				if (expertMode || provy)
-				{
-					if (num866 > 300f)
-						num861 += 0.5f;
-					if (num866 > 400f)
-						num861 += 0.5f;
-					if (num866 > 500f)
-						num861 += 0.55f;
-					if (num866 > 600f)
-						num861 += 0.55f;
-					if (num866 > 700f)
-						num861 += 0.6f;
-					if (num866 > 800f)
-						num861 += 0.6f;
-				}
-
-				num866 = num861 / num866;
-				num864 *= num866;
-				num865 *= num866;
-
-				if (npc.velocity.X < num864)
-				{
-					npc.velocity.X += num862;
-					if (npc.velocity.X < 0f && num864 > 0f)
-						npc.velocity.X += num862;
-				}
-				else if (npc.velocity.X > num864)
-				{
-					npc.velocity.X -= num862;
-					if (npc.velocity.X > 0f && num864 < 0f)
-						npc.velocity.X -= num862;
-				}
-				if (npc.velocity.Y < num865)
-				{
-					npc.velocity.Y += num862;
-					if (npc.velocity.Y < 0f && num865 > 0f)
-						npc.velocity.Y += num862;
-				}
-				else if (npc.velocity.Y > num865)
-				{
-					npc.velocity.Y -= num862;
-					if (npc.velocity.Y > 0f && num865 < 0f)
-						npc.velocity.Y -= num862;
-				}
-				//DemonMarisa:沟槽的br
-				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
-                npc.ai[2] += 1f;
-
-                if (npc.ai[2] >= 180f)
-				{
-					npc.TargetClosest(true);
-					npc.ai[1] = 1f;
-					npc.ai[2] = 0f;
-					npc.target = 255;
-					npc.netUpdate = true;
-				}
-
-				bool fireDelay = npc.ai[2] > 120f || npc.life < npc.lifeMax * 0.9;
-				if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height) && fireDelay)
-				{
-					npc.localAI[2] += 1f;
-					if (npc.localAI[2] > 36f)
-					{
-						npc.localAI[2] = 0f;
-                        SoundEngine.PlaySound(SoundID.Item72, npc.Center);
-                    }
-
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						npc.localAI[1] += 1f;
-						if (revenge)
-							npc.localAI[1] += 0.5f;
-
-						if (npc.localAI[1] > 50f)
-						{
-							npc.localAI[1] = 0f;
-							float num867 = BossRushEvent.BossRushActive ? 18f : 12f;
-                            //DemonMarisa:差分
-                            //int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(29, 1.5) : 36;
-                            int num868 = 36;
-                            int num869 = ModContent.ProjectileType<BrimstoneBall>();
-							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-							num864 = player.position.X + (player.width / 2) - vector86.X;
-							num865 = player.position.Y + (player.height / 2) - vector86.Y;
-							num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
-							num866 = num867 / num866;
-							num864 *= num866;
-							num865 *= num866;
-							num865 += npc.velocity.Y * 0.5f;
-							num864 += npc.velocity.X * 0.5f;
-							vector86.X -= num864 * 1f;
-							vector86.Y -= num865 * 1f;
-							Projectile.NewProjectile(npc.GetSource_FromAI() ,vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
-						}
-					}
-				}
-			}
-			else
-			{
-				if (npc.ai[1] == 1f)
-				{
-                    SoundEngine.PlaySound(SoundID.Item109, npc.Center);
-                    npc.rotation = num842;
-
-					float num870 = 16f;
-					if (expertMode)
-						num870 += 2f;
-					if (revenge)
-						num870 += 2f;
-					if (death)
-						num870 += 2f;
-					//DemonMarisa:差分
-					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
-					//	num870 += 4f;
-					if (provy)
-						num870 *= 1.15f;
-					if (BossRushEvent.BossRushActive)
-						num870 *= 1.25f;
-
-					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-					float num871 = player.position.X + (player.width / 2) - vector87.X;
-					float num872 = player.position.Y + (player.height / 2) - vector87.Y;
-					float num873 = (float)Math.Sqrt(num871 * num871 + num872 * num872);
-					num873 = num870 / num873;
-					npc.velocity.X = num871 * num873;
-					npc.velocity.Y = num872 * num873;
-					npc.ai[1] = 2f;
-					return;
-				}
-
-				if (npc.ai[1] == 2f)
-				{
-					npc.ai[2] += 1f;
-					if (expertMode)
-						npc.ai[2] += 0.25f;
-					if (revenge)
-						npc.ai[2] += 0.25f;
-					if (BossRushEvent.BossRushActive)
-						npc.ai[2] += 0.25f;
-
-					if (npc.ai[2] >= 60f) //50
-					{
-						npc.velocity.X *= 0.93f;
-						npc.velocity.Y *= 0.93f;
-
-						if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
-							npc.velocity.X = 0f;
-						if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
-							npc.velocity.Y = 0f;
-					}
-					else
-						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
-
-					if (npc.ai[2] >= 90f) //80
-					{
-						npc.ai[3] += 1f;
-						npc.ai[2] = 0f;
-						npc.target = 255;
-						npc.rotation = num842;
-						if (npc.ai[3] >= 4f)
-						{
-							npc.ai[1] = 0f;
-							npc.ai[3] = 0f;
-							return;
-						}
-						npc.ai[1] = 1f;
-					}
-				}
-			}
-		}
-		#endregion
-    }
+	}
 }
+//         #region Calamitas Clone
+// 		public static void CalamitasCloneAI(NPC npc, Mod mod, bool phase2)
+// 		{
+// 			CIGlobalNPC ciGlobalNPC = npc.CalamityInheritance();
+
+//             CalamityGlobalNPC calGlobalNPC = npc.Calamity();
+
+//             // 发光
+//             Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
+
+// 			// 剩余生命百分比
+// 			float lifeRatio = npc.life / (float)npc.lifeMax;
+
+// 			// 召唤二阶段普灾
+// 			if (lifeRatio <= 0.75f && Main.netMode != NetmodeID.MultiplayerClient && !phase2)
+// 			{
+// 				NPC.NewNPC(npc.GetSource_FromThis(),(int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<CalamitasPhase2Legacy>(), npc.whoAmI);
+// 				string key = "Mods.CalamityMod.CalamitasBossText";
+// 				Color messageColor = Color.Orange;
+// 				if (Main.netMode == NetmodeID.SinglePlayer)
+// 				{
+// 					Main.NewText(Language.GetTextValue(key), messageColor);
+// 				}
+// 				else if (Main.netMode == NetmodeID.Server)
+// 				{
+// 					ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
+// 				}
+// 				npc.active = false;
+// 				npc.netUpdate = true;
+// 				return;
+// 			}
+
+// 			// 难度变量
+// 			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+// 			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+// 			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+// 			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+// 			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
+
+// 			// Variable for live brothers
+// 			bool brotherAlive = false;
+
+// 			if (phase2)
+// 			{
+//                 // For seekers
+//                 CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI;
+
+// 				// Seeker ring
+// 				if (calGlobalNPC.newAI[1] == 0f && lifeRatio <= 0.35f && expertMode)
+// 				{
+// 					if (Main.netMode != NetmodeID.MultiplayerClient)
+// 					{
+//                         SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+//                         for (int I = 0; I < 5; I++)
+// 						{
+// 							int FireEye = NPC.NewNPC(npc.GetSource_FromAI(), (int)(npc.Center.X + (Math.Sin(I * 72) * 150)), (int)(npc.Center.Y + (Math.Cos(I * 72) * 150)), ModContent.NPCType<SoulSeeker>(), npc.whoAmI, 0, 0, 0, -1);
+// 							NPC Eye = Main.npc[FireEye];
+// 							Eye.ai[0] = I * 72;
+// 						}
+// 					}
+
+// 					string key = "Mods.CalamityMod.CalamitasBossText3";
+// 					Color messageColor = Color.Orange;
+// 					if (Main.netMode == NetmodeID.SinglePlayer)
+// 						Main.NewText(Language.GetTextValue(key), messageColor);
+// 					else if (Main.netMode == NetmodeID.Server)
+// 						ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
+
+//                     calGlobalNPC.newAI[1] = 1f;
+// 				}
+
+// 				// Spawn brothers
+// 				if (calGlobalNPC.newAI[0] == 0f && npc.life > 0)
+//                     calGlobalNPC.newAI[0] = npc.lifeMax;
+
+// 				if (npc.life > 0)
+// 				{
+// 					if (Main.netMode != NetmodeID.MultiplayerClient)
+// 					{
+// 						int num660 = (int)(npc.lifeMax * 0.3); //70%, 40%, and 10%
+// 						if ((npc.life + num660) < calGlobalNPC.newAI[0])
+// 						{
+//                             calGlobalNPC.newAI[0] = npc.life;
+// 							if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.1)
+// 							{
+// 								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
+// 								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
+
+// 								string key = "Mods.CalamityMod.CalamitasBossText2";
+// 								Color messageColor = Color.Orange;
+// 								if (Main.netMode == NetmodeID.SinglePlayer)
+// 									Main.NewText(Language.GetTextValue(key), messageColor);
+// 								else if (Main.netMode == NetmodeID.Server)
+// 									ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
+// 							}
+// 							else if (calGlobalNPC.newAI[0] <= (float)npc.lifeMax * 0.4)
+// 								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Catastrophe>(), npc.whoAmI);
+// 							else
+// 								NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<Cataclysm>(), npc.whoAmI);
+// 						}
+// 					}
+// 				}
+
+// 				// Huge defense boost if brothers are alive
+// 				int num568 = 0;
+// 				if (expertMode)
+// 				{
+// 					if (CalamityGlobalNPC.cataclysm != -1)
+// 					{
+// 						if (Main.npc[CalamityGlobalNPC.cataclysm].active)
+// 						{
+// 							brotherAlive = true;
+// 							num568 += 255;
+// 						}
+// 					}
+// 					if (CalamityGlobalNPC.catastrophe != -1)
+// 					{
+// 						if (Main.npc[CalamityGlobalNPC.catastrophe].active)
+// 						{
+// 							brotherAlive = true;
+// 							num568 += 255;
+// 						}
+// 					}
+// 					npc.defense += num568 * 50;
+// 					if (!brotherAlive)
+// 						npc.defense = provy ? 150 : 25;
+// 				}
+
+// 				// Disable homing if brothers are alive
+// 				npc.chaseable = !brotherAlive;
+// 			}
+
+// 			// Get a target
+// 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+// 				npc.TargetClosest(true);
+
+// 			// Target variable
+// 			Player player = Main.player[npc.target];
+
+// 			// Rotation
+// 			float num801 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
+// 			float num802 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
+// 			float num803 = (float)Math.Atan2(num802, num801) + MathHelper.PiOver2;
+//             //控制普灾朝向是否对头的
+//             //不是哥们，为什么你朝向错了要原地旋转360度啊?
+// 			if (num803 < 0f)
+// 				num803 += MathHelper.TwoPi;
+// 			else if (num803 > MathHelper.TwoPi)
+// 				num803 -= MathHelper.TwoPi;
+
+// 			float num804 = 0.1f;
+// 			if (npc.rotation < num803)
+// 			{
+// 				if ((num803 - npc.rotation) > MathHelper.Pi)
+// 					npc.rotation -= num804;
+// 				else
+// 					npc.rotation += num804;
+// 			}
+// 			else if (npc.rotation > num803)
+// 			{
+// 				if ((npc.rotation - num803) > MathHelper.Pi)
+// 					npc.rotation += num804;
+// 				else
+// 					npc.rotation -= num804;
+// 			}
+
+// 			if (npc.rotation > num803 - num804 && npc.rotation < num803 + num804)
+// 				npc.rotation = num803;
+// 			if (npc.rotation < 0f)
+// 				npc.rotation += MathHelper.TwoPi;
+// 			else if (npc.rotation > MathHelper.TwoPi)
+// 				npc.rotation -= MathHelper.TwoPi;
+// 			if (npc.rotation > num803 - num804 && npc.rotation < num803 + num804)
+// 				npc.rotation = num803;
+
+// 			// Despawn
+// 			if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 			{
+// 				npc.TargetClosest(false);
+// 				player = Main.player[npc.target];
+// 				if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 				{
+// 					if (npc.velocity.Y > 3f)
+// 						npc.velocity.Y = 3f;
+// 					npc.velocity.Y -= 0.1f;
+// 					if (npc.velocity.Y < -12f)
+// 						npc.velocity.Y = -12f;
+
+// 					if (npc.timeLeft > 60)
+// 						npc.timeLeft = 60;
+
+// 					if (npc.ai[1] != 0f)
+// 					{
+// 						npc.ai[1] = 0f;
+// 						npc.ai[2] = 0f;
+// 						npc.netUpdate = true;
+// 					}
+// 					return;
+// 				}
+// 			}
+// 			else if (npc.timeLeft < 1800)
+// 				npc.timeLeft = 1800;
+
+// 			// Float above target and fire lasers or fireballs
+// 			if (npc.ai[1] == 0f)
+// 			{
+// 				float num823 = expertMode ? 9.5f : 8f;
+// 				float num824 = expertMode ? 0.175f : 0.15f;
+// 				if (phase2)
+// 				{
+// 					num823 = expertMode ? 10f : 8.5f;
+// 					num824 = expertMode ? 0.18f : 0.155f;
+// 				}
+// 				if (death)
+// 				{
+// 					num823 += 1f;
+// 					num824 += 0.02f;
+// 				}
+
+// 				// Reduce acceleration if target is holding a true melee weapon
+// 				Item targetSelectedItem = player.inventory[player.selectedItem];
+// 				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
+// 				{
+// 					num824 *= 0.5f;
+// 				}
+
+// 				if (provy)
+// 				{
+// 					num823 *= 1.25f;
+// 					num824 *= 1.25f;
+// 				}
+// 				if (BossRushEvent.BossRushActive)
+// 				{
+// 					num823 *= 1.5f;
+// 					num824 *= 1.5f;
+// 				}
+
+// 				Vector2 vector82 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 				float num825 = player.position.X + (player.width / 2) - vector82.X;
+// 				float num826 = player.position.Y + (player.height / 2) - ((BossRushEvent.BossRushActive ? 400f : 300f) + (phase2 ? 60f : 0f)) - vector82.Y;
+// 				float num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
+// 				num827 = num823 / num827;
+// 				num825 *= num827;
+// 				num826 *= num827;
+
+// 				if (npc.velocity.X < num825)
+// 				{
+// 					npc.velocity.X += num824;
+// 					if (npc.velocity.X < 0f && num825 > 0f)
+// 						npc.velocity.X += num824;
+// 				}
+// 				else if (npc.velocity.X > num825)
+// 				{
+// 					npc.velocity.X -= num824;
+// 					if (npc.velocity.X > 0f && num825 < 0f)
+// 						npc.velocity.X -= num824;
+// 				}
+// 				if (npc.velocity.Y < num826)
+// 				{
+// 					npc.velocity.Y += num824;
+// 					if (npc.velocity.Y < 0f && num826 > 0f)
+// 						npc.velocity.Y += num824;
+// 				}
+// 				else if (npc.velocity.Y > num826)
+// 				{
+// 					npc.velocity.Y -= num824;
+// 					if (npc.velocity.Y > 0f && num826 < 0f)
+// 						npc.velocity.Y -= num824;
+// 				}
+
+// 				npc.ai[2] += 1f;
+// 				if (npc.ai[2] >= (phase2 ? 200f : 300f))
+// 				{
+// 					npc.ai[1] = 1f;
+// 					npc.ai[2] = 0f;
+// 					npc.TargetClosest(true);
+// 					npc.netUpdate = true;
+// 				}
+
+// 				num825 = player.position.X + (player.width / 2) - vector82.X;
+// 				num826 = player.position.Y + (player.height / 2) - vector82.Y;
+
+// 				if (Main.netMode != NetmodeID.MultiplayerClient)
+// 				{
+// 					npc.localAI[1] += 1f;
+// 					if (phase2)
+// 					{
+// 						if (!brotherAlive)
+// 						{
+// 							if (expertMode)
+// 								npc.localAI[1] += death ? 1f : 1f * (1f - lifeRatio);
+// 							if (revenge)
+// 								npc.localAI[1] += 0.5f;
+// 						}
+
+// 						if (npc.localAI[1] > 180f)
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 14f : 12.5f);
+// 							//DemonMarisa: 这啥啊，ban了
+// 							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+// 							//	num828 += 5f;
+//                             //暂时ban一下
+//                             //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42;
+//                             int num829 = 42;
+//                             int num830 = ModContent.ProjectileType<BrimstoneHellfireball>();
+// 							num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
+// 							num827 = num828 / num827;
+// 							num825 *= num827;
+// 							num826 *= num827;
+// 							vector82.X += num825 * 6f;
+// 							vector82.Y += num826 * 6f;
+// 							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+// 							{
+// 								int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+// 								Main.projectile[proj].tileCollide = false;
+// 							}
+// 							else
+// 								Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 					else
+// 					{
+// 						if (revenge)
+// 							npc.localAI[1] += 0.5f;
+
+// 						if (npc.localAI[1] > 180f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num828 = BossRushEvent.BossRushActive ? 16f : (expertMode ? 13f : 10.5f);
+//                             //DemonMarisa: 同上，暂时ban了
+//                             //int num829 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35;
+//                             int num829 = 35;
+//                             //暂时发射其它弹幕SCalBrimstoneFireblast
+//                             //int num830 = ModContent.ProjectileType<BrimstoneLaser>();
+//                             int num830 = ModContent.ProjectileType<SCalBrimstoneFireblast>();
+
+//                             num827 = (float)Math.Sqrt(num825 * num825 + num826 * num826);
+// 							num827 = num828 / num827;
+// 							num825 *= num827;
+// 							num826 *= num827;
+// 							vector82.X += num825 * 12f;
+// 							vector82.Y += num826 * 12f;
+// 							Projectile.NewProjectile(npc.GetSource_FromAI(), vector82.X, vector82.Y, num825, num826, num830, num829 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 				}
+// 			}
+
+// 			// Float to the side of the target and fire lasers
+// 			else if (npc.ai[1] == 1f)
+// 			{
+// 				int num831 = 1;
+// 				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
+// 					num831 = -1;
+
+// 				float num832 = expertMode ? 9.5f : 8f;
+// 				float num833 = expertMode ? 0.25f : 0.2f;
+// 				if (phase2)
+// 				{
+// 					num832 = expertMode ? 10f : 8.5f;
+// 					num833 = expertMode ? 0.255f : 0.205f;
+// 				}
+// 				if (death)
+// 				{
+// 					num832 += 1f;
+// 					num833 += 0.02f;
+// 				}
+
+// 				// Reduce acceleration if target is holding a true melee weapon
+// 				Item targetSelectedItem = player.inventory[player.selectedItem];
+// 				if (targetSelectedItem.CountsAsClass(DamageClass.Melee) && (targetSelectedItem.shoot == 0 || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>())))
+//                 {
+// 					num833 *= 0.5f;
+// 				}
+
+// 				if (provy)
+// 				{
+// 					num832 *= 1.25f;
+// 					num833 *= 1.25f;
+// 				}
+// 				if (BossRushEvent.BossRushActive)
+// 				{
+// 					num832 *= 1.5f;
+// 					num833 *= 1.5f;
+// 				}
+
+// 				Vector2 vector83 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 				float num834 = player.position.X + (player.width / 2) + (num831 * (BossRushEvent.BossRushActive ? 460 : 360)) - vector83.X;
+// 				float num835 = player.position.Y + (player.height / 2) - vector83.Y;
+// 				float num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
+// 				num836 = num832 / num836;
+// 				num834 *= num836;
+// 				num835 *= num836;
+
+// 				if (npc.velocity.X < num834)
+// 				{
+// 					npc.velocity.X += num833;
+// 					if (npc.velocity.X < 0f && num834 > 0f)
+// 						npc.velocity.X += num833;
+// 				}
+// 				else if (npc.velocity.X > num834)
+// 				{
+// 					npc.velocity.X -= num833;
+// 					if (npc.velocity.X > 0f && num834 < 0f)
+// 						npc.velocity.X -= num833;
+// 				}
+// 				if (npc.velocity.Y < num835)
+// 				{
+// 					npc.velocity.Y += num833;
+// 					if (npc.velocity.Y < 0f && num835 > 0f)
+// 						npc.velocity.Y += num833;
+// 				}
+// 				else if (npc.velocity.Y > num835)
+// 				{
+// 					npc.velocity.Y -= num833;
+// 					if (npc.velocity.Y > 0f && num835 < 0f)
+// 						npc.velocity.Y -= num833;
+// 				}
+
+// 				num834 = player.position.X + (player.width / 2) - vector83.X;
+// 				num835 = player.position.Y + (player.height / 2) - vector83.Y;
+
+// 				if (Main.netMode != NetmodeID.MultiplayerClient)
+// 				{
+// 					npc.localAI[1] += 1f;
+// 					if (phase2)
+// 					{
+// 						if (!brotherAlive)
+// 						{
+// 							if (revenge)
+// 								npc.localAI[1] += 0.5f;
+// 							//DemonMarisa: 同样ban了，先修完再考虑差分
+// 							//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+// 							//	npc.localAI[1] += 0.5f;
+// 							if (expertMode)
+// 								npc.localAI[1] += 0.5f;
+// 						}
+
+// 						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num837 = BossRushEvent.BossRushActive ? 15f : 11f;
+// 							//DemonMarisa:同上
+// 							//int num838 = brotherAlive ? (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) : (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(28, 1.5) : 35);
+// 							//int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneLaser>();
+
+//                             int num838 = 35;
+//                             int num839 = brotherAlive ? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneHellfireball>();
+
+//                             num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
+// 							num836 = num837 / num836;
+// 							num834 *= num836;
+// 							num835 *= num836;
+// 							vector83.X += num834 * 12f;
+// 							vector83.Y += num835 * 12f;
+// 							if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+// 							{
+// 								//int proj = Projectile.NewProjectile(vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), (expertMode ? CalamityUtils.GetMasterModeProjectileDamage(34, 1.5) : 42) + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+//                                 int proj = Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, ModContent.ProjectileType<BrimstoneHellfireball>(), 42 + (provy ? 30 : 0), 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+//                                 Main.projectile[proj].tileCollide = false;
+// 							}
+// 							else
+// 								Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 					else
+// 					{
+// 						if (revenge)
+// 							npc.localAI[1] += 0.5f;
+
+// 						if (npc.localAI[1] >= 60f && Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num837 = BossRushEvent.BossRushActive ? 14f : 10.5f;
+// 							//DemonMarisa:怎么这么多差分啊
+// 							//int num838 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(20, 1.5) : 24;
+// 							//int num839 = ModContent.ProjectileType<BrimstoneLaser>();
+//                             int num838 =  24;
+//                             int num839 = ModContent.ProjectileType<BrimstoneHellfireball>();
+//                             num836 = (float)Math.Sqrt(num834 * num834 + num835 * num835);
+// 							num836 = num837 / num836;
+// 							num834 *= num836;
+// 							num835 *= num836;
+// 							vector83.X += num834 * 12f;
+// 							vector83.Y += num835 * 12f;
+// 							Projectile.NewProjectile(npc.GetSource_FromAI(), vector83.X, vector83.Y, num834, num835, num839, num838 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 				}
+
+// 				npc.ai[2] += 1f;
+// 				if (npc.ai[2] >= (phase2 ? 120f : 180f))
+// 				{
+// 					npc.ai[1] = phase2 && !brotherAlive && lifeRatio < 0.7f && revenge ? 4f : 0f;
+// 					npc.ai[2] = 0f;
+// 					npc.TargetClosest(true);
+// 					npc.netUpdate = true;
+// 				}
+// 			}
+// 			else if (npc.ai[1] == 2f)
+// 			{
+// 				npc.rotation = num803;
+
+// 				float chargeVelocity = (CalamityWorld.death || BossRushEvent.BossRushActive) ? 27f : 25f;
+
+// 				if (provy)
+// 					chargeVelocity *= 1.25f;
+
+// 				if (BossRushEvent.BossRushActive)
+// 					chargeVelocity *= 1.5f;
+
+// 				Vector2 vector = Vector2.Normalize(player.Center + player.velocity * 10f - npc.Center);
+// 				npc.velocity = vector * chargeVelocity;
+
+// 				npc.ai[1] = 3f;
+// 			}
+// 			else if (npc.ai[1] == 3f)
+// 			{
+// 				npc.ai[2] += 1f;
+
+// 				float chargeTime = 70f;
+// 				if (BossRushEvent.BossRushActive)
+// 					chargeTime *= 0.8f;
+
+// 				if (npc.ai[2] >= chargeTime)
+// 				{
+// 					npc.velocity *= 0.93f;
+// 					if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
+// 						npc.velocity.X = 0f;
+// 					if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
+// 						npc.velocity.Y = 0f;
+// 				}
+// 				else
+// 					npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
+
+// 				if (npc.ai[2] >= chargeTime + 15f)
+// 				{
+// 					npc.ai[3] += 1f;
+// 					npc.ai[2] = 0f;
+// 					npc.target = 255;
+// 					npc.rotation = num803;
+// 					if (npc.ai[3] > 1f)
+// 					{
+// 						npc.ai[1] = 0f;
+// 						npc.ai[3] = 0f;
+// 						return;
+// 					}
+// 					npc.ai[1] = 4f;
+// 				}
+// 			}
+// 			else
+// 			{
+// 				int num62 = 500;
+// 				//DemonMarisa:BR差分还在追我，我草
+// 				//float num63 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 20f : 14f;
+// 				//float num64 = (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 0.5f : 0.35f;
+//                 float num63 = 14f;
+//                 float num64 = 0.35f;
+
+//                 if (provy)
+// 				{
+// 					num63 *= 1.25f;
+// 					num64 *= 1.25f;
+// 				}
+
+// 				if (BossRushEvent.BossRushActive)
+// 				{
+// 					num63 *= 1.5f;
+// 					num64 *= 1.5f;
+// 				}
+
+// 				int num408 = 1;
+// 				if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
+// 					num408 = -1;
+
+// 				Vector2 vector11 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 				float num65 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num62 * num408) - vector11.X;
+// 				float num66 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector11.Y;
+// 				float num67 = (float)Math.Sqrt(num65 * num65 + num66 * num66);
+
+// 				num67 = num63 / num67;
+// 				num65 *= num67;
+// 				num66 *= num67;
+
+// 				if (npc.velocity.X < num65)
+// 				{
+// 					npc.velocity.X += num64;
+// 					if (npc.velocity.X < 0f && num65 > 0f)
+// 						npc.velocity.X += num64;
+// 				}
+// 				else if (npc.velocity.X > num65)
+// 				{
+// 					npc.velocity.X -= num64;
+// 					if (npc.velocity.X > 0f && num65 < 0f)
+// 						npc.velocity.X -= num64;
+// 				}
+// 				if (npc.velocity.Y < num66)
+// 				{
+// 					npc.velocity.Y += num64;
+// 					if (npc.velocity.Y < 0f && num66 > 0f)
+// 						npc.velocity.Y += num64;
+// 				}
+// 				else if (npc.velocity.Y > num66)
+// 				{
+// 					npc.velocity.Y -= num64;
+// 					if (npc.velocity.Y > 0f && num66 < 0f)
+// 						npc.velocity.Y -= num64;
+// 				}
+
+// 				npc.ai[2] += 1f;
+// 				if (npc.ai[2] >= 45f)
+// 				{
+// 					npc.TargetClosest(true);
+// 					npc.ai[1] = 2f;
+// 					npc.ai[2] = 0f;
+// 					npc.netUpdate = true;
+// 				}
+// 			}
+// 		}
+
+// 		public static void CataclysmAI(NPC npc, Mod mod)
+// 		{
+// 			CalamityGlobalNPC calamityGlobalNPC = npc.Calamity();
+
+// 			// Emit light
+// 			Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
+
+// 			CalamityGlobalNPC.cataclysm = npc.whoAmI;
+
+// 			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+// 			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+// 			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+// 			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+// 			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
+
+// 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+// 				npc.TargetClosest(true);
+
+// 			Player player = Main.player[npc.target];
+
+// 			float num840 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
+// 			float num841 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
+// 			float num842 = (float)Math.Atan2(num841, num840) + MathHelper.PiOver2;
+// 			if (num842 < 0f)
+// 				num842 += MathHelper.TwoPi;
+// 			else if (num842 > MathHelper.TwoPi)
+// 				num842 -= MathHelper.TwoPi;
+
+// 			float num843 = 0.15f;
+// 			if (npc.rotation < num842)
+// 			{
+// 				if ((num842 - npc.rotation) > MathHelper.Pi)
+// 					npc.rotation -= num843;
+// 				else
+// 					npc.rotation += num843;
+// 			}
+// 			else if (npc.rotation > num842)
+// 			{
+// 				if ((npc.rotation - num842) > MathHelper.Pi)
+// 					npc.rotation += num843;
+// 				else
+// 					npc.rotation -= num843;
+// 			}
+
+// 			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
+// 				npc.rotation = num842;
+// 			if (npc.rotation < 0f)
+// 				npc.rotation += MathHelper.TwoPi;
+// 			else if (npc.rotation > MathHelper.TwoPi)
+// 				npc.rotation -= MathHelper.TwoPi;
+// 			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
+// 				npc.rotation = num842;
+
+// 			if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 			{
+// 				npc.TargetClosest(false);
+// 				player = Main.player[npc.target];
+// 				if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 				{
+// 					if (npc.velocity.Y > 3f)
+// 						npc.velocity.Y = 3f;
+// 					npc.velocity.Y -= 0.1f;
+// 					if (npc.velocity.Y < -12f)
+// 						npc.velocity.Y = -12f;
+
+// 					calamityGlobalNPC.newAI[0] = 1f;
+
+// 					if (npc.timeLeft > 60)
+// 						npc.timeLeft = 60;
+
+// 					if (npc.ai[1] != 0f)
+// 					{
+// 						npc.ai[1] = 0f;
+// 						npc.ai[2] = 0f;
+// 						npc.ai[3] = 0f;
+// 						npc.netUpdate = true;
+// 					}
+// 					return;
+// 				}
+// 			}
+// 			else
+// 				calamityGlobalNPC.newAI[0] = 0f;
+
+// 			if (npc.ai[1] == 0f)
+// 			{
+// 				float num861 = 5f;
+// 				float num862 = 0.1f;
+// 				if (provy)
+// 				{
+// 					num861 *= 1.25f;
+// 					num862 *= 1.25f;
+// 				}
+// 				if (BossRushEvent.BossRushActive)
+// 				{
+// 					num861 *= 1.5f;
+// 					num862 *= 1.5f;
+// 				}
+
+// 				int num863 = 1;
+// 				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
+// 					num863 = -1;
+
+// 				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
+// 				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
+// 				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
+
+// 				if (expertMode || provy)
+// 				{
+// 					if (num866 > 300f)
+// 						num861 += 0.5f;
+// 					if (num866 > 400f)
+// 						num861 += 0.5f;
+// 					if (num866 > 500f)
+// 						num861 += 0.55f;
+// 					if (num866 > 600f)
+// 						num861 += 0.55f;
+// 					if (num866 > 700f)
+// 						num861 += 0.6f;
+// 					if (num866 > 800f)
+// 						num861 += 0.6f;
+// 				}
+
+// 				num866 = num861 / num866;
+// 				num864 *= num866;
+// 				num865 *= num866;
+
+// 				if (npc.velocity.X < num864)
+// 				{
+// 					npc.velocity.X += num862;
+// 					if (npc.velocity.X < 0f && num864 > 0f)
+// 						npc.velocity.X += num862;
+// 				}
+// 				else if (npc.velocity.X > num864)
+// 				{
+// 					npc.velocity.X -= num862;
+// 					if (npc.velocity.X > 0f && num864 < 0f)
+// 						npc.velocity.X -= num862;
+// 				}
+// 				if (npc.velocity.Y < num865)
+// 				{
+// 					npc.velocity.Y += num862;
+// 					if (npc.velocity.Y < 0f && num865 > 0f)
+// 						npc.velocity.Y += num862;
+// 				}
+// 				else if (npc.velocity.Y > num865)
+// 				{
+// 					npc.velocity.Y -= num862;
+// 					if (npc.velocity.Y > 0f && num865 < 0f)
+// 						npc.velocity.Y -= num862;
+// 				}
+// 				// DemonMarisa : 还有还有
+// 				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
+//                 npc.ai[2] += 1f;
+//                 if (npc.ai[2] >= 240f)
+// 				{
+// 					npc.TargetClosest(true);
+// 					npc.ai[1] = 1f;
+// 					npc.ai[2] = 0f;
+// 					npc.target = 255;
+// 					npc.netUpdate = true;
+// 				}
+
+// 				bool fireDelay = npc.ai[2] > 120f || npc.life < npc.lifeMax * 0.9;
+// 				if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height) && fireDelay)
+// 				{
+// 					npc.localAI[2] += 1f;
+// 					if (npc.localAI[2] > 22f)
+// 					{
+// 						npc.localAI[2] = 0f;
+//                         SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+//                     }
+
+// 					if (Main.netMode != NetmodeID.MultiplayerClient)
+// 					{
+// 						npc.localAI[1] += 1f;
+// 						if (revenge)
+// 							npc.localAI[1] += 0.5f;
+
+// 						if (npc.localAI[1] > 12f)
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num867 = BossRushEvent.BossRushActive ? 9f : 6f;
+// 							//DemonMarisa:
+// 							//int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(30, 1.5) : 38;
+//                             int num868 = 38;
+//                             int num869 = ModContent.ProjectileType<BrimstoneFire>();
+// 							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 							num864 = player.position.X + (player.width / 2) - vector86.X;
+// 							num865 = player.position.Y + (player.height / 2) - vector86.Y;
+// 							num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
+// 							num866 = num867 / num866;
+// 							num864 *= num866;
+// 							num865 *= num866;
+// 							num865 += npc.velocity.Y * 0.5f;
+// 							num864 += npc.velocity.X * 0.5f;
+// 							vector86.X -= num864 * 1f;
+// 							vector86.Y -= num865 * 1f;
+// 							Projectile.NewProjectile(npc.GetSource_FromAI(), vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 				}
+// 			}
+// 			else
+// 			{
+// 				if (npc.ai[1] == 1f)
+// 				{
+//                     SoundEngine.PlaySound(SoundID.Item109, npc.Center);
+//                     npc.rotation = num842;
+
+// 					float num870 = 14f;
+// 					if (expertMode)
+// 						num870 += 2f;
+// 					if (revenge)
+// 						num870 += 2f;
+// 					if (death)
+// 						num870 += 2f;
+// 					//DemonMarisa:BR
+// 					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+// 					//	num870 += 4f;
+
+// 					if (provy)
+// 						num870 *= 1.15f;
+// 					if (BossRushEvent.BossRushActive)
+// 						num870 *= 1.25f;
+
+// 					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 					float num871 = player.position.X + (player.width / 2) - vector87.X;
+// 					float num872 = player.position.Y + (player.height / 2) - vector87.Y;
+// 					float num873 = (float)Math.Sqrt(num871 * num871 + num872 * num872);
+// 					num873 = num870 / num873;
+// 					npc.velocity.X = num871 * num873;
+// 					npc.velocity.Y = num872 * num873;
+// 					npc.ai[1] = 2f;
+// 					return;
+// 				}
+
+// 				if (npc.ai[1] == 2f)
+// 				{
+// 					npc.ai[2] += 1f;
+// 					if (expertMode)
+// 						npc.ai[2] += 0.25f;
+// 					if (revenge)
+// 						npc.ai[2] += 0.25f;
+// 					if (BossRushEvent.BossRushActive)
+// 						npc.ai[2] += 0.25f;
+
+// 					if (npc.ai[2] >= 75f)
+// 					{
+// 						npc.velocity.X *= 0.93f;
+// 						npc.velocity.Y *= 0.93f;
+
+// 						if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
+// 							npc.velocity.X = 0f;
+// 						if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
+// 							npc.velocity.Y = 0f;
+// 					}
+// 					else
+// 						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
+
+// 					if (npc.ai[2] >= 105f)
+// 					{
+// 						npc.ai[3] += 1f;
+// 						npc.ai[2] = 0f;
+// 						npc.target = 255;
+// 						npc.rotation = num842;
+// 						if (npc.ai[3] >= 3f)
+// 						{
+// 							npc.ai[1] = 0f;
+// 							npc.ai[3] = 0f;
+// 							return;
+// 						}
+// 						npc.ai[1] = 1f;
+// 					}
+// 				}
+// 			}
+// 		}
+
+// 		public static void CatastropheAI(NPC npc, Mod mod)
+// 		{
+// 			CalamityGlobalNPC calamityGlobalNPC = npc.Calamity();
+
+// 			// Emit light
+// 			Lighting.AddLight((int)((npc.position.X + (npc.width / 2)) / 16f), (int)((npc.position.Y + (npc.height / 2)) / 16f), 1f, 0f, 0f);
+
+// 			CalamityGlobalNPC.catastrophe = npc.whoAmI;
+
+// 			bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
+// 			bool revenge = CalamityWorld.revenge || BossRushEvent.BossRushActive;
+// 			bool expertMode = Main.expertMode || BossRushEvent.BossRushActive;
+// 			bool dayTime = Main.dayTime && !BossRushEvent.BossRushActive;
+// 			bool provy = DownedBossSystem.downedProvidence && !BossRushEvent.BossRushActive;
+
+// 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
+// 				npc.TargetClosest(true);
+
+// 			Player player = Main.player[npc.target];
+
+// 			float num840 = npc.position.X + (npc.width / 2) - player.position.X - (player.width / 2);
+// 			float num841 = npc.position.Y + npc.height - 59f - player.position.Y - (player.height / 2);
+// 			float num842 = (float)Math.Atan2(num841, num840) + MathHelper.PiOver2;
+// 			if (num842 < 0f)
+// 				num842 += MathHelper.TwoPi;
+// 			else if (num842 > MathHelper.TwoPi)
+// 				num842 -= MathHelper.TwoPi;
+
+// 			float num843 = 0.15f;
+// 			if (npc.rotation < num842)
+// 			{
+// 				if ((num842 - npc.rotation) > MathHelper.Pi)
+// 					npc.rotation -= num843;
+// 				else
+// 					npc.rotation += num843;
+// 			}
+// 			else if (npc.rotation > num842)
+// 			{
+// 				if ((npc.rotation - num842) > MathHelper.Pi)
+// 					npc.rotation += num843;
+// 				else
+// 					npc.rotation -= num843;
+// 			}
+
+// 			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
+// 				npc.rotation = num842;
+// 			if (npc.rotation < 0f)
+// 				npc.rotation += MathHelper.TwoPi;
+// 			else if (npc.rotation > MathHelper.TwoPi)
+// 				npc.rotation -= MathHelper.TwoPi;
+// 			if (npc.rotation > num842 - num843 && npc.rotation < num842 + num843)
+// 				npc.rotation = num842;
+
+// 			if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 			{
+// 				npc.TargetClosest(false);
+// 				player = Main.player[npc.target];
+// 				if (!player.active || player.dead || (dayTime && !Main.eclipse))
+// 				{
+// 					if (npc.velocity.Y > 3f)
+// 						npc.velocity.Y = 3f;
+// 					npc.velocity.Y -= 0.1f;
+// 					if (npc.velocity.Y < -12f)
+// 						npc.velocity.Y = -12f;
+
+// 					calamityGlobalNPC.newAI[0] = 1f;
+
+// 					if (npc.timeLeft > 60)
+// 						npc.timeLeft = 60;
+
+// 					if (npc.ai[1] != 0f)
+// 					{
+// 						npc.ai[1] = 0f;
+// 						npc.ai[2] = 0f;
+// 						npc.ai[3] = 0f;
+// 						npc.netUpdate = true;
+// 					}
+// 					return;
+// 				}
+// 			}
+// 			else
+// 				calamityGlobalNPC.newAI[0] = 0f;
+
+// 			if (npc.ai[1] == 0f)
+// 			{
+// 				float num861 = 4.5f;
+// 				float num862 = 0.2f;
+// 				if (provy)
+// 				{
+// 					num861 *= 1.25f;
+// 					num862 *= 1.25f;
+// 				}
+// 				if (BossRushEvent.BossRushActive)
+// 				{
+// 					num861 *= 1.5f;
+// 					num862 *= 1.5f;
+// 				}
+
+// 				int num863 = 1;
+// 				if (npc.position.X + (npc.width / 2) < player.position.X + player.width)
+// 					num863 = -1;
+
+// 				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 				float num864 = player.position.X + (player.width / 2) + (num863 * (BossRushEvent.BossRushActive ? 270 : 180)) - vector86.X;
+// 				float num865 = player.position.Y + (player.height / 2) - vector86.Y;
+// 				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
+
+// 				if (expertMode || provy)
+// 				{
+// 					if (num866 > 300f)
+// 						num861 += 0.5f;
+// 					if (num866 > 400f)
+// 						num861 += 0.5f;
+// 					if (num866 > 500f)
+// 						num861 += 0.55f;
+// 					if (num866 > 600f)
+// 						num861 += 0.55f;
+// 					if (num866 > 700f)
+// 						num861 += 0.6f;
+// 					if (num866 > 800f)
+// 						num861 += 0.6f;
+// 				}
+
+// 				num866 = num861 / num866;
+// 				num864 *= num866;
+// 				num865 *= num866;
+
+// 				if (npc.velocity.X < num864)
+// 				{
+// 					npc.velocity.X += num862;
+// 					if (npc.velocity.X < 0f && num864 > 0f)
+// 						npc.velocity.X += num862;
+// 				}
+// 				else if (npc.velocity.X > num864)
+// 				{
+// 					npc.velocity.X -= num862;
+// 					if (npc.velocity.X > 0f && num864 < 0f)
+// 						npc.velocity.X -= num862;
+// 				}
+// 				if (npc.velocity.Y < num865)
+// 				{
+// 					npc.velocity.Y += num862;
+// 					if (npc.velocity.Y < 0f && num865 > 0f)
+// 						npc.velocity.Y += num862;
+// 				}
+// 				else if (npc.velocity.Y > num865)
+// 				{
+// 					npc.velocity.Y -= num862;
+// 					if (npc.velocity.Y > 0f && num865 < 0f)
+// 						npc.velocity.Y -= num862;
+// 				}
+// 				//DemonMarisa:沟槽的br
+// 				//npc.ai[2] += (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && BossRushEvent.BossRushActive)) ? 2f : 1f;
+//                 npc.ai[2] += 1f;
+
+//                 if (npc.ai[2] >= 180f)
+// 				{
+// 					npc.TargetClosest(true);
+// 					npc.ai[1] = 1f;
+// 					npc.ai[2] = 0f;
+// 					npc.target = 255;
+// 					npc.netUpdate = true;
+// 				}
+
+// 				bool fireDelay = npc.ai[2] > 120f || npc.life < npc.lifeMax * 0.9;
+// 				if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height) && fireDelay)
+// 				{
+// 					npc.localAI[2] += 1f;
+// 					if (npc.localAI[2] > 36f)
+// 					{
+// 						npc.localAI[2] = 0f;
+//                         SoundEngine.PlaySound(SoundID.Item72, npc.Center);
+//                     }
+
+// 					if (Main.netMode != NetmodeID.MultiplayerClient)
+// 					{
+// 						npc.localAI[1] += 1f;
+// 						if (revenge)
+// 							npc.localAI[1] += 0.5f;
+
+// 						if (npc.localAI[1] > 50f)
+// 						{
+// 							npc.localAI[1] = 0f;
+// 							float num867 = BossRushEvent.BossRushActive ? 18f : 12f;
+//                             //DemonMarisa:差分
+//                             //int num868 = expertMode ? CalamityUtils.GetMasterModeProjectileDamage(29, 1.5) : 36;
+//                             int num868 = 36;
+//                             int num869 = ModContent.ProjectileType<BrimstoneBall>();
+// 							vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 							num864 = player.position.X + (player.width / 2) - vector86.X;
+// 							num865 = player.position.Y + (player.height / 2) - vector86.Y;
+// 							num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
+// 							num866 = num867 / num866;
+// 							num864 *= num866;
+// 							num865 *= num866;
+// 							num865 += npc.velocity.Y * 0.5f;
+// 							num864 += npc.velocity.X * 0.5f;
+// 							vector86.X -= num864 * 1f;
+// 							vector86.Y -= num865 * 1f;
+// 							Projectile.NewProjectile(npc.GetSource_FromAI() ,vector86.X, vector86.Y, num864, num865, num869, num868 + (provy ? 30 : 0), 0f, Main.myPlayer, 0f, 0f);
+// 						}
+// 					}
+// 				}
+// 			}
+// 			else
+// 			{
+// 				if (npc.ai[1] == 1f)
+// 				{
+//                     SoundEngine.PlaySound(SoundID.Item109, npc.Center);
+//                     npc.rotation = num842;
+
+// 					float num870 = 16f;
+// 					if (expertMode)
+// 						num870 += 2f;
+// 					if (revenge)
+// 						num870 += 2f;
+// 					if (death)
+// 						num870 += 2f;
+// 					//DemonMarisa:差分
+// 					//if (calamityGlobalNPC.enraged > 0 || (CalamityConfig.Instance.BossRushXerocCurse && CalamityWorld.bossRushActive))
+// 					//	num870 += 4f;
+// 					if (provy)
+// 						num870 *= 1.15f;
+// 					if (BossRushEvent.BossRushActive)
+// 						num870 *= 1.25f;
+
+// 					Vector2 vector87 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+// 					float num871 = player.position.X + (player.width / 2) - vector87.X;
+// 					float num872 = player.position.Y + (player.height / 2) - vector87.Y;
+// 					float num873 = (float)Math.Sqrt(num871 * num871 + num872 * num872);
+// 					num873 = num870 / num873;
+// 					npc.velocity.X = num871 * num873;
+// 					npc.velocity.Y = num872 * num873;
+// 					npc.ai[1] = 2f;
+// 					return;
+// 				}
+
+// 				if (npc.ai[1] == 2f)
+// 				{
+// 					npc.ai[2] += 1f;
+// 					if (expertMode)
+// 						npc.ai[2] += 0.25f;
+// 					if (revenge)
+// 						npc.ai[2] += 0.25f;
+// 					if (BossRushEvent.BossRushActive)
+// 						npc.ai[2] += 0.25f;
+
+// 					if (npc.ai[2] >= 60f) //50
+// 					{
+// 						npc.velocity.X *= 0.93f;
+// 						npc.velocity.Y *= 0.93f;
+
+// 						if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
+// 							npc.velocity.X = 0f;
+// 						if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
+// 							npc.velocity.Y = 0f;
+// 					}
+// 					else
+// 						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - MathHelper.PiOver2;
+
+// 					if (npc.ai[2] >= 90f) //80
+// 					{
+// 						npc.ai[3] += 1f;
+// 						npc.ai[2] = 0f;
+// 						npc.target = 255;
+// 						npc.rotation = num842;
+// 						if (npc.ai[3] >= 4f)
+// 						{
+// 							npc.ai[1] = 0f;
+// 							npc.ai[3] = 0f;
+// 							return;
+// 						}
+// 						npc.ai[1] = 1f;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		#endregion
+//     }
+// }
