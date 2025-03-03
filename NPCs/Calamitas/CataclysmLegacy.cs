@@ -1,4 +1,5 @@
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
@@ -15,12 +16,10 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Calamitas
-
 {
-    //[AutoloadBossHead]
-    public class CataclysmLegacy// : ModNPC
+    [AutoloadBossHead]
+    public class CataclysmLegacy : ModNPC
     {
-        /*DemonMarisa: 兄弟要修复的东西一样，先全杀了
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Cataclysm");
@@ -62,19 +61,17 @@ namespace CalamityInheritance.NPCs.Calamitas
 			NPC.buffImmune[BuffID.DryadsWardDebuff] = false;
 			NPC.buffImmune[BuffID.Oiled] = false;
 			NPC.buffImmune[BuffID.BoneJavelin] = false;
-            //NPC.buffImmune[ModContent.BuffType<AbyssalFlames>()] = false;
 			NPC.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = false;
             NPC.buffImmune[ModContent.BuffType<ArmorCrunch>()] = false;
-            //NPC.buffImmune[ModContent.BuffType<DemonFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = false;
             NPC.buffImmune[ModContent.BuffType<HolyFlames>()] = false;
             NPC.buffImmune[ModContent.BuffType<Nightwither>()] = false;
             NPC.buffImmune[ModContent.BuffType<Plague>()] = false;
             NPC.buffImmune[ModContent.BuffType<Shred>()] = false;
             NPC.buffImmune[ModContent.BuffType<WhisperingDeath>()] = false;
-            //为啥你免疫林海眩晕
-            //NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
+            NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
             NPC.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = false;
+            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
             NPC.HitSound = SoundID.NPCHit4;
@@ -91,7 +88,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void AI()
         {
-			CalamityAI.CataclysmAI(NPC, Mod);
+            CalCloneCP.CataclysmLegacyAI(NPC, Mod);
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -209,6 +206,5 @@ namespace CalamityInheritance.NPCs.Calamitas
             }
             player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
         }
-        */
     }
 }
