@@ -256,10 +256,7 @@ namespace CalamityInheritance.CIPlayer
                 if (auricsilvaset)
                 {
                     double healMult = 0.1;
-                    healMult -= proj.numHits * healMult * 0.5;
-                    int heal = (int)Math.Round(damage * healMult);
-                    if (heal > 25)
-                        heal = 25;
+                    int heal = Main.rand.Next(5, 11);
 
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
@@ -267,10 +264,7 @@ namespace CalamityInheritance.CIPlayer
                 if (godSlayerMagic)
                 {
                     double healMult = 0.1;
-                    healMult -= proj.numHits * healMult * 0.5;
-                    int heal = (int)Math.Round(damage * healMult);
-                    if (heal > 25)
-                        heal = 25;
+                    int heal = Main.rand.Next(5, 11);
 
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<GodSlayerHealOrb>(), 3000f, 2f);

@@ -69,6 +69,9 @@ namespace CalamityInheritance.CIPlayer
             //克希洛克套装效果的封装(因为太长了所以单独封装起来了)
             XerocSetbouns();
 
+            //冷却变动
+            ResetCD();
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Player.statLifeMax2;
             else

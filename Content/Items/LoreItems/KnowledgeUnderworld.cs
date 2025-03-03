@@ -26,10 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                if (player.Calamity().disableVoodooSpawns == true)
-                    player.Calamity().disableVoodooSpawns = false;
-                else
-                    player.Calamity().disableVoodooSpawns = true;
+                player.Calamity().disableVoodooSpawns = true;
             }
         }
         public override void AddRecipes()
@@ -39,9 +36,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreUnderworld>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreUnderworld>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

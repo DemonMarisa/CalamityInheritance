@@ -26,10 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                if (player.Calamity().disableHiveCystSpawns == true)
-                    player.Calamity().disableHiveCystSpawns = false;
-                else
-                    player.Calamity().disableHiveCystSpawns = true;
+                player.Calamity().disableHiveCystSpawns = true;
                 state = player.Calamity().disableHiveCystSpawns;
             }
         }

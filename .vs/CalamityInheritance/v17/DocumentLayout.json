@@ -3,68 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\soulseekerlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\soulseekerlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamityinheritanceglobalai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamityinheritanceglobalai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamityinheritanceglobalnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamityinheritanceglobalnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\cicalclonelegacyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\cicalclonelegacyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\cataclysmlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\cataclysmlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\items\\weapons\\ranged\\tyrannysendold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\items\\weapons\\ranged\\tyrannysendold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\calscreenshaderdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\calscreenshaderdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamityinheritanceglobalnpcloot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamityinheritanceglobalnpcloot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\projectiles\\melee\\murasamaslashnew1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\projectiles\\melee\\murasamaslashnew1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\soulseekerlegacy.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\soulseekerlegacy.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\calamitasphase2legacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\calamitasphase2legacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\lifeseekerlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\lifeseekerlegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\catastrophelegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\catastrophelegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\calsky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\calsky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\calamitaslegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\calamitaslegacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\utilities\\miscutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:utilities\\miscutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\npcs\\calamitas\\calamitaslegacy.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:npcs\\calamitas\\calamitaslegacy.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\items\\weapons\\ranged\\skullmasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\items\\weapons\\ranged\\skullmasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,208 +34,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CalamityInheritanceGlobalNPCLoot.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalNPCLoot.cs",
-              "RelativeDocumentMoniker": "NPCs\\CalamityInheritanceGlobalNPCLoot.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalNPCLoot.cs",
-              "RelativeToolTip": "NPCs\\CalamityInheritanceGlobalNPCLoot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Skullmasher.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Ranged\\Skullmasher.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Weapons\\Ranged\\Skullmasher.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Ranged\\Skullmasher.cs",
+              "RelativeToolTip": "Content\\Items\\Weapons\\Ranged\\Skullmasher.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:32:35.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SoulSeekerLegacy.png - PNG [66x50, 32 \u4F4D, PNG]",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\SoulSeekerLegacy.png",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\SoulSeekerLegacy.png",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\SoulSeekerLegacy.png - PNG [66x50, 32 \u4F4D, PNG]",
-              "RelativeToolTip": "NPCs\\Calamitas\\SoulSeekerLegacy.png - PNG [66x50, 32 \u4F4D, PNG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2025-03-01T18:30:01.246Z",
-              "EditorCaption": " - PNG [66x50, 32 \u4F4D, PNG]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "MiscUtils.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Utilities\\MiscUtils.cs",
-              "RelativeDocumentMoniker": "Utilities\\MiscUtils.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Utilities\\MiscUtils.cs",
-              "RelativeToolTip": "Utilities\\MiscUtils.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:16:13.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CataclysmLegacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CataclysmLegacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CataclysmLegacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CataclysmLegacy.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CataclysmLegacy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:13:25.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CalSky.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalSky.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CalSky.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalSky.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CalSky.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:13:19.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CalScreenShaderData.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalScreenShaderData.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CalScreenShaderData.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalScreenShaderData.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CalScreenShaderData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:12:33.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CalamitasLegacy.png - PNG [116x1032, 32 \u4F4D, PNG]",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasLegacy.png",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CalamitasLegacy.png",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasLegacy.png - PNG [116x1032, 32 \u4F4D, PNG]",
-              "RelativeToolTip": "NPCs\\Calamitas\\CalamitasLegacy.png - PNG [116x1032, 32 \u4F4D, PNG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2025-03-01T18:10:21.777Z",
-              "EditorCaption": " - PNG [116x1032, 32 \u4F4D, PNG]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CalamitasPhase2Legacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasPhase2Legacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CalamitasPhase2Legacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasPhase2Legacy.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CalamitasPhase2Legacy.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:14:36.65Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CalamitasLegacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasLegacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CalamitasLegacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CalamitasLegacy.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CalamitasLegacy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T18:06:31.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MurasamaSlashnew1.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\Melee\\MurasamaSlashnew1.cs",
-              "RelativeDocumentMoniker": "Content\\Projectiles\\Melee\\MurasamaSlashnew1.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\Melee\\MurasamaSlashnew1.cs",
-              "RelativeToolTip": "Content\\Projectiles\\Melee\\MurasamaSlashnew1.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA2wCUAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:42:54.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CICalCloneLegacyAI.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T16:50:05.725Z",
+              "WhenOpened": "2025-03-02T16:05:51.677Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CalamityInheritanceGlobalAI.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalAI.cs",
-              "RelativeDocumentMoniker": "NPCs\\CalamityInheritanceGlobalAI.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalAI.cs",
-              "RelativeToolTip": "NPCs\\CalamityInheritanceGlobalAI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Title": "TyrannysEndOld.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Ranged\\TyrannysEndOld.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Weapons\\Ranged\\TyrannysEndOld.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Ranged\\TyrannysEndOld.cs",
+              "RelativeToolTip": "Content\\Items\\Weapons\\Ranged\\TyrannysEndOld.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAcwFoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:31:54.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CalamityInheritanceGlobalNPC.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalNPC.cs",
-              "RelativeDocumentMoniker": "NPCs\\CalamityInheritanceGlobalNPC.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\CalamityInheritanceGlobalNPC.cs",
-              "RelativeToolTip": "NPCs\\CalamityInheritanceGlobalNPC.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:31:36.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LifeSeekerLegacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\LifeSeekerLegacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\LifeSeekerLegacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\LifeSeekerLegacy.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\LifeSeekerLegacy.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAYwA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:15:35.263Z",
+              "WhenOpened": "2025-03-02T16:05:22.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SoulSeekerLegacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\SoulSeekerLegacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\SoulSeekerLegacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\SoulSeekerLegacy.cs*",
-              "RelativeToolTip": "NPCs\\Calamitas\\SoulSeekerLegacy.cs*",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAcwIMAAABvAAAAAAAAAA==",
+              "Title": "CICalCloneLegacyAI.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
+              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
+              "RelativeToolTip": "NPCs\\Calamitas\\CICalCloneLegacyAI.cs",
+              "ViewState": "AgIAAIkBAAAAAAAAAAAIwJwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:14:47.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CatastropheLegacy.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CatastropheLegacy.cs",
-              "RelativeDocumentMoniker": "NPCs\\Calamitas\\CatastropheLegacy.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\NPCs\\Calamitas\\CatastropheLegacy.cs",
-              "RelativeToolTip": "NPCs\\Calamitas\\CatastropheLegacy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:14:38.947Z",
+              "WhenOpened": "2025-03-01T16:50:05.725Z",
               "EditorCaption": ""
             }
           ]

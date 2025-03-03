@@ -27,10 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                if (player.Calamity().disableAnahitaSpawns == true)
-                    player.Calamity().disableAnahitaSpawns = false;
-                else
-                    player.Calamity().disableAnahitaSpawns = true;
+                player.Calamity().disableAnahitaSpawns = true;
                 state = player.Calamity().disableAnahitaSpawns;
             }
         }
@@ -45,9 +42,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreAbyss>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreAbyss>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

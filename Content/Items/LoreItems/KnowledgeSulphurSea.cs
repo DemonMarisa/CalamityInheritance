@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-    AddIngredient<LoreSulphurSea>().
-    AddTile(TileID.Bookcases).
-    Register();
+                AddIngredient<LoreSulphurSea>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

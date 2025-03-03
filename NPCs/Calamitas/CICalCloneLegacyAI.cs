@@ -404,6 +404,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             #endregion
         }
         #region Calamitas Clone
+
 		public static void CalamitasCloneAI(NPC npc, Mod mod, bool phase2)
 		{
 			CIGlobalNPC ciGlobalNPC = npc.CalamityInheritance();
