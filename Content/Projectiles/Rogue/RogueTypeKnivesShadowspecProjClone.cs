@@ -46,7 +46,7 @@
 //             float tryGetVelocityX = Projectile.velocity.X; 
 //             float tryGetVelocityY = Projectile.velocity.Y; 
 //             FlyingSound(); //飞刀飞行期间的音效
-//             FlyingDust();
+//             FlyingDust();  //飞行粒子
             
 
 

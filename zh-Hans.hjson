@@ -34,6 +34,11 @@ Mods: {
 			AcceleratorT2: 粒子加速器-等级2
 			AcceleratorT3Tile.MapEntry: 粒子加速器-等级3
 			AcceleratorT3: 粒子加速器-等级3
+
+			DemonshadeTile: {
+				// MapEntry: Demonshade Tile
+				// $parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
+			}
 		}
 
 		Projectiles: {
@@ -49,6 +54,20 @@ Mods: {
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
-		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+
+		Content: {
+			Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+
+			Items: {
+				Placeables: {
+					CraftingStations: {
+						DemonshadeWorkbench: {
+							// DisplayName: Demonshade Workbench
+							// Tooltip: ""
+						}
+					}
+				}
+			}
+		}
 	}
 }

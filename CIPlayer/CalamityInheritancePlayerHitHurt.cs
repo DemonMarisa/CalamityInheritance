@@ -340,7 +340,7 @@ namespace CalamityInheritance.CIPlayer
                    calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
                 for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
                 {
-                    int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(150);
+                    int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(1000);
                     astralStarsDMG = Player.ApplyArmorAccDamageBonusesTo(astralStarsDMG);
 
                     Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
@@ -812,8 +812,6 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
-            // 22AUG2023: Ozzatron: god slayer damage resistance removed due to it being strong enough to godmode rev yharon
-            // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
             // 装备嘉登之心[Legacy]时禁用弑神免伤。
             // 我是说真的。
             // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复

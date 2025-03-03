@@ -88,10 +88,11 @@ namespace CalamityInheritance.CIPlayer
             Item item = player.HeldItem;
             if (AncientAstralStatBuff) //暴击达到第五十次时给予以下的buff
             {
-                player.lifeRegen += 4; //2HP/s
-                int buffDefense = player.GetCurrentDefense();
-                player.statDefense += buffDefense/4;
-                player.endurance += 0.25f; //25%免伤
+                int getDef = Player.GetCurrentDefense();
+                int defenseBuff = (int)(getDef * 0.30f);
+                Player.statDefense += defenseBuff;
+                Player.endurance += 0.3f;
+                Player.lifeRegen += 16;
             }
             if (armorShattering)
             {
@@ -210,23 +211,6 @@ namespace CalamityInheritance.CIPlayer
                 //避免伤害变成0乃至负数倍, 不惜一切代价
                 if(actualDamage <= 0f) actualDamage = 1.0f;
                 player.GetDamage<RangedDamageClass>() *= actualDamage;
-            }
-            if(AncientAstralCritsCounts > 4)
-            {
-                Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //暴击50次给予一个大号的buff
-                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.8f}, Player.Center);
-                AncientAstralCritsCounts = 0;
-                for (int j = 0; j < 50; j++)
-                {
-                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.HallowedTorch, 0f, 0f, 100, default, 2f);
-                    Dust dust = Main.dust[nebulousReviveDust];
-                    dust.position.X += Main.rand.Next(-20, 21);
-                    dust.position.Y += Main.rand.Next(-20, 21);
-                    dust.velocity *= 0.9f;
-                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    if (Main.rand.NextBool())
-                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                }
             }
         }
         private void Accessories()

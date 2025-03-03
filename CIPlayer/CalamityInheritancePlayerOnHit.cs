@@ -203,19 +203,17 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             if(AncientAstralSet)
             {
-                if(projectile.Calamity().stealthStrike && AncientAstralHealCD <= 0) //潜伏攻击时
+                if(projectile.Calamity().stealthStrike  && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()) //潜伏攻击时
                 {
-                    if(player.statLife < player.statLifeMax2 * 0.5f) //玩家低于50%最大血量
-                    {
-                        int heal = hit.Damage;
-                        if(heal >= player.statLife * 0.5)
-                           heal = (int)(player.statLife * 0.5f);
-                        player.Heal(heal);
-                    }
-                    Player.Heal(50);
-                    AncientAstralCritsCounts += 1;
-                    AncientAstralHealCD = 180; //2秒
+                    SoundEngine.PlaySound(SoundID.Item4, Player.Center);
+                    Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
+                    AncientAstralHealCD = 600; //100秒
                 }   
+            }
+            if(AncientAstralStatBuff)
+            {
+                if (hit.Damage > 5)
+                    Player.Heal(1);
             }
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
