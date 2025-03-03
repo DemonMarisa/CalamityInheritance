@@ -23,13 +23,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPricePink;
             Item.useTime = Item.useAnimation = 28;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
-            Item.scale = 2f;
+            Item.useTurn = false;
             Item.damage = 125;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 5f;
             Item.shoot = ModContent.ProjectileType<Iceberg>();
-            Item.shootSpeed = 9f;
+            Item.shootSpeed = 12f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

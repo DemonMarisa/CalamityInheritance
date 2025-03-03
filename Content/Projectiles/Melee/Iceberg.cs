@@ -14,6 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class Iceberg: ModProjectile, ILocalizedModType
     {
+        float homeinspeed = 0f;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityInheritance/Content/Projectiles/Melee/IceBomb";
         public override void SetStaticDefaults()
@@ -35,11 +36,15 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Projectile.ai[0] += 1f;
-            if(Projectile.ai[0] > 30f) //冰雹在飞行到30f的时候速度将会大幅度自减
+            if (Projectile.ai[0] < 30f)
+                Projectile.velocity *= 0.97f;
+
+            if (Projectile.ai[0] > 30f) //冰雹在飞行到30f的时候速度将会大幅度自减
             {
-                if(Projectile.ai[0]>31f && Projectile.ai[0]<42f)
-                Projectile.velocity *= 0.8f;
-                if(Projectile.ai[0] == 42f && Projectile.ai[1] == 0f)
+                if (Projectile.ai[0] > 31f && Projectile.ai[2] != -1f)
+                    Projectile.velocity *= 0.96f;
+
+                if (Projectile.ai[0] == 42f && Projectile.ai[1] == 0f)
                 {
                     SoundEngine.PlaySound(SoundID.Item30 with {Volume = 0.4f}, Projectile.Center);
                     SignalDust();
@@ -67,9 +72,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     NPC getNPC = Main.npc[(int)Projectile.ai[2]];
                     if(getNPC.active && !getNPC.dontTakeDamage) //且npc并没有无敌还是什么
                     {
-                        Projectile.extraUpdates = 5; //获得5eu，直接超高速跟踪
+                        //Projectile.extraUpdates = 5; //获得5eu，直接超高速跟踪
                         Projectile.rotation += 0.8f;
-                        CIFunction.HomeInOnNPC(Projectile, true, 1800f, 15f + Projectile.ai[0]/5f, 45f, 5f);
+
+                        float maxSpeed = 15f;
+                        float acceleration = 0.5f * 2f;
+                        float homeInSpeed = MathHelper.Clamp(homeinspeed += acceleration, 0f, maxSpeed);
+
+                        CIFunction.HomeInOnNPC(Projectile, true, 1800f, homeInSpeed, 45f, 5f);
                         TrailDustHoming();
                     }
                 }

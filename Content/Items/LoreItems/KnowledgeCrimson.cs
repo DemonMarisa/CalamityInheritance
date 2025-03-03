@@ -26,10 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                if (player.Calamity().disablePerfCystSpawns == true)
-                    player.Calamity().disablePerfCystSpawns = false;
-                else
-                    player.Calamity().disablePerfCystSpawns = true;
+                player.Calamity().disablePerfCystSpawns = true;
                 state = player.Calamity().disablePerfCystSpawns;
             }
         }

@@ -64,7 +64,7 @@ namespace CalamityInheritance.System
                 () => DownedBossSystem.downedExoMechs, () => CalamityInheritanceConfig.Instance.Exomechs,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
-            AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(365d),
+            AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(364.3d),
                 () => CalamityGlobalNPC.SCalAcceptance != -1, () => CalamityInheritanceConfig.Instance.Scal);
 
         }

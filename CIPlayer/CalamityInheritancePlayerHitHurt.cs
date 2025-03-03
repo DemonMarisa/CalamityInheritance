@@ -816,11 +816,14 @@ namespace CalamityInheritance.CIPlayer
             // If the incoming damage is somehow less than 1 (TML doesn't allow this, but...), the hit is completely ignored.
             // 装备嘉登之心[Legacy]时禁用弑神免伤。
             // 我是说真的。
-            if (GodSlayerDMGprotect
-                && info.Damage <= 80
-                && !modPlayer1.chaliceOfTheBloodGod
-                && !player.CalamityInheritance().DraedonsHeartLegacyBuff)
+            // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复
+            if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
+            {
+                GodSlayerDMGprotectMax = 20;
+                Player.immune = true;
+                Player.immuneTime = 15;
                 return true;
+            }
 
             // If no other effects occurred, run vanilla code
             return base.FreeDodge(info);
