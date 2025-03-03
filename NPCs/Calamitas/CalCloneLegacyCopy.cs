@@ -25,6 +25,7 @@ namespace CalamityInheritance.NPCs.Calamitas
         */
         public static void CalCloneLegacyAICP(NPC boss, Mod mod)
         {
+            #region 初始化
             //Scarlet:这是一个副本文档，用于重新整顿普灾AI
             //大部分的编码从灾厄现版本转移过来
             CIGlobalNPC cign = boss.CalamityInheritance();
@@ -50,6 +51,10 @@ namespace CalamityInheritance.NPCs.Calamitas
             bool ifBrothers = false;
             //亵渎天神是否击败?
             bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
+            
+            //将普灾最大血量先存进去
+            if(cign.BossNewAI[0] == 0f && boss.life >0)
+               cign.BossNewAI[0] = boss.lifeMax;
 
             //给普灾找到一个target, 也就是玩家
             if(boss.target < 0 || boss.target == Main.maxPlayers || Main.player[boss.target].dead || !Main.player[boss.target].active)
@@ -59,12 +64,12 @@ namespace CalamityInheritance.NPCs.Calamitas
             Player player = Main.player[boss.target];
             //获取玩家的中心位置, 只有这个作用, 如果有别的需求得另寻他法
             Vector2 getPlayerCenter = new(player.position.X - (player.width/2), player.position.Y - (player.height/2));
-
+            #endregion
+            #region 尝试视角朝向玩家
             //普灾旋转一分钟.gif
             Vector2 bossCenter = new(boss.Center.X, boss.Center.Y + boss.height - 59f); //Comment: 你这贴图有问题啊
             Vector2 lockTar = getPlayerCenter; //转变量名强化印象
             Vector2 tryLockPlayer = bossCenter - lockTar; //尝试朝向玩家
-            #region 尝试视角朝向玩家
             //角度
             float rot = (float)Math.Atan2(tryLockPlayer.Y, tryLockPlayer.X) + MathHelper.PiOver2;
             if(rot < 0f) rot +=MathHelper.TwoPi;
@@ -96,7 +101,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             if(boss.rotation > rot - rotSpeed && boss.rotation < rot +rotSpeed)
                boss.rotation = rot;
             #endregion
-            #region 使普灾脱战
+            #region 使旧灾脱战
             //      玩家不存在      玩家似了         白天           非日食      都会让普灾脱战
             if(!player.active || player.dead || Main.dayTime || !Main.eclipse)
             {
@@ -184,11 +189,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 float nextPhase = 250f;
                 if(boss.ai[2] >= nextPhase || ifPhase4)
                 {
-                    if(!ifBrothers) //灾厄这是随机，旧灾则不随机
-                        boss.ai[1] = 4f;
-                    else
-                        boss.ai[1] = 1f; //兄弟不在的时候进入水平
-                    
+                    boss.ai[1] = 1f; //兄弟不在的时候进入水平
                     boss.ai[2] = 0f;
                     boss.localAI[0] = 1f;
                     boss.netUpdate = true;
@@ -218,7 +219,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
             }
             #endregion
-            #region 在侧身位置, 发射火球与激光
+            #region 在侧身位置, 发射与激光
             else if (boss.ai[1] == 1f)
             {
                 if(Main.netMode != NetmodeID.MultiplayerClient)
@@ -250,10 +251,141 @@ namespace CalamityInheritance.NPCs.Calamitas
                         }
                     }
                 }
+                boss.ai[2] += 1f;
+                float nextPhase = 180f;
+                if(boss.ai[2] >= nextPhase)
+                {   
+                    //在第一波兄弟发起之前 或 兄弟在场时, 旧灾不会使出冲刺
+                    //附:其实我很好奇旧灾跟兄弟一起冲刺的场景
+                    //改了，现在兄弟在场也能发起冲刺, 开杀!
+                    if(boss.life >= boss.lifeMax * 0.7f) 
+                       boss.ai[1] = 0f;
+                    else
+                       boss.ai[1] = 2f; //旧灾冲刺
+                    //附2: 可能会出现旧灾与他的4个兄弟一起撞人情况
+                    //但是我们模组非常强势，应该没问题？
+                    
+                    
+                    boss.localAI[0] = 1f; //重新初始化这个timer
+                    boss.netUpdate = true;
+                }
             }
             #endregion
-            #region 冲刺AI, 后面在考虑
+            #region 冲刺AI
+            else if (boss.ai[1] == 2f)
+            {
+                //设置冲刺伤害
+                boss.damage = boss.defDamage;
+                //转角
+                boss.rotation = rot;
+                //冲刺速度?亵渎后提升四倍
+                float chargeSpeed = ifDeath? 30f : 20f;
+                chargeSpeed = ifProviDead ? chargeSpeed + 5f*4 : chargeSpeed;
+                Vector2 newVec = Vector2.Normalize(player.Center + player.velocity * 20f);
+                boss.velocity = newVec * chargeSpeed;
+
+                //冲刺完毕后, set3f, 普灾反向在冲刺一次
+                boss.ai[1] = 3f;
+                boss.netUpdate = true;
+            }
+            else if (boss.ai[1] == 3f)
+            {
+                //设置伤害
+                boss.damage = boss.defDamage;
+                boss.ai[2] += 1f; //计时器
+                //旧灾发起反冲的时间
+                float secondCharge = ifDeath ? 35f : 45f;
+                if(boss.ai[2] >= secondCharge)
+                {
+                    boss.velocity *= 0.9f;
+                    if(boss.velocity.X > -0.1 && boss.velocity.X < 0.1)
+                       boss.velocity.X = 0f;
+                    if(boss.velocity.Y > -0.1 && boss.velocity.Y < 0.1)
+                       boss.velocity.Y = 0f;
+                }
+                else
+                {
+                    boss.rotation = (float)Math.Atan2(boss.velocity.Y, boss.velocity.X) - MathHelper.PiOver2;
+                }
+
+                if(boss.ai[2] >= secondCharge + 10f)
+                {
+                    boss.ai[2] = 0f;
+                    boss.ai[3] += 1f;
+                    boss.rotation = rot;
+                    boss.netUpdate = true;
+                    if(boss.ai[3] >=2f)
+                    {
+                        boss.TargetClosest();
+                        boss.ai[1] = 0f; //重新开始发射火球
+                        boss.ai[3] = 0f;
+                        return;
+                    }
+                    boss.ai[1] = 4f;
+                }
+            }
+            else
+            {
+                boss.ai[2] += 1f;
+                if(boss.ai[2] >= 30f)
+                {
+                    boss.ai[1] = 2f;
+                    boss.ai[0] = 0f;
+                    boss.localAI[0] = 0f;
+                    boss.netUpdate = true;
+                }
+            }
+            #endregion  
+            #region 兄弟重生, 这一过程经历3次
+            //70%, 40%, 10%重生一次
+            if(boss.life > 0)
+            {
+                int getPhaseHP = (int)(boss.lifeMax * 0.3f);
+                if(boss.life + getPhaseHP < cign.BossNewAI[0])
+                {
+                    cign.BossNewAI[0] = boss.life; //刷新一次血量
+                    if(cign.BossNewAI[0] < boss.lifeMax * 0.1) //10%
+                    {
+                        if(Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            /*生成四个兄弟*/
+                        }
+                        // string key = "这里需要生成兄弟的提示文本";
+                        Color textColor = Color.Orange;
+                    }
+                    else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
+                    {
+                        /*与上方相同的代码*/
+                    }
+                    else if(cign.BossNewAI[0] <= boss.lifeMax * 0.7f) //70%
+                    {
+                        //上同
+                    }
+                }
+            }
+            //兄弟重生时, 旧灾获得极高的防御力
+            int calCloneDefense = boss.defDefense; //存储基本防御力
+            calCloneDefense += (CIGlobalNPC.CatalysmCloneWhoAmI     != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active)?     (ifProviDead ? 200 : 50) : 0; //我也忘了加多少了，反正亵渎死球了+200防御力
+            calCloneDefense += (CIGlobalNPC.CatastropheCloneWhoAmI  != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active)?  (ifProviDead ? 200 : 50) : 0;
+            //谁活着, 都行
+            if((CIGlobalNPC.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active) || (CIGlobalNPC.CatastropheCloneWhoAmI  != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active))
+                ifBrothers = true;
+            boss.defense = ifBrothers ? boss.defDefense + calCloneDefense : boss.defDefense;
             #endregion
+            
+        }
+        public static void CataclysmLegacyAI(NPC boss, Mod mod)
+        {
+
+        }
+        public static void CatastropheLegacyAI(NPC boss, Mod mod)
+        {
+
+        }
+        //粒子生成
+        public static void SpawnDust()
+        {
+            
         }
     }
 }

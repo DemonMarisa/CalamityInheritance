@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 48;
+            Projectile.localNPCHitCooldown = 45;
             Projectile.timeLeft = Lifetime;
         }
 

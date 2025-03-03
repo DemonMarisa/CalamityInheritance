@@ -90,8 +90,7 @@ namespace CalamityInheritance.Utilities
         ///<summary>
         ///用于回旋镖的返程AI.
         ///注:这一函数不会实现回旋镖返程至玩家身上时消失的效果
-        ///<param name="player">
-        ///玩家本身</param>
+        ///<param name="player">玩家本身</param>
         ///<param name="boomerang">回旋镖本身.</param>
         ///<param name="rSpeed">返程速度.</param>
         ///<param name="acceleration">返程加速度.</param>
