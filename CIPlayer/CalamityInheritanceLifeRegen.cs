@@ -86,6 +86,10 @@ namespace CalamityInheritance.CIPlayer
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
                     Player.lifeRegen += 120;
             }
+            if (AncientAstralSet && Player.lifeRegen < 0)
+            {
+                Player.lifeRegen = 4;
+            }
         }
         #endregion
     }

@@ -1,4 +1,6 @@
+using System.IO;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
@@ -89,10 +91,35 @@ namespace CalamityInheritance.NPCs.Calamitas
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(NPC.dontTakeDamage);
+            writer.Write(NPC.localAI[0]);
+            writer.Write(NPC.localAI[1]);
+            writer.Write(NPC.localAI[2]);
+            writer.Write(NPC.localAI[3]);
+            for(int i = 0; i < 4; i++)
+            {
+                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+            }
+
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            NPC.dontTakeDamage = reader.ReadBoolean();
+            NPC.localAI[0] = reader.ReadSingle();
+            NPC.localAI[1] = reader.ReadSingle();
+            NPC.localAI[2] = reader.ReadSingle();
+            NPC.localAI[3] = reader.ReadSingle();
+            for(int i = 0; i < 4; i++)
+            {
+                NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
+            }
+        }
 
         public override void AI()
         {
-			CICalCloneLegacyAI.CalCloneAI(NPC, Mod, 15, false);
+            CalCloneCP.CalCloneLegacyAICP(NPC, Mod);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -195,7 +222,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
             }
         }
-        //DemonMarisa:ÄÑ¶È²îÒìÉ±ÁË
+        //DemonMarisa:ï¿½Ñ¶È²ï¿½ï¿½ï¿½É±ï¿½ï¿½
         //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
         //{
         //    NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
@@ -204,7 +231,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            //DemonMarisa: ¿Ö¾ådebuffÒÑ¾­ËÆÀ²
+            //DemonMarisa: ï¿½Ö¾ï¿½debuffï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
             //if (CalamityConditions.revenge)
             //{
             //    player.AddBuff(ModContent.BuffType<Horror>(), 180, true);

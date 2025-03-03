@@ -26,8 +26,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly int LifeRegenSpeed = 16; //8HP/s生命恢复
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DraedonsHeart>()] = ModContent.ItemType<DraedonsHeartLegacy>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DraedonsHeartLegacy>()] = ModContent.ItemType<DraedonsHeart>();
+            
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
         }
 

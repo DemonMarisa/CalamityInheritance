@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static readonly float RotationIncrement = 0.20f;
         private static readonly int Lifetime = 360;
         private static readonly float canHomingCounter = 65f;
-        private readonly float stealthSpeed = 27f;
+        private readonly float stealthSpeed = 30f;
         public int hitCounter = 30;
 
         public override void SetStaticDefaults()

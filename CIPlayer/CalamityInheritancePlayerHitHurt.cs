@@ -35,17 +35,17 @@ namespace CalamityInheritance.CIPlayer
     {
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
             #region Custom Hurt Sounds
-            if (modPlayer.hurtSoundTimer == 0)
+            if (calPlayer.hurtSoundTimer == 0)
             {
                 if (CIsponge && CISpongeShieldDurability > 0)
                 {
                     modifiers.DisableSound();
                     SoundEngine.PlaySound(TheSponge.ShieldHurtSound, Player.Center);
-                    modPlayer.hurtSoundTimer = 20;
+                    calPlayer.hurtSoundTimer = 20;
                 }
             }
             #endregion
@@ -129,7 +129,7 @@ namespace CalamityInheritance.CIPlayer
                 // 如果任何护盾受到了伤害，则必须运行一些代码。
                 if (shieldsTookHit)
                 {
-                    CalamityPlayer modPlayer = Player.Calamity();
+                    CalamityPlayer calPlayer = Player.Calamity();
 
                     // 如果任何护盾受到了伤害，则显示文本以指示护盾受到了伤害
                     string shieldDamageText = (-totalDamageBlocked).ToString();
@@ -142,7 +142,7 @@ namespace CalamityInheritance.CIPlayer
 
                     // 当护盾处于激活状态时受到攻击时会产生粒子效果，不论护盾是否被打破。
                     // 如果护盾被打破，则会产生更多的粒子。
-                    if (modPlayer.pSoulArtifact)
+                    if (calPlayer.pSoulArtifact)
                     {
                         for (int i = 0; i < Main.rand.Next(4, 8); i++) //very light dust
                         {
@@ -202,8 +202,8 @@ namespace CalamityInheritance.CIPlayer
                 // 如果护盾吸收了攻击，则使用反射删除此次攻击。
                 if (shieldsTookHit)
                 {
-                    CalamityPlayer modPlayer = Player.Calamity();
-                    modPlayer.freeDodgeFromShieldAbsorption = true;
+                    CalamityPlayer calPlayer = Player.Calamity();
+                    calPlayer.freeDodgeFromShieldAbsorption = true;
                 }
 
             }
@@ -211,14 +211,14 @@ namespace CalamityInheritance.CIPlayer
             //史神无敌
             if (invincible)
             {
-                CalamityPlayer modPlayer = Player.Calamity();
-                modPlayer.freeDodgeFromShieldAbsorption = true;
+                CalamityPlayer calPlayer = Player.Calamity();
+                calPlayer.freeDodgeFromShieldAbsorption = true;
             }
 
             if (godSlayerReflect && Main.rand.NextBool(50))
             {
-                CalamityPlayer modPlayer = Player.Calamity();
-                modPlayer.freeDodgeFromShieldAbsorption = true;
+                CalamityPlayer calPlayer = Player.Calamity();
+                calPlayer.freeDodgeFromShieldAbsorption = true;
                 Player.immune = true;
                 Player.immuneTime = 60;
             }
@@ -291,7 +291,7 @@ namespace CalamityInheritance.CIPlayer
         #region On Hurt
         public override void OnHurt(Player.HurtInfo hurtInfo)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
             //海绵
             if (Modplayer1.CIsponge)
@@ -329,6 +329,26 @@ namespace CalamityInheritance.CIPlayer
                     if (star.whoAmI.WithinBounds(Main.maxProjectiles))
                     {
                         star.DamageType = DamageClass.Generic;
+                        star.usesLocalNPCImmunity = true;
+                        star.localNPCHitCooldown = 5;
+                    }
+                }
+            }
+            if(AncientAstralSet)
+            {
+                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.5) && Main.rand.NextBool(2)) //尝试恢复25%潜伏值
+                   calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
+                for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
+                {
+                    int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(150);
+                    astralStarsDMG = Player.ApplyArmorAccDamageBonusesTo(astralStarsDMG);
+
+                    Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
+                    ProjectileID.StarVeilStar, astralStarsDMG, 4f, Player.whoAmI);
+                    
+                    if (star.whoAmI.WithinBounds(Main.maxProjectiles))
+                    {
+                        star.DamageType = ModContent.GetInstance<RogueDamageClass>(); //:)
                         star.usesLocalNPCImmunity = true;
                         star.localNPCHitCooldown = 5;
                     }
@@ -502,7 +522,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
@@ -565,7 +585,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
@@ -620,7 +640,7 @@ namespace CalamityInheritance.CIPlayer
         #region Pre Kill
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
                 SoundEngine.PlaySound(SoundID.Item67, Player.Center);
@@ -665,7 +685,7 @@ namespace CalamityInheritance.CIPlayer
 
                         Player.AddBuff(ModContent.BuffType<SilvaRevival>(), CIsilvaReviveDuration);
 
-                        if (modPlayer.silvaWings)
+                        if (calPlayer.silvaWings)
                         {
                             Player.statLife += Player.statLifeMax2 / 2;
                             Player.HealEffect(Player.statLifeMax2 / 2);
@@ -682,10 +702,10 @@ namespace CalamityInheritance.CIPlayer
 
                     // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
                     // Can we please remove this from the game
-                    if (modPlayer.chaliceOfTheBloodGod)
+                    if (calPlayer.chaliceOfTheBloodGod)
                     {
-                        modPlayer.chaliceBleedoutBuffer = 0D;
-                        modPlayer.chaliceDamagePointPartialProgress = 0D;
+                        calPlayer.chaliceBleedoutBuffer = 0D;
+                        calPlayer.chaliceDamagePointPartialProgress = 0D;
                     }
 
                     return false;
@@ -702,7 +722,7 @@ namespace CalamityInheritance.CIPlayer
 
                         Player.AddBuff(ModContent.BuffType<SilvaRevival>(), auricsilvaReviveDuration);
 
-                        if (modPlayer.silvaWings)
+                        if (calPlayer.silvaWings)
                         {
                             Player.statLife += Player.statLifeMax2 / 2;
                             Player.HealEffect(Player.statLifeMax2 / 2);
@@ -719,17 +739,17 @@ namespace CalamityInheritance.CIPlayer
 
                     // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
                     // Can we please remove this from the game
-                    if (modPlayer.chaliceOfTheBloodGod)
+                    if (calPlayer.chaliceOfTheBloodGod)
                     {
-                        modPlayer.chaliceBleedoutBuffer = 0D;
-                        modPlayer.chaliceDamagePointPartialProgress = 0D;
+                        calPlayer.chaliceBleedoutBuffer = 0D;
+                        calPlayer.chaliceDamagePointPartialProgress = 0D;
                     }
                     return false;
                 }
             }
 
             //目前用于龙魂与原灾金源和复活效果的互动
-            if (modPlayer.silvaSet && modPlayer.silvaCountdown > 0)
+            if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
             {
                 SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
 
@@ -776,13 +796,13 @@ namespace CalamityInheritance.CIPlayer
         #region Modify Hit By NPC
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             if (triumph)
-                modPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+                calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
             if (beeResist)
             {
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
-                    modPlayer.contactDamageReduction += 0.25;
+                    calPlayer.contactDamageReduction += 0.25;
             }
 
         }
@@ -812,7 +832,7 @@ namespace CalamityInheritance.CIPlayer
         #region Modify Hit By Proj
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
-            CalamityPlayer modPlayer = Player.Calamity();
+            CalamityPlayer calPlayer = Player.Calamity();
             // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
             // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
             if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
@@ -821,7 +841,7 @@ namespace CalamityInheritance.CIPlayer
                 int dodgeDamageGateValue = (int)Math.Round(Player.statLifeMax2 * dodgeDamageGateValuePercent);
 
                 // Reflects count as dodges. They share the timer and can be disabled by Armageddon right click.
-                if (!modPlayer.disableAllDodges && !Player.HasCooldown(GlobalDodge.ID) && proj.damage >= dodgeDamageGateValue)
+                if (!calPlayer.disableAllDodges && !Player.HasCooldown(GlobalDodge.ID) && proj.damage >= dodgeDamageGateValue)
                 {
                     double maxCooldownDurationDamagePercent = 0.5;
                     int maxCooldownDurationDamageValue = (int)Math.Round(Player.statLifeMax2 * (maxCooldownDurationDamagePercent - dodgeDamageGateValuePercent));
@@ -846,8 +866,8 @@ namespace CalamityInheritance.CIPlayer
                         Player.GiveUniversalIFrames(evolutionIFrames, true);
 
                         modifiers.SetMaxDamage(1);
-                        modPlayer.evolutionLifeRegenCounter = 300;
-                        modPlayer.projTypeJustHitBy = proj.type;
+                        calPlayer.evolutionLifeRegenCounter = 300;
+                        calPlayer.projTypeJustHitBy = proj.type;
 
                         int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
                         Player.AddCooldown(GlobalDodge.ID, cooldownDuration);
@@ -860,7 +880,7 @@ namespace CalamityInheritance.CIPlayer
             if (beeResist)
             {
                 if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))
-                    modPlayer.projectileDamageReduction += 0.25;
+                    calPlayer.projectileDamageReduction += 0.25;
             }
         }
         #endregion

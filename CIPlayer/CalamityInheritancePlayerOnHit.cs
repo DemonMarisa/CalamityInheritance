@@ -21,7 +21,6 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
-using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -202,6 +201,22 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+            if(AncientAstralSet)
+            {
+                if(projectile.Calamity().stealthStrike && AncientAstralHealCD <= 0) //潜伏攻击时
+                {
+                    if(player.statLife < player.statLifeMax2 * 0.5f) //玩家低于50%最大血量
+                    {
+                        int heal = hit.Damage;
+                        if(heal >= player.statLife * 0.5)
+                           heal = (int)(player.statLife * 0.5f);
+                        player.Heal(heal);
+                    }
+                    Player.Heal(50);
+                    AncientAstralCritsCounts += 1;
+                    AncientAstralHealCD = 180; //2秒
+                }   
+            }
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
         }

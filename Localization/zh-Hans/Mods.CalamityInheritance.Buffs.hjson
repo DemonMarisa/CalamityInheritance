@@ -127,3 +127,8 @@ Backfire: {
 	DisplayName: 淬火
 	Description: 血液被过度加热，足以融化掉你的心脏
 }
+
+AncientAstralBuff: {
+	DisplayName: 星之铸造
+	Description: 杂质全部祛除, 你的盔甲崭新如初
+}
