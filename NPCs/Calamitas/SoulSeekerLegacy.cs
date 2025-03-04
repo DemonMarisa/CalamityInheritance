@@ -24,10 +24,6 @@ namespace CalamityInheritance.NPCs.Calamitas
         private int timer = 0;
         private bool start = true;
         public static Asset<Texture2D> GlowTexture;
-        /* DemonMarisa : 修复了SoulSeeker中的错误，还未测试
-         * num664这里不知道以前不填默认是什么，我随便填了个FromAI
-         * 尸块暂时禁用
-         */
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Soul Seeker");
@@ -79,7 +75,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.buffImmune[ModContent.BuffType<Plague>()] = false;
             NPC.buffImmune[ModContent.BuffType<Shred>()] = false;
             NPC.buffImmune[ModContent.BuffType<WhisperingDeath>()] = false;
-            //林海眩晕是legacy版本
+            //锟街猴拷眩锟斤拷锟斤拷legacy锟芥本
             NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
             NPC.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = false;
             NPC.HitSound = SoundID.NPCHit4;
@@ -104,7 +100,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             {
                 for (int num621 = 0; num621 < 15; num621++)
                 {
-                    int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, 235, 0f, 0f, 100, default, 2f);
+                    int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.LifeDrain, 0f, 0f, 100, default, 2f);
                 }
                 NPC.ai[1] = NPC.ai[0];
                 start = false;
@@ -124,12 +120,11 @@ namespace CalamityInheritance.NPCs.Calamitas
                         int x = (int)(NPC.position.X + Main.rand.Next(NPC.width - 25));
                         int y = (int)(NPC.position.Y + Main.rand.Next(NPC.height - 25));
                         int num663 = ModContent.NPCType<LifeSeekerLegacy>();
-                        //这里不知道以前不填默认是什么，我随便填了个FromAI
                         int num664 = NPC.NewNPC(NPC.GetSource_Death(), x, y, num663, 0, 0f, 0f, 0f, 0f, 255);
                     }
                     for (int num621 = 0; num621 < 3; num621++)
                     {
-                        int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, 235, 0f, 0f, 100, default, 2f);
+                        int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, DustID.LifeDrain, 0f, 0f, 100, default, 2f);
                     }
                     int damage = expertMode ? 25 : 30;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<BrimstoneBarrage>(), damage, 1f, NPC.target);
@@ -154,7 +149,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             }
             if (NPC.life <= 0)
             {
-                //尸块暂时禁用
+                //尸锟斤拷锟斤拷时锟斤拷锟斤拷
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper2"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper3"), 1f);
@@ -193,8 +188,8 @@ namespace CalamityInheritance.NPCs.Calamitas
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-            //草拟吗傻逼山猪，怎么全是numxxx，从现在的复制过来了
-            //你们这不是会写其它变量名吗
+            //锟斤拷锟斤拷锟斤拷傻锟斤拷山锟斤拷锟斤拷锟斤拷么全锟斤拷numxxx锟斤拷锟斤拷锟斤拷锟节的革拷锟狡癸拷锟斤拷锟斤拷
+            //锟斤拷锟斤拷锟解不锟角伙拷写锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

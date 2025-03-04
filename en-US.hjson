@@ -34,6 +34,11 @@ Mods: {
 			AcceleratorT2: Partical Accelerator Level 2
 			AcceleratorT3Tile.MapEntry: Accelerator T3 Tile
 			AcceleratorT3: Partical Accelerator Level 3
+
+			DemonshadeTile: {
+				MapEntry: Demonshade Tile
+				$parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
+			}
 		}
 
 		Projectiles: {
@@ -49,6 +54,20 @@ Mods: {
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
-		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+
+		Content: {
+			Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+
+			Items: {
+				Placeables: {
+					CraftingStations: {
+						DemonshadeWorkbench: {
+							DisplayName: Demonshade Workbench
+							Tooltip: ""
+						}
+					}
+				}
+			}
+		}
 	}
 }

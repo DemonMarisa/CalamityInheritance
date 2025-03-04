@@ -589,17 +589,42 @@ YharimAuricTeslaHelm: {
 }
 
 AncientAstralBreastplate: {
-	DisplayName: Ancient Astral Breastplate
-	Tooltip: ""
+	DisplayName: Ancient Astral Breastplate Revamped
+	Tooltip:
+		'''
+		5% increased rogue damage and critical strike chances
+		+30 max HP and +0.5 HP/s life regen speed
+		20% decreased movement speed
+		Grants immnuity to Feral Bites and Astral Infection
+		'''
 }
 
 AncientAstralHelm: {
-	DisplayName: Ancient Astral Helm
-	Tooltip: Increased.
-	SetBonus: damageincreasedby
+	DisplayName: Ancient Astral Helm Revamped
+	Tooltip:
+		'''
+		5% increased rogue critical strike chances
+		+20 max HP and +0.5 HP/s life regen speed
+		'''
+	SetBonus:
+		'''
+
+		+110 max stealth
+		+0.5 HP/s life regen speed, +40 max HP and 12% increased damage reduction
+		Decreased your healing potion cooldown by 25% and make debuff can not negate your life regen
+		Upon a stealth strike, your defense, damage reduction will be boosted by 30%, and +8 HP/s life regen speed
+		You will be Healed by 1 HP every time you strike an enemy too
+		This effect has 10 seconds cooldown if triggered
+		Taking damage rain down powerful stars attack your enemy
+		[c/DFC578:'Rebirth of the forgortten, again']
+		'''
 }
 
 AncientAstralLeggings: {
-	DisplayName: Ancient Astral Leggings
-	Tooltip: ""
+	DisplayName: Ancient Astral Leggings Revamped
+	Tooltip:
+		'''
+		5% incraesed rogue critical strike chance	
+		+20 max HP and +0.5 HP/s life regen speed
+		'''
 }
