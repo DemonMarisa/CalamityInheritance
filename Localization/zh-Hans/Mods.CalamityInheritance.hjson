@@ -242,8 +242,27 @@ Configs: {
 		}
 
 		SpecialRarityColor: {
-			// Label: Special Rarity Color
-			// Tooltip: ""
+			Label: "[i:GoldCrown]特殊稀有度颜色"
+			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
+		}
+
+		HeliumFlashResprite: {
+			Label: "[i:CalamityInheritance/HeliumFlashLegacy]氦闪贴图切换"
+			Tooltip: 切换氦闪的贴图
+		}
+
+		DrataliornusResprite: {
+			Label: "[i:CalamityInheritance/DrataliornusLegacy]赤陨霸龙弓贴图切换"
+			Tooltip: 切换赤陨霸龙弓的贴图
+
+		GodSlayerWorm: {
+			Label: "[i:CalamityMod/StaffoftheMechworm]弑神套装奖励
+			Tooltip:
+				'''
+				决戴召唤弑神/金源套装时是否生成小型的宇宙蠕虫
+				默认开启
+				'''
+			}
 		}
 	}
 }

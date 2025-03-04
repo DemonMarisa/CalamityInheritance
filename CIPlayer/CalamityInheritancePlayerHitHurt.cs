@@ -337,7 +337,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if(AncientAstralSet)
             {
-                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.5) && Main.rand.NextBool(2)) //尝试恢复25%潜伏值
+                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.75)) //尝试恢复25%潜伏值
                    calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
                 for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
                 {

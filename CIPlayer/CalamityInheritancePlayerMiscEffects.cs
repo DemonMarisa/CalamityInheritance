@@ -26,6 +26,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityMod.Projectiles.Magic;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -86,14 +87,15 @@ namespace CalamityInheritance.CIPlayer
             var usPlayer = Player.CalamityInheritance();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
-            if (AncientAstralStatBuff) //暴击达到第五十次时给予以下的buff
+            if (AncientAstralStatBuff) //星之铸造效果
             {
                 int getDef = Player.GetCurrentDefense();
                 int defenseBuff = (int)(getDef * 0.30f);
                 Player.statDefense += defenseBuff;
                 Player.endurance += 0.3f;
-                Player.lifeRegen += 16;
+                calPlayer.defenseDamageRatio *= 0.5f;
             }
+        
             if (armorShattering)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
@@ -527,14 +529,26 @@ namespace CalamityInheritance.CIPlayer
             if (yharimOfPerunStrikesCooldown > 0)
                 yharimOfPerunStrikesCooldown--;
             
-            if (AncientAstralHealCD > 0)
-                AncientAstralHealCD--;
+            if (AncientAstralStealthGap > 0) //生命恢复效果消失的间隔CD
+                AncientAstralStealthGap--;
             
-            if (AncientAstralCritsCounts > 5)
-                AncientAstralCritsCounts = 0;
+            if (AncientAstralCritsCD > 0) //暴击内置CD
+                AncientAstralCritsCD--;
             
-            if (AncientConstantHeal > 0)
-                AncientConstantHeal--;
+            if (AncientAstralCritsCount > 10) //暴击到第十次就重置
+                AncientAstralCritsCount = 0;
+            
+            if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD
+                AncientAstralStealthCD--;
+            
+            if (AncientAstralStealth > 12) //潜伏攻击锁定12次
+                AncientAstralStealth = 12;
+            
+            if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
+            {
+                player.lifeRegen -= AncientAstralStealth*2; //减去这个生命恢复速度， 应该是没问题的
+                AncientAstralStealth = 0; //置零 
+            }
 
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD

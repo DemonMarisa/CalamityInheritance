@@ -102,7 +102,7 @@ Configs: {
 		}
 
 		WulfumTexture: {
-			Label: Wulfum Texture
+			Label: "[i:CalamityInheritance/WulfrumPickaxe]Wulfum Texture"
 			Tooltip:
 				'''
 				Determines the sprites of legacy Wulfrum Tools and Weapons
@@ -112,12 +112,12 @@ Configs: {
 		}
 
 		ArkofCosmosTexture: {
-			Label: Ark of the Cosmos Legacy Sprite
+			Label: "[i:CalamityInheritance/ArkoftheCosmosold]Ark of the Cosmos Legacy Resprite"
 			Tooltip: Determines the sprite of Ark of the Cosmos Legacy
 		}
 
 		RampartofDeitiesTexture: {
-			Label: Rampart of Deities Sprite
+			Label: "[i:CalamityInheritance/CIRampartofDeities]Rampart of Deities Resprite"
 			Tooltip:
 				'''
 				Determines sprite of Rampart of Deities Legacy
@@ -255,8 +255,27 @@ Configs: {
 		}
 
 		SpecialRarityColor: {
-			Label: Special Rarity Color
-			Tooltip: ""
+			Label: "[i:GoldCrown]Special Rarity Color"
+			Tooltip: Change rarity color for certain addon item that re-added in mod
+		}
+
+		HeliumFlashResprite: {
+			Label: "[i:CalamityInheritance/HeliumFlashLegacy]Helium Flash Resprite"
+			Tooltip: Determines the sprite of Pwnagehammer
+		}
+
+		DrataliornusResprite: {
+			Label: "[i:CalamityInheritance/DrataliornusLegacy]Drataliornus Resprite"
+			Tooltip: Determines the sprite of Drataliornus
+		}
+
+		GodSlayerWorm: {
+			Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
+			Tooltip:
+			 	'''
+				Determines if a Mechworm can be summoned when wearing Auric/God Slayer Summon armor.
+				Default by true
+				'''
 		}
 	}
 }

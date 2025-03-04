@@ -245,11 +245,13 @@ namespace CalamityInheritance.CIPlayer
         //xeroc套装 
         #endregion
         #region 远古星辉套(Revamped)
-        public bool AncientAstralSet = false;
-        public int AncientAstralHealCD = 0;
-        public int AncientAstralCritsCounts = 0;
-        public bool AncientAstralStatBuff = false;
-        public int AncientConstantHeal = 0;
+        public bool AncientAstralSet = false; //是否为远古星辉
+        public bool AncientAstralStatBuff = false; //是否正在启用星之铸造
+        public int AncientAstralCritsCount = 0; //星辉的暴击次
+        public int AncientAstralCritsCD = 0;//星辉每次暴击的间隔
+        public int AncientAstralStealthCD = 0; //星辉每次潜伏的间隔
+        public int AncientAstralStealth = 0; //星辉潜伏次数
+        public int AncientAstralStealthGap = 0; //星辉套生命恢复效果消失的需求CD 
         #endregion
         #endregion
         #region Summon
@@ -411,10 +413,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
             AncientAstralSet = false;
-            AncientAstralHealCD = 0;
-            AncientAstralCritsCounts = 0;
             AncientAstralStatBuff = false;
-            AncientConstantHeal = 0;
             test = false;
             #endregion
             CIDashID = string.Empty;
@@ -512,10 +511,11 @@ namespace CalamityInheritance.CIPlayer
             ancientXerocWrath   = false;
             #endregion
             AncientAstralSet = false;
-            AncientAstralHealCD = 0; //回血CD, 准备用
-            AncientAstralCritsCounts = 0;   //潜伏重击
             AncientAstralStatBuff = false; //buff
-            AncientConstantHeal = 0; 
+            AncientAstralCritsCount = 0;
+            AncientAstralCritsCD = 0;
+            AncientAstralStealth = 0;
+            AncientAstralStealthCD = 0;
             #endregion
 
             animusBoost = 1f;

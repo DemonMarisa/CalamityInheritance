@@ -50,7 +50,6 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int GodSlayerSetBonusesChange { get; set; }
-
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool silvastun { get; set; }
@@ -83,7 +82,11 @@ namespace CalamityInheritance
         public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
+        [ReloadRequired]
         public bool SpecialRarityColor{ get; set; } //部分物品的特殊颜色
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool GodSlayerWorm{ get; set;} //是否允许弑神蠕虫
 
         #endregion
         #region 材质

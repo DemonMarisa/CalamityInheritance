@@ -609,13 +609,15 @@ AncientAstralHelm: {
 	SetBonus:
 		'''
 
-		+110 max stealth
+		+115 max stealth, stealth strikes only cost 50% of your max stealth
 		+0.5 HP/s life regen speed, +40 max HP and 12% increased damage reduction
 		Decreased your healing potion cooldown by 25% and make debuff can not negate your life regen
-		Upon a stealth strike, your defense, damage reduction will be boosted by 30%, and +8 HP/s life regen speed
-		You will be Healed by 1 HP every time you strike an enemy too
-		This effect has 10 seconds cooldown if triggered
-		Taking damage rain down powerful stars attack your enemy
+		Every rogue critical strikes heal you 25 HP
+		Every 25 times of rouge crticial strikes, your defense, damage reduction will be booosted by 30% and
+		halves the defense damage.
+		Every stealth strikes give you +1 HP/s life regen speed, capped at +12 HP/s
+		Reset this effect if no stealth strikes in 15 seconds
+		Taking damage rain down powerful stars attack your enemy, and restore 25% of your max stealth
 		[c/DFC578:'Rebirth of the forgortten, again']
 		'''
 }

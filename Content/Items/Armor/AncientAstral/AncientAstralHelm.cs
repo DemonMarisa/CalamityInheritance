@@ -50,8 +50,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
             var usPlayer = player.CalamityInheritance(); 
             player.statLifeMax2 += 40;
             player.lifeRegen += 1;
+            player.pStone = true;
             calPlayer.wearingRogueArmor = true;
-            calPlayer.rogueStealthMax += 1.1f;
+            calPlayer.rogueStealthMax += 1.15f;
+            calPlayer.stealthStrikeHalfCost = true;
             player.endurance += 0.12f;
             usPlayer.AncientAstralSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");

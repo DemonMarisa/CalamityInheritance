@@ -99,11 +99,11 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                         Main.projectile[p].originalDamage = 3000;
                 }
 
-                if (player.FindBuffIndex(ModContent.BuffType<Mechworm>()) == -1)
+                if (player.FindBuffIndex(ModContent.BuffType<Mechworm>()) == -1 && CIConfig.Instance.GodSlayerWorm)
                 {
                     player.AddBuff(ModContent.BuffType<Mechworm>(), 3600, true);
                 }
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<MechwormHead>()] < 1)
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<MechwormHead>()] < 1 && CIConfig.Instance.GodSlayerWorm)
                 {
                     int owner = player.whoAmI;
                     int typeHead = ModContent.ProjectileType<MechwormHead>();

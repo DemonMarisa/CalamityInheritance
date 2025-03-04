@@ -119,8 +119,8 @@ yharimOfPerun: {
 }
 
 StepToolDebuff: {
-	DisplayName: Step Tool Debuff
-	Description: Mods.CalamityInheritance.Buffs.StepToolDebuff.Description
+	DisplayName: Step Stool Presence 
+	Description: Oh no...
 }
 
 Backfire: {
@@ -129,6 +129,6 @@ Backfire: {
 }
 
 AncientAstralBuff: {
-	DisplayName: Ancient Astral Buff
-	Description: Mods.CalamityInheritance.Buffs.AncientAstralBuff.Description
+	DisplayName: Astarl Forge
+	Description: With all impurities removed, your armor shines like it's brand new
 }

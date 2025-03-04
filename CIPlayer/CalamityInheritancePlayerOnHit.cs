@@ -21,6 +21,7 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
+using Microsoft.Build.Evaluation;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -203,17 +204,28 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             if(AncientAstralSet)
             {
-                if(projectile.Calamity().stealthStrike  && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()) //潜伏攻击时
+                if(hit.Damage > 10 && hit.Crit && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
                 {
-                    SoundEngine.PlaySound(SoundID.Item4, Player.Center);
-                    Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
-                    AncientAstralHealCD = 600; //100秒
-                }   
-            }
-            if(AncientAstralStatBuff)
-            {
-                if (hit.Damage > 5)
-                    Player.Heal(1);
+                    Player.Heal(20);
+                    AncientAstralCritsCount += 1;// 自增
+                    if(AncientAstralCritsCount == 10)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item4, Player.Center);
+                        Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 480); //8秒
+                        CIFunction.DustCircle(Player.Center, 12f, 1.2f, DustID.HallowedWeapons, false, 8f, 200);
+                    }
+                    AncientAstralCritsCD = 45; //一个非常微弱的CD
+                }
+                if(projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralStealthCD == 0 && projectile.Calamity().stealthStrike)
+                {
+                    AncientAstralStealthGap = 900; //15s
+                    AncientAstralStealthCD = 60; //1秒间隔
+                    if (AncientAstralStealth < 12)
+                    {
+                        player.lifeRegen += 2; //(24)
+                        AncientAstralStealth++;
+                    }
+                }
             }
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
