@@ -119,7 +119,7 @@ yharimOfPerun: {
 }
 
 StepToolDebuff: {
-	DisplayName: Step Stool Presence 
+	DisplayName: Step Stool Presence
 	Description: Oh no...
 }
 

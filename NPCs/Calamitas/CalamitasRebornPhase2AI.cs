@@ -1,20 +1,9 @@
 using System;
-using System.Data;
-using System.Data.Common;
-using System.IO.Compression;
-using System.Net.Http.Headers;
-using System.Numerics;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.Projectiles.Boss;
-using CalamityMod.Projectiles.Summon;
 using CalamityMod.World;
-using log4net.Util;
-using Microsoft.Build.Framework;
-using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -24,15 +13,10 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.NPCs.Calamitas
 {
-    public static class CalCloneCP
+    public static class CalamitasRebornAIPhase2
     {
-        /*
-        *一些微弱的解释性文案:
-        *ai数组中ai[0] 暂时不清楚实际作用，搁置, ai[1]目前存放悬浮(0f)与水平(1f)的ai, ai[2]目前用作计时器转sub阶段的作用
-        *考虑到旧灾的ai逻辑远比灾厄简单(灾厄怎么说都有一个弹幕炼狱), 可能不需要ai[4]去存ai状态, 最高用到ai[3]可能就够实现普灾的逻辑了
-        *
-        */
-        public static void CalCloneLegacyAICP(NPC boss, Mod mod)
+   
+        public static void CalamitasRebornAI(NPC boss, Mod mod)
         {
             #region 初始化
             //Scarlet:这是一个副本文档，用于重新整顿普灾AI
@@ -69,7 +53,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
             //将这个玩家取出来用
             Player player = Main.player[boss.target];
-            CIGlobalNPC.CalamitasCloneWhoAmI = boss.whoAmI;
+            CIGlobalNPC.CalamitasCloneWhoAmIP2 = boss.whoAmI;
             //生成探魂，战斗吧孩子
             Seekers(boss, cign, ifPhase3);
             //获取玩家的中心位置, 只有这个作用, 如果有别的需求得另寻他法
@@ -357,28 +341,28 @@ namespace CalamityInheritance.NPCs.Calamitas
                         if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             /*生成四个兄弟*/
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         // string key = "这里需要生成兄弟的提示文本";
                         Color textColor = Color.Orange;
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
                     {
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         /*与上方相同的代码*/
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.7f) //70%
                     {
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Cataclysm>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<Catastrophe>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         //上同
                     }
                 }
@@ -396,11 +380,11 @@ namespace CalamityInheritance.NPCs.Calamitas
             #endregion
             //按理来说，不出意外的话我们只需要这样就能完成一个普灾AI了，但是实际情况？还得再看看细节上的问题
         }
-        public static void CataclysmLegacyAI(NPC brother, Mod mod)
+        public static void CataclysmRebornAI(NPC brother, Mod mod)
         {
             #region 初始化
             CIGlobalNPC cign =brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmI < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].active)
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
@@ -490,7 +474,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                         {
                             brother.localAI[1] = 0f; //喷火
                             //另一个兄弟在场时，喷火的速度会慢一点
-                            float projSpeed = NPC.AnyNPCs(ModContent.NPCType<Catastrophe>())? 4f : 6f;
+                            float projSpeed = NPC.AnyNPCs(ModContent.NPCType<CatastropheReborn>())? 4f : 6f;
                             int projType = ModContent.ProjectileType<BrimstoneFire>(); //依旧是占位符
                             int projDMG = brother.GetProjectileDamage(projType);
                             projVec = new Vector2(brother.position.X + brother.width / 2, brother.position.Y + brother.height / 2);
@@ -562,12 +546,12 @@ namespace CalamityInheritance.NPCs.Calamitas
             #endregion
             #endregion
         }
-        public static void CatastropheLegacyAI(NPC brother, Mod mod)
+        public static void CatastropheRebornAI(NPC brother, Mod mod)
         {
             //复制粘贴兄弟们
             #region 初始化
-            CIGlobalNPC cign =brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmI < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].active)
+            CIGlobalNPC cign = brother.CalamityInheritance();
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
@@ -870,7 +854,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     int eyeDist = 180;
                     for (int i = 0; i < eyeAmt; i++)
                     {
-                        int newEye = NPC.NewNPC(boss.GetSource_FromAI(), (int)(boss.Center.X + (Math.Sin(i * eyespread) * eyeDist)), (int)(boss.Center.Y + (Math.Cos(i * eyespread) * eyeDist)), ModContent.NPCType<SoulSeekerLegacy>(), boss.whoAmI, 0, 0, 0, -1);
+                        int newEye = NPC.NewNPC(boss.GetSource_FromAI(), (int)(boss.Center.X + (Math.Sin(i * eyespread) * eyeDist)), (int)(boss.Center.Y + (Math.Cos(i * eyespread) * eyeDist)), ModContent.NPCType<SoulSeekerReborn>(), boss.whoAmI, 0, 0, 0, -1);
                         Main.npc[newEye].ai[0] = i * eyespread;
                     }
                 }

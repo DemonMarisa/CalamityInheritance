@@ -55,5 +55,12 @@ Mods: {
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+
+		Items: {
+			BrimlashBuster: {
+				DisplayName: Brimlash Buster
+				Tooltip: ""
+			}
+		}
 	}
 }

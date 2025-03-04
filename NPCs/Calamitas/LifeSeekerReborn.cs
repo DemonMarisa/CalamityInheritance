@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Calamitas
 
 {
-    public class LifeSeekerLegacy : ModNPC
+    public class LifeSeekerReborn : ModNPC
     {
         public static Asset<Texture2D> GlowTexture;
         public override void SetStaticDefaults()
@@ -67,8 +67,6 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            //草拟吗傻逼山猪，怎么全是numxxx，从现在的复制过来了
-            //你们这不是会写其它变量名吗
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -143,7 +141,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 {
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
                 }
-                //依然暂时禁用
+                //锟斤拷然锟斤拷时锟斤拷锟斤拷
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/LifeSeeker"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/LifeSeeker2"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/LifeSeeker3"), 1f);

@@ -19,7 +19,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Calamitas
 {
-    public class SoulSeekerLegacy : ModNPC
+    public class SoulSeekerReborn : ModNPC
     {
         private int timer = 0;
         private bool start = true;
@@ -115,11 +115,11 @@ namespace CalamityInheritance.NPCs.Calamitas
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].ai[1] < 2f)
                 {
-                    if (NPC.CountNPCS(ModContent.NPCType<LifeSeekerLegacy>()) < 3)
+                    if (NPC.CountNPCS(ModContent.NPCType<LifeSeekerReborn>()) < 3)
                     {
                         int x = (int)(NPC.position.X + Main.rand.Next(NPC.width - 25));
                         int y = (int)(NPC.position.Y + Main.rand.Next(NPC.height - 25));
-                        int num663 = ModContent.NPCType<LifeSeekerLegacy>();
+                        int num663 = ModContent.NPCType<LifeSeekerReborn>();
                         int num664 = NPC.NewNPC(NPC.GetSource_Death(), x, y, num663, 0, 0f, 0f, 0f, 0f, 255);
                     }
                     for (int num621 = 0; num621 < 3; num621++)
@@ -131,7 +131,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
                 timer = 0;
             }
-            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<CalamitasPhase2Legacy>())];
+            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<CalamitasRebornPhase2>())];
             double deg = NPC.ai[1];
             double rad = deg * (Math.PI / 180);
             double dist = 150;

@@ -15,7 +15,7 @@ namespace CalamityInheritance.System.Scenes.MusicScenes
     {
         public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
 
-        public override int NPCType => ModContent.NPCType<CalamitasLegacy>();
+        public override int NPCType => ModContent.NPCType<CalamitasReborn>();
         public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasClone");
         public override int VanillaMusic => MusicID.Boss2;
         public override int OtherworldMusic => MusicID.OtherworldlyBoss2;

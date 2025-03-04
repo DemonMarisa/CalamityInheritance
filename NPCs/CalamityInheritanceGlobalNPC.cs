@@ -25,6 +25,7 @@ namespace CalamityInheritance.NPCs
         public int BossAITimer = 0; 
         //获取whoami
         public static int CalamitasCloneWhoAmI = -1;
+        public static int CalamitasCloneWhoAmIP2 = -1;
         public static int CatalysmCloneWhoAmI = -1;
         public static int CatastropheCloneWhoAmI = -1;
         public override void UpdateLifeRegen(NPC npc, ref int damage)

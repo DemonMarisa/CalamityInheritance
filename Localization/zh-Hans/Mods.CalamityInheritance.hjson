@@ -254,15 +254,15 @@ Configs: {
 		DrataliornusResprite: {
 			Label: "[i:CalamityInheritance/DrataliornusLegacy]赤陨霸龙弓贴图切换"
 			Tooltip: 切换赤陨霸龙弓的贴图
+		}
 
 		GodSlayerWorm: {
-			Label: "[i:CalamityMod/StaffoftheMechworm]弑神套装奖励
-			Tooltip:
+			// Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
+			/* Tooltip:
 				'''
-				决戴召唤弑神/金源套装时是否生成小型的宇宙蠕虫
-				默认开启
-				'''
-			}
+				Determines if a Mechworm can be summoned when wearing Auric/God Slayer Summon armor.
+				Default by true
+				''' */
 		}
 	}
 }

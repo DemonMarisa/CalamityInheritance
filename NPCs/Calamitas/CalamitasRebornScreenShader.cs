@@ -17,7 +17,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         private void UpdateCalIndex()
         {
-            int CalType = ModContent.NPCType<CalamitasPhase2Legacy>();
+            int CalType = ModContent.NPCType<CalamitasRebornPhase2>();
             if (CalIndex >= 0 && Main.npc[CalIndex].active && Main.npc[CalIndex].type == CalType)
             {
                 return;

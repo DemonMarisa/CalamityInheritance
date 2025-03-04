@@ -1,28 +1,34 @@
-using System.IO;
 using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.NPCs.TownNPCs;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System.IO;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Chat;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Calamitas
 {
 	[AutoloadBossHead]
-    public class CalamitasLegacy : ModNPC
+    public class CalamitasRebornPhase2: ModNPC
     {
         public static Asset<Texture2D> GlowTexture;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Calamitas");
             Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
             if (!Main.dedServ)
@@ -33,97 +39,72 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void SetDefaults()
         {
-            NPC.damage = 55;
+            //不使用任何除了原灾的boss标签以外的封装
+            //因此伤害设置上我们不会选择去调用原灾的方法
+            NPC.damage = 250; 
             NPC.npcSlots = 14f;
             NPC.width = 120;
             NPC.height = 120;
-            NPC.defense = 15;
-			NPC.DR_NERD(0.15f);
-            NPC.value = 0f;
-            NPC.LifeMaxNERB(37500, 51750, 5200000);
+            NPC.value = CIShopValue.RarityPriceCatalystViolet;
+            //进入二阶段移除Boss免伤 -> 作为替代，将二阶段的防御力25 -> 30
+            NPC.defense = 30;
+			NPC.lifeMax = 150000; //二阶段15万
             if (CalamityConditions.DownedProvidence.IsMet())
             {
                 NPC.damage *= 3;
                 NPC.defense *= 3;
                 NPC.lifeMax *= 3;
+                NPC.value *= 2.5f;
             }
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
-            for (int k = 0; k < NPC.buffImmune.Length; k++)
-            {
-                NPC.buffImmune[k] = true;
-            }
-            NPC.buffImmune[BuffID.Ichor] = false;
-            NPC.buffImmune[ModContent.BuffType<MarkedforDeath>()] = false;
-			NPC.buffImmune[BuffID.Frostburn] = false;
-			NPC.buffImmune[BuffID.CursedInferno] = false;
-            NPC.buffImmune[BuffID.Daybreak] = false;
-            NPC.buffImmune[BuffID.BetsysCurse] = false;
-			NPC.buffImmune[BuffID.StardustMinionBleed] = false;
-			NPC.buffImmune[BuffID.DryadsWardDebuff] = false;
-			NPC.buffImmune[BuffID.Oiled] = false;
-			NPC.buffImmune[BuffID.BoneJavelin] = false;
-			NPC.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = false;
-            NPC.buffImmune[ModContent.BuffType<ArmorCrunch>()] = false;
-            NPC.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = false;
-            NPC.buffImmune[ModContent.BuffType<HolyFlames>()] = false;
-            NPC.buffImmune[ModContent.BuffType<Nightwither>()] = false;
-            NPC.buffImmune[ModContent.BuffType<Plague>()] = false;
-            NPC.buffImmune[ModContent.BuffType<Shred>()] = false;
-            NPC.buffImmune[ModContent.BuffType<WhisperingDeath>()] = false;
-            NPC.buffImmune[ModContent.BuffType<SilvaStun>()] = false;
-            NPC.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = false;
-            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            
+            //不采用遍历的方法免疫所有的debuff， 只单独对几个特定的debuff免疫打表
+            //硫磺火boss当然要免疫硫磺火和地狱火
+			NPC.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
+            NPC.buffImmune[BuffID.OnFire] = true;
+            NPC.buffImmune[BuffID.OnFire3] = true;
+            //近似于机械造物的玩意不太可能会受到毒素的影响
+            NPC.buffImmune[BuffID.Poisoned] = true;
+            NPC.buffImmune[BuffID.Venom] = true;
+            NPC.buffImmune[ModContent.BuffType<Plague>()] = true;
+            //没了，就免疫上面六个debuff
+
             NPC.boss = true;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
             NPC.HitSound = SoundID.NPCHit4;
-            Music = MusicID.Boss2;
+            NPC.DeathSound = SoundID.NPCDeath14;
         }
 
-		public override void FindFrame(int frameHeight)
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+			writer.Write(NPC.chaseable);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+			NPC.chaseable = reader.ReadBoolean();
+        }
+
+        public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.15f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(NPC.dontTakeDamage);
-            writer.Write(NPC.localAI[0]);
-            writer.Write(NPC.localAI[1]);
-            writer.Write(NPC.localAI[2]);
-            writer.Write(NPC.localAI[3]);
-            for(int i = 0; i < 4; i++)
-            {
-                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
-            }
-
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            NPC.dontTakeDamage = reader.ReadBoolean();
-            NPC.localAI[0] = reader.ReadSingle();
-            NPC.localAI[1] = reader.ReadSingle();
-            NPC.localAI[2] = reader.ReadSingle();
-            NPC.localAI[3] = reader.ReadSingle();
-            for(int i = 0; i < 4; i++)
-            {
-                NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
-            }
-        }
 
         public override void AI()
         {
-            CalCloneCP.CalCloneLegacyAICP(NPC, Mod);
-		}
+			CalamitasRebornAIPhase2.CalamitasRebornAI(NPC, Mod);
+        }
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -178,24 +159,81 @@ namespace CalamityInheritance.NPCs.Calamitas
             spriteBatch.Draw(texture, npcOffset, NPC.frame, color, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
             return false;
-		}
+        }
+        //DemonMarisa:Onkillɱ��
+   //     public override void OnKill()
+   //     {
+   //         DropHelper.DropBags(NPC);
 
-		public override bool PreKill()
+   //         DropHelper.DropItem(NPC, ItemID.BrokenHeroSword, true);
+   //         DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasTrophy>(), 10);
+   //         DropHelper.DropItemCondition(NPC, ModContent.ItemType<KnowledgeCalamitasClone>(), !CalamityConditions.downedCalamitas);
+   //         DropHelper.DropResidentEvilAmmo(NPC, CalamityConditions.downedCalamitas, 4, 2, 1);
+
+			//NPC.Calamity().SetNewShopVariable(new int[] { ModContent.NPCType<THIEF>() }, CalamityConditions.downedCalamitas);
+
+			//if (!Main.expertMode)
+   //         {
+			//	//Materials
+   //             DropHelper.DropItemSpray(NPC, ModContent.ItemType<EssenceofChaos>(), 4, 8);
+   //             DropHelper.DropItem(NPC, ModContent.ItemType<CalamityDust>(), 9, 14);
+   //             DropHelper.DropItem(NPC, ModContent.ItemType<BlightedLens>(), 1, 2);
+			//	DropHelper.DropItemCondition(NPC, ModContent.ItemType<Bloodstone>(), CalamityConditions.downedProvidence, 1f, 30, 40);
+
+   //             // Weapons
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<TheEyeofCalamitas>(), 4);
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<Animosity>(), 4);
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasInferno>(), 4);
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<BlightedEyeStaff>(), 4);
+
+   //             // Equipment
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<ChaosStone>(), 10);
+
+   //             // Vanity
+   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasMask>(), 7);
+   //         }
+
+   //         // Abyss awakens after killing Calamitas
+   //         string key = "Mods.CalamityMod.PlantBossText";
+   //         Color messageColor = Color.RoyalBlue;
+
+   //         if (!CalamityConditions.downedCalamitas)
+   //         {
+   //             if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
+   //                 SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/WyrmScream"), (int)Main.player[Main.myPlayer].position.X, (int)Main.player[Main.myPlayer].position.Y);
+
+   //             if (Main.netMode == NetmodeID.SinglePlayer)
+   //                 Main.NewText(Language.GetTextValue(key), messageColor);
+   //             else if (Main.netMode == NetmodeID.Server)
+   //                 ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
+   //         }
+
+   //         // Mark Calamitas as dead
+   //         CalamityConditions.downedCalamitas = true;
+   //         CalamityMod.UpdateServerBoolean();
+   //     }
+
+        public override void BossLoot(ref string name, ref int potionType)
         {
-            return false;
+            name = "Calamitas Reborn";
+            potionType = ItemID.GreaterHealingPotion;
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-            if (NPC.life > 0)
+            for (int k = 0; k < 5; k++)
             {
-                for (int k = 0; k < 5; k++)
-                {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
-                }
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
             }
-            else
+            if (NPC.life <= 0)
             {
+                //需要石块
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas2"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas3"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas4"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas5"), 1f);
+                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas6"), 1f);
                 NPC.position.X = NPC.position.X + NPC.width / 2;
                 NPC.position.Y = NPC.position.Y + NPC.height / 2;
                 NPC.width = 100;
@@ -222,20 +260,14 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
             }
         }
-        //DemonMarisa:�ѶȲ���ɱ��
-        //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
-        //{
-        //    NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
-        //    NPC.damage = (int)(NPC.damage * 0.8f);
-        //}
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+        {
+           NPC.damage = (int)(NPC.damage * 0.8f);
+           NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossAdjustment);
+        }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            //DemonMarisa: �־�debuff�Ѿ�����
-            //if (CalamityConditions.revenge)
-            //{
-            //    player.AddBuff(ModContent.BuffType<Horror>(), 180, true);
-            //}
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
         }
     }

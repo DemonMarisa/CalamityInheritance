@@ -15,7 +15,11 @@ CalamitasNPCLegacy: {
 	}
 }
 
-// CalamitasLegacy.DisplayName: Calamitas Legacy
+// CalamitaReborn.DisplayName: Calamitas Legacy
 // CalamitasPhase2Legacy.DisplayName: Calamitas Phase2 Legacy
-// LifeSeekerLegacy.DisplayName: Life Seeker Legacy
-// SoulSeekerLegacy.DisplayName: Soul Seeker Legacy
+// LifeSeekerReborn.DisplayName: Life Seeker Legacy
+// SoulSeekerReborn.DisplayName: Soul Seeker Legacy
+// CalamitasReborn.DisplayName: Calamitas Reborn
+// CalamitasRebornPhase2.DisplayName: Calamitas Reborn Phase2
+// CataclysmReborn.DisplayName: Cataclysm Reborn
+// CatastropheReborn.DisplayName: Catastrophe Reborn

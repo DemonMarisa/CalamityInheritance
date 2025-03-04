@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Calamitas
 
 {
-    public class CalSky : CustomSky
+    public class CalamitasRebornSky: CustomSky
     {
         private bool isActive = false;
         private float intensity = 0f;
@@ -49,7 +49,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         private bool UpdateCalIndex()
         {
-            int CalType = ModContent.NPCType<CalamitasPhase2Legacy>();
+            int CalType = ModContent.NPCType<CalamitasRebornPhase2>();
             if (CalIndex >= 0 && Main.npc[CalIndex].active && Main.npc[CalIndex].type == CalType)
             {
                 return true;

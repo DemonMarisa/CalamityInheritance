@@ -272,7 +272,7 @@ Configs: {
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
 			Tooltip:
-			 	'''
+				'''
 				Determines if a Mechworm can be summoned when wearing Auric/God Slayer Summon armor.
 				Default by true
 				'''

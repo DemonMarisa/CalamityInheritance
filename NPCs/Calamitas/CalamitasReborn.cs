@@ -1,29 +1,23 @@
+using System.IO;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.NPCs.TownNPCs;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System.IO;
 using Terraria;
-using Terraria.Audio;
-using Terraria.Chat;
 using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Calamitas
 {
 	[AutoloadBossHead]
-    public class CalamitasPhase2Legacy : ModNPC
+    public class CalamitasReborn : ModNPC
     {
         public static Asset<Texture2D> GlowTexture;
         public override void SetStaticDefaults()
@@ -39,21 +33,20 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void SetDefaults()
         {
-            NPC.damage = 70;
+            NPC.damage = 50;
             NPC.npcSlots = 14f;
             NPC.width = 120;
             NPC.height = 120;
-            NPC.defense = 25;
-            NPC.value = Item.buyPrice(0, 15, 0, 0);
-			NPC.DR_NERD(0.15f);
-			NPC.LifeMaxNERB(28125, 38812, 3900000);
-            if (CalamityConditions.DownedProvidence.IsMet())
-            {
-                NPC.damage *= 3;
-                NPC.defense *= 3;
-                NPC.lifeMax *= 3;
-                NPC.value *= 2.5f;
-            }
+            NPC.defense = 15;
+    
+            NPC.value = 0f;
+            NPC.lifeMax = 100000; //涓�闃舵鍗佷竾
+            // if (CalamityConditions.DownedProvidence.IsMet())
+            // {
+            //     NPC.damage *= 3;
+            //     NPC.defense *= 3;
+            //     NPC.lifeMax *= 3;
+            // }
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;
@@ -88,34 +81,49 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.noGravity = true;
             NPC.noTileCollide = true;
             NPC.HitSound = SoundID.NPCHit4;
-            NPC.DeathSound = SoundID.NPCDeath14;
+            Music = MusicID.Boss2;
         }
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-			writer.Write(NPC.chaseable);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-			NPC.chaseable = reader.ReadBoolean();
-        }
-
-        public override void FindFrame(int frameHeight)
+		public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.15f;
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(NPC.dontTakeDamage);
+            writer.Write(NPC.localAI[0]);
+            writer.Write(NPC.localAI[1]);
+            writer.Write(NPC.localAI[2]);
+            writer.Write(NPC.localAI[3]);
+            for(int i = 0; i < 4; i++)
+            {
+                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+            }
+
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            NPC.dontTakeDamage = reader.ReadBoolean();
+            NPC.localAI[0] = reader.ReadSingle();
+            NPC.localAI[1] = reader.ReadSingle();
+            NPC.localAI[2] = reader.ReadSingle();
+            NPC.localAI[3] = reader.ReadSingle();
+            for(int i = 0; i < 4; i++)
+            {
+                NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
+            }
+        }
 
         public override void AI()
         {
-			CICalCloneLegacyAI.CalCloneAI(NPC, Mod, 15, true);
-        }
+            CalamitasRebornAIPhase1.CalamitasRebornAI(NPC, Mod);
+		}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -170,81 +178,24 @@ namespace CalamityInheritance.NPCs.Calamitas
             spriteBatch.Draw(texture, npcOffset, NPC.frame, color, NPC.rotation, origin, NPC.scale, spriteEffects, 0f);
 
             return false;
-        }
-        //DemonMarisa:Onkill杀了
-   //     public override void OnKill()
-   //     {
-   //         DropHelper.DropBags(NPC);
+		}
 
-   //         DropHelper.DropItem(NPC, ItemID.BrokenHeroSword, true);
-   //         DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasTrophy>(), 10);
-   //         DropHelper.DropItemCondition(NPC, ModContent.ItemType<KnowledgeCalamitasClone>(), !CalamityConditions.downedCalamitas);
-   //         DropHelper.DropResidentEvilAmmo(NPC, CalamityConditions.downedCalamitas, 4, 2, 1);
-
-			//NPC.Calamity().SetNewShopVariable(new int[] { ModContent.NPCType<THIEF>() }, CalamityConditions.downedCalamitas);
-
-			//if (!Main.expertMode)
-   //         {
-			//	//Materials
-   //             DropHelper.DropItemSpray(NPC, ModContent.ItemType<EssenceofChaos>(), 4, 8);
-   //             DropHelper.DropItem(NPC, ModContent.ItemType<CalamityDust>(), 9, 14);
-   //             DropHelper.DropItem(NPC, ModContent.ItemType<BlightedLens>(), 1, 2);
-			//	DropHelper.DropItemCondition(NPC, ModContent.ItemType<Bloodstone>(), CalamityConditions.downedProvidence, 1f, 30, 40);
-
-   //             // Weapons
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<TheEyeofCalamitas>(), 4);
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<Animosity>(), 4);
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasInferno>(), 4);
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<BlightedEyeStaff>(), 4);
-
-   //             // Equipment
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<ChaosStone>(), 10);
-
-   //             // Vanity
-   //             DropHelper.DropItemChance(NPC, ModContent.ItemType<CalamitasMask>(), 7);
-   //         }
-
-   //         // Abyss awakens after killing Calamitas
-   //         string key = "Mods.CalamityMod.PlantBossText";
-   //         Color messageColor = Color.RoyalBlue;
-
-   //         if (!CalamityConditions.downedCalamitas)
-   //         {
-   //             if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
-   //                 SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/WyrmScream"), (int)Main.player[Main.myPlayer].position.X, (int)Main.player[Main.myPlayer].position.Y);
-
-   //             if (Main.netMode == NetmodeID.SinglePlayer)
-   //                 Main.NewText(Language.GetTextValue(key), messageColor);
-   //             else if (Main.netMode == NetmodeID.Server)
-   //                 ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), messageColor);
-   //         }
-
-   //         // Mark Calamitas as dead
-   //         CalamityConditions.downedCalamitas = true;
-   //         CalamityMod.UpdateServerBoolean();
-   //     }
-
-        public override void BossLoot(ref string name, ref int potionType)
+		public override bool PreKill()
         {
-            name = "The Calamitas Clone";
-            potionType = ItemID.GreaterHealingPotion;
+            return false;
         }
 
         public override void HitEffect(NPC.HitInfo hit)
         {
-            for (int k = 0; k < 5; k++)
+            if (NPC.life > 0)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
+                for (int k = 0; k < 5; k++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
+                }
             }
-            if (NPC.life <= 0)
+            else
             {
-                //DemonMarisa: 尸块杀了
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas"), 1f);
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas2"), 1f);
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas3"), 1f);
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas4"), 1f);
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas5"), 1f);
-                //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas6"), 1f);
                 NPC.position.X = NPC.position.X + NPC.width / 2;
                 NPC.position.Y = NPC.position.Y + NPC.height / 2;
                 NPC.width = 100;
@@ -271,20 +222,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                 }
             }
         }
-        //DemonMarisa:难度差分杀了
-        //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
-        //{
-        //    NPC.damage = (int)(NPC.damage * 0.8f);
-        //    NPC.lifeMax = (int)(NPC.lifeMax * 0.8f * bossLifeScale);
-        //}
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+            public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            //DemonMarisa: 恐惧debuff没了
-            //if (CalamityConditions.revenge)
-            //{
-            //    player.AddBuff(ModContent.BuffType<Horror>(), 180, true);
-            //}
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);
         }
     }
