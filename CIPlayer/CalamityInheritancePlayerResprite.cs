@@ -39,6 +39,7 @@ namespace CalamityInheritance.CIPlayer
                 CIConfig.Instance.StellarContemptResprite  = 2;
                 CIConfig.Instance.FateGirlSprite = 2;
                 CIConfig.Instance.HeliumFlashResprite = 2;
+                CIConfig.Instance.DrataliornusResprite = 2;
             }
             #endregion
             #region Texture
@@ -345,11 +346,11 @@ namespace CalamityInheritance.CIPlayer
             //龙弓
             if (TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] != null)
             {
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
+                if (CIConfig.Instance.StellarContemptResprite == 1)
                 {
                     TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIResprite.DrataliornusLegacyAlter;
                 }
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
+                if (CIConfig.Instance.StellarContemptResprite == 2)
                 {
                     TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIResprite.DrataliornusLegacy;
                 }
@@ -357,11 +358,11 @@ namespace CalamityInheritance.CIPlayer
 
             if (TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] != null)
             {
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
+                if (CIConfig.Instance.StellarContemptResprite == 1)
                 {
                     TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIResprite.DrataliornusLegacyAlter;
                 }
-                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
+                if (CIConfig.Instance.StellarContemptResprite == 2)
                 {
                     TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIResprite.DrataliornusLegacy;
                 }
