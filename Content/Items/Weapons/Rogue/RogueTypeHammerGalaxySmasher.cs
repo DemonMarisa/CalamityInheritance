@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static int BaseDamage = 275; //300→275 出于某些我不知道的原因盗贼的锤子忽然具备了幻魂归墟的潜力
-        public static float Speed = 15f;    //18f→15f 用最大飞行时间换了就不需要这么高的速度了
+        public static float Speed = 20f;    //15f -> 20f
 
         public override void SetStaticDefaults()
         {

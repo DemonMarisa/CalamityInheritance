@@ -54,20 +54,6 @@ Mods: {
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
-
-		Content: {
-			Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
-
-			Items: {
-				Placeables: {
-					CraftingStations: {
-						DemonshadeWorkbench: {
-							DisplayName: Demonshade Workbench
-							Tooltip: ""
-						}
-					}
-				}
-			}
-		}
+		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 	}
 }

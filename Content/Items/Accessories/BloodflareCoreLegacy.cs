@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
              //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCore>()] = ModContent.ItemType<BloodflareCoreLegacy>();

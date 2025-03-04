@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 int i = Main.myPlayer;
                 float arrowSpeed = Main.rand.Next(25, 30);
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         {
             Player player = Main.LocalPlayer;
 
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversion");
 

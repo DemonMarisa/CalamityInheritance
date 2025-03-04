@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -45,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     int dustType = i == 0 ? 107 : 234;
                     if (Main.rand.NextBool(4))
                     {
-                        dustType = 269;
+                        dustType = CIDustID.DustSandnado;
                     }
                     Vector2 offset = Vector2.UnitX * -12f;
                     offset = -Vector2.UnitY.RotatedBy((double)(counter * 0.1308997f + i * MathHelper.Pi), default) * value7;
@@ -72,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 107,
                 234,
-                269
+                CIDustID.DustSandnado
             });
             for (int k = 0; k < 4; k++)
             {

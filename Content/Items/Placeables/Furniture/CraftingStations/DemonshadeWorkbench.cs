@@ -1,4 +1,5 @@
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.CraftingStations;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
 {
     public class DemonshadeWorkbench: ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Placeables.CraftingStations";
+        public new string LocalizationCategory => "Content.Items.Placeables.Furniture.CraftingStations";
         public override void SetDefaults()
         {
             Item.width = 64;
@@ -24,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<PlantareGreen>() : ModContent.RarityType<PureRed>();
             Item.CloneDefaults(ModContent.ItemType<ShadowspecBar>());
             Item.createTile = ModContent.TileType<DemonshadeTile>();
         }

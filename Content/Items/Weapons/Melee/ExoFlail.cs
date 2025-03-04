@@ -16,6 +16,7 @@ using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -47,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item101;
             Item.channel = true;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<ExoFlailProj>();
             Item.shootSpeed = 24f;

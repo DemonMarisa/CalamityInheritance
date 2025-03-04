@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
             {
-                dustType = 269;
+                dustType = CIDustID.DustSandnado;
             }
             Projectile.localAI[1] += 1f;
             if (Projectile.localAI[1] > 4f)
@@ -99,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
             {
-                dustType = 269;
+                dustType = CIDustID.DustSandnado;
             }
             for (int i = 0; i < 2; i++)
             {

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Music.MusicScene
             // Check if any of the Exos is nearby
             bool isAnyBossNearby = IsNpcNearby(DoGHead, player , 8500f);
 
-            return !BossRushActive &&  isAnyBossNearby && CalamityInheritanceConfig.Instance.DoGLegacyMusic;
+            return !BossRushActive &&  isAnyBossNearby && CIConfig.Instance.DoGLegacyMusic;
         }
 
         /// <summary>

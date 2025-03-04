@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -49,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
             int dustID = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
-                dustID = 269;
+                dustID = CIDustID.DustSandnado;
 
             if (Main.rand.NextBool())
             {

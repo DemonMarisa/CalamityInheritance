@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe = CreateRecipe();
                 recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());

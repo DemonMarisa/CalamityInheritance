@@ -74,11 +74,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
 
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 type = ModContent.ProjectileType<PiercingBullet>();
             }
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+            if (CIConfig.Instance.AmmoConversion == false)
             {
                 if (type == ProjectileID.Bullet)
                 {
@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 

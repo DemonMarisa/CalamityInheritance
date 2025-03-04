@@ -112,7 +112,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 
 		public override void AddRecipes()
 		{
-			if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+			if (CIConfig.Instance.LegendaryitemsRecipes == true)
 			{
 				CreateRecipe().
 				AddIngredient<AuricTeslaHeadMagic>().

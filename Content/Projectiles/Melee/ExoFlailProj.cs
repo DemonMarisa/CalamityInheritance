@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
 using Terraria.ID;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -29,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
 
         public override Color SpecialDrawColor => default;
-        public override int ExudeDustType => 269;
+        public override int ExudeDustType => CIDustID.DustSandnado;
         public override int WhipDustType => 107;
         public override int HandleHeight => 56;
         public override int BodyType1StartY => 60;

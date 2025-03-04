@@ -41,3 +41,13 @@ AcceleratorT3: {
 		'I found a Partical Accelerator here, Level 3.'
 		'''
 }
+
+DemonshadeWorkbench: {
+	Tooltip:
+		'''
+		Used to craft Calamity Souls, but now just a decoration.
+		[c/55D21C:A glimsp of the old days...]
+		[c/55D21C:This item is belongs to legacy addon: Calamity Souls by Plantare]
+		'''
+	DisplayName: Demonshade Workbench Souls
+}

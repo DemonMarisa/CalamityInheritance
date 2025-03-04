@@ -271,8 +271,8 @@ namespace CalamityInheritance.Content.Items
             #endregion
             #region 一些困难模式前获取起来非常逆天的物品
             Recipe.Create(ModContent.ItemType<OnyxExcavatorKey>()).
-                AddIngredient(ItemID.Amethyst, 16).
                 AddIngredient<MarniteObliterator>(1).
+                AddIngredient(ItemID.Amethyst, 16).
                 AddIngredient<DubiousPlating>(15).
                 AddIngredient<MysteriousCircuitry>(15).
                 AddIngredient<Onyxplate>(150).
@@ -396,7 +396,7 @@ namespace CalamityInheritance.Content.Items
                 AddTile<AcceleratorT2Tile>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<SuspiciousScrap>(), 20).
+            Recipe.Create(ModContent.ItemType<DubiousPlating>(), 20).
                 AddRecipeGroup(RecipeGroupID.IronBar, 5).
                 AddRecipeGroup("AnyCopperBar", 5).
                 AddIngredient(ItemID.Glass, 5).
@@ -416,8 +416,8 @@ namespace CalamityInheritance.Content.Items
             
             #region T2粒子加速器 月后早期合成
             Recipe.Create(ModContent.ItemType<ExodiumCluster>(), 5). //旧版Exodium Cluster的合成方法
-                AddIngredient(ItemID.LunarOre, 1).
-                AddIngredient<GalacticaSingularity>(1).
+                AddIngredient(ItemID.LunarOre, 5).
+                AddIngredient<GalacticaSingularity>(5).
                 AddTile<AcceleratorT2Tile>().
                 Register();
             #endregion
@@ -692,7 +692,7 @@ namespace CalamityInheritance.Content.Items
         public static void Legendary()
         {
             #region LegendaryItems
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIConfig.Instance.LegendaryitemsRecipes == true)
             {
 
                 Recipe.Create(ModContent.ItemType<ConclaveCrossfire>()).

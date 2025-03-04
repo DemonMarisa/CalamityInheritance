@@ -5,12 +5,14 @@ ExoTheApostle: {
 		Striking an enemy will summon more javelins around for additional hits
 		Stealth strikes will summon more javelins, and burst into homing energy daggers
 		'The messanger of a truth that consigns all who hear it to oblivion'
+		[c/9370DB:A glimsp of the old days...]
+		[c/9370DB:This weapon is belongs to legacy addon: Calamity Seraph]
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Your attack can infinite pierce]
-		[c/00B2EE:Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes]
-		[c/00B2EE:Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins]
+		[c/0080CA:Your attack can infinite pierce]
+		[c/0080CA:Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes]
+		[c/0080CA:Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins]
 		'''
 }
 
@@ -71,7 +73,7 @@ Supernovaold: {
 		Stealth strikes release energy as they fly
 		'Nerf Supernova sprite size'
 		'''
-	ExoLoreOn: "[c/00B2EE:Stealth strikes casue an even bigger expolsion]"
+	ExoLoreOn: "[c/0080CA:Stealth strikes casue an even bigger expolsion]"
 }
 
 SylvanSlasher: {
@@ -98,8 +100,8 @@ Celestusold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Upon attacking, a duplicate sickle will spawn from above]
-		[c/00B2EE:Stealth strikes will spawn tracking Auric sickle along the path]
+		[c/0080CA:Upon attacking, a duplicate sickle will spawn from above]
+		[c/0080CA:Stealth strikes will spawn tracking Auric sickle along the path]
 		'''
 }
 

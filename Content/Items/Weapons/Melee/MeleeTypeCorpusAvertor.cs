@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
+            if(CIConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeCorpusAvertor>()] = ModContent.ItemType<CorpusAvertor>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CorpusAvertor>()] = ModContent.ItemType<MeleeTypeCorpusAvertor>();

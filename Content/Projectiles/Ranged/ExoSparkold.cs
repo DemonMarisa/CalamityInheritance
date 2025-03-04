@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -15,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             107,
             234,
-            269,
+            CIDustID.DustSandnado,
         };
         public const float HomingInertia = 10f;
         public const float MaxTargetDistance = 750f;

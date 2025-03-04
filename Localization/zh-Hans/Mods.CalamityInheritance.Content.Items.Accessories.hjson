@@ -392,3 +392,16 @@ DraedonsHeartLegacy: {
 		[c/AABBCC:"哪个天杀的家伙把防御损伤塞进这游戏的?"]
 		'''
 }
+
+SoulDemonshade: {
+	DisplayName: 魔影魂[Legacy]
+	Tooltip:
+		'''
+		增加100点最大生命上限与魔力上限
+		增加50%移动速度
+		你所有的伤害都会被1.15x
+		召唤一只友好的红恶魔为你而战
+		[c/FECDEB:来自1.3的旧模组: 灾厄魂 Calamity Soul]
+		[c/FECDEB:过往时代的一瞥]
+		'''
+}

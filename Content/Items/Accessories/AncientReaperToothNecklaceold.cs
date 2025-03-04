@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             //微光嬗变config开启时允许这个原灾的鲨牙项链与这一项链相互转化
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
             {
                
             }
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             //微光嬗变config关闭时使用这个合成表
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            if(CIConfig.Instance.CustomShimmer == false)
             {
                 CreateRecipe().
                     AddIngredient<ReaperTooth>(10).

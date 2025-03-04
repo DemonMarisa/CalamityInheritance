@@ -102,7 +102,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     offset -= baseOffset;
 
                 int thisArrowType = type;
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+            if (CIConfig.Instance.AmmoConversion == false)
             {
                 if (type == ProjectileID.WoodenArrowFriendly)
                 {
@@ -120,7 +120,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     dmgMult = NormalArrowDamageMult;
                 }
             }
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                     if (usPlayer.exoMechLore)
                     {
@@ -162,7 +162,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 

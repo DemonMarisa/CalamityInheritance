@@ -62,11 +62,11 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             calPlayer.auricSet = true;
             usPlayer.auricsilvaset = true;
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 usPlayer.GodSlayerReborn = true;
             }
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
             {
                 if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 {

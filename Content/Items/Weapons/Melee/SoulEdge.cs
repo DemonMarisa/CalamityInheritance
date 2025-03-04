@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
              //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidEdge>()] = ModContent.ItemType<SoulEdge>();
@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            if(CIConfig.Instance.CustomShimmer == false)
              //关闭微光转化后，灵魂边锋启用合成表
             {
                 CreateRecipe().

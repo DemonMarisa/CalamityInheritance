@@ -5,9 +5,9 @@ using Terraria.ModLoader.Config;
 namespace CalamityInheritance
 {
     [BackgroundColor(49, 32, 36, 216)]
-    public class CalamityInheritanceConfig : ModConfig
+    public class CIConfig : ModConfig
     {
-        public static CalamityInheritanceConfig Instance;
+        public static CIConfig Instance;
         public override ConfigScope Mode => ConfigScope.ClientSide;
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => true;
 
@@ -81,6 +81,9 @@ namespace CalamityInheritance
         [DefaultValue(true)]
         [ReloadRequired]
         public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool SpecialRarityColor{ get; set; } //部分物品的特殊颜色
 
         #endregion
         #region 材质
@@ -177,6 +180,14 @@ namespace CalamityInheritance
         [DrawTicks]
         [DefaultValue(1)]
         public int StellarContemptResprite { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int HeliumFlashResprite{ get; set; }
         
         #region 材料/物品贴图
         [BackgroundColor(192, 54, 64, 192)]

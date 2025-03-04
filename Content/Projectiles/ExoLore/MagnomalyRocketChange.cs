@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -75,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
             {
-                dustType = 269;
+                dustType = CIDustID.DustSandnado;
             }
             if (projectile.owner == Main.myPlayer && !spawnedAura)
             {

@@ -15,6 +15,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<AlgtPink>():ModContent.RarityType<CatalystViolet>();
 
             Item.channel = true;
             Item.noUseGraphic = true;

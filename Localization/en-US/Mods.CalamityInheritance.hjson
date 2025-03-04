@@ -7,7 +7,7 @@ Keybinds: {
 }
 
 Configs: {
-	CalamityInheritanceConfig: {
+	CIConfig: {
 		DisplayName: Calamity Inheritance Config
 
 		Headers: {
@@ -252,6 +252,11 @@ Configs: {
 		SetAllLegacySprite: {
 			Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
 			Label: "[i:CalamityInheritance/Death]All Legacy Sprite Settin1g"
+		}
+
+		SpecialRarityColor: {
+			Label: Special Rarity Color
+			Tooltip: ""
 		}
 	}
 }

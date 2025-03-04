@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -140,7 +141,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if(Projectile.ai[0] == 3f)
             {
-                CIFunction.DustCircle(Projectile.position, 42f, 2.2f, 269, true, 9f);
+                CIFunction.DustCircle(Projectile.position, 42f, 2.2f, CIDustID.DustSandnado, true, 9f);
                 SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.2f});
             }
         }
@@ -152,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private void OnStuckEffect()
         {
-            CIFunction.DustCircle(Projectile.position, 16f, 2.2f, 269, true, 9f, default, default, 6f);
+            CIFunction.DustCircle(Projectile.position, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);
             SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f});
         }
         private void OnChasingDust()
@@ -169,7 +170,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 dFlyVelY *=  0f ;
                 offset  *=  1.15f ;
                 float dScale =  1.6f;
-                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 269, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, CIDustID.DustSandnado, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
 
@@ -198,7 +199,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float rotate = MathHelper.ToRadians(i*rotArg);
                 Vector2 dPos = new Vector2(4.8f, 0).RotatedBy(rotate * Main.rand.NextFloat(1.1f, 3.8f));
                 Vector2 dVelocity = new Vector2(4f, 0).RotatedBy(rotate * Main.rand.NextFloat(1.1f, 3.8f));
-                Dust dust = Dust.NewDustPerfect(Projectile.Center + dPos, 269, new Vector2(dVelocity.X, dVelocity.Y));
+                Dust dust = Dust.NewDustPerfect(Projectile.Center + dPos, CIDustID.DustSandnado, new Vector2(dVelocity.X, dVelocity.Y));
                 dust.noGravity = true;
                 dust.velocity = dVelocity;
                 dust.scale = Main.rand.NextFloat(0.8f, 1.1f);

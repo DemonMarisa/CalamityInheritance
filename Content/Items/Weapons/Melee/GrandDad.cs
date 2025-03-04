@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
                     AddIngredient<LoreRequiem>().

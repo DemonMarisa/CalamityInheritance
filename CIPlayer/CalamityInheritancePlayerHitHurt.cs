@@ -5,6 +5,7 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
@@ -553,6 +554,14 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                 }
+                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
+                {
+                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
+                    if(getOverCrtis > 1)
+                    {
+                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
+                    }
+                }
             };
             if (silvaMelee)
             {
@@ -567,7 +576,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (CalamityInheritanceConfig.Instance.silvastun == true)
+            if (CIConfig.Instance.silvastun == true)
             {
                 if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
                 {
@@ -609,7 +618,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (CalamityInheritanceConfig.Instance.silvastun == true)
+            if (CIConfig.Instance.silvastun == true)
             {
                 if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
                 {

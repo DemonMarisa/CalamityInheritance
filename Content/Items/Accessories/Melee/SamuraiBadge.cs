@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         }
         public override void AddRecipes()
         {
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe1 = CreateRecipe();
                 recipe1.AddIngredient(ModContent.ItemType<KnowledgeProvidence>());

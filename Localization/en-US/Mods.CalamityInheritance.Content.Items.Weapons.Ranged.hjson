@@ -5,19 +5,21 @@ CelestialObliterator: {
 		Shoots a stream of spreading bullets
 		Automatically launch a homing exo missile at regular intervals
 		'Shatter your enemy with your bullet hell'
+		[c/9370DB:A glimsp of the old days...]
+		[c/9370DB:This weapon is belongs to legacy addon: Calamity Seraph]
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Spawns extra homing exo missile behind]
-		[c/00B2EE:Exo missiles can spilt now]
+		[c/0080CA:Spawns extra homing exo missile behind]
+		[c/0080CA:Exo missiles can spilt now]
 		'''
 }
 
 MagnomalyCannon.ExoLoreOn:
 	'''
-	[c/00B2EE:Attack frequency decreased]
-	[c/00B2EE:The missile has a greater homein range and is faster]
-	[c/00B2EE:Missiles that hit an enemy will split into more missiles]
+	[c/0080CA:Fire rates reduce]
+	[c/0080CA:Boost homing range and speed of missiles]
+	[c/0080CA:Missiles split upon striking an enemy]
 	'''
 
 ConclaveCrossfire: {
@@ -53,9 +55,9 @@ HeavenlyGaleold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Green and orange exo arrows will home in on enemy]
-		[c/00B2EE:Teal exo arrows now ignore pierce resistance]
-		[c/00B2EE:Blue exo arrows have an extra pierce time]
+		[c/0080CA:Green and orange exo arrows will home in on enemy]
+		[c/0080CA:Teal exo arrows now ignore pierce resistance]
+		[c/0080CA:Blue exo arrows have an extra pierce]
 		'''
 }
 
@@ -85,7 +87,7 @@ Photovisceratorold: {
 		Right click to fire homing flare while stack to enemies and incinerate them
 		'It should not be a prism causes ranged damage'
 		'''
-	ExoLoreOn: "[c/00B2EE:Spawns homing crystals behind you when using]"
+	ExoLoreOn: "[c/0080CA:Spawns homing crystals behind you when using]"
 }
 
 ProporsePistol: {
@@ -217,6 +219,11 @@ DrataliornusLegacy: {
 }
 
 ACTMinigun: {
-	DisplayName: A C T Minigun
-	Tooltip: ""
+	DisplayName: Kingsbane Algt's Tweak
+	Tooltip:
+		'''
+		Shoots a streams of homing auric bullet
+		[c/DB53A0:A glimsp of the old days...]
+		[c/DB53A0:This tweak is belong to legacy addon: Algt's Calamity Tweak by Algt]
+		'''
 }

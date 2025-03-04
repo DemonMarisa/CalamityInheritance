@@ -68,7 +68,7 @@ ExoGladius: {
 		Fires a rainbow orb that summons sword beams on hit
 		'Quest: Bring back the Exo Gladius (3/100)'
 		'''
-	ExoLoreOn: "[c/00B2EE:You don't need to strike your enemy with the blade to summon comets now]"
+	ExoLoreOn: "[c/0080CA:You don't need to strike your enemy with the blade to summon comets now]"
 }
 
 FlameburstShortsword: {

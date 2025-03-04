@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.45f }; //Item88:使用流星法杖的音效
         private static readonly float RotationIncrement = 0.22f;
         private static readonly int Lifetime = 240;
-        private static readonly float ReboundTime = 48f;
+        private static readonly float ReboundTime = 40f;
         bool ifSummonClone = false;
 
         public override void SetStaticDefaults()

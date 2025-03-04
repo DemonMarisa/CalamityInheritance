@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items
             {
                 itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
-                if(CalamityInheritanceConfig.Instance.CustomShimmer == false) 
+                if(CIConfig.Instance.CustomShimmer == false) 
                 {
                     itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
                     itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<LeviathanBag>())
             {
-                if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+                if(CIConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
                 {
                     itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
                 }
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<BittercoldStaff>(), 3, 1 ,1);
                 //冰灵宝藏袋临时添加寒霜法杖，不然某些人做冰灵旋刃得坐大的，过会回归了那个被移除的法杖这个就会换掉
 
-                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofMight, 1, 35, 45);
                 }
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
             {
 
-                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofFright, 1, 35, 45);
                 }
@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<AquaticScourgeBag>())
             {
 
-                if(CalamityInheritanceConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofSight, 1, 35, 45);
                 }
@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
             {
                 //Scarlet:只有在微光关闭的时候这玩意才会正常掉落
-                if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+                if(CIConfig.Instance.CustomShimmer == false)
                 {
                     itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
                 }
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<RavagerBag>())
             {
 
-                if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+                if(CIConfig.Instance.CustomShimmer == false)
                 {
                     itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
                 }

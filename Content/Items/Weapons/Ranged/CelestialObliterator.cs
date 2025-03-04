@@ -16,6 +16,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -37,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;

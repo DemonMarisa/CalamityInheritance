@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 type = ModContent.ProjectileType<AMRShot>();
             }
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         {
             Player player = Main.LocalPlayer;
 
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversion");
 

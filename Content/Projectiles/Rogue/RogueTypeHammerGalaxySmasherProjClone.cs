@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -111,7 +112,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
                     offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
                     float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
-                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 272, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, CIDustID.DustWitherLight, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                     dust.noGravity = true;
                 }
 
@@ -127,7 +128,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
                     offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
                     float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
-                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 226, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                    Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, CIDustID.DustDeadlySphere, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                     dust.noGravity = true;
                 }
             }
@@ -148,7 +149,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float rotFactor = 360f / numberOfDusts;
             for (int i = 0; i < numberOfDusts; i++)
             {
-                int dType = Main.rand.NextBool(2)? 226 : 272;
+                int dType = Main.rand.NextBool(2)? CIDustID.DustDeadlySphere : CIDustID.DustWitherLight;
                 float rot = MathHelper.ToRadians(i * rotFactor);
                 Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));
                 Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));

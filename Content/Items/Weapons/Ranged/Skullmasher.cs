@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            if (CalamityInheritanceConfig.Instance.SkullmasherResprite == 1)
+            if (CIConfig.Instance.SkullmasherResprite == 1)
                 return new Vector2(-40, 0);
             else
                 return new Vector2(-15, 0);
@@ -65,13 +65,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             for (int projectiles = 0; projectiles < 5; projectiles++)
             {
-                if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+                if (CIConfig.Instance.AmmoConversion == true)
                 {
                     float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
                     float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
                     Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), ModContent.ProjectileType<AMRShot>(), damage, knockback, player.whoAmI);
                 }
-                if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+                if (CIConfig.Instance.AmmoConversion == false)
                 {
                     float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
                     float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 
@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void AddRecipes()
         {
-            if (CalamityInheritanceConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe1 = CreateRecipe();
                 recipe1.AddIngredient(ModContent.ItemType<KnowledgeDevourerofGods>());

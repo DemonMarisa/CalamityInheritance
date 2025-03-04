@@ -60,11 +60,11 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modplayer1.godSlayerSummonold = true;
 
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 1 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2))
+            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modplayer1.GodSlayerReborn = true;
             }
-            if (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 2 || (CalamityInheritanceConfig.Instance.GodSlayerSetBonusesChange == 3))
+            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
             {
                 if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 {

@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            if (CalamityInheritanceConfig.Instance.TheSpongeBarrier == true)
+            if (CIConfig.Instance.TheSpongeBarrier == true)
             {
                 usPlayer.CIsponge = true;
             }

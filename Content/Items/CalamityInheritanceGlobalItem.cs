@@ -17,6 +17,10 @@ namespace CalamityInheritance.Content.Items
         public override bool InstancePerEntity => true;
 
         public int timesUsed = 0;
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            
+        }
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
@@ -96,7 +100,7 @@ namespace CalamityInheritance.Content.Items
 
         public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (CalamityInheritanceConfig.Instance.turnoffCorner == false)
+            if (CIConfig.Instance.turnoffCorner == false)
             {
                 if (item.ModItem != null && item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                 {

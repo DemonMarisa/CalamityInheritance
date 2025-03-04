@@ -89,8 +89,8 @@ SubsumingVortexold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Projectile speed is faster]
-		[c/00B2EE:Will gradually accelerate to track enemies]
+		[c/0080CA:Projectile speed is faster]
+		[c/0080CA:Will gradually accelerate to track enemies]
 		'''
 }
 
@@ -122,9 +122,9 @@ VividClarityOld: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Fires nine beams instead of five]
-		[c/00B2EE:Every beams will release a cosmic explosion on enmey hits]
-		[c/00B2EE:Beams spread a little wide]
+		[c/0080CA:Fires nine beams instead of five]
+		[c/0080CA:Every beams will release a cosmic explosion on enmey hits]
+		[c/0080CA:Beams spread a little wide]
 		'''
 }
 

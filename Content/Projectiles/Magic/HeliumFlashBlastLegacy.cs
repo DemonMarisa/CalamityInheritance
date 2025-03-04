@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -13,9 +14,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
-        private static int Lifetime = 40;
-        private static float ExplosionRadius = 210.0f;
-        private static float StartDustQuantity = 36f;
+        private static int Lifetime = 42;
+        private static float ExplosionRadius = 240.0f;
+        private static float StartDustQuantity = 40f;
 
         public override void SetDefaults()
         {
@@ -61,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             int dustCount = (int)Projectile.localAI[1];
             for (int i = 0; i < dustCount; ++i)
             {
-                int dustType = Main.rand.NextBool(3) ? 262 : 87;
+                int dustType = Main.rand.NextBool(3) ? CIDustID.DustAmberBolt : DustID.GemTopaz;
                 float scale = Main.rand.NextFloat(2.0f, 2.5f);
                 float randX = Main.rand.NextFloat(-30f, 30f);
                 float randY = Main.rand.NextFloat(-30f, 30f);

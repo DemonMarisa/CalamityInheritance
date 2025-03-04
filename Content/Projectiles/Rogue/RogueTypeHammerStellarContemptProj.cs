@@ -153,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float rot = MathHelper.ToRadians(i * rotFactor);
                     Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 4.1f));
                     Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 4.1f));
-                    Dust dust = Dust.NewDustPerfect(Projectile.Center + offset, 229, new Vector2(velOffset.X, velOffset.Y));
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center + offset, DustID.Vortex, new Vector2(velOffset.X, velOffset.Y));
                     dust.noGravity = true;
                     dust.velocity = velOffset;
                     dust.scale = Main.rand.NextFloat(1.5f, 3.2f);

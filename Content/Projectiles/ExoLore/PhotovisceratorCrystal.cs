@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             107,
             234,
-            269,
+            CIDustID.DustSandnado,
         };
 
         public override void SetStaticDefaults()

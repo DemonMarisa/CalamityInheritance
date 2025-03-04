@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasama>()] = ModContent.ItemType<MurasamaNeweffect>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MurasamaNeweffect>()] = ModContent.ItemType<Murasamaold>();
@@ -111,7 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
 
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 CreateRecipe().
                     AddIngredient<Murasamaold>().

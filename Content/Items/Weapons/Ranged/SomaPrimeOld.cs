@@ -48,12 +48,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 type = ProjectileID.BulletHighVelocity;
                 damage += 4;
             }
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+            if (CIConfig.Instance.AmmoConversion == false)
             {
                 if (type == ProjectileID.Bullet)
                 {
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > 0.8f;
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 

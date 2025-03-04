@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using CalamityMod;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -114,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float radius = (20f + (float)Math.Cos(Time / 3f) * 12f) * radiusFactor;
                     Vector2 dustPosition = Projectile.Center;
                     dustPosition += offsetRotationAngle.ToRotationVector2().RotatedBy(i / 5f * MathHelper.TwoPi) * radius;
-                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 269 : 107);
+                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? CIDustID.DustSandnado : 107);
                     dust.noGravity = true;
                     dust.velocity = Projectile.velocity * 0.8f;
                     dust.scale = Main.rand.NextFloat(1.1f, 1.7f);
@@ -188,7 +189,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             for (int i = 0; i <= hitsDust; i++)
             {
                 Vector2 sparkVelocity = Projectile.velocity.RotatedByRandom(0.4f) * Main.rand.NextFloat(0.6f, 6f);
-                Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(3) ? 269 : 133, sparkVelocity, 0, default, Main.rand.NextFloat(1.2f, 1.5f));
+                Dust dust = Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, Main.rand.NextBool(3) ? CIDustID.DustSandnado : 133, sparkVelocity, 0, default, Main.rand.NextFloat(1.2f, 1.5f));
                 dust.noGravity = true;
             }
             SoundEngine.PlaySound(Hitsound, Projectile.Center);
@@ -229,7 +230,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                if (CalamityInheritanceConfig.Instance.ExoSperaHitEffect == true && hitCount < 1)
+                if (CIConfig.Instance.ExoSperaHitEffect == true && hitCount < 1)
                 {
                     int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                 }

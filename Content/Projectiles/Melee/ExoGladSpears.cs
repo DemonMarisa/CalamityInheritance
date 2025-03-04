@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -104,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 107,
                 234,
-                269
+                CIDustID.DustSandnado
             });
             for (int i = 0; i < 6; i++)
             {

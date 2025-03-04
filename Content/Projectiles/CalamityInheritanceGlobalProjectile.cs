@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles
             {
                 if (modPlayer.ElementalQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
                 {
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 1)
+                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 1)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 2)
+                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 2)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                         {
@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 3)
+                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 3)
                     {
                         if (Main.rand.Next(200) > 198)
                         {
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (CalamityInheritanceConfig.Instance.ElementalQuiverSplitstyle == 4)
+                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 4)
                     {
                         if (Main.rand.Next(200) > 198)
                         {

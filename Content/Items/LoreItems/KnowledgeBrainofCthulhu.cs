@@ -24,14 +24,14 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void UpdateInventory(Player player)
         {
 
-            if (CalamityInheritanceConfig.Instance.BoCLoreUnconditional == true)
+            if (CIConfig.Instance.BoCLoreUnconditional == true)
             {
                 if (Item.favorited)
                 {
                     player.CalamityInheritance().BoCLoreTeleportation = true;
                 }
             }
-            if (CalamityInheritanceConfig.Instance.BoCLoreUnconditional == false)
+            if (CIConfig.Instance.BoCLoreUnconditional == false)
             {
                 if (player.ZoneCrimson && Item.favorited)
                 {

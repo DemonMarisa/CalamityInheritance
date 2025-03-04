@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();

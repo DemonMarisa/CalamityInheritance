@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.PointsToAnalysis;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -19,6 +20,11 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> WulfrumHammerOld;
 
         public static Asset<Texture2D> WulfrumPickaxeOld;
+        #endregion
+        #region 氦闪 
+        
+        public static Asset<Texture2D> HeliumFlashCalamity;
+        public static Asset<Texture2D> HeliumFlashLegacy;
         #endregion
         #region 方舟
         public static Asset<Texture2D> ArkoftheCosmosNew;
@@ -123,6 +129,10 @@ namespace CalamityInheritance.Texture
             WulfrumHammerOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammer");
             WulfrumPickaxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxe");
             #endregion
+            #region 氦闪
+            HeliumFlashCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/HeliumFlashCalamity");
+            HeliumFlashLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/HeliumFlashLegacy");
+            #endregion
             #region 方舟
             ArkoftheCosmosNew = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
             ArkoftheCosmosOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
@@ -224,6 +234,9 @@ namespace CalamityInheritance.Texture
             WulfrumAxeNew = null;
             WulfrumHammerNew = null;
             WulfrumPickaxeNew = null;
+
+            HeliumFlashCalamity = null;
+            HeliumFlashLegacy = null;
 
             ArkoftheCosmosNew = null;
             ArkoftheCosmosOld = null;

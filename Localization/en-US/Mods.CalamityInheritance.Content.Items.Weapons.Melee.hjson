@@ -75,10 +75,10 @@ Exobladeold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Removed the limit of exo comets]
-		[c/00B2EE:Your exo beam can now spawn exo comets too]
-		[c/00B2EE:Striking an enemy with the blade will casue cosmic explosion]
-		[c/00B2EE:Enemies now explode in a higher HP]
+		[c/0080CA:Removed the limit of exo comets]
+		[c/0080CA:Your exo beam can now spawn exo comets too]
+		[c/0080CA:Striking an enemy with the blade will casue cosmic explosion]
+		[c/0080CA:Enemies now explode in a higher HP]
 		'''
 }
 
@@ -88,11 +88,13 @@ ExoFlail: {
 		'''
 		Fires a chain sword that discharges unstable energy on enemy hits
 		The flail's chain is surrounded in plasma, allowing it to deal damage
+		[c/9370DB:A glimsp of the old days...]
+		[c/9370DB:This weapon is belongs to legacy addon: Calamity Seraph]
 		'''
 	ExoLoreOn:
 		'''
-		[c/00B2EE:Throws a cosmic chain ball in every fifth attack]
-		[c/00B2EE:Will explodes multiple times upon hitting an enemy]
+		[c/0080CA:Throws a cosmic chain ball in every fifth attack]
+		[c/0080CA:Will explodes multiple times upon hitting an enemy]
 		'''
 }
 

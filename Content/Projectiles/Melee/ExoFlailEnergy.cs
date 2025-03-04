@@ -2,6 +2,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -37,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             int type = (Utils.NextBool(Main.rand, 2) ? 107 : 234);
             if (Utils.NextBool(Main.rand, 4))
             {
-                type = 269;
+                type = CIDustID.DustSandnado;
             }
             if (Projectile.ai[0] % 2f == 0f)
             {

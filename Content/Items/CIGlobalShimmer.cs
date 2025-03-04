@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items
         public override void SetStaticDefaults()
         {
             #region 微光嬗变启用时才会转化的
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
             {
                 #region 魔君的馈赠
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGift>()] = ModContent.ItemType<YharimsGiftLegacy>();

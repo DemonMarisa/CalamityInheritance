@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static float Speed = 9.0f;
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
+            if(CIConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Eradicator>()] = ModContent.ItemType<MeleeTypeEradicator>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeEradicator>()] = ModContent.ItemType<Eradicator>();

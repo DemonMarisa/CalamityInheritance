@@ -18,6 +18,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -38,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
             Item.UseSound = SoundID.Item1;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;

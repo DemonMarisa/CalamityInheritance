@@ -235,7 +235,7 @@ namespace CalamityInheritance.CIPlayer
                     target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
                     target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
                     target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
-                    target.AddBuff(BuffID.Frostburn, 300);
+                    target.AddBuff(BuffID.Frostburn2, 300);
                     target.AddBuff(BuffID.CursedInferno, 300);
                     target.AddBuff(BuffID.Inferno, 300);
                     target.AddBuff(BuffID.Venom, 300);

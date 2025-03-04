@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasher>()] = ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>()] = ModContent.ItemType<GalaxySmasher>();
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
 
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            if(CIConfig.Instance.CustomShimmer == false)
             {
             CreateRecipe().
                 AddIngredient<StellarContempt>().

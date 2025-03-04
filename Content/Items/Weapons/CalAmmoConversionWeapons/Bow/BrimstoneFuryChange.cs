@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 int numProj = 3;
                 float rotation = MathHelper.ToRadians(2);
@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         {
             Player player = Main.LocalPlayer;
 
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversion");
 

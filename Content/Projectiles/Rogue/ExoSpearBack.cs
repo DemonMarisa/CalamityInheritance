@@ -5,6 +5,7 @@ using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using CalamityMod;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -45,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     float radius = (25f + (float)Math.Cos(Time / 3f) * 12f) * radiusFactor;
                     Vector2 dustPosition = Projectile.Center;
                     dustPosition += offsetRotationAngle.ToRotationVector2().RotatedBy(i / 5f * MathHelper.TwoPi) * radius;
-                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 269 : 107);
+                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? CIDustID.DustSandnado : 107);
                     dust.noGravity = true;
                     dust.velocity = Projectile.velocity * 0.8f;
                     dust.scale = Main.rand.NextFloat(1.1f, 1.7f);

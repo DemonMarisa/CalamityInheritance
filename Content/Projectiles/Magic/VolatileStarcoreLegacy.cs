@@ -4,6 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -45,11 +46,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
             }
 
-            // Dust only shows up after the first few frames
+            //粒子应当在一段时间后才会生成
             if (Projectile.localAI[0] >= 5f)
                 SpawnDust();
 
-            // Lighting and spin
+            //发光与转小球
             Lighting.AddLight(Projectile.Center, 1.8f, 1.6f, 0.5f);
             Projectile.rotation += 0.11f;
 
@@ -70,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         private void SpawnDust()
         {
             int coreDustCount = 2; //3
-            int coreDustType = 262;
+            int coreDustType = CIDustID.DustAmberBolt;
             for (int i = 0; i < coreDustCount; ++i)
             {
                 float scale = Main.rand.NextFloat(1.0f, 1.4f);

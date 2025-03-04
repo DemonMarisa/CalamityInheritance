@@ -54,20 +54,6 @@ Mods: {
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
-
-		Content: {
-			Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
-
-			Items: {
-				Placeables: {
-					CraftingStations: {
-						DemonshadeWorkbench: {
-							// DisplayName: Demonshade Workbench
-							// Tooltip: ""
-						}
-					}
-				}
-			}
-		}
+		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
 	}
 }

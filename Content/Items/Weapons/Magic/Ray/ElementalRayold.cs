@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
-            // if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            // if(CIConfig.Instance.CustomShimmer == true)
             // {
             //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRay>()] = ModContent.ItemType<ElementalRayold>();
             //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRayold>()] = ModContent.ItemType<ElementalRay>();

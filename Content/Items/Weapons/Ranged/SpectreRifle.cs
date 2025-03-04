@@ -42,13 +42,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LostSoulFriendly, damage, knockback, player.whoAmI, 2f, 0f);
                 Main.projectile[proj].DamageType = DamageClass.Ranged;
                 Main.projectile[proj].extraUpdates += 2;
             }
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == false)
+            if (CIConfig.Instance.AmmoConversion == false)
             {
                 if (type == ProjectileID.Bullet)
                 {
@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (CalamityInheritanceConfig.Instance.AmmoConversion == true)
+            if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");
 

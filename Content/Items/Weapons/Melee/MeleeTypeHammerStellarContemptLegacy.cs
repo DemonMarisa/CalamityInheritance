@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if(CIConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContempt>()] = ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = ModContent.ItemType<StellarContempt>();
@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
 
 
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false)
+            if(CIConfig.Instance.CustomShimmer == false)
             {
                 CreateRecipe().
                     AddIngredient<FallenPaladinsHammer>().

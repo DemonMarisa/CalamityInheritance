@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            if(CIConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGift>()] = ModContent.ItemType<YharimsGiftLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGiftLegacy>()] = ModContent.ItemType<YharimsGift>();
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
 
-            if(CalamityInheritanceConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            if(CIConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
             {
                 CreateRecipe().
                 AddIngredient<YharimsGift>().

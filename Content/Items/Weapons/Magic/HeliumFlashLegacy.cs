@@ -16,13 +16,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class HeliumFlashLegacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        internal const float ExplosionDamageMultiplier = 0.42f;
-        public static readonly int HeliumFlashDamage = 410;
-        public static readonly int HeliumFlashManaCost = 18;
+        internal const float ExplosionDamageMultiplier = 0.5f;
+        public static readonly int HeliumFlashDamage = 450;
+        public static readonly int HeliumFlashManaCost = 16;
 
         public override void SetStaticDefaults()
         {
-            if (CalamityInheritanceConfig.Instance.CustomShimmer == true)
+            if (CIConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlash>()] = ModContent.ItemType<HeliumFlashLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlashLegacy>()] = ModContent.ItemType<HeliumFlash>();
@@ -36,21 +36,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 10);
+            Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 26);
             Item.mana = HeliumFlashManaCost;
-            Item.useAnimation = 27;
-            Item.useTime = 274;
+            Item.useAnimation = 25;
+            Item.useTime = 25;
             Item.autoReuse = true;
             Item.noMelee = true;
-
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item73;
-
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
-
             Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
-            Item.shootSpeed = 15f;
+            Item.shootSpeed = 18f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -61,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             dir *= 80f * (float)Math.Sqrt(2);
             Vector2 dustPos = position + dir;
 
-            int dustType = 162;
+            int dustType = CIDustID.DustHeatRay;
             int dustCount = 72;
             float minSpeed = 4f;
             float maxSpeed = 11f;

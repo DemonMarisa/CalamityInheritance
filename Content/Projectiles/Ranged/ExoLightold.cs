@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -82,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 DustType = Main.rand.NextBool(2) ? 107 : 234;
                 if (Main.rand.NextBool(4))
                 {
-                    DustType = 269;
+                    DustType = CIDustID.DustSandnado;
                 }
                 Projectile.localAI[0] = 1f;
             }
