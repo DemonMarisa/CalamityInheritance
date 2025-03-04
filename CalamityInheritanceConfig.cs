@@ -173,6 +173,7 @@ namespace CalamityInheritance
         [DefaultValue(1)]
 
         public int FateGirlSprite{ get; set; }
+
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 2)]
@@ -189,6 +190,14 @@ namespace CalamityInheritance
         [DefaultValue(1)]
         public int HeliumFlashResprite{ get; set; }
         
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(1, 2)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int DrataliornusResprite { get; set; }
+
         #region 材料/物品贴图
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]

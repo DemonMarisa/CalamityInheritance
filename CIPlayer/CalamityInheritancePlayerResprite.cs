@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Texture;
 using CalamityMod.Buffs.Pets;
@@ -339,6 +340,30 @@ namespace CalamityInheritance.CIPlayer
                 {
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CIResprite.StellarContemptOld;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CIResprite.StellarContemptOld;
+                }
+            }
+            //龙弓
+            if (TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
+                {
+                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIResprite.DrataliornusLegacyAlter;
+                }
+                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
+                {
+                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIResprite.DrataliornusLegacy;
+                }
+            }
+
+            if (TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] != null)
+            {
+                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 1)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIResprite.DrataliornusLegacyAlter;
+                }
+                if (CalamityInheritanceConfig.Instance.StellarContemptResprite == 2)
+                {
+                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIResprite.DrataliornusLegacy;
                 }
             }
             #endregion

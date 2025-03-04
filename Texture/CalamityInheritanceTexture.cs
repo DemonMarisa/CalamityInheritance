@@ -117,6 +117,10 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ManaHeartAlter;
         //魂花后的
         #endregion
+        #region 龙弓
+        public static Asset<Texture2D> DrataliornusLegacy;
+        public static Asset<Texture2D> DrataliornusLegacyAlter;
+        #endregion
         #endregion
         public static void LoadTexture()
         {
@@ -224,6 +228,10 @@ namespace CalamityInheritance.Texture
             ManaHeart = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/PhantomHeart");
             ManaHeartAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantomHeartAlter");
             #endregion
+            #region 龙弓
+            DrataliornusLegacyAlter = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/Drataliornus");
+            DrataliornusLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/DrataliornusLegacy");
+            #endregion
         }
         public static void UnloadTexture()
         {
@@ -304,6 +312,9 @@ namespace CalamityInheritance.Texture
             
             ManaHeart = null;
             ManaHeartAlter = null;
+
+            DrataliornusLegacyAlter = null;
+            DrataliornusLegacy = null;
         }
     }
 }
