@@ -20,6 +20,7 @@ using CalamityMod.World;
 using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Armor.AncientAstral;
+using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -173,6 +174,25 @@ namespace CalamityInheritance.CIPlayer
 
         #endregion
         #region Set Bonuses
+        #region  AncientBloodflare
+        public bool AncientBloodflareSet = false; //远古血炎套
+        public bool AncientBloodflareStat = false; //血炎数值
+        public int AncientBloodflareHeartDropCD = 0; //产红心CD
+        #endregion
+        #region  AncientGodSlayer
+        public bool AncientGodSlayerSet = false;
+        public bool AncientGodSlayerStat = false; //弑神数值
+        #endregion
+        #region AncientSilva
+        public bool AncientSilvaSet = false;
+        public bool AncientSilvaStat = false; //林海数值
+        public int AncientSilvaRegenCD = 0;
+        public int AncientSilvaRegenTimer = 60; //一秒
+        public bool AncientSilvaRegenFlag = false;
+        #endregion
+        #region AncientTarragon
+        public bool AncientTarragonSet = false;
+        #endregion
         #region GodSlayer
         public bool GodSlayerReborn = false;
         public bool GodSlayerDMGprotect = false;
@@ -198,7 +218,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AuricbloodflareRangedSoul = false;
         public bool auricBoostold = false;
         public bool auricsilvaset = false;
-        public bool auricYharimSet = false; //暴君套
+        public bool AncientAuricSet = false; //暴君套
         public int auricYharimHealCooldown = 0; //暴君套回血CD
         public bool auricYharimAntiSummonerDMGReduction = false; //暴君套直接数值对撞抗召唤减伤
         public int yharimOfPerunStrikesCooldown = 0; //暴君套打击cd
@@ -372,6 +392,22 @@ namespace CalamityInheritance.CIPlayer
             backFireDebuff = false;
             #endregion
             #region Set Bonuses
+            #region AncientBloodflare
+            AncientBloodflareSet = false;
+            AncientBloodflareStat = false;
+            #endregion
+            #region AncientGodSlayer
+            AncientGodSlayerSet = false;
+            AncientGodSlayerStat = false;
+            #endregion
+            #region AncientSilva
+            AncientSilvaSet = false;
+            AncientSilvaRegenFlag = false;
+            AncientSilvaStat = false;
+            #endregion
+            #region AncientTarragon
+            AncientTarragonSet = false;
+            #endregion
             #region GodSlayer
             GodSlayerReborn = false;
             GodSlayerDMGprotect = false;
@@ -394,7 +430,7 @@ namespace CalamityInheritance.CIPlayer
             AuricbloodflareRangedSoul = false;
             auricBoostold = false;
             auricsilvaset = false;
-            auricYharimSet = false;
+            AncientAuricSet = false;
             yharimOfPerunBuff = false;
             #endregion
             #region Reaver
@@ -471,6 +507,25 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisImmnue = false;
             DraedonsHeartLegacyBuff = false;
             #region Set Bonuses
+            #region AncientBloodflare
+            AncientBloodflareSet = false;
+            AncientBloodflareHeartDropCD = 0;
+            AncientBloodflareStat = false;
+            #endregion
+            #region AncientGodSlayer
+            AncientGodSlayerSet = false;
+            AncientGodSlayerStat = false;
+            #endregion
+            #region AncientSilva
+            AncientSilvaSet = false;
+            AncientSilvaStat = false;
+            AncientSilvaRegenCD = 0;
+            AncientSilvaRegenTimer = 0;
+            AncientSilvaRegenFlag = false;
+            #endregion
+            #region AncientTarragon
+            AncientTarragonSet = false;
+            #endregion
             #region GodSlayer
             GodSlayerDMGprotect = false;
             godSlayerReflect = false;
@@ -493,7 +548,7 @@ namespace CalamityInheritance.CIPlayer
             auricsilvaCountdown = auricsilvaReviveDuration;
             CIsilvaCountdown = CIsilvaReviveDuration;
             auricBoostold = false;
-            auricYharimSet = false;
+            AncientAuricSet = false;
             auricYharimHealCooldown = 0;
             yharimOfPerunStrikesCooldown = 0;
             yharimOfPerunBuff = false;

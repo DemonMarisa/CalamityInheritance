@@ -27,6 +27,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityMod.Projectiles.Magic;
+using CalamityMod.Items.Potions;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -467,6 +468,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void ArmorSetbonus()
         {
+            CalamityPlayer calPlayer = Player.Calamity();
             if (ReaverMagePower)
             {
                 Player.manaCost *= 0.80f;
@@ -483,7 +485,63 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                 Player.statDefense += 10;
             }
+            if (AncientTarragonSet)
+            {
+                calPlayer.defenseDamageRatio *= 0.45f; //防损减免
+                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                {
+                    int getDef = Player.GetCurrentDefense();
+                    int buffDef = (int)(getDef * 0.2f);
+                    Player.statDefense += buffDef;
+                    Player.endurance += 0.2f;
+                }
+                calPlayer.healingPotionMultiplier += 0.45f; 
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.45f);
+                Player.crimsonRegen = true;
+                Player.lifeRegen += 8; //+4HP/s
+                
+            }
 
+            if (AncientBloodflareStat)
+            {
+                calPlayer.healingPotionMultiplier += 0.35f; 
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.35f);
+                Player.lifeRegen += 10; //+10HP/s
+                if(Player.statLife <= Player.statLifeMax2/2)
+                Player.lifeRegen += 16; //+8HP/s
+            }
+
+            if (AncientGodSlayerStat)
+            {
+                //旧弑神新增: 25%常驻伤害减免
+                calPlayer.contactDamageReduction += 0.50f;
+                Player.endurance += 0.12f;
+                //旧套装通用新增；血上限，血药，回血
+                calPlayer.healingPotionMultiplier += 0.40f; 
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.85f);
+                Player.lifeRegen += 12; //+6HP/s
+            }
+            if (AncientSilvaStat)
+            {
+                
+                calPlayer.healingPotionMultiplier += 0.50f;
+                Player.lifeRegen += 16; //+8HP/s
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.65f);
+                Player.lifeRegenTime = 2000;
+            }
+            
+            if(AncientAuricSet)
+            {
+                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.20f);
+                Player.noKnockback = true;
+                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                {
+                    int getDef = Player.GetCurrentDefense();
+                    int buffDef = (int)(getDef * 0.3f);
+                    Player.statDefense += 60 + buffDef;
+                    Player.endurance += 0.3f;
+                }
+            }
         }
         public void MiscEffects()
         {
@@ -528,6 +586,12 @@ namespace CalamityInheritance.CIPlayer
             
             if (yharimOfPerunStrikesCooldown > 0)
                 yharimOfPerunStrikesCooldown--;
+
+            if (AncientBloodflareHeartDropCD > 0)
+                AncientBloodflareHeartDropCD--;
+            
+            if (AncientSilvaRegenCD > 0)
+                AncientSilvaRegenCD--;
             
             if (AncientAstralStealthGap > 0) //生命恢复效果消失的间隔CD
                 AncientAstralStealthGap--;
@@ -676,13 +740,7 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + raiderStack / 150f * damageMult;
             }
-            if(auricYharimSet)
-            {
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.05f);
-                Player.noKnockback = true;
-                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
-                    Player.statDefense += 60;
-            }
+            
             if(ancientBloodFact)
             {
                 Player.statLifeMax2 +=(int)(player.statLifeMax * 2);

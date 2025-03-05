@@ -176,9 +176,45 @@ namespace CalamityInheritance.CIPlayer
                 ProjLifesteal(target, projectile, damageDone, hit.Crit);
                 ProjOnHit(projectile, target.Center, hit.Crit, target.IsAnEnemy(false));
             }
-            #region AuricYharim
-            if (auricYharimSet)
+            #region AncientArmor
+            if (AncientBloodflareSet && hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
             {
+                int amt = Main.rand.Next(2, 5); //2->4
+                if(Main.rand.NextBool(6)) //每次攻击时1/6概率
+                {
+                    for(int i = 0; i < amt; i++)
+                    {
+                        Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
+                        Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
+                    }
+                    AncientBloodflareHeartDropCD = 180; //2s一次
+                }
+            }
+            if (AncientGodSlayerSet && projectile.Calamity().stealthStrike && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && yharimOfPerunStrikesCooldown == 0)
+            {
+                //潜伏攻击成功时提供20%增伤
+                player.GetDamage<GenericDamageClass>() += 0.2f;
+                yharimOfPerunStrikesCooldown = 2700;
+
+            }
+            #endregion
+            #region AuricYharim
+            if (AncientAuricSet)
+            {
+                if (hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
+                {
+                    int amt = Main.rand.Next(3, 6); //3->5
+                    if(Main.rand.NextBool(5)) //每次攻击时1/5概率
+                    {
+                        for(int i = 0; i < amt; i++)
+                        {
+                            Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
+                            Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
+                        }
+                        AncientBloodflareHeartDropCD = 90; //1.5秒一次
+                    }
+                }
+
                 if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
                     && projectile.Calamity().stealthStrike
                     && yharimOfPerunStrikesCooldown == 0

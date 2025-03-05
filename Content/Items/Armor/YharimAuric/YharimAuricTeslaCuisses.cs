@@ -4,6 +4,10 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Armor.AuricTesla;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Content.Items.Armor.AncientTarragon;
+using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
+using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
+using CalamityInheritance.Content.Items.Armor.AncientSilva;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
@@ -34,6 +38,10 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             {
                 CreateRecipe().
                 AddIngredient<AuricTeslaCuissesold>().
+                AddIngredient<AncientTarragonLeggings>().
+                AddIngredient<AncientBloodflareCuisses>().
+                AddIngredient<AncientGodSlayerLeggings>().
+                AddIngredient<AncientSilvaLeggings>().
                 AddIngredient<AuricBarold>(15).
                 AddTile<DraedonsForgeold>().
                 Register();

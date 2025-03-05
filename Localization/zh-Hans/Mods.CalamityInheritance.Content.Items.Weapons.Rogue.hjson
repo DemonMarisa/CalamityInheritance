@@ -173,8 +173,7 @@ RogueTypeKnivesShadowspec: {
 		'''
 		盗贼版本的圣光飞刀
 		投出一簇能够弹射并治疗玩家的飞刀
-		潜伏攻击掷出一个高速飞刀, 击中敌人时将会从敌人身上爆开
-		[c/4A4A4F: So as I pray, Unlimited Lost Works]
+		飞刀现在造成更多的伤害，而且飞行速度也更快了
 		'''
 }
 

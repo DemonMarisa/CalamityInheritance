@@ -399,7 +399,19 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
             }
-            if(auricYharimSet)
+
+            if (AncientBloodflareSet)
+            {
+                if(hurtInfo.Damage > 400 && auricYharimHealCooldown == 0)
+                //旧血炎新增效果: 承受大于400点的伤害时，恢复本次承伤的1.5倍血量，取20秒内置CD
+                {
+                    SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
+                    Player.Heal((int)(hurtInfo.Damage * 1.5f));
+                    auricYharimHealCooldown = 1200;
+                }
+            }
+
+            if(AncientAuricSet)
             {
                 if(hurtInfo.Damage> 600 && auricYharimHealCooldown == 0) 
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD

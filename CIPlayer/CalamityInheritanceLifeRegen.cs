@@ -1,7 +1,11 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.Alcohol;
 using CalamityMod.CalPlayer;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -74,11 +78,11 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen += 8;      //5(1+4)HP/s
             }
             //魔君套
-            if (auricYharimSet)
+            if (AncientAuricSet)
             {
                 Player.lifeRegen += 60;
-
-                calPlayer.healingPotionMultiplier += 0.70f; //将血药恢复提高至70%，这样能让300的大血药在不依靠血神核心的情况下能直接恢复500以上的血量
+                //提升整合套的回血强度: 由0.7f->1.05f
+                calPlayer.healingPotionMultiplier += 1.20f;
                 Player.shinyStone = true;
                 Player.lifeRegenTime = 1800f;
                 if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
@@ -89,6 +93,55 @@ namespace CalamityInheritance.CIPlayer
             if (AncientAstralSet && Player.lifeRegen < 0)
             {
                 Player.lifeRegen = 4;
+            }
+            if (AncientSilvaSet)
+            {
+                //旧林海新增: 生命再生速度无法低于0
+                if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
+                    Player.lifeRegen = 16; //承受Debuff伤害时获得8HP/s
+                int getTimer = AncientSilvaRegenTimer;
+                if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
+                {
+                    if(getTimer - 1 == AncientSilvaRegenTimer)
+                    //粒子
+                    for(int i = 0; i< 15; i++)
+                    {
+                        if (Main.rand.NextBool())
+                        {
+                            Vector2 offset = new Vector2(16f, 0).RotatedByRandom(MathHelper.ToRadians(360f));
+                            Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
+                            float dFlyVelX = Player.velocity.X * 0.8f + velOffset.X;
+                            float dFlyVelY = Player.velocity.Y * 0.8f + velOffset.Y;
+                            float dScale =  1.2f;
+                            Dust dust = Dust.NewDustPerfect(new Vector2(Player.Center.X, Player.Center.Y) + offset, DustID.GemEmerald, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                            dust.noGravity = true;
+                        }
+
+                        if (Main.rand.NextBool(6))
+                        {
+                            Vector2 offset = new Vector2(16f, 0).RotatedByRandom(MathHelper.ToRadians(360f));
+                            Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
+                            float dFlyVelX = Player.velocity.X * 0.7f + velOffset.X;
+                            float dFlyVelY = Player.velocity.Y * 0.7f + velOffset.Y;
+                            float dScale =  1.2f;
+                            Dust dust = Dust.NewDustPerfect(new Vector2(Player.Center.X, Player.Center.Y) + offset, DustID.Vortex, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
+                            dust.noGravity = true;
+                        }
+                    }
+                    int healAmt = AncientAuricSet ? 5 : 3;
+                    int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
+                    Player.Heal(healAmt); //直接操作血量条进行回血
+                    int cd = Main.rand.Next(minCD, minCD + 201);
+                    AncientSilvaRegenCD = cd;
+                    AncientSilvaRegenTimer--;
+                }
+                if (AncientSilvaRegenTimer == 0 && AncientSilvaRegenCD == 0)
+                {
+                    SoundEngine.PlaySound(SoundID.Item4, Player.Center); //林海强回血准备好的时候播报这个音效
+                    int minTimer = AncientAuricSet ? 60 : 30;
+                    int timer = Main.rand.Next(minTimer, minTimer + 15); //回血刻由45 -> 55内随机
+                    AncientSilvaRegenTimer = timer;
+                }
             }
         }
         #endregion

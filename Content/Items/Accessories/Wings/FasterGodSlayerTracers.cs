@@ -13,6 +13,7 @@ using Terraria.ModLoader;
 using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -42,6 +43,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            if (player.armor[0].type == ModContent.ItemType<AncientGodSlayerHelm>() &&
+                player.armor[1].type == ModContent.ItemType<AncientGodSlayerChestplate>() &&
+                player.armor[2].type == ModContent.ItemType<AncientGodSlayerLeggings>())
+            {
+                player.wingTime += 2.0f;
+            }
+
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)
             {
                 int dustXOffset = 4;

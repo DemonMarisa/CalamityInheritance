@@ -6,6 +6,10 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.AuricTesla;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Content.Items.Armor.AncientTarragon;
+using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
+using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
+using CalamityInheritance.Content.Items.Armor.AncientSilva;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
@@ -32,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
         }
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 600;
-            player.statManaMax2 += 600;
+            player.statLifeMax2 += 800;
+            player.statManaMax2 += 800;
             player.moveSpeed += 0.25f;
         }
 
@@ -43,6 +47,10 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             {
                 CreateRecipe().
                 AddIngredient<AuricTeslaBodyArmorold>().
+                AddIngredient<AncientTarragonBreastplate>().
+                AddIngredient<AncientBloodflareBodyArmor>().
+                AddIngredient<AncientGodSlayerChestplate>().
+                AddIngredient<AncientSilvaArmor>().
                 AddIngredient<YharimsGiftLegacy>().
                 AddIngredient<AuricBarold>(18).
                 AddTile<DraedonsForgeold>().

@@ -226,10 +226,7 @@ SilvaHeadMagicold: {
 		'''
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Magic projectiles have a 10% chance to cause a massive explosion on enmey hits
 		Your magic weapons will do 60% more damage after the silva invulnerability time		
 		'''
@@ -243,10 +240,7 @@ SilvaHeadMelee: {
 
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Melee projectiles have a 25% chance to stun enemies for a very brief moment
 		True melee strikes have a 25% chance to do 5 times damage
 		You will take 20% less contact damage after the silva invulnerability
@@ -261,10 +255,7 @@ SilvaHeadRanged: {
 
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Increased your rate of fire with all ranged weapons 
 		Your ranged weapons will do 10% more damage after the silva invulnerability time
 		'''
@@ -283,10 +274,7 @@ SilvaHeadRogue: {
 		+125 maxinum stealth
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Faster throwing rate for your rogue weapon while you are above 50% HP
 		Your rogue weapons will do 10% more damage after the silva invulnerability time
 		'''
@@ -300,10 +288,7 @@ SilvaHeadSummonold: {
 		75% increased summon damage
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
-		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP.
-		Taking fatal damage while the effect is active will let you lose 100 max HP
-		Invincibility effect will be disabled if you are reduce to 400 max life or less.
-		Your max life will be restored if you die
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Summons an ancient leaf prism to blast your enemies with life energy
 		Your summon weapons will do 10% more damage and +2 max minions after the silva invulnerability time	
 		'''
@@ -547,7 +532,7 @@ YharimAuricTeslaBodyArmor: {
 	DisplayName: Yharim's Body Armor
 	Tooltip:
 		'''
-		+600 max life and max mana
+		+800 max life and max mana
 		25% increased movement speed
 		'''
 }
@@ -565,7 +550,7 @@ YharimAuricTeslaHelm: {
 	DisplayName: Yharim's Royal Helm
 	Tooltip:
 		'''
-		30% increased damage and critical strike chance
+		40% increased damage and critical strike chance
 		+10 max minion slots
 		+5 max sentry slots
 		'From Calamity 1.2'
@@ -575,10 +560,11 @@ YharimAuricTeslaHelm: {
 		+120 max stealth
 		Counts as rogue armor, can use stealth strikes
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
+		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
 		This effect has 30 seconds cooldown
 		Grants immnuity to lava and knockback
-		1.05x your max life, healing potions are 70% more effective
+		1.2x your max life, healing potions are 120% more effective
 		+30 HP/s life regen speed and massively boosts your natural life regen speed
 		+60 HP/s life regen speed and +60 defense if your are lower than 50% of max life
 		+30 defense and +30 HP/s life regen speed while submerged into lava
@@ -613,8 +599,8 @@ AncientAstralHelm: {
 		+0.5 HP/s life regen speed, +40 max HP and 12% increased damage reduction
 		Decreased your healing potion cooldown by 25% and make debuff can not negate your life regen
 		Every rogue critical strikes heal you 25 HP
-		Every 25 times of rouge crticial strikes, your defense, damage reduction will be booosted by 30% and
-		halves the defense damage.
+		Every 25 times of rouge crticial strikes, your defense, damage reduction will be booosted by 30%
+		and halves the defense damage.
 		Every stealth strikes give you +1 HP/s life regen speed, capped at +12 HP/s
 		Reset this effect if no stealth strikes in 15 seconds
 		Taking damage rain down powerful stars attack your enemy, and restore 25% of your max stealth
@@ -628,5 +614,153 @@ AncientAstralLeggings: {
 		'''
 		5% incraesed rogue critical strike chance	
 		+20 max HP and +0.5 HP/s life regen speed
+		'''
+}
+
+AncientTarragonLeggings: {
+	Tooltip:
+		'''
+		35% increased movement
+		Can swim and grants immnuity to lava
+		'''
+	DisplayName: Ancient Tarragon Leggings
+}
+
+AncientTarragonHelm: {
+	Tooltip:
+		'''
+		15% increased damage and crticial strike chance
+		+3 max minions
+		+2 max sentries
+		'''
+	SetBonus:
+		'''
+		+115 max stealth
+		35% increased your max HP, healing potions are 35% more effective
+		+4 HP/s life regen speed
+		Increases heart pick range
+		Grants immnuity to knockback, reduces defense damage by 45%
+		Boost your defense and damage reduction when below 50% of max HP
+		'''
+	DisplayName: Ancient Tarragon Helm
+}
+
+AncientTarragonBreastplate: {
+	Tooltip:
+		'''
+		+300 max HP and mana
+		'''
+	DisplayName: Ancient Tarragon Breastplate
+}
+
+AncientSilvaLeggings: {
+	Tooltip:
+		'''
+		45% increased movement speed
+		Can swim and grants immnuity to lava
+		'''
+	DisplayName: Ancient Silva Leggings
+}
+
+AncientSilvaHelm: {
+	DisplayName: Ancient Silva Helm
+	Tooltip:
+		'''
+		25% increased damage and crticial strike chance
+		+5 max minions
+		+3 max sentries
+		'''
+	SetBonus:
+		'''
+		+125 max stealth
+		65% increased max HP, healing potions are 50% more effective
+		+8 HP/s life regen speed
+		Boosts your natural life regen speed, debuffs can not negate your life regen
+		Sometimes you will be heal swiftly for a brief time
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
+		'''
+}
+
+AncientSilvaArmor: {
+	DisplayName: Ancient Silva Armor
+	Tooltip:
+		'''
+		+400 max HP and mana
+		'''
+}
+
+AncientGodSlayerLeggings: {
+	DisplayName: Ancient God Slayer Leggings
+	Tooltip:
+		'''
+		50% increased movement
+		Can swim and grants immnuity to lava
+		'''
+}
+
+AncientGodSlayerHelm: {
+	DisplayName: Ancient God Slayer Helm
+	Tooltip:
+		'''
+		25% increased damage and critical strike chance
+		+5 max minions
+		+3 max sentries
+		'''
+	SetBonus:
+		'''
+		+125 max stealth
+		85% increased max HP, healing potions are 40% more effective
+		+6 HP/s life regen speed
+		Hitting an enemy with stealth strikes will boosted your damage by 20% in 10 seconds
+		This effect has 30 seconds cooldown if triggered
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		'''
+}
+
+AncientGodSlayerChestplate: {
+	DisplayName: Ancient God Slayer Chestplate
+	Tooltip:
+		'''
+		+400 max HP and mana
+		Enemies take more damage when they hit you
+		'''
+}
+
+AncientBloodflareMask: {
+	DisplayName: Ancient Bloodflare Mask
+	Tooltip:
+		'''
+		20% increased damage and critical strikes chance
+		+4 max minions
+		+3 max sentries
+		'''
+	SetBonus:
+		'''
+		+120 max steath
+		45% increased max HP, healing potions are 45% more effective
+		+5 HP/s life regen speed, and significantly increases your natural life regen speed
+		Always have a chance to drops heart and mana star on enemies hit
+		+8 HP/s life regen speed when below 50% of you max HP
+		Taking over 400 damage from an attack will be converted by 150% into healing
+		This effect has 45 cooldown if triggered
+		'''
+}
+
+AncientBloodflareCuisses: {
+	DisplayName: Ancient Bloodflare Cuisses
+	Tooltip:
+		'''
+		30% increased movement speed
+		You can swim and grants immnuity to lava
+		'''
+}
+
+AncientBloodflareBodyArmor: {
+	DisplayName: Ancien1t Bloodflare Body Armor
+	Tooltip:
+		'''
+		+300 max HP and mana
+		+5 HP/s life regen speed and increases defense by 30 if submerged in lava
 		'''
 }

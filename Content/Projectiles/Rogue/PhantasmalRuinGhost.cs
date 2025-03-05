@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -39,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (Projectile.timeLeft <= 25)
                 Projectile.alpha += 9;
-            CalamityUtils.HomeInOnNPC(Projectile, true, 300f, 12f, 40f);
+            CIFunction.HomeInOnNPC(Projectile, true, 1300f, 12f, 40f);
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(100, 200, 255, 100);
