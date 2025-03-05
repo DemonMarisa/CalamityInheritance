@@ -729,6 +729,7 @@ AncientSilvaLeggings: {
 }
 
 AncientSilvaHelm: {
+	DisplayName: 远古林海战盔[Revamped]
 	Tooltip:
 		'''
 		增加25%伤害与暴击概率
@@ -744,24 +745,24 @@ AncientSilvaHelm: {
 		有些时候你会获得恢复速度非常快的治疗
 		承受致命伤害时, 会触发始源林海无敌, 使你在接下来的8秒内免疫死亡
 		'''
-	DisplayName: 远古林海战盔[Revamped]
 }
 
 AncientSilvaArmor: {
-	Tooltip: 增加400点最大生命上限与魔力上限
 	DisplayName: 远古林海盔甲[Revamped]
+	Tooltip: 增加400点最大生命上限与魔力上限
 }
 
 AncientGodSlayerLeggings: {
+	DisplayName: 远古弑神护腿[Revamped]
 	Tooltip:
 		'''
 		增加50%移动速度
 		使你免疫岩浆, 并允许你在水中自由行动
 		'''
-	DisplayName: 远古弑神护腿[Revamped]
 }
 
 AncientGodSlayerHelm: {
+	DisplayName: 远古弑神战盔[Revamped]
 	Tooltip:
 		'''
 		增加25%伤害与暴击概率
@@ -778,19 +779,19 @@ AncientGodSlayerHelm: {
 		这一效果在触发后有30秒的冷却时间
 		受到致命伤害时会触发弑神复活, 此效果有45秒冷却
 		'''
-	DisplayName: 远古弑神战盔[Revamped]
 }
 
 AncientGodSlayerChestplate: {
+	DisplayName: 远古弑神胸甲[Revamped]
 	Tooltip:
 		'''
 		增加400点最大生命上限与魔力上限
 		你会以极高的伤害反击来犯的敌人
 		'''
-	DisplayName: 远古弑神胸甲[Revamped]
 }
 
 AncientBloodflareMask: {
+	DisplayName: 远古血炎面具[Revamped]
 	Tooltip:
 		'''
 		增加20%伤害与暴击概率
@@ -808,23 +809,22 @@ AncientBloodflareMask: {
 		当你承受超过400点伤害的攻击时, 你会获得一次其伤害150%的治疗
 		这个效果触发后有45秒冷却时间
 		'''
-	DisplayName: 远古血炎面具[Revamped]
 }
 
 AncientBloodflareCuisses: {
+	DisplayName: 远古血炎护腿[Revamped]
 	Tooltip:
 		'''
 		增加30%移动速度
 		允许你免疫岩浆并在水内自由行动
 		'''
-	DisplayName: 远古血炎护腿[Revamped]
 }
 
 AncientBloodflareBodyArmor: {
+	DisplayName: 远古血炎胸甲[Revamped]
 	Tooltip:
 		'''
 		增加300最大生命上限与魔力上限
 		当你浸入岩浆时, 增加30点防御力并获得+5HP/生命再生速度
 		'''
-	DisplayName: 远古血炎胸甲[Revamped]
 }

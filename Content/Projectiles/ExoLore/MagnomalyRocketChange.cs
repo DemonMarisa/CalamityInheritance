@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Player player = Main.player[projectile.owner];
             var CIPlayer = player.CalamityInheritance();
 
-            SoundEngine.PlaySound(CIPlayer.exoMechLore ? CISoundMenu.MagnomalyHitsound : SoundID.Item14, projectile.Center);
+            SoundEngine.PlaySound(CIPlayer.exoMechLore ? CISoundMenu.MagnomalyHitsound.WithVolumeScale(0.8f) : SoundID.Item14, projectile.Center);
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {

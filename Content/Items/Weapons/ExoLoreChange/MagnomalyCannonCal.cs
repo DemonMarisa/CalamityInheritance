@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             {
                 item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
                 item.useAnimation = item.useTime = 67;
-                item.UseSound = CISoundMenu.MagnomalyShootSound;
+                item.UseSound = CISoundMenu.MagnomalyShootSound.WithVolumeScale(0.8f);
             }
             else
             {

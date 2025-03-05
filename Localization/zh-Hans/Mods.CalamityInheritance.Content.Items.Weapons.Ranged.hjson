@@ -21,6 +21,8 @@ MagnomalyCannon.ExoLoreOn:
 	[c/0080CA:攻击频率降低]
 	[c/0080CA:导弹的跟踪范围更大，速度更快]
 	[c/0080CA:导弹命中敌人后会分裂出更多的跟踪导弹]
+	[c/DB53A0:来自旧日的特殊礼物]
+	[c/DB53A0:此物品更改属于旧模组: 灾厄平衡重置 Algt's Calamity Tweaks]
 	'''
 
 ConclaveCrossfire: {
@@ -224,11 +226,11 @@ DrataliornusLegacy: {
 }
 
 ACTMinigun: {
-	DisplayName: 速射机枪[Tweaks]
+	DisplayName: 君祸[Algt's Tweaks]
 	Tooltip:
 		'''
 		发射强大的追踪金源子弹流
 		[c/DB53A0:来自旧日的特殊礼物]
-		[c/DB53A0:此物品更改属于旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
 		'''
 }
