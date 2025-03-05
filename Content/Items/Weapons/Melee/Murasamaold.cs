@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useTime = 5;
             Item.knockBack = 6.5f;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<MurasamaSlashold>();
             Item.shootSpeed = 24f;

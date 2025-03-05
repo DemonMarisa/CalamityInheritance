@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.value = Item.buyPrice(0, 1, 0, 0);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item5;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;

@@ -1,4 +1,10 @@
 ScalShopMessage: {
-	DisplayName: Scal Shop Message
-	Tooltip: ""
+	DisplayName: Note
+	Tooltip:
+		'''
+		This shop mainly sells some materials that just not so 'grinding'
+		For example Gladius is used to craft Galileo Gladius, but just no one sells it or no recipe on it
+		And sometimes decrypting Draedon schematic will take up 2 minite can be really annoying
+		Anyways, this shop might be helpful for those akaward situation
+		'''
 }

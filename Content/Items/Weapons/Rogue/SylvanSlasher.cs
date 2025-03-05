@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useTime = 5;
             Item.knockBack = 3f;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.height = 78;
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.rare = ModContent.RarityType<BlueGreen>();

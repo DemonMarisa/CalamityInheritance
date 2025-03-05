@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item40;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.shoot = ProjectileID.LostSoulFriendly;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
