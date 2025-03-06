@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         internal const float ExplosionDamageMultiplier = 0.5f;
-        public static readonly int HeliumFlashDamage = 450;
+        public static readonly int HeliumFlashDamage = 495;
         public static readonly int HeliumFlashManaCost = 15;
 
         public override void SetStaticDefaults()
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 112;
             Item.height = 112;
             Item.DamageType = DamageClass.Magic;
-            Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 31);
+            Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 46);
             Item.mana = HeliumFlashManaCost;
             Item.useAnimation = 25;
             Item.useTime = 25;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
-            Item.shootSpeed = 18f;
+            Item.shootSpeed = 20f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
