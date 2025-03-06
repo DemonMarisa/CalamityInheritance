@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;

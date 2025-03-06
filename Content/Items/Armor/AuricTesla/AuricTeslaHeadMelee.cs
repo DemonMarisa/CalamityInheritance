@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {

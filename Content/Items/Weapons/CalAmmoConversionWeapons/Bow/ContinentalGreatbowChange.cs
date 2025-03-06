@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
 {

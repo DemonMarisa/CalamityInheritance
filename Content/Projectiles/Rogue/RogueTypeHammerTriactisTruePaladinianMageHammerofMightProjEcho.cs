@@ -2,6 +2,7 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -45,6 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
+            Projectile.Calamity().stealthStrike = true;
             Player owner = Main.player[Projectile.owner];
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.75f);
 

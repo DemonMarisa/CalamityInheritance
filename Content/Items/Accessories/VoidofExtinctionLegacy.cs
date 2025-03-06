@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                             else if(Projectile.ai[2] == -1f) //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
                             {
                                 ReturnDust(); //只有挂载在敌人身上的锤子回收在玩家身上的时候才会生成粒子
-                                SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.5f} : CISoundMenu.HammerReturnID2 with {Volume = 0.5f}, Projectile.Center);
+                                SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.8f} : CISoundMenu.HammerReturnID2 with {Volume = 0.8f}, Projectile.Center);
                                 Projectile.ai[2] = 0f;
                             }
                             else
@@ -116,22 +116,31 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             //普攻与潜伏共享的效果: 爆炸
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
-
+            Player owner = Main.player[Projectile.owner];
             if(Projectile.Calamity().stealthStrike)
             {
                 //潜伏专属效果：大幅度压制的爆炸粒子
-                StealthSpawnDust();
-                SpawnSparks(hit);
-                SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-                if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
+                if(owner.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] < 1)
+                //如果已经存在一个Clone，则潜伏二次掷出的锤子会尝试返回至玩家手中
                 {
-                    SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
+                    StealthSpawnDust();
                     SpawnSparks(hit);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
+                    SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
+                    if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
+                    {
+                        SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
+                        SpawnSparks(hit);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
+                    }
+                    ifSummonClone = false;
                 }
-                ifSummonClone = false;
+                else
+                {   
+                    Projectile.ai[0] = 1f;
+                    SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
+                    SpawnSparks(hit);
+                }
             }
-            
             
             //普攻效果
             if(!Projectile.Calamity().stealthStrike) 

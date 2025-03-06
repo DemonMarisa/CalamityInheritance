@@ -1,5 +1,6 @@
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.CraftingStations;

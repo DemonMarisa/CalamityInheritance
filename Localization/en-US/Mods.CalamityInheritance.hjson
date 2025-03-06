@@ -12,7 +12,6 @@ Configs: {
 
 		Headers: {
 			Gameplay: Mechanic
-			Texture: Texture
 			Music: Music
 		}
 
@@ -101,31 +100,6 @@ Configs: {
 			Tooltip: Enables recipes of Legendary items.
 		}
 
-		WulfumTexture: {
-			Label: "[i:CalamityInheritance/WulfrumPickaxe]Wulfum Texture"
-			Tooltip:
-				'''
-				Determines the sprites of legacy Wulfrum Tools and Weapons
-				1: Legacy Sprite
-				2: Ancient Sprite
-				'''
-		}
-
-		ArkofCosmosTexture: {
-			Label: "[i:CalamityInheritance/ArkoftheCosmosold]Ark of the Cosmos Legacy Resprite"
-			Tooltip: Determines the sprite of Ark of the Cosmos Legacy
-		}
-
-		RampartofDeitiesTexture: {
-			Label: "[i:CalamityInheritance/CIRampartofDeities]Rampart of Deities Resprite"
-			Tooltip:
-				'''
-				Determines sprite of Rampart of Deities Legacy
-				1: Normal sprite
-				2: Legacy sprite
-				'''
-		}
-
 		Tyrant1: {
 			Label: "[i:MusicBox]Post-Yharon Custom Music"
 			Tooltip: Player custom mod music after Yharon fight
@@ -150,11 +124,6 @@ Configs: {
 				'''
 		}
 
-		EtherealTalismancTexture: {
-			Label: "[i:CalamityInheritance/AncientEtherealTalisman]Ethereal Talisman Resprite"
-			Tooltip: Change the spirte style of Ethereal Talisman
-		}
-
 		DoGLegacyMusic: {
 			Label: Devouer of Gods Legacy Theme
 			Tooltip:
@@ -162,11 +131,6 @@ Configs: {
 				Plays Devouer of Gods Legacy theme in DoG Fight
 				Disable by default
 				'''
-		}
-
-		SkullmasherResprite: {
-			Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
-			Tooltip: Determines the sprite style of Skullmasher
 		}
 
 		CalBossesCanDropSoul: {
@@ -179,96 +143,6 @@ Configs: {
 			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
 		}
 
-		P90Resprite: {
-			Label: "[i:CalamityInheritance/P90Legacy]P90 Resprite"
-			Tooltip: Determines the sprite of P90 Legacy
-		}
-
-		GodSlayerKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]Empyrean Knives Resprite"
-			Tooltip: Determines the sprite of Empyrean Knives Legacy Rogue
-		}
-
-		ShadowspecKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]Illustrious Knives Resprite"
-			Tooltip: Determines the sprite of Illustrious Knives Legacy Rogue
-		}
-
-		FateGirlSprite: {
-			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]Daawnlight Spirit Origin Minion Resprite"
-			Tooltip: Determines the sprite of Daawnlight Spirite Origin Minion
-		}
-
-		StellarContemptResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]Stellar Contempt Resprite"
-			Tooltip: Determines the sprite of Stellar Contempt
-		}
-
-		PhantomHeartResprite: {
-			Tooltip: Determines the sprite of Phantom Heart
-			Label: "[i:CalamityMod/PhantomHeart]Phantom Heart Resprite"
-		}
-
-		EtherealCoreResprite: {
-			Tooltip: Determines the spirte of Ethereal Core
-			Label: "[i:CalamityMod/EtherealCore]Ethereal Core Resprite"
-		}
-
-		CometShardResprite: {
-			Tooltip: Determines the spirte of Comet Shard
-			Label: "[i:CalamityMod/CometShard]Comet Shard Resprite"
-		}
-
-		DragonfruitResprite: {
-			Tooltip: Determines the spirte of Dragonfruit
-			Label: "[i:CalamityMod/Dragonfruit]Dragonfruit Resprite"
-		}
-
-		ElderberryResprite: {
-			Tooltip: Determines the sprite of Elderberry
-			Label: "[i:CalamityMod/Elderberry]Elderberry Resprite"
-		}
-
-		MiracleFruitResprite: {
-			Tooltip: Determines the sprite of Miracle Fruit
-			Label: "[i:CalamityMod/MiracleFruit]Miracle Fruit Resprite"
-		}
-
-		BloodOrangeResprite: {
-			Tooltip: Determines the sprite of Blood Orange
-			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
-		}
-
-		TriactisHammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]Triactis' Hammer Resprite"
-			Tooltip: Determines the sprite of Triactis' Hammer
-		}
-
-		PwnagehammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]Pwnagehammer Resprite"
-			Tooltip: Determines the sprite of Pwnagehammer
-		}
-
-		SetAllLegacySprite: {
-			Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
-			Label: "[i:CalamityInheritance/Death]All Legacy Sprite Settin1g"
-		}
-
-		SpecialRarityColor: {
-			Label: "[i:GoldCrown]Special Rarity Color"
-			Tooltip: Change rarity color for certain addon item that re-added in mod
-		}
-
-		HeliumFlashResprite: {
-			Label: "[i:CalamityInheritance/HeliumFlashLegacy]Helium Flash Resprite"
-			Tooltip: Determines the sprite of Pwnagehammer
-		}
-
-		DrataliornusResprite: {
-			Label: "[i:CalamityInheritance/DrataliornusLegacy]Drataliornus Resprite"
-			Tooltip: Determines the sprite of Drataliornus
-		}
-
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
 			Tooltip:
@@ -276,6 +150,141 @@ Configs: {
 				Determines if a Mechworm can be summoned when wearing Auric/God Slayer Summon armor.
 				Default by true
 				'''
+		}
+
+		SpecialRarityColor: {
+			Tooltip: ""
+			Label: Special Rarity Color
+		}
+	}
+
+	CIRespriteConfig: {
+		SkullmasherResprite: {
+			Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
+			Tooltip: Determines sprite style of Skullmasher
+		}
+
+		EtherealTalismancTexture: {
+			Label: "[i:CalamityInheritance/AncientEtherealTalisman]Ethereal Talisman Resprite"
+			Tooltip: Determines sprite style of Ethereal Talisman
+		}
+
+		RampartofDeitiesTexture: {
+			Label: "[i:CalamityInheritance/CIRampartofDeities]Rampart of Deities Resprite"
+			Tooltip: Determines sprite style of Rampart of Deities Legacy
+		}
+
+		ArkofCosmosTexture: {
+			Label: "[i:CalamityInheritance/ArkoftheCosmosold]Ark of the Cosmos Legacy Resprite"
+			Tooltip: Determines sprite style of Ark of the Cosmos Legacy
+		}
+
+		SetAllLegacySprite: {
+			Label: "[i:CalamityInheritance/Death]All Legacy Sprite Setting"
+			Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
+		}
+
+		WulfumTexture: {
+			Label: "[i:CalamityInheritance/WulfrumPickaxe]Wulfum Texture"
+			Tooltip: Determines sprite style of legacy Wulfrum Tools and Weapons
+		}
+
+		Headers.Texture: Sprites
+		DisplayName: Legacy Sprite
+
+		P90Resprite: {
+			Label: "[i:CalamityInheritance/P90Legacy]P90 Resprite"
+			Tooltip: Determines sprite style of P90 Legacy
+		}
+
+		GodSlayerKnivesResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]Empyrean Knives Resprite"
+			Tooltip: Determines sprite style of Empyrean Knives Legacy Rogue
+		}
+
+		ShadowspecKnivesResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]Illustrious Knives Resprite"
+			Tooltip: Determines sprite style of Illustrious Knives Legacy Rogue
+		}
+
+		TriactisHammerResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]Triactis' Hammer Resprite"
+			Tooltip: Determines sprite style of Triactis' Hammer
+		}
+
+		PwnagehammerResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]Pwnagehammer Resprite"
+			Tooltip: Determines sprite style of Pwnagehammer
+		}
+
+		FateGirlSprite: {
+			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]Daawnlight Spirit Origin Minion Resprite"
+			Tooltip: Determines sprite style of Daawnlight Spirite Origin Minion
+		}
+
+		StellarContemptResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]Stellar Contempt Resprite"
+			Tooltip: Determines sprite style of Stellar Contempt
+		}
+
+		HeliumFlashResprite: {
+			Label: "[i:CalamityInheritance/HeliumFlashLegacy]Helium Flash Resprite"
+			Tooltip: Determines sprite style of Helium Flash Legacy
+		}
+
+		DrataliornusResprite: {
+			Label: "[i:CalamityInheritance/DrataliornusLegacy]Drataliornus Resprite"
+			Tooltip: Determines sprite style of Drataliornus
+		}
+
+		PhantomHeartResprite: {
+			Tooltip: Determines sprite style of Phantom Heart
+			Label: "[i:CalamityMod/PhantomHeart]Phantom Heart Resprite"
+		}
+
+		AngelTreadsResprite: {
+			Label: "[i:CalamityMod/AngelTreads]Angel Treads Resprite"
+			Tooltip: Determines sprite style of Angel Treads
+		}
+
+		LunarBootsResprite: {
+			Label: "[i:CalamityInheritance/FasterLunarTracers]Seraph Tracers Legacy Resprite"
+			Tooltip: Determines sprite style of Seraph Tracers Legacy
+		}
+
+		MOABResprite: {
+			Label: "[i:CalamityMod/MOAB]MOAB Resprite"
+			Tooltip: Determines sprite style of MOAB
+		}
+
+		EtherealCoreResprite: {
+			Tooltip: Determines sprite style of Ethereal Core
+			Label: "[i:CalamityMod/EtherealCore]Ethereal Core Resprite"
+		}
+
+		CometShardResprite: {
+			Tooltip: Determines sprite style of Comet Shard
+			Label: "[i:CalamityMod/CometShard]Comet Shard Resprite"
+		}
+
+		DragonfruitResprite: {
+			Tooltip: Determines sprite style of Dragonfruit
+			Label: "[i:CalamityMod/Dragonfruit]Dragonfruit Resprite"
+		}
+
+		ElderberryResprite: {
+			Tooltip: Determines sprite style of Elderberry
+			Label: "[i:CalamityMod/Elderberry]Elderberry Resprite"
+		}
+
+		MiracleFruitResprite: {
+			Tooltip: Determines sprite style of Miracle Fruit
+			Label: "[i:CalamityMod/MiracleFruit]Miracle Fruit Resprite"
+		}
+
+		BloodOrangeResprite: {
+			Tooltip: Determines sprite style of Blood Orange
+			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
 		}
 	}
 }

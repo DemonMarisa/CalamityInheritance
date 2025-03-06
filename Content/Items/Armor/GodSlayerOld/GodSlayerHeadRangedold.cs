@@ -8,6 +8,7 @@ using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {

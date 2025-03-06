@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityMod.Particles;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -161,7 +163,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SpawnDust(target.Center);
             if(ifSummonClone) StealthOnHit();  //如果允许生成克隆弑神锤子
             else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f)  OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
-            else if(Projectile.ai[2] == -2f) OnAddition(); //只会让挂载过的锤子执行这个函数
+            else if(Projectile.ai[2] == -2f) SpawnSpark(hit); //只会让挂载过的锤子执行这个函数
             else SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -173,7 +175,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             StealthOnHit();
             else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f) //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线 
             OnHitEffect(target.Center);
-            else OnAddition(); //只会让挂载过的锤子执行这个函数
         }
         private static void SpawnDust(Vector2 targetPos)
         {
@@ -218,21 +219,24 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 fire.velocity += Projectile.velocity/2*(5*0.04f);
             }
         }
-        private void OnAddition()
+        private void SpawnSpark(NPC.HitInfo hit)
         {
-            SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-            for (int i = 0; i < 30; i++)
+            SoundEngine.PlaySound(Main.rand.NextBool()? CISoundMenu.HammerSmashID1 with {Volume = 0.8f} : CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
+            float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true);
+            float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);
+            getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f);
+            Vector2 splatterDirection = Projectile.velocity * 1.3f;
+            for (int i = 0; i < 15; i++)
             {
-                Dust fire = Dust.NewDustPerfect(Projectile.Center, 181);
-                fire.velocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedByRandom(0.8f) * new Vector2(4f, 1.25f) * Main.rand.NextFloat(0.9f, 1f);
-                fire.velocity = fire.velocity.RotatedBy(Projectile.rotation - MathHelper.PiOver2);
-                fire.velocity += Projectile.velocity/2 * (3* 0.04f);
+                int getSparkTime = Main.rand.Next(10, 20);
+                float getSparkSize = Main.rand.NextFloat(0.7f, Main.rand.NextFloat(3.3f, 5.5f)) + getDMGLerp * 0.85f;
+                Color getColor = Color.Lerp(Color.Purple, Color.GhostWhite, Main.rand.NextFloat(0.7f));
+                getColor = Color.Lerp(getColor, Color.MediumPurple, Main.rand.NextFloat());
 
-                fire.noGravity = true;
-                fire.scale = Main.rand.NextFloat(0.2f, 0.6f) * 5;
-                fire = Dust.CloneDust(fire);
-                fire.velocity = Main.rand.NextVector2Circular(3f, 3f);
-                fire.velocity += Projectile.velocity/2*(5*0.04f);
+                Vector2 getVelocity = splatterDirection.RotatedByRandom(0.3f) * Main.rand.NextFloat(1f, 1.2f);
+                getVelocity.Y -= 7f;
+                SparkParticle spark = new SparkParticle(Projectile.Center, getVelocity, false, getSparkTime, getSparkSize, getColor);
+                GeneralParticleHandler.SpawnParticle(spark);
             }
         }
         private void StealthOnHit()

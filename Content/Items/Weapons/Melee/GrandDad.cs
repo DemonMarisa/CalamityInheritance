@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

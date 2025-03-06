@@ -8,6 +8,7 @@ using CalamityInheritance.Content.Items.Armor.AncientTarragon;
 using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {

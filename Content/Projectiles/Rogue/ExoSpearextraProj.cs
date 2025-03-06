@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

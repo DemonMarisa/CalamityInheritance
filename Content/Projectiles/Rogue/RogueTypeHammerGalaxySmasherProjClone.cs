@@ -225,7 +225,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
             //克隆被kill掉后再返回一个普通弑神锤子, 并只让他进行星神之杀的潜伏攻击模板
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * (-3.8f), ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProj>(), (int)(Projectile.damage*0.2f), Projectile.knockBack, Main.myPlayer, 0f, 0f, -2f);
+            float angles = Main.rand.NextFloat(3f, 56f);
+            float anglesRot = 45f / angles;
+            float rot = MathHelper.ToRadians(anglesRot);
+            Vector2 velOffset = new Vector2(0f, 13f).RotatedBy(rot * Main.rand.NextFloat(1.5f, 2.4f));
+            if(Main.rand.NextBool()) velOffset *= -1;
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, velOffset, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProj>(), (int)(Projectile.damage*0.2f), Projectile.knockBack, Main.myPlayer, 0f, 0f, -2f);
         }
     }
 }

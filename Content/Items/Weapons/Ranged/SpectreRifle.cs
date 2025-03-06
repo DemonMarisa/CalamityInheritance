@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

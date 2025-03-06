@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using Mono.Cecil;
 using Terraria.DataStructures;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

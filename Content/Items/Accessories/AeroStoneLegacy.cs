@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

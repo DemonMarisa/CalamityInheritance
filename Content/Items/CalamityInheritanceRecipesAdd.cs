@@ -70,6 +70,7 @@ using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
 using CalamityMod.Tiles.Ores;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items
 {

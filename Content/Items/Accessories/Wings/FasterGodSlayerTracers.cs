@@ -14,6 +14,7 @@ using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {

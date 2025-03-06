@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -47,7 +48,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             switch (Projectile.ai[0])
             {
                 case 0f:
-                    Projectile.extraUpdates = 1;
+                    Projectile.Hitbox = new Rectangle((int)Projectile.velocity.X, (int)Projectile.velocity.Y, Projectile.width, Projectile.height);
+                    Projectile.extraUpdates = 10;
                     Projectile.penetrate = -1;
                     Projectile.localNPCHitCooldown = -1;
                     if(HitCounts == 1)
@@ -68,12 +70,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                     break;
                 case 2f:
-                    Projectile.ai[2] += 1f;//计时器自增
-                    if(Projectile.ai[2] == 1f)
+                    BlastAI(Projectile);
+                    break;
+            }
+        }
+
+        public static void BlastAI(Projectile projectile)
+        {
+            projectile.ai[2] += 1f;//计时器自增
+                    if(projectile.ai[2] == 1f)
                     {
-                        Projectile.penetrate = 2; //因为没有计划使用timeLeft来杀死弹幕，因此这里改为了多穿
-                        Projectile.extraUpdates = 1;
-                        Projectile.localNPCHitCooldown = 30; //->降低为20
+                        projectile.penetrate = 2; //因为没有计划使用timeLeft来杀死弹幕，因此这里改为了多穿
+                        projectile.extraUpdates = 1;
+                        projectile.localNPCHitCooldown = 30; //->降低为20
                         int knivesAmt = Main.rand.Next(10, 15); //10->15
                         float rot = 360f/knivesAmt;
                        
@@ -82,22 +91,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                             float rotArg = MathHelper.ToRadians(i* rot);
                             Vector2 rotPos = new Vector2(10f, 0f).RotatedBy(rotArg);
                             Vector2 rotVel = new Vector2(10f, 0f).RotatedBy(rotArg);
-                            Player player = Main.player[Projectile.owner];
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + rotPos, rotVel,
+                            Player player = Main.player[projectile.owner];
+                            Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center + rotPos, rotVel,
                                                     ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(),
-                                                    Projectile.damage, Projectile.knockBack, Main.myPlayer, 2f, 0f, Projectile.ai[2] + 1f);
+                                                    projectile.damage, projectile.knockBack, Main.myPlayer, 2f, 0f, projectile.ai[2] + 1f);
                         }
                     }
-                    if(Projectile.ai[2] > 40)
+                    if(projectile.ai[2] > 40)
                     {
-                        Projectile.ai[2] = 40;
-                        CIFunction.HomeInOnNPC(Projectile, true, 1800f, 32f, 0f); //锁定这个敌人
+                        projectile.ai[2] = 40;
+                        CIFunction.HomeInOnNPC(projectile, true, 1800f, 32f, 0f); //锁定这个敌人
                     }
-                    break;
-            }
         }
-
-
         //Give it a custom hitbox shape so it may remain rectangular and elongated
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {

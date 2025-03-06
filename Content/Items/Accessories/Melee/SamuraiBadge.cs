@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {

@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

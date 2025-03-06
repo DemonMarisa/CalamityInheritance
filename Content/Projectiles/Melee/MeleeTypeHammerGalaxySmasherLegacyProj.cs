@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         private static float RotationIncrement = 0.22f;
         private static int Lifetime = 240;
-        private static float ReboundTime = 26f;
+        private static float ReboundTime = 35f;
 
         public override void SetStaticDefaults()
         {

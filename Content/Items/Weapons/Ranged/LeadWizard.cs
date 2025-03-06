@@ -7,6 +7,7 @@ using CalamityMod;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

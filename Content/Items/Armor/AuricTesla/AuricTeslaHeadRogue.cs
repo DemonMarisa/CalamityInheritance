@@ -13,6 +13,7 @@ using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {

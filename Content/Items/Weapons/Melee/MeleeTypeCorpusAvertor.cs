@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Terraria;

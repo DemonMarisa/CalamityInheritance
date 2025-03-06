@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using Terraria;
@@ -55,7 +56,15 @@ namespace CalamityInheritance.Content.Items
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<LeviathanAmbergrisLegacy>()] = ModContent.ItemType<LeviathanAmbergris>();
                 #endregion
 
-                
+                #region 血腥的契约
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodPact>()] = ModContent.ItemType<BloodPactLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodPactLegacy>()] = ModContent.ItemType<BloodPact>();
+                #endregion
+                #region 血炎晶核
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCore>()] = ModContent.ItemType<BloodflareCoreLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCoreLegacy>()] = ModContent.ItemType<BloodflareCore>();
+                #endregion
+           
             }
             #endregion
         }

@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using CalamityMod.Projectiles;
 using CalamityMod;
 using Terraria.ID;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
 {

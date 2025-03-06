@@ -21,6 +21,7 @@ using Terraria.Graphics.Effects;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

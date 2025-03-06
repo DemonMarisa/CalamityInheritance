@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.ai[0] == 0f)
             {
                 Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] >= 30f)
+                if (Projectile.ai[1] >= 45f)
                 {
                     Projectile.ai[0] = 1f;
                     Projectile.ai[1] = 0f;

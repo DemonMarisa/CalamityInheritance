@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;

@@ -16,6 +16,7 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;

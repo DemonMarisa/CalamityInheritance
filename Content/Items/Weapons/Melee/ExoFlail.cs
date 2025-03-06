@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

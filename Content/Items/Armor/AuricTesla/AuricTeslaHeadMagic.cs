@@ -14,6 +14,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {

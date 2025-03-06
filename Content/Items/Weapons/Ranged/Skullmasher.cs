@@ -16,6 +16,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Rarity;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -45,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            if (CIConfig.Instance.SkullmasherResprite == 1)
+            if (CIRespriteConfig.Instance.SkullmasherResprite == 1)
                 return new Vector2(-40, 0);
             else
                 return new Vector2(-15, 0);

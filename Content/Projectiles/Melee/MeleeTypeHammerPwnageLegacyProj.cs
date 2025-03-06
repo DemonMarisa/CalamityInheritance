@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private static readonly float RotationIncrement = 0.22f;
         private static readonly float StealthSpeed = MeleeTypeHammerPwnageLegacy.Speed*2;
         private static readonly int LifeTime = 240;
-        private static readonly float ReboundTime = 30f;
+        private static readonly float ReboundTime = 45f;
         public override void SetDefaults()
         {
             Projectile.width = 68;

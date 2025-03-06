@@ -11,6 +11,7 @@ using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
