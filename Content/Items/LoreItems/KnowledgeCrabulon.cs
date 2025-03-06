@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().crabulonLore = true;
+                player.CalamityInheritance().LoreCrabulon = true;
             }
         }
         public override void AddRecipes()

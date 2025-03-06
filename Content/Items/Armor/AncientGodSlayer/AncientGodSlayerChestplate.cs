@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.CalamityInheritance();
-            modPlayer.godSlayerReflect = true;
+            modPlayer.GodSlayerReflect = true;
             player.thorns = 1f;
             player.statLifeMax2 += 400;
             player.statManaMax2 += 400;

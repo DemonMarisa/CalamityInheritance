@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().eaterOfWorldsLore = true;
+                player.CalamityInheritance().LoreEaterofWorld = true;
                 player.lifeRegen -= 4;
             }
         }

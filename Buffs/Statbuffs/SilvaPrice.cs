@@ -1,10 +1,10 @@
-﻿using CalamityInheritance.Utilities;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Buffs.StatDebuffs
+namespace CalamityInheritance.Buffs.Statbuffs
 {
-    public class Backfire: ModBuff
+    public class SilvaPrice: ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -13,10 +13,6 @@ namespace CalamityInheritance.Buffs.StatDebuffs
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = false;
             base.SetStaticDefaults();
-        }
-        public override void Update(Player player, ref int buffIndex)
-        {
-            player.CalamityInheritance().BackfireStats = true;
         }
     }
 }

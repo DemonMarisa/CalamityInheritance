@@ -35,6 +35,11 @@ namespace CalamityInheritance.Buffs
                 player.pickSpeed -= 0.05f;
             else if (type == BuffID.SugarRush)
                 player.pickSpeed -= 0.1f;
+            
+            if (type == BuffID.ManaSickness && player.CalamityInheritance().AncientAuricSet)
+            {
+                player.GetDamage<MagicDamageClass>() *= 1.5f;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.CalamityInheritance().silvaStun = true;
+            npc.CalamityInheritance().SilvaStunDebuff = true;
         }
     }
 }

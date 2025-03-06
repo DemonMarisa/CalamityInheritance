@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
             // PhotovisceratorCrystal的发射逻辑
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 float Direction = player.direction;
                 float SpawnX = 15f;
@@ -138,7 +138,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.Photovisceratorold.ExoLoreOn");
 

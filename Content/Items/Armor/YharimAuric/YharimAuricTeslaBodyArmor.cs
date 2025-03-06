@@ -37,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
         }
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 800;
-            player.statManaMax2 += 800;
+            player.statLifeMax2 += 1000;
+            player.statManaMax2 += 500;
             player.moveSpeed += 0.25f;
         }
 

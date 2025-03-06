@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             if(player.armor[0].type == ModContent.ItemType<AncientXerocMask>() && 
                player.armor[1].type == ModContent.ItemType<AncientXerocPlateMail>() &&
                player.armor[2].type == ModContent.ItemType<AncientXerocCuisses>() &&
-               modplayer1.ancientXerocWrath
+               modplayer1.AncientXerocWrath
                )
             {
                 //Scarlet: 这次真的抵消掉伤害惩罚了

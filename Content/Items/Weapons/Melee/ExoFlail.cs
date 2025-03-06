@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            if(usPlayer.exoMechLore)
+            if(usPlayer.LoreExo)
             {
                 hitCount++;
                 float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.ExoFlail.ExoLoreOn");
 

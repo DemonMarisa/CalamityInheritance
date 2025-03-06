@@ -45,13 +45,15 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 		{
 			var modPlayer = player.CalamityInheritance();
 			var calPlayer = player.Calamity();
+			modPlayer.ManaHealMutipler += 2.5f;
+			player.manaCost *= 0.75f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
 			#region 灾厄的月后套通用效果
 			calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			calPlayer.auricSet = true;
-			modPlayer.auricsilvaset = true; //林海自活
+			modPlayer.AuricSilvaSet = true; //林海自活
 			#endregion
 			#region 标记为盗贼套装 
 			calPlayer.wearingRogueArmor = true;
@@ -63,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             player.thorns += 10f;
 			modPlayer.GodSlayerReborn = true;
 			modPlayer.GodSlayerDMGprotect = true;
-			modPlayer.godSlayerReflect = true;
+			modPlayer.GodSlayerReflect = true;
 			if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
                 calPlayer.DeferredDashID = GodslayerArmorDash.ID;
@@ -96,26 +98,26 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             calPlayer.tarraMelee = true;
             calPlayer.bloodflareMelee = true;
             calPlayer.godSlayerDamage = true;
-            modPlayer.silvaMelee = true;
+            modPlayer.SilvaMeleeSetLegacy = true;
 			//射手
 			calPlayer.tarraRanged = true;
-            modPlayer.godSlayerRangedold = true;
-            modPlayer.silvaRanged = true;
+            modPlayer.GodSlayerRangedSet = true;
+            modPlayer.SilvaRangedSetLegacy = true;
             modPlayer.AuricbloodflareRangedSoul = true;
             if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
                 player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
 			//法师
             calPlayer.tarraMage = true;
             calPlayer.bloodflareMage = true;
-            modPlayer.silvaMageold = true;
-            modPlayer.godSlayerMagic = true;
+            modPlayer.SilvaMagicSetLegacy = true;
+            modPlayer.GodSlayerMagicSet = true;
 			//召唤
-            modPlayer.godSlayerSummonold = true;
+            modPlayer.GodSlayerSummonSet = true;
             //盗贼
             calPlayer.tarraThrowing = true;
             calPlayer.bloodflareThrowing = true;
             calPlayer.godSlayerThrowing = true;
-            modPlayer.silvaRogue = true;
+            modPlayer.SilvaRougeSetLegacy = true;
 			#endregion
         }
 		

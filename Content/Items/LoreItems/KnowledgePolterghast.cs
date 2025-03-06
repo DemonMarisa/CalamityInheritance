@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().polterghastLore = true;
+                player.CalamityInheritance().LorePolter = true;
             }
         }
 

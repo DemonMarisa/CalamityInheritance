@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.dust[dusters].velocity *= 0f;
                 }
             }
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 18f, 10f);
             }
@@ -111,7 +111,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, -1000f, -800f, 29f, ModContent.ProjectileType<ExoGladSpears>(), swordDmg, swordKB, Projectile.owner);
                 }
-                if(usPlayer.exoMechLore)
+                if(usPlayer.LoreExo)
                 {
                     for (int j = 0; j < comet; ++j)
                     {

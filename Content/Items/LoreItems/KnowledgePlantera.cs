@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().planteraLore = true;
+                player.CalamityInheritance().LorePlantera = true;
             }
         }
 

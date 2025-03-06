@@ -9,7 +9,7 @@ namespace CalamityInheritance.NPCs
     public class CIGlobalAI : GlobalNPC
     {
         #region Queen Bee Lore AI Changes
-        public static void QueenBeeLoreEffect(NPC npc)
+        public static void LoreQueenBeeEffect(NPC npc)
         {
             npc.damage = 0;
 

@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories
      
 
             //继承至旧百草瓶, 作为上位你跟我说这阴阳石不能免疫?
-            usPlayer.beeResist = true;
+            usPlayer.FuckYouBees = true;
             usPlayer.AmbrosialImmnue = true;
             usPlayer.AmbrosialStats = true;
             usPlayer.AmbrosialAmpouleOld = true;

@@ -54,8 +54,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.godSlayer = true;
             modPlayer.godSlayerDamage = true;
 
-            modPlayer1.silvaMelee = true;
-            modPlayer1.godSlayerReflect = true;
+            modPlayer1.SilvaMeleeSetLegacy = true;
+            modPlayer1.GodSlayerReflect = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modPlayer1.GodSlayerReborn = true;
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.GodSlayerDMGprotect = true;
 
-            modPlayer1.auricsilvaset = true;
+            modPlayer1.AuricSilvaSet = true;
             modPlayer.auricSet = true;
 
             player.thorns += 3f;

@@ -32,6 +32,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
+    //所有需要重载的函数现在都排在最前面
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
@@ -54,10 +55,10 @@ namespace CalamityInheritance.CIPlayer
             #region Player Incoming Damage Multiplier (Increases)
             double damageMult = 1D;
             CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
-            if (modPlayer1.desertScourgeLore) // Dimensional Soul Artifact increases incoming damage by 15%.
+            if (modPlayer1.LoreDesertScourge) // Dimensional Soul Artifact increases incoming damage by 15%.
                 damageMult += 0.05;
 
-            if(ancientBloodFact && Main.rand.NextBool(4))
+            if(AncientBloodPact && Main.rand.NextBool(4))
             {
                 Player.AddBuff(ModContent.BuffType<BloodyBoost>(), 600);
                 damageMult += 1.25;
@@ -67,6 +68,516 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
         }
+        #region Pre Kill
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
+            {
+                SoundEngine.PlaySound(SoundID.Item67, Player.Center);
+
+                for (int j = 0; j < 50; j++)
+                {
+                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                    Dust dust = Main.dust[nebulousReviveDust];
+                    dust.position.X += Main.rand.Next(-20, 21);
+                    dust.position.Y += Main.rand.Next(-20, 21);
+                    dust.velocity *= 0.9f;
+                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    // Change this accordingly if we have a proper equipped sprite.
+                    dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
+                    if (Main.rand.NextBool())
+                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                }
+
+                Player.statLife = +100;
+
+                if (DraconicSurgeStats)
+                {
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
+                    {
+                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+                    }
+                }
+                Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
+                return false;
+            }
+            //金源套的林海复活，或者说本mod的林海复活
+            if (AuricSilvaSet && CIsilvaCountdown > 0)
+            {
+                if (SilvaRebornMark)
+                {
+                    if (CIsilvaCountdown == CIsilvaReviveDuration && !AuricGetSilvaEffect)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+
+                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), CIsilvaReviveDuration);
+
+                        if (calPlayer.silvaWings)
+                        {
+                            Player.statLife += Player.statLifeMax2 / 2;
+                            Player.HealEffect(Player.statLifeMax2 / 2);
+
+                            if (Player.statLife > Player.statLifeMax2)
+                                Player.statLife = Player.statLifeMax2;
+                        }
+                    }
+
+                    AuricGetSilvaEffect = true;
+
+                    if (Player.statLife < 1)
+                        Player.statLife = 1;
+
+                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
+                    // Can we please remove this from the game
+                    if (calPlayer.chaliceOfTheBloodGod)
+                    {
+                        calPlayer.chaliceBleedoutBuffer = 0D;
+                        calPlayer.chaliceDamagePointPartialProgress = 0D;
+                    }
+
+                    return false;
+                }
+            }
+                //金源套的林海复活，或者说本mod的林海复活
+            if (AuricSilvaSet && auricsilvaCountdown > 0 )
+            {
+                if (Player.HasCooldown(GodSlayerCooldown.ID))
+                {
+                    if (auricsilvaCountdown == AuricSilvaInvincibleTime && !AuricGetSilvaEffect)
+                    {
+                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+
+                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), AuricSilvaInvincibleTime);
+
+                        if (calPlayer.silvaWings)
+                        {
+                            Player.statLife += Player.statLifeMax2 / 2;
+                            Player.HealEffect(Player.statLifeMax2 / 2);
+
+                            if (Player.statLife > Player.statLifeMax2)
+                                Player.statLife = Player.statLifeMax2;
+                        }
+                    }
+
+                    AuricGetSilvaEffect = true;
+
+                    if (Player.statLife < 1)
+                        Player.statLife = 1;
+
+                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
+                    // Can we please remove this from the game
+                    if (calPlayer.chaliceOfTheBloodGod)
+                    {
+                        calPlayer.chaliceBleedoutBuffer = 0D;
+                        calPlayer.chaliceDamagePointPartialProgress = 0D;
+                    }
+                    return false;
+                }
+            }
+
+            //目前用于龙魂与原灾金源和复活效果的互动
+            if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
+            {
+                SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
+
+                if (Player.HasCooldown(DraconicElixirCooldown.ID))
+                {
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.statLife > Player.statLifeMax2)
+                        Player.statLife = Player.statLifeMax2;
+                }
+
+                if (DraconicSurgeStats)
+                {
+
+                    Player.statLife += Player.statLifeMax2;
+                    Player.HealEffect(Player.statLifeMax2);
+
+                    if (Player.statLife > Player.statLifeMax2)
+                        Player.statLife = Player.statLifeMax2;
+
+                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
+                    {
+
+                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+
+                        // Additional potion sickness time
+                        int additionalTime = 0;
+                        for (int i = 0; i < Player.MaxBuffs; i++)
+                        {
+                            if (Player.buffType[i] == BuffID.PotionSickness)
+                                additionalTime = Player.buffTime[i];
+                        }
+
+                        float potionSicknessTime = 30f + (float)Math.Ceiling(additionalTime / 60D);
+                        Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
+                    }
+                }
+                return false;
+            }
+            return true;
+        }
+        #endregion
+        #region Modify Hit By NPC
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            if (Triumph)
+                calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+            if (FuckYouBees)
+            {
+                if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
+                    calPlayer.contactDamageReduction += 0.25;
+            }
+
+        }
+        #endregion
+        #region Free and Consumable Dodge Hooks
+        public override bool FreeDodge(Player.HurtInfo info)
+        {
+            Player player = Main.player[Main.myPlayer];
+            CalamityPlayer modPlayer1 = player.Calamity();
+            // 装备嘉登之心[Legacy]时禁用弑神免伤。
+            // 我是说真的。
+            // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复
+            if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
+            {
+                GodSlayerDMGprotectMax = 20;
+                Player.immune = true;
+                Player.immuneTime = 15;
+                return true;
+            }
+
+            // If no other effects occurred, run vanilla code
+            return base.FreeDodge(info);
+        }
+        #endregion
+        #region Modify Hit By Proj
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
+            // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
+            if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
+            {
+                double dodgeDamageGateValuePercent = 0.05;
+                int dodgeDamageGateValue = (int)Math.Round(Player.statLifeMax2 * dodgeDamageGateValuePercent);
+
+                // Reflects count as dodges. They share the timer and can be disabled by Armageddon right click.
+                if (!calPlayer.disableAllDodges && !Player.HasCooldown(GlobalDodge.ID) && proj.damage >= dodgeDamageGateValue)
+                {
+                    double maxCooldownDurationDamagePercent = 0.5;
+                    int maxCooldownDurationDamageValue = (int)Math.Round(Player.statLifeMax2 * (maxCooldownDurationDamagePercent - dodgeDamageGateValuePercent));
+
+                    // Just in case...
+                    if (maxCooldownDurationDamageValue <= 0)
+                        maxCooldownDurationDamageValue = 1;
+
+                    float cooldownDurationScalar = MathHelper.Clamp((proj.damage - dodgeDamageGateValue) / (float)maxCooldownDurationDamageValue, 0f, 1f);
+
+                    // The Evolution
+                    if (projRef)
+                    {
+                        proj.hostile = false;
+                        proj.friendly = true;
+                        proj.velocity *= -2f;
+                        proj.extraUpdates += 1;
+                        proj.penetrate = 1;
+
+                        // 17APR2024: Ozzatron: The Evolution is a reflect which also functions as a dodge. It uses vanilla dodge iframes and benefits from Cross Necklace.
+                        int evolutionIFrames = Player.ComputeReflectIFrames();
+                        Player.GiveUniversalIFrames(evolutionIFrames, true);
+
+                        modifiers.SetMaxDamage(1);
+                        calPlayer.evolutionLifeRegenCounter = 300;
+                        calPlayer.projTypeJustHitBy = proj.type;
+
+                        int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
+                        Player.AddCooldown(GlobalDodge.ID, cooldownDuration);
+
+                        return;
+                    }
+                }
+            }
+
+            if (FuckYouBees)
+            {
+                if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))
+                    calPlayer.projectileDamageReduction += 0.25;
+            }
+        }
+        #endregion
+        #region On Hurt
+        public override void OnHurt(Player.HurtInfo hurtInfo)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
+            //海绵
+            if (Modplayer1.CIsponge)
+            {
+                int healAmt = (int)(hurtInfo.Damage / 15D);
+                Player.statLife += healAmt;
+                Player.HealEffect(healAmt);
+            }
+            //再生
+            if (Modplayer1.Revivify)
+            {
+                int healAmt = (int)(hurtInfo.Damage / 15D);
+                Player.statLife += healAmt;
+                Player.HealEffect(healAmt);
+            }
+            //阴阳石
+            if (Modplayer1.TheAbsorberOld)
+            {
+                int healAmt = (int)(hurtInfo.Damage / 20D);
+                Player.statLife += healAmt;
+                Player.HealEffect(healAmt);
+            }
+            //神圣护符落星
+            if (deificAmuletEffect)
+            {
+                var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<DeificAmulet>()));
+                for (int n = 0; n < 3; n++)
+                {
+                    int deificStarDamage = (int)Player.GetBestClassDamage().ApplyTo(130);
+                    deificStarDamage = Player.ApplyArmorAccDamageBonusesTo(deificStarDamage);
+
+                    Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, 
+                    ProjectileID.StarVeilStar, deificStarDamage, 4f, Player.whoAmI);
+                    
+                    if (star.whoAmI.WithinBounds(Main.maxProjectiles))
+                    {
+                        star.DamageType = DamageClass.Generic;
+                        star.usesLocalNPCImmunity = true;
+                        star.localNPCHitCooldown = 5;
+                    }
+                }
+            }
+            if(AncientAstralSet)
+            {
+                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.75)) //尝试恢复25%潜伏值
+                   calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
+                for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
+                {
+                    int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(1000);
+                    astralStarsDMG = Player.ApplyArmorAccDamageBonusesTo(astralStarsDMG);
+
+                    Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
+                    ProjectileID.StarVeilStar, astralStarsDMG, 4f, Player.whoAmI);
+                    
+                    if (star.whoAmI.WithinBounds(Main.maxProjectiles))
+                    {
+                        star.DamageType = ModContent.GetInstance<RogueDamageClass>(); //:)
+                        star.usesLocalNPCImmunity = true;
+                        star.localNPCHitCooldown = 5;
+                    }
+                }
+            }
+            if (SCalLore)
+            {
+                int randomMessage = Main.rand.Next(1, 5);
+                Color messageColor = Color.DarkRed;
+                if (randomMessage == 1)
+                {
+                    string key1 = "Mods.CalamityInheritance.Status.SCAL1";
+                    CalamityUtils.DisplayLocalizedText(key1, messageColor);
+                }
+                if (randomMessage == 2)
+                {
+                    string key2 = "Mods.CalamityInheritance.Status.SCAL2";
+                    CalamityUtils.DisplayLocalizedText(key2, messageColor);
+                }
+                if (randomMessage == 3)
+                {
+                    string key3 = "Mods.CalamityInheritance.Status.SCAL3";
+                    CalamityUtils.DisplayLocalizedText(key3, messageColor);
+                }
+                if (randomMessage == 4)
+                {
+                    string key4 = "Mods.CalamityInheritance.Status.SCAL4";
+                    CalamityUtils.DisplayLocalizedText(key4, messageColor);
+                }
+                KillPlayer();
+            }
+
+            if (GodSlayerMagicSet)
+            {
+                if (hurtInfo.Damage > 0)
+                {
+                    var source = Player.GetSource_Misc("1");
+                    SoundEngine.PlaySound(SoundID.Item73, Player.Center);
+                    if (Player.whoAmI == Main.myPlayer)
+                    {
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
+                    }
+                }
+            }
+
+            if (ReaverMeleeBlast) //受伤后提供战士永恒套怒气buff
+            {
+                Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
+            }
+
+            if (AncientBloodflareSet)
+            {
+                if(hurtInfo.Damage > 400 && AncientAuricHealCooldown == 0)
+                //旧血炎新增效果: 承受大于400点的伤害时，恢复本次承伤的1.5倍血量，取20秒内置CD
+                {
+                    SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
+                    Player.Heal((int)(hurtInfo.Damage * 1.5f));
+                    AncientAuricHealCooldown = 1200;
+                }
+            }
+
+            if(AncientAuricSet)
+            {
+                if(hurtInfo.Damage> 600 && AncientAuricHealCooldown == 0) 
+                //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
+                {
+                    SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
+                    Player.Heal((int)(hurtInfo.Damage * 2f));
+                    AncientAuricHealCooldown = 600;
+                }
+            }
+
+            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
+            {
+                foreach(Projectile p in Main.ActiveProjectiles)
+                {
+                    if (p.type == ModContent.ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
+                    {
+                        p.Kill();
+                        break;
+                    }
+                }
+                /*玩家受击时飞行时间直接置成50f*/
+                if (Player.wingTime > 50f)
+                    Player.wingTime = 50f;
+                Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
+            }
+        }
+        #endregion
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+
+            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
+            {
+                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                {
+                    modifiers.SetInstantKill();
+                }
+            }
+
+            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+            {
+                if (GodSlayerRangedSet && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
+                {
+                    int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
+                    if (randomChance > 1)
+                    {
+                        if(Main.rand.Next(1,101) <= randomChance)
+                        {
+                            hitInfo.Damage *= 2;
+                        }
+                    }
+                    else
+                    {
+                        if (Main.rand.NextBool(20))
+                        {
+                            hitInfo.Damage *= 4;
+                        }
+                    }
+                }
+                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
+                {
+                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
+                    if(getOverCrtis > 1)
+                    {
+                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
+                    }
+                }
+            };
+            if (SilvaMeleeSetLegacy)
+            {
+                //Main.NewText($"触发判定", 255, 255, 255);
+                if (Main.rand.NextBool(4) && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
+                {
+                    //Main.NewText($"造成伤害", 255, 255, 255);
+                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+                    {
+                        hitInfo.Damage *= 5;
+                    };
+                }
+            }
+
+            if (CIConfig.Instance.silvastun == true)
+            {
+                if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                {
+                    //Main.NewText($"触发眩晕TMp", 255, 255, 255);
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    SilvaStunDebuffCooldown = 1800;
+                }
+                if (proj.DamageType == DamageClass.Melee && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                {
+                    //Main.NewText($"触发眩晕mp", 255, 255, 255);
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    SilvaStunDebuffCooldown = 1800;
+                }
+            }
+        }
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+
+            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
+            {
+                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                {
+                    modifiers.SetInstantKill();
+                }
+            }
+
+            if (SilvaMeleeSetLegacy)
+            {
+                //Main.NewText($"触发判定", 255, 255, 255);
+                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+                {
+                    //Main.NewText($"造成伤害", 255, 255, 255);
+                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+                    {
+                        hitInfo.Damage *= 5;
+                    };
+                }
+            }
+
+            if (CIConfig.Instance.silvastun == true)
+            {
+                if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                {
+                    //Main.NewText($"触发眩晕im", 255, 255, 255);
+                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    SilvaStunDebuffCooldown = 1800;
+                }
+            }
+
+            var source = Player.GetSource_ItemUse(item);
+
+            if (item.DamageType == DamageClass.Melee)
+            {
+                TitanScaleTrueMeleeBuff = 600;
+            }
+        }
+ 
         private void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
             #region shield
@@ -210,13 +721,13 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             //史神无敌
-            if (invincible)
+            if (InvincibleJam)
             {
                 CalamityPlayer calPlayer = Player.Calamity();
                 calPlayer.freeDodgeFromShieldAbsorption = true;
             }
 
-            if (godSlayerReflect && Main.rand.NextBool(50))
+            if (GodSlayerReflect && Main.rand.NextBool(50))
             {
                 CalamityPlayer calPlayer = Player.Calamity();
                 calPlayer.freeDodgeFromShieldAbsorption = true;
@@ -289,156 +800,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
         }
-        #region On Hurt
-        public override void OnHurt(Player.HurtInfo hurtInfo)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
-            //海绵
-            if (Modplayer1.CIsponge)
-            {
-                int healAmt = (int)(hurtInfo.Damage / 15D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
-            }
-            //再生
-            if (Modplayer1.Revivify)
-            {
-                int healAmt = (int)(hurtInfo.Damage / 15D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
-            }
-            //阴阳石
-            if (Modplayer1.TheAbsorberOld)
-            {
-                int healAmt = (int)(hurtInfo.Damage / 20D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
-            }
-            //神圣护符落星
-            if (deificAmuletEffect)
-            {
-                var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<DeificAmulet>()));
-                for (int n = 0; n < 3; n++)
-                {
-                    int deificStarDamage = (int)Player.GetBestClassDamage().ApplyTo(130);
-                    deificStarDamage = Player.ApplyArmorAccDamageBonusesTo(deificStarDamage);
-
-                    Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, 
-                    ProjectileID.StarVeilStar, deificStarDamage, 4f, Player.whoAmI);
-                    
-                    if (star.whoAmI.WithinBounds(Main.maxProjectiles))
-                    {
-                        star.DamageType = DamageClass.Generic;
-                        star.usesLocalNPCImmunity = true;
-                        star.localNPCHitCooldown = 5;
-                    }
-                }
-            }
-            if(AncientAstralSet)
-            {
-                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.75)) //尝试恢复25%潜伏值
-                   calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
-                for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
-                {
-                    int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(1000);
-                    astralStarsDMG = Player.ApplyArmorAccDamageBonusesTo(astralStarsDMG);
-
-                    Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
-                    ProjectileID.StarVeilStar, astralStarsDMG, 4f, Player.whoAmI);
-                    
-                    if (star.whoAmI.WithinBounds(Main.maxProjectiles))
-                    {
-                        star.DamageType = ModContent.GetInstance<RogueDamageClass>(); //:)
-                        star.usesLocalNPCImmunity = true;
-                        star.localNPCHitCooldown = 5;
-                    }
-                }
-            }
-            if (SCalLore)
-            {
-                int randomMessage = Main.rand.Next(1, 5);
-                Color messageColor = Color.DarkRed;
-                if (randomMessage == 1)
-                {
-                    string key1 = "Mods.CalamityInheritance.Status.SCAL1";
-                    CalamityUtils.DisplayLocalizedText(key1, messageColor);
-                }
-                if (randomMessage == 2)
-                {
-                    string key2 = "Mods.CalamityInheritance.Status.SCAL2";
-                    CalamityUtils.DisplayLocalizedText(key2, messageColor);
-                }
-                if (randomMessage == 3)
-                {
-                    string key3 = "Mods.CalamityInheritance.Status.SCAL3";
-                    CalamityUtils.DisplayLocalizedText(key3, messageColor);
-                }
-                if (randomMessage == 4)
-                {
-                    string key4 = "Mods.CalamityInheritance.Status.SCAL4";
-                    CalamityUtils.DisplayLocalizedText(key4, messageColor);
-                }
-                KillPlayer();
-            }
-
-            if (godSlayerMagic)
-            {
-                if (hurtInfo.Damage > 0)
-                {
-                    var source = Player.GetSource_Misc("1");
-                    SoundEngine.PlaySound(SoundID.Item73, Player.Center);
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
-                    }
-                }
-            }
-
-            if (ReaverMeleeBlast) //受伤后提供战士永恒套怒气buff
-            {
-                Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
-            }
-
-            if (AncientBloodflareSet)
-            {
-                if(hurtInfo.Damage > 400 && auricYharimHealCooldown == 0)
-                //旧血炎新增效果: 承受大于400点的伤害时，恢复本次承伤的1.5倍血量，取20秒内置CD
-                {
-                    SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
-                    Player.Heal((int)(hurtInfo.Damage * 1.5f));
-                    auricYharimHealCooldown = 1200;
-                }
-            }
-
-            if(AncientAuricSet)
-            {
-                if(hurtInfo.Damage> 600 && auricYharimHealCooldown == 0) 
-                //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
-                {
-                    SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
-                    Player.Heal((int)(hurtInfo.Damage * 2f));
-                    auricYharimHealCooldown = 600;
-                }
-            }
-
-            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
-            {
-                foreach(Projectile p in Main.ActiveProjectiles)
-                {
-                    if (p.type == ModContent.ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
-                    {
-                        p.Kill();
-                        break;
-                    }
-                }
-                /*玩家受击时飞行时间直接置成50f*/
-                if (Player.wingTime > 50f)
-                    Player.wingTime = 50f;
-                Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
-            }
-        }
-        #endregion
+        
         #region Kill Player
         public void KillPlayer()
         {
@@ -533,121 +895,7 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
-
-            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
-            {
-                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
-                {
-                    modifiers.SetInstantKill();
-                }
-            }
-
-            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-            {
-                if (godSlayerRangedold && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
-                {
-                    int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
-                    if (randomChance > 1)
-                    {
-                        if(Main.rand.Next(1,101) <= randomChance)
-                        {
-                            hitInfo.Damage *= 2;
-                        }
-                    }
-                    else
-                    {
-                        if (Main.rand.NextBool(20))
-                        {
-                            hitInfo.Damage *= 4;
-                        }
-                    }
-                }
-                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-            };
-            if (silvaMelee)
-            {
-                //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    //Main.NewText($"造成伤害", 255, 255, 255);
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-            if (CIConfig.Instance.silvastun == true)
-            {
-                if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕TMp", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1800;
-                }
-                if (proj.DamageType == DamageClass.Melee && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕mp", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1800;
-                }
-            }
-        }
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
-
-            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
-            {
-                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
-                {
-                    modifiers.SetInstantKill();
-                }
-            }
-
-            if (silvaMelee)
-            {
-                //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
-                {
-                    //Main.NewText($"造成伤害", 255, 255, 255);
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-            if (CIConfig.Instance.silvastun == true)
-            {
-                if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && silvaStunCooldownold <= 0 && silvaMelee && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕im", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    silvaStunCooldownold = 1800;
-                }
-            }
-
-            var source = Player.GetSource_ItemUse(item);
-
-            if (item.DamageType == DamageClass.Melee)
-            {
-                titanBoost = 600;
-            }
-        }
-        public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
+       public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
         {
             CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
@@ -658,250 +906,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
         }
-        #region Pre Kill
-        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
-            {
-                SoundEngine.PlaySound(SoundID.Item67, Player.Center);
 
-                for (int j = 0; j < 50; j++)
-                {
-                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                    Dust dust = Main.dust[nebulousReviveDust];
-                    dust.position.X += Main.rand.Next(-20, 21);
-                    dust.position.Y += Main.rand.Next(-20, 21);
-                    dust.velocity *= 0.9f;
-                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    // Change this accordingly if we have a proper equipped sprite.
-                    dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
-                    if (Main.rand.NextBool())
-                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                }
-
-                Player.statLife = +100;
-
-                if (draconicSurge)
-                {
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
-                    {
-                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-                    }
-                }
-                Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
-                return false;
-            }
-            //金源套的林海复活，或者说本mod的林海复活
-            if (auricsilvaset && CIsilvaCountdown > 0)
-            {
-                if (silvaRebornMark)
-                {
-                    if (CIsilvaCountdown == CIsilvaReviveDuration && !aurichasSilvaEffect)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-
-                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), CIsilvaReviveDuration);
-
-                        if (calPlayer.silvaWings)
-                        {
-                            Player.statLife += Player.statLifeMax2 / 2;
-                            Player.HealEffect(Player.statLifeMax2 / 2);
-
-                            if (Player.statLife > Player.statLifeMax2)
-                                Player.statLife = Player.statLifeMax2;
-                        }
-                    }
-
-                    aurichasSilvaEffect = true;
-
-                    if (Player.statLife < 1)
-                        Player.statLife = 1;
-
-                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
-                    // Can we please remove this from the game
-                    if (calPlayer.chaliceOfTheBloodGod)
-                    {
-                        calPlayer.chaliceBleedoutBuffer = 0D;
-                        calPlayer.chaliceDamagePointPartialProgress = 0D;
-                    }
-
-                    return false;
-                }
-            }
-                //金源套的林海复活，或者说本mod的林海复活
-            if (auricsilvaset && auricsilvaCountdown > 0 )
-            {
-                if (Player.HasCooldown(GodSlayerCooldown.ID))
-                {
-                    if (auricsilvaCountdown == auricsilvaReviveDuration && !aurichasSilvaEffect)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-
-                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), auricsilvaReviveDuration);
-
-                        if (calPlayer.silvaWings)
-                        {
-                            Player.statLife += Player.statLifeMax2 / 2;
-                            Player.HealEffect(Player.statLifeMax2 / 2);
-
-                            if (Player.statLife > Player.statLifeMax2)
-                                Player.statLife = Player.statLifeMax2;
-                        }
-                    }
-
-                    aurichasSilvaEffect = true;
-
-                    if (Player.statLife < 1)
-                        Player.statLife = 1;
-
-                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
-                    // Can we please remove this from the game
-                    if (calPlayer.chaliceOfTheBloodGod)
-                    {
-                        calPlayer.chaliceBleedoutBuffer = 0D;
-                        calPlayer.chaliceDamagePointPartialProgress = 0D;
-                    }
-                    return false;
-                }
-            }
-
-            //目前用于龙魂与原灾金源和复活效果的互动
-            if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
-            {
-                SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
-
-                if (Player.HasCooldown(DraconicElixirCooldown.ID))
-                {
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.statLife > Player.statLifeMax2)
-                        Player.statLife = Player.statLifeMax2;
-                }
-
-                if (draconicSurge)
-                {
-
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.statLife > Player.statLifeMax2)
-                        Player.statLife = Player.statLifeMax2;
-
-                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
-                    {
-
-                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-
-                        // Additional potion sickness time
-                        int additionalTime = 0;
-                        for (int i = 0; i < Player.MaxBuffs; i++)
-                        {
-                            if (Player.buffType[i] == BuffID.PotionSickness)
-                                additionalTime = Player.buffTime[i];
-                        }
-
-                        float potionSicknessTime = 30f + (float)Math.Ceiling(additionalTime / 60D);
-                        Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
-                    }
-                }
-                return false;
-            }
-            return true;
-        }
-        #endregion
-        #region Modify Hit By NPC
-        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            if (triumph)
-                calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
-            if (beeResist)
-            {
-                if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
-                    calPlayer.contactDamageReduction += 0.25;
-            }
-
-        }
-        #endregion
-        #region Free and Consumable Dodge Hooks
-        public override bool FreeDodge(Player.HurtInfo info)
-        {
-            Player player = Main.player[Main.myPlayer];
-            CalamityPlayer modPlayer1 = player.Calamity();
-            // 装备嘉登之心[Legacy]时禁用弑神免伤。
-            // 我是说真的。
-            // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复
-            if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
-            {
-                GodSlayerDMGprotectMax = 20;
-                Player.immune = true;
-                Player.immuneTime = 15;
-                return true;
-            }
-
-            // If no other effects occurred, run vanilla code
-            return base.FreeDodge(info);
-        }
-        #endregion
-        #region Modify Hit By Proj
-        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
-            // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
-            if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
-            {
-                double dodgeDamageGateValuePercent = 0.05;
-                int dodgeDamageGateValue = (int)Math.Round(Player.statLifeMax2 * dodgeDamageGateValuePercent);
-
-                // Reflects count as dodges. They share the timer and can be disabled by Armageddon right click.
-                if (!calPlayer.disableAllDodges && !Player.HasCooldown(GlobalDodge.ID) && proj.damage >= dodgeDamageGateValue)
-                {
-                    double maxCooldownDurationDamagePercent = 0.5;
-                    int maxCooldownDurationDamageValue = (int)Math.Round(Player.statLifeMax2 * (maxCooldownDurationDamagePercent - dodgeDamageGateValuePercent));
-
-                    // Just in case...
-                    if (maxCooldownDurationDamageValue <= 0)
-                        maxCooldownDurationDamageValue = 1;
-
-                    float cooldownDurationScalar = MathHelper.Clamp((proj.damage - dodgeDamageGateValue) / (float)maxCooldownDurationDamageValue, 0f, 1f);
-
-                    // The Evolution
-                    if (projRef)
-                    {
-                        proj.hostile = false;
-                        proj.friendly = true;
-                        proj.velocity *= -2f;
-                        proj.extraUpdates += 1;
-                        proj.penetrate = 1;
-
-                        // 17APR2024: Ozzatron: The Evolution is a reflect which also functions as a dodge. It uses vanilla dodge iframes and benefits from Cross Necklace.
-                        int evolutionIFrames = Player.ComputeReflectIFrames();
-                        Player.GiveUniversalIFrames(evolutionIFrames, true);
-
-                        modifiers.SetMaxDamage(1);
-                        calPlayer.evolutionLifeRegenCounter = 300;
-                        calPlayer.projTypeJustHitBy = proj.type;
-
-                        int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
-                        Player.AddCooldown(GlobalDodge.ID, cooldownDuration);
-
-                        return;
-                    }
-                }
-            }
-
-            if (beeResist)
-            {
-                if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))
-                    calPlayer.projectileDamageReduction += 0.25;
-            }
-        }
-        #endregion
     }
 }

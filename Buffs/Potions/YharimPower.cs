@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().yPower = true;
+            player.CalamityInheritance().YharimsPowerStats = true;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.075f;
         }
     }

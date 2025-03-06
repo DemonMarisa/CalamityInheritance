@@ -15,7 +15,7 @@ namespace CalamityInheritance.NPCs
             }
         }
 
-        public bool silvaStun = false;
+        public bool SilvaStunDebuff = false;
         //梯凳之怒
         public bool rageOfChair = false;
         public static int rageOfChairDoTDamage = 30000;
@@ -30,7 +30,7 @@ namespace CalamityInheritance.NPCs
         public static int CatastropheCloneWhoAmI = -1;
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            if (silvaStun)
+            if (SilvaStunDebuff)
             {
                 npc.velocity.Y = 0f;
                 npc.velocity.X = 0f;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.NPCs
         #region Reset Effects
         public override void ResetEffects(NPC npc)
         {
-            silvaStun = false;
+            SilvaStunDebuff = false;
         }
         #endregion
 
@@ -60,9 +60,9 @@ namespace CalamityInheritance.NPCs
                 npc.type == NPCID.BigHornetSpikey || npc.type == NPCID.LittleHornetSpikey || npc.type == NPCID.BigHornetLeafy || npc.type == NPCID.LittleHornetLeafy ||
                 npc.type == NPCID.BigHornetHoney || npc.type == NPCID.LittleHornetHoney || npc.type == NPCID.BigHornetFatty || npc.type == NPCID.LittleHornetFatty)
             {
-                if (Main.player[npc.target].CalamityInheritance().queenBeeLore)
+                if (Main.player[npc.target].CalamityInheritance().LoreQueenBee)
                 {
-                    CIGlobalAI.QueenBeeLoreEffect(npc);
+                    CIGlobalAI.LoreQueenBeeEffect(npc);
                     return false;
                 }
             }
@@ -72,12 +72,12 @@ namespace CalamityInheritance.NPCs
         #region Edit Spawn Rate
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
-            if (player.CalamityInheritance().hiveMindLore)
+            if (player.CalamityInheritance().LoreHive)
             {
                 spawnRate = (int)(spawnRate * 1.3);
                 maxSpawns = (int)(maxSpawns * 0.6f);
             }
-            if (player.CalamityInheritance().perforatorLore)
+            if (player.CalamityInheritance().LorePerforator)
             {
                 spawnRate = (int)(spawnRate * 0.7);
                 maxSpawns = (int)(maxSpawns * 1.8f);

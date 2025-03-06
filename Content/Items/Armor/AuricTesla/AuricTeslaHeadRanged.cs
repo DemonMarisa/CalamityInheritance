@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.bloodflareSet = true;
             modPlayer.godSlayer = true;
 
-            modPlayer1.godSlayerRangedold = true;
+            modPlayer1.GodSlayerRangedSet = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modPlayer1.GodSlayerReborn = true;
@@ -66,10 +66,10 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
 
-            modPlayer1.silvaRanged = true;
+            modPlayer1.SilvaRangedSetLegacy = true;
             modPlayer1.AuricbloodflareRangedSoul = true;
 
-            modPlayer1.auricsilvaset = true;
+            modPlayer1.AuricSilvaSet = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;

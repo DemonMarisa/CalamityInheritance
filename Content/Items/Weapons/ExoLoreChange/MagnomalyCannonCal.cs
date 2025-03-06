@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CalamityInheritance();
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 damage.Base = 330;
             }
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 
             var CIPlayer = player.CalamityInheritance();
 
-            if (CIPlayer.exoMechLore)
+            if (CIPlayer.LoreExo)
             {
                 item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
                 item.useAnimation = item.useTime = 67;
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.MagnomalyCannon.ExoLoreOn");
 

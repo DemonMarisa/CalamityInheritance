@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CalamityInheritance();
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 damage.Base = 2500;
             }

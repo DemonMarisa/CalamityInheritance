@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().moonLordLore = true;
+                player.CalamityInheritance().LoreLunarBoss = true;
             }
         }
         public override void AddRecipes()

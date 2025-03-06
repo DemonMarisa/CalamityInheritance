@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanUseItem(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 Item.damage = 298;
             }
@@ -107,7 +107,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 if (type == ProjectileID.WoodenArrowFriendly)
                 {
-                        if (usPlayer.exoMechLore)
+                        if (usPlayer.LoreExo)
                         {
                             thisArrowType = Main.rand.Next(ExoArrowsExoLore);
                         }
@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (CIConfig.Instance.AmmoConversion == true)
             {
-                    if (usPlayer.exoMechLore)
+                    if (usPlayer.LoreExo)
                     {
                         thisArrowType = Main.rand.Next(ExoArrowsExoLore);
                     }
@@ -157,7 +157,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.HeavenlyGaleold.ExoLoreOn");
 

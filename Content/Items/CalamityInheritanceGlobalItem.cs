@@ -27,9 +27,9 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             int itemGrabRangeBoost = 0 +
-                (usPlayer.wallOfFleshLore ? 100 : 0) +
-                (usPlayer.planteraLore ? 150 : 0) +
-                (usPlayer.polterghastLore ? 300 : 0);
+                (usPlayer.LoreWallofFlesh ? 100 : 0) +
+                (usPlayer.LorePlantera ? 150 : 0) +
+                (usPlayer.LorePolter ? 300 : 0);
 
             grabRange += itemGrabRangeBoost;
         }
@@ -39,11 +39,11 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.wallOfFleshLore)
+            if (usPlayer.LoreWallofFlesh)
                 velocity *= 1.10f;
-            if (usPlayer.planteraLore)
+            if (usPlayer.LorePlantera)
                 velocity *= 1.15f;
-            if (usPlayer.polterghastLore)
+            if (usPlayer.LorePolter)
                 velocity *= 1.20f;
         }
         #endregion
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             CalamityPlayer calPlayer = player.Calamity();
-            if (usPlayer.godSlayerRangedold && calPlayer.canFireGodSlayerRangedProjectile)
+            if (usPlayer.GodSlayerRangedSet && calPlayer.canFireGodSlayerRangedProjectile)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
                 {

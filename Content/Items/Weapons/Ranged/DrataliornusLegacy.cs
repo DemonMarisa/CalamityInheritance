@@ -129,7 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 var usPlayer = player.CalamityInheritance();
                 int numFlames = 5;
-                if(usPlayer.godSlayerRangedold && usPlayer.auricsilvaset) //佩戴金源射手时
+                if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaSet) //佩戴金源射手时
                 numFlames = 10;
                 int flameID = ModContent.ProjectileType<DragonBowFlameRework>();
                 int flameDamage = (int)(damage * (RightClickDamageRatio));
@@ -148,7 +148,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     float piArrowOffset = i - (numFlames - 1) / 2;
                     Vector2 offsetSpawn = spinningpoint.RotatedBy(fifteenHundredthPi * piArrowOffset, new Vector2());
                     Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.7f, velocity.Y * 0.7f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
-                    if(usPlayer.godSlayerRangedold && usPlayer.auricsilvaset) //佩戴金源射手时
+                    if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaSet) //佩戴金源射手时
                     Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.9f, velocity.Y * 0.9f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
                 }
             }

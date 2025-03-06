@@ -120,26 +120,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.Calamity().stealthStrike)
             {
                 //潜伏专属效果：大幅度压制的爆炸粒子
-                if(owner.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] < 1)
-                //如果已经存在一个Clone，则潜伏二次掷出的锤子会尝试返回至玩家手中
+                StealthSpawnDust();
+                SpawnSparks(hit);
+                SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
+                if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
                 {
-                    StealthSpawnDust();
+                    SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
                     SpawnSparks(hit);
-                    SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-                    if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
-                    {
-                        SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
-                        SpawnSparks(hit);
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
-                    }
-                    ifSummonClone = false;
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
                 }
-                else
-                {   
-                    Projectile.ai[0] = 1f;
-                    SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-                    SpawnSparks(hit);
-                }
+                ifSummonClone = false;
             }
             
             //普攻效果

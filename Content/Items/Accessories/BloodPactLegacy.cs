@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer = player.CalamityInheritance();
-            modPlayer.ancientBloodFact= true;
+            modPlayer.AncientBloodPact= true;
         }
     }
 }

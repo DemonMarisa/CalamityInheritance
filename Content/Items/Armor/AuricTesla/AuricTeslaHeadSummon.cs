@@ -55,11 +55,11 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.tarraSummon = true;
             modPlayer.bloodflareSet = true;
             modPlayer.bloodflareSummon = true;
-            modplayer1.auricsilvaset = true;
+            modplayer1.AuricSilvaSet = true;
             modPlayer.silvaSummon = true;
             modPlayer.godSlayer = true;
 
-            modplayer1.godSlayerSummonold = true;
+            modplayer1.GodSlayerSummonSet = true;
 
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
 
-            modplayer1.silvaSummonEx = true;
+            modplayer1.SilvaSummonSetLegacy = true;
 
             modPlayer.auricSet = true;
             modPlayer.WearingPostMLSummonerSet = true;

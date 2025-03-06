@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().triumph = true;
+            player.CalamityInheritance().Triumph = true;
         }
     }
 }

@@ -45,19 +45,19 @@ namespace CalamityInheritance.CIPlayer
                 return;
 
             #region Lore
-            if (perforatorLore)
+            if (LorePerforator)
             {
                 target.AddBuff(BuffID.Ichor, 90);
             }
-            if (hiveMindLore)
+            if (LoreHive)
             {
                 target.AddBuff(BuffID.CursedInferno, 90);
             }
-            if (providenceLore)
+            if (LoreProvidence)
             {
                 target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
             }
-            if (holyWrath)
+            if (HolyWrathStats)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
             }
@@ -68,7 +68,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Armorset
             #region GodSlayer
-            if (godSlayerMagic && projectile.DamageType == DamageClass.Magic)
+            if (GodSlayerMagicSet && projectile.DamageType == DamageClass.Magic)
             {
                 if (hasFiredThisFrame)
                 {
@@ -85,7 +85,7 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
             }
 
-            if (godSlayerSummonold && projectile.DamageType == DamageClass.Summon)
+            if (GodSlayerSummonSet && projectile.DamageType == DamageClass.Summon)
             {
                 if (hasFiredThisFrame)
                 {
@@ -105,9 +105,9 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
             var source = projectile.GetSource_FromThis();
-            if (silvaMageold && silvaMageCooldownold <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
+            if (SilvaMagicSetLegacy && SilvaMagicSetLegacyCooldown <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
             {
-                silvaMageCooldownold = 300;
+                SilvaMagicSetLegacyCooldown = 300;
                 SoundEngine.PlaySound(SoundID.Zombie103, projectile.Center); //So scuffed, just because zombie sounds werent ported normally
                 int silvaBurstDamage = Player.ApplyArmorAccDamageBonusesTo((float)(800.0 + 0.6 * projectile.damage));
                 Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
@@ -115,7 +115,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (projectile.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || projectile.type == ModContent.ProjectileType<StepToolShadowChair>())
             {
-                titanBoost = 600;
+                TitanScaleTrueMeleeBuff = 600;
             }
             #region ReaverSets
             #region ReaverMage
@@ -190,11 +190,11 @@ namespace CalamityInheritance.CIPlayer
                     AncientBloodflareHeartDropCD = 180; //2s一次
                 }
             }
-            if (AncientGodSlayerSet && projectile.Calamity().stealthStrike && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && yharimOfPerunStrikesCooldown == 0)
+            if (AncientGodSlayerSet && projectile.Calamity().stealthStrike && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && PerunofYharimCooldown == 0)
             {
                 //潜伏攻击成功时提供20%增伤
                 player.GetDamage<GenericDamageClass>() += 0.2f;
-                yharimOfPerunStrikesCooldown = 2700;
+                PerunofYharimCooldown = 2700;
 
             }
             #endregion
@@ -217,7 +217,7 @@ namespace CalamityInheritance.CIPlayer
 
                 if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
                     && projectile.Calamity().stealthStrike
-                    && yharimOfPerunStrikesCooldown == 0
+                    && PerunofYharimCooldown == 0
                     ) 
                 {
                         SoundEngine.PlaySound(CISoundMenu.YharimsThuner with {Volume = 0.5f});
@@ -233,7 +233,7 @@ namespace CalamityInheritance.CIPlayer
                                 dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
                         }
                         Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-                        yharimOfPerunStrikesCooldown = 1800;
+                        PerunofYharimCooldown = 1800;
 
                 }
             }
@@ -271,7 +271,7 @@ namespace CalamityInheritance.CIPlayer
         {
             if ((melee || rogue || whip) && !noFlask)
             {
-                if (armorShattering)
+                if (ArmorShatteringStats)
                 {
                     CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
                 }
@@ -291,7 +291,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (summon)
             {
-                if (nucleogenesisLegacy)
+                if (NucleogenesisLegacyStats)
                 {
                     target.AddBuff(BuffID.Electrified, 120);
                     target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
@@ -304,8 +304,17 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
         {
-            if (yPower)
+            if (YharimsPowerStats)
                 knockback += item.knockBack * 0.25f;
+        }
+        public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
+        {
+            healValue = (int)(healValue * ManaHealMutipler);
+        }
+        public override void OnConsumeMana(Item item, int manaConsumed)
+        {
+            if (AncientAuricSet && PerunofYharimStats)
+            Player.Heal(manaConsumed);
         }
         #region Lifesteal
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
@@ -314,7 +323,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Main.player[Main.myPlayer].lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
             {
-                if (auricsilvaset)
+                if (AuricSilvaSet)
                 {
                     double healMult = 0.1;
                     int heal = Main.rand.Next(5, 11);
@@ -322,7 +331,7 @@ namespace CalamityInheritance.CIPlayer
                     if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
                         CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
                 }
-                if (godSlayerMagic)
+                if (GodSlayerMagicSet)
                 {
                     double healMult = 0.1;
                     int heal = Main.rand.Next(5, 11);
@@ -383,7 +392,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (CIplayer.summonProjCooldown <= 0)
                 {
-                    if (CIplayer.nucleogenesisLegacy)
+                    if (CIplayer.NucleogenesisLegacyStats)
                     {
                         Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
                         CIplayer.summonProjCooldown = 25;

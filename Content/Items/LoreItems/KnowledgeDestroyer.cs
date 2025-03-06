@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().destroyerLore = true;
+                player.CalamityInheritance().LoreDestroyer = true;
             }
         }
         public override void AddRecipes()

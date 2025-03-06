@@ -14,13 +14,9 @@ using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Items.Armor.AncientAstral;
-using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -46,15 +42,15 @@ namespace CalamityInheritance.CIPlayer
         #region Accessories
         public bool ElementalQuiver = false;
         public bool CoreOfTheBloodGod = false;
-        public bool fleshTotemold = false;
+        public bool FleshTotemLegacy = false;
         public bool FungalCarapace = false;
         public bool PsychoticAmulet = false;
         public bool YharimsInsignia = false;
-        public bool darkSunRingold = false;
+        public bool DarkSunRingStats = false;
         public bool projRef = false;
         public bool AstralBulwark = false;
         public bool AstralArcanumEffect = false;
-        public bool badgeofBravery = false; //龙蒿套装下的勇气勋章额外加成
+        public bool BraveryBadgeLegacyStats = false; //龙蒿套装下的勇气勋章额外加成
         public bool fasterAuricTracers = false; //天界跑鞋无敌帧
         public bool deificAmuletEffect = false;  //神圣护符的效果
         public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
@@ -62,16 +58,16 @@ namespace CalamityInheritance.CIPlayer
         public int statisTimerOld = 0;//虚空饰带的计数器
         public bool nanotechold = false;//发射纳米技术的额外弹幕
         public bool TheAbsorberOld = false;//阴阳石受击回血
-        public bool beeResist = false;//降低蜜蜂对玩家的伤害
+        public bool FuckYouBees = false;//降低蜜蜂对玩家的伤害
         public bool AmbrosialAmpouleOld = false;//百草瓶回血
-        public int raiderStack = 0;//纳米技术击中计数器
+        public int RaiderStacks = 0;//纳米技术击中计数器
         public int nanoTechStackDurability = 0;//纳米技术充能进度
         public bool ancientReaperToothNeclace = false;//速杀项链
-        public bool ancientCoreofTheBloodGod = false; //肃杀核心
-        public bool ancientBloodFact = false;//血契
+        public bool AncientCotbg = false; //肃杀核心
+        public bool AncientBloodPact = false;//血契
         public bool elementalGauntlet = false;//元素之握
-        public bool fuckAllofYouEHeart = false;
-        public bool nucleogenesisLegacy = false;//核子之源
+        public bool FuckEHeart = false;
+        public bool NucleogenesisLegacyStats = false;//核子之源
         public bool AnkhImmnue = false; //占位符
         public bool AsgardsValorImmnue = false; //阿斯加德英勇单独免疫的debuff
         public bool ElysianAegisImmnue = false; //亵渎盾单独免疫的debuff
@@ -80,7 +76,7 @@ namespace CalamityInheritance.CIPlayer
         public bool DraedonsHeartLegacyBuff = false;
         #endregion
         #region Weapon
-        public float animusBoost = 1f;
+        public float AnimusDamage = 1f;
 
         public bool photovisceratorCrystal = false;
         #endregion
@@ -95,64 +91,65 @@ namespace CalamityInheritance.CIPlayer
         public float shieldInvinc = 5f;
         #endregion
         #region Lore
-        public bool kingSlimeLore = false;//
-        public bool desertScourgeLore = false;//
-        public bool crabulonLore = false;//
-        public bool eaterOfWorldsLore = false;//
+        public bool LoreKingSlime = false;//
+        public bool LoreDesertScourge = false;//
+        public bool LoreCrabulon = false;//
+        public bool LoreEaterofWorld = false;//
         public bool BoCLoreTeleportation = false;//
-        public bool hiveMindLore = false;//
-        public bool perforatorLore = false;//
-        public bool queenBeeLore = false;//
-        public bool skeletronLore = false;//
-        public bool wallOfFleshLore = false;//
-        public bool twinsLore = false;//
-        public bool destroyerLore = false;//
-        public bool aquaticScourgeLore = false;//
-        public bool skeletronPrimeLore = false;//
-        public bool brimstoneElementalLore = false;//
-        public bool calamitasCloneLore = false;//
-        public bool planteraLore = false;//
-        public bool leviathanAndSirenLore = false;//
-        public bool astrumAureusLore = false;//
-        public bool astrumDeusLore = false;//
-        public bool golemLore = false;//
-        public bool plaguebringerGoliathLore = false;//
-        public bool dukeFishronLore = false;//
-        public bool boomerDukeLore = false;//
-        public bool ravagerLore = false;//
-        public bool lunaticCultistLore = false;//
-        public bool moonLordLore = false;//
-        public bool providenceLore = false;//
-        public bool polterghastLore = false;//
-        public bool DoGLore = false;//
-        public bool yharonLore = false;//
+        public bool LoreHive = false;//
+        public bool LorePerforator = false;//
+        public bool LoreQueenBee = false;//
+        public bool LoreSkeletron = false;//
+        public bool LoreWallofFlesh = false;//
+        public bool LoreTwins = false;//
+        public bool LoreDestroyer = false;//
+        public bool LoreAquaticScourge = false;//
+        public bool LorePrime = false;//
+        public bool LoreBrimstoneElement = false;//
+        public bool LoreCalamitasClone = false;//
+        public bool LorePlantera = false;//
+        public bool LoreLeviAnahita = false;//
+        public bool LoreAureus = false;//
+        public bool LoreDeus = false;//
+        public bool LoreGolem = false;//
+        public bool LoreGoliath = false;//
+        public bool LoreDuke = false;//
+        public bool LoreDukeElder = false;//
+        public bool LoreRavager = false;//
+        public bool LoreCultist = false;//
+        public bool LoreLunarBoss = false;//
+        public bool LoreProvidence = false;//
+        public bool LorePolter = false;//
+        public bool LoreDevourer = false;//
+        public bool LoreJungleDragon = false;//
         public bool SCalLore = false;//
-        public bool oceanLore = false;
-        public bool corruptionLore = false;//
-        public bool crimsonLore = false;//
-        public bool underworldLore = false;
-        public bool exoMechLore = false;//星三王传颂
+        public bool LoreSea = false;
+        public bool LoreCorruption = false;//
+        public bool LoreCrimson = false;//
+        public bool LoreUnderworld = false;
+        public bool LoreExo = false;//星三王传颂
         #endregion
         #region Buffs
-        public bool armorShattering = false;
+        public bool ArmorShatteringStats = false;
         public bool Revivify = false;
-        public bool cadence = false;
-        public bool draconicSurge = false;
-        public bool penumbra = false;
-        public bool profanedRage = false;
-        public bool holyWrath = false;
-        public bool tScale = false;
-        public int titanBoost = 0;
-        public bool triumph = false;
-        public bool yPower = false;
-        public bool invincible = false;
+        public bool CadenceStats = false;
+        public bool DraconicSurgeStats = false;
+        public bool PenumbraStats = false;
+        public bool ProfanedRageStats = false;
+        public bool HolyWrathStats = false;
+        public bool TitanScaleStats = false;
+        public int TitanScaleTrueMeleeBuff = 0;
+        public bool Triumph = false;
+        public bool YharimsPowerStats = false;
+        public bool InvincibleJam = false;
         public bool bloodPactBoost = false;
         public bool bloodflareCoreLegacy = false;//旧血炎
-        public bool hotEStats = false;
-        public bool buffEStats = false;
-        public bool backFireDebuff = false;   //淬火
+        public bool EHeartStats = false;
+        public bool EHeartStatsBuff = false;
+        public bool BackfireStats = false;   //淬火
         public int StepToolShadowChairSmallCD = 0;
         public int StepToolShadowChairSmallFireCD = 0;
+        public float ManaHealMutipler = 1f; //增强魔力药水恢复量
         #endregion
         #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
@@ -196,38 +193,38 @@ namespace CalamityInheritance.CIPlayer
         #region GodSlayer
         public bool GodSlayerReborn = false;
         public bool GodSlayerDMGprotect = false;
-        public bool godSlayerReflect = false;
-        public bool godSlayerMagic = false;
+        public bool GodSlayerReflect = false;
+        public bool GodSlayerMagicSet = false;
         public bool hasFiredThisFrame = false;
-        public bool godSlayerRangedold = false;
-        public bool godSlayerSummonold = false;
+        public bool GodSlayerRangedSet = false;
+        public bool GodSlayerSummonSet = false;
         #endregion
         #region Silva
-        public bool silvaMageold = false;
-        public int silvaMageCooldownold = 0;
-        public bool silvaMelee = false;
-        public bool silvaStun = false;
-        public int silvaStunCooldownold = 0;
-        public bool silvaRanged = false;
-        public bool silvaSummonEx = false;
-        public bool silvaRogue = false;
-        public bool silvaRebornMark = false;
+        public bool SilvaMagicSetLegacy = false;
+        public int SilvaMagicSetLegacyCooldown = 0;
+        public bool SilvaMeleeSetLegacy = false;
+        public bool SilvaStunDebuff = false;
+        public int SilvaStunDebuffCooldown = 0;
+        public bool SilvaRangedSetLegacy = false;
+        public bool SilvaSummonSetLegacy = false;
+        public bool SilvaRougeSetLegacy = false;
+        public bool SilvaRebornMark = false;
         #endregion
         #region Auric
         public bool AuricDebuffImmune = false;
         public bool AuricbloodflareRangedSoul = false;
         public bool auricBoostold = false;
-        public bool auricsilvaset = false;
+        public bool AuricSilvaSet = false;
         public bool AncientAuricSet = false; //暴君套
-        public int auricYharimHealCooldown = 0; //暴君套回血CD
+        public int AncientAuricHealCooldown = 0; //暴君套回血CD
         public bool auricYharimAntiSummonerDMGReduction = false; //暴君套直接数值对撞抗召唤减伤
-        public int yharimOfPerunStrikesCooldown = 0; //暴君套打击cd
-        public bool yharimOfPerunBuff= false;
-        public bool aurichasSilvaEffect = false;
+        public int PerunofYharimCooldown = 0; //暴君套打击cd
+        public bool PerunofYharimStats= false;
+        public bool AuricGetSilvaEffect = false;
         public static int CIsilvaReviveDuration = 900;
         public int CIsilvaCountdown = CIsilvaReviveDuration;
-        public static int auricsilvaReviveDuration = 600;
-        public int auricsilvaCountdown = auricsilvaReviveDuration;
+        public static int AuricSilvaInvincibleTime = 600;
+        public int auricsilvaCountdown = AuricSilvaInvincibleTime;
         #endregion
         #region Reaver
         //永恒套
@@ -254,10 +251,10 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public bool test = false;
         #region AncientXeroc
-        public bool ancientXerocSet     = false;
-        public bool ancientXerocWrath   = false;
+        public bool AncientXerocSet     = false;
+        public bool AncientXerocWrath   = false;
         //克希洛克翅膀的远古狂怒效果
-        public bool ancientXerocMadness = false;
+        public bool AncientXerocMad = false;
         //克希洛克套装的远古暴乱效果
         public bool AncientXerocShame = false;
         //克希洛克残念
@@ -290,7 +287,7 @@ namespace CalamityInheritance.CIPlayer
             IfCloneHtting = false; //克隆大锤子是否正在攻击
             AnkhImmnue = false;
             ElementalQuiver = false;
-            fleshTotemold = false;
+            FleshTotemLegacy = false;
             CoreOfTheBloodGod = false;
 
             if (CoreOfTheBloodGod)
@@ -301,34 +298,34 @@ namespace CalamityInheritance.CIPlayer
 
             if (!CIsponge)
                 ShieldDurabilityMax = 0;
-            badgeofBravery = false;
+            BraveryBadgeLegacyStats = false;
             CIsponge = false;
             CIspongeShieldVisible = false;
             FungalCarapace = false;
             PsychoticAmulet = false;
             YharimsInsignia = false;
-            darkSunRingold = false;
+            DarkSunRingStats = false;
             fasterAuricTracers = false; //天界跑鞋无敌帧
             deificAmuletEffect = false; //神圣护符的效果
             RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾
             projRef = false;
             AstralBulwark = false;
             AstralArcanumEffect = false;
-            badgeofBravery = false;
+            BraveryBadgeLegacyStats = false;
             CIdeadshotBrooch = false; //独立出来的神射手徽章加成
             nanotechold = false;
             TheAbsorberOld = false;//阴阳石受击回血
-            beeResist = false;//降低蜜蜂对玩家的伤害
+            FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
             ancientReaperToothNeclace= false;//肃杀项链
-            ancientCoreofTheBloodGod = false ;//肃杀核心
-            ancientBloodFact = false;//血契
+            AncientCotbg = false ;//肃杀核心
+            AncientBloodPact = false;//血契
             elementalGauntlet = false;//元素之握
             bloodflareCoreLegacy = false;
-            hotEStats = false;
-            buffEStats = false;
-            fuckAllofYouEHeart = false;
-            nucleogenesisLegacy = false;//核子
+            EHeartStats = false;
+            EHeartStatsBuff = false;
+            FuckEHeart = false;
+            NucleogenesisLegacyStats = false;//核子
             StepToolShadowChairSmallCD = 0;
             StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
@@ -338,58 +335,58 @@ namespace CalamityInheritance.CIPlayer
             DraedonsHeartLegacyBuff = false;
             #endregion
             #region Lore
-            kingSlimeLore = false;
-            desertScourgeLore = false;
-            crabulonLore = false;
+            LoreKingSlime = false;
+            LoreDesertScourge = false;
+            LoreCrabulon = false;
             BoCLoreTeleportation = false;
-            eaterOfWorldsLore = false;
-            hiveMindLore = false;
-            perforatorLore = false;
-            queenBeeLore = false;
-            skeletronLore = false;
-            wallOfFleshLore = false;
-            twinsLore = false;
-            destroyerLore = false;
-            aquaticScourgeLore = false;
-            skeletronPrimeLore = false;
-            brimstoneElementalLore = false;
-            calamitasCloneLore = false;
-            planteraLore = false;
-            leviathanAndSirenLore = false;
-            astrumAureusLore = false;
-            astrumDeusLore = false;
-            golemLore = false;
-            plaguebringerGoliathLore = false;
-            dukeFishronLore = false;
-            boomerDukeLore = false;
-            ravagerLore = false;
-            lunaticCultistLore = false;
-            moonLordLore = false;
-            providenceLore = false;
-            polterghastLore = false;
-            DoGLore = false;
-            yharonLore = false;
+            LoreEaterofWorld = false;
+            LoreHive = false;
+            LorePerforator = false;
+            LoreQueenBee = false;
+            LoreSkeletron = false;
+            LoreWallofFlesh = false;
+            LoreTwins = false;
+            LoreDestroyer = false;
+            LoreAquaticScourge = false;
+            LorePrime = false;
+            LoreBrimstoneElement = false;
+            LoreCalamitasClone = false;
+            LorePlantera = false;
+            LoreLeviAnahita = false;
+            LoreAureus = false;
+            LoreDeus = false;
+            LoreGolem = false;
+            LoreGoliath = false;
+            LoreDuke = false;
+            LoreDukeElder = false;
+            LoreRavager = false;
+            LoreCultist = false;
+            LoreLunarBoss = false;
+            LoreProvidence = false;
+            LorePolter = false;
+            LoreDevourer = false;
+            LoreJungleDragon = false;
             SCalLore = false;
-            oceanLore = false;
-            corruptionLore = false;
-            crimsonLore = false;
-            underworldLore = false;
-            exoMechLore = false;//星三王传颂
+            LoreSea = false;
+            LoreCorruption = false;
+            LoreCrimson = false;
+            LoreUnderworld = false;
+            LoreExo = false;//星三王传颂
             #endregion
             #region Buffs
-            armorShattering = false;
+            ArmorShatteringStats = false;
             Revivify = false;
-            cadence = false;
-            draconicSurge = false;
-            penumbra = false;
-            profanedRage = false;
-            holyWrath = false;
-            tScale = false;
-            triumph = false;
-            yPower = false;
-            invincible = false;
+            CadenceStats = false;
+            DraconicSurgeStats = false;
+            PenumbraStats = false;
+            ProfanedRageStats = false;
+            HolyWrathStats = false;
+            TitanScaleStats = false;
+            Triumph = false;
+            YharimsPowerStats = false;
+            InvincibleJam = false;
             bloodPactBoost = false;
-            backFireDebuff = false;
+            BackfireStats = false;
             #endregion
             #region Set Bonuses
             #region AncientBloodflare
@@ -411,27 +408,27 @@ namespace CalamityInheritance.CIPlayer
             #region GodSlayer
             GodSlayerReborn = false;
             GodSlayerDMGprotect = false;
-            godSlayerReflect = false;
-            godSlayerMagic = false;
+            GodSlayerReflect = false;
+            GodSlayerMagicSet = false;
             hasFiredThisFrame = false;
-            godSlayerRangedold = false;
-            godSlayerSummonold = false;
+            GodSlayerRangedSet = false;
+            GodSlayerSummonSet = false;
             #endregion
             #region Sliva
-            silvaMageold = false;
-            silvaMelee = false;
-            silvaRanged = false;
-            silvaSummonEx = false;
-            silvaRogue = false;
-            silvaRebornMark = false;
+            SilvaMagicSetLegacy = false;
+            SilvaMeleeSetLegacy = false;
+            SilvaRangedSetLegacy = false;
+            SilvaSummonSetLegacy = false;
+            SilvaRougeSetLegacy = false;
+            SilvaRebornMark = false;
             #endregion
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
             auricBoostold = false;
-            auricsilvaset = false;
+            AuricSilvaSet = false;
             AncientAuricSet = false;
-            yharimOfPerunBuff = false;
+            PerunofYharimStats = false;
             #endregion
             #region Reaver
             ReaverMeleeBlast = false;
@@ -442,9 +439,9 @@ namespace CalamityInheritance.CIPlayer
             ReaverSummoner = false;
             #endregion
             #region Xeroc
-            ancientXerocSet     = false;
-            ancientXerocWrath   = false;
-            ancientXerocMadness = false;
+            AncientXerocSet     = false;
+            AncientXerocWrath   = false;
+            AncientXerocMad = false;
             AncientXerocShame   = false;
             #endregion
 
@@ -471,18 +468,18 @@ namespace CalamityInheritance.CIPlayer
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否在攻击
             AnkhImmnue = false;
-            armorShattering = false;
+            ArmorShatteringStats = false;
             Revivify = false;
-            cadence = false;
-            draconicSurge = false;
-            penumbra = false;
-            profanedRage = false;
-            holyWrath = false;
-            tScale = false;
-            titanBoost = 0;
-            triumph = false;
-            yPower = false;
-            invincible = false;
+            CadenceStats = false;
+            DraconicSurgeStats = false;
+            PenumbraStats = false;
+            ProfanedRageStats = false;
+            HolyWrathStats = false;
+            TitanScaleStats = false;
+            TitanScaleTrueMeleeBuff = 0;
+            Triumph = false;
+            YharimsPowerStats = false;
+            InvincibleJam = false;
             bloodPactBoost = false;
 
             ElysianAegis = false;
@@ -490,17 +487,17 @@ namespace CalamityInheritance.CIPlayer
             statisTimerOld = 0;//虚空饰带的计数器
 
             TheAbsorberOld = false;//阴阳石受击回血
-            beeResist = false;//降低蜜蜂对玩家的伤害
+            FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
-            raiderStack = 0;//纳米技术击中计数器
+            RaiderStacks = 0;//纳米技术击中计数器
             nanoTechStackDurability = 0;//纳米技术充能进度
             ancientReaperToothNeclace = false; //肃杀项链
-            ancientCoreofTheBloodGod = false; //肃杀核心
-            ancientBloodFact = false;
-            yharimOfPerunBuff = false;
+            AncientCotbg = false; //肃杀核心
+            AncientBloodPact = false;
+            PerunofYharimStats = false;
             bloodflareCoreLegacy = false;
-            hotEStats = false;
-            buffEStats = false;
+            EHeartStats = false;
+            EHeartStatsBuff = false;
             StepToolShadowChairSmallCD = 0;
             StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
@@ -528,30 +525,30 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region GodSlayer
             GodSlayerDMGprotect = false;
-            godSlayerReflect = false;
-            godSlayerMagic = false;
+            GodSlayerReflect = false;
+            GodSlayerMagicSet = false;
             hasFiredThisFrame = false;
-            godSlayerRangedold = false;
-            godSlayerSummonold = false;
+            GodSlayerRangedSet = false;
+            GodSlayerSummonSet = false;
             #endregion
             #region Sliva
-            silvaMageold = false;
-            silvaMelee = false;
-            silvaRanged = false;
-            silvaSummonEx = false;
-            silvaRogue = false;
+            SilvaMagicSetLegacy = false;
+            SilvaMeleeSetLegacy = false;
+            SilvaRangedSetLegacy = false;
+            SilvaSummonSetLegacy = false;
+            SilvaRougeSetLegacy = false;
             #endregion
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
-            aurichasSilvaEffect = false;
-            auricsilvaCountdown = auricsilvaReviveDuration;
+            AuricGetSilvaEffect = false;
+            auricsilvaCountdown = AuricSilvaInvincibleTime;
             CIsilvaCountdown = CIsilvaReviveDuration;
             auricBoostold = false;
             AncientAuricSet = false;
-            auricYharimHealCooldown = 0;
-            yharimOfPerunStrikesCooldown = 0;
-            yharimOfPerunBuff = false;
+            AncientAuricHealCooldown = 0;
+            PerunofYharimCooldown = 0;
+            PerunofYharimStats = false;
             #endregion
             #region Reaver
             ReaverMeleeBlast = false;
@@ -562,8 +559,8 @@ namespace CalamityInheritance.CIPlayer
             ReaverSummoner = false;
             #endregion
             #region Xeroc
-            ancientXerocSet     = false;
-            ancientXerocWrath   = false;
+            AncientXerocSet     = false;
+            AncientXerocWrath   = false;
             #endregion
             AncientAstralSet = false;
             AncientAstralStatBuff = false; //buff
@@ -573,7 +570,7 @@ namespace CalamityInheritance.CIPlayer
             AncientAstralStealthCD = 0;
             #endregion
 
-            animusBoost = 1f;
+            AnimusDamage = 1f;
         }
         public override void PostUpdate()
         {
@@ -733,16 +730,16 @@ namespace CalamityInheritance.CIPlayer
         public override void PostUpdateRunSpeeds()
         {
             CalamityPlayer modPlayer = Player.Calamity();
-            if (destroyerLore)
+            if (LoreDestroyer)
             {
                 Player.runAcceleration *= 0.95f;
             }
-            if (twinsLore)
+            if (LoreTwins)
             {
                 if (Player.statLife < (int)(Player.statLifeMax2 * 0.5))
                     Player.runAcceleration *= 0.95f;
             }
-            if (skeletronPrimeLore)
+            if (LorePrime)
             {
                 Player.runAcceleration *= 0.95f;
             }
@@ -750,10 +747,10 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.mount.Active)
             {
                 float runAccMult = 1f +
-                    (auricsilvaset ? 0.05f : 0f);
+                    (AuricSilvaSet ? 0.05f : 0f);
 
                 float runSpeedMult = 1f +
-                    (auricsilvaset ? 0.05f : 0f);
+                    (AuricSilvaSet ? 0.05f : 0f);
             }
 
             #region DashEffects
@@ -785,12 +782,12 @@ namespace CalamityInheritance.CIPlayer
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (nanotechold && raiderStack < 150)
+            if (nanotechold && RaiderStacks < 150)
             {
-                raiderStack++;
+                RaiderStacks++;
             }
 
-            if (providenceLore)
+            if (LoreProvidence)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
             }
@@ -903,7 +900,7 @@ namespace CalamityInheritance.CIPlayer
         #region Limitations
         public void ForceVariousEffects()
         {
-            if (auricsilvaCountdown > 0 && aurichasSilvaEffect && auricsilvaset && Player.dashDelay < 0 || CIDashDelay < 0)
+            if (auricsilvaCountdown > 0 && AuricGetSilvaEffect && AuricSilvaSet && Player.dashDelay < 0 || CIDashDelay < 0)
             {
                 if (Player.lifeRegen < 0)
                     Player.lifeRegen = 0;

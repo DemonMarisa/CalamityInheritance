@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().skeletronPrimeLore = true;
+                player.CalamityInheritance().LorePrime = true;
             }
         }
 

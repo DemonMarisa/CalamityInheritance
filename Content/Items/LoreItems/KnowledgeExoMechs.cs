@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().exoMechLore = true;
+                player.CalamityInheritance().LoreExo = true;
             }
         }
         public override void AddRecipes()

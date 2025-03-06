@@ -58,11 +58,11 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             calPlayer.godSlayer = true;
 
-            usPlayer.silvaMageold = true;
-            usPlayer.godSlayerMagic = true;
+            usPlayer.SilvaMagicSetLegacy = true;
+            usPlayer.GodSlayerMagicSet = true;
 
             calPlayer.auricSet = true;
-            usPlayer.auricsilvaset = true;
+            usPlayer.AuricSilvaSet = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 usPlayer.GodSlayerReborn = true;
