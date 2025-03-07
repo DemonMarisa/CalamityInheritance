@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.damage = 22;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 5f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Orange;
             Item.value = CIShopValue.RarityPriceOrange;

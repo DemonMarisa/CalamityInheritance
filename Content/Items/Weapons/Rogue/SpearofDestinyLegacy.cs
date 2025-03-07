@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 20;
             Item.knockBack = 2f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 52;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();   

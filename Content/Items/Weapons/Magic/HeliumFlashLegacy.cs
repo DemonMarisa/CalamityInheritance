@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetStaticDefaults()
         {
-            if (CIConfig.Instance.CustomShimmer == true)
+            if (CIServerConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlash>()] = ModContent.ItemType<HeliumFlashLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlashLegacy>()] = ModContent.ItemType<HeliumFlash>();

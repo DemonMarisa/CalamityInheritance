@@ -693,7 +693,7 @@ namespace CalamityInheritance.Content.Items
         public static void Legendary()
         {
             #region LegendaryItems
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
 
                 Recipe.Create(ModContent.ItemType<ConclaveCrossfire>()).

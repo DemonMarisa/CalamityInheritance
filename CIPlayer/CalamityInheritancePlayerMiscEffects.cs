@@ -24,6 +24,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -119,6 +120,11 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                 Player.statDefense += 10;
             }
+            if (PolarisBoost)
+            {
+                Player.lifeRegen += 1;
+                Player.lifeRegenTime += 1;
+            }
             if (ArmorShatteringStats)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
@@ -213,7 +219,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; //基于近战武器55%的全局攻速
                 Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; //给予远程武器45%的全局攻速
                 Player.GetAttackSpeed<MagicDamageClass>() += 0.35f; //更新:给予法师武器65%的攻速
-                Player.manaCost *= 0.05f;
+                Player.manaCost *= 0.20f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
             }
             
@@ -565,7 +571,12 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense += 60 + buffDef;
                     Player.endurance += 0.3f;
                 }
-                }
+            }
+            if (Player.vortexStealthActive) //回调星璇数值
+            {
+                Player.GetDamage<RangedDamageClass>() += (1f - Player.stealth) * 0.4f;
+                Player.GetCritChance<RangedDamageClass>() += (int)((1f - Player.stealth) * 5f);
+            }
             if (usPlayer.SilvaMagicSetLegacy && Player.HasCooldown(SilvaRevive.ID))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
@@ -802,7 +813,23 @@ namespace CalamityInheritance.CIPlayer
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
             }
+            if (!PolarisBoost || Player.ActiveItem().type != ModContent.ItemType<PolarisParrotfishLegacy>())
+            {
+                PolarisBoost = false;
+                if (Player.FindBuffIndex(ModContent.BuffType<PolarisBuffLegacy>()) > -1)
+                    Player.ClearBuff(ModContent.BuffType<PolarisBuffLegacy>());
 
+                PolarisBoostCounter = 0;
+                PolarisBoostPhase2 = false;
+                PolarisBoostPhase3 = false;
+            }
+            if (PolarisBoostCounter >= 20)
+            {
+                PolarisBoostPhase2 = false;
+                PolarisBoostPhase3 = true;
+            }
+            else if (PolarisBoostCounter >= 10)
+                PolarisBoostPhase2 = true;
             if (usPlayer.InvincibleJam)
             {
                 foreach (int debuff in CalamityLists.debuffList)

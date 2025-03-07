@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
-            Item.UseSound = SoundID.Item34;
+            Item.UseSound = CISoundID.SoundFlamethrower;
             Item.autoReuse = true;
             Item.shootSpeed = 18f;
             Item.useAmmo = AmmoID.Gel;
@@ -153,17 +153,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<ElementalEruption>().
-                AddIngredient<CleansingBlaze>().
-                AddIngredient<HalleysInferno>().
+                AddIngredient<ElementalEruptionLegacy>().
+                AddIngredient<CleansingBlazeLegacy>().
+                AddIngredient<HalleysInfernoLegacy>().
+                AddIngredient<BloodBoilerLegacy>().
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
 
             CreateRecipe().
-                AddIngredient<ElementalEruption>().
-                AddIngredient<CleansingBlaze>().
-                AddIngredient<HalleysInferno>().
+                AddIngredient<ElementalEruptionLegacy>().
+                AddIngredient<CleansingBlazeLegacy>().
+                AddIngredient<HalleysInfernoLegacy>().
+                AddIngredient<BloodBoilerLegacy>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().

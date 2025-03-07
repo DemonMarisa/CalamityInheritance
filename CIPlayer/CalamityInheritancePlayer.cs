@@ -17,6 +17,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
+using CalamityMod.Projectiles.Ranged;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -37,7 +38,7 @@ namespace CalamityInheritance.CIPlayer
         //1就是没给
         //2就是给了
         public int giveScalEssence = 1;
-
+        public bool SolarShieldEndurence = false; //日耀盾免伤计算
         #endregion
         #region Accessories
         public bool ElementalQuiver = false;
@@ -77,7 +78,10 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region Weapon
         public float AnimusDamage = 1f;
-
+        public bool PolarisBoost = false;
+        public bool PolarisBoostPhase2 = false;
+        public bool PolarisBoostPhase3 = false;
+        public int PolarisBoostCounter = 0;
         public bool photovisceratorCrystal = false;
         #endregion
         #region dash
@@ -184,7 +188,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientSilvaSet = false;
         public bool AncientSilvaStat = false; //林海数值
         public int AncientSilvaRegenCD = 0;
-        public int AncientSilvaRegenTimer = 60; //一秒
+        public int AncientSilvaRegenTimer = 120; //一秒
         public bool AncientSilvaRegenFlag = false;
         #endregion
         #region AncientTarragon
@@ -333,6 +337,10 @@ namespace CalamityInheritance.CIPlayer
             AmbrosialImmnue = false;
             AmbrosialStats = false;
             DraedonsHeartLegacyBuff = false;
+            PolarisBoost = false;
+            PolarisBoostPhase2 = false;
+            PolarisBoostPhase3 = false;
+            
             #endregion
             #region Lore
             LoreKingSlime = false;
@@ -481,7 +489,7 @@ namespace CalamityInheritance.CIPlayer
             YharimsPowerStats = false;
             InvincibleJam = false;
             bloodPactBoost = false;
-
+            SolarShieldEndurence = false;
             ElysianAegis = false;
             ElysianGuard = false;
             statisTimerOld = 0;//虚空饰带的计数器
@@ -503,6 +511,10 @@ namespace CalamityInheritance.CIPlayer
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
             DraedonsHeartLegacyBuff = false;
+            PolarisBoost = false;
+            PolarisBoostPhase2 = false;
+            PolarisBoostPhase3 = false;
+            PolarisBoostCounter = 0;
             #region Set Bonuses
             #region AncientBloodflare
             AncientBloodflareSet = false;

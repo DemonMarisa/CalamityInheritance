@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasher>()] = ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>()] = ModContent.ItemType<GalaxySmasher>();
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noUseGraphic = true;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
 
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
 
-            if(CIConfig.Instance.CustomShimmer == false)
+            if(CIServerConfig.Instance.CustomShimmer == false)
             {
             CreateRecipe().
                 AddIngredient<StellarContempt>().

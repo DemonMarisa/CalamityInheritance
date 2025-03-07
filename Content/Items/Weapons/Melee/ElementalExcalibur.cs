@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 14;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 8f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.width = 112;
             Item.height = 112;

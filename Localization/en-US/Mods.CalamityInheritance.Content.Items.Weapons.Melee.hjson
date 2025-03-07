@@ -363,3 +363,8 @@ GlacialCrusher: {
 		'''
 	DisplayName: Glacial Crusher Revamped
 }
+
+BrimlashBuster: {
+	DisplayName: Brimlash Buster
+	Tooltip: ""
+}

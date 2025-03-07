@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useTime = 23;
             Item.useAnimation = 23;
             Item.maxStack = 9999;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.consumable = true;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
 

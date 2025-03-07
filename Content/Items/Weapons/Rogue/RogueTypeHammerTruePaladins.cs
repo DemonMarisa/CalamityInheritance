@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 13;
             Item.knockBack = 20f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.height = 28;
             Item.value = CIShopValue.RarityPriceYellow;

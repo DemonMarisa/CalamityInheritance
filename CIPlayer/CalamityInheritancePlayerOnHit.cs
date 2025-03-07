@@ -22,6 +22,8 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
 using Microsoft.Build.Evaluation;
+using Microsoft.Build.Construction;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -43,7 +45,10 @@ namespace CalamityInheritance.CIPlayer
             Player player = Main.player[projectile.owner];
             if (Player.whoAmI != Main.myPlayer)
                 return;
-
+            if (projectile.type == ModContent.ProjectileType<PolarStarLegacy>())
+            {
+                PolarisBoostCounter += 1;
+            }
             #region Lore
             if (LorePerforator)
             {

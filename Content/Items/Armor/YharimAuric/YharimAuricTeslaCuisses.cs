@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
                 AddIngredient<AuricTeslaCuissesold>().

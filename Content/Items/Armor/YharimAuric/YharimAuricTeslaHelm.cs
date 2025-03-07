@@ -45,8 +45,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 		{
 			var modPlayer = player.CalamityInheritance();
 			var calPlayer = player.Calamity();
-			modPlayer.ManaHealMutipler += 2.5f;
-			player.manaCost *= 0.75f;
+			modPlayer.ManaHealMutipler = 2.0f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
 			#region 灾厄的月后套通用效果
 			calPlayer.tarraSet = true;
@@ -131,7 +130,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 
 		public override void AddRecipes()
 		{
-			if (CIConfig.Instance.LegendaryitemsRecipes == true)
+			if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
 			{
 				CreateRecipe().
 				AddIngredient<AuricTeslaHeadMagic>().

@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.NPCs.Abyss;
@@ -183,6 +184,9 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ItemID.BrokenHeroSword, 1);
             }
+
+            if (npc.type == ModContent.NPCType<Cataclysm>() && !CIServerConfig.Instance.CustomShimmer)
+                npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => !DownedBossSystem.downedLeviathan && LastAnLStanding();
@@ -357,6 +361,8 @@ namespace CalamityInheritance.NPCs
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeUnderworld>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeWallofFlesh>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<MLGRune>(), desc: DropHelper.FirstKillText);
+                    if(!CIServerConfig.Instance.CustomShimmer)
+                    npcLoot.Add(ModContent.ItemType<MeowthrowerLegacy>(), 4);
                     break;
                 case NPCID.TheDestroyer:
                     // Lore

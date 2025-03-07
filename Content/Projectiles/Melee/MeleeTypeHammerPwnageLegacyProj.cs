@@ -17,7 +17,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeHammerPwnageLegacyProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy";
         private static readonly float RotationIncrement = 0.22f;
         private static readonly float StealthSpeed = MeleeTypeHammerPwnageLegacy.Speed*2;
         private static readonly int LifeTime = 240;
@@ -48,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if(Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 10;
-                SoundEngine.PlaySound(SoundID.Item7,Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs,Projectile.position);
             }
 
             //继承至大部分锤子的ai: ai[0]存储锤子是(1f)否(0f)处于返程状态, 

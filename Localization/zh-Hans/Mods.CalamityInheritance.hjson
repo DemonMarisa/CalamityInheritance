@@ -8,7 +8,7 @@ Keybinds: {
 
 Configs: {
 	CIConfig: {
-		DisplayName: Calamity Inheritance 设置
+		DisplayName: 设置
 
 		Headers: {
 			Gameplay: 游戏设置
@@ -71,15 +71,6 @@ Configs: {
 			Tooltip: 关闭后，Mod物品右下角不会出现时钟角标
 		}
 
-		LegendaryitemsRecipes: {
-			Label: "[i:CalamityMod/CosmicAnvilItem]传奇武器添加合成表"
-			Tooltip:
-				'''
-				开启后为传奇武器添加合成表
-				[c/FF0000:（此选项需要重加载）]
-				'''
-		}
-
 		Tyrant1: {
 			Label: "[i:CalamityInheritance/TyrantPart1]插曲：暴君 阶段1"
 			Tooltip:
@@ -105,16 +96,6 @@ Configs: {
 				击败終灾后播放
 				关闭后禁止播放
 				会反复播放
-				'''
-		}
-
-		CustomShimmer: {
-			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
-			Tooltip:
-				'''
-				为模组内部分回归物品添加微光转化配方
-				关闭后回归物品将采用其他的获取来源
-				[c/FF0000:（此选项需要重加载）]
 				'''
 		}
 
@@ -270,6 +251,30 @@ Configs: {
 		BloodOrangeResprite: {
 			Tooltip: 切换血橙的贴图
 			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
+		}
+	}
+
+	CIServerConfig: {
+		DisplayName: 服务端设置
+		Headers.GeneralGamePlay: 玩法
+
+		LegendaryitemsRecipes: {
+			Label: "[i:CalamityMod/CosmicAnvilItem]传奇物品添加合成表"
+			Tooltip: 开启后为传奇物品添加合成表
+		}
+
+		CustomShimmer: {
+			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
+			Tooltip:
+				'''
+				为模组内部分回归物品添加微光转化配方
+				关闭后回归物品将采用其他的获取来源
+				'''
+		}
+
+		VanillaUnnerf: {
+			// Tooltip: ""
+			// Label: Vanilla Unnerf
 		}
 	}
 }

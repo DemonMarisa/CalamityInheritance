@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.width = 106;
             Item.height = 94;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;

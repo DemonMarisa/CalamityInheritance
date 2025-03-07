@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
@@ -82,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.Center);
             }
 
             int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.IceRod, 0f, 0f, 100, default, 1f);

@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.height = 44;
             Item.damage = 190;
             Item.knockBack = 8.5f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.noMelee = true;

@@ -1,7 +1,11 @@
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +17,7 @@ namespace CalamityInheritance.Content.Items
         public override void SetStaticDefaults()
         {
             #region 微光嬗变启用时才会转化的
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
             {
                 #region 魔君的馈赠
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGift>()] = ModContent.ItemType<YharimsGiftLegacy>();
@@ -64,7 +68,51 @@ namespace CalamityInheritance.Content.Items
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCore>()] = ModContent.ItemType<BloodflareCoreLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCoreLegacy>()] = ModContent.ItemType<BloodflareCore>();
                 #endregion
-           
+
+                #region 来自灾厄构造体的遗物
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HavocsBreathLegacy>()] = ModContent.ItemType<HavocsBreath>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HavocsBreath>()] = ModContent.ItemType<HavocsBreathLegacy>();
+                #endregion
+
+                #region 腐烂之脑的增生种
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ShadethrowerLegacy>()] = ModContent.ItemType<Shadethrower>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Shadethrower>()] = ModContent.ItemType<ShadethrowerLegacy>();
+                #endregion
+
+                #region 喵
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeowthrowerLegacy>()] = ModContent.ItemType<Meowthrower>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Meowthrower>()] = ModContent.ItemType<MeowthrowerLegacy>();
+                #endregion
+
+                #region 纯纯的怒火
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PristineFuryLegacy>()] = ModContent.ItemType<PristineFury>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PristineFury>()] = ModContent.ItemType<PristineFuryLegacy>();
+                #endregion
+
+                #region 来自星星的喷火器
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AuroraBlazerLegacy>()] = ModContent.ItemType<AuroraBlazer>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AuroraBlazer>()] = ModContent.ItemType<AuroraBlazerLegacy>();
+                #endregion
+
+                #region 瘟疫,与疫病
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BlightSpewer>()] = ModContent.ItemType<BlightSpewerLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BlightSpewerLegacy>()] = ModContent.ItemType<BlightSpewer>();
+                #endregion
+
+                #region 过载充凝 
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<OverloadedBlaster>()] = ModContent.ItemType<OverloadedBlasterLegacy>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<OverloadedBlasterLegacy>()] = ModContent.ItemType<OverloadedBlaster>();
+                #endregion
+
+                #region 星辉馈赠的鱼
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PolarisParrotfishLegacy>()] = ModContent.ItemType<PolarisParrotfish>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PolarisParrotfish>()] = ModContent.ItemType<PolarisParrotfishLegacy>();
+                #endregion
+                #region 安宁.
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();
+                #endregion
+            
             }
             #endregion
         }

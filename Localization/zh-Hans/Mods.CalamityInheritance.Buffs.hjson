@@ -125,10 +125,20 @@ StepToolDebuff: {
 
 Backfire: {
 	DisplayName: 淬火
-	Description: 血液被过度加热，足以融化掉你的心脏
+	Description: 血液被过度加热, 你感觉全身正在被融化...
 }
 
 AncientAstralBuff: {
 	DisplayName: 星之铸造
 	Description: 杂质全部祛除, 你的盔甲崭新如初
+}
+
+SilvaPrice: {
+	Description: 看起来有什么东西在增强你的心脏...
+	DisplayName: 林海强心剂
+}
+
+PolarisBuffLegacy: {
+	DisplayName: 北极星
+	Description: 增加生命再生速度
 }

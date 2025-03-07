@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 15;
             Item.knockBack = 1f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 38;
             Item.maxStack = 9999;

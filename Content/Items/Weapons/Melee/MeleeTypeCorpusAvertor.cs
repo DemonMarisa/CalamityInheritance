@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
+            if(CIServerConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeCorpusAvertor>()] = ModContent.ItemType<CorpusAvertor>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CorpusAvertor>()] = ModContent.ItemType<MeleeTypeCorpusAvertor>();
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 15;
             Item.knockBack = 3f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;

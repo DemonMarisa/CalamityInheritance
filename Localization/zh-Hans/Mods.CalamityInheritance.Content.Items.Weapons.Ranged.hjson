@@ -234,3 +234,123 @@ ACTMinigun: {
 		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
 		'''
 }
+
+AuroraBlazerLegacy: {
+	DisplayName: 极光烈焰[Legacy]
+	Tooltip:
+		'''
+		喷出以星形轨迹运动的星云烈焰
+		60%弹药不消耗
+		'''
+}
+
+BloodBoilerLegacy: {
+	DisplayName: 血液蒸馏器[Legacy]
+	Tooltip:
+		'''
+		发射一簇汲取生命的生命血火
+		用你的生命值作为弹药
+		25%弹药不消耗
+		'''
+}
+
+CleansingBlazeLegacy: {
+	DisplayName: 净化怒焰[Legacy]
+	Tooltip: 90%弹药不消耗
+}
+
+GodsBellowsLegacy: {
+	DisplayName: 神之风箱[Legacy]
+	Tooltip: 70%弹药不消耗
+}
+
+HalleysInfernoLegacy: {
+	DisplayName: 哈雷彗星炮[Legacy]
+	Tooltip:
+		'''
+		射出一连串彗星火流
+		右键以扩大视野
+		50%弹药不消耗
+		"哈雷彗星比想象中要来得早"
+		'''
+}
+
+HavocsBreathLegacy: {
+	DisplayName: 混乱之息[Legacy]
+	Tooltip: 50%弹药不消耗
+}
+
+OverloadedBlasterLegacy: {
+	DisplayName: 过载凝胶喷射器[Legacy]
+	Tooltip:
+		'''
+		发射在接触到物块后会反弹的凝胶
+		33%弹药不消耗
+		'''
+}
+
+PristineFuryLegacy: {
+	DisplayName: 纯元怒焰[Legacy]
+	Tooltip:
+		'''
+		射出一束猛烈的烈焰螺旋，爆炸成一列火柱
+		右键发射一团短程余晖烈焰
+		'''
+}
+
+ShadethrowerLegacy: {
+	DisplayName: 影流喷射器[Legacy]
+	Tooltip: 66%弹药不消耗
+}
+
+SparkSpreaderLegacy: {
+	DisplayName: 火花喷射器[Legacy]
+	Tooltip: 70%弹药不消耗
+}
+
+TerraFlamebursterLegacy: {
+	DisplayName: 泰拉喷火器[Legacy]
+	Tooltip:
+		'''
+		80%弹药不消耗
+		"能别糊一团绿色半透明的不知名的玩意了吗?"
+		'''
+}
+
+BlightSpewerLegacy: {
+	DisplayName: 枯萎散播者[Legacy]
+	Tooltip: 40%弹药不消耗
+}
+
+ElementalEruptionLegacy: {
+	DisplayName: 元素喷射器[Legacy]
+	Tooltip:
+		'''
+		发射一簇彩虹色的元素之火
+		90%弹药不消耗
+		"能别糊一团彩色半透明的不知名的玩意了吗?"
+		'''
+}
+
+MeowthrowerLegacy: {
+	DisplayName: 彩虹喵喷射器[Legacy]
+	Tooltip:
+		'''
+		发射一簇蓝粉色的火焰,击中敌人时会发出猫叫
+		85%弹药不消耗
+		喵
+		'''
+}
+
+PolarisParrotfishLegacy: {
+	DisplayName: 北辰鹦哥鱼[Legacy]
+	Tooltip:
+		'''
+		击中敌人时将会增强这把武器
+		受伤时重置
+		“它带有北极星的标记”
+		[c/A8A7A7:灾厄模组]
+		[i:CalamityInheritance/PolarisParrotfishLegacy][c/7DDA58:|][c/B7F78D:北辰鹦哥鱼]
+		[i:CalamityMod/VoidstoneWall][c/7DDA58:|][c/55B52E:准备杀出深渊四层]
+		'''
+}

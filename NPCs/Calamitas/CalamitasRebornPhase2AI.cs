@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.CalClone;
@@ -44,7 +45,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
             
             //将普灾最大血量先存进去
-            if(cign.BossNewAI[0] == 0f && boss.life >0)
+            if(cign.BossNewAI[0] == 0f && boss.life > 0)
                cign.BossNewAI[0] = boss.lifeMax;
 
             //给普灾找到一个target, 也就是玩家
@@ -195,10 +196,10 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(!ifBrothers)
                     boss.localAI[1] += 2f * (1f - lifePercent); //兄弟不在场的时候, 计时器转的更快
                 }
-                if(boss.localAI[1] >= (ifBrothers?180f:120f))//计时器符合这两个值?符合就开始发射火球
+                if(boss.localAI[1] >= (ifBrothers?120f:90f))//计时器符合这两个值?符合就开始发射火球
                 {
                     boss.localAI[1] = 0f;
-                    float projVel = 14f;
+                    float projVel = 15f;
                     //灾厄在这是用激怒作为差分，此处则采用是否击败了亵渎
 
                     int projType= ModContent.ProjectileType<BrimstoneHellfireball>(); //TODO4:使用旧版火球
@@ -223,7 +224,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     boss.localAI[1] += 1f;
 
                     // 发射激光
-                    if(boss.localAI[1] >= (ifBrothers? 75f :50f) && Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
+                    if(boss.localAI[1] >= (ifBrothers? 75f :45f) && Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
                     {
                         boss.localAI[1] = 0f;//重置
                         float projVel = ifProviDead ? 36f : 12.5f;
@@ -271,7 +272,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //转角
                 boss.rotation = rot;
                 //冲刺速度?亵渎后提升四倍
-                float chargeSpeed = ifDeath? 30f : 20f;
+                float chargeSpeed = ifDeath? 50f : 40f;
                 chargeSpeed = ifProviDead ? chargeSpeed + 5f*4 : chargeSpeed;
                 Vector2 newVec = Vector2.Normalize(player.Center + player.velocity * 20f - boss.Center);
                 boss.velocity = newVec * chargeSpeed;
@@ -286,7 +287,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 boss.damage = boss.defDamage;
                 boss.ai[2] += 1f; //计时器
                 //旧灾再次发起冲刺的时间
-                float chargeTime = ifDeath ? 35f : 45f;
+                float chargeTime = ifDeath ? 50f : 70f;
                 if(boss.ai[2] >= chargeTime)
                 {
                     boss.velocity *= 0.9f;
@@ -351,18 +352,24 @@ namespace CalamityInheritance.NPCs.Calamitas
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
                     {
+                        if(Main.netMode != NetmodeID.MultiplayerClient)
+                        {
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                        }
                         /*与上方相同的代码*/
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.7f) //70%
                     {
+                        if(Main.netMode != NetmodeID.MultiplayerClient)
+                        {
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                        }
                         //上同
                     }
                 }
@@ -384,7 +391,7 @@ namespace CalamityInheritance.NPCs.Calamitas
         {
             #region 初始化
             CIGlobalNPC cign =brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0f || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
@@ -464,7 +471,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(brother.localAI[2] > 22f)
                     {
                         brother.localAI[2] = 0f;
-                        SoundEngine.PlaySound(SoundID.Item34, brother.Center); 
+                        SoundEngine.PlaySound(CISoundID.SoundFlamethrower, brother.Center); 
                     }
                     if(Main.netMode != NetmodeID.MultiplayerClient)
                     {
@@ -551,7 +558,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             //复制粘贴兄弟们
             #region 初始化
             CIGlobalNPC cign = brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0f || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
@@ -624,7 +631,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if (brother.localAI[2] > 36f) 
                     {
                         brother.localAI[2] = 0f;
-                        SoundEngine.PlaySound(SoundID.Item34, brother.Center);
+                        SoundEngine.PlaySound(CISoundID.SoundFlamethrower, brother.Center);
                     }
                     if(Main.netMode != NetmodeID.MultiplayerClient)
                     {

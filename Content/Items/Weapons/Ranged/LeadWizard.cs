@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe1 = CreateRecipe();
                 recipe1.AddIngredient<LoreGolem>();

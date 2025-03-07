@@ -8,7 +8,7 @@ Keybinds: {
 
 Configs: {
 	CIConfig: {
-		DisplayName: Calamity Inheritance Config
+		DisplayName: Mod Config
 
 		Headers: {
 			Gameplay: Mechanic
@@ -95,11 +95,6 @@ Configs: {
 			Tooltip: Determines whether the corner badge can be shown for mod items.
 		}
 
-		LegendaryitemsRecipes: {
-			Label: "[i:CalamityMod/CosmicAnvilItem]Legendary Item Recipes"
-			Tooltip: Enables recipes of Legendary items.
-		}
-
 		Tyrant1: {
 			Label: "[i:MusicBox]Post-Yharon Custom Music"
 			Tooltip: Player custom mod music after Yharon fight
@@ -113,15 +108,6 @@ Configs: {
 		Scal: {
 			Label: "[i:MusicBox]Post-SCal Music Event"
 			Tooltip: Replaced post-SCal music with custom mod music
-		}
-
-		CustomShimmer: {
-			Label: "[i:BottomlessShimmerBucket]Custom Shimmer"
-			Tooltip:
-				'''
-				Determines all shimmer method for mod items
-				Disables will makes them have other ways to obtain
-				'''
 		}
 
 		DoGLegacyMusic: {
@@ -153,8 +139,8 @@ Configs: {
 		}
 
 		SpecialRarityColor: {
-			Tooltip: ""
-			Label: Special Rarity Color
+			Tooltip: Determines special rarity color for certain returning item
+			Label: "[i:GoldCrown]Special Rarity Color"
 		}
 	}
 
@@ -285,6 +271,30 @@ Configs: {
 		BloodOrangeResprite: {
 			Tooltip: Determines sprite style of Blood Orange
 			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
+		}
+	}
+
+	CIServerConfig: {
+		DisplayName: Server Config
+		Headers.GeneralGamePlay: General Gameplay
+
+		LegendaryitemsRecipes: {
+			Label: "[i:CalamityMod/CosmicAnvilItem]Legendary Item Recipes"
+			Tooltip: Enables recipes of Legendary items.
+		}
+
+		CustomShimmer: {
+			Label: "[i:BottomlessShimmerBucket]Custom Shimmer"
+			Tooltip:
+				'''
+				Determines all shimmer method for mod items
+				Disables will makes them have other ways to obtain
+				'''
+		}
+
+		VanillaUnnerf: {
+			Tooltip: ""
+			Label: Vanilla Unnerf
 		}
 	}
 }

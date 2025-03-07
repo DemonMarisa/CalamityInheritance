@@ -4,6 +4,7 @@ using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
@@ -66,6 +67,16 @@ namespace CalamityInheritance.CIPlayer
 
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
+            #region 免伤
+            double damageReduce = 1D;
+            var usPlayer = Player.CalamityInheritance();
+            if (usPlayer.SolarShieldEndurence)
+            {
+                //我需要这种方法玩家来复原日耀免伤，这个属于防前计算，而原版日耀是防后计算，因此这里实际先取15%而不取原有的20%
+                damageReduce -= 0.15; //日耀盾"防前"15%免伤
+            }
+            modifiers.SourceDamage *= (float)damageReduce;
+            #endregion
 
         }
         #region Pre Kill
@@ -74,7 +85,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
-                SoundEngine.PlaySound(SoundID.Item67, Player.Center);
+                SoundEngine.PlaySound(CISoundID.SoundRainbowGun, Player.Center);
 
                 for (int j = 0; j < 50; j++)
                 {
@@ -318,6 +329,28 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
+            if (PolarisBoost)
+            {
+                PolarisBoostCounter -= 10;
+                if (PolarisBoostCounter < 0)
+                    PolarisBoostCounter = 0;
+
+                if (PolarisBoostCounter >= 20)
+                {
+                    PolarisBoostPhase2= false;
+                    PolarisBoostPhase3 = true;
+                }
+                else if (PolarisBoostCounter >= 10)
+                {
+                    PolarisBoostPhase2 = true;
+                    PolarisBoostPhase3 = false;
+                }
+                else
+                {
+                    PolarisBoostPhase3 = false;
+                    PolarisBoostPhase2 = false;
+                }
+            }
             //海绵
             if (Modplayer1.CIsponge)
             {

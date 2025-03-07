@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ExoSpearProj>();

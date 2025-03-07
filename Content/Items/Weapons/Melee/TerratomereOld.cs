@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 21;
             Item.useTurn = true;
             Item.knockBack = 7f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 66;
             Item.value = CIShopValue.RarityPriceBlueGreen;

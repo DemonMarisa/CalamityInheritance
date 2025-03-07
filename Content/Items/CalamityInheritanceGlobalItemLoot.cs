@@ -11,6 +11,7 @@ using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Projectiles.Summon;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items
             {
                 itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
-                if(CIConfig.Instance.CustomShimmer == false) 
+                if(CIServerConfig.Instance.CustomShimmer == false) 
                 {
                     itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
                     itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
@@ -49,7 +50,7 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<LeviathanBag>())
             {
-                if(CIConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+                if(CIServerConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
                 {
                     itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
                 }
@@ -86,11 +87,16 @@ namespace CalamityInheritance.Content.Items
             //1.31 Scarlet:灾三王现在再次掉三王魂（可用config开关），掉魂的类型依据灾三王的boss主题色。掉落量为35-45随机
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())
+            {
+                if(!CIServerConfig.Instance.CustomShimmer)
+                itemloot.Add(ModContent.ItemType<PristineFuryLegacy>(), 4);
+
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
+            }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
             {
                 //Scarlet:只有在微光关闭的时候这玩意才会正常掉落
-                if(CIConfig.Instance.CustomShimmer == false)
+                if(CIServerConfig.Instance.CustomShimmer == false)
                 {
                     itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
                 }
@@ -99,12 +105,25 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<RavagerBag>())
             {
 
-                if(CIConfig.Instance.CustomShimmer == false)
+                if(CIServerConfig.Instance.CustomShimmer == false)
                 {
                     itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
                 }
 
             }
+            if (item.type == ModContent.ItemType<PlaguebringerGoliathBag>())
+            {
+                if (!CIServerConfig.Instance.CustomShimmer)
+                itemloot.Add(ModContent.ItemType<BlightSpewerLegacy>(), 4);
+            }
+            if (item.type == ModContent.ItemType<HiveMindBag>() && !CIServerConfig.Instance.CustomShimmer)
+                itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
+                
+            if (item.type == ModContent.ItemType<SlimeGodBag>() && !CIServerConfig.Instance.CustomShimmer)
+                itemloot.Add(ModContent.ItemType<OverloadedBlasterLegacy>(), 4);
+
+            if (item.type == ModContent.ItemType<AstrumAureusBag>() && !CIServerConfig.Instance.CustomShimmer)
+                itemloot.Add(ModContent.ItemType<AuroraBlazerLegacy>(), 4);
             switch (item.type)
             {
                 #region Boss Treasure Bags
