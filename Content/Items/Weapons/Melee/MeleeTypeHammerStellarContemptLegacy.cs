@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContempt>()] = ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = ModContent.ItemType<StellarContempt>();
@@ -37,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noUseGraphic = true;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
 
             Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ItemRarityID.Red;
@@ -57,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
 
 
-            if(CIConfig.Instance.CustomShimmer == false)
+            if(CIServerConfig.Instance.CustomShimmer == false)
             {
                 CreateRecipe().
                     AddIngredient<FallenPaladinsHammer>().

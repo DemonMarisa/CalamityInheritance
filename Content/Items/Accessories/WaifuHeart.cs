@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
             CalamityPlayer modPlayer = player.Calamity();
             var usPlayer = player.CalamityInheritance();
-            usPlayer.hotEStats = true;
+            usPlayer.EHeartStats = true;
             modPlayer.allWaifus = true;
             
             modPlayer.elementalHeart = true;
@@ -68,15 +68,15 @@ namespace CalamityInheritance.Content.Items.Accessories
             int cloudy = ProjectileType<CloudWaifu>();
             if(hideVisual)
             {
-                usPlayer.buffEStats = true;
-                usPlayer.fuckAllofYouEHeart = true;
+                usPlayer.EHeartStatsBuff = true;
+                usPlayer.FuckEHeart = true;
                 modPlayer.allWaifus = false;
                 fuckYouEHeart = false;
             }
             else
             {
-                usPlayer.buffEStats = false;
-                usPlayer.fuckAllofYouEHeart = false;
+                usPlayer.EHeartStatsBuff = false;
+                usPlayer.FuckEHeart = false;
                 modPlayer.allWaifus = true;
                 fuckYouEHeart = true;
             }
@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             { 
                 player.ClearBuff(BuffType<HotE>());
             }
-            if(usPlayer.fuckAllofYouEHeart == false)
+            if(usPlayer.FuckEHeart == false)
             {
                 if (player != null && player.whoAmI == Main.myPlayer && !player.dead)
                 {

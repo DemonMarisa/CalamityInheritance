@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             var modPlayer1 = player.CalamityInheritance();
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
-            modPlayer1.badgeofBravery = true;
+            modPlayer1.BraveryBadgeLegacyStats = true;
         }
 
         public override void AddRecipes()

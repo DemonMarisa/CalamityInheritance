@@ -7,13 +7,13 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerStellarContemptProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerStellarContempt";
 
         private static float RotationIncrement = 0.22f;
         private static int Lifetime = 240;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 60;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
 
             /*
@@ -177,7 +177,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //潜伏攻击击中敌怪时将会尝试生成再生成一个追踪锤子,这个追踪锤子会造成面板的1.2f伤害
             if(ifSummonClone) 
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.2f), Projectile.knockBack, Main.myPlayer);
+                int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.2f), Projectile.knockBack, Main.myPlayer);
+                if(Main.rand.NextBool(3))
+                Main.projectile[getClone].Calamity().stealthStrike = true;
                 ifSummonClone = false;
             }
             SpawnFlares(target.Center, target.width, target.height);

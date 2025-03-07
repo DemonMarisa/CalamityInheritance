@@ -8,13 +8,13 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityMod.CalPlayer;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerTruePaladinsProjClone : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTruePaladins";
         private static float RotationIncrement = 0.15f;
 
         private static readonly int Lifetime = 180; //比圣时之锤要短一半
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
 
             //真圣骑士锤的潜伏是同时投掷一把返程后追踪的锤子和一把挂载锤子, 因此不需要受到任何的重力影响

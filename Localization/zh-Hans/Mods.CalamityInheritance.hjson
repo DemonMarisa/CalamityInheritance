@@ -8,11 +8,10 @@ Keybinds: {
 
 Configs: {
 	CIConfig: {
-		DisplayName: Calamity Inheritance 设置
+		DisplayName: 设置
 
 		Headers: {
 			Gameplay: 游戏设置
-			Texture: 材质设置
 			Music: 音乐设置
 		}
 
@@ -72,38 +71,6 @@ Configs: {
 			Tooltip: 关闭后，Mod物品右下角不会出现时钟角标
 		}
 
-		LegendaryitemsRecipes: {
-			Label: "[i:CalamityMod/CosmicAnvilItem]传奇武器添加合成表"
-			Tooltip:
-				'''
-				开启后为传奇武器添加合成表
-				[c/FF0000:（此选项需要重加载）]
-				'''
-		}
-
-		WulfumTexture: {
-			Label: "[i:CalamityInheritance/WulfrumPickaxe]钨钢工具材质"
-			Tooltip: 切换钨钢工具材质到旧版
-		}
-
-		ArkofCosmosTexture: {
-			Label: "[i:CalamityInheritance/ArkoftheCosmosold]鸿蒙方舟材质"
-			Tooltip:
-				'''
-				1：重做前一个版本
-				2：重做前两个版本
-				'''
-		}
-
-		RampartofDeitiesTexture: {
-			Label: "[i:CalamityInheritance/CIRampartofDeities]神之壁垒材质"
-			Tooltip:
-				'''
-				1：1.5重绘后
-				2：1.4.5.7重绘前
-				'''
-		}
-
 		Tyrant1: {
 			Label: "[i:CalamityInheritance/TyrantPart1]插曲：暴君 阶段1"
 			Tooltip:
@@ -132,39 +99,64 @@ Configs: {
 				'''
 		}
 
-		CustomShimmer: {
-			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
-			Tooltip:
-				'''
-				为模组内部分回归物品添加微光转化配方
-				关闭后回归物品将采用其他的获取来源
-				[c/FF0000:（此选项需要重加载）]
-				'''
-		}
-
-		EtherealTalismancTexture: {
-			Label: "[i:CalamityInheritance/AncientEtherealTalisman]空灵护符材质"
-			Tooltip:
-				'''
-				1：新材质
-				2：旧材质
-				'''
-		}
-
 		DoGLegacyMusic: {
 			Label: "[i:CalamityInheritance/DoGLegacy]神明吞噬者旧版战斗音乐"
 			Tooltip: 在神明吞噬者战时播放旧音乐
-		}
-
-		SkullmasherResprite: {
-			Label: "[i:CalamityInheritance/Skullmasher]碎颅者贴图切换"
-			Tooltip: 切换碎颅者的贴图
 		}
 
 		CalBossesCanDropSoul: {
 			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
 			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
 		}
+
+		GodSlayerWorm: {
+			Label: "[i:CalamityMod/StaffoftheMechworm]弑神套宇宙蠕虫"
+			Tooltip:
+				'''
+				召唤弑神套/金源套套装奖励的宇宙蠕虫是否可见
+				默认关闭
+				'''
+		}
+
+		SpecialRarityColor: {
+			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
+			Label: "[i:GoldCrown]特殊稀有度颜色"
+		}
+	}
+
+	CIRespriteConfig: {
+		SkullmasherResprite: {
+			Label: "[i:CalamityInheritance/Skullmasher]碎颅者贴图切换"
+			Tooltip: 切换碎颅者的贴图
+		}
+
+		EtherealTalismancTexture: {
+			Label: "[i:CalamityInheritance/AncientEtherealTalisman]空灵护符材质"
+			Tooltip: 切换空灵护符的贴图
+		}
+
+		RampartofDeitiesTexture: {
+			Label: "[i:CalamityInheritance/CIRampartofDeities]神之壁垒材质"
+			Tooltip: 切换神之壁垒的贴图
+		}
+
+		ArkofCosmosTexture: {
+			Label: "[i:CalamityInheritance/ArkoftheCosmosold]鸿蒙方舟材质"
+			Tooltip: 切换鸿蒙方舟的贴图
+		}
+
+		SetAllLegacySprite: {
+			Label: "[i:CalamityInheritance/Death]全部旧版贴图切换"
+			Tooltip: 改变下列全部贴图选择到旧版本
+		}
+
+		WulfumTexture: {
+			Label: "[i:CalamityInheritance/WulfrumPickaxe]钨钢工具材质"
+			Tooltip: 切换钨钢工具的贴图
+		}
+
+		Headers.Texture: 贴图切换
+		DisplayName: 旧版贴图切换
 
 		P90Resprite: {
 			Label: "[i:CalamityInheritance/P90Legacy]P90贴图切换"
@@ -181,6 +173,16 @@ Configs: {
 			Tooltip: 切换圣光飞刀·盗贼版本的贴图
 		}
 
+		TriactisHammerResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]真·泰阿克提斯之圣骑士魔锤·盗贼版本贴图切换"
+			Tooltip: 切换真·泰阿克提斯之圣骑士魔锤·盗贼版本的贴图
+		}
+
+		PwnagehammerResprite: {
+			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]圣时之锤贴图切换"
+			Tooltip: 切换圣时之锤的贴图
+		}
+
 		FateGirlSprite: {
 			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]曙纹始灵仆从贴图切换"
 			Tooltip: 切换曙纹始灵仆从的贴图
@@ -191,9 +193,34 @@ Configs: {
 			Tooltip: 切换星体击碎者的贴图
 		}
 
+		HeliumFlashResprite: {
+			Label: "[i:CalamityInheritance/HeliumFlashLegacy]氦闪贴图切换"
+			Tooltip: 切换氦闪的贴图
+		}
+
+		DrataliornusResprite: {
+			Label: "[i:CalamityInheritance/DrataliornusLegacy]赤陨霸龙弓贴图切换"
+			Tooltip: 切换赤陨霸龙弓的贴图
+		}
+
 		PhantomHeartResprite: {
 			Tooltip: 切换幻影之心的贴图
 			Label: "[i:CalamityMod/PhantomHeart]幻影之心贴图切换"
+		}
+
+		AngelTreadsResprite: {
+			Label: "[i:CalamityMod/AngelTreads]天使之靴贴图切换"
+			Tooltip: 切换天使之靴的贴图
+		}
+
+		LunarBootsResprite: {
+			Label: "[i:CalamityInheritance/FasterLunarTracers]六翼天使之靴[Legacy]贴图切换"
+			Tooltip: 切换六翼天使之靴[Legacy]的贴图
+		}
+
+		MOABResprite: {
+			Label: "[i:CalamityMod/MOAB]气球之母贴图切换"
+			Tooltip: 切换气球之母的贴图
 		}
 
 		EtherealCoreResprite: {
@@ -225,44 +252,29 @@ Configs: {
 			Tooltip: 切换血橙的贴图
 			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
 		}
+	}
 
-		TriactisHammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]真·泰阿克提斯之圣骑士魔锤·盗贼版本贴图切换"
-			Tooltip: 切换真·泰阿克提斯之圣骑士魔锤·盗贼版本的贴图
+	CIServerConfig: {
+		DisplayName: 服务端设置
+		Headers.GeneralGamePlay: 玩法
+
+		LegendaryitemsRecipes: {
+			Label: "[i:CalamityMod/CosmicAnvilItem]传奇物品添加合成表"
+			Tooltip: 开启后为传奇物品添加合成表
 		}
 
-		PwnagehammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]圣时之锤贴图切换"
-			Tooltip: 切换圣时之锤的贴图
-		}
-
-		SetAllLegacySprite: {
-			Tooltip: 改变下列全部贴图选择到旧版本
-			Label: "[i:CalamityInheritance/Death]全部旧版贴图切换"
-		}
-
-		SpecialRarityColor: {
-			Label: "[i:GoldCrown]特殊稀有度颜色"
-			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
-		}
-
-		HeliumFlashResprite: {
-			Label: "[i:CalamityInheritance/HeliumFlashLegacy]氦闪贴图切换"
-			Tooltip: 切换氦闪的贴图
-		}
-
-		DrataliornusResprite: {
-			Label: "[i:CalamityInheritance/DrataliornusLegacy]赤陨霸龙弓贴图切换"
-			Tooltip: 切换赤陨霸龙弓的贴图
-		}
-
-		GodSlayerWorm: {
-			// Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
-			/* Tooltip:
+		CustomShimmer: {
+			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
+			Tooltip:
 				'''
-				Determines if a Mechworm can be summoned when wearing Auric/God Slayer Summon armor.
-				Default by true
-				''' */
+				为模组内部分回归物品添加微光转化配方
+				关闭后回归物品将采用其他的获取来源
+				'''
+		}
+
+		VanillaUnnerf: {
+			// Tooltip: ""
+			// Label: Vanilla Unnerf
 		}
 	}
 }

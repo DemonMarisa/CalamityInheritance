@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.System.Configs;
+using Terraria;
 using Terraria.ModLoader;
 using static CalamityInheritance.Music.CrossMod.CalamityCompatibility;
 

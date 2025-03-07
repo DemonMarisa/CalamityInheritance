@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.mana = 15;
             Item.knockBack = 114f;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.shootSpeed = 14f;
             Item.channel = true;
             Item.noMelee = true;

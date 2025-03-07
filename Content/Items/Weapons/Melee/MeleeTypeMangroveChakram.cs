@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;
             Item.knockBack = 7.5f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.shoot = ModContent.ProjectileType<MeleeTypeMangroveChakramProj>();

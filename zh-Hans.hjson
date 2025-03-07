@@ -51,16 +51,14 @@ Mods: {
 			HellblastFriendly.DisplayName: 无际裂变
 			// PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
 			// DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
+
+			Ranged: {
+				// CorossiveFlamesLegacy.DisplayName: Corossive Flames Legacy
+				// TerraFireGreenLegacy2.DisplayName: Terra Fire Green Legacy2
+			}
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
-
-		Items: {
-			BrimlashBuster: {
-				// DisplayName: Brimlash Buster
-				// Tooltip: ""
-			}
-		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.PointsToAnalysis;
+﻿using CalamityMod.Items.Accessories;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.PointsToAnalysis;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> RampartofDeitiesNew;
         public static Asset<Texture2D> RampartofDeitiesOld;
         #endregion
-        #region 空灵护符j
+        #region 空灵护符
         public static Asset<Texture2D> EtherealTalismanNew;
         public static Asset<Texture2D> EtherealTalismanOld;
         #endregion
@@ -120,6 +121,18 @@ namespace CalamityInheritance.Texture
         #region 龙弓
         public static Asset<Texture2D> DrataliornusLegacy;
         public static Asset<Texture2D> DrataliornusLegacyAlter;
+        #endregion
+        #region 天使鞋
+        public static Asset<Texture2D> AngelTreadsCalamity;
+        public static Asset<Texture2D> AngelTreadsAlter;
+        #endregion
+        #region 夜明跑鞋
+        public static Asset<Texture2D> LunarBootsCalamity;
+        public static Asset<Texture2D> LunarBootsAlter;
+        #endregion
+        #region 气球他妈
+        public static Asset<Texture2D> MOABCalamity;
+        public static Asset<Texture2D> MOABAlter;
         #endregion
         #endregion
         public static void LoadTexture()
@@ -232,6 +245,18 @@ namespace CalamityInheritance.Texture
             DrataliornusLegacyAlter = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/Drataliornus");
             DrataliornusLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/DrataliornusLegacy");
             #endregion
+            #region 天使鞋
+            AngelTreadsCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/AngelTreadsCalamity");
+            AngelTreadsAlter    = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/AngelTreadsLegacy");
+            #endregion
+            #region 夜明跑鞋
+            LunarBootsCalamity  = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/LunarBootsCalamity");
+            LunarBootsAlter     = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/LunarBootsLegacy");
+            #endregion
+            #region 气球他妈
+            MOABCalamity        = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/MOABCalamity");
+            MOABAlter           = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/MOABLegacy");
+            #endregion
         }
         public static void UnloadTexture()
         {
@@ -315,6 +340,15 @@ namespace CalamityInheritance.Texture
 
             DrataliornusLegacyAlter = null;
             DrataliornusLegacy = null;
+
+            AngelTreadsCalamity = null;
+            AngelTreadsAlter = null;
+
+            LunarBootsCalamity = null;
+            LunarBootsAlter = null;
+            
+            MOABCalamity = null;
+            MOABAlter = null;
         }
     }
 }

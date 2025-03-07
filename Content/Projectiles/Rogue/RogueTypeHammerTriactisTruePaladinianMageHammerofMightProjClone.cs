@@ -12,13 +12,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
         private static readonly float RotationIncrement = 0.14f;
         private readonly float stealthSpeed = 32f; //追踪速度24->32f
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 60;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
             Projectile.ai[0] += 1f;
 

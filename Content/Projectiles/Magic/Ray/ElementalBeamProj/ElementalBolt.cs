@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 {
                     Vector2 vector2 = Vector2.UnitX * -12f;
                     vector2 = -Vector2.UnitY.RotatedBy(base.Projectile.ai[0] * (MathF.PI / 24f) + i * MathF.PI) * vector - base.Projectile.rotation.ToRotationVector2() * 10f;
-                    int num = Dust.NewDust(base.Projectile.Center, 0, 0, 66, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
+                    int num = Dust.NewDust(base.Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
                     Main.dust[num].scale = 0.75f;
                     Main.dust[num].noGravity = true;
                     Main.dust[num].position = base.Projectile.Center + vector2;

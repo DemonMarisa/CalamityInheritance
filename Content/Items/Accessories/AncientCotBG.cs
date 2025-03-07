@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            usPlayer.ancientCoreofTheBloodGod = true;
+            usPlayer.AncientCotbg = true;
         }
 
         public override void AddRecipes()

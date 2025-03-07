@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -13,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            if (CIConfig.Instance.CustomShimmer == true)
+            if (CIServerConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>()] = ModContent.ItemType<FallenPaladinsHammer>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>();
@@ -31,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 13;
             Item.knockBack = 20f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.height = 28;
             Item.value = CIShopValue.RarityPriceYellow;

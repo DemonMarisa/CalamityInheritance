@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;

@@ -6,6 +6,7 @@ using Terraria.ID;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -14,14 +15,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         public new string LocalizationCategory => "Content.Items.Accessories";
         public int dragonTimer = 60;
 
-        public override void SetStaticDefaults()
-        {
-            if(CIConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGift>()] = ModContent.ItemType<YharimsGiftLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGiftLegacy>()] = ModContent.ItemType<YharimsGift>();
-            }
-        }
         public override void SetDefaults()
         {
             Item.defense = 30;
@@ -70,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
 
-            if(CIConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            if(CIServerConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
             {
                 CreateRecipe().
                 AddIngredient<YharimsGift>().

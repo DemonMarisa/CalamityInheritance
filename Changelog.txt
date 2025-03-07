@@ -72,25 +72,88 @@
 远古四件的全部特殊效果(龙蒿降防损, 血炎掉红心, 弑神常驻接触伤害减免, 林海强制回血)整合进魔君套
 魔君套的血量与魔力加成从600->800, 基础伤害/暴击加成30%->40%
 
+3/6:
+魔君套的蓝条已经长过头甚至能占用物品栏位了,因此在此方面做了一点改动:
+
+魔君套的魔力加成从1000->500,
+
+  魔君套常驻25%魔力不消耗 -> 移除
+魔君套在承受魔力病减益时会将自身魔力伤害翻倍以尝试对抗魔力病 -> 降低为1.2
+魔君套获得一个强化魔力药水恢复量250%的效果 -> 降低为200%, 蓝条都没这么长
+魔君套现在处于魔君之怒buff下,消耗的魔力会全部转化为对自身的治疗
+魔君之怒buff的降魔耗效果从95%削弱为75%, 因为不耗魔力了导致回不了血
+
+
+
+
 发布版的CL: Publish ChangeLog:
 内容:
 添加远古星辉盔甲, 远古龙蒿盔甲, 远古血炎盔甲, 远古弑神盔甲, 远古林海盔甲
 远古星辉盔甲针对流程时期进行了小重做, 其他四件护甲则追加了新的效果
 添加远古龙蒿翅膀, 与龙蒿盔甲搭配
+添加所有旧版粒子喷火器, 北辰鹦哥鱼
 添加氦闪, 天使鞋, 六翼天使之鞋(夜明锭跑鞋), 气球之母贴图切换
 添加魔影坩埚[Souls], 君祸[Algt's Tweaks], 都各自来源于不同的被废弃的附属模组
-重绘魔君之怒Buff贴图
+重绘魔君之怒Buff贴图, 添加林海强心剂Buff
+添加一个回调灾厄削弱掉的原版数值的选项,包括无限飞饰品与日耀乘算免伤盾,诸如此类
 
 调整:
+
 加强魔君盔甲: 
-魔君胸甲的生命/魔力上限加成600 -> 800, 魔君头盔的伤害/暴击加成30% -> 40%, 整合四大月后远古护甲的效果
+魔君胸甲的生命上限加成600 -> 1000, 魔君头盔的伤害/暴击加成30% -> 40%, 整合四大月后远古护甲的效果
+降低魔力上限加成600->500, 但现在有200%魔力药水恢复量提升, 抵抗魔力病的效果
+处于魔君之怒下消耗的魔力将全部转化为对自己的治疗
+魔君之怒的魔力不消耗效果从95%降低为80%以保证回血正常工作
 最大血量上限从1.05x->1.2x, 血药恢复加强从75%->120%
 
 氦闪[Legacy]加强:
-面板410 -> 450, 爆炸倍率 0.43 -> 0.5, 魔力消耗 18 -> 15, 使用时间 28 -> 25, 基础暴击概率由10% -> 35%
+爆炸倍率 0.43 -> 0.5, 魔力消耗 18 -> 15, 使用时间 28 -> 25
+氦闪基础暴击概率由10%->50%, 面板由410->495, 弹幕飞行速度增强15%
 氦闪内核爆炸生命延长2tick, 并允许采用超暴机制, 造成4倍的暴击伤害
+
 增强圣时之锤的潜伏攻击:挂载时取的伤害倍率114%提升至125%, 投掷速度提高120%
 削弱真圣骑士锤潜伏攻击:挂载的无敌帧从10->12
 增强星体击碎者潜伏攻击:挂载的无敌帧从48->45
 增强银河溃灭者潜伏攻击:挂载锤子伤害倍率从110%->130%, 无敌帧12->11, 并且追踪速度从27f->30f
+泰阿克提斯之锤的衍生幻影锤现在视作潜伏弹幕.
+银河溃灭者的挂载锤子现在有一定概率会被视作潜伏弹幕
+
 添加弑神召唤套/金源召唤套套装奖励的宇宙蠕虫召唤物的开关
+
+修复:
+氦闪错误地被写成了200使用时间的问题
+将传奇物品合成表/微光配方移交给了服务器侧从而修复多人同步的问题
+修复了一些错误的本地化
+修复了幽灵狙/暴政之终有些时候射不出弹幕的问题
+
+Added Ancient Astral , Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer, Ancient Silva Armor
+Added Ancient Tarragon Wings, can be combined with Ancient Tarragon Armor
+Added all legacy flamethowers and legacy Polaris Parrotfish
+Added Silva Cardiotonic buff and Polaris Boost buff
+Added Helium Flash Legacy Resprite
+Added Demonshade Workbench[Soul] and Kingsbane[Algt's Tweaks], both belongs to abbandon Calamity addons
+Resprite Perun of Yharim buff icon, added Silva 
+Added an option that reverted Vanilla stats that Calamity nerfed, including infinite flight and solar shield endurence.
+
+Balance:
+Buffed Yharim's Armor:
+Max life from 600 to 1000, damage/crits from 30% to 40%, now including All post-ML ancient armor
+Buffed the max HP from 105% to 120%, and healing potions effective from 75% to 120%
+Reduced max mana from 600 to 500, but now make mana potions 250% more effective, resist the mana sickness 
+and mana consumed can be converted into healing while Perun of Yharim buff is being active.
+Mana usage reductions is nerfed from 95% to 80% from Perun of Yharim buff
+
+Buffed Helium Flash:
+Damage from 410 to 450, mana usage from 18 to 15, use time from 28 to 25
+Basic critical strike chances from 4% to 35% explosion deals 50% instead of 43% of weapons damage,
+Allows Helium Flash deal 4 times of damage base on overflow crticial strike chance
+Added a that can toggle the exist of cosmic worm from God Slayer Summon/Auric Tesla Summon armor bonuse
+
+Tractis' Hammer Rogue Type's echo hammer now counts as stealth projectile
+Galaxy Smasher Rogue Type now has a chance couts as stealth projectile while sticking on enemy
+
+Fixes:
+Fix a bug Helium Flash using 200 use time
+Move Legendary Items/Shimmer Recipe to server side to improve multiplayer games
+Fixed some localization
+Fixed a bug Spectre Rifle/Tyranny's End just don't shoot anything

@@ -10,6 +10,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -17,11 +18,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeHammerGalaxySmasherLegacyProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerGalaxySmasherLegacy";
 
         private static float RotationIncrement = 0.22f;
         private static int Lifetime = 240;
-        private static float ReboundTime = 26f;
+        private static float ReboundTime = 35f;
 
         public override void SetStaticDefaults()
         {
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
 
             // ai[0] stores whether the hammer is returning. If 0, it isn't. If 1, it is.

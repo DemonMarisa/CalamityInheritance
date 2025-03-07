@@ -17,6 +17,7 @@ using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -77,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (burst >= 5)
             {
-                if(usPlayer.exoMechLore)
+                if(usPlayer.LoreExo)
                 {
                     burst = 0;
                     SoundEngine.PlaySound(SoundID.Item38);
@@ -111,7 +112,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.CelestialObliterator.ExoLoreOn");
 

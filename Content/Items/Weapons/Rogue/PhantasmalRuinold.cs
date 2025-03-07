@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.shootSpeed = 14.5f;
             Item.shoot = ModContent.ProjectileType<PhantasmalRuinProjold>();
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;

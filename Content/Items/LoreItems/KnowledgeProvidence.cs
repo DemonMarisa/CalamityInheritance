@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().providenceLore = true;
+                player.CalamityInheritance().LoreProvidence = true;
             }
         }
         public override void AddRecipes()

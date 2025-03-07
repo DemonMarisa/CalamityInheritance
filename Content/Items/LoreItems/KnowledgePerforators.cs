@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (player.ZoneCrimson && Item.favorited)
             {
-                player.CalamityInheritance().perforatorLore = true;
+                player.CalamityInheritance().LorePerforator = true;
             }
         }
 

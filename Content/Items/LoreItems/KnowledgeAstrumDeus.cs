@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().astrumDeusLore = true;
+                player.CalamityInheritance().LoreDeus = true;
             }
         }
         public override void AddRecipes()

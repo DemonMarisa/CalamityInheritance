@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             var modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
-            modPlayer1.godSlayerReflect = true;
+            modPlayer1.GodSlayerReflect = true;
             modPlayer1.GodSlayerDMGprotect = true;
             modPlayer.fBarrier = true;
             player.statLifeMax2 += 100;

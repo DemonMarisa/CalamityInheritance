@@ -357,3 +357,8 @@ GlacialCrusher: {
 		'''
 	DisplayName: 冰川之刃[Revamped]
 }
+
+BrimlashBuster: {
+	// DisplayName: Brimlash Buster
+	// Tooltip: ""
+}

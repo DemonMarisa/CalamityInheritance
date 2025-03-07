@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.useTime = 20;
             Item.useTurn = true;
             Item.knockBack = 3.75f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.value = Item.buyPrice(0, 1, 0, 0);
             Item.rare = ItemRarityID.Blue;

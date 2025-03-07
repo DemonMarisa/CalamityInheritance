@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             player.endurance = 0.05f;
             
-            usPlayer.beeResist = true;
+            usPlayer.FuckYouBees = true;
             usPlayer.AmbrosialAmpouleOld = true;
             usPlayer.AmbrosialImmnue = true;
             usPlayer.AmbrosialStats = true;

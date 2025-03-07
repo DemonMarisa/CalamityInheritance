@@ -10,6 +10,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -20,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
              //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidEdge>()] = ModContent.ItemType<SoulEdge>();
@@ -37,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 14;
             Item.useAnimation = 23;
             Item.knockBack = 5.5f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>();
             Item.shootSpeed = 15f;
@@ -89,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            if(CIConfig.Instance.CustomShimmer == false)
+            if(CIServerConfig.Instance.CustomShimmer == false)
              //关闭微光转化后，灵魂边锋启用合成表
             {
                 CreateRecipe().

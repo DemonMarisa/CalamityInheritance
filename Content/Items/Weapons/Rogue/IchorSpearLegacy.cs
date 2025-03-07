@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useAnimation = Item.useTime = 20;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 52;
             Item.value = CIShopValue.RarityPriceLightRed;

@@ -22,7 +22,6 @@ namespace CalamityInheritance.Content.Items
         public static readonly int DustSailfishBoots = 253;
         public static readonly int DustAmberBolt = 262;
         public static readonly int DustSandnado = 269;
-        
         public static readonly int DustWitherLight = 272;
         #endregion
     }

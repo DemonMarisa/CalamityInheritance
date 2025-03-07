@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().wallOfFleshLore = true;
+                player.CalamityInheritance().LoreWallofFlesh = true;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles;

@@ -107,13 +107,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             return false;
         }
 
-        public int GetBladeDelay()
+        public static int GetBladeDelay()
         {
             return Main.rand.Next(MinBladeTimer, MaxBladeTimer + 1); 
             //有趣的是, 原灾的分裂弹幕与旧灾的一样, 都是采用一个随机返回的int型数据
             //但区别在于, 因为1.4tmod与1.3tmod的区别, 这一个timer实际上搬运到1.4之后反而变长了
             //一言以蔽之, 1.4tmod一些东西的修改让这个武器分裂的频率变慢了
-            //现在分裂的最短刻从12f->9f, 最长刻从15->12f, 略微匹配1.3tmod的版本
+            //不过上面也只是基于我几千小时的tmod游戏时长得出来的偏论
+            //反正，现在分裂的最短刻从12f->9f, 最长刻从15->12f, 可能匹配1.3的旧版 tmod的版本
             //无敌帧的事情应该不用担心, 毕竟每个镰刀只有4hit.
         }
         public void SpawnEnergyBlade()

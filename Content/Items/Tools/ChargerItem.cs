@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTime = 29;
             Item.useAnimation = 29;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.useTurn = true;
         }
 

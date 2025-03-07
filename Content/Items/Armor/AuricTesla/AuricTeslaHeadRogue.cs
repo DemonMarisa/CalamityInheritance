@@ -13,6 +13,7 @@ using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -52,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.bloodflareThrowing = true;
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
-            modPlayer1.auricsilvaset = true;
+            modPlayer1.AuricSilvaSet = true;
 
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
@@ -67,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
 
-            modPlayer1.silvaRogue = true;
+            modPlayer1.SilvaRougeSetLegacy = true;
 
             modPlayer.auricSet = true;
 

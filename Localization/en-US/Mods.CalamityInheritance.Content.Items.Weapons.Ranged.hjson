@@ -227,3 +227,114 @@ ACTMinigun: {
 		[c/DB53A0:This tweak is belong to legacy addon: Algt's Calamity Tweak by Algt]
 		'''
 }
+
+AuroraBlazerLegacy: {
+	DisplayName: Aurora Blazer Legacy
+	Tooltip:
+		'''
+		Spews astral flames that travel in a star-shaped patterns
+		60% chance to save ammo
+		'''
+}
+
+BloodBoilerLegacy: {
+	DisplayName: Blood Boiler Legacy
+	Tooltip:
+		'''
+		Fires a stream of lifestealing bloodfire
+		Uses your health as ammo
+		25% chance to save ammo
+		'''
+}
+
+CleansingBlazeLegacy: {
+	DisplayName: Cleansing Blaze Legacy
+	Tooltip: 90% chance to save ammo
+}
+
+GodsBellowsLegacy: {
+	DisplayName: God's Bellows Legacy
+	Tooltip: 70% chance to save ammo
+}
+
+HalleysInfernoLegacy: {
+	DisplayName: Halley's Inferno Legacy
+	Tooltip:
+		'''
+		Fires a flaming blue comet
+		Press <right> to zoom out
+		50% chance to save ammo
+		'Halley came sooner than expected'
+		'''
+}
+
+HavocsBreathLegacy: {
+	DisplayName: Havoc's Breath Legacy
+	Tooltip: 50% chance to save ammo
+}
+
+OverloadedBlasterLegacy: {
+	DisplayName: Overloaded Blaster Legacy
+	Tooltip:
+		'''
+		Fires a large spread of bouncing slime
+		33% chance to save ammo
+		'''
+}
+
+PristineFuryLegacy: {
+	DisplayName: Pristine Fury Legacy
+	Tooltip:
+		'''
+		Fires an intense helix of flames that explode into a column of fire
+		Press <right> to fire a short ranged cloud of lingering flames
+		'''
+}
+
+ShadethrowerLegacy: {
+	DisplayName: Shadethrower Legacy
+	Tooltip: 66% chance to save ammo
+}
+
+SparkSpreaderLegacy: {
+	DisplayName: Spark Spreader Legacy
+	Tooltip: 70% chance to save ammo
+}
+
+TerraFlamebursterLegacy: {
+	DisplayName: Terra Flameburster Legacy
+	Tooltip: 80% chance to save ammo
+}
+
+BlightSpewerLegacy: {
+	DisplayName: Blight Spewer Legacy
+	Tooltip: 40% chance to save ammo
+}
+
+ElementalEruptionLegacy: {
+	DisplayName: Elemental Eruption Legacy
+	Tooltip:
+		'''
+		Fires a spread of rainbow flames
+		90% chance to save ammo
+		'''
+}
+
+MeowthrowerLegacy: {
+	DisplayName: Meowthrower Legacy
+	Tooltip:
+		'''
+		Fires blue and pink flames that emit meows on enemy hits
+		85% chance to save ammo
+		'''
+}
+
+PolarisParrotfishLegacy: {
+	DisplayName: Polaris Parrotfish Legacy
+	Tooltip:
+		'''
+		Projectile hits grant buffs to the weapon
+		Buffs are removed on hit
+		'It carries the mark of the Northern Star'
+		'''
+}

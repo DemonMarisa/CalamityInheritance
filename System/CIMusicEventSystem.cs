@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.System
 {

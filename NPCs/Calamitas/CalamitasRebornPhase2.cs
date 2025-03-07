@@ -1,24 +1,14 @@
-using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.NPCs.TownNPCs;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System.IO;
 using Terraria;
-using Terraria.Audio;
-using Terraria.Chat;
 using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Calamitas

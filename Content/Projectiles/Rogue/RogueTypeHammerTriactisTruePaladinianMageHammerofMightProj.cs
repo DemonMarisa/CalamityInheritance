@@ -10,13 +10,13 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         bool ifSummonClone = false;
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
         
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 30;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
             switch (Projectile.ai[0])
             {
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                             else if(Projectile.ai[2] == -1f) //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
                             {
                                 ReturnDust(); //只有挂载在敌人身上的锤子回收在玩家身上的时候才会生成粒子
-                                SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.5f} : CISoundMenu.HammerReturnID2 with {Volume = 0.5f}, Projectile.Center);
+                                SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.8f} : CISoundMenu.HammerReturnID2 with {Volume = 0.8f}, Projectile.Center);
                                 Projectile.ai[2] = 0f;
                             }
                             else
@@ -116,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             //普攻与潜伏共享的效果: 爆炸
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
-
+            Player owner = Main.player[Projectile.owner];
             if(Projectile.Calamity().stealthStrike)
             {
                 //潜伏专属效果：大幅度压制的爆炸粒子
@@ -131,7 +131,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
                 ifSummonClone = false;
             }
-            
             
             //普攻效果
             if(!Projectile.Calamity().stealthStrike) 

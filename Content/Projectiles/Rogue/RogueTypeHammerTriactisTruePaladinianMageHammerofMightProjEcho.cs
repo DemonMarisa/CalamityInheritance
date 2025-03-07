@@ -2,19 +2,20 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight";
         public float speed = 25f;
         public static readonly float HitRange = 90f;
         public static readonly int LifeTime = 350;
@@ -45,6 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
+            Projectile.Calamity().stealthStrike = true;
             Player owner = Main.player[Projectile.owner];
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.75f);
 
@@ -85,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 60;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
             Projectile.rotation += DefualtRotatoin;
         }

@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 22;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 9f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<NeptuneOrb>();
             Item.shootSpeed = 12f;
@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 33);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Water);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.CalPlayer;
@@ -52,7 +53,7 @@ namespace CalamityInheritance.CIPlayer
         public override void UpdateLifeRegen()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            if (darkSunRingold) //日食指环
+            if (DarkSunRingStats) //日食指环
             {
                 Player.lifeRegen += 2;
                 if (Main.eclipse || Main.dayTime)
@@ -71,26 +72,26 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen += 2;
             }
             //元灵之心
-            if (hotEStats)
+            if (EHeartStats)
             {
                 Player.lifeRegen += 2;
-                if(buffEStats)
+                if(EHeartStatsBuff)
                 Player.lifeRegen += 8;      //5(1+4)HP/s
             }
             //魔君套
             if (AncientAuricSet)
             {
                 Player.lifeRegen += 60;
-                //提升整合套的回血强度: 由0.7f->1.05f
+                //提升整合套的回血强度: 由0.7f->1.20f
                 calPlayer.healingPotionMultiplier += 1.20f;
                 Player.shinyStone = true;
                 Player.lifeRegenTime = 1800f;
-                if(calPlayer.purity == true) //与灾厄的纯净饰品进行联动
+                if(calPlayer.purity) //与灾厄的纯净饰品进行联动
                     Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
                     Player.lifeRegen += 120;
             }
-            if (AncientAstralSet && Player.lifeRegen < 0)
+            if (AncientAstralSet && Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
             {
                 Player.lifeRegen = 4;
             }
@@ -99,10 +100,8 @@ namespace CalamityInheritance.CIPlayer
                 //旧林海新增: 生命再生速度无法低于0
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
                     Player.lifeRegen = 16; //承受Debuff伤害时获得8HP/s
-                int getTimer = AncientSilvaRegenTimer;
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
-                    if(getTimer - 1 == AncientSilvaRegenTimer)
                     //粒子
                     for(int i = 0; i< 15; i++)
                     {
@@ -128,6 +127,7 @@ namespace CalamityInheritance.CIPlayer
                             dust.noGravity = true;
                         }
                     }
+                    Player.AddBuff(ModContent.BuffType<SilvaPrice>(), 2);
                     int healAmt = AncientAuricSet ? 5 : 3;
                     int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
                     Player.Heal(healAmt); //直接操作血量条进行回血

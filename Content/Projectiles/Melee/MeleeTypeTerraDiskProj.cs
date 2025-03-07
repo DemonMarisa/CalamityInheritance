@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -64,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
 
             if (Projectile.timeLeft < Lifetime - ReboundTime)

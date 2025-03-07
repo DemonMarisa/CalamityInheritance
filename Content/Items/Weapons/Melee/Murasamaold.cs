@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -22,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            if(CIConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasamaold>()] = ModContent.ItemType<Murasama>();
                 //开启微光转化时，Murasama将会以如下顺序进行微光转化
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useTime = 5;
             Item.knockBack = 6.5f;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<MurasamaSlashold>();
             Item.shootSpeed = 24f;
@@ -108,7 +109,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            if(CIConfig.Instance.CustomShimmer == false) 
+            if(CIServerConfig.Instance.CustomShimmer == false) 
             //关闭微光转化则采用手动的方式
             {
                 CreateRecipe().

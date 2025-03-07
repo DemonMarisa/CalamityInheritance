@@ -8,6 +8,7 @@ using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
@@ -41,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
-            modPlayer1.godSlayerRangedold = true;
+            modPlayer1.GodSlayerRangedSet = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modPlayer1.GodSlayerReborn = true;

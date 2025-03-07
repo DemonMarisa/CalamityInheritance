@@ -9,6 +9,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -16,7 +17,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeHammerFallenPaladinsLegacyProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerFallenPaladinsLegacy";
 
         public override void SetStaticDefaults()
         {
@@ -42,12 +42,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
             if (Projectile.ai[0] == 0f)
             {
                 Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] >= 30f)
+                if (Projectile.ai[1] >= 45f)
                 {
                     Projectile.ai[0] = 1f;
                     Projectile.ai[1] = 0f;

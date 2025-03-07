@@ -15,7 +15,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class RogueTypeHammerPwnageLegacyProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerPwnageLegacy";
         public static readonly SoundStyle AdditionHitSigSound = new("CalamityMod/Sounds/Item/PwnagehammerSound") { Volume = 0.30f };
         private static float RotationIncrement = 0.23f;
         private static readonly float StealthSpeed = MeleeTypeHammerPwnageLegacy.Speed*2;
@@ -48,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.soundDelay == 0 && Projectile.ai[0] != 2f)
             {
                 Projectile.soundDelay = 60;
-                SoundEngine.PlaySound(SoundID.Item7,Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs,Projectile.position);
             }
             
             /*********************圣时之锤潜伏*************************

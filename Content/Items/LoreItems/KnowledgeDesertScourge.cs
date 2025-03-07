@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().desertScourgeLore = true;
+                player.CalamityInheritance().LoreDesertScourge = true;
             }
         }
 

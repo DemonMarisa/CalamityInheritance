@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useAnimation = 17;
             Item.useTime = 17;
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
-            Item.UseSound = SoundID.Item3;
+            Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
             Item.buffType = ModContent.BuffType<TitanScale>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);

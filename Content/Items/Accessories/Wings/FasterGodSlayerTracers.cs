@@ -14,6 +14,7 @@ using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -24,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
+            if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersElysian>()] = ModContent.ItemType<FasterGodSlayerTracers>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterGodSlayerTracers>()] = ModContent.ItemType<TracersElysian>();

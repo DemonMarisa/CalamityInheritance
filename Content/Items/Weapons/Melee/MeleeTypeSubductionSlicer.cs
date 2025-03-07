@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.knockBack = 8.5f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<MeleeTypeSubductionSlicerProj>();

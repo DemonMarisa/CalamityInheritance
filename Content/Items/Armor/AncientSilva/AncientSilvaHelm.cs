@@ -51,8 +51,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             CalamityPlayer calPlayer = player.Calamity();
             usPlayer.AncientSilvaSet = true;
             usPlayer.AncientSilvaStat = true;
-            usPlayer.silvaRebornMark = true;
-            usPlayer.auricsilvaset = true;
+            usPlayer.SilvaRebornMark = true;
+            usPlayer.AuricSilvaSet = true;
             calPlayer.wearingRogueArmor = true;
             calPlayer.rogueStealthMax += 1.25f;
             calPlayer.WearingPostMLSummonerSet = true;

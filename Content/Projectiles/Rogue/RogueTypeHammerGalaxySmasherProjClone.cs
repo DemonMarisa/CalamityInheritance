@@ -13,7 +13,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class RogueTypeHammerGalaxySmasherProjClone : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerGalaxySmasher";
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         private static readonly float RotationIncrement = 0.20f;
         private static readonly int Lifetime = 360;
@@ -72,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
             Projectile.ai[0] += 1f;
 
@@ -225,7 +224,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
             //克隆被kill掉后再返回一个普通弑神锤子, 并只让他进行星神之杀的潜伏攻击模板
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * (-3.8f), ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProj>(), (int)(Projectile.damage*0.2f), Projectile.knockBack, Main.myPlayer, 0f, 0f, -2f);
+            float angles = Main.rand.NextFloat(3f, 56f);
+            float anglesRot = 45f / angles;
+            float rot = MathHelper.ToRadians(anglesRot);
+            Vector2 velOffset = new Vector2(0f, 13f).RotatedBy(rot * Main.rand.NextFloat(1.5f, 2.4f));
+            if(Main.rand.NextBool()) velOffset *= -1;
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, velOffset, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProj>(), (int)(Projectile.damage*0.2f), Projectile.knockBack, Main.myPlayer, 0f, 0f, -2f);
         }
     }
 }

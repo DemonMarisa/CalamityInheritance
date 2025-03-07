@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
@@ -86,7 +87,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         }
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe1 = CreateRecipe();
                 recipe1.AddIngredient(ModContent.ItemType<KnowledgeProvidence>());

@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Weapons.Melee;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Pwnagehammer>()] = ModContent.ItemType<MeleeTypeHammerPwnageLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = ModContent.ItemType<Pwnagehammer>();
@@ -28,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>();

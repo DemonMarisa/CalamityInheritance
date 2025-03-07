@@ -8,6 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class BrimlashBuster: ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetDefaults()
         {
             Item.width = Item.height = 72;
@@ -17,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 8;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
             Item.shootSpeed = 18f;

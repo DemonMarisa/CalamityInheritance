@@ -19,6 +19,7 @@ using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -40,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ExoSpearProj>();
@@ -51,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
             //圣锤潜伏挂载敌怪时, 星焰弧光的潜伏弹幕伤害将被2.5x
             int getBuffDamage =  usPlayer.BuffExoApolste? (int)(damage * 2.5f) : damage;
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 if (!player.Calamity().StealthStrikeAvailable())
                 {
@@ -94,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.ExoTheApostle.ExoLoreOn");
 

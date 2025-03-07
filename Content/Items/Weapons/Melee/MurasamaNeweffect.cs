@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -22,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            if(CIConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasama>()] = ModContent.ItemType<MurasamaNeweffect>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MurasamaNeweffect>()] = ModContent.ItemType<Murasamaold>();
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useTime = 5;
             Item.knockBack = 6.5f;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
             Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
@@ -111,7 +112,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
 
-            if(CIConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIServerConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 CreateRecipe().
                     AddIngredient<Murasamaold>().

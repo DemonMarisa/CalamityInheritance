@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>();

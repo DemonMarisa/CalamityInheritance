@@ -24,7 +24,7 @@ public class KnowledgeGolem : LoreItem, ILocalizedModType
     {
         if (Item.favorited)
         {
-            player.CalamityInheritance().golemLore = true;
+            player.CalamityInheritance().LoreGolem = true;
         }
     }
     public override void AddRecipes()

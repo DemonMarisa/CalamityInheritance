@@ -70,6 +70,7 @@ using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
 using CalamityMod.Tiles.Ores;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -692,7 +693,7 @@ namespace CalamityInheritance.Content.Items
         public static void Legendary()
         {
             #region LegendaryItems
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
 
                 Recipe.Create(ModContent.ItemType<ConclaveCrossfire>()).

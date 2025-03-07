@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().yharonLore = true;
+                player.CalamityInheritance().LoreJungleDragon = true;
             }
         }
         public override void AddRecipes()

@@ -21,6 +21,7 @@ using Terraria.Graphics.Effects;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -106,7 +107,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
             //百草瓶继承
             calPlayer.aAmpoule = true;
-            usPlayer.beeResist = true;
+            usPlayer.FuckYouBees = true;
             usPlayer.AmbrosialStats = true;
             usPlayer.AmbrosialImmnue = true;
             player.lifeRegen += 2;

@@ -532,7 +532,8 @@ YharimAuricTeslaBodyArmor: {
 	DisplayName: Yharim's Body Armor
 	Tooltip:
 		'''
-		+800 max life and max mana
+		+1000 max life
+		+500 max mana
 		25% increased movement speed
 		'''
 }
@@ -562,9 +563,11 @@ YharimAuricTeslaHelm: {
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
+		Your mana usage also is dropped by 80%, mana consumed can be converted into healing
 		This effect has 30 seconds cooldown
 		Grants immnuity to lava and knockback
 		1.2x your max life, healing potions are 120% more effective
+		Mana potions are 250% more effective and 25% reduce mana usage
 		+30 HP/s life regen speed and massively boosts your natural life regen speed
 		+60 HP/s life regen speed and +60 defense if your are lower than 50% of max life
 		+30 defense and +30 HP/s life regen speed while submerged into lava

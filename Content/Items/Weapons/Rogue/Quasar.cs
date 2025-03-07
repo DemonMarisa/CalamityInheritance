@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 12;
             Item.knockBack = 0f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 48;
             Item.value = CIShopValue.RarityPriceCyan;
@@ -49,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
                     AddIngredient<LoreAstrumDeus>().

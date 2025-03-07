@@ -7,6 +7,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Rarity;
+using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useAnimation = 17;
             Item.useTime = 17;
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
-            Item.UseSound = SoundID.Item3;
+            Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
             Item.buffType = ModContent.BuffType<DraconicSurgeBuff>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);

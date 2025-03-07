@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             CalamityPlayer modPlayer1 = player.Calamity();
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
-            modPlayer.godSlayerReflect = true;
+            modPlayer.GodSlayerReflect = true;
             modPlayer.GodSlayerDMGprotect = true;
             player.thorns += 0.5f;
             player.statLifeMax2 += 60;

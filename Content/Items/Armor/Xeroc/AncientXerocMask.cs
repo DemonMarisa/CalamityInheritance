@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             var modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             modPlayer.wearingRogueArmor = true;
-            modPlayer1.ancientXerocSet = true;
+            modPlayer1.AncientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer.rogueVelocity += 0.10f;

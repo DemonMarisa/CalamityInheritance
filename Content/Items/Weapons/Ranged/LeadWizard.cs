@@ -7,6 +7,7 @@ using CalamityMod;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -59,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 Recipe recipe1 = CreateRecipe();
                 recipe1.AddIngredient<LoreGolem>();

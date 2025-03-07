@@ -125,10 +125,20 @@ StepToolDebuff: {
 
 Backfire: {
 	DisplayName: Backfire
-	Description: Your blood is overheated, melting your heart
+	Description: Your blood is overheated, literally melting you out
 }
 
 AncientAstralBuff: {
 	DisplayName: Astarl Forge
 	Description: With all impurities removed, your armor shines like it's brand new
+}
+
+SilvaPrice: {
+	Description: Seems like something strengthening your heart...
+	DisplayName: Silva Cardiotonic
+}
+
+PolarisBuffLegacy: {
+	DisplayName: Polaris Buff Legacy
+	Description: Mods.CalamityInheritance.Buffs.PolarisBuffLegacy.Description
 }

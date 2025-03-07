@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.knockBack = 1f;
             Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
         }
 

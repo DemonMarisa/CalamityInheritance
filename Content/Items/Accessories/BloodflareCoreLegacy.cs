@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
 using Terraria;
@@ -13,12 +14,10 @@ namespace CalamityInheritance.Content.Items.Accessories
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
              //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
             {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCore>()] = ModContent.ItemType<BloodflareCoreLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCoreLegacy>()] = ModContent.ItemType<BloodflareCore>();
-            }
+                 }
         }
         public override void SetDefaults()
         {

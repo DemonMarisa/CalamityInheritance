@@ -31,9 +31,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CalamityInheritance();
-            modPlayer1.auricsilvaset = true;
-            modPlayer1.silvaRebornMark = true;
-            modPlayer1.silvaRanged = true;
+            modPlayer1.AuricSilvaSet = true;
+            modPlayer1.SilvaRebornMark = true;
+            modPlayer1.SilvaRangedSetLegacy = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
             {

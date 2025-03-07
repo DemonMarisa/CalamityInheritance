@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -20,11 +21,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true)
+            if(CIServerConfig.Instance.CustomShimmer == true)
             {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();
-            }
+               }
         }
         public override void SetDefaults()
         {
@@ -39,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTurn = true;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
 
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();

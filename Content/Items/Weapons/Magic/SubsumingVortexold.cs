@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool CanUseItem(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            if (usPlayer.exoMechLore)
+            if (usPlayer.LoreExo)
             {
                 Item.damage = 121;
             }
@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            if(usPlayer.exoMechLore)
+            if(usPlayer.LoreExo)
             {
                 Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 3, ModContent.ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             }
@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
-            if (usPlayer.exoMechLore == true)
+            if (usPlayer.LoreExo == true)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.SubsumingVortexold.ExoLoreOn");
 

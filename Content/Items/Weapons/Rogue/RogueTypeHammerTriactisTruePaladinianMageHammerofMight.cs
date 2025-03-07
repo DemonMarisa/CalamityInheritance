@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 8;
             Item.knockBack = 50f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>();
             Item.shootSpeed = 27f;

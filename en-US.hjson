@@ -51,16 +51,14 @@ Mods: {
 			HellblastFriendly.DisplayName: Hellblast Friendly
 			PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
 			DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
+
+			Ranged: {
+				CorossiveFlamesLegacy.DisplayName: Corossive Flames Legacy
+				TerraFireGreenLegacy2.DisplayName: Terra Fire Green Legacy2
+			}
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
-
-		Items: {
-			BrimlashBuster: {
-				DisplayName: Brimlash Buster
-				Tooltip: ""
-			}
-		}
 	}
 }

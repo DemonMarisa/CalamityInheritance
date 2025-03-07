@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -25,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-            if(CIConfig.Instance.CustomShimmer == true) 
+            if(CIServerConfig.Instance.CustomShimmer == true) 
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DragonsBreath>()] = ModContent.ItemType<DragonsBreathold>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DragonsBreathold>()] = ModContent.ItemType<DragonsBreath>();

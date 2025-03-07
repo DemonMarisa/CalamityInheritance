@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().backFireDebuff = true;
+            player.CalamityInheritance().BackfireStats = true;
         }
     }
 }

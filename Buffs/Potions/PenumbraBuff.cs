@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().penumbra = true;
+            player.CalamityInheritance().PenumbraStats = true;
         }
     }
 }

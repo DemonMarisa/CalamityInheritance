@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
@@ -18,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static float Speed = 9.0f;
         public override void SetStaticDefaults()
         {
-            if(CIConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
+            if(CIServerConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Eradicator>()] = ModContent.ItemType<MeleeTypeEradicator>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeEradicator>()] = ModContent.ItemType<Eradicator>();
@@ -38,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.knockBack = 7f;
-            Item.UseSound = SoundID.Item1;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.shoot = ModContent.ProjectileType<MeleeTypeEradicatorProj>();

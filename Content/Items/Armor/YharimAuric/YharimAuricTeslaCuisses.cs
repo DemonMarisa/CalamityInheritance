@@ -8,6 +8,7 @@ using CalamityInheritance.Content.Items.Armor.AncientTarragon;
 using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 
         public override void AddRecipes()
         {
-            if (CIConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
                 AddIngredient<AuricTeslaCuissesold>().
