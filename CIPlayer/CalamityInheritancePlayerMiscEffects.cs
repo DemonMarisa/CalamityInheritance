@@ -25,6 +25,8 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityMod.Items.Accessories;
+using CalamityInheritance.NPCs.Calamitas;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -424,7 +426,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.pickSpeed -= 0.5f; //这样会使挖矿速度上下位不能叠加, 但是有一说一都到四柱/神后了, 挖矿速度又不缺这点
             }
-            
         }
         private void Nanotechs()
         {
@@ -444,6 +445,7 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
+
         private void Sponge()
         {
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。
@@ -823,7 +825,7 @@ namespace CalamityInheritance.CIPlayer
                 PolarisBoostPhase2 = false;
                 PolarisBoostPhase3 = false;
             }
-            if (PolarisBoostCounter >= 20)
+            if (PolarisBoostCounter >= 20 || CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Player, 3000f))
             {
                 PolarisBoostPhase2 = false;
                 PolarisBoostPhase3 = true;

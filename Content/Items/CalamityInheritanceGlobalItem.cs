@@ -1,11 +1,14 @@
-﻿using CalamityInheritance.CIPlayer;
+﻿using System;
+using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.Potions;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
@@ -28,7 +31,41 @@ namespace CalamityInheritance.Content.Items
             if(item.type == ItemID.AncientChisel)
             player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
-            VanillaAccesoriesUnnerf(item, player); //饰品
+            VanillaAccesoriesUnnerf(item, player);  //饰品
+            CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
+        }
+
+        public static void CalamityAccesoriesUnerf(Item item, Player player)
+        {
+            #region 补正饰品挖矿速度
+            if(item.type == ModContent.ItemType<AncientFossil>())
+            {
+                player.pickSpeed -= 0.25f; //补正
+            }
+            if(item.type == ModContent.ItemType<SpelunkersAmulet>())
+            {
+                player.pickSpeed -= 0.05f;
+            }
+            if(item.type == ModContent.ItemType<ArchaicPowder>())
+            {
+                player.pickSpeed -= 0.05f;
+            }
+            #endregion
+            #region 用于召唤位的叠加
+            if(item.type == ModContent.ItemType<StatisCurse>())
+            {
+                player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
+                player.CalamityInheritance().IfStatisCurse = true;
+            }
+            if(item.type == ModContent.ItemType<StarTaintedGenerator>())
+            {
+                player.maxMinions += player.Calamity().nucleogenesis ? 2 : 0;
+            }
+            if(item.type == ModContent.ItemType<StatisBlessing>())
+            {
+                player.maxMinions += player.CalamityInheritance().IfStatisCurse ? 2 : 0;
+            }
+            #endregion
         }
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
@@ -220,7 +257,12 @@ namespace CalamityInheritance.Content.Items
         }
         public override void UpdateEquip(Item item, Player player)
         {
-            
+            #region 挖矿速度补正(原灾)
+            if(item.type == ModContent.ItemType<ReaverHeadExplore>())
+            {
+                player.pickSpeed -= 0.2f; //补正成40%
+            }
+            #endregion
 
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {

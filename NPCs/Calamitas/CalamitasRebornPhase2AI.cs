@@ -343,6 +343,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         // string key = "这里需要生成兄弟的提示文本";
+                        Main.NewText(114514);
+
                         Color textColor = Color.Orange;
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
@@ -355,6 +357,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         /*与上方相同的代码*/
+                        Main.NewText(114514);
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.7f) //70%
                     {
@@ -366,6 +369,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         //上同
+                        Main.NewText(115455);
                     }
                 }
             }
@@ -553,7 +557,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             //复制粘贴兄弟们
             #region 初始化
             CIGlobalNPC cign = brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
+  
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0f || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
