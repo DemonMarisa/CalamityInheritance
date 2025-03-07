@@ -77,6 +77,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CIConfig.Instance.AmmoConversion == true)
             {
                 type = ModContent.ProjectileType<PiercingBullet>();
+                Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
             }
             if (CIConfig.Instance.AmmoConversion == false)
             {

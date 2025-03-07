@@ -646,10 +646,7 @@ AncientTarragonHelm: {
 }
 
 AncientTarragonBreastplate: {
-	Tooltip:
-		'''
-		+300 max HP and mana
-		'''
+	Tooltip: +300 max HP and mana
 	DisplayName: Ancient Tarragon Breastplate
 }
 
@@ -683,10 +680,7 @@ AncientSilvaHelm: {
 
 AncientSilvaArmor: {
 	DisplayName: Ancient Silva Armor
-	Tooltip:
-		'''
-		+400 max HP and mana
-		'''
+	Tooltip: +400 max HP and mana
 }
 
 AncientGodSlayerLeggings: {
