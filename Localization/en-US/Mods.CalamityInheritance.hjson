@@ -293,8 +293,13 @@ Configs: {
 		}
 
 		VanillaUnnerf: {
-			Tooltip: ""
-			Label: Vanilla Unnerf
+			Tooltip:
+				'''
+				Determines if you want revert vanilla nerfed by Calamity
+				e.g: Stackable gloves, infinite flight and so on
+				Default by false
+				'''
+			Label: Unnerf Vanilla
 		}
 	}
 }

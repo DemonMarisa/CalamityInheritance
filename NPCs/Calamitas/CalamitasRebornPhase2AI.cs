@@ -42,7 +42,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             //兄弟是否在场?
             bool ifBrothers = false;
             //亵渎天神是否击败?
-            bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
+            //3/7撤销
+            // bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
             
             //将普灾最大血量先存进去
             if(cign.BossNewAI[0] == 0f && boss.life > 0)
@@ -140,9 +141,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             //TODO2: 这里，用于查看玩家是否手持真近战的减速，可能有潜在问题，到时候再看
             Item ifTrueMelee = player.inventory[player.selectedItem];
             if(ifTrueMelee.CountsAsClass<TrueMeleeDamageClass>()) baseAccele *= 0.5f;
-            //TODO3: 同上, 但这里是亵渎天神如果被干掉的情况
-            baseSpeed   = ifProviDead? baseSpeed    * 2f : baseSpeed;
-            baseAccele  = ifProviDead? baseAccele   * 2f : baseAccele;
             //旧灾的朝向? 取决于玩家位置
             int side = 1;
             if(boss.Center.X < player.Center.X)
@@ -200,8 +198,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                 {
                     boss.localAI[1] = 0f;
                     float projVel = 15f;
-                    //灾厄在这是用激怒作为差分，此处则采用是否击败了亵渎
-
                     int projType= ModContent.ProjectileType<BrimstoneHellfireball>(); //TODO4:使用旧版火球
                     int projDMG = boss.GetProjectileDamage(projType);
                     //火球是否应当有预判?不过, 死亡模式下是默认有1/2概率预判的
@@ -227,7 +223,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(boss.localAI[1] >= (ifBrothers? 75f :45f) && Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
                     {
                         boss.localAI[1] = 0f;//重置
-                        float projVel = ifProviDead ? 36f : 12.5f;
+                        float projVel = 12.5f;
                         int projType = ifBrothers? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneHellblast>();
                         int projDMG = boss.GetProjectileDamage(projType);
                         Vector2 laserVel = Vector2.Normalize(player.Center - boss.Center) * projVel;
@@ -271,9 +267,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                 boss.damage = boss.defDamage;
                 //转角
                 boss.rotation = rot;
-                //冲刺速度?亵渎后提升四倍
+                //冲刺速度?
                 float chargeSpeed = ifDeath? 50f : 40f;
-                chargeSpeed = ifProviDead ? chargeSpeed + 5f*4 : chargeSpeed;
                 Vector2 newVec = Vector2.Normalize(player.Center + player.velocity * 20f - boss.Center);
                 boss.velocity = newVec * chargeSpeed;
 
@@ -376,8 +371,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             }
             //兄弟重生时, 旧灾获得极高的防御力
             int calCloneDefense = boss.defDefense; //存储基本防御力
-            calCloneDefense += (CIGlobalNPC.CatalysmCloneWhoAmI     != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active)?     (ifProviDead ? 200 : 50) : 0; //我也忘了加多少了，反正亵渎死球了+200防御力
-            calCloneDefense += (CIGlobalNPC.CatastropheCloneWhoAmI  != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active)?  (ifProviDead ? 200 : 50) : 0;
+            calCloneDefense += (CIGlobalNPC.CatalysmCloneWhoAmI     != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active)?    50 : 0; //我也忘了加多少了，反正亵渎死球了+200防御力
+            calCloneDefense += (CIGlobalNPC.CatastropheCloneWhoAmI  != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active)? 50 : 0;
             //谁活着, 都行
             if((CIGlobalNPC.CatalysmCloneWhoAmI != -1 && Main.npc[CIGlobalNPC.CatalysmCloneWhoAmI].active) || (CIGlobalNPC.CatastropheCloneWhoAmI  != -1 && Main.npc[CIGlobalNPC.CatastropheCloneWhoAmI].active))
                 ifBrothers = true;
@@ -391,7 +386,7 @@ namespace CalamityInheritance.NPCs.Calamitas
         {
             #region 初始化
             CIGlobalNPC cign =brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0f || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)
@@ -558,7 +553,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             //复制粘贴兄弟们
             #region 初始化
             CIGlobalNPC cign = brother.CalamityInheritance();
-            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0f || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
+            if(CIGlobalNPC.CalamitasCloneWhoAmIP2 < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmIP2].active)
             {
                 //普灾不在场直接干掉兄弟
                 if(Main.netMode!=NetmodeID.MultiplayerClient)

@@ -73,7 +73,7 @@ namespace CalamityInheritance.CIPlayer
             if (usPlayer.SolarShieldEndurence)
             {
                 //我需要这种方法玩家来复原日耀免伤，这个属于防前计算，而原版日耀是防后计算，因此这里实际先取15%而不取原有的20%
-                damageReduce -= 0.15; //日耀盾"防前"15%免伤
+                damageReduce -= 0.20; //日耀盾"防前"15%免伤
             }
             modifiers.SourceDamage *= (float)damageReduce;
             #endregion

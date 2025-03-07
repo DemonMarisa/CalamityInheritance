@@ -37,8 +37,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             bool ifNewCal = lifePercent < 0.7f; //70%
 
             //亵渎天神是否击败?
-            bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
-            
+            //3/7取消
+            //bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
             //将普灾最大血量先存进去
             if(cign.BossNewAI[0] == 0f && boss.life >0)
                cign.BossNewAI[0] = boss.lifeMax;
@@ -149,8 +149,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             Item ifTrueMelee = player.inventory[player.selectedItem];
             if(ifTrueMelee.CountsAsClass<TrueMeleeDamageClass>()) baseAccele *= 0.5f;
             //TODO3: 同上, 但这里是亵渎天神如果被干掉的情况
-            baseSpeed   = ifProviDead? baseSpeed    * 2f : baseSpeed;
-            baseAccele  = ifProviDead? baseAccele   * 2f : baseAccele;
             //旧灾的朝向? 取决于玩家位置
             int side = 1;
             if(boss.Center.X < player.Center.X)
@@ -232,7 +230,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(boss.localAI[1] >= 50f && Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
                     {
                         boss.localAI[1] = 0f;//重置
-                        float projVel = ifProviDead ? 36f : 12.5f;
+                        float projVel = 12.5f;
                         int projType = ModContent.ProjectileType<BrimstoneHellblast>();
                         int projDMG = boss.GetProjectileDamage(projType);
                         Vector2 laserVel = Vector2.Normalize(player.Center - boss.Center) * projVel;

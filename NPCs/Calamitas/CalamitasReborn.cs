@@ -41,12 +41,6 @@ namespace CalamityInheritance.NPCs.Calamitas
     
             NPC.value = 0f;
             NPC.lifeMax = 100000; //一阶段十万
-            // if (CalamityConditions.DownedProvidence.IsMet())
-            // {
-            //     NPC.damage *= 3;
-            //     NPC.defense *= 3;
-            //     NPC.lifeMax *= 3;
-            // }
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;

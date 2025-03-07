@@ -48,8 +48,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.npcSlots = 5f; //需要占用的npc栏位
             NPC.width = NPC.height = 120;
             if(CalamityWorld.death) NPC.scale *= 1.3f; //死亡模式下1.3倍大小
-            NPC.defense = CalamityWorld.death ? 20 : 15; //死亡模式下20点防御
-            NPC.DR_NERD(CalamityWorld.death?0.20f: 0.15f); //免伤，灾厄专属
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax = (int)(50000 * HPBoost); //兄弟血量
             NPC.aiStyle = -1;

@@ -25,7 +25,10 @@ namespace CalamityInheritance.Content.Items
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            
+            if(item.type == ItemID.AncientChisel)
+            player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+            VanillaAccesoriesUnnerf(item, player); //饰品
         }
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
@@ -217,13 +220,11 @@ namespace CalamityInheritance.Content.Items
         }
         public override void UpdateEquip(Item item, Player player)
         {
-            if(item.type == ItemID.AncientChisel)
-            player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+            
 
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaArmorUnnerf(item, player); //盔甲
-                VanillaAccesoriesUnnerf(item, player); //饰品
             }
         }
         public static void VanillarArmorSetUnnerf(Player player, string set)
@@ -338,29 +339,24 @@ namespace CalamityInheritance.Content.Items
                     /*
                     *附：灾厄实现手套不可堆叠的逻辑是采用一个手套等级
                     *他们先通过舍弃了所有手套的原有攻速之后，再赋予一个手套等级，然后在player类里面进行操作
-                    *如绿手套是1级，火手套是4级，那4级大于1级就不能堆叠（通过 Level > 4 ? 0.14f : ...)这种方法实现
-                    *其中0级则没有手套攻速的加成
-                    *因此这里的处理是直接把手套等级相应减去之后，在把死去的攻速弄回来
+                    *如绿手套是1级，火手套是4级，那4级大于1级就不能堆叠(通过 Level > 4 ? 0.14f : ...)这种表达式方法递归实现
+                    *这里的处理是，查看玩家手套等级的大小，然后补正低级手套原本能提供的攻速
                     */
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //回调12%
-                    calPlayer.gloveLevel -= 1; //佩戴手套后将这个手套等级减去
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.02f; //绿手套本身就少了2%
+                    if(calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f; //存在二级手套极以上，补正
                     break;
                 case ItemID.PowerGlove:
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
-                    calPlayer.gloveLevel -= 2; //二级，减去
+                    if(calPlayer.gloveLevel > 2) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //存在三级手套极以上，补正
                     break;
                 case ItemID.BerserkerGlove:
                     player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //回调12%
                     //狂战士手套本身没有手套等级，别问
                     break;
                 case ItemID.MechanicalGlove:
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //回调
-                    calPlayer.gloveLevel -= 3; //舍去三级
+                    if(calPlayer.gloveLevel > 3) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //存在四级手套极以上，补正
                     break;
                 case ItemID.FireGauntlet:
-                    //火手套是14%攻速， 而灾厄已经在原有的基础上舍去了12%, 因此这里要复现14%攻速应该是12%+14%=26%也就是0.26f
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.26f; 
-                    calPlayer.gloveLevel -= 4; //舍去4级
+                    if(calPlayer.gloveLevel > 4) player.GetAttackSpeed<MeleeDamageClass>() += 0.14f; //存在元素手套，补正
                     break;
                 default:
                     break;
@@ -491,20 +487,19 @@ namespace CalamityInheritance.Content.Items
 
                 #endregion 
                 #region 塔防散件的回调
-                //和尚在源代码里似乎没有改动？先注释掉反正
-                // #region 和尚 
-                // case ItemID.MonkBrows:
-                //     player.GetAttackSpeed<MeleeDamageClass>() += 0.1f;
-                //     break;
-                // case ItemID.MonkPants:
-                //     player.GetDamage<SummonDamageClass>() += 0.05f;
-                //     player.GetCritChance<MeleeDamageClass>() += 10;
-                //     break;
-                // case ItemID.MonkShirt:
-                //     player.GetDamage<SummonDamageClass>() += 0.1f;
-                //     player.GetDamage<MeleeDamageClass>() += 0.1f;
-                //     break;
-                // #endregion
+                #region 和尚 
+                case ItemID.MonkBrows:
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.1f;
+                    break;
+                case ItemID.MonkPants:
+                    player.GetDamage<SummonDamageClass>() += 0.05f;
+                    player.GetCritChance<MeleeDamageClass>() += 10;
+                    break;
+                case ItemID.MonkShirt:
+                    player.GetDamage<SummonDamageClass>() += 0.1f;
+                    player.GetDamage<MeleeDamageClass>() += 0.1f;
+                    break;
+                #endregion
                 #region 女猎手
                 case ItemID.HuntressJerkin:
                     player.GetDamage<RangedDamageClass>() += 0.1f;

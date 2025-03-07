@@ -273,8 +273,12 @@ Configs: {
 		}
 
 		VanillaUnnerf: {
-			// Tooltip: ""
-			// Label: Vanilla Unnerf
+			Tooltip:
+				'''
+				决定是否让灾厄削弱的原版数值回调, 包括可堆叠的攻速手套, 无限飞饰品等
+				默认关闭
+				'''
+			Label: 原版削弱回调
 		}
 	}
 }

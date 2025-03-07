@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
@@ -39,19 +40,11 @@ namespace CalamityInheritance.NPCs.Calamitas
             //进入二阶段移除Boss免伤 -> 作为替代，将二阶段的防御力25 -> 30
             NPC.defense = 30;
 			NPC.lifeMax = 150000; //二阶段15万
-            if (CalamityConditions.DownedProvidence.IsMet())
-            {
-                NPC.damage *= 3;
-                NPC.defense *= 3;
-                NPC.lifeMax *= 3;
-                NPC.value *= 2.5f;
-            }
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
-            
             //不采用遍历的方法免疫所有的debuff， 只单独对几个特定的debuff免疫打表
             //硫磺火boss当然要免疫硫磺火和地狱火
 			NPC.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
@@ -72,14 +65,27 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void SendExtraAI(BinaryWriter writer)
         {
-			writer.Write(NPC.chaseable);
+            writer.Write(NPC.dontTakeDamage);
+            writer.Write(NPC.localAI[0]);
+            writer.Write(NPC.localAI[1]);
+            writer.Write(NPC.localAI[2]);
+            writer.Write(NPC.localAI[3]);
+            for(int i = 0; i < 4; i++)
+            {
+                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+            }
         }
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-			NPC.chaseable = reader.ReadBoolean();
+            NPC.dontTakeDamage = reader.ReadBoolean();
+            NPC.localAI[0] = reader.ReadSingle();
+            NPC.localAI[1] = reader.ReadSingle();
+            NPC.localAI[2] = reader.ReadSingle();
+            NPC.localAI[3] = reader.ReadSingle();
+            for (int i = 0; i < 4; i++)
+            NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
         }
-
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.15f;

@@ -136,7 +136,7 @@ namespace CalamityInheritance.Buffs
                     case BuffID.Tipsy:
                         int gDefesne = player.GetCurrentDefense();
                         int bDefense = (int)(gDefesne * 0.05f);
-                        player.statDefense += bDefense - 4; //将5%的防御抵消后再-4, 换成原版的-4防御效果
+                        player.statDefense += bDefense - 4; //将5%的防御抵消后再-4, 即置成原版的-4防御效果
                         player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                         player.GetCritChance<MeleeDamageClass>() += 2;
                         break;
