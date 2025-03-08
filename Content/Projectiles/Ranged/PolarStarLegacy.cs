@@ -7,6 +7,8 @@ using Terraria.Audio;
 using CalamityMod;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.NPCs.Calamitas;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -61,9 +63,18 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             if (Projectile.ai[1] == 2f) //第三阶段追踪 
             {
-                //注:允许追踪的距离被提升至800f,  同时获得2eU
-                Projectile.extraUpdates = 2;
-                CIFunction.HomeInOnNPC(Projectile, false, 800f, 12f, 20f);
+                //普灾重生如果在附近，北辰鹦哥鱼将默认追踪并翻倍追踪的属性
+                if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f))
+                {
+                    CIFunction.HomeInOnNPC(Projectile, false, 1600f, 16f, 20f);
+                    Projectile.extraUpdates = 3;
+                }
+                else
+                {
+                    //注:允许追踪的距离被提升至800f,  同时获得2eU
+                    Projectile.extraUpdates = 2;
+                    CIFunction.HomeInOnNPC(Projectile, false, 800f, 12f, 20f);
+                }
             }
             else if (Projectile.ai[1] == 1f) //第二阶段的分裂
             {

@@ -34,10 +34,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.height = 30;
             NPC.defense = 8;
             NPC.lifeMax = 200;
-            if (BossRushEvent.BossRushActive)
-            {
                 NPC.lifeMax = 30000;
-            }
             NPC.aiStyle = 5;
             AIType = NPCID.Probe;
             NPC.knockBackResist = BossRushEvent.BossRushActive ? 0f : 0.25f;

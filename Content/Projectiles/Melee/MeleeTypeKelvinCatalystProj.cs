@@ -7,6 +7,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
+using CalamityInheritance.NPCs.Calamitas;
+using Microsoft.Build.Evaluation;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -48,6 +50,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void AI()
         {
+            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f))  
+            {
+                Projectile.localAI[1] += 1f;
+                if (Projectile.localAI[1] % 72 == 0)
+                OnHitEffects();
+            }
             VisualAudioEffects();
             BoomerangAI();
         }
@@ -82,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (Projectile.soundDelay == 0)
             {
-                Projectile.soundDelay = 8;
+                Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.Center);
             }
 

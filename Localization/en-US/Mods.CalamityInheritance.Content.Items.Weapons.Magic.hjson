@@ -158,3 +158,13 @@ BittercoldStaff: {
 	DisplayName: Bittercold Staff
 	Tooltip: Fires a spread of homing ice spikes
 }
+
+DemonicPitchforkLegacy: {
+	DisplayName: Demonic Pitchfork Legacy
+	Tooltip: ""
+}
+
+HellBurstLegacy: {
+	DisplayName: Hell Burst Legacy
+	Tooltip: ""
+}

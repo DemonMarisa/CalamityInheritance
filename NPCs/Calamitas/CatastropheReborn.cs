@@ -49,10 +49,9 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.damage = 200; //接触伤害200, 后面需要用这个伤害去算弹幕的伤害
             NPC.npcSlots = 5f; //需要占用的npc栏位
             NPC.width = NPC.height = 120;
+            NPC.lifeMax = 50000;
             if(CalamityWorld.death) NPC.scale *= 1.3f; //死亡模式下1.3倍大小
             NPC.defense = CalamityWorld.death ? 20 : 15; //死亡模式下20点防御
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
-            NPC.lifeMax = (int)(50000 * HPBoost); //兄弟血量
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;

@@ -14,8 +14,15 @@ Mods: {
 			ExoSpearProjNorSteal.DisplayName: 圣火之枪
 			BrimstoneExplosion.DisplayName: 硫火爆炸
 			HellblastFriendly.DisplayName: 无际裂变
-			PhoenixBladeHeal.DisplayName: 凤凰治愈球
-			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
+			// PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
+			// DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
+
+			Ranged: {
+				// CorossiveFlamesLegacy.DisplayName: Corossive Flames Legacy
+				// TerraFireGreenLegacy2.DisplayName: Terra Fire Green Legacy2
+			}
+
+			// VerdantYoyo.DisplayName: Verdant Yoyo
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

@@ -78,6 +78,10 @@ namespace CalamityInheritance.CIPlayer
         public bool AmbrosialImmnue= false; //百草瓶的免疫
         public bool AmbrosialStats = false; //百草瓶的一些数据
         public bool DraedonsHeartLegacyBuff = false;
+        public bool IfStatisCurse = false;
+        public bool IfStatisBlessing = false;
+        public bool IfStarTained = false;
+        public int GetStackMinions = 0;
         #endregion
         #region Weapon
         public float AnimusDamage = 1f;
@@ -336,6 +340,10 @@ namespace CalamityInheritance.CIPlayer
             EHeartStatsBuff = false;
             FuckEHeart = false;
             NucleogenesisLegacyStats = false;//核子
+            IfStatisCurse = false;
+            IfStatisBlessing = false;
+            IfStarTained = false;
+            GetStackMinions = 0;
             StepToolShadowChairSmallCD = 0;
             StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
