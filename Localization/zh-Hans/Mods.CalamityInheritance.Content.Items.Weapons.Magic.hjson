@@ -172,3 +172,13 @@ BittercoldStaff: {
 	DisplayName: 苦寒法杖[Legacy]
 	Tooltip: 散射出跟踪寒冰碎片
 }
+
+DemonicPitchforkLegacy: {
+	// DisplayName: Demonic Pitchfork Legacy
+	// Tooltip: ""
+}
+
+HellBurstLegacy: {
+	// DisplayName: Hell Burst Legacy
+	// Tooltip: ""
+}

@@ -416,11 +416,66 @@ namespace CalamityInheritance.NPCs.Calamitas
             float broToTarDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height / 2);
             float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistY) + MathHelper.PiOver2;
             //保转角
-            BrothersKeepRotation(brother, broRot, 0.15f);
+            // BrothersKeepRotation(brother, broRot, 0.15f);
+            float rotSpeed = 0.15f;
+            if(broRot < 0f)
+               broRot += MathHelper.TwoPi;
+            else if ( broRot > MathHelper.TwoPi)
+               broRot -= MathHelper.TwoPi;
+            
+            float broRotSpeed = rotSpeed;
+            if(brother.rotation < broRot)
+            {
+                if((broRot - brother.rotation) > MathHelper.Pi)
+                    brother.rotation -= broRotSpeed;
+                else
+                    brother.rotation += broRotSpeed;
+            }
+            else if(brother.rotation > broRot)
+            {
+                if((brother.rotation - broRot) > MathHelper.Pi)
+                    brother.rotation += broRotSpeed;
+                else
+                    brother.rotation -= broRotSpeed;
+            }
+
+            if (brother.rotation < broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+                brother.rotation = broRot;
+            if (brother.rotation < 0f)
+                brother.rotation += MathHelper.TwoPi; 
+            else if(brother.rotation > MathHelper.TwoPi)
+                brother.rotation -= MathHelper.TwoPi;
+            if(brother.rotation > broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+                brother.rotation = broRot;
             #endregion
             #region 兄弟脱战
             //封装
-            BrotherDespawn(brother, player);
+            // BrotherDespawn(brother, player);
+            if(!player.active || player.dead)
+            {
+                brother.TargetClosest(false);
+                player = Main.player[brother.target];
+                if(!player.active || player.dead)
+                {
+                    if (brother.velocity.Y > 3f)
+                        brother.velocity.Y = 3f;
+                    brother.velocity.Y -= 0.1f;
+                    if (brother.velocity.Y < -12f)
+                        brother.velocity.Y = -12f;
+                    
+                    if (brother.timeLeft > 60)
+                        brother.timeLeft = 60;
+                    
+                    if (brother.ai[1] != 0f)
+                    {
+                        brother.ai[1] = 0f;
+                        brother.ai[2] = 0f;
+                        brother.ai[3] = 0f;
+                        brother.netUpdate = true;
+                    }
+                    return;
+                }
+            }
             #endregion
             #region 兄弟行为
             if (brother.ai[1] == 0f)
@@ -449,7 +504,33 @@ namespace CalamityInheritance.NPCs.Calamitas
                 projTarX *= projTarDist;
                 projTarY *= projTarDist;
                 //封装
-                BrothersSmoothMove(brother, projTarX, projTarY, broProjAccel);
+                #region 顺滑移动
+                if (brother.velocity.X < projTarX)
+                {
+                    brother.velocity.X += broProjAccel;
+                    if (brother.velocity.X < 0f && projTarX > 0f)
+                        brother.velocity.X += broProjAccel;
+                }
+                else if (brother.velocity.X > projTarX)
+                {
+                    brother.velocity.X -= broProjAccel;
+                    if (brother.velocity.X > 0f && projTarX < 0f)
+                        brother.velocity.X -= broProjAccel;
+                }
+                if (brother.velocity.Y < projTarY)
+                {
+                    brother.velocity.Y += broProjAccel;
+                    if (brother.velocity.Y < 0f && projTarY > 0f)
+                        brother.velocity.Y += broProjAccel;
+                }
+                else if (brother.velocity.Y > projTarY)
+                {
+                    brother.velocity.Y -= broProjAccel;
+                    if (brother.velocity.Y > 0f && projTarY < 0f)
+                        brother.velocity.Y -= broProjAccel;
+                }
+                #endregion
+                // BrothersSmoothMove(brother, projTarX, projTarY, broProjAccel);
                 #endregion
                 #region 兄弟发射弹幕
                 //这里才正式开始发射弹幕
@@ -529,7 +610,13 @@ namespace CalamityInheritance.NPCs.Calamitas
                     brother.ai[2] += ifDeath? 2f : 1.25f;
                     if(brother.ai[2] >= 75f)
                     {
-                        BrotherChargeSlowDown(brother);
+                        brother.velocity.X *= 0.93f;
+                        brother.velocity.Y *= 0.93f;
+                        if (brother.velocity.X > -0.1 && brother.velocity.X < 0.1)
+                            brother.velocity.X = 0f;
+                        if (brother.velocity.Y > -0.1 && brother.velocity.Y < 0.1)
+                            brother.velocity.Y = 0f;
+                        // BrotherChargeSlowDown(brother);
                     }
                     else brother.rotation = (float)Math.Atan2(brother.velocity.Y, brother.velocity.X) - MathHelper.PiOver2;
                     if (brother.ai[2] >= 105f) //冲刺结束，切换AI
@@ -584,11 +671,66 @@ namespace CalamityInheritance.NPCs.Calamitas
             float broToTarDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height / 2);
             float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistY) + MathHelper.PiOver2;
             //保转角
-            BrothersKeepRotation(brother, broRot, 0.15f);
+            // BrothersKeepRotation(brother, broRot, 0.15f);
+            float rotSpeed = 0.15f;
+            if(broRot < 0f)
+               broRot += MathHelper.TwoPi;
+            else if ( broRot > MathHelper.TwoPi)
+               broRot -= MathHelper.TwoPi;
+            
+            float broRotSpeed = rotSpeed;
+            if(brother.rotation < broRot)
+            {
+                if((broRot - brother.rotation) > MathHelper.Pi)
+                    brother.rotation -= broRotSpeed;
+                else
+                    brother.rotation += broRotSpeed;
+            }
+            else if(brother.rotation > broRot)
+            {
+                if((brother.rotation - broRot) > MathHelper.Pi)
+                    brother.rotation += broRotSpeed;
+                else
+                    brother.rotation -= broRotSpeed;
+            }
+
+            if (brother.rotation < broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+                brother.rotation = broRot;
+            if (brother.rotation < 0f)
+                brother.rotation += MathHelper.TwoPi; 
+            else if(brother.rotation > MathHelper.TwoPi)
+                brother.rotation -= MathHelper.TwoPi;
+            if(brother.rotation > broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+                brother.rotation = broRot;
             #endregion
             #region 兄弟脱战
             //封装
-            BrotherDespawn(brother, player);
+            // BrotherDespawn(brother, player);
+            if(!player.active || player.dead)
+            {
+                brother.TargetClosest(false);
+                player = Main.player[brother.target];
+                if(!player.active || player.dead)
+                {
+                    if (brother.velocity.Y > 3f)
+                        brother.velocity.Y = 3f;
+                    brother.velocity.Y -= 0.1f;
+                    if (brother.velocity.Y < -12f)
+                        brother.velocity.Y = -12f;
+                    
+                    if (brother.timeLeft > 60)
+                        brother.timeLeft = 60;
+                    
+                    if (brother.ai[1] != 0f)
+                    {
+                        brother.ai[1] = 0f;
+                        brother.ai[2] = 0f;
+                        brother.ai[3] = 0f;
+                        brother.netUpdate = true;
+                    }
+                    return;
+                }
+            }
             #endregion
             #region 兄弟行为
             if (brother.ai[1] == 0f)
@@ -616,7 +758,33 @@ namespace CalamityInheritance.NPCs.Calamitas
                 projTarX *= projTarDist;
                 projTarY *= projTarDist;
                 //顺滑移动
-                BrothersSmoothMove(brother, projTarX, projTarY, projAccel);
+                // BrothersSmoothMove(brother, projTarX, projTarY, projAccel);
+                #region 顺滑移动
+                if (brother.velocity.X < projTarX)
+                {
+                    brother.velocity.X += projAccel;
+                    if (brother.velocity.X < 0f && projTarX > 0f)
+                        brother.velocity.X += projAccel;
+                }
+                else if (brother.velocity.X > projTarX)
+                {
+                    brother.velocity.X -= projAccel;
+                    if (brother.velocity.X > 0f && projTarX < 0f)
+                        brother.velocity.X -= projAccel;
+                }
+                if (brother.velocity.Y < projTarY)
+                {
+                    brother.velocity.Y += projAccel;
+                    if (brother.velocity.Y < 0f && projTarY > 0f)
+                        brother.velocity.Y += projAccel;
+                }
+                else if (brother.velocity.Y > projTarY)
+                {
+                    brother.velocity.Y -= projAccel;
+                    if (brother.velocity.Y > 0f && projTarY < 0f)
+                        brother.velocity.Y -= projAccel;
+                }
+                #endregion
                 brother.ai[2] += 1f;
                 if (brother.ai[2] >= 90f)
                 {
@@ -687,7 +855,13 @@ namespace CalamityInheritance.NPCs.Calamitas
                     brother.ai[2] += ifDeath? 2f : 1f;
                     if(brother.ai[2] >= 60f) 
                     {
-                        BrotherChargeSlowDown(brother);
+                        // BrotherChargeSlowDown(brother);
+                        brother.velocity.X *= 0.93f;
+                        brother.velocity.Y *= 0.93f;
+                        if (brother.velocity.X > -0.1 && brother.velocity.X < 0.1)
+                            brother.velocity.X = 0f;
+                        if (brother.velocity.Y > -0.1 && brother.velocity.Y < 0.1)
+                            brother.velocity.Y = 0f;
                     }
                     else brother.rotation = (float)Math.Atan2(brother.velocity.Y, brother.velocity.X) - MathHelper.PiOver2;
 

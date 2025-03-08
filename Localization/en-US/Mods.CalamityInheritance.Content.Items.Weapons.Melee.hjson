@@ -368,3 +368,8 @@ BrimlashBuster: {
 	DisplayName: Brimlash Buster
 	Tooltip: ""
 }
+
+Verdant: {
+	DisplayName: Verdant
+	Tooltip: ""
+}

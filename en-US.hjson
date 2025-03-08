@@ -56,6 +56,8 @@ Mods: {
 				CorossiveFlamesLegacy.DisplayName: Corossive Flames Legacy
 				TerraFireGreenLegacy2.DisplayName: Terra Fire Green Legacy2
 			}
+
+			VerdantYoyo.DisplayName: Verdant Yoyo
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
