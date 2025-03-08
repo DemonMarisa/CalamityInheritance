@@ -338,3 +338,8 @@ PolarisParrotfishLegacy: {
 		'It carries the mark of the Northern Star'
 		'''
 }
+
+SvantechnicalLegacy: {
+	Tooltip: ""
+	DisplayName: Svantechnical Legacy
+}

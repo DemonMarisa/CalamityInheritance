@@ -207,7 +207,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float rotArg = 360f / hammerAngle;
             float rotateAngel = MathHelper.ToRadians(rotArg * Main.rand.NextFloat(0f,8f));
             Player player = Main.player[Projectile.owner];
-            player.CalamityInheritance().IfCloneHtting = true;
             Vector2 hammerVelOffset = new Vector2(hammerVelocity, 0f).RotatedBy(rotateAngel);
             if(Projectile.owner == Main.myPlayer && HitCounts > 2)
             {

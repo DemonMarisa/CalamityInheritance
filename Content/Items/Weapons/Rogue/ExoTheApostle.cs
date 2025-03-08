@@ -50,8 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-            //圣锤潜伏挂载敌怪时, 星焰弧光的潜伏弹幕伤害将被2.5x
-            int getBuffDamage =  usPlayer.BuffExoApolste? (int)(damage * 2.5f) : damage;
+            int getBuffDamage = damage;
             if (usPlayer.LoreExo)
             {
                 if (!player.Calamity().StealthStrikeAvailable())

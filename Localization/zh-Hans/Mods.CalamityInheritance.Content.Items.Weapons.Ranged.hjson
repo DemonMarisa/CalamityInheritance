@@ -354,3 +354,13 @@ PolarisParrotfishLegacy: {
 		[i:CalamityMod/VoidstoneWall][c/7DDA58:|][c/55B52E:准备杀出深渊四层]
 		'''
 }
+
+SvantechnicalLegacy: {
+	Tooltip:
+		'''
+		发射一串子弹并在鼠标指针位置发射大量霰弹
+		右键可以缩放你的视野
+		[c/81ECF1:以构造换取伤害的古老平衡]
+		'''
+	DisplayName: 斯万科技枪[Legacy]
+}

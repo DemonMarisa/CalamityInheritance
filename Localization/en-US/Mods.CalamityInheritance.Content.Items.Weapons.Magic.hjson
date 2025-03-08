@@ -168,3 +168,13 @@ HellBurstLegacy: {
 	DisplayName: Hell Burst Legacy
 	Tooltip: ""
 }
+
+ApotheosisLegacy: {
+	Tooltip: ""
+	DisplayName: Apotheosis Legacy
+}
+
+DanceofLightLegacy: {
+	Tooltip: ""
+	DisplayName: Danceof Light Legacy
+}

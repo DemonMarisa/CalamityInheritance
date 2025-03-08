@@ -10,7 +10,7 @@ Mods: {
 			$parentVal: Mods.CalamityInheritance.Tiles
 
 			DraedonsForgeold: {
-				$parentVal: 嘉登熔炉[Legacy]
+				$parentVal: �ε���¯[Legacy]
 				MapEntry: Draedons Forgeold
 			}
 
@@ -37,7 +37,7 @@ Mods: {
 
 			DemonshadeTile: {
 				MapEntry: 魔影坩埚
-				$parentVal: 魔影坩埚
+				$parentVal: ħӰ����
 			}
 		}
 
@@ -52,6 +52,7 @@ Mods: {
 			PhoenixBladeHeal.DisplayName: 治愈之火
 			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 			VerdantYoyo.DisplayName: 葱茏
+			// ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

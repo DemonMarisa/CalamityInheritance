@@ -164,7 +164,8 @@ StepToolShadow: {
 		无论小梯凳还是大梯凳,都会对敌怪造成梯凳驾到减益
 		允许受到真近战伤害加成
 		不要低估了梯凳潜在的力量……
-		[c/CD661D:开发者物品: TrueScarlet]
+		[c/FD5859:TrueScarlet:]耶!我的开发者物品!
+		[c/FFDE59:Demon Marisa:]Oh no.
 		'''
 }
 
@@ -181,4 +182,23 @@ DemonicPitchforkLegacy: {
 HellBurstLegacy: {
 	// DisplayName: Hell Burst Legacy
 	// Tooltip: ""
+}
+
+ApotheosisLegacy: {
+	Tooltip:
+		'''
+		发射幻影神像攻击你的敌人
+		幻影神像会滞留在尝试发射追踪性的星云粒子
+		"777"
+		'''
+	DisplayName: 圣神之像[Legacy]
+}
+
+DanceofLightLegacy: {
+	Tooltip:
+		'''
+		湮灭你的敌人...以光刃弹雨
+		[c/FFD9FF:炫目闪光过后，一切荡然无存]
+		'''
+	DisplayName: 光之舞[Revamped]
 }

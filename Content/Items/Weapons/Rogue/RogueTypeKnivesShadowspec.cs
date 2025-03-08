@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if(!player.Calamity().StealthStrikeAvailable())
-            {
+            // if(!player.Calamity().StealthStrikeAvailable())
+            // {
                 float knifeSpeed = Item.shootSpeed;
                 Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
                 float mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
@@ -98,14 +98,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                     float y4 = realPlayerPos.Y;
                     Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
                 }
-            }
-            else
-            {
-                int newType = ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>();
-                int stealth = Projectile.NewProjectile(source, position, velocity * 2, newType, damage, knockback, Main.myPlayer, 0f, 0f, 0f);
-                 if(stealth.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-            }
+            // }
+            // else
+            // {
+            //     int newType = ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>();
+            //     int stealth = Projectile.NewProjectile(source, position, velocity * 2, newType, damage, knockback, Main.myPlayer, 0f, 0f, 0f);
+            //      if(stealth.WithinBounds(Main.maxProjectiles))
+            //         Main.projectile[stealth].Calamity().stealthStrike = true;
+            // }
             return false;
         }
 

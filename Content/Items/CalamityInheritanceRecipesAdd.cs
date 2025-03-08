@@ -71,6 +71,7 @@ using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
 using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items
 {

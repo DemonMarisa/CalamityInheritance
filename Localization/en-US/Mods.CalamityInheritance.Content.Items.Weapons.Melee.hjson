@@ -373,3 +373,8 @@ Verdant: {
 	DisplayName: Verdant
 	Tooltip: ""
 }
+
+AzathothLegacy: {
+	Tooltip: ""
+	DisplayName: Azathoth Legacy
+}

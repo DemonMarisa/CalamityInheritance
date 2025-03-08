@@ -367,3 +367,13 @@ Verdant: {
 	// DisplayName: Verdant
 	// Tooltip: ""
 }
+
+AzathothLegacy: {
+	Tooltip:
+		'''
+		发射能爆裂出死亡射线的寰宇之球攻击敌人
+		一只超级灵活的悠悠球
+		"眨眼之间摧毁宇宙...本应如此"
+		'''
+	DisplayName: 阿撒托斯[Legacy]
+}

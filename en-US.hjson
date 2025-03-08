@@ -52,6 +52,7 @@ Mods: {
 			PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
 			DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
 			VerdantYoyo.DisplayName: Verdant Yoyo
+			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy

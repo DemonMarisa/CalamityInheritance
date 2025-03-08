@@ -27,6 +27,7 @@ using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.NPCs.Calamitas;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -864,20 +865,11 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult =  0.15f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + RaiderStacks / 150f * damageMult;
             }
-            
-            if(IfCloneHtting && BuffExoApolste)
+            if (Player.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] == 1 && 
+                Player.ActiveItem().type == ModContent.ItemType<ExoTheApostle>()) 
             {
-                if(Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProj>()] != 0 ||
-                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearBack>()] != 0 ||
-                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearStealthProj>()]!= 0 ||
-                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProjNorSteal>()] != 0 ||
-                   Player.ownedProjectileCounts[ModContent.ProjectileType<ExoSpearProjNor>()] != 0)
-                {
-                    Player.CalamityInheritance().ForceHammerStealth = Player.CalamityInheritance().ForceStealthStrike(); //强制启用潜伏判定
-                }
+                player.GetDamage<RogueDamageClass>() *= 2;
             }
-
-           
         }
         private void StandingStill()
         {
