@@ -22,13 +22,13 @@ namespace CalamityInheritance
 
         internal Mod infernumMode = null;
 
-        // ÔÖ¶òÒôÀÖ°ü»ñÈ¡
+        // ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½È¡
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
         public override void Load()
         {
             Instance = this;
-            // »ñÈ¡ÔÖ¶òÒôÀÖ
+            // ï¿½ï¿½È¡ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½
             musicMod = null;
             ModLoader.TryGetMod("CalamityModMusic", out musicMod);
 
@@ -52,6 +52,7 @@ namespace CalamityInheritance
             }
 
             CIResprite.LoadTexture();
+            CIWeaponsResprite.LoadTexture();
 
             #region Hook
             CalamityInheritanceDashHook.Load(this);
@@ -66,7 +67,7 @@ namespace CalamityInheritance
         #region Unload
         public override void Unload()
         {
-            //Ð¶ÔØÔÖ¶òÒôÀÖ
+            //Ð¶ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½
             musicMod = null;
 
             CIPlayerDashManager.Unload();
@@ -78,13 +79,14 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
             }
             CIResprite.UnloadTexture();
+            CIWeaponsResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
             base.Unload();
         }
         #endregion
 
-        // ´ÓÔÖ¶òÒôÀÖ°ü»ñÈ¡BGM£¬µ«ÊÇÏÖÔÚÔÖ¶òÊÇÇ¿ÒýÓÃÒôÀÖ°ü£¬ËùÒÔ×îºÃÒÔºó¸Ä³ÉÖ±½ÓÒýÓÃ
+        // ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½È¡BGMï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½Ä³ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         public int? GetMusicFromMusicMod(string songFilename) => MusicAvailable ? MusicLoader.GetMusicSlot(musicMod, "Sounds/Music/" + songFilename) : null;
     }
 }

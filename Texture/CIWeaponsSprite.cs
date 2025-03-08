@@ -119,21 +119,21 @@ namespace CalamityInheritance.Texture
 
             #region 短剑系列
             //圣短剑
-            CaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ShortSwords/ExcaliburShortsword");
+            CaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExcaliburShortsword");
             CaliburAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CaliburLegacy");
-            TrueCaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ShortSwords/TrueExcaliburShortsword");
+            TrueCaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueExcaliburShortsword");
             TrueCaliburAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TrueCaliburAlt");
             //永夜
-            NightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ShortSwords/NightsStabber");
+            NightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/NightsStabber");
             NightAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/NightLegacy");
             //真永夜
-            TrueNightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ShortSwords/TrueNightsStabber");
+            TrueNightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueNightsStabber");
             TrueNightAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TrueNightLegacy");
             //伽利略
             GalileoCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/GalileoGladius");
             GalileoAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/GalileoLegacy");
             //元素
-            ElemShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ShortSwords/ElementalShivold");
+            ElemShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ElementalShivold");
             ElemShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElementalShivLegacy");
             #endregion
 
@@ -144,7 +144,7 @@ namespace CalamityInheritance.Texture
 
             #region 月明链刃
             CerscentMoonProjCal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/CrescentMoonFlail");
-            CerscentMoonProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CrescentMoonFlailLegay");
+            CerscentMoonProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CerscentFlailLegay");
 
             #endregion
             #endregion
@@ -167,7 +167,7 @@ namespace CalamityInheritance.Texture
             
             #region 哈雷
             HalleyCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HalleysInfernoLegacy");
-            HalleyAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HalleysLegacy");
+            HalleyAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/HalleysLegacy");
             #endregion
             #endregion
 
