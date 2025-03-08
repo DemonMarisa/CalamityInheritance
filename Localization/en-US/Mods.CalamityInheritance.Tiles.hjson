@@ -1,32 +1,4 @@
+DraedonsForgeold: Draedons Forge Legacy
+DemonshadeTile: Mods.CalamityInheritance.Tiles.DemonshadeTile
 $parentVal: Mods.CalamityInheritance.Tiles
-
-DraedonsForgeold: {
-$parentVal: Draedons Forge Legacy
-MapEntry: Draedons Forgeold
-}
-
-DoGLegacyBox: DoGLegacyBox[Legacy]
-DoGNonStopBox: DoGNonStopBox[Legacy]
-NosStopAskingWhereBox: NosStopAskingWhereBox[Legacy]
-ProvidenceLegacyBox: ProvidenceLegacyBox[Legacy]
-RequiemsOfACruelWorldTile: RequiemsOfACruelWorldTile
-TyrantPart1Tile: TyrantPart1Tile
-ArmageddonTiles: ArmageddonTiles
-BloodIdolTiles: BloodIdolTiles
-DeathTiles: DeathTiles
-DefiledRuneTiles: DefiledRuneTiles
-IronHeartTiles: IronHeartTiles
-MaliceTiles: MaliceTiles
-MLGRuneTiles: MLGRuneTiles
-RevengeTiles: RevengeTiles
-AcceleratorT1Tile.MapEntry: Accelerator T1 Tile
-AcceleratorT1: Partical Accelerator Level 1
-AcceleratorT2Tile.MapEntry: Accelerator T2 Tile=
-AcceleratorT2: Partical Accelerator Level 2
-AcceleratorT3Tile.MapEntry: Accelerator T3 Tile
-AcceleratorT3: Partical Accelerator Level 3
-
-DemonshadeTile: {
-MapEntry: Demonshade Tile
-$parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
-}
+BlessingOftheMoon: ���ֺ�-����֮ף��

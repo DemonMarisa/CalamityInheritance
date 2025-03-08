@@ -59,10 +59,15 @@ RequiemsOfACruelWorld: {
 
 BlessingOftheMoon: {
 	DisplayName: 音乐盒(Blessing Of The Moon)
-	Tooltip: 
+	Tooltip:
 		'''
 		播放 [c/DAA520:Blessing Of The Moon](02:02) 由DM DOKURO制作
 		明月之祝福
 		来自旧日的残响
 		'''
+}
+
+BlessingOftheMoon1: {
+	// DisplayName: Blessing Ofthe Moon1
+	// Tooltip: ""
 }
