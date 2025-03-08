@@ -875,6 +875,9 @@
 	    <HintPath>..\..\ModReader\CalamityModMusic\CalamityModMusic.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="SceneEffect\" />
+	</ItemGroup>
 
 	<!-- References -->
 

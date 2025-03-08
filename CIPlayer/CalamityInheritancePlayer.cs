@@ -18,6 +18,9 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
 using CalamityMod.Projectiles.Ranged;
+using Terraria.WorldBuilding;
+using CalamityInheritance.System.Configs;
+using System.Reflection;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -273,6 +276,9 @@ namespace CalamityInheritance.CIPlayer
         public int AncientAstralStealthCD = 0; //星辉每次潜伏的间隔
         public int AncientAstralStealth = 0; //星辉潜伏次数
         public int AncientAstralStealthGap = 0; //星辉套生命恢复效果消失的需求CD 
+        #endregion
+        #region
+        public bool yharimAuricArmor = false;
         #endregion
         #endregion
         #region Summon
@@ -586,16 +592,6 @@ namespace CalamityInheritance.CIPlayer
         }
         public override void PostUpdate()
         {
-            // 检查当前手持武器是否是目标武器
-            //if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(Skullmasher))
-            //{
-            //    AMRextra = false;
-            //}
-            //if (Player.HeldItem.ModItem == null || Player.HeldItem.ModItem.GetType() != typeof(TyrannysEndOld))
-            //{
-            //    AMRextraTy = false;
-            //}
-            //现在不需要了，也许以后需要呢
         }
         #region TeleportMethods
         public static Vector2? GetJunglePosition(Player player)

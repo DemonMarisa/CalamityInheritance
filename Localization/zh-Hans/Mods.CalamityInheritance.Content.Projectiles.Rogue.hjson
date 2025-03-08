@@ -36,25 +36,25 @@ ScourgeoftheCosmosMiniRogue.DisplayName: 宇宙小灾虫
 ScourgeoftheCosmosProjRogue.DisplayName: 宇宙灾虫
 EmpyreanKnivesProjectileLegacyRogue.DisplayName: 苍穹飞刀
 ShadowspecKnivesProjectileLegacyRogue.DisplayName: 圣光飞刀
-// ScourgeoftheCosmosMiniRogueClone.DisplayName: Scourgeofthe Cosmos Mini Rogue Clone
-// StellarContemptHammerRogueClone.DisplayName: Stellar Contempt Hammer Rogue Clone
-// GalaxySmasherHammerRogueClone.DisplayName: Galaxy Smasher Hammer Rogue Clone
-// TriactisHammerProjRogueTypeClone.DisplayName: Triactis Hammer Proj Rogue Type Clone
-// RogueTypeHammerGalaxySmasherProj.DisplayName: Rogue Type Hammer Galaxy Smasher Proj
-// RogueTypeHammerGalaxySmasherProjClone.DisplayName: Rogue Type Hammer Galaxy Smasher Proj Clone
-// RogueTypeHammerStellarContemptProj.DisplayName: Rogue Type Hammer Stellar Contempt Proj
-// RogueTypeHammerStellarContemptProjClone.DisplayName: Rogue Type Hammer Stellar Contempt Proj Clone
-// RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj.DisplayName: Rogue Type Hammer Triactis True Paladinian Mage Hammerof Might Proj
-// RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone.DisplayName: Rogue Type Hammer Triactis True Paladinian Mage Hammerof Might Proj Clone
-// RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion.DisplayName: Rogue Type Hammer Triactis True Paladinian Mage Hammerof Might Proj Explosion
-// RogueTypeHammerTruePaladinsProj.DisplayName: Rogue Type Hammer True Paladins Proj
-// RogueTypeKnivesEmpyreanProj.DisplayName: Rogue Type Knives Empyrean Proj
-// RogueTypeKnivesShadowspecProj.DisplayName: Rogue Type Knives Shadowspec Proj
-// RogueTypeNebulaShot.DisplayName: Rogue Type Nebula Shot
-// RogueTypeScourgeoftheCosmosProj.DisplayName: Rogue Type Scourgeofthe Cosmos Proj
-// RogueTypeScourgeoftheCosmosProjMini.DisplayName: Rogue Type Scourgeofthe Cosmos Proj Mini
-// RogueTypeScourgeoftheCosmosProjMiniClone.DisplayName: Rogue Type Scourgeofthe Cosmos Proj Mini Clone
-// RogueTypeHammerPwnageLegacyProj.DisplayName: Rogue Type Hammer Pwnage Legacy Proj
-// RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho.DisplayName: Rogue Type Hammer Triactis True Paladinian Mage Hammerof Might Proj Echo
-// RogueTypeHammerTruePaladinsProjClone.DisplayName: Rogue Type Hammer True Paladins Proj Clone
-// RogueTypeKnivesShadowspecProjClone.DisplayName: Rogue Type Knives Shadowspec Proj Clone
+ScourgeoftheCosmosMiniRogueClone.DisplayName: 宇宙小灾虫
+StellarContemptHammerRogueClone.DisplayName: 星体击碎者
+GalaxySmasherHammerRogueClone.DisplayName: 银河溃灭者
+TriactisHammerProjRogueTypeClone.DisplayName: 真·泰阿克提斯之圣骑士魔锤
+RogueTypeHammerGalaxySmasherProj.DisplayName: 银河溃灭者
+RogueTypeHammerGalaxySmasherProjClone.DisplayName: 银河溃灭者
+RogueTypeHammerStellarContemptProj.DisplayName: 银河溃灭者
+RogueTypeHammerStellarContemptProjClone.DisplayName: 银河溃灭者
+RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj.DisplayName: 真·泰阿克提斯之圣骑士魔锤
+RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone.DisplayName: 真·泰阿克提斯之圣骑士魔锤
+RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion.DisplayName: 真·泰阿克提斯之圣骑士魔锤
+RogueTypeHammerTruePaladinsProj.DisplayName: 堕落圣骑士锤
+RogueTypeKnivesEmpyreanProj.DisplayName: 苍穹飞刀
+RogueTypeKnivesShadowspecProj.DisplayName: 圣光飞刀
+RogueTypeNebulaShot.DisplayName: 星云射线
+RogueTypeScourgeoftheCosmosProj.DisplayName: 宇宙灾虫
+RogueTypeScourgeoftheCosmosProjMini.DisplayName: 宇宙小灾虫
+RogueTypeScourgeoftheCosmosProjMiniClone.DisplayName: 宇宙小灾虫
+RogueTypeHammerPwnageLegacyProj.DisplayName: 堕落圣骑士锤
+RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho.DisplayName: 真·泰阿克提斯之圣骑士魔锤
+RogueTypeHammerTruePaladinsProjClone.DisplayName: 堕落圣骑士锤
+RogueTypeKnivesShadowspecProjClone.DisplayName: 圣光飞刀

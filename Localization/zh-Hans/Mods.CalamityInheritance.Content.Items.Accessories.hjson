@@ -392,29 +392,3 @@ DraedonsHeartLegacy: {
 		[c/AABBCC:"哪个天杀的家伙把防御损伤塞进这游戏的?"]
 		'''
 }
-
-AncientTarragon: {
-	// DisplayName: Ancient Tarragon Wings
-	/* Tooltip:
-		'''
-		Wings allow flight and fall
-		Horizontal speed: 9.00
-		Acceleration multiplier: 2.5
-		Great vertical speed
-		Flight time: 180
-		+1 HP/s life regen speed, +10 defense while wearing Ancient Tarragon Armor
-		''' */
-}
-
-AncientTarragonWings: {
-	/* Tooltip:
-		'''
-		Wings allow flight and fall
-		Horizontal speed: 9.00
-		Acceleration multiplier: 2.5
-		Great vertical speed
-		Flight time: 180
-		+1 HP/s life regen speed, +10 defense while wearing Ancient Tarragon Armor
-		''' */
-	// DisplayName: Ancient Tarragon Wings
-}

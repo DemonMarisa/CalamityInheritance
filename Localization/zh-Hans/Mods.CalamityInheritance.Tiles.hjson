@@ -1,1 +1,31 @@
+$parentVal: Mods.CalamityInheritance.Tiles
+DraedonsForgeold: {
+$parentVal: 嘉登熔炉[Legacy]
+MapEntry: Draedons Forgeold
+}
+DoGLegacyBox: 音乐盒-神明吞噬者[Legacy]
+DoGNonStopBox: 音乐盒-神明吞噬者合集[Legacy]
+NosStopAskingWhereBox: 音乐盒-至尊灾厄[Legacy]
+ProvidenceLegacyBox: 音乐盒-亵渎天神[Legacy]
+RequiemsOfACruelWorldTile: 音乐盒-残酷世界的安魂曲
+BlessingOftheMoon: 音乐盒-明月之祝福
+TyrantPart1Tile: 音乐盒-暴君 阶段1
+ArmageddonTiles: 末日玩偶
+BloodIdolTiles: 血祸古符
+DeathTiles: 死亡之核
+DefiledRuneTiles: 污秽符文
+IronHeartTiles: 钢铁之心
+MaliceTiles: 恶意虐脑
+MLGRuneTiles: 恶魔证章
+RevengeTiles: 复仇血泉
+AcceleratorT1Tile.MapEntry: 粒子加速器-等级1
+AcceleratorT1: 粒子加速器-等级1
+AcceleratorT2Tile.MapEntry: 粒子加速器-等级2
+AcceleratorT2: 粒子加速器-等级2
+AcceleratorT3Tile.MapEntry: 粒子加速器-等级3
+AcceleratorT3: 粒子加速器-等级3
 
+DemonshadeTile: {
+MapEntry: 魔影坩埚
+$parentVal: 魔影坩埚
+}

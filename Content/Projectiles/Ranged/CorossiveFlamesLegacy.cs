@@ -6,7 +6,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class CorossiveFlamesLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Ranged";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

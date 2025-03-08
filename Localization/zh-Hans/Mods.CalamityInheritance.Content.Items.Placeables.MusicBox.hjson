@@ -56,3 +56,13 @@ RequiemsOfACruelWorld: {
 		你也挥洒了自己的鲜血，但这可能足以带来一个新的时代......是什么，我不知道。但那一定是我所渴望看到的时代
 		'''
 }
+
+BlessingOftheMoon: {
+	DisplayName: 音乐盒(Blessing Of The Moon)
+	Tooltip: 
+		'''
+		播放 [c/DAA520:Blessing Of The Moon](02:02) 由DM DOKURO制作
+		明月之祝福
+		来自旧日的残响
+		'''
+}

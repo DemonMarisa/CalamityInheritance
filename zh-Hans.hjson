@@ -6,41 +6,6 @@ Mods: {
 			"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送UI
 		}
 
-		Tiles: {
-			$parentVal: Mods.CalamityInheritance.Tiles
-
-			DraedonsForgeold: {
-				$parentVal: 嘉登熔炉[Legacy]
-				// MapEntry: Draedons Forgeold
-			}
-
-			DoGLegacyBox: 音乐盒-神明吞噬者[Legacy]
-			DoGNonStopBox: 音乐盒-神明吞噬者合集[Legacy]
-			NosStopAskingWhereBox: 音乐盒-至尊灾厄[Legacy]
-			ProvidenceLegacyBox: 音乐盒-亵渎天神[Legacy]
-			RequiemsOfACruelWorldTile: 音乐盒-残酷世界的安魂曲
-			TyrantPart1Tile: 音乐盒-暴君 阶段1
-			ArmageddonTiles: 末日玩偶
-			BloodIdolTiles: 血祸古符
-			DeathTiles: 死亡之核
-			DefiledRuneTiles: 污秽符文
-			IronHeartTiles: 钢铁之心
-			MaliceTiles: 恶意虐脑
-			MLGRuneTiles: 恶魔证章
-			RevengeTiles: 复仇血泉
-			AcceleratorT1Tile.MapEntry: 粒子加速器-等级1
-			AcceleratorT1: 粒子加速器-等级1
-			AcceleratorT2Tile.MapEntry: 粒子加速器-等级2
-			AcceleratorT2: 粒子加速器-等级2
-			AcceleratorT3Tile.MapEntry: 粒子加速器-等级3
-			AcceleratorT3: 粒子加速器-等级3
-
-			DemonshadeTile: {
-				// MapEntry: Demonshade Tile
-				// $parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
-			}
-		}
-
 		Projectiles: {
 			Melee.CIExocomet.DisplayName: 星流流星
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
@@ -49,13 +14,8 @@ Mods: {
 			ExoSpearProjNorSteal.DisplayName: 圣火之枪
 			BrimstoneExplosion.DisplayName: 硫火爆炸
 			HellblastFriendly.DisplayName: 无际裂变
-			// PhoenixBladeHeal.DisplayName: Phoenix Blade Heal
-			// DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
-
-			Ranged: {
-				// CorossiveFlamesLegacy.DisplayName: Corossive Flames Legacy
-				// TerraFireGreenLegacy2.DisplayName: Terra Fire Green Legacy2
-			}
+			PhoenixBladeHeal.DisplayName: 凤凰治愈球
+			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

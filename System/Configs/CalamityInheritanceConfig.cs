@@ -57,12 +57,16 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(false)]
         public bool turnoffCorner { get; set; }
 
-        
-
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         [ReloadRequired]
         public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CalExtraDrop { get; set; } //允许灾厄额外掉落
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         [ReloadRequired]
@@ -73,6 +77,14 @@ namespace CalamityInheritance.System.Configs
 
         #endregion
         [Header("Music")]
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool TaleOfACruelWorld { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool BlessingoftheMoon { get; set; }
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool Tyrant1 { get; set; }

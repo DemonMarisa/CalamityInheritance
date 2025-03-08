@@ -80,6 +80,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoGunBlastsplit>(),
                     ProjectileType<KingsbaneHoldout>(),
                     ProjectileType<PhangasmBowOld>(),
+                    ProjectileType<DragonBow>(),
             };
 
             AuricdebuffList = new List<int>()

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public override void AI()
         {
             Projectile.localAI[1] += 1f;
-            if (Projectile.localAI[1] >= 40f && Projectile.owner == Main.myPlayer)
+            if (Projectile.localAI[1] >= 60 && Projectile.owner == Main.myPlayer)
             {
                 Projectile.localAI[1] = 0f;
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ElementalRayMarkVortex>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);

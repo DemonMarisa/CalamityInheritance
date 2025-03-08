@@ -122,6 +122,21 @@ Configs: {
 			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
 			Label: "[i:GoldCrown]特殊稀有度颜色"
 		}
+
+		CalExtraDrop: {
+			Label: "[i:BrokenHeroSword]灾厄额外掉落"
+			Tooltip: 开启后会让一些敌怪掉落曾经掉落的物品
+		}
+
+		TaleOfACruelWorld: {
+			Label: "[i:CalamityModMusic/CalamityTitleMusicBox]残酷世界之传说"
+			Tooltip: 进入游戏后播放
+		}
+
+		BlessingoftheMoon: {
+			Label: 明月之祝福
+			Tooltip: 接近小行星时播放
+		}
 	}
 
 	CIRespriteConfig: {

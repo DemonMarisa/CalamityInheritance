@@ -10,6 +10,8 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Common;
 using CalamityMod.Items.Accessories;
 using CalamityMod.World;
+using CalamityInheritance.CIPlayer;
+using Terraria.Audio;
 
 namespace CalamityInheritance
 {
@@ -25,9 +27,11 @@ namespace CalamityInheritance
         // ‘÷∂Ú“Ù¿÷∞¸ªÒ»°
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
+
         public override void Load()
         {
             Instance = this;
+
             // ªÒ»°‘÷∂Ú“Ù¿÷
             musicMod = null;
             ModLoader.TryGetMod("CalamityModMusic", out musicMod);
@@ -56,7 +60,6 @@ namespace CalamityInheritance
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             #endregion
-
         }
         public void LoadClient()
         {

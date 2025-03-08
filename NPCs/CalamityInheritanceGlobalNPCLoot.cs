@@ -15,6 +15,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Events;
+using CalamityMod.Items.Materials;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
@@ -146,14 +147,20 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
-
+            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.Cnidrion>())
+            {
+                if (CIConfig.Instance.CalExtraDrop == true)
+                {
+                    npcLoot.Add(ModContent.ItemType<PearlShard> (), 1, 6, 12);
+                }
+            }
             #region ModBoss
 
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
-                {
-                    npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
-                }
+            {
+                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
+            }
             if (npc.type == ModContent.NPCType<Crabulon>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<HiveMind>())
@@ -182,7 +189,10 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<CalamitasClone>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ItemID.BrokenHeroSword, 1);
+                if (CIConfig.Instance.CalExtraDrop == true)
+                {
+                    npcLoot.Add(ItemID.BrokenHeroSword, 3, 2, 3);
+                }
             }
 
             if (npc.type == ModContent.NPCType<Cataclysm>() && !CIServerConfig.Instance.CustomShimmer)

@@ -25,6 +25,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.System.Configs;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -89,6 +90,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = 15;
+
         }
         public void Buffs()
         {

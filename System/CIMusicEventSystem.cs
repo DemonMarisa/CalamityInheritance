@@ -58,6 +58,15 @@ namespace CalamityInheritance.System
                 EventCollection.Add(entry);
             }
 
+            static void CalAddEntry(string eventId, string songName, TimeSpan length, Func<bool> shouldPlay, Func<bool> enabled, TimeSpan? introSilence = null, TimeSpan? outroSilence = null)
+            {
+                MusicEventEntry entry = new(eventId, CalamityInheritance.Instance.GetMusicFromMusicMod(songName).Value, length, introSilence ?? TimeSpan.Zero, outroSilence ?? TimeSpan.Zero, shouldPlay, enabled);
+                EventCollection.Add(entry);
+            }
+            //进入世界播放残酷世界之传说
+            CalAddEntry("FirstEnterWorld", "CalamityTitle", TimeSpan.FromSeconds(175.5d),
+                () => true, () => CIConfig.Instance.TaleOfACruelWorld);
+
             AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.5d),
                 () => DownedBossSystem.downedYharon, () => CIConfig.Instance.Tyrant1);
 
@@ -168,7 +177,7 @@ namespace CalamityInheritance.System
                     if (NoFade)
                     {
                         //Main.musicFade[CurrentEvent.Song] = 1f;
-                        NoFade = false;
+                        NoFade = true;
                     }
 
                     // If the event has finished playing, mark the end as now and clear the current event

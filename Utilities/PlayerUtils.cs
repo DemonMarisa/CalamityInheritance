@@ -4,6 +4,10 @@ using static Terraria.Player;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles;
+using System.Reflection;
+using System;
+using Terraria.ModLoader;
+using CalamityMod.Balancing;
 
 namespace CalamityInheritance.Utilities
 {
@@ -35,9 +39,6 @@ namespace CalamityInheritance.Utilities
             }
         }
         #endregion
-    }
-    public static class ProjectileExtensions
-    {
         public static CalamityInheritanceGlobalProjectile CalamityInheritance(this Projectile proj)
         {
             return proj.GetGlobalProjectile<CalamityInheritanceGlobalProjectile>();
@@ -58,7 +59,7 @@ namespace CalamityInheritance.Utilities
                 extraIFrames += 30;
             if (modPlayer.RoDPaladianShieldActive)
                 extraIFrames += 30;
-            if(modPlayer.YharimsInsignia)
+            if (modPlayer.YharimsInsignia)
                 extraIFrames += 40;
             return extraIFrames;
         }

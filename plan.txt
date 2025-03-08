@@ -1,8 +1,6 @@
 ﻿Calamity Inheritance
 回归星流冰冻
 
-北辰鱼
-
 修复魔君音效
 
 加入至尊灾厄Supreme Calamitas, 可能会先通过新建npc的方法试试手(因为旧终灾与新终灾可以说除了AI以外啥都不一样)

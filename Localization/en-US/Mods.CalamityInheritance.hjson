@@ -142,6 +142,21 @@ Configs: {
 			Tooltip: Determines special rarity color for certain returning item
 			Label: "[i:GoldCrown]Special Rarity Color"
 		}
+
+		CalExtraDrop: {
+			Label: Cal Extra Drop
+			Tooltip: ""
+		}
+
+		TaleOfACruelWorld: {
+			Label: Tale Of A Cruel World
+			Tooltip: ""
+		}
+
+		BlessingoftheMoon: {
+			Label: Blessingofthe Moon
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     [AutoloadEquip(EquipType.Wings)]
     public class AncientTarragonWings: ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         public override void SetStaticDefaults()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 9f, 2.5f);

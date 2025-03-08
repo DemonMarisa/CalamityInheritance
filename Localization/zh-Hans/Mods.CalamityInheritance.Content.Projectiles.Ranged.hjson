@@ -36,20 +36,22 @@ ExoArrowTealExoLore.DisplayName: 超位箭矢
 DragonBowExoArrow.DisplayName: 龙怒箭矢
 DragonBowFlame.DisplayName: 神龙怒焰
 DragonRangedFireball.DisplayName: 龙火陨石
-// AuroraFireLegacy.DisplayName: Aurora Fire Legacy
-// BloodBoilerFireLegacy.DisplayName: Blood Boiler Fire Legacy
-// BrimstoneFireFriendlyLegacy.DisplayName: Brimstone Fire Friendly Legacy
-// CosmicFireLegacy.DisplayName: Cosmic Fire Legacy
-// EssenceFireLegacy.DisplayName: Essence Fire Legacy
-// HalleysCometLegacy.DisplayName: Halleys Comet Legacy
-// MeowFireLegacy.DisplayName: Meow Fire Legacy
-// MeowFireLegacy2.DisplayName: Meow Fire Legacy2
-// PristineFireLegacy.DisplayName: Pristine Fire Legacy
-// PristineLegacySecondary.DisplayName: Pristine Legacy Secondary
-// ShadeFireLegacy.DisplayName: Shade Fire Legacy
-// SlimeBoltLegacy.DisplayName: Slime Bolt Legacy
-// SparkSpreaderFireLegacy.DisplayName: Spark Spreader Fire Legacy
-// TerraFireGreenLegacy.DisplayName: Terra Fire Green Legacy
-// ChargedBlastLegacy.DisplayName: Charged Blast Legacy
-// ChargedBlastLegacy2.DisplayName: Charged Blast Legacy2
-// PolarStarLegacy.DisplayName: Polar Star Legacy
+AuroraFireLegacy.DisplayName: 极光烈焰
+BloodBoilerFireLegacy.DisplayName: 血祸锅炉
+BrimstoneFireFriendlyLegacy.DisplayName: 硫磺火球
+CosmicFireLegacy.DisplayName: 宇宙火焰
+EssenceFireLegacy.DisplayName: 火焰精粹
+HalleysCometLegacy.DisplayName: 哈雷彗星
+MeowFireLegacy.DisplayName: 喵
+MeowFireLegacy2.DisplayName: 喵
+PristineFireLegacy.DisplayName: 纯净之火
+PristineLegacySecondary.DisplayName: 纯净之火
+ShadeFireLegacy.DisplayName: 暗影之火
+SlimeBoltLegacy.DisplayName: 史莱姆光束
+SparkSpreaderFireLegacy.DisplayName: 火花
+TerraFireGreenLegacy.DisplayName: 泰拉火焰
+ChargedBlastLegacy.DisplayName: 蓄能飞镖
+ChargedBlastLegacy2.DisplayName: 蓄能飞镖
+PolarStarLegacy.DisplayName: 北极星焰
+CorossiveFlamesLegacy.DisplayName: 腐蚀烈焰
+TerraFireGreenLegacy2.DisplayName: 泰拉之火

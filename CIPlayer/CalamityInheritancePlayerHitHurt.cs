@@ -52,7 +52,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
-
             #region Player Incoming Damage Multiplier (Increases)
             double damageMult = 1D;
             CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
@@ -264,7 +263,10 @@ namespace CalamityInheritance.CIPlayer
                 Player.immuneTime = 15;
                 return true;
             }
-
+            if(yharimAuricArmor && yharimArmorinvincibility > 0)
+            {
+                return true;
+            }
             // If no other effects occurred, run vanilla code
             return base.FreeDodge(info);
         }
@@ -494,6 +496,9 @@ namespace CalamityInheritance.CIPlayer
                     Player.wingTime = 50f;
                 Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
             }
+            //魔君套受击后无敌
+            if (yharimAuricArmor)
+                yharimArmorinvincibility = 60;
         }
         #endregion
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)

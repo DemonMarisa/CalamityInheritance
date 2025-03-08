@@ -71,33 +71,33 @@ ExobeamoldExoLore.DisplayName: 星寒光束
 KelvinCatalystBoomerangMelee.DisplayName: 冰灵爆炸
 KelvinCatalystStarMelee.DisplayName: 极寒之星
 SubductionSlicerProjMelee.DisplayName: 板块斩切者
-// NanoblackMainLegacyMelee.DisplayName: Nanoblack Main Legacy Melee
-// NanoblackSplitLegacyMelee.DisplayName: Nanoblack Split Legacy Melee
-// ElementalDiskProjLegacyMelee.DisplayName: Elemental Disk Proj Legacy Melee
-// ElementalDiskSplitLegacyMelee.DisplayName: Elemental Disk Split Legacy Melee
-// TerraDiskProjectileLegacyMelee.DisplayName: Terra Disk Projectile Legacy Melee
-// TerraDiskSmallDiskMeleeLegacy.DisplayName: Terra Disk Small Disk Melee Legacy
-// EradicatorProjectileLegacyMelee.DisplayName: Eradicator Projectile Legacy Melee
-// MangroveChakramProjectileLegacyMelee.DisplayName: Mangrove Chakram Projectile Legacy Melee
-// CorpusAvertorCloneLegacyMelee.DisplayName: Corpus Avertor Clone Legacy Melee
-// CorpusAvertorProjLegacyMelee.DisplayName: Corpus Avertor Proj Legacy Melee
-// MeleeTypeCorpusAvertorProj.DisplayName: Melee Type Corpus Avertor Proj
-// MeleeTypeCorpusAvertorProjClone.DisplayName: Melee Type Corpus Avertor Proj Clone
-// MeleeTypeElementalDiskProj.DisplayName: Melee Type Elemental Disk Proj
-// MeleeTypeElementalDiskProjSplit.DisplayName: Melee Type Elemental Disk Proj Split
-// MeleeTypeEradicatorProj.DisplayName: Melee Type Eradicator Proj
-// MeleeTypeHammerFallenPaladinsLegacyProj.DisplayName: Melee Type Hammer Fallen Paladins Legacy Proj
-// MeleeTypeHammerGalaxySmasherLegacyProj.DisplayName: Melee Type Hammer Galaxy Smasher Legacy Proj
-// MeleeTypeHammerStellarContemptLegacyProj.DisplayName: Melee Type Hammer Stellar Contempt Legacy Proj
-// MeleeTypeKelvinCatalystProj.DisplayName: Melee Type Kelvin Catalyst Proj
-// MeleeTypeKelvinCatalystProjStar.DisplayName: Melee Type Kelvin Catalyst Proj Star
-// MeleeTypeMangroveChakramProj.DisplayName: Melee Type Mangrove Chakram Proj
-// MeleeTypeNanoblackReaperProj.DisplayName: Melee Type Nanoblack Reaper Proj
-// MeleeTypeNanoblackReaperProjSplit.DisplayName: Melee Type Nanoblack Reaper Proj Split
-// MeleeTypeSubductionSlicerProj.DisplayName: Melee Type Subduction Slicer Proj
-// MeleeTypeTerraDiskProj.DisplayName: Melee Type Terra Disk Proj
-// MeleeTypeTerraDiskProjSplit.DisplayName: Melee Type Terra Disk Proj Split
-// MeleeTypeHammerPwnageLegacyProj.DisplayName: Melee Type Hammer Pwnage Legacy Proj
-// Iceberg.DisplayName: Iceberg
-// BrimlashBusterProj.DisplayName: Brimlash Buster Proj
-// BrimlashBusterProjClone.DisplayName: Brimlash Buster Proj Clone
+NanoblackMainLegacyMelee.DisplayName: 纳米黑死神
+NanoblackSplitLegacyMelee.DisplayName: 死神碎片
+ElementalDiskProjLegacyMelee.DisplayName: 元素飞盘
+ElementalDiskSplitLegacyMelee.DisplayName: 元素小飞盘
+TerraDiskProjectileLegacyMelee.DisplayName: 泰拉飞盘
+TerraDiskSmallDiskMeleeLegacy.DisplayName: 泰拉小飞盘
+EradicatorProjectileLegacyMelee.DisplayName: 湮灭射线
+MangroveChakramProjectileLegacyMelee.DisplayName: 红木环刃
+CorpusAvertorCloneLegacyMelee.DisplayName: 憎恶血刃
+CorpusAvertorProjLegacyMelee.DisplayName: 憎恶血刃
+MeleeTypeCorpusAvertorProj.DisplayName: 憎恶血刃
+MeleeTypeCorpusAvertorProjClone.DisplayName: 憎恶血刃
+MeleeTypeElementalDiskProj.DisplayName: 元素飞盘
+MeleeTypeElementalDiskProjSplit.DisplayName: 元素飞盘
+MeleeTypeEradicatorProj.DisplayName: 红木环刃
+MeleeTypeHammerFallenPaladinsLegacyProj.DisplayName: 堕落圣骑士锤
+MeleeTypeHammerGalaxySmasherLegacyProj.DisplayName: 银河溃灭者
+MeleeTypeHammerStellarContemptLegacyProj.DisplayName: 星体击碎者
+MeleeTypeKelvinCatalystProj.DisplayName: 冰灵旋刃
+MeleeTypeKelvinCatalystProjStar.DisplayName: 冰灵旋刃
+MeleeTypeMangroveChakramProj.DisplayName: 红木环刃
+MeleeTypeNanoblackReaperProj.DisplayName: 纳米黑死神
+MeleeTypeNanoblackReaperProjSplit.DisplayName: 死神碎片
+MeleeTypeSubductionSlicerProj.DisplayName: 板块斩切者
+MeleeTypeTerraDiskProj.DisplayName: 泰拉飞盘
+MeleeTypeTerraDiskProjSplit.DisplayName: 泰拉小飞盘
+MeleeTypeHammerPwnageLegacyProj.DisplayName: 圣时之锤
+Iceberg.DisplayName: 冰球
+BrimlashBusterProj.DisplayName: 硫火爆裂
+BrimlashBusterProjClone.DisplayName: 硫火爆裂

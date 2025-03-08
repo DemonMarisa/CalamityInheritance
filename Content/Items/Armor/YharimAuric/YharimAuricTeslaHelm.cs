@@ -47,8 +47,10 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			var calPlayer = player.Calamity();
 			modPlayer.ManaHealMutipler = 2.0f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-			#region 灾厄的月后套通用效果
-			calPlayer.tarraSet = true;
+			//标记为魔君金源甲
+            modPlayer.yharimAuricArmor = true;
+            #region 灾厄的月后套通用效果
+            calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			calPlayer.auricSet = true;
