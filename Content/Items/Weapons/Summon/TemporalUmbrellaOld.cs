@@ -9,17 +9,19 @@ using CalamityInheritance.Content.Projectiles.Summon.Umbrella;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     [LegacyName("BensUmbrella")]
     public class TemporalUmbrellaOld : ModItem, ILocalizedModType
     {
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 4000 : 1000;
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
         public override void SetDefaults()
         {
             Item.mana = 99;
-            Item.damage = 1000;
+            Item.damage = 4000;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.width = 74;
             Item.height = 72;

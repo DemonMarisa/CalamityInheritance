@@ -150,7 +150,8 @@ StepToolShadow: {
 		Swing a godly chair destory your enemy
 		Summon some small chair upon enemy hits
 		Never understimate the potential power of Step Stool.
-		Developer Item: TrueScarlet
+		[c/D20103:TrueScarlet]: Yeah! Got my own dev item!
+		[c/FFDE59:DemonMarisa]: Bro, like...what?
 		'''
 }
 
@@ -160,21 +161,38 @@ BittercoldStaff: {
 }
 
 DemonicPitchforkLegacy: {
-	DisplayName: Demonic Pitchfork Legacy
-	Tooltip: ""
+	DisplayName: Demonic Pitchfork
+	Tooltip:
+		'''
+		Fires a hyper demonic pitchfork that can pierce 10 targets
+		Emits shadows tentacles on enemies hits.
+		'''
 }
 
 HellBurstLegacy: {
-	DisplayName: Hell Burst Legacy
-	Tooltip: ""
+	DisplayName: Hell Burst
+	Tooltip:
+		'''
+		Casts two beams of flame in opposite directions
+		Right Click to directly fire a homing fireball
+		'''
 }
 
 ApotheosisLegacy: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Unleashes interdimensional projection magic
+		Eat worms
+		777
+		'''
 	DisplayName: Apotheosis Legacy
 }
 
 DanceofLightLegacy: {
-	Tooltip: ""
-	DisplayName: Danceof Light Legacy
+	Tooltip:
+		'''
+		Cast a swarm of homing white flames from the sky
+		'And in a flash of white, nothing remains.'
+		'''
+	DisplayName: Dance of Light Revamped
 }

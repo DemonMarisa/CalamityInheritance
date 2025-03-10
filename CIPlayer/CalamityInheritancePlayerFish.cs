@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod;
-using CalamityMod.Items.Fishing.AstralCatches;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.CIPlayer

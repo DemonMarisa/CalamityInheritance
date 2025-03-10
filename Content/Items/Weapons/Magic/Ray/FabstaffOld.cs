@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using Terraria.DataStructures;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -20,10 +21,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         {
             Item.staff[Item.type] = true;
         }
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 3456 : 1145;
 
         public override void SetDefaults()
         {
-            Item.damage = 1000;
+            Item.damage = 3200;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 42;
             Item.width = 84;

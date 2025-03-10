@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
             TooltipLine fullLore = new(Mod, "CalamityMod:Lore", this.GetLocalizedValue("Lore"));
             if (LoreColor.HasValue)
                 fullLore.OverrideColor = LoreColor.Value;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
+            CalamityUtils.HoldShiftTooltip(tooltips, [fullLore], true);
         }
     }
 }

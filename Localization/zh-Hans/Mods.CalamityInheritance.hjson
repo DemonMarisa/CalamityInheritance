@@ -104,11 +104,6 @@ Configs: {
 			Tooltip: 在神明吞噬者战时播放旧音乐
 		}
 
-		CalBossesCanDropSoul: {
-			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
-			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
-		}
-
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]弑神套宇宙蠕虫"
 			Tooltip:
@@ -121,11 +116,6 @@ Configs: {
 		SpecialRarityColor: {
 			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
 			Label: "[i:GoldCrown]特殊稀有度颜色"
-		}
-
-		CalExtraDrop: {
-			Label: "[i:BrokenHeroSword]灾厄额外掉落"
-			Tooltip: 开启后会让一些敌怪掉落曾经掉落的物品
 		}
 
 		TaleOfACruelWorld: {
@@ -293,7 +283,27 @@ Configs: {
 				决定是否让灾厄削弱的原版数值回调, 包括可堆叠的攻速手套, 无限飞饰品等
 				默认关闭
 				'''
-			Label: 原版削弱回调
+			Label: "[i:TerraBlade]原版削弱回调"
+		}
+
+		ShadowspecBuff: {
+			Tooltip:
+				'''
+				如果你想玩一些旧版数值的魔影武器, 你就可以启用这个
+				不过可能对Boss Rush或者其他的附属来说有点不公平
+				默认关闭
+				'''
+			Label: "[i:CalamityMod/ShadowspecBar]加强魔影武器"
+		}
+
+		CalBossesCanDropSoul: {
+			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
+			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
+		}
+
+		CalExtraDrop: {
+			Label: "[i:BrokenHeroSword]灾厄额外掉落"
+			Tooltip: 开启后会让一些敌怪掉落曾经掉落的物品
 		}
 	}
 }

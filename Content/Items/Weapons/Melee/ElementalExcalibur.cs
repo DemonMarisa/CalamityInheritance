@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class ElementalExcalibur : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-        private static int BaseDamage = 2000;
+        private static int BaseDamage = 4000;
         private int BeamType = 0;
         private const int alpha = 50;
 
@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;
+            Item.scale *= 2f;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 8f;
             Item.UseSound = CISoundID.SoundWeaponSwing;

@@ -127,7 +127,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
                     SpawnSparks(hit);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
+                        Projectile.velocity.X, Projectile.velocity.Y,
+                        ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(),
+                        (int)(Projectile.damage * 1.1f), Projectile.knockBack, Main.myPlayer);
                 }
                 ifSummonClone = false;
             }

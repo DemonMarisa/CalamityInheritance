@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -11,6 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class AzathothLegacy : ModItem, ILocalizedModType
     {
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 650 : 270;
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
@@ -24,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = 300; //90->300, 90的面板破的了防?
+            Item.damage = NewDamage; //90->600, 90的面板破的了防?
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;

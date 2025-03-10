@@ -119,16 +119,6 @@ Configs: {
 				'''
 		}
 
-		CalBossesCanDropSoul: {
-			Tooltip:
-				'''
-				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
-				This is a feature from Calamity 1.4(and before)
-				Enbales by default
-				'''
-			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
-		}
-
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
 			Tooltip:
@@ -143,18 +133,14 @@ Configs: {
 			Label: "[i:GoldCrown]Special Rarity Color"
 		}
 
-		CalExtraDrop: {
-			Label: Cal Extra Drop
-			Tooltip: ""
-		}
 
 		TaleOfACruelWorld: {
-			Label: Tale Of A Cruel World
+			Label: Tale of A Cruel World
 			Tooltip: ""
 		}
 
 		BlessingoftheMoon: {
-			Label: Blessingofthe Moon
+			Label: Blessing of the Moon
 			Tooltip: ""
 		}
 	}
@@ -314,7 +300,36 @@ Configs: {
 				e.g: Stackable gloves, infinite flight and so on
 				Default by false
 				'''
-			Label: Unnerf Vanilla
+			Label: "[i:TerraBlade]Unnerf Vanilla"
+		}
+
+		ShadowspecBuff: {
+			Tooltip:
+				'''
+				Determines if you want some OVERPOWERED Shadowspec stuff, similar to 1.4.5.7
+				This might be unfair to BR event, or some other addons
+				Default by false 
+				'''
+			Label: "[i:CalamityMod/ShadowspecBar]Shadowspecs Buff"
+		}
+
+		CalBossesCanDropSoul: {
+			Tooltip:
+				'''
+				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
+				This is a feature from Calamity 1.4(and before)
+				Enbales by default
+				'''
+			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
+		}
+
+		CalExtraDrop: {
+			Label: "[i:BrokenHeroSword]Calamity Legacy Loot"
+			Tooltip:
+				'''
+				Let some of Calamity bosses drop some loot that used to be droppable
+				Default by true
+				'''
 		}
 	}
 }

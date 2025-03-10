@@ -314,6 +314,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemID.DjinnLamp, 1).
                 AddRecipeGroup("AnyGoldBar", 15).
                 AddIngredient(ItemID.SoulofNight, 10).
+                DisableDecraft().
                 AddTile<AcceleratorT1Tile>().
                 Register();
 

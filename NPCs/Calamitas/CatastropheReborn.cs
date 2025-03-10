@@ -79,11 +79,14 @@ namespace CalamityInheritance.NPCs.Calamitas
         //只有你需要除了NPC.ai[]的数组以外的数组去存放AI的时候，才会用这个函数
         //恰好，我们就需要这种东西
         {
-            int i = 0;
-            while(i<4)
+            // writer.Write(NPC.dontTakeDamage);
+            // writer.Write(NPC.localAI[0]);
+            // writer.Write(NPC.localAI[1]);
+            // writer.Write(NPC.localAI[2]);
+            // writer.Write(NPC.localAI[3]);
+            for(int i = 0; i < 4; i++)
             {
                 writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
-                i++;
             }
         }
 
@@ -91,12 +94,13 @@ namespace CalamityInheritance.NPCs.Calamitas
         //接收写入的额外AI.
         //一定是与上面的SendExtra一起进行的
         {
-            int i = 0;
-            while(i<4)
-            {
-                NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
-                i++;
-            }
+            // NPC.dontTakeDamage = reader.ReadBoolean();
+            // NPC.localAI[0] = reader.ReadSingle();
+            // NPC.localAI[1] = reader.ReadSingle();
+            // NPC.localAI[2] = reader.ReadSingle();
+            // NPC.localAI[3] = reader.ReadSingle();
+            for (int i = 0; i < 4; i++)
+            NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
         }
 
         public override void FindFrame(int frameHeight)
@@ -166,31 +170,32 @@ namespace CalamityInheritance.NPCs.Calamitas
                 {
                     //这里需要一大堆石块
                 }
-            }
-            NPC.position.X = NPC.position.X + NPC.width / 2;
-            NPC.position.Y = NPC.position.Y + NPC.height / 2;
-            NPC.width = 100;
-            NPC.height = 100;
-            NPC.position.X = NPC.position.X - NPC.width / 2;
-            NPC.position.Y = NPC.position.Y - NPC.height / 2;
-            for (int j = 0; j < 40; j++)
-            {
-                int dType =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
-                Main.dust[dType].velocity *= 3f;
-                if (Main.rand.NextBool())
+                NPC.position.X = NPC.position.X + NPC.width / 2;
+                NPC.position.Y = NPC.position.Y + NPC.height / 2;
+                NPC.width = 100;
+                NPC.height = 100;
+                NPC.position.X = NPC.position.X - NPC.width / 2;
+                NPC.position.Y = NPC.position.Y - NPC.height / 2;
+                for (int j = 0; j < 40; j++)
                 {
-                    Main.dust[dType].scale = 0.5f;
-                    Main.dust[dType].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    int dType =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                    Main.dust[dType].velocity *= 3f;
+                    if (Main.rand.NextBool())
+                    {
+                        Main.dust[dType].scale = 0.5f;
+                        Main.dust[dType].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
+                }
+                for (int k = 0; k < 70; k++)
+                {
+                    int dType2 =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
+                    Main.dust[dType2].velocity *= 5f;
+                    Main.dust[dType2].noGravity = true;
+                    dType2 =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                    Main.dust[dType2].velocity *= 2f;
                 }
             }
-            for (int k = 0; k < 70; k++)
-            {
-                int dType2 =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
-                Main.dust[dType2].velocity *= 5f;
-                Main.dust[dType2].noGravity = true;
-                dType2 =Dust.NewDust(NPC.position,NPC.width,NPC.height,(int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
-                Main.dust[dType2].velocity *= 2f;
-            }
+            
         }
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {

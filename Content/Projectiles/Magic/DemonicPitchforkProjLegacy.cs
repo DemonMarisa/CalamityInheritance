@@ -1,6 +1,8 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +22,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.aiStyle = 27;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = 10;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 12;
+            Projectile.extraUpdates = 1;
             Projectile.timeLeft = 600;
             AIType = ProjectileID.UnholyTridentFriendly;
         }
@@ -51,8 +56,37 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-            // spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
             return false;
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            int tentacleNum = 5;
+            SoundEngine.PlaySound(SoundID.Item103, target.Center);
+            for (int i = 0; i < tentacleNum; i++)
+            {
+                float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+                Vector2 tentacleVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+
+                Vector2 tentacleRandVelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                tentacleRandVelocity.Normalize();
+                tentacleVelocity = tentacleVelocity * 4f + tentacleRandVelocity;
+                tentacleVelocity.Normalize();
+                tentacleVelocity *= 5f;
+
+                float tentacleYDirection = Main.rand.Next(10, 80) * 0.001f;
+                if (Main.rand.NextBool())
+                {
+                    tentacleYDirection *= -1f;
+                }
+                float tentacleXDirection = Main.rand.Next(10, 80) * 0.001f;
+                if (Main.rand.NextBool())
+                {
+                    tentacleXDirection *= -1f;
+                }
+
+                int newProjectileId1 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+            }
         }
 
         public override void OnKill(int timeLeft)
@@ -63,6 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 27, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 173, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
             }
+            
         }
     }
 }

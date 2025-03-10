@@ -54,18 +54,10 @@ namespace CalamityInheritance.System.Configs
         public bool AmmoConversion { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool turnoffCorner { get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool CalExtraDrop { get; set; } //允许灾厄额外掉落
+        
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]

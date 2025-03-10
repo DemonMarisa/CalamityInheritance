@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.timeLeft = 120;
             Projectile.DamageType = DamageClass.Magic;
         }
@@ -31,9 +31,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             
             Player projOwner = Main.player[Projectile.owner];
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.5f / 255f);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
-                int dWhite = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 91, 0f, 0f, 100, default, 1.2f);
+                int dWhite = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, default, 1.2f);
                 Main.dust[dWhite].noGravity = true;
                 Main.dust[dWhite].velocity *= 0.5f;
                 Main.dust[dWhite].velocity += Projectile.velocity * 0.1f;
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item122, Projectile.position);
-            int summonCounts = 4;
+            int summonCounts = 2;
             if (Projectile.owner == Main.myPlayer)
             {
                 for (int j = 0; j < summonCounts; j++)
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     }
                     speed.Normalize();
                     speed *= Main.rand.Next(70, 101) * 0.1f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ModContent.ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage/4, 0f, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ModContent.ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage, 0f, Projectile.owner, 0f, 0f);
                 }
             }
         }

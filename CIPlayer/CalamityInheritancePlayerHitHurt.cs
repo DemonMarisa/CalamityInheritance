@@ -466,18 +466,21 @@ namespace CalamityInheritance.CIPlayer
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 1.5f));
-                    AncientAuricHealCooldown = 1200;
+                    AncientAuricHealCooldown =  1200;
                 }
             }
 
             if(AncientAuricSet)
             {
-                if(hurtInfo.Damage> 600 && AncientAuricHealCooldown == 0) 
+                //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
+                int DamageCap = Main.zenithWorld ? 2 : 600;
+                if(hurtInfo.Damage> DamageCap && AncientAuricHealCooldown == 0) 
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 2f));
-                    AncientAuricHealCooldown = 600;
+                    //魔君套处于天顶世界下，高伤保护的CD只有一秒
+                    AncientAuricHealCooldown = Main.zenithWorld? 1 : 600;
                 }
             }
 
@@ -537,6 +540,14 @@ namespace CalamityInheritance.CIPlayer
                 else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
                 {
                     int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
+                    if(getOverCrtis > 1)
+                    {
+                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
+                    }
+                }
+                else if (PerunofYharimStats && hitInfo.Crit)
+                {
+                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Generic) - 100);
                     if(getOverCrtis > 1)
                     {
                         hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
@@ -770,7 +781,6 @@ namespace CalamityInheritance.CIPlayer
                 CalamityPlayer calPlayer = Player.Calamity();
                 calPlayer.freeDodgeFromShieldAbsorption = true;
                 Player.immune = true;
-                Player.immuneTime = 60;
             }
         }
         public static void SpongeHurtEffect()

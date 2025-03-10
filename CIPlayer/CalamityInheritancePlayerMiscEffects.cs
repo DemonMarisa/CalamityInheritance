@@ -23,9 +23,7 @@ using Terraria.Graphics.Shaders;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityMod.Items.Accessories;
 using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 
@@ -85,13 +83,15 @@ namespace CalamityInheritance.CIPlayer
             //冷却变动
             ResetCD();
 
-            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod)
+            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
                 ShieldDurabilityMax = 800;
 
             if (calPlayer.chaliceOfTheBloodGod)
-                ShieldDurabilityMax = 15;
+            {
+                ShieldDurabilityMax = Main.zenithWorld? Player.statLifeMax2 : 15;
+            }
 
         }
         public void Buffs()
@@ -223,6 +223,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; //基于近战武器55%的全局攻速
                 Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; //给予远程武器45%的全局攻速
                 Player.GetAttackSpeed<MagicDamageClass>() += 0.35f; //更新:给予法师武器65%的攻速
+                Player.GetCritChance<GenericDamageClass>() += 100; //所有职业获得100暴击概率
                 Player.manaCost *= 0.20f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
             }
@@ -547,11 +548,17 @@ namespace CalamityInheritance.CIPlayer
 
             if (AncientGodSlayerStat)
             {
-                //旧弑神新增: 25%常驻伤害减免
-                calPlayer.contactDamageReduction += 0.50f;
+                //旧弑神更新 -> 85%常驻接触伤害减免
+                calPlayer.contactDamageReduction += 0.85f;
                 Player.endurance += 0.12f;
                 //旧套装通用新增；血上限，血药，回血
                 calPlayer.healingPotionMultiplier += 0.40f; 
+                float getStealth = calPlayer.rogueStealthMax;
+                int getCurDef = Player.GetCurrentDefense();
+                int boostDef = (int)(getCurDef * (getStealth - 1.0f)); 
+                //弑神套自带120点潜伏值，所以一般来说是不太可能让玩家一点收益都没有的，但……以防万一？
+                if (boostDef < 0) boostDef = 0;
+                Player.statDefense += boostDef;
                 Player.statLifeMax2 += (int)(Player.statLifeMax * 0.85f);
                 Player.lifeRegen += 12; //+6HP/s
             }
@@ -566,8 +573,15 @@ namespace CalamityInheritance.CIPlayer
             
             if(AncientAuricSet)
             {
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 1.20f);
+                //天顶世界下魔君套允许玩家获得十倍生命值
+                float getLifeBoost = Main.zenithWorld? 25 : 1.20f;
+                Player.statLifeMax2 += (int)(Player.statLifeMax * getLifeBoost);
                 Player.noKnockback = true;
+                float getStealth = calPlayer.rogueStealthMax;
+                int getCurDef = Player.GetCurrentDefense();
+                int boostDef = (int)(getCurDef * (getStealth - 1.0f)); 
+                if (boostDef < 0) boostDef = 0;
+                Player.statDefense += boostDef;
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
                 {
                     int getDef = Player.GetCurrentDefense();

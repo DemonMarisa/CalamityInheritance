@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.System.Configs;
@@ -8,6 +9,10 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.Potions;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -35,6 +40,54 @@ namespace CalamityInheritance.Content.Items
             CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
         }
 
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+        {
+            #region 增强所有魔影武器的数值
+            if(CIServerConfig.Instance.ShadowspecBuff)
+            {
+                if (item.type == ModContent.ItemType<Earth>())
+                {
+                    item.damage = 1750; //无限大地: 200 -> 1750
+                }
+                if (item.type == ModContent.ItemType<IllustriousKnives>())
+                {
+                    item.damage = 3500; //圣光飞刀转为3500
+                }
+                if (item.type == ModContent.ItemType<Contagion>())
+                {
+                    item.damage = 10000; //瘟疫弓恢复为10000面板
+                }
+                if (item.type == ModContent.ItemType<Eternity>())
+                {
+                    item.damage = 5000; //恒：5000面板
+                }
+                if (item.type == ModContent.ItemType<Apotheosis>())
+                {
+                    item.damage = 7777; //原版神吞书：7777
+                }
+                if (item.type == ModContent.ItemType<ScarletDevil>())
+                {
+                    item.damage = 14571; //绯红恶魔回调至14571面板
+                }
+                if (item.type == ModContent.ItemType<UniversalGenesis>())
+                {
+                    item.damage = 99999; //天基99999面板
+                }
+                if (item.type == ModContent.ItemType<HalibutCannon>())
+                {
+                    item.damage = 1500; //比目鱼
+                }
+                if (item.type == ModContent.ItemType<NanoblackReaper>())
+                {
+                    item.damage = 4000;
+                }
+                if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
+                {
+                    item.damage = 10000; //一万面板
+                }
+            }
+            #endregion
+        }
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
             #region 补正饰品挖矿速度
@@ -146,7 +199,7 @@ namespace CalamityInheritance.Content.Items
 
         public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (CIConfig.Instance.turnoffCorner == false)
+            if (CIConfig.Instance.turnoffCorner)
             {
                 if (item.ModItem != null && item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                 {
@@ -377,13 +430,14 @@ namespace CalamityInheritance.Content.Items
             #region 手套
             switch(item.type)
             {
-                case ItemID.FeralClaws:
                     /*
                     *附：灾厄实现手套不可堆叠的逻辑是采用一个手套等级
                     *他们先通过舍弃了所有手套的原有攻速之后，再赋予一个手套等级，然后在player类里面进行操作
                     *如绿手套是1级，火手套是4级，那4级大于1级就不能堆叠(通过 Level > 4 ? 0.14f : ...)这种表达式方法递归实现
                     *这里的处理是，查看玩家手套等级的大小，然后补正低级手套原本能提供的攻速
                     */
+                case ItemID.FeralClaws:
+                    
                     player.GetAttackSpeed<MeleeDamageClass>() += 0.02f; //绿手套本身就少了2%
                     if(calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f; //存在二级手套极以上，补正
                     break;

@@ -17,10 +17,6 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using CalamityMod.Projectiles.Ranged;
-using Terraria.WorldBuilding;
-using CalamityInheritance.System.Configs;
-using System.Reflection;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -37,6 +33,7 @@ namespace CalamityInheritance.CIPlayer
         public int summonProjCooldown = 0;
         public int ProjectilHitCounter;
         public int ProjectilHitCounter2;
+        public bool PopTextFlight = false;
         //是否给过灾厄精华
         //1就是没给
         //2就是给了

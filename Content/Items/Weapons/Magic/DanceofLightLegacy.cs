@@ -17,13 +17,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class DanceofLightLegacy: ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 2700 : 700;
         public override void SetStaticDefaults()
         {
         }
 
         public override void SetDefaults()
         {
-            Item.damage = 560;
+            Item.damage = NewDamage;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 9;
             Item.width = 28;

@@ -1,3 +1,50 @@
+发布版的ChangeLog:
+内容:
+-添加 光之舞[Revamped], 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
+-修复并小重置 恶魔之叉 与 狱火鞭, 给予法师玩家们一点点爱
+-添加 加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
+
+调整:
+-加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
+ 上述效果整合进魔君套内
+-削弱远古林海盔甲: 套装奖励的debuff下强行回血的速度由8HP/s降低为4HP/s
+-修改魔君套装: 现在允许进行超暴, 且魔君之怒效果现在追加一个+100%暴击概率的加成
+ 让魔君套装在天顶世界内变得坚不可摧
+-将灾厄boss掉魂与灾厄boss额外掉落转移给服务端设置以避免一些问题
+-魔影武器的面板加强:
+ 元素圣剑2000->4000
+ 绝学法杖1000->2500
+ 至尊梯凳1100->1145
+-给至尊梯凳写了一个lore
+-ban掉了神灯烈焰的微光转化, 因为能肉前拿到暗影魂了
+-赤陨霸龙弓现在同时击败星流与终灾后得到面板增强以匹配魔影武器的强度
+
+修复:
+-主要是一些潜在的多人游戏的问题
+
+Content:
+-Added Dance of Light Revamped, Apotheosis Legacy, Svantechnical Legacy, Azathoth Legacy
+-Fixed and revamp Demonic Pitchfork and Hell burst to give some love to Mage class
+-Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
+
+Balace:
+-Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50% , now can convert the max stealth to defense boost 
+ This effect is applied to Yharim armor
+-Nerfed Ancient Silva Armor: Halve the effeiency of Force Life Regen if under a debuff(from 8HP/s to 4HP/s) 
+-Buffed Yharim Armor: Allows over crits, Perun of Yharim now buffed 100% crti chances in addition
+ Make Yharim Armor can just stand forever in Zenith world
+-Move Calamity Legacy Loot and Calamity Drop Souls to Server-side config, to avoid some issue
+-Do some damage buff for Shadowspec item:
+ Elemental Excalibur: 2000 -> 4000
+ Fabstaff: 1000 -> 2500
+ Olympustine: 1100 -> 1145
+-Gave a custom lore for Olympustine
+-Disable the decraft of Dijnn Lamp, since you can shimmer it for some souls in pre-hm
+-Drataliornus Legacy now get a massively boost if SCal and Exos are downed.
+
+Fixes:
+-Mainly multiplayer, but just not really enough, but will try.
+
 3/8:
 削弱黑死神镰刀: 面板425 -> 440, 
 但镰刀本身的无敌帧8->9, 分裂刀片的生成timer由9f~12f随机变为10f~12f随机
@@ -9,3 +56,56 @@
 
 返厂:圣神之像, 光之舞, 斯万科技枪, 阿撒托斯
 重置光之舞: 现在变成逆向的神圣天罚
+
+
+3/9:
+主要是对魔影系列的调整:
+黑死神镰刀: 
+面板440 -> 410, 分裂伤害倍率0.7-> 0.6. 返程时间由60f-> 45f, 分裂刻固定为12f, 本体发射速度由14f-> 11f 
+补:移除返程时间和分裂刻和发射速度,改为分裂伤害倍率下调至0.45,这三个动到手感了
+但是现在无视敌怪护甲和免伤
+[
+注:黑死神太猛了, 但是我说实话如果真的一刀砍死让他没那么强大的上限那也太逆天了, 所以在面板数值总体下调的情况下,如果直接让他
+无视掉敌怪的所有防御数值的话应该也不会说真的让他弱到哪里去
+附2:我仍然想要保持黑死神一超多强的形态, 但由于灾厄的数值总体下拉, 黑死神这种160w然后其他魔影武器就50w的情况下黑死神是必须得下调的
+不然只能上调别的武器, 但有些武器的模板你就是通过暴力增加数值也达不到至少100wdps的高度
+这里的调整主要就是为了防止让黑死神突破一百万,纯肉态度下打到70w-80w才是这把武器正常的样子
+]
+
+阿萨托斯:
+面板300->600, 悠悠球本身飞行速度从30f->60f使其能完全追得上玩家的鼠标指针, 悠悠球本身现在彻底无视无敌帧(1本地无敌帧)
+同时获得200%的体积大小增强
+
+元素圣剑:
+面板1000->2000, 使用时间14->11, 真近战现在获得双倍体积大小
+
+光之舞:
+削弱粒子数量, 削弱小白火焰的分裂数量(4->2),但是白火焰现在取弹幕伤害,
+面板560-> 640, 使用时间15->10
+[注:相比于黑死神光之舞又显得太弱]
+
+绝学法杖:
+面板1000->1500
+[同上]
+
+梯凳:
+伤害调整为11451.41919810, 配方调整
+
+斯万科技枪:
+面板由286 -> 300, 现在鼠标指针会发射4->6的子弹而非2->4的子弹
+
+更改:
+开摆了,有些武器他就得猛造数值
+回调纳米黑死神
+
+[下述调整改为config选项]
+元素时间使用时间回调,有音效bug,
+面板2000->4000
+光之舞:
+面板640 -> 3200, 使用时间10 -> 14
+
+绝学:
+面板1500 -> 2500
+
+斯万:
+300 -> 600

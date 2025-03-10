@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<BittercoldStaff>(), 3, 1 ,1);
                 //冰灵宝藏袋临时添加寒霜法杖，不然某些人做冰灵旋刃得坐大的，过会回归了那个被移除的法杖这个就会换掉
 
-                if(CIConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofMight, 1, 35, 45);
                 }
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
             {
 
-                if(CIConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofFright, 1, 35, 45);
                 }
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<AquaticScourgeBag>())
             {
 
-                if(CIConfig.Instance.CalBossesCanDropSoul == true)
+                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofSight, 1, 35, 45);
                 }

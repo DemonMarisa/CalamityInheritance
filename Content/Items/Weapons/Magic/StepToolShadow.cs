@@ -11,19 +11,20 @@ using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Placeables.Banners;
+using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class StepToolShadow : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-
-
+        public int NewDamage =  CIServerConfig.Instance.ShadowspecBuff? 11451 : 1145;
         public override void SetDefaults()
         {
             Item.width = 960;
             Item.height = 1120;
-            Item.damage = 2570;
+            Item.damage = NewDamage;
             Item.DamageType = DamageClass.Magic;
             Item.useTime = 30;
             Item.useAnimation = 30;
@@ -47,18 +48,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity, type, (int)getTrueMeleeBoost, knockback, player.whoAmI);
             return false;
         }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine newLore = new(Mod, "CalamityMMod:Lore", this.GetLocalizedValue("StelStoolLore"));
+            newLore.OverrideColor = Color.LightYellow;
+            CalamityUtils.HoldShiftTooltip(tooltips, [newLore], true);
+        }
+
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.PortableStool, 5).
-                AddIngredient(ItemID.Wood, 100).
-                AddIngredient<DepthCells>(50).
+                AddIngredient(ItemID.PortableStool, 1).
+                AddIngredient(ItemID.Wood, 1451).
+                AddIngredient<DepthCells>(41).
+                AddIngredient<ReaperTooth>(9).
                 AddIngredient<ReaperSharkBanner>(1).
-                AddIngredient<ReaperTooth>(50).
-                AddIngredient<Valediction>(1).
+                AddIngredient<CosmiliteBar>(9).
+                AddIngredient<ShadowspecBar>(8).
                 AddIngredient<DeepSeaDumbbell>(1).
-                AddIngredient<CosmiliteBar>(50).
-                AddIngredient<ShadowspecBar>(10).
+                AddIngredient<Valediction>(1).
                 AddIngredient<KnowledgeCalamitas>(1).
                 AddTile(TileID.HeavyWorkBench).
                 Register();
