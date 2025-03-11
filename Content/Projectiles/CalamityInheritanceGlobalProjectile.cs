@@ -5,6 +5,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

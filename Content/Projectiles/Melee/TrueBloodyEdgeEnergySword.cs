@@ -176,9 +176,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             // 使用自动补全功能可以查看其他可用的ParticleOrchestraType类型。
             // 在这里，我们随机在目标的碰撞盒内生成圣剑粒子。
             Vector2 position = Main.rand.NextVector2FromRectangle(target.Hitbox);
-            float num = 30f;
-            float num2 = Main.rand.NextFloatDirection();
-            TrueBloodyEdgeSpark.GeneratePrettySparkles(position, num, num2);
+            float scale = 30f;
+            float dir = Main.rand.NextFloatDirection();
+            TrueBloodyEdgeSpark.GeneratePrettySparkles(position, scale, dir);
             // 你也可以在敌人位置生成灰尘效果。这里是一个简单的例子：
             //Terraria.Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Blood);
 

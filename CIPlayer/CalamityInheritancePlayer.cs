@@ -40,7 +40,7 @@ namespace CalamityInheritance.CIPlayer
         public int giveScalEssence = 1;
         public bool SolarShieldEndurence = false; //日耀盾免伤计算
         #endregion
-        #region Accessories
+        #region 饰品相关
         public bool ElementalQuiver = false;
         public bool CoreOfTheBloodGod = false;
         public bool FleshTotemLegacy = false;
@@ -80,7 +80,7 @@ namespace CalamityInheritance.CIPlayer
         public bool IfStarTained = false;
         public int GetStackMinions = 0;
         #endregion
-        #region Weapon
+        #region 武器效果
         public float AnimusDamage = 1f;
         public bool PolarisBoost = false;
         public bool PolarisBoostPhase2 = false;

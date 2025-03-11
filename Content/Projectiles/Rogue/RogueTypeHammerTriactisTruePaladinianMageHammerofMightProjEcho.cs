@@ -60,25 +60,29 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             *在80f的位置播放音效与释放提醒粒子, 而后Echo将会以24f的速度重击敌人, 且这个过程也会被计时器增速
             ***********************************************************/
             Projectile.ai[0] += 1f;
-            if(Projectile.ai[0] < HitRange - 60f) //Echo在上升过程中速度会一直增快， 旋转速度也一样
+            //Echo在上升过程中速度会一直增快， 旋转速度也一样
+            if(Projectile.ai[0] < HitRange - 60f)
             {
                 Projectile.velocity.X *=1.02f;
                 Projectile.velocity.Y *=1.02f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]*0.9f) * Projectile.localAI[0];
             }
-            else if(Projectile.ai[0] > HitRange - 60f && Projectile.ai[0] < HitRange - 30f)//echo达到一定距离后, 速度将会不断缩短
+            //echo达到一定距离后, 速度将会不断缩短
+            else if(Projectile.ai[0] > HitRange - 60f && Projectile.ai[0] < HitRange - 30f)
             {
                 Projectile.velocity.X *= 0.05f;
                 Projectile.velocity.Y *= 0.05f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.3f) * Projectile.localAI[0];
             }
+            //Echo达到这个距离后停止加速
             else if(Projectile.ai[0] > HitRange - 30f && Projectile.ai[0] < 5f)
             {
-                Projectile.velocity.X = 0f; //Echo达到这个距离后停止加速
+                Projectile.velocity.X = 0f; 
                 Projectile.velocity.Y = 0f;
                 Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.1f) * Projectile.localAI[0];
             }
-            if(Projectile.ai[0] > HitRange) //只允许Echo在飞行至大于这个距离时重击
+            //只允许Echo在飞行至大于这个距离时重击
+            if(Projectile.ai[0] > HitRange) 
             {
                 ReturnDust(Projectile);
                 CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + 10f, 0f);
@@ -106,6 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SpawnSpark(hit);
         }
 
+        //生成攻击火花，这个是从灾厄那抄过来的
         private void SpawnSpark(NPC.HitInfo hit)
         {
             float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true);
@@ -131,7 +136,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             SpawnDust(DustID.GemSapphire);
         }
-    
+        //正常击中时也会生成爆炸，但注意的是这个爆炸不会产生任何粒子，因为上面的火花已经干了这个事了
         private void SpawnExplosion()
         {
             Projectile.netUpdate = true;
@@ -146,6 +151,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
 
+        //释放发起重击前的提示性粒子
         private static void ReturnDust(Projectile projectile)
         {
             Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.velocity.X, projectile.velocity.Y) / 2f; 
@@ -162,15 +168,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 dust2.scale = 1.4f;
             }
         }
-        //正常击中敌人生成粒子
-        private void SignalDust(int dustID)
-        {
-            CIFunction.DustCircle(Projectile.position, 20f, 2.5f, dustID, true, 6f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
-        }
+        //这个粒子没啥用，因为用在了hitPlayer上
         private void SpawnDust(int dustID)
         {
-            CIFunction.DustCircle(Projectile.position, 32f, 1.5f, dustID, true, 15f); //将击中的粒子修改为圆形粒子而非传统爆炸粒子, 大幅度削减其粒子量
+            CIFunction.DustCircle(Projectile.position, 32f, 1.5f, dustID, true, 15f);
         }
+        //绘制，也是灾厄的算法
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

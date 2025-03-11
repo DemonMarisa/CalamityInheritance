@@ -46,11 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<MeleeTypeNanoblackReaperProj>();
             Item.shootSpeed = Speed;
         }
-        public override bool MeleePrefix()
-        {
-            return base.MeleePrefix();
-        }
-
+        public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
             CreateRecipe().

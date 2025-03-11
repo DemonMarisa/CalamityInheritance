@@ -65,16 +65,22 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 case 1f:
                     float returnSpeed = 20f;
                     float acceleration = 3.2f;
+
+                    //回旋镖返程的AI封装, 把这个封装了真的方便了很多东西
                     CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
+                        //大锤子体积太大了，所以为了防止视觉上像是“锤子”敲了玩家头一样， 因此这个锤子会在离玩家更远的地方判定
                         Rectangle mplrHitbox = new((int)owner.position.X, (int)owner.position.Y,
                                                    Projectile.ai[2] != -1f ? (int)(owner.width * 2.0f) : (int)(owner.width * 1.5f),
                                                    Projectile.ai[2] != -1f ? (int)(owner.height * 2.0f) : (int)(owner.height * 1.5f));
                         if (projHitbox.Intersects(mplrHitbox))
                         {
-                            if(Projectile.Calamity().stealthStrike && Projectile.ai[2] != -1f) //挂载过的锤子不会再执行一次追踪
+                            //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
+                            //这个主要是为了实现锤子的返程效果，具体看Clone那写的注释
+                            //挂载结束准备返程的锤子不会执行这段if语句
+                            if(Projectile.Calamity().stealthStrike && Projectile.ai[2] != -1f) 
                             {
                                 Projectile.velocity *= -1.3f;
                                 Projectile.timeLeft = 600;
@@ -83,13 +89,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                                 Projectile.netUpdate = true;
                                 Projectile.ai[0] = 2f;
                             }
-                            else if(Projectile.ai[2] == -1f) //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
+                            else if(Projectile.ai[2] == -1f) 
                             {
-                                ReturnDust(); //只有挂载在敌人身上的锤子回收在玩家身上的时候才会生成粒子
+                                //只有挂在过的锤子回收到玩家上才会生成这些粒子和音效
+                                ReturnDust(); 
                                 SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.8f} : CISoundMenu.HammerReturnID2 with {Volume = 0.8f}, Projectile.Center);
                                 Projectile.ai[2] = 0f;
                             }
                             else
+                            //干掉这个弹幕
                             Projectile.Kill();
                         }
                     }
@@ -123,14 +131,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 StealthSpawnDust();
                 SpawnSparks(hit);
                 SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-                if(ifSummonClone) //潜伏时生成的锤子才会具备挂载属性
+                //潜伏时生成的锤子才会具备挂载属性
+                //这个ifSummonClone是纯多余的，但是也不好改了
+                if(ifSummonClone) 
                 {
                     SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
                     SpawnSparks(hit);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                        Projectile.velocity.X, Projectile.velocity.Y,
-                        ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(),
-                        (int)(Projectile.damage * 1.1f), Projectile.knockBack, Main.myPlayer);
+                                             Projectile.velocity.X, Projectile.velocity.Y,
+                                             ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(),
+                                            (int)(Projectile.damage * 1.1f), Projectile.knockBack, Main.myPlayer);
                 }
                 ifSummonClone = false;
             }
@@ -139,7 +149,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(!Projectile.Calamity().stealthStrike) 
             {
                 SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-                if(Projectile.ai[2] != -1f) //只有非挂载结束后收回的锤子， 才会释放原灾特有的超级粒子
+                //只允许普攻的锤子生成原灾的粒子
+                if(Projectile.ai[2] != -1f) 
                 SpawnDust();
             }
         }
@@ -150,13 +161,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(!Projectile.Calamity().stealthStrike) 
             {
                 SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-                if(Projectile.ai[2] != -1f) //只有非挂载结束后收回的锤子， 才会释放原灾特有的超级粒子
+                if(Projectile.ai[2] != -1f)
                 SpawnDust();
             }
         }
 
         private void ReturnDust()
         {
+            //成功返程至玩家手中时生成粒子
             for (int i = 0; i < 36; i++)
             {
                 Dust fire = Dust.NewDustPerfect(Projectile.Center, DustID.GemEmerald);
@@ -171,7 +183,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
 
-        private void StealthSpawnDust() //潜伏攻击的粒子, 被削减至一个非常非常低的值
+        //潜伏攻击的粒子, 这个已经被压制到一个非常非常低的值了
+        private void StealthSpawnDust() 
         {
             for (int i = 0; i < 7; i++)
             {
@@ -193,26 +206,34 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
 
         }
+        //潜伏造成的攻击特效更多由下面这个火花代替
         private void SpawnSparks(NPC.HitInfo hit)
         {
-            float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true); //由造成伤害的多少来获取火花的距离偏移
-            float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);    //根据速度直接获得偏移
-            getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f); //没有作用
-            Vector2 splatterDirection = Projectile.velocity * 1.1f; //火花生成的方向, 在速度的正前方(不出意外的话)
+            //由造成伤害的多少来获取火花的距离偏移
+            float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true); 
+            //根据速度直接获得偏移
+            float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);    
+            //没有作用
+            getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f); 
+            //火花生成的方向, 在速度的正前方(不出意外的话)
+            Vector2 splatterDirection = Projectile.velocity * 1.1f; 
             for (int i = 0; i < 15; i++)
             {
-                int getSparkTime = Main.rand.Next(15, 35); //火花的生命刻
-                float getSparkSize = Main.rand.NextFloat(0.7f, Main.rand.NextFloat(3.3f, 5.5f)) + getDMGLerp * 0.85f; //火花的大小
-                Color getColor = Color.Lerp(Color.Green, Color.GhostWhite, Main.rand.NextFloat(0.7f)); //火花的颜色
+                //火花的生命刻
+                int getSparkTime = Main.rand.Next(15, 35); 
+                //火花的大小
+                float getSparkSize = Main.rand.NextFloat(0.7f, Main.rand.NextFloat(3.3f, 5.5f)) + getDMGLerp * 0.85f;
+                //火花的颜色
+                Color getColor = Color.Lerp(Color.Green, Color.GhostWhite, Main.rand.NextFloat(0.7f)); 
                 getColor = Color.Lerp(getColor, Color.ForestGreen, Main.rand.NextFloat());
-
-                Vector2 getVelocity = splatterDirection.RotatedByRandom(0.1f) * Main.rand.NextFloat(1f, 1.2f); //火花的飞行速度
+                //火花的飞行速度
+                Vector2 getVelocity = splatterDirection.RotatedByRandom(0.1f) * Main.rand.NextFloat(1f, 1.2f); 
                 SparkParticle spark = new SparkParticle(Projectile.Center, getVelocity, false, getSparkTime, getSparkSize, getColor);
                 GeneralParticleHandler.SpawnParticle(spark);
             }
 
         }
-        //正常击中敌人生成粒子
+        //普攻击中敌人正常生成粒子
         private void SpawnDust()
         {
             for (int i = 0; i < 40; i++)

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
             Player player = Main.player[Projectile.owner];
             Vector2 vector = player.Center - Projectile.Center;
-            float num = vector.Length();
+            float hitRange = vector.Length();
             Projectile.rotation = Utils.ToRotation(vector);
             if (player.dead || !player.active)
             {
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             player.itemRotation = Utils.ToRotation(-1f * vector * Projectile.direction);
             player.itemAnimation = 6;
             player.itemTime = 6;
-            if (Projectile.ai[0] == 0f && num < ExoFlail.MaxRange && player.whoAmI == Main.myPlayer)
+            if (Projectile.ai[0] == 0f && hitRange < ExoFlail.MaxRange && player.whoAmI == Main.myPlayer)
             {
                 Vector2 value = Main.MouseWorld - Projectile.Center;
                 value.Normalize();
@@ -65,13 +65,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 projectile2.velocity = projectile2.velocity + value;
                 Projectile.velocity = Utils.SafeNormalize(Projectile.velocity, -Vector2.UnitY) * ExoFlail.Speed;
             }
-            if (Projectile.ai[0] == 0f && num > ExoFlail.MaxRange)
+            if (Projectile.ai[0] == 0f && hitRange > ExoFlail.MaxRange)
             {
                 Projectile.ai[0] = 1f;
             }
             if (Projectile.ai[0] != 0f)
             {
-                if (num > ExoFlail.MaxRange * 2f)
+                if (hitRange > ExoFlail.MaxRange * 2f)
                 {
                     Projectile.Kill();
                     return;
@@ -118,8 +118,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Player player = Main.player[Projectile.owner];
             Utils.RotatedBy(new Vector2(1.5f, 0f), Projectile.rotation, default(Vector2));
-            float num = 0f;
-            if (Collision.CheckAABBvLineCollision(Utils.TopLeft(targetHitbox), Utils.Size(targetHitbox), Projectile.Center, player.Center, 22f, ref num))
+            float hitRange = 0f;
+            if (Collision.CheckAABBvLineCollision(Utils.TopLeft(targetHitbox), Utils.Size(targetHitbox), Projectile.Center, player.Center, 22f, ref hitRange))
             {
                 Projectile.localAI[0] = 1f;
                 return true;
@@ -174,12 +174,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Rectangle? sourceRectangle = null;
             Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
             Vector2 vector2 = mountedCenter - vector;
-            float num = (float)Math.Atan2(vector2.Y, vector2.X) - (float)Math.PI / 2f;
+            float hitRange = (float)Math.Atan2(vector2.Y, vector2.X) - (float)Math.PI / 2f;
             float num2 = (float)Math.Atan2(vector2.Y, vector2.X) - (float)Math.PI / 2f;
             Vector2 value = Utils.RotatedBy(new Vector2(-10f, 0f), (double)num2, default(Vector2));
             if (vector2.X < 0f)
             {
-                num += (float)Math.PI;
+                hitRange += (float)Math.PI;
             }
             bool flag = true;
             if (Utils.HasNaNs(vector) || Utils.HasNaNs(vector2))
@@ -192,7 +192,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 vector += value2 * texture.Height;
                 vector2 = mountedCenter - vector;
                 Color color = Lighting.GetColor((int)vector.X / 16, (int)vector.Y / 16);
-                Main.spriteBatch.Draw(texture, vector - Main.screenPosition, sourceRectangle, color, num, origin, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(texture, vector - Main.screenPosition, sourceRectangle, color, hitRange, origin, 1f, SpriteEffects.None, 0f);
             }
             Vector2 value3 = vector2;
             value3.Normalize();

@@ -52,3 +52,12 @@ GoldenGun: {
 	DisplayName: 灵液枪[Legacy]
 	Tooltip: 发射一束以直线飞行的灵液
 }
+
+AncientMurasama: {
+	Tooltip:
+		'''
+		真空刃版本的鬼妖村正
+		此处将会鲜血!四溅!	
+		'''
+	DisplayName: 远古高频红刀[Legacy]
+}

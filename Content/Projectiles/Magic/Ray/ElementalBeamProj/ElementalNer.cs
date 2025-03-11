@@ -25,41 +25,41 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void AI()
         {
-            int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-            Main.dust[num469].noGravity = true;
-            Main.dust[num469].velocity *= 0f;
-            float num472 = Projectile.Center.X;
-            float num473 = Projectile.Center.Y;
-            float num474 = 600f;
-            bool flag17 = false;
-            for (int num475 = 0; num475 < 200; num475++)
+            int dType = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+            Main.dust[dType].noGravity = true;
+            Main.dust[dType].velocity *= 0f;
+            float projX = Projectile.Center.X;
+            float projY = Projectile.Center.Y;
+            float homingR = 600f;
+            bool canHome = false;
+            for (int i = 0; i < 200; i++)
             {
-                if (Main.npc[num475].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num475].Center, 1, 1))
+                if (Main.npc[i].CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[i].Center, 1, 1))
                 {
-                    float num476 = Main.npc[num475].position.X + Main.npc[num475].width / 2;
-                    float num477 = Main.npc[num475].position.Y + Main.npc[num475].height / 2;
-                    float num478 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num476) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num477);
-                    if (num478 < num474)
+                    float getnpcX = Main.npc[i].position.X + Main.npc[i].width / 2;
+                    float getnpcY = Main.npc[i].position.Y + Main.npc[i].height / 2;
+                    float getnpcR = Math.Abs(Projectile.position.X + Projectile.width / 2 - getnpcX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - getnpcY);
+                    if (getnpcR < homingR)
                     {
-                        num474 = num478;
-                        num472 = num476;
-                        num473 = num477;
-                        flag17 = true;
+                        homingR = getnpcR;
+                        projX = getnpcX;
+                        projY = getnpcY;
+                        canHome = true;
                     }
                 }
             }
-            if (flag17)
+            if (canHome)
             {
-                float num483 = 12f;
-                Vector2 vector35 = new Vector2(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
-                float num484 = num472 - vector35.X;
-                float num485 = num473 - vector35.Y;
-                float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
-                num486 = num483 / num486;
-                num484 *= num486;
-                num485 *= num486;
-                Projectile.velocity.X = (Projectile.velocity.X * 20f + num484) / 21f;
-                Projectile.velocity.Y = (Projectile.velocity.Y * 20f + num485) / 21f;
+                float speed = 12f;
+                Vector2 projVel = new Vector2(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
+                float newX = projX - projVel.X;
+                float newY = projY - projVel.Y;
+                float newRange = (float)Math.Sqrt((double)(newX * newX + newY * newY));
+                newRange = speed / newRange;
+                newX *= newRange;
+                newY *= newRange;
+                Projectile.velocity.X = (Projectile.velocity.X * 20f + newX) / 21f;
+                Projectile.velocity.Y = (Projectile.velocity.Y * 20f + newY) / 21f;
             }
         }
 

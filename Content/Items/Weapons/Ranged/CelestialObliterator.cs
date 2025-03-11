@@ -58,13 +58,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
-            int num = 10;
+            int pCounts = 10;
             Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
             if (shot >= 8)
             {
                 shot = 0;
                 burst++;
-                for (int i = 0; i < num; i++)
+                for (int i = 0; i < pCounts; i++)
                 {
                     Vector2 vector = Utils.RotatedByRandom(new Vector2(SpeedX, SpeedY), (double)MathHelper.ToRadians(2f));
                     vector *= 0.4f + Utils.NextFloat(Main.rand, 10f) / 25f;

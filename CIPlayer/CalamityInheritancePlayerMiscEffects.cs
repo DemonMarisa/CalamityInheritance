@@ -448,7 +448,6 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
-
         private void Sponge()
         {
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。

@@ -32,8 +32,8 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
             {
                 Vector2 vector = new Vector2(Main.rand.Next(15), 0f);
                 vector = Utils.RotatedByRandom(vector, (double)MathHelper.ToRadians(360f));
-                int num = Dust.NewDust(Projectile.Center, Main.rand.Next(40) - 20, Main.rand.Next(40) - 20, DustID.Clentaminator_Red, vector.X, vector.Y, 0, new Color(255, 0, 0), 2f);
-                Main.dust[num].noGravity = true;
+                int d = Dust.NewDust(Projectile.Center, Main.rand.Next(40) - 20, Main.rand.Next(40) - 20, DustID.Clentaminator_Red, vector.X, vector.Y, 0, new Color(255, 0, 0), 2f);
+                Main.dust[d].noGravity = true;
             }
             Lighting.AddLight(Projectile.Center, 2.8f, 0f, 0f);
         }

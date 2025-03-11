@@ -160,7 +160,13 @@ Configs: {
 			Tooltip: 切换钨钢工具的贴图
 		}
 
-		Headers.Texture: 贴图切换
+		Headers: {
+			Texture: 贴图切换
+			Accessories: 饰品贴图
+			Weapons: 武器贴图
+			Misc: 其他贴图
+		}
+
 		DisplayName: 旧版贴图切换
 
 		P90Resprite: {
@@ -256,6 +262,46 @@ Configs: {
 		BloodOrangeResprite: {
 			Tooltip: 切换血橙的贴图
 			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
+		}
+
+		TrueNightShivResprite: {
+			Tooltip: 切换真永夜短剑的贴图
+			Label: "[i:CalamityInheritance/TrueNightsStabber]真永夜短剑贴图切换"
+		}
+
+		NightShivResprite: {
+			Tooltip: 切换永夜短剑的贴图
+			Label: "[i:CalamityInheritance/NightsStabber]永夜短剑贴图切换"
+		}
+
+		TrueCaliburShivResprite: {
+			Tooltip: 切换真神圣短剑的贴图
+			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]真神圣短剑贴图切换"
+		}
+
+		CaliburShivResprite: {
+			Tooltip: 切换神圣短剑的贴图
+			Label: "[i:CalamityInheritance/ExcaliburShortsword]神圣短剑贴图切换"
+		}
+
+		ElementalShivResprite: {
+			Tooltip: 切换元素短剑的贴图
+			Label: "[i:CalamityInheritance/ElementalShivold]元素短剑贴图切换"
+		}
+
+		GalileoResprite: {
+			Tooltip: 切换伽利略短剑的贴图
+			Label: "[i:CalamityMod/GalileoGladius]伽利略短剑贴图切换"
+		}
+
+		CrescentMoonResprite: {
+			Tooltip: 切换明月链刃的贴图
+			Label: "[i:CalamityMod/CrescentMoon]明月链刃贴图切换"
+		}
+
+		AegisResprite: {
+			Tooltip: 切换庇护之刃的贴图
+			Label: "[i:CalamityMod/AegisBlade]庇护之刃贴图切换"
 		}
 	}
 

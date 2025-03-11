@@ -8,3 +8,8 @@ ScalShopMessage: {
 		Anyways, this shop might be helpful for those akaward situation
 		'''
 }
+
+DraedonsToy: {
+	Tooltip: ""
+	DisplayName: Draedons Toy
+}

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
@@ -47,6 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceDonatorPink;
         }
 
+        public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
             CreateRecipe().
@@ -54,6 +56,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<CoreofCalamity>(2).
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
                 Register();
         }
     }

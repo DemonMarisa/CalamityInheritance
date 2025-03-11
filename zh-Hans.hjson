@@ -53,9 +53,11 @@ Mods: {
 			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 			VerdantYoyo.DisplayName: 葱茏
 			// ApothMarkLegacy.DisplayName: Apoth Mark Legacy
+			// OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+		// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 	}
 }

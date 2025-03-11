@@ -4,9 +4,11 @@ using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.System.Configs;
@@ -16,6 +18,9 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.PermanentBoosters;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Melee.Shortswords;
 using CalamityMod.Projectiles.Pets;
 using ReLogic.Text;
 using Terraria.GameContent;
@@ -31,22 +36,23 @@ namespace CalamityInheritance.CIPlayer
             #region 切换1457贴图
             if(CIRespriteConfig.Instance.SetAllLegacySprite == true) //这个用于快速把一些物品转为1457版本的贴图
             {
-                CIRespriteConfig.Instance.RampartofDeitiesTexture = 2;
-                CIRespriteConfig.Instance.TriactisHammerResprite = 2;
+                CIRespriteConfig.Instance.RampartofDeitiesTexture =     false;
+                CIRespriteConfig.Instance.TriactisHammerResprite =      false;
+                CIRespriteConfig.Instance.BloodOrangeResprite =         false;
+                CIRespriteConfig.Instance.MiracleFruitResprite=         false;
+                CIRespriteConfig.Instance.ElderberryResprite  =         false;
+                CIRespriteConfig.Instance.DragonfruitResprite =         false;
+                CIRespriteConfig.Instance.CometShardResprite =          false;
+                CIRespriteConfig.Instance.EtherealCoreResprite =        false;
+                CIRespriteConfig.Instance.PhantomHeartResprite =        false;
+                CIRespriteConfig.Instance.StellarContemptResprite  =    false;
+                CIRespriteConfig.Instance.FateGirlSprite =              false;
+                CIRespriteConfig.Instance.HeliumFlashResprite =         false;
+                CIRespriteConfig.Instance.DrataliornusResprite =        false;
+                CIRespriteConfig.Instance.AngelTreadsResprite =         false;
+                CIRespriteConfig.Instance.MOABResprite =                false;
+
                 CIRespriteConfig.Instance.ShadowspecKnivesResprite = 2;
-                CIRespriteConfig.Instance.BloodOrangeResprite = 2;
-                CIRespriteConfig.Instance.MiracleFruitResprite= 2;
-                CIRespriteConfig.Instance.ElderberryResprite  = 2;
-                CIRespriteConfig.Instance.DragonfruitResprite = 2;
-                CIRespriteConfig.Instance.CometShardResprite = 2;
-                CIRespriteConfig.Instance.EtherealCoreResprite = 2;
-                CIRespriteConfig.Instance.PhantomHeartResprite = 2;
-                CIRespriteConfig.Instance.StellarContemptResprite  = 2;
-                CIRespriteConfig.Instance.FateGirlSprite = 2;
-                CIRespriteConfig.Instance.HeliumFlashResprite = 2;
-                CIRespriteConfig.Instance.DrataliornusResprite = 2;
-                CIRespriteConfig.Instance.AngelTreadsResprite = 2;
-                CIRespriteConfig.Instance.MOABResprite = 2;
             }
             #endregion
             #region Texture
@@ -55,13 +61,13 @@ namespace CalamityInheritance.CIPlayer
                 TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()]  != null ||
                 TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] != null)
             {
-                if(CIRespriteConfig.Instance.WulfumTexture == true)
+                if(!CIRespriteConfig.Instance.WulfumTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CIResprite.WulfrumAxeNew;
                     TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CIResprite.WulfrumHammerNew;
                     TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CIResprite.WulfrumPickaxeNew;
                 }
-                if (CIRespriteConfig.Instance.WulfumTexture == false)
+                if (CIRespriteConfig.Instance.WulfumTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CIResprite.WulfrumAxeOld;
                     TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CIResprite.WulfrumHammerOld;
@@ -72,25 +78,144 @@ namespace CalamityInheritance.CIPlayer
             #region 近战物品
             if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
             {
-                if (CIRespriteConfig.Instance.ArkofCosmosTexture == 1)
+                if (!CIRespriteConfig.Instance.ArkofCosmosTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.ArkoftheCosmosNew;
                 }
-                if (CIRespriteConfig.Instance.ArkofCosmosTexture == 2)
+                if (CIRespriteConfig.Instance.ArkofCosmosTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.ArkoftheCosmosOld;
                 }
             }
+            #region 元素短剑
+            if (TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.ElementalShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivCal;
+                }
+                if (CIRespriteConfig.Instance.ElementalShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivAlt;
+                }
+            }
             #endregion
+            #region 圣短剑
+            if (TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.CaliburShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.CaliburCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.CaliburCal;
+                }
+                if (CIRespriteConfig.Instance.CaliburShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.CaliburAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.CaliburAlt;
+                }
+            }
+            #endregion
+            #region 真圣短剑
+            if (TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.TrueCaliburShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueCaliburCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueCaliburCal;
+                }
+                if (CIRespriteConfig.Instance.TrueCaliburShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueCaliburAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueCaliburAlt;
+                }
+            }
+            #endregion
+            #region 永夜短剑
+            if (TextureAssets.Item[ModContent.ItemType<NightsStabber>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.NightShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightCal;
+                }
+                if (CIRespriteConfig.Instance.NightShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightAlt;
+                }
+            }
+            #endregion
+            #region 真永夜短剑
+            if (TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.TrueNightShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightCal;
+                }
+                if (CIRespriteConfig.Instance.TrueNightShivResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightAlt;
+                }
+            }
+            #endregion
+            #region 伽利略
+            if (TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.GalileoResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoCal;
+                }
+                if (CIRespriteConfig.Instance.GalileoResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoAlt;
+                }
+            }
+            #endregion
+            #region 庇护
+            if (TextureAssets.Item[ModContent.ItemType<AegisBlade>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.AegisResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.CalAegis;
+                }
+                if (CIRespriteConfig.Instance.AegisResprite)
+                {
+                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.AltAegis;
+                }
+            }
+            #endregion
+            #region 明月链刃
+            if (TextureAssets.Item[ModContent.ItemType<CrescentMoon>()] != null)
+            {
+                if (!CIRespriteConfig.Instance.CrescentMoonResprite)
+                {
+                    // TextureAssets.Item[ModContent.ItemType<CrescentMoon>()] = CIWeaponsResprite.CerscentMoonProjCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<CrescentMoonProj>()] = CIWeaponsResprite.CerscentMoonProjCal;
+                }
+                if (CIRespriteConfig.Instance.CrescentMoonResprite)
+                {
+                    // TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.CerscentMoonProjAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<CrescentMoonProj>()] = CIWeaponsResprite.CerscentMoonProjAlt;
+                }
+            }
+            #endregion
+            #endregion
+
             #region 射手物品
             #region 碎颅
             if (TextureAssets.Item[ModContent.ItemType<Skullmasher>()] != null)
             {
-                if(CIRespriteConfig.Instance.SkullmasherResprite == 1)
+                if(!CIRespriteConfig.Instance.SkullmasherResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.Skullmasher1p5;
                 }
-                if(CIRespriteConfig.Instance.SkullmasherResprite == 2)
+                if(CIRespriteConfig.Instance.SkullmasherResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.Skullmasher;
                 }
@@ -99,11 +224,11 @@ namespace CalamityInheritance.CIPlayer
             #region P90
             if (TextureAssets.Item[ModContent.ItemType<P90Legacy>()] != null)
             {
-                if (CIRespriteConfig.Instance.P90Resprite == 1)
+                if (!CIRespriteConfig.Instance.P90Resprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CIWeaponsResprite.P90;
                 }
-                if (CIRespriteConfig.Instance.P90Resprite == 2)
+                if (CIRespriteConfig.Instance.P90Resprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CIWeaponsResprite.P90Legacy;
                 }
@@ -114,12 +239,12 @@ namespace CalamityInheritance.CIPlayer
             if (TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] != null &&
                 TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] != null)
             {
-                if (CIRespriteConfig.Instance.DrataliornusResprite== 1)
+                if (!CIRespriteConfig.Instance.DrataliornusResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataliornusLegacyAlter;
                     TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataliornusLegacyAlter;
                 }
-                if (CIRespriteConfig.Instance.DrataliornusResprite== 2)
+                if (CIRespriteConfig.Instance.DrataliornusResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataliornusLegacy;
                     TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataliornusLegacy;
@@ -132,14 +257,14 @@ namespace CalamityInheritance.CIPlayer
             //TODO:大锤子射弹贴图没能成功切换
             if(TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()]!=null)
             {
-                if(CIRespriteConfig.Instance.TriactisHammerResprite ==1)
+                if(!CIRespriteConfig.Instance.TriactisHammerResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.TriactisHammerCalamity;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.TriactisHammerCalamity;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.TriactisHammerCalamity;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.TriactisHammerCalamity;
                 }
-                if(CIRespriteConfig.Instance.TriactisHammerResprite ==2)
+                if(CIRespriteConfig.Instance.TriactisHammerResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.TriactisHammerAlter;
                     
@@ -153,7 +278,7 @@ namespace CalamityInheritance.CIPlayer
             //TODO:同上
             if(TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()]!=null)
             {
-                if(CIRespriteConfig.Instance.PwnagehammerResprite == 1)
+                if(!CIRespriteConfig.Instance.PwnagehammerResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerCalamity;
                     TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerCalamity;
@@ -161,7 +286,7 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
                 }
-                if(CIRespriteConfig.Instance.PwnagehammerResprite == 2)
+                if(CIRespriteConfig.Instance.PwnagehammerResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerAlter;
                     TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerAlter;
@@ -178,7 +303,7 @@ namespace CalamityInheritance.CIPlayer
                 TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] != null &&
                 TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] != null)
             {
-                if (CIRespriteConfig.Instance.StellarContemptResprite == 1)
+                if (!CIRespriteConfig.Instance.StellarContemptResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CIWeaponsResprite.StellarContemptNew;
                     TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerStellarContemptLegacyProj>()] = CIWeaponsResprite.StellarContemptNew;
@@ -186,7 +311,7 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CIWeaponsResprite.StellarContemptNew;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CIWeaponsResprite.StellarContemptNew;
                 }
-                if (CIRespriteConfig.Instance.StellarContemptResprite == 2)
+                if (CIRespriteConfig.Instance.StellarContemptResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CIWeaponsResprite.StellarContemptOld;
                     TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerStellarContemptLegacyProj>()] = CIWeaponsResprite.StellarContemptOld;
@@ -202,12 +327,12 @@ namespace CalamityInheritance.CIPlayer
             if (TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] != null &&
                 TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] != null)
             {
-                if (CIRespriteConfig.Instance.GodSlayerKnivesResprite == 1)
+                if (!CIRespriteConfig.Instance.GodSlayerKnivesResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesCalamity;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesCalamityProj;
                 }
-                if (CIRespriteConfig.Instance.GodSlayerKnivesResprite == 2)
+                if (CIRespriteConfig.Instance.GodSlayerKnivesResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesAlterTypeOne;
                     TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesAlterTypeOneProj;
@@ -245,11 +370,11 @@ namespace CalamityInheritance.CIPlayer
             #region 氦闪
             if (TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] != null)
             {
-                if(CIRespriteConfig.Instance.HeliumFlashResprite == 1)
+                if(!CIRespriteConfig.Instance.HeliumFlashResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumFlashCalamity;
                 }
-                if(CIRespriteConfig.Instance.HeliumFlashResprite == 2)
+                if(CIRespriteConfig.Instance.HeliumFlashResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumFlashLegacy;
                 }
@@ -260,11 +385,11 @@ namespace CalamityInheritance.CIPlayer
             #region 壁垒
             if (TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] != null)
             {
-                if (CIRespriteConfig.Instance.RampartofDeitiesTexture == 1)
+                if (!CIRespriteConfig.Instance.RampartofDeitiesTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CIResprite.RampartofDeitiesNew;
                 }
-                if (CIRespriteConfig.Instance.RampartofDeitiesTexture == 2)
+                if (CIRespriteConfig.Instance.RampartofDeitiesTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CIResprite.RampartofDeitiesOld;
                 }
@@ -273,11 +398,11 @@ namespace CalamityInheritance.CIPlayer
             #region 空灵护符
             if (TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] != null)
             {
-                if (CIRespriteConfig.Instance.EtherealTalismancTexture == 1)
+                if (!CIRespriteConfig.Instance.EtherealTalismancTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CIResprite.EtherealTalismanNew;
                 }
-                if (CIRespriteConfig.Instance.EtherealTalismancTexture == 2)
+                if (CIRespriteConfig.Instance.EtherealTalismancTexture)
                 {
                     TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CIResprite.EtherealTalismanOld;
                 }
@@ -288,12 +413,12 @@ namespace CalamityInheritance.CIPlayer
             if (TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] != null &&
                 TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] != null)
             {
-                if (CIRespriteConfig.Instance.FateGirlSprite == 1)
+                if (!CIRespriteConfig.Instance.FateGirlSprite)
                 {
                     TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CIResprite.FateGirlOriginal;
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CIResprite.FateGirlOriginalBuff;
                 }
-                if (CIRespriteConfig.Instance.FateGirlSprite == 2)
+                if (CIRespriteConfig.Instance.FateGirlSprite)
                 {
                     TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CIResprite.FateGirlLegacy;
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CIResprite.FateGirlLegacyBuff;
@@ -303,11 +428,11 @@ namespace CalamityInheritance.CIPlayer
             #region 天使鞋
             if (TextureAssets.Item[ModContent.ItemType<AngelTreads>()] != null)
             {
-                if (CIRespriteConfig.Instance.AngelTreadsResprite == 1)
+                if (!CIRespriteConfig.Instance.AngelTreadsResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<AngelTreads>()] = CIResprite.AngelTreadsCalamity; 
                 }
-                if (CIRespriteConfig.Instance.AngelTreadsResprite == 2)
+                if (CIRespriteConfig.Instance.AngelTreadsResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<AngelTreads>()] = CIResprite.AngelTreadsAlter; 
                 }
@@ -316,11 +441,11 @@ namespace CalamityInheritance.CIPlayer
             #region 夜明跑鞋
             if (TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] != null)
             {
-                if (CIRespriteConfig.Instance.LunarBootsResprite == 1)
+                if (!CIRespriteConfig.Instance.LunarBootsResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] = CIResprite.LunarBootsCalamity;
                 }
-                if (CIRespriteConfig.Instance.LunarBootsResprite == 2)
+                if (CIRespriteConfig.Instance.LunarBootsResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] = CIResprite.LunarBootsAlter;
                 }
@@ -330,11 +455,11 @@ namespace CalamityInheritance.CIPlayer
             if (TextureAssets.Item[ModContent.ItemType<MOAB>()] != null)
             {
                 //TODO:贴图切换失败 
-                if (CIRespriteConfig.Instance.MOABResprite == 1)
+                if (!CIRespriteConfig.Instance.MOABResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MOAB>()] = CIResprite.MOABCalamity;
                 }
-                if (CIRespriteConfig.Instance.MOABResprite == 1)
+                if (CIRespriteConfig.Instance.MOABResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MOAB>()] = CIResprite.MOABAlter;
                 }
@@ -345,55 +470,55 @@ namespace CalamityInheritance.CIPlayer
             #region 增益道具
             if (TextureAssets.Item[ModContent.ItemType<BloodOrange>()] != null)
             {
-                if (CIRespriteConfig.Instance.BloodOrangeResprite == 1)
+                if (!CIRespriteConfig.Instance.BloodOrangeResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<BloodOrange>()] = CIResprite.HealthOrange;
                 }
-                if (CIRespriteConfig.Instance.BloodOrangeResprite == 2)
+                if (CIRespriteConfig.Instance.BloodOrangeResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<BloodOrange>()] = CIResprite.HealthOrangeAlter;
                 }
             }
             if (TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] != null)
             {
-                if (CIRespriteConfig.Instance.MiracleFruitResprite== 1)
+                if (!CIRespriteConfig.Instance.MiracleFruitResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] = CIResprite.HealthMira;
                 }
-                if (CIRespriteConfig.Instance.MiracleFruitResprite== 2)
+                if (CIRespriteConfig.Instance.MiracleFruitResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] = CIResprite.HealthMiraAlter;
                 }
             }
             if (TextureAssets.Item[ModContent.ItemType<Elderberry>()] != null)
             {
-                if (CIRespriteConfig.Instance.ElderberryResprite== 1)
+                if (!CIRespriteConfig.Instance.ElderberryResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Elderberry>()] = CIResprite.HealthBerry;
                 }
-                if (CIRespriteConfig.Instance.ElderberryResprite== 2)
+                if (CIRespriteConfig.Instance.ElderberryResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Elderberry>()] = CIResprite.HealthBerryAlter;
                 }
             }
             if (TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] != null)
             {
-                if (CIRespriteConfig.Instance.DragonfruitResprite== 1)
+                if (!CIRespriteConfig.Instance.DragonfruitResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] = CIResprite.HealthDragon;
                 }
-                if (CIRespriteConfig.Instance.DragonfruitResprite== 2)
+                if (CIRespriteConfig.Instance.DragonfruitResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] = CIResprite.HealthDragonAlter;
                 }
             }
             if (TextureAssets.Item[ModContent.ItemType<CometShard>()] != null)
             {
-                if (CIRespriteConfig.Instance.CometShardResprite== 1)
+                if (!CIRespriteConfig.Instance.CometShardResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<CometShard>()] = CIResprite.ManaShard;
                 }
-                if (CIRespriteConfig.Instance.CometShardResprite== 2)
+                if (CIRespriteConfig.Instance.CometShardResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<CometShard>()] = CIResprite.ManaShardAlter;
                 }
@@ -401,22 +526,22 @@ namespace CalamityInheritance.CIPlayer
 
             if (TextureAssets.Item[ModContent.ItemType<EtherealCore>()] != null)
             {
-                if (CIRespriteConfig.Instance.EtherealCoreResprite== 1)
+                if (!CIRespriteConfig.Instance.EtherealCoreResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<EtherealCore>()] = CIResprite.ManaCore;
                 }
-                if (CIRespriteConfig.Instance.EtherealCoreResprite== 2)
+                if (CIRespriteConfig.Instance.EtherealCoreResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<EtherealCore>()] = CIResprite.ManaCoreAlter;
                 }
             }
             if (TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] != null)
             {
-                if (CIRespriteConfig.Instance.PhantomHeartResprite== 1)
+                if (!CIRespriteConfig.Instance.PhantomHeartResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] = CIResprite.ManaHeart;
                 }
-                if (CIRespriteConfig.Instance.PhantomHeartResprite== 2)
+                if (CIRespriteConfig.Instance.PhantomHeartResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] = CIResprite.ManaHeartAlter;
                 }
@@ -432,7 +557,7 @@ namespace CalamityInheritance.CIPlayer
             /*
             if (TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] != null)
             {
-                if (CIRespriteConfig.Instance.GalacticaSingularityResprite == 1)
+                if (CIRespriteConfig.Instance.GalacticaSingularityResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CIResprite.GS;
                 }
@@ -444,7 +569,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (TextureAssets.Item[ModContent.ItemType<Necroplasm>()] != null)
             {
-                if (CIRespriteConfig.Instance.NecroplasmResprite == 1)
+                if (CIRespriteConfig.Instance.NecroplasmResprite)
                 {
                     TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CIResprite.RedSoul;
                 }

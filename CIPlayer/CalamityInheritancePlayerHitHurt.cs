@@ -78,7 +78,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
         }
-        #region Pre Kill
+        #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -234,7 +234,7 @@ namespace CalamityInheritance.CIPlayer
             return true;
         }
         #endregion
-        #region Modify Hit By NPC
+        #region 修改来犯的NPC体术
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -248,7 +248,7 @@ namespace CalamityInheritance.CIPlayer
 
         }
         #endregion
-        #region Free and Consumable Dodge Hooks
+        #region 闪避
         public override bool FreeDodge(Player.HurtInfo info)
         {
             Player player = Main.player[Main.myPlayer];
@@ -271,7 +271,7 @@ namespace CalamityInheritance.CIPlayer
             return base.FreeDodge(info);
         }
         #endregion
-        #region Modify Hit By Proj
+        #region 修改来犯的射弹
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -326,7 +326,7 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-        #region On Hurt
+        #region 啊♂
         public override void OnHurt(Player.HurtInfo hurtInfo)
         {
             CalamityPlayer calPlayer = Player.Calamity();

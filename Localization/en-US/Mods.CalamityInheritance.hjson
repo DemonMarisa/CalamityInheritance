@@ -133,7 +133,6 @@ Configs: {
 			Label: "[i:GoldCrown]Special Rarity Color"
 		}
 
-
 		TaleOfACruelWorld: {
 			Label: Tale of A Cruel World
 			Tooltip: ""
@@ -176,7 +175,13 @@ Configs: {
 			Tooltip: Determines sprite style of legacy Wulfrum Tools and Weapons
 		}
 
-		Headers.Texture: Sprites
+		Headers: {
+			Texture: Sprites
+			Accessories: Accessories Header
+			Weapons: Weapons Header
+			Misc: Misc Header
+		}
+
 		DisplayName: Legacy Sprite
 
 		P90Resprite: {
@@ -272,6 +277,46 @@ Configs: {
 		BloodOrangeResprite: {
 			Tooltip: Determines sprite style of Blood Orange
 			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
+		}
+
+		TrueNightShivResprite: {
+			Tooltip: Determines sprite style of True Nights Stabber
+			Label: "[i:CalamityInheritance/TrueNightsStabber]True Nights Stabber Resprite"
+		}
+
+		NightShivResprite: {
+			Tooltip: Determines sprite style of Nights Stabber
+			Label: "[i:CalamityInheritance/NightsStabber]Nights Stabber Resprite"
+		}
+
+		TrueCaliburShivResprite: {
+			Tooltip: Determines sprite style of True Excalibur Shortsword
+			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword Resprite"
+		}
+
+		CaliburShivResprite: {
+			Tooltip: Determines sprite style of Excalibur Shortsword
+			Label: "[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword Resprite"
+		}
+
+		ElementalShivResprite: {
+			Tooltip: Determines sprite style of Elemental Shiv
+			Label: "[i:CalamityInheritance/ElementalShivold]Elemental Shiv Resprite"
+		}
+
+		GalileoResprite: {
+			Tooltip: Determines sprite style of Galileo
+			Label: "[i:CalamityMod/GalileoGladius]Galileo Gladius Resprite"
+		}
+
+		CrescentMoonResprite: {
+			Tooltip: Determines sprite style of Crescent Moon
+			Label: "[i:CalamityMod/CrescentMoon]Crescent Moon Resprite"
+		}
+
+		AegisResprite: {
+			Tooltip: Determines sprite style of Aegis Blade
+			Label: "[i:CalamityMod/AegisBlade]Aegis Blade Resprite"
 		}
 	}
 

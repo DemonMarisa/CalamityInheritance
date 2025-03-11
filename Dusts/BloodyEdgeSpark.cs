@@ -13,27 +13,27 @@ namespace CalamityInheritance.Dusts
         }
 
         private static ParticlePool<PrettySparkleParticle> _poolPrettySparkle = new ParticlePool<PrettySparkleParticle>(200, GetNewPrettySparkleParticle);
-        public static void GeneratePrettySparkles(Vector2 position, float num, float num2, float scaleModifier = 1f)
+        public static void GeneratePrettySparkles(Vector2 position, float sparksTime, float num2, float scaleModifier = 1f)
         {
-            for (float num3 = 0f; num3 < 3f; num3 += 2f)
+            for (float i = 0f; i < 3f; i += 2f)
             {
                 PrettySparkleParticle prettySparkleParticle = _poolPrettySparkle.RequestParticle();
-                Vector2 vector = ((float)Math.PI / 4f + (float)Math.PI / 4f * num3 + num2).ToRotationVector2() * 4f;
+                Vector2 vector = ((float)Math.PI / 4f + (float)Math.PI / 4f * i + num2).ToRotationVector2() * 4f;
                 prettySparkleParticle.ColorTint = new Color(1f, 0.1f, 0.1f, 0.8f);
                 prettySparkleParticle.LocalPosition = position;
                 prettySparkleParticle.Rotation = vector.ToRotation();
                 prettySparkleParticle.Scale = new Vector2(4f, 1f) * scaleModifier;
                 prettySparkleParticle.FadeInNormalizedTime = 5E-06f;
                 prettySparkleParticle.FadeOutNormalizedTime = 0.95f;
-                prettySparkleParticle.TimeToLive = num;
-                prettySparkleParticle.FadeOutEnd = num;
-                prettySparkleParticle.FadeInEnd = num / 2f;
-                prettySparkleParticle.FadeOutStart = num / 2f;
+                prettySparkleParticle.TimeToLive = sparksTime;
+                prettySparkleParticle.FadeOutEnd = sparksTime;
+                prettySparkleParticle.FadeInEnd = sparksTime / 2f;
+                prettySparkleParticle.FadeOutStart = sparksTime / 2f;
                 prettySparkleParticle.AdditiveAmount = 0.35f;
-                prettySparkleParticle.LocalPosition -= vector * num * 0.25f;
+                prettySparkleParticle.LocalPosition -= vector * sparksTime * 0.25f;
                 prettySparkleParticle.Velocity = vector;
                 prettySparkleParticle.DrawVerticalAxis = false;
-                if (num3 == 1f)
+                if (i == 1f)
                 {
                     prettySparkleParticle.Scale *= 2f;
                     prettySparkleParticle.Velocity *= 1.5f;
@@ -52,11 +52,11 @@ namespace CalamityInheritance.Dusts
                 prettySparkleParticle2.Scale = new Vector2(4f, 1f) * 0.7f * scaleModifier;
                 prettySparkleParticle2.FadeInNormalizedTime = 5E-06f;
                 prettySparkleParticle2.FadeOutNormalizedTime = 0.95f;
-                prettySparkleParticle2.TimeToLive = num;
-                prettySparkleParticle2.FadeOutEnd = num;
-                prettySparkleParticle2.FadeInEnd = num / 2f;
-                prettySparkleParticle2.FadeOutStart = num / 2f;
-                prettySparkleParticle2.LocalPosition -= vector2 * num * 0.25f;
+                prettySparkleParticle2.TimeToLive = sparksTime;
+                prettySparkleParticle2.FadeOutEnd = sparksTime;
+                prettySparkleParticle2.FadeInEnd = sparksTime / 2f;
+                prettySparkleParticle2.FadeOutStart = sparksTime / 2f;
+                prettySparkleParticle2.LocalPosition -= vector2 * sparksTime * 0.25f;
                 prettySparkleParticle2.Velocity = vector2;
                 prettySparkleParticle2.DrawVerticalAxis = false;
                 if (num4 == 1f)

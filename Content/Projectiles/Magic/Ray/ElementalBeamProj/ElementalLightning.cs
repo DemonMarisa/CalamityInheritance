@@ -46,13 +46,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 Time++;
                 Lighting.AddLight(Projectile.Center + Projectile.velocity * 0.6f, 0.6f, 0.2f, 0.9f);
                 float radiusFactor = MathHelper.Lerp(0f, 1f, Utils.GetLerpValue(5f, 7f, Time, true));
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     float offsetRotationAngle = Projectile.velocity.ToRotation() + Time / 7f;
                     float radius = (7f + (float)Math.Cos(Time / 4f) * 3f) * radiusFactor;
                     Vector2 dustPosition = Projectile.Center;
                     dustPosition += offsetRotationAngle.ToRotationVector2().RotatedBy(i / 5f * MathHelper.TwoPi) * radius;
-                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 107 : 180, default, default, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
+                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 107 : 180, default, default, new Color(25, 226, 199));
                     dust.noGravity = true;
                     dust.velocity = Projectile.velocity * 0.1f;
                     dust.scale = Main.rand.NextFloat(1f, 1.2f);

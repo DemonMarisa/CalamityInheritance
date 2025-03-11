@@ -5,6 +5,7 @@ using System;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -48,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 float acceleration = 0.04f * 5f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
                 if(hitCount < 1)
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, homeInSpeed, 40f);
+                CIFunction.HomeInOnNPC(Projectile, true, 1500f, homeInSpeed, 40f);
             }
 
             if (Main.rand.NextBool(4))
@@ -68,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 stardust.velocity *= 0.1f;
             }
             if (Projectile.timeLeft < 120)
-            {
+            {   
                 Projectile.velocity *= 0.97f;
             }
         }
@@ -98,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void OnKill(int timeLeft)
         {
-            for (int k = 0; k < 10; k++)
+            for (int k = 0; k < 5; k++)
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.DungeonSpirit, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);

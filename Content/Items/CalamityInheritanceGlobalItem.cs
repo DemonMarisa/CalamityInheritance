@@ -14,6 +14,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
@@ -69,10 +70,6 @@ namespace CalamityInheritance.Content.Items
                 {
                     item.damage = 14571; //绯红恶魔回调至14571面板
                 }
-                if (item.type == ModContent.ItemType<UniversalGenesis>())
-                {
-                    item.damage = 99999; //天基99999面板
-                }
                 if (item.type == ModContent.ItemType<HalibutCannon>())
                 {
                     item.damage = 1500; //比目鱼
@@ -105,18 +102,25 @@ namespace CalamityInheritance.Content.Items
             }
             #endregion
             #region 用于召唤位的叠加
+            //是否佩戴了斯塔提斯诅咒?
             if(item.type == ModContent.ItemType<StatisCurse>())
             {
+                //是否佩戴了原灾的核子之源？如果是，那就补正斯塔提斯诅咒的栏位    
                 player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
+                //用于其他的堆叠操作，因为原灾没有对这个饰品的判定
                 player.CalamityInheritance().IfStatisCurse = true;
             }
+            //是否佩戴占星?
             if(item.type == ModContent.ItemType<StarTaintedGenerator>())
             {
+                //如果佩戴了核子之源？补正两个栏位
                 player.maxMinions += player.Calamity().nucleogenesis ? 2 : 0;
             }
+            //是否佩戴斯塔提斯祝福?
             if(item.type == ModContent.ItemType<StatisBlessing>())
             {
-                player.maxMinions += player.CalamityInheritance().IfStatisCurse ? 2 : 0;
+                //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
+                player.maxMinions += (player.CalamityInheritance().IfStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
             }
             #endregion
         }
@@ -137,6 +141,8 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<UniverseSplitterField>()] > 0)
+                
             if (usPlayer.LoreWallofFlesh)
                 velocity *= 1.10f;
             if (usPlayer.LorePlantera)
@@ -395,8 +401,9 @@ namespace CalamityInheritance.Content.Items
             #endregion
             #region 寒霜套回调
             else if (set == "FrostArmorSetCI")
-            {
-                player.Calamity().frostSet = false; //ban掉原灾的效果
+            {   
+                //ban掉原灾的效果
+                player.Calamity().frostSet = false; 
                 //复原原本的效果
                 player.GetDamage<MeleeDamageClass>() += 0.1f;
                 player.GetDamage<RangedDamageClass>() += 0.1f;
@@ -405,21 +412,25 @@ namespace CalamityInheritance.Content.Items
             #region 丛林套回调
             else if (set == "JungleSetCI")
             {
-                player.manaCost -= 0.06f; //回调魔力消耗
+                //回调魔力消耗
+                player.manaCost -= 0.06f; 
             }
             #endregion
             #region 死灵套回调
             else if (set == "NecroSetCI")
             {
-                player.Calamity().necroSet = false; //ban掉原灾的效果 
+                //ban掉原灾的效果 
+                player.Calamity().necroSet = false; 
             }
             #endregion
             #region 熔岩套回调
             else if (set == "MoltensetCI")
             {
                 //注：灾厄的熔岩套把10%近战伤害转成了10%真近战伤害
-                player.GetDamage<TrueMeleeDamageClass>() -= 0.10f; //取消真近战伤害加成
-                player.GetDamage<MeleeDamageClass>() += 0.10f;  //恢复为普通近战伤害加成
+                //取消真近战伤害加成
+                player.GetDamage<TrueMeleeDamageClass>() -= 0.10f; 
+                //恢复为普通近战伤害加成
+                player.GetDamage<MeleeDamageClass>() += 0.10f;  
             }
             #endregion
         }
@@ -437,22 +448,26 @@ namespace CalamityInheritance.Content.Items
                     *这里的处理是，查看玩家手套等级的大小，然后补正低级手套原本能提供的攻速
                     */
                 case ItemID.FeralClaws:
-                    
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.02f; //绿手套本身就少了2%
-                    if(calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f; //存在二级手套极以上，补正
+                    //绿手套本身就少了2%
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.02f; 
+                    //存在二级手套极以上，补正
+                    if(calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f; 
                     break;
                 case ItemID.PowerGlove:
-                    if(calPlayer.gloveLevel > 2) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //存在三级手套极以上，补正
+                    //存在三级手套极以上，补正
+                    if(calPlayer.gloveLevel > 2) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
                     break;
                 case ItemID.BerserkerGlove:
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //回调12%
-                    //狂战士手套本身没有手套等级，别问
+                    //狂战士手套本身没有手套等级, 因此直接回调
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
                     break;
                 case ItemID.MechanicalGlove:
-                    if(calPlayer.gloveLevel > 3) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; //存在四级手套极以上，补正
+                    //存在四级手套极以上，补正
+                    if(calPlayer.gloveLevel > 3) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
                     break;
                 case ItemID.FireGauntlet:
-                    if(calPlayer.gloveLevel > 4) player.GetAttackSpeed<MeleeDamageClass>() += 0.14f; //存在元素手套，补正
+                    //存在元素手套，补正
+                    if(calPlayer.gloveLevel > 4) player.GetAttackSpeed<MeleeDamageClass>() += 0.14f; 
                     break;
                 default:
                     break;

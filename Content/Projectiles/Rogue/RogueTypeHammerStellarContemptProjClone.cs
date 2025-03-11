@@ -75,23 +75,27 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
-            if(Projectile.ai[0] < 45f) //克隆的锤子将会在飞行的过程中增大, 直到ai[0] = 45f为止
+            //克隆的锤子将会在飞行的过程中增大, 直到ai[0] = 45f为止
+            if(Projectile.ai[0] < 45f) 
             Projectile.scale += 0.01f;
-
-            if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            if(Projectile.ai[0] > canHomingCounter) 
             {
                 Projectile.ai[0] = canHomingCounter;
                 CIFunction.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, 20f);
                 Projectile.ai[2] += 1f;
-                if(Projectile.ai[2] == 50f) //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
+                //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
+                if(Projectile.ai[2] == 50f) 
                 {
                    Projectile.ai[2] = 0;
                    addFlares += 1; //每次+2
                 }
             }
             else
-            Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
-            Projectile.rotation += RotationIncrement;//无论状态，锤子都应当在飞行过程中旋转, 但旋转的速度会慢一些
+            //允许跟踪前会刷新锤子的存续时间
+            Projectile.timeLeft = Lifetime; 
+            //无论状态，锤子都应当在飞行过程中旋转, 但旋转的速度会慢一些
+            Projectile.rotation += RotationIncrement;
 
             //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
             if (Main.rand.NextBool())
@@ -158,7 +162,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            // Some dust gets produced on impact.
             int dustCount = Main.rand.Next(20, 24);
             int dustRadius = 6;
             Vector2 corner = new(target.Center.X - dustRadius, target.Center.Y - dustRadius);
@@ -172,7 +175,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[idx].scale = scale;
             }
 
-            // Applies Nightwither on contact at night.
             if (!Main.dayTime)
                 target.AddBuff(ModContent.BuffType<Nightwither>(), 240);
             
@@ -189,7 +191,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private void SpawnFlares(Vector2 targetPos, int width, int height)
         {
-            // Play the Lunar Flare sound centered on the user, not the target (consistent with Lunar Flare and Stellar Striker)
             Player user = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
             int numFlares = addFlares; //每次ai[2]总是等于50f时, 都会增加月耀的弹幕量

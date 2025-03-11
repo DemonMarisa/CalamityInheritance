@@ -364,3 +364,8 @@ SvantechnicalLegacy: {
 		'''
 	DisplayName: 斯万科技枪[Legacy]
 }
+
+OpalStrikerLegacy: {
+	DisplayName: 大理石冲击波[Legacy]
+	Tooltip: 发射三个大理石弹幕攻击你的敌人
+}

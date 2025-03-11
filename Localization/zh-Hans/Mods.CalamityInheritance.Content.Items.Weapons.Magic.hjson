@@ -42,9 +42,10 @@ ElementalRayold: {
 	Tooltip:
 		'''
 		发射纯粹而集中的元素射线
-		射线消失时会留下远古之光跟踪敌人
-		敌人在附近时会有元素闪电从天而降
-		击中敌人会出现星云火焰与耀斑爆炸
+		[i:FragmentStardust][c/4169E1:星尘]碎片在射线消失, 停留片刻后追击
+		[i:FragmentVortex][c/66CDAA:星璇]闪电将会从天而降攻击附近的单位
+		[i:FragmentSolar][c/FFA500:日耀]炸弹将在受害者的体内引燃
+		[i:FragmentNebula][c/FF00FF:星云]烈焰随后出现并追击你的敌人
 		'''
 }
 
@@ -214,4 +215,33 @@ DanceofLightLegacy: {
 		[c/FFD9FF:炫目闪光过后，一切荡然无存]
 		'''
 	DisplayName: 光之舞[Revamped]
+}
+
+CrystalFlareStaff: {
+	Tooltip:
+		'''
+		往鼠标方向发射会散射的霜冻
+		霜冻在持续一段时间, 或者击中敌人后爆炸
+		'''
+	DisplayName: 晶火法杖[Revamped]
+}
+
+WingmanLegacy: {
+	Tooltip: 发射集中的激光束
+	DisplayName: 侧翼[Legacy]
+}
+
+GenisisLegacy: {
+	Tooltip: "发射Y形状的毁灭能量束和一簇激光 "
+	DisplayName: 源[Legacy]
+}
+
+AlphaRayLegacy: {
+	Tooltip:
+		'''
+		以三发齐射的激光能量弹雨蒸发一切
+		右键发射Y形光束与一束激光
+		"感受直线粒子特效的巅峰!"
+		'''
+	DisplayName: 阿尔法射线[Legacy]
 }

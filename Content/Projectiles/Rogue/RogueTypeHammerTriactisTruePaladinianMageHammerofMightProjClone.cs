@@ -81,19 +81,23 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
-            if(Projectile.ai[0] < 30f) //大锤子会在飞行过程中缩小一点, 直到ai[0] = 45f为止 ->克隆的锤子现在飞行过程中会尝试变得更小
-            Projectile.scale -= 0.07f;
 
-            if(Projectile.ai[0] > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            //克隆的锤子在飞行过程中会尝试变得更小
+            if(Projectile.ai[0] < 30f) 
+            Projectile.scale -= 0.07f;
+            //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            if(Projectile.ai[0] > canHomingCounter) 
             {
                 Projectile.ai[0] = canHomingCounter;
                 CIFunction.HomeInOnNPC(Projectile, true, 3000f, stealthSpeed, 24f, 20f);
             }
             else
-            Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
-            Projectile.rotation += RotationIncrement * 0.5f;//大锤子的旋转增长速度比他下位的锤子更慢
+            //允许跟踪前会刷新锤子的存续时间
+            Projectile.timeLeft = Lifetime; 
+            //大锤子的转速比他下位的锤子更慢
+            Projectile.rotation += RotationIncrement * 0.5f;
 
-            //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
+            //克隆锤子飞行过程中才会生成近似于原灾弑神锤飞行的粒子
             if (Main.rand.NextBool() && Projectile.ai[0] < canHomingCounter)
             {
                 Vector2 offset = new Vector2(16f, 0).RotatedByRandom(MathHelper.ToRadians(360f));
@@ -154,13 +158,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool PreKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
-            player.CalamityInheritance().IfCloneHtting = false; //挂载锤子被击杀前应当取消挂载状态标记
+            //TODO:这个原本是用来标记锤子处于挂载状态然后增强星流投矛伤害的
+            //但是我试了好几次都失败了，所以看情况哪天要是我会造了就行
+            player.CalamityInheritance().IfCloneHtting = false; 
 
             return true;
         }
         public override void OnKill(int timeLeft)
         {
             //kill掉后锤子会尝试收回
+            //这个收回的实现方法实际上就是生成一个直接拥有返程AI的新锤子
+            //这样除了比较方便一点，而且也可以让他返程时“如果路径上可能的话”造成一些额外伤害, 作为给玩家的一种奖励
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(), (int)(RogueTypeHammerTriactisTruePaladinianMageHammerofMight.HammerDamage * 0.15), Projectile.knockBack, Projectile.owner, 0f, 34f, -1f);
             
         }
@@ -198,29 +206,38 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
             }
         }
+        //生成锤子
         private void SpawnAdditionHammer()
         {
             int hammerType = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>();
             int hammerDamage = (int)(Projectile.damage * 1.4f);
+            //Echo的生成角度
             float hammerAngle = 8f; 
             float hammerVelocity = 11f;
             float rotArg = 360f / hammerAngle;
+            //将弧度转为角度
             float rotateAngel = MathHelper.ToRadians(rotArg * Main.rand.NextFloat(0f,8f));
             Player player = Main.player[Projectile.owner];
+            //给Echo的生成提供一个速度，由于绑定了Rotateby这个旋转，所以不需要额外提供另外一个方向的速度
             Vector2 hammerVelOffset = new Vector2(hammerVelocity, 0f).RotatedBy(rotateAngel);
-            if(Projectile.owner == Main.myPlayer && HitCounts > 2)
+            //Clone只有造成第三下攻击的时候才会生成一次Echo
+            if(Projectile.owner == Main.myPlayer && HitCounts % 3 == 0)
             {
                 int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
                 Main.projectile[newHammer].netUpdate = true;
-                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center); //现在只有Echo才会播放落星的声音
-                CIFunction.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.8f, 2.1f), Main.rand.NextBool(2)?DustID.GemEmerald:DustID.Vortex, true, 11f);
+                //只有Clone生成Echo的时候才会播报落星的提示音
+                SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center);
+                //生成粒子, 因为这里用了封装，所以一句话就搞定了
+                CIFunction.DustCircle(Projectile.Center, 48f, Main.rand.NextFloat(1.8f, 2.1f), 
+                                      Main.rand.NextBool(2) ? DustID.GemEmerald : DustID.Vortex, 
+                                      true, 11f);
+                //Clone的逻辑是两个相反方向的锤子，因此这里是直接复制一遍，然后只取速度反向实现。
                 int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[altHammer].localAI[0] = -Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;
-                HitCounts = 0;
+                HitCounts ++;
             }
-            else HitCounts++;
         }
     }
 }
