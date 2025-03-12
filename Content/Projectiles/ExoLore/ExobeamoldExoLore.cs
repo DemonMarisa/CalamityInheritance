@@ -141,32 +141,27 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
-            Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
-
-            usPlayer.ProjectilHitCounter2++;
-
+            OnHitEffects(target.Center);
             target.ExoDebuffs();
+        }
+        private void OnHitEffects(Vector2 targetPos)
+        {
+            int randomChoice = Main.rand.Next(3);
+            var source = Projectile.GetSource_FromThis();
 
-            SoundEngine.PlaySound(SoundID.Item88, player.Center);
-            float xPos = player.position.X + 800 * Main.rand.NextBool(2).ToDirectionInt();
-            float yPos = player.position.Y + Main.rand.Next(-800, 801);
-            Vector2 startPos = new Vector2(xPos, yPos);
-            Vector2 velocity = target.position - startPos;
-            float dir = 10 / startPos.X;
-            velocity.X *= dir * 150;
-            velocity.Y *= dir * 150;
-            velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
-            velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-            if (usPlayer.ProjectilHitCounter2 >= 4)
+            switch (randomChoice)
             {
-                for (int comet = 0; comet < 1; comet++)
-                {
-                    float ai1 = Main.rand.NextFloat() + 0.5f;
-                    Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<CIExocomet>(), damageDone, (int)Projectile.knockBack, player.whoAmI, 0f, ai1);
-                }
-                usPlayer.ProjectilHitCounter2 = 0;
+                case 0:
+                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    break;
+
+                case 1:
+                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    break;
+
+                case 2:
+                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    break;
             }
         }
 

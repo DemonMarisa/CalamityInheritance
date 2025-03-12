@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             AIType = 242;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 120;
+            Projectile.DamageType = DamageClass.Summon;
         }
         public override void AI()
         {

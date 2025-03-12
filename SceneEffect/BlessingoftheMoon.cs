@@ -19,6 +19,7 @@ namespace CalamityInheritance.SceneEffect
 {
     public class BlessingoftheMoon : ModSceneEffect
     {
+
         public override SceneEffectPriority Priority
         {
             get

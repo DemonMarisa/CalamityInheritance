@@ -28,6 +28,8 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityMod.Balancing;
+using CalamityMod.World;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡

@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.minion = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 9;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void AI()

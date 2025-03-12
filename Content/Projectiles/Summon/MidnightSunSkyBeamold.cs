@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.timeLeft = TrueTimeLeft;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         // Netcode for sending and receiving shit

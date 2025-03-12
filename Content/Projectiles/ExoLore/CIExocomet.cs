@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -39,6 +40,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void AI()
         {
+            //获取玩家
+            Player player = Main.player[Projectile.owner];
+            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 5)
             {
@@ -68,18 +73,37 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.5f);
 
-            if (Projectile.timeLeft < 240)
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
+            if (usPlayer.LoreExo)
+            {
+                if (Projectile.timeLeft > 320)
+                {
+                    Projectile.velocity *= 0.94f;
+                }
+
+                if (Projectile.timeLeft < 320)
+                {
+                    float maxSpeed = 20f;
+                    float acceleration = 0.02f * 12f;
+                    float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
+
+                    CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, homeInSpeed, 15f, 5f);
+                }
+            }
             else
             {
-                float projVelocity = 100f * Projectile.ai[1];
-                float scaleFactor = 20f * Projectile.ai[1];
-                if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
+                if (Projectile.timeLeft < 240)
+                    CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
+                else
                 {
-                    if (Projectile.Distance(Main.player[Projectile.owner].Center) > 40f)
+                    float projVelocity = 100f * Projectile.ai[1];
+                    float scaleFactor = 20f * Projectile.ai[1];
+                    if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
                     {
-                        Vector2 moveDirection = Projectile.SafeDirectionTo(Main.player[Projectile.owner].Center, Vector2.UnitY);
-                        Projectile.velocity = (Projectile.velocity * (projVelocity - 1f) + moveDirection * scaleFactor) / projVelocity;
+                        if (Projectile.Distance(Main.player[Projectile.owner].Center) > 40f)
+                        {
+                            Vector2 moveDirection = Projectile.SafeDirectionTo(Main.player[Projectile.owner].Center, Vector2.UnitY);
+                            Projectile.velocity = (Projectile.velocity * (projVelocity - 1f) + moveDirection * scaleFactor) / projVelocity;
+                        }
                     }
                 }
             }

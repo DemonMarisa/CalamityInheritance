@@ -10,6 +10,7 @@ using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -176,6 +177,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private int hitCount = 0;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+
             target.immune[Projectile.owner] = 0;
             if (penetrates == 5)
             {

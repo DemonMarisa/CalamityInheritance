@@ -24,6 +24,7 @@ using CalamityMod.Items.Mounts;
  *盾冲朝向排查2025.1.5
  *与冲刺速度，冲刺mideffect无关
  *与75行无关
+ *找到了，见180行
 */
 namespace CalamityInheritance.CIPlayer
 {
