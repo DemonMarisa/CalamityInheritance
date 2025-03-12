@@ -41,7 +41,6 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         
         public override void UpdateArmorSet(Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
             var modPlayer1 = player.CalamityInheritance();
             player.setBonus = this.GetLocalizedValue("SetBonus");
             //我不知道咋写仆从，先留在这里后面在考虑改了

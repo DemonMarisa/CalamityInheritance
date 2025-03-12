@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElementalQuiver]Disable Elemental Quiver Split Effect"
+			Label: "[i:CalamityMod/ElemQuiver]Disable Elemental Quiver Split Effect"
 			Tooltip: Determines EQ Split Effect. Use if lag is an issue.
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElementalQuiver]Elemental Quiver Splitstyle"
+			Label: "[i:CalamityMod/ElemQuiver]Elemental Quiver Splitstyle"
 			Tooltip:
 				'''
 				Determines the style of projectile spilt.
@@ -317,6 +317,23 @@ Configs: {
 		AegisResprite: {
 			Tooltip: Determines sprite style of Aegis Blade
 			Label: "[i:CalamityMod/AegisBlade]Aegis Blade Resprite"
+		}
+
+		AllElemental: {
+			Label: "[i:CalamityInheritance/ElementalShivold]All Elemental Items Resprite"
+			Tooltip:
+				'''
+				Determines all sprite styles of Elemental Items.
+				Notes that to distinguish from the existing items in Calamity, this options will
+				prioritize switching the Legacy Elemental Items already present within the mod
+				Sprite List:
+				[i:CalamityInheritance/ElementalShivold]Elemental Shiv Legacy
+				[i:CalamityMod/ElementalLance]Elemental Lance
+				[i:CalamityInheritance/MeleeTypeElementalDisk]Elemental Disk Legacy Melee
+				[i:CalamityMod/ElementalBlaster]Elemental Blaster
+				[i:CalamityInheritance/ElementalRayold]Elemental Ray Revamped
+				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
+				'''
 		}
 	}
 

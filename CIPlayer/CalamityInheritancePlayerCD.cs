@@ -5,6 +5,12 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
+    /*
+    *大部分的重复类的东西，如Buff， 套装效果， 饰品属性等的判定现在全部单独包装起来了
+    *这样主要是方便后续进行维护，而且不用每次来这里都得找一大堆史
+    *同时我将玩家类里面的几乎所有成员，除了部分实在是不能乱来的全部更名了
+    *现在应该能更容易地看出来这个成员是干嘛的。
+    */
     public partial class CalamityInheritancePlayer: ModPlayer
     {
         public int HammerCounts = 0; //用于锤子打击次数的计时
@@ -21,7 +27,7 @@ namespace CalamityInheritance.CIPlayer
                 if (GodSlayerDMGprotectMax < 80)
                     GodSlayerDMGprotectMax++;
             }
-            if (yharimAuricArmor)
+            if (YharimAuricSet)
             {
                 if (yharimArmorinvincibility > 0)
                     yharimArmorinvincibility--;

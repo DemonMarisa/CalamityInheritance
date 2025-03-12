@@ -1,8 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
-using CalamityInheritance.Content.Items.Armor.YharimAuric;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Vanity;

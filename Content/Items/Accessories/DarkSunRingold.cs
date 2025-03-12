@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
-            modPlayer.DarkSunRingStats = true;
+            modPlayer.DarkSunRings = true;
         }
 
         public override void AddRecipes()

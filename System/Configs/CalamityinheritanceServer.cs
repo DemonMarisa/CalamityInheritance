@@ -45,6 +45,5 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(true)]
         [ReloadRequired]
         public bool CalExtraDrop { get; set; } //允许灾厄额外掉落
-
     }
 }

@@ -53,7 +53,7 @@ namespace CalamityInheritance.CIPlayer
         public override void UpdateLifeRegen()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            if (DarkSunRingStats) //日食指环
+            if (DarkSunRings) //日食指环
             {
                 Player.lifeRegen += 2;
                 if (Main.eclipse || Main.dayTime)
@@ -75,7 +75,7 @@ namespace CalamityInheritance.CIPlayer
             if (EHeartStats)
             {
                 Player.lifeRegen += 2;
-                if(EHeartStatsBuff)
+                if(EHeartStatsBoost)
                 Player.lifeRegen += 8;      //5(1+4)HP/s
             }
             //魔君套

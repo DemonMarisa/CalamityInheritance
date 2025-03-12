@@ -102,7 +102,7 @@ namespace CalamityInheritance.CIPlayer
 
                 Player.statLife = +100;
 
-                if (DraconicSurgeStats)
+                if (BuffStatsDraconicSurge)
                 {
                     Player.statLife += Player.statLifeMax2;
                     Player.HealEffect(Player.statLifeMax2);
@@ -203,7 +203,7 @@ namespace CalamityInheritance.CIPlayer
                         Player.statLife = Player.statLifeMax2;
                 }
 
-                if (DraconicSurgeStats)
+                if (BuffStatsDraconicSurge)
                 {
 
                     Player.statLife += Player.statLifeMax2;
@@ -263,7 +263,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.immuneTime = 15;
                 return true;
             }
-            if(yharimAuricArmor && yharimArmorinvincibility > 0)
+            if(YharimAuricSet && yharimArmorinvincibility > 0)
             {
                 return true;
             }
@@ -331,7 +331,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
-            if (PolarisBoost)
+            if (BuffPolarisBoost)
             {
                 PolarisBoostCounter -= 10;
                 if (PolarisBoostCounter < 0)
@@ -339,18 +339,18 @@ namespace CalamityInheritance.CIPlayer
 
                 if (PolarisBoostCounter >= 20)
                 {
-                    PolarisBoostPhase2= false;
-                    PolarisBoostPhase3 = true;
+                    PolarisPhase2= false;
+                    PolarisPhase3 = true;
                 }
                 else if (PolarisBoostCounter >= 10)
                 {
-                    PolarisBoostPhase2 = true;
-                    PolarisBoostPhase3 = false;
+                    PolarisPhase2 = true;
+                    PolarisPhase3 = false;
                 }
                 else
                 {
-                    PolarisBoostPhase3 = false;
-                    PolarisBoostPhase2 = false;
+                    PolarisPhase3 = false;
+                    PolarisPhase2 = false;
                 }
             }
             //海绵
@@ -500,7 +500,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
             }
             //魔君套受击后无敌
-            if (yharimAuricArmor)
+            if (YharimAuricSet)
                 yharimArmorinvincibility = 60;
         }
         #endregion
@@ -623,7 +623,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (item.DamageType == DamageClass.Melee)
             {
-                TitanScaleTrueMeleeBuff = 600;
+                BuffStatsTitanScaleTrueMelee = 600;
             }
         }
  

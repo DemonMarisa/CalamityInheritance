@@ -41,11 +41,11 @@ ElementalRayold: {
 	DisplayName: 元素射线[Revapmed]
 	Tooltip:
 		'''
-		发射纯粹而集中的元素射线
-		[i:FragmentStardust][c/4169E1:星尘]碎片在射线消失, 停留片刻后追击
-		[i:FragmentVortex][c/66CDAA:星璇]闪电将会从天而降攻击附近的单位
-		[i:FragmentSolar][c/FFA500:日耀]炸弹将在受害者的体内引燃
-		[i:FragmentNebula][c/FF00FF:星云]烈焰随后出现并追击你的敌人
+		[c/E2EAF4:发射纯粹而集中的元素射线]
+		[i:FragmentStardust][c/4169E1:星尘碎片][c/E2EAF4:在射线消失, 停留片刻后追击]
+		[i:FragmentVortex][c/66CDAA:星璇闪电][c/E2EAF4:从天而降, 攻击附近的单位]
+		[i:FragmentSolar][c/FFA500:日耀炸弹][c/E2EAF4:将在受害者的体内引燃]
+		[i:FragmentNebula][c/FF00FF:星云烈焰][c/E2EAF4:随后出现并追击你的敌人]
 		'''
 }
 

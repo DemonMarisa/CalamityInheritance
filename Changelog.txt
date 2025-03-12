@@ -2,11 +2,13 @@
 内容:
 -添加 光之舞[Revamped], 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
 -添加 晶火法杖[Revamped], 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy]
+-给元素射线[Revamped]的日耀爆炸与星云火焰提供了新的视觉效果
 -添加 远古高频红刀, 目前无法获得
 -修复并小重置 恶魔之叉 与 狱火鞭, 给予法师玩家们一点点爱
 -添加 加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
--添加 元素短剑/伽利略短剑/永夜短剑/真永夜短剑/神圣短剑/真神圣短剑的旧贴图切换
+-添加 伽利略短剑/永夜短剑/真永夜短剑/神圣短剑/真神圣短剑的旧贴图切换
 -添加 庇护之刃/明月链刃的旧贴图切换
+-添加 元素物品贴图切换,可以切换大部分元素物品,如元素方舟,元素射线
 
 调整:
 -重构了一遍贴图切换的config,让它看起来更合理
@@ -26,6 +28,7 @@
 
 修复:
 -主要是一些潜在的多人游戏的问题
+-修复了永恒盗贼套装的伤害错误加成与裂片无限分裂的问题
 
 Content:
 -Added Dance of Light Revamped, Apotheosis Legacy, Svantechnical Legacy, Azathoth Legacy
@@ -34,9 +37,11 @@ Content:
 -Fixed and revamp Demonic Pitchfork and Hell burst to give some love to Mage class
 -Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
 -Added Elemental/Galileo/Night/True Night/Excalibur/TrueExcalibur Shivs' legacy sprite
+-Added almost all Elemental stuff resprite.
 -Added Aegis Blade and Crescent Moon Resprite
+-Improved the visual of Elemental Ray Revamped
 
-Balace:
+Balance:
 -Reordered Resprite config to make it looks more acceptable
 -Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50% , now can convert the max stealth to defense boost 
  This effect is applied to Yharim armor
@@ -54,5 +59,18 @@ Balace:
 
 Fixes:
 -Mainly multiplayer, but just not really enough, but will try.
+-Fixed a bug Reaver Armor Rogue Set Bonus' Life Shards can infinitely split and deals 300k damage
 
 ********************************************************************************************************************************/
+3/11:
+-添加 晶火法杖[Revamped], 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy]
+-晶火法杖现在采用新的攻击模式: 往前方发射5~8个散射鬼火
+-元素射线[Revamped]再次小重做:
+ 星云火焰修改为星云烈焰(射弹), 击中后会往外生成几个然后追踪敌人
+ 日耀爆炸采用熔岩巨剑的攻击模式
+ 
+-重构了贴图重绘的config,让排版看起来更合理
+
+3/12:
+-修复了永恒盗贼套装潜在的平方甚至次方增伤的问题, 但仍然存在生命碎片分裂超出既定预期的情况
+-修复了永恒盗贼套装套装奖励无限套娃的问题

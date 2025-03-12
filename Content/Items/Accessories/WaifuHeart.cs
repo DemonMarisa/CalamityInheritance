@@ -68,14 +68,14 @@ namespace CalamityInheritance.Content.Items.Accessories
             int cloudy = ProjectileType<CloudWaifu>();
             if(hideVisual)
             {
-                usPlayer.EHeartStatsBuff = true;
+                usPlayer.EHeartStatsBoost = true;
                 usPlayer.FuckEHeart = true;
                 modPlayer.allWaifus = false;
                 fuckYouEHeart = false;
             }
             else
             {
-                usPlayer.EHeartStatsBuff = false;
+                usPlayer.EHeartStatsBoost = false;
                 usPlayer.FuckEHeart = false;
                 modPlayer.allWaifus = true;
                 fuckYouEHeart = true;

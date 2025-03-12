@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CalamityInheritance();
-            usPlayer.ancientReaperToothNeclace = true;
+            usPlayer.SpeedrunNecklace = true;
         }
         public override void AddRecipes()
         {

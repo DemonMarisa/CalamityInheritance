@@ -1,8 +1,10 @@
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
+using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
@@ -19,8 +21,10 @@ using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.PermanentBoosters;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Melee.Shortswords;
+using CalamityMod.Projectiles.Melee.Spears;
 using CalamityMod.Projectiles.Pets;
 using ReLogic.Text;
 using Terraria.GameContent;
@@ -75,33 +79,70 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+            #region 全部的元素武器
+            if (TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<ElementalRayold>()]  != null ||
+                TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<ElementalLance>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] != null) 
+            {
+                if (!CIRespriteConfig.Instance.AllElemental)
+                {
+                    //方舟
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] =CIWeaponsResprite.ElemSwordCal;   
+                    //短剑
+                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivCal;
+                    //长矛
+                    TextureAssets.Item[ModContent.ItemType<ElementalLance>()] = CIWeaponsResprite.ElemLanceCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalLanceProjectile>()] = CIWeaponsResprite.ElemLanceProjCal;
+                    //飞盘(近战)
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] = CIWeaponsResprite.ElemDiskCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProj>()] = CIWeaponsResprite.ElemDiskCal;
+                    //射线
+                    TextureAssets.Item[ModContent.ItemType<ElementalRayold>()] = CIWeaponsResprite.ElemRayCal;
+                    //手套
+                    TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveCal;
+                    //元素BYD
+                    TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDCal;
+
+                }
+                if (CIRespriteConfig.Instance.AllElemental)
+                {
+                    //方舟
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] =CIWeaponsResprite.ElemSwordAlt;   
+                    //短剑
+                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivAlt;
+                    //长矛
+                    TextureAssets.Item[ModContent.ItemType<ElementalLance>()] = CIWeaponsResprite.ElemLanceAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalLanceProjectile>()] = CIWeaponsResprite.ElemLanceProjAlt;
+                    //飞盘(近战)
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] = CIWeaponsResprite.ElemDiskAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProj>()] = CIWeaponsResprite.ElemDiskAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProjSplit>()] = CIWeaponsResprite.ElemDiskAlt;
+                    //射线
+                    TextureAssets.Item[ModContent.ItemType<ElementalRayold>()] = CIWeaponsResprite.ElemRayAlt;
+                    //手套
+                    TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveAlt;
+                    TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDAlt;
+                }
+            }
+            #endregion
             #region 近战物品
             if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
             {
                 if (!CIRespriteConfig.Instance.ArkofCosmosTexture)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.ArkoftheCosmosNew;
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.AotCCal;
                 }
                 if (CIRespriteConfig.Instance.ArkofCosmosTexture)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.ArkoftheCosmosOld;
+                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.AotCAlt;
                 }
             }
-            #region 元素短剑
-            if (TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.ElementalShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivCal;
-                }
-                if (CIRespriteConfig.Instance.ElementalShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivAlt;
-                }
-            }
-            #endregion
             #region 圣短剑
             if (TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] != null)
             {
@@ -182,11 +223,11 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (!CIRespriteConfig.Instance.AegisResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.CalAegis;
+                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite. AegisCal;
                 }
                 if (CIRespriteConfig.Instance.AegisResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.AltAegis;
+                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.AegisAlt;
                 }
             }
             #endregion
@@ -213,7 +254,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if(!CIRespriteConfig.Instance.SkullmasherResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.Skullmasher1p5;
+                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.SkullmasherCal;
                 }
                 if(CIRespriteConfig.Instance.SkullmasherResprite)
                 {
@@ -259,18 +300,18 @@ namespace CalamityInheritance.CIPlayer
             {
                 if(!CIRespriteConfig.Instance.TriactisHammerResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.TriactisHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.TriactisHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.TriactisHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.TriactisHammerCalamity;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.GiantHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.GiantHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.GiantHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.GiantHammerCal;
                 }
                 if(CIRespriteConfig.Instance.TriactisHammerResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.TriactisHammerAlter;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.GiantHammerAlt;
                     
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.TriactisHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.TriactisHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.TriactisHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.GiantHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.GiantHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.GiantHammerCal;
                 }
             }
             #endregion
@@ -280,19 +321,19 @@ namespace CalamityInheritance.CIPlayer
             {
                 if(!CIRespriteConfig.Instance.PwnagehammerResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerCalamity;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerCalamity;
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerCal;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerCal;
 
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
                 }
                 if(CIRespriteConfig.Instance.PwnagehammerResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerAlter;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.HallowedHammerAlter;
+                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerAlt;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerAlt;
                     
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.HallowedHammerCalamity;
+                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
                 }
             }
             #endregion
@@ -329,13 +370,13 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (!CIRespriteConfig.Instance.GodSlayerKnivesResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesCalamityProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesCalProj;
                 }
                 if (CIRespriteConfig.Instance.GodSlayerKnivesResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesAlterTypeOne;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesAlterTypeOneProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesAltProj;
                 }
             }
             #endregion
@@ -345,23 +386,23 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 1)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowspecKnivesCalamity;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowspecKnivesCalamityProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivesCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivesCalProj;
                 }
                 if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowspecKnivesAlterThird;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowspecKnivesAlterThirdProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt3;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt3Proj;
                 }
                 if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 3)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowspecKnivesAlterSec;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowspecKnivesAlterSecProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt2;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt2Proj;
                 }
                 if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 4)
                 {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowspecKnivesAlterFirst;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowspecKnivesAlterThirdProj;
+                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt1;
+                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt3Proj;
                 }
             }
             #endregion
@@ -372,7 +413,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if(!CIRespriteConfig.Instance.HeliumFlashResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumFlashCalamity;
+                    TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumCal;
                 }
                 if(CIRespriteConfig.Instance.HeliumFlashResprite)
                 {

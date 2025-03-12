@@ -23,6 +23,9 @@ namespace CalamityInheritance.System.Configs
         public bool SetAllLegacySprite{ get; set; }
 
         [Header("Weapons")]
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool AllElemental{ get; set; }
         //战士
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
@@ -39,10 +42,6 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool GalileoResprite { get; set;}
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-
-        public bool ElementalShivResprite { get ; set ; }
 
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]

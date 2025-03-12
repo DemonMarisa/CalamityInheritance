@@ -36,6 +36,8 @@ namespace CalamityInheritance.Content.Items
         {
             if(item.type == ItemID.AncientChisel)
             player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+            if (item.type == ItemID.HandOfCreation)
+            player.CalamityInheritance().IfGodHand = true;
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             VanillaAccesoriesUnnerf(item, player);  //饰品
             CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
@@ -108,7 +110,7 @@ namespace CalamityInheritance.Content.Items
                 //是否佩戴了原灾的核子之源？如果是，那就补正斯塔提斯诅咒的栏位    
                 player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
                 //用于其他的堆叠操作，因为原灾没有对这个饰品的判定
-                player.CalamityInheritance().IfStatisCurse = true;
+                player.CalamityInheritance().WearingStatisCurse = true;
             }
             //是否佩戴占星?
             if(item.type == ModContent.ItemType<StarTaintedGenerator>())
@@ -120,7 +122,7 @@ namespace CalamityInheritance.Content.Items
             if(item.type == ModContent.ItemType<StatisBlessing>())
             {
                 //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
-                player.maxMinions += (player.CalamityInheritance().IfStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
+                player.maxMinions += (player.CalamityInheritance().WearingStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
             }
             #endregion
         }
@@ -189,11 +191,11 @@ namespace CalamityInheritance.Content.Items
                 }
             }
 
-            if (usPlayer.ReaverRangedRocket && usPlayer.canFireReaverRangedRocket)
+            if (usPlayer.ReaverRangedRocket && usPlayer.ReaverRocketFires)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
                 {
-                    usPlayer.canFireReaverRangedRocket = false;
+                    usPlayer.ReaverRocketFires = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
                         Projectile.NewProjectile(source, position, velocity* 0.001f, ModContent.ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);

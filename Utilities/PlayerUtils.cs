@@ -55,7 +55,7 @@ namespace CalamityInheritance.Utilities
             int extraIFrames = 0;
             // Ozzatron 20FEB2024: Moved extra iframes from Seraph Tracers to Rampart of Deities to counteract its loss of Charm of Myths
             // This stacks with the above Deific Amulet effect
-            if (modPlayer.fasterAuricTracers && hurtInfo.Damage > 200)
+            if (modPlayer.AuricTracersFrames && hurtInfo.Damage > 200)
                 extraIFrames += 30;
             if (modPlayer.RoDPaladianShieldActive)
                 extraIFrames += 30;

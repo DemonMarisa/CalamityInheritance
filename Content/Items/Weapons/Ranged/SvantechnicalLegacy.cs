@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 float SpeedY = velocity.Y + Main.rand.Next(-60, 61) * 0.05f;
                 Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);
             }
-            return false;
+            return true;
         }
 
         public override void AddRecipes()

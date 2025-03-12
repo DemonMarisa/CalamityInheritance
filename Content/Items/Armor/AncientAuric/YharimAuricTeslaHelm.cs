@@ -13,13 +13,13 @@ using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.System.Configs;
 
-namespace CalamityInheritance.Content.Items.Armor.YharimAuric
-{
+namespace CalamityInheritance.Content.Items.Armor.AncientAuric;
+
 	[AutoloadEquip(EquipType.Head)]
 	public class YharimAuricTeslaHelm : ModItem, ILocalizedModType
 	{
 
-        public new string LocalizationCategory => "Content.Items.Armor";
+    public new string LocalizationCategory => "Content.Items.Armor";
 		public override void SetDefaults()
 		{
 			Item.width = 18;
@@ -30,11 +30,11 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 		}
 
 
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
+    public override bool IsArmorSet(Item head, Item body, Item legs)
+    {
 			return body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() &&
 				   legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
-        }
+    }
 		
 		public override void ArmorSetShadows(Player player)
 		{
@@ -46,11 +46,11 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			var modPlayer = player.CalamityInheritance();
 			var calPlayer = player.Calamity();
 			modPlayer.ManaHealMutipler = 2.0f;
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+        player.setBonus = this.GetLocalizedValue("SetBonus");
 			//标记为魔君金源甲
-            modPlayer.yharimAuricArmor = true;
-            #region 灾厄的月后套通用效果
-            calPlayer.tarraSet = true;
+        modPlayer.YharimAuricSet = true;
+        #region 灾厄的月后套通用效果
+        calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			calPlayer.auricSet = true;
@@ -63,15 +63,15 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			#endregion
 			#region 弑神自活, 反伤, 弑神冲刺
 			//弑神自活与反伤
-            player.thorns += 10f;
+        player.thorns += 10f;
 			modPlayer.GodSlayerReborn = true;
 			modPlayer.GodSlayerDMGprotect = true;
 			modPlayer.GodSlayerReflect = true;
 			if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
+        {
+            calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+            player.dash = 0;
+        }
 			#endregion
 			#region 血腥回血, 血炎岩浆泡澡
 			player.crimsonRegen = true;
@@ -96,31 +96,31 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 			#region 五职业头盔套的各自套装效果
 			modPlayer.auricBoostold = true;
 			//战士
-            calPlayer.tarraMelee = true;
-            calPlayer.bloodflareMelee = true;
-            calPlayer.godSlayerDamage = true;
-            modPlayer.SilvaMeleeSetLegacy = true;
+        calPlayer.tarraMelee = true;
+        calPlayer.bloodflareMelee = true;
+        calPlayer.godSlayerDamage = true;
+        modPlayer.SilvaMeleeSetLegacy = true;
 			//射手
 			calPlayer.tarraRanged = true;
-            modPlayer.GodSlayerRangedSet = true;
-            modPlayer.SilvaRangedSetLegacy = true;
-            modPlayer.AuricbloodflareRangedSoul = true;
-            if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
-                player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
+        modPlayer.GodSlayerRangedSet = true;
+        modPlayer.SilvaRangedSetLegacy = true;
+        modPlayer.AuricbloodflareRangedSoul = true;
+        if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
+            player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
 			//法师
-            calPlayer.tarraMage = true;
-            calPlayer.bloodflareMage = true;
-            modPlayer.SilvaMagicSetLegacy = true;
-            modPlayer.GodSlayerMagicSet = true;
+        calPlayer.tarraMage = true;
+        calPlayer.bloodflareMage = true;
+        modPlayer.SilvaMagicSetLegacy = true;
+        modPlayer.GodSlayerMagicSet = true;
 			//召唤
-            modPlayer.GodSlayerSummonSet = true;
-            //盗贼
-            calPlayer.tarraThrowing = true;
-            calPlayer.bloodflareThrowing = true;
-            calPlayer.godSlayerThrowing = true;
-            modPlayer.SilvaRougeSetLegacy = true;
+        modPlayer.GodSlayerSummonSet = true;
+        //盗贼
+        calPlayer.tarraThrowing = true;
+        calPlayer.bloodflareThrowing = true;
+        calPlayer.godSlayerThrowing = true;
+        modPlayer.SilvaRougeSetLegacy = true;
 			#endregion
-        }
+    }
 		
 		public override void UpdateEquip(Player player)
 		{
@@ -148,6 +148,5 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
 				AddTile<DraedonsForgeold>().
 				Register();
 			}
-        }
+    }
 	}
-}

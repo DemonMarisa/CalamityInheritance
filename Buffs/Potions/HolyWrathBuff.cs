@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().HolyWrathStats = true;
+            player.CalamityInheritance().BuffStatsHolyWrath = true;
         }
     }
 }

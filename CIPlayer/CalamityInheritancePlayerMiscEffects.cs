@@ -26,6 +26,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -124,12 +125,12 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                 Player.statDefense += 10;
             }
-            if (PolarisBoost)
+            if (BuffPolarisBoost)
             {
                 Player.lifeRegen += 1;
                 Player.lifeRegenTime += 1;
             }
-            if (ArmorShatteringStats)
+            if (BuffStatsArmorShatter)
             {
                 Player.GetDamage<ThrowingDamageClass>() += 0.08f;
                 Player.GetDamage<MeleeDamageClass>() += 0.08f;
@@ -137,14 +138,14 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetCritChance<MeleeDamageClass>() += 8;
             }
 
-            if (CadenceStats)
+            if (BuffStatsCadence)
             {
                 Player.lifeMagnet = true;
                 Player.lifeRegen += 10;
                 Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 25;
             }
 
-            if (DraconicSurgeStats)
+            if (BuffStatsDraconicSurge)
             {
                 if (Player.wingTimeMax > 0)
                 {
@@ -167,40 +168,40 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (PenumbraStats)
+            if (BuffStatsPenumbra)
             {
                 calPlayer.stealthGenStandstill += 0.15f;
                 calPlayer.stealthGenMoving += 0.1f;
             }
 
-            if (ProfanedRageStats)
+            if (BuffStatsProfanedRage)
             {
                 Player.GetCritChance<GenericDamageClass>() += ProfanedRagePotion.CritBoost;
             }
 
-            if (HolyWrathStats)
+            if (BuffStatsHolyWrath)
             {
                 Player.GetDamage<GenericDamageClass>() += 0.12f;
             }
 
-            if (TitanScaleStats)
+            if (BuffStatsTitanScale)
             {
                 Player.endurance += 0.05f;
                 Player.statDefense += 5;
                 Player.kbBuff = true;
-                if (TitanScaleTrueMeleeBuff > 0)
+                if (BuffStatsTitanScaleTrueMelee > 0)
                 {
                     Player.statDefense += 20;
                     Player.endurance += 0.05f;
-                    TitanScaleTrueMeleeBuff--;
+                    BuffStatsTitanScaleTrueMelee--;
                 }
             }
             else
             {
-                TitanScaleTrueMeleeBuff = 0;
+                BuffStatsTitanScaleTrueMelee = 0;
             }
 
-            if (YharimsPowerStats)
+            if (BuffStatsYharimsStin)
             {
                 Player.endurance += 0.04f;
                 Player.statDefense += 10;
@@ -228,7 +229,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
             }
             
-           if(bloodPactBoost)
+           if(BuffStatBloodPact)
            {
                 calPlayer.healingPotionMultiplier += 0.5f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
@@ -245,11 +246,11 @@ namespace CalamityInheritance.CIPlayer
             *使拥有龙魂秘药效果的玩家免疫淬火debuff的超高速烧血效果, 但以削减生命恢复作为代价
             *下调玩家的防御数据惩罚, 防御力乘算从0.3 -> 0.7, 免伤降低从0.3→0.2
             */
-            if(BackfireStats)
+            if(BuffStatsBackfire)
             {
                 if(Player.statLife > Player.statLifeMax2/3)
                 {
-                    if(DraconicSurgeStats)
+                    if(BuffStatsDraconicSurge)
                     player.lifeRegen -= 10; //龙魂秘药使烧血转化为削减5HP/s的生命恢复
                     else
                     Player.statLife -= 5;
@@ -275,7 +276,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.statLifeMax2 +=(int)(Player.statLifeMax * 2);
             }
-            if (DarkSunRingStats)
+            if (DarkSunRings)
             {
                 Player.maxMinions += 2;
                 Player.GetDamage<GenericDamageClass>() += 0.12f;
@@ -286,7 +287,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense += darkSunRingNightDefense;
             }
             
-            if (BraveryBadgeLegacyStats) //如果启用
+            if (BraveBadge) //如果启用
             {
                 if(calPlayer.tarraMelee) //金源套不再能吃到勇气勋章的效果
                 {
@@ -323,10 +324,10 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (usPlayer.ElementalQuiver)
+            if (usPlayer.ElemQuiver)
                 Player.magicQuiver = true;
             
-            if(ancientReaperToothNeclace)
+            if(SpeedrunNecklace)
             {
                 Player.GetArmorPenetration<GenericDamageClass>() += 250;
                 Player.GetDamage<GenericDamageClass>() += 0.50f;
@@ -367,7 +368,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if(bloodflareCoreLegacy)
+            if(BloodflareCoreStat)
             /*旧血炎：低于50%血量5%免伤与10%增伤，低于15%血量10免伤与20增伤。低于100防御力20增伤*/
             {
                 if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
@@ -397,9 +398,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.12f;
+                Player.jumpSpeedBoost += 0.60f;
                 Player.manaCost *=0.95f;
-                if(EHeartStatsBuff) //关闭元素之心的召唤物的情况下
+                if(EHeartStatsBoost) //关闭元素之心的召唤物的情况下
                 {
                     Player.statLifeMax2 += 25;  //40(15+25)HP
                     Player.statManaMax2 += 25;  //40(15+25)魔力
@@ -407,7 +408,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
                     Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 0.20f;  //32(12+20)%跳跃速度
+                    Player.jumpSpeedBoost += 1.0f;  //32(12+20)%跳跃速度
                     Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
                     //由于返回值的原因导致Buff数值反而不能乱写。
                     //所以现在这些个的buff值都是5的系数了。
@@ -830,23 +831,23 @@ namespace CalamityInheritance.CIPlayer
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
             }
-            if (!PolarisBoost || Player.ActiveItem().type != ModContent.ItemType<PolarisParrotfishLegacy>())
+            if (!BuffPolarisBoost || Player.ActiveItem().type != ModContent.ItemType<PolarisParrotfishLegacy>())
             {
-                PolarisBoost = false;
+                BuffPolarisBoost = false;
                 if (Player.FindBuffIndex(ModContent.BuffType<PolarisBuffLegacy>()) > -1)
                     Player.ClearBuff(ModContent.BuffType<PolarisBuffLegacy>());
 
                 PolarisBoostCounter = 0;
-                PolarisBoostPhase2 = false;
-                PolarisBoostPhase3 = false;
+                PolarisPhase2 = false;
+                PolarisPhase3 = false;
             }
             if (PolarisBoostCounter >= 20 || CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Player, 3000f))
             {
-                PolarisBoostPhase2 = false;
-                PolarisBoostPhase3 = true;
+                PolarisPhase2 = false;
+                PolarisPhase3 = true;
             }
             else if (PolarisBoostCounter >= 10)
-                PolarisBoostPhase2 = true;
+                PolarisPhase2 = true;
             if (usPlayer.InvincibleJam)
             {
                 foreach (int debuff in CalamityLists.debuffList)
@@ -866,6 +867,13 @@ namespace CalamityInheritance.CIPlayer
                 player.GetDamage<RangedDamageClass>() *= actualDamage;
             }           
             
+            //玩家佩戴创造之手，挥舞板凳时，提供30%伤害与暴击概率
+            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadow>() && usPlayer.IfGodHand)
+            {
+                player.GetDamage<MagicDamageClass>() += 0.30f;
+                player.GetCritChance<MagicDamageClass>() += 30;
+            }
+
             if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
             {
                 player.lifeRegen -= AncientAstralStealth*2; //减去这个生命恢复速度， 应该是没问题的
@@ -888,7 +896,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
             CalamityPlayer calPlayer = Player.Calamity();
-            if(DraedonsHeartLegacyBuff) //嘉登之心的站立不动提供的效果
+            if(DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
             {
                 if(Player.StandingStill(0.1f) && !Player.mount.Active)
                 {
@@ -1546,7 +1554,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (Player.miscCounter % 150 == 0)
             {
-                canFireReaverRangedRocket = true;
+                ReaverRocketFires = true;
             }
             //纳米技术
         }

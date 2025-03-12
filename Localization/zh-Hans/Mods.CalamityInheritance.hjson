@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElementalQuiver]元素箭袋分裂"
+			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂"
 			Tooltip: 关闭可以防止卡顿
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElementalQuiver]元素箭袋分裂样式"
+			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂样式"
 			Tooltip:
 				'''
 				1：每60帧分裂一次，分裂弹幕剩余时间变短
@@ -302,6 +302,23 @@ Configs: {
 		AegisResprite: {
 			Tooltip: 切换庇护之刃的贴图
 			Label: "[i:CalamityMod/AegisBlade]庇护之刃贴图切换"
+		}
+
+		AllElemental: {
+			Label: "[i:CalamityInheritance/ElementalShivold]全部元素物品贴图切换"
+			Tooltip:
+				'''
+				切换元素系列物品的贴图, 如果存在的话
+				需注意的是, 为了与原灾做出区分, 这一选项会优先切换模组内现存的旧版元素物品
+				目前包括:
+				[i:CalamityInheritance/ArkoftheElementsold]元素方舟[Legacy]
+				[i:CalamityInheritance/ElementalShivold]元素短剑[Legacy]
+				[i:CalamityMod/ElementalLance]元素长矛
+				[i:CalamityInheritance/MeleeTypeElementalDisk]元素飞盘近战版本[Legacy]
+				[i:CalamityMod/ElementalBlaster]元素冲击波
+				[i:CalamityInheritance/ElementalRayold]元素射线[Revamped]
+				[i:CalamityInheritance/ElementalGauntletold]元素之握[Legacy]
+				'''
 		}
 	}
 
