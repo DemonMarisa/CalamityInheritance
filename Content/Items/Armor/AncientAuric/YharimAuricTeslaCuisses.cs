@@ -10,7 +10,7 @@ using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.System.Configs;
 
-namespace CalamityInheritance.Content.Items.Armor.YharimAuric
+namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
     [AutoloadEquip(EquipType.Legs)]
     public class YharimAuricTeslaCuisses : ModItem, ILocalizedModType

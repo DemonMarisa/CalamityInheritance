@@ -230,6 +230,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas4"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas5"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/Calamitas6"), 1f);
+                Player player = Main.player[Main.myPlayer];
+                player.CalamityInheritance().PopTextFlight = false;
                 NPC.position.X = NPC.position.X + NPC.width / 2;
                 NPC.position.Y = NPC.position.Y + NPC.height / 2;
                 NPC.width = 100;

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Statbuffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().bloodPactBoost = true;
+            player.CalamityInheritance().BuffStatBloodPact = true;
         }
     }
 }

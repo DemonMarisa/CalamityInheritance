@@ -11,8 +11,9 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly  SoundStyle HammerSmashID2= new("CalamityInheritance/Sounds/Custom/Smash2");
         public static readonly  SoundStyle HammerReturnID1= new("CalamityInheritance/Sounds/Custom/Return1");
         public static readonly  SoundStyle HammerReturnID2=new("CalamityInheritance/Sounds/Custom/Return2");
-        //actµÄ´Å¼«ÒôÐ§
+        //actï¿½Ä´Å¼ï¿½ï¿½ï¿½Ð§
         public static readonly  SoundStyle MagnomalyShootSound = new SoundStyle("CalamityInheritance/Sounds/Custom/MagnomalyCannon/MagnomalyShoot", 3) { Volume = 0.9f, PitchVariance = 0.2f };
         public static readonly  SoundStyle MagnomalyHitsound = new("CalamityInheritance/Sounds/Custom/MagnomalyCannon/MagnomalyBoom") { Volume = 0.9f, PitchVariance = 0.3f };
+        public static readonly SoundStyle OpalStriker = new("CalamityInheritance/Sounds/Item/OpalStrike");
     }
 }

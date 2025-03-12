@@ -6,6 +6,7 @@ using CalamityMod.NPCs.CalClone;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -103,6 +104,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             {
                 boss.TargetClosest(false);
                 player = Main.player[boss.target];
+                player.CalamityInheritance().PopTextFlight = false;
                 if(!player.active || player.dead)
                 {
                     if(boss.velocity.Y > 3f)
@@ -190,15 +192,19 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //尝试, 发射火球
                 if(Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    boss.localAI[1] += 1f; //依旧, localAI[1]作为一个计时器
+                    //依旧, localAI[1]作为一个计时器
+                    boss.localAI[1] += 1f; 
                     if(!ifBrothers)
-                    boss.localAI[1] += 2f * (1f - lifePercent); //兄弟不在场的时候, 计时器转的更快
+                    //兄弟不在场的时候, 计时器转的更快
+                    boss.localAI[1] += 2f * (1f - lifePercent); 
                 }
-                if(boss.localAI[1] >= (ifBrothers?120f:90f))//计时器符合这两个值?符合就开始发射火球
+                //计时器符合这两个值?符合就开始发射火球
+                if(boss.localAI[1] >= (ifBrothers?120f:90f))
                 {
                     boss.localAI[1] = 0f;
                     float projVel = 15f;
-                    int projType= ModContent.ProjectileType<BrimstoneHellfireball>(); //TODO4:使用旧版火球
+                    //TODO4:使用旧版火球
+                    int projType= ModContent.ProjectileType<BrimstoneHellfireball>(); 
                     int projDMG = boss.GetProjectileDamage(projType);
                     //火球是否应当有预判?不过, 死亡模式下是默认有1/2概率预判的
                     bool projPredictive = Main.rand.NextBool();
@@ -215,14 +221,16 @@ namespace CalamityInheritance.NPCs.Calamitas
             {
                 if(Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    boss.localAI[1] += 1f; //计时器
+                    //计时器
+                    boss.localAI[1] += 1f; 
                     if(!ifBrothers)
                     boss.localAI[1] += 1f;
 
                     // 发射激光
                     if(boss.localAI[1] >= (ifBrothers? 75f :45f) && Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
                     {
-                        boss.localAI[1] = 0f;//重置
+                        //重置计时器
+                        boss.localAI[1] = 0f;
                         float projVel = 12.5f;
                         int projType = ifBrothers? ModContent.ProjectileType<BrimstoneHellfireball>() : ModContent.ProjectileType<BrimstoneHellblast>();
                         int projDMG = boss.GetProjectileDamage(projType);
@@ -252,10 +260,14 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if(boss.life >= boss.lifeMax * 0.7f) 
                        boss.ai[1] = 0f;
                     else
-                       boss.ai[1] = 2f; //旧灾冲刺
-                    //附2: 可能会出现旧灾与他的4个兄弟一起撞人情况
-                    //但是我们模组非常强势，应该没问题？
-                    boss.localAI[0] = 1f; //重新初始化这个timer
+                       //旧灾发起冲刺的标记
+                       //附2: 可能会出现旧灾与他的4个兄弟一起撞人情况
+                       //但是我们模组非常强势，应该没问题？
+                       boss.ai[1] = 2f; 
+                    
+
+                    //重新初始化这个timer
+                    boss.localAI[0] = 1f; 
                     boss.netUpdate = true;
                 }
             }
@@ -342,10 +354,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
-                        // string key = "这里需要生成兄弟的提示文本";
-                        Main.NewText(114514);
-
-                        Color textColor = Color.Orange;
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
                     {
@@ -357,7 +365,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         /*与上方相同的代码*/
-                        Main.NewText(114514);
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.7f) //70%
                     {
@@ -369,7 +376,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                             NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         //上同
-                        Main.NewText(115455);
                     }
                 }
             }
@@ -438,8 +444,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                 else
                     brother.rotation -= broRotSpeed;
             }
-
-            if (brother.rotation < broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+                            //< -> >
+            if (brother.rotation > broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
                 brother.rotation = broRot;
             if (brother.rotation < 0f)
                 brother.rotation += MathHelper.TwoPi; 
@@ -489,7 +495,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     broProjAttackDir = -1;
                 //获取射弹与玩家的距离
                 Vector2 projVec = new(brother.position.X + brother.width * 0.5f, brother.position.Y + brother.height * 0.5f);
-                float projTarX = player.position.X + (player.width / 2) + (broProjAttackDir * 100) - projVec.X;
+                float projTarX = player.position.X + (player.width / 2) + (broProjAttackDir * 180) - projVec.X;
                 float projTarY = player.position.Y + (player.height/ 2) -  projVec.Y;
                 float projTarDist = (float)Math.Sqrt(projTarX * projTarX + projTarY * projTarY);
                 if(ifDeath) //是否为死亡模式?
@@ -530,7 +536,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                         brother.velocity.Y -= broProjAccel;
                 }
                 #endregion
-                // BrothersSmoothMove(brother, projTarX, projTarY, broProjAccel);
                 #endregion
                 #region 兄弟发射弹幕
                 //这里才正式开始发射弹幕
@@ -597,7 +602,9 @@ namespace CalamityInheritance.NPCs.Calamitas
                     float chargeTarDistY = player.Center.Y - chargeCenter.Y;
                     float chargeTarDistReal = (float)Math.Sqrt(chargeTarDistX * chargeTarDistX + chargeTarDistY * chargeTarDistY);
                     chargeTarDistReal = chargeSpeed / chargeTarDistReal;
-                    brother.velocity = new Vector2(chargeTarDistX * chargeTarDistReal, chargeTarDistY * chargeTarDistReal);
+                    //new Velocity -> 单独分配横轴纵轴
+                    brother.velocity.X = chargeTarDistX * chargeTarDistReal;
+                    brother.velocity.Y = chargeTarDistY * chargeTarDistReal;
                     //ai[1] = 2f用于减速
                     brother.ai[1] = 2f;
                     return;
@@ -616,9 +623,9 @@ namespace CalamityInheritance.NPCs.Calamitas
                             brother.velocity.X = 0f;
                         if (brother.velocity.Y > -0.1 && brother.velocity.Y < 0.1)
                             brother.velocity.Y = 0f;
-                        // BrotherChargeSlowDown(brother);
                     }
                     else brother.rotation = (float)Math.Atan2(brother.velocity.Y, brother.velocity.X) - MathHelper.PiOver2;
+
                     if (brother.ai[2] >= 105f) //冲刺结束，切换AI
                     {
                         brother.ai[3] += 1f;
@@ -671,7 +678,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             float broToTarDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height / 2);
             float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistY) + MathHelper.PiOver2;
             //保转角
-            // BrothersKeepRotation(brother, broRot, 0.15f);
             float rotSpeed = 0.15f;
             if(broRot < 0f)
                broRot += MathHelper.TwoPi;
@@ -694,7 +700,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     brother.rotation -= broRotSpeed;
             }
 
-            if (brother.rotation < broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
+            if (brother.rotation > broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
                 brother.rotation = broRot;
             if (brother.rotation < 0f)
                 brother.rotation += MathHelper.TwoPi; 
@@ -704,8 +710,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                 brother.rotation = broRot;
             #endregion
             #region 兄弟脱战
-            //封装
-            // BrotherDespawn(brother, player);
             if(!player.active || player.dead)
             {
                 brother.TargetClosest(false);
@@ -738,7 +742,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                 #region 发射射弹
                 //大部分都是复制的, 复制的上面的
                 float projMaxSpeed = 4.5f;
-                float projAccel = 4.5f;
+                float projAccel = 0.4f; //projAccele 4.5f -> 0.4f
                 int projDir = 1;
                 if (brother.Center.X < player.Center.X)
                     projDir = -1;
@@ -757,8 +761,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                 projTarDist = projMaxSpeed / projTarDist;
                 projTarX *= projTarDist;
                 projTarY *= projTarDist;
-                //顺滑移动
-                // BrothersSmoothMove(brother, projTarX, projTarY, projAccel);
                 #region 顺滑移动
                 if (brother.velocity.X < projTarX)
                 {
@@ -818,11 +820,11 @@ namespace CalamityInheritance.NPCs.Calamitas
                             projTarDist = projSpeed / projTarDist;
                             projTarX *= projTarDist;
                             projTarY *= projTarDist;
-                            Vector2 projTarVel = new(projTarX, projTarY);
                             projTarX += brother.Center.X * 0.5f;
                             projTarY += brother.Center.Y * 0.5f;
-                            Vector2 projCenterVel = new(projCenter.X - projTarX, projCenter.Y - projTarY);
-                            Projectile.NewProjectile(brother.GetSource_FromAI(), projCenterVel, projTarVel, projType, projDMG, 0f, Main.myPlayer, 0f, 0f);
+                            projCenter.X -= projTarX;
+                            projCenter.Y -= projTarY;
+                            Projectile.NewProjectile(brother.GetSource_FromAI(), projCenter.X, projCenter.Y, projTarX, projTarY, projType, projDMG, 0f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }
@@ -855,7 +857,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                     brother.ai[2] += ifDeath? 2f : 1f;
                     if(brother.ai[2] >= 60f) 
                     {
-                        // BrotherChargeSlowDown(brother);
                         brother.velocity.X *= 0.93f;
                         brother.velocity.Y *= 0.93f;
                         if (brother.velocity.X > -0.1 && brother.velocity.X < 0.1)
@@ -882,132 +883,6 @@ namespace CalamityInheritance.NPCs.Calamitas
                 #endregion
             }
             #endregion
-        }
-        /// <summary>
-        /// 太史山了他这个代码，我必须得封装一下不然就是复制粘贴大赛了,这个用来保兄弟的转角不会出问题的
-        /// </summary>
-        /// <param name="brother">兄弟</param>
-        /// <param name="broRot">需要的转角</param>
-        /// <param name="rotSpeed">需要的转角速度</param>
-        public static void BrothersKeepRotation(NPC brother, float broRot, float rotSpeed)
-        {
-            if(broRot < 0f)
-               broRot += MathHelper.TwoPi;
-            else if ( broRot > MathHelper.TwoPi)
-               broRot -= MathHelper.TwoPi;
-            
-            float broRotSpeed = rotSpeed;
-            if(brother.rotation < broRot)
-            {
-                if((broRot - brother.rotation) > MathHelper.Pi)
-                    brother.rotation -= broRotSpeed;
-                else
-                    brother.rotation += broRotSpeed;
-            }
-            else if(brother.rotation > broRot)
-            {
-                if((brother.rotation - broRot) > MathHelper.Pi)
-                    brother.rotation += broRotSpeed;
-                else
-                    brother.rotation -= broRotSpeed;
-            }
-
-            if (brother.rotation < broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
-                brother.rotation = broRot;
-            if (brother.rotation < 0f)
-                brother.rotation += MathHelper.TwoPi; 
-            else if(brother.rotation > MathHelper.TwoPi)
-                brother.rotation -= MathHelper.TwoPi;
-            if(brother.rotation > broRot - broRotSpeed && brother.rotation < broRot + broRotSpeed)
-                brother.rotation = broRot;
-        }
-        /// <summary>
-        /// 太史了这个代码，封装了。这个是保证兄弟跟随玩家能顺滑移动，类似回旋镖的ai
-        /// </summary>
-        /// <param name="brother">兄弟</param>
-        /// <param name="projTarX">兄弟与目标的水平距离</param>
-        /// <param name="projTarY">兄弟与目标的垂直距离</param>
-        /// <param name="broProjAccel">兄弟加速度</param>
-        public static void BrothersSmoothMove(NPC brother, float projTarX, float projTarY, float broProjAccel)
-        {
-            if (brother.velocity.X < projTarX)
-            {
-                brother.velocity.X += broProjAccel;
-                if (brother.velocity.X < 0f && projTarX > 0f)
-                    brother.velocity.X += broProjAccel;
-            }
-            else if (brother.velocity.X > projTarX)
-            {
-                brother.velocity.X -= broProjAccel;
-                if (brother.velocity.X > 0f && projTarX < 0f)
-                    brother.velocity.X -= broProjAccel;
-            }
-            if (brother.velocity.Y < projTarY)
-            {
-                brother.velocity.Y += broProjAccel;
-                if (brother.velocity.Y < 0f && projTarY > 0f)
-                    brother.velocity.Y += broProjAccel;
-            }
-            else if (brother.velocity.Y > projTarY)
-            {
-                brother.velocity.Y -= broProjAccel;
-                if (brother.velocity.Y > 0f && projTarY < 0f)
-                    brother.velocity.Y -= broProjAccel;
-            }
-
-        }
-        /// <summary>
-        /// 太史了这个代码，封装了. 这个使兄弟能脱战
-        /// </summary>
-        /// <param name="brother">兄弟</param>
-        /// <param name="player">玩家</param>
-        public static void BrotherDespawn(NPC brother, Player player)
-        {
-            if(!player.active || player.dead)
-            {
-                brother.TargetClosest(false);
-                player = Main.player[brother.target];
-                if(!player.active || player.dead)
-                {
-                    if (brother.velocity.Y > 3f)
-                        brother.velocity.Y = 3f;
-                    brother.velocity.Y -= 0.1f;
-                    if (brother.velocity.Y < -12f)
-                        brother.velocity.Y = -12f;
-                    
-                    if (brother.timeLeft > 60)
-                        brother.timeLeft = 60;
-                    
-                    if (brother.ai[1] != 0f)
-                    {
-                        brother.ai[1] = 0f;
-                        brother.ai[2] = 0f;
-                        brother.ai[3] = 0f;
-                        brother.netUpdate = true;
-                    }
-                    return;
-                }
-            }
-        }
-        /// <summary>
-        /// 你他妈，别造史了。这个用来兄弟冲刺后的减速
-        /// </summary>
-        /// <param name="brother">兄弟 </param>
-        public static void BrotherChargeSlowDown(NPC brother)
-        {
-            brother.velocity.X *= 0.93f;
-            brother.velocity.Y *= 0.93f;
-            if (brother.velocity.X > -0.1 && brother.velocity.X < 0.1)
-                brother.velocity.X = 0f;
-            if (brother.velocity.Y > -0.1 && brother.velocity.Y < 0.1)
-                brother.velocity.Y = 0f;
-        }
-        /// <summary>
-        /// 生成粒子
-        /// </summary>
-        public static void SpawnDust()
-        {
-            
         }
         /// <summary>
         /// 补红光

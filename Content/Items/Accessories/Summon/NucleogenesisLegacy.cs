@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         {
             CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
 
-            CIplayer.NucleogenesisLegacyStats = true;
+            CIplayer.NucleogenesisLegacy = true;
             player.GetKnockback<SummonDamageClass>() += 3f;
             player.GetDamage<SummonDamageClass>() += 0.15f;
             player.buffImmune[ModContent.BuffType<Shadowflame>()] = true;

@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void SetDefaults()
         {
             Item.width = 22;
-            Item./*  */height = 22;
+            Item.height = 22;
             Item.value = CIShopValue.RarityPriceLime; 
             Item.rare = ItemRarityID.Lime;
             Item.defense = 10; //43
@@ -44,11 +44,6 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             modPlayer.rogueStealthMax += 1.15f;
             modPlayer1.ReaverRogueExProj = true;
             player.Calamity().wearingRogueArmor = true;
-            //25盗贼暴击，25盗贼伤害,115潜伏值
-            //完全不是了，15伤5爆，5速，20移动速度，攻击滞留生命裂片
-            //Scarlet:我算的是总加成
-            //Scarlet:修复……数值错误。
-            //总之现在盗贼永恒套总加成：30%伤害，20%暴击，5%弹幕速度，115潜伏值
         }
 
         public override void UpdateEquip(Player player)
@@ -64,9 +59,9 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),8)
+            .AddIngredient<PerennialBar>(8)
             .AddIngredient(ItemID.JungleSpores, 8)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
+            .AddIngredient<EssenceofEleum>(2)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

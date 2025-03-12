@@ -33,6 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 crimtameMagic.scale = Main.rand.NextFloat(0.96f, 1.04f) * MathHelper.Lerp(1f, 1.7f, Time / Lifetime);
                 crimtameMagic.noGravity = true;
                 crimtameMagic.velocity *= 0.1f;
+                crimtameMagic.color = new Color(25, 266, 199);
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

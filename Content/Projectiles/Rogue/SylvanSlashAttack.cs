@@ -37,11 +37,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 return;
 
             Player player = Main.player[Projectile.owner];
-            float num = 0f;
+            float rot = 0f;
             Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
             if (Projectile.spriteDirection == -1)
             {
-                num = MathHelper.Pi;
+                rot = MathHelper.Pi;
             }
             if (++Projectile.frame >= Main.projFrames[Projectile.type])
             {
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[num30].position -= Projectile.velocity;
             }
             Projectile.position = player.RotatedRelativePoint(Main.MouseWorld, true) - Projectile.Size / 2f;
-            Projectile.rotation = Projectile.velocity.ToRotation() + num;
+            Projectile.rotation = Projectile.velocity.ToRotation() + rot;
             Projectile.spriteDirection = Projectile.direction;
             Projectile.timeLeft = 2;
             player.ChangeDir(Projectile.direction);

@@ -37,12 +37,10 @@ ElementalRayold: {
 	Tooltip:
 		'''
 		Casts out a ray of pure, concentrated elements
-		[c/4169E1:Stardust] fragments chase to your enemy when ray fades
-		[c/66CDAA:Vortex] lightning falls from the sky strikes on target nearby
-		[c/FFA500:Solar] bomb detonates inside the victim's body hit by ray
-		[c/FF00FF:Nebula] fire will follow up to cause an additional hit
-		[c/00FF00:Now we are talking...]
-
+		[i:FragmentStardust][c/4169E1:Stardust] fragments chase to your enemy when ray fades
+		[i:FragmentVortex][c/66CDAA:Vortex] lightning falls from the sky strikes on target nearby
+		[i:FragmentSolar][c/FFA500:Solar] bomb detonates inside the victim's body hit by ray
+		[i:FragmentNebula][c/FF00FF:Nebula] fire will follow up to cause an additional hit
 		'''
 }
 
@@ -150,7 +148,8 @@ StepToolShadow: {
 		Swing a godly chair destory your enemy
 		Summon some small chair upon enemy hits
 		Never understimate the potential power of Step Stool.
-		Developer Item: TrueScarlet
+		[c/D20103:TrueScarlet]: Yeah! Got my own dev item!
+		[c/FFDE59:DemonMarisa]: Bro, like...what?
 		'''
 }
 
@@ -160,21 +159,67 @@ BittercoldStaff: {
 }
 
 DemonicPitchforkLegacy: {
-	DisplayName: Demonic Pitchfork Legacy
-	Tooltip: ""
+	DisplayName: Demonic Pitchfork
+	Tooltip:
+		'''
+		Fires a hyper demonic pitchfork that can pierce 10 targets
+		Emits shadows tentacles on enemies hits.
+		'''
 }
 
 HellBurstLegacy: {
-	DisplayName: Hell Burst Legacy
-	Tooltip: ""
+	DisplayName: Hell Burst
+	Tooltip:
+		'''
+		Casts two beams of flame in opposite directions
+		Right Click to directly fire a homing fireball
+		'''
 }
 
 ApotheosisLegacy: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Unleashes interdimensional projection magic
+		Eat worms
+		777
+		'''
 	DisplayName: Apotheosis Legacy
 }
 
 DanceofLightLegacy: {
-	Tooltip: ""
-	DisplayName: Danceof Light Legacy
+	Tooltip:
+		'''
+		Cast a swarm of homing white flames from the sky
+		'And in a flash of white, nothing remains.'
+		'''
+	DisplayName: Dance of Light Revamped
+}
+
+CrystalFlareStaff: {
+	Tooltip:
+		'''
+		Fires a bunch of frost fire towards your cursor
+		Explodes after a while or on enemies hit
+		'''
+	DisplayName: Crystal Flare Staff
+}
+
+WingmanLegacy: {
+	Tooltip: Fires a concentrated laser beam
+	DisplayName: Wingman Legacy
+}
+
+GenisisLegacy: {
+	Tooltip: Fire a Y-shaped beam of destructive energy and a spread of lasers
+	DisplayName: Genisis Legacy
+}
+
+AlphaRayLegacy: {
+	Tooltip:
+		'''
+		Disintegrates everything with a tri-beam of energy and lasers
+		Press Right Click to fire a Y-shaped beam of destructive energy and a spread of lasers
+		'Experience the pinnacle of straight-line particle effects!'
+		'''
+	DisplayName: Alpha Ray Legacy
 }

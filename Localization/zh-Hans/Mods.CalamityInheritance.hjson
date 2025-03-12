@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElementalQuiver]元素箭袋分裂"
+			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂"
 			Tooltip: 关闭可以防止卡顿
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElementalQuiver]元素箭袋分裂样式"
+			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂样式"
 			Tooltip:
 				'''
 				1：每60帧分裂一次，分裂弹幕剩余时间变短
@@ -104,11 +104,6 @@ Configs: {
 			Tooltip: 在神明吞噬者战时播放旧音乐
 		}
 
-		CalBossesCanDropSoul: {
-			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
-			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
-		}
-
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]弑神套宇宙蠕虫"
 			Tooltip:
@@ -121,11 +116,6 @@ Configs: {
 		SpecialRarityColor: {
 			Tooltip: 修改模组内部分回归的附属物品的稀有度颜色
 			Label: "[i:GoldCrown]特殊稀有度颜色"
-		}
-
-		CalExtraDrop: {
-			Label: "[i:BrokenHeroSword]灾厄额外掉落"
-			Tooltip: 开启后会让一些敌怪掉落曾经掉落的物品
 		}
 
 		TaleOfACruelWorld: {
@@ -170,7 +160,13 @@ Configs: {
 			Tooltip: 切换钨钢工具的贴图
 		}
 
-		Headers.Texture: 贴图切换
+		Headers: {
+			Texture: 贴图切换
+			Accessories: 饰品贴图
+			Weapons: 武器贴图
+			Misc: 其他贴图
+		}
+
 		DisplayName: 旧版贴图切换
 
 		P90Resprite: {
@@ -267,6 +263,63 @@ Configs: {
 			Tooltip: 切换血橙的贴图
 			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
 		}
+
+		TrueNightShivResprite: {
+			Tooltip: 切换真永夜短剑的贴图
+			Label: "[i:CalamityInheritance/TrueNightsStabber]真永夜短剑贴图切换"
+		}
+
+		NightShivResprite: {
+			Tooltip: 切换永夜短剑的贴图
+			Label: "[i:CalamityInheritance/NightsStabber]永夜短剑贴图切换"
+		}
+
+		TrueCaliburShivResprite: {
+			Tooltip: 切换真神圣短剑的贴图
+			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]真神圣短剑贴图切换"
+		}
+
+		CaliburShivResprite: {
+			Tooltip: 切换神圣短剑的贴图
+			Label: "[i:CalamityInheritance/ExcaliburShortsword]神圣短剑贴图切换"
+		}
+
+		ElementalShivResprite: {
+			Tooltip: 切换元素短剑的贴图
+			Label: "[i:CalamityInheritance/ElementalShivold]元素短剑贴图切换"
+		}
+
+		GalileoResprite: {
+			Tooltip: 切换伽利略短剑的贴图
+			Label: "[i:CalamityMod/GalileoGladius]伽利略短剑贴图切换"
+		}
+
+		CrescentMoonResprite: {
+			Tooltip: 切换明月链刃的贴图
+			Label: "[i:CalamityMod/CrescentMoon]明月链刃贴图切换"
+		}
+
+		AegisResprite: {
+			Tooltip: 切换庇护之刃的贴图
+			Label: "[i:CalamityMod/AegisBlade]庇护之刃贴图切换"
+		}
+
+		AllElemental: {
+			Label: "[i:CalamityInheritance/ElementalShivold]全部元素物品贴图切换"
+			Tooltip:
+				'''
+				切换元素系列物品的贴图, 如果存在的话
+				需注意的是, 为了与原灾做出区分, 这一选项会优先切换模组内现存的旧版元素物品
+				目前包括:
+				[i:CalamityInheritance/ArkoftheElementsold]元素方舟[Legacy]
+				[i:CalamityInheritance/ElementalShivold]元素短剑[Legacy]
+				[i:CalamityMod/ElementalLance]元素长矛
+				[i:CalamityInheritance/MeleeTypeElementalDisk]元素飞盘近战版本[Legacy]
+				[i:CalamityMod/ElementalBlaster]元素冲击波
+				[i:CalamityInheritance/ElementalRayold]元素射线[Revamped]
+				[i:CalamityInheritance/ElementalGauntletold]元素之握[Legacy]
+				'''
+		}
 	}
 
 	CIServerConfig: {
@@ -293,7 +346,27 @@ Configs: {
 				决定是否让灾厄削弱的原版数值回调, 包括可堆叠的攻速手套, 无限飞饰品等
 				默认关闭
 				'''
-			Label: 原版削弱回调
+			Label: "[i:TerraBlade]原版削弱回调"
+		}
+
+		ShadowspecBuff: {
+			Tooltip:
+				'''
+				如果你想玩一些旧版数值的魔影武器, 你就可以启用这个
+				不过可能对Boss Rush或者其他的附属来说有点不公平
+				默认关闭
+				'''
+			Label: "[i:CalamityMod/ShadowspecBar]加强魔影武器"
+		}
+
+		CalBossesCanDropSoul: {
+			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
+			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
+		}
+
+		CalExtraDrop: {
+			Label: "[i:BrokenHeroSword]灾厄额外掉落"
+			Tooltip: 开启后会让一些敌怪掉落曾经掉落的物品
 		}
 	}
 }

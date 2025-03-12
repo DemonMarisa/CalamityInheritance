@@ -42,11 +42,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (Projectile.ai[0] % 2f == 0f)
             {
-                int num = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, type, 0f, 0f, 100, default(Color), 1.5f);
-                Main.dust[num].noGravity = true;
-                Dust obj = Main.dust[num];
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, type, 0f, 0f, 100, default(Color), 1.5f);
+                Main.dust[d].noGravity = true;
+                Dust obj = Main.dust[d];
                 obj.velocity *= 0.1f;
-                Dust obj2 = Main.dust[num];
+                Dust obj2 = Main.dust[d];
                 obj2.velocity += Projectile.velocity * 0.8f;
             }
             if (Projectile.ai[0] > 20f)

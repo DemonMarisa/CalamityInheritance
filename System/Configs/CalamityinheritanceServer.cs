@@ -32,5 +32,18 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(false)]
         [ReloadRequired]
         public bool VanillaUnnerf{ get; set; } //原版数值回调
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool ShadowspecBuff{ get; set; }//增强魔影武器
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool CalExtraDrop { get; set; } //允许灾厄额外掉落
     }
 }

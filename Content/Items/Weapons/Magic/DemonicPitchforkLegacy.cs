@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.height = 56;
             Item.useTime = 24;
             Item.useAnimation = 24;
-            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 6f;
             Item.value = CIShopValue.RarityPricePink;

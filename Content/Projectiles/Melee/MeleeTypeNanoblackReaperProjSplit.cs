@@ -1,5 +1,7 @@
 ﻿using System;
 using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
+using Microsoft.Build.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -13,15 +15,15 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         private static int SpriteWidth = 52;
-        private static int Lifetime = 90;
-        private static float MaxRotationSpeed = 0.25f;
+        private static int Lifetime = 90; 
+        private static float MaxRotationSpeed = 0.22f;
         private static float MaxSpeed = 28f;//使其机动性能追杀炼狱丛林龙
 
-        private static float HomingStartRange = 3600f; //半 图 仇 恨
+        private static float HomingStartRange = 1800f; //3600->1800(112.5个物块)
         //36000f-3600f，我觉得你可能会把玩家电脑炸了
-        private static float HomingBonusRangeCap = 2000f;
+        private static float HomingBonusRangeCap = 1800f;
         private static float BaseHomingFactor = 1.6f;
-        private static float MaxHomingFactor = 6.6f;
+        private static float MaxHomingFactor = 5.6f;
 
         public override void SetStaticDefaults()
         {
@@ -198,7 +200,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         // Spawns a small bit of Luminite themed dust.
         private void SpawnDust()
         {
-            int dustCount = Main.rand.Next(3, 6);
+            int dustCount = Main.rand.Next(2, 4);
             Vector2 corner = Projectile.position;
             for (int i = 0; i < dustCount; ++i)
             {
@@ -209,6 +211,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Main.dust[idx].velocity *= 3f;
                 Main.dust[idx].scale = scale;
             }
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 600);
         }
     }
 }

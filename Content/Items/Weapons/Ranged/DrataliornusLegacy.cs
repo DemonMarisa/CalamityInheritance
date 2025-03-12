@@ -4,7 +4,9 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
@@ -27,8 +29,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
 
-        private const double RightClickDamageRatio = 0.35;
-        public const int WeaponDamage = 700; //2/25 Fuck You, 开摆 武器面板174→700 右键倍率现在只允许取0.35, 太他妈傻逼了
+        //应某龙弓激推人要求:
+        //击败终灾与星流后：右键倍率0.35 -> 1.0, 基础面板 700 -> 1457, 右键使用速度48 -> 12;
+        public double RightClickDamageRatio = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet()? 1.0: 0.35;
+
+        public int GetWeaponDamage = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet()? 1457 : 700;
+        public int GetRightClickSpeed =CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet() ? 12 : 48; 
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -50,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.width = 64;
             Item.height = 84;
-            Item.damage = WeaponDamage;
+            Item.damage = GetWeaponDamage;
             Item.knockBack = 1f;
             Item.shootSpeed = 18f;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -72,32 +78,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         /*为啥我不能在SetDefaults里设置武器的暴击率啊?*/
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 6;
-
-        // public override void ModifyTooltips(List<TooltipLine> tooltips)
-        // {
-        //     if (Main.keyState.IsKeyDown(Keys.LeftShift)) //由于某些原因这里并没成功，只能先搁置
-        //     {
-        //         int tooltipIndex = -1;  //tooltip数组
-        //         int tooltipCount = 0;   //tooltip总字符数
-        //         for (int i = 0; i < tooltips.Count; i++) //眼熟到不行的经典的遍历
-        //         {
-        //             //Tooltip一般情况下从"Tooltip"开始
-        //             //实际上，现实中你遇到的字符都是用一个巨大的数组存放起来的，所以他这里相当于从第一个字符开始遍历
-        //             if (tooltips[i].Name.StartsWith("Tooltip")) 
-        //             {
-        //                 if (tooltipIndex == -1)
-        //                     tooltipIndex = i;
-        //                 tooltipCount++; //经过这个循环之后，最后应该可以得出这一数组内的总字符数
-        //             }
-        //         }
-        //         if (tooltipIndex != -1)
-        //         {
-        //             tooltips.RemoveRange(tooltipIndex, tooltipCount); //感谢tmod，有移除数组内容的函数封装
-        //             TooltipLine getStreams = new(Mod, "CalamityInheritance:SteamsDetail", SteamsDetail); //然后，搜灾厄内本身的tooltip
-        //             tooltips.Insert(tooltipIndex, getStreams); //安置，感谢tmod封装
-        //         }
-        //     }
-        // }
         public override bool AltFunctionUse(Player player)
         {
             return true;
@@ -108,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (player.altFunctionUse == 2)
             {
                 Item.noUseGraphic = false;  //右键采用海啸的方式
-                Item.reuseDelay = 48;
+                Item.reuseDelay = GetRightClickSpeed;
             }
             else
             {
@@ -132,7 +112,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaSet) //佩戴金源射手时
                 numFlames = 10;
                 int flameID = ModContent.ProjectileType<DragonBowFlameRework>();
-                int flameDamage = (int)(damage * (RightClickDamageRatio));
+                int flameDamage = (int)(damage * RightClickDamageRatio);
                 //直接增加伤害倍率, 即0.65f(右键倍率) + 经过穿甲计算后的倍率, 对于20穿甲的玩家, 这一倍率是0.99≈1f, 即取武器本身的伤害
                 //对于30穿甲则取1.15f别率.
                 

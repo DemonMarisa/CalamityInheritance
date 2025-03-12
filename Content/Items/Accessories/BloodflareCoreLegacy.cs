@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CalamityInheritance();
-            usPlayer.bloodflareCoreLegacy = true;
+            usPlayer.BloodflareCoreStat = true;
         }
     }
 }

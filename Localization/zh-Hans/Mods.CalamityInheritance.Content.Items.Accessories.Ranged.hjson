@@ -8,6 +8,15 @@ DaedalusEmblem: {
 		'''
 }
 
+PsychoticAmulet: {
+	DisplayName: 神经元护符[Legacy]
+	Tooltip:
+		'''
+		增加5%远程武器和盗贼武器的伤害和暴击率
+		站定不动时会使玩家逐渐隐身，且增益更为强力
+		'''
+}
+
 ElementalQuiver: {
 	DisplayName: 元素箭袋[Legacy]
 	Tooltip:
@@ -16,15 +25,6 @@ ElementalQuiver: {
 		增加大多数远程弹幕速度
 		+2HP/s生命再生，提高15%挖掘速度
 		允许远程弹幕分裂
-		（分裂可在配置中关闭）
-		'''
-}
-
-PsychoticAmulet: {
-	DisplayName: 神经元护符[Legacy]
-	Tooltip:
-		'''
-		增加5%远程武器和盗贼武器的伤害和暴击率
-		站定不动时会使玩家逐渐隐身，且增益更为强力
+		(配置可开关)
 		'''
 }

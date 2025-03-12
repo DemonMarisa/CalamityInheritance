@@ -53,7 +53,7 @@ namespace CalamityInheritance.CIPlayer
         public override void UpdateLifeRegen()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            if (DarkSunRingStats) //日食指环
+            if (DarkSunRings) //日食指环
             {
                 Player.lifeRegen += 2;
                 if (Main.eclipse || Main.dayTime)
@@ -75,7 +75,7 @@ namespace CalamityInheritance.CIPlayer
             if (EHeartStats)
             {
                 Player.lifeRegen += 2;
-                if(EHeartStatsBuff)
+                if(EHeartStatsBoost)
                 Player.lifeRegen += 8;      //5(1+4)HP/s
             }
             //魔君套
@@ -99,7 +99,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 //旧林海新增: 生命再生速度无法低于0
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
-                    Player.lifeRegen = 16; //承受Debuff伤害时获得8HP/s
+                    Player.lifeRegen = 8; //承受Debuff伤害时获得4HP/s
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子
@@ -130,6 +130,10 @@ namespace CalamityInheritance.CIPlayer
                     Player.AddBuff(ModContent.BuffType<SilvaPrice>(), 2);
                     int healAmt = AncientAuricSet ? 5 : 3;
                     int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
+
+                    if(Main.zenithWorld) healAmt = 10;  //林海强回血在天顶下一次回10
+                    if(Main.zenithWorld) minCD = 30; //林海强回血在天顶世界下只有半秒CD
+                    
                     Player.Heal(healAmt); //直接操作血量条进行回血
                     int cd = Main.rand.Next(minCD, minCD + 201);
                     AncientSilvaRegenCD = cd;
@@ -139,6 +143,9 @@ namespace CalamityInheritance.CIPlayer
                 {
                     SoundEngine.PlaySound(SoundID.Item4, Player.Center); //林海强回血准备好的时候播报这个音效
                     int minTimer = AncientAuricSet ? 60 : 30;
+
+                    if(Main.zenithWorld) minTimer = 3600; //林海强回血在天顶世界下会强行回1分钟
+
                     int timer = Main.rand.Next(minTimer, minTimer + 15); //回血刻由45 -> 55内随机
                     AncientSilvaRegenTimer = timer;
                 }

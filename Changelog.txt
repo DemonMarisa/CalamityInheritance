@@ -1,11 +1,76 @@
-3/8:
-削弱黑死神镰刀: 面板425 -> 440, 
-但镰刀本身的无敌帧8->9, 分裂刀片的生成timer由9f~12f随机变为10f~12f随机
-分裂刀片的弹幕伤害由0.8倍率降低为0.7倍率
+/******************************************************发布版的ChangeLog********************************************************
+内容:
+-添加 光之舞[Revamped], 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
+-添加 晶火法杖[Revamped], 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy]
+-给元素射线[Revamped]的日耀爆炸与星云火焰提供了新的视觉效果
+-添加 远古高频红刀, 目前无法获得
+-修复并小重置 恶魔之叉 与 狱火鞭, 给予法师玩家们一点点爱
+-添加 加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
+-添加 伽利略短剑/永夜短剑/真永夜短剑/神圣短剑/真神圣短剑的旧贴图切换
+-添加 庇护之刃/明月链刃的旧贴图切换
+-添加 元素物品贴图切换,可以切换大部分元素物品,如元素方舟,元素射线
 
-注:
-这一做法是为了给后来的魔影武器铺路免得说所有魔影武器都在被黑死神镰刀按着打.
-我的意思是绝学法杖现在是1000面板dps都干不过他.更不用说后来的新晋魔影武器了.
+调整:
+-重构了一遍贴图切换的config,让它看起来更合理
+-加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
+ 上述效果整合进魔君套内
+-削弱远古林海盔甲: 套装奖励的debuff下强行回血的速度由8HP/s降低为4HP/s
+-修改魔君套装: 现在允许进行超暴, 且魔君之怒效果现在追加一个+100%暴击概率的加成
+ 让魔君套装在天顶世界内变得坚不可摧
+-将灾厄boss掉魂与灾厄boss额外掉落转移给服务端设置以避免一些问题
+-魔影武器的面板加强:
+ 元素圣剑2000->4000, 获得200%剑刃大小增强
+ 绝学法杖1000->2500
+ 至尊梯凳1100->1145
+-给至尊梯凳写了一个lore
+-ban掉了神灯烈焰的微光转化, 因为能肉前拿到暗影魂了
+-赤陨霸龙弓现在同时击败星流与终灾后得到面板增强以匹配魔影武器的强度
 
-返厂:圣神之像, 光之舞, 斯万科技枪, 阿撒托斯
-重置光之舞: 现在变成逆向的神圣天罚
+修复:
+-主要是一些潜在的多人游戏的问题
+-修复了永恒盗贼套装的伤害错误加成与裂片无限分裂的问题
+
+Content:
+-Added Dance of Light Revamped, Apotheosis Legacy, Svantechnical Legacy, Azathoth Legacy
+-Added Crystal Flare Staff Revamped, Alpha Ray Legacy, Genisis Legacy, Wingman Legacy, Opal Striker Legacy
+-Added Ancient Murasama, unoptainable currently.
+-Fixed and revamp Demonic Pitchfork and Hell burst to give some love to Mage class
+-Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
+-Added Elemental/Galileo/Night/True Night/Excalibur/TrueExcalibur Shivs' legacy sprite
+-Added almost all Elemental stuff resprite.
+-Added Aegis Blade and Crescent Moon Resprite
+-Improved the visual of Elemental Ray Revamped
+
+Balance:
+-Reordered Resprite config to make it looks more acceptable
+-Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50% , now can convert the max stealth to defense boost 
+ This effect is applied to Yharim armor
+-Nerfed Ancient Silva Armor: Halve the effeiency of Force Life Regen if under a debuff(from 8HP/s to 4HP/s) 
+-Buffed Yharim Armor: Allows over crits, Perun of Yharim now buffed 100% crti chances in addition
+ Make Yharim Armor can just stand forever in Zenith world
+-Move Calamity Legacy Loot and Calamity Drop Souls to Server-side config, to avoid some issue
+-Do some damage buff for Shadowspec item:
+ Elemental Excalibur: 2000 -> 4000, grants 200% size bouns
+ Fabstaff: 1000 -> 2500
+ Olympustine: 1100 -> 1145
+-Gave a custom lore for Olympustine
+-Disable the decraft of Dijnn Lamp, since you can shimmer it for some souls in pre-hm
+-Drataliornus Legacy now get a massive boost if SCal and Exos are downed.
+
+Fixes:
+-Mainly multiplayer, but just not really enough, but will try.
+-Fixed a bug Reaver Armor Rogue Set Bonus' Life Shards can infinitely split and deals 300k damage
+
+********************************************************************************************************************************/
+3/11:
+-添加 晶火法杖[Revamped], 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy]
+-晶火法杖现在采用新的攻击模式: 往前方发射5~8个散射鬼火
+-元素射线[Revamped]再次小重做:
+ 星云火焰修改为星云烈焰(射弹), 击中后会往外生成几个然后追踪敌人
+ 日耀爆炸采用熔岩巨剑的攻击模式
+ 
+-重构了贴图重绘的config,让排版看起来更合理
+
+3/12:
+-修复了永恒盗贼套装潜在的平方甚至次方增伤的问题, 但仍然存在生命碎片分裂超出既定预期的情况
+-修复了永恒盗贼套装套装奖励无限套娃的问题

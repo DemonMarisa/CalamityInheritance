@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElementalQuiver]Disable Elemental Quiver Split Effect"
+			Label: "[i:CalamityMod/ElemQuiver]Disable Elemental Quiver Split Effect"
 			Tooltip: Determines EQ Split Effect. Use if lag is an issue.
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElementalQuiver]Elemental Quiver Splitstyle"
+			Label: "[i:CalamityMod/ElemQuiver]Elemental Quiver Splitstyle"
 			Tooltip:
 				'''
 				Determines the style of projectile spilt.
@@ -119,16 +119,6 @@ Configs: {
 				'''
 		}
 
-		CalBossesCanDropSoul: {
-			Tooltip:
-				'''
-				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
-				This is a feature from Calamity 1.4(and before)
-				Enbales by default
-				'''
-			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
-		}
-
 		GodSlayerWorm: {
 			Label: "[i:CalamityMod/StaffoftheMechworm]God Slayer Mechworm"
 			Tooltip:
@@ -143,18 +133,13 @@ Configs: {
 			Label: "[i:GoldCrown]Special Rarity Color"
 		}
 
-		CalExtraDrop: {
-			Label: Cal Extra Drop
-			Tooltip: ""
-		}
-
 		TaleOfACruelWorld: {
-			Label: Tale Of A Cruel World
+			Label: Tale of A Cruel World
 			Tooltip: ""
 		}
 
 		BlessingoftheMoon: {
-			Label: Blessingofthe Moon
+			Label: Blessing of the Moon
 			Tooltip: ""
 		}
 	}
@@ -190,7 +175,13 @@ Configs: {
 			Tooltip: Determines sprite style of legacy Wulfrum Tools and Weapons
 		}
 
-		Headers.Texture: Sprites
+		Headers: {
+			Texture: Sprites
+			Accessories: Accessories Header
+			Weapons: Weapons Header
+			Misc: Misc Header
+		}
+
 		DisplayName: Legacy Sprite
 
 		P90Resprite: {
@@ -287,6 +278,63 @@ Configs: {
 			Tooltip: Determines sprite style of Blood Orange
 			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
 		}
+
+		TrueNightShivResprite: {
+			Tooltip: Determines sprite style of True Nights Stabber
+			Label: "[i:CalamityInheritance/TrueNightsStabber]True Nights Stabber Resprite"
+		}
+
+		NightShivResprite: {
+			Tooltip: Determines sprite style of Nights Stabber
+			Label: "[i:CalamityInheritance/NightsStabber]Nights Stabber Resprite"
+		}
+
+		TrueCaliburShivResprite: {
+			Tooltip: Determines sprite style of True Excalibur Shortsword
+			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword Resprite"
+		}
+
+		CaliburShivResprite: {
+			Tooltip: Determines sprite style of Excalibur Shortsword
+			Label: "[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword Resprite"
+		}
+
+		ElementalShivResprite: {
+			Tooltip: Determines sprite style of Elemental Shiv
+			Label: "[i:CalamityInheritance/ElementalShivold]Elemental Shiv Resprite"
+		}
+
+		GalileoResprite: {
+			Tooltip: Determines sprite style of Galileo
+			Label: "[i:CalamityMod/GalileoGladius]Galileo Gladius Resprite"
+		}
+
+		CrescentMoonResprite: {
+			Tooltip: Determines sprite style of Crescent Moon
+			Label: "[i:CalamityMod/CrescentMoon]Crescent Moon Resprite"
+		}
+
+		AegisResprite: {
+			Tooltip: Determines sprite style of Aegis Blade
+			Label: "[i:CalamityMod/AegisBlade]Aegis Blade Resprite"
+		}
+
+		AllElemental: {
+			Label: "[i:CalamityInheritance/ElementalShivold]All Elemental Items Resprite"
+			Tooltip:
+				'''
+				Determines all sprite styles of Elemental Items.
+				Notes that to distinguish from the existing items in Calamity, this options will
+				prioritize switching the Legacy Elemental Items already present within the mod
+				Sprite List:
+				[i:CalamityInheritance/ElementalShivold]Elemental Shiv Legacy
+				[i:CalamityMod/ElementalLance]Elemental Lance
+				[i:CalamityInheritance/MeleeTypeElementalDisk]Elemental Disk Legacy Melee
+				[i:CalamityMod/ElementalBlaster]Elemental Blaster
+				[i:CalamityInheritance/ElementalRayold]Elemental Ray Revamped
+				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
+				'''
+		}
 	}
 
 	CIServerConfig: {
@@ -314,7 +362,36 @@ Configs: {
 				e.g: Stackable gloves, infinite flight and so on
 				Default by false
 				'''
-			Label: Unnerf Vanilla
+			Label: "[i:TerraBlade]Unnerf Vanilla"
+		}
+
+		ShadowspecBuff: {
+			Tooltip:
+				'''
+				Determines if you want some OVERPOWERED Shadowspec stuff, similar to 1.4.5.7
+				This might be unfair to BR event, or some other addons
+				Default by false 
+				'''
+			Label: "[i:CalamityMod/ShadowspecBar]Shadowspecs Buff"
+		}
+
+		CalBossesCanDropSoul: {
+			Tooltip:
+				'''
+				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
+				This is a feature from Calamity 1.4(and before)
+				Enbales by default
+				'''
+			Label: "[i:SoulofFright]Calamity Bosses Drop Souls"
+		}
+
+		CalExtraDrop: {
+			Label: "[i:BrokenHeroSword]Calamity Legacy Loot"
+			Tooltip:
+				'''
+				Let some of Calamity bosses drop some loot that used to be droppable
+				Default by true
+				'''
 		}
 	}
 }

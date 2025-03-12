@@ -1,3 +1,4 @@
+using log4net.Core;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -10,15 +11,25 @@ namespace CalamityInheritance.Texture
         #region 战士
 
         #region 方舟
-        public static Asset<Texture2D> ArkoftheCosmosNew;
-        public static Asset<Texture2D> ArkoftheCosmosOld;
+        public static Asset<Texture2D> AotCCal;
+        public static Asset<Texture2D> AotCAlt;
         #endregion
 
         #region 庇护之刃
-        public static Asset<Texture2D> CalAegis;
-        public static Asset<Texture2D> AltAegis;
+        public static Asset<Texture2D>  AegisCal;
+        public static Asset<Texture2D> AegisAlt;
         #endregion
 
+        #region 元素系列
+        public static Asset<Texture2D> ElemDiskCal;
+        public static Asset<Texture2D> ElemDiskAlt;
+        public static Asset<Texture2D> ElemSwordCal;
+        public static Asset<Texture2D> ElemSwordAlt;
+        public static Asset<Texture2D> ElemLanceCal;
+        public static Asset<Texture2D> ElemLanceAlt;
+        public static Asset<Texture2D> ElemLanceProjCal;
+        public static Asset<Texture2D> ElemLanceProjAlt;
+        #endregion
         #region 短剑系列
         //圣短剑
         public static Asset<Texture2D> CaliburCal;
@@ -47,8 +58,13 @@ namespace CalamityInheritance.Texture
 
         #endregion
         #region 远程
+        //泰拉弓
+        public static Asset<Texture2D> TerraBowCal;
+        public static Asset<Texture2D> TerraBowAlt;
+        public static Asset<Texture2D> ElemBYDCal;
+        public static Asset<Texture2D> ElemBYDAlt;
         #region 碎颅者
-        public static Asset<Texture2D> Skullmasher1p5;
+        public static Asset<Texture2D> SkullmasherCal;
         public static Asset<Texture2D> Skullmasher;
         #endregion
         #region P90
@@ -64,45 +80,51 @@ namespace CalamityInheritance.Texture
         #endregion
         #region 法师
         #region 氦闪 
-        public static Asset<Texture2D> HeliumFlashCalamity;
+        public static Asset<Texture2D> HeliumCal;
         public static Asset<Texture2D> HeliumFlashLegacy;
+        public static Asset<Texture2D> ElemRayCal;
+        public static Asset<Texture2D> ElemRayAlt;
         #endregion
         #endregion
         #region 召唤
+        //小花法杖
+        public static Asset<Texture2D> PlantareCal;
+        public static Asset<Texture2D> PlantareAlt;
         #endregion
         #region 盗贼
         #region 苍穹,圣光飞刀
-        public static Asset<Texture2D> EmpyreanKnivesCalamity; //苍穹飞刀的第二版本贴图(现在的版本)
-        public static Asset<Texture2D> EmpyreanKnivesCalamityProj; //苍穹飞刀的第二版射弹(现在的版本)
+        public static Asset<Texture2D> EmpyreanKnivesCal; //苍穹飞刀的第二版本贴图(现在的版本)
+        public static Asset<Texture2D> EmpyreanKnivesCalProj; //苍穹飞刀的第二版射弹(现在的版本)
         //下面的编排与上方的一样。
-        public static Asset<Texture2D> EmpyreanKnivesAlterTypeOne;  //苍穹飞刀的初版贴图
-        public static Asset<Texture2D> EmpyreanKnivesAlterTypeOneProj;
-        public static Asset<Texture2D> ShadowspecKnivesCalamity; //圣光飞刀灾厄贴图
-        public static Asset<Texture2D> ShadowspecKnivesCalamityProj;
-        public static Asset<Texture2D> ShadowspecKnivesAlterThird;  //圣光飞刀的第三版贴图
-        public static Asset<Texture2D> ShadowspecKnivesAlterThirdProj;
-        public static Asset<Texture2D> ShadowspecKnivesAlterSec; //圣光飞刀的二版贴图
-        public static Asset<Texture2D> ShadowspecKnivesAlterSecProj;
-        public static Asset<Texture2D> ShadowspecKnivesAlterFirst; //圣光飞刀的初版贴图
-        public static Asset<Texture2D> ShadowspecKnivesAlterFirstProj;
+        public static Asset<Texture2D> EmpyreanKnivesAlt;  //苍穹飞刀的初版贴图
+        public static Asset<Texture2D> EmpyreanKnivesAltProj;
+        public static Asset<Texture2D> ShadowKnivesCal; //圣光飞刀灾厄贴图
+        public static Asset<Texture2D> ShadowKnivesCalProj;
+        public static Asset<Texture2D> ShadowKnivsAlt3;  //圣光飞刀的第三版贴图
+        public static Asset<Texture2D> ShadowKnivsAlt3Proj;
+        public static Asset<Texture2D> ShadowKnivsAlt2; //圣光飞刀的二版贴图
+        public static Asset<Texture2D> ShadowKnivsAlt2Proj;
+        public static Asset<Texture2D> ShadowKnivsAlt1; //圣光飞刀的初版贴图
+        public static Asset<Texture2D> ShadowKnivsAlt1Proj;
         #endregion
         #endregion
         #region 战/盗混合
+
         #region 圣时之锤
-        public static Asset<Texture2D> HallowedHammerCalamity;
-        public static Asset<Texture2D> HallowedHammerCalamityProj;
-        public static Asset<Texture2D> HallowedHammerAlter;
-        public static Asset<Texture2D> HallowedHammerAlterProj;
+        public static Asset<Texture2D> PwnageHammerCal;
+        public static Asset<Texture2D> PwnageHammerCalProj;
+        public static Asset<Texture2D> PwnageHammerAlt;
+        public static Asset<Texture2D> PwnageHammerAltProj;
         #endregion
         #region 星体击碎者
         public static Asset<Texture2D> StellarContemptNew; //星体击碎者灾厄贴图
         public static Asset<Texture2D> StellarContemptOld;
         #endregion
         #region 圣泰阿克提斯之锤
-        public static Asset<Texture2D> TriactisHammerAlter;
-        public static Asset<Texture2D> TriactisHammerAlterProj;
-        public static Asset<Texture2D> TriactisHammerCalamity;
-        public static Asset<Texture2D> TriactisHammerCalamityProj;
+        public static Asset<Texture2D> GiantHammerAlt;
+        public static Asset<Texture2D> GiantHammerAltProj;
+        public static Asset<Texture2D> GiantHammerCal;
+        public static Asset<Texture2D> GiantHammerCalProj;
         #endregion
         #endregion
         #region 其他
@@ -112,11 +134,22 @@ namespace CalamityInheritance.Texture
         public static void LoadTexture()
         {
             #region 战士
-            #region 方舟
-            ArkoftheCosmosNew = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
-            ArkoftheCosmosOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
+            //方舟
+            AotCCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
+            AotCAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
             #endregion
+            //元素系列
+            ElemDiskCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeElementalDisk");
+            ElemDiskAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemDiskAlt");
+            ElemSwordCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheElementsold");
+            ElemSwordAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemSword");
 
+
+            ElemLanceCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/ElementalLance");
+            ElemLanceProjCal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/Spears/ElementalLanceProjectile");
+            ElemLanceAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemLanceAlt");
+            ElemLanceProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemLanceProj");
+        
             #region 短剑系列
             //圣短剑
             CaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExcaliburShortsword");
@@ -137,96 +170,94 @@ namespace CalamityInheritance.Texture
             ElemShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElementalShivLegacy");
             #endregion
 
-            #region 庇护
-            CalAegis = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/AegisBlade");
-            AltAegis = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/AegisBladeLegacy");
-            #endregion
+            //庇护
+             AegisCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/AegisBlade");
+            AegisAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/AegisBladeLegacy");
 
-            #region 月明链刃
+
+            //月明链刃
             CerscentMoonProjCal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/CrescentMoonFlail");
             CerscentMoonProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CerscentFlailLegay");
 
-            #endregion
-            #endregion
-
             #region 远程
-            #region 碎颅
-            Skullmasher1p5= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/Skullmasher1p5");
-            Skullmasher   = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/Skullmasher");
-            #endregion
+            //元素BYD
+            ElemBYDCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/ElementalBlaster");
+            ElemBYDAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/ElemBYD");
 
-            #region 龙弓
+            //碎颅
+            SkullmasherCal= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/SkullmasherAlt");
+            Skullmasher   = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/Skullmasher");
+
+            //龙弓
             DrataliornusLegacyAlter = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/Drataliornus");
             DrataliornusLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/DrataliornusLegacy");
-            #endregion
 
-            #region P90
-            P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90");
+            //P90
+            P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90Cal");
             P90Legacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/P90Legacy");
-            #endregion
+
             
-            #region 哈雷
+            //哈雷
             HalleyCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HalleysInfernoLegacy");
             HalleyAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/HalleysLegacy");
             #endregion
-            #endregion
 
             #region 法师
-
-            #region 氦闪
-            HeliumFlashCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/HeliumFlashCalamity");
+            //元素
+            ElemRayCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/Ray/ElementalRayold");
+            ElemRayAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/ElemRayAlt");
+            //氦闪
+            HeliumCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/HeliumCal");
             HeliumFlashLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/HeliumFlashLegacy");
-            #endregion
 
             #endregion
 
             #region 召唤
+            PlantareCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/PlantareAlt");
             #endregion
 
             #region 盗贼
 
-            #region 圣泰阿克提斯之锤
-            TriactisHammerCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/TriactisHammerCalamity");
-            TriactisHammerCalamityProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/TriactisHammerCalamity");
-            TriactisHammerAlter = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
-            TriactisHammerAlterProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
-            #endregion 
+            //圣泰阿克提斯之锤
+            GiantHammerCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/GiantHammerCal");
+            GiantHammerCalProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/GiantHammerCal");
+            GiantHammerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            GiantHammerAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
 
             #region 飞刀
             //苍穹飞刀(现)
-            EmpyreanKnivesCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesEmpyrean");
-            EmpyreanKnivesCalamityProj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesEmpyreanProj");
+            EmpyreanKnivesCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesEmpyrean");
+            EmpyreanKnivesCalProj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesEmpyreanProj");
             //苍穹飞刀(初)
-            EmpyreanKnivesAlterTypeOne = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirst");
-            EmpyreanKnivesAlterTypeOneProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
+            EmpyreanKnivesAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirst");
+            EmpyreanKnivesAltProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
             //圣光飞刀(现)
-            ShadowspecKnivesCalamity= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesCalamity");
-            ShadowspecKnivesCalamityProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesCalamityProj");
+            ShadowKnivesCal= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesCal");
+            ShadowKnivesCalProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesCalProj");
             //圣光飞刀(三)
-            ShadowspecKnivesAlterThird= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesShadowspec");
-            ShadowspecKnivesAlterThirdProj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesShadowspecProj");
+            ShadowKnivsAlt3= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesShadowspec");
+            ShadowKnivsAlt3Proj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesShadowspecProj");
             //圣光飞刀(二)
-            ShadowspecKnivesAlterSec= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesAlterSec");
-            ShadowspecKnivesAlterSecProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesAlterSecProj");
+            ShadowKnivsAlt2= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt2");
+            ShadowKnivsAlt2Proj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt2Proj");
             //圣光飞刀(初)
-            ShadowspecKnivesAlterFirst= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowspecKnivesAlterFirst");
-            ShadowspecKnivesAlterFirstProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
+            ShadowKnivsAlt1= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt1");
+            ShadowKnivsAlt1Proj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
             #endregion
 
             #endregion
             
             #region 战/盗混合
-            #region 圣时之锤
-            HallowedHammerCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
-            HallowedHammerCalamityProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
-            HallowedHammerAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
-            HallowedHammerAlterProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
-            #endregion
+            //圣时之锤
+            PwnageHammerCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
+            PwnageHammerCalProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
+            PwnageHammerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
+            PwnageHammerAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
+      
 
-            #region 星体击碎者
+            //星体击碎者
             StellarContemptNew= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerStellarContemptLegacy");
             StellarContemptOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerStellarContempt");
-            #endregion
 
             #endregion
             
@@ -235,32 +266,32 @@ namespace CalamityInheritance.Texture
         }
         public static void UnloadTexture()
         {
-            HeliumFlashCalamity = null;
+            HeliumCal = null;
             HeliumFlashLegacy = null;
 
-            ArkoftheCosmosNew = null;
-            ArkoftheCosmosOld = null;
-            EmpyreanKnivesCalamity = null;
-            EmpyreanKnivesCalamityProj = null;
-            EmpyreanKnivesAlterTypeOne = null;
-            EmpyreanKnivesAlterTypeOneProj = null;
-            ShadowspecKnivesCalamity = null;
-            ShadowspecKnivesCalamityProj = null;
-            ShadowspecKnivesAlterThird= null;
-            ShadowspecKnivesAlterThirdProj= null;
-            ShadowspecKnivesAlterSec= null;
-            ShadowspecKnivesAlterSecProj= null;
-            ShadowspecKnivesAlterThird= null;
-            ShadowspecKnivesAlterThirdProj= null;
+            AotCCal = null;
+            AotCAlt = null;
+            EmpyreanKnivesCal = null;
+            EmpyreanKnivesCalProj = null;
+            EmpyreanKnivesAlt = null;
+            EmpyreanKnivesAltProj = null;
+            ShadowKnivesCal = null;
+            ShadowKnivesCalProj = null;
+            ShadowKnivsAlt3= null;
+            ShadowKnivsAlt3Proj= null;
+            ShadowKnivsAlt2= null;
+            ShadowKnivsAlt2Proj= null;
+            ShadowKnivsAlt3= null;
+            ShadowKnivsAlt3Proj= null;
             
-            Skullmasher1p5 = null;
+            SkullmasherCal = null;
             Skullmasher    = null;
 
             P90 = null;
             P90Legacy = null;
 
-            TriactisHammerCalamity = null;
-            TriactisHammerAlter = null;
+            GiantHammerCal = null;
+            GiantHammerAlt = null;
 
             //星体击碎者
             StellarContemptNew = null;
@@ -272,8 +303,8 @@ namespace CalamityInheritance.Texture
             HalleyCal = null;
             HalleyAlt = null;
 
-            CalAegis = null;
-            AltAegis = null;
+             AegisCal = null;
+            AegisAlt = null;
 
             ElemShivAlt = null;
             ElemShivCal = null;
@@ -292,6 +323,21 @@ namespace CalamityInheritance.Texture
 
             CerscentMoonProjCal = null;
             CerscentMoonProjAlt = null;
+
+            ElemBYDAlt = null;
+            ElemBYDCal = null;
+            ElemDiskAlt = null;
+            ElemDiskCal = null;
+            ElemLanceAlt = null;
+            ElemLanceProjAlt = null;
+            ElemLanceCal = null;
+            ElemLanceProjCal = null;
+            ElemSwordAlt = null;
+            ElemSwordCal = null;
+            ElemRayAlt = null;
+            ElemRayCal = null;
+            PlantareCal = null;
+            PlantareAlt = null;
         }
     }
 }

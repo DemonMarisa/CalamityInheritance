@@ -22,6 +22,9 @@ namespace CalamityInheritance.Texture
 
         public static Asset<Texture2D> WulfrumPickaxeOld;
         #endregion
+        //元素手套
+        public static Asset<Texture2D> ElemGloveCal;
+        public static Asset<Texture2D> ElemGloveAlt;
         #region 神之壁垒
         public static Asset<Texture2D> RampartofDeitiesNew;
         public static Asset<Texture2D> RampartofDeitiesOld;
@@ -93,7 +96,9 @@ namespace CalamityInheritance.Texture
             WulfrumHammerOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammer");
             WulfrumPickaxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxe");
             #endregion
-            
+            //元素手套
+            ElemGloveCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Melee/ElementalGauntletold");
+            ElemGloveAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/ElemGloveAlt");
             #region 壁垒
             RampartofDeitiesNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/CIRampartofDeities");
             RampartofDeitiesOld = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/RampartofDeitiesOld");
@@ -215,6 +220,9 @@ namespace CalamityInheritance.Texture
             
             MOABCalamity = null;
             MOABAlter = null;
+
+            ElemGloveAlt = null;
+            ElemGloveCal = null;
         }
     }
 }

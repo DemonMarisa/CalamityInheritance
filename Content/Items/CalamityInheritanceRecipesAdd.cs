@@ -72,6 +72,7 @@ using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.
 using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -91,6 +92,7 @@ namespace CalamityInheritance.Content.Items
             Accelerator();          //粒子加速器
             Misc();                 //其他合成表, 因为我也不知道怎么起名
         }
+
         public static void Misc()
         {
             Recipe.Create(ModContent.ItemType<Cosmolight>()).
@@ -314,6 +316,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemID.DjinnLamp, 1).
                 AddRecipeGroup("AnyGoldBar", 15).
                 AddIngredient(ItemID.SoulofNight, 10).
+                DisableDecraft().
                 AddTile<AcceleratorT1Tile>().
                 Register();
 

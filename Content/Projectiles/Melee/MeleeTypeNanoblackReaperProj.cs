@@ -15,10 +15,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeNanoblackReaper";
 
-        private const float RotationIncrement = 0.22f;
+        private const float RotationIncrement = 0.20f;
         private const int Lifetime = 240;
-        private const float ReboundTime = 50f;
-        private const int MinBladeTimer = 9;
+        private const float ReboundTime = 60f;
+        private const int MinBladeTimer = 10;
         private const int MaxBladeTimer = 12;
 
 
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Projectile.ai[1] = GetBladeDelay();
 
             // Produces electricity and green firework sparks constantly while in flight.
-            if (Main.rand.NextBool(3))
+            if (Main.rand.NextBool(4))
             {
                 int dustType = Main.rand.NextBool(5) ? 226 : 220;
                 float scale = 0.8f + Main.rand.NextFloat(0.3f);
@@ -120,7 +120,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public void SpawnEnergyBlade()
         {
             int bladeID = ModContent.ProjectileType<MeleeTypeNanoblackReaperProjSplit>();
-            int bladeDamage = (int)(Projectile.damage * 0.8f); //分裂刀片的伤害从弹幕的1/2修改为弹幕的0.8f
+            int bladeDamage = (int)(Projectile.damage * 0.8f); //分裂刀片的伤害弹幕的1/2f
             float bladeKB = 3f;
             float spin = Projectile.direction <= 0 ? -1f : 1f;
             float d = 16f;

@@ -340,6 +340,19 @@ PolarisParrotfishLegacy: {
 }
 
 SvantechnicalLegacy: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires several barrages of bullets
+		Right Click	to zoom out
+		'''
 	DisplayName: Svantechnical Legacy
+}
+
+OpalStrikerLegacy: {
+	DisplayName: Opal Striker Legacy
+	Tooltip:
+		'''
+		Fires a string of opal strikes
+		50% not consume ammo
+		'''
 }

@@ -1,4 +1,4 @@
-﻿ScalShopMessage: {
+ScalShopMessage: {
 	DisplayName: 说明
 	Tooltip:
 		'''
@@ -8,4 +8,14 @@
 		还有站桩长达1分钟的原型图解密
 		不管怎么样，应该可以避免莫名其妙的卡流程
 		'''
+}
+
+DraedonsToy: {
+	Tooltip:
+		'''
+		同时召唤三名加强版的机械Boss
+		击败后会给予一些特殊的奖励
+		"等会,你真的要用这个玩意吗?"
+		'''
+	DisplayName: 嘉登的神秘遥控器[Legacy]
 }

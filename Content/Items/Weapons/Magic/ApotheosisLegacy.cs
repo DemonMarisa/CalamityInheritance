@@ -1,6 +1,7 @@
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Cooldowns;
 using CalamityMod.Items.Accessories;
@@ -24,16 +25,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class ApotheosisLegacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 777 : 377;
 
         public override void SetDefaults()
         {
-            Item.damage = 777;
+            Item.damage = NewDamage;
             Item.DamageType = DamageClass.Magic;
-            Item.mana = 17;
+            Item.mana = 7;
             Item.width = 30;
             Item.height = 34;
-            Item.useTime = 17;
-            Item.useAnimation = 17;
+            Item.useTime = 7;
+            Item.useAnimation = 7;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.useTurn = false;
             Item.noMelee = true;

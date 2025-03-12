@@ -33,10 +33,10 @@ Mods: {
 			AcceleratorT2Tile.MapEntry: 粒子加速器-等级2
 			AcceleratorT2: 粒子加速器-等级2
 			AcceleratorT3Tile.MapEntry: 粒子加速器-等级3
-			AcceleratorT3: 粒子加速器-等级3torT3: ���Ӽ�����-�ȼ�3
+			AcceleratorT3: 粒子加速器-等级3
 
 			DemonshadeTile: {
-				MapEntry: 魔影坩埚
+				MapEntry: 魔影坩埚[Souls]
 				$parentVal: 魔影坩埚
 			}
 		}
@@ -53,9 +53,11 @@ Mods: {
 			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 			VerdantYoyo.DisplayName: 葱茏
 			// ApothMarkLegacy.DisplayName: Apoth Mark Legacy
+			// OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+		// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 	}
 }

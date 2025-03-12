@@ -1,8 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
-using CalamityInheritance.Content.Items.Armor.YharimAuric;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
@@ -149,7 +149,7 @@ namespace CalamityInheritance.NPCs
             }
             if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.Cnidrion>())
             {
-                if (CIConfig.Instance.CalExtraDrop == true)
+                if (CIServerConfig.Instance.CalExtraDrop == true)
                 {
                     npcLoot.Add(ModContent.ItemType<PearlShard> (), 1, 6, 12);
                 }
@@ -189,7 +189,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<CalamitasClone>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
-                if (CIConfig.Instance.CalExtraDrop == true)
+                if (CIServerConfig.Instance.CalExtraDrop == true)
                 {
                     npcLoot.Add(ItemID.BrokenHeroSword, 3, 2, 3);
                 }

@@ -78,7 +78,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
 
         }
-        #region Pre Kill
+        #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -102,7 +102,7 @@ namespace CalamityInheritance.CIPlayer
 
                 Player.statLife = +100;
 
-                if (DraconicSurgeStats)
+                if (BuffStatsDraconicSurge)
                 {
                     Player.statLife += Player.statLifeMax2;
                     Player.HealEffect(Player.statLifeMax2);
@@ -203,7 +203,7 @@ namespace CalamityInheritance.CIPlayer
                         Player.statLife = Player.statLifeMax2;
                 }
 
-                if (DraconicSurgeStats)
+                if (BuffStatsDraconicSurge)
                 {
 
                     Player.statLife += Player.statLifeMax2;
@@ -234,7 +234,7 @@ namespace CalamityInheritance.CIPlayer
             return true;
         }
         #endregion
-        #region Modify Hit By NPC
+        #region 修改来犯的NPC体术
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -248,7 +248,7 @@ namespace CalamityInheritance.CIPlayer
 
         }
         #endregion
-        #region Free and Consumable Dodge Hooks
+        #region 闪避
         public override bool FreeDodge(Player.HurtInfo info)
         {
             Player player = Main.player[Main.myPlayer];
@@ -263,7 +263,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.immuneTime = 15;
                 return true;
             }
-            if(yharimAuricArmor && yharimArmorinvincibility > 0)
+            if(YharimAuricSet && yharimArmorinvincibility > 0)
             {
                 return true;
             }
@@ -271,7 +271,7 @@ namespace CalamityInheritance.CIPlayer
             return base.FreeDodge(info);
         }
         #endregion
-        #region Modify Hit By Proj
+        #region 修改来犯的射弹
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -326,12 +326,12 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-        #region On Hurt
+        #region 啊♂
         public override void OnHurt(Player.HurtInfo hurtInfo)
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
-            if (PolarisBoost)
+            if (BuffPolarisBoost)
             {
                 PolarisBoostCounter -= 10;
                 if (PolarisBoostCounter < 0)
@@ -339,18 +339,18 @@ namespace CalamityInheritance.CIPlayer
 
                 if (PolarisBoostCounter >= 20)
                 {
-                    PolarisBoostPhase2= false;
-                    PolarisBoostPhase3 = true;
+                    PolarisPhase2= false;
+                    PolarisPhase3 = true;
                 }
                 else if (PolarisBoostCounter >= 10)
                 {
-                    PolarisBoostPhase2 = true;
-                    PolarisBoostPhase3 = false;
+                    PolarisPhase2 = true;
+                    PolarisPhase3 = false;
                 }
                 else
                 {
-                    PolarisBoostPhase3 = false;
-                    PolarisBoostPhase2 = false;
+                    PolarisPhase3 = false;
+                    PolarisPhase2 = false;
                 }
             }
             //海绵
@@ -466,18 +466,21 @@ namespace CalamityInheritance.CIPlayer
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 1.5f));
-                    AncientAuricHealCooldown = 1200;
+                    AncientAuricHealCooldown =  1200;
                 }
             }
 
             if(AncientAuricSet)
             {
-                if(hurtInfo.Damage> 600 && AncientAuricHealCooldown == 0) 
+                //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
+                int DamageCap = Main.zenithWorld ? 2 : 600;
+                if(hurtInfo.Damage> DamageCap && AncientAuricHealCooldown == 0) 
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 2f));
-                    AncientAuricHealCooldown = 600;
+                    //魔君套处于天顶世界下，高伤保护的CD只有一秒
+                    AncientAuricHealCooldown = Main.zenithWorld? 1 : 600;
                 }
             }
 
@@ -497,7 +500,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
             }
             //魔君套受击后无敌
-            if (yharimAuricArmor)
+            if (YharimAuricSet)
                 yharimArmorinvincibility = 60;
         }
         #endregion
@@ -537,6 +540,14 @@ namespace CalamityInheritance.CIPlayer
                 else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
                 {
                     int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
+                    if(getOverCrtis > 1)
+                    {
+                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
+                    }
+                }
+                else if (PerunofYharimStats && hitInfo.Crit)
+                {
+                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Generic) - 100);
                     if(getOverCrtis > 1)
                     {
                         hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
@@ -612,7 +623,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (item.DamageType == DamageClass.Melee)
             {
-                TitanScaleTrueMeleeBuff = 600;
+                BuffStatsTitanScaleTrueMelee = 600;
             }
         }
  
@@ -770,7 +781,6 @@ namespace CalamityInheritance.CIPlayer
                 CalamityPlayer calPlayer = Player.Calamity();
                 calPlayer.freeDodgeFromShieldAbsorption = true;
                 Player.immune = true;
-                Player.immuneTime = 60;
             }
         }
         public static void SpongeHurtEffect()

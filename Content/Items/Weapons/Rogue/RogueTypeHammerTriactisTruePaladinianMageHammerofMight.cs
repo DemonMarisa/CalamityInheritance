@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -16,7 +17,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMight : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
-        public static readonly int HammerDamage = 1750;
+        
+        public static readonly int HammerDamage = CIServerConfig.Instance.ShadowspecBuff ? 4500 : 1750;
         public override void SetDefaults()
         {
             Item.width = 160;

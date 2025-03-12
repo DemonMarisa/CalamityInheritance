@@ -16,192 +16,148 @@ namespace CalamityInheritance.System.Configs
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => false;
 
         [Header("Texture")]
-        [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(false)]
-        public bool WulfumTexture { get; set; }
+        
 
-        [BackgroundColor(192, 54, 64, 192)]
+        [BackgroundColor(192, 154, 205, 192)]
         [DefaultValue(false)]
         public bool SetAllLegacySprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int ArkofCosmosTexture { get; set; }
+        [Header("Weapons")]
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool AllElemental{ get; set; }
+        //战士
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool ArkofCosmosTexture { get; set; }
 
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool AegisResprite { get; set;}
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int RampartofDeitiesTexture { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool CrescentMoonResprite { get; set;}
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int EtherealTalismancTexture { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool GalileoResprite { get; set;}
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int SkullmasherResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool CaliburShivResprite { get; set;}
 
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool TrueCaliburShivResprite { get; set;}
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int P90Resprite { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool NightShivResprite { get; set;}
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int GodSlayerKnivesResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool TrueNightShivResprite { get; set;}
+
+        //射手
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool SkullmasherResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool P90Resprite { get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool DrataliornusResprite { get; set; }
+
+        //法师
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool HeliumFlashResprite{ get; set; }
+        //战/盗混合
         
-        [BackgroundColor(192, 54, 64, 192)]
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool PwnagehammerResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool StellarContemptResprite { get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool TriactisHammerResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool GodSlayerKnivesResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
         [SliderColor(224, 165, 56, 128)]
         [Range(1, 4)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
         public int ShadowspecKnivesResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        public int TriactisHammerResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        public int PwnagehammerResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
+        [Header("Accessories")]
 
-        public int FateGirlSprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool RampartofDeitiesTexture { get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int StellarContemptResprite { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool EtherealTalismancTexture { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool FateGirlSprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool AngelTreadsResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool LunarBootsResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool MOABResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int HeliumFlashResprite{ get; set; }
-        
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int DrataliornusResprite { get; set; }
-
+        [Header("Misc")]
         #region 材料/物品贴图
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int BloodOrangeResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool WulfumTexture { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool BloodOrangeResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int MiracleFruitResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool MiracleFruitResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int ElderberryResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool ElderberryResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int DragonfruitResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool DragonfruitResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int CometShardResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool CometShardResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int EtherealCoreResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool EtherealCoreResprite{ get; set; }
 
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int PhantomHeartResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int AngelTreadsResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int LunarBootsResprite{ get; set; }
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 2)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int MOABResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool PhantomHeartResprite{ get; set; }
+        
+        
         #endregion
     }
 }

@@ -4,7 +4,9 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -30,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles
             CalamityPlayer modPlayer1 = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
-                if (modPlayer.ElementalQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
+                if (modPlayer.ElemQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
                 {
                     if (CIConfig.Instance.ElementalQuiverSplitstyle == 1)
                     {
@@ -106,21 +108,82 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
-
+            if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
+            {
+                //回调原版所有悠悠球的无敌帧
+                //注意其他方面都不会回调，只回调了无敌帧，但也足够了
+                //砍无敌帧太傻逼了，纯纯砍手感的
+                switch(projectile.type)
+                {
+                    case ProjectileID.JungleYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Amarok:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.CrimsonYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Chik:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Code1:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Code2:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.FormatC:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Gradient:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.HiveFive:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.CorruptYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.RedsYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.ValkyrieYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Rally:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Valor:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.Yelets:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                    case ProjectileID.WoodYoyo:
+                        projectile.localNPCHitCooldown = 10;
+                        break;
+                }
+            }
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
                     if (modPlayer.ReaverRogueExProj)
                     {
-                        if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
+                        if (Main.player[projectile.owner].miscCounter % 60 == 0 && 
+                            projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
                                 int damage = (int)player.GetTotalDamage<RogueDamageClass>().ApplyTo(60);
-                                damage = player.ApplyArmorAccDamageBonusesTo(damage);
-                                int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhotosyntheticShard>(), damage, 0f, projectile.owner);
-                                Main.projectile[newProjectileId].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                                //这里被平方增长了
+                                //damage = player.ApplyArmorAccDamageBonusesTo(damage);
+                                int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(),
+                                                                               projectile.Center, Vector2.Zero,
+                                                                               ModContent.ProjectileType<PhotosyntheticShard>(),
+                                                                               damage, 0f, projectile.owner);
+                                Main.projectile[newProjectileId].DamageType = DamageClass.Generic;
                             }
                         }
                     }
@@ -138,7 +201,7 @@ namespace CalamityInheritance.Content.Projectiles
             }
             if (!frameOneHacksExecuted)
             {
-                if (modPlayer.CIdeadshotBrooch && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
+                if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
                 {
                     if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
                         projectile.extraUpdates += 1;

@@ -48,3 +48,8 @@ GoldenGun: {
 	DisplayName: Golden Gun
 	Tooltip: Shoots a straight line of pure ichor
 }
+
+AncientMurasama: {
+	Tooltip: ""
+	DisplayName: Ancient Murasama
+}

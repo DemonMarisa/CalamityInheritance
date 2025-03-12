@@ -90,8 +90,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.ai[1] += 1f;
                     if (Projectile.ai[1] == ReboundTime-5&& Projectile.ai[2] == -2f)
                     {
-                        SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); //收回并拐弯的时候播放使用落星的声音
-                        ReturnDust();//采用与返程时相同的粒子AI
+                        //收回并拐弯的时候播放使用落星的声音
+                        SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); 
+                        //采用与返程时相同的粒子AI
+                        ReturnDust();
                     }
                     if (Projectile.ai[1] >= ReboundTime)
                     {
@@ -114,11 +116,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     
                         if (projHitbox.Intersects(mplrHitbox))
                         {
-                            if(Projectile.ai[2] == -2f) //只有挂载过的锤子才会在返回玩家手上的时候展示一些粒子
+                            //只有挂载过的锤子才会在返回玩家手上的时候展示一些粒子
+                            if(Projectile.ai[2] == -2f) 
                             ReturnDust();
                             
                             //主要是星神之杀的代码
-                            if(Projectile.Calamity().stealthStrike || Projectile.ai[2] == -2f) //潜伏, 或者挂载过的锤子也会执行这个指令
+                            //潜伏, 或者挂载过的锤子也会执行这个指令
+                            if(Projectile.Calamity().stealthStrike || Projectile.ai[2] == -2f) 
                             {
                                 //这个速度会稍微慢一点
                                 Projectile.velocity *= -0.7f;

@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -79,7 +80,18 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             float lengthFromStart = Projectile.Distance(target.Center);
 
             int totalShards = (int)MathHelper.Lerp(4, 7, MathHelper.Clamp(lengthFromStart / MaxLaserLength * 1.5f, 0f, 1f));
-            int shardType = ModContent.ProjectileType<ElementalNer>();
+            int nebulaCounts = 8;
+            float rotFactor = 360f / nebulaCounts; 
+            for (int j = 0; j < nebulaCounts; j++ )
+            {
+                float newRotation = MathHelper.ToRadians(j * rotFactor);
+                Vector2 pPos = new Vector2(18f, 0f).RotatedBy(newRotation);
+                Vector2 pVel = new Vector2(18f, 0f).RotatedBy(newRotation);
+                int nP = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pPos, pVel, ModContent.ProjectileType<ElementalNebula>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Main.projectile[nP].scale *= 1.5f;
+
+            }
+            int shardType = ModContent.ProjectileType<ElementalNebula>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             for (int i = 0; i < totalShards; i++)
             {
@@ -118,10 +130,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 }
             }
             target.AddBuff(ModContent.BuffType<ElementalMix>(), 30);
-            int type = ModContent.ProjectileType<FuckYou>();
+            int type = ProjectileID.Volcano;
             int boomDamage = (int)(hit.Damage * 1.1);
             int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, type, boomDamage, hit.Knockback, Projectile.owner, 0f, Main.rand.NextFloat(0.85f, 2f));
             Main.projectile[boom].DamageType = DamageClass.Magic;
+            Main.projectile[boom].velocity = new Vector2(Main.rand.NextFloat(-1.1f, 1.1f), -Main.rand.NextFloat(1.4f, 2.4f));
+            Main.projectile[boom].scale *= 1.2f;
         }
     }
 }

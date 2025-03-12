@@ -21,8 +21,6 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
-using Microsoft.Build.Evaluation;
-using Microsoft.Build.Construction;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.CIPlayer
@@ -62,7 +60,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
             }
-            if (HolyWrathStats)
+            if (BuffStatsHolyWrath)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
             }
@@ -120,7 +118,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (projectile.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || projectile.type == ModContent.ProjectileType<StepToolShadowChair>())
             {
-                TitanScaleTrueMeleeBuff = 600;
+                BuffStatsTitanScaleTrueMelee = 600;
             }
             #region ReaverSets
             #region ReaverMage
@@ -276,14 +274,14 @@ namespace CalamityInheritance.CIPlayer
         {
             if ((melee || rogue || whip) && !noFlask)
             {
-                if (ArmorShatteringStats)
+                if (BuffStatsArmorShatter)
                 {
                     CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
                 }
             }
             if (melee && !noFlask)
             {
-                if (elementalGauntlet)
+                if (ElemGauntlet)
                 {
                     target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
                     target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
@@ -296,7 +294,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (summon)
             {
-                if (NucleogenesisLegacyStats)
+                if (NucleogenesisLegacy)
                 {
                     target.AddBuff(BuffID.Electrified, 120);
                     target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
@@ -309,7 +307,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
         {
-            if (YharimsPowerStats)
+            if (BuffStatsYharimsStin)
                 knockback += item.knockBack * 0.25f;
         }
         public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
@@ -378,6 +376,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+
         }
         #endregion
         private static void SummonOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
@@ -397,7 +396,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (CIplayer.summonProjCooldown <= 0)
                 {
-                    if (CIplayer.NucleogenesisLegacyStats)
+                    if (CIplayer.NucleogenesisLegacy)
                     {
                         Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
                         CIplayer.summonProjCooldown = 25;

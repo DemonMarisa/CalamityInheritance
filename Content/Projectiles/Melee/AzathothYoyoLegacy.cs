@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 1200f; //2400f, 即150物块
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 60f / MaxUpdates;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 120f / MaxUpdates;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.velocity *= 1.2f; //加倍
             Projectile.MaxUpdates = MaxUpdates;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 3; //3的无敌帧
+            Projectile.localNPCHitCooldown = 1; //3的无敌帧
         }
 
         public override void AI()

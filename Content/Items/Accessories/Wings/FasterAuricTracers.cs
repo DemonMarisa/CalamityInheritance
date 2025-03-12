@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             modPlayer.tracersDust = !hideVisual;
             modPlayer.elysianWingsDust = !hideVisual;
             modPlayer.tracersSeraph = true; //免疫金源块
-            modPlayer1.fasterAuricTracers = true; //无敌帧延长
+            modPlayer1.AuricTracersFrames = true; //无敌帧延长
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)

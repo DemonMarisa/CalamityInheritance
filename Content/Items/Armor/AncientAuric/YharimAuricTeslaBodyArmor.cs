@@ -12,7 +12,7 @@ using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.System.Configs;
 
-namespace CalamityInheritance.Content.Items.Armor.YharimAuric
+namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
     [AutoloadEquip(EquipType.Body)]
     public class YharimAuricTeslaBodyArmor : ModItem, ILocalizedModType
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.YharimAuric
             if (Main.netMode == NetmodeID.Server)
                 return;
             // Add equip textures
-            EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/YharimAuric/YharimAuricTeslaBodyArmor_Back", EquipType.Back, this);
+            EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/AncientAuric/YharimAuricTeslaBodyArmor_Back", EquipType.Back, this);
         }
 
         public new string LocalizationCategory => "Content.Items.Armor";

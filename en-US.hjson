@@ -53,9 +53,11 @@ Mods: {
 			DragonBowFlameRework.DisplayName: Dragon Bow Flame Rework
 			VerdantYoyo.DisplayName: Verdant Yoyo
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
+			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 	}
 }

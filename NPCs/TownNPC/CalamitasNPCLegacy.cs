@@ -109,9 +109,9 @@ namespace CalamityInheritance.NPCs.TownNPC
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer CIPlayer = player.CalamityInheritance();
             int deaths = Main.player[Main.myPlayer].numberOfDeathsPVE;
-            if (deaths < 1 && DownedBossSystem.downedCalamitas && CIPlayer.giveScalEssence == 1)
+            if (deaths < 1 && DownedBossSystem.downedCalamitas && CIPlayer.FreeEssence == 1)
                 Chat = 3;
-            else if(deaths < 1 && DownedBossSystem.downedCalamitas && CIPlayer.giveScalEssence == 2)
+            else if(deaths < 1 && DownedBossSystem.downedCalamitas && CIPlayer.FreeEssence == 2)
                 Chat = Main.rand.Next(5, 21);
             else
                 Chat = Main.rand.Next(6, 21);
@@ -141,10 +141,10 @@ namespace CalamityInheritance.NPCs.TownNPC
 
             if (NPC.homeless)
             {
-                if (Chat == 3 && CIPlayer.giveScalEssence == 1)
+                if (Chat == 3 && CIPlayer.FreeEssence == 1)
                 {
                     GiveReward(Main.LocalPlayer);
-                    CIPlayer.giveScalEssence = 2;
+                    CIPlayer.FreeEssence = 2;
                 }
 
                 return Chat switch
@@ -155,10 +155,10 @@ namespace CalamityInheritance.NPCs.TownNPC
                 };
             }
 
-            if (Chat == 3 && CIPlayer.giveScalEssence == 1)
+            if (Chat == 3 && CIPlayer.FreeEssence == 1)
             {
                 GiveReward(Main.LocalPlayer);
-                CIPlayer.giveScalEssence = 2;
+                CIPlayer.FreeEssence = 2;
             }
             if (Chat == 3)
                 return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat3");

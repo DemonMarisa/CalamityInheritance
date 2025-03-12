@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
@@ -18,16 +19,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static float Knockback = 9f;
-        public static float Speed = 13f;
+        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 455;
+        public static float Speed = 12f;
 
         public override void SetDefaults()
         {
             Item.width = 78;
             Item.height = 64;
-            Item.damage = 425;
+            Item.damage = 455;
             Item.knockBack = Knockback;
-            Item.useTime = 6;
-            Item.useAnimation = 6;
+            Item.useTime = 5;
+            Item.useAnimation = 5;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -40,10 +42,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.Calamity().devItem = true;
 
             Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.ArmorPenetration = 500;
             Item.shoot = ModContent.ProjectileType<MeleeTypeNanoblackReaperProj>();
             Item.shootSpeed = Speed;
         }
-        
+        public override bool MeleePrefix() => true;
         public override void AddRecipes()
         {
             CreateRecipe().

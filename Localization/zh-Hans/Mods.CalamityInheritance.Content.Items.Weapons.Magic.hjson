@@ -41,10 +41,11 @@ ElementalRayold: {
 	DisplayName: 元素射线[Revapmed]
 	Tooltip:
 		'''
-		发射纯粹而集中的元素射线
-		射线消失时会留下远古之光跟踪敌人
-		敌人在附近时会有元素闪电从天而降
-		击中敌人会出现星云火焰与耀斑爆炸
+		[c/E2EAF4:发射纯粹而集中的元素射线]
+		[i:FragmentStardust][c/4169E1:星尘碎片][c/E2EAF4:在射线消失, 停留片刻后追击]
+		[i:FragmentVortex][c/66CDAA:星璇闪电][c/E2EAF4:从天而降, 攻击附近的单位]
+		[i:FragmentSolar][c/FFA500:日耀炸弹][c/E2EAF4:将在受害者的体内引燃]
+		[i:FragmentNebula][c/FF00FF:星云烈焰][c/E2EAF4:随后出现并追击你的敌人]
 		'''
 }
 
@@ -158,14 +159,19 @@ StepToolShadow: {
 	DisplayName: 至尊永恒梯凳，奥里帕斯汀
 	Tooltip:
 		'''
-		挥舞一张足够摧毁你的敌人的梯凳
+		挥舞一张梯凳摧毁你的敌人
 		梯凳击中敌人时会生成一些小梯凳
-		小梯凳击中时会治疗你
-		无论小梯凳还是大梯凳,都会对敌怪造成梯凳驾到减益
-		允许受到真近战伤害加成
-		不要低估了梯凳潜在的力量……
-		[c/FD5859:TrueScarlet:]耶!我的开发者物品!
-		[c/FFDE59:Demon Marisa:]Oh no.
+		小梯凳和大梯凳击中敌人都会治疗你
+		[c/8D6F64:世人皆知“永恒”一词的分量，却未曾料到一张梯凳竟能承载起永恒之责。]
+		[c/8D6F64:关于奥林帕斯汀的来源、职责与目的，至今仍是谜团重重。然而，有一点可以确定]
+		[c/8D6F64:在泰拉大陆，当太阳被不知名的邪神或某种力量完全遮蔽，世界濒临末日之灾时，]
+		[c/8D6F64:一名神秘英雄挥舞着奥林帕斯汀挺身而出，阻止了这场浩劫。]
+		[c/8D6F64:这便是奥林帕斯汀在泰拉大陆上的最早的一条记录。]
+		[c/8D6F64:尽管围绕它的谜团依旧众多，但奥林帕斯汀究竟代表着什么？为何一张梯凳能同时荣获永恒与至尊的称号？]
+		[c/8D6F64:那名神秘英雄又为何能拥有这张梯凳？]
+		[c/8D6F64:这些问题暂时还无从得知，但至少目前，它并未对我们构成威胁...]
+		[c/FFDE59:DemonMarisa]:不是哥们你还特意写个Lore给这玩意?
+		[c/D20103:TrueScarlet]:uhh....
 		'''
 }
 
@@ -175,13 +181,21 @@ BittercoldStaff: {
 }
 
 DemonicPitchforkLegacy: {
-	// DisplayName: Demonic Pitchfork Legacy
-	// Tooltip: ""
+	DisplayName: 恶魔之叉[Legacy]
+	Tooltip:
+		'''
+		发射一根能够穿透10个单位的恶魔之叉
+		击中敌人时会生成暗影触手
+		'''
 }
 
 HellBurstLegacy: {
-	// DisplayName: Hell Burst Legacy
-	// Tooltip: ""
+	DisplayName: 狱炎鞭[Legacy]
+	Tooltip:
+		'''
+		射出两根方向相反的火焰荆棘
+		右键则直接射出能够追踪敌怪的火球
+		'''
 }
 
 ApotheosisLegacy: {
@@ -201,4 +215,33 @@ DanceofLightLegacy: {
 		[c/FFD9FF:炫目闪光过后，一切荡然无存]
 		'''
 	DisplayName: 光之舞[Revamped]
+}
+
+CrystalFlareStaff: {
+	Tooltip:
+		'''
+		往鼠标方向发射会散射的霜冻
+		霜冻在持续一段时间, 或者击中敌人后爆炸
+		'''
+	DisplayName: 晶火法杖[Revamped]
+}
+
+WingmanLegacy: {
+	Tooltip: 发射集中的激光束
+	DisplayName: 侧翼[Legacy]
+}
+
+GenisisLegacy: {
+	Tooltip: "发射Y形状的毁灭能量束和一簇激光 "
+	DisplayName: 源[Legacy]
+}
+
+AlphaRayLegacy: {
+	Tooltip:
+		'''
+		以三发齐射的激光能量弹雨蒸发一切
+		右键发射Y形光束与一束激光
+		"感受直线粒子特效的巅峰!"
+		'''
+	DisplayName: 阿尔法射线[Legacy]
 }

@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Pink;
             Item.Calamity().donorItem = true;
             Item.shoot = ModContent.ProjectileType<MeleeTypeKelvinCatalystProj>();
-            Item.shootSpeed = 18f;
+            Item.shootSpeed = 15f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }
         public override void AddRecipes()

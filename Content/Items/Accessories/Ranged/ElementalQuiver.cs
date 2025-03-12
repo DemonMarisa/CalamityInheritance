@@ -36,23 +36,23 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
+            CalamityPlayer modPlayer1 = player.Calamity();
             CalamityInheritancePlayer modplayer = player.GetModPlayer<CalamityInheritancePlayer>();
             if (CIConfig.Instance.ElementalQuiversplit == true)
             {
-                modplayer.ElementalQuiver = true;
+                modplayer.ElemQuiver= true;
             }
             else
             {
-                modplayer.ElementalQuiver = false;
+                modplayer.ElemQuiver= false;
             }
             player.GetDamage(DamageClass.Ranged) += 0.20f;
             player.GetCritChance(DamageClass.Ranged) += 15;
             player.ammoCost80 = true;
             player.lifeRegen += 4;
             player.pickSpeed -= 0.15f;
-            if (!modPlayer.deadshotBrooch)
-                modplayer.CIdeadshotBrooch = true;
+            if (!modPlayer1.deadshotBrooch)
+                modplayer.DeadshotBroochCI = true;
         }
 
         public override void AddRecipes()
