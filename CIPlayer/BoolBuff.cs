@@ -46,8 +46,6 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase2 = false;
             PolarisPhase3 = false;
             #endregion
-           
-           
         }
         public void UpdateDeadBuff()
         {

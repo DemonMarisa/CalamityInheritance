@@ -222,6 +222,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Providence>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<PristineFuryLegacy>(), 10);
                 npcLoot.Add(ModContent.ItemType<ElysianAegisold>(), 1);
             }
             if (npc.type == ModContent.NPCType<StormWeaverHead>())

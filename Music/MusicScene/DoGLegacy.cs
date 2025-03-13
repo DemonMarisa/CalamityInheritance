@@ -38,5 +38,6 @@ namespace CalamityInheritance.Music.MusicScene
             }
             return false;
         }
+
     }
 }

@@ -24,14 +24,14 @@ namespace CalamityInheritance.System
 
         public static DateTime? TrackStart { get; set; } = null;
 
-        // This allows for some additional silence at the end of a track
+        // 淡出
         public static DateTime? TrackEnd { get; set; } = null;
 
         public static int LastPlayedEvent { get; set; } = -1;
 
         public static TimeSpan? OutroSilence { get; set; } = null;
 
-        // This allows skipping track fade in
+        // 淡入
         public static bool NoFade { get; set; } = false;
 
         public static Thread EventTrackerThread { get; set; } = null;
@@ -40,7 +40,7 @@ namespace CalamityInheritance.System
 
         public static List<MusicEventEntry> EventCollection { get; set; } = [];
 
-        // This is to make sure that old worlds don't immediately queue a bunch of tracks on player entry
+        // 确保玩家不会进入世界后继续播放一大堆曲子
         private static bool oldWorld { get; set; } = true;
 
         #endregion

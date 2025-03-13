@@ -1,6 +1,9 @@
-﻿using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
@@ -103,6 +106,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/PristineFuryLegacyGlow").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+        }
+        public override void AddRecipes()
+        {
+            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
+            {
+                Recipe recipe1 = CreateRecipe();
+                recipe1.AddIngredient<LoreProvidence>();
+                recipe1.AddTile(TileID.AncientMythrilBrick);
+                recipe1.Register();
+
+                Recipe recipe2 = CreateRecipe();
+                recipe2.AddIngredient<KnowledgeProvidence>();
+                recipe2.AddTile(TileID.AncientMythrilBrick);
+                recipe2.Register();
+            }
         }
     }
 }
