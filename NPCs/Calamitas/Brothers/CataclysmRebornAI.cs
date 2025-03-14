@@ -92,7 +92,8 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 #region 兄弟发射弹幕
                 //这里才正式开始发射弹幕
                 brother.ai[2] += 1f; //计时器
-                if (brother.ai[2] >= 180f) //180f, 大约三秒
+                if(Main.rand.NextBool()) brother.ai[2] += 1f;
+                if (brother.ai[2] >= 90f) //180f, 大约三秒
                 {
                     brother.ai[1] = 1f;
                     brother.ai[2] = 0f;

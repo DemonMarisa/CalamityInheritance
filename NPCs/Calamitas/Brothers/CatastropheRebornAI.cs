@@ -92,6 +92,8 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 CIFunction.TryCatchTraget(brother, projTarX, projTarY, projAccel);
                 #endregion
                 brother.ai[2] += 1f;
+                //兄弟进入冲刺的ai时间给予一定的随机性。
+                if (Main.rand.NextBool()) brother.ai[2] += 1f;
                 if (brother.ai[2] >= 90f)
                 {
                     brother.ai[1] = 1f;
@@ -146,7 +148,8 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                     brother.damage = brother.defDamage;
                     SoundEngine.PlaySound(SoundID.Roar, brother.Center);
                     brother.rotation = broRot;
-                    BrothersCharge.ChargeInit(brother, player, broRot, 36f);
+                    //给冲刺速度一点微弱的随机性来使兄弟的冲刺有所差异
+                    BrothersCharge.ChargeInit(brother, player, broRot, Main.rand.NextFloat(32f, 36f));
                     /*
                     float chargeSpeed = (NPC.AnyNPCs(ModContent.NPCType<CataclysmReborn>()) ? 12f : 16f) + (ifDeath ? 4f : 0f);
                     Vector2 chargeCenter = new(brother.position.X + brother.width/2, brother.position.Y + brother.height/2);

@@ -891,6 +891,20 @@ namespace CalamityInheritance.CIPlayer
             {
                 player.GetDamage<RogueDamageClass>() *= 2;
             }
+
+            //假定玩家与灾厄之眼再临战斗
+            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
+            {
+                //允许无限飞行
+                calPlayer.infiniteFlight = true;
+                //32%跳跃速度
+                Player.jumpSpeedBoost = 1.6f;
+                //接触伤害减免25%
+                calPlayer.contactDamageReduction += 0.25f;
+                //移动速度24%
+                Player.moveSpeed += 0.24f;
+
+            }
         }
         private void StandingStill()
         {
