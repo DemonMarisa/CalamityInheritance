@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.NPCs.Calamitas.Minions;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.CalClone;

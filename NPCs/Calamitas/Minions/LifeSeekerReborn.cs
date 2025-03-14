@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace CalamityInheritance.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas.Minions
 
 {
     public class LifeSeekerReborn : ModNPC

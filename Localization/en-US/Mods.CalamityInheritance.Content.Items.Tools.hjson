@@ -38,3 +38,8 @@ ChargerItem: {
 	DisplayName: Instant Charger
 	Tooltip: Instantly recharges all Draedon's Arsenal weapons if used
 }
+
+CrystylCrusherLegacy: {
+	DisplayName: Crystyl Crusher Legacy
+	Tooltip: ""
+}

@@ -1,27 +1,25 @@
 using System.IO;
-using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
-using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Steamworks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace CalamityInheritance.NPCs.Calamitas
 
+namespace CalamityInheritance.NPCs.Calamitas.Brothers
 {
     [AutoloadBossHead]
-    public class CatastropheReborn : ModNPC
+    public class CataclysmReborn : ModNPC
     {
         public static Asset<Texture2D> GlowMask;
 
@@ -51,7 +49,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.width = NPC.height = 120;
             NPC.lifeMax = 50000;
             if(CalamityWorld.death) NPC.scale *= 1.3f; //死亡模式下1.3倍大小
-            NPC.defense = CalamityWorld.death ? 20 : 15; //死亡模式下20点防御
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
@@ -114,7 +111,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void AI()
         {
-            CatastropheAI.ThisAI(NPC, Mod);
+            CataclysmRebornAI.ThisAI(NPC, Mod);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -195,7 +192,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     Main.dust[dType2].velocity *= 2f;
                 }
             }
-            
+           
         }
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {

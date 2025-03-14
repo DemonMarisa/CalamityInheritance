@@ -1,5 +1,7 @@
 using System;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.NPCs.Calamitas.Brothers;
+using CalamityInheritance.NPCs.Calamitas.Minions;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.CalClone;
@@ -68,66 +70,12 @@ namespace CalamityInheritance.NPCs.Calamitas
             Vector2 tryLockPlayer = bossCenter - lockTar; //尝试朝向玩家
             //角度
             float rot = (float)Math.Atan2(tryLockPlayer.Y, tryLockPlayer.X) + MathHelper.PiOver2;
-            if(rot < 0f) rot +=MathHelper.TwoPi;
-            else if (rot > MathHelper.TwoPi) rot -= MathHelper.TwoPi; //确保转角一直在2pi内
-
-            float rotSpeed = 0.1f; //转速 
-            //下面这些代码都是为了保证转角是对的,
-            if(boss.rotation < rot)
-            {
-                if((rot - boss.rotation) > MathHelper.Pi) //小于pi, 减转速
-                    boss.rotation -= rotSpeed;
-                else boss.rotation += rotSpeed;
-            }
-            else if (boss.rotation > rot)
-            {
-                if((boss.rotation - rot) > MathHelper.Pi)
-                    boss.rotation += rotSpeed;
-                else
-                    boss.rotation -= rotSpeed;
-            }
-
-            if(boss.rotation > rot - rotSpeed && boss.rotation < rot + rotSpeed)
-               boss.rotation = rot;
-            //确保boss转角一直在2pi内
-            if(boss.rotation < 0f)
-               boss.rotation += MathHelper.TwoPi;
-            else if(boss.rotation > MathHelper.TwoPi)
-               boss.rotation -= MathHelper.TwoPi;
-            if(boss.rotation > rot - rotSpeed && boss.rotation < rot +rotSpeed)
-               boss.rotation = rot;
+            BrothersGeneric.KeepAngle(boss, 0.1f, rot);
             #endregion
             #region 使旧灾脱战
             //      玩家不存在      玩家似了         白天           非日食      都会让普灾脱战
             if(!player.active || player.dead || Main.dayTime || !Main.eclipse)
-            {
-                boss.TargetClosest(false);
-                player = Main.player[boss.target];
-                player.CalamityInheritance().PopTextFlight = false;
-                if(!player.active || player.dead)
-                {
-                    if(boss.velocity.Y > 3f)
-                       boss.velocity.Y = 3f;
-                    boss.velocity.Y -= 0.1f;
-                    if(boss.velocity.Y < -12f)
-                       boss.velocity.Y = -12f;
-                    
-                    if(boss.timeLeft > 60)
-                       boss.timeLeft = 60;
-                    
-                    if(boss.ai[0] != 0f)
-                    {
-                        boss.ai[1] = 0f;
-                        boss.ai[2] = 0f;
-                        boss.ai[3] = 0f;
-                        cign.BossNewAI[2] = 0f;
-                        cign.BossNewAI[3] = 0f;
-                        boss.alpha = 0;
-                        boss.netUpdate = true;
-                    }
-                    return;
-                }
-            }
+                DespawnThis.Despawn(boss, cign);
             else if (boss.timeLeft < 1800)
                 boss.timeLeft = 1800;
             #endregion
@@ -348,20 +296,21 @@ namespace CalamityInheritance.NPCs.Calamitas
                         if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             /*生成四个兄弟*/
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                     }
                     else if(cign.BossNewAI[0] <= boss.lifeMax * 0.4f) //40%
                     {
                         if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            
                         }
                         /*与上方相同的代码*/
                     }
@@ -369,10 +318,10 @@ namespace CalamityInheritance.NPCs.Calamitas
                     {
                         if(Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
-                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X + boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CataclysmReborn>(),   boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y + boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
+                            NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI);
                         }
                         //上同
                     }
