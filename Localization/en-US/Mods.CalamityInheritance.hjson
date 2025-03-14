@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElemQuiver]Disable Elemental Quiver Split Effect"
+			Label: "[i:CalamityInheritance/ElementalQuiver]Disable Elemental Quiver Split Effect"
 			Tooltip: Determines EQ Split Effect. Use if lag is an issue.
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElemQuiver]Elemental Quiver Splitstyle"
+			Label: "[i:CalamityInheritance/ElementalQuiver]Elemental Quiver Splitstyle"
 			Tooltip:
 				'''
 				Determines the style of projectile spilt.
@@ -34,7 +34,7 @@ Configs: {
 		}
 
 		TheSpongeBarrier: {
-			Label: "[i:CalamityMod/TheSponge]Toggle Sponge's Barrier"
+			Label: "[i:CalamityInheritance/TheSpongetest]Toggle Sponge's Barrier"
 			Tooltip:
 				'''
 				Determines wheteher the Legacy Sponge can active barrier or not
@@ -64,7 +64,7 @@ Configs: {
 		}
 
 		silvastun: {
-			Label: "[i:CalamityMod/SilvaArmor]Toggle Silva Stun"
+			Label: "[i:CalamityInheritance/SilvaArmorold]Toggle Silva Stun"
 			Tooltip:
 				'''
 				Determines mobs can be inflicted Silva Stun
@@ -101,7 +101,7 @@ Configs: {
 		}
 
 		Exomechs: {
-			Label: "[i:musicBox]Post-Exo Music Event"
+			Label: "[i:MusicBox]Post-Exo Music Event"
 			Tooltip: '''Replaced post-Exo music with custom mod music	'''
 		}
 
@@ -111,7 +111,7 @@ Configs: {
 		}
 
 		DoGLegacyMusic: {
-			Label: Devouer of Gods Legacy Theme
+			Label: "[i:MusicBox]Devouer of Gods Legacy Theme"
 			Tooltip:
 				'''
 				Plays Devouer of Gods Legacy theme in DoG Fight
@@ -335,6 +335,41 @@ Configs: {
 				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
 				'''
 		}
+
+		AllShivs: {
+			Label: "[i:CalamityInheritance/FlameburstShortsword]All Shivs Resprite"
+			Tooltip:
+				'''
+				Determines sprite styles of all shivs mod and Calamity present
+				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
+				Sprite list:
+				[i:CalamityInheritance/AncientShiv]Ancient Shiv
+				[i:CalamityInheritance/FlameburstShortsword]Flameburst Shortsword
+				[i:CalamityInheritance/EutrophicShank]Eutrophic Shank
+				[i:CalamityInheritance/LeechingDagger]Leeching Dagger
+				[i:CalamityInheritance/NightsStabber]Night's Stabber
+				[i:CalamityInheritance/TrueNightsStabber]True Night's Stabber
+				[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword
+				[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword
+				[i:CalamityMod/GalileoGladius]Galileo Gladius
+
+				'''
+		}
+
+		AllTerra: {
+			Label: "[i:CalamityMod/LivingShard]All Living Shard Items Resprite"
+			Tooltip:
+				'''
+				Determines sprite styles of all weapons made by Living Shards Calamity present
+				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
+				Sprite list:
+				[i:CalamityMod/BotanicPiercer]Botanic Piercer/ Terra Lance
+				[i:CalamityMod/VernalBolter]Vernal Bolter / Cosmic Bow
+				[i:CalamityMod/PlantationStaff]Plantation Staff/ Plantation Staff
+				[i:CalamityMod/SproutingArrow]Sprouting Arrow / Terra Arrow
+				[i:CalamityMod/DryadsTear]Dryad's Tear / Terra Bullet
+				'''
+		}
 	}
 
 	CIServerConfig: {
@@ -359,8 +394,17 @@ Configs: {
 			Tooltip:
 				'''
 				Determines if you want revert vanilla nerfed by Calamity
-				e.g: Stackable gloves, infinite flight and so on
+				Currently this dosen't revert the tooltips due to Calamity already changes it, but will try.
+				Notes: 
+				Mod also reverts mining speed, Magic Power Buff and Magic Ball Buff nerfed by Calamity
+				And these are NOT toggleable because we do not understand the reasoning behind them.
 				Default by false
+				Mainly contains:
+				[i:MechanicalGlove]Stackable Melee Speed
+				[i:SolarFlareHelmet]Vanilla armor reverts
+				[i:JungleYoyo]All Yoyo hits cooldown
+				[i:EmpressFlightBooster]Infinite flight time
+				[i:RagePotion]Potions and buffs, literally all of them.
 				'''
 			Label: "[i:TerraBlade]Unnerf Vanilla"
 		}
@@ -378,7 +422,10 @@ Configs: {
 		CalBossesCanDropSoul: {
 			Tooltip:
 				'''
-				Allows Cryogen/Brimstone Element/Aquatic Scourge can drop Soul of Might/Fright/Sight
+				Allows
+				[i:CalamityMod/CryogenMask][i:SoulofMight]Cryogen drops Soul of Might
+				[i:CalamityMod/BrimstoneWaifuMask][i:SoulofFright]Brimstone Elemental drops Soul of Fright
+				[i:CalamityMod/AquaticScourgeMask][i:SoulofSight]Aquatic Scourge drops Soul of Sight
 				This is a feature from Calamity 1.4(and before)
 				Enbales by default
 				'''

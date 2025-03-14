@@ -102,7 +102,7 @@ namespace CalamityInheritance.Utilities
             Vector2 playerCenter = player.Center;
             float xDist = playerCenter.X - boomerang.Center.X;
             float yDist = playerCenter.Y - boomerang.Center.Y;
-            float dist = (float)Math.Sqrt(xDist * xDist + yDist * yDist);
+            float dist = TryGetVectorMud(xDist, yDist);
             if(minKillRangeBoomerangToPlr.HasValue)
             {
                 if(dist>minKillRangeBoomerangToPlr.Value)

@@ -1,17 +1,26 @@
 /******************************************************发布版的ChangeLog********************************************************
 内容:
--添加 光之舞[Revamped], 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
--添加 晶火法杖[Revamped], 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy]
+-添加:
+ 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
+ 阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy], 极乐升天炮[Legacy]
+ 恶魔之叉[Revamped], 狱火鞭[Revamped], 晶火法杖[Revamped], 光之舞[Revamped]
+ 远古高频红刀, 目前无法获得
 -给元素射线[Revamped]的日耀爆炸与星云火焰提供了新的视觉效果
--添加 远古高频红刀, 目前无法获得
--修复并小重置 恶魔之叉 与 狱火鞭, 给予法师玩家们一点点爱
--添加 加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
--添加 伽利略短剑/永夜短剑/真永夜短剑/神圣短剑/真神圣短剑的旧贴图切换
--添加 庇护之刃/明月链刃的旧贴图切换
--添加 元素物品贴图切换,可以切换大部分元素物品,如元素方舟,元素射线
+
+-添加选项:
+ 加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
+ 添加所有短剑贴图切换, 可以将大部分短剑切换至旧版贴图
+ 添加元素物品贴图切换, 可以切换大部分元素系列的物品
+ 添加 庇护之刃/明月链刃的旧贴图切换
 
 调整:
 -重构了一遍贴图切换的config,让它看起来更合理
+-config内部分选项的描述应该有更加清晰直观的描述
+
+-加强氦闪[Legacy]:
+ 删除金源锭需求, 时期转移至丛林龙前
+ 内核爆炸的倍率由0.5->0.65, 面板492 -> 500, 并且现在允许氦闪进行二连发连发攻击
+
 -加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
  上述效果整合进魔君套内
 -削弱远古林海盔甲: 套装奖励的debuff下强行回血的速度由8HP/s降低为4HP/s
@@ -29,19 +38,24 @@
 修复:
 -主要是一些潜在的多人游戏的问题
 -修复了永恒盗贼套装的伤害错误加成与裂片无限分裂的问题
+-修复了魔影坩埚的特殊稀有度颜色无法正确显示的问题
+-修正了一些过期的Tooltip
 
 Content:
 -Added Dance of Light Revamped, Apotheosis Legacy, Svantechnical Legacy, Azathoth Legacy
 -Added Crystal Flare Staff Revamped, Alpha Ray Legacy, Genisis Legacy, Wingman Legacy, Opal Striker Legacy
 -Added Ancient Murasama, unoptainable currently.
--Fixed and revamp Demonic Pitchfork and Hell burst to give some love to Mage class
+-Added and revamped Demonic Pitchfork, Hell burst and Crystal Flare staff to give some love to Mage class
 -Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
--Added Elemental/Galileo/Night/True Night/Excalibur/TrueExcalibur Shivs' legacy sprite
 -Added almost all Elemental stuff resprite.
+-Added almost all Shivs resprite
 -Added Aegis Blade and Crescent Moon Resprite
 -Improved the visual of Elemental Ray Revamped
 
 Balance:
+-Helium Flash Legacy now use 12 Comsmilte Bars in its recipe instead of Auric Tesla Bars
+ Buffed Helium Flash Legacy damage from 492 to 500, explosion now uses 65% instead of 50% of weapon damage
+ Now allows double shot
 -Reordered Resprite config to make it looks more acceptable
 -Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50% , now can convert the max stealth to defense boost 
  This effect is applied to Yharim armor
@@ -74,3 +88,10 @@ Fixes:
 3/12:
 -修复了永恒盗贼套装潜在的平方甚至次方增伤的问题, 但仍然存在生命碎片分裂超出既定预期的情况
 -修复了永恒盗贼套装套装奖励无限套娃的问题
+3/13:
+-移除了所有短剑的单独设置, 改为一个按钮统一设置多个短剑的旧版贴图
+3/14:
+ 重写部分本地化
+ 封装了NPC追逐玩家的速度方法, 修改取mod内npc的方法
+ 尝试修复普灾AI(1/999)
+ 尝试拆分兄弟AI的文件

@@ -12,6 +12,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.World;
 using CalamityInheritance.CIPlayer;
 using Terraria.Audio;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance
 {
@@ -53,6 +54,8 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlameRework>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
+                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
             }
 
             CIResprite.LoadTexture();

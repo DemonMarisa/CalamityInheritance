@@ -89,7 +89,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
             bool expertMode = Main.expertMode;
             
-			if (CIGlobalNPC.CalamitasCloneWhoAmI < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].active)
+			if (CIGlobalNPC.ThisCalamitasReborn < 0 || !Main.npc[CIGlobalNPC.ThisCalamitasReborn].active)
 			{
 				NPC.active = false;
 				NPC.netUpdate = true;
@@ -113,7 +113,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             timer++;
             if (timer > 60)
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].ai[1] < 2f)
+                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.ThisCalamitasReborn].ai[1] < 2f)
                 {
                     if (NPC.CountNPCS(ModContent.NPCType<LifeSeekerReborn>()) < 3)
                     {

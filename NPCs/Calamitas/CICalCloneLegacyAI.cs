@@ -112,7 +112,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 //             if(ifPhase2)
 //             {
 //                 //试图生成探魂眼环
-//                 CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI; //get这个AI
+//                 CIGlobalNPC.ThisCalamitasReborn = npc.whoAmI; //get这个AI
 //                 //将calamitas的AI存到这个自建的数组里面
 //                 if(getNPC.BossNewAI[1] == 0f && getLifePercent <= 0.35f && ifExpert) 
 //                 {
@@ -467,7 +467,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 // // 			if (phase2)
 // // 			{
 // //                 // For seekers
-// //                 CIGlobalNPC.CalamitasCloneWhoAmI = npc.whoAmI;
+// //                 CIGlobalNPC.ThisCalamitasReborn = npc.whoAmI;
 
 // // 				// Seeker ring
 // // 				if (calGlobalNPC.newAI[1] == 0f && lifeRatio <= 0.35f && expertMode)

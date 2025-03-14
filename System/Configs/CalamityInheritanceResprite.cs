@@ -26,6 +26,13 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool AllElemental{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool AllShivs{ get; set; }
+        //暂时注释掉泰拉系列的贴图切换，因为我尚不清楚如何ban掉发光贴图
+        // [BackgroundColor(43, 56, 95, 182)]
+        // [DefaultValue(false)]
+        // public bool AllTerra{ get; set; }
         //战士
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
@@ -38,26 +45,6 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool CrescentMoonResprite { get; set;}
-
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-        public bool GalileoResprite { get; set;}
-
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-        public bool CaliburShivResprite { get; set;}
-
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-        public bool TrueCaliburShivResprite { get; set;}
-
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-        public bool NightShivResprite { get; set;}
-
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(false)]
-        public bool TrueNightShivResprite { get; set;}
 
         //射手
         [BackgroundColor(43, 56, 95, 182)]

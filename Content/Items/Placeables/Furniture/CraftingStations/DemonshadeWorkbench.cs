@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
             Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<PlantareGreen>() : ModContent.RarityType<PureRed>();
-            Item.CloneDefaults(ModContent.ItemType<ShadowspecBar>());
             Item.createTile = ModContent.TileType<DemonshadeTile>();
         }
 

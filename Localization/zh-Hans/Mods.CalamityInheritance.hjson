@@ -265,33 +265,33 @@ Configs: {
 		}
 
 		TrueNightShivResprite: {
-			Tooltip: 切换真永夜短剑的贴图
-			Label: "[i:CalamityInheritance/TrueNightsStabber]真永夜短剑贴图切换"
+			// Tooltip: Determines sprite style of True Nights Stabber
+			// Label: "[i:CalamityInheritance/TrueNightsStabber]True Nights Stabber Resprite"
 		}
 
 		NightShivResprite: {
-			Tooltip: 切换永夜短剑的贴图
-			Label: "[i:CalamityInheritance/NightsStabber]永夜短剑贴图切换"
+			// Tooltip: Determines sprite style of Nights Stabber
+			// Label: "[i:CalamityInheritance/NightsStabber]Nights Stabber Resprite"
 		}
 
 		TrueCaliburShivResprite: {
-			Tooltip: 切换真神圣短剑的贴图
-			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]真神圣短剑贴图切换"
+			// Tooltip: Determines sprite style of True Excalibur Shortsword
+			// Label: "[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword Resprite"
 		}
 
 		CaliburShivResprite: {
-			Tooltip: 切换神圣短剑的贴图
-			Label: "[i:CalamityInheritance/ExcaliburShortsword]神圣短剑贴图切换"
+			// Tooltip: Determines sprite style of Excalibur Shortsword
+			// Label: "[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword Resprite"
 		}
 
 		ElementalShivResprite: {
-			Tooltip: 切换元素短剑的贴图
-			Label: "[i:CalamityInheritance/ElementalShivold]元素短剑贴图切换"
+			// Tooltip: Determines sprite style of Elemental Shiv
+			// Label: "[i:CalamityInheritance/ElementalShivold]Elemental Shiv Resprite"
 		}
 
 		GalileoResprite: {
-			Tooltip: 切换伽利略短剑的贴图
-			Label: "[i:CalamityMod/GalileoGladius]伽利略短剑贴图切换"
+			// Tooltip: Determines sprite style of Galileo
+			// Label: "[i:CalamityMod/GalileoGladius]Galileo Gladius Resprite"
 		}
 
 		CrescentMoonResprite: {
@@ -311,13 +311,47 @@ Configs: {
 				切换元素系列物品的贴图, 如果存在的话
 				需注意的是, 为了与原灾做出区分, 这一选项会优先切换模组内现存的旧版元素物品
 				目前包括:
-				[i:CalamityInheritance/ArkoftheElementsold]元素方舟[Legacy]
+				[i:CalamityInheritance/ArkoftheElementsold]元素方舟[Legacy] | [i:CalamityMod/Swordsplosion]爆破剑
 				[i:CalamityInheritance/ElementalShivold]元素短剑[Legacy]
-				[i:CalamityMod/ElementalLance]元素长矛
 				[i:CalamityInheritance/MeleeTypeElementalDisk]元素飞盘近战版本[Legacy]
-				[i:CalamityMod/ElementalBlaster]元素冲击波
+				[i:CalamityInheritance/ElementalEruptionLegacy]元素喷火器[Legacy]
 				[i:CalamityInheritance/ElementalRayold]元素射线[Revamped]
 				[i:CalamityInheritance/ElementalGauntletold]元素之握[Legacy]
+				[i:CalamityMod/ElementalLance]元素长矛
+				[i:CalamityMod/ElementalBlaster]元素冲击波
+				'''
+		}
+
+		AllShivs: {
+			Label: "[i:CalamityInheritance/FlameburstShortsword]全部短剑贴图切换"
+			Tooltip:
+				'''
+				切换所有短剑的贴图, 元素短剑不包括在内
+				包括:
+				[i:CalamityInheritance/LeechingDagger]汲血短剑[Legacy]
+				[i:CalamityInheritance/EutrophicShank]水华刺剑[Legacy]
+				[i:CalamityInheritance/FlameburstShortsword]狱炎短剑[Legacy]
+				[i:CalamityInheritance/AncientShiv]远古短剑[Legacy]
+				[i:CalamityInheritance/NightsStabber]永夜短剑[Legacy]
+				[i:CalamityInheritance/TrueNightsStabber]真永夜短剑[Legacy]
+				[i:CalamityInheritance/ExcaliburShortsword]胜利誓约短剑[Legacy]
+				[i:CalamityInheritance/TrueExcaliburShortsword]真胜利誓约短剑[Legacy]
+				[i:CalamityMod/GalileoGladius]伽利略短剑
+				'''
+		}
+
+		AllTerra: {
+			Label: "[i:CalamityMod/LivingShard]生命碎片系列贴图切换"
+			Tooltip:
+				'''
+				切换灾厄的生命碎片系列武器的贴图
+				需注意的是不会切换与模组内相同类型的武器
+				包括:
+				[i:CalamityMod/BotanicPiercer]翠芒长枪/泰拉长矛
+				[i:CalamityMod/VernalBolter]煦春弓/泰拉弓
+				[i:CalamityMod/PlantationStaff]苍华之庭/苍华之庭
+				[i:CalamityMod/SproutingArrow]春芽箭/泰拉箭
+				[i:CalamityMod/DryadsTear]树妖之泪/泰拉弹
 				'''
 		}
 	}
@@ -343,8 +377,18 @@ Configs: {
 		VanillaUnnerf: {
 			Tooltip:
 				'''
-				决定是否让灾厄削弱的原版数值回调, 包括可堆叠的攻速手套, 无限飞饰品等
-				默认关闭
+				决定是否让灾厄削弱的原版数值回调
+				这一选项目前还没有实现对工具提示的修改, 但在路上了
+				注:
+				模组也回调了原灾对法师的魔能药水与水晶球和挖矿速度的削弱
+				而且这些是[c/FF4D38:无法]被关闭的
+				因为我们根本找不到这种削弱的合理性在哪
+				默认关闭, 主要包括:
+				[i:MechanicalGlove]可堆叠的近战攻速
+				[i:SolarFlareHelmet]原版护甲回调
+				[i:JungleYoyo]所有悠悠球的无敌帧回调
+				[i:EmpressFlightBooster]无限飞行时间的饰品
+				[i:RagePotion]几乎所有的药水与buff回调
 				'''
 			Label: "[i:TerraBlade]原版削弱回调"
 		}
@@ -360,7 +404,15 @@ Configs: {
 		}
 
 		CalBossesCanDropSoul: {
-			Tooltip: 开启后极地之灵，硫磺火元素，渊海灾虫会掉落力量，恐惧，视域之魂
+			Tooltip:
+				'''
+				[i:CalamityMod/CryogenMask]极地之灵掉落力量之魂[i:SoulofMight]
+				[i:CalamityMod/BrimstoneWaifuMask]硫火元素掉落恐惧之魂[i:SoulofFright]
+				[i:CalamityMod/AquaticScourgeMask]渊海灾虫掉落视域之魂[i:SoulofSight]
+				这个是灾厄1.4.2.1版本与其之前的特性
+				也是这三个Boss被称之为"灾三王"的原因
+				默认开启
+				'''
 			Label: "[i:SoulofFright]灾厄三王可以掉落三王魂"
 		}
 

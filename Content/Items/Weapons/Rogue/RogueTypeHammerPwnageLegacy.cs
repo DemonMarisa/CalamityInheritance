@@ -53,11 +53,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CreateRecipe().
                 AddIngredient(ItemID.Pwnhammer).
-                AddIngredient(ItemID.HallowedBar, 7).
-                AddIngredient(ItemID.SoulofFright, 3).
-                AddIngredient(ItemID.SoulofMight, 3).
-                AddIngredient(ItemID.SoulofSight, 3).
-                AddTile(TileID.MythrilAnvil).
+                //移除神圣锭的需求，将神圣锭修改为5个飞行魂
+                AddIngredient(ItemID.SoulofFlight, 5).
+                AddIngredient(ItemID.SoulofFright, 5).
+                AddIngredient(ItemID.SoulofMight, 5).
+                AddIngredient(ItemID.SoulofSight, 5).
+                //修改为铁砧教主
+                AddTile(TileID.Anvils).
                 Register();
         }
     }

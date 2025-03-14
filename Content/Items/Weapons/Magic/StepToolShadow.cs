@@ -13,6 +13,7 @@ using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Placeables.Banners;
 using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -38,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.shoot = ModContent.ProjectileType<StepToolShadowChair>();
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<TrueScarlet>() : ModContent.RarityType<PureRed>();
             Item.value = CIShopValue.RarityPricePureRed;
         }
 

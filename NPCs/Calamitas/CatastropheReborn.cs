@@ -86,7 +86,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             // writer.Write(NPC.localAI[3]);
             for(int i = 0; i < 4; i++)
             {
-                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+                writer.Write(NPC.CIMod().BossNewAI[i]);
             }
         }
 
@@ -100,7 +100,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             // NPC.localAI[2] = reader.ReadSingle();
             // NPC.localAI[3] = reader.ReadSingle();
             for (int i = 0; i < 4; i++)
-            NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[i] = reader.ReadSingle();
         }
 
         public override void FindFrame(int frameHeight)
@@ -114,7 +114,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void AI()
         {
-            CalamitasRebornAIPhase2.CatastropheRebornAI(NPC, Mod);
+            CatastropheAI.ThisAI(NPC, Mod);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

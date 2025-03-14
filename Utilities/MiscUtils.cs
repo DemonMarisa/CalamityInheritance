@@ -1,10 +1,26 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using System.Numerics;
+using Microsoft.Build.Construction;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.GameContent;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Utilities
 {
+    /// <summary>
+    /// get向量数据
+    /// </summary>
+    
     public static partial class CIFunction
     {
+        struct GetVectorDistance
+        {
+            public float vector2Distance;
+            public Vector2 NpcCenter;
+            public Vector2 PlayerCenter;
+        }   
         public static int SecondsToFrames(int seconds) => seconds * 60;
         public static int SecondsToFrames(float seconds) => (int)(seconds * 60);
         /// <summary>
@@ -16,5 +32,20 @@ namespace CalamityInheritance.Utilities
         {
             return (Sec * 60);
         }
+        /// <summary>
+        /// 获取npc的“正中心”位置
+        /// </summary>
+        /// <param name="npc">npc</param>
+        /// <returns>一个位于npc正中心的向量起点(或者终点，看你想怎么使用)</returns>
+        public static Vector2 GetNpcCenter(NPC npc)
+        {
+            Vector2 npcPos = new(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height* 0.5f);
+            return npcPos;
+        }
+        public static float TryGetVectorMud(float distanceX, float distanceY)
+        {
+            return (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+        }
+            
     }
 }

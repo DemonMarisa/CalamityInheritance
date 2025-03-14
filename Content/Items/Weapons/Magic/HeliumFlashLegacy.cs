@@ -17,8 +17,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class HeliumFlashLegacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        internal const float ExplosionDamageMultiplier = 0.5f;
-        public static readonly int HeliumFlashDamage = 495;
+        //氦闪最后一次加强: 内核爆炸倍率0.5f->0.65f, 基础伤害495 -> 500, 修改了useAnimation和useTime实现氦闪的二连发
+        internal const float ExplosionDamageMultiplier = 0.65f;
+        public static readonly int HeliumFlashDamage = 600;
         public static readonly int HeliumFlashManaCost = 15;
 
         public override void SetStaticDefaults()
@@ -28,7 +29,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlash>()] = ModContent.ItemType<HeliumFlashLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlashLegacy>()] = ModContent.ItemType<HeliumFlash>();
             }
-
             Item.staff[Item.type] = true;
         }
 
@@ -39,8 +39,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.DamageType = DamageClass.Magic;
             Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 46);
             Item.mana = HeliumFlashManaCost;
-            Item.useAnimation = 25;
-            Item.useTime = 25;
+            Item.useAnimation = 24;
+            Item.useTime = 4;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 24f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -101,25 +101,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe r = CreateRecipe();
-            r.AddIngredient<VenusianTrident>();
-            r.AddIngredient<LashesofChaos>();
-            r.AddIngredient<ForbiddenSun>();
-            r.AddIngredient(ItemID.FragmentSolar, 20);
-            r.AddIngredient(ItemID.FragmentNebula, 5);
-            r.AddIngredient<AuricBar>(5);
-            r.AddTile<CosmicAnvil>();
-            r.Register();
-
-            Recipe r1 = CreateRecipe();
-            r1.AddIngredient<VenusianTrident>();
-            r1.AddIngredient<LashesofChaos>();
-            r1.AddIngredient<ForbiddenSun>();
-            r1.AddIngredient(ItemID.FragmentSolar, 20);
-            r1.AddIngredient(ItemID.FragmentNebula, 5);
-            r1.AddIngredient<AuricBarold>(1);
-            r1.AddTile<CosmicAnvil>();
-            r1.Register();
+            //将氦闪的时期转移至龙前
+            CreateRecipe().
+                AddIngredient<VenusianTrident>().
+                AddIngredient<LashesofChaos>().
+                AddIngredient<ForbiddenSun>().
+                AddIngredient(ItemID.FragmentSolar, 20).
+                AddIngredient(ItemID.FragmentNebula, 5).
+                AddIngredient<CosmiliteBar>(12).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }
