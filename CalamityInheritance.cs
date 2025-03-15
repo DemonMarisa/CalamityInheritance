@@ -25,10 +25,12 @@ namespace CalamityInheritance
 
         internal Mod infernumMode = null;
 
-        // �ֶ����ְ���ȡ
+        // 获取灾厄音乐
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
 
+        // 获取莉莉音乐包
+        internal Mod liliesmusicMod = null;
         public override void Load()
         {
             Instance = this;
@@ -36,6 +38,10 @@ namespace CalamityInheritance
             // 获取灾厄音乐
             musicMod = null;
             ModLoader.TryGetMod("CalamityModMusic", out musicMod);
+
+            // 获取莉莉音乐包
+            liliesmusicMod = null;
+            ModLoader.TryGetMod("EnderLiliesMusicPack", out liliesmusicMod);
 
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
@@ -73,8 +79,10 @@ namespace CalamityInheritance
         #region Unload
         public override void Unload()
         {
-            //ж���ֶ�����
+            // 卸载灾厄音乐
             musicMod = null;
+            // 卸载莉莉音乐包
+            liliesmusicMod = null;
 
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
