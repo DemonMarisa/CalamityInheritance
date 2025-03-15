@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             modPlayer.FungalCarapace = true;
         }
 

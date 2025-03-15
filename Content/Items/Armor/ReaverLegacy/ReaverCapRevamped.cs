@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
             CalamityPlayer modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer.rogueStealthMax += 1.15f;
             modPlayer1.ReaverRogueExProj = true;
             player.Calamity().wearingRogueArmor = true;

@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             if (player.armor[0].type == ModContent.ItemType<AncientTarragonHelm>() &&
                 player.armor[1].type == ModContent.ItemType<AncientTarragonBreastplate>() &&
                 player.armor[2].type == ModContent.ItemType<AncientTarragonLeggings>())

@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreQueenBee = true;
+                player.CIMod().LoreQueenBee = true;
             }
         }
         public override void AddRecipes()

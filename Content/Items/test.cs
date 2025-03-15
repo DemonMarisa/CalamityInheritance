@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<MiniRocket>(), damage, knockback, player.whoAmI);
             return false;
         }

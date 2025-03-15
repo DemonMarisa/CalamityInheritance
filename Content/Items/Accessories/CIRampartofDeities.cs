@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var usPlayer= player.CalamityInheritance();
+            var usPlayer= player.CIMod();
             player.pStone = true;
             player.longInvince =true;
             usPlayer.RoDPaladianShieldActive = true; //启用帕拉丁盾

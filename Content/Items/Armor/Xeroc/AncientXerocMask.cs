@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer.wearingRogueArmor = true;
             modPlayer1.AncientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;

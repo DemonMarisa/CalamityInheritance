@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 128;

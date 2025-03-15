@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.Mage
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().ReaverMagePower = true;
+            player.CIMod().ReaverMagePower = true;
         }
     }
 }

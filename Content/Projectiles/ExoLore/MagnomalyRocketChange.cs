@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[projectile.owner];
 
-            var CIPlayer = player.CalamityInheritance();
+            var CIPlayer = player.CIMod();
 
             //Lighting
             Lighting.AddLight(projectile.Center, Main.DiscoR * 0.25f / 255f, Main.DiscoG * 0.25f / 255f, Main.DiscoB * 0.25f / 255f);
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void OnKill(Projectile projectile, int timeLeft)
         {
             Player player = Main.player[projectile.owner];
-            var CIPlayer = player.CalamityInheritance();
+            var CIPlayer = player.CIMod();
 
             SoundEngine.PlaySound(CIPlayer.LoreExo ? CISoundMenu.MagnomalyHitsound.WithVolumeScale(0.8f) : SoundID.Item14, projectile.Center);
         }
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[projectile.owner];
 
-            var CIPlayer = player.CalamityInheritance();
+            var CIPlayer = player.CIMod();
             if (CIPlayer.LoreExo)
             {
                 if (projectile.owner == Main.myPlayer && projectile.ai[1] != 1f)
@@ -164,7 +164,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[projectile.owner];
 
-            var CIPlayer = player.CalamityInheritance();
+            var CIPlayer = player.CIMod();
 
             if (projectile.owner == Main.myPlayer)
             {

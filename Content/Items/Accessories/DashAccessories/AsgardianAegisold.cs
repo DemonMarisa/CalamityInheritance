@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             CalamityPlayer modPlayer = player.Calamity();
 
             // Asgardian Aegis ram dash
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = AsgardianAegisDashold.ID;
             usPlayer.ElysianAegis = true;
             player.Calamity().DashID = string.Empty;

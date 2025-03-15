@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             usPlayer.SpeedrunNecklace = true;
         }
         public override void AddRecipes()

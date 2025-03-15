@@ -17,7 +17,7 @@ namespace CalamityInheritance.Buffs.Statbuffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CalamityInheritance().BuffPolarisBoost = true;
+            player.CIMod().BuffPolarisBoost = true;
         }
     }
 }

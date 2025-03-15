@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer1.ElemGauntlet = true;
             player.GetDamage<MeleeDamageClass>() += 0.15f;
             player.GetCritChance<MeleeDamageClass>() += 15;

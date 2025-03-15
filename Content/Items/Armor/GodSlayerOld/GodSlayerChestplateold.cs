@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         public override void UpdateEquip(Player player)
         {
             CalamityPlayer modPlayer1 = player.Calamity();
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             modPlayer.GodSlayerReflect = true;
             modPlayer.GodSlayerDMGprotect = true;
             player.thorns += 0.5f;

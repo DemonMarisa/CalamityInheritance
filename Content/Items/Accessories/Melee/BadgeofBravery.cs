@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
             modPlayer1.BraveBadge = true;
         }

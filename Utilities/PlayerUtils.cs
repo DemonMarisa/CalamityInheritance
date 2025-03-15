@@ -25,7 +25,7 @@ namespace CalamityInheritance.Utilities
         // 移除UI冷却
         public static void RemoveCooldown(this Player player, string id)
         {
-            CalamityInheritancePlayer inheritancePlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer inheritancePlayer = player.CIMod();
             if (inheritancePlayer != null)
             {
                 RemoveCooldownFromModPlayer(inheritancePlayer, id);
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Utilities
         /// <returns>The amount of extra immunity frames to grant.</returns>
         public static int GetExtraHitIFrames(this Player player, HurtInfo hurtInfo)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             int extraIFrames = 0;
             // Ozzatron 20FEB2024: Moved extra iframes from Seraph Tracers to Rampart of Deities to counteract its loss of Charm of Myths
             // This stacks with the above Deific Amulet effect

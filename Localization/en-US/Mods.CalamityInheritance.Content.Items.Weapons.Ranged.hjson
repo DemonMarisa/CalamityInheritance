@@ -361,3 +361,13 @@ ProfanedLancher: {
 	DisplayName: Profaned Lancher
 	Tooltip: ""
 }
+
+AncientDragonsBreath: {
+	DisplayName: Ancient Dragons Breath
+	Tooltip: ""
+}
+
+ChickenCannonLegacy: {
+	DisplayName: Chicken Cannon Legacy
+	Tooltip: ""
+}

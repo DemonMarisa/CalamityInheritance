@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer1.nanotechold = true;
             modPlayer.raiderTalisman = true;

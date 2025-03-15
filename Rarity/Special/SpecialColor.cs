@@ -39,6 +39,12 @@ namespace CalamityInheritance.Rarity.Special
         //近似暗灰
         public override Color RarityColor => new(79,79,79);//#4F4F4F
     }
+    public class YharonFire: ModRarity
+    {
+        //给予回归的丛林龙旧物特殊稀有度颜色
+        //近似金黄
+        public override Color RarityColor => new(255,165,0);
+    }
     public class ShizukuSilver: ModRarity
     {
         //给予...的特殊稀有度颜色，仅在config开启特殊稀有度时生效

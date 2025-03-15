@@ -364,7 +364,7 @@ BrimlashBuster: {
 }
 
 Verdant: {
-	// DisplayName: Verdant
+	DisplayName: 葱茏[Legacy]
 	// Tooltip: ""
 }
 
@@ -376,4 +376,14 @@ AzathothLegacy: {
 		"眨眼之间摧毁宇宙...本应如此"
 		'''
 	DisplayName: 阿撒托斯[Legacy]
+}
+
+BurningSkyLegacy: {
+	DisplayName: 焚天[Legacy]
+	Tooltip: 从天上降下巨龙之火摧毁你的敌人
+}
+
+DragonSword: {
+	DisplayName: 巨龙之怒[Legacy]
+	Tooltip: 按住左键, 向你的敌人倾泻巨龙的怒火
 }

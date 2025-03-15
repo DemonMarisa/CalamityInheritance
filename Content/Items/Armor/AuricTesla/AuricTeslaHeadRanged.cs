@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var hotkey = CalamityKeybinds.ArmorSetBonusHotKey.TooltipHotkeyString();
             player.setBonus = this.GetLocalization("SetBonus").Format(hotkey);
             var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer.tarraSet = true;
             modPlayer.tarraRanged = true;
             modPlayer.bloodflareSet = true;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer1.auricBoostold = true;
             player.GetDamage<RangedDamageClass>() += 0.3f;
             player.GetCritChance<RangedDamageClass>() += 30;

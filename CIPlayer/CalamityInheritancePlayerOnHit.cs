@@ -126,7 +126,7 @@ namespace CalamityInheritance.CIPlayer
 
             CalamityInheritancePlayer ReaverMagePlayer = Main.player[projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
             var ReaverMage = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CalamityInheritance().ReaverMageBurst)
+            if (Main.player[projectile.owner].CIMod().ReaverMageBurst)
             {
                 if (ReaverMageBurst) //击发时提供法术增强buff
                 {
@@ -157,7 +157,7 @@ namespace CalamityInheritance.CIPlayer
             #region ReaverMelee
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CalamityInheritance().ReaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
+            if (Main.player[projectile.owner].CIMod().ReaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
             {
                 int BlastDamage = (int)(projectile.damage * 0.4);
                 if (BlastDamage > 30)
@@ -385,7 +385,7 @@ namespace CalamityInheritance.CIPlayer
 
             var source = proj.GetSource_FromThis();
 
-            CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
+            CalamityInheritancePlayer CIplayer = player.CIMod();
 
             List<int> summonExceptionList = new List<int>()
             {

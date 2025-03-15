@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreDuke = true;
+                player.CIMod().LoreDuke = true;
             }
         }
 

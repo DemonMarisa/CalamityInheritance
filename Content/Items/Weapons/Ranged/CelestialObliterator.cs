@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

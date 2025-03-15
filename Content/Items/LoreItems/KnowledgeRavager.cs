@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreRavager = true;
+                player.CIMod().LoreRavager = true;
             }
         }
         public override void AddRecipes()

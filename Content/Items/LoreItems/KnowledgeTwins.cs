@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreTwins = true;
+                player.CIMod().LoreTwins = true;
             }
         }
         public override void AddRecipes()

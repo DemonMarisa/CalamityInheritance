@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
         {
             bool flag64 = Projectile.type == ModContent.ProjectileType<ReaverOrbOld>();
             Player player = Main.player[Projectile.owner];
-            var modPlayer = player.CalamityInheritance();
+            var modPlayer = player.CIMod();
 
             if (!modPlayer.ReaverSummoner)
             {

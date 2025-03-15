@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer CIplayer = player.CalamityInheritance();
+            CalamityInheritancePlayer CIplayer = player.CIMod();
 
             CIplayer.NucleogenesisLegacy = true;
             player.GetKnockback<SummonDamageClass>() += 3f;

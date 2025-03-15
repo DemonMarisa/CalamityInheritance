@@ -74,7 +74,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public void SetArmorEffectVisuals(Player player)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             if (modPlayer.CIDashDelay < 0)
                 player.armorEffectDrawShadow = true;
         }

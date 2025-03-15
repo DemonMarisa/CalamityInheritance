@@ -17,7 +17,7 @@ namespace CalamityInheritance.Buffs.Summon
 
         public override void Update(Player player, ref int buffIndex)
         {
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             if (player.ownedProjectileCounts[ModContent.ProjectileType<ReaverOrbOld>()] > 0)
             {
                 modPlayer1.ReaverSummonerOrb = true;

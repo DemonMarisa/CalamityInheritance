@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.AstralBulwark = true;
             usPlayer.AstralArcanumEffect = true;
             usPlayer.projRef = true;

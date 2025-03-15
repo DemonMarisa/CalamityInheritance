@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreGoliath = true;
+                player.CIMod().LoreGoliath = true;
                 player.lifeRegen -= 8;
             }
         }

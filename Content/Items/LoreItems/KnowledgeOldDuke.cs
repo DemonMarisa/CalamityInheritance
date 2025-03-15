@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance().LoreDukeElder = true;
+                player.CIMod().LoreDukeElder = true;
             }
         }
         public override void AddRecipes()

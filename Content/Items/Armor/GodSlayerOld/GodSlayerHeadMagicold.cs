@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
 
             var modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer2 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer2 = player.CIMod();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMagicSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");

@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

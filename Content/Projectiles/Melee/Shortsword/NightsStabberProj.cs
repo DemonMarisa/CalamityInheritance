@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             int tentacleNum = 3;
 
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             for (int i = 0; i < tentacleNum; i++)
             {
                 float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);

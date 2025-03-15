@@ -378,3 +378,13 @@ AzathothLegacy: {
 	Tooltip: ""
 	DisplayName: Azathoth Legacy
 }
+
+BurningSkyLegacy: {
+	DisplayName: Burning Sky Legacy
+	Tooltip: ""
+}
+
+DragonSword: {
+	DisplayName: Dragon Sword
+	Tooltip: ""
+}

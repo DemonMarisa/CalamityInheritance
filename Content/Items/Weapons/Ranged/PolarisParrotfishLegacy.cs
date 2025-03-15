@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            var modPlayer = player.CalamityInheritance();
+            var modPlayer = player.CIMod();
             if (modPlayer.PolarisPhase3) //追踪
             {
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PolarStarLegacy>(), damage, knockback, player.whoAmI, 0f, 2f);

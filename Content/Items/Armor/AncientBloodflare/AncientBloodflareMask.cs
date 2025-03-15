@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.AncientBloodflareSet = true;
             usPlayer.AncientBloodflareStat = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");

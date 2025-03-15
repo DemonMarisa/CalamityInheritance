@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override bool CanUseItem(Player player)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo)
             {
                 Item.useTime = 6;
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             Vector2 playerPos = player.RotatedRelativePoint(player.MountedCenter, true);
             float speed = Item.shootSpeed;
@@ -141,7 +141,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

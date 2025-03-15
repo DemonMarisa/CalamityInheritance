@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (player.ZoneCorrupt && Item.favorited)
             {
-                player.CalamityInheritance().LoreHive = true;
+                player.CIMod().LoreHive = true;
             }
         }
 

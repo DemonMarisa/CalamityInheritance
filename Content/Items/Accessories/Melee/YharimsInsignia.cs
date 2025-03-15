@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             modPlayer.YharimsInsignia = true;
             player.GetDamage<TrueMeleeDamageClass>() += 0.15f;
         }

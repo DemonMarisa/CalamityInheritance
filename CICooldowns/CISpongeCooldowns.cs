@@ -24,8 +24,8 @@ namespace CalamityInheritance.CICooldowns
         private float AdjustedCompletion => instance.timeLeft / (float)TheSpongetest.CIShieldDurabilityMax;
 
         public static new string ID => "CISpongeDurability";
-        public override bool CanTickDown => !instance.player.CalamityInheritance().CIsponge || instance.timeLeft <= 0;
-        public override bool ShouldDisplay => instance.player.CalamityInheritance().CIsponge;
+        public override bool CanTickDown => !instance.player.CIMod().CIsponge || instance.timeLeft <= 0;
+        public override bool ShouldDisplay => instance.player.CIMod().CIsponge;
         public override LocalizedText DisplayName => CIFunction.GetText($"UI.Cooldowns.{ID}");
         public override string Texture => "CalamityInheritance/CICooldowns/SpongeDurability";
         public override string OutlineTexture => "CalamityInheritance/CICooldowns/SpongeOutline";
@@ -99,7 +99,7 @@ namespace CalamityInheritance.CICooldowns
         // The shield durability cooldown is added elsewhere, in Misc Effects.
         public override void OnCompleted()
         {
-            CalamityInheritancePlayer modPlayer = instance.player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = instance.player.CIMod();
             if (modPlayer.CISpongeShieldDurability <= 0)
                 modPlayer.CISpongeShieldDurability = 1;
         }
