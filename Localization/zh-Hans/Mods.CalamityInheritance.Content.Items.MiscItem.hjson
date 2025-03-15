@@ -19,3 +19,13 @@ DraedonsToy: {
 		'''
 	DisplayName: 嘉登的神秘遥控器[Legacy]
 }
+
+YharonEssence: {
+	DisplayName: 巨龙之精华[Legacy]
+	Tooltip:
+		'''
+		来自旧日的礼物
+		蕴含着丛林龙的精华
+		右键开启时可以获得一些丛林龙,犽戎(阶段一)战利品
+		'''
+}

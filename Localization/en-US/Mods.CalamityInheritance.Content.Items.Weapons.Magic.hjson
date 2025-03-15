@@ -223,3 +223,8 @@ AlphaRayLegacy: {
 		'''
 	DisplayName: Alpha Ray Legacy
 }
+
+DragonStaff: {
+	DisplayName: Dragon Staff
+	Tooltip: ""
+}

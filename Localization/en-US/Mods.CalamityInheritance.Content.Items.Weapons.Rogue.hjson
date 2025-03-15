@@ -187,3 +187,8 @@ RogueTypeHammerPwnageLegacy: {
 		Stealth strikes keeps chasing and sticking on its enemy
 		'''
 }
+
+DragonSpear: {
+	DisplayName: Dragon Spear
+	Tooltip: ""
+}

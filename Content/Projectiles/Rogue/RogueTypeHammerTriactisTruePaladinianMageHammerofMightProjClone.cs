@@ -221,7 +221,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //给Echo的生成提供一个速度，由于绑定了Rotateby这个旋转，所以不需要额外提供另外一个方向的速度
             Vector2 hammerVelOffset = new Vector2(hammerVelocity, 0f).RotatedBy(rotateAngel);
             //Clone只有造成第三下攻击的时候才会生成一次Echo
-            if(Projectile.owner == Main.myPlayer && HitCounts % 3 == 0)
+            if(Projectile.owner == Main.myPlayer && HitCounts > 2)
             {
                 int newHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[newHammer].localAI[0] = Math.Sign(Projectile.velocity.X);
@@ -236,8 +236,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 int altHammer = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -hammerVelOffset, hammerType, hammerDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[altHammer].localAI[0] = -Math.Sign(Projectile.velocity.X);
                 Main.projectile[altHammer].netUpdate = true;
-                HitCounts ++;
+                HitCounts = 0;
             }
+            else HitCounts ++;
         }
     }
 }

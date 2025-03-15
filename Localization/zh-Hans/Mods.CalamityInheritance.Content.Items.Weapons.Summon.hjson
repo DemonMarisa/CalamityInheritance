@@ -48,3 +48,13 @@ MountedScannerLegacy: {
 		每个召唤物消耗1.25召唤栏
 		'''
 }
+
+YharonSonStaff: {
+	DisplayName: 巨龙七星灯[Legacy]
+	Tooltip:
+		'''
+		召唤一只强大的犽戎之子为你而战
+		每个召唤物消耗4召唤栏
+		"别看了, 这肥鸡可不好吃"
+		'''
+}

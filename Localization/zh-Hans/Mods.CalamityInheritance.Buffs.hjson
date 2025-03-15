@@ -74,37 +74,37 @@ SilvaStun: {
 }
 
 MagicHatBuffOld: {
-	DisplayName: 魔法礼帽[legacy]
+	DisplayName: 魔法礼帽[Legacy]
 	Description: 我会一直留着你的灵魂当人质，但你找到的东西都得留下！
 }
 
 MidnightSunBuffOld: {
-	DisplayName: 极昼飞行物[legacy]
+	DisplayName: 极昼飞行物[Legacy]
 	Description: 一个奇怪的UFO在观察你，这令你很不舒服
 }
 
 ReaverSummonSetBuff: {
-	DisplayName: 掠夺者宝珠[legacy]
+	DisplayName: 掠夺者宝珠[Legacy]
 	Description: 掠夺者宝珠会开辟你的前路
 }
 
 AncientXerocMadness: {
-	DisplayName: 远古克希洛克之怒[legacy]
+	DisplayName: 远古克希洛克之怒[Legacy]
 	Description: 对痛楚的感受使你血脉喷张
 }
 
 AncientXerocShame: {
-	DisplayName: 远古克希洛克残念[legacy]
+	DisplayName: 远古克希洛克残念[Legacy]
 	Description: 身体状况的下滑使你力不从心
 }
 
 CosmicEnergyOld: {
-	DisplayName: 归虚之灵[legacy]
+	DisplayName: 归虚之灵[Legacy]
 	Description: 归虚之灵会保护你
 }
 
 MountedScannerLegacyBuff: {
-	DisplayName: 架式扫射机[legacy]
+	DisplayName: 架式扫射机[Legacy]
 	Description: 强大的机械环绕在你的身边
 }
 
@@ -144,6 +144,6 @@ PolarisBuffLegacy: {
 }
 
 SonYharonBuff: {
-	// DisplayName: Son Yharon Buff
-	// Description: Mods.CalamityInheritance.Buffs.SonYharonBuff.Description
+	DisplayName: 犽戎之子[Legacy]
+	Description: 犽戎之子为你而战
 }

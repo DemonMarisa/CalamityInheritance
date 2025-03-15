@@ -1,19 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Numerics;
-using System.Xml;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Summon;
-using log4net.Layout;
-using Microsoft.Build.Construction;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Text;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -26,7 +15,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
-            ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
+        
+            ProjectileID.Sets.MinionSacrificable[Projectile.type] = false;
             ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
         }
         public override void SetDefaults()
@@ -39,18 +29,29 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 1;
             Projectile.extraUpdates = 1;
+            Projectile.minion = true;
             Projectile.minionSlots = 4f;
             Projectile.timeLeft = 18000;
+            Projectile.timeLeft *= 5;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.minion = true;
         }
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
             var usPlayer = player.CIMod();
             //召唤时生成粒子
-            OnSpwanDust();
+            if (Projectile.localAI[0] == 0f)
+            {
+                int dCounts = 100;
+                for (int i = 0; i < dCounts; i++)
+                {
+                    int dType = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, CIDustID.DustCopperCoin);
+                    Main.dust[dType].velocity *= 2f;
+                    Main.dust[dType].scale *= 1.15f;
+                }
+                Projectile.localAI[0] = 1f;
+            }
             //改贴图朝向
             if (Math.Abs(Projectile.velocity.X) > 0.2f)
                 Projectile.spriteDirection = -Projectile.direction;
@@ -70,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (usPlayer.OwnSonYharon) Projectile.timeLeft = 2;
             }
             //?
-            float accele = 0.05f;
+            float accele = 0.15f;
             for (int i = 0; i < 1000; i++)
             {
                 if (i != Projectile.whoAmI && Main.projectile[i].active && Main.projectile[i].owner == Projectile.owner && ifHasMinion && Math.Abs(Projectile.position.X - Main.projectile[i].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[i].position.Y) < Projectile.width)
@@ -99,7 +100,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.ai[1] = 1f;
                     Projectile.ai[0] = 0f;
                     Projectile.extraUpdates = 1;
-                    Projectile.numUpdates = 0;
                     Projectile.netUpdate = true;
                 }
                 else canUpdate = true;
@@ -182,7 +182,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 {
                     newVec.Normalize();
                     newVec *= num650;
-                    Projectile.velocity = (Projectile.velocity * 40f + newVec)/41f;
+                    Projectile.velocity = (Projectile.velocity * 40f + newVec) / 41f;
                 }
                 else if (Projectile.velocity.X == 0f && Projectile.velocity.Y == 0f)
                 {
@@ -207,21 +207,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.velocity = getNewVec * 8f;
                     Projectile.netUpdate = true;
                 }
-            }
-        }
-       
-        public void OnSpwanDust()
-        {
-            if (Projectile.localAI[0] < 1f)
-            {
-                int dCounts = 100;
-                for (int i = 0; i < dCounts; i++)
-                {
-                    int dType = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, CIDustID.DustCopperCoin);
-                    Main.dust[dType].velocity *= 2f;
-                    Main.dust[dType].scale *= 1.15f;
-                }
-                Projectile.localAI[0] += 1f;
             }
         }
     }

@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Magic;

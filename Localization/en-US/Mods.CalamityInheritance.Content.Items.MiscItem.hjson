@@ -13,3 +13,8 @@ DraedonsToy: {
 	Tooltip: ""
 	DisplayName: Draedons Toy
 }
+
+YharonEssence: {
+	DisplayName: Yharon Essence
+	Tooltip: ""
+}

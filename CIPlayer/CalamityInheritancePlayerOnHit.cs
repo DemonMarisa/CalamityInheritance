@@ -22,6 +22,8 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.Content.Items.MiscItem;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -201,6 +203,7 @@ namespace CalamityInheritance.CIPlayer
 
             }
             #endregion
+            
             #region AuricYharim
             if (AncientAuricSet)
             {

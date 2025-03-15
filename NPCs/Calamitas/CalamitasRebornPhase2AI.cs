@@ -227,8 +227,9 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //转角
                 boss.rotation = rot;
                 //冲刺速度?
-                float chargeSpeed = ifDeath? 50f : 40f;
-                Vector2 newVec = Vector2.Normalize(player.Center + player.velocity * 20f - boss.Center);
+                float chargeSpeed = ifDeath? 40f : 30f;
+                Vector2 newVec = Vector2.Normalize(player.oldPosition + player.oldVelocity - boss.Center);
+                chargeSpeed += 0.5f + Main.rand.NextFloat(0.4f, 0.8f); 
                 boss.velocity = newVec * chargeSpeed;
 
                 //冲刺完毕后, set3f, 普灾反向在冲刺一次
@@ -240,8 +241,8 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //设置伤害
                 boss.damage = boss.defDamage;
                 boss.ai[2] += 1f; //计时器
-                //旧灾再次发起冲刺的时间
-                float chargeTime = ifDeath ? 50f : 70f;
+                //旧灾再次冲刺
+                float chargeTime = ifDeath ? 120f : 120f;
                 if(boss.ai[2] >= chargeTime)
                 {
                     boss.velocity *= 0.9f;

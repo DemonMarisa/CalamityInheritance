@@ -43,3 +43,8 @@ MountedScannerLegacy: {
 		Requires 1.25 minions to use
 		'''
 }
+
+YharonSonStaff: {
+	DisplayName: Yharon Son Staff
+	Tooltip: ""
+}

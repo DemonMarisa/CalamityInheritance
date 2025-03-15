@@ -50,12 +50,12 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
             // float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistddY) + MathHelper.PiOver2;
             */
             //保转角
-            float bDistX = brother.position.X + brother.width / 2 - player.position.X - player.width /2;
-            float bDistY = brother.position.Y + brother.height / 2 - 59f - player.position.Y - player.height /2;
-            float broRot = (float)Math.Atan2(bDistX, bDistY) + MathHelper.PiOver2;
+            float bDistX = brother.position.X + (brother.width / 2) - player.position.X - (player.width / 2);
+            float bDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height /2);
+            float broRot = (float)Math.Atan2(bDistY, bDistX) + MathHelper.PiOver2;
             // BrothersKeepRotation(brother, broRot, 0.15f);
             //丢弃
-            BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
+            brother.rotation = BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
             #endregion
             #region 兄弟脱战
             BrothersGeneric.BrothersDespawns(player, brother);
@@ -94,7 +94,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 brother.ai[2] += 1f;
                 //兄弟进入冲刺的ai时间给予一定的随机性。
                 if (Main.rand.NextBool()) brother.ai[2] += 1f;
-                if (brother.ai[2] >= 90f)
+                if (brother.ai[2] >= 120f)
                 {
                     brother.ai[1] = 1f;
                     brother.ai[2] = 0f;
@@ -169,7 +169,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                     brother.damage = brother.defDamage;
 
                     brother.ai[2] += 1f;
-                    if(brother.ai[2] >= 60f) 
+                    if(brother.ai[2] >= 120f) 
                     {
                         brother.velocity.X *= 0.93f;
                         brother.velocity.Y *= 0.93f;

@@ -49,12 +49,12 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
             float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistY) + MathHelper.PiOver2;
             */
             //保转角
-            float bDistX = brother.position.X + brother.width / 2 - player.position.X - player.width /2;
-            float bDistY = brother.position.Y + brother.height / 2 - 59f - player.position.Y - player.height /2;
-            float broRot = (float)Math.Atan2(bDistX, bDistY) + MathHelper.PiOver2;
+            float bDistX = brother.position.X + (brother.width / 2) - player.position.X - (player.width /2);
+            float bDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height /2);
+            float broRot = (float)Math.Atan2(bDistY, bDistX) + MathHelper.PiOver2;
             // BrothersKeepRotation(brother, broRot, 0.15f);
             //丢弃
-            BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
+            brother.rotation = BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
             #endregion
             #region 兄弟脱战
             //封装
@@ -72,8 +72,8 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                     broProjAttackDir = -1;
                 //获取射弹与玩家的距离
                 Vector2 projVec = new(brother.position.X + brother.width * 0.5f, brother.position.Y + brother.height * 0.5f);
-                float projTarX = player.position.X + player.width / 2 + broProjAttackDir * 180 - projVec.X;
-                float projTarY = player.position.Y + player.height/ 2 -  projVec.Y;
+                float projTarX = player.position.X + (player.width / 2) + (broProjAttackDir * 180) - projVec.X;
+                float projTarY = player.position.Y + (player.height/ 2) -  projVec.Y;
                 float projTarDist = (float)Math.Sqrt(projTarX * projTarX + projTarY * projTarY);
                 if(ifDeath)
                 {
@@ -93,7 +93,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 //这里才正式开始发射弹幕
                 brother.ai[2] += 1f; //计时器
                 if(Main.rand.NextBool()) brother.ai[2] += 1f;
-                if (brother.ai[2] >= 90f) //180f, 大约三秒
+                if (brother.ai[2] >= 120f) //180f, 大约三秒
                 {
                     brother.ai[1] = 1f;
                     brother.ai[2] = 0f;

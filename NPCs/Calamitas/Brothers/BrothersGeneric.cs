@@ -46,7 +46,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
         /// <param name="npc">兄弟</param>
         /// <param name="rotSpeed">兄弟最大转速</param>
         /// <param name="rotAngle"></param>
-        public static void KeepAngle(NPC npc, float rotSpeed, float rotAngle)
+        public static float KeepAngle(NPC npc, float rotSpeed, float rotAngle)
         {
             
             if (rotAngle < 0f)
@@ -77,6 +77,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 npc.rotation -= MathHelper.TwoPi;
             if(npc.rotation > rotAngle - rotSpeed && npc.rotation < rotAngle + rotSpeed)
                 npc.rotation = rotAngle;
+            return npc.rotation;
         }
     }
 }

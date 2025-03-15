@@ -47,7 +47,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             //继承至大凝胶:
             player.statLifeMax2 += 20;
             player.statManaMax2 += 20;
-            player.accRunSpeed += 0.12f;
             player.moveSpeed += 0.1f;
             player.jumpSpeedBoost += 0.50f;
             if ((double)Math.Abs(player.velocity.X) < 0.05 && (double)Math.Abs(player.velocity.Y) < 0.05 && player.itemAnimation == 0)

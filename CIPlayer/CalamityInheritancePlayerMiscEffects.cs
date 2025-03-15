@@ -28,6 +28,7 @@ using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.Content.Items.MiscItem;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -897,7 +898,6 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //假定玩家与灾厄之眼再临战斗
-            
         }
         private void StandingStill()
         {
@@ -1583,8 +1583,8 @@ namespace CalamityInheritance.CIPlayer
                 //移动速度24%
                 Player.moveSpeed += 0.24f;
             }
-
-            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f))
+            //玩家附近有丛林龙且使用了远古龙魂，则准许无限飞
+            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f) && YharonFlightBooster)
             {
                 //准许无限飞行、防击退
                 calPlayer.infiniteFlight = true;

@@ -245,3 +245,12 @@ AlphaRayLegacy: {
 		'''
 	DisplayName: 阿尔法射线[Legacy]
 }
+
+DragonStaff: {
+	DisplayName: 星火凤凰雨[Legacy]
+	Tooltip:
+		'''
+		召唤火幕从天而降
+		“圣火洗礼”
+		'''
+}

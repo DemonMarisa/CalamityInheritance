@@ -380,11 +380,15 @@ ProfanedLancher: {
 }
 
 AncientDragonsBreath: {
-	// DisplayName: Ancient Dragons Breath
-	// Tooltip: ""
+	DisplayName: 远古巨龙之息[Legacy]
+	Tooltip: '''发射一组扩散的龙息子弹	'''
 }
 
 ChickenCannonLegacy: {
-	// DisplayName: Chicken Cannon Legacy
-	// Tooltip: ""
+	DisplayName: 小鸡大炮[Legacy]
+	Tooltip:
+		'''
+		发射小鸡火箭，产生巨大燃爆
+		火箭触碰物块时会弹起并提前引爆
+		'''
 }
