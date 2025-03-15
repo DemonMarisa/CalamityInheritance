@@ -369,3 +369,12 @@ OpalStrikerLegacy: {
 	DisplayName: 大理石冲击波[Legacy]
 	Tooltip: 发射三个大理石弹幕攻击你的敌人
 }
+
+ProfanedLancher: {
+	DisplayName: 极乐升天炮[Legacy]
+	Tooltip:
+		'''
+		发射一个追踪的渎神火箭攻击你的敌人
+		飞行过程中会滞留伤害性的粉尘
+		'''
+}

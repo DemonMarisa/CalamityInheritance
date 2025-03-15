@@ -381,7 +381,7 @@ DraedonsHeartLegacy: {
 	Tooltip:
 		'''
 		Reduced defense damage by 99%
-		+8 HP/s life regen speed, 75% increased defense and 50% reduced damage while standing still
+		+8 HP/s life regen speed, 35% increased defense and 50% reduced damage while standing still
 		'Who the...put defense damage into the game?'
 		'''
 }

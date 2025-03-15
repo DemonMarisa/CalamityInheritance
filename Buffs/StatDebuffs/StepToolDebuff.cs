@@ -17,7 +17,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.CalamityInheritance().rageOfChair = true;
+            npc.CIMod().rageOfChair = true;
         }
         internal static void DrawEffects(NPC npc)
         {

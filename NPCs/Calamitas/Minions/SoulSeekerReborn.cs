@@ -1,5 +1,4 @@
 using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -17,7 +16,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas.Minions
 {
     public class SoulSeekerReborn : ModNPC
     {
@@ -26,7 +25,6 @@ namespace CalamityInheritance.NPCs.Calamitas
         public static Asset<Texture2D> GlowTexture;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Soul Seeker");
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
             if (!Main.dedServ)
             {
@@ -89,7 +87,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
             bool expertMode = Main.expertMode;
             
-			if (CIGlobalNPC.CalamitasCloneWhoAmI < 0 || !Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].active)
+			if (CIGlobalNPC.ThisCalamitasReborn < 0 || !Main.npc[CIGlobalNPC.ThisCalamitasReborn].active)
 			{
 				NPC.active = false;
 				NPC.netUpdate = true;
@@ -113,7 +111,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             timer++;
             if (timer > 60)
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.CalamitasCloneWhoAmI].ai[1] < 2f)
+                if (Main.netMode != NetmodeID.MultiplayerClient && Main.rand.NextBool(10) && Main.npc[CIGlobalNPC.ThisCalamitasReborn].ai[1] < 2f)
                 {
                     if (NPC.CountNPCS(ModContent.NPCType<LifeSeekerReborn>()) < 3)
                     {
@@ -154,12 +152,12 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper2"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper3"), 1f);
                 //Gore.NewGore(NPC.position, NPC.velocity, Mod.GetGoreSlot("Gores/CalamitasGores/SoulSlurper4"), 1f);
-                NPC.position.X = NPC.position.X + (float)(NPC.width / 2);
-                NPC.position.Y = NPC.position.Y + (float)(NPC.height / 2);
+                NPC.position.X = NPC.position.X + NPC.width / 2;
+                NPC.position.Y = NPC.position.Y + NPC.height / 2;
                 NPC.width = 50;
                 NPC.height = 50;
-                NPC.position.X = NPC.position.X - (float)(NPC.width / 2);
-                NPC.position.Y = NPC.position.Y - (float)(NPC.height / 2);
+                NPC.position.X = NPC.position.X - NPC.width / 2;
+                NPC.position.Y = NPC.position.Y - NPC.height / 2;
                 for (int num621 = 0; num621 < 20; num621++)
                 {
                     int num622 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
@@ -167,7 +165,7 @@ namespace CalamityInheritance.NPCs.Calamitas
                     if (Main.rand.NextBool(2))
                     {
                         Main.dust[num622].scale = 0.5f;
-                        Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                        Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
                 }
                 for (int num623 = 0; num623 < 40; num623++)

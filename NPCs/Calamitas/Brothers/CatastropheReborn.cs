@@ -17,7 +17,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace CalamityInheritance.NPCs.Calamitas
+namespace CalamityInheritance.NPCs.Calamitas.Brothers
 
 {
     [AutoloadBossHead]
@@ -50,8 +50,8 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.npcSlots = 5f; //需要占用的npc栏位
             NPC.width = NPC.height = 120;
             NPC.lifeMax = 50000;
-            if(CalamityWorld.death) NPC.scale *= 1.3f; //死亡模式下1.3倍大小
-            NPC.defense = CalamityWorld.death ? 20 : 15; //死亡模式下20点防御
+            NPC.scale *= 1.35f;
+            NPC.defense =  20; //死亡模式下20点防御
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
@@ -79,14 +79,9 @@ namespace CalamityInheritance.NPCs.Calamitas
         //只有你需要除了NPC.ai[]的数组以外的数组去存放AI的时候，才会用这个函数
         //恰好，我们就需要这种东西
         {
-            // writer.Write(NPC.dontTakeDamage);
-            // writer.Write(NPC.localAI[0]);
-            // writer.Write(NPC.localAI[1]);
-            // writer.Write(NPC.localAI[2]);
-            // writer.Write(NPC.localAI[3]);
             for(int i = 0; i < 4; i++)
             {
-                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+                writer.Write(NPC.CIMod().BossNewAI[i]);
             }
         }
 
@@ -94,13 +89,8 @@ namespace CalamityInheritance.NPCs.Calamitas
         //接收写入的额外AI.
         //一定是与上面的SendExtra一起进行的
         {
-            // NPC.dontTakeDamage = reader.ReadBoolean();
-            // NPC.localAI[0] = reader.ReadSingle();
-            // NPC.localAI[1] = reader.ReadSingle();
-            // NPC.localAI[2] = reader.ReadSingle();
-            // NPC.localAI[3] = reader.ReadSingle();
             for (int i = 0; i < 4; i++)
-            NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[i] = reader.ReadSingle();
         }
 
         public override void FindFrame(int frameHeight)
@@ -114,7 +104,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
         public override void AI()
         {
-            CalamitasRebornAIPhase2.CatastropheRebornAI(NPC, Mod);
+            CatastropheAI.ThisAI(NPC, Mod);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

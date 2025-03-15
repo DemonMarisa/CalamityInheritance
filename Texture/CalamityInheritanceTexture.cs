@@ -8,6 +8,8 @@ namespace CalamityInheritance.Texture
 {
     public class CIResprite : ModPlayer
     {
+        //这个用来干掉发光贴图
+        public static Asset<Texture2D> RemovedGlowMask;
         #region 贴图火车
         #region 钨钢系列
         public static Asset<Texture2D> WulfrumAxeNew;
@@ -87,6 +89,7 @@ namespace CalamityInheritance.Texture
         #endregion
         public static void LoadTexture()
         {
+            RemovedGlowMask = ModContent.Request<Texture2D>("CalamityInheritance/Texture/FuckGlowMask");
             #region 钨钢家族
             WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
             WulfrumHammerNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammerNew");
@@ -160,6 +163,8 @@ namespace CalamityInheritance.Texture
         }
         public static void UnloadTexture()
         {
+            RemovedGlowMask = null;
+
             WulfrumAxeNew = null;
             WulfrumHammerNew = null;
             WulfrumPickaxeNew = null;

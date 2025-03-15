@@ -94,7 +94,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             writer.Write(NPC.localAI[3]);
             for(int i = 0; i < 4; i++)
             {
-                writer.Write(NPC.CalamityInheritance().BossNewAI[i]);
+                writer.Write(NPC.CIMod().BossNewAI[i]);
             }
 
         }
@@ -107,7 +107,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             NPC.localAI[3] = reader.ReadSingle();
             for(int i = 0; i < 4; i++)
             {
-                NPC.CalamityInheritance().BossNewAI[i] = reader.ReadSingle();
+                NPC.CIMod().BossNewAI[i] = reader.ReadSingle();
             }
         }
 

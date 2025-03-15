@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.NPCs.Calamitas.Minions;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.CalClone;
@@ -23,7 +24,7 @@ namespace CalamityInheritance.NPCs.Calamitas
             #region 初始化
             //Scarlet:这是一个副本文档，用于重新整顿普灾AI
             //大部分的编码从灾厄现版本转移过来
-            CIGlobalNPC cign = boss.CalamityInheritance();
+            CIGlobalNPC cign = boss.CIMod();
 
             //使普灾[下称旧灾]发光, 这个会一直持续下去
             AddRedLight(boss);
@@ -64,7 +65,7 @@ namespace CalamityInheritance.NPCs.Calamitas
 
             //将这个玩家取出来用
             Player player = Main.player[boss.target];
-            CIGlobalNPC.CalamitasCloneWhoAmI = boss.whoAmI;
+            CIGlobalNPC.ThisCalamitasReborn = boss.whoAmI;
             //获取玩家的中心位置, 只有这个作用, 如果有别的需求得另寻他法
             Vector2 getPlayerCenter = new(player.position.X - (player.width/2), player.position.Y - (player.height/2));
             #endregion

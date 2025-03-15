@@ -19,7 +19,7 @@ CalamitasNPCLegacy: {
 // CalamitasPhase2Legacy.DisplayName: Calamitas Phase2 Legacy
 // LifeSeekerReborn.DisplayName: Life Seeker Legacy
 // SoulSeekerReborn.DisplayName: Soul Seeker Legacy
-// CalamitasReborn.DisplayName: Calamitas Reborn
-// CalamitasRebornPhase2.DisplayName: Calamitas Reborn Phase2
-// CataclysmReborn.DisplayName: Cataclysm Reborn
-// CatastropheReborn.DisplayName: Catastrophe Reborn
+CalamitasReborn.DisplayName: 灾厄之眼
+CalamitasRebornPhase2.DisplayName: 灾厄之眼-再临
+CataclysmReborn.DisplayName: 灾祸-再临
+CatastropheReborn.DisplayName: 灾难-再临

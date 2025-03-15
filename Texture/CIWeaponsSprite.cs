@@ -1,3 +1,4 @@
+using CalamityMod.Items.Weapons.Melee;
 using log4net.Core;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -9,34 +10,49 @@ namespace CalamityInheritance.Texture
     {
         #region 武器切换
         #region 战士
-
+        //泰拉矛
+        public static Asset<Texture2D> TerraLanceCal;
+        public static Asset<Texture2D> TerraLanceCalGlow;
+        public static Asset<Texture2D> TerraLanceCalProj;
+        public static Asset<Texture2D> TerraLanceAlt;
+        public static Asset<Texture2D> TerraLanceAltProj;
         #region 方舟
         public static Asset<Texture2D> AotCCal;
         public static Asset<Texture2D> AotCAlt;
         #endregion
-
         #region 庇护之刃
         public static Asset<Texture2D>  AegisCal;
         public static Asset<Texture2D> AegisAlt;
         #endregion
-
         #region 元素系列
         public static Asset<Texture2D> ElemDiskCal;
         public static Asset<Texture2D> ElemDiskAlt;
         public static Asset<Texture2D> ElemSwordCal;
         public static Asset<Texture2D> ElemSwordAlt;
+        public static Asset<Texture2D> RareArkCal;
+        public static Asset<Texture2D> RareArkAlt;
         public static Asset<Texture2D> ElemLanceCal;
         public static Asset<Texture2D> ElemLanceAlt;
         public static Asset<Texture2D> ElemLanceProjCal;
         public static Asset<Texture2D> ElemLanceProjAlt;
         #endregion
         #region 短剑系列
+        public static Asset<Texture2D> FlameShivCal;
+        public static Asset<Texture2D> FlameShivAlt;
+
+        public static Asset<Texture2D> SeaShivCal;
+        public static Asset<Texture2D> SeaShivAlt;
+        public static Asset<Texture2D> DungeonShivCal;
+        public static Asset<Texture2D> DungeonShivAlt;
+        public static Asset<Texture2D> HiveMindShivCal;
+        public static Asset<Texture2D> HiveMindShivAlt;
+    
         //圣短剑
-        public static Asset<Texture2D> CaliburCal;
-        public static Asset<Texture2D> CaliburAlt;
+        public static Asset<Texture2D> HallowedShivCal;
+        public static Asset<Texture2D> HallowedShivAlt;
         //真圣
-        public static Asset<Texture2D> TrueCaliburCal;
-        public static Asset<Texture2D> TrueCaliburAlt;
+        public static Asset<Texture2D> TrueHallowedShivCal;
+        public static Asset<Texture2D> TrueHallowedShivAlt;
         //元素
         public static Asset<Texture2D> ElemShivCal;
         public static Asset<Texture2D> ElemShivAlt;
@@ -44,13 +60,12 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> GalileoCal;
         public static Asset<Texture2D> GalileoAlt;
         //永夜
-        public static Asset<Texture2D> NightCal;
-        public static Asset<Texture2D> NightAlt;
+        public static Asset<Texture2D> NightShivCal;
+        public static Asset<Texture2D> NightShivAlt;
         //真永夜
-        public static Asset<Texture2D> TrueNightCal;
-        public static Asset<Texture2D> TrueNightAlt;
+        public static Asset<Texture2D> TrueNightShivCal;
+        public static Asset<Texture2D> TrueNightShivAlt;
         #endregion
-
         #region 月明链刃
         public static Asset<Texture2D> CerscentMoonProjCal;
         public static Asset<Texture2D> CerscentMoonProjAlt;
@@ -58,11 +73,17 @@ namespace CalamityInheritance.Texture
 
         #endregion
         #region 远程
+
         //泰拉弓
         public static Asset<Texture2D> TerraBowCal;
+        public static Asset<Texture2D> TerraBowCalGlow;
         public static Asset<Texture2D> TerraBowAlt;
+        //元素BYD
         public static Asset<Texture2D> ElemBYDCal;
         public static Asset<Texture2D> ElemBYDAlt;
+        //元素喷火器
+        public static Asset<Texture2D> ElemFlamethrowerCal;
+        public static Asset<Texture2D> ElemFlamethrowerAlt;
         #region 碎颅者
         public static Asset<Texture2D> SkullmasherCal;
         public static Asset<Texture2D> Skullmasher;
@@ -88,8 +109,9 @@ namespace CalamityInheritance.Texture
         #endregion
         #region 召唤
         //小花法杖
-        public static Asset<Texture2D> PlantareCal;
-        public static Asset<Texture2D> PlantareAlt;
+        public static Asset<Texture2D> TerraSummonCal;
+        public static Asset<Texture2D> TerraSummonCalGlow;
+        public static Asset<Texture2D> TerraSummonAlt;
         #endregion
         #region 盗贼
         #region 苍穹,圣光飞刀
@@ -134,11 +156,19 @@ namespace CalamityInheritance.Texture
         public static void LoadTexture()
         {
             #region 战士
+            //泰拉矛
+            TerraLanceCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/BotanicPiercer");
+            TerraLanceCalGlow = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/BotanicPiercerGlow");
+            TerraLanceCalProj = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/Spears/BotanicPiercerProjectile");
+            TerraLanceAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TerraLance");
+            TerraLanceAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TerraLanceProj");
             //方舟
             AotCCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
             AotCAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
             #endregion
             //元素系列
+            RareArkCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/Swordsplosion");
+            RareArkAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/RareArkAlt");
             ElemDiskCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeElementalDisk");
             ElemDiskAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemDiskAlt");
             ElemSwordCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheElementsold");
@@ -151,27 +181,39 @@ namespace CalamityInheritance.Texture
             ElemLanceProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemLanceProj");
         
             #region 短剑系列
+            //火短剑
+            FlameShivCal= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/FlameburstShortsword");
+            FlameShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/FlameShiv");
+            //地牢短剑
+            DungeonShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/AncientShiv");
+            DungeonShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/DungeonShiv");
+            //水短剑
+            SeaShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/EutrophicShank");
+            SeaShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/SeaShiv");
+            //腐巢短剑
+            HiveMindShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/LeechingDagger");
+            HiveMindShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/HiveMindShiv");
             //圣短剑
-            CaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExcaliburShortsword");
-            CaliburAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CaliburLegacy");
-            TrueCaliburCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueExcaliburShortsword");
-            TrueCaliburAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TrueCaliburAlt");
+            HallowedShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExcaliburShortsword");
+            HallowedShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/HallowedShiv");
+            TrueHallowedShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueExcaliburShortsword");
+            TrueHallowedShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/TrueHallowedShiv");
             //永夜
-            NightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/NightsStabber");
-            NightAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/NightLegacy");
+            NightShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/NightsStabber");
+            NightShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/NightShiv");
             //真永夜
-            TrueNightCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueNightsStabber");
-            TrueNightAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TrueNightLegacy");
+            TrueNightShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueNightsStabber");
+            TrueNightShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/TrueNightShiv");
             //伽利略
             GalileoCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/GalileoGladius");
-            GalileoAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/GalileoLegacy");
+            GalileoAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/GalileoShiv");
             //元素
             ElemShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ElementalShivold");
-            ElemShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElementalShivLegacy");
+            ElemShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/ElementalShiv");
             #endregion
 
             //庇护
-             AegisCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/AegisBlade");
+            AegisCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/AegisBlade");
             AegisAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/AegisBladeLegacy");
 
 
@@ -183,6 +225,9 @@ namespace CalamityInheritance.Texture
             //元素BYD
             ElemBYDCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/ElementalBlaster");
             ElemBYDAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/ElemBYD");
+            //元素喷火器
+            ElemFlamethrowerCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/ElementalEruptionLegacy");
+            ElemFlamethrowerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/ElemFlamethrower");
 
             //碎颅
             SkullmasherCal= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/SkullmasherAlt");
@@ -213,7 +258,7 @@ namespace CalamityInheritance.Texture
             #endregion
 
             #region 召唤
-            PlantareCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/PlantareAlt");
+            TerraSummonCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/TerraSummonAlt");
             #endregion
 
             #region 盗贼
@@ -303,27 +348,33 @@ namespace CalamityInheritance.Texture
             HalleyCal = null;
             HalleyAlt = null;
 
-             AegisCal = null;
+            AegisCal = null;
             AegisAlt = null;
-
-            ElemShivAlt = null;
-            ElemShivCal = null;
-
+            
             GalileoAlt = null;
             GalileoCal  = null;
-
-            CaliburCal = null;
-            CaliburAlt = null;
-
-            NightCal = null;
-            NightAlt = null;
-
-            TrueNightAlt = null;
-            TrueNightCal = null;
+            HallowedShivCal = null;
+            HallowedShivAlt = null;
+            TrueHallowedShivCal = null;
+            TrueHallowedShivAlt = null;
+            NightShivCal = null;
+            NightShivAlt = null;
+            TrueNightShivAlt = null;
+            TrueNightShivCal = null;
+            FlameShivCal = null;
+            FlameShivAlt = null;
+            SeaShivAlt = null;
+            SeaShivCal = null;
+            DungeonShivAlt = null;
+            DungeonShivCal = null;
 
             CerscentMoonProjCal = null;
             CerscentMoonProjAlt = null;
 
+            RareArkAlt = null;
+            RareArkCal = null;
+            ElemShivCal = null;
+            ElemShivAlt = null;
             ElemBYDAlt = null;
             ElemBYDCal = null;
             ElemDiskAlt = null;
@@ -336,8 +387,12 @@ namespace CalamityInheritance.Texture
             ElemSwordCal = null;
             ElemRayAlt = null;
             ElemRayCal = null;
-            PlantareCal = null;
-            PlantareAlt = null;
+            ElemFlamethrowerAlt = null;
+            ElemFlamethrowerCal = null;
+
+            
+            TerraSummonCal = null;
+            TerraSummonAlt = null;
         }
     }
 }

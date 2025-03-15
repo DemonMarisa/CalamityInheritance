@@ -356,3 +356,8 @@ OpalStrikerLegacy: {
 		50% not consume ammo
 		'''
 }
+
+ProfanedLancher: {
+	DisplayName: Profaned Lancher
+	Tooltip: ""
+}

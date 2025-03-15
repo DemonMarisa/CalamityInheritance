@@ -86,7 +86,8 @@ namespace CalamityInheritance.CIPlayer
                 TextureAssets.Item[ModContent.ItemType<ElementalLance>()] != null ||
                 TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] != null ||
                 TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] != null) 
+                TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] != null) 
             {
                 if (!CIRespriteConfig.Instance.AllElemental)
                 {
@@ -107,6 +108,9 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveCal;
                     //元素BYD
                     TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDCal;
+                    //爆破
+                    TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] = CIWeaponsResprite.RareArkCal;
+                    TextureAssets.Item[ModContent.ItemType<ElementalEruptionLegacy>()] = CIWeaponsResprite.ElemFlamethrowerCal;
 
                 }
                 if (CIRespriteConfig.Instance.AllElemental)
@@ -127,9 +131,30 @@ namespace CalamityInheritance.CIPlayer
                     TextureAssets.Item[ModContent.ItemType<ElementalRayold>()] = CIWeaponsResprite.ElemRayAlt;
                     //手套
                     TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveAlt;
+                    //byd
                     TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDAlt;
+                    //爆破
+                    TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] = CIWeaponsResprite.RareArkAlt;
+                    //元素喷火器
+                    TextureAssets.Item[ModContent.ItemType<ElementalEruptionLegacy>()] = CIWeaponsResprite.ElemFlamethrowerAlt;
                 }
             }
+            #endregion
+            #region 泰拉系列 目前是占位符没有作用
+            
+            // if (TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] != null)
+            // {
+            //     if (!CIRespriteConfig.Instance.AllTerra)
+            //     {
+            //         TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] = CIWeaponsResprite.TerraLanceCal;
+            //         TextureAssets.Projectile[ModContent.ProjectileType<BotanicPiercerProjectile>()] = CIWeaponsResprite.TerraLanceAlt;
+            //     }
+            //     if (CIRespriteConfig.Instance.AllTerra)
+            //     {
+            //         TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] = CIWeaponsResprite.TerraLanceAlt;
+            //         TextureAssets.Projectile[ModContent.ProjectileType<BotanicPiercerProjectile>()] = CIWeaponsResprite.TerraLanceAltProj;
+            //     }
+            // }
             #endregion
             #region 近战物品
             if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
@@ -144,77 +169,78 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #region 圣短剑
-            if (TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] != null)
+            if (TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<NightsStabber>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<EutrophicShank>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<AncientShiv>()] != null ||
+                TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] != null
+                )
             {
-                if (!CIRespriteConfig.Instance.CaliburShivResprite)
+                if (!CIRespriteConfig.Instance.AllShivs)
                 {
-                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.CaliburCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.CaliburCal;
-                }
-                if (CIRespriteConfig.Instance.CaliburShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.CaliburAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.CaliburAlt;
-                }
-            }
-            #endregion
-            #region 真圣短剑
-            if (TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.TrueCaliburShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueCaliburCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueCaliburCal;
-                }
-                if (CIRespriteConfig.Instance.TrueCaliburShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueCaliburAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueCaliburAlt;
-                }
-            }
-            #endregion
-            #region 永夜短剑
-            if (TextureAssets.Item[ModContent.ItemType<NightsStabber>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.NightShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightCal;
-                }
-                if (CIRespriteConfig.Instance.NightShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightAlt;
-                }
-            }
-            #endregion
-            #region 真永夜短剑
-            if (TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.TrueNightShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightCal;
-                }
-                if (CIRespriteConfig.Instance.TrueNightShivResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightAlt;
-                }
-            }
-            #endregion
-            #region 伽利略
-            if (TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.GalileoResprite)
-                {
+                    //圣短剑
+                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.HallowedShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.HallowedShivCal;
+                    //真圣短剑
+                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueHallowedShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueHallowedShivCal;
+                    //永夜短剑
+                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightShivCal;
+                    //真永夜短剑
+                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightShivCal;
+                    //伽利略
                     TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoCal;
                     TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoCal;
+                    //水华
+                    TextureAssets.Item[ModContent.ItemType<EutrophicScimitar>()] = CIWeaponsResprite.SeaShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<EutrophicScimitarProj>()] = CIWeaponsResprite.SeaShivCal;
+                    //狱炎
+                    TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] = CIWeaponsResprite.FlameShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<FlameburstShortswordProj>()] = CIWeaponsResprite.FlameShivCal;
+                    //远古
+                    TextureAssets.Item[ModContent.ItemType<AncientShiv>()] = CIWeaponsResprite.DungeonShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<AncientShivProj>()] = CIWeaponsResprite.DungeonShivCal;
+                    //腐巢
+                    TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] = CIWeaponsResprite.HiveMindShivCal;
+                    TextureAssets.Projectile[ModContent.ProjectileType<LeechingDaggerProj>()] = CIWeaponsResprite.HiveMindShivCal;
+
+
                 }
-                if (CIRespriteConfig.Instance.GalileoResprite)
+                if (CIRespriteConfig.Instance.AllShivs)
                 {
+                    //圣短剑
+                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.HallowedShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.HallowedShivAlt;
+                    //真圣短剑
+                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueHallowedShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueHallowedShivAlt;
+                    //永夜短剑
+                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightShivAlt;
+                    //真永夜短剑
+                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightShivAlt;
+                    //伽利略
                     TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoAlt;
                     TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoAlt;
+                    //水华
+                    TextureAssets.Item[ModContent.ItemType<EutrophicScimitar>()] = CIWeaponsResprite.SeaShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<EutrophicScimitarProj>()] = CIWeaponsResprite.SeaShivAlt;
+                    //狱炎
+                    TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] = CIWeaponsResprite.FlameShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<FlameburstShortswordProj>()] = CIWeaponsResprite.FlameShivAlt;
+                    //远古
+                    TextureAssets.Item[ModContent.ItemType<AncientShiv>()] = CIWeaponsResprite.DungeonShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<AncientShivProj>()] = CIWeaponsResprite.DungeonShivAlt;
+                    //腐巢
+                    TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] = CIWeaponsResprite.HiveMindShivAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<LeechingDaggerProj>()] = CIWeaponsResprite.HiveMindShivAlt;
                 }
             }
             #endregion
