@@ -38,3 +38,8 @@ ChargerItem: {
 	DisplayName: 便携充能物品
 	Tooltip: 使用后，瞬间充能身上所有的嘉登军械库武器
 }
+
+CrystylCrusherLegacy: {
+	// DisplayName: Crystyl Crusher Legacy
+	// Tooltip: ""
+}

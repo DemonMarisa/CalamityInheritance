@@ -46,9 +46,10 @@ namespace CalamityInheritance.System
         #endregion
 
         #region Events List
-
         public override void OnModLoad()
         {
+            //223.5d为莉莉音乐包的开局音乐加残酷世界之传说的时长，进入世界后的音乐是优先播放莉莉的
+            double CalamityTitleTime = CalamityInheritance.Instance.liliesmusicMod == null ? 175.5d : 233.5d;
 
             static void AddEntry(string eventId, string songName, TimeSpan length, Func<bool> shouldPlay, Func<bool> enabled, TimeSpan? introSilence = null, TimeSpan? outroSilence = null)
             {
@@ -64,7 +65,7 @@ namespace CalamityInheritance.System
                 EventCollection.Add(entry);
             }
             //进入世界播放残酷世界之传说
-            CalAddEntry("FirstEnterWorld", "CalamityTitle", TimeSpan.FromSeconds(175.5d),
+            CalAddEntry("FirstEnterWorld", "CalamityTitle", TimeSpan.FromSeconds(CalamityTitleTime),
                 () => true, () => CIConfig.Instance.TaleOfACruelWorld);
 
             AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.5d),
