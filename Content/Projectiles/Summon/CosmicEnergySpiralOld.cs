@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             Lighting.AddLight((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, (float)Main.DiscoR / 255f, (float)Main.DiscoG / 255f, (float)Main.DiscoB / 255f);
             bool flag64 = Projectile.type == ModContent.ProjectileType<CosmicEnergySpiralOld>();
             player.AddBuff(ModContent.BuffType<CosmicEnergyOld>(), 3600);
@@ -276,7 +276,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override Color? GetAlpha(Color lightColor)
         {
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             if(usPlayer.LoreExo)
             {
                 Projectile.netUpdate = true;

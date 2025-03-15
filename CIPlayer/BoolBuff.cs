@@ -24,6 +24,9 @@ namespace CalamityInheritance.CIPlayer
         public int StepToolShadowChairSmallCD = 0;
         public int StepToolShadowChairSmallFireCD = 0;
         public float ManaHealMutipler = 1f; //增强魔力药水恢复量
+
+        //丛林龙仆从
+        public bool OwnSonYharon = false;
         #endregion
        
         public void ResetBuff()
@@ -45,6 +48,7 @@ namespace CalamityInheritance.CIPlayer
             BuffPolarisBoost = false;
             PolarisPhase2 = false;
             PolarisPhase3 = false;
+            OwnSonYharon = false;
             #endregion
         }
         public void UpdateDeadBuff()
@@ -65,6 +69,7 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase2 = false;
             PolarisPhase3 = false;
             PolarisBoostCounter = 0;
+            OwnSonYharon = false;
         }
     }
 }

@@ -40,9 +40,9 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.AncientChisel)
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
             if (item.type == ItemID.HandOfCreation)
-                player.CalamityInheritance().IfGodHand = true;
-            if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
-                VanillaAccesoriesUnnerf(item, player);  //饰品
+            player.CIMod().IfGodHand = true;
+            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+            VanillaAccesoriesUnnerf(item, player);  //饰品
             CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
         }
 
@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Items
                 //是否佩戴了原灾的核子之源？如果是，那就补正斯塔提斯诅咒的栏位    
                 player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
                 //用于其他的堆叠操作，因为原灾没有对这个饰品的判定
-                player.CalamityInheritance().WearingStatisCurse = true;
+                player.CIMod().WearingStatisCurse = true;
             }
             //是否佩戴占星?
             if (item.type == ModContent.ItemType<StarTaintedGenerator>())
@@ -125,14 +125,14 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<StatisBlessing>())
             {
                 //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
-                player.maxMinions += (player.CalamityInheritance().WearingStatisCurse || player.Calamity().nucleogenesis) ? 2 : 0;
+                player.maxMinions += (player.CIMod().WearingStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
             }
             #endregion
         }
         #region GrabChanges
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             int itemGrabRangeBoost = 0 +
                 (usPlayer.LoreWallofFlesh ? 100 : 0) +
                 (usPlayer.LorePlantera ? 150 : 0) +
@@ -144,7 +144,7 @@ namespace CalamityInheritance.Content.Items
         #region Shoot
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (player.ownedProjectileCounts[ModContent.ProjectileType<UniverseSplitterField>()] > 0)
 
@@ -159,7 +159,7 @@ namespace CalamityInheritance.Content.Items
 
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             CalamityPlayer calPlayer = player.Calamity();
             if (usPlayer.GodSlayerRangedSet && calPlayer.canFireGodSlayerRangedProjectile)
             {

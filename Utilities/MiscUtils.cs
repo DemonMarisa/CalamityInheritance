@@ -46,6 +46,23 @@ namespace CalamityInheritance.Utilities
         {
             return (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
         }
-            
+        /// <summary>
+        /// 播放射弹帧图
+        /// </summary>
+        /// <param name="projectile">射弹</param>
+        /// <param name="fCounter">计时器，即间隔多少时间播放下一张帧图</param>
+        /// <param name="fMax">这个帧图最大的帧数</param>
+        public static int FramesChanger(Projectile projectile, int fCounter, int fMax) 
+        {
+            projectile.frameCounter++;
+            if (projectile.frameCounter > fCounter)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+            }
+            if (projectile.frame > fMax)
+                projectile.frame = 0;
+            return projectile.frame;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void UpdateArmorSet(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer1.ReaverMageBurst = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.GetDamage<MagicDamageClass>() += 0.10f;

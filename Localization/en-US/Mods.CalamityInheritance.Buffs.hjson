@@ -142,3 +142,8 @@ PolarisBuffLegacy: {
 	DisplayName: Polaris Buff Legacy
 	Description: Mods.CalamityInheritance.Buffs.PolarisBuffLegacy.Description
 }
+
+SonYharonBuff: {
+	DisplayName: Son Yharon Buff
+	Description: Mods.CalamityInheritance.Buffs.SonYharonBuff.Description
+}

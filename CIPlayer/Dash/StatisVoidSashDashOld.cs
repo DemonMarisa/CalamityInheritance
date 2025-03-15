@@ -40,8 +40,8 @@ namespace CalamityInheritance.CIPlayer.Dash
             }
 
             // Periodically release scythes.
-            player.CalamityInheritance().statisTimerOld++;
-            if (Main.myPlayer == player.whoAmI && player.CalamityInheritance().statisTimerOld % 5 == 0)
+            player.CIMod().statisTimerOld++;
+            if (Main.myPlayer == player.whoAmI && player.CIMod().statisTimerOld % 5 == 0)
             {
                 int scytheDamage = (int)player.GetBestClassDamage().ApplyTo(250);
                 scytheDamage = player.ApplyArmorAccDamageBonusesTo(scytheDamage);

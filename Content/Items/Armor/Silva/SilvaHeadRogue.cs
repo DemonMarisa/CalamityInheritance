@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         }
         public override void UpdateArmorSet(Player player)
         {
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             var modPlayer = player.Calamity();
             modPlayer1.AuricSilvaSet = true;
             modPlayer1.SilvaRougeSetLegacy = true;

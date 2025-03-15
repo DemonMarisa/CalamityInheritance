@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
         public override void UpdateArmorSet(Player player)
         {
             CalamityPlayer calPlayer = player.Calamity();
-            var usPlayer = player.CalamityInheritance(); 
+            var usPlayer = player.CIMod(); 
             player.statLifeMax2 += 40;
             player.lifeRegen += 1;
             player.pStone = true;

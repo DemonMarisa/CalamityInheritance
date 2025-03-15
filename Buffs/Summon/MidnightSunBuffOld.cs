@@ -17,7 +17,7 @@ namespace CalamityInheritance.Buffs.Summon
 
         public override void Update(Player player, ref int buffIndex)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             if (player.ownedProjectileCounts[ModContent.ProjectileType<MidnightSunUFOold>()] > 0)
             {
                 modPlayer.MidnnightSunBuff = true;

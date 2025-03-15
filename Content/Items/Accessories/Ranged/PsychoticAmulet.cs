@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             modPlayer.PsychoticAmulet = true;
             player.shroomiteStealth = true;
             player.GetDamage<ThrowingDamageClass>() += 0.05f;

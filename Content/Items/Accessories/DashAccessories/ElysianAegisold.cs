@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = ElysianAegisDashold.ID;
             usPlayer.ElysianAegis = true;
             usPlayer.ElysianAegisImmnue = true;

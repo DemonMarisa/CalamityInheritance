@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             player.GetDamage<GenericDamageClass>() += 0.10f;
             //Scarlet:移除栏位加成，伤害加成上调至10%，移除暴击概率加成（已经够多了)
             player.jumpSpeedBoost += 3.2f;

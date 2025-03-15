@@ -142,3 +142,8 @@ PolarisBuffLegacy: {
 	DisplayName: 北极星
 	Description: 增加生命再生速度
 }
+
+SonYharonBuff: {
+	// DisplayName: Son Yharon Buff
+	// Description: Mods.CalamityInheritance.Buffs.SonYharonBuff.Description
+}

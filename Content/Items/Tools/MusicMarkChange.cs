@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public override bool? UseItem(Player player)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             if (player.altFunctionUse == 2)
             {
                 CIMusicEventSystem.PlayedEvents.Add("YharonDefeated");

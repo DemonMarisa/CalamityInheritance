@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
             CalamityGlobalProjectile modProj = Projectile.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             //set up minion buffs and bools
             bool hatExists = Projectile.type == ModContent.ProjectileType<MagicHatOld>();
             player.AddBuff(ModContent.BuffType<MagicHatBuffOld>(), 3600);

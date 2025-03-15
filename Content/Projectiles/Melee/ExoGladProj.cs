@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             Vector2 value7 = new Vector2(5f, 10f);
             counter += 1f;
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private void OnHitEffects(Vector2 targetPos)
         {
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             var source = Projectile.GetSource_FromThis();
             float swordKB = Projectile.knockBack;
             int swordDmg = (int)(Projectile.damage * 0.25);

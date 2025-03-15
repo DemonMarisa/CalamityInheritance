@@ -29,14 +29,14 @@ namespace CalamityInheritance.Content.Items.LoreItems
             {
                 if (Item.favorited)
                 {
-                    player.CalamityInheritance().BoCLoreTeleportation = true;
+                    player.CIMod().BoCLoreTeleportation = true;
                 }
             }
             if (CIConfig.Instance.BoCLoreUnconditional == false)
             {
                 if (player.ZoneCrimson && Item.favorited)
                 {
-                    player.CalamityInheritance().BoCLoreTeleportation = true;
+                    player.CIMod().BoCLoreTeleportation = true;
                 }
             }
         }

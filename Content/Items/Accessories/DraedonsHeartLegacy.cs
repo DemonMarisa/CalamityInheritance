@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer calPlayer = player.Calamity();
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             calPlayer.defenseDamageRatio *= DefenseDamageResistance; //防御损伤的损失比直接乘以0.01f,即1%
             usPlayer.DraedonsHeartLegacyStats = true;
         }

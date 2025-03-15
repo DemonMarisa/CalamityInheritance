@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CalamityInheritance(). SCalLore= true;
+                player.CIMod(). SCalLore= true;
             }
         }
         public override void AddRecipes()

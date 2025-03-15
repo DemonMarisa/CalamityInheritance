@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                         continue;
 
                     CalamityPlayer calPlayer = player.Calamity();
-                    CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+                    CalamityInheritancePlayer usPlayer = player.CIMod();
 
                     // Do not render the shield if its visibility is off (or it does not exist)
                     bool isVanityOnly = usPlayer.CIspongeShieldVisible && !usPlayer.CIsponge;
@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             if (CIConfig.Instance.TheSpongeBarrier == true)
             {
                 usPlayer.CIsponge = true;
@@ -231,7 +231,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     continue;
 
                 CalamityPlayer calPlayer = player.Calamity();
-                CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+                CalamityInheritancePlayer usPlayer = player.CIMod();
 
                 // 如果护盾的可见性关闭（或不存在），则不渲染护盾
                 bool isVanityOnly = calPlayer.spongeShieldVisible && !usPlayer.CIsponge;
@@ -254,7 +254,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (!isVanityOnly)
                     {
                         // Again, I believe there is no way this looks correct when two players have The Sponge equipped.
-                        CalamityInheritancePlayer localModPlayer = Main.LocalPlayer.CalamityInheritance();
+                        CalamityInheritancePlayer localModPlayer = Main.LocalPlayer.CIMod();
                         float shieldDurabilityRatio = localModPlayer.CISpongeShieldDurability / (float)CIShieldDurabilityMax;
                         visualShieldStrength = MathF.Pow(shieldDurabilityRatio, 0.5f);
                     }

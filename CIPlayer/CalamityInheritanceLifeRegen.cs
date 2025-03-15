@@ -16,7 +16,7 @@ namespace CalamityInheritance.CIPlayer
         #region Update Bad Life Regen
         public override void UpdateBadLifeRegen()
         {
-            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = Player.CIMod();
 
             if (AstralArcanumEffect)
             {

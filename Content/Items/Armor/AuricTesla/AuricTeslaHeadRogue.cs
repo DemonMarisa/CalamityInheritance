@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             modPlayer1.auricBoostold = true;
             player.GetDamage<RogueDamageClass>() += 0.2f;
             player.GetCritChance<RogueDamageClass>() += 20;

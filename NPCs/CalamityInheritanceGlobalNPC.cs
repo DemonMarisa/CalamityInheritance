@@ -60,7 +60,7 @@ namespace CalamityInheritance.NPCs
                 npc.type == NPCID.BigHornetSpikey || npc.type == NPCID.LittleHornetSpikey || npc.type == NPCID.BigHornetLeafy || npc.type == NPCID.LittleHornetLeafy ||
                 npc.type == NPCID.BigHornetHoney || npc.type == NPCID.LittleHornetHoney || npc.type == NPCID.BigHornetFatty || npc.type == NPCID.LittleHornetFatty)
             {
-                if (Main.player[npc.target].CalamityInheritance().LoreQueenBee)
+                if (Main.player[npc.target].CIMod().LoreQueenBee)
                 {
                     CIGlobalAI.LoreQueenBeeEffect(npc);
                     return false;
@@ -72,12 +72,12 @@ namespace CalamityInheritance.NPCs
         #region Edit Spawn Rate
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
-            if (player.CalamityInheritance().LoreHive)
+            if (player.CIMod().LoreHive)
             {
                 spawnRate = (int)(spawnRate * 1.3);
                 maxSpawns = (int)(maxSpawns * 0.6f);
             }
-            if (player.CalamityInheritance().LorePerforator)
+            if (player.CIMod().LorePerforator)
             {
                 spawnRate = (int)(spawnRate * 0.7);
                 maxSpawns = (int)(maxSpawns * 1.8f);

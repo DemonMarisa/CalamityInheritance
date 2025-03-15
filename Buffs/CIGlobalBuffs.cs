@@ -41,7 +41,7 @@ namespace CalamityInheritance.Buffs
                 player.pickSpeed -= 0.1f;
             #endregion
             #region 魔君套的抵抗魔力病buff效果
-            else if (type == BuffID.ManaSickness && player.CalamityInheritance().AncientAuricSet)
+            else if (type == BuffID.ManaSickness && player.CIMod().AncientAuricSet)
             {
                 player.GetDamage<MagicDamageClass>() *= 1.5f;
             }
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Buffs
                     *以及启用我自己的方法
                     */
                     player.endurance -= 0.25f;
-                    player.CalamityInheritance().SolarShieldEndurence = true; //启用
+                    player.CIMod().SolarShieldEndurence = true; //启用
                 }
                 #endregion
                 #region 甲虫攻速回调

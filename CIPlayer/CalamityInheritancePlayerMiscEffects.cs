@@ -27,6 +27,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityMod.NPCs.Yharon;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -84,6 +85,9 @@ namespace CalamityInheritance.CIPlayer
             //冷却变动
             ResetCD();
 
+            //再临Boss战斗buff
+            RebornBosses();
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
@@ -98,7 +102,7 @@ namespace CalamityInheritance.CIPlayer
         public void Buffs()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CalamityInheritance();
+            var usPlayer = Player.CIMod();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
             if (AncientAstralStatBuff) //星之铸造效果
@@ -265,7 +269,7 @@ namespace CalamityInheritance.CIPlayer
         private void Accessories()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CalamityInheritance();
+            var usPlayer = Player.CIMod();
             if (YharimsInsignia)
             {
                 Player.GetDamage<MeleeDamageClass>() += 0.15f;
@@ -518,7 +522,7 @@ namespace CalamityInheritance.CIPlayer
         public void ArmorSetbonus()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CalamityInheritance();
+            var usPlayer = Player.CIMod();
             
             if (AncientTarragonSet)
             {
@@ -823,7 +827,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void MiscEffects()
         {
-            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
@@ -893,22 +897,11 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //假定玩家与灾厄之眼再临战斗
-            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
-            {
-                //允许无限飞行
-                calPlayer.infiniteFlight = true;
-                //32%跳跃速度
-                Player.jumpSpeedBoost = 1.6f;
-                //接触伤害减免25%
-                calPlayer.contactDamageReduction += 0.25f;
-                //移动速度24%
-                Player.moveSpeed += 0.24f;
-
-            }
+            
         }
         private void StandingStill()
         {
-            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             if(DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
             {
@@ -1124,7 +1117,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void LoreEffects()
         {
-            CalamityInheritancePlayer usPlayer = Player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             #region Lore
             if (usPlayer.LoreKingSlime)
@@ -1571,6 +1564,31 @@ namespace CalamityInheritance.CIPlayer
                 ReaverRocketFires = true;
             }
             //纳米技术
+        }
+    
+        public void RebornBosses()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            //与灾厄之眼-再临战斗时提供的战斗增益
+            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
+            {
+                //允许无限飞行
+                calPlayer.infiniteFlight = true;
+                //准许防击退
+                Player.noKnockback = true;
+                //32%跳跃速度
+                Player.jumpSpeedBoost = 1.6f;
+                //接触伤害减免25%
+                calPlayer.contactDamageReduction += 0.25f;
+                //移动速度24%
+                Player.moveSpeed += 0.24f;
+            }
+
+            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f))
+            {
+                //准许无限飞行、防击退
+                calPlayer.infiniteFlight = true;
+            }
         }
     }
 }

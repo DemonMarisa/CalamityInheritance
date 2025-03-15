@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo)
             {
                 Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExobeamoldExoLore>(), damage, knockback, player.whoAmI, 0f);
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         private int hitCount2 = 0;
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             SoundEngine.PlaySound(SoundID.Item88, player.Center);
             float xPos = player.position.X + 800 * Main.rand.NextBool(2).ToDirectionInt();
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

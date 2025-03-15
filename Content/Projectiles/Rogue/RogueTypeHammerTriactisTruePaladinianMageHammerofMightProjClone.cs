@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private readonly float stealthSpeed = 32f; //追踪速度24->32f
         private static readonly int Lifetime = 3000;
         private static readonly float canHomingCounter = 100f; //大锤子体积过大，因此开始追踪前飞行的距离应当更长
-        public ref int HitCounts => ref Main.player[Projectile.owner].CalamityInheritance().HammerCounts;
+        public ref int HitCounts => ref Main.player[Projectile.owner].CIMod().HammerCounts;
         public float HitSpins = 0f;
         public float GetStealth = 0f; //获取潜伏值的缓存
 
@@ -160,7 +160,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Player player = Main.player[Projectile.owner];
             //TODO:这个原本是用来标记锤子处于挂载状态然后增强星流投矛伤害的
             //但是我试了好几次都失败了，所以看情况哪天要是我会造了就行
-            player.CalamityInheritance().IfCloneHtting = false; 
+            player.CIMod().IfCloneHtting = false; 
 
             return true;
         }

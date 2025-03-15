@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             var modPlayer = player.Calamity();
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {

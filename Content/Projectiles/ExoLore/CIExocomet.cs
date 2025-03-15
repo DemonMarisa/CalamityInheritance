@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             //获取玩家
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 5)

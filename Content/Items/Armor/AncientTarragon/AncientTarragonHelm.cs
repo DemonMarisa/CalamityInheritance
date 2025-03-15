@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
 
         public override void UpdateArmorSet(Player player)
         {
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             usPlayer.AncientTarragonSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }

@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Lighting.AddLight(Projectile.Center, Color.SkyBlue.ToVector3());
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             if (Projectile.localAI[0] == 0f)
             {
                 Projectile.velocity.Y = Main.rand.NextFloat(8f, 11f) * Main.rand.NextBool(2).ToDirectionInt();

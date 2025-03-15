@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
             var calPlayer = player.Calamity();
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
 
             calPlayer.tarraSet = true;
             calPlayer.tarraMage = true;
@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var calPlayer = player.Calamity();
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             player.manaCost *= 0.8f;
             player.GetDamage<MagicDamageClass>() += 0.3f;
             player.GetCritChance<MagicDamageClass>() += 20;

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric;
 
 		public override void UpdateArmorSet(Player player)
 		{
-			var modPlayer = player.CalamityInheritance();
+			var modPlayer = player.CIMod();
 			var calPlayer = player.Calamity();
 			modPlayer.ManaHealMutipler = 2.0f;
         player.setBonus = this.GetLocalizedValue("SetBonus");

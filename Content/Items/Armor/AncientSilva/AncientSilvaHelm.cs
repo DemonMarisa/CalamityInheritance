@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
 
         public override void UpdateArmorSet(Player player)
         {
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             CalamityPlayer calPlayer = player.Calamity();
             usPlayer.AncientSilvaSet = true;
             usPlayer.AncientSilvaStat = true;

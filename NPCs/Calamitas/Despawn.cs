@@ -14,7 +14,7 @@ namespace CalamityInheritance.NPCs.Calamitas
         {
             npc.TargetClosest(false);
             Player player = Main.player[npc.target];
-            player.CalamityInheritance().PopTextFlight = false;
+            player.CIMod().PopTextFlight = false;
             if(!player.active || player.dead)
             {
                 if(npc.velocity.Y > 3f)

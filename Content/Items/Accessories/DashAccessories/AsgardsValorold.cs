@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = AsgardsValorDashold.ID;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;

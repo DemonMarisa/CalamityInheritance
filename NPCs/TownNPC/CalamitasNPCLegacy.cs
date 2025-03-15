@@ -107,7 +107,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public override void AI()
         {
             Player player = Main.player[Main.myPlayer];
-            CalamityInheritancePlayer CIPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer CIPlayer = player.CIMod();
             int deaths = Main.player[Main.myPlayer].numberOfDeathsPVE;
             if (deaths < 1 && DownedBossSystem.downedCalamitas && CIPlayer.FreeEssence == 1)
                 Chat = 3;
@@ -135,7 +135,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public override string GetChat()
         {
             Player player = Main.player[Main.myPlayer];
-            CalamityInheritancePlayer CIPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer CIPlayer = player.CIMod();
 
             WeightedRandom<string> list = new WeightedRandom<string>();
 

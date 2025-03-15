@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             Player player = Main.player[Projectile.owner];
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (Projectile.owner == Main.myPlayer)
             {

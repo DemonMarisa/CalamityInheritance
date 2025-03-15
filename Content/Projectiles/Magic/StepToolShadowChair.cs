@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
-            var modPlayer = Main.player[Projectile.owner].CalamityInheritance();
+            var modPlayer = Main.player[Projectile.owner].CIMod();
             if (Projectile.localAI[0] == 0f)
             {
                 SoundEngine.PlaySound(CISoundMenu.StepBonk, Projectile.Center);
@@ -130,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                                          Projectile.owner);
             }
             //给小凳子的生成加了等同于无敌帧的cd，不然打蠕虫怪的时候电脑会爆炸
-            Main.player[Projectile.owner].CalamityInheritance().StepToolShadowChairSmallCD = 9;
+            Main.player[Projectile.owner].CIMod().StepToolShadowChairSmallCD = 9;
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

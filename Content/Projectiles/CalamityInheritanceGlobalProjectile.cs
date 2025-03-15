@@ -21,6 +21,8 @@ namespace CalamityInheritance.Content.Projectiles
         public override bool InstancePerEntity => true;
 
         private bool frameOneHacksExecuted = false;
+        public float MinionDamageValue = 1f;
+        public float MinionProjDamageValue = 0f;
 
         public bool AMRextra = false;
 
@@ -28,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             CalamityPlayer modPlayer1 = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
@@ -226,7 +228,7 @@ namespace CalamityInheritance.Content.Projectiles
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];
-            CalamityInheritancePlayer modPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
 
             modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {

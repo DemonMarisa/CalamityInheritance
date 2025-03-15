@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool CanUseItem(Player player)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo)
             {
                 Item.damage = 298;
@@ -81,7 +81,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             Vector2 source = player.RotatedRelativePoint(player.MountedCenter, true);
             Vector2 baseOffset = velocity;
@@ -155,7 +155,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

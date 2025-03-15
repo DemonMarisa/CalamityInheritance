@@ -2,6 +2,7 @@
 using System.IO;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
@@ -107,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             //更强大的海啸
             if (player.altFunctionUse == 2)
             {
-                var usPlayer = player.CalamityInheritance();
+                var usPlayer = player.CIMod();
                 int numFlames = 5;
                 if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaSet) //佩戴金源射手时
                 numFlames = 10;

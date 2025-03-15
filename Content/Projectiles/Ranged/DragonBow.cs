@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     float variation = (1f + Projectile.localAI[0]) * 3f; //variation increases as fire rate increases
                     Vector2 position = playerPosition + Utils.RandomVector2(Main.rand, -variation, variation);
                     Vector2 speed = Projectile.velocity * scaleFactor * (0.6f + Main.rand.NextFloat() * 0.6f);
-                    var usPlayer = player.CalamityInheritance();
+                    var usPlayer = player.CIMod();
                     float ai0;
                     //数值调整:
                     //全部弹幕的速度下调, 将伤害细分成多个小模块

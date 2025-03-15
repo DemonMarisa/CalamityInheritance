@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             if (usPlayer.LoreExo)
             {
                 damage.Base = 330;
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool CanUseItem(Item item, Player player)
         {
 
-            var CIPlayer = player.CalamityInheritance();
+            var CIPlayer = player.CIMod();
 
             if (CIPlayer.LoreExo)
             {
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (usPlayer.LoreExo == true)
             {

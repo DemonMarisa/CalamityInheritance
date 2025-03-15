@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modPlayer1 = player.CalamityInheritance();
+            var modPlayer1 = player.CIMod();
             var modPlayer = player.Calamity();
             player.pStone = true;
             player.longInvince = true;

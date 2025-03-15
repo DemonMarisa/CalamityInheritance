@@ -59,5 +59,18 @@ Mods: {
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
+
+		Contetn: {
+			Items: {
+				Weapons: {
+					Summon: {
+						YharonSonStaff: {
+							DisplayName: Yharon Son Staff
+							Tooltip: ""
+						}
+					}
+				}
+			}
+		}
 	}
 }

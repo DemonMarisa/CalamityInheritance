@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (player.ZoneDungeon && Item.favorited)
             {
-                player.CalamityInheritance().LoreSkeletron = true;
+                player.CIMod().LoreSkeletron = true;
             }
         }
 

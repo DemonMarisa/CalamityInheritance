@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
             CalamityPlayer calPlayer = player.Calamity();
             calPlayer.wearingRogueArmor = true;
             calPlayer.WearingPostMLSummonerSet = true;

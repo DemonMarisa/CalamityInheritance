@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 Lighting.AddLight((int)player.Center.X / 16, (int)player.Center.Y / 16, Main.DiscoR / 255f, Main.DiscoG / 255f, Main.DiscoB / 255f);
 
             CalamityPlayer modPlayer = player.Calamity();
-            var usPlayer = player.CalamityInheritance();
+            var usPlayer = player.CIMod();
             usPlayer.EHeartStats = true;
             modPlayer.allWaifus = true;
             

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateEquip(Player player)
         {
             var modPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = player.CIMod();
             modPlayer1.GodSlayerReflect = true;
             modPlayer1.GodSlayerDMGprotect = true;
             modPlayer.fBarrier = true;

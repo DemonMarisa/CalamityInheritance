@@ -54,7 +54,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region Player Incoming Damage Multiplier (Increases)
             double damageMult = 1D;
-            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = Player.CIMod();
             if (modPlayer1.LoreDesertScourge) // Dimensional Soul Artifact increases incoming damage by 15%.
                 damageMult += 0.05;
 
@@ -68,7 +68,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 免伤
             double damageReduce = 1D;
-            var usPlayer = Player.CalamityInheritance();
+            var usPlayer = Player.CIMod();
             if (usPlayer.SolarShieldEndurence)
             {
                 //我需要这种方法玩家来复原日耀免伤，这个属于防前计算，而原版日耀是防后计算，因此这里实际先取15%而不取原有的20%
@@ -330,7 +330,7 @@ namespace CalamityInheritance.CIPlayer
         public override void OnHurt(Player.HurtInfo hurtInfo)
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer Modplayer1 = Player.CalamityInheritance();
+            CalamityInheritancePlayer Modplayer1 = Player.CIMod();
             if (BuffPolarisBoost)
             {
                 PolarisBoostCounter -= 10;
@@ -507,7 +507,7 @@ namespace CalamityInheritance.CIPlayer
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = Player.CIMod();
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
@@ -586,7 +586,7 @@ namespace CalamityInheritance.CIPlayer
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer1 = Player.CIMod();
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
@@ -945,7 +945,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
        public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
         {
-            CalamityInheritancePlayer modPlayer = Player.CalamityInheritance();
+            CalamityInheritancePlayer modPlayer = Player.CIMod();
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
                 if (modPlayer.SCalLore && target.type == ModContent.NPCType<ReaperShark>())

@@ -6,7 +6,7 @@ namespace CalamityInheritance.Utilities
 {
     public static partial class CIFunction
     {
-        public static CalamityInheritancePlayer CalamityInheritance(this Player player)
+        public static CalamityInheritancePlayer CIMod(this Player player)
         {
             return player.GetModPlayer<CalamityInheritancePlayer>();
         }

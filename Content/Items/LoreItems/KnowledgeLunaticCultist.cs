@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (NPC.LunarApocalypseIsUp && Item.favorited)
             {
-                player.CalamityInheritance().LoreCultist = true;
+                player.CIMod().LoreCultist = true;
             }
         }
 
