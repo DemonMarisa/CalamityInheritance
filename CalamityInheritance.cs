@@ -13,6 +13,7 @@ using CalamityMod.World;
 using CalamityInheritance.CIPlayer;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod.UI;
 
 namespace CalamityInheritance
 {
@@ -66,7 +67,6 @@ namespace CalamityInheritance
 
             CIResprite.LoadTexture();
             CIWeaponsResprite.LoadTexture();
-
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             #endregion
@@ -74,6 +74,7 @@ namespace CalamityInheritance
         public void LoadClient()
         {
             AstralArcanumUI.Load(this);
+            CalPopupGUIManager.LoadGUIs();
         }
 
         #region Unload
@@ -96,6 +97,8 @@ namespace CalamityInheritance
             CIWeaponsResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
+
+            CalPopupGUIManager.UnloadGUIs();
             base.Unload();
         }
         #endregion

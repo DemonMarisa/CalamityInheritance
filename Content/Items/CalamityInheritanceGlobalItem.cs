@@ -3,9 +3,11 @@ using System.ComponentModel;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.UI;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.Potions;
@@ -16,6 +18,7 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
+using CalamityMod.UI;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,19 +37,19 @@ namespace CalamityInheritance.Content.Items
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if(item.type == ItemID.AncientChisel)
-            player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+            if (item.type == ItemID.AncientChisel)
+                player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
             if (item.type == ItemID.HandOfCreation)
-            player.CalamityInheritance().IfGodHand = true;
-            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
-            VanillaAccesoriesUnnerf(item, player);  //饰品
+                player.CalamityInheritance().IfGodHand = true;
+            if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+                VanillaAccesoriesUnnerf(item, player);  //饰品
             CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
         }
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             #region 增强所有魔影武器的数值
-            if(CIServerConfig.Instance.ShadowspecBuff)
+            if (CIServerConfig.Instance.ShadowspecBuff)
             {
                 if (item.type == ModContent.ItemType<Earth>())
                 {
@@ -90,22 +93,22 @@ namespace CalamityInheritance.Content.Items
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
             #region 补正饰品挖矿速度
-            if(item.type == ModContent.ItemType<AncientFossil>())
+            if (item.type == ModContent.ItemType<AncientFossil>())
             {
                 player.pickSpeed -= 0.25f; //补正
             }
-            if(item.type == ModContent.ItemType<SpelunkersAmulet>())
+            if (item.type == ModContent.ItemType<SpelunkersAmulet>())
             {
                 player.pickSpeed -= 0.05f;
             }
-            if(item.type == ModContent.ItemType<ArchaicPowder>())
+            if (item.type == ModContent.ItemType<ArchaicPowder>())
             {
                 player.pickSpeed -= 0.05f;
             }
             #endregion
             #region 用于召唤位的叠加
             //是否佩戴了斯塔提斯诅咒?
-            if(item.type == ModContent.ItemType<StatisCurse>())
+            if (item.type == ModContent.ItemType<StatisCurse>())
             {
                 //是否佩戴了原灾的核子之源？如果是，那就补正斯塔提斯诅咒的栏位    
                 player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
@@ -113,16 +116,16 @@ namespace CalamityInheritance.Content.Items
                 player.CalamityInheritance().WearingStatisCurse = true;
             }
             //是否佩戴占星?
-            if(item.type == ModContent.ItemType<StarTaintedGenerator>())
+            if (item.type == ModContent.ItemType<StarTaintedGenerator>())
             {
                 //如果佩戴了核子之源？补正两个栏位
                 player.maxMinions += player.Calamity().nucleogenesis ? 2 : 0;
             }
             //是否佩戴斯塔提斯祝福?
-            if(item.type == ModContent.ItemType<StatisBlessing>())
+            if (item.type == ModContent.ItemType<StatisBlessing>())
             {
                 //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
-                player.maxMinions += (player.CalamityInheritance().WearingStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
+                player.maxMinions += (player.CalamityInheritance().WearingStatisCurse || player.Calamity().nucleogenesis) ? 2 : 0;
             }
             #endregion
         }
@@ -144,16 +147,16 @@ namespace CalamityInheritance.Content.Items
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
 
             if (player.ownedProjectileCounts[ModContent.ProjectileType<UniverseSplitterField>()] > 0)
-                
-            if (usPlayer.LoreWallofFlesh)
-                velocity *= 1.10f;
+
+                if (usPlayer.LoreWallofFlesh)
+                    velocity *= 1.10f;
             if (usPlayer.LorePlantera)
                 velocity *= 1.15f;
             if (usPlayer.LorePolter)
                 velocity *= 1.20f;
         }
         #endregion
-        
+
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
             CalamityInheritancePlayer usPlayer = player.CalamityInheritance();
@@ -198,7 +201,7 @@ namespace CalamityInheritance.Content.Items
                     usPlayer.ReaverRocketFires = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
-                        Projectile.NewProjectile(source, position, velocity* 0.001f, ModContent.ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(source, position, velocity * 0.001f, ModContent.ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
                     }
                 }
             }
@@ -221,23 +224,23 @@ namespace CalamityInheritance.Content.Items
         }
         public override string IsArmorSet(Item head, Item body, Item legs)
         {
-            if (head.type == ItemID.WizardHat && 
-               (body.type == ItemID.AmethystRobe || 
-                body.type == ItemID.TopazRobe || 
-                body.type == ItemID.SapphireRobe || 
-                body.type == ItemID.EmeraldRobe || 
-                body.type == ItemID.RubyRobe || 
-                body.type == ItemID.DiamondRobe || 
+            if (head.type == ItemID.WizardHat &&
+               (body.type == ItemID.AmethystRobe ||
+                body.type == ItemID.TopazRobe ||
+                body.type == ItemID.SapphireRobe ||
+                body.type == ItemID.EmeraldRobe ||
+                body.type == ItemID.RubyRobe ||
+                body.type == ItemID.DiamondRobe ||
                 body.type == ItemID.AmberRobe))
                 return "WizardHatCI";
 
-            if (head.type == ItemID.MagicHat && 
-               (body.type == ItemID.AmethystRobe || 
-                body.type == ItemID.TopazRobe || 
-                body.type == ItemID.SapphireRobe || 
-                body.type == ItemID.EmeraldRobe || 
-                body.type == ItemID.RubyRobe || 
-                body.type == ItemID.DiamondRobe || 
+            if (head.type == ItemID.MagicHat &&
+               (body.type == ItemID.AmethystRobe ||
+                body.type == ItemID.TopazRobe ||
+                body.type == ItemID.SapphireRobe ||
+                body.type == ItemID.EmeraldRobe ||
+                body.type == ItemID.RubyRobe ||
+                body.type == ItemID.DiamondRobe ||
                 body.type == ItemID.AmberRobe))
                 return "MagicHatCI";
 
@@ -248,13 +251,13 @@ namespace CalamityInheritance.Content.Items
 
             #region 塔防套件
             //和尚
-            if (head.type == ItemID.MonkBrows && 
-                body.type == ItemID.MonkShirt && 
+            if (head.type == ItemID.MonkBrows &&
+                body.type == ItemID.MonkShirt &&
                 legs.type == ItemID.MonkPants)
                 return "MonkSetCI";
             //渗透忍者
-            if (head.type == ItemID.MonkAltHead && 
-                body.type == ItemID.MonkAltShirt && 
+            if (head.type == ItemID.MonkAltHead &&
+                body.type == ItemID.MonkAltShirt &&
                 legs.type == ItemID.MonkAltPants)
                 return "ShinobiNinjaSetCI";
             //学徒
@@ -288,7 +291,7 @@ namespace CalamityInheritance.Content.Items
                 legs.type == ItemID.SquireAltPants)
                 return "VKnight";
             #endregion
-           
+
             //寒霜套
             if (head.type == ItemID.FrostHelmet &&
                 body.type == ItemID.FrostBreastplate &&
@@ -313,19 +316,19 @@ namespace CalamityInheritance.Content.Items
         }
         public override void UpdateArmorSet(Player player, string set)
         {
-            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
-            VanillarArmorSetUnnerf(player, set);
+            if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+                VanillarArmorSetUnnerf(player, set);
         }
         public override void UpdateEquip(Item item, Player player)
         {
             #region 挖矿速度补正(原灾)
-            if(item.type == ModContent.ItemType<ReaverHeadExplore>())
+            if (item.type == ModContent.ItemType<ReaverHeadExplore>())
             {
                 player.pickSpeed -= 0.2f; //补正成40%
             }
             #endregion
 
-            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+            if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaArmorUnnerf(item, player); //盔甲
             }
@@ -343,7 +346,7 @@ namespace CalamityInheritance.Content.Items
             }
             else if (set == "SolarSetCI")
             {
-                player.endurance += 0.12f ;//回调12%的常驻免伤
+                player.endurance += 0.12f;//回调12%的常驻免伤
             }
             #region 塔防套件回调散件高数值
             //圣骑士
@@ -365,9 +368,9 @@ namespace CalamityInheritance.Content.Items
             else if (set == "ShinobiNinjaSetCI")
             {
                 player.GetDamage<SummonDamageClass>() -= 0.3f;
-                player.GetDamage<MeleeDamageClass>() -= 0.1f; 
-                player.GetAttackSpeed<MeleeDamageClass>() -= 0.1f; 
-                player.GetCritChance<MeleeDamageClass>() -= 10; 
+                player.GetDamage<MeleeDamageClass>() -= 0.1f;
+                player.GetAttackSpeed<MeleeDamageClass>() -= 0.1f;
+                player.GetCritChance<MeleeDamageClass>() -= 10;
             }
             //侍卫
             else if (set == "SquireSetCI")
@@ -403,9 +406,9 @@ namespace CalamityInheritance.Content.Items
             #endregion
             #region 寒霜套回调
             else if (set == "FrostArmorSetCI")
-            {   
+            {
                 //ban掉原灾的效果
-                player.Calamity().frostSet = false; 
+                player.Calamity().frostSet = false;
                 //复原原本的效果
                 player.GetDamage<MeleeDamageClass>() += 0.1f;
                 player.GetDamage<RangedDamageClass>() += 0.1f;
@@ -415,14 +418,14 @@ namespace CalamityInheritance.Content.Items
             else if (set == "JungleSetCI")
             {
                 //回调魔力消耗
-                player.manaCost -= 0.06f; 
+                player.manaCost -= 0.06f;
             }
             #endregion
             #region 死灵套回调
             else if (set == "NecroSetCI")
             {
                 //ban掉原灾的效果 
-                player.Calamity().necroSet = false; 
+                player.Calamity().necroSet = false;
             }
             #endregion
             #region 熔岩套回调
@@ -430,9 +433,9 @@ namespace CalamityInheritance.Content.Items
             {
                 //注：灾厄的熔岩套把10%近战伤害转成了10%真近战伤害
                 //取消真近战伤害加成
-                player.GetDamage<TrueMeleeDamageClass>() -= 0.10f; 
+                player.GetDamage<TrueMeleeDamageClass>() -= 0.10f;
                 //恢复为普通近战伤害加成
-                player.GetDamage<MeleeDamageClass>() += 0.10f;  
+                player.GetDamage<MeleeDamageClass>() += 0.10f;
             }
             #endregion
         }
@@ -441,66 +444,66 @@ namespace CalamityInheritance.Content.Items
             //饰品回调
             var calPlayer = player.Calamity();
             #region 手套
-            switch(item.type)
+            switch (item.type)
             {
-                    /*
-                    *附：灾厄实现手套不可堆叠的逻辑是采用一个手套等级
-                    *他们先通过舍弃了所有手套的原有攻速之后，再赋予一个手套等级，然后在player类里面进行操作
-                    *如绿手套是1级，火手套是4级，那4级大于1级就不能堆叠(通过 Level > 4 ? 0.14f : ...)这种表达式方法递归实现
-                    *这里的处理是，查看玩家手套等级的大小，然后补正低级手套原本能提供的攻速
-                    */
+                /*
+                *附：灾厄实现手套不可堆叠的逻辑是采用一个手套等级
+                *他们先通过舍弃了所有手套的原有攻速之后，再赋予一个手套等级，然后在player类里面进行操作
+                *如绿手套是1级，火手套是4级，那4级大于1级就不能堆叠(通过 Level > 4 ? 0.14f : ...)这种表达式方法递归实现
+                *这里的处理是，查看玩家手套等级的大小，然后补正低级手套原本能提供的攻速
+                */
                 case ItemID.FeralClaws:
                     //绿手套本身就少了2%
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.02f; 
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.02f;
                     //存在二级手套极以上，补正
-                    if(calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f; 
+                    if (calPlayer.gloveLevel > 1) player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
                     break;
                 case ItemID.PowerGlove:
                     //存在三级手套极以上，补正
-                    if(calPlayer.gloveLevel > 2) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
+                    if (calPlayer.gloveLevel > 2) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                     break;
                 case ItemID.BerserkerGlove:
                     //狂战士手套本身没有手套等级, 因此直接回调
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                     break;
                 case ItemID.MechanicalGlove:
                     //存在四级手套极以上，补正
-                    if(calPlayer.gloveLevel > 3) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f; 
+                    if (calPlayer.gloveLevel > 3) player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                     break;
                 case ItemID.FireGauntlet:
                     //存在元素手套，补正
-                    if(calPlayer.gloveLevel > 4) player.GetAttackSpeed<MeleeDamageClass>() += 0.14f; 
+                    if (calPlayer.gloveLevel > 4) player.GetAttackSpeed<MeleeDamageClass>() += 0.14f;
                     break;
                 default:
                     break;
             }
             #endregion
             #region 其余攻速削弱
-            switch(item.type)
+            switch (item.type)
             {
                 case ItemID.SunStone:
-                    if(Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
+                    if (Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
                     break;
 
                 case ItemID.MoonStone:
-                    if(!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
+                    if (!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
                     break;
 
                 case ItemID.MoonShell:
-                    if(!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.051f; //回调10%
+                    if (!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.051f; //回调10%
                     break;
 
                 case ItemID.MoonCharm:
-                    if(!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.051f; //回调10%
+                    if (!Main.dayTime) player.GetAttackSpeed<MeleeDamageClass>() += 0.051f; //回调10%
                     break;
 
                 case ItemID.CelestialStone:
                     player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
                     break;
-                    
+
                 case ItemID.CelestialShell:
                     player.GetAttackSpeed<MeleeDamageClass>() += 0.1f; //回调10%
-                    if(!Main.dayTime)
+                    if (!Main.dayTime)
                         player.GetAttackSpeed<MeleeDamageClass>() += 0.051f; //他真的狠精准，我哭死
                     break;
                 default:
@@ -677,6 +680,17 @@ namespace CalamityInheritance.Content.Items
                 default:
                     break;
             }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+            CalamityPlayer modPlayer = player.Calamity();
+            CalamityGlobalItem modItem = item.Calamity();
+
+            // Restrict behavior when reading Dreadon's Log.
+            if (CalPopupGUIManager.AnyGUIsActive)
+                return false;
+
+            return true;
         }
     }
 }

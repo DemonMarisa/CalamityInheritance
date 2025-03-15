@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Utilities
 {
     public static partial class CIFunction
     {
-        internal static Texture2D AuroraTexture
+        public static Texture2D AuroraTexture
         {
             get
             {
@@ -28,7 +29,7 @@ namespace CalamityInheritance.Utilities
             new Color(242, 112, 73),
             new Color(199, 62, 62),
         };
-        internal static void IterateDisco(ref Color c, ref float aiParam, in byte discoIter = 7)
+        public static void IterateDisco(ref Color c, ref float aiParam, in byte discoIter = 7)
         {
             switch (aiParam)
             {
@@ -86,6 +87,17 @@ namespace CalamityInheritance.Utilities
                     break;
             }
 
+        }
+        // 缓动函数工具类
+        // 详见 https://easings.net/zh-cn
+        public static class EasingHelper
+        {
+            // 二次缓入缓出（更平滑的动画）
+            public static float EaseInOutQuad(float t)
+                => t < 0.5f ? 2f * t * t : 1f - (-2f * t + 2f) * (-2f * t + 2f) / 2f;
+            // 指数缓出（适合弹窗出现）
+            public static float EaseOutExpo(float t)
+                => t == 1f ? 1f : 1f - MathF.Pow(2f, -10f * t);
         }
     }
 }

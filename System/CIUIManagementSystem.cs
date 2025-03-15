@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CalamityInheritance.UI;
+using CalamityMod.UI;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -26,6 +27,13 @@ namespace CalamityInheritance.System
                 }, InterfaceScaleType.None));
                 //Main.NewText($"Inserted Astral Arcanum UI at {mouseIndex}", 255, 255, 255);
             }
+
+            // Popup GUIs.
+            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Cal Popup GUIs", () =>
+            {
+                CalPopupGUIManager.UpdateAndDraw(Main.spriteBatch);
+                return true;
+            }, InterfaceScaleType.None));
         }
     }
 }
