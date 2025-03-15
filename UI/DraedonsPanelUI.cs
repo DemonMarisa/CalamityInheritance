@@ -10,6 +10,8 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria;
 using static CalamityInheritance.Utilities.CIFunction;
+using Terraria.Audio;
+using Terraria.ID;
 
 namespace CalamityInheritance.UI
 {
@@ -23,8 +25,25 @@ namespace CalamityInheritance.UI
 
         public const int TextStartOffsetX = 40;
 
+        private bool _leftArrowHovered;
+        private bool _rightArrowHovered;
+
+        private bool _AllowPageChange = false;
+        private bool _AllowPageChange2;
+        // 重置翻页判定的时间
+        // 当鼠标按下后两帧后，允许翻页将为false，避免按下后移动到翻页箭头后又触发一次
+        private int _AllowPageChangeReTime;
+
         public override void Update()
         {
+            if (_AllowPageChangeReTime > 0)
+            {
+                _AllowPageChangeReTime--;
+                _AllowPageChange2 = true;
+            }
+            else
+                _AllowPageChange2 = false;
+
             if (Active)
             {
                 if (FadeTime < FadeTimeMax)
@@ -39,6 +58,30 @@ namespace CalamityInheritance.UI
             {
                 Page = 0;
                 Active = false;
+            }
+
+            //必须先按下才能检测释放事件，否则会触发两次点击事件（鼠标按下和移动都会触发）
+            if(Main.mouseLeft)
+            {
+                _AllowPageChange = true;
+                _AllowPageChange2 = false;
+                _AllowPageChangeReTime = 2;
+    }
+            // 检测鼠标释放事件
+            if (Main.mouseLeftRelease && _AllowPageChange2)
+            {
+                if (_leftArrowHovered && Page > 0 && _AllowPageChange)
+                {
+                    Page--;
+                    SoundEngine.PlaySound(SoundID.MenuTick);
+                    _AllowPageChange = false;
+                }
+                else if (_rightArrowHovered && Page < TotalPages - 1 && _AllowPageChange)
+                {
+                    Page++;
+                    SoundEngine.PlaySound(SoundID.MenuTick);
+                    _AllowPageChange = false;
+                }
             }
 
             if (ArrowClickCooldown > 0)
@@ -83,8 +126,10 @@ namespace CalamityInheritance.UI
             // Create text and arrows.
             if (FadeTime >= FadeTimeMax - 4 && Active)
             {
+                
                 int textWidth = (int)(xScale * pageTexture.Width) - TextStartOffsetX;
                 textWidth = (int)(textWidth * xResolutionScale);
+
                 List<string> dialogLines = Utils.WordwrapString(GetTextByPage(), FontAssets.MouseText.Value, (int)(textWidth / xResolutionScale), 250, out _).ToList();
                 dialogLines.RemoveAll(text => string.IsNullOrEmpty(text));
 
@@ -92,7 +137,7 @@ namespace CalamityInheritance.UI
                 float yOffsetPerLine = 28f;
                 if (dialogLines.Count > TotalLinesPerPage)
                     yOffsetPerLine *= string.Concat(dialogLines).Length / GetTextByPage().Length;
-
+                
                 // Ensure the page number doesn't become nonsensical as a result of a resolution change (such as by resizing the game).
                 if (Page < 0)
                     Page = 0;
@@ -100,9 +145,8 @@ namespace CalamityInheritance.UI
                     Page = TotalPages;
 
                 // 这一段有问题，不同分辨率下，箭头位置会发生变化
-                float yPageTopoffset = Main.screenHeight * 0.7f;
-                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + yPageTopoffset * yResolutionScale, mouseRectangle);
-
+                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 520 * yResolutionScale, mouseRectangle);
+                
                 int textDrawPositionX = (int)(pageTexture.Width * xResolutionScale + 350 * xResolutionScale);
                 int yScale = (int)(42 * yResolutionScale);
                 int yScale2 = (int)(yOffsetPerLine * yResolutionScale);
@@ -114,55 +158,83 @@ namespace CalamityInheritance.UI
                         Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, dialogLines[i], textDrawPositionX, textDrawPositionY, Color.DarkCyan, Color.Black, Vector2.Zero, xResolutionScale);
                     }
                 }
-
-                DrawSpecialImage(spriteBatch, xResolutionScale, yResolutionScale, yPageTop - 70f * yResolutionScale);
+                
+                DrawSpecialImage(spriteBatch, xResolutionScale, yResolutionScale, yPageTop - 585f * yResolutionScale);
             }
         }
-
+        // 绘制箭头
         public void DrawArrows(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageBottom, Rectangle mouseRectangle)
         {
-            float arrowScale = 0.6f;
-            Texture2D arrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
+
+            float LeftarrowScale = 1f;
+
+            float RightarrowScale = 1f;
+
+            Texture2D leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
+            Texture2D rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
+
+            // 左箭头处理
             if (Page > 0)
             {
-                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 60f, yPageBottom);
-                Rectangle arrowRectangle = new Rectangle((int)drawPosition.X, (int)drawPosition.Y, arrowTexture.Width, arrowTexture.Height);
-                arrowRectangle.Width = (int)(arrowRectangle.Width * xResolutionScale * arrowScale);
-                arrowRectangle.Height = (int)(arrowRectangle.Height * yResolutionScale * arrowScale);
-
-                if (mouseRectangle.Intersects(arrowRectangle))
+                //鼠标按下时缩小
+                if (Main.mouseLeft && _leftArrowHovered)
                 {
-                    arrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
-                    if (ArrowClickCooldown <= 0 && Main.mouseLeft)
-                    {
-                        Page--;
-                        ArrowClickCooldown =15;
-                    }
+                    LeftarrowScale *= 0.9f;
+                }
+                // 绘制坐标
+                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 625f, yPageBottom);
+                Rectangle arrowRect = new Rectangle(
+                    (int)(drawPosition.X - leftArrowTexture.Width * xResolutionScale * LeftarrowScale / 2),
+                    (int)(drawPosition.Y - leftArrowTexture.Height * yResolutionScale * LeftarrowScale / 2),
+                    (int)(leftArrowTexture.Width * xResolutionScale * LeftarrowScale),
+                    (int)(leftArrowTexture.Height * yResolutionScale * LeftarrowScale)
+                );
+
+                // 检测悬停
+                bool isHovering = arrowRect.Intersects(mouseRectangle);
+                _leftArrowHovered = isHovering;
+
+                // 动态切换纹理
+                if (isHovering)
+                {
+                    leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
                     Main.blockMouse = true;
                 }
 
-                spriteBatch.Draw(arrowTexture, drawPosition, null, Color.White, 0f, Vector2.Zero, new Vector2(xResolutionScale, yResolutionScale) * arrowScale, SpriteEffects.FlipHorizontally, 0f);
+
+                spriteBatch.Draw(leftArrowTexture, drawPosition, null, Color.White, 0f,
+                    leftArrowTexture.Size() / 2,  // 改为中心锚点
+                    new Vector2(xResolutionScale, yResolutionScale) * LeftarrowScale, SpriteEffects.FlipHorizontally,0f);
+
+
             }
 
             if (Page < TotalPages - 1)
             {
-                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 30f, yPageBottom);
-                Rectangle arrowRectangle = new Rectangle((int)drawPosition.X, (int)drawPosition.Y, arrowTexture.Width, arrowTexture.Height);
-                arrowRectangle.Width = (int)(arrowRectangle.Width * xResolutionScale);
-                arrowRectangle.Height = (int)(arrowRectangle.Height * yResolutionScale);
-
-                if (mouseRectangle.Intersects(arrowRectangle))
+                //鼠标按下时缩小
+                if (Main.mouseLeft && _rightArrowHovered)
                 {
-                    arrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
-                    if (ArrowClickCooldown <= 0 && Main.mouseLeft)
-                    {
-                        Page++;
-                        ArrowClickCooldown = 15;
-                    }
-                    Main.blockMouse = true;
+                    RightarrowScale *= 0.9f;
                 }
 
-                spriteBatch.Draw(arrowTexture, drawPosition, null, Color.White, 0f, Vector2.Zero, new Vector2(xResolutionScale, yResolutionScale) * arrowScale, SpriteEffects.None, 0f);
+                // 注释同上，只是复制了一遍，方向相反
+                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 625f, yPageBottom);
+                Rectangle arrowRect = new Rectangle(
+                    (int)(drawPosition.X - rightArrowTexture.Width * xResolutionScale * RightarrowScale / 2),
+                    (int)(drawPosition.Y - rightArrowTexture.Height * yResolutionScale * RightarrowScale / 2),
+                    (int)(rightArrowTexture.Width * xResolutionScale * RightarrowScale),
+                    (int)(rightArrowTexture.Height * yResolutionScale * RightarrowScale)
+                );
+
+                bool isHovering = arrowRect.Intersects(mouseRectangle);
+                _rightArrowHovered = isHovering;
+
+                if (isHovering)
+                {
+                    rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
+                    Main.blockMouse = true;
+                }
+                spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.None,0f);
             }
         }
 
