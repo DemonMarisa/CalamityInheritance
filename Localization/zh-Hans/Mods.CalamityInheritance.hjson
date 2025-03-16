@@ -16,12 +16,12 @@ Configs: {
 		}
 
 		ElementalQuiversplit: {
-			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂"
+			Label: "[i:CalamityInheritance/ElementalQuiver]元素箭袋分裂"
 			Tooltip: 关闭可以防止卡顿
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityMod/ElemQuiver]元素箭袋分裂样式"
+			Label: "[i:CalamityInheritance/ElementalQuiver]元素箭袋分裂样式"
 			Tooltip:
 				'''
 				1：每60帧分裂一次，分裂弹幕剩余时间变短
@@ -32,7 +32,7 @@ Configs: {
 		}
 
 		TheSpongeBarrier: {
-			Label: "[i:CalamityMod/TheSponge]化绵留香石护盾"
+			Label: "[i:CalamityInheritance/TheSpongetest]化绵留香石护盾"
 			Tooltip: 关闭后可以化棉留香石不再提供护盾
 		}
 
@@ -52,7 +52,7 @@ Configs: {
 		}
 
 		silvastun: {
-			Label: "[i:CalamityMod/SilvaArmor]林海眩晕是否开启"
+			Label: "[i:CalamityInheritance/SilvaArmorold]林海眩晕是否开启"
 			Tooltip: 关闭后不会造成林海眩晕减益来降低敌怪移动速度
 		}
 
@@ -126,6 +126,18 @@ Configs: {
 		BlessingoftheMoon: {
 			Label: 明月之祝福
 			Tooltip: 接近小行星时播放
+		}
+
+		ReduceMoveSpeed: {
+			Tooltip:
+				'''
+				且仅在神明吞噬者被击败之后才有效
+				如果感觉移动速度太快,又不想放弃一些饰品,就可以启用这个
+				启用后会降低30%的移速,最大疾跑速度和加速度
+				对于一些需要精确控制的情况很有帮助
+				默认关闭
+				'''
+			Label: "[i:Chain]降低移动速度"
 		}
 	}
 
