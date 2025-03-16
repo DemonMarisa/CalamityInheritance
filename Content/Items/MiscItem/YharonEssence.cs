@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
             //有意为之
             Item.value = CIShopValue.RarityPricePureRed;
             Item.consumable = true;
-            Item.stack = 9999;
+            Item.maxStack = 9999;
         }
         public override bool CanRightClick()
         {

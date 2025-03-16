@@ -10,3 +10,8 @@ NucleogenesisLegacy: {
 		仆从攻击会生成伤害火花
 		'''
 }
+
+DoubleSonYharon: {
+	// Tooltip: ""
+	// DisplayName: Double Son Yharon
+}

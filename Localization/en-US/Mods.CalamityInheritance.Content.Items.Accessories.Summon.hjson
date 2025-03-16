@@ -11,3 +11,8 @@ NucleogenesisLegacy: {
 		No damage soft cap for sparks
 		'''
 }
+
+DoubleSonYharon: {
+	Tooltip: ""
+	DisplayName: Double Son Yharon
+}

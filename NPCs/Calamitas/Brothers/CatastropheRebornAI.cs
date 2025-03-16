@@ -1,12 +1,10 @@
 using System;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.NPCs.Calamitas.Brothers.Projectiles;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.NPCs.CalClone;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -43,18 +41,10 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
 
             //get这个target，也就是player本身
             Player player = Main.player[brother.target];
-            //老操作, 给这家伙找到他的目标
-            /*
-            // float broToTarDistX = brother.position.X + brother.width/2 - player.position.X - player.width/2;
-            // float broToTarDistY = brother.position.Y + brother.height - 59f - player.position.Y - player.height / 2;
-            // float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistddY) + MathHelper.PiOver2;
-            */
             //保转角
             float bDistX = brother.position.X + (brother.width / 2) - player.position.X - (player.width / 2);
             float bDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height /2);
             float broRot = (float)Math.Atan2(bDistY, bDistX) + MathHelper.PiOver2;
-            // BrothersKeepRotation(brother, broRot, 0.15f);
-            //丢弃
             brother.rotation = BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
             #endregion
             #region 兄弟脱战
@@ -79,7 +69,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 if(ifDeath)
                 {
                     float speedUp = 0.5f;
-                    if (projTarDist > 300f && projTarDist < 900f) //射弹是否与玩家距离过远(不过感觉更应该是是否兄弟离玩家太远)
+                    if (projTarDist > 300f && projTarDist < 900f)
                         projMaxSpeed+= speedUp + 0.05f; 
                         //原灾在这里整了10个if来复线加速度效果，这里直接改成普通的加速度了
                 }
@@ -117,7 +107,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                         if(brother.localAI[1] > 50f)
                         {
                             brother.localAI[1] = 0f;
-                            BrothersShoot.JustShoot(brother, player, ModContent.ProjectileType<BrimstoneBall>(), 14f, brother.defDamage);
+                            BrothersShoot.JustShoot(brother, player, ModContent.ProjectileType<CatastropheBall>(), 14f, brother.defDamage);
                             /*
                             float projSpeed = ifDeath ? 14f : 12f;
                             int projType = ModContent.ProjectileType<BrimstoneBall>();
@@ -150,17 +140,6 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                     brother.rotation = broRot;
                     //给冲刺速度一点微弱的随机性来使兄弟的冲刺有所差异
                     BrothersCharge.ChargeInit(brother, player, broRot, Main.rand.NextFloat(32f, 36f));
-                    /*
-                    float chargeSpeed = (NPC.AnyNPCs(ModContent.NPCType<CataclysmReborn>()) ? 12f : 16f) + (ifDeath ? 4f : 0f);
-                    Vector2 chargeCenter = new(brother.position.X + brother.width/2, brother.position.Y + brother.height/2);
-                    float chargeTarX = player.position.X + player.width / 2 - chargeCenter.X;
-                    float chargeTarY = player.position.Y + player.width / 2 - chargeCenter.Y;
-                    float chargeDist = CIFunction.TryGetVectorMud(chargeTarX, chargeTarY);
-                    //忘记取倒数
-                    chargeDist = chargeSpeed / chargeDist;
-                    brother.velocity.X = chargeTarX * chargeDist;
-                    brother.velocity.Y = chargeTarY * chargeDist;
-                    */
                     brother.ai[1] = 2f;
                     return;
                 }

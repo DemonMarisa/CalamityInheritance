@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Terraria.Localization;
+using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance.System.Configs
@@ -57,8 +58,6 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(true)]
         public bool turnoffCorner { get; set; }
 
-        
-
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         [ReloadRequired]
@@ -66,6 +65,9 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool GodSlayerWorm{ get; set;} //是否允许弑神蠕虫
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool ReduceMoveSpeed{ get; set;}
 
         #endregion
         [Header("Music")]

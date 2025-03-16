@@ -358,16 +358,20 @@ OpalStrikerLegacy: {
 }
 
 ProfanedLancher: {
-	DisplayName: Profaned Lancher
-	Tooltip: ""
+	DisplayName: Blissful Bombardier
+	Tooltip: Fire homing flare rockets, leaves flare dusts
 }
 
 AncientDragonsBreath: {
-	DisplayName: Ancient Dragons Breath
-	Tooltip: ""
+	DisplayName: Ancient Dragon's Breath
+	Tooltip: Shoots a spread of exploding fire bullets
 }
 
 ChickenCannonLegacy: {
 	DisplayName: Chicken Cannon Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires an chicken nuke which creates enormous incendiary explosion
+		Explosion ignores immnuity frames.
+		'''
 }

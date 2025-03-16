@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 46);
             Item.mana = HeliumFlashManaCost;
             Item.useAnimation = 24;
-            Item.useTime = 4;
+            Item.useTime = 12;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
-            Item.shootSpeed = 24f;
+            Item.shootSpeed = 21f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -29,6 +29,9 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.System.Configs;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -277,6 +280,11 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+            if (GodlySons)
+            {
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+            }
             if(AncientBloodPact)
             {
                 Player.statLifeMax2 +=(int)(Player.statLifeMax * 2);
@@ -403,7 +411,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.60f;
+                Player.jumpSpeedBoost += 0.40f;
                 Player.manaCost *=0.95f;
                 if(EHeartStatsBoost) //关闭元素之心的召唤物的情况下
                 {
@@ -413,7 +421,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
                     Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 1.0f;  //32(12+20)%跳跃速度
+                    Player.jumpSpeedBoost += 0.40f;  //32(12+20)%跳跃速度
                     Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
                     //由于返回值的原因导致Buff数值反而不能乱写。
                     //所以现在这些个的buff值都是5的系数了。
@@ -832,6 +840,12 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            if (CIConfig.Instance.ReduceMoveSpeed && CalamityConditions.DownedDevourerOfGods.IsMet())
+            {
+                player.moveSpeed -= 0.3f;
+                player.runAcceleration *= 0.85f;
+                player.accRunSpeed -= 0.3f;
+            }
             if(IfCloneHtting) //大锤子如果正在攻击
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率

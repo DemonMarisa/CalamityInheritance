@@ -18,9 +18,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.width = 58;
             Item.height = 36;
             Item.DamageType = DamageClass.Ranged;
-            Item.damage = 150;
-            Item.useTime = 15;
-            Item.useAnimation = 15;
+            Item.damage = 250;
+            Item.useTime = 13;
+            Item.useAnimation = 13;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundShoutgunTactical;
             Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();

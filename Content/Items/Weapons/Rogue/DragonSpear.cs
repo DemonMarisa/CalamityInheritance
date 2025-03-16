@@ -17,12 +17,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetDefaults()
         {
             Item.width = 72;
-            Item.damage = 1000;
+            Item.damage = 300;
             Item.noMelee = true;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noUseGraphic = true;
             Item.useAnimation = 12;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 12;
             Item.knockBack = 8f;
             Item.UseSound = SoundID.Item1;

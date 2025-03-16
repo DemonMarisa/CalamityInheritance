@@ -380,11 +380,19 @@ AzathothLegacy: {
 }
 
 BurningSkyLegacy: {
-	DisplayName: Burning Sky Legacy
-	Tooltip: ""
+	DisplayName: The Burning Sky Legacy
+	Tooltip:
+		'''
+		Rains down dracnic fire from the sky
+		'Swing the blades, call up the Armageddon.' 
+		'''
 }
 
 DragonSword: {
-	DisplayName: Dragon Sword
-	Tooltip: ""
+	DisplayName: Dragon Rage Legacy
+	Tooltip:
+		'''
+		Fire a stream of flare shockwaves
+		'Holding left button, to pour out the rage of dragon.'
+		'''
 }

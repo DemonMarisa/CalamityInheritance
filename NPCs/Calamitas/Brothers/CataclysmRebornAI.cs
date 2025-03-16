@@ -1,13 +1,10 @@
 using System;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.NPCs.Calamitas.Brothers.Projectiles;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Dusts;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -42,18 +39,10 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
 
             //get这个target，也就是player本身
             Player player = Main.player[brother.target];
-            //老操作, 给这家伙找到他的目标
-            /*
-            float broToTarDistX = brother.position.X + brother.width/2 - player.position.X - player.width/2;
-            float broToTarDistY = brother.position.Y + brother.height - 59f - player.position.Y - player.height / 2;
-            float broRot = (float)Math.Atan2(broToTarDistX, broToTarDistY) + MathHelper.PiOver2;
-            */
             //保转角
             float bDistX = brother.position.X + (brother.width / 2) - player.position.X - (player.width /2);
             float bDistY = brother.position.Y + brother.height - 59f - player.position.Y - (player.height /2);
             float broRot = (float)Math.Atan2(bDistY, bDistX) + MathHelper.PiOver2;
-            // BrothersKeepRotation(brother, broRot, 0.15f);
-            //丢弃
             brother.rotation = BrothersGeneric.KeepAngle(brother, 0.15f, broRot); 
             #endregion
             #region 兄弟脱战
@@ -120,7 +109,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                             brother.localAI[1] = 0f; //喷火
                             //另一个兄弟在场时，喷火的速度会慢一点
                             float projSpeed = NPC.AnyNPCs(ModContent.NPCType<CatastropheReborn>())? 4f : 6f;
-                            int projType = ModContent.ProjectileType<BrimstoneFire>(); //依旧是占位符
+                            int projType = ModContent.ProjectileType<CataclysmFire>();
                             int projDMG = brother.GetProjectileDamage(projType);
                             BrothersShoot.JustShoot(brother, player, projType, projSpeed, projDMG);
                             /*
@@ -148,23 +137,6 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
                 if (brother.ai[1] == 1f)
                 {
                     BrothersCharge.ChargeInit(brother, player, broRot, 36f);
-                    /*
-                    brother.damage = brother.defDamage; 
-                    SoundEngine.PlaySound(SoundID.Roar, brother.Center);//发起冲刺的时候嘶吼
-                    brother.rotation = broRot;
-                    //这下面都是冲刺的逻辑
-                    float chargeSpeed = 18f;
-                    if(ifDeath) chargeSpeed += 4f;
-                    Vector2 chargeCenter = brother.Center;
-                    float chargeTarDistX = player.Center.X - chargeCenter.X;
-                    float chargeTarDistY = player.Center.Y - chargeCenter.Y;
-                    float chargeTarDistReal = (float)Math.Sqrt(chargeTarDistX * chargeTarDistX + chargeTarDistY * chargeTarDistY);
-                    chargeTarDistReal = chargeSpeed / chargeTarDistReal;
-                    //new Velocity -> 单独分配横轴纵轴
-                    brother.velocity.X = chargeTarDistX * chargeTarDistReal;
-                    brother.velocity.Y = chargeTarDistY * chargeTarDistReal;
-                    //ai[1] = 2f用于减速
-                    */
                     brother.ai[1] = 2f;
                     return;
                 }

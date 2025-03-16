@@ -11,10 +11,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     public class P90Legacy : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
-        public override void SetStaticDefaults()
-        {
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 6;

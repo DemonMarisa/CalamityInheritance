@@ -6,6 +6,7 @@
  巨龙之怒[Legacy], 焚天[Legacy], 远古巨龙之息[Legacy], 小鸡大炮[Legacy], 星火凤凰雨[Legacy]
  巨龙七星灯[Legacy], 狱炎投矛[Legacy], 远古龙魂精华
  恶魔之叉[Revamped], 狱火鞭[Revamped], 晶火法杖[Revamped], 光之舞[Revamped]
+ 
  远古高频红刀, 目前无法获得
 -给元素射线[Revamped]的日耀爆炸与星云火焰提供了新的视觉效果
 
@@ -22,17 +23,22 @@
 -加强氦闪[Legacy]:
  删除金源锭需求, 时期转移至丛林龙前
  内核爆炸的倍率由0.5->0.65, 面板492 -> 500, 并且现在允许氦闪进行二连发连发攻击
+-魔影武器的面板加强:
+ 元素圣剑2000->4000, 获得200%剑刃大小增强
+ 绝学法杖1000->2500
+ 至尊梯凳1100->1145
+-削弱星体击碎者:325 -> 200, 这玩意一分钟干死神长同时把银河锤爆了
+ 天顶世界下星体击碎者面板为400
+-加强银河溃灭者:275 -> 300
 
 -加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
  上述效果整合进魔君套内
 -削弱远古林海盔甲: 套装奖励的debuff下强行回血的速度由8HP/s降低为4HP/s
 -修改魔君套装: 现在允许进行超暴, 且魔君之怒效果现在追加一个+100%暴击概率的加成
  让魔君套装在天顶世界内变得坚不可摧
+
 -将灾厄boss掉魂与灾厄boss额外掉落转移给服务端设置以避免一些问题
--魔影武器的面板加强:
- 元素圣剑2000->4000, 获得200%剑刃大小增强
- 绝学法杖1000->2500
- 至尊梯凳1100->1145
+
 -给至尊梯凳写了一个lore
 -ban掉了神灯烈焰的微光转化, 因为能肉前拿到暗影魂了
 -赤陨霸龙弓现在同时击败星流与终灾后得到面板增强以匹配魔影武器的强度
@@ -45,10 +51,12 @@
 -修正了一些过期的Tooltip
 
 Content:
--Added Dance of Light Revamped, Apotheosis Legacy, Svantechnical Legacy, Azathoth Legacy
--Added Crystal Flare Staff Revamped, Alpha Ray Legacy, Genisis Legacy, Wingman Legacy, Opal Striker Legacy
--Added Ancient Murasama, unoptainable currently.
--Added and revamped Demonic Pitchfork, Hell burst and Crystal Flare staff to give some love to Mage class
+-Added:
+ Ancient Murasama, Alpha Ray Legacy Apotheosis Legacy, Azathoth Legacy, Crystal Flare Staff Revamped, Demonic Pitchfork Revamped
+ Genisis Legacy, Hell burst Legacy, Svantechnical Legacy, Wingman Legacy, Opal Striker Legacy
+ Dragon Rage Legacy, The Burning Sky Legacy, Ancinet Dragon's Breath, Chicken Cannon Legacy, Phoenix Barrage Legacy
+ Yharon Kindle Staff Legacy, Infernal Spear and Yharon Essence.
+
 -Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
 -Added almost all Elemental stuff resprite.
 -Added almost all Shivs resprite
@@ -59,17 +67,25 @@ Balance:
 -Helium Flash Legacy now use 12 Comsmilte Bars in its recipe instead of Auric Tesla Bars
  Buffed Helium Flash Legacy damage from 492 to 500, explosion now uses 65% instead of 50% of weapon damage
  Now allows double shot
--Reordered Resprite config to make it looks more acceptable
--Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50% , now can convert the max stealth to defense boost 
+-Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50%
+ Now can convert the max stealth to defense boost 
  This effect is applied to Yharim armor
 -Nerfed Ancient Silva Armor: Halve the effeiency of Force Life Regen if under a debuff(from 8HP/s to 4HP/s) 
 -Buffed Yharim Armor: Allows over crits, Perun of Yharim now buffed 100% crti chances in addition
  Make Yharim Armor can just stand forever in Zenith world
--Move Calamity Legacy Loot and Calamity Drop Souls to Server-side config, to avoid some issue
+
 -Do some damage buff for Shadowspec item:
  Elemental Excalibur: 2000 -> 4000, grants 200% size bouns
  Fabstaff: 1000 -> 2500
  Olympustine: 1100 -> 1145
+-Nerfed Stellar Striker Legacy Rogue damage from 325 to 200, since it just melted DoG in 1 min which is not intended.
+ Stellar Striker will buffed its damage to 400, to make DoG fight easier.
+ Buffed Galaxy Smasher Legacy Rogue damage from 275 to 300
+
+Tweaks:
+-Reordered Resprite config to make it looks more acceptable
+-Reworeded and simplified Yharim Armor tooltip.
+-Move Calamity Legacy Loot and Calamity Drop Souls to Server-side config, to avoid some issue
 -Gave a custom lore for Olympustine
 -Disable the decraft of Dijnn Lamp, since you can shimmer it for some souls in pre-hm
 -Drataliornus Legacy now get a massive boost if SCal and Exos are downed.
@@ -77,6 +93,8 @@ Balance:
 Fixes:
 -Mainly multiplayer, but just not really enough, but will try.
 -Fixed a bug Reaver Armor Rogue Set Bonus' Life Shards can infinitely split and deals 300k damage
+-Fixed a bug unnerfed Soaring Insgina providing wrong stats.
+-Updated all outdated tooltip
 
 ********************************************************************************************************************************/
 3/11:
@@ -107,4 +125,21 @@ Fixes:
  修复了真圣泰锤无法生成幻影锤的问题
  翱翔徽章数值给错了
  准备给旧版丛林龙物品做简单的平衡
- 
+3/17:
+ 添加巨龙精华, 并且由所有神后日食敌怪1/50掉落, 可以从中获得所有丛林龙一阶段的物品与一些日食碎片
+ 简单调整了全部的旧版丛林龙物品:
+ 巨龙之怒: 340-> 254
+ 焚天: 300->247
+ 远古巨龙之怒: 220->250, 使用时间15->13
+ 小鸡大炮: 150->50, 给予50护甲穿透避免破防问题
+ [注: 这版本的小鸡大炮爆炸的无敌帧取1]
+ 星火凤凰雨: 射弹暂时给予3额外更新
+ 巨龙七星灯: 无敌帧2->1, 伤害120->100
+ 龙炎投矛: 
+ 给予新的攻击方式,击中敌人时往天上喷发三个一段时间后追击敌人的火球
+ 面板500->300
+ 削弱:星体击碎者,这玩意一分钟干死了神长超越了幻魂归墟, 并且面板比弑神锤子还高
+ 面板:375 -> 200
+ 注:在gfb中面板会被翻倍以协助处理短神长
+ 弑神锤子加强:面板275->300
+
