@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,11 +50,13 @@ namespace CalamityInheritance.CIPlayer
         public bool PanelsLoreCrimson = false;//
         public bool PanelsLoreUnderworld = false;
         public bool PanelsLoreExo = false;//星三王传颂
+
         public void Panels()
         {
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer cIPlayer = player.CIMod();
 
+            bool DownedExoMechs = DownedBossSystem.downedExoMechs;// 判定是否能使用星三王面板
             #region lore
             // 确保可以正确切换状态，具体数字对应的绘制贴图请查看方法中的注释
             if (cIPlayer.panelloreExocount == 3 || cIPlayer.panelloreExocount == 4)

@@ -108,7 +108,7 @@ namespace CalamityInheritance.Utilities
         }
         /// <summary>
         /// 在屏幕上绘制可交互图片的方法
-        /// 注：一定要手动操作buttonTexChange的值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动切换
+        /// 注：一定要手动赋予buttonTexChange的初始值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动赋予
         /// </summary>
         /// <param name="falseTexture">为假时的材质</param>
         /// <param name="falseHoveredTexture">为假时鼠标悬停上方时的材质</param>
@@ -124,6 +124,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="buttonCount">标记使用哪个贴图的部分，当为1时，是默认贴图，为2时，是鼠标悬浮的贴图，为3时，是点击后的贴图</param>
         /// <param name="UIID">UI的ID，为本地化做准备</param>
         /// <param name="available">UI的交互是否可用</param>
+        /// <param name="flipHorizontally">UI的绘制是否镜像</param>
         /// <param name="mouseRectangle">点击判定</param>
         /// <summary>
 
@@ -143,6 +144,7 @@ namespace CalamityInheritance.Utilities
           ref int buttonCount,
           ref int UIID,
           ref bool available,
+          bool flipHorizontally, // 是否镜像
           Rectangle mouseRectangle
         )
         {
@@ -221,7 +223,7 @@ namespace CalamityInheritance.Utilities
                 targetTexture = unavailableTexture;
 
             // 改为中心锚点
-            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * scale, SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
         }
 
         /// <summary>
@@ -235,6 +237,8 @@ namespace CalamityInheritance.Utilities
         /// <param name="yResolutionScale">Y 缩放</param>
         /// <param name="xPageBottom">以屏幕中心为锚点的 X 偏移</param>
         /// <param name="yPageBottom">以屏幕中心为锚点的 Y 偏移</param>
+        /// <param name="available">按钮是否可用的提示</param>
+        /// <param name="flipHorizontally">图片是否镜像</param>
         /// <summary>
         public static void DrawImage(
             SpriteBatch spriteBatch,
@@ -245,9 +249,11 @@ namespace CalamityInheritance.Utilities
             float yResolutionScale,
             float xPageBottom,
             float yPageBottom,
-            ref bool available
+            ref bool available,
+            bool flipHorizontally // 是否镜像
             )
         {
+
             float scale = Scale;
             Texture2D targetTexture = texture;
 
@@ -257,11 +263,12 @@ namespace CalamityInheritance.Utilities
             // 绘制坐标
             Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + xPageBottom, Main.screenHeight / 2 + yPageBottom);
 
-            if (!available)
-                targetTexture = unavailableTexture;
-
             // 改为中心锚点
-            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // 无法使用时，便会盖住
+            if (!available)
+                spriteBatch.Draw(unavailableTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
     }
 }

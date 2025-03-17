@@ -94,5 +94,37 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool DoGLegacyMusic { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-5000, 5000)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int UIX { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-5000, 5000)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int UIY { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-5000, 5000)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int UIX2 { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-5000, 5000)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int UIY2 { get; set; }
     }
 }

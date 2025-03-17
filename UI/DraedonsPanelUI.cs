@@ -14,6 +14,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using CalamityMod.CalPlayer;
 using CalamityInheritance.CIPlayer;
+using CalamityMod;
 
 namespace CalamityInheritance.UI
 {
@@ -35,20 +36,15 @@ namespace CalamityInheritance.UI
         // 重置翻页判定的时间
         // 当鼠标按下后两帧后，允许翻页将为false，避免按下后移动到翻页箭头后又触发一次
         private int _AllowPageChangeReTime;
-        #region 状态数组
-        public int UIpanelloreExocount = 1;//用于qol面板的星三王传颂计数
-        #endregion
+
+        public abstract void PageDraw(SpriteBatch spriteBatch);
+        public abstract void StateSaving();
         public override void Update()
         {
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer cIPlayer = player.CIMod();
 
-            #region lore
-            // 确保可以正确切换状态，具体数字对应的绘制贴图请查看方法中的注释
-            cIPlayer.panelloreExocount = UIpanelloreExocount;
-            UIpanelloreExocount = cIPlayer.panelloreExocount;
-
-            #endregion
+            StateSaving();
 
             if (_AllowPageChangeReTime > 0)
             {
@@ -104,8 +100,6 @@ namespace CalamityInheritance.UI
             HoveringOverBook = false;
         }
 
-        public abstract string GetTextByPage();
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
@@ -139,47 +133,16 @@ namespace CalamityInheritance.UI
             // Create text and arrows.
             if (FadeTime >= FadeTimeMax && Active)
             {
-                
-                int textWidth = (int)(xScale * pageTexture.Width) - TextStartOffsetX;
-                textWidth = (int)(textWidth * xResolutionScale);
-
-                List<string> dialogLines = Utils.WordwrapString(GetTextByPage(), FontAssets.MouseText.Value, (int)(textWidth / xResolutionScale), 250, out _).ToList();
-                dialogLines.RemoveAll(text => string.IsNullOrEmpty(text));
-
-                int trimmedTextCharacterCount = string.Concat(dialogLines).Length;
-                float yOffsetPerLine = 28f;
-                if (dialogLines.Count > TotalLinesPerPage)
-                    yOffsetPerLine *= string.Concat(dialogLines).Length / GetTextByPage().Length;
-                
                 // 防止页数计算溢出
                 if (Page < 0)
                     Page = 0;
                 if (Page > TotalPages)
                     Page = TotalPages;
 
-                // 这一段有问题，不同分辨率下，箭头位置会发生变化
-                // 现在修复了
-
+                // 绘制箭头
                 DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 540 * yResolutionScale, mouseRectangle);
-
-                Texture2D buttonTextureTrue = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrue").Value;
-                Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrueHover").Value;
-                Texture2D buttonTextureFalse = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalse").Value;
-                Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalseHover").Value;
-
-                DrawButtom(spriteBatch, buttonTextureFalse, buttonTextureFalseHover, buttonTextureTrue, buttonTextureTrueHover, 2f, xResolutionScale, yResolutionScale, 0, 0,ref UIpanelloreExocount, mouseRectangle);
-
-                int textDrawPositionX = (int)(pageTexture.Width * xResolutionScale + 350 * xResolutionScale);
-                int yScale = (int)(42 * yResolutionScale);
-                int yScale2 = (int)(yOffsetPerLine * yResolutionScale);
-                for (int i = 0; i < dialogLines.Count; i++)
-                {
-                    if (dialogLines[i] != null)
-                    {
-                        int textDrawPositionY = yScale + i * yScale2 + (int)yPageTop;
-                        Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, dialogLines[i], textDrawPositionX, textDrawPositionY, Color.DarkCyan, Color.Black, Vector2.Zero, xResolutionScale);
-                    }
-                }
+                // 请查看QolPanel
+                PageDraw(spriteBatch);
             }
         }
         // 绘制箭头

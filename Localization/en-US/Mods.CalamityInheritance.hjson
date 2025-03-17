@@ -161,6 +161,26 @@ Configs: {
 				'''
 			Label: "[i:Chain]Reduce Move Speed"
 		}
+
+		UIX: {
+			Label: U I X
+			Tooltip: ""
+		}
+
+		UIY: {
+			Label: U I Y
+			Tooltip: ""
+		}
+
+		UIX2: {
+			Label: U I X2
+			Tooltip: ""
+		}
+
+		UIY2: {
+			Label: U I Y2
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {
