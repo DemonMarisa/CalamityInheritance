@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
             projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * projectile.direction;
 
-            if (CIPlayer.LoreExo)
+            if (CIPlayer.LoreExo || CIPlayer.PanelsLoreExo)
             {
                 projectile.extraUpdates = 1;
                 if(projectile.timeLeft < 275)
@@ -108,14 +108,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Player player = Main.player[projectile.owner];
             var CIPlayer = player.CIMod();
 
-            SoundEngine.PlaySound(CIPlayer.LoreExo ? CISoundMenu.MagnomalyHitsound.WithVolumeScale(0.8f) : SoundID.Item14, projectile.Center);
+            SoundEngine.PlaySound(CIPlayer.LoreExo || CIPlayer.PanelsLoreExo ? CISoundMenu.MagnomalyHitsound.WithVolumeScale(0.8f) : SoundID.Item14, projectile.Center);
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[projectile.owner];
 
             var CIPlayer = player.CIMod();
-            if (CIPlayer.LoreExo)
+            if (CIPlayer.LoreExo || CIPlayer.PanelsLoreExo)
             {
                 if (projectile.owner == Main.myPlayer && projectile.ai[1] != 1f)
                 {
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 }
             }
 
-            if (CIPlayer.LoreExo)
+            if (CIPlayer.LoreExo || CIPlayer.PanelsLoreExo)
                 target.ExoDebuffs();
             else
                 target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
@@ -179,7 +179,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     int proj2 = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<MagnomalyBeam>(), projectile.damage / 4, projectile.knockBack / 4, projectile.owner, 0f, 1f);
                 }
             }
-            if (CIPlayer.LoreExo)
+            if (CIPlayer.LoreExo || CIPlayer.PanelsLoreExo)
             {
                 if (projectile.owner == Main.myPlayer && projectile.ai[1] != 1f)
                 {

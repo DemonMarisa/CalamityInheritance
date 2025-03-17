@@ -19,18 +19,5 @@ namespace CalamityInheritance.UI
         {
             return CalamityUtils.GetTextValueFromModItem<DraedonsLogHell>("ContentPage" + (Page + 1));
         }
-        
-        public override Texture2D GetTextureByPage()
-        {
-            switch (Page)
-            {
-                case 0:
-                    return null;
-                case 1:
-                    return null;
-                default:
-                    return null;
-            }
-        }
     }
 }

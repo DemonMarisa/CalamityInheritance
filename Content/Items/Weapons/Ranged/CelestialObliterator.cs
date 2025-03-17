@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (burst >= 5)
             {
-                if(usPlayer.LoreExo)
+                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
                     burst = 0;
                     SoundEngine.PlaySound(SoundID.Item38);
@@ -112,7 +112,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true)
+            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.CelestialObliterator.ExoLoreOn");
 

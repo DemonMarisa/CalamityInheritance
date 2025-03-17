@@ -20,6 +20,11 @@ namespace CalamityInheritance.CIPlayer
         public bool ForceHammerStealth = false;
         public int GodSlayerDMGprotectMax = 80;//金源伤害保护的衰减
         public int yharimArmorinvincibility = 0;//魔君套装无敌时间
+
+        // 1-4，分别标记四种状态，1为默认贴图（false），2为鼠标悬停的贴图（false），3为点击后的贴图（true）, 4为点击后悬停的贴图（true）
+        public int panelloreExocount = 1;//用于qol面板的星三王传颂计数
+        public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
+
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)

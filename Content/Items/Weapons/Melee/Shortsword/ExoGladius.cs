@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true)
+            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword.ExoGladius.ExoLoreOn");
 

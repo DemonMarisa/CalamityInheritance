@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.5f);
 
-            if (usPlayer.LoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 if (Projectile.timeLeft > 320)
                 {

@@ -12,6 +12,8 @@ using Terraria;
 using static CalamityInheritance.Utilities.CIFunction;
 using Terraria.Audio;
 using Terraria.ID;
+using CalamityMod.CalPlayer;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.UI
 {
@@ -33,9 +35,21 @@ namespace CalamityInheritance.UI
         // 重置翻页判定的时间
         // 当鼠标按下后两帧后，允许翻页将为false，避免按下后移动到翻页箭头后又触发一次
         private int _AllowPageChangeReTime;
-
+        #region 状态数组
+        public int UIpanelloreExocount = 1;//用于qol面板的星三王传颂计数
+        #endregion
         public override void Update()
         {
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+
+            #region lore
+            // 确保可以正确切换状态，具体数字对应的绘制贴图请查看方法中的注释
+            cIPlayer.panelloreExocount = UIpanelloreExocount;
+            UIpanelloreExocount = cIPlayer.panelloreExocount;
+
+            #endregion
+
             if (_AllowPageChangeReTime > 0)
             {
                 _AllowPageChangeReTime--;
@@ -66,7 +80,8 @@ namespace CalamityInheritance.UI
                 _AllowPageChange = true;
                 _AllowPageChange2 = false;
                 _AllowPageChangeReTime = 2;
-    }
+            }
+
             // 检测鼠标释放事件
             if (Main.mouseLeftRelease && _AllowPageChange2)
             {
@@ -90,8 +105,6 @@ namespace CalamityInheritance.UI
         }
 
         public abstract string GetTextByPage();
-
-        public abstract Texture2D GetTextureByPage();
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -124,7 +137,7 @@ namespace CalamityInheritance.UI
             }
 
             // Create text and arrows.
-            if (FadeTime >= FadeTimeMax - 4 && Active)
+            if (FadeTime >= FadeTimeMax && Active)
             {
                 
                 int textWidth = (int)(xScale * pageTexture.Width) - TextStartOffsetX;
@@ -138,15 +151,24 @@ namespace CalamityInheritance.UI
                 if (dialogLines.Count > TotalLinesPerPage)
                     yOffsetPerLine *= string.Concat(dialogLines).Length / GetTextByPage().Length;
                 
-                // Ensure the page number doesn't become nonsensical as a result of a resolution change (such as by resizing the game).
+                // 防止页数计算溢出
                 if (Page < 0)
                     Page = 0;
                 if (Page > TotalPages)
                     Page = TotalPages;
 
                 // 这一段有问题，不同分辨率下，箭头位置会发生变化
-                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 520 * yResolutionScale, mouseRectangle);
-                
+                // 现在修复了
+
+                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 540 * yResolutionScale, mouseRectangle);
+
+                Texture2D buttonTextureTrue = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrue").Value;
+                Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrueHover").Value;
+                Texture2D buttonTextureFalse = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalse").Value;
+                Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalseHover").Value;
+
+                DrawButtom(spriteBatch, buttonTextureFalse, buttonTextureFalseHover, buttonTextureTrue, buttonTextureTrueHover, 2f, xResolutionScale, yResolutionScale, 0, 0,ref UIpanelloreExocount, mouseRectangle);
+
                 int textDrawPositionX = (int)(pageTexture.Width * xResolutionScale + 350 * xResolutionScale);
                 int yScale = (int)(42 * yResolutionScale);
                 int yScale2 = (int)(yOffsetPerLine * yResolutionScale);
@@ -158,8 +180,6 @@ namespace CalamityInheritance.UI
                         Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, dialogLines[i], textDrawPositionX, textDrawPositionY, Color.DarkCyan, Color.Black, Vector2.Zero, xResolutionScale);
                     }
                 }
-                
-                DrawSpecialImage(spriteBatch, xResolutionScale, yResolutionScale, yPageTop - 585f * yResolutionScale);
             }
         }
         // 绘制箭头
@@ -238,21 +258,5 @@ namespace CalamityInheritance.UI
             }
         }
 
-        public void DrawSpecialImage(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageTop)
-        {
-            Texture2D texture = GetTextureByPage();
-
-            // Don't draw at all if the inputted texture is null.
-            if (texture is null)
-                return;
-            float yAspectRatio = texture.Height / (float)texture.Width;
-            Vector2 drawPosition;
-            drawPosition.X = Main.screenWidth / 2 + (int)(285f * xResolutionScale);
-            drawPosition.Y = yPageTop;
-            Vector2 scale = new Vector2(360f * xResolutionScale, MathHelper.Clamp(360f * yAspectRatio, 330f, 400f) * yResolutionScale);
-            scale /= texture.Size();
-            drawPosition.Y += texture.Height * 0.4f * scale.Y;
-            spriteBatch.Draw(texture, drawPosition, null, Color.White, 0f, new Vector2(texture.Width * 0.5f, 0f), scale, SpriteEffects.None, 0f);
-        }
     }
 }

@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool CanUseItem(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if (usPlayer.LoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 Item.useTime = 6;
                 Item.useAnimation = 54;
@@ -87,7 +87,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             float sourceVariationHigh = 180f;
             Vector2 source = playerPos + f.ToRotationVector2() * MathHelper.Lerp(sourceVariationLow, sourceVariationHigh, Main.rand.NextFloat());
             Vector2 sourceExoLore = playerPos + f.ToRotationVector2() * MathHelper.Lerp(spreadX, spreadY, Main.rand.NextFloat());
-            if (usPlayer.LoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 for (int i = 0; i < 50; i++)
                 {
@@ -143,7 +143,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true)
+            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.VividClarityOld.ExoLoreOn");
 

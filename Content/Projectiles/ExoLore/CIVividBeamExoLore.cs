@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (Projectile.owner == Main.myPlayer)
             {
-                if(usPlayer.LoreExo)
+                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     SummonLasers();
             }
             target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);

@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             int getBuffDamage = damage;
-            if (usPlayer.LoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 if (!player.Calamity().StealthStrikeAvailable())
                 {
@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true)
+            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.ExoTheApostle.ExoLoreOn");
 

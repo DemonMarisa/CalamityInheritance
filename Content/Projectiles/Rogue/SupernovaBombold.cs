@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
             {
-                if(usPlayer.LoreExo)
+                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaStealthBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                 }

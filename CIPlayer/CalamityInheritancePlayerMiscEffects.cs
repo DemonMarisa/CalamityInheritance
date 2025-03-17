@@ -49,6 +49,7 @@ namespace CalamityInheritance.CIPlayer
         public override void PostUpdateMiscEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
+            CalamityInheritancePlayer clPlayer = Player.CIMod();
             //一些玩家内置计数器的操作
             TimerChange();
 
@@ -88,6 +89,9 @@ namespace CalamityInheritance.CIPlayer
             //再临Boss战斗buff
             RebornBosses();
 
+            //Qol面板相关
+            Panels();
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
@@ -97,7 +101,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 ShieldDurabilityMax = Main.zenithWorld? Player.statLifeMax2 : 15;
             }
-
         }
         public void Buffs()
         {

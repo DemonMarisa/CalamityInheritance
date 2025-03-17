@@ -211,7 +211,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
                 if (flag11)
                 {
-                    if(usPlayer.LoreExo)
+                    if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     {
                         SoundEngine.PlaySound(SoundID.Item105, Projectile.position);
                         int blastAmt = Main.rand.Next(12, 18);
@@ -277,7 +277,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if(usPlayer.LoreExo)
+            if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 Projectile.netUpdate = true;
                 return new Color(255, 255, 255, 255);
