@@ -1,14 +1,8 @@
 using System.IO;
-using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;

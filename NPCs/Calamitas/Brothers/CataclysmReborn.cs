@@ -3,13 +3,10 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Accessories;
-using CalamityMod.NPCs.CalClone;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Steamworks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -73,14 +70,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
         }
 
         public override void SendExtraAI(BinaryWriter writer) 
-        //只有你需要除了NPC.ai[]的数组以外的数组去存放AI的时候，才会用这个函数
-        //恰好，我们就需要这种东西
         {
-            // writer.Write(NPC.dontTakeDamage);
-            // writer.Write(NPC.localAI[0]);
-            // writer.Write(NPC.localAI[1]);
-            // writer.Write(NPC.localAI[2]);
-            // writer.Write(NPC.localAI[3]);
             for(int i = 0; i < 4; i++)
             {
                 writer.Write(NPC.CIMod().BossNewAI[i]);
@@ -88,14 +78,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers
         }
 
         public override void ReceiveExtraAI(BinaryReader reader)
-        //接收写入的额外AI.
-        //一定是与上面的SendExtra一起进行的
         {
-            // NPC.dontTakeDamage = reader.ReadBoolean();
-            // NPC.localAI[0] = reader.ReadSingle();
-            // NPC.localAI[1] = reader.ReadSingle();
-            // NPC.localAI[2] = reader.ReadSingle();
-            // NPC.localAI[3] = reader.ReadSingle();
             for (int i = 0; i < 4; i++)
             NPC.CIMod().BossNewAI[i] = reader.ReadSingle();
         }

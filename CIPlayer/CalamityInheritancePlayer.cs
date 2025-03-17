@@ -17,6 +17,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
+using CalamityMod.Projectiles.Summon;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -86,6 +87,8 @@ namespace CalamityInheritance.CIPlayer
         #region ResetEffects
         public override void ResetEffects()
         {
+            //生命上限（们）
+            ResetLifeMax();
             //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
             RespriteOptions(); 
             //传颂全部包装

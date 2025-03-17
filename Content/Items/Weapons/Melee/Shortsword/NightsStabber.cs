@@ -11,10 +11,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.useAnimation = Item.useTime = 30;
             Item.width = 28;
             Item.height = 34;
-            Item.damage = 35;
+            Item.useAnimation = Item.useTime = 12;
+            Item.damage = 12;
+            Item.ArmorPenetration = 15;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 6f;
             Item.UseSound = CISoundID.SoundWeaponSwing;

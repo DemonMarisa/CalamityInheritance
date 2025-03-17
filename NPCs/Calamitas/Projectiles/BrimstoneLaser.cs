@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
@@ -10,7 +11,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Projectiles
     public class BrimstoneLaser : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
-        private int splitTimer = 60;
+        private int splitTimer = 45;
 
         public override void SetStaticDefaults()
         {
@@ -43,6 +44,8 @@ namespace CalamityInheritance.NPCs.Calamitas.Projectiles
         public override void AI()
         {
             splitTimer--;
+            if (splitTimer ==5)
+                CIFunction.DustCircle(Projectile.Center, 16, 1f, DustID.CrimsonTorch, false, 8f);
             if (splitTimer <= 0)
             {
                 int numProj = 2;

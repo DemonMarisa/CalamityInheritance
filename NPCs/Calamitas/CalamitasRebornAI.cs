@@ -3,15 +3,11 @@ using CalamityInheritance.NPCs.Calamitas.Minions;
 using CalamityInheritance.NPCs.Calamitas.Projectiles;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
@@ -38,9 +34,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             //这里也是一样，我们并不需要非常复杂的AI，只需要一个阶段，然后在这个时候生成新的二阶段AI就行了
             bool ifNewCal = lifePercent < 0.7f; //70%
 
-            //亵渎天神是否击败?
-            //3/7取消
-            //bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
             //将普灾最大血量先存进去
             if(cign.BossNewAI[0] == 0f && boss.life >0)
                cign.BossNewAI[0] = boss.lifeMax;

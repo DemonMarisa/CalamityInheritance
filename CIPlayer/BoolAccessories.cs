@@ -46,6 +46,7 @@ namespace CalamityInheritance.CIPlayer
         public bool WearingStarTainted = false;
         //两个肥鸡
         public bool GodlySons = false;
+        public bool EmpressBooster = false;
         #endregion
         
         public void ResetAccessories()
@@ -107,6 +108,7 @@ namespace CalamityInheritance.CIPlayer
             AmbrosialImmnue = false;
             AmbrosialStats = false;
             DraedonsHeartLegacyStats = false;
+            EmpressBooster = false;
             
             #endregion
             
@@ -137,6 +139,7 @@ namespace CalamityInheritance.CIPlayer
             StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
+            EmpressBooster = false;
         }
     }
 }
