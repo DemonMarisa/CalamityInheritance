@@ -43,3 +43,13 @@ MountedScannerLegacy: {
 		Requires 1.25 minions to use
 		'''
 }
+
+YharonSonStaff: {
+	DisplayName: Yharon's Kindle Staff Legacy
+	Tooltip:
+		'''
+		Summons a powerful son of Yharon fights for you
+		Requires 4 minions to use
+		No, they don't look that delicious.
+		'''
+}

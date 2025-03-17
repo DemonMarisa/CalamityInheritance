@@ -1,16 +1,13 @@
 using System;
 using CalamityInheritance.NPCs.Calamitas.Minions;
+using CalamityInheritance.NPCs.Calamitas.Projectiles;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
@@ -37,9 +34,6 @@ namespace CalamityInheritance.NPCs.Calamitas
             //这里也是一样，我们并不需要非常复杂的AI，只需要一个阶段，然后在这个时候生成新的二阶段AI就行了
             bool ifNewCal = lifePercent < 0.7f; //70%
 
-            //亵渎天神是否击败?
-            //3/7取消
-            //bool ifProviDead = CalamityConditions.DownedProvidence.IsMet();
             //将普灾最大血量先存进去
             if(cign.BossNewAI[0] == 0f && boss.life >0)
                cign.BossNewAI[0] = boss.lifeMax;
@@ -199,16 +193,16 @@ namespace CalamityInheritance.NPCs.Calamitas
                 //尝试, 发射火球
                 if(Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    boss.localAI[1] += 1f; //依旧, localAI[1]作为一个计时器
-                    boss.localAI[1] += 2f * (1f - lifePercent); //兄弟不在场的时候, 计时器转的更快
+                    //依旧, localAI[1]作为一个计时器
+                    boss.localAI[1] += 1f; 
+                    //兄弟不在场的时候, 计时器转的更快
+                    boss.localAI[1] += 2f * (1f - lifePercent); 
                 }
-                if(boss.localAI[1] >= 120f)//计时器符合这两个值?符合就开始发射火球
+                if(boss.localAI[1] >= 120f)
                 {
                     boss.localAI[1] = 0f;
                     float projVel = 14f;
-                    //灾厄在这是用激怒作为差分，此处则采用是否击败了亵渎
-
-                    int projType= ModContent.ProjectileType<BrimstoneHellfireball>(); //TODO4:使用旧版火球
+                    int projType= ModContent.ProjectileType<HellfireballReborn>(); //TODO4:使用旧版火球
                     int projDMG = boss.GetProjectileDamage(projType);
                     //火球是否应当有预判?不过, 死亡模式下是默认有1/2概率预判的
                     bool projPredictive = Main.rand.NextBool();
@@ -232,20 +226,20 @@ namespace CalamityInheritance.NPCs.Calamitas
                     {
                         boss.localAI[1] = 0f;//重置
                         float projVel = 12.5f;
-                        int projType = ModContent.ProjectileType<BrimstoneHellblast>();
+                        int projType = ModContent.ProjectileType<BrimstoneLaser>();
                         int projDMG = boss.GetProjectileDamage(projType);
                         Vector2 laserVel = Vector2.Normalize(player.Center - boss.Center) * projVel;
                         Vector2 laserOffset = Vector2.Normalize(laserVel) * 40f;
                         if(!Collision.CanHit(boss.position,boss.width,boss.height,player.position,player.width,player.height))
                         {
-                            projType = ModContent.ProjectileType<BrimstoneHellblast>();
+                            projType = ModContent.ProjectileType<BrimstoneLaser>();
                             projDMG = boss.GetProjectileDamage(projType);
                             Projectile.NewProjectile(boss.GetSource_FromAI(), boss.Center + laserOffset, laserVel, projType, projDMG, 0f, Main.myPlayer, player.position.X, player.position.Y);
                         }
                         else
                         {
-                            float Ai0 = projType == ModContent.ProjectileType<BrimstoneHellblast>() ? 1f : player.position.X;
-                            float Ai1 = projType == ModContent.ProjectileType<BrimstoneHellblast>() ? 0f : player.position.Y;
+                            float Ai0 = projType == ModContent.ProjectileType<BrimstoneLaser>() ? 1f : player.position.X;
+                            float Ai1 = projType == ModContent.ProjectileType<BrimstoneLaser>() ? 0f : player.position.Y;
                             Projectile.NewProjectile(boss.GetSource_FromAI(), boss.Center + laserOffset, laserVel, projType, projDMG, 0f, Main.myPlayer, Ai0, Ai1);
                         }
                     }

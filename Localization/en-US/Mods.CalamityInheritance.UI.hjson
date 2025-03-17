@@ -1,9 +1,9 @@
 Cooldowns: {
 	GodSlayerCooldown: The Cessation of the Godslayer
-	CISpongeDurability: Shield value
-	CISpongeRecharge: Shield base charged
-	CISpongeDurabilityRelay: Shield recharge delay
-	CISpongeRechargeRelay: Shield recharge delay
+	CISpongeDurability: Shield Value
+	CISpongeRecharge: Shield Base Charged
+	CISpongeDurabilityRelay: Shield Recharge Delay
+	CISpongeRechargeRelay: Shield Recharge Delay
 	DraconicElixirCooldown: The power of the dragon soul is regathering around you
-	NanotechUI: Nanomachines strengthen your weapons
+	NanotechUI: Nanomachines are strengthening your weapons
 }

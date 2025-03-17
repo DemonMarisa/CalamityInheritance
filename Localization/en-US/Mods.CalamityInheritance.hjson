@@ -134,13 +134,32 @@ Configs: {
 		}
 
 		TaleOfACruelWorld: {
-			Label: Tale of A Cruel World
-			Tooltip: ""
+			Label: "[i:MusicBox]Tale of A Cruel World"
+			Tooltip:
+				'''
+				Play Tale of A Cruel World when entering the world
+				Default by true
+				'''
 		}
 
 		BlessingoftheMoon: {
-			Label: Blessing of the Moon
-			Tooltip: ""
+			Label: "[i:MusicBox]Blessing of the Moon"
+			Tooltip:
+				'''
+				Plays Blessing of the Moon when getting close to the Plantoid
+				Default by true
+				'''
+		}
+
+		ReduceMoveSpeed: {
+			Tooltip:
+				'''
+				If you need or have to micro control while can't give up those accessories, this might be help.
+				30% decreased movement speed, acceleration and max run speed if active
+				Only works in Post-DoG.
+				Default by false
+				'''
+			Label: "[i:Chain]Reduce Move Speed"
 		}
 	}
 

@@ -44,6 +44,7 @@ namespace CalamityInheritance.Content.Items
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             VanillaAccesoriesUnnerf(item, player);  //饰品
             CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
+            
         }
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
@@ -530,9 +531,8 @@ namespace CalamityInheritance.Content.Items
             }
             if (item.type == ItemID.EmpressFlightBooster)
             {
-                player.jumpSpeedBoost += 0.20f; //回调至30%而非50%以避免一些问题
-                player.runAcceleration += 0.60f; //回调至80%而非100%以避免一些问题
-                calPlayer.infiniteFlight = true; //再次准许无限飞行
+                player.CIMod().EmpressBooster = true;
+                
             }
             #endregion
         }

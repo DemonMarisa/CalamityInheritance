@@ -56,7 +56,10 @@ namespace CalamityInheritance.Utilities
             }
         }
 
-
+        public static void SkyfallProjectiles(int projCounts)
+        {
+            
+        }
         public static void ExoDebuffs(this NPC target, float multiplier = 1f)
         {
             target.AddBuff(BuffID.Frostburn, 300);

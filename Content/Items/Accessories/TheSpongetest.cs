@@ -121,7 +121,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.statManaMax2 += 30; //+10
             player.statLifeMax += 30;
             player.moveSpeed += 0.1f;
-            player.accRunSpeed += 0.12f;
             //海贝壳继承
             player.ignoreWater = true;
             if (player.IsUnderwater())

@@ -560,20 +560,32 @@ YharimAuricTeslaHelm: {
 		'''
 		+120 max stealth
 		Counts as rogue armor, can use stealth strikes
+		+60 life regen speed, taking any damage makes you completely invincibile for a second. 
+		Your healing potions are 120% more effective and boost your max HP by 120%
+		Mana potions are 250% more effective and grants resistance to Mana Sickness
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
+		[c/7DDA58:Inherited From Ancient Tarragon][i:CalamityInheritance/AncientTarragonHelm]
+		Increases heart pick range, grants immnuity to knockback, reduces defense damage by 50%
+		Boost your defense and damage reduction by 30% when below 50% of your max HP.
+		[c/D21E20:Inherited From Ancient Bloodflare][i:CalamityInheritance/AncientBloodflareMask]
+		Massively boost your natural life regen speed, have a chance to drops heart and mana star on enemies hit
+		+60 HP/s life regen speed and when below 50% of you max HP
+		+30 HP/s life regen speed and extra 30 defense while submerged in Lava
+		Taking over 600 damage from an attack will be converted by 200% into healing
+		This effect has 10 seconds cooldown if triggered
+		[c/CC6CE7:Inherited From Ancient God Slayer][i:CalamityInheritance/AncientGodSlayerHelm]
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
-		Your mana usage also is dropped by 80%, mana consumed can be converted into healing
+		Boost your defense base on your max stealth
+		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
-		Grants immnuity to lava and knockback
-		1.2x your max life, healing potions are 120% more effective
-		Mana potions are 250% more effective and 25% reduce mana usage
-		+30 HP/s life regen speed and massively boosts your natural life regen speed
-		+60 HP/s life regen speed and +60 defense if your are lower than 50% of max life
-		+30 defense and +30 HP/s life regen speed while submerged into lava
-		Taking over 600 damage from an attack will be double and converted into healing
-		This effect has 10 seconds cooldown if is triggered
-		'No, I won't let you down'
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC57B:Inherited From Ancient Silva][i:CalamityInheritance/AncientSilvaHelm]
+		Boosts your natural life regen speed, debuffs can not negate your life regen
+		Sometimes you will be heal swiftly for a brief time
+		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
+		[c/DFC578:'No, I won't let you down']
 		'''
 }
 

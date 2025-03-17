@@ -2,6 +2,7 @@
 using System.IO;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;

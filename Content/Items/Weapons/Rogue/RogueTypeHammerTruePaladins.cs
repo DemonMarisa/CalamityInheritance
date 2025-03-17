@@ -15,10 +15,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeHammerTruePaladins: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
-        public override void SetStaticDefaults()
-        {
-        }
-
         public override void SetDefaults()
         {
             Item.width = 14;

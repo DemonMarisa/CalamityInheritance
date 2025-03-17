@@ -19,12 +19,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class AtaraxiaOld : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-        public override void SetStaticDefaults()
-        {
-            if(CIServerConfig.Instance.CustomShimmer == true)
-            {
-               }
-        }
         public override void SetDefaults()
         {
             Item.width = 94;

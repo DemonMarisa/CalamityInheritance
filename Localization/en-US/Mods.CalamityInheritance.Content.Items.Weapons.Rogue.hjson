@@ -187,3 +187,13 @@ RogueTypeHammerPwnageLegacy: {
 		Stealth strikes keeps chasing and sticking on its enemy
 		'''
 }
+
+DragonSpear: {
+	DisplayName: Infernal Spear
+	Tooltip:
+		'''
+		Legacy Wrathwings
+		Throws a homing inferal spear
+		Erupts a bunch of homing fireballs upon enemies hits
+		'''
+}

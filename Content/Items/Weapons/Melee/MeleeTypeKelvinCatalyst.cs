@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Materials;
+﻿using System.Collections.Generic;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
@@ -12,6 +14,9 @@ using CalamityMod.Items.Weapons.Rogue;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.NPCs.Calamitas;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -37,6 +42,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<MeleeTypeKelvinCatalystProj>();
             Item.shootSpeed = 15f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), player, 7200f))
+            {
+                string empoweredWeapon = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.EmpoweredTooltip.BuffKelvin");
+                tooltips.Add(new TooltipLine(Mod, "WeaponBuff", empoweredWeapon));
+            }
         }
         public override void AddRecipes()
         {

@@ -24,9 +24,13 @@ namespace CalamityInheritance.CIPlayer
         public int StepToolShadowChairSmallCD = 0;
         public int StepToolShadowChairSmallFireCD = 0;
         public float ManaHealMutipler = 1f; //增强魔力药水恢复量
+        public bool PolarisPhase2 = false;
+        public bool PolarisPhase3 = false;
+        public int PolarisBoostCounter = 0;
 
         //丛林龙仆从
         public bool OwnSonYharon = false;
+        //使用古式龙魂左键，给予丛林龙战期间的无限飞效果
         #endregion
        
         public void ResetBuff()
@@ -69,7 +73,6 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase2 = false;
             PolarisPhase3 = false;
             PolarisBoostCounter = 0;
-            OwnSonYharon = false;
         }
     }
 }

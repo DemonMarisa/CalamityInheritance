@@ -17,6 +17,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
+using CalamityMod.Projectiles.Summon;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -43,9 +44,7 @@ namespace CalamityInheritance.CIPlayer
         #region 武器效果
         public float AnimusDamage = 1f;
         public bool BuffPolarisBoost = false;
-        public bool PolarisPhase2 = false;
-        public bool PolarisPhase3 = false;
-        public int PolarisBoostCounter = 0;
+        
         public bool photovisceratorCrystal = false;
         #endregion
         #region dash
@@ -84,9 +83,12 @@ namespace CalamityInheritance.CIPlayer
         public bool MidnnightSunBuff = false;
         public bool cosmicEnergy = false;
         #endregion
+        public bool YharonFlightBooster = false;
         #region ResetEffects
         public override void ResetEffects()
         {
+            //生命上限（们）
+            ResetLifeMax();
             //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
             RespriteOptions(); 
             //传颂全部包装

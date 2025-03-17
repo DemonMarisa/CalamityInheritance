@@ -142,7 +142,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.Exobladeold.ExoLoreOn");
-
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }

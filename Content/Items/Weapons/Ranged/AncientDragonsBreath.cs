@@ -1,5 +1,7 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -16,12 +18,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.width = 58;
             Item.height = 36;
             Item.DamageType = DamageClass.Ranged;
-            Item.damage = 150;
-            Item.useTime = 15;
-            Item.useAnimation = 15;
+            Item.damage = 250;
+            Item.useTime = 13;
+            Item.useAnimation = 13;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundShoutgunTactical;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.autoReuse = true;
             Item.noMelee = true;

@@ -1,17 +1,17 @@
-ScalloreShopOption: LoreShop
-ScalPotionShopOption: PotionShop
-ScalAmmoShopOption: AmmoShop
-ScalMiscShopOption: MiscShop
-ScalItemShopOption: ItemShop
+ScalloreShopOption: Lorae Shop
+ScalPotionShopOption: Potions Shop
+ScalAmmoShopOption: Ammos Shop
+ScalMiscShopOption: Misc Shop
+ScalItemShopOption: Items Shop
 Scalbutton2Option: Next
 ScalChatOption: Chat
-DownedAnySentinels: DownedAnySentinels
+DownedAnySentinels: One of the Sentinels is defeated... welp, good job I think?
 ScalHomelessChat1: Welp, you died again. I guess you need to train more before we confront him.
 ScalHomelessChat2: Nice going, you beat me again. We might just have a shot at defeating him after all.
 ScalHomelessChat3: You didn't die at all huh? Welp, you probably cheated then.but here's your reward I guess.
 ScalHomelessChat4: Finish it already... oh... your not going to kill me are you? In that case, please allow me to join you.
 ScalHomelessChat5: I don't have anything more for you.
-ScalHomelessChat6: Finish it already...？
+ScalHomelessChat6: Finish it already...?
 ScalHomelessChat7: Maybe we can talk about something else.
 ScalChatNor1: The Sepulcher is actually a dark magic construct...  you can stop acting like you've run over my pet dog now, sheesh
 ScalChatNor2: Now can you tell everyone to stop asking where I am?

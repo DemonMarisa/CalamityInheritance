@@ -20,7 +20,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             //这一做法仅仅是为了作为对恶意模式的一个记忆点。
             Item.width = 52;
             Item.damage = 32;
-            // Item.damage = 26;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 20;

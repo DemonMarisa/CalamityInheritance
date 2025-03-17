@@ -1,14 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
+﻿using CalamityInheritance.Content.Projectiles.CalProjChange;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,8 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     {
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
+            
         }
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetDefaults()
@@ -40,12 +30,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 2.5f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.UseSound = SoundID.Item41;
+            Item.UseSound = CISoundID.SoundChainGun;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<AlgtPink>():ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>():ModContent.RarityType<CatalystViolet>();
 
             Item.channel = true;
             Item.noUseGraphic = true;

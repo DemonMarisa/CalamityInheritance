@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.Wulfum;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Magic;
@@ -67,6 +68,11 @@ namespace CalamityInheritance.NPCs
         {
             int count = NPC.CountNPCS(ModContent.NPCType<ThanatosHead>()) + NPC.CountNPCS(ModContent.NPCType<AresBody>()) + NPC.CountNPCS(ModContent.NPCType<AresBody>());
             return count <= 1;
+        }
+        public override void ModifyGlobalLoot(GlobalLoot globalLoot)
+        {
+            //龙魂精华由神后日食每个怪1/15概率掉落
+            globalLoot.Add(ItemDropRule.ByCondition(new GetDarksunFragmentDrop(), ModContent.ItemType<YharonEssence>(), 50, 1, 1));
         }
         #region Modify NPC Loot Main Hook
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

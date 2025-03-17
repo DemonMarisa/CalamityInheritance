@@ -2,24 +2,28 @@ CalamitasNPCLegacy: {
 	DisplayName: 至尊灾厄
 
 	TownNPCMood: {
-		Content: 我很满足。
-		NoHome: 我讨厌没有家。
-		FarFromHome: 我离家太远了。
-		LoveSpace: 我非常喜欢有这么大的空间。
-		DislikeCrowded: 我不喜欢这么拥挤。
-		HateCrowded: 我讨厌这么拥挤。
-		LikeBiome: 我喜欢{BiomeName}。
-		LikeNPC: 我喜欢{NPCName}。
-		LikeNPC_Princess: 我喜欢 {NPCName}。
-		Princess_LovesNPC: 我喜欢 {NPCName}。
+		Content: Thanks, now I'm feeling good.
+		NoHome:
+			'''
+			Look, I know, you've beat me, you can actually counts me as a slavery, or I don't know
+			But, just, at least give me a house, or even a shoe box?	
+			'''
+		FarFromHome: I'm sorry, but it is a bit hard for me to get my house, can you give me a hand?
+		LoveSpace: Thanks for giving me a such quiet and peaceful place.
+		DislikeCrowded: It is a bit crowed for me.
+		HateCrowded: I'm sorry, but I don't like to stick on others...
+		LikeBiome: "{BiomeName} is kinda a good place, what do you think?"
+		LikeNPC: Hey, do you know something about {NPCName}? Nothing, just in curiosity。
+		LikeNPC_Princess: I like {NPCName}。
+		Princess_LovesNPC: I like {NPCName}。
 	}
 }
 
 CalamitaReborn.DisplayName: Calamitas Legacy
 CalamitasPhase2Legacy.DisplayName: Calamitas Phase2 Legacy
-LifeSeekerReborn.DisplayName: Life Seeker Legacy
-SoulSeekerReborn.DisplayName: Soul Seeker Legacy
-CalamitasReborn.DisplayName: Calamitas Reborn
-CalamitasRebornPhase2.DisplayName: Calamitas Reborn Phase2
+LifeSeekerReborn.DisplayName: Life Seeker Reborn
+SoulSeekerReborn.DisplayName: Soul Seeker Reborn
+CalamitasReborn.DisplayName: Calamitas
+CalamitasRebornPhase2.DisplayName: Calamitas Reborn
 CataclysmReborn.DisplayName: Cataclysm Reborn
 CatastropheReborn.DisplayName: Catastrophe Reborn

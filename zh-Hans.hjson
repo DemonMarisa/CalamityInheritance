@@ -59,18 +59,6 @@ Mods: {
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
 		// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
-
-		Contetn: {
-			Items: {
-				Weapons: {
-					Summon: {
-						YharonSonStaff: {
-							// DisplayName: Yharon Son Staff
-							// Tooltip: ""
-						}
-					}
-				}
-			}
-		}
+		// DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 	}
 }

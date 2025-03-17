@@ -50,7 +50,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
         
         public override void UpdateEquip(Player player)
         {
-            player.maxMinions += 3;
+            player.maxMinions += 4;
+            player.maxTurrets += 3;
             player.GetDamage<GenericDamageClass>() += 0.15f;
             player.GetCritChance<GenericDamageClass>() += 15f;
         }

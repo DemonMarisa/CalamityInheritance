@@ -1,5 +1,6 @@
 using System.Numerics;
 using CalamityInheritance.Utilities;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

@@ -28,6 +28,11 @@ using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.System.Configs;
+using CalamityMod.Projectiles.Summon;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -149,7 +154,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.lifeMagnet = true;
                 Player.lifeRegen += 10;
-                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 25;
+                // Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 25;
             }
 
             if (BuffStatsDraconicSurge)
@@ -279,9 +284,14 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+            if (GodlySons)
+            {
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+            }
             if(AncientBloodPact)
             {
-                Player.statLifeMax2 +=(int)(Player.statLifeMax * 2);
+                // Player.statLifeMax2 +=(int)(Player.statLifeMax * 2);
             }
             if (DarkSunRings)
             {
@@ -355,7 +365,7 @@ namespace CalamityInheritance.CIPlayer
             */
             {
                 calPlayer.fleshTotem = true;
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.1f);
+                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.1f);
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.5f;
                 if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
@@ -399,23 +409,23 @@ namespace CalamityInheritance.CIPlayer
                 //在召唤物开着的时候这buff怎么可能会给这么多
                 //而且尤其是元素之心的基础伤害是150的情况下？
                 //跳跃速度砍了一刀，影响到实际用途了
-                Player.statLifeMax2 += 15;
+                // Player.statLifeMax2 += 15;
                 Player.statManaMax2 += 15;
                 Player.moveSpeed += 0.05f;
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.60f;
+                Player.jumpSpeedBoost += 0.40f;
                 Player.manaCost *=0.95f;
                 if(EHeartStatsBoost) //关闭元素之心的召唤物的情况下
                 {
-                    Player.statLifeMax2 += 25;  //40(15+25)HP
+                    // Player.statLifeMax2 += 25;  //40(15+25)HP
                     Player.statManaMax2 += 25;  //40(15+25)魔力
                     Player.moveSpeed += 0.05f;   //10(5+5)%移速
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
                     Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 1.0f;  //32(12+20)%跳跃速度
+                    Player.jumpSpeedBoost += 0.40f;  //32(12+20)%跳跃速度
                     Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
                     //由于返回值的原因导致Buff数值反而不能乱写。
                     //所以现在这些个的buff值都是5的系数了。
@@ -538,7 +548,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.2f;
                 }
                 calPlayer.healingPotionMultiplier += 0.45f; 
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.45f);
+                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.45f);
                 Player.crimsonRegen = true;
                 Player.lifeRegen += 8; //+4HP/s
                 
@@ -547,7 +557,7 @@ namespace CalamityInheritance.CIPlayer
             if (AncientBloodflareStat)
             {
                 calPlayer.healingPotionMultiplier += 0.35f; 
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.35f);
+                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.35f);
                 Player.lifeRegen += 10; //+10HP/s
                 if(Player.statLife <= Player.statLifeMax2/2)
                 Player.lifeRegen += 16; //+8HP/s
@@ -574,7 +584,7 @@ namespace CalamityInheritance.CIPlayer
                 
                 calPlayer.healingPotionMultiplier += 0.50f;
                 Player.lifeRegen += 16; //+8HP/s
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.65f);
+                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.65f);
                 Player.lifeRegenTime = 2000;
             }
             
@@ -582,7 +592,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 //天顶世界下魔君套允许玩家获得十倍生命值
                 float getLifeBoost = Main.zenithWorld? 25 : 1.20f;
-                Player.statLifeMax2 += (int)(Player.statLifeMax * getLifeBoost);
+                // Player.statLifeMax2 += (int)(Player.statLifeMax * getLifeBoost);
                 Player.noKnockback = true;
                 float getStealth = calPlayer.rogueStealthMax;
                 int getCurDef = Player.GetCurrentDefense();
@@ -724,7 +734,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 calPlayer.contactDamageReduction += 0.2f;
             }
-
+            
             if (SilvaMeleeSetLegacy)
             {
                 double multiplier = Player.statLife / (double)Player.statLifeMax2;
@@ -834,6 +844,19 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            if (EmpressBooster)
+            {
+                Player.jumpSpeedBoost += 1.80f;
+                Player.runAcceleration *= 1.20f;
+                Player.moveSpeed += 0.12f;
+                calPlayer.infiniteFlight = true; //再次准许无限飞行
+            }
+            if (CIConfig.Instance.ReduceMoveSpeed && CalamityConditions.DownedDevourerOfGods.IsMet())
+            {
+                player.moveSpeed -= 0.3f;
+                player.runAcceleration *= 0.85f;
+                player.accRunSpeed -= 0.3f;
+            }
             if(IfCloneHtting) //大锤子如果正在攻击
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
@@ -900,7 +923,6 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //假定玩家与灾厄之眼再临战斗
-            
         }
         private void StandingStill()
         {
@@ -1271,8 +1293,8 @@ namespace CalamityInheritance.CIPlayer
                 CalamityPlayer modplayer = Player.Calamity();
                 if (Player.IsUnderwater())
                 {
-                    if (modplayer.aquaticHeart || modplayer.aquaticHeartPrevious)
-                        Player.statLifeMax2 += Player.statLifeMax2 / 20;
+                    // if (modplayer.aquaticHeart || modplayer.aquaticHeartPrevious)
+                    //     Player.statLifeMax2 += Player.statLifeMax2 / 20;
                 }
 
                 if (!Player.IsUnderwater())
@@ -1573,21 +1595,26 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             //与灾厄之眼-再临战斗时提供的战斗增益
+            /*
+            *增益：
+            *准许无限飞行。
+            *跳跃速度增强36%, 疾跑加速度增强20%, 移动速度增强12%
+            *准许免疫击退
+            *准许玩家在承受debuff伤害时获得+4HP/s生命恢复速度
+            */
             if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
             {
-                //允许无限飞行
+                //直接取光女饰品的增益，同时具备准许无限飞行、跳跃速度和移速的效果
+                
                 calPlayer.infiniteFlight = true;
                 //准许防击退
                 Player.noKnockback = true;
                 //32%跳跃速度
                 Player.jumpSpeedBoost = 1.6f;
-                //接触伤害减免25%
-                calPlayer.contactDamageReduction += 0.25f;
-                //移动速度24%
-                Player.moveSpeed += 0.24f;
-            }
 
-            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f))
+            }
+            //玩家附近有丛林龙且使用了远古龙魂，则准许无限飞
+            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f) && YharonFlightBooster)
             {
                 //准许无限飞行、防击退
                 calPlayer.infiniteFlight = true;

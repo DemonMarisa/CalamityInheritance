@@ -16,6 +16,10 @@ namespace CalamityInheritance.Content.Items
     {
         public override void SetStaticDefaults()
         {
+            #region 旧日的馈赠
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
+            #endregion
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)
             {
@@ -112,6 +116,7 @@ namespace CalamityInheritance.Content.Items
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();
                 #endregion
+                
             
             }
             #endregion

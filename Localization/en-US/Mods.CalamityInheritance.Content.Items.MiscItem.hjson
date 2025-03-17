@@ -13,3 +13,15 @@ DraedonsToy: {
 	Tooltip: ""
 	DisplayName: Draedons Toy
 }
+
+YharonEssence: {
+	DisplayName: Yharon Essence
+	Tooltip:
+		'''
+		[c/FF8C00:A gift from old days]
+		Containing the essence of Jungle Dragon and the Eclipse,
+		Even though the true Reborn Dragon will not return for a long time,
+		We can still sense the era of dragon-on-dragon battles through this item.
+		Right clicked to gained some loots from Jungle Dragon, Yharon (Phase One).
+		'''
+}
