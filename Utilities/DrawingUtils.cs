@@ -108,12 +108,13 @@ namespace CalamityInheritance.Utilities
         }
         /// <summary>
         /// 在屏幕上绘制可交互图片的方法
-        /// 注：一定要手动操作buttonTexChange的值，方法只内置了悬停后必定切换为2，点击前的1与3的状态标记必须手动切换
+        /// 注：一定要手动操作buttonTexChange的值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动切换
         /// </summary>
         /// <param name="falseTexture">为假时的材质</param>
         /// <param name="falseHoveredTexture">为假时鼠标悬停上方时的材质</param>
         /// <param name="trueTexture">鼠标按下后的材质</param>
         /// <param name="trueHoveredTexture">鼠标按下后的材质</param>
+        /// <param name="unavailableTexture">不可用时的材质</param>
         /// <param name="spriteBatch">绘制</param>
         /// <param name="Scale">缩放</param>
         /// <param name="xResolutionScale">X 缩放</param>
@@ -121,6 +122,8 @@ namespace CalamityInheritance.Utilities
         /// <param name="xPageBottom">以屏幕中心为锚点的 X 偏移</param>
         /// <param name="yPageBottom">以屏幕中心为锚点的 Y 偏移</param>
         /// <param name="buttonCount">标记使用哪个贴图的部分，当为1时，是默认贴图，为2时，是鼠标悬浮的贴图，为3时，是点击后的贴图</param>
+        /// <param name="UIID">UI的ID，为本地化做准备</param>
+        /// <param name="available">UI的交互是否可用</param>
         /// <param name="mouseRectangle">点击判定</param>
         /// <summary>
 
