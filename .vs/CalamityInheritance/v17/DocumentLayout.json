@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -87,6 +87,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -133,9 +137,9 @@
               "Title": "QolPanel.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\UI\\QolPanel.cs",
               "RelativeDocumentMoniker": "UI\\QolPanel.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\UI\\QolPanel.cs*",
-              "RelativeToolTip": "UI\\QolPanel.cs*",
-              "ViewState": "AgIAAD4AAAAAAAAAAADwv1cAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\UI\\QolPanel.cs",
+              "RelativeToolTip": "UI\\QolPanel.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAADwv2IAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T08:00:54.37Z",
               "EditorCaption": ""
