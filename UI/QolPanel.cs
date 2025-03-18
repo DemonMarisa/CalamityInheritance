@@ -203,6 +203,7 @@ namespace CalamityInheritance.UI
             bool DownedWoF = Condition.Hardmode.IsMet();
             bool DownedYharon = DownedBossSystem.downedYharon;
             #endregion
+            
             #region 什么嘛……不就是打表吗
             Texture2D LoreAS = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreAquaticScourge").Value;
             Texture2D LoreAureus = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreAstrumAureus").Value;
@@ -240,7 +241,83 @@ namespace CalamityInheritance.UI
             Texture2D LoreTwins = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreTwins").Value;
             Texture2D LoreWoF = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreWOF").Value;
             Texture2D LoreYharon = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreYharon").Value;
+
+            var bossParameter = new (Texture2D LoreSprite, bool whoDowned)[7,7];
+            bossParameter[1,1] = (LoreKS, DownedKS);
+            bossParameter[1,2] = (LoreDS, DownedDS);
+            bossParameter[1,3] = (LoreEoC, DownedEoC);
+            bossParameter[1,4] = (LoreCrab, DownedCrab);
+            bossParameter[1,5] = (LoreEoW, DownedEoW);
+            bossParameter[1,6] = (LoreBoC, DownedBoC);
+            bossParameter[2,1] = (LoreHive, DownedHive);
+            bossParameter[2,2] = (LorePerf, DownedPerf);
+            bossParameter[2,3] = (LoreQB, DownedQB);
+            bossParameter[2,4] = (LoreSkele, DownedSkele);
+            bossParameter[2,5] = (LoreSG, DownedSG);
+            bossParameter[2,6] = (LoreWoF, DownedWoF);
+            bossParameter[3,1] = (LoreCryo, DownedCryo);
+            bossParameter[3,2] = (LoreTwins, DownedTwins);
+            bossParameter[3,3] = (LoreBrimmy, DownedBrimmy);
+            bossParameter[3,4] = (LoreDestroyer, DownedDestroyer);
+            bossParameter[3,5] = (LoreAS, DownedAS);
+            bossParameter[3,6] = (LorePrime, DownedPrime);
+            bossParameter[4,1] = (LoreCalClone, DownedCalClone);
+            bossParameter[4,2] = (LorePlant, DownedPlant);
+            bossParameter[4,3] = (LoreAureus, DownedAureus);
+            bossParameter[4,4] = (LoreLA, DownedLA);
+            bossParameter[4,5] = (LoreGolem, DownedGolem);
+            bossParameter[4,6] = (LorePBG, DownedPBG);
+            bossParameter[5,1] = (LoreDuke, DownedDuke);
+            bossParameter[5,2] = (LoreRavager, DownedRavager);
+            bossParameter[5,3] = (LoreCultist, DownedCultist);
+            bossParameter[5,4] = (LoreDeus, DownedDeus);
+            bossParameter[5,5] = (LoreML, DownedML);
+            bossParameter[5,6] = (LoreProvi, DownedProvi);
+            bossParameter[6,1] = (LorePolter, DownedPolter);
+            bossParameter[6,2] = (LoreOD, DownedOD);
+            bossParameter[6,3] = (LoreDoG, DownedDoG);
+            bossParameter[6,4] = (LoreYharon, DownedYharon);
+            bossParameter[6,5] = (LoreExo, DownedExo);
+            bossParameter[6,6] = (LoreSCal, DownedSCal);
             #endregion
+            //我需要知道为什么这个数组没有作用
+            var btnParam = new (bool whoDowned, int whoPanel, int whoBtnID)[7,7];
+            btnParam[1,1] = (DownedKS, KSPanelType, KSBtnID);
+            btnParam[1,2] = (DownedDS, DSPanelType, DSBtnID);
+            btnParam[1,3] = (DownedEoC, EoCPanelType, EoCBtnID);
+            btnParam[1,4] = (DownedCrab, CrabPanelType, CrabBtnID);
+            btnParam[1,5] = (DownedEoW, EoWPanelType, EoWBtnID);
+            btnParam[1,6] = (DownedBoC, BoCPanelType, BoCBtnID);
+            btnParam[2,1] = (DownedHive, HivePanelType, HiveBtnID);
+            btnParam[2,2] = (DownedPerf, PerfPanelType, PerfBtnID);
+            btnParam[2,3] = (DownedQB, QBPanelType, QBBtnID);
+            btnParam[2,4] = (DownedSkele, SkelePanelType, SkeleBtnID);
+            btnParam[2,5] = (DownedSG, SGPanelType, SGBtnID);
+            btnParam[2,6] = (DownedWoF, WoFPanelType, WoFBtnID);
+            btnParam[3,1] = (DownedCryo, CryoPanelType, CryoBtnID);
+            btnParam[3,2] = (DownedTwins, TwinsPanelType, TwinsBtnID);
+            btnParam[3,3] = (DownedBrimmy, BrimmyPanelType, BrimmyBtnID);
+            btnParam[3,4] = (DownedDestroyer, DestroyerPanelType, DestroyerBtnID);
+            btnParam[3,5] = (DownedAS, ASPanelType, ASBtnID);
+            btnParam[3,6] = (DownedPrime, PrimePanelType, PrimeBtnID);
+            btnParam[4,1] = (DownedCalClone, CalClonePanelType, CalCloneBtnID);
+            btnParam[4,2] = (DownedPlant, PlantPanelType, PlantBtnID);
+            btnParam[4,3] = (DownedAureus, AureusPanelType, AureusBtnID);
+            btnParam[4,4] = (DownedLA, LAPanelType, LABtnID);
+            btnParam[4,5] = (DownedGolem, GolemPanelType, GolemBtnID);
+            btnParam[4,6] = (DownedPBG, PBGPanelType, PBGBtnID);
+            btnParam[5,1] = (DownedDuke, DukePanelType, DukeBtnID);
+            btnParam[5,2] = (DownedRavager, RavagerPanelType, RavagerBtnID);
+            btnParam[5,3] = (DownedCultist, CultistPanelType, CultistBtnID);
+            btnParam[5,4] = (DownedDeus, DeusPanelType, DeusBtnID);
+            btnParam[5,5] = (DownedML, MLPanelType, MLBtnID);
+            btnParam[5,6] = (DownedProvi, ProviPanelType, ProviBtnID);
+            btnParam[6,1] = (DownedPolter, PolterPanelType, PolterBtnID);
+            btnParam[6,2] = (DownedOD, ODPanelType, ODBtnID);
+            btnParam[6,3] = (DownedDoG, DoGPanelType, DoGBtnID);
+            btnParam[6,4] = (DownedYharon, YharonPanelType, YharonBtnID);
+            btnParam[6,5] = (DownedExo, ExoPanelType, ExoBtnID);
+            btnParam[6,6] = (DownedSCal, SCalPanelType, SCalBtnID);
             // 这里是与设置相关，便于调试的设置
             // 结果：
             // 左上角为 Lore偏移：X - 515 Y - 330 按钮偏移：X - 515 Y - 260
@@ -268,7 +345,9 @@ namespace CalamityInheritance.UI
             Texture2D buttonTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonUnAvailable").Value;
             // lore不可用时的材质
             Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogLoreUnAvailable").Value;
+            
             DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.8f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
+            
             DrawLoreData genericLoreData = GetDrawLoreData(spriteBatch, loreTextureUnAvailable, 0.8f, xResolutionScale, yResolutionScale, false);
             // 要绘制在第几页
             if (Page == 1)
@@ -287,6 +366,21 @@ namespace CalamityInheritance.UI
                 *默认情况下优先绘制左分页，如果需要绘制右分页，则rigtSplitPage set为True即可
                 *附2:我有想过用数组尝试遍历，但我发现最后还是不如打表。完蛋了。
                 */
+                /*#region 循环遍历Lore与按钮绘制
+                //这一循环遍历表面上能正常工作，但不能实现效果，如果没办法的话直接启用下方的打表吧
+                for (int line = 0 ; line < 7; line++)
+                {
+                    for (int colume = 0; colume < 7 ; colume++)
+                    {
+                        CIFunction.DrawLore(genericLoreData, GetLorePos(line, colume).LorePosX,
+                                            GetLorePos(line, colume).LorePosY, bossParameter[line, colume].LoreSprite,
+                                            ref bossParameter[line, colume].whoDowned);
+                        CIFunction.DrawBton(genericBtonData, GetLorePos(line, colume).LoreBtnX,
+                                            GetLorePos(line, colume).LoreBtnY, ref btnParam[line, colume].whoDowned,
+                                            ref btnParam[line, colume].whoPanel, ref btnParam[line, colume].whoBtnID);
+                    }
+                }
+                #endregion*/
                 #region 遍历-Lore贴图
                 CIFunction.DrawLore(genericLoreData, GetLorePos(1,1).LorePosX, GetLorePos(1,1).LorePosY, LoreKS, ref DownedKS);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(1,2).LorePosX, GetLorePos(1,2).LorePosY, LoreDS, ref DownedDS);
@@ -318,7 +412,7 @@ namespace CalamityInheritance.UI
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5,4).LorePosX, GetLorePos(5,4).LorePosY, LoreDeus, ref DownedDeus);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5,5).LorePosX, GetLorePos(5,5).LorePosY, LoreML, ref DownedML);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5,6).LorePosX, GetLorePos(5,6).LorePosY, LoreProvi, ref DownedProvi);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5,1).LorePosX, GetLorePos(6,1).LorePosY, LorePolter, ref DownedPolter);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6,1).LorePosX, GetLorePos(6,1).LorePosY, LorePolter, ref DownedPolter);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,2).LorePosX, GetLorePos(6,2).LorePosY, LoreOD, ref DownedOD);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,3).LorePosX, GetLorePos(6,3).LorePosY, LoreDoG, ref DownedDoG);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,4).LorePosX, GetLorePos(6,4).LorePosY, LoreYharon, ref DownedYharon);
@@ -430,10 +524,10 @@ namespace CalamityInheritance.UI
             我们需要借助制表格式去间接绘制一个lore的位置，其次就是按钮
             但，幸运的是我们的按钮绘制并没有那么困难。
             rightSplitPage=false时，将其绘制在左半页面
-            我们一次只考虑一个分页，因此不会让列数大于5，不然我们就能看到传颂挎着页面了
+            我们一次只考虑一个分页，因此不会让列数大于6，不然我们就能看到传颂挎着页面了
             */
             if (!rightSplitPage.Value)
-                //如果colume被错误的尝试获得大于7的值的话这里会被置零也只能置零，主要是防止如果强行退出容易崩游戏
+                //如果colume被错误的尝试获得大于7的值的话这里会被置零也只能置零，主要是防止强行退出 崩游戏
                 colume = colume < 7 ? 7 - colume : 0;
 
                 //如果需要在右半分页进行绘制的话就会执行这个程式

@@ -1,20 +1,11 @@
-﻿using CalamityMod.UI;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria;
 using static CalamityInheritance.Utilities.CIFunction;
 using Terraria.Audio;
 using Terraria.ID;
-using CalamityMod.CalPlayer;
 using CalamityInheritance.CIPlayer;
-using CalamityMod;
 
 namespace CalamityInheritance.UI
 {

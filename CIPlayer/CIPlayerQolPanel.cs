@@ -60,8 +60,9 @@ namespace CalamityInheritance.CIPlayer
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer cIPlayer = player.CIMod();
             #region lore
-            for (int i = 0; i < PanelBoolInit().Length; i++)
+            for (int i = 0; i < PanelBoolInit().Length && i < PanelCountInit().Length; i++)
             {
+                
                 switch (PanelCountInit()[i])
                 {
                     case 1:
