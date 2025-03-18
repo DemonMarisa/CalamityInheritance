@@ -48,20 +48,17 @@ namespace CalamityInheritance.CIPlayer
         public bool GodlySons = false;
         public bool EmpressBooster = false;
         #endregion
-        
+        /// <summary>
+        /// 这个是在MaxLife后边的
+        /// </summary>
         public void ResetAccessories()
         {
             #region Accessories
-            int percentMaxLifeIncrease = 0;
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否正在攻击
             AnkhImmnue = false;
             ElemQuiver = false;
-            
             CoreOfTheBloodGod = false;
-
-            if (CoreOfTheBloodGod)
-                percentMaxLifeIncrease += 25;
 
             if (!CIsponge)
                 CISpongeShieldDurability = 0;

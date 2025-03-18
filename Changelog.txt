@@ -1,7 +1,7 @@
 /******************************************************发布版的ChangeLog********************************************************
 内容:
 -添加:
- 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy]
+ 圣神之像[Legacy], 斯万科技枪[Legacy], 阿萨托斯[Legacy], 马格努斯之眼[Legacy],
  阿尔法射线[Legacy], 源[Legacy], 侧翼[Legacy], 大理石冲击波[Legacy], 极乐升天炮[Legacy]
  巨龙之怒[Legacy], 焚天[Legacy], 远古巨龙之息[Legacy], 小鸡大炮[Legacy], 星火凤凰雨[Legacy]
  巨龙七星灯[Legacy], 狱炎投矛[Legacy], 远古龙魂精华
@@ -31,6 +31,7 @@
 -削弱星体击碎者:325 -> 200, 这玩意一分钟干死神长同时把银河锤爆了
  天顶世界下星体击碎者面板为400
 -加强银河溃灭者:275 -> 300
+-重平衡永夜短剑：useTime 30 -> 12, 但触手现在造成12静态无敌帧而非局部无敌帧
 
 -加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
  上述效果整合进魔君套内
@@ -50,11 +51,12 @@
 -修复了魔影坩埚的特殊稀有度颜色无法正确显示的问题
 -修复了翱翔证章在开启回调原版削弱的时候错误地提供了数值加成的问题
 -修正了一些过期的Tooltip
+-修复了有些时候百分比血量加成会被部分直接治疗重置的问题
 
 Content:
 -Added:
  Ancient Murasama, Alpha Ray Legacy Apotheosis Legacy, Azathoth Legacy, Crystal Flare Staff Revamped, Demonic Pitchfork Revamped
- Genisis Legacy, Hell burst Legacy, Svantechnical Legacy, Wingman Legacy, Opal Striker Legacy
+ Eye of Magnus Legacy, Genisis Legacy, Hell burst Legacy, Svantechnical Legacy, Wingman Legacy, Opal Striker Legacy
  Dragon Rage Legacy, The Burning Sky Legacy, Ancinet Dragon's Breath, Chicken Cannon Legacy, Phoenix Barrage Legacy
  Yharon Kindle Staff Legacy, Infernal Spear and Yharon Essence.
 
@@ -82,6 +84,7 @@ Balance:
 -Nerfed Stellar Striker Legacy Rogue damage from 325 to 200, since it just melted DoG in 1 min which is not intended.
  Stellar Striker will buffed its damage to 400, to make DoG fight easier.
  Buffed Galaxy Smasher Legacy Rogue damage from 275 to 300
+-Rebalanced Night's Stabber: Buffed use time from 30 to 12, but shadow tentacle now uses 12 id-static immunity frames instead of local immunity frame
 
 Tweaks:
 -Reordered Resprite config to make it looks more acceptable
@@ -143,4 +146,9 @@ Fixes:
  面板:375 -> 200
  注:在gfb中面板会被翻倍以协助处理短神长
  弑神锤子加强:面板275->300
+ 修复了血量上限的顺序错误
+ 高度封装并优化普灾AI, 现在AI上普灾已经没什么大的问题了
+ 兄弟仍然无法发射射弹,试图用炼狱的方法改写普灾AI,起了个头,然后就是普灾一阶段的AI还没改
+ 重平衡永夜短剑
+ 
 

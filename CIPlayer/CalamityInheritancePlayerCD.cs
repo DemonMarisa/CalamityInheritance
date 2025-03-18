@@ -23,6 +23,44 @@ namespace CalamityInheritance.CIPlayer
 
         // 1-4，分别标记四种状态，1为默认贴图（false），2为鼠标悬停的贴图（false），3为点击后的贴图（true）, 4为点击后悬停的贴图（true）
         public int panelloreExocount = 1;//用于qol面板的星三王传颂计数
+        #region 面板计数
+        public int KSPanelCount= 1;
+        public int DSPanelCount= 1;
+        public int EoCPanelCount= 1;
+        public int CrabPanelCount= 1;
+        public int EoWPanelCount= 1;
+        public int BoCPanelCount= 1;
+        public int HivePanelCount= 1;
+        public int PerfPanelCount= 1;
+        public int QBPanelCount= 1;
+        public int SkelePanelCount= 1;
+        public int SGPanelCount= 1;
+        public int WoFPanelCount= 1;
+        public int CryoPanelCount= 1;
+        public int TwinsPanelCount= 1;
+        public int BrimmyPanelCount= 1;
+        public int DestroyerPanelCount= 1;
+        public int ASPanelCount= 1;
+        public int PrimePanelCount= 1;
+        public int CalClonePanelCount= 1;
+        public int PlantPanelCount= 1;
+        public int AureusPanelCount= 1;
+        public int LAPanelCount= 1;
+        public int GolemPanelCount= 1;
+        public int PBGPanelCount= 1;
+        public int DukePanelCount= 1;
+        public int RavagerPanelCount= 1;
+        public int CultistPanelCount= 1;
+        public int DeusPanelCount= 1;
+        public int MLPanelCount= 1;
+        public int ProviPanelCount= 1;
+        public int PolterPanelCount= 1;
+        public int ODPanelCount= 1;
+        public int DoGPanelCount= 1;
+        public int YharonPanelCount= 1;
+        public int ExoPanelCount= 1;
+        public int SCalPanelCount= 1;
+        #endregion
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
 
         public void ResetCD()

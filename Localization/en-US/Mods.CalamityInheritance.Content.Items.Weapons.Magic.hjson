@@ -228,3 +228,8 @@ DragonStaff: {
 	DisplayName: Phoenix Flame Barrage Legacy
 	Tooltip: Casts a barrage of fire from the sky
 }
+
+MagnusEye: {
+	Tooltip: ""
+	DisplayName: Magnus Eye
+}

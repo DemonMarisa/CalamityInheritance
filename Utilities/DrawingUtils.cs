@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -106,47 +107,38 @@ namespace CalamityInheritance.Utilities
             public static float EaseOutExpo(float t)
                 => t == 1f ? 1f : 1f - MathF.Pow(2f, -10f * t);
         }
+        
+        
+        
+        
         /// <summary>
         /// 在屏幕上绘制可交互图片的方法
-        /// 注：一定要手动赋予buttonTexChange的初始值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动赋予
+        /// 一定要手动赋予buttonTexChange的初始值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动赋予
         /// </summary>
-        /// <param name="falseTexture">为假时的材质</param>
-        /// <param name="falseHoveredTexture">为假时鼠标悬停上方时的材质</param>
-        /// <param name="trueTexture">鼠标按下后的材质</param>
-        /// <param name="trueHoveredTexture">鼠标按下后的材质</param>
-        /// <param name="unavailableTexture">不可用时的材质</param>
+        /// <param name="available">UI交互可用与否</param>
+        /// <param name="buttonCount">标记按钮贴图状态，1：默认贴图，2：鼠标悬浮，3：按下按钮</param>
+        /// <param name="UIID">UI的ID, 作本地化准备</param>
+        /// <param name="Scale">尺寸</param>
+        /// <param name="xPageBottom">以屏幕中心锚点X偏移</param>
+        /// <param name="yPageBottom">以屏幕中心锚点Y偏移</param>
+        /// <param name="xResolutionScale">X缩放尺寸</param>
+        /// <param name="yResolutionScale">Y缩放尺寸</param>
+        /// <param name="flipHorizontally">UI水平镜像</param>
+        /// <param name="mouseRectangle">鼠标判定</param>
         /// <param name="spriteBatch">绘制</param>
-        /// <param name="Scale">缩放</param>
-        /// <param name="xResolutionScale">X 缩放</param>
-        /// <param name="yResolutionScale">Y 缩放</param>
-        /// <param name="xPageBottom">以屏幕中心为锚点的 X 偏移</param>
-        /// <param name="yPageBottom">以屏幕中心为锚点的 Y 偏移</param>
-        /// <param name="buttonCount">标记使用哪个贴图的部分，当为1时，是默认贴图，为2时，是鼠标悬浮的贴图，为3时，是点击后的贴图</param>
-        /// <param name="UIID">UI的ID，为本地化做准备</param>
-        /// <param name="available">UI的交互是否可用</param>
-        /// <param name="flipHorizontally">UI的绘制是否镜像</param>
-        /// <param name="mouseRectangle">点击判定</param>
-        /// <summary>
-
+        /// <param name="falseTexture">关闭时的按钮贴图</param>
+        /// <param name="falseHoveredTexture">关闭时的悬停贴图</param>
+        /// <param name="trueTexture">可用贴图</param>
+        /// <param name="trueHoveredTexture">可用时的悬停贴图</param>
+        /// <param name="unavailableTexture"不可用贴图></param>
+        public static void DrawButtom(ref bool available, ref int buttonCount, ref int UIID, float Scale,
+                                      float xPageBottom, float yPageBottom, float xResolutionScale,
+                                      float yResolutionScale, bool flipHorizontally, Rectangle mouseRectangle,
+                                      SpriteBatch spriteBatch, Texture2D falseTexture, Texture2D falseHoveredTexture,
+                                      Texture2D trueTexture, Texture2D trueHoveredTexture, Texture2D unavailableTexture)
         // 这一段接受数量也太多了，我只能这么写了（
-        public static void DrawButtom(
-          SpriteBatch spriteBatch,
-          Texture2D falseTexture,
-          Texture2D falseHoveredTexture,
-          Texture2D trueTexture,
-          Texture2D trueHoveredTexture,
-          Texture2D unavailableTexture,
-          float Scale,
-          float xResolutionScale,
-          float yResolutionScale,
-          float xPageBottom,
-          float yPageBottom,
-          ref int buttonCount,
-          ref int UIID,
-          ref bool available,
-          bool flipHorizontally, // 是否镜像
-          Rectangle mouseRectangle
-        )
+        // Scarlet: 这么写是正常的，只是有些地方需要注意：
+        // 如果你默认你输入的一些东西大部分情况保持不变，你应当把这些置函数最后方
         {
             float scale = Scale;
             Texture2D targetTexture = trueTexture;
@@ -227,6 +219,97 @@ namespace CalamityInheritance.Utilities
         }
 
         /// <summary>
+        /// 专门用于绘制Lore下方按钮的方法
+        /// </summary>
+        /// <param name="thisUI">按钮贴图数据</param>
+        /// <param name="xPageBottom">按钮水平坐标，相对于屏幕中心</param>
+        /// <param name="yPageBottom">按钮垂直坐标，相对于屏幕中心</param>
+        /// <param name="available">是否可用</param>
+        /// <param name="buttonCount">按钮状态，建议手动输入</param>
+        /// <param name="UIID">UIID，准备用于本地化</param>
+        public static void DrawBton(DrawUIData thisUI,float xPageBottom, float yPageBottom,  ref bool available, ref int buttonCount, ref int UIID)
+        // 这一段接受数量也太多了，我只能这么写了（
+        // Scarlet: 这么写是正常的，只是有些地方需要注意：
+        // 如果你默认你输入的一些东西大部分情况保持不变，你应当把这些置函数最后方
+        {
+            float scale = thisUI.scale;
+            Texture2D targetTexture = thisUI.buttonTextureTrue;
+
+            Player player = Main.player[Main.myPlayer];
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+
+            // 绘制坐标
+            Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + xPageBottom, Main.screenHeight / 2 + yPageBottom);
+            Rectangle arrowRect = new Rectangle(
+                (int)(drawPosition.X - thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale* scale / 2),
+                (int)(drawPosition.Y - thisUI.buttonTextureTrue.Height * thisUI.yResolutionScale* scale / 2),
+                (int)(thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale* scale),
+                (int)(thisUI.buttonTextureTrue.Height * thisUI.xResolutionScale* scale)
+            );
+
+            // 检测悬停
+            bool isHovering = arrowRect.Intersects(thisUI.mouseRectangle);
+
+            // 获取当前鼠标状态
+            bool isMouseDown = Main.mouseLeft;
+
+            // 动态切换纹理
+            // 悬停时切换纹理为 2
+            if (isHovering && available)
+            {
+                if (buttonCount == 1)
+                    buttonCount = 2;
+                if (buttonCount == 3)
+                    buttonCount = 4;
+
+                // 未悬停时恢复为1（默认贴图
+                // 按下时缩小
+                if (isMouseDown)
+                {
+                    scale *= 0.9f;
+                    Main.blockMouse = true;
+                    cIPlayer.wasMouseDown = true;
+                }
+                // 这一段解释一下就是，2是false的悬停贴图，4是true的悬停贴图，如果按下，且当前贴图是2，就切换到3，反之同理
+                if (cIPlayer.wasMouseDown)
+                {
+                    // 释放瞬间：切换永久状态
+                    if (!isMouseDown && buttonCount == 2)
+                    {
+                        buttonCount = 3;
+                        cIPlayer.wasMouseDown = false;
+                    }
+                    if (!isMouseDown && buttonCount == 4)
+                    {
+                        // 在1和3之间切换
+                        buttonCount = 1;
+                        cIPlayer.wasMouseDown = false;
+                    }
+                }
+            }
+            
+            // 重置为对应的默认贴图
+            if (buttonCount == 2 && !isHovering && cIPlayer.wasMouseDown == false)
+                buttonCount = 1;
+            if (buttonCount == 4 && !isHovering && cIPlayer.wasMouseDown == false)
+                buttonCount = 3;
+            
+            // 最终材质选择
+            if (buttonCount == 1)
+                targetTexture = thisUI.buttonTextureFalse;
+            if (buttonCount == 2)
+                targetTexture = thisUI.buttonTextureFalseHover;
+            if (buttonCount == 3)
+                targetTexture = thisUI.buttonTextureTrue;
+            if (buttonCount == 4)
+                targetTexture = thisUI.buttonTextureTrueHover;
+            if (!available)
+                targetTexture = thisUI.buttonTextureUnAvailable;
+
+            // 改为中心锚点
+            thisUI.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(thisUI.xResolutionScale, thisUI.yResolutionScale) * scale, thisUI.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
+        }
+        /// <summary>
         /// 在屏幕上绘制图片的方法
         /// 你可以在指定地点绘制一张图片
         /// </summary>
@@ -269,6 +352,39 @@ namespace CalamityInheritance.Utilities
             // 无法使用时，便会盖住
             if (!available)
                 spriteBatch.Draw(unavailableTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+        }
+        /// <summary>
+        /// 专门用于绘制lore的方法
+        /// </summary>
+        /// <param name="loreData">存放Lore数据的大结构体</param>
+        /// <param name="xPageBottom">Lore位置的x坐标，相对于屏幕中心</param>
+        /// <param name="yPageBottom">Lore位置的y坐标，相对于屏幕中心</param>
+        /// <param name="texture">lore贴图</param>
+        /// <param name="available">Lore是否可用</param>
+        public static void DrawLore(
+            DrawLoreData loreData,
+            float xPageBottom,
+            float yPageBottom,
+            Texture2D texture,
+            ref bool available
+            )
+        {
+
+            float scale = loreData.scale;
+            Texture2D targetTexture = texture;
+
+            Player player = Main.player[Main.myPlayer];
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+
+            // 绘制坐标
+            Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + xPageBottom, Main.screenHeight / 2 + yPageBottom);
+
+            // 改为中心锚点
+            loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // 无法使用时，便会盖住
+            if (!available)
+                loreData.spriteBatch.Draw(loreData.loreTextureUnAvailable, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
     }
 }

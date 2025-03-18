@@ -56,7 +56,7 @@ namespace CalamityInheritance.CIPlayer
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer cIPlayer = player.CIMod();
 
-            bool DownedExoMechs = DownedBossSystem.downedExoMechs;// 判定是否能使用星三王面板
+            bool DownedExo = DownedBossSystem.downedExoMechs;// 判定是否能使用星三王面板
             #region lore
             // 确保可以正确切换状态，具体数字对应的绘制贴图请查看方法中的注释
             if (cIPlayer.panelloreExocount == 3 || cIPlayer.panelloreExocount == 4)
@@ -75,6 +75,22 @@ namespace CalamityInheritance.CIPlayer
         {
             panelloreExocount = tag.GetInt("panelloreExocount");
             PanelsLoreExo = tag.GetBool("PanelsLoreExo");
+            int[] TotalPanelCounts=
+            [
+                KSPanelCount,
+                DSPanelCount,
+                EoCPanelCount,
+                CrabPanelCount,
+                EoWPanelCount,
+                BoCPanelCount,
+                HivePanelCount,
+                PerfPanelCount,
+                QBPanelCount,
+                SkelePanelCount,
+                SGPanelCount,
+                WoFPanelCount,
+                CryoPanelCount,  
+            ];
         }
     }
 }

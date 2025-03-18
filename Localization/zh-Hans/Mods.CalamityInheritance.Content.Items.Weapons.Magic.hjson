@@ -256,3 +256,8 @@ DragonStaff: {
 		“圣火洗礼”
 		'''
 }
+
+MagnusEye: {
+	// Tooltip: ""
+	// DisplayName: Magnus Eye
+}
