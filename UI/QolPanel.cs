@@ -456,7 +456,7 @@ namespace CalamityInheritance.UI
             {
                 LorePosX = -LoreGapX * colume,
                 //行距因子已经默认给按钮绘制预留了空间。
-                LorePosY = LoreGapY * line + 50,
+                LorePosY = LoreGapY * line + 42,
             };
             //按钮的水平坐标应当与传颂之物的水平坐标一致， 垂直坐标则默认加上这个传颂与按钮的差值
             newData.LoreBtnX = newData.LorePosX;
