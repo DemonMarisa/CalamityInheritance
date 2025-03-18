@@ -237,7 +237,10 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-
+            if(Main.zenithWorld)
+                CreateRecipe().
+                    Register();
+            
         }
     }
 }

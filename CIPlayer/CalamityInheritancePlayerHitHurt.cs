@@ -239,7 +239,15 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             if (Triumph)
+            {
+                if (!Main.zenithWorld)
                 calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+                if (Main.zenithWorld)
+                {
+                    calPlayer.contactDamageReduction += 0.35;
+                    Player.thorns += 200;
+                }
+            }
             if (FuckYouBees)
             {
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
@@ -263,7 +271,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.immuneTime = 15;
                 return true;
             }
-            if(YharimAuricSet && yharimArmorinvincibility > 0)
+            if((YharimAuricSet || AncientGodSlayerSet) && yharimArmorinvincibility > 0)
             {
                 return true;
             }
@@ -364,15 +372,13 @@ namespace CalamityInheritance.CIPlayer
             if (Modplayer1.Revivify)
             {
                 int healAmt = (int)(hurtInfo.Damage / 15D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
+                Player.Heal(healAmt);
             }
             //阴阳石
             if (Modplayer1.TheAbsorberOld)
             {
                 int healAmt = (int)(hurtInfo.Damage / 20D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
+                Player.Heal(healAmt);
             }
             //神圣护符落星
             if (deificAmuletEffect)

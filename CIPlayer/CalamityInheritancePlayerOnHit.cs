@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Items.Potions;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -69,6 +70,10 @@ namespace CalamityInheritance.CIPlayer
             if (YharimsInsignia)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
+            }
+            if (BuffStatsDraconicSurge && Main.zenithWorld)
+            {
+                target.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
             }
             #endregion
             #region Armorset

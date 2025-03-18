@@ -13,10 +13,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
     public class AncientEtherealTalisman : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
-        public override void SetStaticDefaults()
-        {
-
-        }
         public override void SetDefaults()
         {
             Item.width = 28;

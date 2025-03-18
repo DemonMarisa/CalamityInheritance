@@ -154,7 +154,8 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.lifeMagnet = true;
                 Player.lifeRegen += 10;
-                // Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 25;
+                if (Main.zenithWorld)
+                    Player.AddBuff(BuffID.Lovestruck, 36000);
             }
 
             if (BuffStatsDraconicSurge)
@@ -188,12 +189,12 @@ namespace CalamityInheritance.CIPlayer
 
             if (BuffStatsProfanedRage)
             {
-                Player.GetCritChance<GenericDamageClass>() += ProfanedRagePotion.CritBoost;
+                Player.GetCritChance<GenericDamageClass>() += Main.zenithWorld? ProfanedRagePotion.CritBoost * 2 : ProfanedRagePotion.CritBoost;
             }
 
             if (BuffStatsHolyWrath)
             {
-                Player.GetDamage<GenericDamageClass>() += 0.12f;
+                Player.GetDamage<GenericDamageClass>() += Main.zenithWorld ? 0.48f : 0.12f;
             }
 
             if (BuffStatsTitanScale)
@@ -201,7 +202,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.05f;
                 Player.statDefense += 5;
                 Player.kbBuff = true;
-                if (BuffStatsTitanScaleTrueMelee > 0)
+                if (BuffStatsTitanScaleTrueMelee > 0 || Main.zenithWorld)
                 {
                     Player.statDefense += 20;
                     Player.endurance += 0.05f;
@@ -215,13 +216,23 @@ namespace CalamityInheritance.CIPlayer
 
             if (BuffStatsYharimsStin)
             {
-                Player.endurance += 0.04f;
-                Player.statDefense += 10;
-                Player.pickSpeed -= 0.1f;
-                Player.GetDamage<GenericDamageClass>() += 0.05f;
-                Player.GetCritChance<GenericDamageClass>() += 2;
-                Player.GetKnockback<SummonDamageClass>() += 1f;
-                Player.moveSpeed += 0.075f;
+                if (!Main.zenithWorld)
+                {
+                    Player.endurance += 0.04f;
+                    Player.statDefense += 10;
+                    Player.pickSpeed -= 0.1f;
+                    Player.GetDamage<GenericDamageClass>() += 0.05f;
+                    Player.GetCritChance<GenericDamageClass>() += 2;
+                    Player.GetKnockback<SummonDamageClass>() += 1f;
+                    Player.moveSpeed += 0.075f;
+                }
+                if (!Main.zenithWorld)
+                {
+                    Player.moveSpeed += 10;
+                    Player.wingTime += 3.0f;
+                    if ((double)Math.Abs(Player.velocity.X) > 1.05 || (double)Math.Abs(Player.velocity.Y) > 1.05)
+                        Player.GetAttackSpeed<GenericDamageClass>() += 1f;
+                }
             }
 
             
@@ -288,10 +299,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
-            }
-            if(AncientBloodPact)
-            {
-                // Player.statLifeMax2 +=(int)(Player.statLifeMax * 2);
             }
             if (DarkSunRings)
             {
@@ -548,7 +555,6 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.2f;
                 }
                 calPlayer.healingPotionMultiplier += 0.45f; 
-                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.45f);
                 Player.crimsonRegen = true;
                 Player.lifeRegen += 8; //+4HP/s
                 
@@ -557,7 +563,6 @@ namespace CalamityInheritance.CIPlayer
             if (AncientBloodflareStat)
             {
                 calPlayer.healingPotionMultiplier += 0.35f; 
-                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.35f);
                 Player.lifeRegen += 10; //+10HP/s
                 if(Player.statLife <= Player.statLifeMax2/2)
                 Player.lifeRegen += 16; //+8HP/s
@@ -569,7 +574,7 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.contactDamageReduction += 0.85f;
                 Player.endurance += 0.12f;
                 //旧套装通用新增；血上限，血药，回血
-                calPlayer.healingPotionMultiplier += 0.40f; 
+                calPlayer.healingPotionMultiplier += 0.50f;
                 float getStealth = calPlayer.rogueStealthMax;
                 int getCurDef = Player.GetCurrentDefense();
                 int boostDef = (int)(getCurDef * (getStealth - 1.0f)); 
@@ -581,18 +586,13 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientSilvaStat)
             {
-                
-                calPlayer.healingPotionMultiplier += 0.50f;
+                calPlayer.healingPotionMultiplier += 0.40f; 
                 Player.lifeRegen += 16; //+8HP/s
-                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.65f);
                 Player.lifeRegenTime = 2000;
             }
             
             if(AncientAuricSet)
             {
-                //天顶世界下魔君套允许玩家获得十倍生命值
-                float getLifeBoost = Main.zenithWorld? 25 : 1.20f;
-                // Player.statLifeMax2 += (int)(Player.statLifeMax * getLifeBoost);
                 Player.noKnockback = true;
                 float getStealth = calPlayer.rogueStealthMax;
                 int getCurDef = Player.GetCurrentDefense();

@@ -543,6 +543,7 @@ YharimAuricTeslaCuisses: {
 	Tooltip:
 		'''
 		50% increased movement speed
+		+600 max life
 		Magic Crapet effect
 		'''
 }
@@ -552,6 +553,7 @@ YharimAuricTeslaHelm: {
 	Tooltip:
 		'''
 		40% increased damage and critical strike chance
+		+600 max life
 		+10 max minion slots
 		+5 max sentry slots
 		'From Calamity 1.2'
@@ -561,7 +563,7 @@ YharimAuricTeslaHelm: {
 		+120 max stealth
 		Counts as rogue armor, can use stealth strikes
 		+60 life regen speed, taking any damage makes you completely invincibile for a second. 
-		Your healing potions are 120% more effective and boost your max HP by 120%
+		Your healing potions are 120% more effective
 		Mana potions are 250% more effective and grants resistance to Mana Sickness
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
@@ -579,6 +581,7 @@ YharimAuricTeslaHelm: {
 		Boost your defense base on your max stealth
 		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
+		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		[c/DFC57B:Inherited From Ancient Silva][i:CalamityInheritance/AncientSilvaHelm]
@@ -636,6 +639,7 @@ AncientTarragonLeggings: {
 	Tooltip:
 		'''
 		35% increased movement
+		+150 max life
 		Can swim and grants immnuity to lava
 		'''
 	DisplayName: Ancient Tarragon Leggings
@@ -645,13 +649,14 @@ AncientTarragonHelm: {
 	Tooltip:
 		'''
 		15% increased damage and crticial strike chance
+		+150 max life
 		+3 max minions
 		+2 max sentries
 		'''
 	SetBonus:
 		'''
 		+115 max stealth
-		35% increased your max HP, healing potions are 35% more effective
+		Healing potions are 35% more effective
 		+4 HP/s life regen speed
 		Increases heart pick range
 		Grants immnuity to knockback, reduces defense damage by 45%
@@ -661,7 +666,11 @@ AncientTarragonHelm: {
 }
 
 AncientTarragonBreastplate: {
-	Tooltip: +300 max HP and mana
+	Tooltip:
+	 	'''
+		+400 max HP
+		+300 max mana
+		'''
 	DisplayName: Ancient Tarragon Breastplate
 }
 
@@ -669,6 +678,7 @@ AncientSilvaLeggings: {
 	Tooltip:
 		'''
 		45% increased movement speed
+		+200 max life
 		Can swim and grants immnuity to lava
 		'''
 	DisplayName: Ancient Silva Leggings
@@ -679,13 +689,14 @@ AncientSilvaHelm: {
 	Tooltip:
 		'''
 		25% increased damage and crticial strike chance
+		+200 max life
 		+5 max minions
 		+3 max sentries
 		'''
 	SetBonus:
 		'''
 		+125 max stealth
-		65% increased max HP, healing potions are 50% more effective
+		Healing potions are 40% more effective
 		+8 HP/s life regen speed
 		Boosts your natural life regen speed, debuffs can not negate your life regen
 		Sometimes you will be heal swiftly for a brief time
@@ -703,6 +714,7 @@ AncientGodSlayerLeggings: {
 	Tooltip:
 		'''
 		50% increased movement
+		+300 max life
 		Can swim and grants immnuity to lava
 		'''
 }
@@ -712,16 +724,18 @@ AncientGodSlayerHelm: {
 	Tooltip:
 		'''
 		25% increased damage and critical strike chance
+		+300 max life
 		+5 max minions
 		+3 max sentries
 		'''
 	SetBonus:
 		'''
 		+125 max stealth
-		85% increased max HP, healing potions are 40% more effective
+		Healing potions are 50% more effective
 		+6 HP/s life regen speed
 		Hitting an enemy with stealth strikes will boosted your damage by 20% in 10 seconds
 		This effect has 30 seconds cooldown if triggered
+		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		'''
@@ -741,13 +755,14 @@ AncientBloodflareMask: {
 	Tooltip:
 		'''
 		20% increased damage and critical strikes chance
+		+100 max life
 		+4 max minions
 		+3 max sentries
 		'''
 	SetBonus:
 		'''
 		+120 max steath
-		45% increased max HP, healing potions are 45% more effective
+		Healing potions are 45% more effective
 		+5 HP/s life regen speed, and significantly increases your natural life regen speed
 		Always have a chance to drops heart and mana star on enemies hit
 		+8 HP/s life regen speed when below 50% of you max HP
@@ -761,6 +776,7 @@ AncientBloodflareCuisses: {
 	Tooltip:
 		'''
 		30% increased movement speed
+		+100 max life
 		You can swim and grants immnuity to lava
 		'''
 }
