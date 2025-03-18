@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Armor.Silva;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientSilva
 {
@@ -18,18 +14,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
     public class AncientSilvaHelm : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor"; 
-
-        public override void SetStaticDefaults()
-        {
-        }
-
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
             Item.rare =ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 30; //105
+            Item.defense = 20; //100
         }
         
        
@@ -62,6 +53,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 5;
+            player.statLifeMax2 += 200;
             player.GetDamage<GenericDamageClass>() += 0.25f;
             player.GetCritChance<GenericDamageClass>() += 0.25f;
         }

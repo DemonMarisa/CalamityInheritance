@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -23,13 +19,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.lifeRegen = 3;
             Item.rare = ModContent.RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.defense = 30;
+            Item.defense = 45;
         }
         
 
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 200;
+            player.statLifeMax2 += 400;
             player.statManaMax2 += 200;
         }
 

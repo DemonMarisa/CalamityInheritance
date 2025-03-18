@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientSilva
@@ -23,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             Item.height = 18;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 40;
+            Item.defense = 60;
         }
         
       

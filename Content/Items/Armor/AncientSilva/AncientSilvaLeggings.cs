@@ -17,22 +17,18 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
     public class AncientSilvaLeggings : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
-        public override void SetStaticDefaults()
-        {
-
-        }
-
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
             Item.rare =ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 35;
+            Item.defense = 20;
         }
 
         public override void UpdateEquip(Player player)
         {
+            player.statLifeMax2 += 200;
             player.moveSpeed += 0.50f;
         }
 

@@ -12,20 +12,23 @@ namespace CalamityInheritance.CIPlayer
             float LifePercentMax = 0f;
             if (CoreOfTheBloodGod)
                 LifePercentMax += 0.25f;
-            if (AncientBloodPact)
-                LifePercentMax += 2f;
             if (AncientCotbg)
                 LifePercentMax += 0.1f;
-            if (AncientTarragonSet)
-                LifePercentMax += 0.45f;
-            if (AncientBloodflareStat)
-                LifePercentMax += 0.35f;
-            if (AncientGodSlayerStat)
-                LifePercentMax += 0.85f;
-            if (AncientSilvaStat)
-                LifePercentMax += 0.65f;
-            if (AncientAuricSet)
-                LifePercentMax += Main.zenithWorld ? 25f : 1.20f; 
+            if (Main.zenithWorld)
+            {
+                if (AncientGodSlayerSet)
+                    LifePercentMax += 0.85f;
+                if (AncientSilvaSet)
+                    LifePercentMax += 0.65f;
+                if (AncientTarragonSet)
+                    LifePercentMax += 0.45f;
+                if (AncientBloodflareSet)
+                    LifePercentMax += 0.35f;
+                if (AncientAuricSet)
+                    //原本魔君盔甲有1.2f，加上天顶特殊给的25f
+                    LifePercentMax += 26.2f;
+
+            }
             if (LoreSkeletron)
                 LifePercentMax -= 0.10f;
             if (LoreLeviAnahita)
@@ -42,6 +45,15 @@ namespace CalamityInheritance.CIPlayer
                 LifePercentMax -= 0.15f;
             if (BuffStatsCadence)
                 LifePercentMax += 0.25f;
+            
+            //血契在天顶世界有一定的变化：其将不会使最大生命上限+100%，相反，它会尝试把玩家获得的血量上限收益翻倍.
+            if (AncientBloodPact) 
+            {
+                if (!Main.zenithWorld)
+                    LifePercentMax += 2f;
+                if (Main.zenithWorld)
+                    LifePercentMax *= 2;
+            }
             int StatLifeInt = 0;
             if (EHeartStats)
             {

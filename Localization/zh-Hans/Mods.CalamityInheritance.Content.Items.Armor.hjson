@@ -602,6 +602,7 @@ YharimAuricTeslaCuisses: {
 	DisplayName: 魔君护腿[Revamped]
 	Tooltip:
 		'''
+		增加600点最大生命上限
 		增加50%移动速度
 		魔法飞毯效果
 		'''
@@ -612,13 +613,14 @@ YharimAuricTeslaHelm: {
 	Tooltip:
 		'''
 		增加40%伤害与暴击概率
+		增加600点最大生命上限
 		+10最大仆从栏, +5最大哨兵栏
 		"来自灾厄1.2"
 		'''
 	SetBonus:
 		'''
 		+120最大潜伏值, 允许进行潜伏攻击
-		最大生命上限和治疗药水的治疗量均提升120%, 并获得+60HP/s生命再生速度, 
+		治疗药水的治疗量均提升120%, 并获得+60HP/s生命再生速度, 
 		魔力药水的恢复量提升250%, 并获得对耐魔性减益的抵抗
 		获得所有职业的龙蒿, 血炎, 弑神, 林海盔甲的绝大多数效果
 		获得远古龙蒿, 远古血炎, 远古弑神与远古林海盔甲的效果:
@@ -636,12 +638,12 @@ YharimAuricTeslaHelm: {
 		潜伏攻击成功击中敌人时, 会极大强化你所有的攻击与除盗贼以外职业的攻击速度
 		同时, 降低80%魔力消耗, 在此期间你消耗的魔力都会转成对你的治疗
 		此效果需要30秒的冷却时间才能再次触发
+		受击后一秒内彻底无敌
 		承受致命伤害时, 会触发弑神复活, 此效果有45秒冷却时间
 		[c/DFC57B:继承于远古林海盔甲][i:CalamityInheritance/AncientSilvaHelm]
 		大幅度增强自然生命恢复速度, 受到减益影响也不会打断你的生命恢复
 		有些时候你会获得恢复速度非常快的治疗
 		承受致命伤害时, 会触发始源林海无敌, 使你在接下来的8秒内免疫死亡
-		受击后一秒内彻底无敌
 		[c/DFC57B:"不, 我不会让你就这样倒下"]
 		'''
 }
@@ -695,6 +697,7 @@ AncientTarragonLeggings: {
 	Tooltip:
 		'''
 		增加35%移动速度
+		增加150点最大生命上限
 		允许你免疫岩浆并在水内自由行动
 		'''
 	DisplayName: 远古龙蒿护腿[Revamped]
@@ -703,6 +706,7 @@ AncientTarragonLeggings: {
 AncientTarragonHelm: {
 	Tooltip:
 		'''
+		增加150点最大生命上限
 		增加15%伤害与暴击概率
 		+3 最大仆从上限
 		+2 最大哨兵上限
@@ -719,13 +723,18 @@ AncientTarragonHelm: {
 }
 
 AncientTarragonBreastplate: {
-	Tooltip: 增加300最大生命上限与魔力上限
+	Tooltip: 
+		'''
+		增加400点最大生命上限
+		增加300点最大魔力上限
+		'''
 	DisplayName: 远古龙蒿护甲[Revamped]
 }
 
 AncientSilvaLeggings: {
 	Tooltip:
 		'''
+		增加200点最大生命上限
 		增加45%移动速度
 		允许你免疫岩浆并在水内自由行动
 		'''
@@ -736,6 +745,7 @@ AncientSilvaHelm: {
 	DisplayName: 远古林海战盔[Revamped]
 	Tooltip:
 		'''
+		增加200点最大生命上限
 		增加25%伤害与暴击概率
 		+5 最大仆从上限
 		+3 最大哨兵上限
@@ -760,6 +770,7 @@ AncientGodSlayerLeggings: {
 	DisplayName: 远古弑神护腿[Revamped]
 	Tooltip:
 		'''
+		增加300点最大生命上限
 		增加50%移动速度
 		使你免疫岩浆, 并允许你在水中自由行动
 		'''
@@ -770,6 +781,7 @@ AncientGodSlayerHelm: {
 	Tooltip:
 		'''
 		增加25%伤害与暴击概率
+		增加300点最大生命上限
 		+5 最大仆从上限
 		+3 最大哨兵上限
 		'''
@@ -798,6 +810,7 @@ AncientBloodflareMask: {
 	DisplayName: 远古血炎面具[Revamped]
 	Tooltip:
 		'''
+		增加100点最大生命上限
 		增加20%伤害与暴击概率
 		+4 最大仆从上限
 		+3 最大哨兵上限
@@ -819,6 +832,7 @@ AncientBloodflareCuisses: {
 	DisplayName: 远古血炎护腿[Revamped]
 	Tooltip:
 		'''
+		增加100点最大生命上限
 		增加30%移动速度
 		允许你免疫岩浆并在水内自由行动
 		'''

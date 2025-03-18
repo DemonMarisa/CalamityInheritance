@@ -366,22 +366,32 @@ namespace CalamityInheritance.UI
                 *默认情况下优先绘制左分页，如果需要绘制右分页，则rigtSplitPage set为True即可
                 *附2:我有想过用数组尝试遍历，但我发现最后还是不如打表。完蛋了。
                 */
-                /*#region 循环遍历Lore与按钮绘制
-                //这一循环遍历表面上能正常工作，但不能实现效果，如果没办法的话直接启用下方的打表吧
-                for (int line = 0 ; line < 7; line++)
+                #region 循环遍历Lore与按钮绘制
+                //这一循环遍历表面上能正常工作，但不知道能否正常实现功能，如果没办法的话直接启用下方的打表吧
+                for (int line = 1 ; line < 7; line++)
                 {
-                    for (int colume = 0; colume < 7 ; colume++)
+                    for (int colume = 1; colume < 7 ; colume++)
                     {
                         CIFunction.DrawLore(genericLoreData, GetLorePos(line, colume).LorePosX,
                                             GetLorePos(line, colume).LorePosY, bossParameter[line, colume].LoreSprite,
                                             ref bossParameter[line, colume].whoDowned);
-                        CIFunction.DrawBton(genericBtonData, GetLorePos(line, colume).LoreBtnX,
-                                            GetLorePos(line, colume).LoreBtnY, ref btnParam[line, colume].whoDowned,
-                                            ref btnParam[line, colume].whoPanel, ref btnParam[line, colume].whoBtnID);
+                        
                     }
                 }
-                #endregion*/
-                #region 遍历-Lore贴图
+                /*按钮的遍历死球了
+                // for (int l = 1; l < 7; l++)
+                // {
+                //     for (int c = 1; c < 7; c++)
+                //     {
+                //         CIFunction.DrawBton(genericBtonData, GetLorePos(l, c).LoreBtnX,
+                //                             GetLorePos(l, c).LoreBtnY, ref btnParam[l, c].whoDowned,
+                //                             ref btnParam[l, c].whoPanel, ref btnParam[l, c].whoBtnID);
+                //     }
+                // }
+                */
+                #endregion
+                //暂时保留了打表，因为不保证上面的方法没有bug
+                /*#region 遍历-Lore贴图
                 CIFunction.DrawLore(genericLoreData, GetLorePos(1,1).LorePosX, GetLorePos(1,1).LorePosY, LoreKS, ref DownedKS);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(1,2).LorePosX, GetLorePos(1,2).LorePosY, LoreDS, ref DownedDS);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(1,3).LorePosX, GetLorePos(1,3).LorePosY, LoreEoC, ref DownedEoC);
@@ -418,7 +428,7 @@ namespace CalamityInheritance.UI
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,4).LorePosX, GetLorePos(6,4).LorePosY, LoreYharon, ref DownedYharon);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,5).LorePosX, GetLorePos(6,5).LorePosY, LoreExo, ref DownedExo);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6,6).LorePosX, GetLorePos(6,6).LorePosY, LoreSCal, ref DownedSCal);
-                #endregion
+                #endregion*/
                 #region 按钮绘制
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1,1).LoreBtnX, GetLorePos(1,1).LoreBtnY, ref DownedKS, ref KSPanelType, ref KSBtnID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1,2).LoreBtnX, GetLorePos(1,2).LoreBtnY, ref DownedDS, ref DSPanelType, ref DSBtnID);

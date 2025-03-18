@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             Item.height = 18;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 50;
+            Item.defense = 80;
         }
         
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Accessories;
@@ -16,23 +12,19 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 public class AncientBloodflareCuisses : ModItem, ILocalizedModType
 {
     public new string LocalizationCategory => "Content.Items.Armor";
-    public override void SetStaticDefaults()
-    {
-    }
-
     public override void SetDefaults()
     {
         Item.width = 18;
         Item.height = 18;
         Item.value = CIShopValue.RarityPriceBlueGreen;
         Item.rare= ModContent.RarityType<BlueGreen>();
-        Item.defense = 29;
+        Item.defense = 20;
     }
     
-
     public override void UpdateEquip(Player player)
     {
     	player.moveSpeed += 0.3f;
+        player.statLifeMax2 += 100;
     	player.lavaImmune = true;
     	player.ignoreWater = true;
     }

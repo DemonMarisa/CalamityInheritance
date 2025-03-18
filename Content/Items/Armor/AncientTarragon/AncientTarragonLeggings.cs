@@ -23,13 +23,14 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.height = 18;
             Item.rare = ModContent.RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.defense = 26;
+            Item.defense = 20;
         }
         
 
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.20f;
+            player.statLifeMax2 += 150;
             if(player.statLife <= player.statLifeMax2 * 0.5f)
             {
                 player.moveSpeed += 0.15f;

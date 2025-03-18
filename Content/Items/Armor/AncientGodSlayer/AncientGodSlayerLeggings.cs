@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
@@ -27,10 +22,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             Item.height = 18;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 30;
+            Item.defense = 20;
         }
         public override void UpdateEquip(Player player)
         {
+            player.statLifeMax2 += 300;
             player.moveSpeed += 0.50f;
         }
 

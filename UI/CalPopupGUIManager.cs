@@ -14,8 +14,8 @@ namespace CalamityInheritance.UI
     public static class CalPopupGUIManager
     {
         // 所有GUI实例
+        //Scarlet:: 这里疑似没有成功实例化，但我也不知道你要怎么实例化，反正看你
         private static readonly List<CalPopupGUI> gUIs = new List<CalPopupGUI>();
-
         // 状态判断
         public static bool GUIActive(CalPopupGUI gui) => gui.Active || gui.FadeTime > 0;
         public static bool AnyGUIsActive => gUIs.Any(GUIActive);

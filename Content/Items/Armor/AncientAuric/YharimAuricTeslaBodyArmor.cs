@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
             Item.height = 18;
             Item.value = CIShopValue.RarityMaliceDrop;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
-            Item.defense = 48;
+            Item.defense = 110;
         }
         public override void UpdateEquip(Player player)
         {

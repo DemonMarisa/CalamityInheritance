@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
@@ -24,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.defense = 28; //83
+            Item.defense = 20; //80
         }
         
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -52,6 +47,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
         {
             player.maxMinions += 4;
             player.maxTurrets += 3;
+            player.statLifeMax2 += 100;
             player.GetDamage<GenericDamageClass>() += 0.15f;
             player.GetCritChance<GenericDamageClass>() += 15f;
         }

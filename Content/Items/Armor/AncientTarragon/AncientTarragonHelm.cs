@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.height = 18;
             Item.rare = ModContent.RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.defense = 27; //83
+            Item.defense = 20; //90
         }
         
 
@@ -48,6 +44,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
         {
             player.endurance += 0.05f;
             player.maxMinions += 3;
+            player.statLifeMax2 += 150;
             player.lavaImmune = true;
             player.ignoreWater = true;
         }

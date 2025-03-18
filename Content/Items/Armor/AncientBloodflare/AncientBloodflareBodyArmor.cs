@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.height = 18;
             Item.rare = ModContent.RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.defense = 33;
+            Item.defense = 45;
         }
         
         public override void UpdateEquip(Player player)
