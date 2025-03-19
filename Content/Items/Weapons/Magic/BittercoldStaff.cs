@@ -1,9 +1,6 @@
 using System;
-using System.Numerics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Buffs.StatBuffs;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

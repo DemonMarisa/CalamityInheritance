@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using Terraria.GameContent.Drawing;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -23,6 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.width = 20;
             Projectile.height = 6;
             Projectile.aiStyle = 27;
+            Projectile.scale = Main.zenithWorld ? 2f : 1f;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 4;
@@ -40,6 +42,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (hitCount < 1)
             {
+                if (Main.zenithWorld)
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 20f, 20f);
+                else
                 CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 16f, 90f);
             }
         }

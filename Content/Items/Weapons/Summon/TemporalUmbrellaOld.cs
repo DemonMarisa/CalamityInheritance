@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetDefaults()
         {
             Item.mana = 99;
-            Item.damage = 4000;
+            Item.damage = Main.zenithWorld ? 150 : NewDamage;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.width = 74;
             Item.height = 72;
@@ -55,18 +55,33 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<SpikecragStaff>());
-            recipe.AddIngredient(ModContent.ItemType<SarosPossession>());
-            recipe.AddIngredient(ItemID.Umbrella);
-            recipe.AddIngredient(ItemID.TopHat);
-            recipe.AddIngredient(ModContent.ItemType<ShadowspecBar>(), 4);
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient<SpikecragStaff>().
+                AddIngredient<SarosPossession>().
+                AddIngredient(ItemID.Umbrella).
+                AddIngredient(ItemID.TopHat).
+                AddIngredient<ShadowspecBar>(4).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
+                AddTile<DraedonsForge>().
+                Register();
+            
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                AddCondition(Condition.NotZenithWorld).
                 DisableDecraft().
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.QueenSpiderStaff).
+                AddIngredient<VengefulSunStaff>().
+                AddIngredient(ItemID.Umbrella).
+                AddIngredient(ItemID.TopHat).
+                AddRecipeGroup("AnyMythrilBar", 4).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile<DraedonsForge>().
                 Register();
         }
     }

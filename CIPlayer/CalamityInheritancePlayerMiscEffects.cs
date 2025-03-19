@@ -1606,12 +1606,9 @@ namespace CalamityInheritance.CIPlayer
             if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
             {
                 //直接取光女饰品的增益，同时具备准许无限飞行、跳跃速度和移速的效果
-                
-                calPlayer.infiniteFlight = true;
+                Player.CIMod().EmpressBooster = true;
                 //准许防击退
                 Player.noKnockback = true;
-                //32%跳跃速度
-                Player.jumpSpeedBoost = 1.6f;
 
             }
             //玩家附近有丛林龙且使用了远古龙魂，则准许无限飞

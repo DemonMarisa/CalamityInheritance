@@ -38,11 +38,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<SpiritFlameCurse>();
             Item.shootSpeed = 14f;
         }
-
-        // public override Vector2? HoldoutOrigin()
-        // {
-        //     return new Vector2(15, 15);
-        // }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //5->7
@@ -55,7 +50,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             //需注意的是这句话会直接往鼠标指针的方向发射一个，也就是总共8个射弹
             return true;
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

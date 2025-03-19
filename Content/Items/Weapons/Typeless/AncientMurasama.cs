@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Rarity.Special;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 

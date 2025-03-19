@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
@@ -40,7 +41,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
 
             int dustTypeOnTimer = dust1;
-
+            if (Main.zenithWorld)
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 5f)
             {

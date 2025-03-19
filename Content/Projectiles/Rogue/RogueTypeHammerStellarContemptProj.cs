@@ -177,7 +177,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //潜伏攻击击中敌怪时将会尝试生成再生成一个追踪锤子,这个追踪锤子会造成面板的1.2f伤害
             if(ifSummonClone) 
             {
-                int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.2f), Projectile.knockBack, Main.myPlayer);
+                int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.05f), Projectile.knockBack, Main.myPlayer);
                 if(Main.rand.NextBool(3))
                 Main.projectile[getClone].Calamity().stealthStrike = true;
                 ifSummonClone = false;

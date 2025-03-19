@@ -2,14 +2,11 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
-using Terraria.DataStructures;
 using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray

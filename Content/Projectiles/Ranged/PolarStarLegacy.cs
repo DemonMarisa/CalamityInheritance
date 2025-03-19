@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.ai[1] == 2f) //第三阶段追踪 
             {
                 //普灾重生如果在附近，北辰鹦哥鱼将默认追踪并翻倍追踪的属性
-                if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f))
+                if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f) || Main.zenithWorld)
                 {
                     CIFunction.HomeInOnNPC(Projectile, false, 1600f, 16f, 20f);
                     Projectile.extraUpdates = 3;

@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = NewDamage; //90->600, 90的面板破的了防?
+            Item.damage = Main.zenithWorld? 90 : NewDamage;
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;
@@ -55,11 +55,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.Terrarian).
                 AddIngredient<CoreofCalamity>(2).
                 AddIngredient<ShadowspecBar>(5).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile<DraedonsForge>().
                 Register();
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                AddCondition(Condition.NotZenithWorld).
+                DisableDecraft().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<UelibloomBar>(6).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

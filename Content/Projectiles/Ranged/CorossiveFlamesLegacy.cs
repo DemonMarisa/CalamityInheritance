@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -26,6 +27,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Lighting.AddLight(Projectile.Center, 0f, 0.25f, 0f);
             if (Projectile.ai[0] > 7f)
             {
+                if (Main.zenithWorld)
+                    CIFunction.HomeInOnNPC(Projectile,true,1800f,24f,20f);
                 float num296 = 1f;
                 if (Projectile.ai[0] == 8f)
                 {
@@ -50,20 +53,20 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         if (Main.rand.NextBool(3))
                         {
                             dust.noGravity = true;
-                            dust.scale *= 2.5f;
+                            dust.scale *= Main.zenithWorld ? 3.5f : 2.5f;
                             dust.velocity.X *= 2f;
                             dust.velocity.Y *= 2f;
                         }
                         if (Main.rand.NextBool(6))
                         {
                             dust.noGravity = true;
-                            dust.scale *= 3f;
+                            dust.scale *= Main.zenithWorld ? 4.5f : 3f;
                             dust.velocity.X *= 2f;
                             dust.velocity.Y *= 2f;
                         }
                         else
                         {
-                            dust.scale *= 2f;
+                            dust.scale *= Main.zenithWorld ? 4f : 2f;
                         }
                         dust.velocity.X *= 1.2f;
                         dust.velocity.Y *= 1.2f;

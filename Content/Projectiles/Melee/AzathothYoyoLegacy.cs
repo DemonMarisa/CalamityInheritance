@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 1200f; //2400f, 即150物块
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = Main.zenithWorld ? 400f : 1200f; //2400f, 即150物块
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 120f / MaxUpdates;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
@@ -30,11 +30,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.penetrate = -1;
-            Projectile.scale *= 1.5f;
+            Projectile.scale *= Main.zenithWorld? 0.5f : 1.5f;
             Projectile.velocity *= 1.2f; //加倍
             Projectile.MaxUpdates = MaxUpdates;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1; //3的无敌帧
+            Projectile.localNPCHitCooldown = Main.zenithWorld? 3 : 1; //3的无敌帧
         }
 
         public override void AI()

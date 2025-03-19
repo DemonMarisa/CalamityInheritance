@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Buffs.StatBuffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -38,5 +39,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
         public int WhatRocket;
         public override void OnConsumeAmmo(Item ammo, Player player) => WhatRocket = ammo.type;
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (Main.zenithWorld)
+            {
+                for (int i = 0; i < 12 ; i++)
+                {
+                    Vector2 spreading = new Vector2(velocity.X, 0).RotatedByRandom(180f);
+                    Projectile.NewProjectile(source, position, spreading, ModContent.ProjectileType<ProfanedNuke>(), damage, knockback);
+                }
+                return false;
+            }
+            return true;
+        }
     }
 }

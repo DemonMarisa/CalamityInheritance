@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -23,15 +24,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.aiStyle = 27;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
+            Projectile.scale = Main.zenithWorld ? 0.5f : 1f;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = Main.zenithWorld ? 360 : 180;
             Projectile.tileCollide = false;
             AIType = ProjectileID.TerraBeam;
         }
 
         public override void AI()
         {
+            if (!Main.zenithWorld)
             CalamityUtils.HomeInOnNPC(Projectile, true, 400f, 12f, 20f);
+            else
+            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 14f, 90f);
 
             Lighting.AddLight(Projectile.Center, 0f, (255 - Projectile.alpha) * 0.75f / 255f, 0f);
         }

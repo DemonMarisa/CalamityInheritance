@@ -1,9 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;

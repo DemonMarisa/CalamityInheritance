@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -15,7 +16,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useAnimation = Item.useTime = 13;
             Item.width = 42;
             Item.height = 42;
-            Item.damage = 140;
+            Item.damage = Main.zenithWorld? 280 : 140;
+            Item.scale = Main.zenithWorld ? 3f : 1f;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 6f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
@@ -35,13 +37,37 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
                 AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
                 AddIngredient(ModContent.ItemType<LivingShard>(),5).
                 AddIngredient(ItemID.BrokenHeroSword).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
             CreateRecipe().
                 AddIngredient(ItemID.PiercingStarlight, 1).
                 AddIngredient<LivingShard>(5).
+                AddCondition(Condition.NotZenithWorld).
+                DisableDecraft().
                 AddTile(TileID.MythrilAnvil).
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<Floodtide>().
+                AddIngredient<Hellkite>().
+                AddIngredient(ItemID.TerraBlade).
+                AddIngredient<UelibloomBar>(7).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
+                AddIngredient<Floodtide>().
+                AddIngredient<Hellkite>().
+                AddIngredient<TerraEdge>().
+                AddIngredient<UelibloomBar>(7).
+                DisableDecraft().
+                AddCondition(Condition.ZenithWorld).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

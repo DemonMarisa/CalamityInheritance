@@ -197,3 +197,8 @@ DragonSpear: {
 		Erupts a bunch of homing fireballs upon enemies hits
 		'''
 }
+
+LumiStriker: {
+	Tooltip: ""
+	DisplayName: Lumi Striker
+}

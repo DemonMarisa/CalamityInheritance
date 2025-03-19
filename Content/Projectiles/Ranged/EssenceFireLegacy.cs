@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
@@ -34,6 +35,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
             if (Projectile.ai[0] > 5f)
             {
+                if (Main.zenithWorld)
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
                 float pScale = 1f;
                 if (Projectile.ai[0] == 6f)
                 {

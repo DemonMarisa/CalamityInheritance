@@ -48,10 +48,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.name == "Shizuku" || player.name == "shizuku")
+            if (player.name == "Shizuku" || player.name == "shizuku" || Main.zenithWorld)
             {
                 Item.damage = 1600;
-                Item.useTime = 10;
+                Item.useTime = 5;
                 Item.useAnimation = 10;
             }
             else

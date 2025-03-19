@@ -61,12 +61,12 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             dust--;
             if (dust >= 0)
             {
-                int num501 = 50;
-                for (int num502 = 0; num502 < num501; num502++)
+                int dCount = 50;
+                for (int i = 0; i < dCount; i++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 16f), Projectile.width, Projectile.height - 16, DustID.ChlorophyteWeapon, 0f, 0f, 0, default, 1f);
-                    Main.dust[num503].velocity *= 2f;
-                    Main.dust[num503].scale *= 1.15f;
+                    int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 16f), Projectile.width, Projectile.height - 16, DustID.ChlorophyteWeapon, 0f, 0f, 0, default, 1f);
+                    Main.dust[d].velocity *= 2f;
+                    Main.dust[d].scale *= 1.15f;
                 }
             }
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0f / 255f, (255 - Projectile.alpha) * 1f / 255f, (255 - Projectile.alpha) * 0f / 255f);

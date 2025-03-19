@@ -1,10 +1,8 @@
 ﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged

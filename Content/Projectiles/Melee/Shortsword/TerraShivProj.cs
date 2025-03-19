@@ -18,12 +18,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override void SetDefaults()
         {
-            Projectile.Size = new Vector2(21);
+            Projectile.Size = Main.zenithWorld? new Vector2(210) :new Vector2(21);
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = DamageClass.Melee;
             Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;

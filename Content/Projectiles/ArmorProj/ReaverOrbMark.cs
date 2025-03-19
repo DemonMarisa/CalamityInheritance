@@ -25,7 +25,13 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
         public override void AI()
         {
             NPC target = Projectile.Center.ClosestNPCAt(1500);
-            CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 8f, 0, 5, ModContent.ProjectileType<ReaverBeam>(), 1D, false);
+            if (!Main.zenithWorld)
+                CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 8f, 0, 5, ModContent.ProjectileType<ReaverBeam>(), 1D, false);
+            else
+            {
+                for (int i = 0; i < 4 ; i++)
+                    CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 16f, 1f, 10, ModContent.ProjectileType<ReaverBeam>(), 1D, false);
+            }
         }
     }
 }

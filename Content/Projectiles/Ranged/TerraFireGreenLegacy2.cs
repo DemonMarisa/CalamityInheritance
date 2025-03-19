@@ -1,4 +1,5 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -25,6 +26,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void AI()
         {
+            if (Main.zenithWorld)
+            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             Lighting.AddLight(Projectile.Center, 0.15f, 0.45f, 0f);
             if (Projectile.ai[0] > 7f)
             {

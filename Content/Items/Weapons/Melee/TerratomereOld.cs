@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -17,8 +18,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetDefaults()
         {
             Item.width = 60;
-            Item.damage = 260;
+            Item.damage = Main.zenithWorld ? 120 : 260;
             Item.DamageType = DamageClass.Melee;
+            Item.scale = Main.zenithWorld? 0.7f : 1f;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 21;
@@ -77,11 +79,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
+
             CreateRecipe().
                 AddIngredient<Floodtide>().
                 AddIngredient<Hellkite>().
                 AddIngredient(ItemID.TerraBlade).
                 AddIngredient<UelibloomBar>(7).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 
@@ -90,7 +95,27 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<Hellkite>().
                 AddIngredient<TerraEdge>().
                 AddIngredient<UelibloomBar>(7).
+                AddCondition(Condition.NotZenithWorld).
+                DisableDecraft().
                 AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
+                AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
+                AddIngredient(ModContent.ItemType<LivingShard>(),5).
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.PiercingStarlight, 1).
+                AddIngredient<LivingShard>(5).
+                AddCondition(Condition.ZenithWorld).
+                DisableDecraft().
+                AddTile(TileID.MythrilAnvil).
                 Register();
         }
     }

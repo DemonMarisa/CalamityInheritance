@@ -1,12 +1,9 @@
 ﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 

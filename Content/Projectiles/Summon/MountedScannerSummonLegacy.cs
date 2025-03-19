@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.height = 18;
             Projectile.netImportant = true;
             Projectile.friendly = true;
-            Projectile.minionSlots = 1.25f;
+            Projectile.minionSlots = Main.zenithWorld? 0.5f : 1.25f;
             Projectile.timeLeft = 18000;
             Projectile.penetrate = -1;
             Projectile.timeLeft *= 5;
