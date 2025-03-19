@@ -723,7 +723,7 @@ AncientTarragonHelm: {
 }
 
 AncientTarragonBreastplate: {
-	Tooltip: 
+	Tooltip:
 		'''
 		增加400点最大生命上限
 		增加300点最大魔力上限

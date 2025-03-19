@@ -104,7 +104,7 @@ namespace CalamityInheritance.System.Configs
         public int UIX { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
+        //[SliderColor(224, 165, 56, 128)]
         [Range(-5000, 5000)]
         [Increment(1)]
         [DrawTicks]
@@ -120,7 +120,7 @@ namespace CalamityInheritance.System.Configs
         public int UIX2 { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
+        //[SliderColor(224, 165, 56, 128)]
         [Range(-5000, 5000)]
         [Increment(1)]
         [DrawTicks]

@@ -226,7 +226,8 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetKnockback<SummonDamageClass>() += 1f;
                     Player.moveSpeed += 0.075f;
                 }
-                if (!Main.zenithWorld)
+                // BYD谁让你写不在天顶也十倍速度的
+                if (Main.zenithWorld)
                 {
                     Player.moveSpeed += 10;
                     Player.wingTime += 3.0f;

@@ -6,6 +6,7 @@ using static CalamityInheritance.Utilities.CIFunction;
 using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.UI
 {
@@ -93,11 +94,14 @@ namespace CalamityInheritance.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            Texture2D leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+            Texture2D rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+
             Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
             float xScale = MathHelper.Lerp(0.004f, 1f, FadeTime / (float)FadeTimeMax);
             Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / pageTexture.Size();
             // UIY轴缩放
-            scale.Y *= 2;
+            scale.Y *= 2f;
             // UI缩放
             scale *= 0.5f;
 
@@ -109,7 +113,8 @@ namespace CalamityInheritance.UI
             // 修改页面滑动动画，同样优化为曲线
             float yPageTop = MathHelper.Lerp(Main.screenHeight * 2,Main.screenHeight * 0.12f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
-            Rectangle mouseRectangle = new Rectangle((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
+            Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
+
             float drawPositionX = Main.screenWidth * 0.5f;
             Vector2 drawPosition = new Vector2(drawPositionX, yPageTop);
             Rectangle pageRectangle = new Rectangle((int)drawPosition.X - (int)(pageTexture.Width * scale.X), (int)yPageTop, (int)(pageTexture.Width * scale.X) * 2, (int)(pageTexture.Height * scale.Y));
@@ -131,7 +136,7 @@ namespace CalamityInheritance.UI
                     Page = TotalPages;
 
                 // 绘制箭头
-                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 540 * yResolutionScale, mouseRectangle);
+                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 520 * yResolutionScale, mouseRectangle);
                 // 请查看QolPanel
                 PageDraw(spriteBatch);
             }
@@ -140,13 +145,36 @@ namespace CalamityInheritance.UI
         public void DrawArrows(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageBottom, Rectangle mouseRectangle)
         {
 
-            float LeftarrowScale = 1f;
+            float LeftarrowScale = 1.4f;
 
-            float RightarrowScale = 1f;
+            float RightarrowScale = 1.4f;
 
             Texture2D leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
             Texture2D rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
 
+            Texture2D leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+            Texture2D rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+
+            // 箭头背景的绘制信息
+            #region 箭头背景
+
+            float yPageTop = MathHelper.Lerp(Main.screenHeight * 2, Main.screenHeight * 0.12f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+
+            float drawBGPositionX = Main.screenWidth * 0.5f;
+            Vector2 drawBGPosition = new Vector2(drawBGPositionX, yPageTop);
+
+            float xScale = MathHelper.Lerp(0.004f, 1f, FadeTime / (float)FadeTimeMax);
+
+            Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / leftArrowTextureBG.Size();
+            // UIY轴缩放
+            scale.Y *= 2f;
+            // UI缩放
+            scale *= 0.5f;
+            // ?你为啥再乘一遍
+            float bookScale = 0.75f;
+            scale *= bookScale;
+
+            #endregion
             // 左箭头处理
             if (Page > 0)
             {
@@ -157,6 +185,8 @@ namespace CalamityInheritance.UI
                 }
                 // 绘制坐标
                 Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 625f, yPageBottom);
+
+
                 Rectangle arrowRect = new Rectangle(
                     (int)(drawPosition.X - leftArrowTexture.Width * xResolutionScale * LeftarrowScale / 2),
                     (int)(drawPosition.Y - leftArrowTexture.Height * yResolutionScale * LeftarrowScale / 2),
@@ -172,13 +202,16 @@ namespace CalamityInheritance.UI
                 if (isHovering)
                 {
                     leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
+                    leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
                     Main.blockMouse = true;
                 }
 
+                // 绘制背景
+                spriteBatch.Draw(leftArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(rightArrowTextureBG.Width, 0f), scale, SpriteEffects.None, 0f);
 
                 spriteBatch.Draw(leftArrowTexture, drawPosition, null, Color.White, 0f,
                     leftArrowTexture.Size() / 2,  // 改为中心锚点
-                    new Vector2(xResolutionScale, yResolutionScale) * LeftarrowScale, SpriteEffects.FlipHorizontally,0f);
+                    new Vector2(xResolutionScale, yResolutionScale) * LeftarrowScale, SpriteEffects.None,0f);
 
 
             }
@@ -193,6 +226,7 @@ namespace CalamityInheritance.UI
 
                 // 注释同上，只是复制了一遍，方向相反
                 Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 625f, yPageBottom);
+
                 Rectangle arrowRect = new Rectangle(
                     (int)(drawPosition.X - rightArrowTexture.Width * xResolutionScale * RightarrowScale / 2),
                     (int)(drawPosition.Y - rightArrowTexture.Height * yResolutionScale * RightarrowScale / 2),
@@ -206,9 +240,14 @@ namespace CalamityInheritance.UI
                 if (isHovering)
                 {
                     rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
+                    rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
                     Main.blockMouse = true;
                 }
-                spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.None,0f);
+
+                // 绘制背景
+                spriteBatch.Draw(rightArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(0f, 0f), scale, SpriteEffects.FlipHorizontally, 0f);
+
+                spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.FlipHorizontally, 0f);
             }
         }
 

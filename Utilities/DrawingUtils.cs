@@ -1,5 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.UI;
+using CalamityInheritance.UI.QolPanelTotal;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,6 +10,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Utilities
 {
@@ -332,8 +333,8 @@ namespace CalamityInheritance.Utilities
             float yResolutionScale,
             float xPageBottom,
             float yPageBottom,
-            ref bool available,
-            bool flipHorizontally // 是否镜像
+            bool flipHorizontally, // 是否镜像
+            ref bool available
             )
         {
 
@@ -360,13 +361,19 @@ namespace CalamityInheritance.Utilities
         /// <param name="xPageBottom">Lore位置的x坐标，相对于屏幕中心</param>
         /// <param name="yPageBottom">Lore位置的y坐标，相对于屏幕中心</param>
         /// <param name="texture">lore贴图</param>
+        /// <param name="displayTextCount">关联的右侧显示文本</param>
+        /// <param name="TextID">显示文本对应的ID，一次只能显示一个文本</param>
         /// <param name="available">Lore是否可用</param>
+        /// <param name="MouseDownScale">点击时的缩放，不写默认 * 0.9f</param>
         public static void DrawLore(
             DrawLoreData loreData,
             float xPageBottom,
             float yPageBottom,
             Texture2D texture,
-            ref bool available
+            ref int displayTextCount,
+            ref int TextID,
+            ref bool available,
+            float? MouseDownScale = null
             )
         {
 
@@ -378,6 +385,63 @@ namespace CalamityInheritance.Utilities
 
             // 绘制坐标
             Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + xPageBottom, Main.screenHeight / 2 + yPageBottom);
+
+            Rectangle loreRect = new Rectangle(
+                (int)(drawPosition.X - texture.Width * scale / 2),
+                (int)(drawPosition.Y - texture.Height * scale / 2),
+                (int)(texture.Width * scale),
+                (int)(texture.Height * scale)
+                );
+
+            // 检测悬停
+            bool isHovering = loreRect.Intersects(loreData.mouseRectangle);
+
+            // 获取当前鼠标状态
+            bool isMouseDown = Main.mouseLeft;
+
+            // 动态切换纹理
+            // 悬停时切换纹理为 2
+            if (isHovering && available)
+            {
+                if (loreData.buttonCount == 1)
+                    loreData.buttonCount = 2;
+                if (loreData.buttonCount == 3)
+                    loreData.buttonCount = 4;
+
+                // 未悬停时恢复为1（默认贴图
+                // 按下时缩小
+                if (isMouseDown)
+                {
+
+                    if(!MouseDownScale.HasValue)
+                        scale *= 0.9f;
+                    if(MouseDownScale.HasValue)
+                        scale *= MouseDownScale.Value;
+
+                    Main.blockMouse = true;
+                    cIPlayer.wasMouseDown = true;
+                }
+                // 这一段解释一下就是，2是false的悬停贴图，4是true的悬停贴图，如果按下，且当前贴图是2，就切换到3，反之同理
+                if (cIPlayer.wasMouseDown)
+                {
+                    displayTextCount = TextID;
+                    // 释放瞬间：切换永久状态
+                    if (!isMouseDown && loreData.buttonCount == 2)
+                    {
+                        loreData.buttonCount = 3;
+                        cIPlayer.wasMouseDown = false;
+                    }
+                    if (!isMouseDown && loreData.buttonCount == 4)
+                    {
+                        // 在1和3之间切换
+                        loreData.buttonCount = 1;
+                        cIPlayer.wasMouseDown = false;
+                    }
+                }
+
+                loreData.spriteBatch.Draw(loreData.loreTextureOutLine, drawPosition, null, Color.White, 0f, loreData.loreTextureOutLine.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            }
 
             // 改为中心锚点
             loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);

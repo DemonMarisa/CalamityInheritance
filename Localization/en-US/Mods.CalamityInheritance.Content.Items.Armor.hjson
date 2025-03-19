@@ -667,7 +667,7 @@ AncientTarragonHelm: {
 
 AncientTarragonBreastplate: {
 	Tooltip:
-	 	'''
+		'''
 		+400 max HP
 		+300 max mana
 		'''

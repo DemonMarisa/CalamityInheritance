@@ -8,6 +8,7 @@ using System.Reflection;
 using System;
 using Terraria.ModLoader;
 using CalamityMod.Balancing;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Utilities
 {

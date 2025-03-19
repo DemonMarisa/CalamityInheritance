@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.UI;
+using CalamityInheritance.UI.QolPanelTotal;
 
 namespace CalamityInheritance.Content.Items.Qol
 {
