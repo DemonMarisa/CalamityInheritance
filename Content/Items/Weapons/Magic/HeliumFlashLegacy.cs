@@ -17,7 +17,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     public class HeliumFlashLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        //氦闪最后一次加强: 内核爆炸倍率0.5f->0.65f, 基础伤害495 -> 500, 修改了useAnimation和useTime实现氦闪的二连发
         internal const float ExplosionDamageMultiplier = 0.65f;
         public static readonly int HeliumFlashDamage = 600;
         public static readonly int HeliumFlashManaCost = 15;

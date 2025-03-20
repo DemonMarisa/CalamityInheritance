@@ -17,9 +17,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityInheritance/Content/Projectiles/Melee/MeleeTypeHammerGalaxySmasherLegacyProj";
 
-        private static float RotationIncrement = 0.22f;
-        private static int Lifetime = 240;
-        private static float ReboundTime = 35f;
+        private const float RotationIncrement = 0.22f;
+        private const int Lifetime = 240;
 
         public override void SetStaticDefaults()
         {

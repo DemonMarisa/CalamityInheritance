@@ -375,3 +375,18 @@ ChickenCannonLegacy: {
 		Explosion ignores immnuity frames.
 		'''
 }
+
+VictideBow: {
+	Tooltip: ""
+	DisplayName: Victide Bow
+}
+
+ClockBowLegacy: {
+	Tooltip: ""
+	DisplayName: Clock Bow Legacy
+}
+
+AntlionBow: {
+	Tooltip: ""
+	DisplayName: Antlion Bow
+}

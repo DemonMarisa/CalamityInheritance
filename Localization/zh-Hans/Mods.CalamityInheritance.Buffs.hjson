@@ -147,3 +147,8 @@ SonYharonBuff: {
 	DisplayName: 犽戎之子[Legacy]
 	Description: 犽戎之子为你而战
 }
+
+WarCleave: {
+	// Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
+	// DisplayName: War Cleave
+}

@@ -6,9 +6,13 @@
  巨龙之怒[Legacy], 焚天[Legacy], 远古巨龙之息[Legacy], 小鸡大炮[Legacy], 星火凤凰雨[Legacy]
  巨龙七星灯[Legacy], 狱炎投矛[Legacy], 远古龙魂精华
  恶魔之叉[Revamped], 狱火鞭[Revamped], 晶火法杖[Revamped], 光之舞[Revamped]
+ 赤潮[Legacy], 贝壳回旋镖战/盗[Legacy]，海胆长矛[Revamped], 珊瑚[Legacy], 珊瑚泥[Legacy], 花岗岩长矛[Revamped], 水波利刃[Legacy]
+ 马里亚纳[Legacy], 发条弓[Legacy], 蚁狮颚弓[Legacy], 海弓[Legacy], 月明投矛[Revamped]
  
  远古高频红刀, 目前无法获得
 -给元素射线[Revamped]的日耀爆炸与星云火焰提供了新的视觉效果
+-mod物品现在全面支持旅途模式
+-适配天顶世界, 附带一些小惊喜
 
 -添加选项:
  加强魔影武器选项, 大概可以让魔影系列武器回归到旧版数值
@@ -28,10 +32,14 @@
  元素圣剑2000->4000, 获得200%剑刃大小增强
  绝学法杖1000->2500
  至尊梯凳1100->1145
--削弱星体击碎者:325 -> 200, 这玩意一分钟干死神长同时把银河锤爆了
+-削弱星体击碎者:325 -> 275, 挂载倍率取1.2倍而非1.3倍
  天顶世界下星体击碎者面板为400
 -加强银河溃灭者:275 -> 300
--重平衡永夜短剑：useTime 30 -> 12, 但触手现在造成12静态无敌帧而非局部无敌帧
+-为海胆长矛、花岗岩矛提供右键投矛效果：
+ 海胆长矛右键投掷击中敌人/物块时生成上升一段时间后追踪敌人的水圈
+ 花岗岩矛右键投掷击中会强制击退包括boss在内的敌人
+-重置月明投矛潜伏：
+ 现在会掷出一个攻击四次的追踪投矛，飞行过程中总会生成星辰碎片
 
 -加强远古弑神盔甲: 套装奖励的接触伤害减免由50%提高至85%, 并且现在可以把最大潜伏值转为自身防御力的加强
  上述效果整合进魔君套内
@@ -74,17 +82,24 @@ Content:
  Eye of Magnus Legacy, Genisis Legacy, Hell burst Legacy, Svantechnical Legacy, Wingman Legacy, Opal Striker Legacy
  Dragon Rage Legacy, The Burning Sky Legacy, Ancinet Dragon's Breath, Chicken Cannon Legacy, Phoenix Barrage Legacy
  Yharon Kindle Staff Legacy, Infernal Spear and Yharon Essence.
+ Redtide Sword, Sea Bow, Marnite Spear, Seashell Boomerang(Melee/Rogue), Aquatic Dissolution, Coral Spout, Chinarine, Clockwork Bow Legacy,
+ Luminous Striker,
 
 -Added an option to buff Shadowspec weapons, to mainly make Shadowspec weapons from Calamity can catch up the stats of old days 
 -Added almost all Elemental stuff resprite.
 -Added almost all Shivs resprite
 -Added Aegis Blade and Crescent Moon Resprite
+-Fully support Journey Mode and Zenith World.
 -Improved the visual of Elemental Ray Revamped
+-Give Marnite Spear and Victide Spear a javelin mode
+-Added and revamped Warblade/Waraxe
 
 Balance:
 -Helium Flash Legacy now use 12 Comsmilte Bars in its recipe instead of Auric Tesla Bars
  Buffed Helium Flash Legacy damage from 492 to 500, explosion now uses 65% instead of 50% of weapon damage
  Now allows double shot
+-Nerfed Murasama to make it not just 3 hit Ares.
+-Nerfed Stellar Contempt Rogue Type damage from 325 to 265
 -Buffed Ancient God Slayer Armor:  85% increased contact damage reduction instead of 50%
  Now can convert the max stealth to defense boost 
  This effect is applied to Yharim armor
@@ -291,6 +306,11 @@ Fixes:
  这一做法是为了统一管理旅途模式的特殊功能，比如说研究个数与分类
 -全面支持旅途模式
 
+3/21:
+ 回归所有胜朝锭的物品,水波利刃，发条弓与蚁狮弓
+ 加强龙矛，氦闪与星体击碎者（面板为主）
+ 胜朝投矛与花岗岩矛获得特殊投掷效果，具体见Tooltip
+ 修复部分问题，我也忘了是啥了
 
 
 

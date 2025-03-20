@@ -219,3 +219,8 @@ LumiStriker: {
 		'''
 	DisplayName: 月影投矛[Legacy]
 }
+
+VictideBoomerangRogue: {
+	Tooltip: 潜伏攻击时向附近敌怪发射贝壳
+	DisplayName: 贝壳回旋镖·盗贼版本[Legacy]
+}

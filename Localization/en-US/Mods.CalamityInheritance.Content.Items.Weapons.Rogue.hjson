@@ -202,3 +202,8 @@ LumiStriker: {
 	Tooltip: ""
 	DisplayName: Lumi Striker
 }
+
+VictideBoomerangRogue: {
+	Tooltip: ""
+	DisplayName: Victide Boomerang Rogue
+}

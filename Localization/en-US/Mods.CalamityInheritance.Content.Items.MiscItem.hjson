@@ -30,3 +30,8 @@ RebornEyeSummon: {
 	Tooltip: ""
 	DisplayName: Reborn Eye Summon
 }
+
+RebornEyeTip: {
+	Tooltip: ""
+	DisplayName: Reborn Eye Tip
+}

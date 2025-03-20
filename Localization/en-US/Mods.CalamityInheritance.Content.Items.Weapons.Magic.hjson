@@ -233,3 +233,8 @@ MagnusEye: {
 	Tooltip: ""
 	DisplayName: Magnus Eye
 }
+
+VictideBook: {
+	Tooltip: ""
+	DisplayName: Victide Book
+}

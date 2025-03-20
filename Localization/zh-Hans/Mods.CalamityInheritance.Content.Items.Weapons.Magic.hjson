@@ -261,3 +261,12 @@ MagnusEye: {
 	// Tooltip: ""
 	// DisplayName: Magnus Eye
 }
+
+VictideBook: {
+	Tooltip:
+		'''
+		喷出能攻击敌人的刺球 
+		刺球不会受到重力影响
+		'''
+	DisplayName: 珊瑚溺[Legacy]
+}
