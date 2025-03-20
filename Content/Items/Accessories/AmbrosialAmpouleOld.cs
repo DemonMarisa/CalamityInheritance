@@ -12,9 +12,13 @@ using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class AmbrosialAmpouleOld : ModItem, ILocalizedModType
+    public class AmbrosialAmpouleOld : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

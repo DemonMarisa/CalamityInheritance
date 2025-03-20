@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Materials
 {
     //旧奇迹物质造价更为昂贵，但是在作为合成材料时将不会被消耗。由于mod与灾厄的星流武器算起来数量已经较多
     //加入这一物品也算是一种qol
-    public class AncientMiracleMatter : ModItem, ILocalizedModType
+    public class AncientMiracleMatter : CIMaterials, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Materials";
         public static float Convert01To010(float value) => (float)Math.Sin(MathHelper.Pi * MathHelper.Clamp(value, 0f, 1f));

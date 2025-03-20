@@ -12,7 +12,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class MurasamaNeweffect : ModItem, ILocalizedModType
+    public class MurasamaNeweffect : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public int frameCounter = 0;
@@ -22,12 +22,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
-            ItemID.Sets.AnimatesAsSoul[Type] = true;
+            //我要转微光bro
+            ItemID.Sets.AnimatesAsSoul[Type] = false;
             if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasama>()] = ModContent.ItemType<MurasamaNeweffect>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MurasamaNeweffect>()] = ModContent.ItemType<Murasamaold>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

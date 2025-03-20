@@ -5,10 +5,14 @@ using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
 
 namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {
-    public class ExplosiveShells : ModItem, ILocalizedModType
+    public class ExplosiveShells : CIAmmo, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Ammo";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
         public override void SetDefaults()
         {
             Item.damage = 30;

@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class DraedonsHeartLegacy: ModItem, ILocalizedModType
+    public class DraedonsHeartLegacy: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         //防损机制是人能做出来的东西吗?
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly int LifeRegenSpeed = 16; //8HP/s生命恢复
         public override void SetStaticDefaults()
         {
-            
+            Item.ResearchUnlockCount = 1;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
         }
 

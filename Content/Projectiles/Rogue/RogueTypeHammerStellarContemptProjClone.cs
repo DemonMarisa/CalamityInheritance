@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 45;
+            Projectile.localNPCHitCooldown = 40;
             Projectile.timeLeft = Lifetime;
         }
 
@@ -226,11 +226,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.owner == Main.myPlayer)
                 {
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPoint, velocity, ProjectileID.LunarFlare, flareDamage, flareKB, Main.myPlayer, 0f, AI1);
-                    if (proj.WithinBounds(Main.maxProjectiles))
-                    {
-                        Main.projectile[proj].DamageType = ModContent.GetInstance<RogueDamageClass>();
-                        Main.projectile[proj].tileCollide = false;
-                    }
+                    Main.projectile[proj].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    Main.projectile[proj].tileCollide = false;
                 }
             }
         }

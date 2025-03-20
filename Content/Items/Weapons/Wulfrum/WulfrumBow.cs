@@ -5,9 +5,13 @@ using Terraria;
 using CalamityMod.Items.Materials;
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
-    public class WulfrumBow : ModItem, ILocalizedModType
+    public class WulfrumBow : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = 11;

@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("CorpusAvertorLegacyMelee")]
-    public class MeleeTypeCorpusAvertor : ModItem, ILocalizedModType
+    public class MeleeTypeCorpusAvertor : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
@@ -19,6 +19,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeCorpusAvertor>()] = ModContent.ItemType<CorpusAvertor>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CorpusAvertor>()] = ModContent.ItemType<MeleeTypeCorpusAvertor>();
             }
+
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

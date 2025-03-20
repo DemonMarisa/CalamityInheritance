@@ -14,12 +14,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeHammerStellarContempt: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
-        public static int BaseDamage = 200;
+        public static int BaseDamage = 255;
         public static float Speed = 18f;
 
         public override void SetStaticDefaults()
         {
-            
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

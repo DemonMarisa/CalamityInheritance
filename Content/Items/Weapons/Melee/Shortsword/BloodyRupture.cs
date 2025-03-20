@@ -6,12 +6,13 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class BloodyRupture : ModItem, ILocalizedModType
+    public class BloodyRupture : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

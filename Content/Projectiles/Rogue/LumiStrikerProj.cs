@@ -35,25 +35,28 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             
             if (Projectile.Calamity().stealthStrike)
             {
-                Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
                 StealthAI();
-                //干掉下方的AI
+                //干掉普攻的AI
                 return;
             }
+            SpamAI();
+        }
+        public void SpamAI()
+        {
             //飞行粒子
             if (Main.rand.NextBool(4))
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+            
             //转角
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
 
             //生成月明碎片
             if (Projectile.timeLeft % 4 == 0 && Projectile.owner == Main.myPlayer)
-            {
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, -2f, ModContent.ProjectileType<LumiShard>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.25f, Projectile.owner);
-            }
         }
         public void StealthAI()
         {
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
             if (Main.rand.NextBool(4))
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             //刷新射弹属性
@@ -131,21 +134,23 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.extraUpdates -=1;
                 Projectile.velocity *= 0.8f;
                 target.immune[Projectile.owner] = 7;
-                OnHitSparks(target);
             }
-            OnHitEffect();
+            OnHitEffect(target);
             SoundEngine.PlaySound(Hitsound, target.Center);
+            //火花
+            OnHitSparks(target);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            OnHitEffect();
+            OnHitEffect(target);
+            SoundEngine.PlaySound(Hitsound, target.Center);
         }
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 10; i++)
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
         }
-        public void OnHitEffect()
+        public void OnHitEffect(object target)
         {
             for (int i = 0; i < 7; i++)
             {
@@ -156,6 +161,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 speed *= Main.rand.Next(30,61) * 0.1f * 2f;
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, speed, ModContent.ProjectileType<LumiShard>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.25f, Projectile.owner);
             }
+            //音效
         }
         public void OnHitSparks(NPC target)
         {

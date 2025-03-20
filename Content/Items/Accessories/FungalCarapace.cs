@@ -5,9 +5,13 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class FungalCarapace : ModItem, ILocalizedModType
+    public class FungalCarapace : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.defense = 6;

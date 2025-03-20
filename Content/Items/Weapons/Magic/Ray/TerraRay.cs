@@ -9,12 +9,13 @@ using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class TerraRay : ModItem, ILocalizedModType
+    public class TerraRay : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

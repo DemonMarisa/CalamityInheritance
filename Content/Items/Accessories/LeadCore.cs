@@ -5,9 +5,13 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class LeadCore : ModItem, ILocalizedModType
+    public class LeadCore : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 26;

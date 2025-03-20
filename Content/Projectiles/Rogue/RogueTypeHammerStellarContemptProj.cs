@@ -174,10 +174,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (!Main.dayTime)
                 target.AddBuff(ModContent.BuffType<Nightwither>(), 240);
             
-            //潜伏攻击击中敌怪时将会尝试生成再生成一个追踪锤子,这个追踪锤子会造成面板的1.2f伤害
+            //潜伏攻击击中敌怪时将会尝试生成再生成一个追踪锤子,这个追踪锤子会造成面板的1.15f伤害
             if(ifSummonClone) 
             {
-                int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.05f), Projectile.knockBack, Main.myPlayer);
+                int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(), (int)(Projectile.damage*1.15f), Projectile.knockBack, Main.myPlayer);
                 if(Main.rand.NextBool(3))
                 Main.projectile[getClone].Calamity().stealthStrike = true;
                 ifSummonClone = false;

@@ -5,9 +5,13 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {
-    public class GrenadeRounds : ModItem, ILocalizedModType
+    public class GrenadeRounds : CIAmmo, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Ammo";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
         public override void SetDefaults()
         {
             Item.damage = 200;

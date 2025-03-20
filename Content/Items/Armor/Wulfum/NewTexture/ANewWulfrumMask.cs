@@ -8,11 +8,12 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ANewWulfrumMask : ModItem, ILocalizedModType
+    public class ANewWulfrumMask : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

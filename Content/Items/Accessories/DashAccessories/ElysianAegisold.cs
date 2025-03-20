@@ -16,7 +16,7 @@ using CalamityInheritance.Content.Items.LoreItems;
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class ElysianAegisold : ModItem, ILocalizedModType
+    public class ElysianAegisold : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         public const int ShieldSlamDamage = 500;
@@ -29,12 +29,9 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
         public override void SetStaticDefaults()
         {
-
-            // if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            // {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegis>()] = ModContent.ItemType<ElysianAegisold>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegisold>()] = ModContent.ItemType<ElysianAegis>();
-            // }
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegis>()] = ModContent.ItemType<ElysianAegisold>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegisold>()] = ModContent.ItemType<ElysianAegis>();
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

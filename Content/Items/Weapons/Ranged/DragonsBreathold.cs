@@ -12,7 +12,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class DragonsBreathold : ModItem, ILocalizedModType
+    public class DragonsBreathold : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public const int BetweenShotsPause = 14;
@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DragonsBreathold>()] = ModContent.ItemType<DragonsBreath>();
                 //开启微光转化时，使老龙息与新龙息能相互转化，关闭后则正常掉落
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

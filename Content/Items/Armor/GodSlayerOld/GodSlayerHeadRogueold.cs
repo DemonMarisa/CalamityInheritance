@@ -13,9 +13,13 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
-    public class GodSlayerHeadRogueold : ModItem, ILocalizedModType
+    public class GodSlayerHeadRogueold : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

@@ -13,7 +13,7 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
-    public class StatisVoidSash : ModItem, ILocalizedModType
+    public class StatisVoidSash : CIAccessories, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
@@ -21,6 +21,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 3));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

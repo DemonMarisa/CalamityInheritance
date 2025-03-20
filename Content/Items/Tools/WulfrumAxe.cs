@@ -10,6 +10,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public new string LocalizationCategory => "Content.Items.Tools";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

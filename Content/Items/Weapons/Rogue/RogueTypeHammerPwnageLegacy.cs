@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

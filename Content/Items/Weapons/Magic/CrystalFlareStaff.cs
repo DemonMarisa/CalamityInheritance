@@ -6,17 +6,16 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using Terraria.DataStructures;
-using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class CrystalFlareStaff : ModItem, ILocalizedModType
+    public class CrystalFlareStaff : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
-            // Tooltip.SetDefault("Fires blue frost flames that explode");
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

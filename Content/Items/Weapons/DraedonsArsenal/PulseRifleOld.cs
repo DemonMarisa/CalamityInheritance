@@ -16,16 +16,20 @@ using CalamityInheritance.Content.Projectiles.DraedonsArsenal;
 
 namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
-    public class PulseRifleOld : ModItem, ILocalizedModType
+    public class PulseRifleOld : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.DraedonsArsenal";
         public static readonly SoundStyle FireSound = new("CalamityMod/Sounds/Item/PulseRifleFire");
 
         private readonly int BaseDamage = 1200;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {
-            CalamityGlobalItem modItem = Item.Calamity();
+            CalamityGlobalItem ChargeItem = Item.Calamity();
 
             Item.width = 62;
             Item.height = 22;
@@ -46,9 +50,9 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             Item.shoot = ModContent.ProjectileType<PulseRifleShotOld>();
             Item.shootSpeed = 5f;
             
-            modItem.UsesCharge = true;
-            modItem.MaxCharge = 250f;
-            modItem.ChargePerUse = 0.24f;
+            ChargeItem.UsesCharge = true;
+            ChargeItem.MaxCharge = 250f;
+            ChargeItem.ChargePerUse = 0.24f;
             
         }
 

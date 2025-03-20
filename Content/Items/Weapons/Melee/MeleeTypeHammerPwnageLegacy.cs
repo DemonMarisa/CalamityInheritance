@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class MeleeTypeHammerPwnageLegacy : ModItem, ILocalizedModType
+    public class MeleeTypeHammerPwnageLegacy : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory =>"Content.Items.Weapons.Melee";
         public static readonly float Speed = 12f;
@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Pwnagehammer>()] = ModContent.ItemType<MeleeTypeHammerPwnageLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = ModContent.ItemType<Pwnagehammer>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

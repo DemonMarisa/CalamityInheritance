@@ -20,7 +20,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class FasterAuricTracers: ModItem, ILocalizedModType
+    public class FasterAuricTracers: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
 
@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterAuricTracers>()] = ModContent.ItemType<TracersSeraph>();
             }
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(280, 12f, 3f);
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

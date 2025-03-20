@@ -10,9 +10,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Magic
 {
-    public class AncientEtherealTalisman : ModItem, ILocalizedModType
+    public class AncientEtherealTalisman : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 28;

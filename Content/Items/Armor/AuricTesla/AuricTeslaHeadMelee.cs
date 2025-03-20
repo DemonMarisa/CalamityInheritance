@@ -17,9 +17,13 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AuricTeslaHeadMelee : ModItem, ILocalizedModType
+    public class AuricTeslaHeadMelee : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

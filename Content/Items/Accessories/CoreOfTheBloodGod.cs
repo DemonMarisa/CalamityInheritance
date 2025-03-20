@@ -11,13 +11,14 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class CoreOfTheBloodGod : ModItem, ILocalizedModType
+    public class CoreOfTheBloodGod : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

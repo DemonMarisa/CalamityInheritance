@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class AzathothLegacy : ModItem, ILocalizedModType
+    public class AzathothLegacy : CIMelee, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 650 : 270;
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             ItemID.Sets.Yoyo[Item.type] = true;
             ItemID.Sets.GamepadExtraRange[Item.type] = 15;
             ItemID.Sets.GamepadSmartQuickReach[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

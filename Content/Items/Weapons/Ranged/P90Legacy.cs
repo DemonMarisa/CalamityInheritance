@@ -8,9 +8,13 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class P90Legacy : ModItem, ILocalizedModType
+    public class P90Legacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = Main.zenithWorld? 12 : 6;

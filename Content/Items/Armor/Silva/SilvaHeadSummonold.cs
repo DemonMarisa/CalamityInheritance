@@ -15,12 +15,15 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
 {
     [AutoloadEquip(EquipType.Head)]
     [LegacyName("SilvaHelmet")]
-        public class SilvaHeadSummonold : ModItem, ILocalizedModType
+        public class SilvaHeadSummonold : CIArmor, ILocalizedModType
         {
             public new string LocalizationCategory => "Content.Items.Armor";
             public static readonly SoundStyle ActivationSound = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation");
             public static readonly SoundStyle DispelSound = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaDispel");
-
+            public override void SetStaticDefaults()
+            {
+                Item.ResearchUnlockCount = 1;
+            }
             public override void SetDefaults()
             {
                 Item.width = 28;

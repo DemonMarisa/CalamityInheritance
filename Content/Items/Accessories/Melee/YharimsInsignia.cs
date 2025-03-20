@@ -10,10 +10,14 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
-    public class YharimsInsignia : ModItem, ILocalizedModType
+    public class YharimsInsignia : CIAccessories, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 22;

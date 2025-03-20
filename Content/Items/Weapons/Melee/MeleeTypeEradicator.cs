@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("EradicatorLegacyMelee")]
-    public class MeleeTypeEradicator : ModItem, ILocalizedModType
+    public class MeleeTypeEradicator : CIMelee, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
@@ -24,6 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Eradicator>()] = ModContent.ItemType<MeleeTypeEradicator>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeEradicator>()] = ModContent.ItemType<Eradicator>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

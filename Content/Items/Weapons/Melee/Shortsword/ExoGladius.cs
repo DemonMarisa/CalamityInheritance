@@ -17,9 +17,13 @@ using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class ExoGladius : ModItem, ILocalizedModType 
+    public class ExoGladius : CIMelee, ILocalizedModType 
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

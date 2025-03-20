@@ -6,9 +6,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
-    public class StatisNinjaBeltLegacy : ModItem, ILocalizedModType
+    public class StatisNinjaBeltLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

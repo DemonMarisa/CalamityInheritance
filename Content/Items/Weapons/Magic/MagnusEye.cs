@@ -5,9 +5,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class MagnusEye: ModItem, ILocalizedModType
+    public class MagnusEye: CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 76;
@@ -20,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20; 
             Item.shoot = ModContent.ProjectileType<MagnusProj>();
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 14f;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;
         }

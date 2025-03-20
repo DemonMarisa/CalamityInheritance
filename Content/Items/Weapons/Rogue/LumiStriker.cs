@@ -14,6 +14,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public static readonly SoundStyle ThrowSound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { Volume = 0.3f, PitchVariance = 0.3f };
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.height = 86;

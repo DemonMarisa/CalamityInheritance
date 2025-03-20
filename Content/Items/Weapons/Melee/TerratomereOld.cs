@@ -12,9 +12,13 @@ using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class TerratomereOld : ModItem, ILocalizedModType
+    public class TerratomereOld : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 60;
@@ -34,7 +38,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             Item.shootSpeed = 20f;
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage = 120;
+                Item.scale = 0.6f;
+            }
+            else
+            {
+                Item.damage = 260;
+                Item.scale = 1f;
+            }
+            return default;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             for (int index = 0; index < 4; ++index)
@@ -43,7 +60,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                 Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.5), knockback, player.whoAmI, 0f, 0f);
             }
-
             return false;
         }
 

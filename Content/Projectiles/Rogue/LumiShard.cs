@@ -39,17 +39,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.timeLeft < 90)
             {
                 if (Projectile.ai[1] != 1f)
-                CIFunction.HomeInOnNPC(Projectile, true, 800f, 16f, 20f);
-                else CIFunction.HomeInOnNPC(Projectile, true, 450f, 14f ,15f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 800f, 16f, 20f);
+                else
+                    //潜伏攻击的月明碎片的索敌距离更短——这个是故意为之
+                    CIFunction.HomeInOnNPC(Projectile, true, 450f, 14f ,15f);
             }
         }
         public override void OnKill(int timeLeft)
         {
-                 for (int i = 0; i <= 2; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.oldVelocity.X / 4, Projectile.oldVelocity.Y / 4, 0, default, 0.75f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 3f;
+
                 d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.BubbleBurst_Pink, Projectile.oldVelocity.X / 4, Projectile.oldVelocity.Y / 4, 0, default, 0.75f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 3f;

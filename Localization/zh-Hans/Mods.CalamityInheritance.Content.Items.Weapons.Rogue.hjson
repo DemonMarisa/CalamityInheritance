@@ -201,9 +201,10 @@ DragonSpear: {
 	DisplayName: 龙炎投矛[Legacy]
 	Tooltip:
 		'''
-		旧版本的[i:CalamityMod/Wrathwing]狂龙翼火
+		旧版本的狂龙翼火
 		投出一把追踪敌人的矛
 		击中敌人时会喷射出多个追踪火球
+		[c/CA7C04:旧版投手/盗贼时代的一瞥]
 		'''
 }
 

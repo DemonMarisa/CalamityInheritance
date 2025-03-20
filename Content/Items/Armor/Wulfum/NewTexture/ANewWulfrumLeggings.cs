@@ -6,11 +6,12 @@ using CalamityMod.Items.Materials;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class ANewWulfrumLeggings : ModItem, ILocalizedModType
+    public class ANewWulfrumLeggings : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

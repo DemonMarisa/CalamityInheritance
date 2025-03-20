@@ -11,10 +11,14 @@ using CalamityMod.CalPlayer;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Body)]
-    public class GodSlayerChestplateold : ModItem, ILocalizedModType
+    public class GodSlayerChestplateold : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public const int DashIFrames = 12;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

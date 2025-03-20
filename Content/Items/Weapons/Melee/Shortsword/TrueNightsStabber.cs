@@ -5,9 +5,13 @@ using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class TrueNightsStabber : ModItem, ILocalizedModType
+    public class TrueNightsStabber : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

@@ -10,11 +10,14 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class YharimsGiftLegacy : ModItem, ILocalizedModType
+    public class YharimsGiftLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         public int dragonTimer = 60;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.defense = 30;

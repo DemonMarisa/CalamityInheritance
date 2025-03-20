@@ -23,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public new string LocalizationCategory => "Content.Items.Tools";

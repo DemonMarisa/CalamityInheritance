@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
     public class VanquisherArrowSplit : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => "CalamityInheritance/Content/Items/Ammo/VanquisherArrowold";
+        public override string Texture => "CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowold";
 
         public override void SetDefaults()
         {

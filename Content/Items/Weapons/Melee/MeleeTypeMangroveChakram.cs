@@ -7,9 +7,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("MangroveChakramLegacyMelee")]
-    public class MeleeTypeMangroveChakram : ModItem, ILocalizedModType
+    public class MeleeTypeMangroveChakram : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 38;

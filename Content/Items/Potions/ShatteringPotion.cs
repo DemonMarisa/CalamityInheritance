@@ -5,12 +5,17 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Potions;
 using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class ShatteringPotion : ModItem, ILocalizedModType
+    public class ShatteringPotion : CIPotion, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Potions";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 10;
+        }
         public override void SetDefaults()
         {
             Item.width = 28;

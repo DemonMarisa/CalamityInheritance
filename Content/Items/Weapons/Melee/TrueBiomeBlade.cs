@@ -8,10 +8,13 @@ using CalamityMod.Items.Placeables;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class TrueBiomeBlade : ModItem, ILocalizedModType
+    public class TrueBiomeBlade : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 54;

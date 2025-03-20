@@ -9,7 +9,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("FallenPaladinsHammerOld")]
-    public class MeleeTypeHammerFallenPaladinsLegacy : ModItem, ILocalizedModType
+    public class MeleeTypeHammerFallenPaladinsLegacy : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>()] = ModContent.ItemType<FallenPaladinsHammer>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

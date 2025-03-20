@@ -26,7 +26,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Accessories
 {
 
-    public class TheSpongetest : ModItem, ILocalizedModType, IDyeableShaderRenderer
+    public class TheSpongetest : CIAccessories, ILocalizedModType, IDyeableShaderRenderer
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override string Texture => (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) ? "CalamityMod/Items/Accessories/TheSpongeReal" : "CalamityMod/Items/Accessories/TheSponge";
@@ -78,6 +78,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 30));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
@@ -89,13 +90,15 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }
-
+        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if (CIConfig.Instance.TheSpongeBarrier == true)
             {
                 usPlayer.CIsponge = true;
+                //开启护盾后干掉原灾海绵的护盾效果，
+                player.Calamity().sponge = false;
             }
             else
             {

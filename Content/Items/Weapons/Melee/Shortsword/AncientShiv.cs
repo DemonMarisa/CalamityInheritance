@@ -5,12 +5,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class AncientShiv : ModItem, ILocalizedModType
+    public class AncientShiv : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

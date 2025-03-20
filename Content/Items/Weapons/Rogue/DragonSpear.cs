@@ -14,10 +14,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class DragonSpear : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 72;
-            Item.damage = 300;
+            Item.damage = 400;
             Item.noMelee = true;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noUseGraphic = true;

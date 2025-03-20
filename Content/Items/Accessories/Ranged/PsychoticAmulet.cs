@@ -8,9 +8,13 @@ using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
-    public class PsychoticAmulet : ModItem, ILocalizedModType
+    public class PsychoticAmulet : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 26;

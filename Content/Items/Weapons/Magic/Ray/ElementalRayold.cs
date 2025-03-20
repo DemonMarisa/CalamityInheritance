@@ -8,17 +8,13 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class ElementalRayold : ModItem, ILocalizedModType
+    public class ElementalRayold : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
-            // if(CIServerConfig.Instance.CustomShimmer == true)
-            // {
-            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRay>()] = ModContent.ItemType<ElementalRayold>();
-            //     ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalRayold>()] = ModContent.ItemType<ElementalRay>();
-            // }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

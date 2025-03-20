@@ -8,9 +8,13 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class SilvaLeggingsold : ModItem, ILocalizedModType
+    public class SilvaLeggingsold : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 22;

@@ -19,7 +19,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class DrataliornusLegacy: ModItem, ILocalizedModType
+    public class DrataliornusLegacy: CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
@@ -33,6 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
         /************龙弓: 最后的爆改**************
         *龙弓与元素箭袋(旧)/金源射手套联动:

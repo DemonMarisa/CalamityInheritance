@@ -7,9 +7,13 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class GodSlayerLeggingsold : ModItem, ILocalizedModType
+    public class GodSlayerLeggingsold : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

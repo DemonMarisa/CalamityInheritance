@@ -32,3 +32,8 @@ YharonEssence: {
 
 		'''
 }
+
+RebornEyeSummon: {
+	// Tooltip: ""
+	// DisplayName: Reborn Eye Summon
+}

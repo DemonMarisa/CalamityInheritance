@@ -9,17 +9,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
-using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class Minigun : ModItem, ILocalizedModType
+    public class Minigun : CIRanged, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
+            Item.ResearchUnlockCount = 1;
         }
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetDefaults()

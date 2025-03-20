@@ -8,15 +8,19 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Rarity;
 using Terraria.Audio;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class DraconicElixir : ModItem, ILocalizedModType
+    public class DraconicElixir : CIPotion, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Potions";
         public int frameCounter = 0;
         public int frame = 0;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 10;
+        }
         public override void SetDefaults()
         {
             Item.width = 50;

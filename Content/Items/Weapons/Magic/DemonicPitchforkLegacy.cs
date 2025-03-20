@@ -3,18 +3,17 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class DemonicPitchforkLegacy : ModItem, ILocalizedModType
+    public class DemonicPitchforkLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

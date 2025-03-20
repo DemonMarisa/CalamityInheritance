@@ -14,7 +14,6 @@ using Terraria.Localization;
 using Terraria.Utilities;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Potions;
-using CalamityInheritance.Content.Items.Ammo;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityMod.Items.Ammo;
 using CalamityInheritance.Content.Items.MiscItem;
@@ -34,6 +33,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.BiomeManagers;
+using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {

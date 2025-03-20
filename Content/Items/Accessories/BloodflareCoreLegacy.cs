@@ -8,16 +8,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class BloodflareCoreLegacy : ModItem, ILocalizedModType
+    public class BloodflareCoreLegacy : CIAccessories, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true)
-             //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
-            {
-                 }
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

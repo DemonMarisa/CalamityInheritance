@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
-namespace CalamityInheritance.Content.Items.Ammo
+namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
-    public class HyperiusBulletOld : ModItem, ILocalizedModType
+    public class ElysianArrowOld : CIAmmo, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Ammo";
         public override void SetStaticDefaults()
@@ -16,26 +16,26 @@ namespace CalamityInheritance.Content.Items.Ammo
 
         public override void SetDefaults()
         {
-            Item.width = 8;
-            Item.height = 8;
-            Item.damage = 18;
+            Item.width = 22;
+            Item.height = 36;
+            Item.damage = 20;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;
-            Item.knockBack = 1.5f;
-            Item.value = Item.sellPrice(copper: 16);
-            Item.rare = ItemRarityID.Cyan;
-            Item.shoot = ModContent.ProjectileType<HyperiusBulletProjOld>();
-            Item.shootSpeed = 16f;
-            Item.ammo = AmmoID.Bullet;
+            Item.knockBack = 3f;
+            Item.value = Item.sellPrice(copper: 24);
+            Item.rare = ItemRarityID.Purple;
+            Item.shoot = ModContent.ProjectileType<ElysianArrowProjOld>();
+            Item.shootSpeed = 10f;
+            Item.ammo = AmmoID.Arrow;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe(150).
-                AddIngredient(ItemID.MusketBall, 150).
-                AddIngredient<LifeAlloy>().
-                AddTile(TileID.MythrilAnvil).
+                AddIngredient(ItemID.HolyArrow, 150).
+                AddIngredient<UnholyEssence>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

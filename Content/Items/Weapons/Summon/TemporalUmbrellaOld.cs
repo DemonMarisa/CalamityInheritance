@@ -14,10 +14,14 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     [LegacyName("BensUmbrella")]
-    public class TemporalUmbrellaOld : ModItem, ILocalizedModType
+    public class TemporalUmbrellaOld : CISummon, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 4000 : 1000;
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.mana = 99;

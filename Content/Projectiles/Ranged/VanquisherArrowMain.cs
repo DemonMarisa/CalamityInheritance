@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class VanquisherArrowoldMain : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Items/Ammo/VanquisherArrowold";
+        public override string Texture => "CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowold";
 
         public override void SetDefaults()
         {

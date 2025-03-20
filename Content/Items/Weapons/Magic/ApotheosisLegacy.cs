@@ -19,10 +19,14 @@ using NebulousCore = CalamityMod.Items.Accessories.NebulousCore;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class ApotheosisLegacy : ModItem, ILocalizedModType
+    public class ApotheosisLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 777 : 377;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

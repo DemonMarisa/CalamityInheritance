@@ -10,18 +10,20 @@ using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class Animus : ModItem, ILocalizedModType
+    public class Animus : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 1.33f; 
         }
 
         public override void SetDefaults()
         {
             Item.width = 82;
             Item.height = 84;
-            Item.scale = 1.5f;
+            Item.scale = 1.75f;
             Item.damage = 2000;
             Item.useTurn = true;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;

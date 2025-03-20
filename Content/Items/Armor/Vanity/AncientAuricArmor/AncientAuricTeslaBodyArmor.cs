@@ -8,7 +8,7 @@ using Terraria;
 namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientAuricArmor
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientAuricTeslaBodyArmor : ModItem, ILocalizedModType
+    public class AncientAuricTeslaBodyArmor : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
         public override void Load()

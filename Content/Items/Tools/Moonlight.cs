@@ -13,7 +13,10 @@ namespace CalamityInheritance.Content.Items.Tools
         // These are "halfway through day" and "halfway through night" respectively.
         private const int NoonCutoff = 43200;
         private const int MidnightCutoff = 16200;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 38;

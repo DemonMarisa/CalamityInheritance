@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
-    public class ElementalQuiver : ModItem, ILocalizedModType
+    public class ElementalQuiver : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         public override void SetStaticDefaults()
@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>()] = ModContent.ItemType<ElementalQuiver>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalQuiver>()] = ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>();
             }
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

@@ -6,9 +6,13 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
-    public class Revenge : ModItem, ILocalizedModType
+    public class Revenge : CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
         public override void SetDefaults()
         {
             Item.width = 12;

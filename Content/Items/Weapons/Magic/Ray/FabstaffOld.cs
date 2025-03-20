@@ -11,12 +11,13 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class FabstaffOld : ModItem, ILocalizedModType
+    public class FabstaffOld : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 3456 : 1145;
 

@@ -10,12 +10,13 @@ using CalamityInheritance.NPCs.Calamitas;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class PolarisParrotfishLegacy : ModItem, ILocalizedModType
+    public class PolarisParrotfishLegacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

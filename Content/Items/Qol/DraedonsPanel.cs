@@ -1,20 +1,14 @@
 ﻿using CalamityMod.Rarities;
-using CalamityMod.UI.DraedonLogs;
-using CalamityMod.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.UI;
 using CalamityInheritance.UI.QolPanelTotal;
+using CalamityInheritance.Content.Items.MiscItem;
 
 namespace CalamityInheritance.Content.Items.Qol
 {
-    public class DraedonsPanel : ModItem, ILocalizedModType
+    public class DraedonsPanel : CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Panel";
         public override void SetDefaults()

@@ -16,9 +16,13 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class YharimAuricTeslaHelm : ModItem, ILocalizedModType
+	public class YharimAuricTeslaHelm : CIArmor, ILocalizedModType
 	{
     	public new string LocalizationCategory => "Content.Items.Armor";
+		public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 		public override void SetDefaults()
 		{
 			Item.width = 18;

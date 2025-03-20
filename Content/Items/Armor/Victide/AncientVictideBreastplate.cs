@@ -6,23 +6,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Victide
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientVictideBreastplate : ModItem, ILocalizedModType
+    public class AncientVictideBreastplate : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
 
-        public override void Load()
-        {
-        }
-
         public override void SetStaticDefaults()
         {
-
-            // if (Main.netMode != NetmodeID.Server)
-            // {
-            //     var equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Body);
-            //     ArmorIDs.Body.Sets.HidesArms[equipSlot] = true;
-            //     ArmorIDs.Body.Sets.HidesTopSkin[equipSlot] = true;
-            // }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -7,12 +7,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
     [AutoloadEquip(EquipType.Head)]
-    public class RangedWulfrumHeadgearLegacy : ModItem, ILocalizedModType
+    public class RangedWulfrumHeadgearLegacy : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RangedWulfrumHeadgearLegacy>()] = ModContent.ItemType<ANewWulfrumHeadgear>();
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

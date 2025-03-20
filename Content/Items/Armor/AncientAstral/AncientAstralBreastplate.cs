@@ -11,15 +11,12 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientAstral
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientAstralBreastplate: ModItem, ILocalizedModType
+    public class AncientAstralBreastplate: CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
-            if(CalamityConditions.DownedAstrumDeus.IsMet())
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientAstralBreastplate>()] = ModContent.ItemType<AstralBreastplate>();
-            }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
-    public class CalamitousEssence : ModItem, ILocalizedModType
+    public class CalamitousEssence : CIMaterials, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Materials";
 

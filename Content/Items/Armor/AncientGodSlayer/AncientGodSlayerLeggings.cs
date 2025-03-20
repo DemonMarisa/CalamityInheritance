@@ -8,12 +8,12 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientGodSlayerLeggings : ModItem, ILocalizedModType
+    public class AncientGodSlayerLeggings : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
-
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

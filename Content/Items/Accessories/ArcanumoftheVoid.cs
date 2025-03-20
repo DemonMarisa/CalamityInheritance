@@ -6,9 +6,13 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class ArcanumoftheVoid : ModItem, ILocalizedModType
+    public class ArcanumoftheVoid : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 26;

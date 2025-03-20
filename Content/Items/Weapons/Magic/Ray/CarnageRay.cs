@@ -7,12 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class CarnageRay : ModItem, ILocalizedModType
+    public class CarnageRay : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

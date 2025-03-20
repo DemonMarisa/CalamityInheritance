@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
-namespace CalamityInheritance.Content.Items.Ammo
+namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
-    public class VanquisherArrowold : ModItem, ILocalizedModType
+    public class VanquisherArrowold : CIAmmo, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Ammo";
         public override void SetStaticDefaults()
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Ammo
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/VanquisherArrowoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value);
         }
 
         public override void AddRecipes()

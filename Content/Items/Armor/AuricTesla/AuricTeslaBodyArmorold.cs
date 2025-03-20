@@ -15,7 +15,7 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AuricTeslaBodyArmorold : ModItem, ILocalizedModType
+    public class AuricTeslaBodyArmorold : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void Load()

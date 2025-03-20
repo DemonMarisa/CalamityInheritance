@@ -312,11 +312,6 @@ TheAbsorberOld: {
 		受到伤害时会短时间增加20%移动速度并释放孢子爆炸
 		[c/7DDA58:继承于绚彩凝胶:][i:CalamityInheritance/GrandGelatinLegacy]
 		当你站立不动时, 获得+1HP/s生命再生与增加魔力再生速度
-		[c/7DDA58:继承于百草天香瓶:][i:CalamityInheritance/AmbrosialAmpouleOld]
-		增加50%挖掘速度
-		获得永久蜂蜜增益效果, 大多数蜜蜂、马蜂及其弹幕对你造成的伤害减少25%
-		免疫中毒, 冷冻, 冰冻, 霜冻, 霜火和酸性毒液减益
-		减半受到火系与疫病系减益的持续时间
 		'''
 }
 

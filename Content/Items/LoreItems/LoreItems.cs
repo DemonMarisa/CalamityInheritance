@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemNoGravity[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override bool CanUseItem(Player player) => false;

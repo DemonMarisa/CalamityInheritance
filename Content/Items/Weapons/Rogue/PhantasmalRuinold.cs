@@ -14,6 +14,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class PhantasmalRuinold : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = 955;

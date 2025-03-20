@@ -13,6 +13,11 @@ namespace CalamityInheritance.Content.Items.Tools
     {
         public static readonly SoundStyle InstallSound = new("CalamityMod/Sounds/Custom/Codebreaker/AuricQuantumCoolingCellInstallNew");
         public new string LocalizationCategory => "Content.Items.Tools";
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 42;

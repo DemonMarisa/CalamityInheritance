@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.MiscItem
 {
-    public class DraedonsToy: ModItem, ILocalizedModType
+    public class DraedonsToy: CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.MiscItem";
         public override void SetStaticDefaults()
@@ -15,6 +15,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
             NPCID.Sets.MPAllowedEnemies[NPCID.Retinazer] = true;
             NPCID.Sets.MPAllowedEnemies[NPCID.Spazmatism] = true;
             NPCID.Sets.MPAllowedEnemies[NPCID.TheDestroyer] = true;
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

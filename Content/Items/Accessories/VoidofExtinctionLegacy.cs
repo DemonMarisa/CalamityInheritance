@@ -10,13 +10,17 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class VoidofExtinctionLegacy : ModItem, ILocalizedModType
+    public class VoidofExtinctionLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         public const int FireProjectiles = 2;
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
 
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 26;
@@ -26,10 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.defense = 12;
         }
-
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().voidOfCalamity;
-
-    
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var source = player.GetSource_Accessory(Item);

@@ -5,7 +5,7 @@ using CalamityInheritance.Tiles.MusicBox;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
-    public class RequiemsOfACruelWorld : ModItem, ILocalizedModType
+    public class RequiemsOfACruelWorld : CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Placeables.MusicBox";
         public override void SetStaticDefaults()
@@ -13,6 +13,7 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
             ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla
             ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox; // recorded music boxes transform into the basic form in shimmer
             MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/RequiemsOfACruelWorld"), ModContent.ItemType<RequiemsOfACruelWorld>(), ModContent.TileType<RequiemsOfACruelWorldTile>());
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -20,9 +20,13 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class TyrannysEndOld : ModItem, ILocalizedModType
+    public class TyrannysEndOld : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 150;
@@ -30,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.damage = 2250;
             Item.knockBack = 9.5f;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = Main.zenithWorld? 5 : 55;
-            Item.useAnimation = Main.zenithWorld ? 5 :55;
+            Item.useTime = 55;
+            Item.useAnimation = 55;
             Item.shoot = ProjectileID.BulletHighVelocity;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;

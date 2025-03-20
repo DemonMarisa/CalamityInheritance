@@ -9,7 +9,7 @@ using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class OpalStrikerLegacy : ModItem, ILocalizedModType
+    public class OpalStrikerLegacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

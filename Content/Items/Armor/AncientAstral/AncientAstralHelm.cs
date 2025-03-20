@@ -10,15 +10,12 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientAstral
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientAstralHelm: ModItem, ILocalizedModType
+    public class AncientAstralHelm: CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
-            if(CalamityConditions.DownedAstrumDeus.IsMet())
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientAstralHelm>()] = ModContent.ItemType<AstralHelm>();
-            }
+            Item.ResearchUnlockCount = 1;
         }
         public override void ArmorSetShadows(Player player)
         {

@@ -19,6 +19,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         
         public static readonly int HammerDamage = CIServerConfig.Instance.ShadowspecBuff ? 4500 : 1750;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 160;
