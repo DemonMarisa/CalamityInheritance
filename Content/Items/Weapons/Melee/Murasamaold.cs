@@ -106,7 +106,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 return false;
             return IDUnlocked(player);
         }
-
         public override void AddRecipes()
         {
             if(CIServerConfig.Instance.CustomShimmer == false) 
@@ -117,6 +116,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                     Register();
             }
         }       
-
     }
 }

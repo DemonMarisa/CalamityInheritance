@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -21,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(2, 13));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
@@ -66,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 //0 = 6 frames, 8 = 3 frames]
                 texture = ModContent.Request<Texture2D>(Texture).Value;
-                spriteBatch.Draw(texture, position, Item.GetCurrentFrame(ref frame, ref frameCounter, frame == 0 ? 36 : frame == 8 ? 24 : 6, 13), Color.White, 0f, origin, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13), Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             }
             else
             {
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (IDUnlocked(Main.LocalPlayer))
             {
                 texture = ModContent.Request<Texture2D>(Texture).Value;
-                spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, frame == 0 ? 36 : frame == 8 ? 24 : 6, 13), lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13), lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
             else
             {
@@ -99,7 +100,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (!IDUnlocked(Main.LocalPlayer))
                 return;
             Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaGlow").Value;
-            spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, frame == 0 ? 36 : frame == 8 ? 24 : 6, 13, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 
         public override bool CanUseItem(Player player)
@@ -112,7 +113,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
 
-            if(CIServerConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
+            if(CIServerConfig.Instance.CustomShimmer == false)
             {
                 CreateRecipe().
                     AddIngredient<Murasamaold>().

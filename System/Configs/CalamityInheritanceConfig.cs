@@ -126,5 +126,13 @@ namespace CalamityInheritance.System.Configs
         [DrawTicks]
         [DefaultValue(1)]
         public int UIY2 { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        [Range(25f, 30f)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int Offset { get; set; }
     }
 }

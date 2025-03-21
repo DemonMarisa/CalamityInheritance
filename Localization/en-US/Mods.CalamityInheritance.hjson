@@ -181,6 +181,11 @@ Configs: {
 			Label: U I Y2
 			Tooltip: ""
 		}
+
+		Offset: {
+			Label: Offset
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

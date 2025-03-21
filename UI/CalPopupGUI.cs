@@ -17,7 +17,7 @@ namespace CalamityInheritance.UI
         // 是否处于激活状态
         public bool Active;
         // 淡入淡出总帧数（默认30帧）
-        public virtual int FadeTimeMax { get; set; } = 60;
+        public virtual int FadeTimeMax { get; set; } = 30;
 
         // 原有代码
         public virtual void Update()

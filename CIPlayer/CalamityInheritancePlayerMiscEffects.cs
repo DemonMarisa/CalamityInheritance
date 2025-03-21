@@ -33,6 +33,7 @@ using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Projectiles.Summon;
+using CalamityMod.Buffs.StatDebuffs;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -169,14 +170,14 @@ namespace CalamityInheritance.CIPlayer
                 Player.accRunSpeed += 0.1f;
                 if(LoreJungleDragon)
                 {
-                    Player.GetDamage<GenericDamageClass>() += 0.15f;
+                    Player.GetDamage<GenericDamageClass>() += 0.25f;
                 }
 
                 if (Player.HasCooldown(DraconicElixirCooldown.ID))
                 {
-                    Player.statDefense -= 32;
-                    Player.wingAccRunSpeed -= 0.2f;
-                    Player.accRunSpeed -= 0.2f;
+                    Player.statDefense -= 16;
+                    Player.wingAccRunSpeed -= 0.1f;
+                    Player.accRunSpeed -= 0.1f;
                     Player.GetDamage<GenericDamageClass>() -= 0.15f;
                 }
             }
@@ -1516,7 +1517,8 @@ namespace CalamityInheritance.CIPlayer
             if (usPlayer.LoreProvidence)
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
-                Player.GetDamage<GenericDamageClass>() += 0.25f;
+                Player.GetDamage<GenericDamageClass>() *= 1.1f;
+                Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
 
             if (usPlayer.LoreDevourer)
@@ -1526,6 +1528,8 @@ namespace CalamityInheritance.CIPlayer
             if (usPlayer.LoreJungleDragon)
             {
                 calPlayer.infiniteFlight = true;
+                Player.wingAccRunSpeed += 0.2f;
+                Player.accRunSpeed += 0.2f;
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
 

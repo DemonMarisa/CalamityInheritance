@@ -218,7 +218,7 @@ KnowledgeEyeofCthulhu: {
 }
 
 KnowledgeGolem: {
-	DisplayName: 神庙傀儡[Legacy]
+	DisplayName: 石巨人[Legacy]
 	Lore:
 		'''
 		原始的造物
@@ -305,7 +305,7 @@ KnowledgeOcean: {
 }
 
 KnowledgeOldDuke: {
-	DisplayName: 硫海遗爵[Legacy]
+	DisplayName: 硫海遗爵[Revamped]
 	Lore:
 		'''
 		真是诡异，那大海中的畸变生物尽管特殊，但并非是孤例
@@ -364,7 +364,7 @@ KnowledgeProvidence: {
 		'''
 		石与火围绕着核心，她的目的就和她的存在形式一样简单
 		若她不是我们的敌人而是盟友，我们本可以联手成就超乎想象的霸业
-		放置在背包中并标记为收藏，使你的弹幕带有渎神之火, 造成额外伤害
+		放置在背包中并标记为收藏，使你的弹幕带有渎神之火, 造成额外伤害，并免疫伊卡洛斯之愚
 		然而，你需要奉上部分灵魂维持渎神之火的燃烧，最大生命值降低
 		'''
 }
@@ -485,12 +485,12 @@ KnowledgeWallofFlesh: {
 }
 
 KnowledgeYharon: {
-	DisplayName: 丛林龙-犽戎[Legacy]
+	DisplayName: 丛林龙-犽戎[Revamped]
 	Lore:
 		'''
 		我绝无可能忍受一个没有我最忠诚伙伴陪伴的世界
 		幸运的是，命运的安排免去了我忍受这种境遇的痛苦——永不分离，或一同死去
-		放置在背包中并标记为收藏，获得无限的飞行时间，但降低25%伤害
+		放置在背包中并标记为收藏，获得无限的飞行时间和更好的机动性，攻击会附带龙火，但降低25%伤害
 		'''
 }
 

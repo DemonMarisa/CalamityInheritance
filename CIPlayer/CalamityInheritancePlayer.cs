@@ -334,6 +334,10 @@ namespace CalamityInheritance.CIPlayer
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
             }
+            if (LoreJungleDragon)
+            {
+                target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
+            }
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)

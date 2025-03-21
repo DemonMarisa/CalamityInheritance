@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Items.DraedonMisc;
+using Terraria.Localization;
+using System.IO;
+using Terraria.GameContent;
+using Terraria.UI.Chat;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -41,6 +46,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public SpriteBatch spriteBatch;
         public Texture2D loreTextureUnAvailable;
         public Texture2D loreTextureOutLine;
+        public Texture2D loreTextureOutLineUnAvailable;
         public Rectangle mouseRectangle;
         public float scale;
         public float xResolutionScale;
@@ -50,14 +56,18 @@ namespace CalamityInheritance.UI.QolPanelTotal
     }
     public partial class QolPanel
     {
+        public Color TextColor = new(31, 251, 255);
+        public Color TextOutLineColor = new(22, 88, 111);
         public static string LoreImagePath => "CalamityInheritance/UI/DraedonsTexture/Lore"; //一个字段
+
         #region 状态数组
         public int UIpanelloreExocount = 1;//用于qol面板的星三王传颂计数
         public int exoPanelID = 1;// 星三王面板功能的ID
 
         //注：这里的排序用的是boss checklist给的boss顺序
         #region 状态计数
-        public int DefaultType = 1;
+
+
         public int KSPanelType = 1;
         public int DSPanelType = 1;
         public int EoCPanelType = 1;
@@ -99,6 +109,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #region 文本ID
         public int TextDisplayID = 0;
 
+        public int DefaultType = 0;
         public int KSBtnID = 1;
         public int DSBtnID = 2;
         public int EoCBtnID = 3;
@@ -152,11 +163,11 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #region 制表格式
 
         // 将按钮绘制在传颂正下方的差值
-        public int LoreButtonDist = 60;
+        public int LoreButtonDist = 65;
         // 传颂的列距因子
-        public int LoreGapX = 85;
+        public int LoreGapX = 90;
         // 传颂的行距因子（考虑按钮）
-        public int LoreGapY = 120;
+        public int LoreGapY = 130;
 
         #endregion
         public void Page2Draw(SpriteBatch spriteBatch)
@@ -265,15 +276,17 @@ namespace CalamityInheritance.UI.QolPanelTotal
             Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogLoreUnAvailable").Value;
             // lore悬停时的材质
             Texture2D loreTextureOutLine = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLine").Value;
+            // lore不可用时的悬停材质
+            Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLineUnAvailable").Value;
             // 如果不想或者懒得新建存储，可以直接用这个透明材质
             Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
 
-            DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.8f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
+            DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.65f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
 
             // 这个1是默认的Lore按钮状态
-            DrawLoreData genericLoreData = GetDrawLoreData(spriteBatch, loreTextureUnAvailable, loreTextureOutLine, mouseRectangle, 0.8f, xResolutionScale, yResolutionScale, false, 1);
+            DrawLoreData genericLoreData = GetDrawLoreData(spriteBatch, loreTextureUnAvailable, loreTextureOutLine, loreTextureOutLineUnAvailable, mouseRectangle, 0.75f, xResolutionScale, yResolutionScale, false, 1);
 
-            DrawLoreData genericLoreDataNotOutLine = GetDrawLoreData(spriteBatch, loreTextureUnAvailable, InvisibleUI, mouseRectangle, 0.8f, xResolutionScale, yResolutionScale, false, 1);
+            DrawLoreData genericLoreDataNotOutLine = GetDrawLoreData(spriteBatch, loreTextureUnAvailable, InvisibleUI, InvisibleUI, mouseRectangle, 0.75f, xResolutionScale, yResolutionScale, false, 1);
             // 要绘制在第几页
             if (Page == 1)
             {
@@ -367,14 +380,40 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 CIFunction.DrawBton(genericBtonData, GetLorePos(6, 2).LoreBtnX, GetLorePos(6, 2).LoreBtnY, ref DownedOD, ref ODPanelType, ref ODBtnID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(6, 3).LoreBtnX, GetLorePos(6, 3).LoreBtnY, ref DownedDoG, ref DoGPanelType, ref DoGBtnID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(6, 4).LoreBtnX, GetLorePos(6, 4).LoreBtnY, ref DownedYharon, ref YharonPanelType, ref YharonBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 5).LoreBtnX, GetLorePos(6, 5).LoreBtnY, ref DownedEoC, ref exoPanelID, ref ExoBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 5).LoreBtnX, GetLorePos(6, 5).LoreBtnY, ref DownedExo, ref exoPanelID, ref ExoBtnID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(6, 6).LoreBtnX, GetLorePos(6, 6).LoreBtnY, ref DownedSCal, ref SCalPanelType, ref SCalBtnID);
                 #endregion
+                #region 绘制高清lore
                 // 我没有新建结构体而是继续调用后并修改部分数值
+                // 右侧界面的中心位置
+                int RightPageXcenter = GetLorePos(3, 5, true).LoreBtnX - 175;
+
                 Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore").Value;
+                CIFunction.DrawLore(genericLoreDataNotOutLine, RightPageXcenter, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, 0.98f);
+
+                // 下划线贴图
                 Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
 
-                CIFunction.DrawLore(genericLoreDataNotOutLine, GetLorePos(3, 5, true).LoreBtnX + CIConfig.Instance.UIX, GetLorePos(3, 5, true).LoreBtnY + CIConfig.Instance.UIY , loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, 0.98f);
+                // 下划线贴图
+                Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLineShort").Value;
+
+                CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, RightPageXcenter, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
+                #endregion
+                #region 绘制文字
+                // 获取文字
+                string TileText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreT" + TextDisplayID);
+                string LoreText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.Lore" + TextDisplayID);
+
+                string ScalLoreText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreSP");
+
+                CIFunction.DrawText(spriteBatch, TileText, 0.9f, 0.9f, 325, -75, 1f, TextColor, Color.DarkSlateGray, InvisibleUI, 15, 400f, 1.2f);
+                CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 325, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, CIConfig.Instance.Offset, 400f, 1.4f);
+                // 36号ID为終灾
+                if(TextDisplayID == 36)
+                {
+                    CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 325, -27, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
+                }
+                #endregion
             }
         }
         /// <summary>
@@ -417,12 +456,13 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// <param name="yResolutionScale">y缩放</param>
         /// <param name="canFlip">是否镜像</param>
         /// <returns></returns>
-        public DrawLoreData GetDrawLoreData(SpriteBatch spriteBatch, Texture2D loreTextureUnAvailable, Texture2D loreTextureOutLine, Rectangle mouseRectangle, float scale, float xResolutionScale, float yResolutionScale, bool canFlip, int buttonCount)
+        public DrawLoreData GetDrawLoreData(SpriteBatch spriteBatch, Texture2D loreTextureUnAvailable, Texture2D loreTextureOutLine, Texture2D loreTextureOutLineUnAvailable, Rectangle mouseRectangle, float scale, float xResolutionScale, float yResolutionScale, bool canFlip, int buttonCount)
         {
             DrawLoreData newData;
             newData.spriteBatch = spriteBatch;
             newData.loreTextureUnAvailable = loreTextureUnAvailable;
             newData.loreTextureOutLine = loreTextureOutLine;
+            newData.loreTextureOutLineUnAvailable = loreTextureOutLineUnAvailable;
             newData.mouseRectangle = mouseRectangle;
             newData.scale = scale;
             newData.xResolutionScale = xResolutionScale;
@@ -469,9 +509,9 @@ namespace CalamityInheritance.UI.QolPanelTotal
             //赋值给结构体
             LorePosData newData = new()
             {
-                LorePosX = -LoreGapX * colume,
+                LorePosX = -LoreGapX * colume + 20,
                 //行距因子已经默认给按钮绘制预留了空间。
-                LorePosY = LoreGapY * line + 32,
+                LorePosY = LoreGapY * line + 34,
             };
             //按钮的水平坐标应当与传颂之物的水平坐标一致， 垂直坐标则默认加上这个传颂与按钮的差值
             newData.LoreBtnX = newData.LorePosX;

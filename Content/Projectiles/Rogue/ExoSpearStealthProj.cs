@@ -124,8 +124,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (increment >= 6 && penetrates >= 5 && phase == 0 && splits <= 12)
             {
-                Vector2 vector4 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(120f), default(Vector2));
-                Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default(Vector2));
+                Vector2 vector4 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(120f), default);
+                Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default);
                 if (Projectile.owner == Main.myPlayer)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
@@ -232,6 +232,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 float angleFromBase = Math.Abs(MathHelper.ToDegrees(currentAngle - baseAngle));
                 float randomSpeed;
+
                 if (angleFromBase < 1f)
                 {
                     randomSpeed = Main.rand.NextFloat(65f);

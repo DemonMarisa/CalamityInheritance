@@ -7,6 +7,10 @@ using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Terraria.GameContent;
+using Terraria.Localization;
+using System.Linq;
 
 namespace CalamityInheritance.UI
 {
@@ -98,10 +102,13 @@ namespace CalamityInheritance.UI
             Texture2D rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
 
             Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
-            float xScale = MathHelper.Lerp(0.004f, 1f, FadeTime / (float)FadeTimeMax);
+
+            float progress = EasingHelper.EaseOutExpo(FadeTime / (float)FadeTimeMax);
+            float xScale = MathHelper.Lerp(0.004f, 1f, progress);
+
             Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / pageTexture.Size();
             // UIY轴缩放
-            scale.Y *= 2f;
+            scale.Y *= 2.1f;
             // UI缩放
             scale *= 0.5f;
 
@@ -111,7 +118,7 @@ namespace CalamityInheritance.UI
             float bookScale = 0.75f;
             scale *= bookScale;
             // 修改页面滑动动画，同样优化为曲线
-            float yPageTop = MathHelper.Lerp(Main.screenHeight * 2,Main.screenHeight * 0.12f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+            float yPageTop = MathHelper.Lerp(Main.screenHeight * 1,Main.screenHeight * 0.1f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
 
@@ -136,9 +143,10 @@ namespace CalamityInheritance.UI
                     Page = TotalPages;
 
                 // 绘制箭头
-                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 520 * yResolutionScale, mouseRectangle);
+                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 550 * yResolutionScale, mouseRectangle);
                 // 请查看QolPanel
                 PageDraw(spriteBatch);
+
             }
         }
         // 绘制箭头
@@ -158,7 +166,7 @@ namespace CalamityInheritance.UI
             // 箭头背景的绘制信息
             #region 箭头背景
 
-            float yPageTop = MathHelper.Lerp(Main.screenHeight * 2, Main.screenHeight * 0.12f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+            float yPageTop = MathHelper.Lerp(Main.screenHeight * 2, Main.screenHeight * 0.1f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
             float drawBGPositionX = Main.screenWidth * 0.5f;
             Vector2 drawBGPosition = new Vector2(drawBGPositionX, yPageTop);
@@ -167,7 +175,7 @@ namespace CalamityInheritance.UI
 
             Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / leftArrowTextureBG.Size();
             // UIY轴缩放
-            scale.Y *= 2f;
+            scale.Y *= 2.1f;
             // UI缩放
             scale *= 0.5f;
             // ?你为啥再乘一遍
