@@ -1,17 +1,19 @@
 ﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class OverloadedBlasterLegacy : ModItem, ILocalizedModType
+    public class OverloadedBlasterLegacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = 16;

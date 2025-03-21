@@ -2,24 +2,22 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
-using Terraria.DataStructures;
 using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
-    public class FabstaffOld : ModItem, ILocalizedModType
+    public class FabstaffOld : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 3456 : 1145;
 

@@ -13,10 +13,14 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class YharimAuricTeslaCuisses : ModItem, ILocalizedModType
+    public class YharimAuricTeslaCuisses : CIArmor, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

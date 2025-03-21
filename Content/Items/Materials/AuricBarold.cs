@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
-    public class AuricBarold : ModItem, ILocalizedModType
+    public class AuricBarold : CIMaterials, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Materials";
         public static Asset<Texture2D> GlowTexture { get; private set; }

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Victide
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientVictideLeggings: ModItem, ILocalizedModType
+    public class AncientVictideLeggings: CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
                 var equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Legs);
                 ArmorIDs.Legs.Sets.HidesBottomSkin[equipSlot] = true;
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

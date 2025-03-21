@@ -12,6 +12,10 @@ namespace CalamityInheritance.Content.Items.Tools
         // Hardcoded times set by the vanilla Journey Mode buttons.
         // These are "halfway through day" and "halfway through night" respectively.
         private const int NoonCutoff = 27000;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

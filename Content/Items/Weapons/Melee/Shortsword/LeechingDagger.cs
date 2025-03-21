@@ -6,12 +6,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class LeechingDagger : ModItem, ILocalizedModType
+    public class LeechingDagger : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

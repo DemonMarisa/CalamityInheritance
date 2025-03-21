@@ -19,7 +19,7 @@ using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class Photovisceratorold : ModItem, ILocalizedModType
+    public class Photovisceratorold : CIRanged, ILocalizedModType
     {
         public int OwnerIndex;
         public Player Owner => Main.player[OwnerIndex];
@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

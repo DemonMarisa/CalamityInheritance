@@ -8,10 +8,13 @@ using CalamityMod.Items.Placeables;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class TrueBiomeBlade : ModItem, ILocalizedModType
+    public class TrueBiomeBlade : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 54;
@@ -32,9 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
-            {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
-            }
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
         }
         public override void AddRecipes()
         {

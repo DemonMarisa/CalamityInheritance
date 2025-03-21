@@ -13,7 +13,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("GalaxySmasherMelee")]
-    public class MeleeTypeHammerGalaxySmasherLegacy : ModItem, ILocalizedModType
+    public class MeleeTypeHammerGalaxySmasherLegacy : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static int BaseDamage = 300;
@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasher>()] = ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>()] = ModContent.ItemType<GalaxySmasher>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

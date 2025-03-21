@@ -27,6 +27,7 @@ namespace CalamityInheritance.Content.Projectiles
         public bool AMRextra = false;
 
         public bool AMRextraTy = false;
+        public bool ThrownMode = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];

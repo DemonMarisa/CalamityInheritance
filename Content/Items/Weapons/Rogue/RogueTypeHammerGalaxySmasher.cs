@@ -19,6 +19,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public static int BaseDamage = 300; //300→275 出于某些我不知道的原因盗贼的锤子忽然具备了幻魂归墟的潜力
         public static float Speed = 20f;    //15f -> 20f
 
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 86;

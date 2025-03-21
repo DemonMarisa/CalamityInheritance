@@ -11,9 +11,13 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class LeadWizard : ModItem, ILocalizedModType 
+    public class LeadWizard : CIRanged, ILocalizedModType 
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = 58;

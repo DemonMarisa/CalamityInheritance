@@ -13,7 +13,7 @@ using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ElementalExcalibur : ModItem, ILocalizedModType
+    public class ElementalExcalibur : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         private static int BaseDamage = 4000;
@@ -23,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -1,12 +1,6 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -17,7 +11,6 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -26,7 +19,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class DrataliornusLegacy: ModItem, ILocalizedModType
+    public class DrataliornusLegacy: CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
@@ -40,6 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
         /************龙弓: 最后的爆改**************
         *龙弓与元素箭袋(旧)/金源射手套联动:

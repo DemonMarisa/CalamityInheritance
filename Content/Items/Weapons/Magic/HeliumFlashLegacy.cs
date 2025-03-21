@@ -14,22 +14,17 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class HeliumFlashLegacy : ModItem, ILocalizedModType
+    public class HeliumFlashLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
-        //氦闪最后一次加强: 内核爆炸倍率0.5f->0.65f, 基础伤害495 -> 500, 修改了useAnimation和useTime实现氦闪的二连发
         internal const float ExplosionDamageMultiplier = 0.65f;
         public static readonly int HeliumFlashDamage = 600;
         public static readonly int HeliumFlashManaCost = 15;
 
         public override void SetStaticDefaults()
         {
-            if (CIServerConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlash>()] = ModContent.ItemType<HeliumFlashLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeliumFlashLegacy>()] = ModContent.ItemType<HeliumFlash>();
-            }
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -14,6 +14,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class SpearofDestinyLegacy :RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             //Scarlet:将命运投矛的数值回滚至1457前，并修改稀有度为恶意专属掉落的稀有度颜色。

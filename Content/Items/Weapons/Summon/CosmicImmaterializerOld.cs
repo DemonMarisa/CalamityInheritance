@@ -19,9 +19,13 @@ using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
-    public class CosmicImmaterializerOld : ModItem, ILocalizedModType
+    public class CosmicImmaterializerOld : CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.mana = 10;

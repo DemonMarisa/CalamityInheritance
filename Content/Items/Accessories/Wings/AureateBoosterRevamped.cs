@@ -11,12 +11,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class AureateBoosterRevamped : ModItem, ILocalizedModType
+    public class AureateBoosterRevamped : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         public override void SetStaticDefaults()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(120, 8f, 1.5f);
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

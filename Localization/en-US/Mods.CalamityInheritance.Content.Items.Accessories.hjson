@@ -305,11 +305,6 @@ TheAbsorberOld: {
 		20% increased movement speed, emit a mushroom spore and spark explosion when you are hit
 		[c/7DDA58:Inherited from Grand Gelatin Legacy:][i:CalamityInheritance/GrandGelatinLegacy]
 		+1 HP/s life regen speed and increases your mana regen speed when you are not moveing
-		[c/7DDA58:Inherited from Ambrosial Ampoule:][i:CalamityInheritance/AmbrosialAmpouleOld]
-		50% increased mining speed
-		Grants immnuity of Poison, Freeze, Chill, Frostburn, Frostbit and Venom
-		Honey-like life regen with no speed penalty
-		Most bee/hornet enemies and projectiles do 75% damage to you
 		'''
 }
 

@@ -15,7 +15,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
     [AutoloadEquip(EquipType.Body)]
-    public class YharimAuricTeslaBodyArmor : ModItem, ILocalizedModType
+    public class YharimAuricTeslaBodyArmor : CIArmor, ILocalizedModType
     {
         public override void Load()
         {
@@ -25,7 +25,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
             // Add equip textures
             EquipLoader.AddEquipTexture(Mod, "CalamityInheritance/Content/Items/Armor/AncientAuric/YharimAuricTeslaBodyArmor_Back", EquipType.Back, this);
         }
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetDefaults()
         {

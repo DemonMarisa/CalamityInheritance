@@ -1,18 +1,15 @@
 ﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class OpalStrikerLegacy : ModItem, ILocalizedModType
+    public class OpalStrikerLegacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

@@ -9,9 +9,13 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Accessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class CIRampartofDeities : ModItem, ILocalizedModType
+    public class CIRampartofDeities : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 64;

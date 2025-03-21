@@ -1,9 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,12 +10,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class AlphaRayLegacy : ModItem, ILocalizedModType
+    public class AlphaRayLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
 

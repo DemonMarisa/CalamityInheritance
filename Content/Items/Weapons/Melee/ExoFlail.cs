@@ -21,7 +21,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ExoFlail : ModItem, ILocalizedModType
+    public class ExoFlail : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
 
@@ -34,6 +34,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static float ReturnSpeed = 40f;
 
         private int hitCount = 0;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 54;

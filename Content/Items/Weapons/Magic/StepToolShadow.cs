@@ -9,7 +9,6 @@ using CalamityMod.Items.Weapons.Rogue;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityMod;
-using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Placeables.Banners;
 using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
@@ -17,10 +16,14 @@ using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class StepToolShadow : ModItem, ILocalizedModType
+    public class StepToolShadow : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public int NewDamage =  CIServerConfig.Instance.ShadowspecBuff? 11451 : 1145;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 960;

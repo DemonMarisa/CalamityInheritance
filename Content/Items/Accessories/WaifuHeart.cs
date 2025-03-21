@@ -15,7 +15,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class WaifuHeart : ModItem, ILocalizedModType
+    public class WaifuHeart : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
 
@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
@@ -233,14 +233,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                         Main.projectile[p].originalDamage = baseDamage;
                 }
             }
-        }
-
-        public override void AddRecipes()
-        {
-            if(Main.zenithWorld)
-                CreateRecipe().
-                    Register();
-            
         }
     }
 }

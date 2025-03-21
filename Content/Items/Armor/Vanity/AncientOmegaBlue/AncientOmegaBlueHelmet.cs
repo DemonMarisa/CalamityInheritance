@@ -4,12 +4,16 @@ using CalamityMod.Items.Materials;
 using Terraria.ID;
 using CalamityInheritance.Rarity;
 
-namespace CalamityInheritance.Content.Items.Armor.Vanity
+namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientOmegaBlueHelmet: ModItem, ILocalizedModType
+    public class AncientOmegaBlueHelmet: CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 28;

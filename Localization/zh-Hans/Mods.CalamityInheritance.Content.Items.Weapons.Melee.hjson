@@ -387,3 +387,57 @@ DragonSword: {
 	DisplayName: 巨龙之怒[Legacy]
 	Tooltip: 按住左键, 向你的敌人倾泻巨龙的怒火
 }
+
+Warblade: {
+	Tooltip:
+		'''
+		命中时使敌人流血
+		攻击时有一定概率使敌人损失一半生命值
+		这一效果对Boss单位无效
+		'''
+	DisplayName: 哥布林战刀[Revamped]
+}
+
+MarniteSpear: {
+	Tooltip:
+		'''
+		右键将掷出长矛，强制击退敌人
+		允许击退Boss单位，但是击退力量较弱
+		'''
+	DisplayName: 花岗岩长矛[Revamped]
+}
+
+AquaticDissolution: {
+	// Tooltip: ""
+	// DisplayName: Aquatic Dissolution
+}
+
+VictideYoyo: {
+	Tooltip:
+		'''
+		速度比较快的悠悠球
+		向你的敌人发射海贝壳
+		'''
+	DisplayName: 珊瑚[Legacy]
+}
+
+VictideSword: {
+	Tooltip: 发射中等距离的漩涡
+	DisplayName: 赤潮[Legacy]
+}
+
+VictideSpear: {
+	Tooltip:
+		'''
+		使敌人中毒并发射短距离刺针
+		右键时将长矛掷出，击中敌人和物块时生成向上升的水圈
+		水圈上升到一定距离后会发起一个较弱的跟踪
+		[c/98F5FF:“我了个灾厄旧物投矛”]
+		'''
+	DisplayName: 海胆长矛[Revamped]
+}
+
+VictideBoomerangMelee: {
+	Tooltip: '''"我可太喜欢这把回旋镖的手感了"'''
+	DisplayName: 贝壳回旋镖·战士版本[Legacy]
+}

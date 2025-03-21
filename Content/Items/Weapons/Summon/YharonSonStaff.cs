@@ -9,7 +9,7 @@ using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
-    public class YharonSonStaff: ModItem, ILocalizedModType
+    public class YharonSonStaff: CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
         public readonly int WeaponDamage = 120;
@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         {
             //改为法杖的形式会更加符合这个武器的设计
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

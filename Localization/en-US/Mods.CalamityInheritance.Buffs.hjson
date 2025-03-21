@@ -147,3 +147,8 @@ SonYharonBuff: {
 	DisplayName: Son Yharon Buff
 	Description: Mods.CalamityInheritance.Buffs.SonYharonBuff.Description
 }
+
+WarCleave: {
+	Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
+	DisplayName: War Cleave
+}

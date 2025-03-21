@@ -25,3 +25,13 @@ YharonEssence: {
 		Right clicked to gained some loots from Jungle Dragon, Yharon (Phase One).
 		'''
 }
+
+RebornEyeSummon: {
+	Tooltip: ""
+	DisplayName: Reborn Eye Summon
+}
+
+RebornEyeTip: {
+	Tooltip: ""
+	DisplayName: Reborn Eye Tip
+}

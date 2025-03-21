@@ -10,6 +10,7 @@ using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -133,7 +134,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     break;
 
                 case 1f:
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    if (!Main.zenithWorld)
+                        Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    else 
+                    {
+                        int i =Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<RainbowComet>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                        Main.projectile[i].DamageType = DamageClass.Magic;
+                    }
                     break;
 
                 case 2f:
@@ -144,10 +151,12 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    int boomType = Main.zenithWorld? ModContent.ProjectileType<RainbowComet>(): ModContent.ProjectileType<SupernovaBoomOld>();
+                    int p = Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, boomType, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
             }
         }

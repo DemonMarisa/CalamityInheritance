@@ -3,7 +3,6 @@ using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -12,20 +11,22 @@ using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
-using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class AsgardianAegisold : ModItem, ILocalizedModType
+    public class AsgardianAegisold : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         public const int ShieldSlamDamage = 1000;
         public const float ShieldSlamKnockback = 15f;
         public const int ShieldSlamIFrames = 12;
-
         public const int RamExplosionDamage = 1000;
         public const float RamExplosionKnockback = 20f;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 60;

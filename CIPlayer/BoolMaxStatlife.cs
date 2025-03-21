@@ -27,7 +27,6 @@ namespace CalamityInheritance.CIPlayer
                 if (AncientAuricSet)
                     //原本魔君盔甲有1.2f，加上天顶特殊给的25f
                     LifePercentMax += 26.2f;
-
             }
             if (LoreSkeletron)
                 LifePercentMax -= 0.10f;

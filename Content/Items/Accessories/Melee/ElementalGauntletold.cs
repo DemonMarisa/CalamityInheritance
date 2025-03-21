@@ -11,13 +11,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
 
     [AutoloadEquip([EquipType.HandsOn, EquipType.HandsOff])]
-    public class ElementalGauntletold : ModItem, ILocalizedModType
+    public class ElementalGauntletold : CIAccessories, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
         public override void SetStaticDefaults()
         {
-            
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

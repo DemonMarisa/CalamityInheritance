@@ -10,9 +10,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ChickenCannonLegacy : ModItem, ILocalizedModType
+    public class ChickenCannonLegacy : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 58;

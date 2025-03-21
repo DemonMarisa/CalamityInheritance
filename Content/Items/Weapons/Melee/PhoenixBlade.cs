@@ -1,11 +1,8 @@
 using System;
-using System.ComponentModel;
-using System.Numerics;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -16,11 +13,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class PhoenixBlade: ModItem, ILocalizedModType
+    public class PhoenixBlade: CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {
@@ -41,7 +39,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(target.life >= target.lifeMax * 0.7) //继承至毁灭刀并加强: 对高于70%血量的敌人造成5倍刀刃伤害
+            //继承至毁灭刀并加强: 对高于70%血量的敌人造成5倍刀刃伤害
+            if(target.life >= target.lifeMax * 0.7) 
             {
                 hit.Damage *= 4;
                 for(int j=0;j<5;j++)

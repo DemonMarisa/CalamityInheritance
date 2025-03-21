@@ -129,7 +129,7 @@ Backfire: {
 }
 
 AncientAstralBuff: {
-	DisplayName: 星之铸造
+	DisplayName: 星辰铸造
 	Description: 杂质全部祛除, 你的盔甲崭新如初
 }
 
@@ -146,4 +146,9 @@ PolarisBuffLegacy: {
 SonYharonBuff: {
 	DisplayName: 犽戎之子[Legacy]
 	Description: 犽戎之子为你而战
+}
+
+WarCleave: {
+	// Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
+	// DisplayName: War Cleave
 }

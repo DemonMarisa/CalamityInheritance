@@ -8,10 +8,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientTarragonBreastplate : ModItem, ILocalizedModType
+    public class AncientTarragonBreastplate : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

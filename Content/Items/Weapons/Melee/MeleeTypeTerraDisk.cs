@@ -8,10 +8,14 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("TerraDiskMeleeLegacy")]
-    public class MeleeTypeTerraDisk: ModItem, ILocalizedModType
+    public class MeleeTypeTerraDisk: CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static readonly float Speed = 12f;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

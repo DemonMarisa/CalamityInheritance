@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using System.Security.Cryptography.X509Certificates;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,21 +10,19 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class OmegaBiomeBlade : ModItem, ILocalizedModType
+    public class OmegaBiomeBlade : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Omega Biome Blade(old)");
-            /* Tooltip.SetDefault("Fires different homing projectiles based on what biome you're in\n" +
-                "Projectiles also change based on moon events"); */
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
         {
             Item.width = 62;
             Item.damage = 150;
-            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 18;
             Item.useTime = 18;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -52,9 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
-            {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
-            }
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Dirt);
         }
         public override void AddRecipes()
         {

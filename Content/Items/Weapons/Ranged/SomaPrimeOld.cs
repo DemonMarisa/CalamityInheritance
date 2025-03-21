@@ -15,11 +15,14 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class SomaPrimeOld : ModItem, ILocalizedModType
+    public class SomaPrimeOld : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         private static readonly float XYInaccuracy = 0.32f;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 94;

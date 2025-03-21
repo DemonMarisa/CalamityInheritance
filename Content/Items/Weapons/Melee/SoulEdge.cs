@@ -14,7 +14,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class SoulEdge : ModItem, ILocalizedModType
+    public class SoulEdge : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f};
@@ -27,6 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidEdge>()] = ModContent.ItemType<SoulEdge>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<SoulEdge>()] = ModContent.ItemType<VoidEdge>();
             }
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {
@@ -48,10 +49,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.name == "Shizuku" || player.name == "shizuku")
+            if (player.name == "Shizuku" || player.name == "shizuku" || Main.zenithWorld)
             {
                 Item.damage = 1600;
-                Item.useTime = 10;
+                Item.useTime = 5;
                 Item.useAnimation = 10;
             }
             else

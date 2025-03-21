@@ -4,12 +4,17 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Rarity;
+using System.Runtime.CompilerServices;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class ReaperToothNecklaceold : ModItem, ILocalizedModType
+    public class ReaperToothNecklaceold : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 44;

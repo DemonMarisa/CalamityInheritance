@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.Ammo;
+using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

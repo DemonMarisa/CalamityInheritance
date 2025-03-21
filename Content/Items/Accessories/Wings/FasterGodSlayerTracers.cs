@@ -19,7 +19,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class FasterGodSlayerTracers: ModItem, ILocalizedModType
+    public class FasterGodSlayerTracers: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
 
@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterGodSlayerTracers>()] = ModContent.ItemType<TracersElysian>();
             }
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 10.5f, 2.75f);
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -6,9 +6,13 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    internal class ConclaveCrossfire : ModItem, ILocalizedModType
+    internal class ConclaveCrossfire : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 66;

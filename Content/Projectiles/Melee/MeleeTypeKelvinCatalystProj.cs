@@ -50,10 +50,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void AI()
         {
-            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f))  
+            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f) || Main.zenithWorld)  
             {
                 Projectile.localAI[1] += 1f;
-                if (Projectile.localAI[1] % 72 == 0)
+                if (Projectile.localAI[1] % (Main.zenithWorld? 10 : 72) == 0)
                 OnHitEffects();
             }
             VisualAudioEffects();

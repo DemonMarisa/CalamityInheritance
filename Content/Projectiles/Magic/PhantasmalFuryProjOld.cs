@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 120;
-            Projectile.DamageType = DamageClass.Magic;
+            Projectile.DamageType = Main.zenithWorld ? DamageClass.Ranged : DamageClass.Magic;
         }
 
         public override void AI()

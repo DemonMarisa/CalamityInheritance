@@ -1,9 +1,6 @@
 using System;
-using System.Numerics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Buffs.StatBuffs;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,13 +9,14 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class BittercoldStaff: ModItem, ILocalizedModType
+    public class BittercoldStaff: CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
 
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -6,12 +6,13 @@ using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
     [AutoloadEquip(EquipType.Head)]
-    public class SummonerWulfrumHelmetLegacy : ModItem, ILocalizedModType
+    public class SummonerWulfrumHelmetLegacy : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<SummonerWulfrumHelmetLegacy>()] = ModContent.ItemType<ANewWulfrumHelmet>();
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

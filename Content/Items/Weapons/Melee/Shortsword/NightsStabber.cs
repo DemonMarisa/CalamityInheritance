@@ -5,9 +5,13 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class NightsStabber : ModItem, ILocalizedModType
+    public class NightsStabber : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;

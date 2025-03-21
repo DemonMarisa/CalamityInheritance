@@ -12,11 +12,12 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class PhangasmOS : ModItem, ILocalizedModType
+    public class PhangasmOS : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

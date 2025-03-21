@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             SoundEngine.PlaySound(SoundID.Item88, Projectile.position);
             Projectile.netUpdate = true;
 
-            int numFlares = 2;
+            int numFlares = Main.zenithWorld ? 16 : 2;
             int flareDamage = (int)(0.3f * Projectile.damage);
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)

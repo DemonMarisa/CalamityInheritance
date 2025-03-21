@@ -5,9 +5,13 @@ using Terraria;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
-    public class IronHeart : ModItem, ILocalizedModType
+    public class IronHeart : CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
         public override void SetDefaults()
         {
             Item.width = 12;

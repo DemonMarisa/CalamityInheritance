@@ -6,11 +6,12 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ReaverScaleMailRevamped : ModItem, ILocalizedModType
+    public class ReaverScaleMailRevamped : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

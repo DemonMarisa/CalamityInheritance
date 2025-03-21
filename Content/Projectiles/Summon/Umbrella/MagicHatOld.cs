@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Projectile.netImportant = true;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.minionSlots = 5f;
+            Projectile.minionSlots = Main.zenithWorld ? 1f : 5f;
             Projectile.timeLeft = 18000;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;

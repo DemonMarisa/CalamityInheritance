@@ -11,10 +11,13 @@ using CalamityInheritance.Content.Items.Materials;
 namespace CalamityInheritance.Content.Items.Armor.Victide
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientVictideHeadSummon : ModItem, ILocalizedModType
+    public class AncientVictideHeadSummon : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

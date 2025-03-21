@@ -3,6 +3,9 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {
@@ -19,6 +22,14 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.ignoreWater = true;
             Projectile.penetrate = 2;
             Projectile.DamageType = DamageClass.Magic;
+        }
+        public override bool PreAI()
+        {
+            if (Main.zenithWorld)
+            {
+                
+            }
+            return default;
         }
 
         public override void AI()

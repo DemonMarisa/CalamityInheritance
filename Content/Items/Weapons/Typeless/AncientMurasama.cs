@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Rarity.Special;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,8 +10,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 	public class AncientMurasama : ModItem, ILocalizedModType
 	{
 		public new string LocalizationCategory => "Content.Items.Weapons.Typeless";
-
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 72;
 			Item.damage = 1145;

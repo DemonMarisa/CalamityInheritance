@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
-namespace CalamityInheritance.Content.Items.Ammo
+namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
-    public class HolyFireBulletOld : ModItem, ILocalizedModType
+    public class HolyFireBulletOld : CIAmmo, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Ammo";
 

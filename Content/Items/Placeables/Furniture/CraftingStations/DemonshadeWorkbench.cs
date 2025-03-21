@@ -3,8 +3,6 @@ using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,9 +10,13 @@ using DraedonsForge = CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
-    public class DemonshadeWorkbench: ModItem, ILocalizedModType
+    public class DemonshadeWorkbench: CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Placeables.Furniture.CraftingStations";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
         public override void SetDefaults()
         {
             Item.width = 64;

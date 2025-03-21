@@ -7,10 +7,14 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
-    public class BadgeofBravery : ModItem, ILocalizedModType
+    public class BadgeofBravery : CIAccessories, ILocalizedModType
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 30;

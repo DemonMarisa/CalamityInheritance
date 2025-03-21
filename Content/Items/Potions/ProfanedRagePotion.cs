@@ -4,13 +4,18 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class ProfanedRagePotion : ModItem, ILocalizedModType
+    public class ProfanedRagePotion : CIPotion, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Potions";
         internal static readonly int CritBoost = 12;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 10;
+        }
         public override void SetDefaults()
         {
             Item.width = 34;

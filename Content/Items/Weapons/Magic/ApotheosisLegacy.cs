@@ -3,10 +3,7 @@ using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
-using CalamityMod.Cooldowns;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
@@ -22,10 +19,14 @@ using NebulousCore = CalamityMod.Items.Accessories.NebulousCore;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class ApotheosisLegacy : ModItem, ILocalizedModType
+    public class ApotheosisLegacy : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 777 : 377;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

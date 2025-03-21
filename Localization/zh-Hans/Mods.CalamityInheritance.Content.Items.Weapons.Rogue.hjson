@@ -201,8 +201,26 @@ DragonSpear: {
 	DisplayName: 龙炎投矛[Legacy]
 	Tooltip:
 		'''
-		旧版本的[i:CalamityMod/Wrathwing]狂龙翼火
+		旧版本的狂龙翼火
 		投出一把追踪敌人的矛
 		击中敌人时会喷射出多个追踪火球
+		[c/CA7C04:旧版投手/盗贼时代的一瞥]
 		'''
+}
+
+LumiStriker: {
+	Tooltip:
+		'''
+		投掷星尘标枪，飞行轨迹上生成上升的星尘碎片
+		命中爆炸后产生额外的星尘碎片
+		潜伏攻击时掷出一个可攻击敌人四次的星尘标枪
+		标枪飞行过程中也会生成跟随的星尘碎片
+		[c/99DFFD:将星辰送回属于它们的地方]
+		'''
+	DisplayName: 月影投矛[Legacy]
+}
+
+VictideBoomerangRogue: {
+	Tooltip: 潜伏攻击时向附近敌怪发射贝壳
+	DisplayName: 贝壳回旋镖·盗贼版本[Legacy]
 }

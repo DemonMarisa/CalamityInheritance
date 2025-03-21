@@ -9,9 +9,13 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientSilva
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientSilvaArmor : ModItem, ILocalizedModType
+    public class AncientSilvaArmor : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

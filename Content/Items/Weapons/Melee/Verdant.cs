@@ -1,20 +1,22 @@
 ﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class Verdant : ModItem, ILocalizedModType
+    public class Verdant : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
-
             ItemID.Sets.Yoyo[Item.type] = true;
             ItemID.Sets.GamepadExtraRange[Item.type] = 15;
             ItemID.Sets.GamepadSmartQuickReach[Item.type] = true;
@@ -26,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 30;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = 86;
+            Item.damage = Main.zenithWorld? 900 : 86;
             Item.knockBack = 6f;
             Item.useTime = 22;
             Item.useAnimation = 22;
@@ -50,7 +52,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<UelibloomBar>(6).
+                AddCondition(Condition.NotZenithWorld).
                 AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.Terrarian).
+                AddIngredient<CoreofCalamity>(2).
+                AddIngredient<ShadowspecBar>(5).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                AddCondition(Condition.ZenithWorld).
+                DisableDecraft().
                 Register();
         }
     }

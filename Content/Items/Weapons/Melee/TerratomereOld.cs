@@ -8,17 +8,23 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class TerratomereOld : ModItem, ILocalizedModType
+    public class TerratomereOld : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 60;
-            Item.damage = 260;
+            Item.damage = Main.zenithWorld ? 120 : 260;
             Item.DamageType = DamageClass.Melee;
+            Item.scale = Main.zenithWorld? 0.7f : 1f;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 21;
@@ -32,7 +38,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             Item.shootSpeed = 20f;
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage = 120;
+                Item.scale = 0.6f;
+            }
+            else
+            {
+                Item.damage = 260;
+                Item.scale = 1f;
+            }
+            return default;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             for (int index = 0; index < 4; ++index)
@@ -41,7 +60,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                 Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.5), knockback, player.whoAmI, 0f, 0f);
             }
-
             return false;
         }
 
@@ -77,11 +95,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
+
             CreateRecipe().
                 AddIngredient<Floodtide>().
                 AddIngredient<Hellkite>().
                 AddIngredient(ItemID.TerraBlade).
                 AddIngredient<UelibloomBar>(7).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 
@@ -90,7 +111,27 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<Hellkite>().
                 AddIngredient<TerraEdge>().
                 AddIngredient<UelibloomBar>(7).
+                AddCondition(Condition.NotZenithWorld).
+                DisableDecraft().
                 AddTile(TileID.LunarCraftingStation).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
+                AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
+                AddIngredient(ModContent.ItemType<LivingShard>(),5).
+                AddIngredient(ItemID.BrokenHeroSword).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+
+            CreateRecipe().
+                AddIngredient(ItemID.PiercingStarlight, 1).
+                AddIngredient<LivingShard>(5).
+                AddCondition(Condition.ZenithWorld).
+                DisableDecraft().
+                AddTile(TileID.MythrilAnvil).
                 Register();
         }
     }

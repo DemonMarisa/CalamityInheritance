@@ -1,5 +1,4 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
+﻿using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using Terraria.ID;
 using Terraria;
@@ -9,18 +8,20 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityMod.Buffs.DamageOverTime;
-using System.Collections.Generic;
-using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
     [AutoloadEquip(EquipType.Shield)]
-    public class AsgardsValorold : ModItem, ILocalizedModType
+    public class AsgardsValorold : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         public const int ShieldSlamDamage = 200;
         public const float ShieldSlamKnockback = 9f;
         public const int ShieldSlamIFrames = 12;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
 
         public override void SetDefaults()
         {

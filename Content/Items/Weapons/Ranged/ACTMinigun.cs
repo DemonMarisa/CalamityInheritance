@@ -11,11 +11,11 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ACTMinigun : ModItem, ILocalizedModType
+    public class ACTMinigun : CIRanged, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
-            
+            Item.ResearchUnlockCount = 1;
         }
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetDefaults()

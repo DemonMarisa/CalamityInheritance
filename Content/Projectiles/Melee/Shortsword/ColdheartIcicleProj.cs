@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.scale = 1f;
+            Projectile.scale *= Main.zenithWorld? 10f : 1f;
             Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;

@@ -9,7 +9,7 @@ using CalamityInheritance.System.Configs;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("StellarContemptOld")]
-    public class MeleeTypeHammerStellarContemptLegacy : ModItem, ILocalizedModType
+    public class MeleeTypeHammerStellarContemptLegacy : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static int BaseDamage = 300;
@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContempt>()] = ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = ModContent.ItemType<StellarContempt>();
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

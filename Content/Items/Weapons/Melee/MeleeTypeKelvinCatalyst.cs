@@ -21,9 +21,13 @@ using Terraria.Localization;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("KelvinCatalystMelee")]
-    public class MeleeTypeKelvinCatalyst : ModItem, ILocalizedModType
+    public class MeleeTypeKelvinCatalyst : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

@@ -4,6 +4,9 @@ using CalamityMod;
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Summon;
+using CalamityMod.Projectiles.Summon;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -30,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             Item.width = 26;
             Item.height = 26;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 42;
+            Item.damage = Main.zenithWorld ? 420 : 42;
             Item.knockBack = 2f;
             Item.mana = 10;
             Item.useTime = Item.useAnimation = 24;
@@ -101,7 +104,19 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
                 AddRecipeGroup("AnyMythrilBar", 10).
                 AddIngredient(ItemID.SoulofMight, 20).
                 AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(2, out Func<bool> condition), condition).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.MythrilAnvil).
+                Register();
+            
+            CreateRecipe().
+                AddIngredient<SpikecragStaff>().
+                AddIngredient<SarosPossession>().
+                AddIngredient<MysteriousCircuitry>(15).
+                AddIngredient<DubiousPlating>(5).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile<DraedonsForge>().
                 Register();
         }
     }

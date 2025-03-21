@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class AzathothLegacy : ModItem, ILocalizedModType
+    public class AzathothLegacy : CIMelee, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 650 : 270;
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             ItemID.Sets.Yoyo[Item.type] = true;
             ItemID.Sets.GamepadExtraRange[Item.type] = 15;
             ItemID.Sets.GamepadSmartQuickReach[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
@@ -27,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = NewDamage; //90->600, 90的面板破的了防?
+            Item.damage = Main.zenithWorld? 90 : NewDamage;
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;
@@ -55,11 +56,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.Terrarian).
                 AddIngredient<CoreofCalamity>(2).
                 AddIngredient<ShadowspecBar>(5).
+                AddCondition(Condition.NotZenithWorld).
+                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile<DraedonsForge>().
                 Register();
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
+                AddCondition(Condition.NotZenithWorld).
+                DisableDecraft().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<UelibloomBar>(6).
+                AddCondition(Condition.ZenithWorld).
+                AddDecraftCondition(Condition.ZenithWorld).
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

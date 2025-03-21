@@ -60,5 +60,6 @@ Mods: {
 		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 		DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
+		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
 	}
 }

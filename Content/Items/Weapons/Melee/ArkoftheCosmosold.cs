@@ -10,17 +10,17 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class ArkoftheCosmosold : ModItem, ILocalizedModType
+    public class ArkoftheCosmosold : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

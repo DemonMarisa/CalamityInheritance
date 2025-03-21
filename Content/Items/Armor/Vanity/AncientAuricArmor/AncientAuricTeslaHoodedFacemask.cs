@@ -7,9 +7,13 @@ using Terraria;
 namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientAuricArmor
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientAuricTeslaHoodedFacemask : ModItem, ILocalizedModType
+    public class AncientAuricTeslaHoodedFacemask : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 26;

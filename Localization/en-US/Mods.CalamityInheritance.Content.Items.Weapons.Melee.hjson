@@ -396,3 +396,38 @@ DragonSword: {
 		'Holding left button, to pour out the rage of dragon.'
 		'''
 }
+
+Warblade: {
+	Tooltip: ""
+	DisplayName: Warblade
+}
+
+MarniteSpear: {
+	Tooltip: ""
+	DisplayName: Marnite Spear
+}
+
+AquaticDissolution: {
+	Tooltip: ""
+	DisplayName: Aquatic Dissolution
+}
+
+VictideYoyo: {
+	Tooltip: ""
+	DisplayName: Victide Yoyo
+}
+
+VictideSword: {
+	Tooltip: ""
+	DisplayName: Victide Sword
+}
+
+VictideSpear: {
+	Tooltip: ""
+	DisplayName: Victide Spear
+}
+
+VictideBoomerangMelee: {
+	Tooltip: ""
+	DisplayName: Victide Boomerang Melee
+}

@@ -7,9 +7,13 @@ using Terraria;
 namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientAuricArmor
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientAuricTeslaCuisses : ModItem, ILocalizedModType
+    public class AncientAuricTeslaCuisses : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 22;

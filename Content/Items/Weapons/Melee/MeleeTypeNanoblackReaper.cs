@@ -14,14 +14,17 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     [LegacyName("NanoblackReaperLegacyMelee")]
-    public class MeleeTypeNanoblackReaper : ModItem, ILocalizedModType
+    public class MeleeTypeNanoblackReaper : CIMelee, ILocalizedModType
     {
         
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public static float Knockback = 9f;
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 455;
         public static float Speed = 12f;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 78;

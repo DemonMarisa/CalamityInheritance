@@ -1,19 +1,15 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Placeables.Plates;
-using CalamityMod.Rarities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Summon
 {
-    public class DoubleSonYharon: ModItem, ILocalizedModType
+    public class DoubleSonYharon: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Summon";
         public override void SetDefaults()

@@ -4,16 +4,15 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class LeviathanAmbergrisLegacy : ModItem, ILocalizedModType
+    public class LeviathanAmbergrisLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
-            
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

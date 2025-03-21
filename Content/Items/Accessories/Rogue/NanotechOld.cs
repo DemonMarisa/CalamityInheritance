@@ -12,10 +12,14 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Rogue
 {
-    public class NanotechOld : ModItem, ILocalizedModType
+    public class NanotechOld : CIAccessories, ILocalizedModType
     {
         public static int nanotechDMGStack  = 150;
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 46;

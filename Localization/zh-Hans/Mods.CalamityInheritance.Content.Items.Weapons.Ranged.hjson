@@ -392,3 +392,18 @@ ChickenCannonLegacy: {
 		火箭触碰物块时会弹起并提前引爆
 		'''
 }
+
+VictideBow: {
+	Tooltip: 发射慢速水弹
+	DisplayName: 海弓[Legacy]
+}
+
+ClockBowLegacy: {
+	Tooltip: ""
+	DisplayName: 发条弓[Legacy]
+}
+
+AntlionBow: {
+	Tooltip: '''"不是哥们，你怎么被删了?"'''
+	DisplayName: 蚁狮颚弓[Legacy]
+}

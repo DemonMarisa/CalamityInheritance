@@ -4,12 +4,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Armor.Vanity
+namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientOmegaBlueChestplate : ModItem, ILocalizedModType
+    public class AncientOmegaBlueChestplate : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 28;

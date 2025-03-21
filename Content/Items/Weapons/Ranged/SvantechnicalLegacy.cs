@@ -15,10 +15,14 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class SvantechnicalLegacy : ModItem, ILocalizedModType
+    public class SvantechnicalLegacy : CIRanged, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 350;
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 60;

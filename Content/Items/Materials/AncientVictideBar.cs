@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
-    public class AncientVictideBar: ModItem, ILocalizedModType
+    public class AncientVictideBar: CIMaterials, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Materials";
         public override void SetStaticDefaults()

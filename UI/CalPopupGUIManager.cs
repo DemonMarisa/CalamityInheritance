@@ -1,10 +1,7 @@
-﻿using CalamityMod.UI;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader.Core;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,7 +12,8 @@ namespace CalamityInheritance.UI
     {
         // 所有GUI实例
         // Scarlet: 这里疑似没有成功实例化，但我也不知道你要怎么实例化，反正看你
-        private static readonly List<CalPopupGUI> gUIs = new List<CalPopupGUI>();
+        // 需要想办法解决这一段去避免数组越界
+        private static readonly List<CalPopupGUI> gUIs = [];
         // 状态判断
         public static bool GUIActive(CalPopupGUI gui) => gui.Active || gui.FadeTime > 0;
         public static bool AnyGUIsActive => gUIs.Any(GUIActive);

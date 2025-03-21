@@ -12,7 +12,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class Murasamaold : ModItem, ILocalizedModType
+    public class Murasamaold : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
         public int frameCounter = 0;
@@ -22,13 +22,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
-            ItemID.Sets.AnimatesAsSoul[Type] = true;
+            //干掉魂设定，我要转微光啊
+            ItemID.Sets.AnimatesAsSoul[Type] = false;
             if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
             {
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasamaold>()] = ModContent.ItemType<Murasama>();
                 //开启微光转化时，Murasama将会以如下顺序进行微光转化
                 //灾厄版本的鬼妖村正->使用新挥刀特效的大范围鬼妖村正->1457的传统鬼妖村正
             }
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

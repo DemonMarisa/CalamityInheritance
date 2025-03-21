@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -26,6 +27,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.ai[0] > 7f)
             {
+                if (Main.zenithWorld)
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
                 float pScale = 1f;
                 if (Projectile.ai[0] == 8f)
                 {

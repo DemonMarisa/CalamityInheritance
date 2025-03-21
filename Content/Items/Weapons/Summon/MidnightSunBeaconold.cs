@@ -11,9 +11,13 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
-    public class MidnightSunBeaconold : ModItem, ILocalizedModType
+    public class MidnightSunBeaconold : CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;

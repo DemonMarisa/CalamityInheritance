@@ -6,9 +6,13 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
-    public class AcceleratorT3: ModItem, ILocalizedModType
+    public class AcceleratorT3: CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Placeables.Furniture.CraftingStations";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 99;
+        }
 
         public override void SetDefaults()
         {

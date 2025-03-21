@@ -8,10 +8,13 @@ using CalamityInheritance.Content.Projectiles.Wulfrum;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
-    public class WulfrumControllerOld : ModItem, ILocalizedModType
+    public class WulfrumControllerOld : CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Summon";
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.damage = 10;

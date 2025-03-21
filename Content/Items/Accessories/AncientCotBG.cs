@@ -9,12 +9,12 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class AncientCotBG: ModItem, ILocalizedModType
+    public class AncientCotBG: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories";
-
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()
         {

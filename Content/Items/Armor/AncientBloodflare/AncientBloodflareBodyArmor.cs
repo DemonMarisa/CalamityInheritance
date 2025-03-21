@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Accessories;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Materials;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientBloodflareBodyArmor : ModItem, ILocalizedModType
+    public class AncientBloodflareBodyArmor : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

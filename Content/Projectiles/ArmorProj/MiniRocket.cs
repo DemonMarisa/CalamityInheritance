@@ -11,10 +11,6 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
     public class MiniRocket : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Rocket");
-        }
 
         public override void SetDefaults()
         {
@@ -31,22 +27,22 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             Projectile.spriteDirection = Projectile.direction = Utils.ToDirectionInt(Projectile.velocity.X > 0f);
             Projectile.rotation = Utils.ToRotation(Projectile.velocity) + ((Projectile.spriteDirection == 1) ? 0f : ((float)Math.PI)) + MathHelper.ToRadians(90f) * Projectile.direction;
 
-            for (int num246 = 0; num246 < 2; num246++)
+            for (int i = 0; i < 2; i++)
             {
-                float num247 = 0f;
-                float num248 = 0f;
-                if (num246 == 1)
+                float dustX = 0f;
+                float dustY = 0f;
+                if (i == 1)
                 {
-                    num247 = Projectile.velocity.X * 0.5f;
-                    num248 = Projectile.velocity.Y * 0.5f;
+                    dustX = Projectile.velocity.X * 0.5f;
+                    dustY = Projectile.velocity.Y * 0.5f;
                 }
-                int num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Torch, 0f, 0f, 100, default, 1f);
-                Main.dust[num249].scale *= 2f + Main.rand.Next(10) * 0.1f;
-                Main.dust[num249].velocity *= 0.2f;
-                Main.dust[num249].noGravity = true;
-                num249 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num247, Projectile.position.Y + 3f + num248) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Smoke, 0f, 0f, 100, default, 0.5f);
-                Main.dust[num249].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
-                Main.dust[num249].velocity *= 0.05f;
+                int d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + dustX, Projectile.position.Y + 3f + dustY) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Torch, 0f, 0f, 100, default, 1f);
+                Main.dust[d].scale *= 2f + Main.rand.Next(10) * 0.1f;
+                Main.dust[d].velocity *= 0.2f;
+                Main.dust[d].noGravity = true;
+                d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + dustX, Projectile.position.Y + 3f + dustY) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Smoke, 0f, 0f, 100, default, 0.5f);
+                Main.dust[d].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
+                Main.dust[d].velocity *= 0.05f;
             }
                 
             if (Projectile.timeLeft > 170)

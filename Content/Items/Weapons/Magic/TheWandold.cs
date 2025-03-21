@@ -9,7 +9,7 @@ using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class TheWandold : ModItem, ILocalizedModType
+    public class TheWandold : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         // The actual base damage of The Wand. The damage reported on the item is just the spark, which is irrelevant.
@@ -18,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

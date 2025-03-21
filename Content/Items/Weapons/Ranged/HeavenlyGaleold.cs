@@ -19,7 +19,7 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class HeavenlyGaleold : ModItem, ILocalizedModType
+    public class HeavenlyGaleold : CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public const float NormalArrowDamageMult = 1.25f;
@@ -27,6 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         private static int[] ExoArrowsExoLore;
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
             ExoArrows =
             [
             ModContent.ProjectileType<ExoArrowTeal>(),
@@ -44,6 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             ];
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
 
         public override void SetDefaults()
         {

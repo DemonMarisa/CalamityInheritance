@@ -11,12 +11,15 @@ using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
-    public class SamuraiBadge : ModItem, ILocalizedModType
+    public class SamuraiBadge : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
         internal const float MaxBonus = 0.3f;
         internal const float MaxDistance = 600f;
-
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
         public override void SetDefaults()
         {
             Item.width = 30;

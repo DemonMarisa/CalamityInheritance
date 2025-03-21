@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -22,6 +23,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.01f / 255f, (255 - Projectile.alpha) * 0.05f / 255f, (255 - Projectile.alpha) * 0.25f / 255f);
+            if (Main.zenithWorld)
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             if (Main.rand.NextBool(5))
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PurificationPowder, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);

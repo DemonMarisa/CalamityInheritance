@@ -8,12 +8,13 @@ using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class Lazinator : ModItem, ILocalizedModType
+    public class Lazinator : CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

@@ -12,11 +12,12 @@ using CalamityInheritance.Content.Projectiles.ArmorProj;
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelmetRevamped : ModItem, ILocalizedModType 
+    public class ReaverHelmetRevamped : CIArmor, ILocalizedModType 
     {
         public new string LocalizationCategory => "Content.Items.Armor";
         public override void SetStaticDefaults()
         {
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

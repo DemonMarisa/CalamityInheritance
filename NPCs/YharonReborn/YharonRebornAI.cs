@@ -39,6 +39,7 @@ namespace CalamityInheritance.NPCs.YharonReborn
         }
         #endregion
         #region 攻击顺序列表
+        //子阶段1: 普冲->普冲->快冲->慢速弹幕炼狱&追踪火球->挂机->普冲->普冲->火球环->龙卷
         public static readonly RebornAttacks[] SubphasePattern1 =
         [
             RebornAttacks.NormalCharge,

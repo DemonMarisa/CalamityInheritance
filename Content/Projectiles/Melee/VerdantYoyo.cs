@@ -10,10 +10,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Verdant");
+            //这里可能无法动态修改，看情况
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 560f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 17f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = Main.zenithWorld? 1800f : 560f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = Main.zenithWorld ? 28f :17f;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
@@ -24,13 +24,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.aiStyle = ProjAIStyleID.Yoyo;
             Projectile.width = 16;
             Projectile.height = 16;
-            Projectile.scale = 1.1f;
+            Projectile.scale = Main.zenithWorld ? 4f : 1.1f;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.penetrate = -1;
             Projectile.MaxUpdates = 2;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 9;
+            Projectile.localNPCHitCooldown = Main.zenithWorld? 1 : 9;
         }
 
         public override void AI()
@@ -40,7 +40,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Main.rand.NextBool(5))
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 
-            CalamityUtils.MagnetSphereHitscan(Projectile, 600, 8f, 54f, 5, ProjectileID.CrystalLeafShot, 0.8);
+            if (!Main.zenithWorld)
+                CalamityUtils.MagnetSphereHitscan(Projectile, 600f, 8f, 54f, 5, ProjectileID.CrystalLeafShot, 0.8);
+            else
+                CalamityUtils.MagnetSphereHitscan(Projectile, 3600f, 24f, 5f, 30, ProjectileID.CrystalLeafShot, 1.8, true);
 
             if ((Projectile.position - Main.player[Projectile.owner].position).Length() > 3200f) //200 blocks
                 Projectile.Kill();
