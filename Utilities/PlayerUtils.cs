@@ -15,29 +15,18 @@ namespace CalamityInheritance.Utilities
     public static partial class CIFunction
     {
         #region Cooldowns
-        public static void RemoveCalCooldown(this Player player, string id)
-        {
-            CalamityPlayer calamityPlayer = player.Calamity();
-            if (calamityPlayer != null)
-            {
-                RemoveCooldownFromModPlayer(calamityPlayer, id);
-            }
-        }
-        // 移除UI冷却
+        // 移除冷却
         public static void RemoveCooldown(this Player player, string id)
         {
+            CalamityPlayer calamityPlayer = player.Calamity();
             CalamityInheritancePlayer inheritancePlayer = player.CIMod();
-            if (inheritancePlayer != null)
-            {
-                RemoveCooldownFromModPlayer(inheritancePlayer, id);
-            }
+
+            RemoveCooldownFromModPlayer(calamityPlayer, id);
+            RemoveCooldownFromModPlayer(inheritancePlayer, id);
         }
-        public static void RemoveCooldownFromModPlayer(dynamic player, string id)
+        private static void RemoveCooldownFromModPlayer(dynamic player, string id)
         {
-            if (player.cooldowns.ContainsKey(id))
-            {
-                player.cooldowns.Remove(id);
-            }
+            player.cooldowns.Remove(id);
         }
         #endregion
         public static CalamityInheritanceGlobalProjectile CalamityInheritance(this Projectile proj)

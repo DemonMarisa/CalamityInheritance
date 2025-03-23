@@ -24,7 +24,7 @@ namespace CalamityInheritance.System
                     //Main.NewText($"layers.Insert", 255, 255, 255);
                     AstralArcanumUI.UpdateAndDraw(Main.spriteBatch);
                     return true;
-                }, InterfaceScaleType.None));
+                }, InterfaceScaleType.UI));
                 //Main.NewText($"Inserted Astral Arcanum UI at {mouseIndex}", 255, 255, 255);
             }
 
@@ -33,7 +33,7 @@ namespace CalamityInheritance.System
             {
                 CalPopupGUIManager.UpdateAndDraw(Main.spriteBatch);
                 return true;
-            }, InterfaceScaleType.None));
+            }, InterfaceScaleType.UI));
         }
     }
 }

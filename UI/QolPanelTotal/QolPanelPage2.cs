@@ -16,6 +16,7 @@ using Terraria.Localization;
 using System.IO;
 using Terraria.GameContent;
 using Terraria.UI.Chat;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -60,52 +61,6 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public Color TextOutLineColor = new(22, 88, 111);
         public static string LoreImagePath => "CalamityInheritance/UI/DraedonsTexture/Lore"; //一个字段
 
-        #region 状态数组
-        public int UIpanelloreExocount = 1;//用于qol面板的星三王传颂计数
-        public int exoPanelID = 1;// 星三王面板功能的ID
-
-        //注：这里的排序用的是boss checklist给的boss顺序
-        #region 状态计数
-
-
-        public int KSPanelType = 1;
-        public int DSPanelType = 1;
-        public int EoCPanelType = 1;
-        public int CrabPanelType = 1;
-        public int EoWPanelType = 1;
-        public int BoCPanelType = 1;
-        public int HivePanelType = 1;
-        public int PerfPanelType = 1;
-        public int QBPanelType = 1;
-        public int SkelePanelType = 1;
-        public int SGPanelType = 1;
-        public int WoFPanelType = 1;
-        public int CryoPanelType = 1;
-        public int TwinsPanelType = 1;
-        public int BrimmyPanelType = 1;
-        public int DestroyerPanelType = 1;
-        public int ASPanelType = 1;
-        public int PrimePanelType = 1;
-        public int CalClonePanelType = 1;
-        public int PlantPanelType = 1;
-        public int AureusPanelType = 1;
-        public int LAPanelType = 1;
-        public int GolemPanelType = 1;
-        public int PBGPanelType = 1;
-        public int RavagerPanelType = 1;
-        public int DukePanelType = 1;
-        public int CultistPanelType = 1;
-        public int DeusPanelType = 1;
-        public int MLPanelType = 1;
-        public int ProviPanelType = 1;
-        public int PolterPanelType = 1;
-        public int ODPanelType = 1;
-        public int DoGPanelType = 1;
-        public int YharonPanelType = 1;
-        public int ExoPanelType = 1;
-        public int SCalPanelType = 1;
-
-        #endregion
         #region 文本ID
         public int TextDisplayID = 0;
 
@@ -147,7 +102,6 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public int ExoBtnID = 35;
         public int SCalBtnID = 36;
         #endregion
-        #endregion
         /*
         *Scarlet: 制表-绘制格式，下方出现的值都是相对于0差值绝对值
         *对于传颂, 每次绘制都应当在最上方开始
@@ -172,6 +126,9 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #endregion
         public void Page2Draw(SpriteBatch spriteBatch)
         {
+            Player player = Main.player[Main.myPlayer];
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+
             #region 功能开启
             //打表！
             bool Any = true;
@@ -257,8 +214,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 左上角为 Lore偏移：X - 515 Y - 330 按钮偏移：X - 515 Y - 260
             // 第二行步进为 y - 140 第二列步进为 X + 80
 
-            float xResolutionScale = Main.screenWidth / 2560f;
-            float yResolutionScale = Main.screenHeight / 1440f;
+            float xResolutionScale = 0.8f;
+            float yResolutionScale = 0.8f;
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
 
             // 案例绘制
@@ -346,50 +303,50 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 CIFunction.DrawLore(genericLoreData, GetLorePos(6, 6).LorePosX, GetLorePos(6, 6).LorePosY, LoreSCal, ref TextDisplayID, ref SCalBtnID, ref DownedSCal);
                 #endregion
                 #region 按钮绘制
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 1).LoreBtnX, GetLorePos(1, 1).LoreBtnY, ref DownedKS, ref KSPanelType, ref KSBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 2).LoreBtnX, GetLorePos(1, 2).LoreBtnY, ref DownedDS, ref DSPanelType, ref DSBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 3).LoreBtnX, GetLorePos(1, 3).LoreBtnY, ref DownedEoC, ref EoCPanelType, ref EoCBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 4).LoreBtnX, GetLorePos(1, 4).LoreBtnY, ref DownedCrab, ref CrabPanelType, ref CrabBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 5).LoreBtnX, GetLorePos(1, 5).LoreBtnY, ref DownedEoW, ref EoWPanelType, ref EoWBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 6).LoreBtnX, GetLorePos(1, 6).LoreBtnY, ref DownedBoC, ref BoCPanelType, ref BoCBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 1).LoreBtnX, GetLorePos(2, 1).LoreBtnY, ref DownedHive, ref HivePanelType, ref HiveBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 2).LoreBtnX, GetLorePos(2, 2).LoreBtnY, ref DownedPerf, ref PerfPanelType, ref PerfBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 3).LoreBtnX, GetLorePos(2, 3).LoreBtnY, ref DownedQB, ref QBPanelType, ref QBBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 4).LoreBtnX, GetLorePos(2, 4).LoreBtnY, ref DownedSkele, ref SkelePanelType, ref SkeleBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 5).LoreBtnX, GetLorePos(2, 5).LoreBtnY, ref DownedSG, ref SGPanelType, ref SGBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 6).LoreBtnX, GetLorePos(2, 6).LoreBtnY, ref DownedWoF, ref WoFPanelType, ref WoFBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 1).LoreBtnX, GetLorePos(3, 1).LoreBtnY, ref DownedCryo, ref CryoPanelType, ref CryoBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 2).LoreBtnX, GetLorePos(3, 2).LoreBtnY, ref DownedTwins, ref TwinsPanelType, ref TwinsBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 3).LoreBtnX, GetLorePos(3, 3).LoreBtnY, ref DownedBrimmy, ref BrimmyPanelType, ref BrimmyBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 4).LoreBtnX, GetLorePos(3, 4).LoreBtnY, ref DownedDestroyer, ref DestroyerPanelType, ref DestroyerBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 5).LoreBtnX, GetLorePos(3, 5).LoreBtnY, ref DownedAS, ref ASPanelType, ref ASBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 6).LoreBtnX, GetLorePos(3, 6).LoreBtnY, ref DownedPrime, ref PrimePanelType, ref PrimeBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 1).LoreBtnX, GetLorePos(4, 1).LoreBtnY, ref DownedCalClone, ref CalClonePanelType, ref CalCloneBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 2).LoreBtnX, GetLorePos(4, 2).LoreBtnY, ref DownedPlant, ref PlantPanelType, ref PlantBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 3).LoreBtnX, GetLorePos(4, 3).LoreBtnY, ref DownedAureus, ref AureusPanelType, ref AureusBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 4).LoreBtnX, GetLorePos(4, 4).LoreBtnY, ref DownedLA, ref LAPanelType, ref LABtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 5).LoreBtnX, GetLorePos(4, 5).LoreBtnY, ref DownedGolem, ref GolemPanelType, ref GolemBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 6).LoreBtnX, GetLorePos(4, 6).LoreBtnY, ref DownedPBG, ref PBGPanelType, ref PBGBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 1).LoreBtnX, GetLorePos(5, 1).LoreBtnY, ref DownedDuke, ref DukePanelType, ref DukeBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 2).LoreBtnX, GetLorePos(5, 2).LoreBtnY, ref DownedRavager, ref RavagerPanelType, ref RavagerBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 3).LoreBtnX, GetLorePos(5, 3).LoreBtnY, ref DownedCultist, ref CultistPanelType, ref CultistBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 4).LoreBtnX, GetLorePos(5, 4).LoreBtnY, ref DownedDeus, ref DeusPanelType, ref DeusBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 5).LoreBtnX, GetLorePos(5, 5).LoreBtnY, ref DownedML, ref MLPanelType, ref MLBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 6).LoreBtnX, GetLorePos(5, 6).LoreBtnY, ref DownedProvi, ref ProviPanelType, ref ProviBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 1).LoreBtnX, GetLorePos(6, 1).LoreBtnY, ref DownedPolter, ref PolterPanelType, ref PolterBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 2).LoreBtnX, GetLorePos(6, 2).LoreBtnY, ref DownedOD, ref ODPanelType, ref ODBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 3).LoreBtnX, GetLorePos(6, 3).LoreBtnY, ref DownedDoG, ref DoGPanelType, ref DoGBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 4).LoreBtnX, GetLorePos(6, 4).LoreBtnY, ref DownedYharon, ref YharonPanelType, ref YharonBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 5).LoreBtnX, GetLorePos(6, 5).LoreBtnY, ref DownedExo, ref exoPanelID, ref ExoBtnID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 6).LoreBtnX, GetLorePos(6, 6).LoreBtnY, ref DownedSCal, ref SCalPanelType, ref SCalBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 1).LoreBtnX, GetLorePos(1, 1).LoreBtnY, ref DownedKS, ref cIPlayer.KSPanelType, ref KSBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 2).LoreBtnX, GetLorePos(1, 2).LoreBtnY, ref DownedDS, ref cIPlayer.DSPanelType, ref DSBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 3).LoreBtnX, GetLorePos(1, 3).LoreBtnY, ref DownedEoC, ref cIPlayer.EoCPanelType, ref EoCBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 4).LoreBtnX, GetLorePos(1, 4).LoreBtnY, ref DownedCrab, ref cIPlayer.CrabPanelType, ref CrabBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 5).LoreBtnX, GetLorePos(1, 5).LoreBtnY, ref DownedEoW, ref cIPlayer.EoWPanelType, ref EoWBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 6).LoreBtnX, GetLorePos(1, 6).LoreBtnY, ref DownedBoC, ref cIPlayer.BoCPanelType, ref BoCBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 1).LoreBtnX, GetLorePos(2, 1).LoreBtnY, ref DownedHive, ref cIPlayer.HivePanelType, ref HiveBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 2).LoreBtnX, GetLorePos(2, 2).LoreBtnY, ref DownedPerf, ref cIPlayer.PerfPanelType, ref PerfBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 3).LoreBtnX, GetLorePos(2, 3).LoreBtnY, ref DownedQB, ref cIPlayer.QBPanelType, ref QBBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 4).LoreBtnX, GetLorePos(2, 4).LoreBtnY, ref DownedSkele, ref cIPlayer.SkelePanelType, ref SkeleBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 5).LoreBtnX, GetLorePos(2, 5).LoreBtnY, ref DownedSG, ref cIPlayer.SGPanelType, ref SGBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(2, 6).LoreBtnX, GetLorePos(2, 6).LoreBtnY, ref DownedWoF, ref cIPlayer.WoFPanelType, ref WoFBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 1).LoreBtnX, GetLorePos(3, 1).LoreBtnY, ref DownedCryo, ref cIPlayer.CryoPanelType, ref CryoBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 2).LoreBtnX, GetLorePos(3, 2).LoreBtnY, ref DownedTwins, ref cIPlayer.TwinsPanelType, ref TwinsBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 3).LoreBtnX, GetLorePos(3, 3).LoreBtnY, ref DownedBrimmy, ref cIPlayer.BrimmyPanelType, ref BrimmyBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 4).LoreBtnX, GetLorePos(3, 4).LoreBtnY, ref DownedDestroyer, ref cIPlayer.DestroyerPanelType, ref DestroyerBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 5).LoreBtnX, GetLorePos(3, 5).LoreBtnY, ref DownedAS, ref cIPlayer.ASPanelType, ref ASBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(3, 6).LoreBtnX, GetLorePos(3, 6).LoreBtnY, ref DownedPrime, ref cIPlayer.PrimePanelType, ref PrimeBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 1).LoreBtnX, GetLorePos(4, 1).LoreBtnY, ref DownedCalClone, ref cIPlayer.CalClonePanelType, ref CalCloneBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 2).LoreBtnX, GetLorePos(4, 2).LoreBtnY, ref DownedPlant, ref cIPlayer.PlantPanelType, ref PlantBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 3).LoreBtnX, GetLorePos(4, 3).LoreBtnY, ref DownedAureus, ref cIPlayer.AureusPanelType, ref AureusBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 4).LoreBtnX, GetLorePos(4, 4).LoreBtnY, ref DownedLA, ref cIPlayer.LAPanelType, ref LABtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 5).LoreBtnX, GetLorePos(4, 5).LoreBtnY, ref DownedGolem, ref cIPlayer.GolemPanelType, ref GolemBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(4, 6).LoreBtnX, GetLorePos(4, 6).LoreBtnY, ref DownedPBG, ref cIPlayer.PBGPanelType, ref PBGBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 1).LoreBtnX, GetLorePos(5, 1).LoreBtnY, ref DownedDuke, ref cIPlayer.DukePanelType, ref DukeBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 2).LoreBtnX, GetLorePos(5, 2).LoreBtnY, ref DownedRavager, ref cIPlayer.RavagerPanelType, ref RavagerBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 3).LoreBtnX, GetLorePos(5, 3).LoreBtnY, ref DownedCultist, ref cIPlayer.CultistPanelType, ref CultistBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 4).LoreBtnX, GetLorePos(5, 4).LoreBtnY, ref DownedDeus, ref cIPlayer.DeusPanelType, ref DeusBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 5).LoreBtnX, GetLorePos(5, 5).LoreBtnY, ref DownedML, ref cIPlayer.MLPanelType, ref MLBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(5, 6).LoreBtnX, GetLorePos(5, 6).LoreBtnY, ref DownedProvi, ref cIPlayer.ProviPanelType, ref ProviBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 1).LoreBtnX, GetLorePos(6, 1).LoreBtnY, ref DownedPolter, ref cIPlayer.PolterPanelType, ref PolterBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 2).LoreBtnX, GetLorePos(6, 2).LoreBtnY, ref DownedOD, ref cIPlayer.ODPanelType, ref ODBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 3).LoreBtnX, GetLorePos(6, 3).LoreBtnY, ref DownedDoG, ref cIPlayer.DoGPanelType, ref DoGBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 4).LoreBtnX, GetLorePos(6, 4).LoreBtnY, ref DownedYharon, ref cIPlayer.YharonPanelType, ref YharonBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 5).LoreBtnX, GetLorePos(6, 5).LoreBtnY, ref DownedExo, ref cIPlayer.ExoPanelType, ref ExoBtnID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(6, 6).LoreBtnX, GetLorePos(6, 6).LoreBtnY, ref DownedSCal, ref cIPlayer.SCalPanelType, ref SCalBtnID);
                 #endregion
                 #region 绘制高清lore
                 // 我没有新建结构体而是继续调用后并修改部分数值
                 // 右侧界面的中心位置
-                int RightPageXcenter = GetLorePos(3, 5, true).LoreBtnX - 175;
+                // 330
 
                 Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore").Value;
-                CIFunction.DrawLore(genericLoreDataNotOutLine, RightPageXcenter, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, 0.98f);
+                CIFunction.DrawLore(genericLoreDataNotOutLine, CIConfig.Instance.UIX, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, 0.98f);
 
                 // 下划线贴图
                 Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
@@ -397,22 +354,28 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 下划线贴图
                 Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLineShort").Value;
 
-                CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, RightPageXcenter, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
+                CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, 305, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
                 #endregion
                 #region 绘制文字
+                // 背景贴图
+                Texture2D bgTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextHoverTip").Value;
+
                 // 获取文字
                 string TileText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreT" + TextDisplayID);
                 string LoreText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.Lore" + TextDisplayID);
 
                 string ScalLoreText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreSP");
 
-                CIFunction.DrawText(spriteBatch, TileText, 0.9f, 0.9f, 325, -75, 1f, TextColor, Color.DarkSlateGray, InvisibleUI, 15, 400f, 1.2f);
-                CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 325, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, CIConfig.Instance.Offset, 400f, 1.4f);
+
+                CIFunction.DrawText(spriteBatch, TileText, 0.9f, 0.9f, 336, -60, 1f, TextColor, Color.DarkSlateGray, InvisibleUI, 15, 400f, 1.2f);
+
+                CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 340, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, 23, 400f, 1.4f);
                 // 36号ID为終灾
                 if(TextDisplayID == 36)
                 {
-                    CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 325, -27, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
+                    CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 340, -27, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
                 }
+
                 #endregion
             }
         }
@@ -509,9 +472,9 @@ namespace CalamityInheritance.UI.QolPanelTotal
             //赋值给结构体
             LorePosData newData = new()
             {
-                LorePosX = -LoreGapX * colume + 20,
+                LorePosX = -LoreGapX * colume + 9,
                 //行距因子已经默认给按钮绘制预留了空间。
-                LorePosY = LoreGapY * line + 34,
+                LorePosY = LoreGapY * line + 46,
             };
             //按钮的水平坐标应当与传颂之物的水平坐标一致， 垂直坐标则默认加上这个传颂与按钮的差值
             newData.LoreBtnX = newData.LorePosX;

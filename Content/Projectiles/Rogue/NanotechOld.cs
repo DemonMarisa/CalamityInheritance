@@ -47,15 +47,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 CalamityUtils.HomeInOnNPC(Projectile, true, 800f, 12f, 20f);
         }
 
-        // Reduce damage of projectiles if more than the cap are active
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            int cap = 5;
-            float capDamageFactor = 0.05f;
-            int excessCount = Main.player[Projectile.owner].ownedProjectileCounts[Projectile.type] - cap;
-            modifiers.SourceDamage *= MathHelper.Clamp(1f - (capDamageFactor * excessCount), 0f, 1f);
-        }
-
         public override void OnKill(int timeLeft)
         {
             int inc;
@@ -74,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     nanoDust.velocity = dustDirection * Main.rand.Next(45, 91) / 10f;
                 }
-                nanoDust.color = Main.hslToRgb((float)(0.40000000596046448 + Main.rand.NextDouble() * 0.20000000298023224), 0.9f, 0.5f);
+                nanoDust.color = Main.hslToRgb((float)(0.4+ Main.rand.NextDouble() * 0.2), 0.9f, 0.5f);
                 nanoDust.color = Color.Lerp(nanoDust.color, Color.White, 0.3f);
                 nanoDust.noGravity = true;
                 nanoDust.scale = 0.7f;

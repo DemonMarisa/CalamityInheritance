@@ -55,7 +55,8 @@ namespace CalamityInheritance.CIPlayer
             #region Player Incoming Damage Multiplier (Increases)
             double damageMult = 1D;
             CalamityInheritancePlayer modPlayer1 = Player.CIMod();
-            if (modPlayer1.LoreDesertScourge) // Dimensional Soul Artifact increases incoming damage by 15%.
+
+            if (modPlayer1.LoreDevourer || PanelsLoreDevourer)
                 damageMult += 0.05;
 
             if(AncientBloodPact && Main.rand.NextBool(4))
@@ -420,7 +421,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (SCalLore)
+            if (SCalLore || PanelsSCalLore)
             {
                 int randomMessage = Main.rand.Next(1, 5);
                 Color messageColor = Color.DarkRed;
@@ -517,7 +518,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                if ((modPlayer1.SCalLore || modPlayer1.PanelsSCalLore )&& target.type == ModContent.NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }
@@ -596,7 +597,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if (modPlayer1.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                if ((modPlayer1.SCalLore || modPlayer1.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }
@@ -758,9 +759,9 @@ namespace CalamityInheritance.CIPlayer
                 }
                 if (CISpongeShieldDurability <= 0)
                 {
+                    Player.RemoveCooldown(CISpongeRechargeRelay.ID);
                     if (!Player.HasCooldown(CISpongeRecharge.ID))
                     {
-                        Player.RemoveCooldown(CISpongeRechargeRelay.ID);
                         Player.AddCooldown(CISpongeRecharge.ID, TheSpongetest.CIShieldRechargeDelay, true);
                         //Main.NewText($"已添加冷却", 0, 255, 0);
                     }
@@ -954,7 +955,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer modPlayer = Player.CIMod();
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if (modPlayer.SCalLore && target.type == ModContent.NPCType<ReaperShark>())
+                if ((modPlayer.SCalLore || modPlayer.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }

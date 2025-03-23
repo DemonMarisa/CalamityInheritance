@@ -39,6 +39,8 @@ namespace CalamityInheritance.CIPlayer
         public bool LoreDevourer = false;//
         public bool LoreJungleDragon = false;//
         public bool SCalLore = false;//
+        public bool LoreCryoDash = false;
+
         public bool LoreSea = false;
         public bool LoreCorruption = false;//
         public bool LoreCrimson = false;//
@@ -79,6 +81,8 @@ namespace CalamityInheritance.CIPlayer
             LoreDevourer = false;
             LoreJungleDragon = false;
             SCalLore = false;
+            LoreCryoDash = false;
+
             LoreSea = false;
             LoreCorruption = false;
             LoreCrimson = false;

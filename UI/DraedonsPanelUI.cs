@@ -16,6 +16,9 @@ namespace CalamityInheritance.UI
 {
     public abstract class DraedonsPanelUI : CalPopupGUI
     {
+        public float scaleX = 1.2f;
+        public float scaleY = 1.2f;
+
         public int Page = 0;
         public int ArrowClickCooldown;
         public bool HoveringOverBook = false;
@@ -98,40 +101,42 @@ namespace CalamityInheritance.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
-            Texture2D rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
-
             Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
 
             float progress = EasingHelper.EaseOutExpo(FadeTime / (float)FadeTimeMax);
             float xScale = MathHelper.Lerp(0.004f, 1f, progress);
 
-            Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / pageTexture.Size();
-            // UIY轴缩放
-            scale.Y *= 2.1f;
-            // UI缩放
-            scale *= 0.5f;
+            Vector2 scale = new(xScale, 1f);
 
-            float xResolutionScale = Main.screenWidth / 2560f;
-            float yResolutionScale = Main.screenHeight / 1440f;
+            // UI缩放
+            scale.X *= scaleX;
+            scale.Y *= scaleY;
+
+            float xResolutionScale = 1f;
+            float yResolutionScale = 1f;
             // ?你为啥再乘一遍
-            float bookScale = 0.75f;
-            scale *= bookScale;
+
             // 修改页面滑动动画，同样优化为曲线
-            float yPageTop = MathHelper.Lerp(Main.screenHeight * 1,Main.screenHeight * 0.1f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+            float yPageCenter = MathHelper.Lerp(Main.screenHeight * 1.4f,Main.screenHeight * 0.5f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
 
             float drawPositionX = Main.screenWidth * 0.5f;
-            Vector2 drawPosition = new Vector2(drawPositionX, yPageTop);
-            Rectangle pageRectangle = new Rectangle((int)drawPosition.X - (int)(pageTexture.Width * scale.X), (int)yPageTop, (int)(pageTexture.Width * scale.X) * 2, (int)(pageTexture.Height * scale.Y));
-            for (int i = 0; i < 2; i++)
-            {
-                spriteBatch.Draw(pageTexture, drawPosition, null, Color.White, 0f, new Vector2(i == 0f ? pageTexture.Width : 0f, 0f), scale, i == 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            Vector2 drawPosition = new Vector2(drawPositionX, yPageCenter);
 
-                if (!HoveringOverBook)
-                    HoveringOverBook = mouseRectangle.Intersects(pageRectangle);
-            }
+            Rectangle pageRectangle = new((int)drawPosition.X - (int)(pageTexture.Width * scale.X), (int)yPageCenter - (int)(pageTexture.Height / 2 * scale.Y), (int)(pageTexture.Width * scale.X) * 2, (int)(pageTexture.Height * scale.Y));
+
+            // 绘制在左侧的书页的锚点
+            Vector2 pageOriginLeft = new(pageTexture.Width , pageTexture.Height / 2);
+            // 右侧的
+            Vector2 pageOriginRight = new(0f, pageTexture.Height / 2);
+
+            // 分开绘制
+            spriteBatch.Draw(pageTexture, drawPosition, null, Color.White, 0f, pageOriginLeft, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(pageTexture, drawPosition, null, Color.White, 0f, pageOriginRight, scale, SpriteEffects.FlipHorizontally, 0f);
+
+            if (!HoveringOverBook)
+                HoveringOverBook = mouseRectangle.Intersects(pageRectangle);
 
             // Create text and arrows.
             if (FadeTime >= FadeTimeMax && Active)
@@ -143,19 +148,18 @@ namespace CalamityInheritance.UI
                     Page = TotalPages;
 
                 // 绘制箭头
-                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageTop + 550 * yResolutionScale, mouseRectangle);
+                DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageCenter * yResolutionScale, mouseRectangle);
                 // 请查看QolPanel
                 PageDraw(spriteBatch);
-
             }
         }
         // 绘制箭头
         public void DrawArrows(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageBottom, Rectangle mouseRectangle)
         {
 
-            float LeftarrowScale = 1.4f;
+            float LeftarrowScale = 1f;
 
-            float RightarrowScale = 1.4f;
+            float RightarrowScale = 1f;
 
             Texture2D leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
             Texture2D rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
@@ -166,21 +170,19 @@ namespace CalamityInheritance.UI
             // 箭头背景的绘制信息
             #region 箭头背景
 
-            float yPageTop = MathHelper.Lerp(Main.screenHeight * 2, Main.screenHeight * 0.1f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+            float yPageCenter = MathHelper.Lerp(Main.screenHeight * 1.4f, Main.screenHeight * 0.5f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
             float drawBGPositionX = Main.screenWidth * 0.5f;
-            Vector2 drawBGPosition = new Vector2(drawBGPositionX, yPageTop);
+            Vector2 drawBGPosition = new Vector2(drawBGPositionX, yPageCenter);
 
             float xScale = MathHelper.Lerp(0.004f, 1f, FadeTime / (float)FadeTimeMax);
 
-            Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / leftArrowTextureBG.Size();
-            // UIY轴缩放
-            scale.Y *= 2.1f;
+            Vector2 scale = new(xScale, 1f);
+
+
             // UI缩放
-            scale *= 0.5f;
-            // ?你为啥再乘一遍
-            float bookScale = 0.75f;
-            scale *= bookScale;
+            scale.X *= scaleX;
+            scale.Y *= scaleY;
 
             #endregion
             // 左箭头处理
@@ -192,7 +194,7 @@ namespace CalamityInheritance.UI
                     LeftarrowScale *= 0.9f;
                 }
                 // 绘制坐标
-                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 625f, yPageBottom);
+                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 650, yPageBottom);
 
 
                 Rectangle arrowRect = new Rectangle(
@@ -215,7 +217,7 @@ namespace CalamityInheritance.UI
                 }
 
                 // 绘制背景
-                spriteBatch.Draw(leftArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(rightArrowTextureBG.Width, 0f), scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(leftArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(rightArrowTextureBG.Width, rightArrowTextureBG.Height / 2), scale, SpriteEffects.None, 0f);
 
                 spriteBatch.Draw(leftArrowTexture, drawPosition, null, Color.White, 0f,
                     leftArrowTexture.Size() / 2,  // 改为中心锚点
@@ -233,7 +235,7 @@ namespace CalamityInheritance.UI
                 }
 
                 // 注释同上，只是复制了一遍，方向相反
-                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 625f, yPageBottom);
+                Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 650, yPageBottom);
 
                 Rectangle arrowRect = new Rectangle(
                     (int)(drawPosition.X - rightArrowTexture.Width * xResolutionScale * RightarrowScale / 2),
@@ -253,7 +255,7 @@ namespace CalamityInheritance.UI
                 }
 
                 // 绘制背景
-                spriteBatch.Draw(rightArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(0f, 0f), scale, SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(rightArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(0f, rightArrowTextureBG.Height / 2), scale, SpriteEffects.FlipHorizontally, 0f);
 
                 spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.FlipHorizontally, 0f);
             }

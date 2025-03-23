@@ -274,16 +274,16 @@ namespace CalamityInheritance.CIPlayer
         public override void PostUpdateRunSpeeds()
         {
             CalamityPlayer modPlayer = Player.Calamity();
-            if (LoreDestroyer)
+            if (LoreDestroyer || PanelsLoreDestroyer)
             {
                 Player.runAcceleration *= 0.95f;
             }
-            if (LoreTwins)
+            if (LoreTwins || PanelsLoreTwins)
             {
                 if (Player.statLife < (int)(Player.statLifeMax2 * 0.5))
                     Player.runAcceleration *= 0.95f;
             }
-            if (LorePrime)
+            if (LorePrime || PanelsLoreTwins)
             {
                 Player.runAcceleration *= 0.95f;
             }
@@ -330,7 +330,7 @@ namespace CalamityInheritance.CIPlayer
                 RaiderStacks++;
             }
 
-            if (LoreProvidence)
+            if (LoreProvidence || PanelsLoreProvidence)
             {
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
             }
@@ -346,7 +346,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
 
             CalamityPlayer modPlayer = Player.Calamity();
-            if (CalamityInheritanceKeybinds.BoCLoreTeleportation.JustPressed && BoCLoreTeleportation == true && Main.myPlayer == Player.whoAmI)
+            if (CalamityInheritanceKeybinds.BoCLoreTeleportation.JustPressed && (BoCLoreTeleportation || PanelsBoCLoreTeleportation) && Main.myPlayer == Player.whoAmI)
             {
                 if (!Player.chaosState)
                 {

@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Item.damage = 260;
                 Item.scale = 1f;
             }
-            return default;
+            return base.CanUseItem(player);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

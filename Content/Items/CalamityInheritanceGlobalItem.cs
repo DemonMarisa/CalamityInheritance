@@ -128,9 +128,9 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             int itemGrabRangeBoost = 0 +
-                (usPlayer.LoreWallofFlesh ? 100 : 0) +
-                (usPlayer.LorePlantera ? 150 : 0) +
-                (usPlayer.LorePolter ? 300 : 0);
+                (usPlayer.LoreWallofFlesh || usPlayer.PanelsLoreWallofFlesh ? 100 : 0) +
+                (usPlayer.LorePlantera || usPlayer.PanelsLorePlantera ? 150 : 0) +
+                (usPlayer.LorePolter || usPlayer.PanelsLorePolter ? 300 : 0);
 
             grabRange += itemGrabRangeBoost;
         }
@@ -142,11 +142,11 @@ namespace CalamityInheritance.Content.Items
 
             if (player.ownedProjectileCounts[ModContent.ProjectileType<UniverseSplitterField>()] > 0)
 
-                if (usPlayer.LoreWallofFlesh)
-                    velocity *= 1.10f;
-            if (usPlayer.LorePlantera)
+            if (usPlayer.LoreWallofFlesh || usPlayer.PanelsLoreWallofFlesh)
+                velocity *= 1.10f;
+            if (usPlayer.LorePlantera || usPlayer.PanelsLorePlantera)
                 velocity *= 1.15f;
-            if (usPlayer.LorePolter)
+            if (usPlayer.LorePolter || usPlayer.PanelsLorePolter)
                 velocity *= 1.20f;
         }
         #endregion

@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 color = new Color(b2, b2, b2, a2);
             }
             Rectangle frame = new Rectangle(0, 0, ModContent.Request<Texture2D>(Texture).Value.Width, ModContent.Request<Texture2D>(Texture).Value.Height);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
         }
 
         public override Color? GetAlpha(Color lightColor)

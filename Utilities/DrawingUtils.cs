@@ -238,6 +238,10 @@ namespace CalamityInheritance.Utilities
         // Scarlet: 这么写是正常的，只是有些地方需要注意：
         // 如果你默认你输入的一些东西大部分情况保持不变，你应当把这些置函数最后方
         {
+            if (buttonCount < 1)
+                buttonCount = 1;
+            if (buttonCount > 4)
+                buttonCount = 3;
             float scale = thisUI.scale;
             Texture2D targetTexture = thisUI.buttonTextureTrue;
 
@@ -309,8 +313,12 @@ namespace CalamityInheritance.Utilities
                 targetTexture = thisUI.buttonTextureTrue;
             if (buttonCount == 4)
                 targetTexture = thisUI.buttonTextureTrueHover;
+
             if (!available)
+            {
+                buttonCount = 1;
                 targetTexture = thisUI.buttonTextureUnAvailable;
+            }
 
             // 改为中心锚点
             thisUI.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(thisUI.xResolutionScale, thisUI.yResolutionScale) * scale, thisUI.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
@@ -378,6 +386,8 @@ namespace CalamityInheritance.Utilities
             ref int displayTextCount,
             ref int TextID,
             ref bool available,
+           /* Texture2D textureBG,
+            string textContent, // 接收原始文本内容*/
             float? MouseDownScale = null
             )
         {
@@ -446,17 +456,21 @@ namespace CalamityInheritance.Utilities
                         }
                     }
                     loreData.spriteBatch.Draw(loreData.loreTextureOutLine, drawPosition, null, Color.White, 0f, loreData.loreTextureOutLine.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+                    //DrawHoverText(loreData.spriteBatch, textContent, loreData.xResolutionScale, loreData.yResolutionScale, loreData.scale);
                 }
                 else
+                {
                     loreData.spriteBatch.Draw(loreData.loreTextureOutLineUnAvailable, drawPosition, null, Color.White, 0f, loreData.loreTextureOutLine.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+                    //DrawHoverText(loreData.spriteBatch, textContent, loreData.xResolutionScale, loreData.yResolutionScale, loreData.scale);
+                }
             }
+                // 改为中心锚点
+                loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
-            // 改为中心锚点
-            loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+                // 无法使用时，便会盖住
+                if (!available)
+                    loreData.spriteBatch.Draw(loreData.loreTextureUnAvailable, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
-            // 无法使用时，便会盖住
-            if (!available)
-                loreData.spriteBatch.Draw(loreData.loreTextureUnAvailable, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
         
         public static void DrawText(
@@ -527,6 +541,79 @@ namespace CalamityInheritance.Utilities
                     new Vector2(textSize.X / 2f, 0f),
                     scale
                 );
+            }
+        }
+
+        public static void DrawHoverText(
+            SpriteBatch spriteBatch,
+            string textContent, // 接收原始文本内容
+            float xResolutionScale,
+            float yResolutionScale,
+            float scale,
+            Color TextColor,
+            Color TextOutLineColor,
+            Texture2D textureBG,
+            float maxWidth = 0f, // 最大宽度
+            float lineSpacing = 1.2f // 行间距系数
+            )
+        {
+            // 获取字体引用
+            DynamicSpriteFont font = FontAssets.MouseText.Value;
+
+            // 自动换行处理
+            List<string> wrappedLines = new List<string>();
+
+            if (maxWidth > 0)
+            {
+                // 计算实际可用宽度（考虑缩放）
+                float actualMaxWidth = maxWidth / xResolutionScale;
+                wrappedLines = Utils.WordwrapString(textContent, font, (int)actualMaxWidth, 999, out _)
+                    .Where(line => !string.IsNullOrEmpty(line))
+                    .ToList();
+            }
+            // 计算基准行高
+            float baseLineHeight = font.LineSpacing * scale * lineSpacing;
+
+            // 计算起始位置（屏幕中心 + 偏移量）
+            // 在这个方法中，改为鼠标中心
+            Vector2 mousePosition = new Vector2(
+                Main.mouseX / 2f,
+                Main.mouseY / 2f
+            );
+
+            for (int i = 0; i < wrappedLines.Count; i++)
+            {
+                string line = wrappedLines[i];
+                if (string.IsNullOrEmpty(line)) continue;
+
+                // 计算当前行位置
+                Vector2 linePosition = new Vector2(
+                    mousePosition.X,
+                    mousePosition.Y + (baseLineHeight * i)
+                );
+
+                // 计算文本尺寸
+                Vector2 textSize = ChatManager.GetStringSize(font, line, new Vector2(scale));
+
+                // 绘制带描边文本
+                Utils.DrawBorderStringFourWay(
+                    spriteBatch,
+                    font,
+                    line,
+                    linePosition.X,
+                    linePosition.Y,
+                    TextColor,
+                    TextOutLineColor,
+                    new Vector2(textSize.X / 2f, 0f),
+                    scale
+                );
+            }
+
+            spriteBatch.Draw(textureBG, new Vector2(mousePosition.X, mousePosition.Y), null, Color.White, 0f, textureBG.Size() / 2, new Vector2(xResolutionScale * maxWidth + 15, yResolutionScale * baseLineHeight + 15) * scale, SpriteEffects.None, 0f);
+
+            for (int i = 0; i < 5; i++)
+            {
+                spriteBatch.Draw(textureBG, new Vector2(mousePosition.X, mousePosition.Y), null, Color.White, 0f, textureBG.Size() / 2, new Vector2(xResolutionScale * maxWidth + 15, yResolutionScale * baseLineHeight + 15) * scale, SpriteEffects.None, 0f);
             }
         }
     }

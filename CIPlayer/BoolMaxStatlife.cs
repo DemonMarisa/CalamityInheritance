@@ -40,8 +40,8 @@ namespace CalamityInheritance.CIPlayer
             }
             if (LoreCalamitasClone)
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75f);
-            if (LoreProvidence)
-                LifePercentMax -= 0.15f;
+            if (LoreProvidence || PanelsLoreProvidence)
+                LifePercentMax -= 0.1f;
             if (BuffStatsCadence)
                 LifePercentMax += 0.25f;
             

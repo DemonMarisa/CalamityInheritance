@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
             if (Item.favorited)
             {
                 player.CIMod().LoreGoliath = true;
-                player.lifeRegen -= 8;
             }
         }
         public override void AddRecipes()

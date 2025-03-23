@@ -46,8 +46,9 @@ namespace CalamityInheritance.Content.Items
         }
         public override bool? UseItem(Player player)
         {
-            player.RemoveCalCooldown(GodSlayerDash.ID);
-            player.RemoveCalCooldown(LifeSteal.ID);
+            // player.RemoveCICooldown(GodSlayerDash.ID);
+            player.RemoveCooldown(GodSlayerCooldown.ID);
+            player.RemoveCooldown(GodSlayerDash.ID);
             return base.CanUseItem(player);
         }
     }

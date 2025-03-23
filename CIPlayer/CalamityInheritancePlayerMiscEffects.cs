@@ -34,6 +34,7 @@ using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer.Dashes;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -168,7 +169,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.statDefense += 16;
                 Player.wingAccRunSpeed += 0.1f;
                 Player.accRunSpeed += 0.1f;
-                if(LoreJungleDragon)
+                if(LoreJungleDragon || PanelsLoreJungleDragon)
                 {
                     Player.GetDamage<GenericDamageClass>() += 0.25f;
                 }
@@ -1147,23 +1148,23 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             #region Lore
-            if (usPlayer.LoreKingSlime)
+            if (usPlayer.LoreKingSlime || PanelsLoreKingSlime)
             {
                 Player.moveSpeed += 0.05f;
                 Player.jumpSpeedBoost += Player.autoJump ? 0f : 0.1f;
                 Player.statDefense -= 3;
             }
 
-            if (usPlayer.LoreDesertScourge)
+            if (usPlayer.LoreDesertScourge || PanelsLoreDesertScourge)
             {
                 if (Player.ZoneDesert || Player.Calamity().ZoneSunkenSea)
                 {
-                    Player.statDefense += 5;
+                    Player.statDefense += 15;
                     Player.GetDamage<GenericDamageClass>() -= 0.025f;
                 }
             }
 
-            if (usPlayer.LoreCrabulon)
+            if (usPlayer.LoreCrabulon || PanelsLoreCrabulon)
             {
                 if (Player.ZoneGlowshroom || Player.ZoneDirtLayerHeight || Player.ZoneRockLayerHeight)
                 {
@@ -1174,7 +1175,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreEaterofWorld)
+            if (usPlayer.LoreEaterofWorld || PanelsLoreEaterofWorld)
             {
                 int damage = (int)(15 * Player.GetBestClassDamage().ApplyTo(1));
                 damage = Player.ApplyArmorAccDamageBonusesTo(damage);
@@ -1252,19 +1253,19 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (usPlayer.LoreSkeletron)
+            if (usPlayer.LoreSkeletron || PanelsLoreSkeletron)
             {
                 Player.GetDamage<GenericDamageClass>() += 0.1f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.90);
             }
 
-            if (usPlayer.LoreDestroyer)
+            if (usPlayer.LoreDestroyer || PanelsLoreDestroyer)
             {
-                Player.pickSpeed -= 0.05f;
+                Player.pickSpeed -= 0.15f;
             }
 
-            if (usPlayer.LoreAquaticScourge)
+            if (usPlayer.LoreAquaticScourge || PanelsLoreAquaticScourge)
             {
                 if (Player.wellFed)
                 {
@@ -1285,18 +1286,18 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LorePrime)
+            if (usPlayer.LorePrime || PanelsLorePrime)
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 10;
             }
 
-            if (usPlayer.LoreLeviAnahita)
+            if (usPlayer.LoreLeviAnahita || PanelsLoreLeviAnahita)
             {
                 CalamityPlayer modplayer = Player.Calamity();
                 if (Player.IsUnderwater())
                 {
-                    // if (modplayer.aquaticHeart || modplayer.aquaticHeartPrevious)
-                    //     Player.statLifeMax2 += Player.statLifeMax2 / 20;
+                    if (modplayer.aquaticHeart || modplayer.aquaticHeartPrevious)
+                        Player.statLifeMax2 += Player.statLifeMax2 / 20;
                 }
 
                 if (!Player.IsUnderwater())
@@ -1347,22 +1348,23 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-
-            if (Player.ZoneSkyHeight)
+            if (usPlayer.LoreDeus || PanelsLoreDeus)
             {
-                if (usPlayer.LoreDeus)
-                    Player.moveSpeed += 0.2f;
-                if (usPlayer.LoreAureus)
-                    Player.jumpSpeedBoost += 0.5f;
+                Player.moveSpeed += 0.2f;
+                Player.Calamity().gravityNormalizer = true;
             }
 
-            if (usPlayer.LoreGolem)
+            if (usPlayer.LoreAureus || PanelsLoreAureus)
+               if (Player.ZoneSkyHeight)
+                    Player.jumpSpeedBoost += 0.5f;
+
+            if (usPlayer.LoreGolem || PanelsLoreGolem)
             {
                 if (Math.Abs(Player.velocity.X) < 0.05f && Math.Abs(Player.velocity.Y) < 0.05f && Player.itemAnimation == 0)
                     Player.statDefense += 30;
             }
 
-            if (usPlayer.LoreDuke)
+            if (usPlayer.LoreDuke || PanelsLoreDuke)
             {
                 if (Player.IsUnderwater())
                 {
@@ -1378,7 +1380,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreCultist)
+            if (usPlayer.LoreCultist || PanelsLoreCultist)
             {
                 Player.blind = true;
                 Player.endurance += 0.04f;
@@ -1389,7 +1391,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.moveSpeed += 0.1f;
             }
 
-            if (usPlayer.LoreLunarBoss)
+            if (usPlayer.LoreLunarBoss || PanelsLoreLunarBoss)
             {
                 if (Player.gravDir == -1f && Player.gravControl2)
                 {
@@ -1404,11 +1406,10 @@ namespace CalamityInheritance.CIPlayer
                     Player.slowFall = true;
             }
 
-            if (usPlayer.LoreTwins)
+            if (usPlayer.LoreTwins || PanelsLoreTwins)
             {
                 if (!Main.dayTime)
                 {
-                    Player.invis = true;
                     Player.GetCritChance<ThrowingDamageClass>() += 5;
                     Player.GetDamage<ThrowingDamageClass>() += 0.05f;
                 }
@@ -1417,17 +1418,12 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense -= 10;
             }
 
-            if (usPlayer.LoreWallofFlesh)
-            {
-                Player.GetDamage<GenericDamageClass>() -= 0.03f;
-            }
-
-            if (usPlayer.LorePlantera)
+            if (usPlayer.LorePlantera || PanelsLorePlantera)
             {
                 if (Player.statLife >= (int)(Player.statLifeMax2 * 0.5))
                 {
                     Player.GetDamage<GenericDamageClass>() -= 0.05f;
-                    Player.statDefense += 10;
+                    Player.statDefense += 15;
                 }
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                 {
@@ -1436,12 +1432,8 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LorePolter)
-            {
-                Player.GetDamage<GenericDamageClass>() -= 0.1f;
-            }
             // Brimstone Elemental lore inferno potion boost
-            if ((usPlayer.LoreBrimstoneElement || calPlayer.ataxiaBlaze) && Player.inferno)
+            if ((usPlayer.LoreBrimstoneElement || PanelsLoreBrimstoneElement ||calPlayer.ataxiaBlaze) && Player.inferno)
             {
                 const int FramesPerHit = 30;
 
@@ -1473,18 +1465,19 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreCalamitasClone)
+            if (usPlayer.LoreCalamitasClone || PanelsLoreCalamitasClone)
             {
                 Player.maxMinions += 2;
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75);
             }
-            if (usPlayer.LoreGoliath)
+            if (usPlayer.LoreGoliath || PanelsLoreGoliath)
             {
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 1.25);
+                Player.lifeRegen -= 8;
             }
 
-            if (usPlayer.LoreDukeElder)
+            if (usPlayer.LoreDukeElder || PanelsLoreDukeElder)
             {
                 if (calPlayer.ZoneAbyss || calPlayer.ZoneSulphur)
                 {
@@ -1505,7 +1498,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreRavager)
+            if (usPlayer.LoreRavager || PanelsLoreRavager)
             {
                 calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
@@ -1514,25 +1507,30 @@ namespace CalamityInheritance.CIPlayer
                 Player.ClearBuff(BuffID.Featherfall);
             }
 
-            if (usPlayer.LoreProvidence)
+            if (usPlayer.LoreProvidence || PanelsLoreProvidence)
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
                 Player.GetDamage<GenericDamageClass>() *= 1.1f;
                 Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
 
-            if (usPlayer.LoreDevourer)
+            if (usPlayer.LoreDevourer || PanelsLoreDevourer)
             {
                 Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
             }
-            if (usPlayer.LoreJungleDragon)
+            if (usPlayer.LoreJungleDragon || PanelsLoreJungleDragon)
             {
                 calPlayer.infiniteFlight = true;
                 Player.wingAccRunSpeed += 0.2f;
                 Player.accRunSpeed += 0.2f;
                 Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
-
+            if(LoreCryoDash || PanelsLoreCryoDash)
+            {
+                Player.Calamity().DashID = OrnateShieldDash.ID;
+                Player.dashType = 0;
+                Player.statDefense -= 10;
+            }
             #endregion
             
         }

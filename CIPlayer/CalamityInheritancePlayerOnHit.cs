@@ -59,7 +59,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 target.AddBuff(BuffID.CursedInferno, 90);
             }
-            if (LoreProvidence)
+            if (LoreProvidence || PanelsLoreProvidence)
             {
                 target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
             }
