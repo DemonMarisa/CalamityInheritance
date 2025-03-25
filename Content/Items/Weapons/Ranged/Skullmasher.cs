@@ -51,9 +51,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             if (CIRespriteConfig.Instance.SkullmasherResprite)
-                return new Vector2(-40, 0);
-            else
                 return new Vector2(-15, 0);
+            else
+                return new Vector2(-40, 0);
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {

@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
@@ -27,8 +28,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.Calamity().disableAnahitaSpawns = true;
-                state = player.Calamity().disableAnahitaSpawns;
+                player.CIMod().cIdisableAnahitaSpawns = true;
             }
         }
         public override void AddRecipes()

@@ -57,8 +57,7 @@ namespace CalamityInheritance.CIPlayer
         public bool ElysianGuard = false;
         public float shieldInvinc = 5f;
         #endregion
-        
-       #region Energy Shields
+        #region Energy Shields
         public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
         public bool CIHasAnyEnergyShield => CIsponge;
         public bool freeDodgeFromShieldAbsorption = false;
@@ -77,11 +76,17 @@ namespace CalamityInheritance.CIPlayer
         public int ShieldDurabilityMax = 0;
 
         #endregion
-
         #region Summon
         public bool MagicHatOld = false;
         public bool MidnnightSunBuff = false;
         public bool cosmicEnergy = false;
+        #endregion
+        #region 禁止生成物品
+        public bool cIdisableVoodooSpawns = false;
+        public bool cIdisablePerfCystSpawns = false;
+        public bool cIdisableHiveCystSpawns = false;
+        public bool cIdisableNaturalScourgeSpawns = false;
+        public bool cIdisableAnahitaSpawns = false;
         #endregion
         public bool YharonFlightBooster = false;
         #region ResetEffects
@@ -108,7 +113,13 @@ namespace CalamityInheritance.CIPlayer
             ReaverSummonerOrb = false;
             cosmicEnergy = false;
             #endregion
-            
+            #region 禁止生成物品
+            cIdisableVoodooSpawns = false;
+            cIdisablePerfCystSpawns = false;
+            cIdisableHiveCystSpawns = false;
+            cIdisableNaturalScourgeSpawns = false;
+            cIdisableAnahitaSpawns = false;
+            #endregion
         }
         #endregion
         #region UpdateDead

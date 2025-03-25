@@ -1,5 +1,7 @@
-﻿using CalamityMod.Items.LoreItems;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -20,7 +22,13 @@ namespace CalamityInheritance.Content.Items.LoreItems
             Item.rare = ItemRarityID.Pink;
             Item.consumable = false;
         }
-
+        public override void UpdateInventory(Player player)
+        {
+            if (Item.favorited)
+            {
+                player.CIMod().cIdisableNaturalScourgeSpawns = true;
+            }
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

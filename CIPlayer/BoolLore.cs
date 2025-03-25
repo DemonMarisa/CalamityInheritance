@@ -1,5 +1,6 @@
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ModLoader; 
 
@@ -40,8 +41,10 @@ namespace CalamityInheritance.CIPlayer
         public bool LoreJungleDragon = false;//
         public bool SCalLore = false;//
         public bool LoreCryoDash = false;
+        public bool LoreSG = false;
 
         public bool LoreSea = false;
+        public bool LoreSulphurSea = false;
         public bool LoreCorruption = false;//
         public bool LoreCrimson = false;//
         public bool LoreUnderworld = false;
@@ -82,8 +85,10 @@ namespace CalamityInheritance.CIPlayer
             LoreJungleDragon = false;
             SCalLore = false;
             LoreCryoDash = false;
+            LoreSG = false;
 
             LoreSea = false;
+            LoreSulphurSea = false;
             LoreCorruption = false;
             LoreCrimson = false;
             LoreUnderworld = false;

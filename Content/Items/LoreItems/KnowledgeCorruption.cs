@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
@@ -26,8 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.Calamity().disableHiveCystSpawns = true;
-                state = player.Calamity().disableHiveCystSpawns;
+                player.CIMod().cIdisableHiveCystSpawns = true;
             }
         }
         public override void AddRecipes()
@@ -37,9 +37,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreCorruption>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreCorruption>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

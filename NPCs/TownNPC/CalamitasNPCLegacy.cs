@@ -269,7 +269,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             return list;
         }
 
-        private void GiveReward(Player player)
+        public static void GiveReward(Player player)
         {
             player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<CalamitousEssence>(), 1);
         }

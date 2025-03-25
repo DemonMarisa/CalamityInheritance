@@ -17,7 +17,7 @@ namespace CalamityInheritance.Common
         public static void Load(Mod mod)
         {
             MethodInfo originalMethod = typeof(CalamityPlayer).GetMethod(nameof(CalamityPlayer.ModDashMovement));
-            MonoModHooks.Add(originalMethod, new Action<CalamityPlayer>(ModDashMovement_Hook));
+            MonoModHooks.Add(originalMethod, ModDashMovement_Hook);
         }
 
         public static int DashCoolDown = CalamityInheritance.Instance.infernumMode == null ? 30 : 20;

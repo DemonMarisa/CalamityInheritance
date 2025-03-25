@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.Calamity().disableVoodooSpawns = true;
+                player.CIMod().cIdisableVoodooSpawns = true;
             }
         }
         public override void AddRecipes()

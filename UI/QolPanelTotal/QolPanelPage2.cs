@@ -17,6 +17,7 @@ using System.IO;
 using Terraria.GameContent;
 using Terraria.UI.Chat;
 using CalamityInheritance.CIPlayer;
+using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -237,7 +238,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
             Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLineUnAvailable").Value;
             // 如果不想或者懒得新建存储，可以直接用这个透明材质
             Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
-
+            // 血书页的材质
+            Texture2D PageBlood = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PageBlood").Value;
             DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.65f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
 
             // 这个1是默认的Lore按钮状态
@@ -373,6 +375,20 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 36号ID为終灾
                 if(TextDisplayID == 36)
                 {
+
+                    float drawPositionX = Main.screenWidth * 0.5f;
+                    Vector2 drawPosition = new Vector2(drawPositionX, Main.screenHeight * 0.5f);
+                    // 右侧的
+                    Vector2 pageOriginRight = new(0f, PageBlood.Height / 2);
+
+                    Vector2 scale = new(1f, 1f);
+
+                    // UI缩放
+                    scale.X *= scaleX;
+                    scale.Y *= scaleY;
+
+                    spriteBatch.Draw(PageBlood, drawPosition, null, Color.White, 0f, pageOriginRight, scale, SpriteEffects.FlipHorizontally, 0f);
+
                     CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 340, -27, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
                 }
 

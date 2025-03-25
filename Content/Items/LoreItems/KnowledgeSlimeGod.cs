@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.LoreItems;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
@@ -25,15 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if(Item.favorited)
             {
-                if (player.dashDelay < 0)
-                    player.velocity.X *= 0.9f;
-
-                player.slippy2 = true;
-
-                if (Main.myPlayer == player.whoAmI)
-                    player.AddBuff(BuffID.Slimed, 2);
-
-                player.statDefense -= 10;
+                player.CIMod().LoreSG = true;
             }
         }
 

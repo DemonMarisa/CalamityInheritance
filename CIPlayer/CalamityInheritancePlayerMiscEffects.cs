@@ -99,6 +99,9 @@ namespace CalamityInheritance.CIPlayer
             //Qol面板相关
             Panels();
 
+            //直接向玩家生成物品
+            CISpawnItem();
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
@@ -1529,6 +1532,18 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.Calamity().DashID = OrnateShieldDash.ID;
                 Player.dashType = 0;
+                Player.statDefense -= 10;
+            }
+            if(LoreSG ||PanelsLoreSG)
+            {
+                if (Player.dashDelay < 0)
+                    Player.velocity.X *= 0.9f;
+
+                Player.slippy2 = true;
+
+                if (Main.myPlayer == Player.whoAmI)
+                    Player.AddBuff(BuffID.Slimed, 2);
+
                 Player.statDefense -= 10;
             }
             #endregion

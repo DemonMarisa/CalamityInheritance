@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
@@ -26,8 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.Calamity().disablePerfCystSpawns = true;
-                state = player.Calamity().disablePerfCystSpawns;
+                player.CIMod().cIdisablePerfCystSpawns = true;
             }
         }
         public override void AddRecipes()
@@ -37,9 +37,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreCrimson>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreCrimson>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }
