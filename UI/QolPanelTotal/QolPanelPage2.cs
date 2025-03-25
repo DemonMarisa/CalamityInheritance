@@ -125,6 +125,10 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public int LoreGapY = 130;
 
         #endregion
+
+        #region 四种高清lore显示
+        public int draedonsLoreChoice = 1;
+        #endregion
         public void Page2Draw(SpriteBatch spriteBatch)
         {
             Player player = Main.player[Main.myPlayer];
@@ -267,42 +271,48 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
                 // 哈哈，马上就要全换成按钮了
                 #region 遍历-Lore贴图
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 1).LorePosX, GetLorePos(1, 1).LorePosY, LoreKS, ref TextDisplayID, ref KSBtnID, ref DownedKS);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 2).LorePosX, GetLorePos(1, 2).LorePosY, LoreDS, ref TextDisplayID, ref DSBtnID, ref DownedDS);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 3).LorePosX, GetLorePos(1, 3).LorePosY, LoreEoC, ref TextDisplayID, ref EoCBtnID, ref DownedEoC);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 4).LorePosX, GetLorePos(1, 4).LorePosY, LoreCrab, ref TextDisplayID, ref CrabBtnID, ref DownedCrab);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 5).LorePosX, GetLorePos(1, 5).LorePosY, LoreEoW, ref TextDisplayID, ref EoWBtnID, ref DownedEoW);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 6).LorePosX, GetLorePos(1, 6).LorePosY, LoreBoC, ref TextDisplayID, ref BoCBtnID, ref DownedBoC);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 1).LorePosX, GetLorePos(2, 1).LorePosY, LoreHive, ref TextDisplayID, ref HiveBtnID, ref DownedHive);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 2).LorePosX, GetLorePos(2, 2).LorePosY, LorePerf, ref TextDisplayID, ref PerfBtnID, ref DownedPerf);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 3).LorePosX, GetLorePos(2, 3).LorePosY, LoreQB, ref TextDisplayID, ref QBBtnID, ref DownedQB);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 4).LorePosX, GetLorePos(2, 4).LorePosY, LoreSkele, ref TextDisplayID, ref SkeleBtnID, ref DownedSkele);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 5).LorePosX, GetLorePos(2, 5).LorePosY, LoreSG, ref TextDisplayID, ref SGBtnID, ref DownedSG);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 6).LorePosX, GetLorePos(2, 6).LorePosY, LoreWoF, ref TextDisplayID, ref WoFBtnID, ref DownedWoF);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 1).LorePosX, GetLorePos(3, 1).LorePosY, LoreCryo, ref TextDisplayID, ref CryoBtnID, ref DownedCryo);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 2).LorePosX, GetLorePos(3, 2).LorePosY, LoreTwins, ref TextDisplayID, ref TwinsBtnID, ref DownedTwins);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 3).LorePosX, GetLorePos(3, 3).LorePosY, LoreBrimmy, ref TextDisplayID, ref BrimmyBtnID, ref DownedBrimmy);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 4).LorePosX, GetLorePos(3, 4).LorePosY, LoreDestroyer, ref TextDisplayID, ref DestroyerBtnID, ref DownedDestroyer);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 5).LorePosX, GetLorePos(3, 5).LorePosY, LoreAS, ref TextDisplayID, ref ASBtnID, ref DownedAS);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 6).LorePosX, GetLorePos(3, 6).LorePosY, LorePrime, ref TextDisplayID, ref PrimeBtnID, ref DownedPrime);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 1).LorePosX, GetLorePos(4, 1).LorePosY, LoreCalClone, ref TextDisplayID, ref CalCloneBtnID, ref DownedCalClone);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 2).LorePosX, GetLorePos(4, 2).LorePosY, LorePlant, ref TextDisplayID, ref PlantBtnID, ref DownedPlant);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 3).LorePosX, GetLorePos(4, 3).LorePosY, LoreAureus, ref TextDisplayID, ref AureusBtnID, ref DownedAureus);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 4).LorePosX, GetLorePos(4, 4).LorePosY, LoreLA, ref TextDisplayID, ref LABtnID, ref DownedLA);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 5).LorePosX, GetLorePos(4, 5).LorePosY, LoreGolem, ref TextDisplayID, ref GolemBtnID, ref DownedGolem);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 6).LorePosX, GetLorePos(4, 6).LorePosY, LorePBG, ref TextDisplayID, ref PBGBtnID, ref DownedPBG);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 1).LorePosX, GetLorePos(5, 1).LorePosY, LoreDuke, ref TextDisplayID, ref DukeBtnID, ref DownedDuke);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 2).LorePosX, GetLorePos(5, 2).LorePosY, LoreRavager, ref TextDisplayID, ref RavagerBtnID, ref DownedRavager);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 3).LorePosX, GetLorePos(5, 3).LorePosY, LoreCultist, ref TextDisplayID, ref CultistBtnID, ref DownedCultist);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 4).LorePosX, GetLorePos(5, 4).LorePosY, LoreDeus, ref TextDisplayID, ref DeusBtnID, ref DownedDeus);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 5).LorePosX, GetLorePos(5, 5).LorePosY, LoreML, ref TextDisplayID, ref MLBtnID, ref DownedML);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 6).LorePosX, GetLorePos(5, 6).LorePosY, LoreProvi, ref TextDisplayID, ref ProviBtnID, ref DownedProvi);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 1).LorePosX, GetLorePos(6, 1).LorePosY, LorePolter, ref TextDisplayID, ref PolterBtnID, ref DownedPolter);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 2).LorePosX, GetLorePos(6, 2).LorePosY, LoreOD, ref TextDisplayID, ref ODBtnID, ref DownedOD);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 3).LorePosX, GetLorePos(6, 3).LorePosY, LoreDoG, ref TextDisplayID, ref DoGBtnID, ref DownedDoG);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 4).LorePosX, GetLorePos(6, 4).LorePosY, LoreYharon, ref TextDisplayID, ref YharonBtnID, ref DownedYharon);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 5).LorePosX, GetLorePos(6, 5).LorePosY, LoreExo, ref TextDisplayID, ref ExoBtnID, ref DownedExo);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 6).LorePosX, GetLorePos(6, 6).LorePosY, LoreSCal, ref TextDisplayID, ref SCalBtnID, ref DownedSCal);
+
+                int PanelLore1 = 1;
+                int PanelLore2 = 2;
+                int PanelLore3 = 3;
+                int PanelLore4 = 4;
+
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 1).LorePosX, GetLorePos(1, 1).LorePosY, LoreKS, ref TextDisplayID, ref KSBtnID, ref DownedKS, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 2).LorePosX, GetLorePos(1, 2).LorePosY, LoreDS, ref TextDisplayID, ref DSBtnID, ref DownedDS, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 3).LorePosX, GetLorePos(1, 3).LorePosY, LoreEoC, ref TextDisplayID, ref EoCBtnID, ref DownedEoC, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 4).LorePosX, GetLorePos(1, 4).LorePosY, LoreCrab, ref TextDisplayID, ref CrabBtnID, ref DownedCrab, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 5).LorePosX, GetLorePos(1, 5).LorePosY, LoreEoW, ref TextDisplayID, ref EoWBtnID, ref DownedEoW, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(1, 6).LorePosX, GetLorePos(1, 6).LorePosY, LoreBoC, ref TextDisplayID, ref BoCBtnID, ref DownedBoC, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 1).LorePosX, GetLorePos(2, 1).LorePosY, LoreHive, ref TextDisplayID, ref HiveBtnID, ref DownedHive, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 2).LorePosX, GetLorePos(2, 2).LorePosY, LorePerf, ref TextDisplayID, ref PerfBtnID, ref DownedPerf, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 3).LorePosX, GetLorePos(2, 3).LorePosY, LoreQB, ref TextDisplayID, ref QBBtnID, ref DownedQB, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 4).LorePosX, GetLorePos(2, 4).LorePosY, LoreSkele, ref TextDisplayID, ref SkeleBtnID, ref DownedSkele, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 5).LorePosX, GetLorePos(2, 5).LorePosY, LoreSG, ref TextDisplayID, ref SGBtnID, ref DownedSG, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(2, 6).LorePosX, GetLorePos(2, 6).LorePosY, LoreWoF, ref TextDisplayID, ref WoFBtnID, ref DownedWoF, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 1).LorePosX, GetLorePos(3, 1).LorePosY, LoreCryo, ref TextDisplayID, ref CryoBtnID, ref DownedCryo, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 2).LorePosX, GetLorePos(3, 2).LorePosY, LoreTwins, ref TextDisplayID, ref TwinsBtnID, ref DownedTwins, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 3).LorePosX, GetLorePos(3, 3).LorePosY, LoreBrimmy, ref TextDisplayID, ref BrimmyBtnID, ref DownedBrimmy, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 4).LorePosX, GetLorePos(3, 4).LorePosY, LoreDestroyer, ref TextDisplayID, ref DestroyerBtnID, ref DownedDestroyer, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 5).LorePosX, GetLorePos(3, 5).LorePosY, LoreAS, ref TextDisplayID, ref ASBtnID, ref DownedAS, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(3, 6).LorePosX, GetLorePos(3, 6).LorePosY, LorePrime, ref TextDisplayID, ref PrimeBtnID, ref DownedPrime, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 1).LorePosX, GetLorePos(4, 1).LorePosY, LoreCalClone, ref TextDisplayID, ref CalCloneBtnID, ref DownedCalClone, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 2).LorePosX, GetLorePos(4, 2).LorePosY, LorePlant, ref TextDisplayID, ref PlantBtnID, ref DownedPlant , ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 3).LorePosX, GetLorePos(4, 3).LorePosY, LoreAureus, ref TextDisplayID, ref AureusBtnID, ref DownedAureus, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 4).LorePosX, GetLorePos(4, 4).LorePosY, LoreLA, ref TextDisplayID, ref LABtnID, ref DownedLA, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 5).LorePosX, GetLorePos(4, 5).LorePosY, LoreGolem, ref TextDisplayID, ref GolemBtnID, ref DownedGolem, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 6).LorePosX, GetLorePos(4, 6).LorePosY, LorePBG, ref TextDisplayID, ref PBGBtnID, ref DownedPBG, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 1).LorePosX, GetLorePos(5, 1).LorePosY, LoreDuke, ref TextDisplayID, ref DukeBtnID, ref DownedDuke, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 2).LorePosX, GetLorePos(5, 2).LorePosY, LoreRavager, ref TextDisplayID, ref RavagerBtnID, ref DownedRavager, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 3).LorePosX, GetLorePos(5, 3).LorePosY, LoreCultist, ref TextDisplayID, ref CultistBtnID, ref DownedCultist , ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 4).LorePosX, GetLorePos(5, 4).LorePosY, LoreDeus, ref TextDisplayID, ref DeusBtnID, ref DownedDeus, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 5).LorePosX, GetLorePos(5, 5).LorePosY, LoreML, ref TextDisplayID, ref MLBtnID, ref DownedML, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 6).LorePosX, GetLorePos(5, 6).LorePosY, LoreProvi, ref TextDisplayID, ref ProviBtnID, ref DownedProvi, ref draedonsLoreChoice, ref PanelLore4);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 1).LorePosX, GetLorePos(6, 1).LorePosY, LorePolter, ref TextDisplayID, ref PolterBtnID, ref DownedPolter, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 2).LorePosX, GetLorePos(6, 2).LorePosY, LoreOD, ref TextDisplayID, ref ODBtnID, ref DownedOD, ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 3).LorePosX, GetLorePos(6, 3).LorePosY, LoreDoG, ref TextDisplayID, ref DoGBtnID, ref DownedDoG, ref draedonsLoreChoice, ref PanelLore1);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 4).LorePosX, GetLorePos(6, 4).LorePosY, LoreYharon, ref TextDisplayID, ref YharonBtnID, ref DownedYharon, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 5).LorePosX, GetLorePos(6, 5).LorePosY, LoreExo, ref TextDisplayID, ref ExoBtnID, ref DownedExo, ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(6, 6).LorePosX, GetLorePos(6, 6).LorePosY, LoreSCal, ref TextDisplayID, ref SCalBtnID, ref DownedSCal, ref draedonsLoreChoice, ref PanelLore2);
                 #endregion
                 #region 按钮绘制
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 1).LoreBtnX, GetLorePos(1, 1).LoreBtnY, ref DownedKS, ref cIPlayer.KSPanelType, ref KSBtnID);
@@ -347,8 +357,9 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 右侧界面的中心位置
                 // 330
 
-                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore").Value;
-                CIFunction.DrawLore(genericLoreDataNotOutLine, CIConfig.Instance.UIX, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, 0.98f);
+                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore" + draedonsLoreChoice).Value;
+   
+                CIFunction.DrawLore(genericLoreDataNotOutLine, CIConfig.Instance.UIX, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
 
                 // 下划线贴图
                 Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;

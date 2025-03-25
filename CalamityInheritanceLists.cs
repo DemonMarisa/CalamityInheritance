@@ -18,6 +18,7 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Content.Projectiles.CalProjChange;
 
 namespace CalamityInheritance
 {
@@ -81,6 +82,7 @@ namespace CalamityInheritance
                     ProjectileType<KingsbaneHoldout>(),
                     ProjectileType<PhangasmBowOld>(),
                     ProjectileType<DragonBow>(),
+                    ProjectileType<KingsbaneHoldoutReal>()
             };
 
             AuricdebuffList = new List<int>()

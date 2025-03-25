@@ -386,8 +386,10 @@ namespace CalamityInheritance.Utilities
             ref int displayTextCount,
             ref int TextID,
             ref bool available,
-           /* Texture2D textureBG,
-            string textContent, // 接收原始文本内容*/
+            ref int DraedonsLoreChoice,
+            ref int DraedonsLoreID,
+            /* Texture2D textureBG,
+             string textContent, // 接收原始文本内容*/
             float? MouseDownScale = null
             )
         {
@@ -442,6 +444,7 @@ namespace CalamityInheritance.Utilities
                     if (cIPlayer.wasMouseDown)
                     {
                         displayTextCount = TextID;
+                        DraedonsLoreChoice = DraedonsLoreID;
                         // 释放瞬间：切换永久状态
                         if (!isMouseDown && loreData.buttonCount == 2)
                         {
