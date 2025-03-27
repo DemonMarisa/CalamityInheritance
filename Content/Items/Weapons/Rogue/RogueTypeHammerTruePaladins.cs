@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetDefaults()
         {
             Item.width = 14;
-            Item.damage = 87;
+            Item.damage = 70;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = true;
@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.3f ,type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
-                int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.1f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), damage, knockback, player.whoAmI, 0f, 0f, -3f);
+                int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f ,type, (int)(damage * 1.2f), knockback, player.whoAmI, 0f, 0f, -3f);
+                int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), (int)(damage * 0.8f), knockback, player.whoAmI, 0f, 0f, -3f);
                 
                 if(onlyHoming.WithinBounds(Main.maxProjectiles))
                 {

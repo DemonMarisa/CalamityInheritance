@@ -235,7 +235,12 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(astralArmorLoot);
             }
             if (npc.type == ModContent.NPCType<PlaguebringerGoliath>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPlaguebringer, ModContent.ItemType<KnowledgePlaguebringerGoliath>(), desc: DropHelper.FirstKillText);
+                var onlyMasterDeath = ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<PBGLegendary>(), 1);
+                onlyMasterDeath.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PBGLegendary>(), 100), true);
+                npcLoot.Add(onlyMasterDeath);
+            }
             if (npc.type == ModContent.NPCType<RavagerBody>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
             if (npc.type == ModContent.NPCType<AstrumDeusHead>())
@@ -481,6 +486,9 @@ namespace CalamityInheritance.NPCs
                 case NPCID.DukeFishron:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedFishron, ModContent.ItemType<KnowledgeDukeFishron>(), desc: DropHelper.FirstKillText);
+                    var onlyMaster = ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<DukeLegendary>());
+                    onlyMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<DukeLegendary>()), false);
+                    npcLoot.Add(onlyMaster);
                     break;
                 case NPCID.CultistBoss:
                     // Lore

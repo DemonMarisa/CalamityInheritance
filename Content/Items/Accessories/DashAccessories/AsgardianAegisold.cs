@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true; // 更强的"剧毒"
             player.buffImmune[BuffID.Webbed] = true; // 更强的"缓慢"
             player.buffImmune[BuffID.Blackout] = true; // 更强的"黑暗"
-
+            
 
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))

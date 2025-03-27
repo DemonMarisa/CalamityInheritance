@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             var modPlayer1 = player.CIMod();
             modPlayer1.ElemGauntlet = true;
+            modPlayer1.YharimsInsignia = true;
             player.GetDamage<MeleeDamageClass>() += 0.15f;
             player.GetCritChance<MeleeDamageClass>() += 15;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;

@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CIMod();
             modPlayer1.ReaverMeleeBlast = true;
             player.thorns += 0.33f;
-            player.GetAttackSpeed<MeleeDamageClass>() +=0.30f;
+            player.GetAttackSpeed<MeleeDamageClass>() += 0.30f;
             player.GetDamage<MeleeDamageClass>() += 0.05f;
             player.GetCritChance<MeleeDamageClass>() += 5;
             player.moveSpeed += 0.20f;

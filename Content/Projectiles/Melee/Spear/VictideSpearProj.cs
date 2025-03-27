@@ -1,14 +1,11 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
-using System;
-using System.Security.Cryptography.X509Certificates;
 
-namespace CalamityInheritance.Content.Projectiles.Melee
+namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
     public class VictideSpearProj: ModProjectile, ILocalizedModType
     {
@@ -115,7 +112,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!Projectile.CalamityInheritance().ThrownMode)
-                //注：只允许长矛本身击中敌人的时候发射一个弹幕。。。或者说别的，我也不知道这个球干嘛的。
+                //注：只允许长矛本身击中敌人的时候发射一个弹幕. 或者说别的，我也不知道这个球干嘛的。
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VictideSpearBall>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             target.AddBuff(BuffID.Poisoned, 300);
         }

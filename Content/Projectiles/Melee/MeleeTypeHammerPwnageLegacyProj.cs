@@ -31,6 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30 * Projectile.extraUpdates;
             Projectile.timeLeft = LifeTime;
         }
 

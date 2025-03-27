@@ -23,12 +23,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             //Scarlet:将命运投矛的数值回滚至1457前，并修改稀有度为恶意专属掉落的稀有度颜色。
             //这一做法仅仅是为了作为对恶意模式的一个记忆点。
             Item.width = 52;
-            Item.damage = 32;
+            Item.damage = 42;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 20;
+            Item.useTime = 10;
             Item.knockBack = 2f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
@@ -53,14 +53,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             return false;
         }
-        //2025.1.13 DemonMarisa 改为灵液怪掉落
-        /*
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                AddIngredient<SpearofDestiny>(). 
-                Register();
-        }
-        */
     }
 }

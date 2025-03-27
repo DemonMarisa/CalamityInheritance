@@ -74,6 +74,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                     }
                 }
                 player.GetDamage<SummonDamageClass>() += 0.75f;
+                player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.15f;
             }
 
             public override void UpdateEquip(Player player)

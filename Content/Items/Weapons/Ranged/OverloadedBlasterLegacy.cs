@@ -7,7 +7,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class OverloadedBlasterLegacy : CIRanged, ILocalizedModType
+    public class OverloadedBlasterLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

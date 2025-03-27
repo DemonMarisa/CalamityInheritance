@@ -61,6 +61,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             int lifeAmount = player.statLifeMax2 - player.statLife;
+            int getTrueMelee = (int)player.GetTotalDamage<TrueMeleeDamageClass>().ApplyTo(Item.damage) - Item.damage;
+            damage.Base += getTrueMelee;
             damage.Flat += lifeAmount;
             base.ModifyWeaponDamage(player, ref damage);
         }

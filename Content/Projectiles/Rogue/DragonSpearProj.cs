@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void AI()
         {
             Projectile.localAI[0] += 2f;
-            Projectile.frame = CIFunction.FramesChanger(Projectile, 6, 3);
+            Projectile.frame = CIFunction.FramesChanger(Projectile, 6, 4);
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
 			CIFunction.HomeInOnNPC(Projectile, false, 800f, 25f, 20f);
         }
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             for (int i = 0; i < 20; i++)
             {
-                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 244, 0f, 0f, 100, default, 1.2f);
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 1.2f);
                 Main.dust[d].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -68,10 +68,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             for (int j = 0; j < 30; j++)
             {
-                int dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 244, 0f, 0f, 100, default, 1.7f);
+                int dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 1.7f);
                 Main.dust[dAlt].noGravity = true;
                 Main.dust[dAlt].velocity *= 5f;
-                dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 244, 0f, 0f, 100, default, 1f);
+                dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 1f);
                 Main.dust[dAlt].velocity *= 2f;
             }
         }

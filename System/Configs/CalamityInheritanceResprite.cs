@@ -17,7 +17,6 @@ namespace CalamityInheritance.System.Configs
 
         [Header("Texture")]
         
-
         [BackgroundColor(192, 154, 205, 192)]
         [DefaultValue(false)]
         public bool SetAllLegacySprite{ get; set; }
@@ -143,7 +142,13 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool PhantomHeartResprite{ get; set; }
-        
+        [Header("Special")]
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(1)]
+        [Range(1, 8)]
+        [Increment(1)]
+        [Slider]
+        public int PBGColorType;
         
         #endregion
     }

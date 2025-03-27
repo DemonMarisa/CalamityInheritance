@@ -50,7 +50,6 @@ using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Accessories;
 using VividClarity = CalamityMod.Items.Weapons.Magic.VividClarity;
-using VoidVortex = CalamityMod.Items.Weapons.Magic.VoidVortex;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Armor.Demonshade;
@@ -71,7 +70,6 @@ using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
 using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items

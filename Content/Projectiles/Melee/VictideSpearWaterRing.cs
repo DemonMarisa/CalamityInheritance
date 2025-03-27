@@ -53,18 +53,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             //发起追踪前这个玩意无视墙体
             else Projectile.tileCollide = false;
-            CIFunction.FramesChanger(Projectile, 4, 2);
+            CIFunction.FramesChanger(Projectile, 4, 3);
             Projectile.rotation += 0.08f ;
         }
-
-        // public override bool PreDraw(ref Color lightColor)
-        // {
-        //     Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
-        //     int p = TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type];
-        //     int y6 = p * Projectile.frame;
-        //     Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Rectangle?(new Rectangle(0, y6, texture2D13.Width, p)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture2D13.Width / 2f, p / 2f), Projectile.scale, SpriteEffects.None, 0f);
-        //     return false;
-        // }
 
         public override void OnKill(int timeLeft)
         {

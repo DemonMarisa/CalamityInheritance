@@ -431,3 +431,8 @@ VictideBoomerangMelee: {
 	Tooltip: ""
 	DisplayName: Victide Boomerang Melee
 }
+
+DukeLegendary: {
+	Tooltip: ""
+	DisplayName: Duke Legendary
+}

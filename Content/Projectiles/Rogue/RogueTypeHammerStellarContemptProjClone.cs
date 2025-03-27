@@ -17,9 +17,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         public int addFlares = 1;
         private static readonly float RotationIncrement = 0.20f;
-        private static readonly int Lifetime = 340;
+        private static readonly int Lifetime = 360;
         private static readonly float canHomingCounter = 65f;
-        private readonly float stealthSpeed = 24f;
+        private readonly float stealthSpeed = 27f;
 
         public override void SetStaticDefaults()
         {
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 40;
+            Projectile.localNPCHitCooldown = 45;
             Projectile.timeLeft = Lifetime;
         }
 
@@ -140,7 +140,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
-
+            //挂载每次击中都会提高攻击频率
+            Projectile.localNPCHitCooldown -= 7;
             //从灾厄上抄下来的, 由于有一些特殊效果所以粒子会少一点
             float numberOfDusts = 15f;
             float rotFactor = 360f / numberOfDusts;
@@ -194,7 +195,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Player user = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
             int numFlares = addFlares; //每次ai[2]总是等于50f时, 都会增加月耀的弹幕量
-            int flareDamage = (int)(0.2f*Projectile.damage) * addFlares; //伤害跑高
+            int flareDamage = (int)(0.2f*Projectile.damage); //伤害跑高
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)
             {

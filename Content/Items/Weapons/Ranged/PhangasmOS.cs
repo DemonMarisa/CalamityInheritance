@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.width = 48;
             Item.height = 82;
-            Item.damage = 117;
+            Item.damage = 145;
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;

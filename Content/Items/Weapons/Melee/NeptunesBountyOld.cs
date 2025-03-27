@@ -21,10 +21,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 122;
             Item.height = 122;
-            Item.damage = 270;
+            Item.damage = 320;
             Item.DamageType = DamageClass.Melee;
-            Item.useAnimation = 22;
-            Item.useTime = 22;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;

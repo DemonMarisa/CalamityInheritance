@@ -1,14 +1,17 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -78,7 +81,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             return true;
         }
-
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (CIServerConfig.Instance.ShadowspecBuff)
+            {
+                damage.Base *= 5;
+                if (player.altFunctionUse == 1)
+                    damage.Base *= 5;
+            }
+        }
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)
@@ -144,18 +155,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<BlossomFlux>().
+                AddIngredient<PlanteraLegendary>().
                 AddIngredient<DaemonsFlame>().
                 AddIngredient<Deathwind>().
                 AddIngredient<HeavenlyGaleold>().
                 AddConsumeItemCallback(CIRecipesCallback.DontConsumeExoWeapons). //旧天风合成时不会被消耗掉
-                AddIngredient<TheBurningSky>(4).        //丛林龙掉落的全部武器
-                AddIngredient<DragonsBreathold>(4).     //只限定为旧版本，这里是故意的。
-                AddIngredient<ChickenCannon>(4).
-                AddIngredient<PhoenixFlameBarrage>(4).
+                AddIngredient<BurningSkyLegacy>(4).        //丛林龙掉落的全部武器
+                AddIngredient<DragonSword>(4).        //丛林龙掉落的全部武器
+                AddIngredient<AncientDragonsBreath>(4).     //只限定为旧版本，这里是故意的。
+                AddIngredient<ChickenCannonLegacy>(4).
+                AddIngredient<DragonStaff>(4).
                 AddIngredient<YharimsCrystal>(4).
-                AddIngredient<YharonsKindleStaff>(4).
-                AddIngredient<Wrathwing>(4).
+                AddIngredient<YharonSonStaff>(4).
+                AddIngredient<DragonSpear>(4).
                 AddIngredient<TheFinalDawn>(4).
                 AddIngredient<YharimsGiftLegacy>(8).
                 AddIngredient<EffulgentFeather>(160).

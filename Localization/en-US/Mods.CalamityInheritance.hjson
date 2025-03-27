@@ -186,6 +186,16 @@ Configs: {
 			Label: Offset
 			Tooltip: ""
 		}
+
+		DmgTest: {
+			Label: Dmg Test
+			Tooltip: ""
+		}
+
+		LegendaryBuff: {
+			Tooltip: ""
+			Label: Legendary Buff
+		}
 	}
 
 	CIRespriteConfig: {
@@ -224,6 +234,7 @@ Configs: {
 			Accessories: Accessories Header
 			Weapons: Weapons Header
 			Misc: Misc Header
+			Special: Special Header
 		}
 
 		DisplayName: Legacy Sprite
@@ -413,6 +424,11 @@ Configs: {
 				[i:CalamityMod/SproutingArrow]Sprouting Arrow / Terra Arrow
 				[i:CalamityMod/DryadsTear]Dryad's Tear / Terra Bullet
 				'''
+		}
+
+		PBGColorType: {
+			Label: P B G Color Type
+			Tooltip: ""
 		}
 	}
 

@@ -15,6 +15,8 @@ using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Armor.GodSlayer;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -45,9 +47,16 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.armor[0].type == ModContent.ItemType<AncientGodSlayerHelm>() &&
-                player.armor[1].type == ModContent.ItemType<AncientGodSlayerChestplate>() &&
-                player.armor[2].type == ModContent.ItemType<AncientGodSlayerLeggings>())
+            if ((player.armor[0].type == ModContent.ItemType<AncientGodSlayerHelm>() ||
+                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadMeleeold>() ||
+                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadRangedold>() ||
+                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadMagicold>() ||
+                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadSummonold>() ||
+                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadRogueold>()) &&
+                (player.armor[1].type == ModContent.ItemType<AncientGodSlayerChestplate>() ||
+                 player.armor[1].type == ModContent.ItemType<GodSlayerChestplateold>()) &&
+                (player.armor[2].type == ModContent.ItemType<AncientGodSlayerLeggings>() ||
+                 player.armor[2].type == ModContent.ItemType<GodSlayerLeggingsold>()))
             {
                 player.wingTime += 2.0f;
             }

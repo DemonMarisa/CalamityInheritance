@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class BloodBoilerLegacy : CIRanged, ILocalizedModType
+    public class BloodBoilerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

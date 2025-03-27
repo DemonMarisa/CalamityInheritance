@@ -390,3 +390,8 @@ AntlionBow: {
 	Tooltip: ""
 	DisplayName: Antlion Bow
 }
+
+PlanteraLegendary: {
+	Tooltip: ""
+	DisplayName: Plantera Legendary
+}

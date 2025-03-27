@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CalamityPlayer calPlayer = player.Calamity();
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            player.endurance = 0.05f;
+            player.endurance += 0.05f;
             
             usPlayer.FuckYouBees = true;
             usPlayer.AmbrosialAmpouleOld = true;

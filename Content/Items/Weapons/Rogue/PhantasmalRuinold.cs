@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
-        public override float StealthDamageMultiplier => 1.22f;
+        public override float StealthDamageMultiplier => 1.30f;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

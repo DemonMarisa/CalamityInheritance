@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.ai[1] += 1f;
                 Projectile.extraUpdates = 2;
                 //帧图
-                Projectile.frame = CIFunction.FramesChanger(Projectile, 3, 2);
+                Projectile.frame = CIFunction.FramesChanger(Projectile, 3, 3);
                 if (Projectile.ai[1] > 30f)
                 {
                     Projectile.ai[1] = 1f;
@@ -190,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.velocity.Y = -0.05f;
                 }
             }
-            Projectile.frame = CIFunction.FramesChanger(Projectile, 12, 3);
+            Projectile.frame = CIFunction.FramesChanger(Projectile, 12, 4);
             if (Projectile.ai[1] > 0f) Projectile.ai[1] += Main.rand.Next(1,4);
             if (Projectile.ai[1] > 40f)
             {

@@ -48,13 +48,13 @@ namespace CalamityInheritance.Rarity.Special
     public class ShizukuSilver: ModRarity
     {
         //给予...的特殊稀有度颜色，仅在config开启特殊稀有度时生效
-        //目前没有任何物品使用，可能之后在考虑采用
+        //近似银白
         public override Color RarityColor => new(248,248,255);//#F8F8FF
     }
     public class ShizukuAqua: ModRarity
     {
         //给予..的特殊稀有度颜色，仅在config开启特殊稀有度时生效
-        //目前没有物品引用
+        //近似青蓝
         public override Color RarityColor => new(152,245,255);//#98F5FF
     }
     

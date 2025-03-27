@@ -37,19 +37,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 5f;
         }
         public override bool AltFunctionUse(Player player) => true;
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+                Item.useStyle = ItemUseStyleID.Swing;
+            else
+                Item.useStyle = ItemUseStyleID.Shoot;
+            return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //右键：投掷
             if (player.altFunctionUse == 2)
             {
-                Item.useStyle = ItemUseStyleID.Swing;
                 int thrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[thrown].CalamityInheritance().ThrownMode = true;
             }
             //左键：正常矛
             else
             {
-                Item.useStyle = ItemUseStyleID.Shoot;
                 int notThrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[notThrown].CalamityInheritance().ThrownMode = false;
             }

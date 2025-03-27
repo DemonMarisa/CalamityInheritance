@@ -72,11 +72,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Item.damage = 298;
+                Item.damage = 294;
             }
             else
             {
-                Item.damage = 198;
+                Item.damage = 208;
             }
             return base.CanUseItem(player);
         }
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             float piOver10 = MathHelper.Pi / 10f;
             bool againstWall = !Collision.CanHit(source, 0, 0, source + baseOffset, 0, 0);
 
-            int numArrows = 5;
+            int numArrows = (usPlayer.LoreExo || usPlayer.PanelsLoreExo) ? 7 : 5;
             float dmgMult = 1f;
 
             for (int i = 0; i < numArrows; i++)

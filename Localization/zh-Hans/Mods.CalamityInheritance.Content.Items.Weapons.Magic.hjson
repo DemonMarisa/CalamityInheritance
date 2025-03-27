@@ -268,5 +268,21 @@ VictideBook: {
 		喷出能攻击敌人的刺球 
 		刺球不会受到重力影响
 		'''
-	DisplayName: 珊瑚溺[Legacy]
+	DisplayName: 珊瑚泥[Legacy]
+}
+
+RavagerLegendary: {
+	DisplayName: 维苏威阿斯[Legendary]
+	Tooltip:
+		'''
+		召唤一群熔岩陨星
+		右键直接发射散开的熔岩陨星
+		可随着游戏流程的进行得到增强
+		[c/FF009B:-传奇武器-]
+		'''
+}
+
+FuckVoid: {
+	// Tooltip: ""
+	// DisplayName: Fuck Void
 }

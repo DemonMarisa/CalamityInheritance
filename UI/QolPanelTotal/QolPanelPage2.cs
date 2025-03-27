@@ -253,7 +253,6 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 要绘制在第几页
             if (Page == 1)
             {
-                // Main.NewText($"TextDisplayID : {TextDisplayID}");
                 /*
                 *Scarlet:
                 *尽管打表是按照字母顺序来的
@@ -268,7 +267,6 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 *默认情况下优先绘制左分页，如果需要绘制右分页，则rigtSplitPage set为True即可
                 *附2:我有想过用数组尝试遍历，但我发现最后还是不如打表。完蛋了。
                 */
-
                 // 哈哈，马上就要全换成按钮了
                 #region 遍历-Lore贴图
 
@@ -467,7 +465,6 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// </summary>
         /// <param name="line">你需要的行数，不超过6行</param>
         /// <param name="colume">你需要的列数，不超过6列</param>
-        /// <param name="needOffset">增加lore的行距，除非你要绘制第一行，否则默认为true，主要是要预留空间绘制按钮。</param>
         /// <param name="rightSplitPage">是否需要绘制在右半分页，我们默认取左半分页</param>
         /// <returns></returns>
         public LorePosData GetLorePos(int line, int colume, bool? rightSplitPage = false)

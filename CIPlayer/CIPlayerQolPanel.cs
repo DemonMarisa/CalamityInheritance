@@ -437,6 +437,10 @@ namespace CalamityInheritance.CIPlayer
             tag["CIExoLoreType"] = ExoPanelType;
 
             tag["CIScalLoreType"] = SCalPanelType;
+            //孔雀翎样式增强保存
+            tag.Add("PBGUpgrade1", PBGLegendaryTier1);
+            tag.Add("PBGUpgrade2", PBGLegendaryTier2);
+            tag.Add("PBGUpgrade3", PBGLegendaryTier3);
 
             // 禁止生成
             tag.Add("CISulphurSeaType", SulphurSeaType);
@@ -536,6 +540,10 @@ namespace CalamityInheritance.CIPlayer
 
             UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
 
+            PanelsLoreExo = tag.GetBool("PanelsLoreExo");
+            tag.TryGet<bool>("PBGUpgrade1", out PBGLegendaryTier1);
+            tag.TryGet<bool>("PBGUpgrade2", out PBGLegendaryTier2);
+            tag.TryGet<bool>("PBGUpgrade3", out PBGLegendaryTier3);
         }
     }
 }

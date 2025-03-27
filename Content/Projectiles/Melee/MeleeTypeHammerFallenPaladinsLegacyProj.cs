@@ -33,7 +33,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
-            Projectile.extraUpdates = 2;
+            Projectile.extraUpdates = 3;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30 * 3;
         }
 
         public override void AI()

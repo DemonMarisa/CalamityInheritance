@@ -19,7 +19,7 @@ using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class Photovisceratorold : CIRanged, ILocalizedModType
+    public class Photovisceratorold : FlamethrowerSpecial, ILocalizedModType
     {
         public int OwnerIndex;
         public Player Owner => Main.player[OwnerIndex];

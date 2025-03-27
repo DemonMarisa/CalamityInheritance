@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ChickenRound: ModProjectile, ILocalizedModType
     {
-        public static readonly int MaxFrames = 3;
+        public static readonly int MaxFrames = 4;
         public static readonly int FramesCounter = 4;
         public static readonly int ExplosionHitboxW = 1040;
         public static readonly int ExplosionHitboxH = 1040;

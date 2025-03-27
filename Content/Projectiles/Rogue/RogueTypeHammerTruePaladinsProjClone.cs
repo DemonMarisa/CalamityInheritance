@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         private static float RotationIncrement = 0.15f;
 
-        private static readonly int Lifetime = 180; //比圣时之锤要短一半
+        private static readonly int Lifetime = 200; //最后一次削减挂载时间,
         private static readonly float CanHome = 40;
 
         public override void SetStaticDefaults()
@@ -34,10 +34,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
-            Projectile.extraUpdates = 2;
+            Projectile.extraUpdates = 5;
             Projectile.timeLeft = Lifetime;
-            Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 6; //两次额外更新，实际无敌帧为12
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 20;
         }
 
         public override void AI()
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(Projectile.ai[0] > CanHome) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {   
                 Projectile.rotation += RotationIncrement + 5f;//增加转速
-                CIFunction.HomeInOnNPC(Projectile, true, 3000f, 27f, 24f, 20f);
+                CIFunction.HomeInOnNPC(Projectile, true, 3000f, 32f, 24f, 20f);
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间

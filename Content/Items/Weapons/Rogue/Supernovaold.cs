@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 34;
             Item.height = 36;
-            Item.damage = 675;
+            Item.damage = 700;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 24;
@@ -42,12 +42,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ModContent.ProjectileType<SupernovaBombold>();
-            Item.shootSpeed = 16f;
+            Item.shootSpeed = 19f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
-        public override float StealthDamageMultiplier => 1.08f;
+        public override float StealthDamageMultiplier => 1.20f;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

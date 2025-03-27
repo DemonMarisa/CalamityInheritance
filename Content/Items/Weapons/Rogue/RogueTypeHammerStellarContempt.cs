@@ -43,14 +43,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>();
             Item.shootSpeed = Speed;
-        }
-        public override float StealthDamageMultiplier => 1.10f;
-
+        } public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 24;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity ,type, damage, knockback, player.whoAmI);
+                int stealth = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage * 0.8f), knockback, player.whoAmI);
                 if(stealth.WithinBounds(Main.maxProjectiles))
                     Main.projectile[stealth].Calamity().stealthStrike = true;
                 return false;

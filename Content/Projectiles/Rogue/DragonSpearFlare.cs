@@ -67,10 +67,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             for (int i = 0; i < 2 ; i++)
             {
-                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 55, 0f, 0f, 0, default, 0.5f);
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 0, default, 0.5f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 1f;
-                d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 55, 0f, 0f, 100, default, 0.5f);
+                d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 100, default, 0.5f);
                 Main.dust[d].velocity *= 1f;
                 Main.dust[d].noGravity = true;
             }

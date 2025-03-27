@@ -20,12 +20,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.damage = 58;
+            Item.damage = 78;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 66;
             Item.height = 34;
             Item.useTime = 3;
-            Item.reuseDelay = 12;
+            Item.reuseDelay = 8;
             Item.useAnimation = 9;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;

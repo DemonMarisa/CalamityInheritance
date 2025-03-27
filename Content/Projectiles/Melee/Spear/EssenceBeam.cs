@@ -61,19 +61,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
-            int num3;
-            for (int num795 = 4; num795 < 31; num795 = num3 + 1)
+            int dCounts;
+            for (int i = 4; i < 31; i = dCounts + 1)
             {
-                float num796 = Projectile.oldVelocity.X * (30f / num795);
-                float num797 = Projectile.oldVelocity.Y * (30f / num795);
-                int num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.ShadowbeamStaff, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
-                Main.dust[num798].noGravity = true;
-                Dust dust = Main.dust[num798];
+                float pVelX = Projectile.oldVelocity.X * (30f / i);
+                float pVelY = Projectile.oldVelocity.Y * (30f / i);
+                int d = Dust.NewDust(new Vector2(Projectile.oldPosition.X - pVelX, Projectile.oldPosition.Y - pVelY), 8, 8, DustID.ShadowbeamStaff, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
+                Main.dust[d].noGravity = true;
+                Dust dust = Main.dust[d];
                 dust.velocity *= 0.5f;
-                num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.ShadowbeamStaff, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
-                dust = Main.dust[num798];
+                d = Dust.NewDust(new Vector2(Projectile.oldPosition.X - pVelX, Projectile.oldPosition.Y - pVelY), 8, 8, DustID.ShadowbeamStaff, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
+                dust = Main.dust[d];
                 dust.velocity *= 0.05f;
-                num3 = num795;
+                dCounts = i;
             }
         }
     }

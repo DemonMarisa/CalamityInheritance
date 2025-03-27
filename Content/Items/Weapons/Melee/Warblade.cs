@@ -1,5 +1,8 @@
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Projectiles.Melee;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,11 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Warblade : CIMelee, ILocalizedModType
     {
-        //返厂的哥布林战刀得到了一定的重置
         public new string LocalizationCategory => "Content.Items.Weapons.Melee";
-        //攻击Types:
-        public int Attackstyle = 0;
-        public int GapTime = 0;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -32,18 +31,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            //干掉本体的动画
-            Item.noMelee = true;
-            Item.noUseGraphic = true;
-            //“发射弹幕”
-            Item.shoot = ModContent.ProjectileType<WarbladeProj>();
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (hit.Crit)
-            {
-                
-            }
+            target.AddBuff(ModContent.BuffType<WarCleave>(), 180);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.noKnockback = true; //继承至🐢壳
 
             //等一下, 阴阳石的免伤数据呢?
-            player.endurance = 0.10f;
+            player.endurance += 0.10f;
             
             //继承至大凝胶:
             player.statLifeMax2 += 20;

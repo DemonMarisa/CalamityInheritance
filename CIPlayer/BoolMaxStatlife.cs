@@ -14,6 +14,9 @@ namespace CalamityInheritance.CIPlayer
                 LifePercentMax += 0.25f;
             if (AncientCotbg)
                 LifePercentMax += 0.1f;
+            //元素手套10%
+            if (ElemGauntlet)
+                LifePercentMax += 0.1f;
             if (Main.zenithWorld)
             {
                 if (AncientGodSlayerSet)

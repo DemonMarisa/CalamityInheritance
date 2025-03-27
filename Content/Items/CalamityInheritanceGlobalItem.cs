@@ -33,12 +33,16 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.AncientChisel)
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
             if (item.type == ItemID.HandOfCreation)
-            player.CIMod().IfGodHand = true;
+                player.CIMod().IfGodHand = true;
+                
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
-            VanillaAccesoriesUnnerf(item, player);  //饰品
-            CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
+            {
+                VanillaAccesoriesUnnerf(item, player);  //饰品
+                CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
+            }
             
         }
+       
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {

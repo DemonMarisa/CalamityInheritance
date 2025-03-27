@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = CISoundMenu.OpalStriker;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<OpalStrikeLegacy>();
-            Item.shootSpeed = 9f;
+            Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
             Item.Calamity().canFirePointBlankShots = true;
         }

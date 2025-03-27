@@ -238,3 +238,13 @@ VictideBook: {
 	Tooltip: ""
 	DisplayName: Victide Book
 }
+
+RavagerLegendary: {
+	DisplayName: Vesuvius Legendary
+	Tooltip: ""
+}
+
+FuckVoid: {
+	Tooltip: ""
+	DisplayName: Fuck Void
+}

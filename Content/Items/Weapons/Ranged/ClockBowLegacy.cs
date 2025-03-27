@@ -44,9 +44,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float speed = Item.shootSpeed;
             player.itemTime = Item.useTime;
-
+            float pSpeed = Item.shootSpeed;
+            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+            float ammoVeloX= Main.mouseX + Main.screenPosition.X - vector2.X;
+            float ammoVeloY= Main.mouseY + Main.screenPosition.Y - vector2.Y;
+            if (player.gravDir == -1f)
+            {
+                ammoVeloY= Main.screenPosition.Y + Main.screenHeight - Main.mouseY- vector2.Y;
+            }
+            float dist = CIFunction.TryGetVectorMud(ammoVeloX, ammoVeloY);
+            if ((float.IsNaN(ammoVeloX) && float.IsNaN(ammoVeloY)) || (ammoVeloX == 0f && ammoVeloY == 0f))
+            {
+                ammoVeloX = player.direction;
+                ammoVeloY = 0f;
+            }
+            else
+            {
+                dist = pSpeed / dist;
+            }
             int pCounts = 15;
             for (int i = 3; i < 6; i++)
             {
@@ -55,18 +71,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             for (int j = 0; j < pCounts; j++)
             {
-                float newX = player.position.X + (float)player.width / 2 + Main.rand.NextFloat(201f) * - (float)player.direction + Main.mouseX + Main.screenPosition.X - player.position.X;
+                float newX = player.position.X + (float)player.width / 2 + Main.rand.NextFloat(201f) * - (float)player.direction + Main.mouseY + Main.screenPosition.X - player.position.X;
                 Vector2 bowRot = new(newX, player.MountedCenter.Y);
                 bowRot.X = (bowRot.X + player.Center.X) /2f + Main.rand.NextFloat(-200f,201f);
                 bowRot.Y -= 100 * j;
-                float ammoVeloX = Main.mouseX + Main.screenPosition.X - bowRot.X;
-                float ammoVeloY = Main.mouseY + Main.screenPosition.Y - bowRot.Y;
+                ammoVeloX = Main.mouseX + Main.screenPosition.X - bowRot.X;
+                ammoVeloY = Main.mouseY + Main.screenPosition.Y - bowRot.Y;
                 if (ammoVeloX < 0f)   
                     ammoVeloX *= -1f;
                 if (ammoVeloX < 20f)
                     ammoVeloX = 20f;
                 float getDist = CIFunction.TryGetVectorMud(ammoVeloX, ammoVeloY);
-                getDist = speed/getDist;
+                getDist = pSpeed/getDist;
                 ammoVeloX *= getDist;
                 ammoVeloY *= getDist;
                 float realProjSpeedX = ammoVeloX + Main.rand.NextFloat(-600, 601) * 0.02f;

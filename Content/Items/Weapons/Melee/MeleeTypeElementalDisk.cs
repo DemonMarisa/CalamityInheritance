@@ -19,13 +19,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 38;
             Item.height = 38;
-            Item.damage = 52; //每个分裂的飞盘现在都采用8独立无敌帧，因此面板大动干戈直接拉成两位数。总体来说dps属于正常水平。
+            Item.damage = 54; //每个分裂的飞盘现在都采用8独立无敌帧，因此面板大动干戈直接拉成两位数。总体来说dps属于正常水平。
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = true;
-            Item.useAnimation = 15;
+            Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 15;
+            Item.useTime = 14;
             Item.knockBack = 9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPricePurple;
