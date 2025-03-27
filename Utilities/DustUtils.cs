@@ -16,7 +16,6 @@ namespace CalamityInheritance.Utilities
         /// <param name="dustAlpha">7:粒子透明度, 默认255</param>
         /// <param name="yPos">8:粒子垂直位置偏移, 默认0f</param>
         /// <param name="xVel">9:粒子水平速度, 默认xVel = xPos</param>
-        /// <param name="yVeli:FragmentVortex]i:FragmentVortex]</param>
         /// </summary>
         public static void DustCircle(Vector2 pos, float dustCounts, float dustScale, int dustType, bool dustGravity,
                                       float xPos, int? dustAlpha = 255, float? yPos = 0f, float? xVel = null,

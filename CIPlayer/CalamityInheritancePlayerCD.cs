@@ -1,8 +1,4 @@
-using CalamityInheritance.UI.QolPanelTotal;
-using CalamityMod;
-using CalamityMod.CalPlayer;
-using Terraria;
-using Terraria.ModLoader; 
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -20,7 +16,12 @@ namespace CalamityInheritance.CIPlayer
         public bool BuffExoApolste = false; //加强星流投矛
         public bool ForceHammerStealth = false;
         public int GodSlayerDMGprotectMax = 80;//金源伤害保护的衰减
+        public int GlobalLegendaryT3CD = 0; //T3传奇武器特殊效果的全局CD（对，共享）
         public int yharimArmorinvincibility = 0;//魔君套装无敌时间
+        #region 传奇武器的一些计数器
+        public int DukeDefenseCounter = 0;
+        public int DukeDefenseTimer = 0;
+        #endregion
 
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
 
@@ -36,6 +37,11 @@ namespace CalamityInheritance.CIPlayer
                 if (yharimArmorinvincibility > 0)
                     yharimArmorinvincibility--;
             }
+            
+            if (GlobalLegendaryT3CD > 0)
+                GlobalLegendaryT3CD--;
+            if (DukeDefenseCounter > 0)
+                DukeDefenseCounter--;
             return;
         }
     }

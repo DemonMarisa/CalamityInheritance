@@ -79,7 +79,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         }
         public override void AI()
         {
-            
             //刷新射弹属性
             ResetProj();
             Projectile.ai[0] += 1f;
@@ -87,7 +86,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             if (Projectile.ai[0] > 75f)
             {
                 Projectile.velocity.Y += 0.09f;
-                Projectile.rotation = Projectile.velocity.ToRotation();
+                if (Projectile.spriteDirection == -1)
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+                else
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4 * 3;
+            }
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            //这里“只”允许投掷的投矛造成下面的效果
+            if (Projectile.CalamityInheritance().ThrownMode)
+            {
+                OnThrowEffect(target, hit);
+                OnThrowDust();
             }
         }
         public void ResetProj()
@@ -103,33 +114,24 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             //干掉穿墙
             Projectile.tileCollide = true;
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            //这里“只”允许投掷的投矛造成下面的效果
-            if (Projectile.CalamityInheritance().ThrownMode)
-            {
-                OnThrowEffect(target, hit);
-                OnThrowDust();
-            }
-        }
         public void OnThrowEffect(NPC target, NPC.HitInfo hit)
         {
             //将投矛“击中”前的速度存储进去
             Vector2 getVel = Vector2.Normalize(Projectile.oldVelocity);
             //现在给对方单位“强制”击退，或者说强行禁锢。这个是故意的做法
-            if (target.IsABoss())
+            if (target.lifeMax < 20000)
             {
-                //如果敌对单位是一个boss，则给予的击退力量会更少
-                if (Main.rand.NextBool(5))
-                    target.velocity = getVel * 0.05f;
-                //但是允许对boss造成100%的暴击
-                if (!hit.Crit)
-                    hit.Damage *= 2;
-            }
-            else
-            {
-                //否则，强制击退一段距离
-                target.velocity = getVel * 1.4f;
+                if (target.IsABoss())
+                {
+                    //如果敌对单位是一个boss，则给予的击退力量会更少
+                    if (Main.rand.NextBool(8))
+                        target.velocity = getVel * 0.45f;
+                }
+                else
+                {
+                    //否则，强制击退一段距离
+                    target.velocity = getVel * 1.4f;
+                }
             }
         }
         //只允许投矛状态获得击中粒子/与音效

@@ -190,13 +190,16 @@ namespace CalamityInheritance.Content.Projectiles
                             }
                         }
                     }
-                    if (modPlayer.nanotechold)
+                    //给了孔雀翎一个特判
+                    if (modPlayer.nanotechold && projectile.type != ModContent.ProjectileType<PBGLegendaryBeam>())
                     {
                         if (Main.player[projectile.owner].miscCounter % 30 == 0 && projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
+                                //确保这个东西指定为全局伤害
+                                Main.projectile[p].DamageType = DamageClass.Generic;
                             }
                         }
                     }

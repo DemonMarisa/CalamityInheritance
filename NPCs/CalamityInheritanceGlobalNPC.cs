@@ -20,7 +20,8 @@ namespace CalamityInheritance.NPCs
         public bool rageOfChair = false;
         public static int rageOfChairDoTDamage = 30000;
         internal object newAI;
-        internal const int MaxAIMode = 4;
+        //一百个栏位
+        internal const int MaxAIMode = 100;
         public float[] BossNewAI = new float[MaxAIMode];
         public int BossAITimer = 0; 
         //获取whoami

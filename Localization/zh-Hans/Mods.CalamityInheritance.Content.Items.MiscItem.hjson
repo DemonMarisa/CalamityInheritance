@@ -29,7 +29,6 @@ YharonEssence: {
 		尽管真正的重生巨龙很长一段时间内不会回来了
 		但我们尚能通过这个物品去感知那个以龙战龙的时代
 		右键开启时可以获得一些丛林龙,犽戎(阶段一)的战利品
-
 		'''
 }
 
@@ -55,4 +54,34 @@ RebornEyeTip: {
 		强化宝光盾牌[i:CalamityMod/OrnateShield], 十字盾[i:AnkhShield], 炫彩凝胶[i:CalamityInheritance/GrandGelatinLegacy]与职业徽章[i:WarriorEmblem]
 		'''
 	DisplayName: 请读这个纸条！
+}
+
+PBGLegendaryUpgrade1: {
+	Tooltip:
+		'''
+		使用后增强孔雀翎潜伏的攻击模式
+		潜伏光刃现在可以掷出10个，并且使用100%武器伤害而非70%武器伤害
+		"用于模拟以前传奇武器的样式增强"
+		'''
+	DisplayName: 孔雀翎升级-等级1[Legendary]
+}
+
+PBGLegendaryUpgrade2: {
+	DisplayName: 孔雀翎升级-等级2[Legendary]
+	Tooltip:
+		'''
+		使用后增强孔雀翎潜伏的攻击模式
+		潜伏光刃的攻击次数增加5次(由15次增加至20次)
+		"用于模拟以前传奇武器的样式增强"
+		'''
+}
+
+PBGLegendaryUpgrade3: {
+	DisplayName: 孔雀翎升级-等级3[Legendary]
+	Tooltip:
+		'''
+		使用后增强孔雀翎潜伏的攻击模式
+		潜伏光刃击中敌人时有一定概率清除玩家身上大部分减益效果
+		"用于模拟以前传奇武器的样式增强"
+		'''
 }

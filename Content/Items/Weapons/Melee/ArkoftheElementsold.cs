@@ -22,10 +22,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetDefaults()
         {
             Item.width = 84;
-            Item.damage = 160;
+            Item.damage = 180;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.useAnimation = 20;
-            Item.useTime = 20;
+            Item.useAnimation = 18;
+            Item.useTime = 18;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 8.5f;
             Item.UseSound = SoundID.Item60;

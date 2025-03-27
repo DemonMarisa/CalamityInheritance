@@ -54,6 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 }
                 return false;
             }
+            else
             return true;
         }
     }

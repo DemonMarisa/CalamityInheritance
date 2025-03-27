@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class GodsBellowsLegacy : CIRanged, ILocalizedModType
+    public class GodsBellowsLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

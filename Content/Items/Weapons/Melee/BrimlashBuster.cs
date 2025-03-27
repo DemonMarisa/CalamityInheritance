@@ -28,12 +28,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 18f;
             Item.shoot = ModContent.ProjectileType<BrimlashBusterProj>();
         }
-        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-        {
-            float getDamageBoost = 1.0f;
-            if(Main.rand.NextBool(3))
-                getDamageBoost = 3f;
-            damage.ApplyTo(getDamageBoost);
-        }
     }
 }

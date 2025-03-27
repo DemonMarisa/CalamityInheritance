@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static float RotationIncrement = 0.23f;
         private static readonly float StealthSpeed = MeleeTypeHammerPwnageLegacy.Speed*2;
         private static readonly int LifeTime = 240;
-        private static readonly int StealthLifeTime = 1025;
+        private static readonly int StealthLifeTime = 2700;
         private static readonly float ReboundTime = 36f;
         public override void SetDefaults()
         {
@@ -101,9 +101,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 
                 case 2f:
                     Projectile.usesIDStaticNPCImmunity = true;
-                    Projectile.idStaticNPCHitCooldown = 10;
+                    Projectile.idStaticNPCHitCooldown = 15;
                     OnChasingDust();
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 10f, 16f); //挂载只会在计时器小于120f时进行
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 28f, 16f); //挂载只会在计时器小于120f时进行
                     if(Projectile.timeLeft < LifeTime)
                     {
                         Projectile.velocity = new Vector2(0, Main.rand.NextBool(2)? 4f : -4f) ;
@@ -153,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void OnStuckEffect()
         {
             CIFunction.DustCircle(Projectile.position, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);
-            SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f});
+            SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f}, Projectile.Center);
         }
         private void OnChasingDust()
         {

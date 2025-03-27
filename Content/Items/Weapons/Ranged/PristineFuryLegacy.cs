@@ -15,7 +15,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class PristineFuryLegacy : CIRanged, ILocalizedModType
+    public class PristineFuryLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public int frameCounter = 0;

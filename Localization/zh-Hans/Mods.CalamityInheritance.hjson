@@ -164,6 +164,16 @@ Configs: {
 			// Label: Offset
 			// Tooltip: ""
 		}
+
+		DmgTest: {
+			// Label: Dmg Test
+			// Tooltip: ""
+		}
+
+		LegendaryBuff: {
+			// Tooltip: ""
+			// Label: Legendary Buff
+		}
 	}
 
 	CIRespriteConfig: {
@@ -202,6 +212,7 @@ Configs: {
 			Accessories: 饰品贴图
 			Weapons: 武器贴图
 			Misc: 其他贴图
+			Special: 临时Debug
 		}
 
 		DisplayName: 旧版贴图切换
@@ -389,6 +400,15 @@ Configs: {
 				[i:CalamityMod/PlantationStaff]苍华之庭/苍华之庭
 				[i:CalamityMod/SproutingArrow]春芽箭/泰拉箭
 				[i:CalamityMod/DryadsTear]树妖之泪/泰拉弹
+				'''
+		}
+
+		PBGColorType: {
+			Label: 名字彩蛋染色测试
+			Tooltip:
+				'''
+				默认, TrueScarlet, DemonMarisa, Shizuku, Kunoji Ichika, Plantare
+				Tristan, Baobhan Sith
 				'''
 		}
 	}

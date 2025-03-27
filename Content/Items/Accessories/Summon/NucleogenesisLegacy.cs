@@ -37,8 +37,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
             player.GetDamage<SummonDamageClass>() += 0.15f;
             player.buffImmune[ModContent.BuffType<Shadowflame>()] = true;
             player.buffImmune[ModContent.BuffType<Irradiated>()] = true;
-
+            player.whipRangeMultiplier += 0.40f;
             player.maxMinions += 4;
+            player.maxTurrets += 1;
         }
 
         public override void AddRecipes()

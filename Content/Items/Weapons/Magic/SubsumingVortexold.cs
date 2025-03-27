@@ -50,11 +50,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Item.damage = 121;
+                Item.damage = 145;
             }
             else
             {
-                Item.damage = 195;
+                Item.damage = 235;
             }
             return base.CanUseItem(player);
         }

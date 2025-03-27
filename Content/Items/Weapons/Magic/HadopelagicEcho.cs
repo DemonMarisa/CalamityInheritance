@@ -24,13 +24,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void SetDefaults()
         {
-            Item.damage = 2300;
+            Item.damage = 2554;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 15;
             Item.width = 60;
             Item.height = 60;
             Item.useTime = 8;
-            Item.reuseDelay = 20;
+            Item.reuseDelay = 17;
             Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;

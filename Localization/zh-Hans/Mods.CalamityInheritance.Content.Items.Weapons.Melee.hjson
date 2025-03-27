@@ -441,3 +441,15 @@ VictideBoomerangMelee: {
 	Tooltip: '''"我可太喜欢这把回旋镖的手感了"'''
 	DisplayName: 贝壳回旋镖·战士版本[Legacy]
 }
+
+DukeLegendary: {
+	Tooltip:
+		'''
+		远古汉化的版本
+		剑刃击中敌人会释放涡流台风
+		右键发射水刃龙卷
+		会随着游戏流程的推进得到强化
+		[c/35FFFF:-传奇武器-]
+		'''
+	DisplayName: 龙卷涡漩海皇剑爵[Legacy]
+}

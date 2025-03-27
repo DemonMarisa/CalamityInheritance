@@ -97,6 +97,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            damage.Base += player.GetTotalDamage<TrueMeleeDamageClass>().ApplyTo(Item.damage);
+            base.ModifyWeaponDamage(player, ref damage);
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

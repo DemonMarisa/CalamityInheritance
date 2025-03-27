@@ -1,4 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Ranged;
@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ShadethrowerLegacy : CIRanged, ILocalizedModType
+    public class ShadethrowerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int projectiles = 0; projectiles < 3; projectiles++)
+            for (int projectiles = 0; projectiles < 5; projectiles++)
             {
                 float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
                 float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;

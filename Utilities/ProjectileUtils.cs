@@ -29,7 +29,7 @@ namespace CalamityInheritance.Utilities
             float maxDistance = distanceRequired;
             bool locatedTarget = false;
 
-            // Find the closest target.
+            //寻找距离最近的目标
             float npcDistCompare = 25000f;
             int index = -1;
             foreach (NPC n in Main.ActiveNPCs)
@@ -98,11 +98,14 @@ namespace CalamityInheritance.Utilities
         ///</summary>
         public static void BoomerangReturningAI(Player player, Projectile boomerang, float rSpeed, float acceleration, float? minKillRangeBoomerangToPlr = 3000f)
         {
+            //返厂的回旋镖应当取消不可穿墙
             boomerang.tileCollide = false;
             Vector2 playerCenter = player.Center;
             float xDist = playerCenter.X - boomerang.Center.X;
             float yDist = playerCenter.Y - boomerang.Center.Y;
             float dist = TryGetVectorMud(xDist, yDist);
+
+            //超出这个距离，直接干掉回旋镖而非返程
             if(minKillRangeBoomerangToPlr.HasValue)
             {
                 if(dist>minKillRangeBoomerangToPlr.Value)
@@ -118,6 +121,7 @@ namespace CalamityInheritance.Utilities
             xDist *= dist;
             yDist *= dist;
             
+            //提供加速度
             if (boomerang.velocity.X < xDist)
             {
                 boomerang.velocity.X += acceleration;

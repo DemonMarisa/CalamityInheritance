@@ -1,17 +1,15 @@
 ﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class AuroraBlazerLegacy : CIRanged, ILocalizedModType
+    public class AuroraBlazerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
         public override void SetStaticDefaults()

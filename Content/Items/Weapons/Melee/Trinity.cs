@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetDefaults()
         {
             Item.width = 44;
-            Item.damage = 50;
+            Item.damage = 54;
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 18;
             Item.useTime = 18;
@@ -54,6 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 {
                     Main.projectile[proj].DamageType = DamageClass.Melee;
                     Main.projectile[proj].penetrate = 1;
+                    Main.projectile[proj].extraUpdates = 2;
                 }
             }
             return false;

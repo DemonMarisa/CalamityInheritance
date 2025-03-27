@@ -23,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.height = 28;
             Item.useTime = Main.zenithWorld? 1 : 2;
             Item.useAnimation = 2;
+            Item.ArmorPenetration = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 1.5f;
@@ -39,6 +40,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-14, -1);
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage = 12;
+                Item.useTime = 1;
+            }
+            else
+            {
+                Item.damage = 6;
+                Item.useTime = 2;
+            }
+            return default;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

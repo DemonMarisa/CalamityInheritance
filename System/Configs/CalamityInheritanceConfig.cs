@@ -134,5 +134,17 @@ namespace CalamityInheritance.System.Configs
         [DrawTicks]
         [DefaultValue(1)]
         public int Offset { get; set; }
+        [BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        [Range(0, 5000)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int DmgTest{ get; set; }
+        [Range(1, 3)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public int LegendaryBuff{ get; set; }
     }
 }

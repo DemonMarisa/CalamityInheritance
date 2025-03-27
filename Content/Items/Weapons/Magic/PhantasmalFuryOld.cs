@@ -21,23 +21,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 62;
             Item.height = 60;
-            if (Main.zenithWorld)
-            {
-                Item.damage =  100;
-                Item.DamageType = DamageClass.Ranged; 
-                Item.mana = 0;
-                Item.useTime =  15;
-                Item.useAnimation = 15;
-            }
-            else
-            {
-                Item.damage = 260;
-                Item.DamageType = DamageClass.Magic;
-                Item.mana = 20;
-                Item.useTime = 20;
-                Item.useAnimation = 20;
-            }
-            
+            Item.damage = 260;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 20;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7.5f;
@@ -48,8 +36,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shootSpeed = 12f;
             Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
-
-
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage =  100;
+                Item.DamageType = DamageClass.Ranged; 
+                Item.mana = 0;
+                Item.useTime =  15;
+                Item.useAnimation = 15;
+            }
+            else
+            {
+                Item.damage = 295;
+                Item.DamageType = DamageClass.Magic;
+                Item.mana = 20;
+                Item.useTime = 20;
+                Item.useAnimation = 20;
+            }
+            return default;
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

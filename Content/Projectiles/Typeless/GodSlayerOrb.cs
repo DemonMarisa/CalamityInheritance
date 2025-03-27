@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using System;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -24,9 +23,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 190 && target.CanBeChasedBy(Projectile);
         public override void AI()
         {
-            int num469 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-            Main.dust[num469].noGravity = true;
-            Main.dust[num469].velocity *= 0f;
+            int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 0f;
             if (Projectile.timeLeft < 190)
                 CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, 12f, 25f);
         }

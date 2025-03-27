@@ -399,85 +399,18 @@ namespace CalamityInheritance.CIPlayer
             tag["CIExoLoreType"] = ExoPanelType;
 
             tag["CIScalLoreType"] = SCalPanelType;
+            //孔雀翎样式增强保存
+            tag.Add("PBGUpgrade1", PBGLegendaryTier1);
+            tag.Add("PBGUpgrade2", PBGLegendaryTier2);
+            tag.Add("PBGUpgrade3", PBGLegendaryTier3);
         }
 
         public override void LoadData(TagCompound tag)
         {
-            // 肉前
-            KSPanelType = tag.GetInt("CIKSLoreType");
-
-            EoCPanelType = tag.GetInt("CIEoCLoreType");
-
-            CrabPanelType = tag.GetInt("CICrabLoreType");
-
-            DSPanelType = tag.GetInt("CIDSLoreType");
-
-            EoWPanelType = tag.GetInt("CIEoWLoreType");
-
-            BoCPanelType = tag.GetInt("CIBOCLoreType");
-
-            PerfPanelType = tag.GetInt("CIPerfLoreType");
-
-            HivePanelType = tag.GetInt("CIHiveLoreType");
-
-            QBPanelType = tag.GetInt("CIQBLoreType");
-
-            SkelePanelType = tag.GetInt("CISkeleLoreType");
-
-            SGPanelType = tag.GetInt("CISGLoreType");
-
-            WoFPanelType = tag.GetInt("CIWoFLoreType");
-
-            // 肉后
-            ASPanelType = tag.GetInt("CIASLoreType");
-
-            TwinsPanelType = tag.GetInt("CITwinsLoreType");
-
-            CryoPanelType = tag.GetInt("CICryoLoreType");
-
-            DestroyerPanelType = tag.GetInt("CIDestroyerLoreType");
-
-            BrimmyPanelType = tag.GetInt("CIBrimmyLoreType");
-
-            PrimePanelType = tag.GetInt("CIPrimeLoreType");
-
-            CalClonePanelType = tag.GetInt("CICalCloneLoreType");
-
-            PlantPanelType = tag.GetInt("CIPlantLoreType");
-
-            // 花后
-            LAPanelType = tag.GetInt("CILALoreType");
-
-            AureusPanelType = tag.GetInt("CIAureusLoreType");
-
-            GolemPanelType = tag.GetInt("CIGolemLoreType");
-
-            PBGPanelType = tag.GetInt("CIPBGLoreType");
-
-            DukePanelType = tag.GetInt("CIDuckeLoreType");
-
-            RavagerPanelType = tag.GetInt("CIRavagerLoreType");
-
-            CultistPanelType = tag.GetInt("CICultistnlLoreType");
-
-            DeusPanelType = tag.GetInt("CIDeusLoreType");
-
-            // 月后
-            MLPanelType = tag.GetInt("CIMLLoreType");
-
-            ProviPanelType = tag.GetInt("CIProvilLoreType");
-
-            PolterPanelType = tag.GetInt("CIPolterLoreType");
-
-            ODPanelType = tag.GetInt("CIODLoreType");
-
-            DoGPanelType = tag.GetInt("CIDoGLoreType");
-
-            YharonPanelType = tag.GetInt("CIYharonlLoreType");
-
-            ExoPanelType = tag.GetInt("CIExoLoreType");
-
-            SCalPanelType = tag.GetInt("CIScalLoreType");
+            PanelsLoreExo = tag.GetBool("PanelsLoreExo");
+            tag.TryGet<bool>("PBGUpgrade1", out PBGLegendaryTier1);
+            tag.TryGet<bool>("PBGUpgrade2", out PBGLegendaryTier2);
+            tag.TryGet<bool>("PBGUpgrade3", out PBGLegendaryTier3);
         }
     }
 }

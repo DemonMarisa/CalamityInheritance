@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class BlightSpewerLegacy : CIRanged, ILocalizedModType
+    public class BlightSpewerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
 

@@ -38,8 +38,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             modPlayer.electricianGlove = true;
             modPlayer.filthyGlove = true;
             modPlayer.bloodyGlove = true;
-            player.GetDamage<ThrowingDamageClass>() += 0.15f;
-            player.GetCritChance<ThrowingDamageClass>() += 0.10f;
+            player.GetDamage<RogueDamageClass>() += 0.15f;
+            player.GetCritChance<RogueDamageClass>() += 0.15f;
             player.Calamity().rogueVelocity += 0.15f;
         }
 

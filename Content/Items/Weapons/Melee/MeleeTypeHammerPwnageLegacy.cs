@@ -1,6 +1,11 @@
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -42,11 +47,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient(ItemID.Pwnhammer).
-                AddIngredient(ItemID.HallowedBar, 7).
                 AddIngredient(ItemID.SoulofFright, 3).
                 AddIngredient(ItemID.SoulofMight, 3).
                 AddIngredient(ItemID.SoulofSight, 3).
-                AddTile(TileID.MythrilAnvil).
+                AddTile(TileID.Anvils).
                 Register();
         }
     }

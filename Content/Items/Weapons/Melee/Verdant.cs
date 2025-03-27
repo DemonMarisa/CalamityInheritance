@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 30;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = Main.zenithWorld? 900 : 86;
+            Item.damage = 98;
             Item.knockBack = 6f;
             Item.useTime = 22;
             Item.useAnimation = 22;
@@ -46,6 +46,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.rare = ModContent.RarityType<BlueGreen>();
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage = 1800;
+            }
+            else
+            {
+                Item.damage = 98;
+            }
+            return default;
         }
 
         public override void AddRecipes()

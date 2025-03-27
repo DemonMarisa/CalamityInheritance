@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.damage = 95;
+            Item.damage = 102;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 74;
             Item.height = 24;
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int num6 = Main.rand.Next(1, 3);
+            int num6 = 3;
             for (int index = 0; index < num6; ++index)
             {
                 float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;

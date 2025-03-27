@@ -1,12 +1,15 @@
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,8 +20,15 @@ namespace CalamityInheritance.Content.Items
         public override void SetStaticDefaults()
         {
             #region 旧日的馈赠
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
+            if (DownedBossSystem.downedYharon)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Minigun>()] = ModContent.ItemType<ACTMinigun>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
+            }
+            #endregion
+            #region 孔雀翎-进化1
+            if (Condition.DownedMoonLord.IsMet())
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PBGLegendary>()] = ModContent.ItemType<PBGLegendaryUpgrade1>();
             #endregion
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)

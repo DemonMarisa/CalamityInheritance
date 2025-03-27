@@ -39,6 +39,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = Lifetime;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 60;
         }
 
         public override void AI()

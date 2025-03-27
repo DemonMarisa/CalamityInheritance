@@ -18,13 +18,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            ItemID.Sets.BonusAttackSpeedMultiplier[Item.type] = 1.2f;
         }
         public override void SetDefaults()
         {
             Item.width = 60;
-            Item.damage = Main.zenithWorld ? 120 : 260;
+            Item.damage = 280;
             Item.DamageType = DamageClass.Melee;
-            Item.scale = Main.zenithWorld? 0.7f : 1f;
+            Item.scale = 1f;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 21;
@@ -44,13 +45,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 Item.damage = 120;
                 Item.scale = 0.6f;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             }
             else
             {
                 Item.damage = 260;
                 Item.scale = 1f;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             }
-            return base.CanUseItem(player);
+            return true;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

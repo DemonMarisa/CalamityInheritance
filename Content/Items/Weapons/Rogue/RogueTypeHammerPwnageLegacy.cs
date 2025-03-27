@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 68;
             Item.height = 68;
-            Item.damage = 90;
+            Item.damage = 70;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.knockBack = 10f;
             Item.useTime = 15;
@@ -39,11 +39,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.rare = ItemRarityID.Yellow;
             Item.autoReuse = true;
         }
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 24  ;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f ,type, (int)(damage*1.25f), knockback, player.whoAmI, 0f, 0f, 0f);
+                int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f ,type, damage, knockback, player.whoAmI, 0f, 0f, 0f);
                 if(stealth.WithinBounds(Main.maxProjectiles))
                     Main.projectile[stealth].Calamity().stealthStrike = true;
                 return false;

@@ -30,7 +30,6 @@ namespace CalamityInheritance.CIPlayer
 
         //丛林龙仆从
         public bool OwnSonYharon = false;
-        //使用古式龙魂左键，给予丛林龙战期间的无限飞效果
         #endregion
        
         public void ResetBuff()

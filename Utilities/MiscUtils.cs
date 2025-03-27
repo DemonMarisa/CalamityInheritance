@@ -60,7 +60,7 @@ namespace CalamityInheritance.Utilities
                 projectile.frame++;
                 projectile.frameCounter = 0;
             }
-            if (projectile.frame > fMax)
+            if (projectile.frame >= fMax)
                 projectile.frame = 0;
             return projectile.frame;
         }

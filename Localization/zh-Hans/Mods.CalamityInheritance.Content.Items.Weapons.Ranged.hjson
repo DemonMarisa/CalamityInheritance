@@ -407,3 +407,15 @@ AntlionBow: {
 	Tooltip: '''"不是哥们，你怎么被删了?"'''
 	DisplayName: 蚁狮颚弓[Legacy]
 }
+
+PlanteraLegendary: {
+	Tooltip:
+		'''
+		远古的翻译版本
+		发射如水流般密集的叶之箭
+		右键发射会散发毒云的孢子球
+		会随着游戏流程的推进得到强化
+		[c/00CB67:-传奇武器-]
+		'''
+	DisplayName: 甲乙木皇茂林叶帝弓[Legendary]
+}

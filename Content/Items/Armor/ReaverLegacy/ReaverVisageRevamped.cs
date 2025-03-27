@@ -40,8 +40,6 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             var modPlayer1 = player.CIMod();
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer1.ReaverRangedRocket = true;
-            //Scarlet:总远程伤害降低至30%，暴击概率降低至20%
-            //DemonMarisa:套装加成移动到头盔
         }
 
         public override void UpdateEquip(Player player)

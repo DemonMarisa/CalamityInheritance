@@ -200,10 +200,20 @@ DragonSpear: {
 
 LumiStriker: {
 	Tooltip: ""
-	DisplayName: Lumi Striker
+	DisplayName: Luminous Striker Legacy
 }
 
 VictideBoomerangRogue: {
-	Tooltip: ""
+	Tooltip: Stealth strikes shoot homing sea shells to enemies nearby
 	DisplayName: Victide Boomerang Rogue
+}
+
+PBGLegendary: {
+	Tooltip: ""
+	DisplayName: Malatche Legendary
+}
+
+EclipseSpear: {
+	Tooltip: ""
+	DisplayName: Eclipse Spear
 }

@@ -17,7 +17,8 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using CalamityMod.Projectiles.Summon;
+using CalamityInheritance.Content.Items.MiscItem;
+using System.Security.Policy;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -25,10 +26,7 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
-        #region CIRogue
-        public float ForceStealthConsumption = 1f; //玩家潜伏消耗乘算
-        public float ForceStealthDamageMultiple = 1f;  //强制玩家进入潜伏值乘算
-        #endregion
+
         #region Timer and Counter
         public int modStealth = 1000;
         public int summonProjCooldown = 0;
@@ -39,6 +37,8 @@ namespace CalamityInheritance.CIPlayer
         //1就是没给
         //2就是给了
         public int FreeEssence = 1;
+        //这个用于传奇物品的总伤害计数
+        public int DamagePool = 0;
         public bool SolarShieldEndurence = false; //日耀盾免伤计算
         #endregion
         #region 武器效果
@@ -46,6 +46,36 @@ namespace CalamityInheritance.CIPlayer
         public bool BuffPolarisBoost = false;
         
         public bool photovisceratorCrystal = false;
+        //孔雀翎的升级
+        //1: 潜伏飞刀数+1, 飞刀索敌现在更为迅捷
+        public bool PBGLegendaryTier1 = false;
+        //2: 潜伏造成18次判定(前15)
+        public bool PBGLegendaryTier2 = false;
+        //3: 极低的概率使自己不会受到debuff烧伤的影响
+        public bool PBGLegendaryTier3 = false;
+        //维苏威阿斯的升级
+        //升级1：射弹穿墙，扩展hitbox
+        public bool RavagerLegendaryTier1 = false;
+        //升级2：发射的射弹数量+3
+        public bool RavagerLegendaryTier2 = false;
+        //升级3：为自己提供足够的回血
+        public bool RavagerLegendaryTier3 = false;
+        //海爵剑升级:
+        //T1:  移除左键的数量上限
+        public bool DukeLegendaryTier1 = false;
+        //T2:  右键:增强攻速, 增强伤害, 增强飞行速度
+        public bool DukeLegendaryTier2 = false;
+        //T3:  持续不断地对敌人造成伤害会提高自己的防御属性(上限30层)
+        public bool DukeLegendaryTier3 = false;
+        //叶流升级:
+        //T1: 增强的攻击速度与射弹飞行速度
+        public bool PlanteraLegendaryTier1 = false;
+        //T2: 你会同时发射双倍数量的射弹
+        public bool PlanteraLegendaryTier2 = false;
+        //T3: 射出的射弹现在有50%发起一个追踪
+        public bool PlanteraLegendaryTier3 = false;
+        public bool PBGLegendaryDyeable = false;
+        public Color PBGBeamColor;
         #endregion
         #region dash
         public int dashTimeMod;
@@ -104,6 +134,8 @@ namespace CalamityInheritance.CIPlayer
             ResetAccessories();
             //buff全部封装
             ResetBuff();
+            PBGLegendaryDyeable = false;
+            PBGBeamColor = default;
             ForceHammerStealth = false;
             CIDashID = string.Empty;
             ElysianAegis = false;
@@ -136,6 +168,8 @@ namespace CalamityInheritance.CIPlayer
             IfCloneHtting = false; //克隆大锤子是否在攻击
             DraedonsHeartLegacyStats = false;
             AnimusDamage = 1f;
+            //这个用于传奇物品的总伤害计数
+            DamagePool = 0;
         }
         public override void PostUpdate()
         {
@@ -454,6 +488,11 @@ namespace CalamityInheritance.CIPlayer
         {
             ProjectilHitCounter = 0;
             ProjectilHitCounter2 = 0;
+            #region 孔雀翎潜伏加强
+            PBGLegendaryTier1 = false;
+            PBGLegendaryTier2 = false;
+            PBGLegendaryTier3 = false;
+            #endregion
         }
         #region Limitations
         public void ForceVariousEffects()
@@ -499,60 +538,6 @@ namespace CalamityInheritance.CIPlayer
         #endregion
 
         #region 盗贼潜伏
-        /// <summary>
-        /// 强制玩家使用本模组的潜伏判定进行潜伏攻击,
-        //  这一操作应当与原灾的SteathStrikeAvalible进行或操作
-        /// </summary>
-        /// <returns></returns>
-        public bool ForceStealthStrike()
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            if(calPlayer.rogueStealthMax <= 0f && !calPlayer.wearingRogueArmor) //玩家连潜伏值, 以及连盗贼盔甲都没穿, 直接取否返回
-                return false;
-            float stealthConsumeMultipler = 0.25f;
-            #region 将原灾的降潜伏饰品单独加入进来计算
-            if(calPlayer.stealthStrike85Cost)   stealthConsumeMultipler *= 0.85f;
-            if(calPlayer.stealthStrike75Cost)   stealthConsumeMultipler *= 0.75f;
-            if(calPlayer.stealthStrikeHalfCost) stealthConsumeMultipler *= 0.50f;
-            //附:假定玩家同时佩戴了三个不同的潜伏饰品, 那么这一乘算系数将会变成0.15f
-            //即不经过任何处理的前提下, 只需要大于15%最大潜伏值即可触发本模组的潜伏攻击
-            //让原灾物品触发潜伏我并不知道有什么办法, 只能先这样待定
-            #endregion
-            stealthConsumeMultipler *= ForceStealthConsumption; //与本模组的潜伏消耗量再乘算
-            if(stealthConsumeMultipler < 0.1f) //触发潜伏攻击的最低条件是潜伏值的10%
-                stealthConsumeMultipler = 0.1f;
-            return calPlayer.rogueStealth >= calPlayer.rogueStealthMax * stealthConsumeMultipler; 
-        }
         #endregion
-
-        public void ForceStealthOnUseConsume()
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            calPlayer.stealthStrikeThisFrame = true;
-            calPlayer.stealthAcceleration = 1f;
-            /*
-            *他这个是先把潜伏*100f(相当于转成一个int整数后再取倒数来获得潜伏的消耗比例) -> (1)
-            *而后, 把你潜伏最大值乘以这个倒数. (??????) -> (2)
-            *然后你当前最大的潜伏值再减去损失的潜伏值 -> (3)
-            *按理来说, 以潜伏值1.20f为例, 他会先进行第一步变成1/120, 然后再用1.20f去乘以这个1/120得到实际消耗值后, 再用最大的潜伏值-实际消耗值便能损失的潜伏值
-            *WHAT???
-            *附:翻译成自然语言的话:
-            *(1)1.20 * 100 = 120后取倒数变成1/120
-            *(2)120/100 * 1/120 得到 1/100(也就是1.20f * 1/120 = 1/100) 
-            *(3)最大潜伏值减去这个值, 按理来说这样计算之后应该是1.20f - 0.01f = 1.19 便是减少潜伏值的数量
-            *WHAT?
-            *Comment: (1)和(2)完全没必要, 你不想让他低于1潜伏值你直接tm的取消耗的潜伏值=最大潜伏值-0.01f不就完事了,  为什么还要tm取倒数又大搞计算?
-            */
-            // float getReduceRatio = calPlayer.flatStealthLossReduction / (calPlayer.rogueStealthMax * 100f); //(1)
-            // float leftStealth = calPlayer.rogueStealthMax * getReduceRatio; //(2）
-
-            float minStealthPoint = 0.01f;
-            float lostStealthAlt = calPlayer.rogueStealthMax - minStealthPoint;//(3)
-
-            if(ForceStealthConsumption < 1f)
-            calPlayer.rogueStealth -= ForceStealthConsumption * lostStealthAlt;
-
-            else calPlayer.rogueStealth -= lostStealthAlt;
-        }
     }
 }

@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
             Vector2 center = Projectile.Center;
-            float maxDistance = 300f;
+            float maxDistance = 800f;
             bool homeIn = false;
 
             for (int i = 0; i < Main.maxNPCs; i++)

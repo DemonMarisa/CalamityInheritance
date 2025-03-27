@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Rarity;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -29,9 +30,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = 19;
+            Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useTime = 19;
+            Item.useTime = 12;
             Item.knockBack = 9.75f;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
@@ -39,16 +40,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.shoot = ModContent.ProjectileType<StreamGougeProjOld>();
-            Item.shootSpeed = 12f;
+            Item.shootSpeed = 25f;
         }
 
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectile(source, position + velocity, velocity, type, damage, knockback, player.whoAmI);
+            return false;
+        }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Vector2 origin = new Vector2(50f, 48f);
             Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/StreamGougeOldGlow").Value, Item.Center - Main.screenPosition, null, Color.White, rotation, origin, 1f, SpriteEffects.None, 0f);
         }
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
-
         public override void AddRecipes()
         {
                 Recipe recipe = CreateRecipe();

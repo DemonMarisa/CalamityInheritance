@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 Projectile.scale = 1.1f;
             }
-            Projectile.frame = CIFunction.FramesChanger(Projectile, 4, 2);
+            Projectile.frame = CIFunction.FramesChanger(Projectile, 4, 3);
         }
 
         public override void OnKill(int timeLeft)

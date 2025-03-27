@@ -35,3 +35,18 @@ RebornEyeTip: {
 	Tooltip: ""
 	DisplayName: Reborn Eye Tip
 }
+
+PBGLegendaryUpgrade1: {
+	Tooltip: ""
+	DisplayName: P B G Legendary Upgrade1
+}
+
+PBGLegendaryUpgrade2: {
+	DisplayName: P B G Legendary Upgrade2
+	Tooltip: ""
+}
+
+PBGLegendaryUpgrade3: {
+	DisplayName: P B G Legendary Upgrade3
+	Tooltip: ""
+}

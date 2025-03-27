@@ -16,14 +16,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 1.33f; 
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 1.50f; 
         }
 
         public override void SetDefaults()
         {
             Item.width = 82;
             Item.height = 84;
-            Item.scale = 1.75f;
+            Item.scale = 2.25f;
             Item.damage = 2000;
             Item.useTurn = true;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;

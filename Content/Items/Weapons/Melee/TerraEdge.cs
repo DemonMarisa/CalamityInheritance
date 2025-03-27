@@ -15,11 +15,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            ItemID.Sets.BonusAttackSpeedMultiplier[Item.type] = 1.20f;
         }
         public override void SetDefaults()
         {
             Item.width = 58;
-            Item.damage = 115;
+            Item.damage = 120;
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;

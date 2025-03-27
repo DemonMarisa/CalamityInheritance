@@ -59,19 +59,29 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
+            //取消金源锭需求
             CreateRecipe().
                 AddIngredient(ItemID.ChainGun).
                 AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBarold>().
+                AddIngredient<CosmiliteBar>(12).
+                AddIngredient<AscendantSpiritEssence>(5).
                 AddTile<CosmicAnvil>().
                 Register();
 
-            CreateRecipe().
-                AddIngredient(ItemID.ChainGun).
-                AddIngredient<ClockGatlignum>().
-                AddIngredient<AuricBar>(5).
-                AddTile<CosmicAnvil>().
-                Register();
+
+            // CreateRecipe().
+            //     AddIngredient(ItemID.ChainGun).
+            //     AddIngredient<ClockGatlignum>().
+            //     AddIngredient<AuricBarold>().
+            //     AddTile<CosmicAnvil>().
+            //     Register();
+
+            // CreateRecipe().
+            //     AddIngredient(ItemID.ChainGun).
+            //     AddIngredient<ClockGatlignum>().
+            //     AddIngredient<AuricBar>(5).
+            //     AddTile<CosmicAnvil>().
+            //     Register();
         }
     }
 }

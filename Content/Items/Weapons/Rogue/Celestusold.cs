@@ -31,10 +31,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.damage = 280;
             Item.knockBack = 6f;
-            Item.useAnimation = Item.useTime = 20;
+            Item.useAnimation = Item.useTime = 19;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
-            Item.shootSpeed = 25f;
+            Item.shootSpeed = 27f;
             Item.shoot = ModContent.ProjectileType<CelestusBoomerang>();
 
             Item.width = 106;

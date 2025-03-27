@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             // Side projectiles (these deal 75% damage)
             int sideID = ModContent.ProjectileType<AtaraxiaSideOld>();
-            int sideDamage = (int)(0.75f * centerDamage);
+            int sideDamage = (int)(0.85f * centerDamage);
             Vector2 originalVelocity = velocity;
             velocity.Normalize();
             velocity *= 22f;

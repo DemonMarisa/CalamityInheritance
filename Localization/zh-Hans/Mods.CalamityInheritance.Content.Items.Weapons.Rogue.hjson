@@ -204,7 +204,7 @@ DragonSpear: {
 		旧版本的狂龙翼火
 		投出一把追踪敌人的矛
 		击中敌人时会喷射出多个追踪火球
-		[c/CA7C04:旧版投手/盗贼时代的一瞥]
+		[c/CA7C04:旧版投手/盗贼的时代一瞥]
 		'''
 }
 
@@ -223,4 +223,23 @@ LumiStriker: {
 VictideBoomerangRogue: {
 	Tooltip: 潜伏攻击时向附近敌怪发射贝壳
 	DisplayName: 贝壳回旋镖·盗贼版本[Legacy]
+}
+
+PBGLegendary: {
+	Tooltip:
+		'''
+		远古的汉化版本
+		发射一连串会嵌在敌人身上并爆炸的苦无
+		右键发射穿透之刃，穿透十个个敌人后会对下一个敌人引发爆炸
+		潜伏攻击时掷出多个超高速光刃, 每个光刃在击中敌怪/撞击墙壁后都会发起追踪
+		会随着游戏流程的推进得到增强
+		[c/00FF7F:"痛哭幻奏"...再见了。]
+		[c/00FF7F:-传奇武器-]
+		'''
+	DisplayName: 斩罡除魔孔雀柳刃[Legendary]
+}
+
+EclipseSpear: {
+	// Tooltip: ""
+	// DisplayName: Eclipse Spear
 }

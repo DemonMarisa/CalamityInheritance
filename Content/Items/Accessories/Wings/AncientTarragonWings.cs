@@ -1,7 +1,6 @@
 using CalamityInheritance.Content.Items.Armor.AncientTarragon;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;

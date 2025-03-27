@@ -2,11 +2,8 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
-using MonoMod.ModInterop;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories

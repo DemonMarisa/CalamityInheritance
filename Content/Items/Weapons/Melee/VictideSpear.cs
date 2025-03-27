@@ -1,5 +1,5 @@
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;

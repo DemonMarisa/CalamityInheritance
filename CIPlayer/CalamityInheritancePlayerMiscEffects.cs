@@ -28,13 +28,11 @@ using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Yharon;
-using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.System.Configs;
-using CalamityMod.Projectiles.Summon;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer.Dashes;
+using CalamityInheritance.Content.Items;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -250,9 +248,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (PerunofYharimStats)
             {
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; //基于近战武器55%的全局攻速
-                Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; //给予远程武器45%的全局攻速
-                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f; //更新:给予法师武器65%的攻速
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; 
+                Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; 
+                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f;
                 Player.GetCritChance<GenericDamageClass>() += 100; //所有职业获得100暴击概率
                 Player.manaCost *= 0.20f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
@@ -297,7 +295,6 @@ namespace CalamityInheritance.CIPlayer
             var usPlayer = Player.CIMod();
             if (YharimsInsignia)
             {
-                Player.GetDamage<MeleeDamageClass>() += 0.15f;
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
@@ -428,7 +425,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance += 0.05f;
                 Player.GetDamage<GenericDamageClass>() += 0.05f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.40f;
+                Player.jumpSpeedBoost += 0.6f;
                 Player.manaCost *=0.95f;
                 if(EHeartStatsBoost) //关闭元素之心的召唤物的情况下
                 {
@@ -438,7 +435,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.05f;  //10(5+5)%免伤
                     Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
                     Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 0.40f;  //32(12+20)%跳跃速度
+                    Player.jumpSpeedBoost += 1.0f;  //32(12+20)%跳跃速度
                     Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
                     //由于返回值的原因导致Buff数值反而不能乱写。
                     //所以现在这些个的buff值都是5的系数了。
@@ -632,7 +629,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 double multiplier = Player.statLife / (double)Player.statLifeMax2;
                 Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
-
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.13f;
                 if (calPlayer.auricSet && SilvaMeleeSetLegacy)
                 {
                     double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
@@ -863,6 +860,24 @@ namespace CalamityInheritance.CIPlayer
                 player.runAcceleration *= 0.85f;
                 player.accRunSpeed -= 0.3f;
             }
+
+            //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。但每次抬手使用时都会不小心被烫一下手(为自己提供1秒着火了!的debuff)
+            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && usPlayer.RavagerLegendaryTier3)
+            {
+                Player.lifeRegen += 4;
+                Player.GetDamage<MagicDamageClass>() += 0.1f;
+                Player.AddBuff(BuffID.OnFire, 60);
+            }
+
+            //叶流T3全部做完
+            if (NPC.AnyNPCs(ModContent.NPCType<Yharon>()) && !usPlayer.PlanteraLegendaryTier3)
+            {
+                usPlayer.PlanteraLegendaryTier3 = true;
+                CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
+                //叮一下
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+            }
+            
             if(IfCloneHtting) //大锤子如果正在攻击
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
@@ -912,8 +927,7 @@ namespace CalamityInheritance.CIPlayer
 
             if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
             {
-                player.lifeRegen -= AncientAstralStealth*2; //减去这个生命恢复速度， 应该是没问题的
-                AncientAstralStealth = 0; //置零 
+                AncientAstralStealth = 0; //置零就行了 
             }
 
             
@@ -1011,6 +1025,8 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffID.ShadowFlame] = true;
                 Player.buffImmune[ModContent.BuffType<Nightwither>()] = true;
                 Player.buffImmune[BuffID.Daybreak] = true;
+                Player.buffImmune[ModContent.BuffType<WhisperingDeath>()] = true;
+                Player.buffImmune[ModContent.BuffType<WeakPetrification>()] = true;
             }
             if(AsgardsValorImmnue)
             {
@@ -1030,6 +1046,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffID.WindPushed] = true;
                 Player.buffImmune[BuffID.Stoned] = true;
                 Player.buffImmune[BuffID.Daybreak] = true;
+                Player.buffImmune[ModContent.BuffType<SearingLava>()] = true;
             }
             if (ElysianAegis)
             {

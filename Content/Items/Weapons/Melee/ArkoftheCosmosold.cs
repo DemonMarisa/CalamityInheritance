@@ -26,10 +26,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetDefaults()
         {
             Item.width = 102;
-            Item.damage = 140;
+            Item.damage = 150;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.useAnimation = 15;
-            Item.useTime = 15;
+            Item.useAnimation = 12;
+            Item.useTime = 12;
             Item.useTurn = false;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 9.5f;
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
-        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 15;
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 16;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

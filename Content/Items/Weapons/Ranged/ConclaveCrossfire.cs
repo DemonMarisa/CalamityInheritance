@@ -55,6 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 velocity.Y += Main.rand.Next(-30, 31) * 0.05f;
                 int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
                 Main.projectile[proj].extraUpdates += 2;
+                Main.projectile[proj].ArmorPenetration += 15;
             }
 
             int maxTargets = 7;

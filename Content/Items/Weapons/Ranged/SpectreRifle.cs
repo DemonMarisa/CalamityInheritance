@@ -20,13 +20,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.damage = Main.zenithWorld? 350 : 150;
-            Item.DamageType =Main.zenithWorld? DamageClass.Magic: DamageClass.Ranged;
-            Item.mana = Main.zenithWorld? 15 : 0;
+            Item.damage = 170;
+            Item.DamageType = DamageClass.Ranged;
+            Item.mana = 0;
             Item.width = 88;
             Item.height = 30;
-            Item.useTime = 25;
-            Item.useAnimation = 25;
+            Item.useTime = 22;
+            Item.useAnimation = 22;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7f;
@@ -42,6 +42,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 22;
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.mana = 15;
+                Item.damage = 350;
+                Item.DamageType = DamageClass.Magic;
+            }
+            else
+            {
+                Item.mana = 0;
+                Item.damage = 170;
+                Item.DamageType = DamageClass.Ranged;
+            }
+            return default;
+        }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
 

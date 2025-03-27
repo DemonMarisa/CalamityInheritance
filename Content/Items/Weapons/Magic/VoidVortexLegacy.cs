@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
@@ -27,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = 95;
+            Item.damage = 100;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 60;
             Item.width = 130;
@@ -46,25 +47,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float num72 = Item.shootSpeed;
+            float pSpeed = Item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num78 = Main.mouseX + Main.screenPosition.X - vector2.X;
-            float num79 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
+            float mouseX = Main.mouseX + Main.screenPosition.X - vector2.X;
+            float mouseY = Main.mouseY + Main.screenPosition.Y - vector2.Y;
             if (player.gravDir == -1f)
             {
-                num79 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
+                mouseY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
             }
-            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
-            if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
+            float dist = CIFunction.TryGetVectorMud(mouseX, mouseY);
+            if ((float.IsNaN(mouseX) && float.IsNaN(mouseY)) || (mouseX == 0f && mouseY == 0f))
             {
-                num78 = player.direction;
-                num79 = 0f;
+                mouseX = player.direction;
+                mouseY = 0f;
             }
             else
             {
-                num80 = num72 / num80;
+                dist = pSpeed / dist;
             }
-            vector2 += new Vector2(num78, num79);
+            vector2 += new Vector2(mouseX, mouseY);
             float spread = 45f * 0.0174f;
             double startAngle = Math.Atan2(velocity.Y, velocity.X) - spread / 2;
             double deltaAngle = spread / 8f;

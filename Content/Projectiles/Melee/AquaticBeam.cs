@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-            Projectile.frame = CIFunction.FramesChanger(Projectile, 24, 3);
+            Projectile.frame = CIFunction.FramesChanger(Projectile, 24, 4);
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
             Projectile.ai[1] += 1f;
             if (Projectile.ai[1] > 45f)
@@ -58,6 +58,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 SoundEngine.PlaySound(SoundID.DrumTomLow, Projectile.Center);
             }
             return false;
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+                Projectile.localAI[0] += 1f;
+                if (Projectile.localAI[0] > 30f)
+                {
+                    Projectile.velocity.X = -Projectile.velocity.X;
+                    Projectile.velocity.Y = -Projectile.velocity.Y;
+                    Projectile.localAI[0] = 0f;
+                }
         }
         public override void OnKill(int timeLeft)
         {

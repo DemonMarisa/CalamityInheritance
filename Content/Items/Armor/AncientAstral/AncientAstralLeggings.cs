@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
                 AddIngredient(ItemID.MeteoriteBar, 10).
                 AddIngredient<LifeAlloy>(5).
                 AddIngredient<StarblightSoot>(10).
-                AddTile(TileID.LunarCraftingStation).
+                AddTile(TileID.MythrilAnvil).
                 Register();
         }
     }

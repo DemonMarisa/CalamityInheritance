@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.width = 150;
             Item.height = 48;
-            Item.damage = 2250;
+            Item.damage = 2500;
             Item.knockBack = 9.5f;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 55;
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
-        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 35;
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 46;
 
         public override Vector2? HoldoutOffset() => new Vector2(-15, 0);
 
