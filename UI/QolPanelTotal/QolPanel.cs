@@ -15,6 +15,9 @@ namespace CalamityInheritance.UI.QolPanelTotal
         // 准备了10个页面
         public override int TotalPages => 10;
 
+        #region 文本ID
+        #endregion
+
         public override void StateSaving()
         {
             // 获取玩家
@@ -24,7 +27,10 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
         public override void PageDraw(SpriteBatch spriteBatch)
         {
-            Page2Draw(spriteBatch);
+            if(Page == 1)
+                Page2Draw(spriteBatch);
+            if(Page == 2)
+                Page3Draw(spriteBatch);
         }
     }
 }

@@ -12,8 +12,9 @@ namespace CalamityInheritance.System.DownedBoss
     // RE我草你妈，为什么不给EOW和BOC写单独的DownedBoss
     public class CIDownedBossSystem : ModSystem
     {
-        internal static bool _downedEOW = false;
-        internal static bool _downedBOC = false;
+        public static bool _downedEOW = false;
+        public static bool _downedBOC = false;
+        public static bool _downedBloodMoon = false;
         public static bool DownedEOW
         {
             get => _downedEOW;
@@ -36,10 +37,22 @@ namespace CalamityInheritance.System.DownedBoss
                     NPC.SetEventFlagCleared(ref _downedBOC, -1);
             }
         }
+        public static bool DownedBloodMoon
+        {
+            get => _downedBloodMoon;
+            set
+            {
+                if (!value)
+                    _downedBloodMoon = false;
+                else
+                    NPC.SetEventFlagCleared(ref _downedBloodMoon, -1);
+            }
+        }
         internal static void ResetAllFlags()
         {
             DownedEOW = false;
             DownedBOC = false;
+            DownedBloodMoon = false;
         }
         public override void OnWorldLoad() => ResetAllFlags();
 

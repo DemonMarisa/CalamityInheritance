@@ -355,11 +355,11 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 #region 绘制高清lore
                 // 我没有新建结构体而是继续调用后并修改部分数值
                 // 右侧界面的中心位置
-                // 330
+                // 305
 
                 Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore" + draedonsLoreChoice).Value;
    
-                CIFunction.DrawLore(genericLoreDataNotOutLine, CIConfig.Instance.UIX, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
+                CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
 
                 // 下划线贴图
                 Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
@@ -371,6 +371,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 #endregion
                 #region 绘制文字
                 // 背景贴图
+                // 用于文字背景，暂时无用
                 Texture2D bgTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextHoverTip").Value;
 
                 // 获取文字

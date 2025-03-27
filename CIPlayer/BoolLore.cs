@@ -8,6 +8,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer: ModPlayer
     {
+        public bool LoreEOC = false;
         public bool LoreKingSlime = false;//
         public bool LoreDesertScourge = false;//
         public bool LoreCrabulon = false;//
@@ -52,6 +53,7 @@ namespace CalamityInheritance.CIPlayer
         public void ResetLore()
         {
             #region Lore
+            LoreEOC = false;
             LoreKingSlime = false;
             LoreDesertScourge = false;
             LoreCrabulon = false;

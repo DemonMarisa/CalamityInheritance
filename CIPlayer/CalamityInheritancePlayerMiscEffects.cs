@@ -1151,6 +1151,13 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             #region Lore
+            if(LoreEOC || PanelsLoreEoC)
+            {
+                if (!Main.dayTime)
+                    Player.nightVision = true;
+                else
+                    Player.blind = true;
+            }
             if (usPlayer.LoreKingSlime || PanelsLoreKingSlime)
             {
                 Player.moveSpeed += 0.05f;
@@ -1413,6 +1420,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (!Main.dayTime)
                 {
+                    Player.invis = true;
                     Player.GetCritChance<ThrowingDamageClass>() += 5;
                     Player.GetDamage<ThrowingDamageClass>() += 0.05f;
                 }

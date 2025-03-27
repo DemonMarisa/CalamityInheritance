@@ -26,6 +26,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
@@ -262,12 +263,14 @@ namespace CalamityInheritance.NPCs
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonLeggings>()));
                 npcLoot.Add(tarragon);
             }
+
             if (npc.type == ModContent.NPCType<StormWeaverHead>())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
             if (npc.type == ModContent.NPCType<CeaselessVoid>())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
             if (npc.type == ModContent.NPCType<Signus>())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && !DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+
             if (npc.type == ModContent.NPCType<Polterghast>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPolterghast, ModContent.ItemType<KnowledgePolterghast>(), desc: DropHelper.FirstKillText);
@@ -499,5 +502,17 @@ namespace CalamityInheritance.NPCs
             }
         }
         #endregion
+
+        public override void OnKill(NPC npc)
+        {
+            if (npc.type == NPCID.EaterofWorldsHead)
+            {
+                CIDownedBossSystem.DownedEOW = true;
+            }
+            if (npc.type == NPCID.BrainofCthulhu)
+            {
+                CIDownedBossSystem.DownedBOC = true;
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.width = 28;
             Item.height = 34;
-            Item.useAnimation = Item.useTime = 12;
+            Item.useAnimation = Item.useTime = 20;
             Item.damage = 34;
             Item.ArmorPenetration = 15;
             Item.DamageType = DamageClass.Melee;

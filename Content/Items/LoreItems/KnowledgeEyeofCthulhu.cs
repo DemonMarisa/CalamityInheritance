@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.LoreItems;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.LoreItems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,10 +25,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                if (!Main.dayTime)
-                    player.nightVision = true;
-                else
-                    player.blind = true;
+                player.CIMod().LoreEOC = true;
             }
         }
         public override void AddRecipes()

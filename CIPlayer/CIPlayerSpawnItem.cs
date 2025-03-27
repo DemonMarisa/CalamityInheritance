@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
@@ -31,6 +32,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<KnowledgeBloodMoon>(), 1);
                     bloodMoonLoreSpawn = false;
+                    CIDownedBossSystem.DownedBloodMoon = true;
                 }
             }
         }

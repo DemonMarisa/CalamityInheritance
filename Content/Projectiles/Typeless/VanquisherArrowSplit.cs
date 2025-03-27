@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 }
                 Texture2D baseTexture = ModContent.Request<Texture2D>(Texture).Value;
                 Rectangle frame = new Rectangle(0, 0, baseTexture.Width, baseTexture.Height);
-                Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
             }
         }
 

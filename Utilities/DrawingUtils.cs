@@ -502,7 +502,7 @@ namespace CalamityInheritance.Utilities
             {
                 // 计算实际可用宽度（考虑缩放）
                 float actualMaxWidth = maxWidth / xResolutionScale;
-                wrappedLines = Utils.WordwrapString(textContent, font, (int)actualMaxWidth, 999, out _)
+                wrappedLines = BetterWordwrapString(textContent, font, (int)actualMaxWidth, 999, out _)
                     .Where(line => !string.IsNullOrEmpty(line))
                     .ToList();
             }
@@ -618,6 +618,115 @@ namespace CalamityInheritance.Utilities
             {
                 spriteBatch.Draw(textureBG, new Vector2(mousePosition.X, mousePosition.Y), null, Color.White, 0f, textureBG.Size() / 2, new Vector2(xResolutionScale * maxWidth + 15, yResolutionScale * baseLineHeight + 15) * scale, SpriteEffects.None, 0f);
             }
+        }
+
+        /// <summary>
+        /// 用于自动换行的方法
+        /// </summary>
+        /// <param name="text">文本</param>
+        /// <param name="font">字体</param>
+        /// <param name="maxWidth">一行最多多少像素</param>
+        /// <param name="maxLines">最多多少航</param>
+        /// <param name="lineAmount">关联的右侧显示文本</param>
+        public static string[] BetterWordwrapString(string text, DynamicSpriteFont font, int maxWidth, int maxLines, out int lineAmount)
+        {
+            // 创建数组array
+            string[] array = new string[maxLines];
+
+            int Lines = 0;
+
+            // 按换行拆分后存入list
+            // 把list1拆分后再按空格拆分存入list2
+            List<string> list = new List<string>(text.Split('\n'));
+            List<string> list2 = new List<string>(list[0].Split(' '));
+
+            // 最多处理maxLines - 1个段落
+            for (int i = 1; i < list.Count && i < maxLines; i++)
+            {
+                list2.Add("\n");
+                list2.AddRange(list[i].Split(' '));
+            }
+
+            // 遍历list2，分四种情况处理
+
+            // flag为标记新行开始用
+            bool flag = true;
+            while (list2.Count > 0)
+            {
+
+                string text2 = list2[0];
+                string text3 = " ";
+                if (list2.Count == 1)
+                    text3 = "";
+
+                // 如果遇到换行符
+                if (text2 == "\n")
+                {
+                    // 强制换行并增加行号
+                    // 若超过最大行数则终止处理
+
+                    array[Lines++] += text2;
+                    flag = true;
+
+                    if (Lines >= maxLines)
+                        break;
+
+                    list2.RemoveAt(0);
+                }
+                else if (flag)
+                {
+                    // 逐字符拼接直到超出宽度
+                    // 将剩余部分重新插入列表开头
+
+                    if (font.MeasureString(text2).X > (float)maxWidth)
+                    {
+                        // 拆分单词逻辑
+
+                        string text4 = text2[0].ToString() ?? "";
+                        int num2 = 1;
+                        while (font.MeasureString(text4 + text2[num2]).X <= (float)maxWidth)
+                        {
+                            text4 += text2[num2++];
+                        }
+
+                        array[Lines++] = text4;
+                        if (Lines >= maxLines)
+                            break;
+
+                        list2.RemoveAt(0);
+                        list2.Insert(0, text2.Substring(num2));
+                    }
+                    else
+                    {
+                        ref string reference = ref array[Lines];
+                        reference = reference + text2 + text3;
+                        flag = false;
+                        list2.RemoveAt(0);
+                    }
+                }
+                else if (font.MeasureString(array[Lines] + text2).X > (float)maxWidth)
+                {
+                    Lines++;
+                    if (Lines >= maxLines)
+                        break;
+
+                    flag = true;
+                }
+                else
+                {
+                    ref string reference2 = ref array[Lines];
+                    reference2 = reference2 + text2 + text3;
+                    flag = false;
+                    list2.RemoveAt(0);
+                }
+
+            }
+
+            lineAmount = Lines;
+            if (lineAmount == maxLines)
+                lineAmount--;
+
+            return array;
         }
     }
 }

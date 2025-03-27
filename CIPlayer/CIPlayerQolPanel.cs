@@ -3,6 +3,7 @@ using CalamityMod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -51,15 +52,17 @@ namespace CalamityInheritance.CIPlayer
         public bool PanelsLoreJungleDragon = false;//
         public bool PanelsSCalLore = false;//
         public bool PanelsLoreCryoDash = false;
+        public bool PanelsLoreExo = false;//星三王传颂
 
+        // 禁止生成物品
         public bool PanelsLoreSea = false;
         public bool PanelsLoreCorruption = false;//
         public bool PanelsLoreCrimson = false;//
         public bool PanelsLoreUnderworld = false;
-        public bool PanelsLoreExo = false;//星三王传颂
         #endregion
         #region LoreCount
         // 1-4，分别标记四种状态，1为默认贴图（false），2为鼠标悬停的贴图（false），3为点击后的贴图（true）, 4为点击后悬停的贴图（true）
+        public int nullType = 1;
 
         public int KSPanelType = 1;
         public int DSPanelType = 1;
@@ -97,6 +100,12 @@ namespace CalamityInheritance.CIPlayer
         public int YharonPanelType = 1;
         public int ExoPanelType = 1;
         public int SCalPanelType = 1;
+
+        public int SulphurSeaType = 1;
+        public int SeaPanelType = 1;
+        public int CorruptionPanelType = 1;
+        public int CrimsonPanelType = 1;
+        public int UnderworldPanelType = 1;
         #endregion
         public void Panels()
         {
@@ -320,6 +329,35 @@ namespace CalamityInheritance.CIPlayer
             if (SCalPanelType == 1)
                 PanelsSCalLore = false;
 
+            // 禁止渊海灾虫生成
+            if (SulphurSeaType == 3)
+                cIdisableNaturalScourgeSpawns = true;
+            if (SulphurSeaType == 1)
+                cIdisableNaturalScourgeSpawns = true;
+
+            // 禁止阿娜西塔生成
+            if (SeaPanelType == 3)
+                cIdisableAnahitaSpawns = true;
+            if (SeaPanelType == 1)
+                cIdisableAnahitaSpawns = true;
+
+            // 禁止腐化囊生成
+            if (CorruptionPanelType == 3)
+                cIdisableHiveCystSpawns = true;
+            if (CorruptionPanelType == 1)
+                cIdisableHiveCystSpawns = true;
+
+            // 禁止血肉囊生成
+            if (CrimsonPanelType == 3)
+                cIdisablePerfCystSpawns = true;
+            if (CrimsonPanelType == 1)
+                cIdisablePerfCystSpawns = true;
+
+            // 禁止肉山生成
+            if (UnderworldPanelType == 3)
+                cIdisableVoodooSpawns = true;
+            if (UnderworldPanelType == 1)
+                cIdisableVoodooSpawns = true;
             #endregion
         }
         public override void SaveData(TagCompound tag)
@@ -399,6 +437,14 @@ namespace CalamityInheritance.CIPlayer
             tag["CIExoLoreType"] = ExoPanelType;
 
             tag["CIScalLoreType"] = SCalPanelType;
+
+            // 禁止生成
+            tag.Add("CISulphurSeaType", SulphurSeaType);
+            tag.Add("CISeaPanelType", SeaPanelType);
+            tag.Add("CICorruptionPanelType", CorruptionPanelType);
+            tag.Add("CICrimsonPanelType", CrimsonPanelType);
+            tag.Add("CIUnderworldPanelType", UnderworldPanelType);
+
         }
 
         public override void LoadData(TagCompound tag)
@@ -478,6 +524,18 @@ namespace CalamityInheritance.CIPlayer
             ExoPanelType = tag.GetInt("CIExoLoreType");
 
             SCalPanelType = tag.GetInt("CIScalLoreType");
+
+            // 禁止生成
+            SulphurSeaType = tag.GetInt("CISulphurSeaType");
+
+            SeaPanelType = tag.GetInt("CISeaPanelType");
+
+            CorruptionPanelType = tag.GetInt("CICorruptionPanelType");
+
+            CrimsonPanelType = tag.GetInt("CICrimsonPanelType");
+
+            UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
+
         }
     }
 }
