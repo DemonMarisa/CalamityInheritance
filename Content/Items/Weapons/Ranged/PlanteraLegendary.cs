@@ -71,50 +71,55 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // 疑似有点史山代码了
-            switch (player.altFunctionUse)
+            if (player.altFunctionUse == 2)
             {
-                //树叶
-                case 1:
                     //升级2启用时发射两份树叶
-                    if (player.CIMod().PlanteraLegendaryTier2)
+                if (player.CIMod().PlanteraLegendaryTier2)
+                {
+                    int pCounts = 2;
+                    const float offset = 0.48f; 
+                    Vector2 summonP = velocity;
+                    summonP.Normalize();
+                    summonP *= 36f;
+                    for (int i = 0; i < pCounts; i++)
                     {
-                        int pCounts = 2;
-                        const float offset = 0.48f; 
-                        Vector2 summonP = velocity;
-                        summonP.Normalize();
-                        summonP *= 36f;
-                        for (int i = 0; i < pCounts; i++)
-                        {
-                            float piArrowOffset = i - (pCounts - 1) / 2;
-                            Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
-                            Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI);
-                        }
+                        float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                        float piArrowOffset = i - (pCounts - 1) / 2;
+                        Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
+                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                     }
-                    else Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI);
-                break;
-                //炸弹
-                case 2:    
-                    //升级2启用时发射两份炸弹
-                    if (player.CIMod().PlanteraLegendaryTier2)
+                }
+                else
+                {
+                    float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
+                }
+            }
+            else
+            {
+                //升级2启用时发射两份炸弹
+                if (player.CIMod().PlanteraLegendaryTier2)
+                {
+                    int pCounts = 2;
+                    const float offset = 0.48f; 
+                    Vector2 summonP = velocity;
+                    summonP.Normalize();
+                    summonP *= 36f;
+                    for (int i = 0; i < pCounts; i++)
                     {
-                        int pCounts = 2;
-                        const float offset = 0.48f; 
-                        Vector2 summonP = velocity;
-                        summonP.Normalize();
-                        summonP *= 36f;
-                        for (int i = 0; i < pCounts; i++)
-                        {
-                            float piArrowOffset = i - (pCounts - 1) / 2;
-                            Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
-                            Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), (int)(damage * 4.00f), knockback * 60f, player.whoAmI);
-                        }
+                        float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                        float piArrowOffset = i - (pCounts - 1) / 2;
+                        Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
+                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                     }
-                    else Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), (int)(damage * 4.00f), knockback * 60f, player.whoAmI);
-                    break;
+                }
+                else 
+                {
+                    float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI ,0f, 0f, homeAi);
+                }
             }
             return false;
-
         }
         public static int LegendaryDamageBuff()
         {

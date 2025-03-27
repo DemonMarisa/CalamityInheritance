@@ -1651,6 +1651,28 @@ namespace CalamityInheritance.CIPlayer
                 //准许无限飞行、防击退
                 calPlayer.infiniteFlight = true;
             }
+            if (CIConfig.Instance.LegendaryBuff > 0)
+            {
+                PBGLegendaryTier1 = true;
+                DukeLegendaryTier1 = true;
+                RavagerLegendaryTier1 = true;
+                PlanteraLegendaryTier1 = true;
+            }
+            if (CIConfig.Instance.LegendaryBuff > 1)
+            {
+                PBGLegendaryTier2 = true;
+                DukeLegendaryTier2 = true;
+                RavagerLegendaryTier2 = true;
+                PlanteraLegendaryTier2 = true;
+            }
+            if (CIConfig.Instance.LegendaryBuff > 2)
+            {
+                PBGLegendaryTier3 = true;
+                DukeLegendaryTier3 = true;
+                RavagerLegendaryTier3 = true;
+                PlanteraLegendaryTier3 = true;
+            }
+
         }
     }
 }

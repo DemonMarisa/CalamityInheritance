@@ -32,20 +32,22 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void AI()
         {
             var mplr = Main.player[Projectile.owner].CIMod(); 
-            //T2样式加强：显著提高Hitbox, 
-            if (mplr.RavagerLegendaryTier2 || CIConfig.Instance.LegendaryBuff >= 2)
+            //T2样式加强：允许穿墙，提高hitbox 
+            if (mplr.RavagerLegendaryTier2)
             {
                 Projectile.tileCollide = false;
                 Projectile.ExpandHitboxBy(50);
             }
-            //T1样式增强: 允许其穿墙
-            if (Projectile.position.Y > Main.player[Projectile.owner].position.Y - 300f)
+            else
             {
-                Projectile.tileCollide = true;
-            }
-            if (Projectile.position.Y < Main.worldSurface * 16.0)
-            {
-                Projectile.tileCollide = true;
+                if (Projectile.position.Y > Main.player[Projectile.owner].position.Y - 300f)
+                {
+                    Projectile.tileCollide = true;
+                }
+                if (Projectile.position.Y < Main.worldSurface * 16.0)
+                {
+                    Projectile.tileCollide = true;
+                }
             }
             Projectile.scale = Projectile.ai[1];
             Projectile.rotation += Projectile.velocity.X * 2f;

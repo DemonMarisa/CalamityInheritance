@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.velocity.X *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
             Projectile.velocity.Y *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
             if (Projectile.localAI[1] > 60f) Projectile.localAI[1] = 0f;
-            if (Main.player[Projectile.owner].CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2))
+            if (Projectile.ai[2] == 1f && Main.rand.NextBool(2))
                 CIFunction.HomeInOnNPC(Projectile, false, 1800f, 24f, 20f);
                 
         }

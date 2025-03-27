@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Wings;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;

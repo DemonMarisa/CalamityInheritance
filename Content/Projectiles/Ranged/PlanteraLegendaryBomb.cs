@@ -49,6 +49,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.ai[0] >= 60f) Projectile.ai[0] = 0f;
             Projectile.velocity.Y = (Projectile.ai[0] >= 20f && Projectile.ai[0] < 40f) ? Projectile.velocity.Y + 0.3f : Projectile.velocity.Y - 0.3f;
             Projectile.velocity.X = (Projectile.ai[0] >= 20f && Projectile.ai[0] < 40f) ? Projectile.velocity.X * 0.98f : Projectile.velocity.X * 1.02f;
+            if (Projectile.ai[2] == 1f && Main.rand.NextBool(2))
+                CIFunction.HomeInOnNPC(Projectile, false, 1800f, 24f, 20f);
         }
         
          public override Color? GetAlpha(Color lightColor)

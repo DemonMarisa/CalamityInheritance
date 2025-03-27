@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -80,7 +81,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             return true;
         }
-
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (CIServerConfig.Instance.ShadowspecBuff)
+            {
+                damage.Base *= 5;
+                if (player.altFunctionUse == 1)
+                    damage.Base *= 5;
+            }
+        }
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)
