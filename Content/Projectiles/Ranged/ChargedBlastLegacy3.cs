@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ChargedBlast3 : ModProjectile, ILocalizedModType
+    public class ChargedBlastLegacy3 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityMod/Projectiles/LaserProj";

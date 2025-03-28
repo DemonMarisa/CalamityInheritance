@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ModContent.ProjectileType<CosmicShivBallold>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<CosmicShivBallold>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
 
         public override void SetVisualOffsets()

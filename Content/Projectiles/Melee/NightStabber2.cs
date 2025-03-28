@@ -8,6 +8,7 @@ using CalamityInheritance.CIPlayer;
 using System;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -33,12 +34,25 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 for (int i = 0; i < 2; i++)
                 {
                     Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
-                    Dust corruptMagic = Dust.NewDustPerfect(dustSpawnPos, 27);
+                    Dust corruptMagic = Dust.NewDustPerfect(dustSpawnPos, CIDustID.DustShadowflame);
                     corruptMagic.color = Color.Lerp(Color.Fuchsia, Color.Magenta, Main.rand.NextFloat(0.6f));
                     corruptMagic.scale = Main.rand.NextFloat(0.96f, 1.04f);
                     corruptMagic.noGravity = true;
                     corruptMagic.velocity *= 0.1f;
                 }
+                int type = (Utils.NextBool(Main.rand, 2) ? CIDustID.DustWitherLight272 : CIDustID.DustGrubby249);
+
+                if (Utils.NextBool(Main.rand, 4))
+                {
+                    type = CIDustID.DustMartianBlood227;
+                }
+
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, type, 0f, 0f, 100, Color.MediumPurple, 1.5f);
+                Main.dust[d].noGravity = true;
+                Dust obj = Main.dust[d];
+                obj.velocity *= 0.15f;
+                Dust obj2 = Main.dust[d];
+                obj2.velocity += Projectile.velocity * 0.8f;
             }
             CalamityUtils.HomeInOnNPC(Projectile, true, 600f, 12f, 20f);
         }

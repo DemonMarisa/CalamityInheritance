@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Item.useTime = 20;
                 Item.useAnimation = 20;
             }
-            return default;
+            return base.CanUseItem(player);
         }
         public override void AddRecipes()
         {

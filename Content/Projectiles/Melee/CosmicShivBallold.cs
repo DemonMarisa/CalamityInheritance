@@ -15,9 +15,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public NPC target = null;
-        public const float maxDistanceToTarget = 540f;
+        public const float maxDistanceToTarget = 1540f;
         public bool initialized = false;
         public float startingVelocityY = 0f;
+        public float startingVelocityX = 0f;
+
+        public static Vector2 startingVelocity;
+
         public float randomAngleDelta = 0f;
         public const float explosionDamageMultiplier = 1.8f;
         public override void SetDefaults()
@@ -34,9 +38,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (!initialized)
             {
-                target = Projectile.Center.ClosestNPCAt(maxDistanceToTarget);
-                startingVelocityY = Projectile.velocity.Y;
-                randomAngleDelta = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+                target = CalamityUtils.ClosestNPCAt(Projectile.Center, 540f, true, false);
+                startingVelocity = Projectile.velocity;
+                randomAngleDelta = Main.rand.NextFloat(0f, (float)Math.PI * 2f);
                 initialized = true;
             }
             Projectile.localAI[0] += 1f;
@@ -46,9 +50,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.direction * 2, 0f, 115, Color.White, 1.3f);
                     Main.dust[dustID].noGravity = true;
-                    Main.dust[dustID].velocity *= 0f;
+                    Dust obj = Main.dust[dustID];
+                    obj.velocity *= 0f;
                 }
-                Projectile.velocity.Y *= 0.965f;
             }
             if (Projectile.localAI[0] % 30 == 0) // every 0.5 seconds
             {
@@ -56,15 +60,15 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (target != null)
             {
-                float inertia = 20f;
+                float inertia = 70f;
                 float homingSpeed = 48f;
                 Vector2 idealVelocity = Projectile.SafeDirectionTo(target.Center, Vector2.UnitX) * homingSpeed;
                 Projectile.velocity = (Projectile.velocity * (inertia - 1f) + idealVelocity) / inertia;
             }
             else
             {
-                Projectile.ai[0]++;
-                Projectile.velocity.Y = startingVelocityY + (float)(Math.Cos(Projectile.ai[0] / 12D + randomAngleDelta) * 7D);
+                Projectile.ai[0] += 1f;
+                Projectile.position += Projectile.velocity.RotatedBy(MathHelper.PiOver2) * (float)(Math.Cos(Projectile.ai[0] / 12d + randomAngleDelta) * 7d) * 0.08f;
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -76,13 +76,15 @@ namespace CalamityInheritance.Content.Items
         public static readonly int DustHeatRay = 162;
         public static readonly int DustGoldenShower = 170;
         public static readonly int DustDeadlySphere = 226;
+        public static readonly int DustMartianBlood227 = 227;
         public static readonly int DustLifeDrain = 235;
         public static readonly int DustCopperCoin = 244;
+        public static readonly int DustGrubby249 = 249;
         public static readonly int DustFrostDagger = 252;
         public static readonly int DustSailfishBoots = 253;
         public static readonly int DustAmberBolt = 262;
         public static readonly int DustSandnado = 269;
-        public static readonly int DustWitherLight = 272;
+        public static readonly int DustWitherLight272 = 272;
         #endregion
     }
 }

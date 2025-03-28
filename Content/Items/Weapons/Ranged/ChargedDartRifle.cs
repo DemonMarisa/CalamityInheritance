@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             SoundEngine.PlaySound(CommonCalamitySounds.LaserCannonSound);
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ChargedBlast3>(), (int)((double)damage * 2), knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ChargedBlastLegacy3>(), (int)((double)damage * 2), knockback, player.whoAmI, 0f, 0f);
                 return false;
             }
             else
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                     int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage / 2, knockback, player.whoAmI, 0f, 0f);
                 }
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ChargedBlast>(), damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ChargedBlastLegacy>(), damage, knockback, player.whoAmI, 0f, 0f);
                 return false;
             }
         }

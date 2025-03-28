@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override Vector2? HoldoutOrigin()
         {
-            return new Vector2(15, 15);
+            return new Vector2(15, 0);
         }
 
         public override void AddRecipes()

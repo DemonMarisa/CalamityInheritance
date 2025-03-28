@@ -103,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                     tentacleXDirection *= -1f;
                 }
 
-                int newProjectileId1 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+                int newProjectileId1 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
                 Main.projectile[newProjectileId1].DamageType = DamageClass.Melee;
                 //取消local无敌帧
                 Main.projectile[newProjectileId1].usesLocalNPCImmunity = false;
