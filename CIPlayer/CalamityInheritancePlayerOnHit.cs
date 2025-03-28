@@ -74,7 +74,9 @@ namespace CalamityInheritance.CIPlayer
                     Main.dust[idx].velocity = dustVel;
                     Main.dust[idx].scale = 2.4f;
                 }
-                DartTimer = 5;
+                //魔君套移除这个短CD
+                if (!AncientAuricSet)
+                    DartTimer = 5;
             }
         }
         #endregion
@@ -134,7 +136,7 @@ namespace CalamityInheritance.CIPlayer
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
-                if (Main.rand.NextBool(5))
+                if (Main.rand.NextBool(8))
                     Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, projectile.knockBack);
             }
 
@@ -323,7 +325,9 @@ namespace CalamityInheritance.CIPlayer
                     Main.dust[idx].velocity = dustVel;
                     Main.dust[idx].scale = 2.4f;
                 }
-                DartTimer = 5;
+                //魔君套移除这个CD
+                if (!AncientAuricSet)
+                    DartTimer = 5;
             }
             if(AncientAstralSet)
             {

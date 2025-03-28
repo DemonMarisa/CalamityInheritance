@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using Terraria;
@@ -40,7 +41,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
         public override void UpdateArmorSet(Player player)
         {
             var usPlayer = player.CIMod();
+            var calPlayer = player.Calamity();
             usPlayer.AncientTarragonSet = true;
+            calPlayer.rogueStealthMax += 1.20f;
+            calPlayer.wearingRogueArmor = true;
+            calPlayer.WearingPostMLSummonerSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
         
