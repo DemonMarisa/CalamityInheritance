@@ -59,7 +59,11 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             }
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
+            modPlayer1.GodSlayerRogueSet = true;
             modPlayer.rogueStealthMax += 1.4f;
+            //根据潜伏值上限获得更多的潜伏值增益
+            float getMaxStealth = modPlayer.rogueStealthMax;
+            modPlayer.rogueStealthMax += getMaxStealth / 7;
             modPlayer.wearingRogueArmor = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }

@@ -18,7 +18,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public const int BetweenShotsPause = 12;
         public const int PelletsPerShot = 8;
         public const float FullAutoFireRateMult = 0.8f;
-        public const float FullAutoDamageMult = 0.8f;
+        //右键倍率0.8->0.9
+        public const float FullAutoDamageMult = 0.9f;
         // note this is extremely low because it's per pellet
         public const float Spread = 0.018f;
 
@@ -37,7 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            Item.damage = 198;
+            //面板提高至220
+            Item.damage = 220;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 124;
             Item.height = 78;

@@ -61,6 +61,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
                 }
             }
             player.setBonus = this.GetLocalizedValue("SetBonus");
+            player.GetCritChance<RangedDamageClass>() += 10;
         }
 
         public override void UpdateEquip(Player player)

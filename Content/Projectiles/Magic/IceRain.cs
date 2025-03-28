@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -29,11 +30,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if(Projectile.ai[0] > 30f) //在原代码，这个弹幕是试图去找敌人的而不是什么别的，这里则直接改成了，直接追踪
             {
                 if(Projectile.ai[0] < 40f)
-                Projectile.velocity *=0.5f;
+                    Projectile.velocity *=0.5f;
                 if(Projectile.ai[0] == 42f)
-                SignalSend();
+                    SignalSend();
                 if(Projectile.ai[0] > 45f)
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 11f + Projectile.ai[0]/5f, 10f);
+                {
+                    Projectile.rotation += Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 11f + Projectile.ai[0]/5f, 10f);
+                }
             }   
         }
 

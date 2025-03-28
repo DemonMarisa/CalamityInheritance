@@ -53,8 +53,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.dust[blueDust].velocity *= 0f;
                 }
             }
-
-            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 450f, 18f, 20f);
+            //彻底发挥轮椅之光
+            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 3200f : 450f; 
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, homingDist, 18f, 20f);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity) => false;

@@ -17,7 +17,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         private double circleGrowth = 0.02;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Climax");
             Main.projFrames[Projectile.type] = 5;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

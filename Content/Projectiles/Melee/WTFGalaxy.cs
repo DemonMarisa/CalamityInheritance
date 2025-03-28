@@ -39,7 +39,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = Lifetime;
 
-            // Slightly ignores iframes so it can easily hit twice.
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
         }
@@ -49,7 +48,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             DrawOffsetX = -12;
             DrawOriginOffsetY = -5;
             DrawOriginOffsetX = 0;
-            // Produces violet dust constantly while in flight. This lights the hammer.
             int numDust = 2;
             for (int i = 0; i < numDust; ++i)
             {
@@ -60,7 +58,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Main.dust[idx].velocity = Vector2.Zero;
                 Main.dust[idx].scale = scale;
             }
-            // The hammer makes sound while flying.
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;

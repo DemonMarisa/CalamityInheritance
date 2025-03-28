@@ -61,8 +61,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			#endregion
 			#region 标记为盗贼套装 
 			calPlayer.wearingRogueArmor = true;
-			calPlayer.rogueStealthMax += 1.2f;
+			calPlayer.rogueStealthMax += 1.50f;
 			calPlayer.WearingPostMLSummonerSet = true;
+			//继承制盗贼弑神盔甲
+			float getMaxStealth = calPlayer.rogueStealthMax;
+            calPlayer.rogueStealthMax += getMaxStealth / 4;
 			#endregion
 			#region 弑神自活, 反伤, 弑神冲刺
 			//弑神自活与反伤
@@ -101,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			//战士
 			calPlayer.tarraMelee = true;
 			calPlayer.bloodflareMelee = true;
-			calPlayer.godSlayerDamage = true;
+			modPlayer.GodSlayerMelee = true;
 			modPlayer.SilvaMeleeSetLegacy = true;
 			//射手
 			calPlayer.tarraRanged = true;

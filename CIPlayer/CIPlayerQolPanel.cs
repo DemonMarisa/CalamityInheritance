@@ -1,17 +1,12 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityMod.Items.Weapons.Magic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.CIPlayer
 {
+    //TODO： 将下方所有的打表全部改成数组统一管理
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         // 额外标记的用于激活的状态
@@ -438,9 +433,23 @@ namespace CalamityInheritance.CIPlayer
 
             tag["CIScalLoreType"] = SCalPanelType;
             //孔雀翎样式增强保存
-            tag.Add("PBGUpgrade1", PBGLegendaryTier1);
-            tag.Add("PBGUpgrade2", PBGLegendaryTier2);
-            tag.Add("PBGUpgrade3", PBGLegendaryTier3);
+            
+            tag.Add("PBGTier1", PBGTier1);
+            tag.Add("PBGTier2", PBGTier2);
+            tag.Add("PBGTier3", PBGTier3);
+            tag.Add("DukeTier1", DukeTier1);
+            tag.Add("DukeTier2", DukeTier2);
+            tag.Add("DukeTier3", DukeTier3);
+            tag.Add("BetsyTier1", BetsyTier1);
+            tag.Add("BetsyTier2", BetsyTier2);
+            tag.Add("BetsyTier3", BetsyTier3);
+            tag.Add("PlanteraTier1", PlanteraTier1);
+            tag.Add("PlanteraTier2", PlanteraTier2);
+            tag.Add("PlanteraTier3", PlanteraTier3);
+            tag.Add("DestroyerTier1", DestroyerTier1);
+            tag.Add("DestroyerTier2", DestroyerTier2);
+            tag.Add("DestroyerTier3", DestroyerTier3);
+            
 
             // 禁止生成
             tag.Add("CISulphurSeaType", SulphurSeaType);
@@ -541,9 +550,22 @@ namespace CalamityInheritance.CIPlayer
             UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
 
             PanelsLoreExo = tag.GetBool("PanelsLoreExo");
-            tag.TryGet<bool>("PBGUpgrade1", out PBGLegendaryTier1);
-            tag.TryGet<bool>("PBGUpgrade2", out PBGLegendaryTier2);
-            tag.TryGet<bool>("PBGUpgrade3", out PBGLegendaryTier3);
+            tag.TryGet("PBGTier1",        out PBGTier1);
+            tag.TryGet("PBGTier2",        out PBGTier2);
+            tag.TryGet("PBGTier3",        out PBGTier3);
+            tag.TryGet("DukeTier1",       out DukeTier1);
+            tag.TryGet("DukeTier2",       out DukeTier2);
+            tag.TryGet("DukeTier3",       out DukeTier3);
+            tag.TryGet("PlanteraTier1",   out PlanteraTier1);
+            tag.TryGet("PlanteraTier2",   out PlanteraTier2);
+            tag.TryGet("PlanteraTier3",   out PlanteraTier3);
+            tag.TryGet("BetsyTier1",      out BetsyTier1);
+            tag.TryGet("BetsyTier2",      out BetsyTier2);
+            tag.TryGet("BetsyTier3",      out BetsyTier3);
+            tag.TryGet("DestroyerTier1",  out DestroyerTier1);
+            tag.TryGet("DestroyerTier2",  out DestroyerTier2);
+            tag.TryGet("DestroyerTier3",  out DestroyerTier3);
+
         }
     }
 }

@@ -39,6 +39,8 @@ Mods: {
 				MapEntry: Demonshade Tile
 				$parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
 			}
+
+			Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
 		}
 
 		Projectiles: {

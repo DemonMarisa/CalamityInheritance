@@ -34,10 +34,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Lighting.AddLight(Projectile.Center, 0.45f, 0f, 0.45f);
             for (int num457 = 0; num457 < 2; num457++)
             {
-                int num458 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 2f);
-                Main.dust[num458].noGravity = true;
-                Main.dust[num458].velocity *= 0.15f;
-                Main.dust[num458].velocity += Projectile.velocity * 0.1f;
+                int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 2f);
+                Main.dust[d].noGravity = true;
+                Main.dust[d].velocity *= 0.15f;
+                Main.dust[d].velocity += Projectile.velocity * 0.1f;
             }
         }
 
@@ -46,9 +46,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SoundEngine.PlaySound(SoundID.Item74, Projectile.position);
             for (int j = 0; j <= 25; j++)
             {
-                int num459 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 1f);
-                Main.dust[num459].noGravity = true;
-                Main.dust[num459].velocity *= 0.1f;
+                int p = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DemonTorch, 0f, 0f, 100, default, 1f);
+                Main.dust[p].noGravity = true;
+                Main.dust[p].velocity *= 0.1f;
             }
         }
 
@@ -72,9 +72,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 target.AddBuff(BuffID.ShadowFlame, 12000);
                 target.AddBuff(BuffID.Ichor, 12000);
-                target.AddBuff(BuffID.Frostburn, 12000);
-                target.AddBuff(BuffID.OnFire, 12000);
-                target.AddBuff(BuffID.Poisoned, 12000);
+                target.AddBuff(BuffID.Frostburn2, 12000);
+                target.AddBuff(BuffID.OnFire3, 12000);
+                target.AddBuff(BuffID.Venom, 12000);
             }
         }
 

@@ -390,6 +390,11 @@ namespace CalamityInheritance.NPCs
                 case NPCID.BloodNautilus:
                     npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDreadnautilus, ModContent.ItemType<KnowledgeBloodMoon>(), desc: DropHelper.FirstKillText);
                     break;
+                case NPCID.DD2Betsy:
+                    var betsyMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<RavagerLegendary>());
+                    betsyMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<RavagerLegendary>()), false);
+                    npcLoot.Add(betsyMaster);
+                    break;
                 case NPCID.KingSlime:
                     // More gel is not dropped on Expert because he has more minions, which increases the amount of gel provided.
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedSlimeKing, ModContent.ItemType<KnowledgeKingSlime>(), desc: DropHelper.FirstKillText);
@@ -458,6 +463,9 @@ namespace CalamityInheritance.NPCs
                     npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientMiracleMatter>()));
                     //三个机械boss都会掉，有意为之的
+                    var destroyerMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<DestroyerLegendary>());
+                    destroyerMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<DestroyerLegendary>()), false);
+                    npcLoot.Add(destroyerMaster);
                     break;
                 case NPCID.Retinazer:
                 case NPCID.Spazmatism:
@@ -477,6 +485,9 @@ namespace CalamityInheritance.NPCs
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedPlantBoss, ModContent.ItemType<KnowledgePlantera>(), desc: DropHelper.FirstKillText);
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<VoidVortexLegacy>(), 1)); 
+                    var plantMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<PlanteraLegendary>());
+                    plantMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PlanteraLegendary>()), false);
+                    npcLoot.Add(plantMaster);
                     break;
                 case NPCID.Golem:
                     // Lore

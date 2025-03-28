@@ -32,8 +32,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void AI()
         {
             var mplr = Main.player[Projectile.owner].CIMod(); 
-            //T2样式加强：允许穿墙，提高hitbox 
-            if (mplr.RavagerLegendaryTier2)
+            //T1样式加强：允许穿墙，提高hitbox 
+            if (mplr.BetsyTier1)
             {
                 Projectile.tileCollide = false;
                 Projectile.ExpandHitboxBy(50);

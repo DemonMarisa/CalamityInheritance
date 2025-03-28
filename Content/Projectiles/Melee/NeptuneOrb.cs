@@ -35,10 +35,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 int splitDamage = Projectile.damage / 2;
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 15f, ModContent.ProjectileType<DepthOrb2>(), splitDamage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
-            int num458 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Water, 0f, 0f, 100, default, 0.4f);
-            Main.dust[num458].noGravity = true;
-            Main.dust[num458].velocity *= 0.5f;
-            Main.dust[num458].velocity += Projectile.velocity * 0.1f;
+            int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Water, 0f, 0f, 100, default, 0.4f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 0.5f;
+            Main.dust[d].velocity += Projectile.velocity * 0.1f;
         }
 
         public override bool PreDraw(ref Color lightColor)

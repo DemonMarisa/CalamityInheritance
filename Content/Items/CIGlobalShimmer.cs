@@ -27,8 +27,6 @@ namespace CalamityInheritance.Content.Items
             }
             #endregion
             #region 孔雀翎-进化1
-            if (Condition.DownedMoonLord.IsMet())
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PBGLegendary>()] = ModContent.ItemType<PBGLegendaryUpgrade1>();
             #endregion
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)

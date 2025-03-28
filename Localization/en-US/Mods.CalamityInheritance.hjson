@@ -196,6 +196,11 @@ Configs: {
 			Tooltip: ""
 			Label: Legendary Buff
 		}
+
+		Arcueid: {
+			Tooltip: ""
+			Label: Arcueid
+		}
 	}
 
 	CIRespriteConfig: {

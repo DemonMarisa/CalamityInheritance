@@ -6,6 +6,8 @@ namespace CalamityInheritance.CIPlayer
     {
         #region 饰品相关
         public bool IfGodHand = false;
+        public bool IfWormScarf = false;
+        public bool IfCalamitasSigile = false;
         public bool EHeartStats = false;
         public bool EHeartStatsBoost = false;
         public bool ElemQuiver = false;
@@ -59,6 +61,8 @@ namespace CalamityInheritance.CIPlayer
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
+            IfWormScarf = false;
+            IfCalamitasSigile = false;
 
             if (!CIsponge)
                 CISpongeShieldDurability = 0;

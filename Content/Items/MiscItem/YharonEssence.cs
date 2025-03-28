@@ -49,8 +49,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
                 ModContent.ItemType<YharonSonStaff>(),
                 ModContent.ItemType<DragonSpear>(),
             ];
-            //随机给予2个
-            itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, dragonWeapons));
+            //随机给予1个
             itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, dragonWeapons));
             //给点钱
             itemLoot.Add(ItemDropRule.Common(ItemID.PlatinumCoin, 1, 1, 3));

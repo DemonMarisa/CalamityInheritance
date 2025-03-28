@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             else
             {
                 Vector2 laserSpawnPos = player.RotatedRelativePoint(player.MountedCenter, true);
-                float tenthPi = 0.314159274f;
+                float tenthPi = MathHelper.Pi/10;
                 int laserAmt = 3;
                 Vector2 laserVelocity = velocity;
                 laserVelocity.Normalize();

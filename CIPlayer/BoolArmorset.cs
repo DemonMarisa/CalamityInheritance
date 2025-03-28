@@ -1,3 +1,4 @@
+using CalamityMod;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -25,6 +26,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientTarragonSet = false;
         #endregion
         #region GodSlayer
+        public bool GodSlayerMelee = false;
         public bool GodSlayerReborn = false;
         public bool GodSlayerDMGprotect = false;
         public bool GodSlayerReflect = false;
@@ -32,6 +34,7 @@ namespace CalamityInheritance.CIPlayer
         public bool hasFiredThisFrame = false;
         public bool GodSlayerRangedSet = false;
         public bool GodSlayerSummonSet = false;
+        public bool GodSlayerRogueSet = false;
         #endregion
         #region Silva
         public bool SilvaMagicSetLegacy = false;
@@ -128,6 +131,7 @@ namespace CalamityInheritance.CIPlayer
             AncientTarragonSet = false;
             #endregion
             #region GodSlayer
+            GodSlayerMelee = false;
             GodSlayerReborn = false;
             GodSlayerDMGprotect = false;
             GodSlayerReflect = false;
@@ -135,6 +139,7 @@ namespace CalamityInheritance.CIPlayer
             hasFiredThisFrame = false;
             GodSlayerRangedSet = false;
             GodSlayerSummonSet = false;
+            GodSlayerRogueSet = false;
             #endregion
             #region Sliva
             SilvaMagicSetLegacy = false;
@@ -197,11 +202,14 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region GodSlayer
             GodSlayerDMGprotect = false;
+            GodSlayerMelee = false;
+            DartTimer = 0;
             GodSlayerReflect = false;
             GodSlayerMagicSet = false;
             hasFiredThisFrame = false;
             GodSlayerRangedSet = false;
             GodSlayerSummonSet = false;
+            GodSlayerRogueSet = false;
             #endregion
             #region Sliva
             SilvaMagicSetLegacy = false;

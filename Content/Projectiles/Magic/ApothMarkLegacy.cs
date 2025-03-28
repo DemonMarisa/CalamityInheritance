@@ -7,11 +7,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class ApothMarkLegacy : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Jaws of Annihilation");
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 123;

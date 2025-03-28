@@ -22,25 +22,16 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Projectiles.Summon;
 using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod.NPCs.Yharon;
-using CalamityInheritance.Content.Items.MiscItem;
-using CalamityInheritance.Content.Items.Potions;
-using CalamityMod.Items.Armor.Vanity;
-using CalamityMod.NPCs.DevourerofGods;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.OldDuke;
 using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityMod.Items.Accessories;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Providence;
-using CalamityMod.NPCs.CalamityAIs.CalamityBossAIs;
 using CalamityMod.NPCs.Bumblebirb;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -52,6 +43,39 @@ namespace CalamityInheritance.CIPlayer
             if (Player.whoAmI != Main.myPlayer)
                 return;
             NPCDebuffs(target, item.CountsAsClass<MeleeDamageClass>(), item.CountsAsClass<RangedDamageClass>(), item.CountsAsClass<MagicDamageClass>(), item.CountsAsClass<SummonDamageClass>(), item.CountsAsClass<ThrowingDamageClass>(), item.CountsAsClass<SummonMeleeSpeedDamageClass>());
+
+            if (GodSlayerMelee && hit.Damage > 5 && hit.DamageType == DamageClass.Melee && DartTimer == 0)
+            {
+                int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
+                Vector2 getSpwanPos;
+                //获取玩家位置，并使其在在玩家后方生成
+                float ySpread = Player.Center.Y * (1f + Main.rand.NextFloat(-0.02f, 0.02f)); 
+                float xSpread = Player.Center.X + Main.rand.NextFloat(-10f , 11f);
+                getSpwanPos = new(xSpread + 240f, ySpread);
+                //TODO: 将其彻底改为从后方生成(即考虑Y轴的情况)
+                if (Player.direction == 1)
+                    getSpwanPos = new(xSpread - 240f, ySpread);
+                //获取一个速度
+                Vector2 getSpeed = (target.position - Player.position)/40f;
+                int dart = Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, getSpeed, ModContent.ProjectileType<GodSlayerDartHoming>(), dartDamage, 0f, Player.whoAmI);
+                Vector2 portalDustPos = Main.projectile[dart].Center;
+                //在射弹生成的位置生成一些粒子，模拟传送门的效果
+                int circleDust = 18;
+                Vector2 baseDustVel = new Vector2(3.8f, 0f);
+                for (int i = 0; i < circleDust; ++i)
+                {
+                    int dustID = 173;
+                    float angle = i * (MathHelper.TwoPi / circleDust);
+                    Vector2 dustVel = baseDustVel.RotatedBy(angle);
+
+                    int idx = Dust.NewDust(portalDustPos, 1, 1, dustID);
+                    Main.dust[idx].noGravity = true;
+                    Main.dust[idx].position = portalDustPos;
+                    Main.dust[idx].velocity = dustVel;
+                    Main.dust[idx].scale = 2.4f;
+                }
+                DartTimer = 5;
+            }
         }
         #endregion
 
@@ -110,7 +134,8 @@ namespace CalamityInheritance.CIPlayer
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
+                if (Main.rand.NextBool(5))
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, projectile.knockBack);
             }
 
             if (GodSlayerSummonSet && projectile.DamageType == DamageClass.Summon)
@@ -268,7 +293,38 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+            if (GodSlayerMelee && hit.Damage > 5 && hit.DamageType == DamageClass.Melee && DartTimer == 0)
+            {
+                int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
+                Vector2 getSpwanPos;
+                //获取玩家位置，并使其在在玩家后方生成
+                float ySpread = Player.Center.Y * (1f + Main.rand.NextFloat(-0.02f, 0.02f)); 
+                float xSpread = Player.Center.X + Main.rand.NextFloat(-10f , 11f);
+                getSpwanPos = new(xSpread + 240f, ySpread);
+                //TODO: 将其彻底改为从后方生成(即考虑Y轴的情况)
+                if (player.direction == 1)
+                    getSpwanPos = new(xSpread - 240f, ySpread);
+                //获取一个速度
+                Vector2 getSpeed = (target.position - Player.position)/40f;
+                int dart = Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, getSpeed, ModContent.ProjectileType<GodSlayerDartHoming>(), dartDamage, 0f, Player.whoAmI);
+                Vector2 portalDustPos = Main.projectile[dart].Center;
+                //在射弹生成的位置生成一些粒子，模拟传送门的效果
+                int circleDust = 18;
+                Vector2 baseDustVel = new Vector2(3.8f, 0f);
+                for (int i = 0; i < circleDust; ++i)
+                {
+                    int dustID = 173;
+                    float angle = i * (MathHelper.TwoPi / circleDust);
+                    Vector2 dustVel = baseDustVel.RotatedBy(angle);
 
+                    int idx = Dust.NewDust(portalDustPos, 1, 1, dustID);
+                    Main.dust[idx].noGravity = true;
+                    Main.dust[idx].position = portalDustPos;
+                    Main.dust[idx].velocity = dustVel;
+                    Main.dust[idx].scale = 2.4f;
+                }
+                DartTimer = 5;
+            }
             if(AncientAstralSet)
             {
                 if(hit.Damage > 10 && hit.Crit && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
@@ -300,40 +356,46 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 传奇武器伤害任务
         
-            //孔雀翎(T2,T3)
+            //孔雀翎(T2)
             if (heldingItem.type == ModContent.ItemType<PBGLegendary>())
             {
                 PBGLegendaryDamageTask(target, hit);
 
-                if (PBGLegendaryTier3)
+                if (PBGTier3)
                     PBGLegendaryBuff(target, hit);
             }
 
-            //海爵剑(T1,T2,T3)
+            //海爵剑(T2)
             if (heldingItem.type == ModContent.ItemType<DukeLegendary>())
             {
                 DukeLegendaryDamageTask(target, hit);
 
-                if (DukeLegendaryTier3)
+                if (DukeTier3)
                     DukeLegendaryBuff(target, hit);
             }
 
-            //维苏威阿斯(T1, T2)
+            //维苏威阿斯(T2)
             if (heldingItem.type == ModContent.ItemType<RavagerLegendary>())
                 RavagerLegendaryDamageTask(target, hit);
 
-            //叶流(T1,T2)
+            //叶流(T2)
             if (heldingItem.type == ModContent.ItemType<PlanteraLegendary>())
                 PlanteraLegendaryDamageTask(target, hit);
+            
+            //SHPC(T2)
+            if (heldingItem.type == ModContent.ItemType<DestroyerLegendary>())
+                DestroyerLegendaryDamageTask(target, hit, projectile);
             
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
         }
+
+        
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
         {
             //海爵剑T3：持续攻击增强防御属性，最高增强50点防御力与40%伤害减免
-            if (hit.Damage > 5 && DukeDefenseCounter > 0)
+            if (hit.Damage > 5 && DukeDefenseCounter >= 0)
             {
                 //最大50层
                 if (DukeDefenseCounter < 51)
@@ -342,13 +404,8 @@ namespace CalamityInheritance.CIPlayer
                 DukeDefenseTimer = 300;
                 //玩家的防御力视击中的次数提升
                 Player.statDefense += DukeDefenseCounter;
-                //每次攻击增加0.8%免伤，50次攻击后为40%
-                Player.endurance += 0.008f * DukeDefenseCounter;
-            }
-            else
-            {
-                DukeDefenseCounter = 0;
-                DukeDefenseTimer = 0;
+                //每次攻击增加0.5%免伤，50次攻击后为25%
+                Player.endurance += 0.005f * DukeDefenseCounter;
             }
         }
 
@@ -367,29 +424,34 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
         #region 传奇物品伤害任务
+        private void DestroyerLegendaryDamageTask(NPC target, NPC.HitInfo hit, Projectile projectile)
+        {
+            //T2:在四柱期间内，对任意四根天界柱造成合计一根天界柱的最大血量的250%伤害
+            NPC towerMark = Main.npc[NPCID.LunarTowerSolar];
+            if ((target.type == NPCID.LunarTowerStardust || target.type == NPCID.LunarTowerSolar || target.type == NPCID.LunarTowerNebula || target.type == NPCID.LunarTowerVortex) &&
+                 projectile.DamageType == DamageClass.Magic && !DestroyerTier2)
+            {
+                DamagePool += hit.Damage;
+                if (DamagePool > towerMark.lifeMax * 2.5f)
+                {
+                    DestroyerTier2 = true;
+                    //这里应该需要一个诺法雷的充能音效
+                }
+            }
+        }
         private void PlanteraLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             var usPlayer = Player.CIMod();
-            //T1: 猪鲨50%伤
-            if (target.type == NPCID.DukeFishron && !usPlayer.PlanteraLegendaryTier1)
+            //T2: 金龙30%伤害
+            if (target.type == ModContent.NPCType<Bumblefuck>() && !PlanteraTier2 && Main.LocalPlayer.ZoneJungle)
             {
-                usPlayer.DamagePool += hit.Damage;
-                if (usPlayer.DamagePool > target.lifeMax * 0.5f)
+                DamagePool += hit.Damage;
+                if (hit.Damage > target.life * 0.3f)
                 {
                     CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.DryadsWard, true, 10f);
                     SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                    usPlayer.DamagePool = 0;
-                    usPlayer.PlanteraLegendaryTier1 = true;
-                }
-            }
-            //T2: 在丛林范围内给予月球领主最后一击
-            if (target.type == ModContent.NPCType<Bumblefuck>() && !usPlayer.PlanteraLegendaryTier2 && Main.LocalPlayer.ZoneJungle)
-            {
-                if (hit.Damage > target.life)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.DryadsWard, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                    usPlayer.PlanteraLegendaryTier2 = true;
+                    usPlayer.PlanteraTier2 = true;
+                    DamagePool = 0;
                 }
             }
         }
@@ -397,27 +459,15 @@ namespace CalamityInheritance.CIPlayer
         private void RavagerLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             var usPlayer = Player.CIMod();
-            //T1: 在地狱击败一只贝特西
-            if (target.type == NPCID.DD2Betsy && !RavagerLegendaryTier1 && Main.LocalPlayer.ZoneUnderworldHeight)
+            //T2: 在地狱对亵渎天神造成50%伤害
+            if (target.type == ModContent.NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
             {
                 DamagePool += hit.Damage;
-                if (DamagePool >= target.lifeMax)
+                if (usPlayer.DamagePool >= target.lifeMax * 0.5f)
                 {
                     CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Meteorite, true, 10f);
                     SoundEngine.PlaySound(CISoundID.SoundBomb with {Volume = .5f}, Player.Center);
-                    RavagerLegendaryTier1= true;
-                    DamagePool = 0;
-                }
-            }
-            //T2: 在地狱对亵渎天神造成80%伤害
-            if (target.type == ModContent.NPCType<Providence>() && !RavagerLegendaryTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
-            {
-                DamagePool += hit.Damage;
-                if (usPlayer.DamagePool >= target.lifeMax * 0.8f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Meteorite, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundBomb with {Volume = .5f}, Player.Center);
-                    RavagerLegendaryTier2 = true;
+                    BetsyTier2 = true;
                     DamagePool = 0;
                 }
             }
@@ -426,38 +476,17 @@ namespace CalamityInheritance.CIPlayer
         private void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             var usPlayer = Player.CIMod();
-            //T2:
-            if (target.type == ModContent.NPCType<ReaperShark>() && !usPlayer.DukeLegendaryTier2)
+            //T2: 海爵剑杀死一只猎魂鲨
+            if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2)
             {
                 usPlayer.DamagePool += hit.Damage;
                 if (usPlayer.DamagePool > target.lifeMax * 0.8f)
                 {
-                        CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
-                        SoundEngine.PlaySound(SoundID.NPCDeath19 with {Volume = .5f}, Player.Center);
-                        //记得清空伤害池子，因为这个是共用的
-                        usPlayer.DamagePool = 0;
-                        usPlayer.DukeLegendaryTier2 = true;
-                }
-            }
-            // T3
-            if (NPC.AnyNPCs(ModContent.NPCType<OldDuke>()) && NPC.AnyNPCs(NPCID.DukeFishron) && !usPlayer.DukeLegendaryTier3)
-            {   
-                //对猪鲨和老猪造成伤害都会增加伤害池
-                if (target.type == ModContent.NPCType<OldDuke>() || target.type == NPCID.DukeFishron)
-                {
-                    usPlayer.DamagePool += hit.Damage;
-                    //只判老猪的血量是否被打掉了20%，如果是直接场内升级
-                    if ( target.type == ModContent.NPCType<OldDuke>() && usPlayer.DamagePool > target.lifeMax * 0.2f)
-                    {
-                        //场内直接升级发送提示音效
-                        CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
-                        SoundEngine.PlaySound(SoundID.NPCDeath19 with {Volume = .5f}, Player.Center);
-                        //将老猪血量舍去60%压缩战斗时长
-                        target.life -= (int)(target.lifeMax * 0.6f);
-                        //记得清空伤害池子，因为这个是共用的
-                        usPlayer.DamagePool = 0;
-                        usPlayer.DukeLegendaryTier3 = true;
-                    }
+                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
+                    SoundEngine.PlaySound(SoundID.NPCDeath19 with {Volume = .5f}, Player.Center);
+                    //记得清空伤害池子，因为这个是共用的
+                    usPlayer.DamagePool = 0;
+                    usPlayer.DukeTier2 = true;
                 }
             }
         }
@@ -466,20 +495,11 @@ namespace CalamityInheritance.CIPlayer
         {
             var usPlayer = Player.CIMod();
             //T2: 使用孔雀翎对噬魂幽花造成最后一击
-            //T3: 对神明吞噬者造成50%伤害
-            if (target.type == ModContent.NPCType<DevourerofGodsHead>() || target.type == ModContent.NPCType<DevourerofGodsBody>() || target.type == ModContent.NPCType<DevourerofGodsTail>())
+            if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && PBGTier2)
             {
-                usPlayer.DamagePool += hit.Damage;
-                //T3样式需要的伤害量降低至50%而非88%
-                if (usPlayer.DamagePool > target.lifeMax * 0.50f && !usPlayer.PBGLegendaryTier3)
-                {
-                    //不考虑特殊物品而是直接在场间直接升级
-                    usPlayer.PBGLegendaryTier3 = true;
-                    //叮!
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                    usPlayer.DamagePool = 0;
-                }
+                CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                PBGTier2 = true;
             }
         }
         #endregion
@@ -529,11 +549,7 @@ namespace CalamityInheritance.CIPlayer
         {
             healValue = (int)(healValue * ManaHealMutipler);
         }
-        public override void OnConsumeMana(Item item, int manaConsumed)
-        {
-            if (AncientAuricSet && PerunofYharimStats)
-            Player.Heal(manaConsumed);
-        }
+        
         #region Lifesteal
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
