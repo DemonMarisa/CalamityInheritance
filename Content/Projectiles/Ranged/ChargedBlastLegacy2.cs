@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 5;
-            Projectile.timeLeft = 240;
+            Projectile.timeLeft = 480;
             Projectile.scale = 0.7f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;

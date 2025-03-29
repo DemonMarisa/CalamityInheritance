@@ -14,12 +14,15 @@ namespace CalamityInheritance.Utilities
         /// <param name="distanceRequired">跟踪范围.</param>
         /// <param name="homingVelocity">跟踪速度.</param>
         /// <param name="inertia">惯性.</param>
+        /// <param name="HomeInCD">扫描CD（不写默认30帧）.</param>
         /// <param name="maxAngleChange">角度限制（不写默认不限制）.</param>
         /// </summary>
-        public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null)
+        public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null, int? HomeInCD = 30)
         {
             if (!projectile.friendly)
                 return;
+
+            HomeInCD++;
 
             // Set amount of extra updates.
             if (projectile.Calamity().defExtraUpdates == -1)
@@ -31,24 +34,28 @@ namespace CalamityInheritance.Utilities
 
             //寻找距离最近的目标
             float npcDistCompare = 25000f;
-            int index = -1;
-            foreach (NPC n in Main.ActiveNPCs)
-            {
-                float extraDistance = (n.width / 2) + (n.height / 2);
-                if (!n.CanBeChasedBy(projectile, false) || !projectile.WithinRange(n.Center, maxDistance + extraDistance))
-                    continue;
+            int targetIndex = -1;
 
-                float currentNPCDist = Vector2.Distance(n.Center, projectile.Center);
-                if ((currentNPCDist < npcDistCompare) && (ignoreTiles || Collision.CanHit(projectile.Center, 1, 1, n.Center, 1, 1)))
+            if(locatedTarget == false && HomeInCD.Value % HomeInCD.Value == 0)
+            {
+                foreach (NPC npc in Main.ActiveNPCs)
                 {
-                    npcDistCompare = currentNPCDist;
-                    index = n.whoAmI;
+                    float extraDistance = (npc.width / 2) + (npc.height / 2);
+                    if (!npc.CanBeChasedBy(projectile, false) || !projectile.WithinRange(npc.Center, maxDistance + extraDistance))
+                        continue;
+
+                    float currentNPCDist = Vector2.Distance(npc.Center, projectile.Center);
+                    if ((currentNPCDist < npcDistCompare) && (ignoreTiles || Collision.CanHit(projectile.Center, 1, 1, npc.Center, 1, 1)))
+                    {
+                        npcDistCompare = currentNPCDist;
+                        targetIndex = npc.whoAmI;
+                    }
                 }
             }
 
-            if (index != -1)
+            if (targetIndex != -1)
             {
-                destination = Main.npc[index].Center;
+                destination = Main.npc[targetIndex].Center;
                 locatedTarget = true;
             }
 
@@ -57,7 +64,7 @@ namespace CalamityInheritance.Utilities
                 // Increase amount of extra updates to greatly increase homing velocity.
                 projectile.extraUpdates = projectile.Calamity().defExtraUpdates + 1;
 
-                // Home in on the target.
+                // 计算制导向量
                 Vector2 homeDirection = (destination - projectile.Center).SafeNormalize(Vector2.UnitY);
                 Vector2 newVelocity = (projectile.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
 

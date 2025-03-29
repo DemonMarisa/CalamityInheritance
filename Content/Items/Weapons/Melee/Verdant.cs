@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 Item.damage = 98;
             }
-            return default;
+            return true;
         }
 
         public override void AddRecipes()

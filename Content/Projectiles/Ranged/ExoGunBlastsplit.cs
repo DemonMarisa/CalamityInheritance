@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 float acceleration = 0.1f * 2f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
 
-                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3500f, homeInSpeed, 15f, 10f);
+                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 10000f, homeInSpeed, 15f, 3f);
             }
         }
 

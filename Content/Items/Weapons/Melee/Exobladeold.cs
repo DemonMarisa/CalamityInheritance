@@ -68,6 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
+            CIFunction.BetterSwing(player);
             if (Main.rand.NextBool(4))
                 Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.TerraBlade, 0f, 0f, 100, new Color(0, 255, 255));
         }

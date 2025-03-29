@@ -6,6 +6,8 @@ using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -28,11 +30,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 77f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
+            Item.useTurn = true;
             Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
         }
+
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
+
             if (CalamityGlobalNPC.ShouldAffectNPC(target))
             {
                 target.knockBackResist = 7f;
