@@ -6,32 +6,11 @@ using Terraria.ID;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Typeless;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Healing;
-using System;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Projectiles;
-using CalamityMod.Projectiles.Magic;
-using Terraria.Audio;
-using CalamityInheritance.Buffs.Mage;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Buffs.Statbuffs;
-using CalamityMod.Projectiles.Summon;
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items;
-using CalamityMod.NPCs.Polterghast;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityMod.NPCs.Abyss;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.NPCs.Bumblebirb;
-using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 namespace CalamityInheritance.CIPlayer
@@ -43,8 +22,6 @@ namespace CalamityInheritance.CIPlayer
         {
             if (Player.whoAmI != Main.myPlayer)
                 return;
-            NPCDebuffs(target, item.CountsAsClass<MeleeDamageClass>(), item.CountsAsClass<RangedDamageClass>(), item.CountsAsClass<MagicDamageClass>(), item.CountsAsClass<SummonDamageClass>(), item.CountsAsClass<ThrowingDamageClass>(), item.CountsAsClass<SummonMeleeSpeedDamageClass>());
-
             if (GodSlayerMelee && DartTimer == 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>()))
             {
                 int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
@@ -65,396 +42,38 @@ namespace CalamityInheritance.CIPlayer
             var heldingItem = player.ActiveItem();
             if (Player.whoAmI != Main.myPlayer)
                 return;
-            if (projectile.type == ModContent.ProjectileType<PolarStarLegacy>())
-            {
-                PolarisBoostCounter += 1;
-            }
-            #region Lore
-            if (LorePerforator)
-            {
-                target.AddBuff(BuffID.Ichor, 90);
-            }
-            if (LoreHive)
-            {
-                target.AddBuff(BuffID.CursedInferno, 90);
-            }
-            if (LoreProvidence || PanelsLoreProvidence)
-            {
-                target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
-            }
-            if (BuffStatsHolyWrath)
-            {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
-            }
-            if (YharimsInsignia)
-            {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
-            }
-            if (BuffStatsDraconicSurge && Main.zenithWorld)
-            {
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
-            }
-            #endregion
-            #region Armorset
-            #region GodSlayer
-            if (GodSlayerMagicSet && projectile.DamageType == DamageClass.Magic)
-            {
-                if (fireCD > 0)
-                {
-                    return;
-                }
-                fireCD = 2;
-                int weaponDamage = player.HeldItem.damage;
-                int finalDamage = 400 + weaponDamage / 2;
-
-                int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
-                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
-                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
-                float randomSpeed = Main.rand.NextFloat(12f, 16f);
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, projectile.knockBack);
-            }
-            #endregion
-
-
-            var source = projectile.GetSource_FromThis();
-            if (SilvaMagicSetLegacy && SilvaMagicSetLegacyCooldown <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
-            {
-                SilvaMagicSetLegacyCooldown = 300;
-                SoundEngine.PlaySound(SoundID.Zombie103, projectile.Center); //So scuffed, just because zombie sounds werent ported normally
-                int silvaBurstDamage = Player.ApplyArmorAccDamageBonusesTo((float)(800.0 + 0.6 * projectile.damage));
-                Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
-            }
-
-            if (projectile.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || projectile.type == ModContent.ProjectileType<StepToolShadowChair>())
-            {
-                BuffStatsTitanScaleTrueMelee = 600;
-            }
-            #region ReaverSets
-            #region ReaverMage
-            //法师永恒套的套装效果
-
-            CalamityInheritancePlayer ReaverMagePlayer = Main.player[projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
-            var ReaverMage = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CIMod().ReaverMageBurst)
-            {
-                if (ReaverMageBurst) //击发时提供法术增强buff
-                {
-                    Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
-                }
-
-                if (ReaverBurstCooldown <= 0)
-                {
-                    int[] projectileTypes = { ModContent.ProjectileType<CISporeGas>(), ModContent.ProjectileType<CISporeGas2>(), ModContent.ProjectileType<CISporeGas3>() };
-                    float baseAngleIncrement = 2 * MathHelper.Pi / 16;
-                    float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
-                    //好像这样伤害还挺低的但我也不知道该不该调整了
-                    int newDamage = Player.ApplyArmorAccDamageBonusesTo(CalamityUtils.DamageSoftCap(15 + 0.15 * projectile.damage, 30));
-
-                    for (int sporecounts = 0; sporecounts < 16; sporecounts++)
-                    {
-                        float angle = sporecounts * baseAngleIncrement + randomAngleOffset;
-                        Vector2 direction = new((float)Math.Cos(angle), (float)Math.Sin(angle));
-                        int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
-                        float randomSpeed = Main.rand.NextFloat(2f, 4f);
-                        Projectile.NewProjectile(source, target.Center, direction * randomSpeed, randomProjectileType, newDamage, projectile.knockBack);
-                    }
-                    target.AddBuff(BuffID.Poisoned, 120);
-                    ReaverBurstCooldown = 90;
-                }
-            }
-            #endregion
-            #region ReaverMelee
-            //永恒套的近战爆炸攻击
-            var meleeReaverSrc = projectile.GetSource_FromThis();
-            if (Main.player[projectile.owner].CIMod().ReaverMeleeBlast && projectile.DamageType == DamageClass.Melee)
-            {
-                int BlastDamage = (int)(projectile.damage * 0.4);
-                if (BlastDamage > 30)
-                {
-                    BlastDamage = 30;
-                }
-                if (ReaverBlastCooldown <= 0)
-                {
-                    SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, projectile.Center);
-                    Projectile.NewProjectile(meleeReaverSrc, projectile.Center, Vector2.Zero, ModContent.ProjectileType<ReaverBlast>(),
-                                            BlastDamage, 0.15f, Player.whoAmI);
-                    ReaverBlastCooldown = 10;
-                }
-            }
-            #endregion
-            #endregion
+            //近战射弹
+            MeleeOnHit(projectile, target, hit, damageDone);
+            //远程射弹
+            RangedOnHit(projectile, target, hit, damageDone);
+            //魔法射弹
+            MagicOnHit(projectile, target, hit, damageDone);
+            //召唤射弹
+            SummonOnHit(projectile, target, hit, damageDone);
+            //盗贼射弹
+            RogueOnHit(projectile, target, hit, damageDone);
+            //全局射弹
+            GenericOnhit(projectile, target, hit, damageDone);
+            //debuff
+            DebuffOnHit(projectile, target, hit, damageDone);
+            //debuff
+            //吸血射弹
             if (!projectile.npcProj && !projectile.trap && projectile.friendly)
-            {
                 ProjLifesteal(target, projectile, damageDone, hit.Crit);
-                ProjOnHit(projectile, target.Center, hit.Crit, target.IsAnEnemy(false));
-            }
-            #region AncientArmor
-            if (AncientBloodflareSet && hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
-            {
-                int amt = Main.rand.Next(2, 5); //2->4
-                if (Main.rand.NextBool(6)) //每次攻击时1/6概率
-                {
-                    for (int i = 0; i < amt; i++)
-                    {
-                        Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
-                        Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
-                    }
-                    AncientBloodflareHeartDropCD = 180; //2s一次
-                }
-            }
-            if (AncientGodSlayerSet && projectile.Calamity().stealthStrike && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && PerunofYharimCooldown == 0)
-            {
-                //潜伏攻击成功时提供20%增伤
-                player.GetDamage<GenericDamageClass>() += 0.2f;
-                PerunofYharimCooldown = 2700;
-
-            }
-            #endregion
-
-            #region AuricYharim
-            if (AncientAuricSet)
-            {
-                if (hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
-                {
-                    int amt = Main.rand.Next(3, 6); //3->5
-                    if (Main.rand.NextBool(5)) //每次攻击时1/5概率
-                    {
-                        for (int i = 0; i < amt; i++)
-                        {
-                            Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
-                            Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
-                        }
-                        AncientBloodflareHeartDropCD = 90; //1.5秒一次
-                    }
-                }
-
-                if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
-                    && projectile.Calamity().stealthStrike
-                    && PerunofYharimCooldown == 0
-                    )
-                {
-                    SoundEngine.PlaySound(CISoundMenu.YharimsThuner with { Volume = 0.5f });
-                    for (int j = 0; j < 50; j++)
-                    {
-                        int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                        Dust dust = Main.dust[nebulousReviveDust];
-                        dust.position.X += Main.rand.Next(-20, 21);
-                        dust.position.Y += Main.rand.Next(-20, 21);
-                        dust.velocity *= 0.9f;
-                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        if (Main.rand.NextBool())
-                            dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-                    PerunofYharimCooldown = 1800;
-
-                }
-            }
-            #endregion
-            if (AncientAstralSet)
-            {
-                if (hit.Damage > 10 && hit.Crit && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
-                {
-                    Player.Heal(20);
-                    AncientAstralCritsCount += 1;// 自增
-                    if (AncientAstralCritsCount == 20)
-                    {
-                        SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = 0.7f }, Player.Center);
-                        Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
-                        CIFunction.DustCircle(Player.Center, 18f, 1.8f, DustID.HallowedWeapons, false, 8f);
-                    }
-                    AncientAstralCritsCD = 60; //一个非常微弱的CD
-                }
-                if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralStealthCD == 0 && projectile.Calamity().stealthStrike)
-                {
-                    AncientAstralStealthGap = 900; //15s
-                    AncientAstralStealthCD = 60; //1秒间隔
-                    AncientAstralStealth++;
-                    //使其不超过12，即我们需要的上限
-                    if (AncientAstralStealth > 12)
-                        AncientAstralStealth = 12;
-                    if (AncientAstralStealth < 13)
-                    {
-                        player.lifeRegen += AncientAstralStealth; //(6)
-                    }
-                }
-            }
-            #endregion
-            #region 传奇武器伤害任务
-
-            //孔雀翎(T2)
-            if (heldingItem.type == ModContent.ItemType<PBGLegendary>())
-            {
-                PBGLegendaryDamageTask(target, hit);
-
-                if (PBGTier3)
-                    PBGLegendaryBuff(target, hit);
-            }
-
-            //海爵剑(T2)
-            if (heldingItem.type == ModContent.ItemType<DukeLegendary>())
-            {
-                DukeLegendaryDamageTask(target, hit);
-
-                if (DukeTier3)
-                    DukeLegendaryBuff(target, hit);
-            }
-
-            //维苏威阿斯(T2)
-            if (heldingItem.type == ModContent.ItemType<RavagerLegendary>())
-                RavagerLegendaryDamageTask(target, hit);
-
-            //叶流(T2)
-            if (heldingItem.type == ModContent.ItemType<PlanteraLegendary>())
-                PlanteraLegendaryDamageTask(target, hit);
-
-            //SHPC(T2)
-            if (heldingItem.type == ModContent.ItemType<DestroyerLegendary>())
-                DestroyerLegendaryDamageTask(target, hit, projectile);
-
-            #endregion
-            NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
-
-            //花岗岩核心
-            if (SMarnite && hit.Crit)
-            {
-                int sparksNum = 3;
-                for (int i = 0; i < sparksNum; i++)
-                {
-                    //这里是为了绕过0的处理
-                    Vector2 sparkSpeed = Main.rand.NextBool(2) ? new(Main.rand.NextFloat(-50f, 0f), Main.rand.NextFloat(-50f, 0f)) : new(Main.rand.NextFloat(1f, 51f), Main.rand.NextFloat(0f, 51f));
-                    sparkSpeed.Normalize();
-                    sparkSpeed *= Main.rand.NextFloat(30f, 61f) * 0.1f;
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, sparkSpeed.X, sparkSpeed.Y, ModContent.ProjectileType<ShrineMarniteProj>(), (int)(hit.Damage * 0.15f), 0f, player.whoAmI, 0f, 0f);
-                }
-            }
         }
 
-
-        #region 传奇物品特殊效果(T3)
-        private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
+        public void DebuffOnHit(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            //海爵剑T3：持续攻击增强防御属性，最高增强50点防御力与40%伤害减免
-            if (hit.Damage > 5 && DukeDefenseCounter >= 0)
-            {
-                //最大50层
-                if (DukeDefenseCounter < 51)
-                    DukeDefenseCounter++;
-                //五秒
-                DukeDefenseTimer = 300;
-                //玩家的防御力视击中的次数提升
-                Player.statDefense += DukeDefenseCounter;
-                //每次攻击增加0.5%免伤，50次攻击后为25%
-                Player.endurance += 0.005f * DukeDefenseCounter;
-            }
-        }
-
-        private void PBGLegendaryBuff(NPC target, NPC.HitInfo hit)
-        {
-            //T3孔雀翎特殊效果：一次击中敌人超过5000伤害时，自身生命值被置零以下时，以一定概率，将自己的生命值强行置0以停止掉血, 这一效果仅短暂持续1秒
-            if (target.life > 5 && hit.Damage > 5000 && GlobalLegendaryT3CD == 0 && !AncientSilvaSet)
-            {
-                //孔雀翎攻速极快，因此1/75概率才是最合适的
-                if (Player.lifeRegen < 0 && Main.rand.NextBool(75))
-                {
-                    Player.lifeRegen = 0;
-                    GlobalLegendaryT3CD = 60;
-                }
-            }
-        }
-        #endregion
-        #region 传奇物品伤害任务
-        private void DestroyerLegendaryDamageTask(NPC target, NPC.HitInfo hit, Projectile projectile)
-        {
-            //T2:在四柱期间内，对任意四根天界柱造成合计一根天界柱的最大血量的250%伤害
-            NPC towerMark = Main.npc[NPCID.LunarTowerSolar];
-            if ((target.type == NPCID.LunarTowerStardust || target.type == NPCID.LunarTowerSolar || target.type == NPCID.LunarTowerNebula || target.type == NPCID.LunarTowerVortex) &&
-                 projectile.DamageType == DamageClass.Magic && !DestroyerTier2)
-            {
-                DamagePool += hit.Damage;
-                if (DamagePool > towerMark.lifeMax * 2.5f)
-                {
-                    DestroyerTier2 = true;
-                    //这里应该需要一个诺法雷的充能音效
-                }
-            }
-        }
-        private void PlanteraLegendaryDamageTask(NPC target, NPC.HitInfo hit)
-        {
-            var usPlayer = Player.CIMod();
-            //T2: 金龙30%伤害
-            if (target.type == ModContent.NPCType<Bumblefuck>() && !PlanteraTier2 && Main.LocalPlayer.ZoneJungle)
-            {
-                DamagePool += hit.Damage;
-                if (hit.Damage > target.life * 0.3f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.DryadsWard, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
-                    usPlayer.PlanteraTier2 = true;
-                    DamagePool = 0;
-                }
-            }
-        }
-
-        private void RavagerLegendaryDamageTask(NPC target, NPC.HitInfo hit)
-        {
-            var usPlayer = Player.CIMod();
-            //T2: 在地狱对亵渎天神造成50%伤害
-            if (target.type == ModContent.NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
-            {
-                DamagePool += hit.Damage;
-                if (usPlayer.DamagePool >= target.lifeMax * 0.5f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Meteorite, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundBomb with { Volume = .5f }, Player.Center);
-                    BetsyTier2 = true;
-                    DamagePool = 0;
-                }
-            }
-        }
-
-        private void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
-        {
-            var usPlayer = Player.CIMod();
-            //T2: 海爵剑杀死一只猎魂鲨
-            if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2)
-            {
-                usPlayer.DamagePool += hit.Damage;
-                if (usPlayer.DamagePool > target.lifeMax * 0.8f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
-                    SoundEngine.PlaySound(SoundID.NPCDeath19 with { Volume = .5f }, Player.Center);
-                    //记得清空伤害池子，因为这个是共用的
-                    usPlayer.DamagePool = 0;
-                    usPlayer.DukeTier2 = true;
-                }
-            }
-        }
-
-        private void PBGLegendaryDamageTask(NPC target, NPC.HitInfo hit)
-        {
-            var usPlayer = Player.CIMod();
-            //T2: 使用孔雀翎对噬魂幽花造成最后一击
-            if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && PBGTier2)
-            {
-                CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
-                PBGTier2 = true;
-            }
-        }
-        #endregion
-
-        #region Debuffs
-        public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
-        {
-            if ((melee || rogue || whip) && !noFlask)
+            bool ifMelee = projectile.CountsAsClass<MeleeDamageClass>() || projectile.CountsAsClass<MeleeNoSpeedDamageClass>();
+            bool ifTrueMelee = projectile.CountsAsClass<TrueMeleeDamageClass>() || projectile.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+            bool ifRogue = projectile.CountsAsClass<RogueDamageClass>();
+            bool ifSummon = projectile.CountsAsClass<SummonDamageClass>();
+            if (ifMelee || ifTrueMelee || ifRogue || projectile.CountsAsClass<SummonMeleeSpeedDamageClass>())
             {
                 if (BuffStatsArmorShatter)
-                {
                     CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
-                }
             }
-            if (melee && !noFlask)
+            if (ifMelee || ifTrueMelee)
             {
                 if (ElemGauntlet)
                 {
@@ -467,7 +86,7 @@ namespace CalamityInheritance.CIPlayer
                     target.AddBuff(BuffID.Venom, 300);
                 }
             }
-            if (summon)
+            if (ifSummon)
             {
                 if (NucleogenesisLegacy)
                 {
@@ -478,8 +97,29 @@ namespace CalamityInheritance.CIPlayer
                     target.AddBuff(ModContent.BuffType<Shadowflame>(), 300, false);
                 }
             }
+            //北辰鹦哥鱼的射弹计数器
+            if (projectile.type == ModContent.ProjectileType<PolarStarLegacy>())
+                PolarisBoostCounter += 1;
+
+            #region Lore
+            if (LorePerforator)
+                target.AddBuff(BuffID.Ichor, 90);
+            if (LoreHive)
+                target.AddBuff(BuffID.CursedInferno, 90);
+                
+            if (LoreProvidence || PanelsLoreProvidence)
+                target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
+
+            if (BuffStatsHolyWrath)
+                target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+
+            if (YharimsInsignia)
+                target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
+
+            if (BuffStatsDraconicSurge && Main.zenithWorld)
+                target.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
+            #endregion
         }
-        #endregion
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
         {
             if (BuffStatsYharimsStin)
@@ -516,112 +156,5 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-        #region Proj On Hit
-        public void ProjOnHit(Projectile proj, Vector2 position, bool crit, bool npcCheck)
-        {
-            CalamityGlobalProjectile modProj = proj.Calamity();
-
-            if (proj.CountsAsClass<ThrowingDamageClass>())
-                RogueOnHit(proj, modProj, position, crit, npcCheck);
-            if (proj.CountsAsClass<SummonDamageClass>() && !proj.CountsAsClass<SummonMeleeSpeedDamageClass>())
-                SummonOnHit(proj, modProj, position, crit, npcCheck);
-            if (proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>())
-                TrueMeleeProjOnHit(proj, modProj, position, crit, npcCheck);
-            if (proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>())
-                MeleeProjOnHit(proj, modProj, position, crit, npcCheck);
-        }
-        #endregion
-        #region Rogue
-        private void RogueOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
-        {
-            var spawnSource = proj.GetSource_FromThis();
-
-            CalamityPlayer modPlayer = Player.Calamity();
-
-            if (proj.Calamity().stealthStrike && proj.Calamity().stealthStrikeHitCount < 3)
-            {
-                if (nanotechold)
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        Vector2 source = new Vector2(position.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
-                        Vector2 velocity = (position - source) / 40f;
-
-                        Projectile.NewProjectile(spawnSource, source, velocity, ModContent.ProjectileType<NanoFlare>(), (int)(proj.damage * 0.05), 3f, proj.owner);
-                    }
-                }
-            }
-
-        }
-        #endregion
-        private static void SummonOnHit(Projectile projectile, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
-        {
-            Player player = Main.player[projectile.owner];
-
-            var source = projectile.GetSource_FromThis();
-
-            CalamityInheritancePlayer CIplayer = player.CIMod();
-
-            if (CIplayer.summonProjCooldown <= 0)
-            {
-                if (CIplayer.NucleogenesisLegacy)
-                {
-                    Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(projectile.damage * 0.25f), 4f, projectile.owner);
-                    CIplayer.summonProjCooldown = 25;
-                }
-            }
-
-            if (CIplayer.GodSlayerSummonSet)
-            {
-                if (CIplayer.fireCD > 0)
-                {
-                    return;
-                }
-                CIplayer.fireCD = 2;
-                player = Main.player[projectile.owner];
-                int weaponDamage = player.HeldItem.damage;
-                int finalDamage = 400 + weaponDamage / 2;
-
-                int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
-                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
-                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
-                float randomSpeed = Main.rand.NextFloat(6f, 8f);
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
-            }
-        }
-        private static void TrueMeleeProjOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
-        {
-            Player player = Main.player[proj.owner];
-
-            var source = proj.GetSource_FromThis();
-
-            CalamityInheritancePlayer CIplayer = player.CIMod();
-
-            if (CIplayer.GodSlayerMelee && CIplayer.DartTimer == 0)
-            {
-                int dartDamage = player.ApplyArmorAccDamageBonusesTo(player.CalcIntDamage<MeleeDamageClass>(500));
-                Vector2 getSpwanPos = new(player.Center.Y, player.Center.X);
-                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
-                Projectile.NewProjectile(player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, player.whoAmI);
-                CIplayer.DartTimer = 120;
-            }
-        }
-        private static void MeleeProjOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
-        {
-            Player player = Main.player[proj.owner];
-
-            var source = proj.GetSource_FromThis();
-
-            CalamityInheritancePlayer CIplayer = player.CIMod();
-
-            if (CIplayer.GodSlayerMelee && CIplayer.DartTimer == 0)
-            {
-                int dartDamage = player.ApplyArmorAccDamageBonusesTo(player.CalcIntDamage<MeleeDamageClass>(500));
-                Vector2 getSpwanPos = new(player.Center.Y, player.Center.X);
-                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
-                Projectile.NewProjectile(player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, player.whoAmI);
-                CIplayer.DartTimer = 120;
-            }
-        }
     }
 }
