@@ -85,6 +85,8 @@ namespace CalamityInheritance.CIPlayer
         public bool ReaverRangedRocket = false;
         //射手永恒套的套装奖励
         public bool ReaverRocketFires = false;
+        //石巨人，我杀你妈妈 
+        public bool FuckYouGolem =false;
         #endregion
         public bool test = false;
         #region AncientXeroc
@@ -164,6 +166,7 @@ namespace CalamityInheritance.CIPlayer
             ReaverMeleeRage = false;
             ReaverMagePower = false;
             ReaverSummoner = false;
+            FuckYouGolem = false;
             #endregion
             #region Xeroc
             AncientXerocSet     = false;

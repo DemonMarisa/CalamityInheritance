@@ -64,7 +64,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddBuff(ModContent.BuffType<BloodyBoost>(), 600);
                 damageMult += 1.25;
             }
-
+            
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
             #region 免伤
@@ -75,7 +75,17 @@ namespace CalamityInheritance.CIPlayer
                 //我需要这种方法玩家来复原日耀免伤，这个属于防前计算，而原版日耀是防后计算，因此这里实际先取15%而不取原有的20%
                 damageReduce -= 0.20; //日耀盾"防前"15%免伤
             }
-            modifiers.SourceDamage *= (float)damageReduce;
+            if (SForestBuff)
+            {
+                damageReduce -= 0.15;    
+            }
+            //大师石巨人在场，且玩家佩戴玉金喷射器+永恒套的搭配时，获得20%乘算伤害减免
+            //我草泥马的石巨人
+            if (Main.masterMode &&CIFunction.IsThereNpcNearby(NPCID.Golem, Player, 1600f) && Main.LocalPlayer.ZoneLihzhardTemple && FuckYouGolem)
+            {
+                damageReduce -= 0.20;
+            }
+            modifiers.FinalDamage *= (float)damageReduce;
             #endregion
 
         }

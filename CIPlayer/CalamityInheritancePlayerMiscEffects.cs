@@ -345,6 +345,23 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+            #region 神龛物品
+            //脚斗士
+            if (SMarble)
+            {
+
+            }
+            //蘑菇k
+            if (SMushroom)
+            {
+                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
+            }
+            //气功念珠
+            if (SForest)
+            {
+                
+            }
+            #endregion
             if (GodlySons)
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
@@ -985,13 +1002,32 @@ namespace CalamityInheritance.CIPlayer
             {
                 player.GetDamage<RogueDamageClass>() *= 2;
             }
-
-            //假定玩家与灾厄之眼再临战斗
         }
         private void StandingStill()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
+
+            //气功念珠
+            if (SForest)
+            {
+                if (SForestBuff)
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.5f;
+                    if (Player.itemAnimation > 0)
+                        SForestBuffTimer = 0;
+                }
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (SForestBuffTimer < 120)
+                        SForestBuffTimer++;
+                    else
+                        Player.AddBuff(ModContent.BuffType<ShrineForestBuff>(), 6);
+                }
+                else SForestBuffTimer -= 1;
+            }
+            else SForestBuffTimer = 0;
+
             if(DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
             {
                 if(Player.StandingStill(0.1f) && !Player.mount.Active)
@@ -1588,7 +1624,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (usPlayer.LoreDevourer || PanelsLoreDevourer)
             {
-                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
+                Player.GetDamage<TrueMeleeDamageClass>() += 0.5f;
             }
             if (usPlayer.LoreJungleDragon || PanelsLoreJungleDragon)
             {

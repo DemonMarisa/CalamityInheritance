@@ -392,6 +392,20 @@ namespace CalamityInheritance.CIPlayer
             
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
+
+            //花岗岩核心
+            if (SMarnite && hit.Crit)
+            {
+                int sparksNum = 3;
+                for (int i = 0; i < sparksNum; i++)
+                {
+                    //这里是为了绕过0的处理
+                    Vector2 sparkSpeed = Main.rand.NextBool(2) ? new (Main.rand.NextFloat(-50f, 0f), Main.rand.NextFloat(-50f, 0f)) : new (Main.rand.NextFloat(1f, 51f), Main.rand.NextFloat(0f, 51f));
+                    sparkSpeed.Normalize();
+                    sparkSpeed *= Main.rand.NextFloat(30f, 61f) * 0.1f;
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, sparkSpeed.X, sparkSpeed.Y, ModContent.ProjectileType<ShrineMarniteProj>(), (int)(hit.Damage * 0.15f), 0f, player.whoAmI, 0f, 0f);
+                }
+            }
         }
 
         
