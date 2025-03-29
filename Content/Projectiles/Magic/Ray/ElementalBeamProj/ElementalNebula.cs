@@ -8,6 +8,7 @@ using CalamityMod;
 using Microsoft.Build.Evaluation;
 using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
+using CalamityMod.Particles;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -16,10 +17,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 4;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            Main.projFrames[Projectile.type] = 12;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
+        public Vector2 ProjScale = new( 0.5f, 0.5f);
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -30,6 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             Projectile.tileCollide = false;
             Projectile.timeLeft = 200;
             Projectile.extraUpdates = 1;
+            Projectile.Size = ProjScale;
         }
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 148;
 
@@ -38,19 +41,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             int dType = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
             Main.dust[dType].noGravity = true;
             Main.dust[dType].velocity *= 0f;
-            Projectile.ai[0] += 1f;
-            Projectile.velocity *= 0.91f;
-            //星云烈焰会先飞行一段时间，并逐渐地减速
-            if(Projectile.ai[0] > 30f)
-            {
-                Projectile.velocity *= 0.5f;
-                if(Projectile.ai[0] > 40f)
-                {
-                    Projectile.ai[0] = 40f;
-                    Projectile.localAI[0] += 1f;
-                    CIFunction.HomeInOnNPC(Projectile, true, 800f, 10f + Projectile.localAI[0], 10f, 45f);
-                }
-            }
+            if (Projectile.timeLeft < 190)
+                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3000f, 12f, 25f);
+            SparkParticle line = new SparkParticle(Projectile.Center - Projectile.velocity * 1.1f, Projectile.velocity * 0.01f, false, 18, 1f, Color.Purple);
+            GeneralParticleHandler.SpawnParticle(line);
             Projectile.rotation += 0.12f;
         }
 

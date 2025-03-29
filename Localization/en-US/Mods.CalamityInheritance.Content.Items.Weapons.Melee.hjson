@@ -208,21 +208,6 @@ Test: {
 	Tooltip: ""
 }
 
-GalaxySmasherMelee: {
-	DisplayName: Galaxy Smasher Legacy Melee
-	Tooltip: Explodes and summons death lasers on enemy hits
-}
-
-StellarContemptOld: {
-	DisplayName: Stellar Contempt Legacy Melee
-	Tooltip: Lunar flares rain down on enemy hits
-}
-
-FallenPaladinsHammerOld: {
-	DisplayName: Fallen Paladin's Hammer Legacy Melee
-	Tooltip: Explodes on enemy hits
-}
-
 Trinity: {
 	DisplayName: Trinity
 	Tooltip: Fires a spread of energy bolts
@@ -407,11 +392,6 @@ MarniteSpear: {
 	DisplayName: Marnite Spear
 }
 
-AquaticDissolution: {
-	Tooltip: ""
-	DisplayName: Aquatic Dissolution
-}
-
 VictideYoyo: {
 	Tooltip: ""
 	DisplayName: Victide Yoyo
@@ -435,4 +415,9 @@ VictideBoomerangMelee: {
 DukeLegendary: {
 	Tooltip: ""
 	DisplayName: Duke Legendary
+}
+
+AquaticDissolution: {
+	DisplayName: Aquatic Dissolution
+	Tooltip: ""
 }

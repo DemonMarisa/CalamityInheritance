@@ -17,7 +17,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -257,8 +257,8 @@ namespace CalamityInheritance.CIPlayer
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 0f, 0f);
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 10f), (float)(Math.Cos(offsetAngle) * 10f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 10f), (float)(-Math.Cos(offsetAngle) * 10f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
                     }
                 }
             }

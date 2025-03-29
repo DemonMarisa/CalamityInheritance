@@ -380,3 +380,23 @@ DraedonsHeartLegacy: {
 		'Who the...put defense damage into the game?'
 		'''
 }
+
+ShrineForest: {
+	DisplayName: Shrine Forest
+	Tooltip: ""
+}
+
+ShrineMarble: {
+	DisplayName: Shrine Marble
+	Tooltip: ""
+}
+
+ShrineMarnite: {
+	DisplayName: Shrine Marnite
+	Tooltip: ""
+}
+
+ShrineMushroom: {
+	DisplayName: Shrine Mushroom
+	Tooltip: ""
+}

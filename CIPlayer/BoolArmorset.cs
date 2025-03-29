@@ -31,7 +31,6 @@ namespace CalamityInheritance.CIPlayer
         public bool GodSlayerDMGprotect = false;
         public bool GodSlayerReflect = false;
         public bool GodSlayerMagicSet = false;
-        public bool hasFiredThisFrame = false;
         public bool GodSlayerRangedSet = false;
         public bool GodSlayerSummonSet = false;
         public bool GodSlayerRogueSet = false;
@@ -138,7 +137,6 @@ namespace CalamityInheritance.CIPlayer
             GodSlayerDMGprotect = false;
             GodSlayerReflect = false;
             GodSlayerMagicSet = false;
-            hasFiredThisFrame = false;
             GodSlayerRangedSet = false;
             GodSlayerSummonSet = false;
             GodSlayerRogueSet = false;
@@ -209,7 +207,6 @@ namespace CalamityInheritance.CIPlayer
             DartTimer = 0;
             GodSlayerReflect = false;
             GodSlayerMagicSet = false;
-            hasFiredThisFrame = false;
             GodSlayerRangedSet = false;
             GodSlayerSummonSet = false;
             GodSlayerRogueSet = false;

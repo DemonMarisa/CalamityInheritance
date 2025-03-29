@@ -152,3 +152,13 @@ WarCleave: {
 	Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
 	DisplayName: War Cleave
 }
+
+ShrineForestBuff: {
+	DisplayName: Shrine Forest Buff
+	Description: Mods.CalamityInheritance.Buffs.ShrineForestBuff.Description
+}
+
+SMarbleSwordBuff: {
+	DisplayName: S Marble Sword Buff
+	Description: Mods.CalamityInheritance.Buffs.SMarbleSwordBuff.Description
+}

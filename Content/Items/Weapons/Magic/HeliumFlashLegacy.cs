@@ -34,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.DamageType = DamageClass.Magic;
             Item.SetWeaponValues(HeliumFlashDamage, 9.5f, 46);
             Item.mana = HeliumFlashManaCost;
-            Item.useAnimation = 24;
-            Item.useTime = 12;
+            Item.useAnimation = 40;
+            Item.useTime = 40;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Shoot;

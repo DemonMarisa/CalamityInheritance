@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Main.dust[num822].scale = 1.3f;
             Main.dust[num822].noGravity = true;
             if (Projectile.timeLeft < 260)
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, 12f, 25f);
+                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 3000f, 12f, 25f);
         }
 
         public override bool PreDraw(ref Color lightColor)

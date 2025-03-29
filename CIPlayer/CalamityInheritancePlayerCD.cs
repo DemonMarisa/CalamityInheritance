@@ -23,9 +23,9 @@ namespace CalamityInheritance.CIPlayer
         public int DukeDefenseCounter = 0;
         public int DukeDefenseTimer = 0;
         #endregion
-
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
-
+        // 通用开火冷却
+        public int fireCD = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -41,13 +41,18 @@ namespace CalamityInheritance.CIPlayer
             
             if (GlobalLegendaryT3CD > 0)
                 GlobalLegendaryT3CD--;
+
             if (DukeDefenseTimer > 0)
                 DukeDefenseTimer--;
+
             if (DukeDefenseCounter > 0 && DukeDefenseTimer == 0)
                 DukeDefenseCounter--;
+
             if (DartTimer > 0)
                 DartTimer--;
 
+            if (fireCD > 0)
+                fireCD--;
             return;
         }
     }

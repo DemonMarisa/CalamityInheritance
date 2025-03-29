@@ -32,6 +32,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Providence;
 using CalamityMod.NPCs.Bumblebirb;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -44,39 +45,13 @@ namespace CalamityInheritance.CIPlayer
                 return;
             NPCDebuffs(target, item.CountsAsClass<MeleeDamageClass>(), item.CountsAsClass<RangedDamageClass>(), item.CountsAsClass<MagicDamageClass>(), item.CountsAsClass<SummonDamageClass>(), item.CountsAsClass<ThrowingDamageClass>(), item.CountsAsClass<SummonMeleeSpeedDamageClass>());
 
-            if (GodSlayerMelee && hit.Damage > 5 && hit.DamageType == DamageClass.Melee && DartTimer == 0)
+            if (GodSlayerMelee && DartTimer == 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>()))
             {
                 int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
-                Vector2 getSpwanPos;
-                //获取玩家位置，并使其在在玩家后方生成
-                float ySpread = Player.Center.Y * (1f + Main.rand.NextFloat(-0.02f, 0.02f)); 
-                float xSpread = Player.Center.X + Main.rand.NextFloat(-10f , 11f);
-                getSpwanPos = new(xSpread + 240f, ySpread);
-                //TODO: 将其彻底改为从后方生成(即考虑Y轴的情况)
-                if (Player.direction == 1)
-                    getSpwanPos = new(xSpread - 240f, ySpread);
-                //获取一个速度
-                Vector2 getSpeed = (target.position - Player.position)/40f;
-                int dart = Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, getSpeed, ModContent.ProjectileType<GodSlayerDartHoming>(), dartDamage, 0f, Player.whoAmI);
-                Vector2 portalDustPos = Main.projectile[dart].Center;
-                //在射弹生成的位置生成一些粒子，模拟传送门的效果
-                int circleDust = 18;
-                Vector2 baseDustVel = new Vector2(3.8f, 0f);
-                for (int i = 0; i < circleDust; ++i)
-                {
-                    int dustID = 173;
-                    float angle = i * (MathHelper.TwoPi / circleDust);
-                    Vector2 dustVel = baseDustVel.RotatedBy(angle);
-
-                    int idx = Dust.NewDust(portalDustPos, 1, 1, dustID);
-                    Main.dust[idx].noGravity = true;
-                    Main.dust[idx].position = portalDustPos;
-                    Main.dust[idx].velocity = dustVel;
-                    Main.dust[idx].scale = 2.4f;
-                }
-                //魔君套移除这个短CD
-                if (!AncientAuricSet)
-                    DartTimer = 5;
+                Vector2 getSpwanPos = new(Player.Center.Y, Player.Center.X);
+                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, Player.whoAmI);
+                DartTimer = 120;
             }
         }
         #endregion
@@ -124,41 +99,22 @@ namespace CalamityInheritance.CIPlayer
             #region GodSlayer
             if (GodSlayerMagicSet && projectile.DamageType == DamageClass.Magic)
             {
-                if (hasFiredThisFrame)
+                if (fireCD > 0)
                 {
                     return;
                 }
-                hasFiredThisFrame = true;
+                fireCD = 2;
                 int weaponDamage = player.HeldItem.damage;
-                int finalDamage = 200 + weaponDamage / 2;
+                int finalDamage = 400 + weaponDamage / 2;
 
                 int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
-                if (Main.rand.NextBool(8))
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, projectile.knockBack);
-            }
-
-            if (GodSlayerSummonSet && projectile.DamageType == DamageClass.Summon)
-            {
-                if (hasFiredThisFrame)
-                {
-                    return;
-                }
-                hasFiredThisFrame = true;
-                player = Main.player[projectile.owner];
-                int weaponDamage = player.HeldItem.damage;
-                int finalDamage = 200 + weaponDamage / 2;
-
-                int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
-                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
-                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
-                float randomSpeed = Main.rand.NextFloat(6f, 8f);
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, projectile.knockBack);
             }
             #endregion
-           
+
 
             var source = projectile.GetSource_FromThis();
             if (SilvaMagicSetLegacy && SilvaMagicSetLegacyCooldown <= 0 && (projectile.penetrate == 1 || projectile.timeLeft <= 5) && projectile.DamageType == DamageClass.Magic)
@@ -236,9 +192,9 @@ namespace CalamityInheritance.CIPlayer
             if (AncientBloodflareSet && hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
             {
                 int amt = Main.rand.Next(2, 5); //2->4
-                if(Main.rand.NextBool(6)) //每次攻击时1/6概率
+                if (Main.rand.NextBool(6)) //每次攻击时1/6概率
                 {
-                    for(int i = 0; i < amt; i++)
+                    for (int i = 0; i < amt; i++)
                     {
                         Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
                         Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
@@ -254,16 +210,16 @@ namespace CalamityInheritance.CIPlayer
 
             }
             #endregion
-            
+
             #region AuricYharim
             if (AncientAuricSet)
             {
                 if (hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
                 {
                     int amt = Main.rand.Next(3, 6); //3->5
-                    if(Main.rand.NextBool(5)) //每次攻击时1/5概率
+                    if (Main.rand.NextBool(5)) //每次攻击时1/5概率
                     {
-                        for(int i = 0; i < amt; i++)
+                        for (int i = 0; i < amt; i++)
                         {
                             Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Heart);
                             Item.NewItem(target.GetSource_FromThis(), target.Hitbox, ItemID.Star);
@@ -275,75 +231,41 @@ namespace CalamityInheritance.CIPlayer
                 if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>()
                     && projectile.Calamity().stealthStrike
                     && PerunofYharimCooldown == 0
-                    ) 
+                    )
                 {
-                        SoundEngine.PlaySound(CISoundMenu.YharimsThuner with {Volume = 0.5f});
-                        for (int j = 0; j < 50; j++)
-                        {
-                            int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                            Dust dust = Main.dust[nebulousReviveDust];
-                            dust.position.X += Main.rand.Next(-20, 21);
-                            dust.position.Y += Main.rand.Next(-20, 21);
-                            dust.velocity *= 0.9f;
+                    SoundEngine.PlaySound(CISoundMenu.YharimsThuner with { Volume = 0.5f });
+                    for (int j = 0; j < 50; j++)
+                    {
+                        int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                        Dust dust = Main.dust[nebulousReviveDust];
+                        dust.position.X += Main.rand.Next(-20, 21);
+                        dust.position.Y += Main.rand.Next(-20, 21);
+                        dust.velocity *= 0.9f;
+                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                        if (Main.rand.NextBool())
                             dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                            if (Main.rand.NextBool())
-                                dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        }
-                        Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-                        PerunofYharimCooldown = 1800;
+                    }
+                    Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
+                    PerunofYharimCooldown = 1800;
 
                 }
             }
             #endregion
-            if (GodSlayerMelee && hit.Damage > 5 && hit.DamageType == DamageClass.Melee && DartTimer == 0)
+            if (AncientAstralSet)
             {
-                int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
-                Vector2 getSpwanPos;
-                //获取玩家位置，并使其在在玩家后方生成
-                float ySpread = Player.Center.Y * (1f + Main.rand.NextFloat(-0.02f, 0.02f)); 
-                float xSpread = Player.Center.X + Main.rand.NextFloat(-10f , 11f);
-                getSpwanPos = new(xSpread + 240f, ySpread);
-                //TODO: 将其彻底改为从后方生成(即考虑Y轴的情况)
-                if (player.direction == 1)
-                    getSpwanPos = new(xSpread - 240f, ySpread);
-                //获取一个速度
-                Vector2 getSpeed = (target.position - Player.position)/40f;
-                int dart = Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, getSpeed, ModContent.ProjectileType<GodSlayerDartHoming>(), dartDamage, 0f, Player.whoAmI);
-                Vector2 portalDustPos = Main.projectile[dart].Center;
-                //在射弹生成的位置生成一些粒子，模拟传送门的效果
-                int circleDust = 18;
-                Vector2 baseDustVel = new Vector2(3.8f, 0f);
-                for (int i = 0; i < circleDust; ++i)
-                {
-                    int dustID = 173;
-                    float angle = i * (MathHelper.TwoPi / circleDust);
-                    Vector2 dustVel = baseDustVel.RotatedBy(angle);
-
-                    int idx = Dust.NewDust(portalDustPos, 1, 1, dustID);
-                    Main.dust[idx].noGravity = true;
-                    Main.dust[idx].position = portalDustPos;
-                    Main.dust[idx].velocity = dustVel;
-                    Main.dust[idx].scale = 2.4f;
-                }
-                //魔君套移除这个CD
-                if (!AncientAuricSet)
-                    DartTimer = 5;
-            }
-            if(AncientAstralSet)
-            {
-                if(hit.Damage > 10 && hit.Crit && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
+                if (hit.Damage > 10 && hit.Crit && projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
                 {
                     Player.Heal(20);
                     AncientAstralCritsCount += 1;// 自增
-                    if(AncientAstralCritsCount == 20)
+                    if (AncientAstralCritsCount == 20)
                     {
-                        SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = 0.7f}, Player.Center);
+                        SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = 0.7f }, Player.Center);
                         Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
                         CIFunction.DustCircle(Player.Center, 18f, 1.8f, DustID.HallowedWeapons, false, 8f);
                     }
                     AncientAstralCritsCD = 60; //一个非常微弱的CD
                 }
-                if(projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralStealthCD == 0 && projectile.Calamity().stealthStrike)
+                if (projectile.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralStealthCD == 0 && projectile.Calamity().stealthStrike)
                 {
                     AncientAstralStealthGap = 900; //15s
                     AncientAstralStealthCD = 60; //1秒间隔
@@ -359,7 +281,7 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             #region 传奇武器伤害任务
-        
+
             //孔雀翎(T2)
             if (heldingItem.type == ModContent.ItemType<PBGLegendary>())
             {
@@ -385,11 +307,11 @@ namespace CalamityInheritance.CIPlayer
             //叶流(T2)
             if (heldingItem.type == ModContent.ItemType<PlanteraLegendary>())
                 PlanteraLegendaryDamageTask(target, hit);
-            
+
             //SHPC(T2)
             if (heldingItem.type == ModContent.ItemType<DestroyerLegendary>())
                 DestroyerLegendaryDamageTask(target, hit, projectile);
-            
+
             #endregion
             NPCDebuffs(target, projectile.CountsAsClass<MeleeDamageClass>(), projectile.CountsAsClass<RangedDamageClass>(), projectile.CountsAsClass<MagicDamageClass>(), projectile.CountsAsClass<SummonDamageClass>(), projectile.CountsAsClass<ThrowingDamageClass>(), projectile.CountsAsClass<SummonMeleeSpeedDamageClass>());
 
@@ -400,7 +322,7 @@ namespace CalamityInheritance.CIPlayer
                 for (int i = 0; i < sparksNum; i++)
                 {
                     //这里是为了绕过0的处理
-                    Vector2 sparkSpeed = Main.rand.NextBool(2) ? new (Main.rand.NextFloat(-50f, 0f), Main.rand.NextFloat(-50f, 0f)) : new (Main.rand.NextFloat(1f, 51f), Main.rand.NextFloat(0f, 51f));
+                    Vector2 sparkSpeed = Main.rand.NextBool(2) ? new(Main.rand.NextFloat(-50f, 0f), Main.rand.NextFloat(-50f, 0f)) : new(Main.rand.NextFloat(1f, 51f), Main.rand.NextFloat(0f, 51f));
                     sparkSpeed.Normalize();
                     sparkSpeed *= Main.rand.NextFloat(30f, 61f) * 0.1f;
                     Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, sparkSpeed.X, sparkSpeed.Y, ModContent.ProjectileType<ShrineMarniteProj>(), (int)(hit.Damage * 0.15f), 0f, player.whoAmI, 0f, 0f);
@@ -408,7 +330,7 @@ namespace CalamityInheritance.CIPlayer
             }
         }
 
-        
+
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
         {
@@ -467,7 +389,7 @@ namespace CalamityInheritance.CIPlayer
                 if (hit.Damage > target.life * 0.3f)
                 {
                     CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.DryadsWard, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
                     usPlayer.PlanteraTier2 = true;
                     DamagePool = 0;
                 }
@@ -484,7 +406,7 @@ namespace CalamityInheritance.CIPlayer
                 if (usPlayer.DamagePool >= target.lifeMax * 0.5f)
                 {
                     CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Meteorite, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundBomb with {Volume = .5f}, Player.Center);
+                    SoundEngine.PlaySound(CISoundID.SoundBomb with { Volume = .5f }, Player.Center);
                     BetsyTier2 = true;
                     DamagePool = 0;
                 }
@@ -501,7 +423,7 @@ namespace CalamityInheritance.CIPlayer
                 if (usPlayer.DamagePool > target.lifeMax * 0.8f)
                 {
                     CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
-                    SoundEngine.PlaySound(SoundID.NPCDeath19 with {Volume = .5f}, Player.Center);
+                    SoundEngine.PlaySound(SoundID.NPCDeath19 with { Volume = .5f }, Player.Center);
                     //记得清空伤害池子，因为这个是共用的
                     usPlayer.DamagePool = 0;
                     usPlayer.DukeTier2 = true;
@@ -516,12 +438,12 @@ namespace CalamityInheritance.CIPlayer
             if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && PBGTier2)
             {
                 CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
                 PBGTier2 = true;
             }
         }
         #endregion
-        
+
         #region Debuffs
         public void NPCDebuffs(NPC target, bool melee, bool ranged, bool magic, bool summon, bool rogue, bool whip, bool proj = false, bool noFlask = false)
         {
@@ -567,7 +489,7 @@ namespace CalamityInheritance.CIPlayer
         {
             healValue = (int)(healValue * ManaHealMutipler);
         }
-        
+
         #region Lifesteal
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
@@ -603,6 +525,10 @@ namespace CalamityInheritance.CIPlayer
                 RogueOnHit(proj, modProj, position, crit, npcCheck);
             if (proj.CountsAsClass<SummonDamageClass>() && !proj.CountsAsClass<SummonMeleeSpeedDamageClass>())
                 SummonOnHit(proj, modProj, position, crit, npcCheck);
+            if (proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>())
+                TrueMeleeProjOnHit(proj, modProj, position, crit, npcCheck);
+            if (proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>())
+                MeleeProjOnHit(proj, modProj, position, crit, npcCheck);
         }
         #endregion
         #region Rogue
@@ -628,7 +554,42 @@ namespace CalamityInheritance.CIPlayer
 
         }
         #endregion
-        private static void SummonOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
+        private static void SummonOnHit(Projectile projectile, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
+        {
+            Player player = Main.player[projectile.owner];
+
+            var source = projectile.GetSource_FromThis();
+
+            CalamityInheritancePlayer CIplayer = player.CIMod();
+
+            if (CIplayer.summonProjCooldown <= 0)
+            {
+                if (CIplayer.NucleogenesisLegacy)
+                {
+                    Projectile.NewProjectile(source, projectile.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(projectile.damage * 0.25f), 4f, projectile.owner);
+                    CIplayer.summonProjCooldown = 25;
+                }
+            }
+
+            if (CIplayer.GodSlayerSummonSet)
+            {
+                if (CIplayer.fireCD > 0)
+                {
+                    return;
+                }
+                CIplayer.fireCD = 2;
+                player = Main.player[projectile.owner];
+                int weaponDamage = player.HeldItem.damage;
+                int finalDamage = 400 + weaponDamage / 2;
+
+                int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
+                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
+                Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
+                float randomSpeed = Main.rand.NextFloat(6f, 8f);
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, direction * randomSpeed, projectileTypes, finalDamage, projectile.knockBack);
+            }
+        }
+        private static void TrueMeleeProjOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
         {
             Player player = Main.player[proj.owner];
 
@@ -636,21 +597,30 @@ namespace CalamityInheritance.CIPlayer
 
             CalamityInheritancePlayer CIplayer = player.CIMod();
 
-            List<int> summonExceptionList = new List<int>()
+            if (CIplayer.GodSlayerMelee && CIplayer.DartTimer == 0)
             {
-                ModContent.ProjectileType<ApparatusExplosion>(),
-            };
+                int dartDamage = player.ApplyArmorAccDamageBonusesTo(player.CalcIntDamage<MeleeDamageClass>(500));
+                Vector2 getSpwanPos = new(player.Center.Y, player.Center.X);
+                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
+                Projectile.NewProjectile(player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, player.whoAmI);
+                CIplayer.DartTimer = 120;
+            }
+        }
+        private static void MeleeProjOnHit(Projectile proj, CalamityGlobalProjectile modProj, Vector2 position, bool crit, bool npcCheck)
+        {
+            Player player = Main.player[proj.owner];
 
-            if (summonExceptionList.TrueForAll(x => proj.type != x))
+            var source = proj.GetSource_FromThis();
+
+            CalamityInheritancePlayer CIplayer = player.CIMod();
+
+            if (CIplayer.GodSlayerMelee && CIplayer.DartTimer == 0)
             {
-                if (CIplayer.summonProjCooldown <= 0)
-                {
-                    if (CIplayer.NucleogenesisLegacy)
-                    {
-                        Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
-                        CIplayer.summonProjCooldown = 25;
-                    }
-                }
+                int dartDamage = player.ApplyArmorAccDamageBonusesTo(player.CalcIntDamage<MeleeDamageClass>(500));
+                Vector2 getSpwanPos = new(player.Center.Y, player.Center.X);
+                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
+                Projectile.NewProjectile(player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, player.whoAmI);
+                CIplayer.DartTimer = 120;
             }
         }
     }

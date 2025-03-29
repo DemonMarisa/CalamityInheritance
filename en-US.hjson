@@ -63,5 +63,6 @@ Mods: {
 		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 		DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
+		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 	}
 }

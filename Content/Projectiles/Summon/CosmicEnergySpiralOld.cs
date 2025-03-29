@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             float num633 = 1400f; //700
             float num634 = 1600f; //800
             float num635 = 2400f; //1200
-            float num636 = 800f;
+            float num636 = 1600f;
             Projectile.rotation += Projectile.velocity.X * 0.1f;
             Vector2 vector46 = Projectile.position;
             bool flag25 = false;

@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 19;
             Item.useAnimation = 19;
             Item.useTurn = true;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 4.25f;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;

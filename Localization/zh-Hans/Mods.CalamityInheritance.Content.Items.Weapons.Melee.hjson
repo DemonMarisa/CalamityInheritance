@@ -202,21 +202,6 @@ Test: {
 		'''
 }
 
-GalaxySmasherMelee: {
-	// DisplayName: Galaxy Smasher Legacy Melee
-	// Tooltip: Explodes and summons death lasers on enemy hits
-}
-
-StellarContemptOld: {
-	// DisplayName: Stellar Contempt Legacy Melee
-	// Tooltip: Lunar flares rain down on enemy hits
-}
-
-FallenPaladinsHammerOld: {
-	// DisplayName: Fallen Paladin's Hammer Legacy Melee
-	// Tooltip: Explodes on enemy hits
-}
-
 Trinity: {
 	DisplayName: 三元寒刃[Legacy]
 	Tooltip: 发射三个能量球
@@ -389,12 +374,7 @@ DragonSword: {
 }
 
 Warblade: {
-	Tooltip:
-		'''
-		命中时使敌人流血
-		攻击时有一定概率使敌人损失一半生命值
-		这一效果对Boss单位无效
-		'''
+	Tooltip: 命中时使敌人流血
 	DisplayName: 哥布林战刀[Revamped]
 }
 
@@ -405,11 +385,6 @@ MarniteSpear: {
 		允许击退Boss单位，但是击退力量较弱
 		'''
 	DisplayName: 花岗岩长矛[Revamped]
-}
-
-AquaticDissolution: {
-	// Tooltip: ""
-	// DisplayName: Aquatic Dissolution
 }
 
 VictideYoyo: {
@@ -452,4 +427,9 @@ DukeLegendary: {
 		[c/35FFFF:-传奇武器-]
 		'''
 	DisplayName: 龙卷涡漩海皇剑爵[Legacy]
+}
+
+AquaticDissolution: {
+	// DisplayName: Aquatic Dissolution
+	// Tooltip: ""
 }

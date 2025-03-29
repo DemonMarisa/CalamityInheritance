@@ -48,6 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                     nebulaBubble.velocity = Main.rand.NextVector2Circular(6f, 6f);
                     nebulaBubble.scale = Main.rand.NextFloat(2f, 3f);
                     nebulaBubble.noGravity = true;
+                    nebulaBubble.color = Color.White;
                 }
             }
         }
@@ -87,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 float newRotation = MathHelper.ToRadians(j * rotFactor);
                 Vector2 pPos = new Vector2(18f, 0f).RotatedBy(newRotation);
                 Vector2 pVel = new Vector2(18f, 0f).RotatedBy(newRotation);
-                int nP = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pPos, pVel, ModContent.ProjectileType<ElementalNebula>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                int nP = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pPos, pVel * 0.6f, ModContent.ProjectileType<ElementalNebula>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[nP].scale *= 1.5f;
 
             }

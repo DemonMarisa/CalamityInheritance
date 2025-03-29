@@ -122,7 +122,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     int numberOfProjectiles = 8;
                     float spreadAngle = MathHelper.ToRadians(360);
                     float baseAngle = projectile.velocity.ToRotation();
-                    float angleStep = spreadAngle / (numberOfProjectiles - 1);
+                    float angleStep = spreadAngle / (numberOfProjectiles);
 
                     for (int i = 0; i < numberOfProjectiles; i++)
                     {

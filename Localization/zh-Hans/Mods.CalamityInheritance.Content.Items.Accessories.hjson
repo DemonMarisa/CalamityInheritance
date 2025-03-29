@@ -387,3 +387,23 @@ DraedonsHeartLegacy: {
 		[c/AABBCC:"哪个天杀的家伙把防御损伤塞进这游戏的?"]
 		'''
 }
+
+ShrineForest: {
+	// DisplayName: Shrine Forest
+	// Tooltip: ""
+}
+
+ShrineMarble: {
+	// DisplayName: Shrine Marble
+	// Tooltip: ""
+}
+
+ShrineMarnite: {
+	// DisplayName: Shrine Marnite
+	// Tooltip: ""
+}
+
+ShrineMushroom: {
+	// DisplayName: Shrine Mushroom
+	// Tooltip: ""
+}
