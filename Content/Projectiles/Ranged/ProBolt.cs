@@ -39,12 +39,12 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Vector2 dspeed = -Projectile.velocity * 0.8f;
                 float x = Projectile.Center.X - Projectile.velocity.X / 10f;
                 float y = Projectile.Center.Y - Projectile.velocity.Y / 10f;
-                int num135 = Dust.NewDust(new Vector2(x, y), 1, 1, DustID.MagnetSphere, 0f, 0f, 0, default, 1.25f);
-                Main.dust[num135].alpha = Projectile.alpha;
-                Main.dust[num135].position.X = x;
-                Main.dust[num135].position.Y = y;
-                Main.dust[num135].velocity = dspeed;
-                Main.dust[num135].noGravity = true;
+                int d = Dust.NewDust(new Vector2(x, y), 1, 1, DustID.MagnetSphere, 0f, 0f, 0, default, 1.25f);
+                Main.dust[d].alpha = Projectile.alpha;
+                Main.dust[d].position.X = x;
+                Main.dust[d].position.Y = y;
+                Main.dust[d].velocity = dspeed;
+                Main.dust[d].noGravity = true;
             }
         }
 

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             Projectile.alpha -= 2;
-            if (Main.player[Projectile.owner].CIMod().PlanteraLegendaryTier1)
+            if (Main.player[Projectile.owner].CIMod().PlanteraTier1)
                 Projectile.extraUpdates = 2;
             switch (Projectile.localAI[0])
             {

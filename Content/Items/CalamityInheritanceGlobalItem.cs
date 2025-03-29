@@ -34,6 +34,10 @@ namespace CalamityInheritance.Content.Items
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
             if (item.type == ItemID.HandOfCreation)
                 player.CIMod().IfGodHand = true;
+            if (item.type == ItemID.WormScarf)
+                player.CIMod().IfWormScarf = true;
+            if (item.type == ModContent.ItemType<SigilofCalamitas>())
+                player.CIMod().IfCalamitasSigile = true;
                 
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {

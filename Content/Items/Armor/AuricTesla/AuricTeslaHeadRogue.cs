@@ -78,6 +78,10 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer.rogueStealthMax += 1.3f;
             modPlayer.wearingRogueArmor = true;
+            //继承至弑神套的视潜伏值上限增加潜伏值的效果
+            float getMaxStealth = modPlayer.rogueStealthMax;
+            modPlayer.rogueStealthMax += getMaxStealth / 6;
+            modPlayer.wearingRogueArmor = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;

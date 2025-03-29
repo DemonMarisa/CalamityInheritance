@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.height = 70;
             Item.useTime = 15;
             Item.useAnimation = 30;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3.5f;
             Item.UseSound = SoundID.Item20;

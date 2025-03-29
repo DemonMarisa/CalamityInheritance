@@ -54,14 +54,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             getPosX *=getDist;
             getPosY *=getDist;
             int projCounts = 2;
-            if(Main.rand.NextBool(2))
-            projCounts += 2;
-            if(Main.rand.NextBool(4))
-            projCounts += 2;
-            if(Main.rand.NextBool(8))
-            projCounts += 2;
-            if(Main.rand.NextBool(16))
-            projCounts += 2;
+            for (int i = 2; i < 17; i *= 2)
+                //1/2, 1/4, 1/8, 1/16
+                projCounts += Main.rand.NextBool(i) ? 2 : 0;
+
             for(int i = 0; i < projCounts; i++)
             {
                 float projSpwanX = getPosX;

@@ -48,23 +48,24 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             damage *= (BaseDamage + LegendaryDamageBuff()) / BaseDamage;
-            if (player.CIMod().PlanteraLegendaryTier1)
+            if (player.CIMod().PlanteraTier1)
                 //叶流变成1攻速的时候面板会被下调90%
                 damage *= 0.90f;
         }
         public override bool CanUseItem(Player player)
         {
+            var p = player.CIMod();
             if (player.altFunctionUse == 2)
             {
                 Item.useTime = 25;
                 Item.useAnimation = 25;
                 Item.UseSound = SoundID.Item77;
-                Item.ArmorPenetration = player.CIMod().PlanteraLegendaryTier1 ? 50 : 0;
+                Item.ArmorPenetration = p.PlanteraTier1 ? 50 : 0;
             }
             else
             {
-                Item.useTime = player.CIMod().PlanteraLegendaryTier1 ? 1 : 2;
-                Item.useAnimation = player.CIMod().PlanteraLegendaryTier1 ? 1 : 2;
+                Item.useTime = p.PlanteraTier1 ? 1 : 2;
+                Item.useAnimation = p.PlanteraTier1 ? 1 : 2;
                 Item.UseSound = SoundID.Item5;
             }
             return base.CanUseItem(player);
@@ -73,8 +74,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (player.altFunctionUse == 2)
             {
-                    //升级2启用时发射两份树叶
-                if (player.CIMod().PlanteraLegendaryTier2)
+                    //升级2启用时发射两份炸弹
+                if (player.CIMod().PlanteraTier2)
                 {
                     int pCounts = 2;
                     const float offset = 0.48f; 
@@ -83,22 +84,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     summonP *= 36f;
                     for (int i = 0; i < pCounts; i++)
                     {
-                        float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                        float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
                         float piArrowOffset = i - (pCounts - 1) / 2;
+                        if (piArrowOffset == 1/2) piArrowOffset += 1/2;
                         Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
-                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
+                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 5, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                     }
                 }
                 else
                 {
-                    float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                    float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
                     Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                 }
             }
             else
             {
-                //升级2启用时发射两份炸弹
-                if (player.CIMod().PlanteraLegendaryTier2)
+                //升级2启用时发射两份树叶
+                if (player.CIMod().PlanteraTier2)
                 {
                     int pCounts = 2;
                     const float offset = 0.48f; 
@@ -107,15 +109,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     summonP *= 36f;
                     for (int i = 0; i < pCounts; i++)
                     {
-                        float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                        float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
                         float piArrowOffset = i - (pCounts - 1) / 2;
+                        if (piArrowOffset == 1/2) piArrowOffset += 1/2;
                         Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
                         Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                     }
                 }
                 else 
                 {
-                    float homeAi = player.CIMod().PlanteraLegendaryTier3 && Main.rand.NextBool(2) ? 1f : 0f;
+                    float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
                     Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI ,0f, 0f, homeAi);
                 }
             }

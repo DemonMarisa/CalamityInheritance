@@ -11,9 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PBGLegendaryBolt: ModProjectile, ILocalizedModType
     {
-        
         public int HitCounter = 0;
-        public bool MoreHits = false;
         public bool GrantsHoming = false;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/PBGLegendary";
@@ -33,11 +31,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void AI()
         {
-            if ((Main.player[Projectile.owner].CIMod().PBGLegendaryTier3 || CIConfig.Instance.LegendaryBuff == 3) && !MoreHits)
-            {
-                Projectile.penetrate = 10;
-                MoreHits = true;
-            }
             //维持转角的必要逻辑.
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity. Y, Projectile.velocity.X) + MathHelper.PiOver2;
             NotStealthAI();

@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public void AITier1(Player plr)
         {
             //完成第2样式任务, 增加判定数量
-            if ((plr.CIMod().PBGLegendaryTier2 || CIConfig.Instance.LegendaryBuff >= 1 )&& !MoreHits)
+            if (plr.CIMod().PBGTier2 && !MoreHits)
             {
                 Projectile.penetrate = 18;
                 MoreHits = true;
@@ -62,7 +62,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.Opacity = 0f;
             Projectile.localAI[1] += 1f;
             //不断检测与玩家的距离，如果本身超出追踪距离(2000f), 则强制其发起追踪
-            //todo:将其第一次发起追踪从固定计数器改为根据玩家距离。我也不知道为啥这里追踪失效了
             float getXDist = plr.Center.X - Projectile.Center.X;
             float getYDist = plr.Center.Y - Projectile.Center.Y;
             float realDist = CIFunction.TryGetVectorMud(getXDist, getYDist);

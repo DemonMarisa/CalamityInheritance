@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
-            modPlayer.godSlayerDamage = true;
+            modPlayer2.GodSlayerMelee= true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 modPlayer2.GodSlayerReborn = true;

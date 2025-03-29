@@ -33,6 +33,10 @@ using CalamityInheritance.System.Configs;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.Content.Items;
+using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.Ravager;
+using CalamityMod.NPCs.DevourerofGods;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -97,6 +101,9 @@ namespace CalamityInheritance.CIPlayer
             //Qol面板相关
             Panels();
 
+            //这个用于传奇物品的升级
+            LegendaryItemUpgrade();
+
             //直接向玩家生成物品
             CISpawnItem();
 
@@ -110,6 +117,46 @@ namespace CalamityInheritance.CIPlayer
                 ShieldDurabilityMax = Main.zenithWorld? Player.statLifeMax2 : 15;
             }
         }
+
+        private void LegendaryItemUpgrade()
+        {
+            //海爵剑T3: 佩戴蠕虫围巾召唤老猪
+            if (IfWormScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), Player, 3200f) && !DukeTier3 && Player.ActiveItem().type == ModContent.ItemType<DukeLegendary>())
+            {
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustWater, false, 14f);
+                DukeTier3 = true;
+            }
+            //SHPCT3：使用彗星碎片与永恒核心后，召唤魂花
+            if (Player.Calamity().cShard && Player.Calamity().eCore && CIFunction.IsThereNpcNearby(ModContent.NPCType<Polterghast>(), Player, 3200f) && !DestroyerTier3 && Player.ActiveItem().type == ModContent.ItemType<DestroyerLegendary>())
+            {
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustCloud, false, 14f);
+                DestroyerTier3 = true;
+            }
+            //维苏威阿斯T1: 佩戴灾厄符章在地狱召唤一只毁灭魔像
+            if (IfCalamitasSigile && CIFunction.IsThereNpcNearby(ModContent.NPCType<RavagerHead>(), Player, 3200f) && Main.LocalPlayer.ZoneUnderworldHeight && !BetsyTier1 && Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>())
+            {
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustBlood, false, 14f);
+                BetsyTier1 = true;
+            }
+            //孔雀翎T3：佩戴神圣护符召唤一次神吞
+            if (deificAmuletEffect && CIFunction.IsThereNpcNearby(ModContent.NPCType<DevourerofGodsHead>(), Player, 3200f) && !PBGTier3 && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
+            {
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustTerraBlade, false, 14f);
+                PBGTier3 = true;
+            }
+            //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
+            if (ElemQuiver && CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 3200f) && !PlanteraTier3 && Player.ActiveItem().type == ModContent.ItemType<PlanteraLegendary>())
+            {
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
+                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustTerraBlade, false, 14f);
+                PlanteraTier3 = true;
+            }
+        }
+
         public void Buffs()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -298,6 +345,23 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+            #region 神龛物品
+            //脚斗士
+            if (SMarble)
+            {
+
+            }
+            //蘑菇k
+            if (SMushroom)
+            {
+                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
+            }
+            //气功念珠
+            if (SForest)
+            {
+                
+            }
+            #endregion
             if (GodlySons)
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
@@ -546,6 +610,13 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             var usPlayer = Player.CIMod();
+            if (GodSlayerRangedSet) 
+            {
+                float getCrits = Player.GetWeaponCrit(Player.ActiveItem());
+                
+                if (getCrits > 90)
+                    Player.GetCritChance<RangedDamageClass>() += 20;
+            }
             
             if (AncientTarragonSet)
             {
@@ -615,14 +686,14 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetDamage<RangedDamageClass>() += (1f - Player.stealth) * 0.4f;
                 Player.GetCritChance<RangedDamageClass>() += (int)((1f - Player.stealth) * 5f);
             }
-            if (usPlayer.SilvaMagicSetLegacy && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.SilvaMagicSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
             {
                 Player.GetDamage<MagicDamageClass>() += 0.60f;
             }
 
-            if (usPlayer.SilvaMeleeSetLegacy && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.SilvaMeleeSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
             {
-                calPlayer.contactDamageReduction += 0.2f;
+                calPlayer.contactDamageReduction += 0.4f;
             }
 
             if (SilvaMeleeSetLegacy)
@@ -637,18 +708,18 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.SilvaRangedSetLegacy && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.SilvaRangedSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
             {
                 Player.GetDamage<RangedDamageClass>() += 0.40f;
             }
 
-            if (usPlayer.SilvaSummonSetLegacy && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.SilvaSummonSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
             {
-                Player.GetCritChance<SummonDamageClass>() += 10;
+                Player.GetDamage<SummonDamageClass>() *=1.1f;
                 Player.maxMinions += 2;
             }
 
-            if (usPlayer.SilvaRougeSetLegacy && Player.HasCooldown(SilvaRevive.ID))
+            if (usPlayer.SilvaRougeSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
             {
                 Player.GetDamage<RogueDamageClass>() += 0.40f;
             }
@@ -658,7 +729,6 @@ namespace CalamityInheritance.CIPlayer
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
             }
-
             // Silva invincibility effects
             if (auricsilvaCountdown > 0 && AuricGetSilvaEffect)
             {
@@ -862,22 +932,13 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。但每次抬手使用时都会不小心被烫一下手(为自己提供1秒着火了!的debuff)
-            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && usPlayer.RavagerLegendaryTier3)
+            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && usPlayer.BetsyTier3)
             {
                 Player.lifeRegen += 4;
                 Player.GetDamage<MagicDamageClass>() += 0.1f;
                 Player.AddBuff(BuffID.OnFire, 60);
             }
 
-            //叶流T3全部做完
-            if (NPC.AnyNPCs(ModContent.NPCType<Yharon>()) && !usPlayer.PlanteraLegendaryTier3)
-            {
-                usPlayer.PlanteraLegendaryTier3 = true;
-                CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
-                //叮一下
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-            }
-            
             if(IfCloneHtting) //大锤子如果正在攻击
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
@@ -941,13 +1002,32 @@ namespace CalamityInheritance.CIPlayer
             {
                 player.GetDamage<RogueDamageClass>() *= 2;
             }
-
-            //假定玩家与灾厄之眼再临战斗
         }
         private void StandingStill()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
+
+            //气功念珠
+            if (SForest)
+            {
+                if (SForestBuff)
+                {
+                    Player.GetDamage<GenericDamageClass>() += 0.5f;
+                    if (Player.itemAnimation > 0)
+                        SForestBuffTimer = 0;
+                }
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
+                {
+                    if (SForestBuffTimer < 120)
+                        SForestBuffTimer++;
+                    else
+                        Player.AddBuff(ModContent.BuffType<ShrineForestBuff>(), 6);
+                }
+                else SForestBuffTimer -= 1;
+            }
+            else SForestBuffTimer = 0;
+
             if(DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
             {
                 if(Player.StandingStill(0.1f) && !Player.mount.Active)
@@ -1544,7 +1624,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (usPlayer.LoreDevourer || PanelsLoreDevourer)
             {
-                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
+                Player.GetDamage<TrueMeleeDamageClass>() += 0.5f;
             }
             if (usPlayer.LoreJungleDragon || PanelsLoreJungleDragon)
             {
@@ -1653,34 +1733,30 @@ namespace CalamityInheritance.CIPlayer
                 Player.noKnockback = true;
 
             }
-            //玩家附近有丛林龙且使用了远古龙魂，则准许无限飞
-            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 7200f) && YharonFlightBooster)
-            {
-                //准许无限飞行、防击退
-                calPlayer.infiniteFlight = true;
-            }
             if (CIConfig.Instance.LegendaryBuff > 0)
             {
-                PBGLegendaryTier1 = true;
-                DukeLegendaryTier1 = true;
-                RavagerLegendaryTier1 = true;
-                PlanteraLegendaryTier1 = true;
+                PBGTier1 = true;
+                DukeTier1 = true;
+                BetsyTier1 = true;
+                DestroyerTier1 = true;
+                PlanteraTier1 = true;
             }
             if (CIConfig.Instance.LegendaryBuff > 1)
             {
-                PBGLegendaryTier2 = true;
-                DukeLegendaryTier2 = true;
-                RavagerLegendaryTier2 = true;
-                PlanteraLegendaryTier2 = true;
+                PBGTier2 = true;
+                DukeTier2 = true;
+                BetsyTier2 = true;
+                DestroyerTier2 = true;
+                PlanteraTier2 = true;
             }
             if (CIConfig.Instance.LegendaryBuff > 2)
             {
-                PBGLegendaryTier3 = true;
-                DukeLegendaryTier3 = true;
-                RavagerLegendaryTier3 = true;
-                PlanteraLegendaryTier3 = true;
+                PBGTier3 = true;
+                DukeTier3 = true;
+                BetsyTier3 = true;
+                DestroyerTier3 = true;
+                PlanteraTier3 = true;
             }
-
         }
     }
 }

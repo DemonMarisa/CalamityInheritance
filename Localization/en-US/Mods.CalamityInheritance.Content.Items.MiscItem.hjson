@@ -50,3 +50,28 @@ PBGLegendaryUpgrade3: {
 	DisplayName: P B G Legendary Upgrade3
 	Tooltip: ""
 }
+
+PBGLegendaryUpgrade: {
+	Tooltip: ""
+	DisplayName: P B G Legendary Upgrade
+}
+
+RavagerLegendaryUpgrade: {
+	Tooltip: ""
+	DisplayName: Ravager Legendary Upgrade
+}
+
+DukeLegendaryUpgrade: {
+	Tooltip: ""
+	DisplayName: Duke Legendary Upgrade
+}
+
+PlanteraLegendaryUpgrade: {
+	Tooltip: ""
+	DisplayName: Plantera Legendary Upgrade
+}
+
+DestroyerLegendaryUpgrade: {
+	Tooltip: ""
+	DisplayName: Destroyer Legendary Upgrade
+}

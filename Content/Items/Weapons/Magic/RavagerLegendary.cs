@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             {
                 int meteorAmt = Main.rand.Next(4, 6);
                 //T2样式加强：左键与右键多2颗陨石
-                if (usPlayer.RavagerLegendaryTier2 || CIConfig.Instance.LegendaryBuff >= 2)
+                if (usPlayer.BetsyTier2)
                     meteorAmt += 2;
                 for (int i = 0; i < meteorAmt; ++i)
                 {
@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     mouseDistance = meteorSpeed / mouseDistance;
                 }
                 int pAmt = 4;
-                if (usPlayer.RavagerLegendaryTier2 || CIConfig.Instance.LegendaryBuff >= 2)
+                if (usPlayer.BetsyTier2)
                     pAmt += 2;
                 for (int i = 0; i < pAmt; i++)
                 {

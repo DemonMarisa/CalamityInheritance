@@ -30,6 +30,8 @@ namespace CalamityInheritance.CIPlayer
 
         //丛林龙仆从
         public bool OwnSonYharon = false;
+        //气功念珠
+        public bool SForestBuff = false;
         #endregion
        
         public void ResetBuff()
@@ -52,6 +54,7 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase2 = false;
             PolarisPhase3 = false;
             OwnSonYharon = false;
+            SForestBuff = false;
             #endregion
         }
         public void UpdateDeadBuff()
@@ -72,6 +75,7 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase2 = false;
             PolarisPhase3 = false;
             PolarisBoostCounter = 0;
+            SForestBuff = false;
         }
     }
 }

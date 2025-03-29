@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            if (player.CIMod().PlanteraLegendaryTier1)
+            if (player.CIMod().PlanteraTier1)
                 Projectile.extraUpdates = 2;
             Projectile.alpha -= 2;
             //还有你能告诉我这两个ai是干吗用的吗？

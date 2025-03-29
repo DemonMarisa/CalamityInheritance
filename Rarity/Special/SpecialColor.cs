@@ -57,5 +57,10 @@ namespace CalamityInheritance.Rarity.Special
         //近似青蓝
         public override Color RarityColor => new(152,245,255);//#98F5FF
     }
+    public class ArcueidColor: ModRarity
+    {
+        //公主
+        public override Color RarityColor => new(152, 245, 249);
+    }
     
 }

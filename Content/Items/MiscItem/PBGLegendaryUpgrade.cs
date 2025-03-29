@@ -8,10 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.MiscItem
 {
-    public class PBGLegendaryUpgrade2: CIMisc, ILocalizedModType
+    public class PBGLegendaryUpgrade: CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.MiscItem";
-        public override string Texture => "CalamityInheritance/Content/Items/MiscItem/PBGLegendaryUpgrade1";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -29,9 +28,12 @@ namespace CalamityInheritance.Content.Items.MiscItem
         }
         public override bool CanUseItem(Player player)
         {
-            var p = player.CIMod();
-            if (p.PBGLegendaryTier2)
-                return false;
+            if (player.CIMod().PBGTier1)
+            {
+                Main.NewText("你已经使用过这个物品了!", 155, 102, 4);
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar, player.Center);
+                return false;   
+            }
             return true;
         }
         public override bool? UseItem(Player player)
@@ -39,9 +41,14 @@ namespace CalamityInheritance.Content.Items.MiscItem
             if (player.itemAnimation > 0 && player.itemTime ==0)
             {
                 player.itemTime = Item.useTime;
-                player.CIMod().PBGLegendaryTier2 = true;
+                player.CIMod().PBGTier1 = true;
+                SoundEngine.PlaySound(CISoundID.SoundFallenStar, player.Center);
             }
             return true;
+        }
+        public override void OnConsumeItem(Player player)
+        {
+            player.QuickSpawnItem(Item.GetSource_Loot(), ModContent.ItemType<PBGLegendary>(), 1);
         }
     }
 }

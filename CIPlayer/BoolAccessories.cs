@@ -1,3 +1,5 @@
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -6,6 +8,8 @@ namespace CalamityInheritance.CIPlayer
     {
         #region 饰品相关
         public bool IfGodHand = false;
+        public bool IfWormScarf = false;
+        public bool IfCalamitasSigile = false;
         public bool EHeartStats = false;
         public bool EHeartStatsBoost = false;
         public bool ElemQuiver = false;
@@ -47,6 +51,12 @@ namespace CalamityInheritance.CIPlayer
         //两个肥鸡
         public bool GodlySons = false;
         public bool EmpressBooster = false;
+        public bool SForest = false;
+        public int SForestBuffTimer = 0;
+        public bool SMarble = false;
+        public bool SMarbleSword = false;
+        public bool SMarnite = false;
+        public bool SMushroom = false;
         #endregion
         /// <summary>
         /// 这个是在MaxLife后边的
@@ -59,7 +69,13 @@ namespace CalamityInheritance.CIPlayer
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
-
+            IfWormScarf = false;
+            IfCalamitasSigile = false;
+            SMushroom = false;
+            SMarble = false;
+            SMarbleSword = false;
+            SMarnite = false;
+            SForest = false;
             if (!CIsponge)
                 CISpongeShieldDurability = 0;
 
@@ -116,10 +132,15 @@ namespace CalamityInheritance.CIPlayer
             
             BuffStatBloodPact = false;
             SolarShieldEndurence = false;
+            SMarbleSword = false;
             ElysianAegis = false;
             ElysianGuard = false;
             statisTimerOld = 0;//虚空饰带的计数器
-
+            SMushroom = false;
+            SMarble = false;
+            SMarnite = false;
+            SForest = false;
+            SForestBuffTimer = 0;
             TheAbsorberOld = false;//阴阳石受击回血
             FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血

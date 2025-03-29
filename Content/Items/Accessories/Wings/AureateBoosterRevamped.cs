@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Armor.ReaverLegacy;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -42,6 +43,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 player.pickSpeed -= 0.5f;
                 player.fishingSkill += 50;
                 player.accLavaFishing = true;
+                player.CIMod().FuckYouGolem = true;
             }
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)
             {

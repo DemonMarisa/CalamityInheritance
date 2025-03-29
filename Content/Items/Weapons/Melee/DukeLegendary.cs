@@ -47,12 +47,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (player.altFunctionUse == 2)
             {
                 Item.noMelee = true;
-                if (player.CIMod().DukeLegendaryTier2)
+                if (player.CIMod().DukeTier2)
                     Item.useTime = Item.useAnimation = 10;
             }
             else
             {
-                if (player.CIMod().DukeLegendaryTier2)
+                if (player.CIMod().DukeTier2)
                     Item.useTime = Item.useAnimation = 10;
                 Item.noMelee = false;
             }
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (player.altFunctionUse == 2)
             {
-                damage = player.CIMod().DukeLegendaryTier2 ? (int)(damage * 0.9) : (int)(damage * 0.6);
+                damage = player.CIMod().DukeTier2? (int)(damage * 0.9) : (int)(damage * 0.6);
                 type = ModContent.ProjectileType<DukeLegendaryRazor>();
             }
 
@@ -85,16 +85,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = player.GetSource_ItemUse(Item);
-            
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BrinySpout>()] < 6)
-                Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             var source = player.GetSource_ItemUse(Item);
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BrinySpout>()] < 6)
-                Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
         }
 
         public override void UseAnimation(Player player)
@@ -114,10 +111,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
             damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
             damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedDoG ? 0.6f : 0f;
-            damageBuff += DownedBossSystem.downedYharon ? 0.8f : 0f;
+            damageBuff += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
+            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.8f : 0f;
+            damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
+            damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
             damageBuff += (DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas)? 1f : 0f;
             return damageBuff;
         }

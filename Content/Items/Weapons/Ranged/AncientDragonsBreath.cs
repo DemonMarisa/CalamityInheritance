@@ -22,7 +22,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.width = 58;
             Item.height = 36;
             Item.DamageType = DamageClass.Ranged;
-            Item.damage = 250;
+            //面板250->200, 不然巨龙之息拼尽全力不敌远古巨龙之息，泪目了
+            Item.damage = 200;
             Item.useTime = 13;
             Item.useAnimation = 13;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -32,13 +33,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.knockBack = 9.5f;
-            Item.shoot = ProjectileID.Bullet;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(3f)) * Main.rand.NextFloat(0.9f, 1.1f);
                 Projectile.NewProjectile(source, position, spread, ModContent.ProjectileType<DragonsBreathRound>(), damage, knockback, Main.myPlayer);

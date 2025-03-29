@@ -6,6 +6,8 @@ using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using Terraria.GameContent;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 {
@@ -40,8 +42,12 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
         public override void UpdateArmorSet(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
+            var calPlayer = player.Calamity();
             usPlayer.AncientBloodflareSet = true;
             usPlayer.AncientBloodflareStat = true;
+            calPlayer.rogueStealthMax += 1.20f;
+            calPlayer.wearingRogueArmor = true;
+            calPlayer.WearingPostMLSummonerSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.crimsonRegen = true;
             player.aggro += 900;

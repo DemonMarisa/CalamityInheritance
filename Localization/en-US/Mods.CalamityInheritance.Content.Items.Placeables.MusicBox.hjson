@@ -60,3 +60,8 @@ BlessingOftheMoon1: {
 	DisplayName: Blessing of the Moon1
 	Tooltip: ""
 }
+
+Arcueid: {
+	Tooltip: ""
+	DisplayName: Arcueid
+}

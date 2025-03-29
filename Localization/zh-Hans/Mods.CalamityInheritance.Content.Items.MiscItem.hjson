@@ -85,3 +85,28 @@ PBGLegendaryUpgrade3: {
 		"用于模拟以前传奇武器的样式增强"
 		'''
 }
+
+PBGLegendaryUpgrade: {
+	// Tooltip: ""
+	// DisplayName: P B G Legendary Upgrade
+}
+
+RavagerLegendaryUpgrade: {
+	// Tooltip: ""
+	// DisplayName: Ravager Legendary Upgrade
+}
+
+DukeLegendaryUpgrade: {
+	// Tooltip: ""
+	// DisplayName: Duke Legendary Upgrade
+}
+
+PlanteraLegendaryUpgrade: {
+	// Tooltip: ""
+	// DisplayName: Plantera Legendary Upgrade
+}
+
+DestroyerLegendaryUpgrade: {
+	// Tooltip: ""
+	// DisplayName: Destroyer Legendary Upgrade
+}

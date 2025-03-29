@@ -71,3 +71,12 @@ BlessingOftheMoon1: {
 	// DisplayName: Blessing of the Moon1
 	// Tooltip: ""
 }
+
+Arcueid: {
+	Tooltip:
+		'''
+		播放 [c/98F5F9:-月姬: re-](06:55) 由 芳賀敬太 制作
+		[c/98F5F9:月下美人的起点，盘踞于星之内海的千年城，月华怒放的庭院，以及抬头仰望的，最后的公主]
+		'''
+	DisplayName: 音乐盒(月姫：re)
+}

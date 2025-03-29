@@ -17,8 +17,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
-using CalamityInheritance.Content.Items.MiscItem;
-using System.Security.Policy;
+using CalamityInheritance.Content.Projectiles.Typeless;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -39,41 +38,56 @@ namespace CalamityInheritance.CIPlayer
         public int FreeEssence = 1;
         //这个用于传奇物品的总伤害计数
         public int DamagePool = 0;
+        //这个用于魔力消耗计数，不过大概只能给SHPC用
+        public int ManaPool = 0; 
         public bool SolarShieldEndurence = false; //日耀盾免伤计算
         #endregion
         #region 武器效果
         public float AnimusDamage = 1f;
         public bool BuffPolarisBoost = false;
-        
         public bool photovisceratorCrystal = false;
-        //孔雀翎的升级
-        //1: 潜伏飞刀数+1, 飞刀索敌现在更为迅捷
-        public bool PBGLegendaryTier1 = false;
-        //2: 潜伏造成18次判定(前15)
-        public bool PBGLegendaryTier2 = false;
-        //3: 极低的概率使自己不会受到debuff烧伤的影响
-        public bool PBGLegendaryTier3 = false;
-        //维苏威阿斯的升级
-        //升级1：射弹穿墙，扩展hitbox
-        public bool RavagerLegendaryTier1 = false;
-        //升级2：发射的射弹数量+3
-        public bool RavagerLegendaryTier2 = false;
-        //升级3：为自己提供足够的回血
-        public bool RavagerLegendaryTier3 = false;
-        //海爵剑升级:
-        //T1:  移除左键的数量上限
-        public bool DukeLegendaryTier1 = false;
-        //T2:  右键:增强攻速, 增强伤害, 增强飞行速度
-        public bool DukeLegendaryTier2 = false;
-        //T3:  持续不断地对敌人造成伤害会提高自己的防御属性(上限30层)
-        public bool DukeLegendaryTier3 = false;
-        //叶流升级:
-        //T1: 增强的攻击速度与射弹飞行速度
-        public bool PlanteraLegendaryTier1 = false;
-        //T2: 你会同时发射双倍数量的射弹
-        public bool PlanteraLegendaryTier2 = false;
-        //T3: 射出的射弹现在有50%发起一个追踪
-        public bool PlanteraLegendaryTier3 = false;
+        //我不太确认bool数组new的时候是否会自动为false，所以这样写了
+        /*孔雀翎升级存储
+        *T1: 潜伏飞刀数+1, 飞刀索敌现在更为迅捷
+        *T2: 潜伏造成更多次的判定
+        *T3: 极低的概率使自己不会受到debuff烧伤的影响
+        */
+        public bool PBGTier1 = false;
+        public bool PBGTier2 = false;
+        public bool PBGTier3 = false;
+        /*海爵剑升级存储
+        *T1: 移除左键的数量上限
+        *T2: 右键:增强攻速, 增强伤害, 增强飞行速度
+        *T3: 持续不断地对敌人造成伤害会提高自己的防御属性(上限30层)
+        */
+        public bool DukeTier1 = false;
+        public bool DukeTier2 = false;
+        public bool DukeTier3 = false;
+        /*叶流升级存储
+        *T1: 增强的攻击速度与射弹飞行速度
+        *T2: 你会同时发射双倍数量的射弹
+        *T3: 射出的射弹现在有50%发起一个追踪
+        */
+        public bool PlanteraTier1 = false;
+        public bool PlanteraTier2 = false;
+        public bool PlanteraTier3 = false;
+        /*维苏威阿斯升级存储
+        *T1: 射弹穿墙，扩展hitbox
+        *T2: 发射的射弹数量+3
+        *T3: 为自己提供足够的回血
+        */
+        public bool BetsyTier1 = false;
+        public bool BetsyTier2 = false;
+        public bool BetsyTier3 = false;
+        /*SHPC升级存储
+        *T1: 大幅度扩展左键爆炸的范围
+        *T2: 射弹数量+2
+        *T3: 右键不再消耗任何魔力。
+        */
+        public bool DestroyerTier1 = false;
+        public bool DestroyerTier2 = false;
+        public bool DestroyerTier3 = false;
+        
         public bool PBGLegendaryDyeable = false;
         public Color PBGBeamColor;
         #endregion
@@ -228,10 +242,28 @@ namespace CalamityInheritance.CIPlayer
             Player.Calamity().GemTechState.PlayerOnHitEffects(hurtInfo.Damage);
 
             bool hardMode = Main.hardMode;
+            
+            if (GodSlayerMelee && hurtInfo.Damage > 80)
+            {
+                var source = Player.GetSource_Misc("24");
+                SoundEngine.PlaySound(SoundID.Item73, Player.Center);
+                float spread = 45f * 0.0174f;
+                double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
+                double deltaAngle = spread / 8f;
+                double offsetAngle;
+                int shrapnelDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(1500));
+                if (Player.whoAmI == Main.myPlayer)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 0f, 0f);
+                    }
+                }
+            }
             if (Player.whoAmI == Main.myPlayer)
             {
-
-                
                 if (AstralBulwark)
                 {
                     var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
@@ -488,11 +520,6 @@ namespace CalamityInheritance.CIPlayer
         {
             ProjectilHitCounter = 0;
             ProjectilHitCounter2 = 0;
-            #region 孔雀翎潜伏加强
-            PBGLegendaryTier1 = false;
-            PBGLegendaryTier2 = false;
-            PBGLegendaryTier3 = false;
-            #endregion
         }
         #region Limitations
         public void ForceVariousEffects()
@@ -515,6 +542,56 @@ namespace CalamityInheritance.CIPlayer
                     Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GreenFairy, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 0.75f);
                 }
             }
+            if (item.CountsAsClass<TrueMeleeDamageClass>() && SMushroom && Player.whoAmI == Main.myPlayer)
+            {
+                float yVelocityOffset = 0f, xVelocityOffset = 0f, yPosOffset = 0f, xPosOffset = 0f; 
+                //这里估计是处理蘑菇的偏移，但是实在是……反正，我强行用了一种方法来处理 
+                //虽然整体还是非常史，但是看起来至少清楚一点吧
+                for (double offset = 0.1; offset < 1.0; offset += 0.2)
+                {
+                    if (Player.itemAnimation == Player.itemAnimationMax * offset)
+                    {
+                        switch(offset)
+                        {
+                            case 0.1:
+                                xVelocityOffset = 7f;
+                                yPosOffset += 6f;
+                                break;
+                            case 0.3:
+                                yVelocityOffset = -2f;
+                                xVelocityOffset = 6f;
+                                yPosOffset -= 20f;
+                                xPosOffset -= 4f;
+                                break;
+                            case 0.5:
+                                yVelocityOffset = -4f;
+                                xVelocityOffset = 4f;
+                                break;
+                            case 0.7:
+                                yVelocityOffset = -6f;
+                                xVelocityOffset = 2f;
+                                xPosOffset = 26f;
+                                if (Player.direction == -1)
+                                    xVelocityOffset -= 6f;
+                                break; 
+                            case 0.9:
+                                yVelocityOffset = -7f;
+                                if (Player.direction == -1)
+                                    xVelocityOffset -= 8f;
+                                break;
+                            default: 
+                                break;
+                        }
+                    }
+                    yVelocityOffset *= 1.5f;
+                    xVelocityOffset *= 1.5f;
+                    xPosOffset *= Player.direction;
+                    yPosOffset *= Player.gravDir;
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), hitbox.X + hitbox.Width / 2 + xPosOffset, hitbox.Y + hitbox.Height / 2 + yPosOffset, Player.direction * xVelocityOffset, Player.gravDir * yVelocityOffset, ProjectileID.Mushroom, (int)(item.damage * 0.25f), 0f, Player.whoAmI);
+                }
+
+            }
+
         }
 
         #endregion

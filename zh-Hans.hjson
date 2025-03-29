@@ -39,6 +39,8 @@ Mods: {
 				MapEntry: 魔影坩埚[Souls]
 				$parentVal: 魔影坩埚
 			}
+
+			// Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
 		}
 
 		Projectiles: {

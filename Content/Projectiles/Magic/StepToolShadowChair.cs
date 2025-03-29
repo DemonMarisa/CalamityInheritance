@@ -57,7 +57,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 if(Projectile.velocity.X <0f)
                 {
                     Projectile.rotation -= MathHelper.PiOver2;
-                    // FireChair();
                 }
             }
 

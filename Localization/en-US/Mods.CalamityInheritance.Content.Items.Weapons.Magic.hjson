@@ -248,3 +248,8 @@ FuckVoid: {
 	Tooltip: ""
 	DisplayName: Fuck Void
 }
+
+DestroyerLegendary: {
+	Tooltip: ""
+	DisplayName: Destroyer Legendary
+}
