@@ -1,3 +1,5 @@
+using CalamityMod.CalPlayer.Dashes;
+using CalamityMod.Projectiles.Melee;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -23,6 +25,7 @@ namespace CalamityInheritance.CIPlayer
         public int DukeDefenseCounter = 0;
         public int DukeDefenseTimer = 0;
         #endregion
+        public int SparkTimer = 0;
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
         // 通用开火冷却
         public int fireCD = 0;
@@ -49,7 +52,15 @@ namespace CalamityInheritance.CIPlayer
                 DukeDefenseCounter--;
 
             if (DartTimer > 0)
+            {
+                //拥有dart的CD之后每次CD-1时都会降低当前的伤害。
+                GodSlayerDamage = (int)(GodSlayerDamage*0.5f);
                 DartTimer--;
+            }
+            if (DartTimer == 0)
+                DartCounts = 8;
+            if (SparkTimer > 0)
+                SparkTimer --;
 
             if (fireCD > 0)
                 fireCD--;
