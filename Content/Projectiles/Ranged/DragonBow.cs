@@ -151,6 +151,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     Projectile.Kill();
                 }
             }
+            Vector2 rrp = player.RotatedRelativePoint(player.MountedCenter, true);
+            UpdateAim(rrp, player.HeldItem.shootSpeed);
 
             //display projectile
             Projectile.rotation = Projectile.velocity.ToRotation();
@@ -181,6 +183,28 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity = faceDirection;
             }
+        }
+        public const float AimResponsiveness = 1f;
+        public void UpdateAim(Vector2 source, float speed)
+        {
+            // 获取玩家当前的瞄准方向作为归一化向量
+
+            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            if (aim.HasNaNs())
+            {
+                aim = -Vector2.UnitY;
+            }
+
+            // 改变棱镜当前速度的一部分，使其指向鼠标，这会随着时间的推移提供平滑的运动。
+
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, AimResponsiveness));
+            aim *= speed;
+
+            if (aim != Projectile.velocity)
+            {
+                Projectile.netUpdate = true;
+            }
+            Projectile.velocity = aim;
         }
     }
 }

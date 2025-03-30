@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Projectile.velocity *= 0.97f;
             }
-            if (Projectile.timeLeft < 320)
+            if (Projectile.timeLeft < 500)
             {
                 float maxSpeed = 20f;
                 float acceleration = 0.02f * 12f;

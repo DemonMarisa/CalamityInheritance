@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using rail;
+using System;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -42,55 +43,73 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            int i = Main.myPlayer;
+            float num72 = Item.shootSpeed;
+            int num73 = damage;
+            float num74 = Item.knockBack;
+            num74 = player.GetWeaponKnockback(Item, num74);
             player.itemTime = Item.useTime;
-            float pSpeed = Item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float ammoVeloX= Main.mouseX + Main.screenPosition.X - vector2.X;
-            float ammoVeloY= Main.mouseY + Main.screenPosition.Y - vector2.Y;
+            Vector2 vector3 = Main.MouseWorld + vector2;
+            float num78 = (float)Main.mouseX + Main.screenPosition.X + vector2.X;
+            float num79 = (float)Main.mouseY + Main.screenPosition.Y + vector2.Y;
             if (player.gravDir == -1f)
             {
-                ammoVeloY= Main.screenPosition.Y + Main.screenHeight - Main.mouseY- vector2.Y;
+                num79 = Main.screenPosition.Y + (float)Main.screenHeight + (float)Main.mouseY + vector2.Y;
             }
-            float dist = CIFunction.TryGetVectorMud(ammoVeloX, ammoVeloY);
-            if ((float.IsNaN(ammoVeloX) && float.IsNaN(ammoVeloY)) || (ammoVeloX == 0f && ammoVeloY == 0f))
+            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+            if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
             {
-                ammoVeloX = player.direction;
-                ammoVeloY = 0f;
+                num78 = (float)player.direction;
+                num79 = 0f;
+                num80 = num72;
             }
             else
             {
-                dist = pSpeed / dist;
+                num80 = num72 / num80;
             }
-            int pCounts = 15;
-            for (int i = 3; i < 6; i++)
+
+            int num130 = 15;
+            if (Main.rand.NextBool(3))
             {
-                if (Main.rand.NextBool(i))
-                    pCounts++;
+                num130++;
             }
-            for (int j = 0; j < pCounts; j++)
+            if (Main.rand.NextBool(4))
             {
-                float newX = player.position.X + (float)player.width / 2 + Main.rand.NextFloat(201f) * - (float)player.direction + Main.mouseY + Main.screenPosition.X - player.position.X;
-                Vector2 bowRot = new(newX, player.MountedCenter.Y);
-                bowRot.X = (bowRot.X + player.Center.X) /2f + Main.rand.NextFloat(-200f,201f);
-                bowRot.Y -= 100 * j;
-                ammoVeloX = Main.mouseX + Main.screenPosition.X - bowRot.X;
-                ammoVeloY = Main.mouseY + Main.screenPosition.Y - bowRot.Y;
-                if (ammoVeloX < 0f)   
-                    ammoVeloX *= -1f;
-                if (ammoVeloX < 20f)
-                    ammoVeloX = 20f;
-                float getDist = CIFunction.TryGetVectorMud(ammoVeloX, ammoVeloY);
-                getDist = pSpeed/getDist;
-                ammoVeloX *= getDist;
-                ammoVeloY *= getDist;
-                float realProjSpeedX = ammoVeloX + Main.rand.NextFloat(-600, 601) * 0.02f;
-                float realProjSpeedY = ammoVeloY + Main.rand.NextFloat(-600, 601) * 0.02f;
-                int p = Projectile.NewProjectile(source, bowRot.X, bowRot.Y, realProjSpeedX, realProjSpeedY, type, damage, knockback, Main.myPlayer);
-                Main.projectile[p].tileCollide = false;
-                Main.projectile[p].timeLeft = 240;
-                Main.projectile[p].noDropItem = true;
+                num130++;
+            }
+            if (Main.rand.NextBool(5))
+            {
+                num130++;
+            }
+            for (int num131 = 0; num131 < num130; num131++)
+            {
+                vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y);
+                vector2.X = (vector2.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
+                vector2.Y -= (float)(100 * num131);
+                num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+                num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                if (num79 < 0f)
+                {
+                    num79 *= -1f;
+                }
+                if (num79 < 20f)
+                {
+                    num79 = 20f;
+                }
+                num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+                num80 = num72 / num80;
+                num78 *= num80;
+                num79 *= num80;
+                float speedX4 = num78 + (float)Main.rand.Next(-600, 601) * 0.02f;
+                float speedY5 = num79 + (float)Main.rand.Next(-600, 601) * 0.02f;
+                int projectile = Projectile.NewProjectile(source, vector2.X, vector2.Y, speedX4, speedY5, type, num73, num74, i, 0f, 0f);
+                Main.projectile[projectile].tileCollide = false;
+                Main.projectile[projectile].timeLeft = 240;
+                Main.projectile[projectile].noDropItem = true;
             }
             return false;
         }
