@@ -156,7 +156,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProjGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

@@ -146,7 +146,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HeavenlyGaleoldGlow").Value);
+        => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/HeavenlyGaleoldGlow").Value);
 
         public override bool CanConsumeAmmo(Item ammo, Player player)
             {

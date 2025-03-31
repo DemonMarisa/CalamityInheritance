@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -30,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.DamageType = DamageClass.Melee;
             Item.useTurn = true;
             Item.autoReuse = true;
-            Item.shootSpeed = 12f;
+            Item.shootSpeed = 9f;
 
             Item.shoot = ModContent.ProjectileType<Razorwind>();
             Item.useStyle = ItemUseStyleID.Swing;
@@ -47,22 +49,45 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (player.altFunctionUse == 2)
             {
                 Item.noMelee = true;
-                if (player.CIMod().DukeTier2)
-                    Item.useTime = Item.useAnimation = 10;
             }
             else
             {
-                if (player.CIMod().DukeTier2)
-                    Item.useTime = Item.useAnimation = 10;
                 Item.noMelee = false;
             }
 
             return base.UseItem(player);
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.DukeTier1)
+            {
+                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.DukeTier2)
+            {
+                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.DukeTier1)
+            {
+                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            float getDmg = LegendaryDamage();
+            int boostPercent = (int)(getDmg * 100);
+            string update = this.GetLocalization("LegendaryScaling").Format(
+                boostPercent.ToString()
+            );
+            tooltips.FindAndReplace("[SCALING]", update);
+        }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage.Base += 75 + 75*LegendaryDamage();
+            damage *= 1f + LegendaryDamage();
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -76,7 +101,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             else
                 type = ProjectileID.None;
         }
-
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(3))
@@ -105,6 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Item.UseSound = SoundID.Item84;
             }
         }
+        //8个Boss
         public static float LegendaryDamage()
         {
             float damageBuff = 0f;

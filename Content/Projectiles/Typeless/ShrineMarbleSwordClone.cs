@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
     public class ShrineMarbleSwordClone: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Typeless/ShrineMarbleSword";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Typeless/ShrineMarbleSword";
         public double rotation = 0;
         public override void SetStaticDefaults()
         {

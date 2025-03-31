@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SomeRandomGirls
     public class SandWaifuMark: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetStaticDefaults()
         {

@@ -22,6 +22,8 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityInheritance.System.Configs;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -90,7 +92,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }
-        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
@@ -147,7 +148,13 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             string adrenTooltip = CalamityWorld.revenge ? this.GetLocalizedValue("ShieldAdren") : "";
             tooltips.FindAndReplace("[ADREN]", adrenTooltip);
-        }
+            if (CIConfig.Instance.TheSpongeBarrier)
+            {
+                string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Accessories.TheSpongetest.Details");
+                tooltips.Add(new TooltipLine(Mod, "Details", Details));
+            }
+        } 
+        
 
         // Renders the bubble shield over the item in the world.
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

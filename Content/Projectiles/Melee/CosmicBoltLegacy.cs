@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class CosmicBoltLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()
         {

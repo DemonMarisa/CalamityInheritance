@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class PolarStarLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
+        public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
 
         private int dust1 = 86;
         private int dust2 = 91;

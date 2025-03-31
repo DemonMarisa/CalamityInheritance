@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/AuroraBlazerLegacyGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/AuroraBlazerLegacyGlow").Value);
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

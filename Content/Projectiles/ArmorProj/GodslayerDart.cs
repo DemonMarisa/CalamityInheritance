@@ -135,7 +135,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             if (!isMount)
             {
                 Vector2 origin = new Vector2(11f, 23f);
-                Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/ArmorProj/GodslayerDartGlow").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/ArmorProj/GodslayerDartGlow").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0);
             }
         }
 

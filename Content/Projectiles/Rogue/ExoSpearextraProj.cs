@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle Hitsound = new("CalamityMod/Sounds/Item/RealityRuptureStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProj";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProj";
 
         private int increment;
 
@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/ExoSpearStealthProjGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

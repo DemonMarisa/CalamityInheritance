@@ -24,10 +24,10 @@ namespace CalamityInheritance.Content.Items.Materials
 		
 		public override void AddRecipes()
 		{
-			CreateRecipe(9).
-				AddIngredient(ItemID.HallowedBar, 3).
-				AddIngredient<LifeAlloy>(3).
-				AddIngredient(ItemID.LunarBar, 3).
+			CreateRecipe(3).
+				AddIngredient(ItemID.HallowedBar, 1).
+				AddIngredient(ItemID.Ectoplasm, 1).
+				AddIngredient<MeldBlob>(6).
 				AddTile(TileID.LunarCraftingStation).
 				Register();
 		}

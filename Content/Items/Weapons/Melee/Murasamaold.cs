@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaSheathed").Value;
+                texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             }
 
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaSheathed").Value;
+                texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, Item.position - Main.screenPosition, null, lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
             return false;
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (!IDUnlocked(Main.LocalPlayer))
                 return;
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaGlowold").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaGlowold").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, frame == 0 ? 36 : frame == 8 ? 24 : 6, 13, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 

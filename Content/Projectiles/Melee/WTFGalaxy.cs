@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class WTFGalaxy: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Melee/MeleeTypeHammerGalaxySmasherLegacyProj";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/MeleeTypeHammerGalaxySmasherLegacyProj";
 
         private const float RotationIncrement = 0.22f;
         private const int Lifetime = 240;

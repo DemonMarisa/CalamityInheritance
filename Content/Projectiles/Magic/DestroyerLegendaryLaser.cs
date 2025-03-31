@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class DestroyerLegendaryLaser: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
+        public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
 
         public override void SetDefaults()
         {

@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.Magic;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PhantomLanceProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/PhantomLance";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/PhantomLance";
 
         public override void SetStaticDefaults()
         {

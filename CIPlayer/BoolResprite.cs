@@ -309,8 +309,8 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (!CIRespriteConfig.Instance.DrataliornusResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataliornusLegacyAlter;
-                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataliornusLegacyAlter;
+                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataBowLegacyAlt;
+                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataBowLegacyAlt;
                 }
                 if (CIRespriteConfig.Instance.DrataliornusResprite)
                 {

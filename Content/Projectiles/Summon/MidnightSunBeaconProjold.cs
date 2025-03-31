@@ -3,13 +3,14 @@ using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
     public class MidnightSunBeaconProjold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Summon/MidnightSunBeaconold";
+        public override string Texture => $"{Generic.WeaponRoute}/Summon/MidnightSunBeaconold";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;

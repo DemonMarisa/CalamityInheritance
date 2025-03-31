@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public int Time = 0;
         public ref float Timer => ref Projectile.ai[0];
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");

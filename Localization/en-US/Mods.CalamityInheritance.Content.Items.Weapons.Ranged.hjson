@@ -394,4 +394,8 @@ AntlionBow: {
 PlanteraLegendary: {
 	Tooltip: ""
 	DisplayName: Plantera Legendary
+	TierOne: "11"
+	TierTwo: "222"
+	TierThree: "333"
+	LegendaryScaling: Buff
 }

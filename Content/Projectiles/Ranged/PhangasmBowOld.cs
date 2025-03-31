@@ -5,13 +5,14 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class PhangasmBowOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Ranged/PhangasmOS";
+        public override string Texture => $"{Generic.WeaponRoute}/Ranged/PhangasmOS";
 
         public override void SetDefaults()
         {

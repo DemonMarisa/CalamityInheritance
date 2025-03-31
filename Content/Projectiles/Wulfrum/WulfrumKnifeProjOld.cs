@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
     public class WulfrumKnifeProjOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Wulfrum/WulfrumKnifeOld";
+        public override string Texture => $"{Generic.WeaponRoute}/Wulfrum/WulfrumKnifeOld";
 
         public override void SetDefaults()
         {

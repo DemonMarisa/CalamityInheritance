@@ -8,6 +8,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -48,7 +51,33 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             if (player.altFunctionUse == 2)
                 mult *= 1.5f;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.BetsyTier1)
+            {
+                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.RavagerLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.BetsyTier2)
+            {
+                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.RavagerLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.BetsyTier1)
+            {
+                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.RavagerLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            // int boostPercent = (int)(LegendaryDamage() * 100);
+            // string update = this.GetLocalization("LegendaryScaling").Format(
+            //     boostPercent.ToString()
+            // );
+            // tooltips.FindAndReplace("[SCALING]", update);
+        }
         public override float UseSpeedMultiplier(Player player)
         {
             if (player.altFunctionUse != 2)
@@ -97,7 +126,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 }
                 int pAmt = 4;
                 if (usPlayer.BetsyTier2)
-                    pAmt += 2;
+                    pAmt = 6;
                 for (int i = 0; i < pAmt; i++)
                 {
                     realPlayerPos = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);

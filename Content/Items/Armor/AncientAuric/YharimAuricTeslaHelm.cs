@@ -12,6 +12,9 @@ using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -127,7 +130,24 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			modPlayer.SilvaRougeSetLegacy = true;
 			#endregion
     	}
-		
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            var mplr = player.CIMod();
+            if(mplr.AncientAuricSet)
+            {
+                if (Main.keyState.IsKeyDown(Keys.LeftAlt))
+                {
+                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.YharimAuricTeslaHelm.Details");
+                    tooltips.Add(new TooltipLine(Mod, "Details", Details));
+                }
+				else if (Main.keyState.IsKeyDown(Keys.LeftControl))
+				{
+                    string ExtraDetails = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.YharimAuricTeslaHelm.ExtraDetails");
+                    tooltips.Add(new TooltipLine(Mod, "Details", ExtraDetails));
+				}
+            }
+        }
 		public override void UpdateEquip(Player player)
 		{
 			player.maxMinions += 10;

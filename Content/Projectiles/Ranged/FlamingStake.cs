@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class FlamingStake : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Ranged/ExplodingStake";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Ranged/ExplodingStake";
 
         public override void SetDefaults()
         {

@@ -39,9 +39,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-
-            // Asgardian Aegis ram dash
             CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = AsgardianAegisDashold.ID;
             usPlayer.ElysianAegis = true;

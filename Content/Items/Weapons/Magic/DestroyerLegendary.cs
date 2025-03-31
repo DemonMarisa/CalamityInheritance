@@ -10,6 +10,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -43,6 +46,33 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             damage *= (BaseDamage + LegendaryBuff()) / BaseDamage;
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.DestroyerTier1)
+            {
+                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.DestroyerLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.DestroyerTier2)
+            {
+                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.DestroyerLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.DestroyerTier1)
+            {
+                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.DestroyerLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            int boostPercent = LegendaryBuff();
+            string update = this.GetLocalization("LegendaryScaling").Format(
+                boostPercent.ToString()
+            );
+            tooltips.FindAndReplace("[SCALING]", update);
         }
         public override bool CanUseItem(Player player)
         {

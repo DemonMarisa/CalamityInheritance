@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
 using CalamityInheritance.NPCs.Calamitas;
 using Microsoft.Build.Evaluation;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeKelvinCatalystProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeKelvinCatalyst";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeKelvinCatalyst";
         public int AIState = 0;
 
         public override void SetStaticDefaults()

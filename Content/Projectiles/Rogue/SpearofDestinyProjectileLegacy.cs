@@ -4,13 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SpearofDestinyProjectileLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/SpearofDestinyLegacy";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/SpearofDestinyLegacy";
 
         private bool initialized = false;
 
@@ -104,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             if (Projectile.Calamity().stealthStrike)
             {
-                Texture2D tex = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/SpearofDestinyProjectileLegacyGlow").Value;
+                Texture2D tex = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/SpearofDestinyProjectileLegacyGlow").Value;
                 Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, 
                 tex.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             }

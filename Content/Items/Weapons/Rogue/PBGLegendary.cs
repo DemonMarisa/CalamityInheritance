@@ -10,6 +10,9 @@ using CalamityMod;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -56,6 +59,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Item.UseSound = CISoundID.SoundWeaponSwing;
             }
             return true;
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.PBGTier1)
+            {
+                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.PBGTier2)
+            {
+                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.PBGTier1)
+            {
+                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            float getdmg = LegendaryDamage();
+            int boostPercent = (int)(getdmg * 100);
+            string update = this.GetLocalization("LegendaryScaling").Format(
+                boostPercent.ToString()
+            );
+            tooltips.FindAndReplace("[SCALING]", update);
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

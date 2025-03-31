@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -14,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeTerraDiskProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeTerraDisk";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeTerraDisk";
 
         private bool initialized = false;
         private int Lifetime = 180;

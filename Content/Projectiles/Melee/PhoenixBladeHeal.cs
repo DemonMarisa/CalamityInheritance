@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class PhoenixBladeHeal: ModProjectile, ILocalizedModType
     {
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 4;

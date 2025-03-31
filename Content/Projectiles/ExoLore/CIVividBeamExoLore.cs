@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     public class CIVividBeamExoLore : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         private bool initialized = false;
         public override void SetDefaults()

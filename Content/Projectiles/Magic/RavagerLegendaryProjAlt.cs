@@ -161,7 +161,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/RavagerLegendaryProjAltGlow").Value;
+            Texture2D tex = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/RavagerLegendaryProjAltGlow").Value;
             switch ((int)Projectile.ai[0])
             {
                 case 0:

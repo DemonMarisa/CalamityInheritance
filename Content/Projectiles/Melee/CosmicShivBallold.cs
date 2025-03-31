@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         // TODO -- Please for the love of god refactor this at some point. It is ancient.
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public NPC target = null;
         public const float maxDistanceToTarget = 1540f;

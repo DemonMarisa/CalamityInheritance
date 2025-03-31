@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static readonly SoundStyle HitSound3 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowFull") { PitchVariance = 0.4f };
         public static readonly SoundStyle HitSound2 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowTwo") { PitchVariance = 0.4f };
         public static readonly SoundStyle HitSound1 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public bool GrantsHoming = false;
         public float HomingTimer = -1f;
         public bool MoreHits = false;

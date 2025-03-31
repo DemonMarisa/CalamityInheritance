@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class Exoboomold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetStaticDefaults()
         {

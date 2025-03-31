@@ -242,6 +242,10 @@ VictideBook: {
 RavagerLegendary: {
 	DisplayName: Vesuvius Legendary
 	Tooltip: ""
+	TierOne: "11"
+	TierTwo: "222"
+	TierThree: "333"
+	LegendaryScaling: Buff
 }
 
 FuckVoid: {
@@ -252,4 +256,8 @@ FuckVoid: {
 DestroyerLegendary: {
 	Tooltip: ""
 	DisplayName: Destroyer Legendary
+	TierOne: "11"
+	TierTwo: "222"
+	TierThree: "333"
+	LegendaryScaling: Buff
 }

@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
         public Player Owner => Main.player[Projectile.owner];
-        public override string Texture => "CalamityInheritance/Content/Projectiles/ArmorProj/MiniRocket";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/ArmorProj/MiniRocket";
         public override void SetDefaults()
         {
             Projectile.width = 8;

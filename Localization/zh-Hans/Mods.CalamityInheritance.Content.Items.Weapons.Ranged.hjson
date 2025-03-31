@@ -418,4 +418,8 @@ PlanteraLegendary: {
 		[c/00CB67:-传奇武器-]
 		'''
 	DisplayName: 甲乙木皇茂林叶帝弓[Legendary]
+	TierOne: "[c/00CB67:强化:]增强叶之箭与孢子球攻击速度与飞行速度"
+	TierTwo: "[c/00CB67:强化:]增加叶之箭与孢子球的发射数量"
+	TierThree: "[c/00CB67:强化:]叶之箭50%概率发起追踪, 孢子球必定跟踪"
+	// LegendaryScaling: Buff
 }

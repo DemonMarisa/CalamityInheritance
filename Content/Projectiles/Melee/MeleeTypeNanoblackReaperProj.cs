@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -13,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeNanoblackReaperProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeNanoblackReaper";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeNanoblackReaper";
 
         private const float RotationIncrement = 0.20f;
         private const int Lifetime = 240;

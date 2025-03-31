@@ -8,13 +8,14 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class CelestusBoomerang : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/Celestusold";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
 
         private bool initialized = false;
         private float speed = 25f;

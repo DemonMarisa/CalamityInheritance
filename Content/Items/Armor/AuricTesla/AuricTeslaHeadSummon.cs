@@ -18,6 +18,9 @@ using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -37,7 +40,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             Item.defense = 12; //132
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            var calPlayer = player.Calamity();
+            if(calPlayer.auricSet)
+            {
+                if (Main.keyState.IsKeyDown(Keys.LeftAlt))
+                {
+                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.AuricTeslaHeadSummon.Details");
+                    tooltips.Add(new TooltipLine(Mod, "Details", Details));
+                }
+            }
+        }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             bool isAuricSetNEW = body.type == ModContent.ItemType<AuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<AuricTeslaCuisses>();

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         float homeinspeed = 0f;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Melee/IceBomb";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/IceBomb";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

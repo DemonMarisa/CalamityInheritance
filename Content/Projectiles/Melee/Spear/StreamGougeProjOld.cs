@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         // public override void PostDraw(Color lightColor)
         // {
         //     Vector2 origin = new Vector2(0f, 0f);
-        //     Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Melee/Spear/StreamGougeProjOldGlowProj").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0f);
+        //     Main.EntitySpriteDraw(ModContent.Request<Texture2D>(${GenericProjRoute.ProjRoute}/Melee/Spear/StreamGougeProjOldGlowProj").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0f);
         // }
         public void ExtraBehavior()
         {

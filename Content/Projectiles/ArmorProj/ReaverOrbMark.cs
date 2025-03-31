@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
     public class ReaverOrbMark : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()
         {

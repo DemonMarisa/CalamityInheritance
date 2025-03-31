@@ -94,7 +94,7 @@ namespace CalamityInheritance.Texture
         #endregion
         #region 龙弓
         public static Asset<Texture2D> DrataliornusLegacy;
-        public static Asset<Texture2D> DrataliornusLegacyAlter;
+        public static Asset<Texture2D> DrataBowLegacyAlt;
         #endregion
         public static Asset<Texture2D> HalleyCal;
         public static Asset<Texture2D> HalleyAlt;
@@ -152,157 +152,178 @@ namespace CalamityInheritance.Texture
         #region 其他
         #endregion
         #endregion
-
+        //路径
+        //职业武器路径
+        public static string CIMeleeWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Melee";
+        public static string CIRangedWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Ranged";
+        public static string CIMagicWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Magic";
+        public static string CIRogueWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Rogue";
+        //射弹路径
+        public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
+        //额外贴图路径
+        public static string CIExtraRoute => "CalamityInheritance/Texture";
+        public static string CIMeleeExtraRoute => "CalamityInheritance/Texture/Melee";
+        public static string CIRangedExtraRoute => "CalamityInheritance/Texture/Ranged";
+        public static string CIRogueExtraRoute => "CalamityInheritance/Texture/Rogue";
+        //部分灾厄的路径
+        //武器路径
+        public static string CalWeaponRoute => "CalamityMod/Items/Weapons";
+        public static string CalMeleeWeaponRoute => "CalamityMod/Items/Weapons/Melee";
+        public static string CalRangedWeaponRoute => "CalamityMod/Items/Weapons/Ranged";
+        public static string CalMagicWeaponRoute => "CalamityMod/Items/Weapons/Magic";
+        public static string CalRogueWeaponRoute => "CalamityMod/Items/Weapons/Rogue";
+        //射弹路径
+        public static string CalProjRoute => "CalamityMod/Projectiles";
         public static void LoadTexture()
         {
             #region 战士
             //泰拉矛
-            TerraLanceCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/BotanicPiercer");
-            TerraLanceCalGlow = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/BotanicPiercerGlow");
-            TerraLanceCalProj = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/Spears/BotanicPiercerProjectile");
-            TerraLanceAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TerraLance");
-            TerraLanceAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/TerraLanceProj");
+            TerraLanceCal = ModContent.Request<Texture2D>       ($"{CalMeleeWeaponRoute}/BotanicPiercer");
+            TerraLanceCalGlow = ModContent.Request<Texture2D>   ($"{CalMeleeWeaponRoute}/BotanicPiercerGlow");
+            TerraLanceCalProj = ModContent.Request<Texture2D>   ($"{CalProjRoute}/Melee/Spears/BotanicPiercerProjectile");
+            TerraLanceAlt = ModContent.Request<Texture2D>       ($"{CIMeleeExtraRoute}/TerraLance");
+            TerraLanceAltProj = ModContent.Request<Texture2D>   ($"{CIMeleeExtraRoute}/TerraLanceProj");
             //方舟
-            AotCCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ArkoftheCosmosNew");
-            AotCAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheCosmosold");
+            AotCCal = ModContent.Request<Texture2D>             ($"{CIMeleeExtraRoute}/ArkoftheCosmosNew");
+            AotCAlt = ModContent.Request<Texture2D>             ($"{CIMeleeWeaponRoute}/ArkoftheCosmosold");
             #endregion
             //元素系列
-            RareArkCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/Swordsplosion");
-            RareArkAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/RareArkAlt");
-            ElemDiskCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeElementalDisk");
-            ElemDiskAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemDiskAlt");
-            ElemSwordCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ArkoftheElementsold");
-            ElemSwordAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemSword");
+            RareArkCal = ModContent.Request<Texture2D>          ($"{CalMeleeWeaponRoute}/Swordsplosion");
+            RareArkAlt = ModContent.Request<Texture2D>          ($"{CIMeleeExtraRoute}/RareArkAlt");
+            ElemDiskCal = ModContent.Request<Texture2D>         ($"{CIMeleeWeaponRoute}/MeleeTypeElementalDisk");
+            ElemDiskAlt = ModContent.Request<Texture2D>         ($"{CIMeleeExtraRoute}/ElemDiskAlt");
+            ElemSwordCal = ModContent.Request<Texture2D>        ($"{CIMeleeWeaponRoute}/ArkoftheElementsold");
+            ElemSwordAlt = ModContent.Request<Texture2D>        ($"{CIMeleeExtraRoute}/ElemSword");
 
 
-            ElemLanceCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/ElementalLance");
-            ElemLanceProjCal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/Spears/ElementalLanceProjectile");
-            ElemLanceAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemLanceAlt");
-            ElemLanceProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/ElemLanceProj");
+            ElemLanceCal = ModContent.Request<Texture2D>        ($"{CalMeleeWeaponRoute}/ElementalLance");
+            ElemLanceProjCal = ModContent.Request<Texture2D>    ($"{CalProjRoute}/Melee/Spears/ElementalLanceProjectile");
+            ElemLanceAlt = ModContent.Request<Texture2D>        ($"{CIMeleeExtraRoute}/ElemLanceAlt");
+            ElemLanceProjAlt = ModContent.Request<Texture2D>    ($"{CIMeleeExtraRoute}/ElemLanceProj");
         
             #region 短剑系列
             //火短剑
-            FlameShivCal= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/FlameburstShortsword");
-            FlameShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/FlameShiv");
+            FlameShivCal= ModContent.Request<Texture2D>         ($"{CIMeleeWeaponRoute}/Shortsword/FlameburstShortsword");
+            FlameShivAlt = ModContent.Request<Texture2D>        ($"{CIMeleeExtraRoute}/Shivs/FlameShiv");
             //地牢短剑
-            DungeonShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/AncientShiv");
-            DungeonShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/DungeonShiv");
+            DungeonShivCal = ModContent.Request<Texture2D>      ($"{CIMeleeWeaponRoute}/Shortsword/AncientShiv");
+            DungeonShivAlt = ModContent.Request<Texture2D>      ($"{CIMeleeExtraRoute}/Shivs/DungeonShiv");
             //水短剑
-            SeaShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/EutrophicShank");
-            SeaShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/SeaShiv");
+            SeaShivCal = ModContent.Request<Texture2D>          ($"{CIMeleeWeaponRoute}/Shortsword/EutrophicShank");
+            SeaShivAlt = ModContent.Request<Texture2D>          ($"{CIMeleeExtraRoute}/Shivs/SeaShiv");
             //腐巢短剑
-            HiveMindShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/LeechingDagger");
-            HiveMindShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/HiveMindShiv");
+            HiveMindShivCal = ModContent.Request<Texture2D>     ($"{CIMeleeWeaponRoute}/Shortsword/LeechingDagger");
+            HiveMindShivAlt = ModContent.Request<Texture2D>     ($"{CIMeleeExtraRoute}/Shivs/HiveMindShiv");
             //圣短剑
-            HallowedShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ExcaliburShortsword");
-            HallowedShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/HallowedShiv");
-            TrueHallowedShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueExcaliburShortsword");
-            TrueHallowedShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/TrueHallowedShiv");
+            HallowedShivCal = ModContent.Request<Texture2D>     ($"{CIMeleeWeaponRoute}/Shortsword/ExcaliburShortsword");
+            HallowedShivAlt = ModContent.Request<Texture2D>     ($"{CIMeleeExtraRoute}/Shivs/HallowedShiv");
+            TrueHallowedShivCal = ModContent.Request<Texture2D> ($"{CIMeleeWeaponRoute}/Shortsword/TrueExcaliburShortsword");
+            TrueHallowedShivAlt = ModContent.Request<Texture2D> ($"{CIMeleeExtraRoute}/Shivs/TrueHallowedShiv");
             //永夜
-            NightShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/NightsStabber");
-            NightShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/NightShiv");
+            NightShivCal = ModContent.Request<Texture2D>        ($"{CIMeleeWeaponRoute}/Shortsword/NightsStabber");
+            NightShivAlt = ModContent.Request<Texture2D>        ($"{CIMeleeExtraRoute}/Shivs/NightShiv");
             //真永夜
-            TrueNightShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/TrueNightsStabber");
-            TrueNightShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/TrueNightShiv");
+            TrueNightShivCal = ModContent.Request<Texture2D>    ($"{CIMeleeWeaponRoute}/Shortsword/TrueNightsStabber");
+            TrueNightShivAlt = ModContent.Request<Texture2D>    ($"{CIMeleeExtraRoute}/Shivs/TrueNightShiv");
             //伽利略
-            GalileoCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/GalileoGladius");
-            GalileoAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/GalileoShiv");
+            GalileoCal = ModContent.Request<Texture2D>          ($"{CalMeleeWeaponRoute}/GalileoGladius");
+            GalileoAlt = ModContent.Request<Texture2D>          ($"{CIMeleeExtraRoute}/Shivs/GalileoShiv");
             //元素
-            ElemShivCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/Shortsword/ElementalShivold");
-            ElemShivAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/Shivs/ElementalShiv");
+            ElemShivCal = ModContent.Request<Texture2D>         ($"{CIMeleeWeaponRoute}/Shortsword/ElementalShivold");
+            ElemShivAlt = ModContent.Request<Texture2D>         ($"{CIMeleeExtraRoute}/Shivs/ElementalShiv");
             #endregion
 
             //庇护
-            AegisCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Melee/AegisBlade");
-            AegisAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/AegisBladeLegacy");
+            AegisCal = ModContent.Request<Texture2D>            ($"{CalMeleeWeaponRoute}/AegisBlade");
+            AegisAlt = ModContent.Request<Texture2D>            ($"{CIMeleeExtraRoute}/AegisBladeLegacy");
 
 
             //月明链刃
-            CerscentMoonProjCal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Melee/CrescentMoonFlail");
-            CerscentMoonProjAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/CerscentFlailLegay");
+            CerscentMoonProjCal = ModContent.Request<Texture2D> ($"{CalProjRoute}/Melee/CrescentMoonFlail");
+            CerscentMoonProjAlt = ModContent.Request<Texture2D> ($"{CIMeleeExtraRoute}/CerscentFlailLegay");
 
             #region 远程
             //元素BYD
-            ElemBYDCal = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/ElementalBlaster");
-            ElemBYDAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/ElemBYD");
+            ElemBYDCal = ModContent.Request<Texture2D>          ($"{CalRangedWeaponRoute}/ElementalBlaster");
+            ElemBYDAlt = ModContent.Request<Texture2D>          ($"{CIRangedExtraRoute}/ElemBYD");
             //元素喷火器
-            ElemFlamethrowerCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/ElementalEruptionLegacy");
-            ElemFlamethrowerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/ElemFlamethrower");
+            ElemFlamethrowerCal = ModContent.Request<Texture2D> ($"{CIRangedWeaponRoute}/ElementalEruptionLegacy");
+            ElemFlamethrowerAlt = ModContent.Request<Texture2D> ($"{CIRangedExtraRoute}/ElemFlamethrower");
 
             //碎颅
-            SkullmasherCal= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/SkullmasherAlt");
-            Skullmasher   = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/Skullmasher");
+            SkullmasherCal= ModContent.Request<Texture2D>       ($"{CIRangedExtraRoute}/SkullmasherAlt");
+            Skullmasher   = ModContent.Request<Texture2D>       ($"{CIRangedWeaponRoute}/Skullmasher");
 
             //龙弓
-            DrataliornusLegacyAlter = ModContent.Request<Texture2D>("CalamityMod/Items/Weapons/Ranged/Drataliornus");
-            DrataliornusLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/DrataliornusLegacy");
+            DrataBowLegacyAlt = ModContent.Request<Texture2D>   ($"{CalRangedWeaponRoute}/Drataliornus");
+            DrataliornusLegacy = ModContent.Request<Texture2D>  ($"{CIRangedWeaponRoute}/DrataliornusLegacy");
 
             //P90
-            P90 = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/P90Cal");
-            P90Legacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/P90Legacy");
+            P90 = ModContent.Request<Texture2D>                 ($"{CIRangedExtraRoute}/P90Cal");
+            P90Legacy = ModContent.Request<Texture2D>           ($"{CIRangedWeaponRoute}/P90Legacy");
 
             
             //哈雷
-            HalleyCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/HalleysInfernoLegacy");
-            HalleyAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Ranged/HalleysLegacy");
+            HalleyCal = ModContent.Request<Texture2D>           ($"{CIRangedWeaponRoute}/HalleysInfernoLegacy");
+            HalleyAlt = ModContent.Request<Texture2D>           ($"{CIRangedExtraRoute}/HalleysLegacy");
             #endregion
 
             #region 法师
             //元素
-            ElemRayCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/Ray/ElementalRayold");
-            ElemRayAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/ElemRayAlt");
+            ElemRayCal = ModContent.Request<Texture2D>          ($"{CIMagicWeaponRoute}/Ray/ElementalRayold");
+            ElemRayAlt = ModContent.Request<Texture2D>          ($"{CIExtraRoute}/Magic/ElemRayAlt");
             //氦闪
-            HeliumCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Magic/HeliumCal");
-            HeliumFlashLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/HeliumFlashLegacy");
+            HeliumCal = ModContent.Request<Texture2D>           ($"{CIExtraRoute}/Magic/HeliumCal");
+            HeliumFlashLegacy = ModContent.Request<Texture2D>   ($"{CIMagicWeaponRoute}/HeliumFlashLegacy");
 
             #endregion
 
             #region 召唤
-            TerraSummonCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/TerraSummonAlt");
+            TerraSummonCal = ModContent.Request<Texture2D>      ($"{CIExtraRoute}/Summon/TerraSummonAlt");
             #endregion
 
             #region 盗贼
 
             //圣泰阿克提斯之锤
-            GiantHammerCal = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/GiantHammerCal");
-            GiantHammerCalProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/GiantHammerCal");
-            GiantHammerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
-            GiantHammerAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            GiantHammerCal = ModContent.Request<Texture2D>      ($"{CIRogueExtraRoute}/GiantHammerCal");
+            GiantHammerCalProj = ModContent.Request<Texture2D>  ($"{CIRogueExtraRoute}/GiantHammerCal");
+            GiantHammerAlt = ModContent.Request<Texture2D>      ($"{CIRogueWeaponRoute}/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            GiantHammerAltProj = ModContent.Request<Texture2D>  ($"{CIRogueWeaponRoute}/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
 
             #region 飞刀
             //苍穹飞刀(现)
-            EmpyreanKnivesCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesEmpyrean");
-            EmpyreanKnivesCalProj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesEmpyreanProj");
+            EmpyreanKnivesCal = ModContent.Request<Texture2D>   ($"{CIRogueWeaponRoute}/RogueTypeKnivesEmpyrean");
+            EmpyreanKnivesCalProj= ModContent.Request<Texture2D>($"{CIProjRoute}/Rogue/RogueTypeKnivesEmpyreanProj");
             //苍穹飞刀(初)
-            EmpyreanKnivesAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirst");
-            EmpyreanKnivesAltProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
+            EmpyreanKnivesAlt = ModContent.Request<Texture2D>   ($"{CIRogueExtraRoute}/EmpyreanKnivesAlterFirst");
+            EmpyreanKnivesAltProj= ModContent.Request<Texture2D>($"{CIRogueExtraRoute}/EmpyreanKnivesAlterFirstProj");
             //圣光飞刀(现)
-            ShadowKnivesCal= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesCal");
-            ShadowKnivesCalProj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesCalProj");
+            ShadowKnivesCal= ModContent.Request<Texture2D>      ($"{CIRogueExtraRoute}/ShadowKnivesCal");
+            ShadowKnivesCalProj= ModContent.Request<Texture2D>  ($"{CIRogueExtraRoute}/ShadowKnivesCalProj");
             //圣光飞刀(三)
-            ShadowKnivsAlt3= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeKnivesShadowspec");
-            ShadowKnivsAlt3Proj= ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesShadowspecProj");
+            ShadowKnivsAlt3= ModContent.Request<Texture2D>      ($"{CIRogueWeaponRoute}/RogueTypeKnivesShadowspec");
+            ShadowKnivsAlt3Proj= ModContent.Request<Texture2D>  ($"{CIProjRoute}/Rogue/RogueTypeKnivesShadowspecProj");
             //圣光飞刀(二)
-            ShadowKnivsAlt2= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt2");
-            ShadowKnivsAlt2Proj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt2Proj");
+            ShadowKnivsAlt2= ModContent.Request<Texture2D>      ($"{CIRogueExtraRoute}/ShadowKnivesAlt2");
+            ShadowKnivsAlt2Proj= ModContent.Request<Texture2D>  ($"{CIRogueExtraRoute}/ShadowKnivesAlt2Proj");
             //圣光飞刀(初)
-            ShadowKnivsAlt1= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/ShadowKnivesAlt1");
-            ShadowKnivsAlt1Proj= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Rogue/EmpyreanKnivesAlterFirstProj");
+            ShadowKnivsAlt1= ModContent.Request<Texture2D>      ($"{CIRogueExtraRoute}/ShadowKnivesAlt1");
+            ShadowKnivsAlt1Proj= ModContent.Request<Texture2D>  ($"{CIRogueExtraRoute}/EmpyreanKnivesAlterFirstProj");
             #endregion
 
             #endregion
             
             #region 战/盗混合
             //圣时之锤
-            PwnageHammerCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
-            PwnageHammerCalProj = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerPwnageLegacy");
-            PwnageHammerAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
-            PwnageHammerAltProj = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Melee/PwnagehammerAlter");
+            PwnageHammerCal = ModContent.Request<Texture2D>     ($"{CIMeleeWeaponRoute}/MeleeTypeHammerPwnageLegacy");
+            PwnageHammerCalProj = ModContent.Request<Texture2D> ($"{CIMeleeWeaponRoute}/MeleeTypeHammerPwnageLegacy");
+            PwnageHammerAlt = ModContent.Request<Texture2D>     ($"{CIMeleeExtraRoute}/PwnagehammerAlter");
+            PwnageHammerAltProj = ModContent.Request<Texture2D> ($"{CIMeleeExtraRoute}/PwnagehammerAlter");
       
 
             //星体击碎者
-            StellarContemptNew= ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeHammerStellarContemptLegacy");
-            StellarContemptOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Rogue/RogueTypeHammerStellarContempt");
+            StellarContemptNew= ModContent.Request<Texture2D>   ($"{CIMeleeWeaponRoute}/MeleeTypeHammerStellarContemptLegacy");
+            StellarContemptOld = ModContent.Request<Texture2D>  ($"{CIRogueWeaponRoute}/RogueTypeHammerStellarContempt");
 
             #endregion
             
@@ -342,7 +363,7 @@ namespace CalamityInheritance.Texture
             StellarContemptNew = null;
             StellarContemptOld = null;
 
-            DrataliornusLegacyAlter = null;
+            DrataBowLegacyAlt = null;
             DrataliornusLegacy = null;
 
             HalleyCal = null;

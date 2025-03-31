@@ -168,8 +168,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Vector2 mountedCenter = Main.player[Projectile.owner].MountedCenter;
             _ = Color.Transparent;
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Melee/ExoFlailProj2_Chain").Value;
-            Texture2D texture2 = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Melee/ExoFlailProj2_Base").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Chain").Value;
+            Texture2D texture2 = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Base").Value;
             Vector2 vector = Projectile.Center;
             Rectangle? sourceRectangle = null;
             Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);

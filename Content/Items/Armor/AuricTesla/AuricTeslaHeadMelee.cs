@@ -13,6 +13,9 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -39,7 +42,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             bool isAuricSetOLD = body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
             return isAuricSetNEW || isAuricSetOLD;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            var calPlayer = player.Calamity();
+            if(calPlayer.auricSet)
+            {
+                if (Main.keyState.IsKeyDown(Keys.LeftAlt))
+                {
+                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.AuricTeslaHeadMelee.Details");
+                    tooltips.Add(new TooltipLine(Mod, "Details", Details));
+                }
+            }
+        }
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawOutlines = true;

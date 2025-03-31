@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
 
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = 12;

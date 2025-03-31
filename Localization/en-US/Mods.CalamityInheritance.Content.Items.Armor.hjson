@@ -35,6 +35,7 @@ AuricTeslaHeadMagic: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
+	Details: "11234"
 }
 
 AuricTeslaHeadMelee: {
@@ -52,6 +53,7 @@ AuricTeslaHeadMelee: {
 		Enemies are more likely to target you 
 		Multiplie melee damage based on your current HP is, at full HP effect is at max
 		'''
+	Details: "11234"
 }
 
 AuricTeslaHeadRanged: {
@@ -67,6 +69,7 @@ AuricTeslaHeadRanged: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
+	Details: "11234"
 }
 
 AuricTeslaHeadRogue: {
@@ -85,6 +88,7 @@ AuricTeslaHeadRogue: {
 		All projectiles spawn healing auric orbs on enemy hits
 		Rogue weapon critical strike will do 1.25 times damage while you are above 50% HP
 		'''
+	Details: "11234"
 }
 
 AuricTeslaHeadSummon: {
@@ -102,6 +106,7 @@ AuricTeslaHeadSummon: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
+	Details: "11234"
 }
 
 GodSlayerChestplateold: {
@@ -590,6 +595,8 @@ YharimAuricTeslaHelm: {
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		[c/DFC578:'No, I won't let you down']
 		'''
+	Details: "23132"
+	ExtraDetails: "111111"
 }
 
 AncientAstralBreastplate: {

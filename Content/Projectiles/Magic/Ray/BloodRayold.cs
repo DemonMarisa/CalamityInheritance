@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
         public ref float Time => ref Projectile.ai[0];
         public ref float InitialDamage => ref Projectile.ai[1];
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = 4;

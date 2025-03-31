@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeSubductionSlicerProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeSubductionSlicer";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeSubductionSlicer";
 
         public override void SetDefaults()
         {

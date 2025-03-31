@@ -237,6 +237,10 @@ PBGLegendary: {
 		[c/00FF7F:-传奇武器-]
 		'''
 	DisplayName: 斩罡除魔孔雀柳刃[Legendary]
+	TierOne: "[c/00FF7F:强化:]投掷的高速光刃数量+1"
+	TierTwo: "[c/00FF7F:强化:]增加高速光刃的攻击次数"
+	TierThree: "[c/00FF7F:强化:]攻击时有一定概率使减益伤害无害化"
+	LegendaryScaling: "1111"
 }
 
 EclipseSpear: {
