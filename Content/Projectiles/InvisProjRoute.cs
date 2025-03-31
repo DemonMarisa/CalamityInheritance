@@ -3,7 +3,7 @@ namespace CalamityInheritance.Content.Projectiles
     public class GenericProjRoute 
     {
         //总体射弹路径
-        public static string ProjRoute => "CalamityInheritance/Content/Projectile";
+        public static string ProjRoute => "CalamityInheritance/Content/Projectiles";
         //隐形贴图
         public static string InvisProjRoute => $"{ProjRoute}/InvisibleProj"; 
         //激光贴图

@@ -15,16 +15,8 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
     [AutoloadEquip(EquipType.Body)]
     public class GodSlayerChestplateold : CIArmor, ILocalizedModType
     {
-        public static string GenericAlterGodSlayerArmorRoute => "CalamityInheritance/Texture/Armor";
-        public static string GenericRealGodSlayerArmorRoute => "CalamityInheritance/Content/Items/Armor/GodSlayerOld";
-        public static string GenericRealGodSlayerGlowMaskRoute => "CalamityInheritance/Content/Items/Armor/GodSlayerOld";
-        public static string LegacyArmorRoute => $"{GenericAlterGodSlayerArmorRoute}/GodSlayerBody_Body";
-        public static string RealArmorRoute => $"{GenericRealGodSlayerArmorRoute}/GodSlayerChestplateold_Body";
-        public static string FuckGlowMask => "CalamityInheritance/Texture/FuckGlowMask";
-        public static string YesGlowMask => $"{GenericRealGodSlayerGlowMaskRoute}/GodSlayerChestplateold_BodyGlow";
         public new string LocalizationCategory => "Content.Items.Armor";
         public const int DashIFrames = 12;
-        public override string Texture => CIConfig.Instance.BoCLoreUnconditional ? LegacyArmorRoute : RealArmorRoute;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
