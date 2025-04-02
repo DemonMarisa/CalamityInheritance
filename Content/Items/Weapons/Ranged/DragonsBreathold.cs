@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     ++dragonsBreathAdded;
                 }
 
-                spreadFactor = 1.52f;
+                spreadFactor = 1.22f;
             }
             // Left click first shot: Six regular bullets, low spread
             else if (player.itemAnimation == player.itemAnimationMax - 1)

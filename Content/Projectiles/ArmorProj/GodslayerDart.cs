@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -38,12 +39,12 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.alpha = 255;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 140;
         }
         public int hasfirecount = 0;
-        public int firedely = 15;
+        public int firedely = 2;
+        public int mountdartfirerelay = 3;
         public override bool? CanHitNPC(NPC target) => Projectile.ai[0] != 0f;
 
         public override void AI()
@@ -53,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 MountDark(Projectile, ref firedely, ref hasfirecount);
                 if (initialized == false)
                 {
-                    Projectile.timeLeft = 140;
+                    Projectile.timeLeft = 50;
                     initialized = true;
                     isMount = true;
                 }
@@ -71,8 +72,8 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 }
             }
         }
-
-        public static void MountDark(Projectile projectile , ref int firerelay, ref int hasfirecount)
+        public int randomstart = Main.rand.Next(0, 9);
+        public void MountDark(Projectile projectile , ref int firerelay, ref int hasfirecount)
         {
             Player Owner = Main.player[projectile.owner];
 
@@ -83,13 +84,14 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             int numberOfProjectiles = 8;
             float spreadAngle = MathHelper.ToRadians(360);
             float angleStep = spreadAngle / numberOfProjectiles;
-            float currentAngle = baseAngle - spreadAngle / 2 + (angleStep * hasfirecount) ;
+            float randStartAngle = 22.5f + 45 * randomstart;
+            float currentAngle = baseAngle - spreadAngle / 2 + (angleStep * hasfirecount) + MathHelper.ToRadians(randStartAngle);
             Vector2 direction = new((float)Math.Cos(currentAngle), (float)Math.Sin(currentAngle));
 
             if(firerelay == 0 && hasfirecount < 8)
             {
-                Projectile.NewProjectile(source, armPosition, direction * 8f, ModContent.ProjectileType<GodSlayerDart>(), projectile.damage, 2f, projectile.owner, 1, 0f);
-                firerelay = 5;
+                Projectile.NewProjectile(source, armPosition, direction * 32f, ModContent.ProjectileType<GodSlayerDart>(), projectile.damage, 2f, projectile.owner, 1, 0f);
+                firerelay = 3;
                 hasfirecount++;
             }
         }
@@ -116,20 +118,21 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 }
             }
 
-            if (projectile.timeLeft > 300)
+            if (projectile.timeLeft > 320)
             {
-                projectile.velocity *= 0.97f;
+                projectile.velocity *= 0.9f;
             }
 
-            if (projectile.timeLeft < 300)
+            if (projectile.timeLeft < 320)
             {
-                float maxSpeed = 20f;
-                float acceleration = 0.05f * 12f;
+                float maxSpeed = 25f;
+                float acceleration = 0.08f * 20f;
                 float homeInSpeed = MathHelper.Clamp(projectile.ai[1] += acceleration, 0f, maxSpeed);
 
-                CIFunction.HomeInOnNPC(projectile, !projectile.tileCollide, 10000f, homeInSpeed, 15f, 5f);
+                CIFunction.HomeInOnNPC(projectile, !projectile.tileCollide, 10000f, homeInSpeed, 15f, 8f);
             }
         }
+
         public override void PostDraw(Color lightColor)
         {
             if (!isMount)
@@ -141,24 +144,27 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
-            for (int j = 0; j < 5; j++)
+            if (Projectile.ai[0] != 0f)
             {
-                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Butterfly, 0f, 0f, 100, default, 1.5f);
-                Main.dust[dust].velocity *= 3f;
-                if (Main.rand.NextBool())
+                SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
+                for (int j = 0; j < 5; j++)
                 {
-                    Main.dust[dust].scale = 0.5f;
-                    Main.dust[dust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Butterfly, 0f, 0f, 100, default, 1.5f);
+                    Main.dust[dust].velocity *= 3f;
+                    if (Main.rand.NextBool())
+                    {
+                        Main.dust[dust].scale = 0.5f;
+                        Main.dust[dust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
                 }
-            }
-            for (int k = 0; k < 10; k++)
-            {
-                int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                Main.dust[dust2].noGravity = true;
-                Main.dust[dust2].velocity *= 5f;
-                dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 1.5f);
-                Main.dust[dust2].velocity *= 2f;
+                for (int k = 0; k < 10; k++)
+                {
+                    int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                    Main.dust[dust2].noGravity = true;
+                    Main.dust[dust2].velocity *= 5f;
+                    dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 1.5f);
+                    Main.dust[dust2].velocity *= 2f;
+                }
             }
         }
 
@@ -168,7 +174,12 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 2);
+            if (Projectile.ai[0] == 0f)
+            {
+                return false;
+            }
+            else
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 2);
             return false;
         }
     }

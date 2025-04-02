@@ -66,41 +66,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Main.projectile[projectile].timeLeft = 160;
             Main.projectile[projectile].tileCollide = false;
 
-            float num72 = Main.rand.Next(22, 30);
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float num78 = Main.mouseX + Main.screenPosition.X + vector2.X;
-            float num79 = Main.mouseY + Main.screenPosition.Y + vector2.Y;
-            if (player.gravDir == -1f)
-            {
-                num79 = Main.screenPosition.Y + Main.screenHeight + Main.mouseY + vector2.Y;
-            }
-            float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
-            if (float.IsNaN(num78) && float.IsNaN(num79) || num78 == 0f && num79 == 0f)
-            {
-                num78 = player.direction;
-                num79 = 0f;
-                num80 = num72;
-            }
-            else
-            {
-                num80 = num72 / num80;
-            }
+            int fireOffset = -100;
+            Vector2 mousePos = Main.MouseWorld;
+            int totalFire = 4;
+            int firePosX = (int)(mousePos.X + player.Center.X) / 2;
+            int firePosY = (int)player.Center.Y;
 
-            int num107 = 4;
-            for (int num108 = 0; num108 < num107; num108++)
+            for (int fireCount = 0; fireCount < totalFire; fireCount++)
             {
-                vector2 = new Vector2(player.position.X + player.width * 0.5f + (float)-(float)player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y);
-                vector2.X = (vector2.X + player.Center.X) / 2f;
-                vector2.Y -= 100 * num108;
-                num78 = Main.mouseX + Main.screenPosition.X - vector2.X;
-                num79 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-                num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
-                num80 = num72 / num80;
-                num78 *= num80;
-                num79 *= num80;
-                float speedX4 = num78 + Main.rand.Next(-360, 361) * 0.02f;
-                float speedY5 = num79 + Main.rand.Next(-360, 361) * 0.02f;
-                int projectileFire = Projectile.NewProjectile(source, vector2, new Vector2(speedX4, speedY5), ModContent.ProjectileType<Galaxia2>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
+                // 垂直偏移计算
+                Vector2 finalPos = new Vector2(firePosX, firePosY + fireOffset * fireCount);
+                // 计算朝向鼠标的方向
+                Vector2 direction = mousePos - finalPos;
+                direction.Normalize();
+                // 随机30度发射
+                direction = direction.RotatedByRandom(MathHelper.ToRadians(15));
+                // 保持原速度并应用新方向
+                Vector2 newVelocity = direction * velocity.Length();
+
+                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ModContent.ProjectileType<Galaxia2>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
                 Main.projectile[projectileFire].timeLeft = 160;
             }
             return false;

@@ -35,81 +35,9 @@ namespace CalamityInheritance.Content.Projectiles
             CalamityPlayer modPlayer1 = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
-                if (modPlayer.ElemQuiver && projectile.DamageType == DamageClass.Ranged && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
-                {
-                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 1)
-                    {
-                        if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
-                        {
-                            float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
-                            if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
-                            {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                Main.projectile[projectile2].DamageType = DamageClass.Default;
-                                Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].timeLeft = 60;
-                                Main.projectile[projectile3].timeLeft = 60;
-                                Main.projectile[projectile2].noDropItem = true;
-                                Main.projectile[projectile3].noDropItem = true;
-                            }
-                        }
-                    }
-                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 2)
-                    {
-                        if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
-                        {
-                            float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
-                            if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
-                            {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                Main.projectile[projectile2].DamageType = DamageClass.Default;
-                                Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].noDropItem = true;
-                                Main.projectile[projectile3].noDropItem = true;
-                            }
-                        }
-                    }
-                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 3)
-                    {
-                        if (Main.rand.Next(200) > 198)
-                        {
-                            float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
-                            if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
-                            {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                Main.projectile[projectile2].DamageType = DamageClass.Default;
-                                Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].timeLeft = 60;
-                                Main.projectile[projectile3].timeLeft = 60;
-                                Main.projectile[projectile2].noDropItem = true;
-                                Main.projectile[projectile3].noDropItem = true;
-                            }
-                        }
-                    }
-                    if (CIConfig.Instance.ElementalQuiverSplitstyle == 4)
-                    {
-                        if (Main.rand.Next(200) > 198)
-                        {
-                            float spread = 180f * 0.0174f;
-                            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
-                            if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
-                            {
-                                int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                                Main.projectile[projectile2].DamageType = DamageClass.Default;
-                                Main.projectile[projectile3].DamageType = DamageClass.Default;
-                                Main.projectile[projectile2].noDropItem = true;
-                                Main.projectile[projectile3].noDropItem = true;
-                            }
-                        }
-                    }
-                }
+                // 元素箭袋的额外AI
+                if(projectile.DamageType == DamageClass.Ranged)
+                    ElemQuiver(projectile);
             }
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
@@ -268,6 +196,90 @@ namespace CalamityInheritance.Content.Projectiles
                     AMRextraTy = false;
                 }
             };
+        }
+        public void ElemQuiver(Projectile projectile)
+        {
+            Player player = Main.player[projectile.owner];
+            CalamityInheritancePlayer modPlayer = player.CIMod();
+            CalamityPlayer modPlayer1 = player.Calamity();
+
+            if (modPlayer.ElemQuiver
+                && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
+                && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 100f)
+            {
+                if (CIConfig.Instance.ElementalQuiverSplitstyle == 1)
+                {
+                    if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
+                    {
+                        float spread = 180f * 0.0174f;
+                        double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
+                        if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
+                        {
+                            int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            Main.projectile[projectile2].DamageType = DamageClass.Default;
+                            Main.projectile[projectile3].DamageType = DamageClass.Default;
+                            Main.projectile[projectile2].timeLeft = 60;
+                            Main.projectile[projectile3].timeLeft = 60;
+                            Main.projectile[projectile2].noDropItem = true;
+                            Main.projectile[projectile3].noDropItem = true;
+                        }
+                    }
+                }
+                if (CIConfig.Instance.ElementalQuiverSplitstyle == 2)
+                {
+                    if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
+                    {
+                        float spread = 180f * 0.0174f;
+                        double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
+                        if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
+                        {
+                            int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            Main.projectile[projectile2].DamageType = DamageClass.Default;
+                            Main.projectile[projectile3].DamageType = DamageClass.Default;
+                            Main.projectile[projectile2].noDropItem = true;
+                            Main.projectile[projectile3].noDropItem = true;
+                        }
+                    }
+                }
+                if (CIConfig.Instance.ElementalQuiverSplitstyle == 3)
+                {
+                    if (Main.rand.Next(200) > 198)
+                    {
+                        float spread = 180f * 0.0174f;
+                        double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
+                        if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
+                        {
+                            int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            Main.projectile[projectile2].DamageType = DamageClass.Default;
+                            Main.projectile[projectile3].DamageType = DamageClass.Default;
+                            Main.projectile[projectile2].timeLeft = 60;
+                            Main.projectile[projectile3].timeLeft = 60;
+                            Main.projectile[projectile2].noDropItem = true;
+                            Main.projectile[projectile3].noDropItem = true;
+                        }
+                    }
+                }
+                if (CIConfig.Instance.ElementalQuiverSplitstyle == 4)
+                {
+                    if (Main.rand.Next(200) > 198)
+                    {
+                        float spread = 180f * 0.0174f;
+                        double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
+                        if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200)
+                        {
+                            int projectile2 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            int projectile3 = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), projectile.type, (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                            Main.projectile[projectile2].DamageType = DamageClass.Default;
+                            Main.projectile[projectile3].DamageType = DamageClass.Default;
+                            Main.projectile[projectile2].noDropItem = true;
+                            Main.projectile[projectile3].noDropItem = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }

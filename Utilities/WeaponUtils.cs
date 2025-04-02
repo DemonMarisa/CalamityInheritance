@@ -1,9 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
+using Mono.Cecil;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Utilities
 {
@@ -79,7 +83,5 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
             target.AddBuff(ModContent.BuffType<Plague>(), 300);
         }
-
-        
     }
 }

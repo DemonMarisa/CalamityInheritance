@@ -38,12 +38,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<WulfrumBoltOld>();
+            Item.shoot = ModContent.ProjectileType<WulfrumStaffHoldOut>();
             Item.shootSpeed = 9f;
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-14, -1);
+            Item.noUseGraphic = true;
+            Item.channel = true;
         }
         public override bool CanUseItem(Player player)
         {
@@ -63,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
                 Item.UseSound = CISoundID.SoundStaffDiamond;
                 Item.useStyle = ItemUseStyleID.Shoot;
             }
-            return true;
+            return player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] <= 0; ;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

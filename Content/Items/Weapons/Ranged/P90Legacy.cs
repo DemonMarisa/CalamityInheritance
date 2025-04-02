@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Item.damage = 6;
                 Item.useTime = 2;
             }
-            return default;
+            return true;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

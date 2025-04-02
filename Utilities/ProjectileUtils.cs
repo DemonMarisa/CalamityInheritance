@@ -154,18 +154,23 @@ namespace CalamityInheritance.Utilities
                     boomerang.velocity.Y -= acceleration;
             }
         }
-        public static Vector2 GiveVelocity(float directionMult, float speedLowerLimit, float speedCap)
+        public static Vector2 GiveVelocity(float directionMult)
         {
-            Vector2 velocity = new Vector2(Main.rand.NextFloat(-directionMult, directionMult), Main.rand.NextFloat(-directionMult, directionMult));
-            //Rerolling to avoid dividing by zero
-            while (velocity.X == 0f && velocity.Y == 0f)
-            {
-                velocity = new Vector2(Main.rand.NextFloat(-directionMult, directionMult), Main.rand.NextFloat(-directionMult, directionMult));
-            }
+            Vector2 velocity = new Vector2(directionMult , directionMult);
             velocity.Normalize();
-            velocity *= Main.rand.NextFloat(speedLowerLimit, speedCap);
             return velocity;
         }
+        ///<summary>
+        ///用于手持射弹的使用判定
+        ///</summary>
+        public static bool CantUseHoldout(this Player player, bool needsToHold = true)
+        {
+            if (player != null && player.active && !player.dead && !(!player.channel && needsToHold) && !player.CCed)
+            {
+                return player.noItems;
+            }
 
+            return true;
+        }
     }
 }

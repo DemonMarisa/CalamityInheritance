@@ -1,4 +1,5 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -29,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.timeLeft = 30;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 1;
         }
 
         public override void AI()
@@ -40,42 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 SoundEngine.PlaySound(SoundID.Item74, Projectile.position);
                 Projectile.localAI[0] += 1f;
             }
-            bool flag15 = false;
-            bool flag16 = false;
-            if (Projectile.velocity.X < 0f && Projectile.position.X < Projectile.ai[0])
-            {
-                flag15 = true;
-            }
-            if (Projectile.velocity.X > 0f && Projectile.position.X > Projectile.ai[0])
-            {
-                flag15 = true;
-            }
-            if (Projectile.velocity.Y < 0f && Projectile.position.Y < Projectile.ai[1])
-            {
-                flag16 = true;
-            }
-            if (Projectile.velocity.Y > 0f && Projectile.position.Y > Projectile.ai[1])
-            {
-                flag16 = true;
-            }
-            if (flag15 && flag16)
-            {
-                Projectile.Kill();
-            }
-            float num461 = 15f;
-            if (Projectile.ai[0] > 180f)
-            {
-                num461 -= (Projectile.ai[0] - 180f) / 2f;
-            }
-            if (num461 <= 0f)
-            {
-                num461 = 0f;
-                Projectile.Kill();
-            }
-            num461 *= 0.7f;
-            Projectile.ai[0] += 4f;
-            int num462 = 0;
-            while (num462 < num461)
+            for (int i = 0; i < 20; i++)
             {
                 float num463 = Main.rand.Next(-30, 31);
                 float num464 = Main.rand.Next(-30, 31);
@@ -93,16 +59,12 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 dust.position.Y += Main.rand.Next(-10, 11);
                 dust.velocity.X = num463;
                 dust.velocity.Y = num464;
-                num462++;
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.Frostburn, 300);
-            target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.ExoDebuffs();
         }
     }
 }

@@ -22,13 +22,15 @@ namespace CalamityInheritance.CIPlayer
         {
             if (Player.whoAmI != Main.myPlayer)
                 return;
-            if (GodSlayerMelee && DartTimer == 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>()))
+            Player player = Main.LocalPlayer;
+            int weaponDamage = player.HeldItem.damage;
+            if (GodSlayerMelee && fireCD <= 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>()))
             {
-                int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
+                int finalDamage = 500 + weaponDamage / 2;
                 Vector2 getSpwanPos = new(Player.Center.Y, Player.Center.X);
-                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, Player.whoAmI);
-                DartTimer = 120;
+                Vector2 velocity = CIFunction.GiveVelocity(200f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
+                fireCD = 60;
             }
         }
         #endregion

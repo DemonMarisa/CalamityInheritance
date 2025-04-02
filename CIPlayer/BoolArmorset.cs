@@ -26,9 +26,6 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientTarragonSet = false;
         #endregion
         #region GodSlayer
-        public int GodSlayerDamagePool = 0;
-        public int GodSlayerDamage = 0;
-        public int DartCounts = 8;
         public bool GodSlayerMelee = false;
         public bool GodSlayerReborn = false;
         public bool GodSlayerDMGprotect = false;
@@ -207,10 +204,6 @@ namespace CalamityInheritance.CIPlayer
             #region GodSlayer
             GodSlayerDMGprotect = false;
             GodSlayerMelee = false;
-            GodSlayerDamagePool = 0;
-            GodSlayerDamage = 0;
-            DartTimer = 0;
-            DartCounts = 8;
             GodSlayerReflect = false;
             GodSlayerMagicSet = false;
             GodSlayerRangedSet = false;

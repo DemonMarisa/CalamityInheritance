@@ -30,13 +30,16 @@ namespace CalamityInheritance.CIPlayer
             //真近战或者近战的简化判定
             bool ifTrueMelee = proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
             bool ifMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>();
+            // 玩家手中武器伤害
+            Player player = Main.player[proj.owner];
+            int weaponDamage = player.HeldItem.damage;
             //弑神飞镖
-            if (usPlayer.GodSlayerMelee && usPlayer.DartTimer == 0 && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.DamageType == DamageClass.Melee || proj.DamageType == DamageClass.MeleeNoSpeed))
+            if (usPlayer.GodSlayerMelee && usPlayer.fireCD <= 0 && (ifMelee || ifTrueMelee))
             {
-                int dartDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(500));
-                Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, Player.whoAmI);
-                usPlayer.DartTimer = 120; 
+                int finalDamage = 500 + weaponDamage / 2;
+                Vector2 velocity = CIFunction.GiveVelocity(200f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
+                usPlayer.fireCD = 60; 
             }
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = proj.GetSource_FromThis();

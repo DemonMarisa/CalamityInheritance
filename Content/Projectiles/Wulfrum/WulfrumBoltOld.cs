@@ -23,15 +23,6 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.penetrate = 2;
             Projectile.DamageType = DamageClass.Magic;
         }
-        public override bool PreAI()
-        {
-            if (Main.zenithWorld)
-            {
-                
-            }
-            return default;
-        }
-
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, 0f, (255 - Projectile.alpha) * 0.1f / 255f, 0f);

@@ -156,7 +156,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
             //display projectile
             Projectile.rotation = Projectile.velocity.ToRotation();
-            Vector2 displayOffset = new Vector2(32, 0).RotatedBy(Projectile.rotation);
+            Vector2 displayOffset = new Vector2(12, 0).RotatedBy(Projectile.rotation);
+
             Projectile.Center = player.RotatedRelativePoint(player.MountedCenter, true) + displayOffset;
             if (Projectile.spriteDirection == -1)
                 Projectile.rotation += MathHelper.Pi;

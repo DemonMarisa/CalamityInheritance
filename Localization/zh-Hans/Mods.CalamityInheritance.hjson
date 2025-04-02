@@ -409,12 +409,8 @@ Configs: {
 		}
 
 		PBGColorType: {
-			Label: 名字彩蛋染色测试
-			Tooltip:
-				'''
-				默认, TrueScarlet, DemonMarisa, Shizuku, Kunoji Ichika, Plantare
-				Tristan, Baobhan Sith
-				'''
+			// Label: P B G Color Type
+			// Tooltip: ""
 		}
 	}
 

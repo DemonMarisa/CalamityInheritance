@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
                 if (hitCount >= 5 || target.life <= target.lifeMax * 0.15f)
                 {
-                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboomold>(), damageDone / 4, (int)Item.knockBack, Main.myPlayer);
                     hitCount = 0;
                 }
                 if (hitCount2 >= 2 || target.life <= target.lifeMax * 0.15f)
@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
                 if (target.life <= target.lifeMax * 0.05f)
                 {
-                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboompersistentold>(), damageDone, (int)Item.knockBack, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<Exoboomold>(), damageDone / 4, (int)Item.knockBack, Main.myPlayer);
                     hitCount = 0;
                 }
             }
