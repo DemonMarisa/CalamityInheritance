@@ -12,6 +12,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Buffs.Melee;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -29,6 +31,12 @@ namespace CalamityInheritance.CIPlayer
                 Vector2 velocity = CalamityUtils.RandomVelocity(100f, 100f, 100f);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity, ModContent.ProjectileType<GodSlayerDart>(), dartDamage, 0f, Player.whoAmI);
                 DartTimer = 120;
+            }
+            MeleePoints(hit, item);
+            //T2庇护: 物品击中敌人时使自己免疫防损
+            if (item.type == ModContent.ItemType<DefenseBlade>() && hit.Damage > 5 && DefendTier2 && Player.whoAmI == Main.myPlayer)
+            {
+                Player.AddBuff(ModContent.BuffType<DefenderBuff>(), 60);
             }
         }
         #endregion
@@ -54,71 +62,14 @@ namespace CalamityInheritance.CIPlayer
             RogueOnHit(projectile, target, hit, damageDone);
             //全局射弹
             GenericOnhit(projectile, target, hit, damageDone);
+            //熟练度升级
+            EarnPoints(hit, projectile);
             //debuff
-            DebuffOnHit(projectile, target, hit, damageDone);
-            //debuff
+            AddDebuff(projectile, target, ref hit);
+            LegendaryDamageTask(projectile, target, hit);
             //吸血射弹
             if (!projectile.npcProj && !projectile.trap && projectile.friendly)
                 ProjLifesteal(target, projectile, damageDone, hit.Crit);
-        }
-
-        public void DebuffOnHit(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            bool ifMelee = projectile.CountsAsClass<MeleeDamageClass>() || projectile.CountsAsClass<MeleeNoSpeedDamageClass>();
-            bool ifTrueMelee = projectile.CountsAsClass<TrueMeleeDamageClass>() || projectile.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
-            bool ifRogue = projectile.CountsAsClass<RogueDamageClass>();
-            bool ifSummon = projectile.CountsAsClass<SummonDamageClass>();
-            if (ifMelee || ifTrueMelee || ifRogue || projectile.CountsAsClass<SummonMeleeSpeedDamageClass>())
-            {
-                if (BuffStatsArmorShatter)
-                    CalamityUtils.Inflict246DebuffsNPC(target, ModContent.BuffType<Crumbling>());
-            }
-            if (ifMelee || ifTrueMelee)
-            {
-                if (ElemGauntlet)
-                {
-                    target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
-                    target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
-                    target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
-                    target.AddBuff(BuffID.Frostburn2, 300);
-                    target.AddBuff(BuffID.CursedInferno, 300);
-                    target.AddBuff(BuffID.Inferno, 300);
-                    target.AddBuff(BuffID.Venom, 300);
-                }
-            }
-            if (ifSummon)
-            {
-                if (NucleogenesisLegacy)
-                {
-                    target.AddBuff(BuffID.Electrified, 120);
-                    target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
-                    target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300, false);
-                    target.AddBuff(ModContent.BuffType<Irradiated>(), 300, false);
-                    target.AddBuff(ModContent.BuffType<Shadowflame>(), 300, false);
-                }
-            }
-            //北辰鹦哥鱼的射弹计数器
-            if (projectile.type == ModContent.ProjectileType<PolarStarLegacy>())
-                PolarisBoostCounter += 1;
-
-            #region Lore
-            if (LorePerforator)
-                target.AddBuff(BuffID.Ichor, 90);
-            if (LoreHive)
-                target.AddBuff(BuffID.CursedInferno, 90);
-                
-            if (LoreProvidence || PanelsLoreProvidence)
-                target.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
-
-            if (BuffStatsHolyWrath)
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
-
-            if (YharimsInsignia)
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
-
-            if (BuffStatsDraconicSurge && Main.zenithWorld)
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
-            #endregion
         }
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
         {
@@ -133,8 +84,6 @@ namespace CalamityInheritance.CIPlayer
         #region Lifesteal
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
-            CalamityGlobalProjectile modProj = proj.Calamity();
-
             if (Main.player[Main.myPlayer].lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaSet)

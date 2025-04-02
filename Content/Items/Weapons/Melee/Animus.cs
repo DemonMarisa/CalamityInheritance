@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Animus : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.scale = 2.25f;
             Item.damage = 2000;
             Item.useTurn = true;
-            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 11;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 11;
@@ -48,7 +48,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            //转为羸弱诅咒
+            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 300);
             int damageRan = Main.rand.Next(195); //0 to 194
             if (damageRan >= 50 && damageRan <= 99) //25%
             {
@@ -67,6 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 player.CIMod().AnimusDamage = 7.5f;
             }
             else if (damageRan >= 190 && damageRan <= 194) //5%
+
             {
                 player.CIMod().AnimusDamage = 12.5f;
             }

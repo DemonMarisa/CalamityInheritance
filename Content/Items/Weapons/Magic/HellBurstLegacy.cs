@@ -1,7 +1,4 @@
-using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Buffs.StatBuffs;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HellBurstLegacy : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

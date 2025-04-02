@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class BladeofEnmity : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.25f;

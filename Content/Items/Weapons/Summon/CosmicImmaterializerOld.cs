@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class CosmicImmaterializerOld : CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

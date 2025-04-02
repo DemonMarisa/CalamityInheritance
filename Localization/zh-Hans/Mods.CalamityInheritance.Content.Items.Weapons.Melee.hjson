@@ -438,3 +438,8 @@ AquaticDissolution: {
 	// DisplayName: Aquatic Dissolution
 	// Tooltip: ""
 }
+
+DefenseBlade: {
+	// DisplayName: Defense Blade
+	// Tooltip: ""
+}

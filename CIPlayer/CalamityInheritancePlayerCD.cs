@@ -51,6 +51,17 @@ namespace CalamityInheritance.CIPlayer
             if (DukeDefenseCounter > 0 && DukeDefenseTimer == 0)
                 DukeDefenseCounter--;
 
+            if (DefendTier1Timer > 0)
+            {
+                DefendTier1Timer--;
+            }
+            if (DefendTier1Timer == 0)
+            {
+                DefenseBoost -= 0.01f;
+                if (DefenseBoost < 0f)
+                    DefenseBoost = 0f;
+            }
+
             if (DartTimer > 0)
             {
                 //拥有dart的CD之后每次CD-1时都会降低当前的伤害。

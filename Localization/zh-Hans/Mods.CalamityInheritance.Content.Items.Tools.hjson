@@ -43,3 +43,8 @@ CrystylCrusherLegacy: {
 	// DisplayName: Crystyl Crusher Legacy
 	// Tooltip: ""
 }
+
+XerocPickaxe: {
+	// Tooltip: ""
+	// DisplayName: Xeroc Pickaxe
+}

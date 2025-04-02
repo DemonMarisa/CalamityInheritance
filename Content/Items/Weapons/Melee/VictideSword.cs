@@ -1,11 +1,6 @@
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Melee;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideSword: CIMelee, ILocalizedModType 
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
            Item.ResearchUnlockCount = 1;
@@ -25,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.damage = 20;
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 19;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 19;
             Item.useTurn = true;
             Item.knockBack = 4;

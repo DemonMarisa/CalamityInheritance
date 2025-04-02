@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
     public class TemporalUmbrellaOld : CISummon, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 4000 : 1000;
-        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

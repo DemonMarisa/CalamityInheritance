@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideYoyo: CIMelee, ILocalizedModType 
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useAnimation = 25;
             Item.autoReuse = true;
 
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item1;
             Item.channel = true;
             Item.noUseGraphic = true;

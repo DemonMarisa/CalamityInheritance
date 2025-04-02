@@ -97,6 +97,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 //如果敌怪在玩家头顶才取敌怪头顶
                 if (p.Center.Y > target.Center.Y)
                     posY = target.Center.Y - Main.rand.NextFloat(670f, 1000f);
+                //1/2概率修改为底下
+                if (Main.rand.NextBool())
+                    posY *= -1;
                 Vector2 pos = new (posX, posY);
                 Vector2 setSpeed = target.Center - pos;
                 setSpeed.X += Main.rand.NextFloat(-15f, 16f);

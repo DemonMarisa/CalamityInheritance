@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class SubsumingVortexold : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

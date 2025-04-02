@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class MeleeTypeEradicator : CIMelee, ILocalizedModType
     {
 
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public static float Speed = 9.0f;
         public override void SetStaticDefaults()
         {

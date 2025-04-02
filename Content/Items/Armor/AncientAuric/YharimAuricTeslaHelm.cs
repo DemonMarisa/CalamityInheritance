@@ -64,9 +64,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			#endregion
 			#region 标记为盗贼套装 
 			calPlayer.wearingRogueArmor = true;
-			calPlayer.rogueStealthMax += 1.50f;
 			calPlayer.WearingPostMLSummonerSet = true;
 			//继承制盗贼弑神盔甲
+			calPlayer.rogueStealthMax += 1.50f;
 			float getMaxStealth = calPlayer.rogueStealthMax;
             calPlayer.rogueStealthMax += getMaxStealth / 4;
 			#endregion

@@ -1,10 +1,5 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Rogue;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideBoomerangMelee: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class ApotheosisLegacy : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 777 : 377;
         public override void SetStaticDefaults()
         {

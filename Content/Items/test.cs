@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.CICooldowns;
 using CalamityMod.Cooldowns;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -18,7 +19,7 @@ namespace CalamityInheritance.Content.Items
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
 
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
 
         public override void SetDefaults()
         {

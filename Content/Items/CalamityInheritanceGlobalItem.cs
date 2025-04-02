@@ -1,4 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.UI;
@@ -8,10 +11,13 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
+using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.NPCs.VanillaNPCAIOverrides.Bosses;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
@@ -27,6 +33,29 @@ namespace CalamityInheritance.Content.Items
     {
         public override bool InstancePerEntity => true;
 
+        public override void OnConsumeItem(Item item, Player player)
+        {
+            int SHPC = ModContent.ItemType<DestroyerLegendary>();
+            //SHPCT2: 月总在场时饮用葡萄汁
+            if (item.type == ItemID.GrapeJuice && CIFunction.IsThereNpcNearby(NPCID.MoonLordHead, player, 3200f) && !player.CIMod().DestroyerTier2)
+                player.CIMod().DestroyerTier2 = CIFunction.FindInventoryItem(ref item, player, SHPC, 1);
+            //叶柳T2：持有弹药回收buff时于丛林处食用黄金菜肴
+            if (Main.LocalPlayer.ZoneJungle && player.FindBuffIndex(BuffID.AmmoReservation) != -1 && !player.CIMod().PlanteraTier2)
+                player.CIMod().PlanteraTier2 = CIFunction.FindInventoryItem(ref item, player, ModContent.ItemType<PlanteraLegendary>(), 1);
+            base.OnConsumeItem(item, player);
+        }
+        public override bool? UseItem(Item item, Player player)
+        {
+            int SHPC = ModContent.ItemType<DestroyerLegendary>();
+            var cplr = player.Calamity();
+            //SHPCT3: 召唤噬魂花……在吃下两个魔力上限物品后
+            if (item.type == ModContent.ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !player.CIMod().DestroyerTier3)
+                player.CIMod().DestroyerTier3 = CIFunction.FindInventoryItem(ref item, player, SHPC, 1);
+            //庇护之刃T3: 防御力大于320点时召唤神明吞噬者
+            if (item.type == ModContent.ItemType<CosmicWorm>() && !player.CIMod().DefendTier3 && player.statDefense >= 320)
+                player.CIMod().DefendTier3 = CIFunction.FindInventoryItem(ref item, player, ModContent.ItemType<DefenseBlade>(), 1);
+            return base.UseItem(item, player);
+        }
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {

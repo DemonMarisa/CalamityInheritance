@@ -6,11 +6,11 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
@@ -19,7 +19,6 @@ using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
-using CalamityMod.NPCs.Abyss;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
@@ -286,7 +285,13 @@ namespace CalamityInheritance.CIPlayer
             {
                 return true;
             }
-            // If no other effects occurred, run vanilla code
+            //孔雀翎T3: 攻击时提供的buff将使你有1/10的概率在3秒内彻底无敌。
+            if (PBGPower && player.ActiveItem().type == ModContent.ItemType<PBGLegendary>() && Main.rand.NextBool(10))
+            {
+                Player.immune = true;
+                Player.immuneTime = 180;
+                return true;
+            }
             return base.FreeDodge(info);
         }
         #endregion
@@ -350,6 +355,13 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CIMod();
+            //庇护刃T2: 尝试使你无视防御损伤
+            if (DefenderPower)
+            {
+                calPlayer.DealDefenseDamage(0, false);
+            }
+            if (Player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && !DefendTier2)
+                DefenseBladeTier2Task(hurtInfo);
             if (BuffPolarisBoost)
             {
                 PolarisBoostCounter -= 10;
@@ -521,128 +533,6 @@ namespace CalamityInheritance.CIPlayer
                 yharimArmorinvincibility = 60;
         }
         #endregion
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CIMod();
-
-            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
-            {
-                if ((modPlayer1.SCalLore || modPlayer1.PanelsSCalLore )&& target.type == ModContent.NPCType<ReaperShark>())
-                {
-                    modifiers.SetInstantKill();
-                }
-            }
-
-            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-            {
-                if (GodSlayerRangedSet && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
-                {
-                    int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
-                    if (randomChance > 1)
-                    {
-                        if(Main.rand.Next(1,101) <= randomChance)
-                        {
-                            hitInfo.Damage *= 2;
-                        }
-                    }
-                    else
-                    {
-                        if (Main.rand.NextBool(20))
-                        {
-                            hitInfo.Damage *= 4;
-                        }
-                    }
-                }
-                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-                else if (PerunofYharimStats && hitInfo.Crit)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Generic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-            };
-            if (SilvaMeleeSetLegacy)
-            {
-                //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    //Main.NewText($"造成伤害", 255, 255, 255);
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-            if (CIConfig.Instance.silvastun == true)
-            {
-                if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕TMp", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    SilvaStunDebuffCooldown = 1800;
-                }
-                if (proj.DamageType == DamageClass.Melee && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕mp", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    SilvaStunDebuffCooldown = 1800;
-                }
-            }
-        }
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer modPlayer1 = Player.CIMod();
-
-            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
-            {
-                if ((modPlayer1.SCalLore || modPlayer1.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
-                {
-                    modifiers.SetInstantKill();
-                }
-            }
-
-            if (SilvaMeleeSetLegacy)
-            {
-                //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
-                {
-                    //Main.NewText($"造成伤害", 255, 255, 255);
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-            if (CIConfig.Instance.silvastun == true)
-            {
-                if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕im", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    SilvaStunDebuffCooldown = 1800;
-                }
-            }
-
-            var source = Player.GetSource_ItemUse(item);
-
-            if (item.DamageType == DamageClass.Melee)
-            {
-                BuffStatsTitanScaleTrueMelee = 600;
-            }
-        }
  
         private void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
@@ -894,10 +784,10 @@ namespace CalamityInheritance.CIPlayer
                         {
                             int droppedLargeGem = Item.NewItem(source, (int)Player.position.X, (int)Player.position.Y, Player.width, Player.height, Player.inventory[i].type, 1, false, 0, false, false);
                             Main.item[droppedLargeGem].netDefaults(Player.inventory[i].netID);
-                            Main.item[droppedLargeGem].Prefix((int)Player.inventory[i].prefix);
+                            Main.item[droppedLargeGem].Prefix(Player.inventory[i].prefix);
                             Main.item[droppedLargeGem].stack = Player.inventory[i].stack;
-                            Main.item[droppedLargeGem].velocity.Y = (float)Main.rand.Next(-20, 1) * 0.2f;
-                            Main.item[droppedLargeGem].velocity.X = (float)Main.rand.Next(-20, 21) * 0.2f;
+                            Main.item[droppedLargeGem].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
+                            Main.item[droppedLargeGem].velocity.X = Main.rand.Next(-20, 21) * 0.2f;
                             Main.item[droppedLargeGem].noGrabDelay = 100;
                             Main.item[droppedLargeGem].favorited = false;
                             Main.item[droppedLargeGem].newAndShiny = false;
@@ -920,12 +810,12 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);
-            Player.headVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
-            Player.bodyVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
-            Player.legVelocity.Y = (float)Main.rand.Next(-40, -10) * 0.1f;
-            Player.headVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
-            Player.bodyVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
-            Player.legVelocity.X = (float)Main.rand.Next(-20, 21) * 0.1f + (float)(2 * 0);
+            Player.headVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
+            Player.bodyVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
+            Player.legVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
+            Player.headVelocity.X = Main.rand.Next(-20, 21) * 0.1f + 2 * 0;
+            Player.bodyVelocity.X = Main.rand.Next(-20, 21) * 0.1f + 2 * 0;
+            Player.legVelocity.X = Main.rand.Next(-20, 21) * 0.1f + 2 * 0;
             if (Player.stoned)
             {
                 Player.headPosition = Vector2.Zero;
@@ -934,7 +824,7 @@ namespace CalamityInheritance.CIPlayer
             }
             for (int j = 0; j < 100; j++)
             {
-                Dust.NewDust(Player.position, Player.width, Player.height, DustID.LifeDrain, (float)(2 * 0), -2f, 0, default, 1f);
+                Dust.NewDust(Player.position, Player.width, Player.height, DustID.LifeDrain, 2 * 0, -2f, 0, default, 1f);
             }
             Player.mount.Dismount(Player);
             Player.dead = true;
@@ -960,17 +850,7 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-       public void ModifyHitNPCBoth(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, DamageClass damageClass)
-        {
-            CalamityInheritancePlayer modPlayer = Player.CIMod();
-            if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
-            {
-                if ((modPlayer.SCalLore || modPlayer.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
-                {
-                    modifiers.SetInstantKill();
-                }
-            }
-        }
+       
 
     }
 }

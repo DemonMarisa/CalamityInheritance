@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class Celestusold : RogueWeapon, ILocalizedModType
     {
-        public string SetRoute => "Content.Items.Weapons";
+        public string SetRoute => $"{Generic.WeaponLocal}";
         public new string LocalizationCategory => $"{SetRoute}.Rogue";
         public override void SetStaticDefaults()
         {

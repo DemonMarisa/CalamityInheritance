@@ -2,9 +2,7 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PristineFuryLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public int frameCounter = 0;
         public int frame = 0;
         public static int BaseDamage = 77;

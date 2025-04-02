@@ -37,6 +37,7 @@ using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.DevourerofGods;
+using System.Text.RegularExpressions;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -107,6 +108,8 @@ namespace CalamityInheritance.CIPlayer
             //直接向玩家生成物品
             CISpawnItem();
 
+            
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
@@ -163,6 +166,31 @@ namespace CalamityInheritance.CIPlayer
             var usPlayer = Player.CIMod();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            //庇护之刃T3: 你的防御力将会被转化为伤害加成
+            if (player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && DefendTier3)
+            {
+                //获取当前
+                int getDef = Player.statDefense;
+                //以300防为例，这一计算会变成 300 * 0.001 = 0.3 / 3 = 0.1 * 4 =0.4, 最后转float变成0.4f, 即40%伤害
+                //我是Cerber
+                double getRatio = getDef * 0.001 / 3 * 4;
+                Player.GetDamage<MeleeDamageClass>() += (float)getRatio;
+
+            }
+            //海爵剑的T3buff
+            //10%伤害，10%攻速，5%暴击，1击退，1HP，20防御，10免伤，10移速
+            if (BrinyBuff)
+            {
+                Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
+                Player.GetKnockback<MeleeDamageClass>() += 1;
+                Player.GetCritChance<MeleeDamageClass>() += 5;
+                Player.statDefense += 20;
+                Player.lifeRegen += 2;
+                Player.endurance += 0.1f;
+                Player.moveSpeed += 0.1f;
+
+            }
             if (AncientAstralStatBuff) //星之铸造效果
             {
                 int getDef = Player.GetCurrentDefense();
@@ -942,6 +970,20 @@ namespace CalamityInheritance.CIPlayer
             if(IfCloneHtting) //大锤子如果正在攻击
             {
                 BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
+            }
+            if (Player.ActiveItem().type != ModContent.ItemType<DefenseBlade>())
+            {
+                if (DefenseBoost > 0f || DefendTier1Timer > 0)
+                {
+                    DefenseBoost = 0f;
+                    DefendTier1Timer = 0;
+                }
+            }
+            if (DefendTier1)
+            {
+                int b = Player.GetCurrentDefense();
+                int realDefense = (int)(b * DefenseBoost);
+                Player.statDefense += realDefense;  
             }
             if (!BuffPolarisBoost || Player.ActiveItem().type != ModContent.ItemType<PolarisParrotfishLegacy>())
             {
@@ -1740,6 +1782,7 @@ namespace CalamityInheritance.CIPlayer
                 BetsyTier1 = true;
                 DestroyerTier1 = true;
                 PlanteraTier1 = true;
+                DefendTier1 = true;
             }
             if (CIConfig.Instance.LegendaryBuff > 1)
             {
@@ -1748,6 +1791,8 @@ namespace CalamityInheritance.CIPlayer
                 BetsyTier2 = true;
                 DestroyerTier2 = true;
                 PlanteraTier2 = true;
+                PlanteraTier3 = true;
+                DefendTier2 = true;
             }
             if (CIConfig.Instance.LegendaryBuff > 2)
             {
@@ -1756,7 +1801,17 @@ namespace CalamityInheritance.CIPlayer
                 BetsyTier3 = true;
                 DestroyerTier3 = true;
                 PlanteraTier3 = true;
+                DefendTier3 = true;
             }
+            MeleeLevel = CIConfig.Instance.LevelUp;
+            RangedLevel= CIConfig.Instance.LevelUp;
+            MagicLevel = CIConfig.Instance.LevelUp;
+            SummonLevel= CIConfig.Instance.LevelUp;
+            RogueLevel = CIConfig.Instance.LevelUp;
+            //升级
+            UpdateLevel();
+            //熟练度处理
+            GiveBoost();
         }
     }
 }

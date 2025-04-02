@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PlanteraLegendary: CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -62,17 +62,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             //升级的Tooltip:
             if (mp.PlanteraTier1)
             {
-                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.PlanteraLegendary.TierOne");
+                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierOne");
                 tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
             }
             if (mp.PlanteraTier2)
             {
-                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.PlanteraLegendary.TierTwo");
+                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierTwo");
                 tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
             }
             if (mp.PlanteraTier1)
             {
-                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.PlanteraLegendary.TierThree");
+                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierThree");
                 tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
             }
             //以下，用于比较复杂的计算
@@ -141,7 +141,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     {
                         float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
                         float piArrowOffset = i - (pCounts - 1) / 2;
-                        if (piArrowOffset == 1/2) piArrowOffset += 1/2;
                         Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
                         Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                     }

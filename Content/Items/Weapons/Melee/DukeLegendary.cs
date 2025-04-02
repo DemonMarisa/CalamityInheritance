@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -64,17 +64,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             //升级的Tooltip:
             if (mp.DukeTier1)
             {
-                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierOne");
+                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierOne");
                 tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
             }
             if (mp.DukeTier2)
             {
-                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierTwo");
+                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierTwo");
                 tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
             }
             if (mp.DukeTier1)
             {
-                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.DukeLegendary.TierThree");
+                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierThree");
                 tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
             }
             //以下，用于比较复杂的计算

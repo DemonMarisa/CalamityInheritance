@@ -1,13 +1,14 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
 using MonoMod.ModInterop;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Tools
 {
-    public class XerocPickaxe: ModItem, ILocalizedModType
+    public class XerocPickaxe: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Tools";
         public override void SetStaticDefaults()
@@ -31,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.value = CIShopValue.RarityPriceRed;
             Item.autoReuse = true;
         }
+        public override float StealthDamageMultiplier => 10f;
         public override void AddRecipes()
         {
             CreateRecipe().

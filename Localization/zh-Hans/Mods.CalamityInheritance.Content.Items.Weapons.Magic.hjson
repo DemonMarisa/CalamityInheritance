@@ -292,10 +292,17 @@ FuckVoid: {
 }
 
 DestroyerLegendary: {
-	// Tooltip: ""
-	// DisplayName: Destroyer Legendary
-	// TierOne: "11"
-	// TierTwo: "222"
-	// TierThree: "333"
-	// LegendaryScaling: Buff
+	Tooltip:
+		'''
+		发射会停留在空中并引发巨大爆炸的相位激光球
+		右键发射强大的能量束
+		可随着游戏流程的进行得到增强
+		[c/4169E1:-传奇武器-]
+		[SCALING]
+		'''
+	DisplayName: SHPC[Legendary]
+	TierOne: "[c/4169E1:强化]:发射能量束时会发射一颗准许追踪的相位激光球"
+	TierTwo: "[c/4169E1:强化]:一次发射的相位激光球与高速激光的数量+2"
+	TierThree: "[c/4169E1:强化]:能量束不再消耗任何魔力值"
+	LegendaryScaling: "[c/4169E1:武器增强]: +{0} 武器伤害"
 }

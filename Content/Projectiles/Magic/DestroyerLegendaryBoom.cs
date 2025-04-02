@@ -27,11 +27,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void AI()
         {
-            if (Main.player[Projectile.owner].CIMod().DestroyerTier1)
-            {
-                Projectile.width = Projectile.height = 800;
-            }
-
             float lights = Main.rand.Next(90, 111) * 0.01f;
             lights *= Main.essScale;
             Lighting.AddLight(Projectile.Center, 5f * lights, 1f * lights, 4f * lights);
@@ -40,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 pTimer -= (Projectile.ai[0] - 180f) / 2f;
             }
-            if (pTimer <= 0f)
+            if (pTimer < 0f)
             {
                 pTimer = 0f;
                 Projectile.Kill();
@@ -57,13 +52,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 rAdj = r3 / rAdj;
                 r *= rAdj;
                 r2 *= rAdj;
-                int rDust = Main.rand.Next(3);
-                rDust = rDust switch
-                {
-                    0 => 246,
-                    1 => 73,
-                    _ => 187,
-                };
+                int rDust = 246;
+                if (Main.rand.NextBool())
+                    rDust = 73;
+                if (Main.rand.NextBool())
+                    rDust = 187;
 
                 int boom = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, rDust, 0f, 0f, 100, default, 2f);
                 Main.dust[boom].noGravity = true;

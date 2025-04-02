@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ElementalExcalibur : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         private static int BaseDamage = 4000;
         private int BeamType = 0;
         private const int alpha = 50;

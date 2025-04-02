@@ -64,5 +64,33 @@ namespace CalamityInheritance.Utilities
                 projectile.frame = 0;
             return projectile.frame;
         }
+        /// <summary>
+        /// 指定区域寻找特定物品
+        /// </summary>
+        /// <param name="item">物品组</param>
+        /// <param name="p">玩家</param>
+        /// <param name="tar">指定物品</param>
+        /// <param name="area">区域，1: 背包 2: 盔甲栏</param>
+        /// <returns>真: 寻找成功</returns>
+        public static bool FindInventoryItem(ref Item item, Player p, int tar, int area)
+        {
+            const int isInventory = 1;
+            const int isArmor = 2;
+            bool flag = false;
+            switch (area)
+            {
+                case isInventory:
+                    for (int i = 0; i < p.inventory.Length; i++)
+                        if (item.type == tar)
+                            flag = true;
+                    break;
+                case isArmor:
+                    for (int i = 0; i < p.armor.Length; i++)
+                        if (item.type == tar)
+                            flag = true;
+                    break;
+            }
+            return flag;
+        }
     }
 }

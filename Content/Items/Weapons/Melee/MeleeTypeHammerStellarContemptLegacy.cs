@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("StellarContemptOld")]
     public class MeleeTypeHammerStellarContemptLegacy : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 

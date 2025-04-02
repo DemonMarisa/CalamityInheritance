@@ -1,5 +1,3 @@
-using CalamityMod.Items.Weapons.Melee;
-using log4net.Core;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -235,7 +233,7 @@ namespace CalamityInheritance.Texture
 
             //庇护
             AegisCal = ModContent.Request<Texture2D>            ($"{CalMeleeWeaponRoute}/AegisBlade");
-            AegisAlt = ModContent.Request<Texture2D>            ($"{CIMeleeExtraRoute}/AegisBladeLegacy");
+            AegisAlt = ModContent.Request<Texture2D>            ($"{CIMeleeWeaponRoute}/DefenseBlade");
 
 
             //月明链刃

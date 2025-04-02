@@ -97,6 +97,9 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Arcueid{ get; set; }
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool Kunoji{ get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
@@ -143,5 +146,11 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(1)]
         [Slider]
         public int LegendaryBuff{ get; set; }
+        [Range(1, 15)]
+        [Increment(1)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        [Slider]
+        public int LevelUp{ get; set; }
     }
 }

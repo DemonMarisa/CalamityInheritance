@@ -80,3 +80,12 @@ Arcueid: {
 		'''
 	DisplayName: 音乐盒(月姫：re)
 }
+
+Kunoji: {
+	DisplayName: 音乐盒(久远寺家的早餐)
+	Tooltip:
+		'''
+		播放 [c/4F4F4F:-久遠寺邸で朝食を-](03:21) 由 深澤秀行 制作
+		"童话的气息..."
+		'''
+}

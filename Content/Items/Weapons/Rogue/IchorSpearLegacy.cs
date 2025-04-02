@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class IchorSpearLegacy : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

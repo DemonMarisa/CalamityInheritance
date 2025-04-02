@@ -141,7 +141,8 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
+            if (Projectile.ai[0] != 0f)
+                SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
             for (int j = 0; j < 5; j++)
             {
                 int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Butterfly, 0f, 0f, 100, default, 1.5f);

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class TerraShiv : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee.Shortsword";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

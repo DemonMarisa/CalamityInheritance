@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ChargedDartRifle : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

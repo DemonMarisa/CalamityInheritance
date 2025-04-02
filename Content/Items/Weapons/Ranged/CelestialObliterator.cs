@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class CelestialObliterator : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         private int shot;
 
         private int burst;

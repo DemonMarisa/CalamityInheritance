@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class PBGLegendary: RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public int BaseDamage = 70;
         public override void SetStaticDefaults()
         {
@@ -67,17 +67,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             //升级的Tooltip:
             if (mp.PBGTier1)
             {
-                string t1 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierOne");
+                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierOne");
                 tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
             }
             if (mp.PBGTier2)
             {
-                string t2 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierTwo");
+                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierTwo");
                 tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
             }
             if (mp.PBGTier1)
             {
-                string t3 = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Rogue.PBGLegendary.TierThree");
+                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierThree");
                 tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
             }
             //以下，用于比较复杂的计算

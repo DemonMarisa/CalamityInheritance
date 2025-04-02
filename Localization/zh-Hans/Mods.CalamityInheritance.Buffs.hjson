@@ -162,3 +162,18 @@ SMarbleSwordBuff: {
 	// DisplayName: S Marble Sword Buff
 	// Description: Mods.CalamityInheritance.Buffs.SMarbleSwordBuff.Description
 }
+
+DefenderBuff: {
+	// DisplayName: Defender Buff
+	// Description: Mods.CalamityInheritance.Buffs.DefenderBuff.Description
+}
+
+DukeBuff: {
+	// DisplayName: Duke Buff
+	// Description: Mods.CalamityInheritance.Buffs.DukeBuff.Description
+}
+
+PBGBuff: {
+	// DisplayName: P B G Buff
+	// Description: Mods.CalamityInheritance.Buffs.PBGBuff.Description
+}

@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Warblade : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -31,8 +31,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.noMelee = false;
-            Item.noUseGraphic = false;
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
