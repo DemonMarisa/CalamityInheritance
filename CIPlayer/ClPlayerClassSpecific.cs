@@ -5,10 +5,13 @@ using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
@@ -142,15 +145,15 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.GodSlayerSummonSet)
+            if (usPlayer.GodSlayerSummonSet && proj.DamageType != DamageClass.Generic)
             {
                 if (usPlayer.fireCD > 0)
                 {
                     return;
                 }
-                usPlayer.fireCD = 2;
+                usPlayer.fireCD = 3;
                 player = Main.player[proj.owner];
-                int weaponDamage = player.HeldItem.damage;
+                int weaponDamage = player.ActiveItem().damage;
                 int finalDamage = 400 + weaponDamage / 2;
 
                 int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
@@ -291,6 +294,65 @@ namespace CalamityInheritance.CIPlayer
                 }
                 SparkTimer = 10;
             }
+        }
+
+        public void AddDebuff(Projectile p, NPC tar, ref NPC.HitInfo hit)
+        {
+        bool ifMelee = p.CountsAsClass<MeleeDamageClass>() || p.CountsAsClass<MeleeNoSpeedDamageClass>();
+            bool ifTrueMelee = p.CountsAsClass<TrueMeleeDamageClass>() || p.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+            bool ifRogue = p.CountsAsClass<RogueDamageClass>();
+            bool ifSummon = p.CountsAsClass<SummonDamageClass>();
+            if (ifMelee || ifTrueMelee || ifRogue || p.CountsAsClass<SummonMeleeSpeedDamageClass>())
+            {
+                if (BuffStatsArmorShatter)
+                    CalamityUtils.Inflict246DebuffsNPC(tar, ModContent.BuffType<Crumbling>());
+            }
+            if (ifMelee || ifTrueMelee)
+            {
+                if (ElemGauntlet)
+                {
+                    tar.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
+                    tar.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
+                    tar.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
+                    tar.AddBuff(BuffID.Frostburn2, 300);
+                    tar.AddBuff(BuffID.CursedInferno, 300);
+                    tar.AddBuff(BuffID.Inferno, 300);
+                    tar.AddBuff(BuffID.Venom, 300);
+                }
+            }
+            if (ifSummon)
+            {
+                if (NucleogenesisLegacy)
+                {
+                    tar.AddBuff(BuffID.Electrified, 120);
+                    tar.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
+                    tar.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300, false);
+                    tar.AddBuff(ModContent.BuffType<Irradiated>(), 300, false);
+                    tar.AddBuff(ModContent.BuffType<Shadowflame>(), 300, false);
+                }
+            }
+            //北辰鹦哥鱼的射弹计数器
+            if (p.type == ModContent.ProjectileType<PolarStarLegacy>())
+                PolarisBoostCounter += 1;
+
+            #region Lore
+            if (LorePerforator)
+                tar.AddBuff(BuffID.Ichor, 90);
+            if (LoreHive)
+                tar.AddBuff(BuffID.CursedInferno, 90);
+                
+            if (LoreProvidence || PanelsLoreProvidence)
+                tar.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
+
+            if (BuffStatsHolyWrath)
+                tar.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+
+            if (YharimsInsignia)
+                tar.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
+
+            if (BuffStatsDraconicSurge && Main.zenithWorld)
+                tar.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
+            #endregion
         }
     }
 

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class DragonBowFlameRework: ModProjectile, ILocalizedModType 
     {
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Ranged/DragonBowFlame";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Ranged/DragonBowFlame";
         public override void SetDefaults()
         {
             Projectile.width = 18;

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class SupernovaHoming : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()
         {

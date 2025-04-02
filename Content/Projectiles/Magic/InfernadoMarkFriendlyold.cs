@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class InfernadoMarkFriendlyold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public static readonly SoundStyle FlareSound = new("CalamityMod/Sounds/Custom/Yharon/YharonInfernado");
 

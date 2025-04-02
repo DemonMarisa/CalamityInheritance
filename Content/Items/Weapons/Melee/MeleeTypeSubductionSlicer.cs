@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("SubductionSlicerMelee")]
     public class MeleeTypeSubductionSlicer : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

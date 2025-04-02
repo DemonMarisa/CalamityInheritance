@@ -10,13 +10,16 @@ using CalamityMod;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class PBGLegendary: RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public int BaseDamage = 70;
         public override void SetStaticDefaults()
         {
@@ -56,6 +59,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Item.UseSound = CISoundID.SoundWeaponSwing;
             }
             return true;
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.PBGTier1)
+            {
+                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.PBGTier2)
+            {
+                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.PBGTier1)
+            {
+                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            float getdmg = LegendaryDamage();
+            int boostPercent = (int)(getdmg * 100);
+            string update = this.GetLocalization("LegendaryScaling").Format(
+                boostPercent.ToString()
+            );
+            tooltips.FindAndReplace("[SCALING]", update);
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

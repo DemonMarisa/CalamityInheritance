@@ -80,3 +80,8 @@ YharimsStimulants: {
 	DisplayName: Yharim's Stimulants
 	Tooltip: Gives decent buffs to ALL offensive and defensive stats
 }
+
+Bread: {
+	DisplayName: Bread
+	Tooltip: ""
+}

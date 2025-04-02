@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityMod.Particles;
 using Terraria.Audio;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -15,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public int HitCounter = 0;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle Hitsound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { PitchVariance = 0.4f, Volume = 0.5f };
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/LumiStriker";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/LumiStriker";
         public override void SetDefaults()
         {
             Projectile.width = 86;

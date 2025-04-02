@@ -15,7 +15,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly float DefenseDamageResistance = 0.01f;
         //75%提防御对那个时候本来也没啥，但是搬到现在配上数值爆破级别的武器和收缩的更惨的boss伤害直接就炸了
         //反正我已经给常驻1%防损量了, ban掉免伤+降低这个值也没什么
-        //public static readonly float DefenseMultipler = 0.75f; //提高75%防御值
         public static readonly float DefenseMultipler = 0.35f; //提高35%防御值
         //附：这个-50%的伤害对现在的武器来说根本不是事，
         //因为就嘉登心这个时期的武器就算-50%伤害也能打出比原灾更高的dps

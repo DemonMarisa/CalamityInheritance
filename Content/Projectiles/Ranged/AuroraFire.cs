@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class AuroraFireLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         private const int framesBeforeTurning = 70;
         private bool initialized = false;

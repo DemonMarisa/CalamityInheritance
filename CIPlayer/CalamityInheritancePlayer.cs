@@ -18,6 +18,8 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Core;
+using CalamityInheritance.System.Configs;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -87,6 +89,17 @@ namespace CalamityInheritance.CIPlayer
         public bool DestroyerTier1 = false;
         public bool DestroyerTier2 = false;
         public bool DestroyerTier3 = false;
+        /*庇护之刃升级存储
+        *T1: 射弹攻击时提升1%防御属性，最高提高25%
+        *T2: 刀片击中敌人时无视防御损伤
+        *T3: 你的防御力将会转化为伤害
+        */
+        public bool DefendTier1 = false;
+        public bool DefendTier2 = false;
+        public bool DefendTier3 = false;
+        public int DefendTier1Timer = 0;
+        public float DefenseBoost = 0f;
+        public int DefendTier2Pool = 0;
         
         public bool PBGLegendaryDyeable = false;
         public Color PBGBeamColor;
@@ -184,9 +197,12 @@ namespace CalamityInheritance.CIPlayer
             AnimusDamage = 1f;
             //这个用于传奇物品的总伤害计数
             DamagePool = 0;
+            DefendTier1Timer = 0;
+            DefenseBoost = 0f;
         }
         public override void PostUpdate()
         {
+            
         }
         #region TeleportMethods
         public static Vector2? GetJunglePosition(Player player)

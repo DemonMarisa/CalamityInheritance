@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -14,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public int HitCounter = 0;
         public bool GrantsHoming = false;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/PBGLegendary";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/PBGLegendary";
         public override void SetDefaults()
         {
             Projectile.width = 12;

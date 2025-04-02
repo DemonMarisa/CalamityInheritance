@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ExoFlail : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
 
         public static float Speed = 34f;
 
@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/ExoFlailGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/ExoFlailGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

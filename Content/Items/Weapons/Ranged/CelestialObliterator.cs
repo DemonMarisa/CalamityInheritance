@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class CelestialObliterator : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         private int shot;
 
         private int burst;
@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/CelestialObliteratorGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/CelestialObliteratorGlow").Value);
         }
         public override Vector2? HoldoutOffset()
         {

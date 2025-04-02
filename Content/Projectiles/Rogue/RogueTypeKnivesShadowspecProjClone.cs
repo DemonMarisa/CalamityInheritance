@@ -6,13 +6,14 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeKnivesShadowspecProjClone: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Rogue/RogueTypeKnivesShadowspecProj";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Rogue/RogueTypeKnivesShadowspecProj";
         public static readonly float Acceleration = 0.98f; //飞行加速度
         public int HitCounts = 0;
         public override void SetStaticDefaults()

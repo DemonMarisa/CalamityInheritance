@@ -11,13 +11,14 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SupernovaBombold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/Supernovaold";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Supernovaold";
 
         public override void SetStaticDefaults()
         {

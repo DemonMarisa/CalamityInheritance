@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
     public class MountedScannerLaserLegacy : BaseLaserbeamProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content/Projectiles/Summon";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public int OwnerIndex
         {

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -17,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeEradicatorProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeEradicator";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeEradicator";
         public static readonly float ChasingRange = 60000f;
         public static readonly float ChasingSpeed = 24f;
         private static float RotationIncrement = 0.15f;
@@ -121,7 +122,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void PostDraw(Color lightColor)
         {
             Vector2 origin = new Vector2(31f, 29f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeEradicatorGlow").Value,
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MeleeTypeEradicatorGlow").Value,
                                   Projectile.Center - Main.screenPosition,
                                   null,
                                   Color.White,

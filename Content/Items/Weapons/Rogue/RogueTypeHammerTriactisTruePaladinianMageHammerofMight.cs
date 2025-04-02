@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     [LegacyName("RogueTypeTriactisTruePaladinianMageHammerofMight")]
     public class RogueTypeHammerTriactisTruePaladinianMageHammerofMight : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         
         public static readonly int HammerDamage = CIServerConfig.Instance.ShadowspecBuff ? 4500 : 1750;
         public override void SetStaticDefaults()

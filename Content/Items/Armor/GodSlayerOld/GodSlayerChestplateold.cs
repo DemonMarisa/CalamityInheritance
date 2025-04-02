@@ -7,6 +7,8 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityInheritance.Core;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {

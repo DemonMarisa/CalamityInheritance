@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SomeRandomGirls
                 if (npc.CanBeChasedBy(Projectile, false))
                 {
                     float targetDist = Vector2.Distance(npc.Center, Projectile.Center);
-                    if ((!canAttack && targetDist < maxTargetDist) && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
+                    if (!canAttack && targetDist < maxTargetDist && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height))
                     {
                         targetCenter = npc.Center;
                         canAttack = true;
@@ -124,7 +124,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SomeRandomGirls
                     if (nPC2.CanBeChasedBy(Projectile, false))
                     {
                         float targetDist = Vector2.Distance(nPC2.Center, Projectile.Center);
-                        if ((!canAttack && targetDist < maxTargetDist) && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, nPC2.position, nPC2.width, nPC2.height))
+                        if (!canAttack && targetDist < maxTargetDist && Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, nPC2.position, nPC2.width, nPC2.height))
                         {
                             maxTargetDist = targetDist;
                             targetCenter = nPC2.Center;

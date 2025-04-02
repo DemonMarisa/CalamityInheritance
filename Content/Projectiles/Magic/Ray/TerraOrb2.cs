@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class TerraOrb2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");

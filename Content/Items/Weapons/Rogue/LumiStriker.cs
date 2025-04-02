@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class LumiStriker: RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public static readonly SoundStyle ThrowSound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { Volume = 0.3f, PitchVariance = 0.3f };
         public override void SetStaticDefaults()
         {

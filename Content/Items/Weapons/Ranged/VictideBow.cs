@@ -11,11 +11,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class VictideBow: CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Seabow");
-            // Tooltip.SetDefault("Fires slow-moving water blasts");
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

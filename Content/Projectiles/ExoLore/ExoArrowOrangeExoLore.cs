@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         private float SizeVariance;
         private float SizeBonus = 2;
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
+        public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = 5;

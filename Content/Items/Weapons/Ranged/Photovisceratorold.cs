@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     {
         public int OwnerIndex;
         public Player Owner => Main.player[OwnerIndex];
-        public new string LocalizationCategory => "Content.Items.Weapons.Ranged";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public const float AmmoNotConsumeChance = 0.9f;
         private const float AltFireShootSpeed = 17f;
         private int PhotoLight;
@@ -149,7 +149,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Ranged/PhotovisceratoroldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PhotovisceratoroldGlow").Value);
         }
         public override void AddRecipes()
         {

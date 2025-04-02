@@ -211,6 +211,10 @@ VictideBoomerangRogue: {
 PBGLegendary: {
 	Tooltip: ""
 	DisplayName: Malatche Legendary
+	TierOne: "11"
+	TierTwo: "222"
+	TierThree: "333"
+	LegendaryScaling: "1111"
 }
 
 EclipseSpear: {

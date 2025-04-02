@@ -8,13 +8,14 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Texture;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PBGLegendaryProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/PBGLegendary";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/PBGLegendary";
         public override void SetDefaults()
         {
             Projectile.width = 12;

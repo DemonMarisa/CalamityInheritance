@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
@@ -14,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class PhantasmalRuinProjold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/PhantasmalRuinold";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/PhantasmalRuinold";
 
         private const int Lifetime = 600;
         private const int FramesPerSubProjectile = 13;

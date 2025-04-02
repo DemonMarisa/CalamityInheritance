@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class SparkInfernalold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()
         {

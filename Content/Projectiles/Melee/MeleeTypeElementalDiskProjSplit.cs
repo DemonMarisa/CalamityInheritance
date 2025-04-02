@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class MeleeTypeElementalDiskProjSplit : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeElementalDisk";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeElementalDisk";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

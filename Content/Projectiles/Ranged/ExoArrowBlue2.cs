@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoArrowBlue2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/LaserProj";
+        public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
 
         public override void SetDefaults()
         {

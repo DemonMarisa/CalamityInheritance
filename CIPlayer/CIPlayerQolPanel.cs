@@ -432,31 +432,17 @@ namespace CalamityInheritance.CIPlayer
             tag["CIExoLoreType"] = ExoPanelType;
 
             tag["CIScalLoreType"] = SCalPanelType;
-            //孔雀翎样式增强保存
-            
-            tag.Add("PBGTier1", PBGTier1);
-            tag.Add("PBGTier2", PBGTier2);
-            tag.Add("PBGTier3", PBGTier3);
-            tag.Add("DukeTier1", DukeTier1);
-            tag.Add("DukeTier2", DukeTier2);
-            tag.Add("DukeTier3", DukeTier3);
-            tag.Add("BetsyTier1", BetsyTier1);
-            tag.Add("BetsyTier2", BetsyTier2);
-            tag.Add("BetsyTier3", BetsyTier3);
-            tag.Add("PlanteraTier1", PlanteraTier1);
-            tag.Add("PlanteraTier2", PlanteraTier2);
-            tag.Add("PlanteraTier3", PlanteraTier3);
-            tag.Add("DestroyerTier1", DestroyerTier1);
-            tag.Add("DestroyerTier2", DestroyerTier2);
-            tag.Add("DestroyerTier3", DestroyerTier3);
-            
-
-            // 禁止生成
+            //熟练度存储
+            ProficiencySaveData(ref tag); 
+            //传奇物品样式保存
+            LegendarySaveData(ref tag);
+            //禁止生成
             tag.Add("CISulphurSeaType", SulphurSeaType);
             tag.Add("CISeaPanelType", SeaPanelType);
             tag.Add("CICorruptionPanelType", CorruptionPanelType);
             tag.Add("CICrimsonPanelType", CrimsonPanelType);
             tag.Add("CIUnderworldPanelType", UnderworldPanelType);
+            
 
         }
 
@@ -550,22 +536,8 @@ namespace CalamityInheritance.CIPlayer
             UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
 
             PanelsLoreExo = tag.GetBool("PanelsLoreExo");
-            tag.TryGet("PBGTier1",        out PBGTier1);
-            tag.TryGet("PBGTier2",        out PBGTier2);
-            tag.TryGet("PBGTier3",        out PBGTier3);
-            tag.TryGet("DukeTier1",       out DukeTier1);
-            tag.TryGet("DukeTier2",       out DukeTier2);
-            tag.TryGet("DukeTier3",       out DukeTier3);
-            tag.TryGet("PlanteraTier1",   out PlanteraTier1);
-            tag.TryGet("PlanteraTier2",   out PlanteraTier2);
-            tag.TryGet("PlanteraTier3",   out PlanteraTier3);
-            tag.TryGet("BetsyTier1",      out BetsyTier1);
-            tag.TryGet("BetsyTier2",      out BetsyTier2);
-            tag.TryGet("BetsyTier3",      out BetsyTier3);
-            tag.TryGet("DestroyerTier1",  out DestroyerTier1);
-            tag.TryGet("DestroyerTier2",  out DestroyerTier2);
-            tag.TryGet("DestroyerTier3",  out DestroyerTier3);
-
+            ProficiencyLoadData(ref tag);
+            LegendaryLoadData(ref tag);    
         }
     }
 }

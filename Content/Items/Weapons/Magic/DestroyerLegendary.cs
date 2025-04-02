@@ -10,12 +10,15 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DestroyerLegendary: CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -43,6 +46,37 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             damage *= (BaseDamage + LegendaryBuff()) / BaseDamage;
+        }
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player p = Main.LocalPlayer;
+            var mp = p.CIMod();
+            //升级的Tooltip:
+            if (mp.DestroyerTier1)
+            {
+                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierOne");
+                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
+            }
+            if (mp.DestroyerTier2)
+            {
+                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierTwo");
+                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
+            }
+            if (mp.DestroyerTier1)
+            {
+                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierThree");
+                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
+            }
+            //以下，用于比较复杂的计算
+            int boostPercent = LegendaryBuff();
+            string update = this.GetLocalization("LegendaryScaling").Format(
+                boostPercent.ToString()
+            );
+            tooltips.FindAndReplace("[SCALING]", update);
         }
         public override bool CanUseItem(Player player)
         {
@@ -84,7 +118,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 {
                     float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
                     float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
-                    Projectile.NewProjectile(source, position.X, position.Y, velX, velY, ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
+                    
+                    Projectile.NewProjectile(source, position, new(velX,velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
+                }
+                if(p.fireCD == 0)
+                {
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 1f);
+                    p.fireCD = 60;
                 }
                 return false;
             }
@@ -96,6 +136,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     float velY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                     Projectile.NewProjectile(source, position.X, position.Y, velX, velY, ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(damage * 1.1), knockback, player.whoAmI, 0f, 0f);
                 }
+                
                 return false;
             }
         }

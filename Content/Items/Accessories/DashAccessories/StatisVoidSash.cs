@@ -37,8 +37,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
             player.GetDamage<GenericDamageClass>() += 0.10f;
-            //Scarlet:移除栏位加成，伤害加成上调至10%，移除暴击概率加成（已经够多了)
-            player.jumpSpeedBoost += 3.2f;
+            player.jumpSpeedBoost += 1.6f;
             player.moveSpeed += 0.10f;
             player.spikedBoots = 2;
             player.noFallDmg = true;

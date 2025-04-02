@@ -226,7 +226,10 @@ TheSpongetest: {
 		[c/7DDA58:继承于阴阳吸星石[Legacy][c/7DDA58:]][i:CalamityInheritance/TheAbsorberOld]
 		使你免疫击退
 		你会反击来犯的敌人, 且吸收敌人攻击6.25%伤害并将其转化为对你的治疗
-		[c/FFA500:在配置文件启用'化棉留香石启用护盾'时将额外启用下方的效果]
+		[c/FFA500:在配置文件启用'化棉留香石启用护盾'时将启用额外的效果]
+		'''
+	Details:
+		'''
 		佩戴时激活一个耐久度与生命值上限相关的护盾。(最低800点)
 		护盾在玩家不承受伤害的一段时间后会自主进行充能
 		护盾吸收的伤害不会移除至玩家的生命值，且吸收成功时只削减肾上腺素50%充能
@@ -399,8 +402,8 @@ ShrineMarble: {
 }
 
 ShrineMarnite: {
-	// DisplayName: Shrine Marnite
-	// Tooltip: ""
+	DisplayName: 不稳定核心[Legacy]
+	Tooltip: 暴击时生成电火花
 }
 
 ShrineMushroom: {

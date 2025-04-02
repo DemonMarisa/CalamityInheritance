@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
 
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()
         {

@@ -413,11 +413,20 @@ VictideBoomerangMelee: {
 }
 
 DukeLegendary: {
-	Tooltip: ""
+	Tooltip: "[SCALING]"
 	DisplayName: Duke Legendary
+	LegendaryScaling: has update {0} power
+	TierOne: Tier1
+	TierTwo: Tier2
+	TierThree: Tier3
 }
 
 AquaticDissolution: {
 	DisplayName: Aquatic Dissolution
+	Tooltip: ""
+}
+
+DefenseBlade: {
+	DisplayName: Defense Blade
 	Tooltip: ""
 }

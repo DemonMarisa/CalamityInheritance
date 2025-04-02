@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class BrimlashBusterProjClone: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/Melee/BrimlashBusterProj";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/BrimlashBusterProj";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;

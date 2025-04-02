@@ -1,6 +1,4 @@
-﻿using CalamityMod.Items.Accessories;
-using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.PointsToAnalysis;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -86,79 +84,88 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> MOABCalamity;
         public static Asset<Texture2D> MOABAlter;
         #endregion
+        #region 盔甲
+        //弑神
+
+        #endregion
+        #endregion
+        #region 路径
+        public static string CIExtraRoute => "CalamityInheritance/Texture"; 
+        public static string CIItemsRoute => "CalamityInheritance/Content/Items";
+        public static string CalItemsRoute => "CalamityMod/Items";
         #endregion
         public static void LoadTexture()
         {
-            RemovedGlowMask = ModContent.Request<Texture2D>("CalamityInheritance/Texture/FuckGlowMask");
+            RemovedGlowMask = ModContent.Request<Texture2D>($"{CIExtraRoute}/FuckGlowMask");
             #region 钨钢家族
-            WulfrumAxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxeNew");
-            WulfrumHammerNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammerNew");
-            WulfrumPickaxeNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxeNew");
+            WulfrumAxeNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumAxeNew");
+            WulfrumHammerNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumHammerNew");
+            WulfrumPickaxeNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumPickaxeNew");
 
-            WulfrumAxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumAxe");
-            WulfrumHammerOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumHammer");
-            WulfrumPickaxeOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Tools/WulfrumPickaxe");
+            WulfrumAxeOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumAxe");
+            WulfrumHammerOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumHammer");
+            WulfrumPickaxeOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumPickaxe");
             #endregion
             //元素手套
-            ElemGloveCal = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Melee/ElementalGauntletold");
-            ElemGloveAlt = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/ElemGloveAlt");
+            ElemGloveCal = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Melee/ElementalGauntletold");
+            ElemGloveAlt = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/ElemGloveAlt");
             #region 壁垒
-            RampartofDeitiesNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/CIRampartofDeities");
-            RampartofDeitiesOld = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/RampartofDeitiesOld");
+            RampartofDeitiesNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/CIRampartofDeities");
+            RampartofDeitiesOld = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/RampartofDeitiesOld");
             #endregion
             #region 空灵护符
-            EtherealTalismanNew = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/EtherealTalisman");
-            EtherealTalismanOld = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Accessories/Magic/AncientEtherealTalisman");
+            EtherealTalismanNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Magic/EtherealTalisman");
+            EtherealTalismanOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Magic/AncientEtherealTalisman");
             #endregion
 
             #region 无记名灵基
             FateGirlOriginal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Pets/DaawnlightSpiritOriginMinion");
             FateGirlOriginalBuff = ModContent.Request<Texture2D>("CalamityMod/Buffs/Pets/ArcherofLunamoon");
-            FateGirlLegacy = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlReal"); 
-            FateGirlLegacyBuff = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Summon/FateGirlBuff");
+            FateGirlLegacy = ModContent.Request<Texture2D>($"{CIExtraRoute}/Summon/FateGirlReal"); 
+            FateGirlLegacyBuff = ModContent.Request<Texture2D>($"{CIExtraRoute}/Summon/FateGirlBuff");
             #endregion
             
             #region 材料
-            GS = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/GalacticaSingularity");
-            GSAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/GalacticaSingularityAlter");
-            RedSoul = ModContent.Request<Texture2D>("CalamityMod/Items/Materials/Necroplasm");
-            RedSoulAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantoplasmAlter");
+            GS = ModContent.Request<Texture2D>($"{CalItemsRoute}/Materials/GalacticaSingularity");
+            GSAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/GalacticaSingularityAlter");
+            RedSoul = ModContent.Request<Texture2D>($"{CalItemsRoute}/Materials/Necroplasm");
+            RedSoulAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/PhantoplasmAlter");
             #endregion
             #region 永久增益
             //增益
-            HealthOrange = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/BloodOrange");
-            HealthOrangeAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/BloodOrangeAlter");
+            HealthOrange = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/BloodOrange");
+            HealthOrangeAlter= ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/BloodOrangeAlter");
 
-            HealthMira = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/MiracleFruit");
-            HealthMiraAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/MiracleFruitAlter");
+            HealthMira = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/MiracleFruit");
+            HealthMiraAlter= ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/MiracleFruitAlter");
 
-            HealthBerry = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/Elderberry");
-            HealthBerryAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/ElderberryAlter");
+            HealthBerry = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/Elderberry");
+            HealthBerryAlter= ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/ElderberryAlter");
 
-            HealthDragon = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/Dragonfruit");
-            HealthDragonAlter= ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/DragonfruitAlter");
+            HealthDragon = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/Dragonfruit");
+            HealthDragonAlter= ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/DragonfruitAlter");
 
-            ManaShard = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/CometShard");
-            ManaShardAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/CometShardAlter");
+            ManaShard = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/CometShard");
+            ManaShardAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/CometShardAlter");
             
-            ManaCore = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/EtherealCore");
-            ManaCoreAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/EtherealCoreAlter");
+            ManaCore = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/EtherealCore");
+            ManaCoreAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/EtherealCoreAlter");
 
-            ManaHeart = ModContent.Request<Texture2D>("CalamityMod/Items/PermanentBoosters/PhantomHeart");
-            ManaHeartAlter = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Misc/PhantomHeartAlter");
+            ManaHeart = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/PhantomHeart");
+            ManaHeartAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/PhantomHeartAlter");
             #endregion
            
             #region 天使鞋
-            AngelTreadsCalamity = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/AngelTreadsCalamity");
-            AngelTreadsAlter    = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/AngelTreadsLegacy");
+            AngelTreadsCalamity = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/AngelTreadsCalamity");
+            AngelTreadsAlter    = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/AngelTreadsLegacy");
             #endregion
             #region 夜明跑鞋
-            LunarBootsCalamity  = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/LunarBootsCalamity");
-            LunarBootsAlter     = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/LunarBootsLegacy");
+            LunarBootsCalamity  = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/LunarBootsCalamity");
+            LunarBootsAlter     = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/LunarBootsLegacy");
             #endregion
             #region 气球他妈
-            MOABCalamity        = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/MOABCalamity");
-            MOABAlter           = ModContent.Request<Texture2D>("CalamityInheritance/Texture/Accessories/MOABLegacy");
+            MOABCalamity        = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/MOABCalamity");
+            MOABAlter           = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/MOABLegacy");
             #endregion
         }
         public static void UnloadTexture()

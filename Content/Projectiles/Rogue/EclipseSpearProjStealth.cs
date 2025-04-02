@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Rogue;
@@ -32,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public bool ResetProj = false;
         public bool TooFarAway = false;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/EclipseSpear";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/EclipseSpear";
 
         public override void SetDefaults()
         {

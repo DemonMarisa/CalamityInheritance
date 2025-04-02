@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.CodeAnalysis;
@@ -13,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class EclipseSpearProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/EclipseSpear";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/EclipseSpear";
         public override void SetStaticDefaults()
         {
 

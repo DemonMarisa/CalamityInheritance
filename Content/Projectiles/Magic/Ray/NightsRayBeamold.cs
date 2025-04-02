@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             get => Projectile.ai[1] == 1f;
             set => Projectile.ai[1] = value.ToInt();
         }
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = 4;

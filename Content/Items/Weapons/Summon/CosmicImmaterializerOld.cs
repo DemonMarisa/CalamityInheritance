@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class CosmicImmaterializerOld : CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Summon/CosmicImmaterializerOldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Summon/CosmicImmaterializerOldGlow").Value);
         }
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0 && player.maxMinions >= 10;
 

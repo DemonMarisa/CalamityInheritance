@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class IchorSpearProjLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/IchorSpearLegacy";
+        public override string Texture => $"{Generic.WeaponRoute}/Rogue/IchorSpearLegacy";
 
         public override void SetDefaults()
         {

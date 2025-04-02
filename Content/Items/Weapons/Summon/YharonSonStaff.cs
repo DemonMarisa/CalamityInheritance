@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class YharonSonStaff: CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public readonly int WeaponDamage = 120;
         public override void SetStaticDefaults()
         {

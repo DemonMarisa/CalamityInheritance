@@ -80,3 +80,13 @@ YharimsStimulants: {
 	DisplayName: 魔君牌兴奋剂[Legacy]
 	Tooltip: 给予能增强所有防御和进攻的属性
 }
+
+Bread: {
+	DisplayName: 面包
+	Tooltip:
+		'''
+		只是一块面包
+		[c/4F4F4F:Kunoji Ichika:]"不是, 你……就单纯因为游戏里没有面包就烤了一块?"
+		[c/E4080A:TrueScarlet:]"呃……"
+		'''
+}

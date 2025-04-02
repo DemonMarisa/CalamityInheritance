@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class MeleeTypeCorpusAvertorProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeCorpusAvertor";
+        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeCorpusAvertor";
 
         public override void SetStaticDefaults()
         {

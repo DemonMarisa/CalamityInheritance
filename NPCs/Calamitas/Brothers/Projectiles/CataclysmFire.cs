@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Projectiles;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.NPCs.Calamitas.Brothers.Projectiles
     public class CataclysmFire: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetStaticDefaults()
         {

@@ -1,8 +1,11 @@
+using CalamityInheritance.Buffs.Melee;
+using CalamityInheritance.Buffs.Rogue;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.Abyss;
@@ -13,11 +16,54 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer: ModPlayer
     {
+        public void LegendarySaveData(ref TagCompound tag)
+        {
+            tag.Add("PBGTier1", PBGTier1);
+            tag.Add("PBGTier2", PBGTier2);
+            tag.Add("PBGTier3", PBGTier3);
+            tag.Add("DukeTier1", DukeTier1);
+            tag.Add("DukeTier2", DukeTier2);
+            tag.Add("DukeTier3", DukeTier3);
+            tag.Add("BetsyTier1", BetsyTier1);
+            tag.Add("BetsyTier2", BetsyTier2);
+            tag.Add("BetsyTier3", BetsyTier3);
+            tag.Add("PlanteraTier1", PlanteraTier1);
+            tag.Add("PlanteraTier2", PlanteraTier2);
+            tag.Add("PlanteraTier3", PlanteraTier3);
+            tag.Add("DestroyerTier1", DestroyerTier1);
+            tag.Add("DestroyerTier2", DestroyerTier2);
+            tag.Add("DestroyerTier3", DestroyerTier3);
+            tag.Add("DefendTier1", DefendTier1);
+            tag.Add("DefendTier2", DefendTier2);
+            tag.Add("DefendTier3", DefendTier3);
+        }
+        public void LegendaryLoadData(ref TagCompound tag)
+        {
+            tag.TryGet("PBGTier1",        out PBGTier1);
+            tag.TryGet("PBGTier2",        out PBGTier2);
+            tag.TryGet("PBGTier3",        out PBGTier3);
+            tag.TryGet("DukeTier1",       out DukeTier1);
+            tag.TryGet("DukeTier2",       out DukeTier2);
+            tag.TryGet("DukeTier3",       out DukeTier3);
+            tag.TryGet("PlanteraTier1",   out PlanteraTier1);
+            tag.TryGet("PlanteraTier2",   out PlanteraTier2);
+            tag.TryGet("PlanteraTier3",   out PlanteraTier3);
+            tag.TryGet("BetsyTier1",      out BetsyTier1);
+            tag.TryGet("BetsyTier2",      out BetsyTier2);
+            tag.TryGet("BetsyTier3",      out BetsyTier3);
+            tag.TryGet("DestroyerTier1",  out DestroyerTier1);
+            tag.TryGet("DestroyerTier2",  out DestroyerTier2);
+            tag.TryGet("DestroyerTier3",  out DestroyerTier3);
+            tag.TryGet("DefendTier1",     out DefendTier1);
+            tag.TryGet("DefendTier2",     out DefendTier2);
+            tag.TryGet("DefendTier3",     out DefendTier3);
+        }
         public void LegendaryDamageTask(Projectile projectile, NPC target, NPC.HitInfo hit)
         {
             Player player = Main.player[projectile.owner];
@@ -44,58 +90,58 @@ namespace CalamityInheritance.CIPlayer
             if (heldingItem.type == ModContent.ItemType<PlanteraLegendary>())
                 PlanteraLegendaryDamageTask(target, hit);
 
-            //SHPC(T2)
-            if (heldingItem.type == ModContent.ItemType<DestroyerLegendary>())
-                DestroyerLegendaryDamageTask(target, hit, projectile);
-
+            //庇护之刃
+            if (heldingItem.type == ModContent.ItemType<DefenseBlade>())
+            {
+                //T1
+                if (DefendTier1)
+                    DefenderBuff(target, hit, projectile);
+            }
 
         }
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
         {
-            //海爵剑T3：持续攻击增强防御属性，最高增强50点防御力与40%伤害减免
-            if (hit.Damage > 5 && DukeDefenseCounter >= 0)
-            {
-                //最大50层
-                if (DukeDefenseCounter < 51)
-                    DukeDefenseCounter++;
-                //五秒
-                DukeDefenseTimer = 300;
-                //玩家的防御力视击中的次数提升
-                Player.statDefense += DukeDefenseCounter;
-                //每次攻击增加0.5%免伤，50次攻击后为25%
-                Player.endurance += 0.005f * DukeDefenseCounter;
-            }
+            //海爵剑T3：攻击综合增强属性()
+            if (hit.Damage > 5)
+                Player.AddBuff(ModContent.BuffType<DukeBuff>(), 30);
         }
 
         private void PBGLegendaryBuff(NPC target, NPC.HitInfo hit)
         {
-            //T3孔雀翎特殊效果：一次击中敌人超过5000伤害时，自身生命值被置零以下时，以一定概率，将自己的生命值强行置0以停止掉血, 这一效果仅短暂持续1秒
-            if (target.life > 5 && hit.Damage > 5000 && GlobalLegendaryT3CD == 0 && !AncientSilvaSet)
+            //T3孔雀翎: 攻击时将在接下来的15秒内提供buff，这个buff将会使你有1/10概率彻底无敌3秒
+            if (target.life > 5 && hit.Damage > 5000 && GlobalLegendaryT3CD == 0)
             {
-                //孔雀翎攻速极快，因此1/75概率才是最合适的
-                if (Player.lifeRegen < 0 && Main.rand.NextBool(75))
-                {
-                    Player.lifeRegen = 0;
-                    GlobalLegendaryT3CD = 60;
-                }
+                Player.AddBuff(ModContent.BuffType<PBGBuff>(), 300);
+                //给予45秒的CD
+                GlobalLegendaryT3CD = 900;
+            }
+        }
+        //庇护之刃T1：射弹击中敌人时，提升1%防御力，最高25%
+        public void DefenderBuff(NPC target, NPC.HitInfo hit, Projectile projectile)
+        {
+            int proj = ModContent.ProjectileType<DefenseBeam>();
+            if (target.life > 5 && projectile.type == proj || projectile.type == ModContent.ProjectileType<DefenseFlame>() || projectile.type == ModContent.ProjectileType<DefenseBlast>() && DefendTier1)
+            {
+                DefendTier1Timer = 180;
+                DefenseBoost += 0.01f;
+                if (DefenseBoost > 0.25f)
+                    DefenseBoost = 0.25f;
+                
             }
         }
         #endregion
         #region 传奇物品伤害任务
-        private void DestroyerLegendaryDamageTask(NPC target, NPC.HitInfo hit, Projectile projectile)
+        //庇护之刃T2任务：手持庇护之刃承受超过2000点伤害
+        //啊♂
+        private void DefenseBladeTier2Task(Player.HurtInfo fk)
         {
-            //T2:在四柱期间内，对任意四根天界柱造成合计一根天界柱的最大血量的250%伤害
-            NPC towerMark = Main.npc[NPCID.LunarTowerSolar];
-            if ((target.type == NPCID.LunarTowerStardust || target.type == NPCID.LunarTowerSolar || target.type == NPCID.LunarTowerNebula || target.type == NPCID.LunarTowerVortex) &&
-                 projectile.DamageType == DamageClass.Magic && !DestroyerTier2)
+            if (fk.Damage > 5)
+                DefendTier2Pool += fk.Damage;
+             
+            if (DefendTier2Pool > 2000)
             {
-                DamagePool += hit.Damage;
-                if (DamagePool > towerMark.lifeMax * 2.5f)
-                {
-                    DestroyerTier2 = true;
-                    //这里应该需要一个诺法雷的充能音效
-                }
+                DefendTier2 = true;
             }
         }
         private void PlanteraLegendaryDamageTask(NPC target, NPC.HitInfo hit)
@@ -161,6 +207,7 @@ namespace CalamityInheritance.CIPlayer
                 PBGTier2 = true;
             }
         }
+
         #endregion
     }
 }

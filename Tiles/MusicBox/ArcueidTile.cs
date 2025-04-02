@@ -1,10 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 using Terraria.GameContent.ObjectInteractions;
@@ -42,7 +37,7 @@ namespace CalamityInheritance.Tiles.MusicBox
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<BlessingOftheMoon>();
+            player.cursorItemIconID = ModContent.ItemType<Arcueid>();
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

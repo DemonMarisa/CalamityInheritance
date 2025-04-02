@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoFireold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public bool ProducedAcceleration = false;
 

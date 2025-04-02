@@ -41,6 +41,7 @@ Mods: {
 			}
 
 			// Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
+			// KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
 		}
 
 		Projectiles: {

@@ -65,3 +65,8 @@ Arcueid: {
 	Tooltip: ""
 	DisplayName: Arcueid
 }
+
+Kunoji: {
+	DisplayName: Kunoji
+	Tooltip: ""
+}

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class CIBlood : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];

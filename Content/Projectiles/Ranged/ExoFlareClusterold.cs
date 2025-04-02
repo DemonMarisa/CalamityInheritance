@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoFlareClusterold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public const float MinDistanceFromTarget = 45f;
         public const float MaxDistanceFromTarget = 1350f;

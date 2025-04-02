@@ -215,7 +215,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/StratusSphereHoldGlow").Value, Projectile.Center  - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, framing)), Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/StratusSphereHoldGlow").Value, Projectile.Center  - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, framing)), Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
         }
 
         public override bool? CanDamage() => false;

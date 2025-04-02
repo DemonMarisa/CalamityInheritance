@@ -424,12 +424,22 @@ DukeLegendary: {
 		剑刃击中敌人会释放涡流台风
 		右键发射水刃龙卷
 		会随着游戏流程的推进得到强化
+		[SCALING]
 		[c/35FFFF:-传奇武器-]
 		'''
-	DisplayName: 龙卷涡漩海皇剑爵[Legacy]
+	DisplayName: 龙卷涡漩海皇剑爵[Legendary]
+	LegendaryScaling: 武器强化:{0}%
+	TierOne: "[c/35FFFF:强化:]移除涡流台风的数量上限, 并加强水刃龙卷的追踪性能"
+	TierTwo: "[c/35FFFF:强化:]水刃龙卷在击中敌怪时将会额外召唤新的水刃龙卷"
+	TierThree: "[c/35FFFF:强化:]击中敌人时会增强你的防御属性"
 }
 
 AquaticDissolution: {
 	// DisplayName: Aquatic Dissolution
+	// Tooltip: ""
+}
+
+DefenseBlade: {
+	// DisplayName: Defense Blade
 	// Tooltip: ""
 }

@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
     public class WulfrumControllerOld : CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Summon";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

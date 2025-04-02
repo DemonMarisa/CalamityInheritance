@@ -201,6 +201,16 @@ Configs: {
 			Tooltip: ""
 			Label: Arcueid
 		}
+
+		LevelUp: {
+			Label: Level Up
+			Tooltip: ""
+		}
+
+		Kunoji: {
+			Label: Kunoji
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

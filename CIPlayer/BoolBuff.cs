@@ -32,6 +32,11 @@ namespace CalamityInheritance.CIPlayer
         public bool OwnSonYharon = false;
         //气功念珠
         public bool SForestBuff = false;
+        //海爵剑Buff
+        public bool BrinyBuff = false;
+        //庇护刃buff
+        public bool DefenderPower = false;
+        public bool PBGPower = false;
         #endregion
        
         public void ResetBuff()
@@ -55,10 +60,14 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase3 = false;
             OwnSonYharon = false;
             SForestBuff = false;
+            BrinyBuff = false;
+            DefenderPower = false;
+            PBGPower = false;
             #endregion
         }
         public void UpdateDeadBuff()
         {
+            BrinyBuff = false;
             BuffStatsArmorShatter = false;
             Revivify = false;
             BuffStatsCadence = false;
@@ -76,6 +85,8 @@ namespace CalamityInheritance.CIPlayer
             PolarisPhase3 = false;
             PolarisBoostCounter = 0;
             SForestBuff = false;
+            DefenderPower = false;
+            PBGPower = false;
         }
     }
 }

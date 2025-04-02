@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public override Texture2D LaserEndTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
 
         public ref float ShardCooldown => ref Projectile.ai[1];
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 20;

@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DragonStaff: CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -49,23 +49,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             float pSpeed = Item.shootSpeed;
             player.itemTime = Item.useTime;
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            float mPosX = Main.mouseX + Main.screenPosition.X - vector2.X;
-            float mPosY = Main.mouseY + Main.screenPosition.Y - vector2.Y;
+            Vector2 src = player.RotatedRelativePoint(player.MountedCenter, true);
+            float projX = Main.mouseX + Main.screenPosition.X - src.X;
+            float projY = Main.mouseY + Main.screenPosition.Y - src.Y;
             if (player.gravDir == -1f)
             {
-                mPosY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
+                projY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - src.Y;
             }
-            float mDist = (float)Math.Sqrt((double)(mPosX * mPosX + mPosY * mPosY));
-            if (float.IsNaN(mPosX) && float.IsNaN(mPosY) || mPosX == 0f && mPosY == 0f)
+            float projDist = (float)Math.Sqrt((double)(projX * projX + projY * projY));
+            if (float.IsNaN(projX) && float.IsNaN(projY) || projX == 0f && projY == 0f)
             {
-                mPosX = player.direction;
-                mPosY = 0f;
-                mDist = pSpeed;
+                projX = player.direction;
+                projY = 0f;
+                projDist = pSpeed;
             }
             else
             {
-                mDist = pSpeed / mDist;
+                projDist = pSpeed / projDist;
             }
 
             int pCounts = 30;
@@ -77,28 +77,29 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             {
                 pCounts++;
             }
-            for (int num108 = 0; num108 < pCounts; num108++)
+            for (int i = 0; i < pCounts; i++)
             {
-                vector2 = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                vector2.X = (vector2.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
-                vector2.Y -= 100 * num108;
-                mPosX = Main.mouseX + Main.screenPosition.X - vector2.X;
-                mPosY = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-                if (mPosY < 0f)
+                //确认射弹位置
+                src = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                src.X = (src.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
+                src.Y -= 100 * i;
+                projX = Main.mouseX + Main.screenPosition.X - src.X;
+                projY = Main.mouseY + Main.screenPosition.Y - src.Y;
+                if (projY < 0f)
                 {
-                    mPosY *= -1f;
+                    projY *= -1f;
                 }
-                if (mPosY < 20f)
+                if (projY < 20f)
                 {
-                    mPosY = 20f;
+                    projY = 20f;
                 }
-                mDist = (float)Math.Sqrt((double)(mPosX * mPosX + mPosY * mPosY));
-                mDist = pSpeed / mDist;
-                mPosX *= mDist;
-                mPosY *= mDist;
-                float speedX4 = mPosX + Main.rand.Next(-30, 31) * 0.02f;
-                float speedY5 = mPosY + Main.rand.Next(-30, 31) * 0.02f;
-                Projectile.NewProjectile(source,vector2.X, vector2.Y, speedX4, speedY5, type, damage, knockback, player.whoAmI, 0f, (float)Main.rand.Next(15));
+                projDist = (float)Math.Sqrt((double)(projX * projX + projY * projY));
+                projDist = pSpeed / projDist;
+                projX *= projDist;
+                projY *= projDist;
+                float pSpeedX = projX + Main.rand.Next(-30, 31) * 0.02f;
+                float pSpeedY = projY + Main.rand.Next(-30, 31) * 0.02f;
+                Projectile.NewProjectile(source, src.X, src.Y, pSpeedX, pSpeedY, type, damage, knockback, player.whoAmI, 0f, (float)Main.rand.Next(15));
             }
             return false;
         }

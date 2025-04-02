@@ -55,33 +55,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Projectile.localAI[0] = 0f;
                 }
             }
-            Projectile.velocity.X *= 0.985f;
-            Projectile.velocity.Y *= 0.985f;
-            float projX = Projectile.Center.X;
-            float projY = Projectile.Center.Y;
-            float explodeRange = 250f;
-            bool canExplode = false;
-            foreach (NPC n in Main.ActiveNPCs)
+            if (Projectile.ai[0] == 1f)
             {
-                if (n.CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, n.Center, 1, 1))
-                {
-                    float npcX = n.position.X + n.width / 2;
-                    float npcY = n.position.Y + n.height / 2;
-                    float npcDist = Math.Abs(Projectile.position.X + Projectile.width / 2 - npcX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - npcY);
-                    if (npcDist < explodeRange)
-                    {
-                        explodeRange = npcDist;
-                        canExplode = true;
-                    }
-                }
-            }
-            if (canExplode)
-            {
-                boomTimer--;
-                if (boomTimer <= 0)
-                {
-                    Projectile.Kill();
-                }
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             }
         }
 
@@ -104,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SoundEngine.PlaySound(SoundID.Item105, Projectile.Center);
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<SHPExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<DestroyerLegendaryBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
         }
     }

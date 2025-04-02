@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class MurasamaNeweffect : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public int frameCounter = 0;
         public int frame = 0;
         public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues";
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaSheathed").Value;
+                texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             }
 
@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaSheathed").Value;
+                texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, Item.position - Main.screenPosition, null, lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
             return false;
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (!IDUnlocked(Main.LocalPlayer))
                 return;
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MurasamaGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MurasamaGlow").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 

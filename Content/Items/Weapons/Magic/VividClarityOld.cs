@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class VividClarityOld : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Weapons.Magic";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
 
         public static readonly SoundStyle UseSound = new("CalamityMod/Sounds/Item/VividClarityShoot") { Volume = 0.30f };
         public static readonly SoundStyle BeamSound = new("CalamityMod/Sounds/Item/VividClarityBeamAppear");
@@ -136,7 +136,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Magic/VividClarityOldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Magic/VividClarityOldGlow").Value);
 
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)

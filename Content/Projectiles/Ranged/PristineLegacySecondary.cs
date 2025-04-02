@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class PristineLegacySecondary : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         private int dust1 = (int)CalamityDusts.ProfanedFire;
         private int dust2 = ModContent.DustType<HolyFireDust>();

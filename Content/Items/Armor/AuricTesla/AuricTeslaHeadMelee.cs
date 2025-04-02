@@ -13,6 +13,9 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -39,7 +42,19 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             bool isAuricSetOLD = body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
             return isAuricSetNEW || isAuricSetOLD;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            var calPlayer = player.Calamity();
+            if(calPlayer.auricSet)
+            {
+                if (Main.keyState.IsKeyDown(Keys.LeftAlt))
+                {
+                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.AuricTeslaHeadMelee.Details");
+                    tooltips.Add(new TooltipLine(Mod, "Details", Details));
+                }
+            }
+        }
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawOutlines = true;
@@ -49,34 +64,34 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             var hotkey = CalamityKeybinds.ArmorSetBonusHotKey.TooltipHotkeyString();
             player.setBonus = this.GetLocalization("SetBonus").Format(hotkey);
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
-            modPlayer.tarraSet = true;
-            modPlayer.tarraMelee = true;
-            modPlayer.bloodflareSet = true;
-            modPlayer.bloodflareMelee = true;
-            modPlayer.godSlayer = true;
-            modPlayer1.GodSlayerMelee= true;
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CIMod();
+            calPlayer.tarraSet = true;
+            calPlayer.tarraMelee = true;
+            calPlayer.bloodflareSet = true;
+            calPlayer.bloodflareMelee = true;
+            calPlayer.godSlayer = true;
+            usPlayer.GodSlayerMelee= true;
 
-            modPlayer1.SilvaMeleeSetLegacy = true;
-            modPlayer1.GodSlayerReflect = true;
+            usPlayer.SilvaMeleeSetLegacy = true;
+            usPlayer.GodSlayerReflect = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
-                modPlayer1.GodSlayerReborn = true;
+                usPlayer.GodSlayerReborn = true;
             }
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
             {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+                if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                    calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                     player.dash = 0;
                 }
             }
 
-            modPlayer1.GodSlayerDMGprotect = true;
+            usPlayer.GodSlayerDMGprotect = true;
 
-            modPlayer1.AuricSilvaSet = true;
-            modPlayer.auricSet = true;
+            usPlayer.AuricSilvaSet = true;
+            calPlayer.auricSet = true;
 
             player.thorns += 3f;
             player.ignoreWater = true;
@@ -86,9 +101,9 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
-            modPlayer1.auricBoostold = true;
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CIMod();
+            usPlayer.auricBoostold = true;
             player.GetDamage<MeleeDamageClass>() += 0.2f;
             player.GetCritChance<MeleeDamageClass>() += 20;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.28f;

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class MeleeTypeEradicator : CIMelee, ILocalizedModType
     {
 
-        public new string LocalizationCategory => "Content.Items.Weapons.Melee";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
         public static float Speed = 9.0f;
         public override void SetStaticDefaults()
         {
@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Weapons/Melee/MeleeTypeEradicatorGlow.png").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MeleeTypeEradicatorGlow.png").Value);
         }
     }
 }

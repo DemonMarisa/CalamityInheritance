@@ -1,8 +1,4 @@
-using CalamityMod;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.LoreItems;
-using Terraria;
-using Terraria.ModLoader; 
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {

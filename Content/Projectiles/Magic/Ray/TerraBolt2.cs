@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class TerraBolt2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => "CalamityInheritance/Content/Projectiles/InvisibleProj";
+        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];

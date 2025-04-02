@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class RogueTypeHammerPwnageLegacy: RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory =>"Content.Items.Weapons.Rogue";
+        public new string LocalizationCategory =>$"{Generic.WeaponLocal}.Rogue";
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
