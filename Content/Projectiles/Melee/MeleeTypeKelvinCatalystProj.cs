@@ -7,9 +7,9 @@ using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
-using CalamityInheritance.NPCs.Calamitas;
 using Microsoft.Build.Evaluation;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

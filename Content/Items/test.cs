@@ -11,6 +11,7 @@ using CalamityMod.Cooldowns;
 using Basic.Reference.Assemblies;
 using CalamityInheritance.Content.Projectiles.Melee;
 using System;
+using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Items
 {

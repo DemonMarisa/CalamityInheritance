@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using CalamityMod.Sounds;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.NPCs.Calamitas;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

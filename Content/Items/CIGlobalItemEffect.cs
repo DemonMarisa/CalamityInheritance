@@ -11,8 +11,8 @@ namespace CalamityInheritance.Content.Items
         public override void MeleeEffects(Item item, Player player, Rectangle hitbox)
         {
             if (item.ModItem != null)
-            if (item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>() && item.useStyle != ItemUseStyleID.Thrust)
-                CIFunction.BetterSwing(player);
+                if (item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>() && item.useStyle == ItemUseStyleID.Swing)
+                    CIFunction.BetterSwing(player);
         }
     }
 }

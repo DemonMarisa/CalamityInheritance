@@ -24,7 +24,6 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.NPCs.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.Yharon;
@@ -38,6 +37,7 @@ using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.DevourerofGods;
 using System.Text.RegularExpressions;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡

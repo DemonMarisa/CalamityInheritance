@@ -8,7 +8,7 @@ using CalamityMod;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.NPCs.Calamitas;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

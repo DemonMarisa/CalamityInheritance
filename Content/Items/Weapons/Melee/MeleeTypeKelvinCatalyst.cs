@@ -15,8 +15,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.NPCs.Calamitas;
 using Terraria.Localization;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

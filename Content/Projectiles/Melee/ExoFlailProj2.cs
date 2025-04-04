@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.ai[0] <= 1f && Projectile.localAI[0] == 0f)
             {
-                Projectile.ai[0] = 2f;
+                //Projectile.ai[0] = 2f;
                 float startAngle = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
                 if (Projectile.ai[1] >= 11f)
                 {

@@ -1,4 +1,4 @@
-﻿using CalamityInheritance.NPCs.Calamitas;
+﻿using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.Systems;
 using Terraria.ID;

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using System;
@@ -82,6 +83,7 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
             target.AddBuff(ModContent.BuffType<Plague>(), 300);
+            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
         }
     }
 }

@@ -1,4 +1,4 @@
-using CalamityInheritance.NPCs.Calamitas;
+using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityMod.Items.Materials;
