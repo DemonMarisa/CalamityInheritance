@@ -34,6 +34,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.BiomeManagers;
 using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.NPCs.Boss.TownNPC
 {

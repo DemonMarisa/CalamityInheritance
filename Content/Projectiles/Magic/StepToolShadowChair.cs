@@ -12,6 +12,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 
 namespace CalamityInheritance.Content.Projectiles.Magic

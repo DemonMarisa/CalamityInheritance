@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 value.Normalize();
                 value.X *= ExoFlail.MouseHomingAcceleration;
                 value.Y *= ExoFlail.MouseHomingAcceleration;
-                Projectile projectile2 = this.Projectile;
+                Projectile projectile2 = Projectile;
                 projectile2.velocity = projectile2.velocity + value;
                 Projectile.velocity = Utils.SafeNormalize(Projectile.velocity, -Vector2.UnitY) * ExoFlail.Speed;
             }
@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.ai[0] <= 1f && Projectile.localAI[0] == 0f)
             {
-                //Projectile.ai[0] = 2f;
+                // Projectile.ai[0] = 2f;
                 float startAngle = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
                 if (Projectile.ai[1] >= 11f)
                 {
@@ -143,15 +143,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
                 else
                 {
-
-                    Explode(Projectile.Center, startAngle, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
-                    Explode(Projectile.Center, startAngle, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
                     Explode(Projectile.Center, startAngle, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
                     //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-                Vector2 v = Main.player[Projectile.owner].Center - Projectile.Center;
-                Projectile.velocity = Utils.SafeNormalize(v, Vector2.Zero) * ExoFlail.ReturnSpeed;
+                // Vector2 v = Main.player[Projectile.owner].Center - Projectile.Center;
+                // Projectile.velocity = Utils.SafeNormalize(v, Vector2.Zero) * ExoFlail.ReturnSpeed;
             }
             else
             {

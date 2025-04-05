@@ -20,6 +20,7 @@ namespace CalamityInheritance.Core
         public static readonly Condition DownedBOC = Create("DownedBOC", () => CIDownedBossSystem.DownedBOC);
         public static readonly Condition DownedEOW = Create("DownedEOW", () => CIDownedBossSystem.DownedEOW);
         public static readonly Condition DownedBloodMoon = Create("DownedBloodMoon", () => CIDownedBossSystem.DownedBloodMoon);
+        public static readonly Condition DownedLegacyScal = Create("DownedLegacyScal", () => CIDownedBossSystem.DownedLegacyScal);
 
 
     }

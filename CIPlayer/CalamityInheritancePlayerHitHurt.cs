@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -19,6 +20,7 @@ using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
@@ -241,6 +243,14 @@ namespace CalamityInheritance.CIPlayer
                 }
                 return false;
             }
+
+            // 終灾期间玩家死亡计数
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            {
+                if (LegacyScal_PlayerDeathCount < 60)
+                    LegacyScal_PlayerDeathCount++;
+            }
+
             return true;
         }
         #endregion

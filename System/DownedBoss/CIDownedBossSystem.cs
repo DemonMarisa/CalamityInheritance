@@ -15,6 +15,8 @@ namespace CalamityInheritance.System.DownedBoss
         public static bool _downedEOW = false;
         public static bool _downedBOC = false;
         public static bool _downedBloodMoon = false;
+        public static bool _downedLegacySCal = false;
+
         public static bool DownedEOW
         {
             get => _downedEOW;
@@ -48,15 +50,28 @@ namespace CalamityInheritance.System.DownedBoss
                     NPC.SetEventFlagCleared(ref _downedBloodMoon, -1);
             }
         }
-        internal static void ResetAllFlags()
+        public static bool DownedLegacyScal
+        {
+            get => _downedLegacySCal;
+            set
+            {
+                if (!value)
+                    _downedLegacySCal = false;
+                else
+                    NPC.SetEventFlagCleared(ref _downedLegacySCal, -1);
+            }
+        }
+        public static void ResetAllFlags()
         {
             DownedEOW = false;
             DownedBOC = false;
             DownedBloodMoon = false;
+            DownedLegacyScal = false;
         }
         public override void OnWorldLoad() => ResetAllFlags();
 
         public override void OnWorldUnload() => ResetAllFlags();
+
         public override void SaveWorldData(TagCompound tag)
         {
             List<string> downed = new List<string>();
@@ -66,6 +81,10 @@ namespace CalamityInheritance.System.DownedBoss
                 downed.Add("CIEOW");
             if (DownedBOC)
                 downed.Add("CIBOC");
+            if (DownedBloodMoon)
+                downed.Add("CIBloodMoon");
+            if (DownedLegacyScal)
+                downed.Add("CILegacyScal");
 
             tag["CIdownedFlags"] = downed;
         }
@@ -75,6 +94,8 @@ namespace CalamityInheritance.System.DownedBoss
 
             DownedEOW = downed.Contains("CIEOW");
             DownedBOC = downed.Contains("CIBOC");
+            DownedBloodMoon = downed.Contains("CIBloodMoon");
+            DownedLegacyScal = downed.Contains("CILegacyScal");
         }
     }
 }

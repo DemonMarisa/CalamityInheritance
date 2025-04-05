@@ -1,5 +1,7 @@
 ﻿using CalamityInheritance.NPCs;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 
 namespace CalamityInheritance.Utilities
@@ -79,5 +81,93 @@ namespace CalamityInheritance.Utilities
             float lightingPosY = (npc.position.Y + npc.width/2)/16;
             Lighting.AddLight(new Vector2(lightingPosX, lightingPosY), red, green, blue);
         }
+        #region Smooth Movement
+        /// <summary>
+        /// 增强版平滑移动算法（基于灾厄代码改进）
+        /// </summary>
+        /// <param name="npc">要移动的NPC</param>
+        /// <param name="movementDistanceGateValue">离目标足够近时停止的距离</param>
+        /// <param name="distanceFromDestination">NPC离目标多远</param>
+        /// <param name="baseVelocity">NPC移动过去的基础速度</param>
+        /// <param name="maxLerpDistance">动态调整的最大lerp距离（原灾固定2400）</param>
+        /// <param name="velocityMultiplier">最大速度倍率（原灾固定3）</param>
+        /// <param name="minStopDistance">完全停止的最小距离</param>
+        public static void BetterSmoothMovement(NPC npc, float movementDistanceGateValue, Vector2 distanceFromDestination, float baseVelocity, float acceleration
+            , float maxLerpDistance = 2400f, float velocityMultiplier = 3f, float minStopDistance = 5f)
+        {
+            // 计算结果
+            float distance = distanceFromDestination.Length();
+            Vector2 direction = distanceFromDestination.SafeNormalize(Vector2.Zero);
+
+            // 距离很近时会停止移动，避免抖动
+            if (distance <= minStopDistance)
+            {
+                npc.velocity = Vector2.Zero;
+                return;
+            }
+
+            // 速度曲线
+            float lerpValue = 1f - (float)Math.Pow(Utils.GetLerpValue(movementDistanceGateValue, maxLerpDistance, distance, true), 0.5);
+
+            // 最小速度：使用距离的平方根实现平滑减速
+            float minSpeedCap = Math.Min(baseVelocity, (float)Math.Sqrt(distance * 2));
+
+            // 最大速度：基于加速度动态调整（时间步长假设为1/60秒）
+            float maxSpeedCap = baseVelocity * velocityMultiplier + acceleration;
+            Vector2 maxVelocity = distanceFromDestination / (24f - acceleration); // 加速度越大响应越快
+            maxVelocity = maxVelocity.ClampMagnitude(minSpeedCap, maxSpeedCap);
+
+            // 根据距离调整加速度强度（远距离时更强）
+            float dynamicAcceleration = acceleration * MathHelper.Lerp(0.6f, 1.4f, lerpValue);
+
+            // 使用三次缓动插值
+            float smoothLerp = lerpValue * lerpValue * (3f - 2f * lerpValue);
+            Vector2 desiredVelocity = Vector2.Lerp(direction * minSpeedCap, maxVelocity, smoothLerp);
+
+            // 当速度方向与目标方向偏差过大时减速
+            if (Vector2.Dot(npc.velocity.SafeNormalize(Vector2.Zero), direction) < 0.7f)
+            {
+                desiredVelocity *= 0.6f;
+                dynamicAcceleration *= 1.5f;
+            }
+
+            // ========== 应用速度 ==========
+            npc.velocity = Vector2.Lerp(npc.velocity, desiredVelocity, 0.3f);
+        }
+        #endregion
+        #region Smooth Movement
+        /// <summary>
+        /// Smoother movement for NPCs
+        /// </summary>
+        /// <param name="npc">The NPC getting the movement change.</param>
+        /// <param name="movementDistanceGateValue">The distance where the NPC should stop moving once it's close enough to its destination.</param>
+        /// <param name="distanceFromDestination">How far the NPC is from its destination.</param>
+        /// <param name="baseVelocity">How quickly the NPC moves towards its destination.</param>
+        /// <param name="useSimpleFlyMovement">Whether the NPC should use SimpleFlyMovement to make the movement more affected by acceleration.</param>
+        public static void SmoothMovement(NPC npc, float movementDistanceGateValue, Vector2 distanceFromDestination, float baseVelocity, float acceleration, bool useSimpleFlyMovement)
+        {
+            // Inverse lerp returns the percentage of progress between A and B
+            float lerpValue = Utils.GetLerpValue(movementDistanceGateValue, 2400f, distanceFromDestination.Length(), true);
+
+            // Min velocity
+            float minVelocity = distanceFromDestination.Length();
+            float minVelocityCap = baseVelocity;
+            if (minVelocity > minVelocityCap)
+                minVelocity = minVelocityCap;
+
+            // Max velocity
+            Vector2 maxVelocity = distanceFromDestination / 24f;
+            float maxVelocityCap = minVelocityCap * 3f;
+            if (maxVelocity.Length() > maxVelocityCap)
+                maxVelocity = distanceFromDestination.SafeNormalize(Vector2.Zero) * maxVelocityCap;
+
+            // Set the velocity
+            Vector2 desiredVelocity = Vector2.Lerp(distanceFromDestination.SafeNormalize(Vector2.Zero) * minVelocity, maxVelocity, lerpValue);
+            if (useSimpleFlyMovement)
+                npc.SimpleFlyMovement(desiredVelocity, acceleration);
+            else
+                npc.velocity = desiredVelocity;
+        }
+        #endregion
     }
 }

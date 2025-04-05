@@ -25,6 +25,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityMod;

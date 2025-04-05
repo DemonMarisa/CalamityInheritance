@@ -294,7 +294,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                     }
                 }
             }
-            //此处需要一个探魂眼承重生文本
+            //此处需要一个探魂眼重生文本
             cign.BossNewAI[1] = 1f;
         }
     }

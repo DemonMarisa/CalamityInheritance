@@ -355,7 +355,7 @@ namespace CalamityInheritance.CIPlayer
                 cIdisableVoodooSpawns = true;
             #endregion
         }
-        public override void SaveData(TagCompound tag)
+        public void QolSaveData(TagCompound tag)
         {
             // 肉前
             tag["CIKSLoreType"] = KSPanelType;
@@ -446,7 +446,7 @@ namespace CalamityInheritance.CIPlayer
 
         }
 
-        public override void LoadData(TagCompound tag)
+        public void QolLoadData(TagCompound tag)
         {
             // 肉前
             KSPanelType = tag.GetInt("CIKSLoreType");

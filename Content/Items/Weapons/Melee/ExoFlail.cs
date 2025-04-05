@@ -58,6 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<ExoFlailProj>();
             Item.shootSpeed = 24f;
         }
+        public override bool MeleePrefix() => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
