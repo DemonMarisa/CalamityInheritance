@@ -13,6 +13,7 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<PBGLegendaryProj>();
             Item.shootSpeed = 10f;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PBGLime>() : ModContent.RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;
         }
         public override bool AltFunctionUse(Player player) => true;

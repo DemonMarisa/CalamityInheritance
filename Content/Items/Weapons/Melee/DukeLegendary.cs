@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -39,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = CISoundID.SoundWeaponSwing;
 
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<DukeAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
 
         public override bool AltFunctionUse(Player player) => true;

@@ -26,13 +26,13 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = CISoundID.SoundWeaponSwing;
-            Item.damage = 80;
+            Item.damage = 300;
             Item.knockBack = 5f;
             Item.rare = ItemRarityID.Red;
             Item.value = CIShopValue.RarityPriceRed;
             Item.autoReuse = true;
         }
-        public override float StealthDamageMultiplier => 10f;
+        public override float StealthDamageMultiplier => 50f;
         public override void AddRecipes()
         {
             CreateRecipe().

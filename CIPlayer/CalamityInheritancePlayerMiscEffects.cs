@@ -37,6 +37,8 @@ using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.DevourerofGods;
 using System.Text.RegularExpressions;
+using Microsoft.Xna.Framework.Input;
+using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.NPCs.Boss.Calamitas;
 
 
@@ -361,7 +363,11 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance -= 0.2f;  //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
                 Player.statDefense *= 0.7f; //玩家的防御力取70%
             }
-            
+            if (BetsyPower)
+            {
+                Player.lifeRegen += 2;
+                Player.GetDamage<MagicDamageClass>() += 0.1f;
+            }
             
         }
         private void Accessories()
@@ -645,7 +651,13 @@ namespace CalamityInheritance.CIPlayer
                 if (getCrits > 90)
                     Player.GetCritChance<RangedDamageClass>() += 20;
             }
-            
+            if (AncientAeroSet) 
+            {
+                if (!DisableAeroWings)
+                    calPlayer.infiniteFlight = true;
+                else
+                    Player.AddBuff(BuffID.Featherfall, 300);
+            }
             if (AncientTarragonSet)
             {
                 calPlayer.defenseDamageRatio *= 0.45f; //防损减免
@@ -962,9 +974,7 @@ namespace CalamityInheritance.CIPlayer
             //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。但每次抬手使用时都会不小心被烫一下手(为自己提供1秒着火了!的debuff)
             if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && usPlayer.BetsyTier3)
             {
-                Player.lifeRegen += 4;
-                Player.GetDamage<MagicDamageClass>() += 0.1f;
-                Player.AddBuff(BuffID.OnFire, 60);
+                Player.AddBuff(ModContent.BuffType<VolcanoBuff>(), 120);
             }
 
             if(IfCloneHtting) //大锤子如果正在攻击
@@ -1737,7 +1747,7 @@ namespace CalamityInheritance.CIPlayer
             if (AncientAstralCritsCD > 0) //暴击内置CD
                 AncientAstralCritsCD--;
             
-            if (AncientAstralCritsCount > 10) //暴击到第十次就重置
+            if (AncientAstralCritsCount > RequireCrits) //暴击到第十次就重置
                 AncientAstralCritsCount = 0;
             
             if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD

@@ -2,7 +2,9 @@
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.UI;
 using CalamityInheritance.Utilities;
@@ -12,12 +14,10 @@ using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.SummonItems;
-using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.NPCs.VanillaNPCAIOverrides.Bosses;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
@@ -56,15 +56,73 @@ namespace CalamityInheritance.Content.Items
                 player.CIMod().DefendTier3 = CIFunction.FindInventoryItem(ref item, player, ModContent.ItemType<DefenseBlade>(), 1);
             return base.UseItem(item, player);
         }
+        public override bool AltFunctionUse(Item item, Player player)
+        {
+                if (player.ActiveItem().type == ModContent.ItemType<CyrogenLegendary>())
+            {
+                bool canContinue = true;
+                int count = 0;
+                foreach (Projectile p in Main.ActiveProjectiles)
+                {
+                    if (p.type == ModContent.ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
+                    {
+                        if (p.ai[1] > 1f)
+                        {
+                            canContinue = false;
+                            break;
+                        }
+                        else if (p.ai[1] == 0f)
+                        {
+                            if (((CryogenPtr)p.ModProjectile).Idle)
+                                count++;
+                        }
+                    }
+                }
+                if (canContinue && count > 0)
+                {
+                    NPC tar = CalamityUtils.MinionHoming(Main.MouseWorld, 1000f, player);
+                    if (tar != null)
+                    {
+                        int pAmt = count;
+                        float angleVariance = MathHelper.TwoPi / pAmt;
+                        float angle = 0f;
+
+                        var source = player.GetSource_ItemUse(player.ActiveItem());
+                        for (int i = 0; i < pAmt; i++)
+                        {
+                            if (Main.projectile.Length == Main.maxProjectiles)
+                                break;
+                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(80);
+                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
+                            Main.projectile[projj].originalDamage = 80;
+
+                            angle += angleVariance;
+                            for (int j = 0; j < 22; j++)
+                            {
+                                Dust dust = Dust.NewDustDirect(Main.projectile[projj].position, Main.projectile[projj].width, Main.projectile[projj].height, DustID.Ice);
+                                dust.velocity = Vector2.UnitY * Main.rand.NextFloat(3f, 5.5f) * Main.rand.NextBool().ToDirectionInt();
+                                dust.noGravity = true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+            return base.AltFunctionUse(item, player);
+        }
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
+            
             if (item.type == ItemID.AncientChisel)
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+
             if (item.type == ItemID.HandOfCreation)
                 player.CIMod().IfGodHand = true;
+
             if (item.type == ItemID.WormScarf)
                 player.CIMod().IfWormScarf = true;
+
             if (item.type == ModContent.ItemType<SigilofCalamitas>())
                 player.CIMod().IfCalamitasSigile = true;
                 

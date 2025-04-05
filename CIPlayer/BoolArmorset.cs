@@ -6,6 +6,10 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         #region Set Bonuses
+        #region AncientAeroArmor
+        public bool AncientAeroSet = false;
+        public bool DisableAeroWings = false;
+        #endregion
         #region  AncientBloodflare
         public bool AncientBloodflareSet = false; //远古血炎套
         public bool AncientBloodflareStat = false; //血炎数值
@@ -103,6 +107,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientAstralSet = false; //是否为远古星辉
         public bool AncientAstralStatBuff = false; //是否正在启用星之铸造
         public int AncientAstralCritsCount = 0; //星辉的暴击次
+        public int RequireCrits = 20;//星辉套触发暴击效果需要的攻击次数
         public int AncientAstralCritsCD = 0;//星辉每次暴击的间隔
         public int AncientAstralStealthCD = 0; //星辉每次潜伏的间隔
         public int AncientAstralStealth = 0; //星辉潜伏次数

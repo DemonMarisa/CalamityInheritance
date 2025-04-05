@@ -2,6 +2,11 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.NPCs.Cryogen;
+using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityMod;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.Buffs.Legendary;
 
 namespace CalamityInheritance.NPCs
 {
@@ -19,6 +24,7 @@ namespace CalamityInheritance.NPCs
         //梯凳之怒
         public bool rageOfChair = false;
         public static int rageOfChairDoTDamage = 30000;
+        public bool CryoDrainDoT = false;
         internal object newAI;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -37,15 +43,48 @@ namespace CalamityInheritance.NPCs
                 npc.lifeRegen -= rageOfChairDoTDamage+20000;
                 npc.lifeRegen -= rageOfChairDoTDamage;
             }
+            if (CryoDrainDoT)
+            {
+                if (npc.lifeRegen > 0)
+                    npc.lifeRegen = 0;
+                //dot伤害:800
+                npc.lifeRegen -= 800;
+            }
         }
+    
         #region Reset Effects
         public override void ResetEffects(NPC npc)
         {
             SilvaStunDebuff = false;
+            CryoDrainDoT = false;
             BossResetEffects(npc);
         }
         #endregion
-
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            Player plr = Main.player[projectile.owner];
+            var mplr = plr.CIMod();
+            //拥有失温虹吸的敌怪将会被汲取大部分的数值
+            if (projectile.type == ModContent.ProjectileType<CryogenPtr>() && mplr.ColdDivityTier3 && npc.HasBuff(ModContent.BuffType<CryoDrain>()))
+            {
+                //伤害、dr和防御 
+                npc.damage /= 2;
+                npc.Calamity().DR /= 2;
+                npc.defense /= 2;
+                //敌对单位的……血量
+                npc.life *= (int)0.99f;
+                int buffDef = npc.defense;
+                float buffDR = npc.Calamity().DR;
+                if (plr.HasBuff(ModContent.BuffType<CryoDrain>()) && plr.ActiveItem().type == ModContent.ItemType<CyrogenLegendary>())
+                {
+                    plr.statDefense += buffDef;
+                    plr.endurance += buffDR;
+                    //固定只给1.1f乘算
+                    plr.GetDamage<SummonDamageClass>() *= 1.1f; 
+                }
+                //这些效果只有手持冰寒神性且玩家本身具备失温虹吸效果时才会提供
+            }
+        }
         #region Pre AI
         public override bool PreAI(NPC npc)
         {

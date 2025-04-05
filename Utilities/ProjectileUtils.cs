@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Reflection.PortableExecutable;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using Mono.Cecil.Cil;
 using Terraria;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Utilities
 {
@@ -159,6 +162,54 @@ namespace CalamityInheritance.Utilities
             Vector2 velocity = new Vector2(directionMult , directionMult);
             velocity.Normalize();
             return velocity;
+        }
+        
+
+        /// <summary>
+        /// 用于使射弹在任意起始位置发射至任意目标位置, 经典例子就是天降射弹
+        /// </summary>
+        /// <param name="src">发射源</param>
+        /// <param name="whoAmI">射弹的归属者</param>
+        /// <param name="pType">射弹类型</param>
+        /// <param name="pSpeed">射弹速度</param>
+        /// <param name="pDamage">射弹伤害</param>
+        /// <param name="srcX">射弹起始x坐标</param>
+        /// <param name="srcY">射弹起始y坐标</param>
+        /// <param name="tarX">目标x坐标</param>
+        /// <param name="tarY">目标y坐标</param>
+        /// <param name="xVelocityOffset">默认取0f，距离向量的水平偏移</param>
+        /// <param name="yVelocityOffset">默认取0f，距离向量的垂直偏移</param>
+        /// <param name="pKB">默认取5f，击退力量</param>
+        /// <param name="ai0">默认取0f，ai0</param>
+        /// <param name="ai1">默认取0f，ai1</param>
+        /// <param name="ai2">默认取0f，ai2</param>
+        public static void RainDownProj(ref EntitySource_ItemUse_WithAmmo src, ref int whoAmI, int pType, float pSpeed, int pDamage,
+                                        float srcX, float srcY, float tarX, float tarY,
+                                        float? xVelocityOffset = 0f, float? yVelocityOffset = 0f,
+                                        float? pKB = 5f, float? ai0 = 0f, float? ai1 = 0f, float? ai2 = 0f)
+        {
+            //目标坐标
+            Vector2 tarPos = new (tarX, tarY);            
+            //起始坐标
+            Vector2 srcPos = new (srcX, srcY);
+            //目标坐标与起始坐标的距离向量
+            Vector2 srcTar = tarPos - srcPos;
+            //距离向量一个随机度
+            if (xVelocityOffset.HasValue)
+                srcTar.X += xVelocityOffset.Value;
+            if (yVelocityOffset.HasValue)
+                srcTar.Y += yVelocityOffset.Value;
+            //取向量模
+            float srcTarDist = srcTar.Length();
+            //修正距离向量为实际射弹的速度向量
+            //这里相当于是 速度/距离 得到时间的倒数 (1/T)
+            srcTarDist = pSpeed / srcTarDist;
+            //时间的倒数分别与距离向量的水平距离和垂直距离相乘即可将其修正为速度向量
+            srcTar.X *= srcTarDist;
+            srcTar.Y *= srcTarDist;
+            //发射射弹
+            Projectile.NewProjectile(src, srcPos, srcTar, pType, pDamage, pKB.Value, whoAmI, ai0.Value, ai1.Value, ai2.Value);
+
         }
         ///<summary>
         ///用于手持射弹的使用判定

@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.timeLeft < 90)
             {
                 if (Projectile.ai[1] != 1f)
-                    CIFunction.HomeInOnNPC(Projectile, true, 800f, 16f, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 600f, 16f, 20f);
                 else
                     //潜伏攻击的月明碎片的索敌距离更短——这个是故意为之
                     CIFunction.HomeInOnNPC(Projectile, true, 450f, 14f ,15f);

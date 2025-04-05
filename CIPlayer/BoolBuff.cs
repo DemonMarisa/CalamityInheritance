@@ -36,7 +36,10 @@ namespace CalamityInheritance.CIPlayer
         public bool BrinyBuff = false;
         //庇护刃buff
         public bool DefenderPower = false;
+
         public bool PBGPower = false;
+        //火山杖buff
+        public bool BetsyPower = false;
         #endregion
        
         public void ResetBuff()
@@ -63,6 +66,7 @@ namespace CalamityInheritance.CIPlayer
             BrinyBuff = false;
             DefenderPower = false;
             PBGPower = false;
+            BetsyPower = false;
             #endregion
         }
         public void UpdateDeadBuff()
@@ -87,6 +91,7 @@ namespace CalamityInheritance.CIPlayer
             SForestBuff = false;
             DefenderPower = false;
             PBGPower = false;
+            BetsyPower = false;
         }
     }
 }

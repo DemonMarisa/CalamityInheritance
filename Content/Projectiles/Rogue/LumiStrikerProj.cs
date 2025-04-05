@@ -14,6 +14,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class LumiStrikerProj : ModProjectile, ILocalizedModType
     {
         public int HitCounter = 0;
+        public bool CanRotate = false;
+        public float homingDist = 3600f;
+        public float RotAngle = 0.5f;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle Hitsound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { PitchVariance = 0.4f, Volume = 0.5f };
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/LumiStriker";
@@ -35,13 +38,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             
             if (Projectile.Calamity().stealthStrike)
-            {
                 StealthAI();
-                //干掉普攻的AI
-                return;
-            }
-            SpamAI();
+            else 
+                SpamAI();
         }
+        public override bool? CanDamage() => !Projectile.Calamity().stealthStrike || (Projectile.Calamity().stealthStrike && Projectile.ai[0] > 5f);
         public void SpamAI()
         {
             //飞行粒子
@@ -65,29 +66,35 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Projectile.timeLeft = 1200;
                 Projectile.localNPCHitCooldown = 60;
-                Projectile.extraUpdates = 4;
+                Projectile.extraUpdates = 3;
                 Projectile.penetrate = 4;
                 Projectile.localAI[0] += 1f;
             }
             //保留飞行期间滞留生成夜明碎片的效果，但是这一效果被压制到一个较低的量, 同时伤害也压制了一下
-            if (Projectile.timeLeft % 10 == 0) Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X + Main.rand.NextFloat(-15f, 15f), Projectile.Center.Y + Main.rand.NextFloat(-15, 15f), Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<LumiShard>(), (int)(Projectile.damage * 0.20), Projectile.knockBack * 0.25f, Projectile.owner, 1f, 1f);
+            if (Projectile.timeLeft % 15 == 0) Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X + Main.rand.NextFloat(-15f, 15f), Projectile.Center.Y + Main.rand.NextFloat(-15, 15f), Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<LumiShard>(), (int)(Projectile.damage * 0.20), Projectile.knockBack * 0.25f, Projectile.owner, 1f, 1f);
             //计时器
             Projectile.ai[0] += 1f;
-            //本体矛投掷出去时会有一段逐渐减速的时间
-            if (Projectile.ai[0] < 10f)
-                Projectile.velocity *= 0.85f; 
-            //中间会停顿片刻
-            if (Projectile.ai[0] > 18f)
+            if (Projectile.ai[0] > 2f)
             {
                 //转角
-                Projectile.ai[0] = 18f;
-                Projectile.ai[1] += 1f;
-                //计数器置零的时候才会允许发起追踪
-                if (Projectile.ai[1] % 45 == 0)
-                    HitCounter = 0;
+                Projectile.ai[0] = 10f;
+                if (CanRotate)
+                {
+                    Projectile.ai[1] += 1f;
+                    //计数器置零的时候才会允许发起追踪
+                    if (Projectile.ai[1] > 30f)
+                    {
+                        HitCounter = 0;
+                        Projectile.velocity = Projectile.velocity.RotatedBy(RotAngle);
+                        CanRotate = false;
+                        Projectile.ai[1] = 0;
+                    }
+                }
                 Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
                 if (HitCounter != 1)
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 27f, 75f);
+                    CIFunction.HomeInOnNPC(Projectile, true, homingDist, 24f, 30f);
+                homingDist = 1800f;
+                
             }
             //飞行过程中生成粒子轨迹
             SpawnDust(); 
@@ -131,10 +138,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.Calamity().stealthStrike)
             {
                 HitCounter += 1;
-                //每次击中一次，速度会被乘以0.8f的同时降低1eU
-                Projectile.extraUpdates -=1;
-                Projectile.velocity *= 0.8f;
-                target.immune[Projectile.owner] = 7;
+                //每次击中一次，速度会被乘以0.95f的同时降低1eU
+                if (Projectile.extraUpdates > 1)
+                    Projectile.extraUpdates -= 1;
+                Projectile.velocity *= 0.94f;
+                //转角
+                CanRotate = true;
+                target.immune[Projectile.owner] = 5;
             }
             OnHitEffect(target);
             SoundEngine.PlaySound(Hitsound, target.Center);

@@ -894,3 +894,40 @@ AncientBloodflareBodyArmor: {
 		当你浸入岩浆时, 增加30点防御力并获得+5HP/生命再生速度
 		'''
 }
+
+AncientAeroArmor: {
+	DisplayName: 远古天蓝护具[Revamped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+}
+
+AncientAeroHelm: {
+	DisplayName: 远古天蓝头盔[Revamped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+	SetBonus:
+		'''
+
+		获得一对准许无限飞行的远古天蓝翅膀, 允许自由飞行
+		受击时翅膀将会被半折, 7秒内禁用无限飞行能力
+		复原无限飞行的过程不会被任何方式打断
+		复原过程中提供羽落增益
+		上述效果在佩戴任意翅膀后失效
+		[c/87CEFA:"那么, 展翅高飞吧"]
+		'''
+}
+
+AncientAeroLeggings: {
+	DisplayName: 远古天蓝护腿[Reavmped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+}

@@ -796,3 +796,19 @@ AncientBloodflareBodyArmor: {
 		+5 HP/s life regen speed and increases defense by 30 if submerged in lava
 		'''
 }
+
+AncientAeroArmor: {
+	DisplayName: Ancient Aero Armor
+	Tooltip: ""
+}
+
+AncientAeroHelm: {
+	DisplayName: Ancient Aero Helm
+	Tooltip: ""
+	SetBonus: "1121"
+}
+
+AncientAeroLeggings: {
+	DisplayName: Ancient Aero Leggings
+	Tooltip: ""
+}

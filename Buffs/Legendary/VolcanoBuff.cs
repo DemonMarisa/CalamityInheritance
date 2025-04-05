@@ -2,9 +2,9 @@ using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Buffs.Melee
+namespace CalamityInheritance.Buffs.Legendary
 {
-    public class DukeBuff: ModBuff    
+    public class VolcanoBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Melee
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().BrinyBuff = true;
+            player.CIMod().BetsyPower = true;
         }
     }
 }

@@ -3,25 +3,15 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.System.Configs;
-using CalamityMod.Items.DraedonMisc;
 using Terraria.Localization;
-using System.IO;
-using Terraria.GameContent;
-using Terraria.UI.Chat;
 using CalamityInheritance.CIPlayer;
-using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
-    // 存储UI绘制所需要的数据结构
+    #region 存储UI绘制所需要的数据结构
+    //Lore的坐标位置
     public struct LorePosData
     {
         public int LorePosX;
@@ -56,12 +46,13 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public bool flipHorizontally;
         public int buttonCount;
     }
+    #endregion
     public partial class QolPanel
     {
         public Color TextColor = new(31, 251, 255);
         public Color TextOutLineColor = new(22, 88, 111);
-        public static string LoreImagePath => "CalamityInheritance/UI/DraedonsTexture/Lore"; //一个字段
-
+        public static string DraedonGenericUI => "CalamityInheritance/UI/DraedonsTexture";
+        public static string LoreImagePath => $"{DraedonGenericUI}/Lore"; //一个字段
         #region 文本ID
         public int TextDisplayID = 0;
 
@@ -224,26 +215,28 @@ namespace CalamityInheritance.UI.QolPanelTotal
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
 
             // 案例绘制
+            #region 按钮绘制
             // 按钮开始时的材质
-            Texture2D buttonTextureTrue = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrue").Value;
+            Texture2D buttonTextureTrue = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrue").Value;
             // 按钮开启时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrueHover").Value;
+            Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrueHover").Value;
             // 按钮关闭时的材质
-            Texture2D buttonTextureFalse = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalse").Value;
+            Texture2D buttonTextureFalse = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalse").Value;
             // 按钮关闭时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalseHover").Value;
+            Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalseHover").Value;
             // 按钮不可用时的材质
-            Texture2D buttonTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonUnAvailable").Value;
+            Texture2D buttonTextureUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonUnAvailable").Value;
             // lore不可用时的材质
-            Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogLoreUnAvailable").Value;
+            Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogLoreUnAvailable").Value;
             // lore悬停时的材质
-            Texture2D loreTextureOutLine = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLine").Value;
+            Texture2D loreTextureOutLine = ModContent.Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLine").Value;
             // lore不可用时的悬停材质
-            Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLineUnAvailable").Value;
+            Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLineUnAvailable").Value;
             // 如果不想或者懒得新建存储，可以直接用这个透明材质
-            Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
+            Texture2D InvisibleUI = ModContent.Request<Texture2D>($"{DraedonGenericUI}/InvisibleUI").Value;
             // 血书页的材质
-            Texture2D PageBlood = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PageBlood").Value;
+            Texture2D PageBlood = ModContent.Request<Texture2D>($"{DraedonGenericUI}/PageBlood").Value;
+            #endregion
             DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.65f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
 
             // 这个1是默认的Lore按钮状态
@@ -268,6 +261,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 *附2:我有想过用数组尝试遍历，但我发现最后还是不如打表。完蛋了。
                 */
                 // 哈哈，马上就要全换成按钮了
+                // 我草
                 #region 遍历-Lore贴图
 
                 int PanelLore1 = 1;
@@ -355,22 +349,22 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 右侧界面的中心位置
                 // 305
 
-                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore" + draedonsLoreChoice).Value;
+                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>($"{DraedonGenericUI}/PanelLore" + draedonsLoreChoice).Value;
    
                 CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
 
                 // 下划线贴图
-                Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
+                Texture2D loreTextLineTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextLine").Value;
 
                 // 下划线贴图
-                Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLineShort").Value;
+                Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextLineShort").Value;
 
                 CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, 305, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
                 #endregion
                 #region 绘制文字
                 // 背景贴图
                 // 用于文字背景，暂时无用
-                Texture2D bgTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextHoverTip").Value;
+                Texture2D bgTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextHoverTip").Value;
 
                 // 获取文字
                 string TileText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreT" + TextDisplayID);

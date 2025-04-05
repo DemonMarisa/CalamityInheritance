@@ -1,5 +1,4 @@
-using CalamityInheritance.Buffs.Melee;
-using CalamityInheritance.Buffs.Rogue;
+using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;

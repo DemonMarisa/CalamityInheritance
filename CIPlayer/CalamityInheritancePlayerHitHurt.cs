@@ -268,6 +268,11 @@ namespace CalamityInheritance.CIPlayer
                     Player.thorns += 200;
                 }
             }
+            //庇护刃T2: 尝试使你无视防御损伤
+            if (DefenderPower)
+            {
+                npc.Calamity().canBreakPlayerDefense = false;;
+            }
             if (FuckYouBees)
             {
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
@@ -352,7 +357,11 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-
+            //庇护刃T2: 尝试使你无视防御损伤
+            if (DefenderPower)
+            {
+                proj.Calamity().DealsDefenseDamage = false;;
+            }
             if (FuckYouBees)
             {
                 if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))
@@ -365,11 +374,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CIMod();
-            //庇护刃T2: 尝试使你无视防御损伤
-            if (DefenderPower)
-            {
-                calPlayer.DealDefenseDamage(0, false);
-            }
+            
             if (Player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && !DefendTier2)
                 DefenseBladeTier2Task(hurtInfo);
             if (BuffPolarisBoost)

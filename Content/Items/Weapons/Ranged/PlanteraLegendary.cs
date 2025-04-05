@@ -41,8 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<PlanteraLegendaryLeaf>();
             Item.useAmmo = AmmoID.Arrow;
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<IchikaBlack>() : ModContent.RarityType<MaliceChallengeDrop>();
-            Item.Calamity().canFirePointBlankShots = true;
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PlanteraGreen>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override bool AltFunctionUse(Player player)
         {

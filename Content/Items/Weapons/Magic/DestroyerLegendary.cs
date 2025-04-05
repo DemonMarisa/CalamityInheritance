@@ -13,6 +13,8 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Rarity.Special;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -41,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<DestroyerLegendaryBomb>();
             Item.shootSpeed = 20f;
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<SHPCAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

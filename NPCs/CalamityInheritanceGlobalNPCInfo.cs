@@ -84,7 +84,6 @@ namespace CalamityInheritance.NPCs
                 }
             }
 
-            //ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
             ResetSavedIndex(ref LegacySCal, ModContent.NPCType<SupremeCalamitasLegacy>());
             /*
             // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.

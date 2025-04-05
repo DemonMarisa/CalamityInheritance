@@ -62,6 +62,11 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(false)]
         [ReloadRequired]
         public bool SpecialRarityColor{ get; set; } //部分物品的特殊颜色
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool LegendaryRarity{ get; set; } //传奇武器特殊稀有度
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool GodSlayerWorm{ get; set;} //是否允许弑神蠕虫

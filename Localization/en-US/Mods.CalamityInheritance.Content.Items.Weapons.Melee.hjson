@@ -429,4 +429,8 @@ AquaticDissolution: {
 DefenseBlade: {
 	DisplayName: Defense Blade
 	Tooltip: ""
+	LegendaryScaling: has update {0} power
+	TierOne: Tier1
+	TierTwo: Tier2
+	TierThree: Tier3
 }

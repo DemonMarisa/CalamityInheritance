@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
@@ -13,7 +14,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class LumiStriker: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
-        public static readonly SoundStyle ThrowSound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { Volume = 0.3f, PitchVariance = 0.3f };
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -39,15 +39,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             if (player.Calamity().StealthStrikeAvailable())
             {
-                SoundEngine.PlaySound(ThrowSound);
+                int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f, type, damage, knockback, player.whoAmI);
+                SoundEngine.PlaySound(CISoundMenu.HammerReturnID1 with {Volume = 0.7f, Pitch = 0.5f});
                 Main.projectile[stealth].Calamity().stealthStrike = true;
-                Main.projectile[stealth].velocity *= 1.4f;
                 Main.projectile[stealth].damage = (int)(damage * 0.70f);
+                return false;
             }
-            return false;
+            return true;
         }
         public override void AddRecipes()
         {
