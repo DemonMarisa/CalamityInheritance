@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.friendly = true;
             Projectile.alpha = 255;
             Projectile.penetrate = 1;
+            Projectile.extraUpdates = 1;
             Projectile.timeLeft = 300;
             Projectile.DamageType = DamageClass.Ranged;
         }
@@ -46,10 +47,10 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     break;
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi;
-            //用表达式几行就写完了……哪里需要这种嵌套ifelse……
-            Projectile.localAI[1] += (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 2f : 1f;
-            Projectile.velocity.X *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
-            Projectile.velocity.Y *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
+            // //用表达式几行就写完了……哪里需要这种嵌套ifelse……
+            // Projectile.localAI[1] += (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 2f : 1f;
+            // Projectile.velocity.X *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
+            // Projectile.velocity.Y *= (Projectile.localAI[1] > 30f && Projectile.localAI[1] <= 60f) ? 1.025f : 0.975f;
             if (Projectile.localAI[1] > 60f) Projectile.localAI[1] = 0f;
             if (Projectile.ai[2] == 1f && Main.rand.NextBool(2))
                 CIFunction.HomeInOnNPC(Projectile, false, 1800f, 24f, 20f);

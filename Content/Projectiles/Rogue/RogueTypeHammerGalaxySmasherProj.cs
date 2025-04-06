@@ -17,7 +17,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
 
-        private const float V = 2f;
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.45f }; //Item88:使用流星法杖的音效
         private static readonly float RotationIncrement = 0.22f;
@@ -111,8 +110,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
                         Rectangle mplrHitbox = new((int)owner.position.X,
                                                    (int)owner.position.Y,
-                                                   Projectile.ai[2]==-2f ? owner.width * 2  : owner.width,
-                                                   Projectile.ai[2]==-2f ? owner.height * 2 : owner.height);
+                                                   Projectile.ai[2] == -2f ? owner.width * 2  : owner.width,
+                                                   Projectile.ai[2] == -2f ? owner.height * 2 : owner.height);
                     
                         if (projHitbox.Intersects(mplrHitbox))
                         {
@@ -162,7 +161,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            //Applies God Slayer Inferno on contact.
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
             SpawnDust(target.Center);
             if(ifSummonClone) StealthOnHit();  //如果允许生成克隆弑神锤子
@@ -172,7 +170,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            // Applies God Slayer Inferno on contact.
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
 
             if(ifSummonClone) //如果允许生成克隆弑神锤子

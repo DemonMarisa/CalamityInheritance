@@ -12,8 +12,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Buffs.Melee;
+using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.CIPlayer
 {

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Projectiles.Summon;
@@ -7,7 +6,6 @@ using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.NPCs.Providence;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -15,11 +13,13 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Summon
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
+    //我本人完全看不懂这个代码，如果需要的话可能重写？
     public class CyrogenLegendary: CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -46,22 +46,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         {
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
-            //升级的Tooltip:
-            if (mp.DukeTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.DukeTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.DukeTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.ColdDivityTier1? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.ColdDivityTier2? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.ColdDivityTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             int boostPercent = (int)(getDmg * 100);

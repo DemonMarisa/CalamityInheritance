@@ -1,4 +1,5 @@
 using ReLogic.Content;
+using Steamworks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -10,15 +11,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
     public class AncientAeroArmor :CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Armor";
-        public static string WingsPath => "CalamityInheritance/Content/Items/Armor/AncientAero";
-        public override void Load()
-        {
-            EquipLoader.AddEquipTexture(Mod, $"{WingsPath}/AncientAeroWings_Wings", EquipType.Wings, this);
-        }
         public override void SetStaticDefaults()
         {
-            Item.wingSlot = EquipLoader.GetEquipSlot(Mod,Name, EquipType.Wings);
-            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(60, 80f);
             Item.ResearchUnlockCount = 1;
         }
         public override void SetDefaults()

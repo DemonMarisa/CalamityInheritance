@@ -6,9 +6,11 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         #region Set Bonuses
+        //蘑菇喷火头
+        public bool ShroomiteFlameBooster = false;
         #region AncientAeroArmor
         public bool AncientAeroSet = false;
-        public bool DisableAeroWings = false;
+        public bool AncientAeroWingsPower = false;
         #endregion
         #region  AncientBloodflare
         public bool AncientBloodflareSet = false; //远古血炎套
@@ -119,6 +121,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public void ResetArmorSet()
         {
+            ShroomiteFlameBooster = false;
             #region Set Bonuses
             #region AncientBloodflare
             AncientBloodflareSet = false;
@@ -180,12 +183,15 @@ namespace CalamityInheritance.CIPlayer
 
             AncientAstralSet = false;
             AncientAstralStatBuff = false;
+            AncientAeroSet = false;
+            AncientAeroWingsPower = false;
             test = false;
             #endregion
            
         }
         public void UpdateDeadArmorSet()
         {
+            ShroomiteFlameBooster = false;
             #region Set Bonuses
             #region AncientBloodflare
             AncientBloodflareSet = false;
@@ -253,6 +259,8 @@ namespace CalamityInheritance.CIPlayer
             AncientAstralStealth = 0;
             AncientAstralStealthCD = 0;
             #endregion
+            AncientAeroSet = false;
+            AncientAeroWingsPower = false;
         }
     }
 }

@@ -1,5 +1,5 @@
 using System.Drawing;
-using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using Terraria;

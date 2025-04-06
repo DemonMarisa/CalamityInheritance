@@ -108,6 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Projectile.Opacity = 0f;
             Projectile.localAI[ActiveAITimer] += 1f;
+            
             //不断检测与玩家的距离，如果本身超出追踪距离(2000f), 则强制其发起追踪
             float getXDist = plr.Center.X - Projectile.Center.X;
             float getYDist = plr.Center.Y - Projectile.Center.Y;
@@ -150,17 +151,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public static StoredColorAndDust SpecialColor(Player plr)
         {
-            //默认颜色
+            //默认颜色与例子
             Color getColor = DefualtColor;
-            //若染色则取染色剂
-            //初始化一个结构体
             int d = DustID.TerraBlade;
-
             if (plr.CIMod().PBGLegendaryDyeable)
                 getColor = plr.CIMod().PBGBeamColor;
             //特殊名字特殊颜色
             NameVariance(plr.name ,ref getColor, ref d);
             
+            //初始化一个结构体, 并赋值
             StoredColorAndDust type;
             type.dType = d;
             type.pColor = getColor;

@@ -243,8 +243,11 @@ RavagerLegendary: {
 	DisplayName: Vesuvius Legendary
 	Tooltip: ""
 	TierOne: "11"
+	TierOneTint: "111"
 	TierTwo: "222"
+	TierTwoTint: "222"
 	TierThree: "333"
+	TierThreeTint: "333"
 	LegendaryScaling: Buff
 }
 
@@ -259,5 +262,8 @@ DestroyerLegendary: {
 	TierOne: "11"
 	TierTwo: "222"
 	TierThree: "333"
+	TierOneTint: "111"
+	TierTwoTint: "222"
+	TierThreeTint: "333"
 	LegendaryScaling: Buff
 }

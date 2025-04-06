@@ -145,7 +145,7 @@ namespace CalamityInheritance.System.Configs
         [DrawTicks]
         [DefaultValue(1)]
         public int Offset { get; set; }
-        [Range(1, 3)]
+        [Range(1, 5)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]

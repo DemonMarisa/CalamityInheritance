@@ -26,20 +26,13 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer.Dashes;
-using CalamityInheritance.Content.Items;
-using CalamityMod.NPCs.OldDuke;
-using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.Ravager;
-using CalamityMod.NPCs.DevourerofGods;
-using System.Text.RegularExpressions;
-using Microsoft.Xna.Framework.Input;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.NPCs.Boss.Calamitas;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -104,13 +97,8 @@ namespace CalamityInheritance.CIPlayer
             //Qol面板相关
             Panels();
 
-            //这个用于传奇物品的升级
-            LegendaryItemUpgrade();
-
             //直接向玩家生成物品
             CISpawnItem();
-
-            
 
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
@@ -120,45 +108,6 @@ namespace CalamityInheritance.CIPlayer
             if (calPlayer.chaliceOfTheBloodGod)
             {
                 ShieldDurabilityMax = Main.zenithWorld? Player.statLifeMax2 : 15;
-            }
-        }
-
-        private void LegendaryItemUpgrade()
-        {
-            //海爵剑T3: 佩戴蠕虫围巾召唤老猪
-            if (IfWormScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), Player, 3200f) && !DukeTier3 && Player.ActiveItem().type == ModContent.ItemType<DukeLegendary>())
-            {
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustWater, false, 14f);
-                DukeTier3 = true;
-            }
-            //SHPCT3：使用彗星碎片与永恒核心后，召唤魂花
-            if (Player.Calamity().cShard && Player.Calamity().eCore && CIFunction.IsThereNpcNearby(ModContent.NPCType<Polterghast>(), Player, 3200f) && !DestroyerTier3 && Player.ActiveItem().type == ModContent.ItemType<DestroyerLegendary>())
-            {
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustCloud, false, 14f);
-                DestroyerTier3 = true;
-            }
-            //维苏威阿斯T1: 佩戴灾厄符章在地狱召唤一只毁灭魔像
-            if (IfCalamitasSigile && CIFunction.IsThereNpcNearby(ModContent.NPCType<RavagerHead>(), Player, 3200f) && Main.LocalPlayer.ZoneUnderworldHeight && !BetsyTier1 && Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>())
-            {
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustBlood, false, 14f);
-                BetsyTier1 = true;
-            }
-            //孔雀翎T3：佩戴神圣护符召唤一次神吞
-            if (deificAmuletEffect && CIFunction.IsThereNpcNearby(ModContent.NPCType<DevourerofGodsHead>(), Player, 3200f) && !PBGTier3 && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
-            {
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustTerraBlade, false, 14f);
-                PBGTier3 = true;
-            }
-            //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
-            if (ElemQuiver && CIFunction.IsThereNpcNearby(ModContent.NPCType<Yharon>(), Player, 3200f) && !PlanteraTier3 && Player.ActiveItem().type == ModContent.ItemType<PlanteraLegendary>())
-            {
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with {Volume = .5f}, Player.Center);
-                CIFunction.DustCircle(Player.Center, 24f, 1.5f, CIDustID.DustTerraBlade, false, 14f);
-                PlanteraTier3 = true;
             }
         }
 
@@ -379,12 +328,17 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
                     Player.GetDamage<GenericDamageClass>() += 0.1f;
             }
+            if (AeroStonePower)
+            {
+                Player.jumpSpeedBoost +=0.2f;
+                Player.moveSpeed += 0.1f;
+                Player.wingTime += 0.1f;
+            }
+            if (AncientAeroWingsPower && AeroFlightPower == 0)
+                calPlayer.infiniteFlight = true;
             #region 神龛物品
             //脚斗士
-            if (SMarble)
-            {
-
-            }
+            
             //蘑菇k
             if (SMushroom)
             {
@@ -644,6 +598,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             var usPlayer = Player.CIMod();
+            
             if (GodSlayerRangedSet) 
             {
                 float getCrits = Player.GetWeaponCrit(Player.ActiveItem());
@@ -651,13 +606,7 @@ namespace CalamityInheritance.CIPlayer
                 if (getCrits > 90)
                     Player.GetCritChance<RangedDamageClass>() += 20;
             }
-            if (AncientAeroSet) 
-            {
-                if (!DisableAeroWings)
-                    calPlayer.infiniteFlight = true;
-                else
-                    Player.AddBuff(BuffID.Featherfall, 300);
-            }
+
             if (AncientTarragonSet)
             {
                 calPlayer.defenseDamageRatio *= 0.45f; //防损减免
@@ -957,6 +906,13 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            if (ShroomiteFlameBooster && item.useAmmo == AmmoID.Gel)
+            {
+                Player.GetDamage<RangedDamageClass>() += 0.30f;
+                Player.GetCritChance<RangedDamageClass>() += 5;
+                if (Main.zenithWorld)
+                    Player.GetDamage<RangedDamageClass>() *= 3f;
+            }
             if (EmpressBooster)
             {
                 Player.jumpSpeedBoost += 1.80f;
@@ -1785,7 +1741,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.noKnockback = true;
 
             }
-            if (CIConfig.Instance.LegendaryBuff > 0)
+            if (CIConfig.Instance.LegendaryBuff == 1)
             {
                 PBGTier1 = true;
                 DukeTier1 = true;
@@ -1794,17 +1750,16 @@ namespace CalamityInheritance.CIPlayer
                 PlanteraTier1 = true;
                 DefendTier1 = true;
             }
-            if (CIConfig.Instance.LegendaryBuff > 1)
+            if (CIConfig.Instance.LegendaryBuff == 2)
             {
                 PBGTier2 = true;
                 DukeTier2 = true;
                 BetsyTier2 = true;
                 DestroyerTier2 = true;
                 PlanteraTier2 = true;
-                PlanteraTier3 = true;
                 DefendTier2 = true;
             }
-            if (CIConfig.Instance.LegendaryBuff > 2)
+            if (CIConfig.Instance.LegendaryBuff == 3)
             {
                 PBGTier3 = true;
                 DukeTier3 = true;
@@ -1812,6 +1767,27 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier3 = true;
                 PlanteraTier3 = true;
                 DefendTier3 = true;
+            }
+            if (CIConfig.Instance.LegendaryBuff == 4)
+            {
+                PBGTier1 = false;
+                PBGTier2 = false;
+                PBGTier3 = false;
+                DukeTier1 = false;
+                DukeTier2 = false;
+                DukeTier3 = false;
+                PlanteraTier1 = false;
+                PlanteraTier2 = false;
+                PlanteraTier3 = false; 
+                BetsyTier1 = false;
+                BetsyTier2 = false;
+                BetsyTier3 = false;
+                DefendTier1 = false;
+                DefendTier2 = false;
+                DefendTier3 = false;
+                DestroyerTier1 = false;
+                DestroyerTier2 = false;
+                DestroyerTier3 = false;
             }
             MeleeLevel = CIConfig.Instance.LevelUp;
             RangedLevel= CIConfig.Instance.LevelUp;

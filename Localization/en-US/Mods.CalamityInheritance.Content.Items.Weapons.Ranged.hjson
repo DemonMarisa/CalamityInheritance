@@ -398,4 +398,7 @@ PlanteraLegendary: {
 	TierTwo: "222"
 	TierThree: "333"
 	LegendaryScaling: Buff
+	TierOneTint: "111"
+	TierTwoTint: "222"
+	TierThreeTint: "333"
 }

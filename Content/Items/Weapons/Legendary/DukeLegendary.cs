@@ -12,11 +12,12 @@ using Terraria.Localization;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 
-namespace CalamityInheritance.Content.Items.Weapons.Melee
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Melee.DukeLegendary";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -64,21 +65,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.DukeTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.DukeTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.DukeTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.DukeLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.DukeTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.DukeTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.DukeTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             int boostPercent = (int)(getDmg * 100);
@@ -142,7 +134,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             damageBuff += DownedBossSystem.downedBoomerDuke ? 0.8f : 0f;
             damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
-            damageBuff += (DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas)? 1f : 0f;
+            damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
             return damageBuff;
         }
     }

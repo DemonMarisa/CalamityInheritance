@@ -1,4 +1,4 @@
-using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using Terraria;

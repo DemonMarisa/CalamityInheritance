@@ -1,4 +1,4 @@
-using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.Audio;

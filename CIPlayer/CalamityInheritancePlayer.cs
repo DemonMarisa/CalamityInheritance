@@ -430,7 +430,10 @@ namespace CalamityInheritance.CIPlayer
         {
             if (AncientAeroSet)
             {
+                //获取翅膀
                 int wSlot = EquipLoader.GetEquipSlot(Mod, "AncientAeroArmor", EquipType.Wings);
+
+                Player.noFallDmg = true;
                 if (Player.equippedWings == null)
                 {
                     Player.wingsLogic = wSlot;
@@ -652,10 +655,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "YharimAuricTeslaBodyArmor", EquipType.Back);
             }
-            //查看是否身上穿戴实装翅膀，如果是，则替换远古天蓝的翅膀
-            bool hasVanityWings = Player.wings > 0 && Player.wingsLogic != Player.wings;
-            if (!hasVanityWings)
-                Player.wings = EquipLoader.GetEquipSlot(Mod, "AncientAeroArmor", EquipType.Wings);
         }
         #endregion
 

@@ -812,3 +812,9 @@ AncientAeroLeggings: {
 	DisplayName: Ancient Aero Leggings
 	Tooltip: ""
 }
+
+ShroomiteVisage: {
+	DisplayName: Shroomite Visage
+	Tooltip: ""
+	SetBonus: ""
+}

@@ -20,6 +20,7 @@ using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;

@@ -5,8 +5,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod.NPCs.Cryogen;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityMod;
-using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.NPCs
 {

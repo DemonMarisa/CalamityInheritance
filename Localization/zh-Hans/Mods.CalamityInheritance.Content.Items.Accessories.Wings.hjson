@@ -86,3 +86,16 @@ AncientTarragonWings: {
 		'''
 	DisplayName: 远古龙蒿之翼[Legacy]
 }
+
+AncientAeroWings: {
+	DisplayName: 远古天蓝翅膀[Revamped]
+	Tooltip:
+		'''
+		水平飞行速度：6.25
+		加速倍率：1.0
+		普通的垂直飞行速度
+		飞行时间：80
+		穿着远古天蓝套装时, 准许无限飞行
+		这一效果在受击时会被禁用7秒
+		'''
+}

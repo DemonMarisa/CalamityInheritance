@@ -1,5 +1,6 @@
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod.Items.Accessories;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -57,6 +58,9 @@ namespace CalamityInheritance.CIPlayer
         public bool SMarbleSword = false;
         public bool SMarnite = false;
         public bool SMushroom = false;
+        public bool AeroStonePower = false;
+        public bool IsWearingBloodyScarf = false;
+        public bool IsWearingElemQuiverCal = false;
         #endregion
         /// <summary>
         /// 这个是在MaxLife后边的
@@ -122,7 +126,9 @@ namespace CalamityInheritance.CIPlayer
             AmbrosialStats = false;
             DraedonsHeartLegacyStats = false;
             EmpressBooster = false;
-            
+            AeroStonePower = false; 
+            IsWearingBloodyScarf = false;
+            IsWearingElemQuiverCal = false;
             #endregion
             
         }
@@ -158,6 +164,9 @@ namespace CalamityInheritance.CIPlayer
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
             EmpressBooster = false;
+            AeroStonePower = false;
+            IsWearingBloodyScarf = false;
+            IsWearingElemQuiverCal = false;
         }
     }
 }

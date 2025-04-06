@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
 using Terraria;
 using Terraria.ModLoader;
 

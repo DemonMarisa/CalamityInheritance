@@ -2,7 +2,7 @@ using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Buffs.Melee
+namespace CalamityInheritance.Buffs.Legendary
 {
     public class DefenderBuff: ModBuff    
     {

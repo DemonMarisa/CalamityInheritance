@@ -236,12 +236,18 @@ PBGLegendary: {
 		[SCALING]
 		[c/00FF7F:"痛哭幻奏"...再见了。]
 		[c/00FF7F:-传奇武器-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	DisplayName: 斩罡除魔孔雀柳刃[Legendary]
 	TierOne: "[c/00FF7F:强化]:投掷的高速光刃数量+1"
 	TierTwo: "[c/00FF7F:强化]:增加高速光刃的攻击次数"
 	TierThree: "[c/00FF7F:强化]:攻击时你有概率接下来的在3秒内彻底无敌"
 	LegendaryScaling: "[c/00FF7F:武器强化]: {0}%"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwoTint: "[c/818589:给噬魂幽花造成最后一击]"
+	TierThreeTint: "[c/818589:佩戴神圣护符时召唤神明吞噬者任务描述3]"
 }
 
 EclipseSpear: {

@@ -16,11 +16,12 @@ using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 
-namespace CalamityInheritance.Content.Items.Weapons.Magic
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class RavagerLegendary: CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Magic.RavagerLegendary";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -60,21 +61,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.BetsyTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.BetsyTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.BetsyTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.BetsyTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.BetsyTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.BetsyTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             // 以下，用于比较复杂的计算
             int boostPercent = (int)(LegendaryDamage() * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(

@@ -6,8 +6,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
@@ -22,6 +21,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -85,6 +85,11 @@ namespace CalamityInheritance.CIPlayer
             if (Main.masterMode &&CIFunction.IsThereNpcNearby(NPCID.Golem, Player, 1600f) && Main.LocalPlayer.ZoneLihzhardTemple && FuckYouGolem)
             {
                 damageReduce -= 0.20;
+            }
+            //寒冰神性T2: 10%独立免伤
+            if (ColdDivityTier2 && IsColdDivityActiving)
+            {
+                damageReduce -= 0.10;
             }
             modifiers.FinalDamage *= (float)damageReduce;
             #endregion
@@ -377,6 +382,28 @@ namespace CalamityInheritance.CIPlayer
             
             if (Player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && !DefendTier2)
                 DefenseBladeTier2Task(hurtInfo);
+            //这里CD只有取0的时候才会触发cd，这是为了防止再次受击的时候被重置
+            if (AncientAeroSet && AeroFlightPower == 0)
+            {
+                //如果穿着配套的翅膀则干掉无限飞行
+                if(AncientAeroWingsPower)
+                {
+                    AncientAeroWingsPower = false;
+                    calPlayer.infiniteFlight = false;
+                    //别忘了翅膀折翼
+                    Player.wingTime /= 3;
+                    AeroFlightPower = 600;
+                }
+                //否则执行简单的折翼效果.
+                else
+                {
+                    Player.wingTime /= 3;
+                    AeroFlightPower = 300;
+                }
+                //给予玩家羽落效果
+                Player.AddBuff(BuffID.Featherfall, 300);
+
+            }
             if (BuffPolarisBoost)
             {
                 PolarisBoostCounter -= 10;

@@ -279,11 +279,17 @@ RavagerLegendary: {
 		右键直接发射散开的熔岩巨石
 		可随着游戏流程的进行得到增强
 		[SCALING]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		[c/FF009B:-传奇武器-]
 		'''
-	TierOne: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
+	TierOne: "[c/FF009B:强化:]熔岩巨石将会完全穿墙, 且更容易命中"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwo: "[c/FF009B:强化:]允许从地下喷发熔岩巨石"
-	TierThree: "[c/FF009B:强化:]熔岩巨石将会完全穿墙, 且更容易命中"
+	TierTwoTint: "[c/818589:在地狱内不断攻击亵渎天神]"
+	TierThree: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
+	TierThreeTint: "[c/818589:佩戴灾厄符章去地狱会会双足翼龙]"
 	LegendaryScaling: "[c/FF009B:强化属性]:{0}%"
 }
 
@@ -300,10 +306,16 @@ DestroyerLegendary: {
 		可随着游戏流程的进行得到增强
 		[SCALING]
 		[c/4169E1:-传奇武器-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	DisplayName: SHPC[Legendary]
 	TierOne: "[c/4169E1:强化]:发射能量束时会发射一颗准许追踪的相位激光球"
 	TierTwo: "[c/4169E1:强化]:一次发射的相位激光球与高速激光的数量+2"
-	TierThree: "[c/4169E1:强化]:能量束不再消耗任何魔力值"
+	TierThree: "[c/4169E1:强化]:武器不再消耗任何魔力"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwoTint: "[c/818589:于月球末日之际饮用一瓶葡萄汁]"
+	TierThreeTint: "[c/818589:在使用彗星碎片与永恒核心后, 召唤一次噬魂幽花]"
 	LegendaryScaling: "[c/4169E1:武器增强]: +{0} 武器伤害"
 }

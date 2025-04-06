@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Aerospec;
 using CalamityMod.Items.Materials;
@@ -39,6 +40,22 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
             var usPlayer = player.CIMod();
             player.setBonus = this.GetLocalizedValue("SetBonus");
             usPlayer.AncientAeroSet = true; 
+            //增加玩家最大飞行时间的180(3秒), 我没说错.
+            player.wingTimeMax += 180;
+            bool usingAeroStoneLegacy = player.CIMod().AeroStonePower;
+            bool usingAeroStoneCalamity = player.Calamity().aeroStone;
+            //如果玩家佩戴旧天蓝石, 额外追加3秒
+            if (usingAeroStoneLegacy)
+                player.wingTimeMax += 180;
+            //如果玩家佩戴原灾天蓝石，则使其加成追加到6秒
+            if (usingAeroStoneCalamity)
+                player.wingTimeMax += 310;
+            //如果玩家一起佩戴，再追加6秒飞行时间
+            if (usingAeroStoneCalamity && usingAeroStoneLegacy)
+            {
+                player.wingTimeMax += 360;
+            }
+
         }
         public override void AddRecipes()
         {

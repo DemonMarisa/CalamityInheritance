@@ -184,11 +184,11 @@ CyrogenLegendaryBuff: {
 }
 
 CryoDrain: {
-	// DisplayName: Cryo Drain
-	// Description: Mods.CalamityInheritance.Buffs.CryoDrain.Description
+	DisplayName: 低温虹吸
+	Description: 身体正在急速失温, 能量似乎被吸走了
 }
 
 VolcanoBuff: {
-	// Description: Mods.CalamityInheritance.Buffs.VolcanoBuff.Description
-	// DisplayName: Volcano Buff
+	Description: 火山
+	DisplayName: 火山加热
 }

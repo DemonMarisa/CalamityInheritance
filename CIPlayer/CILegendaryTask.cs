@@ -1,9 +1,6 @@
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -41,6 +38,9 @@ namespace CalamityInheritance.CIPlayer
             tag.Add("DefendTier1", DefendTier1);
             tag.Add("DefendTier2", DefendTier2);
             tag.Add("DefendTier3", DefendTier3);
+            tag.Add("ColdDivityTier1", ColdDivityTier1);
+            tag.Add("ColdDivityTier2", ColdDivityTier1);
+            tag.Add("ColdDivityTier3", ColdDivityTier1);
         }
         public void LegendaryLoadData(ref TagCompound tag)
         {
@@ -62,6 +62,9 @@ namespace CalamityInheritance.CIPlayer
             tag.TryGet("DefendTier1",     out DefendTier1);
             tag.TryGet("DefendTier2",     out DefendTier2);
             tag.TryGet("DefendTier3",     out DefendTier3);
+            tag.TryGet("ColdDivityTier1", out ColdDivityTier1);
+            tag.TryGet("ColdDivityTier2", out ColdDivityTier2);
+            tag.TryGet("ColdDivityTier3", out ColdDivityTier3);
         }
         public void LegendaryDamageTask(Projectile projectile, NPC target, NPC.HitInfo hit)
         {
@@ -81,13 +84,9 @@ namespace CalamityInheritance.CIPlayer
                 if (DukeTier3)
                     DukeLegendaryBuff(target, hit);
             }
-            //维苏威阿斯(T2)
+            //维苏威阿斯(T2, T3)
             if (heldingItem.type == ModContent.ItemType<RavagerLegendary>())
                 RavagerLegendaryDamageTask(target, hit);
-
-            //叶流(T2)
-            if (heldingItem.type == ModContent.ItemType<PlanteraLegendary>())
-                PlanteraLegendaryDamageTask(target, hit);
 
             //庇护之刃
             if (heldingItem.type == ModContent.ItemType<DefenseBlade>())
@@ -103,7 +102,7 @@ namespace CalamityInheritance.CIPlayer
         {
             //海爵剑T3：攻击综合增强属性()
             if (hit.Damage > 5)
-                Player.AddBuff(ModContent.BuffType<DukeBuff>(), 30);
+                Player.AddBuff(ModContent.BuffType<DukeBuff>(), 60);
         }
 
         private void PBGLegendaryBuff(NPC target, NPC.HitInfo hit)
@@ -140,23 +139,8 @@ namespace CalamityInheritance.CIPlayer
              
             if (DefendTier2Pool > 2000)
             {
+                LegendaryUpgradeTint(DustID.Gold);
                 DefendTier2 = true;
-            }
-        }
-        private void PlanteraLegendaryDamageTask(NPC target, NPC.HitInfo hit)
-        {
-            var usPlayer = Player.CIMod();
-            //T2: 金龙30%伤害
-            if (target.type == ModContent.NPCType<Bumblefuck>() && !PlanteraTier2 && Main.LocalPlayer.ZoneJungle)
-            {
-                DamagePool += hit.Damage;
-                if (hit.Damage > target.life * 0.3f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.DryadsWard, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
-                    usPlayer.PlanteraTier2 = true;
-                    DamagePool = 0;
-                }
             }
         }
 
@@ -169,29 +153,28 @@ namespace CalamityInheritance.CIPlayer
                 DamagePool += hit.Damage;
                 if (usPlayer.DamagePool >= target.lifeMax * 0.5f)
                 {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Meteorite, true, 10f);
-                    SoundEngine.PlaySound(CISoundID.SoundBomb with { Volume = .5f }, Player.Center);
+                    LegendaryUpgradeTint(DustID.Meteorite);
                     BetsyTier2 = true;
                     DamagePool = 0;
                 }
+            }
+            if (target.type == NPCID.DD2Betsy && !BetsyTier3 && Main.LocalPlayer.ZoneUnderworldHeight && hit.Damage > target.life)
+            {
+                LegendaryUpgradeTint(DustID.Meteorite);
+                BetsyTier3 = true;
             }
         }
 
         private void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             var usPlayer = Player.CIMod();
-            //T2: 海爵剑杀死一只猎魂鲨
-            if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2)
+            //T2: 用海爵剑给猎魂鲨最后一击
+            if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2 && hit.Damage > target.life)
             {
-                usPlayer.DamagePool += hit.Damage;
-                if (usPlayer.DamagePool > target.lifeMax * 0.8f)
-                {
-                    CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.Water, true, 10f);
-                    SoundEngine.PlaySound(SoundID.NPCDeath19 with { Volume = .5f }, Player.Center);
-                    //记得清空伤害池子，因为这个是共用的
-                    usPlayer.DamagePool = 0;
-                    usPlayer.DukeTier2 = true;
-                }
+                LegendaryUpgradeTint(DustID.Water);
+                //记得清空伤害池子，因为这个是共用的
+                usPlayer.DamagePool = 0;
+                usPlayer.DukeTier2 = true;
             }
         }
 
@@ -199,14 +182,17 @@ namespace CalamityInheritance.CIPlayer
         {
             var usPlayer = Player.CIMod();
             //T2: 使用孔雀翎对噬魂幽花造成最后一击
-            if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && PBGTier2)
+            if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && !PBGTier2)
             {
-                CIFunction.DustCircle(Player.Center, 32f, 1.8f, DustID.TerraBlade, true, 10f);
-                SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
+                LegendaryUpgradeTint(CIDustID.DustTerraBlade);
                 PBGTier2 = true;
             }
         }
-
         #endregion
+        public void LegendaryUpgradeTint(int dType)
+        {
+            CIFunction.DustCircle(Player.Center, 32f, 1.8f, dType, true, 10f);
+            SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, Player.Center);
+        }
     }
 }

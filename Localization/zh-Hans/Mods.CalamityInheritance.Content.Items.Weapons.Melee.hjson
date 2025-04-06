@@ -426,12 +426,18 @@ DukeLegendary: {
 		会随着游戏流程的推进得到强化
 		[SCALING]
 		[c/35FFFF:-传奇武器-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	DisplayName: 龙卷涡漩海皇剑爵[Legendary]
 	LegendaryScaling: "[c/35FFFF:武器强化]:{0}%"
 	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并加强水刃龙卷的追踪性能"
 	TierTwo: "[c/35FFFF:强化]:水刃龙卷在击中敌怪时将会额外召唤新的水刃龙卷"
 	TierThree: "[c/35FFFF:强化]:击中敌人时会强化综合近战属性"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwoTint: "[c/818589:击杀一只猎魂鲨]"
+	TierThreeTint: "[c/818589:佩戴血蠕虫围巾时，召唤一只硫海遗爵]"
 }
 
 AquaticDissolution: {
@@ -448,9 +454,15 @@ DefenseBlade: {
 		会随着游戏流程的推进得到强化
 		[SCALING]
 		[c/9173B1:-传奇武器-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	LegendaryScaling: "[c/9173B1:武器强化]: {0}%"
 	TierOne: "[c/9173B1:强化]:攻击时会增强1%防御力, 最高增强25%"
 	TierTwo: "[c/9173B1:强化]:刀片击中敌人时会使你无视防御损伤"
 	TierThree: "[c/9173B1:强化]:防御力会以一定比例加强你的武器伤害"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwoTint: "[c/818589:手持庇护之刃承受累计2000点伤害]"
+	TierThreeTint: "[c/818589:自身防御力大于320时的时候召唤神明吞噬者]"
 }
