@@ -38,6 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = Lifetime;
+            Projectile.netImportant = true;
         }
 
         public override void AI()

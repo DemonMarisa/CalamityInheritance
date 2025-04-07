@@ -45,6 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // Slightly ignores iframes so it can easily hit twice.
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
+            Projectile.netImportant = true;
         }
 
         public override void AI()

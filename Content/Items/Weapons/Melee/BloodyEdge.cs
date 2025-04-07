@@ -30,8 +30,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<BloodyEdgeEnergySword>();
-            Item.noMelee = true; // This is set the sword itself doesn't deal damage (only the projectile does).
-            Item.shootsEveryUse = true; // This makes sure Player.ItemAnimationJustStarted is set when swinging.
+            Item.noMelee = true;
+            Item.shootsEveryUse = true;
             Item.autoReuse = true;
         }
 

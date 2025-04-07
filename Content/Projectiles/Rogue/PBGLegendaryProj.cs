@@ -72,9 +72,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //默认颜色
             Color getColor = new Color(Main.DiscoR, 203, 103, p.alpha);
             int dType = CIDustID.DustTerraBlade;
-            //若染色则取染色剂
-            if (plr.CIMod().PBGLegendaryDyeable)
-                getColor = plr.CIMod().PBGBeamColor;
             //特殊名字特殊颜色
             NameVariance(plr.name, ref getColor, ref p, ref dType);
             s.dType = dType;
@@ -89,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 case "TrueScarlet":
                 case "FakeAqua":
                     reColor = new(228, 1 ,10, p.alpha);
-                    dType = DustID.GemDiamond;
+                    dType = DustID.GemRuby;
                     break;
                 case "Shizuku":
                 case "shizuku":
@@ -102,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
                 case "KunojiIchika":
                     reColor = new(79,79,79,p.alpha);
-                    dType = DustID.GemDiamond;
+                    dType = DustID.WhiteTorch;
                     break;
                 case "Plantare":
                     reColor = Color.HotPink;

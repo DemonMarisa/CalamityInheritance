@@ -173,6 +173,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 case "TrueScarlet":
                 case "FakeAqua":
                     setColor = TrueScarletColor;
+                    d = DustID.GemRuby;
                     break;
                 case "DemonMarisa":
                     setColor = DemonMarisaColor;
@@ -185,6 +186,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
                 case "KunojiIchika":
                     setColor = IchikaColorBlack;
+                    d = DustID.WhiteTorch;
                     break;
                 case "Plantare":
                     setColor = PlantareColorPink;

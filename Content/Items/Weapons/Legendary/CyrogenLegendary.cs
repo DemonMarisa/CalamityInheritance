@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary";
+        public static readonly float ShootSpeed = 10f;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -36,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.knockBack = 4.5f;
             Item.UseSound = SoundID.Item30;
             Item.autoReuse = true;
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = ShootSpeed;
             Item.shoot = ModContent.ProjectileType<CryogenPtr>();
             Item.DamageType = DamageClass.Summon;
             Item.value = CIShopValue.RarityMaliceDrop;

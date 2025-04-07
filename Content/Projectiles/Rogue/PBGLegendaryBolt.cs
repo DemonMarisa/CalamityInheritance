@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 case "TrueScarlet":
                 case "FakeAqua":
                     reColor = new(228, 1 ,10, p.alpha);
-                    dType = DustID.GemDiamond;
+                    dType = DustID.GemRuby;
                     break;
                 case "Shizuku":
                 case "shizuku":
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
                 case "KunojiIchika":
                     reColor = new(79,79,79,p.alpha);
-                    dType = DustID.GemDiamond;
+                    dType = DustID.WhiteTorch;
                     break;
                 case "Plantare":
                     reColor = Color.HotPink;

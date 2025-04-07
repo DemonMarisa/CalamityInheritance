@@ -24,7 +24,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -35,7 +34,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = 650;
             Projectile.extraUpdates = 2;
         }
-
         public override void AI()
         {
             Player projOwner = Main.player[Projectile.owner];;
@@ -59,8 +57,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Main.rand.NextBool(6))
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.PurificationPowder, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
         }
-
-        //Give it a custom hitbox shape so it may remain rectangular and elongated
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
@@ -71,7 +67,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - direction * bladeHalfLength, Projectile.Center + direction * bladeHalfLength, bladeWidth, ref collisionPoint);
         }
-
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 3; i++)
@@ -82,7 +77,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[illustrious].velocity -= Projectile.oldVelocity * 0.3f;
             }
         }
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
@@ -96,7 +90,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<RoyalHeal>(), ShadowknivesLifeStealRange);
         }
-
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
@@ -110,7 +103,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<RoyalHeal>(), ShadowknivesLifeStealRange);
         }
-
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

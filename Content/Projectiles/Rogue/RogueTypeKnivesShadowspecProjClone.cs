@@ -15,6 +15,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{GenericProjRoute.ProjRoute}/Rogue/RogueTypeKnivesShadowspecProj";
         public static readonly float Acceleration = 0.98f; //飞行加速度
+        #region 基础属性
+        //转阶段的计时器
+        public float PhaseChanger = 0f;
+        //第一个AI：高速飞行
+        const float HyperTravelling = 0f;
+        //第二个AI：锁定并造成伤害
+        const float LockAndDamage = 1f;
+        //第三个AI：迸发多个飞刀
+        const float BurstIntoKnives = 2f;
+        #endregion
         public int HitCounts = 0;
         public override void SetStaticDefaults()
         {
@@ -48,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             FlyingDust();  //飞行粒子
             switch (Projectile.ai[0])
             {
-                case 0f:
+                case HyperTravelling:
                     Projectile.Hitbox = new Rectangle((int)Projectile.velocity.X, (int)Projectile.velocity.Y, Projectile.width, Projectile.height);
                     Projectile.extraUpdates = 10;
                     Projectile.penetrate = -1;
@@ -58,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.ai[0] = 1f;
                     }
                     break;
-                case 1f:
+                case LockAndDamage:
                     Projectile.ai[1] += 1f;//自增
                     Projectile.extraUpdates = 1;//降低额外更新
                     Projectile.penetrate = 4;
@@ -70,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.ai[1] = 50f;
                     }
                     break;
-                case 2f:
+                case BurstIntoKnives:
                     BlastAI(Projectile);
                     break;
             }
@@ -79,32 +89,32 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public static void BlastAI(Projectile projectile)
         {
             projectile.ai[2] += 1f;//计时器自增
-                    if(projectile.ai[2] == 1f)
-                    {
-                        projectile.penetrate = 2; //因为没有计划使用timeLeft来杀死弹幕，因此这里改为了多穿
-                        projectile.extraUpdates = 1;
-                        projectile.localNPCHitCooldown = 30; //->降低为20
-                        int knivesAmt = Main.rand.Next(10, 15); //10->15
-                        float rot = 360f/knivesAmt;
-                       
-                        for(int i = 0; i < knivesAmt; i++)
-                        {
-                            float rotArg = MathHelper.ToRadians(i* rot);
-                            Vector2 rotPos = new Vector2(10f, 0f).RotatedBy(rotArg);
-                            Vector2 rotVel = new Vector2(10f, 0f).RotatedBy(rotArg);
-                            Player player = Main.player[projectile.owner];
-                            Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center + rotPos, rotVel,
-                                                    ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(),
-                                                    projectile.damage, projectile.knockBack, Main.myPlayer, 2f, 0f, projectile.ai[2] + 1f);
-                        }
-                    }
-                    if(projectile.ai[2] > 40)
-                    {
-                        projectile.ai[2] = 40;
-                        CIFunction.HomeInOnNPC(projectile, true, 1800f, 32f, 0f); //锁定这个敌人
-                    }
+            if(projectile.ai[2] == 1f)
+            {
+                projectile.penetrate = 2; //因为没有计划使用timeLeft来杀死弹幕，因此这里改为了多穿
+                projectile.extraUpdates = 1;
+                projectile.localNPCHitCooldown = 30; //->降低为20
+                int knivesAmt = Main.rand.Next(10, 15); //10->15
+                float rot = 360f/knivesAmt;
+                
+                for(int i = 0; i < knivesAmt; i++)
+                {
+                    float rotArg = MathHelper.ToRadians(i* rot);
+                    Vector2 rotPos = new Vector2(10f, 0f).RotatedBy(rotArg);
+                    Vector2 rotVel = new Vector2(10f, 0f).RotatedBy(rotArg);
+                    Player player = Main.player[projectile.owner];
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center + rotPos, rotVel,
+                                            ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(),
+                                            projectile.damage, projectile.knockBack, Main.myPlayer, 2f, 0f, projectile.ai[2] + 1f);
+                }
+            }
+
+            if(projectile.ai[2] > 40)
+            {
+                projectile.ai[2] = 40;
+                CIFunction.HomeInOnNPC(projectile, true, 1800f, 32f, 0f); //锁定这个敌人
+            }
         }
-        //Give it a custom hitbox shape so it may remain rectangular and elongated
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
@@ -136,11 +146,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.velocity.Y *= 0.1f;
             }
         }
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-        }
-
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

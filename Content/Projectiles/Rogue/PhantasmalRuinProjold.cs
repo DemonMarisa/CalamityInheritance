@@ -87,6 +87,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.4f }, Projectile.position);
             int numberOfProjectiles = Main.rand.Next(10, 12);
+            if (Projectile.Calamity().stealthStrike)
+                numberOfProjectiles += 10;
+                
             float spreadAngle = MathHelper.ToRadians(Main.rand.Next(25, 30));
             float baseAngle = Projectile.velocity.ToRotation();
 
@@ -116,6 +119,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
                 int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, ModContent.ProjectileType<PhantasmalSoulold>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                if (Projectile.Calamity().stealthStrike)
+                {
+                    Main.projectile[newProjectileId].Calamity().stealthStrike = true;
+                }
 
             }
         }

@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
             Projectile.timeLeft = Lifetime;
+            Projectile.netImportant = true;
         }
 
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 300 && target.CanBeChasedBy(Projectile);

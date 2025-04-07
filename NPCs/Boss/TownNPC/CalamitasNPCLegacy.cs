@@ -43,6 +43,17 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
     {
         private int Chat = 4;
 
+        #region Prices
+        public static int GeneralAccPrice => Item.buyPrice(0, 50, 0 , 0);
+        public static int GeneralPostMLMatPrice => Item.buyPrice(0, 20, 0 , 0);
+        public static string DialogueRoute => "Mods.CalamityInheritance.Dialogue";
+        const short ChatOpt = 0;
+        const short LoreShopOpt = 1;
+        const short PotionShopOpt = 2;
+        const short AmmoShopOpt = 3;
+        const short MiscShopOpt = 4;
+        const short ItemShopOpt = 5;
+        #endregion
         public static int WhichButton;
 
         public static bool LoreShop;
@@ -150,9 +161,9 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
 
                 return Chat switch
                 {
-                    1 => Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat1"),
-                    2 => Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat2"),
-                    _ => Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat4"),
+                    1 => Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat1"),
+                    2 => Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat2"),
+                    _ => Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat4"),
                 };
             }
 
@@ -162,81 +173,81 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
                 CIPlayer.FreeEssence = 2;
             }
             if (Chat == 3)
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat3");
+                return Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat3");
             if (Chat == 4)
             {
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat4");
+                return Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat4");
             }
             if (Chat == 5)
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat5");
+                return Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat5");
             if (Chat == 6)
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat6");
+                return Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat6");
             if (Chat == 7)
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalHomelessChat7");
+                return Language.GetTextValue($"{DialogueRoute}.ScalHomelessChat7");
 
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor1"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor2"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor3"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor4"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor5"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatNor6"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor1"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor2"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor3"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor4"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor5"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalChatNor6"));
 
             if (Main.dayTime)
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.DayTime1"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.DayTime2"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.DayTime3"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.DayTime4"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.DayTime5"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.DayTime1"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.DayTime2"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.DayTime3"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.DayTime4"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.DayTime5"));
             }
             else
             {
                 if (NPC.downedMoonlord)
                 {
-                    list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime1"));
+                    list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime1"));
                 }
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime2"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime3"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime4"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime5"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.NightTime6"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime2"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime3"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime4"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime5"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.NightTime6"));
             }
 
             if (DownedBossSystem.downedDoG && Main.eclipse)
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.eclipse1"));
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.eclipse1"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.eclipse1"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.eclipse1"));
             }
             if (Main.bloodMoon)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.BloodMoon1"));
+                    list.Add(Language.GetTextValue($"{DialogueRoute}.BloodMoon1"));
                 }
                 for (int j = 0; j < 3; j++)
                 {
-                    list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.BloodMoon2"));
+                    list.Add(Language.GetTextValue($"{DialogueRoute}.BloodMoon2"));
                 }
             }
             int fab = NPC.FindFirstNPC(ModContent.NPCType<FAP>());
             int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SEAHOE>());
             if (fab != -1)
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalFAPChat"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.ScalFAPChat"));
             }
             if (seahoe != -1)
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalSeahoeChat"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.ScalSeahoeChat"));
             }
 
             int armdealer = NPC.FindFirstNPC(NPCID.ArmsDealer);
             if (armdealer != -1)
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.armdealer1") + Main.npc[armdealer].GivenName + Language.GetTextValue("Mods.CalamityInheritance.Dialogue.armdealer2"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.armdealer1") + Main.npc[armdealer].GivenName + Language.GetTextValue($"{DialogueRoute}.armdealer2"));
             }
             if (!DownedBossSystem.downedCalamitas && Main.rand.NextBool(5))
             {
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.PreDownScal"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.PreDownScal"));
             }
             bool CalLore = player.InventoryHas(ModContent.ItemType<KnowledgeCalamitas>()) || player.PortableStorageHas(ModContent.ItemType<KnowledgeCalamitas>());
             bool CeremonialUrnItem = player.InventoryHas(ModContent.ItemType<CeremonialUrn>()) || player.PortableStorageHas(ModContent.ItemType<CeremonialUrn>());
@@ -244,28 +255,28 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
             {
                 if (Main.rand.NextBool(10))
                 {
-                    return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalLoreChat");
+                    return Language.GetTextValue($"{DialogueRoute}.ScalLoreChat");
                 }
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalLoreChat"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.ScalLoreChat"));
             }
             if (CeremonialUrnItem)
             {
                 if (Main.rand.NextBool(10))
                 {
-                    return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalUrnChat");
+                    return Language.GetTextValue($"{DialogueRoute}.ScalUrnChat");
                 }
-                list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalUrnChat"));
+                list.Add(Language.GetTextValue($"{DialogueRoute}.ScalUrnChat"));
             }
 
             int ScalClone = NPC.FindFirstNPC(ModContent.NPCType<CalamitasClone>());
             int ScalBoss = NPC.FindFirstNPC(ModContent.NPCType<SupremeCalamitas>());
             if (ScalClone != -1)
             {
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalCalCloneChat");
+                return Language.GetTextValue($"{DialogueRoute}.ScalCalCloneChat");
             }
             if (ScalBoss != -1)
             {
-                return Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalSWChat");
+                return Language.GetTextValue($"{DialogueRoute}.ScalSWChat");
             }
             return list;
         }
@@ -280,27 +291,27 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
         {
             switch (WhichButton)
             {
-                case 0:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalChatOption");
+                case ChatOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalChatOption");
                     break;
-                case 1:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalloreShopOption");
+                case LoreShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalloreShopOption");
                     break;
-                case 2:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalPotionShopOption");
+                case PotionShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalPotionShopOption");
                     break;
-                case 3:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalAmmoShopOption");
+                case AmmoShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalAmmoShopOption");
                     break;
-                case 4:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalMiscShopOption");
+                case MiscShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption");
                     break;
-                case 5:
-                    button = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalItemShopOption");
+                case ItemShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption");
                     break;
             }
 
-            button2 = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.Scalbutton2Option");
+            button2 = Language.GetTextValue($"{DialogueRoute}.Scalbutton2Option");
 
         }
         public override void AddShops()
@@ -317,14 +328,14 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
             if (!firstButton)
             {
                 WhichButton++;
-                if (WhichButton > 5)
+                if (WhichButton > ItemShopOpt)
                 {
-                    WhichButton = 0;
+                    WhichButton = ChatOpt;
                 }
                 return;
             }
 
-            if (WhichButton == 0)
+            if (WhichButton == ChatOpt)
             {
                 Main.npcChatText = LoreDialogue();
                 return;
@@ -332,25 +343,25 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
 
             if (firstButton)
             {
-                if (WhichButton == 1)
+                if (WhichButton == LoreShopOpt)
                 {
-                    shop = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalloreShopOption");
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalloreShopOption");
                 }
-                if (WhichButton == 2)
+                if (WhichButton == PotionShopOpt)
                 {
-                    shop = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalPotionShopOption");
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalPotionShopOption");
                 }
-                if (WhichButton == 3)
+                if (WhichButton == AmmoShopOpt)
                 {
-                    shop = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalAmmoShopOption");
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalAmmoShopOption");
                 }
-                if (WhichButton == 4)
+                if (WhichButton == MiscShopOpt)
                 {
-                    shop = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalMiscShopOption");
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption");
                 }
-                if (WhichButton == 5)
+                if (WhichButton == ItemShopOpt)
                 {
-                    shop = Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalItemShopOption");
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption");
                 }
             }
         }
@@ -358,23 +369,23 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
         public string LoreDialogue()
         {
             IList<string> list = new List<string>();
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat1BloodMoon"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat2"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat3"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat4"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat5"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat6"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat7"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat8"));
-            list.Add(Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalOtherLoreChat9"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat1BloodMoon"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat2"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat3"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat4"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat5"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat6"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat7"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat8"));
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalOtherLoreChat9"));
             return list[Main.rand.Next(list.Count)];
         }
         //lore商店
         public void LoreShop_List()
         {
-            Condition tierThreeCondition = new("Mods.CalamityInheritance.Dialogue.DownedAnySentinels", () => DownedBossSystem.downedSignus || DownedBossSystem.downedStormWeaver || DownedBossSystem.downedCeaselessVoid);
+            Condition tierThreeCondition = new($"{DialogueRoute}.DownedAnySentinels", () => DownedBossSystem.downedSignus || DownedBossSystem.downedStormWeaver || DownedBossSystem.downedCeaselessVoid);
 
-            var dropsShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalloreShopOption"))
+            var dropsShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalloreShopOption"))
                 .Add(new Item(ModContent.ItemType<KnowledgeKingSlime>()) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.DownedKingSlime)
 
                 .Add(new Item(ModContent.ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDesertScourge)
@@ -448,33 +459,33 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
         //药水商店
         public void PotionShop_List()
         {
-            var PotionShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalPotionShopOption"))
+            var PotionShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalPotionShopOption"))
                 .Add(new Item(ModContent.ItemType<CadancePotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<RevivifyPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<TriumphPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<YharimsStimulants>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<YharimsStimulants>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.Hardmode)
 
-                .Add(new Item(ModContent.ItemType<ShatteringPotion>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedGolem)
-                .Add(new Item(ModContent.ItemType<TitanScalePotion>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedGolem)
+                .Add(new Item(ModContent.ItemType<ShatteringPotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
+                .Add(new Item(ModContent.ItemType<TitanScalePotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
 
-                .Add(new Item(ModContent.ItemType<HolyWrathPotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<ProfanedRagePotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
-
-                .Add(new Item(ModContent.ItemType<DraconicElixir>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedYharon);
+                .Add(new Item(ModContent.ItemType<HolyWrathPotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
+                .Add(new Item(ModContent.ItemType<ProfanedRagePotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
+                //2铂金售价
+                .Add(new Item(ModContent.ItemType<DraconicElixir>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedYharon);
             PotionShop.Register();
         }
         //弹药商店
         public void AmmoShop_List()
         {
-            var AmmoShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalAmmoShopOption"))
+            var AmmoShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalAmmoShopOption"))
                 .Add(new Item(ModContent.ItemType<HyperiusBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedAstrumDeus)
 
-                .Add(new Item(ModContent.ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<HolyFireBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedProvidence)
-
-                .Add(new Item(ModContent.ItemType<GodSlayerSlug>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<VanquisherArrowold>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<VanquisherArrow>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedDevourerOfGods);
+                .Add(new Item(ModContent.ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ModContent.ItemType<HolyFireBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
+                //神后的东西怎么能跟月前的东西一个售价呢
+                .Add(new Item(ModContent.ItemType<GodSlayerSlug>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ModContent.ItemType<VanquisherArrowold>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ModContent.ItemType<VanquisherArrow>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods);
             AmmoShop.Register();
         }
         //杂项商店
@@ -490,56 +501,62 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
         //为什么为什么为什么为什么为什么为什么为什么为什么
         public void MiscShop_List()
         {
-            var MiscShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalMiscShopOption"))
-                .Add(new Item(ModContent.ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 9999) })
+            var MiscShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption"))
+                .Add(new Item(ModContent.ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver:19, copper: 19) })
                 .Add(new Item(ModContent.ItemType<EnergyCore>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
                 .Add(new Item(ModContent.ItemType<WulfrumBattery>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
                 .Add(new Item(ModContent.ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ModContent.ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ItemID.BlackInk) { shopCustomPrice = Item.buyPrice(gold: 1) })
 
-                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 5) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 5) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 5) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
 
-
-                .Add(new Item(ModContent.ItemType<GrandScale>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedPlantera)
-                .Add(new Item(ItemID.Autohammer) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedPlantera)
-
-                .Add(new Item(ModContent.ItemType<LifeAlloy>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedRavager)
+                //瀚海狂鲨的鳞片出售就9银币，哥们你造15金币说是
+                .Add(new Item(ModContent.ItemType<GrandScale>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera)
+                //俺寻思这玩意蘑菇人卖都是50金币啊
+                .Add(new Item(ItemID.Autohammer) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedPlantera)
+                //bro正在试图用生命合金完成300%利润差价
+                .Add(new Item(ModContent.ItemType<LifeAlloy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedRavager)
 
                 .Add(new Item(ItemID.Gladius) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPolterghast)
-
-                .Add(new Item(ModContent.ItemType<UnholyEssence>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<Necroplasm>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<Bloodstone>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, CalamityConditions.DownedProvidence)
+                //下列材料的利润疑似高达200%
+                .Add(new Item(ModContent.ItemType<UnholyEssence>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
+                .Add(new Item(ModContent.ItemType<Necroplasm>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
+                .Add(new Item(ModContent.ItemType<Bloodstone>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedProvidence)
                 .Add(new Item(ModContent.ItemType<ReaperTooth>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPolterghast)
 
                 .Add(new Item(ModContent.ItemType<EndothermicEnergy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
                 .Add(new Item(ModContent.ItemType<NightmareFuel>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDevourerOfGods)
+                //5金币买入12金币卖出去，你小子 
+                .Add(new Item(ModContent.ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedDevourerOfGods)
+                //化魂神晶利润率高达1000%
+                .Add(new Item(ModContent.ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 45) }, CalamityConditions.DownedDevourerOfGods)
+                //你小子龙魂卖的比化魂神晶便宜
+                .Add(new Item(ModContent.ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 60) }, CalamityConditions.DownedDevourerOfGods)
 
                 .Add(new Item(ModContent.ItemType<CodebreakerBase>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
                 .Add(new Item(ModContent.ItemType<DecryptionComputer>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)
                 .Add(new Item(ModContent.ItemType<LongRangedSensorArray>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedMechBossAny)
-                .Add(new Item(ModContent.ItemType<AdvancedDisplay>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedGolem)
-                .Add(new Item(ModContent.ItemType<VoltageRegulationSystem>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<AuricQuantumCoolingCell>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedYharon);
+                .Add(new Item(ModContent.ItemType<AdvancedDisplay>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.DownedGolem)
+                .Add(new Item(ModContent.ItemType<VoltageRegulationSystem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ModContent.ItemType<AuricQuantumCoolingCell>()) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CalamityConditions.DownedYharon);
             MiscShop.Register();
         }
         //只卖你mod的稀有物品，其它mod等扔给杂项了
         //比如bro，魔君套需要五个神经元护符
+        
+        //统一抬了下价格，倒也不是因为说没钱花，而是感觉有些东西就卖这么少钱有点奇怪
         public void ItemShop_List()
         {
-            var ItemShop = new NPCShop(Type, Language.GetTextValue("Mods.CalamityInheritance.Dialogue.ScalItemShopOption"))
-                .Add(new Item(ModContent.ItemType<AmidiasSpark>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDesertScourge)
-                .Add(new Item(ItemID.FlyingCarpet) { shopCustomPrice = Item.buyPrice(gold: 5) })
-                .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletron)
-                .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedAquaticScourge)
+            var ItemShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption"))
+                .Add(new Item(ModContent.ItemType<AmidiasSpark>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
+                .Add(new Item(ItemID.FlyingCarpet) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
+                .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
                 .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon);
             ItemShop.Register();
         }
