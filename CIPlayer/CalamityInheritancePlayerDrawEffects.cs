@@ -8,12 +8,24 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
+using CalamityMod.Dusts;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-        internal Vector2 RandomDebuffVisualSpot => Player.Center + new Vector2(Main.rand.NextFloat(-10f, 10f), Main.rand.NextFloat(-20f, 20f));
+        public Vector2 RandomDebuffVisualSpot => Player.Center + new Vector2(Main.rand.NextFloat(-10f, 10f), Main.rand.NextFloat(-20f, 20f));
+        public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        {
+            Player player = drawInfo.drawPlayer;
+            CalamityInheritancePlayer cIplayer = player.CIMod();
+            SetArmorEffectVisuals(player);
+            if (abyssalFlames && drawInfo.shadow == 0f)
+                AbyssalFlames.DrawEffects(drawInfo);
+            if (vulnerabilityHexLegacy && drawInfo.shadow == 0f)
+                VulnerabilityHexLegacy.DrawEffects(drawInfo);
+        }
         #region Tanks/Backpacks
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {

@@ -2,7 +2,9 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
+using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -47,8 +49,35 @@ namespace CalamityInheritance.CIPlayer
                         Player.lifeRegen += 3;
                 }
             }
+            TotalDebuff();
         }
         #endregion
+        public void TotalDebuff()
+        {
+            // 死亡模式debuff伤害+25%
+            float deathNegativeRegenBonus = 0.25f;
+            float calamityDebuffMultiplier = 1f + (CalamityWorld.death ? deathNegativeRegenBonus : 0f);
+
+            // 总共降低的生命值
+            float totalNegativeLifeRegen = 0;
+
+            void ApplyDoTDebuff(bool hasDebuff, int negativeLifeRegenToApply, bool immuneCondition = false)
+            {
+                if (!hasDebuff || immuneCondition)
+                    return;
+
+                if (Player.lifeRegen > 0)
+                    Player.lifeRegen = 0;
+
+                Player.lifeRegenTime = 0;
+                totalNegativeLifeRegen += negativeLifeRegenToApply * calamityDebuffMultiplier;
+            }
+
+            ApplyDoTDebuff(abyssalFlames, 150);
+            ApplyDoTDebuff(vulnerabilityHexLegacy, 32);
+
+            Player.lifeRegen -= (int)totalNegativeLifeRegen;
+        }
         #region Update Life Regen
         public override void UpdateLifeRegen()
         {

@@ -1,42 +1,9 @@
-﻿using CalamityMod.Items.Accessories;
-using CalamityMod.NPCs.Abyss;
-using CalamityMod.NPCs.AquaticScourge;
-using CalamityMod.NPCs.AstrumAureus;
-using CalamityMod.NPCs.BrimstoneElemental;
-using CalamityMod.NPCs.CalamityAIs.CalamityBossAIs;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.CeaselessVoid;
-using CalamityMod.NPCs.DevourerofGods;
-using CalamityMod.NPCs.ExoMechs.Apollo;
-using CalamityMod.NPCs.ExoMechs.Ares;
-using CalamityMod.NPCs.ExoMechs.Artemis;
-using CalamityMod.NPCs.ExoMechs.Thanatos;
-using CalamityMod.NPCs.ExoMechs;
-using CalamityMod.NPCs.HiveMind;
-using CalamityMod.NPCs.Leviathan;
-using CalamityMod.NPCs.NormalNPCs;
-using CalamityMod.NPCs.Perforator;
-using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.PrimordialWyrm;
-using CalamityMod.NPCs.ProfanedGuardians;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.NPCs.Ravager;
-using CalamityMod.NPCs.Signus;
-using CalamityMod.NPCs.SlimeGod;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs.Yharon;
-using CalamityMod.Projectiles.Boss;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityMod.NPCs;
+using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 
 namespace CalamityInheritance.NPCs
 {
@@ -58,6 +25,8 @@ namespace CalamityInheritance.NPCs
         #region 終灾
         public static int LegacySCalWorm = -1;
         public static int LegacySCal = -1;
+        public static int LegacySCalCataclysm = -1;
+        public static int LegacySCalCatastrophe = -1;
         #endregion
 
         #region Reset Effects
@@ -84,8 +53,10 @@ namespace CalamityInheritance.NPCs
                 }
             }
 
-            //ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
+            ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
             ResetSavedIndex(ref LegacySCal, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalCataclysm, ModContent.NPCType<SupremeCataclysmLegacy>());
+            ResetSavedIndex(ref LegacySCalCatastrophe, ModContent.NPCType<SupremeCatastropheLegacy>());
             /*
             // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.
             CurrentlyEnraged = false;

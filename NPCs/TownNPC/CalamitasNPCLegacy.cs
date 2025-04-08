@@ -35,8 +35,9 @@ using CalamityInheritance.CIPlayer;
 using CalamityMod.BiomeManagers;
 using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityMod.Particles;
 
-namespace CalamityInheritance.NPCs.Boss.TownNPC
+namespace CalamityInheritance.NPCs.TownNPC
 {
     [AutoloadHead]
     public class CalamitasNPCLegacy : ModNPC
@@ -577,6 +578,7 @@ namespace CalamityInheritance.NPCs.Boss.TownNPC
         {
             if (NPC.life <= 0)
             {
+                DeathAshParticle.CreateAshesFromNPC(NPC);
                 NPC.position = NPC.Center;
                 NPC.width = NPC.height = 50;
                 NPC.position.X -= NPC.width / 2;

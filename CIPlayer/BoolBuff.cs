@@ -1,3 +1,6 @@
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -19,7 +22,7 @@ namespace CalamityInheritance.CIPlayer
         public bool InvincibleJam = false;
         public bool BuffStatBloodPact = false;
         public bool BloodflareCoreStat = false;//旧血炎
-  
+
         public bool BuffStatsBackfire = false;   //淬火
         public int StepToolShadowChairSmallCD = 0;
         public int StepToolShadowChairSmallFireCD = 0;
@@ -38,7 +41,11 @@ namespace CalamityInheritance.CIPlayer
         public bool DefenderPower = false;
         public bool PBGPower = false;
         #endregion
-       
+        #region Debuff
+        public bool abyssalFlames = false;
+        public bool horror = false;
+        public bool vulnerabilityHexLegacy = false;
+        #endregion
         public void ResetBuff()
         {
             #region Buffs
@@ -64,9 +71,15 @@ namespace CalamityInheritance.CIPlayer
             DefenderPower = false;
             PBGPower = false;
             #endregion
+            #region Debuff
+            abyssalFlames = false;
+            horror = false;
+            vulnerabilityHexLegacy = false;
+            #endregion
         }
         public void UpdateDeadBuff()
         {
+            #region Buff
             BrinyBuff = false;
             BuffStatsArmorShatter = false;
             Revivify = false;
@@ -87,6 +100,32 @@ namespace CalamityInheritance.CIPlayer
             SForestBuff = false;
             DefenderPower = false;
             PBGPower = false;
+            #endregion
+            #region Debuff
+            abyssalFlames = false;
+            horror = false;
+            vulnerabilityHexLegacy = false;
+            #endregion
+        }
+        public void DebuffEffect()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
+            if (horror)
+            {
+                Player.statDefense -= 15;
+                Player.blind = true;
+                Player.moveSpeed -= 0.15f;
+                Player.accRunSpeed -= 0.15f;
+            }
+            if (vulnerabilityHexLegacy)
+            {
+                Player.endurance -= 0.3f;
+                Player.statDefense -= 30;
+                Player.moveSpeed -= 0.10f;
+                calPlayer.weakPetrification = true;
+                if (Player.wingTimeMax > 0)
+                    Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
+            }
         }
     }
 }

@@ -2,6 +2,11 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.NPCs;
+using CalamityMod.CalPlayer;
+using System.Reflection;
+using CalamityMod;
 
 namespace CalamityInheritance.NPCs
 {
@@ -14,10 +19,18 @@ namespace CalamityInheritance.NPCs
                 return true;
             }
         }
-
+        #region Debuff
         public bool SilvaStunDebuff = false;
-        //梯凳之怒
+        // 梯凳之怒
         public bool rageOfChair = false;
+        // 深渊之火
+        public bool abyssalFlamesNPC = false;
+        // 恐惧
+        public bool horrorNPC = false;
+        // 孱弱巫咒
+        public bool vulnerabilityHexLegacyNPC = false;
+        #endregion
+
         public static int rageOfChairDoTDamage = 30000;
         internal object newAI;
 
@@ -25,8 +38,7 @@ namespace CalamityInheritance.NPCs
         {
             if (SilvaStunDebuff)
             {
-                npc.velocity.Y = 0f;
-                npc.velocity.X = 0f;
+                npc.velocity *= 0.95f;
             }
             if (rageOfChair)
             {
@@ -37,6 +49,48 @@ namespace CalamityInheritance.NPCs
                 npc.lifeRegen -= rageOfChairDoTDamage+20000;
                 npc.lifeRegen -= rageOfChairDoTDamage;
             }
+            if(abyssalFlamesNPC)
+            {
+                // 深渊之火
+                ApplyDPSDebuff(12222, 12222 / 5, ref npc.lifeRegen);
+            }
+            if(vulnerabilityHexLegacyNPC)
+            {
+                // 深渊之火
+                ApplyDPSDebuff(6666, 6666 / 5, ref npc.lifeRegen);
+            }
+        }
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
+        {
+            if (horrorNPC)
+            {
+                modifiers.FinalDamage *= 0.9f;
+            }
+            if (vulnerabilityHexLegacyNPC)
+            {
+                modifiers.FinalDamage *= 0.8f;
+            }
+        }
+        // Incoming defense to this function is already affected by the vanilla debuffs Ichor (-10) and Betsy's Curse (-40), and cannot be below zero.
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+        {
+            if (horrorNPC)
+            {
+                modifiers.Defense.Flat -= 20;
+                modifiers.FinalDamage *= 1.1f;
+            }
+            if (vulnerabilityHexLegacyNPC)
+            {
+                modifiers.Defense.Flat -= 30;
+                modifiers.FinalDamage *= 1.5f;
+            }
+        }
+        public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen)
+        {
+            if (lifeRegen > 0)
+                lifeRegen = 0;
+
+            lifeRegen -= lifeRegenValue;
         }
         #region Reset Effects
         public override void ResetEffects(NPC npc)

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {
-    public class Backfire: ModBuff
+    public class Backfire : ModBuff
     {
         public override void SetStaticDefaults()
         {

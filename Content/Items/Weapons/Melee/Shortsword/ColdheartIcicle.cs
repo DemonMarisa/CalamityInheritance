@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPricePink;
             Item.shoot = ModContent.ProjectileType<ColdheartIcicleProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2.2f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.rare = ItemRarityID.Pink;

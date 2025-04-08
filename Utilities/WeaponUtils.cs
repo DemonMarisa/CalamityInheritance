@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
@@ -84,6 +85,13 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
             target.AddBuff(ModContent.BuffType<Plague>(), 300);
             target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+        }
+        public static void ScalDebuffs(this Player target, int AbyssalFlamesduration, int VulnerabilityHexLegacyduration, int Horrorduration)
+        {
+            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), AbyssalFlamesduration, true);
+            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), VulnerabilityHexLegacyduration, true);
+            if(Horrorduration > 1)
+                target.AddBuff(ModContent.BuffType<Horror>(), Horrorduration, true);
         }
     }
 }

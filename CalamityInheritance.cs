@@ -14,6 +14,11 @@ using CalamityInheritance.CIPlayer;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.UI;
+using CalamityMod.NPCs.DevourerofGods;
+using Terraria.Graphics.Effects;
+using CalamityInheritance.NPCs.Boss.SCAL.Sky;
+using CalamityMod.Skies;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance
 {
@@ -64,7 +69,14 @@ namespace CalamityInheritance
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
                 CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
             }
-
+            if (CalamityLists.projectileDestroyExceptionList != null)
+            {
+                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
+                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
+                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
+                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
+                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
+            }
             CIResprite.LoadTexture();
             CIWeaponsResprite.LoadTexture();
             #region Hook
@@ -73,6 +85,20 @@ namespace CalamityInheritance
         }
         public void LoadClient()
         {
+            // 加载屏幕shader到ModSystem中
+            // 红色
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy1"] = new SCalSkyLegacy();
+            // 蓝色
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0.45f, 0.45f, 1.1f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy2"] = new SCalSkyLegacy();
+            // 橙色
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.15f, 0.15f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy3"] = new SCalSkyLegacy();
+            //灰色
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy4"] = new SCalSkyLegacy();
+
             AstralArcanumUI.Load(this);
             CalPopupGUIManager.LoadGUIs();
         }

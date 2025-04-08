@@ -108,7 +108,8 @@ namespace CalamityInheritance.CIPlayer
             //直接向玩家生成物品
             CISpawnItem();
 
-            
+            // Debuff的效果
+            DebuffEffect();
 
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;

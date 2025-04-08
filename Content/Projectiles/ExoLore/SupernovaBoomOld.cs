@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (currentFrame == 4)
             {
-                float numberOfDusts = 20f;
+                float numberOfDusts = 15;
                 float rotFactor = 360f / numberOfDusts;
                 for (int i = 0; i < numberOfDusts; i++)
                 {
@@ -134,14 +134,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     GeneralParticleHandler.SpawnParticle(subTrail);
                 }
 
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 25; i++)
                 {
                     Vector2 randVel = new Vector2(15, 15).RotatedByRandom(100) * Main.rand.NextFloat(0.8f, 1.6f);
                     Particle smoke = new HeavySmokeParticle(Projectile.Center + randVel, randVel, new Color(57, 46, 115) * 0.9f, Main.rand.Next(25, 35 + 1), Main.rand.NextFloat(0.9f, 2.3f), 0.4f);
                     GeneralParticleHandler.SpawnParticle(smoke);
                 }
 
-                float numberOflines = 25;
+                float numberOflines = 15;
                 float rotFactorlines = 360f / numberOflines;
                 for (int e = 0; e < numberOflines; e++)
                 {

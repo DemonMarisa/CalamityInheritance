@@ -177,3 +177,18 @@ PBGBuff: {
 	// DisplayName: P B G Buff
 	// Description: Mods.CalamityInheritance.Buffs.PBGBuff.Description
 }
+
+AbyssalFlames: {
+	// DisplayName: Abyssal Flames
+	// Description: Mods.CalamityInheritance.Buffs.AbyssalFlames.Description
+}
+
+Horror: {
+	// DisplayName: Horror
+	// Description: Mods.CalamityInheritance.Buffs.Horror.Description
+}
+
+VulnerabilityHexLegacy: {
+	// DisplayName: Vulnerability Hex Legacy
+	// Description: Mods.CalamityInheritance.Buffs.VulnerabilityHexLegacy.Description
+}

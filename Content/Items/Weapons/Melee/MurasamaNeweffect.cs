@@ -35,7 +35,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            
             Item.height = 134;
             Item.width = 56;
             Item.damage = 20001;
@@ -53,7 +52,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
             Item.shootSpeed = 24f;
             Item.rare = ModContent.RarityType<CatalystViolet>();
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 14));
         }
 
 

@@ -112,8 +112,8 @@ namespace CalamityInheritance.Utilities
             // 最小速度：使用距离的平方根实现平滑减速
             float minSpeedCap = Math.Min(baseVelocity, (float)Math.Sqrt(distance * 2));
 
-            // 最大速度：基于加速度动态调整（时间步长假设为1/60秒）
-            float maxSpeedCap = baseVelocity * velocityMultiplier + acceleration;
+            // 最大速度：基于加速度动态调整
+            float maxSpeedCap = baseVelocity * velocityMultiplier + acceleration * (1 / 60);
             Vector2 maxVelocity = distanceFromDestination / (24f - acceleration); // 加速度越大响应越快
             maxVelocity = maxVelocity.ClampMagnitude(minSpeedCap, maxSpeedCap);
 

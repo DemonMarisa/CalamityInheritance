@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 SoundEngine.PlaySound(SoundID.Item74, Projectile.position);
                 Projectile.localAI[0] += 1f;
             }
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 13; i++)
             {
                 float num463 = Main.rand.Next(-30, 31);
                 float num464 = Main.rand.Next(-30, 31);
