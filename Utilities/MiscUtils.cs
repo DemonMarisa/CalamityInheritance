@@ -67,7 +67,6 @@ namespace CalamityInheritance.Utilities
         /// <summary>
         /// 指定区域寻找特定物品
         /// </summary>
-        /// <param name="item">物品组</param>
         /// <param name="p">玩家</param>
         /// <param name="tar">指定物品</param>
         /// <param name="area">区域，1: 背包 2: 盔甲栏</param>

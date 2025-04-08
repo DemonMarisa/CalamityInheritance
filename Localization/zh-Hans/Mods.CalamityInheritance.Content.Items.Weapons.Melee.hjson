@@ -466,3 +466,16 @@ DefenseBlade: {
 	TierTwoTint: "[c/818589:手持庇护之刃承受累计2000点伤害]"
 	TierThreeTint: "[c/818589:自身防御力大于320时的时候召唤神明吞噬者]"
 }
+
+ExoBladeChange:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:提高伤害]
+	[c/0080CA:斩击与突刺击中敌人时会生成追踪星流束]
+	[c/0080CA:充能斩击会生成更多的追踪星流束]
+	'''
+
+ACTExcelsus: {
+	// DisplayName: A C T Excelsus
+	// Tooltip: ""
+}

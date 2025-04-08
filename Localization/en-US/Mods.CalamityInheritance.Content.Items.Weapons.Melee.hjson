@@ -440,3 +440,10 @@ DefenseBlade: {
 	TierTwoTint: "222"
 	TierThreeTint: "333"
 }
+
+ExoBladeChange: ""
+
+ACTExcelsus: {
+	DisplayName: A C T Excelsus
+	Tooltip: ""
+}

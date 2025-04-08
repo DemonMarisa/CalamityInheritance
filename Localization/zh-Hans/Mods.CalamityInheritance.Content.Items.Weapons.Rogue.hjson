@@ -254,3 +254,15 @@ EclipseSpear: {
 	// Tooltip: ""
 	// DisplayName: Eclipse Spear
 }
+
+SupernovaChange:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:显著提升攻击速度]
+	[c/0080CA:潜伏超新星爆炸后，本体将会复原，并追击敌人]
+	'''
+CelestusChange:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:衍生的圣金镰刀将会回击你的敌人]
+	'''

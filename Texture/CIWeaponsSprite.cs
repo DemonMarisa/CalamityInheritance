@@ -161,16 +161,16 @@ namespace CalamityInheritance.Texture
         public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
         //额外贴图路径
         public static string CIExtraRoute => "CalamityInheritance/Texture";
-        public static string CIMeleeExtraRoute => "CalamityInheritance/Texture/Melee";
-        public static string CIRangedExtraRoute => "CalamityInheritance/Texture/Ranged";
-        public static string CIRogueExtraRoute => "CalamityInheritance/Texture/Rogue";
+        public static string CIMeleeExtraRoute => $"{CIExtraRoute}/Melee";
+        public static string CIRangedExtraRoute => $"{CIExtraRoute}/Ranged";
+        public static string CIRogueExtraRoute => $"{CIExtraRoute}/Rogue";
         //部分灾厄的路径
         //武器路径
         public static string CalWeaponRoute => "CalamityMod/Items/Weapons";
-        public static string CalMeleeWeaponRoute => "CalamityMod/Items/Weapons/Melee";
-        public static string CalRangedWeaponRoute => "CalamityMod/Items/Weapons/Ranged";
-        public static string CalMagicWeaponRoute => "CalamityMod/Items/Weapons/Magic";
-        public static string CalRogueWeaponRoute => "CalamityMod/Items/Weapons/Rogue";
+        public static string CalMeleeWeaponRoute => $"{CalWeaponRoute}/Melee";
+        public static string CalRangedWeaponRoute => $"{CalWeaponRoute}/Ranged";
+        public static string CalMagicWeaponRoute => $"{CalWeaponRoute}/Magic";
+        public static string CalRogueWeaponRoute => $"{CalWeaponRoute}/Rogue";
         //射弹路径
         public static string CalProjRoute => "CalamityMod/Projectiles";
         public static void LoadTexture()

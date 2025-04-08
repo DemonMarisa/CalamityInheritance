@@ -27,6 +27,7 @@ using ReLogic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -205,6 +206,17 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public const float Phase9_SepulcherLifeRatio = 0.08f;
 
         public const float Phase10LifeRatio = 0.01f;
+        public const float FirstBulletHellPhase = 0f;
+        public const float SecondBulletHellPhase = 1f;
+        public const float ThirdBulletHellPhase = 2f; 
+        public const float SpawnBrothersPhase = 3f;
+        public const float Transiting = 4f;
+        public const float FourthBulletHellPhase = 5f;
+        public const float SoulSeekerPhase = 6f;
+        public const float FinalBulletHellPhase = 7f; 
+        public const float SummonSepulcherPhase = 8f;
+        public const float DesPhase = 9f;
+
         #endregion
         #endregion
         #region SSD
@@ -226,8 +238,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.width = NPC.height = 120;
             NPC.defense = 120;
             NPC.DR_NERD(DR);
-            NPC.value = Item.buyPrice(9999, 0, 0, 0);
-
+            NPC.value = Item.buyPrice(platinum: 9999, gold: 99, silver: 99, copper: 99);
+            
             NPC.lifeMax = LifeMax;
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
@@ -378,7 +390,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             #region 阶段判定
             // 进入新阶段
             // 用于开局的攻击
-            if (lifeRatio == Phase1_SepulcherLifeRatio && currentPhase == 0f)
+            if (lifeRatio == Phase1_SepulcherLifeRatio && currentPhase == FirstBulletHellPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -386,7 +398,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第二阶段，75% - 50%
-            if (lifeRatio <= Phase2LifeRatio && currentPhase == 1f)
+            if (lifeRatio <= Phase2LifeRatio && currentPhase == SecondBulletHellPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -394,7 +406,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第三阶段，50% - 45%
-            if (lifeRatio <= Phase3LifeRatio && currentPhase == 2f)
+            if (lifeRatio <= Phase3LifeRatio && currentPhase == ThirdBulletHellPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -402,7 +414,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第四阶段，45% - 40%
-            if (lifeRatio <= Phase4_brotherLifeRatio && currentPhase == 3f)
+            if (lifeRatio <= Phase4_brotherLifeRatio && currentPhase == SpawnBrothersPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonBrother;
@@ -410,7 +422,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第五阶段，40% - 30%
-            if (lifeRatio <= Phase5LifeRatio && currentPhase == 4f)
+            if (lifeRatio <= Phase5LifeRatio && currentPhase == Transiting)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.PhaseTransition;
@@ -418,7 +430,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第六阶段，30% - 20%
-            if (lifeRatio <= Phase6LifeRatio && currentPhase == 5f)
+            if (lifeRatio <= Phase6LifeRatio && currentPhase == FourthBulletHellPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -426,7 +438,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第七阶段，20% - 10%
-            if (lifeRatio <= Phase7_SoulSeekerLifeRatio && currentPhase == 6f)
+            if (lifeRatio <= Phase7_SoulSeekerLifeRatio && currentPhase == SoulSeekerPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonSoulSeeker;
@@ -434,7 +446,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第八阶段，10% - 8%
-            if (lifeRatio <= Phase8LifeRatio && currentPhase == 7f)
+            if (lifeRatio <= Phase8LifeRatio && currentPhase == FinalBulletHellPhase)
             {
                 attackTimer = 0;
                 NPC.DR_NERD(0.9f);
@@ -443,7 +455,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第九阶段，8% - 1%
-            if (lifeRatio <= Phase9_SepulcherLifeRatio && currentPhase == 8f)
+            if (lifeRatio <= Phase9_SepulcherLifeRatio && currentPhase == SummonSepulcherPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonSepulcher;
@@ -451,7 +463,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
             // 第十阶段，1% - 0%
-            if (lifeRatio <= Phase10LifeRatio && currentPhase == 9f)
+            if (lifeRatio <= Phase10LifeRatio && currentPhase == DesPhase)
             {
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.DesperationPhase;

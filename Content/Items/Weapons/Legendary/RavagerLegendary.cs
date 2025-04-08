@@ -1,7 +1,6 @@
 ﻿using System;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,9 +9,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 

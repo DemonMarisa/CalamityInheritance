@@ -45,16 +45,15 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (Projectile.localAI[0] == 0f)
             {
-                // Create a circular puff of green dust.
                 float initialSpeed = Main.rand.NextFloat(2.5f, 4.5f);
                 for (int i = 0; i < 12; i++)
                 {
-                    Dust crystalShard = Dust.NewDustPerfect(Projectile.Center, 267);
-                    crystalShard.velocity = (MathHelper.TwoPi * i / 12f).ToRotationVector2() * initialSpeed * Main.rand.NextFloat(0.6f, 1f);
-                    crystalShard.velocity = crystalShard.velocity.RotatedByRandom(0.37f);
-                    crystalShard.scale = 1.25f;
-                    crystalShard.color = Color.ForestGreen;
-                    crystalShard.noGravity = true;
+                    Dust cs = Dust.NewDustPerfect(Projectile.Center, 267);
+                    cs.velocity = (MathHelper.TwoPi * i / 12f).ToRotationVector2() * initialSpeed * Main.rand.NextFloat(0.6f, 1f);
+                    cs.velocity = cs.velocity.RotatedByRandom(0.37f);
+                    cs.scale = 1.25f;
+                    cs.color = Color.ForestGreen;
+                    cs.noGravity = true;
                 }
                 Projectile.localAI[0] = 1f;
             }
@@ -71,11 +70,11 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             float initialSpeed = Main.rand.NextFloat(2.5f, 4.5f);
             for (int i = 0; i < 16; i++)
             {
-                Dust crystalShard = Dust.NewDustPerfect(Projectile.Center, 267);
-                crystalShard.velocity = (MathHelper.TwoPi * i / 16f).ToRotationVector2() * initialSpeed;
-                crystalShard.scale = 1.25f;
-                crystalShard.color = Color.ForestGreen;
-                crystalShard.noGravity = true;
+                Dust cs = Dust.NewDustPerfect(Projectile.Center, 267);
+                cs.velocity = (MathHelper.TwoPi * i / 16f).ToRotationVector2() * initialSpeed;
+                cs.scale = 1.25f;
+                cs.color = Color.ForestGreen;
+                cs.noGravity = true;
             }
         }
 

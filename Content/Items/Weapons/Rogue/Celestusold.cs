@@ -52,11 +52,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            bool canStealth = player.Calamity().StealthStrikeAvailable();
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CelestusBoomerangExoLore>(), damage, knockback, player.whoAmI, 0f, 0f);
-                if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
+                if (canStealth)
                 {
                     int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CelestusBoomerangExoLoreSteal>(), damage, knockback, player.whoAmI);
                     if (stealth.WithinBounds(Main.maxProjectiles))
@@ -66,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             else
             {
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
-                if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
+                if (canStealth)
                 {
                     int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
                     if (stealth.WithinBounds(Main.maxProjectiles))
@@ -76,50 +77,30 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                float veneratedCloneSpeed = Item.shootSpeed;
-                Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
-                float veneratedCloneXPos = (float)Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
-                float veneratedCloneYPos = (float)Main.mouseY + Main.screenPosition.Y - realPlayerPos.Y;
-                if (player.gravDir == -1f)
+                int locketDamage = player.ApplyArmorAccDamageBonusesTo((int)(damage * 0.8f));
+                //改了下逻辑，让他在鼠标上方生成而非从……玩家头顶身上生成
+                float srcPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
+                float srcPosY = Main.MouseWorld.Y + Main.rand.NextFloat(-600f, -801f);
+                //补一个特判，看鼠标位置是否低于玩家位置，如果低于则修改为玩家位置
+                if (Main.MouseWorld.Y > player.Center.Y)
+                    srcPosY = player.Center.Y + Main.rand.NextFloat(-600f, -801f);
+                float pSpeed = Item.shootSpeed;
+                //起点向量
+                Vector2 srcPos = new (srcPosX, srcPosY);
+                //距离向量
+                Vector2 distVec = Main.MouseWorld - srcPos;
+                //转为速度向量
+                float dist = distVec.Length();
+                dist = pSpeed / dist;
+                distVec.X *= dist;
+                distVec.Y *= dist;
+                int p = Projectile.NewProjectile(source, srcPos, distVec, type, locketDamage, knockback * 0.5f, player.whoAmI);
+                //允许其吃潜伏
+                if (canStealth)
                 {
-                    veneratedCloneYPos = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - realPlayerPos.Y;
+                    Main.projectile[p].Calamity().stealthStrike = true;
+                    Main.projectile[p].damage *= (int)1.5f;
                 }
-                float veneratedCloneDistance = (float)Math.Sqrt((double)(veneratedCloneXPos * veneratedCloneXPos + veneratedCloneYPos * veneratedCloneYPos));
-                if ((float.IsNaN(veneratedCloneXPos) && float.IsNaN(veneratedCloneYPos)) || (veneratedCloneXPos == 0f && veneratedCloneYPos == 0f))
-                {
-                    veneratedCloneXPos = (float)player.direction;
-                    veneratedCloneYPos = 0f;
-                    veneratedCloneDistance = veneratedCloneSpeed;
-                }
-                else
-                {
-                    veneratedCloneDistance = veneratedCloneSpeed / veneratedCloneDistance;
-                }
-
-                realPlayerPos = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
-                realPlayerPos.Y -= 100f;
-                veneratedCloneXPos = (float)Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
-                veneratedCloneYPos = (float)Main.mouseY + Main.screenPosition.Y - realPlayerPos.Y;
-                if (veneratedCloneYPos < 0f)
-                {
-                    veneratedCloneYPos *= -1f;
-                }
-                if (veneratedCloneYPos < 20f)
-                {
-                    veneratedCloneYPos = 20f;
-                }
-                veneratedCloneDistance = (float)Math.Sqrt((double)(veneratedCloneXPos * veneratedCloneXPos + veneratedCloneYPos * veneratedCloneYPos));
-                veneratedCloneDistance = veneratedCloneSpeed / veneratedCloneDistance;
-                veneratedCloneXPos *= veneratedCloneDistance;
-                veneratedCloneYPos *= veneratedCloneDistance;
-                float speedX4 = veneratedCloneXPos + (float)Main.rand.Next(-30, 31) * 0.02f;
-                float speedY5 = veneratedCloneYPos + (float)Main.rand.Next(-30, 31) * 0.02f;
-
-                // 08DEC2023: Ozzatron: Locket + Old Fashioned may need to be a corner case. We should probably just rework Locket instead.
-                int locketDamage = player.ApplyArmorAccDamageBonusesTo((int)(damage * 0.5f));
-
-                int p = Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, type, locketDamage, knockback * 0.5f, player.whoAmI);
             }
             return false;
         }

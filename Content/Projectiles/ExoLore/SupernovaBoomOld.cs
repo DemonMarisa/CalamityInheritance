@@ -98,7 +98,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (currentFrame == 4)
             {
-                float numberOfDusts = 15;
+                //砍了
+                float numberOfDusts = 8f;
                 float rotFactor = 360f / numberOfDusts;
                 for (int i = 0; i < numberOfDusts; i++)
                 {
@@ -141,7 +142,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     GeneralParticleHandler.SpawnParticle(smoke);
                 }
 
-                float numberOflines = 15;
+                float numberOflines = 10;
                 float rotFactorlines = 360f / numberOflines;
                 for (int e = 0; e < numberOflines; e++)
                 {

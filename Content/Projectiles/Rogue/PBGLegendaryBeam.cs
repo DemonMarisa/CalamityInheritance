@@ -193,6 +193,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     d = DustID.PinkTorch;
                     break;
                 case "Tristan":
+                case "30000Puslin":
+                case "凋莫":
                     setColor = TristanColorRoyalBlue;
                     d = DustID.GemSapphire;
                     break;

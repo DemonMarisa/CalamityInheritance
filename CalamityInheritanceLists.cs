@@ -57,6 +57,7 @@ namespace CalamityInheritance
                     ProjectileType<ExoGunBlast>(),
                     ProjectileType<ExoLightold>(),
                     ProjectileType<ExoSpearBack>(),
+                    //太卡了
             };
 
             AuricdebuffList = new List<int>()
