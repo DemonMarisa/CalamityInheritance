@@ -116,29 +116,38 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             #endregion
 
             #region 攻击AI
-            switch (boss.ai[1])
+            const int AIType = 1;
+            const int Timer = 2;
+            //LocalAI[1]
+            const int ProjShootingTimer = 1;
+            const float ShootingLaser = 0f;
+            const float ShootingFireball = 1f;
+            const float Charging = 2f;
+            const float ReverseCharge = 3f;
+            const float ResetAI = 4f;
+            switch (boss.ai[AIType])
             {
-                case 0f:
+                case ShootingLaser:
                     //进入发射激光AI的时间刻
-                    boss.ai[2] += 1f;
-                    if (boss.ai[2] >= BalltoLaserPhaseTimer)
+                    boss.ai[Timer] += 1f;
+                    if (boss.ai[Timer] >= BalltoLaserPhaseTimer)
                     {
-                        boss.ai[1] = 1f;
-                        boss.ai[2] = 0f;
+                        boss.ai[AIType] = ShootingFireball;
+                        boss.ai[Timer] = 0f;
                         boss.localAI[0] = 1f;
                         boss.netUpdate = true;
                     }
                     //尝试, 发射火球
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        boss.localAI[1] += 1f;
+                        boss.localAI[ProjShootingTimer] += 1f;
                         if (!ifBrothers)
-                            boss.localAI[1] += 2f * (1f - lifePercent);
+                            boss.localAI[ProjShootingTimer] += 2f * (1f - lifePercent);
                     }
 
-                    if (boss.localAI[1] >= (ifBrothers ? 150f : 100f))
+                    if (boss.localAI[ProjShootingTimer] >= (ifBrothers ? 150f : 100f))
                     {
-                        boss.localAI[1] = 0f;
+                        boss.localAI[ProjShootingTimer] = 0f;
                         float projVel = 15f;
                         int projType = ModContent.ProjectileType<HellfireballReborn>();
                         int projDMG = boss.GetProjectileDamage(projType);
@@ -151,28 +160,28 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                         Main.projectile[getProj].netUpdate = true;
                     }
                     break;
-                case 1f:
-                    boss.ai[2] += 1f;
-                    if (boss.ai[2] >= 180f)
+                case ShootingFireball:
+                    boss.ai[Timer] += 1f;
+                    if (boss.ai[Timer] >= 180f)
                     {
                         //在第一波兄弟发起之前旧灾不会使出冲刺
                         if (boss.life >= boss.lifeMax * 0.7f)
-                            boss.ai[1] = 0f;
-                        else boss.ai[1] = 2f;
+                            boss.ai[AIType] = ShootingLaser;
+                        else boss.ai[AIType] = Charging;
 
-                        boss.ai[2] = 0f;
+                        boss.ai[Timer] = 0f;
                         boss.localAI[0] = 1f;
                         boss.netUpdate = true;
                     }
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         //计时器
-                        boss.localAI[1] += ifBrothers ? 2f : 1f;
+                        boss.localAI[ProjShootingTimer] += ifBrothers ? 2f : 1f;
                         // 发射激光
-                        if (boss.localAI[1] >= (ifBrothers ? 75f : 45f))
+                        if (boss.localAI[ProjShootingTimer] >= (ifBrothers ? 75f : 45f))
                         {
                             //重置计时器
-                            boss.localAI[1] = 0f;
+                            boss.localAI[ProjShootingTimer] = 0f;
                             int projType = ifBrothers ? ModContent.ProjectileType<HellfireballReborn>() : ModContent.ProjectileType<BrimstoneLaser>();
                             //伤害写死
                             TryShootLaser(boss, player, bossCenter, 13f, projType, 120);
@@ -181,30 +190,30 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                     //发射激光三秒，发射完后悬浮到头上继续射火球, 或者进入冲刺ai
 
                     break;
-                case 2f:
+                case Charging:
                     //设置冲刺伤害, 兄弟在场的时候普灾没有伤害
                     boss.damage = ifBrothers ? 0 : boss.defDamage;
                     SpwanVisualChargeDust(boss);
                     BrothersCharge.ChargeInit(boss, player, rot, 42f);
-                    boss.ai[1] = 3f;
+                    boss.ai[AIType] = ReverseCharge;
                     boss.netUpdate = true;
                     return;
                 /*
                 *这个AI史了点但我总算知道怎么回事了
-                *ai[2]间接作为冲刺时间的作用
+                *ai[Timer]间接作为冲刺时间的作用
                 *在ai[1] = 3f标志进入冲刺的时候，这个时间就已经开始自增了
                 *刚开始的0f-30f实际上是第一次冲刺时间，然后30f-75f的时候是第二次冲刺的时间
                 *我草，我就因为这个破东西硬控两天？
                 */
-                case 3f:
+                case ReverseCharge:
                     //设置伤害
                     boss.damage = ifBrothers ? 0 : boss.defDamage;
                     SpwanVisualChargeDust(boss);
-                    boss.ai[2] += 1f;
+                    boss.ai[Timer] += 1f;
                     //微弱的加速度
                     boss.velocity *= 1.001f;
 
-                    if (boss.ai[2] >= 30f)
+                    if (boss.ai[Timer] >= 30f)
                     {
                         boss.velocity.Y *= 0.9f;
                         boss.velocity.X *= 0.9f;
@@ -215,9 +224,9 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                     }
                     else boss.rotation = (float)Math.Atan2(boss.velocity.Y, boss.velocity.X) - MathHelper.PiOver2;
 
-                    if (boss.ai[2] >= 40f)
+                    if (boss.ai[Timer] >= 40f)
                     {
-                        boss.ai[2] = 0f;
+                        boss.ai[Timer] = 0f;
                         boss.ai[3] += 1f;
                         boss.rotation = rot;
                         boss.netUpdate = true;
@@ -225,19 +234,19 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                         if (boss.ai[3] >= 2f)
                         {
                             boss.TargetClosest();
-                            boss.ai[1] = 0f; //重新开始发射火球
+                            boss.ai[AIType] = ShootingLaser; //重新开始发射火球
                             boss.ai[3] = 0f;
                             return;
                         }
-                        boss.ai[1] = 4f;
+                        boss.ai[AIType] = ResetAI;
                     }
                     break;
                 default:
-                    boss.ai[2] += 1f;
-                    if (boss.ai[2] >= 30f)
+                    boss.ai[Timer] += 1f;
+                    if (boss.ai[Timer] >= 30f)
                     {
-                        boss.ai[1] = 2f;
-                        boss.ai[2] = 0f;
+                        boss.ai[AIType] = Charging;
+                        boss.ai[Timer] = 0f;
                         boss.localAI[0] = 0f;
                         boss.netUpdate = true;
                     }

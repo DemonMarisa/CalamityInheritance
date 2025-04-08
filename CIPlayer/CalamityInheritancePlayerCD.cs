@@ -20,6 +20,7 @@ namespace CalamityInheritance.CIPlayer
         public int GodSlayerDMGprotectMax = 80;//金源伤害保护的衰减
         public int GlobalLegendaryT3CD = 0; //T3传奇武器特殊效果的全局CD（对，共享）
         public int yharimArmorinvincibility = 0;//魔君套装无敌时间
+        public int AeroFlightPower = 0;
         #region 传奇武器的一些计数器
         public int DukeDefenseCounter = 0;
         public int DukeDefenseTimer = 0;
@@ -28,6 +29,7 @@ namespace CalamityInheritance.CIPlayer
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
         // 通用开火冷却
         public int fireCD = 0;
+        public int GlobalSoundDelay = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -55,6 +57,10 @@ namespace CalamityInheritance.CIPlayer
 
             if (fireCD > 0)
                 fireCD--;
+            if (AeroFlightPower > 0)
+                AeroFlightPower--;
+            if (GlobalSoundDelay > 0)
+                GlobalSoundDelay --;
             return;
         }
     }

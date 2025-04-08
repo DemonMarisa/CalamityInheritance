@@ -1,24 +1,24 @@
-using System.Data;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Sounds;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Rarity.Special;
 
-namespace CalamityInheritance.Content.Items.Weapons.Magic
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DestroyerLegendary: CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<DestroyerLegendaryBomb>();
             Item.shootSpeed = 20f;
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<SHPCAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -56,21 +56,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.DestroyerTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.DestroyerTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.DestroyerTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.DestroyerLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryBuff();
             string update = this.GetLocalization("LegendaryScaling").Format(
@@ -169,7 +160,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             dmgBuff += DownedBossSystem.downedYharon ? 50 : 0;          //380
             dmgBuff += DownedBossSystem.downedCalamitas ? 70 : 0;       //450
             dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;        //520
-            dmgBuff += (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm) ? 480 : 0; //1000
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 480 : 0; //1000
             return dmgBuff;
         }
     }

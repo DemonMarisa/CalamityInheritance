@@ -894,3 +894,53 @@ AncientBloodflareBodyArmor: {
 		当你浸入岩浆时, 增加30点防御力并获得+5HP/生命再生速度
 		'''
 }
+
+AncientAeroArmor: {
+	DisplayName: 远古天蓝护具[Revamped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+}
+
+AncientAeroHelm: {
+	DisplayName: 远古天蓝头盔[Revamped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+	SetBonus:
+		'''
+
+		所有翅膀的飞行时间增加3秒
+		受击时飞行时间将会被半折, 这个效果触发后会有5秒的冷却时间
+		触发后为玩家提供5秒羽落效果
+		与同名远古遗物共同佩戴时, 会进一步强化飞行时间
+		[c/87CEFA:"那么, 展翅高飞吧"]
+		'''
+}
+
+AncientAeroLeggings: {
+	DisplayName: 远古天蓝护腿[Reavmped]
+	Tooltip:
+		'''
+		增加10%移动速度
+		增加10%跳跃速度
+		'''
+}
+
+ShroomiteVisage: {
+	DisplayName: 蘑菇矿面罩[Legacy]
+	Tooltip:
+		'''
+		增加30%喷火器伤害
+		增加5%喷火器暴击概率
+		'''
+	SetBonus:
+		'''
+		不移动时则会隐身, 
+		增加远程能力和降低敌人瞄准你的几率
+		'''
+}

@@ -29,8 +29,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.penetrate = 1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
             Projectile.timeLeft = 600;
         }
 
@@ -48,7 +50,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             else if (divider == 0)
                 Projectile.damage = originDamage;
-
+            //潜伏的射弹给6eu
+            if (Projectile.Calamity().stealthStrike)
+            {
+                Projectile.extraUpdates = 4;
+            }
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 6)
             {
@@ -76,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 if (Projectile.ai[0] == 0f)
                 {
-                    CalamityUtils.HomeInOnNPC(Projectile, true, 600f, 10f, 20f);
+                    CalamityUtils.HomeInOnNPC(Projectile, true, 3600f, 10f, 20f);
                 }
             }
             else

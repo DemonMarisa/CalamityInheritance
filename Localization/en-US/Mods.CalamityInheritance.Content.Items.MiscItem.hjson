@@ -36,42 +36,32 @@ RebornEyeTip: {
 	DisplayName: Reborn Eye Tip
 }
 
-PBGLegendaryUpgrade1: {
-	Tooltip: ""
-	DisplayName: P B G Legendary Upgrade1
-}
-
-PBGLegendaryUpgrade2: {
-	DisplayName: P B G Legendary Upgrade2
-	Tooltip: ""
-}
-
-PBGLegendaryUpgrade3: {
-	DisplayName: P B G Legendary Upgrade3
-	Tooltip: ""
-}
-
 PBGLegendaryUpgrade: {
 	Tooltip: ""
+	Tint: ""
 	DisplayName: P B G Legendary Upgrade
 }
 
 RavagerLegendaryUpgrade: {
 	Tooltip: ""
+	Tint: "111"
 	DisplayName: Ravager Legendary Upgrade
 }
 
 DukeLegendaryUpgrade: {
 	Tooltip: ""
+	Tint: "111"
 	DisplayName: Duke Legendary Upgrade
 }
 
 PlanteraLegendaryUpgrade: {
 	Tooltip: ""
+	Tint: "111"
 	DisplayName: Plantera Legendary Upgrade
 }
 
 DestroyerLegendaryUpgrade: {
 	Tooltip: ""
+	Tint: "111"
 	DisplayName: Destroyer Legendary Upgrade
 }

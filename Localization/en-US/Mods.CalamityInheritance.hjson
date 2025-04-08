@@ -211,6 +211,11 @@ Configs: {
 			Label: Kunoji
 			Tooltip: ""
 		}
+
+		LegendaryRarity: {
+			Label: Legendary Rarity
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

@@ -1,15 +1,11 @@
 using System;
-using System.Drawing;
+using System.CodeDom;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Pets;
 using CalamityMod.Particles;
-using Microsoft.Build.Construction;
 using Microsoft.Xna.Framework;
-using MonoMod.Core.Platforms;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -20,13 +16,64 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PBGLegendaryBeam: ModProjectile, ILocalizedModType
     {
-        public static readonly SoundStyle HitSound3 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowFull") { PitchVariance = 0.4f };
-        public static readonly SoundStyle HitSound2 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowTwo") { PitchVariance = 0.4f };
-        public static readonly SoundStyle HitSound1 = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        #region 音效
+        public static string UsingSound => "CalamityMod/Sounds/Item";
+        public static readonly SoundStyle HitSound3 = new($"{UsingSound}/WulfrumKnifeThrowFull") { PitchVariance = 0.4f };
+        public static readonly SoundStyle HitSound2 = new($"{UsingSound}/WulfrumKnifeThrowTwo") { PitchVariance = 0.4f };
+        public static readonly SoundStyle HitSound1 = new($"{UsingSound}/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
+        #endregion
+        #region 射弹的一些基础属性
+        //射弹是否允许追踪
         public bool GrantsHoming = false;
+        //射弹是否允许转圈
+        public bool GrantsDirection = true;
+        //取消射弹转圈的时间
+        public float CancelRotationTimer = 0f;
+        //射弹每一帧旋转的角度
+        public float RotationAngle = 0f;
+        //发起追踪的计时器
         public float HomingTimer = -1f;
+        //升级选项：是否有更多的判定次数
         public bool MoreHits = false;
+        #endregion
+        #region 别名
+        //攻击AI的Timer, 给LocalAI[1]使用
+        private const int ActiveAITimer = 1;
+        //改变射弹方向的Timer, 给LocalAI[0]使用
+        private const int ChangeDirTimer = 0;
+        //存储击中的敌怪单位, 给ai[1]使用
+        private const int StoredTar = 1;
+        //最大超出玩家多少距离便强制其发起追踪
+        private const float MaxAwayPlrDist = 1800f;
+        //允许发起追踪的最晚时间(不过这个会受到eu的影响)
+        private const float GrantsHomingTimer = 180f;
+        #endregion
+        #region 射弹颜色
+        //默认颜色
+        private static Color DefualtColor => new(107, 142 , 35);
+        //开发者颜色: TrueScarlet, 近似深红
+        private static Color TrueScarletColor => new(228, 1, 10);  
+        //开发者颜色: DemonMarisa, 近似金黄
+        private static Color DemonMarisaColor => new(255, 165, 0);
+        //Tester颜色：Shizuku, 银白
+        private static Color ShizukuColorSilver => new(248, 248, 255);
+        //Tester颜色: Shizuku, 青蓝
+        private static Color ShizukuColorAqua => new (152, 245, 255);
+        //Tester颜色：KunojiIchika，近似纯黑
+        private static Color IchikaColorBlack => new (79, 79, 79);
+        //Supporter颜色: Plantare, 粉红
+        private static Color PlantareColorPink => Color.HotPink;
+        //彩蛋颜色: Tristan, 皇家蓝
+        private static Color TristanColorRoyalBlue => Color.RoyalBlue;
+        #endregion
+        #region 一个同时存储射弹颜色与粒子类型的结构体
+        public struct StoredColorAndDust
+        {
+            public Color pColor;
+            public int dType;
+        }
+        #endregion
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override void SetDefaults()
         {
@@ -53,94 +100,111 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //完成第2样式任务, 增加判定数量
             if (plr.CIMod().PBGTier2 && !MoreHits)
             {
-                Projectile.penetrate = 18;
+                Projectile.penetrate = 20;
                 MoreHits = true;
             }
             //获取颜色
-            Color getColor = SpecialColor(plr);
+            StoredColorAndDust gType = SpecialColor(plr);
 
             Projectile.Opacity = 0f;
-            Projectile.localAI[1] += 1f;
+            Projectile.localAI[ActiveAITimer] += 1f;
+            
             //不断检测与玩家的距离，如果本身超出追踪距离(2000f), 则强制其发起追踪
             float getXDist = plr.Center.X - Projectile.Center.X;
             float getYDist = plr.Center.Y - Projectile.Center.Y;
             float realDist = CIFunction.TryGetVectorMud(getXDist, getYDist);
-            if (Projectile.localAI[1] > 4f)
+            if (Projectile.localAI[ActiveAITimer] > 4f)
             {
                 //潜伏的特效由下方的光效占据了主导, 因此飞行粒子会被压制一些。
                 if (Main.rand.NextBool(3))
-                    FlyingDust(getColor);
+                    FlyingDust(gType.pColor, gType.dType);
                 //光效, 灾厄的方法
-                SparkParticle line = new SparkParticle(Projectile.Center - Projectile.velocity * 1.1f, Projectile.velocity * 0.01f, false, 18, 1f, getColor);
+                SparkParticle line = new SparkParticle(Projectile.Center - Projectile.velocity * 1.1f, Projectile.velocity * 0.01f, false, 18, 1f, gType.pColor);
                 GeneralParticleHandler.SpawnParticle(line);
                 //处理跟踪的AI
                 //刚掷出的投刀不允许启用计时器的自增
-                if (HomingTimer != -1f) 
+                if (HomingTimer != -1f && realDist < MaxAwayPlrDist) 
                     HomingTimer += 1f;
+                //每次击中敌怪时他都会改变一下转的角度
+                if (GrantsDirection && !GrantsHoming)
+                {
+                    Projectile.localAI[ChangeDirTimer] += 1f; 
+                    Projectile.velocity = Projectile.velocity.RotatedBy(RotationAngle);
+
+                    if (Projectile.localAI[ChangeDirTimer] > CancelRotationTimer)
+                    {
+                        GrantsDirection = false;
+                        Projectile.localAI[ChangeDirTimer] = 0f;
+                    }
+                }
                 //其他状态下，都会间隔固定的时间刻度启用追踪, 或者离玩家足够远也可以
-                if (HomingTimer % 180 == 0f || realDist > 1800f)
+                if (HomingTimer > GrantsHomingTimer || realDist > MaxAwayPlrDist)
+                {
                     GrantsHoming = true;
+                    GrantsDirection = false;
+                }
                 //发起追踪
                 if (GrantsHoming)
                     CIFunction.HomeInOnNPC(Projectile, false, 2400f, 12f, 36f);
             }
         }
 
-        public static Color SpecialColor(Player plr)
+        public static StoredColorAndDust SpecialColor(Player plr)
         {
-            //默认颜色
-            Color getColor = new Color(107, 142, 35);
-            //若染色则取染色剂
+            //默认颜色与例子
+            Color getColor = DefualtColor;
+            int d = DustID.TerraBlade;
             if (plr.CIMod().PBGLegendaryDyeable)
                 getColor = plr.CIMod().PBGBeamColor;
             //特殊名字特殊颜色
-            // getColor = NameTag(plr, getColor);
-            getColor = TestColor(plr, getColor);
+            NameVariance(plr.name ,ref getColor, ref d);
+            
+            //初始化一个结构体, 并赋值
+            StoredColorAndDust type;
+            type.dType = d;
+            type.pColor = getColor;
             //返回
-            return getColor;
+            return type;
         }
-
-        public static Color NameTag(Player plr, Color defualtColor)
+        public static void NameVariance(string name,ref Color setColor, ref int d)
         {
-            return plr.name switch
+            switch (name)
             {
-                "TrueScarlet" or "FakeAqua" => new(228, 1, 10),//近似深红
-                "Shizuku" or "shizuku" => Main.rand.NextBool() ? new(248, 248, 255) : new(152, 245, 255),//随机取近似银白和近似青蓝
-                "DemonMarisa" => new(255, 165, 0),//近似金黄
-                "KunojiIchika" => new(79, 79, 79),//近似灰白
-                "Plantare" => Color.HotPink,//字面意思
-                "Tristan" => Color.RoyalBlue,
-                "BaobhanSith" => Color.DarkRed,
-                _ => defualtColor,
-            };
+                case "TrueScarlet":
+                case "FakeAqua":
+                    setColor = TrueScarletColor;
+                    d = DustID.GemRuby;
+                    break;
+                case "DemonMarisa":
+                    setColor = DemonMarisaColor;
+                    d = CIDustID.DustFallenStarsYellow;
+                    break;
+                case "Shizuku":
+                case "shizuku":
+                    setColor = Main.rand.NextBool() ? ShizukuColorSilver : ShizukuColorAqua;
+                    d = DustID.GemDiamond;
+                    break;
+                case "KunojiIchika":
+                    setColor = IchikaColorBlack;
+                    d = DustID.WhiteTorch;
+                    break;
+                case "Plantare":
+                    setColor = PlantareColorPink;
+                    d = DustID.PinkTorch;
+                    break;
+                case "Tristan":
+                    setColor = TristanColorRoyalBlue;
+                    d = DustID.GemSapphire;
+                    break;
+                default:
+                    break;
+            }
         }
-        public static Color TestColor(Player plr, Color defualtColor)
-        {
-            return CIRespriteConfig.Instance.PBGColorType switch
-            {
-                //开发者颜色：TrueScarlet，近似深红
-                2 => Main.rand.NextBool() ? new (228, 1, 10) : new(135,1,2),
-                //开发者颜色：DemonMarisa，近似金黄
-                3 => new Color(255, 165, 0),
-                //Tester颜色: Shizuku, 近似银白/浅蓝
-                4 => Main.rand.NextBool() ? new(248, 248, 255) : new(38, 133, 249),
-                //Tester颜色：KunojiIchika, 近似灰白
-                5 => new(28, 28, 28),
-                //Special颜色: Plantare, HotPink
-                6 => Color.HotPink,
-                //Special颜色: Tristan, 皇家蓝
-                7 => Color.RoyalBlue,
-                //Special颜色: BaobhanSith, 暗红
-                8 => Color.PaleVioletRed,
-                //默认
-                _ => defualtColor,
-            };
-        }
-        public void FlyingDust(Color dColor)
+        public void FlyingDust(Color dColor, int dType)
         {
             for (int i = 0; i < 3; i++)
             {
-                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, dColor, 0.75f);
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dType, 0f, 0f, 100, dColor, 0.75f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 0f;
                 Main.dust[d].color = dColor;
@@ -148,7 +212,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            
             return new Color(Main.DiscoR, 203, 103, Projectile.alpha);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -161,9 +224,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 GrantsHoming = false;
             //标记为0f启用追踪计时器
             HomingTimer = 0f;
-            Projectile.ai[1] = target.whoAmI;
+            //允许转圈
+            GrantsDirection = true;
+            //取消转圈的timer
+            CancelRotationTimer = Main.rand.NextFloat(15f, 25f);
+            //随机提供转角
+            RotationAngle = Main.rand.NextBool() ? 0.02f : -0.02f;
+            //存储这个……敌对单位，但目前来说好像也不知道能用来干嘛
+            Projectile.ai[StoredTar] = target.whoAmI;
             //减少1穿透次数
-            Projectile.penetrate -= 1;
+            //注释掉了
+            // Projectile.penetrate -= 1;
             //释放几个音效，这里用的是钨钢飞刀的投掷音
             SoundEngine.PlaySound(Main.rand.NextBool() ? (Main.rand.NextBool() ? HitSound1 : HitSound2) : HitSound3, Projectile.position);
         }
@@ -194,29 +265,28 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void OnKillDust()
         {
-
             Player plr = Main.player[Projectile.owner];
-            Color gColor = SpecialColor(plr);
+            StoredColorAndDust getType = SpecialColor(plr);
             for (int i = 0; i < 7; i++)
             {
-                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, gColor, 1.2f);
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, getType.dType, 0f, 0f, 100, getType.pColor, 1.2f);
                 Main.dust[d].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
                     Main.dust[d].scale = 0.5f;
                     Main.dust[d].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
-                Main.dust[d].color = gColor;
+                Main.dust[d].color = getType.pColor;
             }
             for (int j = 0; j < 3; j++)
             {
-                int d2 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, gColor, 1.7f);
+                int d2 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, getType.dType, 0f, 0f, 100, getType.pColor, 1.7f);
                 Main.dust[d2].noGravity = true;
                 Main.dust[d2].velocity *= 5f;
-                Main.dust[d2].color = gColor;
-                d2 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, gColor, 1f);
+                Main.dust[d2].color = getType.pColor;
+                d2 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, getType.dType, 0f, 0f, 100, getType.pColor, 1f);
                 Main.dust[d2].velocity *= 2f;
-                Main.dust[d2].color = gColor;
+                Main.dust[d2].color = getType.pColor;
             }
         }
     }

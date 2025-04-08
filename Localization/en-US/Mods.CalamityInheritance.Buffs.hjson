@@ -192,3 +192,18 @@ VulnerabilityHexLegacy: {
 	DisplayName: Vulnerability Hex Legacy
 	Description: Mods.CalamityInheritance.Buffs.VulnerabilityHexLegacy.Description
 }
+
+CyrogenLegendaryBuff: {
+	DisplayName: Cyrogen Legendary Buff
+	Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
+}
+
+CryoDrain: {
+	DisplayName: Cryo Drain
+	Description: Mods.CalamityInheritance.Buffs.CryoDrain.Description
+}
+
+VolcanoBuff: {
+	Description: Mods.CalamityInheritance.Buffs.VolcanoBuff.Description
+	DisplayName: Volcano Buff
+}

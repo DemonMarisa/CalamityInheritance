@@ -182,7 +182,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.Heal(20);
                     AncientAstralCritsCount += 1;// 自增
-                    if (AncientAstralCritsCount == 20)
+                    if (AncientAstralCritsCount == RequireCrits)
                     {
                         SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = 0.7f }, Player.Center);
                         Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒

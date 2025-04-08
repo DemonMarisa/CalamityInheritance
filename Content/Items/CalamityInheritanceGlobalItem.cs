@@ -1,8 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.UI;
 using CalamityInheritance.Utilities;
@@ -12,17 +11,17 @@ using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.SummonItems;
-using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.NPCs.VanillaNPCAIOverrides.Bosses;
+using CalamityMod.NPCs.OldDuke;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,41 +31,186 @@ namespace CalamityInheritance.Content.Items
     public partial class CalamityInheritanceGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-
+        public override void UpdateInventory(Item item, Player player)
+        {
+            var mplr = player.CIMod();
+            //海爵剑T3: 佩戴蠕虫围巾召唤老猪
+            if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<DukeLegendary>(), 1))
+                {
+                    LegendaryUpgradeTint(DustID.Water, player);
+                    mplr.DukeTier3 = true;
+                }
+            }
+            base.UpdateInventory(item, player);
+        }
         public override void OnConsumeItem(Item item, Player player)
         {
-            int SHPC = ModContent.ItemType<DestroyerLegendary>();
-            //SHPCT2: 月总在场时饮用葡萄汁
-            if (item.type == ItemID.GrapeJuice && CIFunction.IsThereNpcNearby(NPCID.MoonLordHead, player, 3200f) && !player.CIMod().DestroyerTier2)
-                player.CIMod().DestroyerTier2 = CIFunction.FindInventoryItem(ref item, player, SHPC, 1);
-            //叶柳T2：持有弹药回收buff时于丛林处食用黄金菜肴
-            if (Main.LocalPlayer.ZoneJungle && player.FindBuffIndex(BuffID.AmmoReservation) != -1 && !player.CIMod().PlanteraTier2)
-                player.CIMod().PlanteraTier2 = CIFunction.FindInventoryItem(ref item, player, ModContent.ItemType<PlanteraLegendary>(), 1);
+            
+
             base.OnConsumeItem(item, player);
         }
         public override bool? UseItem(Item item, Player player)
         {
             int SHPC = ModContent.ItemType<DestroyerLegendary>();
             var cplr = player.Calamity();
+            var mplr = player.CIMod();
+            //SHPCT2: 月总在场时饮用葡萄汁
+            if (item.type == ItemID.GrapeJuice && CIFunction.IsThereNpcNearby(NPCID.MoonLordHead, player, 3200f) && !player.CIMod().DestroyerTier2)
+            {
+                if (CIFunction.FindInventoryItem(ref player, SHPC, 1))
+                {
+                    player.CIMod().DestroyerTier2 = true;
+                    LegendaryUpgradeTint(DustID.Silver, player);
+                }
+            }
+            //叶柳T2：持有弹药回收buff时于丛林处食用黄金菜肴
+            if (item.type == ItemID.GoldenDelight && Main.LocalPlayer.ZoneJungle && !player.CIMod().PlanteraTier2)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
+                {
+                    player.CIMod().PlanteraTier2 = true;
+                    LegendaryUpgradeTint(DustID.DryadsWard, player);
+                }
+            }
+            //寒冰神性T2: 雪原饮用温暖药水
+            if (Main.LocalPlayer.ZoneSnow && !player.CIMod().ColdDivityTier2)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<CyrogenLegendary>(), 1))
+                {
+                    player.CIMod().ColdDivityTier2 = true;
+                    LegendaryUpgradeTint(DustID.Ice, player);
+                }
+            }
+
             //SHPCT3: 召唤噬魂花……在吃下两个魔力上限物品后
-            if (item.type == ModContent.ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !player.CIMod().DestroyerTier3)
-                player.CIMod().DestroyerTier3 = CIFunction.FindInventoryItem(ref item, player, SHPC, 1);
+            if (item.type == ModContent.ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !mplr.DestroyerTier3)
+            {
+                if (CIFunction.FindInventoryItem(ref player, SHPC, 1))
+                {
+                    mplr.DestroyerTier3 = true;
+                    LegendaryUpgradeTint(DustID.Silver, player);
+                }
+            }
+            //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
+            if (item.type == ModContent.ItemType<YharonEgg>() && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
+                {
+                    mplr.PlanteraTier3 = true;
+                    LegendaryUpgradeTint(DustID.DryadsWard, player);
+                }
+            }
             //庇护之刃T3: 防御力大于320点时召唤神明吞噬者
-            if (item.type == ModContent.ItemType<CosmicWorm>() && !player.CIMod().DefendTier3 && player.statDefense >= 320)
-                player.CIMod().DefendTier3 = CIFunction.FindInventoryItem(ref item, player, ModContent.ItemType<DefenseBlade>(), 1);
+            if (item.type == ModContent.ItemType<CosmicWorm>() && !mplr.DefendTier3 && player.statDefense >= 320)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<DefenseBlade>(), 1))
+                {
+                    mplr.DefendTier3 = true;
+                    LegendaryUpgradeTint(DustID.Gold, player);
+                }
+            }
+            //孔雀翎T3：佩戴神圣护符召唤一次神吞
+            if (item.type == ModContent.ItemType<CosmicWorm>() && !mplr.PBGTier3 && (mplr.deificAmuletEffect || player.Calamity().dAmulet))
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PBGLegendary>(), 1))
+                {
+                    Main.NewText("114514");
+                    mplr.PBGTier3 = true;
+                    LegendaryUpgradeTint(DustID.TerraBlade, player);
+                }
+            }
+            //寒冰神性T3: 在雪原地表召唤亵渎天神
+            if (item.type == ModContent.ItemType<ProfanedCore>() && !mplr.ColdDivityTier3 && Main.LocalPlayer.ZoneSnow)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<CyrogenLegendary>(), 1))
+                {
+                    mplr.ColdDivityTier3 = true;
+                    LegendaryUpgradeTint(DustID.Ice, player);
+                }
+            }
             return base.UseItem(item, player);
+        }
+        public static void LegendaryUpgradeTint(int dType, Player plr)
+        {
+            CIFunction.DustCircle(plr.Center, 32f, 1.8f, dType, true, 10f);
+            SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, plr.Center);
+        }
+        public override bool AltFunctionUse(Item item, Player player)
+        {
+            //冰灵传奇物品的一些我自己都看不懂的东西, 我从灾厄那复制的
+            if (player.ActiveItem().type == ModContent.ItemType<CyrogenLegendary>())
+            {
+                bool canContinue = true;
+                int count = 0;
+                foreach (Projectile p in Main.ActiveProjectiles)
+                {
+                    if (p.type == ModContent.ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
+                    {
+                        if (p.ai[1] > 1f)
+                        {
+                            canContinue = false;
+                            break;
+                        }
+                        else if (p.ai[1] == 0f)
+                        {
+                            if (((CryogenPtr)p.ModProjectile).Idle)
+                                count++;
+                        }
+                    }
+                }
+                if (canContinue && count > 0)
+                {
+                    NPC tar = CalamityUtils.MinionHoming(Main.MouseWorld, 1000f, player);
+                    if (tar != null)
+                    {
+                        int pAmt = count;
+                        float angleVariance = MathHelper.TwoPi / pAmt;
+                        float angle = 0f;
+
+                        var source = player.GetSource_ItemUse(player.ActiveItem());
+                        for (int i = 0; i < pAmt; i++)
+                        {
+                            if (Main.projectile.Length == Main.maxProjectiles)
+                                break;
+                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(80);
+                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
+                            Main.projectile[projj].originalDamage = 80;
+
+                            angle += angleVariance;
+                            for (int j = 0; j < 22; j++)
+                            {
+                                Dust dust = Dust.NewDustDirect(Main.projectile[projj].position, Main.projectile[projj].width, Main.projectile[projj].height, DustID.Ice);
+                                dust.velocity = Vector2.UnitY * Main.rand.NextFloat(3f, 5.5f) * Main.rand.NextBool().ToDirectionInt();
+                                dust.noGravity = true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+            return base.AltFunctionUse(item, player);
         }
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
+            var usPlayer = player.CIMod(); 
             if (item.type == ItemID.AncientChisel)
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
+
             if (item.type == ItemID.HandOfCreation)
-                player.CIMod().IfGodHand = true;
-            if (item.type == ItemID.WormScarf)
-                player.CIMod().IfWormScarf = true;
+                usPlayer.IfGodHand = true;
+
             if (item.type == ModContent.ItemType<SigilofCalamitas>())
-                player.CIMod().IfCalamitasSigile = true;
+                usPlayer.IfCalamitasSigile = true;
+            
+            if (item.type == ModContent.ItemType<BloodyWormScarf>())
+                usPlayer.IsWearingBloodyScarf = true;
+
+            if (item.type == ModContent.ItemType<ElementalQuiver>())
+                usPlayer.IsWearingElemQuiverCal = true;
+                
                 
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {

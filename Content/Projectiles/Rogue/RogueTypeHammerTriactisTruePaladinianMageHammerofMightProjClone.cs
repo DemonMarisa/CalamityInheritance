@@ -47,6 +47,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesIDStaticNPCImmunity= true;
             Projectile.idStaticNPCHitCooldown = 8;
             Projectile.timeLeft = Lifetime;
+            //挂载锤子一定要上这个多人同步
+            Projectile.netImportant = true;
         }
 
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < (Lifetime - 10) && target.CanBeChasedBy(Projectile);

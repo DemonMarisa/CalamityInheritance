@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else if(Projectile.ai[0] == 0f)
                 TrailLine();
             //彻底发挥轮椅之光
-            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier2 ? 3200f : 450f; 
+            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 3200f : 450f; 
             switch (Projectile.ai[0])
             {
                 case 0f:
@@ -97,9 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 //如果敌怪在玩家头顶才取敌怪头顶
                 if (p.Center.Y > target.Center.Y)
                     posY = target.Center.Y - Main.rand.NextFloat(670f, 1000f);
-                //1/2概率修改为底下
-                if (Main.rand.NextBool())
-                    posY *= -1;
+
                 Vector2 pos = new (posX, posY);
                 Vector2 setSpeed = target.Center - pos;
                 setSpeed.X += Main.rand.NextFloat(-15f, 16f);

@@ -20,6 +20,7 @@ using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
+using Hjson;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -100,6 +101,15 @@ namespace CalamityInheritance.CIPlayer
         public int DefendTier1Timer = 0;
         public float DefenseBoost = 0f;
         public int DefendTier2Pool = 0;
+        /*寒冰神性升级存储
+        *
+        *
+        *
+        */
+        public bool ColdDivityTier1 = false;
+        public bool ColdDivityTier2 = false;
+        public bool ColdDivityTier3 = false;
+        public bool IsColdDivityActiving = false;
         
         public bool PBGLegendaryDyeable = false;
         public Color PBGBeamColor;
@@ -161,6 +171,7 @@ namespace CalamityInheritance.CIPlayer
             ResetAccessories();
             //buff全部封装
             ResetBuff();
+            IsColdDivityActiving = false;
             PBGLegendaryDyeable = false;
             PBGBeamColor = default;
             ForceHammerStealth = false;
@@ -414,6 +425,23 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+        }
+        public override void PostUpdateEquips()
+        {
+            if (AncientAeroSet)
+            {
+                //获取翅膀
+                int wSlot = EquipLoader.GetEquipSlot(Mod, "AncientAeroArmor", EquipType.Wings);
+
+                Player.noFallDmg = true;
+                if (Player.equippedWings == null)
+                {
+                    Player.wingsLogic = wSlot;
+                    Player.wingTime = 1;
+                    Player.wingTimeMax = 1;
+                    Player.equippedWings = Player.armor[1];
+                }
+            }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

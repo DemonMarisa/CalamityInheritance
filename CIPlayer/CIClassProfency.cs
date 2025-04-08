@@ -114,7 +114,6 @@ namespace CalamityInheritance.CIPlayer
             Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += SummonLevel * 0.01f;
             Player.maxMinions += SummonLevel / 10;
             //盗贼: 潜伏值, 最大+30
-            Player.Calamity().rogueStealthMax += RogueLevel * 0.02f;
             
         }
         //准备给玩家升级, 注意，这里要置于postupdate内
@@ -174,6 +173,9 @@ namespace CalamityInheritance.CIPlayer
         public bool JudgeIfCanLevelUp(int level, int type)
         {
             bool canLevelUp = false;
+            //just in case...
+            if (level > 15)
+                level = 15;
             //这是一个存放了15个数的数组
             int[] LevelArray =
             [

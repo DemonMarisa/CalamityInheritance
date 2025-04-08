@@ -419,6 +419,9 @@ DukeLegendary: {
 	TierOne: Tier1
 	TierTwo: Tier2
 	TierThree: Tier3
+	TierOneTint: "111"
+	TierTwoTint: "222"
+	TierThreeTint: "333"
 }
 
 AquaticDissolution: {
@@ -429,4 +432,11 @@ AquaticDissolution: {
 DefenseBlade: {
 	DisplayName: Defense Blade
 	Tooltip: ""
+	LegendaryScaling: has update {0} power
+	TierOne: Tier1
+	TierTwo: Tier2
+	TierThree: Tier3
+	TierOneTint: "111"
+	TierTwoTint: "222"
+	TierThreeTint: "333"
 }

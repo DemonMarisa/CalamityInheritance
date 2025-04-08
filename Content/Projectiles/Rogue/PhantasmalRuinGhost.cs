@@ -31,10 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            // Set the projectile's direction correctly
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
-            // The projectile rapidly fades in as it starts existing
             if (Projectile.timeLeft >= 207)
                 Projectile.alpha -= 6;
 

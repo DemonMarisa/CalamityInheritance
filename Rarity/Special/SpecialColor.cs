@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Terraria.ModLoader;
 //特殊稀有度颜色，部分只有特定设置开启的时候才会生效
 namespace CalamityInheritance.Rarity.Special
@@ -62,5 +63,39 @@ namespace CalamityInheritance.Rarity.Special
         //公主
         public override Color RarityColor => new(152, 245, 249);
     }
-    
+    public class DukeAqua: ModRarity 
+    {
+        //海爵剑稀有度
+        public override Color RarityColor => new(53, 255, 255); //#35FFFF
+    }
+    public class PBGLime: ModRarity
+    {
+        //孔雀翎稀有度
+        public override Color RarityColor => new(0, 255, 127); //#00FF7F;
+    }
+    public class GolemPurple: ModRarity
+    {
+        //庇护之刃稀有度
+        public override Color RarityColor => new(145, 115, 177); //#9173B1
+    }
+    public class CryogenBlue: ModRarity
+    {
+        //寒冰神性稀有度
+        public override Color RarityColor => new(5, 63, 139); //#053F8B
+    }
+    public class PlanteraGreen: ModRarity
+    {
+        //叶流稀有度
+        public override Color RarityColor => new(0, 203, 103); //#00CB67
+    }
+    public class BetsyPink: ModRarity
+    {
+        //贝特西稀有度
+        public override Color RarityColor => new(255, 0, 155);   //#FF009B
+    }
+    public class SHPCAqua: ModRarity
+    {
+        //SHPC稀有度
+        public override Color RarityColor => new(65, 105, 225); //#4169E1
+    }
 }

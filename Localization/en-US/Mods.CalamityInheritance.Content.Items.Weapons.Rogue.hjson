@@ -215,6 +215,9 @@ PBGLegendary: {
 	TierTwo: "222"
 	TierThree: "333"
 	LegendaryScaling: "1111"
+	TierOneTint: "111"
+	TierTwoTint: "222"
+	TierThreeTint: "333"
 }
 
 EclipseSpear: {

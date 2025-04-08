@@ -72,7 +72,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="tar">指定物品</param>
         /// <param name="area">区域，1: 背包 2: 盔甲栏</param>
         /// <returns>真: 寻找成功</returns>
-        public static bool FindInventoryItem(ref Item item, Player p, int tar, int area)
+        public static bool FindInventoryItem(ref Player p, int tar, int area)
         {
             const int isInventory = 1;
             const int isArmor = 2;
@@ -81,12 +81,14 @@ namespace CalamityInheritance.Utilities
             {
                 case isInventory:
                     for (int i = 0; i < p.inventory.Length; i++)
-                        if (item.type == tar)
+                    {
+                        if (p.inventory[i].type == tar)
                             flag = true;
+                    }
                     break;
                 case isArmor:
                     for (int i = 0; i < p.armor.Length; i++)
-                        if (item.type == tar)
+                        if (p.inventory[i].type == tar)
                             flag = true;
                     break;
             }

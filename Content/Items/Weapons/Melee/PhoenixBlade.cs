@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 106;
             Item.height = 106;
-            Item.scale *= 2.2f; //这玩意据说比毁灭剑大两倍 - 真的很大.
+            Item.scale *= 3.2f; //这玩意据说比毁灭剑大两倍 - 真的很大.
             Item.damage = 160;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Item.useTime = 22;

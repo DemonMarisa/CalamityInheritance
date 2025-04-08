@@ -39,7 +39,10 @@ namespace CalamityInheritance.CIPlayer
         public bool BrinyBuff = false;
         //庇护刃buff
         public bool DefenderPower = false;
+
         public bool PBGPower = false;
+        //火山杖buff
+        public bool BetsyPower = false;
         #endregion
         #region Debuff
         public bool abyssalFlames = false;
@@ -70,6 +73,7 @@ namespace CalamityInheritance.CIPlayer
             BrinyBuff = false;
             DefenderPower = false;
             PBGPower = false;
+            BetsyPower = false;
             #endregion
             #region Debuff
             abyssalFlames = false;

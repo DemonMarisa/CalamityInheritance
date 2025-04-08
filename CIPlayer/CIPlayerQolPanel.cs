@@ -432,10 +432,7 @@ namespace CalamityInheritance.CIPlayer
             tag["CIExoLoreType"] = ExoPanelType;
 
             tag["CIScalLoreType"] = SCalPanelType;
-            //熟练度存储
-            ProficiencySaveData(ref tag); 
-            //传奇物品样式保存
-            LegendarySaveData(ref tag);
+            ;
             //禁止生成
             tag.Add("CISulphurSeaType", SulphurSeaType);
             tag.Add("CISeaPanelType", SeaPanelType);
@@ -536,8 +533,7 @@ namespace CalamityInheritance.CIPlayer
             UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
 
             PanelsLoreExo = tag.GetBool("PanelsLoreExo");
-            ProficiencyLoadData(ref tag);
-            LegendaryLoadData(ref tag);    
+              
         }
     }
 }

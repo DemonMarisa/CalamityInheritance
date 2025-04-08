@@ -78,7 +78,8 @@ namespace CalamityInheritance.Content.Items
         public static readonly Terraria.Audio.SoundStyle SoundStaffofEarth = SoundID.Item69;
         public static readonly Terraria.Audio.SoundStyle SoundStaffofEarthUsing = SoundID.Item70;
         public static readonly Terraria.Audio.SoundStyle SoundDeathSickle = SoundID.Item71;
-
+        #endregion
+        #region NPC
         #endregion
     }
 }

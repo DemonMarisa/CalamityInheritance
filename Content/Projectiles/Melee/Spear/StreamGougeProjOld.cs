@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -101,11 +102,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
                 Main.dust[idx].scale = 2.4f;
             }
         }
-        // public override void PostDraw(Color lightColor)
-        // {
-        //     Vector2 origin = new Vector2(0f, 0f);
-        //     Main.EntitySpriteDraw(ModContent.Request<Texture2D>(${GenericProjRoute.ProjRoute}/Melee/Spear/StreamGougeProjOldGlowProj").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0f);
-        // }
+        public override void PostDraw(Color lightColor)
+        {
+            Vector2 origin = new Vector2(0f, 0f);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/Spear/StreamGougeProjOldGlowProj").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0f);
+        }
         public void ExtraBehavior()
         {
             int movingDust = 3;

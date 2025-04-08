@@ -1,9 +1,10 @@
-using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.MiscItem
@@ -31,7 +32,8 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             if (player.CIMod().PlanteraTier1)
             {
-                Main.NewText("你已经使用过这个物品了!", 155, 102, 4);
+                string key = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.MiscItem.PlanteraLegendaryUpgrade.Tint");
+                Main.NewText(key, 155, 102, 4);
                 SoundEngine.PlaySound(CISoundID.SoundFallenStar, player.Center);
                 return false;   
             }

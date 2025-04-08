@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyNightsRay").
+                AddRecipeGroup("CalamityInheritance:AnyTerraRay").
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient<LifeAlloy>(5).
                 AddIngredient<GalacticaSingularity>(5).

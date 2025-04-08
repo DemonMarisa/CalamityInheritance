@@ -1,16 +1,11 @@
-﻿using CalamityInheritance.CIPlayer;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.CICooldowns;
-using CalamityMod.Cooldowns;
-using Basic.Reference.Assemblies;
+using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
-using System;
 using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Items

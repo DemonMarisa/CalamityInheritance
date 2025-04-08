@@ -164,18 +164,33 @@ SMarbleSwordBuff: {
 }
 
 DefenderBuff: {
-	// DisplayName: Defender Buff
-	// Description: Mods.CalamityInheritance.Buffs.DefenderBuff.Description
+	DisplayName: 避难所
+	Description: 护甲屹立不倒...
 }
 
 DukeBuff: {
-	// DisplayName: Duke Buff
-	// Description: Mods.CalamityInheritance.Buffs.DukeBuff.Description
+	DisplayName: 海爵的馈赠
+	Description: 似乎海爵正在激发你所有的近战属性...
 }
 
 PBGBuff: {
-	// DisplayName: P B G Buff
-	// Description: Mods.CalamityInheritance.Buffs.PBGBuff.Description
+	DisplayName: 孔雀的羽翼
+	Description: 彻底无敌...有些时候
+}
+
+CyrogenLegendaryBuff: {
+	// DisplayName: Cyrogen Legendary Buff
+	// Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
+}
+
+CryoDrain: {
+	DisplayName: 低温虹吸
+	Description: 身体正在急速失温, 能量似乎被吸走了
+}
+
+VolcanoBuff: {
+	Description: 火山
+	DisplayName: 火山加热
 }
 
 AbyssalFlames: {

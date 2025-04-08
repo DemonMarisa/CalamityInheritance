@@ -415,11 +415,18 @@ PlanteraLegendary: {
 		发射如水流般密集的叶之箭
 		右键发射会散发毒云的孢子球
 		会随着游戏流程的推进得到强化
+		[SCALING]
 		[c/00CB67:-传奇武器-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	DisplayName: 甲乙木皇茂林叶帝弓[Legendary]
-	TierOne: "[c/00CB67:强化:]增强叶之箭与孢子球攻击速度与飞行速度"
-	TierTwo: "[c/00CB67:强化:]增加叶之箭与孢子球的发射数量"
-	TierThree: "[c/00CB67:强化:]叶之箭50%概率发起追踪, 孢子球必定跟踪"
-	// LegendaryScaling: Buff
+	TierOne: "[c/00CB67:强化]:增强叶之箭与孢子球攻击速度与飞行速度"
+	TierTwo: "[c/00CB67:强化]:增加叶之箭与孢子球的发射数量"
+	TierThree: "[c/00CB67:强化]:叶之箭50%概率发起追踪, 孢子球必定跟踪"
+	LegendaryScaling: "[c/00CB67:强化属性]: +{0} 武器伤害"
+	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwoTint: "[c/818589:在丛林食用黄金菜肴]"
+	TierThreeTint: "[c/818589:携带元素箭袋，在丛林范围内召唤一只丛林龙]"
 }

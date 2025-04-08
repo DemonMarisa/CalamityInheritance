@@ -94,3 +94,8 @@ AncientTarragonWings: {
 		'''
 	DisplayName: Ancient Tarragon Wings
 }
+
+AncientAeroWings: {
+	DisplayName: Ancient Aero Wings
+	Tooltip: ""
+}

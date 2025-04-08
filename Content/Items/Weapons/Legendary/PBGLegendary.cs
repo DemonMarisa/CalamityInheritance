@@ -13,13 +13,15 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Rarity.Special;
 
-namespace CalamityInheritance.Content.Items.Weapons.Rogue
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class PBGLegendary: RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Rogue.PBGLegendary";
         public int BaseDamage = 70;
         public override void SetStaticDefaults()
         {
@@ -42,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<PBGLegendaryProj>();
             Item.shootSpeed = 10f;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PBGLime>() : ModContent.RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -65,21 +67,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.PBGTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.PBGTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.PBGTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.PBGLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.PBGTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.PBGTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.PBGTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             //以下，用于比较复杂的计算
             float getdmg = LegendaryDamage();
             int boostPercent = (int)(getdmg * 100);
@@ -125,7 +118,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             damageBuff += DownedBossSystem.downedBoomerDuke ? 0.2f : 0f;
             damageBuff += DownedBossSystem.downedDoG ? 0.6f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 0.8f : 0f;
-            damageBuff += (DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas)? 0.8f : 0f;
+            damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 0.8f : 0f;
             return damageBuff;
         }
     }

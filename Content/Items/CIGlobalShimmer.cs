@@ -1,8 +1,8 @@
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
@@ -26,8 +26,15 @@ namespace CalamityInheritance.Content.Items
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
             }
             #endregion
-            #region 孔雀翎-进化1
+            #region 传奇武器的强化道具强化道具
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PBGLegendary>()] = ModContent.ItemType<PBGLegendaryUpgrade>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DukeLegendary>()] = ModContent.ItemType<DukeLegendaryUpgrade>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DestroyerLegendary>()] = ModContent.ItemType<DestroyerLegendaryUpgrade>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RavagerLegendary>()] = ModContent.ItemType<RavagerLegendaryUpgrade>();
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PlanteraLegendary>()] = ModContent.ItemType<PlanteraLegendaryUpgrade>();
+
             #endregion
+            
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)
             {

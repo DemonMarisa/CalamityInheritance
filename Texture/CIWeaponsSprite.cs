@@ -152,10 +152,11 @@ namespace CalamityInheritance.Texture
         #endregion
         //路径
         //职业武器路径
-        public static string CIMeleeWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Melee";
-        public static string CIRangedWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Ranged";
-        public static string CIMagicWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Magic";
-        public static string CIRogueWeaponRoute=> "CalamityInheritance/Content/Items/Weapons/Rogue";
+        public static string CIGenericWeaponRoute => "CalamityInheritance/Content/Items/Weapons";
+        public static string CIMeleeWeaponRoute=> $"{CIGenericWeaponRoute}/Melee";
+        public static string CIRangedWeaponRoute=> $"{CIGenericWeaponRoute}/Ranged";
+        public static string CIMagicWeaponRoute=> $"{CIGenericWeaponRoute}/Magic";
+        public static string CIRogueWeaponRoute=> $"{CIGenericWeaponRoute}/Rogue";
         //射弹路径
         public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
         //额外贴图路径
@@ -233,7 +234,7 @@ namespace CalamityInheritance.Texture
 
             //庇护
             AegisCal = ModContent.Request<Texture2D>            ($"{CalMeleeWeaponRoute}/AegisBlade");
-            AegisAlt = ModContent.Request<Texture2D>            ($"{CIMeleeWeaponRoute}/DefenseBlade");
+            AegisAlt = ModContent.Request<Texture2D>            ($"{CIGenericWeaponRoute}/Legendary/DefenseBlade");
 
 
             //月明链刃

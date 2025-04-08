@@ -38,6 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 20;
+            Projectile.netImportant = true;
         }
 
         public override void AI()

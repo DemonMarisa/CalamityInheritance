@@ -10,14 +10,14 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 
-namespace CalamityInheritance.Content.Items.Weapons.Ranged
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class PlanteraLegendary: CIRanged, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary"; 
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useTime = 2;
             Item.useAnimation = 2;
             Item.knockBack = 0.15f;
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = 12f;
             Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundBow;
@@ -41,8 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<PlanteraLegendaryLeaf>();
             Item.useAmmo = AmmoID.Arrow;
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<IchikaBlack>() : ModContent.RarityType<MaliceChallengeDrop>();
-            Item.Calamity().canFirePointBlankShots = true;
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PlanteraGreen>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override bool AltFunctionUse(Player player)
         {
@@ -60,21 +59,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.PlanteraTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.PlanteraTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.PlanteraTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.PlanteraTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.PlanteraTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.PlanteraTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryDamageBuff();
             string update = this.GetLocalization("LegendaryScaling").Format(
@@ -95,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             else
             {
                 Item.useTime = p.PlanteraTier1 ? 1 : 2;
-                Item.useAnimation = p.PlanteraTier1 ? 1 : 2;
+                Item.useAnimation = p.PlanteraTier1 ? 5 : 10;
                 Item.UseSound = SoundID.Item5;
             }
             return base.CanUseItem(player);

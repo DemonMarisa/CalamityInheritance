@@ -10,12 +10,18 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Core;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Rarity.Special;
 
-namespace CalamityInheritance.Content.Items.Weapons.Magic
+namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class RavagerLegendary: CIMagic, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Magic.RavagerLegendary";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -39,8 +45,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<RavagerLegendaryProjAlt>();
 
-            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
-            Item.rare = ItemRarityID.Yellow;
+            Item.value = CIShopValue.RarityMaliceDrop;
+            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<BetsyPink>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -55,21 +61,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            if (mp.BetsyTier1)
-            {
-                string t1 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierOne");
-                tooltips.Add(new TooltipLine(Mod, "TIERONE", t1));
-            }
-            if (mp.BetsyTier2)
-            {
-                string t2 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierTwo");
-                tooltips.Add(new TooltipLine(Mod, "TIERTWO", t2));
-            }
-            if (mp.BetsyTier1)
-            {
-                string t3 = Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.RavagerLegendary.TierThree");
-                tooltips.Add(new TooltipLine(Mod, "TIERTHREE", t3));
-            }
+            string t1 = mp.BetsyTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            tooltips.FindAndReplace("[TIERONE]", t1);
+            string t2 = mp.BetsyTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            tooltips.FindAndReplace("[TIERTWO]", t2);
+            string t3 = mp.BetsyTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            tooltips.FindAndReplace("[TIERTHREE]", t3);
             // 以下，用于比较复杂的计算
             int boostPercent = (int)(LegendaryDamage() * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
@@ -108,6 +105,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var usPlayer = player.CIMod();
+            float pSpriteType = Main.rand.Next(6);
             if (player.altFunctionUse == 2)
             {
                 int meteorAmt = Main.rand.Next(4, 6);
@@ -119,11 +117,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     float SpeedX = velocity.X + Main.rand.Next(-30, 31) * 0.05f;
                     float SpeedY = velocity.Y + Main.rand.Next(-30, 31) * 0.05f;
                     float ai0 = Main.rand.Next(6);
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, ai0, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, pSpriteType, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
+                }
+                int j = 0;
+                if (usPlayer.BetsyTier2)
+                {
+                    for ( ; j < 2; j++)
+                    {
+                        float pPosX = player.Center.X + Main.rand.NextFloat(-200f, 201f);
+                        float pPosY = player.Center.Y + Main.rand.NextFloat(670f, 1080f);
+                        Vector2 newPos = new (pPosX, pPosY);
+                        //速度
+                        Vector2 spd= Main.MouseWorld - newPos;
+                        //水平速度随机度
+                        spd.X += Main.rand.NextFloat(-15f, 16f);
+                        float pSpeed = 24f;
+                        float tarDist =  spd.Length();
+                        //?
+                        tarDist = pSpeed / tarDist;
+                        spd.X *= tarDist;
+                        spd.Y *= tarDist;
+                        float ai0 = Main.rand.Next(6);
+                        Projectile.NewProjectile(source, newPos, spd, type, damage, knockback, player.whoAmI, ai0, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
+                    }
                 }
                 return false;
             }
             else
+            //下面这段史不太好改看情况吧
             {
                 float meteorSpeed = Item.shootSpeed;
                 Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
@@ -147,7 +168,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 int pAmt = 4;
                 for (int i = 0; i < pAmt; i++)
                 {
-                    realPlayerPos = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                    realPlayerPos = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 800f);
                     realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
                     realPlayerPos.Y += 100 * i;
                     mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X + Main.rand.Next(-40, 41) * 0.03f;
@@ -168,50 +189,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     float meteorSpawnYOffset = mouseYDist + Main.rand.Next(-40, 41) * 0.02f;
                     float ai0 = Main.rand.Next(6);
                     Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, meteorSpawnXOffset * 0.75f, meteorSpawnYOffset * 0.75f, type, damage, knockback, player.whoAmI, ai0, 0.5f + (float)Main.rand.NextDouble() * 0.9f); //0.3
+
                 }
                 //从地底下发射额外的射弹
+                int j = 0;
                 if (usPlayer.BetsyTier2)
-                    ShootBelow(ref player, ref source, ref type, knockback, damage);
+                {
+                    for ( ; j < 2; j++)
+                    {
+                        float pPosX = player.Center.X+ Main.rand.NextFloat(-200f, 201f);
+                        float pPosY = player.Center.Y + Main.rand.NextFloat(670f, 1080f);
+                        Vector2 newPos = new (pPosX, pPosY);
+                        //速度
+                        Vector2 spd= Main.MouseWorld - newPos;
+                        //水平速度随机度
+                        spd.X += Main.rand.NextFloat(-15f, 16f);
+                        float pSpeed = 24f;
+                        float tarDist =  spd.Length();
+                        //?
+                        tarDist = pSpeed / tarDist;
+                        spd.X *= tarDist;
+                        spd.Y *= tarDist;
+                        float ai0 = Main.rand.Next(6);
+                        Projectile.NewProjectile(source, newPos, spd, type, damage, knockback, player.whoAmI, ai0, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
+                    }
+                }
                 return false;
             }
         }
         //TODO: 对准鼠标位置，然后并且找一下为啥没贴图的原因
-        private void ShootBelow(ref Player player, ref EntitySource_ItemUse_WithAmmo source, ref int type, float knockback, int damage)
-        {
-            float whatSpeed = Item.shootSpeed;
-            Vector2 src = player.RotatedRelativePoint(player.MountedCenter, true);
-            float dirX = Main.mouseX + Main.screenPosition.X - src.X;
-            float dirY = Main.mouseY + Main.screenPosition.Y - src.Y;
-            if (player.gravDir == -1f)
-                dirY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - src.Y;
-            Vector2 dir = new(dirX, dirY);
-            float whatDist = dir.Length();
-            if ((float.IsNaN(dir.X) && float.IsNaN(dir.Y))|| (dir.X == 0f && dir.Y == 0f))
-            {
-                dir.X = player.direction;
-                dir.Y = 0f;
-                whatDist = whatSpeed;
-            }
-            else whatDist = whatSpeed / whatDist;
-
-            //射弹
-            int pAmt = 3;
-            for (int i = 0; i < pAmt; i++)
-            {
-                src = new Vector2(player.Center.X + (Main.rand.Next(201) *- player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y + 600f);
-                src.X = (src.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
-                src.Y += 100 * i;
-                if (dir.Y < 0f) dir.Y *= -1f;
-                if (dir.Y < 20f) dir.Y = 20f;
-                whatDist = dir.Length();
-                whatDist = whatSpeed / whatDist;
-                dir.X *= whatDist;
-                dir.Y *= whatDist;
-                dir.X += Main.rand.NextFloat(-40f, 41f) * 0.02f;
-                dir.Y += Main.rand.NextFloat(-40f, 41f) * 0.02f;
-                dir.Y *= -1;
-                Projectile.NewProjectile(source, src, dir, ModContent.ProjectileType<RavagerLegendaryProjAlt>(), damage, knockback, player.whoAmI);
-            }
-        }
     }
 }
