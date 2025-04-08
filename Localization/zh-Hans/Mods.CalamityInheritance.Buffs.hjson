@@ -178,21 +178,6 @@ PBGBuff: {
 	Description: 彻底无敌...有些时候
 }
 
-CyrogenLegendaryBuff: {
-	// DisplayName: Cyrogen Legendary Buff
-	// Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
-}
-
-CryoDrain: {
-	DisplayName: 低温虹吸
-	Description: 身体正在急速失温, 能量似乎被吸走了
-}
-
-VolcanoBuff: {
-	Description: 火山
-	DisplayName: 火山加热
-}
-
 AbyssalFlames: {
 	// DisplayName: Abyssal Flames
 	// Description: Mods.CalamityInheritance.Buffs.AbyssalFlames.Description
@@ -206,4 +191,19 @@ Horror: {
 VulnerabilityHexLegacy: {
 	// DisplayName: Vulnerability Hex Legacy
 	// Description: Mods.CalamityInheritance.Buffs.VulnerabilityHexLegacy.Description
+}
+
+CyrogenLegendaryBuff: {
+	// DisplayName: Cyrogen Legendary Buff
+	// Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
+}
+
+CryoDrain: {
+	DisplayName: 低温虹吸
+	Description: 身体正在急速失温, 能量似乎被吸走了
+}
+
+VolcanoBuff: {
+	Description: 火山
+	DisplayName: 火山加热
 }

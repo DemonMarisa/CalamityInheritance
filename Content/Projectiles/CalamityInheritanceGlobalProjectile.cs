@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
-                if (projectile.DamageType == DamageClass.Ranged && (modPlayer.ElemQuiver || CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x) || Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 100f))
+                if (projectile.DamageType == DamageClass.Ranged && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x) && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 100f)
                     ElemQuiver(projectile);
             }
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
