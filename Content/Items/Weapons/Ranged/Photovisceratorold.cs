@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            Item.damage = 230;
+            Item.damage = 900;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 84;
             Item.height = 30;
@@ -52,6 +52,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
+
+            Item.channel = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -84,20 +86,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
+
             // PhotovisceratorCrystal的发射逻辑
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                float Direction = player.direction;
-                float SpawnX = 15f;
-                float SpawnY = player.direction * 50f;
+                // 第一步，随机放置在玩家周围360度，并朝向玩家
+                Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
+                float warpDist = Main.rand.NextFloat(60f, 120f);
+                float warpAngle = Main.rand.NextFloat(-MathHelper.Pi / 2.6f, MathHelper.Pi / 2.6f);
+                Vector2 warpOffset = -warpDist * playerToMouseVec.RotatedBy(warpAngle);
+                Vector2 Finalposition = Main.LocalPlayer.MountedCenter + warpOffset;
 
-                Vector2 spawnPosition = Owner.Center + Main.rand.NextVector2Circular(Owner.width, Owner.height) * 1.35f;
-                    Vector2 shootVelocity = spawnPosition * 0.04f;
-                    if (shootVelocity.Length() < 6f)
-                        shootVelocity = shootVelocity.SafeNormalize(Vector2.UnitY) * 6f;
-
-                    spawnPosition -= shootVelocity.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(SpawnX, SpawnY);
-                    Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), spawnPosition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage, 0f, OwnerIndex);
+                Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), Finalposition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage * 2, 0f, OwnerIndex);
             }
 
             if (player.altFunctionUse == 2)

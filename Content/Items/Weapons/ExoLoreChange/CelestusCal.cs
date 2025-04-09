@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             var usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                damage.Base = 620;
+                damage.Base = 622;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

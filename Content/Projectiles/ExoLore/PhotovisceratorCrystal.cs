@@ -40,9 +40,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void AI()
         {
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.ToRadians(5f);
             Projectile.Opacity = Utils.GetLerpValue(180f, 174f, Projectile.timeLeft, true);
 
+            if(Projectile.timeLeft > 480)
+                Projectile.tileCollide = false;
+            else
+                Projectile.tileCollide = true
+                    ;
             if (Projectile.localAI[0] == 0f)
             {
                 float initialSpeed = Main.rand.NextFloat(2.5f, 4.5f);
@@ -58,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Projectile.localAI[0] = 1f;
             }
 
-            CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 500f, 12f, 8f);
+            CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 4000f, 12f, 0f);
         }
 
         public override void OnKill(int timeLeft)

@@ -139,7 +139,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (death)
                 return;
-
+            /*
             // Fly away from other brimstone monsters
             float pushForce = 0.1f;
             for (int k = 0; k < Main.maxProjectiles; k++)
@@ -167,7 +167,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                             Projectile.velocity.Y += pushForce;
                     }
                 }
-            }
+            }*/
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => CalamityUtils.CircularHitboxCollision(Projectile.Center, 170f, targetHitbox);

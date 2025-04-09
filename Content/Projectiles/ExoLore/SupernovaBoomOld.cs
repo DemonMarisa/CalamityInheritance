@@ -122,8 +122,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
 
                 Projectile.velocity = Vector2.Zero;
-                Owner.Calamity().GeneralScreenShakePower = 2;
-
+  
                 int points = 2;
                 float radians = MathHelper.TwoPi / points;
                 Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));

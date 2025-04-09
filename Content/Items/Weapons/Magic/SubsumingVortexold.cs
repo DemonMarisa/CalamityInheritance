@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void SetDefaults()
         {
-            Item.damage = 121;
+            Item.damage = 235;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 78;
             Item.width = 38;
@@ -45,18 +45,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<EnormousConsumingVortexold>();
             Item.shootSpeed = 7f;
         }
-        public override bool CanUseItem(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            CalamityInheritancePlayer usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                Item.damage = 145;
-            }
-            else
-            {
-                Item.damage = 235;
-            }
-            return base.CanUseItem(player);
+            //刚出的版本
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+                damage.Base = 500;
+            base.ModifyWeaponDamage(player, ref damage);
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

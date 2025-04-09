@@ -157,13 +157,18 @@ namespace CalamityInheritance.Utilities
                     boomerang.velocity.Y -= acceleration;
             }
         }
-        public static Vector2 GiveVelocity(float directionMult)
+        public static Vector2 RandomVelocity(float X, float Y)
         {
-            Vector2 velocity = new Vector2(directionMult , directionMult);
+            Vector2 velocity = new Vector2(Main.rand.NextFloat(X, -X), Main.rand.NextFloat(Y, -Y));
             velocity.Normalize();
             return velocity;
         }
-        
+        public static Vector2 GiveVelocity(float num)
+        {
+            Vector2 velocity = new Vector2(num, num);
+            velocity.Normalize();
+            return velocity;
+        }
         ///<summary>
         ///用于手持射弹的使用判定
         ///</summary>

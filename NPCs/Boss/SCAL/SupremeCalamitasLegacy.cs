@@ -218,7 +218,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public const float SoulSeekerPhase = 6f;
         public const float FinalBulletHellPhase = 7f; 
         public const float SummonSepulcherPhase = 8f;
-        public const float DesPhase = 9f;
+        public const float DesPhase = 12f;
 
         #endregion
         #endregion
@@ -479,7 +479,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 SendBattleText(10);
                 attackTimer = 0;
-                attackType = (int)LegacySCalAttackType.SummonSepulcher;
                 currentPhase++;
                 NPC.netUpdate = true;
             }
@@ -488,7 +487,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 SendBattleText(11);
                 attackTimer = 0;
-                attackType = (int)LegacySCalAttackType.SummonSepulcher;
                 currentPhase++;
                 NPC.netUpdate = true;
             }
@@ -497,7 +495,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 SendBattleText(12);
                 attackTimer = 0;
-                attackType = (int)LegacySCalAttackType.SummonSepulcher;
                 currentPhase++;
                 NPC.netUpdate = true;
             }
@@ -1192,12 +1189,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, ModContent.NPCType<SupremeCataclysmLegacy>());
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, ModContent.NPCType<SupremeCatastropheLegacy>());
-                SendBattleText(4);
             }
 
             // 防止一出来就选择了
             if (!isBrotherAlive && attacktimer > 5)
+            {
+                SendBattleText(4);
                 SelectNextAttack();
+            }
         }
         #endregion
         #region 召唤探魂眼
@@ -1297,7 +1296,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     }
                 }
             }
-            if(attacktimer == 600)
+            if(attacktimer == 450)
                 SendBattleText(14);
 
             NPC.noGravity = false;
@@ -1358,26 +1357,26 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 if(CIDownedBossSystem.DownedLegacyScal)
                 {
                     if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount >= 4)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalMoreThan4", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalMoreThan4", Color.OrangeRed);
                     else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount == 1)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalOnce", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalOnce", Color.OrangeRed);
                 }
                 else
                 {
                     if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount == 50)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan50", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan50", Color.OrangeRed);
                     else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 19)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.OrangeRed);
                     else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 4)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.OrangeRed);
                     else
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalStart", Color.DarkRed);
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalStart", Color.OrangeRed);
                 }
             
         }
         public void SendBattleText(int ID)
         {
-            CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalEnterPhase" + ID, Color.DarkRed);
+            CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalEnterPhase" + ID, Color.OrangeRed);
         }
         #endregion
         #region 生成场地

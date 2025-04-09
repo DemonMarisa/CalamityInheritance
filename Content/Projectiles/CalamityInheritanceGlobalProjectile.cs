@@ -41,7 +41,9 @@ namespace CalamityInheritance.Content.Projectiles
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
-                if (projectile.DamageType == DamageClass.Ranged && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x) && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 100f)
+                if (projectile.DamageType == DamageClass.Ranged
+                    && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
+                    && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 125f)
                     ElemQuiver(projectile);
             }
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
@@ -167,9 +169,6 @@ namespace CalamityInheritance.Content.Projectiles
         //哈哈，已经变成史山了
         public static void ElemQuiver(Projectile projectile)
         {
-            //特判：ban掉ai[2] == 1f的水晶箭矢
-            if (projectile.type == ModContent.ProjectileType<ExoCrystalArrow>() && projectile.ai[2] == 1f)
-                return;
 
             //特判: ban掉分裂的弹幕
             if (projectile.CalamityInheritance().PingsAsSplit)

@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             var usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-                damage.Base = 330;
+                damage.Base = 1300;
         }
 
         public override bool CanUseItem(Item item, Player player)

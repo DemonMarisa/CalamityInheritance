@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void SetDefaults()
         {
-            Item.damage = 280;
+            Item.damage = 1222;
             Item.knockBack = 6f;
             Item.useAnimation = Item.useTime = 19;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
@@ -47,8 +47,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
-        public override float StealthDamageMultiplier => 0.6f;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

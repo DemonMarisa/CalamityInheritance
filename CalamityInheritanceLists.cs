@@ -48,7 +48,6 @@ namespace CalamityInheritance
                     ProjectileType<MagnomalyAura>(),
                     ProjectileType<RainbowTrail>(),
                     ProjectileType<ExoLight>(),
-                    ProjectileType<UltimaBowProjectile>(),
                     ProjectileType<UltimaSpark>(), // Because of potential dust lag.
                     ProjectileType<UltimaRay>(),
                     ProjectileType<ExoTornado>(),
@@ -56,7 +55,6 @@ namespace CalamityInheritance
                     ProjectileType<ExoGunBlastsplit>(),
                     ProjectileType<ExoGunBlast>(),
                     ProjectileType<ExoLightold>(),
-                    ProjectileType<ExoSpearBack>(),
                     //这东西怎么能是>100像素的弓呢？
                     ProjectileType<HeavenlyGaleProj>(),
                     //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表

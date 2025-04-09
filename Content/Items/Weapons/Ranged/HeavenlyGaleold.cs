@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            Item.damage = 198;
+            Item.damage = 300;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 46;
             Item.height = 98;
@@ -67,19 +67,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.Calamity().canFirePointBlankShots = true;
         }
-        public override bool CanUseItem(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            CalamityInheritancePlayer usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                Item.damage = 294;
-            }
-            else
-            {
-                Item.damage = 208;
-            }
-            return base.CanUseItem(player);
+            //刚出的版本
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+                damage.Base = 608;
+            base.ModifyWeaponDamage(player, ref damage);
         }
+
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

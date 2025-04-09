@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             var usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                damage.Base = 10000;
+                damage.Base = 22000;
             }
         }
     }

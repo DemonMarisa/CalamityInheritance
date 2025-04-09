@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void SetDefaults()
         {
-            Item.damage = 1560;
+            Item.damage = 4500;
             Item.width = 92;
             Item.height = 100;
             Item.useTime = 60;
