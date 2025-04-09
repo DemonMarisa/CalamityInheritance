@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = 10;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 12;
+            Projectile.localNPCHitCooldown = 15;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 600;
             AIType = ProjectileID.UnholyTridentFriendly;
@@ -35,21 +35,15 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.2f / 255f, (255 - Projectile.alpha) * 0.01f / 255f, (255 - Projectile.alpha) * 0.2f / 255f);
             if (Projectile.localAI[1] > 7f)
             {
-                int num307 = Main.rand.Next(3);
-                if (num307 == 0)
+                int dType = Main.rand.Next(3);
+                dType = dType switch
                 {
-                    num307 = 14;
-                }
-                else if (num307 == 1)
-                {
-                    num307 = 27;
-                }
-                else
-                {
-                    num307 = 173;
-                }
-                int num308 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, num307, 0f, 0f, 100, default, 1.25f);
-                Main.dust[num308].velocity *= 0.1f;
+                    0 => 14,
+                    1 => 27,
+                    _ => 173,
+                };
+                int d = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, dType, 0f, 0f, 100, default, 1.25f);
+                Main.dust[d].velocity *= 0.1f;
             }
         }
 
@@ -61,18 +55,18 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            int tentacleNum = 5;
+            int tCounts = 5;
             SoundEngine.PlaySound(SoundID.Item103, target.Center);
-            for (int i = 0; i < tentacleNum; i++)
+            for (int i = 0; i < tCounts; i++)
             {
-                float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
-                Vector2 tentacleVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+                float rAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+                Vector2 tacleVel = new Vector2((float)Math.Cos(rAngle), (float)Math.Sin(rAngle));
 
-                Vector2 tentacleRandVelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
-                tentacleRandVelocity.Normalize();
-                tentacleVelocity = tentacleVelocity * 4f + tentacleRandVelocity;
-                tentacleVelocity.Normalize();
-                tentacleVelocity *= 5f;
+                Vector2 tacleVelRand = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                tacleVelRand.Normalize();
+                tacleVel = tacleVel * 4f + tacleVelRand;
+                tacleVel.Normalize();
+                tacleVel *= 5f;
 
                 float tentacleYDirection = Main.rand.Next(10, 80) * 0.001f;
                 if (Main.rand.NextBool())
@@ -85,7 +79,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     tentacleXDirection *= -1f;
                 }
 
-                int newProjectileId1 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tentacleVelocity, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tacleVel, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+                Main.projectile[p].usesIDStaticNPCImmunity = true;
+                Main.projectile[p].idStaticNPCHitCooldown = 10;
             }
         }
 

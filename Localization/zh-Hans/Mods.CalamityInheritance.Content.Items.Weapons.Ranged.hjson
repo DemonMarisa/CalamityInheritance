@@ -430,3 +430,15 @@ PlanteraLegendary: {
 	TierTwoTint: "[c/818589:在丛林食用黄金菜肴]"
 	TierThreeTint: "[c/818589:携带元素箭袋，在丛林范围内召唤一只丛林龙]"
 }
+
+HeavenlyGaleChange:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:现在会试图发射更多的星流水晶箭矢]
+	[c/0080CA:极大地提高星流闪电的打击速度]
+	'''
+PhotovisceratorChange:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:右键攻击的射弹在飞行过程中会滞留追踪的星流碎片]
+	'''

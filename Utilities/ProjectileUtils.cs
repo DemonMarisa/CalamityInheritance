@@ -164,53 +164,6 @@ namespace CalamityInheritance.Utilities
             return velocity;
         }
         
-
-        /// <summary>
-        /// 用于使射弹在任意起始位置发射至任意目标位置, 经典例子就是天降射弹
-        /// </summary>
-        /// <param name="src">发射源</param>
-        /// <param name="whoAmI">射弹的归属者</param>
-        /// <param name="pType">射弹类型</param>
-        /// <param name="pSpeed">射弹速度</param>
-        /// <param name="pDamage">射弹伤害</param>
-        /// <param name="srcX">射弹起始x坐标</param>
-        /// <param name="srcY">射弹起始y坐标</param>
-        /// <param name="tarX">目标x坐标</param>
-        /// <param name="tarY">目标y坐标</param>
-        /// <param name="xVelocityOffset">默认取0f，距离向量的水平偏移</param>
-        /// <param name="yVelocityOffset">默认取0f，距离向量的垂直偏移</param>
-        /// <param name="pKB">默认取5f，击退力量</param>
-        /// <param name="ai0">默认取0f，ai0</param>
-        /// <param name="ai1">默认取0f，ai1</param>
-        /// <param name="ai2">默认取0f，ai2</param>
-        public static void RainDownProj(ref EntitySource_ItemUse_WithAmmo src, ref int whoAmI, int pType, float pSpeed, int pDamage,
-                                        float srcX, float srcY, float tarX, float tarY,
-                                        float? xVelocityOffset = 0f, float? yVelocityOffset = 0f,
-                                        float? pKB = 5f, float? ai0 = 0f, float? ai1 = 0f, float? ai2 = 0f)
-        {
-            //目标坐标
-            Vector2 tarPos = new (tarX, tarY);            
-            //起始坐标
-            Vector2 srcPos = new (srcX, srcY);
-            //目标坐标与起始坐标的距离向量
-            Vector2 srcTar = tarPos - srcPos;
-            //距离向量一个随机度
-            if (xVelocityOffset.HasValue)
-                srcTar.X += xVelocityOffset.Value;
-            if (yVelocityOffset.HasValue)
-                srcTar.Y += yVelocityOffset.Value;
-            //取向量模
-            float srcTarDist = srcTar.Length();
-            //修正距离向量为实际射弹的速度向量
-            //这里相当于是 速度/距离 得到时间的倒数 (1/T)
-            srcTarDist = pSpeed / srcTarDist;
-            //时间的倒数分别与距离向量的水平距离和垂直距离相乘即可将其修正为速度向量
-            srcTar.X *= srcTarDist;
-            srcTar.Y *= srcTarDist;
-            //发射射弹
-            Projectile.NewProjectile(src, srcPos, srcTar, pType, pDamage, pKB.Value, whoAmI, ai0.Value, ai1.Value, ai2.Value);
-
-        }
         ///<summary>
         ///用于手持射弹的使用判定
         ///</summary>
@@ -222,6 +175,46 @@ namespace CalamityInheritance.Utilities
             }
 
             return true;
+        }
+        /// <summary>
+        /// 用于搜索距离玩家最近的npc单位，并返回NPC实例
+        /// </summary>
+        /// <param name="p">玩家</param>
+        /// <param name="maxDist">最大搜索距离</param>
+        /// <param name="bossFirst">boss优先度，这个还没实现好逻辑，所以填啥都没用（</param>
+        /// <returns>返回一个NPC实例</returns>
+        public static NPC FindClosestTarget(Projectile p, float maxDist, bool bossFirst = false)
+        {
+            //bro我真的要遍历整个NPC吗？
+            float distStoraged = 32000f;
+            bool getTar = false;      
+            if (!getTar)
+            {
+                foreach (NPC npc in Main.ActiveNPCs)
+                {
+                    float exDist = npc.width + npc.height;
+                    //单位不可被追踪 或者 超出索敌距离则continue
+                    if (!npc.CanBeChasedBy(p.Center, false) || !p.WithinRange(npc.Center, maxDist + exDist))
+                        continue;
+                    
+                    //如果优先搜索boss单位，且当前敌怪不是一个boss，直接跳过
+                    // if (bossFirst && !npc.boss)
+                    //     continue;
+                    
+                    //否则搜索符合条件的敌人, 返回这个NPC实例
+                    float curNpcDist = Vector2.Distance(npc.Center, p.Center);
+                    if (curNpcDist < distStoraged && Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1))
+                    {
+                        //优先返回Boss实例
+                        if (npc.boss && bossFirst)
+                            return npc;
+                        else
+                            return npc;
+                    }
+                }
+            }
+            //其余情况下返回空实例
+            return null;      
         }
     }
 }

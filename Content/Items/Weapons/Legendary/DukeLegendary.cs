@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
-                damage = player.CIMod().DukeTier2? (int)(damage * 0.9) : (int)(damage * 0.6);
+                damage = player.CIMod().DukeTier1? (int)(damage * 0.9) : (int)(damage * 0.6);
                 type = ModContent.ProjectileType<DukeLegendaryRazor>();
             }
 

@@ -30,6 +30,8 @@ namespace CalamityInheritance.CIPlayer
         // 通用开火冷却
         public int fireCD = 0;
         public int GlobalSoundDelay = 0;
+        //通用计时器
+        public int GlobalFireDelay = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -61,6 +63,8 @@ namespace CalamityInheritance.CIPlayer
                 AeroFlightPower--;
             if (GlobalSoundDelay > 0)
                 GlobalSoundDelay --;
+            if (GlobalFireDelay > 0)
+                GlobalFireDelay--;
             return;
         }
     }

@@ -1,20 +1,10 @@
 ﻿using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -60,7 +50,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 projectile.frame = 0;
             }
 
-            //Rotation
             projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
             projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * projectile.direction;
 

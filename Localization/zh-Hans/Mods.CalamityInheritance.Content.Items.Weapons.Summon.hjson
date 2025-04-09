@@ -83,3 +83,9 @@ CyrogenLegendary: {
 	TierTwoTint: "[c/818589:雪原地表饮用一瓶温暖药水]"
 	TierThreeTint: "[c/818589:于雪原地表召唤亵渎天神]"
 }
+
+SaveCosmic:
+	'''
+	[c/0080CA:星流巨械传颂之物已启用：]
+	[c/0080CA:不再消耗召唤栏]
+	'''

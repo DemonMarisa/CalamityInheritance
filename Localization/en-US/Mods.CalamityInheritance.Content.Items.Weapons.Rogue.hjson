@@ -224,3 +224,6 @@ EclipseSpear: {
 	Tooltip: ""
 	DisplayName: Eclipse Spear
 }
+
+SupernovaChange: ""
+CelestusChange: ""

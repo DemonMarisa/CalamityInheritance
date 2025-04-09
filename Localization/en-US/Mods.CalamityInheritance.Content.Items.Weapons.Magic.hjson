@@ -267,3 +267,6 @@ DestroyerLegendary: {
 	TierThreeTint: "333"
 	LegendaryScaling: Buff
 }
+
+SubsumingVortexChange: ""
+VividChange: ""
