@@ -55,10 +55,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
-                Recipe recipe = CreateRecipe();
-                recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 14);
-                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-                recipe.Register();
+                CreateRecipe()
+                    .AddIngredient<CosmiliteBar>(14)
+                    .AddTile<CosmicAnvil>()
+                    .Register();
         }
     }
 }

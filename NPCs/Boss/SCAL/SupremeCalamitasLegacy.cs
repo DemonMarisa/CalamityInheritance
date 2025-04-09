@@ -95,23 +95,27 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         // 是否可以死亡
         public bool canDead = false;
         #region 音效
-        // 音效
-        public static readonly SoundStyle SpawnSound = new("CalamityMod/Sounds/Custom/SupremeCalamitasSpawn") { Volume = 1.2f };
-        public static readonly SoundStyle SepulcherSummonSound = new("CalamityMod/Sounds/Custom/SCalSounds/SepulcherSpawn");
-        public static readonly SoundStyle BrimstoneShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneShoot");
-        public static readonly SoundStyle BrimstoneFireShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneFireblastImpact");
+        //音效路径
+        public static string CISoundPath => "CalamityInheritance/Sounds/Scal";
+        public static string CalSoundPath => "CalamityMod/Sounds/Custom";
+        public static string CalScalSoundPath => $"{CalSoundPath}/SCalSounds";
+        //实际音效
+        public static readonly SoundStyle SpawnSound                = new($"{CalSoundPath}/SupremeCalamitasSpawn") { Volume = 1.2f };
+        public static readonly SoundStyle SepulcherSummonSound      = new($"{CalScalSoundPath}/SepulcherSpawn");
+        public static readonly SoundStyle BrimstoneShotSound        = new($"{CalScalSoundPath}/BrimstoneShoot");
+        public static readonly SoundStyle BrimstoneFireShotSound    = new($"{CalScalSoundPath}/BrimstoneFireblastImpact");
 
-        public static readonly SoundStyle CatastropheSwing = new("CalamityMod/Sounds/Custom/SCalSounds/CatastropheResonanceSlash1");
-        public static readonly SoundStyle BrimstoneBigShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneBigShoot"); // DON'T YOU WANNA BE A [BIG SHOT]
-        public static readonly SoundStyle DashSound = new("CalamityMod/Sounds/Custom/SCalSounds/SCalDash");
-        public static readonly SoundStyle HellblastSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneHellblastSound");
-        public static readonly SoundStyle BulletHellSound = new("CalamityMod/Sounds/Custom/SCalSounds/SCalRumble");
-        public static readonly SoundStyle BulletHellEndSound = new("CalamityMod/Sounds/Custom/SCalSounds/SCalEndBH");
-        public static readonly SoundStyle GiveUpSound = new("CalamityMod/Sounds/Custom/SCalSounds/SupremeCalamitasGiveUp");
-        public static readonly SoundStyle BrimstoneMonsterSpawn = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneMonsterSpawn");
+        public static readonly SoundStyle CatastropheSwing          = new($"{CalScalSoundPath}/CatastropheResonanceSlash1");
+        public static readonly SoundStyle BrimstoneBigShotSound     = new($"{CalScalSoundPath}/BrimstoneBigShoot"); // DON'T YOU WANNA BE A [BIG SHOT]
+        public static readonly SoundStyle DashSound                 = new($"{CalScalSoundPath}/SCalDash");
+        public static readonly SoundStyle HellblastSound            = new($"{CalScalSoundPath}/BrimstoneHellblastSound");
+        public static readonly SoundStyle BulletHellSound           = new($"{CalScalSoundPath}/SCalRumble");
+        public static readonly SoundStyle BulletHellEndSound        = new($"{CalScalSoundPath}/SCalEndBH");
+        public static readonly SoundStyle GiveUpSound               = new($"{CalScalSoundPath}/SupremeCalamitasGiveUp");
+        public static readonly SoundStyle BrimstoneMonsterSpawn     = new($"{CalScalSoundPath}/BrimstoneMonsterSpawn");
 
-        public static readonly SoundStyle ScalTra1 = new("CalamityInheritance/Sounds/Scal/SCalTra");
-        public static readonly SoundStyle ScalTra2 = new("CalamityInheritance/Sounds/Scal/SCalTra2");
+        public static readonly SoundStyle ScalTra1 = new($"{CISoundPath}/SCalTra");
+        public static readonly SoundStyle ScalTra2 = new($"{CISoundPath}/SCalTra2");
         #endregion
         #region 杂项初始化
         // 攻击类型枚举
@@ -256,6 +260,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
+            //补一个其取消无视凳子和失温虹吸的效果
+            //梯凳驾到不免疫是理所当然，失温虹吸是因为召唤师寒冰神性真的过弱
+            //但是会给失温虹吸一个特判
+            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
 
             NPC.knockBackResist = 0f;
             NPC.dontTakeDamage = false;

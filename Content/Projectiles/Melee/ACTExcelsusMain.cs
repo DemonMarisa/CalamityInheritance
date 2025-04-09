@@ -1,10 +1,16 @@
 ﻿using System;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Melee;
+using Microsoft.Build.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,11 +24,30 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public int Timer = 0;
         //发起追踪的Timer
         public int TimerAlt = 0;
-        public const int IdleTimer = 30;
-        //非追踪状态下的旋转
-        public const float NonHomingRotation = 0.45f;
-        
+        public int AnotherTimer = 0;
+        //发起追踪的射弹是否已经进行过追踪。
+        public bool CheckIfHit = false;
+        public int HomeOnHitCounts = 0;
         #endregion
+        #region 攻击打表
+        //追踪射弹击中敌怪后的回击
+        const float IsOnHitHoming = 1f;
+        //追踪逻辑
+        const float IsHoming = 2f;
+        //普通逻辑
+        const float IsFlying = 3f;
+        //指向鼠标的逻辑
+        const float IsPointMouse = 4f;
+        const short AttackType = 0;
+        #endregion
+        /*如果真的需要看得懂这史山的话找这下面这个攻击顺序去理解
+        攻击顺序:
+        1.正常飞行
+        2.发起第一次追踪
+        3.旋转，而后回击一次
+        4.回击一次后，再次旋转，回击一次
+        5.消失
+        */
         public override void SetDefaults()
         {
             Projectile.width = 34;
@@ -30,32 +55,142 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
             Projectile.alpha = 100;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 30;
         }
-
+        public override bool? CanDamage()
+        {
+            //射弹刚发射出来，没有开始追踪的时候
+            bool canHoming = Timer < ACTExcelsus.HomingTimer;
+            //射弹已经开始发起第一次追踪，且完成了转角修正后 
+            bool canIdling = TimerAlt > ACTExcelsus.IdleTimer;
+            //射弹击中后再次发起追踪，且完成了转角修正后
+            bool canOnHitHoming = AnotherTimer > ACTExcelsus.IdleTimer * 2;
+            //符合上述情况的都会允许造成伤害
+            return canHoming || canIdling || canOnHitHoming; 
+        }
+        //这一串代码写的有点史山
         public override void AI()
         {
-            Timer++;
+            //Projectile.ai[AttackType] <=> Projectile.ai[0] 仅仅用于标记射弹的AI逻辑
+            //timer是外置的
+            
+            //这个用于第五下逻辑，在所有AI代码之前优先判定
+            if (HomeOnHitCounts == 3)
+                DoFading();
+            //搜寻实例，这个过程在AttackType == IsFading时撤销
+            NPC tar = CIFunction.FindClosestTarget(Projectile, ACTExcelsus.MaxSearchDist, true);
             if (Timer > ACTExcelsus.HomingTimer)
-                DoHoming();
-            else
-                DoFlying();
+            {
+                //这个东西如果已经在执行IsOnHitHoming的操作，撤销其搜寻
+                if (tar != null && Projectile.ai[AttackType] != IsOnHitHoming && HomeOnHitCounts != 3)
+                {
+                    Projectile.ai[AttackType] = CheckIfHit ? IsOnHitHoming : IsHoming;
+                    Projectile.netUpdate = true;
+                }
+                //理由同上，我们需要确保其一定执行IsOnHitHoming
+                else if (!CheckIfHit)
+                {
+                    Projectile.ai[AttackType] = IsPointMouse;
+                    Projectile.netUpdate = true;
+                }
+            }
+            else Projectile.ai[AttackType] = IsFlying;
+            //AI查询
+            if (Projectile.owner == Main.myPlayer)
+            switch (Projectile.ai[AttackType])
+            {
+                case IsFlying:
+                    DoFlying();
+                    break;
+                case IsHoming:
+                    DoHoming(tar);
+                    break;
+                case IsPointMouse:
+                    DoPointMouse();
+                    break;
+                case IsOnHitHoming:
+                    DoOnHitHoming(tar);
+                    break;
+                default:
+                    break;
+            }
 
             //保留特效
             if (Main.rand.NextBool(8))
-            {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BlueFairy, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
-            }
             if (Main.rand.NextBool(8))
-            {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, Main.rand.NextBool(3) ? 56 : 242, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+        }
+        //追踪射弹击中敌怪后的回击
+        private void DoOnHitHoming(NPC tar)
+        {
+            //占位符
+            
+            Projectile.velocity *= 0.95f;
+            AnotherTimer++;
+            if (AnotherTimer < ACTExcelsus.IdleTimer * 2 && AnotherTimer > ACTExcelsus.IdleTimer)
+            {
+                //发起追踪前时候才会改变转角
+                DoAngleToTarget(tar.Center); 
             }
+            if (AnotherTimer > ACTExcelsus.IdleTimer * 2)
+                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+            //正式发起追踪前这个Timer得……变一下。
+            else Projectile.timeLeft = 85;
+
         }
 
+        private void DoAngleToTarget(Vector2 tar)
+        {
+            float rot = Projectile.AngleTo(tar) + MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
+        }
+        //没有搜索到目标的时候，指向鼠标
+        private void DoPointMouse()
+        {
+            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
+            Projectile.velocity *= 0.9f;
+        }
+
+        //发起追踪前正常飞行
+        public void DoFlying()
+        {
+            Timer++;
+            //飞行过程中射弹会一直保持高速旋转, 除此之外就……就不干什么了。
+            Projectile.rotation += ACTExcelsus.NonHomingRotation;
+        }
+        public void DoFading()
+        {
+            if (Projectile.timeLeft > ACTExcelsus.SideFadeInTime)
+                Projectile.timeLeft = ACTExcelsus.SideFadeInTime;
+            Projectile.alpha += (int)Utils.GetLerpValue(0, 255, 15);
+            Projectile.velocity *= 0.95f;
+        }
+        //追踪逻辑
+        public void DoHoming(NPC tar)
+        {
+            //首先搜索附近的NPC实例, 需注意的是，AI执行的这段时间内也会一直检索目标。
+            Player p = Main.player[Projectile.owner];
+            float spiningDir = ACTExcelsus.LerpAngle;
+            Vector2 targetPos = tar.Center;
+            //原地减速，指向这个敌怪
+            float rot = Projectile.AngleTo(targetPos) + MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, spiningDir);
+            Projectile.velocity *= 0.9f;
+            //而后在一段时间后发起追踪
+            TimerAlt++;
+            if (TimerAlt > ACTExcelsus.IdleTimer)
+            {
+                //给多2个额外更新
+                Projectile.extraUpdates += 2;
+                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+            }
+        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.tileCollide = false;
@@ -64,45 +199,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Projectile.timeLeft = 85;
             }
             return false;
-        }
-        public void DoFlying()
-        {
-            //飞行过程中射弹会一直保持高速旋转, 除此之外就……就不干什么了。
-            Projectile.rotation += ACTExcelsus.NonHomingRotation;
-        }
-        //追踪逻辑
-        public void DoHoming()
-        {
-            //首先搜索附近的NPC实例
-            NPC tar = CIFunction.FindClosestTarget(Projectile, 3200f, true);
-            //需注意的是，AI执行的这段时间内也会一直检索目标。
-            //如果实例存在，将刀片指向这个实例
-            if (tar != null)
-            {
-                //刷新射弹生命与判定次数
-                Projectile.timeLeft = 300;
-                Projectile.penetrate = 1;
-                Vector2 targetPos = tar.Center;
-                //原地减速，指向这个敌怪
-                float rot = Projectile.AngleTo(targetPos) + MathHelper.PiOver4;
-                Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
-                Projectile.velocity *= 0.9f;
-                //而后在一段时间后发起追踪
-                TimerAlt ++;
-                if (TimerAlt > ACTExcelsus.IdleTimer)
-                {
-                    //给多一个额外更新
-                    Projectile.extraUpdates += 1;
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, ACTExcelsus.HomingSpeed, 20f);
-                }
-            }
-            //自定义：其余状态下单独让这个刀片指向指针, 并且在原地进行待机。
-            else
-            {
-                float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
-                Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
-                Projectile.velocity *= 0.9f;
-            }
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -141,11 +237,60 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.timeLeft > 85)
-            {
-                Projectile.timeLeft = 85;
-            }
+            SoundEngine.PlaySound(CISoundID.SoundLaser, Projectile.position);
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            if (Projectile.ai[AttackType] == IsHoming && !CheckIfHit)
+            {
+                //使AI类型转化为另外一种
+                Projectile.ai[AttackType] = IsOnHitHoming;
+                Projectile.netUpdate = true;
+                TimerAlt = 0;
+                CheckIfHit = true;
+            }
+            if (Projectile.ai[AttackType] == IsOnHitHoming && HomeOnHitCounts < 3)
+            {
+                //该项攻击模式的攻击次数+1
+                HomeOnHitCounts += 1;
+                AnotherTimer = 0;
+            }
+            //第二次攻击判定后刷新其射弹属性为一次
+            if (HomeOnHitCounts == 2)
+            {
+                Projectile.penetrate = -1;
+                Projectile.localNPCHitCooldown= -1;
+            }
+            if (HomeOnHitCounts == 3)
+            {
+                //直接脱锁
+                Projectile.ai[AttackType] = -1f;
+            }
+            //火花, 从湮灭那抄过来的
+            Vector2 particleSpawnDisplacement;
+            Vector2 splatterDirection;
+
+            particleSpawnDisplacement = new Vector2(2f * -Projectile.ai[2], 2f * -Projectile.ai[2]);
+            splatterDirection = new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
+
+            Vector2 SparkSpawnPosition = target.Center + particleSpawnDisplacement;
+
+            if (Projectile.ai[1] % 4 == 0)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    int sparkLifetime = Main.rand.Next(14, 21);
+                    float sparkScale = Main.rand.NextFloat(0.8f, 1f) + 1f * 0.05f;
+                    Color sparkColor = Color.Lerp(Color.Fuchsia, Color.AliceBlue, Main.rand.NextFloat(0.5f));
+                    sparkColor = Color.Lerp(sparkColor, Color.Cyan, Main.rand.NextFloat());
+
+                    if (Main.rand.NextBool(5))
+                        sparkScale *= 1.4f;
+
+                    Vector2 sparkVelocity = splatterDirection.RotatedByRandom(MathHelper.TwoPi);
+                    sparkVelocity.Y -= 6f;
+                    SparkParticle spark = new SparkParticle(SparkSpawnPosition, sparkVelocity, true, sparkLifetime, sparkScale, sparkColor);
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
+            }
         }
     }
 }

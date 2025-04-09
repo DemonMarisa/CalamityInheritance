@@ -1,4 +1,5 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -26,25 +27,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Magic;
+            Projectile.timeLeft = 600;
         }
 
         public override void AI()
         {
             Projectile.alpha -= 3;
-            if (Projectile.alpha <= 0)
-            {
-                Projectile.Kill();
-            }
-            Projectile.frameCounter++;
-            if (Projectile.frameCounter > 4)
-            {
-                Projectile.frame++;
-                Projectile.frameCounter = 0;
-            }
-            if (Projectile.frame > 3)
-            {
-                Projectile.frame = 0;
-            }
+            Projectile.frame = CIFunction.FramesChanger(Projectile, 4, 3);
             Lighting.AddLight(Projectile.Center, 0.5f, 0.5f, 0f);
         }
 
@@ -59,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int i = 0; i < 20; i++)
             {
-                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 246, 0f, 0f, 100, default, 2f);
+                int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
                 Main.dust[d].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -69,10 +58,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             }
             for (int j = 0; j < 35; j++)
             {
-                int dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 247, 0f, 0f, 100, default, 3f);
+                int dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.PlatinumCoin, 0f, 0f, 100, default, 3f);
                 Main.dust[dAlt].noGravity = true;
                 Main.dust[dAlt].velocity *= 5f;
-                dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 246, 0f, 0f, 100, default, 2f);
+                dAlt = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
                 Main.dust[dAlt].velocity *= 2f;
             }
         }

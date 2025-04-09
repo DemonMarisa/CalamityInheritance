@@ -8,8 +8,8 @@ using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
 using Terraria;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -38,99 +38,90 @@ namespace CalamityInheritance.Content.Items
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)
             {
-                #region 魔君的馈赠
+                //魔君礼
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGift>()] = ModContent.ItemType<YharimsGiftLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<YharimsGiftLegacy>()] = ModContent.ItemType<YharimsGift>();
-                #endregion
 
-                #region 元素的心脏
+                //元灵之心
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HeartoftheElements>()] = ModContent.ItemType<WaifuHeart>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<WaifuHeart>()] = ModContent.ItemType<HeartoftheElements>();
-                #endregion
 
-                #region 虚空终结者
+                //终结虚空
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidofExtinction>()] = ModContent.ItemType<VoidofExtinctionLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidofExtinctionLegacy>()] = ModContent.ItemType<VoidofExtinction>();
-                #endregion
 
-                #region 天蓝之礼
+                //天蓝石
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AeroStone>()] = ModContent.ItemType<AeroStoneLegacy>();
                 if(CalamityConditions.DownedDesertScourge.IsMet() && Main.hardMode) //干掉肉山后这俩就可以互转了
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AeroStoneLegacy>()] = ModContent.ItemType<AeroStone>();
-                #endregion
+                    ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AeroStoneLegacy>()] = ModContent.ItemType<AeroStone>();
 
-                #region 顶级猎杀者的遗物
+                //猎魂鲨项链->远古猎魂鲨项链
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ReaperToothNecklace>()] = ModContent.ItemType<AncientReaperToothNecklace>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AncientReaperToothNecklace>()] = ModContent.ItemType<ReaperToothNecklace>();
-                #endregion
 
-                #region 精湛无比的科技造物
+                //嘉登之心
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DraedonsHeart>()] = ModContent.ItemType<DraedonsHeartLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DraedonsHeartLegacy>()] = ModContent.ItemType<DraedonsHeart>();
-                #endregion
 
-                #region 绚烂之彩虹胶质物
+                //大宁凝胶
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatin>()] = ModContent.ItemType<GrandGelatinLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GrandGelatinLegacy>()] = ModContent.ItemType<GrandGelatin>();
-                #endregion
 
-                #region 深海香水
+                //利维坦龙涎香
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<LeviathanAmbergris>()] = ModContent.ItemType<LeviathanAmbergrisLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<LeviathanAmbergrisLegacy>()] = ModContent.ItemType<LeviathanAmbergris>();
-                #endregion
 
-                #region 血腥的契约
+                //血契
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodPact>()] = ModContent.ItemType<BloodPactLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodPactLegacy>()] = ModContent.ItemType<BloodPact>();
-                #endregion
-                #region 血炎晶核
+
+                //血炎晶核
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCore>()] = ModContent.ItemType<BloodflareCoreLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BloodflareCoreLegacy>()] = ModContent.ItemType<BloodflareCore>();
-                #endregion
 
-                #region 来自灾厄构造体的遗物
+                //普灾喷火器
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HavocsBreathLegacy>()] = ModContent.ItemType<HavocsBreath>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<HavocsBreath>()] = ModContent.ItemType<HavocsBreathLegacy>();
-                #endregion
 
-                #region 腐烂之脑的增生种
+                //腐巢喷火器
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ShadethrowerLegacy>()] = ModContent.ItemType<Shadethrower>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Shadethrower>()] = ModContent.ItemType<ShadethrowerLegacy>();
-                #endregion
 
-                #region 喵
+                //🐱
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeowthrowerLegacy>()] = ModContent.ItemType<Meowthrower>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Meowthrower>()] = ModContent.ItemType<MeowthrowerLegacy>();
-                #endregion
 
-                #region 纯纯的怒火
+                //纯元
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PristineFuryLegacy>()] = ModContent.ItemType<PristineFury>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PristineFury>()] = ModContent.ItemType<PristineFuryLegacy>();
-                #endregion
 
-                #region 来自星星的喷火器
+                //我记得好像是那个能画五角星的喷火器
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AuroraBlazerLegacy>()] = ModContent.ItemType<AuroraBlazer>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AuroraBlazer>()] = ModContent.ItemType<AuroraBlazerLegacy>();
-                #endregion
 
-                #region 瘟疫,与疫病
+                //瘟疫喷火器
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BlightSpewer>()] = ModContent.ItemType<BlightSpewerLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<BlightSpewerLegacy>()] = ModContent.ItemType<BlightSpewer>();
-                #endregion
 
-                #region 过载充凝 
+                //史莱姆神的过载凝胶
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<OverloadedBlaster>()] = ModContent.ItemType<OverloadedBlasterLegacy>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<OverloadedBlasterLegacy>()] = ModContent.ItemType<OverloadedBlaster>();
-                #endregion
 
-                #region 星辉馈赠的鱼
+                //鹦哥鱼
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PolarisParrotfishLegacy>()] = ModContent.ItemType<PolarisParrotfish>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PolarisParrotfish>()] = ModContent.ItemType<PolarisParrotfishLegacy>();
-                #endregion
-                #region 安宁.
+
+                //阿塔西亚
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Ataraxia>()] = ModContent.ItemType<AtaraxiaOld>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<AtaraxiaOld>()] = ModContent.ItemType<Ataraxia>();
-                #endregion
+
+                //湮灭
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Eradicator>()] = ModContent.ItemType<MeleeTypeEradicator>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeEradicator>()] = ModContent.ItemType<Eradicator>();
+
+                //锤子系列
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>()] = ModContent.ItemType<FallenPaladinsHammer>();
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>();
                 
             
             }

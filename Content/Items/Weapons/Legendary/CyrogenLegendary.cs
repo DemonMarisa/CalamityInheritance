@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
@@ -53,6 +54,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.ColdDivityTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             int boostPercent = (int)(getDmg * 100);
@@ -60,11 +65,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
-
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+        }
         private float LegendaryDamage()
         {
-            float newDamage = 0f;
+            float newDamage = 1f;
             newDamage += DownedBossSystem.downedRavager ? 0.2f : 0f;
             newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.2f : 0f;
             newDamage += Condition.DownedDukeFishron.IsMet() ? 0.2f : 0f;
@@ -76,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
             newDamage += DownedBossSystem.downedYharon ? 1.0f : 0f;
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
-            return 1f + newDamage;
+            return newDamage;
         }
 
         public override bool AltFunctionUse(Player player)

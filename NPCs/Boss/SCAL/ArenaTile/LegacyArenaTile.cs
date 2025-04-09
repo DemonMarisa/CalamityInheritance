@@ -1,11 +1,4 @@
-﻿using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.Skies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Skies;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;

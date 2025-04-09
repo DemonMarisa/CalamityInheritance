@@ -66,15 +66,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient<LoreGolem>();
-                recipe1.AddTile(TileID.AncientMythrilBrick);
-                recipe1.Register();
+                CreateRecipe()
+                    .AddIngredient<LoreGolem>()
+                    .AddTile(TileID.AncientMythrilBrick)
+                    .Register();
 
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient<KnowledgeGolem>();
-                recipe2.AddTile(TileID.AncientMythrilBrick);
-                recipe2.Register();
+                CreateRecipe()
+                    .AddIngredient<KnowledgeGolem>()
+                    .AddTile(TileID.AncientMythrilBrick)
+                    .Register();
             }
         }
     }

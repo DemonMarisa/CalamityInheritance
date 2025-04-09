@@ -45,11 +45,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Ichor, 15);
-            recipe.AddIngredient(ItemID.HellstoneBar, 10);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.Ichor, 15).
+                AddIngredient(ItemID.HellstoneBar, 10).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

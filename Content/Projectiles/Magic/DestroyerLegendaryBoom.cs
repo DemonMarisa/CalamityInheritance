@@ -1,7 +1,4 @@
 ﻿using System;
-using CalamityInheritance.Utilities;
-using CalamityMod;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic

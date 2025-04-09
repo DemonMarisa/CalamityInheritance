@@ -68,14 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             
             double laserDamageRatio = 0.8D;
             float laserFrames = Projectile.MaxUpdates * 6f;
-            CalamityUtils.MagnetSphereHitscan(Projectile,
-                                                ChasingRange,
-                                                ChasingSpeed,
-                                                laserFrames,
-                                                2,
-                                                ModContent.ProjectileType<NebulaShot>(),
-                                                laserDamageRatio,
-                                                true);
+            CalamityUtils.MagnetSphereHitscan(Projectile, ChasingRange, ChasingSpeed, laserFrames, 2, ModContent.ProjectileType<NebulaShot>(), laserDamageRatio, true);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -122,15 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void PostDraw(Color lightColor)
         {
             Vector2 origin = new Vector2(31f, 29f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MeleeTypeEradicatorGlow").Value,
-                                  Projectile.Center - Main.screenPosition,
-                                  null,
-                                  Color.White,
-                                  Projectile.rotation,
-                                  origin,
-                                  1f,
-                                  SpriteEffects.None,
-                                  0);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MeleeTypeEradicatorGlow").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0);
         }
     }
 }

@@ -11,6 +11,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -49,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= (BaseDamage + LegendaryDamageBuff()) / BaseDamage;
+            damage *= (BaseDamage + LegendaryDamageBuff() + Generic.GenericLegendBuffInt()) / BaseDamage;
             if (player.CIMod().PlanteraTier1)
                 //叶流变成1攻速的时候面板会被下调90%
                 damage *= 0.90f;
@@ -65,12 +67,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.PlanteraTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryDamageBuff();
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override bool CanUseItem(Player player)
         {
@@ -156,6 +164,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             damageBuff += DownedBossSystem.downedDoG            ? 20 : 0;       //80 (105)
             //叶流成长在龙的时期停止
             damageBuff += DownedBossSystem.downedYharon         ? 20 : 0;       //100 (135)
+            //恭喜击败至尊灾厄眼，所以。150?
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 150 : 0;
             return damageBuff;
         }
     }

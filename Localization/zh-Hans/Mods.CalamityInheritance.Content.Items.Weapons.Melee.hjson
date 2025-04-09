@@ -430,7 +430,7 @@ DukeLegendary: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	DisplayName: 龙卷涡漩海皇剑爵[Legendary]
+	DisplayName: 龙卷涡漩海皇爵剑[Legendary]
 	LegendaryScaling: "[c/35FFFF:武器强化]:{0}%"
 	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并加强水刃龙卷的追踪性能"
 	TierTwo: "[c/35FFFF:强化]:水刃龙卷在击中敌怪时将会额外召唤新的水刃龙卷"
@@ -476,6 +476,10 @@ ExoBladeChange:
 	'''
 
 ACTExcelsus: {
-	// DisplayName: A C T Excelsus
-	// Tooltip: ""
+	DisplayName: 孩子们，这根本不是ACT的宙能波纹刀
+	Tooltip:
+		'''
+		不好孩子们，ACT看来回不来了
+		It's been a long day...
+		'''
 }

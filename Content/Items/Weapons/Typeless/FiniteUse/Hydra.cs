@@ -94,13 +94,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Shotgun);
-            recipe.AddIngredient(ItemID.IronBar, 20);
-            recipe.AddIngredient(ItemID.IllegalGunParts);
-            recipe.AddIngredient(ItemID.Ectoplasm, 20);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.Shotgun).
+                AddIngredient(ItemID.IronBar, 20).
+                AddIngredient(ItemID.IllegalGunParts).
+                AddIngredient(ItemID.Ectoplasm, 20).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

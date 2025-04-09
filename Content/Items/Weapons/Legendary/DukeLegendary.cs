@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -71,6 +73,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.DukeTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             int boostPercent = (int)(getDmg * 100);
@@ -78,10 +84,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= 1f + LegendaryDamage();
+            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -127,6 +135,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static float LegendaryDamage()
         {
             float damageBuff = 0f;
+            //+3个boss
+            damageBuff += DownedBossSystem.downedPlaguebringer ? 0.2f : 0f;
+            damageBuff += DownedBossSystem.downedRavager ? 0.2f : 0f;
+            damageBuff += NPC.downedEmpressOfLight ? 0.2f : 0f;
             damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
             damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
             damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
@@ -135,7 +147,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
             damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
-            return damageBuff;
+            //恭喜击败至尊灾厄眼，所以。500%?
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
+            return 1f + damageBuff;
         }
     }
 }

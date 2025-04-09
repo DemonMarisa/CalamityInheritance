@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = CISoundID.SoundBow;
             Item.autoReuse = true; 
             Item.shootSpeed = 30f;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = 40;
             Item.Calamity().canFirePointBlankShots = true;
         }

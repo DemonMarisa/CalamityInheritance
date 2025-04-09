@@ -2,12 +2,9 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -19,8 +16,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
     [AutoloadBossHead]
     public class SupremeCataclysmLegacy : ModNPC
     {
-        public static readonly SoundStyle BrimstoneFireShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneFireblastImpact");
-        public static readonly SoundStyle BrimstoneSkullSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneSkullSound");
+        public static readonly SoundStyle BrimstoneFireShotSound = new($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrimstoneFireblastImpact");
+        public static readonly SoundStyle BrimstoneSkullSound = new($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrimstoneSkullSound");
 
         public int distanceY = -375;
         public int distanceX = -750;
@@ -91,12 +88,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             Player target = Main.player[NPC.target];
             float acceleration = 1.5f;
 
-            // Õæ½üÕ½¼õËÙ
+            // ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½
             Item targetSelectedItem = target.inventory[target.selectedItem];
             if (targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>()))
                 acceleration *= 0.5f;
 
-            #region YÒÆ¶¯
+            #region Yï¿½Æ¶ï¿½
             if (NPC.ai[3] < 750f)
             {
                 NPC.ai[3] += 1f;
@@ -113,8 +110,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             }
             #endregion
 
-            #region ÒÆ¶¯
-            // ËµÊµ»°ÎÒÒ²²»ÖªµÀÎªÊ²Ã´£¬µ«ÊÇ²»ÕâÃ´Ð´»¹Ô­³öÀ´¾ÍÃ»ÄÇÎ¶
+            #region ï¿½Æ¶ï¿½
+            // ËµÊµï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Öªï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Ã´Ð´ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Î¶
             Vector2 npcCenter = NPC.Center;
             Vector2 targetPos = new Vector2(target.Center.X - distanceX, target.Center.Y + distanceY);
             Vector2 direction = targetPos - npcCenter;

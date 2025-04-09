@@ -76,8 +76,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient(ItemID.DartRifle).AddIngredient(ItemID.MartianConduitPlating, 25).AddIngredient(ModContent.ItemType<CoreofEleum>(), 3).AddIngredient(ItemID.FragmentVortex, 5).AddTile(TileID.MythrilAnvil).Register();
-            CreateRecipe(1).AddIngredient(ItemID.DartPistol).AddIngredient(ItemID.MartianConduitPlating, 25).AddIngredient(ModContent.ItemType<CoreofEleum>(), 3).AddIngredient(ItemID.FragmentVortex, 5).AddTile(TileID.MythrilAnvil).Register();
+            CreateRecipe(1)
+                .AddIngredient(ItemID.DartRifle)
+                .AddIngredient(ItemID.MartianConduitPlating, 25)
+                .AddIngredient<CoreofEleum>(3)
+                .AddIngredient(ItemID.FragmentVortex, 5)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
+            CreateRecipe(1)
+                .AddIngredient(ItemID.DartPistol)
+                .AddIngredient(ItemID.MartianConduitPlating, 25)
+                .AddIngredient<CoreofEleum>(3)
+                .AddIngredient(ItemID.FragmentVortex, 5)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

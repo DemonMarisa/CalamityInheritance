@@ -87,27 +87,27 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe = CreateRecipe();
-                recipe.AddIngredient(ModContent.ItemType<VoltaicClimax>());
-                recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
-                recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-                recipe.Register();
+                CreateRecipe()
+                    .AddIngredient<VoltaicClimax>()
+                    .AddIngredient<AuricBar>(5)
+                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .Register();
 
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient(ModContent.ItemType<KnowledgeYharon>());
-                recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
-                recipe1.Register();
+                CreateRecipe()
+                    .AddIngredient<KnowledgeYharon>()
+                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .Register();
 
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient(ModContent.ItemType<LoreYharon>());
-                recipe2.AddTile(ModContent.TileType<CosmicAnvil>());
-                recipe2.Register();
+                CreateRecipe()
+                    .AddIngredient<LoreYharon>()
+                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .Register();
 
-                Recipe recipe3 = CreateRecipe();
-                recipe3.AddIngredient(ModContent.ItemType<VoltaicClimax>());
-                recipe3.AddIngredient(ModContent.ItemType<AuricBarold>());
-                recipe3.AddTile(ModContent.TileType<CosmicAnvil>());
-                recipe3.Register();
+                CreateRecipe()
+                    .AddIngredient<VoltaicClimax>()
+                    .AddIngredient<AuricBarold>()
+                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .Register();
             }
         }
     }

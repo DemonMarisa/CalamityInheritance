@@ -15,6 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         #region 基础属性
+        public bool AlreadyHit = false;
         //阶段Timer
         public int Timer = 0;
         public int TimerAlt = 0;
@@ -23,6 +24,22 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public const float NonHomingRotation = 0.45f;
         
         #endregion
+        #region 攻击枚举
+        public enum DoStyle
+        {
+            IsFlying,
+            IsHoming,
+            IsIdleing,
+            IsHit,
+        }
+        public static DoStyle[] DoAttack =>
+        [
+            DoStyle.IsFlying,
+            DoStyle.IsHit,
+            DoStyle.IsIdleing,
+            DoStyle.IsHit,
+        ];
+        #endregion   
         public override void SetDefaults()
         {
             Projectile.width = 34;
@@ -37,15 +54,42 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localNPCHitCooldown = 10;
         }
         //重做所有AI
+        public override bool? CanDamage() => Timer < ACTExcelsus.HomingTimer || TimerAlt > ACTExcelsus.IdleTimer;
         public override void AI()
         {
-            //无论什么情况下AI都已经开始执行了。
-            Timer++;
-            if (Timer > ACTExcelsus.HomingTimer)
-                DoHoming();
-            else
-                DoFlying();
 
+            ref float aStlye = ref Projectile.ai[0];
+            //搜寻实例
+            NPC tar = CIFunction.FindClosestTarget(Projectile, ACTExcelsus.MaxSearchDist, true);
+            if (Timer > ACTExcelsus.HomingTimer)
+            {
+                if (tar != null)
+                {
+                    aStlye = AlreadyHit ? (int)DoStyle.IsHit : (int)DoStyle.IsHoming;
+                }
+                else
+                {
+                    aStlye = (int)DoStyle.IsIdleing;
+                }
+            }
+            else aStlye = (int)DoStyle.IsFlying;
+            //切换AI逻辑
+            //这Dom的写法他就是香啊. 清晰多了
+            switch ((DoStyle)aStlye)
+            {
+                case DoStyle.IsFlying:
+                    DoFlying();
+                    break;
+                case DoStyle.IsHoming:
+                    DoHoming(tar);
+                    break;
+                case DoStyle.IsIdleing:
+                    DoIdleing();
+                    break;
+                case DoStyle.IsHit:
+                    DoIsHit();
+                    break;
+            }
             //保留特效
             if (Main.rand.NextBool(8))
             {
@@ -53,44 +97,51 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
         }
         //飞行逻辑
+        private void DoIsHit()
+        {
+            //如果单纯击中了敌怪，则刷新timer和Alpha，使其逐渐消失
+            if (Projectile.timeLeft > ACTExcelsus.SideFadeInTime)
+                Projectile.timeLeft = ACTExcelsus.SideFadeInTime;
+            Projectile.alpha += (int)Utils.GetLerpValue(0, 255, 15);
+            Projectile.velocity *= ACTExcelsus.SideHitSlowSpeed;
+        }
+
+        private void DoIdleing()
+        {
+            //自定义：其余状态下单独让这个刀片指向指针, 并且在原地进行待机。
+            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
+            Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
+        }
+
         public void DoFlying()
         {
+            Timer++;
             //飞行过程中射弹会一直保持高速旋转, 除此之外就……就不干什么了。
             Projectile.rotation += ACTExcelsus.NonHomingRotation;
         }
         //追踪逻辑
-        public void DoHoming()
+        public void DoHoming(NPC tar)
         {
-            //首先搜索附近的NPC实例
-            NPC tar = CIFunction.FindClosestTarget(Projectile, 3200f, true);
             //需注意的是，AI执行的这段时间内也会一直检索目标。
-            
+            Player p = Main.player[Projectile.owner];
+            float spiningDir = ACTExcelsus.LerpAngle;
             //如果实例存在，将刀片指向这个实例
-            if (tar != null)
-            {
+            if (TimerAlt == 5)
                 //刷新射弹生命与判定次数
-                Projectile.timeLeft = 300;
-                Projectile.penetrate = 1;
-                Vector2 targetPos = tar.Center;
-                //原地减速，指向这个敌怪
-                float rot = Projectile.AngleTo(targetPos) + MathHelper.PiOver4;
-                Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
-                Projectile.velocity *= 0.9f;
-                //而后在一段时间后发起追踪
-                TimerAlt ++;
-                if (TimerAlt > ACTExcelsus.IdleTimer)
-                {
-                    //这里需要给多一个额外更新
-                    Projectile.extraUpdates += 1;
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, ACTExcelsus.HomingSpeed, 20f);
-                }
-            }
-            //自定义：其余状态下单独让这个刀片指向指针, 并且在原地进行待机。
-            else
+                ACTExcelsus.GlobalResetProj(Projectile); 
+            Vector2 targetPos = tar.Center;
+            //原地减速，指向这个敌怪
+            float rot = Projectile.AngleTo(targetPos) + MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, spiningDir);
+            Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
+            //而后在一段时间后发起追踪
+            TimerAlt ++;
+            if (TimerAlt > ACTExcelsus.IdleTimer)
             {
-                float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
-                Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
-                Projectile.velocity *= 0.9f;
+                //给多一个额外更新
+                Projectile.extraUpdates += 1;
+                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
             }
         }
 
@@ -141,10 +192,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.timeLeft > 85)
-            {
-                Projectile.timeLeft = 85;
-            }
+            //追踪情况下标记为True
+            if (Projectile.ai[0] == (int)DoStyle.IsHoming)
+                AlreadyHit = true;     
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
         }
 }

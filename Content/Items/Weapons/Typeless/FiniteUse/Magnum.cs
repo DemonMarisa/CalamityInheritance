@@ -82,12 +82,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.FlintlockPistol);
-            recipe.AddIngredient(ItemID.IronBar, 10);
-            recipe.AddIngredient(ItemID.Diamond, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.FlintlockPistol).
+                AddIngredient(ItemID.IronBar, 10).
+                AddIngredient(ItemID.Diamond, 5).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }
