@@ -42,6 +42,7 @@ using static System.Net.Mime.MediaTypeNames;
 using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.NPCs.TownNPC;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -90,6 +91,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public Vector2 logSpawnPos;
         // 是否绘制二阶段贴图
         public bool isSecondPhase = false;
+        // 是否可以死亡
+        public bool canDead = false;
         #region 音效
         // 音效
         public static readonly SoundStyle SpawnSound = new("CalamityMod/Sounds/Custom/SupremeCalamitasSpawn") { Volume = 1.2f };
@@ -380,6 +383,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 用于开局的攻击
             if (lifeRatio == Phase1_SepulcherLifeRatio && currentPhase == 0f)
             {
+                SendStartText();
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
                 currentPhase++;
@@ -388,6 +392,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第二阶段，75% - 50%
             if (lifeRatio <= Phase2LifeRatio && currentPhase == 1f)
             {
+                SendBattleText(2);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
                 currentPhase++;
@@ -396,6 +401,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第三阶段，50% - 45%
             if (lifeRatio <= Phase3LifeRatio && currentPhase == 2f)
             {
+                SendBattleText(3);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
                 currentPhase++;
@@ -404,6 +410,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第四阶段，45% - 40%
             if (lifeRatio <= Phase4_brotherLifeRatio && currentPhase == 3f)
             {
+                SendBattleText(4);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonBrother;
                 currentPhase++;
@@ -412,6 +419,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第五阶段，40% - 30%
             if (lifeRatio <= Phase5LifeRatio && currentPhase == 4f)
             {
+                SendBattleText(5);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.PhaseTransition;
                 currentPhase++;
@@ -420,6 +428,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第六阶段，30% - 20%
             if (lifeRatio <= Phase6LifeRatio && currentPhase == 5f)
             {
+                SendBattleText(6);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
                 currentPhase++;
@@ -428,6 +437,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第七阶段，20% - 10%
             if (lifeRatio <= Phase7_SoulSeekerLifeRatio && currentPhase == 6f)
             {
+                SendBattleText(7);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonSoulSeeker;
                 currentPhase++;
@@ -436,6 +446,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第八阶段，10% - 8%
             if (lifeRatio <= Phase8LifeRatio && currentPhase == 7f)
             {
+                SendBattleText(8);
                 attackTimer = 0;
                 NPC.DR_NERD(0.9f);
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -445,14 +456,43 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第九阶段，8% - 1%
             if (lifeRatio <= Phase9_SepulcherLifeRatio && currentPhase == 8f)
             {
+                SendBattleText(9);
+                attackTimer = 0;
+                attackType = (int)LegacySCalAttackType.SummonSepulcher;
+                currentPhase++;
+                NPC.netUpdate = true;
+            }
+            // 用于发送文字的标记
+            if (lifeRatio <= 0.06f && currentPhase == 9f)
+            {
+                SendBattleText(10);
+                attackTimer = 0;
+                attackType = (int)LegacySCalAttackType.SummonSepulcher;
+                currentPhase++;
+                NPC.netUpdate = true;
+            }
+            // 用于发送文字的标记
+            if (lifeRatio <= 0.04f && currentPhase == 10f)
+            {
+                SendBattleText(11);
+                attackTimer = 0;
+                attackType = (int)LegacySCalAttackType.SummonSepulcher;
+                currentPhase++;
+                NPC.netUpdate = true;
+            }
+            // 用于发送文字的标记
+            if (lifeRatio <= 0.02f && currentPhase == 11f)
+            {
+                SendBattleText(12);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.SummonSepulcher;
                 currentPhase++;
                 NPC.netUpdate = true;
             }
             // 第十阶段，1% - 0%
-            if (lifeRatio <= Phase10LifeRatio && currentPhase == 9f)
+            if (lifeRatio <= Phase10LifeRatio && currentPhase == 12f)
             {
+                SendBattleText(13);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.DesperationPhase;
                 currentPhase++;
@@ -503,16 +543,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     break;
             }
 
+            // 防止最后对话前就打死了終灾
+            if (canDead == false)
+            {
+                if (NPC.life < 1)
+                    NPC.life = 1;
+
+            }
+
             if ((LegacySCalAttackType)attackType != LegacySCalAttackType.PhaseTransition)
                 LookAtTarget(target, rotationSpeed);
 
             // 防止有人兄弟阶段拖太久了
             if(attackTimer < 10000)
                 attackTimer++;
+
             // Main.NewText($"attackTimer : {attackTimer}");
-            #region 文本
-            SendStartText();
-            #endregion
 
             if (isWormAlive || isBrotherAlive  || isSeekerAlive)
                 isContactDamage = false;
@@ -529,7 +575,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
             else
             {
-                NPC.damage = ContactDamage;
+                if ((LegacySCalAttackType)attackType != LegacySCalAttackType.DesperationPhase)
+                    NPC.damage = ContactDamage;
                 NPC.dontTakeDamage = false;
                 NPC.chaseable = true;
             }
@@ -579,7 +626,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     BulletHell5(target, attacktimer);
                 }
                 if (attacktimer == 901)
+                {
                     DeSpawn();
+                }
                 if (attacktimer == 902)
                 {
                     SoundEngine.PlaySound(BulletHellEndSound, NPC.position);
@@ -1131,6 +1180,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, ModContent.NPCType<SupremeCataclysmLegacy>());
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, ModContent.NPCType<SupremeCatastropheLegacy>());
+                SendBattleText(4);
             }
 
             // 防止一出来就选择了
@@ -1184,6 +1234,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 // 计算当前帧和上一帧的缓动进度
                 float currentProgress = attacktimer / phase1Duration;
                 float currentEased = CIFunction.EasingHelper.EaseInOutQuad(currentProgress);
+
                 float previousProgress = (attacktimer - 1f) / phase1Duration;
                 float previousEased = CIFunction.EasingHelper.EaseInOutQuad(previousProgress);
 
@@ -1202,6 +1253,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 // 特效和音效
                 if (attacktimer == phase1Duration)
                 {
+                    SendBattleText(5);
                     isSecondPhase = true;
                     SpawnDust();
                     SpawnDust();
@@ -1233,6 +1285,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     }
                 }
             }
+            if(attacktimer == 600)
+                SendBattleText(14);
 
             NPC.noGravity = false;
             NPC.noTileCollide = false;
@@ -1241,6 +1295,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 isContactDamage = false;
                 NPC.velocity.X *= 0.98f;
+            }
+            if (attacktimer == totaldesperationTime)
+            {
+                SendBattleText(15);
+                canDead = true;
             }
         }
         #endregion
@@ -1281,12 +1340,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #endregion
         #endregion
         #region 文本
-        public bool startText = false;
         public void SendStartText()
         {
 
-            if (!startText)
-            {
                 if(CIDownedBossSystem.DownedLegacyScal)
                 {
                     if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount >= 4)
@@ -1302,9 +1358,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.DarkRed);
                     else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 4)
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.DarkRed);
+                    else
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalStart", Color.DarkRed);
                 }
-                startText = true;
-            }
+            
+        }
+        public void SendBattleText(int ID)
+        {
+            CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalEnterPhase" + ID, Color.DarkRed);
         }
         #endregion
         #region 生成场地
@@ -1494,17 +1555,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #region 击杀与掉落
         public override void OnKill()
         {
+            if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount > 0)
+                SendBattleText(17);
+            else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount < 1)
+                SendBattleText(18 + Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount);
+            else
+                SendBattleText(16);
+
             DeathAshParticle.CreateAshesFromNPC(NPC);
             SoundEngine.PlaySound(GiveUpSound, NPC.position);
             // Increase the player's SCal kill count
             if (Main.player[NPC.target].CIMod().LegacyScal_PlayerKillCount < 5)
                 Main.player[NPC.target].CIMod().LegacyScal_PlayerKillCount++;
 
-            /*
             // Spawn the SCal NPC directly where the boss was
             if (!BossRushEvent.BossRushActive)
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y + 12, cirrus ? ModContent.NPCType<FAP>() : ModContent.NPCType<WITCH>());
-            */
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y + 12, ModContent.NPCType<CalamitasNPCLegacy>());
 
             // Mark Calamitas as defeated
             CIDownedBossSystem.DownedLegacyScal = true;

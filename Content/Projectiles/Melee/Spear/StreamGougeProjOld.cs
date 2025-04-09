@@ -66,9 +66,30 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
                 Projectile.ai[0] = 1f;
             }
 
-            
+            Vector2 rrp = owner.RotatedRelativePoint(owner.MountedCenter, true);
+            UpdateAim(rrp, owner.HeldItem.shootSpeed);
+
             //干掉AI钩子
             return false;
+        }
+        public virtual void UpdateAim(Vector2 source, float speed)
+        {
+            // Get the player's current aiming direction as a normalized vector.
+            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            if (aim.HasNaNs())
+            {
+                aim = -Vector2.UnitY;
+            }
+
+            // Change a portion of the Prism's current velocity so that it points to the mouse. This gives smooth movement over time.
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, 0.5f));
+            aim *= speed;
+
+            if (aim != Projectile.velocity)
+            {
+                Projectile.netUpdate = true;
+            }
+            Projectile.velocity = aim;
         }
         public void ShootProj()
         {
@@ -83,7 +104,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             //粒子
             ExtraBehavior();
             //顶点处生成传送门粒子
-            
         }
         public void PortalDust()
         {
@@ -101,11 +121,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
                 Main.dust[idx].velocity = dustVel;
                 Main.dust[idx].scale = 2.4f;
             }
-        }
-        public override void PostDraw(Color lightColor)
-        {
-            Vector2 origin = new Vector2(0f, 0f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/Spear/StreamGougeProjOldGlowProj").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0f);
         }
         public void ExtraBehavior()
         {

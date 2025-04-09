@@ -36,6 +36,8 @@ using CalamityMod.BiomeManagers;
 using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityMod.Particles;
+using CalamityMod.Events;
+using CalamityMod.Items.Armor.Vanity;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -142,6 +144,18 @@ namespace CalamityInheritance.NPCs.TownNPC
                 {
                   Language.GetTextValue("Mods.CalamityInheritance.Name.ScalNPC")
             };
+        }
+        public override bool PreAI()
+        {
+            // Disappear if the SCal boss is active. She's supposed to be the boss.
+            // However, this doesn't happen in Boss Rush; the SCal there is a silent puppet created by Xeroc, not SCal herself.
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) && !BossRushEvent.BossRushActive)
+            {
+                NPC.active = false;
+                NPC.netUpdate = true;
+                return false;
+            }
+            return true;
         }
 
         //对话

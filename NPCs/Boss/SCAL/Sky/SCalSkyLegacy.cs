@@ -133,7 +133,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
                 else if (lifeRatio > 0.01f)
                     return Color.Lerp(Color.Red, Color.Yellow, Main.rand.NextFloat(0.2f, 0.9f));
                 else
-                    return Color.Gray;
+                    return Color.Lerp(Color.Gray, Color.White, Main.rand.NextFloat(0.2f, 0.9f));
             }
 
             // Randomly add cinders.
@@ -225,9 +225,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
                 for (int j = 0; j < 3; j++)
                 {
                     Vector2 offsetDrawPosition = drawPosition + (MathHelper.TwoPi * j / 3f).ToRotationVector2() * 1.4f;
-                    Color offsetDrawColor = Color.Red * 0.56f;
-                    offsetDrawColor.A = 0;
-                    spriteBatch.Draw(cinderTexture, offsetDrawPosition, null, offsetDrawColor, 0f, cinderTexture.Size() * 0.5f, Cinders[i].Scale * 1.5f, SpriteEffects.None, 0f);
+
+                    spriteBatch.Draw(cinderTexture, offsetDrawPosition, null, Cinders[i].DrawColor, 0f, cinderTexture.Size() * 0.5f, Cinders[i].Scale * 1.5f, SpriteEffects.None, 0f);
                 }
                 spriteBatch.Draw(cinderTexture, drawPosition, null, Cinders[i].DrawColor, 0f, cinderTexture.Size() * 0.5f, Cinders[i].Scale, SpriteEffects.None, 0f);
             }

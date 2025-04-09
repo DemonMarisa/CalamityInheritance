@@ -141,7 +141,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 return;
 
             // Fly away from other brimstone monsters
-            float pushForce = 0.05f;
+            float pushForce = 0.1f;
             for (int k = 0; k < Main.maxProjectiles; k++)
             {
                 Projectile otherProj = Main.projectile[k];
@@ -150,21 +150,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 if (!otherProj.active)
                     continue;
 
-                // If the other projectile is indeed the same owned by the same player and they're too close, nudge them away.
-                bool sameProjType = otherProj.type == Projectile.type;
                 float taxicabDist = Vector2.Distance(Projectile.Center, otherProj.Center);
                 float distancegate = 360f;
-                if (sameProjType && taxicabDist < distancegate)
+                if (k != Projectile.whoAmI && Main.projectile[k].type == Projectile.type)
                 {
-                    if (Projectile.position.X < otherProj.position.X)
-                        Projectile.velocity.X -= pushForce;
-                    else
-                        Projectile.velocity.X += pushForce;
+                    if (taxicabDist < distancegate)
+                    {
+                        if (Projectile.position.X < otherProj.position.X)
+                            Projectile.velocity.X -= pushForce;
+                        else
+                            Projectile.velocity.X += pushForce;
 
-                    if (Projectile.position.Y < otherProj.position.Y)
-                        Projectile.velocity.Y -= pushForce;
-                    else
-                        Projectile.velocity.Y += pushForce;
+                        if (Projectile.position.Y < otherProj.position.Y)
+                            Projectile.velocity.Y -= pushForce;
+                        else
+                            Projectile.velocity.Y += pushForce;
+                    }
                 }
             }
         }
