@@ -51,10 +51,11 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void OnKill(Projectile projectile, int timeLeft)
         {
+            var usPlayer = Main.player[projectile.owner].CIMod();
             int j = Main.rand.Next(1,4);
             int pCounts = Main.rand.Next(1,4);
             //较大的这些漩涡在死后会生成小的斩切
-            if (projectile.DamageType == DamageClass.Magic)
+            if (projectile.DamageType == DamageClass.Magic && (usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
             {
                 float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
                 Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
@@ -63,10 +64,9 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 Main.projectile[magic].DamageType = DamageClass.Magic;
                 //2判，我们需要2判
                 Main.projectile[magic].penetrate = 2;
-
+                SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
+                //斩击的音效
             }
-            //斩击的音效
-            SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
         }
     }
     //小型追踪漩涡
@@ -85,16 +85,17 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         //射弹被干掉的时候斩击
         public override void OnKill(Projectile projectile, int timeLeft)
         {
+            var usPlayer = Main.player[projectile.owner].CIMod();
             //限定只有法术伤害才会生成额外射弹
-            if (projectile.DamageType == DamageClass.Magic)
+            if (projectile.DamageType == DamageClass.Magic && (usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
             {
                 int magic = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, projectile.oldVelocity, ModContent.ProjectileType<ExobeamSlash>(), projectile.damage /2, projectile.knockBack, projectile.owner);
                 //标记这个射弹为魔法伤害
                 Main.projectile[magic].DamageType = DamageClass.Magic;
                 Main.projectile[magic].extraUpdates = 2;
+                //斩击的音效
+                SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
             }
-            //斩击的音效
-            SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
         }
     }
 
@@ -108,6 +109,10 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            var usPlayer = Main.player[projectile.owner].CIMod();
+            //原灾暂时没有复写大漩涡的Onhit,因此这里如果判定到啊没开星流传颂，直接干掉AI就行了
+            if ((!usPlayer.LoreExo || !usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
+                return;
             //这里最主要是为了确定生成的位置
             Player player = Main.player[projectile.owner];
             int offset = Main.rand.Next(200, 1080);

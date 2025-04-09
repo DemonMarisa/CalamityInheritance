@@ -58,11 +58,11 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override void OnKill(Projectile projectile, int timeLeft)
         {
             Player player = Main.player[projectile.owner];
-            //被击杀的时候会朝鼠标方向发射一个额外的超新星。
+            //被击杀的时候会朝玩家方向发射一个额外的超新星。
             if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && projectile.owner == Main.myPlayer)
             {
                 //距离向量
-                Vector2 distVec = Main.MouseWorld - projectile.Center;
+                Vector2 distVec = player.Center - projectile.Center;
                 //距离模
                 float dist = distVec.Length();
                 //速度
