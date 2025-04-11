@@ -68,23 +68,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ModContent.ItemType<EidolicWail>());
-            recipe1.AddIngredient(ModContent.ItemType<ReaperTooth>(), 20);
-            recipe1.AddIngredient(ModContent.ItemType<DepthCells>(), 20);
-            recipe1.AddIngredient(ModContent.ItemType<Lumenyl>(), 20);
-            recipe1.AddIngredient(ModContent.ItemType<AuricBarold>());
-            recipe1.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe1.Register();
+            CreateRecipe()
+                .AddIngredient<EidolicWail>()
+                .AddIngredient<ReaperTooth>(20)
+                .AddIngredient<DepthCells>(20)
+                .AddIngredient<Lumenyl>(20)
+                .AddIngredient<AuricBarold>()
+                .AddTile(ModContent.TileType<CosmicAnvil>())
+                .Register();
 
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<EidolicWail>());
-            recipe.AddIngredient(ModContent.ItemType<ReaperTooth>(), 20);
-            recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 20);
-            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 20);
-            recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
-            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient<EidolicWail>()
+                .AddIngredient<ReaperTooth>(20)
+                .AddIngredient<DepthCells>(20)
+                .AddIngredient<Lumenyl>(20)
+                .AddIngredient<AuricBar>(5)
+                .AddTile(ModContent.TileType<CosmicAnvil>())
+                .Register();
         }
     }
 }

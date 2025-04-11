@@ -68,21 +68,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<AscendantSpiritEssence>(5).
                 AddTile<CosmicAnvil>().
                 Register();
-
-
-            // CreateRecipe().
-            //     AddIngredient(ItemID.ChainGun).
-            //     AddIngredient<ClockGatlignum>().
-            //     AddIngredient<AuricBarold>().
-            //     AddTile<CosmicAnvil>().
-            //     Register();
-
-            // CreateRecipe().
-            //     AddIngredient(ItemID.ChainGun).
-            //     AddIngredient<ClockGatlignum>().
-            //     AddIngredient<AuricBar>(5).
-            //     AddTile<CosmicAnvil>().
-            //     Register();
         }
     }
 }

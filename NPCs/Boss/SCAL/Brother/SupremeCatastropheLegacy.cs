@@ -20,8 +20,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
     [AutoloadBossHead]
     public class SupremeCatastropheLegacy : ModNPC
     {
-        public static readonly SoundStyle BrimstoneShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneHellblastSound");
-        public static readonly SoundStyle BrimstoneFireShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneFireblastImpact");
+        public static readonly SoundStyle BrimstoneShotSound = new($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrimstoneHellblastSound");
+        public static readonly SoundStyle BrimstoneFireShotSound = new($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrimstoneFireblastImpact");
 
         public int distanceY = 375;
         public int distanceX = 750;
@@ -101,12 +101,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             Player target = Main.player[NPC.target];
             float acceleration = 1.5f;
 
-            // Õæ½üÕ½¼õËÙ
+            // ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½
             Item targetSelectedItem = target.inventory[target.selectedItem];
             if (targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>()))
                 acceleration *= 0.5f;
 
-            #region YÒÆ¶¯
+            #region Yï¿½Æ¶ï¿½
             if (NPC.ai[3] < 750f)
             {
                 NPC.ai[3] += 1f;
@@ -123,8 +123,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             }
             #endregion
 
-            #region ÒÆ¶¯
-            // ËµÊµ»°ÎÒÒ²²»ÖªµÀÎªÊ²Ã´£¬µ«ÊÇ²»ÕâÃ´Ð´»¹Ô­³öÀ´¾ÍÃ»ÄÇÎ¶
+            #region ï¿½Æ¶ï¿½
+            // ËµÊµï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Öªï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Ã´Ð´ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Î¶
             Vector2 npcCenter = NPC.Center;
             Vector2 targetPos = new Vector2(target.Center.X - distanceX, target.Center.Y + distanceY);
             Vector2 direction = targetPos - npcCenter;
@@ -178,11 +178,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                     SoundEngine.PlaySound(BrimstoneShotSound, NPC.position);
                     NPC.ai[1] = 0f;
                     Vector2 vector85 = new Vector2(NPC.Center.X, NPC.Center.Y);
-                    float num689 = 4f;
-                    int num691 = ModContent.ProjectileType<BrimstoneHellblast2>();
+                    float speedX = 4f;
+                    int dType = ModContent.ProjectileType<BrimstoneHellblast2>();
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        int num695 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector85.X, vector85.Y, num689, 0f, num691, projDamage, 0f, Main.myPlayer, 0f, 0f);
+                        int num695 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector85.X, vector85.Y, speedX, 0f, dType, projDamage, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 NPC.ai[2] += 1f;
@@ -193,7 +193,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                 if (NPC.ai[2] >= 300f)
                 {
                     NPC.ai[2] = 0f;
-                    float num689 = 7f;
+                    float speedX = 7f;
                     SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.position);
                     float spread = 45f * 0.0174f;
                     double startAngle = Math.Atan2(NPC.velocity.X, NPC.velocity.Y) - spread / 2;
@@ -204,8 +204,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                         for (int i = 0; i < 8; i++)
                         {
                             offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(Math.Sin(offsetAngle) * num689), (float)(Math.Cos(offsetAngle) * num689), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(-Math.Sin(offsetAngle) * num689), (float)(-Math.Cos(offsetAngle) * num689), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(Math.Sin(offsetAngle) * speedX), (float)(Math.Cos(offsetAngle) * speedX), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(-Math.Sin(offsetAngle) * speedX), (float)(-Math.Cos(offsetAngle) * speedX), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
                         }
                     }
                     for (int dust = 0; dust <= 5; dust++)
@@ -214,11 +214,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                     }
                 }
             }
-            for (int num621 = 0; num621 < 2; num621++)
+            for (int j = 0; j < 2; j++)
             {
-                int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
-                Main.dust[num622].scale = 0.5f;
-                Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                Main.dust[d].scale = 0.5f;
+                Main.dust[d].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
             }
         }
 
@@ -228,52 +228,50 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;
 
-			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
-
-            Vector2 vector11 = new Vector2((float)(TextureAssets.Npc[NPC.type].Value.Width / 2), (float)(TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2));
-			Color color36 = Color.White;
-			float amount9 = 0.5f;
-			int num153 = 7;
+			Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
+			Vector2 origiVel = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
+			Color white = Color.White;
+			float cLerp = 0.5f;
+			int afterAmt = 7;
 
 			if (CalamityConfig.Instance.Afterimages)
 			{
-				for (int num155 = 1; num155 < num153; num155 += 2)
+				for (int i = 1; i < afterAmt; i += 2)
 				{
-					Color color38 = drawColor;
-					color38 = Color.Lerp(color38, color36, amount9);
-					color38 = NPC.GetAlpha(color38);
-					color38 *= (float)(num153 - num155) / 15f;
-					Vector2 vector41 = NPC.oldPos[num155] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector41 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
-					vector41 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+					Color cOrigi = drawColor;
+					cOrigi = Color.Lerp(cOrigi, white, cLerp);
+					cOrigi = NPC.GetAlpha(cOrigi);
+					cOrigi *= (afterAmt - i) / 15f;
+					Vector2 drawVel = NPC.oldPos[i] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
+					drawVel -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+					drawVel += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+					spriteBatch.Draw(npcTex, drawVel, NPC.frame, cOrigi, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 				}
 			}
 
-			Vector2 vector43 = NPC.Center - Main.screenPosition;
-			vector43 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
-			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+			Vector2 oriVelEx = NPC.Center - Main.screenPosition;
+			oriVelEx -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+			oriVelEx += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+			spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow").Value;
-
+			npcTex = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow").Value;
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
 			if (CalamityConfig.Instance.Afterimages)
 			{
-				for (int num163 = 1; num163 < num153; num163++)
+				for (int j = 1; j < afterAmt; j++)
 				{
-					Color color41 = color37;
-					color41 = Color.Lerp(color41, color36, amount9);
-					color41 *= (float)(num153 - num163) / 15f;
-					Vector2 vector44 = NPC.oldPos[num163] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector44 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height / Main.npcFrameCount[NPC.type])) * NPC.scale / 2f;
-					vector44 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector44, NPC.frame, color41, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+					Color exColor = color37;
+					exColor = Color.Lerp(exColor, white, cLerp);
+					exColor *= (afterAmt - j) / 15f;
+					Vector2 vector44 = NPC.oldPos[j] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
+					vector44 -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+					vector44 += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+					spriteBatch.Draw(npcTex, vector44, NPC.frame, exColor, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 				}
 			}
 
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+			spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, color37, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 
 			return false;
 		}
@@ -290,30 +288,30 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         */
         public override void HitEffect(NPC.HitInfo hit)
         {
-            for (int num623 = 0; num623 < 2; num623++)
+            for (int i = 0; i < 2; i++)
             {
-                int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 3f);
-                Main.dust[num624].noGravity = true;
-                Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
-                Main.dust[num624].velocity *= 2f;
+                int d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
+                Main.dust[d2].noGravity = true;
+                Main.dust[d2].velocity *= 5f;
+                d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                Main.dust[d2].velocity *= 2f;
             }
         }
         public override void OnKill()
         {
             DeathAshParticle.CreateAshesFromNPC(NPC);
-            SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/SCalSounds/BrothersDeath1") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
-            for (int num621 = 0; num621 < 40; num621++)
+            SoundEngine.PlaySound(new SoundStyle($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrothersDeath1") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
+            for (int j = 0; j < 40; j++)
             {
                 int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
                 Main.dust[num622].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
-                    Main.dust[num622].scale = 0.5f;
-                    Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                    Main.dust[d].scale = 0.5f;
+                    Main.dust[d].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                 }
             }
-            for (int num623 = 0; num623 < 40; num623++)
+            for (int i = 0; i < 40; i++)
             {
                 int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 3f);
                 Main.dust[num624].noGravity = true;

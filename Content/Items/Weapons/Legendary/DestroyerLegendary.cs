@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -45,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= (BaseDamage + LegendaryBuff()) / BaseDamage;
+            damage *= (BaseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / BaseDamage;
         }
         public override bool AltFunctionUse(Player player)
         {
@@ -56,18 +58,24 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{TextRoute}.TierOne")    : Language.GetTextValue($"{TextRoute}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{TextRoute}.TierTwo")    : Language.GetTextValue($"{TextRoute}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{TextRoute}.TierThree")  : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryBuff();
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override bool CanUseItem(Player player)
         {
@@ -161,6 +169,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedCalamitas ? 70 : 0;       //450
             dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;        //520
             dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 480 : 0; //1000
+            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 1000 : 0;
             return dmgBuff;
         }
     }

@@ -105,14 +105,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 if (type == ProjectileID.WoodenArrowFriendly)
                 {
-                        if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-                        {
-                            thisArrowType = Main.rand.Next(ExoArrowsExoLore);
-                        }
-                        else
-                        {
-                            thisArrowType = Main.rand.Next(ExoArrows);
-                        }
+                    if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                    {
+                        thisArrowType = Main.rand.Next(ExoArrowsExoLore);
+                    }
+                    else
+                    {
+                        thisArrowType = Main.rand.Next(ExoArrows);
+                    }
                 }
                 else
                 {

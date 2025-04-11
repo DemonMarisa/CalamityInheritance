@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
 
             var usPlayer = Main.player[projectile.owner].CIMod();
-            if (usPlayer.PanelsLoreExo || usPlayer.LoreExo)
+            if ((usPlayer.PanelsLoreExo || usPlayer.LoreExo) && projectile.owner == Main.myPlayer)
             {
                 projectile.ai[Timer] += 1f; 
                 if (projectile.ai[Timer] > 60f)

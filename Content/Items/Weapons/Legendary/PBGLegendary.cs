@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -73,6 +75,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.PBGTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getdmg = LegendaryDamage();
             int boostPercent = (int)(getdmg * 100);
@@ -80,10 +86,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage.Base += BaseDamage + Item.damage * LegendaryDamage();
+            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -119,7 +127,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             damageBuff += DownedBossSystem.downedDoG ? 0.6f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 0.8f : 0f;
             damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 0.8f : 0f;
-            return damageBuff;
+            //恭喜击败至尊灾厄眼，所以。500%?
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
+            return 1f + damageBuff;
         }
     }
 }

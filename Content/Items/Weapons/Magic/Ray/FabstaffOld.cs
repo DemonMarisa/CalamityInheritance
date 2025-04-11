@@ -44,11 +44,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Necroplasm>(), 100);
-            recipe.AddIngredient(ModContent.ItemType<ShadowspecBar>(), 50);
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient<Necroplasm>(100)
+                .AddIngredient<ShadowspecBar>(50)
+                .AddTile(ModContent.TileType<DraedonsForge>())
+                .Register();
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().

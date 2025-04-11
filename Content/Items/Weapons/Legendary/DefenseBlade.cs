@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Core;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Build.Tasks;
@@ -77,6 +79,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.DefendTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             int boostPercent = (int)(getDmg * 100);
@@ -84,16 +90,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= 1f + LegendaryDamage();
+            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
         public static float LegendaryDamage()
         {
-            float damageBuff = 0f;
+            float damageBuff = 1f;
             damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
             damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
             damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
@@ -102,6 +110,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
             damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
+            //恭喜击败至尊灾厄眼，所以。500%?
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
             return damageBuff;
         }
 

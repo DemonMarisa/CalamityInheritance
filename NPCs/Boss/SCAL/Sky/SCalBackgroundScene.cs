@@ -1,11 +1,4 @@
-﻿using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.Skies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Sky

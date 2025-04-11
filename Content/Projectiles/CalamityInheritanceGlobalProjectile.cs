@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles
         //标记这个射弹为魔法伤害, 目前用于归元漩涡(原灾)消失后生成的星流光束的斩切标记
         public bool PingAsMagic = false;
         public int PingBeamMagic = -1;
-        public bool PingsAsSplit = false;
+        public bool PingAsSplit = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -171,7 +171,7 @@ namespace CalamityInheritance.Content.Projectiles
         {
 
             //特判: ban掉分裂的弹幕
-            if (projectile.CalamityInheritance().PingsAsSplit)
+            if (projectile.CalamityInheritance().PingAsSplit)
                 return;
 
             #region 大量转字段
@@ -189,37 +189,39 @@ namespace CalamityInheritance.Content.Projectiles
             bool checkIfOutIndex = projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200;
             #endregion
             //下列是射弹的基础属性
-            float spread = 180f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - MathHelper.PiOver2;
             int pDamage = (int)(projectile.damage * 0.5f);
+            int i = -1;
 
             //这个是只分裂一次
             if (splitOnce && Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate() && checkIfOutIndex)
             {
                 //-1 -> 1, 用于修改生成方向
-                for (int i = -1; i < 2; i += 2)
+                for (; i < 2; i += 2)
                 {
                     Vector2 vel = new ((float)(Math.Sin(startAngle) * 8.0 * i), (float)(Math.Cos(startAngle) * 8.0 * i));
                     int p = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center, vel, projectile.type, pDamage, projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                     if (mode == StyleSplitOnceShorterLifeTime)
                         Main.projectile[p].timeLeft = 60;
                     Main.projectile[p].noDropItem = true;
-                    Main.projectile[p].CalamityInheritance().PingsAsSplit = true;
+                    Main.projectile[p].CalamityInheritance().PingAsSplit = true;
+                    Main.projectile[p].netUpdate = true;
                 }
             }
             //随机分裂
             if (splitRandome && checkIfOutIndex && Main.rand.Next(200) > 198)
             {
                 //同上
-                for (int j = -1; j < 2; j += 2)
+                for (; i < 2; i += 2)
                 {
-                    Vector2 vel = new ((float)(Math.Sin(startAngle) * 8.0 * j), (float)(Math.Cos(startAngle) * 8.0 * j));
+                    Vector2 vel = new ((float)(Math.Sin(startAngle) * 8.0 * i), (float)(Math.Cos(startAngle) * 8.0 * i));
                     int p = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center, vel, projectile.type, pDamage, projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                     Main.projectile[p].DamageType = DamageClass.Default;
                     if (mode == StyleSplitRandomShorterLifeTime)
-                        Main.projectile[p].timeLeft =  60;
+                        Main.projectile[p].timeLeft = 60;
                     Main.projectile[p].noDropItem = true;
-                    Main.projectile[p].CalamityInheritance().PingsAsSplit = true;
+                    Main.projectile[p].CalamityInheritance().PingAsSplit = true;
+                    Main.projectile[p].netUpdate = true;
                 }
             }
         }

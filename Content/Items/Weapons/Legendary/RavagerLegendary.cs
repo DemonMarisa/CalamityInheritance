@@ -12,6 +12,8 @@ using CalamityMod;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -64,16 +66,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTWO]", t2);
             string t3 = mp.BetsyTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
+            //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
+            string t4 = null;
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             // 以下，用于比较复杂的计算
             int boostPercent = (int)(LegendaryDamage() * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
+            if (t4 != null)
+            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage();
+            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
         }
         public static float LegendaryDamage()
         {
@@ -89,6 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
             newDamage += DownedBossSystem.downedYharon ? 1.0f : 0f;
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
+            newDamage += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
             return 1f + newDamage;
 
         }
@@ -214,6 +223,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 return false;
             }
         }
-        //TODO: 对准鼠标位置，然后并且找一下为啥没贴图的原因
+    
     }
 }

@@ -18,7 +18,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         public bool setAlpha = false;
         public int maxLife = CalamityWorld.death ? 2000000 : CalamityWorld.revenge ? 1200000 : 1000000;
 
-        public static string ScalImagePath => "CalamityInheritance/NPCs/Boss/SCAL/ScalWorm"; //Ò»¸ö×Ö¶Î
+        public static string ScalImagePath => "CalamityInheritance/NPCs/Boss/SCAL/ScalWorm"; //Ò»ï¿½ï¿½ï¿½Ö¶ï¿½
         public static Asset<Texture2D> AltTexture;
         public static Asset<Texture2D> AltTextureGlow;
 
@@ -28,7 +28,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         }
         public override void SetDefaults()
         {
-            // »ù´¡ÉèÖÃ
+            //æ³¨é‡Šæ­»å®Œäº†
+            
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             NPC.damage = 0; //70
             NPC.npcSlots = 5f;
             NPC.width = 20; //28
@@ -38,7 +40,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             NPC.Calamity().unbreakableDR = true;
             NPC.lifeMax = maxLife;
 
-            // ²ÉÓÃ×Ô¶¨ÒåAI
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½AI
             NPC.aiStyle = -1; //new
             AIType = -1; //new
 
@@ -47,23 +49,23 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
 
             NPC.alpha = 255;
 
-            // ÊÇ·ñÎÞµÐ
+            // ï¿½Ç·ï¿½ï¿½Þµï¿½
             NPC.chaseable = false;
 
-            // ÎÞÊÓÎï¿é
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             NPC.behindTiles = true;
 
-            // ÎÞÖØÁ¦
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             NPC.noGravity = true;
             NPC.noTileCollide = true;
 
-            // ²»ÄÜÎüÑª
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñª
             NPC.canGhostHeal = false;
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath14;
             NPC.netAlways = true;
 
-            // ÃâÒßËùÓÐbuff
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½buff
             for (int k = 0; k < NPC.buffImmune.Length; k++)
             {
                 NPC.buffImmune[k] = true;
@@ -79,13 +81,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
 
         public override void AI()
         {
-            // ÉèÖÃ¸¸¼¶NPC£¨ÓÃÓÚÈä³æBossÉúÃü¹²Ïí£©
+            // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bossï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (NPC.ai[2] > 0f)
             {
                 NPC.realLife = (int)NPC.ai[2];
             }
 
-            // ¼ì²éËÀÍö£¨µ±Í·ÏûÊ§/ËÀÍöÊ±£©
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ê§/ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
             bool shouldDie = false;
             if (NPC.ai[1] <= 0f)
@@ -104,19 +106,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 return;
             }
 
-            // ´¦ÀíÍ¸Ã÷¶È
+            // ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½
             ProcessAlpha();
 
             UpdatePositionAndRotation();
         }
         public void ProcessAlpha()
         {
-            // »ñÈ¡¸¸¼¶NPC¶ÔÏó£¨Èä³æBossµÄÍ·£©
+            // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bossï¿½ï¿½Í·ï¿½ï¿½
             NPC parent = Main.npc[(int)NPC.ai[1]];
 
             if (parent.alpha < 128 && !setAlpha)
             {
-                // ½¥ÏÔÐ§¹û
+                // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
                 if (NPC.alpha != 0)
                 {
                     for (int i = 0; i < 2; i++)
@@ -132,7 +134,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             }
             else
             {
-                // Í¬²½¸¸¼¶Í¸Ã÷¶È
+                // Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½
                 NPC.alpha = parent.alpha;
             }
         }
@@ -143,12 +145,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             Vector2 npcCenter = NPC.Center;
             Vector2 parentCenter = parent.Center;
 
-            // ¼ÆËã³¯Ïò¸¸½ÚµãµÄ·½Ïò
+            // ï¿½ï¿½ï¿½ã³¯ï¿½ò¸¸½Úµï¿½Ä·ï¿½ï¿½ï¿½
             Vector2 directionToParent = parentCenter - npcCenter;
 
             NPC.rotation = directionToParent.ToRotation() + MathHelper.PiOver2;
 
-            // ±£³ÖÓë¸¸½ÚµãµÄÁ¬½Ó
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ë¸¸ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             float distanceToParent = directionToParent.Length();
             float maintainDistance = NPC.width / 2f + parent.width / 2f;
 
@@ -158,7 +160,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 NPC.position += movement;
             }
 
-            // ¸üÐÂÃæÏò·½Ïò
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             NPC.spriteDirection = (directionToParent.X > 0f).ToDirectionInt();
         }
 

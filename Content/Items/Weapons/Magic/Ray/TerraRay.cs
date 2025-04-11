@@ -48,19 +48,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddRecipeGroup("CalamityInheritance:AnyNightsRay");
-            recipe.AddIngredient(ModContent.ItemType<ValkyrieRay>());
-            recipe.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe()
+                .AddRecipeGroup("CalamityInheritance:AnyNightsRay")
+                .AddIngredient<ValkyrieRay>()
+                .AddIngredient<LivingShard>(7)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
 
-            Recipe recipe1 = CreateRecipe();
-            recipe1.AddIngredient(ModContent.ItemType<CarnageRay>());
-            recipe1.AddIngredient(ModContent.ItemType<ValkyrieRay>());
-            recipe1.AddIngredient(ModContent.ItemType<LivingShard>(), 7);
-            recipe1.AddTile(TileID.MythrilAnvil);
-            recipe1.Register();
+            CreateRecipe()
+                .AddIngredient<CarnageRay>()
+                .AddIngredient<ValkyrieRay>()
+                .AddIngredient<LivingShard>(7)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

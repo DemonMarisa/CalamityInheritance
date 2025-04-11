@@ -181,6 +181,15 @@ namespace CalamityInheritance.Utilities
 
             return true;
         }
+        // public static void HomeInOnMouseBetter(Projectile projectile, float homingSpeed, float homingInertia, bool ignoreTiles = false)
+        // {
+        //     Vector2 des = Main.MouseWorld;
+        //     //一般情况下……鼠标是不会大于4k屏幕的，对吧？
+        //     float distCompared = 6400f;
+        //     //本质上不需要做什么，因为如果要跟随鼠标位置的话
+        //     //计算向量
+        //     Vector2 homing
+        // }
         /// <summary>
         /// 用于搜索距离玩家最近的npc单位，并返回NPC实例
         /// </summary>
