@@ -124,7 +124,7 @@ Configs: {
 		}
 
 		BlessingoftheMoon: {
-			Label: 明月之祝福
+			Label: "[i:CalamityInheritance/BlessingOftheMoon]明月之祝福"
 			Tooltip: 接近小行星时播放
 		}
 

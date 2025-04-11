@@ -45,6 +45,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Buffs.Legendary;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -261,12 +262,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 NPC.buffImmune[k] = true;
             }
-            NPC.buffImmune[BuffID.Ichor] = false;
-            NPC.buffImmune[BuffID.CursedInferno] = false;
             //补一个其取消无视凳子和失温虹吸的效果
             //梯凳驾到不免疫是理所当然，失温虹吸是因为召唤师寒冰神性真的过弱
             //但是会给失温虹吸一个特判
             NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.OnFire3] = false;
             NPC.buffImmune[BuffID.OnFire] = false;
 
@@ -589,7 +589,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 手动重置伤害和是否无敌
             if (!isContactDamage)
             {
-                if ((LegacySCalAttackType)attackType != LegacySCalAttackType.PhaseTransition)
+                if ((LegacySCalAttackType)attackType != LegacySCalAttackType.PhaseTransition && !isSeekerAlive)
                     NPC.damage = 0;
 
                 rotationSpeed = 0.08f;
@@ -750,8 +750,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 float chargeVelocity = isWormAlive ? 26f : 30f;
                 chargeVelocity += 1f * currentPhase;
 
-                Vector2 vector = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitY);
-                NPC.velocity = vector * chargeVelocity;
+                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
+                direction = direction.SafeNormalize(Vector2.UnitX);
+                NPC.velocity = direction * chargeVelocity;
 
                 NPC.netUpdate = true;
                 SoundEngine.PlaySound(DashSound, NPC.Center);

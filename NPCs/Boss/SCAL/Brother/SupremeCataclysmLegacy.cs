@@ -1,3 +1,5 @@
+using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
@@ -37,8 +39,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.height = 120;
             NPC.defense = 100;
 			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f, true);
+            NPC.boss = true;
 
-			NPC.LifeMaxNERB(1200000, 1500000);
+            NPC.LifeMaxNERB(1200000, 1500000);
 
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
@@ -51,6 +54,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             {
                 NPC.buffImmune[k] = true;
             }
+            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
 

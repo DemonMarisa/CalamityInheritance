@@ -283,7 +283,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 NPC.alpha = Math.Max(NPC.alpha - 42, 0);
             }
         }
-
         // 直接将所有蠕虫设置为不活跃
         public void DespawnAllWormParts()
         {
@@ -296,7 +295,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                     Main.npc[i].active = false;
             }
         }
-
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

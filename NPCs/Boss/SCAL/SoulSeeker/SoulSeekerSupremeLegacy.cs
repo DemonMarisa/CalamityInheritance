@@ -11,6 +11,8 @@ using CalamityMod;
 using Terraria.Audio;
 using CalamityMod.Particles;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 {
@@ -43,9 +45,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             {
                 NPC.buffImmune[k] = true;
             }
-
+            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
+            NPC.buffImmune[BuffID.OnFire3] = false;
+            NPC.buffImmune[BuffID.OnFire] = false;
+
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath14;
             NPC.canGhostHeal = false;

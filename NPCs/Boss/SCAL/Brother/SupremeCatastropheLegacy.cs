@@ -14,6 +14,8 @@ using Terraria.ModLoader;
 using CalamityMod.Particles;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Buffs.Legendary;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 {
@@ -48,6 +50,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;
+            NPC.boss = true;
 
             NPC.noGravity = true;
             NPC.noTileCollide = true;
@@ -55,6 +58,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             {
                 NPC.buffImmune[k] = true;
             }
+            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
             NPC.HitSound = SoundID.NPCHit4;
@@ -303,8 +308,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             SoundEngine.PlaySound(new SoundStyle($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrothersDeath1") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
             for (int j = 0; j < 40; j++)
             {
-                int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
-                Main.dust[num622].velocity *= 3f;
+                int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
+                Main.dust[d].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
                     Main.dust[d].scale = 0.5f;
