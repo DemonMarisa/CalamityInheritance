@@ -179,18 +179,18 @@ PBGBuff: {
 }
 
 AbyssalFlames: {
-	// DisplayName: Abyssal Flames
-	// Description: Mods.CalamityInheritance.Buffs.AbyssalFlames.Description
+	DisplayName: 深渊之火
+	Description: 你的灵魂正在燃烧
 }
 
 Horror: {
-	// DisplayName: Horror
-	// Description: Mods.CalamityInheritance.Buffs.Horror.Description
+	DisplayName: 恐惧
+	Description: 你的精神防线正在崩溃
 }
 
 VulnerabilityHexLegacy: {
-	// DisplayName: Vulnerability Hex Legacy
-	// Description: Mods.CalamityInheritance.Buffs.VulnerabilityHexLegacy.Description
+	DisplayName: 孱弱巫咒
+	Description: 你的身体力不从心
 }
 
 CyrogenLegendaryBuff: {

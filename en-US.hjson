@@ -46,7 +46,11 @@ Mods: {
 		}
 
 		Projectiles: {
-			Melee.CIExocomet.DisplayName: C I Exocomet
+			Melee: {
+				CIExocomet.DisplayName: C I Exocomet
+				CIExocometMagic.DisplayName: C I Exocomet Magic
+			}
+
 			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
 			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor
 			ExoSpearTrailNor.DisplayName: Exo Spear Trail Nor

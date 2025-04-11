@@ -233,10 +233,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                if (CIConfig.Instance.ExoSperaHitEffect == true && hitCount < 1)
-                {
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
-                }
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
             }
             target.ExoDebuffs();
             OnHitEffects(target.Center);

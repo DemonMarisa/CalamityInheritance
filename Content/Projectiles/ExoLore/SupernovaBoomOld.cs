@@ -28,9 +28,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public int colorTimer = 0;
         public int time = 0;
         public int currentFrame = 1;
-
-        private Player Owner => Main.player[Projectile.owner];
-
         public override void SetDefaults()
         {
             Projectile.width = 408;
@@ -99,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if (currentFrame == 4)
             {
                 //砍了
-                float numberOfDusts = 8f;
+                float numberOfDusts = 4f;
                 float rotFactor = 360f / numberOfDusts;
                 for (int i = 0; i < numberOfDusts; i++)
                 {
@@ -134,14 +131,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     GeneralParticleHandler.SpawnParticle(subTrail);
                 }
 
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     Vector2 randVel = new Vector2(15, 15).RotatedByRandom(100) * Main.rand.NextFloat(0.8f, 1.6f);
                     Particle smoke = new HeavySmokeParticle(Projectile.Center + randVel, randVel, new Color(57, 46, 115) * 0.9f, Main.rand.Next(25, 35 + 1), Main.rand.NextFloat(0.9f, 2.3f), 0.4f);
                     GeneralParticleHandler.SpawnParticle(smoke);
                 }
 
-                float numberOflines = 10;
+                float numberOflines = 5;
                 float rotFactorlines = 360f / numberOflines;
                 for (int e = 0; e < numberOflines; e++)
                 {

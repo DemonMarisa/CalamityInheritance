@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             CalamityInheritancePlayer modPlayer = Main.player[Projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
             modPlayer.ProjectilHitCounter2++;
-            if (modPlayer.ProjectilHitCounter2 >= 2)
+            if (modPlayer.ProjectilHitCounter2 > 1)
             {
                 int numberOfProjectiles = Main.rand.Next(2, 4);
                 float spreadAngle = MathHelper.ToRadians(Main.rand.Next(10, 30));
@@ -67,12 +67,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                     float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                     Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center,randomDirection * 6f,ProjectileID.Leaf, Projectile.damage * 1, Projectile.knockBack,Projectile.owner);
-
-                    if (newProjectileId != Main.maxProjectiles)
-                    {
-                        Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
-                    }
+                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center, randomDirection * 6f,ProjectileID.Leaf, Projectile.damage * 1, Projectile.knockBack,Projectile.owner);
+                    Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
                 }
                 modPlayer.ProjectilHitCounter2 = 0;
             }

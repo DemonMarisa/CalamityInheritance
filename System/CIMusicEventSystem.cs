@@ -10,6 +10,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.System
 {
@@ -75,8 +76,11 @@ namespace CalamityInheritance.System
                 () => DownedBossSystem.downedExoMechs, () => CIConfig.Instance.Exomechs,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
-            AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(364.3d),
+            AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(364.1d),
                 () => CalamityGlobalNPC.SCalAcceptance != -1, () => CIConfig.Instance.Scal);
+
+            CalAddEntry("LegacyScalDefeated", "Interlude3", TimeSpan.FromSeconds(295.932d),
+                () => CIDownedBossSystem.DownedLegacyScal, () => CIConfig.Instance.Scal);
 
         }
 

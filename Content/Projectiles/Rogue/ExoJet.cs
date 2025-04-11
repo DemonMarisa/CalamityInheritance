@@ -4,6 +4,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -29,26 +30,29 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            if (Projectile.localAI[0] == 0f)
+            if (CIConfig.Instance.ExoSperaHitEffect == true)
             {
-                for (int i = 0; i < 4; i++)
+                if (Projectile.localAI[0] == 0f)
                 {
-                    Vector2 cinderSpawnPosition = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(0f);
-                    Vector2 cinderVelocity = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(0f);
-                    Color cinderColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
-                    SquishyLightParticle cinder = new(cinderSpawnPosition, cinderVelocity, 1.1f, cinderColor, 32, 1f, 4f);
-                    GeneralParticleHandler.SpawnParticle(cinder);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Vector2 cinderSpawnPosition = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(0f);
+                        Vector2 cinderVelocity = -Vector2.UnitY.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(0f);
+                        Color cinderColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
+                        SquishyLightParticle cinder = new(cinderSpawnPosition, cinderVelocity, 1.1f, cinderColor, 32, 1f, 4f);
+                        GeneralParticleHandler.SpawnParticle(cinder);
+                    }
+                    Projectile.localAI[0] = 1f;
                 }
-                Projectile.localAI[0] = 1f;
-            }
 
-            // Create smoke.
-            for (int i = 0; i < 1; i++)
-            {
-                Color smokeColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
-                smokeColor = Color.Lerp(smokeColor, Color.Gray, 0.55f);
-                HeavySmokeParticle smoke = new(Projectile.Center, Main.rand.NextVector2Circular(0f, 0f), smokeColor, 40, 0.8f, 1f, 0.03f, true, 0.075f);
-                GeneralParticleHandler.SpawnParticle(smoke);
+                // Create smoke.
+                for (int i = 0; i < 1; i++)
+                {
+                    Color smokeColor = CalamityUtils.MulticolorLerp(Main.rand.NextFloat(), CalamityUtils.ExoPalette);
+                    smokeColor = Color.Lerp(smokeColor, Color.Gray, 0.55f);
+                    HeavySmokeParticle smoke = new(Projectile.Center, Main.rand.NextVector2Circular(0f, 0f), smokeColor, 40, 0.8f, 1f, 0.03f, true, 0.075f);
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
             }
         }
 

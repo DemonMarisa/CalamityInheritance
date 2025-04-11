@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Dusts;
@@ -219,12 +220,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         */
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			SpriteEffects spriteEffects = SpriteEffects.None;
+            SpriteEffects spriteEffects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;
 
 			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
-			Vector2 vector11 = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
+            Vector2 vector11 = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 			Color color36 = Color.White;
 			float amount9 = 0.5f;
 			int num153 = 7;
@@ -281,14 +282,15 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             return false;
         }
         */
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             for (int num623 = 0; num623 < 2; num623++)
             {
-                int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
+                int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 3f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
                 Main.dust[num624].velocity *= 2f;
             }
         }
@@ -298,7 +300,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/SCalSounds/BrothersDeath2") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
             for (int num621 = 0; num621 < 40; num621++)
             {
-                int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
                 Main.dust[num622].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -308,10 +310,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             }
             for (int num623 = 0; num623 < 40; num623++)
             {
-                int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
+                int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 3f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
                 Main.dust[num624].velocity *= 2f;
             }
         }

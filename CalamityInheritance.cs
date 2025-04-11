@@ -82,7 +82,6 @@ namespace CalamityInheritance
             CIWeaponsResprite.LoadTexture();
             #region Hook
             CalamityInheritanceDashHook.Load(this);
-            VCBeam.Load(this);
             HeavenlyGaleProjHook.Load(this);
             #endregion
         }
@@ -93,7 +92,7 @@ namespace CalamityInheritance
             Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), EffectPriority.VeryHigh);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy1"] = new SCalSkyLegacy();
             // 蓝色
-            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0.2f, 0.9f, 1.2f).UseOpacity(0.55f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0.2f, 0.8f, 1f).UseOpacity(0.55f), EffectPriority.VeryHigh);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy2"] = new SCalSkyLegacy();
             // 橙色
             Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.15f, 0.15f).UseOpacity(0.65f), EffectPriority.VeryHigh);

@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 100;
-            Projectile.timeLeft = 240;
+            Projectile.timeLeft = 180;
         }
 
         public override void AI()

@@ -7,6 +7,7 @@ using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -35,8 +36,8 @@ namespace CalamityInheritance.Content.Items
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 10;
-            Item.shoot = ModContent.ProjectileType<MiniRocket>();
-        }
+            Item.shoot = ModContent.ProjectileType<CIVividBeamExoLore>();
+        }/*
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int fireOffset = -100;
@@ -65,7 +66,7 @@ namespace CalamityInheritance.Content.Items
             }
             
             return false;
-        }
+        }*/
         /*
         public override bool? UseItem(Player player)
         {

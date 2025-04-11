@@ -122,8 +122,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             }
             if (NPC.life <= 0)
             {
-                DeathAshParticle.CreateAshesFromNPC(NPC);
-                for (int num621 = 0; num621 < 40; num621++)
+                for (int num621 = 0; num621 < 60; num621++)
                 {
                     int num622 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
                     Main.dust[num622].velocity *= 3f;
@@ -133,7 +132,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
                         Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
                 }
-                for (int num623 = 0; num623 < 70; num623++)
+                for (int num623 = 0; num623 < 90; num623++)
                 {
                     int num624 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
                     Main.dust[num624].noGravity = true;

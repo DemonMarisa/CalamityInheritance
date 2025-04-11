@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            Item.damage = 900;
+            Item.damage = 750;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 84;
             Item.height = 30;
@@ -86,11 +86,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-
             // PhotovisceratorCrystal的发射逻辑
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                // 第一步，随机放置在玩家周围360度，并朝向玩家
                 Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
                 float warpDist = Main.rand.NextFloat(60f, 120f);
                 float warpAngle = Main.rand.NextFloat(-MathHelper.Pi / 2.6f, MathHelper.Pi / 2.6f);

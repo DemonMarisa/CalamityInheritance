@@ -55,7 +55,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 return false;
             }
             else
-            return true;
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ProfanedNuke>(), damage, knockback);
+            return false;
         }
     }
 }

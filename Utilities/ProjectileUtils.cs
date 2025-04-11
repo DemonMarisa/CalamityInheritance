@@ -71,7 +71,7 @@ namespace CalamityInheritance.Utilities
                 Vector2 homeDirection = (destination - projectile.Center).SafeNormalize(Vector2.UnitY);
                 Vector2 newVelocity = (projectile.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
 
-                // If maxAngleChange is provided, limit the angle change
+                // 限制角度
                 if (maxAngleChange.HasValue)
                 {
                     float currentAngle = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);

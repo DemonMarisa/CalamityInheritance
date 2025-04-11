@@ -46,7 +46,11 @@ Mods: {
 		}
 
 		Projectiles: {
-			Melee.CIExocomet.DisplayName: 星流流星
+			Melee: {
+				CIExocomet.DisplayName: 星流流星
+				// CIExocometMagic.DisplayName: C I Exocomet Magic
+			}
+
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
 			ExoSpearProjNor.DisplayName: 圣火之枪
 			ExoSpearTrailNor.DisplayName: 圣火投刀

@@ -44,9 +44,11 @@ using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.TownNPC;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
+    [AutoloadBossHead]
     public class SupremeCalamitasLegacy : ModNPC
     {
         // 生成场地
@@ -109,10 +111,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public static readonly SoundStyle BulletHellEndSound = new("CalamityMod/Sounds/Custom/SCalSounds/SCalEndBH");
         public static readonly SoundStyle GiveUpSound = new("CalamityMod/Sounds/Custom/SCalSounds/SupremeCalamitasGiveUp");
         public static readonly SoundStyle BrimstoneMonsterSpawn = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneMonsterSpawn");
-
-        public static readonly SoundStyle ScalTra1 = new("CalamityInheritance/Sounds/Scal/SCalTra");
-        public static readonly SoundStyle ScalTra2 = new("CalamityInheritance/Sounds/Scal/SCalTra2");
         #endregion
+        public int dustType = (int)CalamityDusts.Brimstone;
         #region 杂项初始化
         // 攻击类型枚举
         public enum LegacySCalAttackType
@@ -254,8 +254,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 NPC.buffImmune[k] = true;
             }
-            NPC.buffImmune[BuffID.Ichor] = false;
-            NPC.buffImmune[BuffID.CursedInferno] = false;
+            NPC.buffImmune[BuffID.OnFire3] = false;
+            NPC.buffImmune[BuffID.OnFire] = false;
 
             NPC.knockBackResist = 0f;
             NPC.dontTakeDamage = false;
@@ -413,6 +413,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第三阶段，50% - 45%
             if (lifeRatio <= Phase3LifeRatio && currentPhase == ThirdBulletHellPhase)
             {
+                dustType = CIDustID.DustMushroomSpray113;
                 SendBattleText(3);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -431,7 +432,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第五阶段，40% - 30%
             if (lifeRatio <= Phase5LifeRatio && currentPhase == Transiting)
             {
-                SendBattleText(5);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.PhaseTransition;
                 currentPhase++;
@@ -440,6 +440,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 第六阶段，30% - 20%
             if (lifeRatio <= Phase6LifeRatio && currentPhase == FourthBulletHellPhase)
             {
+                dustType = (int)CalamityDusts.Brimstone;
                 SendBattleText(6);
                 attackTimer = 0;
                 attackType = (int)LegacySCalAttackType.BulletHell;
@@ -640,8 +641,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 }
                 if (attacktimer == 902)
                 {
+                    SpawnDust();
                     SoundEngine.PlaySound(BulletHellEndSound, NPC.position);
-                    SelectNextAttack();
+                    if(currentPhaseHell != 1f)
+                        SelectNextAttack();
+                    else
+                        DoBehavior_SummonSepulcher();
                 }
             }
 
@@ -918,8 +923,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
-            if (attacktimer == 900)
-                DoBehavior_SummonSepulcher();
         }
         #endregion
         #region 第二轮
@@ -1194,7 +1197,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 防止一出来就选择了
             if (!isBrotherAlive && attacktimer > 5)
             {
-                SendBattleText(4);
                 SelectNextAttack();
             }
         }
@@ -1336,7 +1338,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     dustVelocity = dustVelocityScalar / dustVelocity;
                     dustVelocityX *= dustVelocity;
                     dustVelocityY *= dustVelocity;
-                    int dust = Dust.NewDust(new Vector2(dustPositionX, dustPositionY), scale, scale, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                    int dust = Dust.NewDust(new Vector2(dustPositionX, dustPositionY), scale, scale, dustType, 0f, 0f, 100, default, 2f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position.X = NPC.Center.X;
                     Main.dust[dust].position.Y = NPC.Center.Y;
@@ -1344,6 +1346,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Main.dust[dust].position.Y += Main.rand.Next(-10, 11);
                     Main.dust[dust].velocity.X = dustVelocityX;
                     Main.dust[dust].velocity.Y = dustVelocityY;
+                    Main.dust[dust].scale = 3f;
                     dustAmtSpawned++;
                 }
             }
@@ -1369,8 +1372,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.OrangeRed);
                     else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 4)
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.OrangeRed);
-                    else
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.ScalStart", Color.OrangeRed);
                 }
             
         }
@@ -1475,12 +1476,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             Texture2D Scal = TextureAssets.Npc[NPC.type].Value;
-            Texture2D ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacyGlow").Value;
-
+            Texture2D ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow").Value;
+            // NPC.CIMod().BossNewAI[6]为阶段判定
             if(isSecondPhase == true)
             {
                 Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2").Value;
-                ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2Glow").Value;
+                ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow").Value;
             }
 
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -1538,7 +1539,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, hit.HitDirection, -1f, 0, default, 1f);
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType, hit.HitDirection, -1f, 0, default, 1f);
             }
             if (NPC.life <= 0)
             {
