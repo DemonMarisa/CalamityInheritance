@@ -726,6 +726,13 @@ namespace CalamityInheritance.CIPlayer
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
             }
+            //所有林海套装的新效果
+            if (AuricSilvaSet && Player.lifeRegen < -10)
+            {
+                //将绝对值的1/10转化为生命恢复，间接降低烧血debuff的伤害
+                int getCurLifeRegenAbs = Math.Abs(Player.lifeRegen);
+                Player.lifeRegen += getCurLifeRegenAbs / 10;
+            }
             // Silva invincibility effects
             if (auricsilvaCountdown > 0 && AuricGetSilvaEffect)
             {

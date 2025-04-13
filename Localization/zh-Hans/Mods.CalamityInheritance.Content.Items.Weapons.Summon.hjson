@@ -34,9 +34,9 @@ CosmicImmaterializerOld: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:发射更多的宇宙能量]
-		[c/0080CA:宇宙能量会在发射一段时间后跟踪]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:AI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:发射更多宇宙能量];
+		[c/4169E1:void] [c/FFFFE0:CosmicEnergyAI] [c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:宇宙能量会在发射一段时间后跟踪];
 		'''
 }
 
@@ -86,6 +86,10 @@ CyrogenLegendary: {
 
 SaveCosmic:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:不再消耗召唤栏]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()]
+	{
+	    [c/87CEFA:使用归墟之灵仍然需要10个召唤栏的条件];
+	    [c/87CEFA:但宇宙之灵本身不再消耗召唤栏];
+	}
 	'''

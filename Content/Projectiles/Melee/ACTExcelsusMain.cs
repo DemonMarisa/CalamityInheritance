@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //发起追踪的Timer
         public int TimerAlt = 0;
         public int AnotherTimer = 0;
+        public int MouseTimer = 0;
         //发起追踪的射弹是否已经进行过追踪。
         public bool CheckIfHit = false;
         public int HomeOnHitCounts = 0;
@@ -92,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Projectile.netUpdate = true;
                 }
                 //理由同上，我们需要确保其一定执行IsOnHitHoming
-                else if (!CheckIfHit)
+                else if (tar == null)
                 {
                     Projectile.ai[AttackType] = IsPointMouse;
                     Projectile.netUpdate = true;
@@ -128,8 +129,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //追踪射弹击中敌怪后的回击
         private void DoOnHitHoming(NPC tar)
         {
-            //占位符
-            
+            MouseTimer = 0;
             Projectile.velocity *= 0.95f;
             AnotherTimer++;
             if (AnotherTimer < ACTExcelsus.IdleTimer * 2 && AnotherTimer > ACTExcelsus.IdleTimer)
@@ -138,7 +138,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 DoAngleToTarget(tar.Center); 
             }
             if (AnotherTimer > ACTExcelsus.IdleTimer * 2)
-                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+            {
+                CIFunction.HomingNPCBetter(Projectile, tar, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f, 1, 10f);
+                // CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+            }
             //正式发起追踪前这个Timer得……变一下。
             else Projectile.timeLeft = 85;
 
@@ -149,12 +152,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float rot = Projectile.AngleTo(tar) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
         }
-        //没有搜索到目标的时候，指向鼠标
+        //没有搜索到目标的时候，指向鼠标, 并尝试追及
         private void DoPointMouse()
         {
             float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= 0.9f;
+            MouseTimer += 1;
+            if (MouseTimer > ACTExcelsus.IdleTimer)
+            {
+                Projectile.extraUpdates += 2;
+                CIFunction.HomeInOnMouseBetter(Projectile, 16f, 20f, 1, false, Vector2.Distance(Projectile.Center, Main.MouseWorld) / 3);
+            }
         }
 
         //发起追踪前正常飞行
@@ -174,6 +183,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //追踪逻辑
         public void DoHoming(NPC tar)
         {
+            MouseTimer = 0;
             //首先搜索附近的NPC实例, 需注意的是，AI执行的这段时间内也会一直检索目标。
             Player p = Main.player[Projectile.owner];
             float spiningDir = ACTExcelsus.LerpAngle;
@@ -188,7 +198,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 //给多2个额外更新
                 Projectile.extraUpdates += 2;
-                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+                CIFunction.HomingNPCBetter(Projectile, tar, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f, 1, 10f);
+                // CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
             }
         }
         public override bool OnTileCollide(Vector2 oldVelocity)

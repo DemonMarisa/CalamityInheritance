@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             if (Main.rand.NextBool(8))
             {
-                Vector2 value3 = Vector2.UnitX.RotatedByRandom(1.5707963705062866).RotatedBy((double)Projectile.velocity.ToRotation(), default);
+                Vector2 value3 = Vector2.UnitX.RotatedByRandom(MathHelper.PiOver2).RotatedBy((double)Projectile.velocity.ToRotation(), default);
                 int num59 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.2f);
                 Main.dust[num59].noGravity = true;
                 Main.dust[num59].velocity = value3 * 0.66f;

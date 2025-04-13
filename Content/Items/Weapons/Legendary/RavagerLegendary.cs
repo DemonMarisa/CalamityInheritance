@@ -117,35 +117,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 int meteorAmt = Main.rand.Next(4, 6);
                 //T2样式加强：左键与右键多2颗陨石
                 if (usPlayer.BetsyTier2)
-                    meteorAmt += 2;
+                    meteorAmt += 3;
                 for (int i = 0; i < meteorAmt; ++i)
                 {
                     float SpeedX = velocity.X + Main.rand.Next(-30, 31) * 0.05f;
                     float SpeedY = velocity.Y + Main.rand.Next(-30, 31) * 0.05f;
                     float ai0 = Main.rand.Next(6);
                     Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, pSpriteType, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
-                }
-                int j = 0;
-                if (usPlayer.BetsyTier2)
-                {
-                    for ( ; j < 2; j++)
-                    {
-                        float pPosX = player.Center.X + Main.rand.NextFloat(-200f, 201f);
-                        float pPosY = player.Center.Y + Main.rand.NextFloat(670f, 1080f);
-                        Vector2 newPos = new (pPosX, pPosY);
-                        //速度
-                        Vector2 spd= Main.MouseWorld - newPos;
-                        //水平速度随机度
-                        spd.X += Main.rand.NextFloat(-15f, 16f);
-                        float pSpeed = 24f;
-                        float tarDist =  spd.Length();
-                        //?
-                        tarDist = pSpeed / tarDist;
-                        spd.X *= tarDist;
-                        spd.Y *= tarDist;
-                        float ai0 = Main.rand.Next(6);
-                        Projectile.NewProjectile(source, newPos, spd, type, damage, knockback, player.whoAmI, ai0, 0.5f + (float)Main.rand.NextDouble() * 0.9f);
-                    }
                 }
                 return false;
             }

@@ -23,6 +23,14 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
         {
             #region 初始化
 
+            const int AIType = 1;
+            const int Timer = 2;
+            const int ProjShootingTimer = 1;
+            const float ShootingLaser = 0f;
+            const float ShootingFireball = 1f;
+            const float Charging = 2f;
+            const float ReverseCharge = 3f;
+            const float ResetAI = 4f;
             CIGlobalNPC cign = boss.CIMod();
             CIFunction.SetGlow(boss, 1f, 0f, 0f);
 
@@ -75,8 +83,8 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             //旧灾与玩家如果是这个距离，就停止移动
             float getMoveDistGate = 100f;
             //移除死亡差分。
-            float baseSpeed = 18f * (boss.ai[1] == 4f ? 1.8f : 1f);
-            float baseAccele = 0.2f * (boss.ai[1] == 4f ? 1.8f : 1f);
+            float baseSpeed = 18f * (boss.ai[AIType] == ResetAI ? 1.8f : 1f);
+            float baseAccele = 0.2f * (boss.ai[AIType] == ResetAI ? 1.8f : 1f);
             //TODO2: 这里，用于查看玩家是否手持真近战的减速，可能有潜在问题，到时候再看
             Item ifTrueMelee = player.inventory[player.selectedItem];
             if (ifTrueMelee.CountsAsClass<TrueMeleeDamageClass>()) baseAccele *= 0.5f;
@@ -90,7 +98,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             float chargeDist = 400f;
 
             //旧灾实际应该针对谁?
-            Vector2 realTar = cign.BossNewAI[2] > 0f || boss.ai[1] == 0f ?
+            Vector2 realTar = cign.BossNewAI[2] > 0f || boss.ai[AIType] == ShootingLaser ?
                                new(player.Center.X, player.Center.Y - baseDist) :
                                new(player.Center.X + chargeDist * side, player.Center.Y);
 
@@ -104,27 +112,21 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             }
 
             //随机度
-            realTar.X += boss.ai[1] == 0f ? boss.localAI[3] : boss.localAI[2];
-            realTar.Y += boss.ai[1] == 0f ? boss.localAI[2] : boss.localAI[3];
+            realTar.X += boss.ai[AIType] == ShootingLaser ? boss.localAI[3] : boss.localAI[2];
+            realTar.Y += boss.ai[AIType] == ShootingLaser ? boss.localAI[2] : boss.localAI[3];
 
             //旧灾与针对的对象的实际距离应该是?
             Vector2 distToRealTar = realTar - boss.Center;
 
             //让旧灾动起来, 暂时使用原灾的封装
-            if (boss.ai[1] == 0f || boss.ai[1] == 1f || boss.ai[1] == 4f || cign.BossNewAI[2] > 0f)
+            if (boss.ai[AIType] == ShootingLaser || boss.ai[AIType] == ShootingFireball || boss.ai[AIType] == ResetAI || cign.BossNewAI[2] > 0f)
                 CalamityUtils.SmoothMovement(boss, getMoveDistGate, distToRealTar, baseSpeed, baseAccele, true);
             #endregion
 
             #region 攻击AI
-            const int AIType = 1;
-            const int Timer = 2;
+            
             //LocalAI[1]
-            const int ProjShootingTimer = 1;
-            const float ShootingLaser = 0f;
-            const float ShootingFireball = 1f;
-            const float Charging = 2f;
-            const float ReverseCharge = 3f;
-            const float ResetAI = 4f;
+            
             switch (boss.ai[AIType])
             {
                 case ShootingLaser:

@@ -30,8 +30,11 @@ namespace CalamityInheritance.Content.Projectiles
         public bool ThrownMode = false;
         //标记这个射弹为魔法伤害, 目前用于归元漩涡(原灾)消失后生成的星流光束的斩切标记
         public bool PingAsMagic = false;
+        //标记这个射弹是否是右键掷出
+        public bool GlobalRightClickListener = false;
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
+        public int StoreEU = -1;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -44,9 +47,6 @@ namespace CalamityInheritance.Content.Projectiles
                     && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 125f)
                     ElemQuiver(projectile);
-            }
-            if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
-            {
                 //回调原版所有悠悠球的无敌帧
                 //注意其他方面都不会回调，只回调了无敌帧，但也足够了
                 //砍无敌帧太傻逼了，纯纯砍手感的
@@ -71,9 +71,7 @@ namespace CalamityInheritance.Content.Projectiles
                         projectile.localNPCHitCooldown = 10;
                         break;
                 }
-            }
-            if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
-            {
+            
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
                     if (modPlayer.ReaverRogueExProj)
@@ -87,9 +85,10 @@ namespace CalamityInheritance.Content.Projectiles
                         }
                     }
                     //给了孔雀翎一个特判
-                    if (modPlayer.nanotechold && projectile.type != ModContent.ProjectileType<PBGLegendaryBeam>())
+                    if (modPlayer.nanotechold)
                     {
-                        if (Main.player[projectile.owner].miscCounter % 30 == 0 && projectile.FinalExtraUpdate())
+                        int actualTimer = projectile.type == ModContent.ProjectileType<PBGLegendaryBeam>() ? 90 : 30;
+                        if (Main.player[projectile.owner].miscCounter % actualTimer == 0 && projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {

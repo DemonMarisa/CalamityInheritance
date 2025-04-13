@@ -93,9 +93,9 @@ SubsumingVortexold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:初始弹幕速度更快]
-		[c/0080CA:在发射出去一段时间后会逐渐加速跟踪敌人]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:强化射弹初始速度];
+		[c/4169E1:void] [c/FFFFE0:HomeInOnTargetBetter][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:发射出去一段时间后会追踪敌人];
 		'''
 }
 
@@ -130,9 +130,19 @@ VividClarityOld: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:发射9道星流光束，每一道光束击中敌人都会产生爆炸]
-		[c/0080CA:光束散步更大]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()]
+		{
+		    [c/87CEFA:现在发射9道星流光束];
+		    [c/87CEFA:提高光束散布];
+		}
+		[c/4169E1:void] [c/FFFFE0:ModifyOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+		[c/4169E1:void] [c/FFFFE0:ModifyOnHitTile] [c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+		[c/4169E1:void] [c/FFFFE0:OnHitEffect][c/4169E1:()]
+		{
+		    [c/87CEFA:你的星流光束总会造成超新星爆炸];
+		    [c/87CEFA:击中墙体/敌人时, 从身后召唤大量星流彗星支援你];
+		}
 		'''
 }
 
@@ -322,14 +332,19 @@ DestroyerLegendary: {
 
 SubsumingVortexChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:大型漩涡在击中敌人时会从场外召唤追踪漩涡支援你]
-	[c/0080CA:追踪漩涡消失时会进行一次星流斩击]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:ModifyVortexOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:所有追踪漩涡在消失时都会进行一次星流斩击];
+	[c/4169E1:void] [c/FFFFE0:VortexSupport][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:大型漩涡在击中敌人时会从场外召唤追踪漩涡支援你];
 	'''
 VividChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:有些时候可以造成超新星爆炸]
-	[c/0080CA:击中敌人/墙体时，将会召唤星流光束支援你]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:ModifyOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+	[c/4169E1:void] [c/FFFFE0:ModifyOnHitTile] [c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+	[c/4169E1:void] [c/FFFFE0:OnHitEffect][c/4169E1:()]
+	{
+	    [c/87CEFA:你的星流光束有些时候会造成超新星爆炸];
+	    [c/87CEFA:击中墙体/敌人时, 将会召唤星流光束支援你];
+	}
 	'''
 // VividClarityBeamCal.DisplayName: Vivid Clarity Beam Cal

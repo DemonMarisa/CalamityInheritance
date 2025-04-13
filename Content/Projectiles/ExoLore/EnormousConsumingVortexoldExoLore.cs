@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             set => Projectile.ai[1] = value;
         }
 
-        public const int TentacleSpawnRate = 10;
+        public const int TentacleSpawnRate = 20;
         public const int PulseInterval = 40;
         public const float PulseHitboxExpandRatio = 2.5f;
         public const float RadialOffsetVarianceFactor = 0.1f;
@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             float xStartingAcceleration = Main.rand.NextFloat(0.001f, 0.04f) * Main.rand.NextBool(2).ToDirectionInt();
             float yStartingAcceleration = Main.rand.NextFloat(0.001f, 0.04f) * Main.rand.NextBool(2).ToDirectionInt();
-            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, Vector2.UnitY.RotatedByRandom(6.2831854820251465) * Main.rand.NextFloat(9f, 13f), ModContent.ProjectileType<SubsumingTentacle>(), (int)(Projectile.damage * 0.6), Projectile.knockBack * 0.6f, Projectile.owner, xStartingAcceleration, yStartingAcceleration, 0f).tileCollide = false;
+            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(9f, 13f), ModContent.ProjectileType<SubsumingTentacle>(), (int)(Projectile.damage * 0.6), Projectile.knockBack * 0.6f, Projectile.owner, xStartingAcceleration, yStartingAcceleration, 0f).tileCollide = false;
         }
 
         public void PulseEffect()

@@ -46,20 +46,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         }
         public override void AddRecipes()
         {
-
+            //移除金源锭需求
             CreateRecipe().
                 AddIngredient(ItemID.XenoStaff).
                 AddIngredient(ItemID.MoonlordTurretStaff).
+                AddIngredient<CosmiliteBar>(15).
                 AddIngredient<DarksunFragment>(25). //->补上了缺失的日食碎片
-                AddIngredient<AuricBar>(5).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ItemID.XenoStaff).
-                AddIngredient(ItemID.MoonlordTurretStaff).
-                AddIngredient<DarksunFragment>(25).
-                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
         }

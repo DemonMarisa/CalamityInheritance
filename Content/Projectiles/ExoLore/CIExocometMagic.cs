@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = 1;
-            Projectile.alpha = 50;
+            Projectile.alpha = 0;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 2;
         }
@@ -48,6 +48,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
+
+            Projectile.alpha += (int)Utils.GetLerpValue(0, 255, 15);
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 5)
             {

@@ -181,50 +181,125 @@ namespace CalamityInheritance.Utilities
 
             return true;
         }
-        // public static void HomeInOnMouseBetter(Projectile projectile, float homingSpeed, float homingInertia, bool ignoreTiles = false)
-        // {
-        //     Vector2 des = Main.MouseWorld;
-        //     //一般情况下……鼠标是不会大于4k屏幕的，对吧？
-        //     float distCompared = 6400f;
-        //     //本质上不需要做什么，因为如果要跟随鼠标位置的话
-        //     //计算向量
-        //     Vector2 homing
-        // }
         /// <summary>
-        /// 用于搜索距离玩家最近的npc单位，并返回NPC实例
+        /// 新的追踪方法，这个会指定一个NPC, 且可以自定义输入额外更新，以及强制速度不受距离影响
+        /// 目前没有角度限制等一类的东西，如果需要则可以补上。
+        /// </summary>
+        /// <param name="proj">射弹</param>
+        /// <param name="target">射弹目标</param>
+        /// <param name="distRequired">最大范围</param>
+        /// <param name="speed">射弹速度</param>
+        /// <param name="inertia">惯性</param>
+        /// <param name="giveExtraUpdate">给予额外更新，默认1</param>
+        /// <param name="forceSpeed">指定射弹无视距离，使射弹使用你输入的速度。这个效果有一个距离特判，即距离比你输入的射弹速度还短的时候才会生效, 一般可无视。</param>
+        public static void HomingNPCBetter(Projectile proj, NPC target, float distRequired, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null)
+        {
+            //一般来说你用这个方法就说明target理论上应当可以被追，但……just in case
+            if (!proj.friendly || target == null || !target.active)
+                return;
+            bool canHome;
+
+            float curDist = Vector2.Distance(target.Center, proj.Center);
+            //存储射弹当前额外更新
+            if (proj.CalamityInheritance().StoreEU == -1)
+                proj.CalamityInheritance().StoreEU = proj.extraUpdates;
+
+            if (!target.CanBeChasedBy(proj) || !target.chaseable || curDist > distRequired) 
+                canHome = false;
+            else canHome = true;
+            if (canHome)
+            {
+                //给予额外更新
+                proj.extraUpdates = proj.CalamityInheritance().StoreEU + giveExtraUpdate;
+                //开始追踪target
+                Vector2 home = (target.Center - proj.Center).SafeNormalize(Vector2.UnitY);
+                Vector2 velo = (proj.velocity * inertia + home * speed) / (inertia + 1f);
+
+                //TODO: 这个写法不太好，可能得考虑重置一下
+                //除非你当前距离比射弹速度还少, 我们才会重新设定速度
+                if (forceSpeed.HasValue && curDist < speed)
+                    velo = proj.velocity + home * forceSpeed.Value;
+                //设定速度
+                proj.velocity = velo;
+            }
+            //否则返回射弹原本的额外更新
+            else proj.extraUpdates = proj.CalamityInheritance().StoreEU;
+        }
+        /// <summary>
+        /// 使你的射弹追随你的鼠标。有使其判定鼠标是否在墙体内与给予额外更新的输入
+        /// </summary>
+        /// <param name="projectile">射弹</param>
+        /// <param name="homingSpeed">追踪速度</param>
+        /// <param name="inertia">惯性</param>
+        /// <param name="giveExtraUpdate">附加多少额外更新，默认为1</param>
+        /// <param name="ignoreTiles">是否无视物块</param>
+        /// <param name="stopHomingDist">如果距离鼠标位置有一定距离时停止跟随</param>
+        public static void HomeInOnMouseBetter(Projectile projectile, float homingSpeed, float inertia, int giveExtraUpdate = 1, bool ignoreTiles = false, float? stopHomingDist = null)
+        {
+            Vector2 des = Main.MouseWorld;
+            //一般情况下……鼠标是不会大于4k屏幕的，对吧？
+            float distCompared = 6400f;
+            if (projectile.CalamityInheritance().StoreEU == -1)
+                projectile.CalamityInheritance().StoreEU = projectile.extraUpdates;
+
+            if ((Vector2.Distance(projectile.Center, des) > distCompared || Main.player[projectile.owner].dead) && (ignoreTiles == false || !Collision.CanHit(projectile.Center, 1, 1, des, 1, 1)))
+            {
+                projectile.extraUpdates = projectile.CalamityInheritance().StoreEU;
+                projectile.netUpdate = true;
+                return;
+            }
+            if (stopHomingDist.HasValue)
+            {
+                if (Vector2.Distance(projectile.Center, des) < stopHomingDist.Value)
+                {
+                    projectile.extraUpdates = projectile.CalamityInheritance().StoreEU;
+                    projectile.netUpdate = true;
+                    return;
+                }
+            }
+            //本质上不需要做什么，因为如果要跟随鼠标位置的话, 鼠标肯定是一直存在的, 因此直接给速度就行了
+            //计算向量
+            projectile.extraUpdates = projectile.CalamityInheritance().StoreEU + giveExtraUpdate;
+            Vector2 homing = (des - projectile.Center).SafeNormalize(Vector2.UnitY);
+            Vector2 velocity = (projectile.velocity * inertia + homing * homingSpeed) / (inertia + 1f);
+            projectile.velocity = velocity;
+        }
+        /// <summary>
+        /// 用于搜索距离玩家最近的npc单位，并返回NPC实例。
+        /// 这里Boss优先度的实现逻辑是如果我们但凡搜索到一个Boss，就把这个Boss临时存储，在返回实例的时候优先使用
         /// </summary>
         /// <param name="p">玩家</param>
         /// <param name="maxDist">最大搜索距离</param>
         /// <param name="bossFirst">boss优先度，这个还没实现好逻辑，所以填啥都没用（</param>
+        /// <param name="ignoreTiles">穿墙搜索, 默认为</param>
         /// <returns>返回一个NPC实例</returns>
-        public static NPC FindClosestTarget(Projectile p, float maxDist, bool bossFirst = false)
+        public static NPC FindClosestTarget(Projectile p, float maxDist, bool bossFirst = false, bool ignoreTiles = true)
         {
             //bro我真的要遍历整个NPC吗？
             float distStoraged = 32000f;
-            bool getTar = false;      
-            if (!getTar)
+            NPC tryGetBoss = null;
+            foreach (NPC npc in Main.ActiveNPCs)
             {
-                foreach (NPC npc in Main.ActiveNPCs)
+                if (!npc.active || npc.friendly || npc.lifeMax < 5)
+                    continue;
+                float exDist = npc.width + npc.height;
+                //如果优先搜索boss单位，且当前敌怪不是一个boss，直接跳过
+                //单位不可被追踪 或者 超出索敌距离则continue
+                if (!npc.CanBeChasedBy(p.Center, false) || Vector2.Distance(p.Center, npc.Center) > maxDist + exDist)
+                    continue;
+
+                //补: 如果优先搜索Boss单位, 且附近至少有一个。我们直接存储这个Boss单位
+                if (npc.boss && bossFirst)
+                    tryGetBoss = npc;
+                
+                //搜索符合条件的敌人, 准备返回这个NPC实例
+                float curNpcDist = Vector2.Distance(npc.Center, p.Center);
+                if (curNpcDist < distStoraged && (ignoreTiles || Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1)))
                 {
-                    float exDist = npc.width + npc.height;
-                    //单位不可被追踪 或者 超出索敌距离则continue
-                    if (!npc.CanBeChasedBy(p.Center, false) || !p.WithinRange(npc.Center, maxDist + exDist))
-                        continue;
-                    
-                    //如果优先搜索boss单位，且当前敌怪不是一个boss，直接跳过
-                    // if (bossFirst && !npc.boss)
-                    //     continue;
-                    
-                    //否则搜索符合条件的敌人, 返回这个NPC实例
-                    float curNpcDist = Vector2.Distance(npc.Center, p.Center);
-                    if (curNpcDist < distStoraged && Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1))
-                    {
-                        //优先返回Boss实例
-                        if (npc.boss && bossFirst)
-                            return npc;
-                        else
-                            return npc;
-                    }
+                    //如果tryboss有
+                    if (tryGetBoss != null && bossFirst)
+                        return tryGetBoss;
+                    else return npc;
                 }
             }
             //其余情况下返回空实例

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, 0f, (255 - Projectile.alpha) * 0.1f / 255f, 0f);
-            for (int num151 = 0; num151 < 3; num151++)
+            for (int i = 0; i < 3; i++)
             {
                 int num154 = 14;
                 int num155 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width - num154 * 2, Projectile.height - num154 * 2, DustID.GreenTorch, 0f, 0f, 100, default, 3f);

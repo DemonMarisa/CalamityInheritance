@@ -12,10 +12,10 @@ ExoTheApostle: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:攻击会无限穿透]
-		[c/0080CA:长枪命中敌人会爆出跟踪的能量匕首，同时召唤另一枚长枪追加打击]
-		[c/0080CA:潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:长枪允许无限穿透];
+		[c/4169E1:void] [c/FFFFE0:NotStealthOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:长枪命中敌人后, 迸发出跟踪的能量匕首，并召唤一把新的长枪追击敌人];
+		[c/4169E1:void] [c/FFFFE0:StealthOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:潜伏攻击扔出必中的长枪，可以分裂出大量的能量匕首，并召唤更多长枪];
 		'''
 }
 
@@ -76,8 +76,14 @@ Supernovaold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:潜伏攻击会产生更大的爆炸]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:OnRightClick][c/4169E1:()]
+		{
+		    [c/87CEFA:右键点燃场上所有超新星的引信，并汇聚在指针位置引爆];
+		    [c/87CEFA:每个超新星都会造成120%伤害];
+		}
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:OnHitTile][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:超新星炸弹触墙反弹，而非引爆];
+		[c/4169E1:void] [c/FFFFE0:StealthOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:潜伏攻击造成更加巨大的爆炸];
 		'''
 }
 
@@ -105,9 +111,13 @@ Celestusold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:攻击时会从上方生成一个复制镰刀]
-		[c/0080CA:潜伏攻击会沿途生成跟踪的金源镰刀]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:void] [c/FFFFE0:SkyFallBlade][c/4169E1:()] 
+		{
+		    [c/87CEFA:所有攻击都会从上方投下一个复制镰刀];
+		    [c/87CEFA:复制镰刀可以进行潜伏攻击];
+		}
+		[c/4169E1:void] [c/FFFFE0:StealthOnReturn][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:镰刀返程时会复制允许跟踪的自身];
 		'''
 }
 
@@ -164,6 +174,8 @@ RogueTypeKnivesEmpyrean: {
 		盗贼版本的苍穹飞刀
 		投出一簇能够弹射并治疗玩家的飞刀
 		飞刀现在造成更多的伤害，而且飞行速度也更快了
+		潜伏攻击时会掷出多个治疗投刀，造成多次伤害后返程至玩家手上
+		返程时，每一把投刀都会根据造成的伤害量来提供相应的治疗
 		'''
 }
 
@@ -174,6 +186,8 @@ RogueTypeKnivesShadowspec: {
 		盗贼版本的圣光飞刀
 		投出一簇能够弹射并治疗玩家的飞刀
 		飞刀现在造成更多的伤害，而且飞行速度也更快了
+		潜伏攻击时会掷出多个治疗投刀，造成多次伤害后返程至玩家手上
+		返程时，每一把投刀都会根据造成的伤害量来提供相应的治疗与乘算伤害加成
 		'''
 }
 
@@ -257,12 +271,12 @@ EclipseSpear: {
 
 SupernovaChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:显著提升攻击速度]
-	[c/0080CA:潜伏超新星爆炸后，本体将会复原，并追击敌人]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:显著提升攻击频率];
+	[c/4169E1:void] [c/FFFFE0:StealthOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:潜伏攻击引爆后会修复自身, 并再次追击敌人];
 	'''
 CelestusChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:衍生的圣金镰刀将会回击你的敌人]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:衍生的圣金镰刀将会回击你的敌人];
 	'''

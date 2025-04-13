@@ -174,7 +174,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.velocity.Y = -0.05f;
                 }
             }
-            float num395 = (float)Main.mouseTextColor / 200f - 0.35f;
+            float num395 = Main.mouseTextColor / 200f - 0.35f;
             num395 *= 0.2f;
             Projectile.scale = num395 + 0.95f;
             if (justSpawned)
@@ -189,27 +189,27 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.ai[0] -= 1f;
                     return;
                 }
-                float num396 = Projectile.position.X;
-                float num397 = Projectile.position.Y;
-                float num398 = 2400f;
-                bool flag11 = false;
-                for (int num399 = 0; num399 < Main.maxNPCs; num399++)
+                float tarX = Projectile.position.X;
+                float tarY = Projectile.position.Y;
+                float searchDist = 2400f;
+                bool getTar = false;
+                for (int i = 0; i < Main.maxNPCs; i++)
                 {
-                    if (Main.npc[num399].CanBeChasedBy(Projectile, false))
+                    if (Main.npc[i].CanBeChasedBy(Projectile, false))
                     {
-                        float num400 = Main.npc[num399].position.X + (float)(Main.npc[num399].width / 2);
-                        float num401 = Main.npc[num399].position.Y + (float)(Main.npc[num399].height / 2);
-                        float num402 = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num400) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num401);
-                        if (num402 < num398)
+                        float npcX = Main.npc[i].position.X + (float)(Main.npc[i].width / 2);
+                        float npcY = Main.npc[i].position.Y + (float)(Main.npc[i].height / 2);
+                        float npcDist = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - npcX) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - npcY);
+                        if (npcDist < searchDist)
                         {
-                            num398 = num402;
-                            num396 = num400;
-                            num397 = num401;
-                            flag11 = true;
+                            searchDist = npcDist;
+                            tarX = npcX;
+                            tarY = npcY;
+                            getTar = true;
                         }
                     }
                 }
-                if (flag11)
+                if (getTar)
                 {
                     if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     {
@@ -218,56 +218,57 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         for (int b = 0; b < blastAmt; b++)
                         {
                             Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastExoLore>(), Projectile.damage / 2, 2f, Projectile.owner, (float)target, 0f);
+                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastExoLore>(), Projectile.damage, 2f, Projectile.owner, (float)target, 0f);
                             if (Main.projectile.IndexInRange(p2))
                                 Main.projectile[p2].originalDamage = Projectile.originalDamage;
                         }
                         float speed = 15f;
-                        float num404 = num396 - Projectile.Center.X;
-                        float num405 = num397 - Projectile.Center.Y;
-                        float num406 = (float)Math.Sqrt((double)(num404 * num404 + num405 * num405));
-                        num406 = speed / num406;
-                        num404 *= num406;
-                        num405 *= num406;
-
+                        float distX = tarX - Projectile.Center.X;
+                        float distY = tarY - Projectile.Center.Y;
+                        float dist = (float)Math.Sqrt((double)(distX * distX + distY * distY));
+                        dist = speed / dist;
+                        distX *= dist;
+                        distY *= dist;
+                        int bigDamage = Projectile.damage * 2;
                         Vector2 velocity1 = CalamityUtils.RandomVelocity(100f, 100f, 100f);
                         Vector2 adjustedVelocity = velocity1.RotatedBy(MathHelper.ToRadians(-140));
-                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
+                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p3))
                             Main.projectile[p3].originalDamage = Projectile.originalDamage;
 
                         Vector2 adjustedVelocity2 = velocity1.RotatedBy(MathHelper.ToRadians(140));
-                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 2, Projectile.owner, 0f, 0f);
+                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p4))
                             Main.projectile[p4].originalDamage = Projectile.originalDamage;
 
-                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, num404 * 2, num405 * 2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), Projectile.damage, 3f, Projectile.owner, (float)target, 0f);
+                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, distX * 2, distY * 2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 3f, Projectile.owner, target, 0f);
                         if (Main.projectile.IndexInRange(p))
                             Main.projectile[p].originalDamage = Projectile.originalDamage;
-                        Projectile.ai[0] = 60f;
+                        Projectile.ai[0] = 40f;
                     }
                     else
                     {
                         SoundEngine.PlaySound(SoundID.Item105, Projectile.position);
                         int blastAmt = Main.rand.Next(5, 8);
+                        int bigDamage = Projectile.damage * 2;
                         for (int b = 0; b < blastAmt; b++)
                         {
                             Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastOld>(), (int)(Projectile.damage * 0.5), 2f, Projectile.owner, (float)target, 0f);
+                            int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlastOld>(), Projectile.damage, 2f, Projectile.owner, (float)target, 0f);
                             if (Main.projectile.IndexInRange(p2))
-                                Main.projectile[p2].originalDamage = Projectile.originalDamage / 2;
+                                Main.projectile[p2].originalDamage = Projectile.originalDamage;
                         }
                         float speed = 15f;
-                        float num404 = num396 - Projectile.Center.X;
-                        float num405 = num397 - Projectile.Center.Y;
-                        float num406 = (float)Math.Sqrt((double)(num404 * num404 + num405 * num405));
-                        num406 = speed / num406;
-                        num404 *= num406;
-                        num405 *= num406;
-                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, num404, num405, ModContent.ProjectileType<CosmicBlastBigOld>(), Projectile.damage, 3f, Projectile.owner, (float)target, 0f);
+                        float distX = tarX - Projectile.Center.X;
+                        float distY = tarY - Projectile.Center.Y;
+                        float dist = (float)Math.Sqrt((double)(distX * distX + distY * distY));
+                        dist = speed / dist;
+                        distX *= dist;
+                        distY *= dist;
+                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, distX, distY, ModContent.ProjectileType<CosmicBlastBigOld>(), bigDamage, 3f, Projectile.owner, (float)target, 0f);
                         if (Main.projectile.IndexInRange(p))
                             Main.projectile[p].originalDamage = Projectile.originalDamage;
-                        Projectile.ai[0] = 100f;
+                        Projectile.ai[0] = 60f;
                     }
                 }
             }

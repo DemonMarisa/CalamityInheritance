@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.DamageType = DamageClass.Magic;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 24;
+            Projectile.localNPCHitCooldown = 12;
         }
 
         public override void AI()
@@ -81,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 ArcingMovement();
             }
-            Projectile.scale -= closestTarget is null ? 0.007f : 0.004f;
+            Projectile.scale -= closestTarget is null ? 0.014f : 0.008f;
             if (Projectile.scale <= 0.05f)
             {
                 Projectile.Kill();

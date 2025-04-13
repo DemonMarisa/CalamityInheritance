@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public int Timer = 0;
         //发起追踪的Timer
         public int TimerAlt = 0;
+        public int MouseTiemr = 0;
         public const int IdleTimer = 30;
         //非追踪状态下的旋转
         public const float NonHomingRotation = 0.45f;
@@ -111,6 +112,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
+            MouseTiemr += 1;
+            if (MouseTiemr > ACTExcelsus.IdleTimer)
+            {
+                Projectile.extraUpdates += 1;
+                CIFunction.HomeInOnMouseBetter(Projectile, 16f, 20f, 1, false, Vector2.Distance(Projectile.Center, Main.MouseWorld) / 3);
+            }
+
         }
 
         public void DoFlying()
@@ -122,6 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //追踪逻辑
         public void DoHoming(NPC tar)
         {
+            MouseTiemr = 0;
             //需注意的是，AI执行的这段时间内也会一直检索目标。
             Player p = Main.player[Projectile.owner];
             float spiningDir = ACTExcelsus.LerpAngle;
@@ -140,7 +149,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 //给多一个额外更新
                 Projectile.extraUpdates += 1;
-                CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
+                CIFunction.HomingNPCBetter(Projectile, tar, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f, 1);
             }
         }
         
