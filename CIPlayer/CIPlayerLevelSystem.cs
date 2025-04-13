@@ -42,31 +42,31 @@ namespace CalamityInheritance.CIPlayer
         #region 保存数据
         public void LevelSaveData(TagCompound tag)
         {
-            tag.Add("CIMeleeLevel", meleeLevel);
-            tag.Add("CIRangedLevel", rangeLevel);
-            tag.Add("CIsummonLevel", summonLevel);
-            tag.Add("CImagicLevel", magicLevel);
-            tag.Add("CIrogueLevel", rogueLevel);
+            tag.Add("CIMeleeLevelNew", meleeLevel);
+            tag.Add("CIRangedLevelNew", rangeLevel);
+            tag.Add("CIsummonLevelNew", summonLevel);
+            tag.Add("CImagicLevelNew", magicLevel);
+            tag.Add("CIrogueLevelNew", rogueLevel);
 
-            tag.Add("CIMeleePool", meleePool);
-            tag.Add("CIRangedPool", rangePool);
-            tag.Add("CISummonPool", summonPool);
-            tag.Add("CIMagicPool", magicPool);
-            tag.Add("CIRoguePool", roguePool);
+            tag.Add("CIMeleePoolNew", meleePool);
+            tag.Add("CIRangedPoolNew", rangePool);
+            tag.Add("CISummonPoolNew", summonPool);
+            tag.Add("CIMagicPoolNew", magicPool);
+            tag.Add("CIRoguePoolNew", roguePool);
         }
         public void LevelLoadData(TagCompound tag)
         {
-            tag.TryGet("CIMeleeLevel", out meleeLevel);
-            tag.TryGet("CIRangedLevel", out rangeLevel);
-            tag.TryGet("CIsummonLevel", out summonLevel);
-            tag.TryGet("CImagicLevel", out magicLevel);
-            tag.TryGet("CIrogueLevel", out rogueLevel);
+            tag.TryGet("CIMeleeLevelNew", out meleeLevel);
+            tag.TryGet("CIRangedLevelNew", out rangeLevel);
+            tag.TryGet("CIsummonLevelNew", out summonLevel);
+            tag.TryGet("CImagicLevelNew", out magicLevel);
+            tag.TryGet("CIrogueLevelNew", out rogueLevel);
 
-            tag.TryGet("CIMeleePool", out meleePool);
-            tag.TryGet("CIRangedPool", out rangePool);
-            tag.TryGet("CIMagicPool", out magicPool);
-            tag.TryGet("CISummonPool", out summonPool);
-            tag.TryGet("CIRoguePool", out roguePool);
+            tag.TryGet("CIMeleePoolNew", out meleePool);
+            tag.TryGet("CIRangedPoolNew", out rangePool);
+            tag.TryGet("CIMagicPoolNew", out magicPool);
+            tag.TryGet("CISummonPoolNew", out summonPool);
+            tag.TryGet("CIRoguePoolNew", out roguePool);
         }
         #endregion
         #region 等级升级与特效

@@ -22,13 +22,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public override void SetDefaults()
         {
-            Item.damage = 275;
+            Item.damage = 550;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 92;
             Item.height = 44;
-            //速射机枪使用时间3->2
-            Item.useTime = 2;
-            Item.useAnimation = 2;
+            // 速射机枪使用时间3->2
+            // 使用时间2 - 4，伤害275-500，音效鬼畜了
+            Item.useTime = 4;
+            Item.useAnimation = 4;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2.5f;
