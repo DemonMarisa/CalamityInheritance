@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 {
                     Projectile.timeLeft = 200;
                     Projectile.ai[2] += 1f;
-                    Projectile.timeLeft -= Main.rand.Next(80, 160);
+                    Projectile.timeLeft -= Main.rand.Next(80, 180);
                     Projectile.velocity *= 0.98f;
                 }
 

@@ -25,11 +25,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Chat;
@@ -58,6 +53,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public bool canDespawn = false;
         // 接触伤害
         public int ContactDamage = 2000;
+        // 红月伤害
+        public int MoonDamage = 330;
         // 弹幕炼狱的伤害
         public int BulletHell = 190;
         // 深渊亡魂的伤害
@@ -298,7 +295,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         
         #endregion
-
         public override void AI()
         {
             if (NPC.rotation < 0f)
@@ -372,7 +368,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
                 logSpawnPos = new Vector2(target.Center.X , target.Center.Y);
                 spawnArena = true;
-                SpawnArena(ref attackType);
+                SpawnArena(ref attackType, target);
             }
 
             // 杀了星流飞椅
@@ -750,7 +746,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 float chargeVelocity = isWormAlive ? 26f : 30f;
                 chargeVelocity += 1f * currentPhase;
 
-                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
+                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation + MathHelper.PiOver2) ;
                 direction = direction.SafeNormalize(Vector2.UnitX);
                 NPC.velocity = direction * chargeVelocity;
 
@@ -762,7 +758,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 if (attacktimer > chargeCount)
                 {
-                    NPC.CIMod().BossNewAI[8] += 0.14f;
+                    NPC.CIMod().BossNewAI[8] += 0.2f;
 
                     NPC.velocity *= 0.96f;
 
@@ -1112,19 +1108,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int SpawnDelay = 200;
             if (attacktimer == SpawnDelay) // 上方
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceY, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), ContactDamage, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceY, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer == SpawnDelay * 2) // 下方
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceX, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), ContactDamage, 0f, Main.myPlayer, 0f, 1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceX, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 1f);
             }
             if (attacktimer == SpawnDelay * 3) // 左侧
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceY, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), ContactDamage, 0f, Main.myPlayer, 0f, 2f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceY, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 2f);
             }
             if (attacktimer == SpawnDelay * 4) // 右侧
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceX, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), ContactDamage, 0f, Main.myPlayer, 0f, 3f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceX, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 3f);
             }
         }
         #endregion
@@ -1240,11 +1236,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             float phase1Duration = 180;    // 正向段持续时间
             float spinCount = 8;              // 旋转圈数
-
             float rotationOffset = 0f;
             isContactDamage = false;
             NPC.velocity *= 0.95f;
-
             // 初始化随机偏移
             if (attacktimer == 1)
             {
@@ -1252,8 +1246,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 spinCount += rotationOffset;
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
             }
-
-            // 旋转
             // 旋转
             if (attacktimer < phase1Duration)
             {
@@ -1267,7 +1259,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
                 float totalRotation = spinCount * MathHelper.TwoPi;
                 float rotationIncrement = (currentEased - previousEased) * totalRotation;
-                
                 // 应用旋转
                 NPC.rotation += rotationIncrement;
             }
@@ -1299,6 +1290,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int totaldesperationTime = 900;
             if(attacktimer == 3)
             {
+                Vector2 FinaPos = new(logSpawnPos.X, logSpawnPos.Y - 200);
+                NPC.position = FinaPos;
                 for (int x = 0; x < Main.maxProjectiles; x++)
                 {
                     Projectile projectile = Main.projectile[x];
@@ -1395,12 +1388,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         #endregion
         #region 生成场地
-        public void SpawnArena(ref float attackTypeChange)
+        public void SpawnArena(ref float attackTypeChange, Player target)
         {
             float ArenaSize = CalamityWorld.death ? 129 : 159;
             // Define the arena.
             Vector2 arenaArea = new(ArenaSize, ArenaSize);
-            LegacySCal.CIMod().Arena = Utils.CenteredRectangle(NPC.Center, arenaArea * 16f);
+            LegacySCal.CIMod().Arena = Utils.CenteredRectangle(target.Center, arenaArea * 16f);
             int left = (int)(LegacySCal.CIMod().Arena.Center().X / 16 - arenaArea.X * 0.5f);
             int right = (int)(LegacySCal.CIMod().Arena.Center().X / 16 + arenaArea.X * 0.5f);
             int top = (int)(LegacySCal.CIMod().Arena.Center().Y / 16 - arenaArea.Y * 0.5f);

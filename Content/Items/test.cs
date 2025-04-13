@@ -8,6 +8,9 @@ using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -36,8 +39,13 @@ namespace CalamityInheritance.Content.Items
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 10;
-            Item.shoot = ModContent.ProjectileType<CIVividBeamExoLore>();
+            //Item.shoot = ModContent.ProjectileType<SummonLevelFirework_Final>();
         }/*
+        public override bool CanUseItem(Player player)
+        {
+            return true;
+        }*/
+        /*
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int fireOffset = -100;
@@ -67,14 +75,24 @@ namespace CalamityInheritance.Content.Items
             
             return false;
         }*/
-        /*
+        
         public override bool? UseItem(Player player)
         {
+            var calPlayer = player.CIMod();
+            if (CIConfig.Instance.UIX == 1)
+                calPlayer.magicPool += CIConfig.Instance.LevelUp;
+            if (CIConfig.Instance.UIX == 2)
+                calPlayer.summonPool += CIConfig.Instance.LevelUp;
+            if (CIConfig.Instance.UIX == 3)
+                calPlayer.meleePool += CIConfig.Instance.LevelUp;
+            if (CIConfig.Instance.UIX == 4)
+                calPlayer.rangePool += CIConfig.Instance.LevelUp;
+            if (CIConfig.Instance.UIX == 5)
+                calPlayer.roguePool += CIConfig.Instance.LevelUp;
             // player.RemoveCICooldown(GodSlayerDash.ID);
-            player.RemoveCooldown(GodSlayerCooldown.ID);
-            player.RemoveCooldown(GodSlayerDash.ID);
+
             return base.CanUseItem(player);
         }
-        */
+        
     }
 }

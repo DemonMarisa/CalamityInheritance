@@ -26,6 +26,7 @@ namespace CalamityInheritance.System.Configs
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
+        [Slider]
         public int ElementalQuiverSplitstyle { get; set; }
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -41,6 +42,7 @@ namespace CalamityInheritance.System.Configs
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
+        [Slider]
         public int GodSlayerSetBonusesChange { get; set; }
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -151,11 +153,10 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(1)]
         [Slider]
         public int LegendaryBuff{ get; set; }
-        [Range(1, 15)]
+        [Range(0, 10000)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
-        [Slider]
         public int LevelUp{ get; set; }
     }
 }

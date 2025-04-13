@@ -23,10 +23,10 @@ namespace CalamityInheritance.CIPlayer
             tag.Add("CILegacyScal_PlayerDeathCount", LegacyScal_PlayerDeathCount);
 
             QolSaveData(tag);
-        //熟练度存储
-            ProficiencySaveData(ref tag); 
             //传奇物品样式保存
-            LegendarySaveData(ref tag);
+            LegendarySaveData(tag);
+            // 熟练度储存
+            LevelSaveData(tag);
         }
         public override void LoadData(TagCompound tag)
         {
@@ -35,8 +35,8 @@ namespace CalamityInheritance.CIPlayer
             LegacyScal_PlayerDeathCount = tag.GetInt("CILegacyScal_PlayerDeathCount");
 
             QolLoadData(tag);
-            ProficiencyLoadData(ref tag);
-            LegendaryLoadData(ref tag);  
+            LegendaryLoadData(tag);
+            LevelSaveData(tag); ;
         }
     }
 }

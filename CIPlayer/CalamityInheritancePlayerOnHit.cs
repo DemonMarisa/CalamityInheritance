@@ -34,7 +34,6 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
                 fireCD = 60;
             }
-            MeleePoints(hit, item);
             //T2庇护: 物品击中敌人时使自己免疫防损
             if (item.type == ModContent.ItemType<DefenseBlade>() && hit.Damage > 5 && DefendTier2 && Player.whoAmI == Main.myPlayer)
             {
@@ -64,8 +63,8 @@ namespace CalamityInheritance.CIPlayer
             RogueOnHit(projectile, target, hit, damageDone);
             //全局射弹
             GenericOnhit(projectile, target, hit, damageDone);
-            //熟练度升级
-            EarnPoints(hit, projectile);
+            // 熟练度升级
+            // EarnPoints(hit, projectile);
             //debuff
             AddDebuff(projectile, target, ref hit);
             LegendaryDamageTask(projectile, target, hit);

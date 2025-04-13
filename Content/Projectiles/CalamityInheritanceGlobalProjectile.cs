@@ -21,7 +21,6 @@ namespace CalamityInheritance.Content.Projectiles
     {
         public override bool InstancePerEntity => true;
 
-        private bool frameOneHacksExecuted = false;
         public float MinionDamageValue = 1f;
         public float MinionProjDamageValue = 0f;
 
@@ -102,34 +101,30 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
-            if (!frameOneHacksExecuted)
-            {
-                if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
-                {
-                    if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
-                        projectile.extraUpdates += 1;
-
-                    if (projectile.type == ProjectileID.MechanicalPiranha)
-                    {
-                        projectile.localNPCHitCooldown *= 2;
-                        projectile.timeLeft *= 2;
-                    }
-                }
-
-                if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
-                {
-                    int gloveArmorPenAmt = 20;
-                    if (modPlayer.nanotechold)
-                        projectile.ArmorPenetration += gloveArmorPenAmt;
-                }
-
-                frameOneHacksExecuted = true;
-            }
         }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CIMod();
+
+            if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
+            {
+                if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
+                    projectile.extraUpdates += 1;
+
+                if (projectile.type == ProjectileID.MechanicalPiranha)
+                {
+                    projectile.localNPCHitCooldown *= 2;
+                    projectile.timeLeft *= 2;
+                }
+            }
+
+            if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
+            {
+                int gloveArmorPenAmt = 20;
+                if (modPlayer.nanotechold)
+                    projectile.ArmorPenetration += gloveArmorPenAmt;
+            }
 
             modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {
@@ -164,8 +159,10 @@ namespace CalamityInheritance.Content.Projectiles
                     AMRextraTy = false;
                 }
             };
-        }
 
+            LevelBoost(projectile, modPlayer);
+        }
+        #region 元素箭袋
         //哈哈，已经变成史山了
         public static void ElemQuiver(Projectile projectile)
         {
@@ -224,6 +221,11 @@ namespace CalamityInheritance.Content.Projectiles
                     Main.projectile[p].netUpdate = true;
                 }
             }
+        }
+        #endregion
+        public void LevelBoost(Projectile projectile, CalamityInheritancePlayer cIPlayer)
+        {
+            projectile.ArmorPenetration += cIPlayer.rangeLevel * 2;
         }
     }
 }

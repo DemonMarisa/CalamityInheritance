@@ -65,3 +65,8 @@ DestroyerLegendaryUpgrade: {
 	Tint: "111"
 	DisplayName: Destroyer Legendary Upgrade
 }
+
+EyeofExtinction: {
+	DisplayName: Eyeof Extinction
+	Tooltip: ""
+}

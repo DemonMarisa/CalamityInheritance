@@ -103,6 +103,11 @@ namespace CalamityInheritance.CIPlayer
             // Debuff的效果
             DebuffEffect();
 
+            //升级
+            LevelUp();
+            //熟练度处理
+            GiveBoost();
+
             if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
@@ -1792,15 +1797,6 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier2 = false;
                 DestroyerTier3 = false;
             }
-            MeleeLevel = CIConfig.Instance.LevelUp;
-            RangedLevel= CIConfig.Instance.LevelUp;
-            MagicLevel = CIConfig.Instance.LevelUp;
-            SummonLevel= CIConfig.Instance.LevelUp;
-            RogueLevel = CIConfig.Instance.LevelUp;
-            //升级
-            UpdateLevel();
-            //熟练度处理
-            GiveBoost();
         }
     }
 }

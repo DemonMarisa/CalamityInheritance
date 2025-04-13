@@ -1,16 +1,23 @@
-using CalamityInheritance.Content.Items.MiscItem;
-using CalamityInheritance.NPCs.Boss.Calamitas;
+﻿using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Rarity.Special;
 using CalamityMod.Items.Materials;
-using Terraria;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
+using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.SummonItems
 {
-    public class RebornEyeSummon: CIMisc, ILocalizedModType
+    public class EyeofExtinction : CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.MiscItem";
         public override void SetStaticDefaults()
@@ -20,19 +27,19 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override void SetDefaults()
         {
-            Item.width = 34;
-            Item.height = 28;
+            Item.width = 54;
+            Item.height = 42;
             Item.noMelee = true;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.maxStack = 1;
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
         }
         public override bool CanUseItem(Player player)
         {
-            return (!NPC.AnyNPCs(ModContent.NPCType<CalamitasReborn>()) || !NPC.AnyNPCs(ModContent.NPCType<CalamitasRebornPhase2>())) && !Main.dayTime;
+            return (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()));
         }
 
         public override bool? UseItem(Player player)
@@ -40,22 +47,22 @@ namespace CalamityInheritance.Content.Items.SummonItems
             if (player.whoAmI == Main.myPlayer)
             {
                 SoundEngine.PlaySound(SoundID.Roar, player.position);
-            
-                int getBoss = ModContent.NPCType<CalamitasReborn>();
 
-                if (Main.netMode!=NetmodeID.MultiplayerClient)
-                    NPC.SpawnOnPlayer(player.whoAmI, getBoss);
+                int getBoss = ModContent.NPCType<SupremeCalamitasLegacy>();
+
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                    NPC.SpawnBoss((int)player.Center.X, (int)(player.Center.Y - 400), getBoss, player.whoAmI);
                 else
-                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent,  number: player.whoAmI, number2: getBoss);
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: getBoss);
             }
             return true;
         }
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<EssenceofHavoc>(10).
-                AddIngredient(ItemID.HellstoneBar, 10).
-                AddTile(TileID.MythrilAnvil).
+                AddIngredient<AuricBarold>(10).
+                AddIngredient<AshesofCalamity>(25).
+                AddTile<DraedonsForgeold>().
                 Register();
         }
     }

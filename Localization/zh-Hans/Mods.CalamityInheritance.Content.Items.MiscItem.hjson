@@ -110,3 +110,12 @@ DestroyerLegendaryUpgrade: {
 	Tint: 你已经进行过该项强化了！
 	DisplayName: SHPC[Legendary]强化物品
 }
+
+EyeofExtinction: {
+	DisplayName: 灭世之眼
+	Tooltip:
+		'''
+		[c/CD0000:这不是一个好的选择]
+		召唤至尊灾厄
+		'''
+}

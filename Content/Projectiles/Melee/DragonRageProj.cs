@@ -27,8 +27,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Melee;
-            //给了8穿
-            Projectile.penetrate = 10; 
+            // 给了8穿
+            // 现在0穿了
+            Projectile.penetrate = 1; 
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;

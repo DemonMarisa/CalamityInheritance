@@ -128,8 +128,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default);
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
                     increment = 0;
                 }
                 splits++;

@@ -18,7 +18,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer: ModPlayer
     {
-        public void LegendarySaveData(ref TagCompound tag)
+        public void LegendarySaveData(TagCompound tag)
         {
             tag.Add("PBGTier1", PBGTier1);
             tag.Add("PBGTier2", PBGTier2);
@@ -42,7 +42,7 @@ namespace CalamityInheritance.CIPlayer
             tag.Add("ColdDivityTier2", ColdDivityTier1);
             tag.Add("ColdDivityTier3", ColdDivityTier1);
         }
-        public void LegendaryLoadData(ref TagCompound tag)
+        public void LegendaryLoadData(TagCompound tag)
         {
             tag.TryGet("PBGTier1",        out PBGTier1);
             tag.TryGet("PBGTier2",        out PBGTier2);
