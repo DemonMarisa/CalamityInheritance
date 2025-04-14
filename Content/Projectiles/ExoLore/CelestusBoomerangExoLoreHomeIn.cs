@@ -63,9 +63,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             CalamityUtils.HomeInOnNPC(Projectile, true, 1250f, 18f, 0f);
         }
-
-        public override Color? GetAlpha(Color lightColor) => new Color(250, 250, 250, 50);
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.ExoDebuffs();

@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -100,8 +101,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(250, 250, 250, 50);
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.ExoDebuffs();
@@ -136,6 +135,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
+        }
+
+        public override void PostDraw(Color lightColor)
+        {
+            Rectangle frame = new Rectangle(0, 0, 106, 94);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Rogue/CelestusoldGlow").Value,
+                Projectile.Center - Main.screenPosition,
+                frame,
+                Color.White,
+                Projectile.rotation,
+                Projectile.Size / 2,
+                1f,
+                SpriteEffects.None,
+                0);
         }
     }
 }
