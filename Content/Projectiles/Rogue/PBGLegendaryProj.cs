@@ -1,12 +1,8 @@
-using System;
 using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Texture;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 

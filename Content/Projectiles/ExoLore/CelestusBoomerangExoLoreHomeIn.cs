@@ -9,6 +9,10 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using System.ComponentModel.DataAnnotations;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Rogue;
+using System.Data;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -16,9 +20,29 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
-
         private bool initialized = false;
         private float speed = 25f;
+        #region 攻击类型枚举
+        const float IsReturning = -1f;
+        const float IsHoming = 0f;
+        const float IsAttacking = 1f;
+        const float IsIdleing = 2f;
+        #endregion
+        #region 数组别名
+        const int AttackType = 0;
+        const int PhaseTimer = 1;
+        const int HitCounter = 2;
+        #endregion
+        #region 基础属性
+        public int ForceTarget = -1;
+        public int ColorTimer = 0;
+        #endregion
+        #region tester
+        public bool CheckHoming = false;
+        public bool ChcekAttacking = false;
+        public bool CheckReturning = false;
+        public bool CheckIdling = false;
+        #endregion
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
@@ -31,43 +55,187 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.alpha = 100;
+            Projectile.localNPCHitCooldown = 20;
             Projectile.timeLeft = 600;
             Projectile.velocity *= -1f;
             Projectile.netUpdate = true;
         }
-
+        public override bool? CanDamage()
+        {
+            return Projectile.ai[AttackType] == IsAttacking || Projectile.ai[AttackType] == IsReturning;
+        }
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
 
-            if (!initialized)
+            //重做AI逻辑, 我们先获取这个敌怪单位
+            NPC target = CIFunction.FindClosestTarget(Projectile, 1800f, true);
+            //如果目标不存在直接执行返程AI
+            if (target == null)
             {
-                speed = Projectile.velocity.Length();
-                initialized = true;
+                DoRetuningAI(player);
+                Projectile.netUpdate = true;
+                return;
             }
+            //先直接让他直线飞行追踪最近的敌怪,
+            if (!initialized)
+                DoHoming(target);
 
-            Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
-            Projectile.rotation += 1f;
-
+            //不出意外，上方的AI执行完下方的是可以正常执行的
+            if (Projectile.owner == Main.myPlayer)
+            {
+                switch (Projectile.ai[AttackType])
+                {
+                    case IsAttacking:
+                        DoAttacking(target);
+                        break;
+                    case IsIdleing:
+                        DoIdleing(target, player);
+                        break;
+                    case IsReturning:
+                        DoRetuningAI(player);
+                        break;
+                    default:
+                        break;
+                }
+            }
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 8;
                 SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
-
-            CalamityUtils.HomeInOnNPC(Projectile, true, 1250f, 18f, 0f);
         }
 
-        public override Color? GetAlpha(Color lightColor) => new Color(250, 250, 250, 50);
+        private void DoIdleing(NPC target, Player player)
+        {
+            if (!CheckIdling)
+            {
+                Main.NewText("CheckIdling");
+                CheckIdling = true;
+            }
+            Vector2 angleToTarget;
+            if (target != null) angleToTarget = target.Center;
+            else angleToTarget = player.Center;
+            //从宙能那抄过来的
+            float rot = Projectile.AngleTo(angleToTarget) - MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
+            Projectile.velocity *= 0.95f;
+            //启用这个计时器
+            Projectile.ai[PhaseTimer] += 1f;
+            //计时器达到要求，执行ai逻辑
+            if (Projectile.ai[PhaseTimer] > 66f)
+            {
+                //回程至玩家手上
+                //置为-1f, 不做任何事情
+                Projectile.ai[AttackType] = IsReturning;
+                //Timer置零
+                Projectile.ai[PhaseTimer] = 0f;
+            }
+        }
+
+        //攻击AI逻辑，直接穿透1次然后返回
+        private void DoAttacking(NPC target)
+        {
+            if (!ChcekAttacking)
+            {
+                Main.NewText("Attacking");
+                ChcekAttacking = true;
+            }
+            if (target == null) return;
+            Projectile.rotation += 1f;
+            CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed, 20f);
+        }
+
+        private void DoRetuningAI(Player player)
+        {
+            if (!CheckReturning)
+            {
+                Main.NewText("Return");
+                CheckReturning = true;
+            }
+            Projectile.ai[PhaseTimer] += 1f;
+            if (Projectile.ai[PhaseTimer] > 10f)
+            Projectile.rotation += 1f;
+            float returnSpeed = 25f;
+            float acceleration = 5f;
+            CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
+            if (Main.myPlayer == Projectile.owner)
+            {
+                Rectangle projHitbox = new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
+                Rectangle playerHitbox = new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height);
+                if (projHitbox.Intersects(playerHitbox))
+                    Projectile.Kill();
+            }
+        }
+
+        private void DoHoming(NPC target)
+        {
+            //不断检测与敌怪的距离
+            float distCheck = (Projectile.Center - target.Center).Length();
+            //与上方一样，飞行过程周不断保持跟踪和转向。不过也有点区别。
+            //射弹如果与这个距离相同，停止射弹的追踪，并执行Attacking的指令
+            if (distCheck <= 600f)
+            {
+                //检测射弹的AI是否还是低于30f, 如果是，直接设为30f
+                if (Projectile.ai[PhaseTimer] < 30f)
+                    Projectile.ai[PhaseTimer] = 30f;
+                
+                float rot = Projectile.AngleTo(target.Center) - MathHelper.PiOver4;
+                Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
+                Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
+                //同时逐渐降低速度
+                Projectile.velocity *= 0.90f;
+                //启用新的计时器
+                Projectile.ai[PhaseTimer] += 1f;
+                //符合条件启用新的AI
+                if (Projectile.ai[PhaseTimer] > 90f)
+                {
+                    //标记射弹已经完成了第一个指令
+                    initialized = true;
+                    Projectile.ai[AttackType] = IsAttacking;
+                    Projectile.ai[PhaseTimer] = 0f;
+                    Projectile.netUpdate = true;
+                }
+            }
+            //我们去追及这个敌怪
+            else if (Projectile.ai[PhaseTimer] < 30f) 
+            {
+                Projectile.rotation += 1f;
+                CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed, 20f);
+                Projectile.ai[PhaseTimer] += 1f;
+            }
+            
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            int red = 135;
+            int blue = 206;
+            int green = 250;
+            int r = 255;
+            int g = 255;
+            int b = 255;
+            ColorTimer++;
+            if (r > red) r -= ColorTimer * 5;
+            if (b > blue) b -= ColorTimer * 1;
+            if (g > green) g -= ColorTimer * 1;
+            if (r < red) r = red;
+            if (b < blue) b = blue;
+            if (g < green) g = green;
+            return new Color(r, g, b, Projectile.alpha);
+        }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (Projectile.ai[AttackType] == IsAttacking)
+            {
+                Projectile.ai[AttackType] = IsIdleing;
+            }
             target.ExoDebuffs();
             OnHitEffects();
         }

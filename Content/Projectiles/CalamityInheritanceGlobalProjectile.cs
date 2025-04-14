@@ -32,6 +32,8 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingAsMagic = false;
         //标记这个射弹是否是右键掷出
         public bool GlobalRightClickListener = false;
+        //用于主射弹与附属射弹的单一敌怪单位的针对
+        public int GlobalMainProjForceTarget = -1;
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
         public int StoreEU = -1;

@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
-            counter++;
+            if (Projectile.ai[0] == 1f)
+                counter++;
 
             if (!initialized)
             {
@@ -60,9 +60,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Projectile.soundDelay = 8;
                 SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
-            if(counter == 15)
+            if(counter == 12)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.PiOver2), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                Main.projectile[t].scale *= 0.9f;
                 counter = 0;
             }
             switch (Projectile.ai[0])
@@ -79,45 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 case 1f:
                     float returnSpeed = 25f;
                     float acceleration = 5f;
-                    Vector2 playerVec = player.Center - Projectile.Center;
-                    if (playerVec.Length() > 4000f)
-                    {
-                        Projectile.Kill();
-                    }
-                    playerVec.Normalize();
-                    playerVec *= returnSpeed;
-                    if (Projectile.velocity.X < playerVec.X)
-                    {
-                        Projectile.velocity.X += acceleration;
-                        if (Projectile.velocity.X < 0f && playerVec.X > 0f)
-                        {
-                            Projectile.velocity.X += acceleration;
-                        }
-                    }
-                    else if (Projectile.velocity.X > playerVec.X)
-                    {
-                        Projectile.velocity.X -= acceleration;
-                        if (Projectile.velocity.X > 0f && playerVec.X < 0f)
-                        {
-                            Projectile.velocity.X -= acceleration;
-                        }
-                    }
-                    if (Projectile.velocity.Y < playerVec.Y)
-                    {
-                        Projectile.velocity.Y += acceleration;
-                        if (Projectile.velocity.Y < 0f && playerVec.Y > 0f)
-                        {
-                            Projectile.velocity.Y += acceleration;
-                        }
-                    }
-                    else if (Projectile.velocity.Y > playerVec.Y)
-                    {
-                        Projectile.velocity.Y -= acceleration;
-                        if (Projectile.velocity.Y > 0f && playerVec.Y < 0f)
-                        {
-                            Projectile.velocity.Y -= acceleration;
-                        }
-                    }
+                    CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);

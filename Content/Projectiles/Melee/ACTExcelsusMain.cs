@@ -29,6 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //发起追踪的射弹是否已经进行过追踪。
         public bool CheckIfHit = false;
         public int HomeOnHitCounts = 0;
+        public int ForceTarget = -1;
         #endregion
         #region 攻击打表
         //追踪射弹击中敌怪后的回击
@@ -84,6 +85,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 DoFading();
             //搜寻实例，这个过程在AttackType == IsFading时撤销
             NPC tar = CIFunction.FindClosestTarget(Projectile, ACTExcelsus.MaxSearchDist, true);
+            //击中了但凡一次敌怪之后我们都直接把这个实例换成被击中的那个实例 
+            if (ForceTarget != -1)
+            {
+                tar = Main.npc[ForceTarget];
+                Projectile.netUpdate = true;
+            }
             if (Timer > ACTExcelsus.HomingTimer)
             {
                 //这个东西如果已经在执行IsOnHitHoming的操作，撤销其搜寻
@@ -250,30 +257,39 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             SoundEngine.PlaySound(CISoundID.SoundLaser, Projectile.position);
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
-            if (Projectile.ai[AttackType] == IsHoming && !CheckIfHit)
+            //任何形式的攻击击中但凡一个单位，我们都直接把这个敌怪单位存进去，而且只存一次
+            if (ForceTarget == -1)
             {
-                //使AI类型转化为另外一种
-                Projectile.ai[AttackType] = IsOnHitHoming;
-                Projectile.netUpdate = true;
-                TimerAlt = 0;
-                CheckIfHit = true;
+                //把当前这个敌怪单位存进去
+                ForceTarget = target.whoAmI;
             }
-            if (Projectile.ai[AttackType] == IsOnHitHoming && HomeOnHitCounts < 3)
+            if (ForceTarget == target.whoAmI)
             {
-                //该项攻击模式的攻击次数+1
-                HomeOnHitCounts += 1;
-                AnotherTimer = 0;
-            }
-            //第二次攻击判定后刷新其射弹属性为一次
-            if (HomeOnHitCounts == 2)
-            {
-                Projectile.penetrate = -1;
-                Projectile.localNPCHitCooldown= -1;
-            }
-            if (HomeOnHitCounts == 3)
-            {
-                //直接脱锁
-                Projectile.ai[AttackType] = -1f;
+                if (Projectile.ai[AttackType] == IsHoming && !CheckIfHit)
+                {
+                    //使AI类型转化为另外一种
+                    Projectile.ai[AttackType] = IsOnHitHoming;
+                    Projectile.netUpdate = true;
+                    TimerAlt = 0;
+                    CheckIfHit = true;
+                }
+                if (Projectile.ai[AttackType] == IsOnHitHoming && HomeOnHitCounts < 3)
+                {
+                    //该项攻击模式的攻击次数+1
+                    HomeOnHitCounts += 1;
+                    AnotherTimer = 0;
+                }
+                //第二次攻击判定后刷新其射弹属性为一次
+                if (HomeOnHitCounts == 2)
+                {
+                    Projectile.penetrate = -1;
+                    Projectile.localNPCHitCooldown= -1;
+                }
+                if (HomeOnHitCounts == 3)
+                {
+                    //直接脱锁
+                    Projectile.ai[AttackType] = -1f;
+                }
             }
             //火花, 从湮灭那抄过来的
             Vector2 particleSpawnDisplacement;

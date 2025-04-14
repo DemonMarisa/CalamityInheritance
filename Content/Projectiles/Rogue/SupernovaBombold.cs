@@ -27,7 +27,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-
+        public override bool? CanDamage()
+        {
+            return !Projectile.CalamityInheritance().GlobalRightClickListener || (Projectile.CalamityInheritance().GlobalRightClickListener && Timer < 75);
+        }
         public override void SetDefaults()
         {
             Projectile.width = 34;

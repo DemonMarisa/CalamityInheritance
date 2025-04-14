@@ -61,6 +61,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver4;
             if (Main.rand.NextBool(4))
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BubbleBurst_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+            if (Main.rand.NextBool(5))
+            {
+                Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
+                float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
+                Color trailColor = Main.rand.NextBool() ? Color.Black : Color.Silver;
+                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
+                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+            }
             //刷新射弹属性
             if (Projectile.localAI[0] == 0f)    
             {

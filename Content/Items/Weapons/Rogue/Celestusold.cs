@@ -22,7 +22,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class Celestusold : RogueWeapon, ILocalizedModType
     {
-        public string SetRoute => $"{Generic.WeaponLocal}";
+        public static string SetRoute => $"{Generic.WeaponLocal}";
+        public const float SetProjSpeed = 27f;
         public new string LocalizationCategory => $"{SetRoute}.Rogue";
         public override void SetStaticDefaults()
         {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useAnimation = Item.useTime = 19;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
-            Item.shootSpeed = 27f;
+            Item.shootSpeed = SetProjSpeed;
             Item.shoot = ModContent.ProjectileType<CelestusBoomerang>();
 
             Item.width = 106;
@@ -52,9 +53,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             bool canStealth = player.Calamity().StealthStrikeAvailable();
             CalamityInheritancePlayer usPlayer = player.CIMod();
+            int pType = (usPlayer.LoreExo || usPlayer.PanelsLoreExo) ? ModContent.ProjectileType<CelestusBoomerangExoLore>() : type; 
             if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CelestusBoomerangExoLore>(), damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, 0f, 0f);
                 if (canStealth)
                 {
                     int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CelestusBoomerangExoLoreSteal>(), damage, knockback, player.whoAmI);
@@ -64,10 +66,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             else
             {
-                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, 0f, 0f);
                 if (canStealth)
                 {
-                    int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI);
                     if (stealth.WithinBounds(Main.maxProjectiles))
                         Main.projectile[stealth].Calamity().stealthStrike = true;
                 }
@@ -92,7 +94,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 dist = pSpeed / dist;
                 distVec.X *= dist;
                 distVec.Y *= dist;
-                int p = Projectile.NewProjectile(source, srcPos, distVec, type, locketDamage, knockback * 0.5f, player.whoAmI);
+                int p = Projectile.NewProjectile(source, srcPos, distVec, pType, locketDamage, knockback * 0.5f, player.whoAmI);
                 //允许其吃潜伏
                 if (canStealth)
                 {
