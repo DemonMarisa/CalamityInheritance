@@ -36,7 +36,7 @@ namespace CalamityInheritance.CIPlayer
 
             QolLoadData(tag);
             LegendaryLoadData(tag);
-            LevelSaveData(tag); ;
+            LevelLoadData(tag); ;
         }
     }
 }
