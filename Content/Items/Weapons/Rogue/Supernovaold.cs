@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //右键的逻辑会比较奇怪。
-            if (player.altFunctionUse == 2 && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
+            if (player.altFunctionUse == 2 && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && player.ownedProjectileCounts[ModContent.ProjectileType<SupernovaBombold>()] > 0)
             {
                 //搜寻场上所有射弹
                 for (int i = 0; i < Main.maxProjectiles; i++)
@@ -66,12 +66,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                     {
                         proj.damage = (int)(damage * 1.2f);
                         proj.CalamityInheritance().GlobalRightClickListener = true;
+                        proj.netUpdate = true;
                     }
                 }
                 SoundStyle getSound = new ("CalamityMod/Sounds/Custom/ExoMechs/ApolloArtemisTargetSelection");
                 SoundEngine.PlaySound(getSound, player.Center);
             }
-            else
+            else if (player.altFunctionUse != 2)
             {
                 int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
                 Main.projectile[p].Calamity().stealthStrike = player.Calamity().StealthStrikeAvailable();

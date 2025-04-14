@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -22,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override bool PreAI()
         {
             Player p = Main.player[Projectile.owner];
-            NPC getTarget = CryoPtrRework.SearchEnemy(p);
+            NPC getTarget = CIFunction.FindClosestTarget(Projectile, 1800f, true, true);
             //如果搜索到敌怪，直接执行下方的AI钩子
             if (getTarget != null)
             {

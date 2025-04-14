@@ -21,6 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public float HomingDelay = 0f;
         const int AroundingAI = 0;
         const int ProjPhase = 1;
+        const int Target = 2;
         const float ReadyToFire = 0f;
         const float HomingToTarget = 1f;
         public bool AroundPlayer = false;
@@ -81,9 +82,12 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     //转角，一定要保住转角啊啊啊啊啊啊啊啊啊啊
                     Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
                     HomingDelay += 1f;
+                    //获得这个Target,
+                    int getTar = (int)Projectile.ai[2];
+                    NPC realTar = Main.npc[getTar];
                     //索敌
                     if (HomingDelay > 15f)
-                        CIFunction.HomeInOnNPC(Projectile, true, 3200f, CyrogenLegendary.ShootSpeed, 20f);
+                        CIFunction.HomingNPCBetter(Projectile, realTar, 3200f, CyrogenLegendary.ShootSpeed, 20f);
                     break;
             }
         }
@@ -105,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.rotation = Projectile.ai[AroundingAI] + (float)Math.Atan(90);
             Projectile.ai[AroundingAI] -= MathHelper.ToRadians(4f);
             //寻找附近的单位
-            NPC aliveTarget = SearchEnemy(p);
+            NPC aliveTarget = CIFunction.FindClosestTarget(Projectile, 800f, true);
             //搜索到单位，发射弹幕
             if (aliveTarget != null && Projectile.owner == Main.myPlayer)
             {
@@ -113,45 +117,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Vector2 vel = Projectile.ai[AroundingAI].ToRotationVector2().RotatedBy(Math.Atan(0));
                 vel.Normalize();
                 vel *= 30f;
-                int shard = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, vel, Projectile.type, (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner, Projectile.ai[AroundingAI], HomingToTarget);
+                int shard = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, vel, Projectile.type, (int)(Projectile.damage * 1.1f), Projectile.knockBack, Projectile.owner, Projectile.ai[AroundingAI], HomingToTarget, aliveTarget.whoAmI);
                 //动态变化其伤害
                 if (Main.projectile.IndexInRange(shard))
                     Main.projectile[shard].originalDamage = (int)(Projectile.originalDamage * 1.1f);
             }
             //多人同步
             Projectile.netUpdate = Projectile.owner == Main.myPlayer;
-        }
-        //搜寻距离玩家最近单位并返回NPC实例
-        public static NPC SearchEnemy(Player p)
-        {
-            //bro我真的要遍历整个NPC吗？
-            //最大800f
-            float maxDist = 800f;
-            float distStoraged = 3200f;
-            bool getTar = false;      
-            if (!getTar)
-            {
-                foreach (NPC npc in Main.ActiveNPCs)
-                {
-                    float exDist = npc.width + npc.height;
-                    //单位不可被追踪 或者 超出索敌距离则continue
-                    if (!npc.CanBeChasedBy(p.Center, false) || !p.WithinRange(npc.Center, maxDist + exDist))
-                        continue;
-                    
-                    //否则搜索符合条件的敌人, 返回这个NPC实例
-                    float curNpcDist = Vector2.Distance(npc.Center, p.Center);
-                    if (curNpcDist < distStoraged && Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1))
-                    {
-                        //优先返回Boss实例
-                        if (npc.boss)
-                            return npc;
-                        else
-                            return npc;
-                    }
-                }
-            }
-            //其余情况下返回空实例
-            return null;      
         }
         public static void SpawnDust(Projectile proj, int dAmt)
         {

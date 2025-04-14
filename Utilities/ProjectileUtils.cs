@@ -284,14 +284,14 @@ namespace CalamityInheritance.Utilities
             bool alreadyGetBoss = false;
             foreach (NPC npc in Main.ActiveNPCs)
             {
-                if (!npc.active || npc.friendly || npc.lifeMax < 5)
-                    continue;
                 float exDist = npc.width + npc.height;
                 //如果优先搜索boss单位，且当前敌怪不是一个boss，直接跳过
                 //单位不可被追踪 或者 超出索敌距离则continue
-                if (!npc.CanBeChasedBy(p.Center, false) || Vector2.Distance(p.Center, npc.Center) > distStoraged + exDist)
+                if (Vector2.Distance(p.Center, npc.Center) > distStoraged + exDist)
                     continue;
 
+                if (!npc.active || npc.friendly || npc.lifeMax < 5 || !npc.CanBeChasedBy(p.Center, false)) 
+                    continue;
                 //补: 如果优先搜索Boss单位, 且附近至少有一个。我们直接存储这个Boss单位
                 //已经获取到的会被标记，使其不会再跑一遍搜索.
                 if (npc.boss && bossFirst && !alreadyGetBoss)
