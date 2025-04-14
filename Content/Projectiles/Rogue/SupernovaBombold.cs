@@ -12,6 +12,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityMod.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -19,7 +20,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/Supernovaold";
-
+        public int Timer = 0;
+        public Vector2 GetPrevMousePos = Vector2.Zero;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
@@ -39,6 +41,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
+            bool isOnExoLore = false;
+            if (Main.player[Projectile.owner].CIMod().LoreExo || Main.player[Projectile.owner].CIMod().PanelsLoreExo)
+            {
+                isOnExoLore = true;
+                Projectile.netUpdate = true;
+            }
+
             //dust and lighting
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
@@ -51,7 +60,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
 
-            //velocity
+            //速度
+            float gravSpeed = 0.2f;
+            if (Projectile.CalamityInheritance().GlobalRightClickListener)
+            {
+                gravSpeed = 0f;
+                Projectile.netUpdate = true;
+            }
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] > 10f)
             {
@@ -65,17 +80,44 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.netUpdate = true;
                     }
                 }
-                Projectile.velocity.Y += 0.2f;
+                Projectile.velocity.Y += gravSpeed;
             }
 
-            //rotation
+            //转角
             Projectile.rotation += Projectile.velocity.X * 0.1f;
 
             //stealth strike
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.UnitY * 2f, ModContent.ProjectileType<SupernovaHoming>(), (int)(Projectile.damage * 0.48), Projectile.knockBack, Projectile.owner, 0f, 0f);
-        }
+            
+            if (Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.owner == Main.myPlayer)
+            {
+                Projectile.extraUpdates += 2;
+                CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
+                Timer++;
+                if (Timer > 75)
+                {
+                    //收束成功，点火！！！
+                    Projectile.Kill();
+                }
+                else Projectile.timeLeft = 300;
+            }
 
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Player player = Main.player[Projectile.owner];
+            var usPlayer = player.CIMod();
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            {
+                if (Projectile.velocity.X != oldVelocity.X)
+                    Projectile.velocity.X = -oldVelocity.X;
+                if (Projectile.velocity.Y != oldVelocity.Y)
+                    Projectile.velocity.Y = -oldVelocity.Y;
+                return false;
+            }
+            else return true;
+        }
         public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];

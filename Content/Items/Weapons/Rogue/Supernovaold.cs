@@ -16,6 +16,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
+using System.Dynamic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -26,6 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -48,17 +50,33 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
 
         public override float StealthDamageMultiplier => 1.20f;
+        public override bool AltFunctionUse(Player player) => true;
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
+            //右键的逻辑会比较奇怪。
+            if (player.altFunctionUse == 2 && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-                if (stealth.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-                return false;
+                //搜寻场上所有射弹
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    Projectile proj = Main.projectile[i];
+                    //符合条件，我们直接提前引爆这个射弹
+                    if (proj.friendly && proj.owner == player.whoAmI && proj.DamageType == ModContent.GetInstance<RogueDamageClass>() && proj.type == ModContent.ProjectileType<SupernovaBombold>())
+                    {
+                        proj.damage = (int)(damage * 1.2f);
+                        proj.CalamityInheritance().GlobalRightClickListener = true;
+                    }
+                }
+                SoundStyle getSound = new ("CalamityMod/Sounds/Custom/ExoMechs/ApolloArtemisTargetSelection");
+                SoundEngine.PlaySound(getSound, player.Center);
             }
-            return true;
+            else
+            {
+                int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                Main.projectile[p].Calamity().stealthStrike = player.Calamity().StealthStrikeAvailable();
+            }
+            return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

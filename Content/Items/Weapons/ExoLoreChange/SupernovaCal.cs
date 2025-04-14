@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             Player player = Main.player[projectile.owner];
             //被击杀的时候会朝玩家方向发射一个额外的超新星。
-            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && projectile.owner == Main.myPlayer)
+            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && projectile.owner == Main.myPlayer && player.ActiveItem().type == ModContent.ItemType<Supernova>())
             {
                 //距离向量
                 Vector2 distVec = player.Center - projectile.Center;

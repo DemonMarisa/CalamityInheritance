@@ -76,9 +76,9 @@ ExoGladius: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:普通攻击也会从天而降跟踪彗星]
-		[c/0080CA:跟踪能力更强]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:增强射弹追踪能力];
+		[c/4169E1:void] [c/FFFFE0:ProjSpawnComet][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:射弹击中敌人也能从天而降追踪彗星];
 		'''
 }
 

@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.extraUpdates = 3;
             Projectile.MaxUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 30;
+            Projectile.localNPCHitCooldown = 20;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
 
@@ -71,45 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 case 1f:
                     float returnSpeed = 25f;
                     float acceleration = 5f;
-                    Vector2 playerVec = player.Center - Projectile.Center;
-                    if (playerVec.Length() > 4000f)
-                    {
-                        Projectile.Kill();
-                    }
-                    playerVec.Normalize();
-                    playerVec *= returnSpeed;
-                    if (Projectile.velocity.X < playerVec.X)
-                    {
-                        Projectile.velocity.X += acceleration;
-                        if (Projectile.velocity.X < 0f && playerVec.X > 0f)
-                        {
-                            Projectile.velocity.X += acceleration;
-                        }
-                    }
-                    else if (Projectile.velocity.X > playerVec.X)
-                    {
-                        Projectile.velocity.X -= acceleration;
-                        if (Projectile.velocity.X > 0f && playerVec.X < 0f)
-                        {
-                            Projectile.velocity.X -= acceleration;
-                        }
-                    }
-                    if (Projectile.velocity.Y < playerVec.Y)
-                    {
-                        Projectile.velocity.Y += acceleration;
-                        if (Projectile.velocity.Y < 0f && playerVec.Y > 0f)
-                        {
-                            Projectile.velocity.Y += acceleration;
-                        }
-                    }
-                    else if (Projectile.velocity.Y > playerVec.Y)
-                    {
-                        Projectile.velocity.Y -= acceleration;
-                        if (Projectile.velocity.Y > 0f && playerVec.Y < 0f)
-                        {
-                            Projectile.velocity.Y -= acceleration;
-                        }
-                    }
+                    CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);        
                     if (Main.myPlayer == Projectile.owner)
                     {
                         Rectangle projHitbox = new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);

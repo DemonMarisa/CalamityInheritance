@@ -48,7 +48,7 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
         player.AddBuff(ModContent.BuffType<CosmicEnergy>(), 3600);
         if (isMinion)
         {
-            if (player.dead)
+            if (player.dead || player.maxMinions < 10f)
             {
                 modPlayer.cEnergy = false;
             }

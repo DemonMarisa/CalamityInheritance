@@ -2,10 +2,7 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Typeless;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
-using rail;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

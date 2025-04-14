@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Terraria.Audio;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -59,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             {
                 float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
                 Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                int magic = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, vel, ModContent.ProjectileType<ExobeamSlash>(), projectile.damage / 3, projectile.knockBack, projectile.owner, hue);
+                int magic = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, vel, ModContent.ProjectileType<ExobeamSlash>(), projectile.damage, projectile.knockBack, projectile.owner, hue);
                 //标记这个射弹为魔法伤害
                 Main.projectile[magic].DamageType = DamageClass.Magic;
                 //2判，我们需要2判
@@ -109,36 +110,37 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            //原灾暂时没有复写大漩涡的Onhit,因此这里如果判定到啊没开星流传颂，直接干掉AI就行了
-            if ((!usPlayer.LoreExo || !usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
-                return;
-            //这里最主要是为了确定生成的位置
             Player player = Main.player[projectile.owner];
-            int offset = Main.rand.Next(200, 1080);
-            //尽可能让射弹在屏幕外生成
-            float xPos = player.position.X + offset * Main.rand.NextBool(2).ToDirectionInt();
-            float yPos = player.position.Y + (Main.rand.NextBool() ? Main.rand.NextFloat(-600, -801): Main.rand.NextFloat(600, 801));
-            Vector2 startPos = new(xPos, yPos);
-            //指定好速度和方向
-            Vector2 velocity = target.position - startPos;
-            float dir = 10 / startPos.X;
-            velocity.X *= dir * 150;
-            velocity.Y *= dir * 150;
-            velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
-            velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-            //固定三个，因为这个玩意右键手持的时候是有判定的
-            int pCounts = 3;
-            //击杀的时候往多个方向生成大量的……台风弹幕.
-            for (int j = 0; j < pCounts; j++) 
+            var usPlayer = Main.player[projectile.owner].CIMod();
+            //原灾暂时没有复写大漩涡的Onhit,因此这里如果判定到没开星流传颂，直接干掉AI就行了
+            if ((usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer && player.ActiveItem().type == ModContent.ItemType<SubsumingVortex>())
             {
-                //改色，或者说改饱和度
-                float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<ExoVortex2>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
-                Main.projectile[p].DamageType = DamageClass.Magic;
-                Main.projectile[p].scale *= 0.85f;
-                //2穿, 即2判
-                Main.projectile[p].penetrate = 2;
+                //这里最主要是为了确定生成的位置
+                int offset = Main.rand.Next(200, 1080);
+                //尽可能让射弹在屏幕外生成
+                float xPos = player.position.X + offset * Main.rand.NextBool(2).ToDirectionInt();
+                float yPos = player.position.Y + (Main.rand.NextBool() ? Main.rand.NextFloat(-600, -801): Main.rand.NextFloat(600, 801));
+                Vector2 startPos = new(xPos, yPos);
+                //指定好速度和方向
+                Vector2 velocity = target.position - startPos;
+                float dir = 10 / startPos.X;
+                velocity.X *= dir * 150;
+                velocity.Y *= dir * 150;
+                velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
+                velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
+                //固定三个，因为这个玩意右键手持的时候是有判定的
+                int pCounts = 3;
+                //击杀的时候往多个方向生成大量的……台风弹幕.
+                for (int j = 0; j < pCounts; j++) 
+                {
+                    //改色，或者说改饱和度
+                    float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<ExoVortex2>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
+                    Main.projectile[p].DamageType = DamageClass.Magic;
+                    Main.projectile[p].scale *= 0.85f;
+                    //2穿, 即2判
+                    Main.projectile[p].penetrate = 2;
+                }
             }
         }
     }

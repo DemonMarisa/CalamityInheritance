@@ -1,4 +1,6 @@
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;

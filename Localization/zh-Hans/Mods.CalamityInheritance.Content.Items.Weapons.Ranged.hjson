@@ -9,20 +9,26 @@ CelestialObliterator: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:向后发射跟踪的星流导弹]
-		[c/0080CA:星流导弹在开始跟踪时会分裂出额外的导弹]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:void] [c/FFFFE0:RocketReset][c/4169E1:()]
+		{
+		    [c/87CEFA:往后方发射可追踪的星流导弹];
+		    [c/87CEFA:发起追踪时，星流导弹将分裂出次级追踪弹];
+		}
 		'''
 }
 
 MagnomalyCannon.ExoLoreOn:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:攻击频率降低]
-	[c/0080CA:导弹的跟踪范围更大，速度更快]
-	[c/0080CA:导弹命中敌人后会分裂出更多的跟踪导弹]
-	[c/DB53A0:来自旧日的特殊礼物]
-	[c/DB53A0:此物品更改属于旧模组: 灾厄平衡重置 Algt's Calamity Tweaks]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ApplyProtocol][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:强化协议框架:<灾厄平衡重置>(Calamity Anormalis)];
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:FireDelay][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:发射频率降低];
+	[c/4169E1:void] [c/FFFFE0:RocketReset][c/4169E1:()]
+	{
+	    [c/87CEFA:强化导弹锁定范围];
+	    [c/87CEFA:强化导弹推进速度];
+	    [c/87CEFA:导弹命中时，分裂多个次级追踪导弹];
+	}
 	'''
 
 ConclaveCrossfire: {
@@ -61,10 +67,13 @@ HeavenlyGaleold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:绿色箭矢与橙色箭矢会跟踪敌人]
-		[c/0080CA:青色箭矢不再会受到穿透减伤的影响并无视无敌帧]
-		[c/0080CA:蓝色箭矢获得额外穿透]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:void] [c/FFFFE0:ArrowsReset][c/4169E1:()]
+		{
+		    [c/87CEFA:绿色，橙色箭矢将会追踪敌人];
+		    [c/87CEFA:青色箭矢无视穿透减伤与无敌帧];
+		    [c/87CEFA:蓝色箭矢穿透次数提高];
+		}
 		'''
 }
 
@@ -93,8 +102,8 @@ Photovisceratorold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:星流巨械传颂之物已启用：]
-		[c/0080CA:使用时会在玩家后方发射跟踪水晶]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:void] [c/FFFFE0:FireShards][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:使用时，从玩家身后发射追踪的星流碎片];
 		'''
 }
 
@@ -433,12 +442,12 @@ PlanteraLegendary: {
 
 HeavenlyGaleChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:现在会试图发射更多的星流水晶箭矢]
-	[c/0080CA:极大地提高星流闪电的打击速度]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:LighteningStrikeReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:提高星流闪电的打击速度]
+	[c/4169E1:void] [c/FFFFE0:ModifyFireAmt][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:现在会试图发射更多的星流水晶箭矢];
 	'''
 PhotovisceratorChange:
 	'''
-	[c/0080CA:星流巨械传颂之物已启用：]
-	[c/0080CA:右键攻击的射弹在飞行过程中会滞留追踪的星流碎片]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:右键攻击的射弹在飞行过程中会滞留追踪的星流碎片];
 	'''

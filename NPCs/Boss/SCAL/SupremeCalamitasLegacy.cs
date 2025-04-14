@@ -315,7 +315,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             else
                 isWormAlive = false;
 
-            if ((NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>())))
+            if (NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>()))
                 isSeekerAlive = true;
             else
                 isSeekerAlive = false;

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
     public class YharonSonStaff: CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
-        public readonly int WeaponDamage = 120;
+        public readonly int WeaponDamage = 640;
         public override void SetStaticDefaults()
         {
             //改为法杖的形式会更加符合这个武器的设计
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.useTime = 30;
             Item.useAnimation = 30;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 120;
+            Item.damage = WeaponDamage;
             Item.noMelee = true;
             Item.knockBack = 7f;
             Item.useStyle = ItemUseStyleID.Shoot;

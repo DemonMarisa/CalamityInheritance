@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
@@ -127,8 +128,9 @@ namespace CalamityInheritance.CIPlayer
             if (AncientSilvaSet)
             {
                 //旧林海新增: 生命再生速度无法低于0
+                int lifeRegenSpeed = NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) ? 4 : 8;
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
-                    Player.lifeRegen = 8; //承受Debuff伤害时获得4HP/s
+                    Player.lifeRegen = lifeRegenSpeed; //承受Debuff伤害时获得4HP/s(终灾眼在场时候2HP/s)
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子

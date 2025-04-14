@@ -27,8 +27,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             Item.defense = 20; //100
         }
         
-       
-
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             bool isSet = body.type == ModContent.ItemType<AncientSilvaArmor>() && legs.type == ModContent.ItemType<AncientSilvaLeggings>();

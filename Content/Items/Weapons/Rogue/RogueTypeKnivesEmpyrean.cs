@@ -67,21 +67,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             mouseXDist *= mouseDistance;
             mouseYDist *= mouseDistance;
             int knifeAmt = 4;
-            if (Main.rand.NextBool())
+            for (int j = 2; j <= 16; j *= 2)
             {
-                knifeAmt++;
-            }
-            if (Main.rand.NextBool(4))
-            {
-                knifeAmt++;
-            }
-            if (Main.rand.NextBool(8))
-            {
-                knifeAmt++;
-            }
-            if (Main.rand.NextBool(16))
-            {
-                knifeAmt++;
+                if (Main.rand.NextBool(j))
+                    knifeAmt++;
             }
             for (int i = 0; i < knifeAmt; i++)
             {
@@ -96,7 +85,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 knifeSpawnYPos *= mouseDistance;
                 float x4 = realPlayerPos.X;
                 float y4 = realPlayerPos.Y;
-                Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
+                if (player.Calamity().StealthStrikeAvailable())
+                    Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
+                else
+                    Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, ModContent.ProjectileType<RogueTypeKnivesEmpyreanProjClone>(), damage, knockback, player.whoAmI, 0f, 0f);
             }
             return false;
         }
