@@ -37,12 +37,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public int ForceTarget = -1;
         public int ColorTimer = 0;
         #endregion
-        #region tester
-        public bool CheckHoming = false;
-        public bool ChcekAttacking = false;
-        public bool CheckReturning = false;
-        public bool CheckIdling = false;
-        #endregion
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
@@ -59,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Projectile.alpha = 100;
+            Projectile.alpha = 50;
             Projectile.localNPCHitCooldown = 20;
             Projectile.timeLeft = 600;
             Projectile.velocity *= -1f;
@@ -74,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Player player = Main.player[Projectile.owner];
 
             //重做AI逻辑, 我们先获取这个敌怪单位
-            NPC target = CIFunction.FindClosestTarget(Projectile, 1800f, true);
+            NPC target = CIFunction.FindClosestTarget(Projectile, 5000f, true);
             //如果目标不存在直接执行返程AI
             if (target == null)
             {
@@ -85,6 +79,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //先直接让他直线飞行追踪最近的敌怪,
             if (!initialized)
                 DoHoming(target);
+            else
+                Projectile.velocity *= 0.96f;
 
             //不出意外，上方的AI执行完下方的是可以正常执行的
             if (Projectile.owner == Main.myPlayer)
@@ -113,11 +109,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         private void DoIdleing(NPC target, Player player)
         {
-            if (!CheckIdling)
-            {
-                Main.NewText("CheckIdling");
-                CheckIdling = true;
-            }
             Vector2 angleToTarget;
             if (target != null) angleToTarget = target.Center;
             else angleToTarget = player.Center;
@@ -139,25 +130,15 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         }
 
         //攻击AI逻辑，直接穿透1次然后返回
-        private void DoAttacking(NPC target)
+        public void DoAttacking(NPC target)
         {
-            if (!ChcekAttacking)
-            {
-                Main.NewText("Attacking");
-                ChcekAttacking = true;
-            }
             if (target == null) return;
             Projectile.rotation += 1f;
             CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed, 20f);
         }
 
-        private void DoRetuningAI(Player player)
+        public void DoRetuningAI(Player player)
         {
-            if (!CheckReturning)
-            {
-                Main.NewText("Return");
-                CheckReturning = true;
-            }
             Projectile.ai[PhaseTimer] += 1f;
             if (Projectile.ai[PhaseTimer] > 10f)
             Projectile.rotation += 1f;
@@ -173,13 +154,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
         }
 
-        private void DoHoming(NPC target)
+        public void DoHoming(NPC target)
         {
             //不断检测与敌怪的距离
             float distCheck = (Projectile.Center - target.Center).Length();
             //与上方一样，飞行过程周不断保持跟踪和转向。不过也有点区别。
             //射弹如果与这个距离相同，停止射弹的追踪，并执行Attacking的指令
-            if (distCheck <= 600f)
+            if (distCheck <= 1800f)
             {
                 //检测射弹的AI是否还是低于30f, 如果是，直接设为30f
                 if (Projectile.ai[PhaseTimer] < 30f)

@@ -20,12 +20,10 @@ namespace CalamityInheritance.Utilities
         /// <param name="HomeInCD">扫描CD（不写默认30帧）.</param>
         /// <param name="maxAngleChange">角度限制（不写默认不限制）.</param>
         /// </summary>
-        public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null, int? HomeInCD = 30)
+        public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null)
         {
             if (!projectile.friendly)
                 return;
-
-            HomeInCD++;
 
             // Set amount of extra updates.
             if (projectile.Calamity().defExtraUpdates == -1)
@@ -36,10 +34,9 @@ namespace CalamityInheritance.Utilities
             bool locatedTarget = false;
 
             //寻找距离最近的目标
-            float npcDistCompare = 25000f;
             int targetIndex = -1;
 
-            if(locatedTarget == false && HomeInCD.Value % HomeInCD.Value == 0)
+            if(locatedTarget == false)
             {
                 foreach (NPC npc in Main.ActiveNPCs)
                 {
@@ -48,9 +45,9 @@ namespace CalamityInheritance.Utilities
                         continue;
 
                     float currentNPCDist = Vector2.Distance(npc.Center, projectile.Center);
-                    if ((currentNPCDist < npcDistCompare) && (ignoreTiles || Collision.CanHit(projectile.Center, 1, 1, npc.Center, 1, 1)))
+                    if ((currentNPCDist < maxDistance) && (ignoreTiles || Collision.CanHit(projectile.Center, 1, 1, npc.Center, 1, 1)))
                     {
-                        npcDistCompare = currentNPCDist;
+                        maxDistance = currentNPCDist;
                         targetIndex = npc.whoAmI;
                     }
                 }

@@ -44,7 +44,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            if (Projectile.ai[0] == 1f)
+
+            if(Projectile.ai[0] != 2f)
                 counter++;
 
             if (!initialized)
@@ -63,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             if(counter == 12)
             {
-                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.PiOver2), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(Main.rand.NextBool() ? MathHelper.PiOver2 : -MathHelper.PiOver2), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
                 Main.projectile[t].scale *= 0.9f;
                 counter = 0;
             }

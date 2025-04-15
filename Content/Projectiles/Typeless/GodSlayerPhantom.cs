@@ -88,7 +88,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 Main.dust[num228].noLight = true;
                 Main.dust[num228].velocity = vector7;
             }
-            Projectile.Damage();
         }
     }
 }
