@@ -112,6 +112,14 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> TerraSummonAlt;
         #endregion
         #region 盗贼
+        #region 裂阳路线
+        public static Asset<Texture2D> PrismllCal;
+        public static Asset<Texture2D> PrismllAlt;
+        public static Asset<Texture2D> RadiantCal;
+        public static Asset<Texture2D> RadiantAlt;
+        public static Asset<Texture2D> ShatteredCal;
+        public static Asset<Texture2D> ShatteredAlt;
+        #endregion
         #region 苍穹,圣光飞刀
         public static Asset<Texture2D> EmpyreanKnivesCal; //苍穹飞刀的第二版本贴图(现在的版本)
         public static Asset<Texture2D> EmpyreanKnivesCalProj; //苍穹飞刀的第二版射弹(现在的版本)
@@ -282,6 +290,13 @@ namespace CalamityInheritance.Texture
             #endregion
 
             #region 盗贼
+            //烈阳路线
+            PrismllCal = ModContent.Request<Texture2D>          ($"{CalRogueWeaponRoute}/Prismalline");
+            PrismllAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/PrismallineAlt");
+            RadiantCal = ModContent.Request<Texture2D>          ($"{CalRogueWeaponRoute}/RadiantStar");
+            RadiantAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/RadiantStarAlt");
+            ShatteredCal = ModContent.Request<Texture2D>        ($"{CalRangedWeaponRoute}/ShatteredSun");
+            ShatteredAlt = ModContent.Request<Texture2D>        ($"{CIRogueExtraRoute}/ShatteredSunAlt");
 
             //圣泰阿克提斯之锤
             GiantHammerCal = ModContent.Request<Texture2D>      ($"{CIRogueExtraRoute}/GiantHammerCal");
@@ -413,6 +428,13 @@ namespace CalamityInheritance.Texture
             
             TerraSummonCal = null;
             TerraSummonAlt = null;
+
+            ShatteredAlt = null;
+            ShatteredCal = null;
+            RadiantAlt = null;
+            RadiantCal = null;
+            PrismllAlt = null;
+            PrismllCal = null;
         }
     }
 }

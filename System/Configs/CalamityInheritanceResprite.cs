@@ -78,6 +78,18 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
+        public bool PrismallineResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool RadiantStarResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool ShatteredSunResprite{ get; set; }
+
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
         public bool GodSlayerKnivesResprite{ get; set; }
 
         [BackgroundColor(43, 56, 95, 182)]

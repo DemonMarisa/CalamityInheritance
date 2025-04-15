@@ -29,7 +29,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override bool? CanDamage()
         {
-            return !Projectile.CalamityInheritance().GlobalRightClickListener || (Projectile.CalamityInheritance().GlobalRightClickListener && Timer < 75);
+            Rectangle mouseHitBox = new ((int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, Projectile.width, Projectile.height);
+            bool normalCanHit = !Projectile.CalamityInheritance().GlobalRightClickListener;
+            bool rightClickCanHIt = Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.Hitbox.Intersects(mouseHitBox);
+            return normalCanHit || rightClickCanHIt;
         }
         public override void SetDefaults()
         {
@@ -95,15 +98,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             
             if (Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.owner == Main.myPlayer)
             {
+                Projectile.timeLeft = 3000;
                 Projectile.extraUpdates += 2;
                 CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
-                Timer++;
-                if (Timer > 75)
+                Rectangle mouseHitBox = new ((int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, Projectile.width, Projectile.height);
+                if (Projectile.Hitbox.Intersects(mouseHitBox))
                 {
-                    //收束成功，点火！！！
                     Projectile.Kill();
                 }
-                else Projectile.timeLeft = 300;
+                else 
+                {
+                    Projectile.scale *= 0.98f;
+                    CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
+                }
             }
 
         }

@@ -2,15 +2,11 @@
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.NPCs;
-using Terraria.ID;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Healing;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles;
-using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
