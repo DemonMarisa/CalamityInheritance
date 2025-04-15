@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class HeavenlyGaleold : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public const float NormalArrowDamageMult = 1.25f;
         private static int[] ExoArrows;
         private static int[] ExoArrowsExoLore;

@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class DraedonsHeartLegacy: CIAccessories, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Accessories";
+        
         //防损机制是人能做出来的东西吗?
         public static readonly float DefenseDamageResistance = 0.01f;
         //75%提防御对那个时候本来也没啥，但是搬到现在配上数值爆破级别的武器和收缩的更惨的boss伤害直接就炸了

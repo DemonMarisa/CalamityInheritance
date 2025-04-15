@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
     public class RequiemsOfACruelWorld : CIPlaceable, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Placeables.MusicBox";
+        public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla

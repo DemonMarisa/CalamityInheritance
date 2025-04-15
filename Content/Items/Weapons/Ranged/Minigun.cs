@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.ResearchUnlockCount = 1;
         }
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public override void SetDefaults()
         {
             Item.damage = 550;

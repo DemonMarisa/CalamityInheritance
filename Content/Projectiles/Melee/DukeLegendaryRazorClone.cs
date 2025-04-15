@@ -1,19 +1,27 @@
-﻿using CalamityInheritance.Utilities;
+﻿using System;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DukeLegendaryRazor: ModProjectile, ILocalizedModType
+    public class DukeLegendaryRazorClone: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityMod/Projectiles/TornadoProj";
         public bool SkyFall = false; 
+        #region 攻击顺序枚举
+        const float IsShooted = 0f;
+        const float IsHoming = 1f;
+        #endregion
+        #region 数组别名
+        const short AttackType = 0;
+        const short AttackTimer = 1;
+        #endregion
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
@@ -29,25 +37,20 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.timeLeft = 300;
             Projectile.extraUpdates = 2;
-            Projectile.penetrate = 3;
+            Projectile.tileCollide = false;
+            Projectile.penetrate = 2;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
         }
-
+        public override bool? CanDamage()
+        {
+            return Projectile.ai[AttackType] == IsHoming;
+        }
         public override void AI()
         {
-            Player p = Main.player[Projectile.owner];
-            Projectile.rotation += Projectile.velocity.X * 0.7f;
-
-            Projectile.alpha -= 100;
-            if (Projectile.alpha < 5)
-            {
-                Projectile.alpha = 5;
-            }
-
             Projectile.localAI[1] += 1f;
-            if (Projectile.localAI[1] > 4f)
+            if (Projectile.localAI[1] > 4f && Main.rand.NextBool(4))
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -57,35 +60,58 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
      
             }
-            //非从天而降的射弹开始不会释放轨迹
-            else if(Projectile.ai[0] == 0f)
-                TrailLine();
-            //彻底发挥轮椅之光
-            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 3200f : 450f; 
-            NPC getTar = CIFunction.FindClosestTarget(Projectile, homingDist, true, false);
-            switch (Projectile.ai[0])
+            Projectile.alpha -= 100;
+            if (Projectile.alpha < 5)
             {
-                case 0f:
-                    if (!p.CIMod().DukeTier1)
-                        CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, homingDist, 18f, 20f);
-                    else if (getTar != null)
-                    {
-                        if (Projectile.ai[1] < 30f)
-                        {
-                            Projectile.ai[1] += 1f;
-                            Projectile.velocity *= 0.97f;
-                        }
-                        else
-                        {
-                            CIFunction.HomingNPCBetter(Projectile, getTar, homingDist, 18f + Projectile.ai[1] / 10f, 20f);
-                        }
-                    }
+                Projectile.alpha = 5;
+            }
+            //重做AI
+            Projectile.rotation += Projectile.velocity.X * 0.7f;
+            //如往常一样，搜索距离最近的敌怪
+            NPC target = CIFunction.FindClosestTarget(Projectile, 2400f, true, true);
+            //如果这玩意为空，直接返回，即不执行下方尝试减速等的AI
+            if (target == null)
+            {
+                Projectile.netUpdate = true;
+                return;
+            }
+            switch (Projectile.ai[AttackType])
+            {
+                //首先我们会让其飞行一段时间
+                case IsShooted:
+                    DoShooted();
                     break;
-                //在没获得T2升级时候海爵剑是不会获得0f以外的Ai的，需注意
-                default:
+                case IsHoming:
+                    DoHoming(target);
                     break;
             }
         }
+
+        private void DoHoming(NPC target)
+        {
+            //发起追踪, 有一个逐渐加速的过程
+            if (Projectile.ai[AttackTimer] < 25f)
+                Projectile.ai[AttackTimer] += 1f;
+            CIFunction.HomingNPCBetter(Projectile, target, 2400f, 10f + Projectile.ai[AttackTimer], 20f, 2, 14f);
+            //只有发起追踪的才会有轨迹
+            if(Main.rand.NextBool(4))
+                TrailLine();
+        }
+
+        public void DoShooted()
+        {
+            //使其飞行一段时间同时一直减速
+            Projectile.ai[AttackTimer] += 1f;
+            if (Projectile.ai[AttackTimer] > 30f)
+            Projectile.velocity *= 0.90f;
+            if (Projectile.ai[AttackTimer] > 60f) 
+            {
+                Projectile.ai[AttackType] = IsHoming;
+                Projectile.ai[AttackTimer] = 0f;
+                Projectile.netUpdate = true;
+            }
+        }
+
         public void TrailLine()
         {
             if (Main.rand.NextBool(2))
@@ -97,7 +123,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 GeneralParticleHandler.SpawnParticle(trail);
             }
         }
-        public override bool OnTileCollide(Vector2 oldVelocity) => false;
         public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 10; k++)

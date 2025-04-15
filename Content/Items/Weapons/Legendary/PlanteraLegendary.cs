@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class PlanteraLegendary: CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Ranged.PlanteraLegendary"; 
         public override void SetStaticDefaults()
         {

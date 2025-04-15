@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
     [AutoloadEquip(EquipType.Head)]
     public class SilvaHeadMelee : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

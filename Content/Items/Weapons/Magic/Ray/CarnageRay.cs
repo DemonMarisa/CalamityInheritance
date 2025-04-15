@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class CarnageRay : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

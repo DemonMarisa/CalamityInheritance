@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
     [AutoloadEquip(EquipType.Legs)]
     public class AncientVictideLeggings: CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
 

@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class SomaPrimeOld : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         private static readonly float XYInaccuracy = 0.32f;
         public override void SetStaticDefaults()
         {

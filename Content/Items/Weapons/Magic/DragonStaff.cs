@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DragonStaff: CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

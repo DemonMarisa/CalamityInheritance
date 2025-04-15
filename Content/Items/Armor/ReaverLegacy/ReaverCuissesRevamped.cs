@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     [AutoloadEquip(EquipType.Legs)]
     public class ReaverCuissesRevamped : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

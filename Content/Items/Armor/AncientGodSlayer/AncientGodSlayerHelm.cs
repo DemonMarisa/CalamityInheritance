@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
     [AutoloadEquip(EquipType.Head)]
     public class AncientGodSlayerHelm : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

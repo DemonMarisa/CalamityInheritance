@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("GalaxySmasherMelee")]
     public class MeleeTypeHammerGalaxySmasherLegacy : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 

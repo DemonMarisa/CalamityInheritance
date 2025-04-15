@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
 {
     public class DraedonsForgeold : CIPlaceable, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Placeables.Furniture.CraftingStations";
+        public new string LocalizationCategory => $"{Local}.Furniture.CraftingStations";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

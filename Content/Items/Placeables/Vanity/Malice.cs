@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
     {
         public int frameCounter = 0;
         public int frame = 0;
-        public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
+        public new string LocalizationCategory => $"{Local}.Vanity";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
     [AutoloadEquip(EquipType.Legs)]
     public class AncientSilvaLeggings : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

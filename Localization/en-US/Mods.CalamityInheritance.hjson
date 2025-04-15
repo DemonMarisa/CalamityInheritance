@@ -450,6 +450,21 @@ Configs: {
 			Label: P B G Color Type
 			Tooltip: ""
 		}
+
+		PrismallineResprite: {
+			Label: Prismalline Resprite
+			Tooltip: ""
+		}
+
+		RadiantStarResprite: {
+			Label: Radiant Star Resprite
+			Tooltip: ""
+		}
+
+		ShatteredSunResprite: {
+			Label: Shattered Sun Resprite
+			Tooltip: ""
+		}
 	}
 
 	CIServerConfig: {

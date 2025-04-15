@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HeliumFlashLegacy : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         internal const float ExplosionDamageMultiplier = 0.65f;
         public static readonly int HeliumFlashDamage = 600;
         public static readonly int HeliumFlashManaCost = 15;

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Trinity : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

@@ -14,9 +14,8 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee;
 
-public class ACTExcelsus : ModItem, ILocalizedModType
+public class ACTExcelsus : CIMelee, ILocalizedModType
 {
-    public new string LocalizationCategory => "Content.Items.Weapons.Melee";
     #region 主射弹属性管理
     //射弹追踪速度
     public const float HomingSpeed = 52f;

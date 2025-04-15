@@ -32,6 +32,8 @@ namespace CalamityInheritance.CIPlayer
         public int GlobalSoundDelay = 0;
         //通用计时器
         public int GlobalFireDelay = 0;
+        //通用……任意计数器？
+        public int GlobalMiscCounter = 1;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)

@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("TerraDiskMeleeLegacy")]
     public class MeleeTypeTerraDisk: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {

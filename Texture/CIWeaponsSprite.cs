@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -181,6 +182,7 @@ namespace CalamityInheritance.Texture
         public static string CalRogueWeaponRoute => $"{CalWeaponRoute}/Rogue";
         //射弹路径
         public static string CalProjRoute => "CalamityMod/Projectiles";
+        
         public static void LoadTexture()
         {
             #region 战士
@@ -295,7 +297,7 @@ namespace CalamityInheritance.Texture
             PrismllAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/PrismallineAlt");
             RadiantCal = ModContent.Request<Texture2D>          ($"{CalRogueWeaponRoute}/RadiantStar");
             RadiantAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/RadiantStarAlt");
-            ShatteredCal = ModContent.Request<Texture2D>        ($"{CalRangedWeaponRoute}/ShatteredSun");
+            ShatteredCal = ModContent.Request<Texture2D>        ($"{CalRogueWeaponRoute}/ShatteredSun");
             ShatteredAlt = ModContent.Request<Texture2D>        ($"{CIRogueExtraRoute}/ShatteredSunAlt");
 
             //圣泰阿克提斯之锤
@@ -344,6 +346,7 @@ namespace CalamityInheritance.Texture
             #region 其他
             #endregion
         }
+
         public static void UnloadTexture()
         {
             HeliumCal = null;

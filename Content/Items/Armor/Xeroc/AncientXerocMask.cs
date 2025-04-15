@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
     [AutoloadEquip(EquipType.Head)]
     public class AncientXerocMask : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

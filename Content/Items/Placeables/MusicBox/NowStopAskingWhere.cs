@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
 	public class NowStopAskingWhere: CIPlaceable, ILocalizedModType
 	{
-        public new string LocalizationCategory => "Content.Items.Placeables.MusicBox";
+        public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/NowStopAskingWhere"), ModContent.ItemType<NowStopAskingWhere>(), ModContent.TileType<NowStopAskingWhereBox>());

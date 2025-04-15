@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("CorpusAvertorLegacyMelee")]
     public class MeleeTypeCorpusAvertor : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             if(CIServerConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转

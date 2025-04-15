@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
     public class YharimAuricTeslaCuisses : CIArmor, ILocalizedModType
     {
 
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

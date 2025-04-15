@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
     public class MLGRune : CIPlaceable, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
+        public new string LocalizationCategory => $"{Local}.Vanity";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;

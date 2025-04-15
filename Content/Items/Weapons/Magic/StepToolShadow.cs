@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class StepToolShadow : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public int NewDamage =  CIServerConfig.Instance.ShadowspecBuff? 11451 : 1145;
         public override void SetStaticDefaults()
         {

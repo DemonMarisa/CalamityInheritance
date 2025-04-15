@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideBoomerangMelee: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

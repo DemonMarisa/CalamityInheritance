@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class DragonsBreathold : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public const int BetweenShotsPause = 12;
         public const int PelletsPerShot = 8;
         public const float FullAutoFireRateMult = 0.8f;

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideYoyo: CIMelee, ILocalizedModType 
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class WaifuHeart : CIAccessories, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Accessories";
+        
 
         public static bool FuckYouEHeart { get => fuckYouEHeart; set => fuckYouEHeart = value; }
 

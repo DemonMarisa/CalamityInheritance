@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class MurasamaNeweffect : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public int frameCounter = 0;
         public int frame = 0;
         public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues";

@@ -374,18 +374,11 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense += darkSunRingNightDefense;
             }
             
-            if (BraveBadge) //如果启用
+            if (BraveBadge && calPlayer.tarraMelee && !calPlayer.auricSet) //如果启用
             {
-                if(calPlayer.tarraMelee) //金源套不再能吃到勇气勋章的效果
-                {
-                    if(calPlayer.auricSet)
-                    {
-                        return;
-                    }
-                    Player.GetCritChance<MeleeDamageClass>() += 10;
-                    Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                    Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
-                }
+                Player.GetCritChance<MeleeDamageClass>() += 10;
+                Player.GetDamage<MeleeDamageClass>() += 0.10f;
+                Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
             }
             
             if (deificAmuletEffect)

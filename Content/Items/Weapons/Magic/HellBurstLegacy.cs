@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HellBurstLegacy : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

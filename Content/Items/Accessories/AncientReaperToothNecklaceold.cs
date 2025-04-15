@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AncientReaperToothNecklace : CIAccessories, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Accessories";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

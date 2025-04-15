@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
     [AutoloadEquip(EquipType.Head)]
     public class AncientAeroHelm :CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
