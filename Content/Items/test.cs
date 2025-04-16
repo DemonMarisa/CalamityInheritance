@@ -16,14 +16,14 @@ using CalamityInheritance.System;
 
 namespace CalamityInheritance.Content.Items
 {
-    public class Test : ModItem, ILocalizedModType
+    public class Test : CIMelee, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
 
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
 
         public override void SetDefaults()
         {

@@ -1,9 +1,12 @@
+using System;
+using System.Data.SqlTypes;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Tools;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
@@ -23,11 +26,15 @@ using CalamityMod.Items.PermanentBoosters;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Melee.Shortswords;
 using CalamityMod.Projectiles.Melee.Spears;
 using CalamityMod.Projectiles.Pets;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using ReLogic.Text;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
@@ -35,585 +42,206 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        public static void IR<T>(Asset<Texture2D> getTex) where T : ModItem
+        {
+            TextureAssets.Item[ModContent.ItemType<T>()] = getTex;
+        }
+        public static void PR<T>(Asset<Texture2D> getTex) where T : ModProjectile
+        {
+            TextureAssets.Projectile[ModContent.ProjectileType<T>()] = getTex;
+        }
+        public static Asset<Texture2D> GI<T>() where T : ModItem
+        {
+            return TextureAssets.Item[ModContent.ItemType<T>()];
+        }
+        public static Asset<Texture2D> GP<T>() where T : ModProjectile
+        {
+            return TextureAssets.Projectile[ModContent.ProjectileType<T>()];
+        }
         //3.6: 将重绘的排序更加严格地分类
         public static void RespriteOptions()
         {
+            var R = CIRespriteConfig.Instance;
+            var item = TextureAssets.Item;
+            var proj = TextureAssets.Projectile;
             #region 切换1457贴图
-            if(CIRespriteConfig.Instance.SetAllLegacySprite == true) //这个用于快速把一些物品转为1457版本的贴图
+            if(R.SetAllLegacySprite == true) //这个用于快速把一些物品转为1457版本的贴图
             {
-                CIRespriteConfig.Instance.RampartofDeitiesTexture =     false;
-                CIRespriteConfig.Instance.TriactisHammerResprite =      false;
-                CIRespriteConfig.Instance.BloodOrangeResprite =         false;
-                CIRespriteConfig.Instance.MiracleFruitResprite=         false;
-                CIRespriteConfig.Instance.ElderberryResprite  =         false;
-                CIRespriteConfig.Instance.DragonfruitResprite =         false;
-                CIRespriteConfig.Instance.CometShardResprite =          false;
-                CIRespriteConfig.Instance.EtherealCoreResprite =        false;
-                CIRespriteConfig.Instance.PhantomHeartResprite =        false;
-                CIRespriteConfig.Instance.StellarContemptResprite  =    false;
-                CIRespriteConfig.Instance.FateGirlSprite =              false;
-                CIRespriteConfig.Instance.HeliumFlashResprite =         false;
-                CIRespriteConfig.Instance.DrataliornusResprite =        false;
-                CIRespriteConfig.Instance.AngelTreadsResprite =         false;
-                CIRespriteConfig.Instance.MOABResprite =                false;
+                R.RampartofDeitiesTexture =     false;
+                R.TriactisHammerResprite =      false;
+                R.BloodOrangeResprite =         false;
+                R.MiracleFruitResprite=         false;
+                R.ElderberryResprite  =         false;
+                R.DragonfruitResprite =         false;
+                R.CometShardResprite =          false;
+                R.EtherealCoreResprite =        false;
+                R.PhantomHeartResprite =        false;
+                R.StellarContemptResprite  =    false;
+                R.FateGirlSprite =              false;
+                R.HeliumFlashResprite =         false;
+                R.DrataliornusResprite =        false;
+                R.AngelTreadsResprite =         false;
+                R.MOABResprite =                false;
 
-                CIRespriteConfig.Instance.ShadowspecKnivesResprite = 2;
+                R.ShadowspecKnivesResprite = 2;
             }
             #endregion
             #region Texture
             #region 钨钢Family
-            if (TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()]     != null ||
-                TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()]  != null ||
-                TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] != null)
+            if (GI<WulfrumAxe>()     != null ||
+                GI<WulfrumHammer>()  != null ||
+                GI<WulfrumPickaxe>() != null)
             {
-                if(!CIRespriteConfig.Instance.WulfumTexture)
+                if(!R.WulfumTexture)
                 {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CIResprite.WulfrumAxeNew;
-                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CIResprite.WulfrumHammerNew;
-                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CIResprite.WulfrumPickaxeNew;
+                    IR<WulfrumAxe>(CIResprite.WulfrumAxeNew);
+                    IR<WulfrumHammer>(CIResprite.WulfrumHammerNew);
+                    IR<WulfrumPickaxe>(CIResprite.WulfrumPickaxeNew);
                 }
-                if (CIRespriteConfig.Instance.WulfumTexture)
+                if (R.WulfumTexture)
                 {
-                    TextureAssets.Item[ModContent.ItemType<WulfrumAxe>()] = CIResprite.WulfrumAxeOld;
-                    TextureAssets.Item[ModContent.ItemType<WulfrumHammer>()] = CIResprite.WulfrumHammerOld;
-                    TextureAssets.Item[ModContent.ItemType<WulfrumPickaxe>()] = CIResprite.WulfrumPickaxeOld;
+                    IR<WulfrumAxe>(CIResprite.WulfrumAxeOld);
+                    IR<WulfrumHammer>(CIResprite.WulfrumHammerOld);
+                    IR<WulfrumPickaxe>(CIResprite.WulfrumPickaxeOld);
                 }
             }
             #endregion
             #region 全部的元素武器
-            if (TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ElementalRayold>()]  != null ||
-                TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ElementalLance>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] != null) 
+            if (GI<ElementalShivold>() != null ||
+                GI<ElementalRayold>()  != null ||
+                GI<MeleeTypeElementalDisk>() != null ||
+                GI<ElementalLance>() != null ||
+                GI<ElementalGauntletold>() != null ||
+                GI<ElementalBlaster>() != null ||
+                GI<ArkoftheElementsold>() != null ||
+                GI<Swordsplosion>() != null) 
             {
-                if (!CIRespriteConfig.Instance.AllElemental)
+                if (!R.AllElemental)
                 {
                     //方舟
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] =CIWeaponsResprite.ElemSwordCal;   
+                    IR<ArkoftheElementsold>(CIWeaponsResprite.ElemSwordCal);   
                     //短剑
-                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivCal;
+                    IR<ElementalShivold>(CIWeaponsResprite.ElemShivCal);
+                    PR<ElementalShivoldProj>(CIWeaponsResprite.ElemShivCal);
                     //长矛
-                    TextureAssets.Item[ModContent.ItemType<ElementalLance>()] = CIWeaponsResprite.ElemLanceCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalLanceProjectile>()] = CIWeaponsResprite.ElemLanceProjCal;
+                    IR<ElementalLance>(CIWeaponsResprite.ElemLanceCal);
+                    PR<ElementalLanceProjectile>(CIWeaponsResprite.ElemLanceProjCal);
                     //飞盘(近战)
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] = CIWeaponsResprite.ElemDiskCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProj>()] = CIWeaponsResprite.ElemDiskCal;
+                    IR<MeleeTypeElementalDisk>(CIWeaponsResprite.ElemDiskCal);
+                    PR<MeleeTypeElementalDiskProj>(CIWeaponsResprite.ElemDiskCal);
                     //射线
-                    TextureAssets.Item[ModContent.ItemType<ElementalRayold>()] = CIWeaponsResprite.ElemRayCal;
+                    IR<ElementalRayold>(CIWeaponsResprite.ElemRayCal);
                     //手套
-                    TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveCal;
+                    IR<ElementalGauntletold>(CIResprite.ElemGloveCal);
                     //元素BYD
-                    TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDCal;
+                    IR<ElementalBlaster>(CIWeaponsResprite.ElemBYDCal);
                     //爆破
-                    TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] = CIWeaponsResprite.RareArkCal;
-                    TextureAssets.Item[ModContent.ItemType<ElementalEruptionLegacy>()] = CIWeaponsResprite.ElemFlamethrowerCal;
+                    IR<Swordsplosion>(CIWeaponsResprite.RareArkCal);
+                    IR<ElementalEruptionLegacy>(CIWeaponsResprite.ElemFlamethrowerCal);
 
                 }
-                if (CIRespriteConfig.Instance.AllElemental)
+                if (R.AllElemental)
                 {
                     //方舟
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheElementsold>()] =CIWeaponsResprite.ElemSwordAlt;   
+                    IR<ArkoftheElementsold>(CIWeaponsResprite.ElemSwordAlt);   
                     //短剑
-                    TextureAssets.Item[ModContent.ItemType<ElementalShivold>()] = CIWeaponsResprite.ElemShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalShivoldProj>()] = CIWeaponsResprite.ElemShivAlt;
+                    IR<ElementalShivold>(CIWeaponsResprite.ElemShivAlt);
+                    PR<ElementalShivoldProj>(CIWeaponsResprite.ElemShivAlt);
                     //长矛
-                    TextureAssets.Item[ModContent.ItemType<ElementalLance>()] = CIWeaponsResprite.ElemLanceAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ElementalLanceProjectile>()] = CIWeaponsResprite.ElemLanceProjAlt;
+                    IR<ElementalLance>(CIWeaponsResprite.ElemLanceAlt);
+                    PR<ElementalLanceProjectile>(CIWeaponsResprite.ElemLanceProjAlt);
                     //飞盘(近战)
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeElementalDisk>()] = CIWeaponsResprite.ElemDiskAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProj>()] = CIWeaponsResprite.ElemDiskAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeElementalDiskProjSplit>()] = CIWeaponsResprite.ElemDiskAlt;
+                    IR<MeleeTypeElementalDisk>(CIWeaponsResprite.ElemDiskAlt);
+                    PR<MeleeTypeElementalDiskProj>(CIWeaponsResprite.ElemDiskAlt);
+                    PR<MeleeTypeElementalDiskProjSplit>(CIWeaponsResprite.ElemDiskAlt);
                     //射线
-                    TextureAssets.Item[ModContent.ItemType<ElementalRayold>()] = CIWeaponsResprite.ElemRayAlt;
+                    IR<ElementalRayold>(CIWeaponsResprite.ElemRayAlt);
                     //手套
-                    TextureAssets.Item[ModContent.ItemType<ElementalGauntletold>()] = CIResprite.ElemGloveAlt;
+                    IR<ElementalGauntletold>(CIResprite.ElemGloveAlt);
                     //byd
-                    TextureAssets.Item[ModContent.ItemType<ElementalBlaster>()] = CIWeaponsResprite.ElemBYDAlt;
+                    IR<ElementalBlaster>(CIWeaponsResprite.ElemBYDAlt);
                     //爆破
-                    TextureAssets.Item[ModContent.ItemType<Swordsplosion>()] = CIWeaponsResprite.RareArkAlt;
+                    IR<Swordsplosion>(CIWeaponsResprite.RareArkAlt);
                     //元素喷火器
-                    TextureAssets.Item[ModContent.ItemType<ElementalEruptionLegacy>()] = CIWeaponsResprite.ElemFlamethrowerAlt;
+                    IR<ElementalEruptionLegacy>(CIWeaponsResprite.ElemFlamethrowerAlt);
                 }
             }
             #endregion
             #region 泰拉系列 目前是占位符没有作用
             
-            // if (TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] != null)
+            // if (GI<BotanicPiercer>() != null)
             // {
-            //     if (!CIRespriteConfig.Instance.AllTerra)
+            //     if (!R.AllTerra)
             //     {
-            //         TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] = CIWeaponsResprite.TerraLanceCal;
-            //         TextureAssets.Projectile[ModContent.ProjectileType<BotanicPiercerProjectile>()] = CIWeaponsResprite.TerraLanceAlt;
+            //         GI<BotanicPiercer>(CIWeaponsResprite.TerraLanceCal);
+            //         PR<BotanicPiercerProjectile>(CIWeaponsResprite.TerraLanceAlt);
             //     }
-            //     if (CIRespriteConfig.Instance.AllTerra)
+            //     if (R.AllTerra)
             //     {
-            //         TextureAssets.Item[ModContent.ItemType<BotanicPiercer>()] = CIWeaponsResprite.TerraLanceAlt;
-            //         TextureAssets.Projectile[ModContent.ProjectileType<BotanicPiercerProjectile>()] = CIWeaponsResprite.TerraLanceAltProj;
+            //         GI<BotanicPiercer>(CIWeaponsResprite.TerraLanceAlt);
+            //         PR<BotanicPiercerProjectile>(CIWeaponsResprite.TerraLanceAltProj);
             //     }
             // }
             #endregion
-            #region 近战物品
-            if (TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.ArkofCosmosTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.AotCCal;
-                }
-                if (CIRespriteConfig.Instance.ArkofCosmosTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<ArkoftheCosmosold>()] = CIWeaponsResprite.AotCAlt;
-                }
-            }
-            #region 圣短剑
-            if (TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<NightsStabber>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<EutrophicShank>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<AncientShiv>()] != null ||
-                TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] != null
-                )
-            {
-                if (!CIRespriteConfig.Instance.AllShivs)
-                {
-                    //圣短剑
-                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.HallowedShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.HallowedShivCal;
-                    //真圣短剑
-                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueHallowedShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueHallowedShivCal;
-                    //永夜短剑
-                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightShivCal;
-                    //真永夜短剑
-                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightShivCal;
-                    //伽利略
-                    TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoCal;
-                    //水华
-                    TextureAssets.Item[ModContent.ItemType<EutrophicScimitar>()] = CIWeaponsResprite.SeaShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<EutrophicScimitarProj>()] = CIWeaponsResprite.SeaShivCal;
-                    //狱炎
-                    TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] = CIWeaponsResprite.FlameShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<FlameburstShortswordProj>()] = CIWeaponsResprite.FlameShivCal;
-                    //远古
-                    TextureAssets.Item[ModContent.ItemType<AncientShiv>()] = CIWeaponsResprite.DungeonShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<AncientShivProj>()] = CIWeaponsResprite.DungeonShivCal;
-                    //腐巢
-                    TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] = CIWeaponsResprite.HiveMindShivCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<LeechingDaggerProj>()] = CIWeaponsResprite.HiveMindShivCal;
-
-
-                }
-                if (CIRespriteConfig.Instance.AllShivs)
-                {
-                    //圣短剑
-                    TextureAssets.Item[ModContent.ItemType<ExcaliburShortsword>()] = CIWeaponsResprite.HallowedShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<ExcaliburShortswordProj>()] = CIWeaponsResprite.HallowedShivAlt;
-                    //真圣短剑
-                    TextureAssets.Item[ModContent.ItemType<TrueExcaliburShortsword>()] = CIWeaponsResprite.TrueHallowedShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueExcaliburShortswordProj>()] = CIWeaponsResprite.TrueHallowedShivAlt;
-                    //永夜短剑
-                    TextureAssets.Item[ModContent.ItemType<NightsStabber>()] = CIWeaponsResprite.NightShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<NightsStabberProj>()] = CIWeaponsResprite.NightShivAlt;
-                    //真永夜短剑
-                    TextureAssets.Item[ModContent.ItemType<TrueNightsStabber>()] = CIWeaponsResprite.TrueNightShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<TrueNightsStabberProj>()] = CIWeaponsResprite.TrueNightShivAlt;
-                    //伽利略
-                    TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.GalileoAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<GalileoGladiusProj>()] = CIWeaponsResprite.GalileoAlt;
-                    //水华
-                    TextureAssets.Item[ModContent.ItemType<EutrophicScimitar>()] = CIWeaponsResprite.SeaShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<EutrophicScimitarProj>()] = CIWeaponsResprite.SeaShivAlt;
-                    //狱炎
-                    TextureAssets.Item[ModContent.ItemType<FlameburstShortsword>()] = CIWeaponsResprite.FlameShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<FlameburstShortswordProj>()] = CIWeaponsResprite.FlameShivAlt;
-                    //远古
-                    TextureAssets.Item[ModContent.ItemType<AncientShiv>()] = CIWeaponsResprite.DungeonShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<AncientShivProj>()] = CIWeaponsResprite.DungeonShivAlt;
-                    //腐巢
-                    TextureAssets.Item[ModContent.ItemType<LeechingDagger>()] = CIWeaponsResprite.HiveMindShivAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<LeechingDaggerProj>()] = CIWeaponsResprite.HiveMindShivAlt;
-                }
-            }
-            #endregion
-            #region 庇护
-            if (TextureAssets.Item[ModContent.ItemType<AegisBlade>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.AegisResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite. AegisCal;
-                }
-                if (CIRespriteConfig.Instance.AegisResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AegisBlade>()] = CIWeaponsResprite.AegisAlt;
-                }
-            }
-            #endregion
-            #region 明月链刃
-            if (TextureAssets.Item[ModContent.ItemType<CrescentMoon>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.CrescentMoonResprite)
-                {
-                    // TextureAssets.Item[ModContent.ItemType<CrescentMoon>()] = CIWeaponsResprite.CerscentMoonProjCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<CrescentMoonProj>()] = CIWeaponsResprite.CerscentMoonProjCal;
-                }
-                if (CIRespriteConfig.Instance.CrescentMoonResprite)
-                {
-                    // TextureAssets.Item[ModContent.ItemType<GalileoGladius>()] = CIWeaponsResprite.CerscentMoonProjAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<CrescentMoonProj>()] = CIWeaponsResprite.CerscentMoonProjAlt;
-                }
-            }
-            #endregion
-            #endregion
-
-            #region 射手物品
-            #region 碎颅
-            if (TextureAssets.Item[ModContent.ItemType<Skullmasher>()] != null)
-            {
-                if(!CIRespriteConfig.Instance.SkullmasherResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.SkullmasherCal;
-                }
-                if(CIRespriteConfig.Instance.SkullmasherResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Skullmasher>()] = CIWeaponsResprite.Skullmasher;
-                }
-            }
-            #endregion
-            #region P90
-            if (TextureAssets.Item[ModContent.ItemType<P90Legacy>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.P90Resprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CIWeaponsResprite.P90;
-                }
-                if (CIRespriteConfig.Instance.P90Resprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<P90Legacy>()] = CIWeaponsResprite.P90Legacy;
-                }
-            }
-            #endregion P90
-            #region 龙弓
-            //byd你用星体击碎者的开关切换龙弓贴图是吧 
-            if (TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] != null &&
-                TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.DrataliornusResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataBowLegacyAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataBowLegacyAlt;
-                }
-                if (CIRespriteConfig.Instance.DrataliornusResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<DrataliornusLegacy>()] = CIWeaponsResprite.DrataliornusLegacy;
-                    TextureAssets.Projectile[ModContent.ProjectileType<DragonBow>()] = CIWeaponsResprite.DrataliornusLegacy;
-                }
-            }
-            #endregion
-            #endregion
-            #region 战/盗混合武器
-            #region 泰阿克提斯之锤
-            //TODO:大锤子射弹贴图没能成功切换
-            if(TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()]!=null)
-            {
-                if(!CIRespriteConfig.Instance.TriactisHammerResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.GiantHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.GiantHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.GiantHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.GiantHammerCal;
-                }
-                if(CIRespriteConfig.Instance.TriactisHammerResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()] = CIWeaponsResprite.GiantHammerAlt;
-                    
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>()] = CIWeaponsResprite.GiantHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] = CIWeaponsResprite.GiantHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>()] = CIWeaponsResprite.GiantHammerCal;
-                }
-            }
-            #endregion
-            #region 圣时之锤
-            //TODO:同上
-            if(TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()]!=null)
-            {
-                if(!CIRespriteConfig.Instance.PwnagehammerResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerCal;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerCal;
-
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
-                }
-                if(CIRespriteConfig.Instance.PwnagehammerResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerAlt;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerPwnageLegacy>()] = CIWeaponsResprite.PwnageHammerAlt;
-                    
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>()] = CIWeaponsResprite.PwnageHammerCal;
-                }
-            }
-            #endregion
-            #region 星体击碎者(们)
-            //mod内有两把星体击碎者，两把都用同一句话的判定
-            if (TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] != null &&
-                TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerStellarContemptLegacyProj>()] != null &&
-                TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] != null &&
-                TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.StellarContemptResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CIWeaponsResprite.StellarContemptNew;
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerStellarContemptLegacyProj>()] = CIWeaponsResprite.StellarContemptNew;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] = CIWeaponsResprite.StellarContemptNew;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CIWeaponsResprite.StellarContemptNew;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CIWeaponsResprite.StellarContemptNew;
-                }
-                if (CIRespriteConfig.Instance.StellarContemptResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = CIWeaponsResprite.StellarContemptOld;
-                    TextureAssets.Projectile[ModContent.ProjectileType<MeleeTypeHammerStellarContemptLegacyProj>()] = CIWeaponsResprite.StellarContemptOld;
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeHammerStellarContempt>()] = CIWeaponsResprite.StellarContemptOld;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProj>()] = CIWeaponsResprite.StellarContemptOld;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>()] = CIWeaponsResprite.StellarContemptOld;
-                }
-            }
-            #endregion
-            #region 苍穹飞刀
-            //飞刀类，因为原灾也有，所以也归入战/盗混合武器
-            //Todo: 可能给原灾的飞刀上贴图切换?
-            if (TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] != null &&
-                TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.GodSlayerKnivesResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesCalProj;
-                }
-                if (CIRespriteConfig.Instance.GodSlayerKnivesResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesEmpyrean>()] = CIWeaponsResprite.EmpyreanKnivesAlt;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>()] = CIWeaponsResprite.EmpyreanKnivesAltProj;
-                }
-            }
-            #endregion
-            #region 圣光飞刀
-            if (TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] != null &&
-                TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] != null)
-            {
-                if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 1)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivesCal;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivesCalProj;
-                }
-                if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 2)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt3;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt3Proj;
-                }
-                if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 3)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt2;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt2Proj;
-                }
-                if (CIRespriteConfig.Instance.ShadowspecKnivesResprite == 4)
-                {
-                    TextureAssets.Item[ModContent.ItemType<RogueTypeKnivesShadowspec>()] = CIWeaponsResprite.ShadowKnivsAlt1;
-                    TextureAssets.Projectile[ModContent.ProjectileType<RogueTypeKnivesShadowspecProj>()] = CIWeaponsResprite.ShadowKnivsAlt3Proj;
-                }
-            }
-            #endregion
-            #endregion
-            #region 法师武器
-            #region 氦闪
-            if (TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] != null)
-            {
-                if(!CIRespriteConfig.Instance.HeliumFlashResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumCal;
-                }
-                if(CIRespriteConfig.Instance.HeliumFlashResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<HeliumFlashLegacy>()] = CIWeaponsResprite.HeliumFlashLegacy;
-                }
-            }
-            #endregion
-            #endregion
-            #region 饰品
-            #region 壁垒
-            if (TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.RampartofDeitiesTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CIResprite.RampartofDeitiesNew;
-                }
-                if (CIRespriteConfig.Instance.RampartofDeitiesTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CIRampartofDeities>()] = CIResprite.RampartofDeitiesOld;
-                }
-            }
-            #endregion
-            #region 空灵护符
-            if (TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.EtherealTalismancTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CIResprite.EtherealTalismanNew;
-                }
-                if (CIRespriteConfig.Instance.EtherealTalismancTexture)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AncientEtherealTalisman>()] = CIResprite.EtherealTalismanOld;
-                }
-            }
-            
-            #endregion
-            #region 无记名灵基
-            if (TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] != null &&
+            MeleeResprite(R);
+            RangedResprite(R);
+            MagicResprite(R);
+            SummonResprite(item, proj, R);
+            RogueResprite(R);
+            MeleeRogueResprite(R);
+           
+            //壁垒
+            if (GI<CIRampartofDeities>() != null)
+                IR<CIRampartofDeities>(R.RampartofDeitiesTexture ? CIResprite.RampartofDeitiesOld : CIResprite.RampartofDeitiesNew);
+            //空灵护符
+            if (GI<AncientEtherealTalisman>() != null)
+                IR<AncientEtherealTalisman>(R.EtherealTalismancTexture ? CIResprite.EtherealTalismanOld : CIResprite.EtherealTalismanNew);
+            //无记名灵基
+            if (GP<DaawnlightSpiritOriginMinion>() != null &&
                 TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] != null)
             {
-                if (!CIRespriteConfig.Instance.FateGirlSprite)
+                if (!R.FateGirlSprite)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CIResprite.FateGirlOriginal;
+                    PR<DaawnlightSpiritOriginMinion>(CIResprite.FateGirlOriginal);
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CIResprite.FateGirlOriginalBuff;
                 }
-                if (CIRespriteConfig.Instance.FateGirlSprite)
+                if (R.FateGirlSprite)
                 {
-                    TextureAssets.Projectile[ModContent.ProjectileType<DaawnlightSpiritOriginMinion>()] = CIResprite.FateGirlLegacy;
+                    PR<DaawnlightSpiritOriginMinion>(CIResprite.FateGirlLegacy);
                     TextureAssets.Buff[ModContent.BuffType<ArcherofLunamoon>()] = CIResprite.FateGirlLegacyBuff;
                 }
             }
-            #endregion
-            #region 天使鞋
-            if (TextureAssets.Item[ModContent.ItemType<AngelTreads>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.AngelTreadsResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AngelTreads>()] = CIResprite.AngelTreadsCalamity; 
-                }
-                if (CIRespriteConfig.Instance.AngelTreadsResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<AngelTreads>()] = CIResprite.AngelTreadsAlter; 
-                }
-            }
-            #endregion
-            #region 夜明跑鞋
-            if (TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.LunarBootsResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] = CIResprite.LunarBootsCalamity;
-                }
-                if (CIRespriteConfig.Instance.LunarBootsResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<FasterLunarTracers>()] = CIResprite.LunarBootsAlter;
-                }
-            }
-            #endregion
-            #region 气球他妈
-            if (TextureAssets.Item[ModContent.ItemType<MOAB>()] != null)
-            {
-                //TODO:贴图切换失败 
-                if (!CIRespriteConfig.Instance.MOABResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MOAB>()] = CIResprite.MOABCalamity;
-                }
-                if (CIRespriteConfig.Instance.MOABResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MOAB>()] = CIResprite.MOABAlter;
-                }
-            }
-            #endregion
+            //天使鞋
+            if (GI<AngelTreads>() != null)
+                IR<AngelTreads>(R.AngelTreadsResprite       ? CIResprite.AngelTreadsAlter   : CIResprite.AngelTreadsCalamity); 
+            //叶明鞋
+            if (GI<FasterLunarTracers>() != null)
+                IR<FasterLunarTracers>(R.LunarBootsResprite ? CIResprite.LunarBootsAlter    : CIResprite.LunarBootsCalamity);
+            //MOAB
+            if (GI<MOAB>() != null)
+                IR<MOAB>(R.MOABResprite                     ? CIResprite.MOABAlter          : CIResprite.MOABCalamity);
 
-            #endregion
             #region 增益道具
-            if (TextureAssets.Item[ModContent.ItemType<BloodOrange>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.BloodOrangeResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<BloodOrange>()] = CIResprite.HealthOrange;
-                }
-                if (CIRespriteConfig.Instance.BloodOrangeResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<BloodOrange>()] = CIResprite.HealthOrangeAlter;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.MiracleFruitResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] = CIResprite.HealthMira;
-                }
-                if (CIRespriteConfig.Instance.MiracleFruitResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<MiracleFruit>()] = CIResprite.HealthMiraAlter;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<Elderberry>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.ElderberryResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Elderberry>()] = CIResprite.HealthBerry;
-                }
-                if (CIRespriteConfig.Instance.ElderberryResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Elderberry>()] = CIResprite.HealthBerryAlter;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.DragonfruitResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] = CIResprite.HealthDragon;
-                }
-                if (CIRespriteConfig.Instance.DragonfruitResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<Dragonfruit>()] = CIResprite.HealthDragonAlter;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<CometShard>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.CometShardResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CometShard>()] = CIResprite.ManaShard;
-                }
-                if (CIRespriteConfig.Instance.CometShardResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<CometShard>()] = CIResprite.ManaShardAlter;
-                }
-            }
+            if (GI<BloodOrange>() != null)
+                IR<BloodOrange>(R.BloodOrangeResprite   ? CIResprite.HealthOrangeAlter  : CIResprite.HealthOrange);
 
-            if (TextureAssets.Item[ModContent.ItemType<EtherealCore>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.EtherealCoreResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<EtherealCore>()] = CIResprite.ManaCore;
-                }
-                if (CIRespriteConfig.Instance.EtherealCoreResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<EtherealCore>()] = CIResprite.ManaCoreAlter;
-                }
-            }
-            if (TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] != null)
-            {
-                if (!CIRespriteConfig.Instance.PhantomHeartResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] = CIResprite.ManaHeart;
-                }
-                if (CIRespriteConfig.Instance.PhantomHeartResprite)
-                {
-                    TextureAssets.Item[ModContent.ItemType<PhantomHeart>()] = CIResprite.ManaHeartAlter;
-                }
-            }
+            if (GI<MiracleFruit>() != null)
+                IR<MiracleFruit>(R.MiracleFruitResprite ? CIResprite.HealthMiraAlter    : CIResprite.HealthMira);
+            
+            if (GI<Elderberry>() != null)
+                IR<Elderberry>(R.ElderberryResprite     ? CIResprite.HealthBerryAlter   : CIResprite.HealthBerry);
+            
+            if (GI<Dragonfruit>() != null)
+                IR<Dragonfruit>(R.DragonfruitResprite   ? CIResprite.HealthDragonAlter  : CIResprite.HealthDragon);
+            
+            if (GI<CometShard>() != null)
+                IR<CometShard>(R.CometShardResprite     ? CIResprite.ManaShardAlter     : CIResprite.ManaShard);
+
+            if (GI<EtherealCore>() != null)
+                IR<EtherealCore>(R.EtherealCoreResprite ? CIResprite.ManaCoreAlter      : CIResprite.ManaCore);
+
+            if (GI<PhantomHeart>() != null)
+                IR<PhantomHeart>(R.EtherealCoreResprite ? CIResprite.ManaHeartAlter     : CIResprite.ManaHeart);
             
             //核子与星系是动图（现灾厄）不能直接用
             /*DemonMarisa: 开修
@@ -623,27 +251,27 @@ namespace CalamityInheritance.CIPlayer
              *星系异石和灵质不会改，保留了注册，删除了贴图读取
              */
             /*
-            if (TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] != null)
+            if (GI<GalacticaSingularity>() != null)
             {
-                if (CIRespriteConfig.Instance.GalacticaSingularityResprite)
+                if (R.GalacticaSingularityResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CIResprite.GS;
+                    GI<GalacticaSingularity>() = CIResprite.GS;
                 }
-                if (CIRespriteConfig.Instance.GalacticaSingularityResprite == 2)
+                if (R.GalacticaSingularityResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<GalacticaSingularity>()] = CIResprite.GSAlter;
+                    GI<GalacticaSingularity>() = CIResprite.GSAlter;
                 }
             }
 
-            if (TextureAssets.Item[ModContent.ItemType<Necroplasm>()] != null)
+            if (GI<Necroplasm>() != null)
             {
-                if (CIRespriteConfig.Instance.NecroplasmResprite)
+                if (R.NecroplasmResprite)
                 {
-                    TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CIResprite.RedSoul;
+                    GI<Necroplasm>() = CIResprite.RedSoul;
                 }
-                if (CIRespriteConfig.Instance.NecroplasmResprite == 2)
+                if (R.NecroplasmResprite == 2)
                 {
-                    TextureAssets.Item[ModContent.ItemType<Necroplasm>()] = CIResprite.RedSoulAlter;
+                    GI<Necroplasm>() = CIResprite.RedSoulAlter;
                 }
             }
             */
@@ -652,5 +280,265 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #endregion
         }
+
+        private static void MeleeRogueResprite(CIRespriteConfig R)
+        {
+            #region 战/盗混合武器
+            #region 泰阿克提斯之锤
+            //TODO:大锤子射弹贴图没能成功切换
+            if(GI<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>()!=null)
+            {
+                if(!R.TriactisHammerResprite)
+                {
+                    IR<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>(CIWeaponsResprite.GiantHammerCal);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(CIWeaponsResprite.GiantHammerCal);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(CIWeaponsResprite.GiantHammerCal);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(CIWeaponsResprite.GiantHammerCal);
+                }
+                if(R.TriactisHammerResprite)
+                {
+                    IR<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>(CIWeaponsResprite.GiantHammerAlt);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(CIWeaponsResprite.GiantHammerCal);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(CIWeaponsResprite.GiantHammerCal);
+                    PR<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho>(CIWeaponsResprite.GiantHammerCal);
+                }
+            }
+            #endregion
+            #region 圣时之锤
+            //TODO:同上
+            if(GI<MeleeTypeHammerPwnageLegacy>()!=null)
+            {
+                if(!R.PwnagehammerResprite)
+                {
+                    IR<MeleeTypeHammerPwnageLegacy>(CIWeaponsResprite.PwnageHammerCal);
+                    IR<RogueTypeHammerPwnageLegacy>(CIWeaponsResprite.PwnageHammerCal);
+
+                    PR<MeleeTypeHammerPwnageLegacyProj>(CIWeaponsResprite.PwnageHammerCal);
+                    PR<RogueTypeHammerPwnageLegacyProj>(CIWeaponsResprite.PwnageHammerCal);
+                }
+                if(R.PwnagehammerResprite)
+                {
+                    IR<MeleeTypeHammerPwnageLegacy>(CIWeaponsResprite.PwnageHammerAlt);
+                    IR<RogueTypeHammerPwnageLegacy>(CIWeaponsResprite.PwnageHammerAlt);
+                    
+                    PR<MeleeTypeHammerPwnageLegacyProj>(CIWeaponsResprite.PwnageHammerCal);
+                    PR<RogueTypeHammerPwnageLegacyProj>(CIWeaponsResprite.PwnageHammerCal);
+                }
+            }
+            #endregion
+            #region 星体击碎者(们)
+            //mod内有两把星体击碎者，两把都用同一句话的判定
+            if (GI<MeleeTypeHammerStellarContemptLegacy>() != null &&
+                GP<MeleeTypeHammerStellarContemptLegacyProj>() != null &&
+                GI<RogueTypeHammerStellarContempt>() != null &&
+                GP<RogueTypeHammerStellarContemptProj>() != null)
+            {
+                if (!R.StellarContemptResprite)
+                {
+                    IR<MeleeTypeHammerStellarContemptLegacy>(CIWeaponsResprite.StellarContemptNew);
+                    PR<MeleeTypeHammerStellarContemptLegacyProj>(CIWeaponsResprite.StellarContemptNew);
+                    IR<RogueTypeHammerStellarContempt>(CIWeaponsResprite.StellarContemptNew);
+                    PR<RogueTypeHammerStellarContemptProj>(CIWeaponsResprite.StellarContemptNew);
+                    PR<RogueTypeHammerStellarContemptProjClone>(CIWeaponsResprite.StellarContemptNew);
+                }
+                if (R.StellarContemptResprite)
+                {
+                    IR<MeleeTypeHammerStellarContemptLegacy>(CIWeaponsResprite.StellarContemptOld);
+                    PR<MeleeTypeHammerStellarContemptLegacyProj>(CIWeaponsResprite.StellarContemptOld);
+                    IR<RogueTypeHammerStellarContempt>(CIWeaponsResprite.StellarContemptOld);
+                    PR<RogueTypeHammerStellarContemptProj>(CIWeaponsResprite.StellarContemptOld);
+                    PR<RogueTypeHammerStellarContemptProjClone>(CIWeaponsResprite.StellarContemptOld);
+                }
+            }
+            #endregion
+            #region 苍穹飞刀
+            //飞刀类，因为原灾也有，所以也归入战/盗混合武器
+            //Todo: 可能给原灾的飞刀上贴图切换?
+            if (GI<RogueTypeKnivesEmpyrean>() != null &&
+                GP<RogueTypeKnivesEmpyreanProj>() != null)
+            {
+                if (!R.GodSlayerKnivesResprite)
+                {
+                    IR<RogueTypeKnivesEmpyrean>(CIWeaponsResprite.EmpyreanKnivesCal);
+                    PR<RogueTypeKnivesEmpyreanProj>(CIWeaponsResprite.EmpyreanKnivesCalProj);
+                }
+                if (R.GodSlayerKnivesResprite)
+                {
+                    IR<RogueTypeKnivesEmpyrean>(CIWeaponsResprite.EmpyreanKnivesAlt);
+                    PR<RogueTypeKnivesEmpyreanProj>(CIWeaponsResprite.EmpyreanKnivesAltProj);
+                }
+            }
+            #endregion
+            #region 圣光飞刀
+            if (GI<RogueTypeKnivesShadowspec>() != null &&
+                GP<RogueTypeKnivesShadowspecProj>() != null)
+            {
+                switch (R.ShadowspecKnivesResprite)
+                {
+                    case 1:
+                        IR<RogueTypeKnivesShadowspec>(CIWeaponsResprite.ShadowKnivesCal);
+                        PR<RogueTypeKnivesShadowspecProj>(CIWeaponsResprite.ShadowKnivesCalProj);
+                        break;
+                    case 2:
+                        IR<RogueTypeKnivesShadowspec>(CIWeaponsResprite.ShadowKnivsAlt3);
+                        PR<RogueTypeKnivesShadowspecProj>(CIWeaponsResprite.ShadowKnivsAlt3Proj);
+                        break;
+                    case 3:
+                        IR<RogueTypeKnivesShadowspec>(CIWeaponsResprite.ShadowKnivsAlt2);
+                        PR<RogueTypeKnivesShadowspecProj>(CIWeaponsResprite.ShadowKnivsAlt2Proj);
+                        break;
+                    case 4:
+                        IR<RogueTypeKnivesShadowspec>(CIWeaponsResprite.ShadowKnivsAlt1);
+                        PR<RogueTypeKnivesShadowspecProj>(CIWeaponsResprite.ShadowKnivsAlt3Proj);
+                        break;
+                }
+            }
+            #endregion
+            #endregion
+
+        }
+
+        private static void SummonResprite(Asset<Texture2D>[] item, Asset<Texture2D>[] proj, CIRespriteConfig r)
+        {
+        }
+
+        private static void RogueResprite(CIRespriteConfig R)
+        {
+            if (GI<Prismalline>() != null)
+                IR<Prismalline>(R.PrismallineResprite ? CIWeaponsResprite.PrismllAlt : CIWeaponsResprite.PrismllCal);
+
+            if (GI<RadiantStar>() != null)
+                IR<RadiantStar>(R.RadiantStarResprite ? CIWeaponsResprite.RadiantAlt : CIWeaponsResprite.RadiantCal);
+
+            if (GI<ShatteredSun>() != null)
+                IR<ShatteredSun>(R.ShatteredSunResprite? CIWeaponsResprite.ShatteredAlt : CIWeaponsResprite.ShatteredCal);
+        }
+
+        private static void MagicResprite(CIRespriteConfig R)
+        {
+            if (GI<HeliumFlashLegacy>() != null)
+                IR<HeliumFlashLegacy>(R.HeliumFlashResprite ? CIWeaponsResprite.HeliumFlashLegacy : CIWeaponsResprite.HeliumCal);
+        }
+
+        private static void RangedResprite(CIRespriteConfig R)
+        {
+            if (GI<Skullmasher>() != null)
+                IR<Skullmasher>(R.SkullmasherResprite ? CIWeaponsResprite.Skullmasher : CIWeaponsResprite.SkullmasherCal);
+
+            if (GI<P90Legacy>() != null)
+                IR<P90Legacy>(R.P90Resprite ? CIWeaponsResprite.P90Legacy : CIWeaponsResprite.P90);
+                
+            //byd你用星体击碎者的开关切换龙弓贴图是吧 
+            if (GI<DrataliornusLegacy>() != null &&
+                GP<DragonBow>() != null)
+            {
+                if (!R.DrataliornusResprite)
+                {
+                    IR<DrataliornusLegacy>(CIWeaponsResprite.DrataBowLegacyAlt);
+                    PR<DragonBow>(CIWeaponsResprite.DrataBowLegacyAlt);
+                }
+                if (R.DrataliornusResprite)
+                {
+                    IR<DrataliornusLegacy>(CIWeaponsResprite.DrataliornusLegacy);
+                    PR<DragonBow>(CIWeaponsResprite.DrataliornusLegacy);
+                }
+            }
+        }
+
+        private static void MeleeResprite(CIRespriteConfig R)
+        {
+            if (GI<ArkoftheCosmosold>() != null)
+                IR<ArkoftheCosmosold>( R.ArkofCosmosTexture ?  CIWeaponsResprite.AotCAlt : CIWeaponsResprite.AotCCal);
+       
+            
+            #region 圣短剑
+            if (GI<ExcaliburShortsword>() != null ||
+                GI<TrueExcaliburShortsword>() != null ||
+                GI<NightsStabber>() != null ||
+                GI<TrueNightsStabber>() != null ||
+                GI<EutrophicShank>() != null ||
+                GI<GalileoGladius>() != null ||
+                GI<FlameburstShortsword>() != null ||
+                GI<AncientShiv>() != null ||
+                GI<LeechingDagger>() != null
+                )
+            {
+                if (!R.AllShivs)
+                {
+                    //圣短剑
+                    IR<ExcaliburShortsword>         (CIWeaponsResprite.HallowedShivCal);
+                    PR<ExcaliburShortswordProj>     (CIWeaponsResprite.HallowedShivCal);
+                    //真圣短剑
+                    IR<TrueExcaliburShortsword>     (CIWeaponsResprite.TrueHallowedShivCal);
+                    PR<TrueExcaliburShortswordProj> (CIWeaponsResprite.TrueHallowedShivCal);
+                    //永夜短剑
+                    IR<NightsStabber>               (CIWeaponsResprite.NightShivCal);
+                    PR<NightsStabberProj>           (CIWeaponsResprite.NightShivCal);
+                    //真永夜短剑
+                    IR<TrueNightsStabber>           (CIWeaponsResprite.TrueNightShivCal);
+                    PR<TrueNightsStabberProj>       (CIWeaponsResprite.TrueNightShivCal);
+                    //伽利略
+                    IR<GalileoGladius>              (CIWeaponsResprite.GalileoCal);
+                    PR<GalileoGladiusProj>          (CIWeaponsResprite.GalileoCal);
+                    //水华
+                    IR<EutrophicScimitar>           (CIWeaponsResprite.SeaShivCal);
+                    PR<EutrophicScimitarProj>       (CIWeaponsResprite.SeaShivCal);
+                    //狱炎
+                    IR<FlameburstShortsword>        (CIWeaponsResprite.FlameShivCal);
+                    PR<FlameburstShortswordProj>    (CIWeaponsResprite.FlameShivCal);
+                    //远古
+                    IR<AncientShiv>                 (CIWeaponsResprite.DungeonShivCal);
+                    PR<AncientShivProj>             (CIWeaponsResprite.DungeonShivCal);
+                    //腐巢
+                    IR<LeechingDagger>              (CIWeaponsResprite.HiveMindShivCal);
+                    PR<LeechingDaggerProj>          (CIWeaponsResprite.HiveMindShivCal);
+
+
+                }
+                if (R.AllShivs)
+                {
+                    //圣短剑
+                    IR<ExcaliburShortsword>         (CIWeaponsResprite.HallowedShivAlt);
+                    PR<ExcaliburShortswordProj>     (CIWeaponsResprite.HallowedShivAlt);
+                    //真圣短剑
+                    IR<TrueExcaliburShortsword>     (CIWeaponsResprite.TrueHallowedShivAlt);
+                    PR<TrueExcaliburShortswordProj> (CIWeaponsResprite.TrueHallowedShivAlt);
+                    //永夜短剑
+                    IR<NightsStabber>               (CIWeaponsResprite.NightShivAlt);
+                    PR<NightsStabberProj>           (CIWeaponsResprite.NightShivAlt);
+                    //真永夜短剑
+                    IR<TrueNightsStabber>           (CIWeaponsResprite.TrueNightShivAlt);
+                    PR<TrueNightsStabberProj>       (CIWeaponsResprite.TrueNightShivAlt);
+                    //伽利略
+                    IR<GalileoGladius>              (CIWeaponsResprite.GalileoAlt);
+                    PR<GalileoGladiusProj>          (CIWeaponsResprite.GalileoAlt);
+                    //水华
+                    IR<EutrophicScimitar>           (CIWeaponsResprite.SeaShivAlt);
+                    PR<EutrophicScimitarProj>       (CIWeaponsResprite.SeaShivAlt);
+                    //狱炎
+                    IR<FlameburstShortsword>        (CIWeaponsResprite.FlameShivAlt);
+                    PR<FlameburstShortswordProj>    (CIWeaponsResprite.FlameShivAlt);
+                    //远古
+                    IR<AncientShiv>                 (CIWeaponsResprite.DungeonShivAlt);
+                    PR<AncientShivProj>             (CIWeaponsResprite.DungeonShivAlt);
+                    //腐巢
+                    IR<LeechingDagger>              (CIWeaponsResprite.HiveMindShivAlt);
+                    PR<LeechingDaggerProj>          (CIWeaponsResprite.HiveMindShivAlt);
+                }
+            }
+            #endregion
+            #region 庇护
+            if (GI<AegisBlade>() != null)
+                IR<AegisBlade>(R.AegisResprite ? CIWeaponsResprite.AegisAlt : CIWeaponsResprite.AegisCal);
+
+            #endregion
+            #region 明月链刃
+            if (GI<CrescentMoon>() != null)
+            {
+                
+            }
+            #endregion
+        }
+
     }
 }

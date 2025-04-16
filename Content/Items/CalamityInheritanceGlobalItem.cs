@@ -228,39 +228,39 @@ namespace CalamityInheritance.Content.Items
             {
                 if (item.type == ModContent.ItemType<Earth>())
                 {
-                    item.damage = 1750; //无限大地: 200 -> 1750
+                    damage.Base = 1750; //无限大地: 200 -> 1750
                 }
                 if (item.type == ModContent.ItemType<IllustriousKnives>())
                 {
-                    item.damage = 3500; //圣光飞刀转为3500
+                    damage.Base  = 3500; //圣光飞刀转为3500
                 }
                 if (item.type == ModContent.ItemType<Contagion>())
                 {
-                    item.damage = 10000; //瘟疫弓恢复为10000面板
+                    damage.Base = 10000; //瘟疫弓恢复为10000面板
                 }
                 if (item.type == ModContent.ItemType<Eternity>())
                 {
-                    item.damage = 5000; //恒：5000面板
+                    damage.Base = 5000; //恒：5000面板
                 }
                 if (item.type == ModContent.ItemType<Apotheosis>())
                 {
-                    item.damage = 7777; //原版神吞书：7777
+                    damage.Base = 7777; //原版神吞书：7777
                 }
                 if (item.type == ModContent.ItemType<ScarletDevil>())
                 {
-                    item.damage = 14571; //绯红恶魔回调至14571面板
+                    damage.Base = 14571; //绯红恶魔回调至14571面板
                 }
                 if (item.type == ModContent.ItemType<HalibutCannon>())
                 {
-                    item.damage = 1500; //比目鱼
+                    damage.Base = 1500; //比目鱼
                 }
                 if (item.type == ModContent.ItemType<NanoblackReaper>())
                 {
-                    item.damage = 4000;
+                    damage.Base = 4000;
                 }
                 if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
                 {
-                    item.damage = 10000; //一万面板
+                    damage.Base = 10000; //一万面板
                 }
             }
             #endregion

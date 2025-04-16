@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
     [AutoloadEquip(EquipType.Body)]
     public class SilvaArmorold : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

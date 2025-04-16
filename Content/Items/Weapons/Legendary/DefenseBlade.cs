@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DefenseBlade: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Melee.DefenseBlade";
         public override void SetStaticDefaults()
         {

@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class AzathothLegacy : CIMelee, ILocalizedModType
     {
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 650 : 270;
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

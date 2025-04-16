@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class YharimsGiftLegacy : CIAccessories, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Accessories";
+        
         public int dragonTimer = 60;
         public override void SetStaticDefaults()
         {

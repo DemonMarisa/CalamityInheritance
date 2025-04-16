@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class RavagerLegendary: CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Magic.RavagerLegendary";
         public override void SetStaticDefaults()
         {

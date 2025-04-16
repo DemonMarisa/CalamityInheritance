@@ -13,12 +13,13 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Melee.DukeLegendary";
         public override void SetStaticDefaults()
         {
@@ -91,12 +92,46 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             damage *= LegendaryDamage() + Generic.GenericLegendBuff();
         }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Vector2 speed = player.CIMod().DukeTier1 ? velocity * 2f : velocity;
+                int realDamage = player.CIMod().DukeTier1? damage : (int)(damage * 0.6);
+                Projectile.NewProjectile(source, position, speed, ModContent.ProjectileType<DukeLegendaryRazor>(), realDamage, knockback, player.whoAmI);
+                if (player.CIMod().DukeTier2)
+                {
+                    //遍历最近的NPC
+                    NPC target = CIFunction.FindClosestTargetPlayer(player, 1800f, true, true);
+                    if (target == null)
+                        return false;
+                    
+                    if (player.CIMod().GlobalFireDelay == 0)
+                    {
+                        for (int i = 0; i < 4 ; i++)
+                        {
+                            int j = Main.rand.NextBool() ? -1 : 1;
+                            float offset = 800f * j;
+                            float posX = player.Center.X + Main.rand.NextFloat(-300f, 300f);
+                            //这里得取玩家头顶, 不然敌对单位在玩家底下的时候直接露馅
+                            float posY = player.Center.Y - offset;
 
+                            Vector2 pos = new (posX, posY);
+                            Vector2 realSpeed = new Vector2(Item.shootSpeed * 3, 0f).RotatedBy(MathHelper.PiOver2 * j);
+                            //直接让其从天上降落。
+                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), damage / 2, knockback, player.whoAmI);
+                        }
+                        player.CIMod().GlobalFireDelay = 10;
+                    }
+                }
+            }
+            return false;
+        }
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (player.altFunctionUse == 2)
             {
-                damage = player.CIMod().DukeTier1? (int)(damage * 0.9) : (int)(damage * 0.6);
+                damage = player.CIMod().DukeTier1? damage: (int)(damage * 0.6);
                 type = ModContent.ProjectileType<DukeLegendaryRazor>();
             }
 

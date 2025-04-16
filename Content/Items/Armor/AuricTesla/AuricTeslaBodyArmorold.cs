@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Body)]
     public class AuricTeslaBodyArmorold : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void Load()
         {
             // All code below runs only if we're not loading on a server

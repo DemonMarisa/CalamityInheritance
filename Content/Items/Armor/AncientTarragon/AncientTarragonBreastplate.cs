@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
     [AutoloadEquip(EquipType.Body)]
     public class AncientTarragonBreastplate : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

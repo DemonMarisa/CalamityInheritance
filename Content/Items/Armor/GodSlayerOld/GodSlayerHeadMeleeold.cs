@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             Item.ResearchUnlockCount = 1;
         }
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetDefaults()
         {
             Item.width = 18;

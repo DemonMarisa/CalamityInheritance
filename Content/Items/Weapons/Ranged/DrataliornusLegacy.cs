@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class DrataliornusLegacy: CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
 
         //应某龙弓激推人要求:

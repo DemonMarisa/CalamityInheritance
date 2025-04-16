@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DanceofLightLegacy: CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 2700 : 700;
         public override void SetStaticDefaults()
         {

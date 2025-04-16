@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PristineFuryLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public int frameCounter = 0;
         public int frame = 0;
         public static int BaseDamage = 77;

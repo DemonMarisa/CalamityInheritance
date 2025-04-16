@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ElementalEruptionLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

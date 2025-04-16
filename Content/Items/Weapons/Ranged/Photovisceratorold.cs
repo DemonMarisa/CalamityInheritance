@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     {
         public int OwnerIndex;
         public Player Owner => Main.player[OwnerIndex];
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public const float AmmoNotConsumeChance = 0.9f;
         private const float AltFireShootSpeed = 17f;
         private int PhotoLight;

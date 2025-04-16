@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class MeleeTypeNanoblackReaper : CIMelee, ILocalizedModType
     {
         
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public static float Knockback = 9f;
         public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 455;
         public static float Speed = 12f;

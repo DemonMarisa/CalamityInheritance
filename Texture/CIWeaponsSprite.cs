@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -181,6 +182,7 @@ namespace CalamityInheritance.Texture
         public static string CalRogueWeaponRoute => $"{CalWeaponRoute}/Rogue";
         //射弹路径
         public static string CalProjRoute => "CalamityMod/Projectiles";
+        
         public static void LoadTexture()
         {
             #region 战士
@@ -344,6 +346,7 @@ namespace CalamityInheritance.Texture
             #region 其他
             #endregion
         }
+
         public static void UnloadTexture()
         {
             HeliumCal = null;

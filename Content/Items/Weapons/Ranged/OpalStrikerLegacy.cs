@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class OpalStrikerLegacy : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

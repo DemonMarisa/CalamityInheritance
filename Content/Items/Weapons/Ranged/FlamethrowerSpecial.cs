@@ -6,6 +6,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public abstract class FlamethrowerSpecial: ModItem
     {
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
             modifiers.DefenseEffectiveness *= 0.5f;

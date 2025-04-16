@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 [AutoloadEquip(EquipType.Legs)]
 public class AncientBloodflareCuisses : CIArmor, ILocalizedModType
 {
-    public new string LocalizationCategory => "Content.Items.Armor";
+    
     public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 1;

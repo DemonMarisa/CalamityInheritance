@@ -64,7 +64,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             if(counter == 12)
             {
-                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(Main.rand.NextBool() ? MathHelper.PiOver2 : -MathHelper.PiOver2), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                float randomAngle = Main.rand.NextBool() ? MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f) : -MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f);
+                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(randomAngle), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
                 Main.projectile[t].scale *= 0.9f;
                 counter = 0;
             }

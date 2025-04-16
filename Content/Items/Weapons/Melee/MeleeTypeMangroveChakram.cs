@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     [LegacyName("MangroveChakramLegacyMelee")]
     public class MeleeTypeMangroveChakram : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

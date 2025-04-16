@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class ShroomiteVisage : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

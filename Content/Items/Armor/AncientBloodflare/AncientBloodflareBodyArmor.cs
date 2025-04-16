@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
     [AutoloadEquip(EquipType.Body)]
     public class AncientBloodflareBodyArmor : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     [AutoloadEquip(EquipType.Head)]
     public class ReaverCapRevamped : CIArmor, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Armor";
+        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

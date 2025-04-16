@@ -21,7 +21,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
         private bool initialized = false;
-        private float speed = 25f;
+        private float Timer = 0f;
+        private float Timer2 = 0f;
         #region 攻击类型枚举
         const float IsReturning = -1f;
         const float IsHoming = 0f;
@@ -88,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 switch (Projectile.ai[AttackType])
                 {
                     case IsAttacking:
-                        DoAttacking(target);
+                        DoAttacking(target, player);
                         break;
                     case IsIdleing:
                         DoIdleing(target, player);
@@ -115,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //从宙能那抄过来的
             float rot = Projectile.AngleTo(angleToTarget) - MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
-            Projectile.velocity *= 0.95f;
+            Projectile.velocity *= 0.97f;
             //启用这个计时器
             Projectile.ai[PhaseTimer] += 1f;
             //计时器达到要求，执行ai逻辑
@@ -124,17 +125,22 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 //回程至玩家手上
                 //置为-1f, 不做任何事情
                 Projectile.ai[AttackType] = IsReturning;
+                Projectile.netUpdate = true;
                 //Timer置零
                 Projectile.ai[PhaseTimer] = 0f;
             }
         }
 
         //攻击AI逻辑，直接穿透1次然后返回
-        public void DoAttacking(NPC target)
+        public void DoAttacking(NPC target, Player player)
         {
             if (target == null) return;
-            Projectile.rotation += 1f;
-            CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed, 20f);
+            float setAngle = Projectile.AngleTo(player.Center) - MathHelper.PiOver4;
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, setAngle, 0.01f);
+            Timer2++;
+            if (Timer2 % 2 == 0)
+                Timer += 5f;
+            CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed + Timer, 20f, 2, Celestusold.SetProjSpeed);
         }
 
         public void DoRetuningAI(Player player)
@@ -216,6 +222,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if (Projectile.ai[AttackType] == IsAttacking)
             {
                 Projectile.ai[AttackType] = IsIdleing;
+                Projectile.netUpdate = true;
             }
             target.ExoDebuffs();
             OnHitEffects();
@@ -229,7 +236,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         private void OnHitEffects()
         {
-            if (Projectile.owner == Main.myPlayer)
+            //将这个生成频率降低了一点，主要是一次弹出的伤害太多了
+            if (Projectile.owner == Main.myPlayer && Main.rand.NextBool(2))
             {
                 float spread = 45f * 0.0174f;
                 double startAngle = Math.Atan2(Projectile.velocity.X, Projectile.velocity.Y) - spread / 2;

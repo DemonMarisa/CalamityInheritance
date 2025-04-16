@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
     public class Armageddon : CIPlaceable, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Items.Placeables.Vanity";
+        public new string LocalizationCategory => $"{Local}.Vanity";
 
         public override void SetStaticDefaults()
         {

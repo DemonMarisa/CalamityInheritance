@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 {
                     Vector2 source = Projectile.position;
                     source -= Projectile.velocity * ((float)d * 0.25f);
-                    int i = Dust.NewDust(source, 1, 1, 66, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
+                    int i = Dust.NewDust(source, 1, 1, DustID.RainbowTorch, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
                     Main.dust[i].noGravity = true;
                     Main.dust[i].position = source;
                     Main.dust[i].scale = Main.rand.NextFloat(0.91f, 1.417f);

@@ -13,7 +13,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class MidnightSunBeaconold : CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
