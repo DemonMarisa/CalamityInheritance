@@ -1,8 +1,15 @@
 ﻿using CalamityInheritance.NPCs;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
+using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Utilities
 {
@@ -83,7 +90,7 @@ namespace CalamityInheritance.Utilities
         }
         #region Smooth Movement
         /// <summary>
-        /// 增强版平滑移动算法（基于灾厄代码改进）
+        /// 增强版平滑移动算法（基于灾厄改进）
         /// </summary>
         /// <param name="npc">要移动的NPC</param>
         /// <param name="movementDistanceGateValue">离目标足够近时停止的距离</param>
@@ -92,6 +99,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="maxLerpDistance">动态调整的最大lerp距离（原灾固定2400）</param>
         /// <param name="velocityMultiplier">最大速度倍率（原灾固定3）</param>
         /// <param name="minStopDistance">完全停止的最小距离</param>
+        /// </summary>
         public static void BetterSmoothMovement(NPC npc, float movementDistanceGateValue, Vector2 distanceFromDestination, float baseVelocity, float acceleration
             , float maxLerpDistance = 2400f, float velocityMultiplier = 3f, float minStopDistance = 5f)
         {
@@ -169,5 +177,57 @@ namespace CalamityInheritance.Utilities
                 npc.velocity = desiredVelocity;
         }
         #endregion
+        /// <summary>
+        /// 快速获取boss掉落物并存入字典
+        /// 感谢小花的帮助（
+        /// </summary>
+        /// <param name="type">NPC类型</param>
+        /// <param name="includeMaterial">是否包含材料</param>
+        /// </summary>
+        public static List<int> FindLoots(int type, bool includeMaterial = true)
+        {
+            var list = new List<int>();
+            List<IItemDropRule> rulesForNPCID = Main.ItemDropsDB.GetRulesForNPCID(type, false);
+            List<DropRateInfo> list2 = [];
+            DropRateInfoChainFeed ratesInfo = new(1f);
+            foreach (var rule in rulesForNPCID)
+            {
+                if (rule is LeadingConditionRule lcr && lcr.condition == DropHelper.GFB)
+                    continue;
+                rule.ReportDroprates(list2, ratesInfo);
+            }
+            list.AddRange(list2.Where(i => IsNotMaterial(ContentSamples.ItemsByType[i.itemId], includeMaterial)).Select(item2 => item2.itemId));
+            List<int> bagdrops = new();
+            foreach (var bag in list)
+            {
+                var baglist = Main.ItemDropsDB.GetRulesForItemID(bag);
+                if (baglist.Count > 0)
+                {
+                    List<DropRateInfo> list3 = new();
+                    foreach (var rule in baglist)
+                    {
+                        if (rule is LeadingConditionRule lcr && lcr.condition == DropHelper.GFB) continue;
+                        rule.ReportDroprates(list3, ratesInfo);
+                    }
+                    bagdrops.AddRange(list3.Where(i => IsNotMaterial(ContentSamples.ItemsByType[i.itemId], includeMaterial)).Select(i3 => i3.itemId));
+                }
+            }
+            list.AddRange(bagdrops);
+            return list;
+        }
+        public static Mod Calamity => ModLoader.GetMod("CalamityMod");
+        public static bool IsNotMaterial(Item item, bool dontNeedCheck = true)
+        {
+            if (item.ModItem != null)
+                if (item.ModItem.Mod != Calamity)
+                    return false;
+            if (dontNeedCheck)
+                return true;
+            if (item.damage > 0 && item.ammo <= 0)
+                return true;
+            if (item.accessory || item.headSlot > 0 || item.bodySlot > 0 || item.legSlot > 0)
+                return false;
+            return false;
+        }
     }
 }

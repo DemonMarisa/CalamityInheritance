@@ -11,6 +11,8 @@ using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.System;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -75,24 +77,79 @@ namespace CalamityInheritance.Content.Items
             
             return false;
         }*/
-        
         public override bool? UseItem(Player player)
         {
-            var calPlayer = player.CIMod();
-            if (CIConfig.Instance.UIX == 1)
-                calPlayer.magicPool += CIConfig.Instance.LevelUp;
-            if (CIConfig.Instance.UIX == 2)
-                calPlayer.summonPool += CIConfig.Instance.LevelUp;
-            if (CIConfig.Instance.UIX == 3)
-                calPlayer.meleePool += CIConfig.Instance.LevelUp;
-            if (CIConfig.Instance.UIX == 4)
-                calPlayer.rangePool += CIConfig.Instance.LevelUp;
-            if (CIConfig.Instance.UIX == 5)
-                calPlayer.roguePool += CIConfig.Instance.LevelUp;
-            // player.RemoveCICooldown(GodSlayerDash.ID);
+            if(CIConfig.Instance.UIX == 1)
+            {
+                // 空列表检查
+                if (CalStatInflationBACK.PostyharonWeapons == null ||
+                    CalStatInflationBACK.PostyharonWeapons.Count == 0)
+                {
+                    Main.NewText("没有可生成的物品！");
+                    return false;
+                }
 
-            return base.CanUseItem(player);
+                // 生成所有物品
+                foreach (int itemType in CalStatInflationBACK.PostyharonWeapons)
+                {
+                    player.QuickSpawnItem(
+                        player.GetSource_GiftOrReward(),
+                        itemType,
+                        1
+                    );
+                }
+
+                // 显示提示信息
+                Main.NewText($"生成了 {CalStatInflationBACK.PostyharonWeapons.Count} 件物品！");
+            }
+            if (CIConfig.Instance.UIX == 2)
+            {
+                // 空列表检查
+                if (CalStatInflationBACK.PostDOGWeapons == null ||
+                    CalStatInflationBACK.PostDOGWeapons.Count == 0)
+                {
+                    Main.NewText("没有可生成的物品！");
+                    return false;
+                }
+
+                // 生成所有物品
+                foreach (int itemType in CalStatInflationBACK.PostDOGWeapons)
+                {
+                    player.QuickSpawnItem(
+                        player.GetSource_GiftOrReward(),
+                        itemType,
+                        1
+                    );
+                }
+
+                // 显示提示信息
+                Main.NewText($"生成了 {CalStatInflationBACK.PostDOGWeapons.Count} 件物品！");
+            }
+            if (CIConfig.Instance.UIX == 3)
+            {
+                // 空列表检查
+                if (CalStatInflationBACK.PostOldDukeWeapons == null ||
+                    CalStatInflationBACK.PostOldDukeWeapons.Count == 0)
+                {
+                    Main.NewText("没有可生成的物品！");
+                    return false;
+                }
+
+                // 生成所有物品
+                foreach (int itemType in CalStatInflationBACK.PostOldDukeWeapons)
+                {
+                    player.QuickSpawnItem(
+                        player.GetSource_GiftOrReward(),
+                        itemType,
+                        1
+                    );
+                }
+
+                // 显示提示信息
+                Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
+            }
+            return true;
         }
-        
+
     }
 }

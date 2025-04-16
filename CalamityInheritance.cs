@@ -20,13 +20,17 @@ using CalamityInheritance.NPCs.Boss.SCAL.Sky;
 using CalamityMod.Skies;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
+using System.Collections.Generic;
+using CalamityInheritance.System;
 
 namespace CalamityInheritance
 {
     // Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
     public class CalamityInheritance : Mod
     {
-        internal static CalamityInheritance Instance;
+        public static Mod Calamity => ModLoader.GetMod("CalamityMod");
+
+        public static CalamityInheritance Instance;
 
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
 
@@ -38,6 +42,7 @@ namespace CalamityInheritance
 
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
+
         public override void Load()
         {
             Instance = this;

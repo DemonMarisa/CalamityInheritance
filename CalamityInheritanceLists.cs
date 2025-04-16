@@ -59,6 +59,8 @@ namespace CalamityInheritance
                     ProjectileType<HeavenlyGaleProj>(),
                     //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表
                     ProjectileType<ProfanedNukeDust>(),
+                    //小鸡大炮爆炸，太卡了
+                    ProjectileType<ChickenExplosion>()
             };
 
             AuricdebuffList = new List<int>()

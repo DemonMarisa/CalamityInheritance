@@ -33,7 +33,7 @@ namespace CalamityInheritance.CIPlayer
         // 基础经验需求
         public int baseExp = 100;
         // 基础经验倍率
-        public float expRate = 2f;
+        public float expRate = 1.4f;
         // 最大等级
         public int maxLevel = 15;
         #endregion
@@ -127,7 +127,9 @@ namespace CalamityInheritance.CIPlayer
         {
             var modPlayer = Player.Calamity();
             #region 战士增幅
-            // 30伤 15爆 30攻速 150最大生命值 7.5生命恢复
+            float playerLifemultiplier1 = Player.statLife / Player.statLifeMax2;
+            // 30伤 15爆 30攻速
+            // 150最大生命值 7.5生命恢复
             Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.02f;
             Player.GetCritChance<MeleeDamageClass>() += meleeLevel;
             Player.GetAttackSpeed<MeleeDamageClass>() += meleeLevel * 0.02f;
@@ -135,10 +137,12 @@ namespace CalamityInheritance.CIPlayer
             Player.lifeRegen += meleeLevel;
             #endregion
             #region 射手
-            // 30伤 30爆 15攻速 30穿 常态狙击镜
+            // 30伤 30爆 15攻速 30穿 常态狙击镜 45sCD闪避
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
             Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
+            if (rangeLevel > 14)
+                Player.scope = true;
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
@@ -153,19 +157,19 @@ namespace CalamityInheritance.CIPlayer
                     Player.statMana += 1;
             #endregion
             #region 召唤
-            // 15%外围增伤 1召唤栏 15%鞭子范围与攻速速度加成
+            // 15%外围增伤 2召唤栏 15%鞭子范围与攻速速度加成
             Player.GetDamage<SummonDamageClass>() *= 1 + summonLevel * 0.01f;
             Player.whipRangeMultiplier += summonLevel * 0.01f;
             Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += summonLevel * 0.01f;
-            if(summonLevel == 15)
-                Player.maxMinions += 1;
+            if(summonLevel > 14)
+                Player.maxMinions += 2;
             #endregion
             #region 盗贼
             // 30%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
             Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.02f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
             modPlayer.rogueStealthMax += rogueLevel * 0.02f;
-            if (rogueLevel == 15)
+            if (rogueLevel > 15)
                 modPlayer.wearingRogueArmor = true;
             #endregion
         }

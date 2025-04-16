@@ -295,7 +295,7 @@ namespace CalamityInheritance.Texture
             PrismllAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/PrismallineAlt");
             RadiantCal = ModContent.Request<Texture2D>          ($"{CalRogueWeaponRoute}/RadiantStar");
             RadiantAlt = ModContent.Request<Texture2D>          ($"{CIRogueExtraRoute}/RadiantStarAlt");
-            ShatteredCal = ModContent.Request<Texture2D>        ($"{CalRangedWeaponRoute}/ShatteredSun");
+            ShatteredCal = ModContent.Request<Texture2D>        ($"{CalRogueWeaponRoute}/ShatteredSun");
             ShatteredAlt = ModContent.Request<Texture2D>        ($"{CIRogueExtraRoute}/ShatteredSunAlt");
 
             //圣泰阿克提斯之锤
