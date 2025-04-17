@@ -192,6 +192,10 @@ namespace CalamityInheritance.CIPlayer
             #endregion
         }
         #endregion
+        #region 旧位置保存
+        public readonly Queue<Vector2> oldPositions = new Queue<Vector2>();
+        public int MaxoldPositions = 4; // 最多保存多少个
+        #endregion
         #region UpdateDead
         public override void UpdateDead()
         {
@@ -247,6 +251,12 @@ namespace CalamityInheritance.CIPlayer
 
         public override void PreUpdate()
         {
+            #region 更新旧位置保存
+            oldPositions.Enqueue(Player.position);
+            while (oldPositions.Count > MaxoldPositions)
+                oldPositions.Dequeue();
+            #endregion
+
             if (HasCustomDash && UsedDash.IsOmnidirectional)
                 Player.maxFallSpeed = 50f;
 

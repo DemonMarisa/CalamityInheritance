@@ -10,6 +10,9 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod.Dusts;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod.Graphics.Renderers;
+using CalamityMod.CalPlayer;
+using CalamityMod.Particles;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -20,7 +23,7 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = drawInfo.drawPlayer;
             CalamityInheritancePlayer cIplayer = player.CIMod();
-            SetArmorEffectVisuals(player);
+            SetArmorEffectVisuals(player, drawInfo);
             if (abyssalFlames && drawInfo.shadow == 0f)
                 AbyssalFlames.DrawEffects(drawInfo);
             if (vulnerabilityHexLegacy && drawInfo.shadow == 0f)
@@ -84,11 +87,28 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-        public void SetArmorEffectVisuals(Player player)
+        public void SetArmorEffectVisuals(Player player, PlayerDrawSet drawInfo)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (modPlayer.CIDashDelay < 0)
+            if (modPlayer.CIDashDelay < 0 && !modPlayer.AuricSilvaSet)
                 player.armorEffectDrawShadow = true;
+
+            if (modPlayer.AuricSilvaSet && drawInfo.shadow == 0f)
+            {
+                if (Player != null && !Player.dead)
+                {
+                    Lighting.AddLight(Player.Center, Color.Lerp(Color.Gold, Color.DarkGoldenrod, 0.7f).ToVector3());
+                    if (!Player.StandingStill() && !Player.mount.Active)
+                    {
+                        if (Main.rand.NextBool())
+                        {
+                            Vector2 velocity = -Player.velocity.SafeNormalize(Vector2.UnitY) * Main.rand.NextFloat(2, 5);
+                            Particle nanoDust = new NanoParticle(drawInfo.Position + new Vector2(Main.rand.Next(Player.width + 1), Main.rand.Next(Player.height + 1)), velocity, (Main.rand.NextBool(3) ? Color.DarkGoldenrod : Color.Gold) * 0.9f, Main.rand.NextFloat(0.2f, 0.7f), 9, false, true);
+                            GeneralParticleHandler.SpawnParticle(nanoDust);
+                        }
+                    }
+                }
+            }
         }
     }
 }

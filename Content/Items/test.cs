@@ -82,15 +82,15 @@ namespace CalamityInheritance.Content.Items
             if(CIConfig.Instance.UIX == 1)
             {
                 // 空列表检查
-                if (CalStatInflationBACK.PostyharonWeapons == null ||
-                    CalStatInflationBACK.PostyharonWeapons.Count == 0)
+                if (CalStatInflationBACK.PostExoAndScalWeapons == null ||
+                    CalStatInflationBACK.PostExoAndScalWeapons.Count == 0)
                 {
                     Main.NewText("没有可生成的物品！");
                     return false;
                 }
 
                 // 生成所有物品
-                foreach (int itemType in CalStatInflationBACK.PostyharonWeapons)
+                foreach (int itemType in CalStatInflationBACK.PostExoAndScalWeapons)
                 {
                     player.QuickSpawnItem(
                         player.GetSource_GiftOrReward(),
@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Items
                 }
 
                 // 显示提示信息
-                Main.NewText($"生成了 {CalStatInflationBACK.PostyharonWeapons.Count} 件物品！");
+                Main.NewText($"生成了 {CalStatInflationBACK.PostExoAndScalWeapons.Count} 件物品！");
             }
             if (CIConfig.Instance.UIX == 2)
             {

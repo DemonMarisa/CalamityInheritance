@@ -19,6 +19,24 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
+using CalamityMod.NPCs.Bumblebirb;
+using CalamityMod.NPCs.ProfanedGuardians;
+using CalamityMod.NPCs.Providence;
+using CalamityMod.NPCs.CeaselessVoid;
+using CalamityMod.NPCs.Signus;
+using CalamityMod.NPCs.StormWeaver;
+using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.Abyss;
+using CalamityMod.NPCs.AcidRain;
+using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.ExoMechs.Apollo;
+using CalamityMod.NPCs.ExoMechs.Ares;
+using CalamityMod.NPCs.ExoMechs.Artemis;
+using CalamityMod.NPCs.ExoMechs.Thanatos;
+using CalamityMod.NPCs.ExoMechs;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.NPCs.PrimordialWyrm;
 
 namespace CalamityInheritance
 {
@@ -31,8 +49,17 @@ namespace CalamityInheritance
         public static List<int> beeProjectileList;
         public static List<int> beeEnemyList;
         public static List<int> exoDraedibsArsenalWeapon;
+        // 月后NPC打表
+        public static List<int> PostMLBoss = new List<int>();
+        public static List<int> PostProfanedBoss = new List<int>();
+        public static List<int> PostPolterghastBoss = new List<int>();
+        public static List<int> DOG = new List<int>();
+        public static List<int> ExoMech = new List<int>();
+        public static List<int> Scal = new List<int>();
+        public static List<int> PrimordialWyrm = new List<int>();
         public static void LoadLists()
         {
+            #region 用于元素箭袋分裂
             rangedProjectileExceptionList = new List<int>
             {
                     ProjectileID.IchorDart,
@@ -62,7 +89,8 @@ namespace CalamityInheritance
                     //小鸡大炮爆炸，太卡了
                     ProjectileType<ChickenExplosion>()
             };
-
+            #endregion
+            #region 用于金源的buff免疫
             AuricdebuffList = new List<int>()
             {
                 BuffID.Poisoned,
@@ -122,7 +150,8 @@ namespace CalamityInheritance
                 BuffType<SearingLava>(),
                 BuffType<Withered>()
             };
-
+            #endregion
+            #region 用于不会受到神射手纹章影响的投射物
             ProjNoCIdeadshotBrooch = new List<int>
             {
                 ProjectileType<ExoFlareold>(),
@@ -130,7 +159,8 @@ namespace CalamityInheritance
                 ProjectileType<RicoshotCoin>(),
                 ProjectileType<ExoFlareClusterold>()
             };
-
+            #endregion
+            #region 蜜蜂类型敌人
             beeEnemyList = new List<int>()
             {
                 NPCID.GiantMossHornet,
@@ -156,6 +186,8 @@ namespace CalamityInheritance
                 ProjectileType<PlagueStingerGoliathV2>(),
                 ProjectileType<PlagueExplosion>()
             };
+            #endregion
+            #region 嘉登武器
             exoDraedibsArsenalWeapon = new List<int>()
             {
                 ItemType<Exoblade>(),
@@ -168,6 +200,106 @@ namespace CalamityInheritance
                 ItemType<Supernova>(),
                 ItemType<VividClarity>(),
             };
+            #endregion
+            #region 月后boss
+            PostMLBoss = new List<int>()
+            {
+                NPCType<ProfanedGuardianCommander>(),
+                NPCType<ProfanedGuardianDefender>(),
+                NPCType<ProfanedGuardianHealer>(),
+                NPCType<ProfanedRocks>(),
+                NPCType<Bumblefuck>(),
+                NPCType<Bumblefuck2>(),
+            };
+            #endregion
+            #region 亵渎后包括亵渎
+            PostProfanedBoss = new List<int>()
+            {
+                NPCType<Providence>(),
+                NPCType<Signus>(),
+                NPCType<CosmicLantern>(),
+                NPCType<CosmicMine>(),
+                NPCType<CeaselessVoid>(),
+                NPCType<DarkEnergy>(),
+                NPCType<StormWeaverHead>(),
+                NPCType<StormWeaverBody>(),
+                NPCType<StormWeaverTail>(),
+                NPCType<Polterghast>(),
+                NPCType<PolterPhantom>(),
+                NPCType<PolterghastHook>(),
+                NPCType<PhantomFuckYou>(),
+            };
+            #endregion
+            #region 幽花后包括幽花
+            PostPolterghastBoss = new List<int>()
+            {
+                NPCType<OldDuke>(),
+                NPCType<SulphurousSharkron>(),
+                NPCType<OldDukeToothBall>(),
+
+                NPCType<BobbitWormHead>(),
+                NPCType<ColossalSquid>(),
+                NPCType<EidolonWyrmHead>(),
+                NPCType<GulperEelHead>(),
+                NPCType<ReaperShark>(),
+
+                NPCType<GammaSlime>(),
+                NPCType<Mauler>(),
+                NPCType<NuclearTerror>(),
+            };
+            #endregion
+            #region 神长
+            DOG = new List<int>()
+            {
+                NPCType<DevourerofGodsHead>(),
+                NPCType<DevourerofGodsBody>(),
+                NPCType<DevourerofGodsTail>(),
+                NPCType<CosmicGuardianHead>(),
+                NPCType<CosmicGuardianBody>(),
+                NPCType<CosmicGuardianTail>(),
+            };
+            #endregion
+            #region 巨械
+            ExoMech = new List<int>()
+            {
+                NPCType<Draedon>(),
+                NPCType<AresBody>(),
+                NPCType<AresGaussNuke>(),
+                NPCType<AresLaserCannon>(),
+                NPCType<AresPlasmaFlamethrower>(),
+                NPCType<AresTeslaCannon>(),
+                NPCType<Artemis>(),
+                NPCType<Apollo>(),
+                NPCType<ThanatosHead>(),
+                NPCType<ThanatosBody1>(),
+                NPCType<ThanatosBody2>(),
+                NPCType<ThanatosTail>(),
+            };
+            #endregion
+            #region 終灾
+            Scal = new List<int>()
+            {
+                NPCType<SupremeCalamitas>(),
+                NPCType<SupremeCataclysm>(),
+                NPCType<SupremeCatastrophe>(),
+                NPCType<SoulSeekerSupreme>(),
+                NPCType<BrimstoneHeart>(),
+                NPCType<SepulcherHead>(),
+                NPCType<SepulcherBody>(),
+                NPCType<SepulcherBodyEnergyBall>(),
+                NPCType<SepulcherArm>(),
+                NPCType<SepulcherTail>(),
+            };
+            #endregion
+            #region 幻海妖龙
+            PrimordialWyrm = new List<int>()
+            {
+                NPCType<PrimordialWyrmHead>(),
+                NPCType<PrimordialWyrmBody>(),
+                NPCType<PrimordialWyrmBodyAlt>(),
+                NPCType<PrimordialWyrmTail>(),
+            };
+            #endregion
         }
 
         public static void UnloadLists()
@@ -178,6 +310,14 @@ namespace CalamityInheritance
             beeEnemyList = null;
             beeProjectileList = null;
             exoDraedibsArsenalWeapon = null;
+
+            PostMLBoss = null;
+            PostProfanedBoss = null;
+            PostPolterghastBoss = null;
+            DOG = null;
+            ExoMech = null;
+            Scal = null;
+            PrimordialWyrm = null;
         }
     }
 }

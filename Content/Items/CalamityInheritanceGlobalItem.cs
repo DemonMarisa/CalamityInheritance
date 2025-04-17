@@ -220,51 +220,6 @@ namespace CalamityInheritance.Content.Items
             
         }
        
-
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            #region 增强所有魔影武器的数值
-            if (CIServerConfig.Instance.ShadowspecBuff)
-            {
-                if (item.type == ModContent.ItemType<Earth>())
-                {
-                    damage.Base = 1750; //无限大地: 200 -> 1750
-                }
-                if (item.type == ModContent.ItemType<IllustriousKnives>())
-                {
-                    damage.Base  = 3500; //圣光飞刀转为3500
-                }
-                if (item.type == ModContent.ItemType<Contagion>())
-                {
-                    damage.Base = 10000; //瘟疫弓恢复为10000面板
-                }
-                if (item.type == ModContent.ItemType<Eternity>())
-                {
-                    damage.Base = 5000; //恒：5000面板
-                }
-                if (item.type == ModContent.ItemType<Apotheosis>())
-                {
-                    damage.Base = 7777; //原版神吞书：7777
-                }
-                if (item.type == ModContent.ItemType<ScarletDevil>())
-                {
-                    damage.Base = 14571; //绯红恶魔回调至14571面板
-                }
-                if (item.type == ModContent.ItemType<HalibutCannon>())
-                {
-                    damage.Base = 1500; //比目鱼
-                }
-                if (item.type == ModContent.ItemType<NanoblackReaper>())
-                {
-                    damage.Base = 4000;
-                }
-                if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
-                {
-                    damage.Base = 10000; //一万面板
-                }
-            }
-            #endregion
-        }
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
             #region 补正饰品挖矿速度

@@ -524,16 +524,5 @@ namespace CalamityInheritance.NPCs
         }
         #endregion
 
-        public override void OnKill(NPC npc)
-        {
-            if (npc.type == NPCID.EaterofWorldsHead)
-            {
-                CIDownedBossSystem.DownedEOW = true;
-            }
-            if (npc.type == NPCID.BrainofCthulhu)
-            {
-                CIDownedBossSystem.DownedBOC = true;
-            }
-        }
     }
 }

@@ -95,7 +95,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modplayer1.SilvaSummonSetLegacy = true;
 
-            modPlayer.auricSet = true;
             modPlayer.WearingPostMLSummonerSet = true;
 
             player.thorns += 3f;

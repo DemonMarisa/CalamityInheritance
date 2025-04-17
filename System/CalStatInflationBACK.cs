@@ -27,6 +27,11 @@ using CalamityMod.Projectiles.Pets;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.Yharon;
+using CalamityMod.NPCs.ExoMechs.Ares;
+using CalamityMod.NPCs.SupremeCalamitas;
+using System.Security.Policy;
+using static System.Net.Mime.MediaTypeNames;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.System
 {
@@ -39,6 +44,8 @@ namespace CalamityInheritance.System
         public static List<int> PostOldDukeWeapons = new List<int>();
         public static List<int> PostDOGWeapons = new List<int>();
         public static List<int> PostyharonWeapons = new List<int>();
+        public static List<int> PostExoAndScalWeapons = new List<int>();
+        public static List<int> PostShadowspecWeapons = new List<int>();
         // 加载/卸载列表
         public override void Load()
         {
@@ -48,6 +55,8 @@ namespace CalamityInheritance.System
             PostOldDukeWeapons = [];
             PostDOGWeapons = [];
             PostyharonWeapons = [];
+            PostExoAndScalWeapons = [];
+            PostShadowspecWeapons = [];
         }
 
         public override void Unload()
@@ -58,6 +67,8 @@ namespace CalamityInheritance.System
             PostOldDukeWeapons = null;
             PostDOGWeapons = null;
             PostyharonWeapons = null;
+            PostExoAndScalWeapons = null;
+            PostShadowspecWeapons = null;
         }
         public override void PostAddRecipes()
         {
@@ -82,6 +93,8 @@ namespace CalamityInheritance.System
                     // 龙后武器
                     if (PostYharonWeapon(recipe, item))
                         PostyharonWeapons.Add(item.type);
+                    if (PostShadowspecWeapon(recipe, item))
+                        PostShadowspecWeapons.Add(item.type);
                 }
             }
             // boss掉落物和宝藏袋
@@ -106,6 +119,15 @@ namespace CalamityInheritance.System
             #region 神长表单删除
             // 怎么你也没有过滤金源武器
             PostDOGWeapons.Remove(ModContent.ItemType<Ataraxia>());
+            #endregion
+            #region 終灾表单添加
+            PostExoAndScalWeapons.Add(ModContent.ItemType<GruesomeEminence>());
+            PostExoAndScalWeapons.Add(ModContent.ItemType<CindersOfLament>());
+            PostExoAndScalWeapons.Add(ModContent.ItemType<Rancor>());
+            PostExoAndScalWeapons.Add(ModContent.ItemType<Metastasis>());
+            #endregion
+            #region 魔影
+            PostShadowspecWeapons.Add(ModContent.ItemType<IridescentExcalibur>());
             #endregion
         }
         #region 月后初期的武器
@@ -142,7 +164,7 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有毁灭之灵/猎魂鲨牙 必须没有宇宙锭/金源锭/魔影锭
             return item.damage > 0
                     && (recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
-                    || recipe.HasIngredient(ModContent.ItemType<ReaperTooth>()) || 
+                    || recipe.HasIngredient(ModContent.ItemType<ReaperTooth>()) ||
                     recipe.HasIngredient(ModContent.ItemType<BloodstoneCore>()))
                     && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
@@ -172,6 +194,15 @@ namespace CalamityInheritance.System
                     && !recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>());
         }
         #endregion
+        #region 魔影武器
+        public static bool PostShadowspecWeapon(Recipe recipe, Item item)
+        {
+            // 必须是有伤害的 必须合成表有魔影锭
+            return item.damage > 0
+                    && recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>())
+                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity;
+        }
+        #endregion
         #region boss掉落
         public static void BossAdd()
         {
@@ -199,11 +230,21 @@ namespace CalamityInheritance.System
             int DOGType = ModContent.NPCType<DevourerofGodsHead>(); // 获取指定Boss的NPC类型ID
             var lootItems5 = CIFunction.FindLoots(DOGType, false); // 获取所有掉落物，除了材料
             PostDOGWeapons.AddRange(lootItems5.Where(id => !PostDOGWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
-           
+
             // 龙
             int yharonType = ModContent.NPCType<Yharon>(); // 获取指定Boss的NPC类型ID
             var lootItems6 = CIFunction.FindLoots(yharonType, false); // 获取所有掉落物，除了材料
             PostyharonWeapons.AddRange(lootItems6.Where(id => !PostyharonWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
+
+            // 巨械
+            int ExoType = ModContent.NPCType<AresBody>(); // 获取指定Boss的NPC类型ID
+            var lootItems7 = CIFunction.FindLoots(ExoType, false); // 获取所有掉落物，除了材料
+            PostExoAndScalWeapons.AddRange(lootItems7.Where(id => !PostExoAndScalWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
+
+            // 終灾
+            int ScalType = ModContent.NPCType<SupremeCalamitas>(); // 获取指定Boss的NPC类型ID
+            var lootItems8 = CIFunction.FindLoots(ScalType, false); // 获取所有掉落物，除了材料
+            PostExoAndScalWeapons.AddRange(lootItems8.Where(id => !PostExoAndScalWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
         }
         #endregion
 
@@ -217,27 +258,40 @@ namespace CalamityInheritance.System
         public const float PostOldDukeWeaponsBoost = 2.4f; // 幽花后
         public const float PostDOGWeaponsBoost = 3.3f; // 神后
         public const float PostYharonWeaponsBoost = 5f; // 龙后
+        public const float PostExoAndScalWeaponsBoost = 7f; // 巨械終灾后
+        public const float PostShadowspecWeaponsBoost = 10f; // 巨械終灾后
         #endregion
+        #region SD
         public override void SetDefaults(Item item)
         {
-            if (CalStatInflationBACK.PostMLWeapons.Contains(item.type))
-                item.damage = (int)(item.damage * PostMLWeaponsBoost);
-            if (CalStatInflationBACK.PostProfanedWeapons.Contains(item.type))
-                item.damage = (int)(item.damage * PostProfanedWeaponsBoost);
-            if (CalStatInflationBACK.PostPolterghastWeapons.Contains(item.type))
-                item.damage = (int)(item.damage * PostPolterghastWeaponsBoost);
-            if (CalStatInflationBACK.PostOldDukeWeapons.Contains(item.type))
-                item.damage = (int)(item.damage * PostOldDukeWeaponsBoost);
-            if (CalStatInflationBACK.PostDOGWeapons.Contains(item.type))
-                item.damage = (int)(item.damage * PostDOGWeaponsBoost);
-            if (CalStatInflationBACK.PostyharonWeapons.Contains(item.type))
+            if (CIServerConfig.Instance.CalStatInflationBACK)
             {
-                item.damage = (int)(item.damage * PostYharonWeaponsBoost);
-                if(item.DamageType == DamageClass.Ranged || item.DamageType == ModContent.GetInstance<RogueDamageClass>())
-                    item.damage = (int)(item.damage * 1.5f);
+                if (CalStatInflationBACK.PostMLWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostMLWeaponsBoost);
+                if (CalStatInflationBACK.PostProfanedWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostProfanedWeaponsBoost);
+                if (CalStatInflationBACK.PostPolterghastWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostPolterghastWeaponsBoost);
+                if (CalStatInflationBACK.PostOldDukeWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostOldDukeWeaponsBoost);
+                if (CalStatInflationBACK.PostDOGWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostDOGWeaponsBoost);
+                if (CalStatInflationBACK.PostyharonWeapons.Contains(item.type))
+                {
+                    item.damage = (int)(item.damage * PostYharonWeaponsBoost);
+                    if (item.DamageType == DamageClass.Ranged || item.DamageType == ModContent.GetInstance<RogueDamageClass>())
+                        item.damage = (int)(item.damage * 1.5f);
+                }
+                if (CalStatInflationBACK.PostExoAndScalWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostExoAndScalWeaponsBoost);
+                if (CalStatInflationBACK.PostShadowspecWeapons.Contains(item.type))
+                    item.damage = (int)(item.damage * PostShadowspecWeaponsBoost);
+                AuricBlance(item);
+                ShadowspecBlance(item);
             }
-            AuricBlance(item);
         }
+        #endregion
+        #region 特殊平衡改动
         public static void AuricBlance(Item item)
         {
             if (item.type == ModContent.ItemType<DragonRage>())
@@ -255,5 +309,85 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
                 item.damage = (int)(item.damage * 2.4f);
         }
+        public static void ShadowspecBlance(Item item)
+        {
+            if (item.type == ModContent.ItemType<Earth>())
+                item.damage = 1750; //无限大地: 200 -> 1750
+            if (item.type == ModContent.ItemType<IllustriousKnives>())
+                item.damage = 3500; //圣光飞刀转为3500
+            if (item.type == ModContent.ItemType<Contagion>())
+                item.damage = 10000; //瘟疫弓恢复为10000面板
+            if (item.type == ModContent.ItemType<Eternity>())
+                item.damage = 5000; //恒：5000面板
+            if (item.type == ModContent.ItemType<Apotheosis>())
+                item.damage = 7777; //原版神吞书：7777
+            if (item.type == ModContent.ItemType<ScarletDevil>())
+                item.damage = 14571; //绯红恶魔回调至14571面板
+            if (item.type == ModContent.ItemType<HalibutCannon>())
+                item.damage = 1500; //比目鱼
+            if (item.type == ModContent.ItemType<NanoblackReaper>())
+                item.damage = 4000;
+            if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
+                item.damage = 10000; //一万面板
+        }
+        #endregion
+    }
+    public class CalamityStatInflationBACKNPC : GlobalNPC
+    {
+        public override void SetDefaults(NPC npc)
+        {
+            if (CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                if (CalamityInheritanceLists.PostMLBoss.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 1.2f);
+                    npc.life = (int)(npc.life * 1.2f);
+                    npc.defense = (int)(npc.defense * 1.2f);
+                }
+                if (CalamityInheritanceLists.PostProfanedBoss.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 1.5f);
+                    npc.life = (int)(npc.life * 1.5f);
+                    npc.defense = (int)(npc.defense * 1.5f);
+                }
+                if (CalamityInheritanceLists.PostPolterghastBoss.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 1.8f);
+                    npc.life = (int)(npc.life * 1.8f);
+                    npc.defense = (int)(npc.defense * 1.8f);
+                }
+                if (CalamityInheritanceLists.DOG.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 2.5f);
+                    npc.life = (int)(npc.life * 2.5f);
+                    npc.defense = (int)(npc.defense * 2.5f);
+                }
+                if (npc.type == ModContent.NPCType<Yharon>())
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 4f);
+                    npc.life = (int)(npc.life * 4f);
+                    npc.defense = (int)(npc.defense * 4f);
+                }
+                if (CalamityInheritanceLists.ExoMech.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 5f);
+                    npc.life = (int)(npc.life * 5f);
+                    npc.defense = (int)(npc.defense * 5f);
+                }
+                if (CalamityInheritanceLists.Scal.Contains(npc.type))
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 6.6f);
+                    npc.life = (int)(npc.life * 6.6f);
+                    npc.defense = (int)(npc.defense * 6.6f);
+                }
+                if (CalamityMod.Events.BossRushEvent.BossRushActive)
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 10f);
+                    npc.life = (int)(npc.life * 10f);
+                    npc.defense = (int)(npc.defense * 10f);
+                }
+            }
+        }
+
     }
 }

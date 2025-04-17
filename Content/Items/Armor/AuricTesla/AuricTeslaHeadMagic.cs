@@ -79,7 +79,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             usPlayer.SilvaMagicSetLegacy = true;
             usPlayer.GodSlayerMagicSet = true;
 
-            calPlayer.auricSet = true;
             usPlayer.AuricSilvaSet = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {

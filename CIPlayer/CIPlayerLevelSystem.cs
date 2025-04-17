@@ -36,6 +36,10 @@ namespace CalamityInheritance.CIPlayer
         public float expRate = 1.4f;
         // 最大等级
         public int maxLevel = 15;
+        // 每次攻击获得的经验值
+        public int exp = 1;
+        // 经验获取CD
+        public int expCD = 0;
         #endregion
         // 计算每一级的经验需求
         public int CalculateRequiredExp(int currentLevel) => (int)(baseExp + baseExp * MathF.Pow(expRate, currentLevel));
@@ -72,6 +76,8 @@ namespace CalamityInheritance.CIPlayer
         #region 等级升级与特效
         public void LevelUp()
         {
+            if (expCD > 0)
+                expCD--;
             //Main.NewText($"magicLevel : {magicLevel}");
             if (meleePool >= CalculateRequiredExp(meleeLevel) && meleeLevel < maxLevel)
             {
@@ -116,28 +122,24 @@ namespace CalamityInheritance.CIPlayer
             }
             Vector2 firePos = new(0f, -4f);
             int p = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, firePos, fireType, damage, 0f, Player.whoAmI);
+            Main.projectile[p].timeLeft = 30;
             if (Main.zenithWorld && Main.rand.NextBool())
-            {
                 Main.projectile[p].friendly = false;
-                Main.projectile[p].timeLeft = 30;
-            }
         }
         #endregion
         public void GiveBoost()
         {
             var modPlayer = Player.Calamity();
             #region 战士增幅
-            float playerLifemultiplier1 = Player.statLife / Player.statLifeMax2;
-            // 30伤 15爆 30攻速
-            // 150最大生命值 7.5生命恢复
+            // 30伤 15爆 30攻速 防击退
             Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.02f;
             Player.GetCritChance<MeleeDamageClass>() += meleeLevel;
             Player.GetAttackSpeed<MeleeDamageClass>() += meleeLevel * 0.02f;
-            Player.statLifeMax2 += meleeLevel * 10;
-            Player.lifeRegen += meleeLevel;
+            if (meleeLevel > 14)
+                Player.noKnockback = true;
             #endregion
             #region 射手
-            // 30伤 30爆 15攻速 30穿 常态狙击镜 45sCD闪避
+            // 30伤 30爆 15攻速 30穿 常态狙击镜
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
             Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
@@ -150,18 +152,18 @@ namespace CalamityInheritance.CIPlayer
             Player.GetCritChance<MagicDamageClass>() += magicLevel;
             Player.statManaMax2 += magicLevel * 10;
             Player.manaCost *= 1 - magicLevel * 0.01f;
-            if (summonLevel > 4)
-                Player.manaFlower = true;
-            if(magicLevel > 0)
-                if(Player.miscCounter % (60 / magicLevel) == 0 && Player.statMana < Player.statManaMax2)
+            if (magicLevel > 0)
+                if (Player.miscCounter % (60 / magicLevel) == 0 && Player.statMana < Player.statManaMax2)
                     Player.statMana += 1;
+            if (magicLevel > 14)
+                Player.manaFlower = true;
             #endregion
             #region 召唤
             // 15%外围增伤 2召唤栏 15%鞭子范围与攻速速度加成
             Player.GetDamage<SummonDamageClass>() *= 1 + summonLevel * 0.01f;
             Player.whipRangeMultiplier += summonLevel * 0.01f;
             Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += summonLevel * 0.01f;
-            if(summonLevel > 14)
+            if (summonLevel > 14)
                 Player.maxMinions += 2;
             #endregion
             #region 盗贼
@@ -169,9 +171,62 @@ namespace CalamityInheritance.CIPlayer
             Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.02f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
             modPlayer.rogueStealthMax += rogueLevel * 0.02f;
-            if (rogueLevel > 15)
+            if (rogueLevel > 14)
                 modPlayer.wearingRogueArmor = true;
             #endregion
+        }
+        public void GiveExp(NPC.HitInfo hit, Projectile proj)
+        {
+            const int CD = 60;
+            //每个职业的判定
+            bool isTrueMelee = proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+            bool isMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>() || isTrueMelee;
+
+            //一般情况下应该是不会有……物品本身能造成远程职业伤害的情况的，但……以防万一？
+            bool isRanged = proj.CountsAsClass<RangedDamageClass>();
+            //理由同上，下也同
+            bool isMagic = proj.CountsAsClass<MagicDamageClass>();
+            bool isWhip = proj.CountsAsClass<SummonMeleeSpeedDamageClass>();
+            bool isSummon = proj.CountsAsClass<SummonDamageClass>() || isWhip;
+            //盗贼这里需要划分射弹是否为潜伏攻击
+            bool isRogueStealth = proj.Calamity().stealthStrike;
+            bool isRogue = proj.CountsAsClass<RogueDamageClass>() && !proj.Calamity().stealthStrike || isRogueStealth;
+            int points = exp;
+            //攻击成功暴击都会让Points +1
+            if (hit.Crit)
+                points += 1;
+            if(expCD == 0)
+            {
+                if (isMelee)
+                {
+                    //如果是真近战的话，那么就会获得6倍的经验值
+                    meleePool += isTrueMelee ? points * 6 : points;
+                    expCD = CD;
+                }
+                if (isRanged)
+                {
+                    rangePool += points;
+                    expCD = CD;
+                }
+                if (isMagic)
+                {
+                    magicPool += points;
+                    expCD = CD;
+                }
+                if (isSummon)
+                {
+                    //鞭子也是真近战!
+                    summonPool += isWhip ? points * 6 : points;
+                    expCD = CD;
+                }
+                if (isRogue)
+                {
+                    //潜伏攻击经验更多
+                    roguePool += isRogueStealth ? points * 7 : points;
+                    //普攻会获得预期更少的CD同时更少的经验值
+                    expCD = CD;
+                }
+            }
         }
     }
 }

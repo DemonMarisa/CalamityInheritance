@@ -535,5 +535,10 @@ Configs: {
 				Default by true
 				'''
 		}
+
+		CalStatInflationBACK: {
+			Label: Cal Stat Inflation B A C K
+			Tooltip: ""
+		}
 	}
 }

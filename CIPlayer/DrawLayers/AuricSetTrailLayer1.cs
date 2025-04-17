@@ -5,6 +5,11 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using System.Linq;
+using System;
+using CalamityInheritance.Utilities;
+using CalamityMod.Graphics.Renderers;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.CIPlayer.DrawLayers
 {
@@ -18,30 +23,51 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
             if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.Calamity().AdrenalineTrail || drawPlayer.Calamity().ascendantTrail)
                 return false;
 
-            return drawPlayer.Calamity().auricSet;
+            return drawPlayer.CIMod().AuricSilvaSet;
         }
-
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
             Player drawPlayer = drawInfo.drawPlayer;
+            var modPlayer = drawPlayer.GetModPlayer<CalamityInheritancePlayer>();
             List<DrawData> existingDrawData = drawInfo.DrawDataCache;
-            float movementSpeedInterpolant = CobaltArmorSetChange.CalculateMovementSpeedInterpolant(drawPlayer);
-            for (float i = 0f; i < drawPlayer.Calamity().OldPositions.Length; i += 1.7f)
+
+
+            // 获取历史位置并过滤无效位置
+            Vector2[] validOldPositions = modPlayer.oldPositions
+                .Where(p => p != drawPlayer.position && p != Vector2.Zero)
+                .ToArray();
+
+            // 动态控制残影数量
+            int maxAfterimages = validOldPositions.Length;
+
+            List<DrawData> afterimages = new List<DrawData>();
+
+            // 生成残影数据
+            for (int i = 0; i < maxAfterimages; i++)
             {
-                float completionRatio = i / drawPlayer.Calamity().OldPositions.Length;
-                float scale = MathHelper.Lerp(1f, 0.6f, completionRatio);
-                float opacity = MathHelper.Lerp(0.12f, 0.03f, completionRatio) * movementSpeedInterpolant;
-                List<DrawData> afterimages = new List<DrawData>();
-                for (int j = 0; j < existingDrawData.Count; j++)
+                Vector2 oldPos = validOldPositions[i];
+                float completionRatio = (float)i / maxAfterimages;
+                float scale = MathHelper.Lerp(0.8f, 1f, completionRatio);
+                float opacity = MathHelper.Lerp(0f, 0.4f, completionRatio);
+                foreach (DrawData original in existingDrawData)
                 {
-                    var drawData = existingDrawData[j];
-                    drawData.position = existingDrawData[j].position - drawPlayer.position + drawPlayer.oldPosition;
-                    drawData.color = new Color(105, 209, 248) * opacity;
-                    drawData.scale = new Vector2(scale);
+                    // 主残影
+                    DrawData drawData = original;
+                    drawData.position = original.position - drawPlayer.position + oldPos;
+                    drawData.color = Color.Gold with { A = 0 } * opacity; // 金色
+                    drawData.scale *= scale;
+
+                    // 深色描边
+                    DrawData outlineData = original;
+                    outlineData.position = drawData.position + new Vector2(2f * scale);
+                    outlineData.color = Color.DarkGoldenrod * (opacity * 0.3f);
+                    outlineData.scale *= scale;
+
+                    afterimages.Add(outlineData);
                     afterimages.Add(drawData);
                 }
-                drawInfo.DrawDataCache.InsertRange(0, afterimages);
             }
+            drawInfo.DrawDataCache.AddRange(afterimages);
         }
     }
 }

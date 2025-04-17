@@ -89,8 +89,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             modPlayer1.SilvaRougeSetLegacy = true;
 
-            modPlayer.auricSet = true;
-
             modPlayer.rogueStealthMax += 1.3f;
             modPlayer.wearingRogueArmor = true;
             //继承至弑神套的视潜伏值上限增加潜伏值的效果
