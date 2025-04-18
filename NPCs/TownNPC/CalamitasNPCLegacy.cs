@@ -85,7 +85,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .SetNPCAffection(NPCID.Wizard, AffectionLevel.Like);
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+                Velocity = 1f
             };
 
             NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifiers);

@@ -112,10 +112,10 @@ DestroyerLegendaryUpgrade: {
 }
 
 EyeofExtinction: {
-	DisplayName: 灭世之眼
+	DisplayName: 灭世之眼[Legacy]
 	Tooltip:
 		'''
-		[c/CD0000:这不是一个好的选择]
+		[c/CD0000:她等待着你]
 		召唤至尊灾厄
 		'''
 }

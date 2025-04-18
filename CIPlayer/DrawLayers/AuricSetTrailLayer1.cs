@@ -31,14 +31,13 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
             var modPlayer = drawPlayer.GetModPlayer<CalamityInheritancePlayer>();
             List<DrawData> existingDrawData = drawInfo.DrawDataCache;
 
-
             // 获取历史位置并过滤无效位置
-            Vector2[] validOldPositions = modPlayer.oldPositions
-                .Where(p => p != drawPlayer.position && p != Vector2.Zero)
-                .ToArray();
+            Vector2[] validOldPositions = modPlayer.oldPositions.ToArray();
 
             // 动态控制残影数量
             int maxAfterimages = validOldPositions.Length;
+
+            float movementSpeedInterpolant = CobaltArmorSetChange.CalculateMovementSpeedInterpolant(drawPlayer);
 
             List<DrawData> afterimages = new List<DrawData>();
 
@@ -48,7 +47,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
                 Vector2 oldPos = validOldPositions[i];
                 float completionRatio = (float)i / maxAfterimages;
                 float scale = MathHelper.Lerp(0.8f, 1f, completionRatio);
-                float opacity = MathHelper.Lerp(0f, 0.4f, completionRatio);
+                float opacity = MathHelper.Lerp(0f, 0.2f, completionRatio) * movementSpeedInterpolant;
                 foreach (DrawData original in existingDrawData)
                 {
                     // 主残影

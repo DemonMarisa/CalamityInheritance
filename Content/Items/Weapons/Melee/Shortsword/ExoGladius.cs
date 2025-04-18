@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useAnimation = Item.useTime = 12;
             Item.width = 56;
             Item.height = 56;
-            Item.damage = 740;
+            Item.damage = 2000;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9.9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
             Item.shoot = ModContent.ProjectileType<ExoGladiusProj>();
-            Item.shootSpeed = 4.8f;
+            Item.shootSpeed = 4f;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;

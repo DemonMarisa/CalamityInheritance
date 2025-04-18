@@ -1,9 +1,12 @@
+using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,7 +16,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Brimstone Heart");
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                CustomTexturePath = "CalamityInheritance/NPCs/Boss/SCAL/ScalWorm/SCalWormHeart"
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+        }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.SCalWormHeart")
+            });
         }
 
         public override void SetDefaults()

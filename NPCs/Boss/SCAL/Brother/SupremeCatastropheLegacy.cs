@@ -16,6 +16,8 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Buffs.Legendary;
+using CalamityMod.NPCs.SupremeCalamitas;
+using Terraria.GameContent.Bestiary;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 {
@@ -33,7 +35,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             // DisplayName.SetDefault("Catastrophe");
             Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
-		}
+
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                PortraitScale = 0.54f,
+                Position = new Vector2(0, -10f)
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+        }
+
 
         public override void SetDefaults()
         {
@@ -90,7 +101,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.SupremeCatastropheLegacy")
+            });
+        }
         public override void AI()
         {
             CIGlobalNPC.LegacySCalCatastrophe = NPC.whoAmI;
@@ -228,13 +248,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
+        {
+            if (NPC.IsABestiaryIconDummy)
+                return true;
+
             SpriteEffects spriteEffects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;
 
 			Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
-			Vector2 origiVel = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
+			Vector2 origiVel = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 			Color white = Color.White;
 			float cLerp = 0.5f;
 			int afterAmt = 7;

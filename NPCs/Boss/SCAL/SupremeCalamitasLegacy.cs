@@ -41,6 +41,7 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Buffs.Legendary;
+using ReLogic.Content;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -235,6 +236,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailingMode[NPC.type] = 1;
+            
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                SpriteDirection = 1,
+                PortraitScale = 0.7f,
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
         }
         #endregion
         #region SD
@@ -242,7 +251,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             // 我不知道为什么修改NPCdamage就会导致boss属性翻倍，所以扔AI里面初始化了
             // 草拟吗难度增幅
-            // NPC.damage = 350;
+            NPC.damage = 350;
             NPC.Calamity().canBreakPlayerDefense = true;
             NPC.npcSlots = 50f;
 
@@ -288,15 +297,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         #endregion
         #region 怪物图鉴
-        
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
-            {
-                new FlavorTextBestiaryInfoElement("Mods.CalamityMod.Bestiary.SupremeCalamitas")
-            });
+
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange([
+
+				// You can add multiple elements if you really wanted to
+				new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.SupremeCalamitasLegacy")
+            ]);
         }
-        
         #endregion
         public override void AI()
         {
@@ -1339,7 +1349,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if(attacktimer < totaldesperationTime)
             {
                 isContactDamage = false;
-                NPC.velocity.X *= 0.98f;
+                NPC.velocity.X *= 0.95f;
             }
             if (attacktimer == totaldesperationTime)
             {
@@ -1507,6 +1517,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            // 在图鉴中使用默认绘制
+            if (NPC.IsABestiaryIconDummy)
+                return true;
+
             Texture2D Scal = TextureAssets.Npc[NPC.type].Value;
             Texture2D ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow").Value;
             // NPC.CIMod().BossNewAI[6]为阶段判定
@@ -1539,6 +1553,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     spriteBatch.Draw(Scal, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
                 }
             }
+
             Vector2 vector43 = NPC.Center - Main.screenPosition;
             vector43 -= new Vector2(Scal.Width, Scal.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
             vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);

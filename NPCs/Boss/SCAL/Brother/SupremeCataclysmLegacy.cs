@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,6 +12,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,10 +29,17 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         public int projDamage = 200;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Cataclysm");
             Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
-		}
+
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                PortraitScale = 0.54f,
+                Position = new Vector2(0, -10f)
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+        }
 
         public override void SetDefaults()
         {
@@ -77,6 +86,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.frameCounter %= Main.npcFrameCount[NPC.type];
             int frame = (int)NPC.frameCounter;
             NPC.frame.Y = frame * frameHeight;
+        }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.SupremeCataclysmLegacy")
+            });
         }
 
         public override void AI()
@@ -221,7 +240,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         }
         */
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
+        {
+            if (NPC.IsABestiaryIconDummy)
+                return true;
+
             SpriteEffects spriteEffects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;

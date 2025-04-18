@@ -1,4 +1,5 @@
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -9,6 +10,7 @@ using ReLogic.Content;
 using System.IO;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -62,7 +64,6 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath14;
         }
-
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(NPC.dontTakeDamage);

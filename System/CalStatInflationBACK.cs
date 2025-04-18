@@ -120,6 +120,10 @@ namespace CalamityInheritance.System
             // 怎么你也没有过滤金源武器
             PostDOGWeapons.Remove(ModContent.ItemType<Ataraxia>());
             #endregion
+            #region 龙后
+            PostyharonWeapons.Add(ModContent.ItemType<Murasama>());
+            PostyharonWeapons.Add(ItemID.Zenith);
+            #endregion
             #region 終灾表单添加
             PostExoAndScalWeapons.Add(ModContent.ItemType<GruesomeEminence>());
             PostExoAndScalWeapons.Add(ModContent.ItemType<CindersOfLament>());
@@ -128,6 +132,7 @@ namespace CalamityInheritance.System
             #endregion
             #region 魔影
             PostShadowspecWeapons.Add(ModContent.ItemType<IridescentExcalibur>());
+            PostShadowspecWeapons.Add(ModContent.ItemType<HalibutCannon>());
             #endregion
         }
         #region 月后初期的武器
@@ -306,6 +311,8 @@ namespace CalamityInheritance.System
                 item.damage = 1800;
             if (item.type == ModContent.ItemType<YharimsCrystal>())
                 item.damage = 600;
+            if (item.type == ModContent.ItemType<ArkoftheCosmos>())
+                item.damage = 14000;
             if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
                 item.damage = (int)(item.damage * 2.4f);
         }

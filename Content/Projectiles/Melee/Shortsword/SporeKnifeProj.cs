@@ -95,5 +95,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 modPlayer.ProjectilHitCounter = 0;
             }
         }
+
     }
 }

@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -15,6 +16,7 @@ using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,7 +31,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         public int maxLife = CalamityWorld.death ? 2000000 : CalamityWorld.revenge ? 1200000 : 1000000;
         public override void SetStaticDefaults()
         {
-            this.HideFromBestiary();
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                PortraitScale = 0.54f,
+                CustomTexturePath = "CalamityInheritance/NPCs/Boss/SCAL/ScalWorm/ScalWorm_Bestiary"
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
         }
 
         public override void SetDefaults()
@@ -63,7 +71,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             NPC.DeathSound = SoundID.NPCDeath14;
             NPC.netAlways = true;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.ScalWorm")
+            });
+        }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;
@@ -343,6 +360,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         {
             if (NPC.life <= 0)
             {
+                SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);
                 for (int i = 0; i < 5; i++)
                 {
                     int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
@@ -362,10 +380,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                     Main.dust[dust].velocity *= 2f;
                 }
             }
-        }
-        public override void OnKill()
-        {
-            SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);
         }
     }
 }

@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
 using System.Collections.Generic;
 using CalamityInheritance.System;
+using CalamityInheritance.Common.ModSupport;
 
 namespace CalamityInheritance
 {
@@ -35,11 +36,11 @@ namespace CalamityInheritance
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
 
         internal Mod infernumMode = null;
-
+        // 获取boss列表
+        internal Mod bossChecklist = null;
         // 获取灾厄音乐
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
-
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
 
@@ -50,7 +51,9 @@ namespace CalamityInheritance
             // 获取灾厄音乐
             musicMod = null;
             ModLoader.TryGetMod("CalamityModMusic", out musicMod);
-
+            // 获取boss列表
+            bossChecklist = null;
+            ModLoader.TryGetMod("BossChecklist", out bossChecklist);
             // 获取莉莉音乐包
             liliesmusicMod = null;
             ModLoader.TryGetMod("EnderLiliesMusicPack", out liliesmusicMod);
@@ -117,7 +120,8 @@ namespace CalamityInheritance
             musicMod = null;
             // 卸载莉莉音乐包
             liliesmusicMod = null;
-
+            // 卸载boss列表
+            bossChecklist = null;
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
@@ -137,5 +141,9 @@ namespace CalamityInheritance
         #endregion
 
         public int? GetMusicFromMusicMod(string songFilename) => MusicAvailable ? MusicLoader.GetMusicSlot(musicMod, "Sounds/Music/" + songFilename) : null;
+
+        #region Mod Support
+        public override void PostSetupContent() => WeakReferenceSupport.Setup();
+        #endregion
     }
 }

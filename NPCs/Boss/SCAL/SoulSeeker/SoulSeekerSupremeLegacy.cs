@@ -13,6 +13,8 @@ using CalamityMod.Particles;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod.NPCs.SupremeCalamitas;
+using Terraria.GameContent.Bestiary;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 {
@@ -23,9 +25,15 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
         public static readonly SoundStyle BrimstoneShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneShoot");
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Soul Seeker");
 			NPCID.Sets.TrailingMode[NPC.type] = 1;
-		}
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                PortraitScale = 0.54f,
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+        }
 
         public override void SetDefaults()
         {
@@ -62,7 +70,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             NPC.Calamity().VulnerableToElectricity = false;
             NPC.Calamity().VulnerableToWater = false;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+            {
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.SoulSeekerSupremeLegacy")
+            });
+        }
         public override bool PreAI()
         {
             bool expertMode = Main.expertMode;
@@ -155,8 +172,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			SpriteEffects spriteEffects = SpriteEffects.None;
+        {
+            if (NPC.IsABestiaryIconDummy)
+                return true;
+
+            SpriteEffects spriteEffects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
 				spriteEffects = SpriteEffects.FlipHorizontally;
 

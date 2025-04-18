@@ -194,7 +194,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region 旧位置保存
         public readonly Queue<Vector2> oldPositions = new Queue<Vector2>();
-        public int MaxoldPositions = 4; // 最多保存多少个
+        public int MaxoldPositions = 6; // 最多保存多少个
         #endregion
         #region UpdateDead
         public override void UpdateDead()
