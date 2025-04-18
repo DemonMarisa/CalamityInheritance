@@ -169,7 +169,7 @@ namespace CalamityInheritance.Utilities
         ///<summary>
         ///用于手持射弹的使用判定
         ///</summary>
-        public static bool CantUseHoldout(this Player player, bool needsToHold = true)
+        public static bool JudgeHoldout(this Player player, bool needsToHold = true)
         {
             if (player != null && player.active && !player.dead && !(!player.channel && needsToHold) && !player.CCed)
             {
@@ -189,7 +189,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="inertia">惯性</param>
         /// <param name="giveExtraUpdate">给予额外更新，默认1</param>
         /// <param name="forceSpeed">指定射弹无视距离，使射弹使用你输入的速度。这个效果有一个距离特判，即距离比你输入的射弹速度还短的时候才会生效, 一般可无视。</param>
-        public static void HomingNPCBetter(Projectile proj, NPC target, float distRequired, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null)
+        public static void HomingNPCBetter(this Projectile proj, NPC target, float distRequired, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null, float? maxAngleChage = null)
         {
             //一般来说你用这个方法就说明target理论上应当可以被追，但……just in case
             if (!proj.friendly || target == null || !target.active)
@@ -211,8 +211,21 @@ namespace CalamityInheritance.Utilities
                 //开始追踪target
                 Vector2 home = (target.Center - proj.Center).SafeNormalize(Vector2.UnitY);
                 Vector2 velo = (proj.velocity * inertia + home * speed) / (inertia + 1f);
-
-                //TODO: 这个写法不太好，可能得考虑重置一下
+                //这里给了一个角度限制
+                if(maxAngleChage.HasValue)
+                {
+                    float curAngle =  proj.velocity.ToRotation();   
+                    float tarAngle = velo.ToRotation();
+                    float angleDiffer = MathHelper.WrapAngle(tarAngle - curAngle);
+                    //转弧度
+                    float maxRadians = MathHelper.ToRadians(maxAngleChage.Value);
+                    if (Math.Abs(angleDiffer) > maxRadians)
+                    {
+                        float clampedAngle = curAngle + Math.Sign(angleDiffer) * maxRadians;
+                        float setSpeed = velo.Length();
+                        velo = new Vector2((float)Math.Cos(clampedAngle), (float)Math.Sin(clampedAngle)) * setSpeed;
+                    }
+                }
                 //除非你当前距离比射弹速度还少, 我们才会重新设定速度
                 if (forceSpeed.HasValue && curDist < speed)
                     velo = proj.velocity + home * forceSpeed.Value;
@@ -272,7 +285,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="ignoreTiles">穿墙搜索, 默认为</param>
         /// <param name="arrayFirst">数组优先, 这个将会使射弹优先针对数组内第一个单位,默认为否</param>
         /// <returns>返回一个NPC实例</returns>
-        public static NPC FindClosestTarget(Projectile p, float maxDist, bool bossFirst = false, bool ignoreTiles = true, bool arrayFirst = false)
+        public static NPC FindClosestTarget(this Projectile p, float maxDist, bool bossFirst = false, bool ignoreTiles = true, bool arrayFirst = false)
         {
             //bro我真的要遍历整个NPC吗？
             float distStoraged = maxDist;
@@ -365,6 +378,33 @@ namespace CalamityInheritance.Utilities
             }
             //返回这个NPC实例
             return acceptableTarget;      
+        }
+        /// <summary>
+        /// 懒人封装方法，这个会用于实现将射弹临时设置为爆炸射弹的效果，具体参考孔雀翎
+        /// </summary>
+        /// <param name="proj">你的射弹</param>
+        /// <param name="explosionX">你想要的爆炸宽度</param>
+        /// <param name="explosionY">你想要的爆炸高度</param>
+        /// <param name="hitCD">无敌帧, 这里默认是启用局部无敌帧的</param>
+        /// <param name="isUseLocalHit">启用局部无敌帧，默认开启</param>
+        /// <param name="isUseIDHit">启用静态无敌帧，默认关闭</param>
+        public static void GenerialExplosion(this Projectile proj, int explosionX, int explosionY, int hitCD, bool isUseLocalHit = true, bool isUseIDHit = false)
+        {
+            proj.position = proj.Center;
+            proj.width = explosionX;
+            proj.height = explosionY;
+            proj.position.X = proj.position.X - proj.width / 2;
+            proj.position.Y = proj.position.Y - proj.height / 2;
+            if (isUseLocalHit)
+            {
+                proj.usesLocalNPCImmunity = true;
+                proj.localNPCHitCooldown = hitCD;
+            }
+            if (isUseIDHit && !isUseLocalHit)
+            {
+                proj.usesIDStaticNPCImmunity = true;
+                proj.idStaticNPCHitCooldown = hitCD;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using CalamityMod.Items.Placeables.PlaceableTurrets;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -162,24 +163,24 @@ namespace CalamityInheritance.Texture
         //路径
         //职业武器路径
         public static string CIGenericWeaponRoute => "CalamityInheritance/Content/Items/Weapons";
-        public static string CIMeleeWeaponRoute=> $"{CIGenericWeaponRoute}/Melee";
-        public static string CIRangedWeaponRoute=> $"{CIGenericWeaponRoute}/Ranged";
-        public static string CIMagicWeaponRoute=> $"{CIGenericWeaponRoute}/Magic";
-        public static string CIRogueWeaponRoute=> $"{CIGenericWeaponRoute}/Rogue";
+        public static string CIMeleeWeaponRoute=>   $"{CIGenericWeaponRoute}/Melee";
+        public static string CIRangedWeaponRoute=>  $"{CIGenericWeaponRoute}/Ranged";
+        public static string CIMagicWeaponRoute=>   $"{CIGenericWeaponRoute}/Magic";
+        public static string CIRogueWeaponRoute=>   $"{CIGenericWeaponRoute}/Rogue";
         //射弹路径
         public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
         //额外贴图路径
         public static string CIExtraRoute => "CalamityInheritance/Texture";
-        public static string CIMeleeExtraRoute => $"{CIExtraRoute}/Melee";
-        public static string CIRangedExtraRoute => $"{CIExtraRoute}/Ranged";
-        public static string CIRogueExtraRoute => $"{CIExtraRoute}/Rogue";
+        public static string CIMeleeExtraRoute =>   $"{CIExtraRoute}/Melee";
+        public static string CIRangedExtraRoute =>  $"{CIExtraRoute}/Ranged";
+        public static string CIRogueExtraRoute =>   $"{CIExtraRoute}/Rogue";
         //部分灾厄的路径
         //武器路径
         public static string CalWeaponRoute => "CalamityMod/Items/Weapons";
-        public static string CalMeleeWeaponRoute => $"{CalWeaponRoute}/Melee";
-        public static string CalRangedWeaponRoute => $"{CalWeaponRoute}/Ranged";
-        public static string CalMagicWeaponRoute => $"{CalWeaponRoute}/Magic";
-        public static string CalRogueWeaponRoute => $"{CalWeaponRoute}/Rogue";
+        public static string CalMeleeWeaponRoute =>     $"{CalWeaponRoute}/Melee";
+        public static string CalRangedWeaponRoute =>    $"{CalWeaponRoute}/Ranged";
+        public static string CalMagicWeaponRoute =>     $"{CalWeaponRoute}/Magic";
+        public static string CalRogueWeaponRoute =>     $"{CalWeaponRoute}/Rogue";
         //射弹路径
         public static string CalProjRoute => "CalamityMod/Projectiles";
         
@@ -349,95 +350,86 @@ namespace CalamityInheritance.Texture
 
         public static void UnloadTexture()
         {
-            HeliumCal = null;
-            HeliumFlashLegacy = null;
-
-            AotCCal = null;
-            AotCAlt = null;
-            EmpyreanKnivesCal = null;
-            EmpyreanKnivesCalProj = null;
-            EmpyreanKnivesAlt = null;
-            EmpyreanKnivesAltProj = null;
-            ShadowKnivesCal = null;
-            ShadowKnivesCalProj = null;
-            ShadowKnivsAlt3= null;
-            ShadowKnivsAlt3Proj= null;
-            ShadowKnivsAlt2= null;
-            ShadowKnivsAlt2Proj= null;
-            ShadowKnivsAlt3= null;
-            ShadowKnivsAlt3Proj= null;
-            
-            SkullmasherCal = null;
-            Skullmasher    = null;
-
-            P90 = null;
-            P90Legacy = null;
-
-            GiantHammerCal = null;
-            GiantHammerAlt = null;
-
-            //星体击碎者
-            StellarContemptNew = null;
-            StellarContemptOld = null;
-
-            DrataBowLegacyAlt = null;
-            DrataliornusLegacy = null;
-
-            HalleyCal = null;
-            HalleyAlt = null;
-
-            AegisCal = null;
-            AegisAlt = null;
-            
-            GalileoAlt = null;
-            GalileoCal  = null;
-            HallowedShivCal = null;
-            HallowedShivAlt = null;
-            TrueHallowedShivCal = null;
-            TrueHallowedShivAlt = null;
-            NightShivCal = null;
-            NightShivAlt = null;
-            TrueNightShivAlt = null;
-            TrueNightShivCal = null;
-            FlameShivCal = null;
-            FlameShivAlt = null;
-            SeaShivAlt = null;
-            SeaShivCal = null;
-            DungeonShivAlt = null;
-            DungeonShivCal = null;
-
-            CerscentMoonProjCal = null;
-            CerscentMoonProjAlt = null;
-
-            RareArkAlt = null;
-            RareArkCal = null;
-            ElemShivCal = null;
-            ElemShivAlt = null;
-            ElemBYDAlt = null;
-            ElemBYDCal = null;
-            ElemDiskAlt = null;
-            ElemDiskCal = null;
-            ElemLanceAlt = null;
-            ElemLanceProjAlt = null;
-            ElemLanceCal = null;
-            ElemLanceProjCal = null;
-            ElemSwordAlt = null;
-            ElemSwordCal = null;
-            ElemRayAlt = null;
-            ElemRayCal = null;
-            ElemFlamethrowerAlt = null;
-            ElemFlamethrowerCal = null;
-
-            
-            TerraSummonCal = null;
-            TerraSummonAlt = null;
-
-            ShatteredAlt = null;
-            ShatteredCal = null;
-            RadiantAlt = null;
-            RadiantCal = null;
-            PrismllAlt = null;
-            PrismllCal = null;
+            //如果可以请按字母表顺序排序,
+            Asset<Texture2D>[] Train =
+            [
+                AegisCal,
+                AegisAlt,
+                AotCCal,
+                AotCAlt,
+                CerscentMoonProjCal,
+                CerscentMoonProjAlt,
+                DungeonShivCal,
+                DungeonShivAlt,
+                DrataBowLegacyAlt,
+                DrataliornusLegacy,
+                ElemShivCal,
+                ElemShivAlt,
+                ElemBYDAlt,
+                ElemBYDCal,
+                ElemDiskAlt,
+                ElemDiskCal,
+                ElemLanceAlt,
+                ElemLanceProjAlt,
+                ElemLanceCal,
+                ElemLanceProjCal,
+                ElemSwordAlt,
+                ElemSwordCal,
+                ElemRayAlt,
+                ElemRayCal,
+                ElemFlamethrowerAlt,
+                ElemFlamethrowerCal,
+                EmpyreanKnivesCal,
+                EmpyreanKnivesCalProj,
+                EmpyreanKnivesAlt,
+                EmpyreanKnivesAltProj,
+                FlameShivCal,
+                FlameShivAlt,
+                GalileoAlt,
+                GalileoCal,
+                GiantHammerCal,
+                GiantHammerAlt,
+                HeliumCal,
+                HeliumFlashLegacy,
+                HalleyCal,
+                HalleyAlt,
+                HallowedShivCal,
+                HallowedShivAlt,
+                NightShivCal,
+                NightShivAlt,
+                P90,
+                P90Legacy,
+                PrismllAlt,
+                PrismllCal,
+                RareArkAlt,
+                RareArkCal,
+                RadiantAlt,
+                RadiantCal,
+                SeaShivAlt,
+                SeaShivCal,
+                ShadowKnivesCal,
+                ShadowKnivesCalProj,
+                ShadowKnivsAlt3,
+                ShadowKnivsAlt3Proj,
+                ShadowKnivsAlt2,
+                ShadowKnivsAlt2Proj,
+                ShadowKnivsAlt3,
+                ShadowKnivsAlt3Proj,
+                ShatteredAlt,
+                ShatteredCal,
+                StellarContemptNew,
+                StellarContemptOld,
+                SkullmasherCal,
+                Skullmasher,
+                TrueHallowedShivCal,
+                TrueHallowedShivAlt,
+                TrueNightShivAlt,
+                TrueNightShivCal,
+                TerraSummonCal,
+                TerraSummonAlt,
+            ];
+            for (int i = 0 ; i < Train.Length; i++)
+                Train[i] = null;
         }
     }
 }

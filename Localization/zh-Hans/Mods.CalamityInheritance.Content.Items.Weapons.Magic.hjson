@@ -289,10 +289,10 @@ RavagerLegendary: {
 		右键直接发射散开的熔岩巨石
 		可随着游戏流程的进行得到增强
 		[SCALING]
+		[c/FF009B:-传奇武器-]
 		[TIERONE]
 		[TIERTWO]
 		[TIERTHREE]
-		[c/FF009B:-传奇武器-]
 		'''
 	TierOne: "[c/FF009B:强化:]熔岩巨石将会完全穿墙, 且更容易命中"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
@@ -348,3 +348,19 @@ VividChange:
 	}
 	'''
 // VividClarityBeamCal.DisplayName: Vivid Clarity Beam Cal
+
+YharimsCrystalLegendary: {
+	DisplayName: 魔君水晶[Legendary]
+	Tooltip:
+		'''
+		发射猛烈的破坏死光
+		会随着……击败的Boss得到增强
+		[c/4169E1:-传奇武器-]
+		[EXO]
+		[SCAL]
+		'''
+	ExoTint: "[c/4169E1:强化]：光束造成2局部无敌帧，并在击中敌人时呼叫星流彗星支援"
+	NoExoTint: "[c/818589:击败阿瑞斯]"
+	ScalTint: "[c/4169E1:强化]：膨胀魔力消耗，但获得1000%伤害倍率加成，击中敌人时将会呼叫探魂眼支援你"
+	NoScalTint: "[c/818589:击败至尊灾厄]"
+}

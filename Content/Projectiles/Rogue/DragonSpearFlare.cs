@@ -18,6 +18,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class DragonSpearFlare: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
+        public ref float AttackType => ref Projectile.ai[0];
+        public ref float AttackTimer => ref Projectile.ai[1];
+        public ref float TargetIndex => ref Projectile.ai[2];
+        const float IsShooted = 0f;
+        const float IsHoming = 1f;
+        const float FindNewTarget = 2f;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
@@ -40,6 +46,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool? CanHitNPC(NPC target) => Projectile.localAI[1] > 15f;
         public override void AI()
         {
+            //转角。
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             //使射弹上升过程中受到重力影响
             if (Main.rand.NextBool(2))
             TrailDust();
@@ -48,7 +56,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void HomingAI()
         {
-            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver2;
             Projectile.velocity.Y += 0.28f;
             Projectile.velocity.X *= 0.99f;
             Projectile.localAI[0] += 1f;

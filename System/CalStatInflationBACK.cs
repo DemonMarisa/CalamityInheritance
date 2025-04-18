@@ -32,6 +32,7 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using System.Security.Policy;
 using static System.Net.Mime.MediaTypeNames;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.System
 {

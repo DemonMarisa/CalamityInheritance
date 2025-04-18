@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                             Projectile.HurtPlayer(owner.Hitbox);
                             owner.velocity = Projectile.oldVelocity * 2.1f;
                             owner.statLife -= 100;
-                            owner.HealEffect(100);
+                            owner.HealEffect(114514);
                             //bonk
                             SoundEngine.PlaySound(CISoundMenu.StepBonk, Projectile.position);
                             Projectile.Kill();

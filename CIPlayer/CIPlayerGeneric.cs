@@ -110,7 +110,14 @@ namespace CalamityInheritance.CIPlayer
         public bool ColdDivityTier2 = false;
         public bool ColdDivityTier3 = false;
         public bool IsColdDivityActiving = false;
-        
+        /*特殊：暴君水晶升级存储，但是...
+        *Style One: 击败星流
+        *Style Two: 击败终灾 
+        *Style Three: 击败丛林龙(再次)
+        */
+        public bool YharimsKilledExo = false;
+        public bool YharimsKilledScal = false;
+        public bool YharimsFuckDragon = false;
         public bool PBGLegendaryDyeable = false;
         public Color PBGBeamColor;
         #endregion

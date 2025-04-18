@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             var calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
-            player.manaCost *= 0.8f;
+            player.manaCost -= 0.2f;
             player.GetDamage<MagicDamageClass>() += 0.3f;
             player.GetCritChance<MagicDamageClass>() += 20;
             player.statManaMax2 += 100;

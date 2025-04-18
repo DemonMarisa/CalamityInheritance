@@ -129,6 +129,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
+            if (Main.zenithWorld)
+            {
+                string fuck = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.TyrannysEndOld.Fuck");
+                tooltips.FindAndReplace("[FUCK]", fuck);
+            }
+            else
+            {
+
+                string notFuck = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.TyrannysEndOld.NotFuck");
+                tooltips.FindAndReplace("[FUCK]", notFuck);
+            }
+
             if (CIConfig.Instance.AmmoConversion == true)
             {
                 string AmmoConversionOn = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.AmmoConversionCIWeapon");

@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Projectile.localAI[0] = 0f;
                 }
             }
-            if (Projectile.ai[0] == 1f)
+            if (Projectile.ai[2] == -1f)
             {
                 CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             }

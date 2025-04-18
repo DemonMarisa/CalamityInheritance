@@ -122,7 +122,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 }
                 if(p.fireCD == 0)
                 {
-                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 1f);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
+                        float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
+                        Projectile.NewProjectile(source, position,  new(velX, velY),ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 0f, 0f, -1f);
+                    }
                     p.fireCD = 60;
                 }
                 return false;

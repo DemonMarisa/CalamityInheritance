@@ -33,6 +33,7 @@ namespace CalamityInheritance.CIPlayer
         //通用计时器
         public int GlobalFireDelay = 0;
         //通用……任意计数器？
+        public int BrimstoneDartsCD = 0;
         public int GlobalMiscCounter = 1;
         public void ResetCD()
         {
@@ -67,6 +68,8 @@ namespace CalamityInheritance.CIPlayer
                 GlobalSoundDelay --;
             if (GlobalFireDelay > 0)
                 GlobalFireDelay--;
+            if (BrimstoneDartsCD > 0)
+                BrimstoneDartsCD--;
             return;
         }
     }

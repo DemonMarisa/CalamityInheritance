@@ -1766,6 +1766,7 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier2 = true;
                 PlanteraTier2 = true;
                 DefendTier2 = true;
+                YharimsKilledScal = true;
             }
             if (CIConfig.Instance.LegendaryBuff == 3)
             {
@@ -1775,6 +1776,7 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier3 = true;
                 PlanteraTier3 = true;
                 DefendTier3 = true;
+                YharimsKilledExo = true;
             }
             if (CIConfig.Instance.LegendaryBuff == 4)
             {
@@ -1796,6 +1798,8 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier1 = false;
                 DestroyerTier2 = false;
                 DestroyerTier3 = false;
+                YharimsKilledExo = false;
+                YharimsKilledScal = false;
             }
         }
     }

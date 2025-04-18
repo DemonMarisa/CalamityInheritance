@@ -64,8 +64,18 @@ Mods: {
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
-		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
-		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+		Content/Projectiles/Summon: {
+			MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
+			YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
+		}
+
+		Content: {
+			Projectile: {
+				Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+				Magic.YharimsExtraPrism.DisplayName: Yharims Extra Prism
+			}
+		}
+
 		DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball

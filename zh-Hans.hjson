@@ -64,8 +64,18 @@ Mods: {
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
-		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光
-		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+		Content/Projectiles/Summon: {
+			MountedScannerLaserLegacy.DisplayName: 分解激光
+			// YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
+		}
+
+		Content: {
+			Projectile: {
+				Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
+				// Magic.YharimsExtraPrism.DisplayName: Yharims Extra Prism
+			}
+		}
+
 		// DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 		// Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball

@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                             Vector2 pos = new (posX, posY);
                             Vector2 realSpeed = new Vector2(Item.shootSpeed * 3, 0f).RotatedBy(MathHelper.PiOver2 * j);
                             //直接让其从天上降落。
-                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), damage / 2, knockback, player.whoAmI);
+                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), damage * 2, knockback, player.whoAmI);
                         }
                         player.CIMod().GlobalFireDelay = 10;
                     }

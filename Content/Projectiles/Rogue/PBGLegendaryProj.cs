@@ -120,8 +120,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             StoredColorAndDust gColor = SpecialColor(Main.player[Projectile.owner], Projectile);
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 48;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             for (int i = 0; i < 7; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, gColor.dType, 0f, 0f, 100, gColor.pColor, 1.2f);
