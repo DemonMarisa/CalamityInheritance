@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.SummonItems;
+﻿using CalamityInheritance.Content.Items.Placeables.Relic;
+using CalamityInheritance.Content.Items.SummonItems;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
@@ -106,7 +107,7 @@ namespace CalamityInheritance.Common.ModSupport
                     ModContent.ItemType<EyeofExtinction>() };
                 List<int> collection = new List<int>() 
                 {
-                    // ModContent.ItemType<CalamitasRelic>(),
+                    ModContent.ItemType<ScalRelic>(),
                     ModContent.ItemType<SupremeCalamitasTrophy>(),
                     ModContent.ItemType<SupremeCataclysmTrophy>(),
                     ModContent.ItemType<SupremeCatastropheTrophy>(),
@@ -127,7 +128,7 @@ namespace CalamityInheritance.Common.ModSupport
                     ["despawnMessage"] = GetDespawnMessage(entryName),
                     ["spawnItems"] = summons,
                     ["collectibles"] = collection,
-                    ["overrideHeadTextures"] = "CalamityMod/NPCs/SupremeCalamitas/HoodedHeadIcon"
+                    ["overrideHeadTextures"] = "CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Head_Boss"
                 });
             }
         }

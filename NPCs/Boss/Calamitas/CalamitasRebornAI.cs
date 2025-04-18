@@ -256,6 +256,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             #endregion
             //按理来说，不出意外的话我们只需要这样就能完成一个普灾AI了，但是实际情况？还得再看看细节上的问题
         }
+
         /// <summary>
         /// 生成粒子
         /// </summary>
@@ -297,5 +298,6 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             //此处需要一个探魂眼重生文本
             cign.BossNewAI[1] = 1f;
         }
+
     }
 }

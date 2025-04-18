@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Materials
         {
             Item.width = 20;
             Item.height = 34;
-            Item.maxStack = 1;
+            Item.maxStack = 9999;
             Item.value = CIShopValue.RarityPricePureRed;
             Item.rare = ModContent.RarityType<PureRed>();
         }

@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.NPCs.Boss.SCAL.Sky;
 using Terraria;
+using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
 {
@@ -25,7 +26,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
             public override bool IsSceneEffectActive(Player player)
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                     return false;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -44,7 +45,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
             public override bool IsSceneEffectActive(Player player)
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                     return false;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -63,7 +64,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
             public override bool IsSceneEffectActive(Player player)
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                     return false;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -82,7 +83,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
             public override bool IsSceneEffectActive(Player player)
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                     return false;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];

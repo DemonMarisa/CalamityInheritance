@@ -132,12 +132,12 @@ namespace CalamityInheritance.NPCs.TownNPC
                 Chat = Main.rand.Next(6, 21);
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs) => true;
+        public override bool CanTownNPCSpawn(int numTownNPCs) => !NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>());
         public override void UpdateLifeRegen(ref int damage)
         {
             NPC.lifeRegen += 1000;
         }
-
+        /*
         public override List<string> SetNPCNameList()
         {
             return new List<string>()
@@ -145,6 +145,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                   Language.GetTextValue("Mods.CalamityInheritance.Name.ScalNPC")
             };
         }
+        */
         public override bool PreAI()
         {
             // Disappear if the SCal boss is active. She's supposed to be the boss.

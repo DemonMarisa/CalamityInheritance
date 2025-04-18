@@ -1,47 +1,56 @@
 ﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityInheritance.NPCs.Boss.SCAL.ArenaTile;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Events;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.Mounts;
-using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.NPCs;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs.TownNPCs;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Tiles;
-using CalamityMod.UI;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.Chat;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static CalamityMod.NPCs.ExoMechs.Ares.AresBody;
-using static System.Net.Mime.MediaTypeNames;
 using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Buffs.Legendary;
-using ReLogic.Content;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityMod.Items.Pets;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
+using CalamityMod.Items.Tools;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Summon;
+using CalamityInheritance.Content.Items.Placeables.Relic;
+using CalamityMod.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityMod.Projectiles.Magic;
+using Terraria.GameContent.ItemDropRules;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Core;
+using CalamityMod.Items.LoreItems;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Pets;
+using log4net.Core;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -251,7 +260,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             // 我不知道为什么修改NPCdamage就会导致boss属性翻倍，所以扔AI里面初始化了
             // 草拟吗难度增幅
-            NPC.damage = 350;
+            // NPC.damage = 350;
             NPC.Calamity().canBreakPlayerDefense = true;
             NPC.npcSlots = 50f;
 
@@ -317,7 +326,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             if (initialized == false)
             {
-                NPC.damage = 350;
+                NPC.damage = 2000;
                 initialized = true;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>()))
@@ -1627,6 +1636,71 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 return true;
         }
         #region 击杀与掉落
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ModContent.ItemType<OmegaHealingPotion>();
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            // Materials
+
+            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 40, 50);
+
+            int[] weapons =
+            [
+                ModContent.ItemType<AngelicAlliance>(),
+                ModContent.ItemType<Animus>(),
+                ModContent.ItemType<Azathoth>(),
+                ModContent.ItemType<AzathothLegacy>(),
+                ModContent.ItemType<CrystylCrusher>(),
+                ModContent.ItemType<DraconicDestruction>(),
+                ModContent.ItemType<Earth>(),
+                ModContent.ItemType<RedSun>(),
+                ModContent.ItemType<IllustriousKnives>(),
+                ModContent.ItemType<RogueTypeKnivesShadowspec>(),
+                ModContent.ItemType<NanoblackReaper>(),
+                ModContent.ItemType<MeleeTypeNanoblackReaper>(),
+                ModContent.ItemType<RainbowPartyCannon>(),
+                ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>(),
+                ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>(),
+                ModContent.ItemType<SomaPrime>(),
+                ModContent.ItemType<SomaPrimeOld>(),
+                ModContent.ItemType<Svantechnical>(),
+                ModContent.ItemType<SvantechnicalLegacy>(),
+                ModContent.ItemType<Fabstaff>(),
+                ModContent.ItemType<FabstaffOld>(),
+                ModContent.ItemType<StaffofBlushie>(),
+                ModContent.ItemType<Apotheosis>(),
+                ModContent.ItemType<ApotheosisLegacy>(),
+                ModContent.ItemType<TheDanceofLight>(),
+                ModContent.ItemType<DanceofLightLegacy>(),
+                ModContent.ItemType<ScarletDevil>(),
+                ModContent.ItemType<Endogenesis>(),
+                ModContent.ItemType<FlamsteedRing>(),
+                ModContent.ItemType<Eternity>(),
+                ModContent.ItemType<TemporalUmbrella>(),
+                ModContent.ItemType<TemporalUmbrellaOld>(),
+                // ModContent.ItemType<FlamsteedRing>(),
+            ];
+            // 随机掉一个
+            var weaponDropRule = ItemDropRule.OneFromOptions(1, weapons);
+            npcLoot.Add(weaponDropRule);
+
+            // 爆裂与利锥
+            npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<VehemencOld>());
+            npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<Levi>());
+
+            // 战利品纹章
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneJewel>()));
+            npcLoot.Add(ModContent.ItemType<ScalTrophy>(), 10);
+
+            // 圣物
+            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ModContent.ItemType<ScalRelic>());
+            // Lore
+            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyScal, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
+        }
+
         public override void OnKill()
         {
             if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount > 0)

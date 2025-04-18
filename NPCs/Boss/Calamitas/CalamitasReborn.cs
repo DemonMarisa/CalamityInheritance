@@ -115,7 +115,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
         {
             CalamitasRebornAIPhase1.CalamitasRebornAI(NPC, Mod);
         }
-
+        #region 绘制
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;
@@ -173,7 +173,8 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
 
             return false;
         }
-
+        #endregion
+        #region 死亡
         public override bool PreKill()
         {
             return false;
@@ -216,6 +217,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                 }
             }
         }
+        #endregion
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, true);

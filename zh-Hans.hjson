@@ -40,15 +40,15 @@ Mods: {
 				$parentVal: 魔影坩埚
 			}
 
-			// Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
-			// KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
-			// LegacyArenaTile.MapEntry: Legacy Arena Tile
+			Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
+			KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
+			LegacyArenaTile.MapEntry: 竞技场方块
 		}
 
 		Projectiles: {
 			Melee: {
 				CIExocomet.DisplayName: 星流流星
-				// CIExocometMagic.DisplayName: C I Exocomet Magic
+				CIExocometMagic.DisplayName: 星流彗星
 			}
 
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
@@ -60,8 +60,8 @@ Mods: {
 			PhoenixBladeHeal.DisplayName: 治愈之火
 			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 			VerdantYoyo.DisplayName: 葱茏
-			// ApothMarkLegacy.DisplayName: Apoth Mark Legacy
-			// OpalStrikeLegacy.DisplayName: Opal Strike Legacy
+			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
+			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
 		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: 分解激光

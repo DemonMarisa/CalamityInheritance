@@ -5,6 +5,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Utilities
@@ -92,6 +96,25 @@ namespace CalamityInheritance.Utilities
                     break;
             }
             return flag;
+        }
+        /// <summary>
+        /// Extension which initializes a ModTile to be a trophy.
+        /// </summary>
+        /// <param name="mt">The ModTile which is being initialized.</param>
+        internal static void SetUpTrophy(this ModTile mt)
+        {
+            // TODO -- how to force trophy drops correctly? they all have zero code in them
+
+            Main.tileFrameImportant[mt.Type] = true;
+            Main.tileLavaDeath[mt.Type] = true;
+            Main.tileSpelunker[mt.Type] = true;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
+            TileObjectData.addTile(mt.Type);
+            TileID.Sets.DisableSmartCursor[mt.Type] = true;
+            TileID.Sets.FramesOnKillWall[mt.Type] = true;
+
+            mt.AddMapEntry(new Color(120, 85, 60), Language.GetText("MapObject.Trophy"));
+            mt.DustType = 7;
         }
     }
 }

@@ -134,7 +134,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedBoC = CIDownedBossSystem.DownedBOC || Condition.DownedBrainOfCthulhu.IsMet();
             bool DownedBrimmy = DownedBossSystem.downedBrimstoneElemental;
             bool DownedCalClone = DownedBossSystem.downedCalamitasClone;
-            bool DownedSCal = DownedBossSystem.downedCalamitas;
+            bool DownedSCal = DownedBossSystem.downedCalamitas || CIDownedBossSystem.DownedLegacyScal;
             bool DownedCrab = DownedBossSystem.downedCrabulon;
             bool DownedCryo = DownedBossSystem.downedCryogen;
             bool DownedDS = DownedBossSystem.downedDesertScourge;

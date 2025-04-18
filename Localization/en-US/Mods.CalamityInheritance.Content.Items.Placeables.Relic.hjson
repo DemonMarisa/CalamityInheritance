@@ -1,0 +1,9 @@
+ScalRelic: {
+	DisplayName: Supreme Calamitas
+	Tooltip: "[c/8B0000:Well...I suppose this is the end...]"
+}
+
+ScalTrophy: {
+	DisplayName: Supreme Calamitas Trophy
+	Tooltip: "[c/8B0000:Do you enjoy going through hell?]"
+}

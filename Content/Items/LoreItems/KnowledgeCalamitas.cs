@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Placeables.Relic;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
@@ -34,6 +35,10 @@ namespace CalamityInheritance.Content.Items.LoreItems
         }
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<ScalTrophy>().
+                AddTile(TileID.Bookcases).
+                Register();
             CreateRecipe().
                 AddIngredient<SupremeCalamitasTrophy>().
                 AddTile(TileID.Bookcases).
