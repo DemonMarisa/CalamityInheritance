@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -156,6 +157,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<TerratomereOld>().
+                AddIngredient<AnarchyBlade>().
+                AddIngredient<FlarefrostBlade>().
+                AddIngredient<EntropicClaymore>().
+                AddIngredient<PhoenixBlade>().
+                AddIngredient<StellarStriker>().
+                AddIngredient<AuricBarold>(15).
+                DisableDecraft().
+                AddTile<DraedonsForgeold>().
+                Register();
+                
+
+            CreateRecipe().
                 AddRecipeGroup("CalamityInheritance:AnyTerratomere").
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
@@ -163,6 +177,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<PhoenixBlade>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<MiracleMatter>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
             
@@ -173,8 +188,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<PhoenixBlade>().
                 AddIngredient<StellarStriker>().
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                DisableDecraft().
                 AddTile<DraedonsForge>().
                 Register();
         }

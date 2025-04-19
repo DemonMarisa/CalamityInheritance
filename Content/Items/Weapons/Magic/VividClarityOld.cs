@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -156,27 +158,42 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe().
+            AddIngredient<ElementalRayold>().
+            AddIngredient<PhantasmalFuryOld>().
+            AddIngredient<ArchAmaryllis>().
+            AddIngredient<AsteroidStaff>().
+            AddIngredient<ShadowboltStaff>().
+            AddIngredient<UltraLiquidator>().
+            AddIngredient<HeliumFlashLegacy>().
+            DisableDecraft().
+            AddIngredient<AuricBarold>(15).
+            AddTile(ModContent.TileType<DraedonsForgeold>()).
+            Register();
+
+            CreateRecipe().
             AddRecipeGroup("CalamityInheritance:AnyElementalRay").
             AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
-            AddIngredient(ModContent.ItemType<ArchAmaryllis>()).
-            AddIngredient(ModContent.ItemType<AsteroidStaff>()).
-            AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-            AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+            AddIngredient<ArchAmaryllis>().
+            AddIngredient<AsteroidStaff>().
+            AddIngredient<ShadowboltStaff>().
+            AddIngredient<UltraLiquidator>().
+            AddDecraftCondition(CalamityConditions.DownedExoMechs).
             AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
-            AddIngredient(ModContent.ItemType<MiracleMatter>()).
+            AddIngredient<MiracleMatter>().
             AddTile(ModContent.TileType<DraedonsForge>()).
             Register();
 
             CreateRecipe().
             AddRecipeGroup("CalamityInheritance:AnyElementalRay").
             AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
-            AddIngredient(ModContent.ItemType<ArchAmaryllis>()).
-            AddIngredient(ModContent.ItemType<AsteroidStaff>()).
-            AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
-            AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+            AddIngredient<ArchAmaryllis>().
+            AddIngredient<AsteroidStaff>().
+            AddIngredient<ShadowboltStaff>().
+            AddIngredient<UltraLiquidator>().
             AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
             AddIngredient<AncientMiracleMatter>().
             AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+            DisableDecraft().
             AddTile(ModContent.TileType<DraedonsForge>()).
             Register();
         }

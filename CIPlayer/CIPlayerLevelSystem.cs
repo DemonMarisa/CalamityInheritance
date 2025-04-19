@@ -12,6 +12,8 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
+using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles.Typeless;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -30,16 +32,22 @@ namespace CalamityInheritance.CIPlayer
         public int summonPool = 0;
         public int magicPool = 0;
         public int roguePool = 0;
+        //bossPool, 不会退出游戏的时候进行存储
+        public int MeleePoolBoss = 0;
+        public int RangedPoolBoss = 0;
+        public int MagicPoolBoss = 0;
+        public int SummonPoolBoss = 0;
+        public int RoguePoolBoss = 0;
         // 基础经验需求
         public int baseExp = 100;
         // 基础经验倍率
         public float expRate = 1.4f;
         // 最大等级
-        public int maxLevel = 15;
+        const short maxLevel = 15;
         // 每次攻击获得的经验值
-        public int exp = 1;
+        public short exp = 1;
         // 经验获取CD
-        public int expCD = 0;
+        public short expCD = 0;
         #endregion
         // 计算每一级的经验需求
         public int CalculateRequiredExp(int currentLevel) => (int)(baseExp + baseExp * MathF.Pow(expRate, currentLevel));
@@ -127,6 +135,10 @@ namespace CalamityInheritance.CIPlayer
                 Main.projectile[p].friendly = false;
         }
         #endregion
+        public void JudgeBossBuff(NPC target, NPC.HitInfo hit)
+        {
+
+        }
         public void GiveBoost()
         {
             var modPlayer = Player.Calamity();
@@ -175,13 +187,44 @@ namespace CalamityInheritance.CIPlayer
                 modPlayer.wearingRogueArmor = true;
             #endregion
         }
-        public void GiveExp(NPC.HitInfo hit, Projectile proj)
+        public void GiveExpMelee(NPC target, bool isTrueMelee, bool isCrit)
         {
-            const int CD = 60;
-            //每个职业的判定
-            bool isTrueMelee = proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
-            bool isMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>() || isTrueMelee;
+            if (expCD > 0 || target.immortal)
+                return;
 
+            const short CD = 60;
+            //暴击经验点+1
+            int points = isCrit ? (exp + 1) : exp;
+            //boss倍率加成。
+            //这里的计算无法检测别的boss血量膨胀的方法，比如fargo的，但……我也不是很想管了
+            //倍率计算: boss单位最大血量/ KS血量。这里的计算会使玩家打史莱姆王的时候获得双倍加成，不过这里是有意为之的。
+            float bossMultipler = 1f + (target.IsRealBossWeNeed(false) ? target.lifeMax / RecoredKSHealth() : 0f);
+            points += isTrueMelee ? points * 6 : points;
+            //boss倍率是最后执行的
+            meleePool += (int)(points * bossMultipler);
+            expCD = CD;
+
+        }
+        public static int RecoredKSHealth()
+        {
+            //大师死亡的KS血量
+            float KSHealth = 5536;
+            //考虑boss倍率增幅。
+            KSHealth *= 1f + CalamityConfig.Instance.BossHealthBoost;
+            //返回。
+            return (int)KSHealth;
+        }
+        public void GiveExp(NPC target, NPC.HitInfo hit, Projectile proj)
+        {
+            if (expCD > 0)
+                return;
+
+            const short CD = 60;
+            //boss倍率加成。
+            //这里的计算无法检测别的boss血量膨胀的方法，比如fargo的，但……我也不是很想管了
+            //倍率计算: boss单位最大血量/ KS血量。这里的计算会使玩家打史莱姆王的时候获得双倍加成，不过这里是有意为之的。
+            float bossMultipler = 1f + (target.IsRealBossWeNeed(false) ? target.lifeMax / RecoredKSHealth() : 0f);
+            //每个职业的判定
             //一般情况下应该是不会有……物品本身能造成远程职业伤害的情况的，但……以防万一？
             bool isRanged = proj.CountsAsClass<RangedDamageClass>();
             //理由同上，下也同
@@ -190,43 +233,28 @@ namespace CalamityInheritance.CIPlayer
             bool isSummon = proj.CountsAsClass<SummonDamageClass>() || isWhip;
             //盗贼这里需要划分射弹是否为潜伏攻击
             bool isRogueStealth = proj.Calamity().stealthStrike;
-            bool isRogue = proj.CountsAsClass<RogueDamageClass>() && !proj.Calamity().stealthStrike || isRogueStealth;
+            bool isRogue = proj.CountsAsClass<RogueDamageClass>() && (!proj.Calamity().stealthStrike || isRogueStealth);
             int points = exp;
+            int i = 0;
             //攻击成功暴击都会让Points +1
             if (hit.Crit)
                 points += 1;
-            if(expCD == 0)
+            points *= (int)bossMultipler;
+            if (isRanged)
+                rangePool += points;
+            if (isMagic)
+                magicPool += points;
+            if (isSummon)
+                //鞭子也是真近战!
+                summonPool += isWhip ? points * 6 : points;
+            if (isRogue)
             {
-                if (isMelee)
-                {
-                    //如果是真近战的话，那么就会获得6倍的经验值
-                    meleePool += isTrueMelee ? points * 6 : points;
-                    expCD = CD;
-                }
-                if (isRanged)
-                {
-                    rangePool += points;
-                    expCD = CD;
-                }
-                if (isMagic)
-                {
-                    magicPool += points;
-                    expCD = CD;
-                }
-                if (isSummon)
-                {
-                    //鞭子也是真近战!
-                    summonPool += isWhip ? points * 6 : points;
-                    expCD = CD;
-                }
-                if (isRogue)
-                {
-                    //潜伏攻击经验更多
-                    roguePool += isRogueStealth ? points * 7 : points;
-                    //普攻会获得预期更少的CD同时更少的经验值
-                    expCD = CD;
-                }
+                //潜伏攻击经验更多
+                roguePool += isRogueStealth ? points * 7 : points;
+                //普攻会获得预期更少的CD同时更少的经验值
+                i = isRogueStealth ? 30 : -30; 
             }
+            expCD = (short)(CD + i);
         }
     }
 }

@@ -510,8 +510,14 @@ Configs: {
 		}
 
 		CalStatInflationBACK: {
-			// Label: Cal Stat Inflation B A C K
-			// Tooltip: ""
+			Label: "[i:Zenith]回归数值膨胀"
+			Tooltip:
+				'''
+				将灾厄月球领主后的数值膨胀带回至现版本, 包括武器数值膨胀与Boss血量膨胀
+				需注意：
+				武器膨胀主要通过查看武器合成材料进行。如这个武器由亵渎晶石合成，则提供亵渎后梯度的膨胀
+				因此，这个数值膨胀是全局性的，他会影响其他灾厄附属的数值。
+				'''
 		}
 	}
 }

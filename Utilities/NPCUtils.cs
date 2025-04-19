@@ -1,6 +1,9 @@
 ﻿using CalamityInheritance.NPCs;
 using CalamityMod;
+using CalamityMod.Enums;
 using CalamityMod.Items.Accessories;
+using CalamityMod.NPCs.ExoMechs.Ares;
+using CalamityMod.NPCs.SlimeGod;
 using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using System;
@@ -37,6 +40,49 @@ namespace CalamityInheritance.Utilities
                 return npc.active && npc.Distance(player.Center) <= range;
             }
             return false;
+        }
+        /// <summary>
+        /// 查询当前单位是否真的是一个Boss
+        /// 多了一个对boss仆从（或者说属于boss但是没有被算作boss的单位，如阿瑞斯的四个炮手）的特判
+        /// </summary>
+        /// <param name="target">NPC</param>
+        /// <param name="ignoreMinions">是否无视boss仆从，默认为真</param>
+        /// <returns>真：这个单位是个boss</returns>
+        public static bool IsRealBossWeNeed(this NPC target, bool ignoreMinions = true)
+        {
+            bool isBoss = false;
+            //如果target不存在，不要浪费任何时间了
+            if (target is null || !target.active)
+                return isBoss;
+            //排除火星飞碟
+            if (target.boss && target.type != NPCID.MartianSaucerCore)
+                isBoss = true;
+            //世吞的特判
+            if (target.type == NPCID.EaterofWorldsBody || target.type == NPCID.EaterofWorldsHead || target.type == NPCID.EaterofWorldsTail)
+                isBoss = true;
+            //史莱姆神守卫
+            if (target.type == ModContent.NPCType<EbonianPaladin>() || target.type == ModContent.NPCType<SplitEbonianPaladin>() || target.type == ModContent.NPCType<CrimulanPaladin>() || target.type == ModContent.NPCType<SplitCrimulanPaladin>())
+                isBoss = true;
+            //最后的判定：如果我们把部分boss仆从，本身不是boss但也是boss一部分也算上的话，那就算上去
+            if (!ignoreMinions)
+            {
+                //临时建立一个数组
+                int[] array =
+                [
+                    ModContent.NPCType<AresTeslaCannon>(),
+                    ModContent.NPCType<AresGaussNuke>(),
+                    ModContent.NPCType<AresLaserCannon>(),
+                    ModContent.NPCType<AresPlasmaFlamethrower>()
+                ];
+                //遍历数组
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (target.type == array[i])
+                        isBoss = true;
+                }
+            }
+            return isBoss;
+            
         }
         /// <summary>
         /// 使原始单位能够追上你需要的目标单位

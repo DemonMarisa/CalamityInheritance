@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Placeables.Ores;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Tiles.Bars;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
@@ -44,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<AuricTeslaBar>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<AuricBarLegacyTile>());
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }

@@ -16,6 +16,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -156,6 +157,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<CleansingBlazeLegacy>().
                 AddIngredient<HalleysInfernoLegacy>().
                 AddIngredient<BloodBoilerLegacy>().
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<ElementalEruptionLegacy>().
+                AddIngredient<CleansingBlazeLegacy>().
+                AddIngredient<HalleysInfernoLegacy>().
+                AddIngredient<BloodBoilerLegacy>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
@@ -166,6 +178,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<HalleysInfernoLegacy>().
                 AddIngredient<BloodBoilerLegacy>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();

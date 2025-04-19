@@ -17,6 +17,7 @@ using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
 using System.Dynamic;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -102,6 +103,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<StarofDestruction>().
                 AddIngredient<TotalityBreakers>().
                 AddIngredient<BallisticPoisonBomb>().
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+            CreateRecipe().
+                AddIngredient<SealedSingularity>().
+                AddIngredient<StarofDestruction>().
+                AddIngredient<TotalityBreakers>().
+                AddIngredient<BallisticPoisonBomb>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
@@ -112,6 +123,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<TotalityBreakers>().
                 AddIngredient<BallisticPoisonBomb>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();

@@ -16,6 +16,7 @@ using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -30,18 +31,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.ResearchUnlockCount = 1;
             ExoArrows =
             [
-            ModContent.ProjectileType<ExoArrowTeal>(),
-            ModContent.ProjectileType<OrangeExoArrow>(),
-            ModContent.ProjectileType<ExoArrowGreen>(),
-            ModContent.ProjectileType<ExoArrowBlue>()
+                ModContent.ProjectileType<ExoArrowTeal>(),
+                ModContent.ProjectileType<OrangeExoArrow>(),
+                ModContent.ProjectileType<ExoArrowGreen>(),
+                ModContent.ProjectileType<ExoArrowBlue>()
             ];
             ExoArrowsExoLore =
             [
-            ModContent.ProjectileType<ExoArrowTealExoLore>(),
-            ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
-            ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
-            ModContent.ProjectileType<ExoArrowGreenExoLore>(),
-            ModContent.ProjectileType<ExoArrowBlueExoLore>()
+                ModContent.ProjectileType<ExoArrowTealExoLore>(),
+                ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
+                ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
+                ModContent.ProjectileType<ExoArrowGreenExoLore>(),
+                ModContent.ProjectileType<ExoArrowBlueExoLore>()
             ];
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -67,16 +68,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.Calamity().canFirePointBlankShots = true;
         }
-        /*
-        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-        {
-            //刚出的版本
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
-                damage.Base = 608;
-            base.ModifyWeaponDamage(player, ref damage);
-        }
-        */
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
@@ -178,8 +169,23 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
+                AddIngredient<PhangasmOS>().
+                AddIngredient<TheBallista>().
+                AddIngredient<AuricBarold>(15).
+                DisableDecraft().
+                AddTile<DraedonsForgeold>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<PlanetaryAnnihilation>().
+                AddIngredient<TelluricGlare>().
+                AddIngredient<ClockworkBow>().
+                AddIngredient<Alluvion>().
+                AddIngredient<AstrealDefeat>().
+                AddIngredient<FlarewingBow>().
                 AddIngredient<Phangasm>().
                 AddIngredient<TheBallista>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
                 AddTile<CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge>().
                 Register();
@@ -194,6 +200,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Phangasm>().
                 AddIngredient<TheBallista>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge>().
                 Register();

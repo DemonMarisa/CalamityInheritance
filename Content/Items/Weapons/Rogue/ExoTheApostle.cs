@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -109,25 +110,39 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<DragonSpear>().
+                AddIngredient<StormfrontRazor>().
+                AddIngredient<ShardofAntumbra>(500).
+                AddIngredient<PhantasmalRuinold>().
+                AddIngredient<EclipseSpear>().
+                AddIngredient<TarragonThrowingDart>(500).
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+
+            CreateRecipe().
                 AddIngredient<Wrathwing>().
-                AddIngredient<RealityRupture>().
+                AddIngredient<StormfrontRazor>().
                 AddIngredient<ShardofAntumbra>(500).
                 AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
                 AddIngredient<EclipsesFall>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<MiracleMatter>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
             
             CreateRecipe().
                 AddIngredient<Wrathwing>().
-                AddIngredient<RealityRupture>().
+                AddIngredient<StormfrontRazor>().
                 AddIngredient<ShardofAntumbra>(500).
                 AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
                 AddIngredient<EclipsesFall>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                DisableDecraft().
                 AddTile<DraedonsForge>().
                 Register();
         }

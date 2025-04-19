@@ -16,6 +16,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using Terraria.Localization;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -80,7 +81,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<Sirius>().
+                AddIngredient<AncientIceChunk>().
+                AddIngredient<ElementalAxe>().
+                AddIngredient<SanctifiedSpark>().
+                AddIngredient<EtherealSubjugator>().
+                AddIngredient<Cosmilamp>().
+                AddIngredient<CalamarisLament>().
                 AddIngredient<MiracleMatter>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
 
@@ -93,6 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();

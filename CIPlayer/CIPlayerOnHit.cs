@@ -35,18 +35,30 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.AddBuff(ModContent.BuffType<DefenderBuff>(), 60);
             }
+            //熟练度
+            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
+            bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
+            if (target.active && target.lifeMax > 5 && !target.friendly && target.velocity.Length() != 0f)
+            if (isMelee)
+                GiveExpMelee(target, isTrueMelee, hit.Crit);
         }
         #endregion
 
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            CalamityPlayer modPlayer = Player.Calamity();
-            CalamityGlobalNPC cgn = target.Calamity();
-            Player player = Main.player[projectile.owner];
-            var usPlayer = player.CIMod();
-            var heldingItem = player.ActiveItem();
             if (Player.whoAmI != Main.myPlayer)
                 return;
+            #region 熟练度
+            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
+            bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
+            if (target.active && target.lifeMax > 5 && !target.friendly && target.velocity.Length() != 0f)
+            {
+                if (isMelee)
+                    GiveExpMelee(target, isTrueMelee, hit.Crit);
+                else
+                    GiveExp(target, hit, projectile);
+            }
+            #endregion
             //近战射弹
             MeleeOnHit(projectile, target, hit, damageDone);
             //远程射弹

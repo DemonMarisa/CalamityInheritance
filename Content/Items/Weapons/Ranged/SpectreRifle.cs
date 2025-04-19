@@ -39,8 +39,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAmmo = Main.zenithWorld ? AmmoID.None: AmmoID.Bullet;
             Item.Calamity().canFirePointBlankShots = true;
         }
-
-        // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 22;
         public override bool CanUseItem(Player player)
         {
@@ -49,14 +47,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Item.mana = 15;
                 Item.damage = 350;
                 Item.DamageType = DamageClass.Magic;
+                Item.useAmmo = AmmoID.None;
+                return true;
             }
             else
             {
                 Item.mana = 0;
                 Item.damage = 170;
                 Item.DamageType = DamageClass.Ranged;
+                Item.useAmmo = AmmoID.Bullet;
+                return true;
             }
-            return default;
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

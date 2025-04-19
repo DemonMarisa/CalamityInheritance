@@ -17,6 +17,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using Terraria.Localization;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -129,7 +130,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<MoltenAmputator>().
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+            CreateRecipe().
+                AddIngredient<ElementalDisk>().
+                AddIngredient<MoltenAmputator>().
+                AddIngredient<SubductionSlicer>().
+                AddIngredient<EnchantedAxe>().
                 AddIngredient<MiracleMatter>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
 
@@ -138,6 +149,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<MoltenAmputator>().
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
