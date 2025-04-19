@@ -262,7 +262,7 @@ namespace CalamityInheritance.System
         public const float PostProfanedWeaponsBoost = 1.6f; // 亵渎后
         public const float PostPolterghastWeaponsBoost = 2f; // 幽花后
         public const float PostOldDukeWeaponsBoost = 2.4f; // 幽花后
-        public const float PostDOGWeaponsBoost = 3.3f; // 神后
+        public const float PostDOGWeaponsBoost = 4f; // 神后
         public const float PostYharonWeaponsBoost = 5f; // 龙后
         public const float PostExoAndScalWeaponsBoost = 7f; // 巨械終灾后
         public const float PostShadowspecWeaponsBoost = 10f; // 巨械終灾后
@@ -316,26 +316,6 @@ namespace CalamityInheritance.System
                 item.useTime = 10;
             }
 
-            if (item.type == ModContent.ItemType<StreamGouge>())
-                item.damage = 3600;
-
-            if (item.type == ModContent.ItemType<Excelsus>())
-                item.damage = 1650;
-
-            if (item.type == ModContent.ItemType<Phaseslayer>())
-                item.damage *= (int)(item.damage * 1.4f);
-
-            if (item.type == ModContent.ItemType<GalaxySmasher>())
-                item.damage *= (int)(item.damage * 1.2f);
-
-            if (item.type == ModContent.ItemType<FourSeasonsGalaxia>())
-                item.damage *= (int)(item.damage * 1.4f);
-
-            if (item.type == ModContent.ItemType<TheObliterator>())
-                item.damage *= (int)(item.damage * 1.4f);
-
-            if (item.type == ModContent.ItemType<ScourgeoftheCosmos>())
-                item.damage *= (int)(item.damage * 1.4f);
             #endregion
         }
         #endregion

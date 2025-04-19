@@ -37,6 +37,7 @@ using CalamityMod.NPCs.ExoMechs.Thanatos;
 using CalamityMod.NPCs.ExoMechs;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.PrimordialWyrm;
+using CalamityMod.Projectiles.DraedonsArsenal;
 
 namespace CalamityInheritance
 {
@@ -87,7 +88,9 @@ namespace CalamityInheritance
                     //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表
                     ProjectileType<ProfanedNukeDust>(),
                     //小鸡大炮爆炸，太卡了
-                    ProjectileType<ChickenExplosion>()
+                    ProjectileType<ChickenExplosion>(),
+                    //脉冲步枪光球，不然无限分裂了
+                    ProjectileType<PulseRifleShot>()
             };
             #endregion
             #region 用于金源的buff免疫
