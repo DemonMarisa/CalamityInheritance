@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Tiles.Bars;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,9 +15,7 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetDefaults()
         {
-            Item.width = 30;
-            Item.height = 24;
-            Item.maxStack = 9999;
+            Item.DefaultToPlaceableTile(ModContent.TileType<CryoBarTile>());
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
         }

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -130,6 +131,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<UniversalGenesis>().
                 AddIngredient<ElementalBlaster>().
                 AddIngredient<PearlGod>().
+                DisableDecraft().
+                AddIngredient<AuricBarold>(15).
+                AddTile<DraedonsForgeold>().
+                Register();
+                
+            CreateRecipe().
+                AddIngredient<Onyxia>().
+                AddIngredient<UniversalGenesis>().
+                AddIngredient<ElementalBlaster>().
+                AddIngredient<PearlGod>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
@@ -140,6 +152,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<ElementalBlaster>().
                 AddIngredient<PearlGod>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();

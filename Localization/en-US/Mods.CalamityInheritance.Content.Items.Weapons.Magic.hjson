@@ -271,3 +271,12 @@ DestroyerLegendary: {
 SubsumingVortexChange: ""
 VividChange: ""
 VividClarityBeamCal.DisplayName: Vivid Clarity Beam Cal
+
+YharimsCrystalLegendary: {
+	DisplayName: Yharims Crystal Legendary
+	Tooltip: ""
+	ExoTint: ""
+	NoExoTint: ""
+	ScalTint: ""
+	NoScalTint: ""
+}

@@ -71,6 +71,7 @@ using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.
 using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Projectiles.Typeless;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.Content.Items
 {

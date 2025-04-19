@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using FullSerializer;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -170,71 +171,49 @@ namespace CalamityInheritance.Texture
         }
         public static void UnloadTexture()
         {
-            RemovedGlowMask = null;
-
-            WulfrumAxeNew = null;
-            WulfrumHammerNew = null;
-            WulfrumPickaxeNew = null;
-
-            WulfrumAxeNew = null;
-            WulfrumHammerNew = null;
-            WulfrumPickaxeNew = null;
-
-            
-
-            RampartofDeitiesNew = null;
-            RampartofDeitiesOld = null;
-
-            EtherealTalismanNew = null;
-            EtherealTalismanOld = null;
-
-                        //飞刀，排版同上
-            
-
-            FateGirlLegacy = null;
-            FateGirlLegacyBuff = null;
-            FateGirlOriginal = null;
-            FateGirlOriginalBuff = null;
-            
-            //材料
-            GS = null;
-            GSAlter = null;
-
-            RedSoul = null;
-            RedSoulAlter = null;
-            //增益
-            HealthOrange = null;
-            HealthOrangeAlter = null;
-
-            HealthMira = null;
-            HealthMiraAlter = null;
-
-            HealthBerry = null;
-            HealthBerryAlter = null;
-            
-            HealthDragon = null;
-            HealthDragonAlter =null;
-
-            ManaShard =null;
-            ManaShardAlter = null;
-
-            ManaCore = null;
-            ManaCoreAlter = null;
-            
-            ManaHeart = null;
-            ManaHeartAlter = null;
-
-            AngelTreadsCalamity = null;
-            AngelTreadsAlter = null;
-
-            LunarBootsCalamity = null;
-            LunarBootsAlter = null;
-            
-            MOABCalamity = null;
-            MOABAlter = null;
-
-            ElemGloveAlt = null;
-            ElemGloveCal = null;
+            Asset<Texture2D>[] train =
+            [
+                RemovedGlowMask,
+                WulfrumAxeNew,
+                WulfrumHammerNew,
+                WulfrumPickaxeNew,
+                WulfrumAxeNew,
+                WulfrumHammerNew,
+                WulfrumPickaxeNew,
+                RampartofDeitiesNew,
+                RampartofDeitiesOld,
+                EtherealTalismanNew,
+                EtherealTalismanOld,
+                FateGirlLegacy,
+                FateGirlLegacyBuff,
+                FateGirlOriginal,
+                FateGirlOriginalBuff,
+                GS,
+                GSAlter,
+                RedSoul,
+                RedSoulAlter,
+                HealthOrange,
+                HealthOrangeAlter,
+                HealthMira,
+                HealthMiraAlter,
+                HealthDragon,
+                HealthDragonAlter,
+                ManaShard,
+                ManaShardAlter,
+                ManaCore,
+                ManaCoreAlter,
+                ManaHeartAlter,
+                AngelTreadsCalamity,
+                AngelTreadsAlter,
+                LunarBootsCalamity,
+                LunarBootsAlter,
+                MOABCalamity,
+                MOABAlter,
+                ElemGloveAlt,
+                ElemGloveCal,
+            ];
+            for(int i = 0; i < train.Length; i++)
+                train[i] = null;
         }
     }
 }

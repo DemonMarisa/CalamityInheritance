@@ -14,6 +14,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -62,21 +63,31 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<GalileoGladius>());
-            recipe.AddRecipeGroup("CalamityInheritance:AnyCosmicShiv");
-            recipe.AddIngredient(ModContent.ItemType<Lucrecia>());
-            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>());
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient<GalileoGladius>()
+                .AddRecipeGroup("CalamityInheritance:AnyCosmicShiv")
+                .AddIngredient<Lucrecia>()
+                .AddIngredient<AuricBarold>(15)
+                .DisableDecraft()
+                .AddTile<DraedonsForgeold>()
+                .Register();
+            CreateRecipe()
+                .AddIngredient<GalileoGladius>()
+                .AddRecipeGroup("CalamityInheritance:AnyCosmicShiv")
+                .AddIngredient<Lucrecia>()
+                .AddIngredient<MiracleMatter>()
+                .AddDecraftCondition(CalamityConditions.DownedExoMechs)
+                .AddTile<DraedonsForge>()
+                .Register();
 
             CreateRecipe().
-                AddIngredient(ModContent.ItemType<GalileoGladius>()).
+                AddIngredient<GalileoGladius>().
                 AddRecipeGroup("CalamityInheritance:AnyCosmicShiv").
-                AddIngredient(ModContent.ItemType<Lucrecia>()).
-                AddIngredient(ModContent.ItemType<AncientMiracleMatter>()).
+                AddIngredient<Lucrecia>().
+                AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
-                AddTile(ModContent.TileType<DraedonsForge>()).
+                DisableDecraft().
+                AddTile<DraedonsForge>().
                 Register();
         }
     }

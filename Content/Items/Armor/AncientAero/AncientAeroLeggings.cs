@@ -30,6 +30,12 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
         }
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<AerialiteBar>(5).
+                AddIngredient(ItemID.FallenStar, 5).
+                AddIngredient(ItemID.Feather, 5).
+                AddTile(TileID.SkyMill).
+                Register();
         }
     }
 }

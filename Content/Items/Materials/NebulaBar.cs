@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Tiles.Bars;
+using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,9 +16,7 @@ namespace CalamityInheritance.Content.Items.Materials
 			
 		public override void SetDefaults()
 		{
-			Item.width = 15;
-			Item.height = 12;
-			Item.maxStack = 9999;
+			Item.DefaultToPlaceableTile(ModContent.TileType<NebulaBarTile>());
 			Item.value = CIShopValue.RarityPriceCyan;
 			Item.rare = ItemRarityID.Cyan;
 		}

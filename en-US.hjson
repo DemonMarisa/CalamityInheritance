@@ -43,6 +43,9 @@ Mods: {
 			Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
 			KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
 			LegacyArenaTile.MapEntry: Legacy Arena Tile
+			CryoBarTile: Mods.CalamityInheritance.Tiles.CryoBarTile
+			NebulaBarTile: Mods.CalamityInheritance.Tiles.NebulaBarTile
+			AuricBarLegacyTile: Mods.CalamityInheritance.Tiles.AuricBarLegacyTile
 		}
 
 		Projectiles: {
@@ -64,8 +67,18 @@ Mods: {
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 		}
 
-		Content/Projectiles/Summon.MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
-		Content.Projectile.Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+		Content/Projectiles/Summon: {
+			MountedScannerLaserLegacy.DisplayName: Mounted Scanner Laser Legacy
+			YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
+		}
+
+		Content: {
+			Projectile: {
+				Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
+				Magic.YharimsExtraPrism.DisplayName: Yharims Extra Prism
+			}
+		}
+
 		DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball

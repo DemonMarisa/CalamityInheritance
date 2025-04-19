@@ -5,11 +5,13 @@ using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Dusts;
+using CalamityMod.Sounds;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -178,6 +180,24 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
         public override bool PreKill()
         {
             return false;
+        }
+        public override void OnKill()
+        {
+            string key = "Mods.CalamityMod.Status.Progression.AbyssDropsText";
+            Color messageColor = Color.RoyalBlue;
+
+            if (!DownedBossSystem.downedLeviathan)
+            {
+                if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
+                    SoundEngine.PlaySound(CommonCalamitySounds.WyrmScreamSound, Main.player[Main.myPlayer].Center);
+
+                CalamityUtils.DisplayLocalizedText(key, messageColor);
+            }
+
+            //普灾眼被干掉的时候会直接标记利维坦被击倒了，从而用于开启深渊材料
+            DownedBossSystem.downedLeviathan = true;
+            if (Main.netMode == NetmodeID.Server)
+                NetMessage.SendData(MessageID.WorldData);
         }
 
         public override void HitEffect(NPC.HitInfo hit)

@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 knifeSpawnYPos *= mouseDistance;
                 float x4 = realPlayerPos.X;
                 float y4 = realPlayerPos.Y;
-                if (player.Calamity().StealthStrikeAvailable())
+                if (!player.Calamity().StealthStrikeAvailable())
                     Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
                 else
                     Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, ModContent.ProjectileType<RogueTypeKnivesEmpyreanProjClone>(), damage, knockback, player.whoAmI, 0f, 0f);

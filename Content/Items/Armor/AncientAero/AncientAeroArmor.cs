@@ -1,3 +1,4 @@
+using CalamityMod.Items.Materials;
 using ReLogic.Content;
 using Steamworks;
 using Terraria;
@@ -27,6 +28,15 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
         {
             player.moveSpeed += 0.1f;
             player.jumpSpeedBoost += 0.5f;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<AerialiteBar>(15).
+                AddIngredient(ItemID.FallenStar, 5).
+                AddIngredient(ItemID.Feather, 5).
+                AddTile(TileID.SkyMill).
+                Register();
         }
     }
 }

@@ -435,8 +435,8 @@ DukeLegendary: {
 		'''
 	DisplayName: 龙卷涡漩海皇爵剑[Legendary]
 	LegendaryScaling: "[c/35FFFF:武器强化]:{0}%"
-	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并加强水刃龙卷的追踪性能"
-	TierTwo: "[c/35FFFF:强化]:水刃龙卷在击中敌怪时将会额外召唤新的水刃龙卷"
+	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并重写水刃龙卷的追踪方式"
+	TierTwo: "[c/35FFFF:强化]:发射水刃龙卷时将会呼叫水刃龙卷支援"
 	TierThree: "[c/35FFFF:强化]:击中敌人时会强化综合近战属性"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwoTint: "[c/818589:击杀一只猎魂鲨]"
@@ -486,3 +486,9 @@ ACTExcelsus: {
 		It's been a long day...
 		'''
 }
+
+ZenithBuff:
+	'''
+	数值膨胀选项强化:
+	获得150点护甲穿透
+	'''

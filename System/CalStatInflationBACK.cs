@@ -1,9 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
@@ -11,28 +8,24 @@ using CalamityMod.Items.Materials;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Weapons.Magic;
-using Terraria.GameContent.ItemDropRules;
 using CalamityMod.NPCs.Providence;
 using CalamityMod.NPCs.OldDuke;
-using CalamityMod.NPCs.CalamityAIs.CalamityBossAIs;
 using CalamityMod.NPCs.Bumblebirb;
-using CalamityMod.NPCs.ExoMechs;
 using CalamityMod.Items.Weapons.Ranged;
-using System.Collections;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
-using CalamityMod.Projectiles.Pets;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.NPCs.ExoMechs.Ares;
 using CalamityMod.NPCs.SupremeCalamitas;
-using System.Security.Policy;
-using static System.Net.Mime.MediaTypeNames;
 using CalamityInheritance.System.Configs;
-using CalamityMod.Items.Weapons.DraedonsArsenal;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
+using Terraria.Localization;
+using Microsoft.Build.Utilities;
 
 namespace CalamityInheritance.System
 {
@@ -41,6 +34,7 @@ namespace CalamityInheritance.System
         // 存储武器类型
         public static List<int> PostMLWeapons = new List<int>();
         public static List<int> PostProfanedWeapons = new List<int>();
+        public static List<int> PostSentinelsWeapon = new List<int>();
         public static List<int> PostPolterghastWeapons = new List<int>();
         public static List<int> PostOldDukeWeapons = new List<int>();
         public static List<int> PostDOGWeapons = new List<int>();
@@ -52,6 +46,7 @@ namespace CalamityInheritance.System
         {
             PostMLWeapons = [];
             PostProfanedWeapons = [];
+            PostSentinelsWeapon = [];
             PostPolterghastWeapons = [];
             PostOldDukeWeapons = [];
             PostDOGWeapons = [];
@@ -64,6 +59,7 @@ namespace CalamityInheritance.System
         {
             PostMLWeapons = null;
             PostProfanedWeapons = null;
+            PostSentinelsWeapon = null;
             PostPolterghastWeapons = null;
             PostOldDukeWeapons = null;
             PostDOGWeapons = null;
@@ -85,6 +81,9 @@ namespace CalamityInheritance.System
                     // 亵渎后武器
                     if (PostProvidenceWeapon(recipe, item))
                         PostProfanedWeapons.Add(item.type);
+                    //部分武器居然只有使用三使徒材料做的，有点弱智了
+                    if (PostSentinelsWeapons(recipe, item))
+                        PostSentinelsWeapon.Add(item.type);
                     // 幽花后武器
                     if (PostPolterghastWeapon(recipe, item))
                         PostPolterghastWeapons.Add(item.type);
@@ -123,7 +122,8 @@ namespace CalamityInheritance.System
             #endregion
             #region 龙后
             PostyharonWeapons.Add(ModContent.ItemType<Murasama>());
-            PostyharonWeapons.Add(ItemID.Zenith);
+            //把天顶干掉了，天顶会有个单独的增幅
+            PostyharonWeapons.Remove(ItemID.Zenith);
             #endregion
             #region 終灾表单添加
             PostExoAndScalWeapons.Add(ModContent.ItemType<GruesomeEminence>());
@@ -136,6 +136,8 @@ namespace CalamityInheritance.System
             PostShadowspecWeapons.Add(ModContent.ItemType<HalibutCannon>());
             #endregion
         }
+
+        
         #region 月后初期的武器
         public static bool PostMLWeapon(Recipe recipe, Item item)
         {
@@ -144,7 +146,6 @@ namespace CalamityInheritance.System
                     && (recipe.HasIngredient(ModContent.ItemType<GalacticaSingularity>()) || recipe.HasIngredient(ItemID.LunarBar))
                     && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
-                    && !recipe.HasIngredient(ModContent.ItemType<TwistingNether>())
                     && !recipe.HasIngredient(ModContent.ItemType<UelibloomBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
                     && !recipe.HasIngredient(ModContent.ItemType<DivineGeode>());
@@ -158,10 +159,25 @@ namespace CalamityInheritance.System
                     && (recipe.HasIngredient(ModContent.ItemType<DivineGeode>()) || recipe.HasIngredient(ModContent.ItemType<UelibloomBar>()))
                     && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
-                    && !recipe.HasIngredient(ModContent.ItemType<TwistingNether>())
                     && !recipe.HasIngredient(ModContent.ItemType<AuricBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>())
                     && !recipe.HasIngredient(ModContent.ItemType<RuinousSoul>());
+        }
+        #endregion
+        #region 特判：
+        public static bool PostSentinelsWeapons(Recipe recipe, Item item)
+        {
+            //三个bool。指定only 三使徒材料，其他的全部被排除
+            bool isSentinelsWeaponOnly = item.damage > 0 && (recipe.HasIngredient(ModContent.ItemType<TwistingNether>()) || recipe.HasIngredient(ModContent.ItemType<ArmoredShell>()) || recipe.HasIngredient(ModContent.ItemType<DarkPlasma>()))
+                                                         && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                                                         && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<UelibloomBar>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<DivineGeode>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>());
+            return isSentinelsWeaponOnly;
+            
         }
         #endregion
         #region 幽花后的武器
@@ -259,7 +275,7 @@ namespace CalamityInheritance.System
     {
         #region 武器伤害增幅
         public const float PostMLWeaponsBoost = 1.3f; // 月后
-        public const float PostProfanedWeaponsBoost = 1.6f; // 亵渎后
+        public const float PostProfanedWeaponsBoost = 1.6f; // 亵渎后||使徒
         public const float PostPolterghastWeaponsBoost = 2f; // 幽花后
         public const float PostOldDukeWeaponsBoost = 2.4f; // 幽花后
         public const float PostDOGWeaponsBoost = 4f; // 神后
@@ -274,7 +290,7 @@ namespace CalamityInheritance.System
             {
                 if (CalStatInflationBACK.PostMLWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostMLWeaponsBoost);
-                if (CalStatInflationBACK.PostProfanedWeapons.Contains(item.type))
+                if (CalStatInflationBACK.PostProfanedWeapons.Contains(item.type) || CalStatInflationBACK.PostSentinelsWeapon.Contains(item.type))
                     item.damage = (int)(item.damage * PostProfanedWeaponsBoost);
                 if (CalStatInflationBACK.PostPolterghastWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostPolterghastWeaponsBoost);
@@ -338,6 +354,32 @@ namespace CalamityInheritance.System
                 item.damage = 14000;
             if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
                 item.damage = (int)(item.damage * 2.4f);
+            if (item.type == ItemID.Zenith)
+            {
+                //面板210 -> 2145
+                item.damage = 2145;
+                item.rare = ModContent.RarityType<PureRed>();
+                item.value = CIShopValue.RarityPricePureRed;
+                item.ArmorPenetration = 150;
+            }
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+                return;
+            if (item.type == ItemID.Zenith)
+            {
+                string text = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.ZenithBuff");
+                tooltips.Add(new TooltipLine(Mod, "buff", text));
+            }
+        }
+        public override void ModifyWeaponCrit(Item item, Player player, ref float crit)
+        {
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+                return;
+            //初始满暴
+            if (item.type == ItemID.Zenith)
+                crit += 96;
         }
         #endregion
         #region 魔影

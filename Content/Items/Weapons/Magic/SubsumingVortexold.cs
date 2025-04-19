@@ -86,21 +86,32 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<AuguroftheElements>())
-            .AddIngredient(ModContent.ItemType<EventHorizon>())
-            .AddIngredient(ModContent.ItemType<TearsofHeaven>())
-            .AddIngredient(ModContent.ItemType<MiracleMatter>())
-            .AddTile(ModContent.TileType<DraedonsForge>()).
-            Register();
+                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<EventHorizon>()
+                .AddIngredient<TearsofHeaven>()
+                .AddIngredient<AuricBarold>(15)
+                .DisableDecraft()
+                .AddTile<DraedonsForge>().
+                Register();
+                
+            CreateRecipe()
+                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<EventHorizon>()
+                .AddIngredient<TearsofHeaven>()
+                .AddIngredient<MiracleMatter>()
+                .AddDecraftCondition(CalamityConditions.DownedExoMechs)
+                .AddTile<DraedonsForge>().
+                Register();
 
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<AuguroftheElements>())
-            .AddIngredient(ModContent.ItemType<EventHorizon>())
-            .AddIngredient(ModContent.ItemType<TearsofHeaven>())
-            .AddIngredient<AncientMiracleMatter>()
-            .AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter)
-            .AddTile(ModContent.TileType<DraedonsForge>()).
-            Register();
+                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<EventHorizon>()
+                .AddIngredient<TearsofHeaven>()
+                .AddIngredient<AncientMiracleMatter>()
+                .AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter)
+                .DisableDecraft()
+                .AddTile<DraedonsForge>().
+                Register();
         }
     }
 }

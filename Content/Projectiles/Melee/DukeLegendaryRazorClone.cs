@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         #region 攻击顺序枚举
         const float IsShooted = 0f;
         const float IsHoming = 1f;
+        const float IsFading = 2f;
         #endregion
         #region 数组别名
         const short AttackType = 0;
@@ -38,19 +39,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.timeLeft = 300;
             Projectile.extraUpdates = 2;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = -1;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = -1;
         }
         public override bool? CanDamage()
         {
-            return Projectile.ai[AttackType] == IsHoming;
+            return Projectile.ai[AttackType] == IsHoming || Projectile.ai[AttackType] == IsFading;
         }
         public override void AI()
         {
             Projectile.localAI[1] += 1f;
-            if (Projectile.localAI[1] > 4f && Main.rand.NextBool(4))
+            if (Projectile.localAI[1] > 4f && Main.rand.NextBool(4) && Projectile.ai[AttackType] != IsShooted)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -60,7 +61,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
      
             }
-            Projectile.alpha -= 100;
+            if (Projectile.ai[AttackType] != IsFading)
+                Projectile.alpha -= 100;
             if (Projectile.alpha < 5)
             {
                 Projectile.alpha = 5;
@@ -73,8 +75,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (target == null)
             {
                 Projectile.netUpdate = true;
-                return;
-            }
+                Projectile.ai[AttackType] = IsFading;
+             }
             switch (Projectile.ai[AttackType])
             {
                 //首先我们会让其飞行一段时间
@@ -84,7 +86,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 case IsHoming:
                     DoHoming(target);
                     break;
+                case IsFading:
+                    DoFading();
+                    break;
             }
+        }
+
+        private void DoFading()
+        {
+            Projectile.velocity *= 0.91f;
+            if (Projectile.alpha < 255)
+                Projectile.alpha += 5;
+            else Projectile.Kill();
         }
 
         private void DoHoming(NPC target)
@@ -92,10 +105,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //发起追踪, 有一个逐渐加速的过程
             if (Projectile.ai[AttackTimer] < 25f)
                 Projectile.ai[AttackTimer] += 1f;
-            CIFunction.HomingNPCBetter(Projectile, target, 2400f, 10f + Projectile.ai[AttackTimer], 20f, 2, 14f);
-            //只有发起追踪的才会有轨迹
-            if(Main.rand.NextBool(4))
-                TrailLine();
+            CIFunction.HomingNPCBetter(Projectile, target, 2400f, 10f + Projectile.ai[AttackTimer], 20f, 1, 14f);
+            
         }
 
         public void DoShooted()
@@ -103,7 +114,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //使其飞行一段时间同时一直减速
             Projectile.ai[AttackTimer] += 1f;
             if (Projectile.ai[AttackTimer] > 30f)
-            Projectile.velocity *= 0.90f;
+            {
+                Projectile.velocity *= 0.90f;
+                
+            }
+            else
+            {
+                //只有没发起减速的射弹才被允许拥有轨迹
+                if(Main.rand.NextBool(4))
+                    TrailLine();
+            }
             if (Projectile.ai[AttackTimer] > 60f) 
             {
                 Projectile.ai[AttackType] = IsHoming;
@@ -125,9 +145,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnKill(int timeLeft)
         {
-            for (int k = 0; k < 10; k++)
+            if (Projectile.alpha < 255)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 100, new Color(53, Main.DiscoG, 255));
+                for (int k = 0; k < 10; k++)
+                    Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare_Blue, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 100, new Color(53, Main.DiscoG, 255));
             }
         }
 
@@ -140,6 +161,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (Projectile.ai[AttackType] == IsHoming)
+            {
+                Projectile.netUpdate = true;
+                Projectile.ai[AttackType] = IsFading;
+            }
         }
     }
 }

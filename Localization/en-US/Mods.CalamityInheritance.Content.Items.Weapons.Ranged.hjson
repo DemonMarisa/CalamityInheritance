@@ -148,11 +148,14 @@ TyrannysEndOld: {
 	DisplayName: Tyranny's End Legacy
 	Tooltip:
 		'''
+		[FUCK]
 		Pierce the heart of even the most heavily-armored foe
 		Fires a .70 caliber sniper round that bypasses enemy defense and DR
 		Rounds mark enemies for death and summon a swarm of additional bullets on crits
 		'One shot'
 		'''
+	Fuck: ""
+	NotFuck: ""
 }
 
 ChargedDartRifle: {

@@ -56,7 +56,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="projectile">射弹</param>
         /// <param name="fCounter">计时器，即间隔多少时间播放下一张帧图</param>
         /// <param name="fMax">这个帧图最大的帧数</param>
-        public static int FramesChanger(Projectile projectile, int fCounter, int fMax) 
+        public static int FramesChanger(this Projectile projectile, int fCounter, int fMax) 
         {
             projectile.frameCounter++;
             if (projectile.frameCounter > fCounter)

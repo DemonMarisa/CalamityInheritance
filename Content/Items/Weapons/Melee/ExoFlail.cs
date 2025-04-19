@@ -18,6 +18,7 @@ using Terraria.Localization;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -110,7 +111,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<PulseDragon>().
                 AddIngredient<CrescentMoon>().
                 AddIngredient<ClamCrusher>().
+                AddIngredient<AuricBarold>(15).
+                DisableDecraft().
+                AddTile<DraedonsForgeold>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<DragonPow>().
+                AddIngredient<PulseDragon>().
+                AddIngredient<CrescentMoon>().
+                AddIngredient<ClamCrusher>().
                 AddIngredient<MiracleMatter>().
+                AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
 
@@ -119,8 +131,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<PulseDragon>().
                 AddIngredient<CrescentMoon>().
                 AddIngredient<ClamCrusher>().
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                DisableDecraft().
                 AddTile<DraedonsForge>().
                 Register();
         }

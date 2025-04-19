@@ -56,8 +56,8 @@ namespace CalamityInheritance.CIPlayer
         public void TotalDebuff()
         {
             // 死亡模式debuff伤害+25%
-            float deathNegativeRegenBonus = 0.25f;
-            float calamityDebuffMultiplier = 1f + (CalamityWorld.death ? deathNegativeRegenBonus : 0f);
+            // 移除死亡增幅
+            float calamityDebuffMultiplier = 1f;
 
             // 总共降低的生命值
             float totalNegativeLifeRegen = 0;
@@ -73,8 +73,8 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegenTime = 0;
                 totalNegativeLifeRegen += negativeLifeRegenToApply * calamityDebuffMultiplier;
             }
-
-            ApplyDoTDebuff(abyssalFlames, 150);
+            //150 -> 90 （75HP/s -> 50HP/s) 比超位崩解(40HP/s)强一些
+            ApplyDoTDebuff(abyssalFlames, 100);
             ApplyDoTDebuff(vulnerabilityHexLegacy, 32);
 
             Player.lifeRegen -= (int)totalNegativeLifeRegen;
