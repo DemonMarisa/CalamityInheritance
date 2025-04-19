@@ -67,7 +67,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             Vector2 lockTar = getPlayerCenter;
             Vector2 tryLockPlayer = bossCenter - lockTar;
             float rot = (float)Math.Atan2(tryLockPlayer.Y, tryLockPlayer.X) + MathHelper.PiOver2;
-            BrothersGeneric.TryKeeping(boss, 0.1f, rot);
+            boss.rotation = boss.rotation.AngleLerp(boss.AngleTo(player.Center) - MathHelper.PiOver2, 0.08f);
             #endregion
 
             #region 使旧灾脱战

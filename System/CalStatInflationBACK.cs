@@ -32,6 +32,7 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using System.Security.Policy;
 using static System.Net.Mime.MediaTypeNames;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Weapons.DraedonsArsenal;
 
 namespace CalamityInheritance.System
 {
@@ -293,10 +294,52 @@ namespace CalamityInheritance.System
                     item.damage = (int)(item.damage * PostShadowspecWeaponsBoost);
                 AuricBlance(item);
                 ShadowspecBlance(item);
+                CosmicBlance(item);
             }
         }
         #endregion
         #region 特殊平衡改动
+        #region 宇宙
+        public static void CosmicBlance(Item item)
+        {
+            #region 战士
+            if (item.type == ModContent.ItemType<PrismaticBreaker>())
+                item.damage = 5600;
+            if (item.type == ModContent.ItemType<CosmicShiv>())
+            {
+                item.useAnimation = 20;
+                item.useTime = 20;
+            }
+            if (item.type == ModContent.ItemType<TheEnforcer>())
+            {
+                item.useAnimation = 10;
+                item.useTime = 10;
+            }
+
+            if (item.type == ModContent.ItemType<StreamGouge>())
+                item.damage = 3600;
+
+            if (item.type == ModContent.ItemType<Excelsus>())
+                item.damage = 1650;
+
+            if (item.type == ModContent.ItemType<Phaseslayer>())
+                item.damage *= (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<GalaxySmasher>())
+                item.damage *= (int)(item.damage * 1.2f);
+
+            if (item.type == ModContent.ItemType<FourSeasonsGalaxia>())
+                item.damage *= (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<TheObliterator>())
+                item.damage *= (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<ScourgeoftheCosmos>())
+                item.damage *= (int)(item.damage * 1.4f);
+            #endregion
+        }
+        #endregion
+        #region 金源
         public static void AuricBlance(Item item)
         {
             if (item.type == ModContent.ItemType<DragonRage>())
@@ -316,6 +359,8 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
                 item.damage = (int)(item.damage * 2.4f);
         }
+        #endregion
+        #region 魔影
         public static void ShadowspecBlance(Item item)
         {
             if (item.type == ModContent.ItemType<Earth>())
@@ -337,6 +382,7 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
                 item.damage = 10000; //一万面板
         }
+        #endregion
         #endregion
     }
     public class CalamityStatInflationBACKNPC : GlobalNPC
@@ -371,9 +417,9 @@ namespace CalamityInheritance.System
                 }
                 if (npc.type == ModContent.NPCType<Yharon>())
                 {
-                    npc.lifeMax = (int)(npc.lifeMax * 4f);
-                    npc.life = (int)(npc.life * 4f);
-                    npc.defense = (int)(npc.defense * 4f);
+                    npc.lifeMax = (int)(npc.lifeMax * 3f);
+                    npc.life = (int)(npc.life * 3f);
+                    npc.defense = (int)(npc.defense * 3f);
                 }
                 if (CalamityInheritanceLists.ExoMech.Contains(npc.type))
                 {

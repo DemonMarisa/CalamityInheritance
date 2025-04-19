@@ -249,6 +249,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 				spriteEffects = SpriteEffects.FlipHorizontally;
 
 			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacy_Blue").Value;
+
             Vector2 vector11 = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 			Color color36 = Color.White;
 			float amount9 = 0.5f;
@@ -275,6 +278,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
 			texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow").Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow_BLue").Value;
+
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
 			if (CalamityConfig.Instance.Afterimages)

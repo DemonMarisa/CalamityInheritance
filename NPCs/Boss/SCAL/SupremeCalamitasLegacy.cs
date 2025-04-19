@@ -51,6 +51,7 @@ using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
 using log4net.Core;
+using CalamityMod.NPCs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -68,13 +69,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         // 弹幕炼狱的伤害
         public int BulletHell = 190;
         // 深渊亡魂的伤害
-        public int AbyssalSoul = 150;
+        public int AbyssalSoul = 170;
         // 硫火飞镖的伤害
-        public int BrimstoneDarts = 120;
+        public int BrimstoneDarts = 150;
         // 小型爆弹接触伤害
-        public int BrimstoneFireblast = 140;
+        public int BrimstoneFireblast = 180;
         // 大型爆弹接触伤害
-        public int BrimstoneGigablast = 170;
+        public int BrimstoneGigablast = 200;
         // 生命值
         public int LifeMax = CalamityWorld.death ? 8800000 : CalamityWorld.revenge ? 8000000 : 5000000;
         // 免伤
@@ -326,6 +327,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             if (initialized == false)
             {
+                SpawnDust();
+                SpawnDust();
                 NPC.damage = 2000;
                 initialized = true;
             }
@@ -378,6 +381,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             ref float switchToDesperationPhase = ref NPC.CIMod().BossNewAI[7];
             ref float rotationSpeed = ref NPC.CIMod().BossNewAI[8];
 
+            // 进入新的阶段
+            float lifeRatio = NPC.life / (float)NPC.lifeMax;
+            // 音乐
+            HandleMusicVariables(lifeRatio);
+
             // Set the whoAmI variable.
             CIGlobalNPC.LegacySCal = NPC.whoAmI;
 
@@ -418,8 +426,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     NPC.active = false;
                 return;
             }
-            // 进入新的阶段
-            float lifeRatio = NPC.life / (float)NPC.lifeMax;
+
             #region 阶段判定
             // 进入新阶段
             // 用于开局的攻击
@@ -633,6 +640,31 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.dontTakeDamage = false;
                 NPC.chaseable = true;
             }
+        }
+        // 音乐
+        public void HandleMusicVariables(float lifeRatio)
+        {
+            CIGlobalNPC.LegacySCalGrief = -1;
+            CIGlobalNPC.LegacySCalLament = -1;
+            CIGlobalNPC.LegacySCalEpiphany = -1;
+            CIGlobalNPC.LegacySCalAcceptance = -1;
+            if (lifeRatio <= 0.01f)
+            {
+                CIGlobalNPC.LegacySCalAcceptance = NPC.whoAmI;
+                return;
+            }
+            if (lifeRatio <= 0.3f)
+            {
+                CIGlobalNPC.LegacySCalEpiphany = NPC.whoAmI;
+                return;
+            }
+            if (lifeRatio <= 0.5f)
+            {
+                CIGlobalNPC.LegacySCalLament = NPC.whoAmI;
+                return;
+            }
+            else
+                CIGlobalNPC.LegacySCalGrief = NPC.whoAmI;
         }
         #region 技能
         #region 看向目标
@@ -1321,7 +1353,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (attacktimer == 360)
             { 
                 canNextPhase = true;
-            SelectNextAttack();
+                SelectNextAttack();
             }
         }
         #endregion
@@ -1537,6 +1569,17 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2").Value;
                 ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow").Value;
+            }
+            // 判定使用蓝色贴图
+            if(CIGlobalNPC.LegacySCalLament != -1)
+            {
+                Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Blue").Value;
+                ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow_Blue").Value;
+                if (isSecondPhase == true)
+                {
+                    Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Blue").Value;
+                    ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow_Blue").Value;
+                }
             }
 
             SpriteEffects spriteEffects = SpriteEffects.None;

@@ -20,6 +20,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.CIPlayer
@@ -35,11 +36,12 @@ namespace CalamityInheritance.CIPlayer
             bool ifMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>();
             // 玩家手中武器伤害
             Player player = Main.player[proj.owner];
-            int weaponDamage = player.HeldItem.damage;
+            int weaponDamage = hit.Damage;
+
             //弑神飞镖
             if (usPlayer.GodSlayerMelee && usPlayer.fireCD <= 0 && (ifMelee || ifTrueMelee))
             {
-                int finalDamage = 500 + weaponDamage / 2;
+                int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
                 usPlayer.fireCD = 60; 
@@ -83,8 +85,8 @@ namespace CalamityInheritance.CIPlayer
                     return;
                 }
                 fireCD = 2;
-                int weaponDamage = player.HeldItem.damage;
-                int finalDamage = 400 + weaponDamage / 2;
+                int weaponDamage = hit.Damage;
+                int finalDamage = 400 + weaponDamage / 4;
 
                 int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
@@ -148,13 +150,12 @@ namespace CalamityInheritance.CIPlayer
             if (usPlayer.GodSlayerSummonSet && proj.DamageType != DamageClass.Generic)
             {
                 if (usPlayer.fireCD > 0)
-                {
                     return;
-                }
+
                 usPlayer.fireCD = 3;
                 player = Main.player[proj.owner];
-                int weaponDamage = player.ActiveItem().damage;
-                int finalDamage = 400 + weaponDamage / 2;
+                int weaponDamage = hit.Damage;
+                int finalDamage = 400 + weaponDamage / 4;
 
                 int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);

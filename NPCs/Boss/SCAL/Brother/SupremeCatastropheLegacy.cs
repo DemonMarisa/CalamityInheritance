@@ -204,7 +204,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                     NPC.ai[1] = 0f;
                     Vector2 vector85 = new Vector2(NPC.Center.X, NPC.Center.Y);
                     float speedX = 4f;
-                    int dType = ModContent.ProjectileType<BrimstoneHellblast2>();
+                    int dType = ModContent.ProjectileType<BrimstoneHellblast2Legacy>();
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int num695 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector85.X, vector85.Y, speedX, 0f, dType, projDamage, 0f, Main.myPlayer, 0f, 0f);
@@ -257,7 +257,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 				spriteEffects = SpriteEffects.FlipHorizontally;
 
 			Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
-			Vector2 origiVel = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                npcTex = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacy_Blue").Value;
+
+            Vector2 origiVel = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 			Color white = Color.White;
 			float cLerp = 0.5f;
 			int afterAmt = 7;
@@ -283,6 +286,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 
 			npcTex = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow").Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                npcTex = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow_Blue").Value;
+
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
 			if (CalamityConfig.Instance.Afterimages)
@@ -318,10 +324,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         {
             for (int i = 0; i < 2; i++)
             {
-                int d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 3f);
+                int d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 3f);
                 Main.dust[d2].noGravity = true;
                 Main.dust[d2].velocity *= 5f;
-                d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
+                d2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, CIDustID.DustMushroomSpray113, 0f, 0f, 100, default, 2f);
                 Main.dust[d2].velocity *= 2f;
             }
         }

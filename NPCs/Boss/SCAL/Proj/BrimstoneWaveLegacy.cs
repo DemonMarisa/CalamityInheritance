@@ -20,7 +20,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
     {
         public new string LocalizationCategory => "Boss.Projectiles";
         private int x;
-
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
@@ -85,6 +84,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneWaveLegacy_Blue").Value;
+
             int framing = texture.Height / Main.projFrames[Projectile.type];
             int y6 = framing * Projectile.frame;
             lightColor.R = (byte)(255 * Projectile.Opacity);

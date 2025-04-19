@@ -24,16 +24,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase1");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
-            public override bool IsSceneEffectActive(Player player)
-            {
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                    return false;
-
-                NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
-                float lifeRatio = scal.life / (float)scal.lifeMax;
-                bool active = lifeRatio > 0.5f;
-                return active;
-            }
+            public override bool AdditionalCheck() => CIGlobalNPC.LegacySCalGrief != -1;
         }
         public class ScalPhase2MusicScene : BaseMusicSceneEffect
         {
@@ -43,16 +34,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase2");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
-            public override bool IsSceneEffectActive(Player player)
-            {
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                    return false;
-
-                NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
-                float lifeRatio = scal.life / (float)scal.lifeMax;
-                bool active = lifeRatio > 0.3f && lifeRatio < 0.5f;
-                return active;
-            }
+            public override bool AdditionalCheck() => CIGlobalNPC.LegacySCalLament != -1;
         }
         public class ScalPhase3MusicScene : BaseMusicSceneEffect
         {
@@ -62,16 +44,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase3");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
-            public override bool IsSceneEffectActive(Player player)
-            {
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                    return false;
-
-                NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
-                float lifeRatio = scal.life / (float)scal.lifeMax;
-                bool active = lifeRatio < 0.3f && lifeRatio > 0.01f;
-                return active;
-            }
+            public override bool AdditionalCheck() => CIGlobalNPC.LegacySCalEpiphany != -1;
         }
         public class ScalPhase4MusicScene : BaseMusicSceneEffect
         {
@@ -81,16 +54,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasDefeat_LongFade");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
-            public override bool IsSceneEffectActive(Player player)
-            {
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                    return false;
-
-                NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
-                float lifeRatio = scal.life / (float)scal.lifeMax;
-                bool active = lifeRatio < 0.01;
-                return active;
-            }
+            public override bool AdditionalCheck() => CIGlobalNPC.LegacySCalAcceptance != -1;
         }
     }
 }

@@ -36,7 +36,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         }
 
         private bool isActive = false;
-        private float intensity = 0f;
         private int SCalIndex = -1;
         public List<Cinder> Cinders = [];
 
@@ -116,7 +115,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 
             static Color selectCinderColor()
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                     return Color.Transparent;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -170,10 +169,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             {
                 float x = 0f;
                 if (SCalIndex != -1)
-                    x = Vector2.Distance(Main.player[Main.myPlayer].Center, Main.npc[this.SCalIndex].Center);
-                float intensityFactor = BossRushEvent.BossRushActive ? -0.2f : 1f;
+                    x = Vector2.Distance(Main.player[Main.myPlayer].Center, Main.npc[SCalIndex].Center);
 
-                return (1f - Utils.SmoothStep(3000f, 6000f, x)) * intensityFactor;
+                return (1f - Utils.SmoothStep(3000f, 6000f, x));
             }
             return 0f;
         }
@@ -249,7 +247,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 
         public override bool IsActive()
         {
-            return isActive || intensity > 0f;
+            return isActive;
         }
     }
 }

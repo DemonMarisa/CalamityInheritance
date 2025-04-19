@@ -82,6 +82,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/SCalBrimstoneGigablastLegacy_Blue").Value;
+
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int drawStart = frameHeight * Projectile.frame;
             lightColor.R = (byte)(255 * Projectile.Opacity);

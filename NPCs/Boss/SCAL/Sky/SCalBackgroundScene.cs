@@ -9,13 +9,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 
         public override bool IsSceneEffectActive(Player player)
         {
-            if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+            if (CIGlobalNPC.LegacySCalGrief != -1)
+                return true;
+            else
                 return false;
-
-            NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
-            float lifeRatio = scal.life / (float)scal.lifeMax;
-            bool active = (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) || SCalSkyLegacy.OverridingIntensity > 0f) && lifeRatio > 0.5f;
-            return active;
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {

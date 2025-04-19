@@ -14,6 +14,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Projectiles;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -90,8 +93,17 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override bool PreDraw(ref Color lightColor)
         {
+            SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneBarrageLegacy_blue").Value;
+
+            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+            int drawStart = frameHeight * Projectile.frame;
             lightColor.R = (byte)(255 * Projectile.Opacity);
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, drawStart, texture.Width, frameHeight)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture.Width / 2f, frameHeight / 2f), Projectile.scale, spriteEffects, 0);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1, texture);
             return false;
         }
     }

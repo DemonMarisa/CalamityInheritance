@@ -20,6 +20,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
     public class BrimstoneHellblast2Legacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
@@ -81,6 +82,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneHellblast2Legacy_Blue").Value;
+
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int drawStart = frameHeight * Projectile.frame;
             lightColor.R = (byte)(255 * Projectile.Opacity);

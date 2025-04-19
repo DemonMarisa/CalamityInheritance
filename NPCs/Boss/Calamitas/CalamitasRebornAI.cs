@@ -74,30 +74,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             else if (rot > MathHelper.TwoPi) rot -= MathHelper.TwoPi; //确保转角一直在2pi内
 
             float rotSpeed = 0.1f; //转速 
-            //下面这些代码都是为了保证转角是对的,
-            if (boss.rotation < rot)
-            {
-                if (rot - boss.rotation > MathHelper.Pi) //小于pi, 减转速
-                    boss.rotation -= rotSpeed;
-                else boss.rotation += rotSpeed;
-            }
-            else if (boss.rotation > rot)
-            {
-                if (boss.rotation - rot > MathHelper.Pi)
-                    boss.rotation += rotSpeed;
-                else
-                    boss.rotation -= rotSpeed;
-            }
-
-            if (boss.rotation > rot - rotSpeed && boss.rotation < rot + rotSpeed)
-                boss.rotation = rot;
-            //确保boss转角一直在2pi内
-            if (boss.rotation < 0f)
-                boss.rotation += MathHelper.TwoPi;
-            else if (boss.rotation > MathHelper.TwoPi)
-                boss.rotation -= MathHelper.TwoPi;
-            if (boss.rotation > rot - rotSpeed && boss.rotation < rot + rotSpeed)
-                boss.rotation = rot;
+            boss.rotation = boss.rotation.AngleLerp(boss.AngleTo(player.Center) - MathHelper.PiOver2, rotSpeed);
             #endregion
             #region 使旧灾脱战
             //      玩家不存在      玩家似了         白天           非日食      都会让普灾脱战

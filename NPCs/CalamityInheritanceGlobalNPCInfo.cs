@@ -27,10 +27,14 @@ namespace CalamityInheritance.NPCs
         public static int LegacySCal = -1;
         public static int LegacySCalCataclysm = -1;
         public static int LegacySCalCatastrophe = -1;
+        public static int LegacySCalGrief = -1;
+        public static int LegacySCalLament = -1;
+        public static int LegacySCalEpiphany = -1;
+        public static int LegacySCalAcceptance = -1;
         #endregion
 
         #region Reset Effects
-        public void BossResetEffects(NPC npc)
+        public static void BossResetEffects(NPC npc)
         {
             void ResetSavedIndex(ref int type, int type1, int type2 = -1)
             {
@@ -54,9 +58,13 @@ namespace CalamityInheritance.NPCs
             }
 
             ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
-            ResetSavedIndex(ref LegacySCal, ModContent.NPCType<SupremeCalamitasLegacy>());
             ResetSavedIndex(ref LegacySCalCataclysm, ModContent.NPCType<SupremeCataclysmLegacy>());
             ResetSavedIndex(ref LegacySCalCatastrophe, ModContent.NPCType<SupremeCatastropheLegacy>());
+            ResetSavedIndex(ref LegacySCal, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalGrief, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalLament, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalEpiphany, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalAcceptance, ModContent.NPCType<SupremeCalamitasLegacy>());
             /*
             // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.
             CurrentlyEnraged = false;

@@ -139,7 +139,7 @@ namespace CalamityInheritance.Utilities
                 dynamicAcceleration *= 1.5f;
             }
 
-            // ========== 应用速度 ==========
+            // 应用速度
             npc.velocity = Vector2.Lerp(npc.velocity, desiredVelocity, 0.3f);
         }
         #endregion
