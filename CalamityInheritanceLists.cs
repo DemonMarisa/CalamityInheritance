@@ -83,8 +83,6 @@ namespace CalamityInheritance
                     ProjectileType<ExoGunBlastsplit>(),
                     ProjectileType<ExoGunBlast>(),
                     ProjectileType<ExoLightold>(),
-                    //这东西怎么能是>100像素的弓呢？
-                    ProjectileType<HeavenlyGaleProj>(),
                     //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表
                     ProjectileType<ProfanedNukeDust>(),
                     //小鸡大炮爆炸，太卡了

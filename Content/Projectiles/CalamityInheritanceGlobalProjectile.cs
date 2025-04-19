@@ -37,6 +37,8 @@ namespace CalamityInheritance.Content.Projectiles
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
         public int StoreEU = -1;
+        // 1帧影响
+        public bool oneFrameEffect = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -47,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
                 if (projectile.DamageType == DamageClass.Ranged
                     && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
-                    && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 125f)
+                    && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);
                 //回调原版所有悠悠球的无敌帧
                 //注意其他方面都不会回调，只回调了无敌帧，但也足够了
@@ -102,23 +104,26 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
+            if(!oneFrameEffect)
+            {
+                if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
+                {
+                    if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
+                        projectile.extraUpdates += 1;
+
+                    if (projectile.type == ProjectileID.MechanicalPiranha)
+                    {
+                        projectile.localNPCHitCooldown *= 2;
+                        projectile.timeLeft *= 2;
+                    }
+                }
+                oneFrameEffect = true;
+            }
         }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CIMod();
-
-            if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
-            {
-                if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
-                    projectile.extraUpdates += 1;
-
-                if (projectile.type == ProjectileID.MechanicalPiranha)
-                {
-                    projectile.localNPCHitCooldown *= 2;
-                    projectile.timeLeft *= 2;
-                }
-            }
 
             if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
             {

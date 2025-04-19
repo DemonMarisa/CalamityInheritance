@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Utilities
 {

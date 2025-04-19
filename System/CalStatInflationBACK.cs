@@ -26,6 +26,8 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using Terraria.Localization;
 using Microsoft.Build.Utilities;
+using CalamityMod.Items.Weapons.DraedonsArsenal;
+using CalamityMod.NPCs.NormalNPCs;
 
 namespace CalamityInheritance.System
 {
@@ -116,6 +118,15 @@ namespace CalamityInheritance.System
             PostProfanedWeapons.Add(ModContent.ItemType<Cosmilamp>());
             PostProfanedWeapons.Add(ModContent.ItemType<CosmicKunai>());
             #endregion
+            #region 幽花表单
+            PostPolterghastWeapons.Add(ModContent.ItemType<VoidEdge>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<CalamarisLament>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<Valediction>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<EidolicWail>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<LionHeart>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<SulphuricAcidCannon>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<PhosphorescentGauntlet>());
+            #endregion
             #region 神长表单删除
             // 怎么你也没有过滤金源武器
             PostDOGWeapons.Remove(ModContent.ItemType<Ataraxia>());
@@ -137,7 +148,6 @@ namespace CalamityInheritance.System
             #endregion
         }
 
-        
         #region 月后初期的武器
         public static bool PostMLWeapon(Recipe recipe, Item item)
         {
@@ -276,9 +286,9 @@ namespace CalamityInheritance.System
         #region 武器伤害增幅
         public const float PostMLWeaponsBoost = 1.3f; // 月后
         public const float PostProfanedWeaponsBoost = 1.6f; // 亵渎后||使徒
-        public const float PostPolterghastWeaponsBoost = 2f; // 幽花后
-        public const float PostOldDukeWeaponsBoost = 2.4f; // 幽花后
-        public const float PostDOGWeaponsBoost = 4f; // 神后
+        public const float PostPolterghastWeaponsBoost = 2.4f; // 幽花后
+        public const float PostOldDukeWeaponsBoost = 2.5f; // 老猪后
+        public const float PostDOGWeaponsBoost = 3f; // 神后
         public const float PostYharonWeaponsBoost = 5f; // 龙后
         public const float PostExoAndScalWeaponsBoost = 7f; // 巨械終灾后
         public const float PostShadowspecWeaponsBoost = 10f; // 巨械終灾后
@@ -315,12 +325,76 @@ namespace CalamityInheritance.System
         }
         #endregion
         #region 特殊平衡改动
+        #region 幽花后
+        public static void PolterghastBlance(Item item)
+        {
+            #region 射手
+            if (item.type == ModContent.ItemType<ClaretCannon>())
+                item.damage = (int)(item.damage * 1.6f);
+
+            if (item.type == ModContent.ItemType<DodusHandcannon>())
+                item.damage = (int)(item.damage * 1.6f);
+
+            if (item.type == ModContent.ItemType<TheMaelstrom>())
+                item.damage = (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<BloodBoiler>())
+                item.damage = (int)(item.damage * 2f);
+            #endregion
+            #region 法师
+            if (item.type == ModContent.ItemType<ClamorNoctus>())
+                item.damage = (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<DarkSpark>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<ShadowboltStaff>())
+                item.damage = (int)(item.damage * 2f);
+            #endregion
+            #region 召唤
+
+            if (item.type == ModContent.ItemType<Sirius>())
+                item.damage = (int)(item.damage * 3.5f);
+
+            #endregion
+            #region 盗贼
+            if (item.type == ModContent.ItemType<Valediction>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<NightsGaze>())
+                item.damage = (int)(item.damage * 2f);
+            #endregion
+        }
+        #endregion
         #region 宇宙
         public static void CosmicBlance(Item item)
         {
             #region 战士
+
+            if (item.type == ModContent.ItemType<EmpyreanKnives>())
+                item.damage = 1400;
+
             if (item.type == ModContent.ItemType<PrismaticBreaker>())
-                item.damage = 5600;
+                item.damage = 4000;
+
+            if (item.type == ModContent.ItemType<Phaseslayer>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<Excelsus>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<GalaxySmasher>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<ScourgeoftheCosmos>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<TheObliterator>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<EssenceFlayer>())
+                item.damage = (int)(item.damage * 2f);
+
             if (item.type == ModContent.ItemType<CosmicShiv>())
             {
                 item.useAnimation = 20;
@@ -331,6 +405,89 @@ namespace CalamityInheritance.System
                 item.useAnimation = 10;
                 item.useTime = 10;
             }
+            #endregion
+            #region 射手
+            if (item.type == ModContent.ItemType<Deathwind>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<Alluvion>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<AntiMaterielRifle>())
+                item.damage = 10000;
+
+            if (item.type == ModContent.ItemType<ThePack>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<Starmageddon>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<Starmada>())
+                item.damage = (int)(item.damage * 1.3f);
+
+            if (item.type == ModContent.ItemType<CleansingBlaze>())
+                item.damage = (int)(item.damage * 1.3f);
+
+            if (item.type == ModContent.ItemType<PulseRifle>())
+                item.damage = (int)(item.damage * 1.2f);
+
+            if (item.type == ModContent.ItemType<Karasawa>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<RubicoPrime>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<Ultima>())
+                item.damage = (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<UniversalGenesis>())
+                item.damage = (int)(item.damage * 1.4f);
+            #endregion
+            #region 法师
+
+            if (item.type == ModContent.ItemType<DeathhailStaff>())
+                item.useTime = 5;
+
+            if (item.type == ModContent.ItemType<RecitationoftheBeast>())
+                item.damage = (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<FaceMelter>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<IceBarrage>())
+                item.damage = (int)(item.damage * 2f);
+
+            #endregion
+            #region 召唤
+
+            if (item.type == ModContent.ItemType<SarosPossession>())
+                item.damage = (int)(item.damage * 1.6f);
+
+            if (item.type == ModContent.ItemType<CorvidHarbringerStaff>())
+                item.damage = (int)(item.damage * 1.4f);
+
+            if (item.type == ModContent.ItemType<CosmicViperEngine>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<EndoHydraStaff>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            #endregion
+            #region 盗贼
+            if (item.type == ModContent.ItemType<Penumbra>())
+                item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<EclipsesFall>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<Hypothermia>())
+                item.damage = (int)(item.damage * 1.5f);
+
+            if (item.type == ModContent.ItemType<Eradicator>())
+                item.damage = (int)(item.damage * 1.2f);
+
+            if (item.type == ModContent.ItemType<PlasmaGrenade>())
+                item.damage = (int)(item.damage * 1.8f);
 
             #endregion
         }
@@ -427,21 +584,18 @@ namespace CalamityInheritance.System
                 }
                 if (CalamityInheritanceLists.PostPolterghastBoss.Contains(npc.type))
                 {
-                    npc.lifeMax = (int)(npc.lifeMax * 1.8f);
-                    npc.life = (int)(npc.life * 1.8f);
-                    npc.defense = (int)(npc.defense * 1.8f);
+                    npc.lifeMax = (int)(npc.lifeMax * 1.7f);
+                    npc.life = (int)(npc.life * 1.7f);
                 }
                 if (CalamityInheritanceLists.DOG.Contains(npc.type))
                 {
-                    npc.lifeMax = (int)(npc.lifeMax * 2.5f);
-                    npc.life = (int)(npc.life * 2.5f);
-                    npc.defense = (int)(npc.defense * 2.5f);
+                    npc.lifeMax = (int)(npc.lifeMax * 2.3f);
+                    npc.life = (int)(npc.life * 2.3f);
                 }
                 if (npc.type == ModContent.NPCType<Yharon>())
                 {
-                    npc.lifeMax = (int)(npc.lifeMax * 3f);
-                    npc.life = (int)(npc.life * 3f);
-                    npc.defense = (int)(npc.defense * 3f);
+                    npc.lifeMax = (int)(npc.lifeMax * 2.8f);
+                    npc.life = (int)(npc.life * 2.8f);
                 }
                 if (CalamityInheritanceLists.ExoMech.Contains(npc.type))
                 {
