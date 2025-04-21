@@ -50,5 +50,10 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(true)]
         [ReloadRequired]
         public bool CalStatInflationBACK { get; set; } //灾厄数据膨胀回来了
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        //[ReloadRequired]
+        public bool SolarEclipseChange { get; set; } //  龙一龙二
     }
 }

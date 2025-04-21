@@ -46,8 +46,6 @@ namespace CalamityInheritance.Content.Items.SummonItems
         {
             if (player.whoAmI == Main.myPlayer)
             {
-                SoundEngine.PlaySound(SoundID.Roar, player.position);
-
                 int getBoss = ModContent.NPCType<SupremeCalamitasLegacy>();
 
                 if (Main.netMode != NetmodeID.MultiplayerClient)

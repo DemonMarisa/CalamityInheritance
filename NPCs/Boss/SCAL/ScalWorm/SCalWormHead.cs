@@ -360,7 +360,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         {
             if (NPC.life <= 0)
             {
-                SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);
                 for (int i = 0; i < 5; i++)
                 {
                     int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
@@ -380,6 +379,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                     Main.dust[dust].velocity *= 2f;
                 }
             }
+        }
+        public override void OnKill()
+        {
+            SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);
         }
     }
 }

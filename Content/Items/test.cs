@@ -13,6 +13,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.System;
+using CalamityInheritance.NPCs.Boss.Yharon;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -79,76 +80,33 @@ namespace CalamityInheritance.Content.Items
         }*/
         public override bool? UseItem(Player player)
         {
-            if(CIConfig.Instance.UIX == 1)
+            foreach (NPC npc in Main.ActiveNPCs)
             {
-                // 空列表检查
-                if (CalStatInflationBACK.PostProfanedWeapons == null ||
-                    CalStatInflationBACK.PostProfanedWeapons.Count == 0)
-                {
-                    Main.NewText("没有可生成的物品！");
-                    return false;
-                }
-
-                // 生成所有物品
-                foreach (int itemType in CalStatInflationBACK.PostProfanedWeapons)
-                {
-                    player.QuickSpawnItem(
-                        player.GetSource_GiftOrReward(),
-                        itemType,
-                        1
-                    );
-                }
-
-                // 显示提示信息
-                Main.NewText($"生成了 {CalStatInflationBACK.PostProfanedWeapons.Count} 件物品！");
+                if (npc.type == ModContent.NPCType<YharonLegacy>())
+                    npc.ai[0] = CIConfig.Instance.UIX;
             }
-            if (CIConfig.Instance.UIX == 2)
-            {
-                // 空列表检查
-                if (CalStatInflationBACK.PostPolterghastWeapons == null ||
-                    CalStatInflationBACK.PostPolterghastWeapons.Count == 0)
+                /*
+                if (CIConfig.Instance.UIX == 3)
                 {
-                    Main.NewText("没有可生成的物品！");
-                    return false;
-                }
+                    // 空列表检查
+                    if (CalStatInflationBACK.PostOldDukeWeapons == null ||
+                        CalStatInflationBACK.PostOldDukeWeapons.Count == 0)
+                    {
+                        Main.NewText("没有可生成的物品！");
+                        return false;
+                    }
 
-                // 生成所有物品
-                foreach (int itemType in CalStatInflationBACK.PostPolterghastWeapons)
-                {
-                    player.QuickSpawnItem(
-                        player.GetSource_GiftOrReward(),
-                        itemType,
-                        1
-                    );
-                }
+                    // 生成所有物品
+                    foreach (int itemType in CalStatInflationBACK.PostOldDukeWeapons)
+                    {
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(), itemType, 1);
+                    }
 
-                // 显示提示信息
-                Main.NewText($"生成了 {CalStatInflationBACK.PostPolterghastWeapons.Count} 件物品！");
-            }
-            if (CIConfig.Instance.UIX == 3)
-            {
-                // 空列表检查
-                if (CalStatInflationBACK.PostOldDukeWeapons == null ||
-                    CalStatInflationBACK.PostOldDukeWeapons.Count == 0)
-                {
-                    Main.NewText("没有可生成的物品！");
-                    return false;
+                    // 显示提示信息
+                    Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
                 }
-
-                // 生成所有物品
-                foreach (int itemType in CalStatInflationBACK.PostOldDukeWeapons)
-                {
-                    player.QuickSpawnItem(
-                        player.GetSource_GiftOrReward(),
-                        itemType,
-                        1
-                    );
-                }
-
-                // 显示提示信息
-                Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
-            }
-            return true;
+                */
+                return true;
         }
 
     }

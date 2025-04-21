@@ -21,7 +21,8 @@ namespace CalamityInheritance.NPCs
         public static int ThisCalamitasRebornP2 = -1;
         public static int CatalysmCloneWhoAmI = -1;
         public static int CatastropheCloneWhoAmI = -1;
-
+        // 犽绒
+        public static int LegacyYharon = -1;
         #region 終灾
         public static int LegacySCalWorm = -1;
         public static int LegacySCal = -1;
@@ -65,6 +66,7 @@ namespace CalamityInheritance.NPCs
             ResetSavedIndex(ref LegacySCalLament, ModContent.NPCType<SupremeCalamitasLegacy>());
             ResetSavedIndex(ref LegacySCalEpiphany, ModContent.NPCType<SupremeCalamitasLegacy>());
             ResetSavedIndex(ref LegacySCalAcceptance, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacyYharon, ModContent.NPCType<SupremeCalamitasLegacy>());
             /*
             // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.
             CurrentlyEnraged = false;

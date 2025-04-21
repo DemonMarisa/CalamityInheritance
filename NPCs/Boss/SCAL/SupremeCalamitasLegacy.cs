@@ -177,7 +177,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         // 終灾的攻击循环
         public static LegacySCalAttackType[] AttackCycle =>
             [
-            LegacySCalAttackType.fireDartsWallAndSmallblast,// 这是用来标记的，因为调用的时候会+1，取不到第一个
+            LegacySCalAttackType.fireDartsWallAndSmallblast,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
             LegacySCalAttackType.fireDartsWallAndSmallblast, // OnlyGlow = false  1
             LegacySCalAttackType.fireAbyssalSoul,
             LegacySCalAttackType.fireGigablast,// OnlyGlow = true  3
@@ -204,7 +204,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             LegacySCalAttackType.charge,
             LegacySCalAttackType.fireDartsWallAndSmallblast,
             LegacySCalAttackType.charge,
-            LegacySCalAttackType.fireDartsWallAndSmallblast,
         ];
 
         // 阶段的血量百分比
@@ -322,11 +321,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             if (NPC.rotation < 0f)
                 NPC.rotation += MathHelper.TwoPi;
-            else if 
-                (NPC.rotation > MathHelper.TwoPi) NPC.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
+            else if  (NPC.rotation > MathHelper.TwoPi) 
+                NPC.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
 
             if (initialized == false)
             {
+                Main.player[NPC.target].Calamity().GeneralScreenShakePower = 12;
                 SpawnDust();
                 SpawnDust();
                 NPC.damage = 2000;
@@ -373,7 +373,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             ref float attackType = ref NPC.ai[0];
             ref float attackTimer = ref NPC.ai[1];
 
-            ref float stageAttackType = ref NPC.ai[2];
             // NPC.ai[3]用于招式选择
             ref float frameChangeSpeed = ref NPC.localAI[1];
             ref float frameType = ref NPC.localAI[2];
@@ -641,7 +640,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.chaseable = true;
             }
         }
-        // 音乐
+        #region 音乐
         public void HandleMusicVariables(float lifeRatio)
         {
             CIGlobalNPC.LegacySCalGrief = -1;
@@ -666,6 +665,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             else
                 CIGlobalNPC.LegacySCalGrief = NPC.whoAmI;
         }
+        #endregion
         #region 技能
         #region 看向目标
         public void LookAtTarget(Player player, float rotationSpeed)
@@ -673,7 +673,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(player.Center) - MathHelper.PiOver2, rotationSpeed);
         }
         #endregion
-        #region 弹幕炼狱
+        #region 弹幕炼狱管理
         public void DoBehavior_BulletHell(Player target,ref float attacktimer, float currentPhaseHell, ref float attacktype)
         {
             Player player = Main.player[NPC.target];
@@ -682,38 +682,31 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (attacktimer == 500)
-                {
                     SoundEngine.PlaySound(BulletHellSound, NPC.position);
-                }
                 // 第一轮
                 if (currentPhaseHell == 1f)
-                {
                     BulletHell1(target, attacktimer);
-                }
                 // 第二轮
                 if (currentPhaseHell == 2f)
-                {
                     BulletHell2(target, attacktimer);
-                }
                 // 第三轮
                 if (currentPhaseHell == 3f)
-                {
                     BulletHell3(target, attacktimer);
-                }
-                // 第三轮
+                // 第四轮
                 if (currentPhaseHell == 6f)
-                {
                     BulletHell4(target, attacktimer);
-                }
-                // 第三轮
+                // 第五轮
                 if (currentPhaseHell == 8f)
-                {
                     BulletHell5(target, attacktimer);
+                if (attacktimer > 500 && attacktimer < 860)
+                {
+                    for (int i = 0; i < (int)((attacktimer - 400) * 0.01f); i++)
+                    {
+                        PulseEffect();
+                    }
                 }
                 if (attacktimer == 901)
-                {
                     DeSpawn();
-                }
                 if (attacktimer == 902)
                 {
                     SpawnDust();
@@ -726,7 +719,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 }
 
             }
-
         }
         #endregion
         #region 硫火飞镖墙
@@ -826,7 +818,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 if (attacktimer > chargeCount)
                 {
-                    NPC.CIMod().BossNewAI[8] += 0.2f;
+                    NPC.CIMod().BossNewAI[8] += 0.15f;
 
                     NPC.velocity *= 0.96f;
 
@@ -841,6 +833,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     attacktimer = 0;
                     ChargeCount++;
                 }
+                for (int i = 0; i < 3; i++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType, 0f, 0f, 0, default, 1.25f);
+                }
+                NPC.netUpdate = true;
             }
 
             if(ChargeCount > totalCharge - 1)
@@ -888,7 +885,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Vector2 projectileSpawn = NPC.Center + offset;
                     projectileVelocity = projectileVelocity.RotatedBy(MathHelper.PiOver2);
 
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ModContent.ProjectileType<BrimstoneHellblastLegacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 2f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ModContent.ProjectileType<BrimstoneHellblastLegacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
             if (attacktimer > totalFireTime)
@@ -945,7 +942,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #region 选择下一个攻击
         public int AttackTypeCount = 0;
         // 选择下一个攻击
-        public void SelectNextAttack()
+        public void SelectNextAttack(int? Skip = null)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)
                 return;
@@ -962,12 +959,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int currentIndex = (int)NPC.ai[3];
 
             LegacySCalAttackType[] attackCycle = AttackCycle;
-
-            // 递增索引
-            currentIndex++;
-            if (currentIndex >= AttackCycle.Length)
-                currentIndex = 0;
-
+            if(Skip == null)
+            {
+                // 递增索引
+                currentIndex++;
+                if (currentIndex >= AttackCycle.Length)
+                    currentIndex = 0;
+            }
+            else
+            {
+                currentIndex = (int)Skip;
+                if (currentIndex >= AttackCycle.Length)
+                    currentIndex = 0;
+            }
             // 更新索引和攻击类型
             NPC.ai[3] = currentIndex;
             NPC.ai[0] = (int)AttackCycle[currentIndex];
@@ -1294,8 +1298,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Eye.ai[0] = I * 18;
                     Eye.ai[3] = I * 18;
                 }
+                SpawnDust();
             }
-            SelectNextAttack();
+            // 召唤探魂眼时立刻转到冲刺
+            SelectNextAttack(18);
             canNextPhase = true;
         }
         #endregion
@@ -1306,21 +1312,21 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public void DoBehavior_PhaseTransition(Player target, float attacktimer, float rotationSpeed)
         {
             float phase1Duration = 180;    // 正向段持续时间
-            float spinCount = 8;              // 旋转圈数
-            float rotationOffset = 0f;
+            float spinCount = 8.5f;              // 旋转圈数
             isContactDamage = false;
             NPC.velocity *= 0.95f;
             // 初始化随机偏移
             if (attacktimer == 1)
             {
-                rotationOffset = Main.rand.NextFloat(0, 1);
-                spinCount += rotationOffset;
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
             }
             // 旋转
             if (attacktimer < phase1Duration)
             {
-
+                for (int i = 0; i < (int)(attacktimer * 0.01f); i++)
+                {
+                    PulseEffect();
+                }
                 // 计算当前帧和上一帧的缓动进度
                 float currentProgress = attacktimer / phase1Duration;
                 float currentEased = CIFunction.EasingHelper.EaseInOutQuad(currentProgress);
@@ -1338,7 +1344,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 roatationSpeed += 0.001f;
                 // 转向玩家
-                NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center) - MathHelper.PiOver2 + rotationOffset, roatationSpeed);
+                NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center) - MathHelper.PiOver2, roatationSpeed);
                 // 特效和音效
                 if (attacktimer == phase1Duration)
                 {
@@ -1432,6 +1438,35 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Main.dust[dust].scale = 3f;
                     dustAmtSpawned++;
                 }
+            }
+        }
+        #endregion
+        #region 脉冲粒子
+        public void PulseEffect()
+        {
+            if (!Main.dedServ)
+            {
+                if(dustType == CIDustID.DustMushroomSpray113)
+                {
+                    float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                    Vector2 spawnPosition = NPC.Center + angle.ToRotationVector2() * (300f + Main.rand.NextFloat(100f, 100f));
+                    Vector2 velocity = (angle - (float)Math.PI).ToRotationVector2() * Main.rand.NextFloat(20f, 35f);
+                    Dust dust = Dust.NewDustPerfect(spawnPosition, dustType, velocity);
+                    dust.scale = 0.9f;
+                    dust.fadeIn = 1.25f;
+                    dust.noGravity = true;
+                    dust.velocity *= 0.96f;
+                }
+                else
+                {
+                    float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                    Vector2 spawnPosition = NPC.Center + angle.ToRotationVector2() * (300f + Main.rand.NextFloat(100f, 100f));
+                    Vector2 velocity = (angle - (float)Math.PI).ToRotationVector2() * Main.rand.NextFloat(50f, 80f);
+                    Dust dust = Dust.NewDustPerfect(spawnPosition, dustType, velocity);
+                    dust.scale = 0.9f;
+                    dust.fadeIn = 1.25f;
+                    dust.noGravity = true;
+                }    
             }
         }
         #endregion
@@ -1663,6 +1698,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
         }
         #endregion
+        #region 预防死亡
         // Prevent the player from accidentally killing SCal instead of having her turn into a town NPC.
         public override bool CheckDead()
         {
@@ -1678,6 +1714,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             else
                 return true;
         }
+        #endregion
         #region 击杀与掉落
         public override void BossLoot(ref string name, ref int potionType)
         {

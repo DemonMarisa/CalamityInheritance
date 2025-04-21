@@ -540,5 +540,10 @@ Configs: {
 			Label: Cal Stat Inflation B A C K
 			Tooltip: ""
 		}
+
+		SolarEclipseChange: {
+			Label: Solar Eclipse Change
+			Tooltip: ""
+		}
 	}
 }

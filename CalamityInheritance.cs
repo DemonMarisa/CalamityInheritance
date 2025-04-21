@@ -23,6 +23,8 @@ using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
 using System.Collections.Generic;
 using CalamityInheritance.System;
 using CalamityInheritance.Common.ModSupport;
+using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.NPCs.Boss.Yharon.Sky;
 
 namespace CalamityInheritance
 {
@@ -108,6 +110,9 @@ namespace CalamityInheritance
             //灰色
             Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(1f), EffectPriority.VeryHigh);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy4"] = new SCalSkyLegacy();
+            // 丛林龙的SKY
+            Filters.Scene["CalamityInheritance:Yharon"] = new Filter(new YharonScreenShaderDataLegacy("FilterMiniTower").UseColor(1f, 0.4f, 0f).UseOpacity(0.75f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:Yharon"] = new YharonSkyLegacy();
 
             AstralArcanumUI.Load(this);
             CalPopupGUIManager.LoadGUIs();

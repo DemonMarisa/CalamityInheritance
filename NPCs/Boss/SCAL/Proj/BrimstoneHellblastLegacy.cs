@@ -14,6 +14,7 @@ using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -40,7 +41,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             Projectile.timeLeft = 255;
             CooldownSlot = ImmunityCooldownID.Bosses;
         }
-
+        public int dustType = CIGlobalNPC.LegacySCalLament == -1 ? (int)CalamityDusts.Brimstone : CIDustID.DustMushroomSpray113 ;
         public override void AI()
         {
 
@@ -59,11 +60,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (Projectile.ai[1] == 0f)
             {
+                for(int i = 0; i < 15; i++)
+                {
+                    Vector2 sparkVelocity = Projectile.velocity.RotatedByRandom(0.4f) * Main.rand.NextFloat(0.4f, 0.8f);
+                    Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType, sparkVelocity, 0, default, Main.rand.NextFloat(1.2f, 1.5f));
+                }
                 Projectile.ai[1] = 1f;
                 SoundEngine.PlaySound(FireSound, Projectile.position);
             }
 
-            Projectile.velocity *= 1.07f;
+            Projectile.velocity *= 1.08f;
 
             if (Projectile.velocity.X < 0f)
             {

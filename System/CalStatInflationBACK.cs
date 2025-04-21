@@ -321,6 +321,7 @@ namespace CalamityInheritance.System
                 AuricBlance(item);
                 ShadowspecBlance(item);
                 CosmicBlance(item);
+                PolterghastBlance(item);
             }
         }
         #endregion
