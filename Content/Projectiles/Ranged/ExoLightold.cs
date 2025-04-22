@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -37,6 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             get => Projectile.localAI[1];
             set => Projectile.localAI[1] = value;
         }
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
@@ -171,7 +173,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
+            SoundStyle deathSound = Owner.CIMod().LoreExo || Owner.CIMod().PanelsLoreExo ? CISoundMenu.ExoFlameHard : SoundID.Item14;
+            SoundEngine.PlaySound(deathSound, Projectile.Center);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int projID = ModContent.ProjectileType<ExoSparkold>();

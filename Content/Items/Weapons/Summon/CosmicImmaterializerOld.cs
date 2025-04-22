@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         {
             CreateRecipe().
                 AddIngredient<Sirius>().
-                AddIngredient<AncientIceChunk>().
+                AddIngredient<AncientAncientIceChunk>().
                 AddIngredient<ElementalAxe>().
                 AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().

@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -43,11 +44,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.ToRadians(5f);
             Projectile.Opacity = Utils.GetLerpValue(180f, 174f, Projectile.timeLeft, true);
 
-            if(Projectile.timeLeft > 480)
+            if(Projectile.timeLeft > Projectile.MaxUpdates * 160)
                 Projectile.tileCollide = false;
             else
-                Projectile.tileCollide = true
-                    ;
+                Projectile.tileCollide = true;
             if (Projectile.localAI[0] == 0f)
             {
                 float initialSpeed = Main.rand.NextFloat(2.5f, 4.5f);
@@ -62,8 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 }
                 Projectile.localAI[0] = 1f;
             }
-
-            CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 4000f, 12f, 0f);
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 4000f, 12f, 0f);
         }
 
         public override void OnKill(int timeLeft)
@@ -71,7 +70,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             // Play a shatter sound.
             SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 
-            // Create a circular puff of green dust.
             float initialSpeed = Main.rand.NextFloat(2.5f, 4.5f);
             for (int i = 0; i < 16; i++)
             {

@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -77,10 +78,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 PulseEffect();
             }
+            //只让他在这个时候播报这个音效
+            if (Time == 90)
+                SoundEngine.PlaySound(CISoundMenu.VortexStart, Projectile.Center);
             //速度逐渐变慢
+            //我稍微改的利索了一点
             if (Time < 90)
             {
-                Projectile.velocity *= 0.97f;
+                Projectile.velocity *= 0.94f;
             }
             // Slow down and pulse frequently.
             else if (Time < 260)
@@ -109,7 +114,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.Damage();
             if (!Main.dedServ)
             {
-                SoundEngine.PlaySound(SoundID.Item43, Projectile.Center);
                 for (int i = 0; (float)i < 85; i++)
                 {
                     float angle = i / 85f * MathHelper.TwoPi;
@@ -127,7 +131,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public void ExplodeEffect()
         {
-            SoundEngine.PlaySound(SoundID.Item29, (Vector2?)Projectile.Center, null);
+            SoundEngine.PlaySound(CISoundMenu.VortexDone, (Vector2?)Projectile.Center, null);
             if (!Main.dedServ)
             {
                 for (int i = 0; i < 200; i++)

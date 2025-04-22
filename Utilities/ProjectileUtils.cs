@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection.PortableExecutable;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -407,6 +408,23 @@ namespace CalamityInheritance.Utilities
                 proj.usesIDStaticNPCImmunity = true;
                 proj.idStaticNPCHitCooldown = hitCD;
             }
+        }
+        /// <summary>
+        /// 一个用于手动同步射弹AI的写入句柄。目前主要同步timeLeft, alpha与scale
+        /// </summary>
+        /// <param name="projectile">射弹</param>
+        /// <param name="writer">写入</param>
+        public static void DoSyncHandlerWrite(this Projectile projectile, ref BinaryWriter writer)
+        {
+            writer.Write(projectile.timeLeft);
+            writer.Write(projectile.alpha);
+            writer.Write(projectile.scale);
+        }
+        public static void DoSyncHandlerRead(this Projectile projectile, ref BinaryReader reader)
+        {
+            projectile.timeLeft = reader.ReadInt32();
+            projectile.alpha = reader.ReadByte();
+            projectile.scale = reader.ReadSingle();
         }
     }
 }

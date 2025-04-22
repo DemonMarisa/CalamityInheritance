@@ -408,3 +408,15 @@ PlanteraLegendary: {
 
 HeavenlyGaleChange: ""
 PhotovisceratorChange: ""
+
+NorfleetLegacy: {
+	DisplayName: Norfleet Legacy
+	Tooltip: ""
+}
+
+ACTKarasawa: {
+	DisplayName: A C T Karasawa
+	Tooltip: ""
+}
+
+ChainWeaponChange: ""

@@ -13,6 +13,8 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod.Projectiles.Ranged;
+using CalamityMod.Particles;
+using Microsoft.Xna.Framework.Input;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -21,6 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/Supernovaold";
         public int Timer = 0;
+        public bool MouseInit = false;
         public Vector2 GetPrevMousePos = Vector2.Zero;
         public override void SetStaticDefaults()
         {
@@ -99,21 +102,26 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.owner == Main.myPlayer)
             {
                 Projectile.timeLeft = 3000;
-                Projectile.extraUpdates += 2;
-                CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
-                Rectangle mouseHitBox = new ((int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, Projectile.width, Projectile.height);
+                Projectile.extraUpdates += 4;
+                //除非你没有鼠标，不然这里肯定会在下方赋予成鼠标位置
+                Vector2 tar = Main.MouseWorld;
+                Rectangle mouseHitBox = new ((int)tar.X, (int)tar.Y, Projectile.width, Projectile.height);
                 if (Projectile.Hitbox.Intersects(mouseHitBox))
                 {
+                    MouseInit = true;
                     Projectile.Kill();
                 }
-                else 
+                else if (!MouseInit)
                 {
                     Projectile.scale *= 0.98f;
                     CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
+                    SparkParticle line = new SparkParticle(Projectile.Center - Projectile.velocity * 1.1f, Projectile.velocity * 0.01f, false, 18, 1f, Color.GhostWhite);
+                    GeneralParticleHandler.SpawnParticle(line);
                 }
             }
 
         }
+        
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Player player = Main.player[Projectile.owner];

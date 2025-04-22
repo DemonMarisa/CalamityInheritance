@@ -3,15 +3,18 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Build.Tasks.Deployment.ManifestUtilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
@@ -21,7 +24,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class SubsumingVortexold : CIMagic, ILocalizedModType
     {
-        
+        public SoundStyle[] TossSound=
+        [
+            CISoundMenu.VortexToss1,
+            CISoundMenu.VortexToss2,
+            CISoundMenu.VortexToss3
+        ];
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -38,12 +46,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5f;
-            Item.rare = ItemRarityID.Red;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<EnormousConsumingVortexold>();
             Item.shootSpeed = 7f;
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo)
+            {
+                Item.UseSound = Utils.SelectRandom(Main.rand, TossSound);
+            }
+            else Item.UseSound = SoundID.Item84;
+            return true;
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -63,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 3, ModContent.ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 4, ModContent.ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             }
             else
             {

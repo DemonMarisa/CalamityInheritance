@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using System.Dynamic;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -52,7 +53,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override float StealthDamageMultiplier => 1.20f;
         public override bool AltFunctionUse(Player player) => true;
-
+        public override bool CanUseItem(Player player)
+        {
+            //右键的逻辑会比较奇怪。
+            if (player.altFunctionUse == 2 && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && player.ownedProjectileCounts[ModContent.ProjectileType<SupernovaBombold>()] <= 0)
+                return false;
+            else return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //右键的逻辑会比较奇怪。
@@ -70,8 +77,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                         proj.netUpdate = true;
                     }
                 }
-                SoundStyle getSound = new ("CalamityMod/Sounds/Custom/ExoMechs/ApolloArtemisTargetSelection");
-                SoundEngine.PlaySound(getSound, player.Center);
+                SoundEngine.PlaySound(CISoundMenu.SupernovaRightClick, player.Center);
             }
             else if (player.altFunctionUse != 2)
             {

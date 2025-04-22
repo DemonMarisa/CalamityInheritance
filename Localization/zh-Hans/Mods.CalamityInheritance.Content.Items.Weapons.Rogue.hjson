@@ -112,6 +112,7 @@ Celestusold: {
 	ExoLoreOn:
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
 		[c/4169E1:void] [c/FFFFE0:SkyFallBlade][c/4169E1:()] 
 		{
 		    [c/87CEFA:所有攻击都会从上方投下一个复制镰刀];
@@ -279,4 +280,20 @@ CelestusChange:
 	'''
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
 	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:衍生的圣金镰刀将会回击你的敌人];
+	'''
+AtomChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:显著提升攻击频率];
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:NotStealthAI][c/4169E1:()]
+	{
+	    [c/87CEFA:投射一个一段距离后停下的投枪];
+	    [c/87CEFA:投枪会搜索距离最近的敌怪并生成多个复制体进行攻击];
+	}
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()]
+	{
+	    [c/87CEFA:潜伏攻击扩大搜索范围, 且复制体将会从天而降];
+	    [c/87CEFA:也会有一部分复制体从玩家身上发射出去];
+	};
 	'''

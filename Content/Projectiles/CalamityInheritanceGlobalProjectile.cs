@@ -7,6 +7,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
+using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using System;

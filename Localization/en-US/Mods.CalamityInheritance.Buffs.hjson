@@ -207,3 +207,8 @@ VolcanoBuff: {
 	Description: Mods.CalamityInheritance.Buffs.VolcanoBuff.Description
 	DisplayName: Volcano Buff
 }
+
+AncientClasperBuff: {
+	DisplayName: Ancient Clasper Buff
+	Description: Mods.CalamityInheritance.Buffs.AncientClasperBuff.Description
+}

@@ -65,6 +65,7 @@ Mods: {
 			VerdantYoyo.DisplayName: Verdant Yoyo
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
+			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
 		}
 
 		Content/Projectiles/Summon: {

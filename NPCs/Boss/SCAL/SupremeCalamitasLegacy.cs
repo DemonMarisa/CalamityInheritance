@@ -348,9 +348,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 isBrotherAlive = false;
 
             if (Enraged)
-                vectorMultiplier = 2f;
+                vectorMultiplier += 2f;
             else
-                vectorMultiplier = 1f;
+                vectorMultiplier = 1.2f;
 
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
@@ -1313,7 +1313,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 初始化随机偏移
             if (attacktimer == 1)
             {
-                rotationOffset = Main.rand.NextFloat(0, 1);
+                rotationOffset = MathHelper.Pi;
                 spinCount += rotationOffset;
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
             }
