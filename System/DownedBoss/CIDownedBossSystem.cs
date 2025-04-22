@@ -14,10 +14,10 @@ namespace CalamityInheritance.System.DownedBoss
     // RE我草你妈，为什么不给EOW和BOC写单独的DownedBoss
     public class CIDownedBossSystem : ModSystem
     {
-        public static bool _downedEOW = false;
-        public static bool _downedBOC = false;
-        public static bool _downedBloodMoon = false;
-        public static bool _downedLegacySCal = false;
+        internal static bool _downedEOW = false;
+        internal static bool _downedBOC = false;
+        internal static bool _downedBloodMoon = false;
+        internal static bool _downedLegacySCal = false;
 
         public static bool DownedEOW
         {

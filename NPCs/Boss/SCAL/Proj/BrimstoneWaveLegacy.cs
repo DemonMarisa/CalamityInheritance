@@ -13,6 +13,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items;
+using CalamityMod.Dusts;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -47,9 +49,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             x = reader.ReadInt32();
         }
-
         public override void AI()
         {
+
             Dust dust = Dust.NewDustPerfect(Projectile.Center, Main.rand.NextBool(3) ? 60 : 114);
             dust.noGravity = true;
             dust.velocity = Projectile.velocity * Main.rand.NextFloat(0.1f, 0.7f);

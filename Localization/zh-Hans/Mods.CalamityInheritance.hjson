@@ -519,5 +519,10 @@ Configs: {
 				因此，这个数值膨胀是全局性的，他会影响其他灾厄附属的数值。
 				'''
 		}
+
+		SolarEclipseChange: {
+			// Label: Solar Eclipse Change
+			// Tooltip: ""
+		}
 	}
 }

@@ -163,10 +163,10 @@ namespace CalamityInheritance.Utilities
             // 速度曲线
             float lerpValue = 1f - (float)Math.Pow(Utils.GetLerpValue(movementDistanceGateValue, maxLerpDistance, distance, true), 0.5);
 
-            // 最小速度：使用距离的平方根实现平滑减速
+            // 最小速度
             float minSpeedCap = Math.Min(baseVelocity, (float)Math.Sqrt(distance * 2));
 
-            // 最大速度：基于加速度动态调整
+            // 最大速度
             float maxSpeedCap = baseVelocity * velocityMultiplier + acceleration * (1 / 60);
             Vector2 maxVelocity = distanceFromDestination / (24f - acceleration); // 加速度越大响应越快
             maxVelocity = maxVelocity.ClampMagnitude(minSpeedCap, maxSpeedCap);
@@ -223,6 +223,13 @@ namespace CalamityInheritance.Utilities
                 npc.velocity = desiredVelocity;
         }
         #endregion
+        #region 接近目标
+        public static void CloseTarget(NPC npc, Vector2 distanceFromDestination)
+        {
+            float distance = distanceFromDestination.Length();
+        }
+        #endregion
+        #region 搜索boss掉落物
         /// <summary>
         /// 快速获取boss掉落物并存入字典
         /// 感谢小花的帮助（
@@ -275,5 +282,6 @@ namespace CalamityInheritance.Utilities
                 return false;
             return false;
         }
+        #endregion
     }
 }

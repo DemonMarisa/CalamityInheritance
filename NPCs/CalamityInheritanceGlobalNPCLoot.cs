@@ -33,6 +33,7 @@ using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
@@ -51,6 +52,7 @@ using CalamityMod.NPCs.ExoMechs.Ares;
 using CalamityMod.NPCs.ExoMechs.Thanatos;
 using CalamityMod.NPCs.HiveMind;
 using CalamityMod.NPCs.Leviathan;
+using CalamityMod.NPCs.NormalNPCs;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.PlaguebringerGoliath;
@@ -93,6 +95,8 @@ namespace CalamityInheritance.NPCs
         #region Modify NPC Loot Main Hook
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            LeadingConditionRule postDoG = npcLoot.DefineConditionalDropSet(DropHelper.PostDoG());
+
             if (npc.type == ModContent.NPCType<IrradiatedSlime>())
                 npcLoot.Add(ModContent.ItemType<LeadCore>(), 3 );
 
@@ -510,15 +514,14 @@ namespace CalamityInheritance.NPCs
                     break;
                 case NPCID.MoonLordCore:
                     // Lore
-                    {
-                        npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
-                        var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientXerocPlateMail>(), 1);
-                        mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocMask>()));
-                        mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocCuisses>()));
-                        npcLoot.Add(mlArmorLoot);
-                        break;
-                    }
-                #endregion
+                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
+                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientXerocPlateMail>(), 1);
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocMask>()));
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocCuisses>()));
+                    npcLoot.Add(mlArmorLoot);
+                    break;
+
+               #endregion
 
             }
         }
