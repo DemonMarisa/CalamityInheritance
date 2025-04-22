@@ -1318,8 +1318,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 初始化随机偏移
             if (attacktimer == 1)
             {
-                rotationOffset = MathHelper.Pi;
-                spinCount += rotationOffset;
+                spinCount += MathHelper.Pi;
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
             }
             // 旋转
