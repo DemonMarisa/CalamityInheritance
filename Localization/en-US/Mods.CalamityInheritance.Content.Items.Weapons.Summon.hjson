@@ -67,3 +67,8 @@ CyrogenLegendary: {
 }
 
 SaveCosmic: ""
+
+AncientAncientIceChunk: {
+	DisplayName: Ancient Ancient Ice Chunk
+	Tooltip: ""
+}

@@ -68,12 +68,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 CreateRecipe()
                     .AddIngredient<LoreGolem>()
-                    .AddTile(TileID.AncientMythrilBrick)
+                    .AddTile(TileID.MythrilAnvil)
                     .Register();
 
                 CreateRecipe()
                     .AddIngredient<KnowledgeGolem>()
-                    .AddTile(TileID.AncientMythrilBrick)
+                    .AddTile(TileID.MythrilAnvil)
                     .Register();
             }
         }

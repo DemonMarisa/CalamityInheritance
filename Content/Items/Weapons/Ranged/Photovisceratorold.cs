@@ -17,6 +17,8 @@ using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using Terraria.Audio;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -61,19 +63,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool CanUseItem(Player player)
         {
+            bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
+            SoundStyle leftClick  = isLoreExo ? CISoundMenu.ExoFlameLeft  : CISoundID.SoundFlamethrower;
+            SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
             if (player.altFunctionUse == 2)
             {
-                //Item.useTime = 2;
-                //Item.useAnimation = 10;
-                Item.shoot = ModContent.ProjectileType<ExoFlareClusterold>();
                 Item.useTime = 2;
                 Item.useAnimation = 27;
+                Item.shoot = ModContent.ProjectileType<ExoFlareClusterold>();
+                Item.UseSound = rightClick;
             }
             else
             {
                 Item.useTime = 2;
                 Item.useAnimation = 10;
                 Item.shoot = ModContent.ProjectileType<ExoFireold>();
+                Item.UseSound = leftClick;
             }
             return base.CanUseItem(player);
         }
@@ -115,7 +120,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             }
             
-            if (--PhotoLight <= 0)
+            if (--PhotoLight <= 0 && usPlayer.GlobalFireDelay <= 0)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -127,7 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     lightBomb.localAI[1] = yDirection;
                     lightBomb.netUpdate = true;
                 }
-
+                usPlayer.GlobalFireDelay = 10;
                 PhotoLight = 5;
             }
 

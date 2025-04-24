@@ -152,11 +152,16 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 射手
             // 30伤 30爆 15攻速 30穿 常态狙击镜
+
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
+            //我草，谁家好人给远程攻速
             Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
-            if (rangeLevel > 14)
-                Player.scope = true;
+            //移除狙击镜效果
+            //不是，哥们，这个狙击镜他会影响某些右键
+            //比如星火右键喷不出来
+            // if (rangeLevel > 14)
+            //     Player.scope = true;
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
@@ -182,7 +187,7 @@ namespace CalamityInheritance.CIPlayer
             // 30%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
             Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.02f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
-            modPlayer.rogueStealthMax += rogueLevel * 0.02f;
+            // modPlayer.rogueStealthMax += rogueLevel * 0.02f;
             if (rogueLevel > 14)
                 modPlayer.wearingRogueArmor = true;
             #endregion
@@ -203,7 +208,6 @@ namespace CalamityInheritance.CIPlayer
             //boss倍率是最后执行的
             meleePool += (int)(points * bossMultipler);
             expCD = CD;
-
         }
         public static int RecoredKSHealth()
         {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Formats.Tar;
-using System.Numerics;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -10,7 +8,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using CalamityInheritance.Content.Items;
 
@@ -25,6 +22,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static readonly int Lifetime = 3000;
         private static readonly float canHomingCounter = 100f; //大锤子体积过大，因此开始追踪前飞行的距离应当更长
         public ref int HitCounts => ref Main.player[Projectile.owner].CIMod().HammerCounts;
+        public int TargetIndext
+        {
+            get => (int)Projectile.ai[1];
+            set => Projectile.ai[1] = value;
+        }
         public float HitSpins = 0f;
         public float GetStealth = 0f; //获取潜伏值的缓存
 

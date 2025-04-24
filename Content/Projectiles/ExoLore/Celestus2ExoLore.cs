@@ -30,6 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.localNPCHitCooldown = 30;
             Projectile.timeLeft = 85;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()

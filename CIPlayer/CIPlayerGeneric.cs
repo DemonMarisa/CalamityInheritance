@@ -47,6 +47,8 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region 武器效果
         public float AnimusDamage = 1f;
+        public int DNAImmnue = 0;
+        public int DNAImmnueActive = 0;
         public bool BuffPolarisBoost = false;
         public bool photovisceratorCrystal = false;
         //我不太确认bool数组new的时候是否会自动为false，所以这样写了
@@ -153,6 +155,7 @@ namespace CalamityInheritance.CIPlayer
         public bool MagicHatOld = false;
         public bool MidnnightSunBuff = false;
         public bool cosmicEnergy = false;
+        public bool IsAncientClasper = false; 
         #endregion
         #region 禁止生成物品
         public bool cIdisableVoodooSpawns = false;
@@ -188,6 +191,7 @@ namespace CalamityInheritance.CIPlayer
             MidnnightSunBuff = false;
             ReaverSummonerOrb = false;
             cosmicEnergy = false;
+            IsAncientClasper = false;
             #endregion
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;
@@ -215,11 +219,13 @@ namespace CalamityInheritance.CIPlayer
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否在攻击
             DraedonsHeartLegacyStats = false;
+            DNAImmnue = 0;
             AnimusDamage = 1f;
             //这个用于传奇物品的总伤害计数
             DamagePool = 0;
             DefendTier1Timer = 0;
             DefenseBoost = 0f;
+            DNAImmnueActive = 0;
         }
         public override void PostUpdate()
         {
@@ -411,9 +417,9 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.mount.Active)
             {
                 _ = 1f +
-                    (AuricSilvaSet ? 0.05f : 0f);
+                    (AuricSilvaFakeDeath ? 0.05f : 0f);
                 _ = 1f +
-                    (AuricSilvaSet ? 0.05f : 0f);
+                    (AuricSilvaFakeDeath ? 0.05f : 0f);
             }
 
             #region DashEffects
@@ -584,7 +590,7 @@ namespace CalamityInheritance.CIPlayer
         #region Limitations
         public void ForceVariousEffects()
         {
-            if (auricsilvaCountdown > 0 && AuricGetSilvaEffect && AuricSilvaSet && Player.dashDelay < 0 || CIDashDelay < 0)
+            if (DoAuricSilvaCountdown > 0 && (AuricGetSilvaEffect || AuricSilvaFakeDeath) && AuricSilvaFakeDeath && Player.dashDelay < 0 || CIDashDelay < 0)
             {
                 if (Player.lifeRegen < 0)
                     Player.lifeRegen = 0;

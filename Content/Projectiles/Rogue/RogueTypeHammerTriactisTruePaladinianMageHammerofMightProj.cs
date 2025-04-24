@@ -8,6 +8,11 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items;
+using System.Linq.Expressions;
+using System;
+using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Items.Weapons.Melee;
+using System.Security;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -16,7 +21,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         bool ifSummonClone = false;
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.45f }; //Item89:流星法杖射弹击中时的音效
-        
+        #region 别名
+        public ref float AttackTimer => ref Projectile.ai[0];
+        public ref float AttackType => ref Projectile.ai[1];
+        public ref float IsCloned => ref Projectile.ai[2];
+        public Player Owner => Main.player[Projectile.owner];
+        #endregion
+        #region 攻击枚举
+        public const float IsShooted = 0f;
+        public const float IsReturning = 1f;
+        public const float IsStealth = 2f;
+        #endregion
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -36,81 +51,95 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity= true;
             Projectile.localNPCHitCooldown= 7; //6-7
             Projectile.timeLeft = 1000;
-            
         }
 
         public override void AI()
         {
-            Player owner = Main.player[Projectile.owner];
+
+            DoGeneric();
+            switch (AttackType)
+            {
+                case IsShooted:
+                    DoShooted();
+                    break;
+                case IsReturning:
+                    DoReturning();
+                    break;
+                case IsStealth:
+                    DoStealth();
+                    break;
+            }
+            
+        }
+
+        private void DoGeneric()
+        {
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.75f);
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 30;
                 SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
-            switch (Projectile.ai[0])
-            {
-                case 0f:
-                    Projectile.ai[1] += 1f;
-                    if (Projectile.ai[1] >= 40f)
-                    {
-                        Projectile.ai[0] = 1f;
-                        Projectile.ai[1] = 0f;
-                        Projectile.netUpdate = true;
-                    }
-                    break;
-
-                case 1f:
-                    float returnSpeed = 20f;
-                    float acceleration = 3.2f;
-
-                    //回旋镖返程的AI封装, 把这个封装了真的方便了很多东西
-                    CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
-                    if (Main.myPlayer == Projectile.owner)
-                    {
-                        Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                        //大锤子体积太大了，所以为了防止视觉上像是“锤子”敲了玩家头一样， 因此这个锤子会在离玩家更远的地方判定
-                        Rectangle mplrHitbox = new((int)owner.position.X, (int)owner.position.Y,
-                                                   Projectile.ai[2] != -1f ? (int)(owner.width * 2.0f) : (int)(owner.width * 1.5f),
-                                                   Projectile.ai[2] != -1f ? (int)(owner.height * 2.0f) : (int)(owner.height * 1.5f));
-                        if (projHitbox.Intersects(mplrHitbox))
-                        {
-                            //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
-                            //这个主要是为了实现锤子的返程效果，具体看Clone那写的注释
-                            //挂载结束准备返程的锤子不会执行这段if语句
-                            if(Projectile.Calamity().stealthStrike && Projectile.ai[2] != -1f) 
-                            {
-                                Projectile.velocity *= -1.3f;
-                                Projectile.timeLeft = 600;
-                                Projectile.penetrate = 1;
-                                Projectile.localNPCHitCooldown = -1;
-                                Projectile.netUpdate = true;
-                                Projectile.ai[0] = 2f;
-                            }
-                            else if(Projectile.ai[2] == -1f) 
-                            {
-                                //只有挂在过的锤子回收到玩家上才会生成这些粒子和音效
-                                ReturnDust(); 
-                                SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.8f} : CISoundMenu.HammerReturnID2 with {Volume = 0.8f}, Projectile.Center);
-                                Projectile.ai[2] = 0f;
-                            }
-                            else
-                            //干掉这个弹幕
-                            Projectile.Kill();
-                        }
-                    }
-                    break;
-                
-                case 2f:
-                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, 24f, 0f, 30f);
-                    ifSummonClone = true;
-                    break;
-
-                default:
-                    break;
-            }
             //无论状态，锤子都应当在飞行过程中旋转
             Projectile.rotation += 0.22f;
+        }
+
+        private void DoStealth()
+        {
+            CIFunction.HomeInOnNPC(Projectile, true, 1250f, 24f, 0f, 30f);
+            ifSummonClone = true;
+        }
+
+        private void DoReturning()
+        {
+            float returnSpeed = 20f;
+            float acceleration = 3.2f;
+            //回旋镖返程的AI封装, 把这个封装了真的方便了很多东西
+            CIFunction.BoomerangReturningAI(Owner, Projectile, returnSpeed, acceleration);
+            if (Main.myPlayer == Projectile.owner)
+            {
+                //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
+                //这个主要是为了实现锤子的返程效果，具体看Clone那写的注释
+                bool isNotClonedReturnProj = IsCloned != -1f;
+                int pWidth  = isNotClonedReturnProj ? Owner.width  * 2 : (int)(Owner.width  * 1.5f);
+                int pHeight = isNotClonedReturnProj ? Owner.height * 2 : (int)(Owner.height * 1.5f);
+                //大锤子体积太大了，所以为了防止视觉上像是“锤子”敲了玩家头一样， 因此这个锤子会在离玩家更远的地方判定
+                Rectangle mplrHitbox = new ((int)Owner.position.X, (int)Owner.position.Y, pWidth, pHeight);
+                if (Projectile.Hitbox.Intersects(mplrHitbox))
+                {
+                    if(Projectile.Calamity().stealthStrike && isNotClonedReturnProj) 
+                    {
+                        Projectile.velocity *= -1.3f;
+                        Projectile.timeLeft = 600;
+                        Projectile.penetrate = 1;
+                        Projectile.localNPCHitCooldown = -1;
+                        Projectile.netUpdate = true;
+                        AttackType = IsStealth;
+                    }
+                    else
+                    {
+                        //干掉这个弹幕
+                        Projectile.Kill();
+                        //减少一层缩进
+                        if (isNotClonedReturnProj)
+                            return;
+
+                        ReturnDust(); 
+                        SoundEngine.PlaySound(Main.rand.NextBool(2)? CISoundMenu.HammerReturnID1 with {Volume = 0.8f} : CISoundMenu.HammerReturnID2 with {Volume = 0.8f}, Projectile.Center);
+                    }
+                }
+            }
+        }
+
+        private void DoShooted()
+        {
+            AttackTimer += 1f;
+            if (AttackTimer >= 40f)
+            {
+                AttackType = IsReturning;
+                AttackTimer = 0f;
+                Projectile.netUpdate = true;
+            }
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -121,7 +150,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //普攻与潜伏共享的效果: 爆炸
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
+            int boom = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjExplosion>();
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, boom, (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 0f);
             Player owner = Main.player[Projectile.owner];
             if(Projectile.Calamity().stealthStrike)
             {
@@ -130,15 +160,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 SpawnSparks(hit);
                 SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
                 //潜伏时生成的锤子才会具备挂载属性
-                //这个ifSummonClone是纯多余的，但是也不好改了
+                //这个ifSummonClone是纯多余的，但是也不好改了   
                 if(ifSummonClone) 
                 {
                     SoundEngine.PlaySound(CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
                     SpawnSparks(hit);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y,
-                                             Projectile.velocity.X, Projectile.velocity.Y,
-                                             ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(),
-                                            (int)(Projectile.damage * 1.1f), Projectile.knockBack, Main.myPlayer);
+                    int pTyoe = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>();
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, pTyoe, (int)(Projectile.damage * 1.1f), Projectile.knockBack, Main.myPlayer, 0f, target.whoAmI);
                 }
                 ifSummonClone = false;
             }

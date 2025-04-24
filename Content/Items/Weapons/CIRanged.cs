@@ -1,3 +1,4 @@
+using CalamityInheritance.System.Configs;
 using Terraria.ID;
 using Terraria.ModLoader;
 

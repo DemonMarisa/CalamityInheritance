@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             usPlayer.SilvaMagicSetLegacy = true;
             usPlayer.GodSlayerMagicSet = true;
 
-            usPlayer.AuricSilvaSet = true;
+            usPlayer.AuricSilvaFakeDeath = true;
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
                 usPlayer.GodSlayerReborn = true;

@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -28,6 +29,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public static readonly SoundStyle UseSound = new("CalamityMod/Sounds/Item/VividClarityShoot") { Volume = 0.30f };
         public static readonly SoundStyle BeamSound = new("CalamityMod/Sounds/Item/VividClarityBeamAppear");
+        public static readonly SoundStyle[] UniqueUse =
+        [
+            CISoundMenu.VividToss1,
+            CISoundMenu.VividToss2,
+            CISoundMenu.VividToss3
+        ];
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

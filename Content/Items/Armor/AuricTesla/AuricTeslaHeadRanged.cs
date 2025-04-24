@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer1.SilvaRangedSetLegacy = true;
             modPlayer1.AuricbloodflareRangedSoul = true;
 
-            modPlayer1.AuricSilvaSet = true;
+            modPlayer1.AuricSilvaFakeDeath = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;

@@ -22,7 +22,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientGodSlayerStat = false; //弑神数值
         #endregion
         #region AncientSilva
-        public bool AncientSilvaSet = false;
+        public bool AncientSilvaForceRegen = false;
         public bool AncientSilvaStat = false; //林海数值
         public int AncientSilvaRegenCD = 0;
         public int AncientSilvaRegenTimer = 120; //一秒
@@ -50,23 +50,24 @@ namespace CalamityInheritance.CIPlayer
         public bool SilvaRangedSetLegacy = false;
         public bool SilvaSummonSetLegacy = false;
         public bool SilvaRougeSetLegacy = false;
-        public bool SilvaRebornMark = false;
+        public bool SilvaFakeDeath = false;
         #endregion
         #region Auric
         public bool AuricDebuffImmune = false;
         public bool AuricbloodflareRangedSoul = false;
         public bool auricBoostold = false;
-        public bool AuricSilvaSet = false;
+        public bool AuricSilvaFakeDeath = false;
         public bool AncientAuricSet = false; //暴君套
         public int AncientAuricHealCooldown = 0; //暴君套回血CD
         public bool auricYharimAntiSummonerDMGReduction = false; //暴君套直接数值对撞抗召唤减伤
         public int PerunofYharimCooldown = 0; //暴君套打击cd
         public bool PerunofYharimStats= false;
         public bool AuricGetSilvaEffect = false;
-        public static int CIsilvaReviveDuration = 900;
-        public int CIsilvaCountdown = CIsilvaReviveDuration;
-        public static int AuricSilvaInvincibleTime = 600;
-        public int auricsilvaCountdown = AuricSilvaInvincibleTime;
+        public bool IsUsedSilvaReborn = false;
+        public const int SilvaRebornDura = 900;
+        public int DoSilvaCountDown = SilvaRebornDura;
+        public const int AuricSilvaRebornDura = 600;
+        public int DoAuricSilvaCountdown = AuricSilvaRebornDura;
         #endregion
         #region Reaver
         //永恒套
@@ -132,7 +133,7 @@ namespace CalamityInheritance.CIPlayer
             AncientGodSlayerStat = false;
             #endregion
             #region AncientSilva
-            AncientSilvaSet = false;
+            AncientSilvaForceRegen = false;
             AncientSilvaRegenFlag = false;
             AncientSilvaStat = false;
             #endregion
@@ -155,13 +156,13 @@ namespace CalamityInheritance.CIPlayer
             SilvaRangedSetLegacy = false;
             SilvaSummonSetLegacy = false;
             SilvaRougeSetLegacy = false;
-            SilvaRebornMark = false;
+            SilvaFakeDeath = false;
             #endregion
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
             auricBoostold = false;
-            AuricSilvaSet = false;
+            AuricSilvaFakeDeath = false;
             AncientAuricSet = false;
             PerunofYharimStats = false;
             #endregion
@@ -203,7 +204,7 @@ namespace CalamityInheritance.CIPlayer
             AncientGodSlayerStat = false;
             #endregion
             #region AncientSilva
-            AncientSilvaSet = false;
+            AncientSilvaForceRegen = false;
             AncientSilvaStat = false;
             AncientSilvaRegenCD = 0;
             AncientSilvaRegenTimer = 0;
@@ -231,9 +232,10 @@ namespace CalamityInheritance.CIPlayer
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
+            IsUsedSilvaReborn = false;
             AuricGetSilvaEffect = false;
-            auricsilvaCountdown = AuricSilvaInvincibleTime;
-            CIsilvaCountdown = CIsilvaReviveDuration;
+            DoAuricSilvaCountdown = AuricSilvaRebornDura;
+            DoSilvaCountDown = SilvaRebornDura;
             auricBoostold = false;
             AncientAuricSet = false;
             AncientAuricHealCooldown = 0;

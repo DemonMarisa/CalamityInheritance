@@ -1,6 +1,7 @@
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Typeless;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -8,6 +9,8 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         #region 饰品相关
+        //cnm红月。
+        public bool FUCKYOUREDMOON = false;
         public bool IfGodHand = false;
         public bool IfWormScarf = false;
         public bool IfCalamitasSigile = false;
@@ -69,6 +72,7 @@ namespace CalamityInheritance.CIPlayer
         public void ResetAccessories()
         {
             #region Accessories
+            FUCKYOUREDMOON = false;
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否正在攻击
             AnkhImmnue = false;
@@ -137,7 +141,7 @@ namespace CalamityInheritance.CIPlayer
         public void UpdateDeadAccessories()
         {
             AnkhImmnue = false;
-            
+            FUCKYOUREDMOON = false;
             BuffStatBloodPact = false;
             SolarShieldEndurence = false;
             SMarbleSword = false;

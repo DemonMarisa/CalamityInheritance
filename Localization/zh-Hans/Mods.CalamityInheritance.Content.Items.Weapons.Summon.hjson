@@ -35,6 +35,7 @@ CosmicImmaterializerOld: {
 	ExoLoreOn:
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
 		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:AI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:发射更多宇宙能量];
 		[c/4169E1:void] [c/FFFFE0:CosmicEnergyAI] [c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:宇宙能量会在发射一段时间后跟踪];
 		'''
@@ -93,3 +94,8 @@ SaveCosmic:
 	    [c/87CEFA:但宇宙之灵本身不再消耗召唤栏];
 	}
 	'''
+
+AncientAncientIceChunk: {
+	// DisplayName: Ancient Ancient Ice Chunk
+	// Tooltip: ""
+}

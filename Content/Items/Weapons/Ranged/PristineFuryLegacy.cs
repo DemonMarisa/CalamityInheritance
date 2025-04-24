@@ -110,15 +110,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient<LoreProvidence>();
-                recipe1.AddTile(TileID.AncientMythrilBrick);
-                recipe1.Register();
+               CreateRecipe().
+                    AddIngredient<LoreProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
 
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient<KnowledgeProvidence>();
-                recipe2.AddTile(TileID.AncientMythrilBrick);
-                recipe2.Register();
+                CreateRecipe().
+                    AddIngredient<KnowledgeProvidence>().
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
             }
         }
     }

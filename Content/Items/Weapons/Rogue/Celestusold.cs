@@ -18,6 +18,8 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using Terraria.Localization;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using Terraria.Audio;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -25,6 +27,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     {
         public static string SetRoute => $"{Generic.WeaponLocal}";
         public const float SetProjSpeed = 27f;
+        public SoundStyle[] getSound =
+            [
+                CISoundMenu.CelestusToss1,
+                CISoundMenu.CelestusToss2,
+                CISoundMenu.CelestusToss3
+            ];
         public new string LocalizationCategory => $"{SetRoute}.Rogue";
         public override void SetStaticDefaults()
         {
@@ -49,7 +57,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && player.Calamity().StealthStrikeAvailable())
+            {
+                Item.UseSound = Utils.SelectRandom(Main.rand, getSound);
+            }
+            else Item.UseSound = CISoundID.SoundWeaponSwing;
+            return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool canStealth = player.Calamity().StealthStrikeAvailable();

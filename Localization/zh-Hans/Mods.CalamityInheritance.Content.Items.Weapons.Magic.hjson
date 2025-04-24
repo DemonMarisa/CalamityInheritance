@@ -94,6 +94,7 @@ SubsumingVortexold: {
 	ExoLoreOn:
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
 		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:强化射弹初始速度];
 		[c/4169E1:void] [c/FFFFE0:HomeInOnTargetBetter][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:发射出去一段时间后会追踪敌人];
 		'''
@@ -131,6 +132,7 @@ VividClarityOld: {
 	ExoLoreOn:
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
 		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()]
 		{
 		    [c/87CEFA:现在发射9道星流光束];

@@ -5,18 +5,14 @@ using Terraria.ModLoader;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoGladProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orb");
-        }
-
-        public override void SetDefaults()
+       public override void SetDefaults()
         {
             Projectile.width = 10;
             Projectile.height = 10;
@@ -61,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 18f, 10f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 22f, 10f);
             }
             else
                 CalamityUtils.HomeInOnNPC(Projectile, true, 1000f, 12f, 20f);
@@ -113,10 +109,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
                 if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
+
+                    ExoGladiusProj.GiveImmue(player, 60, 45);
                     for (int j = 0; j < comet; ++j)
                     {
                         CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), swordDmg, swordKB, Projectile.owner);
                     }
+
                 }
             }
         }

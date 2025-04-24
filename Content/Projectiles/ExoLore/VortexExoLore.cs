@@ -25,7 +25,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             get => (int)Projectile.ai[0];
             set => Projectile.ai[0] = value;
         }
-
         public const float AngularMovementSpeed = 0.1f;
         public const float Acceleration = 0.0025f;
         public const float TargetCheckInterval = 30f;
@@ -44,7 +43,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
         }
-
         public override void AI()
         {
             // At the very beginning, start without a target.

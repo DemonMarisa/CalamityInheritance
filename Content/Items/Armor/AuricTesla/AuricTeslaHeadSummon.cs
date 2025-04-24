@@ -68,21 +68,21 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            CalamityInheritancePlayer modplayer1 = player.GetModPlayer<CalamityInheritancePlayer>();
+            CalamityInheritancePlayer CIPlayer = player.GetModPlayer<CalamityInheritancePlayer>();
             var modPlayer = player.Calamity();
             modPlayer.tarraSet = true;
             modPlayer.tarraSummon = true;
             modPlayer.bloodflareSet = true;
             modPlayer.bloodflareSummon = true;
-            modplayer1.AuricSilvaSet = true;
+            CIPlayer.AuricSilvaFakeDeath = true;
             modPlayer.silvaSummon = true;
             modPlayer.godSlayer = true;
 
-            modplayer1.GodSlayerSummonSet = true;
+            CIPlayer.GodSlayerSummonSet = true;
 
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
-                modplayer1.GodSlayerReborn = true;
+                CIPlayer.GodSlayerReborn = true;
             }
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
             {
@@ -93,8 +93,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
 
-            modplayer1.SilvaSummonSetLegacy = true;
-
+            CIPlayer.SilvaSummonSetLegacy = true;
             modPlayer.WearingPostMLSummonerSet = true;
 
             player.thorns += 3f;

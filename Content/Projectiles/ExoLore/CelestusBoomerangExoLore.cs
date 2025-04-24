@@ -38,6 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 20;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()
@@ -128,6 +129,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 1.4f), (float)(-Math.Cos(offsetAngle) * 1.4f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
                 }
             }
+
             SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
         }
 

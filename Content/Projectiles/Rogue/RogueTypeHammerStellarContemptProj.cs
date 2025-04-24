@@ -15,11 +15,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
 
+        #region 射弹属性
         private static float RotationIncrement = 0.22f;
         private static int Lifetime = 240;
         private float stealthSpeed = 25f;
         private static float ReboundTime = 40f;
         bool ifSummonClone = false;
+        #endregion
 
         public override void SetStaticDefaults()
         {

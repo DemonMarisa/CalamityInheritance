@@ -78,6 +78,7 @@ ExoGladius: {
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
 		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:增强射弹追踪能力];
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:GiveImmue][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:攻击敌人时会使你在短时间内降低20%承伤];
 		[c/4169E1:void] [c/FFFFE0:ProjSpawnComet][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:射弹击中敌人也能从天而降追踪彗星];
 		'''
 }

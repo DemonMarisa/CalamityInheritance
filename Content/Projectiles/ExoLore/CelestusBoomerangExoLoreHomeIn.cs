@@ -13,6 +13,8 @@ using System.ComponentModel.DataAnnotations;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Rogue;
 using System.Data;
+using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -25,17 +27,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private float Timer2 = 0f;
         #region 攻击类型枚举
         const float IsReturning = -1f;
-        const float IsHoming = 0f;
         const float IsAttacking = 1f;
         const float IsIdleing = 2f;
         #endregion
         #region 数组别名
         const int AttackType = 0;
         const int PhaseTimer = 1;
-        const int HitCounter = 2;
         #endregion
         #region 基础属性
-        public int ForceTarget = -1;
         public int ColorTimer = 0;
         #endregion
         public override void SetStaticDefaults()
@@ -54,11 +53,28 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Projectile.alpha = 50;
+            Projectile.alpha = 255;
             Projectile.localNPCHitCooldown = 20;
             Projectile.timeLeft = 600;
             Projectile.velocity *= -1f;
             Projectile.netUpdate = true;
+            Projectile.noEnchantmentVisuals = true;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(Timer);
+            writer.Write(Timer2);
+            writer.Write(initialized);
+            writer.Write(ColorTimer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            Timer = reader.ReadInt32();
+            Timer2 = reader.ReadInt32();
+            ColorTimer = reader.ReadInt32();
+            initialized = reader.ReadBoolean();
         }
         public override bool? CanDamage()
         {
@@ -67,7 +83,9 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-
+            //补：在这个过程中alpha会快速上升
+            if (Projectile.alpha > 50)
+                Projectile.alpha -= 10;
             //重做AI逻辑, 我们先获取这个敌怪单位
             NPC target = CIFunction.FindClosestTarget(Projectile, 5000f, true);
             //如果目标不存在直接执行返程AI
@@ -100,11 +118,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     default:
                         break;
                 }
-            }
-            if (Projectile.soundDelay == 0)
-            {
-                Projectile.soundDelay = 8;
-                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
         }
 
@@ -197,6 +210,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Projectile.ai[PhaseTimer] += 1f;
             }
             
+            
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -219,10 +233,19 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            
             if (Projectile.ai[AttackType] == IsAttacking)
             {
                 Projectile.ai[AttackType] = IsIdleing;
                 Projectile.netUpdate = true;
+                //之播放一次。
+                SoundStyle[] getSound =
+                [
+                    CISoundMenu.CelestusOnHit1,
+                    CISoundMenu.CelestusOnHit2,
+                    CISoundMenu.CelestusOnHit3
+                ];
+                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, getSound), Projectile.position);
             }
             target.ExoDebuffs();
             OnHitEffects();
@@ -250,7 +273,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 0.6f), (float)(-Math.Cos(offsetAngle) * 0.6f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
                 }
             }
-            SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
         }
 
         public override bool PreDraw(ref Color lightColor)

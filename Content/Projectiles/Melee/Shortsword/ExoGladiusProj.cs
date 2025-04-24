@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -65,7 +66,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         {
             target.AddBuff(ModContent.BuffType<ElementalMix>(), 300);
             SpawnMeteor(Main.player[Projectile.owner]);
+            GiveImmue(Main.player[Projectile.owner], 45, 45);
         }
+
+        public static void GiveImmue(Player player, int immuneCD, int wantedImmuneTime)
+        {
+            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo ) && player.CIMod().DNAImmnueActive == 0)
+            {
+                player.CIMod().DNAImmnue = wantedImmuneTime;
+                player.CIMod().DNAImmnueActive = immuneCD;
+            }
+        }
+
         public override void PostDraw(Color lightColor)
         {
             Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/Shortsword/ExoGladiusGlow").Value;
@@ -80,11 +92,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             if (player.whoAmI == Main.myPlayer)
             {
                 var source = player.GetSource_FromThis();
-                if (player.Calamity().galileoCooldown <= 0)
+                if (player.CIMod().GlobalFireDelay <= 0)
                 {
                     int damage = player.GetWeaponDamage(player.ActiveItem()) * 2;
                     CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), damage, 15f, player.whoAmI);
-                    player.Calamity().galileoCooldown = 3;
+                    player.CIMod().GlobalFireDelay = 3;
                 }
             }
         }

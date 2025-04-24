@@ -72,6 +72,8 @@ using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Projectiles.Typeless;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityMod.Items.Armor.Vanity;
+using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -79,6 +81,7 @@ namespace CalamityInheritance.Content.Items
     //新添加的合成表现在被更加严格的划分好了
     public class CalamityInheritanceRecipesAdd : ModSystem
     {
+        
         public override void AddRecipes()
         {
             Exo();                  //星流系列
@@ -90,6 +93,135 @@ namespace CalamityInheritance.Content.Items
             ScalDecoration();       //谁他妈让召唤boss用的祭坛用来合家具的？
             Accelerator();          //粒子加速器
             Misc();                 //其他合成表, 因为我也不知道怎么起名
+        }
+        public override void PostAddRecipes()
+        {
+            PostModifyModYharon();
+            YharonEclispe();        //龙一/龙二, 请确保这一修改最后被执行。
+        }
+
+        public static void PostModifyModYharon()
+        {
+            if (!CIServerConfig.Instance.SolarEclipseChange)
+                return;
+            int[] silvaLegacy =
+            [
+                ModContent.ItemType<SilvaHeadMelee>(),
+                ModContent.ItemType<SilvaHeadRanged>(),
+                ModContent.ItemType<SilvaHeadMagicold>(),
+                ModContent.ItemType<SilvaHeadSummonold>(),
+                ModContent.ItemType<SilvaHeadRogue>(),
+                ModContent.ItemType<SilvaArmorold>(),
+                ModContent.ItemType<SilvaLeggingsold>()
+            ];
+            for (int i = 0; i < Recipe.numRecipes; i++)
+            {
+                Recipe rec = Main.recipe[i];
+    
+                foreach (var s in silvaLegacy)
+                {
+                    if (rec.HasResult(s) && rec.createItem.stack == 1)
+                    {
+                        rec.RemoveIngredient(ModContent.ItemType<AscendantSpiritEssence>());
+                        rec.AddIngredient(ModContent.ItemType<DarksunFragment>(), 10);
+                    }
+                }
+            }
+        }
+
+        public static void YharonEclispe()
+        {
+            if (!CIServerConfig.Instance.SolarEclipseChange)
+                return;
+
+            //Silva系列物品做准备。
+            int[] silvaTrain =
+            [
+                ModContent.ItemType<SilvaArmor>(),
+                ModContent.ItemType<SilvaLeggings>(),
+                ModContent.ItemType<SilvaHeadSummon>(),
+                ModContent.ItemType<SilvaHeadMagic>(),
+                ModContent.ItemType<SilvaWings>(),
+                //备注：我们模组里面的林海物件也会算进去，这样会方便不少。
+                
+            ];
+            //军工厂系列
+            int[] draedonTrain =
+            [
+                ModContent.ItemType<PlasmaGrenade>(),
+                ModContent.ItemType<Phaseslayer>(),
+                ModContent.ItemType<PoleWarper>(),
+                ModContent.ItemType<PulseRifle>(),
+                ModContent.ItemType<TeslaCannon>(),
+                ModContent.ItemType<TheAnomalysNanogun>(),
+            ];
+            for (int i = 0; i < Recipe.numRecipes; i++)
+            {
+                Recipe rec = Main.recipe[i];
+                
+                int stack = rec.createItem.stack;
+                int spirit = ModContent.ItemType<AscendantSpiritEssence>();
+                int darkSun = ModContent.ItemType<DarksunFragment>();
+                int blueOne = ModContent.ItemType<EndothermicEnergy>();
+                int bar = ModContent.ItemType<CosmiliteBar>();
+                //1.化魂神晶：移除日食碎片
+                if (rec.HasResult<AscendantSpiritEssence>() && stack == 1)
+                {
+                    rec.RemoveIngredient(darkSun);
+                }
+                //2.林海系列：移除化魂神晶，添加日食碎片
+                foreach(var silvaItem in silvaTrain)
+                {
+                    if (rec.HasResult(silvaItem) && stack == 1)
+                    {
+                        rec.RemoveIngredient(spirit);
+                        //统一+10份，我们不做差分了
+                        rec.AddIngredient(darkSun, 10);
+                    }
+                }
+                //3.军工套件：补充日食碎片
+                foreach(var draedonWeapon in draedonTrain)
+                {
+                    if (rec.HasResult(draedonWeapon) && stack == 1)
+                    {
+                        //移除化魂神晶，不然也太怪了
+                        rec.RemoveIngredient(spirit);
+                        //补5份
+                        rec.AddIngredient(darkSun, 5);
+                    }
+                }
+                //4.查漏补缺
+                //4.1 秩序大剑->移除恒温魔能, 添加化魂神晶与日食碎片
+                if (rec.HasResult<Orderbringer>() && stack == 1)
+                {
+                    rec.RemoveIngredient(blueOne);
+                    rec.AddIngredient(spirit, 2);
+                    rec.AddIngredient(darkSun, 20);
+                }
+                //4.2 星辰重炮->移除日食碎片，修改为宇宙锭
+                if (rec.HasResult<Starmada>() && stack == 1)
+                {
+                    rec.RemoveIngredient(darkSun);
+                    rec.AddIngredient(bar, 10);
+                }
+                //4.3 天底：移除金源锭
+                if (rec.HasResult<Nadir>() && stack == 1)
+                {
+                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                }
+                //4.5 氦闪：金源锭 -> 宇宙锭
+                if (rec.HasResult<HeliumFlash>() && stack == 1)
+                {
+                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                    rec.AddIngredient(bar, 10);
+                }
+                if (rec.HasResult<MidnightSunBeacon>() && stack == 1)
+                {
+                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                    rec.AddIngredient(bar, 10); 
+                    rec.AddIngredient(darkSun, 25);
+                }
+            }
         }
 
         public static void Misc()
@@ -831,6 +963,7 @@ namespace CalamityInheritance.Content.Items
         }
         public static void Auric()
         {
+            bool isEnableDragonRecpieModiflication = CIServerConfig.Instance.SolarEclipseChange; 
             #region Accessories
             //辐辉
             Recipe.Create(ModContent.ItemType<Radiance>()).
@@ -1066,37 +1199,35 @@ namespace CalamityInheritance.Content.Items
                 AddTile(ModContent.TileType<CosmicAnvil>()).
                 Register();
 
-            Recipe.Create(ModContent.ItemType<HeliumFlash>()).
-                AddIngredient(ModContent.ItemType<VenusianTrident>()).
-                AddIngredient(ModContent.ItemType<LashesofChaos>()).
-                AddIngredient(ModContent.ItemType<ForbiddenSun>()).
-                AddIngredient(ItemID.FragmentSolar,20).
-                AddIngredient(ItemID.FragmentNebula,5).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
+            if (!isEnableDragonRecpieModiflication)
+            {
+                Recipe.Create(ModContent.ItemType<MidnightSunBeacon>()).
+                    AddIngredient(ItemID.XenoStaff).
+                    AddIngredient(ItemID.MoonlordTurretStaff).
+                    AddIngredient(ModContent.ItemType<AuricBarold>()).
+                    AddTile<CosmicAnvil>().
+                    Register();
+                
+                Recipe.Create(ModContent.ItemType<Nadir>()).
+                    AddIngredient(ModContent.ItemType<ElementalLance>()).
+                    AddIngredient(ModContent.ItemType<TwistingNether>(),5).
+                    AddIngredient(ModContent.ItemType<DarksunFragment>(),8).
+                    AddIngredient(ModContent.ItemType<AuricBarold>()).
+                    AddTile<CosmicAnvil>().
+                    Register();
+                
+                Recipe.Create(ModContent.ItemType<HeliumFlash>()).
+                    AddIngredient(ModContent.ItemType<VenusianTrident>()).
+                    AddIngredient(ModContent.ItemType<LashesofChaos>()).
+                    AddIngredient(ModContent.ItemType<ForbiddenSun>()).
+                    AddIngredient(ItemID.FragmentSolar,20).
+                    AddIngredient(ItemID.FragmentNebula,5).
+                    AddIngredient(ModContent.ItemType<AuricBarold>()).
+                    AddTile<CosmicAnvil>().
+                    Register();
+            }
 
-            Recipe.Create(ModContent.ItemType<Kingsbane>()).
-                AddIngredient(ItemID.ChainGun).
-                AddIngredient<P90>().
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<MidnightSunBeacon>()).
-                AddIngredient(ItemID.XenoStaff).
-                AddIngredient(ItemID.MoonlordTurretStaff).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
-
-            Recipe.Create(ModContent.ItemType<Nadir>()).
-                AddIngredient(ModContent.ItemType<ElementalLance>()).
-                AddIngredient(ModContent.ItemType<TwistingNether>(),5).
-                AddIngredient(ModContent.ItemType<DarksunFragment>(),8).
-                AddIngredient(ModContent.ItemType<AuricBarold>()).
-                AddTile<CosmicAnvil>().
-                Register();
+                
 
             Recipe.Create(ModContent.ItemType<TheOracle> ()).
                 AddIngredient<BurningRevelation>().

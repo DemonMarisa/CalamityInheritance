@@ -32,7 +32,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            Projectile.Calamity().DealsDefenseDamage = true;
+            
             Projectile.width = 320;
             Projectile.height = 320;
             Projectile.hostile = true;

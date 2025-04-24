@@ -58,12 +58,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 CreateRecipe().
                     AddIngredient<LoreAstrumDeus>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
 
                 CreateRecipe().
                     AddIngredient<KnowledgeAstrumDeus>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
             }
         }

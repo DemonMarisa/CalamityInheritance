@@ -103,6 +103,7 @@ Photovisceratorold: {
 	ExoLoreOn:
 		'''
 		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
 		[c/4169E1:void] [c/FFFFE0:FireShards][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:使用时，从玩家身后发射追踪的星流碎片];
 		'''
 }
@@ -460,4 +461,20 @@ PhotovisceratorChange:
 	'''
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
 	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:右键攻击的射弹在飞行过程中会滞留追踪的星流碎片];
+	'''
+
+NorfleetLegacy: {
+	// DisplayName: Norfleet Legacy
+	// Tooltip: ""
+}
+
+ACTKarasawa: {
+	// DisplayName: A C T Karasawa
+	// Tooltip: ""
+}
+
+ChainWeaponChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:你可以右键指定一个位置生成一块星流地雷];
 	'''

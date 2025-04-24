@@ -1,3 +1,4 @@
+using System;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.System.Configs;
@@ -88,11 +89,24 @@ namespace CalamityInheritance.CIPlayer
                     SilvaStunDebuffCooldown = 1800;
                 }
             }
+            ModifyCrtis(target, ref modifiers);
         }
+
+        private void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            float totalCritsBuff = 0f;
+            //远古鲨牙项链获得30%的暴击伤害加成。
+            if (SpeedrunNecklace)
+                totalCritsBuff += 0.3f;
+            
+            modifiers.CritDamage += totalCritsBuff;
+        }
+
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer usPlayer = Player.CIMod();
+            ModifyCrtis(target, ref modifiers);
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {

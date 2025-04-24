@@ -11,10 +11,6 @@ using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.SummonItems;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
@@ -116,7 +112,6 @@ namespace CalamityInheritance.Content.Items
             {
                 if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PBGLegendary>(), 1))
                 {
-                    Main.NewText("114514");
                     mplr.PBGTier3 = true;
                     LegendaryUpgradeTint(DustID.TerraBlade, player);
                 }

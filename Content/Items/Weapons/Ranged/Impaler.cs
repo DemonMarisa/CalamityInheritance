@@ -57,9 +57,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            CreateRecipe(1).AddIngredient(ItemID.StakeLauncher).AddIngredient(ItemID.ExplosivePowder, 100).AddIngredient(ModContent.ItemType<ScoriaBar> (), 5).AddIngredient(ItemID.LivingFireBlock, 75).AddTile(TileID.MythrilAnvil).Register();
-        }
+        public override void AddRecipes() =>
+            CreateRecipe(1)
+                .AddIngredient(ItemID.StakeLauncher)
+                .AddIngredient(ItemID.ExplosivePowder, 100)
+                .AddIngredient(ModContent.ItemType<ScoriaBar>(), 5)
+                .AddIngredient(ItemID.LivingFireBlock, 75)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
     }
 }

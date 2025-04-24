@@ -23,7 +23,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
             if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.Calamity().AdrenalineTrail || drawPlayer.Calamity().ascendantTrail)
                 return false;
 
-            return drawPlayer.CIMod().AuricSilvaSet;
+            return drawPlayer.CIMod().AuricSilvaFakeDeath;
         }
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
