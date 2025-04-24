@@ -137,7 +137,6 @@ namespace CalamityInheritance.CIPlayer
         public bool freeDodgeFromShieldAbsorption = false;
         public bool CIdrawnAnyShieldThisFrame = false;
         // TODO -- Some way to show the player their total shield points.
-        public int CITotalEnergyShielding => CISpongeShieldDurability;
         public int CITotalMaxShieldDurability => CIsponge ? TheSpongetest.CIShieldDurabilityMax : 0;
 
         public int CISpongeShieldDurability = 0;

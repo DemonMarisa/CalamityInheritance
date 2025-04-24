@@ -45,7 +45,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             TeleportCharge,
             DragonFireballs,
 
-
+            OpacityToZero,
             PhaseTransition,
             FlyAway
         }
@@ -76,32 +76,44 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public static YharonAttacksType[] P2AttackCycle =>
             [
             YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.TeleportCharge,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell2,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
             YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.FlareBombs,
             YharonAttacksType.FlareBombsCircle,
             YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell1,
             YharonAttacksType.FlareBombs,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
             ];
 
         public static YharonAttacksType[] P3AttackCycle => 
             [
             YharonAttacksType.FlareBombs,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell2,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
             YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell1,
             YharonAttacksType.FlareBombsCircle,
             YharonAttacksType.FlareBombs,
             YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.Charge,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell2,
             YharonAttacksType.FlareBombs,
             YharonAttacksType.FlareBombsCircle,
+            YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell1,
             ];
         #endregion
@@ -320,13 +332,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 case YharonAttacksType.FlyAway:
                     DoBehavior_FlyAway(attackTimer, ref frameType);
                     break;
+                case YharonAttacksType.OpacityToZero:
+                    Do_BehaviorOpacityToZero(attackTimer, ref frameType);
+                    break;
                 default:
                     NPC.velocity *= 0.95f;
                     LookAtTarget(target, rotationAcc);
                     break;
             }
 
-            // 冲刺期间跑独立的rot
+            // 独立的rot判定
             if (canLookTarget)
                 LookAtTarget(target, rotationAcc);
 
@@ -354,9 +369,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 NPC.direction = playerFacingDirection;
                 NPC.spriteDirection = -NPC.direction;
-
-                NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center), rotationSpeed);
             }
+            NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center), rotationSpeed);
         }
         #endregion
         #region 取消生成
@@ -616,13 +630,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public Vector2 logVector2 = Vector2.Zero;
         public void DoBehavior_FlareBombsHell(Player target, ref float attacktimer, ref float frameType, int AttackStyle)
         {
-            canLookTarget = false;
             frameType = (float)YharonFrameType.PlayOnce;
             int spinPhaseTimer = 150;
 
-            int flareDustPhaseTimer = 200;
-            int flareDustSpawnDivisor = flareDustPhaseTimer / 20;
-            float spinPhaseRotation = MathHelper.TwoPi * 3 / spinPhaseTimer * 2;
+            int flareDustPhaseTimer = 150;
+            int flareDustSpawnDivisor = flareDustPhaseTimer / 15;
+            float spinPhaseRotation = MathHelper.TwoPi * 3 / spinPhaseTimer;
 
             if (attacktimer == 1)
             {
@@ -635,6 +648,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 if (attacktimer < 150)
                 {
+                    canLookTarget = false;
                     if (attacktimer % flareDustSpawnDivisor == 0f)
                     {
                         if (AttackStyle == 0)
@@ -656,7 +670,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
                 if (attacktimer > 150 && attacktimer < 210)
                     NPC.velocity *= 0.97f;
-
             }
 
             if (attacktimer > 210)
@@ -766,6 +779,17 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
                 NPC.Opacity -= 0.04f;
             }
+        }
+        #endregion
+        #region 透明度变化
+        public void Do_BehaviorOpacityToZero(float attacktimer, ref float frameType)
+        {
+            frameType = (float)YharonFrameType.Normal;
+            NPC.velocity *= 0.99f;
+            NPC.Opacity -= 0.053f;
+
+            if (attacktimer > 30)
+                SelectNextAttack();
         }
         #endregion
         #endregion

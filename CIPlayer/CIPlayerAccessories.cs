@@ -49,6 +49,7 @@ namespace CalamityInheritance.CIPlayer
         public bool WearingStatisCurse = false;
         public bool WearingStatisBlessing = false;
         public bool WearingStarTainted = false;
+        public bool anyShield = false; //是否有任何护盾
         //两个肥鸡
         public bool GodlySons = false;
         public bool EmpressBooster = false;
@@ -129,8 +130,9 @@ namespace CalamityInheritance.CIPlayer
             AeroStonePower = false; 
             IsWearingBloodyScarf = false;
             IsWearingElemQuiverCal = false;
+            anyShield = false; //是否有任何护盾
             #endregion
-            
+
         }
         public void UpdateDeadAccessories()
         {
@@ -167,6 +169,7 @@ namespace CalamityInheritance.CIPlayer
             AeroStonePower = false;
             IsWearingBloodyScarf = false;
             IsWearingElemQuiverCal = false;
+            anyShield = false;
         }
     }
 }

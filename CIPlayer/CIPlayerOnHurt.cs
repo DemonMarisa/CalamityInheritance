@@ -640,11 +640,17 @@ namespace CalamityInheritance.CIPlayer
                 if (shieldsTookHit)
                 {
                     CalamityPlayer calPlayer = Player.Calamity();
+                    // 添加：会受到总伤害三分之二的防御损伤。随后会以1帧4点的速度恢复
+                    defenceBreak = totalDamageBlocked / 3 * 2;
 
                     // 如果任何护盾受到了伤害，则显示文本以指示护盾受到了伤害
                     string shieldDamageText = (-totalDamageBlocked).ToString();
+                    string defenceDamageText = (defenceBreak).ToString();
+
                     Rectangle location = new Rectangle((int)Player.position.X, (int)Player.position.Y - 16, Player.width, Player.height);
                     CombatText.NewText(location, Color.LightBlue, Language.GetTextValue(shieldDamageText));
+                    CombatText.NewText(location, Color.DarkBlue, Language.GetTextValue(defenceDamageText));
+
 
                     // 不论护盾是否被打破，都给玩家提供无敌帧（iframes）以应对护盾被击中的情况。
                     int shieldHitIFrames = Player.ComputeHitIFrames(info);
@@ -766,36 +772,36 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
-                SoundEngine.PlaySound(SoundID.Item93, player.Center);
-                float spread1 = 45f * 0.0174f;
-                double startAngle1 = Math.Atan2(player.velocity.X, player.velocity.Y) - spread1 / 2;
-                double deltaAngle1 = spread / 8f;
-                double offsetAngle1;
+            SoundEngine.PlaySound(SoundID.Item93, player.Center);
+            float spread1 = 45f * 0.0174f;
+            double startAngle1 = Math.Atan2(player.velocity.X, player.velocity.Y) - spread1 / 2;
+            double deltaAngle1 = spread / 8f;
+            double offsetAngle1;
 
-                // Start with base damage, then apply the best damage class you can
-                int sDamage = 50;
-                sDamage = (int)player.GetBestClassDamage().ApplyTo(sDamage);
-                sDamage = player.ApplyArmorAccDamageBonusesTo(sDamage);
+            // Start with base damage, then apply the best damage class you can
+            int sDamage = 50;
+            sDamage = (int)player.GetBestClassDamage().ApplyTo(sDamage);
+            sDamage = player.ApplyArmorAccDamageBonusesTo(sDamage);
 
-                if (player.whoAmI == Main.myPlayer)
+            if (player.whoAmI == Main.myPlayer)
+            {
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
                     offsetAngle1 = startAngle1 + deltaAngle1 * (i + i * i) / 2f + 32f * i;
-                        int spark1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
-                        int spark2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
-                        if (spark1.WithinBounds(Main.maxProjectiles))
-                        {
-                            Main.projectile[spark1].timeLeft = 120;
-                            Main.projectile[spark1].DamageType = DamageClass.Generic;
-                        }
-                        if (spark2.WithinBounds(Main.maxProjectiles))
-                        {
-                            Main.projectile[spark2].timeLeft = 120;
-                            Main.projectile[spark2].DamageType = DamageClass.Generic;
-                        }
+                    int spark1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
+                    int spark2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
+                    if (spark1.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[spark1].timeLeft = 120;
+                        Main.projectile[spark1].DamageType = DamageClass.Generic;
+                    }
+                    if (spark2.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[spark2].timeLeft = 120;
+                        Main.projectile[spark2].DamageType = DamageClass.Generic;
                     }
                 }
+            }
         }
         
         #region Kill Player

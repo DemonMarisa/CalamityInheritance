@@ -1312,7 +1312,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public void DoBehavior_PhaseTransition(Player target, float attacktimer, float rotationSpeed)
         {
             float phase1Duration = 180;    // 正向段持续时间
-            float spinCount = 8.5f;              // 旋转圈数
+            float spinCount = 8f;              // 旋转圈数
             isContactDamage = false;
             NPC.velocity *= 0.95f;
             // 初始化随机偏移
@@ -1338,11 +1338,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 float rotationIncrement = (currentEased - previousEased) * totalRotation;
                 // 应用旋转
                 NPC.rotation += rotationIncrement;
+                NPC.rotation += MathHelper.Pi / phase1Duration;
+
             }
             // 转向玩家
             else
             {
-                roatationSpeed += 0.001f;
+                roatationSpeed += 0.0005f;
                 // 转向玩家
                 NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center) - MathHelper.PiOver2, roatationSpeed);
                 // 特效和音效

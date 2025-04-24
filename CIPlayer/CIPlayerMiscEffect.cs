@@ -51,6 +51,7 @@ namespace CalamityInheritance.CIPlayer
     {
         public static readonly int darkSunRingDayRegen = 6;
         public static readonly int darkSunRingNightDefense = 20;
+
         public override void PostUpdateMiscEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -107,16 +108,8 @@ namespace CalamityInheritance.CIPlayer
             LevelUp();
             //熟练度处理
             GiveBoost();
-
-            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
-                ShieldDurabilityMax = Player.statLifeMax2;
-            else
-                ShieldDurabilityMax = 800;
-
-            if (calPlayer.chaliceOfTheBloodGod)
-            {
-                ShieldDurabilityMax = Main.zenithWorld? Player.statLifeMax2 : 15;
-            }
+            // 护盾的综合效果
+            ShieldEffect();
         }
 
         public void Buffs()
@@ -529,7 +522,7 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
-        private void Sponge()
+        public void Sponge()
         {
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。
             bool shieldAddedLight = false;
@@ -575,7 +568,7 @@ namespace CalamityInheritance.CIPlayer
                     CIspongeShieldPartialRechargeProgress += TheSpongetest.CIShieldDurabilityMax / (float)TheSpongetest.CITotalShieldRechargeTime;
 
                     // 向下取整以获取本帧实际充电的护盾点数。
-                    int pointsActuallyRecharged = (int)MathF.Floor(CIspongeShieldPartialRechargeProgress);
+                    int pointsActuallyRecharged = (int)MathF.Ceiling(CIspongeShieldPartialRechargeProgress);
 
                     // 将这些点数加到真实的护盾耐久度上，并限制结果。然后从充电进度中减去这些点数。
                     CISpongeShieldDurability = Math.Min(CISpongeShieldDurability + pointsActuallyRecharged, TheSpongetest.CIShieldDurabilityMax);
@@ -1728,6 +1721,32 @@ namespace CalamityInheritance.CIPlayer
                 ReaverRocketFires = true;
             }
             //纳米技术
+        }
+        public int defenceBreak = 0;
+        public void ShieldEffect()
+        {
+            CalamityInheritancePlayer usPlayer = Player.CIMod();
+            CalamityPlayer calPlayer = Player.Calamity();
+            // 海绵的保底
+            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
+                ShieldDurabilityMax = Player.statLifeMax2;
+            else
+                ShieldDurabilityMax = 800;
+
+            if (calPlayer.chaliceOfTheBloodGod)
+                ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
+
+            if (usPlayer.anyShield = true && defenceBreak > 0)
+            {
+                Player.statDefense -= defenceBreak;
+                defenceBreak -= 2;
+            }
+
+            if (defenceBreak < 0)
+                defenceBreak = 0;
+
+            if (anyShield == false)
+                defenceBreak = 0;
         }
     
         public void RebornBosses()

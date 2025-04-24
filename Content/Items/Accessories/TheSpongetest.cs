@@ -44,8 +44,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(15); // was 6
-        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(6);
-        public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(6);
+        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(10);
+        public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(15);
 
         // While active, The Sponge gives 30 defense and 10% DR
         public static int ShieldActiveDefense = 30;
@@ -98,6 +98,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             if (CIConfig.Instance.TheSpongeBarrier == true)
             {
                 usPlayer.CIsponge = true;
+                usPlayer.anyShield = true;
+
                 //开启护盾后干掉原灾海绵的护盾效果，
                 player.Calamity().sponge = false;
             }
@@ -109,6 +111,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer calPlayer = player.Calamity();
             calPlayer.spongeShieldVisible = !hideVisual;
             player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
+
             //百草瓶继承
             calPlayer.aAmpoule = true;
             usPlayer.FuckYouBees = true;
