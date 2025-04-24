@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             if (!initialized)
             {
-                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, VividClarityOld.UniqueUse), Projectile.Center);
+                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, VividClarityOld.UseSound), Projectile.Center);
                 initialized = true;
                 float dustAmt = 16f;
                 int d = 0;

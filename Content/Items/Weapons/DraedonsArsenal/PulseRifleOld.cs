@@ -13,6 +13,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Projectiles.DraedonsArsenal;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
@@ -80,9 +81,18 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             CreateRecipe().
                 AddIngredient<MysteriousCircuitry>(20).
                 AddIngredient<DubiousPlating>(20).
-                AddIngredient<CosmiliteBar>(8).
+                AddIngredient<AuricBar>(8).
                 AddIngredient<AscendantSpiritEssence>(2).
                 AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(5, out Func<bool> condition), condition).
+                AddTile<CosmicAnvil>().
+                Register();
+
+            CreateRecipe().
+                AddIngredient<MysteriousCircuitry>(20).
+                AddIngredient<DubiousPlating>(20).
+                AddIngredient<AuricBarold>(2).
+                AddIngredient<AscendantSpiritEssence>(2).
+                AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(5, out Func<bool> condition1), condition1).
                 AddTile<CosmicAnvil>().
                 Register();
         }

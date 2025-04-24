@@ -110,6 +110,8 @@ namespace CalamityInheritance.CIPlayer
             GiveBoost();
             // 护盾的综合效果
             ShieldEffect();
+            // 杂项判定
+            CIMiscCondition();
         }
 
         public void Buffs()
@@ -1668,7 +1670,7 @@ namespace CalamityInheritance.CIPlayer
             if (usPlayer.anyShield = true && defenceBreak > 0)
             {
                 Player.statDefense -= defenceBreak;
-                defenceBreak -= 2;
+                defenceBreak -= defenceBreak / CIFunction.SecondsToFrames(5);// 防御需要5s恢复完毕
             }
 
             if (defenceBreak < 0)

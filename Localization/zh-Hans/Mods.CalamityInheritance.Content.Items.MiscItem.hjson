@@ -20,18 +20,6 @@ DraedonsToy: {
 	DisplayName: 嘉登的神秘遥控器[Legacy]
 }
 
-YharonEssence: {
-	DisplayName: 巨龙之精华[Legacy]
-	Tooltip:
-		'''
-		[c/FF8C00:来自旧日的礼物]
-		蕴含着丛林龙与日食的精华
-		尽管真正的重生巨龙很长一段时间内不会回来了
-		但我们尚能通过这个物品去感知那个以龙战龙的时代
-		右键开启时可以获得一些丛林龙,犽戎(阶段一)的战利品
-		'''
-}
-
 RebornEyeSummon: {
 	Tooltip:
 		'''
@@ -118,4 +106,18 @@ EyeofExtinction: {
 		[c/CD0000:她等待着你]
 		召唤至尊灾厄
 		'''
+}
+
+YharonTreasureBagsLegacy: {
+	DisplayName: 宝藏带（丛林龙 - 日蚀前）
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
+
+YharonEggLegacy: {
+	DisplayName: 丛林龙蛋
+	Tooltip: 
+	'''
+	击败强化日食前，召唤丛林龙 - 日蚀前
+	击败强化日食前，召唤丛林龙
+	'''
 }

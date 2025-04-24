@@ -160,8 +160,8 @@ namespace CalamityInheritance.CIPlayer
             //移除狙击镜效果
             //不是，哥们，这个狙击镜他会影响某些右键
             //比如星火右键喷不出来
-            // if (rangeLevel > 14)
-            //     Player.scope = true;
+            if (rangeLevel > 14)
+                Player.scope = true;
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力

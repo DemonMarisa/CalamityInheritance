@@ -203,6 +203,8 @@ namespace CalamityInheritance.NPCs
                 CIDownedBossSystem.DownedEOW = true;
             if (npc.type == NPCID.BrainofCthulhu)
                 CIDownedBossSystem.DownedBOC = true;
+            if (npc.type == NPCID.Mothron && CIDownedBossSystem.DownedLegacyYharonP1)
+                CIDownedBossSystem.DownedBuffedSolarEclipse = true;
 
             int[] damageType = 
             { 

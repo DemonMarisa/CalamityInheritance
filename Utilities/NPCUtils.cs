@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -281,6 +282,37 @@ namespace CalamityInheritance.Utilities
             if (item.accessory || item.headSlot > 0 || item.bodySlot > 0 || item.legSlot > 0)
                 return false;
             return false;
+        }
+        #endregion
+        #region 召唤boss
+        /// <summary>
+        /// Spawn Boss Method for Using Spawn Items
+        /// <para>NOTE: This method use vanilla's spawn position behaviour!</para>
+        /// </summary>
+        /// <param name="player">Player who used Item</param>
+        /// <param name="npcType">Boss's NPCType to spawn</param>
+        /// <param name="spawnSound">Sound to play when spawn, it play on used player's position</param>
+        public static void SpawnBossUsingItem(Player player, int npcType, in SoundStyle? spawnSound = null)
+        {
+            SoundEngine.PlaySound(spawnSound, player.Center);
+
+            if (player.whoAmI != Main.myPlayer)
+                return;
+
+            // NOTE: MP netcode can be simplified by directly spawn npc like SpawnBossOnPosUsingItem does
+            // but leaving this as vanilla's standard now
+            switch (Main.netMode)
+            {
+                // SP: Spawn Boss Immediately
+                case NetmodeID.SinglePlayer:
+                    NPC.SpawnOnPlayer(player.whoAmI, npcType);
+                    break;
+
+                // MP: Ask server to spawn one
+                case NetmodeID.MultiplayerClient:
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, npcType);
+                    break;
+            }
         }
         #endregion
     }

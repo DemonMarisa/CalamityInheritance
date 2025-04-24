@@ -10,7 +10,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using System.Reflection;
 
-namespace CalamityInheritance.Common
+namespace CalamityInheritance.Common.Hook
 {
     public static class CalamityInheritanceDashHook
     {

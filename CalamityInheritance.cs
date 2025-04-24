@@ -7,7 +7,6 @@ using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Common;
 using CalamityMod.Items.Accessories;
 using CalamityMod.World;
 using CalamityInheritance.CIPlayer;
@@ -25,7 +24,7 @@ using CalamityInheritance.System;
 using CalamityInheritance.Common.ModSupport;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.NPCs.Boss.Yharon.Sky;
-using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Common.Hook;
 
 namespace CalamityInheritance
 {
@@ -94,8 +93,7 @@ namespace CalamityInheritance
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             HeavenlyGaleProjHook.Load(this);
-            //fuck掉GlowMask.
-            FuckSubsumingGlowMask.Load(this);
+            DOGHook.Load(this);
             #endregion
         }
         public void LoadClient()

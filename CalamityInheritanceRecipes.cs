@@ -224,10 +224,5 @@ namespace CalamityInheritance
             RecipeGroup.RegisterGroup("CalamityInheritance:AnyAsgardsValor", AsgardsValor);
             #endregion
         }
-
-        public void ItemTrain()
-        {
-            
-        }
     }
 }

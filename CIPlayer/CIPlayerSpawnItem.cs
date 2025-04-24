@@ -19,10 +19,9 @@ namespace CalamityInheritance.CIPlayer
             if(bloodMoonLoreSpawn)
             {
                 if (Main.bloodMoon)
-                {
                     currentBloodMoon = true;
-                }
-                if(!Main.bloodMoon && currentBloodMoon && bloodMoonLoreSpawn)
+
+                if (!Main.bloodMoon && currentBloodMoon && bloodMoonLoreSpawn)
                 {
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<KnowledgeBloodMoon>(), 1);
                     bloodMoonLoreSpawn = false;

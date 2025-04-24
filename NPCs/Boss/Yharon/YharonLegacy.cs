@@ -1,12 +1,19 @@
 ﻿using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Content.Items.TreasureBags;
+using CalamityInheritance.NPCs.TownNPC;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.NPCs;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.UI;
 using CalamityMod.World;
+using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -19,6 +26,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
@@ -333,7 +341,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     DoBehavior_FlyAway(attackTimer, ref frameType);
                     break;
                 case YharonAttacksType.OpacityToZero:
-                    Do_BehaviorOpacityToZero(attackTimer, ref frameType);
+                    DoBehavior_OpacityToZero(attackTimer, ref frameType);
                     break;
                 default:
                     NPC.velocity *= 0.95f;
@@ -631,14 +639,14 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_FlareBombsHell(Player target, ref float attacktimer, ref float frameType, int AttackStyle)
         {
             frameType = (float)YharonFrameType.PlayOnce;
-            int spinPhaseTimer = 150;
 
-            int flareDustPhaseTimer = 150;
-            int flareDustSpawnDivisor = flareDustPhaseTimer / 15;
+            int spinPhaseTimer = 150;
+            int flareDustSpawnDivisor = spinPhaseTimer / 15;
             float spinPhaseRotation = MathHelper.TwoPi * 3 / spinPhaseTimer;
 
             if (attacktimer == 1)
             {
+                NPC.velocity = new( 6f, 6f);
                 logVector2 = target.Center + new Vector2(Main.rand.NextFloat(-500f, 500f), -300f);
                 NPC.Center = logVector2;
                 NPC.Opacity = 0f;
@@ -653,19 +661,15 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     {
                         if (AttackStyle == 0)
                         {
-                            int ringReduction = (int)MathHelper.Lerp(0f, 14f, attacktimer / flareDustPhaseTimer);
+                            int ringReduction = (int)MathHelper.Lerp(0f, 14f, attacktimer / spinPhaseTimer);
                             int totalProjectiles = 34 - ringReduction; // 36 for first ring, 22 for last ring
                             DoFlareDustBulletHell(0, flareDustSpawnDivisor, 100, totalProjectiles, 0f, 0f, NPC.Center);
                         }
                         else
-                        {
                             DoFlareDustBulletHell(1, spinPhaseTimer, 100, 12, 12f, 3.6f, NPC.Center);
-                        }
                     }
-
                     NPC.velocity = NPC.velocity.RotatedBy(-(double)spinPhaseRotation * NPC.direction);
                     NPC.rotation = NPC.velocity.ToRotation();
-
                 }
 
                 if (attacktimer > 150 && attacktimer < 210)
@@ -730,6 +734,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             teleportLocation = Main.rand.NextBool() ? 600 : -600;
             if(attacktimer <= 1)
             {
+                SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
                 Vector2 center = target.Center + new Vector2(-distance, teleportLocation);
                 NPC.Center = center;
                 NPC.Opacity = 0f;
@@ -737,6 +742,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (hasCharge == false && attacktimer > TotalHover)
             {
+                canLookTarget = false;
                 float chargeVelocity = 28f;
                 float fastChargeVelocityMultiplier = 1.5f;
 
@@ -749,7 +755,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
                 SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
             }
-            if (attacktimer > TotalHover + 10)
+            if (attacktimer > TotalHover + 15)
                 NPC.velocity *= 0.98f;
             if (attacktimer > 80)
                 SelectNextAttack();
@@ -759,10 +765,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_FlyAway(float attacktimer, ref float frameType)
         {
             invincible = true;
-            if (attacktimer == 1)
-                SoundEngine.PlaySound(RoarSound, NPC.Center);
             if (attacktimer < 90)
             {
+                if (attacktimer == 8)
+                    SoundEngine.PlaySound(RoarSound, NPC.Center);
                 NPC.velocity *= 0.96f;
                 if (attacktimer < 30)
                     frameType = (float)YharonFrameType.Roar;
@@ -774,15 +780,17 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 frameType = (float)YharonFrameType.Normal;
                 NPC.velocity.X *= 0.96f;
                 NPC.velocity.Y -= 0.4f;
-                if (NPC.timeLeft > 60)
-                    NPC.timeLeft = 60;
-
+                if (attacktimer == 160)
+                {
+                    FirstDown();
+                    NPC.active = false;
+                }
                 NPC.Opacity -= 0.04f;
             }
         }
         #endregion
         #region 透明度变化
-        public void Do_BehaviorOpacityToZero(float attacktimer, ref float frameType)
+        public void DoBehavior_OpacityToZero(float attacktimer, ref float frameType)
         {
             frameType = (float)YharonFrameType.Normal;
             NPC.velocity *= 0.99f;
@@ -986,6 +994,47 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.netUpdate = true;
             return false;
         }
+        #endregion
+        #region 死亡
+        
+        public void FirstDown()
+        {
+            Player player = Main.LocalPlayer;
+
+            if (!CIDownedBossSystem.DownedLegacyYharonP1)
+            {
+                CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse", Color.Orange);
+                CIFunction.SendTextOnPlayer("Boss.Text.YharonPreEclipse", Color.Orange);
+            }
+
+            SoundEngine.PlaySound(CISoundID.SoundCurseFlamesAttack, NPC.position);
+
+            // Spawn the SCal NPC directly where the boss was
+            if (!BossRushEvent.BossRushActive)
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
+
+            // Mark Calamitas as defeated
+            CIDownedBossSystem.DownedLegacyYharonP1 = true;
+            CalamityNetcode.SyncWorld();
+        }
+        /*
+        public override void OnKill()
+        {
+            Player player = Main.LocalPlayer;
+            CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse", Color.Orange);
+            CIFunction.SendTextOnPlayer("Boss.Text.YharonPreEclipse", Color.Orange);
+
+            SoundEngine.PlaySound(CISoundID.SoundCurseFlamesAttack, NPC.position);
+
+            // Spawn the SCal NPC directly where the boss was
+            if (!BossRushEvent.BossRushActive)
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
+
+            // Mark Calamitas as defeated
+            CIDownedBossSystem.DownedLegacyScal = true;
+            CalamityNetcode.SyncWorld();
+        }
+        */
         #endregion
     }
 }

@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
@@ -7,16 +8,22 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Summon;
 using MonoMod.ModInterop;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.MiscItem
+namespace CalamityInheritance.Content.Items.TreasureBags
 {
-    public class YharonEssence: CIMisc, ILocalizedModType 
+    public class YharonTreasureBagsLegacy : CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.MiscItem";
         public override void SetStaticDefaults()
@@ -27,7 +34,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             Item.width = 24;
             Item.height = 24;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<YharonFire>() : ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() : ModContent.RarityType<DeepBlue>();
             //有意为之
             Item.value = CIShopValue.RarityPricePureRed;
             Item.consumable = true;
@@ -39,8 +46,9 @@ namespace CalamityInheritance.Content.Items.MiscItem
         }
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-            int[] dragonWeapons = 
-            [
+            // Weapons
+            itemLoot.Add(DropHelper.CalamityStyle(new Fraction(6, 10), new int[]
+            {
                 ModContent.ItemType<DragonSword>(),
                 ModContent.ItemType<BurningSkyLegacy>(),
                 ModContent.ItemType<AncientDragonsBreath>(),
@@ -48,13 +56,18 @@ namespace CalamityInheritance.Content.Items.MiscItem
                 ModContent.ItemType<DragonStaff>(),
                 ModContent.ItemType<YharonSonStaff>(),
                 ModContent.ItemType<DragonSpear>(),
-            ];
-            //随机给予1个
-            itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, dragonWeapons));
+                // 原灾武器
+                ModContent.ItemType<DragonRage>(),
+                ModContent.ItemType<TheBurningSky>(),
+                ModContent.ItemType<ChickenCannon>(),
+                ModContent.ItemType<DragonsBreath>(),
+                ModContent.ItemType<PhoenixFlameBarrage>(),
+                ModContent.ItemType<YharonsKindleStaff>(),
+                ModContent.ItemType<TheFinalDawn>(),
+                ModContent.ItemType<Wrathwing>(),
+            }));
             //给点钱
             itemLoot.Add(ItemDropRule.Common(ItemID.PlatinumCoin, 1, 1, 3));
-            //给予几乎超量的日食碎片
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarksunFragment>(), 1, 120, 300));
         }
     }
 }

@@ -263,10 +263,14 @@ namespace CalamityInheritance.System
             var lootItems5 = CIFunction.FindLoots(DOGType, false); // 获取所有掉落物，除了材料
             PostDOGWeapons.AddRange(lootItems5.Where(id => !PostDOGWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
 
+
             // 龙
             int yharonType = ModContent.NPCType<Yharon>(); // 获取指定Boss的NPC类型ID
             var lootItems6 = CIFunction.FindLoots(yharonType, false); // 获取所有掉落物，除了材料
-            PostyharonWeapons.AddRange(lootItems6.Where(id => !PostyharonWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
+            if(CIServerConfig.Instance.SolarEclipseChange)
+                PostDOGWeapons.AddRange(lootItems6.Where(id => !PostDOGWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
+            else
+                PostyharonWeapons.AddRange(lootItems6.Where(id => !PostyharonWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
 
             // 巨械
             int ExoType = ModContent.NPCType<AresBody>(); // 获取指定Boss的NPC类型ID
