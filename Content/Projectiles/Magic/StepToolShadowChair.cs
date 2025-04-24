@@ -75,6 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         private void PositionAndRotation(Player player)
         {
+            //TODO:提供两个方法，左键正常与右键跟随鼠标
             Vector2 plrCtr = player.RotatedRelativePoint(player.MountedCenter, true);
             Vector2 offset = Vector2.Zero;
             Projectile.Center = plrCtr + offset;
@@ -104,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                target.type == ModContent.NPCType<DevourerofGodsTail>() ||
                target.type == ModContent.NPCType<SupremeCalamitas>() ||
                target.type == NPCID.DungeonGuardian)
-            target.life -= target.lifeMax;
+            target.life /= 2;
 
             //无视敌怪的防御数据，每次真“近战”a击中时必定扣除其固定点血量, 代码是这么写的.
             
@@ -121,13 +122,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Vector2 velocity = new Vector2(0f, speed);
                 velocity = velocity.RotatedBy(angle * i * Main.rand.NextFloat(0.9f,1.1f));
                 //生成小椅子
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(),
-                                         Projectile.Center,
-                                         velocity,
-                                         ModContent.ProjectileType<StepToolShadowChairSmall>(),
-                                         Projectile.damage,
-                                         Projectile.knockBack / 4f,
-                                         Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<StepToolShadowChairSmall>(), Projectile.damage, Projectile.knockBack / 4f, Projectile.owner);
             }
             //给小凳子的生成加了等同于无敌帧的cd，不然打蠕虫怪的时候电脑会爆炸
             Main.player[Projectile.owner].CIMod().StepToolShadowChairSmallCD = 9;
@@ -187,8 +182,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             }
             return false;
         }
-
-        /*出于某些原因，只有把Predraw函数加上才能显示出玩家转凳子的动画。*/
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;

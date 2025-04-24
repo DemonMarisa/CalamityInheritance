@@ -20,7 +20,6 @@ namespace CalamityInheritance.Utilities
         /// <param name="distanceRequired">跟踪范围.</param>
         /// <param name="homingVelocity">跟踪速度.</param>
         /// <param name="inertia">惯性.</param>
-        /// <param name="HomeInCD">扫描CD（不写默认30帧）.</param>
         /// <param name="maxAngleChange">角度限制（不写默认不限制）.</param>
         /// </summary>
         public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia, float? maxAngleChange = null)
@@ -192,7 +191,9 @@ namespace CalamityInheritance.Utilities
         /// <param name="inertia">惯性</param>
         /// <param name="giveExtraUpdate">给予额外更新，默认1</param>
         /// <param name="forceSpeed">指定射弹无视距离，使射弹使用你输入的速度。这个效果有一个距离特判，即距离比你输入的射弹速度还短的时候才会生效, 一般可无视。</param>
-        public static void HomingNPCBetter(this Projectile proj, NPC target, float distRequired, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null, float? maxAngleChage = null)
+        /// <param name="maxAngleChage">角度限制，默认为空. </param>
+        /// <param name="ignoreDist">使这个射弹无视索敌距离(distRequired), 默认取否. </param>
+        public static void HomingNPCBetter(this Projectile proj, NPC target, float distRequired, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null, float? maxAngleChage = null, bool ignoreDist = false)
         {
             //一般来说你用这个方法就说明target理论上应当可以被追，但……just in case
             if (!proj.friendly || target == null || !target.active)
@@ -204,7 +205,7 @@ namespace CalamityInheritance.Utilities
             if (proj.CalamityInheritance().StoreEU == -1)
                 proj.CalamityInheritance().StoreEU = proj.extraUpdates;
 
-            if (!target.CanBeChasedBy(proj) || !target.chaseable || curDist > distRequired) 
+            if (!target.chaseable || (curDist > distRequired && !ignoreDist)) 
                 canHome = false;
             else canHome = true;
             if (canHome)

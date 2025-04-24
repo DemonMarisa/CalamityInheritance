@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			calPlayer.auricSet = true;
-			modPlayer.AuricSilvaSet = true; //林海自活
+			modPlayer.AuricSilvaFakeDeath = true; //林海自活
 			#endregion
 			#region 标记为盗贼套装 
 			calPlayer.wearingRogueArmor = true;
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			//远古龙蒿降防损
 			calPlayer.defenseDamageRatio *= 0.5f;
 			//远古血炎产红心, 远古林海强回血整合在这里面
-			modPlayer.AncientSilvaSet = true;
+			modPlayer.AncientSilvaForceRegen = true;
 			modPlayer.AncientAuricSet = true;
 			#endregion
 			#region 五职业头盔套的各自套装效果

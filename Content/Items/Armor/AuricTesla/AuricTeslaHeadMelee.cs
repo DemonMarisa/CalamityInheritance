@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             usPlayer.GodSlayerDMGprotect = true;
 
-            usPlayer.AuricSilvaSet = true;
+            usPlayer.AuricSilvaFakeDeath = true;
 
             player.thorns += 3f;
             player.ignoreWater = true;

@@ -152,8 +152,10 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 射手
             // 30伤 30爆 15攻速 30穿 常态狙击镜
+
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
+            //我草，谁家好人给远程攻速
             Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
             //移除狙击镜效果
             //不是，哥们，这个狙击镜他会影响某些右键

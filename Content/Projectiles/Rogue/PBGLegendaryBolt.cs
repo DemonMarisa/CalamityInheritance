@@ -5,11 +5,9 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.Weapons;
-using Microsoft.CodeAnalysis.Recommendations;
-using CalamityMod.Items.VanillaArmorChanges;
 using CalamityInheritance.Content.Items;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -38,6 +36,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.localNPCHitCooldown = 10;
         }
+        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         public override void AI()
         {
             //维持转角的必要逻辑.

@@ -50,12 +50,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 CreateRecipe().
                     AddIngredient<LoreRequiem>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
 
                 CreateRecipe().
                     AddIngredient<KnowledgeMoonLord>().
-                    AddTile(TileID.AncientMythrilBrick).
+                    AddTile(TileID.LunarCraftingStation).
                     Register();
             }
         }

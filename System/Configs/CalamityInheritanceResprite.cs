@@ -32,6 +32,10 @@ namespace CalamityInheritance.System.Configs
         // [BackgroundColor(43, 56, 95, 182)]
         // [DefaultValue(false)]
         // public bool AllTerra{ get; set; }
+        //星流
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool FuckAllExo{ get; set; }
         //战士
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]

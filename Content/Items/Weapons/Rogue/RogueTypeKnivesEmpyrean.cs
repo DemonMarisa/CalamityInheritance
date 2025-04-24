@@ -74,8 +74,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             for (int i = 0; i < knifeAmt; i++)
             {
-                float knifeSpawnXPos = mouseXDist;
-                float knifeSpawnYPos = mouseYDist;
+                float knifeSpawnXPos = Main.MouseWorld.X;
+                float knifeSpawnYPos = Main.MouseWorld.Y;
                 float randOffsetDampener = 0.05f * i;
                 knifeSpawnXPos += Main.rand.Next(-25, 26) * randOffsetDampener;
                 knifeSpawnYPos += Main.rand.Next(-25, 26) * randOffsetDampener;

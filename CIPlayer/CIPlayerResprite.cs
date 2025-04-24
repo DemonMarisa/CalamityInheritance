@@ -183,6 +183,14 @@ namespace CalamityInheritance.CIPlayer
             //     }
             // }
             #endregion
+            //星流武器
+            if (GI<SubsumingVortex>() != null ||
+                GI<Exoblade>() != null ||
+                GI<HeavenlyGale>() != null ||
+                GI<VividClarity>() != null)
+            {
+                IR<SubsumingVortex>(CIRespriteConfig.Instance.FuckAllExo ? CIWeaponsResprite.LoveVortexLegacy : CIWeaponsResprite.FuckVortexCal);
+            }
             MeleeResprite(R);
             RangedResprite(R);
             MagicResprite(R);

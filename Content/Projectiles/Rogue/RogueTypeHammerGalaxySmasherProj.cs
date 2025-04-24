@@ -10,18 +10,33 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Particles;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items;
+using System;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class RogueTypeHammerGalaxySmasherProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-
+        #region 射弹属性
         public static readonly SoundStyle UseSound = SoundID.Item89 with { Volume = 0.35f }; //Item89:流星法杖射弹击中时的音效
         public static readonly SoundStyle StealthOnHitSound = SoundID.Item88 with { Volume = 0.45f }; //Item88:使用流星法杖的音效
         private static readonly float RotationIncrement = 0.22f;
         private static readonly int Lifetime = 240;
         private static readonly float ReboundTime = 40f;
+        public const float ClonedProj = -2f;
+        public const float IsJustShooted = -3f;
+        #endregion
+        #region 别名
+        public ref float AttackType => ref Projectile.ai[0];
+        public ref float AttackTimer => ref Projectile.ai[1];
+        public ref float IsCloneSummon => ref Projectile.ai[2];
+        public Player Owner => Main.player[Projectile.owner];
+        #endregion
+        #region 攻击枚举
+        public const float IsShooted = 0f;
+        public const float IsReturning = 1f;
+        public const float IsStealth = 2f;
+        #endregion
         bool ifSummonClone = false;
 
         public override void SetStaticDefaults()
@@ -50,8 +65,25 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-
-            Player owner = Main.player[Projectile.owner];
+            DoGeneral();
+            switch(AttackType)
+            {
+                case IsShooted:
+                    DoShooted();
+                    break;
+                case IsReturning:
+                    DoReturning();
+                    break;
+                case IsStealth:
+                    DoStealth();
+                    break;
+            }
+        }
+        #region AI方法
+        private void DoGeneral()
+        {
+            //无论状态，锤子都应当在飞行过程中旋转
+            Projectile.rotation += RotationIncrement;
 
             DrawOffsetX = -12;
             DrawOriginOffsetY = -5;
@@ -75,85 +107,61 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.soundDelay = 60;
                 SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
-
-            /*
-            *代码从星体击碎者继承
-            *ai[0]用来存储锤子的状态，0f说明处于投掷状态, 1f说明处于返程状态
-            *激活潜伏攻击时,处于投掷状态的弑神锤子将会在返程的时候尝试采用一个改进型的星杀AI
-            *ai[2]仅记录锤子, 挂载过锤子的锤子会将-2f赋值给ai[2]
-            */
-            float returnSpeed = StellarContempt.Speed;
-            float acceleration = 2.4f; //降了一些返程的加速度
-            switch (Projectile.ai[0])
-            {
-                case 0f:
-                    Projectile.ai[1] += 1f;
-                    if (Projectile.ai[1] == ReboundTime-5&& Projectile.ai[2] == -2f)
-                    {
-                        //收回并拐弯的时候播放使用落星的声音
-                        SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); 
-                        //采用与返程时相同的粒子AI
-                        ReturnDust();
-                    }
-                    if (Projectile.ai[1] >= ReboundTime)
-                    {
-                        Projectile.ai[0] = 1f;
-                        Projectile.ai[1] = 0f;
-                        Projectile.netUpdate = true;
-                    }
-                    break;
-
-                case 1f:
-                    Projectile.tileCollide = false;
-                    CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
-                    if (Main.myPlayer == Projectile.owner)
-                    {
-                        Rectangle projHitbox = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                        Rectangle mplrHitbox = new((int)owner.position.X,
-                                                   (int)owner.position.Y,
-                                                   Projectile.ai[2] == -2f ? owner.width * 2  : owner.width,
-                                                   Projectile.ai[2] == -2f ? owner.height * 2 : owner.height);
-                    
-                        if (projHitbox.Intersects(mplrHitbox))
-                        {
-                            //只有挂载过的锤子才会在返回玩家手上的时候展示一些粒子
-                            if(Projectile.ai[2] == -2f) 
-                            ReturnDust();
-                            
-                            //主要是星神之杀的代码
-                            //潜伏, 或者挂载过的锤子也会执行这个指令
-                            if(Projectile.Calamity().stealthStrike || Projectile.ai[2] == -2f) 
-                            {
-                                //这个速度会稍微慢一点
-                                Projectile.velocity *= -0.7f;
-                                Projectile.timeLeft = 600;
-                                Projectile.penetrate = 1;
-                                Projectile.localNPCHitCooldown = -1;
-                                Projectile.ai[0] = 2f;
-                                Projectile.netUpdate = true;
-                            }
-                            else
-                            {
-                                Projectile.Kill();
-                            }
-                        }
-                    }
-                    break;
-                case 2f:
-                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, 25f/2, 20f);
-                    ifSummonClone = false;
-                    if(Projectile.ai[2] != -2f) //使挂载过的锤子不会再试图进行一次挂载
-                    ifSummonClone = true;
-                    break;
-
-                default:
-                    break;
-            }
-            //无论状态，锤子都应当在飞行过程中旋转
-            Projectile.rotation += RotationIncrement;
-            return;
         }
 
+        private void DoStealth()
+        {
+            CIFunction.HomeInOnNPC(Projectile, true, 1250f, 25f / 2, 20f);
+            //使其不再进行一次分裂。
+            ifSummonClone = IsCloneSummon != ClonedProj;
+        }
+
+        public void DoReturning()
+        {
+            bool isCloned = IsCloneSummon == ClonedProj;
+            Projectile.tileCollide = false;
+            CIFunction.BoomerangReturningAI(Owner, Projectile, StellarContempt.Speed, 2.4f);
+            if (Main.myPlayer == Owner.whoAmI)
+            {
+                int pWidth  = isCloned ? Owner.width  * 2 : Owner.width;
+                int pHEight = isCloned ? Owner.height * 2 : Owner.height;
+                Rectangle plrBox = new ((int)Owner.Center.X, (int)Owner.Center.Y, pWidth, pHEight);
+                if (Projectile.Hitbox.Intersects(plrBox))
+                {
+                    //ClonedProj也会直接执行反击的AI
+                    if (Projectile.Calamity().stealthStrike || IsCloneSummon == ClonedProj)
+                    {
+                        AttackType = IsStealth;
+                        Projectile.velocity *= -0.7f;
+                        Projectile.timeLeft = 600;
+                        Projectile.penetrate = 1;
+                        Projectile.localNPCHitCooldown = -1;
+                        Projectile.netUpdate = true;
+                    }
+                    else Projectile.Kill();
+                }
+            }
+        }
+        public void DoShooted()
+        {
+            //回旋镖的通用AI
+            AttackTimer += 1f;
+            if (AttackTimer > ReboundTime - 5)
+            {
+                //只有收回的锤子才会播报下方的音效与粒子
+                if (IsCloneSummon == ClonedProj)
+                {
+                    //收回并拐弯的时候播放使用落星的声音
+                    SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); 
+                    //采用与返程时相同的粒子AI
+                    ReturnDust();   
+                }
+                AttackType = IsReturning;
+                AttackTimer = 0f;
+                Projectile.netUpdate = true;
+            }
+        }
+        #endregion
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
@@ -164,20 +172,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
             SpawnDust(target.Center);
-            if(ifSummonClone) StealthOnHit();  //如果允许生成克隆弑神锤子
-            else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f)  OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
-            else if(Projectile.ai[2] == -2f) SpawnSpark(hit); //只会让挂载过的锤子执行这个函数
-            else SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
-        }
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
+            if (ifSummonClone)
+                StealthOnHit(target);  //如果允许生成克隆弑神锤子
 
-            if(ifSummonClone) //如果允许生成克隆弑神锤子
-            StealthOnHit();
-            else if(Projectile.ai[2] != -2f && Projectile.ai[2] != -3f) //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线 
-            OnHitEffect(target.Center);
+            else if (IsCloneSummon != ClonedProj && IsCloneSummon != IsJustShooted) 
+                OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
+
+            else if (IsCloneSummon == ClonedProj)
+                SpawnSpark(hit); //只会让挂载过的锤子执行这个函数
+
+            else 
+                SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
         }
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
         private static void SpawnDust(Vector2 targetPos)
         {
             // Some dust gets produced on impact.
@@ -241,7 +248,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 GeneralParticleHandler.SpawnParticle(spark);
             }
         }
-        private void StealthOnHit()
+        private void StealthOnHit(NPC target)
         {
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
             //潜伏返程击中后生成一个新的克隆锤子,这一克隆锤子将会滞留在敌怪上
@@ -258,7 +265,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 dust.velocity = velOffset;
                 dust.scale = Main.rand.NextFloat(1.5f, 3.2f);
             }
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(), (int)(Projectile.damage*1.3f), Projectile.knockBack, Main.myPlayer);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(), (int)(Projectile.damage*1.3f), Projectile.knockBack, Main.myPlayer, target.whoAmI);
             //也会生成一个新的锤子, 这一锤子不会再生成新的克隆锤子
             ifSummonClone = false;
         }

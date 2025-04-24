@@ -88,7 +88,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 float x4 = realPlayerPos.X;
                 float y4 = realPlayerPos.Y;
                 if (player.Calamity().StealthStrikeAvailable())
-                    Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(), damage, knockback, player.whoAmI, -1f);
+                {
+                   int p = Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(), damage, knockback, player.whoAmI, -1f);
+                   Main.projectile[p].Calamity().stealthStrike = true; 
+                }
                 else
                 Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
             }

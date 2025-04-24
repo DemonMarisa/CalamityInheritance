@@ -409,11 +409,13 @@ namespace CalamityInheritance.CIPlayer
             
             if(SpeedrunNecklace)
             {
-                Player.GetArmorPenetration<GenericDamageClass>() += 250;
-                Player.GetDamage<GenericDamageClass>() += 0.50f;
+                Player.GetArmorPenetration<GenericDamageClass>() += 300;
+                Player.GetDamage<GenericDamageClass>() *= 1.5f;
                 Player.GetCritChance<GenericDamageClass>() += 50;
-                Player.endurance *= 0.1f;
-                Player.statDefense /= 10;
+                Player.endurance *= 0.01f;
+                Player.statDefense /= 100;
+                if (Player.lifeRegen > 0)
+                    Player.lifeRegen /= 100;
             }
             if(AncientCotbg)
             /*
@@ -720,79 +722,58 @@ namespace CalamityInheritance.CIPlayer
                     Player.buffImmune[debuff] = true;
             }
             //所有林海套装的新效果
-            if (AuricSilvaSet && Player.lifeRegen < -10)
+            if (AuricSilvaFakeDeath && Player.lifeRegen < -10)
             {
                 //将绝对值的1/10转化为生命恢复，间接降低烧血debuff的伤害
                 int getCurLifeRegenAbs = Math.Abs(Player.lifeRegen);
                 Player.lifeRegen += getCurLifeRegenAbs / 10;
             }
-            // Silva invincibility effects
-            if (auricsilvaCountdown > 0 && AuricGetSilvaEffect)
+            // 林海无敌的视觉效果。与其他的。
+            if (DoSilvaCountDown > 0 && IsUsedSilvaReborn)
             {
-                if(AuricSilvaSet && !SilvaRebornMark)
+                //计时器往下跑。
+                DoSilvaCountDown -= 1;
+                //打表的debuff免疫
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+                //粒子。 
+                DoSilvaDust();
+                //给CD
+                if (DoSilvaCountDown <= 0)
                 {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    auricsilvaCountdown -= 1;
-                    if (auricsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && AuricGetSilvaEffect && auricsilvaCountdown <= 0)
-                    {
-                        auricsilvaCountdown = 600;
-                        AuricGetSilvaEffect = false;
-                    }
+                    SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                    //林海自起为啥要跑180秒的CD， wtf?
+                    Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
                 }
             }
-
-            if (CIsilvaCountdown > 0 && AuricGetSilvaEffect)
+            //CD结束后重置林海效果
+            if (!Player.HasCooldown(SilvaRevive.ID) && IsUsedSilvaReborn && DoSilvaCountDown <= 0)
             {
-                if (AuricSilvaSet && SilvaRebornMark)
+                DoSilvaCountDown = SilvaRebornDura;
+                IsUsedSilvaReborn = false;
+            }
+            //金源林海效果，与其他。
+            if (DoAuricSilvaCountdown > 0 && IsUsedSilvaReborn)
+            {
+                //计时器往下跑。
+                DoAuricSilvaCountdown -= 1;
+                //打表的debuff免疫
+                foreach (int debuff in CalamityLists.debuffList)
+                    Player.buffImmune[debuff] = true;
+                //粒子。 
+                DoSilvaDust();
+                //给CD
+                if (DoAuricSilvaCountdown <= 0)
                 {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    CIsilvaCountdown -= 1;
-                    if (CIsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && AuricGetSilvaEffect && CIsilvaCountdown <= 0)
-                    {
-                        CIsilvaCountdown = 900;
-                        AuricGetSilvaEffect = false;
-                    }
+                    SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                    Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
                 }
+            }
+            //CD结束，重置林海效果
+            if (!Player.HasCooldown(SilvaRevive.ID) && IsUsedSilvaReborn && DoAuricSilvaCountdown <= 0)
+            {
+                DoAuricSilvaCountdown = AuricSilvaRebornDura;
+                IsUsedSilvaReborn = false;
             }
 
             if (usPlayer.SilvaMagicSetLegacy && Player.HasCooldown(SilvaRevive.ID))
@@ -838,76 +819,24 @@ namespace CalamityInheritance.CIPlayer
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
             }
+        }
 
-            // Silva invincibility effects
-            if (auricsilvaCountdown > 0 && AuricGetSilvaEffect)
+        public void DoSilvaDust()
+        {
+            for (int j = 0; j < 2; j++)
             {
-                if(AuricSilvaSet && !SilvaRebornMark)
-                {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    auricsilvaCountdown -= 1;
-                    if (auricsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && AuricGetSilvaEffect && auricsilvaCountdown <= 0)
-                    {
-                        auricsilvaCountdown = 600;
-                        AuricGetSilvaEffect = false;
-                    }
-                }
-            }
-
-            if (CIsilvaCountdown > 0 && AuricGetSilvaEffect)
-            {
-                if (AuricSilvaSet && SilvaRebornMark)
-                {
-                    foreach (int debuff in CalamityLists.debuffList)
-                        Player.buffImmune[debuff] = true;
-
-                    CIsilvaCountdown -= 1;
-                    if (CIsilvaCountdown <= 0)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                        Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(3 * 60));
-                    }
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
-                        Main.dust[green].position.X += Main.rand.Next(-20, 21);
-                        Main.dust[green].position.Y += Main.rand.Next(-20, 21);
-                        Main.dust[green].velocity *= 0.9f;
-                        Main.dust[green].noGravity = true;
-                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
-                        if (Main.rand.NextBool())
-                            Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    if (!Player.HasCooldown(SilvaRevive.ID) && AuricGetSilvaEffect && CIsilvaCountdown <= 0)
-                    {
-                        CIsilvaCountdown = 900;
-                        AuricGetSilvaEffect = false;
-                    }
-                }
+                int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                Main.dust[green].position.Y += Main.rand.Next(-20, 21);
+                Main.dust[green].velocity *= 0.9f;
+                Main.dust[green].noGravity = true;
+                Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                if (Main.rand.NextBool())
+                    Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
             }
         }
+
         public void MiscEffects()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();

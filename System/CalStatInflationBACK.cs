@@ -502,8 +502,6 @@ namespace CalamityInheritance.System
                 item.damage = 1500;
             if (item.type == ModContent.ItemType<HeliumFlash>())
                 item.damage = 6666;
-            if (item.type == ModContent.ItemType<HeliumFlash>())
-                item.damage = 6666;
             if (item.type == ModContent.ItemType<VoidVortex>())
                 item.damage = 1800;
             if (item.type == ModContent.ItemType<YharimsCrystal>())
@@ -530,6 +528,7 @@ namespace CalamityInheritance.System
                 string text = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.ZenithBuff");
                 tooltips.Add(new TooltipLine(Mod, "buff", text));
             }
+
         }
         public override void ModifyWeaponCrit(Item item, Player player, ref float crit)
         {
@@ -538,6 +537,8 @@ namespace CalamityInheritance.System
             //初始满暴
             if (item.type == ItemID.Zenith)
                 crit += 96;
+            if (item.type == ModContent.ItemType<ArkoftheCosmos>())
+                crit += 31;
         }
         #endregion
         #region 魔影

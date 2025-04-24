@@ -35,6 +35,7 @@ namespace CalamityInheritance.CIPlayer
         //通用……任意计数器？
         public int BrimstoneDartsCD = 0;
         public int GlobalMiscCounter = 1;
+        public int CotbgCounter = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -64,12 +65,24 @@ namespace CalamityInheritance.CIPlayer
                 fireCD--;
             if (AeroFlightPower > 0)
                 AeroFlightPower--;
+
             if (GlobalSoundDelay > 0)
                 GlobalSoundDelay --;
+
             if (GlobalFireDelay > 0)
                 GlobalFireDelay--;
+                
             if (BrimstoneDartsCD > 0)
                 BrimstoneDartsCD--;
+
+            if (CotbgCounter > 0)
+                CotbgCounter--;
+
+            if (DNAImmnue > 0)
+                DNAImmnue--;
+            
+            if (DNAImmnueActive > 0)
+                DNAImmnueActive--;
             return;
         }
     }

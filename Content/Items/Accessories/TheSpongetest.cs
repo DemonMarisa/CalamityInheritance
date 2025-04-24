@@ -218,8 +218,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddIngredient<AmbrosialAmpouleOld>().
                 AddIngredient<CosmiliteBar>(15).
                 AddIngredient<DubiousPlating>(20).
-                AddIngredient<CosmiliteBar>(5).
-                AddIngredient<AscendantSpiritEssence>(5).
                 AddTile<CosmicAnvil>().
                 Register();
         }

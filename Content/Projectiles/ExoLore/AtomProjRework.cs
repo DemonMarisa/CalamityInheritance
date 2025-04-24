@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         #endregion
         #region 攻击属性
         public int SlowdownTime = 80;
-        public int IncreaseMent = 1;
+        public int IncreaseMent = 8;
         public int StealthIncre = -1;
         public int AnotherIncre = -1;
         public int FlipX = -1;
@@ -51,10 +51,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
         public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         #endregion
+        //AttackTimer会用于绘制上，所以如果你知道你在干嘛的话我不建议你去对AttackTimer做任何的修改
         public override void AI()
         {
             DoGeneral();
-            
             switch (AttackType)
             {
                 case IsShooted:
@@ -125,10 +125,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private void DoNotStealthProj(NPC target)
         {
             //射弹非空，尝试设置生成位置。
-            Vector2 realPos = target.Center + (MathHelper.TwoPi / IncreaseMent).ToRotationVector2() * 300f;
+            Vector2 realPos = target.Center + (MathHelper.TwoPi / MathHelper.PiOver4 * 8 * IncreaseMent ).ToRotationVector2() * 300f + target.velocity;
             IncreaseMent += 1;
-            if (IncreaseMent > 16)
-                IncreaseMent = 1;
             //设置距离向量，并转为速度向量
             Vector2 pDistVec = target.Center - realPos;
             float pDist = pDistVec.Length();

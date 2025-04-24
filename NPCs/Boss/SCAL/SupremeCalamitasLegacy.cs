@@ -261,7 +261,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 我不知道为什么修改NPCdamage就会导致boss属性翻倍，所以扔AI里面初始化了
             // 草拟吗难度增幅
             // NPC.damage = 350;
-            NPC.Calamity().canBreakPlayerDefense = true;
             NPC.npcSlots = 50f;
 
             NPC.width = NPC.height = 120;
@@ -1724,9 +1723,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            // Materials
-
-            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 40, 50);
+            //yysy 20个都够你把所有魔影物品做完了
+            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 20, 30);
+            //魔影梯凳掉率为0.0005%
+            npcLoot.Add(ModContent.ItemType<StepToolShadow>(), 2000);
 
             int[] weapons =
             [

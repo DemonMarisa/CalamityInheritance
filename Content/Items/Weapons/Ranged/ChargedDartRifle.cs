@@ -81,14 +81,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 .AddIngredient(ItemID.MartianConduitPlating, 25)
                 .AddIngredient<CoreofEleum>(3)
                 .AddIngredient(ItemID.FragmentVortex, 5)
-                .AddTile(TileID.MythrilAnvil)
+                .AddTile(TileID.LunarCraftingStation)
                 .Register();
             CreateRecipe(1)
                 .AddIngredient(ItemID.DartPistol)
                 .AddIngredient(ItemID.MartianConduitPlating, 25)
                 .AddIngredient<CoreofEleum>(3)
                 .AddIngredient(ItemID.FragmentVortex, 5)
-                .AddTile(TileID.MythrilAnvil)
+                .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
     }

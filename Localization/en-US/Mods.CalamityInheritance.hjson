@@ -465,6 +465,11 @@ Configs: {
 			Label: Shattered Sun Resprite
 			Tooltip: ""
 		}
+
+		FuckAllExo: {
+			Label: Fuck All Exo
+			Tooltip: ""
+		}
 	}
 
 	CIServerConfig: {

@@ -125,7 +125,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.lifeRegen = 4;
             }
-            if (AncientSilvaSet)
+            if (AncientSilvaForceRegen)
             {
                 //旧林海新增: 生命再生速度无法低于0
                 int lifeRegenSpeed = NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) ? 4 : 8;

@@ -95,7 +95,7 @@ namespace CalamityInheritance.CIPlayer
         {
             if (Main.player[Main.myPlayer].lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
             {
-                if (AuricSilvaSet)
+                if (AuricSilvaFakeDeath)
                 {
                     double healMult = 0.1;
                     int heal = Main.rand.Next(5, 11);

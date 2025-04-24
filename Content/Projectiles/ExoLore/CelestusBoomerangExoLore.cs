@@ -38,6 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 20;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()

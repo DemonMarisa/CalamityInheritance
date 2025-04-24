@@ -40,9 +40,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         {
             CreateRecipe().
                 AddIngredient<SilvaLeggings>().
-                AddIngredient<EffulgentFeather>(15).
-                AddIngredient<PlantyMush>(15).
-                AddIngredient<AscendantSpiritEssence>(5).
+                AddIngredient<EffulgentFeather>(30).
+                AddIngredient<PlantyMush>(25).
                 AddTile<CosmicAnvil>().
                 Register();
         }

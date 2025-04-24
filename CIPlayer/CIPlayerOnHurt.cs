@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -19,6 +20,7 @@ using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
+using CalamityMod.Items.Materials;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
@@ -102,7 +104,6 @@ namespace CalamityInheritance.CIPlayer
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
                 SoundEngine.PlaySound(CISoundID.SoundRainbowGun, Player.Center);
-
                 for (int j = 0; j < 50; j++)
                 {
                     int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
@@ -121,134 +122,75 @@ namespace CalamityInheritance.CIPlayer
 
                 if (BuffStatsDraconicSurge)
                 {
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
-                    {
-                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-                    }
+                    Player.Heal(Player.statLifeMax2);
+                    //给耐药性
+                    Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+                    //直接给30秒。
+                    Player.AddBuff(BuffID.PotionSickness, 1800);
                 }
                 Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
                 return false;
             }
-            //金源套的林海复活，或者说本mod的林海复活
-            if (AuricSilvaSet && CIsilvaCountdown > 0)
+            //先判是否为林海套
+            if (SilvaFakeDeath && DoSilvaCountDown > 0)
             {
-                if (SilvaRebornMark)
+                //赋予一次。
+                if (DoSilvaCountDown == SilvaRebornDura)
                 {
-                    if (CIsilvaCountdown == CIsilvaReviveDuration && !AuricGetSilvaEffect)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-
-                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), CIsilvaReviveDuration);
-
-                        if (calPlayer.silvaWings)
-                        {
-                            Player.statLife += Player.statLifeMax2 / 2;
-                            Player.HealEffect(Player.statLifeMax2 / 2);
-
-                            if (Player.statLife > Player.statLifeMax2)
-                                Player.statLife = Player.statLifeMax2;
-                        }
-                    }
-
-                    AuricGetSilvaEffect = true;
-
-                    if (Player.statLife < 1)
-                        Player.statLife = 1;
-
-                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
-                    // Can we please remove this from the game
-                    if (calPlayer.chaliceOfTheBloodGod)
-                    {
-                        calPlayer.chaliceBleedoutBuffer = 0D;
-                        calPlayer.chaliceDamagePointPartialProgress = 0D;
-                    }
-
-                    return false;
+                    Player.AddBuff(ModContent.BuffType<SilvaRevival>(), SilvaRebornDura);
+                    //我们只发送一次音效。
+                    SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
                 }
+
+                if (!IsUsedSilvaReborn)
+                    DoSilvaHeal(calPlayer.silvaWings);
+
+                DoSilvaHeal(calPlayer.silvaWings);
+                IsUsedSilvaReborn = true;
+                //如果都没有，或者已经执行过一次，我们才会执行锁1血的防处死
+                if (Player.statLife < 1)
+                    Player.statLife = 1;
+                //血神圣杯的特判
+                if (calPlayer.chaliceOfTheBloodGod)
+                {
+                    calPlayer.chaliceBleedoutBuffer = 0D;
+                    calPlayer.chaliceDamagePointPartialProgress = 0D;
+                }
+                return false;
             }
-                //金源套的林海复活，或者说本mod的林海复活
-            if (AuricSilvaSet && auricsilvaCountdown > 0 )
+            //金源套，附带弑神复活的特判, 从上方复制了一遍。
+            if (AuricSilvaFakeDeath && DoAuricSilvaCountdown > 0 && Player.HasCooldown(GodSlayerCooldown.ID))
             {
-                if (Player.HasCooldown(GodSlayerCooldown.ID))
+                //赋予一次。
+                if (DoAuricSilvaCountdown == AuricSilvaRebornDura)
                 {
-                    if (auricsilvaCountdown == AuricSilvaInvincibleTime && !AuricGetSilvaEffect)
-                    {
-                        SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-
-                        Player.AddBuff(ModContent.BuffType<SilvaRevival>(), AuricSilvaInvincibleTime);
-
-                        if (calPlayer.silvaWings)
-                        {
-                            Player.statLife += Player.statLifeMax2 / 2;
-                            Player.HealEffect(Player.statLifeMax2 / 2);
-
-                            if (Player.statLife > Player.statLifeMax2)
-                                Player.statLife = Player.statLifeMax2;
-                        }
-                    }
-
-                    AuricGetSilvaEffect = true;
-
-                    if (Player.statLife < 1)
-                        Player.statLife = 1;
-
-                    // Silva revive clears Chalice of the Blood God's bleedout buffer every frame while active
-                    // Can we please remove this from the game
-                    if (calPlayer.chaliceOfTheBloodGod)
-                    {
-                        calPlayer.chaliceBleedoutBuffer = 0D;
-                        calPlayer.chaliceDamagePointPartialProgress = 0D;
-                    }
-                    return false;
+                    Player.AddBuff(ModContent.BuffType<SilvaRevival>(), AuricSilvaRebornDura);
+                    //我们只发送一次音效
+                    SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
                 }
+                //三个检测，优先判定龙魂秘药(恢复至最大生命值)
+                if (!IsUsedSilvaReborn)
+                    DoSilvaHeal(calPlayer.silvaWings);
+                    
+                IsUsedSilvaReborn = true;               //如果都没有，或者已经执行过一次，我们才会执行锁1血的防处死
+                if (Player.statLife < 1)
+                    Player.statLife = 1;
+                //血神圣杯的特判
+                if (calPlayer.chaliceOfTheBloodGod)
+                {
+                    calPlayer.chaliceBleedoutBuffer = 0D;
+                    calPlayer.chaliceDamagePointPartialProgress = 0D;
+                }
+                //防处死
+                return false;
             }
 
             //目前用于龙魂与原灾金源和复活效果的互动
             if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
             {
-                SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.position);
-
-                if (Player.HasCooldown(DraconicElixirCooldown.ID))
-                {
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.statLife > Player.statLifeMax2)
-                        Player.statLife = Player.statLifeMax2;
-                }
-
-                if (BuffStatsDraconicSurge)
-                {
-
-                    Player.statLife += Player.statLifeMax2;
-                    Player.HealEffect(Player.statLifeMax2);
-
-                    if (Player.statLife > Player.statLifeMax2)
-                        Player.statLife = Player.statLifeMax2;
-
-                    if (Player.FindBuffIndex(ModContent.BuffType<DraconicSurgeBuff>()) > -1)
-                    {
-
-                        Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-
-                        // Additional potion sickness time
-                        int additionalTime = 0;
-                        for (int i = 0; i < Player.MaxBuffs; i++)
-                        {
-                            if (Player.buffType[i] == BuffID.PotionSickness)
-                                additionalTime = Player.buffTime[i];
-                        }
-
-                        float potionSicknessTime = 30f + (float)Math.Ceiling(additionalTime / 60D);
-                        Player.AddBuff(BuffID.PotionSickness, CalamityUtils.SecondsToFrames(potionSicknessTime));
-                    }
-                }
+                DoSilvaHeal(calPlayer.silvaWings);
                 return false;
             }
-
             // 終灾期间玩家死亡计数
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
             {
@@ -258,11 +200,39 @@ namespace CalamityInheritance.CIPlayer
 
             return true;
         }
+        public void DoSilvaHeal(bool isUsingWings)
+        {
+            //有龙魂秘药的优先判龙魂秘药。
+            if (BuffStatsDraconicSurge)
+            {
+                Player.Heal(Player.statLifeMax2);
+                //给耐药性
+                Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+                //直接给30秒。
+                Player.AddBuff(BuffID.PotionSickness, 1800);
+                return;
+            }
+            //仅在不佩戴龙魂秘药的时候判定是否佩戴翅膀
+            if (!BuffStatsDraconicSurge && isUsingWings)
+            {
+                Player.Heal(Player.statLifeMax2 / 2);
+                return;
+            }
+
+        }
         #endregion
         #region 修改来犯的NPC体术
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
+            //星流短剑的Lore效果。
+            if (DNAImmnue > 0)
+            {
+                //直接减少30%伤害
+                modifiers.SourceDamage *= 0.8f;
+                //不要执行下方所有的计算。
+                return;
+            }
             if (Triumph)
             {
                 if (!Main.zenithWorld)
@@ -278,6 +248,24 @@ namespace CalamityInheritance.CIPlayer
             {
                 npc.Calamity().canBreakPlayerDefense = false;;
             }
+            //在血神图腾被移除游戏的时候，这里会改成血神图腾的样式
+            if (CoreOfTheBloodGod)
+            {
+                //这个用于做准备，暂时无作用。
+                string cdID = CoreOfTheBloodGod ? CotbgTotem.ID : Totem.ID;
+                if (CotbgCounter <= 0)
+                {
+                    //给CD
+                    Player.AddCooldown(cdID, CIFunction.SecondsToFrames(20));
+                    //给效果
+                    calPlayer.contactDamageReduction += 0.5;
+                    //共用一个counter
+                    CotbgCounter = CIFunction.SecondsToFrames(20);
+                    return;
+                }
+            }
+            if (PBGPower && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
+                calPlayer.contactDamageReduction += 0.25;
             if (FuckYouBees)
             {
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
@@ -306,12 +294,7 @@ namespace CalamityInheritance.CIPlayer
                 return true;
             }
             //孔雀翎T3: 攻击时提供的buff将使你有1/10的概率在3秒内彻底无敌。
-            if (PBGPower && player.ActiveItem().type == ModContent.ItemType<PBGLegendary>() && Main.rand.NextBool(10))
-            {
-                Player.immune = true;
-                Player.immuneTime = 180;
-                return true;
-            }
+            
             return base.FreeDodge(info);
         }
         #endregion
@@ -319,6 +302,31 @@ namespace CalamityInheritance.CIPlayer
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
             CalamityPlayer calPlayer = Player.Calamity();
+            if (DNAImmnue > 0)
+            {
+                //直接减少30%伤害
+                modifiers.SourceDamage *= 0.8f;
+                //不要执行下方所有的计算。
+                return;
+            }
+            if (PBGPower && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
+                calPlayer.projectileDamageReduction += 0.25;
+            //血神核心专门提供红月免伤, 要注意这个是最优先被计算的。 
+            if (FUCKYOUREDMOON && proj.type == ModContent.ProjectileType<BrimstoneMonsterLegacy>())
+            {
+                if (CotbgCounter <= 0)
+                {
+                    Player.AddCooldown(CotbgTotem.ID, CalamityUtils.SecondsToFrames(20));
+                    //防前免伤，直接砍50%
+                    calPlayer.projectileDamageReduction += 0.5;
+                    //共享20秒的CD
+                    CotbgCounter = CalamityUtils.SecondsToFrames(20);
+                    //直接返回，不执行下方所有的杂糅计算
+                    return;
+                }
+                //常驻0.15f
+                calPlayer.projectileDamageReduction += 0.15;
+            }
             // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
             // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
             if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
@@ -362,6 +370,8 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            
+            
             //庇护刃T2: 尝试使你无视防御损伤
             if (DefenderPower)
             {

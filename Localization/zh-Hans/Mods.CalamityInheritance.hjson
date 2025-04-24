@@ -442,6 +442,11 @@ Configs: {
 			// Label: Shattered Sun Resprite
 			// Tooltip: ""
 		}
+
+		FuckAllExo: {
+			Label: "[i:CalamityMod/Exoblade]日掉原灾奇迹物质武器贴图"
+			Tooltip: 把原灾奇迹物质武器贴图全部日掉
+		}
 	}
 
 	CIServerConfig: {

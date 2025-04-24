@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -31,11 +32,15 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statLifeMax2 += (int)(player.statLifeMax * 0.25);
             CalamityPlayer calPlayer = player.Calamity();
-            calPlayer.fleshTotem = true;
+            var usPlayer = player.CIMod();
             calPlayer.healingPotionMultiplier += 0.25f;
+            //同时标记他是血神核心与给血上限。
+            //这个标记主要是给后面血肉图腾被移除时给CD用
+            usPlayer.CoreOfTheBloodGod = true;
+            usPlayer.FUCKYOUREDMOON = true;
             player.endurance += 0.15f;
+
         }
 
         public override void AddRecipes()

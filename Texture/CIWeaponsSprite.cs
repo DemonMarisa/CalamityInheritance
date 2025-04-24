@@ -16,6 +16,9 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> TerraLanceCalProj;
         public static Asset<Texture2D> TerraLanceAlt;
         public static Asset<Texture2D> TerraLanceAltProj;
+        //星流刀
+        public static Asset<Texture2D> FuckExoBladeCal;
+        public static Asset<Texture2D> LoveExoBladeLgeacy;
         #region 方舟
         public static Asset<Texture2D> AotCCal;
         public static Asset<Texture2D> AotCAlt;
@@ -106,6 +109,9 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ElemRayCal;
         public static Asset<Texture2D> ElemRayAlt;
         #endregion
+        //归元
+        public static Asset<Texture2D> FuckVortexCal;
+        public static Asset<Texture2D> LoveVortexLegacy;
         #endregion
         #region 召唤
         //小花法杖
@@ -285,6 +291,9 @@ namespace CalamityInheritance.Texture
             //氦闪
             HeliumCal = ModContent.Request<Texture2D>           ($"{CIExtraRoute}/Magic/HeliumCal");
             HeliumFlashLegacy = ModContent.Request<Texture2D>   ($"{CIMagicWeaponRoute}/HeliumFlashLegacy");
+            //归元
+            FuckVortexCal = ModContent.Request<Texture2D>       ($"{CalMagicWeaponRoute}/SubsumingVortex");
+            LoveVortexLegacy = ModContent.Request<Texture2D>    ($"{CIMagicWeaponRoute}/SubsumingVortexold");
 
             #endregion
 
@@ -405,6 +414,9 @@ namespace CalamityInheritance.Texture
                 RareArkCal,
                 RadiantAlt,
                 RadiantCal,
+                //两归元:)
+                FuckVortexCal,
+                LoveVortexLegacy,
                 SeaShivAlt,
                 SeaShivCal,
                 ShadowKnivesCal,

@@ -112,7 +112,6 @@ namespace CalamityInheritance.Content.Items
             {
                 if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PBGLegendary>(), 1))
                 {
-                    Main.NewText("114514");
                     mplr.PBGTier3 = true;
                     LegendaryUpgradeTint(DustID.TerraBlade, player);
                 }

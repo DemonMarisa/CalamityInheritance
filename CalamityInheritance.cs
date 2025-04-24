@@ -25,6 +25,7 @@ using CalamityInheritance.System;
 using CalamityInheritance.Common.ModSupport;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.NPCs.Boss.Yharon.Sky;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance
 {
@@ -93,6 +94,8 @@ namespace CalamityInheritance
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             HeavenlyGaleProjHook.Load(this);
+            //fuck掉GlowMask.
+            FuckSubsumingGlowMask.Load(this);
             #endregion
         }
         public void LoadClient()

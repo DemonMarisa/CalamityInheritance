@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void SetDefaults()
         {
-            Projectile.Calamity().DealsDefenseDamage = true;
+            
             Projectile.width = 32;
             Projectile.height = 32;
             Projectile.friendly = true;

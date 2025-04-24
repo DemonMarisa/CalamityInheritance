@@ -37,9 +37,8 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         {
             var modPlayer1 = player.CIMod();
             var modPlayer = player.Calamity();
-            modPlayer1.AuricSilvaSet = true;
             modPlayer1.SilvaRougeSetLegacy = true;
-            modPlayer1.SilvaRebornMark = true;
+            modPlayer1.SilvaFakeDeath = true;
             modPlayer.rogueStealthMax += 1.25f;
             modPlayer.wearingRogueArmor = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");

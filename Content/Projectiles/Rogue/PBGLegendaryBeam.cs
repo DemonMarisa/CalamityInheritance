@@ -1,5 +1,6 @@
 using System;
 using System.CodeDom;
+using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -89,6 +90,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.localNPCHitCooldown = 12;
         }
+        //颜色的修改可不会自己同步。
+        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         public override void AI()
         {
             Player plr = Main.player[Projectile.owner];

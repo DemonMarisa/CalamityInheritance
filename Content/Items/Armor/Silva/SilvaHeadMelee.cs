@@ -35,8 +35,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         public override void UpdateArmorSet(Player player)
         {
             var usPlayer = player.CIMod();
-            usPlayer.AuricSilvaSet = true;
-            usPlayer.SilvaRebornMark = true;
+            usPlayer.SilvaFakeDeath = true;
             usPlayer.SilvaMeleeSetLegacy = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }

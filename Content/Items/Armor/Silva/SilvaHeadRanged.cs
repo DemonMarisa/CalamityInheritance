@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CIMod();
-            modPlayer1.AuricSilvaSet = true;
-            modPlayer1.SilvaRebornMark = true;
+            //我从入职第一天就想问了，为啥林海套的复活标记要用的金源？
+            modPlayer1.SilvaFakeDeath = true;
             modPlayer1.SilvaRangedSetLegacy = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)

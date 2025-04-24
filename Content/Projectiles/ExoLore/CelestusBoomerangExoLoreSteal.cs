@@ -26,13 +26,19 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         #region 别名
         public ref float AttackType => ref Projectile.ai[0];
         public ref float AttackTimer => ref Projectile.ai[1];
-        public ref float TargetIndex => ref Projectile.ai[2];
+        public int TargetIndex
+        {
+            get => (int)Projectile.ai[2];
+            set => Projectile.ai[2] = value;
+        }
         public Player Owner => Main.player[Projectile.owner];
         #endregion
         #region 攻击枚举
         const float IsShooted = 0f;
         const float IsReturning = 1f;
         const float IsStealth = 2f;
+        const float IsHanging = 3f;
+        const float IsFading = 4f;
         #endregion
         #region 射弹属性
         const float ReturnTime = 40f;
@@ -55,6 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
 
         public override void AI()
@@ -74,6 +81,58 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
         }
 
+        //I don't know how to code.
+        //这个本来准备用于悬挂回收AI，但是后来想了想执行起来会有问题，注释掉了
+        //我不建议删掉这段，因为可能后面会用得上，这里写的其实挺有条理的，如果需要参考的话确实可以参考的。
+        #region 注释AI
+        /*
+        private void DoHanging()
+        {
+            //设定目标位置
+            float hangingX = Owner.MountedCenter.X;
+            float hangingY = Owner.MountedCenter.Y - 100f;
+            Vector2 hangingCenter = new Vector2(hangingX, hangingY);
+            //设定加速度
+            float acceleration = 0.35f;
+            //将角度不断指向这个敌怪，
+            NPC facingTarget = Main.npc[TargetIndex];
+            float rotAngle =  Projectile.AngleTo(Vector2.UnitX);
+            //除非target不再活动，不然镰刀都会朝向这个target的
+            if (facingTarget is not null && facingTarget.active)
+                rotAngle = Projectile.AngleTo(facingTarget.Center);
+            //将射弹返回，同时在此期间不断修正射弹的朝向
+            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rotAngle, 0.2f);
+            Projectile.velocity = (Projectile.velocity * (15f + acceleration) + Projectile.DirectionTo(hangingCenter)) / 15f;
+            //遍历场上可能存在的幻影镰刀，如果不存在则执行返回程式
+            int searchProj = ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>();
+            bool atLeastOne = false;
+            //但凡搜索到一个我们都直接break出去，我们不会在这里执行幻影镰刀的返程AI的
+            for (int search = 0; search < Main.projectile.Length; search++)
+            {
+                Projectile wantedProj = Main.projectile.[search];
+                if (wantedProj.type != searchProj && wantedProj.owner != Owner.whoAmI)
+                    continue;
+                else
+                {
+                    atLeastOne = true;
+                    break;
+                }
+            }
+            //场上但凡有一个幻影镰刀，这里的AI都会在这里停止并返回。
+            if (atLeastOne)
+                return;
+            //现在才开始执行回收AI
+            AttackTimer += 1f;
+            if (AttackTimer > 15f)
+            {
+                //执行返回AI。重置计时器
+                AttackTimer = 0f;
+                AttackType = IsFading;
+                Projectile.netUpdate = true;
+            }
+        }
+        */
+        #endregion
         private void DoGeneral()
         {
             if (!initialized)
@@ -86,8 +145,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Projectile.rotation += 1f;
             else
                 Projectile.rotation = Projectile.velocity.ToRotation();
-            if(AttackType != IsStealth)
-                SpawnExtraProj();
         }
 
         private void SpawnExtraProj()
@@ -102,13 +159,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
         }
 
-        private void DoStealth() => CIFunction.HomeInOnNPC(Projectile, true, 1250f, speed, 20f);
+        private void DoStealth()
+        {
+            CIFunction.HomeInOnNPC(Projectile, true, 1250f, speed, 20f);
+        }
 
         private void DoReturning(bool stealthStrike)
         {
             float returnSpeed = 25f;
             float acceleration = 5f;
             CIFunction.BoomerangReturningAI(Owner, Projectile, returnSpeed, acceleration);
+            SpawnExtraProj();
             if (Main.myPlayer != Projectile.owner)
                 return;
             if (Projectile.Hitbox.Intersects(Owner.Hitbox))
@@ -117,7 +178,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 {
                     Projectile.velocity *= -1f;
                     Projectile.timeLeft = 600;
-                    Projectile.penetrate = 1;
+                    Projectile.penetrate = -1;
                     Projectile.localNPCHitCooldown = -1;
                     AttackType = IsStealth;
                     Projectile.netUpdate = true;
@@ -143,11 +204,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             target.ExoDebuffs();
             OnHitEffects();
+            if (AttackType == IsStealth)
+            {
+                AttackType = IsHanging;
+                //标记这个敌怪
+                TargetIndex = target.whoAmI;
+                Projectile.netUpdate = true;
+            }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
             OnHitEffects();
         }
 

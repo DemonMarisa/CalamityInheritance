@@ -3,8 +3,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -33,6 +35,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.localNPCHitCooldown = 1;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
+        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         public override void AI()
         {
             StoredColorAndDust gColor = SpecialColor(Main.player[Projectile.owner], Projectile);

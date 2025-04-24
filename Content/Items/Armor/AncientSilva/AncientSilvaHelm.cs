@@ -42,10 +42,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         {
             var usPlayer = player.CIMod();
             CalamityPlayer calPlayer = player.Calamity();
-            usPlayer.AncientSilvaSet = true;
+            usPlayer.AncientSilvaForceRegen = true;
             usPlayer.AncientSilvaStat = true;
-            usPlayer.SilvaRebornMark = true;
-            usPlayer.AuricSilvaSet = true;
+            usPlayer.SilvaFakeDeath = true;
             calPlayer.wearingRogueArmor = true;
             calPlayer.rogueStealthMax += 1.25f;
             calPlayer.WearingPostMLSummonerSet = true;
@@ -65,9 +64,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             CreateRecipe().
                 AddIngredient<SilvaHeadMagic>().
                 AddIngredient<SilvaHeadSummon>().
-                AddIngredient<EffulgentFeather>(25).
-                AddIngredient<PlantyMush>(25).
-                AddIngredient<AscendantSpiritEssence>(10).
+                AddIngredient<EffulgentFeather>(40).
+                AddIngredient<PlantyMush>(75).
                 AddTile<CosmicAnvil>().
                 Register();
         }

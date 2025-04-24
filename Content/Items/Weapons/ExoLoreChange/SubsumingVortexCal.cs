@@ -12,13 +12,26 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Terraria.Audio;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod;
+using Microsoft.Xna.Framework.Graphics;
+using System.Reflection;
+using rail;
+using CalamityInheritance.Texture;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
     public class SubsumingVortexCal : GlobalItem
     {
+        public static Player Fucker => Main.LocalPlayer;
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<SubsumingVortex>();
+        #region Fuck掉原灾的发光贴图
+        public delegate void PostDrawInWorldDelegate(SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI);
+        public static void PostDrawInWorld(PostDrawInWorldDelegate orig, SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            self.Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Magic/SubsumingVortexoldGlow").Value);
+        }
+        #endregion
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CIMod();
@@ -34,6 +47,27 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.SubsumingVortexChange") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));
+        }
+        public override Vector2? HoldoutOffset(int type)
+        {
+            //画师跟写代码的打一架吧，原灾的贴图要-6才能正常手持
+            if (CIRespriteConfig.Instance.FuckAllExo)
+                return Vector2.Zero;
+            else
+                return new Vector2(-6, 0);
+        }
+    }
+
+    //暂时注释掉了。没啥用。
+    //没删是因为不知道什么时候会用到这个钩子
+    public class FuckSubsumingGlowMask : GlobalItem
+    {
+        public static void Load(Mod mod)
+        {
+            if (!CIRespriteConfig.Instance.FuckAllExo)
+                return;
+            MethodInfo fuckSubsumingGlow = typeof(SubsumingVortex).GetMethod("PostDrawInWorld", BindingFlags.Instance | BindingFlags.Public);
+            MonoModHooks.Add(fuckSubsumingGlow, SubsumingVortexCal.PostDrawInWorld);
         }
     }
     //大型追踪漩涡

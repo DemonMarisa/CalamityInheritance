@@ -11,7 +11,10 @@ namespace CalamityInheritance.CIPlayer
         {
             float LifePercentMax = 0f;
             if (CoreOfTheBloodGod)
+            {
+                Player.Calamity().contactDamageReduction = 0.5f;
                 LifePercentMax += 0.25f;
+            }
             if (AncientCotbg)
                 LifePercentMax += 0.1f;
             //元素手套10%
@@ -21,7 +24,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (AncientGodSlayerSet)
                     LifePercentMax += 0.85f;
-                if (AncientSilvaSet)
+                if (AncientSilvaForceRegen)
                     LifePercentMax += 0.65f;
                 if (AncientTarragonSet)
                     LifePercentMax += 0.45f;

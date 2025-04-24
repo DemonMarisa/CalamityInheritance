@@ -1,14 +1,7 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Events;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs;
+﻿using CalamityMod.Events;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -28,7 +21,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            Projectile.Calamity().DealsDefenseDamage = true;
+            
             Projectile.width = 40;
             Projectile.height = 40;
             Projectile.hostile = true;

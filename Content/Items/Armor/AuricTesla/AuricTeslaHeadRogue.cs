@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.bloodflareThrowing = true;
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
-            modPlayer1.AuricSilvaSet = true;
+            modPlayer1.AuricSilvaFakeDeath = true;
 
             if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
             {
