@@ -586,7 +586,7 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
  
-        private void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
+        public void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
             #region shield
             // Boss Rush的伤害下限是通过一个不规范的修正器实现的
@@ -651,15 +651,16 @@ namespace CalamityInheritance.CIPlayer
                 {
                     CalamityPlayer calPlayer = Player.Calamity();
                     // 添加：会受到总伤害三分之二的防御损伤。随后会以1帧4点的速度恢复
-                    defenceBreak = totalDamageBlocked / 3 * 2;
+                    finalDefenceBreak += totalDamageBlocked / 3 * 2;
+                    defenceBreakPool += totalDamageBlocked / 3 * 2;
 
                     // 如果任何护盾受到了伤害，则显示文本以指示护盾受到了伤害
                     string shieldDamageText = (-totalDamageBlocked).ToString();
-                    string defenceDamageText = (defenceBreak).ToString();
+                    string defenceDamageText = (-finalDefenceBreak).ToString();
 
                     Rectangle location = new Rectangle((int)Player.position.X, (int)Player.position.Y - 16, Player.width, Player.height);
                     CombatText.NewText(location, Color.LightBlue, Language.GetTextValue(shieldDamageText));
-                    CombatText.NewText(location, Color.DarkBlue, Language.GetTextValue(defenceDamageText));
+                    CombatText.NewText(location, Color.Gray, Language.GetTextValue(defenceDamageText));
 
 
                     // 不论护盾是否被打破，都给玩家提供无敌帧（iframes）以应对护盾被击中的情况。

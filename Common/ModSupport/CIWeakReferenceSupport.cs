@@ -26,7 +26,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.ModSupport
 {
-    public class WeakReferenceSupport
+    public class CIWeakReferenceSupport
     {
         public static readonly Func<bool> DownedScal = () => CIDownedBossSystem.DownedLegacyScal;
         // 快速获取本地化路径

@@ -106,12 +106,13 @@ namespace CalamityInheritance.CIPlayer
 
             //升级
             LevelUp();
+
             //熟练度处理
             GiveBoost();
+
             // 护盾的综合效果
             ShieldEffect();
-            // 杂项判定
-            CIMiscCondition();
+
         }
 
         public void Buffs()
@@ -1653,7 +1654,8 @@ namespace CalamityInheritance.CIPlayer
             }
             //纳米技术
         }
-        public int defenceBreak = 0;
+        public int finalDefenceBreak = 0;
+        public int defenceBreakPool = 0;
         public void ShieldEffect()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();
@@ -1667,17 +1669,20 @@ namespace CalamityInheritance.CIPlayer
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
 
-            if (usPlayer.anyShield = true && defenceBreak > 0)
+            if (usPlayer.anyShield = true && defenceBreakPool > 0)
             {
-                Player.statDefense -= defenceBreak;
-                defenceBreak -= defenceBreak / CIFunction.SecondsToFrames(5);// 防御需要5s恢复完毕
+                Player.statDefense -= finalDefenceBreak;
+                finalDefenceBreak -= defenceBreakPool / CIFunction.SecondsToFrames(5);// 防御需要5s恢复完毕
             }
 
-            if (defenceBreak < 0)
-                defenceBreak = 0;
+            if (finalDefenceBreak < 0)
+            {
+                defenceBreakPool = 0;
+                finalDefenceBreak = 0;
+            }
 
             if (anyShield == false)
-                defenceBreak = 0;
+                finalDefenceBreak = 0;
         }
     
         public void RebornBosses()

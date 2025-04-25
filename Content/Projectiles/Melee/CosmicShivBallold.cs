@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public NPC target = null;
         public const float maxDistanceToTarget = 1540f;
         public bool initialized = false;
+
         public float startingVelocityY = 0f;
         public float startingVelocityX = 0f;
 
@@ -92,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 60);
         }
         // pretty much entirely from the Oracle circular damage code
-
+        /*
         private void CircularDamage(float radius)
         {
             if (Projectile.owner != Main.myPlayer)
@@ -125,6 +126,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
         }
+        */
         public override void OnKill(int timeLeft)
         {
             // mostly from AstralCrystal kill code
@@ -138,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Dust dust = Dust.NewDustPerfect(Projectile.Center, 173, new Vector2?(velocity), 0, default, scale);
                 dust.customData = 0.025f;
             }
-            CircularDamage(80f);
+            // CircularDamage(80f);
         }
     }
 }

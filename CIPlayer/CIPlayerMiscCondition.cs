@@ -15,20 +15,6 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-        public bool passBuffSolar = true;
-        public bool currentSolarEclipse = false;
-        public void CIMiscCondition()
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            CalamityInheritancePlayer clPlayer = Player.CIMod();
-            if (passBuffSolar)
-            {
-                if (Main.eclipse && CIDownedBossSystem.DownedLegacyYharonP1)
-                    currentSolarEclipse = true;
 
-                if (!Main.eclipse && currentSolarEclipse && passBuffSolar)
-                    CIDownedBossSystem.DownedBuffedSolarEclipse = true;
-            }
-        }
     }
 }

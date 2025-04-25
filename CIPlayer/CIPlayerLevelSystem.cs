@@ -48,6 +48,8 @@ namespace CalamityInheritance.CIPlayer
         public short exp = 1;
         // 经验获取CD
         public short expCD = 0;
+        // 经验获取CD
+        public short levelUpCD = 0;
         #endregion
         // 计算每一级的经验需求
         public int CalculateRequiredExp(int currentLevel) => (int)(baseExp + baseExp * MathF.Pow(expRate, currentLevel));
@@ -84,6 +86,11 @@ namespace CalamityInheritance.CIPlayer
         #region 等级升级与特效
         public void LevelUp()
         {
+            if (levelUpCD > 0)
+            {
+                levelUpCD--;
+                return;
+            }
             if (expCD > 0)
                 expCD--;
             //Main.NewText($"magicLevel : {magicLevel}");
@@ -91,30 +98,35 @@ namespace CalamityInheritance.CIPlayer
             {
                 Celebration(meleeLevel == 14 ? ProjectileID.RocketFireworkRed : ProjectileID.RocketFireworksBoxRed);
                 meleeLevel++;
+                levelUpCD = 60;
                 return;
             }
             if (rangePool >= CalculateRequiredExp(rangeLevel) && rangeLevel < maxLevel)
             {
                 Celebration(rangeLevel == 14 ? ProjectileID.RocketFireworkGreen : ProjectileID.RocketFireworksBoxGreen);
                 rangeLevel++;
+                levelUpCD = 60;
                 return;
             }
             if (magicPool >= CalculateRequiredExp(magicLevel) && magicLevel < maxLevel)
             {
                 Celebration(magicLevel == 14 ? ProjectileID.RocketFireworkBlue : ProjectileID.RocketFireworksBoxBlue);
                 magicLevel++;
+                levelUpCD = 60;
                 return;
             }
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
             {
                 Celebration(summonLevel == 14 ? ModContent.ProjectileType<SummonLevelFirework_Final>() : ModContent.ProjectileType<SummonLevelFirework>());
                 summonLevel++;
+                levelUpCD = 60;
                 return;
             }
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
             {
                 Celebration(rogueLevel == 14 ? ModContent.ProjectileType<RogueLevelFirework_Final>() : ModContent.ProjectileType<RogueLevelFirework>());
                 rogueLevel++;
+                levelUpCD = 60;
                 return;
             }
         }
@@ -160,8 +172,10 @@ namespace CalamityInheritance.CIPlayer
             //移除狙击镜效果
             //不是，哥们，这个狙击镜他会影响某些右键
             //比如星火右键喷不出来
+            /*
             if (rangeLevel > 14)
                 Player.scope = true;
+            */
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力

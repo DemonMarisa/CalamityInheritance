@@ -19,6 +19,8 @@ using Terraria.Localization;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -28,13 +30,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public Player Owner => Main.player[OwnerIndex];
         
         public const float AmmoNotConsumeChance = 0.9f;
-        private const float AltFireShootSpeed = 17f;
-        private int PhotoLight;
 
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
 
         public override void SetDefaults()
@@ -43,99 +43,47 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.DamageType = DamageClass.Ranged;
             Item.width = 84;
             Item.height = 30;
-            Item.useTime = 2;
+            Item.useTime = 10;
             Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
             Item.UseSound = CISoundID.SoundFlamethrower;
             Item.autoReuse = true;
-            Item.shootSpeed = 18f;
             Item.useAmmo = AmmoID.Gel;
 
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
 
+            Item.shoot = ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>();
+            Item.shootSpeed = 18f;
+            Item.noUseGraphic = true;
             Item.channel = true;
         }
-
         public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
-            bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
-            SoundStyle leftClick  = isLoreExo ? CISoundMenu.ExoFlameLeft  : CISoundID.SoundFlamethrower;
-            SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
-            if (player.altFunctionUse == 2)
-            {
-                Item.useTime = 2;
-                Item.useAnimation = 27;
-                Item.shoot = ModContent.ProjectileType<ExoFlareClusterold>();
-                Item.UseSound = rightClick;
-            }
-            else
-            {
-                Item.useTime = 2;
-                Item.useAnimation = 10;
-                Item.shoot = ModContent.ProjectileType<ExoFireold>();
-                Item.UseSound = leftClick;
-            }
-            return base.CanUseItem(player);
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-15, 0);
+            return true;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CIMod();
-
-            // PhotovisceratorCrystal的发射逻辑
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
-                float warpDist = Main.rand.NextFloat(60f, 120f);
-                float warpAngle = Main.rand.NextFloat(-MathHelper.Pi / 2.6f, MathHelper.Pi / 2.6f);
-                Vector2 warpOffset = -warpDist * playerToMouseVec.RotatedBy(warpAngle);
-                Vector2 Finalposition = Main.LocalPlayer.MountedCenter + warpOffset;
-
-                Projectile.NewProjectile(Owner.GetSource_ItemUse(Owner.ActiveItem()), Finalposition, velocity, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage * 2, 0f, OwnerIndex);
-            }
-
+            bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
+            SoundStyle leftClick = isLoreExo ? CISoundMenu.ExoFlameLeft : CISoundID.SoundFlamethrower;
+            SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
+            float ai0 = 0f;
             if (player.altFunctionUse == 2)
             {
-                if (player.itemAnimation >= Item.useAnimation - Item.useTime)
-                {
-                    position += velocity.ToRotation().ToRotationVector2() * 80f;
-                    Projectile.NewProjectile(source, position, velocity.SafeNormalize(Vector2.Zero) * AltFireShootSpeed, type, damage, knockback, player.whoAmI);
-                }
-                return false;
+                ai0 = 1f;
+                Item.UseSound = rightClick;
             }
-
-
-            for (int i = 0; i < 2; i++)
+            else
             {
-                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+                Item.UseSound = leftClick;
             }
-            
-            if (--PhotoLight <= 0 && usPlayer.GlobalFireDelay <= 0)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    position += velocity.ToRotation().ToRotationVector2() * 64f;
-                    int yDirection = (i == 0).ToDirectionInt();
-                    velocity = velocity.RotatedBy(0.2f * yDirection);
-                    Projectile lightBomb = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ExoLightold>(), damage, knockback, player.whoAmI);
-
-                    lightBomb.localAI[1] = yDirection;
-                    lightBomb.netUpdate = true;
-                }
-                usPlayer.GlobalFireDelay = 10;
-                PhotoLight = 5;
-            }
-
+            if(player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] < 1)
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, ai0);
             return false;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)

@@ -149,7 +149,7 @@ namespace CalamityInheritance
         public int? GetMusicFromMusicMod(string songFilename) => MusicAvailable ? MusicLoader.GetMusicSlot(musicMod, "Sounds/Music/" + songFilename) : null;
 
         #region Mod Support
-        public override void PostSetupContent() => WeakReferenceSupport.Setup();
+        public override void PostSetupContent() => CIWeakReferenceSupport.Setup();
         #endregion
     }
 }

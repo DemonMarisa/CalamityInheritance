@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
@@ -10,6 +9,8 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -37,7 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<WulfrumStaffHoldOut>();
+
+            Item.shoot = ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>();
             Item.shootSpeed = 9f;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -60,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
                 Item.UseSound = CISoundID.SoundStaffDiamond;
                 Item.useStyle = ItemUseStyleID.Shoot;
             }
-            return player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] <= 0; ;
+            return player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] <= 0;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

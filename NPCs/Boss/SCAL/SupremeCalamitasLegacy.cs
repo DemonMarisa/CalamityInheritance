@@ -1299,6 +1299,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 }
                 SpawnDust();
             }
+            OnlyGlow = true;
             // 召唤探魂眼时立刻转到冲刺
             SelectNextAttack(18);
             canNextPhase = true;

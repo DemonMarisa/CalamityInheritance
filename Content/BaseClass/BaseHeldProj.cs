@@ -1,9 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.BaseClass
 {
@@ -12,26 +14,25 @@ namespace CalamityInheritance.Content.BaseClass
         /// <summary>
         /// X 方向的偏移量<br/>
         /// </summary>
-        public abstract float OffsetX { get; }
+        public virtual float OffsetX { get; }
 
         /// <summary>
         /// Y 方向的偏移量<br/>
         /// </summary>
-        public abstract float OffsetY { get; }
+        public virtual float OffsetY { get; }
 
         /// <summary>
         /// Y 方向的基础偏移量，不会被朝向影响<br/>
         /// </summary>
-        public abstract float BaseOffsetY { get; }
+        public virtual float BaseOffsetY { get; }
         /// <summary>
         /// 武器的旋转<br/>
         /// </summary>
-        public abstract float WeaponRotation { get; }
-
+        public virtual float WeaponRotation { get; }
         /// <summary>
         /// 武器转动的速度，越大越快<br/>
         /// </summary>
-        public abstract float AimResponsiveness { get; }
+        public virtual float AimResponsiveness { get; }
 
         public override void SetStaticDefaults()
         {
@@ -52,8 +53,7 @@ namespace CalamityInheritance.Content.BaseClass
             {
                 UpdateAim(rrp, player.HeldItem.shootSpeed);
 
-                bool stillInUse = player.channel && !player.noItems && !player.CCed;
-
+                bool stillInUse = (player.channel || player.controlUseTile) && !player.noItems && !player.CCed;
                 // Spawn in the Prism's lasers on the first frame if the player is capable of using the item.
                 if (stillInUse)
                 {
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.BaseClass
                 }
                 else
                 {
-                    Projectile.Kill();
+                    DelCondition();
                 }
             }
 
@@ -113,6 +113,13 @@ namespace CalamityInheritance.Content.BaseClass
         /// 手持弹幕的AI逻辑<br/>
         /// </summary>
         public abstract void HoldoutAI();
+        /// <summary>
+        /// 手持弹幕的AI逻辑<br/>
+        /// </summary>
+        public virtual void DelCondition()
+        {
+            Projectile.Kill();
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -124,7 +131,13 @@ namespace CalamityInheritance.Content.BaseClass
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
 
+            ExtraPreDraw(ref lightColor);
+
             return false;
+        }
+        public virtual void ExtraPreDraw(ref Color lightColor)
+        {
+
         }
     }
 }

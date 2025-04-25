@@ -13,7 +13,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Wulfrum
+namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
     public class WulfrumStaffHoldOut : BaseHeldProj, ILocalizedModType
     {
@@ -42,6 +42,9 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
         public override void HoldoutAI()
         {
 
+        }
+        public override void ExtraPreDraw(ref Color color)
+        {
         }
     }
 }
