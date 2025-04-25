@@ -1,4 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
@@ -44,6 +44,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<ACTKarasawaHoldout>();
             Item.shootSpeed = 1f;
             Item.useAmmo = AmmoID.None;
+
+            Item.channel = true;
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ACTKarasawaHoldout>()] < 1;

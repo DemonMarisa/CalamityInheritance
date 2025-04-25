@@ -1,5 +1,6 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
 using CalamityMod.Particles;
@@ -12,7 +13,7 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     //我现在知道algt说的我的代码能力比他强是什么意思了。
     public class ACTKarasawaHoldout : ModProjectile, ILocalizedModType
@@ -150,14 +151,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Plr.velocity.X = Math.Min(Math.Abs(Plr.velocity.X), speedLimit) * (Plr.velocity.X > 0).ToDirectionInt();
                 Plr.velocity.Y = Math.Min(Math.Abs(Plr.velocity.Y), speedLimit) * (Plr.velocity.Y > 0).ToDirectionInt();
-
             }
+
             if (Projectile.ai[0] != -1f) Plr.Calamity().GeneralScreenShakePower = Math.Max(Math.Clamp((Projectile.ai[0] - 90f) * 0.01f, 0f, 3.6f), Plr.Calamity().GeneralScreenShakePower);
         }
 
         private void UpdateHeld(Vector2 rrp)
         {
-        if (Main.myPlayer == Projectile.owner)
+            if (Main.myPlayer == Projectile.owner)
             {
                 float interpolant = Utils.GetLerpValue(5f, 25f, Projectile.Distance(Main.MouseWorld), true);
                 Projectile.velocity = Vector2.Lerp(Projectile.velocity, Plr.SafeDirectionTo(Main.MouseWorld, null), interpolant);
@@ -230,7 +231,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             float dScaleMul = 0.5f + 0.5f * tintTime;
             //66 44 22
             int dCoutnsMul = 88 - 22 * tintTime;
-            for (int i = 0; i < dCoutnsMul; i ++)
+            for (int i = 0; i < dCoutnsMul; i++)
             {
                 Vector2 dPos = tip + Main.rand.NextVector2Unit(0f, MathHelper.TwoPi) * 90f * Main.rand.NextFloat(0.75f, 1.1f) * Projectile.velocity * 14f;
                 Vector2 dVel = (tip - Projectile.velocity * 14f - dPos) * 0.085f + Plr.velocity * 0.5f;
@@ -253,7 +254,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         private void KillHoldout()
         {
-            if (Plr.dead || (!IsHolding && AttackCharge != -1f) || (AttackTimer <= 0 && AttackCharge == -1f))
+            if (Plr.dead || !IsHolding && AttackCharge != -1f || AttackTimer <= 0 && AttackCharge == -1f)
             {
                 Projectile.Kill();
                 return;
@@ -289,7 +290,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     for (int i = 0; i < 10; i++)
                     {
-                        GeneralParticleHandler .SpawnParticle(new SquishyLightParticle(tip, Projectile.velocity.RotatedByRandom(0.8f) * Main.rand.NextFloat(6f, 8f), Math.Clamp(AttackCharge / 300f, 1f, 1.5f), mainColor, Main.rand.Next(48, 57), 1, 1.65f));
+                        GeneralParticleHandler.SpawnParticle(new SquishyLightParticle(tip, Projectile.velocity.RotatedByRandom(0.8f) * Main.rand.NextFloat(6f, 8f), Math.Clamp(AttackCharge / 300f, 1f, 1.5f), mainColor, Main.rand.Next(48, 57), 1, 1.65f));
                     }
                 }
                 Vector2 pushback = Projectile.velocity.SafeNormalize(Vector2.UnitX) * Math.Clamp(-AttackCharge / 75f, -6f, -4f);
