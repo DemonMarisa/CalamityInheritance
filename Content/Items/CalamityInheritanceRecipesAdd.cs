@@ -209,17 +209,24 @@ namespace CalamityInheritance.Content.Items
                 {
                     rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
                 }
-                //4.5 氦闪：金源锭 -> 宇宙锭
+                //4.4 氦闪：金源锭 -> 宇宙锭
                 if (rec.HasResult<HeliumFlash>() && stack == 1)
                 {
                     rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
                     rec.AddIngredient(bar, 10);
                 }
+                //4.5 极昼信标：金源锭 -> 宇宙锭与日食碎片
                 if (rec.HasResult<MidnightSunBeacon>() && stack == 1)
                 {
                     rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
                     rec.AddIngredient(bar, 10); 
                     rec.AddIngredient(darkSun, 25);
+                }
+                //4.6本mod的卡拉萨瓦大人：恒温魔能 -> 日式碎片
+                if (rec.HasResult<ACTKarasawa>() && stack == 1)
+                {
+                    rec.RemoveIngredient(blueOne);
+                    rec.AddIngredient(darkSun, 10);
                 }
             }
         }

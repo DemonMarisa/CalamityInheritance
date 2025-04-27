@@ -9,13 +9,15 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
     public class GodSlayerHeadMagicold : CIArmor, ILocalizedModType
     {
-        
+        public static string Path = "Mods.CalamityInheritance.Content.Items.Armor.GodSlayerChestplateold";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -41,26 +43,39 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateArmorSet(Player player)
         {
-
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
             var modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMagicSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            modPlayer2.GodSlayerReborn = mode != onlyDash;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modPlayer2.GodSlayerReborn = true;
-            }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            string te = Language.GetTextValue($"{Path}.text");
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            switch (mode)
+            {
+                case 1:
+                    te = Language.GetTextValue($"{Path}.OnlyReborn");
+                    break;
+                case 2:
+                    te = Language.GetTextValue($"{Path}.OnlyDash");
+                    break;
+                case 3:
+                    te = Language.GetTextValue($"{Path}.Both");
+                    break;
+            }
+            tooltips.Add(new TooltipLine(Mod, "God", te));
+        }
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<MagicDamageClass>() += 0.14f;

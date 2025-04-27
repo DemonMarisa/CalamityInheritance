@@ -36,11 +36,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<SylvanSlashAttack>();
             Item.shootSpeed = 24f;
         }
-
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
-            return false;
-        }
     }
 }

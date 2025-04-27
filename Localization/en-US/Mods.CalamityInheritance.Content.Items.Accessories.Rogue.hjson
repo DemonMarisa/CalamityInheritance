@@ -4,10 +4,29 @@ NanotechOld: {
 		'''
 		Rogue projectiles create nanoblades as they travel
 		Stealth strikes summon nanobeams and sparks on enemy hits
+		All of your attack can heal for 10 HP
 		Stealth strikes have +20 armor penetration, deal 1.05x damage, and heal for 1 HP
 		12% increased rogue damage and 15% increased rogue velocity
 		Whenever you crit an enemy with a rogue weapon your rogue damage increases
 		This effect can stack up to 150 times
 		Max rogue damage boost is 1.15x
 		'''
+}
+
+EclispeMirrorLegacy: {
+	DisplayName: Eclispe Mirror Legacy
+	Tooltip:
+		'''
+		+30 max stealth
+		30% increased rogue critical strike chance
+		30% increased stealth regen speed regardless of standing or moving
+		Stealth strike only cost half of max stealth and gauranteed a critical strike
+		Critical strike can pierce 10% defense of your target
+		1/7 of critical strike chance are converted to critical damage bounes
+		Restore half of max stealth on hurt
+		You have a chance to dodage an attack and release an Eclispe Explosion
+		Fully restore your stealth upon a successful dodge
+		[SHOW]
+		'''
+	ShowCritsBounes: "[c/EE7621:Current critical damage bounes]: {0}%"
 }

@@ -14,10 +14,6 @@ namespace CalamityInheritance.Buffs.Statbuffs
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
-
-        public override void Update(Player player, ref int buffIndex)
-        {
-            player.CIMod().BuffPolarisBoost = true;
-        }
+        public override void Update(Player player, ref int buffIndex) => player.CIMod().BuffPolarisBoost = true;
     }
 }

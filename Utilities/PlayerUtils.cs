@@ -53,5 +53,17 @@ namespace CalamityInheritance.Utilities
                 extraIFrames += 40;
             return extraIFrames;
         }
+        /// <summary>
+        /// 不是，哥们，player.calamity().stealthstrikeavailble()真的很多字
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static bool CheckStealth(this Player p) => p.Calamity().StealthStrikeAvailable();
+        /// <summary>
+        /// 不是哥们，这个也很多字，真的
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static bool CheckExoLore(this Player p) => p.CIMod().LoreExo || p.CIMod().PanelsLoreExo;
     }
 }

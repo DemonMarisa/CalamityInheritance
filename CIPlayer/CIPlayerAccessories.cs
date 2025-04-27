@@ -12,7 +12,6 @@ namespace CalamityInheritance.CIPlayer
         //cnm红月。
         public bool FUCKYOUREDMOON = false;
         public bool IfGodHand = false;
-        public bool IfWormScarf = false;
         public bool IfCalamitasSigile = false;
         public bool EHeartStats = false;
         public bool EHeartStatsBoost = false;
@@ -50,8 +49,6 @@ namespace CalamityInheritance.CIPlayer
         public bool AmbrosialStats = false; //百草瓶的一些数据
         public bool DraedonsHeartLegacyStats = false;
         public bool WearingStatisCurse = false;
-        public bool WearingStatisBlessing = false;
-        public bool WearingStarTainted = false;
         public bool anyShield = false; //是否有任何护盾
         //两个肥鸡
         public bool GodlySons = false;
@@ -65,6 +62,9 @@ namespace CalamityInheritance.CIPlayer
         public bool AeroStonePower = false;
         public bool IsWearingBloodyScarf = false;
         public bool IsWearingElemQuiverCal = false;
+        public bool OverloadManaPower = false;
+        //日食魔镜
+        public bool EMirror = false;
         #endregion
         /// <summary>
         /// 这个是在MaxLife后边的
@@ -78,7 +78,6 @@ namespace CalamityInheritance.CIPlayer
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
-            IfWormScarf = false;
             IfCalamitasSigile = false;
             SMushroom = false;
             SMarble = false;
@@ -120,11 +119,7 @@ namespace CalamityInheritance.CIPlayer
             FuckEHeart = false;
             NucleogenesisLegacy = false;//核子
             WearingStatisCurse = false;
-            WearingStatisBlessing = false;
-            WearingStarTainted = false;
             
-            StepToolShadowChairSmallCD = 0;
-            StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
             AmbrosialImmnue = false;
@@ -135,6 +130,8 @@ namespace CalamityInheritance.CIPlayer
             IsWearingBloodyScarf = false;
             IsWearingElemQuiverCal = false;
             anyShield = false; //是否有任何护盾
+            EMirror = false;
+            OverloadManaPower = false;
             #endregion
 
         }
@@ -142,7 +139,6 @@ namespace CalamityInheritance.CIPlayer
         {
             AnkhImmnue = false;
             FUCKYOUREDMOON = false;
-            BuffStatBloodPact = false;
             SolarShieldEndurence = false;
             SMarbleSword = false;
             ElysianAegis = false;
@@ -166,7 +162,6 @@ namespace CalamityInheritance.CIPlayer
             EHeartStats = false;
             EHeartStatsBoost = false;
             StepToolShadowChairSmallCD = 0;
-            StepToolShadowChairSmallFireCD = 0;
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
             EmpressBooster = false;
@@ -174,6 +169,7 @@ namespace CalamityInheritance.CIPlayer
             IsWearingBloodyScarf = false;
             IsWearingElemQuiverCal = false;
             anyShield = false;
+            OverloadManaPower = false;
         }
     }
 }

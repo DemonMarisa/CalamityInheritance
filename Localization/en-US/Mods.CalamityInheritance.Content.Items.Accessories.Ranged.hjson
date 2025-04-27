@@ -26,7 +26,11 @@ ElementalQuiver: {
 		+2 HP/s life regen speed, 15% increased mining speed
 		20% chance not consume ammo 
 		Greatly increases all ranged projectiles velocity
-		Allows your ranged projectiles split
-		This effect is toggleable in config
+		[TEXT]
 		'''
+	DefaultText: "[c/BEBEBE:Currently can not split, toggle by mod config]"
+	StyleOne: "[c/00EE00:Split Style]: Shorter life time, Once in 60 frames"
+	StyleTwo: "[c/00EE00:Split Style]: Same lite time with the main projectile, Once in 60 frames"
+	StyleThree: "[c/00EE00:Split Style]: Shorter life time, randomly split"
+	StyleFour: "[c/00EE00:Split Style]: Same life time with the main projectile, randomly split"
 }

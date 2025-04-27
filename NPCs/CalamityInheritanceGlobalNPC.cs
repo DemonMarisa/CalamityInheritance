@@ -141,26 +141,6 @@ namespace CalamityInheritance.NPCs
         {
             Player plr = Main.player[projectile.owner];
             var mplr = plr.CIMod();
-            //拥有失温虹吸的敌怪将会被汲取大部分的数值
-            if (projectile.type == ModContent.ProjectileType<CryogenPtr>() && mplr.ColdDivityTier3 && npc.HasBuff(ModContent.BuffType<CryoDrain>()))
-            {
-                //伤害、dr和防御 
-                npc.damage /= 2;
-                npc.Calamity().DR /= 2;
-                npc.defense /= 2;
-                //敌对单位的……血量
-                npc.life *= (int)0.99f;
-                int buffDef = npc.defense;
-                float buffDR = npc.Calamity().DR;
-                if (plr.HasBuff(ModContent.BuffType<CryoDrain>()) && plr.ActiveItem().type == ModContent.ItemType<CyrogenLegendary>())
-                {
-                    plr.statDefense += buffDef;
-                    plr.endurance += buffDR;
-                    //固定只给1.1f乘算
-                    plr.GetDamage<SummonDamageClass>() *= 1.1f; 
-                }
-                //这些效果只有手持冰寒神性且玩家本身具备失温虹吸效果时才会提供
-            }
         }
         #region Pre AI
         public override bool PreAI(NPC npc)

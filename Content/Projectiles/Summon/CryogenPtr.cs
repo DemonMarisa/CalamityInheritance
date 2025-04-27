@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq.Expressions;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -12,13 +13,63 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    //FUCK YOU CALAMITY YOU ABSOLUTE SHIT HOW DARE YOU FUCKING WRITE SELDOM MEANINGFUL COMMENT YOU MOTHERFUCKERRRRRRERR!!!!!!!!!!!!!!!
-    //NOW I'M FUCKING KNOW WHERE YOU ARE, I'M NOW GONNA FUCKING YOUR BITCH MOM SLAY YOUR ASSHOLE DAD!!!!!!!!!!!!! 
+    /*操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    *操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+    */
     public class CryogenPtr : ModProjectile, ILocalizedModType
     {
-        //大芬代码我看不懂很多，没办法了
+
         public new string LocalizationCategory => "Content.Projectiles.Summon";
-        public int IfRecharge = -1;
+        public int AttackTimer = -1;
         //冰刺是否在玩家身上旋转
         public bool Idle = true;
         //冰刺是否在敌怪周围旋转
@@ -28,6 +79,22 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public NPC tar = null;
         const float RegulaPtr = 1f;
         const float IfRightClickPtr = 2f;
+        const int T1CD = 60;
+        const int NOT1CD = 180;
+        #region 别名
+        public ref float AttackAngle => ref Projectile.ai[0];
+        public ref float AttackType => ref Projectile.ai[1];
+        public Player Owner => Main.player[Projectile.owner];
+        public bool OnTier1 => Owner.CIMod().ColdDivityTier1;
+        #endregion
+        //这几个攻击方法为什么不写在ai数组里面而是外置？
+        //为什么攻击方法跟计时器用的是同一个数组位？
+        //这个攻击目标为什么也是外置而不是写在ai数组里面？
+        //为什么左键射弹逻辑和右键射弹逻辑必须得写在一个文件里面？
+        //为什么必须往AI封一堆超大缩进的ifesle也不愿意封装？
+        //你们要几把干嘛？
+        //操你妈灾厄
+        //操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
         public override void SetDefaults()
         {
             Projectile.width = 28;
@@ -46,7 +113,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         //写AI
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write(IfRecharge);
+            writer.Write(AttackTimer);
             writer.Write(Rounding);
             writer.Write(Idle);
             writer.Write(FloatyDist);
@@ -54,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            IfRecharge = reader.ReadInt32();
+            AttackTimer = reader.ReadInt32();
             Rounding = reader.ReadBoolean();
             Idle = reader.ReadBoolean();
             int realTar = reader.ReadInt32();
@@ -63,29 +130,35 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         /*
         *我要去杀了所有写代码不写注释的人的亲妈
         *这串代码中，ai[1]用于表示是否为右键功能的射弹标记，如果ai[1] == 2f, 则右键射弹， ai[1] == 1f, 则是左键常规的射弹逻辑, 需注意
+        *操你妈灾厄
+        *挂机射弹（转在玩家上），常规追踪射弹（转在玩家上一段时间后发射）
         */
         public override bool PreAI()
         {
-            if (IfRecharge == -1)
+            int fireCD = OnTier1 ? T1CD : NOT1CD; 
+            //常规射弹：如果是常规的射弹，则发射cd重置为10
+            //计时器初始为-1.
+            if (AttackTimer == -1)
             {
-                IfRecharge = Projectile.ai[1] == 0f ? 10 : 0;
+                //如果仅仅刚刚生成，则重设锭攻击CD。
+                AttackTimer = AttackType == 0f? fireCD : 0;
                 NewDust(30);
             }
-            if (Projectile.ai[1] == RegulaPtr && Projectile.timeLeft > 1000)
+            if (AttackType == RegulaPtr && Projectile.timeLeft > 1000)
             {
-                Projectile.ai[1] = 0f;
+                AttackType = 0f;
                 Projectile.timeLeft = 200;
                 Rounding = Idle = false;
                 Projectile.netUpdate = true;
             }
-            else if (Projectile.ai[1] >= IfRightClickPtr && Projectile.timeLeft > 900)
+            else if (AttackType >= IfRightClickPtr && Projectile.timeLeft > 900)
             {
                 tar = CalamityUtils.MinionHoming(Projectile.Center, 1000f, Main.player[Projectile.owner]);
                 if (tar != null)
                 {
                     //?
                     Projectile.timeLeft = 669;
-                    Projectile.ai[1]++;
+                    AttackType++;
                     Idle = false;
                     float height = tar.getRect().Height;
                     float width = tar.getRect().Width;
@@ -104,15 +177,16 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (Projectile.penetrate == 1)
                     Projectile.penetrate++;
             }
+            //执行AI
             return true;
         }
         public override void AI()
         {
-            Player plr = Main.player[Projectile.owner];
-            var mplr = plr.CIMod();
+            var mplr = Owner.CIMod();
             var src = Projectile.GetSource_FromThis();
+            int fireCD = OnTier1 ? T1CD : NOT1CD;
             //标记是否正在启用召唤物用
-            if (plr.dead)
+            if (Owner.dead)
                 mplr.IsColdDivityActiving = false;
             if (!mplr.IsColdDivityActiving)
             {
@@ -125,7 +199,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             {
                 Projectile.minionSlots = 1f;
                 Projectile.timeLeft = 2;
-                if (!mplr.IsColdDivityActiving && IfRecharge > 0)
+                if (!mplr.IsColdDivityActiving && AttackTimer > 0)
                     Projectile.Kill();
             }
             //如果在敌怪周围，视情况而定干掉射弹
@@ -133,10 +207,10 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (tar != null && (!tar.active || tar.life <= 0))
                     Projectile.Kill();
             //重新部署的时间
-            if (IfRecharge > 0)
+            if (AttackTimer > 0)
             {
-                IfRecharge--;
-                if (IfRecharge == 0)
+                AttackTimer--;
+                if (AttackTimer == 0)
                 {
                     //释放一些粒子
                     SoundEngine.PlaySound(SoundID.Item30 with {Pitch = 0.2f}, Projectile.position);
@@ -144,12 +218,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
             }
             //实际执行的AI
+            //常规射弹因为Rounding=false， idle=false，所以下方的AI都不会执行
             if (Rounding)
             {
                 //如果没在玩家周围转圈, 去寻找一个目标
                 if (Rounding && !Idle && Projectile.timeLeft < 120)
                 {
-                    IfRecharge = 0;
+                    AttackTimer = 0;
                     Projectile.usesIDStaticNPCImmunity = false;
                     Projectile.penetrate = 1;
                     float appDist = tar.getRect().Width > tar.getRect().Height ? tar.getRect().Width : tar.getRect().Height;
@@ -162,23 +237,23 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (Idle)
                 {
                     //?
-                    float num = IfRecharge == 0 ? 60f : (300 - IfRecharge) /3;
+                    float num = AttackTimer == 0 ? 60f : (300 - AttackTimer) /3;
                     float stdDist = num > 60f ? 60f : num;
                     //取玩家中心点，绕着玩家转
-                    Projectile.Center = plr.Center + Projectile.ai[0].ToRotationVector2() * stdDist;
+                    Projectile.Center = Owner.Center + AttackAngle.ToRotationVector2() * stdDist;
                     //转角，别忘了
-                    Projectile.rotation = Projectile.ai[0] + (float)Math.Atan(90);
-                    Projectile.ai[0] -= MathHelper.ToRadians(4f);
+                    Projectile.rotation = AttackAngle + (float)Math.Atan(90);
+                    AttackAngle -= MathHelper.ToRadians(4f);
                     //寻找附近的单位，如果找到了则发射弹幕
-                    NPC aliveTar = IfRecharge > 0 ? null : CalamityUtils.MinionHoming(Projectile.Center, 800f, plr);
+                    NPC aliveTar = AttackTimer > 0 ? null : CalamityUtils.MinionHoming(Projectile.Center, 800f, Owner);
                     //如果单位不为空，则发射弹幕
                     if (aliveTar != null && Projectile.owner == Main.myPlayer)
                     {
-                        IfRecharge = mplr.ColdDivityTier1 ? 10 : 180;
-                        Vector2 vel = Projectile.ai[0].ToRotationVector2().RotatedBy(Math.Atan(0));
+                        AttackTimer = fireCD;
+                        Vector2 vel = AttackAngle.ToRotationVector2().RotatedBy(Math.Atan(0));
                         vel.Normalize();
                         vel *= 30f;
-                        int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, (int)(Projectile.damage * 1.05f), Projectile.knockBack, Projectile.owner, Projectile.ai[0], RegulaPtr);
+                        int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, (int)(Projectile.damage * 1.05f), Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr);
                         //动态变化其伤害
                         if (Main.projectile.IndexInRange(s))
                             Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1.05f);
@@ -188,29 +263,33 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 //用于处理右键时针对敌怪的射弹逻辑
                 else
                 {
-                    Projectile.Center = tar.Center + Projectile.ai[0].ToRotationVector2() * FloatyDist;
-                    Projectile.rotation = Projectile.ai[0] + (float)Math.Atan(90);
+                    Projectile.Center = tar.Center + AttackAngle.ToRotationVector2() * FloatyDist;
+                    Projectile.rotation = AttackAngle + (float)Math.Atan(90);
                     Vector2 vel = Projectile.rotation.ToRotationVector2() - tar.Center;
                     vel.Normalize();
                     if (Projectile.timeLeft <= 120)
-                        Projectile.rotation = Projectile.timeLeft <= 60 ? Projectile.ai[0] - (float)Math.Atan(90) : Projectile.rotation - (MathHelper.Distance(Projectile.rotation, -Projectile.rotation) / (120 - 60));
-                    Projectile.ai[0] -= MathHelper.ToRadians(4f);
+                        Projectile.rotation = Projectile.timeLeft <= 60 ? AttackAngle - (float)Math.Atan(90) : Projectile.rotation - (MathHelper.Distance(Projectile.rotation, -Projectile.rotation) / (120 - 60));
+                    AttackAngle -= MathHelper.ToRadians(4f);
                 }
             }
             else
             {
+                //常规射弹只会执行这一段
                 Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.Atan(90);
                 Homing();
             }
         }
         public override bool? CanDamage()
         {
-            return IfRecharge <= 0 && (Idle || (Rounding && (Projectile.timeLeft >= 120 || Projectile.timeLeft <= 45)) || !Rounding) && !Projectile.hide ? null : false;
+            return AttackTimer <= 0 && (Idle || (Rounding && (Projectile.timeLeft >= 120 || Projectile.timeLeft <= T1CD)) || !Rounding) && !Projectile.hide ? null : false;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //T3时提供自定义的减益: 失温虹吸, 作为月后等级的霜冻
-            target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
+            if (Owner.CIMod().ColdDivityTier3)
+            {
+                target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
+            }
             int cir = 0;
             foreach (Projectile proj in Main.ActiveProjectiles)
             {
@@ -221,11 +300,14 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         cir += Main.rand.Next(1, 4);
                 }
             }
+            //记住：常规射弹没有Rounding等AI
+            //而挂载射弹拥有idleAI，
+            int fireCD = OnTier1 ? T1CD : NOT1CD;
             cir = (int)MathHelper.Min(Main.rand.Next(15, 21), cir);
-            if (Projectile.ai[1] > 2f)
-                Projectile.ai[1]++;
-            if (Projectile.ai[1] >= (30f - cir) && Projectile.timeLeft >= 120)
-                IfRecharge = 15;
+            if (AttackType > 2f)
+                AttackType++;
+            if (AttackType >= (30f - cir) && Projectile.timeLeft >= 120)
+                AttackTimer = 15;
             
             if (Rounding && target == tar && Projectile.timeLeft < 60)
             {
@@ -234,7 +316,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             else if (Idle)
             {
-                IfRecharge = 15;
+                AttackTimer = fireCD;
                 NewDust(20); 
             } 
         }
@@ -258,7 +340,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
             if (Idle)
             {
-                IfRecharge = 300;
+                AttackTimer = 300;
                 NewDust(20);
             }
         }
@@ -269,7 +351,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(IfRecharge > 0 ? lightColor.R : 53, IfRecharge > 0 ? lightColor.G : Main.DiscoG, IfRecharge > 0 ? lightColor.B : 255, IfRecharge > 200 ? 255 : 255 - IfRecharge);
+            return new Color(AttackTimer > 0 ? lightColor.R : 53, AttackTimer > 0 ? lightColor.G : Main.DiscoG, AttackTimer > 0 ? lightColor.B : 255, AttackTimer > 200 ? 255 : 255 - AttackTimer);
         }
 
         private void NewDust(int dAmt)

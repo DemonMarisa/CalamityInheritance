@@ -41,8 +41,6 @@ namespace CalamityInheritance.CIPlayer
         public int FreeEssence = 1;
         //这个用于传奇物品的总伤害计数
         public int DamagePool = 0;
-        //这个用于魔力消耗计数，不过大概只能给SHPC用
-        public int ManaPool = 0; 
         public bool SolarShieldEndurence = false; //日耀盾免伤计算
         #endregion
         #region 武器效果
@@ -52,71 +50,39 @@ namespace CalamityInheritance.CIPlayer
         public bool BuffPolarisBoost = false;
         public bool photovisceratorCrystal = false;
         //我不太确认bool数组new的时候是否会自动为false，所以这样写了
-        /*孔雀翎升级存储
-        *T1: 潜伏飞刀数+1, 飞刀索敌现在更为迅捷
-        *T2: 潜伏造成更多次的判定
-        *T3: 极低的概率使自己不会受到debuff烧伤的影响
-        */
+        //孔雀翎升级存储
         public bool PBGTier1 = false;
         public bool PBGTier2 = false;
         public bool PBGTier3 = false;
-        /*海爵剑升级存储
-        *T1: 移除左键的数量上限
-        *T2: 右键:增强攻速, 增强伤害, 增强飞行速度
-        *T3: 持续不断地对敌人造成伤害会提高自己的防御属性(上限30层)
-        */
+        //海爵剑升级存储
         public bool DukeTier1 = false;
         public bool DukeTier2 = false;
         public bool DukeTier3 = false;
-        /*叶流升级存储
-        *T1: 增强的攻击速度与射弹飞行速度
-        *T2: 你会同时发射双倍数量的射弹
-        *T3: 射出的射弹现在有50%发起一个追踪
-        */
+        //叶流升级存储
         public bool PlanteraTier1 = false;
         public bool PlanteraTier2 = false;
         public bool PlanteraTier3 = false;
-        /*维苏威阿斯升级存储
-        *T1: 射弹穿墙，扩展hitbox
-        *T2: 发射的射弹数量+3
-        *T3: 为自己提供足够的回血
-        */
+        //维苏威阿斯升级存储
         public bool BetsyTier1 = false;
         public bool BetsyTier2 = false;
         public bool BetsyTier3 = false;
-        /*SHPC升级存储
-        *T1: 大幅度扩展左键爆炸的范围
-        *T2: 射弹数量+2
-        *T3: 右键不再消耗任何魔力。
-        */
+        //SHPC升级存储
         public bool DestroyerTier1 = false;
         public bool DestroyerTier2 = false;
         public bool DestroyerTier3 = false;
-        /*庇护之刃升级存储
-        *T1: 射弹攻击时提升1%防御属性，最高提高25%
-        *T2: 刀片击中敌人时无视防御损伤
-        *T3: 你的防御力将会转化为伤害
-        */
+        //庇护之刃升级存储
         public bool DefendTier1 = false;
         public bool DefendTier2 = false;
         public bool DefendTier3 = false;
         public int DefendTier1Timer = 0;
         public float DefenseBoost = 0f;
         public int DefendTier2Pool = 0;
-        /*寒冰神性升级存储
-        *
-        *
-        *
-        */
+        //寒冰神性升级存储
         public bool ColdDivityTier1 = false;
         public bool ColdDivityTier2 = false;
         public bool ColdDivityTier3 = false;
         public bool IsColdDivityActiving = false;
-        /*特殊：暴君水晶升级存储，但是...
-        *Style One: 击败星流
-        *Style Two: 击败终灾 
-        *Style Three: 击败丛林龙(再次)
-        */
+        //特殊：暴君水晶升级存储，但是...
         public bool YharimsKilledExo = false;
         public bool YharimsKilledScal = false;
         public bool YharimsFuckDragon = false;
@@ -164,7 +130,6 @@ namespace CalamityInheritance.CIPlayer
         public bool cIdisableNaturalScourgeSpawns = false;
         public bool cIdisableAnahitaSpawns = false;
         #endregion
-        public bool YharonFlightBooster = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -203,6 +168,7 @@ namespace CalamityInheritance.CIPlayer
             cIdisableAnahitaSpawns = false;
             #endregion
         }
+
         #endregion
         #region 旧位置保存
         public readonly Queue<Vector2> oldPositions = new Queue<Vector2>();
@@ -590,14 +556,15 @@ namespace CalamityInheritance.CIPlayer
             ProjectilHitCounter2 = 0;
         }
         #region Limitations
-        public void ForceVariousEffects()
-        {
-            if (DoAuricSilvaCountdown > 0 && (AuricGetSilvaEffect || AuricSilvaFakeDeath) && AuricSilvaFakeDeath && Player.dashDelay < 0 || CIDashDelay < 0)
-            {
-                if (Player.lifeRegen < 0)
-                    Player.lifeRegen = 0;
-            }
-        }
+        //这个已经在misceeffcet变为常驻效果
+        // public void ForceVariousEffects()
+        // {
+        //     if (DoAuricSilvaCountdown > 0 && AuricSilvaFakeDeath && Player.dashDelay < 0 || CIDashDelay < 0)
+        //     {
+        //         if (Player.lifeRegen < 0)
+        //             Player.lifeRegen = 0;
+        //     }
+        // }
         #endregion
 
         #region MeleeEffects

@@ -1,3 +1,4 @@
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -48,6 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void AI()
         {
+            Projectile.CalamityInheritance().PingReducedNanoFlare = true;
             if (firstTick)
             {
                 Projectile.frame = Main.rand.Next(2);

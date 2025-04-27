@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -16,7 +17,12 @@ namespace CalamityInheritance.Buffs.Statbuffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().AncientAstralStatBuff = true;
+            var calPlayer = player.Calamity();    
+            int getDef = player.statDefense;
+            int defenseBuff = (int)(getDef * 0.30f);
+            player.statDefense += defenseBuff;
+            player.endurance += 0.3f;
+            calPlayer.defenseDamageRatio *= 0.5f;
         }
 
     }

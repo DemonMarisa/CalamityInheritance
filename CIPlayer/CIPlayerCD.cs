@@ -13,7 +13,6 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer: ModPlayer
     {
         public int HammerCounts = 0; //用于锤子打击次数的计时
-        public float HammerSpin = 0f; //用于大锤子Echo的旋转, 我也不知道有啥好的解决方法       
         public bool IfCloneHtting = false; //用于记录克隆的大锤子是否正在击中敌人
         public bool BuffExoApolste = false; //加强星流投矛
         public bool ForceHammerStealth = false;
@@ -35,6 +34,7 @@ namespace CalamityInheritance.CIPlayer
         public int BrimstoneDartsCD = 0;
         public int GlobalMiscCounter = 1;
         public int CotbgCounter = 0;
+        public int GlobalHealProjCD = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -48,6 +48,57 @@ namespace CalamityInheritance.CIPlayer
                     yharimArmorinvincibility--;
             }
             
+            if (summonProjCooldown > 0f)
+                summonProjCooldown -= 1;
+
+            if (SilvaMagicSetLegacyCooldown > 0)
+                SilvaMagicSetLegacyCooldown--;
+
+            if (SilvaStunDebuffCooldown > 0)
+                SilvaStunDebuffCooldown--;
+
+            if (ReaverBlastCooldown > 0)
+                ReaverBlastCooldown--; //战士永恒套cd
+
+            if (ReaverBurstCooldown > 0)
+                ReaverBurstCooldown--; //法师永恒套CD
+
+            if (StepToolShadowChairSmallCD > 0)
+                StepToolShadowChairSmallCD--;
+
+            if (AncientAuricHealCooldown > 0)
+                AncientAuricHealCooldown--;
+            
+            if (PerunofYharimCooldown > 0)
+                PerunofYharimCooldown--;
+
+            if (AncientBloodflareHeartDropCD > 0)
+                AncientBloodflareHeartDropCD--;
+            
+            if (AncientSilvaRegenCD > 0)
+                AncientSilvaRegenCD--;
+            
+            //生命恢复消失前的CD
+            if (AncientAstralStealthGap > 0)
+                AncientAstralStealthGap--;
+            //暴击CD 
+            if (AncientAstralCritsCD > 0) //暴击内置CD
+                AncientAstralCritsCD--;
+            
+            //星辉套重置暴击达到指定次数时重置 
+            if (AncientAstralCritsCount > RequireCrits)
+                AncientAstralCritsCount = 0;
+            //星辉套每次潜伏攻击的CD
+            if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD
+                AncientAstralStealthCD--;
+            
+            if (statisTimerOld > 0 && CIDashDelay >= 0)
+                statisTimerOld = 0;//斯塔提斯CD
+            
+            if (Player.miscCounter % 150 == 0)
+            {
+                ReaverRocketFires = true;
+            }
             if (GlobalLegendaryT3CD > 0)
                 GlobalLegendaryT3CD--;
 
@@ -62,6 +113,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (fireCD > 0)
                 fireCD--;
+                
             if (AeroFlightPower > 0)
                 AeroFlightPower--;
 
@@ -82,6 +134,9 @@ namespace CalamityInheritance.CIPlayer
             
             if (DNAImmnueActive > 0)
                 DNAImmnueActive--;
+            
+            if (GlobalHealProjCD > 0)
+                GlobalHealProjCD--;
             return;
         }
     }

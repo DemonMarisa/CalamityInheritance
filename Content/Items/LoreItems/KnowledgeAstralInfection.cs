@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-    AddIngredient<LoreAstralInfection>().
-    AddTile(TileID.Bookcases).
-    Register();
+                AddIngredient<LoreAstralInfection>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

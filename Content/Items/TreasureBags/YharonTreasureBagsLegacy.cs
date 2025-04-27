@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.TreasureBags
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
             // Weapons
-            itemLoot.Add(DropHelper.CalamityStyle(new Fraction(6, 10), new int[]
+            itemLoot.Add(DropHelper.CalamityStyle(new Fraction(16, 18), new int[]
             {
                 ModContent.ItemType<DragonSword>(),
                 ModContent.ItemType<BurningSkyLegacy>(),
@@ -66,6 +66,7 @@ namespace CalamityInheritance.Content.Items.TreasureBags
                 ModContent.ItemType<TheFinalDawn>(),
                 ModContent.ItemType<Wrathwing>(),
             }));
+
             //给点钱
             itemLoot.Add(ItemDropRule.Common(ItemID.PlatinumCoin, 1, 1, 3));
         }

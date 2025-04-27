@@ -69,31 +69,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool canStealth = player.Calamity().StealthStrikeAvailable();
-            CalamityInheritancePlayer usPlayer = player.CIMod();
-            int pType = (usPlayer.LoreExo || usPlayer.PanelsLoreExo) ? ModContent.ProjectileType<CelestusBoomerangExoLore>() : type; 
-            if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            bool onLore = player.CheckExoLore();
+            int pTypeLore = canStealth ? ModContent.ProjectileType<CelestusBoomerangExoLoreSteal>() : ModContent.ProjectileType<CelestusBoomerangExoLore>(); 
+            if (onLore)
             {
-                Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, 0f, 0f);
-                if (canStealth)
-                {
-                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CelestusBoomerangExoLoreSteal>(), damage, knockback, player.whoAmI);
-                    if (stealth.WithinBounds(Main.maxProjectiles))
-                        Main.projectile[stealth].Calamity().stealthStrike = true;
-                }
-            }
-            else
-            {
-                Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, 0f, 0f);
-                if (canStealth)
-                {
-                    int stealth = Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI);
-                    if (stealth.WithinBounds(Main.maxProjectiles))
-                        Main.projectile[stealth].Calamity().stealthStrike = true;
-                }
-            }
-
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
+                int t = Projectile.NewProjectile(source, position, velocity, pTypeLore, damage, knockback, player.whoAmI);
+                Main.projectile[t].Calamity().stealthStrike = canStealth;
+                
                 int locketDamage = player.ApplyArmorAccDamageBonusesTo((int)(damage * 0.8f));
                 //改了下逻辑，让他在鼠标上方生成而非从……玩家头顶身上生成
                 float srcPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
@@ -111,13 +93,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 dist = pSpeed / dist;
                 distVec.X *= dist;
                 distVec.Y *= dist;
-                int p = Projectile.NewProjectile(source, srcPos, distVec, pType, locketDamage, knockback * 0.5f, player.whoAmI);
+                int p = Projectile.NewProjectile(source, srcPos, distVec, ModContent.ProjectileType<CelestusBoomerangExoLore>(), locketDamage, knockback * 0.5f, player.whoAmI);
                 //允许其吃潜伏
                 if (canStealth)
                 {
                     Main.projectile[p].Calamity().stealthStrike = true;
                     Main.projectile[p].damage *= (int)1.5f;
                 }
+            }
+            else
+            {
+                int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                Main.projectile[stealth].Calamity().stealthStrike = true;
             }
             return false;
         }

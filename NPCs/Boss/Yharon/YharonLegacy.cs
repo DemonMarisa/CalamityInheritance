@@ -764,6 +764,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_FlyAway(float attacktimer, ref float frameType)
         {
             invincible = true;
+            //奶奶的不要走之前创思我好不好
+            NPC.damage = 0;
+            if (Main.zenithWorld)
+                NPC.damage = 114514;
             if (attacktimer < 90)
             {
                 if (attacktimer == 8)

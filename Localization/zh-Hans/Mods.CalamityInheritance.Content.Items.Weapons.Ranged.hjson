@@ -469,8 +469,16 @@ NorfleetLegacy: {
 }
 
 ACTKarasawa: {
-	// DisplayName: A C T Karasawa
-	// Tooltip: ""
+	DisplayName: 卡拉萨瓦重炮[Algt's Tweak]
+	Tooltip:
+		'''
+		按住左键为炮弹蓄能
+		蓄能的过程中，你会因为逐渐增加的枪身重量从而降低移动速度，并禁用坐骑
+		蓄能完毕后即可释放，重击你的敌人
+		……这杆重炮太沉了……太沉了
+		[c/DB53A0:来自旧日的特殊礼物]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
+		'''
 }
 
 ChainWeaponChange:

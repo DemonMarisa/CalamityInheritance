@@ -33,6 +33,7 @@ using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -56,9 +57,6 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer clPlayer = Player.CIMod();
-            //一些玩家内置计数器的操作
-            TimerChange();
-
             //海绵的护盾
             Sponge();
 
@@ -116,10 +114,7 @@ namespace CalamityInheritance.CIPlayer
 
         public void Buffs()
         {
-            CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CIMod();
             Player player = Main.player[Main.myPlayer];
-            Item item = player.HeldItem;
             //庇护之刃T3: 你的防御力将会被转化为伤害加成
             if (player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && DefendTier3)
             {
@@ -131,65 +126,13 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetDamage<MeleeDamageClass>() += (float)getRatio;
 
             }
-            //海爵剑的T3buff
-            //10%伤害，10%攻速，5%暴击，1击退，1HP，20防御，10免伤，10移速
-            if (BrinyBuff)
-            {
-                Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
-                Player.GetKnockback<MeleeDamageClass>() += 1;
-                Player.GetCritChance<MeleeDamageClass>() += 5;
-                Player.statDefense += 20;
-                Player.lifeRegen += 2;
-                Player.endurance += 0.1f;
-                Player.moveSpeed += 0.1f;
 
-            }
-            if (AncientAstralStatBuff) //星之铸造效果
-            {
-                int getDef = Player.GetCurrentDefense();
-                int defenseBuff = (int)(getDef * 0.30f);
-                Player.statDefense += defenseBuff;
-                Player.endurance += 0.3f;
-                calPlayer.defenseDamageRatio *= 0.5f;
-            }
-            if (ReaverMagePower)
-            {
-                Player.manaCost *= 0.80f;
-                Player.GetDamage<MagicDamageClass>() += 0.1f;
-            }
-            /*
-            * 原动不封地把战士永恒套提供的“增加10%伤害”并不能契合当前版本的强度，因此此处直接进行了比较超量的数值加强
-            * 但永恒套的怒气Buff本身只能通过受击获得，考虑到其触发条件我并不特别认为这会导致数值能多爆破（吧）
-            * 速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
-            */
-            if (ReaverMeleeRage)
-            {
-                Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
-                Player.statDefense += 10;
-            }
             if (BuffPolarisBoost)
             {
                 Player.lifeRegen += 1;
                 Player.lifeRegenTime += 1;
             }
-            if (BuffStatsArmorShatter)
-            {
-                Player.GetDamage<ThrowingDamageClass>() += 0.08f;
-                Player.GetDamage<MeleeDamageClass>() += 0.08f;
-                Player.GetCritChance<RogueDamageClass>() += 8;
-                Player.GetCritChance<MeleeDamageClass>() += 8;
-            }
-
-            if (BuffStatsCadence)
-            {
-                Player.lifeMagnet = true;
-                Player.lifeRegen += 10;
-                if (Main.zenithWorld)
-                    Player.AddBuff(BuffID.Lovestruck, 36000);
-            }
-
+        
             if (BuffStatsDraconicSurge)
             {
                 if (Player.wingTimeMax > 0)
@@ -213,22 +156,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (BuffStatsPenumbra)
-            {
-                calPlayer.stealthGenStandstill += 0.15f;
-                calPlayer.stealthGenMoving += 0.1f;
-            }
-
-            if (BuffStatsProfanedRage)
-            {
-                Player.GetCritChance<GenericDamageClass>() += Main.zenithWorld? ProfanedRagePotion.CritBoost * 2 : ProfanedRagePotion.CritBoost;
-            }
-
-            if (BuffStatsHolyWrath)
-            {
-                Player.GetDamage<GenericDamageClass>() += Main.zenithWorld ? 0.48f : 0.12f;
-            }
-
             if (BuffStatsTitanScale)
             {
                 Player.endurance += 0.05f;
@@ -245,29 +172,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 BuffStatsTitanScaleTrueMelee = 0;
             }
-
-            if (BuffStatsYharimsStin)
-            {
-                if (!Main.zenithWorld)
-                {
-                    Player.endurance += 0.04f;
-                    Player.statDefense += 10;
-                    Player.pickSpeed -= 0.1f;
-                    Player.GetDamage<GenericDamageClass>() += 0.05f;
-                    Player.GetCritChance<GenericDamageClass>() += 2;
-                    Player.GetKnockback<SummonDamageClass>() += 1f;
-                    Player.moveSpeed += 0.075f;
-                }
-                // BYD谁让你写不在天顶也十倍速度的
-                if (Main.zenithWorld)
-                {
-                    Player.moveSpeed += 10;
-                    Player.wingTime += 3.0f;
-                    if ((double)Math.Abs(Player.velocity.X) > 1.05 || (double)Math.Abs(Player.velocity.Y) > 1.05)
-                        Player.GetAttackSpeed<GenericDamageClass>() += 1f;
-                }
-            }
-
             
             if (AnimusDamage > 1f)
             {
@@ -284,17 +188,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.manaCost *= 0.20f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
             }
-            
-           if(BuffStatBloodPact)
-           {
-                calPlayer.healingPotionMultiplier += 0.5f;
-                Player.GetDamage<GenericDamageClass>() += 0.05f;
-                Player.statDefense += 20;
-                Player.endurance += 0.1f;
-                Player.longInvince = true;
-                Player.crimsonRegen = true;
-            }
-            
             
             /*
             *2/25:
@@ -315,12 +208,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.endurance -= 0.2f;  //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
                 Player.statDefense *= 0.7f; //玩家的防御力取70%
             }
-            if (BetsyPower)
-            {
-                Player.lifeRegen += 2;
-                Player.GetDamage<MagicDamageClass>() += 0.1f;
-            }
-            
         }
         private void Accessories()
         {
@@ -339,20 +226,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientAeroWingsPower && AeroFlightPower == 0)
                 calPlayer.infiniteFlight = true;
-            #region 神龛物品
-            //脚斗士
-            
-            //蘑菇k
-            if (SMushroom)
-            {
-                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
-            }
-            //气功念珠
-            if (SForest)
-            {
-                
-            }
-            #endregion
+
             if (GodlySons)
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
@@ -399,13 +273,10 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (usPlayer.ElemQuiver)
-                Player.magicQuiver = true;
-            
             if(SpeedrunNecklace)
             {
                 Player.GetArmorPenetration<GenericDamageClass>() += 300;
-                Player.GetDamage<GenericDamageClass>() *= 1.5f;
+                Player.GetDamage<GenericDamageClass>() *= 1.25f;
                 Player.GetCritChance<GenericDamageClass>() += 50;
                 Player.endurance *= 0.01f;
                 Player.statDefense /= 100;
@@ -601,10 +472,10 @@ namespace CalamityInheritance.CIPlayer
             {
                 float getCrits = Player.GetWeaponCrit(Player.ActiveItem());
                 
-                if (getCrits > 90)
+                if (getCrits > 95)
                     Player.GetCritChance<RangedDamageClass>() += 20;
             }
-
+            #region 远古套装系列
             if (AncientTarragonSet)
             {
                 calPlayer.defenseDamageRatio *= 0.45f; //防损减免
@@ -668,55 +539,19 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.3f;
                 }
             }
+            #endregion
             if (Player.vortexStealthActive) //回调星璇数值
             {
                 Player.GetDamage<RangedDamageClass>() += (1f - Player.stealth) * 0.4f;
                 Player.GetCritChance<RangedDamageClass>() += (int)((1f - Player.stealth) * 5f);
             }
-            if (usPlayer.SilvaMagicSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
-            {
-                Player.GetDamage<MagicDamageClass>() += 0.60f;
-            }
+            #region 林海效果
+            bool triggerSilvaFakeDeath = Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>());
+            //林海自起后的效果
+            if (triggerSilvaFakeDeath)
+                DoSilvaFakeDeathEffect();
 
-            if (usPlayer.SilvaMeleeSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
-            {
-                calPlayer.contactDamageReduction += 0.4f;
-            }
-
-            if (SilvaMeleeSetLegacy)
-            {
-                double multiplier = Player.statLife / (double)Player.statLifeMax2;
-                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.13f;
-                if (calPlayer.auricSet && SilvaMeleeSetLegacy)
-                {
-                    double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
-                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
-                }
-            }
-
-            if (usPlayer.SilvaRangedSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
-            {
-                Player.GetDamage<RangedDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.SilvaSummonSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
-            {
-                Player.GetDamage<SummonDamageClass>() *=1.1f;
-                Player.maxMinions += 2;
-            }
-
-            if (usPlayer.SilvaRougeSetLegacy && (Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>())))
-            {
-                Player.GetDamage<RogueDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.AuricDebuffImmune)
-            {
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
-            }
-            //所有林海套装的新效果
+            //所有金源林海套装的新效果
             if (AuricSilvaFakeDeath && Player.lifeRegen < -10)
             {
                 //将绝对值的1/10转化为生命恢复，间接降低烧血debuff的伤害
@@ -731,6 +566,9 @@ namespace CalamityInheritance.CIPlayer
                 //打表的debuff免疫
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
+                //效果补充：低于0的的生命恢复在此期间会被强制置零
+                if (Player.lifeRegen < 0)
+                    Player.lifeRegen = 0;
                 //粒子。 
                 DoSilvaDust();
                 //给CD
@@ -740,6 +578,7 @@ namespace CalamityInheritance.CIPlayer
                     //林海自起为啥要跑180秒的CD， wtf?
                     Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
                 }
+                
             }
             //CD结束后重置林海效果
             if (!Player.HasCooldown(SilvaRevive.ID) && IsUsedSilvaReborn && DoSilvaCountDown <= 0)
@@ -755,12 +594,16 @@ namespace CalamityInheritance.CIPlayer
                 //打表的debuff免疫
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
+                //效果补充：低于0的的生命恢复在此期间会被强制置零
+                if (Player.lifeRegen < 0)
+                    Player.lifeRegen = 0;
                 //粒子。 
                 DoSilvaDust();
                 //给CD
                 if (DoAuricSilvaCountdown <= 0)
                 {
                     SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                    //林海自起为啥要跑180秒的CD， wtf?
                     Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
                 }
             }
@@ -770,50 +613,47 @@ namespace CalamityInheritance.CIPlayer
                 DoAuricSilvaCountdown = AuricSilvaRebornDura;
                 IsUsedSilvaReborn = false;
             }
-
-            if (usPlayer.SilvaMagicSetLegacy && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<MagicDamageClass>() += 0.60f;
-            }
-
-            if (usPlayer.SilvaMeleeSetLegacy && Player.HasCooldown(SilvaRevive.ID))
-            {
-                calPlayer.contactDamageReduction += 0.2f;
-            }
-            
             if (SilvaMeleeSetLegacy)
             {
                 double multiplier = Player.statLife / (double)Player.statLifeMax2;
                 Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
-
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.13f;
                 if (calPlayer.auricSet && SilvaMeleeSetLegacy)
                 {
                     double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
                     Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
                 }
             }
+            #endregion
 
-            if (usPlayer.SilvaRangedSetLegacy && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<RangedDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.SilvaSummonSetLegacy && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetCritChance<SummonDamageClass>() += 10;
-                Player.maxMinions += 2;
-            }
-
-            if (usPlayer.SilvaRougeSetLegacy && Player.HasCooldown(SilvaRevive.ID))
-            {
-                Player.GetDamage<RogueDamageClass>() += 0.40f;
-            }
-
-            if (usPlayer.AuricDebuffImmune)
+            if (AuricDebuffImmune)
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
+            } 
+        }
+
+
+        private void DoSilvaFakeDeathEffect()
+        {
+            var calPlayer = Player.Calamity();
+            if (SilvaMagicSetLegacy)
+                Player.GetDamage<MagicDamageClass>() += 0.60f;
+
+            if (SilvaMeleeSetLegacy)
+                calPlayer.contactDamageReduction += 0.4f;
+
+            if (SilvaRangedSetLegacy)
+                Player.GetDamage<RangedDamageClass>() += 0.40f;
+
+            if (SilvaSummonSetLegacy)
+            {
+                Player.GetDamage<SummonDamageClass>() *= 1.1f;
+                Player.maxMinions += 2;
             }
+
+            if (SilvaRougeSetLegacy)
+                Player.GetDamage<RogueDamageClass>() += 0.40f;
         }
 
         public void DoSilvaDust()
@@ -854,21 +694,17 @@ namespace CalamityInheritance.CIPlayer
             }
             if (CIConfig.Instance.ReduceMoveSpeed && CalamityConditions.DownedDevourerOfGods.IsMet())
             {
-                player.moveSpeed -= 0.3f;
-                player.runAcceleration *= 0.85f;
-                player.accRunSpeed -= 0.3f;
+                player.moveSpeed -= 0.40f;
+                player.runAcceleration *= 0.80f;
+                player.accRunSpeed -= 0.40f;
             }
 
-            //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。但每次抬手使用时都会不小心被烫一下手(为自己提供1秒着火了!的debuff)
-            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && usPlayer.BetsyTier3)
+            //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。
+            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && BetsyTier3)
             {
                 Player.AddBuff(ModContent.BuffType<VolcanoBuff>(), 120);
             }
 
-            if(IfCloneHtting) //大锤子如果正在攻击
-            {
-                BuffExoApolste = true; //激活星流投矛的潜伏伤害倍率
-            }
             if (Player.ActiveItem().type != ModContent.ItemType<DefenseBlade>())
             {
                 if (DefenseBoost > 0f || DefendTier1Timer > 0)
@@ -900,7 +736,7 @@ namespace CalamityInheritance.CIPlayer
             }
             else if (PolarisBoostCounter >= 10)
                 PolarisPhase2 = true;
-            if (usPlayer.InvincibleJam)
+            if (InvincibleJam)
             {
                 foreach (int debuff in CalamityLists.debuffList)
                     Player.buffImmune[debuff] = true;
@@ -920,7 +756,7 @@ namespace CalamityInheritance.CIPlayer
             }           
             
             //玩家佩戴创造之手，挥舞板凳时，提供30%伤害与暴击概率
-            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadow>() && usPlayer.IfGodHand)
+            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadow>() && IfGodHand)
             {
                 player.GetDamage<MagicDamageClass>() += 0.30f;
                 player.GetCritChance<MagicDamageClass>() += 30;
@@ -981,6 +817,7 @@ namespace CalamityInheritance.CIPlayer
 
             }
             // Auric bonus
+            //哇还有大缩进哦
             if (auricBoostold)
             {
                 if (Player.StandingStill(0.1f) && !Player.mount.Active)
@@ -1005,7 +842,6 @@ namespace CalamityInheritance.CIPlayer
                 }
 
                 Player.GetDamage<GenericDamageClass>() += (1000 - modStealth) * 0.0003f;
-
                 Player.GetCritChance<GenericDamageClass>() += (int)((1000 -modStealth) * 0.015f);
             }
             
@@ -1195,14 +1031,14 @@ namespace CalamityInheritance.CIPlayer
                 else
                     Player.blind = true;
             }
-            if (usPlayer.LoreKingSlime || PanelsLoreKingSlime)
+            if (LoreKingSlime || PanelsLoreKingSlime)
             {
                 Player.moveSpeed += 0.05f;
                 Player.jumpSpeedBoost += Player.autoJump ? 0f : 0.1f;
                 Player.statDefense -= 3;
             }
 
-            if (usPlayer.LoreDesertScourge || PanelsLoreDesertScourge)
+            if (LoreDesertScourge || PanelsLoreDesertScourge)
             {
                 if (Player.ZoneDesert || Player.Calamity().ZoneSunkenSea)
                 {
@@ -1211,7 +1047,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreCrabulon || PanelsLoreCrabulon)
+            if (LoreCrabulon || PanelsLoreCrabulon)
             {
                 if (Player.ZoneGlowshroom || Player.ZoneDirtLayerHeight || Player.ZoneRockLayerHeight)
                 {
@@ -1222,7 +1058,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreEaterofWorld || PanelsLoreEaterofWorld)
+            if (LoreEaterofWorld || PanelsLoreEaterofWorld)
             {
                 int damage = (int)(15 * Player.GetBestClassDamage().ApplyTo(1));
                 damage = Player.ApplyArmorAccDamageBonusesTo(damage);
@@ -1300,19 +1136,19 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (usPlayer.LoreSkeletron || PanelsLoreSkeletron)
+            if (LoreSkeletron || PanelsLoreSkeletron)
             {
                 Player.GetDamage<GenericDamageClass>() += 0.1f;
                 Player.GetCritChance<GenericDamageClass>() += 5;
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.90);
             }
 
-            if (usPlayer.LoreDestroyer || PanelsLoreDestroyer)
+            if (LoreDestroyer || PanelsLoreDestroyer)
             {
                 Player.pickSpeed -= 0.15f;
             }
 
-            if (usPlayer.LoreAquaticScourge || PanelsLoreAquaticScourge)
+            if (LoreAquaticScourge || PanelsLoreAquaticScourge)
             {
                 if (Player.wellFed)
                 {
@@ -1333,12 +1169,12 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LorePrime || PanelsLorePrime)
+            if (LorePrime || PanelsLorePrime)
             {
                 Player.GetArmorPenetration(DamageClass.Generic) += 10;
             }
 
-            if (usPlayer.LoreLeviAnahita || PanelsLoreLeviAnahita)
+            if (LoreLeviAnahita || PanelsLoreLeviAnahita)
             {
                 CalamityPlayer modplayer = Player.Calamity();
                 if (Player.IsUnderwater())
@@ -1395,23 +1231,23 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if (usPlayer.LoreDeus || PanelsLoreDeus)
+            if (LoreDeus || PanelsLoreDeus)
             {
                 Player.moveSpeed += 0.2f;
                 Player.Calamity().gravityNormalizer = true;
             }
 
-            if (usPlayer.LoreAureus || PanelsLoreAureus)
+            if (LoreAureus || PanelsLoreAureus)
                if (Player.ZoneSkyHeight)
                     Player.jumpSpeedBoost += 0.5f;
 
-            if (usPlayer.LoreGolem || PanelsLoreGolem)
+            if (LoreGolem || PanelsLoreGolem)
             {
                 if (Math.Abs(Player.velocity.X) < 0.05f && Math.Abs(Player.velocity.Y) < 0.05f && Player.itemAnimation == 0)
                     Player.statDefense += 30;
             }
 
-            if (usPlayer.LoreDuke || PanelsLoreDuke)
+            if (LoreDuke || PanelsLoreDuke)
             {
                 if (Player.IsUnderwater())
                 {
@@ -1422,12 +1258,12 @@ namespace CalamityInheritance.CIPlayer
                 else
                 {
                     Player.GetDamage(DamageClass.Generic) -= 0.02f;
-                    usPlayer.Player.GetCritChance<GenericDamageClass>() -= 2;
+                    Player.GetCritChance<GenericDamageClass>() -= 2;
                     Player.moveSpeed -= 0.04f;
                 }
             }
 
-            if (usPlayer.LoreCultist || PanelsLoreCultist)
+            if (LoreCultist || PanelsLoreCultist)
             {
                 Player.blind = true;
                 Player.endurance += 0.04f;
@@ -1438,7 +1274,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.moveSpeed += 0.1f;
             }
 
-            if (usPlayer.LoreLunarBoss || PanelsLoreLunarBoss)
+            if (LoreLunarBoss || PanelsLoreLunarBoss)
             {
                 if (Player.gravDir == -1f && Player.gravControl2)
                 {
@@ -1453,7 +1289,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.slowFall = true;
             }
 
-            if (usPlayer.LoreTwins || PanelsLoreTwins)
+            if (LoreTwins || PanelsLoreTwins)
             {
                 if (!Main.dayTime)
                 {
@@ -1466,7 +1302,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense -= 10;
             }
 
-            if (usPlayer.LorePlantera || PanelsLorePlantera)
+            if (LorePlantera || PanelsLorePlantera)
             {
                 if (Player.statLife >= (int)(Player.statLifeMax2 * 0.5))
                 {
@@ -1481,7 +1317,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             // Brimstone Elemental lore inferno potion boost
-            if ((usPlayer.LoreBrimstoneElement || PanelsLoreBrimstoneElement ||calPlayer.ataxiaBlaze) && Player.inferno)
+            if ((LoreBrimstoneElement || PanelsLoreBrimstoneElement ||calPlayer.ataxiaBlaze) && Player.inferno)
             {
                 const int FramesPerHit = 30;
 
@@ -1513,19 +1349,19 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreCalamitasClone || PanelsLoreCalamitasClone)
+            if (LoreCalamitasClone || PanelsLoreCalamitasClone)
             {
                 Player.maxMinions += 2;
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75);
             }
-            if (usPlayer.LoreGoliath || PanelsLoreGoliath)
+            if (LoreGoliath || PanelsLoreGoliath)
             {
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 1.25);
                 Player.lifeRegen -= 8;
             }
 
-            if (usPlayer.LoreDukeElder || PanelsLoreDukeElder)
+            if (LoreDukeElder || PanelsLoreDukeElder)
             {
                 if (calPlayer.ZoneAbyss || calPlayer.ZoneSulphur)
                 {
@@ -1546,7 +1382,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (usPlayer.LoreRavager || PanelsLoreRavager)
+            if (LoreRavager || PanelsLoreRavager)
             {
                 calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
@@ -1555,18 +1391,18 @@ namespace CalamityInheritance.CIPlayer
                 Player.ClearBuff(BuffID.Featherfall);
             }
 
-            if (usPlayer.LoreProvidence || PanelsLoreProvidence)
+            if (LoreProvidence || PanelsLoreProvidence)
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
                 Player.GetDamage<GenericDamageClass>() *= 1.1f;
                 Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
 
-            if (usPlayer.LoreDevourer || PanelsLoreDevourer)
+            if (LoreDevourer || PanelsLoreDevourer)
             {
                 Player.GetDamage<TrueMeleeDamageClass>() += 0.5f;
             }
-            if (usPlayer.LoreJungleDragon || PanelsLoreJungleDragon)
+            if (LoreJungleDragon || PanelsLoreJungleDragon)
             {
                 calPlayer.infiniteFlight = true;
                 Player.wingAccRunSpeed += 0.2f;
@@ -1594,65 +1430,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             
         }
-        public void TimerChange()
-        {
-            if (summonProjCooldown > 0f)
-                summonProjCooldown -= 1;
-
-            if (SilvaMagicSetLegacyCooldown > 0)
-                SilvaMagicSetLegacyCooldown--;
-
-            if (SilvaStunDebuffCooldown > 0)
-                SilvaStunDebuffCooldown--;
-
-            if (ReaverBlastCooldown > 0)
-                ReaverBlastCooldown--; //战士永恒套cd
-
-            if (ReaverBurstCooldown > 0)
-                ReaverBurstCooldown--; //法师永恒套CD
-
-            if (StepToolShadowChairSmallCD > 0)
-                StepToolShadowChairSmallCD--;
-
-            if (StepToolShadowChairSmallFireCD > 0)
-                StepToolShadowChairSmallFireCD--;
-
-            if (AncientAuricHealCooldown > 0)
-                AncientAuricHealCooldown--;
-            
-            if (PerunofYharimCooldown > 0)
-                PerunofYharimCooldown--;
-
-            if (AncientBloodflareHeartDropCD > 0)
-                AncientBloodflareHeartDropCD--;
-            
-            if (AncientSilvaRegenCD > 0)
-                AncientSilvaRegenCD--;
-            
-            if (AncientAstralStealthGap > 0) //生命恢复效果消失的间隔CD
-                AncientAstralStealthGap--;
-            
-            if (AncientAstralCritsCD > 0) //暴击内置CD
-                AncientAstralCritsCD--;
-            
-            if (AncientAstralCritsCount > RequireCrits) //暴击到第十次就重置
-                AncientAstralCritsCount = 0;
-            
-            if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD
-                AncientAstralStealthCD--;
-            
-            if (AncientAstralStealth > 12) //潜伏攻击锁定12次
-                AncientAstralStealth = 12;
-            
-            if (statisTimerOld > 0 && CIDashDelay >= 0)
-                statisTimerOld = 0;//斯塔提斯CD
-            
-            if (Player.miscCounter % 150 == 0)
-            {
-                ReaverRocketFires = true;
-            }
-            //纳米技术
-        }
         public int finalDefenceBreak = 0;
         public int defenceBreakPool = 0;
         public void ShieldEffect()
@@ -1668,7 +1445,7 @@ namespace CalamityInheritance.CIPlayer
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
 
-            if (usPlayer.anyShield = true && defenceBreakPool > 0)
+            if (anyShield = true && defenceBreakPool > 0)
             {
                 Player.statDefense -= finalDefenceBreak;
                 finalDefenceBreak -= defenceBreakPool / CIFunction.SecondsToFrames(5);// 防御需要5s恢复完毕
@@ -1683,7 +1460,7 @@ namespace CalamityInheritance.CIPlayer
             if (anyShield == false)
                 finalDefenceBreak = 0;
         }
-    
+
         public void RebornBosses()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -1711,6 +1488,7 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier1 = true;
                 PlanteraTier1 = true;
                 DefendTier1 = true;
+                ColdDivityTier1 = true;
             }
             if (CIConfig.Instance.LegendaryBuff == 2)
             {
@@ -1720,6 +1498,7 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier2 = true;
                 PlanteraTier2 = true;
                 DefendTier2 = true;
+                ColdDivityTier2 = true;
                 YharimsKilledScal = true;
             }
             if (CIConfig.Instance.LegendaryBuff == 3)
@@ -1730,6 +1509,7 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier3 = true;
                 PlanteraTier3 = true;
                 DefendTier3 = true;
+                ColdDivityTier3 = true;
                 YharimsKilledExo = true;
             }
             if (CIConfig.Instance.LegendaryBuff == 4)
@@ -1752,6 +1532,9 @@ namespace CalamityInheritance.CIPlayer
                 DestroyerTier1 = false;
                 DestroyerTier2 = false;
                 DestroyerTier3 = false;
+                ColdDivityTier1 = false;
+                ColdDivityTier2 = false;
+                ColdDivityTier3 = false;
                 YharimsKilledExo = false;
                 YharimsKilledScal = false;
             }

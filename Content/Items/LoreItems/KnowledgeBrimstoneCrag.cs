@@ -27,10 +27,11 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<BrimstoneElementalTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+
             CreateRecipe().
-AddIngredient<LoreAzafure>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreAzafure>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

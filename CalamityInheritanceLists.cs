@@ -38,6 +38,9 @@ using CalamityMod.NPCs.ExoMechs;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.PrimordialWyrm;
 using CalamityMod.Projectiles.DraedonsArsenal;
+using CalamityMod.Items.LoreItems;
+using Terraria;
+using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance
 {
@@ -58,6 +61,12 @@ namespace CalamityInheritance
         public static List<int> ExoMech = new List<int>();
         public static List<int> Scal = new List<int>();
         public static List<int> PrimordialWyrm = new List<int>();
+        private static List<int> loreCal = [];
+        private static List<int> loreLegacy = [];
+
+        public static List<int> LoreCal { get => loreCal; set => loreCal = value; }
+        public static List<int> LoreLegacy { get => loreLegacy; set => loreLegacy = value; }
+
         public static void LoadLists()
         {
             #region 用于元素箭袋分裂
@@ -301,6 +310,64 @@ namespace CalamityInheritance
                 NPCType<PrimordialWyrmTail>(),
             };
             #endregion
+            #region Lore
+            LoreCal =
+            [
+                //灾厄的BossLore
+                ItemType<LoreEyeofCthulhu>(),
+                ItemType<LoreDesertScourge>(),
+                ItemType<LoreCrabulon>(),
+                ItemType<LoreKingSlime>(),
+                ItemType<LoreEaterofWorlds>(),
+                ItemType<LoreBrainofCthulhu>(),
+                ItemType<LoreHiveMind>(),
+                ItemType<LorePerforators>(),
+                ItemType<LoreQueenBee>(),
+                ItemType<LoreSkeletron>(),
+                ItemType<LoreSlimeGod>(),
+                ItemType<LoreWallofFlesh>(),
+                ItemType<LoreSkeletronPrime>(),
+                ItemType<LoreCynosure>(),
+                ItemType<LoreBrimstoneElemental>(),
+                ItemType<LoreTwins>(),
+                ItemType<LoreAquaticScourge>(),
+                ItemType<LoreDestroyer>(),
+                ItemType<LoreCalamitasClone>(),
+                ItemType<LorePlantera>(),
+                ItemType<LoreAstrumAureus>(),
+                ItemType<LoreLeviathanAnahita>(),
+                ItemType<LoreGolem>(),
+                ItemType<LoreDukeFishron>(),
+                ItemType<LorePlaguebringerGoliath>(),
+                ItemType<LoreRavager>(),
+                //教徒Lore
+                ItemType<LorePrelude>(),
+                ItemType<LoreAstrumDeus>(),
+                //月总Lore
+                ItemType<LoreRequiem>(),
+                ItemType<LoreProfanedGuardians>(),
+                ItemType<LoreDragonfolly>(),
+                ItemType<LoreProvidence>(),
+                ItemType<LoreSignus>(),
+                ItemType<LoreStormWeaver>(),
+                ItemType<LoreCeaselessVoid>(),
+                ItemType<LoreOldDuke>(),
+                ItemType<LoreDevourerofGods>(),
+                ItemType<LoreYharon>(),
+                ItemType<LoreExoMechs>(),
+                ItemType<LoreCalamitas>(),
+
+                //其他Lore 
+                ItemType<LoreBloodMoon>(),
+                ItemType<LoreAbyss>(),
+                ItemType<LoreAzafure>(),
+                ItemType<LoreAstralInfection>(),
+                ItemType<LoreCorruption>(),
+                ItemType<LoreCrimson>(),
+                ItemType<LoreSulphurSea>(),
+                ItemType<LoreUnderworld>()
+            ];
+            #endregion
         }
 
         public static void UnloadLists()
@@ -319,6 +386,8 @@ namespace CalamityInheritance
             ExoMech = null;
             Scal = null;
             PrimordialWyrm = null;
+            LoreCal = null;
+            LoreLegacy = null;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace CalamityInheritance.Buffs.Mage
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().ReaverMagePower = true;
+            player.manaCost -= 0.80f;
+            player.GetDamage<MagicDamageClass>() += 0.1f;
         }
     }
 }

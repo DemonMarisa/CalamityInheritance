@@ -71,15 +71,15 @@ CyrogenLegendary: {
 		按下右键时会在目标周围生成冰钉的复制体，冰钉复制体会缓慢汇聚并爆裂
 		会随着流程进度得到增强
 		[SCALING]
-		[c/053F8B:-传奇武器-]
+		[c/1E90FF:-传奇武器-]
 		[TIERONE]
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	LegendaryScaling: "[c/053F8B:武器强化]: {0}%"
-	TierOne: "[c/053F8B:强化]: 大幅度提高冰刺的发射频率"
-	TierTwo: "[c/053F8B:强化]: 包裹着你的冰块将为你提供伤害减免"
-	TierThree: "[c/053F8B:强化]: 冰刺将会吸收敌人大部分的属性转化为对你的增益"
+	LegendaryScaling: "[c/1E90FF:武器强化]: {0}%"
+	TierOne: "[c/1E90FF:强化]: 大幅度提高冰刺的发射频率"
+	TierTwo: "[c/1E90FF:强化]: 包裹着你的冰块将为你提供伤害减免"
+	TierThree: "[c/1E90FF:强化]: 冰刺将会贯穿敌怪防御，并使敌怪持续失温"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwoTint: "[c/818589:雪原地表饮用一瓶温暖药水]"
 	TierThreeTint: "[c/818589:于雪原地表召唤亵渎天神]"

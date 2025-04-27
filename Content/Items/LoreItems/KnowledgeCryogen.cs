@@ -41,9 +41,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreCynosure>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreCynosure>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.width = 94;
             Item.height = 44;
             Item.DamageType = DamageClass.Ranged;
-            Item.damage = 2400;
+            Item.damage = 14687;
             Item.knockBack = 12f;
             Item.useTime = 52;
             Item.useAnimation = 52;
@@ -44,10 +44,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<ACTKarasawaHoldout>();
             Item.shootSpeed = 1f;
             Item.useAmmo = AmmoID.None;
-
             Item.channel = true;
         }
-
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 46;
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ACTKarasawaHoldout>()] < 1;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

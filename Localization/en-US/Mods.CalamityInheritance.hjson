@@ -550,5 +550,10 @@ Configs: {
 			Label: Solar Eclipse Change
 			Tooltip: ""
 		}
+
+		LoreDrop: {
+			Label: Lore Drop
+			Tooltip: ""
+		}
 	}
 }

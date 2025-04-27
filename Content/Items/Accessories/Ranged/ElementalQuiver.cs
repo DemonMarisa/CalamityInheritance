@@ -1,6 +1,8 @@
-﻿using CalamityInheritance.CIPlayer;
+﻿using System.Collections.Generic;
+using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
@@ -8,6 +10,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
@@ -15,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
     public class ElementalQuiver : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
+        public static string TextPath => $"Mods.CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver";
         public override void SetStaticDefaults()
         {
             if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，肉后的天蓝石将会与本mod的天蓝石转化，关闭时则由沙虫正常掉落
@@ -33,7 +37,32 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.defense = 5;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            bool allowSplit = CIConfig.Instance.ElementalQuiversplit;
+            string t = Language.GetTextValue($"{TextPath}.DefaultText");
+            if (!allowSplit)
+            {
+                tooltips.FindAndReplace("[TEXT]", t);
+                return;
+            }
+            switch (CIConfig.Instance.ElementalQuiverSplitstyle)
+            {
+                case 1:
+                    t = Language.GetTextValue($"{TextPath}.StyleOne");
+                    break;
+                case 2:
+                    t = Language.GetTextValue($"{TextPath}.StyleTwo");
+                    break;
+                case 3:
+                    t = Language.GetTextValue($"{TextPath}.StyleThree");
+                    break;
+                case 4:
+                    t = Language.GetTextValue($"{TextPath}.StyleFour");
+                    break;
+            }
+            tooltips.FindAndReplace("[TEXT]", t);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer1 = player.Calamity();
@@ -51,6 +80,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             player.ammoCost80 = true;
             player.lifeRegen += 4;
             player.pickSpeed -= 0.15f;
+            player.magicQuiver = true;
             if (!modPlayer1.deadshotBrooch)
                 modplayer.DeadshotBroochCI = true;
         }

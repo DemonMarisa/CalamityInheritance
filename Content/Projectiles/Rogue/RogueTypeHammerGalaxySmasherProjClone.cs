@@ -98,11 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if(AttackTimer > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 AttackTimer = canHomingCounter;
-                //根据上方的target属性来决定使用何种追踪
-                if (TargetAvalible)
-                    Projectile.HomingNPCBetter(target, 3600f, stealthSpeed, 40f, default, default, 17f, true);
-                else
-                    CIFunction.HomeInOnNPC(Projectile, true, 3600f, stealthSpeed, 40f, 17f);
+                CIFunction.HomeInOnNPC(Projectile, true, 3600f, stealthSpeed, 40f, 17f);
             }
             else
             Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间

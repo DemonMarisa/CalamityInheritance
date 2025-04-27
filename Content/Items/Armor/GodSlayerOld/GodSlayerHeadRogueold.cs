@@ -9,13 +9,11 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
-
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
     public class GodSlayerHeadRogueold : CIArmor, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -45,18 +43,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
             var modPlayer = player.Calamity();
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
-            {
-                modPlayer1.GodSlayerReborn = true;
-            }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
+
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
             modPlayer1.GodSlayerRogueSet = true;
@@ -65,9 +52,17 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             float getMaxStealth = modPlayer.rogueStealthMax;
             modPlayer.rogueStealthMax += getMaxStealth / 7;
             modPlayer.wearingRogueArmor = true;
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            modPlayer1.GodSlayerReborn = mode != onlyDash;
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+            {
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
+            }
         }
-
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<RogueDamageClass>() += 0.14f;

@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -15,7 +16,12 @@ namespace CalamityInheritance.Buffs.Statbuffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().BuffStatBloodPact = true;
+            player.Calamity().healingPotionMultiplier += 0.5f;
+            player.GetDamage<GenericDamageClass>() += 0.05f;
+            player.statDefense += 20;
+            player.endurance += 0.1f;
+            player.longInvince = true;
+            player.crimsonRegen = true;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection.PortableExecutable;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
@@ -426,6 +427,24 @@ namespace CalamityInheritance.Utilities
             projectile.timeLeft = reader.ReadInt32();
             projectile.alpha = reader.ReadByte();
             projectile.scale = reader.ReadSingle();
+        }
+        /// <summary>
+        /// 生成一个治疗射弹
+        /// </summary>
+        /// <param name="src">治疗源</param>
+        /// <param name="position">位置</param>
+        /// <param name="player">玩家</param>
+        /// <param name="healAmt">治疗量</param>
+        /// <param name="acceleration">治疗射弹的加速度</param>
+        /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
+        /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
+        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float acceleration = 2.4f, float flyingSpeed = 20f, int CD = 60)
+        {
+            if (player.CIMod().GlobalHealProjCD > 0)
+                return;
+            Vector2 setVel = (position - player.Center).RotatedByRandom(MathHelper.TwoPi) / flyingSpeed;
+            Projectile.NewProjectile(src, position, setVel, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, acceleration, healAmt, flyingSpeed);
+            player.CIMod().GlobalHealProjCD = CD;
         }
     }
 }

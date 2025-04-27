@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Net;
+using Microsoft.CodeAnalysis.CodeRefactorings;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.ModLoader.Config;
@@ -53,7 +54,12 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
-        //[ReloadRequired]
+        [ReloadRequired]
         public bool SolarEclipseChange { get; set; } //  龙一龙二
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool LoreDrop{ get; set; } //Lore的掉落方法
+        
     }
 }

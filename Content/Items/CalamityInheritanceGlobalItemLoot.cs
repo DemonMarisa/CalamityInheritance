@@ -11,10 +11,44 @@ using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.System.Configs;
-using CalamityMod.Projectiles.Summon;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items
 {
+    public class LoreLootRemove : GlobalItem
+    {
+        public override void OnSpawn(Item item, IEntitySource source)
+        {
+
+            
+            //不准浪费时间，滚回去
+            if (!CIServerConfig.Instance.LoreDrop)
+                return;
+            DoDropLegacy(ref item);
+        }
+        public override bool OnPickup(Item item, Player player)
+        {
+            //basically这个是通过生成时直接删除lore来实现。
+            int getType = item.type;
+            //不准浪费时间，滚回去
+            if (!CIServerConfig.Instance.LoreDrop)
+                return base.OnPickup(item, player);
+
+            if (CalamityInheritanceLists.LoreCal.Contains(getType))
+            {
+                item.active = false;
+                return false;
+            }
+            return base.OnPickup(item, player);
+        }
+        
+        public static void DoDropLegacy(ref Item item)
+        {
+            int getType = item.type;
+            if (CalamityInheritanceLists.LoreCal.Contains(getType))
+                item.active = false;
+        }
+    }
     public class CalamityInheritanceGlobalItemLoot : GlobalItem
     {
         public override bool InstancePerEntity => false;

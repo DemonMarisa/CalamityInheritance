@@ -18,6 +18,7 @@ using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static System.Net.Mime.MediaTypeNames;
@@ -33,13 +34,15 @@ namespace CalamityInheritance.CIPlayer
             var usPlayer = Player.CIMod();
             //真近战或者近战的简化判定
             bool ifTrueMelee = proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
-            bool ifMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>();
+            bool ifMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>() || ifTrueMelee;
+            if (!ifMelee)
+                return;
             // 玩家手中武器伤害
             Player player = Main.player[proj.owner];
             int weaponDamage = hit.Damage;
 
             //弑神飞镖
-            if (usPlayer.GodSlayerMelee && usPlayer.fireCD <= 0 && (ifMelee || ifTrueMelee))
+            if (usPlayer.GodSlayerMelee && usPlayer.fireCD <= 0)
             {
                 int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
@@ -48,7 +51,7 @@ namespace CalamityInheritance.CIPlayer
             }
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = proj.GetSource_FromThis();
-            if (usPlayer.ReaverMeleeBlast && proj.DamageType == DamageClass.Melee)
+            if (usPlayer.ReaverMeleeBlast)
             {
                 int BlastDamage = (int)(proj.damage * 0.4);
                 if (BlastDamage > 30)
@@ -69,21 +72,21 @@ namespace CalamityInheritance.CIPlayer
         }
         public void RangedOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-
+            if (proj.DamageType != DamageClass.Ranged)
+                return;
         }
         public void MagicOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            
+            if (proj.DamageType != DamageClass.Magic) 
+                return;
             Player player = Main.player[proj.owner];
             var calPlayer = player.Calamity(); 
             var usPlayer = player.CIMod();
             //弑神火
-            if (GodSlayerMagicSet && proj.DamageType == DamageClass.Magic)
+            if (GodSlayerMagicSet)
             {
                 if (fireCD > 0)
-                {
                     return;
-                }
                 fireCD = 2;
                 int weaponDamage = hit.Damage;
                 int finalDamage = 400 + weaponDamage / 4;
@@ -96,7 +99,7 @@ namespace CalamityInheritance.CIPlayer
             }
             //林海
             var source = proj.GetSource_FromThis();
-            if (SilvaMagicSetLegacy && SilvaMagicSetLegacyCooldown <= 0 && (proj.penetrate == 1 || proj.timeLeft <= 5) && proj.DamageType == DamageClass.Magic)
+            if (SilvaMagicSetLegacy && SilvaMagicSetLegacyCooldown <= 0 && (proj.penetrate == 1 || proj.timeLeft <= 5))
             {
                 SilvaMagicSetLegacyCooldown = 300;
                 SoundEngine.PlaySound(SoundID.Zombie103, proj.Center); //So scuffed, just because zombie sounds werent ported normally
@@ -107,9 +110,7 @@ namespace CalamityInheritance.CIPlayer
             if (Main.player[proj.owner].CIMod().ReaverMageBurst)
             {
                 if (ReaverMageBurst) //击发时提供法术增强buff
-                {
                     Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
-                }
 
                 if (ReaverBurstCooldown <= 0)
                 {
@@ -130,6 +131,18 @@ namespace CalamityInheritance.CIPlayer
                     target.AddBuff(BuffID.Poisoned, 120);
                     ReaverBurstCooldown = 90;
                 }
+            }
+            if (OverloadManaPower && Player.lifeSteal > 0f && target.lifeMax > 5)
+            {
+                //提供治疗
+                double healMult = 0.2;
+                healMult -= proj.numHits * healMult * 0.5;
+                int heal = (int)Math.Round(dmgDone * healMult * (Player.statMana / (double)Player.statManaMax2));
+                if (heal > 125)
+                    heal = 125;
+                //CD填1，因为这里是按照另外一个方法生成射弹。
+                if (healMult > 0D && heal > 0)
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), target.Center, Player, heal, 1.2f, 20f, 1);
             }
         }
         public void SummonOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
@@ -164,13 +177,16 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage, proj.knockBack);
             }
         }
-        public void RogueOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
+        public void RogueOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone, bool isStealth)
         {
+            if (proj.DamageType != ModContent.GetInstance<RogueDamageClass>())
+                return;
+
             Player player = Main.player[proj.owner];
             var calPlayer = player.Calamity(); 
             var usPlayer = player.CIMod();
             //远古弑神套
-            if (AncientGodSlayerSet && proj.Calamity().stealthStrike && proj.DamageType == ModContent.GetInstance<RogueDamageClass>() && PerunofYharimCooldown == 0)
+            if (AncientGodSlayerSet && isStealth && PerunofYharimCooldown == 0)
             {
                 //潜伏攻击成功时提供20%增伤
                 player.GetDamage<GenericDamageClass>() += 0.2f;
@@ -179,7 +195,7 @@ namespace CalamityInheritance.CIPlayer
             //星幻套
             if (AncientAstralSet)
             {
-                if (hit.Damage > 10 && hit.Crit && proj.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralCritsCD == 0)
+                if (hit.Damage > 10 && hit.Crit && AncientAstralCritsCD == 0)
                 {
                     Player.Heal(20);
                     AncientAstralCritsCount += 1;// 自增
@@ -191,7 +207,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                     AncientAstralCritsCD = 60; //一个非常微弱的CD
                 }
-                if (proj.DamageType == ModContent.GetInstance<RogueDamageClass>() && AncientAstralStealthCD == 0 && proj.Calamity().stealthStrike)
+                if (AncientAstralStealthCD == 0 && isStealth)
                 {
                     AncientAstralStealthGap = 900; //15s
                     AncientAstralStealthCD = 60; //1秒间隔
@@ -206,19 +222,21 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             //纳米技术
-            Vector2 position = target.Center;
-            if (proj.Calamity().stealthStrike && proj.Calamity().stealthStrikeHitCount < 3)
+            if (nanotechold)
             {
-                if (nanotechold)
+                if (proj.Calamity().stealthStrike && proj.Calamity().stealthStrikeHitCount < 3 && proj.CalamityInheritance().PingReducedNanoFlare == false)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 4; i++)
                     {
-                        Vector2 source = new Vector2(position.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
-                        Vector2 velocity = (position - source) / 40f;
+                        Vector2 source = new Vector2(target.Center.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
+                        Vector2 velocity = (target.Center- source) / 40f;
 
-                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlare>(), (int)(proj.damage * 0.05), 3f, proj.owner);
+                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlare>(), (int)(proj.damage * 0.15), 3f, proj.owner);
                     }
                 }
+                //固定生成一个治疗量为10的射弹。
+                //这个会有一定的CD (一秒半)
+                CIFunction.SpawnHealProj(Player.GetSource_FromThis(), target.Center, Player, 10, 1.6f, 20f, 120);
             }
         }
     

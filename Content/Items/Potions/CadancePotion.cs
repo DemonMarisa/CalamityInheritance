@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.buffType = ModContent.BuffType<CadancesGrace>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
             Item.value = CIShopValue.RarityPriceLightRed;
-            }
+        }
 
         public override void AddRecipes()
         {

@@ -6,6 +6,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
@@ -25,6 +26,7 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -84,7 +86,7 @@ namespace CalamityInheritance.CIPlayer
             }
             //大师石巨人在场，且玩家佩戴玉金喷射器+永恒套的搭配时，获得20%乘算伤害减免
             //我草泥马的石巨人
-            if (Main.masterMode &&CIFunction.IsThereNpcNearby(NPCID.Golem, Player, 1600f) && Main.LocalPlayer.ZoneLihzhardTemple && FuckYouGolem)
+            if (Main.masterMode && CIFunction.IsThereNpcNearby(NPCID.Golem, Player, 1600f) && Main.LocalPlayer.ZoneLihzhardTemple && FuckYouGolem)
             {
                 damageReduce -= 0.20;
             }
@@ -156,6 +158,7 @@ namespace CalamityInheritance.CIPlayer
                     calPlayer.chaliceBleedoutBuffer = 0D;
                     calPlayer.chaliceDamagePointPartialProgress = 0D;
                 }
+                Main.NewText("DoSilvaFakeDeath");
                 return false;
             }
             //金源套，附带弑神复活的特判, 从上方复制了一遍。
@@ -181,6 +184,7 @@ namespace CalamityInheritance.CIPlayer
                     calPlayer.chaliceBleedoutBuffer = 0D;
                     calPlayer.chaliceDamagePointPartialProgress = 0D;
                 }
+                Main.NewText("DoAuricFakeDeath");
                 //防处死
                 return false;
             }
@@ -279,8 +283,10 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
-            // 装备嘉登之心[Legacy]时禁用弑神免伤。
-            // 我是说真的。
+            //日食魔镜的闪避优于所有闪避之前执行
+            if (CheckEMirror())
+                return true;
+
             // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复
             if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
             {
@@ -290,12 +296,42 @@ namespace CalamityInheritance.CIPlayer
                 return true;
             }
             if((YharimAuricSet || AncientGodSlayerSet) && yharimArmorinvincibility > 0)
-            {
                 return true;
-            }
-            //孔雀翎T3: 攻击时提供的buff将使你有1/10的概率在3秒内彻底无敌。
-            
+
             return base.FreeDodge(info);
+        }
+
+        public bool CheckEMirror()
+        {
+            //如果玩家没有触i发必闪, 返回
+            if (!Player.HasCooldown(GlobalDodge.ID))
+                return false;
+            //没有佩戴日食魔镜返回回去，不要浪费任何时间
+            if (!EMirror)
+                return false;
+            //4/5的概率没有触发闪避，直接返回
+            if (!Main.rand.NextBool(5))
+                return false;
+            
+            //无敌帧
+            int eclipseMirrorDodgeIFrames = Player.ComputeDodgeIFrames();
+            Player.GiveUniversalIFrames(eclipseMirrorDodgeIFrames, true);
+
+            //恢复所有潜伏值
+            Player.Calamity().rogueStealth = Player.Calamity().rogueStealthMax;
+            SoundEngine.PlaySound(SoundID.Item68, Player.Center);
+
+            //计算闪避时提供的射弹伤。
+            var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<EclispeMirrorLegacy>()));
+            int damage = (int)Player.GetTotalDamage<RogueDamageClass>().ApplyTo(5000);
+            damage = Player.ApplyArmorAccDamageBonusesTo(damage);
+
+            int eclipse = Projectile.NewProjectile(source, Player.Center, Vector2.Zero, ModContent.ProjectileType<EclipseMirrorBurst>(), damage, 0, Player.whoAmI);
+            if (eclipse.WithinBounds(Main.maxProjectiles))
+                Main.projectile[eclipse].DamageType = DamageClass.Generic; 
+
+            //允许其触发闪避
+            return true;
         }
         #endregion
         #region 修改来犯的射弹
@@ -304,7 +340,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             if (DNAImmnue > 0)
             {
-                //直接减少30%伤害
+                //直接减少20%伤害
                 modifiers.SourceDamage *= 0.8f;
                 //不要执行下方所有的计算。
                 return;
@@ -390,6 +426,10 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CIMod();
             
+            //正常受伤，日食魔镜也会提供潜伏值的恢复(恢复50%)
+            if (EMirror && calPlayer.rogueStealth < calPlayer.rogueStealthMax / 2)
+                calPlayer.rogueStealth += calPlayer.rogueStealthMax / 2;
+
             if (Player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && !DefendTier2)
                 DefenseBladeTier2Task(hurtInfo);
             //这里CD只有取0的时候才会触发cd，这是为了防止再次受击的时候被重置

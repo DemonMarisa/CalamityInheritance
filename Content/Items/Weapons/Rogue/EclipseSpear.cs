@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
@@ -41,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override float StealthDamageMultiplier => 1.15f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            bool ifStealth = player.Calamity().StealthStrikeAvailable();
+            bool ifStealth = player.CheckStealth();
             if (ifStealth)
                 type = ModContent.ProjectileType<EclipseSpearProjStealth>();
 

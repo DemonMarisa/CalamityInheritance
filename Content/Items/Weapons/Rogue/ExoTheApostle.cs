@@ -52,44 +52,81 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<ExoSpearProj>();
             Item.shootSpeed = 16f;
         }
-        public override float StealthDamageMultiplier => 1.45f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
+            bool onExo = player.CheckExoLore();
+            bool isStealth = player.CheckStealth();
+            //无作用
             int getBuffDamage = damage;
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            //无Lore时影响的射弹类型
+            int pType = isStealth ? ModContent.ProjectileType<ExoSpearProjNorSteal>() : ModContent.ProjectileType<ExoSpearProjNor>();
+            //开启lore时被影响的射弹类型
+            int pTypeLore = isStealth ? ModContent.ProjectileType<ExoSpearStealthProj>() : type;
+            //往后的投枪速度
+            Vector2 backSpeed = isStealth ? -velocity * 3.5f : -velocity * 1.5f;
+            //PlayeSound
+            SoundStyle TossSound = isStealth ? ThrowSound2 : ThrowSound1;
+            if (onExo)
             {
-                if (!player.Calamity().StealthStrikeAvailable())
+                
+                Projectile.NewProjectileDirect(source, position, backSpeed, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                int p = Projectile.NewProjectile(source, position, velocity * 1.25f, pTypeLore, damage, knockback, player.whoAmI);
+                if (p.WithinBounds(Main.maxProjectiles))
                 {
-                    Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
-                    Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    Main.projectile[p].Calamity().stealthStrike = isStealth;
+                    Main.projectile[p].CalamityInheritance().PingReducedNanoFlare = true;
+                    Main.projectile[p].usesLocalNPCImmunity = isStealth;
                 }
-                SoundEngine.PlaySound(ThrowSound1, player.Center);
-                if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
-                {
-                    Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), getBuffDamage, knockback, player.whoAmI);
-                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), getBuffDamage, knockback, player.whoAmI);
-                    SoundEngine.PlaySound(ThrowSound2, player.Center);
-                    if (stealth.WithinBounds(Main.maxProjectiles))
-                    {
-                        Main.projectile[stealth].Calamity().stealthStrike = true;
-                        Main.projectile[stealth].usesLocalNPCImmunity = true;
-                    }
-                }
+                SoundEngine.PlaySound(TossSound, player.Center);
             }
             else
             {
-                if (player.Calamity().StealthStrikeAvailable())
+                int p = Projectile.NewProjectile(source, position, velocity * 1.5f, pType, damage, knockback, player.whoAmI);
+                Main.projectile[p].Calamity().stealthStrike = isStealth;
+                Main.projectile[p].CalamityInheritance().PingReducedNanoFlare = true;
+                //潜伏多扔一把。
+                if (isStealth)
                 {
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), getBuffDamage, knockback, player.whoAmI);
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), getBuffDamage, knockback, player.whoAmI);
-                }
-                else
-                {
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                    int j = Projectile.NewProjectile(source, position, velocity * 1.5f, pType, damage, knockback, player.whoAmI);
+                    Main.projectile[j].Calamity().stealthStrike = isStealth;
+                    Main.projectile[j].CalamityInheritance().PingReducedNanoFlare = true;
                 }
             }
             return false;
+            // if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            // {
+            //     if (!player.Calamity().StealthStrikeAvailable())
+            //     {
+            //         Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
+            //         Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+            //     }
+            //     SoundEngine.PlaySound(ThrowSound1, player.Center);
+            //     if (player.Calamity().StealthStrikeAvailable())
+            //     {
+            //         Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+            //         int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
+            //         SoundEngine.PlaySound(ThrowSound2, player.Center);
+            //         if (stealth.WithinBounds(Main.maxProjectiles))
+            //         {
+            //             Main.projectile[stealth].Calamity().stealthStrike = true;
+            //             Main.projectile[stealth].usesLocalNPCImmunity = true;
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     if (player.Calamity().StealthStrikeAvailable())
+            //     {
+            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
+            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
+            //     }
+            //     else
+            //     {
+            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+            //     }
+            // }
+            // return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

@@ -8,6 +8,8 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.Items.Weapons.Rogue;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Summon;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -41,19 +43,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if(player.Calamity().StealthStrikeAvailable())//如果允许潜伏攻击
-            {
-                int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f ,type, (int)(damage * 1.2f), knockback, player.whoAmI, 0f, 0f, -3f);
-                int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), (int)(damage * 0.8f), knockback, player.whoAmI, 0f, 0f, -3f);
-                
-                if(onlyHoming.WithinBounds(Main.maxProjectiles))
-                {
-                    Main.projectile[onlyHoming].Calamity().stealthStrike = true;
-                    Main.projectile[homeAndHanging].Calamity().stealthStrike = true;
-                }
-                return false;
-            }
-            return true;
+            bool stealth = player.CheckStealth();
+            if (!stealth)
+                return true;
+
+            int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f , type, (int)(damage * 1.2f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), (int)(damage * 0.8f), knockback, player.whoAmI, 0f, 0f, -3f);
+            Main.projectile[onlyHoming].Calamity().stealthStrike = true;
+            Main.projectile[homeAndHanging].Calamity().stealthStrike = true;
+            return false;
         }
 
         public override void AddRecipes()
