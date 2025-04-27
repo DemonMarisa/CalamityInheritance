@@ -92,7 +92,7 @@ namespace CalamityInheritance.CIPlayer
                 int finalDamage = 400 + weaponDamage / 4;
 
                 int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
-                float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
+                float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
                 Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, proj.knockBack);
@@ -142,7 +142,7 @@ namespace CalamityInheritance.CIPlayer
                     heal = 125;
                 //CD填1，因为这里是按照另外一个方法生成射弹。
                 if (healMult > 0D && heal > 0)
-                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), target.Center, Player, heal, 1.2f, 20f, 1);
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), target.Center, Player, heal, 20f, 1.2f, 1);
             }
         }
         public void SummonOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
@@ -236,7 +236,7 @@ namespace CalamityInheritance.CIPlayer
                 }
                 //固定生成一个治疗量为10的射弹。
                 //这个会有一定的CD (一秒半)
-                CIFunction.SpawnHealProj(Player.GetSource_FromThis(), target.Center, Player, 10, 1.6f, 20f, 120);
+                CIFunction.SpawnHealProj(Player.GetSource_FromThis(), target.Center, Player, 10, 20f, 1.6f, 120);
             }
         }
     

@@ -35,6 +35,8 @@ namespace CalamityInheritance.CIPlayer
         public int GlobalMiscCounter = 1;
         public int CotbgCounter = 0;
         public int GlobalHealProjCD = 0;
+        // 弑神套的CD差分
+        public int GlobalGodSlayerHealProjCD = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -137,6 +139,9 @@ namespace CalamityInheritance.CIPlayer
             
             if (GlobalHealProjCD > 0)
                 GlobalHealProjCD--;
+
+            if (GlobalGodSlayerHealProjCD > 0)
+                GlobalGodSlayerHealProjCD--;
             return;
         }
     }

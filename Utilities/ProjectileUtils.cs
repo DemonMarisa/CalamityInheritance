@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection.PortableExecutable;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
@@ -96,6 +96,26 @@ namespace CalamityInheritance.Utilities
                 // Set amount of extra updates to default amount.
                 projectile.extraUpdates = projectile.Calamity().defExtraUpdates;
             }
+        }
+        ///<summary>
+        ///跟踪玩家
+        ///不会自动和玩家重叠时消失
+        ///<param name="player">玩家</param>
+        ///<param name="proj">要跟踪玩家的弹幕.</param>
+        ///<param name="inertia">惯性.</param>
+        ///<param name="acceleration">加速度，一般填1-3左右.</param>
+        ///<param name="homingVelocity">跟踪速度</param>
+        ///</summary>
+        public static void HomeInPlayer(Player player, Projectile proj, float inertia, float homingVelocity, float? acceleration)
+        {
+            // 计算制导向量
+            Vector2 homeDirection = (player.Center - proj.Center).SafeNormalize(Vector2.UnitY);
+            Vector2 newVelocity = (proj.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
+
+            proj.velocity = newVelocity;
+
+            if(acceleration.HasValue)
+                proj.velocity *= 1 + acceleration.Value / 100;
         }
         ///<summary>
         ///用于回旋镖的返程AI.
@@ -438,13 +458,42 @@ namespace CalamityInheritance.Utilities
         /// <param name="acceleration">治疗射弹的加速度</param>
         /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
         /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
-        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float acceleration = 2.4f, float flyingSpeed = 20f, int CD = 60)
+        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float flyingSpeed = 20f, float acceleration = 2.4f, int CD = 60, int? ProjID = null)
         {
             if (player.CIMod().GlobalHealProjCD > 0)
                 return;
-            Vector2 setVel = (position - player.Center).RotatedByRandom(MathHelper.TwoPi) / flyingSpeed;
-            Projectile.NewProjectile(src, position, setVel, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, acceleration, healAmt, flyingSpeed);
+
+            float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
+            Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
+            float randomSpeed = Main.rand.NextFloat(12f, 16f);
+
+            if (ProjID.HasValue)
+                Projectile.NewProjectile(src, position, direction * randomSpeed, ProjID.Value, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+            else
+                Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             player.CIMod().GlobalHealProjCD = CD;
+        }
+        /// <summary>
+        /// 生成一个治疗射弹
+        /// </summary>
+        /// <param name="src">治疗源</param>
+        /// <param name="position">位置</param>
+        /// <param name="player">玩家</param>
+        /// <param name="healAmt">治疗量</param>
+        /// <param name="acceleration">治疗射弹的加速度</param>
+        /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
+        /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
+        public static void SPSpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt,float flyingSpeed = 20f, float acceleration = 1f, int CD = 60, int ProjID = -1)
+        {
+            if (player.CIMod().GlobalGodSlayerHealProjCD > 0)
+                return;
+
+            float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
+            Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
+            float randomSpeed = Main.rand.NextFloat(12f, 16f);
+
+            Projectile.NewProjectile(src, position, direction * randomSpeed, ProjID, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+            player.CIMod().GlobalGodSlayerHealProjCD = CD;
         }
     }
 }

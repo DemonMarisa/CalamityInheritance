@@ -7,21 +7,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Typeless
+namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
     public class GlobalHealthProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         #region 别名
         public ref float Acceleration => ref Projectile.ai[0];
-        public int HealAmt
-        {
-            get => (int)Projectile.ai[1];
-            set => Projectile.ai[1] = value;
-        }
-        public ref float FlySpeed => ref Projectile.ai[2]; 
-        public Player Healer => Main.player[Projectile.owner]; 
-        public bool AllowHeal = false;
+        public ref float FlySpeed => ref Projectile.ai[1];
+        public ref float HealAmt => ref Projectile.ai[2];
+        public Player Healer => Main.player[Projectile.owner];
         #endregion
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public override void SetDefaults()
@@ -34,8 +29,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 1;
         }
-        public override void SendExtraAI(BinaryWriter writer) => writer.Write(AllowHeal);
-        public override void ReceiveExtraAI(BinaryReader reader) => AllowHeal = reader.ReadBoolean();
         public override void AI()
         {
             //直接追踪锁定玩家位置就行了。我也不知道为什么要做别的事情。
@@ -54,7 +47,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             if (Projectile.Hitbox.Intersects(Healer.Hitbox) || distance < 50f)
             {
                 //干掉射弹即可
-                AllowHeal = true;
                 Projectile.netUpdate = true;
                 if (Projectile.timeLeft > 2)
                     Projectile.timeLeft = 2;
@@ -72,10 +64,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         }
         public override void OnKill(int timeLeft)
         {
-            if (!AllowHeal)
-                return;
             //根据提供的恢复量给予治疗
-            Healer.Heal(HealAmt);
+            Healer.Heal((int)HealAmt);
         }
     }
 

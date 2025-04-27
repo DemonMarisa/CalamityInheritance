@@ -10,6 +10,9 @@ using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
+using Terraria.DataStructures;
+using System;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -93,25 +96,20 @@ namespace CalamityInheritance.CIPlayer
         #region Lifesteal
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
-            if (Main.player[Main.myPlayer].lifeSteal > 0f && !Player.moonLeech && target.lifeMax > 5)
+            int heal = Main.rand.Next(5, 11);
+            int CD = Main.rand.Next(30, 60);
+
+            int gsheal = Main.rand.Next(7, 14);
+            int gsCD = Main.rand.Next(10, 30);
+
+            if (!Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaFakeDeath)
-                {
-                    double healMult = 0.1;
-                    int heal = Main.rand.Next(5, 11);
-
-                    if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
-                        CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<SilvaOrb>(), 3000f, 2f);
-                }
-                if (GodSlayerMagicSet)
-                {
-                    double healMult = 0.1;
-                    int heal = Main.rand.Next(5, 11);
-
-                    if (CalamityGlobalProjectile.CanSpawnLifeStealProjectile(healMult, heal))
-                        CalamityGlobalProjectile.SpawnLifeStealProjectile(proj, Player, heal, ModContent.ProjectileType<GodSlayerHealOrb>(), 3000f, 2f);
-                }
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
             }
+
+            if (GodSlayerMagicSet)
+                CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 1f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
         }
         #endregion
     }
