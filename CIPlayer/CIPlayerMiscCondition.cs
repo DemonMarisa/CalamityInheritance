@@ -17,9 +17,10 @@ namespace CalamityInheritance.CIPlayer
     {
         // 这两个东西都是在对应地方手动重置
         public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
-
+        public bool canFreeScope = false;
         public void ReSet()
         {
+
         }
     }
 }

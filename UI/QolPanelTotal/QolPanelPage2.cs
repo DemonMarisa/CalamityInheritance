@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.Localization;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -394,7 +395,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
                     spriteBatch.Draw(PageBlood, drawPosition, null, Color.White, 0f, pageOriginRight, scale, SpriteEffects.FlipHorizontally, 0f);
 
-                    CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 340, -27, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
+                    CIFunction.DrawText(spriteBatch, ScalLoreText, 0.9f, 0.9f, 340, -26, 1f, Color.Red, Color.DarkRed, InvisibleUI, 0, 400f, 1.4f);
                 }
 
                 #endregion

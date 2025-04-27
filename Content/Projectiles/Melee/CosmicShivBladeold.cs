@@ -29,6 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.penetrate = penetrateMax;
             Projectile.tileCollide = false;
             Projectile.timeLeft = 290;
+            Projectile.DamageType = DamageClass.Melee;
         }
         public override void AI()
         {

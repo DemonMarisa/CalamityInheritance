@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            var calPlayer = player.Calamity();
-            if(calPlayer.auricSet)
+            var usPlayer = player.CIMod();
+            if (usPlayer.AuricSilvaFakeDeath)
             {
                 if (Main.keyState.IsKeyDown(Keys.LeftAlt))
                 {

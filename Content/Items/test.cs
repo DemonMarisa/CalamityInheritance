@@ -14,6 +14,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.System;
 using CalamityInheritance.NPCs.Boss.Yharon;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -80,33 +81,31 @@ namespace CalamityInheritance.Content.Items
         }*/
         public override bool? UseItem(Player player)
         {
-            foreach (NPC npc in Main.ActiveNPCs)
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+            cIPlayer.meleeLevel = 0;
+            cIPlayer.meleePool = 0;
+            /*
+            if (CIConfig.Instance.UIX == 3)
             {
-                if (npc.type == ModContent.NPCType<YharonLegacy>())
-                    npc.ai[0] = CIConfig.Instance.UIX;
-            }
-                /*
-                if (CIConfig.Instance.UIX == 3)
+                // 空列表检查
+                if (CalStatInflationBACK.PostOldDukeWeapons == null ||
+                    CalStatInflationBACK.PostOldDukeWeapons.Count == 0)
                 {
-                    // 空列表检查
-                    if (CalStatInflationBACK.PostOldDukeWeapons == null ||
-                        CalStatInflationBACK.PostOldDukeWeapons.Count == 0)
-                    {
-                        Main.NewText("没有可生成的物品！");
-                        return false;
-                    }
-
-                    // 生成所有物品
-                    foreach (int itemType in CalStatInflationBACK.PostOldDukeWeapons)
-                    {
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(), itemType, 1);
-                    }
-
-                    // 显示提示信息
-                    Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
+                    Main.NewText("没有可生成的物品！");
+                    return false;
                 }
-                */
-                return true;
+
+                // 生成所有物品
+                foreach (int itemType in CalStatInflationBACK.PostOldDukeWeapons)
+                {
+                    player.QuickSpawnItem(player.GetSource_GiftOrReward(), itemType, 1);
+                }
+
+                // 显示提示信息
+                Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
+            }
+            */
+            return true;
         }
 
     }

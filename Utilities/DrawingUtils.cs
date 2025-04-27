@@ -2,6 +2,7 @@
 using CalamityInheritance.UI.QolPanelTotal;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json.Linq;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.UI.Chat;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Utilities
 {
@@ -524,18 +526,77 @@ namespace CalamityInheritance.Utilities
 
                 spriteBatch.Draw(texture, new Vector2(startPosition.X, startPosition.Y + (baseLineHeight * i) + lineOffset), null, Color.White, 0f, texture.Size() / 2, new Vector2(1.15f, 1f) * 0.95f, SpriteEffects.None, 0f);
 
-                // 绘制带描边文本
-                Utils.DrawBorderStringFourWay(
-                    spriteBatch,
-                    font,
-                    line,
-                    linePosition.X,
-                    linePosition.Y,
-                    TextColor,
-                    TextOutLineColor,
-                    new Vector2(textSize.X / 2f, 0f),
-                    scale
+                for (int j = 0; j < 4; j++)
+                {
+                    ChatManager.DrawColorCodedString(spriteBatch, font, line, linePosition, TextOutLineColor, 0f, new Vector2(textSize.X / 2f, 0f),
+                        new Vector2(xResolutionScale, yResolutionScale) * scale, maxWidth, false);
+                }
+
+                ChatManager.DrawColorCodedString(spriteBatch, font, line, linePosition, TextColor, 0f, new Vector2(textSize.X / 2f, 0f),
+                    new Vector2(xResolutionScale, yResolutionScale) * scale, maxWidth, false);
+            }
+        }
+
+        public static void DrawTextNoLine(
+            SpriteBatch spriteBatch,
+            string textContent, // 改为接收原始文本内容
+            float xResolutionScale,
+            float yResolutionScale,
+            float xOffset,
+            float yOffset,
+            float scale,
+            Color TextColor,
+            Color TextOutLineColor,
+            float maxWidth = 0f, // 最大宽度
+            float lineSpacing = 1.2f // 行间距系数
+            )
+        {
+            // 获取字体引用
+            DynamicSpriteFont font = FontAssets.MouseText.Value;
+
+            // 自动换行处理
+            List<string> wrappedLines = new List<string>();
+
+            if (maxWidth > 0)
+            {
+                // 计算实际可用宽度（考虑缩放）
+                float actualMaxWidth = maxWidth / xResolutionScale;
+                wrappedLines = BetterWordwrapString(textContent, font, (int)actualMaxWidth, 999, out _)
+                    .Where(line => !string.IsNullOrEmpty(line))
+                    .ToList();
+            }
+
+            // 计算基准行高
+            float baseLineHeight = font.LineSpacing * scale * lineSpacing;
+
+            // 计算起始位置（屏幕中心 + 偏移量）
+            Vector2 startPosition = new Vector2(
+                Main.screenWidth / 2f + xOffset * xResolutionScale,
+                Main.screenHeight / 2f + yOffset * yResolutionScale
+            );
+
+            for (int i = 0; i < wrappedLines.Count; i++)
+            {
+                string line = wrappedLines[i];
+                if (string.IsNullOrEmpty(line)) continue;
+
+                // 计算当前行位置
+                Vector2 linePosition = new Vector2(
+                    startPosition.X,
+                    startPosition.Y + (baseLineHeight * i)
                 );
+
+                // 计算文本尺寸
+                Vector2 textSize = ChatManager.GetStringSize(font, line, new Vector2(scale));
+
+                for (int j = 0; j < 4 ; j++)
+                {
+                    ChatManager.DrawColorCodedString(spriteBatch, font, line, linePosition, TextOutLineColor, 0f, new Vector2(textSize.X / 2f, 0f),
+                        new Vector2(xResolutionScale, yResolutionScale) * scale, maxWidth, false);
+                }
+
+                ChatManager.DrawColorCodedString(spriteBatch, font, line, linePosition, TextColor, 0f, new Vector2(textSize.X / 2f, 0f),
+                    new Vector2(xResolutionScale, yResolutionScale) * scale, maxWidth, false);
             }
         }
         #endregion

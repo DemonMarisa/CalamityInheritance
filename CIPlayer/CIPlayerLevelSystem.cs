@@ -32,18 +32,12 @@ namespace CalamityInheritance.CIPlayer
         public int summonPool = 0;
         public int magicPool = 0;
         public int roguePool = 0;
-        //bossPool, 不会退出游戏的时候进行存储
-        public int MeleePoolBoss = 0;
-        public int RangedPoolBoss = 0;
-        public int MagicPoolBoss = 0;
-        public int SummonPoolBoss = 0;
-        public int RoguePoolBoss = 0;
         // 基础经验需求
         public int baseExp = 100;
         // 基础经验倍率
         public float expRate = 1.4f;
         // 最大等级
-        const short maxLevel = 15;
+        public int maxLevel = 15;
         // 每次攻击获得的经验值
         public short exp = 1;
         // 经验获取CD
@@ -96,42 +90,43 @@ namespace CalamityInheritance.CIPlayer
             //Main.NewText($"magicLevel : {magicLevel}");
             if (meleePool >= CalculateRequiredExp(meleeLevel) && meleeLevel < maxLevel)
             {
+                // 先减去对应经验值再加等级
                 Celebration(meleeLevel == 14 ? ProjectileID.RocketFireworkRed : ProjectileID.RocketFireworksBoxRed);
+                meleePool -= CalculateRequiredExp(meleeLevel);
                 meleeLevel++;
                 levelUpCD = 60;
-                meleePool -= CalculateRequiredExp(meleeLevel);
                 return;
             }
             if (rangePool >= CalculateRequiredExp(rangeLevel) && rangeLevel < maxLevel)
             {
                 Celebration(rangeLevel == 14 ? ProjectileID.RocketFireworkGreen : ProjectileID.RocketFireworksBoxGreen);
+                rangePool -= CalculateRequiredExp(rangeLevel);
                 rangeLevel++;
                 levelUpCD = 60;
-                rangePool -= CalculateRequiredExp(rangeLevel);
                 return;
             }
             if (magicPool >= CalculateRequiredExp(magicLevel) && magicLevel < maxLevel)
             {
                 Celebration(magicLevel == 14 ? ProjectileID.RocketFireworkBlue : ProjectileID.RocketFireworksBoxBlue);
+                magicPool -= CalculateRequiredExp(magicLevel);
                 magicLevel++;
                 levelUpCD = 60;
-                magicPool -= CalculateRequiredExp(magicLevel);
                 return;
             }
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
             {
                 Celebration(summonLevel == 14 ? ModContent.ProjectileType<SummonLevelFirework_Final>() : ModContent.ProjectileType<SummonLevelFirework>());
+                summonPool -= CalculateRequiredExp(summonLevel);
                 summonLevel++;
                 levelUpCD = 60;
-                summonPool -= CalculateRequiredExp(summonLevel);
                 return;
             }
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
             {
                 Celebration(rogueLevel == 14 ? ModContent.ProjectileType<RogueLevelFirework_Final>() : ModContent.ProjectileType<RogueLevelFirework>());
+                roguePool -= CalculateRequiredExp(rogueLevel);
                 rogueLevel++;
                 levelUpCD = 60;
-                roguePool -= CalculateRequiredExp(rogueLevel);
                 return;
             }
         }
@@ -174,10 +169,10 @@ namespace CalamityInheritance.CIPlayer
             //移除狙击镜效果
             //不是，哥们，这个狙击镜他会影响某些右键
             //比如星火右键喷不出来
-            /*
-            if (rangeLevel > 14)
+            
+            if (rangeLevel > 14 && canFreeScope)
                 Player.scope = true;
-            */
+            
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
@@ -209,73 +204,62 @@ namespace CalamityInheritance.CIPlayer
                 modPlayer.wearingRogueArmor = true;
             #endregion
         }
-        public void GiveExpMelee(NPC target, bool isTrueMelee, bool isCrit)
+        public void GiveExpMelee(NPC target, bool isTrueMelee, bool isMelee, bool isCrit)
         {
-            if (expCD > 0 || target.immortal)
+            if (expCD > 0)
                 return;
 
             const short CD = 60;
-            //暴击经验点+1
+            // 暴击经验点+1
             int points = isCrit ? (exp + 1) : exp;
-            //boss倍率加成。
-            //这里的计算无法检测别的boss血量膨胀的方法，比如fargo的，但……我也不是很想管了
-            //倍率计算: boss单位最大血量/ KS血量。这里的计算会使玩家打史莱姆王的时候获得双倍加成，不过这里是有意为之的。
-            float bossMultipler = 1f + (target.IsRealBossWeNeed(false) ? target.lifeMax / RecoredKSHealth() : 0f);
-            points += isTrueMelee ? points * 6 : points;
-            //boss倍率是最后执行的
-            meleePool += (int)(points * bossMultipler);
+            // 都是Item击中了，统一按真近战判吧
+            meleePool += points * 5;
             expCD = CD;
         }
-        public static int RecoredKSHealth()
-        {
-            //大师死亡的KS血量
-            float KSHealth = 5536;
-            //考虑boss倍率增幅。
-            KSHealth *= 1f + CalamityConfig.Instance.BossHealthBoost;
-            //返回。
-            return (int)KSHealth;
-        }
+
         public void GiveExp(NPC target, NPC.HitInfo hit, Projectile proj)
         {
             if (expCD > 0)
                 return;
 
             const short CD = 60;
-            //boss倍率加成。
-            //这里的计算无法检测别的boss血量膨胀的方法，比如fargo的，但……我也不是很想管了
-            //倍率计算: boss单位最大血量/ KS血量。这里的计算会使玩家打史莱姆王的时候获得双倍加成，不过这里是有意为之的。
-            float bossMultipler = 1f + (target.IsRealBossWeNeed(false) ? target.lifeMax / RecoredKSHealth() : 0f);
-            //每个职业的判定
-            //一般情况下应该是不会有……物品本身能造成远程职业伤害的情况的，但……以防万一？
+
+            #region 每个职业的判定
+            // 战士
+            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
+            bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
+            // 射手
             bool isRanged = proj.CountsAsClass<RangedDamageClass>();
-            //理由同上，下也同
+            // 法师
             bool isMagic = proj.CountsAsClass<MagicDamageClass>();
+            // 召唤
             bool isWhip = proj.CountsAsClass<SummonMeleeSpeedDamageClass>();
             bool isSummon = proj.CountsAsClass<SummonDamageClass>() || isWhip;
-            //盗贼这里需要划分射弹是否为潜伏攻击
+            // 盗贼
             bool isRogueStealth = proj.Calamity().stealthStrike;
             bool isRogue = proj.CountsAsClass<RogueDamageClass>() && (!proj.Calamity().stealthStrike || isRogueStealth);
+            #endregion
             int points = exp;
-            int i = 0;
-            //攻击成功暴击都会让Points +1
+            // 攻击成功暴击都会让Points基础值 +1
             if (hit.Crit)
                 points += 1;
-            points *= (int)bossMultipler;
+            // 真近战五倍经验
+            if (isMelee)
+                meleePool += points * (isTrueMelee ? 5 : 1);
+            // 射手
             if (isRanged)
                 rangePool += points;
+            // 法师
             if (isMagic)
                 magicPool += points;
-            if (isSummon)
-                //鞭子也是真近战!
-                summonPool += isWhip ? points * 6 : points;
-            if (isRogue)
-            {
-                //潜伏攻击经验更多
-                roguePool += isRogueStealth ? points * 7 : points;
-                //普攻会获得预期更少的CD同时更少的经验值
-                i = isRogueStealth ? 30 : -30; 
-            }
-            expCD = (short)(CD + i);
+            // 召唤
+            if (isSummon)//鞭子也能吃真近战增幅
+                summonPool += isWhip ? points * 5 : points;
+            // 盗贼
+            if (isRogue)// 潜伏攻击经验更多
+                roguePool += isRogueStealth ? points * 10 : points;
+
+            expCD = CD;
         }
     }
 }

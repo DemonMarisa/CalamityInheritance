@@ -30,6 +30,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
             if (Page == 2)
                 Page3Draw(spriteBatch);
             // 等级
+            if (Page == 3)
+                Page4Draw(spriteBatch);
         }
     }
 }

@@ -39,11 +39,12 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddBuff(ModContent.BuffType<DefenderBuff>(), 60);
             }
             //熟练度
+
             bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
             bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
-            if (target.active && target.lifeMax > 5 && !target.friendly && target.velocity.Length() != 0f)
-            if (isMelee)
-                GiveExpMelee(target, isTrueMelee, hit.Crit);
+
+            if (isMelee && target.active)
+                GiveExpMelee(target, isTrueMelee, isMelee, hit.Crit);
         }
         #endregion
 
@@ -54,13 +55,8 @@ namespace CalamityInheritance.CIPlayer
             #region 熟练度
             bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
             bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
-            if (target.active && target.lifeMax > 5 && !target.friendly && target.velocity.Length() != 0f)
-            {
-                if (isMelee)
-                    GiveExpMelee(target, isTrueMelee, hit.Crit);
-                else
-                    GiveExp(target, hit, projectile);
-            }
+            if (target.active)
+                GiveExp(target, hit, projectile);
             #endregion
             //近战射弹
             MeleeOnHit(projectile, target, hit, damageDone);
@@ -105,11 +101,11 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaFakeDeath)
-                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 3f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
             }
 
             if (GodSlayerMagicSet)
-                CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 1f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
+                CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
         }
         #endregion
     }
