@@ -18,19 +18,18 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #region 文本ID
         #endregion
 
-        public override void StateSaving()
-        {
-            // 获取玩家
-            Player player = Main.LocalPlayer;
-            CalamityInheritancePlayer cIPlayer = player.CIMod();
-        }
-
         public override void PageDraw(SpriteBatch spriteBatch)
         {
-            if(Page == 1)
+            // 头图
+            if (Page == 0)
+                Page1Draw(spriteBatch);
+            // 有效果的Lore
+            if (Page == 1)
                 Page2Draw(spriteBatch);
-            if(Page == 2)
+            // 其余Lore
+            if (Page == 2)
                 Page3Draw(spriteBatch);
+            // 等级
         }
     }
 }

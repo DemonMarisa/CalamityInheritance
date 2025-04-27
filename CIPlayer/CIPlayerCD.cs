@@ -26,7 +26,6 @@ namespace CalamityInheritance.CIPlayer
         public int DukeDefenseTimer = 0;
         #endregion
         public int SparkTimer = 0;
-        public bool wasMouseDown = false;//用于qol面板的鼠标状态跟踪
         // 通用开火冷却
         public int fireCD = 0;
         public int GlobalSoundDelay = 0;

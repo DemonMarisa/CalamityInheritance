@@ -103,8 +103,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 				Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default(Vector2));
 				if (Projectile.owner == Main.myPlayer)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
 					increment = 0;
 				}
 				splits++;

@@ -233,7 +233,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (initialized == false)
             {
-                Main.player[NPC.target].Calamity().GeneralScreenShakePower = 12;
                 NPC.damage = 760;
                 initialized = true;
             }

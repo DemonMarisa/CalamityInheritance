@@ -180,6 +180,8 @@ namespace CalamityInheritance.CIPlayer
             ResetAccessories();
             //buff全部封装
             ResetBuff();
+            //熟练度处理
+            GiveBoost();
             IsColdDivityActiving = false;
             PBGLegendaryDyeable = false;
             PBGBeamColor = default;

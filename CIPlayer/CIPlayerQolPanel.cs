@@ -57,6 +57,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region LoreCount
         // 1-4，分别标记四种状态，1为默认贴图（false），2为鼠标悬停的贴图（false），3为点击后的贴图（true）, 4为点击后悬停的贴图（true）
+        // 空标签用来判定实际上没有任何用处的按钮
         public int nullType = 1;
 
         public int KSPanelType = 1;

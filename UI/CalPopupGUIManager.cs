@@ -5,6 +5,8 @@ using System.Linq;
 using Terraria.ModLoader.Core;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.UI
 {
@@ -32,18 +34,27 @@ namespace CalamityInheritance.UI
         // 更新和绘制
         public static void UpdateAndDraw(SpriteBatch spriteBatch)
         {
-            // 当游戏有其他 UI 时暂停所有弹窗UI?
+            // 当游戏有其他UI时暂停所有弹窗UI
             if (Main.ingameOptionsWindow || Main.inFancyUI || Main.InGameUI.IsVisible)
             {
                 SuspendAll();
                 return;
             }
 
+            Player player = Main.LocalPlayer;
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
+
             // 任何GUI活动
             if (AnyGUIsActive)
             {
                 // 强制关闭玩家库存和 NPC 对话
-                Main.playerInventory = false;
+                // 改为打开库存时关闭UI
+                for (int i = 0; i < gUIs.Count; i++)
+                {
+                    if (Main.playerInventory == true)
+                        gUIs[i].Active = false;
+                }
+
                 if (Main.LocalPlayer.sign > 0 || Main.LocalPlayer.talkNPC > 0)
                     Main.CloseNPCChatOrSign();
 
@@ -59,6 +70,11 @@ namespace CalamityInheritance.UI
                 }
 
                 GetActiveGUI.Draw(spriteBatch);
+
+                // 在所有GUI的按钮检查完成后重置状态，避免按下，但是没有松开，而是直接离开判定区域，导致下一次悬停到其它按钮时直接触发切换
+                if (!Main.mouseLeft)
+                    cIPlayer.wasMouseDown = false;
+
             }
         }
 
@@ -69,6 +85,7 @@ namespace CalamityInheritance.UI
             // 如果列表中不存在指定的类型，则提前结束
             if (!gUIs.Any(gui => gui.GetType() == type))
                 return;
+            // 如果列表中存在指定的类型，则切换其状态
             gUIs.First(gui => gui.GetType() == type).Active = !gUIs.First(gui => gui.GetType() == type).Active;
         }
 
@@ -83,6 +100,7 @@ namespace CalamityInheritance.UI
                     // 不加载抽象类
                     if (type.IsAbstract)
                         continue;
+                    // 将所有派生自 CalPopupGUI 的类添加到列表中
                     if (type.IsSubclassOf(typeof(CalPopupGUI)))
                         gUIs.Add(Activator.CreateInstance(type) as CalPopupGUI);
                 }

@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         // X偏移
-        public override float OffsetX => 0;
+        public override float OffsetX => -2;
         public override float OffsetY => 0;
         public override float BaseOffsetY => 4;
         public override float WeaponRotation => 0;
@@ -71,23 +71,23 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             if (UseCounter > 300)
                 UseCounter = 0;
 
-            if (UseCounter % CrystalUseCD == 0)
-                FireCrystal(player, usPlayer);
+            Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+            firedirection = firedirection.SafeNormalize(Vector2.UnitX);
 
-            // 发射向量
-            Vector2 mouseToPlayer = (player.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitY);
+            if (UseCounter % CrystalUseCD == 0)
+                FireCrystal(player, usPlayer, firedirection);
 
             // 左键发射
             if (UseStyle == 0)
-                LeftFire(UseCounter, - mouseToPlayer, player);
+                LeftFire(UseCounter, firedirection, player);
             // 右键发射
             else
-                RightFire(UseCounter, fireFire, - mouseToPlayer, player);
+                RightFire(UseCounter, fireFire, firedirection, player);
 
             SpawnDust(player);
         }
         #region 发射星流水晶
-        public void FireCrystal(Player player, CalamityInheritancePlayer usPlayer)
+        public void FireCrystal(Player player, CalamityInheritancePlayer usPlayer, Vector2 mouseToPlayer)
         {
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
@@ -98,10 +98,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 Vector2 Finalposition = Main.LocalPlayer.MountedCenter + warpOffset;
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
-                // 发射向量
-                Vector2 mouseToPlayer = (player.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitY);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), (int)(damage * 0.5f), 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), (int)(damage * 0.5f), 0f, Projectile.owner);
             }
         }
         #endregion
@@ -182,7 +180,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         #region 召唤粒子
         public void SpawnDust(Player player)
         {
-            Vector2 offset = new Vector2(56, 4 * player.direction).RotatedBy(Projectile.rotation);
+            Vector2 offset = new Vector2(57, 4 * player.direction).RotatedBy(Projectile.rotation);
             Vector2 velocity = new(0, -3);
 
             Dust dust = Dust.NewDustPerfect(Projectile.Center + offset, CIDustID.DustTerraBlade, Projectile.velocity * 0.6f);

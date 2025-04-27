@@ -171,12 +171,12 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
                 CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 340, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, 23, 400f, 1.4f);
                 #endregion
-                Texture2D EndOfDataSet = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/MiscTextures/EndOfDataSet").Value;
+                Texture2D EndOfDataSet = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/MiscText/EndOfDataSet").Value;
 
                 // 绘制数据结束提示
                 float drawPositionX = Main.screenWidth * 0.5f;
                 Vector2 drawPosition = new Vector2(drawPositionX, Main.screenHeight * 0.5f);
-                // 右侧的
+                // 左侧的
                 Vector2 pageOriginLeft = new(EndOfDataSet.Width, EndOfDataSet.Height / 2);
 
                 Vector2 scale = new(1f, 1f);

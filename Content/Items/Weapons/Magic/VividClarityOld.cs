@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class VividClarityOld : CIMagic, ILocalizedModType
     {
-        public static readonly SoundStyle UseSound = new("CalamityMod/Sounds/Item/VividClarityShoot") { Volume = 0.30f };
+        public static readonly SoundStyle UseSound = new("CalamityMod/Sounds/Item/VividClarityShoot") { Volume = 0.9f };
         public static readonly SoundStyle BeamSound = new("CalamityMod/Sounds/Item/VividClarityBeamAppear");
         public override void SetStaticDefaults()
         {

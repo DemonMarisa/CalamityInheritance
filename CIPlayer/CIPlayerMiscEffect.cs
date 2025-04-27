@@ -107,12 +107,11 @@ namespace CalamityInheritance.CIPlayer
             //升级
             LevelUp();
 
-            //熟练度处理
-            GiveBoost();
-
             // 护盾的综合效果
             ShieldEffect();
 
+            // 杂项条件与重置
+            ReSet();
         }
 
         public void Buffs()

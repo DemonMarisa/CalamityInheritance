@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.BaseClass
         /// </summary>
         public abstract void HoldoutAI();
         /// <summary>
-        /// 手持弹幕的AI逻辑<br/>
+        /// 删除条件<br/>
         /// </summary>
         public virtual void DelCondition()
         {

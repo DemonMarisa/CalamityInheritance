@@ -35,6 +35,7 @@ namespace CalamityInheritance.Utilities
             new Color(242, 112, 73),
             new Color(199, 62, 62),
         };
+        #region 随机颜色
         public static void IterateDisco(ref Color c, ref float aiParam, in byte discoIter = 7)
         {
             switch (aiParam)
@@ -94,7 +95,8 @@ namespace CalamityInheritance.Utilities
             }
 
         }
-        
+        #endregion
+        #region 绘制按钮
         /// <summary>
         /// 在屏幕上绘制可交互图片的方法
         /// 一定要手动赋予buttonTexChange的初始值，方法只内置了悬停后必定切换为2或者4，点击前的1与3的状态标记必须手动赋予
@@ -163,15 +165,15 @@ namespace CalamityInheritance.Utilities
                     cIPlayer.wasMouseDown = true;
                 }
                 // 这一段解释一下就是，2是false的悬停贴图，4是true的悬停贴图，如果按下，且当前贴图是2，就切换到3，反之同理
-                if (cIPlayer.wasMouseDown)
+                if (cIPlayer.wasMouseDown && isHovering && !isMouseDown)
                 {
                     // 释放瞬间：切换永久状态
-                    if (!isMouseDown && buttonCount == 2)
+                    if (buttonCount == 2)
                     {
                         buttonCount = 3;
                         cIPlayer.wasMouseDown = false;
                     }
-                    if (!isMouseDown && buttonCount == 4)
+                    if (buttonCount == 4)
                     {
                         // 在1和3之间切换
                         buttonCount = 1;
@@ -179,7 +181,10 @@ namespace CalamityInheritance.Utilities
                     }
                 }
             }
-            
+
+            if (!Main.mouseLeft)
+                cIPlayer.wasMouseDown = false;
+
             // 重置为对应的默认贴图
             if (buttonCount == 2 && !isHovering && cIPlayer.wasMouseDown == false)
                 buttonCount = 1;
@@ -201,7 +206,8 @@ namespace CalamityInheritance.Utilities
             // 改为中心锚点
             spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
         }
-
+        #endregion
+        #region 绘制按钮2
         /// <summary>
         /// 专门用于绘制Lore下方按钮的方法
         /// </summary>
@@ -245,6 +251,7 @@ namespace CalamityInheritance.Utilities
             // 悬停时切换纹理为 2
             if (isHovering && available)
             {
+
                 if (buttonCount == 1)
                     buttonCount = 2;
                 if (buttonCount == 3)
@@ -259,15 +266,15 @@ namespace CalamityInheritance.Utilities
                     cIPlayer.wasMouseDown = true;
                 }
                 // 这一段解释一下就是，2是false的悬停贴图，4是true的悬停贴图，如果按下，且当前贴图是2，就切换到3，反之同理
-                if (cIPlayer.wasMouseDown)
+                if (cIPlayer.wasMouseDown && isHovering && !isMouseDown)
                 {
                     // 释放瞬间：切换永久状态
-                    if (!isMouseDown && buttonCount == 2)
+                    if (buttonCount == 2)
                     {
                         buttonCount = 3;
                         cIPlayer.wasMouseDown = false;
                     }
-                    if (!isMouseDown && buttonCount == 4)
+                    if (buttonCount == 4)
                     {
                         // 在1和3之间切换
                         buttonCount = 1;
@@ -275,11 +282,11 @@ namespace CalamityInheritance.Utilities
                     }
                 }
             }
-            
+
             // 重置为对应的默认贴图
-            if (buttonCount == 2 && !isHovering && cIPlayer.wasMouseDown == false)
+            if (buttonCount == 2 && !isHovering)
                 buttonCount = 1;
-            if (buttonCount == 4 && !isHovering && cIPlayer.wasMouseDown == false)
+            if (buttonCount == 4 && !isHovering)
                 buttonCount = 3;
             
             // 最终材质选择
@@ -301,6 +308,8 @@ namespace CalamityInheritance.Utilities
             // 改为中心锚点
             thisUI.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(thisUI.xResolutionScale, thisUI.yResolutionScale) * scale, thisUI.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
         }
+        #endregion
+        #region 绘制图片
         /// <summary>
         /// 在屏幕上绘制图片的方法
         /// 你可以在指定地点绘制一张图片
@@ -345,6 +354,8 @@ namespace CalamityInheritance.Utilities
             if (!available)
                 spriteBatch.Draw(unavailableTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
+        #endregion
+        #region 绘制lore
         /// <summary>
         /// 专门用于绘制lore的方法
         /// </summary>
@@ -398,6 +409,7 @@ namespace CalamityInheritance.Utilities
             // 悬停时切换纹理为 2
             if (isHovering)
             {
+
                 if (available)
                 {
                     if (loreData.buttonCount == 1)
@@ -419,17 +431,17 @@ namespace CalamityInheritance.Utilities
                         cIPlayer.wasMouseDown = true;
                     }
                     // 这一段解释一下就是，2是false的悬停贴图，4是true的悬停贴图，如果按下，且当前贴图是2，就切换到3，反之同理
-                    if (cIPlayer.wasMouseDown)
+                    if (cIPlayer.wasMouseDown && !isMouseDown && isHovering)
                     {
                         displayTextCount = TextID;
                         DraedonsLoreChoice = DraedonsLoreID;
                         // 释放瞬间：切换永久状态
-                        if (!isMouseDown && loreData.buttonCount == 2)
+                        if (loreData.buttonCount == 2)
                         {
                             loreData.buttonCount = 3;
                             cIPlayer.wasMouseDown = false;
                         }
-                        if (!isMouseDown && loreData.buttonCount == 4)
+                        if (loreData.buttonCount == 4)
                         {
                             // 在1和3之间切换
                             loreData.buttonCount = 1;
@@ -445,15 +457,17 @@ namespace CalamityInheritance.Utilities
                     //DrawHoverText(loreData.spriteBatch, textContent, loreData.xResolutionScale, loreData.yResolutionScale, loreData.scale);
                 }
             }
-                // 改为中心锚点
-                loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
-                // 无法使用时，便会盖住
-                if (!available)
-                    loreData.spriteBatch.Draw(loreData.loreTextureUnAvailable, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+            // 改为中心锚点
+            loreData.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // 无法使用时，便会盖住
+            if (!available)
+                loreData.spriteBatch.Draw(loreData.loreTextureUnAvailable, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(loreData.xResolutionScale, loreData.yResolutionScale) * scale, loreData.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
         }
-        
+        #endregion
+        #region 绘制文字
         public static void DrawText(
             SpriteBatch spriteBatch,
             string textContent, // 改为接收原始文本内容
@@ -524,7 +538,8 @@ namespace CalamityInheritance.Utilities
                 );
             }
         }
-
+        #endregion
+        #region 绘制悬停时的文字（未完成）
         public static void DrawHoverText(
             SpriteBatch spriteBatch,
             string textContent, // 接收原始文本内容
@@ -597,7 +612,8 @@ namespace CalamityInheritance.Utilities
                 spriteBatch.Draw(textureBG, new Vector2(mousePosition.X, mousePosition.Y), null, Color.White, 0f, textureBG.Size() / 2, new Vector2(xResolutionScale * maxWidth + 15, yResolutionScale * baseLineHeight + 15) * scale, SpriteEffects.None, 0f);
             }
         }
-
+        #endregion
+        #region 更好的文字换行
         /// <summary>
         /// 用于自动换行的方法
         /// </summary>
@@ -706,5 +722,6 @@ namespace CalamityInheritance.Utilities
 
             return array;
         }
+        #endregion
     }
 }

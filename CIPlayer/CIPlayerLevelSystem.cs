@@ -99,6 +99,7 @@ namespace CalamityInheritance.CIPlayer
                 Celebration(meleeLevel == 14 ? ProjectileID.RocketFireworkRed : ProjectileID.RocketFireworksBoxRed);
                 meleeLevel++;
                 levelUpCD = 60;
+                meleePool -= CalculateRequiredExp(meleeLevel);
                 return;
             }
             if (rangePool >= CalculateRequiredExp(rangeLevel) && rangeLevel < maxLevel)
@@ -106,6 +107,7 @@ namespace CalamityInheritance.CIPlayer
                 Celebration(rangeLevel == 14 ? ProjectileID.RocketFireworkGreen : ProjectileID.RocketFireworksBoxGreen);
                 rangeLevel++;
                 levelUpCD = 60;
+                rangePool -= CalculateRequiredExp(rangeLevel);
                 return;
             }
             if (magicPool >= CalculateRequiredExp(magicLevel) && magicLevel < maxLevel)
@@ -113,6 +115,7 @@ namespace CalamityInheritance.CIPlayer
                 Celebration(magicLevel == 14 ? ProjectileID.RocketFireworkBlue : ProjectileID.RocketFireworksBoxBlue);
                 magicLevel++;
                 levelUpCD = 60;
+                magicPool -= CalculateRequiredExp(magicLevel);
                 return;
             }
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
@@ -120,6 +123,7 @@ namespace CalamityInheritance.CIPlayer
                 Celebration(summonLevel == 14 ? ModContent.ProjectileType<SummonLevelFirework_Final>() : ModContent.ProjectileType<SummonLevelFirework>());
                 summonLevel++;
                 levelUpCD = 60;
+                summonPool -= CalculateRequiredExp(summonLevel);
                 return;
             }
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
@@ -127,6 +131,7 @@ namespace CalamityInheritance.CIPlayer
                 Celebration(rogueLevel == 14 ? ModContent.ProjectileType<RogueLevelFirework_Final>() : ModContent.ProjectileType<RogueLevelFirework>());
                 rogueLevel++;
                 levelUpCD = 60;
+                roguePool -= CalculateRequiredExp(rogueLevel);
                 return;
             }
         }
@@ -147,10 +152,6 @@ namespace CalamityInheritance.CIPlayer
                 Main.projectile[p].friendly = false;
         }
         #endregion
-        public void JudgeBossBuff(NPC target, NPC.HitInfo hit)
-        {
-
-        }
         public void GiveBoost()
         {
             var modPlayer = Player.Calamity();
@@ -164,11 +165,12 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 射手
             // 30伤 30爆 15攻速 30穿 常态狙击镜
-
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
-            //我草，谁家好人给远程攻速
-            Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
+            // 我草，谁家好人给远程攻速
+            // 只有ut大于3才会给攻速
+            if (Player.HeldItem.useTime > 3 && Player.HeldItem.DamageType == DamageClass.Ranged)
+                Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
             //移除狙击镜效果
             //不是，哥们，这个狙击镜他会影响某些右键
             //比如星火右键喷不出来
@@ -201,6 +203,7 @@ namespace CalamityInheritance.CIPlayer
             // 30%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
             Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.02f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
+            // 这一段应该写在reseteffects里
             // modPlayer.rogueStealthMax += rogueLevel * 0.02f;
             if (rogueLevel > 14)
                 modPlayer.wearingRogueArmor = true;

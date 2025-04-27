@@ -93,9 +93,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             player.ignoreWater = true;
             player.crimsonRegen = true;
             if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
-            {
                 player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
-            }
         }
 
         public override void UpdateEquip(Player player)

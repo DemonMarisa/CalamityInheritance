@@ -27,32 +27,16 @@ namespace CalamityInheritance.UI
 
         public const int TextStartOffsetX = 40;
 
-        private bool _leftArrowHovered;
-        private bool _rightArrowHovered;
-
-        private bool _AllowPageChange = false;
-        private bool _AllowPageChange2;
-        // 重置翻页判定的时间
-        // 当鼠标按下后两帧后，允许翻页将为false，避免按下后移动到翻页箭头后又触发一次
-        private int _AllowPageChangeReTime;
+        public bool leftArrowHovered;
+        public bool rightArrowHovered;
 
         public abstract void PageDraw(SpriteBatch spriteBatch);
-        public abstract void StateSaving();
         public override void Update()
         {
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer cIPlayer = player.CIMod();
 
-            StateSaving();
-
-            if (_AllowPageChangeReTime > 0)
-            {
-                _AllowPageChangeReTime--;
-                _AllowPageChange2 = true;
-            }
-            else
-                _AllowPageChange2 = false;
-
+            #region 动画进度
             if (Active)
             {
                 if (FadeTime < FadeTimeMax)
@@ -62,6 +46,7 @@ namespace CalamityInheritance.UI
             {
                 FadeTime--;
             }
+            #endregion
 
             if (Main.mouseLeft && !HoveringOverBook && FadeTime >= 30)
             {
@@ -70,32 +55,26 @@ namespace CalamityInheritance.UI
             }
 
             //必须先按下才能检测释放事件，否则会触发两次点击事件（鼠标按下和移动都会触发）
-            if(Main.mouseLeft)
-            {
-                _AllowPageChange = true;
-                _AllowPageChange2 = false;
-                _AllowPageChangeReTime = 2;
-            }
+            if(Main.mouseLeft && (leftArrowHovered || rightArrowHovered))
+                cIPlayer.wasMouseDown = true;
 
             // 检测鼠标释放事件
-            if (Main.mouseLeftRelease && _AllowPageChange2)
+            if (!Main.mouseLeft)
             {
-                if (_leftArrowHovered && Page > 0 && _AllowPageChange)
+                if (leftArrowHovered && Page > 0 && cIPlayer.wasMouseDown)
                 {
                     Page--;
                     SoundEngine.PlaySound(SoundID.MenuTick);
-                    _AllowPageChange = false;
+                    cIPlayer.wasMouseDown = false;
                 }
-                else if (_rightArrowHovered && Page < TotalPages - 1 && _AllowPageChange)
+                else if (rightArrowHovered && Page < TotalPages - 1 && cIPlayer.wasMouseDown)
                 {
                     Page++;
                     SoundEngine.PlaySound(SoundID.MenuTick);
-                    _AllowPageChange = false;
+                    cIPlayer.wasMouseDown = false;
                 }
             }
 
-            if (ArrowClickCooldown > 0)
-                ArrowClickCooldown--;
             HoveringOverBook = false;
         }
 
@@ -138,7 +117,7 @@ namespace CalamityInheritance.UI
             if (!HoveringOverBook)
                 HoveringOverBook = mouseRectangle.Intersects(pageRectangle);
 
-            // Create text and arrows.
+            // 创建箭头
             if (FadeTime >= FadeTimeMax && Active)
             {
                 // 防止页数计算溢出
@@ -179,23 +158,21 @@ namespace CalamityInheritance.UI
 
             Vector2 scale = new(xScale, 1f);
 
-
             // UI缩放
             scale.X *= scaleX;
             scale.Y *= scaleY;
 
             #endregion
             // 左箭头处理
+            #region 左箭头
             if (Page > 0)
             {
                 //鼠标按下时缩小
-                if (Main.mouseLeft && _leftArrowHovered)
-                {
+                if (Main.mouseLeft && leftArrowHovered)
                     LeftarrowScale *= 0.9f;
-                }
+
                 // 绘制坐标
                 Vector2 drawPosition = new Vector2(Main.screenWidth / 2 - 650, yPageBottom);
-
 
                 Rectangle arrowRect = new Rectangle(
                     (int)(drawPosition.X - leftArrowTexture.Width * xResolutionScale * LeftarrowScale / 2),
@@ -206,7 +183,7 @@ namespace CalamityInheritance.UI
 
                 // 检测悬停
                 bool isHovering = arrowRect.Intersects(mouseRectangle);
-                _leftArrowHovered = isHovering;
+                leftArrowHovered = isHovering;
 
                 // 动态切换纹理
                 if (isHovering)
@@ -225,14 +202,13 @@ namespace CalamityInheritance.UI
 
 
             }
-
+            #endregion
+            #region 右箭头
             if (Page < TotalPages - 1)
             {
                 //鼠标按下时缩小
-                if (Main.mouseLeft && _rightArrowHovered)
-                {
+                if (Main.mouseLeft && rightArrowHovered)
                     RightarrowScale *= 0.9f;
-                }
 
                 // 注释同上，只是复制了一遍，方向相反
                 Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + 650, yPageBottom);
@@ -245,7 +221,7 @@ namespace CalamityInheritance.UI
                 );
 
                 bool isHovering = arrowRect.Intersects(mouseRectangle);
-                _rightArrowHovered = isHovering;
+                rightArrowHovered = isHovering;
 
                 if (isHovering)
                 {
@@ -259,6 +235,7 @@ namespace CalamityInheritance.UI
 
                 spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.FlipHorizontally, 0f);
             }
+            #endregion
         }
 
     }

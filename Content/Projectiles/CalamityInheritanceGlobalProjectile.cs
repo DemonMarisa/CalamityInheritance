@@ -45,6 +45,7 @@ namespace CalamityInheritance.Content.Projectiles
             Player player = Main.player[projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CIMod();
             CalamityPlayer modPlayer1 = player.Calamity();
+
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
@@ -105,6 +106,7 @@ namespace CalamityInheritance.Content.Projectiles
                     }
                 }
             }
+
             if(!oneFrameEffect)
             {
                 if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)

@@ -133,20 +133,20 @@ namespace CalamityInheritance.System.Configs
         public int UIX2 { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        [Range(-1f, 1f)]
-        [Increment(0.1f)]
-        [DrawTicks]
-        [DefaultValue(1f)]
-        public float UIY2 { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        [Range(25f, 30f)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-5000, 5000)]
         [Increment(1)]
         [DrawTicks]
         [DefaultValue(1)]
-        public int Offset { get; set; }
+        public int UIY2 { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        [Range(0f, 3f)]
+        [Increment(0.1f)]
+        [DrawTicks]
+        [DefaultValue(1)]
+        public float Offset { get; set; }
         [Range(1, 5)]
         [Increment(1)]
         [DrawTicks]

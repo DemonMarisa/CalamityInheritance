@@ -55,7 +55,6 @@ namespace CalamityInheritance.UI
             float progress = EasingHelper.EaseOutExpo(FadeTime / (float)FadeTimeMax);
             float xScale = MathHelper.Lerp(0.004f, 1f, progress);
             // 同上，改进了淡入淡出动画的实现方式，使其更加平滑。
-            // float xScale = MathHelper.Lerp(0.004f, 1f, FadeTime / (float)FadeTimeMax);
             Vector2 scale = new Vector2(xScale, 1f) * new Vector2(Main.screenWidth, Main.screenHeight) / drawTexture.Size();
             scale *= 0.25f;
             scale *= textureScale;

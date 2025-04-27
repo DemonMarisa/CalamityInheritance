@@ -54,6 +54,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public static string DraedonGenericUI => "CalamityInheritance/UI/DraedonsTexture";
         public static string LoreImagePath => $"{DraedonGenericUI}/Lore"; //一个字段
         #region 文本ID
+        // 用于显示的CD
         public int TextDisplayID = 0;
 
         public int DefaultType = 0;
