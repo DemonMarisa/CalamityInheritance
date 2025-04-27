@@ -12,7 +12,6 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
-
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
@@ -46,22 +45,19 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityInheritancePlayer modplayer1 = player.GetModPlayer<CalamityInheritancePlayer>();
-            var modPlayer = player.Calamity();
-            modPlayer.godSlayer = true;
-            modplayer1.GodSlayerSummonSet = true;
-            player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            CalamityInheritancePlayer usPlayer = player.GetModPlayer<CalamityInheritancePlayer>();
+            var calPlayer = player.Calamity();
+            calPlayer.godSlayer = true;
+            usPlayer.GodSlayerSummonSet = true;
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            usPlayer.GodSlayerReborn = mode != onlyDash;
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modplayer1.GodSlayerReborn = true;
-            }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
             if (player.whoAmI == Main.myPlayer)
             {
@@ -188,7 +184,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
                 }
             }
         }
-
+ 
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<SummonDamageClass>() += 0.65f;

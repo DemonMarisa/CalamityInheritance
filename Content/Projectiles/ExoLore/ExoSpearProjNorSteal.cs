@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,7 +20,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
 		private int phase;
 
-		private int phasecounter;
 
 		private NPC teleportTarget;
 
@@ -43,8 +44,26 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			Projectile.extraUpdates = 4;
 			Projectile.timeLeft = 720;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 16;
+			Projectile.localNPCHitCooldown = 16 * 2;
 		}
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+			Projectile.DoSyncHandlerWrite(ref writer);
+			writer.Write(penetrates);
+			writer.Write(teleportticks);
+			writer.Write(phase);
+			writer.Write(splits);
+			writer.Write(increment);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+			Projectile.DoSyncHandlerRead(ref reader);
+			increment = reader.ReadInt32();
+			teleportticks = reader.ReadInt32();
+			phase = reader.ReadInt32();
+			increment = reader.ReadInt32();
+			splits = reader.ReadInt32();
+        }
 
 		public void Explode(float StartAngle, int Streams, float ProjSpeed)
 		{
@@ -52,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			{
 				for (int i = 0; i < Streams; i++)
 				{
-					Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default(Vector2));
+					Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default);
 					vector.X *= ProjSpeed;
 					vector.Y *= ProjSpeed;
 					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
@@ -71,14 +90,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 				{
 					Vector2 vector = new Vector2(400f, 400f);
 					vector = Utils.RotatedByRandom(vector, (double)MathHelper.ToRadians(360f));
-					Vector2 vector2 = ((Entity)teleportTarget).position + vector;
-					Vector2 vector3 = ((Entity)teleportTarget).position - vector2;
+					Vector2 vector2 = teleportTarget.position + vector;
+					Vector2 vector3 = teleportTarget.position - vector2;
 					vector3.Normalize();
 					vector3.X *= 12f;
 					vector3.Y *= 12f;
 					for (int i = 0; i < 40; i++)
 					{
-						Dust.NewDust(vector2, 20, 20, DustID.PlatinumCoin, vector3.X / 2f, vector3.Y / 2f, 0, default(Color), 1f);
+						Dust.NewDust(vector2, 20, 20, DustID.PlatinumCoin, vector3.X / 2f, vector3.Y / 2f, 0, default, 1f);
 					}
 					Projectile.position = vector2;
 					Projectile.velocity = vector3;
@@ -94,28 +113,28 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			}
 			if (penetrates >= 5)
 			{
-				Dust.NewDustPerfect(Projectile.Center, 247, (Vector2?)new Vector2(0f, 0f), 0, default(Color), 1f);
+				Dust.NewDustPerfect(Projectile.Center, 247, (Vector2?)new Vector2(0f, 0f), 0, default, 1f);
 			}
 			if (increment >= 6 && penetrates >= 5 && phase == 0 && splits <= 12)
 			{
-				Vector2 vector4 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(120f), default(Vector2));
-				Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default(Vector2));
+				Vector2 vector4 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(120f), default);
+				Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default);
 				if (Projectile.owner == Main.myPlayer)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)(Projectile.damage * 0.075), this.Projectile.knockBack, this.Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)(Projectile.damage * 0.075), this.Projectile.knockBack, this.Projectile.owner, 0f, 0f);
 					increment = 0;
 				}
 				splits++;
 			}
 			if (phase == 0 && Projectile.ai[1] == 1f && penetrates < 5)
 			{
-				Vector2 velocity = ((Entity)teleportTarget).position - Projectile.Center;
+				Vector2 velocity = teleportTarget.position - Projectile.Center;
 				velocity.Normalize();
 				velocity.X *= 12f;
 				velocity.Y *= 12f;
 				Projectile.velocity = velocity;
-				if (!((Entity)teleportTarget).active)
+				if (!teleportTarget.active)
 				{
 					Projectile.Kill();
 				}
@@ -138,8 +157,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			vector.X = 28f;
 			vector.Y = 35f;
 			Color alpha = Projectile.GetAlpha(lightColor);
-			Main.spriteBatch.Draw(texture2D, Projectile.Center - Main.screenPosition + new Vector2(0f, ((ModProjectile)this).Projectile.gfxOffY), rectangle, alpha, ((ModProjectile)this).Projectile.rotation, vector, ((ModProjectile)this).Projectile.scale, effects, 0f);
-			Vector2 origin = new Vector2((float)TextureAssets.Projectile[((ModProjectile)this).Projectile.type].Value.Width * 0.5f, (float)TextureAssets.Projectile[((ModProjectile)this).Projectile.type].Value.Height * 0.5f);
+			Main.spriteBatch.Draw(texture2D, Projectile.Center - Main.screenPosition + new Vector2(0f, this.Projectile.gfxOffY), rectangle, alpha, this.Projectile.rotation, vector, this.Projectile.scale, effects, 0f);
+			Vector2 origin = new Vector2(TextureAssets.Projectile[Projectile.type].Value.Width * 0.5f, TextureAssets.Projectile[Projectile.type].Value.Height * 0.5f);
 			for (int i = 0; i < Projectile.oldPos.Length; i++)
 			{
 				Vector2 position = Projectile.oldPos[i] - Main.screenPosition + vector;
@@ -164,7 +183,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 				phase = 1;
 				for (int i = 0; i < 80; i++)
 				{
-					Dust.NewDust(Projectile.position, 20, 20, DustID.PlatinumCoin, Projectile.velocity.X, Projectile.velocity.Y / 4f, 0, default(Color), 1f);
+					Dust.NewDust(Projectile.position, 20, 20, DustID.PlatinumCoin, Projectile.velocity.X, Projectile.velocity.Y / 4f, 0, default, 1f);
 				}
 			}
 			if (penetrates == 0)

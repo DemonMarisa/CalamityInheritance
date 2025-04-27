@@ -15,8 +15,6 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
     [AutoloadEquip(EquipType.Head)]
     public class GodSlayerHeadRangedold : CIArmor, ILocalizedModType
     {
-
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -48,22 +46,18 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
             modPlayer1.GodSlayerRangedSet = true;
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
-            {
-                modPlayer1.GodSlayerReborn = true;
-            }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-            player.setBonus = this.GetLocalizedValue("SetBonus");
             player.GetCritChance<RangedDamageClass>() += 10;
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            modPlayer1.GodSlayerReborn = mode != onlyDash;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+            {
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
+            }
         }
-
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<RangedDamageClass>() += 0.14f;

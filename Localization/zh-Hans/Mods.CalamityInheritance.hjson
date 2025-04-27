@@ -526,7 +526,23 @@ Configs: {
 		}
 
 		SolarEclipseChange: {
-			// Label: Solar Eclipse Change
+			Label: "[i:CalamityMod/DarksunFragment]回归丛林龙（阶段一）与丛林龙（阶段二）"
+			Tooltip:
+				'''
+				将丛林龙（阶段一）与丛林龙（阶段二）带会至现版本
+				开启这一选项后，击败神明吞噬者将只强化霜月与南瓜月事件，日食强化被移交至丛林龙（阶段一）后
+				使用召唤物召唤的丛林龙将会为（阶段一），在血量低于10%时脱战，并启动日食强化
+				开启日食强化并完成对应条件之后，即可启用丛林龙（二阶段）
+				神明吞噬者后的一些合成物品也会因此得到配方修改，这是一个全局性修改。请务必查阅合成表以一览究竟
+				[i:CalamityMod/AscendantSpiritEssence]化魂神晶：移除日蚀碎片
+				[i:CalamityInheritance/SilvaHeadMelee]始源林海系列：移除化魂神晶，加入日蚀碎片
+				[i:CalamityMod/TeslaCannon]嘉登军工厂系列：移除化魂神晶，加入日蚀碎片
+				[i:CalamityMod/AuricBar]一些现版本金源武器：移除金源锭，加入日蚀碎片
+				'''
+		}
+
+		LoreDrop: {
+			// Label: Lore Drop
 			// Tooltip: ""
 		}
 	}

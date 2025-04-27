@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().BuffStatsProfanedRage = true;
+            player.GetCritChance<GenericDamageClass>() += Main.zenithWorld ? 24 : 12;
         }
     }
 }

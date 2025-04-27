@@ -15,7 +15,8 @@ namespace CalamityInheritance.Buffs.Legendary
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().BetsyPower = true;
+            player.lifeRegen += 2;
+            player.GetDamage<MagicDamageClass>() += 0.1f;
         }
     }
 }

@@ -35,6 +35,8 @@ namespace CalamityInheritance.Content.Projectiles
         public bool GlobalRightClickListener = false;
         //用于主射弹与附属射弹的单一敌怪单位的针对
         public int GlobalMainProjForceTarget = -1;
+        //禁用超高频武器降低纳米火花生成数量的标记(主要是及高频，太卡了)
+        public bool PingReducedNanoFlare = false;
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
         public int StoreEU = -1;

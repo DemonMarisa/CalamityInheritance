@@ -15,7 +15,9 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
+            //需要造成亵渎之火
             player.CIMod().BuffStatsHolyWrath = true;
+            player.GetDamage<GenericDamageClass>() += Main.zenithWorld ? 0.48f : 0.12f;
         }
     }
 }

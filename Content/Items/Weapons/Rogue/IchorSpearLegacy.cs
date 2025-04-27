@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -37,17 +38,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
-            {
-                int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-                if (stealth.WithinBounds(Main.maxProjectiles))
-                {
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-                    Main.projectile[stealth].usesLocalNPCImmunity = true;
-                }
-                return false;
-            }
-            return true;
+            bool isStealth = player.CheckStealth();
+            int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            Main.projectile[stealth].Calamity().stealthStrike = isStealth;
+            Main.projectile[stealth].usesLocalNPCImmunity = isStealth;
+            return false;
         }
 
         public override void AddRecipes()

@@ -94,11 +94,44 @@ namespace CalamityInheritance.CIPlayer
 
         private void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
         {
+            //日食魔镜强制暴击。
+            //这个请先于之前所有计算执行，不然他吃不完所有的爆伤加成
+            if (EMirror)
+                modifiers.SetCrit();
+
+            #region 暴伤乘区
             float totalCritsBuff = 0f;
             //远古鲨牙项链获得30%的暴击伤害加成。
             if (SpeedrunNecklace)
                 totalCritsBuff += 0.3f;
-            
+            //除非特殊，不然不要尝试在基于暴击概率上给爆伤的计算里面试图不取溢出暴击概率计算
+            //但凡多10%爆伤加成都是翻倍的输出
+            if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && Player.ActiveItem().DamageType == DamageClass.Magic)
+            {
+                //这个totalCrtis是不会算初始的4%暴击的，这里补上
+                float giveBuff = Player.GetTotalCritChance<MagicDamageClass>() + 4f - 100f;
+                //转化为1f
+                giveBuff /= 100f; 
+                //最后除以10. 取1/10
+                giveBuff /= 8f;
+                //200%暴击概率 -> 12.5%爆伤加成
+                totalCritsBuff += giveBuff;
+
+            }
+            if (EMirror)
+            {
+                float giveBuff = Player.GetTotalCritChance<RogueDamageClass>() + 4f - 100f;
+                giveBuff /= 100f; 
+                //最后除以8. 取1/8
+                giveBuff /= 7f;
+                //200%暴击概率 -> 15%
+                totalCritsBuff = giveBuff;
+                //日食魔镜会一定程度上贯穿敌怪防御
+                modifiers.DefenseEffectiveness *= 0.90f;
+            }
+
+            #endregion
+            //给予爆伤加成            
             modifiers.CritDamage += totalCritsBuff;
         }
 

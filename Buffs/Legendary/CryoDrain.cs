@@ -1,7 +1,6 @@
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Legendary
 {

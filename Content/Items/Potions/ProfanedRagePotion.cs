@@ -11,7 +11,6 @@ namespace CalamityInheritance.Content.Items.Potions
     public class ProfanedRagePotion : CIPotion, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Potions";
-        internal static readonly int CritBoost = 12;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 10;

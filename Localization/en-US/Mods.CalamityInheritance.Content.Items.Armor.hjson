@@ -119,6 +119,10 @@ GodSlayerChestplateold: {
 		Enemies take damage when they hit you
 		Attack have a 2% chance to do no damage to you 
 		'''
+	OnlyReborn: "[c/EE82EE:God Slayer Armor Bonus]:Only God Slayer Reborn"
+	OnlyDash: "[c/EE82EE:God Slayer Armor Bonus]:Only God Slayer Dash"
+	Both: "[c/EE82ee:God Slayer Armor Bonus]:Both Reborn and Dash"
+	text: ""
 }
 
 GodSlayerHeadMagicold: {
@@ -150,7 +154,7 @@ GodSlayerHeadMeleeold: {
 		'''
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
-		Taking over 80 damage in one hit will cause you release a swarm of high-damage god killer dart
+		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
 		Attack deals 80 damage or less will have its damage reduced to 1  
 		Enemies takes even more damage when they hit you
 		'''
@@ -179,6 +183,7 @@ GodSlayerHeadRogueold: {
 	SetBonus:
 		'''
 		+140 maxinum stealth
+		1/7 of your max stealth will be converted to extra max steath
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		Boost all of your rogue stats by 10% at full HP.
@@ -233,7 +238,7 @@ SilvaHeadMagicold: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Magic projectiles have a 10% chance to cause a massive explosion on enmey hits
-		Your magic weapons will do 60% more damage after the silva invulnerability time		
+		Your magic weapons will do 60% more damage if silva invulnerability is triggered
 		'''
 }
 
@@ -248,7 +253,7 @@ SilvaHeadMelee: {
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Melee projectiles have a 25% chance to stun enemies for a very brief moment
 		True melee strikes have a 25% chance to do 5 times damage
-		You will take 20% less contact damage after the silva invulnerability
+		You will take 60% less contact damage if silva invulnerability is triggered
 		'''
 }
 
@@ -262,7 +267,7 @@ SilvaHeadRanged: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Increased your rate of fire with all ranged weapons 
-		Your ranged weapons will do 10% more damage after the silva invulnerability time
+		Your ranged weapons will do 10% more damage if silva invulnerability is triggered time
 		'''
 }
 
@@ -281,7 +286,7 @@ SilvaHeadRogue: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Faster throwing rate for your rogue weapon while you are above 50% HP
-		Your rogue weapons will do 10% more damage after the silva invulnerability time
+		Your rogue weapons will do 10% more damage if silva invulnerability is triggered time
 		'''
 }
 
@@ -295,7 +300,7 @@ SilvaHeadSummonold: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Summons an ancient leaf prism to blast your enemies with life energy
-		Your summon weapons will do 10% more damage and +2 max minions after the silva invulnerability time	
+		Your summon weapons will do 10% more damage and +2 max minions if silva invulnerability is triggered time	
 		'''
 }
 

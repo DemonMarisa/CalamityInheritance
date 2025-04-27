@@ -47,14 +47,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override float StealthDamageMultiplier => 1.35f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Vector2 velocity, int type, int damage, float knockback)
         {
-            if(player.Calamity().StealthStrikeAvailable() || player.CIMod().ForceHammerStealth)//如果允许潜伏攻击, 或者准备强行进行潜伏攻击
-            {
-                int stealth = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage*1.14f), knockback, player.whoAmI);
-                if(stealth.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[stealth].Calamity().stealthStrike = true;
-                return false;
-            }
-            return true;
+            bool canStealth = player.CheckStealth();
+            if (!canStealth)
+                return true;
+
+            int stealth = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage * 1.14f), knockback, player.whoAmI);
+            if(stealth.WithinBounds(Main.maxProjectiles))
+                Main.projectile[stealth].Calamity().stealthStrike = canStealth;
+            return false;
         }
 
         public override void AddRecipes()

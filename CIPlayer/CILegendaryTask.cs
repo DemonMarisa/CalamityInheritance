@@ -2,6 +2,7 @@ using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -104,6 +105,9 @@ namespace CalamityInheritance.CIPlayer
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
+            if (IsColdDivityActiving && ColdDivityTier3)
+                ColdDivityTrueDamage(target, hit, projectile);
+
             if (heldingItem.type == ModContent.ItemType<YharimsCrystalLegendary>())
             {
                 YharimsCrystalLegendaryTask(target, hit);
@@ -140,6 +144,21 @@ namespace CalamityInheritance.CIPlayer
                 if (DefenseBoost > 0.25f)
                     DefenseBoost = 0.25f;
                 
+            }
+        }
+        //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的一半，这是一个防后效果
+        //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害
+        public static void ColdDivityTrueDamage(NPC target, NPC.HitInfo hit, Projectile projectile)
+        {
+            int proj = ModContent.ProjectileType<CryogenPtr>();
+            if (target.life > 5 && projectile.type == proj)
+            {
+                if (projectile.damage < target.life)
+                {
+                    hit.Damage += projectile.damage / 2;
+                    if (target.HasBuff<CryoDrain>())
+                        hit.Damage += projectile.damage / 2;
+                }
             }
         }
         #endregion

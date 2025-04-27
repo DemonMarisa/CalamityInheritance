@@ -47,19 +47,16 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMelee= true;
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            modPlayer2.GodSlayerReborn = mode != onlyDash;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modPlayer2.GodSlayerReborn = true;
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus") + GodSlayerChestplateold.GetSpecial(mode);
         }
 
         public override void UpdateEquip(Player player)

@@ -68,7 +68,7 @@ namespace CalamityInheritance.CIPlayer
             //召唤射弹
             SummonOnHit(projectile, target, hit, damageDone);
             //盗贼射弹
-            RogueOnHit(projectile, target, hit, damageDone);
+            RogueOnHit(projectile, target, hit, damageDone, projectile.Calamity().stealthStrike);
             //全局射弹
             GenericOnhit(projectile, target, hit, damageDone);
             // 熟练度升级

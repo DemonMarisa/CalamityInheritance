@@ -33,6 +33,7 @@ FasterGodSlayerTracers: {
 		Water and lava walking
 		Immunity to the On Fire! debuff
 		Temporary immunity to lava
+		150% increased flight time while wearing God Slayer Armor
 		'Ludicrous speed!'
 		'''
 }
@@ -97,5 +98,13 @@ AncientTarragonWings: {
 
 AncientAeroWings: {
 	DisplayName: Ancient Aero Wings
-	Tooltip: ""
+	Tooltip:
+		'''
+		Horizontal sped: 6.25
+		Acceleration multiplier: 1.0
+		Average vertical speed
+		Flight time: 80
+		Gauranteed infinite flight if wearing Ancient Aerospec Armor
+		Thie effect will be disabled if taking damage
+		'''
 }

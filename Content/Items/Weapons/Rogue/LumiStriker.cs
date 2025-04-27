@@ -1,6 +1,7 @@
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
+using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -39,15 +40,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.Calamity().StealthStrikeAvailable())
-            {
-                int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f, type, damage, knockback, player.whoAmI);
-                SoundEngine.PlaySound(CISoundMenu.HammerReturnID1 with {Volume = 0.7f, Pitch = 0.5f});
-                Main.projectile[stealth].Calamity().stealthStrike = true;
-                Main.projectile[stealth].damage = (int)(damage * 0.70f);
+            bool stealth = player.Calamity().StealthStrikeAvailable();
+            int p = Projectile.NewProjectile(source, position, velocity * 1.2f, type, damage, knockback, player.whoAmI);
+            
+            if (!stealth)
                 return false;
-            }
-            return true;
+                
+            SoundEngine.PlaySound(CISoundMenu.HammerReturnID1 with {Volume = 0.7f, Pitch = 0.5f});
+            Main.projectile[p].Calamity().stealthStrike = stealth;
+            Main.projectile[p].damage = (int)(damage * 0.70f);
+            return false;
         }
         public override void AddRecipes()
         {

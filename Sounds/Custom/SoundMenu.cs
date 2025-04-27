@@ -22,6 +22,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle HammerReturnID1       = new ($"{SoundRoute}/Return1");
         public static readonly SoundStyle HammerReturnID2       = new ($"{SoundRoute}/Return2");
         public static readonly SoundStyle FireworkLauncher      = new ($"{SoundRoute}/launch1");
+        public static readonly SoundStyle Slasher               = new ($"{SoundRoute}/Slasher");
         public static readonly SoundStyle MagnomalyShootSound   = new ($"{MagnomalySound}/MagnomalyShoot", 3)   {Volume = 0.9f, PitchVariance = 0.2f };
         public static readonly SoundStyle MagnomalyHitsound     = new ($"{MagnomalySound}/MagnomalyBoom")       {Volume = 0.9f, PitchVariance = 0.3f };
         public static readonly SoundStyle CelestusOnHit1        = new ($"{CelestusSound}/CelestusHit1")         {Volume = 0.8f, PitchVariance = 0.3f};

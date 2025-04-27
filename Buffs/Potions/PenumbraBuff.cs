@@ -1,6 +1,7 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 
 namespace CalamityInheritance.Buffs.Potions
 {
@@ -15,7 +16,9 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().BuffStatsPenumbra = true;
+            var calPlayer = player.Calamity();  
+            calPlayer.stealthGenStandstill += 0.15f;
+            calPlayer.stealthGenMoving += 0.1f;
         }
     }
 }

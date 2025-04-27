@@ -16,7 +16,10 @@ namespace CalamityInheritance.Buffs.Melee
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().ReaverMeleeRage = true;
+            //速览: 永恒套的怒气buff现在触发不再有任何条件，但提供10点防御力与10%近战攻速与伤害，不提供暴击概率
+            player.GetDamage<MeleeDamageClass>() += 0.10f;
+            player.GetAttackSpeed<MeleeDamageClass>() += 0.10f;
+            player.statDefense += 10;
         }
     }
 }

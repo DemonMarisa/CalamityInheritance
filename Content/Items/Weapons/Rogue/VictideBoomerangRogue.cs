@@ -1,5 +1,6 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
@@ -40,13 +41,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.Calamity().StealthStrikeAvailable())
-            {
-                int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-                Main.projectile[p].Calamity().stealthStrike = true;
-                return false;
-            }
-            return true;
+            int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            Main.projectile[p].Calamity().stealthStrike = player.CheckStealth();
+            return false;
         }
         public override void AddRecipes()
         {

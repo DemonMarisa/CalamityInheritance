@@ -1,5 +1,6 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
+using CalamityMod;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Buffs.Potions
@@ -15,7 +16,12 @@ namespace CalamityInheritance.Buffs.Potions
 
         public override void Update(Player player, ref int buffIndex)
         {
+            //给碎甲debuff
             player.CIMod().BuffStatsArmorShatter = true;
+            player.GetDamage<RogueDamageClass>() += 0.08f;
+            player.GetDamage<MeleeDamageClass>() += 0.08f;
+            player.GetCritChance<RogueDamageClass>() += 8;
+            player.GetCritChance<MeleeDamageClass>() += 8;
         }
     }
 }

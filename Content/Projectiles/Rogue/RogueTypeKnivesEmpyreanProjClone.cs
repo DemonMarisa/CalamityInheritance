@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -15,39 +16,43 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public override string Texture => $"{GenericProjRoute.ProjRoute}/Rogue/RogueTypeKnivesEmpyreanProj";
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public static readonly int GodSlayerKnivesLifeStealCap = 500;
-        public static readonly int GodSlayerKnivesLifeTime = 900;
-        public static readonly float GodSlayerKnivesLifeStealRange = 3000f;
-        public static readonly float GodSlayerKnivesChasingSpeed = 9f;
-        public static readonly float GodSlayerKnivesChasingRange = 1500f;
         //更逆天的追踪速度与追踪距离，同时三倍其存在时间
         private int bounce = 3;
         #region 攻击类型
-        const int AType = 0;
-        const int Timer = 1;
-        const int Target = 2;
-        const float DoFlying = 0f;
-        const float DoAttacking = 1f;
-        const float DoReturning = 2f;
+        const float IsFlying = 0f;
+        const float IsHit = 1f;
+        const float IsReturning = 2f;
         #endregion
         #region 基本属性
-        public int RotatingTime = 0;
-        public int HitTime = 0;
-        const float BeginHomingTimer = 30f;
-        const float HomingSpeed = 28f;
-        const float HomingInerit = 5f;
+        public int SwitchTime = 0;
+        public int DmaagePool = 0;
         #endregion
-
+        #region 别名
+        public ref float AttackType => ref Projectile.ai[0];
+        public ref float AttackTimer => ref Projectile.ai[1];
+        public int TargetIndex
+        {
+            get => (int)Projectile.ai[2];
+            set => Projectile.ai[2] = value;
+        }
+        public Player Owner => Main.player[Projectile.owner];
+        #endregion
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
-        public override bool? CanDamage()
+        public override bool? CanDamage() => AttackType == IsFlying;
+        public override void SendExtraAI(BinaryWriter writer)
         {
-            return Projectile.ai[AType] == DoAttacking || (Projectile.ai[AType] == DoFlying);
+            writer.Write(DmaagePool);
+            writer.Write(SwitchTime);
         }
-
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            DmaagePool = reader.ReadInt32();
+            SwitchTime = reader.ReadInt32();
+        }
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -62,73 +67,82 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void AI()
         {
-            if (Projectile.penetrate <=1)
+            DoGeneral();
+            
+            switch (AttackType)
             {
-                Projectile.ai[AType] = DoReturning;
-            }
-            switch (Projectile.ai[AType])    
-            {
-                case DoFlying:
-                    DoFlyingAI();
+                case IsFlying:
+                    DoFlying();
                     break;
-                case DoAttacking:
-                    DoAttackingAI();
+                case IsHit:
+                    DoHit();
                     break;
-                case DoReturning:
-                    DoReturningAI();
+                case IsReturning:
+                    DoReturning();
                     break;
             }
         }
 
-        private void DoReturningAI()
+        public void DoReturning()
         {
-            //直接照抄回旋镖的AI。
-            Projectile.tileCollide = false;
-            float rSpeed = 16f;
-            float accele = 3.2f;
-            Player plr = Main.player[Projectile.owner];
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            CIFunction.BoomerangReturningAI(plr, Projectile, rSpeed, accele);
-            if (Main.myPlayer == Projectile.owner)
+            CIFunction.BoomerangReturningAI(Owner, Projectile, 20f, 2.4f);
+            if (Projectile.Hitbox.Intersects(Owner.Hitbox))
             {
-                Rectangle rectangle = new((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
-                Rectangle value2 = new((int)Main.player[Projectile.owner].position.X, (int)Main.player[Projectile.owner].position.Y, Main.player[Projectile.owner].width, Main.player[Projectile.owner].height);
-                if (rectangle.Intersects(value2))
+                int healAmt = Owner.statLifeMax2 / Owner.statLife * (DmaagePool / 40);
+                if (healAmt > 20)
                 {
-                    //在接触玩家的时候我们强制其发起治疗
-                    int healAmt = plr.statLifeMax2 / plr.statLife;
-                    plr.Heal(healAmt);
-                    Projectile.Kill();
-                    Projectile.netUpdate = true;
+                    healAmt = 20 + healAmt / 2;
                 }
+                Owner.Heal(healAmt);
+                Projectile.Kill();
             }
         }
 
-        private void DoAttackingAI()
+        public void DoHit()
         {
-            if (Projectile.ai[Timer] > BeginHomingTimer / 10f)
+            //Set real NPC instance
+            NPC target = Main.npc[TargetIndex];
+            //Just in case...
+            if (target == null)
+                return;
+            //现在我们开始hit target。
+            AttackTimer += 1f;
+            if (AttackTimer >= 25f)
             {
-
-                if (Projectile.ai[Timer] == BeginHomingTimer)
-                    Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.ai[Timer]);
-                CIFunction.HomeInOnNPC(Projectile, false, 1800f, HomingSpeed, HomingInerit);
-                Projectile.ai[Timer] = 0f;
-            }
-            else
-            {
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-                Projectile.ai[Timer] += 0.1f;
+                if (AttackTimer == 25f)
+                {
+                    Projectile.velocity = Projectile.velocity.RotatedBy(Main.rand.NextBool() ? MathHelper.PiOver4 : -MathHelper.PiOver4);
+                    SwitchTime++;
+                }
+                AttackType = IsFlying;
+                Projectile.netUpdate = true;
+                AttackTimer = 0f;
             }
         }
 
-        private void DoFlyingAI()
+        private void DoFlying()
+        {
+            float dist = (Projectile.Center - Owner.Center).Length();
+            if (dist > 3600f)
+                Projectile.Kill();
+            //寻找距离射弹最近的敌怪，返回这个实例
+            NPC target = Projectile.FindClosestTarget(1800f, true);
+            //如果target并不为空, 存储NPC
+            if (target != null)
+            {
+                TargetIndex = target.whoAmI;
+                //直接追踪这个敌怪。
+                Projectile.HomingNPCBetter(target, 1800f, 21f, 20f, 2, default, default, true);
+            }
+        }
+
+        private void DoGeneral()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            Projectile.ai[Timer] += 1f;
-            if (Projectile.ai[Timer] > BeginHomingTimer / 3)
+            if (SwitchTime > 3)
             {
-                CIFunction.HomeInOnNPC(Projectile, false, 1800f, HomingSpeed, HomingInerit);
-                Projectile.ai[Timer] = 0f;
+                AttackType = IsReturning;
+                Projectile.netUpdate = true;
             }
         }
 
@@ -160,38 +174,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.ai[AType] == DoFlying)
-                Projectile.ai[AType] = DoAttacking;
-            
-            if (Projectile.ai[AType] == DoAttacking)
+            if (AttackType == IsFlying)
             {
-                HitTime += 1;
-                Projectile.ai[AType] = DoFlying;
+                AttackType = IsHit;
+                Projectile.netUpdate = true;
+                DmaagePool += damageDone / 10;
             }
-
-
-            int heal = (int)Math.Round(hit.Damage * 0.015);
-            if (heal > GodSlayerKnivesLifeStealCap)
-                heal = GodSlayerKnivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, GodSlayerKnivesLifeStealRange);
         }
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
-            int heal = (int)Math.Round(info.Damage * 0.015);
-            if (heal > GodSlayerKnivesLifeStealCap)
-                heal = GodSlayerKnivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, GodSlayerKnivesLifeStealRange);
-        }
-
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Accessories;
+﻿using System.Data;
+using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
@@ -308,6 +309,7 @@ namespace CalamityInheritance.NPCs
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
                 npcLoot.Add(yharimArmorLoot);
+
                 var yharimArmorLoot2 = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 1);
                 yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
                 yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));

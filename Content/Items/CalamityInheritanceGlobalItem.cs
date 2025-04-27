@@ -171,7 +171,7 @@ namespace CalamityInheritance.Content.Items
                                 break;
                             int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(80);
                             int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
-                            Main.projectile[projj].originalDamage = 80;
+                            Main.projectile[projj].originalDamage = item.damage;
 
                             angle += angleVariance;
                             for (int j = 0; j < 22; j++)

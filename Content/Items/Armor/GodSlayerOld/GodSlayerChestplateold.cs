@@ -7,9 +7,6 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityInheritance.Core;
-using CalamityInheritance.System.Configs;
-
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Body)]
@@ -43,7 +40,17 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             player.GetCritChance<GenericDamageClass>() += 6;
             player.moveSpeed += 0.15f;
         }
-
+        public static string GetSpecial(int mode)
+        {
+            var modItme = ItemLoader.GetItem(ModContent.ItemType<GodSlayerChestplateold>());
+            string getValue = mode switch
+            {
+                1 => "OnlyReborn",
+                2 => "OnlyDash",
+                _ => "Both",
+            };
+            return modItme.GetLocalization(getValue).ToString();
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Materials;
@@ -47,53 +48,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float knifeSpeed = Item.shootSpeed;
-            Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
-            float mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
-            float mouseYDist = Main.mouseY + Main.screenPosition.Y - realPlayerPos.Y;
-            if (player.gravDir == -1f)
-            {
-                mouseYDist = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - realPlayerPos.Y;
-            }
-            float mouseDistance = (float)Math.Sqrt((double)(mouseXDist * mouseXDist + mouseYDist * mouseYDist));
-            if ((float.IsNaN(mouseXDist) && float.IsNaN(mouseYDist)) || (mouseXDist == 0f && mouseYDist == 0f))
-            {
-                mouseXDist = player.direction;
-                mouseYDist = 0f;
-                mouseDistance = knifeSpeed;
-            }
-            else
-            {
-                mouseDistance = knifeSpeed / mouseDistance;
-            }
-            mouseXDist *= mouseDistance;
-            mouseYDist *= mouseDistance;
             int knifeAmt = 4;
             for (int i = 2; i < 9; i += 2)
             {
                 if (Main.rand.NextBool(i))
                     knifeAmt++;
             }
+            bool stealth = player.CheckStealth();
+            int pType = stealth ? ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>() : type;
             for (int i = 0; i < knifeAmt; i++)
             {
-                float knifeSpawnXPos = mouseXDist;
-                float knifeSpawnYPos = mouseYDist;
-                float randOffsetDampener = 0.05f * i;
-                knifeSpawnXPos += Main.rand.Next(-35, 36) * randOffsetDampener;
-                knifeSpawnYPos += Main.rand.Next(-35, 36) * randOffsetDampener;
-                mouseDistance = (float)Math.Sqrt((double)(knifeSpawnXPos * knifeSpawnXPos + knifeSpawnYPos * knifeSpawnYPos));
-                mouseDistance = knifeSpeed / mouseDistance;
-                knifeSpawnXPos *= mouseDistance;
-                knifeSpawnYPos *= mouseDistance;
-                float x4 = realPlayerPos.X;
-                float y4 = realPlayerPos.Y;
-                if (player.Calamity().StealthStrikeAvailable())
-                {
-                   int p = Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, ModContent.ProjectileType<RogueTypeKnivesShadowspecProjClone>(), damage, knockback, player.whoAmI, -1f);
-                   Main.projectile[p].Calamity().stealthStrike = true; 
-                }
-                else
-                Projectile.NewProjectile(source, x4, y4, knifeSpawnXPos, knifeSpawnYPos, type, damage, knockback, player.whoAmI, 0f, 0f);
+                float spreadX = Main.rand.Next(-35, 36) * 0.05f * i;
+                float spreadY = Main.rand.Next(-35, 36) * 0.05f * i;
+                Vector2 tarPos = new (spreadX, spreadY);
+                Vector2 distVec = velocity + tarPos;
+                float tarDist = distVec.Length();
+                tarDist = Item.shootSpeed / tarDist;
+                tarPos.X *= tarDist;
+                tarPos.Y *= tarDist;
+                int p =Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
+                Main.projectile[p].Calamity().stealthStrike = stealth;
             }
             return false;
         }
