@@ -127,10 +127,13 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientSilvaForceRegen)
             {
-                //旧林海新增: 生命再生速度无法低于0
-                int lifeRegenSpeed = NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) ? 4 : 8;
+                // 旧林海新增: 生命再生速度无法低于0
+                // 删了旧終灾在场降低回血
+                // 这一段就是魔君能随便站撸終灾的罪魁祸首
+                int lifeRegenSpeed = 8;
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
-                    Player.lifeRegen = lifeRegenSpeed; //承受Debuff伤害时获得4HP/s(终灾眼在场时候2HP/s)
+                    Player.lifeRegen = lifeRegenSpeed; //承受Debuff伤害时获得4HP/s
+                
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子

@@ -1430,8 +1430,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             
         }
-        public int finalDefenceBreak = 0;
-        public int defenceBreakPool = 0;
         public void ShieldEffect()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();
@@ -1444,21 +1442,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
-
-            if (anyShield = true && defenceBreakPool > 0)
-            {
-                Player.statDefense -= finalDefenceBreak;
-                finalDefenceBreak -= defenceBreakPool / CIFunction.SecondsToFrames(5);// 防御需要5s恢复完毕
-            }
-
-            if (finalDefenceBreak < 0)
-            {
-                defenceBreakPool = 0;
-                finalDefenceBreak = 0;
-            }
-
-            if (anyShield == false)
-                finalDefenceBreak = 0;
         }
 
         public void RebornBosses()
@@ -1478,7 +1461,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.CIMod().EmpressBooster = true;
                 //准许防击退
                 Player.noKnockback = true;
-
             }
             if (CIConfig.Instance.LegendaryBuff == 1)
             {

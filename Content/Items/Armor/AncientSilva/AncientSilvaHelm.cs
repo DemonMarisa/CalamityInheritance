@@ -32,11 +32,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             bool isSet = body.type == ModContent.ItemType<AncientSilvaArmor>() && legs.type == ModContent.ItemType<AncientSilvaLeggings>();
             return isSet;
         }
-        
-        public override void ArmorSetShadows(Player player)
-        {
-            player.armorEffectDrawShadow = true;
-        }
 
         public override void UpdateArmorSet(Player player)
         {

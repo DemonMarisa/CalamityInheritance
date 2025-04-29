@@ -49,6 +49,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
                 AddIngredient<AncientGodSlayerLeggings>().
                 AddIngredient<AncientSilvaLeggings>().
                 AddIngredient<AuricBarold>(15).
+                AddIngredient<CalamitousEssence>(1).
                 AddTile<DraedonsForgeold>().
                 Register();
             }

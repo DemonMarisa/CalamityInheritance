@@ -34,7 +34,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
         
         public override void ArmorSetShadows(Player player)
         {
-            player.armorEffectDrawShadowSubtle = true;
             player.armorEffectDrawOutlines = true;
         }
 
