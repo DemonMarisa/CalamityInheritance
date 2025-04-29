@@ -35,6 +35,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas.Minions
 
         public override void SetDefaults()
         {
+            NPC.lifeMax = 15000;
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.width = 40;
@@ -187,8 +188,6 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas.Minions
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            //������ɵ��ɽ������ôȫ��numxxx�������ڵĸ��ƹ�����
-            //�����ⲻ�ǻ�д������������
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

@@ -251,10 +251,6 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             float lightingPosY = (boss.position.Y + boss.width / 2) / 16;
             Lighting.AddLight(new Vector2(lightingPosX, lightingPosY), 1f, 0f, 0f); //(255,0,0)
         }
-        /// <summary>
-        /// 生成探魂眼环
-        /// </summary>
-        /// <param name="Boss">旧灾</param>
         public static void Seekers(NPC boss, CIGlobalNPC cign, bool ifPhase3)
         {
             if (cign.BossNewAI[1] == 0f && ifPhase3)
@@ -271,10 +267,8 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                         Main.npc[newEye].ai[0] = i * eyespread;
                     }
                 }
+                cign.BossNewAI[1] = 1f;
             }
-            //此处需要一个探魂眼重生文本
-            cign.BossNewAI[1] = 1f;
         }
-
     }
 }

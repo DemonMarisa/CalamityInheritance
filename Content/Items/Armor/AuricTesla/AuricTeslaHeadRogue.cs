@@ -17,6 +17,7 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -49,12 +50,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isAuricSetNEW = body.type == ModContent.ItemType<AuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<AuricTeslaCuisses>();
-            bool isAuricSetOLD = body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
-            return isAuricSetNEW || isAuricSetOLD;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
 
         public override void ArmorSetShadows(Player player)
         {
@@ -63,7 +59,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalizedValue("SetBonus");
             CalamityInheritancePlayer modPlayer1 = player.GetModPlayer<CalamityInheritancePlayer>();
             var modPlayer = player.Calamity();
             modPlayer.tarraSet = true;
@@ -73,20 +68,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.godSlayer = true;
             modPlayer.godSlayerThrowing = true;
             modPlayer1.AuricSilvaFakeDeath = true;
-
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            modPlayer1.GodSlayerReborn = mode != onlyDash;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modPlayer1.GodSlayerReborn = true;
+                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-
             modPlayer1.SilvaRougeSetLegacy = true;
 
             modPlayer.rogueStealthMax += 1.3f;

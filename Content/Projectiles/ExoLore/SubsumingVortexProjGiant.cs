@@ -41,6 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public const float StartingScale = 0.0004f;
 
         public const float IdealScale = 2.7f;
+        const float StartHomingNPCTime = 480f;
 
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public bool InitSound = false;
@@ -67,10 +68,11 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void ReceiveExtraAI(BinaryReader reader) => Projectile.scale = reader.ReadSingle();
         //Do not do anything.
-        public override bool? CanDamage() => !HasBeenReleased || (HasBeenReleased && AttackTiemr > 120f);
+        public override bool? CanDamage() => (Time <= SubsumingVortex.LargeVortexChargeupTime) || (HasBeenReleased && AttackTiemr > StartHomingNPCTime);
 
         public override void AI()
         {
+            #region PlaySound
             //We just play once.
             if (Time < 1)
             {
@@ -83,6 +85,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 SoundEngine.PlaySound(CISoundMenu.VortexDone, Projectile.Center);    
                 InitSound = true;
             }
+            #endregion
+            #region heldingAI
             // If the player has channeled the vortex for long enough and it hasn't been released yet, release it.
             if ((!Owner.Calamity().mouseRight || Owner.noItems || Owner.CCed) && !HasBeenReleased)
             {
@@ -96,6 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                         HasBeenReleased = true;
                         Projectile.netUpdate = true;
                     }
+                    Main.NewText("MaxFuck");
                 }
                 //If not, scaling the damage.
                 else if (Time >= SubsumingVortex.VortexShootDelay)
@@ -113,16 +118,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     Projectile.Kill();
                 return;
             }
+            #endregion
             //Disappear if released, too far from the target, and hasn't exploded yet.
-            if (HasBeenReleased && Projectile.timeLeft > ExplodeTime && !Projectile.WithinRange(Owner.Center, 2000f))
+            if (HasBeenReleased && Projectile.timeLeft > ExplodeTime && (Projectile.Center - Owner.Center).Length() > 2000f)
             {
                 Projectile.Kill();
                 return;
             }
             //Search the target.
             NPC potentialTarget = Projectile.Center.ClosestNPCAt(SubsumingVortex.SmallVortexTargetRange - 100f);
-            //Release energy from the book.
-            if (Time >= SubsumingVortex.VortexShootDelay)
+            //Release energy from the book, and don't do anything once we have a fully energy orb
+            if (Time >= SubsumingVortex.VortexShootDelay && Time <= SubsumingVortex.LargeVortexChargeupTime)
             {
                 Vector2 bookPosition = Owner.Center + Vector2.UnitX * Owner.direction * 22f;
                 if (Main.rand.NextBool())
@@ -154,9 +160,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             DoDrawDust();
             DoVisual();
-            if (HasBeenReleased)
+            if (HasBeenReleased && Time >= SubsumingVortex.LargeVortexChargeupTime)
                 DoHoming(potentialTarget);
-            AdjustPlayerValues();
+            if (!HasBeenReleased)
+                AdjustPlayerValues();
             Time++;
             // Slow down.
             if (Projectile.timeLeft < ExplodeTime)
@@ -165,15 +172,24 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         private void DoHoming(NPC tar)
         {
+            
+            AttackTiemr++;
+            //If shouldn't charging to enemy, just following its owner.
+            if (AttackTiemr < StartHomingNPCTime)
+            {
+                Owner.HomeInPlayer(Projectile, 20f, 16f, 1.0f, true, 150f);
+                Vector2 topHead = new (Owner.Center.X + CIFunction.SetDistance(16) * Owner.direction, Owner.Center.Y - CIFunction.SetDistance(15));
+                Vector2 homeDirection = (topHead - Projectile.Center).SafeNormalize(Vector2.UnitY);
+                Vector2 newVelocity = (Projectile.velocity * 20f + homeDirection * 16f) / (20f + 1f);
+
+                Projectile.velocity = newVelocity;
+                Projectile.velocity *= 1 + 1.0f / 100;
+            }
             if (tar is null)
                 return;
-            AttackTiemr++;
-            //Start charging enemy, stop the player following. 
-            if (AttackTiemr > 240f)
-                Projectile.HomingNPCBetter(tar, 1800f, 16f, 20f, 0, 16f, null, true);
-            else
-                Owner.HomeInPlayer(Projectile, 20f, 16f, 0.5f, true, 150f);
 
+            //Start charging enemy, stop the player following. 
+            Projectile.HomingNPCBetter(tar, 1800f, 16f, 20f, 0, 16f, null, true);
             //Keep Spawning it.
             if (Time % SubsumingVortex.VortexReleaseRate == SubsumingVortex.VortexReleaseRate - 1)
             {
@@ -268,7 +284,12 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[Projectile.owner];
             //原灾暂时没有复写大漩涡的Onhit,因此这里如果判定到没开星流传颂，直接干掉AI就行了
-            if (Projectile.owner == Main.myPlayer)
+            int pCounts = 3;
+            if (Projectile.owner != Main.myPlayer)
+                return;
+
+            //固定三个，因为这个玩意右键手持的时候是有判定的
+            for (int j = 0; j < pCounts; j++) 
             {
                 //这里最主要是为了确定生成的位置
                 int offset = Main.rand.Next(200, 1080);
@@ -283,19 +304,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 velocity.Y *= dir * 150;
                 velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
                 velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-                //固定三个，因为这个玩意右键手持的时候是有判定的
-                int pCounts = 3;
-                //击杀的时候往多个方向生成大量的……台风弹幕.
-                for (int j = 0; j < pCounts; j++) 
-                {
-                    //改色，或者说改饱和度
-                    float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue); 
-                    Main.projectile[p].DamageType = DamageClass.Magic;
-                    Main.projectile[p].scale *= 0.85f;
-                    //2穿, 即2判
-                    Main.projectile[p].penetrate = 2;
-                }
+                //改色，或者说改饱和度
+                float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue); 
+                Main.projectile[p].DamageType = DamageClass.Magic;
+                Main.projectile[p].scale *= 0.85f;
+                //2穿, 即2判
+                Main.projectile[p].penetrate = 2;
+                
             }
         }
 

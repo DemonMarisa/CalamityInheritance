@@ -35,11 +35,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
             player.GetCritChance<RogueDamageClass>() += 5;
             player.lifeRegen += 1;
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool ifArmor = body.type == ModContent.ItemType<AncientAstralBreastplate>() && legs.type == ModContent.ItemType<AncientAstralLeggings>();
-            return ifArmor;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientAstralBreastplate>() && legs.type == ModContent.ItemType<AncientAstralLeggings>();
 
         public override void UpdateArmorSet(Player player)
         {

@@ -30,16 +30,8 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.defense = 21; //96
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isGodSlayerSetNEW = body.type == ModContent.ItemType<GodSlayerChestplate>() && legs.type == ModContent.ItemType<GodSlayerLeggings>();
-            bool isGodSlayerSetOLD = body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
-            return isGodSlayerSetNEW || isGodSlayerSetOLD;
-        }
-        public override void ArmorSetShadows(Player player)
-        {
-            player.armorEffectDrawShadow = true;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
+        public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;
 
         public override void UpdateArmorSet(Player player)
         {
@@ -49,32 +41,14 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMagicSet = true;
-            player.setBonus = this.GetLocalizedValue("SetBonus");
             int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
             modPlayer2.GodSlayerReborn = mode != onlyDash;
             if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;
             }
-        }
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            string te = Language.GetTextValue($"{Path}.text");
-            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
-            switch (mode)
-            {
-                case 1:
-                    te = Language.GetTextValue($"{Path}.OnlyReborn");
-                    break;
-                case 2:
-                    te = Language.GetTextValue($"{Path}.OnlyDash");
-                    break;
-                case 3:
-                    te = Language.GetTextValue($"{Path}.Both");
-                    break;
-            }
-            tooltips.Add(new TooltipLine(Mod, "God", te));
         }
         public override void UpdateEquip(Player player)
         {

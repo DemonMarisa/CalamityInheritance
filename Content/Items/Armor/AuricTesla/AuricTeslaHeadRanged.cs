@@ -16,6 +16,8 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using Humanizer;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -35,13 +37,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             Item.defense = 40; //132
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isAuricSetNEW = body.type == ModContent.ItemType<AuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<AuricTeslaCuisses>();
-            bool isAuricSetOLD = body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
-            return isAuricSetNEW || isAuricSetOLD;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
@@ -63,32 +59,26 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateArmorSet(Player player)
         {
             var hotkey = CalamityKeybinds.ArmorSetBonusHotKey.TooltipHotkeyString();
-            player.setBonus = this.GetLocalization("SetBonus").Format(hotkey);
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
-            modPlayer.tarraSet = true;
-            modPlayer.tarraRanged = true;
-            modPlayer.bloodflareSet = true;
-            modPlayer.godSlayer = true;
-
-            modPlayer1.GodSlayerRangedSet = true;
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CIMod();
+            calPlayer.tarraSet = true;
+            calPlayer.tarraRanged = true;
+            calPlayer.bloodflareSet = true;
+            calPlayer.godSlayer = true;
+            usPlayer.GodSlayerRangedSet = true;
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalization("SetBonus").Format(hotkey) + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            usPlayer.GodSlayerReborn = mode != onlyDash;
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modPlayer1.GodSlayerReborn = true;
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-
-            modPlayer1.SilvaRangedSetLegacy = true;
-            modPlayer1.AuricbloodflareRangedSoul = true;
-
-            modPlayer1.AuricSilvaFakeDeath = true;
+            usPlayer.SilvaRangedSetLegacy = true;
+            usPlayer.AuricbloodflareRangedSoul = true;
+            usPlayer.AuricSilvaFakeDeath = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
@@ -98,9 +88,9 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
-            modPlayer1.auricBoostold = true;
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CIMod();
+            usPlayer.auricBoostold = true;
             player.GetDamage<RangedDamageClass>() += 0.3f;
             player.GetCritChance<RangedDamageClass>() += 30;
         }

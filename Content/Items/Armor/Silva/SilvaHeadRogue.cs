@@ -26,13 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             Item.defense = 30; //96
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isSilvaSetNEW = body.type == ModContent.ItemType<SilvaArmor>() && legs.type == ModContent.ItemType<SilvaLeggings>();
-            bool isSilvaSetOLD = body.type == ModContent.ItemType<SilvaArmorold>() && legs.type == ModContent.ItemType<SilvaLeggingsold>();
-            return isSilvaSetNEW || isSilvaSetOLD;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<SilvaArmorold>() && legs.type == ModContent.ItemType<SilvaLeggingsold>();
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CIMod();
