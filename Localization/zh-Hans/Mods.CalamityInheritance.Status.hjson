@@ -2,3 +2,13 @@ SCAL1: 你被仇恨吞噬了。
 SCAL2: 下地狱吧！
 SCAL3: 你的命运早已注定。
 SCAL4: 你的伤口永无愈合之日。
+MeleeLevel: 近战熟练度升级了！
+RangedLevel: 射手熟练度升级了！
+MagicLevel: 法师熟练度升级了！
+SummonLevel: 召唤熟练度升级了！
+RogueLevel: 盗贼熟练度升级了！
+MeleeLevelMax: 战士熟练度满级了！
+RangedLevelMax: 射手熟练度满级了！
+MagicLevelMax: 法师熟练度满级了！
+SummonLevelMax: 召唤熟练度满级了！
+RogueLevelMax: 盗贼熟练度满级了！

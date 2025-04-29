@@ -262,12 +262,6 @@ namespace CalamityInheritance.CIPlayer
                 //这个会有一定的CD (一秒半)
                 CIFunction.SpawnHealProj(Player.GetSource_FromThis(), proj.Center, Player, 10, 20f, 1.6f, 120);
             }
-            //15级时，每一发潜伏攻击都会以1/10恢复25%潜伏值
-            if (rogueLevel > 14 && isStealth)
-            {
-                if (Main.rand.NextBool(10) && proj.Calamity().stealthStrikeHitCount < 2)
-                    Player.Calamity().rogueStealth += Player.Calamity().rogueStealthMax / 4;
-            }
         }
     
         /// <summary>

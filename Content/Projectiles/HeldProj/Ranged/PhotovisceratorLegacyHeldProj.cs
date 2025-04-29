@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         // X偏移
         public override float OffsetX => -2;
         public override float OffsetY => 0;
-        public override float BaseOffsetY => 4;
+        public override float BaseOffsetY => 5;
         public override float WeaponRotation => 0;
         // 旋转速度
         public override float AimResponsiveness => 0.25f;

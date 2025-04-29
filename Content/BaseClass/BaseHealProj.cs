@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.BaseClass
                 return;
             }
             //设置跟踪玩家的AI
-            CIFunction.HomeInPlayer(Healer, Projectile, 18f, FlySpeed, Acceleration);
+            CIFunction.HomeInPlayer(Healer, Projectile, 12f, FlySpeed, Acceleration);
             float distance = (Projectile.Center - Healer.Center).Length();
             if (Projectile.Hitbox.Intersects(Healer.Hitbox) || distance < 20f)
             {

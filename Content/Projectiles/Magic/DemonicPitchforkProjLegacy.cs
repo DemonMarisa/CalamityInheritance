@@ -81,7 +81,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tacleVel, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
                 Main.projectile[p].usesIDStaticNPCImmunity = true;
-                Main.projectile[p].idStaticNPCHitCooldown = 10;
+                Main.projectile[p].idStaticNPCHitCooldown = 30;
+                Main.projectile[p].penetrate = 3;
             }
         }
 

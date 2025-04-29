@@ -51,9 +51,6 @@ namespace CalamityInheritance.NPCs
             {
                 if(npc.lifeRegen > 0)
                 npc.lifeRegen = 0;
-                //敌方有涂油的话梯凳驾到的dot伤害+20000
-                if(npc.HasBuff(BuffID.Oiled))
-                npc.lifeRegen -= rageOfChairDoTDamage+20000;
                 npc.lifeRegen -= rageOfChairDoTDamage;
                 if (damage < rageOfChairDoTDamage)
                     damage = 114514;

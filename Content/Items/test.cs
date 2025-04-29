@@ -84,6 +84,14 @@ namespace CalamityInheritance.Content.Items
             CalamityInheritancePlayer cIPlayer = player.CIMod();
             cIPlayer.meleeLevel = 0;
             cIPlayer.meleePool = 0;
+            cIPlayer.rangeLevel = 0;
+            cIPlayer.rangePool = 0;
+            cIPlayer.magicLevel = 0;
+            cIPlayer.magicPool = 0;
+            cIPlayer.summonLevel = 0;
+            cIPlayer.summonPool = 0;
+            cIPlayer.rogueLevel = 0;
+            cIPlayer.roguePool = 0;
             /*
             if (CIConfig.Instance.UIX == 3)
             {

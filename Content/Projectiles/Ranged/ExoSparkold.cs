@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             CIDustID.DustSandnado,
         };
         public const float HomingInertia = 10f;
-        public const float MaxTargetDistance = 750f;
+        public const float MaxTargetDistance = 1500f;
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3;
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             NPC potentialTarget = Projectile.Center.ClosestNPCAt(MaxTargetDistance);
             if (potentialTarget != null)
-                Projectile.velocity = (Projectile.velocity * (HomingInertia - 1) + Projectile.SafeDirectionTo(potentialTarget.Center) * 16f) / HomingInertia;
+                Projectile.velocity = (Projectile.velocity * (HomingInertia - 1) + Projectile.SafeDirectionTo(potentialTarget.Center) * 24f) / HomingInertia;
 
             Projectile.rotation = Projectile.velocity.ToRotation();
             if (!Main.dedServ)
@@ -60,9 +60,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             for (int i = 0; i < 12; i++)
             {
                 float angle = i / 12f * MathHelper.TwoPi;
+
                 Vector2 spawnPosition = Projectile.Center + angle.ToRotationVector2().RotatedBy(Projectile.rotation) * new Vector2(10f, 6f);
                 Dust dust = Dust.NewDustPerfect(spawnPosition, FrameToDustIDTable[Projectile.frame]);
-                dust.velocity = Vector2.Zero;
                 dust.scale = 0.5f;
                 dust.noGravity = true;
             }

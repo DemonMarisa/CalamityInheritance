@@ -101,11 +101,10 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaFakeDeath)
-                    CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
+                if (GodSlayerMagicSet)
+                    CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
             }
-
-            if (GodSlayerMagicSet)
-                CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
         }
         #endregion
     }

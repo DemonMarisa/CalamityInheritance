@@ -116,7 +116,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             }
             Player player = Main.player[NPC.target];
             NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<SupremeCalamitasLegacy>())];
-            double deg = (double)NPC.ai[1];
+            double deg = NPC.ai[1];
             double rad = deg * (Math.PI / 180);
             double dist = 300;
             NPC.position.X = parent.Center.X - (int)(Math.Cos(rad) * dist) - NPC.width / 2;

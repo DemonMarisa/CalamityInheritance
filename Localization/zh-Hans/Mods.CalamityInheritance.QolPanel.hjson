@@ -2,14 +2,23 @@ HeadText: 快速跳转
 HeadText1: 传颂之物
 HeadText2: 等级系统
 LevelPoolText: 当前等级：
+Damage: 伤害：
+Crit: 暴击：
+Exp: 经验：
+ExpProgress: 经验进度：
 LevelTextMelee: 战士
 MeleeBoost: 战士增幅
-LevelMeleeSPBoost: 免疫击退
 LevelTextRanged: 射手
 RangedBoost: 射手增幅
-LevelRangedSPBoost: 狙击镜击退
+LevelTextMagic: 法师
+MagicBoost: 法师增幅
+LevelTextSummon: 召唤
+SummonBoost: 召唤增幅
+LevelSummonSPBoost: 召唤栏 + 1
+LevelTextRogue: 盗贼
+RogueBoost: 盗贼增幅
 LevelSPBoost: 特殊增幅
-CurrentBoost: 当前增幅
+CurrentBoost: 当前增幅：
 LoreUnAvailable: 未知
 LoreT0: 传颂之物
 Lore0:

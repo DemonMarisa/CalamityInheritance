@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Microsoft.CodeAnalysis;
 
 namespace CalamityInheritance.Utilities
 {
@@ -22,6 +23,12 @@ namespace CalamityInheritance.Utilities
                 Main.NewText(Language.GetTextValue(key), textColor ?? Color.White);
             else if (Main.netMode == NetmodeID.Server || Main.netMode == NetmodeID.MultiplayerClient)
                 ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), textColor ?? Color.White);
+        }
+        public static void SendTextOnPlayer(string key, Color color)
+        {
+            Player player = Main.player[Main.myPlayer];
+            Rectangle location = new Rectangle((int)player.position.X, (int)player.position.Y - 16, player.width, player.height);
+            CombatText.NewText(location, color, Language.GetTextValue(("Mods.CalamityInheritance." + key)));
         }
     }
 }

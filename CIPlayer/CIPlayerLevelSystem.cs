@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Typeless;
+using Terraria.Localization;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.CIPlayer
         // 基础经验需求
         public int baseExp = 100;
         // 基础经验倍率
-        public float expRate = 1.4f;
+        public float expRate = 1.22f;
         // 最大等级
         public int maxLevel = 15;
         // 每次攻击获得的经验值
@@ -46,7 +47,16 @@ namespace CalamityInheritance.CIPlayer
         public short levelUpCD = 0;
         #endregion
         // 计算每一级的经验需求
-        public int CalculateRequiredExp(int currentLevel) => (int)(baseExp + baseExp * MathF.Pow(expRate, currentLevel));
+        public int CalculateRequiredExp(int currentLevel)
+        {
+            int requiredExp = baseExp;
+            for(int i = 0; i < currentLevel; i++)
+                requiredExp += baseExp + baseExp * i;
+            if (currentLevel == 15)
+                requiredExp += 500;
+            return requiredExp;
+        }
+
         #region 保存数据
         public void LevelSaveData(TagCompound tag)
         {
@@ -95,6 +105,7 @@ namespace CalamityInheritance.CIPlayer
                 meleePool -= CalculateRequiredExp(meleeLevel);
                 meleeLevel++;
                 levelUpCD = 60;
+                SendMessageOnPlayer(meleeLevel, 0);
                 return;
             }
             if (rangePool >= CalculateRequiredExp(rangeLevel) && rangeLevel < maxLevel)
@@ -103,6 +114,7 @@ namespace CalamityInheritance.CIPlayer
                 rangePool -= CalculateRequiredExp(rangeLevel);
                 rangeLevel++;
                 levelUpCD = 60;
+                SendMessageOnPlayer(rangeLevel, 1);
                 return;
             }
             if (magicPool >= CalculateRequiredExp(magicLevel) && magicLevel < maxLevel)
@@ -111,6 +123,7 @@ namespace CalamityInheritance.CIPlayer
                 magicPool -= CalculateRequiredExp(magicLevel);
                 magicLevel++;
                 levelUpCD = 60;
+                SendMessageOnPlayer(magicLevel, 2);
                 return;
             }
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
@@ -119,6 +132,7 @@ namespace CalamityInheritance.CIPlayer
                 summonPool -= CalculateRequiredExp(summonLevel);
                 summonLevel++;
                 levelUpCD = 60;
+                SendMessageOnPlayer(summonLevel, 3);
                 return;
             }
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
@@ -127,8 +141,19 @@ namespace CalamityInheritance.CIPlayer
                 roguePool -= CalculateRequiredExp(rogueLevel);
                 rogueLevel++;
                 levelUpCD = 60;
+                SendMessageOnPlayer(rogueLevel, 4);
                 return;
             }
+            if (meleePool > 12500)
+                meleePool = 12500;
+            if (rangePool > 12500)
+                rangePool = 12500;
+            if (magicPool > 12500)
+                magicPool = 12500;
+            if (summonPool > 12500)
+                summonPool = 12500;
+            if (roguePool > 12500)
+                roguePool = 12500;
         }
         public void Celebration(int fireType)
         {
@@ -146,62 +171,56 @@ namespace CalamityInheritance.CIPlayer
             if (Main.zenithWorld && Main.rand.NextBool())
                 Main.projectile[p].friendly = false;
         }
+        public string Local = "Mods.CalamityInheritance.Status.";
+        public void SendMessageOnPlayer(int currentLevel, int SwitchClass)
+        {
+            string Melee = Language.GetTextValue($"{Local}MeleeLevel");
+            string Ranged = Language.GetTextValue($"{Local}RangedLevel");
+            string Magic = Language.GetTextValue($"{Local}MagicLevel");
+            string Summon = Language.GetTextValue($"{Local}SummonLevel");
+            string Rogue = Language.GetTextValue($"{Local}RogueLevel");
+
+            string MeleeMax = Language.GetTextValue($"{Local}MeleeLevelMax");
+            string RangedMax = Language.GetTextValue($"{Local}RangedLevelMax");
+            string MagicMax = Language.GetTextValue($"{Local}MagicLevelMax");
+            string SummonMax = Language.GetTextValue($"{Local}SummonLevelMax");
+            string RogueMax = Language.GetTextValue($"{Local}RogueLevelMax");
+
+            if (SwitchClass == 0)
+                CIFunction.SendTextOnPlayer(currentLevel == 14 ? MeleeMax : Melee, Color.Red);
+            if (SwitchClass == 1)
+                CIFunction.SendTextOnPlayer(currentLevel == 14 ? RangedMax : Ranged, Color.Green);
+            if (SwitchClass == 2)
+                CIFunction.SendTextOnPlayer(currentLevel == 14 ? MagicMax : Magic, Color.DeepSkyBlue);
+            if (SwitchClass == 3)
+                CIFunction.SendTextOnPlayer(currentLevel == 14 ? SummonMax : Summon, Color.MediumPurple);
+            if (SwitchClass == 4)
+                CIFunction.SendTextOnPlayer(currentLevel == 14 ? RogueMax : Rogue, Color.Purple);
+        }
         #endregion
         public void GiveBoost()
         {
             var modPlayer = Player.Calamity();
             #region 战士增幅
-            // 30伤 15爆 30攻速 防击退
-            //30% -> 15%
             Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.01f;
             Player.GetCritChance<MeleeDamageClass>() += meleeLevel;
-            Player.GetAttackSpeed<MeleeDamageClass>() += meleeLevel * 0.02f;
-            if (meleeLevel > 14)
-                Player.noKnockback = true;
             #endregion
             #region 射手
-            // 30伤 30爆 15攻速 30穿 常态狙击镜
-            // 30 -> 15
             Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.01f;
-            Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
-            // 我草，谁家好人给远程攻速
-            // 只有ut大于3才会给攻速
-            if (Player.HeldItem.useTime > 3 && Player.HeldItem.DamageType == DamageClass.Ranged)
-                Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
-            if (rangeLevel > 14 && canFreeScope)
-                Player.scope = true;
-            
+            Player.GetCritChance<RangedDamageClass>() += rangeLevel;
             #endregion
             #region 法师
-            // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
-            //45% -> 15%
             Player.GetDamage<MagicDamageClass>() += magicLevel * 0.01f;
             Player.GetCritChance<MagicDamageClass>() += magicLevel;
-            Player.statManaMax2 += magicLevel * 10;
-            Player.manaCost *= 1 - magicLevel * 0.01f;
-            if (magicLevel > 0)
-                if (Player.miscCounter % (60 / magicLevel) == 0 && Player.statMana < Player.statManaMax2)
-                    Player.statMana += 1;
-            if (magicLevel > 14)
-                Player.manaFlower = true;
             #endregion
             #region 召唤
-            // 15%外围增伤 2召唤栏 15%鞭子范围与攻速速度加成
-            //改成15%加算了，召唤师数值爆炸了bro
-            Player.GetDamage<SummonDamageClass>() += summonLevel * 0.01f;
-            Player.whipRangeMultiplier += summonLevel * 0.01f;
-            Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += summonLevel * 0.01f;
+            Player.GetDamage<SummonDamageClass>() += summonLevel * 0.02f;
             if (summonLevel > 14)
-                Player.maxMinions += 2;
+                Player.maxMinions += 1;
             #endregion
             #region 盗贼
-            // 15%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
-            //无需盗贼套的潜伏攻击转移给了日蚀魔镜. 原15级效果重置(在OnHitNPC进行重置)
             Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.01f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
-            // 这一段应该写在reseteffects里
-            // modPlayer.rogueStealthMax += rogueLevel * 0.02f;
-
             #endregion
         }
         public void GiveExpMelee(NPC target, bool isTrueMelee, bool isMelee, bool isCrit)
@@ -244,19 +263,19 @@ namespace CalamityInheritance.CIPlayer
             if (hit.Crit)
                 points += 1;
             // 真近战五倍经验
-            if (isMelee)
+            if (isMelee && meleeLevel < maxLevel)
                 meleePool += points * (isTrueMelee ? 5 : 1);
             // 射手
-            if (isRanged)
+            if (isRanged && rangeLevel < maxLevel)
                 rangePool += points;
             // 法师
-            if (isMagic)
+            if (isMagic && magicLevel < maxLevel)
                 magicPool += points;
             // 召唤
-            if (isSummon)//鞭子也能吃真近战增幅
+            if (isSummon && summonLevel < maxLevel)//鞭子也能吃真近战增幅
                 summonPool += isWhip ? points * 5 : points;
             // 盗贼
-            if (isRogue)// 潜伏攻击经验更多
+            if (isRogue && rogueLevel < maxLevel)// 潜伏攻击经验更多
                 roguePool += isRogueStealth ? points * 10 : points;
 
             expCD = CD;

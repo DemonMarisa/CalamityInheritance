@@ -436,7 +436,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="acceleration">治疗射弹的加速度</param>
         /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
         /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
-        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float flyingSpeed = 20f, float acceleration = 2.4f, int CD = 60)
+        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float flyingSpeed = 20f, float acceleration = 2.4f, int CD = 60, int? ProjID = 0)
         {
             if (player.CIMod().GlobalHealProjCD > 0)
                 return;
@@ -444,7 +444,10 @@ namespace CalamityInheritance.Utilities
             float randomAngleOffset = (float)Main.rand.NextFloat(MathHelper.TwoPi);
             Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
             float randomSpeed = Main.rand.NextFloat(12f, 16f);
-            int t = Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+            if(ProjID.HasValue)
+                Projectile.NewProjectile(src, position, direction * randomSpeed, (int)ProjID, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+            else
+                Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             player.CIMod().GlobalHealProjCD = CD;
         }
         /// <summary>
@@ -457,7 +460,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="acceleration">治疗射弹的加速度</param>
         /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
         /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
-        public static void SPSpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt,float flyingSpeed = 20f, float acceleration = 1f, int CD = 60, int ProjID = -1)
+        public static void SPSpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt = 20, float flyingSpeed = 20f, float acceleration = 1f, int CD = 60, int ProjID = -1)
         {
             if (player.CIMod().GlobalGodSlayerHealProjCD > 0)
                 return;

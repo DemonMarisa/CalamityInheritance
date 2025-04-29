@@ -180,7 +180,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 int projID = ModContent.ProjectileType<ExoSparkold>();
                 for (int i = 0; i < 3; i++)
                 {
-                    Vector2 vel = Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * 16f;
+                    Vector2 vel = Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * 24f;
                     Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, vel, projID, Projectile.damage, Projectile.knockBack * 0.3f, Projectile.owner);
                 }
             }

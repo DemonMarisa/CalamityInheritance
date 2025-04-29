@@ -20,11 +20,5 @@ namespace CalamityInheritance.Utilities
         {
             return Language.GetTextValue("Mods.CalamityInheritance." + key);
         }
-        public static void SendTextOnPlayer(string key, Color color)
-        {
-            Player player = Main.player[Main.myPlayer];
-            Rectangle location = new Rectangle((int)player.position.X, (int)player.position.Y - 16, player.width, player.height);
-            CombatText.NewText(location, color, Language.GetTextValue(("Mods.CalamityInheritance." + key)));
-        }
     }
 }

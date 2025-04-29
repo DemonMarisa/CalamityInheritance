@@ -386,7 +386,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Player p = Main.player[Projectile.owner];
             var up = p.CIMod();
             if (up.YharimsKilledExo)
-                indexing = CIConfig.Instance.UIY2;
+                indexing = 1452;
 
             return indexing / YharimsCrystalPrism.NumBeams % 0.12f;
         }

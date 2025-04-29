@@ -1,4 +1,14 @@
-SCAL1: You are consumed by hatred
+﻿SCAL1: You are consumed by hatred
 SCAL2: Go to hell.
 SCAL3: Your fate is already sealed
 SCAL4: Your wounds will never heal.
+MeleeLevel: 近战熟练度升级了！
+RangedLevel: 射手熟练度升级了！
+MagicLevel: 法师熟练度升级了！
+SummonLevel: 召唤熟练度升级了！
+RogueLevel: 盗贼熟练度升级了！
+MeleeLevelMax: 战士熟练度满级了！
+RangedLevelMax: 射手熟练度满级了！
+MagicLevelMax: 法师熟练度满级了！
+SummonLevelMax: 召唤熟练度满级了！
+RogueLevelMax: 盗贼熟练度满级了！

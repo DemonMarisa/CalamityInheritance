@@ -35,12 +35,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<DemonicPitchforkProjLegacy>();
             Item.shootSpeed = 16f;
         }
-
-        public override Vector2? HoldoutOrigin()
-        {
-            return new Vector2(15, 0);
-        }
-
         public override void AddRecipes()
         {
             CreateRecipe().
