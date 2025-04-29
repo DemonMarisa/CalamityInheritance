@@ -39,6 +39,7 @@ namespace CalamityInheritance.CIPlayer
         public bool horror = false;
         public bool vulnerabilityHexLegacy = false;
         #endregion
+        public bool CryoDrainPlayer = false;
         public void ResetBuff()
         {
             #region Buffs
@@ -65,6 +66,7 @@ namespace CalamityInheritance.CIPlayer
             horror = false;
             vulnerabilityHexLegacy = false;
             #endregion
+            CryoDrainPlayer = false;
         }
         public void UpdateDeadBuff()
         {
@@ -91,6 +93,7 @@ namespace CalamityInheritance.CIPlayer
             abyssalFlames = false;
             horror = false;
             vulnerabilityHexLegacy = false;
+            CryoDrainPlayer = false;
             #endregion
         }
         public void DebuffEffect()

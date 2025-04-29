@@ -72,32 +72,32 @@ namespace CalamityInheritance
             #region 用于元素箭袋分裂
             rangedProjectileExceptionList = new List<int>
             {
-                    ProjectileID.IchorDart,
-                    ProjectileID.RainbowBack,
-                    ProjectileID.PhantasmArrow,
-                    ProjectileType<StarfleetMK2Gun>(),
-                    ProjectileType<DryadsTearSplit>(),
-                    ProjectileType<NorfleetCannon>(),
-                    ProjectileType<NorfleetComet>(),
-                    ProjectileType<NorfleetExplosion>(),
-                    ProjectileType<AetherBeam>(),
-                    ProjectileType<MagnomalyBeam>(),
-                    ProjectileType<MagnomalyAura>(),
-                    ProjectileType<RainbowTrail>(),
-                    ProjectileType<ExoLight>(),
-                    ProjectileType<UltimaSpark>(), // Because of potential dust lag.
-                    ProjectileType<UltimaRay>(),
-                    ProjectileType<ExoTornado>(),
-                    ProjectileType<ExoSparkold>(),
-                    ProjectileType<ExoGunBlastsplit>(),
-                    ProjectileType<ExoGunBlast>(),
-                    ProjectileType<ExoLightold>(),
-                    //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表
-                    ProjectileType<ProfanedNukeDust>(),
-                    //小鸡大炮爆炸，太卡了
-                    ProjectileType<ChickenExplosion>(),
-                    //脉冲步枪光球，不然无限分裂了
-                    ProjectileType<PulseRifleShot>()
+                ProjectileID.IchorDart,
+                ProjectileID.RainbowBack,
+                ProjectileID.PhantasmArrow,
+                ProjectileType<StarfleetMK2Gun>(),
+                ProjectileType<DryadsTearSplit>(),
+                ProjectileType<NorfleetCannon>(),
+                ProjectileType<NorfleetComet>(),
+                ProjectileType<NorfleetExplosion>(),
+                ProjectileType<AetherBeam>(),
+                ProjectileType<MagnomalyBeam>(),
+                ProjectileType<MagnomalyAura>(),
+                ProjectileType<RainbowTrail>(),
+                ProjectileType<ExoLight>(),
+                ProjectileType<UltimaSpark>(), // Because of potential dust lag.
+                ProjectileType<UltimaRay>(),
+                ProjectileType<ExoTornado>(),
+                ProjectileType<ExoSparkold>(),
+                ProjectileType<ExoGunBlastsplit>(),
+                ProjectileType<ExoGunBlast>(),
+                ProjectileType<ExoLightold>(),
+                //因某人强烈要求，给极了炮的粉尘打了个不可分裂的表
+                ProjectileType<ProfanedNukeDust>(),
+                //小鸡大炮爆炸，太卡了
+                ProjectileType<ChickenExplosion>(),
+                //脉冲步枪光球，不然无限分裂了
+                ProjectileType<PulseRifleShot>()
             };
             #endregion
             #region 用于金源的buff免疫
@@ -198,8 +198,8 @@ namespace CalamityInheritance
             };
             #endregion
             #region 嘉登武器
-            exoDraedibsArsenalWeapon = new List<int>()
-            {
+            exoDraedibsArsenalWeapon =
+            [
                 ItemType<Exoblade>(),
                 ItemType<Celestus>(),
                 ItemType<CosmicImmaterializer>(),
@@ -209,18 +209,18 @@ namespace CalamityInheritance
                 ItemType<SubsumingVortex>(),
                 ItemType<Supernova>(),
                 ItemType<VividClarity>(),
-            };
+            ];
             #endregion
             #region 月后boss
-            PostMLBoss = new List<int>()
-            {
+            PostMLBoss =
+            [
                 NPCType<ProfanedGuardianCommander>(),
                 NPCType<ProfanedGuardianDefender>(),
                 NPCType<ProfanedGuardianHealer>(),
                 NPCType<ProfanedRocks>(),
                 NPCType<Bumblefuck>(),
                 NPCType<Bumblefuck2>(),
-            };
+            ];
             #endregion
             #region 亵渎后包括亵渎
             PostProfanedBoss = new List<int>()

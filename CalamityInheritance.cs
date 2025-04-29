@@ -93,6 +93,8 @@ namespace CalamityInheritance
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             HeavenlyGaleProjHook.Load(this);
+            //日掉原灾归元的发光贴图
+            FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             #endregion
         }

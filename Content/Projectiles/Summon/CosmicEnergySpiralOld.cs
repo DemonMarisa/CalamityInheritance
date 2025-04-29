@@ -1,4 +1,4 @@
-﻿using CalamityMod.CalPlayer;
+﻿﻿using CalamityMod.CalPlayer;
 using CalamityMod;
 using System;
 using Terraria.Audio;
@@ -10,6 +10,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -197,9 +198,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 {
                     if (Main.npc[i].CanBeChasedBy(Projectile, false))
                     {
-                        float npcX = Main.npc[i].position.X + (float)(Main.npc[i].width / 2);
-                        float npcY = Main.npc[i].position.Y + (float)(Main.npc[i].height / 2);
-                        float npcDist = Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - npcX) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - npcY);
+                        float npcX = Main.npc[i].Center.X;
+                        float npcY = Main.npc[i].Center.Y;
+                        float npcDist = Math.Abs(Projectile.Center.X - npcX) + Math.Abs(Projectile.Center.Y - npcY);
                         if (npcDist < searchDist)
                         {
                             searchDist = npcDist;
@@ -213,7 +214,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 {
                     if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     {
-                        SoundEngine.PlaySound(SoundID.Item105, Projectile.position);
+                        SoundEngine.PlaySound(CISoundMenu.CosmicImToss2, Projectile.position);
                         int blastAmt = Main.rand.Next(12, 18);
                         for (int b = 0; b < blastAmt; b++)
                         {
@@ -232,19 +233,19 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         int bigDamage = Projectile.damage * 2;
                         Vector2 velocity1 = CalamityUtils.RandomVelocity(100f, 100f, 100f);
                         Vector2 adjustedVelocity = velocity1.RotatedBy(MathHelper.ToRadians(-140));
-                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
+                        int p3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity * 1.1f, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p3))
                             Main.projectile[p3].originalDamage = Projectile.originalDamage;
 
                         Vector2 adjustedVelocity2 = velocity1.RotatedBy(MathHelper.ToRadians(140));
-                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
+                        int p4 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, adjustedVelocity2 * 1.1f, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 2, Projectile.owner, 0f, 0f);
                         if (Main.projectile.IndexInRange(p4))
                             Main.projectile[p4].originalDamage = Projectile.originalDamage;
 
                         int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, distX * 2, distY * 2, ModContent.ProjectileType<CosmicBlastBigExoLore>(), bigDamage, 3f, Projectile.owner, target, 0f);
                         if (Main.projectile.IndexInRange(p))
                             Main.projectile[p].originalDamage = Projectile.originalDamage;
-                        Projectile.ai[0] = 40f;
+                        Projectile.ai[0] = 120f;
                     }
                     else
                     {

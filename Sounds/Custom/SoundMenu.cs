@@ -11,6 +11,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static string VortexSound =>     $"{SoundRoute}/SubsumingVortex";
         public static string KarasawaSound =>   $"{SoundRoute}/ACTKarasawa";
         public static string VividSound =>      $"{SoundRoute}/Vivid";
+        public static string CosmicImSound => $"{SoundRoute}/CosmicIm";
         public static string AtomSound => $"{SoundRoute}/Atom";
 
         public static readonly SoundStyle OpalStriker           = new ("CalamityInheritance/Sounds/Item/OpalStrike");
@@ -22,7 +23,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle HammerReturnID1       = new ($"{SoundRoute}/Return1");
         public static readonly SoundStyle HammerReturnID2       = new ($"{SoundRoute}/Return2");
         public static readonly SoundStyle FireworkLauncher      = new ($"{SoundRoute}/launch1");
-        public static readonly SoundStyle Slasher               = new ($"{SoundRoute}/Slasher");
+        public static readonly SoundStyle Slasher               = new ($"{SoundRoute}/Slasher")                 {Volume = 0.7f, Pitch = 0.5f};
         public static readonly SoundStyle MagnomalyShootSound   = new ($"{MagnomalySound}/MagnomalyShoot", 3)   {Volume = 0.9f, PitchVariance = 0.2f };
         public static readonly SoundStyle MagnomalyHitsound     = new ($"{MagnomalySound}/MagnomalyBoom")       {Volume = 0.9f, PitchVariance = 0.3f };
         public static readonly SoundStyle CelestusOnHit1        = new ($"{CelestusSound}/CelestusHit1")         {Volume = 0.8f, PitchVariance = 0.3f};
@@ -50,11 +51,11 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle AtomHit1              = new ($"{AtomSound}/AtomHit1")                 {Volume = 0.6f, Pitch = 0.9f};
         public static readonly SoundStyle AtomHit2              = new ($"{AtomSound}/AtomHit2")                 {Volume = 0.6f, Pitch = 0.9f};
         public static readonly SoundStyle AtomHit3              = new ($"{AtomSound}/AtomHit3")                 {Volume = 0.6f, Pitch = 0.9f};
-
-
-        public static readonly SoundStyle KarasawaCharge        = new($"{KarasawaSound}/KarasawaCharge")        {MaxInstances = 0 };
-        public static readonly SoundStyle KarasawaEnergyPulse   = new($"{KarasawaSound}/KarasawaEnergyPulse")   {MaxInstances = 0, IsLooped = false };
-        public static readonly SoundStyle KarasawaLaunch        = new($"{KarasawaSound}/KarasawaLaunch", 2)     {MaxInstances = 0, PitchVariance = 0.1f };
-        public static readonly SoundStyle KarasawaChargeFailed  = new($"{KarasawaSound}/KarasawaChargeFailed")  {MaxInstances = 2 };
+        public static readonly SoundStyle CosmicImToss1         = new ($"{CosmicImSound}/CosmicIm1")            {Volume = 0.9f, Pitch = 0.7f};
+        public static readonly SoundStyle CosmicImToss2         = new ($"{CosmicImSound}/CosmicIm2")            {Volume = 0.9f, Pitch = 0.7f};
+        public static readonly SoundStyle KarasawaCharge        = new ($"{KarasawaSound}/KarasawaCharge")       {MaxInstances = 0 };
+        public static readonly SoundStyle KarasawaEnergyPulse   = new ($"{KarasawaSound}/KarasawaEnergyPulse")  {MaxInstances = 0, IsLooped = false };
+        public static readonly SoundStyle KarasawaLaunch        = new ($"{KarasawaSound}/KarasawaLaunch", 2)    {MaxInstances = 0, PitchVariance = 0.1f };
+        public static readonly SoundStyle KarasawaChargeFailed  = new ($"{KarasawaSound}/KarasawaChargeFailed") {MaxInstances = 2 };
     }
 }

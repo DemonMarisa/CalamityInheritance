@@ -34,6 +34,9 @@ using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.NPCs;
+using CalamityMod.Items.Weapons.Magic;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -125,6 +128,16 @@ namespace CalamityInheritance.CIPlayer
                 double getRatio = getDef * 0.001 / 3 * 4;
                 Player.GetDamage<MeleeDamageClass>() += (float)getRatio;
 
+            }
+            if (Player.ActiveItem().type == ModContent.ItemType<SubsumingVortex>() && Player.altFunctionUse != 2 && BuffSubsumingVortexFireRate > 0)
+            {
+                Player.GetAttackSpeed<MagicDamageClass>() += 0.10f;
+                Player.manaCost -= 0.10f;
+            }
+            if (CryoDrainPlayer)
+            {
+                Player.lifeRegen += CIGlobalNPC.CryoDrainDotDamage / 10;
+                Player.whipRangeMultiplier += 0.2f;
             }
 
             if (BuffPolarisBoost)
@@ -381,20 +394,32 @@ namespace CalamityInheritance.CIPlayer
         }
         private void Nanotechs()
         {
+            CalamityPlayer modPlayer = Player.Calamity();
             if(nanotechold)
             {
-                CalamityPlayer modPlayer = Player.Calamity();
                 Player.AddCooldown(NanotechUI.ID, Content.Items.Accessories.Rogue.NanotechOld.nanotechDMGStack);
                 
                 if (nanoTechStackDurability >= 0 && nanoTechStackDurability < 150)
                 {
                     //储存了攻击的积攒数量。
                     nanoTechStackDurability = RaiderStacks;
+                    //修改了纳米核心的RaiderBuff，现在RaiderBuff只会在达到最大值的时候播报特殊音效。    
 
                     if (modPlayer.cooldowns.TryGetValue(NanotechUI.ID, out var nanoDurability))
                         nanoDurability.timeLeft = nanoTechStackDurability;
                 }
-                
+            }
+            //现在纳米核心应该能正确地禁用1.5倍伤害加成(在没有佩戴饰品的时候)
+            else
+            {
+                if (RaiderStacks > 0)
+                {
+                    RaiderStacks = 0;
+                    nanoTechStackDurability = RaiderStacks;
+                    if (modPlayer.cooldowns.TryGetValue(NanotechUI.ID, out var nanoDurability))
+                        nanoDurability.timeLeft = nanoTechStackDurability;
+                    InitNanotechSound = 0;
+                }
             }
         }
         public void Sponge()

@@ -13,8 +13,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         #region 别名
-        public ref float Acceleration => ref Projectile.ai[0];
-        public ref float FlySpeed => ref Projectile.ai[1];
+        public ref float FlySpeed => ref Projectile.ai[0];
+        public ref float Acceleration => ref Projectile.ai[1];
         public ref float HealAmt => ref Projectile.ai[2];
         public Player Healer => Main.player[Projectile.owner];
         #endregion
@@ -37,19 +37,17 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
             if (!Healer.active || Healer.dead || (Projectile.Center - Healer.Center).Length() > 3000f)
             {
                 Projectile.netUpdate = true;
-                if (Projectile.timeLeft > 2)
-                    Projectile.timeLeft = 2;
+                Projectile.Kill();
                 return;
             }
             //设置回旋镖AI 
-            CIFunction.BoomerangReturningAI(Healer, Projectile, FlySpeed, Acceleration);
+            Healer.HomeInPlayer(Projectile, 20f, FlySpeed, Acceleration);
             float distance = (Projectile.Center - Healer.Center).Length();
             if (Projectile.Hitbox.Intersects(Healer.Hitbox) || distance < 50f)
             {
                 //干掉射弹即可
                 Projectile.netUpdate = true;
-                if (Projectile.timeLeft > 2)
-                    Projectile.timeLeft = 2;
+                Projectile.Kill();
             }
             //设置粒子，与颜色
             for (int i = 0; i < 3; i++)

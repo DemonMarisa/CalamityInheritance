@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             calPlayer.stealthGenMoving += 0.30f;
             calPlayer.rogueStealthMax += 0.30f;
             calPlayer.stealthStrikeHalfCost = true;
+            calPlayer.wearingRogueArmor = true;
             player.GetCritChance<RogueDamageClass>() += 30;
             usPlayer.EMirror = true;
         }

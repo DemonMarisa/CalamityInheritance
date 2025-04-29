@@ -60,32 +60,31 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
-            int boostPercent = (int)(getDmg * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
-                boostPercent.ToString()
+                getDmg.ToString()
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
                 tooltips.Add(new TooltipLine(Mod, "Buff", t4));
-        }
+        } 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+            damage *= LegendaryDamage() / 48;
         }
         private float LegendaryDamage()
         {
-            float newDamage = 1f;
-            newDamage += DownedBossSystem.downedRavager ? 0.2f : 0f;
-            newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedDukeFishron.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedCultist.IsMet() ? 0.4f : 0f;
-            newDamage += Condition.DownedMoonLord.IsMet() ? 0.4f : 0f;
-            newDamage += DownedBossSystem.downedGuardians ? 0.4f : 0f;
-            newDamage += DownedBossSystem.downedProvidence  ? 0.6f : 0f;
-            newDamage += DownedBossSystem.downedPolterghast ? 0.6f : 0f;
-            newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedYharon ? 1.0f : 0f;
-            newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
+            float newDamage = 48;
+            newDamage += DownedBossSystem.downedRavager ? 6 : 0;           //54
+            newDamage += Condition.DownedEmpressOfLight.IsMet() ? 6 : 0;   //60
+            newDamage += Condition.DownedDukeFishron.IsMet() ? 6 : 0;      //66
+            newDamage += Condition.DownedCultist.IsMet() ? 6 : 0;          //72
+            newDamage += Condition.DownedMoonLord.IsMet() ? 10 : 0;         //82
+            newDamage += DownedBossSystem.downedGuardians ? 10 : 0;         //92
+            newDamage += DownedBossSystem.downedProvidence  ? 12 : 0;       //104
+            newDamage += DownedBossSystem.downedPolterghast ? 12 : 0;       //116
+            newDamage += DownedBossSystem.downedDoG ? 12 : 0;               //128
+            newDamage += DownedBossSystem.downedYharon ? 12 : 0f;           //140
+            newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 30 : 0;  //170
             return newDamage;
         }
 

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -39,20 +40,20 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingReducedNanoFlare = false;
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
+        public bool PingPointerT3 = false;
         public int StoreEU = -1;
         // 1帧影响
         public bool oneFrameEffect = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
-            CalamityInheritancePlayer modPlayer = player.CIMod();
-            CalamityPlayer modPlayer1 = player.Calamity();
-
+            CalamityInheritancePlayer usPlayer = player.CIMod();
+            CalamityPlayer calPlayer = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
                 if (projectile.DamageType == DamageClass.Ranged
-                    && modPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
+                    && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);
                 //回调原版所有悠悠球的无敌帧
@@ -82,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles
             
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
-                    if (modPlayer.ReaverRogueExProj)
+                    if (usPlayer.ReaverRogueExProj)
                     {
                         if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate() && projectile.owner == Main.myPlayer)
                         {
@@ -93,16 +94,18 @@ namespace CalamityInheritance.Content.Projectiles
                         }
                     }
                     //给了孔雀翎一个特判
-                    if (modPlayer.nanotechold)
+                    if (usPlayer.nanotechold)
                     {
                         int actualTimer = projectile.type == ModContent.ProjectileType<PBGLegendaryBeam>() ? 90 : 30;
+                        Vector2 setVel = projectile.velocity.SafeNormalize(Vector2.Zero);
                         if (Main.player[projectile.owner].miscCounter % actualTimer == 0 && projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, setVel * 2.4f, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
                                 //确保这个东西指定为全局伤害
                                 Main.projectile[p].DamageType = DamageClass.Generic;
+                                Main.projectile[p].alpha = 255;
                             }
                         }
                     }
@@ -111,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles
 
             if(!oneFrameEffect)
             {
-                if (modPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
+                if (usPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
                 {
                     if (CalamityInheritanceLists.ProjNoCIdeadshotBrooch.TrueForAll(x => projectile.type != x))
                         projectile.extraUpdates += 1;
@@ -128,12 +131,12 @@ namespace CalamityInheritance.Content.Projectiles
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];
-            CalamityInheritancePlayer modPlayer = player.CIMod();
+            CalamityInheritancePlayer usPlayer = player.CIMod();
 
             if (projectile.CountsAsClass<RogueDamageClass>() && projectile.Calamity().stealthStrike)
             {
                 int gloveArmorPenAmt = 20;
-                if (modPlayer.nanotechold)
+                if (usPlayer.nanotechold)
                     projectile.ArmorPenetration += gloveArmorPenAmt;
             }
 
@@ -171,7 +174,7 @@ namespace CalamityInheritance.Content.Projectiles
                 }
             };
 
-            LevelBoost(projectile, modPlayer);
+            LevelBoost(projectile, usPlayer);
         }
         #region 元素箭袋
         //哈哈，已经变成史山了

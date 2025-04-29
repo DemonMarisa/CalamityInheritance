@@ -10,6 +10,10 @@ namespace CalamityInheritance.Buffs.Legendary
     */
     public class CryoDrain : GenericBuffDefualt 
     {
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.CIMod().CryoDrainPlayer = true;
+        }
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.CIMod().CryoDrainDoT = true;

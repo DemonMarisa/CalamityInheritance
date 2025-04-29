@@ -36,19 +36,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
-            if (Projectile.soundDelay == 0)
-            {
-                Projectile.soundDelay = 20 + Main.rand.Next(40);
-                if (Main.rand.NextBool(5))
-                {
-                    SoundEngine.PlaySound(SoundID.Item9, Projectile.position);
-                }
-            }
             Projectile.rotation += (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y)) * 0.01f * (float)Projectile.direction;
             if (Main.rand.NextBool(8))
             {
-                Vector2 value3 = Vector2.UnitX.RotatedByRandom(1.5707963705062866).RotatedBy((double)Projectile.velocity.ToRotation(), default);
+                Vector2 value3 = Vector2.UnitX.RotatedByRandom(MathHelper.PiOver2).RotatedBy((double)Projectile.velocity.ToRotation(), default);
                 int num59 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.2f);
                 Main.dust[num59].noGravity = true;
                 Main.dust[num59].velocity = value3 * 0.66f;
@@ -74,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             if (Projectile.timeLeft > 540)
             {
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.98f;
             }
 
             if (Projectile.timeLeft < 540)
@@ -112,14 +103,15 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 288;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             Projectile.maxPenetrate = -1;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.Damage();
-            SoundEngine.PlaySound(SoundID.Zombie103, Projectile.Center);
+            //注释掉了，挺吵的
+            // SoundEngine.PlaySound(SoundID.Zombie103, Projectile.Center);
             for (int num193 = 0; num193 < 3; num193++)
             {
                 int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0f, 0f, 100, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.5f);

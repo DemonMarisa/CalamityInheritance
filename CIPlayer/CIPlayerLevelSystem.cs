@@ -152,7 +152,8 @@ namespace CalamityInheritance.CIPlayer
             var modPlayer = Player.Calamity();
             #region 战士增幅
             // 30伤 15爆 30攻速 防击退
-            Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.02f;
+            //30% -> 15%
+            Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.01f;
             Player.GetCritChance<MeleeDamageClass>() += meleeLevel;
             Player.GetAttackSpeed<MeleeDamageClass>() += meleeLevel * 0.02f;
             if (meleeLevel > 14)
@@ -160,23 +161,21 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 射手
             // 30伤 30爆 15攻速 30穿 常态狙击镜
-            Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.02f;
+            // 30 -> 15
+            Player.GetDamage<RangedDamageClass>() += rangeLevel * 0.01f;
             Player.GetCritChance<RangedDamageClass>() += rangeLevel * 2;
             // 我草，谁家好人给远程攻速
             // 只有ut大于3才会给攻速
             if (Player.HeldItem.useTime > 3 && Player.HeldItem.DamageType == DamageClass.Ranged)
                 Player.GetAttackSpeed<RangedDamageClass>() += rangeLevel * 0.01f;
-            //移除狙击镜效果
-            //不是，哥们，这个狙击镜他会影响某些右键
-            //比如星火右键喷不出来
-            
             if (rangeLevel > 14 && canFreeScope)
                 Player.scope = true;
             
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
-            Player.GetDamage<MagicDamageClass>() += magicLevel * 0.03f;
+            //45% -> 15%，。
+            Player.GetDamage<MagicDamageClass>() += magicLevel * 0.01f;
             Player.GetCritChance<MagicDamageClass>() += magicLevel;
             Player.statManaMax2 += magicLevel * 10;
             Player.manaCost *= 1 - magicLevel * 0.01f;
@@ -188,20 +187,22 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 召唤
             // 15%外围增伤 2召唤栏 15%鞭子范围与攻速速度加成
+            //改成20%加算了，召唤师数值爆炸了bro
             Player.GetDamage<SummonDamageClass>() *= 1 + summonLevel * 0.01f;
+            Player.GetDamage<SummonDamageClass>() += summonLevel / 15f * 0.02f;
             Player.whipRangeMultiplier += summonLevel * 0.01f;
             Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += summonLevel * 0.01f;
             if (summonLevel > 14)
                 Player.maxMinions += 2;
             #endregion
             #region 盗贼
-            // 30%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
-            Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.02f;
+            // 15%伤 15%爆 30最大潜伏值 满级后无需穿戴盗贼套装也可以进行潜伏攻击
+            //无需盗贼套的潜伏攻击转移给了日蚀魔镜. 原15级效果重置(在OnHitNPC进行重置)
+            Player.GetDamage<RogueDamageClass>() += rogueLevel * 0.01f;
             Player.GetCritChance<RogueDamageClass>() += rogueLevel;
             // 这一段应该写在reseteffects里
             // modPlayer.rogueStealthMax += rogueLevel * 0.02f;
-            if (rogueLevel > 14)
-                modPlayer.wearingRogueArmor = true;
+
             #endregion
         }
         public void GiveExpMelee(NPC target, bool isTrueMelee, bool isMelee, bool isCrit)

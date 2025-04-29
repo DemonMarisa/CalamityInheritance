@@ -1,11 +1,13 @@
 using System;
 using System.Numerics;
+using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
@@ -33,8 +35,9 @@ namespace CalamityInheritance.CIPlayer
             var calPlayer = Player.Calamity(); 
             var usPlayer = Player.CIMod();
             //真近战或者近战的简化判定
-            bool ifTrueMelee = proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+            bool ifTrueMelee = proj.TrueMeleeClass();
             bool ifMelee = proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>() || ifTrueMelee;
+
             if (!ifMelee)
                 return;
             // 玩家手中武器伤害
@@ -42,28 +45,28 @@ namespace CalamityInheritance.CIPlayer
             int weaponDamage = hit.Damage;
 
             //弑神飞镖
-            if (usPlayer.GodSlayerMelee && usPlayer.fireCD <= 0)
+            if (GodSlayerMelee && fireCD <= 0)
             {
                 int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
-                usPlayer.fireCD = 60; 
+                fireCD = 60; 
             }
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = proj.GetSource_FromThis();
-            if (usPlayer.ReaverMeleeBlast)
+            if (ReaverMeleeBlast)
             {
                 int BlastDamage = (int)(proj.damage * 0.4);
                 if (BlastDamage > 30)
                 {
                     BlastDamage = 30;
                 }
-                if (usPlayer.ReaverBlastCooldown <= 0)
+                if (ReaverBlastCooldown <= 0)
                 {
                     SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, proj.Center);
                     Projectile.NewProjectile(meleeReaverSrc, proj.Center, Vector2.Zero, ModContent.ProjectileType<ReaverBlast>(),
                                             BlastDamage, 0.15f, Player.whoAmI);
-                    usPlayer.ReaverBlastCooldown = 10;
+                    ReaverBlastCooldown = 10;
                 }
             }
             //这个应该是泰坦药水的真近战标记
@@ -147,26 +150,25 @@ namespace CalamityInheritance.CIPlayer
         }
         public void SummonOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            Player player = Main.player[proj.owner];
-            var calPlayer = player.Calamity(); 
-            var usPlayer = player.CIMod();
+            bool whip = proj.CountsAsClass<SummonMeleeSpeedDamageClass>();
+            if (!proj.CountsAsClass<SummonDamageClass>() || !whip)
+                return;
             //核子
-            if (usPlayer.summonProjCooldown <= 0)
+            if (summonProjCooldown <= 0)
             {
-                if (usPlayer.NucleogenesisLegacy)
+                if (NucleogenesisLegacy)
                 {
                     Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
-                    usPlayer.summonProjCooldown = 25;
+                    summonProjCooldown = 25;
                 }
             }
 
-            if (usPlayer.GodSlayerSummonSet && proj.DamageType != DamageClass.Generic)
+            if (GodSlayerSummonSet && proj.CountsAsClass<SummonDamageClass>())
             {
-                if (usPlayer.fireCD > 0)
+                if (fireCD > 0)
                     return;
 
-                usPlayer.fireCD = 3;
-                player = Main.player[proj.owner];
+                fireCD = 3;
                 int weaponDamage = hit.Damage;
                 int finalDamage = 400 + weaponDamage / 4;
 
@@ -174,7 +176,29 @@ namespace CalamityInheritance.CIPlayer
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(6f, 8f);
-                Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage, proj.knockBack);
+
+                Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage, 0);
+            }
+            //重置寒冰神性T2：让鞭子与寒冰神性交互
+            //与鞭子进行交互的寒冰神性射弹在击中的时候，每个射弹会治疗玩家1血，并对敌怪造成额10点真实伤。
+            //这个真实伤害会受到玩家的召唤伤害加成影响
+            if (ColdDivityTier2 && IsColdDivityActiving && whip)
+            {
+                //寻找玩家身上拥有的所有射弹数
+                foreach (Projectile pointerProj in Main.ActiveProjectiles)
+                {
+                    if (pointerProj.type != ModContent.ProjectileType<CryogenPtr>())
+                        continue;
+                    if (pointerProj.owner != Player.whoAmI)
+                        continue;
+                    if (!(pointerProj.ModProjectile as CryogenPtr).Idle)
+                        continue;
+                    int pointer = pointerProj.whoAmI;
+                    //查看射弹是否处于idleAI，如果是，直接启用其发射功能
+                    (pointerProj.ModProjectile as CryogenPtr).AttackTimer = 0;
+                    Main.projectile[pointer].CalamityInheritance().PingPointerT3 = true;
+                    Main.projectile[pointer].netUpdate = true;
+                }
             }
         }
         public void RogueOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone, bool isStealth)
@@ -231,12 +255,18 @@ namespace CalamityInheritance.CIPlayer
                         Vector2 source = new Vector2(target.Center.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
                         Vector2 velocity = (target.Center- source) / 40f;
 
-                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlare>(), (int)(proj.damage * 0.15), 3f, proj.owner);
+                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.15), 3f, proj.owner);
                     }
                 }
                 //固定生成一个治疗量为10的射弹。
                 //这个会有一定的CD (一秒半)
-                CIFunction.SpawnHealProj(Player.GetSource_FromThis(), target.Center, Player, 10, 20f, 1.6f, 120);
+                CIFunction.SpawnHealProj(Player.GetSource_FromThis(), proj.Center, Player, 10, 20f, 1.6f, 120);
+            }
+            //15级时，每一发潜伏攻击都会以1/10恢复25%潜伏值
+            if (rogueLevel > 14 && isStealth)
+            {
+                if (Main.rand.NextBool(10) && proj.Calamity().stealthStrikeHitCount < 2)
+                    Player.Calamity().rogueStealth += Player.Calamity().rogueStealthMax / 4;
             }
         }
     

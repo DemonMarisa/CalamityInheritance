@@ -2,12 +2,9 @@ using System;
 using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles.Rogue;
-using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
@@ -86,7 +83,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Vector2 drawPosition = baseDrawPosition + (MathHelper.TwoPi * i / 18f).ToRotationVector2() * (1f - Projectile.Opacity) * 16f;
                 Main.EntitySpriteDraw(texture, drawPosition, null, afterimageLightColor, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
             }
-
             //绘制实际意义的残影，这里的残影密度非常高，因此会显得有一种动态模糊的效果。
             for (int i = 0; i < 8; i++)
             {

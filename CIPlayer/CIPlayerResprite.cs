@@ -1,12 +1,8 @@
-using System;
-using System.Data.SqlTypes;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Wings;
-using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Tools;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
@@ -33,8 +29,6 @@ using CalamityMod.Projectiles.Melee.Spears;
 using CalamityMod.Projectiles.Pets;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using ReLogic.Text;
-using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
@@ -166,22 +160,6 @@ namespace CalamityInheritance.CIPlayer
                     IR<ElementalEruptionLegacy>(CIWeaponsResprite.ElemFlamethrowerAlt);
                 }
             }
-            #endregion
-            #region 泰拉系列 目前是占位符没有作用
-            
-            // if (GI<BotanicPiercer>() != null)
-            // {
-            //     if (!R.AllTerra)
-            //     {
-            //         GI<BotanicPiercer>(CIWeaponsResprite.TerraLanceCal);
-            //         PR<BotanicPiercerProjectile>(CIWeaponsResprite.TerraLanceAlt);
-            //     }
-            //     if (R.AllTerra)
-            //     {
-            //         GI<BotanicPiercer>(CIWeaponsResprite.TerraLanceAlt);
-            //         PR<BotanicPiercerProjectile>(CIWeaponsResprite.TerraLanceAltProj);
-            //     }
-            // }
             #endregion
             //星流武器
             if (GI<SubsumingVortex>() != null ||

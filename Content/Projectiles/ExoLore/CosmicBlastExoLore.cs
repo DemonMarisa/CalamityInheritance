@@ -37,7 +37,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void AI()
         {
-            Player player = Main.player[Projectile.owner];
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 4)
@@ -51,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             if (Main.rand.NextBool(8))
             {
-                Vector2 value3 = Vector2.UnitX.RotatedByRandom(1.5707963705062866).RotatedBy((double)Projectile.velocity.ToRotation(), default);
+                Vector2 value3 = Vector2.UnitX.RotatedByRandom(MathHelper.PiOver2).RotatedBy((double)Projectile.velocity.ToRotation(), default);
                 int num59 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.2f);
                 Main.dust[num59].noGravity = true;
                 Main.dust[num59].velocity = value3 * 0.66f;
@@ -60,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (Projectile.timeLeft > 260)
             {
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.97f;
             }
 
             if (Projectile.timeLeft < 260)
@@ -110,13 +109,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.Damage();
-            SoundEngine.PlaySound(SoundID.Zombie103, Projectile.Center);
-            for (int num193 = 0; num193 < 3; num193++)
+            // SoundEngine.PlaySound(SoundID.Zombie103, Projectile.Center);
+            for (int num193 = 0; num193 < 2; num193++)
             {
                 int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0f, 0f, 100, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.5f);
                 Main.dust[dust].noGravity = true;
             }
-            for (int num194 = 0; num194 < 30; num194++)
+            for (int num194 = 0; num194 < 15; num194++)
             {
                 int num195 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.RainbowTorch, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 2.5f);
                 Main.dust[num195].noGravity = true;

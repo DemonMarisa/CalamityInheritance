@@ -66,6 +66,7 @@ Mods: {
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+			Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 		}
 
 		Content/Projectiles/Summon: {

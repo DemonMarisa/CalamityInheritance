@@ -38,6 +38,7 @@ namespace CalamityInheritance.NPCs
 
         public static int rageOfChairDoTDamage = 30000;
         public bool CryoDrainDoT = false;
+        public const int CryoDrainDotDamage = 100;
         internal object newAI;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -54,6 +55,8 @@ namespace CalamityInheritance.NPCs
                 if(npc.HasBuff(BuffID.Oiled))
                 npc.lifeRegen -= rageOfChairDoTDamage+20000;
                 npc.lifeRegen -= rageOfChairDoTDamage;
+                if (damage < rageOfChairDoTDamage)
+                    damage = 114514;
             }
             if(abyssalFlamesNPC)
             {
@@ -64,6 +67,11 @@ namespace CalamityInheritance.NPCs
             {
                 // 深渊之火
                 ApplyDPSDebuff(6666, 6666 / 5, ref npc.lifeRegen);
+            }
+            //不要试图修改这个dot伤害太多，因为这个会直接用于玩家生命恢复的计算。
+            if (CryoDrainDoT)
+            {
+                npc.lifeRegen -= CryoDrainDotDamage; 
             }
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)

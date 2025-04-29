@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Reflection.PortableExecutable;
+using System.Threading.Tasks;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using Terraria;
@@ -106,16 +108,26 @@ namespace CalamityInheritance.Utilities
         ///<param name="acceleration">加速度，一般填1-3左右.</param>
         ///<param name="homingVelocity">跟踪速度</param>
         ///</summary>
-        public static void HomeInPlayer(Player player, Projectile proj, float inertia, float homingVelocity, float? acceleration)
+        public static void HomeInPlayer(this Player player, Projectile proj, float inertia, float homingVelocity, float? acceleration, bool needALittleBitFarAwayFromPlayer = false, float awayDist = 0f)
         {
             // 计算制导向量
             Vector2 homeDirection = (player.Center - proj.Center).SafeNormalize(Vector2.UnitY);
             Vector2 newVelocity = (proj.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
 
             proj.velocity = newVelocity;
-
+            
             if(acceleration.HasValue)
                 proj.velocity *= 1 + acceleration.Value / 100;
+            if (!needALittleBitFarAwayFromPlayer)
+                return;
+                
+            float xDist = player.Center.X - proj.Center.X;
+            float yDist = player.Center.Y - proj.Center.Y;
+            float dist = TryGetVectorMud(xDist, yDist);
+            if (dist < awayDist && proj.velocity.Length() > 5f)
+            {
+                proj.velocity *= 0.90f;
+            }
         }
         ///<summary>
         ///用于回旋镖的返程AI.
@@ -126,7 +138,7 @@ namespace CalamityInheritance.Utilities
         ///<param name="acceleration">返程加速度.</param>
         ///<param name="minKillRangeBoomerangToPlr">使回旋镖执行kill()之前回旋镖与玩家之间的最小距离.默认3000f</param>
         ///</summary>
-        public static void BoomerangReturningAI(Player player, Projectile boomerang, float rSpeed, float acceleration, float? minKillRangeBoomerangToPlr = 3000f)
+        public static void BoomerangReturningAI(Player player, Projectile boomerang, float rSpeed, float acceleration, float minKillRangeBoomerangToPlr = 3000f)
         {
             //返厂的回旋镖应当取消不可穿墙
             boomerang.tileCollide = false;
@@ -135,18 +147,11 @@ namespace CalamityInheritance.Utilities
             float yDist = playerCenter.Y - boomerang.Center.Y;
             float dist = TryGetVectorMud(xDist, yDist);
 
-            //超出这个距离，直接干掉回旋镖而非返程
-            if(minKillRangeBoomerangToPlr.HasValue)
-            {
-                if(dist>minKillRangeBoomerangToPlr.Value)
-                boomerang.Kill();
-            }
-            else
-            {
-                if(dist > 3000f)
-                boomerang.Kill();
-            }
-
+            //超出这个距离直接干掉回旋镖而非返程
+            
+            if(dist > minKillRangeBoomerangToPlr)
+            boomerang.Kill();
+        
             dist = rSpeed / dist;
             xDist *= dist;
             yDist *= dist;
@@ -253,7 +258,7 @@ namespace CalamityInheritance.Utilities
                 }
                 //除非你当前距离比射弹速度还少, 我们才会重新设定速度
                 if (forceSpeed.HasValue && curDist < speed)
-                    velo = proj.velocity + home * forceSpeed.Value;
+                    velo = proj.velocity.SafeNormalize(Vector2.Zero) * home * forceSpeed.Value;
                 //设定速度
                 proj.velocity = velo;
             }
@@ -405,33 +410,6 @@ namespace CalamityInheritance.Utilities
             return acceptableTarget;      
         }
         /// <summary>
-        /// 懒人封装方法，这个会用于实现将射弹临时设置为爆炸射弹的效果，具体参考孔雀翎
-        /// </summary>
-        /// <param name="proj">你的射弹</param>
-        /// <param name="explosionX">你想要的爆炸宽度</param>
-        /// <param name="explosionY">你想要的爆炸高度</param>
-        /// <param name="hitCD">无敌帧, 这里默认是启用局部无敌帧的</param>
-        /// <param name="isUseLocalHit">启用局部无敌帧，默认开启</param>
-        /// <param name="isUseIDHit">启用静态无敌帧，默认关闭</param>
-        public static void GenerialExplosion(this Projectile proj, int explosionX, int explosionY, int hitCD, bool isUseLocalHit = true, bool isUseIDHit = false)
-        {
-            proj.position = proj.Center;
-            proj.width = explosionX;
-            proj.height = explosionY;
-            proj.position.X = proj.position.X - proj.width / 2;
-            proj.position.Y = proj.position.Y - proj.height / 2;
-            if (isUseLocalHit)
-            {
-                proj.usesLocalNPCImmunity = true;
-                proj.localNPCHitCooldown = hitCD;
-            }
-            if (isUseIDHit && !isUseLocalHit)
-            {
-                proj.usesIDStaticNPCImmunity = true;
-                proj.idStaticNPCHitCooldown = hitCD;
-            }
-        }
-        /// <summary>
         /// 一个用于手动同步射弹AI的写入句柄。目前主要同步timeLeft, alpha与scale
         /// </summary>
         /// <param name="projectile">射弹</param>
@@ -449,7 +427,7 @@ namespace CalamityInheritance.Utilities
             projectile.scale = reader.ReadSingle();
         }
         /// <summary>
-        /// 生成一个治疗射弹
+        /// 生成一个全局的治疗射弹
         /// </summary>
         /// <param name="src">治疗源</param>
         /// <param name="position">位置</param>
@@ -458,19 +436,15 @@ namespace CalamityInheritance.Utilities
         /// <param name="acceleration">治疗射弹的加速度</param>
         /// <param name="flyingSpeed">治疗射弹的飞行速度</param>
         /// <param name="CD">治疗的CD，这个会影响的是player类里的GlobalHealProjCD</param>
-        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float flyingSpeed = 20f, float acceleration = 2.4f, int CD = 60, int? ProjID = null)
+        public static void SpawnHealProj(IEntitySource src, Vector2 position, Player player, int healAmt, float flyingSpeed = 20f, float acceleration = 2.4f, int CD = 60)
         {
             if (player.CIMod().GlobalHealProjCD > 0)
                 return;
 
-            float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
+            float randomAngleOffset = (float)Main.rand.NextFloat(MathHelper.TwoPi);
             Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
             float randomSpeed = Main.rand.NextFloat(12f, 16f);
-
-            if (ProjID.HasValue)
-                Projectile.NewProjectile(src, position, direction * randomSpeed, ProjID.Value, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
-            else
-                Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+            int t = Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             player.CIMod().GlobalHealProjCD = CD;
         }
         /// <summary>
@@ -495,5 +469,26 @@ namespace CalamityInheritance.Utilities
             Projectile.NewProjectile(src, position, direction * randomSpeed, ProjID, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             player.CIMod().GlobalGodSlayerHealProjCD = CD;
         }
+        /// <summary>
+        /// 将你输入的任意物块转化为一个实际的距离
+        /// 适合用于搜索范围等场景。方便可读
+        /// </summary>
+        /// <param name="tileCounts">你想要的物块数</param>
+        /// <returns>返回一个浮点数，这个浮点数为内部代码中物块的距离(tileCounts * 16)</returns>
+        public static float SetDistance(float tileCounts) => tileCounts * 16;
+        /// <summary>
+        /// bro，这真的很多字
+        /// 判定是否为近战职业伤害（射弹）。已包括真近战
+        /// </summary>
+        /// <param name="proj"></param>
+        /// <returns></returns>
+        public static bool MeleeClass(this Projectile proj) => proj.CountsAsClass<MeleeDamageClass>() || proj.CountsAsClass<MeleeNoSpeedDamageClass>() || proj.TrueMeleeClass();
+        /// <summary>
+        /// bro，这真的很多字
+        /// 判定是否为真近战职业伤害(射弹)
+        /// </summary>
+        /// <param name="proj"></param>
+        /// <returns></returns>
+        public static bool TrueMeleeClass(this Projectile proj) => proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
     }
 }

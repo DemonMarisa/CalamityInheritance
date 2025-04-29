@@ -105,9 +105,7 @@ namespace CalamityInheritance.CIPlayer
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
-            if (IsColdDivityActiving && ColdDivityTier3)
-                ColdDivityTrueDamage(target, hit, projectile);
-
+            
             if (heldingItem.type == ModContent.ItemType<YharimsCrystalLegendary>())
             {
                 YharimsCrystalLegendaryTask(target, hit);
@@ -146,21 +144,7 @@ namespace CalamityInheritance.CIPlayer
                 
             }
         }
-        //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的一半，这是一个防后效果
-        //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害
-        public static void ColdDivityTrueDamage(NPC target, NPC.HitInfo hit, Projectile projectile)
-        {
-            int proj = ModContent.ProjectileType<CryogenPtr>();
-            if (target.life > 5 && projectile.type == proj)
-            {
-                if (projectile.damage < target.life)
-                {
-                    hit.Damage += projectile.damage / 2;
-                    if (target.HasBuff<CryoDrain>())
-                        hit.Damage += projectile.damage / 2;
-                }
-            }
-        }
+        
         #endregion
         #region 传奇物品伤害任务
         //庇护之刃T2任务：手持庇护之刃承受超过2000点伤害

@@ -52,6 +52,7 @@ using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
 using log4net.Core;
 using CalamityMod.NPCs;
+using System.IO;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -255,6 +256,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
         }
         #endregion
+        
         #region SD
         public override void SetDefaults()
         {
@@ -316,6 +318,27 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             ]);
         }
         #endregion
+        //多人同步的二三事
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            //自定义的数组应当进行同步
+            for (int bossAISlot = 6 ; bossAISlot <= 8; bossAISlot++)
+                writer.Write(NPC.CIMod().BossNewAI[bossAISlot]);
+            for (int localAISlot = 1 ; localAISlot <= 2; localAISlot++)
+                writer.Write(NPC.localAI[localAISlot]);
+            writer.Write(NPC.alpha);
+            //bool
+            writer.Write(spawnArena);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            for (int bossAISlot = 6 ; bossAISlot <= 8; bossAISlot++)
+                NPC.CIMod().BossNewAI[bossAISlot] = reader.ReadSingle();
+            for (int localAISlot = 1 ; localAISlot <= 2; localAISlot++)
+                NPC.localAI[localAISlot] = reader.ReadSingle();
+            NPC.alpha = reader.ReadInt32();
+            spawnArena = reader.ReadBoolean();
+        }
         public override void AI()
         {
             if (NPC.rotation < 0f)
@@ -331,21 +354,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.damage = 2000;
                 initialized = true;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>()))
-                isWormAlive = true;
-            else
-                isWormAlive = false;
-
-            if (NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>()))
-                isSeekerAlive = true;
-            else
-                isSeekerAlive = false;
-
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>()))
-                isBrotherAlive = true;
-            else
-                isBrotherAlive = false;
-
+            isWormAlive = NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>());
+            isSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>());
+            isBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>());
             if (Enraged)
                 vectorMultiplier += 2f;
             else

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer1.nanotechold = true;
-            modPlayer.raiderTalisman = true;
+            //removed原灾radierTalisman，因为我已经给nanotechold内置了
             modPlayer.electricianGlove = true;
             modPlayer.filthyGlove = true;
             modPlayer.bloodyGlove = true;

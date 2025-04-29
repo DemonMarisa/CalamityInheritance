@@ -11,6 +11,7 @@ using CalamityMod.Events;
 using CalamityMod.NPCs;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
+using CalamityMod.Projectiles.Summon;
 using CalamityMod.UI;
 using CalamityMod.World;
 using Microsoft.CodeAnalysis;
@@ -18,6 +19,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Pipelines;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -35,6 +38,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
     public class YharonLegacy : ModNPC
     {
         #region 杂项初始化
+        //全局传递的别名
+        //1f -> 已生成, 0f -> 未生成
+        //获取这个值是否==1f，如果是，set这个值为1f，否则set为0f
+        
         #region 攻击枚举
         public enum YharonAttacksType
         {
@@ -220,6 +227,17 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region AI
+        //调用了公用的boss栏位，手动发送AI
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(NPC.CIMod().BossNewAI[0]);
+            writer.Write(NPC.CIMod().BossNewAI[1]);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
+        }
         public override void AI()
         {
             // 生命百分比
@@ -249,6 +267,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             ref float currentPhase = ref NPC.ai[2];
             ref float circleCount = ref NPC.ai[3];
             ref float frameType = ref NPC.localAI[1];
+            //0f -> 无 1f -> 有
+            ref float arenaSpawn = ref NPC.CIMod().BossNewAI[0];
+            ref float rageActive = ref NPC.CIMod().BossNewAI[1];
             #endregion
             Player target = Main.player[NPC.target];
 
@@ -363,8 +384,52 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.chaseable = true;
             }
 
-            // Main.NewText($"attackTimer : {attackTimer}");
+            //设置战斗场地，并判断rage条件
+            bool fuckPlayerOutOfArena = SpawnArenaAndCheckRage(NPC, target, ref arenaSpawn, ref rageActive);
+            NPC.Calamity().CurrentlyEnraged = fuckPlayerOutOfArena;
+
+            if (fuckPlayerOutOfArena)
+            {
+                NPC.damage = NPC.defDamage * 114;
+                NPC.dontTakeDamage = true;
+                NPC.Calamity().canBreakPlayerDefense = true;
+            }
         }
+        #region 场地
+        public static bool SpawnArenaAndCheckRage(NPC Yharon, Player target, ref float SpawnArena, ref float RageYharon)
+        {
+            //生成场地，我们直接用的LocalAI
+            if (SpawnArena == 0f)
+            {
+                //取为真
+                SpawnArena = 1f;
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    //场地大小应该是……多少？ 525？
+                    int width = ConvertTileWidthToInt(525);
+                    int height = ConvertTileWidthToInt(800);
+                    Yharon.CIMod().Arena.X = (int)(target.Center.X - width * 0.5f);
+                    Yharon.CIMod().Arena.Y = (int)(target.Center.Y - height);
+                    Yharon.CIMod().Arena.Width = width;
+                    Yharon.CIMod().Arena.Height = height * 2;
+                    //生成边界龙卷风。
+                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<SkyFlareRevenge>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<SkyFlareRevenge>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                }
+                //手动发送数据包。
+                Yharon.netUpdate = true;
+            }
+            else
+            {
+                var fuckPlayerOutOfArena = Yharon.CIMod().Arena;
+                RageYharon = (!target.Hitbox.Intersects(fuckPlayerOutOfArena)).ToInt();
+                if (RageYharon == 1f)
+                    return true;
+            }
+            return false;
+        }
+        #endregion
+        public static int ConvertTileWidthToInt(int num) => num * 16;
         #endregion
         #region 技能
         #region 看向目标
@@ -443,6 +508,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (Main.netMode == NetmodeID.Server)
                 NPC.netUpdate = true;
         }
+
         #endregion
         #region 冲刺
         public bool hasCharge = false;

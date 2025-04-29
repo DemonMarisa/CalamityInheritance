@@ -21,6 +21,7 @@ using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
 using Hjson;
+using CalamityInheritance.Sounds.Custom;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -436,9 +437,14 @@ namespace CalamityInheritance.CIPlayer
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (nanotechold && RaiderStacks < 150)
+            if (nanotechold && RaiderStacks < 150 && hit.DamageType == ModContent.GetInstance<RogueDamageClass>())
             {
                 RaiderStacks++;
+                if (InitNanotechSound <= 0)
+                {
+                    SoundEngine.PlaySound(CISoundMenu.Slasher, Player.Center);
+                    InitNanotechSound = 1;
+                }
             }
 
             if (LoreProvidence || PanelsLoreProvidence)

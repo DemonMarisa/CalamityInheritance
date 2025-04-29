@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Numerics;
-using Microsoft.Build.Construction;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -47,16 +43,6 @@ namespace CalamityInheritance.Utilities
         }
 
         public static int SecondsToFrames(int seconds) => seconds * 60;
-        public static int SecondsToFrames(float seconds) => (int)(seconds * 60);
-        /// <summary>
-        /// 输入一个>0的整形数, 返回对应的刻度, 一般而言60刻 = 1秒, 推荐使用时尽可能不要取0的值
-        /// </summary>
-        /// <param name="Sec">需要转化的秒数</param>
-        /// <returns>返回一个浮点数，记录刻度</returns>
-        public static float SecConvertTicks(int Sec)
-        {
-            return (Sec * 60);
-        }
         /// <summary>
         /// 获取npc的“正中心”位置
         /// </summary>

@@ -200,7 +200,7 @@ CyrogenLegendaryBuff: {
 
 CryoDrain: {
 	DisplayName: 低温虹吸
-	Description: 身体正在急速失温, 能量似乎被吸走了
+	Description: 寒冰壁垒似乎正在掠夺受害者的体温...
 }
 
 VolcanoBuff: {

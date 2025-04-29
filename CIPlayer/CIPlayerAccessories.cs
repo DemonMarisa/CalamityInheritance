@@ -31,6 +31,8 @@ namespace CalamityInheritance.CIPlayer
         public bool DeadshotBroochCI = false; //独立出来的神射手徽章加成
         public int statisTimerOld = 0;//虚空饰带的计数器
         public bool nanotechold = false;//发射纳米技术的额外弹幕
+        //音效。
+        public int InitNanotechSound = 0;
         public bool TheAbsorberOld = false;//阴阳石受击回血
         public bool FuckYouBees = false;//降低蜜蜂对玩家的伤害
         public bool AmbrosialAmpouleOld = false;//百草瓶回血
@@ -149,6 +151,7 @@ namespace CalamityInheritance.CIPlayer
             SMarnite = false;
             SForest = false;
             SForestBuffTimer = 0;
+            InitNanotechSound = 0;
             TheAbsorberOld = false;//阴阳石受击回血
             FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血

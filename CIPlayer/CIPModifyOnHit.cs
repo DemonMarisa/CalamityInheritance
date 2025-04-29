@@ -1,6 +1,8 @@
 using System;
+using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -65,7 +67,7 @@ namespace CalamityInheritance.CIPlayer
             };
             if (SilvaMeleeSetLegacy)
             {
-                if (Main.rand.NextBool(4) && (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
+                if (Main.rand.NextBool(4) && (proj.MeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
                 {
                     modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
                     {
@@ -76,18 +78,22 @@ namespace CalamityInheritance.CIPlayer
 
             if (CIConfig.Instance.silvastun == true)
             {
-                if (proj.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                if (proj.MeleeClass() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
                 {
-                    //Main.NewText($"触发眩晕TMp", 255, 255, 255);
                     target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
                     SilvaStunDebuffCooldown = 1800;
                 }
-                if (proj.DamageType == DamageClass.Melee && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
-                {
-                    //Main.NewText($"触发眩晕mp", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    SilvaStunDebuffCooldown = 1800;
-                }
+            }
+            //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的1/8，这是一个防后效果
+            //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害1/4
+            if (IsColdDivityActiving && ColdDivityTier3 && proj.type == ModContent.ProjectileType<CryogenPtr>())
+            {
+                int dmg = proj.damage / 9;
+                if (target.HasBuff(ModContent.BuffType<CryoDrain>()))
+                    dmg += proj.damage / 9;
+                if (proj.CalamityInheritance().PingPointerT3)
+                    dmg /= 2;
+                modifiers.FinalDamage += dmg;
             }
             ModifyCrtis(target, ref modifiers);
         }
@@ -122,7 +128,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 float giveBuff = Player.GetTotalCritChance<RogueDamageClass>() + 4f - 100f;
                 giveBuff /= 100f; 
-                //最后除以8. 取1/8
+                //最后除以7. 取1/7
                 giveBuff /= 7f;
                 //200%暴击概率 -> 15%
                 totalCritsBuff = giveBuff;

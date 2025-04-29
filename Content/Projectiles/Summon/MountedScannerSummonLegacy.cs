@@ -102,16 +102,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             if (Time % LaserFireRate == LaserFireRate - 1f)
             {
                 if (Projectile.owner == Main.myPlayer)
-                {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,
-                                         Projectile.SafeDirectionTo(target.Center, Vector2.UnitY),
-                                         ModContent.ProjectileType<MountedScannerLaserLegacy>(),
-                                         Projectile.damage,
-                                         Projectile.knockBack,
-                                         Projectile.owner,
-                                         0f,
-                                         Projectile.whoAmI);
-                }
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.SafeDirectionTo(target.Center, Vector2.UnitY), ModContent.ProjectileType<MountedScannerLaserLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, Projectile.whoAmI);
+
                 SoundEngine.PlaySound(CommonCalamitySounds.LaserCannonSound, Projectile.Center);
             }
         }

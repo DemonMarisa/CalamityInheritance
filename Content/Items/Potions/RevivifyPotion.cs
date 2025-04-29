@@ -35,20 +35,20 @@ namespace CalamityInheritance.Content.Items.Potions
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.HolyWater, 1);
-            recipe.AddIngredient(ModContent.ItemType<StarblightSoot>(), 4);
-            recipe.AddIngredient(ItemID.CrystalShard, 1);
-            recipe.AddIngredient(ModContent.ItemType<EssenceofSunlight>());
-            recipe.AddIngredient(ModContent.ItemType<TwinklingPollox> ());
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.Register();
-            // Blood orb recipes no alch table effect
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ItemID.HolyWater, 1);
-            recipe2.AddIngredient(ModContent.ItemType<BloodOrb>(), 20);
-            recipe2.AddTile(TileID.AlchemyTable);
-            recipe2.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.HolyWater, 1).
+                AddIngredient<StarblightSoot>(4).
+                AddIngredient(ItemID.CrystalShard, 1).
+                AddIngredient<EssenceofSunlight>().
+                AddIngredient<TwinklingPollox>().
+                AddTile(TileID.AlchemyTable).
+                Register();
+            
+            CreateRecipe().
+                AddIngredient(ItemID.HolyWater, 1).
+                AddIngredient<BloodOrb>(20).
+                AddTile(TileID.AlchemyTable).
+                Register();
         }
     }
 }

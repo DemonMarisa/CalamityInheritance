@@ -17,6 +17,10 @@ using System.Reflection;
 using rail;
 using CalamityInheritance.Texture;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using Terraria.ID;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -29,9 +33,12 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public delegate void PostDrawInWorldDelegate(SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI);
         public static void PostDrawInWorld(PostDrawInWorldDelegate orig, SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            self.Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Magic/SubsumingVortexoldGlow").Value);
+            self.Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{CIResprite.CIExtraRoute}/FuckGlowMask").Value);
         }
         #endregion
+        public const float SmallVortexSpeedFac = 1.3f;
+        public const int SmallVortexCounts = 4;
+        public const float SmallVortexDamageFac = 0.3f;
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CIMod();
@@ -39,9 +46,23 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             {
                 damage.Base = 1165;
                 item.mana = 20;
-                item.useTime = 18;
-                item.useAnimation = 18;
+                item.useTime = 20;
+                item.useAnimation = 20;
             }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (player.CheckExoLore())
+            {
+                if (player.altFunctionUse != 2)
+                    item.UseSound = Utils.SelectRandom(Main.rand, SubsumingVortexold.TossSound);
+                else
+                    item.UseSound = null;
+            }
+            else
+                item.UseSound = SoundID.Item84;
+
+            return true;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -56,6 +77,27 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             else
                 return new Vector2(-6, 0);
         }
+        //We need to fuck the original shoot method, so we can use our own projectile.
+        public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            //Check if using lore.
+            bool isLore = player.CheckExoLore();
+            //if using lore, switch the proj.
+            int altVortex = isLore ? ModContent.ProjectileType<SubsumingVortexProjBig>() : ModContent.ProjectileType<ExoVortex2>();
+            int bigVortex = isLore ? ModContent.ProjectileType<SubsumingVortexProjGiant>() : ModContent.ProjectileType<EnormousConsumingVortex>();
+            if (player.altFunctionUse != 2)
+            {
+                for (int i = 0; i < SmallVortexCounts; i++)
+                {
+                    float hue = (i / (float)(SmallVortexCounts - 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+                    Vector2 vortexVelocity = velocity * SmallVortexSpeedFac + Main.rand.NextVector2Square(-2.5f, 2.5f);
+                    Projectile.NewProjectile(source, position, vortexVelocity, altVortex, (int)(damage * SmallVortexDamageFac), knockback, player.whoAmI, hue);
+                }
+                return false;
+            }
+            Projectile.NewProjectile(source, position, velocity, bigVortex, damage, knockback, player.whoAmI);
+            return false;
+        }
     }
 
     //暂时注释掉了。没啥用。
@@ -68,114 +110,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 return;
             MethodInfo fuckSubsumingGlow = typeof(SubsumingVortex).GetMethod("PostDrawInWorld", BindingFlags.Instance | BindingFlags.Public);
             MonoModHooks.Add(fuckSubsumingGlow, SubsumingVortexCal.PostDrawInWorld);
-        }
-    }
-    //大型追踪漩涡
-    public class ExoVortexRework: GlobalProjectile
-    {
-        public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExoVortex2>();
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
-        {
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            if ((usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
-            {
-                projectile.velocity *= 1.02f;
-            }
-            base.OnSpawn(projectile, source);
-        }
-        public override void OnKill(Projectile projectile, int timeLeft)
-        {
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            int j = Main.rand.Next(1,4);
-            int pCounts = Main.rand.Next(1,4);
-            //较大的这些漩涡在死后会生成小的斩切
-            if (projectile.DamageType == DamageClass.Magic && (usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
-            {
-                float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                int magic = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, vel, ModContent.ProjectileType<ExobeamSlash>(), projectile.damage, projectile.knockBack, projectile.owner, hue);
-                //标记这个射弹为魔法伤害
-                Main.projectile[magic].DamageType = DamageClass.Magic;
-                //2判，我们需要2判
-                Main.projectile[magic].penetrate = 2;
-                SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
-                //斩击的音效
-            }
-        }
-    }
-    //小型追踪漩涡
-    public class ExoVortexReworkSmall: GlobalProjectile
-    {
-        public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExoVortex>();
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
-        {
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            if ((usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
-            {
-                projectile.velocity *= 1.02f;
-            }
-        }
-        //射弹被干掉的时候斩击
-        public override void OnKill(Projectile projectile, int timeLeft)
-        {
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            //限定只有法术伤害才会生成额外射弹
-            if (projectile.DamageType == DamageClass.Magic && (usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer)
-            {
-                int magic = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, projectile.oldVelocity, ModContent.ProjectileType<ExobeamSlash>(), projectile.damage /2, projectile.knockBack, projectile.owner);
-                //标记这个射弹为魔法伤害
-                Main.projectile[magic].DamageType = DamageClass.Magic;
-                Main.projectile[magic].extraUpdates = 2;
-                //斩击的音效
-                SoundEngine.PlaySound(Exoblade.BeamHitSound, projectile.Center);
-            }
-        }
-    }
-
-    //大漩涡
-    public class ExoVortexReworkGiant: GlobalProjectile
-    {
-        public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
-        {
-            return entity.type == ModContent.ProjectileType<EnormousConsumingVortex>();
-        }
-        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            Player player = Main.player[projectile.owner];
-            var usPlayer = Main.player[projectile.owner].CIMod();
-            //原灾暂时没有复写大漩涡的Onhit,因此这里如果判定到没开星流传颂，直接干掉AI就行了
-            if ((usPlayer.LoreExo || usPlayer.PanelsLoreExo) && projectile.owner == Main.myPlayer && player.ActiveItem().type == ModContent.ItemType<SubsumingVortex>())
-            {
-                //这里最主要是为了确定生成的位置
-                int offset = Main.rand.Next(200, 1080);
-                //尽可能让射弹在屏幕外生成
-                float xPos = player.position.X + offset * Main.rand.NextBool(2).ToDirectionInt();
-                float yPos = player.position.Y + (Main.rand.NextBool() ? Main.rand.NextFloat(-600, -801): Main.rand.NextFloat(600, 801));
-                Vector2 startPos = new(xPos, yPos);
-                //指定好速度和方向
-                Vector2 velocity = target.position - startPos;
-                float dir = 10 / startPos.X;
-                velocity.X *= dir * 150;
-                velocity.Y *= dir * 150;
-                velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
-                velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
-                //固定三个，因为这个玩意右键手持的时候是有判定的
-                int pCounts = 3;
-                //击杀的时候往多个方向生成大量的……台风弹幕.
-                for (int j = 0; j < pCounts; j++) 
-                {
-                    //改色，或者说改饱和度
-                    float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<ExoVortex2>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
-                    Main.projectile[p].DamageType = DamageClass.Magic;
-                    Main.projectile[p].scale *= 0.85f;
-                    //2穿, 即2判
-                    Main.projectile[p].penetrate = 2;
-                }
-            }
         }
     }
 }

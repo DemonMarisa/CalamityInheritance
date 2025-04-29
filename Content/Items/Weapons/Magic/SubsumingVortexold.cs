@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class SubsumingVortexold : CIMagic, ILocalizedModType
     {
-        public SoundStyle[] TossSound=
+        public static readonly SoundStyle[] TossSound =
         [
             CISoundMenu.VortexToss1,
             CISoundMenu.VortexToss2,
@@ -92,10 +92,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
+            if (player.CheckExoLore())
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Magic.SubsumingVortexold.ExoLoreOn");
-
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }

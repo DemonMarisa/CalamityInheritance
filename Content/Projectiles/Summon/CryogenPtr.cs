@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -76,14 +78,17 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public bool Rounding = true;
         //右键冰刺距离敌怪的距离
         public float FloatyDist = 90f;
+        public bool PingWhip = false;
         public NPC tar = null;
         const float RegulaPtr = 1f;
         const float IfRightClickPtr = 2f;
-        const int T1CD = 60;
+        const float BuffColdPointer = 1f;
+        const int T1CD = 75;
         const int NOT1CD = 180;
         #region 别名
         public ref float AttackAngle => ref Projectile.ai[0];
         public ref float AttackType => ref Projectile.ai[1];
+        public ref float AttackBuffer => ref Projectile.ai[2];
         public Player Owner => Main.player[Projectile.owner];
         public bool OnTier1 => Owner.CIMod().ColdDivityTier1;
         #endregion
@@ -95,6 +100,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         //你们要几把干嘛？
         //操你妈灾厄
         //操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄操你妈灾厄
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 28;
@@ -117,6 +127,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             writer.Write(Rounding);
             writer.Write(Idle);
             writer.Write(FloatyDist);
+            writer.Write(PingWhip);
             writer.Write(tar is null ? -1 : tar.whoAmI);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
@@ -124,6 +135,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             AttackTimer = reader.ReadInt32();
             Rounding = reader.ReadBoolean();
             Idle = reader.ReadBoolean();
+            PingWhip = reader.ReadBoolean();    
             int realTar = reader.ReadInt32();
             tar = realTar == -1 ? null : Main.npc[realTar];
         }
@@ -142,7 +154,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             {
                 //如果仅仅刚刚生成，则重设锭攻击CD。
                 AttackTimer = AttackType == 0f? fireCD : 0;
-                NewDust(30);
+                // NewDust(30);
             }
             if (AttackType == RegulaPtr && Projectile.timeLeft > 1000)
             {
@@ -253,10 +265,12 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         Vector2 vel = AttackAngle.ToRotationVector2().RotatedBy(Math.Atan(0));
                         vel.Normalize();
                         vel *= 30f;
-                        int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, (int)(Projectile.damage * 1.05f), Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr);
+                        if (Projectile.CalamityInheritance().PingPointerT3)
+                            AttackBuffer = BuffColdPointer;
+                        int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, Projectile.damage, Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr, AttackBuffer);
                         //动态变化其伤害
                         if (Main.projectile.IndexInRange(s))
-                            Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1.05f);
+                            Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1.01f);
                     }
                     Projectile.netUpdate = Projectile.owner == Main.myPlayer;
                 }
@@ -289,6 +303,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             if (Owner.CIMod().ColdDivityTier3)
             {
                 target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
+                Owner.AddBuff(ModContent.BuffType<CryoDrain>(), 60);
             }
             int cir = 0;
             foreach (Projectile proj in Main.ActiveProjectiles)
@@ -319,14 +334,18 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 AttackTimer = fireCD;
                 NewDust(20); 
             } 
+            
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if (AttackBuffer != 0f)
+                Owner.Heal(1);
+            
             if (Rounding && target == tar && Projectile.timeLeft < 60)
             {
                 NewDust(30);
                 SoundEngine.PlaySound(SoundID.NPCHit5, Projectile.position);
-                modifiers.SourceDamage *= 1.1f;
+                modifiers.SourceDamage *= 1.0f;
             }
             else if (Rounding && target == tar && Projectile.timeLeft > 60)
             {
@@ -358,6 +377,28 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             for (int i = 0; i < dAmt; i++)
                 Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.Ice, Main.rand.NextFloat(1, 3), Main.rand.NextFloat(1, 3), 0, Color.Cyan, Main.rand.NextFloat(0.5f, 1.5f));
+        }
+        //手动接管绘制
+        public override bool PreDraw(ref Color lightColor)
+        {
+            if (Rounding || Idle)
+                return true;
+
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Vector2 ori = texture.Size() * 0.5f;
+            Vector2 baseDrawPos = Projectile.Center - Main.screenPosition;
+            //渐进
+            float fade = Utils.GetLerpValue(0f, 12f, Projectile.timeLeft, true);
+            Color main = Color.White * fade * 1.5f;
+            //轨迹
+            //绘制残影
+            for (int i = 0; i < 8; i++)
+            {
+                Vector2 drawPosition = baseDrawPos - Projectile.velocity * i * 0.3f;
+                Color afterimage = main * (1f - i / 8f);
+                Main.EntitySpriteDraw(texture, drawPosition, null, afterimage, Projectile.rotation, ori, Projectile.scale, SpriteEffects.None, 0);
+            }
+            return false;
         }
         private void Homing()
         {

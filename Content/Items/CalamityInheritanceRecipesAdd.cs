@@ -10,7 +10,6 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityMod.Items.DraedonMisc;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations;
 using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using DraedonsForge = CalamityMod.Items.Placeables.Furniture.CraftingStations.DraedonsForge;
 using DraedonsForgeTiles = CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge;
@@ -58,21 +57,15 @@ using CalamityMod.Items.Dyes;
 using CalamityModMusic.Items.Placeables;
 using CalamityMod.Items.Tools.ClimateChange;
 using CalamityInheritance.Content.Items.Tools;
-using System;
 using CalamityMod.Items.SummonItems;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Mounts;
-using CalamityMod.Items.VanillaArmorChanges;
 using CalamityMod.Items.Placeables.Plates;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
-using CalamityMod.Tiles.Ores;
 using CalamityInheritance.System.Configs;
-using CalamityMod.Projectiles.Typeless;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items
@@ -92,8 +85,112 @@ namespace CalamityInheritance.Content.Items
             Cyrobar();              //冰灵锭
             ScalDecoration();       //谁他妈让召唤boss用的祭坛用来合家具的？
             Accelerator();          //粒子加速器
+
+            // CalamityLegacyRecipe(); //灾厄旧版合成配方
             Misc();                 //其他合成表, 因为我也不知道怎么起名
         }
+
+        private static void CalamityLegacyRecipe()
+        {
+            #region 饰品
+            //粘性绷带
+            Recipe.Create(ItemID.AdhesiveBandage).
+                AddIngredient(ItemID.Silk, 10).
+                AddIngredient(ItemID.Gel, 10).
+                AddIngredient(ItemID.HealingPotion, 1).
+                AddTile(TileID.Anvils).
+                Register();
+            //盔甲抛光
+            Recipe.Create(ItemID.ArmorPolish).
+                AddIngredient(ItemID.Bone, 10).
+                AddIngredient<AncientBoneDust>(3).
+                AddTile(TileID.Anvils).
+                Register();
+            //再生手环 
+            Recipe.Create(ItemID.BandofRegeneration).
+                AddIngredient(ItemID.LifeCrystal).
+                AddTile(TileID.Anvils).
+                Register();
+            //牛黄
+            Recipe.Create(ItemID.Bezoar).
+                AddIngredient(ItemID.JungleSpores, 5).
+                AddIngredient(ItemID.Stinger, 5).
+                AddTile(TileID.Anvils).
+                Register();
+            //天界磁石
+            Recipe.Create(ItemID.CelestialMagnet).
+                AddIngredient(ItemID.ManaPotion, 1).
+                AddIngredient(ItemID.FallenStar, 10).
+                AddTile(TileID.Anvils).
+                Register();
+            //绿色手套
+            Recipe.Create(ItemID.FeralClaws).
+                AddIngredient(ItemID.Leather, 10).
+                AddTile(TileID.Anvils).
+                Register();
+            //冰龟壳
+            Recipe.Create(ItemID.FrozenTurtleShell).
+                AddIngredient(ItemID.TulipShell, 2).
+                AddIngredient(ItemID.SoulofLight, 5).
+                AddDecraftCondition(Condition.Hardmode).
+                AddTile(TileID.IceMachine).
+                Register();
+            //魔法箭袋
+            Recipe.Create(ItemID.MagicQuiver).
+                AddIngredient(ItemID.EndlessQuiver).
+                AddIngredient(ItemID.PixieDust, 5).
+                AddIngredient(ItemID.Lens, 5).
+                AddIngredient(ItemID.SoulofLight, 5).
+                AddDecraftCondition(Condition.Hardmode).
+                AddTile(TileID.CrystalBall).
+                Register();
+            //熔岩钩
+            Recipe.Create(ItemID.LavaFishingHook).
+                AddIngredient(ItemID.Seashell).
+                AddIngredient(ItemID.Chain, 5).
+                AddIngredient(ItemID.HellstoneBar, 10).
+                AddTile(ItemID.Hellforge).
+                Register();
+            //维生素
+            Recipe.Create(ItemID.Vitamins).
+                AddIngredient(ItemID.BottledWater).
+                AddIngredient(ItemID.Waterleaf, 5).
+                AddIngredient(ItemID.Blinkroot, 5).
+                AddIngredient(ItemID.Daybloom, 5).
+                AddIngredient<BloodOrb>(5).
+                AddTile(TileID.AlchemyTable).
+                Register();
+            //金属探测器
+            Recipe.Create(ItemID.MetalDetector).
+                AddIngredient(ItemID.Wire, 10).
+                AddIngredient(ItemID.SpelunkerGlowstick, 10).
+                AddRecipeGroup("AnyCobaltBar", 10).
+                AddTile(TileID.Anvils).
+                Register();
+            #endregion
+            #region 其他
+            //冰雪机
+            Recipe.Create(ItemID.IceMachine).
+                AddIngredient(ItemID.IceBlock, 10).
+                AddIngredient(ItemID.SnowBlock, 10).
+                AddRecipeGroup(RecipeGroupID.IronBar, 5).
+                AddTile(TileID.Anvils).
+                Register();
+            //天摩
+            Recipe.Create(ItemID.SkyMill).
+                AddIngredient(ItemID.SunplateBlock, 10).
+                AddIngredient(ItemID.Cloud, 10).
+                AddTile(TileID.Anvils).
+                Register();
+            //冰雪回旋镖
+            Recipe.Create(ItemID.IceBoomerang).
+                AddIngredient(ItemID.WoodenBoomerang).
+                AddIngredient(ItemID.IceTorch, 10).
+                AddTile(TileID.IceMachine).
+                Register();
+            #endregion
+        }
+
         public override void PostAddRecipes()
         {
             PostModifyModYharon();

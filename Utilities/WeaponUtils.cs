@@ -90,7 +90,7 @@ namespace CalamityInheritance.Utilities
         {
             target.AddBuff(ModContent.BuffType<AbyssalFlames>(), AbyssalFlamesduration, true);
             target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), VulnerabilityHexLegacyduration, true);
-            if(Horrorduration > 1)
+            if (Horrorduration > 1)
                 target.AddBuff(ModContent.BuffType<Horror>(), Horrorduration, true);
         }
     }
