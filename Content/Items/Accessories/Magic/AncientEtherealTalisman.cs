@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
 
             player.statManaMax2 += 150;
             player.GetDamage<MagicDamageClass>() += 0.20f;
-            player.manaCost *= 0.8f;
+            player.manaCost -= 0.2f;
             player.GetCritChance<MagicDamageClass>() += 15;
             player.pStone = true;
             player.lifeRegen += 1;

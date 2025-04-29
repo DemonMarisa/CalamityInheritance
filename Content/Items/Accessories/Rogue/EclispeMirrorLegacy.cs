@@ -38,8 +38,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            float iShowSpeed = (player.GetTotalCritChance<RogueDamageClass>() + 4) - 100f;
+            float iShowSpeed = player.GetTotalCritChance<RogueDamageClass>() + 4 - 100f;
             iShowSpeed /= 7f;
+            if (iShowSpeed < 0f)
+                iShowSpeed = 0f;
             string showStat = this.GetLocalization("ShowCritsBounes").Format(iShowSpeed.ToString("N1"));
             tooltips.FindAndReplace("[SHOW]", showStat);
             base.ModifyTooltips(tooltips);

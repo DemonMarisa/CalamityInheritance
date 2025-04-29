@@ -174,7 +174,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 法师
             // 45伤 15爆 150法力 15%法力消耗降低 获得魔力花的效果 每秒恢复15点魔力
-            //45% -> 15%，。
+            //45% -> 15%
             Player.GetDamage<MagicDamageClass>() += magicLevel * 0.01f;
             Player.GetCritChance<MagicDamageClass>() += magicLevel;
             Player.statManaMax2 += magicLevel * 10;
@@ -187,9 +187,8 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region 召唤
             // 15%外围增伤 2召唤栏 15%鞭子范围与攻速速度加成
-            //改成20%加算了，召唤师数值爆炸了bro
-            Player.GetDamage<SummonDamageClass>() *= 1 + summonLevel * 0.01f;
-            Player.GetDamage<SummonDamageClass>() += summonLevel / 15f * 0.02f;
+            //改成15%加算了，召唤师数值爆炸了bro
+            Player.GetDamage<SummonDamageClass>() += summonLevel * 0.01f;
             Player.whipRangeMultiplier += summonLevel * 0.01f;
             Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += summonLevel * 0.01f;
             if (summonLevel > 14)
