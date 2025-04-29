@@ -104,8 +104,6 @@ namespace CalamityInheritance.CIPlayer
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
-            if (IsColdDivityActiving && ColdDivityTier3)
-                ColdDivityTrueDamage(target, hit, projectile);
             
             if (heldingItem.type == ModContent.ItemType<YharimsCrystalLegendary>())
             {
