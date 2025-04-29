@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using log4net.Core;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,14 +18,13 @@ namespace CalamityInheritance.UI.QolPanelTotal
 {
     public partial class QolPanel
     {
-        public int PageLeftCenter = -300;
-        public int Page4FirstLine = -270;
+        public static int PageLeftCenter = -300;
+        public static int Page4FirstLine = -270;
 
-        public int Page4NorLeftText = -560;
-        public int Page4NorLeftTextHeight = -308;
-        public int Page4NorLeftTextHeight2 = -213;
+        public static int Page4NorLeftText = -560;
+        public static int Page4NorLeftTextHeight = -308;
+        public static int Page4NorLeftTextHeightOffset = 95;
 
-        public float meleePoolProgress = 0f;
         public static string LevelImagePath => "CalamityInheritance/UI/DraedonsTexture/LevelSystem"; //一个字段
         public void Page4Draw(SpriteBatch spriteBatch)
         {
@@ -50,21 +50,22 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #region 绘制最上面的文字
             string HeadTextLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.HeadText2");
             // -388 - 364都是我手动确定的初始偏移
-            CIFunction.DrawTextNoLine(spriteBatch, HeadTextLevel, 1f, 1f, PageLeftCenter + 16, -388, 1.4f, TextColor, Color.DarkSlateGray, 400f, 0f);
-            NorDrawImage(spriteBatch, LevelHead, PageLeftCenter, -364);
+            CIFunction.DrawTextNoLine(spriteBatch, HeadTextLevel, 1f, 1f, PageLeftCenter + 16, -378, 1.4f, TextColor, Color.DarkSlateGray, 400f, 0f);
+            NorDrawImage(spriteBatch, LevelHead, PageLeftCenter, -354);
             #endregion
 
-
-            #region 绘制战士经验条
+            DrawMeleeBar(spriteBatch , cIPlayer, LevelBorder, LevelBar);
+            DrawRangeBar(spriteBatch, cIPlayer, LevelBorder, LevelBar);
+        }
+        #region 绘制战士经验条
+        public void DrawMeleeBar(SpriteBatch spriteBatch,CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar)
+        {
             string Melee = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMelee");
             string MeleeCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.meleeLevel;
 
             int requiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.meleeLevel);
             // 绘制进度
-            meleePoolProgress = (float)cIPlayer.meleePool / requiredExp;
-
-            Main.NewText($"meleePoolProgress = {meleePoolProgress}");
-
+            float meleePoolProgress = (float)cIPlayer.meleePool / requiredExp;
             bool maxMeleeLevel = cIPlayer.meleeLevel >= cIPlayer.maxLevel;
             // 绘制常规的边缘
             NorDrawImage(spriteBatch, LevelBorder, PageLeftCenter, Page4FirstLine);
@@ -72,8 +73,36 @@ namespace CalamityInheritance.UI.QolPanelTotal
             DrawImage(spriteBatch, LevelBar, PageLeftCenter, Page4FirstLine, (int)(maxMeleeLevel ? LevelBar.Width : LevelBar.Width * meleePoolProgress), LevelBar.Height, 0);
             // 绘制战士标记和当前进度
             NewDrawTextLeftOrigin(spriteBatch, Melee, 1f, 1f, Page4NorLeftText, Page4NorLeftTextHeight, 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
-            NewDrawTextLeftOrigin(spriteBatch, MeleeCurrentLevel, 1f, 1f, Page4NorLeftText, Page4NorLeftTextHeight2, 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
-            #endregion
+            NewDrawTextLeftOrigin(spriteBatch, MeleeCurrentLevel, 1f, 1f, Page4NorLeftText, Page4NorLeftTextHeight + Page4NorLeftTextHeightOffset, 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
+        }
+        #endregion
+        #region 绘制射手经验条
+        public void DrawRangeBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar)
+        {
+            string Range = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextRanged");
+            string RangeCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.rangeLevel;
+
+            int rangeRequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.rangeLevel);
+            // 绘制进度
+            float PoolProgress = (float)cIPlayer.rangePool / rangeRequiredExp;
+            bool maxMeleeLevel = cIPlayer.rangeLevel >= cIPlayer.maxLevel;
+            // 绘制常规的边缘
+            NorDrawImage(spriteBatch, LevelBorder, PageLeftCenter, GetLinePos(2, CIConfig.Instance.UIY));
+            // 绘制经验条
+            DrawImage(spriteBatch, LevelBar, PageLeftCenter, GetLinePos(2, CIConfig.Instance.UIY), (int)(maxMeleeLevel ? LevelBar.Width : LevelBar.Width * PoolProgress), LevelBar.Height, 0);
+            // 绘制标记和当前进度
+            NewDrawTextLeftOrigin(spriteBatch, Range, 1f, 1f, Page4NorLeftText, GetLevelPos(2, CIConfig.Instance.UIY), 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
+            NewDrawTextLeftOrigin(spriteBatch, RangeCurrentLevel, 1f, 1f, Page4NorLeftText, GetLevelPos(2, CIConfig.Instance.UIY) + Page4NorLeftTextHeightOffset, 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
+        }
+        #endregion
+
+        public static int GetLevelPos(int Line, int LineSpace)
+        {
+            return (Page4NorLeftTextHeight + (Line - 1) * LineSpace);
+        }
+        public static int GetLinePos(int Line, int LineSpace)
+        {
+            return (Page4FirstLine + (Line - 1) * LineSpace);
         }
     }
 }

@@ -640,18 +640,10 @@ namespace CalamityInheritance.CIPlayer
         #region Frame Effects
         public override void FrameEffects()
         {
-            if (Player.body == EquipLoader.GetEquipSlot(Mod, "AncientAuricTeslaBodyArmor", EquipType.Body))
-            {
-                Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "AncientAuricTeslaBodyArmor", EquipType.Back);
-            }
             if (Player.body == EquipLoader.GetEquipSlot(Mod, "AuricTeslaBodyArmorold", EquipType.Body))
-            {
                 Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "AuricTeslaBodyArmorold", EquipType.Back);
-            }
             if (Player.body == EquipLoader.GetEquipSlot(Mod, "YharimAuricTeslaBodyArmor", EquipType.Body))
-            {
                 Player.back = (sbyte)EquipLoader.GetEquipSlot(Mod, "YharimAuricTeslaBodyArmor", EquipType.Back);
-            }
         }
         #endregion
 

@@ -41,11 +41,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			return body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() &&
 				   legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
 		}
-		
-		public override void ArmorSetShadows(Player player)
-		{
-			player.armorEffectDrawShadow = true;
-		}
 
 		public override void UpdateArmorSet(Player player)
 		{
@@ -59,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
-			calPlayer.auricSet = true;
+			// 去除了原灾金源套的判定，没啥用，而且还有巨难看的残影
 			modPlayer.AuricSilvaFakeDeath = true; //林海自活
 			#endregion
 			#region 标记为盗贼套装 
@@ -171,7 +166,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 				AddIngredient<AncientGodSlayerHelm>().
 				AddIngredient<AncientSilvaHelm>().
 				AddIngredient<AuricBarold>(12).
-				AddTile<DraedonsForgeold>().
+                AddIngredient<CalamitousEssence>(1).
+                AddTile<DraedonsForgeold>().
 				Register();
 			}
    		}

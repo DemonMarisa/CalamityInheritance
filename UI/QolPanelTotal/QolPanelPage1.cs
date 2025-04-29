@@ -75,8 +75,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
             int PageRightFirstLine = -270;
             #region 绘制最上面的文字
             Texture2D LevelHead = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/LevelSystem/LevelHead").Value;
-            CIFunction.DrawTextNoLine(spriteBatch, fastSkip, 1f, 1f, PageRightCenter + 16, -368, 1.4f, TextColor, Color.DarkSlateGray, 400f, 0f);
-            NorDrawImage(spriteBatch, LevelHead, PageRightCenter, -344);
+            CIFunction.DrawTextNoLine(spriteBatch, fastSkip, 1f, 1f, PageRightCenter + 16, -388, 1.4f, TextColor, Color.DarkSlateGray, 400f, 0f);
+            NorDrawImage(spriteBatch, LevelHead, PageRightCenter, -364);
             #endregion
             #region 跳到lore界面
             // 绘制跳转到Lore界面的按钮
@@ -124,7 +124,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         // 第一行开始
         public static int GetPos(int Line, int LineSpace)
         {
-            return (-270 + Line + 1 * LineSpace);
+            return (-270 + (Line - 1) * LineSpace);
         }
         #endregion
         #region 绘制箭头

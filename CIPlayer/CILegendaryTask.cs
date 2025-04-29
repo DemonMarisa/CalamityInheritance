@@ -97,7 +97,6 @@ namespace CalamityInheritance.CIPlayer
             //维苏威阿斯(T2, T3)
             if (heldingItem.type == ModContent.ItemType<RavagerLegendary>())
                 RavagerLegendaryDamageTask(target, hit);
-
             //庇护之刃
             if (heldingItem.type == ModContent.ItemType<DefenseBlade>())
             {
@@ -105,13 +104,13 @@ namespace CalamityInheritance.CIPlayer
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
+            if (IsColdDivityActiving && ColdDivityTier3)
+                ColdDivityTrueDamage(target, hit, projectile);
             
             if (heldingItem.type == ModContent.ItemType<YharimsCrystalLegendary>())
             {
                 YharimsCrystalLegendaryTask(target, hit);
             }
-            
-
         }
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)

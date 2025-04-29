@@ -1,12 +1,15 @@
 HeadText: 快速跳转
 HeadText1: 传颂之物
 HeadText2: 等级系统
-LevelTextMelee: 战士
 LevelPoolText: 当前等级：
+LevelTextMelee: 战士
 MeleeBoost: 战士增幅
+LevelMeleeSPBoost: 免疫击退
+LevelTextRanged: 射手
+RangedBoost: 射手增幅
+LevelRangedSPBoost: 狙击镜击退
 LevelSPBoost: 特殊增幅
 CurrentBoost: 当前增幅
-LevelMeleeSPBoost: 免疫击退
 LoreUnAvailable: 未知
 LoreT0: 传颂之物
 Lore0:

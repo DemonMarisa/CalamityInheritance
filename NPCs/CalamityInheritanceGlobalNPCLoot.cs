@@ -305,7 +305,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Yharon>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
-                var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 100);
+                var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 100000);
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
                 npcLoot.Add(yharimArmorLoot);

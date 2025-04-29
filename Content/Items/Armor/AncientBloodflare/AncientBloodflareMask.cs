@@ -33,12 +33,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             bool isSet = body.type == ModContent.ItemType<AncientBloodflareBodyArmor>() && legs.type == ModContent.ItemType<AncientBloodflareCuisses>();
             return isSet;
         }
-        
-        public override void ArmorSetShadows(Player player)
-        {
-            player.armorEffectDrawShadowSubtle = true;
-        }
-
         public override void UpdateArmorSet(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
