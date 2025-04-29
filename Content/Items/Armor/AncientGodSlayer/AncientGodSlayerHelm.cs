@@ -29,11 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         }
         
 
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isSet = body.type == ModContent.ItemType<AncientGodSlayerChestplate>() && legs.type == ModContent.ItemType<AncientGodSlayerLeggings>();
-            return isSet;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientGodSlayerChestplate>() && legs.type == ModContent.ItemType<AncientGodSlayerLeggings>();
 
         public override void UpdateArmorSet(Player player)
         {

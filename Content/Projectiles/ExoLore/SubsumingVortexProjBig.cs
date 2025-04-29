@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public void DoGeneric()
         {
             //Search Closest Target
-            NPC target = Projectile.FindClosestTarget(SubsumingVortex.SmallVortexTargetRange, true, true);
+            NPC target = Projectile.FindClosestTarget(SubsumingVortex.SmallVortexTargetRange * 2, true, true);
             if (target != null)
             {
                 TargetIndex = target.whoAmI;

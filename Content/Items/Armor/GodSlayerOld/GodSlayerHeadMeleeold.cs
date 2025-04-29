@@ -29,12 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isGodSlayerSetNEW = body.type == ModContent.ItemType<GodSlayerChestplate>() && legs.type == ModContent.ItemType<GodSlayerLeggings>();
-            bool isGodSlayerSetOLD = body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
-            return isGodSlayerSetNEW || isGodSlayerSetOLD;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
 
         public override void ArmorSetShadows(Player player)
         {
@@ -56,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;
             }
-            player.setBonus = this.GetLocalizedValue("SetBonus") + GodSlayerChestplateold.GetSpecial(mode);
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
         }
 
         public override void UpdateEquip(Player player)

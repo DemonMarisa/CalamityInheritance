@@ -335,8 +335,14 @@ DestroyerLegendary: {
 SubsumingVortexChange:
 	'''
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
-	[c/4169E1:void] [c/FFFFE0:ModifyVortexOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:所有追踪漩涡在消失时都会进行一次星流斩击];
-	[c/4169E1:void] [c/FFFFE0:VortexSupport][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:大型漩涡在击中敌人时会从场外召唤追踪漩涡支援你];
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:音效协议框架:<灾厄平衡重置>(Calamity Anormalis)];
+	[c/4169E1:void] [c/FFFFE0:ModifyVortexOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:追踪漩涡在消失时都会进行一次星流斩击];
+	[c/4169E1:void] [c/FFFFE0:VortexSupport][c/4169E1:()]
+	{
+	    [c/87CEFA:大型漩涡在完全充能并释放后不再径直向前，而是在玩家周围待机];
+	    [c/87CEFA:待机的大型漩涡会不断搜索周围的敌怪并释放小型漩涡];
+	    [c/87CEFA:一定时间后，大型漩涡将会追踪距离最近的敌怪];
+	}
 	'''
 VividChange:
 	'''

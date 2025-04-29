@@ -21,6 +21,7 @@ using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using Terraria.ID;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -37,18 +38,14 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         #endregion
         public const float SmallVortexSpeedFac = 1.3f;
-        public const int SmallVortexCounts = 4;
+        public const int SmallVortexCounts = 3;
         public const float SmallVortexDamageFac = 0.3f;
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
                 damage.Base = 1165;
-                item.mana = 20;
-                item.useTime = 20;
-                item.useAnimation = 20;
-            }
+            
         }
         public override bool CanUseItem(Item item, Player player)
         {
@@ -57,11 +54,12 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 if (player.altFunctionUse != 2)
                     item.UseSound = Utils.SelectRandom(Main.rand, SubsumingVortexold.TossSound);
                 else
+                {
                     item.UseSound = null;
+                }
             }
             else
                 item.UseSound = SoundID.Item84;
-
             return true;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -95,7 +93,8 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 }
                 return false;
             }
-            Projectile.NewProjectile(source, position, velocity, bigVortex, damage, knockback, player.whoAmI);
+            if (player.ownedProjectileCounts[bigVortex] < 1)
+                Projectile.NewProjectile(source, position, velocity, bigVortex, damage, knockback, player.whoAmI);
             return false;
         }
     }

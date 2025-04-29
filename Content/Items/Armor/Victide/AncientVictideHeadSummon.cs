@@ -26,15 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
             Item.rare = ItemRarityID.Green;
             Item.defense = 1; //8
         }
-
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            return body.type == 
-                   ModContent.ItemType<AncientVictideBreastplate>()&& 
-                   legs.type == 
-                   ModContent.ItemType<AncientVictideLeggings>();
-        }
-
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientVictideBreastplate>() && legs.type == ModContent.ItemType<AncientVictideLeggings>();
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");

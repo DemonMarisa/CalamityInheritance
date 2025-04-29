@@ -14,26 +14,26 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.NPCs.Boss.Calamitas
 {
-    public static class CalamitasRebornAIPhase2
+    public class CalamitasRebornAIPhase2
     {
         //这个AI有可能需要重写，冲刺的逻辑非常难改
         //将代码整体改干净一点
         public static readonly float BalltoLaserPhaseTimer = 300f;
+        const int AIType = 1;
+        const int Timer = 2;
+        const int ProjShootingTimer = 1;
+        const float ShootingLaser = 0f;
+        const float ShootingFireball = 1f;
+        const float Charging = 2f;
+        const float ReverseCharge = 3f;
+        const float ResetAI = 4f;
+        public static string LocalPath => "Mods.CalamityInheritance.Boss.Text.Calamitas";
         public static void CalamitasRebornAI(NPC boss, Mod mod)
         {
             #region 初始化
-
-            const int AIType = 1;
-            const int Timer = 2;
-            const int ProjShootingTimer = 1;
-            const float ShootingLaser = 0f;
-            const float ShootingFireball = 1f;
-            const float Charging = 2f;
-            const float ReverseCharge = 3f;
-            const float ResetAI = 4f;
+            
             CIGlobalNPC cign = boss.CIMod();
             CIFunction.SetGlow(boss, 1f, 0f, 0f);
-
             //查看血量百分比.
             float lifePercent = boss.life / (float)boss.lifeMax;
             //旧灾的血量阶段, 这三个血量阶段仅用于生成高强度的兄弟战
@@ -56,15 +56,29 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
             Player player = Main.player[boss.target];
             CIGlobalNPC.ThisCalamitasRebornP2 = boss.whoAmI;
             //生成探魂
-            Seekers(boss, cign, ifPhase3);
-
-            Vector2 getPlayerCenter = new(player.position.X - player.width / 2, player.position.Y - player.height / 2);
+            if (cign.BossNewAI[1] == 0f && ifPhase3)
+            {
+                SoundEngine.PlaySound(SoundID.Item72, boss.Center);
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    int eyeAmt = 12;
+                    int eyespread = 360 / 10;
+                    int eyeDist = 180;
+                    for (int i = 0; i < eyeAmt; i++)
+                    {
+                        int newEye = NPC.NewNPC(boss.GetSource_FromAI(), (int)(boss.Center.X + Math.Sin(i * eyespread) * eyeDist), (int)(boss.Center.Y + Math.Cos(i * eyespread) * eyeDist), ModContent.NPCType<SoulSeekerReborn>(), boss.whoAmI);
+                        Main.npc[newEye].ai[0] = i * eyespread;
+                    }
+                }
+                CIFunction.BroadcastLocalizedText($"{LocalPath}.SpawnSeekers");
+                cign.BossNewAI[1] = 1f;
+                //此处需要一个探魂眼承重生文本
+            }
             #endregion
-
             #region 尝试视角朝向玩家
 
             Vector2 bossCenter = new(boss.Center.X, boss.Center.Y + boss.height - 59f);
-            Vector2 lockTar = getPlayerCenter;
+            Vector2 lockTar = player.Center;
             Vector2 tryLockPlayer = bossCenter - lockTar;
             float rot = (float)Math.Atan2(tryLockPlayer.Y, tryLockPlayer.X) + MathHelper.PiOver2;
             boss.rotation = boss.rotation.AngleLerp(boss.AngleTo(player.Center) - MathHelper.PiOver2, 0.08f);
@@ -301,6 +315,7 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                 NPC.NewNPC(boss.GetSource_FromAI(), (int)boss.Center.X - boss.width, (int)boss.Center.Y - boss.height, ModContent.NPCType<CatastropheReborn>(), boss.whoAmI, Ai0);
             }
             //我们需要兄弟重生的文本
+            CIFunction.BroadcastLocalizedText($"{LocalPath}.SpawnBrothers");
         }
         public static void SpwanVisualChargeDust(NPC boss)
         {
@@ -342,29 +357,9 @@ namespace CalamityInheritance.NPCs.Boss.Calamitas
                 Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + pPos, pVel, ModContent.ProjectileType<BrimstoneLaser>(), pDmg, 0f, Main.myPlayer, target.position.X, target.position.Y);
             else Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + pPos, pVel, pType, pDmg, 0f, Main.myPlayer, target.position.X, target.position.Y);
         }
-        /// <summary>
-        /// 生成探魂眼环
-        /// </summary>
-        /// <param name="Boss">旧灾</param>
         public static void Seekers(NPC boss, CIGlobalNPC cign, bool ifPhase3)
         {
-            if (cign.BossNewAI[1] == 0f && ifPhase3)
-            {
-                SoundEngine.PlaySound(SoundID.Item72, boss.Center);
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    int eyeAmt = 12;
-                    int eyespread = 360 / 10;
-                    int eyeDist = 180;
-                    for (int i = 0; i < eyeAmt; i++)
-                    {
-                        int newEye = NPC.NewNPC(boss.GetSource_FromAI(), (int)(boss.Center.X + Math.Sin(i * eyespread) * eyeDist), (int)(boss.Center.Y + Math.Cos(i * eyespread) * eyeDist), ModContent.NPCType<SoulSeekerReborn>(), boss.whoAmI, 0, 0, 0, -1);
-                        Main.npc[newEye].ai[0] = i * eyespread;
-                    }
-                }
-            }
-            //此处需要一个探魂眼承重生文本
-            cign.BossNewAI[1] = 1f;
+            
         }
     }
 }

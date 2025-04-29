@@ -16,6 +16,7 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -35,13 +36,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             Item.defense = 54; //132
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isAuricSetNEW = body.type == ModContent.ItemType<AuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<AuricTeslaCuisses>();
-            bool isAuricSetOLD = body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
-            return isAuricSetNEW || isAuricSetOLD;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
@@ -63,7 +58,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void UpdateArmorSet(Player player)
         {
             var hotkey = CalamityKeybinds.ArmorSetBonusHotKey.TooltipHotkeyString();
-            player.setBonus = this.GetLocalization("SetBonus").Format(hotkey);
             var calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
             calPlayer.tarraSet = true;
@@ -75,19 +69,16 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             usPlayer.SilvaMeleeSetLegacy = true;
             usPlayer.GodSlayerReflect = true;
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 1 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3) && !(CIConfig.Instance.GodSlayerSetBonusesChange == 2))
+            const short onlyDash = 2;
+            const short onlyReborn = 1; 
+            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
+            player.setBonus = this.GetLocalization("SetBonus").Format(hotkey) + "\n" + GodSlayerChestplateold.GetSpecial(mode);
+            usPlayer.GodSlayerReborn = mode != onlyDash;
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                usPlayer.GodSlayerReborn = true;
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
             }
-            if (CIConfig.Instance.GodSlayerSetBonusesChange == 2 || (CIConfig.Instance.GodSlayerSetBonusesChange == 3))
-            {
-                if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                {
-                    calPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                    player.dash = 0;
-                }
-            }
-
             usPlayer.GodSlayerDMGprotect = true;
 
             usPlayer.AuricSilvaFakeDeath = true;

@@ -28,11 +28,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.defense = 20; //80
         }
         
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            bool isSet = body.type == ModContent.ItemType<AncientBloodflareBodyArmor>() && legs.type == ModContent.ItemType<AncientBloodflareCuisses>();
-            return isSet;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientBloodflareBodyArmor>() && legs.type == ModContent.ItemType<AncientBloodflareCuisses>();
         public override void UpdateArmorSet(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

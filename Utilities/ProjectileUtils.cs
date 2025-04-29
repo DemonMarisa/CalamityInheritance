@@ -124,7 +124,7 @@ namespace CalamityInheritance.Utilities
             float xDist = player.Center.X - proj.Center.X;
             float yDist = player.Center.Y - proj.Center.Y;
             float dist = TryGetVectorMud(xDist, yDist);
-            if (dist < awayDist && proj.velocity.Length() > 5f)
+            if (dist < awayDist)
             {
                 proj.velocity *= 0.90f;
             }

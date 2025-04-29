@@ -27,10 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             Item.defense = 10; //50
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            return body.type == ModContent.ItemType<AncientXerocPlateMail>() && legs.type == ModContent.ItemType<AncientXerocCuisses>();
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientXerocPlateMail>() && legs.type == ModContent.ItemType<AncientXerocCuisses>();
 
         public override void ArmorSetShadows(Player player)
         {

@@ -21,10 +21,7 @@ namespace CalamityInheritance.Content.Items.Armor
             Item.rare = ItemRarityID.Yellow;
             Item.defense = 11; //62
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
-            return body.type == ItemID.ShroomiteBreastplate && legs.type == ItemID.ShroomiteLeggings;
-        }
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemID.ShroomiteBreastplate && legs.type == ItemID.ShroomiteLeggings;
         public override void UpdateArmorSet(Player player)
         {
             player.shroomiteStealth = true;

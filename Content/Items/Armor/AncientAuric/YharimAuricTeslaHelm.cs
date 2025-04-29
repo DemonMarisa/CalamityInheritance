@@ -15,6 +15,7 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -36,18 +37,14 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 		}
 
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() &&
-				   legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
-		}
+		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
 
 		public override void UpdateArmorSet(Player player)
 		{
 			var modPlayer = player.CIMod();
 			var calPlayer = player.Calamity();
 			modPlayer.ManaHealMutipler = 2.0f;
-			player.setBonus = this.GetLocalizedValue("SetBonus");
+			player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(3);
 			//标记为魔君金源甲
 			modPlayer.YharimAuricSet = true;
 			#region 灾厄的月后套通用效果
