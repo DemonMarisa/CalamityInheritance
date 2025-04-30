@@ -17,10 +17,9 @@ namespace CalamityInheritance.NPCs
         public float[] BossNewAI = new float[MaxAIMode];
         public int BossAITimer = 0;
         //获取whoami
-        public static int ThisCalamitasReborn = -1;
-        public static int ThisCalamitasRebornP2 = -1;
-        public static int CatalysmCloneWhoAmI = -1;
-        public static int CatastropheCloneWhoAmI = -1;
+        public static int LegacyCalamitasClone = -1;
+        public static int LegacyCatalysmClone = -1;
+        public static int LegacyCatastropheClone = -1;
         // 犽绒
         public static int LegacyYharon = -1;
         #region 終灾

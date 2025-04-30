@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else
             {
-                CalamityUtils.HomeInOnNPC(Projectile, true, 10500f, 42f, 20f);
+                CalamityUtils.HomeInOnNPC(Projectile, true, 10500f, 12f, 20f);
             }
 
             Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.075f / 255f, Main.DiscoR * 0.1f / 255f, Main.DiscoR * 0.125f / 255f);

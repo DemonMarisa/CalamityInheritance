@@ -31,7 +31,6 @@ using CalamityInheritance.System.Configs;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.NPCs.Boss.Calamitas;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Sounds.Custom;
@@ -754,7 +753,7 @@ namespace CalamityInheritance.CIPlayer
                 PolarisPhase2 = false;
                 PolarisPhase3 = false;
             }
-            if (PolarisBoostCounter >= 20 || CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Player, 3000f))
+            if (PolarisBoostCounter >= 20 /*|| CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Player, 3000f)*/)
             {
                 PolarisPhase2 = false;
                 PolarisPhase3 = true;
@@ -1480,6 +1479,7 @@ namespace CalamityInheritance.CIPlayer
             *准许免疫击退
             *准许玩家在承受debuff伤害时获得+4HP/s生命恢复速度
             */
+            /*
             if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
             {
                 //直接取光女饰品的增益，同时具备准许无限飞行、跳跃速度和移速的效果
@@ -1487,6 +1487,7 @@ namespace CalamityInheritance.CIPlayer
                 //准许防击退
                 Player.noKnockback = true;
             }
+            */
             if (CIConfig.Instance.LegendaryBuff == 1)
             {
                 PBGTier1 = true;

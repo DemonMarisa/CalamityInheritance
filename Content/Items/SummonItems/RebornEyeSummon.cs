@@ -1,10 +1,10 @@
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.MiscItem;
-using CalamityInheritance.NPCs.Boss.Calamitas;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityMod.Items.Materials;
+using CalamityMod.NPCs.CalClone;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override bool CanUseItem(Player player)
         {
-            return (!NPC.AnyNPCs(ModContent.NPCType<CalamitasReborn>()) || !NPC.AnyNPCs(ModContent.NPCType<CalamitasRebornPhase2>())) && !Main.dayTime;
+            return NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()) && !Main.dayTime;
         }
 
         public override bool? UseItem(Player player)
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
             {
                 SoundEngine.PlaySound(SoundID.Roar, player.position);
             
-                int getBoss = ModContent.NPCType<CalamitasReborn>();
+                int getBoss = ModContent.NPCType<CalamitasCloneLegacy>();
 
                 if (Main.netMode!=NetmodeID.MultiplayerClient)
                     NPC.SpawnOnPlayer(player.whoAmI, getBoss);

@@ -171,20 +171,19 @@ namespace CalamityInheritance.CIPlayer
             if (Main.zenithWorld && Main.rand.NextBool())
                 Main.projectile[p].friendly = false;
         }
-        public string Local = "Mods.CalamityInheritance.Status.";
         public void SendMessageOnPlayer(int currentLevel, int SwitchClass)
         {
-            string Melee = Language.GetTextValue($"{Local}MeleeLevel");
-            string Ranged = Language.GetTextValue($"{Local}RangedLevel");
-            string Magic = Language.GetTextValue($"{Local}MagicLevel");
-            string Summon = Language.GetTextValue($"{Local}SummonLevel");
-            string Rogue = Language.GetTextValue($"{Local}RogueLevel");
+            string Melee = Language.GetTextValue("Mods.CalamityInheritance.Status.MeleeLevel");
+            string Ranged = Language.GetTextValue("Mods.CalamityInheritance.Status.RangedLevel");
+            string Magic = Language.GetTextValue("Mods.CalamityInheritance.Status.MagicLevel");
+            string Summon = Language.GetTextValue("Mods.CalamityInheritance.Status.SummonLevel");
+            string Rogue = Language.GetTextValue("Mods.CalamityInheritance.Status.RogueLevel");
 
-            string MeleeMax = Language.GetTextValue($"{Local}MeleeLevelMax");
-            string RangedMax = Language.GetTextValue($"{Local}RangedLevelMax");
-            string MagicMax = Language.GetTextValue($"{Local}MagicLevelMax");
-            string SummonMax = Language.GetTextValue($"{Local}SummonLevelMax");
-            string RogueMax = Language.GetTextValue($"{Local}RogueLevelMax");
+            string MeleeMax = Language.GetTextValue("Mods.CalamityInheritance.Status.MeleeLevelMax");
+            string RangedMax = Language.GetTextValue("Mods.CalamityInheritance.Status.RangedLevel");
+            string MagicMax = Language.GetTextValue("Mods.CalamityInheritance.Status.MagicLevel");
+            string SummonMax = Language.GetTextValue("Mods.CalamityInheritance.Status.SummonLevel");
+            string RogueMax = Language.GetTextValue("Mods.CalamityInheritance.Status.RogueLevel");
 
             if (SwitchClass == 0)
                 CIFunction.SendTextOnPlayer(currentLevel == 14 ? MeleeMax : Melee, Color.Red);

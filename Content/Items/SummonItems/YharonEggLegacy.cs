@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.NPCs.Boss.Calamitas;
 using Terraria.Audio;
 using CalamityInheritance.NPCs.Boss.Yharon;
 using CalamityInheritance.Utilities;

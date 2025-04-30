@@ -318,6 +318,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             ]);
         }
         #endregion
+        #region 接受发送AI
         //多人同步的二三事
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -339,6 +340,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.alpha = reader.ReadInt32();
             spawnArena = reader.ReadBoolean();
         }
+        #endregion
+        #region AI
         public override void AI()
         {
             if (NPC.rotation < 0f)
@@ -650,6 +653,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.chaseable = true;
             }
         }
+        #endregion
         #region 音乐
         public void HandleMusicVariables(float lifeRatio)
         {

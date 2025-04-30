@@ -16,7 +16,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using Terraria.Localization;
-using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -47,6 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 15f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }
+        /*
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
@@ -56,6 +56,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 tooltips.Add(new TooltipLine(Mod, "WeaponBuff", empoweredWeapon));
             }
         }
+        */
         public override void AddRecipes()
         {
             CreateRecipe().

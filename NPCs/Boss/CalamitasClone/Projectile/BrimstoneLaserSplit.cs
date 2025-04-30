@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
-namespace CalamityInheritance.NPCs.Boss.Calamitas.Projectiles
+namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 {
     public class BrimstoneLaserSplit : ModProjectile, ILocalizedModType
     {

@@ -6,7 +6,7 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace CalamityInheritance.NPCs.Boss.Calamitas.Projectiles
+namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 {
     public class BrimstoneLaser : ModProjectile, ILocalizedModType
     {

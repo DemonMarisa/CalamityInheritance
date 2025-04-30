@@ -9,7 +9,6 @@ using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
 using Microsoft.Build.Evaluation;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.NPCs.Boss.Calamitas;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -49,18 +48,21 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localAI[0] = reader.ReadSingle();
             AIState = reader.ReadInt32();
         }
+        
         public override void AI()
         {
+            /*
             if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f) || Main.zenithWorld)  
             {
                 Projectile.localAI[1] += 1f;
                 if (Projectile.localAI[1] % (Main.zenithWorld? 10 : 72) == 0)
                 OnHitEffects();
             }
+            */
             VisualAudioEffects();
             BoomerangAI();
         }
-
+        
         private void BoomerangAI()
         {
             switch (AIState)
