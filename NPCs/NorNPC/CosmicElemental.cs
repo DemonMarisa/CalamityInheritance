@@ -12,6 +12,8 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Items.Placeables.Banner;
+using MonoMod.Cil;
 
 namespace CalamityInheritance.NPCs.NorNPC
 {
@@ -52,7 +54,7 @@ namespace CalamityInheritance.NPCs.NorNPC
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 
                 // Will move to localization whenever that is cleaned up.
-                new FlavorTextBestiaryInfoElement("A curious construct, and though its origins are unknown, it has been decidedly proven that the core of its body leads to somewhere not of our world.")
+                new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.CosmicElemental")
             });
         }
 

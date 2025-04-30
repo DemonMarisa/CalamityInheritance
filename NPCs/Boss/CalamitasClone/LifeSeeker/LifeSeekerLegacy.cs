@@ -12,6 +12,7 @@ using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
@@ -31,8 +32,28 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
             {
                 GlowTexture = ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.AsyncLoad);
             }
-        }
 
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                PortraitScale = 0.7f,
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+        }
+        #region 图鉴
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange([
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				// You can add multiple elements if you really wanted to
+				new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.LifeSeekerLegacy")
+            ]);
+        }
+        #endregion
         public override void SetDefaults()
         {
             NPC.damage = 0;

@@ -3,6 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.World;
+using CalamityMod;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -12,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -26,6 +31,30 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.consumable = true;
             Item.createTile = ModContent.TileType<MLGRuneTiles>();
             Item.rare = ModContent.RarityType<PureRed>();
+        }
+        public override bool AltFunctionUse(Player player) => true;
+        public override bool CanUseItem(Player player)
+        {
+            if (CalamityUtils.AnyBossNPCS())
+                return false;
+            if (player.altFunctionUse == 2)
+            {
+                Item.useStyle = ItemUseStyleID.HoldUp;
+                Item.UseSound = SoundID.Item119;
+            }
+            return true;
+        }
+        public override bool? UseItem(Player player)
+        {
+            CalamityInheritancePlayer modPlayer = player.CIMod();
+            if (player.altFunctionUse == 2)
+            {
+                if (modPlayer.MLG == true)
+                    modPlayer.MLG = false;
+                if (modPlayer.MLG == false)
+                    modPlayer.MLG = true;
+            }
+            return true;
         }
     }
 }

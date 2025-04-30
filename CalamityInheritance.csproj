@@ -876,6 +876,7 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Common\Hook\ModeChange\" />
 	  <Folder Include="SceneEffect\" />
 	</ItemGroup>
 	<ItemGroup>

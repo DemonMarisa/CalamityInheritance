@@ -84,6 +84,19 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
             NPC.DeathSound = SoundID.NPCDeath14;
         }
         #endregion
+        #region 图鉴
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange([
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				// You can add multiple elements if you really wanted to
+				new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.CataclysmLegacy")
+            ]);
+        }
+        #endregion
         public override void FindFrame(int frameHeight)
         {
             //绘制npc的动画

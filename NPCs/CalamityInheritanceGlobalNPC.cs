@@ -177,6 +177,11 @@ namespace CalamityInheritance.NPCs
                 spawnRate = (int)(spawnRate * 0.7);
                 maxSpawns = (int)(maxSpawns * 1.8f);
             }
+            if (player.CIMod().MLG)
+            {
+                spawnRate = (int)(spawnRate * 1.25f);
+                maxSpawns = (int)(maxSpawns * 1.25f);
+            }
         }
         #endregion
 

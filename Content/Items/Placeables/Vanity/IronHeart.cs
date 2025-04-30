@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod;
+using CalamityInheritance.World;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -11,6 +13,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -26,7 +29,29 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.createTile = ModContent.TileType<IronHeartTiles>();
             Item.rare = ItemRarityID.Blue;
         }
-
+        public override bool AltFunctionUse(Player player) => true;
+        public override bool CanUseItem(Player player)
+        {
+            if (CalamityUtils.AnyBossNPCS())
+                return false;
+            if (player.altFunctionUse == 2)
+            {
+                Item.useStyle = ItemUseStyleID.HoldUp;
+                Item.UseSound = SoundID.Item119;
+            }
+            return true;
+        }
+        public override bool? UseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                if (CIWorld.IronHeart == true)
+                    CIWorld.IronHeart = false;
+                if (CIWorld.IronHeart == false)
+                    CIWorld.IronHeart = true;
+            }
+            return true;
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

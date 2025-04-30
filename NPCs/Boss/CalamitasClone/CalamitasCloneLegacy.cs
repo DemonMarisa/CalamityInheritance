@@ -53,6 +53,7 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Summon;
 using Terraria.GameContent.ItemDropRules;
 using CalamityInheritance.Content.Items.Placeables.Relic;
+using Terraria.GameContent.Bestiary;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -144,6 +145,14 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 P2Texture = ModContent.Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2", AssetRequestMode.AsyncLoad);
                 P2GlowTexture = ModContent.Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2_Glow", AssetRequestMode.AsyncLoad);
             }
+
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            {
+                SpriteDirection = 1,
+                PortraitScale = 0.7f,
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
         }
         #endregion
         #region SD
@@ -175,6 +184,19 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             NPC.noTileCollide = true;
 
             NPC.HitSound = SoundID.NPCHit4;
+        }
+        #endregion
+        #region 图鉴
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange([
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				// You can add multiple elements if you really wanted to
+				new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.CalamitasCloneLegacy")
+            ]);
         }
         #endregion
         #region AI

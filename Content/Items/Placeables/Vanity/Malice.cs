@@ -5,6 +5,8 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.World;
+using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -16,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 99;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -32,6 +35,29 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.rare = ItemRarityID.Yellow;
             Item.accessory = true;
             Item.vanity = true;
+        }
+        public override bool AltFunctionUse(Player player) => true;
+        public override bool CanUseItem(Player player)
+        {
+            if (CalamityUtils.AnyBossNPCS())
+                return false;
+            if (player.altFunctionUse == 2)
+            {
+                Item.useStyle = ItemUseStyleID.HoldUp;
+                Item.UseSound = SoundID.Item119;
+            }
+            return true;
+        }
+        public override bool? UseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                if (CIWorld.Malice == true)
+                    CIWorld.Malice = false;
+                if (CIWorld.Malice == false)
+                    CIWorld.Malice = true;
+            }
+            return true;
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
