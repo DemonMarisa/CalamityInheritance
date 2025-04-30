@@ -30,5 +30,10 @@ namespace CalamityInheritance.Utilities
             Rectangle location = new Rectangle((int)player.position.X, (int)player.position.Y - 16, player.width, player.height);
             CombatText.NewText(location, color, Language.GetTextValue(key));
         }
+        public static void SendTextOnNPC(NPC npc, string key, Color color)
+        {
+            Rectangle location = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
+            CombatText.NewText(location, color, Language.GetTextValue(key));
+        }
     }
 }

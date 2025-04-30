@@ -26,8 +26,6 @@ ScalEnterPhase20: Two deaths. Good job. Here's your reward.
 ScalEnterPhase21: Third time's the charm huh? I guess it is. Here's a special reward.
 ScalEnterPhase22: Go to hell.
 YharonPreEclipse: The dark sun awaits.
-
-Calamitas: {
-	SpawnSeekers: ""
-	SpawnBrothers: ""
-}
+CalamitasCloneSpawn: You underestimate my power...
+CalamitasCloneSummonBrother: The brothers have been reborn!
+CalamitasCloneFinalPhase: Impressive child, most impressive...

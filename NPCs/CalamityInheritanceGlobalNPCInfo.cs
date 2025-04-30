@@ -4,6 +4,8 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
+using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 
 namespace CalamityInheritance.NPCs
 {
@@ -16,10 +18,12 @@ namespace CalamityInheritance.NPCs
         internal const int MaxAIMode = 100;
         public float[] BossNewAI = new float[MaxAIMode];
         public int BossAITimer = 0;
-        //获取whoami
+        #region 普灾
         public static int LegacyCalamitasClone = -1;
+        public static int LegacyCalamitasCloneP2 = -1;
         public static int LegacyCatalysmClone = -1;
         public static int LegacyCatastropheClone = -1;
+        #endregion
         // 犽绒
         public static int LegacyYharon = -1;
         #region 終灾
@@ -56,6 +60,10 @@ namespace CalamityInheritance.NPCs
                     }
                 }
             }
+            ResetSavedIndex(ref LegacyCalamitasClone, ModContent.NPCType<CalamitasCloneLegacy>());
+            ResetSavedIndex(ref LegacyCalamitasCloneP2, ModContent.NPCType<CalamitasCloneLegacy>());
+            ResetSavedIndex(ref LegacyCatalysmClone, ModContent.NPCType<CataclysmLegacy>());
+            ResetSavedIndex(ref LegacyCatastropheClone, ModContent.NPCType<CatastropheLegacy>());
 
             ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
             ResetSavedIndex(ref LegacySCalCataclysm, ModContent.NPCType<SupremeCataclysmLegacy>());

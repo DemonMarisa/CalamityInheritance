@@ -14,16 +14,6 @@ DraedonsToy: {
 	DisplayName: Draedons Toy
 }
 
-RebornEyeSummon: {
-	Tooltip: ""
-	DisplayName: Reborn Eye Summon
-}
-
-RebornEyeTip: {
-	Tooltip: ""
-	DisplayName: Reborn Eye Tip
-}
-
 PBGLegendaryUpgrade: {
 	Tooltip: ""
 	Tint: ""
@@ -56,7 +46,12 @@ DestroyerLegendaryUpgrade: {
 
 EyeofExtinction: {
 	DisplayName: Eyeof Extinction
-	Tooltip: ""
+	Tooltip:
+		'''
+		[c/CD0000:Death]
+		Summons Supreme Calamitas
+		Not consumable
+		'''
 }
 
 YharonTreasureBagsLegacy: {
@@ -67,4 +62,14 @@ YharonTreasureBagsLegacy: {
 YharonEggLegacy: {
 	DisplayName: Yharon Egg Legacy
 	Tooltip: ""
+}
+
+EyeofDesolationLegacy: {
+	DisplayName: Eye of Desolation[Legacy]
+	Tooltip:
+		'''
+		[c/CD0000:Tonight is going to be a horrific night...]
+		Summons Calamitas Legacy
+		Not consumable
+		'''
 }

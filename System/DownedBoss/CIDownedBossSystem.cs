@@ -20,7 +20,7 @@ namespace CalamityInheritance.System.DownedBoss
         internal static bool _downedLegacySCal = false;
         internal static bool _downedLegacyYharonP1 = false;
         internal static bool _downedBuffedSolarEclipse = false;
-
+        internal static bool _downedCalClone = false;
         public static bool DownedEOW
         {
             get => _downedEOW;
@@ -87,6 +87,17 @@ namespace CalamityInheritance.System.DownedBoss
                     NPC.SetEventFlagCleared(ref _downedBuffedSolarEclipse, -1);
             }
         }
+        public static bool DownedCalClone
+        {
+            get => _downedCalClone;
+            set
+            {
+                if (!value)
+                    _downedCalClone = false;
+                else
+                    NPC.SetEventFlagCleared(ref _downedCalClone, -1);
+            }
+        }
         public static void ResetAllFlags()
         {
             DownedEOW = false;
@@ -95,6 +106,7 @@ namespace CalamityInheritance.System.DownedBoss
             DownedLegacyScal = false;
             DownedLegacyYharonP1 = false;
             DownedBuffedSolarEclipse = false;
+            DownedCalClone = false;
         }
         public override void OnWorldLoad() => ResetAllFlags();
 
@@ -117,6 +129,8 @@ namespace CalamityInheritance.System.DownedBoss
                 downed.Add("CILegacyYharonP1");
             if (DownedBuffedSolarEclipse)
                 downed.Add("CIDownedBuffedSolarEclipse");
+            if (DownedCalClone)
+                downed.Add("CIDownedCalClone");
 
             tag["CIdownedFlags"] = downed;
         }
@@ -130,6 +144,7 @@ namespace CalamityInheritance.System.DownedBoss
             DownedLegacyScal = downed.Contains("CILegacyScal");
             DownedLegacyYharonP1 = downed.Contains("CILegacyYharonP1");
             DownedBuffedSolarEclipse = downed.Contains("CIDownedBuffedSolarEclipse");
+            DownedCalClone = downed.Contains("CIDownedCalClone");
         }
         //发送数据包
         #region 网络同步
@@ -144,7 +159,7 @@ namespace CalamityInheritance.System.DownedBoss
             net1[3] = DownedLegacyScal;
             net1[4] = DownedLegacyYharonP1;
             net1[5] = DownedBuffedSolarEclipse;
-            net1[6] = false;
+            net1[6] = DownedCalClone;
             net1[7] = false;
             writer.Write(net1);
         }
@@ -158,7 +173,7 @@ namespace CalamityInheritance.System.DownedBoss
             //空字节接收的时候就丢弃
             DownedLegacyYharonP1 = net1[4];
             DownedBuffedSolarEclipse = net1[5];
-            _ = net1[6];
+            DownedCalClone = net1[6];
             _ = net1[7];
         }
         #endregion

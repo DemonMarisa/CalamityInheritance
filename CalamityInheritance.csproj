@@ -876,8 +876,6 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="NPCs\Boss\CalamitasClone\Brother\" />
-	  <Folder Include="NPCs\Boss\CalamitasClone\SouSeeker\" />
 	  <Folder Include="SceneEffect\" />
 	</ItemGroup>
 	<ItemGroup>

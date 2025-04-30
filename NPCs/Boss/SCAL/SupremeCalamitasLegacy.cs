@@ -1493,23 +1493,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public void SendStartText()
         {
 
-                if(CIDownedBossSystem.DownedLegacyScal)
-                {
-                    if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount >= 4)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalMoreThan4", Color.OrangeRed);
-                    else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount == 1)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalOnce", Color.OrangeRed);
-                }
-                else
-                {
-                    if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount == 50)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan50", Color.OrangeRed);
-                    else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 19)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.OrangeRed);
-                    else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 4)
-                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.OrangeRed);
-                }
-            
+            if (CIDownedBossSystem.DownedLegacyScal)
+            {
+                if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount >= 4)
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalMoreThan4", Color.OrangeRed);
+                else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerKillCount == 1)
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.KillScalOnce", Color.OrangeRed);
+            }
+            else
+            {
+                if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount == 50)
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan50", Color.OrangeRed);
+                else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 19)
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan20", Color.OrangeRed);
+                else if (Main.LocalPlayer.CIMod().LegacyScal_PlayerDeathCount > 4)
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.Scal_PlayerDeathMoreThan4", Color.OrangeRed);
+            }
         }
         public void SendBattleText(int ID)
         {
@@ -1567,10 +1566,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {
-            cooldownSlot = 1;
+            cooldownSlot = ImmunityCooldownID.Bosses;
             return true;
         }
-
         public override void FindFrame(int frameHeight)
         {
             NPC.frameCounter += 0.15f;

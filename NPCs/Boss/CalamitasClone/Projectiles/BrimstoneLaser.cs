@@ -6,6 +6,7 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 {
     public class BrimstoneLaser : ModProjectile, ILocalizedModType
@@ -49,12 +50,12 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             if (splitTimer <= 0)
             {
                 int numProj = 2;
-                float rotation = MathHelper.ToRadians(20);
+                float rotation = MathHelper.ToRadians(30);
                 if (Projectile.owner == Main.myPlayer)
                 {
                     for (int i = 0; i < numProj + 1; i++)
                     {
-                        Vector2 perturbedSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numProj - 1)));
+                        Vector2 perturbedSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y).RotatedBy(i == 0 ? -rotation : i == 2 ? rotation : 0);
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<BrimstoneLaserSplit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                     }
                 }

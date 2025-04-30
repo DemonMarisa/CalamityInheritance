@@ -8,7 +8,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
     public class BrimstoneLaserSplit : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
-        public override string Texture => "CalamityInheritance/NPCs/Boss/Calamitas/Projectiles/BrimstoneLaser";
+        public override string Texture => "CalamityInheritance/NPCs/Boss/CalamitasClone/Projectiles/BrimstoneLaser";
 
         public override void SetStaticDefaults()
         {

@@ -68,8 +68,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 Projectile.ai[1] = 1f;
                 SoundEngine.PlaySound(FireSound, Projectile.position);
             }
-
-            Projectile.velocity *= 1.08f;
+            // 普灾发射时速度更慢
+            if (Projectile.ai[2] == 0f)
+                Projectile.velocity *= 1.03f;
+            else
+                Projectile.velocity *= 1.08f;
 
             if (Projectile.velocity.X < 0f)
             {
@@ -107,7 +110,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.ScalDebuffs(180, 240, 0);
+            // 用于普灾的差分
+            if (Projectile.ai[2] == 0f)
+                target.ScalDebuffs(180, 240, 0);
+            else
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 90);
+
         }
 
         public override void OnKill(int timeLeft)

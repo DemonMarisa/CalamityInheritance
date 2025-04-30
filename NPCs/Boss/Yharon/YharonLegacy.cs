@@ -7,6 +7,8 @@ using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Dusts;
 using CalamityMod.Events;
 using CalamityMod.NPCs;
 using CalamityMod.Particles;
@@ -317,6 +319,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 return;
             }
             #endregion
+
+            // 目标死亡后消失
+            if (!target.active || target.dead)
+            {
+                DoBehavior_FlyAway(attackTimer, ref frameType);
+                return;
+            }
 
             float rotationAcc = 0.2f;
 
@@ -1105,5 +1114,15 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         */
         #endregion
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            if (hurtInfo.Damage > 0)
+                target.AddBuff(ModContent.BuffType<Dragonfire>(), 180, true);
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+            cooldownSlot = ImmunityCooldownID.Bosses;
+            return true;
+        }
     }
 }

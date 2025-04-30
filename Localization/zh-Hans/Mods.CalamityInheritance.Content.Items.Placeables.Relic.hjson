@@ -7,3 +7,8 @@ ScalTrophy: {
 	DisplayName: 至尊灾厄纪念章
 	Tooltip: "[c/8B0000:可曾享受地狱之旅？]"
 }
+
+CalCloneRelic: {
+	DisplayName: 灾厄之眼圣物
+	Tooltip: "[c/8B0000:这只是个开始]"
+}

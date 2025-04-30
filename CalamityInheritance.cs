@@ -25,6 +25,7 @@ using CalamityInheritance.Common.ModSupport;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.NPCs.Boss.Yharon.Sky;
 using CalamityInheritance.Common.Hook;
+using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
 
 namespace CalamityInheritance
 {
@@ -116,6 +117,10 @@ namespace CalamityInheritance
             // 丛林龙的SKY
             Filters.Scene["CalamityInheritance:Yharon"] = new Filter(new YharonScreenShaderDataLegacy("FilterMiniTower").UseColor(1f, 0.4f, 0f).UseOpacity(0.75f), EffectPriority.VeryHigh);
             SkyManager.Instance["CalamityInheritance:Yharon"] = new YharonSkyLegacy();
+
+            // 红色
+            Filters.Scene["CalamityInheritance:CalClone"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            SkyManager.Instance["CalamityInheritance:CalClone"] = new CalCloneSky();
 
             AstralArcanumUI.Load(this);
             CalPopupGUIManager.LoadGUIs();

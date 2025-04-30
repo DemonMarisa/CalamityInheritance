@@ -7,3 +7,8 @@ ScalTrophy: {
 	DisplayName: Supreme Calamitas Trophy
 	Tooltip: "[c/8B0000:Do you enjoy going through hell?]"
 }
+
+CalCloneRelic: {
+	DisplayName: Cal Clone Relic
+	Tooltip: ""
+}

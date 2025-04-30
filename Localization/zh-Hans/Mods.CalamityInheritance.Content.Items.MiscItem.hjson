@@ -20,30 +20,6 @@ DraedonsToy: {
 	DisplayName: 嘉登的神秘遥控器[Legacy]
 }
 
-RebornEyeSummon: {
-	Tooltip:
-		'''
-		在夜晚使用时用于召唤灾厄之眼……吗?
-		使用时不会被消耗
-		[c/CD0000:她一直都在, 而且一直在看着你]
-		'''
-	DisplayName: 荒芜之眼[Reborn]
-}
-
-RebornEyeTip: {
-	Tooltip:
-		'''
-		你拿到这个纸条的时候, 应该代表你成功合成了荒芜之眼[Reborn]这一召唤物
-		这个召唤物会将一个使用了旧版死亡模式AI的Boss召唤出来。但是因为现在灾厄的环境, 可能会比较难以应对
-		因此在与这一Boss战斗的时候, 模组会为你提供一些战斗增益方面的帮助
-		以下是增益列表：
-		准许无限飞行[i:EmpressFlightBooster], 强化移动速度[i:HermesBoots], 垂直速度[i:AngelWings], 接触伤害减免[i:CalamityMod/FleshTotem]
-		强化冰灵旋刃[i:CalamityInheritance/MeleeTypeKelvinCatalyst], 北辰鹦哥鱼[i:CalamityInheritance/PolarisParrotfishLegacy], 恶魔之叉[i:CalamityInheritance/DemonicPitchforkLegacy], 架式扫射机[i:CalamityInheritance/MountedScannerLegacy], 圣时之锤[盗贼][i:CalamityInheritance/RogueTypeHammerPwnageLegacy]
-		强化宝光盾牌[i:CalamityMod/OrnateShield], 十字盾[i:AnkhShield], 炫彩凝胶[i:CalamityInheritance/GrandGelatinLegacy]与职业徽章[i:WarriorEmblem]
-		'''
-	DisplayName: 请读这个纸条！
-}
-
 PBGLegendaryUpgrade: {
 	Tooltip:
 		'''
@@ -103,7 +79,7 @@ EyeofExtinction: {
 	DisplayName: 灭世之眼[Legacy]
 	Tooltip:
 		'''
-		[c/CD0000:她等待着你]
+		[c/CD0000:死亡]
 		召唤至尊灾厄
 		'''
 }
@@ -119,5 +95,15 @@ YharonEggLegacy: {
 		'''
 		击败强化日食前，召唤丛林龙（阶段一）
 		击败强化日食后，召唤丛林龙（阶段二）
+		'''
+}
+
+EyeofDesolationLegacy: {
+	DisplayName: 荒芜之眼[Legacy]
+	Tooltip:
+		'''
+		[c/CD0000:这将会是一个恐怖的夜晚...]
+		召唤灾厄之眼[Legacy]
+		不消耗
 		'''
 }

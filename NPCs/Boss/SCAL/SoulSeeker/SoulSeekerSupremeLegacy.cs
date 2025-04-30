@@ -93,10 +93,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
                 start = false;
             }
             NPC.TargetClosest(true);
+
             Vector2 direction = Main.player[NPC.target].Center - NPC.Center;
             direction.Normalize();
             direction *= 9f;
             NPC.rotation = direction.ToRotation();
+
             timer++;
             if (timer > 180)
             {
@@ -114,7 +116,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
                 NPC.netUpdate = true;
                 return false;
             }
+
             Player player = Main.player[NPC.target];
+
             NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<SupremeCalamitasLegacy>())];
             double deg = NPC.ai[1];
             double rad = deg * (Math.PI / 180);

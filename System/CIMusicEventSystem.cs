@@ -69,18 +69,25 @@ namespace CalamityInheritance.System
             CalAddEntry("FirstEnterWorld", "CalamityTitle", TimeSpan.FromSeconds(CalamityTitleTime),
                 () => true, () => CIConfig.Instance.TaleOfACruelWorld);
 
+            CalAddEntry("CIClonoeDefeated", "Interlude1", TimeSpan.FromSeconds(214.577d),
+                () => CIDownedBossSystem.DownedCalClone, () => CalamityConfig.Instance.Interlude1,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
+
             AddEntry("YharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.5d),
-                () => DownedBossSystem.downedYharon, () => CIConfig.Instance.Tyrant1);
+                () => DownedBossSystem.downedYharon, () => CIConfig.Instance.Tyrant1,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
 
             AddEntry("ExoMechsDefeated", "RequiemsOfACruelWorld", TimeSpan.FromSeconds(364.032d),
                 () => DownedBossSystem.downedExoMechs, () => CIConfig.Instance.Exomechs,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
             AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(364.1d),
-                () => CalamityGlobalNPC.SCalAcceptance != -1, () => CIConfig.Instance.Scal);
+                () => CalamityGlobalNPC.SCalAcceptance != -1, () => CIConfig.Instance.Scal,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
 
             CalAddEntry("LegacyScalDefeated", "Interlude3", TimeSpan.FromSeconds(295.932d),
-                () => CIDownedBossSystem.DownedLegacyScal, () => CIConfig.Instance.Scal);
+                () => CIDownedBossSystem.DownedLegacyScal, () => CIConfig.Instance.Scal,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
 
         }
 

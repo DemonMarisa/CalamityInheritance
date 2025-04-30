@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -106,7 +107,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.ScalDebuffs(240, 360, 0);
+            // 用于普灾的差分
+            if (Projectile.ai[2] == 0f)
+                target.ScalDebuffs(240, 360, 0);
+            else
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 90);
         }
 
         public override void OnKill(int timeLeft)

@@ -80,9 +80,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 }
 
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tacleVel, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
+                //取消local无敌帧
+                Main.projectile[p].usesLocalNPCImmunity = false;
+                //启用静态无敌帧
                 Main.projectile[p].usesIDStaticNPCImmunity = true;
-                Main.projectile[p].idStaticNPCHitCooldown = 30;
-                Main.projectile[p].penetrate = 3;
+                //给予10
+                Main.projectile[p].idStaticNPCHitCooldown = 10;
             }
         }
 

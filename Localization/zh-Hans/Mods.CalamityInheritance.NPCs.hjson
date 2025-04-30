@@ -19,10 +19,10 @@ CalamitaReborn.DisplayName: Calamitas Legacy
 CalamitasPhase2Legacy.DisplayName: Calamitas Phase2 Legacy
 LifeSeekerReborn.DisplayName: Life Seeker Reborn
 SoulSeekerReborn.DisplayName: Soul Seeker Reborn
-CalamitasReborn.DisplayName: 灾厄之眼
-CalamitasRebornPhase2.DisplayName: 灾厄之眼-再临
-CataclysmReborn.DisplayName: 灾祸-再临
-CatastropheReborn.DisplayName: 灾难-再临
+// CalamitasReborn.DisplayName: Calamitas
+// CalamitasRebornPhase2.DisplayName: Calamitas Reborn
+// CataclysmReborn.DisplayName: Cataclysm Reborn
+// CatastropheReborn.DisplayName: Catastrophe Reborn
 SupremeCalamitasLegacy.DisplayName: 至尊灾厄
 SCalWormBody.DisplayName: 灾坟虫身体
 SCalWormBodyWeak.DisplayName: 灾坟虫之心
@@ -32,4 +32,8 @@ SCalWormTail.DisplayName: 灾坟虫尾部
 SupremeCataclysmLegacy.DisplayName: 至尊灾祸
 SupremeCatastropheLegacy.DisplayName: 至尊灾难
 SoulSeekerSupremeLegacy.DisplayName: 至尊探魂眼
-// YharonLegacy.DisplayName: Yharon Legacy
+YharonLegacy.DisplayName: 丛林龙 - 犽戎
+CalamitasCloneLegacy.DisplayName: 灾厄之眼
+// CataclysmLegacy.DisplayName: Cataclysm Legacy
+// CatastropheLegacy.DisplayName: Catastrophe Legacy
+// LifeSeekerLegacy.DisplayName: Life Seeker Legacy

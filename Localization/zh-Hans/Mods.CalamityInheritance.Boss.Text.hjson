@@ -26,8 +26,6 @@ ScalEnterPhase20: ֻ只有两次死亡，干的不错，你的奖励在这儿。
 ScalEnterPhase21: 过一过二不过三，给你特别的奖励。
 ScalEnterPhase22: 下地狱吧！
 YharonPreEclipse: 黑蚀之日蓄势待发。
-
-Calamitas: {
-	SpawnSeekers: 有趣……非常有趣……
-	SpawnBrothers: 兄弟已经重生！
-}
+CalamitasCloneSpawn: 你低估了我的力量...
+CalamitasCloneSummonBrother: 兄弟重生！
+CalamitasCloneFinalPhase: 你成功给我留下了深刻的印象，留下了最深刻的印象……
