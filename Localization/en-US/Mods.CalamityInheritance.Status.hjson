@@ -12,3 +12,19 @@ RangedLevelMax: 射手熟练度满级了！
 MagicLevelMax: 法师熟练度满级了！
 SummonLevelMax: 召唤熟练度满级了！
 RogueLevelMax: 盗贼熟练度满级了！
+ArmageddonText: Bosses will now kill you instantly.
+ArmageddonText2: Bosses will no longer kill you instantly.
+DeathText: Death is active; enjoy the fun.
+DeathText2: Death is not active; not fun enough for you?
+RevengeText: Revengeance is active.
+RevengeText2: Revengeance is not active.
+DefiledText: Your soul is mine...
+DefiledText2: Your soul is yours once more...
+IronHeartText: Iron Heart is active, healing is disabled.
+IronHeartText2: Iron Heart is not active, healing is restored.
+BloodMoon: The Blood Moon is rising...
+BloodMoon2: The Blood Moon has risen...
+MaliceText: Malice is active; witness the horror!
+MaliceText2: Malice is not active
+MLGRune: 恶魔纹章已开启，刷怪率与上限已提升。
+MLGRunev2: 恶魔纹章已开启，刷怪率与上限已复原。

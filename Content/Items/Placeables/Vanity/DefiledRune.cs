@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Tiles.Vanity;
+using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Rarities;
 using CalamityMod.World;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -52,12 +54,13 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 if (!CIWorld.Defiled)
                 {
                     CIWorld.Defiled = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText", Color.DarkSeaGreen);
                 }
                 else
                 {
                     CIWorld.Defiled = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText2", Color.DarkSeaGreen);
                 }
-                Main.NewText($" Defiled = {CIWorld.Defiled}");
                 CalamityNetcode.SyncWorld();
             }
             return true;

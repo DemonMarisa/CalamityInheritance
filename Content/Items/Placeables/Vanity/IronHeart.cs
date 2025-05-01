@@ -4,6 +4,8 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.World;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -50,12 +52,13 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 if (!CIWorld.IronHeart)
                 {
                     CIWorld.IronHeart = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.IronHeartText", Color.LightSkyBlue);
                 }
                 else
                 {
                     CIWorld.IronHeart = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.IronHeartText2", Color.LightSkyBlue);
                 }
-                Main.NewText($" IronHeart = {CIWorld.IronHeart}");
                 CalamityNetcode.SyncWorld();
             }
             return true;

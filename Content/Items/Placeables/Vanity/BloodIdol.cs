@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Vanity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.World;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -49,7 +51,18 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                Main.bloodMoon = true;
+                if(!Main.IsItDay())
+                {
+                    if (!Main.bloodMoon)
+                    {
+                        Main.bloodMoon = true;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.BloodMoon", Color.Crimson);
+                    }
+                    if (Main.bloodMoon)
+                    {
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.BloodMoon2", Color.Crimson);
+                    }
+                }
             }
             return true;
         }

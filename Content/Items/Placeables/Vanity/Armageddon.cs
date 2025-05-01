@@ -7,6 +7,8 @@ using CalamityMod.Systems;
 using CalamityMod;
 using CalamityMod.World;
 using CalamityInheritance.World;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -55,12 +57,13 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 if (!CIWorld.Armageddon)
                 {
                     CIWorld.Armageddon = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.ArmageddonText", Color.Fuchsia);
                 }
                 else
                 {
                     CIWorld.Armageddon = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.ArmageddonText2", Color.Fuchsia);
                 }
-                Main.NewText($" Armageddon = {CIWorld.Armageddon}");
                 CalamityNetcode.SyncWorld();
             }
             return true;

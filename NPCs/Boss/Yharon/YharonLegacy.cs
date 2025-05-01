@@ -1084,6 +1084,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse", Color.Orange);
                 CIFunction.SendTextOnPlayer("Boss.Text.YharonPreEclipse", Color.Orange);
             }
+            else
+                CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse2", Color.Orange);
 
             SoundEngine.PlaySound(CISoundID.SoundCurseFlamesAttack, NPC.position);
 

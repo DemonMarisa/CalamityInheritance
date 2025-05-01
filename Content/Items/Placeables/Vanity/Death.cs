@@ -6,6 +6,8 @@ using CalamityInheritance.Rarity;
 using CalamityMod.World;
 using CalamityMod;
 using CalamityInheritance.World;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -51,14 +53,24 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             {
                 if (!CalamityWorld.death)
                 {
+                    if (!CalamityWorld.revenge)
+                    {
+                        CalamityWorld.revenge = true;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.RevengeText", Color.Crimson);
+                    }
                     CalamityWorld.death = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DeathText", Color.MediumPurple);
                 }
                 else
                 {
-                    CIWorld.Malice = false;
+                    if (CIWorld.Malice)
+                    {
+                        CIWorld.Malice = false;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText2", Color.Crimson);
+                    }
                     CalamityWorld.death = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DeathText2", Color.MediumPurple);
                 }
-                Main.NewText($" death = {CalamityWorld.death}");
                 CalamityNetcode.SyncWorld();
             }
             return true;

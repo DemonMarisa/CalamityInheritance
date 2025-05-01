@@ -118,6 +118,9 @@ namespace CalamityInheritance.CIPlayer
 
             // 恶意
             Malice();
+
+            // 铁心
+            IronHeartChange();
         }
 
         public void Buffs()

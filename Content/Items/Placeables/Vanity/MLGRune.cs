@@ -8,6 +8,7 @@ using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.World;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -55,12 +56,13 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 if (!modPlayer.MLG)
                 {
                     modPlayer.MLG = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MLGRune", Color.DarkRed);
                 }
                 else
                 {
                     modPlayer.MLG = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MLGRune2", Color.DarkRed);
                 }
-                Main.NewText($" MLG = {modPlayer.MLG}");
             }
             return true;
         }

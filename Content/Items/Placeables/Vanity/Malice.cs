@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.World;
 using CalamityInheritance.CIPlayer;
+using CalamityMod.World;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -56,13 +58,24 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             {
                 if (!CIWorld.Malice)
                 {
+                    if (!CalamityWorld.revenge)
+                    {
+                        CalamityWorld.revenge = true;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.RevengeText", Color.Crimson);
+                    }
+                    if (!CalamityWorld.death)
+                    {
+                        CalamityWorld.death = true;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DeathText", Color.Crimson);
+                    }
                     CIWorld.Malice = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText", Color.LightGoldenrodYellow);
                 }
                 else
                 {
                     CIWorld.Malice = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText2", Color.LightGoldenrodYellow);
                 }
-                Main.NewText($" Malice = {CIWorld.Malice}");
                 CalamityNetcode.SyncWorld();
             }
             return true;

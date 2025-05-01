@@ -24,9 +24,6 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer modPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
 
-            if (CIWorld.IronHeart)
-                calPlayer.noLifeRegen = true;
-
             if (AstralArcanumEffect)
             {
                 bool lesserEffect = false;
@@ -57,6 +54,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             TotalDebuff();
+            IronHeartChange();
         }
         #endregion
         public void TotalDebuff()

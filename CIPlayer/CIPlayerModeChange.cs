@@ -1,5 +1,7 @@
 ﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Environment;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
@@ -18,6 +20,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -300,10 +303,41 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
         #endregion
+        #region 铁心
         public void IronHeartChange()
         {
+            CalamityPlayer calPlayer = Player.Calamity();
             if (CIWorld.IronHeart)
+            {
+                calPlayer.noLifeRegen = true;
                 Player.lifeRegen = 0;
+                Player.lifeSteal = 0;
+            }
         }
+        #region Get Heal Life
+        public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
+        {
+            if (CIWorld.IronHeart)
+                healValue = 0;
+        }
+        #endregion
+        public void ModeHit(ref Player.HurtModifiers modifiers)
+        {
+            if (CIWorld.IronHeart)
+            {
+                int damageMin = 40 + (Player.statLifeMax2 / 10);
+                if (modifiers.SourceDamage.Base < damageMin)
+                {
+                    Player.endurance = 0f;
+                    modifiers.SourceDamage.Base = damageMin;
+                }
+
+                if (modifiers.SourceDamage.Base <= damageMin)
+                    SoundEngine.PlaySound(CISoundMenu.IronHeartHurt, Player.Center);
+                else
+                    SoundEngine.PlaySound(CISoundMenu.IronHeartBigHurt, Player.Center);
+            }
+        }
+        #endregion
     }
 }

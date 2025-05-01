@@ -8,6 +8,8 @@ using CalamityMod;
 using CalamityMod.World;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -54,14 +56,23 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 if (!CalamityWorld.revenge)
                 {
                     CalamityWorld.revenge = true;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.RevengeText", Color.Crimson);
                 }
                 else
                 {
                     CalamityWorld.revenge = false;
-                    CalamityWorld.death =  false;
-                    CIWorld.Malice = false;
+                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.RevengeText2", Color.Crimson);
+                    if (CalamityWorld.death)
+                    {
+                        CalamityWorld.death = false;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DeathText2", Color.Crimson);
+                    }
+                    if (CIWorld.Malice)
+                    {
+                        CIWorld.Malice = false;
+                        CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText2", Color.LightGoldenrodYellow);
+                    }
                 }
-                Main.NewText($" revenge = {CalamityWorld.revenge}");
             }
             return true;
         }

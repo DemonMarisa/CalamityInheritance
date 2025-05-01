@@ -915,7 +915,11 @@ namespace CalamityInheritance.CIPlayer
                     Player.KillMeForGood();
                 }
             }
-            SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);
+
+            if(CIWorld.IronHeart)
+                SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
+            else
+                SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);
             Player.headVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
             Player.bodyVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
             Player.legVelocity.Y = Main.rand.Next(-40, -10) * 0.1f;
