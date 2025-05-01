@@ -1027,15 +1027,14 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         {
             string key = "Mods.CalamityMod.Status.Progression.AbyssDropsText";
             Color messageColor = Color.RoyalBlue;
-            if (!DownedBossSystem.downedLeviathan)
+            // 不用标记了，我给原灾利维坦掉落挂了个钩子，现在他会同时判定普灾和利维坦了
+            if (!CIDownedBossSystem.DownedCalClone)
             {
                 if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
                     SoundEngine.PlaySound(CommonCalamitySounds.WyrmScreamSound, Main.player[Main.myPlayer].Center);
 
                 CalamityUtils.DisplayLocalizedText(key, messageColor);
             }
-            //直接标记击倒利维坦启用深渊材料
-            DownedBossSystem.downedLeviathan = true;
         }
         #endregion
     }

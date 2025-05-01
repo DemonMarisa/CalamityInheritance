@@ -99,6 +99,7 @@ namespace CalamityInheritance
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             FlightBarDrawHook.Load();
+            DropHelperHook.Load(this);
             #endregion
         }
         public void LoadClient()
