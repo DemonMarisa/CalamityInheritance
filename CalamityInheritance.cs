@@ -24,8 +24,9 @@ using CalamityInheritance.System;
 using CalamityInheritance.Common.ModSupport;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.NPCs.Boss.Yharon.Sky;
-using CalamityInheritance.Common.Hook;
+using CalamityInheritance.Common.CIHook;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
+using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance
 {
@@ -97,8 +98,7 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
-            // 神殇飞行条贴图适配
-            FlightBarDrawHook.Load(this);
+            FlightBarDrawHook.Load();
             #endregion
         }
         public void LoadClient()
@@ -161,6 +161,26 @@ namespace CalamityInheritance
 
         #region Mod Support
         public override void PostSetupContent() => CIWeakReferenceSupport.Setup();
+        #endregion
+
+        #region Force ModConfig save (Reflection)
+        internal static void SaveConfig(CalamityConfig cfg)
+        {
+            // There is no current way to manually save a mod configuration file in tModLoader.
+            // The method which saves mod config files is private in ConfigManager, so reflection is used to invoke it.
+            try
+            {
+                MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);
+                if (saveMethodInfo is not null)
+                    saveMethodInfo.Invoke(null, new object[] { cfg });
+                else
+                    Instance.Logger.Error("TML ConfigManager.Save reflection failed. Method signature has changed. Notify Calamity Devs if you see this in your log.");
+            }
+            catch
+            {
+                Instance.Logger.Error("An error occurred while manually saving Calamity mod configuration. This may be due to a complex mod conflict. It is safe to ignore this error.");
+            }
+        }
         #endregion
     }
 }

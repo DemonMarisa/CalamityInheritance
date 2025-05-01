@@ -212,3 +212,13 @@ AncientClasperBuff: {
 	// DisplayName: Ancient Clasper Buff
 	// Description: Mods.CalamityInheritance.Buffs.AncientClasperBuff.Description
 }
+
+MaliceModeCold: {
+	// DisplayName: Malice Mode Cold
+	// Description: Mods.CalamityInheritance.Buffs.MaliceModeCold.Description
+}
+
+MaliceModeHot: {
+	// DisplayName: Malice Mode Hot
+	// Description: Mods.CalamityInheritance.Buffs.MaliceModeHot.Description
+}

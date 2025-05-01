@@ -16,6 +16,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
 {
     public class MaliceChange
     {
+        #region AI
         public class MaliceModeProj : GlobalProjectile
         {
             #region 弹幕速度
@@ -134,6 +135,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
             }
             #endregion
         }
+        #endregion
     }
 }
    

@@ -115,6 +115,9 @@ namespace CalamityInheritance.CIPlayer
 
             // 神殇
             Defiled();
+
+            // 恶意
+            Malice();
         }
 
         public void Buffs()

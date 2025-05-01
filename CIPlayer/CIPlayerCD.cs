@@ -39,6 +39,9 @@ namespace CalamityInheritance.CIPlayer
         public int GlobalGodSlayerHealProjCD = 0;
         //归元漩涡
         public int BuffSubsumingVortexFireRate = 0;
+        // 环境的计时器
+        public int maliceModeBlizzardTime = 0;
+        public int maliceModeUnderworldTime = 0;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)

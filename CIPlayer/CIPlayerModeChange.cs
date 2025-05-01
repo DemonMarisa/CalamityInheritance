@@ -1,16 +1,20 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Projectiles.Environment;
+using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Events;
+using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,10 +33,13 @@ namespace CalamityInheritance.CIPlayer
                 // 禁用翅膀
                 Player.wingTime = 0;
                 Player.wingTimeMax = 0;
+                Player.rocketTime = 0;
+
                 Player.CIMod().EmpressBooster = false;
                 calPlayer.infiniteFlight = false;
             }
         }
+        #region 恶意
         public void Malice()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -56,13 +63,7 @@ namespace CalamityInheritance.CIPlayer
                         immunityToHotAndCold || calPlayer.externalHeatImmunity || Player.buffImmune[BuffID.OnFire] || Player.buffImmune[BuffID.OnFire3];
                     #endregion
                     #region 洞穴黑暗
-                    if (Player.ZoneRockLayerHeight && !calPlayer.ZoneAbyss && !Player.ZoneUnderworldHeight)
-                    {
-                        float WorldRotio = (Player.Center.Y - 200) / Main.bottomWorld;
-                        if (WorldRotio > 0.15f)
-                            WorldRotio -= 0.15f;
-                        calPlayer.caveDarkness = WorldRotio;
-                    }
+                    // 在System里面
                     #endregion
                     #region 星辉
                     // Astral effects
@@ -71,9 +72,9 @@ namespace CalamityInheritance.CIPlayer
                         Player.gravity *= 0.75f;
                     }
                     #endregion
-                    #region 太空
+                    #region 太空      
                     // 太空
-                    if (Player.InSpace())
+                    if (inSpace)
                     {
                         if (Main.dayTime)
                         {
@@ -91,131 +92,218 @@ namespace CalamityInheritance.CIPlayer
                     // 丛林水中流血
                     if (Player.ZoneJungle && Player.wet && !Player.lavaWet && !Player.honeyWet)
                     {
-                        if (Player.IsUnderwater())
+                        if (Collision.DrownCollision(Player.position, Player.width, Player.height, Player.gravDir))
                             Player.AddBuff(BuffID.Bleeding, 300, false);
                     }
                     #endregion
+                    #region 下雨
+                    SPEnvironment(calPlayer);
+                    #endregion
+                    Blizzard(immunityToCold, cIPlayer);
+                    UnderworldHot(immunityToHot, cIPlayer);
                 }
             }
         }
-        public void SPEnvironment()
+        #region 环境变化
+        public void SPEnvironment(CalamityPlayer calPlayer)
         {
             // Ice shards, lightning and sharknadoes
-            bool nearPillar = Player.PillarZone();
-            if (Player.ZoneOverworldHeight && !CalamityPlayer.areThereAnyDamnBosses && Main.invasionType == 0 &&
-                NPC.MoonLordCountdown == 0 && !Player.InSpace() && !DD2Event.Ongoing && !nearPillar)
+            bool nearPillar = Player.CIPillarZone();
+            if (Player.ZoneOverworldHeight && !CalamityPlayer.areThereAnyDamnBosses && Main.invasionType == 0 && NPC.MoonLordCountdown == 0 && !inSpace && !DD2Event.Ongoing && !nearPillar)
             {
-                Vector2 sharknadoSpawnPoint = new Vector2(Player.Center.X - (float)Main.rand.Next(300, 701), Player.Center.Y - (float)Main.rand.Next(700, 801));
-                if (point.X > Main.maxTilesX / 2)
-                    sharknadoSpawnPoint.X = Player.Center.X + (float)Main.rand.Next(300, 701);
-
+                // 倍率：越小越频繁
+                float frequencyMult = 1f - Main.cloudAlpha; // 3 to 0.055
                 if (Main.raining)
                 {
-                    float frequencyMult = (1f - Main.cloudAlpha) * CalamityConfig.Instance.DeathWeatherMultiplier; // 3 to 0.055
-
-                    Vector2 spawnPoint = new Vector2(Player.Center.X + (float)Main.rand.Next(-1000, 1001), Player.Center.Y - (float)Main.rand.Next(700, 801));
-                    Tile tileSafely = Framing.GetTileSafely((int)(spawnPoint.X / 16f), (int)(spawnPoint.Y / 16f));
-
+                    // 下雪
                     if (Player.ZoneSnow)
-                    {
-                        if (!tileSafely.active())
-                        {
-                            int divisor = (int)((Main.hardMode ? 50f : 60f) * frequencyMult);
-                            float windVelocity = (float)Math.Sqrt((double)Math.Abs(Main.windSpeedCurrent)) * (float)Math.Sign(Main.windSpeedCurrent) * (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
-                            Vector2 velocity = new Vector2(windVelocity * 0.2f, 3f * Main.rand.NextFloat());
-
-                            if (Player.miscCounter % divisor == 0 && Main.rand.NextBool(3))
-                                Projectile.NewProjectile(spawnPoint.X, spawnPoint.Y, velocity.X, velocity.Y, ModContent.ProjectileType<IceRain>(), 20, 0f, Player.whoAmI, 2f, 0f);
-                        }
-                    }
-                    else
-                    {
-                        if (player.ZoneBeach && !modPlayer.ZoneSulphur)
-                        {
-                            int randomFrequency = (int)(50f * frequencyMult);
-                            if (player.miscCounter == 280 && Main.rand.NextBool(randomFrequency) && player.ownedProjectileCounts[ProjectileID.Cthulunado] < 1)
-                            {
-                                Main.PlaySound(SoundID.NPCDeath19, (int)sharknadoSpawnPoint.X, (int)sharknadoSpawnPoint.Y);
-                                int num331 = (int)(sharknadoSpawnPoint.Y / 16f);
-                                int num332 = (int)(sharknadoSpawnPoint.X / 16f);
-                                int num333 = 100;
-                                if (num332 < 10)
-                                    num332 = 10;
-                                if (num332 > Main.maxTilesX - 10)
-                                    num332 = Main.maxTilesX - 10;
-                                if (num331 < 10)
-                                    num331 = 10;
-                                if (num331 > Main.maxTilesY - num333 - 10)
-                                    num331 = Main.maxTilesY - num333 - 10;
-
-                                int spawnAreaY = Main.maxTilesY - num331;
-                                for (int num334 = num331; num334 < num331 + spawnAreaY; num334++)
-                                {
-                                    Tile tile = Main.tile[num332, num334];
-                                    if ((tile.active() && Main.tileSolid[(int)tile.type]) || tile.liquid >= 200)
-                                    {
-                                        num331 = num334;
-                                        break;
-                                    }
-                                }
-
-                                int num336 = Projectile.NewProjectile((float)(num332 * 16 + 8), (float)(num331 * 16 - 24), 0f, 0f, ProjectileID.Cthulunado, 50, 4f, player.whoAmI, 16f, 24f);
-                                Main.projectile[num336].netUpdate = true;
-                            }
-                        }
-
-                    }
-                    int randomFrequency2 = (int)(20f * frequencyMult);
-                    if (CalamityWorld.rainingAcid && player.Calamity().ZoneSulphur)
-                        randomFrequency2 = (int)(randomFrequency2 * 3.75);
-                    if (player.miscCounter % (Main.hardMode ? 90 : 120) == 0 && Main.rand.NextBool(randomFrequency2))
-                    {
-                        if (!tileSafely.active())
-                        {
-                            float randomVelocity = Main.rand.NextFloat() - 0.5f;
-                            Vector2 fireTo = new Vector2(spawnPoint.X + 100f * randomVelocity, spawnPoint.Y + 900f);
-                            Vector2 ai0 = fireTo - spawnPoint;
-                            Vector2 velocity = Vector2.Normalize(ai0) * 12f;
-                            Projectile.NewProjectile(spawnPoint.X, spawnPoint.Y, 0f, velocity.Y, ModContent.ProjectileType<LightningMark>(), 0, 0f, player.whoAmI, 0f, 0f);
-                        }
-                    }
+                        SnowProj(frequencyMult);
+                    // 闪电
+                    LightingProj(frequencyMult);
+                    // 沙龙卷
+                    if (Player.ZoneBeach && !calPlayer.ZoneSulphur)
+                        BeachPlus(frequencyMult);
                 }
+                else if (Player.ZoneBeach && !calPlayer.ZoneSulphur)
+                    Beach(frequencyMult);
             }
-            else
+        }
+        #region 冰雹
+        public void SnowProj(float frequencyMult)
+        {
+            Vector2 spawnPoint = new Vector2(Player.Center.X + Main.rand.Next(-1000, 1001), Player.Center.Y - Main.rand.Next(700, 801));
+            Tile tileSafely = Framing.GetTileSafely((int)(spawnPoint.X / 16f), (int)(spawnPoint.Y / 16f));
+
+            if (!tileSafely.HasTile)
             {
-                if (player.ZoneBeach && !modPlayer.ZoneSulphur)
+                // 频率
+                int divisor = (int)((Main.hardMode ? 50f : 60f) * frequencyMult);
+                // 计算风的向量
+                float windVelocity = MathF.Sqrt(MathF.Abs(Main.windSpeedCurrent)) * MathF.Sign(Main.windSpeedCurrent)
+                    * (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+                // 最终向量计算
+                Vector2 velocity = new(windVelocity * 0.2f, 3f * Main.rand.NextFloat());
+                // 发射弹幕
+                if (Player.miscCounter % divisor == 0 && Main.rand.NextBool(3))
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint, velocity, ModContent.ProjectileType<IceRain>(), 20, 0f, Player.whoAmI, 2f, 0f);
+            }
+        }
+        #endregion
+        #region 海滩
+        public void Beach(float frequencyMult)
+        {
+            Vector2 sharknadoSpawnPoint = new Vector2(Player.Center.X - (float)Main.rand.Next(300, 701), Player.Center.Y - (float)Main.rand.Next(700, 801));
+
+            if (Main.rand.NextBool(2)) // 改用更现代的随机判断
+                sharknadoSpawnPoint.X = Player.Center.X + Main.rand.Next(300, 701);
+
+            if (Player.miscCounter == 280 && Main.rand.NextBool(10) && Player.ownedProjectileCounts[ProjectileID.Sharknado] < 1)
+            {
+                SoundEngine.PlaySound(SoundID.NPCDeath19, sharknadoSpawnPoint);
+                // 坐标计算
+                Point tileCoords = sharknadoSpawnPoint.ToTileCoordinates();
+                tileCoords.X = Math.Clamp(tileCoords.X, 10, Main.maxTilesX - 10);
+                tileCoords.Y = Math.Clamp(tileCoords.Y, 10, Main.maxTilesY - 110);
+
+                for (int y = tileCoords.Y; y < Main.maxTilesY - 10; y++)
                 {
-                    if (player.miscCounter == 280 && Main.rand.NextBool(10) && player.ownedProjectileCounts[ProjectileID.Sharknado] < 1)
+                    Tile tile = Main.tile[tileCoords.X, y];
+                    if ((tile.HasTile && Main.tileSolid[tile.TileType]) || tile.LiquidAmount >= 200)
                     {
-                        Main.PlaySound(SoundID.NPCDeath19, (int)sharknadoSpawnPoint.X, (int)sharknadoSpawnPoint.Y);
-                        int num331 = (int)(sharknadoSpawnPoint.Y / 16f);
-                        int num332 = (int)(sharknadoSpawnPoint.X / 16f);
-                        int num333 = 100;
-                        if (num332 < 10)
-                            num332 = 10;
-                        if (num332 > Main.maxTilesX - 10)
-                            num332 = Main.maxTilesX - 10;
-                        if (num331 < 10)
-                            num331 = 10;
-                        if (num331 > Main.maxTilesY - num333 - 10)
-                            num331 = Main.maxTilesY - num333 - 10;
-
-                        int spawnAreaY = Main.maxTilesY - num331;
-                        for (int num334 = num331; num334 < num331 + spawnAreaY; num334++)
-                        {
-                            Tile tile = Main.tile[num332, num334];
-                            if ((tile.active() && Main.tileSolid[(int)tile.type]) || tile.liquid >= 200)
-                            {
-                                num331 = num334;
-                                break;
-                            }
-                        }
-
-                        int num336 = Projectile.NewProjectile((float)(num332 * 16 + 8), (float)(num331 * 16 - 24), 0.01f, 0f, ProjectileID.Sharknado, 25, 4f, player.whoAmI, 16f, 15f);
-                        Main.projectile[num336].netUpdate = true;
+                        tileCoords.Y = y;
+                        break;
                     }
                 }
+                int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), tileCoords.X * 16 + 8, tileCoords.Y * 16 - 24, 0f, 0f, ProjectileID.Sharknado, 50, 4f, Player.whoAmI, 16f, 24f);
+                Main.projectile[proj].netUpdate = true;
             }
+        }
+        #endregion
+        #region 海滩Plus
+        public void BeachPlus(float frequencyMult)
+        {
+            Vector2 sharknadoSpawnPoint = new Vector2(Player.Center.X - (float)Main.rand.Next(300, 701), Player.Center.Y - (float)Main.rand.Next(700, 801));
+            int randomFrequency = (int)(50f * frequencyMult);
+            if (Main.rand.NextBool(2)) // 改用更现代的随机判断
+                sharknadoSpawnPoint.X = Player.Center.X + Main.rand.Next(300, 701);
+
+            if (Player.miscCounter == 280 && Main.rand.NextBool(randomFrequency + 1) && Player.ownedProjectileCounts[ProjectileID.Cthulunado] < 1)
+            {
+                SoundEngine.PlaySound(SoundID.NPCDeath19, sharknadoSpawnPoint);
+                // 坐标计算
+                Point tileCoords = sharknadoSpawnPoint.ToTileCoordinates();
+                tileCoords.X = Math.Clamp(tileCoords.X, 10, Main.maxTilesX - 10);
+                tileCoords.Y = Math.Clamp(tileCoords.Y, 10, Main.maxTilesY - 110);
+
+                for (int y = tileCoords.Y; y < Main.maxTilesY - 10; y++)
+                {
+                    Tile tile = Main.tile[tileCoords.X, y];
+                    if ((tile.HasTile && Main.tileSolid[tile.TileType]) || tile.LiquidAmount >= 200)
+                    {
+                        tileCoords.Y = y;
+                        break;
+                    }
+                }
+                int proj = Projectile.NewProjectile(Player.GetSource_FromThis(), tileCoords.X * 16 + 8, tileCoords.Y * 16 - 24, 0f, 0f, ProjectileID.Cthulunado, 50, 4f, Player.whoAmI, 16f, 24f);
+                Main.projectile[proj].netUpdate = true;
+            }
+        }
+        #endregion
+        #region 闪电
+        public void LightingProj(float frequencyMult)
+        {
+            Vector2 spawnPoint = new Vector2(Player.Center.X + Main.rand.Next(-1000, 1001), Player.Center.Y - Main.rand.Next(700, 801));
+            Tile tileSafely = Framing.GetTileSafely((int)(spawnPoint.X / 16f), (int)(spawnPoint.Y / 16f));
+
+            int randomFrequency2 = (int)(20f * frequencyMult);
+            if (AcidRainEvent.AcidRainEventIsOngoing && Player.Calamity().ZoneSulphur)
+                randomFrequency2 = (int)(randomFrequency2 * 3.75);
+
+            if (Player.miscCounter % (Main.hardMode ? 90 : 120) == 0 && Main.rand.NextBool(randomFrequency2 + 1))
+            {
+                if (!tileSafely.HasTile)
+                {
+                    float randomVelocity = Main.rand.NextFloat() - 0.5f;
+                    Vector2 fireTo = new Vector2(spawnPoint.X + 100f * randomVelocity, spawnPoint.Y + 900f);
+                    Vector2 ai0 = fireTo - spawnPoint;
+                    Vector2 velocity = Vector2.Normalize(ai0) * 12f;
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint.X, spawnPoint.Y, 0f, velocity.Y, ModContent.ProjectileType<LightningMark>(), 0, 0f, Player.whoAmI, 0f, 0f);
+                }
+            }
+        }
+        #endregion
+        #endregion
+        #region 暴风雪
+        public void Blizzard(bool immunityToCold, CalamityInheritancePlayer cIPlayer)
+        {
+            if (!Player.behindBackWall && Main.raining && Player.ZoneSnow && !immunityToCold && Player.ZoneOverworldHeight)
+            {
+                bool affectedByColdWater = Player.wet && !Player.lavaWet && !Player.honeyWet && !Player.arcticDivingGear;
+
+                Player.AddBuff(ModContent.BuffType<MaliceModeCold>(), 2, false);
+                // 增加计时器
+                cIPlayer.maliceModeBlizzardTime++;
+                if (affectedByColdWater)
+                    cIPlayer.maliceModeBlizzardTime++;
+
+            }
+            else if (cIPlayer.maliceModeBlizzardTime > 0)
+            {
+                if (cIPlayer.maliceModeBlizzardTime > 0)
+                {
+                    // 减少
+                    cIPlayer.maliceModeBlizzardTime--;
+                    // 免疫冷冻时减的更多
+                    if (immunityToCold)
+                        cIPlayer.maliceModeBlizzardTime--;
+                }
+            }
+
+            // Cold effects
+            if (cIPlayer.maliceModeBlizzardTime > 1800)
+                Player.AddBuff(BuffID.Frozen, 2, false);
+            if (cIPlayer.maliceModeBlizzardTime > 1980)
+                cIPlayer.KillPlayer();
+        }
+        #endregion
+        #region 地狱
+        public void UnderworldHot(bool immunityToHot, CalamityInheritancePlayer cIPlayer)
+        {
+            // Hot timer
+            if (Player.ZoneUnderworldHeight && !immunityToHot)
+            {
+                bool affectedByHotLava = Player.lavaWet;
+                Player.AddBuff(ModContent.BuffType<MaliceModeHot>(), 2, false);
+                cIPlayer.maliceModeUnderworldTime++;
+                if (affectedByHotLava)
+                    cIPlayer.maliceModeUnderworldTime++;
+            }
+            else if (cIPlayer.maliceModeBlizzardTime > 0)
+            {
+                cIPlayer.maliceModeUnderworldTime--;
+
+                if (immunityToHot)
+                    cIPlayer.maliceModeUnderworldTime--;
+            }
+
+            // Hot effects
+            if (cIPlayer.maliceModeUnderworldTime > 360)
+                Player.AddBuff(BuffID.Weak, 2, false);
+            if (cIPlayer.maliceModeUnderworldTime > 720)
+                Player.AddBuff(BuffID.Slow, 2, false);
+            if (cIPlayer.maliceModeUnderworldTime > 1080)
+                Player.AddBuff(BuffID.OnFire, 2, false);
+            if (cIPlayer.maliceModeUnderworldTime > 1440)
+                Player.AddBuff(BuffID.Confused, 2, false);
+            if (cIPlayer.maliceModeUnderworldTime > 1800)
+                Player.AddBuff(BuffID.Burning, 2, false);
+        }
+        #endregion
+        #endregion
+        public void IronHeartChange()
+        {
+            if (CIWorld.IronHeart)
+                Player.lifeRegen = 0;
         }
     }
 }

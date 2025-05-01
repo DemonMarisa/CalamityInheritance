@@ -123,5 +123,15 @@ namespace CalamityInheritance.Utilities
             mt.AddMapEntry(new Color(120, 85, 60), Language.GetText("MapObject.Trophy"));
             mt.DustType = 7;
         }
+        public static bool CIPillarZone(this Player player)
+        {
+            if (!player.ZoneTowerStardust && !player.ZoneTowerSolar && !player.ZoneTowerVortex)
+            {
+                return player.ZoneTowerNebula;
+            }
+
+            return true;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ using CalamityMod.NPCs.DevourerofGods;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.System.Configs;
 
-namespace CalamityInheritance.Common.Hook
+namespace CalamityInheritance.Common.CIHook
 {
     public class DOGHook
     {

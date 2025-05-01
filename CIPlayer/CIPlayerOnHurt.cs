@@ -24,6 +24,7 @@ using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -106,6 +107,12 @@ namespace CalamityInheritance.CIPlayer
         #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
+            if (CIWorld.IronHeart)
+            {
+                KillPlayer();
+                return false;
+            }
+
             CalamityPlayer calPlayer = Player.Calamity();
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {

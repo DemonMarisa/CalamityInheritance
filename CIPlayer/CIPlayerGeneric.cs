@@ -252,6 +252,8 @@ namespace CalamityInheritance.CIPlayer
                     CIDashDelay++;
                 }
             }
+            // 条件的更新
+            PreUp();
         }
         #endregion
         #region Post Hurt
