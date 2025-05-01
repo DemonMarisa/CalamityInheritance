@@ -112,10 +112,11 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);
 
             LeadingConditionRule postPolter = npcLoot.DefineConditionalDropSet(DropHelper.PostPolter());
+
             if (npc.type == ModContent.NPCType<EidolonWyrmHead>())
                 postPolter.Add(ModContent.ItemType<SoulEdge>(), 1);
 
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumDrone>())
+            if (npc.type == ModContent.NPCType<WulfrumDrone>())
             {
                 npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
@@ -126,7 +127,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
 
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumGyrator>())
+            if (npc.type == ModContent.NPCType<WulfrumGyrator>())
             {
                 npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
@@ -137,7 +138,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
 
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumHovercraft>())
+            if (npc.type == ModContent.NPCType<WulfrumHovercraft>())
             {
                 npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
@@ -148,7 +149,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
 
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumAmplifier>())
+            if (npc.type == ModContent.NPCType<WulfrumAmplifier>())
             {
                 npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
@@ -159,7 +160,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
 
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.WulfrumRover>())
+            if (npc.type == ModContent.NPCType<WulfrumRover>())
             {
                 npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
@@ -169,7 +170,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
                 npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
             }
-            if (npc.type == ModContent.NPCType<CalamityMod.NPCs.NormalNPCs.Cnidrion>())
+            if (npc.type == ModContent.NPCType<Cnidrion>())
             {
                 if (CIServerConfig.Instance.CalExtraDrop == true)
                 {

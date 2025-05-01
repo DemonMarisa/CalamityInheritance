@@ -6,6 +6,8 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.World;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -27,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<RevengeTiles>();
             Item.rare = ModContent.RarityType<PureRed>();
         }
@@ -38,6 +40,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -47,10 +51,17 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CalamityWorld.revenge == true)
-                    CalamityWorld.revenge = false;
-                if (CalamityWorld.revenge == false)
+                if (!CalamityWorld.revenge)
+                {
                     CalamityWorld.revenge = true;
+                }
+                else
+                {
+                    CalamityWorld.revenge = false;
+                    CalamityWorld.death =  false;
+                    CIWorld.Malice = false;
+                }
+                Main.NewText($" revenge = {CalamityWorld.revenge}");
             }
             return true;
         }

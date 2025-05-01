@@ -61,6 +61,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             var calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
 
+            calPlayer.WearingPostMLSummonerSet = true;
             calPlayer.tarraSet = true;
             calPlayer.tarraMage = true;
 

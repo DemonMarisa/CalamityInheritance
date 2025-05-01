@@ -32,3 +32,8 @@ CryoBar: {
 	Tooltip: Cold to the touch
 	DisplayName: Cryo Bar
 }
+
+BlightedLens: {
+	DisplayName: Blighted Lens
+	Tooltip: ""
+}

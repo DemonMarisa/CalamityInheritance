@@ -63,3 +63,13 @@ Malice: {
 		曾被用来开启恶意模式
 		'''
 }
+
+BlightedEyeBanner: {
+	// DisplayName: Blighted Eye Banner
+	// Tooltip: ""
+}
+
+CosmicElementalBanner: {
+	// DisplayName: Cosmic Elemental Banner
+	// Tooltip: ""
+}

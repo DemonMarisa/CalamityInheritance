@@ -1,6 +1,5 @@
 ﻿using System;
 using CalamityInheritance.Buffs.Melee;
-using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
@@ -14,6 +13,7 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.CalPlayer;
@@ -21,10 +21,7 @@ using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
-using CalamityMod.Items.Materials;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
@@ -43,9 +40,14 @@ namespace CalamityInheritance.CIPlayer
     {
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
+            // 末日模式
+            if (CIWorld.Armageddon)
+                KillPlayer();
+
             CalamityPlayer calPlayer = Player.Calamity();
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
+
             #region Custom Hurt Sounds
             if (calPlayer.hurtSoundTimer == 0)
             {
@@ -69,7 +71,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.AddBuff(ModContent.BuffType<BloodyBoost>(), 600);
                 damageMult += 1.25;
             }
-            
+            // 恶意模式额外受到25%伤害
+            if (CIWorld.Malice)
+                damageMult += 0.25;
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
             #region 免伤
@@ -281,6 +285,11 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
+
+            // 末日模式禁用闪避
+            if (CIWorld.Armageddon)
+                return false;
+
             //日食魔镜的闪避优于所有闪避之前执行
             if (CheckEMirror())
                 return true;
@@ -623,7 +632,6 @@ namespace CalamityInheritance.CIPlayer
                 yharimArmorinvincibility = 60;
         }
         #endregion
- 
         public void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
         {
             #region shield
@@ -941,7 +949,5 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-       
-
     }
 }

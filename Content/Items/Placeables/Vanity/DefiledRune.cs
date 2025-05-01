@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<DefiledRuneTiles>();
             Item.rare = ModContent.RarityType<PureGreen>();
         }
@@ -38,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -47,10 +49,16 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CIWorld.Defiled == true)
-                    CIWorld.Defiled = false;
-                if (CIWorld.Defiled == false)
+                if (!CIWorld.Defiled)
+                {
                     CIWorld.Defiled = true;
+                }
+                else
+                {
+                    CIWorld.Defiled = false;
+                }
+                Main.NewText($" Defiled = {CIWorld.Defiled}");
+                CalamityNetcode.SyncWorld();
             }
             return true;
         }

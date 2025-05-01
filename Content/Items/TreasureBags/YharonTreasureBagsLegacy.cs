@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Items.TreasureBags
             Item.value = CIShopValue.RarityPricePureRed;
             Item.consumable = true;
             Item.maxStack = 9999;
+            Item.expert = true;
         }
         public override bool CanRightClick()
         {

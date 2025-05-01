@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.World;
 using CalamityMod;
 using System;
 using Terraria;
@@ -23,6 +24,7 @@ namespace CalamityInheritance.Core
         public static readonly Condition DownedLegacyScal = Create("DownedLegacyScal", () => CIDownedBossSystem.DownedLegacyScal);
         public static readonly Condition DownedLegacyYharonP1 = Create("DownedLegacyYharonP1", () => CIDownedBossSystem.DownedLegacyYharonP1);
         public static readonly Condition DownedBuffedSolarEclipse = Create("DownedBuffedSolarEclipse", () => CIDownedBossSystem.DownedBuffedSolarEclipse);
-
+        public static readonly Condition ArmageddonNoNor = Create("ArmageddonDrop", () => CIWorld.Armageddon && (Main.expertMode || Main.masterMode));
+        public static readonly Condition Malice = Create("Malice", () => CIWorld.Malice);
     }
 }

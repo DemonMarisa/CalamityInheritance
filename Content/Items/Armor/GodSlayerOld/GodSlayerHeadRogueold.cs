@@ -48,7 +48,9 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             modPlayer.rogueStealthMax += getMaxStealth / 7;
             modPlayer.wearingRogueArmor = true;
             const short onlyDash = 2;
-            const short onlyReborn = 1; 
+            const short onlyReborn = 1;
+
+            modPlayer.WearingPostMLSummonerSet = true;
             int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
             modPlayer1.GodSlayerReborn = mode != onlyDash;
             player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);

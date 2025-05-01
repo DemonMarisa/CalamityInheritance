@@ -251,6 +251,7 @@ namespace CalamityInheritance.Utilities
                 rule.ReportDroprates(list2, ratesInfo);
             }
             list.AddRange(list2.Where(i => IsNotMaterial(ContentSamples.ItemsByType[i.itemId], includeMaterial)).Select(item2 => item2.itemId));
+
             List<int> bagdrops = new();
             foreach (var bag in list)
             {

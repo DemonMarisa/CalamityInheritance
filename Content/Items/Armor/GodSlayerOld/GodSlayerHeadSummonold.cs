@@ -49,6 +49,8 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
             player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
             usPlayer.GodSlayerReborn = mode != onlyDash;
+
+            calPlayer.WearingPostMLSummonerSet = true;
             if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
                 calPlayer.DeferredDashID = GodslayerArmorDash.ID;

@@ -112,6 +112,9 @@ namespace CalamityInheritance.CIPlayer
 
             // 杂项条件与重置
             ReSet();
+
+            // 神殇
+            Defiled();
         }
 
         public void Buffs()

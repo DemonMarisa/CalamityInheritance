@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<IronHeartTiles>();
             Item.rare = ItemRarityID.Blue;
         }
@@ -36,6 +36,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -45,10 +47,16 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CIWorld.IronHeart == true)
-                    CIWorld.IronHeart = false;
-                if (CIWorld.IronHeart == false)
+                if (!CIWorld.IronHeart)
+                {
                     CIWorld.IronHeart = true;
+                }
+                else
+                {
+                    CIWorld.IronHeart = false;
+                }
+                Main.NewText($" IronHeart = {CIWorld.IronHeart}");
+                CalamityNetcode.SyncWorld();
             }
             return true;
         }

@@ -87,6 +87,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             player.ignoreWater = true;
             player.crimsonRegen = true;
             player.aggro += 1200;
+
+            calPlayer.WearingPostMLSummonerSet = true;
         }
 
         public override void UpdateEquip(Player player)

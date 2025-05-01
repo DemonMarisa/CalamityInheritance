@@ -46,6 +46,8 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             const short onlyReborn = 1; 
             int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
             modPlayer2.GodSlayerReborn = mode != onlyDash;
+
+            modPlayer.WearingPostMLSummonerSet = true;
             if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;

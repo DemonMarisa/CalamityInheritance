@@ -97,6 +97,8 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
+            // 神殇飞行条贴图适配
+            FlightBarDrawHook.Load(this);
             #endregion
         }
         public void LoadClient()
@@ -124,6 +126,7 @@ namespace CalamityInheritance
 
             AstralArcanumUI.Load(this);
             CalPopupGUIManager.LoadGUIs();
+            DifficultyModeUI.Load();
         }
 
         #region Unload
@@ -148,6 +151,7 @@ namespace CalamityInheritance
             infernumMode = null;
             Instance = null;
 
+            DifficultyModeUI.Unload();
             CalPopupGUIManager.UnloadGUIs();
             base.Unload();
         }

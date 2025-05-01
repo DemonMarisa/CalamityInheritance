@@ -65,3 +65,13 @@ Malice: {
 		Now it is just for decoration
 		'''
 }
+
+BlightedEyeBanner: {
+	DisplayName: Blighted Eye Banner
+	Tooltip: ""
+}
+
+CosmicElementalBanner: {
+	DisplayName: Cosmic Elemental Banner
+	Tooltip: ""
+}

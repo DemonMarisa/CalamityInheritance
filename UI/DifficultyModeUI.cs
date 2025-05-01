@@ -18,8 +18,6 @@ namespace CalamityInheritance.UI
 {
     public class DifficultyModeUI
     {
-        internal float DefaultPosX = CIConfig.Instance.UIX;
-        internal float DefaultPosY = CIConfig.Instance.UIX;
         private static Texture2D BG, Arma, Death, Malice, Rev, Rune;
 
         public static void Load()
@@ -36,26 +34,30 @@ namespace CalamityInheritance.UI
         {
             BG = Arma = Death = Malice = Rev = Rune = null;
         }
-        public static void Draw(SpriteBatch spriteBatch, Player player)
+        public static void Draw(SpriteBatch spriteBatch)
         {
-            float yCenter = Main.screenHeight * 0.5f;
-            float xCenter = Main.screenWidth * 0.5f;
-            Vector2 drawBGPosition = new Vector2(xCenter, yCenter);
+            if (Main.playerInventory == false)
+                return;
+            // 右上角为锚点绘制
+            float yCenter = 80;
+            float xCenter = Main.screenWidth - 450;
+            Vector2 drawBGPosition = new(xCenter, yCenter);
+            Vector2 org = new(BG.Width, 0);
             // 绘制底子
-            spriteBatch.Draw(BG, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(BG, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
             if (CIWorld.Malice)
-                spriteBatch.Draw(Malice, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Malice, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.death)
-                spriteBatch.Draw(Death, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Death, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.revenge)
-                spriteBatch.Draw(Rev, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Rev, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (CalamityWorld.armageddon)
-                spriteBatch.Draw(Arma, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+            if (CIWorld.Armageddon)
+                spriteBatch.Draw(Arma, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
             if (CIWorld.Defiled)
-                spriteBatch.Draw(Rune, drawBGPosition, null, Color.White, 0f, BG.Size() / 2, 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Rune, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
         }
     }
 }

@@ -5,6 +5,7 @@ using CalamityInheritance.Tiles.Vanity;
 using CalamityInheritance.Rarity;
 using CalamityMod.World;
 using CalamityMod;
+using CalamityInheritance.World;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<DeathTiles>();
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
@@ -37,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -46,10 +49,17 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CalamityWorld.death == true)
-                    CalamityWorld.death = false;
-                if (CalamityWorld.death == false)
+                if (!CalamityWorld.death)
+                {
                     CalamityWorld.death = true;
+                }
+                else
+                {
+                    CIWorld.Malice = false;
+                    CalamityWorld.death = false;
+                }
+                Main.NewText($" death = {CalamityWorld.death}");
+                CalamityNetcode.SyncWorld();
             }
             return true;
         }

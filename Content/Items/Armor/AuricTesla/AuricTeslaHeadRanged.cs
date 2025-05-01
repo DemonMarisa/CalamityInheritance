@@ -84,6 +84,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             player.crimsonRegen = true;
             if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
                 player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
+
+            calPlayer.WearingPostMLSummonerSet = true;
         }
 
         public override void UpdateEquip(Player player)

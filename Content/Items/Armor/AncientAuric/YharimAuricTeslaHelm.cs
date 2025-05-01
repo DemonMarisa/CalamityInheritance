@@ -47,8 +47,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(3);
 			//标记为魔君金源甲
 			modPlayer.YharimAuricSet = true;
-			#region 灾厄的月后套通用效果
-			calPlayer.tarraSet = true;
+            #region 灾厄的月后套通用效果
+            player.Calamity().WearingPostMLSummonerSet = true;
+            calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			// 去除了原灾金源套的判定，没啥用，而且还有巨难看的残影

@@ -50,6 +50,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
             player.endurance += 0.12f;
             usPlayer.AncientAstralSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
+
+            player.Calamity().WearingPostMLSummonerSet = true;
         }
 
         public override void AddRecipes()

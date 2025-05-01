@@ -6,6 +6,7 @@ using CalamityInheritance.Rarity;
 using CalamityMod.Systems;
 using CalamityMod;
 using CalamityMod.World;
+using CalamityInheritance.World;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -28,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<ArmageddonTiles>();
             Item.rare = ModContent.RarityType<DonatorPink>();
         }
@@ -40,6 +41,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if(player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -49,10 +52,16 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CalamityWorld.armageddon == true)
-                    CalamityWorld.armageddon = false;
-                if (CalamityWorld.armageddon == false)
-                    CalamityWorld.armageddon = true;
+                if (!CIWorld.Armageddon)
+                {
+                    CIWorld.Armageddon = true;
+                }
+                else
+                {
+                    CIWorld.Armageddon = false;
+                }
+                Main.NewText($" Armageddon = {CIWorld.Armageddon}");
+                CalamityNetcode.SyncWorld();
             }
             return true;
         }

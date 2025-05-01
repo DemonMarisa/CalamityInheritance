@@ -1,3 +1,4 @@
+using CalamityInheritance.Core;
 using CalamityMod;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -7,4 +8,9 @@ using Terraria.Localization;
 namespace CalamityInheritance.NPCs
 {
     //I don't know how to code.
+    public static class CIDropHelper
+    {
+        public static IItemDropRuleCondition ArmageddonNoNor => CIConditions.ArmageddonNoNor.ToDropCondition(ShowItemDropInUI.WhenConditionSatisfied);
+    }
+
 }

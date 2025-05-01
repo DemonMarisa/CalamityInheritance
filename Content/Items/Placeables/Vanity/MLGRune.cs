@@ -7,6 +7,7 @@ using CalamityInheritance.World;
 using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityMod.World;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {
@@ -28,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<MLGRuneTiles>();
             Item.rare = ModContent.RarityType<PureRed>();
         }
@@ -39,6 +40,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -49,10 +52,15 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             CalamityInheritancePlayer modPlayer = player.CIMod();
             if (player.altFunctionUse == 2)
             {
-                if (modPlayer.MLG == true)
-                    modPlayer.MLG = false;
-                if (modPlayer.MLG == false)
+                if (!modPlayer.MLG)
+                {
                     modPlayer.MLG = true;
+                }
+                else
+                {
+                    modPlayer.MLG = false;
+                }
+                Main.NewText($" MLG = {modPlayer.MLG}");
             }
             return true;
         }

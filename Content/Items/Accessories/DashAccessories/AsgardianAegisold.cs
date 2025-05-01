@@ -67,7 +67,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[BuffID.Blackout] = true; // 更强的"黑暗"
             
 
-
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             {
                 player.endurance += 0.1f;

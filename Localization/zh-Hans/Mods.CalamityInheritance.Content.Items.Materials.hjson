@@ -36,3 +36,8 @@ CryoBar: {
 	Tooltip: 摸起来很冷
 	DisplayName: 极寒锭[Legacy]
 }
+
+BlightedLens: {
+	// DisplayName: Blighted Lens
+	// Tooltip: ""
+}

@@ -34,6 +34,14 @@ namespace CalamityInheritance.System
                 CalPopupGUIManager.UpdateAndDraw(Main.spriteBatch);
                 return true;
             }, InterfaceScaleType.UI));
+
+
+            // Popup GUIs.
+            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Mode Indicator UI", () =>
+            {
+                DifficultyModeUI.Draw(Main.spriteBatch);
+                return true;
+            }, InterfaceScaleType.UI));
         }
     }
 }

@@ -44,6 +44,8 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             modPlayer.rogueStealthMax += 1.10f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer.rogueVelocity += 0.10f;
+
+            player.Calamity().WearingPostMLSummonerSet = true;
         }
 
         public override void UpdateEquip(Player player)

@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.createTile = ModContent.TileType<MaliceTiles>();
             Item.rare = ItemRarityID.Yellow;
             Item.accessory = true;
@@ -43,6 +43,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
+                Item.useAnimation = 45;
+                Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
                 Item.UseSound = SoundID.Item119;
             }
@@ -52,10 +54,16 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse == 2)
             {
-                if (CIWorld.Malice == true)
-                    CIWorld.Malice = false;
-                if (CIWorld.Malice == false)
+                if (!CIWorld.Malice)
+                {
                     CIWorld.Malice = true;
+                }
+                else
+                {
+                    CIWorld.Malice = false;
+                }
+                Main.NewText($" Malice = {CIWorld.Malice}");
+                CalamityNetcode.SyncWorld();
             }
             return true;
         }

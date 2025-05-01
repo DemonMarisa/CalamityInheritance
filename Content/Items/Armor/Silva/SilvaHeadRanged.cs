@@ -6,6 +6,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
@@ -37,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             {
                 player.GetAttackSpeed<RangedDamageClass>() += 0.1f;
             }
+
+            player.Calamity().WearingPostMLSummonerSet = true;
         }
 
         public override void UpdateEquip(Player player)
