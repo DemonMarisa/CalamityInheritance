@@ -73,3 +73,8 @@ EyeofDesolationLegacy: {
 		Not consumable
 		'''
 }
+
+DefiledFeather: {
+	DisplayName: Defiled Feather
+	Tooltip: ""
+}

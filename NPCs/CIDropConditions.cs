@@ -11,6 +11,8 @@ namespace CalamityInheritance.NPCs
     public static class CIDropHelper
     {
         public static IItemDropRuleCondition ArmageddonNoNor => CIConditions.ArmageddonNoNor.ToDropCondition(ShowItemDropInUI.WhenConditionSatisfied);
+        public static IItemDropRuleCondition MADRule => CIConditions.MAD.ToDropCondition(ShowItemDropInUI.WhenConditionSatisfied);
+        public static IItemDropRuleCondition MasterDeath => CIConditions.MasterDeath.ToDropCondition(ShowItemDropInUI.WhenConditionSatisfied);
     }
 
 }

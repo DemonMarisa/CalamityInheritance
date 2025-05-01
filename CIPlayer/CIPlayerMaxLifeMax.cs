@@ -12,7 +12,6 @@ namespace CalamityInheritance.CIPlayer
             float LifePercentMax = 0f;
             if (CoreOfTheBloodGod)
             {
-                Player.Calamity().contactDamageReduction = 0.5f;
                 LifePercentMax += 0.25f;
             }
             if (AncientCotbg)
@@ -31,8 +30,11 @@ namespace CalamityInheritance.CIPlayer
                 if (AncientBloodflareSet)
                     LifePercentMax += 0.35f;
                 if (AncientAuricSet)
+                {
                     //原本魔君盔甲有1.2f，加上天顶特殊给的25f
-                    LifePercentMax += 26.2f;
+                    LifePercentMax += 300f;
+                    Player.statDefense += 114514;
+                }
             }
             if (LoreSkeletron)
                 LifePercentMax -= 0.10f;
@@ -64,7 +66,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 StatLifeInt += 15;
                 if (EHeartStatsBoost)
-                StatLifeInt += 25;
+                    StatLifeInt += 25;
             }
             //避免血量倒扣
             if (LifePercentMax < 0) LifePercentMax = 0;

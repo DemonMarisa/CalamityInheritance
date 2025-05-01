@@ -67,6 +67,8 @@ using CalamityMod.Items.Fishing.SunkenSeaCatches;
 using DraedonsForgeold = CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations.DraedonsForgeold;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.MiscItem;
+using CalamityMod.Items;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -330,6 +332,11 @@ namespace CalamityInheritance.Content.Items
 
         public static void Misc()
         {
+            Recipe.Create(ModContent.ItemType<Rock>()).
+                AddIngredient<DefiledFeather>().
+                DisableDecraft().
+                Register();
+
             Recipe.Create(ModContent.ItemType<Cosmolight>()).
                 AddIngredient(ModContent.ItemType<Moonlight>()).
                 AddIngredient(ModContent.ItemType<Daylight>()). 

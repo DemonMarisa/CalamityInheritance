@@ -54,6 +54,8 @@ using CalamityMod.Items.Weapons.Summon;
 using Terraria.GameContent.ItemDropRules;
 using CalamityInheritance.Content.Items.Placeables.Relic;
 using Terraria.GameContent.Bestiary;
+using CalamityInheritance.Core;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -970,7 +972,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         {
             npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CalamitasCloneBag>()));
 
-            // Normal drops: Everything that would otherwise be in the bag
             var normalOnly = npcLoot.DefineNormalOnlyDropSet();
             {
                 // Items
@@ -1014,21 +1015,27 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
         public override void OnKill()
         {
-            // Abyss awakens after killing Anahita & Leviathan
+            if (CIServerConfig.Instance.CalExtraDrop)
+                PingDownedLevi();
+                
+            //无论如何标记这个为真。
+            CIDownedBossSystem.DownedCalClone = true;
+            DeathAshParticle.CreateAshesFromNPC(NPC);
+            CalamityNetcode.SyncWorld();
+        }
+        public static void PingDownedLevi()
+        {
             string key = "Mods.CalamityMod.Status.Progression.AbyssDropsText";
             Color messageColor = Color.RoyalBlue;
-
-            if (!CIDownedBossSystem.DownedCalClone)
+            if (!DownedBossSystem.downedLeviathan)
             {
                 if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
                     SoundEngine.PlaySound(CommonCalamitySounds.WyrmScreamSound, Main.player[Main.myPlayer].Center);
 
                 CalamityUtils.DisplayLocalizedText(key, messageColor);
             }
-
-            CIDownedBossSystem.DownedCalClone = true;
-            DeathAshParticle.CreateAshesFromNPC(NPC);
-            CalamityNetcode.SyncWorld();
+            //直接标记击倒利维坦启用深渊材料
+            DownedBossSystem.downedLeviathan = true;
         }
         #endregion
     }

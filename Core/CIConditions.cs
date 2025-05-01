@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.World;
 using CalamityMod;
+using CalamityMod.World;
 using System;
 using Terraria;
 using Terraria.Localization;
@@ -26,5 +27,8 @@ namespace CalamityInheritance.Core
         public static readonly Condition DownedBuffedSolarEclipse = Create("DownedBuffedSolarEclipse", () => CIDownedBossSystem.DownedBuffedSolarEclipse);
         public static readonly Condition ArmageddonNoNor = Create("ArmageddonDrop", () => CIWorld.Armageddon && (Main.expertMode || Main.masterMode));
         public static readonly Condition Malice = Create("Malice", () => CIWorld.Malice);
+        public static readonly Condition Defiled = Create("Defiled", () => CIWorld.Defiled);
+        public static readonly Condition MasterDeath = Create("MD", () => Main.masterMode && CalamityWorld.death);
+        public static readonly Condition MAD = Create("MAD", () => CIWorld.Armageddon && CIWorld.Malice && CIWorld.Defiled && Main.masterMode);
     }
 }

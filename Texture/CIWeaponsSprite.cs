@@ -1,5 +1,6 @@
 using System;
 using CalamityMod.Items.Placeables.PlaceableTurrets;
+using CalamityMod.Items.VanillaArmorChanges;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
@@ -164,6 +165,22 @@ namespace CalamityInheritance.Texture
         #endregion
         #endregion
         #region 其他
+        //传奇武器
+        //海爵剑
+        public static Asset<Texture2D> BrinyBaron;
+        public static Asset<Texture2D> BrinyBaronLegacy;
+        //维苏威阿斯
+        public static Asset<Texture2D> Volcano;
+        public static Asset<Texture2D> VolcanoLegacy;
+        //孔雀翎
+        public static Asset<Texture2D> Mala;
+        public static Asset<Texture2D> MalaLegacy;
+        //叶流
+        public static Asset<Texture2D> PlantBow;
+        public static Asset<Texture2D> PlantBowLegacy;
+        //SHPC
+        public static Asset<Texture2D> SHPC;
+        public static Asset<Texture2D> SHPCLegacy;
         #endregion
         #endregion
         //路径
@@ -173,6 +190,7 @@ namespace CalamityInheritance.Texture
         public static string CIRangedWeaponRoute=>  $"{CIGenericWeaponRoute}/Ranged";
         public static string CIMagicWeaponRoute=>   $"{CIGenericWeaponRoute}/Magic";
         public static string CIRogueWeaponRoute=>   $"{CIGenericWeaponRoute}/Rogue";
+        public static string CILegendaryPath => $"{CIGenericWeaponRoute}/Legendar";
         //射弹路径
         public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
         //额外贴图路径
@@ -180,6 +198,7 @@ namespace CalamityInheritance.Texture
         public static string CIMeleeExtraRoute =>   $"{CIExtraRoute}/Melee";
         public static string CIRangedExtraRoute =>  $"{CIExtraRoute}/Ranged";
         public static string CIRogueExtraRoute =>   $"{CIExtraRoute}/Rogue";
+        public static string CILegendaryPathExtra =>   $"{CIExtraRoute}/Legendary";
         //部分灾厄的路径
         //武器路径
         public static string CalWeaponRoute => "CalamityMod/Items/Weapons";
@@ -354,6 +373,26 @@ namespace CalamityInheritance.Texture
             #endregion
             
             #region 其他
+            //传奇武器
+            //海爵剑
+            BrinyBaron = ModContent.Request<Texture2D>          ($"{CILegendaryPath}/DukeLegendary");
+            BrinyBaronLegacy = ModContent.Request<Texture2D>    ($"{CILegendaryPathExtra}/Briny");
+
+            //叶流
+            PlantBow = ModContent.Request<Texture2D>            ($"{CILegendaryPath}/PlanteraLegendary");
+            PlantBowLegacy = ModContent.Request<Texture2D>      ($"{CILegendaryPathExtra}/Bow");
+
+            //维苏威
+            Volcano = ModContent.Request<Texture2D>             ($"{CILegendaryPath}/RavagerLegendary");
+            VolcanoLegacy = ModContent.Request<Texture2D>       ($"{CILegendaryPathExtra}/Staff");
+
+            //SHPC
+            SHPC = ModContent.Request<Texture2D>                ($"{CILegendaryPath}/DestroyerLegendary");
+            SHPCLegacy = ModContent.Request<Texture2D>          ($"{CILegendaryPathExtra}/SHPC");
+
+            //孔雀翎
+            Mala = ModContent.Request<Texture2D>                ($"{CILegendaryPath}/PBGLegendary");
+            MalaLegacy = ModContent.Request<Texture2D>          ($"{CILegendaryPathExtra}/Dagger");
             #endregion
         }
 
@@ -362,6 +401,17 @@ namespace CalamityInheritance.Texture
             //如果可以请按字母表顺序排序,
             Asset<Texture2D>[] Train =
             [
+                BrinyBaron,
+                BrinyBaronLegacy,
+                PlantBow,
+                PlantBowLegacy,
+                SHPC,
+                SHPCLegacy,
+                Volcano,
+                VolcanoLegacy,
+                Mala,
+                MalaLegacy,
+
                 AegisCal,
                 AegisAlt,
                 AotCCal,

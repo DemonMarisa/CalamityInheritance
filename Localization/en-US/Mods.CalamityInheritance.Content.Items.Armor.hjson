@@ -577,6 +577,11 @@ YharimAuricTeslaHelm: {
 		Mana potions are 250% more effective and grants resistance to Mana Sickness
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
+
+		'''
+	Details: "23132"
+	ExtraDetails:
+		'''
 		[c/7DDA58:Inherited From Ancient Tarragon][i:CalamityInheritance/AncientTarragonHelm]
 		Increases heart pick range, grants immnuity to knockback, reduces defense damage by 50%
 		Boost your defense and damage reduction by 30% when below 50% of your max HP.
@@ -600,8 +605,6 @@ YharimAuricTeslaHelm: {
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		[c/DFC578:'No, I won't let you down']
 		'''
-	Details: "23132"
-	ExtraDetails: "111111"
 }
 
 AncientAstralBreastplate: {
@@ -773,7 +776,7 @@ AncientBloodflareMask: {
 		'''
 	SetBonus:
 		'''
-		+120 max steath
+		+120 max stealth
 		Healing potions are 45% more effective
 		+5 HP/s life regen speed, and significantly increases your natural life regen speed
 		Always have a chance to drops heart and mana star on enemies hit

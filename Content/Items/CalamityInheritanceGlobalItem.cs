@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.CIPlayer;
+﻿using System;
+using System.Runtime.Serialization.Formatters;
+using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Summon;
@@ -29,7 +31,17 @@ namespace CalamityInheritance.Content.Items
         public override bool InstancePerEntity => true;
         public override void UpdateInventory(Item item, Player player)
         {
+            const short searchInventory = 1;
             var mplr = player.CIMod();
+            //微光湖附近, 全传奇武器
+            SetShimmeUpgrade(ref mplr.DukeTier1, ModContent.ItemType<DukeLegendary>(),              searchInventory, ref player, DustID.Water);
+            SetShimmeUpgrade(ref mplr.BetsyTier1, ModContent.ItemType<RavagerLegendary>(),          searchInventory, ref player, DustID.Meteorite);
+            SetShimmeUpgrade(ref mplr.PBGTier1, ModContent.ItemType<PBGLegendary>(),                searchInventory, ref player, DustID.TerraBlade);
+            SetShimmeUpgrade(ref mplr.PlanteraTier1, ModContent.ItemType<PlanteraLegendary>(),      searchInventory, ref player, DustID.DryadsWard);
+            SetShimmeUpgrade(ref mplr.ColdDivityTier1, ModContent.ItemType<CyrogenLegendary>(),     searchInventory, ref player, DustID.Ice);
+            SetShimmeUpgrade(ref mplr.DestroyerTier1, ModContent.ItemType<DestroyerLegendary>(),    searchInventory, ref player, DustID.Silver);
+            SetShimmeUpgrade(ref mplr.DefendTier1, ModContent.ItemType<DefenseBlade>(),             searchInventory, ref player, DustID.GoldCoin);
+
             //海爵剑T3: 佩戴蠕虫围巾召唤老猪
             if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
             {
@@ -39,14 +51,35 @@ namespace CalamityInheritance.Content.Items
                     mplr.DukeTier3 = true;
                 }
             }
+            if (!mplr.YharimsKilledExo && DownedBossSystem.downedExoMechs)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<YharimsCrystalLegendary>(), 1))
+                {
+                    mplr.YharimsKilledExo = true;
+                    LegendaryUpgradeTint(DustID.GoldCoin, player);
+                }
+            }
+            if (!mplr.YharimsKilledScal && DownedBossSystem.downedCalamitas)
+            {
+                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<YharimsCrystalLegendary>(), 1))
+                {
+                    mplr.YharimsKilledScal = true;
+                    LegendaryUpgradeTint(DustID.GemRuby, player);
+                }
+            }
             base.UpdateInventory(item, player);
-        }
-        public override void OnConsumeItem(Item item, Player player)
-        {
-            
 
-            base.OnConsumeItem(item, player);
         }
+
+        internal static void SetShimmeUpgrade(ref bool legendT1, int itemID, int searchType, ref Player player, short dustID)
+        {
+            if (!legendT1 && player.ZoneShimmer && CIFunction.FindInventoryItem(ref player, itemID, 1))
+            {
+                legendT1 = true;
+                LegendaryUpgradeTint(dustID, player);
+            }
+        }
+
         public override bool? UseItem(Item item, Player player)
         {
             int SHPC = ModContent.ItemType<DestroyerLegendary>();
@@ -125,6 +158,7 @@ namespace CalamityInheritance.Content.Items
                     LegendaryUpgradeTint(DustID.Ice, player);
                 }
             }
+            
             return base.UseItem(item, player);
         }
         public static void LegendaryUpgradeTint(int dType, Player plr)

@@ -53,6 +53,7 @@ using CalamityMod.Projectiles.Pets;
 using log4net.Core;
 using CalamityMod.NPCs;
 using System.IO;
+using CalamityInheritance.Content.Items.MiscItem;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -1783,7 +1784,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // 随机掉一个
             var weaponDropRule = ItemDropRule.OneFromOptions(1, weapons);
             npcLoot.Add(weaponDropRule);
-
+            //MAD模式击败下给羽毛
+            npcLoot.Add(ItemDropRule.ByCondition(CIDropHelper.MADRule, ModContent.ItemType<DefiledFeather>()));
             // 爆裂与利锥
             npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<VehemencOld>());
             npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<Levi>());

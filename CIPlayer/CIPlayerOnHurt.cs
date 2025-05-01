@@ -266,6 +266,8 @@ namespace CalamityInheritance.CIPlayer
             {
                 //这个用于做准备，暂时无作用。
                 string cdID = CoreOfTheBloodGod ? CotbgTotem.ID : Totem.ID;
+                    //给效果
+                calPlayer.contactDamageReduction += 0.15;
                 if (CotbgCounter <= 0)
                 {
                     //给CD

@@ -75,10 +75,14 @@ Exobladeold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Removed the limit of exo comets]
-		[c/0080CA:Your exo beam can now spawn exo comets too]
-		[c/0080CA:Striking an enemy with the blade will casue cosmic explosion]
-		[c/0080CA:Enemies now explode in a higher HP]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:void] [c/FFFFE0:ModifyStrike][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Multiple hits on an enemy with True Melee will trigger a cosmic explosion.];
+		[c/4169E1:void] [c/FFFFE0:ModifyLimit][c/4169E1:()]
+		{
+		    [c/87CEFA:Removed the limit of exo comets];
+		    [c/87CEFA:Exo beam also spawn exo comets on hit];
+		    [c/87CEFA:HP threshold for explosion is increased to 15%];
+		}
 		'''
 }
 
@@ -93,8 +97,9 @@ ExoFlail: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Throws a cosmic chain ball in every fifth attack]
-		[c/0080CA:Will explodes multiple times upon hitting an enemy]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:void] [c/FFFFE0:TossExoFlailBall][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Launche a cosmic chain ball every fifth attack];
+		[c/4169E1:void] [c/FFFFE0:ModifyOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Releases multiple explosion on enemy hit];
 		'''
 }
 
@@ -335,7 +340,8 @@ PhoenixBlade: {
 	Tooltip:
 		'''
 		Enemies explode and emit healing flames on death
-		4x of your damage if you enemy is at 70% of max HP or higher
+		4x of your damage if you enemy is at 75% of max HP or higher
+		'Bigger than Breaker Blade'
 		'''
 }
 
@@ -388,8 +394,12 @@ Warblade: {
 }
 
 MarniteSpear: {
-	Tooltip: ""
-	DisplayName: Marnite Spear
+	Tooltip:
+		'''
+		Right click will throw it like a javelin
+		Forcibly knockback enemy on hit, weaker if target is a boss
+		'''
+	DisplayName: Marnite Spear Revamped
 }
 
 VictideYoyo: {
@@ -398,12 +408,17 @@ VictideYoyo: {
 }
 
 VictideSword: {
-	Tooltip: ""
+	Tooltip: Fires a mid-range vortex
 	DisplayName: Victide Sword
 }
 
 VictideSpear: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Right click will throw it like a javelin
+		Released an upward-rising water ring when hitting walls or enemies
+		Water ring initiates a weak homing after rising a certain distance
+		'''
 	DisplayName: Victide Spear
 }
 
@@ -413,15 +428,24 @@ VictideBoomerangMelee: {
 }
 
 DukeLegendary: {
-	Tooltip: "[SCALING]"
-	DisplayName: Duke Legendary
-	LegendaryScaling: has update {0} power
-	TierOne: Tier1
-	TierTwo: Tier2
-	TierThree: Tier3
-	TierOneTint: "111"
-	TierTwoTint: "222"
-	TierThreeTint: "333"
+	Tooltip:
+		'''
+		Striking an enemy with the blade causes a briny typhoon to appear
+		Press Right Click to fire a razorwind aqua blade
+		[SCALING]
+		[c/35FFFF:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
+		'''
+	DisplayName: Briny Baron Legendary
+	LegendaryScaling: "[c/35FFFF:Damage Scaling]: +{0}%"
+	TierOne: "[c/35FFFF:Upgrade]: Removed the limite of briny typhoon and reworked razorwind homing style"
+	TierTwo: "[c/35FFFF:Upgrade]: Call up a bunch of razorwind support you upon launching razorwind"
+	TierThree: "[c/35FFFF:Upgrade]: Gives various melee effects upon enemy hits"
+	TierOneTint: "[c/818589:Try to throw this weapon into shimmer]"
+	TierTwoTint: "[c/818589:Killed a Reaper Shark]"
+	TierThreeTint: "[c/818589:Spawn an Old Duke with Bloody Worm Scarf equipped]"
 }
 
 AquaticDissolution: {
@@ -430,8 +454,12 @@ AquaticDissolution: {
 }
 
 DefenseBlade: {
-	DisplayName: Defense Blade
-	Tooltip: ""
+	DisplayName: Aegis Blade Legendary
+	Tooltip:
+		'''
+		Striking an enemy with the blade causes an earthen eruption
+		Press Right Click to fire an aegis bolt
+		'''
 	LegendaryScaling: has update {0} power
 	TierOne: Tier1
 	TierTwo: Tier2
@@ -444,8 +472,13 @@ DefenseBlade: {
 ExoBladeChange: ""
 
 ACTExcelsus: {
-	DisplayName: A C T Excelsus
-	Tooltip: ""
+	DisplayName: Excelsus Algt's Calamity Tweaks
+	Tooltip:
+		'''
+		Toss out a main rotating blade along with two secondary rotating blade
+		Homing in on enemy upon flying a certain distance
+		Main rotating blade will attack its target for several times
+		'''
 }
 
 ZenithBuff: ""

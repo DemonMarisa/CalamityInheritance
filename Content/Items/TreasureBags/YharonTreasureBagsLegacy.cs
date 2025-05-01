@@ -41,10 +41,7 @@ namespace CalamityInheritance.Content.Items.TreasureBags
             Item.maxStack = 9999;
             Item.expert = true;
         }
-        public override bool CanRightClick()
-        {
-            return true;
-        }
+        public override bool CanRightClick() => true;
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
             // Weapons

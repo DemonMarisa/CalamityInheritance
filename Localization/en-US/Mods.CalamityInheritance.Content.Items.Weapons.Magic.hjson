@@ -87,8 +87,10 @@ SubsumingVortexold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Projectile speed is faster]
-		[c/0080CA:Will gradually accelerate to track enemies]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol<Calamity Anormalis>()];
+		[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased intial velocity of vortex];
+		[c/4169E1:void] [c/FFFFE0:HomeInOnTargetBetter][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Homing in on enemy nearby after being launched for a certain];
 		'''
 }
 
@@ -120,9 +122,20 @@ VividClarityOld: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Fires nine beams instead of five]
-		[c/0080CA:Every beams will release a cosmic explosion on enmey hits]
-		[c/0080CA:Beams spread a little wide]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol<Calamity Anormalis>()];
+		[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()]
+		{
+		    [c/87CEFA:Reduce the firing rates, launche nine Exo Beams];
+		    [c/87CEFA:Slightly increased the beams spread];
+		}
+		[c/4169E1:void] [c/FFFFE0:ModifyOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+		[c/4169E1:void] [c/FFFFE0:ModifyOnHitTile] [c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+		[c/4169E1:void] [c/FFFFE0:OnHitEffect][c/4169E1:()]
+		{
+		    [c/87CEFA:Beams always release a cosmic explosion on enemy hits];
+		    [c/87CEFA:When hitting a wall/enemy, summon a large number of Exo Comets from behing support you];
+		}
 		'''
 }
 
@@ -268,8 +281,29 @@ DestroyerLegendary: {
 	LegendaryScaling: Buff
 }
 
-SubsumingVortexChange: ""
-VividChange: ""
+SubsumingVortexChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol<Calamity Anormalis>()];
+	[c/4169E1:void] [c/FFFFE0:ModifyVortexOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Homing vortex release an Exo Slash on death];
+	[c/4169E1:void] [c/FFFFE0:LargeVortexRework][c/4169E1:()]
+	{
+	    [c/87CEFA:Large vortex that fully charged now lingering around the player, instead of moving straight forward after released];
+	    [c/87CEFA:Large vortex that lingering around will continuously search for nearby enemies and release small vortexs.];
+	    [c/87CEFA:Large vortex will home in on the nearest enemy after a certain period of time];
+	}
+	'''
+VividChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:void] [c/FFFFE0:ModifyOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+	[c/4169E1:void] [c/FFFFE0:ModifyOnHitTile] [c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
+	[c/4169E1:void] [c/FFFFE0:OnHitEffect][c/4169E1:()]
+	{
+		[c/87CEFA:Beams always release a cosmic explosion on enemy hits];
+	    [c/87CEFA:When hitting a wall/enemy, summons a large number of Exo Beams support you];
+	}
+	'''
 VividClarityBeamCal.DisplayName: Vivid Clarity Beam Cal
 
 YharimsCrystalLegendary: {

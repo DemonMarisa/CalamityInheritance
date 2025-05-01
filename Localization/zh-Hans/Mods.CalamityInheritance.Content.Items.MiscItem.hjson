@@ -107,3 +107,14 @@ EyeofDesolationLegacy: {
 		不消耗
 		'''
 }
+
+DefiledFeather: {
+	DisplayName: 神殇之羽[Legacy]
+	Tooltip:
+		'''
+		所以，你是怎么得到这个东西的？
+		你是通过了可悲的恶意-末日-神殇的至尊灾厄战，还是随便用了Hero或者什么别的模组拿的？
+		啊啊...
+		不管如何，还是稍微祝贺你打完了这一挑战吧
+		'''
+}
