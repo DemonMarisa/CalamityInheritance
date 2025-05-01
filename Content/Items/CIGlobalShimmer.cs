@@ -26,15 +26,6 @@ namespace CalamityInheritance.Content.Items
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ACTMinigun>()] = ModContent.ItemType<Minigun>();
             }
             #endregion
-            #region 传奇武器的强化道具强化道具
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PBGLegendary>()] = ModContent.ItemType<PBGLegendaryUpgrade>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DukeLegendary>()] = ModContent.ItemType<DukeLegendaryUpgrade>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<DestroyerLegendary>()] = ModContent.ItemType<DestroyerLegendaryUpgrade>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<RavagerLegendary>()] = ModContent.ItemType<RavagerLegendaryUpgrade>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<PlanteraLegendary>()] = ModContent.ItemType<PlanteraLegendaryUpgrade>();
-
-            #endregion
-            
             #region 微光嬗变启用时才会转化的
             if(CIServerConfig.Instance.CustomShimmer == true)
             {

@@ -479,11 +479,11 @@ ExoBladeChange:
 	'''
 
 ACTExcelsus: {
-	DisplayName: 孩子们，这根本不是ACT的宙能波纹刀
+	DisplayName: 宙能波纹刀[Algt's Calamity Tweaks]
 	Tooltip:
 		'''
-		不好孩子们，ACT看来回不来了
-		It's been a long day...
+		投射一个主旋转锋刃与两个次旋转锋刃，飞行一段距离后追踪你的敌人
+		主旋转锋刃会多次攻击一个敌怪
 		'''
 }
 

@@ -1,3 +1,4 @@
+using System;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
@@ -104,11 +105,6 @@ namespace CalamityInheritance.CIPlayer
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
-            
-            if (heldingItem.type == ModContent.ItemType<YharimsCrystalLegendary>())
-            {
-                YharimsCrystalLegendaryTask(target, hit);
-            }
         }
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
@@ -160,12 +156,12 @@ namespace CalamityInheritance.CIPlayer
 
         private void RavagerLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
-            var usPlayer = Player.CIMod();
+            
             //T2: 在地狱对亵渎天神造成50%伤害
             if (target.type == ModContent.NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
             {
                 DamagePool += hit.Damage;
-                if (usPlayer.DamagePool >= target.lifeMax * 0.5f)
+                if (DamagePool >= target.lifeMax * 0.5f)
                 {
                     LegendaryUpgradeTint(DustID.Meteorite);
                     BetsyTier2 = true;
@@ -179,42 +175,26 @@ namespace CalamityInheritance.CIPlayer
             }
         }
 
-        private void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
+        public void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
-            var usPlayer = Player.CIMod();
+            
             //T2: 用海爵剑给猎魂鲨最后一击
             if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2 && hit.Damage > target.life)
             {
                 LegendaryUpgradeTint(DustID.Water);
                 //记得清空伤害池子，因为这个是共用的
-                usPlayer.DamagePool = 0;
-                usPlayer.DukeTier2 = true;
+                DamagePool = 0;
+                DukeTier2 = true;
             }
         }
 
         private void PBGLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
-            var usPlayer = Player.CIMod();
             //T2: 使用孔雀翎对噬魂幽花造成最后一击
             if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && !PBGTier2)
             {
                 LegendaryUpgradeTint(CIDustID.DustTerraBlade);
                 PBGTier2 = true;
-            }
-        }
-        private void YharimsCrystalLegendaryTask(NPC target, NPC.HitInfo hit)
-        {
-            if ((target.type == ModContent.NPCType<SupremeCalamitas>() || target.type == ModContent.NPCType<SupremeCalamitasLegacy>()) && hit.Damage > target.life && !YharimsKilledScal)
-            {
-                LegendaryUpgradeTint(DustID.GemRuby);
-                YharimsKilledScal = true;
-            }
-            //我并不打算让玩家击败三台巨械。干掉阿瑞斯就行了，因为阿瑞斯的手臂会跟升级相关
-            bool isAres = target.type == ModContent.NPCType<AresBody>() || target.type == ModContent.NPCType<AresGaussNuke>() || target.type == ModContent.NPCType<AresLaserCannon>() || target.type == ModContent.NPCType<AresPlasmaFlamethrower>() || target.type == ModContent.NPCType<AresTeslaCannon>();
-            if (isAres && hit.Damage > target.life && !YharimsKilledExo)
-            {
-                LegendaryUpgradeTint(DustID.GemDiamond);
-                YharimsKilledExo = true;
             }
         }
         #endregion

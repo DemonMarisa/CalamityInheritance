@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
@@ -199,7 +200,11 @@ namespace CalamityInheritance.NPCs
             }
 
             if (npc.type == ModContent.NPCType<Cryogen>())
+            {
+                LegendaryDropHelper(ModContent.ItemType<CyrogenLegendary>(), ref npcLoot);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ModContent.ItemType<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
+
+            }
             if (npc.type == ModContent.NPCType<BrimstoneElemental> ())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ModContent.ItemType<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
@@ -225,7 +230,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
-                bool shouldDropLore(DropAttemptInfo info) => !DownedBossSystem.downedLeviathan && LastAnLStanding();
+                bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
                 npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
             }
@@ -239,8 +244,9 @@ namespace CalamityInheritance.NPCs
             }
             if (npc.type == ModContent.NPCType<PlaguebringerGoliath>())
             {
+                LegendaryDropHelper(ModContent.ItemType<PBGLegendary>(), ref npcLoot);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPlaguebringer, ModContent.ItemType<KnowledgePlaguebringerGoliath>(), desc: DropHelper.FirstKillText);
-                var onlyMasterDeath = ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<PBGLegendary>(), 1);
+                var onlyMasterDeath = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, ModContent.ItemType<PBGLegendary>(), 1);
                 onlyMasterDeath.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PBGLegendary>(), 100), true);
                 npcLoot.Add(onlyMasterDeath);
             }
@@ -306,6 +312,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<Yharon>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+                LegendaryDropHelper(ModContent.ItemType<YharimsCrystalLegendary>(), ref npcLoot);
                 var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 100000);
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
                 yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
@@ -395,9 +402,7 @@ namespace CalamityInheritance.NPCs
                     npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDreadnautilus, ModContent.ItemType<KnowledgeBloodMoon>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.DD2Betsy:
-                    var betsyMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<RavagerLegendary>());
-                    betsyMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<RavagerLegendary>()), false);
-                    npcLoot.Add(betsyMaster);
+                    LegendaryDropHelper(ModContent.ItemType<RavagerLegendary>(), ref npcLoot);
                     break;
                 case NPCID.KingSlime:
                     // More gel is not dropped on Expert because he has more minions, which increases the amount of gel provided.
@@ -467,9 +472,7 @@ namespace CalamityInheritance.NPCs
                     npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientMiracleMatter>()));
                     //三个机械boss都会掉，有意为之的
-                    var destroyerMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<DestroyerLegendary>());
-                    destroyerMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<DestroyerLegendary>()), false);
-                    npcLoot.Add(destroyerMaster);
+                    LegendaryDropHelper(ModContent.ItemType<DestroyerLegendary>(), ref npcLoot);
                     break;
                 case NPCID.Retinazer:
                 case NPCID.Spazmatism:
@@ -489,21 +492,18 @@ namespace CalamityInheritance.NPCs
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedPlantBoss, ModContent.ItemType<KnowledgePlantera>(), desc: DropHelper.FirstKillText);
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<VoidVortexLegacy>(), 1)); 
-                    var plantMaster= ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<PlanteraLegendary>());
-                    plantMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PlanteraLegendary>()), false);
-                    npcLoot.Add(plantMaster);
+                    LegendaryDropHelper(ModContent.ItemType<PlanteraLegendary>(), ref npcLoot);
                     break;
                 case NPCID.Golem:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedGolemBoss, ModContent.ItemType<KnowledgeGolem>(), desc: DropHelper.FirstKillText);
+                    LegendaryDropHelper(ModContent.ItemType<DefenseBlade>(), ref npcLoot);
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AcceleratorT3>(), 1));
                     break;
                 case NPCID.DukeFishron:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedFishron, ModContent.ItemType<KnowledgeDukeFishron>(), desc: DropHelper.FirstKillText);
-                    var onlyMaster = ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<DukeLegendary>());
-                    onlyMaster.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<DukeLegendary>()), false);
-                    npcLoot.Add(onlyMaster);
+                    LegendaryDropHelper(ModContent.ItemType<DukeLegendary>(), ref npcLoot);
                     break;
                 case NPCID.CultistBoss:
                     // Lore
@@ -522,6 +522,13 @@ namespace CalamityInheritance.NPCs
                #endregion
 
             }
+        }
+
+        public void LegendaryDropHelper(int legendary, ref NPCLoot npcLoot)
+        {
+            var dropRule = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, legendary);
+            dropRule.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), legendary, 100));
+            npcLoot.Add(dropRule);
         }
         #endregion
 
