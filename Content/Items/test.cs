@@ -1,25 +1,16 @@
 ﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.System;
-using CalamityInheritance.NPCs.Boss.Yharon;
 using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Items
 {
     public class Test : CIMelee, ILocalizedModType
     {
+        public static string WeaponRoute => "CalamityInheritance/Content/Items";
+        public override string Texture => $"{WeaponRoute}/test";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

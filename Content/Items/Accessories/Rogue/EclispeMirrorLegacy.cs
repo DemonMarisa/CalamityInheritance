@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using ReLogic.Peripherals.RGB.SteelSeries;
 using Terraria;
 using Terraria.ModLoader;
@@ -45,6 +48,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             string showStat = this.GetLocalization("ShowCritsBounes").Format(iShowSpeed.ToString("N1"));
             tooltips.FindAndReplace("[SHOW]", showStat);
             base.ModifyTooltips(tooltips);
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<AbyssalMirror>().
+                AddIngredient<DarkMatterSheath>().
+                AddIngredient<DarksunFragment>(10).
+                AddIngredient<AscendantInsignia>(1).
+                AddTile<CosmicAnvil>().
+                Register();
+
         }
     }
 }

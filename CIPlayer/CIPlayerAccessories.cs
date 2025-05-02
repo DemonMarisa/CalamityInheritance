@@ -1,4 +1,6 @@
 using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Items.Accessories.Summon;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Typeless;
@@ -95,6 +97,7 @@ namespace CalamityInheritance.CIPlayer
             CIsponge = false;
             CIspongeShieldVisible = false;
             FungalCarapace = false;
+            GodlySons = false;
             IfGodHand = false;
             PsychoticAmulet = false;
             YharimsInsignia = false;
@@ -173,6 +176,7 @@ namespace CalamityInheritance.CIPlayer
             IsWearingElemQuiverCal = false;
             anyShield = false;
             OverloadManaPower = false;
+            GodlySons = false;
         }
     }
 }

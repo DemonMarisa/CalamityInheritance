@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
     public class YharonSonStaff: CISummon, ILocalizedModType
     {
-        public readonly int WeaponDamage = 640;
+        public static readonly int WeaponDamage = 640;
         public override void SetStaticDefaults()
         {
             //改为法杖的形式会更加符合这个武器的设计

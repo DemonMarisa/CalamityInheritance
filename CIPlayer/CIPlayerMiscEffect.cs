@@ -36,6 +36,8 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.NPCs;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -250,8 +252,14 @@ namespace CalamityInheritance.CIPlayer
 
             if (GodlySons)
             {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+                Player.maxMinions += 10;
+				if (Player.whoAmI == Main.myPlayer)
+				{
+					if (Player.FindBuffIndex(ModContent.BuffType<SonYharonBuff>()) == -1)
+						Player.AddBuff(ModContent.BuffType<SonYharonBuff>(), 3600, true);
+					if (Player.ownedProjectileCounts[ModContent.ProjectileType<SonYharon>()] < 2)
+						Projectile.NewProjectile(Player.GetSource_FromThis(),Player.Center, Vector2.Zero, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
+				}
             }
             if (DarkSunRings)
             {
@@ -297,7 +305,7 @@ namespace CalamityInheritance.CIPlayer
             if(SpeedrunNecklace)
             {
                 Player.GetArmorPenetration<GenericDamageClass>() += 300;
-                Player.GetDamage<GenericDamageClass>() *= 1.25f;
+                Player.GetDamage<GenericDamageClass>() += 0.5f;
                 Player.GetCritChance<GenericDamageClass>() += 50;
                 Player.endurance *= 0.01f;
                 Player.statDefense /= 100;
