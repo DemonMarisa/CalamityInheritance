@@ -43,6 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe().
+                AddIngredient<Mariana>().
                 AddIngredient(ItemID.LunarBar, 10).
                 AddIngredient<LifeAlloy>(5).
                 AddIngredient<Lumenyl>(20).

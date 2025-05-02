@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             AIType = 156;
             Projectile.ignoreWater = true;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Projectile.penetrate = 10;
             Projectile.extraUpdates = 5;
             Projectile.timeLeft = 600;

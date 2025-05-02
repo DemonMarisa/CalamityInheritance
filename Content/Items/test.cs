@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items
     public class Test : CIMelee, ILocalizedModType
     {
         public static string WeaponRoute => "CalamityInheritance/Content/Items";
-        public override string Texture => $"{WeaponRoute}/test";
+        public override string Texture => $"{WeaponRoute}/Test";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

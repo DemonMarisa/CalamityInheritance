@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         {
             Projectile.width = 56;  
             Projectile.aiStyle = 19;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Projectile.timeLeft = 90;
             Projectile.height = 56;
             Projectile.friendly = true;

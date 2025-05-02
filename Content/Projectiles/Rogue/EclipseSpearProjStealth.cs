@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
@@ -8,6 +8,7 @@ using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -73,7 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void StickingAI()
         {
-            if (!changedTimeLeft)
+            if (!ResetProj)
             {
                 Projectile.extraUpdates = 1;
                 Projectile.localNPCHitCooldown = 60;

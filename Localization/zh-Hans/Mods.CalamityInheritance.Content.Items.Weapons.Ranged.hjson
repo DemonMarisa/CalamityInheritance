@@ -487,8 +487,18 @@ ChainWeaponChange:
 	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:你可以右键指定一个位置生成一块星流地雷];
 	'''
 
+CursedCapper: {
+	// DisplayName: Cursed Capper
+	// Tooltip: ""
+}
+
 Dualpoon: {
 	// DisplayName: Dualpoon
+	// Tooltip: ""
+}
+
+MandibleBow: {
+	// DisplayName: Mandible Bow
 	// Tooltip: ""
 }
 

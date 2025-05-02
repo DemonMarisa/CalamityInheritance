@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             else
             {
-                NPC target = CIFunction.FindClosestTarget(Projectile, 1500);
+                NPC target = CIFunction.FindClosestTarget(Projectile, 2000);
                 DoBehavior_Charge(target, ref Timer2, rotOffset);
             }
 
@@ -112,10 +112,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int totalCharge = 2;
             int slowCount = 80;
             // 不在慢下来的过程中时才会跟踪
-            if (!canSlow)
+            if (!canSlow && npc.Distance(Projectile.Center) < 2000f)
             {
                 Projectile.rotation = Projectile.velocity.ToRotation() + rotOffset;
-                CIFunction.HomingNPCBetter(Projectile, npc, 1500, 12f, 0f);
+                CIFunction.HomingNPCBetter(Projectile, npc, 2000, 12f, 0f);
             }
             // 这里代表冲刺过程
             if (hasCharge == false)

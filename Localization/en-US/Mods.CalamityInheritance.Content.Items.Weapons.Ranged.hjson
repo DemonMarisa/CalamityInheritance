@@ -471,3 +471,23 @@ ChainWeaponChange:
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
 	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:You can right-click to designate a location to deploy an Exo Mine];
 	'''
+
+CursedCapper: {
+	DisplayName: Cursed Capper
+	Tooltip: ""
+}
+
+Dualpoon: {
+	DisplayName: Dualpoon
+	Tooltip: ""
+}
+
+MandibleBow: {
+	DisplayName: Mandible Bow
+	Tooltip: ""
+}
+
+MarniteBayonet: {
+	DisplayName: Marnite Bayonet
+	Tooltip: ""
+}

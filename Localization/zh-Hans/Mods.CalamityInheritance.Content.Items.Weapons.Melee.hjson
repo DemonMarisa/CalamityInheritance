@@ -505,3 +505,58 @@ ChainsawCal:
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
 	[c/4169E1:void] [c/FFFFE0:ModifyHoldout][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:现在默认满充能];
 	'''
+
+AncientCrusher: {
+	// DisplayName: Ancient Crusher
+	// Tooltip: ""
+}
+
+CorruptedCrusherBlade: {
+	// DisplayName: Corrupted Crusher Blade
+	// Tooltip: ""
+}
+
+Crimsaber: {
+	// DisplayName: Crimsaber
+	// Tooltip: ""
+}
+
+CrimsonCrusherBlade: {
+	// DisplayName: Crimson Crusher Blade
+	// Tooltip: ""
+}
+
+CrystalBlade: {
+	// DisplayName: Crystal Blade
+	// Tooltip: ""
+}
+
+MandibleClaws: {
+	// DisplayName: Mandible Claws
+	// Tooltip: ""
+}
+
+Mariana: {
+	// DisplayName: Mariana
+	// Tooltip: ""
+}
+
+HolidayHalberd: {
+	// DisplayName: Holiday Halberd
+	// Tooltip: ""
+}
+
+TemporalFloeSword: {
+	// DisplayName: Temporal Floe Sword
+	// Tooltip: ""
+}
+
+Terracotta: {
+	// DisplayName: Terracotta
+	// Tooltip: ""
+}
+
+Waraxe: {
+	// DisplayName: Waraxe
+	// Tooltip: ""
+}

@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public override void AI()
         {
             Projectile.ai[0]++;
-            if (Projectile.ai[0] % 5 == 0)
+            if (Projectile.ai[0] % 10 == 0)
                 CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<FabBoltOld>());
         }
     }

@@ -293,3 +293,8 @@ AtomChange:
 	}
 	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:潜伏攻击扩大搜索范围, 生成更多复制体];
 	'''
+
+LatcherMine: {
+	// DisplayName: Latcher Mine
+	// Tooltip: ""
+}

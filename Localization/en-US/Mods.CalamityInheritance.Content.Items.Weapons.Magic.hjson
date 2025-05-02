@@ -334,3 +334,8 @@ YharimsCrystalLegendary: {
 	ScalTint: ""
 	NoScalTint: ""
 }
+
+ShadowdropStaff: {
+	DisplayName: Shadowdrop Staff
+	Tooltip: ""
+}

@@ -67,6 +67,8 @@ Mods: {
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
 			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
 			Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
+			FossilSpike.DisplayName: Fossil Spike
+			MarianaProjectile.DisplayName: Mariana Projectile
 		}
 
 		Content/Projectiles/Summon: {
@@ -90,6 +92,25 @@ Mods: {
 			Triploon: {
 				DisplayName: Triploon
 				Tooltip: ""
+			}
+
+			FulgurationHalberd: {
+				DisplayName: Fulguration Halberd
+				Tooltip: ""
+			}
+
+			BrimstoneFlameblaster: {
+				DisplayName: Brimstone Flameblaster
+				Tooltip: ""
+			}
+
+			Weapons: {
+				Rogue: {
+					BouncingBetty: {
+						DisplayName: Bouncing Betty
+						Tooltip: ""
+					}
+				}
 			}
 		}
 	}

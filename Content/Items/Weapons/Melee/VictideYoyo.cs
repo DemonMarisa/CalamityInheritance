@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class VictideYoyo: CIMelee, ILocalizedModType 
+    public class VictideYoyo : CIMelee, ILocalizedModType 
     {
         
         public override void SetStaticDefaults()

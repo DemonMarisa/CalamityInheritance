@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -17,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Projectile.aiStyle = ProjAIStyleID.Spear;
             Projectile.timeLeft = 90;
             Projectile.friendly = true;

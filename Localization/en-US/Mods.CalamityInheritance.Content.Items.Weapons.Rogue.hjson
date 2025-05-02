@@ -287,3 +287,8 @@ AtomChange:
 	}
 	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Stealth strike increases the search range and the numbers of duplicates];
 	'''
+
+LatcherMine: {
+	DisplayName: Latcher Mine
+	Tooltip: ""
+}
