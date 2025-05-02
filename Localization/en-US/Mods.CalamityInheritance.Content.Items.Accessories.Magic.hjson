@@ -15,10 +15,8 @@ ManaOverloader: {
 	Tooltip:
 		'''
 		+75 max mana
-		20% increased magic critical strike chance
-		Magic projectiles give lifesteal while holding a magic weapon
-		-3 HP/s life regen if mana is above 50% of its maximum
-		Converted 1/10 of your current critical strike chance into your critical damage bounes
-		if mana is below 50% of its maximum
+		15% increased magic critical strike chance
+		Magic projectiles give lifesteal while holding a magic weapon, if mana is below 50% of its maximum
+		if mana is above 50% of its maximum, -3 HP/s life regen and converted 1/10 of your current critical strike chance into your critical damage bounes
 		'''
 }

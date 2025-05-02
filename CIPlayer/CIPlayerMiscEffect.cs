@@ -36,6 +36,8 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.NPCs;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -250,8 +252,14 @@ namespace CalamityInheritance.CIPlayer
 
             if (GodlySons)
             {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.velocity, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(120), 0f, Player.whoAmI);
+                Player.maxMinions += 10;
+				if (Player.whoAmI == Main.myPlayer)
+				{
+					if (Player.FindBuffIndex(ModContent.BuffType<SonYharonBuff>()) == -1)
+						Player.AddBuff(ModContent.BuffType<SonYharonBuff>(), 3600, true);
+					if (Player.ownedProjectileCounts[ModContent.ProjectileType<SonYharon>()] < 2)
+						Projectile.NewProjectile(Player.GetSource_FromThis(),Player.Center, Vector2.Zero, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
+				}
             }
             if (DarkSunRings)
             {
@@ -297,7 +305,7 @@ namespace CalamityInheritance.CIPlayer
             if(SpeedrunNecklace)
             {
                 Player.GetArmorPenetration<GenericDamageClass>() += 300;
-                Player.GetDamage<GenericDamageClass>() *= 1.25f;
+                Player.GetDamage<GenericDamageClass>() += 0.5f;
                 Player.GetCritChance<GenericDamageClass>() += 50;
                 Player.endurance *= 0.01f;
                 Player.statDefense /= 100;
@@ -681,7 +689,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (SilvaSummonSetLegacy)
             {
-                Player.GetDamage<SummonDamageClass>() *= 1.1f;
+                Player.GetDamage<SummonDamageClass>() *= 1.05f;
                 Player.maxMinions += 2;
             }
 
@@ -1497,64 +1505,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.noKnockback = true;
             }
             */
-            if (CIConfig.Instance.LegendaryBuff == 1)
-            {
-                PBGTier1 = true;
-                DukeTier1 = true;
-                BetsyTier1 = true;
-                DestroyerTier1 = true;
-                PlanteraTier1 = true;
-                DefendTier1 = true;
-                ColdDivityTier1 = true;
-            }
-            if (CIConfig.Instance.LegendaryBuff == 2)
-            {
-                PBGTier2 = true;
-                DukeTier2 = true;
-                BetsyTier2 = true;
-                DestroyerTier2 = true;
-                PlanteraTier2 = true;
-                DefendTier2 = true;
-                ColdDivityTier2 = true;
-                YharimsKilledScal = true;
-            }
-            if (CIConfig.Instance.LegendaryBuff == 3)
-            {
-                PBGTier3 = true;
-                DukeTier3 = true;
-                BetsyTier3 = true;
-                DestroyerTier3 = true;
-                PlanteraTier3 = true;
-                DefendTier3 = true;
-                ColdDivityTier3 = true;
-                YharimsKilledExo = true;
-            }
-            if (CIConfig.Instance.LegendaryBuff == 4)
-            {
-                PBGTier1 = false;
-                PBGTier2 = false;
-                PBGTier3 = false;
-                DukeTier1 = false;
-                DukeTier2 = false;
-                DukeTier3 = false;
-                PlanteraTier1 = false;
-                PlanteraTier2 = false;
-                PlanteraTier3 = false; 
-                BetsyTier1 = false;
-                BetsyTier2 = false;
-                BetsyTier3 = false;
-                DefendTier1 = false;
-                DefendTier2 = false;
-                DefendTier3 = false;
-                DestroyerTier1 = false;
-                DestroyerTier2 = false;
-                DestroyerTier3 = false;
-                ColdDivityTier1 = false;
-                ColdDivityTier2 = false;
-                ColdDivityTier3 = false;
-                YharimsKilledExo = false;
-                YharimsKilledScal = false;
-            }
         }
     }
 }

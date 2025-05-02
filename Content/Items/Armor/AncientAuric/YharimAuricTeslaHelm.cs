@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			#endregion
 			#region 远古甲的弑神免伤, 龙蒿降防损, 林海强回血与血炎掉红心
 			//弑神免伤
-			calPlayer.contactDamageReduction +=0.25f;
+			calPlayer.contactDamageReduction += 0.50f;
 			player.endurance += 0.15f;
 			//远古龙蒿降防损
 			calPlayer.defenseDamageRatio *= 0.5f;
@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.bloodflareMage = true;
 			modPlayer.SilvaMagicSetLegacy = true;
 			modPlayer.GodSlayerMagicSet = true;
-				//召唤
+			//召唤
 			modPlayer.GodSlayerSummonSet = true;
 			//盗贼
 			calPlayer.tarraThrowing = true;
@@ -129,11 +129,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
             if(mplr.AncientAuricSet)
             {
                 if (Main.keyState.IsKeyDown(Keys.LeftAlt))
-                {
-                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.YharimAuricTeslaHelm.Details");
-                    tooltips.Add(new TooltipLine(Mod, "Details", Details));
-                }
-				else if (Main.keyState.IsKeyDown(Keys.LeftControl))
 				{
                     string ExtraDetails = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.YharimAuricTeslaHelm.ExtraDetails");
                     tooltips.Add(new TooltipLine(Mod, "Details", ExtraDetails));

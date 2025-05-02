@@ -302,7 +302,7 @@ RavagerLegendary: {
 	TierTwoTint: "[c/818589:在地狱内不断攻击亵渎天神]"
 	TierThree: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
 	TierThreeTint: "[c/818589:佩戴灾厄符章去地狱会会双足翼龙]"
-	LegendaryScaling: "[c/FF009B:强化属性]:{0}%"
+	LegendaryScaling: "[c/FF009B:强化属性]: {0}%"
 }
 
 FuckVoid: {
@@ -324,10 +324,10 @@ DestroyerLegendary: {
 		'''
 	DisplayName: SHPC[Legendary]
 	TierOne: "[c/4169E1:强化]:发射能量束时会发射一颗准许追踪的相位激光球"
-	TierTwo: "[c/4169E1:强化]:一次发射的相位激光球与高速激光的数量+2"
-	TierThree: "[c/4169E1:强化]:武器不再消耗任何魔力"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierTwo: "[c/4169E1:强化]:一次发射的相位激光球与高速激光的数量+2"
 	TierTwoTint: "[c/818589:于月球末日之际饮用一瓶葡萄汁]"
+	TierThree: "[c/4169E1:强化]:武器不再消耗任何魔力"
 	TierThreeTint: "[c/818589:在使用彗星碎片与永恒核心后, 召唤一次噬魂幽花]"
 	LegendaryScaling: "[c/4169E1:武器增强]: +{0} 武器伤害"
 }

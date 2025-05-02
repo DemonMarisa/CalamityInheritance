@@ -464,8 +464,8 @@ PhotovisceratorChange:
 	'''
 
 NorfleetLegacy: {
-	// DisplayName: Norfleet Legacy
-	// Tooltip: ""
+	DisplayName: 诺法雷[Legacy]
+	Tooltip: ""
 }
 
 ACTKarasawa: {

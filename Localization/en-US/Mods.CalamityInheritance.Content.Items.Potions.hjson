@@ -83,5 +83,10 @@ YharimsStimulants: {
 
 Bread: {
 	DisplayName: Bread
-	Tooltip: ""
+	Tooltip:
+		'''
+		Just a piece of bread
+		[c/4F4F4F:Kunoji Ichika:]"Ugh... So... you simply made a piece of bread just because there wasn't any in the game?"
+		[c/E4080A:TrueScarlet:]"Uhhh...."
+		'''
 }

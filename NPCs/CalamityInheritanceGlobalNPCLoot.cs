@@ -28,6 +28,7 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
@@ -301,6 +302,7 @@ namespace CalamityInheritance.NPCs
             if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ModContent.ItemType<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ItemDropRule.ByCondition(DropHelper.RevAndMaster, ModContent.ItemType<AncientMurasama>(), 1));
                 var tarragon= ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientGodSlayerChestplate>(), 1);
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientGodSlayerHelm>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientGodSlayerLeggings>()));

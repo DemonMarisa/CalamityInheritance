@@ -65,8 +65,7 @@ AncientXerocWings: {
 		Acceleration multiplier: 2.5
 		Great vertical speed
 		Flight time: 180
-		Increases damage and critical strike chance by 50%
-		while below 20% of your max life and wearing Xeroc Armor
+		Increases damage and critical strike chance by 50% while below 20% of your max life and wearing Xeroc Armor
 		'''
 }
 
@@ -78,8 +77,7 @@ AureateBoosterRevamped: {
 		Acceleration multiplier: 1.5
 		Good vertical speed
 		Flight time: 120
-		+50 fishing power, access to lava fishing and 50% increased mining speed while
-		wearing Reaver Armor Revamped
+		+50 fishing power, access to lava fishing and 50% increased mining speed while wearing Reaver Armor Revamped
 		'''
 }
 

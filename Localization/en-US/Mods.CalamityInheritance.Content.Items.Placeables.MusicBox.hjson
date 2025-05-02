@@ -52,8 +52,13 @@ RequiemsOfACruelWorld: {
 }
 
 BlessingOftheMoon: {
-	DisplayName: Blessing of the Moon
-	Tooltip: ""
+	DisplayName: Music Box(Blessing of the Moon)
+	Tooltip:
+		'''
+		Play [c/DAA520:Blessing of the Moon](02: 02) by DM DOKURO
+		Bless of the Moon
+		Calling from the old days
+		'''
 }
 
 BlessingOftheMoon1: {
@@ -62,11 +67,22 @@ BlessingOftheMoon1: {
 }
 
 Arcueid: {
-	Tooltip: ""
-	DisplayName: Arcueid
+	Tooltip:
+		'''
+		Plays [c/98F5F9:-月姫：re-](06:55) by KATE(芳賀敬太)
+		[c/98F5F9:Beauty under the moon]
+		[c/98F5F9:Millennial City entrenched within the Inner Sea of Stars]
+		[c/98F5F9:Courtyard where the moonlight blossoms in full splendor]
+		[c/98F5F9:And the last piece of blue glass moon, who gazes upward...]
+		'''
+	DisplayName: Music Box(月姫：re)
 }
 
 Kunoji: {
-	DisplayName: Kunoji
-	Tooltip: ""
+	DisplayName: Music Box(久遠寺邸朝食)
+	Tooltip:
+		'''
+		Play [c/4F4F4F:-久遠寺邸朝食-](03:21) by Hideyuki Fukasawa(深澤秀行)
+		"A taste of...fairy tale."
+		'''
 }

@@ -46,7 +46,7 @@ CoreOfTheBloodGod: {
 		Increases max HP by 25%
 		Healing potions are 25% more effective
 		Havles contact damage, this effect has 20 seconds cooldown if triggered
-		15% increased damage reduction
+		15% increased damage reduction and contact damage reduction
 		'Better than a chalice'
 		'''
 }
@@ -329,9 +329,10 @@ AncientReaperToothNecklace: {
 	DisplayName: Ancient Reaper Tooth Necklace
 	Tooltip:
 		'''
-		+250 armor penetration
+		+300 armor penetration
 		50% increased damage and critical strike chance
-		Your damage reduction and defense will be reduced by a tentn.
+		30% increased critical strike damage
+		Your damage reduction and defense will be reduced by a hundred.
 		'I don't think this should exist...'
 		'''
 }
@@ -387,20 +388,29 @@ DraedonsHeartLegacy: {
 
 ShrineForest: {
 	DisplayName: Shrine Forest
-	Tooltip: ""
+	Tooltip:
+		'''
+		Standing still for 2 seconds to gain a buff	
+		50% increased damage, 15% increased damage reduction when being actived
+		The buff deactivated if you move or attack once
+		'''
 }
 
 ShrineMarble: {
 	DisplayName: Shrine Marble
-	Tooltip: ""
+	Tooltip: Summons two sword spirits to protect you
 }
 
 ShrineMarnite: {
-	DisplayName: Shrine Marnite
-	Tooltip: ""
+	DisplayName: Unstable Granite Core Legacy
+	Tooltip: Three sparks are released on critical hits
 }
 
 ShrineMushroom: {
 	DisplayName: Shrine Mushroom
-	Tooltip: ""
+	Tooltip:
+		'''
+		True melee weapons emit mushrooms when swung
+		25% increased true melee damage
+		'''
 }

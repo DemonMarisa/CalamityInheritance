@@ -176,8 +176,12 @@ Configs: {
 		}
 
 		Arcueid: {
-			// Tooltip: ""
-			// Label: Arcueid
+			Tooltip:
+				'''
+				Plays -月姬- when getting close to the Plantoid if disbale Blessing of the Moon
+				Default by false
+				'''
+			Label: "[i:CalamityInheritance/Arcueid]-月姬-"
 		}
 
 		LevelUp: {
@@ -186,13 +190,21 @@ Configs: {
 		}
 
 		Kunoji: {
-			// Label: Kunoji
-			// Tooltip: ""
+			Label: "[i:CalamityInheritance/Kunoji]-久遠寺邸朝食-"
+			Tooltip:
+				'''
+				Plays -久遠寺邸朝食- during the town day.
+				Default by false
+				'''
 		}
 
 		LegendaryRarity: {
-			// Label: Legendary Rarity
-			// Tooltip: ""
+			Label: "[i:CalamityInheritance/DukeLegendary]Legendary Rarity"
+			Tooltip:
+				'''
+				Give all Legendary Weapon special rarity color
+				Default by false
+				'''
 		}
 	}
 
@@ -429,18 +441,18 @@ Configs: {
 		}
 
 		PrismallineResprite: {
-			// Label: Prismalline Resprite
-			// Tooltip: ""
+			Label: "[i:CalamityMod/Prismalline]棱晶飞刀贴图切换"
+			Tooltip: 切换棱晶飞刀的贴图
 		}
 
 		RadiantStarResprite: {
-			// Label: Radiant Star Resprite
-			// Tooltip: ""
+			Label: "[i:CalamityMod/RadiantStar]Radiant Star Resprite"
+			Tooltip: Determines sprite style of Radiant Star
 		}
 
 		ShatteredSunResprite: {
-			// Label: Shattered Sun Resprite
-			// Tooltip: ""
+			Label: "[i:CalamityMod/ShatteredSun]Shattered Sun Resprite"
+			Tooltip: Determines sprite style of Shattered Sun
 		}
 
 		FuckAllExo: {
@@ -542,8 +554,12 @@ Configs: {
 		}
 
 		LoreDrop: {
-			// Label: Lore Drop
-			// Tooltip: ""
+			Label: "[i:CalamityMod/LoreCalamitas]Lore Drop"
+			Tooltip:
+				'''
+				Enables to make bosses no longer drop Calamity lores but Legacy lores
+				Disbale by default
+				'''
 		}
 	}
 }

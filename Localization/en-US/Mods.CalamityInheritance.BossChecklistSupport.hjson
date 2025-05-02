@@ -1,5 +1,5 @@
 Scal: {
-	EntryName: 至尊灾厄
-	SpawnInfo: 使用[i:CalamityInheritance/EyeofExtinction]召唤至尊灾厄。
-	DespawnMessage: "[c/FFA500:你还不够好。]"
+	EntryName: Supreme Calamitas Legacy
+	SpawnInfo: Use [i:CalamityInheritance/EyeofExtinction] to spawn Supreme Calamitas Legacy
+	DespawnMessage: "[c/FFA500:You are not good enough]"
 }

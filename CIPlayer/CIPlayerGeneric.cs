@@ -589,52 +589,72 @@ namespace CalamityInheritance.CIPlayer
             }
             if (item.CountsAsClass<TrueMeleeDamageClass>() && SMushroom && Player.whoAmI == Main.myPlayer)
             {
-                float yVelocityOffset = 0f, xVelocityOffset = 0f, yPosOffset = 0f, xPosOffset = 0f; 
-                //这里估计是处理蘑菇的偏移，但是实在是……反正，我强行用了一种方法来处理 
-                //虽然整体还是非常史，但是看起来至少清楚一点吧
-                for (double offset = 0.1; offset < 1.0; offset += 0.2)
+                if (CalamityLists.MushroomWeaponIDs.Contains(item.type) && Player.whoAmI == Main.myPlayer)
                 {
-                    if (Player.itemAnimation == Player.itemAnimationMax * offset)
+                    if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.1) ||
+                        Player.itemAnimation == (int)(Player.itemAnimationMax * 0.3) ||
+                        Player.itemAnimation == (int)(Player.itemAnimationMax * 0.5) ||
+                        Player.itemAnimation == (int)(Player.itemAnimationMax * 0.7) ||
+                        Player.itemAnimation == (int)(Player.itemAnimationMax * 0.9))
                     {
-                        switch(offset)
+                        float yVel = 0f;
+                        float xVel = 0f;
+                        float yOffset = 0f;
+                        float xOffset = 0f;
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.9))
                         {
-                            case 0.1:
-                                xVelocityOffset = 7f;
-                                yPosOffset += 6f;
-                                break;
-                            case 0.3:
-                                yVelocityOffset = -2f;
-                                xVelocityOffset = 6f;
-                                yPosOffset -= 20f;
-                                xPosOffset -= 4f;
-                                break;
-                            case 0.5:
-                                yVelocityOffset = -4f;
-                                xVelocityOffset = 4f;
-                                break;
-                            case 0.7:
-                                yVelocityOffset = -6f;
-                                xVelocityOffset = 2f;
-                                xPosOffset = 26f;
-                                if (Player.direction == -1)
-                                    xVelocityOffset -= 6f;
-                                break; 
-                            case 0.9:
-                                yVelocityOffset = -7f;
-                                if (Player.direction == -1)
-                                    xVelocityOffset -= 8f;
-                                break;
-                            default: 
-                                break;
+                            yVel = -7f;
                         }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.7))
+                        {
+                            yVel = -6f;
+                            xVel = 2f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.5))
+                        {
+                            yVel = -4f;
+                            xVel = 4f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.3))
+                        {
+                            yVel = -2f;
+                            xVel = 6f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.1))
+                        {
+                            xVel = 7f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.7))
+                        {
+                            xOffset = 26f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.3))
+                        {
+                            xOffset -= 4f;
+                            yOffset -= 20f;
+                        }
+                        if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.1))
+                        {
+                            yOffset += 6f;
+                        }
+                        if (Player.direction == -1)
+                        {
+                            if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.9))
+                            {
+                                xOffset -= 8f;
+                            }
+                            if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.7))
+                            {
+                                xOffset -= 6f;
+                            }
+                        }
+                        yVel *= 1.5f;
+                        xVel *= 1.5f;
+                        xOffset *= Player.direction;
+                        yOffset *= Player.gravDir;
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), hitbox.X + hitbox.Width / 2 + xOffset, hitbox.Y + hitbox.Height / 2 + yOffset, Player.direction * xVel, yVel * Player.gravDir, ProjectileID.Mushroom, 0, 0f, Player.whoAmI);
                     }
-                    yVelocityOffset *= 1.5f;
-                    xVelocityOffset *= 1.5f;
-                    xPosOffset *= Player.direction;
-                    yPosOffset *= Player.gravDir;
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), hitbox.X + hitbox.Width / 2 + xPosOffset, hitbox.Y + hitbox.Height / 2 + yPosOffset, Player.direction * xVelocityOffset, Player.gravDir * yVelocityOffset, ProjectileID.Mushroom, (int)(item.damage * 0.25f), 0f, Player.whoAmI);
                 }
-
             }
 
         }

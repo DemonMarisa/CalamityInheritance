@@ -96,22 +96,22 @@ Configs: {
 		}
 
 		Tyrant1: {
-			Label: "[i:MusicBox]Post-Yharon Custom Music"
+			Label: "[i:CalamityInheritance/TyrantPart1]Post-Yharon Custom Music"
 			Tooltip: Player custom mod music after Yharon fight
 		}
 
 		Exomechs: {
-			Label: "[i:MusicBox]Post-Exo Music Event"
+			Label: "[i:CalamityInheritance/RequiemsOfACruelWorld]Post-Exo Music Event"
 			Tooltip: '''Replaced post-Exo music with custom mod music	'''
 		}
 
 		Scal: {
-			Label: "[i:MusicBox]Post-SCal Music Event"
+			Label: "[i:CalamityInheritance/Interlude3MusicBox]Post-SCal Music Event"
 			Tooltip: Replaced post-SCal music with custom mod music
 		}
 
 		DoGLegacyMusic: {
-			Label: "[i:MusicBox]Devouer of Gods Legacy Theme"
+			Label: "[i:CalamityInheritance/DoGLegacy]Devouer of Gods Legacy Theme"
 			Tooltip:
 				'''
 				Plays Devouer of Gods Legacy theme in DoG Fight
@@ -134,7 +134,7 @@ Configs: {
 		}
 
 		TaleOfACruelWorld: {
-			Label: "[i:MusicBox]Tale of A Cruel World"
+			Label: "[i:CalamityModMusic/CalamityTitleMusicBox]Tale of A Cruel World"
 			Tooltip:
 				'''
 				Play Tale of A Cruel World when entering the world
@@ -143,7 +143,7 @@ Configs: {
 		}
 
 		BlessingoftheMoon: {
-			Label: "[i:MusicBox]Blessing of the Moon"
+			Label: "[i:CalamityInheritance/BlessingOftheMoon]Blessing of the Moon"
 			Tooltip:
 				'''
 				Plays Blessing of the Moon when getting close to the Plantoid
@@ -198,8 +198,12 @@ Configs: {
 		}
 
 		Arcueid: {
-			Tooltip: ""
-			Label: Arcueid
+			Tooltip:
+				'''
+				Plays -月姬- when getting close to the Plantoid if disbale Blessing of the Moon
+				Default by false
+				'''
+			Label: "[i:CalamityInheritance/Arcueid]-月姬-"
 		}
 
 		LevelUp: {
@@ -208,13 +212,21 @@ Configs: {
 		}
 
 		Kunoji: {
-			Label: Kunoji
-			Tooltip: ""
+			Label: "[i:CalamityInheritance/Kunoji]-久遠寺邸朝食-"
+			Tooltip:
+				'''
+				Plays -久遠寺邸朝食- during the town day.
+				Default by false
+				'''
 		}
 
 		LegendaryRarity: {
-			Label: Legendary Rarity
-			Tooltip: ""
+			Label: "[i:CalamityInheritance/DukeLegendary]Legendary Rarity"
+			Tooltip:
+				'''
+				Give all Legendary Weapon special rarity color
+				Default by false
+				'''
 		}
 	}
 
@@ -452,23 +464,28 @@ Configs: {
 		}
 
 		PrismallineResprite: {
-			Label: Prismalline Resprite
-			Tooltip: ""
+			Label: "[i:CalamityMod/Prismalline]Prismalline Resprite"
+			Tooltip: Determines sprite style of Prismalline
 		}
 
 		RadiantStarResprite: {
-			Label: Radiant Star Resprite
-			Tooltip: ""
+			Label: "[i:CalamityMod/RadiantStar]Radiant Star Resprite"
+			Tooltip: Determines sprite style of Radiant Star
 		}
 
 		ShatteredSunResprite: {
-			Label: Shattered Sun Resprite
-			Tooltip: ""
+			Label: "[i:CalamityMod/ShatteredSun]Shattered Sun Resprite"
+			Tooltip: Determines sprite style of Shattered Sun
 		}
 
 		FuckAllExo: {
-			Label: Fuck All Exo
-			Tooltip: ""
+			Label: "[i:CalamityMod/Exoblade]Miracle Weapon Resprite"
+			Tooltip:
+				'''
+				Determines sprite style of some Miracle weapon
+				This need to reloaded the mod due to using hook
+				Currently only resprite [i:CalamityMod/SubsumingVortex]Subsuming Vortex
+				'''
 		}
 	}
 
@@ -542,18 +559,41 @@ Configs: {
 		}
 
 		CalStatInflationBACK: {
-			Label: Cal Stat Inflation B A C K
-			Tooltip: ""
+			Label: "[i:Zenith]Brings back stat bloat"
+			Tooltip:
+				'''
+				Return the Post-ML stat bloat to current version of Calamity, including weapon stat and boss stat
+				Weapon scaling is primarily determined by examining the materials used in the weapon's recpie.
+				'''
 		}
 
 		SolarEclipseChange: {
-			Label: Solar Eclipse Change
-			Tooltip: ""
+			Label: "[i:CalamityMod/DarksunFragment]Brings back Yharon(Phase 1) and Yharon(Phase 2)"
+			Tooltip:
+				'''
+				[c/FFA500:Return Yharon(Phase 1) and Yharon(Phase 2) to the current version of Calamity]
+				After enabling this option, defeating the Devourer of Gods will only enhance the [i:NaughtyPresent]Frost Moon and [i:PumpkinMoonMedallion]Pumpkin Moon.
+				[i:SolarTablet]Solar Eclipse enhancement will instead be tied to the Jungle Dragon, Yharon(Phase 1).
+				When using summon item of Yharon, it will appear in Phase 1, which disengage from combat when its health drops below 10%
+				After that, activate the Solar Eclipse enhancement, and drop some loot for you.
+				Once the Solar Eclipse enhancement is activated and the corresponding conditions are met, the Yharon (Phase 2) will become available.
+				Additionally, some Post-DoG recipes will be modified as a result of this global change. 
+				Be sure to consult the Recipe Browser for full details.
+				Recipe Change:
+				[i:CalamityMod/AscendantSpiritEssence]Ascendant Spirit Essence: removed Darksun Fragment 
+				[i:CalamityInheritance/SilvaHeadMelee]Silva Sets: removed Ascendant Spirit Essence, add Darksun Fragment
+				[i:CalamityMod/TeslaCannon]Draedons Asrenal: removed Ascendant Spirit Essence, add Darksun Fragment
+				[i:CalamityMod/AuricBar]Some Auric Weapon: removed Auric Bar, add Darksun Fragment
+				'''
 		}
 
 		LoreDrop: {
-			Label: Lore Drop
-			Tooltip: ""
+			Label: "[i:CalamityMod/LoreCalamitas]Lore Drop"
+			Tooltip:
+				'''
+				Enables to make bosses no longer drop Calamity lores but Legacy lores
+				Disbale by default
+				'''
 		}
 	}
 }

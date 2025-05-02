@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CIMod();
-            player.GetCritChance<MagicDamageClass>() += 20;
+            player.GetCritChance<MagicDamageClass>() += 15;
             player.statManaMax2 += 75;
             usPlayer.OverloadManaPower = true;
             if (player.statMana > player.statManaMax2)

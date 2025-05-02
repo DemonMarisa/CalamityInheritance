@@ -58,28 +58,6 @@ namespace CalamityInheritance.CIPlayer
             var R = CIRespriteConfig.Instance;
             var item = TextureAssets.Item;
             var proj = TextureAssets.Projectile;
-            #region 切换1457贴图
-            if(R.SetAllLegacySprite == true) //这个用于快速把一些物品转为1457版本的贴图
-            {
-                R.RampartofDeitiesTexture =     false;
-                R.TriactisHammerResprite =      false;
-                R.BloodOrangeResprite =         false;
-                R.MiracleFruitResprite=         false;
-                R.ElderberryResprite  =         false;
-                R.DragonfruitResprite =         false;
-                R.CometShardResprite =          false;
-                R.EtherealCoreResprite =        false;
-                R.PhantomHeartResprite =        false;
-                R.StellarContemptResprite  =    false;
-                R.FateGirlSprite =              false;
-                R.HeliumFlashResprite =         false;
-                R.DrataliornusResprite =        false;
-                R.AngelTreadsResprite =         false;
-                R.MOABResprite =                false;
-
-                R.ShadowspecKnivesResprite = 2;
-            }
-            #endregion
             #region Texture
             #region 钨钢Family
             if (GI<WulfrumAxe>()     != null ||

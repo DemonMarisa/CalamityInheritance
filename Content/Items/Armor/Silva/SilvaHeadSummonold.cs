@@ -40,12 +40,12 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
 
             public override void UpdateArmorSet(Player player)
             {
-                var modPlayer1 = player.CIMod();
-                var modPlayer = player.Calamity();
-                modPlayer.silvaSummon = true;
-                modPlayer1.SilvaSummonSetLegacy = true;
-                modPlayer1.SilvaFakeDeath = true;
-                modPlayer.WearingPostMLSummonerSet = true;
+                var usPlayer = player.CIMod();
+                var calPlayer = player.Calamity();
+                calPlayer.silvaSummon = true;
+                usPlayer.SilvaSummonSetLegacy = true;
+                usPlayer.SilvaFakeDeath = true;
+                calPlayer.WearingPostMLSummonerSet = true;
                 player.setBonus = this.GetLocalizedValue("SetBonus");
                 if (player.whoAmI == Main.myPlayer)
                 {

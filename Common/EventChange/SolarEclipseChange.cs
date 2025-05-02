@@ -1,16 +1,6 @@
-﻿using CalamityInheritance.Core;
-using CalamityMod;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Items.Materials;
 using Terraria.DataStructures;
 using Terraria;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;

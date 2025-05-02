@@ -2,16 +2,16 @@ SCAL1: You are consumed by hatred
 SCAL2: Go to hell.
 SCAL3: Your fate is already sealed
 SCAL4: Your wounds will never heal.
-MeleeLevel: 近战熟练度升级了！
-RangedLevel: 射手熟练度升级了！
-MagicLevel: 法师熟练度升级了！
-SummonLevel: 召唤熟练度升级了！
-RogueLevel: 盗贼熟练度升级了！
-MeleeLevelMax: 战士熟练度满级了！
-RangedLevelMax: 射手熟练度满级了！
-MagicLevelMax: 法师熟练度满级了！
-SummonLevelMax: 召唤熟练度满级了！
-RogueLevelMax: 盗贼熟练度满级了！
+MeleeLevel: Melee Profiency is level up!
+RangedLevel: Ranger Profiency is level up!
+MagicLevel: Mage Profiency is level up!
+SummonLevel: Summoner Profiency is level up!
+RogueLevel: Rogue Profiency is level up
+MeleeLevelMax: Melee Profiency is reached max level!
+RangedLevelMax: Ranger Profiency is reached max level!
+MagicLevelMax: Mage Profiency is reached max level!
+SummonLevelMax: Summoner Profiency is reached max level!
+RogueLevelMax: Rogue Profiency is reached max level!
 ArmageddonText: Bosses will now kill you instantly.
 ArmageddonText2: Bosses will no longer kill you instantly.
 DeathText: Death is active; enjoy the fun.

@@ -110,7 +110,7 @@ namespace CalamityInheritance.CIPlayer
                 Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
             }
             //永恒套
-            if (Main.player[proj.owner].CIMod().ReaverMageBurst)
+            if (ReaverMageBurst)
             {
                 if (ReaverMageBurst) //击发时提供法术增强buff
                     Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
@@ -141,10 +141,10 @@ namespace CalamityInheritance.CIPlayer
                 double healMult = 0.2;
                 healMult -= proj.numHits * healMult * 0.5;
                 int heal = (int)Math.Round(dmgDone * healMult * (Player.statMana / (double)Player.statManaMax2));
-                if (heal > 125)
-                    heal = 125;
+                if (heal > 75)
+                    heal = 75;
                 //CD填1，因为这里是按照另外一个方法生成射弹。
-                if (healMult > 0D && heal > 0)
+                if (healMult > 0D && heal > 0 && Player.statMana <= Player.statManaMax2)
                     CIFunction.SpawnHealProj(proj.GetSource_FromThis(), target.Center, Player, heal, 20f, 1.2f, 1);
             }
         }

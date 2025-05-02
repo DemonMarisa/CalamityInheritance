@@ -248,20 +248,30 @@ MagnusEye: {
 }
 
 VictideBook: {
-	Tooltip: ""
-	DisplayName: Victide Book
+	Tooltip: Casts coral water spouts that lay on the ground and damage enemies
+	DisplayName: Coral Spout Legacy
 }
 
 RavagerLegendary: {
 	DisplayName: Vesuvius Legendary
-	Tooltip: ""
-	TierOne: "11"
-	TierOneTint: "111"
-	TierTwo: "222"
-	TierTwoTint: "222"
-	TierThree: "333"
-	TierThreeTint: "333"
-	LegendaryScaling: Buff
+	Tooltip:
+		'''
+		Calls down a swarm of molten asteroids
+		Press Right Click to fire a spread of molten asteroids from the staff	
+		Scaling damage across the playthrough
+		[SCALING]
+		[c/FF009B:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
+		'''
+	TierOne: "[c/FF009B:Upgrade]: Molten asteroids fully ignore tiles"
+	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
+	TierTwo: "[c/FF009B:Upgrade]: Allows the eruption of molten asteroids from underground"
+	TierTwoTint: "[c/818589:Keep striking Providence in underworld]"
+	TierThree: "[c/FF009B:Upgrade]: Grants life regen and damage buff when using the weapon"
+	TierThreeTint: "[c/818589:Meet up a betsy with the Calamitas' Sigil equipped]"
+	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0}% weapon damage"
 }
 
 FuckVoid: {
@@ -270,15 +280,25 @@ FuckVoid: {
 }
 
 DestroyerLegendary: {
-	Tooltip: ""
-	DisplayName: Destroyer Legendary
-	TierOne: "11"
-	TierTwo: "222"
-	TierThree: "333"
-	TierOneTint: "111"
-	TierTwoTint: "222"
-	TierThreeTint: "333"
-	LegendaryScaling: Buff
+	Tooltip:
+		'''
+		Fires plasma orbs that linger and emit massive explosions
+		Press Right Click to fire powerful energy beams
+		Scaling damage across the playthrough
+		[SCALING]
+		[c/4169E1:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
+		'''
+	DisplayName: SHPC Legendary
+	TierOne: "[c/4169E1:Upgrade]: Fires a homing plasma orbs when firing energy beams"
+	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
+	TierTwo: "[c/4169E1:Upgrade]: +2 plasma orbs and energy beams"
+	TierTwoTint: "[c/818589:Drinks an Purple Juice during the Inpending Doom]"
+	TierThree: "[c/4169E1:Upgrade]: No longer consume any mana"
+	TierThreeTint: "[c/818589:Summon Polterghast after used Comet Shard and Ethereal Core]"
+	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0} weapon damage"
 }
 
 SubsumingVortexChange:
@@ -300,7 +320,7 @@ VividChange:
 	[c/4169E1:void] [c/FFFFE0:ModifyOnHitTile] [c/4169E1:()] [c/B0C4DE:=>] [c/FFFFE0:OnHitEffect][c/4169E1:()];
 	[c/4169E1:void] [c/FFFFE0:OnHitEffect][c/4169E1:()]
 	{
-		[c/87CEFA:Beams always release a cosmic explosion on enemy hits];
+	    [c/87CEFA:Beams always release a cosmic explosion on enemy hits];
 	    [c/87CEFA:When hitting a wall/enemy, summons a large number of Exo Beams support you];
 	}
 	'''

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
@@ -8,6 +7,7 @@ using CalamityMod;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -66,8 +66,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void NormalAI()
         {
-            //本质上就是一个直线飞行的射弹我们不需要写任何东西, 使其发光，保住转角即可
-            //更新: 追加了日食爆炸
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
             Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);
             // 不跟踪了，改为有极高限制角度的跟踪
@@ -75,8 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void StickingAI()
         {
-            //刷新射弹属性
-            if (!ResetProj)
+            if (!changedTimeLeft)
             {
                 Projectile.extraUpdates = 1;
                 Projectile.localNPCHitCooldown = 60;
@@ -182,5 +179,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
+
+        public override bool? CanHitNPC(NPC target) => Projectile.ai[0] == 1f ? false : base.CanHitNPC(target);
+
+        public override bool CanHitPvp(Player target) => Projectile.ai[0] != 1f;
     }
 }

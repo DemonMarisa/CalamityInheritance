@@ -100,7 +100,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                         HasBeenReleased = true;
                         Projectile.netUpdate = true;
                     }
-                    Main.NewText("MaxFuck");
                 }
                 //If not, scaling the damage.
                 else if (Time >= SubsumingVortex.VortexShootDelay)

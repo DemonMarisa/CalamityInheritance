@@ -20,61 +20,6 @@ DraedonsToy: {
 	DisplayName: 嘉登的神秘遥控器[Legacy]
 }
 
-PBGLegendaryUpgrade: {
-	Tooltip:
-		'''
-		用于给[i:CalamityInheritance/PBGLegendary]孔雀翎[Legendary]进行一项强化
-		使用后会返还孔雀翎[Legendary]
-		只能使用一次
-		'''
-	Tint: 你已经进行过该项强化了！
-	DisplayName: 孔雀翎[Legendary]强化物品
-}
-
-RavagerLegendaryUpgrade: {
-	Tooltip:
-		'''
-		用于给[i:CalamityInheritance/RavagerLegendary]维苏威阿斯[Legendary]进行一项强化
-		使用后会返还维苏威阿斯[Legendary]
-		只能使用一次
-		'''
-	Tint: 你已经进行过该项强化了！
-	DisplayName: 维苏威阿斯[Legendary]强化物品
-}
-
-DukeLegendaryUpgrade: {
-	Tooltip:
-		'''
-		用于给[i:CalamityInheritance/DukeLegendary]海爵剑[Legendary]进行一项强化
-		使用后会返还海爵剑[Legendary]
-		只能使用一次
-		'''
-	Tint: 你已经进行过该项强化了！
-	DisplayName: 海爵剑[Legendary]强化物品
-}
-
-PlanteraLegendaryUpgrade: {
-	Tooltip:
-		'''
-		用于给[i:CalamityInheritance/PlanteraLegendary]叶流[Legendary]进行一项强化
-		使用后会返还叶流[Legendary]
-		只能使用一次
-		'''
-	Tint: 你已经进行过该项强化了！
-	DisplayName: 叶流[Legendary]强化物品
-}
-
-DestroyerLegendaryUpgrade: {
-	Tooltip:
-		'''
-		用于给[i:CalamityInheritance/DestroyerLegendary]SHPC[Legendary]进行一项强化
-		使用后会返还SHPC[Legendary]
-		只能使用一次
-		'''
-	Tint: 你已经进行过该项强化了！
-	DisplayName: SHPC[Legendary]强化物品
-}
-
 EyeofExtinction: {
 	DisplayName: 灭世之眼[Legacy]
 	Tooltip:
@@ -85,7 +30,7 @@ EyeofExtinction: {
 }
 
 YharonTreasureBagsLegacy: {
-	DisplayName: 宝藏带（丛林龙 - 日蚀前）
+	DisplayName: 宝藏袋（丛林龙 - 日蚀前）
 	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
@@ -113,7 +58,7 @@ DefiledFeather: {
 	Tooltip:
 		'''
 		所以，你是怎么得到这个东西的？
-		你是通过了可悲的恶意-末日-神殇的至尊灾厄战，还是随便用了Hero或者什么别的模组拿的？
+		你是通过了可悲的恶意-末日-神殇的至尊灾厄战，还是随便用了Hero或者什么别的测试员模组拿的？
 		啊啊...
 		不管如何，还是稍微祝贺你打完了这一挑战吧
 		'''
