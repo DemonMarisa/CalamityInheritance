@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System.Xml;
 using Terraria.Audio;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -29,6 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float wtfX = Main.player[projCounter].Center.X - vel.X;
             float wtfY = Main.player[projCounter].Center.Y - vel.Y;
             float wtfSum = (float)Math.Sqrt((double)(wtfX*wtfX + wtfY*wtfY));
+
             if(wtfSum < 50f && //???
                Projectile.position.X < Main.player[projCounter].position.X + Main.player[projCounter].width && 
                Projectile.position.X + Projectile.width > Main.player[projCounter].position.X && 
@@ -56,6 +58,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 Dust dAlter = Main.dust[dType];
                 dAlter.position.Y -= dVelY;
             }
+
+            CIFunction.HomeInPlayer(player, Projectile, 18f, 12f, 3f);
         }
         public override void OnKill(int timeLeft)
         {

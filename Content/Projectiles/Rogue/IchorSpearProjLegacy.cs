@@ -13,7 +13,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/IchorSpearLegacy";
-
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -71,6 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, 
             Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
             return false;
         }
 

@@ -1,9 +1,14 @@
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Particles;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
+using CalamityMod.Projectiles.Rogue;
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -17,7 +22,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/EclipseSpear";
         public override void SetStaticDefaults()
         {
-
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
         public override void SetDefaults()
         {
@@ -38,23 +44,47 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
-            //普攻保留原灾的飞行轨迹
-            if (Main.rand.NextBool(5))
+            if (Main.rand.NextBool(3))
             {
                 Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
                 float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
-                Color trailColor = Main.rand.NextBool() ? Color.Black : Color.DarkOrange;
+                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
                 Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
                 GeneralParticleHandler.SpawnParticle(eclipseTrail);
             }
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, 0.15f);
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => RainDownSomeSpears(target.position);
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => RainDownSomeSpears(target.position);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            OnHitSparks();
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+            RainDownSomeSpears(target.position);
+            SoundEngine.PlaySound(CISoundMenu.EclipseSpearBoom, target.Center);
+        }
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            OnHitSparks();
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+            RainDownSomeSpears(target.position);
+        }
+        public void OnHitSparks()
+        {
+            int sparkCount = Main.rand.Next(8, 16);
+            for (int i = 0; i < sparkCount; i++)
+            {
+                Vector2 sVel = Projectile.velocity.RotatedByRandom(0.3f) * Main.rand.NextFloat(0.6f, 2f);
+                int sLife = Main.rand.Next(23, 50);
+                float sScale = Main.rand.NextFloat(1.6f, 2f) * 0.955f;
+                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
+                Particle eclipseTrail = new SparkParticle(sVel, Projectile.velocity * 0.2f, false, sLife, sScale, trailColor);
+                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+            }
+        }
         //现在我们需要开始从天上降下投矛
         public void RainDownSomeSpears(Vector2 tarPos)
         {
-            //普攻的情况下固定生成6个
-            int pAmt = 6;
+            //4-7个
+            int pAmt = Main.rand.Next(4, 7);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置
@@ -89,6 +119,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[d].velocity *= 1f;
                 Main.dust[d].noGravity = true;
             }
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
         }
     }
 }

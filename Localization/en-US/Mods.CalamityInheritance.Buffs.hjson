@@ -222,3 +222,8 @@ MaliceModeHot: {
 	DisplayName: Malice Mode Hot
 	Description: Mods.CalamityInheritance.Buffs.MaliceModeHot.Description
 }
+
+BloodClot: {
+	DisplayName: Blood Clot
+	Description: Mods.CalamityInheritance.Buffs.BloodClot.Description
+}

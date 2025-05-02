@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -69,6 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                 }
             }
+            CIFunction.HomeInOnNPC(Projectile, true, 1500f, 12f, 35f, 5f);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

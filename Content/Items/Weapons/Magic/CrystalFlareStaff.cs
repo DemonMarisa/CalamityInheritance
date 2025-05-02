@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.width = 44;
             Item.height = 46;
             Item.useTime = 15;
-            Item.useAnimation = 30;
+            Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5.25f;

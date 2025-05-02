@@ -34,6 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Lighting.AddLight(Projectile.Center, new Vector3(158, 240, 240) * (1.5f / 255));
 
             Projectile.localAI[0] += 1f;
+
             if (Projectile.localAI[0] > 4f)
             {
                 Vector2 dspeed = -Projectile.velocity * 0.8f;
@@ -45,6 +46,10 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Main.dust[d].position.Y = y;
                 Main.dust[d].velocity = dspeed;
                 Main.dust[d].noGravity = true;
+            }
+            if (Projectile.localAI[0] <  30f)
+            {
+                Projectile.velocity *= 1.02f;
             }
         }
 

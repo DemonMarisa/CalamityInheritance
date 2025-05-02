@@ -482,3 +482,13 @@ ACTExcelsus: {
 }
 
 ZenithBuff: ""
+
+CrystalBlade: {
+	DisplayName: Crystal Blade
+	Tooltip: ""
+}
+
+TemporalFloeSword: {
+	DisplayName: Temporal Floe Sword
+	Tooltip: ""
+}

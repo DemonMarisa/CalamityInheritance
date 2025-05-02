@@ -190,7 +190,7 @@ namespace CalamityInheritance.Texture
         public static string CIRangedWeaponRoute=>  $"{CIGenericWeaponRoute}/Ranged";
         public static string CIMagicWeaponRoute=>   $"{CIGenericWeaponRoute}/Magic";
         public static string CIRogueWeaponRoute=>   $"{CIGenericWeaponRoute}/Rogue";
-        public static string CILegendaryPath => $"{CIGenericWeaponRoute}/Legendar";
+        public static string CILegendaryPath => $"{CIGenericWeaponRoute}/Legendary";
         //射弹路径
         public static string CIProjRoute => "CalamityInheritance/Content/Projectiles";
         //额外贴图路径

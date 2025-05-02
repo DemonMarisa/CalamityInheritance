@@ -122,7 +122,8 @@ namespace CalamityInheritance.CIPlayer
         public bool MagicHatOld = false;
         public bool MidnnightSunBuff = false;
         public bool cosmicEnergy = false;
-        public bool IsAncientClasper = false; 
+        public bool IsAncientClasper = false;
+        public bool bloodClot = false;
         #endregion
         #region 禁止生成物品
         public bool cIdisableVoodooSpawns = false;
@@ -160,6 +161,7 @@ namespace CalamityInheritance.CIPlayer
             ReaverSummonerOrb = false;
             cosmicEnergy = false;
             IsAncientClasper = false;
+            bloodClot = false;
             #endregion
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;

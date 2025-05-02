@@ -40,7 +40,7 @@ namespace CalamityInheritance.NPCs
         #region Reset Effects
         public static void BossResetEffects(NPC npc)
         {
-            void ResetSavedIndex(ref int type, int type1, int type2 = -1)
+            static void ResetSavedIndex(ref int type, int type1, int type2 = -1)
             {
                 if (type >= 0)
                 {

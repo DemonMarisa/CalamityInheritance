@@ -70,5 +70,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             }
             return false;
         }
+
     }
 }

@@ -61,3 +61,8 @@ AncientMurasama: {
 		'''
 	DisplayName: 远古高频红刀[Legacy]
 }
+
+MarkedMagnum: {
+	// DisplayName: Marked Magnum
+	// Tooltip: ""
+}

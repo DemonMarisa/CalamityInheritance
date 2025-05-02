@@ -492,3 +492,13 @@ ZenithBuff:
 	数值膨胀选项强化:
 	获得150点护甲穿透
 	'''
+
+CrystalBlade: {
+	// DisplayName: Crystal Blade
+	// Tooltip: ""
+}
+
+TemporalFloeSword: {
+	// DisplayName: Temporal Floe Sword
+	// Tooltip: ""
+}

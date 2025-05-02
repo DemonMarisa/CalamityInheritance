@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.DamageType = DamageClass.Ranged;
             Item.width = 50;
             Item.height = 18;
-            Item.useTime = 9;
+            Item.useTime = 5;
             Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;

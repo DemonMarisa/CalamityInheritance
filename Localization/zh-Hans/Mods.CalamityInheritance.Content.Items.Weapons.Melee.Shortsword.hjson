@@ -147,3 +147,8 @@ TrueNightsStabber: {
 		弹幕带有轻微的弹道矫正
 		'''
 }
+
+HeartRapier: {
+	// DisplayName: Heart Rapier
+	// Tooltip: ""
+}

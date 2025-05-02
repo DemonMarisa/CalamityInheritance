@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
@@ -14,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class LumiStriker: RogueWeapon, ILocalizedModType
     {
+        public static readonly SoundStyle ThrowSound2 = new("CalamityMod/Sounds/Item/LanceofDestinyStrong") { Volume = 0.4f, PitchVariance = 0.3f };
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public override void SetStaticDefaults()
         {
@@ -36,13 +38,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noUseGraphic = true;
             Item.knockBack = 16f;
             Item.shoot = ModContent.ProjectileType<LumiStrikerProj>();
-            Item.shootSpeed = 22f;
+            Item.shootSpeed = 10f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool stealth = player.Calamity().StealthStrikeAvailable();
             int p = Projectile.NewProjectile(source, position, velocity * 1.2f, type, damage, knockback, player.whoAmI);
-            
+
+            if (!stealth)
+                SoundEngine.PlaySound(CISoundMenu.LumiSpearAttackNor);
+            else
+                SoundEngine.PlaySound(ThrowSound2);
+
+            Projectile.NewProjectile(source, position, stealth ? -velocity * 1.8f : -velocity * 1.4f, ModContent.ProjectileType<LumiStrikerBack>(), damage, knockback, player.whoAmI);
             if (!stealth)
                 return false;
                 

@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Pink;
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 10f;
             Item.shoot = ModContent.ProjectileType<ProBolt>();
             Item.Calamity().canFirePointBlankShots = true;
         }

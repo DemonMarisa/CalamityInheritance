@@ -53,3 +53,8 @@ AncientMurasama: {
 	Tooltip: ""
 	DisplayName: Ancient Murasama
 }
+
+MarkedMagnum: {
+	DisplayName: Marked Magnum
+	Tooltip: ""
+}

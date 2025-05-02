@@ -1,40 +1,30 @@
 using System;
 using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Particles;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class EclipseSpearProjStealth : ModProjectile, ILocalizedModType
     {
-        //使用Projectile.ai[0]来查看其是否在发起挂载
-        public bool IsSticking
-        {
-            get => Projectile.ai[0] == 1f;
-            set => Projectile.ai[0] = value ? 1f : 0f;
-        }
-        //使用Projectile.ai[1]来存放一个挂载的敌怪单位
-        public int WhatTar
-        {
-            get => (int)Projectile.ai[1];
-            set => Projectile.ai[1] = value;
-        }
-        //使用Projectile.localAI[0]来存放挂载时间
-        public float StickingTime
-        {
-            get => Projectile.localAI[0];
-            set => Projectile.localAI[0] = value;
-        }
-        public bool ResetProj = false;
-        public bool TooFarAway = false;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => $"{Generic.WeaponRoute}/Rogue/EclipseSpear";
-
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
@@ -42,91 +32,113 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            //潜伏就应该扔一个超高速的东西出来
-            Projectile.MaxUpdates = 8;
+            Projectile.extraUpdates = 4;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
-            Projectile.timeLeft = 150 * Projectile.MaxUpdates;
+            Projectile.timeLeft = 150 * Projectile.extraUpdates;
         }
-        //现在我们开始处理AI
+        public bool isSticky = false;
+        public bool ResetProj = false;
+        public int Target
+        {
+            get => (int)Projectile.ai[0];
+            set => Projectile.ai[0] = value;
+        }
+        public int timer = 0;
         public override void AI()
         {
-            //666, tMod写挂载都不用800行你灾能写800行
-            if (!IsSticking)
+            Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+
+            if (Main.rand.NextBool(2))
+            {
+                Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
+                float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
+                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
+                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
+                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+            }
+            if (!isSticky)
                 NormalAI();
             else
                 StickingAI();
         }
-        private void NormalAI()
+        public void NormalAI()
         {
             //本质上就是一个直线飞行的射弹我们不需要写任何东西, 使其发光，保住转角即可
             //更新: 追加了日食爆炸
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
             Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);
-
-            //获取玩家的位置
-            Player plr = Main.player[Projectile.owner];
-            float distX = Projectile.Center.X - plr.Center.X;
-            float distY = Projectile.Center.Y - plr.Center.Y;
-            float realDist = CIFunction.TryGetVectorMud(distX, distY);
-            //如果距离太远则取真，强行使其追踪随机一个敌怪以发起挂载
-            if (realDist > 600f)
-            {
-                TooFarAway = true;
-                CIFunction.HomeInOnNPC(Projectile, true, 1000f, 20f, 20f);
-            }
-                
+            // 不跟踪了，改为有极高限制角度的跟踪
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 18f, 0, 0.3f);
         }
-        private void StickingAI()
+        public void StickingAI()
         {
             //刷新射弹属性
             if (!ResetProj)
             {
-                //发起挂载时射弹伤害会被砍成1/2
-                Projectile.damage = (int)(Projectile.damage * 0.5f);
-                Projectile.MaxUpdates = 1;
-                Projectile.usesLocalNPCImmunity = true;
-                //1秒1判，挂载10秒，总共10判
-                Projectile.penetrate = -1;
+                Projectile.extraUpdates = 1;
                 Projectile.localNPCHitCooldown = 60;
                 Projectile.timeLeft = 600;
                 ResetProj = true;
             }
-            int npcTarget = WhatTar;
-            if (Main.npc[npcTarget].active && !Main.npc[npcTarget].dontTakeDamage)
+            // 如果目标可以受击且活动，就进行挂载，否则删除弹幕
+            if (Main.npc[Target].active && !Main.npc[Target].dontTakeDamage)
             {
-                //往死里绑定这个玩意
-                Projectile.Center = Main.npc[npcTarget].Center - Projectile.velocity * 2f;
-				Projectile.gfxOffY = Main.npc[npcTarget].gfxOffY;
-                if (Projectile.timeLeft % 15 == 0)
+                Projectile.Center = Main.npc[Target].Center - Projectile.velocity * 2f;
+                Projectile.gfxOffY = Main.npc[Target].gfxOffY;
+                timer++;
+                if (timer > 30 && timer % 15 == 0)
+                {
                     RainDownSpears();
-            }
-        }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (!IsSticking)
-            {
-                //击中一次，产生一次爆炸
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<EclipseStealthBoom>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
-                //LocalAI[1]用于存储击中次数
-                Projectile.localAI[1] += 1;
-                //如果是距离过远的直接给这个取真
-                if (Projectile.localAI[1] == 5 || TooFarAway)
-                    IsSticking = true;
+                    if (timer > 75)
+                        timer = 0;
+                }
             }
             else
             {
-                WhatTar = target.whoAmI;
-                Projectile.velocity = (target.Center - Projectile.Center) * 0.75f;
-           
+                // 生成一个爆炸并Kill掉
+                RainDownSpears();
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+                Projectile.Kill();
+            }
+        }
+        public override void OnHitNPC(NPC npc, NPC.HitInfo hit, int damageDone)
+        {
+            if (!isSticky)
+            {
+                Projectile.ai[0] = npc.whoAmI;
+                Projectile.velocity = (npc.Center - Projectile.Center) * 0.75f;
+                isSticky = true;
+            }
+            else
+            {
+                OnHitSparks();
+                //击中一次，产生一次爆炸
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+            }
+            SoundEngine.PlaySound(CISoundMenu.EclipseSpearBoom, npc.Center);
+        }
+        public void OnHitSparks()
+        {
+            int sparkCount = Main.rand.Next(12, 24);
+            for (int i = 0; i < sparkCount; i++)
+            {
+                Vector2 sVel = Projectile.velocity.RotatedByRandom(0.3f) * Main.rand.NextFloat(0.6f, 3f);
+                int sLife = Main.rand.Next(30, 60);
+                float sScale = Main.rand.NextFloat(1.6f, 2f) * 0.955f;
+                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
+                Particle eclipseTrail = new SparkParticle(sVel, Projectile.velocity * 0.2f, false, sLife, sScale, trailColor);
+                GeneralParticleHandler.SpawnParticle(eclipseTrail);
             }
         }
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
         {
-            if (IsSticking) {
-				int npcIndex = WhatTar;
+            if (isSticky) 
+            {
+				int npcIndex = (int)Projectile.ai[0];
 				if (npcIndex >= 0 && npcIndex < 200 && Main.npc[npcIndex].active) {
 					if (Main.npc[npcIndex].behindTiles) {
 						behindNPCsAndTiles.Add(index);
@@ -141,9 +153,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         private void RainDownSpears()
         {
-            //潜伏情况下一直在发起挂载，则每次从天上落下2~3个
+            //潜伏情况下一直在发起挂载，则每次从天上落下3~5个
             Vector2 tarPos = Projectile.Center;
-            int pAmt = Main.rand.Next(2,4);
+            int pAmt = Main.rand.Next(3,6);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置
@@ -162,8 +174,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 speed.X *= tarDist;
                 speed.Y *= tarDist;
                 //生崽
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             }
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
         }
     }
 }

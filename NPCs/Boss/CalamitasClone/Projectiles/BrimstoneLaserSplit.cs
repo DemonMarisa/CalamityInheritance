@@ -1,3 +1,4 @@
+using CalamityInheritance.World;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
@@ -27,12 +28,12 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.timeLeft = 480;
             Projectile.alpha = 120;
         }
-
         public override void AI()
         {
+            float followTimer = CIWorld.Malice ? 420f : 210f;
             int target = Player.FindClosest(Projectile.Center, 1, 1);
             Projectile.ai[1] += 1f;
-            if (Projectile.ai[1] < 150f && Projectile.ai[1] > 90f)
+            if (Projectile.ai[1] < followTimer && Projectile.ai[1] > 90f)
             {
                 float scaleFactor2 = Projectile.velocity.Length();
                 Vector2 vector11 = Main.player[target].Center - Projectile.Center;
@@ -42,7 +43,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
                 Projectile.velocity.Normalize();
                 Projectile.velocity *= scaleFactor2;
             }
-            else if (Projectile.ai[1] >= 150f)
+            else if (Projectile.ai[1] >= followTimer)
             {
                 if (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y) < 16f)
                 {

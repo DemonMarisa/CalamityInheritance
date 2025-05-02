@@ -127,3 +127,8 @@ TrueNightsStabber: {
 	DisplayName: True Nights Stabber
 	Tooltip: Do not underestimate the power of shivs...
 }
+
+HeartRapier: {
+	DisplayName: Heart Rapier
+	Tooltip: ""
+}

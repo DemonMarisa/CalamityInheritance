@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -11,6 +12,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class IceRain: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic" ;
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+        }
+
         public override void SetDefaults()
         {
             Projectile.width = 10;
@@ -36,9 +43,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 if(Projectile.ai[0] > 45f)
                 {
                     Projectile.rotation += Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 11f + Projectile.ai[0]/5f, 10f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 12f, 10f);
                 }
             }   
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
         }
 
         public override void OnKill(int timeLeft)

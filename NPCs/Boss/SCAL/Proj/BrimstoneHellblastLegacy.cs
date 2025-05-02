@@ -69,7 +69,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 SoundEngine.PlaySound(FireSound, Projectile.position);
             }
             // 普灾发射时速度更慢
-            if (Projectile.ai[2] == 0f)
+            if (Projectile.ai[2] != 0f)
                 Projectile.velocity *= 1.03f;
             else
                 Projectile.velocity *= 1.08f;

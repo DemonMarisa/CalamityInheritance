@@ -72,3 +72,8 @@ AncientAncientIceChunk: {
 	DisplayName: Ancient Ancient Ice Chunk
 	Tooltip: ""
 }
+
+BloodClotStaff: {
+	DisplayName: Blood Clot Staff
+	Tooltip: ""
+}

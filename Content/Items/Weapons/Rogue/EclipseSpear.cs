@@ -1,11 +1,14 @@
 using System.Security.Cryptography.X509Certificates;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,14 +31,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useAnimation = Item.useTime = 22;
             Item.autoReuse = true;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            //23f，不然这也太没手感了
-            Item.shootSpeed = 23f;
+            Item.shootSpeed = 16f;
             Item.shoot = ModContent.ProjectileType<EclipseSpearProj>();
 
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
@@ -44,10 +45,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             bool ifStealth = player.CheckStealth();
             if (ifStealth)
+            {
+                SoundEngine.PlaySound(CISoundMenu.EclipseSpearAttackStealth, player.Center);
                 type = ModContent.ProjectileType<EclipseSpearProjStealth>();
+            }
+            else
+                SoundEngine.PlaySound(CISoundMenu.EclipseSpearAttackNor, player.Center);
 
             int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             Main.projectile[p].Calamity().stealthStrike = ifStealth;
+
+            if (!ifStealth)
+                Projectile.NewProjectile(source, position, -velocity, ModContent.ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
+            else
+                Projectile.NewProjectile(source, position, -velocity * 1.5f, ModContent.ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
             return false;
         }
     }

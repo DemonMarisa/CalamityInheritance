@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplate>() && legs.type == ModContent.ItemType<GodSlayerLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
 
         public override void ArmorSetShadows(Player player)
         {

@@ -46,7 +46,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             for (int index = 0; index < 3; ++index)
             {
                 int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX * 1.05f, SpeedY * 1.05f, ProjectileID.LaserMachinegunLaser, (int)(damage * 0.65), knockback * 0.6f, player.whoAmI, 0f, 0f);
-                Main.projectile[projectile].timeLeft = 120;
             }
             return false;
         }

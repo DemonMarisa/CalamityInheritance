@@ -420,3 +420,13 @@ ACTKarasawa: {
 }
 
 ChainWeaponChange: ""
+
+Dualpoon: {
+	DisplayName: Dualpoon
+	Tooltip: ""
+}
+
+MarniteBayonet: {
+	DisplayName: Marnite Bayonet
+	Tooltip: ""
+}

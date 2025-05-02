@@ -24,11 +24,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
-            Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
         }

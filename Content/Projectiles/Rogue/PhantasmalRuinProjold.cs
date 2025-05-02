@@ -9,6 +9,7 @@ using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod.Projectiles.Magic;
+using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -118,12 +119,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, ModContent.ProjectileType<PhantasmalSoulold>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<PhantasmalSoulold>() };
+                int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, randomProjectileType, (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                 if (Projectile.Calamity().stealthStrike)
                 {
                     Main.projectile[newProjectileId].Calamity().stealthStrike = true;
                 }
-
+                Main.projectile[newProjectileId].DamageType = ModContent.GetInstance<RogueDamageClass>();
             }
         }
     }

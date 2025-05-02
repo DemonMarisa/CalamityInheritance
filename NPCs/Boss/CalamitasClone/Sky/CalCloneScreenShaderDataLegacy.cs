@@ -34,9 +34,13 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
 
         public override void Update(GameTime gameTime)
         {
-            if (CIGlobalNPC.LegacyCalamitasCloneP2 < 0)
+            if (CalCloneIndex == -1)
             {
-                Filters.Scene["CalamityInheritance:CalClone"].Deactivate(Array.Empty<object>());
+                UpdateIndex();
+                if (CalCloneIndex == -1)
+                {
+                    Filters.Scene["CalamityInheritance:CalClone"].Deactivate(Array.Empty<object>());
+                }
             }
         }
 

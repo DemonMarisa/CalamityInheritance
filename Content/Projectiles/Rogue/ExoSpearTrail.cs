@@ -92,6 +92,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             num309 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
             Main.dust[num309].velocity *= -0.25f;
             Main.dust[num309].position -= Projectile.velocity * 0.5f;
+
             Dust.NewDustPerfect(Projectile.Center, 247, (Vector2?)new Vector2(0f, 0f), 0, default(Color), 1f);
 
             Lighting.AddLight(Projectile.Center, 0f, 0.7f, 1f);

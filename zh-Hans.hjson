@@ -85,6 +85,13 @@ Mods: {
 		// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 		// Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
 		// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
+
+		Items: {
+			Triploon: {
+				// DisplayName: Triploon
+				// Tooltip: ""
+			}
+		}
 	}
 
 	// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam

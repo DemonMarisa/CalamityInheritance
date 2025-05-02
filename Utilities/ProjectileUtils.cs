@@ -118,6 +118,7 @@ namespace CalamityInheritance.Utilities
             
             if(acceleration.HasValue)
                 proj.velocity *= 1 + acceleration.Value / 100;
+
             if (!needALittleBitFarAwayFromPlayer)
                 return;
                 
