@@ -393,12 +393,17 @@ DraedonsHeartLegacy: {
 
 ShrineForest: {
 	// DisplayName: Shrine Forest
-	// Tooltip: ""
+	/* Tooltip:
+		'''
+		Standing still for 2 seconds to gain a buff	
+		50% increased damage, 15% increased damage reduction when being actived
+		The buff deactivated if you move or attack once
+		''' */
 }
 
 ShrineMarble: {
 	// DisplayName: Shrine Marble
-	// Tooltip: ""
+	// Tooltip: Summons two sword spirits to protect you
 }
 
 ShrineMarnite: {
@@ -408,5 +413,9 @@ ShrineMarnite: {
 
 ShrineMushroom: {
 	// DisplayName: Shrine Mushroom
-	// Tooltip: ""
+	/* Tooltip:
+		'''
+		True melee weapons emit mushrooms when swung
+		25% increased true melee damage
+		''' */
 }

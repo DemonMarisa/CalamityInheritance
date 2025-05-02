@@ -35,7 +35,30 @@ AuricTeslaHeadMagic: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
-	Details: "11234"
+	Details:
+		'''
+		[c/7DDA58:Inherited from Tarragon Armor][i:CalamityMod/TarragonHeadMagic]
+		Reduces enemy spawn rates, increased heart pickup range
+		Enemies have a chance to drop extra hearts on death
+		On every 5th critical strike you will fire a leaf storm
+		Magic projectiles heal you on enemy hits, based on projectile damage 
+		[c/D21E20:Inherited from Bloodflare Armor][i:CalamityMod/BloodflareHeadMelee]
+		Greatly increased life regen, equivalent to Crimson armor
+		Enemies below 50% life drop a heart when struck, this effect has a 5 second cooldown
+		Magic weapons fire ghostly bolts every 1.67 seconds
+		Magic critical strikes cause flame explosions every 2 seconds
+		[c/CC6CE7:Inherited from God Slayer Armor][i:CalamityInheritance/GodSlayerHeadMagicold]
+		You will immue to the attack that deals 80 damage or less
+		Enemies will release god slayer flames and healing flames when under magic attacks
+		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadMagicold]
+		All projectiles spawn healing orbs on enemy hits
+		Magic projectiles which cannot pierce will occasionally set off potent blasts of nature energy
+		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
+		60% increased magic damage if silva invulnerability is triggered
+		'''
 }
 
 AuricTeslaHeadMelee: {
@@ -53,7 +76,32 @@ AuricTeslaHeadMelee: {
 		Enemies are more likely to target you 
 		Multiplie melee damage based on your current HP is, at full HP effect is at max
 		'''
-	Details: "11234"
+	Details:
+		'''
+		[c/7DDA58:Inherited from Tarragon Armor][i:CalamityMod/TarragonHeadMelee]
+		Reduces enemy spawn rates, increased heart pickup range
+		Enemies have a chance to drop extra hearts on death
+		Taking damage gives the Tarra Life buff, which grants +6 HP/s life regen
+		Press Armor Set Bonus to cloak yourself in life energy that heavily reduces contact damage for 10 seconds
+		[c/D21E20:Inherited from Bloodflare Armor][i:CalamityMod/BloodflareHeadMelee]
+		Greatly increased life regen, equivalent to Crimson armor
+		Enemies below 50% life drop a heart when struck, this effect has a 5 second cooldown
+		True melee strikes will heal you
+		After striking an enemy 15 times with true melee you will enter a blood frenzy for 5 seconds
+		During this you will gain 25% increased melee damage, critical strike chance, and contact damage is halved
+		This effect has a 30 second cooldown
+		[c/CC6CE7:Inherited from God Slayer Armor][i:CalamityInheritance/GodSlayerHeadMeleeold]
+		You will immue to the attack that deals 80 damage or less
+		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadMelee]
+		All projectiles spawn healing orbs on enemy hits
+		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
+		Melee projectiles have a 25% chance to stun enemies for a very brief moment
+		True melee strikes have a 25% chance to do 5 times damage
+		You will take 60% less contact damage if silva invulnerability is triggered
+		'''
 }
 
 AuricTeslaHeadRanged: {
@@ -69,7 +117,32 @@ AuricTeslaHeadRanged: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
-	Details: "11234"
+	Details:
+		'''
+		[c/7DDA58:Inherited from Tarragon Armor][i:CalamityMod/TarragonHeadRanged]
+		Reduces enemy spawn rates, increased heart pickup range
+		Enemies have a chance to drop extra hearts on death
+		Ranged projectiles split into homing life energy and leaves on death
+		[c/D21E20:Inherited from Bloodflare Armor][i:CalamityMod/BloodflareHeadRanged]
+		Greatly increased life regen, equivalent to Crimson armor
+		Enemies below 50% life drop a heart when struck, this effect has a 5 second cooldown
+		Press Armor Set Bonus to unleash the lost souls of polterghast to destroy your enemies
+		This effect has a 30 second cooldown
+		Ranged weapons fire bloodsplosion orbs every 2.5 seconds
+		[c/CC6CE7:Inherited from God Slayer Armor][i:CalamityInheritance/GodSlayerHeadRangedold]
+		10% increased ranged critical strike chance
+		You will immue to the attack that deals 80 damage or less
+		Allows your ranged hit can deal 2x damage with excess critical strike chance
+		If the critical strike chance does not excess 100%, the critical strike has a 5% chance can deal 4x damage
+		20% increased ranged crticial strike chance if it excess 95%
+		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadRanged]
+		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
+		Increased your rate of fire with all ranged weapons 
+		40% increased ranged damage if silva invulnerability is triggered
+		'''
 }
 
 AuricTeslaHeadRogue: {
@@ -88,7 +161,32 @@ AuricTeslaHeadRogue: {
 		All projectiles spawn healing auric orbs on enemy hits
 		Rogue weapon critical strike will do 1.25 times damage while you are above 50% HP
 		'''
-	Details: "11234"
+	Details:
+		'''
+		[c/7DDA58:Inherited from Tarragon Armor][i:CalamityMod/TarragonHeadRogue]
+		Reduces enemy spawn rates, increased heart pickup range
+		Enemies have a chance to drop extra hearts on death
+		After every 50 rogue critical hits you will gain 2.5 seconds of damage immunity
+		This effect has a cooldown of 25 seconds
+		While under effects of a debuff you gain 10% increased rogue damage
+		[c/D21E20:Inherited from Bloodflare Armor][i:CalamityMod/BloodflareHeadRogue]
+		Greatly increased life regen, equivalent to Crimson armor
+		Enemies below 50% life drop a heart when struck, this effect has a 5 second cooldown
+		Being over 80% life boosts your defense by 30 and rogue crit by 5%
+		Being below 80% life boosts your rogue damage by 10%
+		Rogue critical strikes have a 50% chance to heal you
+		[c/CC6CE7:Inherited from God Slayer Armor][i:CalamityInheritance/GodSlayerHeadRogueold]
+		You will immue to the attack that deals 80 damage or less
+		1/7 of your max stealth will be converted to extra max stealth
+		Boost all of your rogue stats by 10% at full HP.
+		Grants extra immunity frames if you take over 80 damage in one hit
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadRogue]
+		Faster throwing rate for your rogue weapon while you are above 50% HP
+		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
+		40% increased rogue damage if silva invulnerability is triggered
+		'''
 }
 
 AuricTeslaHeadSummon: {
@@ -106,7 +204,29 @@ AuricTeslaHeadSummon: {
 		10% increased max run speed and acceleration
 		All projectiles spawn healing auric orbs on enemy hits
 		'''
-	Details: "11234"
+	Details:
+		'''
+		[c/7DDA58:Inherited from Tarragon Armor][i:CalamityMod/TarragonHeadSummon]
+		Reduces enemy spawn rates, increased heart pickup range
+		Enemies have a chance to drop extra hearts on death
+		Summons a life aura around you that damages nearby enemies
+		[c/D21E20:Inherited from Bloodflare Armor][i:CalamityMod/BloodflareHeadSummon]
+		Greatly increased life regen, equivalent to Crimson armor
+		Enemies below 50% life drop a heart when struck, this effect has a 5 second cooldown
+		Summons polterghast mines to circle you
+		At 90% life and above you gain 10% increased summon damage
+		At 50% life and below you gain 20 defense and +1 HP/s life regen
+		[c/CC6CE7:Inherited from God Slayer Armor][i:CalamityInheritance/GodSlayerHeadSummonold]
+		You will immue to the attack that deals 80 damage or less
+		Hitting enemies will summon god slayer phantoms
+		Summon a god-eating mechworm fight for you, this can be toggled in config
+		You will revive and be healed 150 HP if an attack would killed you
+		This effect has 45 seconds cooldown
+		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadSummonold]
+		Summons an ancient leaf prism to blast your enemies with life energy
+		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
+		1.05x summon damage, +2 max minions if silva invulnerability is triggered
+		'''
 }
 
 GodSlayerChestplateold: {
@@ -119,9 +239,9 @@ GodSlayerChestplateold: {
 		Enemies take damage when they hit you
 		Attack have a 2% chance to do no damage to you 
 		'''
-	OnlyReborn: "[c/EE82EE:God Slayer Armor Bonus]:Only God Slayer Reborn"
-	OnlyDash: "[c/EE82EE:God Slayer Armor Bonus]:Only God Slayer Dash"
-	Both: "[c/EE82ee:God Slayer Armor Bonus]:Both Reborn and Dash"
+	OnlyReborn: "[c/EE82EE:God Slayer Armor Bonus]: Only God Slayer Reborn"
+	OnlyDash: "[c/EE82EE:God Slayer Armor Bonus]: Only God Slayer Dash"
+	Both: "[c/EE82ee:God Slayer Armor Bonus]: Both Reborn and Dash"
 	text: ""
 }
 
@@ -165,10 +285,12 @@ GodSlayerHeadRangedold: {
 	Tooltip: 14% increased ranged damage and critical strike chance
 	SetBonus:
 		'''
+		10% increased ranged critical strike chance
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		Allows your ranged hit can deal 2x damage with excess critical strike chance
 		If the critical strike chance does not excess 100%, the critical strike has a 5% chance can deal 4x damage
+		20% increased ranged crticial strike chance if it excess 95%
 		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
 		'''
 }
@@ -183,7 +305,7 @@ GodSlayerHeadRogueold: {
 	SetBonus:
 		'''
 		+140 maxinum stealth
-		1/7 of your max stealth will be converted to extra max steath
+		1/7 of your max stealth will be converted to extra max stealth
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		Boost all of your rogue stats by 10% at full HP.
@@ -238,7 +360,7 @@ SilvaHeadMagicold: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Magic projectiles have a 10% chance to cause a massive explosion on enmey hits
-		Your magic weapons will do 60% more damage if silva invulnerability is triggered
+		60% increased magiac damage if silva invulnerability is triggered
 		'''
 }
 
@@ -253,7 +375,7 @@ SilvaHeadMelee: {
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Melee projectiles have a 25% chance to stun enemies for a very brief moment
 		True melee strikes have a 25% chance to do 5 times damage
-		You will take 60% less contact damage if silva invulnerability is triggered
+		60% reduced contact damage if silva invulnerability is triggered
 		'''
 }
 
@@ -267,7 +389,7 @@ SilvaHeadRanged: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Increased your rate of fire with all ranged weapons 
-		Your ranged weapons will do 10% more damage if silva invulnerability is triggered time
+		40% increased ranged damage if silva invulnerability is triggered
 		'''
 }
 
@@ -285,8 +407,8 @@ SilvaHeadRogue: {
 		5% increased max run speed and acceleration
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
-		Faster throwing rate for your rogue weapon while you are above 50% HP
-		Your rogue weapons will do 10% more damage if silva invulnerability is triggered time
+		Faster firing rate for your rogue weapon while you are above 50% HP
+		40% increased rogue damage if silva invulnerability is triggered
 		'''
 }
 
@@ -300,7 +422,7 @@ SilvaHeadSummonold: {
 		All projectiles spawn healing leaf orbs on enemy hits
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		Summons an ancient leaf prism to blast your enemies with life energy
-		Your summon weapons will do 10% more damage and +2 max minions if silva invulnerability is triggered time	
+		1.05x summon damage and +2 max minions if silva invulnerability is triggered
 		'''
 }
 
@@ -575,11 +697,10 @@ YharimAuricTeslaHelm: {
 		+60 life regen speed, taking any damage makes you completely invincibile for a second. 
 		Your healing potions are 120% more effective
 		Mana potions are 250% more effective and grants resistance to Mana Sickness
+		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
-
 		'''
-	Details: "23132"
 	ExtraDetails:
 		'''
 		[c/7DDA58:Inherited From Ancient Tarragon][i:CalamityInheritance/AncientTarragonHelm]
@@ -593,9 +714,8 @@ YharimAuricTeslaHelm: {
 		This effect has 10 seconds cooldown if triggered
 		[c/CC6CE7:Inherited From Ancient God Slayer][i:CalamityInheritance/AncientGodSlayerHelm]
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
-		Boost your defense base on your max stealth
-		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
+		Boost your defense base on your max stealth
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
@@ -632,9 +752,8 @@ AncientAstralHelm: {
 		+0.5 HP/s life regen speed, +40 max HP and 12% increased damage reduction
 		Decreased your healing potion cooldown by 25% and make debuff can not negate your life regen
 		Every rogue critical strikes heal you 25 HP
-		Every 25 times of rouge crticial strikes, your defense, damage reduction will be booosted by 30%
-		and halves the defense damage.
-		Every stealth strikes give you +1 HP/s life regen speed, capped at +12 HP/s
+		Every 25 times of rouge crticial strikes, your defense, damage reduction will be booosted by 30% and halves the defense damage.
+		Every stealth strikes give you +0.5 HP/s life regen speed, capped at +6 HP/s
 		Reset this effect if no stealth strikes in 15 seconds
 		Taking damage rain down powerful stars attack your enemy, and restore 25% of your max stealth
 		[c/DFC578:'Rebirth of the forgortten, again']
@@ -657,7 +776,7 @@ AncientTarragonLeggings: {
 		+150 max life
 		Can swim and grants immnuity to lava
 		'''
-	DisplayName: Ancient Tarragon Leggings
+	DisplayName: Ancient Tarragon Leggings Revamped
 }
 
 AncientTarragonHelm: {
@@ -677,7 +796,7 @@ AncientTarragonHelm: {
 		Grants immnuity to knockback, reduces defense damage by 45%
 		Boost your defense and damage reduction when below 50% of max HP
 		'''
-	DisplayName: Ancient Tarragon Helm
+	DisplayName: Ancient Tarragon Helm Revamped
 }
 
 AncientTarragonBreastplate: {
@@ -686,7 +805,7 @@ AncientTarragonBreastplate: {
 		+400 max HP
 		+300 max mana
 		'''
-	DisplayName: Ancient Tarragon Breastplate
+	DisplayName: Ancient Tarragon Breastplate Revamped
 }
 
 AncientSilvaLeggings: {
@@ -696,11 +815,11 @@ AncientSilvaLeggings: {
 		+200 max life
 		Can swim and grants immnuity to lava
 		'''
-	DisplayName: Ancient Silva Leggings
+	DisplayName: Ancient Silva Leggings Revamped
 }
 
 AncientSilvaHelm: {
-	DisplayName: Ancient Silva Helm
+	DisplayName: Ancient Silva Helm Revamped
 	Tooltip:
 		'''
 		25% increased damage and crticial strike chance
@@ -720,12 +839,12 @@ AncientSilvaHelm: {
 }
 
 AncientSilvaArmor: {
-	DisplayName: Ancient Silva Armor
+	DisplayName: Ancient Silva Armor Revamped
 	Tooltip: +400 max HP and mana
 }
 
 AncientGodSlayerLeggings: {
-	DisplayName: Ancient God Slayer Leggings
+	DisplayName: Ancient God Slayer Leggings Revamped
 	Tooltip:
 		'''
 		50% increased movement
@@ -735,7 +854,7 @@ AncientGodSlayerLeggings: {
 }
 
 AncientGodSlayerHelm: {
-	DisplayName: Ancient God Slayer Helm
+	DisplayName: Ancient God Slayer Helm Revamped
 	Tooltip:
 		'''
 		25% increased damage and critical strike chance
@@ -747,7 +866,7 @@ AncientGodSlayerHelm: {
 		'''
 		+125 max stealth
 		Healing potions are 50% more effective
-		+6 HP/s life regen speed
+		+6 HP/s life regen speed, 85% reduced contact damage
 		Hitting an enemy with stealth strikes will boosted your damage by 20% in 10 seconds
 		This effect has 30 seconds cooldown if triggered
 		Taking hit make you completely invincibile for a moment
@@ -757,7 +876,7 @@ AncientGodSlayerHelm: {
 }
 
 AncientGodSlayerChestplate: {
-	DisplayName: Ancient God Slayer Chestplate
+	DisplayName: Ancient God Slayer Chestplate Revamped
 	Tooltip:
 		'''
 		+400 max HP and mana
@@ -766,7 +885,7 @@ AncientGodSlayerChestplate: {
 }
 
 AncientBloodflareMask: {
-	DisplayName: Ancient Bloodflare Mask
+	DisplayName: Ancient Bloodflare Mask Revamped
 	Tooltip:
 		'''
 		20% increased damage and critical strikes chance
@@ -787,7 +906,7 @@ AncientBloodflareMask: {
 }
 
 AncientBloodflareCuisses: {
-	DisplayName: Ancient Bloodflare Cuisses
+	DisplayName: Ancient Bloodflare Cuisses Revamped
 	Tooltip:
 		'''
 		30% increased movement speed
@@ -806,23 +925,50 @@ AncientBloodflareBodyArmor: {
 }
 
 AncientAeroArmor: {
-	DisplayName: Ancient Aero Armor
-	Tooltip: ""
+	DisplayName: Ancient Aero Armor Revamped
+	Tooltip:
+		'''
+		10% increased movement speed
+		10% increased jump speed
+		'''
 }
 
 AncientAeroHelm: {
-	DisplayName: Ancient Aero Helm
-	Tooltip: ""
-	SetBonus: "1121"
+	DisplayName: Ancient Aero Helm Revamped
+	Tooltip:
+		'''
+		10% increased movement speed
+		10% increased jump speed
+		'''
+	SetBonus:
+		'''
+		Boost your max flight time by 3 seconds
+		Taking damage will broke your wings, this effect has a 5-seconds cooldown after being triggered
+		Upon triggering, granted feather falling for 5 seconds
+		When equipped together with relics of the same name, the flight duration is further enhanced.
+		[c/87CEFA:'Flight, Fight, Win.']
+		'''
 }
 
 AncientAeroLeggings: {
-	DisplayName: Ancient Aero Leggings
-	Tooltip: ""
+	DisplayName: Ancient Aero Leggings Revamped
+	Tooltip:
+		'''
+		10% increased movement speed
+		10% increased jump speed
+		'''
 }
 
 ShroomiteVisage: {
 	DisplayName: Shroomite Visage
-	Tooltip: ""
-	SetBonus: ""
+	Tooltip:
+		'''
+		30% increased flamethrower damage
+		5% increased flamethrower critical strike chance
+		'''
+	SetBonus:
+		'''
+		Not moving put you into stealth
+		Increasing ranged ability and reducing chance for enemies to target you
+		'''
 }

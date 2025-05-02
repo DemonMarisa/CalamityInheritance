@@ -59,45 +59,45 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
         public override void UpdateArmorSet(Player player)
         {
-            CalamityInheritancePlayer modPlayer1 = player.GetModPlayer<CalamityInheritancePlayer>();
-            var modPlayer = player.Calamity();
-            modPlayer.tarraSet = true;
-            modPlayer.tarraThrowing = true;
-            modPlayer.bloodflareSet = true;
-            modPlayer.bloodflareThrowing = true;
-            modPlayer.godSlayer = true;
-            modPlayer.godSlayerThrowing = true;
-            modPlayer1.AuricSilvaFakeDeath = true;
+            var usPlayer = player.CIMod();
+            var calPlayer = player.Calamity();
+            calPlayer.tarraSet = true;
+            calPlayer.tarraThrowing = true;
+            calPlayer.bloodflareSet = true;
+            calPlayer.bloodflareThrowing = true;
+            calPlayer.godSlayer = true;
+            calPlayer.godSlayerThrowing = true;
+            usPlayer.AuricSilvaFakeDeath = true;
             const short onlyDash = 2;
             const short onlyReborn = 1; 
             int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
             player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
-            modPlayer1.GodSlayerReborn = mode != onlyDash;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+            usPlayer.GodSlayerReborn = mode != onlyDash;
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
             {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;
             }
-            modPlayer1.SilvaRougeSetLegacy = true;
+            usPlayer.SilvaRougeSetLegacy = true;
 
-            modPlayer.rogueStealthMax += 1.3f;
-            modPlayer.wearingRogueArmor = true;
+            calPlayer.rogueStealthMax += 1.3f;
+            calPlayer.wearingRogueArmor = true;
             //继承至弑神套的视潜伏值上限增加潜伏值的效果
-            float getMaxStealth = modPlayer.rogueStealthMax;
-            modPlayer.rogueStealthMax += getMaxStealth / 6;
-            modPlayer.wearingRogueArmor = true;
+            float getMaxStealth = calPlayer.rogueStealthMax;
+            calPlayer.rogueStealthMax += getMaxStealth / 6;
+            calPlayer.wearingRogueArmor = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
 
-            modPlayer.WearingPostMLSummonerSet = true;
+            calPlayer.WearingPostMLSummonerSet = true;
         }
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
-            modPlayer1.auricBoostold = true;
+            var calPlayer = player.Calamity();
+            var usPlayer = player.CIMod();
+            usPlayer.auricBoostold = true;
             player.GetDamage<RogueDamageClass>() += 0.2f;
             player.GetCritChance<RogueDamageClass>() += 20;
             player.moveSpeed += 0.25f;

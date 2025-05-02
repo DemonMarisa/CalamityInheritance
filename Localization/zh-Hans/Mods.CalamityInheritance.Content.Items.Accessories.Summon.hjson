@@ -12,6 +12,11 @@ NucleogenesisLegacy: {
 }
 
 DoubleSonYharon: {
-	// Tooltip: ""
-	// DisplayName: Double Son Yharon
+	/* Tooltip:
+		'''
+		Loyalty
+		Summons two Sons of Yharon to fight for you
+		+2 HP/s life regen speed, 5 defense and 10% increased movement speed
+		''' */
+	// DisplayName: Auric Soul Artifact Legacy
 }

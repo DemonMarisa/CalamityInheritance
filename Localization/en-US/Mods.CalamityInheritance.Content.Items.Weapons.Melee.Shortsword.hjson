@@ -68,7 +68,13 @@ ExoGladius: {
 		Fires a rainbow orb that summons sword beams on hit
 		'Quest: Bring back the Exo Gladius (3/100)'
 		'''
-	ExoLoreOn: "[c/0080CA:You don't need to strike your enemy with the blade to summon comets now]"
+	ExoLoreOn:
+		'''
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Boost projectiles homing ability];
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:GiveImmue][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Receive 20% less damage for a short period of time when attacking];
+		[c/4169E1:void] [c/FFFFE0:ProjSpawnComet][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:When projectiles hit enemies, exo comets will also descend from the sky];
+		'''
 }
 
 FlameburstShortsword: {

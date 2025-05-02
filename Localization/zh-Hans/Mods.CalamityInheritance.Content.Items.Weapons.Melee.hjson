@@ -348,12 +348,20 @@ GlacialCrusher: {
 
 BrimlashBuster: {
 	// DisplayName: Brimlash Buster
-	// Tooltip: ""
+	/* Tooltip:
+		'''
+		50% chance to do triple damage on enemy hits
+		Fires a brimstone bolt that explodes into more bolts on death
+		''' */
 }
 
 Verdant: {
 	DisplayName: 葱茏[Legacy]
-	// Tooltip: ""
+	/* Tooltip:
+		'''
+		Fires crystal leaves when enemies are near
+		A very agile yoyo
+		''' */
 }
 
 AzathothLegacy: {
@@ -445,7 +453,7 @@ DukeLegendary: {
 
 AquaticDissolution: {
 	// DisplayName: Aquatic Dissolution
-	// Tooltip: ""
+	// Tooltip: Fires whaling spears from the sky that bounce off tiles
 }
 
 DefenseBlade: {
@@ -491,4 +499,9 @@ ZenithBuff:
 	'''
 	数值膨胀选项强化:
 	获得150点护甲穿透
+	'''
+ChainsawCal:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:ModifyHoldout][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:现在默认满充能];
 	'''

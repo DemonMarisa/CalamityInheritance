@@ -45,6 +45,6 @@ CrystylCrusherLegacy: {
 }
 
 XerocPickaxe: {
-	// Tooltip: ""
-	// DisplayName: Xeroc Pickaxe
+	Tooltip: ""
+	DisplayName: 克希洛克之镐
 }

@@ -10,9 +10,10 @@ ExoTheApostle: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Your attack can infinite pierce]
-		[c/0080CA:Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes]
-		[c/0080CA:Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Your attack can infinite pierce];
+		[c/4169E1:void] [c/FFFFE0:NotStealthOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Upon hitting an enemy, javelin explodes into homing energy daggers and spawns another javelin for additional strikes];
+		[c/4169E1:void] [c/FFFFE0:StealthOnHit][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Stealth strikes throws a javelin guarantees a hit, splits into a bunch of energy daggers and javelins];
 		'''
 }
 
@@ -73,7 +74,17 @@ Supernovaold: {
 		Stealth strikes release energy as they fly
 		'Nerf Supernova sprite size'
 		'''
-	ExoLoreOn: "[c/0080CA:Stealth strikes casue an even bigger expolsion]"
+	ExoLoreOn:
+		'''
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:OnRightClick][c/4169E1:()]
+		{
+		    [c/87CEFA:Right-click to ignite the fuses of all Supernovas on the field, gathering and detonating them at the cursor's location.];
+		    [c/87CEFA:Every gathered Supernova deals 120% damage];
+		}
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:OnHitTile][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Supernova Bombs will bounce off walls instead of detonating upon impact.];
+		[c/4169E1:void] [c/FFFFE0:StealthOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Stealth Strike released an even stronger explosion];
+		'''
 }
 
 SylvanSlasher: {
@@ -100,8 +111,14 @@ Celestusold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Upon attacking, a duplicate sickle will spawn from above]
-		[c/0080CA:Stealth strikes will spawn tracking Auric sickle along the path]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol:<CalamitasAnormalis>()];
+		[c/4169E1:void] [c/FFFFE0:SkyFallBlade][c/4169E1:()] 
+		{
+		    [c/87CEFA:Upon attacking, a duplicate sickle drops from the sky];
+		    [c/87CEFA:Duplicate sickle can deal stealth strikes];
+		}
+		[c/4169E1:void] [c/FFFFE0:StealthOnReturn][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Main sickle duplicate itself on returning];
 		'''
 }
 
@@ -155,6 +172,8 @@ RogueTypeKnivesEmpyrean: {
 		Legacy Empyrean Knives for Rogue class
 		Throws a flurry of bouncing knives that can heal the use
 		Knives are now deal more damage, and travel speed is much faster
+		Stealth strikes throws multiple knives, return in your hands after attacking your target for multiple times
+		On returning, every knives will heal you base on the damage dealt
 		'''
 }
 
@@ -165,6 +184,8 @@ RogueTypeKnivesShadowspec: {
 		Legacy Illustrious Knives for Rogue class
 		Throws a flurry of homing knives that can heal the user
 		Knives are now deal more damage, and travel speed is much faster
+		Stealth strikes throws multiple knives, return in your hands after attacking your target for multiple times
+		On returning, every knives will heal you base on the damage dealt
 		'''
 }
 
@@ -199,25 +220,43 @@ DragonSpear: {
 }
 
 LumiStriker: {
-	Tooltip: ""
-	DisplayName: Luminous Striker Legacy
+	Tooltip:
+		'''
+		Throws a stardust javelin trailed by rising stardust shards
+		Explodes into additional stardust shards upon hitting enemies
+		Stealth strikes make javelin hit an enemies 4 times, release stardust shards to fly alongside the javlin
+		[c/99DFFD:Send the stars back to where they belong]
+		'''
+	DisplayName: Luminous Striker Revamped
 }
 
 VictideBoomerangRogue: {
 	Tooltip: Stealth strikes shoot homing sea shells to enemies nearby
-	DisplayName: Victide Boomerang Rogue
+	DisplayName: Seashell Boomerang Rogue
 }
 
 PBGLegendary: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Throws a stream of kunai that stick to enemies and explode
+		Press Right Click to throw a single kunai that pierces, after piercing 10 enemies it emits a massive explosion on the next enemy hit
+		Stealth strikes throws multiple ultra-fast light kunai, each of which will home in on its target on hitting an enemy, or colliding with a wall
+		Scaling damage across the playthrough
+		[SCALING]
+		[c/00FF7F:Failnaught...Goodbye]
+		[c/00FF7F:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
+		'''
 	DisplayName: Malatche Legendary
-	TierOne: "11"
-	TierTwo: "222"
-	TierThree: "333"
-	LegendaryScaling: "1111"
-	TierOneTint: "111"
-	TierTwoTint: "222"
-	TierThreeTint: "333"
+	TierOne: "[c/00FF7F:Upgrade]: +1 ultra-fast light kunai"
+	TierTwo: "[c/00FF7F:Upgrade]: Increased the hit times of ultra-fast light kunai"
+	TierThree: "[c/00FF7F:Upgrade]: All of your attacks will make you receive 25% less damage for 15 seconds"
+	LegendaryScaling: "[c/00FF7F:Damage Scaling] +{0}% weapon damage"
+	TierOneTint: "[c/818589:Maybe try get close to shimmer?]"
+	TierTwoTint: "[c/818589:Finished Polterghast with kunai]"
+	TierThreeTint: "[c/818589:Summon Devourer of Gods with Deific Amulet equipped]"
 }
 
 EclipseSpear: {
@@ -225,6 +264,26 @@ EclipseSpear: {
 	DisplayName: Eclipse Spear
 }
 
-SupernovaChange: ""
-CelestusChange: ""
-AtomChange: ""
+SupernovaChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased firing rate of weapon];
+	[c/4169E1:void] [c/FFFFE0:StealthOnKill][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:After detonating with stealth strike, it will repair itself and resume pursuing enemy];
+	'''
+CelestusChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:The derived Phantom Scythe will retaliate against your enemies.];
+	'''
+AtomChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol:<CalamityAnormalis>()];
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ShootReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased firing rate of weapon];
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:NotStealthAI][c/4169E1:()]
+	{
+	    [c/87CEFA:Toss a javelin that halts after travelling a certain distance];
+	    [c/87CEFA:Javelin will search nearest target and attack with released duplicates];
+	}
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Stealth strike increases the search range and the numbers of duplicates];
+	'''

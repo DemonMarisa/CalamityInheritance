@@ -357,16 +357,29 @@ GlacialCrusher: {
 
 BrimlashBuster: {
 	DisplayName: Brimlash Buster
-	Tooltip: ""
+	Tooltip:
+		'''
+		50% chance to do triple damage on enemy hits
+		Fires a brimstone bolt that explodes into more bolts on death
+		'''
 }
 
 Verdant: {
 	DisplayName: Verdant
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires crystal leaves when enemies are near
+		A very agile yoyo
+		'''
 }
 
 AzathothLegacy: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires cosmic orbs that blast nearby enemies with lasers
+		An exceptionally agile yoyo
+		'Destroy the universe in the blink of an eye'
+		'''
 	DisplayName: Azathoth Legacy
 }
 
@@ -403,13 +416,13 @@ MarniteSpear: {
 }
 
 VictideYoyo: {
-	Tooltip: ""
-	DisplayName: Victide Yoyo
+	Tooltip: Fires a seashell when enemies are near
+	DisplayName: Chidarian
 }
 
 VictideSword: {
 	Tooltip: Fires a mid-range vortex
-	DisplayName: Victide Sword
+	DisplayName: Redtide Sword
 }
 
 VictideSpear: {
@@ -424,7 +437,7 @@ VictideSpear: {
 
 VictideBoomerangMelee: {
 	Tooltip: ""
-	DisplayName: Victide Boomerang Melee
+	DisplayName: Seashell Boomerang Melee
 }
 
 DukeLegendary: {
@@ -450,7 +463,7 @@ DukeLegendary: {
 
 AquaticDissolution: {
 	DisplayName: Aquatic Dissolution
-	Tooltip: ""
+	Tooltip: Fires whaling spears from the sky that bounce off tiles
 }
 
 DefenseBlade: {
@@ -460,16 +473,21 @@ DefenseBlade: {
 		Striking an enemy with the blade causes an earthen eruption
 		Press Right Click to fire an aegis bolt
 		'''
-	LegendaryScaling: has update {0} power
-	TierOne: Tier1
-	TierTwo: Tier2
-	TierThree: Tier3
-	TierOneTint: "111"
-	TierTwoTint: "222"
-	TierThreeTint: "333"
+	LegendaryScaling: "[c/9173B1:Damage Scaling]: +{0}% weapon damage"
+	TierOne: "[c/9173B1:Upgrade]: +1% defense on enemy hit, capped at 25%"
+	TierTwo: "[c/9173B1:Upgrade]: Striking enemy with blade will let you ignore defense damage"
+	TierThree: "[c/9173B1:Upgrade] Grants damage buff base on your current defense"
+	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
+	TierTwoTint: "[c/818589:Taking over 2000 damage while holding the weapon]"
+	TierThreeTint: "[c/818589:Summon Devourer of Gods while your defense is over 320]"
 }
 
-ExoBladeChange: ""
+ExoBladeChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:void] [c/FFFFE0:ModifyStrike][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Slash and Dash now spawn energy beams on hit];
+	[c/4169E1:void] [c/FFFFE0:ModifyChargeStrike][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Perform a powerful slash will release more energy beams];
+	'''
 
 ACTExcelsus: {
 	DisplayName: Excelsus Algt's Calamity Tweaks
@@ -481,5 +499,13 @@ ACTExcelsus: {
 		'''
 }
 
-ZenithBuff: ""
-ChainsawCal: ""
+ZenithBuff:
+	'''
+	Stat Bloat Config Buff:
+	+150 armor penetration
+	'''
+ChainsawCal:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:void] [c/FFFFE0:ModifyHoldout][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Now fully charged in instant];
+	'''

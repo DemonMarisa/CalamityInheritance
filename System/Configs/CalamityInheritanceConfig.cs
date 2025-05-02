@@ -107,56 +107,5 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(-5000, 5000)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int UIX { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        [Range(-5000, 5000)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int UIY { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(-5000, 5000)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int UIX2 { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(-5000, 5000)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int UIY2 { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        [Range(0f, 3f)]
-        [Increment(0.1f)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public float Offset { get; set; }
-        [Range(1, 5)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        [Slider]
-        public int LegendaryBuff{ get; set; }
-        [Range(0, 10000)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        public int LevelUp{ get; set; }
     }
 }

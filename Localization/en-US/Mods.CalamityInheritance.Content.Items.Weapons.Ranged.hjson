@@ -10,8 +10,12 @@ CelestialObliterator: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Spawns extra homing exo missile behind]
-		[c/0080CA:Exo missiles can spilt now]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:void] [c/FFFFE0:RocketReset][c/4169E1:()]
+		{
+		    [c/87CEFA:Spawns extra homing exo missile behind];
+		    [c/87CEFA:Split into secondary homing missile once launch];
+		}
 		'''
 }
 
@@ -20,6 +24,14 @@ MagnomalyCannon.ExoLoreOn:
 	[c/0080CA:Fire rates reduce]
 	[c/0080CA:Boost homing range and speed of missiles]
 	[c/0080CA:Missiles split upon striking an enemy]
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:ApplyProtocol][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:ApplyProtocol:<CalamityAnormalis>()];
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:FireDelay][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Reduced friing rates];
+	[c/4169E1:void] [c/FFFFE0:RocketReset][c/4169E1:()]
+	{
+	    [c/87CEFA:Boost homing range and speed of missiles];
+	    [c/87CEFA:Missiles spilts upon striking an enemy];
+	}
 	'''
 
 ConclaveCrossfire: {
@@ -55,9 +67,13 @@ HeavenlyGaleold: {
 		'''
 	ExoLoreOn:
 		'''
-		[c/0080CA:Green and orange exo arrows will home in on enemy]
-		[c/0080CA:Teal exo arrows now ignore pierce resistance]
-		[c/0080CA:Blue exo arrows have an extra pierce]
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:void] [c/FFFFE0:ArrowsReset][c/4169E1:()]
+		{
+		    [c/87CEFA:Green and orange exo arrows will home in on enemies];
+		    [c/87CEFA:Teal exo arrows ignore pierce resistance and immnuity frames];
+		    [c/87CEFA:Blue exo arrows grants extar pierce time];
+		}
 		'''
 }
 
@@ -87,7 +103,12 @@ Photovisceratorold: {
 		Right click to fire homing flare while stack to enemies and incinerate them
 		'It should not be a prism causes ranged damage'
 		'''
-	ExoLoreOn: "[c/0080CA:Spawns homing crystals behind you when using]"
+	ExoLoreOn:
+		'''
+		[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+		[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ApplyProtocolSound][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:SoundProtocol:<CalamitasAnormalis>()];
+		[c/4169E1:void] [c/FFFFE0:FireShards][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Spawns homing crystals behind you when using];
+		'''
 }
 
 ProporsePistol: {
@@ -146,16 +167,19 @@ StarCannonEX: {
 
 TyrannysEndOld: {
 	DisplayName: Tyranny's End Legacy
-	Tooltip:
+	Tooltip: "[FUCK]"
+	Fuck:
 		'''
-		[FUCK]
+		Nuke everything with extreme speed
+		Oh no.
+		'''
+	NotFuck:
+		'''
 		Pierce the heart of even the most heavily-armored foe
 		Fires a .70 caliber sniper round that bypasses enemy defense and DR
 		Rounds mark enemies for death and summon a swarm of additional bullets on crits
 		'One shot'
 		'''
-	Fuck: ""
-	NotFuck: ""
 }
 
 ChargedDartRifle: {
@@ -381,42 +405,69 @@ ChickenCannonLegacy: {
 
 VictideBow: {
 	Tooltip: ""
-	DisplayName: Victide Bow
+	DisplayName: Sea Bow
 }
 
 ClockBowLegacy: {
 	Tooltip: ""
-	DisplayName: Clock Bow Legacy
+	DisplayName: Clockwork Bow Legacy
 }
 
 AntlionBow: {
-	Tooltip: ""
-	DisplayName: Antlion Bow
+	Tooltip: Why you are removed?
+	DisplayName: Mandible Bow
 }
 
 PlanteraLegendary: {
-	Tooltip: ""
-	DisplayName: Plantera Legendary
-	TierOne: "11"
-	TierTwo: "222"
-	TierThree: "333"
-	LegendaryScaling: Buff
-	TierOneTint: "111"
-	TierTwoTint: "222"
-	TierThreeTint: "333"
+	Tooltip:
+		'''
+		Fires a stream of leaves
+		Press Right Click to fire a spore orb that explodes into a cloud of spore gas
+		Scaling damage across the playthrough
+		[SCALING]
+		[c/00CB67:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
+		'''
+	DisplayName: Blossoms Flux Legendary
+	TierOne: "[c/00CB67:Upgrade]: Boost the firing rate and flying speed of leaves and spore orbs"
+	TierTwo: "[c/00CB67:Upgrade]: Increased the numbers of leaves and spore orbs fired"
+	TierThree: "[c/00CB67:Upgrade]: Leaves have a 50% chance to homing in, spore orbs gauranteed homing in"
+	LegendaryScaling: "[c/00CB67:Damage Scaling]: +{0} weapon damage"
+	TierOneTint: "[c/818589:Maybe try get close to shimmer?]"
+	TierTwoTint: "[c/818589:Eat a Golden Delight on Jungle Surface]"
+	TierThreeTint: "[c/818589:Summon Yharon with the Elemental Quiver equipped]"
 }
 
-HeavenlyGaleChange: ""
+HeavenlyGaleChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:LighteningStrikeReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased speed of exo lighting]
+	[c/4169E1:void] [c/FFFFE0:ModifyFireAmt][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased numbers of crystal arrows fired];
+	'''
 PhotovisceratorChange: ""
 
 NorfleetLegacy: {
 	DisplayName: Norfleet Legacy
-	Tooltip: ""
+	Tooltip: Fire everything!
 }
 
 ACTKarasawa: {
-	DisplayName: A C T Karasawa
-	Tooltip: ""
+	DisplayName: Karasawa Calamity Anormalis
+	Tooltip:
+		'''
+		Hold down to charge your cannon shot
+		When charging, your movement speed will decrease, mount will be disabled due to the gradually increasing weight of the cannon barrel
+		Once fully charged, release to unleash a devastating strike against your enemies
+		...This is heavy... too heavy
+		[c/DB53A0:A special gift from the past...]
+		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
+		'''
 }
 
-ChainWeaponChange: ""
+ChainWeaponChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:You can right-click to designate a location to deploy an Exo Mine];
+	'''

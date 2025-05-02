@@ -20,6 +20,9 @@ namespace CalamityInheritance.Buffs
             灾厄你还是压缩大王啊
             下面这个效果无论是否开启原版回调都是存在的，我就是看他不爽了
             */
+            //3+9 = 12 -> 6 HP/s
+            if (type == ModContent.BuffType<TarraLifeRegen>() && player.CIMod().GodSlayerMelee)
+                player.lifeRegen += 9;
             #region 法师buff回调
             if (type == BuffID.MagicPower)
                 player.GetDamage<MagicDamageClass>() += 0.1f;

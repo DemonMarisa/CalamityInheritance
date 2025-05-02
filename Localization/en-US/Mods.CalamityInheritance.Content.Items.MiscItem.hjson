@@ -14,38 +14,8 @@ DraedonsToy: {
 	DisplayName: Draedons Toy
 }
 
-PBGLegendaryUpgrade: {
-	Tooltip: ""
-	Tint: ""
-	DisplayName: P B G Legendary Upgrade
-}
-
-RavagerLegendaryUpgrade: {
-	Tooltip: ""
-	Tint: "111"
-	DisplayName: Ravager Legendary Upgrade
-}
-
-DukeLegendaryUpgrade: {
-	Tooltip: ""
-	Tint: "111"
-	DisplayName: Duke Legendary Upgrade
-}
-
-PlanteraLegendaryUpgrade: {
-	Tooltip: ""
-	Tint: "111"
-	DisplayName: Plantera Legendary Upgrade
-}
-
-DestroyerLegendaryUpgrade: {
-	Tooltip: ""
-	Tint: "111"
-	DisplayName: Destroyer Legendary Upgrade
-}
-
 EyeofExtinction: {
-	DisplayName: Eyeof Extinction
+	DisplayName: Eye of Extinction
 	Tooltip:
 		'''
 		[c/CD0000:Death]
@@ -61,7 +31,11 @@ YharonTreasureBagsLegacy: {
 
 YharonEggLegacy: {
 	DisplayName: Yharon Egg Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Summon Jungle Dragon, Yharon (Phase 1) before defeated enhanced Solar Eclipse
+		Summon Yharon, Dragon of Rebirth after defeated enhanced Solar Eclipse
+		'''
 }
 
 EyeofDesolationLegacy: {
@@ -76,5 +50,12 @@ EyeofDesolationLegacy: {
 
 DefiledFeather: {
 	DisplayName: Defiled Feather
-	Tooltip: ""
+	Tooltip:
+		'''
+		So, how did you manage to get your hands on this?
+		Did you triumph over the pathetic battle against Supreme Calamitas Legacy with Malice, Armageddon and Defiled enabled
+		Or just casually obtain it using some tester's mod like Hero
+		Aah...
+		Anyways, I'll still offer you a small congratulations for managing to complete that pathetic challenge.
+		'''
 }

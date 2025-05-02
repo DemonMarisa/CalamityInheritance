@@ -15,12 +15,6 @@ namespace CalamityInheritance.System.Configs
         public override ConfigScope Mode => ConfigScope.ClientSide;
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => false;
 
-        [Header("Texture")]
-        
-        [BackgroundColor(192, 154, 205, 192)]
-        [DefaultValue(false)]
-        public bool SetAllLegacySprite{ get; set; }
-
         [Header("Weapons")]
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
@@ -158,14 +152,6 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool PhantomHeartResprite{ get; set; }
-        [Header("Special")]
-        [BackgroundColor(43, 56, 95, 182)]
-        [DefaultValue(1)]
-        [Range(1, 8)]
-        [Increment(1)]
-        [Slider]
-        public int PBGColorType;
-        
         #endregion
     }
 }

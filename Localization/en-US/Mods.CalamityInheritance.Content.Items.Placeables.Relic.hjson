@@ -9,6 +9,6 @@ ScalTrophy: {
 }
 
 CalCloneRelic: {
-	DisplayName: Cal Clone Relic
-	Tooltip: ""
+	DisplayName: Calamitas Reborn
+	Tooltip: '''"[c/8B0000:This is just the beginning...]"'''
 }

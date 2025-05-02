@@ -188,7 +188,7 @@ RogueTypeKnivesShadowspec: {
 		投出一簇能够弹射并治疗玩家的飞刀
 		飞刀现在造成更多的伤害，而且飞行速度也更快了
 		潜伏攻击时会掷出多个治疗投刀，造成多次伤害后返程至玩家手上
-		返程时，每一把投刀都会根据造成的伤害量来提供相应的治疗与乘算伤害加成
+		返程时，每一把投刀都会根据造成的伤害量来提供相应的治疗
 		'''
 }
 
@@ -232,7 +232,7 @@ LumiStriker: {
 		标枪飞行过程中也会生成跟随的星尘碎片
 		[c/99DFFD:将星辰送回属于它们的地方]
 		'''
-	DisplayName: 月影投矛[Legacy]
+	DisplayName: 月影投矛[Revamped]
 }
 
 VictideBoomerangRogue: {
@@ -262,7 +262,7 @@ PBGLegendary: {
 	LegendaryScaling: "[c/00FF7F:武器强化]: {0}%"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwoTint: "[c/818589:给噬魂幽花造成最后一击]"
-	TierThreeTint: "[c/818589:佩戴神圣护符时召唤神明吞噬者任务描述3]"
+	TierThreeTint: "[c/818589:佩戴神圣护符时召唤神明吞噬者]"
 }
 
 EclipseSpear: {
@@ -291,9 +291,5 @@ AtomChange:
 	    [c/87CEFA:投射一个一段距离后停下的投枪];
 	    [c/87CEFA:投枪会搜索距离最近的敌怪并生成多个复制体进行攻击];
 	}
-	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()]
-	{
-	    [c/87CEFA:潜伏攻击扩大搜索范围, 且复制体将会从天而降];
-	    [c/87CEFA:也会有一部分复制体从玩家身上发射出去];
-	};
+	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:StealthAI][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:潜伏攻击扩大搜索范围, 生成更多复制体];
 	'''

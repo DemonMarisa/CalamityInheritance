@@ -24,9 +24,10 @@ EclispeMirrorLegacy: {
 		Critical strike can pierce 10% defense of your target
 		1/7 of critical strike chance are converted to critical damage bounes
 		Restore half of max stealth on hurt
-		You have a chance to dodage an attack and release an Eclispe Explosion
+		You have a chance to dodge an attack and release an Eclispe Explosion
 		Fully restore your stealth upon a successful dodge
 		[SHOW]
+		'Its reflection shows naught but darkness'
 		'''
 	ShowCritsBounes: "[c/EE7621:Current critical damage bounes]: {0}%"
 }
