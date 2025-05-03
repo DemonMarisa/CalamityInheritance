@@ -17,11 +17,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.damage = Main.zenithWorld? 12 : 6;
+            Item.damage = 6;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 60;
             Item.height = 28;
-            Item.useTime = Main.zenithWorld? 1 : 2;
+            Item.useTime = 2;
             Item.useAnimation = 2;
             Item.ArmorPenetration = 20;
             Item.useStyle = ItemUseStyleID.Shoot;

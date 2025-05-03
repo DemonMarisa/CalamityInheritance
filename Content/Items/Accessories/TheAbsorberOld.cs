@@ -34,7 +34,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer calPlayer = player.Calamity();
             CalamityInheritancePlayer usPlayer = player.CIMod();
             player.noKnockback = true; //继承至🐢壳
-
             //等一下, 阴阳石的免伤数据呢?
             player.endurance += 0.10f;
             
@@ -70,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CreateRecipe().
                 AddIngredient<SeaShell>().
                 AddIngredient<AmidiasSpark>().
-                AddIngredient<GrandGelatinLegacy>().
+                AddRecipeGroup(CIRecipeGroup.GrandGelatin).
                 AddIngredient<CrawCarapace>().
                 AddIngredient<FungalCarapace>().
                 AddIngredient<GiantTortoiseShell>().
@@ -80,18 +79,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                 AddTile(TileID.LunarCraftingStation).
                 Register();
 
-            CreateRecipe().
-                AddIngredient<SeaShell>().
-                AddIngredient<AmidiasSpark>().
-                AddIngredient<GrandGelatin>().
-                AddIngredient<CrawCarapace>().
-                AddIngredient<FungalCarapace>().
-                AddIngredient<GiantTortoiseShell>().
-                AddIngredient<DepthCells>(15).
-                AddIngredient<Lumenyl>(15).
-                AddIngredient<Voidstone>(5).
-                AddTile(TileID.LunarCraftingStation).
-                Register();
         }
     }
 }

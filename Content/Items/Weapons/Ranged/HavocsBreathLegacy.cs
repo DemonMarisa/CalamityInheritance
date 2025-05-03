@@ -1,5 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -14,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<HavocsBreath>();
         }
         public override void SetDefaults()
         {

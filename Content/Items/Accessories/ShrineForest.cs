@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TrinketofChi>();
         }
         public override void SetDefaults()
         {

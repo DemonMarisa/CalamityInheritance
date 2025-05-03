@@ -6,6 +6,7 @@ using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Armor.Empyrean;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -16,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EmpyreanMask>(false);
         }
 
         public override void SetDefaults()

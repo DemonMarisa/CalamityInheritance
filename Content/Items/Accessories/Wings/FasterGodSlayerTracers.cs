@@ -17,6 +17,7 @@ using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -27,13 +28,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersElysian>()] = ModContent.ItemType<FasterGodSlayerTracers>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterGodSlayerTracers>()] = ModContent.ItemType<TracersElysian>();
-            }
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 10.5f, 2.75f);
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TracersElysian>(false);
         }
 
         public override void SetDefaults()
@@ -104,20 +101,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<TracersCelestial>().
+                AddRecipeGroup(CIRecipeGroup.TracersCelestial).
                 AddIngredient<ElysianWings>().
                 AddIngredient<CosmiliteBar>(5).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
 
-            CreateRecipe().
-                AddIngredient<FasterLunarTracers>().
-                AddIngredient<ElysianWings>().
-                AddIngredient<CosmiliteBar>(5).
-                AddIngredient<AscendantSpiritEssence>(4).
-                AddTile<CosmicAnvil>().
-                Register();
 
         }
 

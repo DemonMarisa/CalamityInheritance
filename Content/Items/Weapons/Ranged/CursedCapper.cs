@@ -16,7 +16,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     public class CursedCapper : CIRanged, ILocalizedModType
     {
 
-
         public override void SetDefaults()
         {
             Item.damage = 35;

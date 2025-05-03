@@ -1,5 +1,7 @@
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<VictideBoomerangRogue>(false);
         }
 
         public override void SetDefaults()

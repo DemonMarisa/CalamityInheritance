@@ -251,7 +251,7 @@ ACTMinigun: {
 		'''
 		Shoots a streams of homing auric bullet
 		[c/DB53A0:A glimsp of the old days...]
-		[c/DB53A0:This tweak is belong to legacy addon: Algt's Calamity Tweak by Algt]
+		[c/DB53A0:This tweak is belong to legacy addon: Calamity Anormalis by Algt]
 		'''
 }
 
@@ -490,4 +490,16 @@ MandibleBow: {
 MarniteBayonet: {
 	DisplayName: Marnite Bayonet
 	Tooltip: The gun damages enemies that touch it
+}
+
+FlamethrowerSpecial: Ignore 50% of enemies defense
+
+Triploon: {
+	Tooltip: Launches three harpoons
+	DisplayName: Triploon
+}
+
+BrimstoneFlameblaster: {
+	Tooltip: Fires bouncing brimstone fireballs
+	DisplayName: Brimstone Flameblaster
 }

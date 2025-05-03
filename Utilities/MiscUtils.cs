@@ -1,4 +1,6 @@
 ﻿using System;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -132,6 +134,39 @@ namespace CalamityInheritance.Utilities
 
             return true;
         }
-
+        
+        public static void ShimmerEach<T>(this int result, bool ifDontNeedConfigControl = true) where T : ModItem
+        {
+            
+            if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<T>()] = result;
+                ItemID.Sets.ShimmerTransformToItem[result] = ModContent.ItemType<T>();
+            }
+        }
+        public static void ShimmetTo<T>(this int origin, bool ifDontNeedConfigControl = true) where T : ModItem
+        {
+            if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
+            {
+                ItemID.Sets.ShimmerTransformToItem[origin] = ModContent.ItemType<T>();
+            }
+        }
+        public static void ShopHelper<T>(this NPCShop shop, int value, Condition condition) where T: ModItem
+        {
+            shop.AddWithCustomValue(ModContent.ItemType<T>(), value, condition);
+        }
+        public static RecipeGroup CreateGroupTwoItem<T>(this int showOnRecipe) where T: ModItem
+        {
+            return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ModContent.ItemType<T>());
+        }
+        public static void NameHelper(this RecipeGroup group, string name)
+        {
+            RecipeGroup.RegisterGroup("CalamityInheritance:" + name, group);
+        }
+        public static string GetGroupName(this string name)
+        {
+            string getName = "CalamityInheritance:" + name; 
+            return getName;
+        }
     }
 }

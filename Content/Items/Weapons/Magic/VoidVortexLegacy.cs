@@ -94,12 +94,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     .Register();
 
                 CreateRecipe()
-                    .AddIngredient<KnowledgeYharon>()
-                    .AddTile(ModContent.TileType<CosmicAnvil>())
-                    .Register();
-
-                CreateRecipe()
-                    .AddIngredient<LoreYharon>()
+                    .AddRecipeGroup(CIRecipeGroup.LoreYharon)
                     .AddTile(ModContent.TileType<CosmicAnvil>())
                     .Register();
 

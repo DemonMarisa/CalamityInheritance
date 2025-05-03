@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
@@ -34,6 +36,11 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
     public const float SideIdleSlowSpeed = 0.9f;
     public const short SideFadeInTime = 50;
     #endregion
+    public override void SetStaticDefaults()
+    {
+        Item.ResearchUnlockCount = 1;
+        Type.ShimmerEach<Excelsus>();
+    }
     public override void SetDefaults()
     {
         Item.width = 78;

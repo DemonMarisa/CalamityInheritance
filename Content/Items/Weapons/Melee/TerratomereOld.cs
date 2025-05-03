@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             CreateRecipe().
                 AddIngredient<Floodtide>().
                 AddIngredient<Hellkite>().
-                AddIngredient(ItemID.TerraBlade).
+                AddRecipeGroup(CIRecipeGroup.TerraBlade).
                 AddIngredient<UelibloomBar>(7).
                 AddCondition(Condition.NotZenithWorld).
                 AddDecraftCondition(Condition.NotZenithWorld).
@@ -112,19 +112,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Register();
 
             CreateRecipe().
-                AddIngredient<Floodtide>().
-                AddIngredient<Hellkite>().
-                AddIngredient<TerraEdge>().
-                AddIngredient<UelibloomBar>(7).
-                AddCondition(Condition.NotZenithWorld).
-                DisableDecraft().
-                AddTile(TileID.LunarCraftingStation).
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
-                AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
-                AddIngredient(ModContent.ItemType<LivingShard>(),5).
+                AddIngredient<TrueNightsStabber>().
+                AddIngredient<TrueExcaliburShortsword>().
+                AddIngredient<LivingShard>(5).
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddCondition(Condition.ZenithWorld).
                 AddDecraftCondition(Condition.ZenithWorld).

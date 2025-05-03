@@ -161,7 +161,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<PhoenixBlade>().
                 AddIngredient<StellarStriker>().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 DisableDecraft().
                 AddTile<DraedonsForgeold>().
                 Register();

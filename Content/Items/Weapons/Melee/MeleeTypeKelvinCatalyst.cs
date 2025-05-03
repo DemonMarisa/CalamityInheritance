@@ -46,17 +46,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 15f;
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }
-        /*
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            Player player = Main.LocalPlayer;
-            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), player, 7200f))
-            {
-                string empoweredWeapon = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.EmpoweredTooltip.BuffKelvin");
-                tooltips.Add(new TooltipLine(Mod, "WeaponBuff", empoweredWeapon));
-            }
-        }
-        */
         public override void AddRecipes()
         {
             CreateRecipe().

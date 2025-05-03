@@ -697,7 +697,6 @@ YharimAuricTeslaHelm: {
 		+60 life regen speed, taking any damage makes you completely invincibile for a second. 
 		Your healing potions are 120% more effective
 		Mana potions are 250% more effective and grants resistance to Mana Sickness
-		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		All Class types of Tarragon, Bloodflare, God Slayer, Silva Armor and Shiny Stone effect
 		All Ancient Tarragon, Ancient Bloodflare, Ancient God Slayer and Ancient Silva Armor effect
 		'''
@@ -714,6 +713,7 @@ YharimAuricTeslaHelm: {
 		This effect has 10 seconds cooldown if triggered
 		[c/CC6CE7:Inherited From Ancient God Slayer][i:CalamityInheritance/AncientGodSlayerHelm]
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
+		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
 		Boost your defense base on your max stealth
 		Taking hit make you completely invincibile for a moment

@@ -266,8 +266,13 @@ PBGLegendary: {
 }
 
 EclipseSpear: {
-	// Tooltip: ""
-	// DisplayName: Eclipse Spear
+	Tooltip:
+		'''
+		击中敌人时召唤长矛从天而降
+		潜伏攻击会使长矛扎在敌人身上并持续召唤长矛
+		“当日蚀之阴降临的时候，你就会得知审判的结果”
+		'''
+	DisplayName: 日蚀之陨[Revamped]
 }
 
 SupernovaChange:
@@ -302,5 +307,14 @@ LatcherMine: {
 		碰到物块会落下
 		潜伏攻击会在爆炸时产生火焰和弹片
 		潜伏攻击地雷在地面停留时间更长 
+		'''
+}
+
+BouncingBetty: {
+	DisplayName: 弹跳炸弹[Legacy]
+	Tooltip:
+		'''
+		丢出一个手雷，会反弹且在反弹时爆炸
+		潜伏攻击会使爆炸更剧烈，同时发射出尖刺
 		'''
 }

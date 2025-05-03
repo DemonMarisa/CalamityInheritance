@@ -43,6 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.localNPCHitCooldown = 10;
             Projectile.timeLeft = SlowdownTime;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
         #region 多人同步
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);

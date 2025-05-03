@@ -65,9 +65,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             CreateRecipe()
                 .AddIngredient<GalileoGladius>()
-                .AddRecipeGroup("CalamityInheritance:AnyCosmicShiv")
+                .AddIngredient<CosmicShivold>()
                 .AddIngredient<Lucrecia>()
-                .AddIngredient<AuricBarold>(15)
+                .AddIngredient<AuricBarold>(10)
                 .DisableDecraft()
                 .AddTile<DraedonsForgeold>()
                 .Register();

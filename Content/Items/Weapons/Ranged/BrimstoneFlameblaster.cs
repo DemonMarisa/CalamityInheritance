@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Creative;
+﻿using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Projectiles.Boss;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Utilities;
 using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class BrimstoneFlameblaster : ModItem
+    public class BrimstoneFlameblaster : FlamethrowerSpecial, ILocalizedModType 
     {
         public override void SetStaticDefaults()
         {
@@ -37,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 3.5f;
             Item.UseSound = SoundID.Item34;
-            Item.value = Item.buyPrice(0, 60, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<CatastropheBall>();
@@ -46,7 +36,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            CalamityInheritancePlayer usPlayer = player.CIMod();
             int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f);
             Main.projectile[p].friendly = true;
             Main.projectile[p].hostile = false;

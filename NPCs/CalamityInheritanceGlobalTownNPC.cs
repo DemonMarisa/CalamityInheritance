@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.NPCs.TownNPCs;
 using Terraria;
@@ -23,8 +24,9 @@ namespace CalamityInheritance.NPCs
             }
             if (type == ModContent.NPCType<THIEF>())
             {
-                shop.AddWithCustomValue(ModContent.ItemType<SylvanSlasher>(), Item.buyPrice(gold: 100), Condition.DownedMoonLord);
-                shop.AddWithCustomValue(ModContent.ItemType<LatcherMine>(), Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
+                shop.ShopHelper<BouncingBetty>(Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
+                shop.ShopHelper<SylvanSlasher>(Item.buyPrice(platinum: 1), Condition.DownedMoonLord);
+                shop.ShopHelper<LatcherMine>(Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
             }
             if (type == ModContent.NPCType<FAP>())
             {

@@ -1,4 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Armor.Empyrean;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -13,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EmpyreanCuisses>(false);
         }
 
         public override void SetDefaults()

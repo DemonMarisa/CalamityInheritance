@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items;
@@ -23,12 +24,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void SetStaticDefaults()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(160, 9f, 2.5f);
-            if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersCelestial>()] = ModContent.ItemType<FasterLunarTracers>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterLunarTracers>()] = ModContent.ItemType<TracersCelestial>();
-            }
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TracersCelestial>(false);
         }
 
         public override void SetDefaults()

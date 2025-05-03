@@ -1,8 +1,3 @@
-Mods: {
-	CalamityInheritance: {
-	}
-}
-
 Keybinds: {
 }
 
@@ -474,8 +469,8 @@ Configs: {
 			Label: "[i:BottomlessShimmerBucket]自定义微光转化"
 			Tooltip:
 				'''
-				为模组内部分回归物品添加微光转化配方
-				关闭后回归物品将采用其他的获取来源
+				为模组内部分回归物品与灾厄一些物品添加自定义微光配方
+				不会影响原有的获取方式
 				'''
 		}
 

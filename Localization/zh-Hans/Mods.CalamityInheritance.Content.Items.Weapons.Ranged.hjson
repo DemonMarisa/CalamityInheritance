@@ -246,12 +246,12 @@ DrataliornusLegacy: {
 }
 
 ACTMinigun: {
-	DisplayName: 君祸[Algt's Tweaks]
+	DisplayName: 君祸[Calamity Anormalis]
 	Tooltip:
 		'''
 		发射强大的追踪金源子弹流
 		[c/DB53A0:来自旧日的特殊礼物]
-		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
 		'''
 }
 
@@ -477,7 +477,7 @@ ACTKarasawa: {
 		蓄能完毕后即可释放，重击你的敌人
 		……这杆重炮太沉了……太沉了
 		[c/DB53A0:来自旧日的特殊礼物]
-		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Algt's Calamity Tweak]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
 		'''
 }
 
@@ -505,4 +505,16 @@ MandibleBow: {
 MarniteBayonet: {
 	DisplayName: 花岗岩刺枪[Legacy]
 	Tooltip: 这把枪会伤害接触它的敌人
+}
+
+FlamethrowerSpecial: 无视敌怪50%防御力
+
+Triploon: {
+	Tooltip: 发射三个鱼叉
+	DisplayName: 三叉枪
+}
+
+BrimstoneFlameblaster: {
+	Tooltip: 发射弹跳的硫磺火球
+	DisplayName: 硫磺火喷射器
 }

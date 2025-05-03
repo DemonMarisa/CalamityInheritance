@@ -8,6 +8,8 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Rarity;
 using Terraria.DataStructures;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -21,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             ItemID.Sets.Spears[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<StreamGouge>(false);
         }
 
         public override void SetDefaults()

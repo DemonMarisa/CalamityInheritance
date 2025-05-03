@@ -67,12 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe()
-                    .AddIngredient<LoreGolem>()
-                    .AddTile(TileID.MythrilAnvil)
-                    .Register();
-
-                CreateRecipe()
-                    .AddIngredient<KnowledgeGolem>()
+                    .AddRecipeGroup(CIRecipeGroup.LoreGolem)
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
             }

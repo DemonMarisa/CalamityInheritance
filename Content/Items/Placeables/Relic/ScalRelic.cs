@@ -18,9 +18,9 @@ namespace CalamityInheritance.Content.Items.Placeables.Relic
             Item.width = 40;
             Item.height = 66;
             Item.maxStack = 9999;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = ModContent.RarityType<PureRed>();
             Item.master = true; // This makes sure that "Master" displays in the tooltip, as the rarity only changes the item name color
-            Item.value = Item.buyPrice(0, 5,0 ,0);
+            Item.value = CIShopValue.RarityPricePureRed;
         }
     }
 }

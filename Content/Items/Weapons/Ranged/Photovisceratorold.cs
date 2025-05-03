@@ -116,20 +116,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Register();
 
             CreateRecipe().
-                AddIngredient<ElementalEruptionLegacy>().
-                AddIngredient<CleansingBlazeLegacy>().
-                AddIngredient<HalleysInfernoLegacy>().
-                AddIngredient<BloodBoilerLegacy>().
+                AddRecipeGroup(CIRecipeGroup.ElementalEruption).
+                AddRecipeGroup(CIRecipeGroup.CleansingBlaze).
+                AddRecipeGroup(CIRecipeGroup.HalleysInferno).
+                AddRecipeGroup(CIRecipeGroup.BloodBoiler).
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
                 AddTile<DraedonsForge>().
                 Register();
 
             CreateRecipe().
-                AddIngredient<ElementalEruptionLegacy>().
-                AddIngredient<CleansingBlazeLegacy>().
-                AddIngredient<HalleysInfernoLegacy>().
-                AddIngredient<BloodBoilerLegacy>().
+                AddRecipeGroup(CIRecipeGroup.ElementalEruption).
+                AddRecipeGroup(CIRecipeGroup.CleansingBlaze).
+                AddRecipeGroup(CIRecipeGroup.HalleysInferno).
+                AddRecipeGroup(CIRecipeGroup.BloodBoiler).
                 AddIngredient<AncientMiracleMatter>().
                 DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).

@@ -16,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<IchorSpear>(false);
         }
         public override void SetDefaults()
         {

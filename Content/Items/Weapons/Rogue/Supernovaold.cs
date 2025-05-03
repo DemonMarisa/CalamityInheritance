@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<TotalityBreakers>().
                 AddIngredient<BallisticPoisonBomb>().
                 DisableDecraft().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
             CreateRecipe().

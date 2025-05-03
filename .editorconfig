@@ -2,3 +2,6 @@
 
 # IDE0052: 删除未读的私有成员
 dotnet_diagnostic.IDE0052.severity = none
+
+# CS0618: 类型或成员已过时
+dotnet_diagnostic.CS0618.severity = silent

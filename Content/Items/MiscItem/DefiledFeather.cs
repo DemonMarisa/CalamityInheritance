@@ -1,4 +1,6 @@
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -12,6 +14,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 8));
             Item.ResearchUnlockCount = 1;
+            Type.ShimmetTo<Rock>(true);
         }
         public override void SetDefaults()
         {

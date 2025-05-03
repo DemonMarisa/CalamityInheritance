@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -12,6 +13,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<FungalSymbiote>();
         }
         public override void SetDefaults()
         {

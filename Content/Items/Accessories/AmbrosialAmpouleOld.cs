@@ -47,22 +47,12 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<CrimsonFlask>().
+                AddRecipeGroup(CIRecipeGroup.CrimsonFlask).
                 AddIngredient<ArchaicPowder>().
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().
                 AddIngredient<StarblightSoot>(15).
                 AddIngredient<CryoBar>(5). //修改为冰灵锭
-                AddTile(TileID.MythrilAnvil).
-                Register();
-
-            CreateRecipe().
-                AddIngredient<CorruptFlask>().
-                AddIngredient<ArchaicPowder>().
-                AddIngredient<RadiantOoze>().
-                AddIngredient<HoneyDew>().
-                AddIngredient<StarblightSoot>(15).
-                AddIngredient<CryoBar>(5).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

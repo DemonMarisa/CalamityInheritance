@@ -260,8 +260,13 @@ PBGLegendary: {
 }
 
 EclipseSpear: {
-	Tooltip: ""
-	DisplayName: Eclipse Spear
+	Tooltip:
+		'''
+		Summons spears from the sky on hit
+		Stealth strikes impale enemies and summon a constant barrage of spears over time
+		'When the sun goes dark, you will know judgment'	
+		'''
+	DisplayName: Eclipse's Fall Revamped
 }
 
 SupernovaChange:
@@ -296,5 +301,14 @@ LatcherMine: {
 		Breaks upon hitting blocks
 		Stealth Strike Effect: On explosion, fire and shrapnel are released
 		Stealth strike mines can stick to the ground and last much longer when doing so
+		'''
+}
+
+BouncingBetty: {
+	DisplayName: Bouncing Betty
+	Tooltip:
+		'''
+		Throws a grenade which bounces after exploding
+		Stealth strikes explode into a violent blast of fire and shrapnel when it bounces
 		'''
 }

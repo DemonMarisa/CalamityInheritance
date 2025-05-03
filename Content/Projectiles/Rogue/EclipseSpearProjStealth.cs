@@ -1,20 +1,16 @@
-using System;
 using System.Collections.Generic;
+using System.IO;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -48,6 +44,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             set => Projectile.ai[0] = value;
         }
         public int timer = 0;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(isSticky);
+            writer.Write(ResetProj);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            isSticky = reader.ReadBoolean();
+            ResetProj = reader.ReadBoolean();
+        }
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);

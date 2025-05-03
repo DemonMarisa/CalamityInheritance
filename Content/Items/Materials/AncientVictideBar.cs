@@ -25,7 +25,6 @@ namespace CalamityInheritance.Content.Items.Materials
         public override void AddRecipes()
         {
             CreateRecipe(1).
-                AddIngredient<PearlShard>(1).
                 AddIngredient(ItemID.Coral, 1).
                 AddIngredient(ItemID.Starfish, 1).
                 AddIngredient(ItemID.Seashell, 1).

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -14,11 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         
         public override void SetStaticDefaults()
         {
-            if (CIServerConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>()] = ModContent.ItemType<FallenPaladinsHammer>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>();
-            }
+            Type.ShimmerEach<FallenPaladinsHammer>();
             Item.ResearchUnlockCount = 1;
         }
 

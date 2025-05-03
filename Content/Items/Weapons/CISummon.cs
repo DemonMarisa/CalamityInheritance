@@ -6,6 +6,11 @@ namespace CalamityInheritance.Content.Items.Weapons
     public abstract class CISummon: ModItem
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+            base.SetStaticDefaults();
+        }
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
         {
             itemGroup = ContentSamples.CreativeHelper.ItemGroup.SummonWeapon;

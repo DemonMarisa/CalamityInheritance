@@ -7,7 +7,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class MagnusEye: CIMagic, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -5,6 +5,7 @@ using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -17,11 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<StellarContempt>()] = ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerStellarContemptLegacy>()] = ModContent.ItemType<StellarContempt>();
-            }
+            Type.ShimmerEach<StellarContempt>();
             Item.ResearchUnlockCount = 1;
         }
 
@@ -56,19 +53,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<GalacticaSingularity>(10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-
-
-
-            if(CIServerConfig.Instance.CustomShimmer == false)
-            {
-                CreateRecipe().
-                    AddIngredient<FallenPaladinsHammer>().
-                    AddIngredient(ItemID.LunarBar, 5).
-                    AddIngredient(ItemID.FragmentSolar, 10).
-                    AddIngredient(ItemID.FragmentNebula, 10).
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-            }
         }
     }
 }

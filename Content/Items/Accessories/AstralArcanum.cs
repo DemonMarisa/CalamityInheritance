@@ -14,7 +14,6 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AstralArcanum : CIAccessories, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

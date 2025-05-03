@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -21,11 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true)
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GalaxySmasher>()] = ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerGalaxySmasherLegacy>()] = ModContent.ItemType<GalaxySmasher>();
-            }
+            Type.ShimmerEach<GalaxySmasher>();
             Item.ResearchUnlockCount = 1;
         }
 
@@ -60,20 +57,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-
-            if(CIServerConfig.Instance.CustomShimmer == false)
-            {
             CreateRecipe().
-                AddIngredient<StellarContempt>().
+                AddIngredient<MeleeTypeHammerStellarContemptLegacy>().
                 AddIngredient<CosmiliteBar>(10).
                 AddTile<CosmicAnvil>().
                 Register();
-            }
-                CreateRecipe().
-                    AddIngredient<MeleeTypeHammerStellarContemptLegacy>().
-                    AddIngredient<CosmiliteBar>(10).
-                    AddTile<CosmicAnvil>().
-                    Register();
         }
     }
 }

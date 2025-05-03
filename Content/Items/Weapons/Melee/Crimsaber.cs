@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -14,8 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Crimsaber");
-            // Tooltip.SetDefault("A sword fused with the blood of the gods");
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

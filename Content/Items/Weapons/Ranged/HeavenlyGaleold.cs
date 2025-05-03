@@ -165,13 +165,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
-                AddIngredient<ClockworkBow>().
+                AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
                 AddIngredient<PhangasmOS>().
                 AddIngredient<TheBallista>().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 DisableDecraft().
                 AddTile<DraedonsForgeold>().
                 Register();
@@ -179,11 +179,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
-                AddIngredient<ClockworkBow>().
+                AddRecipeGroup(CIRecipeGroup.ClockworkBow).
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
-                AddIngredient<Phangasm>().
+                AddRecipeGroup(CIRecipeGroup.Phangasm).
                 AddIngredient<TheBallista>().
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
@@ -193,11 +193,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
-                AddIngredient<ClockworkBow>().
+                AddRecipeGroup(CIRecipeGroup.ClockworkBow).
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
-                AddIngredient<Phangasm>().
+                AddRecipeGroup(CIRecipeGroup.Phangasm).
                 AddIngredient<TheBallista>().
                 AddIngredient<AncientMiracleMatter>().
                 DisableDecraft().

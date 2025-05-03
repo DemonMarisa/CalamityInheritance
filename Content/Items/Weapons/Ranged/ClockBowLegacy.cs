@@ -4,9 +4,9 @@ using CalamityMod;
 using Terraria;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using rail;
 using System;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -16,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<ClockworkBow>(false);
         }
         public override void SetDefaults()
         {

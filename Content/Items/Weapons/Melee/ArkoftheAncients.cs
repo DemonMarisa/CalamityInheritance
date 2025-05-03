@@ -157,7 +157,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofSunlight>(3).
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
-                AddIngredient(ItemID.Arkhalis).
+                AddRecipeGroup(CIRecipeGroup.Arkhalis).
                 AddIngredient(ItemID.Excalibur).
                 AddTile(TileID.MythrilAnvil).
                 Register();

@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -15,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Vehemence>();
         }
 
         public override void SetDefaults()

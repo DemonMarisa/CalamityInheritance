@@ -243,8 +243,13 @@ DragonStaff: {
 }
 
 MagnusEye: {
-	Tooltip: ""
-	DisplayName: Magnus Eye
+	Tooltip:
+		'''
+		Fires powerful homing beams that reduce enemy protection
+		Only heals mana on hit
+		'The day when Eye of Magnus still being a Magic Weapon'
+		'''
+	DisplayName: Eye of Magnus
 }
 
 VictideBook: {

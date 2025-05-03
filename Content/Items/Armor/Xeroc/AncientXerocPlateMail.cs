@@ -3,6 +3,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Armor.Empyrean;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -13,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EmpyreanCloak>(false);
         }
 
         public override void SetDefaults()

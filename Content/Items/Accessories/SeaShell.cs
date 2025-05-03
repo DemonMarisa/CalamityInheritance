@@ -1,17 +1,17 @@
-﻿using CalamityMod.CalPlayer;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
     public class SeaShell : CIAccessories, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            CIFunction.ShimmetTo<SeaShell>(ItemID.Seashell);
         }
         public override void SetDefaults()
         {

@@ -584,3 +584,12 @@ Waraxe: {
 	DisplayName: War axe
 	Tooltip: Critical hits cleave enemy armor, reducing their defense by 15 and protection by 25%
 }
+
+FulgurationHalberd: {
+	Tooltip:
+		'''
+		Inflicts burning blood on enemy hits
+		Right click to use as a spear	
+		'''
+	DisplayName: Fulguration Halberd
+}

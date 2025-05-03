@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using System.Diagnostics;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
 using Terraria;
@@ -15,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<SamsaraSlicer>(false);
         }
 
         public override void SetDefaults()
@@ -43,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<Equanimity>().
-                AddIngredient<FishboneBoomerang>().
+                AddIngredient<VictideBoomerangMelee>().
                 AddIngredient(ItemID.ThornChakram, 1).
                 AddIngredient<LivingShard>(8).
                 AddTile(TileID.MythrilAnvil).

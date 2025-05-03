@@ -11,6 +11,7 @@ using CalamityMod.Items.Placeables;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -21,13 +22,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true)
-             //开启微光转化后，灵魂边锋与虚空边锋可以用微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<VoidEdge>()] = ModContent.ItemType<SoulEdge>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<SoulEdge>()] = ModContent.ItemType<VoidEdge>();
-            }
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<VoidEdge>();
         }
         public override void SetDefaults()
         {
@@ -87,21 +83,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
-        }
-
-        public override void AddRecipes()
-        {
-            if(CIServerConfig.Instance.CustomShimmer == false)
-             //关闭微光转化后，灵魂边锋启用合成表
-            {
-                CreateRecipe().
-                    AddIngredient<RuinousSoul>(10).
-                    AddIngredient<Necroplasm>(10).
-                    AddIngredient(ItemID.Ectoplasm, 10).
-                    AddIngredient<Voidstone>(10).
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-            }
         }
     }
 }

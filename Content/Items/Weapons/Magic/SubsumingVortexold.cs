@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 .AddIngredient<AuguroftheElements>()
                 .AddIngredient<EventHorizon>()
                 .AddIngredient<TearsofHeaven>()
-                .AddIngredient<AuricBarold>(15)
+                .AddIngredient<AuricBarold>(10)
                 .DisableDecraft()
                 .AddTile<DraedonsForge>().
                 Register();

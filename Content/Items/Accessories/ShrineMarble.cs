@@ -2,6 +2,7 @@ using System.Numerics;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<GladiatorsLocket>();
         }
         public override void SetDefaults()
         {

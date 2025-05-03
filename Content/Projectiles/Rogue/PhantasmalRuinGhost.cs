@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
 using CalamityInheritance.Utilities;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -28,7 +29,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 1;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
-
+        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;

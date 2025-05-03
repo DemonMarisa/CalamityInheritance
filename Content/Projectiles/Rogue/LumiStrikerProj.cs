@@ -11,6 +11,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using XPT.Core.Audio.MP3Sharp.Decoding;
 using CalamityMod.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -40,6 +41,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.timeLeft = 900;
             Projectile.extraUpdates = 5;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
         }
         public int Time = 0;
         public override void AI()
@@ -92,6 +101,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             else
             {
                 NPC target = CIFunction.FindClosestTarget(Projectile, 2000);
+                //这个方法可不会在返回null之后自动撤销程序的。
+                if (target is null)
+                    return;
+
                 DoBehavior_Charge(target, ref Timer2, rotOffset);
             }
 

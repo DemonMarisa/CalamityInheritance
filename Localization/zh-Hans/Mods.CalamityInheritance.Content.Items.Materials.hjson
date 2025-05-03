@@ -38,6 +38,6 @@ CryoBar: {
 }
 
 BlightedLens: {
-	// DisplayName: Blighted Lens
-	// Tooltip: ""
+	DisplayName: 枯萎透镜[Legacy]
+	Tooltip: ""
 }

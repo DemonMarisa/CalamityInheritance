@@ -65,11 +65,11 @@ Malice: {
 }
 
 BlightedEyeBanner: {
-	// DisplayName: Blighted Eye Banner
-	// Tooltip: ""
+	DisplayName: 枯萎之眼旗[Legacy]
+	Tooltip: 附近的玩家针对以下情况获得奖励：枯萎之眼[Legacy]
 }
 
 CosmicElementalBanner: {
-	// DisplayName: Cosmic Elemental Banner
-	// Tooltip: ""
+	DisplayName: 宇宙元素旗[Legacy]
+	Tooltip: 附近的玩家针对以下情况获得奖励：宇宙元素[Legacy]
 }

@@ -92,15 +92,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
-                Recipe recipe1 = CreateRecipe();
-                recipe1.AddIngredient(ModContent.ItemType<KnowledgeProvidence>());
-                recipe1.AddTile(TileID.LunarCraftingStation);
-                recipe1.Register();
-
-                Recipe recipe2 = CreateRecipe();
-                recipe2.AddIngredient(ModContent.ItemType<LoreProvidence>());
-                recipe2.AddTile(TileID.LunarCraftingStation);
-                recipe2.Register();
+                CreateRecipe().
+                    AddRecipeGroup(CIRecipeGroup.LoreProvidence).
+                    AddTile(TileID.LunarCraftingStation).
+                    Register();
             }
         }
     }

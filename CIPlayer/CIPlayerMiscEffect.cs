@@ -94,9 +94,6 @@ namespace CalamityInheritance.CIPlayer
             //冷却变动
             ResetCD();
 
-            //再临Boss战斗buff
-            RebornBosses();
-
             //Qol面板相关
             Panels();
 
@@ -1483,28 +1480,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
-        }
-
-        public void RebornBosses()
-        {
-            CalamityPlayer calPlayer = Player.Calamity();
-            //与灾厄之眼-再临战斗时提供的战斗增益
-            /*
-            *增益：
-            *准许无限飞行。
-            *跳跃速度增强36%, 疾跑加速度增强20%, 移动速度增强12%
-            *准许免疫击退
-            *准许玩家在承受debuff伤害时获得+4HP/s生命恢复速度
-            */
-            /*
-            if (CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(),Player, 7200f))
-            {
-                //直接取光女饰品的增益，同时具备准许无限飞行、跳跃速度和移速的效果
-                Player.CIMod().EmpressBooster = true;
-                //准许防击退
-                Player.noKnockback = true;
-            }
-            */
         }
     }
 }
