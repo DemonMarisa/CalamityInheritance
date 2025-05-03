@@ -29,6 +29,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.alpha = 120;
+            Projectile.timeLeft = 120;
             AIType = ProjectileID.DeathLaser;
         }
 
@@ -46,7 +47,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         {
             splitTimer--;
             if (splitTimer == 5)
-                CIFunction.DustCircle(Projectile.Center, 16, 1f, DustID.CrimsonTorch, false, 8f);
+                CIFunction.DustCircle(Projectile.Center, 16, 1f, DustID.CrimsonTorch, false, 6f);
             if (splitTimer <= 0)
             {
                 int numProj = 2;

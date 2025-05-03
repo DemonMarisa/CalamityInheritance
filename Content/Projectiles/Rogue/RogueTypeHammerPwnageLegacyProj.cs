@@ -1,5 +1,6 @@
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -19,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static float RotationIncrement = 0.23f;
         private static readonly float StealthSpeed = MeleeTypeHammerPwnageLegacy.Speed*2;
         private static readonly int LifeTime = 240;
-        private static readonly int StealthLifeTime = 2700;
+        private static readonly int StealthLifeTime = 2400;
         private static readonly float ReboundTime = 36f;
         public override void SetDefaults()
         {
@@ -102,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 
                 case 2f:
                     Projectile.usesIDStaticNPCImmunity = true;
-                    Projectile.idStaticNPCHitCooldown = 15;
+                    Projectile.idStaticNPCHitCooldown = 20;
                     OnChasingDust();
                     CIFunction.HomeInOnNPC(Projectile, true, 1800f, 28f, 16f); //挂载只会在计时器小于120f时进行
                     if(Projectile.timeLeft < LifeTime)
@@ -150,7 +151,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 600);
             OnHitDust();
         }
-
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            //我不喜欢针对性减伤，但是。。。
+            if (target.type == ModContent.NPCType<CalamitasCloneLegacy>())
+                modifiers.SourceDamage *= 0.85f;
+        }
         private void OnStuckEffect()
         {
             CIFunction.DustCircle(Projectile.position, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);

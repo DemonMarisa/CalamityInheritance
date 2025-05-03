@@ -11,6 +11,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using XPT.Core.Audio.MP3Sharp.Decoding;
 using CalamityMod.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -40,6 +41,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.timeLeft = 900;
             Projectile.extraUpdates = 5;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
         }
         public int Time = 0;
         public override void AI()

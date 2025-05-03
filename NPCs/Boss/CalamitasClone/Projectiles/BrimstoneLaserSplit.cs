@@ -1,7 +1,9 @@
+using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
@@ -25,8 +27,17 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 480;
+            //太长了
+            Projectile.timeLeft = 215;
             Projectile.alpha = 120;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
         }
         public override void AI()
         {
@@ -53,6 +64,13 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             }
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
             Lighting.AddLight(Projectile.Center, 0.3f, 0f, 0f);
+            //查看Timeleft，在timeLeft <= 50的时候伤害就会被置零了
+            if (Projectile.timeLeft <= 50)
+            {
+                Projectile.damage = 0;
+                Projectile.alpha += 10;
+            }
+            
         }
 
         public override Color? GetAlpha(Color lightColor)

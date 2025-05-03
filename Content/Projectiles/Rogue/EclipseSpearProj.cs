@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
@@ -40,6 +41,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //不然这也太没手感了
             Projectile.localNPCHitCooldown = 12;
             Projectile.timeLeft = 150 * Projectile.MaxUpdates;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
         }
         public override void AI()
         {

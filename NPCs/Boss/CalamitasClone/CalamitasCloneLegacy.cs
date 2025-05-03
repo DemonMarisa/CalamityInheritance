@@ -1,22 +1,13 @@
-﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod.Dusts;
-using MonoMod.Core.Utils;
-using CalamityInheritance.Buffs.Potions;
-using static CalamityInheritance.NPCs.Boss.Yharon.YharonLegacy;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using static CalamityInheritance.NPCs.Boss.SCAL.SupremeCalamitasLegacy;
@@ -24,21 +15,13 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
 using Terraria.GameContent;
-using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.System.DownedBoss;
 using CalamityMod.Events;
 using CalamityMod.Particles;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
-using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker;
 using CalamityMod.World;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs;
 using CalamityMod.Projectiles.Boss;
-using CalamityMod.UI;
-using static System.Net.Mime.MediaTypeNames;
 using CalamityMod.Sounds;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Vanity;
@@ -54,8 +37,9 @@ using CalamityMod.Items.Weapons.Summon;
 using Terraria.GameContent.ItemDropRules;
 using CalamityInheritance.Content.Items.Placeables.Relic;
 using Terraria.GameContent.Bestiary;
-using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
+using Terraria.Localization;
+using System.IO;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -130,6 +114,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public bool OnlyGlow = false;
         // 随机召唤一个兄弟，但是保证不会同一场战斗召唤两个
         public bool SpawnWho = false;
+        //无限飞的Tint，他只会取倍针对的玩家提供
+        public bool SendInfiniteFlightTint = false;
         #endregion
         #region SSD
         public string Gen = "CalamityInheritance/NPCs/Boss/CalamitasClone";
@@ -163,11 +149,12 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             NPC.damage = 70;
             NPC.npcSlots = 14f;
             NPC.width = NPC.height = 116;
-            NPC.defense = 15;
+            NPC.defense = 24;
 
             NPC.value = 0f;
-
-            NPC.DR_NERD((CalamityWorld.death || BossRushEvent.BossRushActive) ? 0.075f : 0.15f);
+            //我在想一个问题。
+            //为什么死亡模式的免伤比不开死亡的低
+            NPC.DR_NERD((CalamityWorld.death || BossRushEvent.BossRushActive) ? 0.15f : 0.075f);
             NPC.LifeMaxNERB(37500, 45000, 520000);
 
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
@@ -202,6 +189,28 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         }
         #endregion
         #region AI
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            initialized = reader.ReadBoolean();
+            SendInfiniteFlightTint = reader.ReadBoolean();
+            isStage2 = reader.ReadBoolean();
+            OnlyGlow = reader.ReadBoolean();
+            canBulletHell = reader.ReadBoolean();
+            SpawnWho = reader.ReadBoolean();
+            NPC.alpha = reader.ReadInt32();
+            NPC.scale = reader.ReadSingle();
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(initialized);
+            writer.Write(SendInfiniteFlightTint);
+            writer.Write(canBulletHell);
+            writer.Write(OnlyGlow);
+            writer.Write(NPC.alpha);
+            writer.Write(NPC.scale);
+            writer.Write(SpawnWho);
+            writer.Write(isStage2);
+        }
         public override void AI()
         {
             if (NPC.rotation < 0f)
@@ -211,7 +220,9 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             isCloneSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<LifeSeekerLegacy>());
             isCloneBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<CataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<CatastropheLegacy>());
-
+            foreach (var player in Main.ActivePlayers)
+                player.Calamity().infiniteFlight = true;
+            
             if (initialized == false)
             {
                 SpawnWho = Main.rand.NextBool();
@@ -225,6 +236,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 NPC.TargetClosest(true);
 
             Player target = Main.player[NPC.target];
+            
+
 
             if (Main.slimeRain)
             {
@@ -274,9 +287,17 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             if (lifeRatio <= stage2LifeRatio && currentPhase == 1f)
             {
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.CalamitasCloneSpawn", Color.OrangeRed);
+                //准许无限飞行
+                if (!SendInfiniteFlightTint)
+                {
+                    Rectangle location = new Rectangle((int)target.position.X, (int)target.position.Y - 16, target.width, target.height);
+                    CombatText.NewText(location, Color.White, Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.EmpoweredTooltip.SendInfiniteFlightTint"));
+                    SendInfiniteFlightTint = true;
+                }
                 attackTimer = 0;
                 attackType = (float)LegacyCCloneAttackType.PhaseTransition;
                 currentPhase++;
+                
                 NPC.netUpdate = true;
                 return;
             }
@@ -397,8 +418,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             float acceleration = 0.18f;
             int distanceX = 600;
             int distanceY = 180;
-
-            int totalFireTime = crphase > finalPhase ? 180 : 360;
+            //过长了说实话
+            int totalFireTime = crphase > finalPhase ? 120 : 180;
             int fireDelay = crphase > finalPhase ? 15 : 30;
             // 如果玩家手持真近战武器，那么降低加速度
 
@@ -518,7 +539,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             Vector2 distanceFromDestination = destination - NPC.Center;
             // 移动
             CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, velocity, acceleration, true);
-
 
             if (attacktimer % fireBallDelay == 0)
             {
@@ -698,14 +718,15 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             {
                 if (currentPhase > 4f)
                     CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.CalamitasCloneFinalPhase", Color.OrangeRed);
-
+                //干掉所有的激光
+                KillLaser();
                 SpawnDust();
                 OnlyGlow = true;
             }
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int type = ModContent.ProjectileType<BrimstoneHellblast2>();
-
+                //发起弹幕炼狱的时候应该干掉所有激光
                 float projSpeed = 4f;
                 if (currentPhase > 4f)
                 {
@@ -760,6 +781,20 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 SpawnDust();
                 SoundEngine.PlaySound(BulletHellEndSound, NPC.position);
                 SelectNextAttack();
+            }
+        }
+
+        private void KillLaser()
+        {
+            for (int x = 0; x < Main.maxProjectiles; x++)
+            {
+                Projectile proj = Main.projectile[x];
+                if (!proj.active)
+                    continue;
+                if (proj.type != ModContent.ProjectileType<BrimstoneLaserSplit>())
+                    continue;
+                if (proj.timeLeft > 10)
+                    proj.timeLeft = 10;
             }
         }
         #endregion

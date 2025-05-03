@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using System.Security.Authentication;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -67,6 +68,7 @@ namespace CalamityInheritance.Content.Items
             
             return false;
         }*/
+        public override bool AltFunctionUse(Player player) => true;
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
@@ -80,6 +82,51 @@ namespace CalamityInheritance.Content.Items
             cIPlayer.summonPool = 0;
             cIPlayer.rogueLevel = 0;
             cIPlayer.roguePool = 0;
+            cIPlayer.DukeTier1 = false;
+            cIPlayer.DukeTier2 = false;
+            cIPlayer.DukeTier3 = false;
+            cIPlayer.BetsyTier1= false;
+            cIPlayer.BetsyTier2= false;
+            cIPlayer.BetsyTier3= false;
+            cIPlayer.DefendTier1 = false;
+            cIPlayer.DefendTier2 = false;
+            cIPlayer.DefendTier3 = false;
+            cIPlayer.PlanteraTier1 = false;
+            cIPlayer.PlanteraTier2 = false;
+            cIPlayer.PlanteraTier3 = false;
+            cIPlayer.DestroyerTier1 = false;
+            cIPlayer.DestroyerTier2 = false;
+            cIPlayer.DestroyerTier3 = false;
+            cIPlayer.ColdDivityTier1 = false;
+            cIPlayer.ColdDivityTier2 = false;
+            cIPlayer.ColdDivityTier3 = false;
+            cIPlayer.PBGTier1 = false;
+            cIPlayer.PBGTier2 = false;
+            cIPlayer.PBGTier3 = false;
+            if (player.altFunctionUse == 2)
+            {
+                cIPlayer.DukeTier1 = true;
+                cIPlayer.DukeTier2 = true;
+                cIPlayer.DukeTier3 = true;
+                cIPlayer.BetsyTier1 = true;
+                cIPlayer.BetsyTier2 = true;
+                cIPlayer.BetsyTier3 = true;
+                cIPlayer.DefendTier1 = true;
+                cIPlayer.DefendTier2 = true;
+                cIPlayer.DefendTier3 = true;
+                cIPlayer.PlanteraTier1 = true;
+                cIPlayer.PlanteraTier2 = true;
+                cIPlayer.PlanteraTier3 = true;
+                cIPlayer.DestroyerTier1 = true;
+                cIPlayer.DestroyerTier2 = true;
+                cIPlayer.DestroyerTier3 = true;
+                cIPlayer.ColdDivityTier1 = true;
+                cIPlayer.ColdDivityTier2 = true;
+                cIPlayer.ColdDivityTier3 = true;
+                cIPlayer.PBGTier1 = true;
+                cIPlayer.PBGTier2 = true;
+                cIPlayer.PBGTier3 = true;
+            }
             /*
             if (CIConfig.Instance.UIX == 3)
             {

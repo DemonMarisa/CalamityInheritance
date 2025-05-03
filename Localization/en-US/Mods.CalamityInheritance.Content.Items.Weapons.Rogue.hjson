@@ -260,8 +260,13 @@ PBGLegendary: {
 }
 
 EclipseSpear: {
-	Tooltip: ""
-	DisplayName: Eclipse Spear
+	Tooltip:
+		'''
+		Summons spears from the sky on hit
+		Stealth strikes impale enemies and summon a constant barrage of spears over time
+		'When the sun goes dark, you will know judgment'	
+		'''
+	DisplayName: Eclipse's Fall Revamped
 }
 
 SupernovaChange:

@@ -266,8 +266,13 @@ PBGLegendary: {
 }
 
 EclipseSpear: {
-	// Tooltip: ""
-	// DisplayName: Eclipse Spear
+	Tooltip:
+		'''
+		击中敌人时召唤长矛从天而降
+		潜伏攻击会使长矛扎在敌人身上并持续召唤长矛
+		“当日蚀之阴降临的时候，你就会得知审判的结果”
+		'''
+	DisplayName: 日蚀之陨[Revamped]
 }
 
 SupernovaChange:
