@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
                 AddIngredient<AbyssalMirror>().
                 AddIngredient<DarkMatterSheath>().
                 AddIngredient<DarksunFragment>(10).
-                AddIngredient<AscendantInsignia>(1).
+                AddIngredient<AscendantSpiritEssence>(1).
                 AddTile<CosmicAnvil>().
                 Register();
 

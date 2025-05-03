@@ -111,12 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                CreateRecipe().
-                    AddIngredient<LoreProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-
-                CreateRecipe().
-                    AddIngredient<KnowledgeProvidence>().
+                    AddRecipeGroup(CIRecipeGroup.LoreProvidence).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

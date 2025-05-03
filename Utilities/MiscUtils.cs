@@ -155,5 +155,18 @@ namespace CalamityInheritance.Utilities
         {
             shop.AddWithCustomValue(ModContent.ItemType<T>(), value, condition);
         }
+        public static RecipeGroup CreateGroupTwoItem<T>(this int showOnRecipe) where T: ModItem
+        {
+            return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ModContent.ItemType<T>());
+        }
+        public static void NameHelper(this RecipeGroup group, string name)
+        {
+            RecipeGroup.RegisterGroup("CalamityInheritance:" + name, group);
+        }
+        public static string GetGroupName(this string name)
+        {
+            string getName = "CalamityInheritance:" + name; 
+            return getName;
+        }
     }
 }

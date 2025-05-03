@@ -5,7 +5,9 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -21,6 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EclipsesFall>(false);
         }
         public override void SetDefaults()
         {
@@ -60,6 +63,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             else
                 Projectile.NewProjectile(source, position, -velocity * 1.5f, ModContent.ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<NightsGaze>().
+                AddIngredient<CoreofSunlight>(12).
+                AddIngredient<CosmiliteBar>(8).
+                AddIngredient<DarksunFragment>(8).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

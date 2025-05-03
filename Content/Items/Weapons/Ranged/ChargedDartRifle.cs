@@ -77,14 +77,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.DartRifle)
-                .AddIngredient(ItemID.MartianConduitPlating, 25)
-                .AddIngredient<CoreofEleum>(3)
-                .AddIngredient(ItemID.FragmentVortex, 5)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
-            CreateRecipe(1)
-                .AddIngredient(ItemID.DartPistol)
+                .AddRecipeGroup(CIRecipeGroup.DartGun)
                 .AddIngredient(ItemID.MartianConduitPlating, 25)
                 .AddIngredient<CoreofEleum>(3)
                 .AddIngredient(ItemID.FragmentVortex, 5)

@@ -41,13 +41,13 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient<CleansingJelly>()
-            .AddIngredient<LifeJelly>()
-            .AddIngredient<VitalJelly>()
-            .AddIngredient(ItemID.SoulofLight,4)
-            .AddIngredient(ItemID.SoulofNight,4)
-            .AddTile(TileID.Anvils)
-            .Register();
+                .AddIngredient<CleansingJelly>()
+                .AddIngredient<LifeJelly>()
+                .AddIngredient<VitalJelly>()
+                .AddIngredient(ItemID.SoulofLight,4)
+                .AddIngredient(ItemID.SoulofNight,4)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

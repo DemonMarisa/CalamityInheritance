@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<BloodPact>().
+                AddRecipeGroup(CIRecipeGroup.BloodPact).
                 AddIngredient<FleshTotem>().
                 AddIngredient<CosmiliteBar>(5).
                 AddIngredient<AscendantSpiritEssence>(4).

@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -21,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 9f, 2.5f);
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<ExodusWings>(false);
         }
 
         public override void SetDefaults()

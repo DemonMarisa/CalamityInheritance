@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Build.Tasks;
@@ -17,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Wrathwing>();
         }
         public override void SetDefaults()
         {

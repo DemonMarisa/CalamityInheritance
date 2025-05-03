@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<BlightedGel>(15).
                 AddIngredient(ItemID.CrimstoneBlock, 50).
                 AddIngredient(ItemID.TissueSample, 5).
-                AddIngredient(ItemID.IronBar, 4).
+                AddRecipeGroup(RecipeGroupID.IronBar, 4).
                 AddTile(TileID.DemonAltar).
                 Register();
         }

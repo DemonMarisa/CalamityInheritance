@@ -161,15 +161,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Deathwind>().
                 AddIngredient<HeavenlyGaleold>().
                 AddConsumeItemCallback(CIRecipesCallback.DontConsumeExoWeapons). //旧天风合成时不会被消耗掉
-                AddIngredient<BurningSkyLegacy>(4).        //丛林龙掉落的全部武器
-                AddIngredient<DragonSword>(4).        //丛林龙掉落的全部武器
-                AddIngredient<AncientDragonsBreath>(4).     //只限定为旧版本，这里是故意的。
-                AddIngredient<ChickenCannonLegacy>(4).
-                AddIngredient<DragonStaff>(4).
+                AddRecipeGroup(CIRecipeGroup.DragonSky, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonSword, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonGun, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonCannon, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonStaff, 4).
                 AddIngredient<YharimsCrystalLegendary>(4).
-                AddIngredient<YharonSonStaff>(4).
-                AddIngredient<DragonSpear>(4).
-                AddIngredient<YharimsGiftLegacy>(8).
+                AddRecipeGroup(CIRecipeGroup.DragonSummon, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonSpear, 4).
+                AddRecipeGroup(CIRecipeGroup.DragonGift, 8).
                 AddIngredient<EffulgentFeather>(160).
                 AddIngredient<YharonSoulFragment>(160). //龙魂与化魂神晶用于合成这个物品时候不会被消耗
                 AddConsumeItemCallback(CIRecipesCallback.DontConsumePostDOGMaterials).

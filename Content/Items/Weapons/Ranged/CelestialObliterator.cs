@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<ElementalBlaster>().
                 AddIngredient<PearlGod>().
                 DisableDecraft().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
                 

@@ -101,20 +101,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<TracersCelestial>().
+                AddRecipeGroup(CIRecipeGroup.TracersCelestial).
                 AddIngredient<ElysianWings>().
                 AddIngredient<CosmiliteBar>(5).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();
 
-            CreateRecipe().
-                AddIngredient<FasterLunarTracers>().
-                AddIngredient<ElysianWings>().
-                AddIngredient<CosmiliteBar>(5).
-                AddIngredient<AscendantSpiritEssence>(4).
-                AddTile<CosmicAnvil>().
-                Register();
 
         }
 

@@ -6,6 +6,8 @@ using CalamityMod.Sounds;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Summon;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -17,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             //改为法杖的形式会更加符合这个武器的设计
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<YharonsKindleStaff>();
         }
         public override void SetDefaults()
         {

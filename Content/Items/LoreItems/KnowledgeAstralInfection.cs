@@ -27,6 +27,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<AstrumDeusTrophy>().
                 AddTile(TileID.Bookcases).
                 Register();
+                
             CreateRecipe().
                 AddIngredient<LoreAstralInfection>().
                 AddTile(TileID.Bookcases).

@@ -165,7 +165,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddIngredient<UltraLiquidator>().
             AddIngredient<HeliumFlashLegacy>().
             DisableDecraft().
-            AddIngredient<AuricBarold>(15).
+            AddIngredient<AuricBarold>(10).
             AddTile(ModContent.TileType<DraedonsForgeold>()).
             Register();
 

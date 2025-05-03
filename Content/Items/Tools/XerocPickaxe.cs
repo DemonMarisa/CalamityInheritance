@@ -37,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Tools
         {
             CreateRecipe().
                 AddIngredient<NebulaBar>(9).
+                AddIngredient(ItemID.LunarBar, 9).
                 AddIngredient<GalacticaSingularity>(1).
-                AddIngredient(ItemID.LunarBar, 10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }

@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
@@ -27,6 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Apotheosis>(false);
         }
 
         public override void SetDefaults()
@@ -61,14 +63,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
                 AddIngredient<SubsumingVortexold>().
                 AddIngredient<CosmicDischarge>(1).
-                AddIngredient<Norfleet>(3).
-                AddIngredient<Excelsus>(3).
-                AddIngredient<MeleeTypeEradicator>(3).
+                AddRecipeGroup(CIRecipeGroup.Norfleet, 3).
+                AddRecipeGroup(CIRecipeGroup.Excelsus, 3).
                 AddIngredient<TheObliterator>(3).
                 AddIngredient<Deathwind>(3).
                 AddIngredient<DeathhailStaff>(3).
                 AddIngredient<StaffoftheMechworm>(3).
-                AddIngredient<Eradicator>(3).
+                AddRecipeGroup(CIRecipeGroup.Eradicator, 6).
                 AddIngredient<NebulousCore>(3).
                 AddIngredient<AscendantSpiritEssence>(77).
                 AddIngredient<CosmiliteBar>(77).

@@ -29,6 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Type.ShimmetTo<DragonsBreath>();
+            ModContent.ItemType<DragonsBreath>().ShimmetTo<AncientDragonsBreath>();
         }
 
         public override void SetDefaults()

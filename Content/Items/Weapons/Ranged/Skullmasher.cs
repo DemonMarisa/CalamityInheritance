@@ -107,12 +107,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe()
-                    .AddIngredient<KnowledgeDevourerofGods>()
-                    .AddTile<CosmicAnvil>()
-                    .Register();
-
-                CreateRecipe()
-                    .AddIngredient<LoreDevourerofGods>()
+                    .AddRecipeGroup(CIRecipeGroup.LoreDevourerofGods)
                     .AddTile<CosmicAnvil>()
                     .Register();
             }

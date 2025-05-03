@@ -111,7 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<PulseDragon>().
                 AddIngredient<CrescentMoon>().
                 AddIngredient<ClamCrusher>().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 DisableDecraft().
                 AddTile<DraedonsForgeold>().
                 Register();

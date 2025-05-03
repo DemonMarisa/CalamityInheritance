@@ -1,13 +1,8 @@
-﻿using CalamityMod.Tiles.Furniture.BossTrophies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Tiles.Relic;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Relic
 {
@@ -25,8 +20,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Relic
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
-            Item.value = 50000;
-            Item.rare = ItemRarityID.Blue;
+            Item.value = CIShopValue.RarityPricePureRed;
+            Item.rare = ModContent.RarityType<PureRed>();
             Item.createTile = ModContent.TileType<ScalTrophyTiles>();
         }
     }

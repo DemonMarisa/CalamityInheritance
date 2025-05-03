@@ -51,21 +51,13 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<StatisNinjaBelt>().
+                AddRecipeGroup(CIRecipeGroup.StatisNinjaBelt).
                 AddIngredient<TwistingNether>(10).
                 AddIngredient<NightmareFuel>(20).
                 AddIngredient(ItemID.AvengerEmblem, 1).
                 AddTile<CosmicAnvil>().
                 Register();
                 //Scarlet:合成材料增加复仇者徽章
-
-            CreateRecipe().
-                AddIngredient<StatisNinjaBeltLegacy>().
-                AddIngredient<TwistingNether>(10).
-                AddIngredient<NightmareFuel>(20).
-                AddIngredient(ItemID.AvengerEmblem, 1).
-                AddTile<CosmicAnvil>().
-                Register();
         }
     }
 }

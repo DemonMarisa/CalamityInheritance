@@ -2,6 +2,8 @@ using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -18,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<PhoenixFlameBarrage>();
         }
 
         public override void SetDefaults()

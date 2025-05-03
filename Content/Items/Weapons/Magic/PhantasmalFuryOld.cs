@@ -5,16 +5,18 @@ using Terraria;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Projectiles.Magic;
 using Terraria.GameContent.Golf;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class PhantasmalFuryOld : CIMagic, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<PhantasmalFury>(false);
         }
 
         public override void SetDefaults()

@@ -6,6 +6,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -19,6 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TheWand>(false);
         }
 
         public override void SetDefaults()
@@ -56,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.WandofSparking).
+                AddRecipeGroup(CIRecipeGroup.WandofSparking).
                 AddIngredient<YharonSoulFragment>(8).
                 AddTile<CosmicAnvil>().
                 Register();

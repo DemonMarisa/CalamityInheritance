@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
+using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,8 +12,8 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MageWulfrumHoodLegacy>()] = ModContent.ItemType<ANewWulfrumHood>();
             Item.ResearchUnlockCount = 1;
+            Type.ShimmetTo<ANewWulfrumHood>();
         }
 
         public override void SetDefaults()
