@@ -73,5 +73,9 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle LumiShardHit = new($"{ItemSoundRoute}/LumiSpear/LumiShardHit") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle LumiSpearAttackNor = new($"{ItemSoundRoute}/LumiSpear/LumiSpearAttackNor") { Volume = 0.6f, Pitch = 0.3f };
         #endregion
+        #region 阿尔法射线相关
+        public static readonly SoundStyle WingManFire = new($"{ItemSoundRoute}/AlphaRay/WingManFire") { Volume = 0.9f, Pitch = 0.3f };
+        public static readonly SoundStyle GenisisFire = new($"{ItemSoundRoute}/AlphaRay/GenisisFire") { Volume = 0.9f, Pitch = 0.3f };
+        #endregion
     }
 }

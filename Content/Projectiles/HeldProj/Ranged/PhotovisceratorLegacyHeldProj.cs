@@ -67,10 +67,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             // 第一次的计数
             ref float fireFire = ref Projectile.ai[2];
             UseCounter++;
-            // 重置
+            // 重置计时器
             if (UseCounter > 300)
                 UseCounter = 0;
-
+            // 开火方向
             Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
             firedirection = firedirection.SafeNormalize(Vector2.UnitX);
 
@@ -166,7 +166,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         }
         #endregion
         #region 绘制
-        public override void ExtraPreDraw(ref Color lightColor)
+        public override void MorePreDraw(ref Color lightColor)
         {
             Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PhotovisceratoroldGlow").Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;

@@ -11,7 +11,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class GenisisLegacy : CIMagic, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -45,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             float SpeedY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
             for (int index = 0; index < 3; ++index)
             {
-                int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX * 1.05f, SpeedY * 1.05f, ProjectileID.LaserMachinegunLaser, (int)(damage * 0.65), knockback * 0.6f, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX * 1.05f, SpeedY * 1.05f, ProjectileID.LaserMachinegunLaser, (int)(damage * 0.65), knockback * 0.6f, player.whoAmI, 0f, 0f);
             }
             return false;
         }

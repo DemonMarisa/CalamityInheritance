@@ -4,6 +4,10 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Melee;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -11,7 +15,7 @@ namespace CalamityInheritance.Content.Items
     {
         public static string WeaponRoute => "CalamityInheritance/Content/Items";
         //别改这个为大写了，他每次拉去的时候图片的文件总是变成小写 
-        public override string Texture => $"{WeaponRoute}/test";
+        public override string Texture => $"{WeaponRoute}/Test";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -21,8 +25,8 @@ namespace CalamityInheritance.Content.Items
             Item.width = 42;
             Item.damage = 55;
             Item.DamageType = DamageClass.Melee;
-            Item.useAnimation = 15;
-            Item.useTime = 15;
+            Item.useAnimation = 5;
+            Item.useTime = 5;
             Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 5f;
@@ -32,42 +36,25 @@ namespace CalamityInheritance.Content.Items
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 10;
-            //Item.shoot = ModContent.ProjectileType<SummonLevelFirework_Final>();
+            Item.shoot = ModContent.ProjectileType<AlphaBeam>();
         }/*
         public override bool CanUseItem(Player player)
         {
             return true;
         }*/
-        /*
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int fireOffset = -100;
-            Vector2 mousePos = Main.MouseWorld;
-            int totalFire = 4;
-            int firePosX = (int)(mousePos.X + player.Center.X) / 2;
-            int firePosY = (int)player.Center.Y;
-
-            for (int fireCount = 0; fireCount < totalFire; fireCount++)
-            {
-                // 垂直偏移计算
-                Vector2 finalPos = new Vector2(firePosX, firePosY + fireOffset * fireCount);
-
-                // 计算朝向鼠标的方向
-                Vector2 direction = mousePos - finalPos;
-                direction.Normalize();
-
-                // 随机30度发射
-                direction = direction.RotatedByRandom(MathHelper.ToRadians(15));
-
-                // 保持原速度并应用新方向
-                Vector2 newVelocity = direction * velocity.Length();
-
-                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ModContent.ProjectileType<Galaxia2>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
-                Main.projectile[projectileFire].timeLeft = 160;
-            }
-            
+            if(player.altFunctionUse == 2)
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AlphaBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 1f);
+            else
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AlphaBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
-        }*/
+        }
+        /*
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
@@ -81,7 +68,7 @@ namespace CalamityInheritance.Content.Items
             cIPlayer.summonPool = 0;
             cIPlayer.rogueLevel = 0;
             cIPlayer.roguePool = 0;
-            /*
+            
             if (CIConfig.Instance.UIX == 3)
             {
                 // 空列表检查
@@ -101,9 +88,9 @@ namespace CalamityInheritance.Content.Items
                 // 显示提示信息
                 Main.NewText($"生成了 {CalStatInflationBACK.PostOldDukeWeapons.Count} 件物品！");
             }
-            */
+            
             return true;
         }
-
+        */
     }
 }

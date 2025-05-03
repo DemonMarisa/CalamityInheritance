@@ -52,6 +52,7 @@ Mods: {
 			Melee: {
 				CIExocomet.DisplayName: 星流流星
 				CIExocometMagic.DisplayName: 星流彗星
+				// MarniteBayonetSpikesProj.DisplayName: Marnite Bayonet Spikes Proj
 			}
 
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
@@ -69,6 +70,7 @@ Mods: {
 			// Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 			// FossilSpike.DisplayName: Fossil Spike
 			// MarianaProjectile.DisplayName: Mariana Projectile
+			// ChangeDirProj.DisplayName: Change Dir Proj
 		}
 
 		Content/Projectiles/Summon: {

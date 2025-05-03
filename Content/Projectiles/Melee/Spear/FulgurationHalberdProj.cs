@@ -15,8 +15,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
     public class FulgurationHalberdProj : ModProjectile, ILocalizedModType
     {
-        protected virtual float RangeMin => 56f;
-        protected virtual float RangeMax => 196f;
+        protected virtual float RangeMin => 16f;
+        protected virtual float RangeMax => 106f;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()
         {
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1;
+            Projectile.localNPCHitCooldown = 25;
         }
 
         public override bool PreAI()
@@ -74,6 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             //干掉AI钩子
             return false;
         }
+
         public virtual void UpdateAim(Vector2 source, float speed)
         {
             // Get the player's current aiming direction as a normalized vector.
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             }
 
             // Change a portion of the Prism's current velocity so that it points to the mouse. This gives smooth movement over time.
-            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, 0.5f));
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, 0.04f));
             aim *= speed;
 
             if (aim != Projectile.velocity)

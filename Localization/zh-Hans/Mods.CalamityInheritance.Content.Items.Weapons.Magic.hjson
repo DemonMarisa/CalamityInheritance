@@ -377,3 +377,18 @@ ShadowdropStaff: {
 	DisplayName: 暗影之雨[Legacy]
 	Tooltip: 召唤暗影雨从天而降
 }
+
+ACTGenisis: {
+	// DisplayName: A C T Genisis
+	// Tooltip: ""
+}
+
+ACTWingman: {
+	// DisplayName: A C T Wingman
+	// Tooltip: ""
+}
+
+ACTAlphaRay: {
+	// DisplayName: A C T Alpha Ray
+	// Tooltip: ""
+}

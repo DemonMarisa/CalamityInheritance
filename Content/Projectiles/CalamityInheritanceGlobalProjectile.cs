@@ -27,6 +27,9 @@ namespace CalamityInheritance.Content.Projectiles
         public float MinionProjDamageValue = 0f;
 
         public bool AMRextra = false;
+        // 100个额外射弹AI
+        internal const int MaxAIMode = 100;
+        public float[] ProjNewAI = new float[MaxAIMode];
 
         public bool AMRextraTy = false;
         public bool ThrownMode = false;

@@ -6,6 +6,7 @@ using Terraria.ID;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {
@@ -22,6 +23,8 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.ignoreWater = true;
             Projectile.penetrate = 2;
             Projectile.DamageType = DamageClass.Magic;
+            Projectile.timeLeft = 300;
+            Projectile.usesLocalNPCImmunity = true;
         }
         public override void AI()
         {
@@ -42,7 +45,15 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
                 Main.dust[num157].velocity *= 0.25f;
                 Main.dust[num157].noLight = true;
                 Main.dust[num157].velocity += Projectile.velocity * 0.5f;
-                return;
+            }
+            Projectile.ai[0]++;
+            if (Projectile.ai[0] < 30f)
+                Projectile.velocity *= 0.96f;
+            else
+            {
+                if(Projectile.ai[1] < 12f)
+                    Projectile.ai[1]++;
+                CIFunction.HomeInOnNPC(Projectile, false, 1500f, Projectile.ai[1], 35f);
             }
         }
 

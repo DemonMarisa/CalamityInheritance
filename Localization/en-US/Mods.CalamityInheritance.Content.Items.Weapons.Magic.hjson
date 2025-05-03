@@ -344,3 +344,18 @@ ShadowdropStaff: {
 	DisplayName: Shadowdrop Staff
 	Tooltip: Summons dark aura rain from the sky
 }
+
+ACTGenisis: {
+	DisplayName: A C T Genisis
+	Tooltip: ""
+}
+
+ACTWingman: {
+	DisplayName: A C T Wingman
+	Tooltip: ""
+}
+
+ACTAlphaRay: {
+	DisplayName: A C T Alpha Ray
+	Tooltip: ""
+}

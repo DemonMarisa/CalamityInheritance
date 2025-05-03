@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
                 Item.noUseGraphic = true;
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
-                return player.ownedProjectileCounts[Item.shoot] <= 0;
+                return base.CanUseItem(player);
             }
             else
             {

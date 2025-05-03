@@ -11,6 +11,11 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range;
+using CalamityMod.Projectiles.Magic;
+using CalamityMod;
+using Mono.Cecil;
+using CalamityInheritance.Content.Projectiles.HeldProj.Typeless;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -29,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.mana = 2;
             Item.width = 44;
             Item.height = 46;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 60;
+            Item.useAnimation = 60;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3;
@@ -39,8 +44,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
 
-            Item.shoot = ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>();
+            Item.shoot = ModContent.ProjectileType<WulfrumStaffHoldOut>();
             Item.shootSpeed = 9f;
+
             Item.noUseGraphic = true;
             Item.channel = true;
         }
@@ -62,11 +68,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
                 Item.UseSound = CISoundID.SoundStaffDiamond;
                 Item.useStyle = ItemUseStyleID.Shoot;
             }
-            return player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] <= 0;
+            return player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] < 1;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            if(player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] < 1)
+                Projectile.NewProjectileDirect(projSource, position, velocity, ModContent.ProjectileType<WulfrumStaffHoldOut>(), damage, knockback, player.whoAmI);
+
+            if (!Main.zenithWorld)
+                return false;
+
             int[] pType=
             [
                 ModContent.ProjectileType<GalaxyStarold>(),
@@ -83,7 +95,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
                 ModContent.ProjectileType<SupernovaBombold>(),
             ];
             if (!Main.zenithWorld)
-                Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI);
+            {
+                Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI, 0, 0, 1f);
+                Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI, 0, 0, -1f);
+            }
             else
             {
                 float rotAngle = 360f / pType.Length;

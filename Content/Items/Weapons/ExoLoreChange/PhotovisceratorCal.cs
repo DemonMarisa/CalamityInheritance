@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Graphics.Metaballs;
@@ -39,9 +40,10 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<OmicronWingman>()] < 1)
+            for (int i = 0; i < 2; i++)
             {
-                Projectile.NewProjectile(source, position, (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero), ModContent.ProjectileType<OmicronWingman>(), damage, knockback, player.whoAmI, 0, 0, 1);
+                Projectile holdout = Projectile.NewProjectileDirect(source, player.MountedCenter, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
+                holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
             }
             return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
         }
@@ -64,7 +66,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 //在行程路径上生成若干星流碎片
                 //不好孩子们，星流碎片被这个b白面团挡完了
                 if (Time % 10 == 0)
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.position, projectile.velocity * 0.1f, ModContent.ProjectileType<PhotovisceratorCrystal>(), projectile.damage / 2, projectile.knockBack, projectile.owner);
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity * 0.1f, ModContent.ProjectileType<PhotovisceratorCrystal>(), projectile.damage / 2, projectile.knockBack, projectile.owner);
             }
             sparkColor = Main.rand.Next(4) switch
             {

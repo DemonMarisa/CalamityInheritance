@@ -112,7 +112,10 @@ namespace CalamityInheritance.Content.BaseClass
         /// <summary>
         /// 手持弹幕的AI逻辑<br/>
         /// </summary>
-        public abstract void HoldoutAI();
+        public virtual void HoldoutAI()
+        {
+
+        }
         /// <summary>
         /// 删除条件<br/>
         /// </summary>
@@ -123,6 +126,11 @@ namespace CalamityInheritance.Content.BaseClass
 
         public override bool PreDraw(ref Color lightColor)
         {
+            ExtraPreDraw(ref lightColor);
+            return false;
+        }
+        public virtual bool ExtraPreDraw(ref Color lightColor)
+        {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
@@ -130,14 +138,11 @@ namespace CalamityInheritance.Content.BaseClass
             SpriteEffects flipSprite = (Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
-
-            ExtraPreDraw(ref lightColor);
-
+            MorePreDraw(ref lightColor);
             return false;
         }
-        public virtual void ExtraPreDraw(ref Color lightColor)
+        public virtual void MorePreDraw(ref Color lightColor)
         {
-
         }
     }
 }

@@ -6,6 +6,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Projectiles.Melee;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -31,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
+            Item.useTurn = true;
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damage)
@@ -46,11 +48,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 }
                 value15.Normalize();
                 value15 *= Main.rand.Next(70, 101) * 0.1f;
-                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, value15.X, value15.Y, ModContent.ProjectileType<MarianaProjectile>(), (int)(Item.damage * (player.GetDamage<GenericDamageClass>().Base + player.GetDamage(DamageClass.Melee).Base - 1f)), hit.Knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, target.Center, value15 * 2f, ModContent.ProjectileType<MarianaProjectile>(), damage, hit.Knockback, player.whoAmI, 0f, 0f);
             }
             for (int num621 = 0; num621 < 30; num621++)
             {
-                int num622 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
+                int num622 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
                 Main.dust[num622].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -60,10 +62,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             for (int num623 = 0; num623 < 50; num623++)
             {
-                int num624 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 3f);
+                int num624 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 3f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
+                num624 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
                 Main.dust[num624].velocity *= 2f;
             }
         }
@@ -81,11 +83,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 }
                 value15.Normalize();
                 value15 *= Main.rand.Next(70, 101) * 0.1f;
-                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, value15.X, value15.Y, ModContent.ProjectileType<MarianaProjectile>(), (int)(Item.damage * (player.GetDamage<GenericDamageClass>().Base + player.GetDamage(DamageClass.Melee).Base - 1f)), Item.knockBack, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, target.Center, value15 * 2f, ModContent.ProjectileType<MarianaProjectile>(), hit.Damage, Item.knockBack, player.whoAmI, 0f, 0f);
             }
             for (int num621 = 0; num621 < 30; num621++)
             {
-                int num622 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
+                int num622 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
                 Main.dust[num622].velocity *= 3f;
                 if (Main.rand.NextBool(2))
                 {
@@ -95,10 +97,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             for (int num623 = 0; num623 < 50; num623++)
             {
-                int num624 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 3f);
+                int num624 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 3f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 5f;
-                num624 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
+                num624 = Dust.NewDust(target.Center, player.width, player.height, DustID.BlueTorch, 0f, 0f, 100, default, 2f);
                 Main.dust[num624].velocity *= 2f;
             }
         }

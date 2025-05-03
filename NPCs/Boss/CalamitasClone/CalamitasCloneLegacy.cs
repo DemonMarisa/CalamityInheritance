@@ -218,7 +218,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 Main.player[NPC.target].Calamity().GeneralScreenShakePower = 4;
                 SpawnDust();
                 initialized = true;
-                Main.NewText($"SpawnWho = {SpawnWho}");
             }
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
