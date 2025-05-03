@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
+            Item.hammer = 114;
         }
 
         public override void AddRecipes()

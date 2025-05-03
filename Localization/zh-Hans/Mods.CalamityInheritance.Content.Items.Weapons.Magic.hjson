@@ -374,6 +374,6 @@ YharimsCrystalLegendary: {
 }
 
 ShadowdropStaff: {
-	// DisplayName: Shadowdrop Staff
-	// Tooltip: ""
+	DisplayName: 暗影之雨[Legacy]
+	Tooltip: 召唤暗影雨从天而降
 }

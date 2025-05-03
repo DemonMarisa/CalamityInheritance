@@ -507,56 +507,78 @@ ChainsawCal:
 	'''
 
 AncientCrusher: {
-	// DisplayName: Ancient Crusher
-	// Tooltip: ""
+	DisplayName: 古石锤[Legacy]
+	Tooltip:
+		'''
+		召唤砂石尖刺攻击敌人
+		你可以用来敲墙
+		'''
 }
 
 CorruptedCrusherBlade: {
-	// DisplayName: Corrupted Crusher Blade
-	// Tooltip: ""
+	DisplayName: 腐化碾碎刃[Legacy]
+	Tooltip: 造成诅咒狱火减益，暴击降低敌人10防御 
 }
 
 Crimsaber: {
-	// DisplayName: Crimsaber
-	// Tooltip: ""
+	DisplayName: 血红之剑[Legacy]
+	Tooltip: 与神血融合的剑
 }
 
 CrimsonCrusherBlade: {
-	// DisplayName: Crimson Crusher Blade
-	// Tooltip: ""
+	DisplayName: 猩红碾碎刃[Legacy]
+	Tooltip: 造成灵液减益，暴击时降低敌人接触伤害 
 }
 
 CrystalBlade: {
-	// DisplayName: Crystal Blade
-	// Tooltip: ""
+	DisplayName: 水晶剑[Legacy]
+	Tooltip: 发射缓速移动的水晶尘埃云 
 }
 
 MandibleClaws: {
-	// DisplayName: Mandible Claws
-	// Tooltip: ""
+	DisplayName: 蚁狮爪[Legacy]
+	Tooltip: ""
 }
 
 Mariana: {
-	// DisplayName: Mariana
-	// Tooltip: ""
+	DisplayName: 马里亚纳[Legacy]
+	Tooltip:
+		'''
+		炎热而致命
+		敌人死亡时爆出水球
+		'''
 }
 
 HolidayHalberd: {
-	// DisplayName: Holiday Halberd
-	// Tooltip: ""
+	DisplayName: 节日长戟[Legacy]
+	Tooltip:
+		'''
+		我不知道，这太离谱了，这鬼武器到底应该叫什么？？
+		—— General（说完这句话后就反手给这把武器命了个名的人）
+		发射弹跳的红绿礼物包裹，它们会在路径上留下伤害云朵
+		'''
 }
 
 TemporalFloeSword: {
-	// DisplayName: Temporal Floe Sword
-	// Tooltip: ""
+	DisplayName: 浮冰之刃[Legacy]
+	Tooltip:
+		'''
+		冰之使者到来…
+		发射会分裂成两束剑气的寒冰剑气
+		剑气的方向取决于游戏内的时间 
+		'''
 }
 
 Terracotta: {
-	// DisplayName: Terracotta
-	// Tooltip: ""
+	DisplayName: 圣护泰拉刃[Legacy]
+	Tooltip:
+		'''
+		敌人死亡时释放回血光粒
+		击中敌人时爆炸
+		'''
 }
 
 Waraxe: {
-	// DisplayName: Waraxe
-	// Tooltip: ""
+	DisplayName: 骷髅战斧[Legacy]
+	Tooltip: 暴击会撕裂敌人的护甲，降低15点防御和25%伤害减免
 }

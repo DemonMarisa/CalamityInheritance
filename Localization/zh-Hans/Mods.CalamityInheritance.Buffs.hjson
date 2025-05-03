@@ -109,8 +109,8 @@ MountedScannerLegacyBuff: {
 }
 
 BloodyBoost: {
-	// DisplayName: Bloody Boost
-	// Description: Increased offensive and defensive stats, healing potions grant more health
+	DisplayName: 血腥激励
+	Description: 增强进攻和防御属性，治疗药水回复更多血量 
 }
 
 yharimOfPerun: {
@@ -149,18 +149,18 @@ SonYharonBuff: {
 }
 
 WarCleave: {
-	// Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
+	// Description: Broke armor
 	// DisplayName: War Cleave
 }
 
 ShrineForestBuff: {
-	// DisplayName: Shrine Forest Buff
-	// Description: Mods.CalamityInheritance.Buffs.ShrineForestBuff.Description
+	DisplayName: 气[Legacy]
+	Description: 你的下一次攻击伤害提高，防御属性增加 
 }
 
 SMarbleSwordBuff: {
-	// DisplayName: S Marble Sword Buff
-	// Description: Mods.CalamityInheritance.Buffs.SMarbleSwordBuff.Description
+	DisplayName: 角斗士短剑
+	Description: 角斗士短剑在你身旁飞舞 
 }
 
 DefenderBuff: {
@@ -209,8 +209,8 @@ VolcanoBuff: {
 }
 
 AncientClasperBuff: {
-	// DisplayName: Ancient Clasper Buff
-	// Description: Mods.CalamityInheritance.Buffs.AncientClasperBuff.Description
+	DisplayName: 食魂冰虫[Legacy]
+	Description: 食魂冰虫会保护大家
 }
 
 MaliceModeCold: {
@@ -224,6 +224,6 @@ MaliceModeHot: {
 }
 
 BloodClot: {
-	// DisplayName: Blood Clot
-	// Description: Mods.CalamityInheritance.Buffs.BloodClot.Description
+	DisplayName: 血块
+	Description: 血块正在保护你
 }

@@ -514,27 +514,27 @@ ChainsawCal:
 
 AncientCrusher: {
 	DisplayName: Ancient Crusher
-	Tooltip: "Summons fossil spikes on enemy hits"
+	Tooltip: Summons fossil spikes on enemy hits
 }
 
 CorruptedCrusherBlade: {
 	DisplayName: Corrupted Crusher Blade
-	Tooltip: "Inflicts cursed inferno and critical hits reduce enemy defense by 10"
+	Tooltip: Inflicts cursed inferno and critical hits reduce enemy defense by 10
 }
 
 Crimsaber: {
 	DisplayName: Crimsaber
-	Tooltip: "A sword fused with the blood of the gods"
+	Tooltip: A sword fused with the blood of the gods
 }
 
 CrimsonCrusherBlade: {
 	DisplayName: Crimson Crusher Blade
-	Tooltip: "Inflicts ichor and critical hits lower enemy contact damage"
+	Tooltip: Inflicts ichor and critical hits lower enemy contact damage
 }
 
 CrystalBlade: {
 	DisplayName: Crystal Blade
-	Tooltip: "Fires slow-moving clouds of crystal dust"
+	Tooltip: Fires slow-moving clouds of crystal dust
 }
 
 MandibleClaws: {
@@ -582,8 +582,5 @@ Terracotta: {
 
 Waraxe: {
 	DisplayName: War axe
-	Tooltip:
-		'''
-		Critical hits cleave enemy armor, reducing their defense by 15 and protection by 25%
-		'''
+	Tooltip: Critical hits cleave enemy armor, reducing their defense by 15 and protection by 25%
 }

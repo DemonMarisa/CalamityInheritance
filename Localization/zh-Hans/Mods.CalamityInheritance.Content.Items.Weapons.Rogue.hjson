@@ -295,6 +295,12 @@ AtomChange:
 	'''
 
 LatcherMine: {
-	// DisplayName: Latcher Mine
-	// Tooltip: ""
+	DisplayName: 粘性地雷[Legacy]
+	Tooltip:
+		'''
+		黏住敌人并在3秒后爆炸
+		碰到物块会落下
+		潜伏攻击会在爆炸时产生火焰和弹片
+		潜伏攻击地雷在地面停留时间更长 
+		'''
 }

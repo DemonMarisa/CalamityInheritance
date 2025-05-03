@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
         
-        public static string TextRoute => $"{Generic.GetWeaponLocal}.Legendary.DukeLegendary";
+        public static string TextRoute => $"{Generic.GetWeaponLocal}.Melee.DukeLegendary";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

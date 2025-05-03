@@ -52,10 +52,17 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         //重写shoot属性
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            bool stealth = player.CheckStealth();
-            int pType = stealth ? ModContent.ProjectileType<AtomProjRework>() : type;
-            int s = Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, -1f);
-            Main.projectile[s].Calamity().stealthStrike = stealth;
+            bool stealth = player.Calamity().StealthStrikeAvailable();
+            if (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo)
+            {
+                int s = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AtomProjRework>(), damage, knockback, player.whoAmI, -1f);
+                Main.projectile[s].Calamity().stealthStrike = stealth;
+            }
+            else
+            {
+                int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, -1f);
+                Main.projectile[p].Calamity().stealthStrike = stealth;
+            }
             return false; 
         }
     }

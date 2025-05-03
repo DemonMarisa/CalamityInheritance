@@ -387,7 +387,7 @@ DraedonsHeartLegacy: {
 }
 
 ShrineForest: {
-	DisplayName: Shrine Forest
+	DisplayName: Trinket of Chi Legacy
 	Tooltip:
 		'''
 		Standing still for 2 seconds to gain a buff	
@@ -397,7 +397,7 @@ ShrineForest: {
 }
 
 ShrineMarble: {
-	DisplayName: Shrine Marble
+	DisplayName: Gladiator's Locket Legacy
 	Tooltip: Summons two sword spirits to protect you
 }
 
@@ -407,7 +407,7 @@ ShrineMarnite: {
 }
 
 ShrineMushroom: {
-	DisplayName: Shrine Mushroom
+	DisplayName: Fungal Symbiote Legacy
 	Tooltip:
 		'''
 		True melee weapons emit mushrooms when swung
