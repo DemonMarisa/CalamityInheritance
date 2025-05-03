@@ -365,7 +365,6 @@ namespace CalamityInheritance.NPCs
                 bool lastTwinStanding = IsLastTwinStanding(info);
                 return !NPC.downedMechBossAny && (lastTwinStanding || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime);
             }
-
             switch (npc.type)
             {
                 #region NPC
@@ -395,6 +394,16 @@ namespace CalamityInheritance.NPCs
                     break;
                 case NPCID.DarkCaster:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientShiv>(),25,15));
+                    break;
+                case NPCID.Antlion:
+                case NPCID.FlyingAntlion:
+                case NPCID.WalkingAntlion:
+                case NPCID.GiantWalkingAntlion:
+                case NPCID.GiantFlyingAntlion:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AntlionBow>(), 50, 33));
+                    break;
+                case NPCID.RuneWizard:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagnusEye>(), 10));
                     break;
                 #endregion
 

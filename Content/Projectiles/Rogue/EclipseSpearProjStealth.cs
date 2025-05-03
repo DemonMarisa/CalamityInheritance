@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;

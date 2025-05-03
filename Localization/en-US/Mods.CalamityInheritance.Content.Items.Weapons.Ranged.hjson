@@ -474,12 +474,12 @@ ChainWeaponChange:
 
 CursedCapper: {
 	DisplayName: Cursed Capper
-	Tooltip: ""
+	Tooltip: "Fires cursed bullets"
 }
 
 Dualpoon: {
 	DisplayName: Dualpoon
-	Tooltip: ""
+	Tooltip: "Launches two harpoons"
 }
 
 MandibleBow: {

@@ -94,39 +94,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 }
             }
             return false;
-            // if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            // {
-            //     if (!player.Calamity().StealthStrikeAvailable())
-            //     {
-            //         Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
-            //         Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-            //     }
-            //     SoundEngine.PlaySound(ThrowSound1, player.Center);
-            //     if (player.Calamity().StealthStrikeAvailable())
-            //     {
-            //         Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-            //         int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
-            //         SoundEngine.PlaySound(ThrowSound2, player.Center);
-            //         if (stealth.WithinBounds(Main.maxProjectiles))
-            //         {
-            //             Main.projectile[stealth].Calamity().stealthStrike = true;
-            //             Main.projectile[stealth].usesLocalNPCImmunity = true;
-            //         }
-            //     }
-            // }
-            // else
-            // {
-            //     if (player.Calamity().StealthStrikeAvailable())
-            //     {
-            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
-            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNorSteal>(), damage, knockback, player.whoAmI);
-            //     }
-            //     else
-            //     {
-            //         Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
-            //     }
-            // }
-            // return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

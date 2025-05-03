@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AltFunctionUse(Item item, Player player) => player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.ChainWeaponChange") : null;
+            string t = Main.LocalPlayer.CheckExoLore() ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.ChainWeaponChange") : null;
             if (t != null)
                 tooltips.Add(new TooltipLine(Mod, "Name", t));
 
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 Vector2 gunTip = position + shootDirection * item.scale * 45f;
                 Projectile.NewProjectile(source, gunTip, shootVelocity, item.shoot, damage, knockback, player.whoAmI);
             }
-            if (player.altFunctionUse == 2 && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
+            if (player.altFunctionUse == 2 && player.CheckExoLore())
             {
                 Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, item.shoot, damage, knockback, player.whoAmI);
             }

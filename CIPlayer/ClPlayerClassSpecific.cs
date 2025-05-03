@@ -196,7 +196,7 @@ namespace CalamityInheritance.CIPlayer
                     int pointer = pointerProj.whoAmI;
                     //查看射弹是否处于idleAI，如果是，直接启用其发射功能
                     (pointerProj.ModProjectile as CryogenPtr).AttackTimer = 0;
-                    Main.projectile[pointer].CalamityInheritance().PingPointerT3 = true;
+                    Main.projectile[pointer].CalamityInheritance().PingWhipStrike = true;
                     Main.projectile[pointer].netUpdate = true;
                 }
             }

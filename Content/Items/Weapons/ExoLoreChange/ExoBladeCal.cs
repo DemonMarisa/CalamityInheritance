@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var mp = player.CIMod();
-            if (mp.LoreExo || mp.PanelsLoreExo)
+            if (player.CheckExoLore())
             {
                 damage.Base = 2500;
             }

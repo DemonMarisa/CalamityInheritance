@@ -5,6 +5,7 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -74,6 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         private float LegendaryDamage()
         {
             float newDamage = 48;
+            newDamage += NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) ? 25 : 0;
             newDamage += DownedBossSystem.downedRavager ? 6 : 0;           //54
             newDamage += Condition.DownedEmpressOfLight.IsMet() ? 6 : 0;   //60
             newDamage += Condition.DownedDukeFishron.IsMet() ? 6 : 0;      //66
@@ -85,6 +87,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             newDamage += DownedBossSystem.downedDoG ? 12 : 0;               //128
             newDamage += DownedBossSystem.downedYharon ? 12 : 0f;           //140
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 30 : 0;  //170
+            newDamage += CIDownedBossSystem.DownedLegacyScal ? 150 : 0;
             return newDamage;
         }
 

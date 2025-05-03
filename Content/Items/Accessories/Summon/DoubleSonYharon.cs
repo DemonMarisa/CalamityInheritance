@@ -16,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         {
             Item.width = 28;
             Item.height = 28;
+            Item.defense = 5;
             Item.accessory = true;
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
@@ -25,6 +26,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         {
             var usPlayer = player.CIMod();
             usPlayer.GodlySons = true;
+            player.lifeRegen += 4;
+            player.moveSpeed += 0.1f;
         }
 
         public override void AddRecipes()

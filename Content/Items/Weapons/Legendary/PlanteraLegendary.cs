@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
-            int boostPercent = LegendaryDamageBuff();
+            int boostPercent = LegendaryDamageBuff() + Generic.GenericLegendBuffInt();
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -165,7 +165,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //叶流成长在龙的时期停止
             damageBuff += DownedBossSystem.downedYharon         ? 20 : 0;       //100 (135)
             //恭喜击败至尊灾厄眼，所以。150?
-            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 150 : 0;
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 75 : 0;
             return damageBuff;
         }
     }

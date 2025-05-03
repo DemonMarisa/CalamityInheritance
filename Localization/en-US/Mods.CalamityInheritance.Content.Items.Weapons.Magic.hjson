@@ -298,7 +298,7 @@ DestroyerLegendary: {
 	TierTwoTint: "[c/818589:Drinks an Purple Juice during the Inpending Doom]"
 	TierThree: "[c/4169E1:Upgrade]: No longer consume any mana"
 	TierThreeTint: "[c/818589:Summon Polterghast after used Comet Shard and Ethereal Core]"
-	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0} weapon damage"
+	LegendaryScaling: "[c/4169E1:Damage Scaling]: +{0} weapon damage"
 }
 
 SubsumingVortexChange:
@@ -327,15 +327,20 @@ VividChange:
 VividClarityBeamCal.DisplayName: Vivid Clarity Beam Cal
 
 YharimsCrystalLegendary: {
-	DisplayName: Yharims Crystal Legendary
-	Tooltip: ""
-	ExoTint: ""
-	NoExoTint: ""
-	ScalTint: ""
-	NoScalTint: ""
+	DisplayName: Yharim's Crystal Legendary
+	Tooltip:
+		'''
+		Fires draconic beams of total annihilation	
+		Scaling...across the bosses
+		[c/4169E1:-Legendary-]
+		'''
+	ExoTint: "[c/4169E1:Upgrade]: Beam now uses 2 local immnuity frames"
+	NoExoTint: "[c/818589:Defeated Exo Mechs]"
+	ScalTint: "[c/4169E1:Upgrade]: Increases mana usage, but grants 1000% damage boost"
+	NoScalTint: "[c/818589:Defeated Supreme Calamitas Legacy]"
 }
 
 ShadowdropStaff: {
 	DisplayName: Shadowdrop Staff
-	Tooltip: ""
+	Tooltip: "Summons dark aura rain from the sky"
 }

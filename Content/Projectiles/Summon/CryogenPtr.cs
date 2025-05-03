@@ -265,7 +265,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         Vector2 vel = AttackAngle.ToRotationVector2().RotatedBy(Math.Atan(0));
                         vel.Normalize();
                         vel *= 30f;
-                        if (Projectile.CalamityInheritance().PingPointerT3)
+                        if (Projectile.CalamityInheritance().PingWhipStrike)
                             AttackBuffer = BuffColdPointer;
                         int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, Projectile.damage, Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr, AttackBuffer);
                         //动态变化其伤害
@@ -338,7 +338,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (AttackBuffer != 0f)
+            if (AttackBuffer != 0f && Projectile.CalamityInheritance().PingWhipStrike)
                 Owner.Heal(1);
             
             if (Rounding && target == tar && Projectile.timeLeft < 60)
