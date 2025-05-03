@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Projectiles.Melee;

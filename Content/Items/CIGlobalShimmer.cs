@@ -113,10 +113,25 @@ namespace CalamityInheritance.Content.Items
                 //锤子系列
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>()] = ModContent.ItemType<FallenPaladinsHammer>();
                 ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FallenPaladinsHammer>()] = ModContent.ItemType<MeleeTypeHammerFallenPaladinsLegacy>();
-                
-            
             }
+            #region 神龛饰品    
+            //蘑菇
+            ShimmerEach<ShrineMushroom>(ModContent.ItemType<FungalSymbiote>());
+            //气功念珠
+            ShimmerEach<ShrineForest>(ModContent.ItemType<TrinketofChi>());
+            //角斗士
+            ShimmerEach<ShrineMarble>(ModContent.ItemType<GladiatorsLocket>());
+            //我忘了是啥了，好像是花岗岩
+            ShimmerEach<ShrineMarnite>(ModContent.ItemType<UnstableGraniteCore>());
             #endregion
+            //宙能
+            ShimmerEach<ACTExcelsus>(ModContent.ItemType<Excelsus>());
+            #endregion
+        }
+        public static void ShimmerEach<I>(int result) where I : ModItem
+        {
+            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<I>()] = result;
+            ItemID.Sets.ShimmerTransformToItem[result] = ModContent.ItemType<I>();
         }
     }
 }

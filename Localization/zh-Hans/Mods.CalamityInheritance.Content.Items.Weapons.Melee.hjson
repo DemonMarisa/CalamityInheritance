@@ -517,7 +517,7 @@ AncientCrusher: {
 
 CorruptedCrusherBlade: {
 	DisplayName: 腐化碾碎刃[Legacy]
-	Tooltip: 造成诅咒狱火减益，暴击降低敌人10防御 
+	Tooltip: 造成诅咒狱火减益，暴击降低敌人10防御
 }
 
 Crimsaber: {
@@ -527,12 +527,12 @@ Crimsaber: {
 
 CrimsonCrusherBlade: {
 	DisplayName: 猩红碾碎刃[Legacy]
-	Tooltip: 造成灵液减益，暴击时降低敌人接触伤害 
+	Tooltip: 造成灵液减益，暴击时降低敌人接触伤害
 }
 
 CrystalBlade: {
 	DisplayName: 水晶剑[Legacy]
-	Tooltip: 发射缓速移动的水晶尘埃云 
+	Tooltip: 发射缓速移动的水晶尘埃云
 }
 
 MandibleClaws: {

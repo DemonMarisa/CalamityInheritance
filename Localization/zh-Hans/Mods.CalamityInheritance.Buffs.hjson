@@ -110,7 +110,7 @@ MountedScannerLegacyBuff: {
 
 BloodyBoost: {
 	DisplayName: 血腥激励
-	Description: 增强进攻和防御属性，治疗药水回复更多血量 
+	Description: 增强进攻和防御属性，治疗药水回复更多血量
 }
 
 yharimOfPerun: {
@@ -155,12 +155,12 @@ WarCleave: {
 
 ShrineForestBuff: {
 	DisplayName: 气[Legacy]
-	Description: 你的下一次攻击伤害提高，防御属性增加 
+	Description: 你的下一次攻击伤害提高，防御属性增加
 }
 
 SMarbleSwordBuff: {
 	DisplayName: 角斗士短剑
-	Description: 角斗士短剑在你身旁飞舞 
+	Description: 角斗士短剑在你身旁飞舞
 }
 
 DefenderBuff: {

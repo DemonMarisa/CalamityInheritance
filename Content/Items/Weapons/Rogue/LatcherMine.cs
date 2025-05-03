@@ -23,21 +23,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
-
+        //让粘性地雷无法消耗从而让他正常获得词缀。
         public override void SetDefaults()
         {
             Item.height = 32;
             Item.width = 26;
             Item.damage = BaseDamage;
             Item.noMelee = true;
-            Item.consumable = true;
+            Item.consumable = false;
             Item.noUseGraphic = true;
             Item.useAnimation = Item.useTime = 15;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.maxStack = 999;
+            // Item.maxStack = 9999;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<LatcherMineProjectile>();

@@ -12,6 +12,8 @@ using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.System.Configs;
 using Terraria.DataStructures;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -94,12 +96,15 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<CryoBar>(), 3, 10, 20); //33%概率，数量10-20
                 itemloot.Add(ModContent.ItemType<GlacialCrusher>(), 3, 1 ,1);
                 itemloot.Add(ModContent.ItemType<BittercoldStaff>(), 3, 1 ,1);
-                //冰灵宝藏袋临时添加寒霜法杖，不然某些人做冰灵旋刃得坐大的，过会回归了那个被移除的法杖这个就会换掉
 
                 if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
                 {
                     itemloot.Add(ItemID.SoulofMight, 1, 35, 45);
                 }
+            }
+            if (item.type == ModContent.ItemType<PerforatorBag>())
+            {
+                itemloot.Add(ModContent.ItemType<BloodClotStaff>(), 3);
             }
             if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
             {
@@ -150,8 +155,13 @@ namespace CalamityInheritance.Content.Items
                 if (!CIServerConfig.Instance.CustomShimmer)
                 itemloot.Add(ModContent.ItemType<BlightSpewerLegacy>(), 4);
             }
-            if (item.type == ModContent.ItemType<HiveMindBag>() && !CIServerConfig.Instance.CustomShimmer)
-                itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
+            if (item.type == ModContent.ItemType<HiveMindBag>())
+            {
+                if (!CIServerConfig.Instance.CustomShimmer)
+                    itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
+                //暗影之雨
+                itemloot.Add(ModContent.ItemType<ShadowdropStaff>(), 5);
+            }
                 
             if (item.type == ModContent.ItemType<SlimeGodBag>() && !CIServerConfig.Instance.CustomShimmer)
                 itemloot.Add(ModContent.ItemType<OverloadedBlasterLegacy>(), 4);
