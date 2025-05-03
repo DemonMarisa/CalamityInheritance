@@ -1,4 +1,6 @@
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,6 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<AncientIceChunk>();
         }
         public override void SetDefaults()
         {

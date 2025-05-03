@@ -2,6 +2,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -11,6 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<UnstableGraniteCore>();
         }
         public override void SetDefaults()
         {

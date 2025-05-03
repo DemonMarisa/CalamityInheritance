@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EmpyreanKnives>(false);
         }
         public override void SetDefaults()
         {

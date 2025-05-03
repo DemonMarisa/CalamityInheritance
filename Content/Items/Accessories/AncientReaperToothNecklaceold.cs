@@ -5,6 +5,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -14,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<ReaperToothNecklace>();
         }
         public override void SetDefaults()
         {
@@ -28,18 +30,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             var usPlayer = player.CIMod();
             usPlayer.SpeedrunNecklace = true;
-        }
-        public override void AddRecipes()
-        {
-            //微光嬗变config关闭时使用这个合成表
-            if(CIServerConfig.Instance.CustomShimmer == false)
-            {
-                CreateRecipe().
-                    AddIngredient<ReaperTooth>(10).
-                    AddIngredient<DepthCells>(10).
-                    AddTile<CosmicAnvil>().
-                    Register();
-            }
         }
     }
 }

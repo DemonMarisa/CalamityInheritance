@@ -3,6 +3,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
     public class WulfrumBow : CIRanged, ILocalizedModType
@@ -11,6 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WulfrumBlunderbuss>(false);
         }
         public override void SetDefaults()
         {

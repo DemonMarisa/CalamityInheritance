@@ -17,8 +17,6 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class WaifuHeart : CIAccessories, ILocalizedModType
     {
-        
-
         public static bool FuckYouEHeart { get => fuckYouEHeart; set => fuckYouEHeart = value; }
 
         public override void SetStaticDefaults()
@@ -26,6 +24,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<HeartoftheElements>();
         }
 
         public override void SetDefaults()

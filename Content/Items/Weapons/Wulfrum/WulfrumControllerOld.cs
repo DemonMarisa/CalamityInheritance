@@ -5,6 +5,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
+using CalamityMod.Items.Weapons.Summon;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -14,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WulfrumController>(false);
         }
         public override void SetDefaults()
         {

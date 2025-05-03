@@ -1,4 +1,6 @@
 ﻿using System;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -132,6 +134,26 @@ namespace CalamityInheritance.Utilities
 
             return true;
         }
-
+        
+        public static void ShimmerEach<T>(this int result, bool ifDontNeedConfigControl = true) where T : ModItem
+        {
+            
+            if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<T>()] = result;
+                ItemID.Sets.ShimmerTransformToItem[result] = ModContent.ItemType<T>();
+            }
+        }
+        public static void ShimmetTo<T>(this int origin, bool ifDontNeedConfigControl = true) where T : ModItem
+        {
+            if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
+            {
+                ItemID.Sets.ShimmerTransformToItem[origin] = ModContent.ItemType<T>();
+            }
+        }
+        public static void ShopHelper<T>(this NPCShop shop, int value, Condition condition) where T: ModItem
+        {
+            shop.AddWithCustomValue(ModContent.ItemType<T>(), value, condition);
+        }
     }
 }

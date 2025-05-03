@@ -582,3 +582,8 @@ Waraxe: {
 	DisplayName: 骷髅战斧[Legacy]
 	Tooltip: 暴击会撕裂敌人的护甲，降低15点防御和25%伤害减免
 }
+
+FulgurationHalberd: {
+	// Tooltip: ""
+	// DisplayName: Fulguration Halberd
+}

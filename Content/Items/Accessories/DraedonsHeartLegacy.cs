@@ -2,6 +2,7 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Accessories;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -24,6 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.ResearchUnlockCount = 1;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
+            Type.ShimmerEach<DraedonsHeart>();
         }
 
         public override void SetDefaults()

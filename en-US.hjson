@@ -87,32 +87,6 @@ Mods: {
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
 		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
-
-		Items: {
-			Triploon: {
-				DisplayName: Triploon
-				Tooltip: ""
-			}
-
-			FulgurationHalberd: {
-				DisplayName: Fulguration Halberd
-				Tooltip: ""
-			}
-
-			BrimstoneFlameblaster: {
-				DisplayName: Brimstone Flameblaster
-				Tooltip: ""
-			}
-
-			Weapons: {
-				Rogue: {
-					BouncingBetty: {
-						DisplayName: Bouncing Betty
-						Tooltip: ""
-					}
-				}
-			}
-		}
 	}
 
 	"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam

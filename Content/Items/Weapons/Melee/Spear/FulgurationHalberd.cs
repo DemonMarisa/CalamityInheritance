@@ -15,7 +15,7 @@ using CalamityInheritance.Content.Projectiles.Melee.Spear;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {
-    public class FulgurationHalberd : ModItem
+    public class FulgurationHalberd : CIMelee, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.knockBack = 5f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = Item.buyPrice(0, 36, 0, 0);
+            Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shootSpeed = 8f;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();

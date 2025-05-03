@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -16,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WulfrumKnife>(false);
         }
         public override void SetDefaults()
         {

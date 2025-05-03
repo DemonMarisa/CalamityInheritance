@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using CalamityMod.Sounds;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -16,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<PolarisParrotfish>();
         }
 
         public override void SetDefaults()

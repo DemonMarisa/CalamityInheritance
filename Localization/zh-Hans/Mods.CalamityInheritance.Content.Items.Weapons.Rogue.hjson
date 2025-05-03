@@ -304,3 +304,8 @@ LatcherMine: {
 		潜伏攻击地雷在地面停留时间更长 
 		'''
 }
+
+BouncingBetty: {
+	// DisplayName: Bouncing Betty
+	// Tooltip: ""
+}

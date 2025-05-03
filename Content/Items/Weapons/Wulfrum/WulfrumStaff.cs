@@ -9,8 +9,8 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         {
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WulfrumProsthesis>(false);
         }
 
         public override void SetDefaults()

@@ -1,28 +1,16 @@
 ﻿using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod;
 using CalamityMod.Items.Placeables;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class Triploon : ModItem
+    public class Triploon : CIRanged, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Triploon");
-            // Tooltip.SetDefault("Launches three harpoons");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 70;
@@ -34,13 +22,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7.5f;
-            Item.value = Item.buyPrice(0, 60, 0, 0);
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.UseSound = SoundID.Item10;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<TriploonProj>();
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override Vector2? HoldoutOffset()
@@ -69,14 +56,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Dualpoon>());
-            recipe.AddIngredient(ItemID.Harpoon);
-            recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 15);
-            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<Voidstone>(), 5);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.Harpoon).
+                AddIngredient<Dualpoon>().
+                AddIngredient<DepthCells>(15).
+                AddIngredient<Lumenyl>(5).
+                AddIngredient<Voidstone>(5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

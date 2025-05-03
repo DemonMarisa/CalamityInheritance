@@ -7,12 +7,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
     public class VoidofExtinctionLegacy : CIAccessories, ILocalizedModType
     {
-        
         public const int FireProjectiles = 2;
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
@@ -20,6 +21,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<VoidofExtinction>();
         }
         public override void SetDefaults()
         {
@@ -95,12 +97,12 @@ namespace CalamityInheritance.Content.Items.Accessories
         }
         public override void AddRecipes()
         {
-                CreateRecipe()
-                    .AddIngredient<CoreofCalamity>()
-                    .AddIngredient<CoreofHavoc>()
-                    .AddIngredient<ScoriaBar>(3)
-                    .AddTile(TileID.MythrilAnvil)
-                    .Register();
+            CreateRecipe()
+                .AddIngredient<CoreofCalamity>()
+                .AddIngredient<CoreofHavoc>()
+                .AddIngredient<ScoriaBar>(3)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

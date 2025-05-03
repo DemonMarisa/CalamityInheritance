@@ -298,3 +298,8 @@ LatcherMine: {
 		Stealth strike mines can stick to the ground and last much longer when doing so
 		'''
 }
+
+BouncingBetty: {
+	DisplayName: Bouncing Betty
+	Tooltip: ""
+}

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Terraria;
@@ -14,13 +15,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true) //Scarlet:微光启用后才后允许互转
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MeleeTypeCorpusAvertor>()] = ModContent.ItemType<CorpusAvertor>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CorpusAvertor>()] = ModContent.ItemType<MeleeTypeCorpusAvertor>();
-            }
-
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<CorpusAvertor>();
         }
         public override void SetDefaults()
         {

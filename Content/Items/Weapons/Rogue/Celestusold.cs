@@ -134,9 +134,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
                 DisableDecraft().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
+
             CreateRecipe().
                 AddIngredient<ElementalDisk>().
                 AddIngredient<MoltenAmputator>().

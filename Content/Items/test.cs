@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items
         {
             Item.width = 42;
             Item.damage = 55;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.Generic;
             Item.useAnimation = 15;
             Item.useTime = 15;
             Item.useTurn = true;
@@ -29,7 +29,6 @@ namespace CalamityInheritance.Content.Items
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 42;
-            Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 10;
             //Item.shoot = ModContent.ProjectileType<SummonLevelFirework_Final>();

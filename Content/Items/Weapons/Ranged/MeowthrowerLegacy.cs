@@ -1,4 +1,6 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -14,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Meowthrower>();
         }
         public override void SetDefaults()
         {
@@ -23,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.height = 24;
             Item.useTime = 10;
             Item.useAnimation = 30;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 1.25f;
             Item.UseSound = SoundID.Item34;

@@ -12,7 +12,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class VictideSpear :CIMelee, ILocalizedModType 
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

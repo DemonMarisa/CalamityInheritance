@@ -7,6 +7,7 @@ using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -17,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<YharimsGift>();
         }
         public override void SetDefaults()
         {
@@ -61,18 +63,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                         CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ModContent.ProjectileType<SkyFlareFriendly>(), damage, 9f, player.whoAmI);
                     }
                 }
-            }
-        }
-        public override void AddRecipes()
-        {
-
-            if(CIServerConfig.Instance.CustomShimmer == false) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                CreateRecipe().
-                AddIngredient<YharimsGift>().
-                AddIngredient(ItemID.IronskinPotion, 5).
-                AddTile(TileID.AlchemyTable).
-                Register();
             }
         }
     }

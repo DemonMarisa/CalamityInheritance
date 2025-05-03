@@ -21,12 +21,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         public static string TextPath => $"Mods.CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver";
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，肉后的天蓝石将会与本mod的天蓝石转化，关闭时则由沙虫正常掉落
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>()] = ModContent.ItemType<ElementalQuiver>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElementalQuiver>()] = ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>();
-            }
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<CalamityMod.Items.Accessories.ElementalQuiver>(false);
         }
         public override void SetDefaults()
         {

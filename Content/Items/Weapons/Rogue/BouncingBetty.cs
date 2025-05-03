@@ -1,10 +1,5 @@
 ﻿using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -15,8 +10,9 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class BouncingBetty : RogueWeapon
+    public class BouncingBetty : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public const int BaseDamage = 52;
         public override void SetStaticDefaults()
         {
@@ -27,7 +23,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.damage = BaseDamage;
             Item.noMelee = true;
-            Item.consumable = true;
+            //干掉可消耗
+            Item.consumable = false;
             Item.noUseGraphic = true;
             Item.useAnimation = 24;
             Item.useTime = 24;
@@ -37,7 +34,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.width = 16;
             Item.height = 22;
-            Item.maxStack = 999;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<BouncingBettyProjectile>();

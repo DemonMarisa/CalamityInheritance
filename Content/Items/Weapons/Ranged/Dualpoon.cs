@@ -16,7 +16,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class Dualpoon : CIRanged, ILocalizedModType
     {
-
         public override void SetDefaults()
         {
             Item.damage = 70;
@@ -63,12 +62,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Harpoon, 2);
-            recipe.AddIngredient(ModContent.ItemType<SeaPrism>(), 15);
-            recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.Harpoon, 2).
+                AddIngredient<SeaPrism>(15).
+                AddIngredient(ItemID.SoulofMight, 10).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

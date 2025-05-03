@@ -26,13 +26,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void SetStaticDefaults()
         {
-            if(CIServerConfig.Instance.CustomShimmer == true) //微光嬗变config启用时，将会使原灾的血杯与这一速杀版本的血神核心微光相互转化
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<TracersSeraph>()] = ModContent.ItemType<FasterAuricTracers>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<FasterAuricTracers>()] = ModContent.ItemType<TracersSeraph>();
-            }
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(280, 12f, 3f);
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TracersSeraph>(false);
         }
 
         public override void SetDefaults()

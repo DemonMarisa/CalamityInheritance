@@ -166,10 +166,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<AncientDragonsBreath>(4).     //只限定为旧版本，这里是故意的。
                 AddIngredient<ChickenCannonLegacy>(4).
                 AddIngredient<DragonStaff>(4).
-                AddIngredient<YharimsCrystal>(4).
+                AddIngredient<YharimsCrystalLegendary>(4).
                 AddIngredient<YharonSonStaff>(4).
                 AddIngredient<DragonSpear>(4).
-                AddIngredient<TheFinalDawn>(4).
                 AddIngredient<YharimsGiftLegacy>(8).
                 AddIngredient<EffulgentFeather>(160).
                 AddIngredient<YharonSoulFragment>(160). //龙魂与化魂神晶用于合成这个物品时候不会被消耗

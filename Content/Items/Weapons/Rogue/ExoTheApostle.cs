@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<EclipseSpear>().
                 AddIngredient<TarragonThrowingDart>(500).
                 DisableDecraft().
-                AddIngredient<AuricBarold>(15).
+                AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
 

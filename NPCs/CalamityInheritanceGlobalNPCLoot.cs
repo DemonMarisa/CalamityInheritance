@@ -231,7 +231,7 @@ namespace CalamityInheritance.NPCs
                 }
             }
 
-            if (npc.type == ModContent.NPCType<Cataclysm>() && !CIServerConfig.Instance.CustomShimmer)
+            if (npc.type == ModContent.NPCType<Cataclysm>() )
                 npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
@@ -494,7 +494,6 @@ namespace CalamityInheritance.NPCs
                     allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NucleogenesisLegacy>()));
                     allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NanotechOld>()));
                     npcLoot.Add(allClass);
-                    if(!CIServerConfig.Instance.CustomShimmer)
                     npcLoot.Add(ModContent.ItemType<MeowthrowerLegacy>(), 4);
                     break;
                 case NPCID.TheDestroyer:

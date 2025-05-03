@@ -10,6 +10,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using System;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -25,11 +26,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
             //我要转微光bro
             ItemID.Sets.AnimatesAsSoul[Type] = false;
-            if(CIServerConfig.Instance.CustomShimmer == true) //关闭微光转化后，利维坦龙涎香正常掉落
-            {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Murasama>()] = ModContent.ItemType<MurasamaNeweffect>();
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<MurasamaNeweffect>()] = ModContent.ItemType<Murasamaold>();
-            }
+            Type.ShimmetTo<Murasamaold>();
+            CIFunction.ShimmetTo<MurasamaNeweffect>(ModContent.ItemType<Murasama>());
             Item.ResearchUnlockCount = 1;
         }
 
@@ -108,21 +106,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (player.ownedProjectileCounts[Item.shoot] > 0)
                 return false;
             return IDUnlocked(player);
-        }
-
-        public override void AddRecipes()
-        {
-
-            if(CIServerConfig.Instance.CustomShimmer == false)
-            {
-                CreateRecipe().
-                    AddIngredient<Murasamaold>().
-                    Register();
-                
-                CreateRecipe().
-                    AddIngredient<Murasama>().
-                    Register();
-            }
         }
     }
 }

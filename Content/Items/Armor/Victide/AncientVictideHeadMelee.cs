@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -47,6 +48,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
         {
             CreateRecipe().
                 AddIngredient<AncientVictideBar>(4).
+                AddIngredient<PearlShard>(4).
                 AddTile(TileID.Anvils).
                 Register();
         }

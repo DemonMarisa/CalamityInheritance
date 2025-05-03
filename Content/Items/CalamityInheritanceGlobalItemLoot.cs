@@ -71,12 +71,8 @@ namespace CalamityInheritance.Content.Items
             {
                 itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
-                if(CIServerConfig.Instance.CustomShimmer == false) 
-                {
-                    itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
-                    itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
-                //关闭微光转化后，魔君礼物与旧龙息将正常掉落
-                }
+                itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
+                itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
             }
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
@@ -86,10 +82,7 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<LeviathanBag>())
             {
-                if(CIServerConfig.Instance.CustomShimmer == false) //关闭微光转化后，利维坦龙涎香正常掉落
-                {
-                    itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
-                }
+                itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
             }
             if (item.type == ModContent.ItemType<CryogenBag>())
             {
@@ -127,46 +120,32 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<ProvidenceBag>())
             {
-                if(!CIServerConfig.Instance.CustomShimmer)
                 itemloot.Add(ModContent.ItemType<PristineFuryLegacy>(), 4);
 
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
             }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
-            {
-                //Scarlet:只有在微光关闭的时候这玩意才会正常掉落
-                if(CIServerConfig.Instance.CustomShimmer == false)
-                {
-                    itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
-                }
-            }
+                itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
 
             if (item.type == ModContent.ItemType<RavagerBag>())
             {
-
-                if(CIServerConfig.Instance.CustomShimmer == false)
-                {
-                    itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
-                }
-
+                itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
             }
             if (item.type == ModContent.ItemType<PlaguebringerGoliathBag>())
             {
-                if (!CIServerConfig.Instance.CustomShimmer)
                 itemloot.Add(ModContent.ItemType<BlightSpewerLegacy>(), 4);
             }
             if (item.type == ModContent.ItemType<HiveMindBag>())
             {
-                if (!CIServerConfig.Instance.CustomShimmer)
-                    itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
+                itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
                 //暗影之雨
                 itemloot.Add(ModContent.ItemType<ShadowdropStaff>(), 5);
             }
                 
-            if (item.type == ModContent.ItemType<SlimeGodBag>() && !CIServerConfig.Instance.CustomShimmer)
+            if (item.type == ModContent.ItemType<SlimeGodBag>())
                 itemloot.Add(ModContent.ItemType<OverloadedBlasterLegacy>(), 4);
 
-            if (item.type == ModContent.ItemType<AstrumAureusBag>() && !CIServerConfig.Instance.CustomShimmer)
+            if (item.type == ModContent.ItemType<AstrumAureusBag>())
                 itemloot.Add(ModContent.ItemType<AuroraBlazerLegacy>(), 4);
             switch (item.type)
             {
