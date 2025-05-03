@@ -120,6 +120,7 @@ namespace CalamityInheritance
         public static RecipeGroup LunicTarcer;
         public static RecipeGroup CosmicTracer;
         public static RecipeGroup EvilBar;
+        public static RecipeGroup LumiStriker;
         public override void Unload()
         {
             RecipeGroup[] Train =
@@ -167,6 +168,7 @@ namespace CalamityInheritance
                 StatisNinjaBelt,
                 LunicTarcer,
                 CosmicTracer,
+                LumiStriker,
 
                 GodSlayerBodyGroup,
                 GodSlayerLegGroup,
@@ -262,6 +264,7 @@ namespace CalamityInheritance
             EclipseFall         = SetUpTwo<EclipseSpear>                (ModContent.ItemType<EclipsesFall>());
             IceClasper          = SetUpTwo<AncientAncientIceChunk>      (ModContent.ItemType<AncientIceChunk>());
             PlantBow            = SetUpTwo<PlanteraLegendary>           (ModContent.ItemType<BlossomFlux>());
+            LumiStriker         = SetUpTwo<RealityRupture>              (ModContent.ItemType<LumiStriker>());
             DartGun             = SetUpTwoVanilia                       (ItemID.DartRifle, ItemID.DartPistol);
             Arkhalis            = SetUpTwoVanilia                       (ItemID.Arkhalis, ItemID.Terragrim);
             Wand                = SetUpTwoVanilia                       (ItemID.WandofSparking, ItemID.WandofFrosting);
@@ -368,6 +371,7 @@ namespace CalamityInheritance
             HalleysInferno.             NameHelper("AnyHalleysInferno");
             HeliumFlash.                NameHelper("AnyHeliumFlash");
             IceClasper.                 NameHelper("AnyAncientIceChunk");
+            LumiStriker.                NameHelper("AnyLumiStriker");
             MiniGun.                    NameHelper("AnyMiniGun");
             NightsRay.                  NameHelper("AnyNightsRay");
             Norfleet.                   NameHelper("AnyNorfleet");
@@ -415,14 +419,6 @@ namespace CalamityInheritance
         public static RecipeGroup SetUpTwo<T> (int showOnRecipe) where T : ModItem
         {
             return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ModContent.ItemType<T>());
-        }
-        // public static RecipeGroup SetUpGroup<T> (int showOnRecipe, int[] group) where T : ModItem
-        // {
-        //     return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, group);
-        // }
-        public static void RegisterHelper(RecipeGroup group, string groupName)
-        {
-            RecipeGroup.RegisterGroup("CIMod:" + groupName, group);
         }
     }
     public class CIRecipeGroup
@@ -478,6 +474,7 @@ namespace CalamityInheritance
         public static string TracersCelestial   => "AnyTracersCelestial".GetGroupName();
         public static string TracersElysian     => "AnyTracersElysian".GetGroupName();
         public static string DemoniteBar        => "AnyDemoniteBar".GetGroupName();
+        public static string LumiStriker        => "AnyLumiStriker".GetGroupName();
 
     }
 

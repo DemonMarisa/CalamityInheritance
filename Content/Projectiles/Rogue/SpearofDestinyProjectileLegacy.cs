@@ -5,6 +5,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
+using System.IO;
+using ReLogic.Text;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -35,7 +37,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
-
+        public override void SendExtraAI(BinaryWriter writer) => writer.Write(initialized);
+        public override void ReceiveExtraAI(BinaryReader reader) => initialized = reader.ReadBoolean();
         public override void AI()
         {
             if (!initialized)

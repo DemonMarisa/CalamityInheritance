@@ -819,6 +819,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<MiracleMatter>().
+                DisableDecraft().
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
             
@@ -829,6 +830,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EntropicClaymore>().
                 AddIngredient<StellarStriker>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
@@ -841,6 +843,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<BallisticPoisonBomb>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                DisableDecraft().
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
             
@@ -852,6 +855,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EnchantedAxe>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                DisableDecraft().
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
 
@@ -862,16 +866,19 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<ClockworkBow>().
                 AddIngredient<TheBallista>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
             
             //星火解离者
             Recipe.Create(ModContent.ItemType<Photoviscerator>()).
+                
                 AddIngredient<ElementalEruption>().
                 AddIngredient<DeadSunsWind>().
                 AddIngredient<HalleysInferno>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
@@ -882,6 +889,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<ScorchedEarth>().
                 AddIngredient(ItemID.ElectrosphereLauncher).
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
@@ -892,6 +900,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EventHorizon>().
                 AddIngredient<TearsofHeaven>().
                 AddIngredient<AncientMiracleMatter>().
+                DisableDecraft().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
@@ -903,6 +912,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
                 AddIngredient(ModContent.ItemType<UltraLiquidator>()).
                 AddIngredient(ModContent.ItemType<MiracleMatter>()).
+                DisableDecraft().
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
                 Register();
 
@@ -911,6 +921,7 @@ namespace CalamityInheritance.Content.Items
                 AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
                 AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
                 AddIngredient(ModContent.ItemType<UltraLiquidator>()).
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(ModContent.TileType<DraedonsForgeTiles>()).
@@ -922,6 +933,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 Register();
@@ -929,6 +941,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ModContent.ItemType<IridescentExcalibur>()).
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient<Orderbringer>().
+                DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 AddIngredient<AshesofAnnihilation>(5).
@@ -945,71 +958,83 @@ namespace CalamityInheritance.Content.Items
                 //庇护之刃
                 Recipe.Create(ModContent.ItemType<AegisBlade>()).
                     AddRecipeGroup(CIRecipeGroup.LoreGolem).
+                DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
                 //海爵剑
                 Recipe.Create(ModContent.ItemType<BrinyBaron> ()).
                     AddRecipeGroup(CIRecipeGroup.LoreDuke).
+                DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
                 //宙寒弹刃
                 Recipe.Create(ModContent.ItemType<CosmicDischarge> ()).
                     AddRecipeGroup(CIRecipeGroup.LoreDevourerofGods).
+                    DisableDecraft().
                     AddTile(ModContent.TileType<CosmicAnvil>()).
                     Register();
                 
                 //叶流
                 Recipe.Create(ModContent.ItemType<BlossomFlux> ()).
                     AddRecipeGroup(CIRecipeGroup.LorePlant).
+                    DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
                 //纯原
                 Recipe.Create(ModContent.ItemType<PristineFury>()).
                     AddRecipeGroup(CIRecipeGroup.LoreProvidence).
+                    DisableDecraft().
                     AddTile(TileID.LunarCraftingStation).
                     Register();
 
                 //海灼
                 Recipe.Create(ModContent.ItemType<SeasSearing>()).
                     AddRecipeGroup(CIRecipeGroup.LoreAS).
+                    DisableDecraft().
                     AddTile(TileID.Anvils).
                     Register();
 
                 //维苏威阿斯
                 Recipe.Create(ModContent.ItemType<Vesuvius>()).
                     AddRecipeGroup(CIRecipeGroup.LoreRavager).
+                    DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
                 //魔君水晶
                 Recipe.Create(ModContent.ItemType<YharimsCrystal>()).
                     AddRecipeGroup(CIRecipeGroup.LoreYharon).
+                    DisableDecraft().
                     AddTile(ModContent.TileType<CosmicAnvil>()).
                     Register();
                 
                 //冰寒神性
                 Recipe.Create(ModContent.ItemType<GlacialEmbrace> ()).
                     AddRecipeGroup(CIRecipeGroup.LoreCryo).
+                    DisableDecraft().
                     AddTile(TileID.Anvils).
                     Register();
 
                 //狮源流星
                 Recipe.Create(ModContent.ItemType<LeonidProgenitor> ()).
                     AddRecipeGroup(CIRecipeGroup.LoreAA).
+                    DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
                 //孔雀翎
                 Recipe.Create(ModContent.ItemType<Malachite>()).
                     AddRecipeGroup(CIRecipeGroup.LorePBG).
+                    DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
                 //归一
                 Recipe.Create(ModContent.ItemType<TheCommunity>()).
                     AddRecipeGroup(CIRecipeGroup.LoreLevi).
+                    DisableDecraft().
                     AddTile(TileID.MythrilAnvil).
                     Register();
 
@@ -1046,9 +1071,9 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             Recipe.Create(ModContent.ItemType<TracersSeraph>()).
-                AddIngredient<TracersElysian>().
+                AddRecipeGroup(CIRecipeGroup.TracersElysian).
                 AddIngredient<DrewsWings>().
-                AddIngredient<AuricBar>(5).
+                AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
                 Register();
 
@@ -1268,7 +1293,7 @@ namespace CalamityInheritance.Content.Items
 
                 
 
-            Recipe.Create(ModContent.ItemType<TheOracle> ()).
+            Recipe.Create(ModContent.ItemType<TheOracle>()).
                 AddIngredient<BurningRevelation>().
                 AddIngredient<TheObliterator>().
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
@@ -1282,7 +1307,7 @@ namespace CalamityInheritance.Content.Items
                 AddTile<CosmicAnvil>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<VoidVortex> ()).
+            Recipe.Create(ModContent.ItemType<VoidVortex>()).
                 AddIngredient<VoltaicClimax>().
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile<CosmicAnvil>().

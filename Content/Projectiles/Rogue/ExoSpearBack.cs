@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System;
 using CalamityMod;
 using CalamityInheritance.Content.Items;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public bool ProducedAcceleration = false;
 
-        public int Time = 0;
+        public ref float Time => ref Projectile.ai[0];
         public override void SetDefaults()
         {
             Projectile.width = 24;
@@ -31,7 +32,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.timeLeft = 35;
             Projectile.tileCollide = false;
         }
-
+        public override void SendExtraAI(BinaryWriter writer) => writer.Write(ProducedAcceleration);
+        public override void ReceiveExtraAI(BinaryReader reader) => ProducedAcceleration = reader.ReadBoolean();
         public override void AI()
         {
             Time++;

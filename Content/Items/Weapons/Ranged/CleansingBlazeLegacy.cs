@@ -1,7 +1,9 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<CleansingBlaze>();
         }
         public override void SetDefaults()
         {

@@ -1,3 +1,4 @@
+using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -46,7 +47,22 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.timeLeft = 180;
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+			Projectile.DoSyncHandlerWrite(ref writer);
+			writer.Write(timer);
+			writer.Write(distance);
+			writer.Write(foundTarget);
+			writer.Write(firstTick);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+			Projectile.DoSyncHandlerRead(ref reader);
+			timer = reader.ReadInt32();
+			distance = reader.ReadInt32();
+			foundTarget = reader.ReadBoolean();
+            firstTick = reader.ReadBoolean();
+        }
         public override void AI()
         {
             Projectile.CalamityInheritance().PingReducedNanoFlare = true;

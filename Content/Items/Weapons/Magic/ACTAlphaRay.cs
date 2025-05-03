@@ -13,6 +13,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -23,6 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<AlphaRayLegacy>(false);
         }
 
 

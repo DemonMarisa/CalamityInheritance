@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
@@ -17,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<BloodBoiler>();
         }
         public override void SetDefaults()
         {

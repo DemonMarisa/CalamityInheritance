@@ -351,16 +351,33 @@ ShadowdropStaff: {
 }
 
 ACTGenisis: {
-	DisplayName: A C T Genisis
-	Tooltip: ""
+	DisplayName: Genisis Calamity Anormalis
+	Tooltip:
+		'''
+		Launch an alpha laser towards
+		[c/DB53A0:A special gift from the past...]
+		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
+		'''
 }
 
 ACTWingman: {
-	DisplayName: A C T Wingman
-	Tooltip: ""
+	DisplayName: Wingman Calamity Anormalis
+	Tooltip:
+		'''
+		Deploy a floating drone following your cursor and launch an alpha laser towards.
+		[c/DB53A0:A special gift from the past...]
+		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
+		'''
 }
 
 ACTAlphaRay: {
-	DisplayName: A C T Alpha Ray
-	Tooltip: ""
+	DisplayName: Alpha Ray Calamity Anormalis
+	Tooltip:
+		'''
+		Launch an alpha laser towards
+		Deploy double floating drones directly lock on nearest target and launch alpha lasers
+		Hold Right Click to recall and secure them.
+		[c/DB53A0:A special gift from the past...]
+		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
+		'''
 }

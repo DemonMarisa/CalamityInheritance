@@ -233,6 +233,8 @@ namespace CalamityInheritance.NPCs
 
             if (npc.type == ModContent.NPCType<Cataclysm>() )
                 npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
+            if (npc.type == ModContent.NPCType<Catastrophe>())
+                npcLoot.Add(ModContent.ItemType<BrimstoneFlameblaster>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
@@ -412,7 +414,6 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AntlionBow>(), 50, 33));
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MandibleClaws>(), 50, 33));
                     break;
-                //哥布林战士掉战刀
                 case NPCID.GoblinWarrior:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Warblade>(), 25, 20));
                     break;

@@ -30,9 +30,9 @@ namespace CalamityInheritance.NPCs
             }
             if (type == ModContent.NPCType<FAP>())
             {
-                shop.AddWithCustomValue(ModContent.ItemType<DoGNonStop>(), Item.buyPrice(gold: 10), CalamityConditions.DownedDevourerOfGods);
-                shop.AddWithCustomValue(ModContent.ItemType<TyrantPart1>(), Item.buyPrice(gold: 10), CalamityConditions.DownedYharon);
-                shop.AddWithCustomValue(ModContent.ItemType<RequiemsOfACruelWorld>(), Item.buyPrice(gold: 10), CalamityConditions.DownedExoMechs);
+                shop.AddWithCustomValue(ModContent.ItemType<DoGNonStop>(), Item.buyPrice(gold: 50), CalamityConditions.DownedDevourerOfGods);
+                shop.AddWithCustomValue(ModContent.ItemType<TyrantPart1>(), Item.buyPrice(gold: 50), CalamityConditions.DownedYharon);
+                shop.AddWithCustomValue(ModContent.ItemType<RequiemsOfACruelWorld>(), Item.buyPrice(gold: 50), CalamityConditions.DownedExoMechs);
             }
             if (type == NPCID.ArmsDealer)
             {

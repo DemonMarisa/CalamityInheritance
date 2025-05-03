@@ -5,11 +5,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -105,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, setVel * 2.4f, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, setVel * 1.0f, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.15) , 0f, projectile.owner);
                                 //确保这个东西指定为全局伤害
                                 Main.projectile[p].DamageType = DamageClass.Generic;
                                 Main.projectile[p].alpha = 255;

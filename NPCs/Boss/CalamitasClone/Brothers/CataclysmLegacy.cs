@@ -1,5 +1,6 @@
 using System.IO;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -390,6 +391,10 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
         {
             DeathAshParticle.CreateAshesFromNPC(NPC);
             CalamityNetcode.SyncWorld();
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
         }
         #endregion
     }

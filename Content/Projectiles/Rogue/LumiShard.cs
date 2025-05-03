@@ -9,6 +9,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -33,6 +34,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = false;
         }
         public override bool? CanHitNPC(NPC target) => target.CanBeChasedBy(Projectile, false);
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(canGrav);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            canGrav = reader.ReadBoolean();
+        }
         public override void AI()
         {
             if (Projectile.ai[0] == 0f && Projectile.velocity.X == 0f && Projectile.velocity.Y == 0f)

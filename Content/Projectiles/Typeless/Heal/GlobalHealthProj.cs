@@ -1,10 +1,7 @@
-using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod.Dusts;
-using CalamityMod.UI;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal

@@ -246,12 +246,12 @@ DrataliornusLegacy: {
 }
 
 ACTMinigun: {
-	DisplayName: Kingsbane Algt's Tweak
+	DisplayName: Kingsbane Calamitas Anormalis
 	Tooltip:
 		'''
 		Shoots a streams of homing auric bullet
 		[c/DB53A0:A glimsp of the old days...]
-		[c/DB53A0:This tweak is belong to legacy addon: Calamity Anormalis by Algt]
+		[c/DB53A0:This tweak is belong to legacy addon: Calamity Anormalis]
 		'''
 }
 

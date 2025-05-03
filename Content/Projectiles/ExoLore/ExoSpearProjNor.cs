@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -43,7 +45,24 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 16;
 		}
-
+		public override void SendExtraAI(BinaryWriter writer)
+        {
+			Projectile.DoSyncHandlerWrite(ref writer);
+			writer.Write(penetrates);
+			writer.Write(teleportticks);
+			writer.Write(phase);
+			writer.Write(splits);
+			writer.Write(increment);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+			Projectile.DoSyncHandlerRead(ref reader);
+			increment = reader.ReadInt32();
+			teleportticks = reader.ReadInt32();
+			phase = reader.ReadInt32();
+			increment = reader.ReadInt32();
+			splits = reader.ReadInt32();
+        }
 		public void Explode(float StartAngle, int Streams, float ProjSpeed)
 		{
 			if (Projectile.owner == Main.myPlayer)

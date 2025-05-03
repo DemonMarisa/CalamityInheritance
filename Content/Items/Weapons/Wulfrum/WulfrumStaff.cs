@@ -11,6 +11,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {

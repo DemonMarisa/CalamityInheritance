@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using Microsoft.Build.Evaluation;
 using CalamityInheritance.Content.Items;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -20,7 +21,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private static readonly int Lifetime = 360;
         private static readonly float canHomingCounter = 65f;
         private readonly float stealthSpeed = 27f;
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(addFlares);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            addFlares = reader.ReadInt32();
+        }
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

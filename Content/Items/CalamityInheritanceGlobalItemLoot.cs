@@ -121,7 +121,6 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<ProvidenceBag>())
             {
                 itemloot.Add(ModContent.ItemType<PristineFuryLegacy>(), 4);
-
                 itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
             }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())

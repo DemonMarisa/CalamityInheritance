@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Typeless;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -18,6 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WingmanLegacy>();
         }
         public override void SetDefaults()
         {

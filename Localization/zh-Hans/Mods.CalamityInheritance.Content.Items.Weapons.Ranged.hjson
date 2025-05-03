@@ -431,7 +431,6 @@ AntlionBow: {
 PlanteraLegendary: {
 	Tooltip:
 		'''
-		远古的翻译版本
 		发射如水流般密集的叶之箭
 		右键发射会散发毒云的孢子球
 		会随着游戏流程的推进得到强化
@@ -441,7 +440,7 @@ PlanteraLegendary: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	DisplayName: 甲乙木皇茂林叶帝弓[Legendary]
+	DisplayName: 叶流[Legendary]
 	TierOne: "[c/00CB67:强化]:增强叶之箭与孢子球攻击速度与飞行速度"
 	TierTwo: "[c/00CB67:强化]:增加叶之箭与孢子球的发射数量"
 	TierThree: "[c/00CB67:强化]:叶之箭50%概率发起追踪, 孢子球必定跟踪"
@@ -469,7 +468,7 @@ NorfleetLegacy: {
 }
 
 ACTKarasawa: {
-	DisplayName: 卡拉萨瓦重炮[Algt's Tweak]
+	DisplayName: 卡拉萨瓦重炮[Calamity Anormalis]
 	Tooltip:
 		'''
 		按住左键为炮弹蓄能

@@ -1,18 +1,12 @@
-﻿using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Items.Materials;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -21,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<GenisisLegacy>(false);
         }
         public override void SetDefaults()
         {

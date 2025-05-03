@@ -8,6 +8,8 @@ using Terraria.ModLoader;
 using CalamityMod;
 using Terraria.Audio;
 using CalamityInheritance.Content.Items;
+using System.IO;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -36,6 +38,25 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(Time);
+            writer.Write(penetrates);
+            writer.Write(phase);
+            writer.Write(splits);
+            writer.Write(increment);
+            writer.Write(hitCount);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            Time = reader.ReadInt32();
+            increment = reader.ReadInt32();
+            hitCount = reader.ReadInt32();
+            phase = reader.ReadInt32();
+            penetrates = reader.ReadInt32();
         }
         public override void SetDefaults()
         {

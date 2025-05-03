@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod;
+using System.IO;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -43,6 +45,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.timeLeft = 180;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(foundTarget);
+            writer.Write(timer);
+            writer.Write(firstTick);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            foundTarget = reader.ReadBoolean();
+            timer = reader.ReadInt32();
+            firstTick = reader.ReadBoolean();
         }
 
         public override void AI()

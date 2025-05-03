@@ -1,22 +1,11 @@
-﻿using CalamityInheritance.Content.BaseClass;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.System.Configs;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityInheritance.Utilities.CIFunction;
-using static tModPorter.ProgressUpdate;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {

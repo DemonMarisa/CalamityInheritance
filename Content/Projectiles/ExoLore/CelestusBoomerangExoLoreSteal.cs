@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Projectiles.Rogue;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -63,7 +64,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(counter);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            counter = reader.ReadInt32();
+            
+        }
         public override void AI()
         {
             DoGeneral();
@@ -197,6 +208,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 AttackType = IsReturning;
                 AttackTimer = 0f;
                 Projectile.netUpdate = true;
+            }
+            else
+            {
+                SpawnExtraProj();
             }
         }
 

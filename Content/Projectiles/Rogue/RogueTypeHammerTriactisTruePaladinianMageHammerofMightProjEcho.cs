@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using CalamityInheritance.Content.Items;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -25,7 +26,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
         public override void SetDefaults()
         {
             Projectile.width = 160;
