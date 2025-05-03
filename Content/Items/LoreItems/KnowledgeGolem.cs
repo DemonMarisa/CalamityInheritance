@@ -33,9 +33,9 @@ public class KnowledgeGolem : LoreItem, ILocalizedModType
                 AddIngredient(ItemID.GolemTrophy).
                 AddTile(TileID.Bookcases).
                 Register();
-        CreateRecipe().
-            AddIngredient<LoreGolem>().
-            AddTile(TileID.Bookcases).
-            Register();
+            CreateRecipe().
+                AddIngredient<LoreGolem>().
+                AddTile(TileID.Bookcases).
+                Register();
     }
     }

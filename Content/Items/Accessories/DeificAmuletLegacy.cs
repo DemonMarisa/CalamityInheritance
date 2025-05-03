@@ -18,8 +18,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 26;
             Item.height = 26;
-            Item.rare = ItemRarityID.Cyan;
-            Item.value = CIShopValue.RarityPriceCyan;
+            Item.rare = ItemRarityID.LightRed;
+            Item.value = CIShopValue.RarityPriceLightRed;
             Item.accessory = true;
         }
 

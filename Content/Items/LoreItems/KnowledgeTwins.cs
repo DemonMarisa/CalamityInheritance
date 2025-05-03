@@ -31,13 +31,11 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.RetinazerTrophy).
+                AddRecipeGroup(CIRecipeGroup.TrophyTwin).
+                DisableDecraft().
                 AddTile(TileID.Bookcases).
                 Register();
-            CreateRecipe().
-                AddIngredient(ItemID.SpazmatismTrophy).
-                AddTile(TileID.Bookcases).
-                Register();
+
             CreateRecipe().
                 AddIngredient<LoreTwins>().
                 AddTile(TileID.Bookcases).

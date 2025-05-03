@@ -38,9 +38,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LorePerforators>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LorePerforators>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

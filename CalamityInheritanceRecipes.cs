@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Diagnostics;
+using System.Linq;
 using System.Text.RegularExpressions;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
@@ -10,6 +11,7 @@ using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Placeables.Relic;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
@@ -32,6 +34,7 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Projectiles.Magic;
+using Steamworks;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -104,6 +107,7 @@ namespace CalamityInheritance
         public static RecipeGroup LoreAA;
         public static RecipeGroup LoreAS;
         public static RecipeGroup LoreLevi;
+        public static RecipeGroup LorePostSCal;
 
         public static RecipeGroup EclipseFall;
         public static RecipeGroup IceClasper;
@@ -121,6 +125,13 @@ namespace CalamityInheritance
         public static RecipeGroup CosmicTracer;
         public static RecipeGroup EvilBar;
         public static RecipeGroup LumiStriker;
+        public static RecipeGroup LoreSentinal;
+        public static RecipeGroup TrophySentinal;
+        public static RecipeGroup TwinTrophy;
+        public static RecipeGroup LeviTrophy;
+        public static RecipeGroup MechTrophy;
+        public static RecipeGroup SCalTrophy;
+
         public override void Unload()
         {
             RecipeGroup[] Train =
@@ -169,6 +180,11 @@ namespace CalamityInheritance
                 LunicTarcer,
                 CosmicTracer,
                 LumiStriker,
+                TrophySentinal,
+                TwinTrophy,
+                LeviTrophy,
+                MechTrophy,
+                SCalTrophy,
 
                 GodSlayerBodyGroup,
                 GodSlayerLegGroup,
@@ -201,7 +217,9 @@ namespace CalamityInheritance
                 LoreRavager,
                 LorePBG,
                 LoreAS,
-                LoreLevi
+                LoreLevi,
+                LoreSentinal,
+                LorePostSCal
             ];
             for (int i = 0; i < Train.Length; i++)
                 Train[i] = null;
@@ -220,9 +238,15 @@ namespace CalamityInheritance
             ExoTropyGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<AresTrophy>())}",
                                             ModContent.ItemType<ThanatosTrophy>(), ModContent.ItemType<ApolloTrophy>(),
                                             ModContent.ItemType<ArtemisTrophy>(), ModContent.ItemType<AresTrophy>());
-
+            TrophySentinal = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<WeaverTrophy>())}",
+                                            ModContent.ItemType<SignusTrophy>(), ModContent.ItemType<WeaverTrophy>(), ModContent.ItemType<CeaselessVoidTrophy>());
+            MechTrophy = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.SkeletronPrimeTrophy)}",
+                                            ItemID.RetinazerTrophy, ItemID.DestroyerTrophy, ItemID.SpazmatismTrophy, ItemID.SkeletronPrimeTrophy);
             //邪恶锭
             EvilBar = SetUpTwoVanilia (ItemID.DemoniteBar, ItemID.CrimtaneBar);
+            TwinTrophy = SetUpTwoVanilia (ItemID.RetinazerTrophy, ItemID.SpazmatismTrophy);
+            LeviTrophy = SetUpTwo<LeviathanTrophy>(ModContent.ItemType<AnahitaTrophy>());
+            SCalTrophy = SetUpTwo<ScalTrophy>(ModContent.ItemType<SupremeCalamitasTrophy>());
             #endregion
 
             #region 新旧弑神
@@ -309,6 +333,9 @@ namespace CalamityInheritance
             LoreAS      = SetUpTwo<KnowledgeAquaticScourge>     (ModContent.ItemType<LoreAquaticScourge>());
             LoreLevi    = SetUpTwo<KnowledgeLeviathanAnahita>   (ModContent.ItemType<LoreLeviathanAnahita>());
             LorePBG     = SetUpTwo<KnowledgePlaguebringerGoliath>(ModContent.ItemType<LorePlaguebringerGoliath>());
+            LoreSentinal = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<LoreStormWeaver>())}",
+                                            ModContent.ItemType<LoreSignus>(), ModContent.ItemType<LoreStormWeaver>(), ModContent.ItemType<LoreCeaselessVoid>());
+            LorePostSCal= SetUpTwo<LoreCynosure>                (ModContent.ItemType<LoreCalamitas>());
             #endregion
 
             #region 其它组
@@ -341,7 +368,11 @@ namespace CalamityInheritance
             StatisNinjaBelt.            NameHelper("AnyStatisNinjaBelt");
             LunicTarcer.                NameHelper("AnyTracersCelestial");
             CosmicTracer.               NameHelper("AnyTracersElysian");
-
+            TrophySentinal.             NameHelper("AnyTrophySentinal");
+            TwinTrophy.                 NameHelper("AnyTwinTrophy");
+            LeviTrophy.                 NameHelper("AnyLeviTrophy");
+            MechTrophy.                 NameHelper("AnyMechTrophy");
+            SCalTrophy.                 NameHelper("AnySCalTrophy");
             #region 新旧弑神
             GodSlayerBodyGroup.         NameHelper("AnyGodSlayerBody");
             GodSlayerLegGroup.          NameHelper("AnyGodSlayerLeg");
@@ -410,6 +441,8 @@ namespace CalamityInheritance
             LoreRavager.                NameHelper("AnyLoreRavager");
             LoreAS.                     NameHelper("AnyLoreAquaticScourge");
             LoreLevi.                   NameHelper("AnyLoreLeviathanAnahita");
+            LoreSentinal.               NameHelper("AnyLoreSentinal");
+            LorePostSCal.               NameHelper("AnyLorePostSCal");
             #endregion
         }
         public static RecipeGroup SetUpTwoVanilia (int showOnRecipe, int another)
@@ -458,6 +491,7 @@ namespace CalamityInheritance
         public static string LorePBG            => "AnyLorePlaguebringerGoliath".GetGroupName();
         public static string LoreAS             => "AnyLoreAquaticScourge".GetGroupName();
         public static string LoreLevi           => "AnyLoreLeviathanAnahita".GetGroupName();
+        public static string LorePostSCal       => "AnyLorePostSCal".GetGroupName();
         #endregion
         public static string EclipsesFall       => "AnyEclipsesFall".GetGroupName();
         public static string AncientIceChunk    => "AnyAncientIceChunk".GetGroupName();
@@ -475,6 +509,12 @@ namespace CalamityInheritance
         public static string TracersElysian     => "AnyTracersElysian".GetGroupName();
         public static string DemoniteBar        => "AnyDemoniteBar".GetGroupName();
         public static string LumiStriker        => "AnyLumiStriker".GetGroupName();
+        public static string LoreSentinal       => "AnyLoreSentinal".GetGroupName();
+        public static string TrophySentinal     => "AnyTrophySentinal".GetGroupName();
+        public static string TrophyTwin         => "AnyTwinTrophy".GetGroupName();
+        public static string TrophyLevi         => "AnyLeviTrophy".GetGroupName();
+        public static string TrophyMechs        => "AnyMechTrophy".GetGroupName();
+        public static string SCalTrophy         => "AnySCalTrophy".GetGroupName();
 
     }
 

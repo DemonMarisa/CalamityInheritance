@@ -35,9 +35,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreQueenBee>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreQueenBee>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }
