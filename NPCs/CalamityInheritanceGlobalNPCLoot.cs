@@ -26,8 +26,10 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.Configs;
@@ -112,6 +114,8 @@ namespace CalamityInheritance.NPCs
 
             if (npc.type == ModContent.NPCType<EutrophicRay>())
                 npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);
+            if (npc.type == ModContent.NPCType<IceClasper>())
+                npcLoot.Add(ModContent.ItemType<AncientAncientIceChunk>(), 3);
 
             LeadingConditionRule postPolter = npcLoot.DefineConditionalDropSet(DropHelper.PostPolter());
 
@@ -365,7 +369,6 @@ namespace CalamityInheritance.NPCs
                 bool lastTwinStanding = IsLastTwinStanding(info);
                 return !NPC.downedMechBossAny && (lastTwinStanding || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime);
             }
-
             switch (npc.type)
             {
                 #region NPC
@@ -395,6 +398,32 @@ namespace CalamityInheritance.NPCs
                     break;
                 case NPCID.DarkCaster:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientShiv>(),25,15));
+                    break;
+                //礼物宝箱怪掉节日矛
+                case NPCID.PresentMimic:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<HolidayHalberd>(), 7, 5));
+                    break;
+                //蚁狮掉弓和爪子
+                case NPCID.Antlion:
+                case NPCID.FlyingAntlion:
+                case NPCID.WalkingAntlion:
+                case NPCID.GiantWalkingAntlion:
+                case NPCID.GiantFlyingAntlion:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AntlionBow>(), 50, 33));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MandibleClaws>(), 50, 33));
+                    break;
+                //哥布林战士掉战刀
+                case NPCID.GoblinWarrior:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Warblade>(), 25, 20));
+                    break;
+                //骷髅掉战斧
+                case NPCID.Skeleton:
+                case NPCID.ArmoredSkeleton:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Waraxe>(), 20, 15));
+                    break;
+                //符文法师掉马格努斯眼
+                case NPCID.RuneWizard:
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagnusEye>(), 10));
                     break;
                 #endregion
 

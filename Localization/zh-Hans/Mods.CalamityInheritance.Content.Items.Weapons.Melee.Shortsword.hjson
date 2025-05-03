@@ -149,6 +149,6 @@ TrueNightsStabber: {
 }
 
 HeartRapier: {
-	// DisplayName: Heart Rapier
-	// Tooltip: ""
+	DisplayName: 心之刺剑[Legacy]
+	Tooltip: 击中敌人恢复生命值
 }

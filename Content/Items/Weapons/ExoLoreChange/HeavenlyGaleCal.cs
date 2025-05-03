@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             //刚出的版本 355
             // 现在是800，用于对抗数据膨胀終灾
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+            if (player.CheckExoLore())
                 damage.Base = 355;
             base.ModifyWeaponDamage(item, player, ref damage);
         }

@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 
             var CIPlayer = player.CIMod();
 
-            if (CIPlayer.LoreExo || CIPlayer.PanelsLoreExo)
+            if (player.CheckExoLore())
             {
                 item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
                 item.useAnimation = item.useTime = 67;

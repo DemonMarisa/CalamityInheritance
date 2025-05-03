@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             // 以下，用于比较复杂的计算
-            int boostPercent = (int)(LegendaryDamage() * 100);
+            int boostPercent = (int)((LegendaryDamage() + Generic.GenericLegendBuff()) * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
             newDamage += DownedBossSystem.downedYharon ? 1.0f : 0f;
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
-            newDamage += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
+            newDamage += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
             return 1f + newDamage;
 
         }
@@ -181,11 +181,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 {
                     for ( ; j < 2; j++)
                     {
-                        float pPosX = player.Center.X+ Main.rand.NextFloat(-200f, 201f);
-                        float pPosY = player.Center.Y + Main.rand.NextFloat(670f, 1080f);
+                        float pPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
+                        float pPosY = Main.MouseWorld.Y + Main.rand.NextFloat(670f, 1080f);
                         Vector2 newPos = new (pPosX, pPosY);
                         //速度
-                        Vector2 spd= Main.MouseWorld - newPos;
+                        Vector2 spd = Main.MouseWorld - newPos;
                         //水平速度随机度
                         spd.X += Main.rand.NextFloat(-15f, 16f);
                         float pSpeed = 24f;

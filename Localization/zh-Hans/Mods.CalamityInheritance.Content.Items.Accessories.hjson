@@ -392,18 +392,18 @@ DraedonsHeartLegacy: {
 }
 
 ShrineForest: {
-	// DisplayName: Shrine Forest
-	/* Tooltip:
+	DisplayName: 气功念珠[Legacy]
+	Tooltip:
 		'''
-		Standing still for 2 seconds to gain a buff	
-		50% increased damage, 15% increased damage reduction when being actived
-		The buff deactivated if you move or attack once
-		''' */
+		保持1秒站立不动并不攻击会获得一个增益
+		这个增益增加你50%的伤害和15%伤害减免
+		当你攻击或移动时增益会消失 
+		'''
 }
 
 ShrineMarble: {
-	// DisplayName: Shrine Marble
-	// Tooltip: Summons two sword spirits to protect you
+	DisplayName: 角斗士金锁[Legacy]
+	Tooltip: 召唤两把剑灵来保护你
 }
 
 ShrineMarnite: {
@@ -412,10 +412,10 @@ ShrineMarnite: {
 }
 
 ShrineMushroom: {
-	// DisplayName: Shrine Mushroom
-	/* Tooltip:
+	DisplayName: 真菌共生体[Legacy]
+	Tooltip:
 		'''
-		True melee weapons emit mushrooms when swung
-		25% increased true melee damage
-		''' */
+		近战武器的剑身在挥动时会发射蘑菇
+		真近战攻击造成15%额外伤害 
+		'''
 }

@@ -139,58 +139,58 @@ SilvaPrice: {
 }
 
 PolarisBuffLegacy: {
-	DisplayName: Polaris Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.PolarisBuffLegacy.Description
+	DisplayName: Polaris Boost Legacy
+	Description: Increased life regen speed
 }
 
 SonYharonBuff: {
-	DisplayName: Son Yharon Buff
-	Description: Mods.CalamityInheritance.Buffs.SonYharonBuff.Description
+	DisplayName: Son of Yharon
+	Description: The fiery...chicken will protect you
 }
 
 WarCleave: {
-	Description: Mods.CalamityInheritance.Buffs.WarCleave.Description
+	Description: Broke armor
 	DisplayName: War Cleave
 }
 
 ShrineForestBuff: {
-	DisplayName: Shrine Forest Buff
-	Description: Mods.CalamityInheritance.Buffs.ShrineForestBuff.Description
+	DisplayName: Chi
+	Description: You are more resilient
 }
 
 SMarbleSwordBuff: {
-	DisplayName: S Marble Sword Buff
-	Description: Mods.CalamityInheritance.Buffs.SMarbleSwordBuff.Description
+	DisplayName: Sword Spirit
+	Description: The gladiator swords will protect you
 }
 
 DefenderBuff: {
-	DisplayName: Defender Buff
-	Description: Mods.CalamityInheritance.Buffs.DefenderBuff.Description
+	DisplayName: Shelter
+	Description: The armor stands unyielding...
 }
 
 DukeBuff: {
-	DisplayName: Duke Buff
-	Description: Mods.CalamityInheritance.Buffs.DukeBuff.Description
+	DisplayName: Gift from duke
+	Description: It seems that the Duke is igniting all your melee stats...
 }
 
 PBGBuff: {
 	DisplayName: Protection of Malatchie
-	Description: Mods.CalamityInheritance.Buffs.PBGBuff.Description
+	Description: Heavliy protected you from being damaged... for a long time
 }
 
 AbyssalFlames: {
 	DisplayName: Abyssal Flames
-	Description: Mods.CalamityInheritance.Buffs.AbyssalFlames.Description
+	Description: Your soul is burning
 }
 
 Horror: {
 	DisplayName: Horror
-	Description: Mods.CalamityInheritance.Buffs.Horror.Description
+	Description: The horror, you do will not like it
 }
 
 VulnerabilityHexLegacy: {
 	DisplayName: Vulnerability Hex Legacy
-	Description: Mods.CalamityInheritance.Buffs.VulnerabilityHexLegacy.Description
+	Description: Your mental fortitude is fading
 }
 
 CyrogenLegendaryBuff: {
@@ -200,17 +200,17 @@ CyrogenLegendaryBuff: {
 
 CryoDrain: {
 	DisplayName: Cryo Drain
-	Description: Mods.CalamityInheritance.Buffs.CryoDrain.Description
+	Description: Seems like ice barrier to be draining the victims' heat...
 }
 
 VolcanoBuff: {
-	Description: Mods.CalamityInheritance.Buffs.VolcanoBuff.Description
+	Description: Increased life regen speed and damage
 	DisplayName: Volcano Eruption
 }
 
 AncientClasperBuff: {
-	DisplayName: Ancient Clasper Buff
-	Description: Mods.CalamityInheritance.Buffs.AncientClasperBuff.Description
+	DisplayName: Ancient Ice Clasper
+	Description: The ice clasper will protect you
 }
 
 MaliceModeCold: {

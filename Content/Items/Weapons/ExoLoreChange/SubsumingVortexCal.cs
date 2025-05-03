@@ -6,22 +6,16 @@ using CalamityMod.Projectiles.Magic;
 using System.Collections.Generic;
 using Terraria.Localization;
 using Terraria.DataStructures;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Terraria.Audio;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection;
-using rail;
 using CalamityInheritance.Texture;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using Terraria.ID;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

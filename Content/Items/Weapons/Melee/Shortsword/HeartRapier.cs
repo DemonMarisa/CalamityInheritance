@@ -27,11 +27,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 5f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<HeartRapierProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;
             Item.value = CIShopValue.RarityPriceOrange;
+            Item.rare = ItemRarityID.Orange;
             Item.noUseGraphic = true;
         }
         public override bool MeleePrefix() => true;

@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
-            float getDmg = LegendaryDamage();
+            float getDmg = LegendaryDamage() + Generic.GenericLegendBuff();
             int boostPercent = (int)(getDmg * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
@@ -111,7 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
             damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
             //恭喜击败至尊灾厄眼，所以。500%?
-            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
+            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
             return damageBuff;
         }
 

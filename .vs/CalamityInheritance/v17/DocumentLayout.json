@@ -66,15 +66,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -84,14 +80,10 @@
               "RelativeDocumentMoniker": "Content\\Items\\Weapons\\ExoLoreChange\\PhotovisceratorCal.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\ExoLoreChange\\PhotovisceratorCal.cs",
               "RelativeToolTip": "Content\\Items\\Weapons\\ExoLoreChange\\PhotovisceratorCal.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAowCsAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwDgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-03T03:48:03.753Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -116,7 +108,8 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Melee\\Mariana.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAIwCEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:32:02.763Z"
+              "WhenOpened": "2025-05-02T18:32:02.763Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -128,7 +121,8 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Melee\\MarniteSpear.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:31:43.808Z"
+              "WhenOpened": "2025-05-02T18:31:43.808Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -140,7 +134,8 @@
               "RelativeToolTip": "Content\\Projectiles\\Rogue\\LumiStrikerProj.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAUwHIAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:20:44.243Z"
+              "WhenOpened": "2025-05-02T18:20:44.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -152,19 +147,21 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Rogue\\LumiStriker.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:20:41.074Z"
+              "WhenOpened": "2025-05-02T18:20:41.074Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Test.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Test.cs",
-              "RelativeDocumentMoniker": "Content\\Items\\Test.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Test.cs",
-              "RelativeToolTip": "Content\\Items\\Test.cs",
+              "Title": "test.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\test.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\test.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\test.cs",
+              "RelativeToolTip": "Content\\Items\\test.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:17:50.611Z"
+              "WhenOpened": "2025-05-02T18:17:50.611Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -176,7 +173,8 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Melee\\Terracotta.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAnwCEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:14:44.469Z"
+              "WhenOpened": "2025-05-02T18:14:44.469Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -188,7 +186,8 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Melee\\Spear\\HolidayHalberd.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAvwCAAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:14:39.094Z"
+              "WhenOpened": "2025-05-02T18:14:39.094Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -200,7 +199,8 @@
               "RelativeToolTip": "Content\\Projectiles\\Melee\\Spear\\RedDust.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:14:26.679Z"
+              "WhenOpened": "2025-05-02T18:14:26.679Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -212,7 +212,8 @@
               "RelativeToolTip": "Content\\Projectiles\\Melee\\Spear\\RedBall.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAvwDUAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:14:18.967Z"
+              "WhenOpened": "2025-05-02T18:14:18.967Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -224,7 +225,8 @@
               "RelativeToolTip": "Content\\Projectiles\\Melee\\Spear\\GreenDust.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAlwEgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:14:13.498Z"
+              "WhenOpened": "2025-05-02T18:14:13.498Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -236,7 +238,8 @@
               "RelativeToolTip": "Content\\Projectiles\\Melee\\Spear\\GreenBall.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAvwDEAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:13:53.877Z"
+              "WhenOpened": "2025-05-02T18:13:53.877Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -248,31 +251,8 @@
               "RelativeToolTip": "Content\\Items\\Weapons\\Melee\\Crimsaber.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAvwGMAAACtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T18:05:31.219Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1370,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1422,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2025-05-02T18:05:31.219Z",
+              "EditorCaption": ""
             }
           ]
         }

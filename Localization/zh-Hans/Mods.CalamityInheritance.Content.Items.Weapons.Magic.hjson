@@ -367,13 +367,13 @@ YharimsCrystalLegendary: {
 		[EXO]
 		[SCAL]
 		'''
-	ExoTint: "[c/4169E1:强化]：光束造成2局部无敌帧，并在击中敌人时呼叫星流彗星支援"
+	ExoTint: "[c/4169E1:强化]：光束造成2局部无敌帧"
 	NoExoTint: "[c/818589:击败阿瑞斯]"
-	ScalTint: "[c/4169E1:强化]：膨胀魔力消耗，但获得1000%伤害倍率加成，击中敌人时将会呼叫探魂眼支援你"
+	ScalTint: "[c/4169E1:强化]：膨胀魔力消耗，但获得1000%伤害倍率加成"
 	NoScalTint: "[c/818589:击败至尊灾厄]"
 }
 
 ShadowdropStaff: {
-	// DisplayName: Shadowdrop Staff
-	// Tooltip: ""
+	DisplayName: 暗影之雨[Legacy]
+	Tooltip: 召唤暗影雨从天而降
 }

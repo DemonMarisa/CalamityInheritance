@@ -3,6 +3,7 @@ NucleogenesisLegacy: {
 	Tooltip:
 		'''
 		增加4格最大仆从栏位，该效果会与其下位合成材料叠加
+		增加1哨兵栏，40%鞭子距离
 		使你免疫暗影焰和辐射减益
 		增加15%召唤伤害
 		增加仆从击退
@@ -12,11 +13,11 @@ NucleogenesisLegacy: {
 }
 
 DoubleSonYharon: {
-	/* Tooltip:
+	Tooltip:
 		'''
-		Loyalty
-		Summons two Sons of Yharon to fight for you
-		+2 HP/s life regen speed, 5 defense and 10% increased movement speed
-		''' */
-	// DisplayName: Auric Soul Artifact Legacy
+		忠诚
+		生成两个犽戎之子为你而战
+		+2 HP/s 生命再生，10% 移动速度
+		'''
+	DisplayName: Auric Soul Artifact Legacy
 }

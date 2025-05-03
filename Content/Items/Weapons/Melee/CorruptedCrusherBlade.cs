@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6.75f;
-            Item.value = CalamityGlobalItem.Rarity2BuyPrice;
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

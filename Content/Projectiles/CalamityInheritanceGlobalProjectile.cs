@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingReducedNanoFlare = false;
         public int PingBeamMagic = -1;
         public bool PingAsSplit = false;
-        public bool PingPointerT3 = false;
+        public bool PingWhipStrike = false;
         public int StoreEU = -1;
         // 1帧影响
         public bool oneFrameEffect = false;

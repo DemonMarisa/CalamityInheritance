@@ -57,7 +57,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             {
                 int s = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AtomProjRework>(), damage, knockback, player.whoAmI, -1f);
                 Main.projectile[s].Calamity().stealthStrike = stealth;
-                
             }
             else
             {

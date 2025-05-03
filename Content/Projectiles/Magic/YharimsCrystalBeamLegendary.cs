@@ -217,13 +217,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Player player = Main.player[Projectile.owner];
             var usPlayer = player.CIMod();
             var src = Projectile.GetSource_FromThis();
+            //只留终灾的
             if (usPlayer.GlobalFireDelay == 0)
             {
-                if (usPlayer.YharimsKilledExo)
-                    DoExoUpgrade(target, src);
+                // if (usPlayer.YharimsKilledExo)
+                //     DoExoUpgrade(target, src);
                 if (usPlayer.YharimsKilledScal)
                     DoScalUpgrade(target, src);
-                    DoDragonUpgrade(target, src);
+                    // DoDragonUpgrade(target, src);
             }
         }
 

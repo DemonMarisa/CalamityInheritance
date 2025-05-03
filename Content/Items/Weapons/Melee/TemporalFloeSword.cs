@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 60;
-            Item.value = Item.buyPrice(0, 80, 0, 0);
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<TemporalFloeSwordProjectile>();
             Item.shootSpeed = 16f;
@@ -47,12 +47,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<CryonicBar>(), 15);
-            recipe.AddIngredient(ModContent.ItemType<SeaPrism>(), 15);
-            recipe.AddIngredient(ItemID.Ectoplasm, 5);
-            recipe.AddTile(TileID.IceMachine);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient<CryonicBar>(15)
+                .AddIngredient<SeaPrism>(15)
+                .AddIngredient(ItemID.Ectoplasm, 5)
+                .AddTile(TileID.IceMachine)
+                .Register();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)

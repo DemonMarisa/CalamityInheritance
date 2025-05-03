@@ -488,13 +488,13 @@ ChainWeaponChange:
 	'''
 
 CursedCapper: {
-	// DisplayName: Cursed Capper
-	// Tooltip: ""
+	DisplayName: 咒炎手枪[Legacy]
+	Tooltip: 发射诅咒子弹
 }
 
 Dualpoon: {
-	// DisplayName: Dualpoon
-	// Tooltip: ""
+	DisplayName: 双叉枪[Legacy]
+	Tooltip: 发射两支鱼叉
 }
 
 MandibleBow: {
@@ -503,6 +503,6 @@ MandibleBow: {
 }
 
 MarniteBayonet: {
-	// DisplayName: Marnite Bayonet
-	// Tooltip: ""
+	DisplayName: 花岗岩刺枪[Legacy]
+	Tooltip: 这把枪会伤害接触它的敌人
 }

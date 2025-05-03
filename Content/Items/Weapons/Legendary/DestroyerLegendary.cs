@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
-            int boostPercent = LegendaryBuff();
+            int boostPercent = LegendaryBuff() + Generic.GenericLegendBuffInt();
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -81,27 +81,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
+                Item.useTime = Item.useAnimation = 6;
                 Item.UseSound = CommonCalamitySounds.LaserCannonSound;
             }
             else
             {
+                Item.useTime = Item.useAnimation = 30;
                 Item.UseSound = SoundID.Item92;
             }
             return base.CanUseItem(player);
         }
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
         {
-            if (player.altFunctionUse == 2)
-                mult *= player.CIMod().DestroyerTier3 ? 0.01f : 0.3f;
+            mult *= player.CIMod().DestroyerTier3 ? 0f : 0.3f;
         }
 
-        public override float UseSpeedMultiplier(Player player)
-        {
-            if (player.altFunctionUse == 2)
-                return 1f;
-
-            return 1 / 7.14f;
-        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-15, 0);
@@ -174,7 +168,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedCalamitas ? 70 : 0;       //450
             dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;        //520
             dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 480 : 0; //1000
-            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 1000 : 0;
+            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 500: 0;
             return dmgBuff;
         }
     }

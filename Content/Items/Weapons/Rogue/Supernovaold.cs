@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 34;
             Item.height = 36;
-            Item.damage = 2100;
+            Item.damage = 3100;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 24;

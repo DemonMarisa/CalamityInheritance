@@ -119,7 +119,7 @@ namespace CalamityInheritance.CIPlayer
             //T3孔雀翎: 攻击时将在接下来的15秒内提供buff，这个buff将会使你有1/10概率彻底无敌3秒
             if (target.life > 5 && hit.Damage > 50 && GlobalLegendaryT3CD == 0)
             {
-                Player.AddBuff(ModContent.BuffType<PBGBuff>(), 300);
+                Player.AddBuff(ModContent.BuffType<PBGBuff>(), 600);
                 //给予45秒的CD
                 GlobalLegendaryT3CD = 900;
             }

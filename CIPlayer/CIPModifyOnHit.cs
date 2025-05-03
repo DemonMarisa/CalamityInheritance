@@ -91,7 +91,7 @@ namespace CalamityInheritance.CIPlayer
                 int dmg = proj.damage / 9;
                 if (target.HasBuff(ModContent.BuffType<CryoDrain>()))
                     dmg += proj.damage / 9;
-                if (proj.CalamityInheritance().PingPointerT3)
+                if (proj.CalamityInheritance().PingWhipStrike)
                     dmg /= 2;
                 modifiers.FinalDamage += dmg;
             }

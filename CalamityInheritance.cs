@@ -98,7 +98,7 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
-            FlightBarDrawHook.Load();
+            // FlightBarDrawHook.Load();
             DropHelperHook.Load(this);
             #endregion
         }

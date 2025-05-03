@@ -96,11 +96,11 @@ SaveCosmic:
 	'''
 
 AncientAncientIceChunk: {
-	DisplayName: Ancient Ancient Ice Chunk
-	Tooltip: ""
+	DisplayName: Ancient Ice Chunk Legacy
+	Tooltip: Summons an ice clasper to fight for you
 }
 
 BloodClotStaff: {
 	DisplayName: Blood Clot Staff
-	Tooltip: ""
+	Tooltip: Summons a blood clot to fight for you
 }

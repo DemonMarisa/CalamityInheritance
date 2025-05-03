@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
-            float getdmg = LegendaryDamage();
+            float getdmg = LegendaryDamage() + Generic.GenericLegendBuff();
             int boostPercent = (int)(getdmg * 100);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()

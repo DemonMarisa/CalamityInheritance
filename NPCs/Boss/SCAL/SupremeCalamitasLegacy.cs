@@ -282,11 +282,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 NPC.buffImmune[k] = true;
             }
-            //补一个其取消无视凳子和失温虹吸的效果
-            //梯凳驾到不免疫是理所当然，失温虹吸是因为召唤师寒冰神性真的过弱
-            //但是会给失温虹吸一个特判
+            //梯凳驾到不免疫是理所当然
             NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
-            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
+            //移除低温虹吸特判。因为寒冰神性已经够强了
             NPC.buffImmune[BuffID.OnFire3] = false;
             NPC.buffImmune[BuffID.OnFire] = false;
 

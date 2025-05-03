@@ -1,10 +1,4 @@
 ﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -28,7 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.DamageType = RogueDamageClass.Instance;
+            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.penetrate = -1;
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;

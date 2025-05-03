@@ -4,13 +4,13 @@ AuricBarold: {
 }
 
 NebulaBar: {
-	DisplayName: Nebular Bar
+	DisplayName: Meld Bar
 	Tooltip: ""
 }
 
 CalamitousEssence: {
 	DisplayName: Calamitous Essence
-	Tooltip: ""
+	Tooltip: The smoldering essence of the Witch's wrath
 }
 
 AncientMiracleMatter: {

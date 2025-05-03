@@ -490,12 +490,14 @@ ExoBladeChange:
 	'''
 
 ACTExcelsus: {
-	DisplayName: Excelsus Algt's Calamity Tweaks
+	DisplayName: Excelsus Calamity Anormalis
 	Tooltip:
 		'''
 		Toss out a main rotating blade along with two secondary rotating blade
 		Homing in on enemy upon flying a certain distance
 		Main rotating blade will attack its target for several times
+		[c/DB53A0:A special gift from the past...]
+		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
 		'''
 }
 
@@ -512,27 +514,27 @@ ChainsawCal:
 
 AncientCrusher: {
 	DisplayName: Ancient Crusher
-	Tooltip: ""
+	Tooltip: Summons fossil spikes on enemy hits
 }
 
 CorruptedCrusherBlade: {
 	DisplayName: Corrupted Crusher Blade
-	Tooltip: ""
+	Tooltip: Inflicts cursed inferno and critical hits reduce enemy defense by 10
 }
 
 Crimsaber: {
 	DisplayName: Crimsaber
-	Tooltip: ""
+	Tooltip: A sword fused with the blood of the gods
 }
 
 CrimsonCrusherBlade: {
 	DisplayName: Crimson Crusher Blade
-	Tooltip: ""
+	Tooltip: Inflicts ichor and critical hits lower enemy contact damage
 }
 
 CrystalBlade: {
 	DisplayName: Crystal Blade
-	Tooltip: ""
+	Tooltip: Fires slow-moving clouds of crystal dust
 }
 
 MandibleClaws: {
@@ -542,25 +544,43 @@ MandibleClaws: {
 
 Mariana: {
 	DisplayName: Mariana
-	Tooltip: ""
+	Tooltip:
+		'''
+		Tropical and deadly
+		Enemies explode into water orbs on hit
+		'''
 }
 
 HolidayHalberd: {
 	DisplayName: Holiday Halberd
-	Tooltip: ""
+	Tooltip:
+		'''
+		idk I'm miserable with names
+		- The General
+		Fires red and green bouncing gift bags that emit clouds as they travel
+		'''
 }
 
 TemporalFloeSword: {
 	DisplayName: Temporal Floe Sword
-	Tooltip: ""
+	Tooltip:
+		'''
+		The iceman cometh...
+		Fires a frozen sword beam that splits into two more beams
+		The direction of the beams depends on in game time
+		'''
 }
 
 Terracotta: {
-	DisplayName: Terracotta
-	Tooltip: ""
+	DisplayName: Terra-Cotta
+	Tooltip:
+		'''
+		Causes enemies to erupt into healing projectiles on death
+		Enemies explode on hit
+		'''
 }
 
 Waraxe: {
-	DisplayName: Waraxe
-	Tooltip: ""
+	DisplayName: War axe
+	Tooltip: Critical hits cleave enemy armor, reducing their defense by 15 and protection by 25%
 }
