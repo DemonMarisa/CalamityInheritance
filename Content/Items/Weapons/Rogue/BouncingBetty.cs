@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.width = 16;
             Item.height = 22;
             Item.maxStack = 999;
-            Item.value = Item.buyPrice(0, 0, 4, 0);
+            Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<BouncingBettyProjectile>();
             Item.shootSpeed = 16f;

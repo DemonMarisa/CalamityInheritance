@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.maxStack = 999;
-            Item.value = Item.buyPrice(0, 0, 3, 0);
+            Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<LatcherMineProjectile>();
             Item.shootSpeed = 10f;

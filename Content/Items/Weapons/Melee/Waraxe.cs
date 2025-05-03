@@ -31,7 +31,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 40;
             Item.useTurn = true;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.value = Item.buyPrice(0, 1, 0, 0);
+            Item.value = CIShopValue.RarityPriceGreen;
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }

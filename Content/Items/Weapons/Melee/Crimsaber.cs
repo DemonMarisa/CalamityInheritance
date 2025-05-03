@@ -27,10 +27,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useTime = 35;
             Item.useAnimation = 25;
             Item.useTurn = true;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 7;
-            Item.value = Item.buyPrice(0, 36, 0, 0);
-            Item.rare = 5;
+            Item.value = CIShopValue.RarityPricePink;
+            Item.rare = ItemRarityID.Pink;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shootSpeed = 8f;
@@ -38,12 +38,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.CrimtaneBar, 20);
-            recipe.AddIngredient(ItemID.SoulofNight, 5);
-            recipe.AddIngredient(ItemID.Ichor, 5);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ItemID.CrimtaneBar, 20)
+                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.Ichor, 5)
+                .AddTile(TileID.DemonAltar)
+                .Register();
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
