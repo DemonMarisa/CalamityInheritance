@@ -43,21 +43,21 @@ namespace CalamityInheritance
     public class CalamityInheritanceRecipes : ModSystem
     {
         // A place to store the recipe group so we can easily use it later
-        public static RecipeGroup ElementalRayGroup;
-        public static RecipeGroup PhantasmalFuryGroup;
-        public static RecipeGroup HeliumFlashGroup;
+        public static RecipeGroup ElementalRay;
+        public static RecipeGroup PhantasmalFury;
+        public static RecipeGroup HeliumFlash;
         public static RecipeGroup WoodSwordRecipeGroup;
         public static RecipeGroup ExoTropyGroup;
-        public static RecipeGroup CosmicShivGroup; 
-        public static RecipeGroup DAmuletGroup;
+        public static RecipeGroup CosmicShiv; 
+        public static RecipeGroup DeificAmulet;
 
-        public static RecipeGroup PhantasmalRuinGroup;
-        public static RecipeGroup TerratomereGroup;
-        public static RecipeGroup ElementalShivGroup;
-        public static RecipeGroup TerraRayGroup;
-        public static RecipeGroup NightsRayGroup;
-        public static RecipeGroup MiniGunGroup;
-        public static RecipeGroup P90Group;
+        public static RecipeGroup PhantasmalRuin;
+        public static RecipeGroup Terratomere;
+        public static RecipeGroup ElementalShiv;
+        public static RecipeGroup TerraRay;
+        public static RecipeGroup NightsRay;
+        public static RecipeGroup MiniGun;
+        public static RecipeGroup P90;
 
         public static RecipeGroup GodSlayerBodyGroup;
         public static RecipeGroup GodSlayerLegGroup;
@@ -105,7 +105,7 @@ namespace CalamityInheritance
         public static RecipeGroup LoreAS;
         public static RecipeGroup LoreLevi;
 
-        public static RecipeGroup ESpear;
+        public static RecipeGroup EclipseFall;
         public static RecipeGroup IceClasper;
         public static RecipeGroup Wand;
         public static RecipeGroup GoldBottle;
@@ -125,22 +125,22 @@ namespace CalamityInheritance
             RecipeGroup[] Train =
             [
                 EvilBar,
-                ElementalRayGroup,
-                HeliumFlashGroup,
+                ElementalRay,
+                HeliumFlash,
                 WoodSwordRecipeGroup,
                 ExoTropyGroup,
-                CosmicShivGroup,
-                DAmuletGroup,
+                CosmicShiv,
+                DeificAmulet,
                 AmbrosialAmpoule,
                 ElysianAegis,
                 AsgardsValor,
-                PhantasmalFuryGroup,
-                TerratomereGroup,
-                ElementalShivGroup,
-                TerraRayGroup,
-                NightsRayGroup,
-                MiniGunGroup,
-                P90Group,
+                PhantasmalFury,
+                Terratomere,
+                ElementalShiv,
+                TerraRay,
+                NightsRay,
+                MiniGun,
+                P90,
                 Norfleet,
                 Excelsus,
                 Eradicator,
@@ -153,7 +153,7 @@ namespace CalamityInheritance
                 CleansingBlaze,
                 HalleysInferno,
                 BloodBoiler,
-                ESpear,
+                EclipseFall,
                 IceClasper,
                 Wand,
                 GoldBottle,
@@ -239,42 +239,42 @@ namespace CalamityInheritance
             #endregion
 
             #region 武器组
-            ElementalRayGroup   = SetUpTwo<ElementalRayold>     (ModContent.ItemType<ElementalRay>());
-            HeliumFlashGroup    = SetUpTwo<HeliumFlashLegacy>   (ModContent.ItemType<HeliumFlash>());
-            PhantasmalRuinGroup = SetUpTwo<PhantasmalRuin>      (ModContent.ItemType<PhantasmalRuinold>());
-            PhantasmalFuryGroup = SetUpTwo<PhantasmalFuryOld>   (ModContent.ItemType<PhantasmalFury>());
-            CosmicShivGroup     = SetUpTwo<CosmicShivold>       (ModContent.ItemType<CosmicShiv>());
-            TerratomereGroup    = SetUpTwo<Terratomere>         (ModContent.ItemType<TerratomereOld>());
-            ElementalShivGroup  = SetUpTwo<ElementalShiv>       (ModContent.ItemType<ElementalShivold>());
-            TerraRayGroup       = SetUpTwo<Photosynthesis>      (ModContent.ItemType<TerraRay>());
-            NightsRayGroup      = SetUpTwo<NightsRay>           (ModContent.ItemType<NightsRayold>());
-            MiniGunGroup        = SetUpTwo<Kingsbane>           (ModContent.ItemType<Minigun>());
-            P90Group            = SetUpTwo<P90>                 (ModContent.ItemType<P90Legacy>());
-            Norfleet            = SetUpTwo<Norfleet>            (ModContent.ItemType<NorfleetLegacy>());
-            Excelsus            = SetUpTwo<ACTExcelsus>         (ModContent.ItemType<Excelsus>());
-            Eradicator          = SetUpTwo<MeleeTypeEradicator> (ModContent.ItemType<Eradicator>());
-            ClockworkBow        = SetUpTwo<ClockBowLegacy>      (ModContent.ItemType<ClockworkBow>());
-            Phangasm            = SetUpTwo<PhangasmOS>          (ModContent.ItemType<Phangasm>());
-            ElementalEruption   = SetUpTwo<ElementalEruption>   (ModContent.ItemType<ElementalEruptionLegacy>());
-            CleansingBlaze      = SetUpTwo<CleansingBlaze>      (ModContent.ItemType<CleansingBlazeLegacy>());
-            HalleysInferno      = SetUpTwo<HalleysInferno>      (ModContent.ItemType<HalleysInfernoLegacy>());
-            BloodBoiler         = SetUpTwo<BloodBoiler>         (ModContent.ItemType<BloodBoilerLegacy>());
-            ESpear              = SetUpTwo<EclipsesFall>        (ModContent.ItemType<EclipseSpear>());
-            IceClasper          = SetUpTwo<AncientIceChunk>     (ModContent.ItemType<AncientAncientIceChunk>());
-            PlantBow            = SetUpTwo<PlanteraLegendary>   (ModContent.ItemType<BlossomFlux>());
-            DartGun             = SetUpTwoVanilia               (ItemID.DartRifle, ItemID.DartPistol);
-            Arkhalis            = SetUpTwoVanilia               (ItemID.Arkhalis, ItemID.Terragrim);
-            Wand                = SetUpTwoVanilia               (ItemID.WandofSparking, ItemID.WandofFrosting);
-            TerraBlade          = SetUpTwoVanilia               (ItemID.TerraBlade, ModContent.ItemType<TerraEdge>());
+            ElementalRay        = SetUpTwo<ElementalRayold>             (ModContent.ItemType<ElementalRay>());
+            HeliumFlash         = SetUpTwo<HeliumFlashLegacy>           (ModContent.ItemType<HeliumFlash>());
+            PhantasmalRuin      = SetUpTwo<PhantasmalRuin>              (ModContent.ItemType<PhantasmalRuinold>());
+            PhantasmalFury      = SetUpTwo<PhantasmalFuryOld>           (ModContent.ItemType<PhantasmalFury>());
+            CosmicShiv          = SetUpTwo<CosmicShivold>               (ModContent.ItemType<CosmicShiv>());
+            Terratomere         = SetUpTwo<TerratomereOld>              (ModContent.ItemType<Terratomere>());
+            ElementalShiv       = SetUpTwo<ElementalShivold>            (ModContent.ItemType<ElementalShiv>());
+            TerraRay            = SetUpTwo<Photosynthesis>              (ModContent.ItemType<TerraRay>());
+            NightsRay           = SetUpTwo<NightsRayold>                (ModContent.ItemType<NightsRay>());
+            MiniGun             = SetUpTwo<Kingsbane>                   (ModContent.ItemType<Minigun>());
+            P90                 = SetUpTwo<P90Legacy>                   (ModContent.ItemType<P90>());
+            Norfleet            = SetUpTwo<NorfleetLegacy>              (ModContent.ItemType<Norfleet>());
+            Excelsus            = SetUpTwo<ACTExcelsus>                 (ModContent.ItemType<Excelsus>());
+            Eradicator          = SetUpTwo<MeleeTypeEradicator>         (ModContent.ItemType<Eradicator>());
+            ClockworkBow        = SetUpTwo<ClockBowLegacy>              (ModContent.ItemType<ClockworkBow>());
+            Phangasm            = SetUpTwo<PhangasmOS>                  (ModContent.ItemType<Phangasm>());
+            ElementalEruption   = SetUpTwo<ElementalEruptionLegacy>     (ModContent.ItemType<ElementalEruption>());
+            CleansingBlaze      = SetUpTwo<CleansingBlazeLegacy>        (ModContent.ItemType<CleansingBlaze>());
+            HalleysInferno      = SetUpTwo<HalleysInfernoLegacy>        (ModContent.ItemType<HalleysInferno>());
+            BloodBoiler         = SetUpTwo<BloodBoilerLegacy>           (ModContent.ItemType<BloodBoiler>());
+            EclipseFall         = SetUpTwo<EclipseSpear>                (ModContent.ItemType<EclipsesFall>());
+            IceClasper          = SetUpTwo<AncientAncientIceChunk>      (ModContent.ItemType<AncientIceChunk>());
+            PlantBow            = SetUpTwo<PlanteraLegendary>           (ModContent.ItemType<BlossomFlux>());
+            DartGun             = SetUpTwoVanilia                       (ItemID.DartRifle, ItemID.DartPistol);
+            Arkhalis            = SetUpTwoVanilia                       (ItemID.Arkhalis, ItemID.Terragrim);
+            Wand                = SetUpTwoVanilia                       (ItemID.WandofSparking, ItemID.WandofFrosting);
+            TerraBlade          = SetUpTwoVanilia                       (ItemID.TerraBlade, ModContent.ItemType<TerraEdge>());
             //旧龙系列
-            DragonCannon        = SetUpTwo<ChickenCannon>       (ModContent.ItemType<ChickenCannonLegacy>());
-            DragonGift          = SetUpTwo<YharimsGift>         (ModContent.ItemType<YharimsGiftLegacy>());
-            DragonGun           = SetUpTwo<DragonsBreathold>    (ModContent.ItemType<AncientDragonsBreath>());
-            DragonSky           = SetUpTwo<TheBurningSky>       (ModContent.ItemType<BurningSkyLegacy>());
-            DragonSpear         = SetUpTwo<Wrathwing>           (ModContent.ItemType<DragonSpear>());
-            DragonStaff         = SetUpTwo<PhoenixFlameBarrage> (ModContent.ItemType<DragonStaff>());
-            DragonSummon        = SetUpTwo<YharonsKindleStaff>  (ModContent.ItemType<DoubleSonYharon>());
-            DragonSword         = SetUpTwo<DragonRage>          (ModContent.ItemType<DragonSword>());
+            DragonCannon        = SetUpTwo<ChickenCannonLegacy>         (ModContent.ItemType<ChickenCannon>());
+            DragonGift          = SetUpTwo<YharimsGiftLegacy>           (ModContent.ItemType<YharimsGift>());
+            DragonGun           = SetUpTwo<AncientDragonsBreath>        (ModContent.ItemType<DragonsBreathold>());
+            DragonSky           = SetUpTwo<BurningSkyLegacy>            (ModContent.ItemType<TheBurningSky>());
+            DragonSpear         = SetUpTwo<Wrathwing>                   (ModContent.ItemType<DragonSpear>());
+            DragonStaff         = SetUpTwo<DragonStaff>                 (ModContent.ItemType<PhoenixFlameBarrage>());
+            DragonSummon        = SetUpTwo<DoubleSonYharon>             (ModContent.ItemType<YharonsKindleStaff>());
+            DragonSword         = SetUpTwo<DragonSword>                 (ModContent.ItemType<DragonRage>());
             #endregion
 
             #region 饰品
@@ -282,7 +282,7 @@ namespace CalamityInheritance
             AsgardsValor    = SetUpTwo<AsgardsValorold>         (ModContent.ItemType<AsgardsValor>());
             GoldBottle      = SetUpTwo<AmbrosialAmpouleOld>     (ModContent.ItemType<AmbrosialAmpoule>());
             Arcanum         = SetUpTwo<AstralArcanum>           (ModContent.ItemType<InfectedJewel>());
-            DAmuletGroup    = SetUpTwo<DeificAmuletLegacy>      (ModContent.ItemType<DeificAmulet>());
+            DeificAmulet    = SetUpTwo<DeificAmuletLegacy>      (ModContent.ItemType<DeificAmulet>());
             T2RangedAcc     = SetUpTwo<DeadshotBrooch>          (ModContent.ItemType<DaedalusEmblem>());
             EvilFlask       = SetUpTwo<CrimsonFlask>            (ModContent.ItemType<CorruptFlask>());
             BloodPact       = SetUpTwo<BloodPactLegacy>         (ModContent.ItemType<BloodPact>());
@@ -315,8 +315,8 @@ namespace CalamityInheritance
             EvilBar.                    NameHelper("AnyDemoniteBar");
             WoodSwordRecipeGroup.       NameHelper("AnyWoodenSword");
             ExoTropyGroup.              NameHelper("AnyExoTropy");
-            CosmicShivGroup.            NameHelper("AnyCosmicShiv");
-            DAmuletGroup.               NameHelper("AnyDeificAmulet");
+            CosmicShiv.                 NameHelper("AnyCosmicShiv");
+            DeificAmulet.               NameHelper("AnyDeificAmulet");
             Arkhalis.                   NameHelper("AnyArkhalis");
             #endregion
             //饰品
@@ -360,24 +360,24 @@ namespace CalamityInheritance
             ClockworkBow.               NameHelper("AnyClockworkBow");
             DartGun.                    NameHelper("AnyDartGun");
             ElementalEruption.          NameHelper("AnyElementalEruption");
-            ElementalRayGroup.          NameHelper("AnyElementalRay");
-            ElementalShivGroup.         NameHelper("AnyElementalShiv");
+            ElementalRay.          NameHelper("AnyElementalRay");
+            ElementalShiv.         NameHelper("AnyElementalShiv");
             Eradicator.                 NameHelper("AnyEradicator");
-            ESpear.                     NameHelper("AnyEclipsesFall");
+            EclipseFall.                     NameHelper("AnyEclipsesFall");
             Excelsus.                   NameHelper("AnyExcelsus");
             HalleysInferno.             NameHelper("AnyHalleysInferno");
-            HeliumFlashGroup.           NameHelper("AnyHeliumFlash");
+            HeliumFlash.           NameHelper("AnyHeliumFlash");
             IceClasper.                 NameHelper("AnyAncientIceChunk");
-            MiniGunGroup.               NameHelper("AnyMiniGun");
-            NightsRayGroup.             NameHelper("AnyNightsRay");
+            MiniGun.               NameHelper("AnyMiniGun");
+            NightsRay.             NameHelper("AnyNightsRay");
             Norfleet.                   NameHelper("AnyNorfleet");
-            P90Group.                   NameHelper("AnyP90");
+            P90.                   NameHelper("AnyP90");
             PlantBow.                   NameHelper("AnyBlossomFlux");
-            PhantasmalFuryGroup.        NameHelper("AnyPhantasmalFury");
-            PhantasmalRuinGroup.        NameHelper("AnyPhantasmalRuin");
+            PhantasmalFury.        NameHelper("AnyPhantasmalFury");
+            PhantasmalRuin.        NameHelper("AnyPhantasmalRuin");
             Phangasm.                   NameHelper("AnyPhangasm");
-            TerraRayGroup.              NameHelper("AnyTerraRay");
-            TerratomereGroup.           NameHelper("AnyTerratomere");
+            TerraRay.              NameHelper("AnyTerraRay");
+            Terratomere.           NameHelper("AnyTerratomere");
             TerraBlade.                 NameHelper("AnyTerraBlade");
             Wand.                       NameHelper("AnyWand");
             #endregion
