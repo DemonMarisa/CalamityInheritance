@@ -36,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerPwnageLegacyProj>();
             Item.shootSpeed = 12f;
-            Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
+            Item.value = CIShopValue.RarityPriceLightRed;
+            Item.rare = ItemRarityID.LightRed;
             Item.autoReuse = true;
         }
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 24  ;

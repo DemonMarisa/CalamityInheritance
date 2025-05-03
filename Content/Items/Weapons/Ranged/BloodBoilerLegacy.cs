@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = ModContent.RarityType<BlueGreen>();
             Item.shootSpeed = 12f;
             Item.shoot = ModContent.ProjectileType<BloodBoilerFireLegacy>();
         }

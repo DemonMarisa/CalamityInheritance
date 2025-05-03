@@ -264,6 +264,7 @@ namespace CalamityInheritance.NPCs
                 bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
                 npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<ConclaveCrossfire>(), 10);
                 if (Main.zenithWorld)
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<FourSeasonsGalaxiaold>(), 1, 1));
             }
@@ -393,6 +394,7 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpearofDestinyLegacy>(), 200, 100));
                     break;
                 case NPCID.VortexRifleman:
+                    //我能问个问题吗，为啥交叉集火是星璇小怪掉的？
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ConclaveCrossfire>(), 100, 50));
                     break;
                 case NPCID.SeaSnail:

@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7f;
-            Item.value = CalamityGlobalItem.RarityRedBuyPrice;
+            Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ItemRarityID.Red;
             Item.autoReuse = true;
             Item.shootSpeed = 22f;

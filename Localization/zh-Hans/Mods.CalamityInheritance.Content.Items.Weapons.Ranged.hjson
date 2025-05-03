@@ -459,6 +459,7 @@ HeavenlyGaleChange:
 PhotovisceratorChange:
 	'''
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]
+	[c/4169E1:void] [c/FFFFE0:CrystalSupport][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:部署两个星流棱晶，自动锁定距离最近的敌怪];
 	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:右键攻击的射弹在飞行过程中会滞留追踪的星流碎片];
 	'''
 

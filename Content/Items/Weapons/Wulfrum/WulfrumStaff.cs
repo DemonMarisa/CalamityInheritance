@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3;
-            Item.value = Item.buyPrice(0, 1, 0, 0);
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;

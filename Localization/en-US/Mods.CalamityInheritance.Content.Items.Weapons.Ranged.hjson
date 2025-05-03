@@ -446,7 +446,12 @@ HeavenlyGaleChange:
 	[c/4169E1:Override] [c/4169E1:void] [c/FFFFE0:LighteningStrikeReset][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased speed of exo lighting]
 	[c/4169E1:void] [c/FFFFE0:ModifyFireAmt][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Increased numbers of crystal arrows fired];
 	'''
-PhotovisceratorChange: ""
+PhotovisceratorChange:
+	'''
+	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
+	[c/4169E1:void] [c/FFFFE0:CrystalSupport][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Deploy two floating crystal that fire exo flares]
+	[c/4169E1:void] [c/FFFFE0:ModifyRightClick][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Released exo crystal shards on right click projectile travelling];
+	'''
 
 NorfleetLegacy: {
 	DisplayName: Norfleet Legacy

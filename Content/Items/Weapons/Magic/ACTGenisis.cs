@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -30,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 1.5f;
             Item.value = CIShopValue.RarityPricePurple;
-            Item.rare = ItemRarityID.Purple;
+            Item.rare =  CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<AlgtPink>(): ItemRarityID.Purple;
             Item.UseSound = CISoundMenu.GenisisFire;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;

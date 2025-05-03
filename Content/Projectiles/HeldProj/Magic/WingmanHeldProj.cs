@@ -28,7 +28,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float WeaponRotation => 0;
         // 旋转速度
         public override float AimResponsiveness => 0.15f;
-        // public override string TexturePath => "Magic/WingmanLegacy";
         public Player Owner => Main.player[Projectile.owner];
         public bool firstFrame = false;
         public override void SetDefaults()

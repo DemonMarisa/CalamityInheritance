@@ -35,9 +35,6 @@ namespace CalamityInheritance.Content.BaseClass
         /// </summary>
         public virtual float AimResponsiveness { get; }
         //你小子jb给手持射弹创个新图片都不愿意用路径是吧
-        public virtual string TexturePath{ get; }
-        public override string Texture => $"{Generic.WeaponPath}/" + TexturePath;
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;

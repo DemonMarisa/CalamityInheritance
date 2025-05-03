@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 28;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2.25f;
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;

@@ -122,7 +122,7 @@
 		<None Remove="Content\Items\Potions\PenumbraPotion.png" />
 		<None Remove="Content\Items\Potions\RevivifyPotion.png" />
 		<None Remove="Content\Items\Potions\ShatteringPotion.png" />
-		<None Remove="Content\Items\test.png" />
+		<None Remove="Content\Items\Test.png" />
 		<None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
 		<None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
 		<None Remove="Content\Items\Weapons\ExoGladius.png" />
@@ -334,7 +334,7 @@
 		<None Remove="Content\Items\Potions\PenumbraPotion.png" />
 		<None Remove="Content\Items\Potions\RevivifyPotion.png" />
 		<None Remove="Content\Items\Potions\ShatteringPotion.png" />
-		<None Remove="Content\Items\test.png" />
+		<None Remove="Content\Items\Test.png" />
 		<None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
 		<None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
 		<None Remove="Content\Items\Weapons\ExoGladius.png" />
@@ -546,7 +546,7 @@
 	  <None Remove="Content\Items\Potions\PenumbraPotion.png" />
 	  <None Remove="Content\Items\Potions\RevivifyPotion.png" />
 	  <None Remove="Content\Items\Potions\ShatteringPotion.png" />
-	  <None Remove="Content\Items\test.png" />
+	  <None Remove="Content\Items\Test.png" />
 	  <None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius.png" />
@@ -758,7 +758,7 @@
 	  <None Remove="Content\Items\Potions\PenumbraPotion.png" />
 	  <None Remove="Content\Items\Potions\RevivifyPotion.png" />
 	  <None Remove="Content\Items\Potions\ShatteringPotion.png" />
-	  <None Remove="Content\Items\test.png" />
+	  <None Remove="Content\Items\Test.png" />
 	  <None Remove="Content\Items\Weapons\ElementalShiv - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius - 复制.png" />
 	  <None Remove="Content\Items\Weapons\ExoGladius.png" />

@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -24,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<PristineFury>();
         }
 
         public override void SetDefaults()

@@ -68,6 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 CreateRecipe()
                     .AddRecipeGroup(CIRecipeGroup.LoreGolem)
+                    .DisableDecraft()
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
             }

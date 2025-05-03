@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
         public Player Owner => Main.player[Projectile.owner];
         // 弹药消耗
         public static float AmmoNotConsumeChance = 0.95f;
-
+        public override string Texture => "CalamityInheritance/Content/Projectiles/HeldProj/CalChange/Range/PhotovisceratorWingman";
         public float leftUseCD = 30;
         public float animationProgress = 40;
         public float AnimationCD = 20;

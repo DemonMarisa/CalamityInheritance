@@ -36,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>();
             Item.shootSpeed = 12f;
-            Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
+            Item.value = CIShopValue.RarityPriceLightRed;
+            Item.rare = ItemRarityID.LightRed;
         }
         public override void AddRecipes()
         {

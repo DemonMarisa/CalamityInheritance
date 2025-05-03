@@ -30,8 +30,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 6.5f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = CIShopValue.RarityPriceLime;
-            Item.rare = ItemRarityID.Lime;
+            Item.value = CIShopValue.RarityPriceYellow;
+            Item.rare = ItemRarityID.Yellow;
             Item.useTurn = true;
         }
 

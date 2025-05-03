@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -39,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() : ModContent.RarityType<DarkBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() : ModContent.RarityType<DeepBlue>();
             Item.Calamity().donorItem = true;
             Item.shoot = ModContent.ProjectileType<ACTKarasawaHoldout>();
             Item.shootSpeed = 1f;

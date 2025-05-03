@@ -138,8 +138,8 @@ Configs: {
 		Arcueid: {
 			Tooltip:
 				'''
-				Plays -月姬- when getting close to the Plantoid if disbale Blessing of the Moon
-				Default by false
+				靠近小行星，且明月之祝福关闭时播放 -月姬-
+				默认取否
 				'''
 			Label: "[i:CalamityInheritance/Arcueid]-月姬-"
 		}
@@ -153,17 +153,17 @@ Configs: {
 			Label: "[i:CalamityInheritance/Kunoji]-久遠寺邸朝食-"
 			Tooltip:
 				'''
-				Plays -久遠寺邸朝食- during the town day.
-				Default by false
+				在城镇白天时播放-久遠寺邸朝食-
+				默认取否
 				'''
 		}
 
 		LegendaryRarity: {
-			Label: "[i:CalamityInheritance/DukeLegendary]Legendary Rarity"
+			Label: "[i:CalamityInheritance/DukeLegendary]传奇武器特殊稀有度颜色"
 			Tooltip:
 				'''
-				Give all Legendary Weapon special rarity color
-				Default by false
+				给所有传奇武器一个自定义的稀有度颜色
+				默认取否
 				'''
 		}
 
@@ -429,6 +429,31 @@ Configs: {
 			Label: "[i:CalamityMod/Exoblade]日掉原灾奇迹物质武器贴图"
 			Tooltip: 把原灾奇迹物质武器贴图全部日掉
 		}
+
+		BrinyBaronResprite: {
+			Label: "[i:CalamityInheritance/DukeLegendary]海爵剑[Legendary]贴图切换"
+			Tooltip: 切换海爵剑[Legendary]的贴图
+		}
+
+		PlantBowResprite: {
+			Label: "[i:CalamityInheritance/PlanteraLegendary]叶流[Legendary]贴图切换"
+			Tooltip: 切换叶流[Legendary]的贴图
+		}
+
+		Vesu: {
+			Label: "[i:CalamityInheritance/RavagerLegendary]维苏威阿斯[Legendary]贴图切换"
+			Tooltip: 切换维苏威阿斯[Legendary]的贴图
+		}
+
+		SHPC: {
+			Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC[Legendary]贴图切换"
+			Tooltip: 切换SHPC[Legendary]的贴图
+		}
+
+		Mala: {
+			Label: "[i:CalamityInheritance/PBGLegendary]孔雀翎[Legendary]贴图切换"
+			Tooltip: 切换孔雀翎[Legendary]的贴图
+		}
 	}
 
 	CIServerConfig: {
@@ -524,11 +549,11 @@ Configs: {
 		}
 
 		LoreDrop: {
-			Label: "[i:CalamityMod/LoreCalamitas]Lore Drop"
+			Label: "[i:CalamityMod/LoreCalamitas]禁用传颂之物掉落"
 			Tooltip:
 				'''
-				Enables to make bosses no longer drop Calamity lores but Legacy lores
-				Disbale by default
+				开启后禁用原灾传颂之物的掉落
+				默认关闭
 				'''
 		}
 	}

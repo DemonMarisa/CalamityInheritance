@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 8;
             Item.UseSound = CISoundID.SoundWeaponSwing;
-            Item.value = CIShopValue.RarityPriceCyan;
-            Item.rare = ItemRarityID.Cyan;
+            Item.value = CIShopValue.RarityPriceRed;
+            Item.rare = ItemRarityID.Red;
             Item.shootSpeed = 12f;
             Item.shoot = ModContent.ProjectileType<BrimlashBusterProj>();
         }

@@ -87,7 +87,7 @@ namespace CalamityInheritance.CIPlayer
         //石巨人，我杀你妈妈 
         public bool FuckYouGolem =false;
         #endregion
-        public bool test = false;
+        public bool Test = false;
         #region AncientXeroc
         public bool AncientXerocSet     = false;
         //克希洛克翅膀的远古狂怒效果
@@ -168,7 +168,7 @@ namespace CalamityInheritance.CIPlayer
             AncientAstralSet = false;
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
-            test = false;
+            Test = false;
             #endregion
            
         }

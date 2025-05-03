@@ -10,12 +10,17 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class CursedCapper : CIRanged, ILocalizedModType
     {
-
+        public override void SetStaticDefaults()
+        {
+            Type.ShimmerEach<ThermoclineBlaster>(false);
+        }
         public override void SetDefaults()
         {
             Item.damage = 35;

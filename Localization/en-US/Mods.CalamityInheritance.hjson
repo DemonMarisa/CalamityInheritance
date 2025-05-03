@@ -456,6 +456,31 @@ Configs: {
 				Currently only resprite [i:CalamityMod/SubsumingVortex]Subsuming Vortex
 				'''
 		}
+
+		BrinyBaronResprite: {
+			Label: "[i:CalamityInheritance/DukeLegendary]Briny Baron Legendary Resprite"
+			Tooltip: Determines sprite style of Briny Baron Legendary
+		}
+
+		PlantBowResprite: {
+			Label: "[i:CalamityInheritance/PlanteraLengedary]Blossom Flux Legendary Resprite"
+			Tooltip: Determines sprite style of Blossom Flux Legendary
+		}
+
+		Vesu: {
+			Label: "[i:CalamityInheritance/RavagerLegendary]Vesuvius Legendary Resprite"
+			Tooltip: Determines sprite style of Vesuvius Legendary
+		}
+
+		SHPC: {
+			Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC Legendary Resprite"
+			Tooltip: Determines sprite style of SHPC Legendary
+		}
+
+		Mala: {
+			Label: "[i:CalamityInheritance/PBGLegendary]Malatche Legendary Resprite"
+			Tooltip: Determines sprite style of Malatche Legendary
+		}
 	}
 
 	CIServerConfig: {
