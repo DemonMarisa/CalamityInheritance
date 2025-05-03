@@ -301,5 +301,9 @@ LatcherMine: {
 
 BouncingBetty: {
 	DisplayName: Bouncing Betty
-	Tooltip: ""
+	Tooltip:
+		'''
+		Throws a grenade which bounces after exploding
+		Stealth strikes explode into a violent blast of fire and shrapnel when it bounces
+		'''
 }

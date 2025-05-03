@@ -92,6 +92,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             else
             {
                 NPC target = CIFunction.FindClosestTarget(Projectile, 2000);
+                //这个方法可不会在返回null之后自动撤销程序的。
+                if (target is null)
+                    return;
+
                 DoBehavior_Charge(target, ref Timer2, rotOffset);
             }
 

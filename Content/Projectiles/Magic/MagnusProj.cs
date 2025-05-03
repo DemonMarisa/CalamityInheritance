@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Balancing;
 using CalamityMod.Buffs.StatDebuffs;
@@ -40,7 +41,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             else if (Projectile.ai[1] == 1f && Projectile.owner == Main.myPlayer)
             {
                 int targetIdx = -1;
-                float npcRange = 150f;
+                //cnm灾厄150f
+                float npcRange = CIFunction.SetDistance(75);
                 foreach (NPC n in Main.ActiveNPCs)
                 {
                     if (n.CanBeChasedBy(Projectile, false))
@@ -198,6 +200,13 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Player player = Main.player[Projectile.owner];
+            player.Heal(1);
+            player.statMana += 1;
+            player.ManaEffect(1);
         }
         public override void OnKill(int timeLeft)
         {

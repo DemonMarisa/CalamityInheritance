@@ -270,8 +270,13 @@ DragonStaff: {
 }
 
 MagnusEye: {
-	// Tooltip: ""
-	// DisplayName: Magnus Eye
+	/* Tooltip:
+		'''
+		Fires powerful homing beams that reduce enemy protection
+		Only heals mana on hit
+		'The day when Eye of Magnus still being a Magic Weapon'
+		''' */
+	// DisplayName: Eye of Magnus
 }
 
 VictideBook: {
@@ -368,9 +373,9 @@ YharimsCrystalLegendary: {
 		[SCAL]
 		'''
 	ExoTint: "[c/4169E1:强化]：光束造成2局部无敌帧"
-	NoExoTint: "[c/818589:击败阿瑞斯]"
+	NoExoTint: "[c/818589:击败星流巨械]"
 	ScalTint: "[c/4169E1:强化]：膨胀魔力消耗，但获得1000%伤害倍率加成"
-	NoScalTint: "[c/818589:击败至尊灾厄]"
+	NoScalTint: "[c/818589:击败至尊灾厄眼]"
 }
 
 ShadowdropStaff: {

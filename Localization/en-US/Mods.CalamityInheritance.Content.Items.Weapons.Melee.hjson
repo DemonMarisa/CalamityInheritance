@@ -586,6 +586,10 @@ Waraxe: {
 }
 
 FulgurationHalberd: {
-	Tooltip: ""
+	Tooltip:
+		'''
+		Inflicts burning blood on enemy hits
+		Right click to use as a spear	
+		'''
 	DisplayName: Fulguration Halberd
 }

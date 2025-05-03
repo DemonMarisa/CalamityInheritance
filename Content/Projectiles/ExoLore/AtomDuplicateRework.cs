@@ -47,6 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.extraUpdates = 1;
             Projectile.alpha = 0;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.noEnchantmentVisuals = true;
         }
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
         public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);

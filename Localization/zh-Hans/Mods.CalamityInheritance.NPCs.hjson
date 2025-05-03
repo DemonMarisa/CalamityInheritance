@@ -34,8 +34,8 @@ SupremeCatastropheLegacy.DisplayName: 至尊灾难
 SoulSeekerSupremeLegacy.DisplayName: 至尊探魂眼
 YharonLegacy.DisplayName: 丛林龙 - 犽戎
 CalamitasCloneLegacy.DisplayName: 灾厄之眼
-// CataclysmLegacy.DisplayName: Cataclysm Legacy
-// CatastropheLegacy.DisplayName: Catastrophe Legacy
-// LifeSeekerLegacy.DisplayName: Life Seeker Legacy
-// BlightedEye.DisplayName: Blighted Eye
-// CosmicElemental.DisplayName: Cosmic Elemental
+CataclysmLegacy.DisplayName: 灾祸
+CatastropheLegacy.DisplayName: 灾难
+LifeSeekerLegacy.DisplayName: 探魂者
+BlightedEye.DisplayName: 枯萎之眼
+CosmicElemental.DisplayName: 宇宙元素

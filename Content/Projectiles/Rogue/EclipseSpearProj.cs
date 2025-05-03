@@ -1,3 +1,4 @@
+using System;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
@@ -44,6 +45,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Lighting.AddLight(Projectile.Center, 1f, 0.8f, 0.3f);
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+            EmitSparks();
+            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, 0.15f);
+        }
+
+        private void EmitSparks()
+        {
             if (Main.rand.NextBool(3))
             {
                 Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
@@ -52,8 +59,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
                 GeneralParticleHandler.SpawnParticle(eclipseTrail);
             }
-            CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 2500f, 12f, 0, 0.15f);
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             OnHitSparks();

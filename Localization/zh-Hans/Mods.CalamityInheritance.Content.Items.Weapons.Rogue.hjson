@@ -306,6 +306,10 @@ LatcherMine: {
 }
 
 BouncingBetty: {
-	// DisplayName: Bouncing Betty
-	// Tooltip: ""
+	DisplayName: 弹跳炸弹[Legacy]
+	Tooltip:
+		'''
+		丢出一个手雷，会反弹且在反弹时爆炸
+		潜伏攻击会使爆炸更剧烈，同时发射出尖刺
+		'''
 }

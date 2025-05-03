@@ -510,11 +510,11 @@ MarniteBayonet: {
 FlamethrowerSpecial: 无视敌怪50%防御力
 
 Triploon: {
-	// Tooltip: ""
-	// DisplayName: Triploon
+	Tooltip: 发射三个鱼叉
+	DisplayName: 三叉枪
 }
 
 BrimstoneFlameblaster: {
-	// Tooltip: ""
-	// DisplayName: Brimstone Flameblaster
+	Tooltip: 发射弹跳的硫磺火球
+	DisplayName: 硫磺火喷射器
 }

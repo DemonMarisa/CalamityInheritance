@@ -56,5 +56,9 @@ AncientMurasama: {
 
 MarkedMagnum: {
 	DisplayName: Marked Magnum
-	Tooltip: ""
+	Tooltip:
+		'''
+		Shots reduce enemy protection
+		This weapon scales with all your damage stats at once
+		'''
 }

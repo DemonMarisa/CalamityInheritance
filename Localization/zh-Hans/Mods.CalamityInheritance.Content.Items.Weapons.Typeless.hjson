@@ -63,6 +63,10 @@ AncientMurasama: {
 }
 
 MarkedMagnum: {
-	// DisplayName: Marked Magnum
-	// Tooltip: ""
+	DisplayName: 死神马格南[Legacy]
+	Tooltip:
+		'''
+		攻击会减少敌人的伤害减免
+		受到所有种类的伤害加成
+		'''
 }

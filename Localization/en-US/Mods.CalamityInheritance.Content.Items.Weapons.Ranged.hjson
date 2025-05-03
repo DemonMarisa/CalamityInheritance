@@ -495,11 +495,11 @@ MarniteBayonet: {
 FlamethrowerSpecial: Ignore 50% of enemies defense
 
 Triploon: {
-	Tooltip: ""
+	Tooltip: Launches three harpoons
 	DisplayName: Triploon
 }
 
 BrimstoneFlameblaster: {
-	Tooltip: ""
+	Tooltip: Fires bouncing brimstone fireballs
 	DisplayName: Brimstone Flameblaster
 }

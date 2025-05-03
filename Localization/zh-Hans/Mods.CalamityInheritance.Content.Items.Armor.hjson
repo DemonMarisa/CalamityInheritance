@@ -653,27 +653,26 @@ YharimAuricTeslaHelm: {
 		'''
 	ExtraDetails:
 		'''
-		[i:CalamityMod/TarragonBreastplate][c/7DDA58:继承于龙蒿盔甲]:增加红心拾取范围, 敌人死亡时有几率掉落更多的红心, 大幅度降低敌人的生成数量
-		[i:CalamityMod/TarragonHeadMelee]受到伤害时你有25%的几率获得生命涌流增益, 增加6HP/s生命恢复速度, 按下 盔甲技能按键 提供龙蒿斗篷增益, 在10秒内接触伤害降低50%
-		[i:CalamityMod/TarragonHeadRanged]远程弹幕击中时, 会分裂出追踪的生命能量与龙蒿爆炸
-		[i:CalamityMod/TarragonHeadMagic]每五次暴击时发射叶片风暴, 魔法弹幕每1.5秒击中敌人会有50%的概率治疗玩家
-		[i:CalamityMod/TarragonHeadRogue]使用盗贼武器暴击敌人25次时, 你会获得3秒无敌时间, 此效果有25秒冷却, 每承受一个debuff的影响, 都会提升一次10%盗贼伤害
-		[i:CalamityMod/BloodflareBodyArmor][c/D21E20:继承于血炎盔甲]:极大地提高你的生命恢复速度, 击中一个生命值低于50%的敌人掉落红心, 这个效果有5秒冷却时间
-		[i:CalamityMod/BloodflareHeadMelee]真近战攻击会治疗你, 且连续真近战打击会获得鲜血狂怒增益, 此效果有30秒冷却时间, 增益期间近战伤害和暴击率提升25%, 来自敌人的接触伤害减半
-		[i:CalamityMod/BloodflareHeadRanged]按下 盔甲技能按键 释放16个血岩灵魂摧毁你的敌人, 远程武器每2.5秒发射出一个爆炸血炎珠
-		[i:CalamityMod/BloodflareHeadMagic]魔法武器每1.67秒发射一支幽灵箭, 魔法武器暴击时会以2秒3个的频率造成血炎爆炸
-		[i:CalamityMod/BloodflareHeadRogue]高于80%生命时, +30防御力, 提高5%盗贼暴击概率, 低于80%生命时, 增加10%盗贼伤害
-		[i:CalamityInheritance/GodSlayerChestplateold][c/CC6CE7:继承于弑神盔甲]:你将免疫低于80点伤害的攻击, 受到致命伤害时会触发弑神复活, 此效果有45秒冷却
-		[i:CalamityInheritance/GodSlayerHeadMeleeold]受到超过80点伤害会向八个方向释放出高伤害的弑神飞镖, 攻击敌人时会生成多个追踪的弑神飞镖
-		[i:CalamityInheritance/GodSlayerHeadRangedold]远程武器每2.5秒发射一枚弑神榴弹, 允许玩家攻击时以溢出的暴击概率造成四倍伤害, 如果暴击没有超过100%, 则暴击有5%的概率造成四倍伤害
-		[i:CalamityInheritance/GodSlayerHeadRangedold]当你获得超过90%的远程暴击概率加成时，额外获得20%远程暴击概率加成
-		[i:CalamityInheritance/GodSlayerHeadMagicold]魔法弹幕击中敌人会出现弑神火焰, 并且生成弑神光束治疗玩家
-		[i:CalamityInheritance/GodSlayerHeadRogueold]你会以当前最大潜伏值的1/5获得额外的潜伏值上限, 生命值全满时, 包括盗贼弹幕速度在内的所有盗贼属性增加10%
-		[i:CalamityInheritance/SilvaArmorold][c/DFC578:继承于林海盔甲]:所有弹幕击中敌人时生成能治疗的林海光球, 在弑神复活冷却时再次死亡, 会触发始源林海无敌, 使玩家在10秒内不能死亡
-		[i:CalamityInheritance/SilvaHeadMelee]近战武器可以眩晕敌人, 真近战有25%的概率造成5倍伤害, 触发林海无敌时, 接触伤害降低40%
-		[i:CalamityInheritance/SilvaHeadRanged]远程攻击速度增加20%, 触发林海无敌时, 远程伤害增加40%
-		[i:CalamityInheritance/SilvaHeadMagicold]魔法弹幕每5秒击中敌人会触发林海爆炸, 触发林海无敌时, 魔法伤害增加60%
-		[i:CalamityInheritance/SilvaHeadRogue]当玩家血量大于50%时, 攻击速度增加10%, 触发林海无敌时, 盗贼伤害增加40%
+		[c/7DDA58:继承于远古龙蒿盔甲][i:CalamityInheritance/AncientTarragonHelm]
+		增强拾取红心的距离, 降低50%防御损伤量, 并使你免疫击退
+		低于50%最大生命值时, 增强30%防御力与伤害减免
+		[c/D21E20:继承于远古血炎盔甲][i:CalamityInheritance/AncientBloodflareMask]
+		极大地强化你的生命恢复速度, 攻击时总有一定概率使敌人掉落心与魔力星
+		当你低于最大生命值的50%时, 获得+60HP/s生命再生
+		使你免疫岩浆且能在水中自由行动, 浸入岩浆时获得30点防御力与30HP/s生命再生
+		承受超过600点伤害的攻击时, 你会获得一次双倍其伤害量的治疗
+		这个效果触发后有10秒的冷却时间
+		[c/CC6CE7:继承于远古弑神盔甲][i:CalamityInheritance/AncientGodSlayerHelm]
+		增加12%伤害减免和50%接触伤害减免
+		潜伏攻击成功击中敌人时, 会极大强化你所有的攻击与除盗贼以外职业的攻击速度
+		同时, 降低80%魔力消耗, 在此期间你消耗的魔力都会转成对你的治疗
+		此效果需要30秒的冷却时间才能再次触发
+		受击后一秒内彻底无敌
+		承受致命伤害时, 会触发弑神复活, 此效果有45秒冷却时间
+		[c/DFC57B:继承于远古林海盔甲][i:CalamityInheritance/AncientSilvaHelm]
+		大幅度增强自然生命恢复速度, 受到减益影响也不会打断你的生命恢复
+		有些时候你会获得恢复速度非常快的治疗
+		承受致命伤害时, 会触发始源林海无敌, 使你在接下来的8秒内免疫死亡
 		'''
 }
 

@@ -584,6 +584,10 @@ Waraxe: {
 }
 
 FulgurationHalberd: {
-	// Tooltip: ""
-	// DisplayName: Fulguration Halberd
+	Tooltip:
+		'''
+		攻击时造成沸腾之血
+		右键切换攻击模式
+		'''
+	DisplayName: 电灼长戟[Legacy]
 }

@@ -18,12 +18,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class DragonSpearFlare: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public ref float AttackType => ref Projectile.ai[0];
-        public ref float AttackTimer => ref Projectile.ai[1];
-        public ref float TargetIndex => ref Projectile.ai[2];
-        const float IsShooted = 0f;
-        const float IsHoming = 1f;
-        const float FindNewTarget = 2f;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
