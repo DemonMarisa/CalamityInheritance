@@ -89,21 +89,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PristineFuryLegacy_Animated").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
             spriteBatch.Draw(texture, position, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4), Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             return false;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PristineFuryLegacy_Animated").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4), lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             return false;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PristineFuryLegacyGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacyGlow").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
         public override void AddRecipes()

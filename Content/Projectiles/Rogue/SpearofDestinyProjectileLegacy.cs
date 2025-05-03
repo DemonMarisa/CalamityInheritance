@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class SpearofDestinyProjectileLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/SpearofDestinyLegacy";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/SpearofDestinyLegacy";
 
         private bool initialized = false;
 

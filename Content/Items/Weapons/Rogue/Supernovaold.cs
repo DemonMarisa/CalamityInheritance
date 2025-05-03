@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Rogue/SupernovaoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/SupernovaoldGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

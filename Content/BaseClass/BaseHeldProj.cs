@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -33,6 +34,9 @@ namespace CalamityInheritance.Content.BaseClass
         /// 武器转动的速度，越大越快<br/>
         /// </summary>
         public virtual float AimResponsiveness { get; }
+        //你小子jb给手持射弹创个新图片都不愿意用路径是吧
+        public virtual string TexturePath{ get; }
+        public override string Texture => $"{Generic.WeaponPath}/" + TexturePath;
 
         public override void SetStaticDefaults()
         {

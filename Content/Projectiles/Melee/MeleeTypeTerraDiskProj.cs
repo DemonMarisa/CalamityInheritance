@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeTerraDiskProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeTerraDisk";
+        public override string Texture => $"{Generic.WeaponPath}/Melee/MeleeTypeTerraDisk";
 
         private bool initialized = false;
         private int Lifetime = 180;

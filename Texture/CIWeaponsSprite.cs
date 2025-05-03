@@ -2,6 +2,7 @@ using System;
 using CalamityMod.Items.Placeables.PlaceableTurrets;
 using CalamityMod.Items.VanillaArmorChanges;
 using Microsoft.Xna.Framework.Graphics;
+using rail;
 using ReLogic.Content;
 using Terraria.ModLoader;
 

@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public float RotAngle = 0.5f;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle Hitsound = new("CalamityMod/Sounds/Item/WulfrumKnifeTileHit2") { PitchVariance = 0.4f, Volume = 0.5f };
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/LumiStriker";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/LumiStriker";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;

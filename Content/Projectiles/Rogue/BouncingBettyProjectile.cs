@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class BouncingBettyProjectile : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/BouncingBetty";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/BouncingBetty";
         public override void SetDefaults()
         {
             Projectile.width = 16;

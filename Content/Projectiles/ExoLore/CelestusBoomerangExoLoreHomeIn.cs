@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     public class CelestusBoomerangExoLoreHomeIn : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/Celestusold";
         private bool initialized = false;
         private float Timer = 0f;
         private float Timer2 = 0f;

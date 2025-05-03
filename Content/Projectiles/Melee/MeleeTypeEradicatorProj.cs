@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeEradicatorProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeEradicator";
+        public override string Texture => $"{Generic.WeaponPath}/Melee/MeleeTypeEradicator";
         public static readonly float ChasingRange = 60000f;
         public static readonly float ChasingSpeed = 24f;
         private static float RotationIncrement = 0.15f;
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void PostDraw(Color lightColor)
         {
             Vector2 origin = new Vector2(31f, 29f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/MeleeTypeEradicatorGlow").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/MeleeTypeEradicatorGlow").Value, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, origin, 1f, SpriteEffects.None, 0);
         }
     }
 }

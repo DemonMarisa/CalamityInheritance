@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float BaseOffsetY => 0;
         public override float WeaponRotation => 20;
         public override float AimResponsiveness => 0.25f;
+        // public override string TexturePath => "Wulfrum/WulfrumStaff";
         public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {

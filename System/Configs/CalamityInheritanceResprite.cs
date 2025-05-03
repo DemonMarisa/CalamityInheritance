@@ -85,6 +85,21 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool ShatteredSunResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool BrinyBaronResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool PlantBowResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool Vesu{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool SHPC{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool Mala{ get; set; }
 
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]

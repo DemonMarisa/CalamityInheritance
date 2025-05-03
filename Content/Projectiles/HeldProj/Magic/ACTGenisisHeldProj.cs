@@ -17,6 +17,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float BaseOffsetY => 0;
         public override float WeaponRotation => 0;
         public override float AimResponsiveness => 0.25f;
+        //你小子甚至不愿意整一个路径而是创建新的图片
+        // public override string TexturePath => "Magic/GenisisLegacy";
         public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {

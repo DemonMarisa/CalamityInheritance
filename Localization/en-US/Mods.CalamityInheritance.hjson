@@ -188,6 +188,21 @@ Configs: {
 				Default by false
 				'''
 		}
+
+		UIX: {
+			Label: U I X
+			Tooltip: ""
+		}
+
+		UIY: {
+			Label: U I Y
+			Tooltip: ""
+		}
+
+		UIX2: {
+			Label: U I X2
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

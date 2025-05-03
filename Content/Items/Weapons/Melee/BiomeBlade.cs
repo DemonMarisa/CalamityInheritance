@@ -8,7 +8,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class BiomeBlade : CIMelee, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

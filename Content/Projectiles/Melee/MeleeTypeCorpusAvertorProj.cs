@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeCorpusAvertorProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeCorpusAvertor";
+        public override string Texture => $"{Generic.WeaponPath}/Melee/MeleeTypeCorpusAvertor";
 
         public override void SetStaticDefaults()
         {

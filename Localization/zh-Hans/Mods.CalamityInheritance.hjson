@@ -135,41 +135,6 @@ Configs: {
 			Label: "[i:Chain]降低移动速度"
 		}
 
-		UIX: {
-			// Label: U I X
-			// Tooltip: ""
-		}
-
-		UIY: {
-			// Label: U I Y
-			// Tooltip: ""
-		}
-
-		UIX2: {
-			// Label: U I X2
-			// Tooltip: ""
-		}
-
-		UIY2: {
-			// Label: U I Y2
-			// Tooltip: ""
-		}
-
-		Offset: {
-			// Label: Offset
-			// Tooltip: ""
-		}
-
-		DmgTest: {
-			// Label: Dmg Test
-			// Tooltip: ""
-		}
-
-		LegendaryBuff: {
-			// Tooltip: ""
-			// Label: Legendary Buff
-		}
-
 		Arcueid: {
 			Tooltip:
 				'''
@@ -200,6 +165,21 @@ Configs: {
 				Give all Legendary Weapon special rarity color
 				Default by false
 				'''
+		}
+
+		UIX: {
+			// Label: U I X
+			// Tooltip: ""
+		}
+
+		UIY: {
+			// Label: U I Y
+			// Tooltip: ""
+		}
+
+		UIX2: {
+			// Label: U I X2
+			// Tooltip: ""
 		}
 	}
 
@@ -428,11 +408,6 @@ Configs: {
 				[i:CalamityMod/SproutingArrow]春芽箭/泰拉箭
 				[i:CalamityMod/DryadsTear]树妖之泪/泰拉弹
 				'''
-		}
-
-		PBGColorType: {
-			// Label: P B G Color Type
-			// Tooltip: ""
 		}
 
 		PrismallineResprite: {

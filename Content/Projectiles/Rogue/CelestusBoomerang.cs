@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class CelestusBoomerang : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/Celestusold";
 
         private bool initialized = false;
         private float speed = 25f;
@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void PostDraw(Color lightColor)
         {
             Rectangle frame = new Rectangle(0, 0, 106, 94);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Rogue/CelestusoldGlow").Value,
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value,
                 Projectile.Center - Main.screenPosition,
                 frame,
                 Color.White,

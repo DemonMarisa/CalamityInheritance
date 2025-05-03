@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/CelestialObliteratorGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/CelestialObliteratorGlow").Value);
         }
         public override Vector2? HoldoutOffset()
         {
