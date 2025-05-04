@@ -497,13 +497,8 @@ Dualpoon: {
 	Tooltip: 发射两支鱼叉
 }
 
-MandibleBow: {
-	// DisplayName: Mandible Bow
-	// Tooltip: ""
-}
-
 MarniteBayonet: {
-	DisplayName: 花岗岩刺枪[Legacy]
+	DisplayName: 花岗岩刺枪[Revamped]
 	Tooltip: 这把枪会伤害接触它的敌人
 }
 
@@ -511,10 +506,10 @@ FlamethrowerSpecial: 无视敌怪50%防御力
 
 Triploon: {
 	Tooltip: 发射三个鱼叉
-	DisplayName: 三叉枪
+	DisplayName: 三叉枪[Legacy]
 }
 
 BrimstoneFlameblaster: {
 	Tooltip: 发射弹跳的硫磺火球
-	DisplayName: 硫磺火喷射器
+	DisplayName: 硫磺火喷射器[Legacy]
 }

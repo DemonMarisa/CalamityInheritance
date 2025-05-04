@@ -14,7 +14,7 @@ HeliumFlashLegacy: {
 		'''
 		发射一颗超高速的挥发性星核，而后引发巨大聚变爆炸
 		聚变爆炸能根据玩家溢出的暴击概率造成四倍伤害
-		[c/FE9900:“于刹那之间瞥见星海浩瀚之威”]
+		[c/FE9900:于刹那之间瞥见星海浩瀚之威]
 		'''
 }
 
@@ -127,7 +127,7 @@ VividClarityOld: {
 		向光标处发射五道彩虹光束
 		击中后会从天空降下星流闪电，并引发大型爆炸
 		爆炸会产生少量的跟踪弹幕
-		“它的威严激发了无与伦比的天才壮举”
+		[c/F0FFFF:它的威严激发了无与伦比的天才壮举]
 		'''
 	ExoLoreOn:
 		'''
@@ -195,7 +195,7 @@ BittercoldStaff: {
 }
 
 DemonicPitchforkLegacy: {
-	DisplayName: 恶魔之叉[Legacy]
+	DisplayName: 恶魔之叉[Revamped]
 	Tooltip:
 		'''
 		发射一根能够穿透10个单位的恶魔之叉
@@ -204,7 +204,7 @@ DemonicPitchforkLegacy: {
 }
 
 HellBurstLegacy: {
-	DisplayName: 狱炎鞭[Legacy]
+	DisplayName: 狱炎鞭[Revamped]
 	Tooltip:
 		'''
 		射出两根方向相反的火焰荆棘
@@ -246,7 +246,7 @@ WingmanLegacy: {
 }
 
 GenisisLegacy: {
-	Tooltip: "发射Y形状的毁灭能量束和一簇激光 "
+	Tooltip: "发射Y形状的毁灭能量束和一簇激光"
 	DisplayName: 源[Legacy]
 }
 
@@ -255,7 +255,7 @@ AlphaRayLegacy: {
 		'''
 		以三发齐射的激光能量弹雨蒸发一切
 		右键发射Y形光束与一束激光
-		"感受直线粒子特效的巅峰!"
+		[c/98F5FF:感受直线粒子特效的巅峰!]
 		'''
 	DisplayName: 阿尔法射线[Legacy]
 }
@@ -270,13 +270,13 @@ DragonStaff: {
 }
 
 MagnusEye: {
-	/* Tooltip:
+	Tooltip:
 		'''
-		Fires powerful homing beams that reduce enemy protection
-		Only heals mana on hit
-		'The day when Eye of Magnus still being a Magic Weapon'
-		''' */
-	// DisplayName: Eye of Magnus
+		发射能够削减敌人防护能力的星光射线
+		击中敌人时会回复生命值和魔力值
+		'当马格努斯之眼仍然是魔法武器的时候'
+		'''
+	DisplayName: 马格努斯之眼[Legacy]
 }
 
 VictideBook: {
@@ -308,11 +308,6 @@ RavagerLegendary: {
 	TierThree: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
 	TierThreeTint: "[c/818589:佩戴灾厄符章去地狱会会双足翼龙]"
 	LegendaryScaling: "[c/FF009B:强化属性]: {0}%"
-}
-
-FuckVoid: {
-	// Tooltip: ""
-	// DisplayName: Fuck Void
 }
 
 DestroyerLegendary: {
@@ -384,33 +379,33 @@ ShadowdropStaff: {
 }
 
 ACTGenisis: {
-	// DisplayName: Genisis Calamity Anormalis
-	/* Tooltip:
+	DisplayName: 源[Calamity Anormalis]
+	Tooltip:
 		'''
-		Launch an alpha laser towards
-		[c/DB53A0:A special gift from the past...]
-		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
-		''' */
+		往前方发射一道阿尔法激光
+		[c/DB53A0:来自旧日的特殊礼物]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
+		'''
 }
 
 ACTWingman: {
-	// DisplayName: Wingman Calamity Anormalis
-	/* Tooltip:
+	DisplayName: 侧翼[Calamity Anormalis]
+	Tooltip:
 		'''
-		Deploy a floating drone following your cursor and launch an alpha laser towards.
-		[c/DB53A0:A special gift from the past...]
-		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
-		''' */
+		部署一个无人机，跟随你的指针并向前方发射阿尔法激光
+		[c/DB53A0:来自旧日的特殊礼物]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
+		'''
 }
 
 ACTAlphaRay: {
-	// DisplayName: Alpha Ray Calamity Anormalis
-	/* Tooltip:
+	DisplayName: 阿尔法射线[Calamity Anormalis]
+	Tooltip:
 		'''
-		Launch an alpha laser towards
-		Deploy double floating drones directly lock on nearest target and launch alpha lasers
-		Hold Right Click to recall and secure them.
-		[c/DB53A0:A special gift from the past...]
-		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
-		''' */
+		往前方发射一道阿尔法激光
+		部署两个无人机，直接锁定距离最近的敌人并发射阿尔法激光
+		按住右键召回无人机，使其往指针位置发射激光
+		[c/DB53A0:来自旧日的特殊礼物]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
+		'''
 }
