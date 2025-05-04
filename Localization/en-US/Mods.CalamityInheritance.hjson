@@ -194,18 +194,6 @@ Configs: {
 			Tooltip: ""
 		}
 	}
-
-		UIY: {
-			Label: U I Y
-			Tooltip: ""
-		}
-
-		UIX2: {
-			Label: U I X2
-			Tooltip: ""
-		}
-	}
-
 	CIRespriteConfig: {
 		SkullmasherResprite: {
 			Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
