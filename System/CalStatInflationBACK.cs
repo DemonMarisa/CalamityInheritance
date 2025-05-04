@@ -709,7 +709,7 @@ namespace CalamityInheritance.System
                 item.damage = 1165;
             // 耀界
             if (item.type == ModContent.ItemType<VividClarity>())
-                item.damage = 400;
+                item.damage = 450;
             // 归墟
             if (item.type == ModContent.ItemType<CosmicImmaterializer>())
                 item.damage = 1500;

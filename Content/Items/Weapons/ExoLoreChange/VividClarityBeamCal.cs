@@ -174,7 +174,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             //一次生成三个射弹
             for (int i = 0; i < 3; i++)
             {
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<Exobeam>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<Exobeam>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner, 0f);
                 Main.projectile[p].DamageType = DamageClass.Magic;
             }
         }

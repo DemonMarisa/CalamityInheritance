@@ -10,7 +10,7 @@ using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.BaseClass
 {
-    public abstract class BaseHeldProjMagic : ModProjectile
+    public abstract class BaseHeldProj : ModProjectile
     {
         /// <summary>
         /// X 方向的偏移量<br/>

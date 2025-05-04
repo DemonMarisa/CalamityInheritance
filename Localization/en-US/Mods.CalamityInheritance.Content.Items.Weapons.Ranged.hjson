@@ -511,7 +511,7 @@ BrimstoneFlameblaster: {
 
 AeriesLegacy: {
 	DisplayName: Aeries Legacy
-	Tooltip: "Fires shockblast rounds that can steal enemy life"
+	Tooltip: Fires shockblast rounds that can steal enemy life
 }
 
 PearlGodLegacy: {
