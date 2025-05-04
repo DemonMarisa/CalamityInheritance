@@ -610,7 +610,7 @@ namespace CalamityInheritance.CIPlayer
             if(AncientAuricSet)
             {
                 //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
-                int DamageCap = Main.zenithWorld ? 2 : 600;
+                int DamageCap = Main.zenithWorld ? 2 : 300;
                 if(hurtInfo.Damage> DamageCap && AncientAuricHealCooldown == 0) 
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
                 {

@@ -1,6 +1,7 @@
 using System;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
@@ -48,22 +49,6 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                 }
-                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-                else if (PerunofYharimStats && hitInfo.Crit)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Generic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
             };
             if (SilvaMeleeSetLegacy)
             {
@@ -97,43 +82,67 @@ namespace CalamityInheritance.CIPlayer
             }
             ModifyCrtis(target, ref modifiers);
         }
-
+        public float GetWantedCrits<Type>() where Type: DamageClass
+        {
+            return (Player.GetTotalCritChance<Type>() + 4f - 100f) / 100f;
+        }
         private void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
         {
+            //将所有的爆伤乘区全部按照玩家手持武器计算
+            bool isRouge = Player.HeldItem.CountsAsClass<RogueDamageClass>();
             //日食魔镜强制暴击。
             //这个请先于之前所有计算执行，不然他吃不完所有的爆伤加成
-            if (EMirror)
+            if (EMirror && isRouge && Player.CheckStealth())
                 modifiers.SetCrit();
 
             #region 暴伤乘区
             float totalCritsBuff = 0f;
+            //氦闪爆伤加成
+            if (Player.ActiveItem().type == ModContent.ItemType<HeliumFlashLegacy>())
+            {
+                int chanceToSupreCrit = (int)Player.GetTotalCritChance<MagicDamageClass>() - 100 + 4;
+                if (Main.rand.Next(1, 101) <= chanceToSupreCrit && chanceToSupreCrit > 1)
+                    totalCritsBuff += 1f;
+            }
+            //魔君之怒，这个是全局加成。
+            if (PerunofYharimStats)
+            {
+                float giveBuff = GetWantedCrits<GenericDamageClass>();
+                totalCritsBuff += giveBuff;
+            }
             //远古鲨牙项链获得30%的暴击伤害加成。
             if (SpeedrunNecklace)
                 totalCritsBuff += 0.3f;
             //除非特殊，不然不要尝试在基于暴击概率上给爆伤的计算里面试图不取溢出暴击概率计算
             //但凡多10%爆伤加成都是翻倍的输出
-            if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && Player.ActiveItem().DamageType == DamageClass.Magic)
+            if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && Player.ActiveItem().CountsAsClass<MagicDamageClass>())
             {
                 //这个totalCrtis是不会算初始的4%暴击的，这里补上
                 float giveBuff = Player.GetTotalCritChance<MagicDamageClass>() + 4f - 100f;
-                //转化为1f
-                giveBuff /= 100f; 
-                //最后除以10. 取1/10
-                giveBuff /= 8f;
-                //200%暴击概率 -> 12.5%爆伤加成
-                totalCritsBuff += giveBuff;
+                if (giveBuff > 0f)
+                {
+                    //转化为1f
+                    giveBuff /= 100f; 
+                    //最后除以10. 取1/10
+                    giveBuff /= 8f;
+                    //200%暴击概率 -> 12.5%爆伤加成
+                    totalCritsBuff += giveBuff;
+                }
 
             }
-            if (EMirror)
+            if (EMirror && isRouge)
             {
                 float giveBuff = Player.GetTotalCritChance<RogueDamageClass>() + 4f - 100f;
-                giveBuff /= 100f; 
-                //最后除以7. 取1/7
-                giveBuff /= 7f;
-                //200%暴击概率 -> 15%
-                totalCritsBuff = giveBuff;
-                //日食魔镜会一定程度上贯穿敌怪防御
-                modifiers.DefenseEffectiveness *= 0.90f;
+                if (giveBuff > 0f)
+                {
+                    giveBuff /= 100f; 
+                    //最后除以7. 取1/7
+                    giveBuff /= 7f;
+                    //200%暴击概率 -> 15%
+                    totalCritsBuff = giveBuff;
+                    //日食魔镜会一定程度上贯穿敌怪防御
+                    modifiers.DefenseEffectiveness *= 0.90f;
+                }
             }
 
             #endregion
