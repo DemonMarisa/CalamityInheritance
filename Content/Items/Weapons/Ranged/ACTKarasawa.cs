@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public static readonly SoundStyle FireSound = new("CalamityMod/Sounds/Item/MechGaussRifle");
         public override void SetStaticDefaults()
         {
-            Type.ShimmerEach<Karasawa>(true);
+            Type.ShimmerEach<Karasawa>();
         }
         public override void SetDefaults()
         {

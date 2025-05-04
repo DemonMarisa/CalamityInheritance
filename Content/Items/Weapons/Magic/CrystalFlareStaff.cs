@@ -51,13 +51,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<CoreofEleum>(), 3);
-            recipe.AddIngredient<CryoBar>(10);
-            recipe.AddIngredient(ItemID.FrostCore);
-            recipe.AddIngredient(ItemID.FrostStaff);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient<CoreofEleum>(3).
+                AddIngredient<CryoBar>(10).
+                AddIngredient(ItemID.FrostCore).
+                AddIngredient(ItemID.FrostStaff).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

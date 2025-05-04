@@ -11,6 +11,7 @@ using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Relic;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
@@ -27,6 +28,7 @@ using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
@@ -108,6 +110,8 @@ namespace CalamityInheritance
         public static RecipeGroup LoreAS;
         public static RecipeGroup LoreLevi;
         public static RecipeGroup LorePostSCal;
+        public static RecipeGroup LoreMoonLord;
+        public static RecipeGroup LoreAD;
 
         public static RecipeGroup EclipseFall;
         public static RecipeGroup IceClasper;
@@ -131,6 +135,8 @@ namespace CalamityInheritance
         public static RecipeGroup LeviTrophy;
         public static RecipeGroup MechTrophy;
         public static RecipeGroup SCalTrophy;
+        public static RecipeGroup RottenMatter;
+        public static RecipeGroup CryoBar;
 
         public override void Unload()
         {
@@ -185,6 +191,8 @@ namespace CalamityInheritance
                 LeviTrophy,
                 MechTrophy,
                 SCalTrophy,
+                RottenMatter,
+                CryoBar,
 
                 GodSlayerBodyGroup,
                 GodSlayerLegGroup,
@@ -219,7 +227,8 @@ namespace CalamityInheritance
                 LoreAS,
                 LoreLevi,
                 LoreSentinal,
-                LorePostSCal
+                LorePostSCal,
+                LoreAD
             ];
             for (int i = 0; i < Train.Length; i++)
                 Train[i] = null;
@@ -247,6 +256,8 @@ namespace CalamityInheritance
             TwinTrophy = SetUpTwoVanilia (ItemID.RetinazerTrophy, ItemID.SpazmatismTrophy);
             LeviTrophy = SetUpTwo<LeviathanTrophy>(ModContent.ItemType<AnahitaTrophy>());
             SCalTrophy = SetUpTwo<ScalTrophy>(ModContent.ItemType<SupremeCalamitasTrophy>());
+            RottenMatter = SetUpTwo<BloodSample>(ModContent.ItemType<RottenMatter>());
+            CryoBar = SetUpTwo<CryonicBar>(ModContent.ItemType<CryoBar>());
             #endregion
 
             #region 新旧弑神
@@ -265,28 +276,28 @@ namespace CalamityInheritance
             #endregion
 
             #region 武器组
-            ElementalRay        = SetUpTwo<ElementalRayold>             (ModContent.ItemType<ElementalRay>());
-            HeliumFlash         = SetUpTwo<HeliumFlashLegacy>           (ModContent.ItemType<HeliumFlash>());
+            ElementalRay        = SetUpTwo<ElementalRay>                (ModContent.ItemType<ElementalRayold>());
+            HeliumFlash         = SetUpTwo<HeliumFlash>                 (ModContent.ItemType<HeliumFlashLegacy>());
             PhantasmalRuin      = SetUpTwo<PhantasmalRuin>              (ModContent.ItemType<PhantasmalRuinold>());
-            PhantasmalFury      = SetUpTwo<PhantasmalFuryOld>           (ModContent.ItemType<PhantasmalFury>());
-            CosmicShiv          = SetUpTwo<CosmicShivold>               (ModContent.ItemType<CosmicShiv>());
-            Terratomere         = SetUpTwo<TerratomereOld>              (ModContent.ItemType<Terratomere>());
-            ElementalShiv       = SetUpTwo<ElementalShivold>            (ModContent.ItemType<ElementalShiv>());
+            PhantasmalFury      = SetUpTwo<PhantasmalFury>              (ModContent.ItemType<PhantasmalFuryOld>());
+            CosmicShiv          = SetUpTwo<CosmicShiv>                  (ModContent.ItemType<CosmicShivold>());
+            Terratomere         = SetUpTwo<Terratomere>                 (ModContent.ItemType<TerratomereOld>());
+            ElementalShiv       = SetUpTwo<ElementalShiv>               (ModContent.ItemType<ElementalShivold>());
             TerraRay            = SetUpTwo<Photosynthesis>              (ModContent.ItemType<TerraRay>());
-            NightsRay           = SetUpTwo<NightsRayold>                (ModContent.ItemType<NightsRay>());
+            NightsRay           = SetUpTwo<NightsRay>                   (ModContent.ItemType<NightsRayold>());
             MiniGun             = SetUpTwo<Kingsbane>                   (ModContent.ItemType<Minigun>());
-            P90                 = SetUpTwo<P90Legacy>                   (ModContent.ItemType<P90>());
-            Norfleet            = SetUpTwo<NorfleetLegacy>              (ModContent.ItemType<Norfleet>());
+            P90                 = SetUpTwo<P90>                         (ModContent.ItemType<P90Legacy>());
+            Norfleet            = SetUpTwo<Norfleet>                    (ModContent.ItemType<NorfleetLegacy>());
             Excelsus            = SetUpTwo<ACTExcelsus>                 (ModContent.ItemType<Excelsus>());
-            Eradicator          = SetUpTwo<MeleeTypeEradicator>         (ModContent.ItemType<Eradicator>());
-            ClockworkBow        = SetUpTwo<ClockBowLegacy>              (ModContent.ItemType<ClockworkBow>());
-            Phangasm            = SetUpTwo<PhangasmOS>                  (ModContent.ItemType<Phangasm>());
-            ElementalEruption   = SetUpTwo<ElementalEruptionLegacy>     (ModContent.ItemType<ElementalEruption>());
-            CleansingBlaze      = SetUpTwo<CleansingBlazeLegacy>        (ModContent.ItemType<CleansingBlaze>());
-            HalleysInferno      = SetUpTwo<HalleysInfernoLegacy>        (ModContent.ItemType<HalleysInferno>());
-            BloodBoiler         = SetUpTwo<BloodBoilerLegacy>           (ModContent.ItemType<BloodBoiler>());
-            EclipseFall         = SetUpTwo<EclipseSpear>                (ModContent.ItemType<EclipsesFall>());
-            IceClasper          = SetUpTwo<AncientAncientIceChunk>      (ModContent.ItemType<AncientIceChunk>());
+            Eradicator          = SetUpTwo<Eradicator>                  (ModContent.ItemType<MeleeTypeEradicator>());
+            ClockworkBow        = SetUpTwo<ClockworkBow>                (ModContent.ItemType<ClockBowLegacy>());
+            Phangasm            = SetUpTwo<Phangasm>                    (ModContent.ItemType<PhangasmOS>());
+            ElementalEruption   = SetUpTwo<ElementalEruption>           (ModContent.ItemType<ElementalEruptionLegacy>());
+            CleansingBlaze      = SetUpTwo<CleansingBlaze>              (ModContent.ItemType<CleansingBlazeLegacy>());
+            HalleysInferno      = SetUpTwo<HalleysInferno>              (ModContent.ItemType<HalleysInfernoLegacy>());
+            BloodBoiler         = SetUpTwo<BloodBoiler>                 (ModContent.ItemType<BloodBoilerLegacy>());
+            EclipseFall         = SetUpTwo<EclipsesFall>                (ModContent.ItemType<EclipseSpear>());
+            IceClasper          = SetUpTwo<AncientIceChunk>             (ModContent.ItemType<AncientAncientIceChunk>());
             PlantBow            = SetUpTwo<PlanteraLegendary>           (ModContent.ItemType<BlossomFlux>());
             LumiStriker         = SetUpTwo<RealityRupture>              (ModContent.ItemType<LumiStriker>());
             DartGun             = SetUpTwoVanilia                       (ItemID.DartRifle, ItemID.DartPistol);
@@ -294,30 +305,31 @@ namespace CalamityInheritance
             Wand                = SetUpTwoVanilia                       (ItemID.WandofSparking, ItemID.WandofFrosting);
             TerraBlade          = SetUpTwoVanilia                       (ItemID.TerraBlade, ModContent.ItemType<TerraEdge>());
             //旧龙系列
-            DragonCannon        = SetUpTwo<ChickenCannonLegacy>         (ModContent.ItemType<ChickenCannon>());
-            DragonGift          = SetUpTwo<YharimsGiftLegacy>           (ModContent.ItemType<YharimsGift>());
+            DragonCannon        = SetUpTwo<ChickenCannon>               (ModContent.ItemType<ChickenCannonLegacy>());
+            DragonGift          = SetUpTwo<YharimsGift>                 (ModContent.ItemType<YharimsGiftLegacy>());
             DragonGun           = SetUpTwo<AncientDragonsBreath>        (ModContent.ItemType<DragonsBreathold>());
-            DragonSky           = SetUpTwo<BurningSkyLegacy>            (ModContent.ItemType<TheBurningSky>());
+            DragonSky           = SetUpTwo<TheBurningSky>               (ModContent.ItemType<BurningSkyLegacy>());
             DragonSpear         = SetUpTwo<Wrathwing>                   (ModContent.ItemType<DragonSpear>());
-            DragonStaff         = SetUpTwo<DragonStaff>                 (ModContent.ItemType<PhoenixFlameBarrage>());
-            DragonSummon        = SetUpTwo<DoubleSonYharon>             (ModContent.ItemType<YharonsKindleStaff>());
-            DragonSword         = SetUpTwo<DragonSword>                 (ModContent.ItemType<DragonRage>());
+            DragonStaff         = SetUpTwo<PhoenixFlameBarrage>         (ModContent.ItemType<DragonStaff>());
+            DragonSummon        = SetUpTwo<YharonsKindleStaff>          (ModContent.ItemType<DoubleSonYharon>());
+            DragonSword         = SetUpTwo<DragonRage>                  (ModContent.ItemType<DragonSword>());
             #endregion
 
+            //把所有合成组用旧物品显示避免混淆以及展现一点倾向性
             #region 饰品
-            ElysianAegis    = SetUpTwo<ElysianAegisold>         (ModContent.ItemType<ElysianAegis>());
-            AsgardsValor    = SetUpTwo<AsgardsValorold>         (ModContent.ItemType<AsgardsValor>());
-            GoldBottle      = SetUpTwo<AmbrosialAmpouleOld>     (ModContent.ItemType<AmbrosialAmpoule>());
-            Arcanum         = SetUpTwo<AstralArcanum>           (ModContent.ItemType<InfectedJewel>());
-            DeificAmulet    = SetUpTwo<DeificAmuletLegacy>      (ModContent.ItemType<DeificAmulet>());
+            ElysianAegis    = SetUpTwo<ElysianAegis>            (ModContent.ItemType<ElysianAegisold>());
+            AsgardsValor    = SetUpTwo<AsgardsValor>            (ModContent.ItemType<AsgardsValorold>());
+            GoldBottle      = SetUpTwo<AmbrosialAmpoule>        (ModContent.ItemType<AmbrosialAmpouleOld>());
+            Arcanum         = SetUpTwo<InfectedJewel>           (ModContent.ItemType<AstralArcanum>());
+            DeificAmulet    = SetUpTwo<DeificAmulet>            (ModContent.ItemType<DeificAmuletLegacy>());
             T2RangedAcc     = SetUpTwo<DeadshotBrooch>          (ModContent.ItemType<DaedalusEmblem>());
             EvilFlask       = SetUpTwo<CrimsonFlask>            (ModContent.ItemType<CorruptFlask>());
-            BloodPact       = SetUpTwo<BloodPactLegacy>         (ModContent.ItemType<BloodPact>());
-            GrandGelatin    = SetUpTwo<GrandGelatinLegacy>      (ModContent.ItemType<GrandGelatin>());
-            BraveBadge      = SetUpTwo<BadgeofBravery>          (ModContent.ItemType<CalamityMod.Items.Accessories.BadgeofBravery>());
-            StatisNinjaBelt = SetUpTwo<StatisNinjaBeltLegacy>   (ModContent.ItemType<StatisNinjaBelt>());
-            CosmicTracer    = SetUpTwo<FasterGodSlayerTracers>  (ModContent.ItemType<TracersElysian>());
-            LunicTarcer     = SetUpTwo<FasterLunarTracers>      (ModContent.ItemType<TracersCelestial>());
+            BloodPact       = SetUpTwo<BloodPact>               (ModContent.ItemType<BloodPactLegacy>());
+            GrandGelatin    = SetUpTwo<GrandGelatin>            (ModContent.ItemType<GrandGelatinLegacy>());
+            StatisNinjaBelt = SetUpTwo<StatisNinjaBelt>         (ModContent.ItemType<StatisNinjaBeltLegacy>());
+            CosmicTracer    = SetUpTwo<TracersElysian>          (ModContent.ItemType<FasterGodSlayerTracers>());
+            LunicTarcer     = SetUpTwo<TracersCelestial>        (ModContent.ItemType<FasterLunarTracers>());
+            BraveBadge      = SetUpTwo<CalamityMod.Items.Accessories.BadgeofBravery>          (ModContent.ItemType<BadgeofBravery>());
             #endregion
 
             #region 传颂之物
@@ -335,7 +347,10 @@ namespace CalamityInheritance
             LorePBG     = SetUpTwo<KnowledgePlaguebringerGoliath>(ModContent.ItemType<LorePlaguebringerGoliath>());
             LoreSentinal = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ModContent.ItemType<LoreStormWeaver>())}",
                                             ModContent.ItemType<LoreSignus>(), ModContent.ItemType<LoreStormWeaver>(), ModContent.ItemType<LoreCeaselessVoid>());
-            LorePostSCal= SetUpTwo<LoreCynosure>                (ModContent.ItemType<LoreCalamitas>());
+            LorePostSCal = SetUpTwo<LoreCynosure>                (ModContent.ItemType<LoreCalamitas>());
+            LoreMoonLord = SetUpTwo<LoreRequiem>                (ModContent.ItemType<KnowledgeMoonLord>());
+            LoreAD       = SetUpTwo<KnowledgeAstrumDeus>        (ModContent.ItemType<LoreAstrumDeus>());
+
             #endregion
 
             #region 其它组
@@ -373,6 +388,9 @@ namespace CalamityInheritance
             LeviTrophy.                 NameHelper("AnyLeviTrophy");
             MechTrophy.                 NameHelper("AnyMechTrophy");
             SCalTrophy.                 NameHelper("AnySCalTrophy");
+            RottenMatter.               NameHelper("AnyRottenMatter");
+            CryoBar.                    NameHelper("AnyCryoBar");
+
             #region 新旧弑神
             GodSlayerBodyGroup.         NameHelper("AnyGodSlayerBody");
             GodSlayerLegGroup.          NameHelper("AnyGodSlayerLeg");
@@ -443,6 +461,8 @@ namespace CalamityInheritance
             LoreLevi.                   NameHelper("AnyLoreLeviathanAnahita");
             LoreSentinal.               NameHelper("AnyLoreSentinal");
             LorePostSCal.               NameHelper("AnyLorePostSCal");
+            LoreMoonLord.               NameHelper("AnyLoreMoonLord");
+            LoreAD.                     NameHelper("AnyLoreAD");
             #endregion
         }
         public static RecipeGroup SetUpTwoVanilia (int showOnRecipe, int another)
@@ -492,6 +512,7 @@ namespace CalamityInheritance
         public static string LoreAS             => "AnyLoreAquaticScourge".GetGroupName();
         public static string LoreLevi           => "AnyLoreLeviathanAnahita".GetGroupName();
         public static string LorePostSCal       => "AnyLorePostSCal".GetGroupName();
+        public static string LoreAD             => "AnyLoreAD".GetGroupName();
         #endregion
         public static string EclipsesFall       => "AnyEclipsesFall".GetGroupName();
         public static string AncientIceChunk    => "AnyAncientIceChunk".GetGroupName();
@@ -515,7 +536,9 @@ namespace CalamityInheritance
         public static string TrophyLevi         => "AnyLeviTrophy".GetGroupName();
         public static string TrophyMechs        => "AnyMechTrophy".GetGroupName();
         public static string SCalTrophy         => "AnySCalTrophy".GetGroupName();
-
+        public static string RottenMatter       => "AnyRottenMatter".GetGroupName();
+        public static string LoreMoonLord       => "AnyLoreMoonLord".GetGroupName();
+        public static string CryoBar            => "AnyCryoBar".GetGroupName();
     }
 
 }

@@ -1,18 +1,10 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Materials;
-using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.Yharon;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,7 +40,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override bool? UseItem(Player player)
         {
-            CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<CalamitasCloneLegacy>(), Yharon.FireSound);
+            CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<CalamitasCloneLegacy>(), SoundID.Roar);
             return true;
         }
         public override void AddRecipes()

@@ -59,14 +59,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Flamelash);
-            recipe.AddIngredient(ItemID.CrystalVileShard);
-            recipe.AddIngredient(ItemID.DarkShard, 2);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
-            recipe.AddIngredient(ItemID.SoulofFright, 5);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.Flamelash).
+                AddIngredient(ItemID.CrystalVileShard).
+                AddIngredient(ItemID.DarkShard, 2).
+                AddIngredient(ItemID.SoulofNight, 10).
+                AddIngredient(ItemID.SoulofFright, 5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
     }
 }

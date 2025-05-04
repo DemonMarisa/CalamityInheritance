@@ -68,12 +68,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddRecipeGroup("AnyGoldBar", 7);
-            recipe.AddIngredient(ItemID.Granite, 5);
-            recipe.AddIngredient(ItemID.Marble, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe().
+                AddRecipeGroup("AnyGoldBar", 7).
+                AddIngredient(ItemID.Granite, 5).
+                AddIngredient(ItemID.Marble, 5).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

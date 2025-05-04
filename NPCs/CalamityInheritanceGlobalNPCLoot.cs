@@ -279,7 +279,8 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<PristineFuryLegacy>(), 10);
-                npcLoot.Add(ModContent.ItemType<ElysianAegisold>(), 1);
+                npcLoot.AddConditionalPerPlayer(() => Condition.InUnderworld.IsMet(), ModContent.ItemType<ElysianAegisold>());
+                
                 var tarragon= ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientTarragonHelm>(), 1);
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonBreastplate>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonLeggings>()));

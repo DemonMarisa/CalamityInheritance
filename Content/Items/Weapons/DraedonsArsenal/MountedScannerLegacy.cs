@@ -104,19 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
                 AddRecipeGroup("AnyMythrilBar", 10).
                 AddIngredient(ItemID.SoulofMight, 20).
                 AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(2, out Func<bool> condition), condition).
-                AddCondition(Condition.NotZenithWorld).
-                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.MythrilAnvil).
-                Register();
-            
-            CreateRecipe().
-                AddIngredient<SpikecragStaff>().
-                AddIngredient<SarosPossession>().
-                AddIngredient<MysteriousCircuitry>(15).
-                AddIngredient<DubiousPlating>(5).
-                AddCondition(Condition.ZenithWorld).
-                AddDecraftCondition(Condition.ZenithWorld).
-                AddTile<DraedonsForge>().
                 Register();
         }
     }

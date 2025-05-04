@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
-            Type.ShimmerEach<Pwnagehammer>();
+            // Type.ShimmerEach<Pwnagehammer>();
             Item.ResearchUnlockCount = 1;
         }
 

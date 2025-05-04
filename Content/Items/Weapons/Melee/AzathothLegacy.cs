@@ -56,22 +56,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.Terrarian).
                 AddIngredient<CoreofCalamity>(2).
                 AddIngredient<ShadowspecBar>(5).
-                AddCondition(Condition.NotZenithWorld).
-                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile<DraedonsForge>().
                 Register();
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
-                AddCondition(Condition.NotZenithWorld).
                 DisableDecraft().
-                Register();
-
-            CreateRecipe().
-                AddIngredient<UelibloomBar>(6).
-                AddCondition(Condition.ZenithWorld).
-                AddDecraftCondition(Condition.ZenithWorld).
-                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

@@ -46,15 +46,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
-            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
+            if (CIServerConfig.Instance.LegendaryitemsRecipes)
             {
                 CreateRecipe().
-                    AddIngredient<LoreRequiem>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-
-                CreateRecipe().
-                    AddIngredient<KnowledgeMoonLord>().
+                    AddRecipeGroup(CIRecipeGroup.LoreMoonLord).
+                    DisableDecraft().
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

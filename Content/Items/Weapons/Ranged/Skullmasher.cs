@@ -108,6 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 CreateRecipe()
                     .AddRecipeGroup(CIRecipeGroup.LoreDevourerofGods)
+                    .DisableDecraft()
                     .AddTile<CosmicAnvil>()
                     .Register();
             }

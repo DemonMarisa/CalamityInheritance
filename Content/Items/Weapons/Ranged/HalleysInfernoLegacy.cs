@@ -35,8 +35,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = ModContent.RarityType<PureGreen>();
         }
-
-        // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 20;
 
         public override Vector2? HoldoutOffset() => new Vector2(-15, 0);

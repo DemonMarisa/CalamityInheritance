@@ -93,6 +93,7 @@ namespace CalamityInheritance.Content.Items.Materials
                 AddIngredient<CosmiliteBar>(10).
                 AddIngredient<LifeAlloy>(10).
                 AddIngredient<CoreofCalamity>(10).
+                AddIngredient<AscendantSpiritEssence>(15).
                 AddIngredient<GalacticaSingularity>(10).
                 AddTile<DraedonsForge>().
                 Register();

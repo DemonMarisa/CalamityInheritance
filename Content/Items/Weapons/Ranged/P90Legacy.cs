@@ -87,12 +87,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.IronBar, 10).
-                AddIngredient<CoreofEleum>(7).
-                AddTile(TileID.MythrilAnvil).
-                Register();
-            CreateRecipe().
-                AddIngredient(ItemID.LeadBar, 10).
+                AddRecipeGroup(RecipeGroupID.IronBar, 10).
                 AddIngredient<CoreofEleum>(7).
                 AddTile(TileID.MythrilAnvil).
                 Register();

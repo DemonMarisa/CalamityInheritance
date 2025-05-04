@@ -113,6 +113,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
+
             CreateRecipe().
                 AddIngredient<SealedSingularity>().
                 AddIngredient<StarofDestruction>().

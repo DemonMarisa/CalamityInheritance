@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<DragonRage>(false);
+            Type.ShimmerEach<DragonRage>();
         }
         public override void SetDefaults()
         {
