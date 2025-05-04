@@ -654,12 +654,11 @@ namespace CalamityInheritance.CIPlayer
             if (SilvaMeleeSetLegacy)
             {
                 double multiplier = Player.statLife / (double)Player.statLifeMax2;
-                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.2);
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.13f;
+                Player.GetDamage<MeleeDamageClass>() += (float)(multiplier * 0.1);
                 if (calPlayer.auricSet && SilvaMeleeSetLegacy)
                 {
                     double multiplier1 = Player.statLife / (double)Player.statLifeMax2;
-                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.2);
+                    Player.GetDamage<MeleeDamageClass>() += (float)(multiplier1 * 0.1);
                 }
             }
             #endregion

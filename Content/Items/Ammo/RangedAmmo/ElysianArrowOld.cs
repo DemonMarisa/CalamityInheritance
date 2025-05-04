@@ -32,6 +32,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 
         public override void AddRecipes()
         {
+
             CreateRecipe(150).
                 AddIngredient(ItemID.HolyArrow, 150).
                 AddIngredient<UnholyEssence>().

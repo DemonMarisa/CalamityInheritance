@@ -22,8 +22,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private float speed = 25f;
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
         public override void SetDefaults()
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     break;
             }
         }
-
+        public override Color? GetAlpha(Color lightColor) => new Color(250, 250, 250, 50);
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.ExoDebuffs();

@@ -36,14 +36,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.SupernovaChange") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));
         }
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            var usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                damage.Base = 22000;
-            }
-        }
     }
     public class SupernovaHugeBoom : GlobalProjectile
     {

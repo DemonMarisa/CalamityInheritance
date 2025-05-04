@@ -28,7 +28,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
             //太长了
-            Projectile.timeLeft = 215;
+            //改回去了，不然战斗中都看不到了
+            Projectile.timeLeft = 530;
             Projectile.alpha = 120;
         }
         public override void SendExtraAI(BinaryWriter writer)

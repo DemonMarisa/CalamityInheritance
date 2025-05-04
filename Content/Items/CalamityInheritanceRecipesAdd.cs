@@ -446,6 +446,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<LivingShard>(),7). //我不是很清楚为啥这个生命碎片还留着
                 AddTile(TileID.MythrilAnvil).
                 Register();
+
         }
         public static void Accelerator()
         {

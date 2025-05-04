@@ -249,7 +249,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
                 if (hitCount < 2)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
             }
         }
 

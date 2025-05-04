@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void SetDefaults()
         {
-            Item.damage = 1222;
+            Item.damage = 600;
             Item.knockBack = 6f;
             Item.useAnimation = Item.useTime = 19;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();

@@ -76,6 +76,10 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(false)]
         public bool ReduceMoveSpeed{ get; set;}
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool DrawDifficultyUI { get; set; }
+
         #endregion
         [Header("Music")]
         [BackgroundColor(192, 54, 64, 192)]

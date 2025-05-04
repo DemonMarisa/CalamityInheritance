@@ -71,6 +71,7 @@ Mods: {
 			FossilSpike.DisplayName: Fossil Spike
 			MarianaProjectile.DisplayName: Mariana Projectile
 			ChangeDirProj.DisplayName: Change Dir Proj
+			AeriesShockblastRound.DisplayName: Aeries Shockblast Round
 		}
 
 		Content/Projectiles/Summon: {

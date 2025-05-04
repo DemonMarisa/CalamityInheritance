@@ -43,9 +43,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
+            Projectile.MaxUpdates = 1;
         }
         public override void HoldoutAI()
         {
+            Projectile.extraUpdates = 1;
             // 使用类型 类型为0时为左键 为1时为右键
             ref float UseStyle = ref Projectile.ai[0];
             // 使用计时器

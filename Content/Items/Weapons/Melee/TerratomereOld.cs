@@ -29,7 +29,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 21;
-            Item.useTurn = true;
             Item.knockBack = 7f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
@@ -43,19 +42,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.zenithWorld)
             {
-                Item.damage = 120;
                 Item.scale = 0.6f;
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             }
             else
             {
-                Item.damage = 260;
                 Item.scale = 1f;
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
             }
             return true;
+        }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (Main.zenithWorld)
+                damage.Base *= 0.3f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

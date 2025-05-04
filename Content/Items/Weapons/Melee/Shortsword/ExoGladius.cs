@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useAnimation = Item.useTime = 12;
             Item.width = 56;
             Item.height = 56;
-            Item.damage = 2000;
+            Item.damage = 670;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9.9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
@@ -43,6 +43,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
+        }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            // 只比普通模式搞高一点
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+                damage.Base *= 1.5f;
         }
         public override bool MeleePrefix() => true;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

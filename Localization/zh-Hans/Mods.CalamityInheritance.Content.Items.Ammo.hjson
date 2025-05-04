@@ -40,3 +40,17 @@ HyperiusBulletOld: {
 		击中敌人后在敌人两侧产生额外弹幕
 		'''
 }
+
+AccelerationRound: {
+	DisplayName: 加速弹[Legacy]
+	Tooltip: 速度随时间加快
+}
+
+FrostsparkBullet: {
+	DisplayName: 霜冻弹[Legacy]
+	Tooltip:
+		'''
+		有几率冻住敌人，并爆炸成电流
+		免疫冻伤的敌人会承受更多的伤害
+		'''
+}

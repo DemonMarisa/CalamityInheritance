@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.damage = 77;
+            Item.damage = 144;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 64;
             Item.height = 34;

@@ -8,8 +8,9 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Rarity;
 using Terraria.DataStructures;
-using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories.Wings;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

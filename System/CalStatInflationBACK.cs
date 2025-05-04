@@ -28,6 +28,18 @@ using Terraria.Localization;
 using Microsoft.Build.Utilities;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityMod.NPCs.NormalNPCs;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityMod.Projectiles.Magic;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
+using CalamityMod.Items.Ammo;
+using CalamityMod.Items.Fishing.BrimstoneCragCatches;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 
 namespace CalamityInheritance.System
 {
@@ -71,6 +83,11 @@ namespace CalamityInheritance.System
         }
         public override void PostAddRecipes()
         {
+            if (CIServerConfig.Instance.CalStatInflationBACK)
+                AddRec();
+        }
+        public static void AddRec()
+        {
             foreach (Recipe recipe in Main.recipe)
             {
                 // 直接检查配方成品
@@ -104,6 +121,10 @@ namespace CalamityInheritance.System
             #region 亵渎武器表单的删除
             // 不知道为什么过滤不掉T1000
             PostProfanedWeapons.Remove(ModContent.ItemType<AetherfluxCannon>());
+            PostProfanedWeapons.Remove(ModContent.ItemType<AzathothLegacy>());
+            // 怎么tr短剑被添加了两次
+            PostProfanedWeapons.Remove(ModContent.ItemType<TerraShiv>());
+            PostProfanedWeapons.Remove(ModContent.ItemType<TerraShiv>());
             #endregion
             #region 亵渎武器表单的添加
             // 三使徒就这几个了，打表了
@@ -117,6 +138,8 @@ namespace CalamityInheritance.System
             // 西格
             PostProfanedWeapons.Add(ModContent.ItemType<Cosmilamp>());
             PostProfanedWeapons.Add(ModContent.ItemType<CosmicKunai>());
+            // 旧极乐火箭
+            PostProfanedWeapons.Add(ModContent.ItemType<ProfanedLancher>());
             #endregion
             #region 幽花表单
             PostPolterghastWeapons.Add(ModContent.ItemType<VoidEdge>());
@@ -126,10 +149,23 @@ namespace CalamityInheritance.System
             PostPolterghastWeapons.Add(ModContent.ItemType<LionHeart>());
             PostPolterghastWeapons.Add(ModContent.ItemType<SulphuricAcidCannon>());
             PostPolterghastWeapons.Add(ModContent.ItemType<PhosphorescentGauntlet>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<SoulEdge>());
+            #endregion
+            #region 幽花表单删除
+            PostPolterghastWeapons.Remove(ModContent.ItemType<SpectreRifle>());
+            #endregion
+            #region 老猪表单
+            PostOldDukeWeapons.Add(ModContent.ItemType<InsidiousImpalerLegacy>());
             #endregion
             #region 神长表单删除
             // 怎么你也没有过滤金源武器
             PostDOGWeapons.Remove(ModContent.ItemType<Ataraxia>());
+            PostDOGWeapons.Remove(ModContent.ItemType<AtaraxiaOld>());
+            PostDOGWeapons.Remove(ModContent.ItemType<YharimsCrystal>());
+            PostDOGWeapons.Remove(ModContent.ItemType<YharimsCrystalLegendary>());
+            #endregion
+            #region 神长添加
+            PostDOGWeapons.Add(ModContent.ItemType<ACTExcelsus>());
             #endregion
             #region 龙后
             PostyharonWeapons.Add(ModContent.ItemType<Murasama>());
@@ -154,7 +190,7 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有星系异石 必须没有宇宙锭/神圣晶石
             return item.damage > 0
                     && (recipe.HasIngredient(ModContent.ItemType<GalacticaSingularity>()) || recipe.HasIngredient(ItemID.LunarBar))
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<UelibloomBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
@@ -167,7 +203,7 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有神圣晶石/龙蒿锭 必须没有宇宙锭/金源锭/毁灭之灵/猎魂鲨牙
             return item.damage > 0
                     && (recipe.HasIngredient(ModContent.ItemType<DivineGeode>()) || recipe.HasIngredient(ModContent.ItemType<UelibloomBar>()))
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<AuricBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>())
@@ -179,13 +215,15 @@ namespace CalamityInheritance.System
         {
             //三个bool。指定only 三使徒材料，其他的全部被排除
             bool isSentinelsWeaponOnly = item.damage > 0 && (recipe.HasIngredient(ModContent.ItemType<TwistingNether>()) || recipe.HasIngredient(ModContent.ItemType<ArmoredShell>()) || recipe.HasIngredient(ModContent.ItemType<DarkPlasma>()))
-                                                         && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                                                         && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                                                          && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
                                                          && !recipe.HasIngredient(ModContent.ItemType<UelibloomBar>())
                                                          && !recipe.HasIngredient(ModContent.ItemType<DivineGeode>())
                                                          && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>())
                                                          && !recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
-                                                         && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>());
+                                                         && !recipe.HasIngredient(ModContent.ItemType<ReaperTooth>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<DarksunFragment>())
+                                                         && !recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>());
             return isSentinelsWeaponOnly;
             
         }
@@ -198,9 +236,11 @@ namespace CalamityInheritance.System
                     && (recipe.HasIngredient(ModContent.ItemType<RuinousSoul>())
                     || recipe.HasIngredient(ModContent.ItemType<ReaperTooth>()) ||
                     recipe.HasIngredient(ModContent.ItemType<BloodstoneCore>()))
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                     && !recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>())
                     && !recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>())
+                    && !recipe.HasIngredient(ModContent.ItemType<AuricBar>())
+                    && !recipe.HasIngredient(ModContent.ItemType<AuricBarold>())
                     && !recipe.HasIngredient(ModContent.ItemType<AuricBar>());
         }
         #endregion
@@ -210,9 +250,10 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有宇宙锭/ 必须没有金源锭/魔影锭
             return item.damage > 0
                     && (recipe.HasIngredient(ModContent.ItemType<CosmiliteBar>()) || recipe.HasIngredient(ModContent.ItemType<AscendantSpiritEssence>()))
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                     && !recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>())
-                    && !recipe.HasIngredient(ModContent.ItemType<AuricBar>());
+                    && !recipe.HasIngredient(ModContent.ItemType<AuricBar>())
+                    && !recipe.HasIngredient(ModContent.ItemType<AuricBarold>());
         }
         #endregion
         #region 龙后武器
@@ -221,8 +262,9 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有宇宙锭/ 必须没有金源锭/魔影锭
             return item.damage > 0
                     && (recipe.HasIngredient(ModContent.ItemType<AuricBar>())
-                    || recipe.HasIngredient(ModContent.ItemType<YharonSoulFragment>()))
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity
+                    || recipe.HasIngredient(ModContent.ItemType<YharonSoulFragment>())
+                    || recipe.HasIngredient(ModContent.ItemType<AuricBarold>()))
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                     && !recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>());
         }
         #endregion
@@ -232,7 +274,7 @@ namespace CalamityInheritance.System
             // 必须是有伤害的 必须合成表有魔影锭
             return item.damage > 0
                     && recipe.HasIngredient(ModContent.ItemType<ShadowspecBar>())
-                    && recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity;
+                    && (recipe.createItem.ModItem.Mod == CalamityInheritance.Calamity || item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>());
         }
         #endregion
         #region boss掉落
@@ -283,13 +325,12 @@ namespace CalamityInheritance.System
             PostExoAndScalWeapons.AddRange(lootItems8.Where(id => !PostExoAndScalWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
         }
         #endregion
-
     }
     public class CalamityStatInflationBACK : GlobalItem
     {
         #region 武器伤害增幅
         public const float PostMLWeaponsBoost = 1.3f; // 月后
-        public const float PostProfanedWeaponsBoost = 1.6f; // 亵渎后||使徒
+        public const float PostProfanedWeaponsBoost = 2.2f; // 亵渎后||使徒 不是哥们，你们dps怎么这么低
         public const float PostPolterghastWeaponsBoost = 2.4f; // 幽花后
         public const float PostOldDukeWeaponsBoost = 2.5f; // 老猪后
         public const float PostDOGWeaponsBoost = 3f; // 神后
@@ -307,9 +348,17 @@ namespace CalamityInheritance.System
                 if (CalStatInflationBACK.PostProfanedWeapons.Contains(item.type) || CalStatInflationBACK.PostSentinelsWeapon.Contains(item.type))
                     item.damage = (int)(item.damage * PostProfanedWeaponsBoost);
                 if (CalStatInflationBACK.PostPolterghastWeapons.Contains(item.type))
+                {
+                    if (item.DamageType == DamageClass.Ranged)
+                        item.damage = (int)(item.damage * 1.3f);
                     item.damage = (int)(item.damage * PostPolterghastWeaponsBoost);
+                }
                 if (CalStatInflationBACK.PostOldDukeWeapons.Contains(item.type))
+                {
                     item.damage = (int)(item.damage * PostOldDukeWeaponsBoost);
+                    if (item.type == ModContent.ItemType<InsidiousImpalerLegacy>())
+                        item.damage = 420;
+                }
                 if (CalStatInflationBACK.PostDOGWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostDOGWeaponsBoost);
                 if (CalStatInflationBACK.PostyharonWeapons.Contains(item.type))
@@ -326,16 +375,43 @@ namespace CalamityInheritance.System
                 ShadowspecBlance(item);
                 CosmicBlance(item);
                 PolterghastBlance(item);
+                ProfanedBlance(item);
+                AmmoChange(item);
+                ExoWeapons(item);
             }
         }
         #endregion
         #region 特殊平衡改动
+        #region 亵渎
+        public static void ProfanedBlance(Item item)
+        {
+            #region 射手
+            if (item.type == ModContent.ItemType<TelluricGlare>())
+                item.damage = (int)(item.damage * 3f);
+            #endregion
+            #region 法师
+            if (item.type == ModContent.ItemType<PlasmaRifle>())
+                item.damage *= (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<ThePrince>())
+                item.damage *= (int)(item.damage * 1.5f);
+            #endregion
+        }
+        #endregion
         #region 幽花后
         public static void PolterghastBlance(Item item)
         {
+            #region 战士
+            if (item.type == ModContent.ItemType<NeptunesBounty>())
+                item.damage = (int)(item.damage * 1.3f);
+
+            #endregion
             #region 射手
             if (item.type == ModContent.ItemType<ClaretCannon>())
                 item.damage = (int)(item.damage * 1.6f);
+
+            if (item.type == ModContent.ItemType<SulphuricAcidCannon>())
+                item.damage = (int)(item.damage * 1.7f);
 
             if (item.type == ModContent.ItemType<DodusHandcannon>())
                 item.damage = (int)(item.damage * 1.6f);
@@ -345,6 +421,9 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<BloodBoiler>())
                 item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<HalleysInferno>())
+                item.damage = (int)(item.damage * 1.5f);
             #endregion
             #region 法师
             if (item.type == ModContent.ItemType<ClamorNoctus>())
@@ -355,6 +434,9 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<ShadowboltStaff>())
                 item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<VenusianTrident>())
+                item.damage = (int)(item.damage * 1.6f);
             #endregion
             #region 召唤
 
@@ -368,6 +450,9 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<NightsGaze>())
                 item.damage = (int)(item.damage * 2f);
+
+            if (item.type == ModContent.ItemType<PhantasmalRuinold>())
+                item.damage = (int)(item.damage * 0.5f);
             #endregion
         }
         #endregion
@@ -381,9 +466,6 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<PrismaticBreaker>())
                 item.damage = 4000;
-
-            if (item.type == ModContent.ItemType<Phaseslayer>())
-                item.damage = (int)(item.damage * 2f);
 
             if (item.type == ModContent.ItemType<Excelsus>())
                 item.damage = (int)(item.damage * 1.5f);
@@ -462,6 +544,9 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<IceBarrage>())
                 item.damage = (int)(item.damage * 2f);
 
+            if (item.type == ModContent.ItemType<ACTAlphaRay>())
+                item.damage = (int)(item.damage * 0.8f);
+
             #endregion
             #region 召唤
 
@@ -500,20 +585,21 @@ namespace CalamityInheritance.System
         #region 金源
         public static void AuricBlance(Item item)
         {
-            if (item.type == ModContent.ItemType<DragonRage>())
-                item.damage = 4000;
-            if (item.type == ModContent.ItemType<TheOracle>())
-                item.damage = 1500;
-            if (item.type == ModContent.ItemType<HeliumFlash>())
-                item.damage = 6666;
             if (item.type == ModContent.ItemType<VoidVortex>())
                 item.damage = 1800;
             if (item.type == ModContent.ItemType<YharimsCrystal>())
                 item.damage = 600;
+            #region 战士
             if (item.type == ModContent.ItemType<ArkoftheCosmos>())
-                item.damage = 14000;
-            if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
-                item.damage = (int)(item.damage * 2.4f);
+                item.damage = 1400;
+            if (item.type == ModContent.ItemType<ArkoftheCosmosold>())
+                item.damage = 501;
+            if (item.type == ModContent.ItemType<Ataraxia>())
+            {
+                item.damage = (int)(item.damage * 1.4f);
+                item.useTurn = false;
+            }
+
             if (item.type == ItemID.Zenith)
             {
                 //面板210 -> 2145
@@ -522,6 +608,20 @@ namespace CalamityInheritance.System
                 item.value = CIShopValue.RarityPricePureRed;
                 item.ArmorPenetration = 150;
             }
+
+            if (item.type == ModContent.ItemType<TheOracle>())
+                item.damage = 1500;
+            #endregion
+            #region 射手
+            if (item.type == ModContent.ItemType<DrataliornusLegacy>())
+                item.damage = 700;
+            #endregion
+            #region 法师
+            if (item.type == ModContent.ItemType<VoidVortexLegacy>())
+                item.damage = 240;
+            if (item.type == ModContent.ItemType<HadopelagicEcho>())
+                item.damage = 4444;
+            #endregion
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -543,6 +643,73 @@ namespace CalamityInheritance.System
                 crit += 96;
             if (item.type == ModContent.ItemType<ArkoftheCosmos>())
                 crit += 31;
+        }
+        #endregion
+        #region 星流武器
+        public static void ExoWeapons(Item item)
+        {
+            #region 遗产
+            // 归元旋涡
+            if (item.type == ModContent.ItemType<SubsumingVortexold>())
+                item.damage = 935;
+            // 耀界之光
+            if (item.type == ModContent.ItemType<VividClarityOld>())
+                item.damage = 650;
+            // 星流短剑
+            if (item.type == ModContent.ItemType<ExoGladius>())
+                item.damage = 2000;
+            // 星流之刃
+            if (item.type == ModContent.ItemType<Exobladeold>())
+                item.damage = 5175;
+            // 链刃
+            if (item.type == ModContent.ItemType<ExoFlail>())
+                item.damage = 3125;
+            // 磁极异变
+            if (item.type == ModContent.ItemType<MagnomalyCannon>())
+                item.damage = 2100;
+            // 天堂之风
+            if (item.type == ModContent.ItemType<HeavenlyGaleold>())
+                item.damage = 808;
+            // 星火解离者
+            if (item.type == ModContent.ItemType<Photovisceratorold>())
+                item.damage = 1300;
+            // 星神之杀
+            if (item.type == ModContent.ItemType<Celestusold>())
+                item.damage = 1054;
+            // 超新星
+            if (item.type == ModContent.ItemType<Supernovaold>())
+                item.damage = 3500;
+            // 弧光
+            if (item.type == ModContent.ItemType<ExoTheApostle>())
+                item.damage = 9000;
+            // 归墟
+            if (item.type == ModContent.ItemType<CosmicImmaterializerOld>())
+                item.damage = 2000;
+            #endregion
+            // 星火解离者
+            if (item.type == ModContent.ItemType<Photoviscerator>())
+                item.damage = 2300;
+            // 天堂之风
+            if (item.type == ModContent.ItemType<HeavenlyGale>())
+                item.damage = 800;
+            // 星神之杀
+            if (item.type == ModContent.ItemType<Celestus>())
+                item.damage = 1222;
+            // 超新星
+            if (item.type == ModContent.ItemType<Supernova>())
+                item.damage = 22000;
+            // 星流刀
+            if (item.type == ModContent.ItemType<Exoblade>())
+                item.damage = 3000;
+            // 旋涡
+            if (item.type == ModContent.ItemType<SubsumingVortex>())
+                item.damage = 1165;
+            // 耀界
+            if (item.type == ModContent.ItemType<VividClarity>())
+                item.damage = 650;
+            // 归墟
+            if (item.type == ModContent.ItemType<CosmicImmaterializer>())
+                item.damage = 1500;
         }
         #endregion
         #region 魔影
@@ -568,6 +735,59 @@ namespace CalamityInheritance.System
                 item.damage = 10000; //一万面板
         }
         #endregion
+        #region 弹药
+        public static void AmmoChange(Item item)
+        {
+            if (item.type == ModContent.ItemType<ElysianArrow>())
+                item.damage = 20;
+            if (item.type == ModContent.ItemType<BloodfireArrow>())
+                item.damage = 40;
+            if (item.type == ModContent.ItemType<VanquisherArrow>())
+                item.damage = 33;
+            if (item.type == ModContent.ItemType<HolyFireBullet>())
+                item.damage = 27;
+            if (item.type == ModContent.ItemType<BloodfireBullet>())
+                item.damage = 40;
+            if (item.type == ModContent.ItemType<GodSlayerSlug>())
+                item.damage = 42;
+
+            if (item.type == ModContent.ItemType<HolyFireBulletOld>())
+                item.damage = 27;
+            if (item.type == ModContent.ItemType<VanquisherArrowold>())
+                item.damage = 33;
+            if (item.type == ModContent.ItemType<ElysianArrowOld>())
+                item.damage = 20;
+        }
+        #endregion
+        #endregion
+        #region 龙一龙二改变
+        public static void EclipseChange(Item item)
+        {
+            if (CIServerConfig.Instance.SolarEclipseChange)
+            {
+                // 巨龙之怒
+                if (item.type == ModContent.ItemType<DragonRage>())
+                    item.damage = 2000;
+                // 氦闪
+                if (item.type == ModContent.ItemType<HeliumFlash>())
+                    item.damage = 6666;
+
+                // 巨龙七星灯，极昼信标
+                if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
+                    item.damage = (int)(item.damage * 1.5f);
+            }
+            else
+            {
+                if (item.type == ModContent.ItemType<DragonRage>())
+                    item.damage = 4000;
+
+                if (item.type == ModContent.ItemType<HeliumFlash>())
+                    item.damage = 6666;
+
+                if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
+                    item.damage = (int)(item.damage * 2.4f);
+            }
+        }
         #endregion
     }
     public class CalamityStatInflationBACKNPC : GlobalNPC
@@ -595,8 +815,8 @@ namespace CalamityInheritance.System
                 }
                 if (CalamityInheritanceLists.DOG.Contains(npc.type))
                 {
-                    npc.lifeMax = (int)(npc.lifeMax * 2.3f);
-                    npc.life = (int)(npc.life * 2.3f);
+                    npc.lifeMax = (int)(npc.lifeMax * 2.2f);
+                    npc.life = (int)(npc.life * 2.2f);
                 }
                 if (npc.type == ModContent.NPCType<Yharon>())
                 {
@@ -607,13 +827,13 @@ namespace CalamityInheritance.System
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 5f);
                     npc.life = (int)(npc.life * 5f);
-                    npc.defense = (int)(npc.defense * 5f);
+                    npc.defense = (int)(npc.defense * 1.2f);
                 }
                 if (CalamityInheritanceLists.Scal.Contains(npc.type))
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 6.6f);
                     npc.life = (int)(npc.life * 6.6f);
-                    npc.defense = (int)(npc.defense * 6.6f);
+                    npc.defense = (int)(npc.defense * 1.2f);
                 }
                 if (CalamityMod.Events.BossRushEvent.BossRushActive)
                 {

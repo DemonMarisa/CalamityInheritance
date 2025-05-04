@@ -63,10 +63,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            //刚出的版本
+            // 只比普通模式搞高一点
             if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
-                damage.Base = 500;
-            base.ModifyWeaponDamage(player, ref damage);
+                damage.Base *= 0.6f;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

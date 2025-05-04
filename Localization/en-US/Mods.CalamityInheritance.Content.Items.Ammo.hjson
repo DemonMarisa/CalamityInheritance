@@ -36,3 +36,13 @@ HyperiusBulletOld: {
 		Spawns additional bullets on enemy hits
 		'''
 }
+
+AccelerationRound: {
+	DisplayName: Acceleration Round
+	Tooltip: ""
+}
+
+FrostsparkBullet: {
+	DisplayName: Frostspark Bullet
+	Tooltip: ""
+}

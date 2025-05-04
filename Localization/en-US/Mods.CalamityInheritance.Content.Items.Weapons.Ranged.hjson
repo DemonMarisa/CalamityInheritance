@@ -503,3 +503,18 @@ BrimstoneFlameblaster: {
 	Tooltip: Fires bouncing brimstone fireballs
 	DisplayName: Brimstone Flameblaster
 }
+
+AeriesLegacy: {
+	DisplayName: Aeries Legacy
+	Tooltip: ""
+}
+
+PearlGodLegacy: {
+	DisplayName: Pearl God Legacy
+	Tooltip:
+		'''
+		Your life is mine...
+		Fires shockblast rounds that emit massive explosions and steal enemy life as well as additional bullets
+		Every seventh shot fires a massive shockblast
+		'''
+}

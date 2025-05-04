@@ -14,6 +14,7 @@ using CalamityInheritance.System.Configs;
 using Terraria.DataStructures;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -60,7 +61,10 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
 
             if (item.type == ModContent.ItemType<OldDukeBag>())
+            {
                 itemloot.Add(ModContent.ItemType<LeadCore>(), 1);
+                itemloot.Add(ModContent.ItemType<InsidiousImpalerLegacy>(), 3);
+            }
 
             if (item.type == ModContent.ItemType<AstrumDeusBag>())
             {

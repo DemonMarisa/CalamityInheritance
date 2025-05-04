@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     return;
                 }
 
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 300f, 12f, 20f);
+                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, 12f, 20f);
             }
             else
             {

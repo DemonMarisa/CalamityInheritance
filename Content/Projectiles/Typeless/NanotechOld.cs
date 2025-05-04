@@ -71,6 +71,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 
         private void DoSearching() 
         {
+            if (Projectile.alpha > 0)
+                Projectile.alpha -= 15;
             NPC target = Projectile.FindClosestTarget(1800f);
             float speed = 16f + AttackTimer / 30f;
             if (target != null)
@@ -81,15 +83,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         {
             if (Projectile.alpha > 0)
                 Projectile.alpha -= 15;
-            if (AttackTimer < 30f)
-                return;
             AttackType = IsSearchingNewTarget;
             Projectile.netUpdate = true;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (AttackTimer < 30f)
-                return;
             AttackType = IsFading;
         }
         public override void OnKill(int timeLeft)

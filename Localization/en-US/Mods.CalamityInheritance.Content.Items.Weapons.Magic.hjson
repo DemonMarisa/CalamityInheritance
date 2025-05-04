@@ -351,16 +351,25 @@ ShadowdropStaff: {
 }
 
 ACTGenisis: {
-	DisplayName: A C T Genisis
-	Tooltip: ""
+	DisplayName: Genisis Calamity Anormalis
+	Tooltip: Fires a precise and powerful laser
 }
 
 ACTWingman: {
-	DisplayName: A C T Wingman
-	Tooltip: ""
+	DisplayName: Wingman Calamity Anormalis
+	Tooltip:
+		'''
+		Spawn Wingmen fire lasers at your cursor
+		Press the right button to have the Wingmen follow you
+		'''
 }
 
 ACTAlphaRay: {
-	DisplayName: A C T Alpha Ray
-	Tooltip: ""
+	DisplayName: Alpha Ray Calamity Anormalis
+	Tooltip:
+		'''
+		Fires a precise and powerful laser and Spawns Two Wingmen 
+		Wingmen fire lasers at your cursor
+		Press the right button to have the Wingmen follow you
+		'''
 }

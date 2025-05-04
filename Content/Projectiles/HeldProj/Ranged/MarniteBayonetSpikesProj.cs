@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.hide = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
+            Projectile.MaxUpdates = 1;
         }
         public override void SetVisualOffsets()
         {
@@ -71,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Vector2 rotationPoint = texture.Size() * 0.5f;
             SpriteEffects flipSprite = isFilp ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * 0.5f, flipSprite);
+            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * 0.75f, flipSprite);
             return false;
         }
     }

@@ -30,11 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             }
             return false;
         }
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
-                damage.Base = 600;
-        }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Summon.SaveCosmic") : null;

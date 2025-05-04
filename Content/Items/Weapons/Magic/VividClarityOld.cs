@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 90;
             Item.height = 112;
-            Item.damage = 400;
+            Item.damage = 300;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 40;
             Item.useTime = 6;
@@ -63,7 +63,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Item.useAnimation = 54;
                 Item.reuseDelay = 25;
                 Item.useLimitPerAnimation = 9;
-                Item.damage = 600;
             }
             else
             {
@@ -74,7 +73,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             }
             return base.CanUseItem(player);
         }
-
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            // 只比普通模式搞高一点
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+                damage.Base *= 1.2f;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

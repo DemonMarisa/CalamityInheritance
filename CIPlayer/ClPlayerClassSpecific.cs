@@ -23,6 +23,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 using static System.Net.Mime.MediaTypeNames;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
@@ -69,18 +70,36 @@ namespace CalamityInheritance.CIPlayer
                     ReaverBlastCooldown = 10;
                 }
             }
+
+            if (SilvaMeleeSetLegacy)
+            {
+                if (Main.rand.NextBool(4) && (proj.TrueMeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
+                {
+                    hit.Damage *= 5;
+                }
+            }
+
             //这个应该是泰坦药水的真近战标记
             if (ifTrueMelee || proj.type == ModContent.ProjectileType<StepToolShadowChair>())
                 BuffStatsTitanScaleTrueMelee = 600;
         }
         public void RangedOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            if (proj.DamageType != DamageClass.Ranged)
+            if (!proj.DamageType.CountsAsClass<RangedDamageClass>())
                 return;
+
+            if (GodSlayerRangedSet && hit.Crit)
+            {
+                int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
+                if (Main.rand.Next(1, 101) <= randomChance)
+                    hit.Damage *= 2;
+                else if (Main.rand.NextBool(20))
+                    hit.Damage *= 4;
+            }
         }
         public void MagicOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            if (proj.DamageType != DamageClass.Magic) 
+            if (!proj.DamageType.CountsAsClass<MagicDamageClass>()) 
                 return;
             Player player = Main.player[proj.owner];
             var calPlayer = player.Calamity(); 
@@ -150,8 +169,8 @@ namespace CalamityInheritance.CIPlayer
         }
         public void SummonOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            bool whip = proj.CountsAsClass<SummonMeleeSpeedDamageClass>();
-            if (!proj.CountsAsClass<SummonDamageClass>() || !whip)
+            bool whip = proj.DamageType.CountsAsClass<SummonMeleeSpeedDamageClass>();
+            if (!proj.DamageType.CountsAsClass<SummonDamageClass>() || !whip)
                 return;
             //核子
             if (summonProjCooldown <= 0)
@@ -163,7 +182,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (GodSlayerSummonSet && proj.CountsAsClass<SummonDamageClass>())
+            if (GodSlayerSummonSet)
             {
                 if (fireCD > 0)
                     return;
@@ -182,7 +201,7 @@ namespace CalamityInheritance.CIPlayer
             //重置寒冰神性T2：让鞭子与寒冰神性交互
             //与鞭子进行交互的寒冰神性射弹在击中的时候，每个射弹会治疗玩家1血，并对敌怪造成额10点真实伤。
             //这个真实伤害会受到玩家的召唤伤害加成影响
-            if (ColdDivityTier2 && IsColdDivityActiving && whip)
+            if (ColdDivityTier2 && IsColdDivityActiving)
             {
                 //寻找玩家身上拥有的所有射弹数
                 foreach (Projectile pointerProj in Main.ActiveProjectiles)
@@ -203,7 +222,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void RogueOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone, bool isStealth)
         {
-            if (proj.DamageType != ModContent.GetInstance<RogueDamageClass>())
+            if (!proj.DamageType.CountsAsClass<RogueDamageClass>())
                 return;
 
             Player player = Main.player[proj.owner];

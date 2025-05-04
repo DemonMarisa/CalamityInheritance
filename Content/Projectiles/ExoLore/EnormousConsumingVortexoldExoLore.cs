@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = 16;
             Projectile.extraUpdates = 1;
         }
 

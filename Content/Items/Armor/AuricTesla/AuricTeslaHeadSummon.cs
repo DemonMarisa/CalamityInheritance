@@ -102,10 +102,10 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<SilvaCrystal>()] < 1)
                 {
-                    var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(3000);
+                    var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(1000);
                     var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
                     if (Main.projectile.IndexInRange(p))
-                        Main.projectile[p].originalDamage = 3000;
+                        Main.projectile[p].originalDamage = 1000;
                 }
 
                 if (player.FindBuffIndex(ModContent.BuffType<Mechworm>()) == -1 && CIConfig.Instance.GodSlayerWorm)
@@ -135,8 +135,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                     {
                         maxMinionScale = 10;
                     }
-                    float summonDamage = player.GetDamage(DamageClass.Summon).Additive + player.GetDamage(DamageClass.Summon).Multiplicative;
-                    int damage = (int)(35 * ((summonDamage * 5 / 3) + (summonDamage * 0.46f * (maxMinionScale - 1))));
+                    var Wormdamage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(CIServerConfig.Instance.CalStatInflationBACK ? 400 : 100);
                     Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
                     Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default);
                     Vector2 vector3 = Main.MouseWorld - vector2;
@@ -194,25 +193,25 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                         velY = 0f;
                         vector2.X = Main.mouseX + Main.screenPosition.X;
                         vector2.Y = Main.mouseY + Main.screenPosition.Y;
-                        int curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormHead>(), damage, 1, owner);
+                        int curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormHead>(), Wormdamage, 1, owner);
 
                         int prev = curr;
-                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), damage, 1, owner, prev);
+                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), Wormdamage, 1, owner, prev);
 
                         prev = curr;
-                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), damage, 1, owner, prev);
+                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), Wormdamage, 1, owner, prev);
                         Main.projectile[prev].localAI[1] = curr;
                         Main.projectile[prev].netUpdate = true;
 
                         prev = curr;
-                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormTail>(), damage, 1, owner, prev);
+                        curr = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormTail>(), Wormdamage, 1, owner, prev);
                         Main.projectile[prev].localAI[1] = curr;
                         Main.projectile[prev].netUpdate = true;
                     }
                     else if (head != -1 && tail != -1)
                     {
-                        int body = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), damage, 1, owner, Main.projectile[tail].ai[0]);
-                        int back = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), damage, 1, owner, body);
+                        int body = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), Wormdamage, 1, owner, Main.projectile[tail].ai[0]);
+                        int back = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector2.X, vector2.Y, velX, velY, ModContent.ProjectileType<MechwormBody>(), Wormdamage, 1, owner, body);
 
                         Main.projectile[body].localAI[1] = back;
                         Main.projectile[body].ai[1] = 1f;

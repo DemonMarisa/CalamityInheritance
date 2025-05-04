@@ -18,7 +18,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
-    public class WulfrumStaffHoldOut : BaseHeldProj, ILocalizedModType
+    public class WulfrumStaffHoldOut : BaseHeldProjMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override float OffsetX => 18;

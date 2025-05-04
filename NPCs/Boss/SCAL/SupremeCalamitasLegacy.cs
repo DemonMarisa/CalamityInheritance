@@ -257,7 +257,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
         }
         #endregion
-        
         #region SD
         public override void SetDefaults()
         {
@@ -362,7 +361,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (Enraged)
                 vectorMultiplier += 2f;
             else
-                vectorMultiplier = 1.2f;
+                vectorMultiplier = 1f;
 
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)

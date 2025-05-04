@@ -36,6 +36,8 @@ namespace CalamityInheritance.UI
         }
         public static void Draw(SpriteBatch spriteBatch)
         {
+            if (CIConfig.Instance.DrawDifficultyUI == false)
+                return;
             if (Main.playerInventory == false)
                 return;
             // 右上角为锚点绘制

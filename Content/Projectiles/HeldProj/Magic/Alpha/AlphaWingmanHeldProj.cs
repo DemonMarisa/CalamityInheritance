@@ -23,10 +23,12 @@ using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
+using System.IO;
+using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
-    public class AlphaWingmanHeldProj : BaseHeldProj, ILocalizedModType
+    public class AlphaWingmanHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<WingmanLegacy>();
         public enum BehaviorType
@@ -53,13 +55,26 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             Projectile.DamageType = DamageClass.Magic;
             Projectile.ignoreWater = true;
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(Projectile.localAI[0]);
+            writer.Write(Projectile.localAI[2]);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.localAI[0] = reader.ReadInt32();
+            Projectile.localAI[2] = reader.ReadInt32();
+        }
+        public NPC target = null;
         public override void HoldoutAI()
         {
             ref float attackType = ref Projectile.localAI[0];
+            ref float SearchCD = ref Projectile.localAI[2];
             ref float attackTimer = ref Projectile.ai[1];
             ref float isSecondProj = ref Projectile.ai[2];
-
-            NPC target = CIFunction.FindClosestTarget(Projectile, 5000, true, true);
+            SearchCD++;
+            if (SearchCD % 30 == 0)
+                target = CIFunction.FindClosestTarget(Projectile, 5000, true, true);
 
             attackType = (float)BehaviorType.FollowMouse;
 
@@ -70,6 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             {
                 attackType = (float)BehaviorType.FollowEnemy;
                 Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(target.Center), AimResponsiveness);
+                Projectile.netUpdate = true;
             }
             else
                 Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
@@ -152,7 +168,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             {
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
             }
             DoBehavior_FlyAway();
         }
@@ -207,7 +223,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             {
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
             }
             DoBehavior_FlyAway();
         }
@@ -234,7 +250,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             {
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
             }
         }
         #endregion
@@ -274,8 +290,13 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
         #region 覆写玩家效果
         public override void UpdatePlayerVisuals(Player player, Vector2 playerHandPos)
         {
-            if (Main.MouseWorld.X < Projectile.Center.X)
-                Projectile.spriteDirection = -1;
+            if (Projectile.localAI[0] != (float)BehaviorType.ReturnPlayerNearBy)
+            {
+                if (Projectile.rotation > -MathHelper.PiOver2 && Projectile.rotation < MathHelper.PiOver2)
+                    Projectile.spriteDirection = 1;
+                else
+                    Projectile.spriteDirection = -1;
+            }
             else
                 Projectile.spriteDirection = 1;
         }
@@ -290,9 +311,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? 0f : MathHelper.Pi);
             Vector2 rotationPoint = texture.Size() * 0.5f;
-            SpriteEffects flipSprite = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            SpriteEffects flipSprite = Projectile.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
             return false;

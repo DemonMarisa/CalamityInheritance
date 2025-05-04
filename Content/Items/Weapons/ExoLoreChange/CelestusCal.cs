@@ -12,14 +12,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Celestus>();
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            var usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                damage.Base = 622;
-            }
-        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.CelestusChange") : null;

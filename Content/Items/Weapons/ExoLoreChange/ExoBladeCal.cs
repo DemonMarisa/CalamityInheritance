@@ -16,15 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Exoblade>();
-        
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            var mp = player.CIMod();
-            if (player.CheckExoLore())
-            {
-                damage.Base = 2500;
-            }
-        }
+       
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             Player p = Main.LocalPlayer;

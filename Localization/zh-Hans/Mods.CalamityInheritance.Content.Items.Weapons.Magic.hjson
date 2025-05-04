@@ -13,7 +13,6 @@ HeliumFlashLegacy: {
 	Tooltip:
 		'''
 		发射一颗超高速的挥发性星核，而后引发巨大聚变爆炸
-		聚变爆炸能根据玩家溢出的暴击概率造成四倍伤害
 		[c/FE9900:“于刹那之间瞥见星海浩瀚之威”]
 		'''
 }
@@ -384,16 +383,26 @@ ShadowdropStaff: {
 }
 
 ACTGenisis: {
-	// DisplayName: A C T Genisis
-	// Tooltip: ""
+	DisplayName: 源[Algt's Tweak]
+	Tooltip: 发射一束精准且强力的激光
 }
 
 ACTWingman: {
-	// DisplayName: A C T Wingman
-	// Tooltip: ""
+	DisplayName: 侧翼[Algt's Tweak]
+	Tooltip:
+		'''
+		弹射出一架无人机，无人机会跟随鼠标行动
+		按住右键时，无人机将跟随玩家移动
+		Project Wingman
+		'''
 }
 
 ACTAlphaRay: {
-	// DisplayName: A C T Alpha Ray
-	// Tooltip: ""
+	DisplayName: 阿尔法射线[Algt's Tweak]
+	Tooltip:
+		'''
+		发射激光的同时弹射出两架架无人机
+		按住右键时，无人机会聚集到玩家前方
+		附近有敌人时会优先锁定敌人攻击
+		'''
 }

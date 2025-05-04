@@ -22,10 +22,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
-    public class WingmanHeldProj : BaseHeldProj, ILocalizedModType
+    public class WingmanHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<WingmanLegacy>();
         public enum BehaviorType
@@ -51,7 +52,14 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             Projectile.DamageType = DamageClass.Magic;
             Projectile.ignoreWater = true;
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(Projectile.localAI[0]);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.localAI[0] = reader.ReadInt32();
+        }
         public override void HoldoutAI()
         {
             ref float attackType = ref Projectile.ai[0];
@@ -169,7 +177,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             float attackType = Projectile.ai[0];
             // 从弹幕中心指向鼠标中心
             Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
-            if (Main.MouseWorld.X < Projectile.Center.X)
+
+            if (Projectile.rotation > -MathHelper.PiOver2 && Projectile.rotation < MathHelper.PiOver2)
                 Projectile.spriteDirection = -1;
             else
                 Projectile.spriteDirection = 1;
@@ -185,9 +194,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == 1 ? MathHelper.Pi : 0f);
             Vector2 rotationPoint = texture.Size() * 0.5f;
-            SpriteEffects flipSprite = (Projectile.spriteDirection == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            SpriteEffects flipSprite = (Projectile.spriteDirection == 1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
             return false;

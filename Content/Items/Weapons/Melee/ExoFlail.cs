@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 54;
             Item.height = 90;
-            Item.DamageType = DamageClass.MeleeNoSpeed;
+            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Item.damage = 1000;
             Item.knockBack = 9f;
             Item.useAnimation = 15;
@@ -98,11 +98,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
-        }
-        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-        {
-            damage.Base += player.GetTotalDamage<TrueMeleeDamageClass>().ApplyTo(Item.damage);
-            base.ModifyWeaponDamage(player, ref damage);
         }
         public override void AddRecipes()
         {

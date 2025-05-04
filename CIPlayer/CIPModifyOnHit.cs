@@ -28,57 +28,9 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-            {
-                if (GodSlayerRangedSet && hitInfo.Crit && proj.DamageType == DamageClass.Ranged)
-                {
-                    int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
-                    if (randomChance > 1)
-                    {
-                        if(Main.rand.Next(1,101) <= randomChance)
-                        {
-                            hitInfo.Damage *= 2;
-                        }
-                    }
-                    else
-                    {
-                        if (Main.rand.NextBool(20))
-                        {
-                            hitInfo.Damage *= 4;
-                        }
-                    }
-                }
-                else if (proj.type == ModContent.ProjectileType<HeliumFlashBlastLegacy>() && hitInfo.Crit && proj.DamageType == DamageClass.Magic)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Magic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-                else if (PerunofYharimStats && hitInfo.Crit)
-                {
-                    int getOverCrtis = (int)(Player.GetTotalCritChance(DamageClass.Generic) - 100);
-                    if(getOverCrtis > 1)
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-            };
-            if (SilvaMeleeSetLegacy)
-            {
-                if (Main.rand.NextBool(4) && (proj.MeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
             if (CIConfig.Instance.silvastun == true)
             {
-                if (proj.MeleeClass() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                if (proj.TrueMeleeClass() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
                 {
                     target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
                     SilvaStunDebuffCooldown = 1800;

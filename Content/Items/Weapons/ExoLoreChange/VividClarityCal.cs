@@ -26,10 +26,9 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             var usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-            {
-                damage.Base = 265;
-            }
+                damage.Base *= 0.45f;
         }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.VividChange") : null;

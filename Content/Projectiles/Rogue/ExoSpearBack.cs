@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.MaxUpdates = 3;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 5;
-            Projectile.timeLeft = 35;
+            Projectile.timeLeft = 20;
             Projectile.tileCollide = false;
         }
 

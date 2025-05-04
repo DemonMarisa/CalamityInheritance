@@ -223,6 +223,11 @@ Configs: {
 				Default by false
 				'''
 		}
+
+		DrawDifficultyUI: {
+			Label: Draw Difficulty U I
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

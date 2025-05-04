@@ -26,13 +26,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Photoviscerator>();
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            var usPlayer = player.CIMod();
-
-            if (player.CheckExoLore())
-                damage.Base = 810;
-        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.PhotovisceratorChange") : null;

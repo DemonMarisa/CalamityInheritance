@@ -403,6 +403,10 @@ namespace CalamityInheritance.NPCs
                 case NPCID.PresentMimic:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<HolidayHalberd>(), 7, 5));
                     break;
+                case NPCID.MartianWalker:
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<WingmanLegacy>(), 7, 5));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ACTWingman>(), 7, 5));
+                    break;
                 //蚁狮掉弓和爪子
                 case NPCID.Antlion:
                 case NPCID.FlyingAntlion:

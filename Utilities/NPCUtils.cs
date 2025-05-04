@@ -274,7 +274,7 @@ namespace CalamityInheritance.Utilities
         public static bool IsNotMaterial(Item item, bool dontNeedCheck = true)
         {
             if (item.ModItem != null)
-                if (item.ModItem.Mod != Calamity)
+                if (item.ModItem.Mod != Calamity && item.ModItem.Mod != ModContent.GetInstance<CalamityInheritance>())
                     return false;
             if (dontNeedCheck)
                 return true;

@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 50;
             Item.height = 72;
-            Item.damage = 100;
+            Item.damage = 175;
             Item.DamageType = DamageClass.Melee;
             Item.useTime = Item.useAnimation = 16;
             Item.useTurn = true;

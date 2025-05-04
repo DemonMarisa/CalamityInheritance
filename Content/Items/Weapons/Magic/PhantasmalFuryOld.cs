@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 62;
             Item.height = 60;
-            Item.damage = 260;
+            Item.damage = 420;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 20;
             Item.useTime = 20;

@@ -593,3 +593,8 @@ FulgurationHalberd: {
 		'''
 	DisplayName: Fulguration Halberd
 }
+
+InsidiousImpalerLegacy: {
+	DisplayName: Insidious Impaler Legacy
+	Tooltip: ""
+}

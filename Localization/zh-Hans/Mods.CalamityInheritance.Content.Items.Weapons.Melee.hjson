@@ -452,8 +452,8 @@ DukeLegendary: {
 }
 
 AquaticDissolution: {
-	// DisplayName: Aquatic Dissolution
-	// Tooltip: Fires whaling spears from the sky that bounce off tiles
+	DisplayName: 水溶利刃[Legacy]
+	Tooltip: 发射从天而降的渊洋之矛，遇到物块时会反弹
 }
 
 DefenseBlade: {
@@ -590,4 +590,9 @@ FulgurationHalberd: {
 		右键切换攻击模式
 		'''
 	DisplayName: 电灼长戟[Legacy]
+}
+
+InsidiousImpalerLegacy: {
+	DisplayName: 阴险穿刺者[Legacy]
+	Tooltip: 发射一柄感染鱼叉，黏附于敌人并产生爆炸
 }

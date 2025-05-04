@@ -89,15 +89,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Vector2 offset = new Vector2(OffsetX, OffsetY).RotatedBy(playeraim.ToRotation());
 
             Projectile.Center = Vector2.Lerp(Projectile.Center, player.Center + offset, AimResponsiveness);
-
-            Projectile.spriteDirection = Projectile.direction;
-
-            player.ChangeDir(Projectile.direction);
-            player.heldProj = Projectile.whoAmI;
-            player.itemTime = 2;
-            player.itemAnimation = 2;
-
-            player.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
         }
         #endregion
         #region 覆写指向目标

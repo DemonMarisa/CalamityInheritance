@@ -22,14 +22,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<HeavenlyGale>();
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            //刚出的版本 355
-            // 现在是800，用于对抗数据膨胀終灾
-            if (player.CheckExoLore())
-                damage.Base = 355;
-            base.ModifyWeaponDamage(item, player, ref damage);
-        }
         public override void ModifyTooltips(Item item, List<TooltipLine> o)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.HeavenlyGaleChange") : null;

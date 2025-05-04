@@ -42,6 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public bool isAlive = true;
         public float currentNPCDist;
         public int foreachCD;
+        public NPC target = null;
         public override void AI()
         {
             //获取玩家
@@ -93,14 +94,12 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if (Projectile.timeLeft < 280)
             {
                 foreachCD++;
-                if(foreachCD % 30 == 0)
+                if(foreachCD % 60 == 0)
                 {
-                    foreach (NPC npc in Main.ActiveNPCs)
-                    {
-                        currentNPCDist = Vector2.Distance(npc.Center, Projectile.Center);
-                        if (currentNPCDist < npcDistCompare)
-                            isAlive = false;
-                    }
+                    target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
+                    currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                    if (currentNPCDist < npcDistCompare)
+                        isAlive = false;
                 }
 
                 if (isAlive == false && Projectile.ai[2] == 0f)
@@ -115,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 float acceleration = 0.015f * 15f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
 
-                CIFunction.HomeInOnNPC(Projectile, !Projectile.tileCollide, 30000f, homeInSpeed, 0f, 0.08f);
+                CIFunction.HomingNPCBetter(Projectile, target, 3000f, homeInSpeed, 0f, 1, null, 0.08f);
             }
         }
 

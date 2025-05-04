@@ -40,8 +40,8 @@ namespace CalamityInheritance.CIPlayer
             }
             //熟练度
 
-            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
-            bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
+            bool isTrueMelee = hit.DamageType.CountsAsClass<TrueMeleeDamageClass>() || hit.DamageType.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+            bool isMelee = hit.DamageType.CountsAsClass<MeleeNoSpeedDamageClass>() || hit.DamageType.CountsAsClass<MeleeDamageClass>() || isTrueMelee;
 
             if (isMelee && target.active)
                 GiveExpMelee(target, isTrueMelee, isMelee, hit.Crit);
@@ -53,8 +53,6 @@ namespace CalamityInheritance.CIPlayer
             if (Player.whoAmI != Main.myPlayer)
                 return;
             #region 熟练度
-            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
-            bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
             if (target.active)
                 GiveExp(target, hit, projectile);
             #endregion

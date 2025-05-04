@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
-    public class ACTAlphaHeldProj : BaseHeldProj, ILocalizedModType
+    public class ACTAlphaHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override float OffsetX => 20;
@@ -49,20 +49,19 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             // 使用旋转角度计算方向
             Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
             Projdirection.SafeNormalize(Vector2.UnitX);
-            Vector2 fireOffset = new(10f, 0f);
+            Vector2 fireOffset = new(20f, 0f);
             fireOffset = fireOffset.RotatedBy(Projectile.rotation);
-
             if (Projectile.ai[2] == 0f)
             {
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
                 Projectile.ai[2]++;
             }
             if (attackTimer % 20 == 0)
             {
                 SoundEngine.PlaySound(CISoundMenu.GenisisFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
             }
         }
         #region 删除条件

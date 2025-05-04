@@ -54,9 +54,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+
             float rotOffset = MathHelper.PiOver4 + MathHelper.ToRadians(3.3f);
-            if (Projectile.Center.X < player.Center.X)
-                rotOffset = MathHelper.PiOver4 + MathHelper.PiOver2 - MathHelper.ToRadians(3.5f);
 
             Time++;
             Lighting.AddLight(Projectile.Center + Projectile.velocity * 0.6f, 0.6f, 0.2f, 0.9f);
@@ -218,12 +217,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Player player = Main.player[Projectile.owner];
-            if (Projectile.Center.X < player.Center.X)
-                Projectile.spriteDirection = -1;
-            else
-                Projectile.spriteDirection = 1;
-
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }

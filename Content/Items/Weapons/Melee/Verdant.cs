@@ -28,7 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 30;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = 98;
+            // 原天顶伤害1800，在天顶使用时伤害乘3
+            Item.damage = 600;
             Item.knockBack = 6f;
             Item.useTime = 22;
             Item.useAnimation = 22;
@@ -47,19 +48,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.rare = ModContent.RarityType<BlueGreen>();
         }
-        public override bool CanUseItem(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             if (Main.zenithWorld)
-            {
-                Item.damage = 1800;
-            }
-            else
-            {
-                Item.damage = 98;
-            }
-            return true;
+                damage.Base *= 3f;
         }
-
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -34,13 +34,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public const float SmallVortexSpeedFac = 1.3f;
         public const int SmallVortexCounts = 3;
         public const float SmallVortexDamageFac = 0.3f;
-        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
-        {
-            var usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-                damage.Base = 1165;
-            
-        }
         public override bool CanUseItem(Item item, Player player)
         {
             if (player.CheckExoLore())
