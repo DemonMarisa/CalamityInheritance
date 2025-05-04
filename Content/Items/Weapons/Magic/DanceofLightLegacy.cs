@@ -15,8 +15,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DanceofLightLegacy: CIMagic, ILocalizedModType
     {
-        
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 2700 : 700;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -24,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = NewDamage;
+            Item.damage = 2700;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 9;
             Item.width = 28;

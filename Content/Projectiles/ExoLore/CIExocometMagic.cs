@@ -93,15 +93,22 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             float npcDistCompare = 800f;
             if (Projectile.timeLeft < 280)
             {
+                if(Projectile.timeLeft == 279)
+                {
+                    target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
+                    currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                }
                 foreachCD++;
                 if(foreachCD % 60 == 0)
                 {
                     target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
                     currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                }
+                if (foreachCD % 5 == 0)
+                {
                     if (currentNPCDist < npcDistCompare)
                         isAlive = false;
                 }
-
                 if (isAlive == false && Projectile.ai[2] == 0f)
                 {
                     Projectile.timeLeft = 200;

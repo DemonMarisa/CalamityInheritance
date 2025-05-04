@@ -16,7 +16,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
     [LegacyName("BensUmbrella")]
     public class TemporalUmbrellaOld : CISummon, ILocalizedModType
     {
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 4000 : 1000;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -24,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetDefaults()
         {
             Item.mana = 99;
-            Item.damage = Main.zenithWorld ? 150 : NewDamage;
+            Item.damage = Main.zenithWorld ? 150 : 4000;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.width = 74;
             Item.height = 72;

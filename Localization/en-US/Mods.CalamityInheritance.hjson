@@ -166,11 +166,6 @@ Configs: {
 			Label: "[i:CalamityInheritance/Arcueid]-月姬-"
 		}
 
-		LevelUp: {
-			Label: Level Up
-			Tooltip: ""
-		}
-
 		Kunoji: {
 			Label: "[i:CalamityInheritance/Kunoji]-久遠寺邸朝食-"
 			Tooltip:
@@ -190,18 +185,12 @@ Configs: {
 		}
 
 		DrawDifficultyUI: {
-			Label: Draw Difficulty U I
-			Tooltip: ""
-		}
-	}
-
-		UIY: {
-			Label: U I Y
+			Label: "[i:CalamityInheritance/Death]Draw Difficulty UI"
 			Tooltip: ""
 		}
 
-		UIX2: {
-			Label: U I X2
+		TurnOffFirstText: {
+			Label: Turn Off First Text
 			Tooltip: ""
 		}
 	}
@@ -519,16 +508,6 @@ Configs: {
 				[i:RagePotion]Potions and buffs, literally all of them.
 				'''
 			Label: "[i:TerraBlade]Unnerf Vanilla"
-		}
-
-		ShadowspecBuff: {
-			Tooltip:
-				'''
-				Determines if you want some OVERPOWERED Shadowspec stuff, similar to 1.4.5.7
-				This might be unfair to BR event, or some other addons
-				Default by false 
-				'''
-			Label: "[i:CalamityMod/ShadowspecBar]Shadowspecs Buff"
 		}
 
 		CalBossesCanDropSoul: {

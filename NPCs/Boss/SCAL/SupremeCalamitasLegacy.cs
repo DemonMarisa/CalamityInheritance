@@ -359,9 +359,15 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             isSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>());
             isBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>());
             if (Enraged)
+            {
                 vectorMultiplier += 2f;
+                NPC.DR_NERD(10f);
+            }
             else
+            {
                 vectorMultiplier = 1f;
+                NPC.DR_NERD(DR);
+            }
 
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)

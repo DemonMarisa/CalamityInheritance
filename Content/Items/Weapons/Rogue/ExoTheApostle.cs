@@ -52,6 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<ExoSpearProj>();
             Item.shootSpeed = 16f;
         }
+        public override float StealthDamageMultiplier => 0.5f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

@@ -18,8 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class SvantechnicalLegacy : CIRanged, ILocalizedModType
     {
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 350;
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -29,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.width = 60;
             Item.height = 26;
-            Item.damage = NewDamage;
+            Item.damage = 700;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 2;
             Item.useAnimation = 24;

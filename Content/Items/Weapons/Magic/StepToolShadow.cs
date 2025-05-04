@@ -18,8 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class StepToolShadow : CIMagic, ILocalizedModType
     {
-        
-        public int NewDamage =  CIServerConfig.Instance.ShadowspecBuff? 11451 : 1145;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -28,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 960;
             Item.height = 1120;
-            Item.damage = NewDamage;
+            Item.damage = 11451;
             Item.DamageType = DamageClass.Magic;
             Item.useTime = 30;
             Item.useAnimation = 30;

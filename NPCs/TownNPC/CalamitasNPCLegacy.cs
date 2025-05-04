@@ -550,7 +550,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 //化魂神晶利润率高达1000%
                 .Add(new Item(ModContent.ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 45) }, CalamityConditions.DownedDevourerOfGods)
                 //你小子龙魂卖的比化魂神晶便宜
-                .Add(new Item(ModContent.ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 60) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ModContent.ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 60) }, CalamityConditions.DownedYharon)
 
                 .Add(new Item(ModContent.ItemType<CodebreakerBase>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
                 .Add(new Item(ModContent.ItemType<DecryptionComputer>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)

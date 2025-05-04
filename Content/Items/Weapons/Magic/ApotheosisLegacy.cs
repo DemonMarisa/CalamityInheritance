@@ -23,8 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class ApotheosisLegacy : CIMagic, ILocalizedModType
     {
-        
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 777 : 377;
+       
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -33,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = NewDamage;
+            Item.damage = 777;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 7;
             Item.width = 30;

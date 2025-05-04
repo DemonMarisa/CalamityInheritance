@@ -19,11 +19,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.staff[Item.type] = true;
             Item.ResearchUnlockCount = 1;
         }
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 3456 : 1145;
 
         public override void SetDefaults()
         {
-            Item.damage = 3200;
+            Item.damage = 3456;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 42;
             Item.width = 84;

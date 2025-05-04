@@ -144,11 +144,6 @@ Configs: {
 			Label: "[i:CalamityInheritance/Arcueid]-月姬-"
 		}
 
-		LevelUp: {
-			// Label: Level Up
-			// Tooltip: ""
-		}
-
 		Kunoji: {
 			Label: "[i:CalamityInheritance/Kunoji]-久遠寺邸朝食-"
 			Tooltip:
@@ -168,13 +163,12 @@ Configs: {
 		}
 
 		DrawDifficultyUI: {
-			// Label: Draw Difficulty U I
-			// Tooltip: ""
+			Label: "[i:CalamityInheritance/Death]难度UI指示器"
+			Tooltip: 开启后会绘制旧版本的难度UI
 		}
-	}
 
-		UIX2: {
-			// Label: U I X2
+		TurnOffFirstText: {
+			// Label: Turn Off First Text
 			// Tooltip: ""
 		}
 	}
@@ -487,16 +481,6 @@ Configs: {
 				[i:RagePotion]几乎所有的药水与buff回调
 				'''
 			Label: "[i:TerraBlade]原版削弱回调"
-		}
-
-		ShadowspecBuff: {
-			Tooltip:
-				'''
-				如果你想玩一些旧版数值的魔影武器, 你就可以启用这个
-				不过可能对Boss Rush或者其他的附属来说有点不公平
-				默认关闭
-				'''
-			Label: "[i:CalamityMod/ShadowspecBar]加强魔影武器"
 		}
 
 		CalBossesCanDropSoul: {

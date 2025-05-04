@@ -77,12 +77,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            if (CIServerConfig.Instance.ShadowspecBuff)
-            {
+            damage.Base *= 5;
+            if (player.altFunctionUse == 1)
                 damage.Base *= 5;
-                if (player.altFunctionUse == 1)
-                    damage.Base *= 5;
-            }
         }
         public override bool CanUseItem(Player player)
         {

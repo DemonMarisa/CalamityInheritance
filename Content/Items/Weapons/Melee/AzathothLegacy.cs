@@ -13,8 +13,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class AzathothLegacy : CIMelee, ILocalizedModType
     {
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff ? 650 : 270;
-        
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;
@@ -28,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = Main.zenithWorld? 90 : NewDamage;
+            Item.damage = Main.zenithWorld? 90 : 650;
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;

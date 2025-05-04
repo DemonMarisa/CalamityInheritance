@@ -685,6 +685,9 @@ namespace CalamityInheritance.System
             // 归墟
             if (item.type == ModContent.ItemType<CosmicImmaterializerOld>())
                 item.damage = 2000;
+            // 热寂
+            if (item.type == ModContent.ItemType<CelestialObliterator>())
+                item.damage = 600;
             #endregion
             // 星火解离者
             if (item.type == ModContent.ItemType<Photoviscerator>())
@@ -706,7 +709,7 @@ namespace CalamityInheritance.System
                 item.damage = 1165;
             // 耀界
             if (item.type == ModContent.ItemType<VividClarity>())
-                item.damage = 650;
+                item.damage = 400;
             // 归墟
             if (item.type == ModContent.ItemType<CosmicImmaterializer>())
                 item.damage = 1500;

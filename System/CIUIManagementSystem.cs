@@ -35,6 +35,12 @@ namespace CalamityInheritance.System
                 return true;
             }, InterfaceScaleType.UI));
 
+            // 进入游戏的文字
+            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Text UI", () =>
+            {
+                FirstText.Draw(Main.spriteBatch);
+                return true;
+            }, InterfaceScaleType.UI));
 
             // Popup GUIs.
             layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Mode Indicator UI", () =>

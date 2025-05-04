@@ -57,7 +57,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 
         public override void HoldoutAI()
         {
-            Projectile.extraUpdates = 1;
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer usPlayer = player.CIMod();
             // 使用类型 类型为0时为左键 为1时为右键

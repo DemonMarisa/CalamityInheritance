@@ -1081,8 +1081,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (!CIDownedBossSystem.DownedLegacyYharonP1)
             {
+                string key = Language.GetTextValue("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse");
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse", Color.Orange);
-                CIFunction.SendTextOnPlayer("Boss.Text.YharonPreEclipse", Color.Orange);
+                CIFunction.SendTextOnPlayer(key, Color.Orange);
             }
             else
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse2", Color.Orange);

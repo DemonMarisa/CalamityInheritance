@@ -37,7 +37,23 @@ namespace CalamityInheritance.Content.Items
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
-            
+            // 空列表检查
+            if (CalStatInflationBACK.PostDOGWeapons == null ||
+                CalStatInflationBACK.PostDOGWeapons.Count == 0)
+            {
+                Main.NewText("没有可生成的物品！");
+                return false;
+            }
+
+            // 生成所有物品
+            foreach (int itemType in CalStatInflationBACK.PostDOGWeapons)
+            {
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), itemType, 1);
+            }
+
+            // 显示提示信息
+            Main.NewText($"生成了 {CalStatInflationBACK.PostDOGWeapons.Count} 件物品！");
+            /*
             if (CIConfig.Instance.UIX == 1)
             {
                 // 空列表检查
@@ -113,7 +129,7 @@ namespace CalamityInheritance.Content.Items
 
                 // 显示提示信息
                 Main.NewText($"生成了 {CalStatInflationBACK.PostPolterghastWeapons.Count} 件物品！");
-            }
+            }*/
             return true;
         }
     }

@@ -20,7 +20,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         
         
         public static float Knockback = 9f;
-        public int NewDamage = CIServerConfig.Instance.ShadowspecBuff? 700 : 455;
         public static float Speed = 12f;
         public override void SetStaticDefaults()
         {
@@ -31,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 78;
             Item.height = 64;
-            Item.damage = 455;
+            Item.damage = 700;
             Item.knockBack = Knockback;
             Item.useTime = 5;
             Item.useAnimation = 5;
