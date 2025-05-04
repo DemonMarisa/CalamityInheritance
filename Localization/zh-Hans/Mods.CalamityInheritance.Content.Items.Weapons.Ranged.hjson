@@ -497,6 +497,11 @@ Dualpoon: {
 	Tooltip: 发射两支鱼叉
 }
 
+MandibleBow: {
+	// DisplayName: Mandible Bow
+	// Tooltip: ""
+}
+
 MarniteBayonet: {
 	DisplayName: 花岗岩刺枪[Revamped]
 	Tooltip: 这把枪会伤害接触它的敌人

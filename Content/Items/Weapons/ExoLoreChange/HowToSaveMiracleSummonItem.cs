@@ -14,12 +14,12 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<CosmicImmaterializer>();
         public override bool CanUseItem(Item item, Player player)
         {
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+            if (player.CheckExoLore())
             {
                 //目前这里的改法是……直接复制了一份射弹。
                 //我不清楚到底怎么改。 
                 item.shoot = ModContent.ProjectileType<SaveCosmic>();
-                if (player.ownedProjectileCounts[item.shoot] <= 0)
+                if (player.ownedProjectileCounts[item.shoot] <= 0 && player.maxMinions > 10f)
                     return true;
             }
             else
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+            if (player.CheckExoLore())
                 damage.Base = 600;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

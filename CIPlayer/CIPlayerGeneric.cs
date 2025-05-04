@@ -22,6 +22,7 @@ using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
 using Hjson;
 using CalamityInheritance.Sounds.Custom;
+using CalamityMod.Projectiles.Ranged;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -124,6 +125,7 @@ namespace CalamityInheritance.CIPlayer
         public bool cosmicEnergy = false;
         public bool IsAncientClasper = false;
         public bool bloodClot = false;
+        public bool CosmicEnergyExtra = false;
         #endregion
         #region 禁止生成物品
         public bool cIdisableVoodooSpawns = false;
@@ -162,6 +164,7 @@ namespace CalamityInheritance.CIPlayer
             cosmicEnergy = false;
             IsAncientClasper = false;
             bloodClot = false;
+            CosmicEnergyExtra = false;
             #endregion
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;
@@ -197,6 +200,7 @@ namespace CalamityInheritance.CIPlayer
             DefendTier1Timer = 0;
             DefenseBoost = 0f;
             DNAImmnueActive = 0;
+            CosmicEnergyExtra = false;
         }
         public override void PostUpdate()
         {

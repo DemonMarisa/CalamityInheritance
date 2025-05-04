@@ -246,7 +246,7 @@ WingmanLegacy: {
 }
 
 GenisisLegacy: {
-	Tooltip: "发射Y形状的毁灭能量束和一簇激光"
+	Tooltip: 发射Y形状的毁灭能量束和一簇激光
 	DisplayName: 源[Legacy]
 }
 
@@ -308,6 +308,11 @@ RavagerLegendary: {
 	TierThree: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
 	TierThreeTint: "[c/818589:佩戴灾厄符章去地狱会会双足翼龙]"
 	LegendaryScaling: "[c/FF009B:强化属性]: {0}%"
+}
+
+FuckVoid: {
+	// Tooltip: ""
+	// DisplayName: Fuck Void
 }
 
 DestroyerLegendary: {

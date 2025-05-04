@@ -159,37 +159,37 @@ ShrineForestBuff: {
 }
 
 SMarbleSwordBuff: {
-	DisplayName: 角斗士短剑
+	DisplayName: 角斗士短剑[Legacy]
 	Description: 角斗士短剑在你身旁飞舞
 }
 
 DefenderBuff: {
-	DisplayName: 避难所
+	DisplayName: 避难所[Legendary]
 	Description: 护甲屹立不倒...
 }
 
 DukeBuff: {
-	DisplayName: 海爵的馈赠
+	DisplayName: 海爵的馈赠[Legendary]
 	Description: 似乎海爵正在激发你所有的近战属性...
 }
 
 PBGBuff: {
-	DisplayName: 孔雀的羽翼
+	DisplayName: 孔雀的羽翼[Legendary]
 	Description: 很大程度上减少你承受的伤害...很长一段时间
 }
 
 AbyssalFlames: {
-	DisplayName: 深渊之火
+	DisplayName: 深渊之火[Legacy]
 	Description: 你的灵魂正在燃烧
 }
 
 Horror: {
-	DisplayName: 恐惧
+	DisplayName: 恐惧[Legacy]
 	Description: 你的精神防线正在崩溃
 }
 
 VulnerabilityHexLegacy: {
-	DisplayName: 孱弱巫咒
+	DisplayName: 孱弱巫咒[Legacy]
 	Description: 你的身体力不从心
 }
 
@@ -199,12 +199,12 @@ CyrogenLegendaryBuff: {
 }
 
 CryoDrain: {
-	DisplayName: 低温虹吸
+	DisplayName: 低温虹吸[Legendary]
 	Description: 寒冰壁垒似乎正在掠夺受害者的体温...
 }
 
 VolcanoBuff: {
-	Description: 火山
+	Description: 火山[Legendary]
 	DisplayName: 火山加热
 }
 
@@ -224,6 +224,11 @@ MaliceModeHot: {
 }
 
 BloodClot: {
-	DisplayName: 血块
+	DisplayName: 血块[Legacy]
 	Description: 血块正在保护你
+}
+
+CosmicEnergyExtra: {
+	DisplayName: 归虚之灵
+	Description: 归虚之灵会保护你
 }

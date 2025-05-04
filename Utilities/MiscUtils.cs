@@ -170,6 +170,9 @@ namespace CalamityInheritance.Utilities
             string getName = "CalamityInheritance:" + name; 
             return getName;
         }
-
+        public static void Chat(this string name)
+        {
+            Main.NewText(name);
+        }
     }
 }
