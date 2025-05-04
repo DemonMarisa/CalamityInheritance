@@ -29,46 +29,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-            };
-            if (SilvaMeleeSetLegacy)
-            {
-                if (Main.rand.NextBool(4) && (proj.MeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-                    {
-                        hitInfo.Damage *= Main.rand.Next(1,101) <= getOverCrtis? 2 : 1;
-                    }
-                }
-            };
-            if (SilvaMeleeSetLegacy)
-            {
-                if (Main.rand.NextBool(4) && (proj.MeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
-                }
-            }
-
-            if (CIConfig.Instance.silvastun == true)
-            {
-                if (proj.TrueMeleeClass() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
-                {
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
-                    SilvaStunDebuffCooldown = 1800;
-                }
-            }
             //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的1/8，这是一个防后效果
             //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害1/4
             if (IsColdDivityActiving && ColdDivityTier3 && proj.type == ModContent.ProjectileType<CryogenPtr>())

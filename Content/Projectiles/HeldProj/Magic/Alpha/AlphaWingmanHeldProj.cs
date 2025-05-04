@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
