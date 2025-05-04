@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         {
             CreateRecipe(150).
                 AddIngredient(ItemID.MusketBall, 150).
-                AddIngredient(ModContent.ItemType<CryonicBar>()).
+                AddRecipeGroup(CIRecipeGroup.CryoBar).
                 AddTile(TileID.IceMachine).
                 Register();
         }

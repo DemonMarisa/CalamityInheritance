@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {
@@ -36,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.shoot = ModContent.ProjectileType<InsidiousImpalerProjLegacy>();
             Item.shootSpeed = 5f;
 
-            Item.value = CalamityGlobalItem.Rarity13BuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

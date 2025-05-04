@@ -520,7 +520,7 @@ Triploon: {
 
 BrimstoneFlameblaster: {
 	Tooltip: 发射硫磺火球
-	DisplayName: 硫磺火喷射器Legacy]
+	DisplayName: 硫磺火喷射器[Legacy]
 }
 
 AeriesLegacy: {
@@ -529,7 +529,7 @@ AeriesLegacy: {
 }
 
 PearlGodLegacy: {
-	DisplayName: 珍珠之神Legacy]
+	DisplayName: 珍珠之神[Legacy]
 	Tooltip:
 		'''
 		汝命归我……

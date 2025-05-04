@@ -50,7 +50,7 @@ GoldenGun: {
 }
 
 AncientMurasama: {
-	Tooltip: ""
+	Tooltip: "Revengence Drop"
 	DisplayName: Ancient Murasama
 }
 

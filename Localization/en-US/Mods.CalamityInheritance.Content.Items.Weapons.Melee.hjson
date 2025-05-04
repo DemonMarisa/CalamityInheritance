@@ -596,5 +596,5 @@ FulgurationHalberd: {
 
 InsidiousImpalerLegacy: {
 	DisplayName: Insidious Impaler Legacy
-	Tooltip: ""
+	Tooltip: "Fires infected harpoons that stick to enemies and explode"
 }
