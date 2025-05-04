@@ -81,7 +81,7 @@ namespace CalamityInheritance.Rarity.Special
     public class CryogenBlue: ModRarity
     {
         //寒冰神性稀有度
-        public override Color RarityColor => new(5, 63, 139); //#053F8B
+        public override Color RarityColor => new (30, 144, 255); //#1E90FF
     }
     public class PlanteraGreen: ModRarity
     {

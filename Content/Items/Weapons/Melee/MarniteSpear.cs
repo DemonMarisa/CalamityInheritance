@@ -61,5 +61,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             return false;
         }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddRecipeGroup("AnyGoldBar", 5).
+                AddIngredient(ItemID.GraniteBlock, 5).
+                AddIngredient(ItemID.MarbleBlock, 5).
+                AddTile(TileID.Anvils).
+                Register();
+        }
     }
 }

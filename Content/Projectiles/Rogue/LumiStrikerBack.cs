@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.timeLeft = 20;
             Projectile.tileCollide = false;
         }
-        public int Time = 0;
+        public ref float Time => ref Projectile.ai[0];
         public override void AI()
         {
             Time++;

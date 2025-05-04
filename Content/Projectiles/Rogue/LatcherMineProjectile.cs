@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -36,7 +37,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
-
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.localAI[0] = reader.ReadSingle();
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(Projectile.localAI[0]);
+        }
         public override void AI()
         {
             if (Projectile.ai[0] == 0f)
@@ -59,16 +67,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.localAI[0] >= 60 * secondsToLive)
                 {
                     readyToKillSelf = true;
+                    Projectile.netUpdate = true;
                 }
                 else if ((int)Projectile.ai[1] < 0 || (int)Projectile.ai[1] >= 200)
                 {
                     readyToKillSelf = true;
+                    Projectile.netUpdate = true;
                 }
                 else if (Main.npc[(int)Projectile.ai[1]].active && !Main.npc[(int)Projectile.ai[1]].dontTakeDamage)
                 {
                     Projectile.Center = Main.npc[(int)Projectile.ai[1]].Center - Projectile.velocity * 2f;
                     Projectile.gfxOffY = Main.npc[(int)Projectile.ai[1]].gfxOffY;
                     Projectile.timeLeft = (int)MathHelper.Min(Projectile.timeLeft, 120);
+                    Projectile.netUpdate =true;
                 }
                 else
                 {
@@ -87,12 +98,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Projectile.velocity = Vector2.UnitY * 3f;
                 Projectile.rotation = 0f;
+                Projectile.netUpdate = true;
             }
             if (Projectile.timeLeft == 110 * (Projectile.Calamity().stealthStrike ? 2 : 1) ||
                 Projectile.timeLeft == 60 * (Projectile.Calamity().stealthStrike ? 2 : 1) ||
                 Projectile.timeLeft == 24 * (Projectile.Calamity().stealthStrike ? 2 : 1))
             {
                 Projectile.frame++;
+                Projectile.netUpdate = true;
             }
             if (Projectile.timeLeft < 24 * (Projectile.Calamity().stealthStrike ? 2 : 1))
             {

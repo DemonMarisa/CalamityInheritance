@@ -23,19 +23,8 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.RetinazerTrophy).
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddIngredient(ItemID.SpazmatismTrophy).
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddIngredient(ItemID.DestroyerTrophy).
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddIngredient(ItemID.SkeletronPrimeTrophy).
+                AddRecipeGroup(CIRecipeGroup.TrophyMechs).
+                DisableDecraft().
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().

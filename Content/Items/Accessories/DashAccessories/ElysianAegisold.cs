@@ -29,9 +29,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegis>()] = ModContent.ItemType<ElysianAegisold>();
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<ElysianAegisold>()] = ModContent.ItemType<ElysianAegis>();
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<ElysianAegis>();
         }
         public override void SetDefaults()
         {
@@ -63,18 +62,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             
             player.statLifeMax2 += 40;
             player.lifeRegen += 4;
-        }
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                    AddIngredient<LoreProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-
-            CreateRecipe().
-                    AddIngredient<KnowledgeProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
         }
     }
 }

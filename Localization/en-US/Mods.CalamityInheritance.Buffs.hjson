@@ -227,3 +227,8 @@ BloodClot: {
 	DisplayName: Blood Clot
 	Description: The blood clot will protect you
 }
+
+CosmicEnergyExtra: {
+	DisplayName: Cosmic Energy
+	Description: The cosmic energy will protect you
+}

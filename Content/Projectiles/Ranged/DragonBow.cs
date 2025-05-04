@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class DragonBow: ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<DrataliornusLegacy>();
-        public override string Texture => $"{Generic.WeaponRoute}/Ranged/DrataliornusLegacy";
+        public override string Texture => $"{Generic.WeaponPath}/Ranged/DrataliornusLegacy";
 
         public override void SetDefaults()
         {

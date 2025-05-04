@@ -15,16 +15,15 @@ using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SupernovaBombold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Supernovaold";
-        public int Timer = 0;
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/Supernovaold";
         public bool MouseInit = false;
-        public Vector2 GetPrevMousePos = Vector2.Zero;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
@@ -47,16 +46,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(MouseInit);
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            MouseInit = reader.ReadBoolean();
+            Projectile.DoSyncHandlerRead(ref reader);
 
+        }
         public override void AI()
         {
-            bool isOnExoLore = false;
-            if (Main.player[Projectile.owner].CIMod().LoreExo || Main.player[Projectile.owner].CIMod().PanelsLoreExo)
-            {
-                isOnExoLore = true;
-                Projectile.netUpdate = true;
-            }
-
             //dust and lighting
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))

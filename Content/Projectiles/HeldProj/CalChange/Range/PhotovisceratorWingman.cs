@@ -1,23 +1,12 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static CalamityInheritance.Utilities.CIFunction;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
 {
@@ -38,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
         public Player Owner => Main.player[Projectile.owner];
         // 弹药消耗
         public static float AmmoNotConsumeChance = 0.95f;
-
+        public override string Texture => "CalamityInheritance/Content/Projectiles/HeldProj/CalChange/Range/PhotovisceratorWingman";
         public float leftUseCD = 30;
         public float animationProgress = 40;
         public float AnimationCD = 20;

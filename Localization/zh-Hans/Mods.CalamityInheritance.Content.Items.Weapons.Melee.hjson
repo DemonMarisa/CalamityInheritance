@@ -347,21 +347,21 @@ GlacialCrusher: {
 }
 
 BrimlashBuster: {
-	// DisplayName: Brimlash Buster
-	/* Tooltip:
+	DisplayName: 硫火裂炎刃[Legacy]
+	Tooltip:
 		'''
-		50% chance to do triple damage on enemy hits
-		Fires a brimstone bolt that explodes into more bolts on death
-		''' */
+		50%造成三倍伤害
+		发射一颗硫磺火弹，在爆裂时产生更多硫磺火弹
+		'''
 }
 
 Verdant: {
 	DisplayName: 葱茏[Legacy]
-	/* Tooltip:
+	Tooltip:
 		'''
-		Fires crystal leaves when enemies are near
-		A very agile yoyo
-		''' */
+		有敌人在附近时发射水晶叶片
+		一只十分灵活的悠悠球
+		'''
 }
 
 AzathothLegacy: {
@@ -431,7 +431,6 @@ VictideBoomerangMelee: {
 DukeLegendary: {
 	Tooltip:
 		'''
-		远古汉化的版本
 		剑刃击中敌人会释放涡流台风
 		右键发射水刃龙卷
 		会随着游戏流程的推进得到强化
@@ -441,7 +440,7 @@ DukeLegendary: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	DisplayName: 龙卷涡漩海皇爵剑[Legendary]
+	DisplayName: 海爵剑[Legendary]
 	LegendaryScaling: "[c/35FFFF:武器强化]:{0}%"
 	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并重写水刃龙卷的追踪方式"
 	TierTwo: "[c/35FFFF:强化]:发射水刃龙卷时将会呼叫水刃龙卷支援"
@@ -457,7 +456,7 @@ AquaticDissolution: {
 }
 
 DefenseBlade: {
-	DisplayName: 九天元阳护道法刃[Legendary]
+	DisplayName: 庇护之刃[Legendary]
 	Tooltip:
 		'''
 		用剑击打敌人时，庇护之光会爆发出火焰
@@ -492,6 +491,8 @@ ACTExcelsus: {
 		'''
 		投射一个主旋转锋刃与两个次旋转锋刃，飞行一段距离后追踪你的敌人
 		主旋转锋刃会多次攻击一个敌怪
+		[c/DB53A0:来自旧日的特殊礼物]
+		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
 		'''
 }
 

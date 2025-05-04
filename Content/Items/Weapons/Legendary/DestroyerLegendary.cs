@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             }
             else
             {
-                Item.useTime = Item.useAnimation = 30;
+                Item.useTime = Item.useAnimation = 60;
                 Item.UseSound = SoundID.Item92;
             }
             return base.CanUseItem(player);

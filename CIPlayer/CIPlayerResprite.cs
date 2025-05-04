@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.Tools;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
@@ -31,6 +32,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.GameContent;
 using Terraria.ModLoader;
+using UtfUnknown.Core.Models.SingleByte.Irish;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -206,7 +208,17 @@ namespace CalamityInheritance.CIPlayer
 
             if (GI<PhantomHeart>() != null)
                 IR<PhantomHeart>(R.EtherealCoreResprite ? CIResprite.ManaHeartAlter     : CIResprite.ManaHeart);
-            
+            //传奇武器
+            if (GI<DukeLegendary>() != null)
+                IR<DukeLegendary>(R.BrinyBaronResprite ? CIWeaponsResprite.BrinyBaronLegacy : CIWeaponsResprite.BrinyBaron);
+            if (GI<PlanteraLegendary>() != null)
+                IR<PlanteraLegendary>(R.PlantBowResprite ? CIWeaponsResprite.PlantBowLegacy : CIWeaponsResprite.PlantBow);
+            if (GI<RavagerLegendary>() != null)
+                IR<RavagerLegendary>(R.Vesu ? CIWeaponsResprite.VolcanoLegacy : CIWeaponsResprite.Volcano);
+            if (GI<DestroyerLegendary>() != null)
+                IR<DestroyerLegendary>(R.SHPC ? CIWeaponsResprite.P90Legacy: CIWeaponsResprite.SHPC);
+            if (GI<PBGLegendary>() != null)
+                IR<PBGLegendary>(R.Mala ? CIWeaponsResprite.MalaLegacy : CIWeaponsResprite.Mala);
             //核子与星系是动图（现灾厄）不能直接用
             /*DemonMarisa: 开修
              *单独去注册hook替换帧图算法了

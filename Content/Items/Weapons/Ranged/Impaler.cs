@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7f;
-            Item.value = Item.buyPrice(0, 80, 0, 0);
+            Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe(1)
                 .AddIngredient(ItemID.StakeLauncher)
                 .AddIngredient(ItemID.ExplosivePowder, 100)
-                .AddIngredient(ModContent.ItemType<ScoriaBar>(), 5)
+                .AddIngredient<ScoriaBar>(5)
                 .AddIngredient(ItemID.LivingFireBlock, 75)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

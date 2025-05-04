@@ -32,7 +32,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         #region 属性
         public bool TargetAvalible = false;
         #endregion
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
@@ -58,11 +57,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 300 && target.CanBeChasedBy(Projectile);
         public override void SendExtraAI(BinaryWriter writer)
         {
+            Projectile.DoSyncHandlerWrite(ref writer);
             //这个可不会自己同步
             writer.Write(TargetAvalible);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
+            Projectile.DoSyncHandlerRead(ref reader);
             TargetAvalible = reader.ReadBoolean();
         }
         public override void AI()

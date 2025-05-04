@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 28;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2.25f;
-            Item.value = Item.buyPrice(0, 2, 0, 0);
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;
@@ -68,12 +68,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddRecipeGroup("AnyGoldBar", 7);
-            recipe.AddIngredient(ItemID.Granite, 5);
-            recipe.AddIngredient(ItemID.Marble, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe().
+                AddRecipeGroup("AnyGoldBar", 7).
+                AddIngredient(ItemID.Granite, 5).
+                AddIngredient(ItemID.Marble, 5).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

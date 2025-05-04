@@ -44,12 +44,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.LunarFlareBook);
-            recipe.AddIngredient(ModContent.ItemType<WrathoftheAncients>());
-            recipe.AddIngredient(ModContent.ItemType<ShadowspecBar>(), 5);
-            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.LunarFlareBook).
+                AddIngredient<WrathoftheAncients>().
+                AddIngredient<ShadowspecBar>(5).
+                AddTile(ModContent.TileType<DraedonsForge>()).
+                Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

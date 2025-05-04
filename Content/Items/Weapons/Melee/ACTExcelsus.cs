@@ -1,4 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Core;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items;
@@ -55,14 +58,14 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-        Item.rare = ModContent.RarityType<DarkBlue>();
+        Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() :  ModContent.RarityType<DarkBlue>();
         Item.shoot = ModContent.ProjectileType<ACTExcelsusMain>();
         Item.shootSpeed = 18f;
     }
 
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/ACTExcelsusGlow").Value);
+        Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/ACTExcelsusGlow").Value);
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class NorfleetCannonLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{Generic.WeaponRoute}/Ranged/NorfleetLegacy";
+        public override string Texture => $"{Generic.WeaponPath}/Ranged/NorfleetLegacy";
 
         public override void SetDefaults()
         {

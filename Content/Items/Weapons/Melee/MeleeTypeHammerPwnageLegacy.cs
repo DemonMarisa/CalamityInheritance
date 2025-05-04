@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
-            Type.ShimmerEach<Pwnagehammer>();
+            // Type.ShimmerEach<Pwnagehammer>();
             Item.ResearchUnlockCount = 1;
         }
 
@@ -36,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<MeleeTypeHammerPwnageLegacyProj>();
             Item.shootSpeed = 12f;
-            Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
+            Item.value = CIShopValue.RarityPriceLightRed;
+            Item.rare = ItemRarityID.LightRed;
         }
         public override void AddRecipes()
         {

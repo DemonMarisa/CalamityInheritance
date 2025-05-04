@@ -157,41 +157,6 @@ Configs: {
 			Label: "[i:Chain]Reduce Move Speed"
 		}
 
-		UIX: {
-			Label: U I X
-			Tooltip: ""
-		}
-
-		UIY: {
-			Label: U I Y
-			Tooltip: ""
-		}
-
-		UIX2: {
-			Label: U I X2
-			Tooltip: ""
-		}
-
-		UIY2: {
-			Label: U I Y2
-			Tooltip: ""
-		}
-
-		Offset: {
-			Label: Offset
-			Tooltip: ""
-		}
-
-		DmgTest: {
-			Label: Dmg Test
-			Tooltip: ""
-		}
-
-		LegendaryBuff: {
-			Tooltip: ""
-			Label: Legendary Buff
-		}
-
 		Arcueid: {
 			Tooltip:
 				'''
@@ -226,6 +191,17 @@ Configs: {
 
 		DrawDifficultyUI: {
 			Label: Draw Difficulty U I
+			Tooltip: ""
+		}
+	}
+
+		UIY: {
+			Label: U I Y
+			Tooltip: ""
+		}
+
+		UIX2: {
+			Label: U I X2
 			Tooltip: ""
 		}
 	}
@@ -439,7 +415,6 @@ Configs: {
 				[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword
 				[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword
 				[i:CalamityMod/GalileoGladius]Galileo Gladius
-
 				'''
 		}
 
@@ -456,11 +431,6 @@ Configs: {
 				[i:CalamityMod/SproutingArrow]Sprouting Arrow / Terra Arrow
 				[i:CalamityMod/DryadsTear]Dryad's Tear / Terra Bullet
 				'''
-		}
-
-		PBGColorType: {
-			Label: P B G Color Type
-			Tooltip: ""
 		}
 
 		PrismallineResprite: {
@@ -486,6 +456,31 @@ Configs: {
 				This need to reloaded the mod due to using hook
 				Currently only resprite [i:CalamityMod/SubsumingVortex]Subsuming Vortex
 				'''
+		}
+
+		BrinyBaronResprite: {
+			Label: "[i:CalamityInheritance/DukeLegendary]Briny Baron Legendary Resprite"
+			Tooltip: Determines sprite style of Briny Baron Legendary
+		}
+
+		PlantBowResprite: {
+			Label: "[i:CalamityInheritance/PlanteraLengedary]Blossom Flux Legendary Resprite"
+			Tooltip: Determines sprite style of Blossom Flux Legendary
+		}
+
+		Vesu: {
+			Label: "[i:CalamityInheritance/RavagerLegendary]Vesuvius Legendary Resprite"
+			Tooltip: Determines sprite style of Vesuvius Legendary
+		}
+
+		SHPC: {
+			Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC Legendary Resprite"
+			Tooltip: Determines sprite style of SHPC Legendary
+		}
+
+		Mala: {
+			Label: "[i:CalamityInheritance/PBGLegendary]Malatche Legendary Resprite"
+			Tooltip: Determines sprite style of Malatche Legendary
 		}
 	}
 

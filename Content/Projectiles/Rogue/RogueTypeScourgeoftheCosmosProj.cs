@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -33,6 +35,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
         }
+        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
         public override void AI()
         {
             if (Projectile.alpha <= 200)

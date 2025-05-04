@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Melee/Shortsword/ExoGladiusGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/Shortsword/ExoGladiusGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;

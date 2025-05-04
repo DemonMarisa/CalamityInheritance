@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<TheBurningSky>(false);
+            Type.ShimmerEach<TheBurningSky>();
         }
         public override void SetDefaults()
         {

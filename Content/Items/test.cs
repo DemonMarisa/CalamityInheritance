@@ -13,9 +13,7 @@ namespace CalamityInheritance.Content.Items
 {
     public class Test : CIMelee, ILocalizedModType
     {
-        public static string WeaponRoute => "CalamityInheritance/Content/Items";
         //别改这个为大写了，他每次拉去的时候图片的文件总是变成小写 
-        public override string Texture => $"{WeaponRoute}/Test";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

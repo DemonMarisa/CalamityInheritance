@@ -1,6 +1,9 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
@@ -17,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<BloodBoiler>();
         }
         public override void SetDefaults()
         {
@@ -31,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = ModContent.RarityType<BlueGreen>();
             Item.shootSpeed = 12f;
             Item.shoot = ModContent.ProjectileType<BloodBoilerFireLegacy>();
         }

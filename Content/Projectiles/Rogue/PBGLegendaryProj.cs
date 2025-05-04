@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             public int dType;
         }
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Legendary/PBGLegendary";
+        public override string Texture => $"{Generic.WeaponPath}/Legendary/PBGLegendary";
         public override void SetDefaults()
         {
             Projectile.width = 12;

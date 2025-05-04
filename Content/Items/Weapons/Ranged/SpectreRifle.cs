@@ -108,19 +108,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe()
                 .AddIngredient(ItemID.SpectreBar, 7)
                 .AddIngredient<CoreofEleum>(3)
-                .AddCondition(Condition.NotZenithWorld)
-                .AddDecraftCondition(Condition.NotZenithWorld)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
-        
-            CreateRecipe()
-                .AddIngredient(ItemID.SpectreBar, 7)
-                .AddIngredient<RuinousSoul>(2)
-                .AddIngredient<DarkPlasma>()
-                .AddCondition(Condition.ZenithWorld)
-                .AddDecraftCondition(Condition.ZenithWorld)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
-        }
+                }
     }
 }

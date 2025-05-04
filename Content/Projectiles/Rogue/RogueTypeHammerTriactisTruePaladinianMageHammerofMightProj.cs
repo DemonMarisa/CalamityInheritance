@@ -13,6 +13,7 @@ using System;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Items.Weapons.Melee;
 using System.Security;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -37,7 +38,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+        }
         public override void SetDefaults()
         {
             Projectile.width = 160;
@@ -88,6 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             CIFunction.HomeInOnNPC(Projectile, true, 1250f, 24f, 0f, 30f);
             ifSummonClone = true;
+            Projectile.netUpdate = true;
         }
 
         private void DoReturning()

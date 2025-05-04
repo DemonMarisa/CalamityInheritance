@@ -1,12 +1,6 @@
 ﻿
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -39,7 +33,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override bool CanUseItem(Player player)
         {
-            return (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()));
+            return !NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>());
         }
 
         public override bool? UseItem(Player player)

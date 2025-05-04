@@ -1,30 +1,17 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using Terraria;
-using static CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers.CataclysmLegacy;
 using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
-using static CalamityInheritance.NPCs.Boss.CalamitasClone.CalamitasCloneLegacy;
 using CalamityInheritance.Content.Projectiles.Magic;
-using Mono.Cecil;
-using static System.Net.Mime.MediaTypeNames;
-using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
-using System.IO;
-using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {

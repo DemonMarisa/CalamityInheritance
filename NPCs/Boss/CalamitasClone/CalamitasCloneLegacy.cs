@@ -40,6 +40,7 @@ using Terraria.GameContent.Bestiary;
 using CalamityInheritance.System.Configs;
 using Terraria.Localization;
 using System.IO;
+using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -1044,7 +1045,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             npcLoot.DefineConditionalDropSet(DropHelper.GFB).Add(ModContent.ItemType<AshesofAnnihilation>(), 1, 6, 9, true);
 
             // Lore
-            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<LoreCalamitasClone>(), desc: DropHelper.FirstKillText);
+            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
         }
 
         public override void OnKill()

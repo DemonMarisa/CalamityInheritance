@@ -36,19 +36,13 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<ScalTrophy>().
+                AddRecipeGroup(CIRecipeGroup.SCalTrophy).
+                DisableDecraft().
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-                AddIngredient<SupremeCalamitasTrophy>().
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddIngredient<LoreCalamitas>().
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
-                AddIngredient<LoreCynosure>().
+                AddRecipeGroup(CIRecipeGroup.LorePostSCal).
+                DisableDecraft().
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().

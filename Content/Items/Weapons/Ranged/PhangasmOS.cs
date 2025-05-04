@@ -9,6 +9,8 @@ using CalamityMod;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -18,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Phangasm>(false);
         }
         public override void SetDefaults()
         {
@@ -54,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PhangasmOSGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhangasmOSGlow").Value);
         }
 
         public override void AddRecipes()

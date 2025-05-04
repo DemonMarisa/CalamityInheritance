@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.knockBack = 3.75f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.value = Item.buyPrice(0, 1, 0, 0);
+            Item.value = CIShopValue.RarityPriceBlue;
             Item.rare = ItemRarityID.Blue;
         }
 

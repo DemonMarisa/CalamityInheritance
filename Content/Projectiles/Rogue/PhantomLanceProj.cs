@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class PhantomLanceProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/PhantomLance";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/PhantomLance";
 
         public override void SetStaticDefaults()
         {

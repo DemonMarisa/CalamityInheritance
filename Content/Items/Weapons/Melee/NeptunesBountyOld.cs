@@ -8,6 +8,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.shootSpeed = 12f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)

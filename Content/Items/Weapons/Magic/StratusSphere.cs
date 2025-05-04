@@ -47,13 +47,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 4);
-            recipe.AddIngredient(ModContent.ItemType<ExodiumCluster> (), 12);
-            recipe.AddIngredient(ItemID.NebulaArcanum);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient<Lumenyl>(5).
+                AddIngredient<RuinousSoul>(4).
+                AddIngredient<ExodiumCluster>(12).
+                AddIngredient(ItemID.NebulaArcanum).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

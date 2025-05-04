@@ -13,6 +13,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -23,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<AlphaRayLegacy>(false);
         }
 
 
@@ -42,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.shootSpeed = 6f;
             Item.shoot = ModContent.ProjectileType<ACTAlphaHeldProj>();
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<AlgtPink>() : ModContent.RarityType<DeepBlue>();
 
             Item.noUseGraphic = true;
             Item.channel = true;

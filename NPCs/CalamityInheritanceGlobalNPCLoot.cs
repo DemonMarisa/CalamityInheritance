@@ -233,6 +233,8 @@ namespace CalamityInheritance.NPCs
 
             if (npc.type == ModContent.NPCType<Cataclysm>() )
                 npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
+            if (npc.type == ModContent.NPCType<Catastrophe>())
+                npcLoot.Add(ModContent.ItemType<BrimstoneFlameblaster>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
@@ -262,6 +264,7 @@ namespace CalamityInheritance.NPCs
                 bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
                 npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                npcLoot.Add(ModContent.ItemType<ConclaveCrossfire>(), 10);
                 if (Main.zenithWorld)
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<FourSeasonsGalaxiaold>(), 1, 1));
             }
@@ -276,7 +279,8 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<PristineFuryLegacy>(), 10);
-                npcLoot.Add(ModContent.ItemType<ElysianAegisold>(), 1);
+                npcLoot.AddConditionalPerPlayer(() => Condition.InUnderworld.IsMet(), ModContent.ItemType<ElysianAegisold>());
+                
                 var tarragon= ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientTarragonHelm>(), 1);
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonBreastplate>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonLeggings>()));
@@ -391,6 +395,7 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpearofDestinyLegacy>(), 200, 100));
                     break;
                 case NPCID.VortexRifleman:
+                    //我能问个问题吗，为啥交叉集火是星璇小怪掉的？
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ConclaveCrossfire>(), 100, 50));
                     break;
                 case NPCID.SeaSnail:
@@ -416,7 +421,6 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AntlionBow>(), 50, 33));
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MandibleClaws>(), 50, 33));
                     break;
-                //哥布林战士掉战刀
                 case NPCID.GoblinWarrior:
                     npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Warblade>(), 25, 20));
                     break;

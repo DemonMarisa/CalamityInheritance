@@ -12,13 +12,14 @@ using CalamityInheritance.Content.Items.Weapons;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Projectiles.Rogue;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class CelestusBoomerangExoLoreSteal : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/Celestusold";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/Celestusold";
 
         private bool initialized = false;
         private float speed = 25f;
@@ -63,7 +64,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(counter);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            counter = reader.ReadInt32();
+            
+        }
         public override void AI()
         {
             DoGeneral();
@@ -198,6 +209,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 AttackTimer = 0f;
                 Projectile.netUpdate = true;
             }
+            else
+            {
+                SpawnExtraProj();
+            }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -251,7 +266,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void PostDraw(Color lightColor)
         {
             Rectangle frame = new Rectangle(0, 0, 106, 94);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Rogue/CelestusoldGlow").Value,
+            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value,
                 Projectile.Center - Main.screenPosition,
                 frame,
                 Color.White,

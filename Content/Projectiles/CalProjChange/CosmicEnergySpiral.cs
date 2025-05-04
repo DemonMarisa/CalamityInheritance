@@ -1,4 +1,6 @@
 ﻿using System;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Summon;
 using CalamityMod.CalPlayer;
@@ -6,6 +8,7 @@ using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.CalProjChange;
@@ -43,20 +46,21 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
     {
         Player player = Main.player[Projectile.owner];
         CalamityPlayer modPlayer = player.Calamity();
+        var usPlayer = player.CIMod();
         Lighting.AddLight((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, Main.DiscoR / 255f, Main.DiscoG / 255f, Main.DiscoB / 255f);
         bool isMinion = Projectile.type == ModContent.ProjectileType<SaveCosmic>();
-        player.AddBuff(ModContent.BuffType<CosmicEnergy>(), 3600);
+        player.AddBuff(ModContent.BuffType<CosmicEnergyExtra>(), 3600);
         if (isMinion)
         {
-            if (player.dead || player.maxMinions < 10f)
-            {
-                modPlayer.cEnergy = false;
-            }
-            if (modPlayer.cEnergy)
-            {
+            if (player.dead)
+                usPlayer.CosmicEnergyExtra = false;
+            
+            if (usPlayer.CosmicEnergyExtra)
                 Projectile.timeLeft = 2;
-            }
+            if (player.maxMinions < 10f)
+                Projectile.Kill();
         }
+        
         float targetDist = 1400f; //700
         Projectile.rotation += Projectile.velocity.X * 0.1f;
         Vector2 projPos = Projectile.position;

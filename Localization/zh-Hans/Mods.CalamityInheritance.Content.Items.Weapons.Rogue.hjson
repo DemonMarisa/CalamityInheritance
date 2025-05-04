@@ -123,7 +123,7 @@ Celestusold: {
 }
 
 RogueTypeHammerGalaxySmasher: {
-	DisplayName: 银河溃灭者·盗贼版本[Legacy]
+	DisplayName: 银河溃灭者·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的银河溃灭者
@@ -134,7 +134,7 @@ RogueTypeHammerGalaxySmasher: {
 }
 
 RogueTypeHammerStellarContempt: {
-	DisplayName: 星体击碎者·盗贼版本[Legacy]
+	DisplayName: 星体击碎者·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的星体击碎者
@@ -145,7 +145,7 @@ RogueTypeHammerStellarContempt: {
 }
 
 RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
-	DisplayName: 真·泰阿克提斯之圣骑士魔锤·盗贼版本[Legacy]
+	DisplayName: 真·泰阿克提斯之圣骑士魔锤·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的……超级无敌大锤子
@@ -158,18 +158,18 @@ RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 }
 
 RogueTypeHammerTruePaladins: {
-	DisplayName: 真圣骑士锤·盗贼版本[Legacy]
+	DisplayName: 真圣骑士锤·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的真圣骑士之锤/堕落圣骑士锤
 		击中敌人时爆炸
 		潜伏攻击会同时投出两个锤子, 一个返程后追击敌人, 另一个则直接挂载在敌人上
-		挂载的锤子共享无敌帧, 且攻击时会恢复你的潜伏值
+		挂载的锤子共享无敌帧
 		'''
 }
 
 RogueTypeKnivesEmpyrean: {
-	DisplayName: 苍穹飞刀·盗贼版本[Legacy]
+	DisplayName: 苍穹飞刀·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的苍穹飞刀
@@ -181,7 +181,7 @@ RogueTypeKnivesEmpyrean: {
 }
 
 RogueTypeKnivesShadowspec: {
-	DisplayName: 圣光飞刀·盗贼版本[Legacy]
+	DisplayName: 圣光飞刀·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的圣光飞刀
@@ -203,7 +203,7 @@ RogueTypeScourgeoftheCosmos: {
 }
 
 RogueTypeHammerPwnageLegacy: {
-	DisplayName: 圣时之锤·盗贼版本[Legacy]
+	DisplayName: 圣时之锤·盗贼版本[Revamped]
 	Tooltip:
 		'''
 		盗贼版本的旧圣时之锤
@@ -255,7 +255,7 @@ PBGLegendary: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	DisplayName: 斩罡除魔孔雀柳刃[Legendary]
+	DisplayName: 孔雀翎[Legendary]
 	TierOne: "[c/00FF7F:强化]:投掷的高速光刃数量+1"
 	TierTwo: "[c/00FF7F:强化]:增加高速光刃的攻击次数"
 	TierThree: "[c/00FF7F:强化]:攻击时你有概率接下来的在3秒内彻底无敌"

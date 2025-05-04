@@ -2,6 +2,8 @@
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -167,6 +169,10 @@ namespace CalamityInheritance.Utilities
         {
             string getName = "CalamityInheritance:" + name; 
             return getName;
+        }
+        public static void Chat(this string name)
+        {
+            Main.NewText(name);
         }
     }
 }

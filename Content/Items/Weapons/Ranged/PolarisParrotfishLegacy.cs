@@ -53,10 +53,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (modPlayer.PolarisPhase3) //追踪
             {
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PolarStarLegacy>(), damage, knockback, player.whoAmI, 0f, 2f);
-                /*
-                if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), player, 3000f))
-                Projectile.NewProjectile(source, position, velocity/2, ModContent.ProjectileType<PolarStarLegacy>(), damage/2, knockback, player.whoAmI, 0f, 2f);
-                */
                 return false;
             }
             else if (modPlayer.PolarisPhase2) //分裂

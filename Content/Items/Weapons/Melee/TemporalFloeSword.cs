@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<CryonicBar>(15)
+                .AddRecipeGroup(CIRecipeGroup.CryoBar, 15)
                 .AddIngredient<SeaPrism>(15)
                 .AddIngredient(ItemID.Ectoplasm, 5)
                 .AddTile(TileID.IceMachine)

@@ -56,8 +56,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CreateRecipe().
                 AddIngredient(ItemID.Marble, 20).
-                AddIngredient(ItemID.Amber, 5).
                 AddIngredient(ItemID.Diamond, 3).
+                AddIngredient(ItemID.Amber, 5).
                 AddTile(TileID.Anvils).
                 Register();
         }

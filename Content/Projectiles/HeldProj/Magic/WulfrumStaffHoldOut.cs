@@ -1,18 +1,9 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -26,6 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float BaseOffsetY => 0;
         public override float WeaponRotation => 20;
         public override float AimResponsiveness => 0.25f;
+        // public override string TexturePath => "Wulfrum/WulfrumStaff";
         public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {

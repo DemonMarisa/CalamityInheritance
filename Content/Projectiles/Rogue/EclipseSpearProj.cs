@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class EclipseSpearProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/EclipseSpear";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/EclipseSpear";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

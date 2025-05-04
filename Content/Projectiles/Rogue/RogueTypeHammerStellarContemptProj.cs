@@ -8,6 +8,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -28,7 +29,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 44;
@@ -110,6 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 case 2f:
                     CIFunction.HomeInOnNPC(Projectile, true, 1250f, stealthSpeed/2, 20f);
                     ifSummonClone = true;
+                    Projectile.netUpdate = true;
                     break;
                 default:
                     break;

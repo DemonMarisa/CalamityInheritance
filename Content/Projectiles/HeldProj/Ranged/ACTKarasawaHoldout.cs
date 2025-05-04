@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     {
         public ThanatosSmokeParticleSet SmokeDrawer = new ThanatosSmokeParticleSet(-1, 3, 0f, 16f, 0.5f);
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{Generic.WeaponRoute}/Ranged/ACTKarasawa";
+        public override string Texture => $"{Generic.WeaponPath}/Ranged/ACTKarasawa";
         #region 别名
         public ref float AttackCharge => ref Projectile.ai[0];
         public ref float AttackRecoilTimer => ref Projectile.ai[1];

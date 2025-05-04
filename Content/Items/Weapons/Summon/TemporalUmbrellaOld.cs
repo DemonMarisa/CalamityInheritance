@@ -64,27 +64,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 AddIngredient(ItemID.Umbrella).
                 AddIngredient(ItemID.TopHat).
                 AddIngredient<ShadowspecBar>(4).
-                AddCondition(Condition.NotZenithWorld).
-                AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile<DraedonsForge>().
                 Register();
             
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
-                AddCondition(Condition.NotZenithWorld).
                 DisableDecraft().
-                Register();
-
-            CreateRecipe().
-                AddIngredient(ItemID.QueenSpiderStaff).
-                AddIngredient<VengefulSunStaff>().
-                AddIngredient(ItemID.Umbrella).
-                AddIngredient(ItemID.TopHat).
-                AddRecipeGroup("AnyMythrilBar", 4).
-                AddCondition(Condition.ZenithWorld).
-                AddDecraftCondition(Condition.ZenithWorld).
-                AddTile<DraedonsForge>().
                 Register();
         }
     }

@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -23,13 +25,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         const float IsFading = 1f;
         #endregion
         #region 攻击属性
-        public int SlowdownTime = 80;
+        public const int SlowdownTime = 80;
         public int IncreaseMent = 8;
         public int StealthIncre = -1;
         public int AnotherIncre = -1;
         public int FlipX = -1;
         public int FlipY = -1;
-        public float GapY = 100f;
+        public const float GapY = 100f;
         public bool Init = false;
         #endregion
         public override void SetDefaults()
@@ -46,8 +48,26 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.noEnchantmentVisuals = true;
         }
         #region 多人同步
-        public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
-        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(StealthIncre);
+            writer.Write(AnotherIncre);
+            writer.Write(FlipX);
+            writer.Write(FlipY);
+            writer.Write(Init);
+            writer.Write(IncreaseMent); 
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.DoSyncHandlerRead(ref reader);
+            StealthIncre = reader.ReadInt32();
+            AnotherIncre = reader.ReadInt32();
+            IncreaseMent = reader.ReadInt32();
+            FlipX = reader.ReadInt32();
+            FlipY = reader.ReadInt32();
+            Init = reader.ReadBoolean();
+        }
         #endregion
         //AttackTimer会用于绘制上，所以如果你知道你在干嘛的话我不建议你去对AttackTimer做任何的修改
         public override void AI()

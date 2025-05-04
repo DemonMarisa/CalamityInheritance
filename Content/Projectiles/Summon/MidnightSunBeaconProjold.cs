@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
     public class MidnightSunBeaconProjold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
-        public override string Texture => $"{Generic.WeaponRoute}/Summon/MidnightSunBeaconold";
+        public override string Texture => $"{Generic.WeaponPath}/Summon/MidnightSunBeaconold";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionShot[Projectile.type] = true;

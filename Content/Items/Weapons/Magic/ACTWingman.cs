@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Typeless;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -18,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WingmanLegacy>();
         }
         public override void SetDefaults()
         {
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
+            Item.rare =  CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>(): ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
             Item.shootSpeed = 25f;

@@ -35,9 +35,9 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddTile(TileID.Bookcases).
                 Register();
             CreateRecipe().
-AddIngredient<LoreEyeofCthulhu>().
-AddTile(TileID.Bookcases).
-Register();
+                AddIngredient<LoreEyeofCthulhu>().
+                AddTile(TileID.Bookcases).
+                Register();
         }
     }
 }

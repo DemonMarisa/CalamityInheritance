@@ -1,11 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons.Magic;
@@ -17,7 +12,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
-using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {

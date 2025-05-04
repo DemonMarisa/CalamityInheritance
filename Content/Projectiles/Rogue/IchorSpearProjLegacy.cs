@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class IchorSpearProjLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponRoute}/Rogue/IchorSpearLegacy";
+        public override string Texture => $"{Generic.WeaponPath}/Rogue/IchorSpearLegacy";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;

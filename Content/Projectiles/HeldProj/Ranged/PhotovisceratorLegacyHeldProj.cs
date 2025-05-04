@@ -11,10 +11,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
@@ -170,7 +168,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         #region 绘制
         public override void MorePreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponRoute}/Ranged/PhotovisceratoroldGlow").Value;
+            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhotovisceratoroldGlow").Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
             Vector2 rotationPoint = texture.Size() * 0.5f;

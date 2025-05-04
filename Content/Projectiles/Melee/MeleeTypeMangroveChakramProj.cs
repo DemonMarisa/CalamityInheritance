@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeMangroveChakramProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeMangroveChakram";
+        public override string Texture => $"{Generic.WeaponPath}/Melee/MeleeTypeMangroveChakram";
 
         public override void SetDefaults()
         {

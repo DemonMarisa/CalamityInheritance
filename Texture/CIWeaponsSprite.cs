@@ -2,6 +2,7 @@ using System;
 using CalamityMod.Items.Placeables.PlaceableTurrets;
 using CalamityMod.Items.VanillaArmorChanges;
 using Microsoft.Xna.Framework.Graphics;
+using rail;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -208,7 +209,10 @@ namespace CalamityInheritance.Texture
         public static string CalRogueWeaponRoute =>     $"{CalWeaponRoute}/Rogue";
         //射弹路径
         public static string CalProjRoute => "CalamityMod/Projectiles";
-        
+        public static void LoadSet(ref Asset<Texture2D> src, string path)
+        {
+            src = ModContent.Request<Texture2D>(path);
+        }
         public static void LoadTexture()
         {
             #region 战士
@@ -391,8 +395,9 @@ namespace CalamityInheritance.Texture
             SHPCLegacy = ModContent.Request<Texture2D>          ($"{CILegendaryPathExtra}/SHPC");
 
             //孔雀翎
-            Mala = ModContent.Request<Texture2D>                ($"{CILegendaryPath}/PBGLegendary");
+            // Mala = ModContent.Request<Texture2D>                ($"{CILegendaryPath}/PBGLegendary");
             MalaLegacy = ModContent.Request<Texture2D>          ($"{CILegendaryPathExtra}/Dagger");
+            LoadSet(ref Mala, $"{CILegendaryPath}/PBGLegendary");
             #endregion
         }
 

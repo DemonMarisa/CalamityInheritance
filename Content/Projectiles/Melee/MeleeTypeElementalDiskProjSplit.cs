@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class MeleeTypeElementalDiskProjSplit : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{Generic.WeaponRoute}/Melee/MeleeTypeElementalDisk";
+        public override string Texture => $"{Generic.WeaponPath}/Melee/MeleeTypeElementalDisk";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

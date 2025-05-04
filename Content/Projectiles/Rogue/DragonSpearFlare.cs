@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -38,6 +39,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
         }
         public override bool? CanHitNPC(NPC target) => Projectile.localAI[1] > 15f;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            for(int i = 0; i < 2; i++)
+                writer.Write(Projectile.localAI[i]);
+        } 
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            for(int i = 0; i < 2; i++)
+                Projectile.localAI[i] = reader.ReadSingle();
+        }
         public override void AI()
         {
             //转角。

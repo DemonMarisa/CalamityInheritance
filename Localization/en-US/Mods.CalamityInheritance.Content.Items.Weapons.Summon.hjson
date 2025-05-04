@@ -90,8 +90,8 @@ SaveCosmic:
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:Active Exo-mech Lore:]
 	[c/4169E1:override] [c/4169E1:void] [c/FFFFE0:ProjReset][c/4169E1:()]
 	{
-	    [c/87CEFA:Still requires 10 minion slots to summon cosmic energy spiral];
-	    [c/87CEFA:But cosmic energy spiral itself no longer consume any minion slots];
+	    [c/87CEFA:Still requires 10 minion slots to summon Cosmic Energy Spiral];
+	    [c/87CEFA:But Cosmic Energy Spiral itself no longer consume any minion slots];
 	}
 	'''
 
