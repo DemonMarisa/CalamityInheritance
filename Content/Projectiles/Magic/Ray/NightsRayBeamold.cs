@@ -9,12 +9,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     {
         public const int Lifetime = 200;
 
-        public const float MaxExponentialDamageBoost = 3f;
-
-        public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
         public ref float InitialDamage => ref Projectile.ai[1];
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public ref float Time => ref Projectile.ai[0];
+        public Player Owner => Main.player[Projectile.owner];
         public bool HasFiredSideBeams
         {
             get => Projectile.ai[1] == 1f;
@@ -44,15 +42,16 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 
             if (InitialDamage == 0f)
             {
-                InitialDamage = Projectile.damage;
+                InitialDamage = Projectile.damage * 0.5f;
                 Projectile.netUpdate = true;
             }
 
-            Time++;
-            Projectile.damage = (int)(InitialDamage / Math.Pow(ExponentialDamageBoost, Time));
+            float damageboost = (float)(Time / Lifetime) * 3f;
 
-            Projectile.localAI[0] += 1f;
-            if (Projectile.localAI[0] > 9f)
+            Projectile.damage = (int)(InitialDamage * (4f - damageboost));
+
+            Time++;
+            if (Time > 9f)
             {
                 for (int i = 0; i < 2; i++)
                 {

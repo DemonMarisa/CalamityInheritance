@@ -10,11 +10,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public const int Lifetime = 200;
-        public const float MaxExponentialDamageBoost = 3f;
-        public static readonly float ExponentialDamageBoost = (float)Math.Pow(MaxExponentialDamageBoost, 1f / Lifetime);
         public ref float Time => ref Projectile.ai[0];
         public ref float InitialDamage => ref Projectile.ai[1];
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -26,7 +25,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.extraUpdates = 100;
             Projectile.timeLeft = Lifetime;
         }
-
         public override void AI()
         {
             Projectile.localAI[1] += 1f;
@@ -41,10 +39,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 InitialDamage = Projectile.damage;
                 Projectile.netUpdate = true;
             }
+            float damageboost = (float)(Time / Lifetime) * 2;
+
+            Projectile.damage = (int)(InitialDamage * damageboost);
 
             Time++;
-            Projectile.damage = (int)(InitialDamage * Math.Pow(ExponentialDamageBoost, Time));
-
             if (Time >= 9f)
             {
                 for (int i = 0; i < 2; i++)

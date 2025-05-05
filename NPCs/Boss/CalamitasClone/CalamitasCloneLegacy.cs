@@ -156,7 +156,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             //我在想一个问题。
             //为什么死亡模式的免伤比不开死亡的低
             NPC.DR_NERD((CalamityWorld.death || BossRushEvent.BossRushActive) ? 0.15f : 0.075f);
-            NPC.LifeMaxNERB(37500, 45000, 520000);
+            NPC.LifeMaxNERB(32500, 40000, 520000);
 
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);

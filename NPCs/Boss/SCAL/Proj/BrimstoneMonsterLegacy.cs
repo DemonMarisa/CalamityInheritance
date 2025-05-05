@@ -139,35 +139,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (death)
                 return;
-            /*
-            // Fly away from other brimstone monsters
-            float pushForce = 0.1f;
-            for (int k = 0; k < Main.maxProjectiles; k++)
-            {
-                Projectile otherProj = Main.projectile[k];
-
-                // Short circuits to make the loop as fast as possible
-                if (!otherProj.active)
-                    continue;
-
-                float taxicabDist = Vector2.Distance(Projectile.Center, otherProj.Center);
-                float distancegate = 360f;
-                if (k != Projectile.whoAmI && Main.projectile[k].type == Projectile.type)
-                {
-                    if (taxicabDist < distancegate)
-                    {
-                        if (Projectile.position.X < otherProj.position.X)
-                            Projectile.velocity.X -= pushForce;
-                        else
-                            Projectile.velocity.X += pushForce;
-
-                        if (Projectile.position.Y < otherProj.position.Y)
-                            Projectile.velocity.Y -= pushForce;
-                        else
-                            Projectile.velocity.Y += pushForce;
-                    }
-                }
-            }*/
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => CalamityUtils.CircularHitboxCollision(Projectile.Center, 170f, targetHitbox);
@@ -187,7 +158,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.ScalDebuffs(360, 480 , 0);
+            target.statLife -= Projectile.damage;
+
+            target.ScalDebuffs(360, 480 , 300);
         }
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)

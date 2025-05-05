@@ -67,7 +67,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         // 接触伤害
         public int ContactDamage = 2000;
         // 红月伤害
-        public int MoonDamage = 330;
+        public int MoonDamage = 220;
         // 弹幕炼狱的伤害
         public int BulletHell = 190;
         // 深渊亡魂的伤害

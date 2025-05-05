@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 2;
             Projectile.alpha = 0;
+            Projectile.DamageType = DamageClass.Magic;
         }
 
         public override void AI()
@@ -216,7 +217,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             float scale1 = 1.7f;
             float scale2 = 0.8f;
             float scale3 = 2f;
-            Vector2 value3 = (Projectile.rotation - MathHelper.PiOver2).ToRotationVector2();
+            Vector2 value3 = (Projectile.rotation).ToRotationVector2();
             Vector2 velocity = value3 * Projectile.velocity.Length() * Projectile.MaxUpdates;
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             Projectile.ExpandHitboxBy(height);

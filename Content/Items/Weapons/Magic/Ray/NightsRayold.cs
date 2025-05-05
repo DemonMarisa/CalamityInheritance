@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void SetDefaults()
         {
-            Item.damage = 94;
+            Item.damage = 50;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 50;

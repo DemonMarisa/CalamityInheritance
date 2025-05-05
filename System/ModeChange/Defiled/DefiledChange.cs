@@ -12,22 +12,10 @@ namespace CalamityInheritance.System.ModeChange.Defiled
 {
     public class DefiledChange : GlobalNPC
     {
-        public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
-        {
-            if (CIWorld.Defiled)
-            {
-                npc.value *= 2;
-            }
-        }
-
         public override void OnKill(NPC npc)
         {
             if (CIWorld.Defiled)
-            {
-                int baseGold = (int)npc.value;
-                int extraGold = baseGold * 2;
-                Item.NewItem(npc.GetSource_Loot(), npc.position, ItemID.GoldCoin, extraGold);
-            }
+                npc.value *= 2;
         }
     }
 }
