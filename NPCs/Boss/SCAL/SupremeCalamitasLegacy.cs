@@ -283,7 +283,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
             //梯凳驾到不免疫是理所当然
             NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
-            //移除低温虹吸特判。因为寒冰神性已经够强了
+            //重新添加低温虹吸特判。因为寒冰神性已经够弱了
+            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.OnFire3] = false;
             NPC.buffImmune[BuffID.OnFire] = false;
 

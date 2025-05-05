@@ -338,7 +338,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (AttackBuffer != 0f && Projectile.CalamityInheritance().PingWhipStrike)
+            if (Owner.CIMod().ColdDivityTier2)
                 Owner.Heal(1);
             
             if (Rounding && target == tar && Projectile.timeLeft < 60)
