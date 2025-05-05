@@ -1,10 +1,5 @@
 ﻿using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
@@ -13,7 +8,6 @@ using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Typeless;
 using Terraria.Localization;
 
 namespace CalamityInheritance.CIPlayer

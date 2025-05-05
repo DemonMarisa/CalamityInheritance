@@ -523,3 +523,8 @@ PearlGodLegacy: {
 		Every seventh shot fires a massive shockblast
 		'''
 }
+
+MagnaStrikerLegacy: {
+	DisplayName: Magna Striker Legacy
+	Tooltip: Fires a string of opal and magna strikes
+}

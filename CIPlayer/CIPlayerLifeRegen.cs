@@ -1,13 +1,8 @@
 ﻿using CalamityInheritance.Buffs.Statbuffs;
-using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

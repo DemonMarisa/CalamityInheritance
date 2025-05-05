@@ -537,3 +537,8 @@ PearlGodLegacy: {
 		每七次攻击发射一枚强力冲击波子弹
 		'''
 }
+
+MagnaStrikerLegacy: {
+	DisplayName: 麦格纳冲锋炮[Legacy]
+	Tooltip: 发射鹅卵石和麦格纳冲击波
+}
