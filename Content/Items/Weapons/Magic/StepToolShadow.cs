@@ -51,13 +51,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             return false;
         }
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            TooltipLine newLore = new(Mod, "CalamityMMod:Lore", this.GetLocalizedValue("StelStoolLore"));
-            newLore.OverrideColor = Color.LightYellow;
-            CalamityUtils.HoldShiftTooltip(tooltips, [newLore], true);
-        }
-
         public override void AddRecipes()
         {
             CreateRecipe().

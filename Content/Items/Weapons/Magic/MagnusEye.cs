@@ -1,5 +1,6 @@
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityMod.Sounds;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,6 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useAnimation = 20; 
             Item.shoot = ModContent.ProjectileType<MagnusProj>();
             Item.shootSpeed = 14f;
+            Item.UseSound = CommonCalamitySounds.LaserCannonSound;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;
         }

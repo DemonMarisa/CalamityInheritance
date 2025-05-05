@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -94,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             float sourceVariationHigh = 180f;
             Vector2 source = playerPos + f.ToRotationVector2() * MathHelper.Lerp(sourceVariationLow, sourceVariationHigh, Main.rand.NextFloat());
             Vector2 sourceExoLore = playerPos + f.ToRotationVector2() * MathHelper.Lerp(spreadX, spreadY, Main.rand.NextFloat());
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            if (player.CheckExoLore())
             {
                 for (int i = 0; i < 50; i++)
                 {

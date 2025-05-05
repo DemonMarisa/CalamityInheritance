@@ -36,9 +36,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			Item.defense = 20; //150
 		}
 
-
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
-
 		public override void UpdateArmorSet(Player player)
 		{
 			var modPlayer = player.CIMod();
@@ -143,26 +141,5 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			player.GetDamage<GenericDamageClass>() += 0.40f;
 			player.GetCritChance<GenericDamageClass>() += 40;
 		}
-
-		public override void AddRecipes()
-		{
-			if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
-			{
-				CreateRecipe().
-				AddIngredient<AuricTeslaHeadMagic>().
-				AddIngredient<AuricTeslaHeadMelee>().
-				AddIngredient<AuricTeslaHeadRogue>().
-				AddIngredient<AuricTeslaHeadRanged>().
-				AddIngredient<AuricTeslaHeadSummon>().
-				AddIngredient<AncientTarragonHelm>().
-				AddIngredient<AncientBloodflareMask>().
-				AddIngredient<AncientGodSlayerHelm>().
-				AddIngredient<AncientSilvaHelm>().
-				AddIngredient<AuricBarold>(12).
-                AddIngredient<CalamitousEssence>(1).
-                AddTile<DraedonsForgeold>().
-				Register();
-			}
-   		}
 	}
 }
