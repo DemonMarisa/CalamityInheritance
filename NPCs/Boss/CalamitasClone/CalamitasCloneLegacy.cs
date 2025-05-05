@@ -65,11 +65,12 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         // 普灾的攻击循环
         public static LegacyCCloneAttackType[] AttackCycle =>
             [
-            LegacyCCloneAttackType.fireAbyssalLaser,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            LegacyCCloneAttackType.charge,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
             LegacyCCloneAttackType.fireAbyssalLaser,
             LegacyCCloneAttackType.charge,
             LegacyCCloneAttackType.fireFireBall,
-            LegacyCCloneAttackType.charge,
+            LegacyCCloneAttackType.fireAbyssalLaser,
+            LegacyCCloneAttackType.fireFireBall,
             ];
         // 普灾兄弟存活期间的攻击循环
         public static LegacyCCloneAttackType[] AttackCycleBrother =>
@@ -85,6 +86,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             LegacyCCloneAttackType.fireFireBall,
             LegacyCCloneAttackType.charge,
             LegacyCCloneAttackType.fireFireBall,
+            LegacyCCloneAttackType.charge,
             ];
         #endregion
         #region 阶段
@@ -115,8 +117,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public bool OnlyGlow = false;
         // 随机召唤一个兄弟，但是保证不会同一场战斗召唤两个
         public bool SpawnWho = false;
-        //无限飞的Tint，他只会取倍针对的玩家提供
-        public bool SendInfiniteFlightTint = false;
         #endregion
         #region SSD
         public string Gen = "CalamityInheritance/NPCs/Boss/CalamitasClone";
@@ -193,7 +193,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             initialized = reader.ReadBoolean();
-            SendInfiniteFlightTint = reader.ReadBoolean();
             isStage2 = reader.ReadBoolean();
             OnlyGlow = reader.ReadBoolean();
             canBulletHell = reader.ReadBoolean();
@@ -204,7 +203,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(initialized);
-            writer.Write(SendInfiniteFlightTint);
             writer.Write(canBulletHell);
             writer.Write(OnlyGlow);
             writer.Write(NPC.alpha);
@@ -221,9 +219,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             isCloneSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<LifeSeekerLegacy>());
             isCloneBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<CataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<CatastropheLegacy>());
-            foreach (var player in Main.ActivePlayers)
-                player.Calamity().infiniteFlight = true;
-            
+
             if (initialized == false)
             {
                 SpawnWho = Main.rand.NextBool();
@@ -285,13 +281,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             if (lifeRatio <= stage2LifeRatio && currentPhase == 1f)
             {
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.CalamitasCloneSpawn", Color.OrangeRed);
-                //准许无限飞行
-                if (!SendInfiniteFlightTint)
-                {
-                    Rectangle location = new Rectangle((int)target.position.X, (int)target.position.Y - 16, target.width, target.height);
-                    CombatText.NewText(location, Color.White, Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.EmpoweredTooltip.SendInfiniteFlightTint"));
-                    SendInfiniteFlightTint = true;
-                }
                 attackTimer = 0;
                 attackType = (float)LegacyCCloneAttackType.PhaseTransition;
                 currentPhase++;
@@ -419,7 +408,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             int distanceX = 600;
             int distanceY = 180;
             //过长了说实话
-            int totalFireTime = crphase > finalPhase ? 120 : 180;
+            int totalFireTime = crphase > finalPhase ? 180 : 300;
             int fireDelay = crphase > finalPhase ? 15 : 30;
             // 如果玩家手持真近战武器，那么降低加速度
 
