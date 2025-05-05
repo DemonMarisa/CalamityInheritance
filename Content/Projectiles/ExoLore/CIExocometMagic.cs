@@ -96,13 +96,15 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 if(Projectile.timeLeft == 279)
                 {
                     target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
-                    currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                    if (target != null)
+                        currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
                 }
                 foreachCD++;
                 if(foreachCD % 60 == 0)
                 {
                     target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
-                    currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                    if (target != null)
+                        currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
                 }
                 if (foreachCD % 5 == 0)
                 {
@@ -120,8 +122,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 float maxSpeed = 18f;
                 float acceleration = 0.015f * 15f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
-
-                CIFunction.HomingNPCBetter(Projectile, target, 3000f, homeInSpeed, 0f, 1, null, 0.08f);
+                if (target != null)
+                    CIFunction.HomingNPCBetter(Projectile, target, 3000f, homeInSpeed, 0f, 1, null, 0.08f);
             }
         }
 

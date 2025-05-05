@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.timeLeft = 240;
-            Projectile.usesLocalNPCImkunity = true;
+            Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.penetrate = 1;
         }
