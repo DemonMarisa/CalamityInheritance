@@ -40,21 +40,15 @@ Mods: {
 				$parentVal: Mods.CalamityInheritance.Tiles.DemonshadeTile
 			}
 
-			Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
-			KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
+			Arcueid: Arcueid
+			KunojiTile: Kunoji
 			LegacyArenaTile.MapEntry: Legacy Arena Tile
-			CryoBarTile: Mods.CalamityInheritance.Tiles.CryoBarTile
-			NebulaBarTile: Mods.CalamityInheritance.Tiles.NebulaBarTile
-			AuricBarLegacyTile: Mods.CalamityInheritance.Tiles.AuricBarLegacyTile
+			CryoBarTile: CryoBar
+			NebulaBarTile: NebulaBar
+			AuricBarLegacyTile: AuricBar
 		}
 
 		Projectiles: {
-			Melee: {
-				CIExocomet.DisplayName: C I Exocomet
-				CIExocometMagic.DisplayName: C I Exocomet Magic
-				MarniteBayonetSpikesProj.DisplayName: Marnite Bayonet Spikes Proj
-			}
-
 			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
 			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor
 			ExoSpearTrailNor.DisplayName: Exo Spear Trail Nor

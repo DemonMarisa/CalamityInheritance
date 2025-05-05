@@ -482,7 +482,7 @@ Configs: {
 
 		SomaPrime: {
 			Label: "[i:CalamityInheritance/SomaPrimeOld]月神Prime[Legacy]贴图切换"
-			Tooltip: "切换月神Prime[legacy]的贴图"
+			Tooltip: 切换月神Prime[legacy]的贴图
 		}
 	}
 

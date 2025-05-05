@@ -58,23 +58,23 @@ RogueTypeHammerPwnageLegacyProj.DisplayName: 堕落圣骑士锤
 RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjEcho.DisplayName: 真·泰阿克提斯之圣骑士魔锤
 RogueTypeHammerTruePaladinsProjClone.DisplayName: 堕落圣骑士锤
 RogueTypeKnivesShadowspecProjClone.DisplayName: 圣光飞刀
-// DragonSpearProj.DisplayName: Dragon Spear Proj
-// DragonSpearFlare.DisplayName: Dragon Spear Flare
-// LumiStrikerProj.DisplayName: Lumi Striker Proj
-// LumiShard.DisplayName: Lumi Shard
-// RogueTypeVictideBoomerangProj.DisplayName: Rogue Type Victide Boomerang Proj
-// PBGLegendaryProj.DisplayName: P B G Legendary Proj
-// PBGLegendaryBolt.DisplayName: P B G Legendary Bolt
-// PBGLegendaryBeam.DisplayName: P B G Legendary Beam
-// EclipseSpearSmall.DisplayName: Eclipse Spear Small
-// EclipseSpearProjStealth.DisplayName: Eclipse Spear Proj Stealth
-// EclipseSpearProj.DisplayName: Eclipse Spear Proj
-// RogueTypeKnivesEmpyreanProjClone.DisplayName: Rogue Type Knives Empyrean Proj Clone
-// AtomDuplicateRework.DisplayName: Atom Duplicate Rework
-// AtomProjRework.DisplayName: Atom Proj Rework
-// EclipseSpearBack.DisplayName: Eclipse Spear Back
-// EclipseStealthBoomLegacy.DisplayName: Eclipse Stealth Boom Legacy
-// LumiStrikerBack.DisplayName: Lumi Striker Back
-// BouncingBettyProjectile.DisplayName: Bouncing Betty Projectile
-// BouncingBettyShrapnel.DisplayName: Bouncing Betty Shrapnel
-// LatcherMineProjectile.DisplayName: Latcher Mine Projectile
+DragonSpearProj.DisplayName: 狂龙翼火
+DragonSpearFlare.DisplayName: 巨龙火焰
+LumiStrikerProj.DisplayName: 夜明投矛
+LumiShard.DisplayName: 月影碎片
+RogueTypeVictideBoomerangProj.DisplayName: 胜朝回旋镖
+PBGLegendaryProj.DisplayName: 孔雀翎
+PBGLegendaryBolt.DisplayName: 孔雀光球
+PBGLegendaryBeam.DisplayName: 孔雀光束
+EclipseSpearSmall.DisplayName: 暗日碎片
+EclipseSpearProjStealth.DisplayName: 日蚀长矛
+EclipseSpearProj.DisplayName: 日蚀长矛
+RogueTypeKnivesEmpyreanProjClone.DisplayName: 苍穹飞刀
+AtomDuplicateRework.DisplayName: 微元撕裂
+AtomProjRework.DisplayName: 微元裂解
+EclipseSpearBack.DisplayName: 暗蚀能量
+EclipseStealthBoomLegacy.DisplayName: 暗日爆破
+LumiStrikerBack.DisplayName: 月明能量
+BouncingBettyProjectile.DisplayName: 弹跳爆炸
+BouncingBettyShrapnel.DisplayName: 弹跳碎片
+LatcherMineProjectile.DisplayName: 地雷

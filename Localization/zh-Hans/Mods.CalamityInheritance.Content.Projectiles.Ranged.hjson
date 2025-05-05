@@ -55,24 +55,27 @@ ChargedBlastLegacy2.DisplayName: 蓄能飞镖
 PolarStarLegacy.DisplayName: 北极星焰
 CorossiveFlamesLegacy.DisplayName: 腐蚀烈焰
 TerraFireGreenLegacy2.DisplayName: 泰拉之火
-// ProfanedNuke.DisplayName: Profaned Nuke
-// ProfanedNukeDust.DisplayName: Profaned Nuke Dust
-// ChickenNukeExplosion.DisplayName: Chicken Nuke Explosion
-// ChickenRound.DisplayName: Chicken Round
-// VictideWater.DisplayName: Victide Water
-// PlanteraLegendaryLeaf.DisplayName: Plantera Legendary Leaf
-// PlanteraLegendaryBomb.DisplayName: Plantera Legendary Bomb
-// ChargedBlastLegacy3.DisplayName: Charged Blast Legacy3
-// NorfleetCannonLegacy.DisplayName: Norfleet Cannon Legacy
-// NorfleetCometLegacy.DisplayName: Norfleet Comet Legacy
-// ACTKarasawaBoom.DisplayName: A C T Karasawa Boom
-// ACTKarasawaHoldout.DisplayName: A C T Karasawa Holdout
-// PhotovisceratorLegacyHeldProj.DisplayName: Photoviscerator Legacy Held Proj
-// DualpoonProj.DisplayName: Dualpoon Proj
-// TriploonProj.DisplayName: Triploon Proj
-// PhotovisceratorWingman.DisplayName: Photoviscerator Wingman
-// MarniteBayonetHeldProj.DisplayName: Marnite Bayonet Held Proj
-// ShockblastLegacy.DisplayName: Shockblast Legacy
-// ShockblastRoundLegacy.DisplayName: Shockblast Round Legacy
-// AeriesShockblast.DisplayName: Aeries Shockblast
-// MagnaStrikerProj.DisplayName: Magna Striker Proj
+ProfanedNuke.DisplayName: 亵渎核弹
+ProfanedNukeDust.DisplayName: 亵渎粉尘
+ChickenNukeExplosion.DisplayName: 小鸡爆炸
+ChickenRound.DisplayName: 小鸡火箭
+VictideWater.DisplayName: 海水
+PlanteraLegendaryLeaf.DisplayName: 叶字
+PlanteraLegendaryBomb.DisplayName: 叶流爆炸
+ChargedBlastLegacy3.DisplayName: 爆裂能量
+NorfleetCannonLegacy.DisplayName: 诺法雷
+NorfleetCometLegacy.DisplayName: 诺发雷彗星
+ACTKarasawaBoom.DisplayName: 卡萨瓦拉爆炸
+ACTKarasawaHoldout.DisplayName: 卡萨瓦拉
+PhotovisceratorLegacyHeldProj.DisplayName: 星火解离者
+DualpoonProj.DisplayName: 鱼叉
+TriploonProj.DisplayName: 鱼叉
+PhotovisceratorWingman.DisplayName: 星火僚机
+MarniteBayonetHeldProj.DisplayName: 花岗岩步枪
+ShockblastLegacy.DisplayName: 冲击爆破
+ShockblastRoundLegacy.DisplayName: 冲击弹
+AeriesShockblast.DisplayName: 鹅卵石冲击波
+MagnaStrikerProj.DisplayName: 麦格纳冲击波
+MarniteBayonetSpikesProj.DisplayName: 花岗岩突刺
+AccelerationRoundProj.DisplayName: 加速弹
+FrostsparkBulletProj.DisplayName: 霜冻弹

@@ -1,19 +1,20 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Weapons;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using System.Security.Authentication;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.System;
 
-namespace CalamityInheritance.Content.Items
+namespace CalamityInheritance.Content.Items.Qol
 {
-    public class Test : CIMelee, ILocalizedModType
+    public class LevelItem : ModItem, ILocalizedModType
     {
-        //别改这个为大写了，他每次拉去的时候图片的文件总是变成小写 
+        public new string LocalizationCategory => "Content.Items.Tools";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;

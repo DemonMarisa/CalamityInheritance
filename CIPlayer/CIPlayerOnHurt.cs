@@ -49,6 +49,9 @@ namespace CalamityInheritance.CIPlayer
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
 
+            if (CIWorld.IronHeart)
+                ModeHit(ref modifiers);
+
             #region Custom Hurt Sounds
             if (calPlayer.hurtSoundTimer == 0)
             {

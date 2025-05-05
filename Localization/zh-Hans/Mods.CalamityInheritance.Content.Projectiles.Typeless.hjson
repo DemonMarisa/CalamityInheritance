@@ -9,21 +9,21 @@ VanquisherArrowSplit.DisplayName: 弑神箭矢
 ExplosiveShotgunShell.DisplayName: 爆炸散弹
 GrenadeRound.DisplayName: 榴弹片
 MagnumRound.DisplayName: 马格南弹
-// AncientMurasamaProj.DisplayName: Ancient Murasama Proj
-// VictideShell.DisplayName: Victide Shell
-// GodSlayerDart.DisplayName: God Slayer Dart
-// GodSlayerDartHoming.DisplayName: God Slayer Dart Homing
-// ShrineMarbleSword.DisplayName: Shrine Marble Sword
-// ShrineMarbleSwordClone.DisplayName: Shrine Marble Sword Clone
-// GodSlayerDartRework.DisplayName: God Slayer Dart Rework
+AncientMurasamaProj.DisplayName: 鬼妖村正
+VictideShell.DisplayName: 海螺壳
+GodSlayerDart.DisplayName: 弑神飞镖
+GodSlayerDartHoming.DisplayName: 弑神飞镖
+ShrineMarbleSword.DisplayName: 角斗士之剑
+ShrineMarbleSwordClone.DisplayName: 角斗士之剑
+GodSlayerDartRework.DisplayName: 弑神飞镖
 RogueLevelFirework.DisplayName: 火箭
 RogueLevelFirework_Final.DisplayName: 火箭
 SummonLevelFirework.DisplayName: 火箭
 SummonLevelFirework_Final.DisplayName: 火箭
-// GlobalHealthProj.DisplayName: Global Health Proj
-// GodSlayerHealOrbLegacy.DisplayName: God Slayer Heal Orb Legacy
-// SilvaOrbLegacy.DisplayName: Silva Orb Legacy
-// MagnusProj.DisplayName: Magnus Proj
-// TerracottaProj.DisplayName: Terracotta Proj
-// MarkRound.DisplayName: Mark Round
-// ChangeDirProj.DisplayName: Change Dir Proj
+GlobalHealthProj.DisplayName: 血液精华
+GodSlayerHealOrbLegacy.DisplayName: 弑神能量
+SilvaOrbLegacy.DisplayName: 林海光球
+MagnusProj.DisplayName: 马格努斯能量
+TerracottaProj.DisplayName: 泰拉能量
+MarkRound.DisplayName: 死神能量
+ChangeDirProj.DisplayName: 弹幕

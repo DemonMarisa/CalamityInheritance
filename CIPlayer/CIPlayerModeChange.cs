@@ -323,8 +323,7 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public void ModeHit(ref Player.HurtModifiers modifiers)
         {
-            if (CIWorld.IronHeart)
-            {
+
                 int damageMin = 40 + (Player.statLifeMax2 / 10);
                 if (modifiers.SourceDamage.Base < damageMin)
                 {
@@ -336,7 +335,7 @@ namespace CalamityInheritance.CIPlayer
                     SoundEngine.PlaySound(CISoundMenu.IronHeartHurt, Player.Center);
                 else
                     SoundEngine.PlaySound(CISoundMenu.IronHeartBigHurt, Player.Center);
-            }
+            
         }
         #endregion
     }

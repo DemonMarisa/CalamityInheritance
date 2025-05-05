@@ -509,7 +509,7 @@ Configs: {
 
 		SomaPrime: {
 			Label: "[i:CalamityInheritance/SomaPrimeOld]Soma Prime[Legacy] Resprite"
-			Tooltip: "Determines sprite style of Soma Prime[Legacy]"
+			Tooltip: Determines sprite style of Soma Prime[Legacy]
 		}
 	}
 

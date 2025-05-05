@@ -33,10 +33,10 @@ WaterWaifuFrostMist.DisplayName: 水元素
 WaterWaifuMinion.DisplayName: 水元素
 WaterWaifuSongs.DisplayName: 水元素
 WaterWaifuSpear.DisplayName: 水元素
-// SonYharon.DisplayName: Son Yharon
-// CryogenPtr.DisplayName: Cryogen Ptr
-// CryoPtrAltRework.DisplayName: Cryo Ptr Alt Rework
-// CryoPtrRework.DisplayName: Cryo Ptr Rework
-// SaveCosmic.DisplayName: Save Cosmic
-// AncientClasper.DisplayName: Ancient Clasper
-// BloodClotMinion.DisplayName: Blood Clot Minion
+SonYharon.DisplayName: 巨龙
+CryogenPtr.DisplayName: 冰寒堡垒
+CryoPtrAltRework.DisplayName: 冰寒尖刺
+CryoPtrRework.DisplayName: 冰寒尖刺
+SaveCosmic.DisplayName: 宇宙之灵
+AncientClasper.DisplayName: 千载冰虫
+BloodClotMinion.DisplayName: 血块

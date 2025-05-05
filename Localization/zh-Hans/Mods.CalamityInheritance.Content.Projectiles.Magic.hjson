@@ -52,37 +52,37 @@ CIVividBeamExoLore.DisplayName: 星爆射线
 StepToolShadowChair.DisplayName: 至尊梯凳
 StepToolShadowChairSmall.DisplayName: 至尊小梯凳
 IceRain.DisplayName: 冰雨
-// DemonicPitchforkProjLegacy.DisplayName: Demonic Pitchfork Proj Legacy
-// ApothJawsLegacy.DisplayName: Apoth Jaws Legacy
-// ApothChloroLegacy.DisplayName: Apoth Chloro Legacy
-// WhiteFlameLegacy.DisplayName: White Flame Legacy
-// WhiteFlameAltLegacy.DisplayName: White Flame Alt Legacy
-// FlameBeamTip.DisplayName: Flame Beam Tip
-// FlameBeamTip2.DisplayName: Flame Beam Tip2
-// ElementalNebula.DisplayName: Elemental Nebula
-// SpiritFlameCurse.DisplayName: Spirit Flame Curse
-// AlphaRayYShapeAlt.DisplayName: Alpha Ray Y Shape Alt
-// AlphaRayYShape.DisplayName: Alpha Ray Y Shape
-// DragonStaffProj.DisplayName: Dragon Staff Proj
-// MagnusProj.DisplayName: Magnus Proj
-// VictideBookSpike.DisplayName: Victide Book Spike
-// RavagerLegendaryProjAlt.DisplayName: Ravager Legendary Proj Alt
-// FuckVoidProj.DisplayName: Fuck Void Proj
-// FuckBeam.DisplayName: Fuck Beam
-// DestroyerLegendaryLaser.DisplayName: Destroyer Legendary Laser
-// DestroyerLegendaryBoom.DisplayName: Destroyer Legendary Boom
-// DestroyerLegendaryBomb.DisplayName: Destroyer Legendary Bomb
-// WulfrumStaffHoldOut.DisplayName: Wulfrum Staff Hold Out
-// YharimsCrystalBeamLegendary.DisplayName: Yharims Crystal Beam Legendary
-// YharimsCrystalPrismLegendary.DisplayName: Yharims Crystal Prism Legendary
-// YharimsScalSupporterSmall.DisplayName: Yharims Scal Supporter Small
-// YharimsScalSupport.DisplayName: Yharims Scal Support
-// YharimsDragonSupport.DisplayName: Yharims Dragon Support
-// SubsumingVortexProjGiant.DisplayName: Subsuming Vortex Proj Giant
-// SubsumingVortexProjBig.DisplayName: Subsuming Vortex Proj Big
-// SubsumingVortexProj.DisplayName: Subsuming Vortex Proj
-// SubsumingBook.DisplayName: Subsuming Book
-// AlphaRayHeldProj.DisplayName: Alpha Ray Held Proj
-// ACTGenisisHeldProj.DisplayName: A C T Genisis Held Proj
-// ACTAlphaHeldProj.DisplayName: A C T Alpha Held Proj
-// MagnaBlastLegacy.DisplayName: Magna Blast Legacy
+DemonicPitchforkProjLegacy.DisplayName: 恶魔餐叉
+ApothJawsLegacy.DisplayName: 圣神射线
+ApothChloroLegacy.DisplayName: 圣神之象
+WhiteFlameLegacy.DisplayName: 光
+WhiteFlameAltLegacy.DisplayName: 光
+FlameBeamTip.DisplayName: 火焰荆棘
+FlameBeamTip2.DisplayName: 火焰荆棘
+ElementalNebula.DisplayName: 元素星云
+SpiritFlameCurse.DisplayName: 晶体之火
+AlphaRayYShapeAlt.DisplayName: 阿尔法射线
+AlphaRayYShape.DisplayName: 阿尔法射线
+DragonStaffProj.DisplayName: 巨龙
+MagnusProj.DisplayName: 马格努斯光球
+VictideBookSpike.DisplayName: 火花
+RavagerLegendaryProjAlt.DisplayName: 魔像流星
+DestroyerLegendaryLaser.DisplayName: 毁灭激光
+DestroyerLegendaryBoom.DisplayName: 毁灭爆炸
+DestroyerLegendaryBomb.DisplayName: 毁灭炸弹
+WulfrumStaffHoldOut.DisplayName: 钨钢法杖
+YharimsCrystalBeamLegendary.DisplayName: 暴君射线
+YharimsCrystalPrismLegendary.DisplayName: 暴君水晶
+YharimsScalSupporterSmall.DisplayName: 探魂眼
+YharimsScalSupport.DisplayName: 探魂眼
+YharimsDragonSupport.DisplayName: 巨龙天火
+SubsumingVortexProjGiant.DisplayName: 归元旋涡
+SubsumingVortexProjBig.DisplayName: 星流旋涡
+SubsumingVortexProj.DisplayName: 归元能量
+SubsumingBook.DisplayName: 归元旋涡
+AlphaRayHeldProj.DisplayName: 阿尔法射线
+ACTGenisisHeldProj.DisplayName: 源
+ACTAlphaHeldProj.DisplayName: 阿尔法射线
+MagnaBlastLegacy.DisplayName: Magna Blast Legacy
+CIExocomet.DisplayName: 星流流星
+CIExocometMagic.DisplayName: 星流彗星

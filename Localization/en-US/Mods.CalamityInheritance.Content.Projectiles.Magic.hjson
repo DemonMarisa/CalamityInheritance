@@ -67,8 +67,6 @@ DragonStaffProj.DisplayName: Dragon Staff Proj
 MagnusProj.DisplayName: Magnus Proj
 VictideBookSpike.DisplayName: Victide Book Spike
 RavagerLegendaryProjAlt.DisplayName: Ravager Legendary Proj Alt
-FuckVoidProj.DisplayName: Fuck Void Proj
-FuckBeam.DisplayName: Fuck Beam
 DestroyerLegendaryLaser.DisplayName: Destroyer Legendary Laser
 DestroyerLegendaryBoom.DisplayName: Destroyer Legendary Boom
 DestroyerLegendaryBomb.DisplayName: Destroyer Legendary Bomb
@@ -86,3 +84,5 @@ AlphaRayHeldProj.DisplayName: Alpha Ray Held Proj
 ACTGenisisHeldProj.DisplayName: A C T Genisis Held Proj
 ACTAlphaHeldProj.DisplayName: A C T Alpha Held Proj
 MagnaBlastLegacy.DisplayName: Magna Blast Legacy
+CIExocomet.DisplayName: Exocomet
+CIExocometMagic.DisplayName: Exocomet

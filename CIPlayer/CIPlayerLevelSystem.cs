@@ -96,7 +96,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 // 先减去对应经验值再加等级
                 Celebration(meleeLevel == 14 ? ProjectileID.RocketFireworkRed : ProjectileID.RocketFireworksBoxRed);
-                meleePool -= CalculateRequiredExp(meleeLevel);
                 meleeLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(meleeLevel, 0);
@@ -105,7 +104,6 @@ namespace CalamityInheritance.CIPlayer
             if (rangePool >= CalculateRequiredExp(rangeLevel) && rangeLevel < maxLevel)
             {
                 Celebration(rangeLevel == 14 ? ProjectileID.RocketFireworkGreen : ProjectileID.RocketFireworksBoxGreen);
-                rangePool -= CalculateRequiredExp(rangeLevel);
                 rangeLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(rangeLevel, 1);
@@ -114,7 +112,6 @@ namespace CalamityInheritance.CIPlayer
             if (magicPool >= CalculateRequiredExp(magicLevel) && magicLevel < maxLevel)
             {
                 Celebration(magicLevel == 14 ? ProjectileID.RocketFireworkBlue : ProjectileID.RocketFireworksBoxBlue);
-                magicPool -= CalculateRequiredExp(magicLevel);
                 magicLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(magicLevel, 2);
@@ -123,7 +120,6 @@ namespace CalamityInheritance.CIPlayer
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
             {
                 Celebration(summonLevel == 14 ? ModContent.ProjectileType<SummonLevelFirework_Final>() : ModContent.ProjectileType<SummonLevelFirework>());
-                summonPool -= CalculateRequiredExp(summonLevel);
                 summonLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(summonLevel, 3);
@@ -132,7 +128,6 @@ namespace CalamityInheritance.CIPlayer
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
             {
                 Celebration(rogueLevel == 14 ? ModContent.ProjectileType<RogueLevelFirework_Final>() : ModContent.ProjectileType<RogueLevelFirework>());
-                roguePool -= CalculateRequiredExp(rogueLevel);
                 rogueLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(rogueLevel, 4);

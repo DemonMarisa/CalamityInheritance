@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
 {
     public class FrostsparkBulletProj : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;

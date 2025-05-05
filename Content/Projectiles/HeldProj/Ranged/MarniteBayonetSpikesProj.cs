@@ -11,6 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class MarniteBayonetSpikesProj : BaseShortswordProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;

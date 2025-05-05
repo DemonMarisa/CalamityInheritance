@@ -40,21 +40,15 @@ Mods: {
 				$parentVal: 魔影坩埚
 			}
 
-			Arcueid: Mods.CalamityInheritance.Tiles.Arcueid
-			KunojiTile: Mods.CalamityInheritance.Tiles.KunojiTile
+			Arcueid: 音乐盒(月姫：re)
+			KunojiTile: 音乐盒(久远寺家的早餐)
 			LegacyArenaTile.MapEntry: 竞技场方块
-			// CryoBarTile: Mods.CalamityInheritance.Tiles.CryoBarTile
-			// NebulaBarTile: Mods.CalamityInheritance.Tiles.NebulaBarTile
-			// AuricBarLegacyTile: Mods.CalamityInheritance.Tiles.AuricBarLegacyTile
+			CryoBarTile: 极寒锭
+			NebulaBarTile: 星云合金
+			AuricBarLegacyTile: 圣金源锭[rLegacy]
 		}
 
 		Projectiles: {
-			Melee: {
-				CIExocomet.DisplayName: 星流流星
-				CIExocometMagic.DisplayName: 星流彗星
-				// MarniteBayonetSpikesProj.DisplayName: Marnite Bayonet Spikes Proj
-			}
-
 			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
 			ExoSpearProjNor.DisplayName: 圣火之枪
 			ExoSpearTrailNor.DisplayName: 圣火投刀
@@ -76,7 +70,7 @@ Mods: {
 
 		Content/Projectiles/Summon: {
 			MountedScannerLaserLegacy.DisplayName: 分解激光
-			// YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
+			YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
 		}
 
 		Content: {

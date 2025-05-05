@@ -103,40 +103,38 @@ BrimlashBusterProj.DisplayName: 硫火爆裂
 BrimlashBusterProjClone.DisplayName: 硫火爆裂
 CosmicOrbLegacy.DisplayName: 宇宙光球
 CosmicBoltLegacy.DisplayName: 宇宙射线
-// AzathothYoyoLegacy.DisplayName: Azathoth Yoyo Legacy
-// DragonRageProj.DisplayName: Dragon Rage Proj
-// WTFGalaxy.DisplayName: W T F Galaxy
-// WarbladeProj.DisplayName: Warblade Proj
-// MarniteSpearProj.DisplayName: Marnite Spear Proj
-// AquaticBeam.DisplayName: Aquatic Beam
-// VictideYoyoProj.DisplayName: Victide Yoyo Proj
-// VictideSwordProj.DisplayName: Victide Sword Proj
-// VictideSpearProj.DisplayName: Victide Spear Proj
-// MeleeTypeVictideBoomerangProj.DisplayName: Melee Type Victide Boomerang Proj
-// VictideSpearWaterRing.DisplayName: Victide Spear Water Ring
-// DukeLegendarySpout.DisplayName: Duke Legendary Spout
-// DukeLegendaryRazor.DisplayName: Duke Legendary Razor
-// DukeLegendaryBubble.DisplayName: Duke Legendary Bubble
-// DefenseBeam.DisplayName: Defense Beam
-// DefenseBlast.DisplayName: Defense Blast
-// DefenseBlast2.DisplayName: Defense Blast2
-// DefenseFlame.DisplayName: Defense Flame
-// ACTExcelsusBlue.DisplayName: A C T Excelsus Blue
-// ACTExcelsusMain.DisplayName: A C T Excelsus Main
-// ACTExcelsusPink.DisplayName: A C T Excelsus Pink
-// DukeLegendaryRazorClone.DisplayName: Duke Legendary Razor Clone
-// ExoChainsawProj.DisplayName: Exo Chainsaw Proj
-// CrystalDust.DisplayName: Crystal Dust
-// HeartRapierProj.DisplayName: Heart Rapier Proj
-// TemporalFloeNumberTwo.DisplayName: Temporal Floe Number Two
-// TemporalFloeSwordProjectile.DisplayName: Temporal Floe Sword Projectile
-// FulgurationHalberdProj.DisplayName: Fulguration Halberd Proj
-// GreenBall.DisplayName: Green Ball
-// GreenDust.DisplayName: Green Dust
-// RedBall.DisplayName: Red Ball
-// RedDust.DisplayName: Red Dust
-// TerracottaExplosion.DisplayName: Terracotta Explosion
-// HolidayHalberdProj.DisplayName: Holiday Halberd Proj
-// AccelerationRoundProj.DisplayName: Acceleration Round Proj
-// FrostsparkBulletProj.DisplayName: Frostspark Bullet Proj
-// InsidiousHarpoonLegacy.DisplayName: Insidious Harpoon Legacy
+AzathothYoyoLegacy.DisplayName: 阿撒托斯
+DragonRageProj.DisplayName: 巨龙之怒
+WTFGalaxy.DisplayName: 银河
+WarbladeProj.DisplayName: 战刃
+MarniteSpearProj.DisplayName: 花岗岩长矛
+AquaticBeam.DisplayName: 水溶利刃
+VictideYoyoProj.DisplayName: 胜朝悠悠球
+VictideSwordProj.DisplayName: 胜朝水球
+VictideSpearProj.DisplayName: 胜朝长矛
+MeleeTypeVictideBoomerangProj.DisplayName: 贝壳回旋镖
+VictideSpearWaterRing.DisplayName: 胜朝水环
+DukeLegendarySpout.DisplayName: 海爵风暴
+DukeLegendaryRazor.DisplayName: 海爵旋风
+DukeLegendaryBubble.DisplayName: 海爵水球
+DefenseBeam.DisplayName: 庇护光束
+DefenseBlast.DisplayName: 庇护爆炸
+DefenseBlast2.DisplayName: 庇护爆炸
+DefenseFlame.DisplayName: 庇护火焰
+ACTExcelsusBlue.DisplayName: 蓝宙能飞剑
+ACTExcelsusMain.DisplayName: 宙能飞剑
+ACTExcelsusPink.DisplayName: 紫宙能飞剑
+DukeLegendaryRazorClone.DisplayName: 海爵旋风
+ExoChainsawProj.DisplayName: 星流碎片
+CrystalDust.DisplayName: 水晶灰尘
+HeartRapierProj.DisplayName: 心之刺剑
+TemporalFloeNumberTwo.DisplayName: 时间之冰
+TemporalFloeSwordProjectile.DisplayName: 浮冰剑刃
+FulgurationHalberdProj.DisplayName: 电灼长矛
+GreenBall.DisplayName: 绿色礼物
+GreenDust.DisplayName: 圣诞灰尘
+RedBall.DisplayName: 红色礼物
+RedDust.DisplayName: 圣诞灰尘
+TerracottaExplosion.DisplayName: 大地爆炸
+HolidayHalberdProj.DisplayName: 圣诞长戟
+InsidiousHarpoonLegacy.DisplayName: 腐坏长戟

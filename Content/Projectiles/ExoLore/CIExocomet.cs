@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class CIExocomet : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 5;
