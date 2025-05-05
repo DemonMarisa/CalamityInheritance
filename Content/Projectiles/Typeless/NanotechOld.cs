@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.timeLeft = 240;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.penetrate = 1;
@@ -76,13 +77,16 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             NPC target = Projectile.FindClosestTarget(1800f);
             float speed = 16f + AttackTimer / 30f;
             if (target != null)
-                Projectile.HomingNPCBetter(target, 1800f, speed, 20f, 2, speed, null, true);
+                Projectile.HomingNPCBetter(target, 1800f, speed, 20f, 1, speed, null, true);
         }
 
         private void DoShooted()
         {
             if (Projectile.alpha > 0)
+            {
                 Projectile.alpha -= 15;
+                return;
+            }
             AttackType = IsSearchingNewTarget;
             Projectile.netUpdate = true;
         }
