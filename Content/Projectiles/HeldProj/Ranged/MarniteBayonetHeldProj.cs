@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         }
         public override void HoldoutAI()
         {
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 0;
             // 使用类型 类型为0时为左键 为1时为右键
             ref float UseStyle = ref Projectile.ai[0];
             // 使用计时器
@@ -60,17 +60,17 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             RecoilAnimation(ref UseCounter);
         }
         #region 后坐力动画
-        public void RecoilAnimation(ref float attacktimer)
+        public void RecoilAnimation(ref float UseCounter)
         {
             int recoilani = Owner.HeldItem.useTime;
-            attacktimer++;
-            if (attacktimer < recoilani)
+            UseCounter++;
+            if (UseCounter < recoilani)
             {
-                float progress = EasingHelper.EaseInOutQuad((float)attacktimer / recoilani);
+                float progress = EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
                 aniXdistance = MathHelper.Lerp(0, maxXdistance, progress);
             }
             else
-                attacktimer = 0;
+                UseCounter = 0;
         }
         #endregion
         #region 删除条件

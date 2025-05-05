@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             float drawRotation = Projectile.rotation  - (MathHelper.PiOver4 * Owner.direction);
-            Vector2 rotationPoint = texture.Size() * 0.5f;
+            Vector2 rotationPoint = texture.Size() * 0.75f;
             SpriteEffects flipSprite = isFilp ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * 0.75f, flipSprite);
