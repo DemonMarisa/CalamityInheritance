@@ -78,7 +78,7 @@ CyrogenLegendary: {
 		'''
 	LegendaryScaling: "[c/1E90FF:武器强化]: +{0}"
 	TierOne: "[c/1E90FF:强化]: 大幅度提高冰钉的发射频率"
-	TierTwo: "[c/1E90FF:强化]: 鞭子命中时强制发射冰钉，赋予其命中治疗的能力"
+	TierTwo: "[c/1E90FF:强化]: 鞭子命中时强制发射冰钉，同时冰刺获得命中治疗的能力"
 	TierThree: "[c/1E90FF:强化]: 冰钉将会贯穿敌怪防御属性，并使敌怪持续失温"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwoTint: "[c/818589:雪原地表饮用一瓶温暖药水]"
