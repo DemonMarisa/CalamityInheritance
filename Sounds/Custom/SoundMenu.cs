@@ -60,7 +60,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle KarasawaLaunch = new($"{KarasawaSound}/KarasawaLaunch", 2) { MaxInstances = 0, PitchVariance = 0.1f };
         public static readonly SoundStyle KarasawaChargeFailed = new($"{KarasawaSound}/KarasawaChargeFailed") { MaxInstances = 2 };
         #region ÌúÐÄ
-        public static readonly SoundStyle IronHeartDeath = new($"{ItemSoundRoute}/IronHeartDeath") { Volume = 0.6f, Pitch = 0.9f };
+        public static readonly SoundStyle IronHeartDeath = new($"{IronHeartSound}/IronHeartDeath") { Volume = 0.6f, Pitch = 0.9f };
         public static readonly SoundStyle IronHeartBigHurt = new($"{IronHeartSound}/IronHeartBigHurt") { Volume = 0.9f, Pitch = 0.7f };
         public static readonly SoundStyle IronHeartHurt = new($"{IronHeartSound}/IronHeartHurt") { Volume = 0.9f, Pitch = 0.7f };
         #endregion

@@ -88,7 +88,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.ScalDebuffs(180, 240, 0);
+            if (Projectile.ai[2] == 0f)
+                target.ScalDebuffs(180, 240, 0);
+            else
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 30);
         }
 
         public override bool PreDraw(ref Color lightColor)
