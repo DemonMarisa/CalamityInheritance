@@ -75,6 +75,11 @@ namespace CalamityInheritance.CIPlayer
             // 恶意模式额外受到25%伤害
             if (CIWorld.Malice)
                 damageMult += 0.25;
+            if (CIWorld.Defiled)
+            {
+                if(Main.rand.NextBool(4))
+                    damageMult += 0.5;
+            }
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
             #region 免伤

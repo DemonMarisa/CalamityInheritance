@@ -168,8 +168,8 @@ Configs: {
 		}
 
 		TurnOffFirstText: {
-			// Label: Turn Off First Text
-			// Tooltip: ""
+			Label: 关闭文字
+			Tooltip: 关闭进入游戏时的文字
 		}
 	}
 
@@ -406,13 +406,13 @@ Configs: {
 		}
 
 		RadiantStarResprite: {
-			Label: "[i:CalamityMod/RadiantStar]Radiant Star Resprite"
-			Tooltip: Determines sprite style of Radiant Star
+			Label: "[i:CalamityMod/RadiantStar]光辉星剑贴图切换"
+			Tooltip: 切换光辉星剑的贴图
 		}
 
 		ShatteredSunResprite: {
-			Label: "[i:CalamityMod/ShatteredSun]Shattered Sun Resprite"
-			Tooltip: Determines sprite style of Shattered Sun
+			Label: "[i:CalamityMod/ShatteredSun]烈阳贴图切换"
+			Tooltip: 切换阳的贴图
 		}
 
 		FuckAllExo: {

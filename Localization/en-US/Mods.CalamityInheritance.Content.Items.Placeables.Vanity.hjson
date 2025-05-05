@@ -1,68 +1,87 @@
 Armageddon: {
-	DisplayName: Armageddon Doll Furniture
+	DisplayName: Armageddon Legacy
 	Tooltip:
 		'''
-		Used to activate Armageddon Mode, which is literally no-hit mode in the early days of Calamity
-		Now it is just for decoration
+		Left-click to place
+		Right-click to activate Armageddon Mode
+		(Enables/disables Armageddon, can be used in any difficulty mode)
+		(While active, any hit while a boss is alive will instantly kill you)
+		(If you defeat a boss with this mode active, they will drop 5 extra treasure bags)
+		(your dodges are disabled)
 		'''
 }
 
 BloodIdol: {
-	DisplayName: Blood Idol Furniture
-	Tooltip: Used to summon Blood Moon, but removed due to Blood Tear's addition
+	DisplayName: Blood Relic Legacy
+	Tooltip:
+		'''
+		Right-click to summon Blood Moon
+		Left-click to hang on wall
+		'''
 }
 
 Death: {
-	DisplayName: Death Totem Furniture
+	DisplayName: Death Legacy
 	Tooltip:
 		'''
-		Used to activate Death Mode, removed due to Difficulty Indicator was introduced
-		Now it is just for decoration
+		Right-click to activate Death Mode
+		Left-click to place
 		'''
 }
 
 DefiledRune: {
-	DisplayName: Defiled Rune Furniture
+	DisplayName: Defiled Rune Legacy
 	Tooltip:
 		'''
-		Used to activate Defiled Mode, which disables all the wings ability
-		Now it is just for decoration
+		Right-click to activate Defiled Mode
+		Left-click to hang on wall
+		(Wing flight is disabled)
+		(enemies can critically hit you)
+		(Enemies drop 2�� money)
 		'''
 }
 
 IronHeart: {
-	DisplayName: Iron Heart Furniture
+	DisplayName: Iron Heart Legacy
 	Tooltip:
 		'''
-		Used to activate Iron Heart, which disables your life regeneration
-		Now it is just for decoration
+		Right-click to activate Iron Heart Mode
+		Left-click to place
+		(Disables health potions and natural life regen)
+		(Enemy damage scales with player's max health)
 		'''
 }
 
 MLGRune: {
-	DisplayName: Demon Trophy Furniture
+	DisplayName: Demon Trophy Legacy
 	Tooltip:
 		'''
-		Used to be a consumable item, which will boost the spawn rates of enemies by 1.25x
-		Now it is just for decoration
+		Right-click to increase spawn rate
+		Left-click to place
+		(Boosts spawn rate by 1.25 times)
 		'''
 }
 
 Revenge: {
-	DisplayName: Blood Fountain of Revengeance Furniture
+	DisplayName: Revenge Legacy
 	Tooltip:
 		'''
-		Used to activate Revengeance Mode, removed due to Difficulty Indicator was introduced
-		Now it is just for decoration
+		Right-click to activate Revengeance Mode
+		Left-click to place
 		'''
 }
 
 Malice: {
-	DisplayName: Malice Brain Furniture
+	DisplayName: Malice Legacy
 	Tooltip:
 		'''
-		Used to activate Malice Mode, which literally makes all bosses become stuipidly and cheapy hard
-		Now it is just for decoration
+		Do you enjoy going through hell?
+		Right-click to activate Malice Mode
+		Left-click to place
+		(Environmental hazards deal increased damage)
+		(Boss movement and AI speed +25%)
+		(Boss projectile speed +50%)
+		(Receive 25% more damage)
 		'''
 }
 

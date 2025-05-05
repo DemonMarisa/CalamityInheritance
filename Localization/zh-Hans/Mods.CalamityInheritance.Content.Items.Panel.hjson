@@ -1,4 +1,4 @@
-DraedonsPanel: {
-	// DisplayName: Draedons Panel
-	// Tooltip: ""
+﻿DraedonsPanel: {
+	DisplayName: 总控面板
+	Tooltip: 你可以在这里控制传颂之物的效果与查看等级进度
 }

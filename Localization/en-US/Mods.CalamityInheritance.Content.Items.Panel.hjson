@@ -1,4 +1,4 @@
 DraedonsPanel: {
-	DisplayName: Draedons Panel
-	Tooltip: ""
+	DisplayName: Control Panel
+	Tooltip: From here, you can control the effects of the LoreItem and view your level progress
 }

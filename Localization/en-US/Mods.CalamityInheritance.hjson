@@ -190,7 +190,7 @@ Configs: {
 		}
 
 		TurnOffFirstText: {
-			Label: Turn Off First Text
+			Label: Turn Off Text
 			Tooltip: ""
 		}
 	}

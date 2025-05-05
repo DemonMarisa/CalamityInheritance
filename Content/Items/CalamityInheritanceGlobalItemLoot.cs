@@ -15,6 +15,10 @@ using Terraria.DataStructures;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using Terraria.ModLoader.Default;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Content.Items.Qol;
+using CalamityMod.Items.TreasureBags.MiscGrabBags;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -22,8 +26,6 @@ namespace CalamityInheritance.Content.Items
     {
         public override void OnSpawn(Item item, IEntitySource source)
         {
-
-            
             //不准浪费时间，滚回去
             if (!CIServerConfig.Instance.LoreDrop)
                 return;
@@ -57,6 +59,17 @@ namespace CalamityInheritance.Content.Items
         public override bool InstancePerEntity => false;
         public override void ModifyItemLoot(Item item, ItemLoot itemloot)
         {
+            if (item.type == ModContent.ItemType<StarterBag>())
+            {
+                itemloot.Add(ModContent.ItemType<Death>());
+                itemloot.Add(ModContent.ItemType<Armageddon>());
+                itemloot.Add(ModContent.ItemType<DefiledRune>());
+                itemloot.Add(ModContent.ItemType<IronHeart>());
+                itemloot.Add(ModContent.ItemType<Malice>());
+                itemloot.Add(ModContent.ItemType<Revenge>());
+                itemloot.Add(ModContent.ItemType<DraedonsPanel>());
+            }
+
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
 
