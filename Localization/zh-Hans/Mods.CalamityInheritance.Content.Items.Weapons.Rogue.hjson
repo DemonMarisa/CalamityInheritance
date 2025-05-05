@@ -118,7 +118,7 @@ Celestusold: {
 		    [c/87CEFA:所有攻击都会从上方投下一个复制镰刀];
 		    [c/87CEFA:复制镰刀可以进行潜伏攻击];
 		}
-		[c/4169E1:void] [c/FFFFE0:StealthOnReturn][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:镰刀返程时会复制允许跟踪的自身];
+		[c/4169E1:void] [c/FFFFE0:OverrideStealth][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:镰刀会复制允许跟踪的自身];
 		'''
 }
 

@@ -32,6 +32,10 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             CreateMapEntryName();
             AddMapEntry(Color.Purple, CIFunction.GetText("Tiles.DemonshadeTile"));
             TileID.Sets.DisableSmartCursor[Type] = true;
+            AdjTiles =
+            [
+                TileID.WorkBenches
+            ];
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {

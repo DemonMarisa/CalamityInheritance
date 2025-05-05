@@ -116,9 +116,9 @@ Celestusold: {
 		[c/4169E1:void] [c/FFFFE0:SkyFallBlade][c/4169E1:()] 
 		{
 		    [c/87CEFA:Upon attacking, a duplicate sickle drops from the sky];
-		    [c/87CEFA:Duplicate sickle can deal stealth strikes];
+		    [c/87CEFA:Duplicate scythe can deal stealth strikes];
 		}
-		[c/4169E1:void] [c/FFFFE0:StealthOnReturn][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Main sickle duplicate itself on returning];
+		[c/4169E1:void] [c/FFFFE0:OverrideStealth][c/4169E1:()] [c/B0C4DE:=>] [c/87CEFA:Main scythe duplicate itself];
 		'''
 }
 

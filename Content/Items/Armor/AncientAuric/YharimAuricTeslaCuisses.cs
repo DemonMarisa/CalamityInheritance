@@ -16,12 +16,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
     public class YharimAuricTeslaCuisses : CIArmor, ILocalizedModType
     {
 
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
         }
-
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -30,29 +28,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.defense = 20;
         }
-        
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.5f;
 			player.statLifeMax2 += 600;
             player.carpet = true;
-        }
-
-        public override void AddRecipes()
-        {
-            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
-            {
-                CreateRecipe().
-                AddIngredient<AuricTeslaCuissesold>().
-                AddIngredient<AncientTarragonLeggings>().
-                AddIngredient<AncientBloodflareCuisses>().
-                AddIngredient<AncientGodSlayerLeggings>().
-                AddIngredient<AncientSilvaLeggings>().
-                AddIngredient<AuricBarold>(15).
-                AddIngredient<CalamitousEssence>(1).
-                AddTile<DraedonsForgeold>().
-                Register();
-            }
         }
     }
 }

@@ -44,23 +44,5 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
             player.statManaMax2 += 500;
             player.moveSpeed += 0.25f;
         }
-
-        public override void AddRecipes()
-        {
-            if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
-            {
-                CreateRecipe().
-                AddIngredient<AuricTeslaBodyArmorold>().
-                AddIngredient<AncientTarragonBreastplate>().
-                AddIngredient<AncientBloodflareBodyArmor>().
-                AddIngredient<AncientGodSlayerChestplate>().
-                AddIngredient<AncientSilvaArmor>().
-                AddIngredient<YharimsGiftLegacy>().
-                AddIngredient<AuricBarold>(18).
-                AddIngredient<CalamitousEssence>(1).
-                AddTile<DraedonsForgeold>().
-                Register();
-            }
-        }
     }
 }

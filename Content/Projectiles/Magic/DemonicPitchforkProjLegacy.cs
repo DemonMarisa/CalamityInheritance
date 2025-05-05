@@ -11,10 +11,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class DemonicPitchforkProjLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override void SetStaticDefaults()
-        {
-        }
-
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -25,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.penetrate = 10;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.timeLeft = 600;
             AIType = ProjectileID.UnholyTridentFriendly;
         }
@@ -80,11 +76,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 }
 
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, tacleVel, ProjectileID.ShadowFlame, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, tentacleXDirection, tentacleYDirection);
-                //È¡ÏûlocalÎÞµÐÖ¡
+                //È¡ï¿½ï¿½localï¿½Þµï¿½Ö¡
                 Main.projectile[p].usesLocalNPCImmunity = false;
-                //ÆôÓÃ¾²Ì¬ÎÞµÐÖ¡
+                //ï¿½ï¿½ï¿½Ã¾ï¿½Ì¬ï¿½Þµï¿½Ö¡
                 Main.projectile[p].usesIDStaticNPCImmunity = true;
-                //¸øÓè10
+                //ï¿½ï¿½ï¿½ï¿½10
                 Main.projectile[p].idStaticNPCHitCooldown = 10;
             }
         }

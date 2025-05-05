@@ -34,6 +34,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
                 ModContent.TileType<BotanicPlanter>(),
                 ModContent.TileType<SilvaBasin>(),
                 ModContent.TileType<DraedonsForge>(),
+                ModContent.TileType<CosmicAnvil>(),
             ];
         }
 
