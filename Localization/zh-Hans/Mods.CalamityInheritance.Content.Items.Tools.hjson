@@ -39,13 +39,13 @@ ChargerItem: {
 	Tooltip: 使用后，瞬间充能身上所有的嘉登军械库武器
 }
 
-CrystylCrusherLegacy: {[Legacy]
-	DisplayName: 终极碾碎器
-	Tooltip: 	
-	'''
-	更快，更深，更强！
-	右键正常使用
-	'''
+CrystylCrusherLegacy: {
+	DisplayName: 终极碾碎器[Legacy]
+	Tooltip:
+		'''
+		更快，更深，更强！
+		右键正常使用
+		'''
 }
 
 XerocPickaxe: {

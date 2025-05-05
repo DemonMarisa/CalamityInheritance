@@ -41,7 +41,11 @@ ChargerItem: {
 
 CrystylCrusherLegacy: {
 	DisplayName: Crystyl Crusher Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Hold Right Click to channel a beam that destroys just about anything
+		'Gotta dig faster, gotta go deeper'
+		'''
 }
 
 XerocPickaxe: {
@@ -51,5 +55,5 @@ XerocPickaxe: {
 
 LevelItem: {
 	DisplayName: Level Item
-	Tooltip: ""
+	Tooltip: Instantly upgrade your class level to full level
 }
