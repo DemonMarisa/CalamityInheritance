@@ -100,8 +100,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public const float finalPhase = 5f;
         #endregion
         #region 数据
-        public int laserDamage = 30;
-        public int fireDamage = 40;
+        public int laserDamage = 25;
+        public int fireDamage = 30;
         #endregion
         #region 杂项bool
         // 用于在AI的初始化
@@ -1024,6 +1024,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 normalOnly.Add(calVanity);
                 normalOnly.Add(ModContent.ItemType<ThankYouPainting>(), ThankYouPainting.DropInt);
             }
+            npcLoot.Add(ItemID.BrokenHeroSword, 1, 2, 2);
 
             npcLoot.Add(ModContent.ItemType<CalamitasCloneTrophy>(), 10);
 

@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 
             if (InitialDamage == 0f)
             {
-                InitialDamage = Projectile.damage;
+                InitialDamage = Projectile.damage * 0.6f;
                 Projectile.netUpdate = true;
             }
 

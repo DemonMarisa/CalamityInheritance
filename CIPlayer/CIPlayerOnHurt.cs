@@ -115,7 +115,7 @@ namespace CalamityInheritance.CIPlayer
             if (CIWorld.IronHeart)
             {
                 KillPlayer();
-                return false;
+                return true;
             }
 
             CalamityPlayer calPlayer = Player.Calamity();
