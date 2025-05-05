@@ -459,6 +459,31 @@ Configs: {
 			Label: "[i:CalamityInheritance/PBGLegendary]孔雀翎[Legendary]贴图切换"
 			Tooltip: 切换孔雀翎[Legendary]的贴图
 		}
+
+		MirrorBlade: {
+			Label: "[i:CalamityMod/MirrorBlade]镜之刃贴图切换"
+			Tooltip: 切换镜之刃的贴图
+		}
+
+		PlasmaRod: {
+			Label: "[i:CalamityMod/PlasmaRod]等离子杖贴图切换"
+			Tooltip: 切换等离子杖的贴图
+		}
+
+		StaffofBlushie: {
+			Label: "[i:CalamityMod/StaffofBlushie]狱火蓝链杖贴图切换"
+			Tooltip: 切换狱火蓝链杖的贴图
+		}
+
+		ScarletDevil: {
+			Label: "[i:CalamityMod/ScarletDevil]绯红恶魔贴图切换"
+			Tooltip: 切换绯红恶魔的贴图
+		}
+
+		SomaPrime: {
+			Label: "[i:CalamityInheritance/SomaPrimeOld]月神Prime[Legacy]贴图切换"
+			Tooltip: "切换月神Prime[legacy]的贴图"
+		}
 	}
 
 	CIServerConfig: {

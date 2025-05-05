@@ -388,12 +388,19 @@ namespace CalamityInheritance.CIPlayer
 
             if (GI<ShatteredSun>() != null)
                 IR<ShatteredSun>(R.ShatteredSunResprite? CIWeaponsResprite.ShatteredAlt : CIWeaponsResprite.ShatteredCal);
+            
+            if (GI<ScarletDevil>() is not null)
+                IR<ScarletDevil>(R.ScarletDevil ? CIWeaponsResprite.ScarletDevilAlter : CIWeaponsResprite.ScarletDevil);
         }
 
         private static void MagicResprite(CIRespriteConfig R)
         {
             if (GI<HeliumFlashLegacy>() != null)
                 IR<HeliumFlashLegacy>(R.HeliumFlashResprite ? CIWeaponsResprite.HeliumFlashLegacy : CIWeaponsResprite.HeliumCal);
+            if (GI<PlasmaRod>() is not null)
+                IR<PlasmaRod>(R.PlasmaRod ? CIWeaponsResprite.PlasmaRodAlter : CIWeaponsResprite.PlasmaRod);
+            if (GI<StaffofBlushie>() is not null)
+                IR<StaffofBlushie>(R.StaffofBlushie ? CIWeaponsResprite.StaffofBlushieLegacy : CIWeaponsResprite.StaffofBlushie);
         }
 
         private static void RangedResprite(CIRespriteConfig R)
@@ -419,6 +426,8 @@ namespace CalamityInheritance.CIPlayer
                     PR<DragonBow>(CIWeaponsResprite.DrataliornusLegacy);
                 }
             }
+            if (GI<SomaPrimeOld>() is not null)
+                IR<SomaPrimeOld>(R.SomaPrime ? CIWeaponsResprite.SomaPrimeAlter : CIWeaponsResprite.SomaPrime);
         }
 
         private static void MeleeResprite(CIRespriteConfig R)
@@ -426,7 +435,11 @@ namespace CalamityInheritance.CIPlayer
             if (GI<ArkoftheCosmosold>() != null)
                 IR<ArkoftheCosmosold>( R.ArkofCosmosTexture ?  CIWeaponsResprite.AotCAlt : CIWeaponsResprite.AotCCal);
        
-            
+            if (GI<MirrorBlade>() != null) 
+            {
+                IR<MirrorBlade>(R.MirrorBlade ? CIWeaponsResprite.MirrorBladeAlter : CIWeaponsResprite.MirrorBlade);
+                PR<MirrorBlast>(R.MirrorBlade ? CIWeaponsResprite.MirrorBladeProjAlter : CIWeaponsResprite.MirrorBladeProj);
+            }
             #region 圣短剑
             if (GI<ExcaliburShortsword>() != null ||
                 GI<TrueExcaliburShortsword>() != null ||

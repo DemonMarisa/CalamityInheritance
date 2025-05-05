@@ -381,3 +381,12 @@ ACTAlphaRay: {
 		[c/DB53A0:This weapon is belong to legacy addon: Calamity Anormalis]
 		'''
 }
+
+MagnaCannonLegacy: {
+	DisplayName: Magna Cannon Legacy
+	Tooltip:
+		'''
+		Fires a concentrated blast of energy
+		Still a magic weapon
+		'''
+}

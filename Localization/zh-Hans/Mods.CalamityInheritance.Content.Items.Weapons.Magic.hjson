@@ -413,3 +413,12 @@ ACTAlphaRay: {
 		[c/DB53A0:此物品更改属于已废弃的旧模组: 灾厄平衡重置 Calamity Anormalis]
 		'''
 }
+
+MagnaCannonLegacy: {
+	DisplayName: 麦格纳炮[Legacy]
+	Tooltip:
+		'''
+		发射一束能量冲击波 
+		依旧是魔法武器
+		'''
+}

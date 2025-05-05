@@ -101,7 +101,7 @@ Configs: {
 		}
 
 		Scal: {
-			Label: "[i:CalamityInheritance/Interlude3MusicBox]Post-SCal Music Event"
+			Label: "[i:CalamityModMusic/Interlude3MusicBox]Post-SCal Music Event"
 			Tooltip: Replaced post-SCal music with custom mod music
 		}
 
@@ -468,7 +468,7 @@ Configs: {
 		}
 
 		PlantBowResprite: {
-			Label: "[i:CalamityInheritance/PlanteraLengedary]Blossom Flux Legendary Resprite"
+			Label: "[i:CalamityInheritance/PlanteraLegendary]Blossom Flux Legendary Resprite"
 			Tooltip: Determines sprite style of Blossom Flux Legendary
 		}
 
@@ -485,6 +485,31 @@ Configs: {
 		Mala: {
 			Label: "[i:CalamityInheritance/PBGLegendary]Malatche Legendary Resprite"
 			Tooltip: Determines sprite style of Malatche Legendary
+		}
+
+		MirrorBlade: {
+			Label: "[i:CalamityMod/MirrorBlade]Mirror Blade Resprite"
+			Tooltip: Determines sprite style of Mirror Blade
+		}
+
+		PlasmaRod: {
+			Label: "[i:CalamityMod/PlasmaRod]Plasma Rod Resprite"
+			Tooltip: Determines sprite style of Plasma Rod
+		}
+
+		StaffofBlushie: {
+			Label: "[i:CalamityMod/StaffofBlushie]Staff of Blushie Resprite"
+			Tooltip: Determines sprite style of Staff of Blushie
+		}
+
+		ScarletDevil: {
+			Label: "[i:CalamityMod/ScarletDevil]Scarlet Devil Resprite"
+			Tooltip: Determines sprite style of Scarlet Devil
+		}
+
+		SomaPrime: {
+			Label: "[i:CalamityInheritance/SomaPrimeOld]Soma Prime[Legacy] Resprite"
+			Tooltip: "Determines sprite style of Soma Prime[Legacy]"
 		}
 	}
 

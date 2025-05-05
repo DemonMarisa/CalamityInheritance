@@ -42,6 +42,9 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool CrescentMoonResprite { get; set;}
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool MirrorBlade{ get; set;}
 
         //射手
         [BackgroundColor(43, 56, 95, 182)]
@@ -51,6 +54,9 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool P90Resprite { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool SomaPrime{ get; set; }
 
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
@@ -60,6 +66,12 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool HeliumFlashResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool PlasmaRod{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool StaffofBlushie{ get; set; }
         //战/盗混合
         
         [BackgroundColor(43, 56, 95, 182)]
@@ -85,6 +97,9 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool ShatteredSunResprite{ get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool ScarletDevil{ get; set; }
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool BrinyBaronResprite{ get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -137,6 +138,8 @@ namespace CalamityInheritance
         public static RecipeGroup SCalTrophy;
         public static RecipeGroup RottenMatter;
         public static RecipeGroup CryoBar;
+        public static RecipeGroup OpalStriker;
+        public static RecipeGroup MagnaCannon;
 
         public override void Unload()
         {
@@ -193,6 +196,8 @@ namespace CalamityInheritance
                 SCalTrophy,
                 RottenMatter,
                 CryoBar,
+                OpalStriker,
+                MagnaCannon,
 
                 GodSlayerBodyGroup,
                 GodSlayerLegGroup,
@@ -300,6 +305,8 @@ namespace CalamityInheritance
             IceClasper          = SetUpTwo<AncientIceChunk>             (ModContent.ItemType<AncientAncientIceChunk>());
             PlantBow            = SetUpTwo<PlanteraLegendary>           (ModContent.ItemType<BlossomFlux>());
             LumiStriker         = SetUpTwo<RealityRupture>              (ModContent.ItemType<LumiStriker>());
+            OpalStriker         = SetUpTwo<OpalStriker>                 (ModContent.ItemType<OpalStrikerLegacy>());
+            MagnaCannon         = SetUpTwo<MagnaCannon>                 (ModContent.ItemType<MagnaCannonLegacy>());
             DartGun             = SetUpTwoVanilia                       (ItemID.DartRifle, ItemID.DartPistol);
             Arkhalis            = SetUpTwoVanilia                       (ItemID.Arkhalis, ItemID.Terragrim);
             Wand                = SetUpTwoVanilia                       (ItemID.WandofSparking, ItemID.WandofFrosting);
@@ -421,9 +428,11 @@ namespace CalamityInheritance
             HeliumFlash.                NameHelper("AnyHeliumFlash");
             IceClasper.                 NameHelper("AnyAncientIceChunk");
             LumiStriker.                NameHelper("AnyLumiStriker");
+            MagnaCannon.                NameHelper("AnyMagnaCannon");
             MiniGun.                    NameHelper("AnyMiniGun");
             NightsRay.                  NameHelper("AnyNightsRay");
             Norfleet.                   NameHelper("AnyNorfleet");
+            OpalStriker.                NameHelper("AnyOpalStriker");
             P90.                        NameHelper("AnyP90");
             PlantBow.                   NameHelper("AnyBlossomFlux");
             PhantasmalFury.             NameHelper("AnyPhantasmalFury");
@@ -539,6 +548,8 @@ namespace CalamityInheritance
         public static string RottenMatter       => "AnyRottenMatter".GetGroupName();
         public static string LoreMoonLord       => "AnyLoreMoonLord".GetGroupName();
         public static string CryoBar            => "AnyCryoBar".GetGroupName();
+        public static string OpalStriker        => "AnyOpalStriker".GetGroupName();
+        public static string MagnaCannon        => "AnyMagnaCannon".GetGroupName();
     }
 
 }

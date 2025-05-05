@@ -21,6 +21,10 @@ namespace CalamityInheritance.Texture
         //星流刀
         public static Asset<Texture2D> FuckExoBladeCal;
         public static Asset<Texture2D> LoveExoBladeLgeacy;
+        public static Asset<Texture2D> MirrorBlade;
+        public static Asset<Texture2D> MirrorBladeProj;
+        public static Asset<Texture2D> MirrorBladeAlter;
+        public static Asset<Texture2D> MirrorBladeProjAlter;
         #region 方舟
         public static Asset<Texture2D> AotCCal;
         public static Asset<Texture2D> AotCAlt;
@@ -89,6 +93,8 @@ namespace CalamityInheritance.Texture
         //元素喷火器
         public static Asset<Texture2D> ElemFlamethrowerCal;
         public static Asset<Texture2D> ElemFlamethrowerAlt;
+        public static Asset<Texture2D> SomaPrime;
+        public static Asset<Texture2D> SomaPrimeAlter;
         #region 碎颅者
         public static Asset<Texture2D> SkullmasherCal;
         public static Asset<Texture2D> Skullmasher;
@@ -110,6 +116,10 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> HeliumFlashLegacy;
         public static Asset<Texture2D> ElemRayCal;
         public static Asset<Texture2D> ElemRayAlt;
+        public static Asset<Texture2D> PlasmaRod;
+        public static Asset<Texture2D> PlasmaRodAlter;
+        public static Asset<Texture2D> StaffofBlushie;
+        public static Asset<Texture2D> StaffofBlushieLegacy;
         #endregion
         //归元
         public static Asset<Texture2D> FuckVortexCal;
@@ -129,6 +139,8 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> RadiantAlt;
         public static Asset<Texture2D> ShatteredCal;
         public static Asset<Texture2D> ShatteredAlt;
+        public static Asset<Texture2D> ScarletDevil;
+        public static Asset<Texture2D> ScarletDevilAlter;
         #endregion
         #region 苍穹,圣光飞刀
         public static Asset<Texture2D> EmpyreanKnivesCal; //苍穹飞刀的第二版本贴图(现在的版本)
@@ -198,6 +210,7 @@ namespace CalamityInheritance.Texture
         public static string CIExtraRoute => "CalamityInheritance/Texture";
         public static string CIMeleeExtraRoute =>   $"{CIExtraRoute}/Melee";
         public static string CIRangedExtraRoute =>  $"{CIExtraRoute}/Ranged";
+        public static string CIMagicExtraRoute =>  $"{CIExtraRoute}/Magic";
         public static string CIRogueExtraRoute =>   $"{CIExtraRoute}/Rogue";
         public static string CILegendaryPathExtra =>   $"{CIExtraRoute}/Legendary";
         //部分灾厄的路径
@@ -216,6 +229,10 @@ namespace CalamityInheritance.Texture
         public static void LoadTexture()
         {
             #region 战士
+            MirrorBlade = ModContent.Request<Texture2D>         ($"{CalMeleeWeaponRoute}/MirrorBlade");
+            MirrorBladeProj = ModContent.Request<Texture2D>     ($"{CalProjRoute}/Melee/MirrorBlast");
+            MirrorBladeAlter = ModContent.Request<Texture2D>    ($"{CIMeleeExtraRoute}/MirrorBlade");
+            MirrorBladeProjAlter = ModContent.Request<Texture2D>($"{CIMeleeExtraRoute}/MirrorBladeProj");
             //泰拉矛
             TerraLanceCal = ModContent.Request<Texture2D>       ($"{CalMeleeWeaponRoute}/BotanicPiercer");
             TerraLanceCalGlow = ModContent.Request<Texture2D>   ($"{CalMeleeWeaponRoute}/BotanicPiercerGlow");
@@ -301,12 +318,13 @@ namespace CalamityInheritance.Texture
             P90 = ModContent.Request<Texture2D>                 ($"{CIRangedExtraRoute}/P90Cal");
             P90Legacy = ModContent.Request<Texture2D>           ($"{CIRangedWeaponRoute}/P90Legacy");
 
+            SomaPrime = ModContent.Request<Texture2D>           ($"{CIRangedWeaponRoute}/SomaPrimeOld");
+            SomaPrimeAlter = ModContent.Request<Texture2D>      ($"{CIRangedExtraRoute}/SomaPrime");
             
             //哈雷
             HalleyCal = ModContent.Request<Texture2D>           ($"{CIRangedWeaponRoute}/HalleysInfernoLegacy");
             HalleyAlt = ModContent.Request<Texture2D>           ($"{CIRangedExtraRoute}/HalleysLegacy");
             #endregion
-
             #region 法师
             //元素
             ElemRayCal = ModContent.Request<Texture2D>          ($"{CIMagicWeaponRoute}/Ray/ElementalRayold");
@@ -317,7 +335,10 @@ namespace CalamityInheritance.Texture
             //归元
             FuckVortexCal = ModContent.Request<Texture2D>       ($"{CalMagicWeaponRoute}/SubsumingVortex");
             LoveVortexLegacy = ModContent.Request<Texture2D>    ($"{CIMagicWeaponRoute}/SubsumingVortexold");
-
+            PlasmaRod = ModContent.Request<Texture2D>           ($"{CalMagicWeaponRoute}/PlasmaRod");
+            PlasmaRodAlter = ModContent.Request<Texture2D>      ($"{CIExtraRoute}/Magic/PlasmaRod");
+            StaffofBlushie = ModContent.Request<Texture2D>      ($"{CalMagicWeaponRoute}/StaffofBlushie");
+            StaffofBlushieLegacy = ModContent.Request<Texture2D>($"{CIMagicExtraRoute}/StaffofBlushie");
             #endregion
 
             #region 召唤
@@ -338,6 +359,8 @@ namespace CalamityInheritance.Texture
             GiantHammerCalProj = ModContent.Request<Texture2D>  ($"{CIRogueExtraRoute}/GiantHammerCal");
             GiantHammerAlt = ModContent.Request<Texture2D>      ($"{CIRogueWeaponRoute}/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
             GiantHammerAltProj = ModContent.Request<Texture2D>  ($"{CIRogueWeaponRoute}/RogueTypeHammerTriactisTruePaladinianMageHammerofMight");
+            ScarletDevil = ModContent.Request<Texture2D>        ($"{CalRogueWeaponRoute}/ScarletDevil");
+            ScarletDevilAlter = ModContent.Request<Texture2D>   ($"{CIRogueExtraRoute}/ScarletDevil");
 
             #region 飞刀
             //苍穹飞刀(现)
@@ -459,10 +482,16 @@ namespace CalamityInheritance.Texture
                 HalleyAlt,
                 HallowedShivCal,
                 HallowedShivAlt,
+                MirrorBlade,
+                MirrorBladeAlter,
+                MirrorBladeProj,
+                MirrorBladeAlter,
                 NightShivCal,
                 NightShivAlt,
                 P90,
                 P90Legacy,
+                PlasmaRod,
+                PlasmaRodAlter,
                 PrismllAlt,
                 PrismllCal,
                 RareArkAlt,
@@ -474,6 +503,8 @@ namespace CalamityInheritance.Texture
                 LoveVortexLegacy,
                 SeaShivAlt,
                 SeaShivCal,
+                ScarletDevil,
+                ScarletDevilAlter,
                 ShadowKnivesCal,
                 ShadowKnivesCalProj,
                 ShadowKnivsAlt3,
@@ -484,6 +515,10 @@ namespace CalamityInheritance.Texture
                 ShadowKnivsAlt3Proj,
                 ShatteredAlt,
                 ShatteredCal,
+                SomaPrime,
+                SomaPrimeAlter,
+                StaffofBlushie,
+                StaffofBlushieLegacy,
                 StellarContemptNew,
                 StellarContemptOld,
                 SkullmasherCal,
@@ -493,7 +528,7 @@ namespace CalamityInheritance.Texture
                 TrueNightShivAlt,
                 TrueNightShivCal,
                 TerraSummonCal,
-                TerraSummonAlt,
+                TerraSummonAlt
             ];
             for (int i = 0 ; i < Train.Length; i++)
                 Train[i] = null;
