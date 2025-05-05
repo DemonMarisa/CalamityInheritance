@@ -37,7 +37,7 @@ public class AncientBloodflareCuisses : CIArmor, ILocalizedModType
     {
         CreateRecipe().
             AddIngredient<BloodflareCuisses>(1).
-            AddIngredient<BloodflareCore>(10).
+            AddIngredient<BloodstoneCore>(10).
             AddIngredient<RuinousSoul>(10).
             AddTile(TileID.LunarCraftingStation).
             Register();

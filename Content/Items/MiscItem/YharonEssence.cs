@@ -1,27 +1,17 @@
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.Content.Items.Armor.AncientTarragon;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations;
 using CalamityInheritance.Content.Items.SummonItems;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
-using MonoMod.ModInterop;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.MiscItem

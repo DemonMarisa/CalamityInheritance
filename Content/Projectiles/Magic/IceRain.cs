@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -17,20 +19,34 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
-
+        public ref float AttackType => ref Projectile.ai[0];
+        public ref float AttackTimer => ref Projectile.ai[1];
+        const float IsShooted = 0f;
+        const float IsHoming = 1f;
         public override void SetDefaults()
         {
             Projectile.width = 10;
             Projectile.height = 24;
             Projectile.friendly = true;
-            Projectile.scale *=1f;
+            Projectile.scale *= 1f;
             Projectile.tileCollide = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.timeLeft = 480;
+            Projectile.timeLeft = 240;
         }
 
         public override void AI()
         {
+            DoGeneric();
+            AttackTimer++;
+            switch(AttackType)
+            {
+                case IsShooted:
+                    DoShooted();
+                    break;
+                case IsHoming:
+                    DoHoming();
+                    break;
+            }
             Projectile.rotation += 0.5f;
             Projectile.ai[0] += 1f;
             CreateDust();
@@ -47,6 +63,31 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 }
             }   
         }
+
+        private void DoGeneric() => CreateDust();
+
+        private void DoHoming()
+        {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 12f, 10f);
+        }
+
+        private void DoShooted()
+        {
+            AttackTimer++;
+            if (AttackTimer < 30f)
+                return;
+            if (AttackTimer < 45f)
+                Projectile.velocity *= 0.5f;
+            else
+            {
+                if (AttackTimer == 45f)
+                    SignalSend();
+                AttackType = IsHoming;
+                Projectile.netUpdate = true;
+            }
+        }
+
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);

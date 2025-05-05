@@ -324,7 +324,7 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.fleshTotem = true;
                 // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.1f);
                 Player.endurance += 0.05f;
-                Player.GetDamage<GenericDamageClass>() += 0.5f;
+                Player.GetDamage<GenericDamageClass>() += 0.05f;
                 if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
                 {
                     Player.endurance += 0.05f;

@@ -35,6 +35,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
                 ModContent.TileType<MonolithAmalgam>(),
                 ModContent.TileType<PlagueInfuser>(),
                 ModContent.TileType<VoidCondenser>(),
+                ModContent.TileType<AcceleratorT1Tile>()
             ];
         }
 
