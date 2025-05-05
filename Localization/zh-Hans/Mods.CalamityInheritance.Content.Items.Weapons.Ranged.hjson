@@ -465,11 +465,11 @@ PhotovisceratorChange:
 
 NorfleetLegacy: {
 	DisplayName: 诺法雷[Legacy]
-	Tooltip: 
-	'''
-	燃尽万物！
-	消耗星星作为弹药
-	'''
+	Tooltip:
+		'''
+		燃尽万物！
+		消耗星星作为弹药
+		'''
 }
 
 ACTKarasawa: {

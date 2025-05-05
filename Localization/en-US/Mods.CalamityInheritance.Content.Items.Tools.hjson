@@ -48,3 +48,8 @@ XerocPickaxe: {
 	Tooltip: ""
 	DisplayName: Xeroc Pickaxe
 }
+
+LevelItem: {
+	DisplayName: Level Item
+	Tooltip: ""
+}

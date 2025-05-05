@@ -41,11 +41,12 @@ namespace CalamityInheritance.CIPlayer
     {
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
+            CalamityPlayer calPlayer = Player.Calamity();
+            CalamityInheritancePlayer cIPlayer = Player.CIMod();
             // 末日模式
-            if (CIWorld.Armageddon)
+            if (CIWorld.Armageddon || SCalLore || PanelsSCalLore)
                 KillPlayer();
 
-            CalamityPlayer calPlayer = Player.Calamity();
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
 

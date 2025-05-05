@@ -81,7 +81,8 @@ namespace CalamityInheritance.Content.Items.Tools
 
                 int damage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(Item.damage);
                 float kb = player.GetTotalKnockback<MeleeDamageClass>().ApplyTo(Item.knockBack);
-                Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<CrystylCrusherRay>(), damage, kb, player.whoAmI);
+                int p = Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<CrystylCrusherRay>(), damage, kb, player.whoAmI);
+                Main.projectile[p].localNPCHitCooldown = 1;
                 Item.shoot = ModContent.ProjectileType<CrystylCrusherRay>();
                 Item.tileBoost = int.MinValue;
                 Item.autoReuse = false;

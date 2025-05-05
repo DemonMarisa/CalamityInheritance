@@ -578,7 +578,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                     NPC.life += (int)(healnum * 1.2f);
 
                 string Text = "+" + healnum;
-                CIFunction.SendTextOnNPC(NPC, Text, Color.ForestGreen);
+                CIFunction.SendTextOnNPC(NPC, Text, CombatText.HealLife);
                 for (int i = 0; i < (int)(attacktimer * 0.01f + 1); i++)
                 {
                     PulseEffect();
