@@ -54,3 +54,8 @@ FrostsparkBullet: {
 		免疫冻伤的敌人会承受更多的伤害
 		'''
 }
+
+SuperballBullet: {
+	DisplayName: 弹球弹[Legacy]
+	Tooltip: 快速弹跳
+}

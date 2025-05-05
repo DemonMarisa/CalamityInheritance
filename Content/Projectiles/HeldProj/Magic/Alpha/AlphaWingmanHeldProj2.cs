@@ -60,6 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             Projectile.localAI[2] = reader.ReadInt32();
         }
         public NPC target = null;
+        public Projectile Proj = null;
         public override void HoldoutAI()
         {
             ref float attackType = ref Projectile.localAI[0];
@@ -126,8 +127,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI), 1f);
-                Main.projectile[p].Center = Projectile.Center;
-                Main.projectile[p].rotation = Projectile.rotation;
+                Proj = Main.projectile[p];
+            }
+            if (Proj != null)
+            {
+                Proj.Center = Projectile.Center;
+                Proj.rotation = Projectile.rotation;
             }
         }
         #endregion

@@ -97,12 +97,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 // 接受一号位存储的数据
                 // 更新位置
-                // Projectile.Center = hostProjectile.Center;
+                Projectile.Center = hostProjectile.Center;
                 // 更新方向
                 Vector2 Projdirection = Vector2.UnitX.RotatedBy(hostProjectile.rotation);
                 Projdirection.SafeNormalize(Vector2.UnitX);
                 Projectile.velocity = Projdirection;
-                // Projectile.rotation = hostProjectile.rotation;
+                Projectile.rotation = hostProjectile.rotation;
             }
         }
         #endregion

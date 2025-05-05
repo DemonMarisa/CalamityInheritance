@@ -39,10 +39,19 @@ HyperiusBulletOld: {
 
 AccelerationRound: {
 	DisplayName: Acceleration Round
-	Tooltip: ""
+	Tooltip: Gains speed over time
 }
 
 FrostsparkBullet: {
 	DisplayName: Frostspark Bullet
-	Tooltip: ""
+	Tooltip: 	
+	'''
+	Has a chance to freeze enemies and explode into electricity
+	Enemies that are immune to being frozen take more damage from these bullets
+	'''
+}
+
+SuperballBullet: {
+	DisplayName: Superball Bullet
+	Tooltip: Bounces at extreme speeds
 }
