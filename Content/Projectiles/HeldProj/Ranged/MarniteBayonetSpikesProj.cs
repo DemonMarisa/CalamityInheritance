@@ -17,12 +17,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         }
         public override void SetDefaults()
         {
-            Projectile.Size = new Vector2(32, 9);
+            Projectile.Size = new Vector2(33, 9);
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = ModContent.GetInstance<RangedDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -57,11 +57,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             }
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            float drawRotation = Projectile.rotation  - (MathHelper.PiOver4 * Owner.direction);
-            Vector2 rotationPoint = texture.Size() * 0.75f;
+            float drawRotation = Projectile.rotation - (MathHelper.PiOver4 * Owner.direction);
+            Vector2 rotationPoint = texture.Size() * 0.5f;
             SpriteEffects flipSprite = isFilp ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * 0.75f, flipSprite);
+            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * 0.85f, flipSprite);
             return false;
         }
     }

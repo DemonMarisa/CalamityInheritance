@@ -237,8 +237,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             Player target = Main.player[NPC.target];
             
-
-
             if (Main.slimeRain)
             {
                 Main.StopSlimeRain(true);
@@ -334,6 +332,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 attackType = (float)LegacyCCloneAttackType.SummonTwoBrother;
                 currentPhase++;
                 NPC.netUpdate = true;
+                NPC.DR_NERD(0.5f);
+                NPC.defense = 40;
                 return;
             }
             attackTimer++;

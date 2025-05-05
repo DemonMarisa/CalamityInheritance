@@ -13,7 +13,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
     public partial class QolPanel : DraedonsPanelUI
     {
         // 准备了10个页面
-        public override int TotalPages => 10;
+        public override int TotalPages => 3;
 
         #region 文本ID
         #endregion

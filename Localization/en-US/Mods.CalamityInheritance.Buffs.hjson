@@ -194,8 +194,8 @@ VulnerabilityHexLegacy: {
 }
 
 CyrogenLegendaryBuff: {
-	DisplayName: Cyrogen Legendary Buff
-	Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
+	DisplayName: Glacial Embrace
+	Description: The magic of the ancient ice castle will aid you
 }
 
 CryoDrain: {
@@ -214,13 +214,21 @@ AncientClasperBuff: {
 }
 
 MaliceModeCold: {
-	DisplayName: Malice Mode Cold
-	Description: Mods.CalamityInheritance.Buffs.MaliceModeCold.Description
+	DisplayName: Freezing Weather
+	Description:
+		'''
+		The weather slows your movement as you freeze to death.
+		You need to look for equipment to protect you from the cold.
+		'''
 }
 
 MaliceModeHot: {
-	DisplayName: Malice Mode Hot
-	Description: Mods.CalamityInheritance.Buffs.MaliceModeHot.Description
+	DisplayName: Heat Exhaustion
+	Description:
+		'''
+		Inflicts various debuffs to the player over time
+		The overwhelming heat weakens your bodily functions. You need to look for equipment to protect you from the heat.
+		'''
 }
 
 BloodClot: {

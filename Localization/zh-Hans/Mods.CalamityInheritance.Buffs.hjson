@@ -149,8 +149,8 @@ SonYharonBuff: {
 }
 
 WarCleave: {
-	// Description: Broke armor
-	// DisplayName: War Cleave
+	Description: 碎甲
+	DisplayName: 你的护甲在破碎
 }
 
 ShrineForestBuff: {
@@ -194,8 +194,8 @@ VulnerabilityHexLegacy: {
 }
 
 CyrogenLegendaryBuff: {
-	// DisplayName: Cyrogen Legendary Buff
-	// Description: Mods.CalamityInheritance.Buffs.CyrogenLegendaryBuff.Description
+	DisplayName: 冰川之拥
+	Description: 古老冰霜城堡的魔法会帮助你
 }
 
 CryoDrain: {
@@ -214,13 +214,13 @@ AncientClasperBuff: {
 }
 
 MaliceModeCold: {
-	// DisplayName: Malice Mode Cold
-	// Description: Mods.CalamityInheritance.Buffs.MaliceModeCold.Description
+	DisplayName: 极寒天气
+	Description: 寒冷的会逐渐减缓你的速度直到你冻死。你需要某些东西来抵御严寒。
 }
 
 MaliceModeHot: {
-	// DisplayName: Malice Mode Hot
-	// Description: Mods.CalamityInheritance.Buffs.MaliceModeHot.Description
+	DisplayName: 中暑
+	Description: 势不可挡的高温会削弱你的身体机能.你需要某些东西来让你免受高温
 }
 
 BloodClot: {
