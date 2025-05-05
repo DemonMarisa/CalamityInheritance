@@ -41,6 +41,8 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingAsSplit = false;
         public bool PingWhipStrike = false;
         public int StoreEU = -1;
+        // 新建了四个可以储存数据的Vector2
+        public Vector2[] DateStock = new Vector2[4];
         // 1帧影响
         public bool oneFrameEffect = false;
         public override void AI(Projectile projectile)

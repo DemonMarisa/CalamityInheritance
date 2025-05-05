@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.stopsDealingDamageAfterPenetrateHits = true;
             Projectile.timeLeft = 16;
             Projectile.Opacity = 0.5f;
-            Projectile.localNPCHitCooldown = 4;
+            Projectile.localNPCHitCooldown = 6;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.tileCollide = false;
         }
@@ -92,16 +92,17 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             // 是否是持续的光束
             bool isSustainedBeam = Projectile.ai[2] == 1f;
-            int parent = (int)Projectile.ai[1];
-            if(isSustainedBeam)
+            Projectile hostProjectile = Main.projectile[(int)Projectile.ai[1]];
+            if (isSustainedBeam)
             {
+                // 接受一号位存储的数据
                 // 更新位置
-                Vector2 mountedCenter = Main.projectile[parent].Center;
-                Projectile.Center = mountedCenter + Projectile.velocity.SafeNormalize(Vector2.UnitY);
+                // Projectile.Center = hostProjectile.Center;
                 // 更新方向
-                Vector2 Projdirection = Vector2.UnitX.RotatedBy(Main.projectile[parent].rotation);
+                Vector2 Projdirection = Vector2.UnitX.RotatedBy(hostProjectile.rotation);
                 Projdirection.SafeNormalize(Vector2.UnitX);
                 Projectile.velocity = Projdirection;
+                // Projectile.rotation = hostProjectile.rotation;
             }
         }
         #endregion
@@ -137,25 +138,25 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Color baseColor = Color.White * alphaMultiplier;
             Color Auxiliarycolor = Color.DodgerBlue * alphaMultiplier;
             baseColor.A = Auxiliarycolor.A = 0;
-
+            Vector2 DrawPos = Projectile.Center - Main.screenPosition;
             // 纹理
             Texture2D mainTexture = TextureAssets.Projectile[Type].Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
             Texture2D headTexture = Main.Assets.Request<Texture2D>("Images/Projectile_927").Value;
             Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
 
-            DrawGlowEffects(headTexture, Auxiliarycolor, Scale);
-            DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale);
+            DrawGlowEffects(headTexture, Auxiliarycolor, Scale, DrawPos);
+            DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, DrawPos);
 
             if (Projectile.timeLeft > 5f)
             {
-                DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale);
+                DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, DrawPos);
                 DrawTailEffect(tailTexture, baseColor, beamRotation, laserLength, Scale);
             }
         }
         #endregion
         #region 绘制头部星星
-        public void DrawGlowEffects(Texture2D headTexture, Color color, float Scale)
+        public void DrawGlowEffects(Texture2D headTexture, Color color, float Scale, Vector2 Pos)
         {
             const int glowCount = 5;
             var projAI = Projectile.CalamityInheritance().ProjNewAI;
@@ -168,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Projectile.localAI[0] / 20f / (Projectile.ai[2] + 1),
                     Projectile.localAI[0] / 20f / (Projectile.ai[2] + 1));
 
-                Main.EntitySpriteDraw(headTexture, Projectile.Center - Main.screenPosition,
+                Main.EntitySpriteDraw(headTexture, Pos,
                     rect, color * 0.8f, projAI[i],// projAI[i]为绘制星星时的随机旋转
                     origin, scale * Scale,  
                     SpriteEffects.None);
@@ -176,23 +177,23 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         #endregion
         #region 绘制本体辉光
-        public void DrawBloomEffect(Texture2D texture, Color color, float rotation, int length, float Scale)
+        public void DrawBloomEffect(Texture2D texture, Color color, float rotation, int length, float Scale, Vector2 Pos)
         {
             Rectangle rect = new Rectangle(0, 0, length, texture.Height);
             Vector2 scale = new Vector2(1, Projectile.localAI[0] / 60f / (Projectile.ai[2] + 2));
             Vector2 origin = new Vector2(0, texture.Height / 2);
-            Main.EntitySpriteDraw(texture, position: Projectile.Center - Main.screenPosition, rect,
+            Main.EntitySpriteDraw(texture, Pos, rect,
                 color, rotation, origin, scale * Scale,
                 SpriteEffects.None);
         }
         #endregion
         #region 绘制主光束
-        private void DrawMainBeam(Texture2D texture, Color color, float rotation, int length, float Scale)
+        private void DrawMainBeam(Texture2D texture, Color color, float rotation, int length, float Scale, Vector2 Pos)
         {
             Rectangle rect = new Rectangle(0, 0, length, texture.Height);
             Vector2 scale = new Vector2(1, Projectile.localAI[0] / 9f);
             Vector2 origin = new Vector2(0, texture.Height / 2);
-            Main.EntitySpriteDraw(texture,Projectile.Center - Main.screenPosition,
+            Main.EntitySpriteDraw(texture, Pos,
                 new Rectangle(0, 0, length, texture.Height),
                 color, rotation, origin, scale * Scale,
                 SpriteEffects.None);

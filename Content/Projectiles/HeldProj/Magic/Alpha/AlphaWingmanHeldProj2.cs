@@ -13,6 +13,7 @@ using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using System.IO;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
@@ -33,6 +34,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
         public override float AimResponsiveness => 0.15f;
         public Player Owner => Main.player[Projectile.owner];
         public bool firstFrame = false;
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 10000;
+            ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 42;
@@ -58,6 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
         {
             ref float attackType = ref Projectile.localAI[0];
             ref float SearchCD = ref Projectile.localAI[2];
+            // ai0是接收父级射弹
             ref float attackTimer = ref Projectile.ai[1];
             ref float isSecondProj = ref Projectile.ai[2];
 
@@ -104,6 +111,26 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                     break;
             }
         }
+        #region 发射
+        public void ShootProj(float attackTimer)
+        {
+            // 使用旋转角度计算方向
+            Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+            Projdirection.SafeNormalize(Vector2.UnitX);
+            // 偏移向量
+            Vector2 projectileVelocity = Projdirection * 3f;
+
+            if (attackTimer % 8 == 0)
+            {
+                // 使用一号位存储的数据
+                SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
+                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI), 1f);
+                Main.projectile[p].Center = Projectile.Center;
+                Main.projectile[p].rotation = Projectile.rotation;
+            }
+        }
+        #endregion
         #region 跟随鼠标
         public void DoBehavior_FollowMouse(ref float attackTimer)
         {
@@ -144,18 +171,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 Projectile.velocity *= 0.97f;
             }
 
-            // 使用旋转角度计算方向
-            Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
-            Projdirection.SafeNormalize(Vector2.UnitX);
-            // 偏移向量
-            Vector2 projectileVelocity = Projdirection * 3f;
-
-            if (attackTimer % 8 == 0)
-            {
-                SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
-                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
-            }
+            ShootProj(attackTimer);
             DoBehavior_FlyAway();
         }
         #endregion
@@ -199,18 +215,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 Projectile.velocity *= 0.97f;
             }
 
-            // 使用旋转角度计算方向
-            Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
-            Projdirection.SafeNormalize(Vector2.UnitX);
-            // 偏移向量
-            Vector2 projectileVelocity = Projdirection * 3f;
-
-            if (attackTimer % 8 == 0)
-            {
-                SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
-                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
-            }
+            ShootProj(attackTimer);
             DoBehavior_FlyAway();
         }
         #endregion
@@ -226,18 +231,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 
             Projectile.Center = Vector2.Lerp(Projectile.Center, Owner.Center + offset, AimResponsiveness);
 
-            // 使用旋转角度计算方向
-            Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
-            Projdirection.SafeNormalize(Vector2.UnitX);
-            // 偏移向量
-            Vector2 projectileVelocity = Projdirection * 3f;
-
-            if (attackTimer % 8 == 0)
-            {
-                SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
-                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
-            }
+            ShootProj(attackTimer);
         }
         #endregion
         #region 远离同类弹幕
