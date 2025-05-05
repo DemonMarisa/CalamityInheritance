@@ -56,13 +56,11 @@ namespace CalamityInheritance.System.ModeChange.Malice
             {
                 IL_NPC.UpdateNPC_Inner += ModifyVelocityIL;
                 On_NPC.UpdateNPC_Inner += AccelerateAIUpdates;
-                On_NPC.UpdateCollision += HandleCollisionSpeed;
             }
             public override void Unload()
             {
                 IL_NPC.UpdateNPC_Inner -= ModifyVelocityIL;
                 On_NPC.UpdateNPC_Inner -= AccelerateAIUpdates;
-                On_NPC.UpdateCollision -= HandleCollisionSpeed;
             }
             #endregion
             #region 注入修改速度
@@ -112,26 +110,6 @@ namespace CalamityInheritance.System.ModeChange.Malice
                     npc.CheckActive();
                     npc.justHit = false;
                 }
-            }
-            #endregion
-            #region 处理碰撞后的速度保留
-            // 处理碰撞后的速度保留
-            private void HandleCollisionSpeed(On_NPC.orig_UpdateCollision orig, NPC npc)
-            {
-                if (!ShouldAccelerate(npc))
-                {
-                    orig(npc);
-                    return;
-                }
-                var originalSpeed = npc.velocity;
-                npc.velocity *= SpeedMultiplier;
-                orig(npc);
-
-                // 保留不低于原始加速的速度
-                npc.velocity = new Vector2(
-                    Math.Sign(npc.velocity.X) * Math.Max(Math.Abs(npc.velocity.X), Math.Abs(originalSpeed.X)),
-                    Math.Sign(npc.velocity.Y) * Math.Max(Math.Abs(npc.velocity.Y), Math.Abs(originalSpeed.Y))
-                );
             }
             #endregion
         }

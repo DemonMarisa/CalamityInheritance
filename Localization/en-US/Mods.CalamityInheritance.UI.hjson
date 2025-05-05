@@ -6,4 +6,6 @@ Cooldowns: {
 	CISpongeRechargeRelay: Shield Recharge Delay
 	DraconicElixirCooldown: The power of the dragon soul is regathering around you
 	NanotechUI: Nanomachines are strengthening your weapons
+	Totem: Flesh Totem CD
+	CotbgTotem: Core of Blood God CD
 }

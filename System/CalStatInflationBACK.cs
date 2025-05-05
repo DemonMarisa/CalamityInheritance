@@ -591,7 +591,7 @@ namespace CalamityInheritance.System
                 item.damage = 600;
             #region 战士
             if (item.type == ModContent.ItemType<ArkoftheCosmos>())
-                item.damage = 1400;
+                item.damage = 14000;
             if (item.type == ModContent.ItemType<ArkoftheCosmosold>())
                 item.damage = 501;
             if (item.type == ModContent.ItemType<Ataraxia>())

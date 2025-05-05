@@ -158,7 +158,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.statLife -= Projectile.damage;
+            target.statLife -= Projectile.damage / 3;
 
             target.ScalDebuffs(360, 480 , 300);
         }

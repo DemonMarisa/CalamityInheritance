@@ -44,11 +44,11 @@ AccelerationRound: {
 
 FrostsparkBullet: {
 	DisplayName: Frostspark Bullet
-	Tooltip: 	
-	'''
-	Has a chance to freeze enemies and explode into electricity
-	Enemies that are immune to being frozen take more damage from these bullets
-	'''
+	Tooltip:
+		'''
+		Has a chance to freeze enemies and explode into electricity
+		Enemies that are immune to being frozen take more damage from these bullets
+		'''
 }
 
 SuperballBullet: {
