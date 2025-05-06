@@ -329,31 +329,31 @@ namespace CalamityInheritance.CIPlayer
             if (SulphurSeaType == 3)
                 cIdisableNaturalScourgeSpawns = true;
             if (SulphurSeaType == 1)
-                cIdisableNaturalScourgeSpawns = true;
+                cIdisableNaturalScourgeSpawns = false;
 
             // 禁止阿娜西塔生成
             if (SeaPanelType == 3)
                 cIdisableAnahitaSpawns = true;
             if (SeaPanelType == 1)
-                cIdisableAnahitaSpawns = true;
+                cIdisableAnahitaSpawns = false;
 
             // 禁止腐化囊生成
             if (CorruptionPanelType == 3)
                 cIdisableHiveCystSpawns = true;
             if (CorruptionPanelType == 1)
-                cIdisableHiveCystSpawns = true;
+                cIdisableHiveCystSpawns = false;
 
             // 禁止血肉囊生成
             if (CrimsonPanelType == 3)
                 cIdisablePerfCystSpawns = true;
             if (CrimsonPanelType == 1)
-                cIdisablePerfCystSpawns = true;
+                cIdisablePerfCystSpawns = false;
 
             // 禁止肉山生成
             if (UnderworldPanelType == 3)
                 cIdisableVoodooSpawns = true;
             if (UnderworldPanelType == 1)
-                cIdisableVoodooSpawns = true;
+                cIdisableVoodooSpawns = false;
             #endregion
         }
         public void QolSaveData(TagCompound tag)

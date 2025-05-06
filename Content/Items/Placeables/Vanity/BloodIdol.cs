@@ -36,8 +36,6 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
         {
-            if (Main.IsItDay())
-                return false;
             if (player.altFunctionUse == 2)
             {
                 Item.consumable = true;
@@ -45,6 +43,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             }
             else
             {
+                if (Main.IsItDay())
+                    return false;
                 Item.useAnimation = 45;
                 Item.useTime = 45;
                 Item.useStyle = ItemUseStyleID.HoldUp;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         }
         public override bool? UseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 if(!Main.IsItDay())
                 {

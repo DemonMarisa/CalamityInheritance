@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         }
         public override bool? UseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 if (!CIWorld.IronHeart)
                 {

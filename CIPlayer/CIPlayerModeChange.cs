@@ -56,7 +56,7 @@ namespace CalamityInheritance.CIPlayer
 
                     bool immunityToHotAndCold = Player.magmaStone || Player.frostArmor || calPlayer.fBarrier ||
                         calPlayer.frostFlare || calPlayer.rampartOfDeities || calPlayer.cryogenSoul || calPlayer.snowman || calPlayer.blazingCore ||
-                        calPlayer.permafrostsConcoction || calPlayer.profanedCrystalBuffs;
+                        calPlayer.permafrostsConcoction || calPlayer.profanedCrystalBuffs || immunityAll;
 
                     bool immunityToCold = Player.HasBuff(BuffID.Campfire) || Player.resistCold || calPlayer.eskimoSet ||
                         Player.buffImmune[BuffID.Frozen] || calPlayer.aAmpoule || Player.HasBuff(BuffID.Inferno) ||
@@ -81,12 +81,12 @@ namespace CalamityInheritance.CIPlayer
                     {
                         if (Main.dayTime)
                         {
-                            if (!immunityToHot && !immunityAll)
+                            if (!immunityToHot)
                                 Player.AddBuff(BuffID.Burning, 2, false);
                         }
                         else
                         {
-                            if (!immunityToCold && !immunityAll)
+                            if (!immunityToCold)
                                 Player.AddBuff(BuffID.Frostburn, 2, false);
                         }
                     }

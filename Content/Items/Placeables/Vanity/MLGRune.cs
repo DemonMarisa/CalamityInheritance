@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 if (!modPlayer.MLG)
                 {
