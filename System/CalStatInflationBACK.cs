@@ -140,6 +140,8 @@ namespace CalamityInheritance.System
             PostProfanedWeapons.Add(ModContent.ItemType<CosmicKunai>());
             // 旧极乐火箭
             PostProfanedWeapons.Add(ModContent.ItemType<ProfanedLancher>());
+            // 终焉百合
+            PostProfanedWeapons.Add(ModContent.ItemType<LiliesOfFinality>());
             #endregion
             #region 幽花表单
             PostPolterghastWeapons.Add(ModContent.ItemType<VoidEdge>());
