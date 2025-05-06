@@ -19,6 +19,7 @@ using Terraria.ModLoader.Default;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Qol;
 using CalamityMod.Items.TreasureBags.MiscGrabBags;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items
 {

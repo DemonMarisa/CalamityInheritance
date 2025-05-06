@@ -147,7 +147,7 @@ namespace CalamityInheritance.CIPlayer
             if (fk.Damage > 5)
                 DefendTier2Pool += fk.Damage;
              
-            if (DefendTier2Pool > 2000)
+            if (DefendTier2Pool > 1500)
             {
                 LegendaryUpgradeTint(DustID.Gold);
                 DefendTier2 = true;

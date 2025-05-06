@@ -335,9 +335,11 @@ YharimsCrystalLegendary: {
 	DisplayName: Yharim's Crystal Legendary
 	Tooltip:
 		'''
-		Fires draconic beams of total annihilation	
+		Fires draconic beams of total annihilation
 		Scaling...across the bosses
 		[c/4169E1:-Legendary-]
+		[EXO]
+		[SCAL]
 		'''
 	ExoTint: "[c/4169E1:Upgrade]: Beam now uses 2 local immnuity frames"
 	NoExoTint: "[c/818589:Defeated Exo Mechs]"
