@@ -47,7 +47,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            if (CIWorld.Malice)
+            if (CIWorld.Malice && CalamityUtils.AnyBossNPCS())
             {
                 if (Player.whoAmI == Main.myPlayer)
                 {
