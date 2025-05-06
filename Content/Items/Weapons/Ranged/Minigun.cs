@@ -67,6 +67,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<ClockGatlignum>().
                 AddIngredient<CosmiliteBar>(12).
                 AddIngredient<AscendantSpiritEssence>(5).
+                AddDecraftCondition(CalamityConditions.DownedYharon).
+                AddCustomShimmerResult(ModContent.ItemType<ACTMinigun>()).
                 AddTile<CosmicAnvil>().
                 Register();
         }
