@@ -472,13 +472,18 @@ DefenseBlade: {
 		'''
 		Striking an enemy with the blade causes an earthen eruption
 		Press Right Click to fire an aegis bolt
+		[SCALING]
+		[c/9173B1:-Legendary-]
+		[TIERONE]
+		[TIERTWO]
+		[TIERTHREE]
 		'''
 	LegendaryScaling: "[c/9173B1:Damage Scaling]: +{0}% weapon damage"
 	TierOne: "[c/9173B1:Upgrade]: +1% defense on enemy hit, capped at 25%"
 	TierTwo: "[c/9173B1:Upgrade]: Striking enemy with blade will let you ignore defense damage"
 	TierThree: "[c/9173B1:Upgrade] Grants damage buff base on your current defense"
 	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
-	TierTwoTint: "[c/818589:Taking over 2000 damage while holding the weapon]"
+	TierTwoTint: "[c/818589:Taking over 1500 damage in total while holding the weapon]"
 	TierThreeTint: "[c/818589:Summon Devourer of Gods while your defense is over 320]"
 }
 
