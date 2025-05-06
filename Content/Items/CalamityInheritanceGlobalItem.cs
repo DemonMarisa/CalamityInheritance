@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             //寒冰神性T2: 雪原饮用温暖药水
-            if (Main.LocalPlayer.ZoneSnow && !player.CIMod().ColdDivityTier2)
+            if (Main.LocalPlayer.ZoneSnow && !player.CIMod().ColdDivityTier2 && item.type == ItemID.WarmthPotion)
             {
                 if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<CyrogenLegendary>(), 1))
                 {
