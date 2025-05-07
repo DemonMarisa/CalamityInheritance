@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
 
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(ModContent.NPCType<Yharon>()) && !BossRushEvent.BossRushActive && !NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>());
+            return !NPC.AnyNPCs(ModContent.NPCType<Yharon>()) && !BossRushEvent.BossRushActive && !NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>()) && player.ZoneJungle;
         }
 
         public override bool? UseItem(Player player)

@@ -3,3 +3,13 @@ Scal: {
 	SpawnInfo: 使用灭世之眼[i:CalamityInheritance/EyeofExtinction]召唤至尊灾厄。
 	DespawnMessage: "[c/FFA500:你还不够好。]"
 }
+PostEclipseYharon: {
+	EntryName: 丛林龙 - 日蚀前
+	SpawnInfo: 使用丛林龙蛋[i:CalamityInheritance/YharonEggLegacy]在丛林召唤丛林龙
+	DespawnMessage: "[c/FFA500:丛林龙离开了此处。]"
+}
+CalCloneLegacy: {
+	EntryName: 灾厄之眼[Legacy]
+	SpawnInfo: 使用荒芜之眼[i:CalamityInheritance/EyeofDesolationLegacy]在夜晚召唤灾厄之眼[Legacy]
+	DespawnMessage: "[c/FFA500:女巫继续回荡在夜晚]"
+}

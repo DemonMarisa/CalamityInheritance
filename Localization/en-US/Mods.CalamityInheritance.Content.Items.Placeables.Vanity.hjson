@@ -2,8 +2,8 @@ Armageddon: {
 	DisplayName: Armageddon Legacy
 	Tooltip:
 		'''
-		Left-click to place
-		Right-click to activate Armageddon Mode
+		Right-click to place
+		Left-click to activate Armageddon Mode
 		(Enables/disables Armageddon, can be used in any difficulty mode)
 		(While active, any hit while a boss is alive will instantly kill you)
 		(If you defeat a boss with this mode active, they will drop 5 extra treasure bags)
@@ -15,8 +15,8 @@ BloodIdol: {
 	DisplayName: Blood Relic Legacy
 	Tooltip:
 		'''
-		Right-click to summon Blood Moon
-		Left-click to hang on wall
+		Left-click to summon Blood Moon
+		Right-click to  hang on wall
 		'''
 }
 
@@ -24,8 +24,8 @@ Death: {
 	DisplayName: Death Legacy
 	Tooltip:
 		'''
-		Right-click to activate Death Mode
-		Left-click to place
+		Left-click to activate Death Mode
+		Right-click to place
 		'''
 }
 
@@ -33,8 +33,8 @@ DefiledRune: {
 	DisplayName: Defiled Rune Legacy
 	Tooltip:
 		'''
-		Right-click to activate Defiled Mode
-		Left-click to hang on wall
+		Left-click to activate Defiled Mode
+		Right-click to hang on wall
 		(Wing flight is disabled)
 		(enemies can critically hit you)
 		(Enemies drop 2�� money)
@@ -45,8 +45,8 @@ IronHeart: {
 	DisplayName: Iron Heart Legacy
 	Tooltip:
 		'''
-		Right-click to activate Iron Heart Mode
-		Left-click to place
+		Left-click to activate Iron Heart Mode
+		Right-click to place
 		(Disables health potions and natural life regen)
 		(Enemy damage scales with player's max health)
 		'''
@@ -56,8 +56,8 @@ MLGRune: {
 	DisplayName: Demon Trophy Legacy
 	Tooltip:
 		'''
-		Right-click to increase spawn rate
-		Left-click to place
+		Left-click to increase spawn rate
+		Right-click to place
 		(Boosts spawn rate by 1.25 times)
 		'''
 }
@@ -66,8 +66,8 @@ Revenge: {
 	DisplayName: Revenge Legacy
 	Tooltip:
 		'''
-		Right-click to activate Revengeance Mode
-		Left-click to place
+		Left-click to activate Revengeance Mode
+		Right-click to place
 		'''
 }
 
@@ -76,8 +76,8 @@ Malice: {
 	Tooltip:
 		'''
 		Do you enjoy going through hell?
-		Right-click to activate Malice Mode
-		Left-click to place
+		Left-click to activate Malice Mode
+		Right-click to place
 		(Environmental hazards deal increased damage)
 		(Boss movement and AI speed +25%)
 		(Boss projectile speed +50%)

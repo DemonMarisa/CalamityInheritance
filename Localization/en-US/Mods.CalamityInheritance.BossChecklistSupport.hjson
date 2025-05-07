@@ -3,3 +3,13 @@ Scal: {
 	SpawnInfo: Use [i:CalamityInheritance/EyeofExtinction] to spawn Supreme Calamitas Legacy
 	DespawnMessage: "[c/FFA500:You are not good enough]"
 }
+PostEclipseYharon: {
+	EntryName: Yharon Post Eclipse
+	SpawnInfo: Use [i:CalamityInheritance/YharonEggLegacy] in the jungle to spawn Yharon Post Eclipse
+	DespawnMessage: "[c/FFA500:Yharon soars out of sight, his task fulfilled.]"
+}
+CalCloneLegacy: {
+	EntryName: Calamitas Clone Legacy
+	SpawnInfo: Use [i:CalamityInheritance/EyeofDesolationLegacy] at night to spawn Calamitas Clone Legacy
+	DespawnMessage: "[c/FFA500:You are not good enough]"
+}

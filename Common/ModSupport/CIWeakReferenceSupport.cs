@@ -1,6 +1,9 @@
 ﻿using CalamityInheritance.Content.Items.Placeables.Relic;
 using CalamityInheritance.Content.Items.SummonItems;
+using CalamityInheritance.Content.Items.TreasureBags;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.NPCs.Boss.Yharon;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -13,6 +16,7 @@ using CalamityMod.Items.Pets;
 using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.TreasureBags;
 using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.SupremeCalamitas;
 using Microsoft.Xna.Framework.Graphics;
@@ -28,7 +32,9 @@ namespace CalamityInheritance.Common.ModSupport
 {
     public class CIWeakReferenceSupport
     {
+        public static readonly Func<bool> DownedCalCloneLegacy = () => CIDownedBossSystem.DownedCalClone;
         public static readonly Func<bool> DownedScal = () => CIDownedBossSystem.DownedLegacyScal;
+        public static readonly Func<bool> DownedPostEclipseYharon = () => CIDownedBossSystem.DownedLegacyYharonP1;
         // 快速获取本地化路径
         private static LocalizedText GetDisplayName(string entryName) => CIFunction.GetText($"BossChecklistSupport.{entryName}.EntryName");
         private static LocalizedText GetSpawnInfo(string entryName) => CIFunction.GetText($"BossChecklistSupport.{entryName}.SpawnInfo");
@@ -49,6 +55,7 @@ namespace CalamityInheritance.Common.ModSupport
             //{ "CragmawMire", 9.52f },
             //{ "BrimstoneElemental", 10.5f },
             //{ "CalamitasClone", 11.7f }, // Thorium Lich is 11.6f
+            { "CalCloneLegacy", 11.8f },
             //{ "GreatSandShark", 12.09f },
             //{ "Leviathan", 12.8f },
             //{ "AstrumAureus", 12.81f },
@@ -67,11 +74,12 @@ namespace CalamityInheritance.Common.ModSupport
             //{ "NuclearTerror", 20.492f },
             //{ "OldDuke", 20.5f },
             //{ "DevourerofGods", 21f },
+            { "PostEclipseYharon", 21.5f },
             //{ "Yharon", 22f },
             //{ "ExoMechs", 22.99f },
             //{ "Calamitas", 23f },
             //{ "PrimordialWyrm", 23.5f },
-            { "Scal", 25f },
+            { "Scal", 25.98f },
             //{ "BossRush", 25.99f },
             //{ "Yharim", 24f },
             //{ "Noxus", 25f },
@@ -98,7 +106,43 @@ namespace CalamityInheritance.Common.ModSupport
         #region 登记boss列表中的boss
         public static void AddCIBosses(Mod bossChecklist, Mod cI)
         {
-            // 至尊灾厄
+            #region 普灾
+            {
+                string entryName = "CalCloneLegacy";
+                BossChecklistProgressionValues.TryGetValue(entryName, out float order);
+                int type = ModContent.NPCType<CalamitasCloneLegacy>();
+                List<int> summons = new List<int>() {
+                    ModContent.ItemType<EyeofDesolationLegacy>() };
+                List<int> collection = new List<int>() { ModContent.ItemType<CalamitasCloneBag>() , ModContent.ItemType<CalCloneRelic>()};
+                AddBoss(bossChecklist, cI, entryName, order, DownedCalCloneLegacy, type, new Dictionary<string, object>()
+                {
+                    ["displayName"] = GetDisplayName(entryName),
+                    ["spawnInfo"] = GetSpawnInfo(entryName),
+                    ["despawnMessage"] = GetDespawnMessage(entryName),
+                    ["spawnItems"] = summons,
+                    ["collectibles"] = collection,
+                });
+            }
+            #endregion
+            #region 丛林龙日蚀前
+            {
+                string entryName = "PostEclipseYharon";
+                BossChecklistProgressionValues.TryGetValue(entryName, out float order);
+                int type = ModContent.NPCType<YharonLegacy>();
+                List<int> summons = new List<int>() {
+                    ModContent.ItemType<YharonEggLegacy>() };
+                List<int> collection = new List<int>() { ModContent.ItemType<YharonTreasureBagsLegacy>() };
+                AddBoss(bossChecklist, cI, entryName, order, DownedPostEclipseYharon, type, new Dictionary<string, object>()
+                {
+                    ["displayName"] = GetDisplayName(entryName),
+                    ["spawnInfo"] = GetSpawnInfo(entryName),
+                    ["despawnMessage"] = GetDespawnMessage(entryName),
+                    ["spawnItems"] = summons,
+                    ["collectibles"] = collection,
+                });
+            }
+            #endregion
+            #region 至尊灾厄
             {
                 string entryName = "Scal";
                 BossChecklistProgressionValues.TryGetValue(entryName, out float order);
@@ -131,6 +175,7 @@ namespace CalamityInheritance.Common.ModSupport
                     ["overrideHeadTextures"] = "CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Head_Boss"
                 });
             }
+            #endregion
         }
         #endregion
     }

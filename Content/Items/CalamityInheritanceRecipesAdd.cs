@@ -241,7 +241,6 @@ namespace CalamityInheritance.Content.Items
                 ModContent.ItemType<SilvaHeadMagic>(),
                 ModContent.ItemType<SilvaWings>(),
                 //备注：我们模组里面的林海物件也会算进去，这样会方便不少。
-                
             ];
             //军工厂系列
             int[] draedonTrain =
