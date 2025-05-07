@@ -8,6 +8,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -16,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmetTo<Minigun>();
         }
         
         public override void SetDefaults()
