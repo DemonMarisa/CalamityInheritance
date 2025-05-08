@@ -402,10 +402,10 @@ namespace CalamityInheritance.System
             #endregion
             #region 法师
             if (item.type == ModContent.ItemType<PlasmaRifle>())
-                item.damage *= (int)(item.damage * 2f);
+                item.damage = (int)(item.damage * 2f);
 
             if (item.type == ModContent.ItemType<ThePrince>())
-                item.damage *= (int)(item.damage * 1.5f);
+                item.damage = (int)(item.damage * 1.5f);
             #endregion
         }
         #endregion
