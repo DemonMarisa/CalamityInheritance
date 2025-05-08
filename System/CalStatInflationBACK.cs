@@ -857,9 +857,11 @@ namespace CalamityInheritance.System
                 }
                 //如果为空不准执行。
                 if (npc.type == GoozmaBoss)
+                {
                     npc.lifeMax = (int)(npc.lifeMax * 6.6f);
                     npc.life = (int)(npc.life * 6.6f);
                     npc.defense = (int)(npc.life * 1.2f);
+                }
                     
             }
         }
