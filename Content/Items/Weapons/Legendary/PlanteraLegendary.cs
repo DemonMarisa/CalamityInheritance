@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             damage *= (BaseDamage + LegendaryDamageBuff() + Generic.GenericLegendBuffInt()) / BaseDamage;
             if (player.CIMod().PlanteraTier1)
-                //叶流变成1攻速的时候面板会被下调90%
+                //叶流变成1攻速的时候面板会被下调10%
                 damage *= 0.90f;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)

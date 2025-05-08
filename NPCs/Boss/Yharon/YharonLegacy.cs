@@ -8,6 +8,7 @@ using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.Potions;
 using CalamityMod.Dusts;
 using CalamityMod.Events;
 using CalamityMod.NPCs;
@@ -275,6 +276,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             #endregion
             Player target = Main.player[NPC.target];
 
+            //给BossZen
+            target.AddBuffSafer<Zen>(3600);
             #region 阶段判定
             // 进入新阶段
             // 用于开局的攻击

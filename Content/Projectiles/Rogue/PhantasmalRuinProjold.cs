@@ -10,6 +10,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityMod.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

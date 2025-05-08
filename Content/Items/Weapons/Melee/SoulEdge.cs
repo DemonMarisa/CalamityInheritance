@@ -12,6 +12,7 @@ using CalamityInheritance.Rarity;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

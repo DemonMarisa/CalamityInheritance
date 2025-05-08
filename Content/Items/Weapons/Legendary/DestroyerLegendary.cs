@@ -154,21 +154,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += Condition.DownedCultist.IsMet() ? 10 : 0;        //100
             //没有星神游龙是故意的，我不希望有人说在冲线阶段浪费时间打这个玩意
             dmgBuff += Condition.DownedMoonLord.IsMet() ? 20: 0;        //120
-            dmgBuff += DownedBossSystem.downedGuardians ? 30: 0;        //150
-            dmgBuff += DownedBossSystem.downedProvidence ? 30 : 0;      //180
-            dmgBuff += DownedBossSystem.downedSignus ? 15 : 0;          //195
-            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 15 : 0;   //210
-            dmgBuff += DownedBossSystem.downedStormWeaver ? 15 : 0;     //225
-            dmgBuff += DownedBossSystem.downedPolterghast ? 30 : 0;     //255
-            dmgBuff += DownedBossSystem.downedBoomerDuke ? 30 : 0;      //275
+            dmgBuff += DownedBossSystem.downedGuardians ? 50 : 0;       //170
+            dmgBuff += DownedBossSystem.downedProvidence ? 50 : 0;      //220
+            dmgBuff += DownedBossSystem.downedSignus ? 30 : 0;          //250
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 30 : 0;   //280
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 30 : 0;     //310
+            dmgBuff += DownedBossSystem.downedPolterghast ? 60 : 0;     //370
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 100 : 0;     //470
             //我tm又忘记金龙了，不管了，fuckyou
-            dmgBuff += DownedBossSystem.downedDragonfolly? 5: 0;        //280
-            dmgBuff += DownedBossSystem.downedDoG ? 50 : 0;             //330
-            dmgBuff += DownedBossSystem.downedYharon ? 50 : 0;          //380
-            dmgBuff += DownedBossSystem.downedCalamitas ? 70 : 0;       //450
-            dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;        //520
-            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 480 : 0; //1000
-            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 500: 0;
+            dmgBuff += DownedBossSystem.downedDragonfolly? 20 : 0;      //490
+            dmgBuff += DownedBossSystem.downedDoG ? 120 : 0;            //610
+            dmgBuff += DownedBossSystem.downedYharon ? 150 : 0;         //760
+            dmgBuff += DownedBossSystem.downedCalamitas ? 200 : 0;      //960
+            dmgBuff += DownedBossSystem.downedExoMechs ? 200 : 0;       //1060
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 500 : 0; //1560
+            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 500 : 0;
             return dmgBuff;
         }
     }

@@ -79,32 +79,35 @@ namespace CalamityInheritance.CIPlayer
         }
         public void LegendaryDamageTask(Projectile projectile, NPC target, NPC.HitInfo hit)
         {
-            Player player = Main.player[projectile.owner];
-            var heldingItem = player.ActiveItem();
+            var heldingItem = Player.ActiveItem();
             //孔雀翎(T2)
-            if (heldingItem.type == ModContent.ItemType<PBGLegendary>())
+            if (SameType<PBGLegendary>(heldingItem))
             {
                 PBGLegendaryDamageTask(target, hit);
                 if (PBGTier3)
                     PBGLegendaryBuff(target, hit);
             }
             //海爵剑(T2)
-            if (heldingItem.type == ModContent.ItemType<DukeLegendary>())
+            if (SameType<DukeLegendary>(heldingItem))
             {
                 DukeLegendaryDamageTask(target, hit);
                 if (DukeTier3)
                     DukeLegendaryBuff(target, hit);
             }
             //维苏威阿斯(T2, T3)
-            if (heldingItem.type == ModContent.ItemType<RavagerLegendary>())
+            if (SameType<RavagerLegendary>(heldingItem))
                 RavagerLegendaryDamageTask(target, hit);
             //庇护之刃
-            if (heldingItem.type == ModContent.ItemType<DefenseBlade>())
+            if (SameType<DefenseBlade>(heldingItem))
             {
                 //T1
                 if (DefendTier1)
                     DefenderBuff(target, hit, projectile);
             }
+        }
+        public static bool SameType<T>(Item type) where T : ModItem
+        {
+            return type.type == ModContent.ItemType<T>();
         }
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
@@ -156,7 +159,6 @@ namespace CalamityInheritance.CIPlayer
 
         private void RavagerLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
-            
             //T2: 在地狱对亵渎天神造成50%伤害
             if (target.type == ModContent.NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
             {

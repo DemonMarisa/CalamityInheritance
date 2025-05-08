@@ -41,6 +41,7 @@ using CalamityInheritance.System.Configs;
 using Terraria.Localization;
 using System.IO;
 using CalamityInheritance.Content.Items.LoreItems;
+using CalamityMod.Buffs.Potions;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -232,7 +233,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 NPC.TargetClosest(true);
 
             Player target = Main.player[NPC.target];
-            
+            //给bosszen
+            target.AddBuffSafer<Zen>(3600);
             if (Main.slimeRain)
             {
                 Main.StopSlimeRain(true);

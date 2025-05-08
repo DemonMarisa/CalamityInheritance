@@ -119,12 +119,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static float LegendaryDamage()
         {
             float damageBuff = 0f;
-            damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
-            damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedProvidence ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedDoG ? 0.6f : 0f;
+            damageBuff += NPC.downedAncientCultist ? 0.1f : 0f;
+            damageBuff += NPC.downedMoonlord ? 0.1f : 0f;
+            damageBuff += DownedBossSystem.downedProvidence ? 0.3f : 0f;
+            damageBuff += DownedBossSystem.downedPolterghast ? 0.3f : 0f;
+            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.4f : 0f;
+            damageBuff += DownedBossSystem.downedDoG ? 0.8f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 0.8f : 0f;
             damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 0.8f : 0f;
             //恭喜击败至尊灾厄眼，所以。500%?

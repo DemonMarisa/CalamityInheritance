@@ -25,21 +25,18 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using Terraria.Localization;
-using Microsoft.Build.Utilities;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
-using CalamityMod.NPCs.NormalNPCs;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityMod.Items.Ammo;
-using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Summon;
+using static CalamityInheritance.System.CalStatInflationBACK;
 
 namespace CalamityInheritance.System
 {
@@ -55,6 +52,10 @@ namespace CalamityInheritance.System
         public static List<int> PostyharonWeapons = new List<int>();
         public static List<int> PostExoAndScalWeapons = new List<int>();
         public static List<int> PostShadowspecWeapons = new List<int>();
+        #region 弱引用
+        public static Mod FuckGoozmaMod {get; set;}
+        public static int GoozmaBoss { get; private set;}
+        #endregion
         // 加载/卸载列表
         public override void Load()
         {
@@ -67,6 +68,13 @@ namespace CalamityInheritance.System
             PostyharonWeapons = [];
             PostExoAndScalWeapons = [];
             PostShadowspecWeapons = [];
+            if (ModLoader.TryGetMod("CalamityHunt", out Mod hunt))
+            {
+                FuckGoozmaMod = hunt;
+                if (FuckGoozmaMod.TryFind("Goozma", out ModNPC FuckGoozma))
+                    GoozmaBoss = FuckGoozma.Type;
+
+            }
         }
 
         public override void Unload()
@@ -80,6 +88,7 @@ namespace CalamityInheritance.System
             PostyharonWeapons = null;
             PostExoAndScalWeapons = null;
             PostShadowspecWeapons = null;
+            FuckGoozmaMod =  null;
         }
         public override void PostAddRecipes()
         {
@@ -846,6 +855,12 @@ namespace CalamityInheritance.System
                     npc.life = (int)(npc.life * 10f);
                     npc.defense = (int)(npc.defense * 10f);
                 }
+                //如果为空不准执行。
+                if (npc.type == GoozmaBoss)
+                    npc.lifeMax = (int)(npc.lifeMax * 6.6f);
+                    npc.life = (int)(npc.life * 6.6f);
+                    npc.defense = (int)(npc.life * 1.2f);
+                    
             }
         }
 

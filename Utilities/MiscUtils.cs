@@ -174,5 +174,11 @@ namespace CalamityInheritance.Utilities
         {
             Main.NewText(name);
         }
+        public static void AddBuffSafer<T>(this Player player, int seconds) where T : ModBuff
+        {
+            int frames = seconds * 60;
+            if (!player.HasBuff<T>())
+                player.AddBuff(ModContent.BuffType<T>(), frames);
+        }
     }
 }

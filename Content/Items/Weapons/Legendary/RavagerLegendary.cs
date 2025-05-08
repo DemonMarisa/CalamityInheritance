@@ -32,8 +32,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.width = 62;
             Item.height = 62;
-            Item.damage = 100;
-            Item.mana = 7;
+            Item.damage = 80;
+            Item.mana = 9;
             Item.DamageType = DamageClass.Magic;
             Item.useAnimation = Item.useTime = 11;
             Item.noMelee = true;
@@ -86,16 +86,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static float LegendaryDamage()
         {
             float newDamage = 0f;
-            newDamage += DownedBossSystem.downedRavager ? 0.2f : 0f;
+            newDamage += DownedBossSystem.downedRavager ? 0.1f : 0f;
             newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedDukeFishron.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedCultist.IsMet() ? 0.4f : 0f;
-            newDamage += Condition.DownedMoonLord.IsMet() ? 0.4f : 0f;
-            newDamage += DownedBossSystem.downedGuardians ? 0.4f : 0f;
-            newDamage += DownedBossSystem.downedProvidence  ? 0.6f : 0f;
-            newDamage += DownedBossSystem.downedPolterghast ? 0.6f : 0f;
+            newDamage += Condition.DownedDukeFishron.IsMet() ? 0.1f : 0f;
+            newDamage += Condition.DownedCultist.IsMet() ? 0.2f : 0f;
+            newDamage += Condition.DownedMoonLord.IsMet() ? 0.2f : 0f;
+            newDamage += DownedBossSystem.downedGuardians ? 0.6f : 0f;
+            newDamage += DownedBossSystem.downedProvidence  ? 0.8f : 0f;
+            newDamage += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
             newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedYharon ? 1.0f : 0f;
+            newDamage += DownedBossSystem.downedYharon ? 1.5f : 0f;
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
             newDamage += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
             return 1f + newDamage;

@@ -31,16 +31,15 @@ namespace CalamityInheritance.Content.Items
         public override bool InstancePerEntity => true;
         public override void UpdateInventory(Item item, Player player)
         {
-            const short searchInventory = 1;
             var mplr = player.CIMod();
             //微光湖附近, 全传奇武器
-            SetShimmeUpgrade(ref mplr.DukeTier1, ModContent.ItemType<DukeLegendary>(),              searchInventory, ref player, DustID.Water);
-            SetShimmeUpgrade(ref mplr.BetsyTier1, ModContent.ItemType<RavagerLegendary>(),          searchInventory, ref player, DustID.Meteorite);
-            SetShimmeUpgrade(ref mplr.PBGTier1, ModContent.ItemType<PBGLegendary>(),                searchInventory, ref player, DustID.TerraBlade);
-            SetShimmeUpgrade(ref mplr.PlanteraTier1, ModContent.ItemType<PlanteraLegendary>(),      searchInventory, ref player, DustID.DryadsWard);
-            SetShimmeUpgrade(ref mplr.ColdDivityTier1, ModContent.ItemType<CyrogenLegendary>(),     searchInventory, ref player, DustID.Ice);
-            SetShimmeUpgrade(ref mplr.DestroyerTier1, ModContent.ItemType<DestroyerLegendary>(),    searchInventory, ref player, DustID.Silver);
-            SetShimmeUpgrade(ref mplr.DefendTier1, ModContent.ItemType<DefenseBlade>(),             searchInventory, ref player, DustID.GoldCoin);
+            mplr.DukeTier1          = SetShimmeUpgrade(mplr.DukeTier1,          ModContent.ItemType<DukeLegendary>(),       ref player, DustID.Water);
+            mplr.BetsyTier1         = SetShimmeUpgrade(mplr.BetsyTier1,         ModContent.ItemType<RavagerLegendary>(),    ref player, DustID.Meteorite);
+            mplr.PBGTier1           = SetShimmeUpgrade(mplr.PBGTier1,           ModContent.ItemType<PBGLegendary>(),        ref player, DustID.TerraBlade);
+            mplr.PlanteraTier1      = SetShimmeUpgrade(mplr.PlanteraTier1,      ModContent.ItemType<PlanteraLegendary>(),   ref player, DustID.DryadsWard);
+            mplr.ColdDivityTier1    = SetShimmeUpgrade(mplr.ColdDivityTier1,    ModContent.ItemType<CyrogenLegendary>(),    ref player, DustID.Ice);
+            mplr.DestroyerTier1     = SetShimmeUpgrade(mplr.DestroyerTier1,     ModContent.ItemType<DestroyerLegendary>(),  ref player, DustID.Silver);
+            mplr.DefendTier1        = SetShimmeUpgrade(mplr.DefendTier1,        ModContent.ItemType<DefenseBlade>(),        ref player, DustID.GoldCoin);
 
             //海爵剑T3: 佩戴蠕虫围巾召唤老猪
             if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
@@ -71,13 +70,16 @@ namespace CalamityInheritance.Content.Items
 
         }
 
-        internal static void SetShimmeUpgrade(ref bool legendT1, int itemID, int searchType, ref Player player, short dustID)
+        internal static bool SetShimmeUpgrade(bool legendT1, int itemID, ref Player player, short dustID)
         {
-            if (!legendT1 && player.ZoneShimmer && CIFunction.FindInventoryItem(ref player, itemID, 1))
+            if (legendT1)
+                return false;
+            if (player.ZoneShimmer && CIFunction.FindInventoryItem(ref player, itemID, 1))
             {
-                legendT1 = true;
                 LegendaryUpgradeTint(dustID, player);
+                return true;
             }
+            return false;
         }
 
         public override bool? UseItem(Item item, Player player)

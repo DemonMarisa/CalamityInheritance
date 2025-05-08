@@ -54,6 +54,7 @@ using log4net.Core;
 using CalamityMod.NPCs;
 using System.IO;
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityMod.Buffs.Potions;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -405,10 +406,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             // Set the whoAmI variable.
             CIGlobalNPC.LegacySCal = NPC.whoAmI;
-
+            //给予被针对的玩家BossZen
+            target.AddBuffSafer<Zen>(3600);
             // 激怒
             NPC.Calamity().CurrentlyEnraged = Enraged;
-
+            
             // 生成场地
             if (!spawnArena)
             {
