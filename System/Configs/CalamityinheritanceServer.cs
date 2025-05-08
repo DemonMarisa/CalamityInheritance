@@ -57,6 +57,10 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool LoreDrop{ get; set; } //Lore的掉落方法
-        
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool WeatherChange { get; set; } //环境改变
+
     }
 }

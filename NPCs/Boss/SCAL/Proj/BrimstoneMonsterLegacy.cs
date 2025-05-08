@@ -138,17 +138,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 Projectile.ai[0] = Player.FindClosest(Projectile.Center, 1, 1);
                 Projectile.netUpdate = true;
             }
-            Player getTar = Main.player[target];
-
-            //往恶意 + 神殇AI写入代码杀，接触红月直接处死
-            //喜欢吃就多吃点😥
-            if (CIWorld.Malice && CIWorld.Defiled)
-            {
-                if (Projectile.Hitbox.Intersects(getTar.Hitbox))
-                    getTar.CIMod().KillPlayer();
-            }
-            if (death)
-                return;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) => CalamityUtils.CircularHitboxCollision(Projectile.Center, 170f, targetHitbox);

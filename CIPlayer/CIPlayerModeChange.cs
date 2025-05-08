@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Environment;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
@@ -47,64 +48,68 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            if (CIWorld.Malice && CalamityUtils.AnyBossNPCS())
+            if (CIWorld.Malice)
+                return;
+            if (!CIServerConfig.Instance.WeatherChange)
+                return;
+            if (CalamityUtils.AnyBossNPCS())
+                return;
+
+            if (Player.whoAmI == Main.myPlayer)
             {
-                if (Player.whoAmI == Main.myPlayer)
+                #region 免疫判定
+                bool immunityAll = cIPlayer.RoDPaladianShieldActive || cIPlayer.TheAbsorberOld || calPlayer.WearingPostMLSummonerSet;
+
+                bool immunityToHotAndCold = Player.magmaStone || Player.frostArmor || calPlayer.fBarrier ||
+                    calPlayer.frostFlare || calPlayer.rampartOfDeities || calPlayer.cryogenSoul || calPlayer.snowman || calPlayer.blazingCore ||
+                    calPlayer.permafrostsConcoction || calPlayer.profanedCrystalBuffs || immunityAll;
+
+                bool immunityToCold = Player.HasBuff(BuffID.Campfire) || Player.resistCold || calPlayer.eskimoSet ||
+                    Player.buffImmune[BuffID.Frozen] || calPlayer.aAmpoule || Player.HasBuff(BuffID.Inferno) ||
+                    immunityToHotAndCold || calPlayer.externalColdImmunity;
+
+                bool immunityToHot = Player.lavaImmune || Player.lavaRose || Player.lavaMax > 0 ||
+                    immunityToHotAndCold || calPlayer.externalHeatImmunity || Player.buffImmune[BuffID.OnFire] || Player.buffImmune[BuffID.OnFire3];
+                #endregion
+                #region 洞穴黑暗
+                // 在System里面
+                #endregion
+                #region 星辉
+                // Astral effects
+                if (calPlayer.ZoneAstral && !calPlayer.gravityNormalizer)
                 {
-                    #region 免疫判定
-                    bool immunityAll = cIPlayer.RoDPaladianShieldActive || cIPlayer.TheAbsorberOld || calPlayer.WearingPostMLSummonerSet;
-
-                    bool immunityToHotAndCold = Player.magmaStone || Player.frostArmor || calPlayer.fBarrier ||
-                        calPlayer.frostFlare || calPlayer.rampartOfDeities || calPlayer.cryogenSoul || calPlayer.snowman || calPlayer.blazingCore ||
-                        calPlayer.permafrostsConcoction || calPlayer.profanedCrystalBuffs || immunityAll;
-
-                    bool immunityToCold = Player.HasBuff(BuffID.Campfire) || Player.resistCold || calPlayer.eskimoSet ||
-                        Player.buffImmune[BuffID.Frozen] || calPlayer.aAmpoule || Player.HasBuff(BuffID.Inferno) ||
-                        immunityToHotAndCold || calPlayer.externalColdImmunity;
-
-                    bool immunityToHot = Player.lavaImmune || Player.lavaRose || Player.lavaMax > 0 || 
-                        immunityToHotAndCold || calPlayer.externalHeatImmunity || Player.buffImmune[BuffID.OnFire] || Player.buffImmune[BuffID.OnFire3];
-                    #endregion
-                    #region 洞穴黑暗
-                    // 在System里面
-                    #endregion
-                    #region 星辉
-                    // Astral effects
-                    if (calPlayer.ZoneAstral && !calPlayer.gravityNormalizer)
-                    {
-                        Player.gravity *= 0.75f;
-                    }
-                    #endregion
-                    #region 太空      
-                    // 太空
-                    if (inSpace)
-                    {
-                        if (Main.dayTime)
-                        {
-                            if (!immunityToHot)
-                                Player.AddBuff(BuffID.Burning, 2, false);
-                        }
-                        else
-                        {
-                            if (!immunityToCold)
-                                Player.AddBuff(BuffID.Frostburn, 2, false);
-                        }
-                    }
-                    #endregion
-                    #region 丛林
-                    // 丛林水中流血
-                    if (Player.ZoneJungle && Player.wet && !Player.lavaWet && !Player.honeyWet)
-                    {
-                        if (Collision.DrownCollision(Player.position, Player.width, Player.height, Player.gravDir))
-                            Player.AddBuff(BuffID.Bleeding, 300, false);
-                    }
-                    #endregion
-                    #region 下雨
-                    SPEnvironment(calPlayer);
-                    #endregion
-                    Blizzard(immunityToCold, cIPlayer);
-                    UnderworldHot(immunityToHot, cIPlayer);
+                    Player.gravity *= 0.75f;
                 }
+                #endregion
+                #region 太空      
+                // 太空
+                if (inSpace)
+                {
+                    if (Main.dayTime)
+                    {
+                        if (!immunityToHot)
+                            Player.AddBuff(BuffID.Burning, 2, false);
+                    }
+                    else
+                    {
+                        if (!immunityToCold)
+                            Player.AddBuff(BuffID.Frostburn, 2, false);
+                    }
+                }
+                #endregion
+                #region 丛林
+                // 丛林水中流血
+                if (Player.ZoneJungle && Player.wet && !Player.lavaWet && !Player.honeyWet)
+                {
+                    if (Collision.DrownCollision(Player.position, Player.width, Player.height, Player.gravDir))
+                        Player.AddBuff(BuffID.Bleeding, 300, false);
+                }
+                #endregion
+                #region 下雨
+                SPEnvironment(calPlayer);
+                #endregion
+                Blizzard(immunityToCold, cIPlayer);
+                UnderworldHot(immunityToHot, cIPlayer);
             }
         }
         #region 环境变化
