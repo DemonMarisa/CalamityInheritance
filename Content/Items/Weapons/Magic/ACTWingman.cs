@@ -40,10 +40,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noUseGraphic = true;
             Item.channel = true;
         }
-
+        public override bool CanUseItem(Player player)
+        {
+            return player.ownedProjectileCounts[ModContent.ProjectileType<WingmanHeldProj>()] < 1;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<WingmanHeldProj>(), damage, knockback, player.whoAmI);
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<WingmanHeldProj>()] < 1)
+                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<WingmanHeldProj>(), damage, knockback, player.whoAmI);
 
             if (player.ownedProjectileCounts[ModContent.ProjectileType<ChangeDirProj>()] < 1)
                 Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ChangeDirProj>(), damage, knockback, player.whoAmI);

@@ -45,12 +45,19 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
         public int hasfirecount = 0;
         public int firedely = 2;
         public int mountdartfirerelay = 3;
-        public override bool? CanHitNPC(NPC target) => Projectile.ai[0] != 0f;
+        public override bool? CanHitNPC(NPC target)
+        {
+            if (Projectile.ai[0] != 0f)
+                return base.CanHitNPC(target);
+            else
+                return false;
+        }
 
         public override void AI()
         {
             if (Projectile.ai[0] == 0f)
             {
+                // 挂载的AI
                 MountDark(Projectile, ref firedely, ref hasfirecount);
                 if (initialized == false)
                 {
@@ -61,6 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             }
             else
             {
+                // 普通的AI
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
 
                 DarkAI(Projectile);

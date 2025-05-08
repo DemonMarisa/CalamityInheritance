@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<MarniteBayonetSpikesProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<MarniteBayonetSpikesProj>(), damage * 3, knockback, player.whoAmI, 0f, 0f, 0f);
             }
             else
             {

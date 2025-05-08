@@ -3,4 +3,4 @@ author = DemonMarisa
 hideCode = false
 hideResources = false
 modReferences = CalamityMod
-version = 2.0.0.12
+version = 2.0.0.13
