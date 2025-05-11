@@ -10,24 +10,23 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
-        public bool bloodMoonLoreSpawn = true;
         public bool currentBloodMoon = false;
         public void CISpawnItem()
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer clPlayer = Player.CIMod();
-            if(bloodMoonLoreSpawn)
+            if(!CIDownedBossSystem.DownedBloodMoon)
             {
                 if (Main.bloodMoon)
                     currentBloodMoon = true;
 
-                if (!Main.bloodMoon && currentBloodMoon && bloodMoonLoreSpawn)
+                if (!Main.bloodMoon && currentBloodMoon)
                 {
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<KnowledgeBloodMoon>(), 1);
-                    bloodMoonLoreSpawn = false;
                     CIDownedBossSystem.DownedBloodMoon = true;
                 }
             }
         }
+
     }
 }

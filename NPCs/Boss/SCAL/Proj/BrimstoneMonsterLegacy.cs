@@ -19,6 +19,8 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Core;
 using CalamityInheritance.World;
+using CalamityMod.Particles;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -150,7 +152,34 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             return false;
         }
 
-        public override bool CanHitPlayer(Player target) => Projectile.Opacity == 1f;
+        public override bool CanHitPlayer(Player player)
+        {
+            // 这一段还是复制的原灾爆改的，详情看原灾吧
+            if (Projectile.Opacity < 1f)
+                return false;
+
+            bool cannotBeHurt = player.HasIFrames() || player.creativeGodMode;
+            if (cannotBeHurt)
+                return true;
+
+            if (Colliding(Projectile.Hitbox, player.Hitbox) == false)
+                return false;
+
+            player.ScalDebuffs(360, 480, 300);
+
+            player.statLife -= Projectile.damage / 2;
+
+            GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(100) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+            GeneralParticleHandler.SpawnParticle(orb);
+            if (Main.rand.NextBool())
+            {
+                GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(100) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                GeneralParticleHandler.SpawnParticle(orb2);
+            }
+
+            return true;
+        }
+
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
@@ -160,7 +189,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             target.statLife -= Projectile.damage / 3;
 
             target.ScalDebuffs(360, 480 , 300);
-            
         }
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)

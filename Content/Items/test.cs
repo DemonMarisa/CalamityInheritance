@@ -37,17 +37,7 @@ namespace CalamityInheritance.Content.Items
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
-            cIPlayer.meleeLevel = 15;
-            cIPlayer.rangeLevel = 15;
-            cIPlayer.magicLevel = 15;
-            cIPlayer.summonLevel = 15;
-            cIPlayer.rogueLevel = 15;
-
-            cIPlayer.meleePool = 12500;
-            cIPlayer.rangePool = 12500;
-            cIPlayer.magicPool = 12500;
-            cIPlayer.summonPool = 12500;
-            cIPlayer.roguePool = 12500;
+            cIPlayer.rangePool += 100;
             return true;
         }
     }

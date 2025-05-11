@@ -33,6 +33,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.createTile = ModContent.TileType<DeathTiles>();
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
+
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
         {
@@ -40,7 +41,6 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return false;
             if (player.altFunctionUse == 2)
             {
-                Item.consumable = true;
                 Item.UseSound = SoundID.Item1;
             }
             else

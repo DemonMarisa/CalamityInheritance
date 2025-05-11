@@ -13,7 +13,7 @@ namespace CalamityInheritance.System.Configs
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message) => true;
 
         [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool TurnOffFirstText { get; set; }
 
         #region General Gameplay Changes
@@ -116,5 +116,21 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
+
+        /*
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-1000, 1000)]
+        [Increment(1)]
+        [DefaultValue(1)]
+        public int debugint1 { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-1000, 1000)]
+        [Increment(1)]
+        [DefaultValue(1)]
+        public int debugint2 { get; set; }
+        */
     }
 }

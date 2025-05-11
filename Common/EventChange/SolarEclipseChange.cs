@@ -11,7 +11,7 @@ namespace CalamityInheritance.Common.EventChange
     {
         public override void OnSpawn(Item item, IEntitySource source)
         {
-            if (item.type == ModContent.ItemType<DarksunFragment>() && CIServerConfig.Instance.SolarEclipseChange && !CIDownedBossSystem.DownedBuffedSolarEclipse)
+            if (item.type == ModContent.ItemType<DarksunFragment>() && CIServerConfig.Instance.SolarEclipseChange && !CIDownedBossSystem.DownedLegacyYharonP1)
             {
                 item.active = false; //  删除物品
             }
@@ -19,7 +19,7 @@ namespace CalamityInheritance.Common.EventChange
 
         public override bool OnPickup(Item item, Player player)
         {
-            if (item.type == ModContent.ItemType<DarksunFragment>() && CIServerConfig.Instance.SolarEclipseChange && !CIDownedBossSystem.DownedBuffedSolarEclipse)
+            if (item.type == ModContent.ItemType<DarksunFragment>() && CIServerConfig.Instance.SolarEclipseChange && !CIDownedBossSystem.DownedLegacyYharonP1)
             {
                 item.active = false; // 删除物品
                 return false;

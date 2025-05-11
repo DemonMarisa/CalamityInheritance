@@ -73,12 +73,14 @@ namespace CalamityInheritance.Content.Items
         internal static bool SetShimmeUpgrade(bool legendT1, int itemID, ref Player player, short dustID)
         {
             if (legendT1)
-                return false;
+                return true;
+
             if (player.ZoneShimmer && CIFunction.FindInventoryItem(ref player, itemID, 1))
             {
                 LegendaryUpgradeTint(dustID, player);
                 return true;
             }
+
             return false;
         }
 

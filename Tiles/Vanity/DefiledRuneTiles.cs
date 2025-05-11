@@ -24,7 +24,7 @@ namespace CalamityInheritance.Tiles.Vanity
             TileID.Sets.FramesOnKillWall[Type] = true;
             DustType = 75;
         }
-
+        public override bool CanDrop(int i, int j) => false;
         public override bool CanExplode(int i, int j) => false;
 
         public override void NumDust(int i, int j, bool fail, ref int num)

@@ -98,6 +98,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            // 低一点伤害
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+                damage.Base *= 0.8f;
+        }
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

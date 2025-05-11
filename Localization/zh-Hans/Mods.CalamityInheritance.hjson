@@ -561,5 +561,10 @@ Configs: {
 				默认关闭
 				'''
 		}
+
+		WeatherChange: {
+			Label: 环境改动
+			Tooltip: 开启后，恶意模式以外的模式也会应用环境改动
+		}
 	}
 }

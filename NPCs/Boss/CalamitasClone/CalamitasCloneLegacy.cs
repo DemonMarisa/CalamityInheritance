@@ -997,7 +997,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CalamitasCloneBag>()));
-
+            CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCloneBag>());
             var normalOnly = npcLoot.DefineNormalOnlyDropSet();
             {
                 // Items

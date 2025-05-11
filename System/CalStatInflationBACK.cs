@@ -680,7 +680,7 @@ namespace CalamityInheritance.System
                 item.damage = 2100;
             // 天堂之风
             if (item.type == ModContent.ItemType<HeavenlyGaleold>())
-                item.damage = 808;
+                item.damage = 508;
             // 星火解离者
             if (item.type == ModContent.ItemType<Photovisceratorold>())
                 item.damage = 1300;

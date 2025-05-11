@@ -77,5 +77,8 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle WingManFire = new($"{ItemSoundRoute}/AlphaRay/WingManFire") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle GenisisFire = new($"{ItemSoundRoute}/AlphaRay/GenisisFire") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
+        #region »¨¸ÚÑÒ²½Ç¹
+        public static readonly SoundStyle MarniteBayonetShoot = new($"{ItemSoundRoute}/MarniteBayonet/MarniteBayonetShoot") { Volume = 0.9f, Pitch = 0.3f };
+        #endregion
     }
 }

@@ -98,7 +98,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-15, 0);
+            // 在设置一点一点调的偏移量
+            return new Vector2(-33, -8);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -111,8 +112,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 {
                     float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
                     float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
-                    
-                    Projectile.NewProjectile(source, position, new(velX,velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
+                    // 向上偏移和手持偏移一样的-8
+                    Projectile.NewProjectile(source, position + new Vector2(0f, -8f), new(velX,velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
                 }
                 if(p.fireCD == 0)
                 {
@@ -120,7 +121,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                     {
                         float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
                         float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
-                        Projectile.NewProjectile(source, position,  new(velX, velY),ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 0f, 0f, -1f);
+                        Projectile.NewProjectile(source, position + new Vector2(0f, -8f),  new(velX, velY),ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 0f, 0f, -1f);
                     }
                     p.fireCD = 60;
                 }
@@ -132,7 +133,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 {
                     float velX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
                     float velY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
-                    Projectile.NewProjectile(source, position.X, position.Y, velX, velY, ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(damage * 1.1), knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 8, velX, velY, ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(damage * 1.1), knockback, player.whoAmI, 0f, 0f);
                 }
                 
                 return false;

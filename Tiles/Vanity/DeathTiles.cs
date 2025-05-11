@@ -37,6 +37,8 @@ namespace CalamityInheritance.Tiles.Vanity
             AddMapEntry(Color.Purple, CIFunction.GetText("Tiles.DeathTiles"));
         }
 
+        public override bool CanDrop(int i, int j) => false;
+
         public override bool CanExplode(int i, int j) => false;
 
         public override bool CreateDust(int i, int j, ref int type)

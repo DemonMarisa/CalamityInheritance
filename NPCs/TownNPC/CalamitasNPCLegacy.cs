@@ -38,6 +38,7 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityMod.Particles;
 using CalamityMod.Events;
 using CalamityMod.Items.Armor.Vanity;
+using CalamityInheritance.Core;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -546,7 +547,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<EndothermicEnergy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
                 .Add(new Item(ModContent.ItemType<NightmareFuel>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
                 //5金币买入12金币卖出去，你小子 
-                .Add(new Item(ModContent.ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ModContent.ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CIConditions.DownedBuffedSolarEclipse)
                 //化魂神晶利润率高达1000%
                 .Add(new Item(ModContent.ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 45) }, CalamityConditions.DownedDevourerOfGods)
                 //你小子龙魂卖的比化魂神晶便宜

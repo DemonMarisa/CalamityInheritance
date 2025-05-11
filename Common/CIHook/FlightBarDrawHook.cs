@@ -156,10 +156,10 @@ namespace CalamityInheritance.Common.CIHook
 
             if (modPlayer.Player.equippedWings != null && modPlayer.Player.wingTimeMax == 0)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderDisabled").Value;
-            if ((modPlayer.infiniteFlight || FlightBar.RidingInfiniteFlightMount(modPlayer.Player)) && FlightBar.completedAnimation)
-                correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderInfinite").Value;
             if (modPlayer.weakPetrification || modPlayer.vHex || modPlayer.icarusFolly || modPlayer.DoGExtremeGravity)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderReduced").Value;
+            if ((modPlayer.infiniteFlight || FlightBar.RidingInfiniteFlightMount(modPlayer.Player)) && FlightBar.completedAnimation)
+                correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderInfinite").Value;
             if (CIWorld.Defiled)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderDisabled").Value;
 

@@ -195,7 +195,12 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 当前增幅具体显示
             // 表示为 当前增幅：伤害：15% 暴击：15%
             string MeleeCurrentBoost = CurrentBoost + Damage + cIPlayer.meleeLevel + "% " + Crit + cIPlayer.meleeLevel + "%";
-            int CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.meleeLevel);
+            int CRrequiredExp;
+            if (cIPlayer.meleeLevel < 15)
+                CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.meleeLevel);
+            else
+                CRrequiredExp = requiredExp;
+
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
             string CurrentExp = Melee + ExpProgress + cIPlayer.meleePool + " / " + CRrequiredExp;
@@ -221,7 +226,13 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 当前增幅具体显示
             // 表示为 当前增幅：伤害：15% 暴击：15%
             string RangeCurrentBoost = CurrentBoost + Damage + cIPlayer.rangeLevel + "% " + Crit + cIPlayer.rangeLevel + "%";
-            int CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.rangeLevel);
+            int CRrequiredExp;
+
+            if (cIPlayer.rangeLevel < 15)
+                CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.rangeLevel);
+            else
+                CRrequiredExp = requiredExp;
+
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
             string CurrentExp = Range + ExpProgress + cIPlayer.rangePool + " / " + CRrequiredExp;
@@ -248,7 +259,12 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 当前增幅具体显示
             // 表示为 当前增幅：伤害：15% 暴击：15%
             string RangeCurrentBoost = CurrentBoost + Damage + cIPlayer.magicLevel + "% " + Crit + cIPlayer.magicLevel + "%";
-            int CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.magicLevel);
+            int CRrequiredExp;
+            if (cIPlayer.magicLevel < 15)
+                CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.magicLevel);
+            else
+                CRrequiredExp = requiredExp;
+
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
             string CurrentExp = Range + ExpProgress + cIPlayer.magicPool + " / " + CRrequiredExp;
@@ -275,7 +291,12 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 当前增幅具体显示
             // 表示为 当前增幅：伤害：15% 暴击：15%
             string SummonCurrentBoost = CurrentBoost + Damage + cIPlayer.summonLevel + "% " + Crit + cIPlayer.summonLevel + "%";
-            int CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.summonLevel);
+            int CRrequiredExp;
+            if (cIPlayer.summonLevel < 15)
+                CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.summonLevel);
+            else
+                CRrequiredExp = requiredExp;
+
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
             string CurrentExp = Summon + ExpProgress + cIPlayer.summonPool + " / " + CRrequiredExp;
@@ -302,7 +323,12 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 当前增幅具体显示
             // 表示为 当前增幅：伤害：15% 暴击：15%
             string RangeCurrentBoost = CurrentBoost + Damage + cIPlayer.rogueLevel + "% " + Crit + cIPlayer.rogueLevel + "%";
-            int CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.rogueLevel);
+            int CRrequiredExp;
+            if (cIPlayer.rogueLevel < 15)
+                CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.rogueLevel);
+            else
+                CRrequiredExp = requiredExp;
+
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
             string CurrentExp = Range + ExpProgress + cIPlayer.roguePool + " / " + CRrequiredExp;

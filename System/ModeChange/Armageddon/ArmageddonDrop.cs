@@ -31,9 +31,9 @@ namespace CalamityInheritance.System.ModeChange.Armageddon
             // 获取动态生成的掉落列表
             int bossDrops = Findbag(npc.type, npc);
 
-            if(bossDrops != -1)
+            if (bossDrops != -1)
             {
-                // 将基础规则包裹在双重条件下
+                // 我不知道我在干什么
                 npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bossDrops);
                 npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bossDrops);
                 npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bossDrops);

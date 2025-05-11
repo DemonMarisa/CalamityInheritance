@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.TreasureBags;
 using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.Potions;
@@ -1097,6 +1098,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (!BossRushEvent.BossRushActive)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
 
+            if(CIWorld.Armageddon)
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 5);
             // Mark Calamitas as defeated
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CalamityNetcode.SyncWorld();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlTypes;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
@@ -34,10 +35,12 @@ using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
@@ -76,6 +79,8 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CalamityInheritance.NPCs
 {
@@ -183,43 +188,113 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ModContent.ItemType<PearlShard> (), 1, 6, 12);
                 }
             }
+            #region 深渊掉落
+            var postCalClone = npcLoot.DefineConditionalDropSet(CIDropHelper.CIPostCalClone());
+            // 魔鬼鱼
+            if (npc.type == ModContent.NPCType<DevilFish>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 蝰蛇鱼
+            if (npc.type == ModContent.NPCType<Viperfish>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 流光石首鱼
+            if (npc.type == ModContent.NPCType<LuminousCorvina>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 剧毒米诺鱼
+            if (npc.type == ModContent.NPCType<ToxicMinnow>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 巨大乌贼
+            if (npc.type == ModContent.NPCType<GiantSquid>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 桨鱼
+            if (npc.type == ModContent.NPCType<OarfishHead>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 幻海水母
+            if (npc.type == ModContent.NPCType<MirageJelly>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 肿胀翻车鱼
+            if (npc.type == ModContent.NPCType<Bloatfish>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            // 大嘴鳗
+            if (npc.type == ModContent.NPCType<GulperEelHead>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+            }
+            #endregion
             #region ModBoss
 
             if (npc.type == ModContent.NPCType<DesertScourgeHead>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
-                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AsgardianAegisold>(), 1)); 
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AsgardianAegisold>(), 1));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DesertScourgeBag>());
             }
             if (npc.type == ModContent.NPCType<Crabulon>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CrabulonBag>());
+            }
             if (npc.type == ModContent.NPCType<HiveMind>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedHiveMind, ModContent.ItemType<KnowledgeHiveMind>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<HiveMindBag>());
+            }
             if (npc.type == ModContent.NPCType<PerforatorHive>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ModContent.ItemType<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
-
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PerforatorBag>());
+            }
             if (npc.type == ModContent.NPCType<SlimeGodCore>())
             {
                 npcLoot.Add(ModContent.ItemType<PurifiedJam>(), 1);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedSlimeGod, ModContent.ItemType<KnowledgeSlimeGod>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<SlimeGodBag>());
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PurifiedJam>());
             }
 
             if (npc.type == ModContent.NPCType<Cryogen>())
             {
                 LegendaryDropHelper(ModContent.ItemType<CyrogenLegendary>(), ref npcLoot);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ModContent.ItemType<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
-
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CryogenBag>());
             }
             if (npc.type == ModContent.NPCType<BrimstoneElemental> ())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ModContent.ItemType<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ModContent.ItemType<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<BrimstoneWaifuBag>());
             }
             if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ModContent.ItemType<KnowledgeAquaticScourge>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ModContent.ItemType<KnowledgeSulphurSea>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ModContent.ItemType<AncientVictideBar>(), 1, 3000, 9999));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AquaticScourgeBag>());
             }
             if (npc.type == ModContent.NPCType<CalamitasClone>())
             {
@@ -229,10 +304,13 @@ namespace CalamityInheritance.NPCs
                 {
                     npcLoot.Add(ItemID.BrokenHeroSword, 3, 2, 3);
                 }
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCloneBag>());
             }
 
             if (npc.type == ModContent.NPCType<Cataclysm>() )
+            {
                 npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
+            }
             if (npc.type == ModContent.NPCType<Catastrophe>())
                 npcLoot.Add(ModContent.ItemType<BrimstoneFlameblaster>(), 4);
             if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
@@ -240,6 +318,7 @@ namespace CalamityInheritance.NPCs
                 bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
                 npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
                 npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<LeviathanBag>());
             }
             if (npc.type == ModContent.NPCType<AstrumAureus>())
             {
@@ -248,6 +327,7 @@ namespace CalamityInheritance.NPCs
                 astralArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientAstralBreastplate>()));
                 astralArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientAstralLeggings>()));
                 npcLoot.Add(astralArmorLoot);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AstrumAureusBag>());
             }
             if (npc.type == ModContent.NPCType<PlaguebringerGoliath>())
             {
@@ -256,9 +336,13 @@ namespace CalamityInheritance.NPCs
                 var onlyMasterDeath = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, ModContent.ItemType<PBGLegendary>(), 1);
                 onlyMasterDeath.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PBGLegendary>(), 100), true);
                 npcLoot.Add(onlyMasterDeath);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PlaguebringerGoliathBag>());
             }
             if (npc.type == ModContent.NPCType<RavagerBody>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<RavagerBag>());
+            }
             if (npc.type == ModContent.NPCType<AstrumDeusHead>())
             {
                 bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
@@ -266,7 +350,8 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ModContent.ItemType<ConclaveCrossfire>(), 10);
                 if (Main.zenithWorld)
-                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<FourSeasonsGalaxiaold>(), 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<FourSeasonsGalaxiaold>(), 1, 1));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AstrumDeusBag>());
             }
             if (npc.type == ModContent.NPCType<ProfanedGuardianCommander> ())
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
@@ -274,6 +359,7 @@ namespace CalamityInheritance.NPCs
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ModContent.ItemType<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<YharimsGiftLegacy>(), 1));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DragonfollyBag>());
             }
             if (npc.type == ModContent.NPCType<Providence>())
             {
@@ -285,15 +371,24 @@ namespace CalamityInheritance.NPCs
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonBreastplate>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonLeggings>()));
                 npcLoot.Add(tarragon);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<ProvidenceBag>());
             }
 
             if (npc.type == ModContent.NPCType<StormWeaverHead>())
+            {
                 npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<StormWeaverBag>());
+            }
             if (npc.type == ModContent.NPCType<CeaselessVoid>())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+            {
+                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CeaselessVoidBag>());
+            }
             if (npc.type == ModContent.NPCType<Signus>())
-                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && DownedBossSystem.downedStormWeaver && !DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
-
+            {
+                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<SignusBag>());
+            }
             if (npc.type == ModContent.NPCType<Polterghast>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPolterghast, ModContent.ItemType<KnowledgePolterghast>(), desc: DropHelper.FirstKillText);
@@ -301,11 +396,13 @@ namespace CalamityInheritance.NPCs
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientBloodflareBodyArmor>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientBloodflareCuisses>()));
                 npcLoot.Add(tarragon);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PolterghastBag>());
             }
             if (npc.type == ModContent.NPCType<OldDuke>())
             {
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBoomerDuke, ModContent.ItemType<KnowledgeOldDuke>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<TriumphPotion>(), 1, 3000,9999));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<OldDukeBag>());
             }
             if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
             {
@@ -318,6 +415,7 @@ namespace CalamityInheritance.NPCs
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientSilvaLeggings>()));
                 tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientSilvaArmor>()));
                 npcLoot.Add(tarragon);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DevourerofGodsBag>());
             }
             if (npc.type == ModContent.NPCType<Yharon>())
             {
@@ -332,12 +430,14 @@ namespace CalamityInheritance.NPCs
                 yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
                 yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
                 npcLoot.Add(yharimArmorLoot2);
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<YharonBag>());
             }
             if (npc.type == ModContent.NPCType<AresBody>() || npc.type == ModContent.NPCType<ThanatosHead>() || npc.type == ModContent.NPCType<Apollo>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => !DownedBossSystem.downedExoMechs && ExoCanDropLoot();
                 npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeExoMechs>(), desc: DropHelper.FirstKillText);
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ModContent.ItemType<Malice>(), 1, 1000, 2000));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DraedonBag>());
             }
 
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
@@ -346,6 +446,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.Add(ModContent.ItemType<VehemencOld>(), 1);
                 npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedExoMechs, ModContent.ItemType<CalamitousEssence>());
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ModContent.ItemType<Armageddon>(), 1, 3000, 9999));
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCoffer>());
             }
             #endregion
             // Internal function to determine whether this NPC is the second Twin killed in a fight, regardless of which Twin it is.

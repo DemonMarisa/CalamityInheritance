@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.World;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.System.ModeChange.Malice
 {
@@ -14,7 +15,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
     {
         public override void ModifyLightingBrightness(ref float brightness)
         {
-            if(CIWorld.Malice)
+            if(CIWorld.Malice || CIServerConfig.Instance.WeatherChange)
             {
                 // 获取玩家当前Y坐标
                 double playerDepth = Main.LocalPlayer.Center.Y;
@@ -28,10 +29,10 @@ namespace CalamityInheritance.System.ModeChange.Malice
                 float depthFactor = MathHelper.Clamp((float)((playerDepth - cavernDepth) / (underworldDepth - cavernDepth)), 0f, 1f);
 
                 // 调整亮度衰减
-                float brightnessMultiplier = 1f - MathHelper.SmoothStep(0f, 0.25f, (float)depthFactor);
+                float brightnessMultiplier = 1f - MathHelper.SmoothStep(0f, 0.20f, (float)depthFactor);
 
-                // 保留至少75%的亮度
-                brightnessMultiplier = MathHelper.Clamp(brightnessMultiplier, 0.75f, 1f);
+                // 保留至少80%的亮度
+                brightnessMultiplier = MathHelper.Clamp(brightnessMultiplier, 0.80f, 1f);
 
                 // 应用亮度调整
                 brightness *= brightnessMultiplier;

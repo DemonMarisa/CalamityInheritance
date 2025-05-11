@@ -35,7 +35,7 @@ namespace CalamityInheritance.Tiles.Vanity
             AddMapEntry(Color.Black, CIFunction.GetText("Tiles.MLGRuneTiles"));
             DustType = 54;
         }
-
+        public override bool CanDrop(int i, int j) => false;
         public override bool CanExplode(int i, int j) => false;
 
         public override void NumDust(int i, int j, bool fail, ref int num)

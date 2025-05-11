@@ -48,9 +48,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            if (CIWorld.Malice)
-                return;
-            if (!CIServerConfig.Instance.WeatherChange)
+            if (!CIWorld.Malice && !CIServerConfig.Instance.WeatherChange)
                 return;
             if (CalamityUtils.AnyBossNPCS())
                 return;
@@ -286,14 +284,13 @@ namespace CalamityInheritance.CIPlayer
                 if (affectedByHotLava)
                     cIPlayer.maliceModeUnderworldTime++;
             }
-            else if (cIPlayer.maliceModeBlizzardTime > 0)
+            else if (cIPlayer.maliceModeUnderworldTime > 0)
             {
                 cIPlayer.maliceModeUnderworldTime--;
 
                 if (immunityToHot)
                     cIPlayer.maliceModeUnderworldTime--;
             }
-
             // Hot effects
             if (cIPlayer.maliceModeUnderworldTime > 360)
                 Player.AddBuff(BuffID.Weak, 2, false);

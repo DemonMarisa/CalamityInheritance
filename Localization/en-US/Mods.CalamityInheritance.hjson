@@ -594,5 +594,10 @@ Configs: {
 				Disbale by default
 				'''
 		}
+
+		WeatherChange: {
+			Label: Environmental changes
+			Tooltip: When enabled, environmental changes will always take effect.
+		}
 	}
 }

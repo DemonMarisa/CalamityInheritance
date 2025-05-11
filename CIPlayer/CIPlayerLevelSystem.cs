@@ -44,9 +44,13 @@ namespace CalamityInheritance.CIPlayer
         public int CalculateRequiredExp(int currentLevel)
         {
             int requiredExp = baseExp;
-            for(int i = 0; i < currentLevel; i++)
-                requiredExp += baseExp + baseExp * i;
-            if (currentLevel == 15)
+            if (currentLevel == 0)
+                return requiredExp;
+
+            for (int i = 0; i < currentLevel; i++)
+                requiredExp += baseExp + baseExp * (i + 1);
+
+            if (currentLevel == 14)
                 requiredExp += 500;
             return requiredExp;
         }
@@ -160,7 +164,7 @@ namespace CalamityInheritance.CIPlayer
             if (Main.zenithWorld && Main.rand.NextBool())
                 Main.projectile[p].friendly = false;
         }
-        public void SendMessageOnPlayer(int currentLevel, int SwitchClass)
+        public static void SendMessageOnPlayer(int currentLevel, int SwitchClass)
         {
             string Melee = Language.GetTextValue("Mods.CalamityInheritance.Status.MeleeLevel");
             string Ranged = Language.GetTextValue("Mods.CalamityInheritance.Status.RangedLevel");

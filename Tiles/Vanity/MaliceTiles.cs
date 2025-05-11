@@ -42,7 +42,7 @@ namespace CalamityInheritance.Tiles.Vanity
             DustType = (int)CalamityDusts.BlueCosmilite;
             AnimationFrameHeight = 72;
         }
-
+        public override bool CanDrop(int i, int j) => false;
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             frameCounter++;

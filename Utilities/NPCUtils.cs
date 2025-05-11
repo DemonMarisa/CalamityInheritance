@@ -316,5 +316,11 @@ namespace CalamityInheritance.Utilities
             }
         }
         #endregion
+
+        public static void ArmageddonBagDrop(NPCLoot npcLoot, int bagtype)
+        {
+            for(int i = 0; i < 5; i++)
+                npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bagtype);
+        }
     }
 }

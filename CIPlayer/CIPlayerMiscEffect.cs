@@ -39,7 +39,6 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
-using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -717,17 +716,6 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
-            if (item.type == ModContent.ItemType<ShizukuEdge>())
-            {
-                if (Player.ownedProjectileCounts[ModContent.ProjectileType<MoonPlaceholder>()] < 2)
-                {
-                    Vector2 velocity = new Vector2(16f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                    for (int i = -1; i < 2; i+=2)
-                    {
-                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * i, ModContent.ProjectileType<MoonPlaceholder>(), (int)Player.GetBestClassDamage().ApplyTo(ShizukuEdge.BaseDamage) - ShizukuEdge.BaseDamage, 0f, Player.whoAmI);
-                    }
-                }
-            }
             if (ShroomiteFlameBooster && item.useAmmo == AmmoID.Gel)
             {
                 Player.GetDamage<RangedDamageClass>() += 0.30f;
