@@ -180,5 +180,12 @@ namespace CalamityInheritance.Utilities
             if (!player.HasBuff<T>())
                 player.AddBuff(ModContent.BuffType<T>(), frames);
         }
+        /// <summary>
+        /// 可以直接用Color的发光，为啥要求用Vector3啊
+        /// </summary>
+        public static void BetterAddLight(Vector2 position, Color color)
+        {
+            Lighting.AddLight(position, color.ToVector3());
+        }
     }
 }

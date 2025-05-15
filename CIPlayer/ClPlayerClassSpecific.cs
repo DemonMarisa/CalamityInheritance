@@ -71,14 +71,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            if (SilvaMeleeSetLegacy)
-            {
-                if (Main.rand.NextBool(4) && (proj.TrueMeleeClass() || proj.type == ModContent.ProjectileType<StepToolShadowChair>()))
-                {
-                    hit.Damage *= 5;
-                }
-            }
-
             //这个应该是泰坦药水的真近战标记
             if (ifTrueMelee || proj.type == ModContent.ProjectileType<StepToolShadowChair>())
                 BuffStatsTitanScaleTrueMelee = 600;
@@ -87,15 +79,6 @@ namespace CalamityInheritance.CIPlayer
         {
             if (!proj.DamageType.CountsAsClass<RangedDamageClass>())
                 return;
-
-            if (GodSlayerRangedSet && hit.Crit)
-            {
-                int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
-                if (Main.rand.Next(1, 101) <= randomChance)
-                    hit.Damage *= 2;
-                else if (Main.rand.NextBool(20))
-                    hit.Damage *= 4;
-            }
         }
         public void MagicOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {

@@ -82,37 +82,6 @@ namespace CalamityInheritance.NPCs
                 modifiers.FinalDamage *= 0.8f;
             }
         }
-        #region 等级的伤害池子
-        public int meleeDamage = 0;
-        public int rangedDamage = 0;
-        public int magicDamage = 0;
-        public int summonDamage = 0;
-        public int rogueDamage = 0;
-        #endregion
-        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo modifiers)
-        {
-            bool isMelee = modifiers.DamageType.CountsAsClass<MeleeDamageClass>() || modifiers.DamageType.CountsAsClass<TrueMeleeDamageClass>();
-            // 射手
-            bool isRanged = modifiers.DamageType.CountsAsClass<RangedDamageClass>();
-            // 法师
-            bool isMagic = modifiers.DamageType.CountsAsClass<MagicDamageClass>();
-            // 召唤
-            bool isWhip = modifiers.DamageType.CountsAsClass<SummonMeleeSpeedDamageClass>();
-            bool isSummon = modifiers.DamageType.CountsAsClass<SummonDamageClass>() || isWhip;
-            // 盗贼
-            bool isRogue = modifiers.DamageType.CountsAsClass<RogueDamageClass>();
-
-            if (isMelee)
-                meleeDamage += modifiers.Damage;
-            if (isRanged)
-                rangedDamage += modifiers.Damage;
-            if (isMagic)
-                magicDamage += modifiers.Damage;
-            if (isSummon)
-                summonDamage += modifiers.Damage;
-            if (isRogue)
-                rogueDamage += modifiers.Damage;
-        }
         // Incoming defense to this function is already affected by the vanilla debuffs Ichor (-10) and Betsy's Curse (-40), and cannot be below zero.
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
@@ -155,7 +124,7 @@ namespace CalamityInheritance.NPCs
                 npc.type == NPCID.BigHornetSpikey || npc.type == NPCID.LittleHornetSpikey || npc.type == NPCID.BigHornetLeafy || npc.type == NPCID.LittleHornetLeafy ||
                 npc.type == NPCID.BigHornetHoney || npc.type == NPCID.LittleHornetHoney || npc.type == NPCID.BigHornetFatty || npc.type == NPCID.LittleHornetFatty)
             {
-                if (Main.player[npc.target].CIMod().LoreQueenBee)
+                if (Main.player[npc.target].CIMod().LoreQueenBee || Main.player[npc.target].CIMod().PanelsLoreQueenBee)
                 {
                     CIGlobalAI.LoreQueenBeeEffect(npc);
                     return false;
@@ -188,7 +157,6 @@ namespace CalamityInheritance.NPCs
         public override void OnKill(NPC npc)
         {
             Player player = Main.player[Main.myPlayer];
-            CalamityInheritancePlayer cIPlayer = player.CIMod();
             if (npc.type == NPCID.EaterofWorldsHead)
                 CIDownedBossSystem.DownedEOW = true;
             if (npc.type == NPCID.BrainofCthulhu)
@@ -196,45 +164,6 @@ namespace CalamityInheritance.NPCs
             if (npc.type == NPCID.Mothron && CIDownedBossSystem.DownedLegacyYharonP1)
                 CIDownedBossSystem.DownedBuffedSolarEclipse = true;
 
-            int[] damageType = 
-            { 
-                meleeDamage,
-                rangedDamage,
-                magicDamage,
-                summonDamage,
-                rogueDamage
-            };
-            int maxValue = 0;
-            int maxIndex = -1;
-            // 寻找最高伤害值
-            for (int i = 0; i < damageType.Length; i++)
-            {
-                if (damageType[i] > maxValue)
-                {
-                    maxValue = damageType[i];
-                    maxIndex = i;
-                }
-            }
-            if (maxIndex != -1)
-            {
-                if (maxIndex == 0)
-                    cIPlayer.meleePool += (int)(maxValue * 0.1f);
-                if (maxIndex == 1)
-                    cIPlayer.rangePool += (int)(maxValue * 0.1f);
-                if (maxIndex == 2)
-                    cIPlayer.magicPool += (int)(maxValue * 0.1f);
-                if (maxIndex == 3)
-                    cIPlayer.summonPool += (int)(maxValue * 0.1f);
-                if (maxIndex == 4)
-                    cIPlayer.roguePool += (int)(maxValue * 0.1f);
-            }
-
-            // 重置伤害统计
-            meleeDamage = 0;
-            rangedDamage = 0;
-            magicDamage = 0;
-            summonDamage = 0;
-            rogueDamage = 0;
         }
     }
 }

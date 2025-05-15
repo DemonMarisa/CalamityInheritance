@@ -13,6 +13,7 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using Terraria.DataStructures;
 using System;
+using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.CIPlayer
 {

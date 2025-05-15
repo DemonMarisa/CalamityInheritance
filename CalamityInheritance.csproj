@@ -876,6 +876,7 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="NPCs\Boss\Yharon\Proj\" />
 	  <Folder Include="SceneEffect\" />
 	</ItemGroup>
 	<ItemGroup>

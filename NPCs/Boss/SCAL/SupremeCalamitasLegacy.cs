@@ -330,6 +330,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             writer.Write(NPC.alpha);
             //bool
             writer.Write(spawnArena);
+
+            writer.Write(hasCharge);
+            writer.Write(ChargeCount);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
@@ -339,6 +342,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.localAI[localAISlot] = reader.ReadSingle();
             NPC.alpha = reader.ReadInt32();
             spawnArena = reader.ReadBoolean();
+
+            hasCharge = reader.ReadBoolean();
+            ChargeCount = reader.Read();
         }
         #endregion
         #region AI

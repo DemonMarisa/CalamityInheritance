@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Materials
             Item.height = 22;
             Item.value = Item.sellPrice(silver: 56);
             Item.rare = ItemRarityID.Pink;
+            Item.maxStack = 9999;
         }
     }
 }

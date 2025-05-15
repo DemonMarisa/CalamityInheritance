@@ -40,13 +40,35 @@ namespace CalamityInheritance.CIPlayer
                     dmg /= 2;
                 modifiers.FinalDamage += dmg;
             }
+
+            if (SilvaMeleeSetLegacy)
+            {
+                if (Main.rand.NextBool(4) && proj.TrueMeleeClass())
+                {
+                    modifiers.FinalDamage *= 5;
+                }
+            }
+
             ModifyCrtis(target, ref modifiers);
+
+            if (GodSlayerRangedSet && proj.DamageType.CountsAsClass<RangedDamageClass>())
+            {
+                int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
+
+                if(randomChance > 0)
+                {
+                    if (Main.rand.Next(1, 101) <= randomChance)
+                        modifiers.FinalDamage *= 2;
+                }
+                else if (Main.rand.NextBool(20))
+                    modifiers.FinalDamage *= 4;
+            }
         }
         public float GetWantedCrits<Type>() where Type: DamageClass
         {
             return (Player.GetTotalCritChance<Type>() + 4f - 100f) / 100f;
         }
-        private void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
+        public void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
         {
             //将所有的爆伤乘区全部按照玩家手持武器计算
             bool isRouge = Player.HeldItem.CountsAsClass<RogueDamageClass>();
@@ -129,11 +151,7 @@ namespace CalamityInheritance.CIPlayer
                 //Main.NewText($"触发判定", 255, 255, 255);
                 if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
                 {
-                    //Main.NewText($"造成伤害", 255, 255, 255);
-                    modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
-                    {
-                        hitInfo.Damage *= 5;
-                    };
+                    modifiers.FinalDamage *= 5;
                 }
             }
 

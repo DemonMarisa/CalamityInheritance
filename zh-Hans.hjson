@@ -66,6 +66,7 @@ Mods: {
 			// MarianaProjectile.DisplayName: Mariana Projectile
 			// ChangeDirProj.DisplayName: Change Dir Proj
 			// AeriesShockblastRound.DisplayName: Aeries Shockblast Round
+			// YharonArenaProj.DisplayName: Yharon Arena Proj
 		}
 
 		Content/Projectiles/Summon: {

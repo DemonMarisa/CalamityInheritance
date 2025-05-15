@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI.Chat;
@@ -24,6 +25,9 @@ namespace CalamityInheritance.UI
         public static void Draw(SpriteBatch spriteBatch)
         {
             if (CIConfig.Instance.TurnOffFirstText == false)
+                return;
+
+            if(Main.netMode != NetmodeID.SinglePlayer)
                 return;
 
             Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;

@@ -119,7 +119,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             {
                 Projectile.velocity *= 0.97f;
             }
-
             // 使用旋转角度计算方向
             Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
             Projdirection.SafeNormalize(Vector2.UnitX);

@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.TreasureBags;
+using CalamityInheritance.NPCs.Boss.Yharon.Arena;
 using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
@@ -236,11 +237,23 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         {
             writer.Write(NPC.CIMod().BossNewAI[0]);
             writer.Write(NPC.CIMod().BossNewAI[1]);
+
+            writer.Write(hasCharge);
+            writer.Write(ChargeCount);
+
+            writer.WriteVector2(logVector2);
+            writer.Write(teleportLocation);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
-            NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
+
+            hasCharge = reader.ReadBoolean();
+            ChargeCount = reader.Read();
+
+            logVector2 = reader.ReadVector2();
+            teleportLocation = reader.Read();
         }
         public override void AI()
         {
@@ -418,16 +431,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 SpawnArena = 1f;
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    //场地大小应该是……多少？ 525？
+                    // 场地大小应该是……多少？ 525？
                     int width = ConvertTileWidthToInt(525);
-                    int height = ConvertTileWidthToInt(800);
+                    int height = ConvertTileWidthToInt(1600);
                     Yharon.CIMod().Arena.X = (int)(target.Center.X - width * 0.5f);
                     Yharon.CIMod().Arena.Y = (int)(target.Center.Y - height);
                     Yharon.CIMod().Arena.Width = width;
                     Yharon.CIMod().Arena.Height = height * 2;
                     //生成边界龙卷风。
-                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<SkyFlareRevenge>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<SkyFlareRevenge>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
                 }
                 //手动发送数据包。
                 Yharon.netUpdate = true;
@@ -614,6 +627,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_FlareBombsCircle(Player target, ref float attackTimer, ref float frametype)
         {
             canLookTarget = false;
+            if(attackTimer == 0)
+            {
+                NPC.velocity = new(6f, 6f);
+            }
+
             int flareDustPhaseTimer = 100;
             float spinTime = flareDustPhaseTimer;
             float spinPhaseRotation = MathHelper.TwoPi * 3 / spinTime;
@@ -660,14 +678,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             int fireDelay = 4;
             int totalTimer = 60;
 
-            int hoverDistanceX = 500;
-            int hoverDistanceY = 200;
-
             float closeVelocity = 12f;
             float closeVelocityAcc = 0.4f;
 
-            // 犽绒应该在的地方
-            Vector2 destination = new Vector2(target.Center.X + NPC.spriteDirection * hoverDistanceX, target.Center.Y - hoverDistanceY);
             // 与目标位置的差距
             Vector2 distanceFromDestination = target.Center - NPC.Center;
             // 移动
@@ -724,7 +737,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (attacktimer == 1)
             {
-                NPC.velocity = new( 6f, 6f);
+                NPC.velocity = new(6f, 6f);
                 logVector2 = target.Center + new Vector2(Main.rand.NextFloat(-500f, 500f), -300f);
                 NPC.Center = logVector2;
                 NPC.Opacity = 0f;
@@ -805,11 +818,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public int teleportLocation = 0;
         public void DoBehavior_TelephoneCharge(Player target, ref float attacktimer, ref float frameType)
         {
-            int TotalHover = 60;
+            int TotalHover = 30;
             frameType = (float)YharonFrameType.PlayOnce;
-            float distance = 450 * Math.Sign((NPC.Center - target.Center).X);
+            float distance = 250 * Math.Sign((NPC.Center - target.Center).X);
 
-            teleportLocation = Main.rand.NextBool() ? 600 : -600;
+            teleportLocation = Main.rand.NextBool() ? 500 : -500;
             if(attacktimer <= 1)
             {
                 SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
@@ -817,7 +830,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.Center = center;
                 NPC.Opacity = 0f;
             }
-
+            else if (attacktimer <= TotalHover)
+            {
+                NPC.velocity *= 0.97f;
+            }
             if (hasCharge == false && attacktimer > TotalHover)
             {
                 canLookTarget = false;
