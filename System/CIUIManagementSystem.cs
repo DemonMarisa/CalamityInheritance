@@ -29,9 +29,9 @@ namespace CalamityInheritance.System
             }
 
             // Popup GUIs.
-            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Cal Popup GUIs", () =>
+            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Draedons Popup GUIs", () =>
             {
-                CalPopupGUIManager.UpdateAndDraw(Main.spriteBatch);
+                DraedonsPanelUIManager.UpdateAndDraw(Main.spriteBatch);
                 return true;
             }, InterfaceScaleType.UI));
 

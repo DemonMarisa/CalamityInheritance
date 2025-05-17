@@ -503,6 +503,10 @@ namespace CalamityInheritance.System
                 item.useAnimation = 10;
                 item.useTime = 10;
             }
+
+            if (item.type == ModContent.ItemType<Murasama>())
+                item.damage = 20001;
+
             #endregion
             #region 射手
             if (item.type == ModContent.ItemType<Deathwind>())

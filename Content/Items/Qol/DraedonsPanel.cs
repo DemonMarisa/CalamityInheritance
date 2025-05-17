@@ -5,6 +5,9 @@ using Terraria;
 using CalamityInheritance.UI;
 using CalamityInheritance.UI.QolPanelTotal;
 using CalamityInheritance.Content.Items.MiscItem;
+using CalamityMod.Items.DraedonMisc;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.DraedonStructures;
 
 namespace CalamityInheritance.Content.Items.Qol
 {
@@ -25,8 +28,19 @@ namespace CalamityInheritance.Content.Items.Qol
         public override bool? UseItem(Player player)
         {
             if (Main.myPlayer == player.whoAmI)
-                CalPopupGUIManager.FlipActivityOfGUIWithType(typeof(QolPanel));
+                DraedonsPanelUIManager.FlipActivityOfGUIWithType();
             return true;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+            .AddIngredient<DraedonPowerCell>(100)
+            .AddIngredient<DubiousPlating>(25)
+            .AddIngredient<MysteriousCircuitry>(15)
+            .AddIngredient(ItemID.Glass, 15)
+            .AddRecipeGroup("AnyCopperBar", 5)
+            .AddTile(TileID.WorkBenches)
+            .Register();
         }
     }
 

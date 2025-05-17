@@ -40,12 +40,20 @@ namespace CalamityInheritance.Content.Items.SummonItems
         {
             if (player.whoAmI == Main.myPlayer)
             {
-                int getBoss = ModContent.NPCType<SupremeCalamitasLegacy>();
+                int npcType = ModContent.NPCType<SupremeCalamitasLegacy>();
 
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                    NPC.SpawnBoss((int)player.Center.X, (int)(player.Center.Y - 400), getBoss, player.whoAmI);
-                else
-                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: getBoss);
+                switch (Main.netMode)
+                {
+                    // SP: Spawn Boss Immediately
+                    case NetmodeID.SinglePlayer:
+                        NPC.SpawnBoss((int)player.Center.X, (int)(player.Center.Y - 400), npcType, player.whoAmI);
+                        break;
+
+                    // MP: Ask server to spawn one
+                    case NetmodeID.MultiplayerClient:
+                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, npcType);
+                        break;
+                }
             }
             return true;
         }

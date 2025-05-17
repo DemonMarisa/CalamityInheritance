@@ -4,6 +4,7 @@ Mods: {
 			BoCLoreTeleportation.DisplayName: BoC Lore Teleportation
 			AegisHotKey.DisplayName: Elysian Guard
 			"Astral Arcanum UI Toggle.DisplayName": Astral Arcanum Teleportation
+			"Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
 		}
 
 		Tiles: {
@@ -60,7 +61,12 @@ Mods: {
 			VerdantYoyo.DisplayName: Verdant Yoyo
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
-			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+
+			Ranged: {
+				NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+				NewExoFire.DisplayName: New Exo Fire
+			}
+
 			Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 			FossilSpike.DisplayName: Fossil Spike
 			MarianaProjectile.DisplayName: Mariana Projectile

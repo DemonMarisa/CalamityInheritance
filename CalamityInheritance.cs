@@ -114,7 +114,6 @@ namespace CalamityInheritance
             SkyManager.Instance["CalamityInheritance:CalClone"] = new CalCloneSky();
 
             AstralArcanumUI.Load(this);
-            CalPopupGUIManager.LoadGUIs();
             DifficultyModeUI.Load();
         }
 
@@ -141,7 +140,6 @@ namespace CalamityInheritance
             Instance = null;
 
             DifficultyModeUI.Unload();
-            CalPopupGUIManager.UnloadGUIs();
             base.Unload();
         }
         #endregion

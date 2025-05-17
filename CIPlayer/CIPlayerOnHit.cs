@@ -31,7 +31,7 @@ namespace CalamityInheritance.CIPlayer
                 int finalDamage = 500 + weaponDamage / 2;
                 Vector2 getSpwanPos = new(Player.Center.Y, Player.Center.X);
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ModContent.ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
                 fireCD = 60;
             }
             //T2庇护: 物品击中敌人时使自己免疫防损

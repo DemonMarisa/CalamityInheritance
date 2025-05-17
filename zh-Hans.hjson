@@ -4,6 +4,7 @@ Mods: {
 			BoCLoreTeleportation.DisplayName: 克苏鲁之脑传送
 			AegisHotKey.DisplayName: 极乐之庇护
 			"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送UI
+			// "Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
 		}
 
 		Tiles: {
@@ -60,7 +61,12 @@ Mods: {
 			VerdantYoyo.DisplayName: 葱茏
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
-			// Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+
+			Ranged: {
+				// NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+				// NewExoFire.DisplayName: New Exo Fire
+			}
+
 			// Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 			// FossilSpike.DisplayName: Fossil Spike
 			// MarianaProjectile.DisplayName: Mariana Projectile

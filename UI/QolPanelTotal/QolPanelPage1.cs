@@ -31,8 +31,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
     #endregion
     public partial class QolPanel
     {
-        public int PageRightCenter = 300;
-        public void Page1Draw(SpriteBatch spriteBatch)
+        public static int PageRightCenter = 300;
+        public static void Page1Draw(SpriteBatch spriteBatch)
         {
 
             #region 左侧头图绘制
@@ -107,7 +107,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// <summary>
         /// 存储跳过的按钮的数据
         /// </summary>
-        public HeadPageData GetSkipBtnData(SpriteBatch spriteBatch, Texture2D headPageArrow, Texture2D headPageArrowHover, float scale, bool canFlip)
+        public static HeadPageData GetSkipBtnData(SpriteBatch spriteBatch, Texture2D headPageArrow, Texture2D headPageArrowHover, float scale, bool canFlip)
         {
             HeadPageData newData;
             newData.spriteBatch = spriteBatch;

@@ -79,7 +79,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
                     if (Projectile.ai[1] >= Main.projFrames[Projectile.type])
                         Projectile.ai[1] = 0;
 
-                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - Projectile.height * (i + 1), 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 100, 0, -1, 1);
+                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - Projectile.height * (i + 1), 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
+                    Main.projectile[proj].frame = (int)Projectile.ai[1];
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    Projectile.ai[1]++;
+                    if (Projectile.ai[1] >= Main.projFrames[Projectile.type])
+                        Projectile.ai[1] = 0;
+
+                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y + Projectile.height * (i + 1), 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
                     Main.projectile[proj].frame = (int)Projectile.ai[1];
                 }
                 hasSpawn = true;
@@ -92,13 +101,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
             Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
             int num214 = TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type];
             int y6 = num214 * Projectile.frame;
-            Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), Projectile.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), Color.White, Projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), Projectile.scale, SpriteEffects.None, 0f);
             return false;
         }
         
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            CIFunction.KillPlayer(target);
             target.AddBuff(ModContent.BuffType<Dragonfire>(), 420);
         }
     }

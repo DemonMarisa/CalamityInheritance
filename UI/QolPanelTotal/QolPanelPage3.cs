@@ -23,20 +23,20 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
         #region Lore面板
         #region Page 3
-        public int LoreBloodMoonID = 37;
-        public int LoreCorruptionID = 38;
-        public int LoreCrimsonID = 39;
-        public int LoreUnderworldID = 40;
-        public int LoreSulphurSeaID = 41;
-        public int LoreBrimstoneCragID = 42;
-        public int LoreMechID = 43;
-        public int LoreOceanID = 44;
-        public int LoreAstralInfectionID = 45;
-        public int LoreDragonfollyID = 46;
-        public int LoreProfanedGuardiansID = 47;
-        public int LoreSentinelsID = 48;
+        public static int LoreBloodMoonID = 37;
+        public static int LoreCorruptionID = 38;
+        public static int LoreCrimsonID = 39;
+        public static int LoreUnderworldID = 40;
+        public static int LoreSulphurSeaID = 41;
+        public static int LoreBrimstoneCragID = 42;
+        public static int LoreMechID = 43;
+        public static int LoreOceanID = 44;
+        public static int LoreAstralInfectionID = 45;
+        public static int LoreDragonfollyID = 46;
+        public static int LoreProfanedGuardiansID = 47;
+        public static int LoreSentinelsID = 48;
         #endregion
-        public void Page3Draw(SpriteBatch spriteBatch)
+        public static void Page3Draw(SpriteBatch spriteBatch)
         {
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer cIPlayer = player.CIMod();

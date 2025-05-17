@@ -9,12 +9,16 @@ using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Mono.Cecil;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -35,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             for (int i = 0; i < 2; i++)
             {
-                Projectile holdout = Projectile.NewProjectileDirect(source, player.MountedCenter, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
+                Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
                 holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
             }
             return base.Shoot(item, player, source, position, velocity, type, damage, knockback);

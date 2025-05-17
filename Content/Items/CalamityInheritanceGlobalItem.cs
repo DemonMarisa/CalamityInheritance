@@ -849,7 +849,7 @@ namespace CalamityInheritance.Content.Items
             CalamityGlobalItem modItem = item.Calamity();
 
             // Restrict behavior when reading Dreadon's Log.
-            if (CalPopupGUIManager.AnyGUIsActive)
+            if (DraedonsPanelUI.Active)
                 return false;
 
             return true;

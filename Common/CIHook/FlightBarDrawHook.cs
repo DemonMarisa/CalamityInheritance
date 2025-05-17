@@ -160,7 +160,8 @@ namespace CalamityInheritance.Common.CIHook
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderReduced").Value;
             if ((modPlayer.infiniteFlight || FlightBar.RidingInfiniteFlightMount(modPlayer.Player)) && FlightBar.completedAnimation)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderInfinite").Value;
-            if (CIWorld.Defiled)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.Defiled)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderDisabled").Value;
 
             if (FlightBar.completedAnimation && !modPlayer.infiniteFlight && correctBorder != FlightBar.infiniteBarTexture)

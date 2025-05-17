@@ -55,5 +55,9 @@ XerocPickaxe: {
 
 LevelItem: {
 	DisplayName: 等级Debug物品
-	Tooltip: 使用后立刻满级
+	Tooltip:
+		'''
+		使用后立刻满级
+		右键使用清空等级进度
+		'''
 }

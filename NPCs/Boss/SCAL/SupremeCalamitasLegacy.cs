@@ -55,6 +55,8 @@ using CalamityMod.NPCs;
 using System.IO;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Buffs.Potions;
+using CalamityInheritance.Buffs.Potions;
+using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -154,29 +156,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             SummonSoulSeeker,
         }
 
-        // 获取NPC实例
-        public static NPC LegacySCal
-        {
-            get
-            {
-                if (CIGlobalNPC.LegacySCal == -1)
-                    return null;
-
-                return Main.npc[CIGlobalNPC.LegacySCal];
-            }
-        }
-
         // 激怒
-        public static bool Enraged
-        {
-            get
-            {
-                if (LegacySCal is null)
-                    return false;
-
-                return !Main.player[LegacySCal.target].Hitbox.Intersects(LegacySCal.CIMod().Arena);
-            }
-        }
+        public bool Enraged = false;
         // 終灾的攻击循环
         public static LegacySCalAttackType[] AttackCycle =>
             [
@@ -256,6 +237,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 PortraitScale = 0.7f,
             };
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+            NPCID.Sets.MPAllowedEnemies[Type] = true;
         }
         #endregion
         #region SD
@@ -322,29 +304,65 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         //多人同步的二三事
         public override void SendExtraAI(BinaryWriter writer)
         {
-            //自定义的数组应当进行同步
-            for (int bossAISlot = 6 ; bossAISlot <= 8; bossAISlot++)
-                writer.Write(NPC.CIMod().BossNewAI[bossAISlot]);
-            for (int localAISlot = 1 ; localAISlot <= 2; localAISlot++)
-                writer.Write(NPC.localAI[localAISlot]);
-            writer.Write(NPC.alpha);
-            //bool
-            writer.Write(spawnArena);
+            BitsByte net1 = new BitsByte();
+            //一个比特=8个字节，如果有部分字节暂时用不上，这些字节是一定得用各种方法占用掉让其形成一个完整的比特的
+            //不然发送的时候会有点问题
+            net1[0] = initialized;
+            net1[1] = spawnArena;
+            net1[2] = OnlyGlow;
+            net1[3] = hasCharge;
+            net1[4] = Enraged;
+            net1[5] = canDead;
+            net1[6] = isContactDamage;
+            net1[7] = isSecondPhase;
+            writer.Write(net1);
 
-            writer.Write(hasCharge);
-            writer.Write(ChargeCount);
+            BitsByte net2 = new BitsByte();
+            net2[0] = isBrotherAlive;
+            net2[1] = isSeekerAlive;
+            net2[2] = isWormAlive;
+            net2[3] = isTrueMelee;
+            net2[4] = canDespawn;
+            net2[5] = canNextPhase;
+            net2[6] = false;
+            net2[7] = false;
+            writer.Write(net2);
+
+            writer.Write(DR);
+            writer.Write(NPC.localAI[1]);
+            writer.Write(NPC.localAI[2]);
+            writer.Write(NPC.CIMod().BossNewAI[6]);
+            writer.Write(NPC.CIMod().BossNewAI[7]);
+            writer.Write(NPC.CIMod().BossNewAI[8]);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            for (int bossAISlot = 6 ; bossAISlot <= 8; bossAISlot++)
-                NPC.CIMod().BossNewAI[bossAISlot] = reader.ReadSingle();
-            for (int localAISlot = 1 ; localAISlot <= 2; localAISlot++)
-                NPC.localAI[localAISlot] = reader.ReadSingle();
-            NPC.alpha = reader.ReadInt32();
-            spawnArena = reader.ReadBoolean();
+            BitsByte net1 = reader.ReadByte();
+            initialized = net1[0];
+            spawnArena = net1[1];
+            OnlyGlow = net1[2];
+            hasCharge = net1[3];
+            Enraged = net1[4];
+            canDead = net1[5];
+            isContactDamage = net1[6];
+            isSecondPhase = net1[7];
 
-            hasCharge = reader.ReadBoolean();
-            ChargeCount = reader.Read();
+            BitsByte net2 = reader.ReadByte();
+            isBrotherAlive = net2[0];
+            isSeekerAlive = net2[1];
+            isWormAlive = net2[2];
+            isTrueMelee = net2[3];
+            canDespawn = net2[4];
+            canNextPhase = net2[5];
+            _ = net2[6];
+            _ = net2[7];
+
+            DR = reader.ReadSingle();
+            NPC.localAI[1] = reader.ReadSingle();
+            NPC.localAI[2] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[6] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[7] = reader.ReadSingle();
+            NPC.CIMod().BossNewAI[8] = reader.ReadSingle();
         }
         #endregion
         #region AI
@@ -354,34 +372,20 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.rotation += MathHelper.TwoPi;
             else if  (NPC.rotation > MathHelper.TwoPi) 
                 NPC.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
-
-            if (initialized == false)
-            {
-                Main.player[NPC.target].Calamity().GeneralScreenShakePower = 12;
-                SpawnDust();
-                SpawnDust();
-                NPC.damage = 2000;
-                initialized = true;
-            }
-            isWormAlive = NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>());
-            isSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>());
-            isBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>());
-            if (Enraged)
-            {
-                vectorMultiplier += 2f;
-                NPC.DR_NERD(10f);
-            }
-            else
-            {
-                vectorMultiplier = 1f;
-                NPC.DR_NERD(DR);
-            }
-
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
                 NPC.TargetClosest(true);
 
             Player target = Main.player[NPC.target];
+
+            isWormAlive = NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>());
+            isSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>());
+            isBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>());
+
+            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
+                Enraged = true;
+            else
+                Enraged = false;
 
             if (Main.slimeRain)
             {
@@ -394,6 +398,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 isTrueMelee = true;
             else
                 isTrueMelee = false;
+
+            if (initialized == false)
+            {
+                // 多人模式是随机召唤位置，但是在第一帧传送到对应玩家身边
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                    NPC.Center = Main.player[NPC.target].Center + new Vector2(0f, -400f);
+
+                Main.player[NPC.target].Calamity().GeneralScreenShakePower = 12;
+                SpawnDust();
+                SpawnDust();
+                NPC.damage = 2000;
+                initialized = true;
+            }
 
             ref float attackType = ref NPC.ai[0];
             ref float attackTimer = ref NPC.ai[1];
@@ -413,7 +430,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             // Set the whoAmI variable.
             CIGlobalNPC.LegacySCal = NPC.whoAmI;
             //给予被针对的玩家BossZen
-            target.AddBuffSafer<Zen>(3600);
+            target.AddBuffSafer<BossEffects>(1);
             // 激怒
             NPC.Calamity().CurrentlyEnraged = Enraged;
             
@@ -664,6 +681,17 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     NPC.damage = ContactDamage;
                 NPC.dontTakeDamage = false;
                 NPC.chaseable = true;
+            }
+
+            if (Enraged)
+            {
+                vectorMultiplier += 2f;
+                NPC.DR_NERD(10f);
+            }
+            else
+            {
+                vectorMultiplier = 1f;
+                NPC.DR_NERD(DR);
             }
         }
         #endregion
@@ -1534,11 +1562,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             float ArenaSize = CalamityWorld.death ? 129 : 159;
             // Define the arena.
             Vector2 arenaArea = new(ArenaSize, ArenaSize);
-            LegacySCal.CIMod().Arena = Utils.CenteredRectangle(target.Center, arenaArea * 16f);
-            int left = (int)(LegacySCal.CIMod().Arena.Center().X / 16 - arenaArea.X * 0.5f);
-            int right = (int)(LegacySCal.CIMod().Arena.Center().X / 16 + arenaArea.X * 0.5f);
-            int top = (int)(LegacySCal.CIMod().Arena.Center().Y / 16 - arenaArea.Y * 0.5f);
-            int bottom = (int)(LegacySCal.CIMod().Arena.Center().Y / 16 + arenaArea.Y * 0.5f);
+            CIGlobalNPC.Arena = Utils.CenteredRectangle(target.Center, arenaArea * 16f);
+            int left = (int)(CIGlobalNPC.Arena.Center().X / 16 - arenaArea.X * 0.5f);
+            int right = (int)(CIGlobalNPC.Arena.Center().X / 16 + arenaArea.X * 0.5f);
+            int top = (int)(CIGlobalNPC.Arena.Center().Y / 16 - arenaArea.Y * 0.5f);
+            int bottom = (int)(CIGlobalNPC.Arena.Center().Y / 16 + arenaArea.Y * 0.5f);
             int arenaTileType = ModContent.TileType<LegacyArenaTile>();
 
             for (int i = left; i <= right; i++)

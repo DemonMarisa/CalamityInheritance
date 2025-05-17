@@ -288,6 +288,7 @@ namespace CalamityInheritance.Utilities
         #region 召唤boss
         /// <summary>
         /// Spawn Boss Method for Using Spawn Items
+        /// 记得在对应NPC添加NPCID.Sets.MPAllowedEnemies[Type] = true;
         /// <para>NOTE: This method use vanilla's spawn position behaviour!</para>
         /// </summary>
         /// <param name="player">Player who used Item</param>
@@ -295,10 +296,10 @@ namespace CalamityInheritance.Utilities
         /// <param name="spawnSound">Sound to play when spawn, it play on used player's position</param>
         public static void SpawnBossUsingItem(Player player, int npcType, in SoundStyle? spawnSound = null)
         {
-            SoundEngine.PlaySound(spawnSound, player.Center);
-
             if (player.whoAmI != Main.myPlayer)
                 return;
+
+            SoundEngine.PlaySound(spawnSound, player.Center);
 
             // NOTE: MP netcode can be simplified by directly spawn npc like SpawnBossOnPosUsingItem does
             // but leaving this as vanilla's standard now
@@ -315,12 +316,39 @@ namespace CalamityInheritance.Utilities
                     break;
             }
         }
+        /// <summary>
+        /// Spawn Boss Method for Using Spawn Items
+        /// 记得在对应NPC添加NPCID.Sets.MPAllowedEnemies[Type] = true;
+        /// <para>NOTE: This method use vanilla's spawn position behaviour!</para>
+        /// </summary>
+        /// <typeparam name="BossType">Boss's NPCType to spawn</typeparam>
+        /// <param name="player">Player who used Item</param>
+        /// <param name="spawnSound">Sound to play when spawn, it play on used player's position</param>
+        public static void SpawnBossUsingItem<BossType>(Player player, in SoundStyle? spawnSound = null) where BossType : ModNPC
+        {
+            SpawnBossUsingItem(player, ModContent.NPCType<BossType>(), spawnSound);
+        }
         #endregion
 
         public static void ArmageddonBagDrop(NPCLoot npcLoot, int bagtype)
         {
             for(int i = 0; i < 5; i++)
                 npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bagtype);
+        }
+        /// <summary>
+        /// 获取玩家和NPC的相对方向
+        /// 1时为玩家在NPC右侧，-1时反之
+        /// </summary>
+        /// <param name="npc"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static int PlayerAndNPCDir(NPC npc , Player target)
+        {
+            int posX = 1;
+            if (npc.Center.X < target.Center.X)
+                posX = -1;
+
+            return posX;
         }
     }
 }

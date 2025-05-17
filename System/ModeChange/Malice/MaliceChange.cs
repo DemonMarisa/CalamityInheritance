@@ -32,7 +32,8 @@ namespace CalamityInheritance.System.ModeChange.Malice
 
             public override void OnSpawn(Projectile projectile, IEntitySource source)
             {
-                if (BadProj(projectile) && CIWorld.Malice)
+                CIWorld world = ModContent.GetInstance<CIWorld>();
+                if (BadProj(projectile) && world.Malice)
                     projectile.velocity *= 1.5f;
             }
             #endregion
@@ -49,7 +50,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
             #region 判定
             // 判定可以增加速度
             // 必须恶意才给
-            public static bool ShouldAccelerate(NPC npc) => npc.active && !npc.friendly && !npc.CountsAsACritter && CIWorld.Malice;
+            public static bool ShouldAccelerate(NPC npc) => npc.active && !npc.friendly && !npc.CountsAsACritter && CIWorld.malice;
             #endregion
             #region 加载与卸载IL和ON
             public override void Load()

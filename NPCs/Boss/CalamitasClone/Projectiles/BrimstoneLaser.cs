@@ -60,6 +60,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<BrimstoneLaserSplit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                     }
                 }
+                Projectile.netUpdate = true;
                 Projectile.Kill();
             }
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.05f / 255f, (255 - Projectile.alpha) * 0.05f / 255f);

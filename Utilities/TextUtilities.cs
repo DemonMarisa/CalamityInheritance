@@ -19,10 +19,10 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         public static void BroadcastLocalizedText(string key, Color? textColor = null)
         {
-            if (Main.netMode == NetmodeID.SinglePlayer)
-                Main.NewText(Language.GetTextValue(key), textColor ?? Color.White);
-            else if (Main.netMode == NetmodeID.Server || Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode == NetmodeID.Server)
                 ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), textColor ?? Color.White);
+            else if (Main.netMode == NetmodeID.SinglePlayer)
+                Main.NewText(Language.GetTextValue(key), textColor ?? Color.White);
         }
         public static void SendTextOnPlayer(string key, Color color)
         {

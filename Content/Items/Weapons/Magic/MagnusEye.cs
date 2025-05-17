@@ -20,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.damage = 100;
             Item.knockBack = 2f;
             Item.mana = 12;
+            Item.autoReuse = true;
             Item.useTime = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20; 

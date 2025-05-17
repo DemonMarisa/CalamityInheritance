@@ -36,6 +36,10 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
         {
+            // This world syncing code should only be run by one entity- the server, to prevent a race condition
+            // with the packets.
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return true;
             if (player.altFunctionUse == 2)
             {
                 Item.UseSound = SoundID.Item1;
@@ -65,6 +69,10 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                     if (Main.bloodMoon)
                     {
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.BloodMoon2", Color.Crimson);
+                    }
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.WorldData);
                     }
                 }
             }

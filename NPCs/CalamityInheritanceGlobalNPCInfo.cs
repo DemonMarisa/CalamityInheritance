@@ -12,7 +12,7 @@ namespace CalamityInheritance.NPCs
     public partial class CIGlobalNPC : GlobalNPC
     {
         // 场地
-        public Rectangle Arena = default;
+        public static Rectangle Arena = default;
 
         //一百个栏位
         internal const int MaxAIMode = 100;

@@ -12,6 +12,8 @@ using Terraria.GameContent;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using System.IO;
+using CalamityInheritance.Utilities;
+using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
@@ -60,6 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 
             if (!firstFrame)
             {
+                Projectile.rotation = Projectile.AngleTo(Main.MouseWorld);
                 Projectile.velocity = Vector2.Zero;
                 firstFrame = true;
             }
@@ -127,9 +130,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 
             if (attackTimer % 8 == 0)
             {
+
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                Projectile.CalamityInheritance().ProjNewAI[0] = Main.projectile[p].whoAmI;
             }
         }
         #endregion
@@ -178,8 +183,13 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         }
         #endregion
         #region 覆写绘制
+        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+        {
+            overPlayers.Add(index);
+        }
         public override bool ExtraPreDraw(ref Color lightColor)
         {
+            DrawLaserBeam();
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             float drawRotation = Projectile.rotation + (Projectile.spriteDirection == 1 ? MathHelper.Pi : 0f);
@@ -189,6 +199,91 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
             return false;
         }
+        #endregion
+        #region 绘制
+        #region 绘制激光束
+        public void DrawLaserBeam()
+        {
+            Projectile Laser = Main.projectile[(int)Projectile.CalamityInheritance().ProjNewAI[0]];
+            // 基础参数
+            const int laserLength = 4400;
+            float alphaMultiplier = Math.Max(0, Laser.Opacity * Math.Min(1, Laser.timeLeft / 3f));
+            float beamRotation = Projectile.rotation;
+            float Scale = Laser.ai[2] == 1 ? 0.5f : 1.5f * Laser.ai[0];
+            // 颜色
+            Color baseColor = Color.White * alphaMultiplier;
+            Color Auxiliarycolor = Color.DodgerBlue * alphaMultiplier;
+            baseColor.A = Auxiliarycolor.A = 0;
+
+            // 纹理
+            Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
+            Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
+            Texture2D headTexture = Main.Assets.Request<Texture2D>("Images/Projectile_927").Value;
+            Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
+
+            DrawGlowEffects(headTexture, Auxiliarycolor, Scale, Laser);
+            DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);
+
+            DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, Laser);
+            DrawTailEffect(tailTexture, baseColor, beamRotation, laserLength, Scale);
+        }
+        #endregion
+        #region 绘制头部星星
+        public void DrawGlowEffects(Texture2D headTexture, Color color, float Scale, Projectile proj)
+        {
+            const int glowCount = 5;
+            var projAI = proj.CalamityInheritance().ProjNewAI;
+
+            for (int i = 0; i < glowCount; i++)
+            {
+                Rectangle rect = new Rectangle(0, 0, headTexture.Width / 2, headTexture.Height);
+                Vector2 origin = new Vector2(headTexture.Width / 2, headTexture.Height / 2);
+                Vector2 scale = new Vector2(
+                    proj.localAI[0] / 20f / (proj.ai[2] + 1),
+                    proj.localAI[0] / 20f / (proj.ai[2] + 1));
+
+                Main.EntitySpriteDraw(headTexture, Projectile.Center - Main.screenPosition,
+                    rect, color * 0.8f, projAI[i],// projAI[i]为绘制星星时的随机旋转
+                    origin, scale * Scale,
+                    SpriteEffects.None);
+            }
+        }
+        #endregion
+        #region 绘制本体辉光
+        public void DrawBloomEffect(Texture2D texture, Color color, float rotation, int length, float Scale, Projectile proj)
+        {
+            Rectangle rect = new Rectangle(0, 0, length, texture.Height);
+            Vector2 scale = new Vector2(1, proj.localAI[0] / 60f / (proj.ai[2] + 2));
+            Vector2 origin = new Vector2(0, texture.Height / 2);
+            Main.EntitySpriteDraw(texture, position: Projectile.Center - Main.screenPosition, rect,
+                color, rotation, origin, scale * Scale,
+                SpriteEffects.None);
+        }
+        #endregion
+        #region 绘制主光束
+        private void DrawMainBeam(Texture2D texture, Color color, float rotation, int length, float Scale, Projectile proj)
+        {
+            Rectangle rect = new Rectangle(0, 0, length, texture.Height);
+            Vector2 scale = new Vector2(1, proj.localAI[0] / 9f);
+            Vector2 origin = new Vector2(0, texture.Height / 2);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition,
+                new Rectangle(0, 0, length, texture.Height),
+                color, rotation, origin, scale * Scale,
+                SpriteEffects.None);
+        }
+        // 你画的啥
+        private void DrawTailEffect(Texture2D texture, Color color, float rotation, int length, float Scale)
+        {
+            Vector2 tailPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * (length - 18) - Main.screenPosition;
+            Vector2 origin = new Vector2(texture.Width, texture.Height / 4);
+            Vector2 scale = new Vector2(0.5f, 0.5f);
+
+            Rectangle rect = new Rectangle(0, 0, length, texture.Height / 4);
+            Main.EntitySpriteDraw(texture, tailPosition, rect, color,
+                rotation - MathHelper.PiOver2, origin, scale * Scale,
+                SpriteEffects.None);
+        }
+        #endregion
         #endregion
     }
 }

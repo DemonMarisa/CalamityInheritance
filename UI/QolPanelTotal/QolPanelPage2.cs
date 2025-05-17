@@ -50,51 +50,51 @@ namespace CalamityInheritance.UI.QolPanelTotal
     #endregion
     public partial class QolPanel
     {
-        public Color TextColor = new(31, 251, 255);
-        public Color TextOutLineColor = new(22, 88, 111);
+        public static Color TextColor = new(31, 251, 255);
+        public static Color TextOutLineColor = new(22, 88, 111);
         public static string DraedonGenericUI => "CalamityInheritance/UI/DraedonsTexture";
         public static string LoreImagePath => $"{DraedonGenericUI}/Lore"; //一个字段
         #region 文本ID
         // 用于显示的CD
-        public int TextDisplayID = 0;
+        public static int TextDisplayID = 0;
 
-        public int DefaultType = 0;
-        public int KSBtnID = 1;
-        public int DSBtnID = 2;
-        public int EoCBtnID = 3;
-        public int CrabBtnID = 4;
-        public int EoWBtnID = 5;
-        public int BoCBtnID = 6;
-        public int HiveBtnID = 7;
-        public int PerfBtnID = 8;
-        public int QBBtnID = 9;
-        public int SkeleBtnID = 10;
-        public int SGBtnID = 11;
-        public int WoFBtnID = 12;
-        public int CryoBtnID = 13;
-        public int TwinsBtnID = 14;
-        public int BrimmyBtnID = 15;
-        public int DestroyerBtnID = 16;
-        public int ASBtnID = 17;
-        public int PrimeBtnID = 18;
-        public int CalCloneBtnID = 19;
-        public int PlantBtnID = 20;
-        public int AureusBtnID = 21;
-        public int LABtnID = 22;
-        public int GolemBtnID = 23;
-        public int PBGBtnID = 24;
-        public int RavagerBtnID = 25;
-        public int DukeBtnID = 26;
-        public int CultistBtnID = 27;
-        public int DeusBtnID = 28;
-        public int MLBtnID = 29;
-        public int ProviBtnID = 30;
-        public int PolterBtnID = 31;
-        public int ODBtnID = 32;
-        public int DoGBtnID = 33;
-        public int YharonBtnID = 34;
-        public int ExoBtnID = 35;
-        public int SCalBtnID = 36;
+        public static int DefaultType = 0;
+        public static int KSBtnID = 1;
+        public static int DSBtnID = 2;
+        public static int EoCBtnID = 3;
+        public static  int CrabBtnID = 4;
+        public static  int EoWBtnID = 5;
+        public static  int BoCBtnID = 6;
+        public static  int HiveBtnID = 7;
+        public static  int PerfBtnID = 8;
+        public static  int QBBtnID = 9;
+        public static  int SkeleBtnID = 10;
+        public static  int SGBtnID = 11;
+        public static  int WoFBtnID = 12;
+        public static  int CryoBtnID = 13;
+        public static  int TwinsBtnID = 14;
+        public static  int BrimmyBtnID = 15;
+        public static  int DestroyerBtnID = 16;
+        public static  int ASBtnID = 17;
+        public static  int PrimeBtnID = 18;
+        public static  int CalCloneBtnID = 19;
+        public static  int PlantBtnID = 20;
+        public static  int AureusBtnID = 21;
+        public static  int LABtnID = 22;
+        public static  int GolemBtnID = 23;
+        public static  int PBGBtnID = 24;
+        public static  int RavagerBtnID = 25;
+        public static  int DukeBtnID = 26;
+        public static  int CultistBtnID = 27;
+        public static  int DeusBtnID = 28;
+        public static  int MLBtnID = 29;
+        public static  int ProviBtnID = 30;
+        public static  int PolterBtnID = 31;
+        public static  int ODBtnID = 32;
+        public static  int DoGBtnID = 33;
+        public static  int YharonBtnID = 34;
+        public static  int ExoBtnID = 35;
+        public static  int SCalBtnID = 36;
         #endregion
         /*
         *Scarlet: 制表-绘制格式，下方出现的值都是相对于0差值绝对值
@@ -111,18 +111,18 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #region 制表格式
 
         // 将按钮绘制在传颂正下方的差值
-        public int LoreButtonDist = 65;
+        public static int LoreButtonDist = 65;
         // 传颂的列距因子
-        public int LoreGapX = 90;
+        public static int LoreGapX = 90;
         // 传颂的行距因子（考虑按钮）
-        public int LoreGapY = 130;
+        public static int LoreGapY = 130;
 
         #endregion
 
         #region 四种高清lore显示
-        public int draedonsLoreChoice = 1;
+        public static int draedonsLoreChoice = 1;
         #endregion
-        public void Page2Draw(SpriteBatch spriteBatch)
+        public static void Page2Draw(SpriteBatch spriteBatch)
         {
             Player player = Main.player[Main.myPlayer];
             CalamityInheritancePlayer cIPlayer = player.CIMod();
@@ -415,7 +415,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// <param name="buttonTextureUnAvailable">按钮不可用状态贴图</param>
         /// <param name="mouseRectangle">鼠标判定</param>
         /// <returns>一个具有上述所有数据的巨大结构体</returns>
-        public DrawUIData GetDrawBtnData(float xResolutionScale, float yResolutionScale, float scale, SpriteBatch spriteBatch, Texture2D buttonTextureTrue, Texture2D buttonTextureTrueHover, Texture2D buttonTextureFalse, Texture2D buttonTextureFlaseHover, Texture2D buttonTextureUnAvailable, Rectangle mouseRectangle, bool canFlip)
+        public static DrawUIData GetDrawBtnData(float xResolutionScale, float yResolutionScale, float scale, SpriteBatch spriteBatch, Texture2D buttonTextureTrue, Texture2D buttonTextureTrueHover, Texture2D buttonTextureFalse, Texture2D buttonTextureFlaseHover, Texture2D buttonTextureUnAvailable, Rectangle mouseRectangle, bool canFlip)
         {
             DrawUIData newDraw;
             newDraw.spriteBatch = spriteBatch;
@@ -441,7 +441,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// <param name="yResolutionScale">y缩放</param>
         /// <param name="canFlip">是否镜像</param>
         /// <returns></returns>
-        public DrawLoreData GetDrawLoreData(SpriteBatch spriteBatch, Texture2D loreTextureUnAvailable, Texture2D loreTextureOutLine, Texture2D loreTextureOutLineUnAvailable, Rectangle mouseRectangle, float scale, float xResolutionScale, float yResolutionScale, bool canFlip, int buttonCount)
+        public static DrawLoreData GetDrawLoreData(SpriteBatch spriteBatch, Texture2D loreTextureUnAvailable, Texture2D loreTextureOutLine, Texture2D loreTextureOutLineUnAvailable, Rectangle mouseRectangle, float scale, float xResolutionScale, float yResolutionScale, bool canFlip, int buttonCount)
         {
             DrawLoreData newData;
             newData.spriteBatch = spriteBatch;
@@ -463,7 +463,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         /// <param name="colume">你需要的列数，不超过6列</param>
         /// <param name="rightSplitPage">是否需要绘制在右半分页，我们默认取左半分页</param>
         /// <returns></returns>
-        public LorePosData GetLorePos(int line, int colume, bool? rightSplitPage = false)
+        public static LorePosData GetLorePos(int line, int colume, bool? rightSplitPage = false)
         {
             /*
             我们需要借助制表格式去间接绘制一个lore的位置，其次就是按钮

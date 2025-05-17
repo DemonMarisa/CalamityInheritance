@@ -55,5 +55,9 @@ XerocPickaxe: {
 
 LevelItem: {
 	DisplayName: Level Item
-	Tooltip: Instantly upgrade your class level to full level
+	Tooltip:
+		'''
+		Instantly upgrade your class level to full level
+		Right Click to set the level to the lowest level
+		'''
 }

@@ -31,7 +31,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         // 总的经验进度
         public static int requiredExp = 12500;
         public static string LevelImagePath => "CalamityInheritance/UI/DraedonsTexture/LevelSystem"; //一个字段
-        public void Page4Draw(SpriteBatch spriteBatch)
+        public static void Page4Draw(SpriteBatch spriteBatch)
         {
             #region 获取数据
             Player player = Main.player[Main.myPlayer];
@@ -83,7 +83,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #region 经验条
         #region 绘制战士经验条
-        public void DrawMeleeBar(SpriteBatch spriteBatch,CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawMeleeBar(SpriteBatch spriteBatch,CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Melee = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMelee");
             string MeleeCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.meleeLevel;
@@ -103,7 +103,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 绘制射手经验条
-        public void DrawRangedBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawRangedBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Range = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextRanged");
             string RangeCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.rangeLevel;
@@ -124,7 +124,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 绘制法师经验条
-        public void DrawMagicBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawMagicBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Magic = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMagic");
             string MagicCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.magicLevel;
@@ -145,7 +145,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 绘制召唤经验条
-        public void DrawSummonBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawSummonBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Summon = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextSummon");
             string SummonCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.summonLevel;
@@ -166,7 +166,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 绘制盗贼经验条
-        public void DrawRogueBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawRogueBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Rogue = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextRogue");
             string RogueCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.rogueLevel;
@@ -189,7 +189,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         #endregion
         #region 具体进度
         #region 战士
-        public void DrawMeleeBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
+        public static void DrawMeleeBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
         {
             string Melee = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMelee");
             // 当前增幅具体显示
@@ -220,7 +220,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 射手
-        public void DrawRangedBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
+        public static void DrawRangedBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
         {
             string Range = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextRanged");
             // 当前增幅具体显示
@@ -253,7 +253,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 法师
-        public void DrawMagicBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
+        public static void DrawMagicBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
         {
             string Range = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMagic");
             // 当前增幅具体显示
@@ -285,17 +285,21 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 召唤
-        public void DrawSummonBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
+        public static void DrawSummonBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
         {
             string Summon = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextSummon");
             // 当前增幅具体显示
-            // 表示为 当前增幅：伤害：15% 暴击：15%
-            string SummonCurrentBoost = CurrentBoost + Damage + cIPlayer.summonLevel + "% " + Crit + cIPlayer.summonLevel + "%";
+            // 表示为 当前增幅：伤害：30%
+            string SummonCurrentBoost = CurrentBoost + Damage + cIPlayer.summonLevel * 2 + "% ";
             int CRrequiredExp;
+
             if (cIPlayer.summonLevel < 15)
                 CRrequiredExp = cIPlayer.CalculateRequiredExp(cIPlayer.summonLevel);
             else
+            {
                 CRrequiredExp = requiredExp;
+                SummonCurrentBoost += Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelSummonSPBoost");
+            }
 
             // 当前经验进度表示
             // 显示 战士经验进度： xxxx / xxxxx
@@ -317,7 +321,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 盗贼
-        public void DrawRogueBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
+        public static void DrawRogueBoost(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBoostBorder, Texture2D LevelBar, string Damage, string Crit, string CurrentBoost, string ExpProgress)
         {
             string Range = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextRogue");
             // 当前增幅具体显示

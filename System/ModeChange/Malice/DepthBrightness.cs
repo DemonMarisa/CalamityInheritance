@@ -15,7 +15,8 @@ namespace CalamityInheritance.System.ModeChange.Malice
     {
         public override void ModifyLightingBrightness(ref float brightness)
         {
-            if(CIWorld.Malice || CIServerConfig.Instance.WeatherChange)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.Malice || CIServerConfig.Instance.WeatherChange)
             {
                 // 获取玩家当前Y坐标
                 double playerDepth = Main.LocalPlayer.Center.Y;

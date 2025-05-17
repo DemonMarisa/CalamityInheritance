@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {
@@ -26,6 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.extraUpdates = 1;
             Projectile.minionSlots = 0f;
             Projectile.minion = true;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void AI()
@@ -49,6 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
                 Main.dust[num157].velocity += Projectile.velocity * 0.5f;
                 return;
             }
+            CIFunction.HomeInOnNPC(Projectile, false, 1500f, 12f, 35f);
         }
 
         public override bool PreDraw(ref Color lightColor)

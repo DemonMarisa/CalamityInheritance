@@ -12,13 +12,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
 {
     public partial class QolPanel : DraedonsPanelUI
     {
-        // 准备了10个页面
-        public override int TotalPages => 4;
-
-        #region 文本ID
-        #endregion
-
-        public override void PageDraw(SpriteBatch spriteBatch)
+        public static void PageDraw(SpriteBatch spriteBatch)
         {
             // 头图
             if (Page == 0)

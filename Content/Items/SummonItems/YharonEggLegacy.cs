@@ -17,6 +17,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.CalPlayer;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
 
 namespace CalamityInheritance.Content.Items.SummonItems
 {
@@ -54,10 +55,24 @@ namespace CalamityInheritance.Content.Items.SummonItems
         {
             CalamityPlayer calPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (!CIDownedBossSystem.DownedBuffedSolarEclipse && (modPlayer.DarkSunRings == false || calPlayer.darkSunRing == false))
-                CIFunction.SpawnBossUsingItem(player,ModContent.NPCType<YharonLegacy>(), Yharon.FireSound);
-            else
-                CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<Yharon>(), Yharon.FireSound);
+            switch (Main.netMode)
+            {
+                // SP: Spawn Boss Immediately
+                case NetmodeID.SinglePlayer:
+                    if (!CIDownedBossSystem.DownedBuffedSolarEclipse && (modPlayer.DarkSunRings == false || calPlayer.darkSunRing == false))
+                        CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<YharonLegacy>(), Yharon.FireSound);
+                    else
+                        CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<Yharon>(), Yharon.FireSound);
+                    break;
+
+                // MP: Ask server to spawn one
+                case NetmodeID.MultiplayerClient:
+                    if (!CIDownedBossSystem.DownedBuffedSolarEclipse && (modPlayer.DarkSunRings == false || calPlayer.darkSunRing == false))
+                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, ModContent.NPCType<YharonLegacy>());
+                    else
+                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, ModContent.NPCType<Yharon>());
+                    break;
+            }
 
             return true;
         }

@@ -240,3 +240,8 @@ CosmicEnergyExtra: {
 	DisplayName: Cosmic Energy
 	Description: The cosmic energy will protect you
 }
+
+WulfrumDroidOldBuff: {
+	DisplayName: Wulfrum Droid Old Buff
+	Description: Mods.CalamityInheritance.Buffs.WulfrumDroidOldBuff.Description
+}

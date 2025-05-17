@@ -27,7 +27,8 @@ namespace CalamityInheritance.UI.HealthManaTextures
         {
             string folder = $"{baseFolder}HP";
             CalamityPlayer modPlayer = Main.LocalPlayer.Calamity();
-            if (CIWorld.IronHeart) // dozezoze - Chalice gets it's own heart color to make bleed indicator contrast consistent, and also because it looks cool
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.IronHeart) // dozezoze - Chalice gets it's own heart color to make bleed indicator contrast consistent, and also because it looks cool
                 return folder + "IronHeart";
             return string.Empty;
         }

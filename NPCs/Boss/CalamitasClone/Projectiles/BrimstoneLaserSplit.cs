@@ -32,17 +32,10 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.timeLeft = 530;
             Projectile.alpha = 120;
         }
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            Projectile.DoSyncHandlerWrite(ref writer);
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            Projectile.DoSyncHandlerRead(ref reader);
-        }
         public override void AI()
         {
-            float followTimer = CIWorld.Malice ? 420f : 210f;
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            float followTimer = world.Malice ? 420f : 190f;
             int target = Player.FindClosest(Projectile.Center, 1, 1);
             Projectile.ai[1] += 1f;
             if (Projectile.ai[1] < followTimer && Projectile.ai[1] > 90f)

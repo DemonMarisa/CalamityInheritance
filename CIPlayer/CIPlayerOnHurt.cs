@@ -43,14 +43,16 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+
             // 末日模式
-            if (CIWorld.Armageddon || SCalLore || PanelsSCalLore)
+            if (world.Armageddon || SCalLore || PanelsSCalLore)
                 KillPlayer();
 
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
 
-            if (CIWorld.IronHeart)
+            if (world.IronHeart)
                 ModeHit(ref modifiers);
 
             #region Custom Hurt Sounds
@@ -77,9 +79,9 @@ namespace CalamityInheritance.CIPlayer
                 damageMult += 1.25;
             }
             // 恶意模式额外受到25%伤害
-            if (CIWorld.Malice)
+            if (world.Malice)
                 damageMult += 0.25;
-            if (CIWorld.Defiled)
+            if (world.Defiled)
             {
                 if(Main.rand.NextBool(4))
                     damageMult += 0.5;
@@ -116,7 +118,8 @@ namespace CalamityInheritance.CIPlayer
         #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            if (CIWorld.IronHeart)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.IronHeart)
             {
                 KillPlayer();
                 return true;
@@ -303,9 +306,10 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
+            CIWorld world = ModContent.GetInstance<CIWorld>();
 
             // 末日模式禁用闪避
-            if (CIWorld.Armageddon)
+            if (world.Armageddon)
                 return false;
 
             //日食魔镜的闪避优于所有闪避之前执行
@@ -926,8 +930,8 @@ namespace CalamityInheritance.CIPlayer
                     Player.KillMeForGood();
                 }
             }
-
-            if(CIWorld.IronHeart)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.IronHeart)
                 SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
             else
                 SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);

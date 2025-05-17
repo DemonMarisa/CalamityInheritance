@@ -178,11 +178,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 
         public Color Phase1Colore = new(205, 100, 100);
 
-        public override Color OnTileColor(Color color)
-        {
-            return Color.Lerp(color, Phase1Colore, 1f - GetIntensity());
-        }
-
         private bool UpdateSCalIndex()
         {
             int SCalType = ModContent.NPCType<SupremeCalamitasLegacy>();

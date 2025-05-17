@@ -14,7 +14,8 @@ namespace CalamityInheritance.System.ModeChange.Defiled
     {
         public override void OnKill(NPC npc)
         {
-            if (CIWorld.Defiled)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if (world.Defiled)
                 npc.value *= 2;
         }
     }

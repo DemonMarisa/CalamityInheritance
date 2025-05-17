@@ -30,9 +30,10 @@ namespace CalamityInheritance.CIPlayer
         public bool MLG = false; // 恶魔纹章的刷怪增幅
         public void Defiled()
         {
+            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
             // 神殇
-            if (CIWorld.Defiled)
+            if (modWorld.Defiled)
             {
                 // 禁用翅膀
                 Player.wingTime = 0;
@@ -48,7 +49,8 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            if (!CIWorld.Malice && !CIServerConfig.Instance.WeatherChange)
+            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            if (!modWorld.Malice && !CIServerConfig.Instance.WeatherChange)
                 return;
             if (CalamityUtils.AnyBossNPCS())
                 return;
@@ -308,8 +310,9 @@ namespace CalamityInheritance.CIPlayer
         #region 铁心
         public void IronHeartChange()
         {
+            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
-            if (CIWorld.IronHeart)
+            if (modWorld.IronHeart)
             {
                 if(Player.lifeRegen > 0)
                 {
@@ -322,7 +325,8 @@ namespace CalamityInheritance.CIPlayer
         #region Get Heal Life
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
-            if (CIWorld.IronHeart)
+            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            if (modWorld.IronHeart)
                 healValue = 0;
         }
         #endregion

@@ -42,6 +42,8 @@ using Terraria.Localization;
 using System.IO;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Buffs.Potions;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityMod.Buffs.StatBuffs;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -143,6 +145,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 PortraitScale = 0.7f,
             };
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+            NPCID.Sets.MPAllowedEnemies[Type] = true;
         }
         #endregion
         #region SD
@@ -191,25 +194,36 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         }
         #endregion
         #region AI
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            initialized = reader.ReadBoolean();
-            isStage2 = reader.ReadBoolean();
-            OnlyGlow = reader.ReadBoolean();
-            canBulletHell = reader.ReadBoolean();
-            SpawnWho = reader.ReadBoolean();
-            NPC.alpha = reader.ReadInt32();
-            NPC.scale = reader.ReadSingle();
-        }
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write(initialized);
-            writer.Write(canBulletHell);
-            writer.Write(OnlyGlow);
-            writer.Write(NPC.alpha);
-            writer.Write(NPC.scale);
-            writer.Write(SpawnWho);
-            writer.Write(isStage2);
+            BitsByte net1 = new BitsByte();
+            //一个比特=8个字节，如果有部分字节暂时用不上，这些字节是一定得用各种方法占用掉让其形成一个完整的比特的
+            //不然发送的时候会有点问题
+            net1[0] = initialized;
+            net1[1] = canBulletHell;
+            net1[2] = OnlyGlow;
+            net1[3] = SpawnWho;
+            net1[4] = isStage2;
+            net1[5] = isCloneSeekerAlive;
+            net1[6] = isCloneBrotherAlive;
+            net1[7] = invincible;
+            writer.Write(net1);
+
+            // writer.Write(NPC.CIMod().BossNewAI[1]);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            BitsByte net1 = reader.ReadByte();
+            initialized = net1[0];
+            canBulletHell = net1[1];
+            OnlyGlow = net1[2];
+            SpawnWho = net1[3];
+            isStage2 = net1[4];
+            isCloneSeekerAlive = net1[5];
+            isCloneBrotherAlive = net1[6];
+            invincible = net1[7];
+
+            // NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
         }
         public override void AI()
         {
@@ -234,7 +248,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             Player target = Main.player[NPC.target];
             //给bosszen
-            target.AddBuffSafer<Zen>(3600);
+            target.AddBuffSafer<BossEffects>(1);
             if (Main.slimeRain)
             {
                 Main.StopSlimeRain(true);
@@ -388,7 +402,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             if (isStage2)
             {
                 CIGlobalNPC.LegacyCalamitasCloneP2 = NPC.whoAmI;
-                return;
             }
             else
                 CIGlobalNPC.LegacyCalamitasClone = NPC.whoAmI;
@@ -1044,7 +1057,9 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         {
             if (CIServerConfig.Instance.CalExtraDrop)
                 PingDownedLevi();
-                
+            // 手动卸载一下，不知道为什么会有问题
+            CIGlobalNPC.LegacyCalamitasClone = -1;
+            CIGlobalNPC.LegacyCalamitasCloneP2 = -1;
             //无论如何标记这个为真。
             CIDownedBossSystem.DownedCalClone = true;
             DeathAshParticle.CreateAshesFromNPC(NPC);

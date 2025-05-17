@@ -11,48 +11,37 @@ using System.Collections.Generic;
 using Terraria.GameContent;
 using Terraria.Localization;
 using System.Linq;
+using CalamityInheritance.UI.QolPanelTotal;
 
 namespace CalamityInheritance.UI
 {
-    public abstract class DraedonsPanelUI : CalPopupGUI
+    public abstract class DraedonsPanelUI// : CalPopupGUI
     {
-        public float scaleX = 1.2f;
-        public float scaleY = 1.2f;
+        // 当前淡入/淡出进度帧数
+        public static int FadeTime;
+        // 当前淡入/淡出进度帧数
+        public static int FadeTimeMax = 30;
+        // 是否处于激活状态
+        public static bool Active = false;
 
-        public int Page = 0;
-        public int ArrowClickCooldown;
-        public bool HoveringOverBook = false;
-        public int TotalLinesPerPage => 16;
-        public abstract int TotalPages { get; }
+        public static float scaleX = 1.2f;
+        public static float scaleY = 1.2f;
+
+        public static int Page = 0;
+        public static int ArrowClickCooldown;
+        public static bool HoveringOverBook = false;
+        public static int TotalLinesPerPage => 16;
+        public static int TotalPages = 4;
 
         public const int TextStartOffsetX = 40;
 
-        public bool leftArrowHovered;
-        public bool rightArrowHovered;
+        public static bool leftArrowHovered;
+        public static bool rightArrowHovered;
 
-        public abstract void PageDraw(SpriteBatch spriteBatch);
-        public override void Update()
+        public static void Update()
         {
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer cIPlayer = player.CIMod();
-
-            #region 动画进度
-            if (Active)
-            {
-                if (FadeTime < FadeTimeMax)
-                    FadeTime++;
-            }
-            else if (FadeTime > 0)
-            {
-                FadeTime--;
-            }
-            #endregion
-
-            if (Main.mouseLeft && !HoveringOverBook && FadeTime >= 30)
-            {
-                Page = 0;
-                Active = false;
-            }
 
             //必须先按下才能检测释放事件，否则会触发两次点击事件（鼠标按下和移动都会触发）
             if(Main.mouseLeft && (leftArrowHovered || rightArrowHovered))
@@ -78,7 +67,7 @@ namespace CalamityInheritance.UI
             HoveringOverBook = false;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch)
         {
             Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
 
@@ -129,11 +118,11 @@ namespace CalamityInheritance.UI
                 // 绘制箭头
                 DrawArrows(spriteBatch, xResolutionScale, yResolutionScale, yPageCenter * yResolutionScale, mouseRectangle);
                 // 请查看QolPanel
-                PageDraw(spriteBatch);
+                QolPanel.PageDraw(spriteBatch);
             }
         }
         // 绘制箭头
-        public void DrawArrows(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageBottom, Rectangle mouseRectangle)
+        public static void DrawArrows(SpriteBatch spriteBatch, float xResolutionScale, float yResolutionScale, float yPageBottom, Rectangle mouseRectangle)
         {
 
             float LeftarrowScale = 1f;

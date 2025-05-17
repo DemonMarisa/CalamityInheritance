@@ -1,46 +1,31 @@
-﻿using CalamityInheritance.Buffs.Potions;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
+﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.TreasureBags;
 using CalamityInheritance.NPCs.Boss.Yharon.Arena;
-using CalamityInheritance.NPCs.TownNPC;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.Potions;
-using CalamityMod.Dusts;
+using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Events;
 using CalamityMod.NPCs;
-using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.UI;
 using CalamityMod.World;
-using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Pipelines;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
     [AutoloadBossHead]
-    public class YharonLegacy : ModNPC
+    public partial class YharonLegacy : ModNPC
     {
         #region 杂项初始化
         //全局传递的别名
@@ -50,24 +35,26 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         #region 攻击枚举
         public enum YharonAttacksType
         {
-            Hover,
-            Charge,
-            ChargeNoRoar,
-            FasterCharge,
-            SpawnTornado,
-            SpawnDetonatingFlame,
-            FlareBombs,
-            FlareBombsLine,
-            FlareBombsCircle,
-            FlareBombsHell1,
-            FlareBombsHell2,
-            SpawnFlaresRing,
-            TeleportCharge,
-            DragonFireballs,
+            Hover,// 悬停
+            Charge,// 有吼声提示的冲刺
+            ChargeNoRoar,// 没有吼声提示的冲刺
+            FasterCharge,// 快速冲刺
+            SpawnTornado,// 召唤龙卷
 
-            OpacityToZero,
-            PhaseTransition,
-            FlyAway
+            FlareBombs,// 发射跟踪火球
+            FlareBombsCircle,// 转圈发射火球
+            FlareBombsHell1,// 第一样式的弹幕炼狱
+            FlareBombsHell2,// 第二样式的弹幕炼狱
+            TeleportCharge,// 传送冲刺
+            // 二阶段独有
+            SpawnDetonatingFlame,// 召唤爆炸火焰
+            SpawnFlaresRing,// 召唤火焰环
+            YharonFireballs,// 释放龙炎弹
+
+            OpacityToZero,// 透明度渐变
+            PhaseTransition,// 转阶段
+            ReBornPhase,// 回血转阶段
+            FlyAway// 飞走
         }
         #endregion
         #region 帧图枚举
@@ -137,18 +124,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.FlareBombsHell1,
             ];
         #endregion
-        #region 获取NPC实例
-        public static NPC LegacyYharon
-        {
-            get
-            {
-                if (CIGlobalNPC.LegacyYharon == -1)
-                    return null;
-
-                return Main.npc[CIGlobalNPC.LegacyYharon];
-            }
-        }
-        #endregion
         #endregion
         #region 音效
         public static readonly SoundStyle RoarSound = new("CalamityMod/Sounds/Custom/Yharon/YharonRoar");
@@ -165,13 +140,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public int LifeMax = CalamityWorld.death ? 4040000 : CalamityWorld.revenge ? 2525000 : 2275000;
         // 免伤
         public float DR = CalamityWorld.death ? 0.75f : 0.7f;
-        // 阶段划分
-        public const float stage2LifeRatio = 0.1f;
-        public const float PreEclipse_Phase1LifeRatio = 1f;
-
-        public const float PreEclipse_Phase2LifeRatio = 0.8f;
-
-        public const float PreEclipse_Phase3LifeRatio = 0.5f;
         #endregion
         #region 杂项bool
         // 用于在AI的初始化
@@ -186,6 +154,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool playerP2PEffect = false;
         // 判定释放过了日食
         public bool postEclipse = false;
+        // 激怒
+        public bool Enraged = false;
+        // 第二面
+        public bool isStage2 = false;
         #endregion
         #region SSD
         public override void SetStaticDefaults()
@@ -200,6 +172,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 PortraitScale = 0.7f,
             };
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
+            NPCID.Sets.MPAllowedEnemies[Type] = true;
         }
         #endregion
         #region SD
@@ -235,25 +208,38 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         //调用了公用的boss栏位，手动发送AI
         public override void SendExtraAI(BinaryWriter writer)
         {
+            BitsByte net1 = new BitsByte();
+            //一个比特=8个字节，如果有部分字节暂时用不上，这些字节是一定得用各种方法占用掉让其形成一个完整的比特的
+            //不然发送的时候会有点问题
+            net1[0] = initialized;
+            net1[1] = canChangeDir;
+            net1[2] = canLookTarget;
+            net1[3] = invincible;
+            net1[4] = playerP2PEffect;
+            net1[5] = postEclipse;
+            net1[6] = hasCharge;
+            net1[7] = Enraged;
+            writer.Write(net1);
+
+            writer.Write(NPC.localAI[1]);
             writer.Write(NPC.CIMod().BossNewAI[0]);
             writer.Write(NPC.CIMod().BossNewAI[1]);
-
-            writer.Write(hasCharge);
-            writer.Write(ChargeCount);
-
-            writer.WriteVector2(logVector2);
-            writer.Write(teleportLocation);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
+            BitsByte net1 = reader.ReadByte();
+            initialized = net1[0];
+            canChangeDir = net1[1];
+            canLookTarget = net1[2];
+            invincible = net1[3];
+            playerP2PEffect = net1[4];
+            postEclipse = net1[5];
+            hasCharge = net1[6];
+            Enraged = net1[7];
+
+            NPC.localAI[1] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
-
-            hasCharge = reader.ReadBoolean();
-            ChargeCount = reader.Read();
-
-            logVector2 = reader.ReadVector2();
-            teleportLocation = reader.Read();
         }
         public override void AI()
         {
@@ -266,14 +252,35 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             else if (NPC.rotation > MathHelper.TwoPi)
                 NPC.rotation -= MathHelper.TwoPi;
 
+            // 瞄准目标
+            if (NPC.target < 0 || NPC.target == Main.maxPlayers || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
+                NPC.TargetClosest();
+
+            Player target = Main.player[NPC.target];
+
+            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
+                Enraged = true;
+            else
+                Enraged = false;
+
+            if (Enraged)
+            {
+                NPC.damage = 760 * 114;
+                NPC.dontTakeDamage = true;
+                NPC.Calamity().canBreakPlayerDefense = true;
+            }
+            else
+            {
+                NPC.damage = 760;
+                NPC.dontTakeDamage = false;
+                NPC.Calamity().canBreakPlayerDefense = false;
+            }
+
             if (initialized == false)
             {
                 NPC.damage = 760;
                 initialized = true;
             }
-            // 瞄准目标
-            if (NPC.target < 0 || NPC.target == Main.maxPlayers || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
-                NPC.TargetClosest();
 
             // Set the whoAmI variable.
             CIGlobalNPC.LegacyYharon = NPC.whoAmI;
@@ -288,53 +295,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             ref float arenaSpawn = ref NPC.CIMod().BossNewAI[0];
             ref float rageActive = ref NPC.CIMod().BossNewAI[1];
             #endregion
-            Player target = Main.player[NPC.target];
+
+            //设置战斗场地，并判断rage条件
+            SpawnArenaAndCheckRage(NPC, target, ref arenaSpawn, ref rageActive);
 
             //给BossZen
-            target.AddBuffSafer<Zen>(3600);
+            target.AddBuffSafer<BossEffects>(1);
             #region 阶段判定
-            // 进入新阶段
-            // 用于开局的攻击
-            if (lifeRatio <= PreEclipse_Phase1LifeRatio && currentPhase == 0f)
-            {
-                attackType = (int)YharonAttacksType.PhaseTransition;
-                attackTimer = 0;
-                circleCount = 0;
-                currentPhase++;
-                NPC.netUpdate = true;
-                return;
-            }
-            if (lifeRatio <= PreEclipse_Phase2LifeRatio && currentPhase == 1f)
-            {
-                attackType = (int)YharonAttacksType.PhaseTransition;
-                attackTimer = 0;
-                circleCount = 0;
-                currentPhase++;
-                NPC.netUpdate = true;
-                return;
-            }
-            if (lifeRatio <= PreEclipse_Phase3LifeRatio && currentPhase == 2f)
-            {
-                attackType = (int)YharonAttacksType.PhaseTransition;
-                attackTimer = 0;
-                circleCount = 0;
-                currentPhase++;
-                NPC.netUpdate = true;
-                return;
-            }
-            if (lifeRatio <= stage2LifeRatio && currentPhase == 3f)
-            {
-                if(postEclipse == true)
-                    attackType = (int)YharonAttacksType.PhaseTransition;
-                else
-                    attackType = (int)YharonAttacksType.FlyAway;
-
-                attackTimer = 0;
-                circleCount = 0;
-                currentPhase++;
-                NPC.netUpdate = true;
-                return;
-            }
+            // 第一大阶段
+            Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount, postEclipse);
+            // 第二大阶段
             #endregion
 
             // 目标死亡后消失
@@ -366,7 +336,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     DoBehavior_Charge(target, ref attackTimer, ref frameType,ref rotationAcc, true);
                     break;
                 case YharonAttacksType.FlareBombsCircle:
-                    DoBehavior_FlareBombsCircle(target, ref attackTimer, ref frameType);
+                    DoBehavior_CircleFlareBombs(target, ref attackTimer, ref frameType);
                     break;
                 case YharonAttacksType.FlareBombs:
                     DoBehavior_FireFlareBombs(target, ref attackTimer, ref frameType);
@@ -389,6 +359,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 case YharonAttacksType.OpacityToZero:
                     DoBehavior_OpacityToZero(attackTimer, ref frameType);
                     break;
+                    // 二阶段的招式
+                case YharonAttacksType.YharonFireballs:
+                    DoBehavior_ReleaseYharonFireBall(target, ref attackTimer, ref frameType);
+                    break;
+                case YharonAttacksType.ReBornPhase:
+                    DoBehavior_ReleaseYharonFireBall(target, ref attackTimer, ref frameType);
+                    break;
                 default:
                     NPC.velocity *= 0.95f;
                     LookAtTarget(target, rotationAcc);
@@ -410,19 +387,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.chaseable = true;
             }
 
-            //设置战斗场地，并判断rage条件
-            bool fuckPlayerOutOfArena = SpawnArenaAndCheckRage(NPC, target, ref arenaSpawn, ref rageActive);
-            NPC.Calamity().CurrentlyEnraged = fuckPlayerOutOfArena;
-
-            if (fuckPlayerOutOfArena)
-            {
-                NPC.damage = NPC.defDamage * 114;
-                NPC.dontTakeDamage = true;
-                NPC.Calamity().canBreakPlayerDefense = true;
-            }
         }
         #region 场地
-        public static bool SpawnArenaAndCheckRage(NPC Yharon, Player target, ref float SpawnArena, ref float RageYharon)
+        public static void SpawnArenaAndCheckRage(NPC Yharon, Player target, ref float SpawnArena, ref float RageYharon)
         {
             //生成场地，我们直接用的LocalAI
             if (SpawnArena == 0f)
@@ -434,10 +401,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     // 场地大小应该是……多少？ 525？
                     int width = ConvertTileWidthToInt(525);
                     int height = ConvertTileWidthToInt(1600);
-                    Yharon.CIMod().Arena.X = (int)(target.Center.X - width * 0.5f);
-                    Yharon.CIMod().Arena.Y = (int)(target.Center.Y - height);
-                    Yharon.CIMod().Arena.Width = width;
-                    Yharon.CIMod().Arena.Height = height * 2;
+                    CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
+                    CIGlobalNPC.Arena.Y = (int)(target.Center.Y - height);
+                    CIGlobalNPC.Arena.Width = width;
+                    CIGlobalNPC.Arena.Height = height * 2;
                     //生成边界龙卷风。
                     Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
                     Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
@@ -445,45 +412,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 //手动发送数据包。
                 Yharon.netUpdate = true;
             }
-            else
-            {
-                var fuckPlayerOutOfArena = Yharon.CIMod().Arena;
-                RageYharon = (!target.Hitbox.Intersects(fuckPlayerOutOfArena)).ToInt();
-                if (RageYharon == 1f)
-                    return true;
-            }
-            return false;
         }
         #endregion
         public static int ConvertTileWidthToInt(int num) => num * 16;
-        #endregion
-        #region 技能
-        #region 看向目标
-        public void LookAtTarget(Player target, float rotationSpeed)
-        {
-            // 贴图朝向改动
-            int playerFacingDirection = Math.Sign(target.Center.X - NPC.Center.X);
-            if (playerFacingDirection != 0)
-            {
-                NPC.direction = playerFacingDirection;
-                NPC.spriteDirection = -NPC.direction;
-            }
-            NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center), rotationSpeed);
-        }
-        #endregion
-        #region 取消生成
-        public void DeSpawn(Player target)
-        {
-            // Despawn
-            if (target.dead || !target.active)
-            {
-                NPC.velocity.Y -= 0.4f;
-                if (NPC.timeLeft > 60)
-                    NPC.timeLeft = 60;
-            }
-            else if (NPC.timeLeft < 1800)
-                NPC.timeLeft = 1800;
-        }
         #endregion
         #region 选择下一个攻击
         // 选择下一个攻击
@@ -536,369 +467,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
 
         #endregion
-        #region 冲刺
-        public bool hasCharge = false;
-        public int ChargeCount = 0;
-        public void DoBehavior_Charge(Player target, ref float attacktimer, ref float frametype,ref float crrotAcc, bool skipHover)
-        {
-            canLookTarget = false;
-            int totalCharge = 2;
-            int chargeCount = 20;
-            int chargeCooldown = 60 + chargeCount;
-            int hoverTimer = 90;
-
-            int hoverDistanceX = 500;
-            int hoverDistanceY = 200;
-
-            if (attacktimer < hoverTimer)
-            {
-                if (skipHover)
-                    attacktimer += hoverTimer;
-                if (attacktimer == 3)
-                    SoundEngine.PlaySound(RoarSound, NPC.Center);
-
-                float closeVelocity = 8f;
-                float closeVelocityAcc = 0.4f;
-
-                // 犽绒应该在的地方
-                Vector2 destination = new Vector2(target.Center.X + NPC.spriteDirection * hoverDistanceX, target.Center.Y - hoverDistanceY);
-                // 与目标位置的差距
-                Vector2 distanceFromDestination = destination - NPC.Center;
-                // 移动
-                CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
-
-                // 旋转
-                float progress = attacktimer / hoverTimer;
-                // float apply = MathHelper.Lerp(0, 1f, progress);
-                // Main.NewText($"progress : {progress}");
-                LookAtTarget(target, progress);
-
-                frametype = (float)YharonFrameType.Roar;
-            }
-            if (attacktimer > hoverTimer)
-            {
-                if (hasCharge == false)
-                {
-                    float chargeVelocity = 28f;
-                    float fastChargeVelocityMultiplier = 1.5f;
-
-                    Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
-                    direction = direction.SafeNormalize(Vector2.UnitX);
-                    NPC.velocity = direction * chargeVelocity * fastChargeVelocityMultiplier;
-                    frametype = (float)YharonFrameType.motionless;
-                    NPC.netUpdate = true;
-                    hasCharge = true;
-
-                    SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
-                }
-                else
-                {
-                    if (attacktimer < chargeCount + hoverTimer)
-                        ChargeDust(7);
-                    if (attacktimer > chargeCount + hoverTimer)
-                    {
-                        NPC.velocity *= 0.97f;
-
-                        crrotAcc = 0.2f;
-
-                        LookAtTarget(target, crrotAcc);
-
-                        if (NPC.velocity.X > -0.1 && NPC.velocity.X < 0.1)
-                            NPC.velocity.X = 0f;
-                        if (NPC.velocity.Y > -0.1 && NPC.velocity.Y < 0.1)
-                            NPC.velocity.Y = 0f;
-
-                        frametype = (float)YharonFrameType.PlayOnce;
-                    }
-                    if (attacktimer > chargeCooldown + hoverTimer)
-                    {
-                        hasCharge = false;
-                        attacktimer = hoverTimer;
-                        ChargeCount++;
-                    }
-                    NPC.netUpdate = true;
-                }
-            }
-            if (ChargeCount > totalCharge - 1)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 旋转火球
-        public void DoBehavior_FlareBombsCircle(Player target, ref float attackTimer, ref float frametype)
-        {
-            canLookTarget = false;
-            if(attackTimer == 0)
-            {
-                NPC.velocity = new(6f, 6f);
-            }
-
-            int flareDustPhaseTimer = 100;
-            float spinTime = flareDustPhaseTimer;
-            float spinPhaseRotation = MathHelper.TwoPi * 3 / spinTime;
-
-            int flareDustPhaseTimer2 = 100;
-            int flareDustSpawnDivisor2 = flareDustPhaseTimer2 / 30;
-
-            if (attackTimer % flareDustSpawnDivisor2 == 0f)
-            {
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    Vector2 projectileVelocity = NPC.velocity;
-                    projectileVelocity.Normalize();
-                    int type = ModContent.ProjectileType<FlareDust2>();
-                    int damage = NPC.GetProjectileDamage(type);
-                    float finalVelocity = 12f;
-                    float projectileAcceleration = 1.1f;
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, projectileVelocity, type, damage, 0f, Main.myPlayer, finalVelocity, projectileAcceleration);
-                }
-            }
-
-            NPC.velocity = NPC.velocity.RotatedBy(-(double)spinPhaseRotation * NPC.direction);
-            NPC.rotation = NPC.velocity.ToRotation();
-
-            frametype = (float)YharonFrameType.PlayOnce;
-
-            if (attackTimer > flareDustPhaseTimer)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 发射跟踪火球
-        public void DoBehavior_FireFlareBombs(Player target, ref float attacktimer, ref float frameType)
-        {
-            frameType = (float)YharonFrameType.motionlessRoar;
-            // 用来说明可以使用默认的看向目标，因为每帧都会重置，不需要再重置一遍
-            // canLookTarget = true;
-            if (attacktimer == 2f)
-                SoundEngine.PlaySound(RoarSound, NPC.Center);
-
-            int playerFacingDirection = Math.Sign(target.Center.X - NPC.Center.X);
-            Vector2 offset = new Vector2(160, -30 * playerFacingDirection).RotatedBy(NPC.rotation);
-            Vector2 projectileSpawn = NPC.Center + offset;
-
-            int fireDelay = 4;
-            int totalTimer = 60;
-
-            float closeVelocity = 12f;
-            float closeVelocityAcc = 0.4f;
-
-            // 与目标位置的差距
-            Vector2 distanceFromDestination = target.Center - NPC.Center;
-            // 移动
-            CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
-
-            if(attacktimer % fireDelay == 0)
-            {
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    int type = ModContent.ProjectileType<FlareBomb>();
-                    int damage = NPC.GetProjectileDamage(type);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, type, damage, 0f, Main.myPlayer, NPC.target, 1f);
-                }
-            }
-
-            if(attacktimer > totalTimer)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 转换阶段
-        public void DoBehavior_PhaseTransition(Player target, ref float attacktimer, ref float frameType)
-        {
-            invincible = true;
-            int p1Timer = 120;
-            int totalTimer = 180;
-
-            if (attacktimer < p1Timer)
-            {
-                frameType = (float)YharonFrameType.Normal;
-                NPC.velocity *= 0.97f;
-            }
-            else
-            {
-                if(attacktimer == 121)
-                    SoundEngine.PlaySound(RoarSound, NPC.Center);
-                playerP2PEffect = true;
-                frameType = (float)YharonFrameType.Roar;
-                NPC.velocity *= 0.97f;
-            }
-
-            if(attacktimer > totalTimer)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 发射弹幕炼狱
-        public Vector2 logVector2 = Vector2.Zero;
-        public void DoBehavior_FlareBombsHell(Player target, ref float attacktimer, ref float frameType, int AttackStyle)
-        {
-            frameType = (float)YharonFrameType.PlayOnce;
-
-            int spinPhaseTimer = 150;
-            int flareDustSpawnDivisor = spinPhaseTimer / 15;
-            float spinPhaseRotation = MathHelper.TwoPi * 3 / spinPhaseTimer;
-
-            if (attacktimer == 1)
-            {
-                NPC.velocity = new(6f, 6f);
-                logVector2 = target.Center + new Vector2(Main.rand.NextFloat(-500f, 500f), -300f);
-                NPC.Center = logVector2;
-                NPC.Opacity = 0f;
-            }
-
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                if (attacktimer < 150)
-                {
-                    canLookTarget = false;
-                    if (attacktimer % flareDustSpawnDivisor == 0f)
-                    {
-                        if (AttackStyle == 0)
-                        {
-                            int ringReduction = (int)MathHelper.Lerp(0f, 14f, attacktimer / spinPhaseTimer);
-                            int totalProjectiles = 34 - ringReduction; // 36 for first ring, 22 for last ring
-                            DoFlareDustBulletHell(0, flareDustSpawnDivisor, 100, totalProjectiles, 0f, 0f, NPC.Center);
-                        }
-                        else
-                            DoFlareDustBulletHell(1, spinPhaseTimer, 100, 12, 12f, 3.6f, NPC.Center);
-                    }
-                    NPC.velocity = NPC.velocity.RotatedBy(-(double)spinPhaseRotation * NPC.direction);
-                    NPC.rotation = NPC.velocity.ToRotation();
-                }
-
-                if (attacktimer > 150 && attacktimer < 210)
-                    NPC.velocity *= 0.97f;
-            }
-
-            if (attacktimer > 210)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 弹幕地狱发射函数
-        public void DoFlareDustBulletHell(int attackType, int timer, int projectileDamage, int totalProjectiles, float projectileVelocity, float radialOffset, Vector2 firePos)
-        {
-            SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
-            // ai1是攻击计时器
-            float aiVariableUsed = NPC.ai[1];
-            switch (attackType)
-            {
-                case 0:
-                    float offsetAngle = 360 / totalProjectiles;
-                    int totalSpaces = totalProjectiles / 5;
-                    int spaceStart = Main.rand.Next(totalProjectiles - totalSpaces);
-                    float ai0 = aiVariableUsed % (timer * 2) == 0f ? 1f : 0f;
-
-                    int spacesMade = 0;
-                    for (int i = 0; i < totalProjectiles; i++)
-                    {
-                        if (i >= spaceStart && spacesMade < totalSpaces)
-                            spacesMade++;
-                        else
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, Vector2.Zero, ModContent.ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, ai0, i * offsetAngle);
-                    }
-                    break;
-
-                case 1:
-                    double radians = MathHelper.TwoPi / totalProjectiles;
-                    Vector2 spinningPoint = Vector2.Normalize(new Vector2(-NPC.localAI[2], -projectileVelocity));
-
-                    for (int i = 0; i < totalProjectiles; i++)
-                    {
-                        Vector2 fireSpitFaceDirection = spinningPoint.RotatedBy(radians * i) * projectileVelocity;
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, fireSpitFaceDirection, ModContent.ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, 2f, 0f);
-                    }
-
-                    float newRadialOffset = (int)aiVariableUsed / (timer / 4) % 2f == 0f ? radialOffset : -radialOffset;
-                    NPC.localAI[2] += newRadialOffset;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-        #endregion
-        #region 传送冲刺
-        public int teleportLocation = 0;
-        public void DoBehavior_TelephoneCharge(Player target, ref float attacktimer, ref float frameType)
-        {
-            int TotalHover = 30;
-            frameType = (float)YharonFrameType.PlayOnce;
-            float distance = 250 * Math.Sign((NPC.Center - target.Center).X);
-
-            teleportLocation = Main.rand.NextBool() ? 500 : -500;
-            if(attacktimer <= 1)
-            {
-                SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
-                Vector2 center = target.Center + new Vector2(-distance, teleportLocation);
-                NPC.Center = center;
-                NPC.Opacity = 0f;
-            }
-            else if (attacktimer <= TotalHover)
-            {
-                NPC.velocity *= 0.97f;
-            }
-            if (hasCharge == false && attacktimer > TotalHover)
-            {
-                canLookTarget = false;
-                float chargeVelocity = 28f;
-                float fastChargeVelocityMultiplier = 1.5f;
-
-                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
-                direction = direction.SafeNormalize(Vector2.UnitX);
-                NPC.velocity = direction * chargeVelocity * fastChargeVelocityMultiplier;
-                frameType = (float)YharonFrameType.motionless;
-                NPC.netUpdate = true;
-                hasCharge = true;
-
-                SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
-            }
-            if (attacktimer > TotalHover + 15)
-                NPC.velocity *= 0.98f;
-            if (attacktimer > 80)
-                SelectNextAttack();
-        }
-        #endregion
-        #region 飞走
-        public void DoBehavior_FlyAway(float attacktimer, ref float frameType)
-        {
-            invincible = true;
-            //奶奶的不要走之前创思我好不好
-            NPC.damage = 0;
-            if (Main.zenithWorld)
-                NPC.damage = 114514;
-            if (attacktimer < 90)
-            {
-                if (attacktimer == 8)
-                    SoundEngine.PlaySound(RoarSound, NPC.Center);
-                NPC.velocity *= 0.96f;
-                if (attacktimer < 30)
-                    frameType = (float)YharonFrameType.Roar;
-                else
-                    frameType = (float)YharonFrameType.Normal;
-            }
-            else
-            {
-                frameType = (float)YharonFrameType.Normal;
-                NPC.velocity.X *= 0.96f;
-                NPC.velocity.Y -= 0.4f;
-                if (attacktimer == 160)
-                {
-                    FirstDown();
-                    NPC.active = false;
-                }
-                NPC.Opacity -= 0.04f;
-            }
-        }
-        #endregion
-        #region 透明度变化
-        public void DoBehavior_OpacityToZero(float attacktimer, ref float frameType)
-        {
-            frameType = (float)YharonFrameType.Normal;
-            NPC.velocity *= 0.99f;
-            NPC.Opacity -= 0.053f;
-
-            if (attacktimer > 30)
-                SelectNextAttack();
-        }
-        #endregion
-        #endregion
         #region 视觉效果
         #region Charge Dust
         public void ChargeDust(int dustAmt)
@@ -922,6 +490,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         {
             SpriteEffects spriteEffects = SpriteEffects.FlipHorizontally;
             float drawRotation = NPC.rotation;
+            // 1时为面向左侧，-1时为面向右侧
             if (NPC.spriteDirection == 1)
                 drawRotation = NPC.rotation + MathHelper.Pi;
             else
@@ -1113,8 +682,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             // Spawn the SCal NPC directly where the boss was
             if (!BossRushEvent.BossRushActive)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
-
-            if(CIWorld.Armageddon)
+            CIWorld world = ModContent.GetInstance<CIWorld>();
+            if(world.Armageddon)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 5);
             // Mark Calamitas as defeated
             CIDownedBossSystem.DownedLegacyYharonP1 = true;

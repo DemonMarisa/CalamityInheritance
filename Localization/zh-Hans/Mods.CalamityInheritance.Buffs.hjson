@@ -232,3 +232,8 @@ CosmicEnergyExtra: {
 	DisplayName: 归虚之灵
 	Description: 归虚之灵会保护你
 }
+
+WulfrumDroidOldBuff: {
+	// DisplayName: Wulfrum Droid Old Buff
+	// Description: Mods.CalamityInheritance.Buffs.WulfrumDroidOldBuff.Description
+}

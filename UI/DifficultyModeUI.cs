@@ -40,6 +40,7 @@ namespace CalamityInheritance.UI
                 return;
             if (Main.playerInventory == false)
                 return;
+            CIWorld world = ModContent.GetInstance<CIWorld>();
             // 右上角为锚点绘制
             float yCenter = 80;
             float xCenter = Main.screenWidth - 450;
@@ -48,17 +49,17 @@ namespace CalamityInheritance.UI
             // 绘制底子
             spriteBatch.Draw(BG, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (CIWorld.Malice)
+            if (world.Malice)
                 spriteBatch.Draw(Malice, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.death)
                 spriteBatch.Draw(Death, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.revenge)
                 spriteBatch.Draw(Rev, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (CIWorld.Armageddon)
+            if (world.Armageddon)
                 spriteBatch.Draw(Arma, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (CIWorld.Defiled)
+            if (world.Defiled)
                 spriteBatch.Draw(Rune, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
         }
     }

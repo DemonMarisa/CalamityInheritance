@@ -15,7 +15,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
     public class CalCloneScreenShaderDataLegacy : ScreenShaderData
     {
         private int CalCloneIndex;
-        public Color Phase1Colore = new(205, 100, 100);
 
         public CalCloneScreenShaderDataLegacy(string passName) : base(passName)
         {

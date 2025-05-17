@@ -8,6 +8,7 @@ using System.Security.Authentication;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System;
+using CalamityInheritance.NPCs;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -34,10 +35,14 @@ namespace CalamityInheritance.Content.Items
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 10;
         }
+        public override bool AltFunctionUse(Player player) => true;
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
-            cIPlayer.rangePool += 100;
+            if (player.altFunctionUse == 2)
+                Main.NewText($"Calamitas Clone P2: {CIGlobalNPC.LegacyCalamitasCloneP2}");
+            else
+                Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
             return true;
         }
     }

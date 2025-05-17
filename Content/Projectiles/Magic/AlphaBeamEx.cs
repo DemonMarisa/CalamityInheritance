@@ -123,6 +123,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         #region 绘制
         public override bool PreDraw(ref Color lightColor)
         {
+            if (Projectile.ai[2] == 1)
+                return false;
             DrawLaserBeam();
             return false;
         }

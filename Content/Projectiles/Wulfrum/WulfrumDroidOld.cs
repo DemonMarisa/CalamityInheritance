@@ -6,6 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {
@@ -34,12 +37,13 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.tileCollide = false;
             Projectile.timeLeft *= 5;
             Projectile.minion = true;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            CalamityPlayer modPlayer = player.Calamity();
+            CalamityInheritancePlayer modPlayer = player.CIMod();
             if (dust == 0f)
             {
                 int dustAmt = 36;
@@ -65,15 +69,15 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             {
                 Projectile.frame = 0;
             }
-            bool correctMinion = Projectile.type == ModContent.ProjectileType<WulfrumDroid>();
-            player.AddBuff(ModContent.BuffType<WulfrumDroidBuff>(), 3600);
+            bool correctMinion = Projectile.type == ModContent.ProjectileType<WulfrumDroidOld>();
+            player.AddBuff(ModContent.BuffType<WulfrumDroidOldBuff>(), 3600);
             if (correctMinion)
             {
                 if (player.dead)
                 {
-                    modPlayer.wDroid = false;
+                    modPlayer.wulfrumDroidOld = false;
                 }
-                if (modPlayer.wDroid)
+                if (modPlayer.wulfrumDroidOld)
                 {
                     Projectile.timeLeft = 2;
                 }

@@ -2,8 +2,10 @@
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Materials;
+using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.Yharon;
 using Terraria;
 using Terraria.ID;
@@ -17,7 +19,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            ItemID.Sets.SortingPriorityBossSpawns[Type] = 12;
+            ItemID.Sets.SortingPriorityBossSpawns[Type] = 11; // Pirate Map (1 above Mechanical Skull)
         }
         public override void SetDefaults()
         {
@@ -40,7 +42,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override bool? UseItem(Player player)
         {
-            CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<CalamitasCloneLegacy>(), SoundID.Roar);
+            CIFunction.SpawnBossUsingItem<CalamitasCloneLegacy>(player, SoundID.Roar);
             return true;
         }
         public override void AddRecipes()

@@ -53,19 +53,14 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         }
         public override bool? UseItem(Player player)
         {
+            // This world syncing code should only be run by one entity- the server, to prevent a race condition
+            // with the packets.
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return true;
             if (player.altFunctionUse != 2)
             {
-                if (!CIWorld.Defiled)
-                {
-                    CIWorld.Defiled = true;
-                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText", Color.DarkSeaGreen);
-                }
-                else
-                {
-                    CIWorld.Defiled = false;
-                    CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText2", Color.DarkSeaGreen);
-                }
-                CalamityNetcode.SyncWorld();
+                CIWorld world = ModContent.GetInstance<CIWorld>();
+                world.UpdateDefiled();
             }
             return true;
         }

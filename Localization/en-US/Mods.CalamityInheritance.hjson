@@ -193,6 +193,16 @@ Configs: {
 			Label: Turn Off Text
 			Tooltip: ""
 		}
+
+		debugint1: {
+			Label: debugint1
+			Tooltip: ""
+		}
+
+		debugint2: {
+			Label: debugint2
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

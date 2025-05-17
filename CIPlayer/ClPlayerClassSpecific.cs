@@ -50,7 +50,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodSlayerDart>(), finalDamage, 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
                 fireCD = 60; 
             }
             //永恒套的近战爆炸攻击
