@@ -217,9 +217,13 @@ namespace CalamityInheritance.CIPlayer
             {
                 //潜伏攻击成功时提供20%增伤
                 player.GetDamage<GenericDamageClass>() += 0.2f;
-                Player.RemoveCooldown(GodSlayerDash.ID);
-                Player.AddCooldown(GodSlayerDash.ID, 0);
+                
                 PerunofYharimCooldown = 2700;
+                if (Player.HasCooldown(GodSlayerDash.ID))
+                {
+                    Player.RemoveCooldown(GodSlayerDash.ID);
+                    Player.AddCooldown(GodSlayerDash.ID, 0);
+                }
             }
             //星幻套
             if (AncientAstralSet)
