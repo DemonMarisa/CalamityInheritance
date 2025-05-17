@@ -73,6 +73,7 @@ Mods: {
 			ChangeDirProj.DisplayName: Change Dir Proj
 			AeriesShockblastRound.DisplayName: Aeries Shockblast Round
 			YharonArenaProj.DisplayName: Yharon Arena Proj
+			MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {

@@ -3,6 +3,7 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -37,16 +38,22 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             CalamityPlayer calPlayer = player.Calamity();
             calPlayer.wearingRogueArmor = true;
             calPlayer.WearingPostMLSummonerSet = true;
+            calPlayer.godSlayer = true;
             calPlayer.rogueStealthMax = 1.25f;
             usPlayer.AncientGodSlayerSet = true;
             usPlayer.AncientGodSlayerStat = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+            {
+                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                player.dash = 0;
+            }
         }
         
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 5;
-            player.statLifeMax2 += 300;
+            player.statLifeMax2 += 200;
             player.GetDamage<GenericDamageClass>() += 0.25f;
             player.GetCritChance<GenericDamageClass>() += 0.25f;
         }

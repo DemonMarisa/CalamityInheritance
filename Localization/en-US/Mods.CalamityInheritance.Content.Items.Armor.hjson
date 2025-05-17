@@ -840,7 +840,7 @@ AncientSilvaHelm: {
 
 AncientSilvaArmor: {
 	DisplayName: Ancient Silva Armor Revamped
-	Tooltip: +400 max HP and mana
+	Tooltip: +300 max HP and mana
 }
 
 AncientGodSlayerLeggings: {
@@ -848,7 +848,7 @@ AncientGodSlayerLeggings: {
 	Tooltip:
 		'''
 		50% increased movement
-		+300 max life
+		+200 max life
 		Can swim and grants immnuity to lava
 		'''
 }
@@ -858,7 +858,7 @@ AncientGodSlayerHelm: {
 	Tooltip:
 		'''
 		25% increased damage and critical strike chance
-		+300 max life
+		+200 max life
 		+5 max minions
 		+3 max sentries
 		'''
@@ -867,7 +867,8 @@ AncientGodSlayerHelm: {
 		+125 max stealth
 		Healing potions are 50% more effective
 		+6 HP/s life regen speed, 85% reduced contact damage
-		Hitting an enemy with stealth strikes will boosted your damage by 20% in 10 seconds
+		Press God Slayer Dash Hotkey while holding down the movement keys in the direction you want to dash
+		Hitting an enemy with stealth strikes will reset your God Slayer Dash and boosted your damage by 20% in 10 seconds
 		This effect has 30 seconds cooldown if triggered
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you

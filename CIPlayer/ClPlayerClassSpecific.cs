@@ -14,6 +14,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Cooldowns;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
@@ -216,6 +217,8 @@ namespace CalamityInheritance.CIPlayer
             {
                 //潜伏攻击成功时提供20%增伤
                 player.GetDamage<GenericDamageClass>() += 0.2f;
+                Player.RemoveCooldown(GodSlayerDash.ID);
+                Player.AddCooldown(GodSlayerDash.ID, 0);
                 PerunofYharimCooldown = 2700;
             }
             //星幻套

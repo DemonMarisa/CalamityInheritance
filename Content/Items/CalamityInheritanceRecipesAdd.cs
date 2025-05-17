@@ -69,6 +69,8 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Items;
+using System;
+using CalamityInheritance.Content.Items.Placeables.Banner;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -76,7 +78,6 @@ namespace CalamityInheritance.Content.Items
     //新添加的合成表现在被更加严格的划分好了
     public class CalamityInheritanceRecipesAdd : ModSystem
     {
-        
         public override void AddRecipes()
         {
             Exo();                  //星流系列
@@ -89,6 +90,31 @@ namespace CalamityInheritance.Content.Items
             Accelerator();          //粒子加速器
             // CalamityLegacyRecipe(); //灾厄旧版合成配方
             Misc();                 //其他合成表, 因为我也不知道怎么起名
+            FargoWiltasRecipe();      //与法做联动的一些合成表
+            FuckYouFargoSoul();     //与……fargoSoul做联动。
+        }
+
+        internal static void FuckYouFargoSoul()
+        {
+            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSoul))
+                return;
+
+            Recipe.Create(ModContent.ItemType<ShadowspecBar>(), 50).
+                AddIngredient<CalamitousEssence>().
+                AddTile(fargoSoul.Find<ModTile>("CrucibleCosmosSheet").Type).
+                DisableDecraft().
+                Register();
+
+        }
+
+        internal static void FargoWiltasRecipe()
+        {
+            if (!ModLoader.TryGetMod("Fargowiltas", out Mod fargoWiltas))
+                return;
+            Recipe.Create(ItemID.EnchantedSword).
+                AddIngredient<CosmicElementalBanner>().
+                AddTile(TileID.Solidifier).
+                Register();
         }
 
         private static void CalamityLegacyRecipe()
@@ -660,7 +686,18 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.SoulofNight, 5).
                 AddTile<AcceleratorT2Tile>().
                 Register();
-            
+            Recipe.Create(ItemID.TitanGlove, 1).
+                AddIngredient(ItemID.CobaltBar, 10).
+                AddIngredient(ItemID.FeralClaws, 1).
+                AddTile<AcceleratorT2Tile>().
+                Register();
+
+            Recipe.Create(ItemID.CrossNecklace, 1).
+                AddRecipeGroup("AnyGoldBar", 20).
+                AddIngredient(ItemID.SoulofLight, 10).
+                AddTile<AcceleratorT2Tile>().
+                Register();
+                
             #region T2粒子加速器 月后早期合成
             Recipe.Create(ModContent.ItemType<ExodiumCluster>(), 5). //旧版Exodium Cluster的合成方法
                 AddIngredient(ItemID.LunarOre, 5).
