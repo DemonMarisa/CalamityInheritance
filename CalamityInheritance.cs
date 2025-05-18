@@ -18,6 +18,7 @@ using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
 using Terraria.ModLoader.Config;
 using System.Collections.Generic;
 using System;
+using CalamityInheritance.Common.EventChange;
 
 namespace CalamityInheritance
 {
@@ -115,7 +116,8 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
-            // FlightBarDrawHook.Load();
+            FlightBarDrawHook.Load();
+            YharonEggHook.Load(this);
             #endregion
         }
         public void LoadClient()

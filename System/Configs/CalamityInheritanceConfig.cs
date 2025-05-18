@@ -41,15 +41,6 @@ namespace CalamityInheritance.System.Configs
         public bool BoCLoreUnconditional { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
-        [SliderColor(224, 165, 56, 128)]
-        [Range(1, 3)]
-        [Increment(1)]
-        [DrawTicks]
-        [DefaultValue(1)]
-        [Slider]
-        public int GodSlayerSetBonusesChange { get; set; }
-
-        [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool silvastun { get; set; }
 
@@ -116,7 +107,7 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
-
+        /*
         
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
@@ -131,6 +122,6 @@ namespace CalamityInheritance.System.Configs
         [Increment(1)]
         [DefaultValue(1)]
         public int debugint2 { get; set; }
-        
+        */
     }
 }

@@ -18,6 +18,7 @@ using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.CalPlayer;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
+using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.SummonItems
 {
@@ -48,12 +49,25 @@ namespace CalamityInheritance.Content.Items.SummonItems
 
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(ModContent.NPCType<Yharon>()) && !BossRushEvent.BossRushActive && !NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>()) && player.ZoneJungle;
+            return !BossRushEvent.BossRushActive && !NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>()) && player.ZoneJungle;
         }
 
         public override bool? UseItem(Player player)
         {
-            CIFunction.SpawnBossUsingItem<YharonLegacy>(player, SoundID.Roar);
+            int npcType = ModContent.NPCType<YharonLegacy>();
+
+            switch (Main.netMode)
+            {
+                // SP: Spawn Boss Immediately
+                case NetmodeID.SinglePlayer:
+                    NPC.SpawnOnPlayer(player.whoAmI, npcType);
+                    break;
+
+                // MP: Ask server to spawn one
+                case NetmodeID.MultiplayerClient:
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, npcType);
+                    break;
+            }
             return true;
         }
 

@@ -49,6 +49,7 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using Terraria.GameContent.Bestiary;
+using CalamityMod.CalPlayer;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -328,6 +329,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool DrawRotate = false;
         // 是否可以死亡
         public bool canDie = false;
+        // 场地
+        public bool SpawnArea = false;
         #endregion
         #region SSD
         public override void SetStaticDefaults()
@@ -420,6 +423,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             writer.Write(NPC.localAI[1]);
             writer.Write(NPC.CIMod().BossNewAI[0]);
             writer.Write(NPC.CIMod().BossNewAI[1]);
+
+            writer.Write(CIGlobalNPC.Arena.X);
+            writer.Write(CIGlobalNPC.Arena.Y);
+            writer.Write(CIGlobalNPC.Arena.Width);
+            writer.Write(CIGlobalNPC.Arena.Height);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
@@ -447,6 +455,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.localAI[1] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
+
+            CIGlobalNPC.Arena.X = reader.ReadInt32();
+            CIGlobalNPC.Arena.Y = reader.ReadInt32();
+            CIGlobalNPC.Arena.Width = reader.ReadInt32();
+            CIGlobalNPC.Arena.Height = reader.ReadInt32();
         }
         public override void AI()
         {
@@ -468,6 +481,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             foreach (var player in Main.ActivePlayers)
                 player.Calamity().infiniteFlight = true;
 
+            CalamityPlayer.areThereAnyDamnBosses = true;
+
+            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
+                Enraged = true;
+            else
+                Enraged = false;
+
             if (initialized == false)
             {
                 NPC.damage = 760;
@@ -481,8 +501,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     CIGlobalNPC.Arena.Width = width;
                     CIGlobalNPC.Arena.Height = 320000;
 
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X + width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X - width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X + width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X - width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
                 }
                 NPC.netUpdate = true;
             }
@@ -500,7 +520,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             ref float frameType = ref NPC.localAI[1];
             ref float RebornTimer = ref NPC.CIMod().BossNewAI[2];
             #endregion
-
+            if(!SpawnArea)
+            {
+                SpawnArea = true;
+            }
             //给BossZen
             target.AddBuffSafer<BossEffects>(1);
             #region 阶段判定
@@ -595,21 +618,19 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (canLookTarget)
                 LookAtTarget(target, rotationAcc);
 
-            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
-                Enraged = true;
-            else
-                Enraged = false;
+            // 激怒
+            NPC.Calamity().CurrentlyEnraged = Enraged;
 
-            if (Enraged)
+            if (NPC.Calamity().CurrentlyEnraged)
             {
                 NPC.damage = 760 * 114;
-                NPC.dontTakeDamage = true;
+                NPC.DR_NERD(10f);
                 NPC.Calamity().canBreakPlayerDefense = true;
             }
             else
             {
                 NPC.damage = 760;
-                NPC.dontTakeDamage = false;
+                NPC.DR_NERD(DR);
                 NPC.Calamity().canBreakPlayerDefense = false;
             }
 
@@ -1004,6 +1025,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
 
             // Mark Calamitas as defeated
+            CIDownedBossSystem.DownedBuffedSolarEclipse = true;
+            CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CIDownedBossSystem.DownedLegacyYharonP2 = true;
             CalamityNetcode.SyncWorld();
         }

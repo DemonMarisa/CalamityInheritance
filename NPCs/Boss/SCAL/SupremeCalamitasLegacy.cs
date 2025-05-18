@@ -334,6 +334,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             writer.Write(NPC.CIMod().BossNewAI[6]);
             writer.Write(NPC.CIMod().BossNewAI[7]);
             writer.Write(NPC.CIMod().BossNewAI[8]);
+
+            writer.Write(CIGlobalNPC.Arena.X);
+            writer.Write(CIGlobalNPC.Arena.Y);
+            writer.Write(CIGlobalNPC.Arena.Width);
+            writer.Write(CIGlobalNPC.Arena.Height);
+            writer.Write(dustType);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
@@ -363,6 +369,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.CIMod().BossNewAI[6] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[7] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[8] = reader.ReadSingle();
+
+            CIGlobalNPC.Arena.X = reader.ReadInt32();
+            CIGlobalNPC.Arena.Y = reader.ReadInt32();
+            CIGlobalNPC.Arena.Width = reader.ReadInt32();
+            CIGlobalNPC.Arena.Height = reader.ReadInt32();
+            dustType = reader.ReadInt32();
         }
         #endregion
         #region AI

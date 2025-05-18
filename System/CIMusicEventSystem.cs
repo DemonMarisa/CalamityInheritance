@@ -77,6 +77,10 @@ namespace CalamityInheritance.System
                 () => DownedBossSystem.downedYharon, () => CIConfig.Instance.Tyrant1,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
+            AddEntry("LegacyYharonDefeated", "Tyrant", TimeSpan.FromSeconds(110.5d),
+                () => CIDownedBossSystem.DownedLegacyYharonP2, () => CIConfig.Instance.Tyrant1,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
+
             AddEntry("ExoMechsDefeated", "RequiemsOfACruelWorld", TimeSpan.FromSeconds(364.032d),
                 () => DownedBossSystem.downedExoMechs, () => CIConfig.Instance.Exomechs,
                 outroSilence: TimeSpan.FromSeconds(7.5f));

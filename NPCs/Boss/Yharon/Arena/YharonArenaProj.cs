@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
@@ -37,7 +38,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 360000;
-            CooldownSlot = 1;
+            CooldownSlot = ImmunityCooldownID.Bosses;
         }
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -52,8 +53,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
         public bool hasSpawn = false;
         public override void AI()
         {
-            
-            if (!CalamityPlayer.areThereAnyDamnBosses)
+            Projectile.ai[2]++;
+            if (!CalamityPlayer.areThereAnyDamnBosses && Projectile.ai[2] > 5)
             {
                 Projectile.active = false;
                 Projectile.netUpdate = true;
@@ -107,7 +108,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
         
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 420);
+            target.AddBuff(ModContent.BuffType<Dragonfire>(), 600);
         }
     }
 }

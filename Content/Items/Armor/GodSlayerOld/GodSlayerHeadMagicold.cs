@@ -32,19 +32,16 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         }
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
         public override void ArmorSetShadows(Player player) => player.armorEffectDrawShadow = true;
-
+        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityKeybinds.GodSlayerDashHotKey);
         public override void UpdateArmorSet(Player player)
         {
-            const short onlyDash = 2;
-            const short onlyReborn = 1; 
             var modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMagicSet = true;
-            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
-            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
-            modPlayer2.GodSlayerReborn = mode != onlyDash;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            modPlayer2.GodSlayerReborn = true;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;

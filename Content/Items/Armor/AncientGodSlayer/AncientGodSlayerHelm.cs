@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             calPlayer.wearingRogueArmor = true;
             calPlayer.WearingPostMLSummonerSet = true;
             calPlayer.godSlayer = true;
-            calPlayer.rogueStealthMax = 1.25f;
+            calPlayer.rogueStealthMax += 1.25f;
             usPlayer.AncientGodSlayerSet = true;
             usPlayer.AncientGodSlayerStat = true;
             usPlayer.GodSlayerReborn = true;

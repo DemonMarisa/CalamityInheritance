@@ -28,7 +28,7 @@ namespace CalamityInheritance.Common.EventChange
         {
             if(!CIDownedBossSystem.DownedLegacyYharonP1)
             {
-                CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MLGRune", Color.DarkRed);
+                CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipseSummon", Color.Orange);
                 return false;
             }
             else

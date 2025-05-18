@@ -73,12 +73,10 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.godSlayer = true;
 
             CIPlayer.GodSlayerSummonSet = true;
-            const short onlyDash = 2;
-            const short onlyReborn = 1; 
-            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
-            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
-            CIPlayer.GodSlayerReborn = mode != onlyDash;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            CIPlayer.GodSlayerReborn = true;
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;

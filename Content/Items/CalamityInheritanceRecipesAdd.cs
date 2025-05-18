@@ -96,28 +96,29 @@ namespace CalamityInheritance.Content.Items
 
         internal static void FuckYouFargoSoul()
         {
-            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSoul))
-                return;
-
-            Recipe.Create(ModContent.ItemType<ShadowspecBar>(), 50).
-                AddIngredient<CalamitousEssence>().
-                AddTile(fargoSoul.Find<ModTile>("CrucibleCosmosSheet").Type).
-                DisableDecraft().
-                Register();
-
         }
 
         internal static void FargoWiltasRecipe()
         {
             if (!ModLoader.TryGetMod("Fargowiltas", out Mod fargoWiltas))
                 return;
+
             Recipe.Create(ItemID.EnchantedSword).
                 AddIngredient<CosmicElementalBanner>().
                 AddTile(TileID.Solidifier).
                 Register();
+
+            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSoul))
+                return;
+
+            Recipe.Create(ModContent.ItemType<ShadowspecBar>(), 50).
+                AddIngredient<CalamitousEssence>().
+                AddTile(fargoWiltas.Find<ModTile>("CrucibleCosmosSheet").Type).
+                DisableDecraft().
+                Register();
         }
 
-        private static void CalamityLegacyRecipe()
+        public static void CalamityLegacyRecipe()
         {
             #region 饰品
             //粘性绷带

@@ -129,8 +129,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 if (attacktimer == 3)
                     SoundEngine.PlaySound(RoarSound, NPC.Center);
 
-                float closeVelocity = 8f;
-                float closeVelocityAcc = 0.4f;
+                float closeVelocity = 18f;
+                float closeVelocityAcc = 1.4f;
 
                 // 犽绒应该在的地方
                 Vector2 destination = new Vector2(target.Center.X + NPC.spriteDirection * hoverDistanceX, target.Center.Y - hoverDistanceY);
@@ -151,7 +151,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 if (hasCharge == false)
                 {
-                    float chargeVelocity = currentPhase > 4 ? 48f : 28f;
+                    float chargeVelocity = currentPhase > 4 ? 35f : 28f;
                     float fastChargeVelocityMultiplier = 1.5f;
 
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -169,7 +169,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         ChargeDust(7);
                     if (attacktimer > chargeCount + hoverTimer)
                     {
-                        NPC.velocity *= currentPhase > 4 ? 0.94f : 0.96f;
+                        NPC.velocity *= currentPhase > 4 ? 0.95f : 0.96f;
 
                         crrotAcc = 0.2f;
 
@@ -403,8 +403,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_TelephoneCharge(Player target, ref float attacktimer, ref float frameType)
         {
             float currentPhase = NPC.ai[2];
-            float closeVelocity = 8f;
-            float closeVelocityAcc = 0.4f;
+            float closeVelocity = 18f;
+            float closeVelocityAcc = 1.4f;
             int TotalHover = 30;
             frameType = (float)YharonFrameType.PlayOnce;
             float distance = 250 * Math.Sign((NPC.Center - target.Center).X);
@@ -412,7 +412,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (attacktimer <= 1)
             {
                 SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
-                Vector2 center = target.Center + new Vector2(-distance, Main.rand.NextBool() ? 500 : -500);
+                Vector2 center = target.Center + new Vector2(-distance, Main.rand.NextBool() ? 900 : -900);
                 NPC.Center = center;
                 NPC.Opacity = 0f;
             }
@@ -426,13 +426,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 Vector2 distanceFromDestination = destination - NPC.Center;
                 // 移动
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
-
-                NPC.velocity *= 0.96f;
             }
             if (hasCharge == false && attacktimer > TotalHover)
             {
                 canLookTarget = false;
-                float chargeVelocity = currentPhase > 5 ? 48f : 28f;
+                float chargeVelocity = currentPhase > 5 ? 35f : 28f;
                 float fastChargeVelocityMultiplier = 1.5f;
 
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -445,7 +443,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
             }
             if (attacktimer > TotalHover + 15)
-                NPC.velocity *= currentPhase > 5 ? 0.94f : 0.96f;
+                NPC.velocity *= currentPhase > 5 ? 0.95f : 0.96f;
             if (attacktimer > 80)
                 SelectNextAttack();
         }

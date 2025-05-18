@@ -9,6 +9,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
+using System.Collections.Generic;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
@@ -33,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             player.armorEffectDrawShadow = true;
         }
-
+        public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityKeybinds.GodSlayerDashHotKey);
         public override void UpdateArmorSet(Player player)
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
@@ -47,14 +48,12 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             float getMaxStealth = modPlayer.rogueStealthMax;
             modPlayer.rogueStealthMax += getMaxStealth / 7;
             modPlayer.wearingRogueArmor = true;
-            const short onlyDash = 2;
-            const short onlyReborn = 1;
 
             modPlayer.WearingPostMLSummonerSet = true;
-            int mode = CIConfig.Instance.GodSlayerSetBonusesChange;
-            modPlayer1.GodSlayerReborn = mode != onlyDash;
-            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(mode);
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID && mode > onlyReborn)
+
+            modPlayer1.GodSlayerReborn = true;
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 player.dash = 0;

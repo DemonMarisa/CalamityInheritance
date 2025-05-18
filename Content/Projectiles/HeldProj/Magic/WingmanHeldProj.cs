@@ -218,35 +218,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             // 纹理
             Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
-            Texture2D headTexture = Main.Assets.Request<Texture2D>("Images/Projectile_927").Value;
             Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
 
-            DrawGlowEffects(headTexture, Auxiliarycolor, Scale, Laser);
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);
 
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, Laser);
             DrawTailEffect(tailTexture, baseColor, beamRotation, laserLength, Scale);
-        }
-        #endregion
-        #region 绘制头部星星
-        public void DrawGlowEffects(Texture2D headTexture, Color color, float Scale, Projectile proj)
-        {
-            const int glowCount = 5;
-            var projAI = proj.CalamityInheritance().ProjNewAI;
-
-            for (int i = 0; i < glowCount; i++)
-            {
-                Rectangle rect = new Rectangle(0, 0, headTexture.Width / 2, headTexture.Height);
-                Vector2 origin = new Vector2(headTexture.Width / 2, headTexture.Height / 2);
-                Vector2 scale = new Vector2(
-                    proj.localAI[0] / 20f / (proj.ai[2] + 1),
-                    proj.localAI[0] / 20f / (proj.ai[2] + 1));
-
-                Main.EntitySpriteDraw(headTexture, Projectile.Center - Main.screenPosition,
-                    rect, color * 0.8f, projAI[i],// projAI[i]为绘制星星时的随机旋转
-                    origin, scale * Scale,
-                    SpriteEffects.None);
-            }
         }
         #endregion
         #region 绘制本体辉光

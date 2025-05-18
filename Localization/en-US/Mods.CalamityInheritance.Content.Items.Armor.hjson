@@ -53,6 +53,7 @@ AuricTeslaHeadMagic: {
 		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
+		Allows you to dash for an immense distance in 8 directions
 		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadMagicold]
 		All projectiles spawn healing orbs on enemy hits
 		Magic projectiles which cannot pierce will occasionally set off potent blasts of nature energy
@@ -95,6 +96,7 @@ AuricTeslaHeadMelee: {
 		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
+		Allows you to dash for an immense distance in 8 directions
 		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadMelee]
 		All projectiles spawn healing orbs on enemy hits
 		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
@@ -138,6 +140,7 @@ AuricTeslaHeadRanged: {
 		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
+		Allows you to dash for an immense distance in 8 directions
 		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadRanged]
 		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
 		Increased your rate of fire with all ranged weapons 
@@ -182,6 +185,7 @@ AuricTeslaHeadRogue: {
 		Grants extra immunity frames if you take over 80 damage in one hit
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
+		Allows you to dash for an immense distance in 8 directions
 		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadRogue]
 		Faster throwing rate for your rogue weapon while you are above 50% HP
 		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
@@ -222,6 +226,7 @@ AuricTeslaHeadSummon: {
 		Summon a god-eating mechworm fight for you, this can be toggled in config
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
+		Allows you to dash for an immense distance in 8 directions
 		[c/DFC578:Inherited from Silva Armor][i:CalamityInheritance/SilvaHeadSummonold]
 		Summons an ancient leaf prism to blast your enemies with life energy
 		Grants silva invulnerability for 10 seconds if you are reduced to 1 HP
@@ -239,10 +244,6 @@ GodSlayerChestplateold: {
 		Enemies take damage when they hit you
 		Attack have a 2% chance to do no damage to you 
 		'''
-	OnlyReborn: "[c/EE82EE:God Slayer Armor Bonus]: Only God Slayer Reborn"
-	OnlyDash: "[c/EE82EE:God Slayer Armor Bonus]: Only God Slayer Dash"
-	Both: "[c/EE82ee:God Slayer Armor Bonus]: Both Reborn and Dash"
-	text: ""
 }
 
 GodSlayerHeadMagicold: {
@@ -259,6 +260,8 @@ GodSlayerHeadMagicold: {
 		Halves all life regen if revive cooldown is triggered
 		Enemies will release god slayer flames and healing flames when under magic attacks
 		Taking damage will cause you release a magical god slayer explosion
+		Allows you to dash for an immense distance in 8 directions
+		Press [KEY] while holding down the movement keys in the direction you want to dash
 		'''
 }
 
@@ -277,6 +280,8 @@ GodSlayerHeadMeleeold: {
 		Taking over 80 damage in one hit, or striking your enemies will cause you release a swarm of high-damage god killer dart
 		Attack deals 80 damage or less will have its damage reduced to 1  
 		Enemies takes even more damage when they hit you
+		Allows you to dash for an immense distance in 8 directions
+		Press [KEY] while holding down the movement keys in the direction you want to dash
 		'''
 }
 
@@ -292,6 +297,8 @@ GodSlayerHeadRangedold: {
 		If the critical strike chance does not excess 100%, the critical strike has a 5% chance can deal 4x damage
 		20% increased ranged crticial strike chance if it excess 95%
 		You can fire a god killer shrapnel round on every 2.5 seconds while firing ranged weapons
+		Allows you to dash for an immense distance in 8 directions
+		Press [KEY] while holding down the movement keys in the direction you want to dash
 		'''
 }
 
@@ -310,6 +317,8 @@ GodSlayerHeadRogueold: {
 		This effect has 45 seconds cooldown
 		Boost all of your rogue stats by 10% at full HP.
 		Grants extra immunity frames if you take over 80 damage in one hit
+		Allows you to dash for an immense distance in 8 directions
+		Press [KEY] while holding down the movement keys in the direction you want to dash
 		'''
 }
 
@@ -326,6 +335,8 @@ GodSlayerHeadSummonold: {
 		This effect has 45 seconds cooldown
 		Hitting enemies will summon god slayer phantoms
 		Summon a god-eating mechworm fight for you
+		Allows you to dash for an immense distance in 8 directions
+		Press [KEY] while holding down the movement keys in the direction you want to dash
 		'''
 }
 

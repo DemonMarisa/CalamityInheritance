@@ -78,7 +78,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             invincible = true;
             stage2SPDraw = true;
             // 是的，这是丛林龙BGM的开头长度
-            int healtimer = 960;
+            int healtimer = 980;
             RebornTimer++;
 
             if (RebornTimer == 1)
@@ -159,7 +159,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // int fireballReleaseRate = morePowerfulMeteors ? 4 : 7;
                 int fireballReleaseRate = currentPhase > 5 ? 3 : 7;
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + NPC.velocity * 3f, NPC.velocity, ModContent.ProjectileType<YharonFireballLegacy>(), 515, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + NPC.velocity * 3f, NPC.velocity, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer >= splittingMeteorRiseTime + splittingMeteorBombTime)
                 SelectNextAttack();
@@ -343,7 +343,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             float currentPhase = NPC.ai[2];
             // 走向目标的时间
             int splittingMeteorRiseTime = 90;
-            int hoverX = currentPhase > 5 ? 1500 : 1200;
+            int hoverX = currentPhase > 5 ? 2500 : 1800;
             int hoverY = -200;
             float splittingMeteorBombingSpeed = 38f;
             int TotalTimer = splittingMeteorRiseTime + 180;
@@ -384,6 +384,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 int fireballReleaseRate = 6;
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, ModContent.ProjectileType<FlareDust2>(), 515, 0f, Main.myPlayer, 0f, 0f);
+                
+                if (NPC.Distance(target.Center) > 6000f)
+                    attacktimer = TotalTimer;
             }
             if (attacktimer > TotalTimer)
                 SelectNextAttack();
@@ -486,10 +489,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 frameType = (float)YharonFrameType.Normal;
                 float horizontalOffset = (attackTimer - flameVortexSpawnDelay) / 7f * 205f + 260f;
                 Vector2 fireballSpawnPosition = NPC.Center + new Vector2(horizontalOffset, -90f);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(-0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 525, 0f, Main.myPlayer);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(-0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
 
                 fireballSpawnPosition = NPC.Center + new Vector2(-horizontalOffset, -90f);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 525, 0f, Main.myPlayer);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
             }
             if (attackTimer > flameVortexSpawnDelay + totalFlameWaves * 7)
                 SelectNextAttack();
