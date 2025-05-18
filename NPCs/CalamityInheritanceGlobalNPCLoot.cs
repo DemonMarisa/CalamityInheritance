@@ -40,6 +40,7 @@ using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
@@ -535,7 +536,6 @@ namespace CalamityInheritance.NPCs
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagnusEye>(), 10));
                     break;
                 #endregion
-
                 #region LoreItems
                 // Dreadnautilus drops the Blood Moon lore
                 case NPCID.BloodNautilus:
@@ -547,12 +547,10 @@ namespace CalamityInheritance.NPCs
                 case NPCID.KingSlime:
                     // More gel is not dropped on Expert because he has more minions, which increases the amount of gel provided.
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedSlimeKing, ModContent.ItemType<KnowledgeKingSlime>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AstralArcanum>(), 1));
                     break;
                 case NPCID.EyeofCthulhu:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedBoss1, ModContent.ItemType<KnowledgeEyeofCthulhu>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<DarkSunRingold>(), 1, 1, 1));
                     break;
                 case NPCID.EaterofWorldsHead:
                 case NPCID.EaterofWorldsBody:
@@ -562,7 +560,6 @@ namespace CalamityInheritance.NPCs
                     eowLoreCorruption.Add(ModContent.ItemType<KnowledgeCorruption>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
                     eowLoreCorruption.Add(ModContent.ItemType<KnowledgeEaterofWorlds>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
                     npcLoot.Add(eowLoreCorruption);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<CoreOfTheBloodGod>(), 1));
 
                     // Crimson World OR Drunk World: Crimson Lore
                     LeadingConditionRule eowLoreCrimson = new(DropHelper.If((info) => info.npc.boss && (WorldGen.crimson || WorldGen.drunkWorldGen) && !NPC.downedBoss2, desc: DropHelper.FirstKillText));
@@ -586,7 +583,6 @@ namespace CalamityInheritance.NPCs
                 case NPCID.QueenBee:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedQueenBee, ModContent.ItemType<KnowledgeQueenBee>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ModContent.ItemType<AncientTarragonWings>(), 1));
                     break;
                 case NPCID.SkeletronHead:
                     // Lore
@@ -597,19 +593,12 @@ namespace CalamityInheritance.NPCs
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeUnderworld>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeWallofFlesh>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<MLGRune>(), desc: DropHelper.FirstKillText);
-                    var allClass = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<ElementalGauntletold>());
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Content.Items.Accessories.Ranged.ElementalQuiver>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientEtherealTalisman>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NucleogenesisLegacy>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NanotechOld>()));
-                    npcLoot.Add(allClass);
                     npcLoot.Add(ModContent.ItemType<MeowthrowerLegacy>(), 4);
                     break;
                 case NPCID.TheDestroyer:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedMechBoss1, ModContent.ItemType<KnowledgeDestroyer>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientMiracleMatter>()));
                     //三个机械boss都会掉，有意为之的
                     LegendaryDropHelper(ModContent.ItemType<DestroyerLegendary>(), ref npcLoot);
                     break;
@@ -618,26 +607,22 @@ namespace CalamityInheritance.NPCs
                     // Lore
                     npcLoot.AddConditionalPerPlayer((info) => !NPC.downedMechBoss2 && IsLastTwinStanding(info), ModContent.ItemType<KnowledgeTwins>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientMiracleMatter>()));
                     break;
                 case NPCID.SkeletronPrime:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedMechBoss3, ModContent.ItemType<KnowledgeSkeletronPrime>(), desc: DropHelper.FirstKillText);
                     npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientMiracleMatter>()));
                     npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<SpearofDestinyLegacy>()));
                     break;
                 case NPCID.Plantera:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedPlantBoss, ModContent.ItemType<KnowledgePlantera>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<VoidVortexLegacy>(), 1)); 
                     LegendaryDropHelper(ModContent.ItemType<PlanteraLegendary>(), ref npcLoot);
                     break;
                 case NPCID.Golem:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedGolemBoss, ModContent.ItemType<KnowledgeGolem>(), desc: DropHelper.FirstKillText);
                     LegendaryDropHelper(ModContent.ItemType<DefenseBlade>(), ref npcLoot);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AcceleratorT3>(), 1));
                     break;
                 case NPCID.DukeFishron:
                     // Lore
@@ -647,22 +632,68 @@ namespace CalamityInheritance.NPCs
                 case NPCID.CultistBoss:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedAncientCultist, ModContent.ItemType<KnowledgeLunaticCultist>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<NebulaBar>(), 1, 3000, 9999));
                     break;
                 case NPCID.MoonLordCore:
                     // Lore
                     npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
-                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientXerocPlateMail>(), 1);
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocMask>()));
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocCuisses>()));
-                    npcLoot.Add(mlArmorLoot);
                     break;
 
                #endregion
 
             }
         }
-
+        public void GFBDrop(NPC npc, NPCLoot npcLoot)
+        {
+            // GFB掉落
+            var GFBOnly = npcLoot.DefineConditionalDropSet(DropHelper.GFB);
+            switch (npc.type)
+            {
+                case NPCID.KingSlime:
+                    GFBOnly.Add(ModContent.ItemType<AstralArcanum>(), hideLootReport: true);
+                    break;
+                case NPCID.EyeofCthulhu:
+                    GFBOnly.Add(ModContent.ItemType<DarkSunRingold>(), hideLootReport: true);
+                    break;
+                case NPCID.EaterofWorldsTail:
+                    GFBOnly.Add(ModContent.ItemType<CoreOfTheBloodGod>(), hideLootReport: true);
+                    break;
+                case NPCID.QueenBee:
+                    GFBOnly.Add(ModContent.ItemType<AncientTarragonWings>(), hideLootReport: true);
+                    break;
+                case NPCID.WallofFlesh:
+                    var allClass = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<ElementalGauntletold>());
+                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Content.Items.Accessories.Ranged.ElementalQuiver>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientEtherealTalisman>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NucleogenesisLegacy>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NanotechOld>()));
+                    GFBOnly.Add(allClass, hideLootReport: true);
+                    break;
+                case NPCID.TheDestroyer:
+                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    break;
+                case NPCID.Spazmatism:
+                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    break;
+                case NPCID.SkeletronPrime:
+                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    break;
+                case NPCID.Plantera:
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<VoidVortexLegacy>(), 1), hideLootReport: true);
+                    break;
+                case NPCID.Golem:
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AcceleratorT3>(), 1), hideLootReport: true);
+                    break;
+                case NPCID.CultistBoss:
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<NebulaBar>(), 1, 3000, 9999), hideLootReport: true);
+                    break;
+                case NPCID.MoonLordCore:
+                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientXerocPlateMail>(), 1);
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocMask>()));
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocCuisses>()));
+                    GFBOnly.Add(mlArmorLoot);
+                    break;
+            }
+        }
         public void LegendaryDropHelper(int legendary, ref NPCLoot npcLoot)
         {
             var dropRule = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, legendary);

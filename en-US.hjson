@@ -73,6 +73,8 @@ Mods: {
 			ChangeDirProj.DisplayName: Change Dir Proj
 			AeriesShockblastRound.DisplayName: Aeries Shockblast Round
 			YharonArenaProj.DisplayName: Yharon Arena Proj
+			YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
+			YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
 		}
 
 		Content/Projectiles/Summon: {

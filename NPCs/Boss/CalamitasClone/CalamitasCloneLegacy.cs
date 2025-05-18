@@ -423,7 +423,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             int distanceX = 600;
             int distanceY = 180;
             //过长了说实话
-            int totalFireTime = crphase > finalPhase ? 180 : 300;
+            int totalFireTime = crphase > finalPhase ? 120 : 210;
             int fireDelay = crphase > finalPhase ? 15 : 30;
             // 如果玩家手持真近战武器，那么降低加速度
 

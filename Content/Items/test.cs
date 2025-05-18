@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System;
 using CalamityInheritance.NPCs;
+using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.NPCs.Boss.Yharon;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -39,8 +41,14 @@ namespace CalamityInheritance.Content.Items
         public override bool? UseItem(Player player)
         {
             CalamityInheritancePlayer cIPlayer = player.CIMod();
+            /*
             if (player.altFunctionUse == 2)
                 Main.NewText($"Calamitas Clone P2: {CIGlobalNPC.LegacyCalamitasCloneP2}");
+            else
+                Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
+            */
+            if (player.altFunctionUse == 2)
+                Main.NewText($"LegacyYharon P2: {CIGlobalNPC.LegacyYharon}");
             else
                 Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
             return true;

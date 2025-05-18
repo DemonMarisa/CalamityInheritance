@@ -26,7 +26,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.tileCollide = false;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 500;
-            AIType = ProjectileID.EnchantedBeam;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.extraUpdates = 1;
@@ -34,6 +33,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
+            Projectile.rotation = Projectile.velocity.ToRotation();
+
+            int num36 = Main.rand.Next(3);
+            int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, num36 switch
+            {
+                0 => 15,
+                1 => 57,
+                _ => 58,
+            }, 0f, 0f, 100, default(Color), 1.25f);
+            Dust dust59 = Main.dust[num225];
+            Dust dust3 = dust59;
+            dust3.velocity *= 0.1f;
+
             Lighting.AddLight(Projectile.Center,
                              (255 - Projectile.alpha) * 0.3f / 255f,
                              (255 - Projectile.alpha) * 0.4f / 255f,

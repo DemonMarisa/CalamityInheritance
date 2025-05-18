@@ -23,7 +23,33 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.BGM
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
             public override bool AdditionalCheck()
             {
-                return CIGlobalNPC.LegacyYharon != -1;
+                return CIGlobalNPC.LegacyYharon != -1 && CIGlobalNPC.LegacyYharonStage2 == -1 && CIGlobalNPC.LegacyYharonStage2FadeIn == -1;
+            }
+        }
+        public class YharonPhase2FadeInMusicScene : BaseMusicSceneEffect
+        {
+            public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
+
+            public override int NPCType => ModContent.NPCType<YharonLegacy>();
+            public override int? MusicModMusic => MusicLoader.GetMusicSlot(Mod, "Music/YharonStage2FadeIn");
+            public override int VanillaMusic => MusicID.Boss2;
+            public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
+            public override bool AdditionalCheck()
+            {
+                return CIGlobalNPC.LegacyYharonStage2FadeIn != -1;
+            }
+        }
+        public class YharonPhase2MusicScene : BaseMusicSceneEffect
+        {
+            public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
+
+            public override int NPCType => ModContent.NPCType<YharonLegacy>();
+            public override int? MusicModMusic => MusicLoader.GetMusicSlot(Mod, "Music/YharonStage2");
+            public override int VanillaMusic => MusicID.Boss2;
+            public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
+            public override bool AdditionalCheck()
+            {
+                return CIGlobalNPC.LegacyYharonStage2 != -1;
             }
         }
     }

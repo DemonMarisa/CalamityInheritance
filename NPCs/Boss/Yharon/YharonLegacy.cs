@@ -38,18 +38,20 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             Hover,// 悬停
             Charge,// 有吼声提示的冲刺
             ChargeNoRoar,// 没有吼声提示的冲刺
-            FasterCharge,// 快速冲刺
-            SpawnTornado,// 召唤龙卷
+            SpawnFlareTornado,// 召唤火焰龙卷风
 
             FlareBombs,// 发射跟踪火球
             FlareBombsCircle,// 转圈发射火球
-            FlareBombsHell1,// 第一样式的弹幕炼狱
-            FlareBombsHell2,// 第二样式的弹幕炼狱
+            FlareBombsHell1,// 第一样式的弹幕炼狱 发射数个扇形的
+            FlareBombsHell2,// 第二样式的弹幕炼狱 为比较规整的
             TeleportCharge,// 传送冲刺
             // 二阶段独有
-            SpawnDetonatingFlame,// 召唤爆炸火焰
+            SpawnDetonatingFlame,// 召唤爆炸火焰(NPC)
             SpawnFlaresRing,// 召唤火焰环
             YharonFireballs,// 释放龙炎弹
+            SpinCharge,// 冲刺后旋转发射火球
+            LineFireBall,// 直线发射滞留火球
+            SpawnXYharonFireBall,// 炼狱同款召唤X龙炎弹
 
             OpacityToZero,// 透明度渐变
             PhaseTransition,// 转阶段
@@ -68,6 +70,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region 攻击循环
+        #region 一阶段
         public static YharonAttacksType[] AttackCycle =>
             [
             YharonAttacksType.FlareBombs,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
@@ -124,6 +127,118 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.FlareBombsHell1,
             ];
         #endregion
+        #region 二阶段
+        // 100 - 80
+        public static YharonAttacksType[] Stage2P1AttackCycle =>
+            [
+            YharonAttacksType.SpawnFlaresRing,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            YharonAttacksType.Charge,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.TeleportCharge,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.TeleportCharge,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.FlareBombs,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.SpawnFlaresRing,
+            ];
+        // 80 -60
+        public static YharonAttacksType[] Stage2P2AttackCycle =>
+            [
+            YharonAttacksType.SpawnFlaresRing,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            YharonAttacksType.Charge,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.TeleportCharge,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.Charge,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.Charge,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.LineFireBall,
+            ];
+        // 60 - 40
+
+        public static YharonAttacksType[] Stage2P3AttackCycle =>
+            [
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell2,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell1,
+            YharonAttacksType.FlareBombsCircle,
+            YharonAttacksType.FlareBombs,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.LineFireBall,
+            ];
+        // 40 - 20
+        public static YharonAttacksType[] Stage2P4AttackCycle =>
+            [
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell1,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell1,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.SpawnXYharonFireBall,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.FlareBombs,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell2,
+            YharonAttacksType.SpawnFlareTornado,
+            ];
+        // 20 - 0
+        public static YharonAttacksType[] Stage2P5AttackCycle =>
+            [
+            YharonAttacksType.YharonFireballs,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
+            YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.FlareBombsHell1,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.FlareBombs,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.SpawnXYharonFireBall,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.LineFireBall,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.SpinCharge,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.YharonFireballs,
+            YharonAttacksType.FlareBombsHell2,
+            YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.OpacityToZero,
+            YharonAttacksType.SpawnXYharonFireBall,
+            YharonAttacksType.LineFireBall,
+            ];
+        #endregion
+        #endregion
         #endregion
         #region 音效
         public static readonly SoundStyle RoarSound = new("CalamityMod/Sounds/Custom/Yharon/YharonRoar");
@@ -134,12 +249,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public static readonly SoundStyle DeathSound = new("CalamityMod/Sounds/NPCKilled/YharonDeath");
         #endregion
         #region 数据
-        public static float Phase1_DR = 0.24f;
-        public static float Phase2_DR = 0.26f;
         // 生命值
         public int LifeMax = CalamityWorld.death ? 4040000 : CalamityWorld.revenge ? 2525000 : 2275000;
         // 免伤
-        public float DR = CalamityWorld.death ? 0.75f : 0.7f;
+        public float DR = CalamityWorld.death ? 0.35f : 0.26f;
+        public int fireballDamage = 130;
         #endregion
         #region 杂项bool
         // 用于在AI的初始化
@@ -158,6 +272,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool Enraged = false;
         // 第二面
         public bool isStage2 = false;
+        // 转阶段特殊绘制
+        public bool stage2SPDraw = false;
+        // 开始二阶段的判定
+        public bool doRebornEffect = false;
+        // 控制绘制的旋转
+        public bool DrawRotate = false;
         #endregion
         #region SSD
         public override void SetStaticDefaults()
@@ -181,7 +301,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.npcSlots = 50f;
             NPC.width = 200;
             NPC.height = 200;
-            NPC.defense = 120;
+            NPC.defense = 150;
 
             NPC.value = Item.buyPrice(platinum: 100, gold: 0, silver: 0, copper: 0);
             NPC.lifeMax = LifeMax;
@@ -192,7 +312,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             AIType = -1;
 
             NPC.boss = true;
-            NPC.DR_NERD(Phase1_DR);
+            NPC.DR_NERD(DR);
 
             NPC.noGravity = true;
             NPC.noTileCollide = true;
@@ -258,24 +378,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             Player target = Main.player[NPC.target];
 
-            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
-                Enraged = true;
-            else
-                Enraged = false;
-
-            if (Enraged)
-            {
-                NPC.damage = 760 * 114;
-                NPC.dontTakeDamage = true;
-                NPC.Calamity().canBreakPlayerDefense = true;
-            }
-            else
-            {
-                NPC.damage = 760;
-                NPC.dontTakeDamage = false;
-                NPC.Calamity().canBreakPlayerDefense = false;
-            }
-
             if (initialized == false)
             {
                 NPC.damage = 760;
@@ -284,6 +386,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             // Set the whoAmI variable.
             CIGlobalNPC.LegacyYharon = NPC.whoAmI;
+            // 音乐控制
+            HandleMusicVariables();
 
             #region ai[]可读性
             ref float attackType = ref NPC.ai[0];
@@ -294,6 +398,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             //0f -> 无 1f -> 有
             ref float arenaSpawn = ref NPC.CIMod().BossNewAI[0];
             ref float rageActive = ref NPC.CIMod().BossNewAI[1];
+            ref float RebornTimer = ref NPC.CIMod().BossNewAI[2];
             #endregion
 
             //设置战斗场地，并判断rage条件
@@ -305,6 +410,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             // 第一大阶段
             Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount, postEclipse);
             // 第二大阶段
+            Stage2AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount, postEclipse);
             #endregion
 
             // 目标死亡后消失
@@ -321,6 +427,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             canLookTarget = true;
             invincible = false;
             playerP2PEffect = false;
+            DrawRotate = false;
 
             if (NPC.Opacity < 1f)
                 NPC.Opacity += 0.02f;
@@ -342,7 +449,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     DoBehavior_FireFlareBombs(target, ref attackTimer, ref frameType);
                     break;
                 case YharonAttacksType.PhaseTransition:
-                    DoBehavior_PhaseTransition(target, ref attackTimer, ref frameType);
+                    DoBehavior_PhaseTransition(target, ref attackTimer, ref frameType, currentPhase);
                     break;
                 case YharonAttacksType.FlareBombsHell1:
                     DoBehavior_FlareBombsHell(target, ref attackTimer, ref frameType, 0);
@@ -363,8 +470,20 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 case YharonAttacksType.YharonFireballs:
                     DoBehavior_ReleaseYharonFireBall(target, ref attackTimer, ref frameType);
                     break;
-                case YharonAttacksType.ReBornPhase:
-                    DoBehavior_ReleaseYharonFireBall(target, ref attackTimer, ref frameType);
+                case YharonAttacksType.SpinCharge:
+                    DoBehavior_SpinCharge(target, ref attackTimer, ref frameType);
+                    break;
+                case YharonAttacksType.SpawnFlaresRing:
+                    DoBehavior_RingFlareBombs(target, ref attackTimer, ref frameType);
+                    break;
+                case YharonAttacksType.LineFireBall:
+                    DoBehavior_SpawnLineFireBall(target, ref attackTimer, ref frameType);
+                    break;
+                case YharonAttacksType.SpawnFlareTornado:
+                    DoBehavior_SpawnFlareTor(target, ref attackTimer, ref frameType);
+                    break;
+                case YharonAttacksType.SpawnXYharonFireBall:
+                    DoBehavior_SpawnYharonFireBall(target, ref attackTimer, ref frameType);
                     break;
                 default:
                     NPC.velocity *= 0.95f;
@@ -372,9 +491,30 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     break;
             }
 
+            if (doRebornEffect)
+                DoBehavior_ReBorn(target, ref attackTimer, ref frameType, ref attackType,ref RebornTimer);
+
             // 独立的rot判定
             if (canLookTarget)
                 LookAtTarget(target, rotationAcc);
+
+            if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
+                Enraged = true;
+            else
+                Enraged = false;
+
+            if (Enraged)
+            {
+                NPC.damage = 760 * 114;
+                NPC.dontTakeDamage = true;
+                NPC.Calamity().canBreakPlayerDefense = true;
+            }
+            else
+            {
+                NPC.damage = 760;
+                NPC.dontTakeDamage = false;
+                NPC.Calamity().canBreakPlayerDefense = false;
+            }
 
             if (invincible == true)
             {
@@ -386,16 +526,30 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.dontTakeDamage = false;
                 NPC.chaseable = true;
             }
-
         }
+        #region 音乐
+        public void HandleMusicVariables()
+        {
+            CIGlobalNPC.LegacyYharonStage2FadeIn = -1;
+            CIGlobalNPC.LegacyYharonStage2 = -1;
+            if (doRebornEffect)
+            {
+                CIGlobalNPC.LegacyYharonStage2FadeIn = NPC.whoAmI;
+                return;
+            }
+            if (isStage2)
+            {
+                CIGlobalNPC.LegacyYharonStage2 = NPC.whoAmI;
+                return;
+            }
+        }
+        #endregion
         #region 场地
         public static void SpawnArenaAndCheckRage(NPC Yharon, Player target, ref float SpawnArena, ref float RageYharon)
         {
             //生成场地，我们直接用的LocalAI
             if (SpawnArena == 0f)
             {
-                //取为真
-                SpawnArena = 1f;
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     // 场地大小应该是……多少？ 525？
@@ -404,13 +558,15 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
                     CIGlobalNPC.Arena.Y = (int)(target.Center.Y - height);
                     CIGlobalNPC.Arena.Width = width;
-                    CIGlobalNPC.Arena.Height = height * 2;
+                    CIGlobalNPC.Arena.Height = height * 3;
                     //生成边界龙卷风。
                     Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
                     Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
                 }
                 //手动发送数据包。
                 Yharon.netUpdate = true;
+                //取为真
+                SpawnArena = 1f;
             }
         }
         #endregion
@@ -442,7 +598,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 attackCycle = P3AttackCycle;
             if (currentPhase == 4)
                 attackCycle = P3AttackCycle;
-
+            if (currentPhase == 5)
+                attackCycle = Stage2P1AttackCycle;
+            if (currentPhase == 6)
+                attackCycle = Stage2P2AttackCycle;
+            if (currentPhase == 7)
+                attackCycle = Stage2P3AttackCycle;
+            if (currentPhase == 8)
+                attackCycle = Stage2P4AttackCycle;
+            if (currentPhase == 9)
+                attackCycle = Stage2P5AttackCycle;
             if (Skip == null)
             {
                 // 递增索引
@@ -488,97 +653,88 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         #region 绘制
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            SpriteEffects spriteEffects = SpriteEffects.FlipHorizontally;
-            float drawRotation = NPC.rotation;
-            // 1时为面向左侧，-1时为面向右侧
-            if (NPC.spriteDirection == 1)
-                drawRotation = NPC.rotation + MathHelper.Pi;
-            else
-                spriteEffects = SpriteEffects.None;
-
-            Texture2D texture = TextureAssets.Npc[NPC.type].Value;
-            Texture2D Glowtexture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/Yharon/YharonLegacyGlow").Value;
-
-            Vector2 halfSizeTexture = new(texture.Width / 2, texture.Height / Main.npcFrameCount[NPC.type] / 2);
-            Vector2 drawLocation = NPC.Center - screenPos;
-            drawLocation -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-            drawLocation += halfSizeTexture * NPC.scale + new Vector2(0f, NPC.gfxOffY);
-
-            Color color = drawColor;
-            Color invincibleColor = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB, 0);
-            color = CalamityGlobalNPC.buffColor(color, 0.9f, 0.7f, 0.3f, 1f);
-
-            // 残影数据
-            int afterimageAmt = 10;
-            int afterimageIncrement = 2;
-
-            // 颜色修改数据
-            float lerpInterpolateValue = 0f;
-            Color lerpEndColor = Color.White;
-
             float attackType = NPC.ai[0];
-            float attackTimer = NPC.ai[1];
 
-            if (invincible)
-                lerpEndColor = invincibleColor;
+            // 朝向左侧时的特判
+            SpriteEffects spriteEffects = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            float drawRotation = NPC.rotation + (NPC.spriteDirection == 1 ? MathHelper.Pi : 0);
 
-            else if (((YharonAttacksType)attackType) == YharonAttacksType.Charge || ((YharonAttacksType)attackType) == YharonAttacksType.ChargeNoRoar)
+            if(DrawRotate)
             {
-                lerpEndColor = Color.Red;
-                lerpInterpolateValue = 0.5f;
+                spriteEffects = NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                drawRotation = NPC.rotation;
             }
-            else
-                color = drawColor;
 
+            // 材质
+            Texture2D texture = TextureAssets.Npc[NPC.type].Value;
+            Texture2D glowTexture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/Yharon/YharonLegacyGlow").Value;
+            // 绘制中心
+            Vector2 halfSize = new(texture.Width / 2, texture.Height / Main.npcFrameCount[NPC.type] / 2);
+
+            Vector2 baseDrawPos = NPC.Center - screenPos - new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f + halfSize * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+            // 颜色逻辑重构
+            Color baseColor = drawColor;
+            Color effectColor = invincible ? new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB, 0) :
+                attackType is (float)YharonAttacksType.Charge or (float)YharonAttacksType.ChargeNoRoar ? Color.White : Color.Red;
+
+            baseColor = CalamityGlobalNPC.buffColor(baseColor, 0.9f, 0.7f, 0.3f, 1f);
+            float lerpStrength = invincible ? 1f : (attackType is (float)YharonAttacksType.Charge or (float)YharonAttacksType.ChargeNoRoar ? 0.5f : 0f);
+
+            // 残影绘制
             if (CalamityConfig.Instance.Afterimages)
             {
-                for (int i = 1; i < afterimageAmt; i += afterimageIncrement)
-                {
-                    Color afterimageColor = color;
-                    afterimageColor = Color.Lerp(afterimageColor, lerpEndColor, lerpInterpolateValue);
-                    afterimageColor = NPC.GetAlpha(afterimageColor);
-                    afterimageColor *= (afterimageAmt - i) / 15f;
-                    Vector2 afterimagePos = NPC.oldPos[i] + new Vector2(NPC.width, NPC.height) / 2f - screenPos;
-                    afterimagePos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-                    afterimagePos += halfSizeTexture * NPC.scale + new Vector2(0f, NPC.gfxOffY);
-                    spriteBatch.Draw(texture, afterimagePos, NPC.frame, afterimageColor, drawRotation, halfSizeTexture, NPC.scale, spriteEffects, 0f);
-                }
+                DrawAfterimages(spriteBatch, texture, baseDrawPos, halfSize, drawRotation, spriteEffects,
+                    baseColor, effectColor, lerpStrength, drawColor);
             }
 
-            int additionalAfterimageAmt = 0;
-            float additionalAfterimageOpacity = 0f;
-            float afterimageScale = 0f;
-            int afterimageColorDivisor = 60;
-
-            if (playerP2PEffect)
+            // 主体绘制
+            spriteBatch.Draw(texture, baseDrawPos, NPC.frame, NPC.GetAlpha(baseColor), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
+            // 发光绘制
+            spriteBatch.Draw(glowTexture, baseDrawPos, NPC.frame, NPC.GetAlpha(Color.White), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
+            if(stage2SPDraw)
             {
-                additionalAfterimageAmt = 6;
-                additionalAfterimageOpacity = 1f - (float)Math.Cos(attackTimer / afterimageColorDivisor * MathHelper.TwoPi);
-                additionalAfterimageOpacity /= 3f;
-                afterimageScale = 60f;
+                // 主体绘制
+                spriteBatch.Draw(texture, baseDrawPos, NPC.frame, NPC.GetAlpha(effectColor), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
+                // 发光绘制
+                spriteBatch.Draw(glowTexture, baseDrawPos, NPC.frame, NPC.GetAlpha(effectColor), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
             }
-
-            if (CalamityConfig.Instance.Afterimages)
-            {
-                for (int k = 0; k < additionalAfterimageAmt; k++)
-                {
-                    Color additionalAfterimageColor = drawColor;
-                    additionalAfterimageColor = Color.Lerp(additionalAfterimageColor, lerpEndColor, lerpInterpolateValue);
-                    additionalAfterimageColor = NPC.GetAlpha(additionalAfterimageColor);
-                    additionalAfterimageColor *= 1f - additionalAfterimageOpacity;
-                    Vector2 additionalAfterimagePos = NPC.Center + (k / (float)additionalAfterimageAmt * MathHelper.TwoPi + NPC.rotation).ToRotationVector2() * afterimageScale * additionalAfterimageOpacity - screenPos;
-                    additionalAfterimagePos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-                    additionalAfterimagePos += halfSizeTexture * NPC.scale + new Vector2(0f, NPC.gfxOffY);
-                    spriteBatch.Draw(texture, additionalAfterimagePos, NPC.frame, additionalAfterimageColor, drawRotation, halfSizeTexture, NPC.scale, spriteEffects, 0f);
-                }
-            }
-
-            // 常规贴图绘制
-            spriteBatch.Draw(texture, drawLocation, NPC.frame, NPC.GetAlpha(drawColor), drawRotation, halfSizeTexture, NPC.scale, spriteEffects, 0f);
-            // 绘制发光贴图
-            spriteBatch.Draw(Glowtexture, drawLocation, NPC.frame, NPC.GetAlpha(drawColor), drawRotation, halfSizeTexture, NPC.scale, spriteEffects, 0f);
 
             return false;
+        }
+        public void DrawAfterimages(SpriteBatch spriteBatch, Texture2D texture, Vector2 basePos, Vector2 halfSize, 
+            float rotation, SpriteEffects effects, Color baseColor, Color effectColor, float lerpStrength, Color drawColor)
+        {
+            // 常规残影
+            for (int i = 1; i < 10; i += 2)
+            {
+                Color color = Color.Lerp(baseColor, effectColor, lerpStrength) * ((10 - i) / 15f);
+                Vector2 afterimagePos = NPC.oldPos[i] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
+                afterimagePos -= new Vector2(texture.Width, texture.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+                afterimagePos += halfSize * NPC.scale + new Vector2(0f, NPC.gfxOffY);
+                spriteBatch.Draw(texture, afterimagePos, NPC.frame, color, rotation, halfSize, NPC.scale, effects, 0f);
+            }
+
+            // 特殊残影
+            if (playerP2PEffect)
+            {
+                float additionalAfterimageOpacity = 0f;
+                int afterimageColorDivisor = 60;
+                additionalAfterimageOpacity = 1f - (float)Math.Cos(NPC.ai[1] / afterimageColorDivisor * MathHelper.TwoPi);
+                additionalAfterimageOpacity /= 3f;
+
+                for (int k = 0; k < 6; k++)
+                {
+                    Color additionalAfterimageColor = drawColor;
+                    additionalAfterimageColor = Color.Lerp(additionalAfterimageColor, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB, 0), 0.5f);
+                    additionalAfterimageColor = NPC.GetAlpha(additionalAfterimageColor);
+                    additionalAfterimageColor *= 1f - additionalAfterimageOpacity;
+                    Vector2 additionalAfterimagePos = NPC.Center + (k / (float)6 * MathHelper.TwoPi + NPC.rotation).ToRotationVector2() * 60f * additionalAfterimageOpacity - Main.screenPosition;
+
+                    spriteBatch.Draw(texture, additionalAfterimagePos, NPC.frame,
+                        additionalAfterimageColor,
+                        rotation, halfSize, NPC.scale, effects, 0f);
+                }
+            }
         }
         #endregion
         #region 帧图控制
@@ -689,7 +845,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CalamityNetcode.SyncWorld();
         }
-        /*
+        
         public override void OnKill()
         {
             Player player = Main.LocalPlayer;
@@ -706,7 +862,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIDownedBossSystem.DownedLegacyScal = true;
             CalamityNetcode.SyncWorld();
         }
-        */
+        
         #endregion
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

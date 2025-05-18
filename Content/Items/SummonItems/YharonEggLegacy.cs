@@ -53,27 +53,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
 
         public override bool? UseItem(Player player)
         {
-            CalamityPlayer calPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer = player.CIMod();
-            switch (Main.netMode)
-            {
-                // SP: Spawn Boss Immediately
-                case NetmodeID.SinglePlayer:
-                    if (!CIDownedBossSystem.DownedBuffedSolarEclipse && (modPlayer.DarkSunRings == false || calPlayer.darkSunRing == false))
-                        CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<YharonLegacy>(), Yharon.FireSound);
-                    else
-                        CIFunction.SpawnBossUsingItem(player, ModContent.NPCType<Yharon>(), Yharon.FireSound);
-                    break;
-
-                // MP: Ask server to spawn one
-                case NetmodeID.MultiplayerClient:
-                    if (!CIDownedBossSystem.DownedBuffedSolarEclipse && (modPlayer.DarkSunRings == false || calPlayer.darkSunRing == false))
-                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, ModContent.NPCType<YharonLegacy>());
-                    else
-                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, -1, -1, null, player.whoAmI, ModContent.NPCType<Yharon>());
-                    break;
-            }
-
+            CIFunction.SpawnBossUsingItem<YharonLegacy>(player, SoundID.Roar);
             return true;
         }
 

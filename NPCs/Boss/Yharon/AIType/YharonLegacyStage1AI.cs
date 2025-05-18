@@ -12,6 +12,8 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static CalamityInheritance.NPCs.Boss.Yharon.YharonLegacy;
+using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
+using CalamityInheritance.NPCs.Boss.Yharon.Proj;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -60,7 +62,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (lifeRatio <= stage2LifeRatio && currentPhase == 3f)
             {
                 if (postEclipse == true)
-                    attackType = (int)YharonAttacksType.ReBornPhase;
+                    attackType = (int)YharonAttacksType.PhaseTransition;
                 else
                     attackType = (int)YharonAttacksType.FlyAway;
 
@@ -87,6 +89,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.spriteDirection = -NPC.direction;
             }
             NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(target.Center), rotationSpeed);
+
         }
         #endregion
         #region 取消生成
@@ -164,7 +167,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         ChargeDust(7);
                     if (attacktimer > chargeCount + hoverTimer)
                     {
-                        NPC.velocity *= 0.97f;
+                        NPC.velocity *= 0.98f;
 
                         crrotAcc = 0.2f;
 
@@ -268,7 +271,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region 转换阶段
-        public void DoBehavior_PhaseTransition(Player target, ref float attacktimer, ref float frameType)
+        public void DoBehavior_PhaseTransition(Player target, ref float attacktimer, ref float frameType, float phase)
         {
             invincible = true;
             int p1Timer = 120;
@@ -279,17 +282,26 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 frameType = (float)YharonFrameType.Normal;
                 NPC.velocity *= 0.97f;
             }
-            else
+            else if (attacktimer < totalTimer)
             {
                 if (attacktimer == 121)
+                {
                     SoundEngine.PlaySound(RoarSound, NPC.Center);
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, NPC.direction * 4, 8f, ModContent.ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)NPC.direction * 4, 8f, ModContent.ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    }
+                }
                 playerP2PEffect = true;
                 frameType = (float)YharonFrameType.Roar;
                 NPC.velocity *= 0.97f;
             }
 
             if (attacktimer > totalTimer)
-                SelectNextAttack();
+            {
+                SelectNextAttack(0);
+            }
         }
         #endregion
         #region 发射弹幕炼狱
@@ -297,14 +309,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_FlareBombsHell(Player target, ref float attacktimer, ref float frameType, int AttackStyle)
         {
             frameType = (float)YharonFrameType.PlayOnce;
-
-            int spinPhaseTimer = 150;
-            int flareDustSpawnDivisor = spinPhaseTimer / 15;
-            float spinPhaseRotation = MathHelper.TwoPi * 3 / spinPhaseTimer;
+            float currentPhase = NPC.ai[2];
+            int spinPhaseTimer = 180;
+            int flareDustSpawnDivisor = spinPhaseTimer / currentPhase > 5 ? 25 : 15;
+            int fireNPC = 40;
+            int circleCounter = currentPhase > 5 ? 6 : 3;
+            float spinPhaseRotation = MathHelper.TwoPi * circleCounter / spinPhaseTimer;
 
             if (attacktimer == 1)
             {
-                NPC.velocity = new(6f, 6f);
+                NPC.velocity = new(12f, 12f);
                 logVector2 = target.Center + new Vector2(Main.rand.NextFloat(-500f, 500f), -300f);
                 NPC.Center = logVector2;
                 NPC.Opacity = 0f;
@@ -312,9 +326,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                if (attacktimer < 150)
+                if (attacktimer < spinPhaseTimer)
                 {
                     canLookTarget = false;
+                    if (attacktimer % fireNPC == 0f)
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
                     if (attacktimer % flareDustSpawnDivisor == 0f)
                     {
                         if (AttackStyle == 0)
@@ -330,11 +346,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     NPC.rotation = NPC.velocity.ToRotation();
                 }
 
-                if (attacktimer > 150 && attacktimer < 210)
+                if (attacktimer > spinPhaseTimer && attacktimer < spinPhaseTimer + 60)
                     NPC.velocity *= 0.97f;
             }
 
-            if (attacktimer > 210)
+            if (attacktimer > spinPhaseTimer + 60)
                 SelectNextAttack();
         }
         #endregion
@@ -384,6 +400,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         #region 传送冲刺
         public void DoBehavior_TelephoneCharge(Player target, ref float attacktimer, ref float frameType)
         {
+            float closeVelocity = 8f;
+            float closeVelocityAcc = 0.4f;
             int TotalHover = 30;
             frameType = (float)YharonFrameType.PlayOnce;
             float distance = 250 * Math.Sign((NPC.Center - target.Center).X);
@@ -397,6 +415,15 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
             else if (attacktimer <= TotalHover)
             {
+                int hoverDistanceX = 500;
+                int hoverDistanceY = 200;
+                // 犽绒应该在的地方
+                Vector2 destination = new Vector2(target.Center.X + NPC.spriteDirection * hoverDistanceX, target.Center.Y - hoverDistanceY);
+                // 与目标位置的差距
+                Vector2 distanceFromDestination = destination - NPC.Center;
+                // 移动
+                CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
+
                 NPC.velocity *= 0.97f;
             }
             if (hasCharge == false && attacktimer > TotalHover)

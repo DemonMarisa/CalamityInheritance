@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
+using CalamityInheritance.NPCs.Boss.Yharon;
 
 namespace CalamityInheritance.NPCs
 {
@@ -24,8 +25,11 @@ namespace CalamityInheritance.NPCs
         public static int LegacyCatalysmClone = -1;
         public static int LegacyCatastropheClone = -1;
         #endregion
-        // 犽绒
+        #region 丛林龙
         public static int LegacyYharon = -1;
+        public static int LegacyYharonStage2FadeIn = -1;
+        public static int LegacyYharonStage2 = -1;
+        #endregion
         #region 終灾
         public static int LegacySCalWorm = -1;
         public static int LegacySCal = -1;
@@ -73,7 +77,10 @@ namespace CalamityInheritance.NPCs
             ResetSavedIndex(ref LegacySCalLament, ModContent.NPCType<SupremeCalamitasLegacy>());
             ResetSavedIndex(ref LegacySCalEpiphany, ModContent.NPCType<SupremeCalamitasLegacy>());
             ResetSavedIndex(ref LegacySCalAcceptance, ModContent.NPCType<SupremeCalamitasLegacy>());
-            ResetSavedIndex(ref LegacyYharon, ModContent.NPCType<SupremeCalamitasLegacy>());
+
+            ResetSavedIndex(ref LegacyYharon, ModContent.NPCType<YharonLegacy>());
+            ResetSavedIndex(ref LegacyYharonStage2FadeIn, ModContent.NPCType<YharonLegacy>());
+            ResetSavedIndex(ref LegacyYharonStage2, ModContent.NPCType<YharonLegacy>());
             /*
             // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.
             CurrentlyEnraged = false;
