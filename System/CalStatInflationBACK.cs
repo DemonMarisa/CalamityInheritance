@@ -674,10 +674,10 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<ExoGladius>())
                 item.damage = 2000;
             // 星流之刃
-            if (item.type == ModContent.ItemType<Exobladeold>())
+            if (CheckModItem<Exobladeold>(item.type))
                 item.damage = 5175;
             // 链刃
-            if (item.type == ModContent.ItemType<ExoFlail>())
+            if (CheckModItem<ExoFlail>(item.type))
                 item.damage = 3125;
             // 磁极异变
             if (item.type == ModContent.ItemType<MagnomalyCannon>())
@@ -807,6 +807,7 @@ namespace CalamityInheritance.System
             }
         }
         #endregion
+        public static bool CheckModItem<T>(int type) where T : ModItem => type == ModContent.ItemType<T>();
     }
     public class CalamityStatInflationBACKNPC : GlobalNPC
     {

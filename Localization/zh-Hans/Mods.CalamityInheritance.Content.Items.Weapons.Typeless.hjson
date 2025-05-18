@@ -70,3 +70,8 @@ MarkedMagnum: {
 		受到所有种类的伤害加成
 		'''
 }
+
+ShizukuEdge: {
+	// DisplayName: Shizuku Edge
+	// Tooltip: ""
+}

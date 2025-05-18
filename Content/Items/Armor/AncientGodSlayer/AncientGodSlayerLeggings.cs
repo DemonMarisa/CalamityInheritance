@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         }
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 300;
+            player.statLifeMax2 += 200;
             player.moveSpeed += 0.50f;
         }
 

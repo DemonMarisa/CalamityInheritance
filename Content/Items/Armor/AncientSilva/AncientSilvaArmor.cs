@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
       
         public override void UpdateEquip(Player player)
         {
-            player.statLifeMax2 += 400;
-            player.statManaMax2 += 400;
+            player.statLifeMax2 += 300;
+            player.statManaMax2 += 300;
         }
 
         public override void AddRecipes()

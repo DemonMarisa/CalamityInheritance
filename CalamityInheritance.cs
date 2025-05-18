@@ -16,6 +16,8 @@ using CalamityInheritance.NPCs.Boss.Yharon.Sky;
 using CalamityInheritance.Common.CIHook;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
 using Terraria.ModLoader.Config;
+using System.Collections.Generic;
+using System;
 
 namespace CalamityInheritance
 {
@@ -27,15 +29,22 @@ namespace CalamityInheritance
         public static CalamityInheritance Instance;
 
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+        internal Mod FuckYouFargo = null;
 
         internal Mod infernumMode = null;
         // 获取boss列表
         internal Mod bossChecklist = null;
+        //Goozma
+        internal Mod Goozma = null;
+        //众神
+        internal Mod WrathoftheGods = null;
         // 获取灾厄音乐
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
+        private string[] DumbMods;
+        internal static Dictionary<string, bool> FuckTheseMod;
 
         public override void Load()
         {
@@ -50,10 +59,29 @@ namespace CalamityInheritance
             // 获取莉莉音乐包
             liliesmusicMod = null;
             ModLoader.TryGetMod("EnderLiliesMusicPack", out liliesmusicMod);
-
+            //goozma
+            Goozma = null;
+            ModLoader.TryGetMod("CalamityHunt", out Goozma);
+            //神怒
+            WrathoftheGods = null;
+            ModLoader.TryGetMod("NoxusBoss", out WrathoftheGods);
+            //fargo
+            FuckYouFargo = null;
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
-
+            //我没有测试过这个数组能不能用，而且出于某些原因我的游戏又被飞行钩子给干掉了，所以你自己看着办吧（
+            DumbMods =
+            [
+                "CalamityModMusic",
+                "BossChecklist",
+                "EnderLiliesMusicPack",
+                "CalamityHunt",
+                "NoxusBoss",
+                "Fargowiltas"
+            ];
+            FuckTheseMod = new Dictionary<string, bool>();
+            foreach (string FuckMod in DumbMods)
+                FuckTheseMod.Add(FuckMod, false);
             if (!Main.dedServ)
             {
                 LoadClient();
@@ -87,7 +115,7 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
-            FlightBarDrawHook.Load();
+            // FlightBarDrawHook.Load();
             #endregion
         }
         public void LoadClient()
@@ -126,6 +154,10 @@ namespace CalamityInheritance
             liliesmusicMod = null;
             // 卸载boss列表
             bossChecklist = null;
+            //goozma
+            Goozma = null;
+            //wotg
+            WrathoftheGods = null;
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
@@ -138,7 +170,8 @@ namespace CalamityInheritance
             CIWeaponsResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
-
+            DumbMods = null;
+            FuckTheseMod = null;
             DifficultyModeUI.Unload();
             base.Unload();
         }
@@ -147,7 +180,24 @@ namespace CalamityInheritance
         public int? GetMusicFromMusicMod(string songFilename) => MusicAvailable ? MusicLoader.GetMusicSlot(musicMod, "Sounds/Music/" + songFilename) : null;
 
         #region Mod Support
-        public override void PostSetupContent() => CIWeakReferenceSupport.Setup();
+        public override void PostSetupContent()
+        {
+            CIWeakReferenceSupport.Setup();
+            //尝试给每个mod加载
+            try
+            {
+                foreach (string ThisMod in DumbMods)
+                {
+                    FuckTheseMod[ThisMod] = ModLoader.TryGetMod(ThisMod, out Mod getMod);
+                }
+            }
+            //报错输出
+            catch (Exception e)
+            {
+                Logger.Error("CalamityInheritance PostSetupContent Error: " + e.StackTrace + e.Message);
+            }
+
+        }
         #endregion
 
         #region Force ModConfig save (Reflection)

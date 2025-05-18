@@ -70,7 +70,30 @@ namespace CalamityInheritance.Utilities
         /// <param name="p"></param>
         /// <returns></returns>
         public static bool CheckExoLore(this Player p) => p.CIMod().LoreExo || p.CIMod().PanelsLoreExo;
+        /// <summary>
+        /// 一个更加简略且更好的查阅伤害类型的方法。可以同时帮助判定射弹/物品等
+        /// </summary>
+        /// <typeparam name="T">需要的伤害类型</typeparam>
+        /// <param name="anyBox">随机一个具备伤害类型属性的对象</param>
+        /// <param name="needExtension">如果需要扩展更多的属性（比如NPC.hitinfo）则需要先把这个设置为true</param>
+        /// <returns>伤害类型相同就返回真</returns>
+        public static bool WantedDamageClass<T>(this object anyBox, bool needExtension = false) where T : DamageClass
+        {
+            
+            //箱内如果为物品
+            if (anyBox is Item itemBox)
+                return itemBox.CountsAsClass<T>();
+            //箱内如果为射弹
+            if (anyBox is Projectile projBox)
+                return projBox.CountsAsClass<T>();
+            //一般情况下直接返回否
+            if (!needExtension)
+                return false;
+            if (anyBox is NPC.HitInfo hitBox)
+                return hitBox.DamageType == ModContent.GetInstance<T>();
+            return false;
 
+        }
         /// <summary>
         /// 杀了玩家
         /// </summary>

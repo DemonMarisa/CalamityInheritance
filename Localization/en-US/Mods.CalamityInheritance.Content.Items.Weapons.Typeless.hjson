@@ -62,3 +62,8 @@ MarkedMagnum: {
 		This weapon scales with all your damage stats at once
 		'''
 }
+
+ShizukuEdge: {
+	DisplayName: Shizuku Edge
+	Tooltip: ""
+}

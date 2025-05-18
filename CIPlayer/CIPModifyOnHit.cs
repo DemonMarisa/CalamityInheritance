@@ -49,7 +49,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            ModifyCrtis(target, ref modifiers);
+            ModifyCrtis(proj ,target, ref modifiers);
 
             if (GodSlayerRangedSet && proj.DamageType.CountsAsClass<RangedDamageClass>())
             {
@@ -68,13 +68,14 @@ namespace CalamityInheritance.CIPlayer
         {
             return (Player.GetTotalCritChance<Type>() + 4f - 100f) / 100f;
         }
-        public void ModifyCrtis(NPC target, ref NPC.HitModifiers modifiers)
+        public void ModifyCrtis(object anyDamageSrc, NPC target, ref NPC.HitModifiers modifiers)
         {
-            //将所有的爆伤乘区全部按照玩家手持武器计算
-            bool isRouge = Player.HeldItem.CountsAsClass<RogueDamageClass>();
+            //职业伤害类型的判定。
+            bool isRogue = anyDamageSrc.WantedDamageClass<RogueDamageClass>();
+            bool isMagic = anyDamageSrc.WantedDamageClass<MagicDamageClass>();
             //日食魔镜强制暴击。
             //这个请先于之前所有计算执行，不然他吃不完所有的爆伤加成
-            if (EMirror && isRouge && Player.CheckStealth())
+            if (EMirror && isRogue && Player.CheckStealth())
                 modifiers.SetCrit();
 
             #region 暴伤乘区
@@ -97,7 +98,7 @@ namespace CalamityInheritance.CIPlayer
                 totalCritsBuff += 0.3f;
             //除非特殊，不然不要尝试在基于暴击概率上给爆伤的计算里面试图不取溢出暴击概率计算
             //但凡多10%爆伤加成都是翻倍的输出
-            if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && Player.ActiveItem().CountsAsClass<MagicDamageClass>())
+            if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && isMagic)
             {
                 //这个totalCrtis是不会算初始的4%暴击的，这里补上
                 float giveBuff = Player.GetTotalCritChance<MagicDamageClass>() + 4f - 100f;
@@ -112,7 +113,7 @@ namespace CalamityInheritance.CIPlayer
                 }
 
             }
-            if (EMirror && isRouge)
+            if (EMirror && isRogue)
             {
                 float giveBuff = Player.GetTotalCritChance<RogueDamageClass>() + 4f - 100f;
                 if (giveBuff > 0f)
@@ -136,7 +137,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer usPlayer = Player.CIMod();
-            ModifyCrtis(target, ref modifiers);
+            ModifyCrtis(item, target, ref modifiers);
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {

@@ -1,18 +1,12 @@
 ﻿using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.NPCs;
 using Microsoft.Xna.Framework;
-using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.Healing;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
-using Terraria.DataStructures;
-using System;
 using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.CIPlayer

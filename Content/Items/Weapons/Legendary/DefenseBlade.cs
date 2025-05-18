@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.height = Item.width = 72;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
-            Item.damage = 135;
+            Item.damage = 75;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useAnimation = Item.useTime = 10;
             Item.scale *= 1.25f;

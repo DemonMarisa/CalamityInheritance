@@ -75,6 +75,7 @@ Mods: {
 			// YharonArenaProj.DisplayName: Yharon Arena Proj
 			// YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
 			// YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
+			// MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {
