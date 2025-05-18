@@ -37,11 +37,14 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int i = 0; i < 2; i++)
+            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
             {
-                Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
-                holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
-            }
+                for (int i = 0; i < 2; i++)
+                {
+                    Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
+                    holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+                }
+            }    
             return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
         }
     }

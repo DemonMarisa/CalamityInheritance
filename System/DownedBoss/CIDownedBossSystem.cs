@@ -19,6 +19,7 @@ namespace CalamityInheritance.System.DownedBoss
         internal static bool _downedBloodMoon = false;
         internal static bool _downedLegacySCal = false;
         internal static bool _downedLegacyYharonP1 = false;
+        internal static bool _downedLegacyYharonP2 = false;
         internal static bool _downedBuffedSolarEclipse = false;
         internal static bool _downedCalClone = false;
         public static bool DownedEOW
@@ -76,6 +77,17 @@ namespace CalamityInheritance.System.DownedBoss
                     NPC.SetEventFlagCleared(ref _downedLegacyYharonP1, -1);
             }
         }
+        public static bool DownedLegacyYharonP2
+        {
+            get => _downedLegacyYharonP2;
+            set
+            {
+                if (!value)
+                    _downedLegacyYharonP2 = false;
+                else
+                    NPC.SetEventFlagCleared(ref _downedLegacyYharonP2, -1);
+            }
+        }
         public static bool DownedBuffedSolarEclipse
         {
             get => _downedBuffedSolarEclipse;
@@ -105,6 +117,7 @@ namespace CalamityInheritance.System.DownedBoss
             DownedBloodMoon = false;
             DownedLegacyScal = false;
             DownedLegacyYharonP1 = false;
+            DownedLegacyYharonP2 = false;
             DownedBuffedSolarEclipse = false;
             DownedCalClone = false;
         }
@@ -127,6 +140,8 @@ namespace CalamityInheritance.System.DownedBoss
                 downed.Add("CILegacyScal");
             if (DownedLegacyYharonP1)
                 downed.Add("CILegacyYharonP1");
+            if (DownedLegacyYharonP2)
+                downed.Add("CILegacyYharonP2");
             if (DownedBuffedSolarEclipse)
                 downed.Add("CIDownedBuffedSolarEclipse");
             if (DownedCalClone)
@@ -143,6 +158,7 @@ namespace CalamityInheritance.System.DownedBoss
             DownedBloodMoon = downed.Contains("CIBloodMoon");
             DownedLegacyScal = downed.Contains("CILegacyScal");
             DownedLegacyYharonP1 = downed.Contains("CILegacyYharonP1");
+            DownedLegacyYharonP2 = downed.Contains("CILegacyYharonP2");
             DownedBuffedSolarEclipse = downed.Contains("CIDownedBuffedSolarEclipse");
             DownedCalClone = downed.Contains("CIDownedCalClone");
         }
@@ -160,7 +176,7 @@ namespace CalamityInheritance.System.DownedBoss
             net1[4] = DownedLegacyYharonP1;
             net1[5] = DownedBuffedSolarEclipse;
             net1[6] = DownedCalClone;
-            net1[7] = false;
+            net1[7] = DownedLegacyYharonP2;
             writer.Write(net1);
         }
         public override void NetReceive(BinaryReader reader)
@@ -174,7 +190,7 @@ namespace CalamityInheritance.System.DownedBoss
             DownedLegacyYharonP1 = net1[4];
             DownedBuffedSolarEclipse = net1[5];
             DownedCalClone = net1[6];
-            _ = net1[7];
+            DownedLegacyYharonP2 = net1[7];
         }
         #endregion
     }

@@ -111,10 +111,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public int ChargeCount = 0;
         public void DoBehavior_Charge(Player target, ref float attacktimer, ref float frametype, ref float crrotAcc, bool skipHover)
         {
+            float currentPhase = NPC.ai[2];
             canLookTarget = false;
             int totalCharge = 2;
             int chargeCount = 20;
-            int chargeCooldown = 60 + chargeCount;
+            int chargeCd = currentPhase > 4 ? 35 : 60;
+            int chargeCooldown = chargeCd + chargeCount;
             int hoverTimer = 90;
 
             int hoverDistanceX = 500;
@@ -149,7 +151,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 if (hasCharge == false)
                 {
-                    float chargeVelocity = 28f;
+                    float chargeVelocity = currentPhase > 4 ? 38 : 28f;
                     float fastChargeVelocityMultiplier = 1.5f;
 
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -167,7 +169,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         ChargeDust(7);
                     if (attacktimer > chargeCount + hoverTimer)
                     {
-                        NPC.velocity *= 0.98f;
+                        NPC.velocity *= currentPhase > 4 ? 0.92f : 0.96f;
 
                         crrotAcc = 0.2f;
 
@@ -311,14 +313,14 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             frameType = (float)YharonFrameType.PlayOnce;
             float currentPhase = NPC.ai[2];
             int spinPhaseTimer = 180;
-            int flareDustSpawnDivisor = spinPhaseTimer / currentPhase > 5 ? 25 : 15;
+            int flareDustSpawnDivisor = currentPhase > 5 ? 8 : 12;
             int fireNPC = 40;
             int circleCounter = currentPhase > 5 ? 6 : 3;
             float spinPhaseRotation = MathHelper.TwoPi * circleCounter / spinPhaseTimer;
 
             if (attacktimer == 1)
             {
-                NPC.velocity = new(12f, 12f);
+                NPC.velocity = currentPhase > 5 ? new(9f, 9f) : new(6f, 6f);
                 logVector2 = target.Center + new Vector2(Main.rand.NextFloat(-500f, 500f), -300f);
                 NPC.Center = logVector2;
                 NPC.Opacity = 0f;
@@ -400,6 +402,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         #region 传送冲刺
         public void DoBehavior_TelephoneCharge(Player target, ref float attacktimer, ref float frameType)
         {
+            float currentPhase = NPC.ai[2];
             float closeVelocity = 8f;
             float closeVelocityAcc = 0.4f;
             int TotalHover = 30;
@@ -424,12 +427,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // 移动
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
 
-                NPC.velocity *= 0.97f;
+                NPC.velocity *= 0.96f;
             }
             if (hasCharge == false && attacktimer > TotalHover)
             {
                 canLookTarget = false;
-                float chargeVelocity = 28f;
+                float chargeVelocity = currentPhase > 5 ? 40f : 28f;
                 float fastChargeVelocityMultiplier = 1.5f;
 
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -442,7 +445,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
             }
             if (attacktimer > TotalHover + 15)
-                NPC.velocity *= 0.98f;
+                NPC.velocity *= 0.96f;
             if (attacktimer > 80)
                 SelectNextAttack();
         }

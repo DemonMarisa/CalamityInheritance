@@ -8,8 +8,26 @@ using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Events;
+using CalamityMod.Items.Accessories.Wings;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Armor.Vanity;
+using CalamityMod.Items.LoreItems;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Pets;
+using CalamityMod.Items.Placeables.Furniture.DevPaintings;
+using CalamityMod.Items.Placeables.Furniture.Trophies;
+using CalamityMod.Items.Potions;
+using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.NPCs;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
+using CalamityMod.Tiles.Ores;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,9 +36,18 @@ using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityMod.Items.Placeables.Furniture.BossRelics;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -133,12 +160,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             [
             YharonAttacksType.SpawnFlaresRing,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
             YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.LineFireBall,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
+            YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.SpinCharge,
             YharonAttacksType.FlareBombs,
             YharonAttacksType.LineFireBall,
@@ -151,15 +182,21 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             [
             YharonAttacksType.SpawnFlaresRing,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
             YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.SpinCharge,
+            YharonAttacksType.Charge,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.TeleportCharge,
             YharonAttacksType.LineFireBall,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.SpinCharge,
             YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.LineFireBall,
             ];
@@ -171,16 +208,20 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.FlareBombsHell2,// 这是用来标记的，因为调用的时候会+1，取不到第一个，得取一遍回来才能取到
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.SpinCharge,
+            YharonAttacksType.Charge,
             YharonAttacksType.LineFireBall,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell1,
             YharonAttacksType.FlareBombsCircle,
             YharonAttacksType.FlareBombs,
+            YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.LineFireBall,
             YharonAttacksType.SpinCharge,
+            YharonAttacksType.Charge,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.LineFireBall,
             ];
@@ -204,10 +245,14 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.LineFireBall,
             YharonAttacksType.SpawnFlaresRing,
+            YharonAttacksType.Charge,
+            YharonAttacksType.ChargeNoRoar,
+            YharonAttacksType.YharonFireballs,
             YharonAttacksType.SpinCharge,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell2,
             YharonAttacksType.SpawnFlareTornado,
+            YharonAttacksType.SpawnXYharonFireBall,
             ];
         // 20 - 0
         public static YharonAttacksType[] Stage2P5AttackCycle =>
@@ -216,6 +261,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.SpawnFlaresRing,
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.SpinCharge,
+            YharonAttacksType.SpawnXYharonFireBall,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.FlareBombsHell1,
             YharonAttacksType.YharonFireballs,
@@ -229,6 +275,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.SpawnFlareTornado,
             YharonAttacksType.SpawnFlaresRing,
             YharonAttacksType.SpinCharge,
+            YharonAttacksType.Charge,
             YharonAttacksType.OpacityToZero,
             YharonAttacksType.YharonFireballs,
             YharonAttacksType.FlareBombsHell2,
@@ -278,6 +325,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool doRebornEffect = false;
         // 控制绘制的旋转
         public bool DrawRotate = false;
+        // 是否可以死亡
+        public bool canDie = false;
         #endregion
         #region SSD
         public override void SetStaticDefaults()
@@ -341,6 +390,20 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             net1[7] = Enraged;
             writer.Write(net1);
 
+            BitsByte net2 = new BitsByte();
+            //一个比特=8个字节，如果有部分字节暂时用不上，这些字节是一定得用各种方法占用掉让其形成一个完整的比特的
+            //不然发送的时候会有点问题
+            net2[0] = isStage2;
+            net2[1] = stage2SPDraw;
+            net2[2] = doRebornEffect;
+            net2[3] = DrawRotate;
+            net2[4] = canDie;
+            net2[5] = false;
+            net2[6] = false;
+            net2[7] = false;
+            writer.Write(net2);
+
+            writer.Write(needhealLife);
             writer.Write(NPC.localAI[1]);
             writer.Write(NPC.CIMod().BossNewAI[0]);
             writer.Write(NPC.CIMod().BossNewAI[1]);
@@ -357,6 +420,17 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             hasCharge = net1[6];
             Enraged = net1[7];
 
+            BitsByte net2 = reader.ReadByte();
+            isStage2 = net2[0];
+            stage2SPDraw = net2[1];
+            doRebornEffect = net2[2];
+            DrawRotate = net2[3];
+            canDie = net2[4];
+            _ = net2[5];
+            _ = net2[6];
+            _ = net2[7];
+
+            needhealLife= reader.ReadInt32();
             NPC.localAI[1] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
@@ -377,9 +451,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.TargetClosest();
 
             Player target = Main.player[NPC.target];
+            // 目标无限飞
+            target.CIMod().EmpressBooster = true;
 
             if (initialized == false)
             {
+                //设置战斗场地，并判断rage条件
+                SpawnArenaAndCheckRage(target);
                 NPC.damage = 760;
                 initialized = true;
             }
@@ -395,14 +473,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             ref float currentPhase = ref NPC.ai[2];
             ref float circleCount = ref NPC.ai[3];
             ref float frameType = ref NPC.localAI[1];
-            //0f -> 无 1f -> 有
-            ref float arenaSpawn = ref NPC.CIMod().BossNewAI[0];
-            ref float rageActive = ref NPC.CIMod().BossNewAI[1];
             ref float RebornTimer = ref NPC.CIMod().BossNewAI[2];
             #endregion
-
-            //设置战斗场地，并判断rage条件
-            SpawnArenaAndCheckRage(NPC, target, ref arenaSpawn, ref rageActive);
 
             //给BossZen
             target.AddBuffSafer<BossEffects>(1);
@@ -545,29 +617,23 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region 场地
-        public static void SpawnArenaAndCheckRage(NPC Yharon, Player target, ref float SpawnArena, ref float RageYharon)
+        public void SpawnArenaAndCheckRage(Player target)
         {
-            //生成场地，我们直接用的LocalAI
-            if (SpawnArena == 0f)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    // 场地大小应该是……多少？ 525？
-                    int width = ConvertTileWidthToInt(525);
-                    int height = ConvertTileWidthToInt(1600);
-                    CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
-                    CIGlobalNPC.Arena.Y = (int)(target.Center.Y - height);
-                    CIGlobalNPC.Arena.Width = width;
-                    CIGlobalNPC.Arena.Height = height * 3;
-                    //生成边界龙卷风。
-                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(Yharon.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                }
-                //手动发送数据包。
-                Yharon.netUpdate = true;
-                //取为真
-                SpawnArena = 1f;
+                // 场地大小应该是……多少？ 525？
+                int width = ConvertTileWidthToInt(525);
+                int height = ConvertTileWidthToInt(1600);
+                CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
+                CIGlobalNPC.Arena.Y = (int)(target.Center.Y - height);
+                CIGlobalNPC.Arena.Width = width;
+                CIGlobalNPC.Arena.Height = height * 3;
+                //生成边界龙卷风。
+                Projectile.NewProjectile(NPC.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
             }
+            //手动发送数据包。
+            NPC.netUpdate = true;
         }
         #endregion
         public static int ConvertTileWidthToInt(int num) => num * 16;
@@ -576,7 +642,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         // 选择下一个攻击
         public void SelectNextAttack(int? Skip = null)
         {
-
             if (Main.netMode == NetmodeID.MultiplayerClient)
                 return;
             // ai1对应的啥
@@ -811,6 +876,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         // 防止没过完演出就似了
         public override bool CheckDead()
         {
+            if (canDie)
+                return true;
             NPC.life = 1;
             NPC.active = true;
             NPC.dontTakeDamage = true;
@@ -819,7 +886,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region 死亡
-        
+        #region 日蚀前击败
         public void FirstDown()
         {
             Player player = Main.LocalPlayer;
@@ -845,7 +912,74 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CalamityNetcode.SyncWorld();
         }
-        
+        #endregion
+        #region 龙二击败
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            // Boss bag
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<YharonBag>()));
+
+            // Normal drops: Everything that would otherwise be in the bag
+            var normalOnly = npcLoot.DefineNormalOnlyDropSet();
+            {
+                // Weapons
+                int[] weapons = new int[]
+                {
+                    ModContent.ItemType<DragonRage>(),
+                    ModContent.ItemType<TheBurningSky>(),
+                    ModContent.ItemType<DragonsBreath>(),
+                    ModContent.ItemType<ChickenCannon>(),
+                    ModContent.ItemType<PhoenixFlameBarrage>(),
+                    ModContent.ItemType<YharonsKindleStaff>(), // Yharon Kindle Staff
+                    ModContent.ItemType<Wrathwing>(), // Infernal Spear
+                    ModContent.ItemType<TheFinalDawn>(),
+
+                    ModContent.ItemType<DragonSword>(),
+                    ModContent.ItemType<BurningSkyLegacy>(),
+                    ModContent.ItemType<AncientDragonsBreath>(),
+                    ModContent.ItemType<ChickenCannonLegacy>(),
+                    ModContent.ItemType<DragonStaff>(),
+                    ModContent.ItemType<DragonSpear>(),
+                    ModContent.ItemType<YharonSonStaff>(),
+                };
+                normalOnly.Add(DropHelper.CalamityStyle(DropHelper.NormalWeaponDropRateFraction, weapons));
+                normalOnly.Add(ModContent.ItemType<YharimsCrystalLegendary>(), 1);
+
+                // Vanity
+                normalOnly.Add(ModContent.ItemType<YharonMask>(), 7);
+                normalOnly.Add(ModContent.ItemType<ForgottenDragonEgg>(), 10);
+                normalOnly.Add(ModContent.ItemType<McNuggets>(), 10);
+                normalOnly.Add(ModContent.ItemType<ThankYouPainting>(), ThankYouPainting.DropInt);
+
+                // 随机1000-2000龙魂碎片
+                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
+
+                // Equipment
+                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
+                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
+            }
+
+            // Trophy (always directly from boss, never in bag)
+            npcLoot.Add(ModContent.ItemType<YharonTrophy>(), 10);
+
+            // Relic
+            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ModContent.ItemType<YharonRelic>());
+
+            // GFB Egg drop
+            // He is the dragon of rebirth afterall
+            var GFBOnly = npcLoot.DefineConditionalDropSet(DropHelper.GFB);
+            {
+                GFBOnly.Add(ModContent.ItemType<YharonEgg>(), hideLootReport: true);
+            }
+
+            // Lore
+            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ModContent.ItemType<OmegaHealingPotion>();
+        }
         public override void OnKill()
         {
             Player player = Main.LocalPlayer;
@@ -854,15 +988,69 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             SoundEngine.PlaySound(CISoundID.SoundCurseFlamesAttack, NPC.position);
 
-            // Spawn the SCal NPC directly where the boss was
-            if (!BossRushEvent.BossRushActive)
-                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
+            // If Yharon has not been killed yet, notify players of Auric Ore
+            if (!CIDownedBossSystem.DownedLegacyYharonP2)
+            {
+                CalamityUtils.SpawnOre(ModContent.TileType<AuricOre>(), 2E-05, 0.75f, 0.9f, 10, 20);
+
+                string key = "Mods.CalamityInheritance.Boss.Text.DownedYharon";
+                Color messageColor = Color.Gold;
+                CIFunction.BroadcastLocalizedText(key, messageColor);
+            }
 
             // Mark Calamitas as defeated
-            CIDownedBossSystem.DownedLegacyScal = true;
+            CIDownedBossSystem.DownedLegacyYharonP2 = true;
             CalamityNetcode.SyncWorld();
         }
-        
+        #endregion
+        #endregion
+        #region Hit Effect
+        public override void HitEffect(NPC.HitInfo hit)
+        {
+            // hit sound
+            if (NPC.soundDelay == 0)
+            {
+                NPC.soundDelay = Main.rand.Next(16, 20);
+                SoundEngine.PlaySound(HitSound, NPC.Center);
+            }
+
+            for (int k = 0; k < 5; k++)
+            {
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
+            }
+            if (NPC.life <= 0)
+            {
+                DoFireRing(300, 99999, -1f, 0f);
+                NPC.position.X = NPC.position.X + (NPC.width / 2);
+                NPC.position.Y = NPC.position.Y + (NPC.height / 2);
+                NPC.width = 300;
+                NPC.height = 280;
+                NPC.position.X = NPC.position.X - (NPC.width / 2);
+                NPC.position.Y = NPC.position.Y - (NPC.height / 2);
+                for (int i = 0; i < 40; i++)
+                {
+                    int fieryDust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
+                    Main.dust[fieryDust].velocity *= 3f;
+                    if (Main.rand.NextBool())
+                    {
+                        Main.dust[fieryDust].scale = 0.5f;
+                        Main.dust[fieryDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
+                }
+                for (int j = 0; j < 70; j++)
+                {
+                    int fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 3f);
+                    Main.dust[fieryDust2].noGravity = true;
+                    Main.dust[fieryDust2].velocity *= 5f;
+                    fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
+                    Main.dust[fieryDust2].velocity *= 2f;
+                }
+
+                // Turn into dust on death.
+                if (NPC.life <= 0)
+                    DeathAshParticle.CreateAshesFromNPC(NPC);
+            }
+        }
         #endregion
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

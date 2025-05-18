@@ -69,7 +69,8 @@ namespace CalamityInheritance.CIPlayer
                     StatLifeInt += 25;
             }
             //避免血量倒扣
-            if (LifePercentMax < 0) LifePercentMax = 0;
+            if (LifePercentMax < 0) 
+                LifePercentMax = 0;
             //先乘算计算完，在考虑加算
             Player.statLifeMax2 += (int)(Player.statLifeMax * LifePercentMax) + StatLifeInt;
         }

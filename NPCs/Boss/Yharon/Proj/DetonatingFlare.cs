@@ -37,6 +37,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             NPC.canGhostHeal = false;
             NPC.HitSound = SoundID.NPCHit52;
             NPC.DeathSound = SoundID.NPCDeath55;
+            NPC.dontTakeDamage = true;
             NPC.alpha = 255;
         }
 
@@ -73,15 +74,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             attackTimer++;
             // 算朝向
             int fireBallTimer = 150;
-
+            int fireBallTimer2 = 180;
+            int fireBallTimer3 = 210;
             Vector2 distanceFromDestination = target.Center - NPC.Center;
 
             NPC.ai[0] = 0.08f;
-            if(attackTimer < fireBallTimer + 60)
+            if(attackTimer < fireBallTimer3)
             {
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, 8f, 0.18f, true);
             }
-            if (attackTimer == fireBallTimer)
+            if (attackTimer == fireBallTimer || attackTimer == fireBallTimer2 || attackTimer == fireBallTimer3)
             {
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
                 for (int i = 0; i < 4; i++)
@@ -90,7 +92,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * 12f, ProjectileID.CultistBossFireBall, 100, 0f);
                 }
             }
-            if (attackTimer > fireBallTimer)
+            if (attackTimer > fireBallTimer3)
             {
                 attackTimer2++;
                 if (attackTimer2 < 60)

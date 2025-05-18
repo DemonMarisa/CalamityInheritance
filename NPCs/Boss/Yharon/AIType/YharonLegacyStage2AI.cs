@@ -65,6 +65,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 attackTimer = 0;
                 circleCount = 0;
                 currentPhase++;
+                canDie = true;
                 NPC.netUpdate = true;
                 return;
             }
@@ -77,7 +78,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             invincible = true;
             stage2SPDraw = true;
             // 是的，这是丛林龙BGM的开头长度
-            int healtimer = 980;
+            int healtimer = 960;
             RebornTimer++;
 
             if (RebornTimer == 1)
@@ -264,8 +265,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             DrawRotate = true;
             int followPlayerTime = 180;
             int hoverDistanceY = 200;
-            float closeVelocity = 14f;
-            float closeVelocityAcc = 1.4f;
+            float closeVelocity = 18f;
+            float closeVelocityAcc = 2.4f;
 
             int firstfiretime = 20;
             int firedelay = 60;
@@ -284,7 +285,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // 移动
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
                 // 如果提前接近，则直接进入下一步
-                if (NPC.Distance(target.Center) < 900f && NPC.rotation == 0f)
+                if (NPC.Distance(target.Center) < 600f && NPC.rotation == 0f)
                 {
                     attacktimer = followPlayerTime;
                 }
@@ -395,8 +396,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             DrawRotate = true;
             int followPlayerTime = 180;
             int hoverDistanceY = 200;
-            float closeVelocity = 14f;
-            float closeVelocityAcc = 1.4f;
+            float closeVelocity = 18f;
+            float closeVelocityAcc = 2.4f;
 
             int firstfiretime = 20;
             int firedelay = 60;
@@ -415,7 +416,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // 移动
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, closeVelocity, closeVelocityAcc, true);
                 // 如果提前接近，则直接进入下一步
-                if (NPC.Distance(target.Center) < 900f && NPC.rotation == 0f)
+                if (NPC.Distance(target.Center) < 600f && NPC.rotation == 0f)
                 {
                     attacktimer = followPlayerTime;
                 }
@@ -453,19 +454,24 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public void DoBehavior_SpawnYharonFireBall(Player target, ref float attackTimer, ref float frameType)
         {
             canLookTarget = false;
+            DrawRotate = true;
             int totalFlameVortices = 3;
             int totalFlameWaves = 7;
             float flameVortexSpawnDelay = 30f;
+            // 平视
+            NPC.rotation = NPC.rotation.AngleTowards(0f, 0.15f);
+            NPC.spriteDirection = -CIFunction.PlayerAndNPCDir(NPC, target);
+
             if (attackTimer == 1)
             {
                 frameType = (float)YharonFrameType.PlayOnce;
-                NPC.velocity = Vector2.Zero;
                 NPC.Center = target.Center + new Vector2(0, -300f);
                 NPC.Opacity = 0f;
                 NPC.rotation = 0;
             }
             if (attackTimer == flameVortexSpawnDelay)
             {
+                NPC.velocity = Vector2.Zero;
                 SoundEngine.PlaySound(OrbSound);
                 for (int i = 0; i < totalFlameVortices; i++)
                 {
