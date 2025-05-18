@@ -31,7 +31,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void AI()
         {
-            var mplr = Main.player[Projectile.owner].CIMod(); 
+            Player plr = Main.player[Projectile.owner];
+            var mplr = Main.player[Projectile.owner].CIMod();
+            //距离玩家过远处死
+            if ((plr.Center - Projectile.Center).Length() > CIFunction.SetDistance(150))
+                Projectile.Kill();
             //T1样式加强：允许穿墙，提高hitbox 
             if (mplr.BetsyTier1)
             {

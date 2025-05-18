@@ -69,6 +69,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
 			{
 				calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+				if (modPlayer.AncinetGodSlayerDashReset)
+					calPlayer.rogueStealth = calPlayer.rogueStealthMax / 4 * 3;
 				player.dash = 0;
 			}
 			#endregion

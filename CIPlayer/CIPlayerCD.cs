@@ -1,3 +1,5 @@
+using CalamityInheritance.CICooldowns;
+using CalamityMod;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Projectiles.Melee;
 using Terraria.ModLoader;
@@ -42,6 +44,8 @@ namespace CalamityInheritance.CIPlayer
         // 环境的计时器
         public int maliceModeBlizzardTime = 0;
         public int maliceModeUnderworldTime = 0;
+        //远古弑神闪避计时
+        public int AncinetGodSlayerDodgeCount = 3;
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)
@@ -153,6 +157,9 @@ namespace CalamityInheritance.CIPlayer
             
             if (BuffSubsumingVortexFireRate > 0)
                 BuffSubsumingVortexFireRate--;
+
+            if (!Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount <= 0)
+                AncinetGodSlayerDodgeCount = 3;
             return;
         }
     }

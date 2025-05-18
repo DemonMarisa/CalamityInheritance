@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 Item.UseSound = SoundID.Item1;
                 Item.shoot = ProjectileID.None;
             }
-            return base.CanUseItem(player);
+            return true;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

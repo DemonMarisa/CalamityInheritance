@@ -222,8 +222,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 // if (usPlayer.YharimsKilledExo)
                 //     DoExoUpgrade(target, src);
-                if (usPlayer.YharimsKilledScal)
-                    DoScalUpgrade(target, src);
+                // if (usPlayer.YharimsKilledScal)
+                //     DoScalUpgrade(target, src);
                     // DoDragonUpgrade(target, src);
             }
         }

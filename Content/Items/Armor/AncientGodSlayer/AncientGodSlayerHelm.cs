@@ -42,10 +42,14 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             calPlayer.rogueStealthMax = 1.25f;
             usPlayer.AncientGodSlayerSet = true;
             usPlayer.AncientGodSlayerStat = true;
+            usPlayer.GodSlayerReborn = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
                 calPlayer.DeferredDashID = GodslayerArmorDash.ID;
+                if (usPlayer.AncinetGodSlayerDashReset)
+                    calPlayer.rogueStealth = calPlayer.rogueStealthMax / 4 * 3;
+                
                 player.dash = 0;
             }
         }
@@ -53,6 +57,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 5;
+            player.maxTurrets += 3;
             player.statLifeMax2 += 200;
             player.GetDamage<GenericDamageClass>() += 0.25f;
             player.GetCritChance<GenericDamageClass>() += 0.25f;

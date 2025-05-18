@@ -49,6 +49,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
         {
             player.endurance += 0.05f;
             player.maxMinions += 3;
+            player.maxTurrets += 2;
             player.statLifeMax2 += 150;
             player.lavaImmune = true;
             player.ignoreWater = true;

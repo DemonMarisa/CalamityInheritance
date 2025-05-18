@@ -297,11 +297,11 @@ DestroyerLegendary: {
 		[TIERTHREE]
 		'''
 	DisplayName: SHPC Legendary
-	TierOne: "[c/4169E1:Upgrade]: Fires a homing plasma orbs when firing energy beams"
+	TierOne: "[c/4169E1:Upgrade]: Energy beams and plasma orbs guaranteed critical hits"
 	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
-	TierTwo: "[c/4169E1:Upgrade]: +2 plasma orbs and energy beams"
+	TierTwo: "[c/4169E1:Upgrade]: Beams and orbs deal true damage base on your current critical strike chance"
 	TierTwoTint: "[c/818589:Drinks an Purple Juice during the Inpending Doom]"
-	TierThree: "[c/4169E1:Upgrade]: No longer consume any mana"
+	TierThree: "[c/4169E1:Upgrade]: This Weapon no longer consume any mana"
 	TierThreeTint: "[c/818589:Summon Polterghast after used Comet Shard and Ethereal Core]"
 	LegendaryScaling: "[c/4169E1:Damage Scaling]: +{0} weapon damage"
 }

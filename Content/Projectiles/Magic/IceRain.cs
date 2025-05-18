@@ -37,19 +37,19 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void AI()
         {
             DoGeneric();
-            AttackTimer++;
-            switch(AttackType)
-            {
-                case IsShooted:
-                    DoShooted();
-                    break;
-                case IsHoming:
-                    DoHoming();
-                    break;
-            }
+            // AttackTimer++;
+            // switch(AttackType)
+            // {
+            //     case IsShooted:
+            //         DoShooted();
+            //         break;
+            //     case IsHoming:
+            //         DoHoming();
+            //         break;
+            // }
             Projectile.rotation += 0.5f;
             Projectile.ai[0] += 1f;
-            CreateDust();
+            // CreateDust();
             if(Projectile.ai[0] > 30f) //在原代码，这个弹幕是试图去找敌人的而不是什么别的，这里则直接改成了，直接追踪
             {
                 if(Projectile.ai[0] < 40f)

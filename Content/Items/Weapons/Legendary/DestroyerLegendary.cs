@@ -104,8 +104,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var p = player.CIMod();
-            int bCounts = p.DestroyerTier2 ? 5 : 3;
-            int lCounts = p.DestroyerTier2 ? 5 : 3;
+            int bCounts = 3;
+            int lCounts = 3;
             if (player.altFunctionUse == 2)
             {
                 for (int i = 0; i < lCounts; i++)
@@ -114,16 +114,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                     float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
                     // 向上偏移和手持偏移一样的-8
                     Projectile.NewProjectile(source, position + new Vector2(0f, -8f), new(velX,velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
-                }
-                if(p.fireCD == 0)
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
-                        float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
-                        Projectile.NewProjectile(source, position + new Vector2(0f, -8f),  new(velX, velY),ModContent.ProjectileType<DestroyerLegendaryBomb>(), damage, knockback, player.whoAmI, 0f, 0f, -1f);
-                    }
-                    p.fireCD = 60;
                 }
                 return false;
             }

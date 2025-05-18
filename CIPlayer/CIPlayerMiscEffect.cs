@@ -541,19 +541,12 @@ namespace CalamityInheritance.CIPlayer
 
             if (AncientGodSlayerStat)
             {
-                //旧弑神更新 -> 85%常驻接触伤害减免
-                calPlayer.contactDamageReduction += 0.85f;
-                Player.endurance += 0.12f;
                 //旧套装通用新增；血上限，血药，回血
                 calPlayer.healingPotionMultiplier += 0.50f;
                 float getStealth = calPlayer.rogueStealthMax;
                 int getCurDef = Player.GetCurrentDefense();
-                int boostDef = (int)(getCurDef * (getStealth - 1.0f)); 
-                //弑神套自带120点潜伏值，所以一般来说是不太可能让玩家一点收益都没有的，但……以防万一？
-                if (boostDef < 0) boostDef = 0;
-                Player.statDefense += boostDef;
-                Player.statLifeMax2 += (int)(Player.statLifeMax * 0.85f);
                 Player.lifeRegen += 12; //+6HP/s
+                RefreshGodSlayerDash(calPlayer);
             }
             if (AncientSilvaStat)
             {
@@ -565,11 +558,6 @@ namespace CalamityInheritance.CIPlayer
             if(AncientAuricSet)
             {
                 Player.noKnockback = true;
-                float getStealth = calPlayer.rogueStealthMax;
-                int getCurDef = Player.GetCurrentDefense();
-                int boostDef = (int)(getCurDef * (getStealth - 1.0f)); 
-                if (boostDef < 0) boostDef = 0;
-                Player.statDefense += boostDef;
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
                 {
                     int getDef = Player.GetCurrentDefense();
@@ -671,6 +659,18 @@ namespace CalamityInheritance.CIPlayer
             } 
         }
 
+        private void RefreshGodSlayerDash(CalamityPlayer calPlayer)
+        {
+            if (Player.HasCooldown(GodSlayerDash.ID))
+            {
+                if (calPlayer.rogueStealth == calPlayer.rogueStealthMax)
+                {
+                    Player.RemoveCooldown(GodSlayerDash.ID);
+                    Player.AddCooldown(GodSlayerDash.ID, 0);
+                    AncinetGodSlayerDashReset = true;
+                }
+            }
+        }
 
         private void DoSilvaFakeDeathEffect()
         {
