@@ -20,6 +20,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
         {
             Main.npcFrameCount[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 1;
+            NPCID.Sets.MPAllowedEnemies[Type] = true;
+            this.HideFromBestiary();
         }
 
         public override void SetDefaults()
@@ -94,6 +96,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             }
             if (attackTimer > fireBallTimer3)
             {
+                NPC.dontTakeDamage = false;
                 attackTimer2++;
                 if (attackTimer2 < 60)
                     NPC.velocity *= 0.99f;

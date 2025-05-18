@@ -4,7 +4,7 @@ Mods: {
 			BoCLoreTeleportation.DisplayName: BoC Lore Teleportation
 			AegisHotKey.DisplayName: Elysian Guard
 			"Astral Arcanum UI Toggle.DisplayName": Astral Arcanum Teleportation
-			"Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
+			"Qol Panel UI Toggle.DisplayName": Control Panel UI
 		}
 
 		Tiles: {
@@ -61,20 +61,15 @@ Mods: {
 			VerdantYoyo.DisplayName: Verdant Yoyo
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
-
-			Ranged: {
-				NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
-			}
-
+			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
 			Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 			FossilSpike.DisplayName: Fossil Spike
 			MarianaProjectile.DisplayName: Mariana Projectile
-			ChangeDirProj.DisplayName: Change Dir Proj
+			ChangeDirProj.DisplayName: Mark
 			AeriesShockblastRound.DisplayName: Aeries Shockblast Round
 			YharonArenaProj.DisplayName: Yharon Arena Proj
 			YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
 			YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
-			MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {
@@ -89,14 +84,6 @@ Mods: {
 			}
 		}
 
-		DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
-		Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
-		"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 	}
-
-	"Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
-	DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
-	Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
-	Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 }

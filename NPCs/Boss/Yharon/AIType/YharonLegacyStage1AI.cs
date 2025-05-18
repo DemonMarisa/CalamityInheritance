@@ -115,7 +115,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             canLookTarget = false;
             int totalCharge = 2;
             int chargeCount = 20;
-            int chargeCd = currentPhase > 4 ? 35 : 60;
+            int chargeCd = currentPhase > 4 ? 45 : 60;
             int chargeCooldown = chargeCd + chargeCount;
             int hoverTimer = 90;
 
@@ -151,7 +151,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 if (hasCharge == false)
                 {
-                    float chargeVelocity = currentPhase > 4 ? 38 : 28f;
+                    float chargeVelocity = currentPhase > 4 ? 48f : 28f;
                     float fastChargeVelocityMultiplier = 1.5f;
 
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -169,7 +169,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         ChargeDust(7);
                     if (attacktimer > chargeCount + hoverTimer)
                     {
-                        NPC.velocity *= currentPhase > 4 ? 0.92f : 0.96f;
+                        NPC.velocity *= currentPhase > 4 ? 0.94f : 0.96f;
 
                         crrotAcc = 0.2f;
 
@@ -315,7 +315,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             int spinPhaseTimer = 180;
             int flareDustSpawnDivisor = currentPhase > 5 ? 8 : 12;
             int fireNPC = 40;
-            int circleCounter = currentPhase > 5 ? 6 : 3;
+            int circleCounter = currentPhase > 5 ? 4 : 3;
             float spinPhaseRotation = MathHelper.TwoPi * circleCounter / spinPhaseTimer;
 
             if (attacktimer == 1)
@@ -432,7 +432,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (hasCharge == false && attacktimer > TotalHover)
             {
                 canLookTarget = false;
-                float chargeVelocity = currentPhase > 5 ? 40f : 28f;
+                float chargeVelocity = currentPhase > 5 ? 48f : 28f;
                 float fastChargeVelocityMultiplier = 1.5f;
 
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
@@ -445,7 +445,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
             }
             if (attacktimer > TotalHover + 15)
-                NPC.velocity *= 0.96f;
+                NPC.velocity *= currentPhase > 5 ? 0.94f : 0.96f;
             if (attacktimer > 80)
                 SelectNextAttack();
         }

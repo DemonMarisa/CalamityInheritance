@@ -48,6 +48,7 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using Terraria.GameContent.Bestiary;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -344,6 +345,18 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPCID.Sets.MPAllowedEnemies[Type] = true;
         }
         #endregion
+        #region 怪物图鉴
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange([
+
+				// You can add multiple elements if you really wanted to
+				new FlavorTextBestiaryInfoElement($"{GenericNPC.GetNPCBestiaryLocal}.YharonLegacy")
+            ]);
+        }
+        #endregion
         #region SD
         public override void SetDefaults()
         {
@@ -452,14 +465,26 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             Player target = Main.player[NPC.target];
             // 目标无限飞
-            target.CIMod().EmpressBooster = true;
+            foreach (var player in Main.ActivePlayers)
+                player.Calamity().infiniteFlight = true;
 
             if (initialized == false)
             {
-                //设置战斗场地，并判断rage条件
-                SpawnArenaAndCheckRage(target);
                 NPC.damage = 760;
                 initialized = true;
+                // 场地生成
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    int width = 9000;
+                    CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
+                    CIGlobalNPC.Arena.Y = (int)(target.Center.Y - 160000f);
+                    CIGlobalNPC.Arena.Width = width;
+                    CIGlobalNPC.Arena.Height = 320000;
+
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X + width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X - width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                }
+                NPC.netUpdate = true;
             }
 
             // Set the whoAmI variable.
@@ -614,26 +639,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 CIGlobalNPC.LegacyYharonStage2 = NPC.whoAmI;
                 return;
             }
-        }
-        #endregion
-        #region 场地
-        public void SpawnArenaAndCheckRage(Player target)
-        {
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                // 场地大小应该是……多少？ 525？
-                int width = ConvertTileWidthToInt(525);
-                int height = ConvertTileWidthToInt(1600);
-                CIGlobalNPC.Arena.X = (int)(target.Center.X - width * 0.5f);
-                CIGlobalNPC.Arena.Y = (int)(target.Center.Y - height);
-                CIGlobalNPC.Arena.Width = width;
-                CIGlobalNPC.Arena.Height = height * 3;
-                //生成边界龙卷风。
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), target.Center.X + width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), target.Center.X - width / 2, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 0, 0f, Main.myPlayer, 0f, 0f);
-            }
-            //手动发送数据包。
-            NPC.netUpdate = true;
         }
         #endregion
         public static int ConvertTileWidthToInt(int num) => num * 16;

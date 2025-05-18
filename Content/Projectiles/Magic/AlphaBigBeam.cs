@@ -1,13 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class AlphaBigBeam : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content,Projectiles.Magic";
+        public override LocalizedText DisplayName => CalamityUtils.GetItemName<AlphaRayLegacy>();
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
 
         public override void SetDefaults()

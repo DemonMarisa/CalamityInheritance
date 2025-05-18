@@ -1,8 +1,8 @@
 BrimstoneLaser.DisplayName: 硫火激光
 BrimstoneLaserSplit.DisplayName: 硫火激光
-// HellfireballReborn.DisplayName: Hellfireball Reborn
-// CatastropheBall.DisplayName: Catastrophe Ball
-// CataclysmFire.DisplayName: Cataclysm Fire
+HellfireballReborn.DisplayName: 地狱之火
+CatastropheBall.DisplayName: 硫磺火球
+CataclysmFire.DisplayName: 猩红狱火
 BrimstoneMonsterLegacy.DisplayName: 猩红圆月
 BrimstoneBarrageLegacy.DisplayName: 硫火飞镖
 BrimstoneHellblast2Legacy.DisplayName: 深渊亡魂
@@ -10,6 +10,6 @@ BrimstoneHellblastLegacy.DisplayName: 深渊亡魂
 BrimstoneWaveLegacy.DisplayName: 深渊炙颅
 SCalBrimstoneFireblastLegacy.DisplayName: 深渊炙焰
 SCalBrimstoneGigablastLegacy.DisplayName: 无际裂变
-// YharimsScalSupporter.DisplayName: Yharims Scal Supporter
-// YharimsScalSupporterBarrage.DisplayName: Yharims Scal Supporter Barrage
-// LightningMark.DisplayName: Lightning Mark
+YharimsScalSupporter.DisplayName: 探魂眼
+YharimsScalSupporterBarrage.DisplayName: 硫火飞镖
+LightningMark.DisplayName: 闪电

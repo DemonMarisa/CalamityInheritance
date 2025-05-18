@@ -4,7 +4,7 @@ Mods: {
 			BoCLoreTeleportation.DisplayName: 克苏鲁之脑传送
 			AegisHotKey.DisplayName: 极乐之庇护
 			"Astral Arcanum UI Toggle.DisplayName": 星辉秘术传送UI
-			// "Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
+			"Qol Panel UI Toggle.DisplayName": 总控面板开启
 		}
 
 		Tiles: {
@@ -59,45 +59,31 @@ Mods: {
 			PhoenixBladeHeal.DisplayName: 治愈之火
 			DragonBowFlameRework.DisplayName: 赤陨霸龙弓
 			VerdantYoyo.DisplayName: 葱茏
-			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
-			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
-
-			Ranged: {
-				// NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
-				// NewExoFire.DisplayName: New Exo Fire
-			}
-
-			// Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
-			// FossilSpike.DisplayName: Fossil Spike
-			// MarianaProjectile.DisplayName: Mariana Projectile
-			// ChangeDirProj.DisplayName: Change Dir Proj
-			// AeriesShockblastRound.DisplayName: Aeries Shockblast Round
-			// YharonArenaProj.DisplayName: Yharon Arena Proj
-			// YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
-			// YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
-			// MoonPlaceholder.DisplayName: Moon Placeholder
+			ApothMarkLegacy.DisplayName: 光子标记
+			OpalStrikeLegacy.DisplayName: 鹅软石冲击波
+			Ranged.NorfleetExplosionLegacy.DisplayName: 星界陨石
+			Typeless.NanoFlareLegacy.DisplayName: 纳米火焰
+			FossilSpike.DisplayName: 化石尖刺
+			MarianaProjectile.DisplayName: 花岗岩步枪
+			ChangeDirProj.DisplayName: 标记
+			AeriesShockblastRound.DisplayName: 白羊座冲击弹
+			YharonArenaProj.DisplayName: 地狱龙卷
+			YharonFireball2Legacy.DisplayName: 龙炎弹
+			YharonFireballLegacy.DisplayName: 龙炎弹
 		}
 
 		Content/Projectiles/Summon: {
 			MountedScannerLaserLegacy.DisplayName: 分解激光
-			YharimsExtraPrismBeam.DisplayName: Yharims Extra Prism Beam
+			YharimsExtraPrismBeam.DisplayName: 暴君射线
 		}
 
 		Content: {
 			Projectile: {
 				Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
-				// Magic.YharimsExtraPrism.DisplayName: Yharims Extra Prism
+				Magic.YharimsExtraPrism.DisplayName: 暴君水晶
 			}
 		}
 
-		// DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
 		// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
-		// Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
-		// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
 	}
-
-	// "Content,Projectiles.Magic.AlphaBigBeam.DisplayName": Alpha Big Beam
-	// DropConditions.DarksunFragmentDrop: Mods.CalamityInheritance.DropConditions.DarksunFragmentDrop
-	// Conotent.Projectiles.Melee.VictideSpearBall.DisplayName: Victide Spear Ball
-	// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
 }

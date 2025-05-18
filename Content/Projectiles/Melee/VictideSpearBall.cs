@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class VictideSpearBall: ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Conotent.Projectiles.Melee";
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()
         {
             Projectile.width = 6;

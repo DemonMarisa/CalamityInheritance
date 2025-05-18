@@ -24,7 +24,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             CreateRecipe().
                 AddIngredient(ItemID.BloodMoonStarter).
-                AddIngredient(ItemID.SoulofNight, 3).
                 AddTile(TileID.Bookcases).
                 Register();
                  
