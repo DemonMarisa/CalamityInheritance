@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.width = 62;
             Item.height = 62;
-            Item.damage = 80;
+            Item.damage = 60;
             Item.mana = 9;
             Item.DamageType = DamageClass.Magic;
             Item.useAnimation = Item.useTime = 11;
@@ -87,14 +87,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             float newDamage = 0f;
             newDamage += DownedBossSystem.downedRavager ? 0.1f : 0f;
-            newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.2f : 0f;
+            newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.1f : 0f;
             newDamage += Condition.DownedDukeFishron.IsMet() ? 0.1f : 0f;
-            newDamage += Condition.DownedCultist.IsMet() ? 0.2f : 0f;
+            newDamage += Condition.DownedCultist.IsMet() ? 0.1f : 0f;
             newDamage += Condition.DownedMoonLord.IsMet() ? 0.2f : 0f;
             newDamage += DownedBossSystem.downedGuardians ? 0.6f : 0f;
-            newDamage += DownedBossSystem.downedProvidence  ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
+            newDamage += DownedBossSystem.downedProvidence  ? 1.0f : 0f;
+            newDamage += DownedBossSystem.downedPolterghast ? 1.0f : 0f;
+            newDamage += DownedBossSystem.downedDoG ? 1.0f : 0f;
             newDamage += DownedBossSystem.downedYharon ? 1.5f : 0f;
             newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
             newDamage += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;

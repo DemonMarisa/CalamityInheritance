@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.height = Item.width = 72;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
-            Item.damage = 75;
+            Item.damage = 55;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useAnimation = Item.useTime = 10;
             Item.scale *= 1.25f;
@@ -102,10 +102,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static float LegendaryDamage()
         {
             float damageBuff = 1f;
-            damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
-            damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
+            damageBuff += NPC.downedAncientCultist ? 0.1f : 0f;
+            damageBuff += NPC.downedMoonlord ? 0.1f : 0f;
+            damageBuff += DownedBossSystem.downedProvidence ? 0.2f : 0f;
+            damageBuff += DownedBossSystem.downedPolterghast ? 0.4f : 0f;
             damageBuff += DownedBossSystem.downedBoomerDuke ? 0.8f : 0f;
             damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
             damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;

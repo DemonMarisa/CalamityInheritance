@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     DoHoming(tar);
                     break;
                 case IsPointMouse:
-                    DoPointMouse();
+                    DoPointMouse(tar.Center);
                     break;
                 case IsOnHitHoming:
                     DoOnHitHoming(tar);
@@ -160,9 +160,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
         }
         //没有搜索到目标的时候，指向鼠标, 并尝试追及
-        private void DoPointMouse()
+        private void DoPointMouse(Vector2 tar)
         {
-            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
+            float rot = Projectile.AngleTo(tar) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= 0.9f;
             MouseTimer += 1;

@@ -98,8 +98,8 @@ namespace CalamityInheritance.Content.Items
                     LegendaryUpgradeTint(DustID.Silver, player);
                 }
             }
-            //叶柳T2：持有弹药回收buff时于丛林处食用黄金菜肴
-            if (item.type == ItemID.GoldenDelight && Main.LocalPlayer.ZoneJungle && !player.CIMod().PlanteraTier2)
+            //叶柳T2：于丛林处食用黄金菜肴
+            if (item.type == ItemID.GoldenDelight && Main.LocalPlayer.ZoneJungle && !player.CIMod().PlanteraTier2 && Condition.DownedMoonLord.IsMet())
             {
                 if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
                 {

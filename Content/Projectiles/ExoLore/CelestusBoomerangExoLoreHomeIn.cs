@@ -33,6 +33,11 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         #region 数组别名
         const int AttackType = 0;
         const int PhaseTimer = 1;
+        public int AttackTarget
+        {
+            get => (int)Projectile.ai[2];
+            set => Projectile.ai[2] = value;
+        }
         #endregion
         #region 基础属性
         public int ColorTimer = 0;
@@ -233,12 +238,12 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            
+
             if (Projectile.ai[AttackType] == IsAttacking)
             {
                 Projectile.ai[AttackType] = IsIdleing;
                 Projectile.netUpdate = true;
-                //之播放一次。
+                //播放一次。
                 SoundStyle[] getSound =
                 [
                     CISoundMenu.CelestusOnHit1,

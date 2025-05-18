@@ -27,8 +27,13 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<TheAtomSplitter>();
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            if (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo)
-                damage.Base = 1740;
+            if (player.CheckExoLore())
+                damage.Base = 1457;
+        }
+        public override void ModifyWeaponCrit(Item item, Player player, ref float crit)
+        {
+            if (player.CheckExoLore())
+                crit += 16f;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

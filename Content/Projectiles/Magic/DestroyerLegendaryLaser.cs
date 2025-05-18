@@ -69,12 +69,16 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 float getCrits = player.GetTotalCritChance<MagicDamageClass>() + 4f;
                 if (getCrits > 0f)
                 {
+
                     //将暴击加成小数点前置两位。
                     getCrits /= 100f;
+                    //与1结算。
+                    float realReduceDefense = 1f - getCrits;
+                    if (realReduceDefense < 0f)
+                        realReduceDefense = 0f;
                     //暴击加成取1/3，折算掉射弹本身的伤害
-                    int pDamage = (int)(Projectile.damage * getCrits / 3);
                     //直接补到伤害上
-                    modifiers.FinalDamage += pDamage / 10f;
+                    modifiers.DefenseEffectiveness *= realReduceDefense;
                 }
             }
         }

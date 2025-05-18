@@ -446,7 +446,7 @@ PlanteraLegendary: {
 	TierThree: "[c/00CB67:强化]:叶之箭50%概率发起追踪, 孢子球必定跟踪"
 	LegendaryScaling: "[c/00CB67:强化属性]: +{0} 武器伤害"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
-	TierTwoTint: "[c/818589:在丛林食用黄金菜肴]"
+	TierTwoTint: "[c/818589:在月球领主后的丛林食用黄金菜肴]"
 	TierThreeTint: "[c/818589:携带元素箭袋，在丛林范围内召唤一只丛林龙]"
 }
 
