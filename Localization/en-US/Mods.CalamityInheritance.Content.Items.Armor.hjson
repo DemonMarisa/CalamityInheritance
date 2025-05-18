@@ -715,7 +715,8 @@ YharimAuricTeslaHelm: {
 		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
 		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
-		Boost your defense base on your max stealth
+		Reset your God Slayer Dash cooldown if you reached max stealth
+		At that time, do the dash will cost your 25% of your max stealth
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
@@ -822,7 +823,7 @@ AncientSilvaHelm: {
 	DisplayName: Ancient Silva Helm Revamped
 	Tooltip:
 		'''
-		25% increased damage and crticial strike chance
+		20% increased damage and crticial strike chance
 		+200 max life
 		+5 max minions
 		+3 max sentries
@@ -865,11 +866,12 @@ AncientGodSlayerHelm: {
 	SetBonus:
 		'''
 		+125 max stealth
-		Healing potions are 50% more effective
-		+6 HP/s life regen speed, 85% reduced contact damage
+		Healing potions are 50% more effective, +6 HP/s life regen speed
 		Press God Slayer Dash Hotkey while holding down the movement keys in the direction you want to dash
-		Hitting an enemy with stealth strikes will reset your God Slayer Dash and boosted your damage by 20% in 10 seconds
+		Hitting an enemy with stealth strikes will boost your damage by 20% in 10 seconds
 		This effect has 30 seconds cooldown if triggered
+		Reset your God Slayer Dash cooldown if you reached max stealth
+		At that time, do the dash will cost your 25% of your max stealth
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown

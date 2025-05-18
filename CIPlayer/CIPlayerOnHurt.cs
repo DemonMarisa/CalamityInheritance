@@ -145,7 +145,7 @@ namespace CalamityInheritance.CIPlayer
 
                 Player.statLife = +100;
 
-                if (BuffStatsDraconicSurge)
+                if (BuffStatsDraconicSurge || AncientGodSlayerSet)
                 {
                     Player.Heal(Player.statLifeMax2);
                     //给耐药性
@@ -315,7 +315,13 @@ namespace CalamityInheritance.CIPlayer
             //日食魔镜的闪避优于所有闪避之前执行
             if (CheckEMirror())
                 return true;
-
+            if (AncientGodSlayerSet && Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount > 0)
+            {
+                if (Player.HasCooldown(GodSlayerDash.ID))
+                    Player.RemoveCooldown(GodSlayerCooldown.ID);
+                AncinetGodSlayerDodgeCount--;
+                return true;
+            }
             // 现在免疫触发后，会让免疫的阈值降低，随后会逐渐恢复
             if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
             {

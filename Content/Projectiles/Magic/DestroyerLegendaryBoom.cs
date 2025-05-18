@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
@@ -21,7 +22,27 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
-
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            Player player = Main.player[Projectile.owner]; 
+            var usPlayer = player.CIMod();
+            if (usPlayer.DestroyerTier1)
+                modifiers.SetCrit();
+            if (usPlayer.DestroyerTier2)
+            {
+                //取玩家当前法术暴击加成。
+                float getCrits = player.GetTotalCritChance<MagicDamageClass>() + 4f;
+                if (getCrits > 0f)
+                {
+                    //将暴击加成小数点前置两位。
+                    getCrits /= 100f;
+                    //暴击加成取1/3，折算掉射弹本身的伤害
+                    int pDamage = (int)(Projectile.damage * getCrits / 3);
+                    //直接补到最终伤害上
+                    modifiers.FinalDamage += pDamage / 10f;
+                }
+            }
+        }
         public override void AI()
         {
             float lights = Main.rand.Next(90, 111) * 0.01f;

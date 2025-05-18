@@ -1,4 +1,4 @@
-﻿using CalamityInheritance.NPCs.Boss.Yharon.Proj;
+using CalamityInheritance.NPCs.Boss.Yharon.Proj;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Boss;
@@ -140,7 +140,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 velocity.Y *= 0.3f;
                 velocity = velocity.SafeNormalize(Vector2.UnitX * NPC.spriteDirection);
 
-                frameType = (float)YharonFrameType.motionlessRoar;
+//                 frameType = (float)YharonFrameType.motionlessRoar;
 
                 NPC.velocity = velocity * splittingMeteorBombingSpeed;
                 

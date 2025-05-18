@@ -45,9 +45,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 5;
+            player.maxTurrets += 3;
             player.statLifeMax2 += 200;
-            player.GetDamage<GenericDamageClass>() += 0.25f;
-            player.GetCritChance<GenericDamageClass>() += 0.25f;
+            player.GetDamage<GenericDamageClass>() += 0.20f;
+            player.GetCritChance<GenericDamageClass>() += 0.20f;
         }
 
         public override void AddRecipes()

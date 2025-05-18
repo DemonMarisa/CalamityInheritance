@@ -135,6 +135,7 @@ namespace CalamityInheritance.CIPlayer
         public bool cIdisableNaturalScourgeSpawns = false;
         public bool cIdisableAnahitaSpawns = false;
         #endregion
+        public bool AncinetGodSlayerDashReset = false;
         #region ResetEffects
         public override void ResetEffects()
         {

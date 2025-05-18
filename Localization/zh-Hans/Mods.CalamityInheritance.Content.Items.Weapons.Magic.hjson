@@ -327,11 +327,11 @@ DestroyerLegendary: {
 		[TIERTHREE]
 		'''
 	DisplayName: SHPC[Legendary]
-	TierOne: "[c/4169E1:强化]:发射能量束时会发射一颗准许追踪的相位激光球"
+	TierOne: "[c/4169E1:强化]:能量束与相位激光球必定暴击"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
-	TierTwo: "[c/4169E1:强化]:一次发射的相位激光球与高速激光的数量+2"
+	TierTwo: "[c/4169E1:强化]:能量束与相位激光球根据暴击概率造成真实伤害"
 	TierTwoTint: "[c/818589:于月球末日之际饮用一瓶葡萄汁]"
-	TierThree: "[c/4169E1:强化]:武器不再消耗任何魔力"
+	TierThree: "[c/4169E1:强化]:这把武器不再消耗任何魔力"
 	TierThreeTint: "[c/818589:在使用彗星碎片与永恒核心后, 召唤一次噬魂幽花]"
 	LegendaryScaling: "[c/4169E1:武器增强]: +{0} 武器伤害"
 }
