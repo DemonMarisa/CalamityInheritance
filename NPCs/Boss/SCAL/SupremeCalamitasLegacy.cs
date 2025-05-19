@@ -328,6 +328,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             net2[7] = false;
             writer.Write(net2);
 
+            writer.Write(NPC.lifeMax);
+            writer.Write(NPC.life);
+
+            writer.Write(LifeMax);
             writer.Write(DR);
             writer.Write(NPC.localAI[1]);
             writer.Write(NPC.localAI[2]);
@@ -363,6 +367,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             _ = net2[6];
             _ = net2[7];
 
+            NPC.lifeMax = reader.ReadInt32();
+            NPC.life = reader.ReadInt32();
+
+            LifeMax = reader.ReadInt32();
             DR = reader.ReadSingle();
             NPC.localAI[1] = reader.ReadSingle();
             NPC.localAI[2] = reader.ReadSingle();
@@ -414,9 +422,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (initialized == false)
             {
                 // 多人模式是随机召唤位置，但是在第一帧传送到对应玩家身边
-                if (Main.netMode == NetmodeID.MultiplayerClient)
-                    NPC.Center = Main.player[NPC.target].Center + new Vector2(0f, -400f);
-
+                NPC.Center = Main.player[NPC.target].Center + new Vector2(0f, -400f);
                 Main.player[NPC.target].Calamity().GeneralScreenShakePower = 12;
                 SpawnDust();
                 SpawnDust();

@@ -87,7 +87,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             }
             if (attackTimer == fireBallTimer || attackTimer == fireBallTimer2 || attackTimer == fireBallTimer3)
             {
-                NPC.dontTakeDamage = false;
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation);
                 for (int i = 0; i < 4; i++)
                 {
@@ -97,6 +96,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             }
             if (attackTimer > fireBallTimer3)
             {
+                NPC.dontTakeDamage = false;
                 attackTimer2++;
                 if (attackTimer2 < 60)
                     NPC.velocity *= 0.99f;

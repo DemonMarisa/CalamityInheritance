@@ -70,6 +70,7 @@ namespace CalamityInheritance
             FuckYouFargo = null;
             CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
+            /*
             //我没有测试过这个数组能不能用，而且出于某些原因我的游戏又被飞行钩子给干掉了，所以你自己看着办吧（
             DumbMods =
             [
@@ -83,6 +84,7 @@ namespace CalamityInheritance
             FuckTheseMod = new Dictionary<string, bool>();
             foreach (string FuckMod in DumbMods)
                 FuckTheseMod.Add(FuckMod, false);
+            */
             if (!Main.dedServ)
             {
                 LoadClient();
@@ -116,8 +118,8 @@ namespace CalamityInheritance
             //日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
+            // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
             FlightBarDrawHook.Load();
-            YharonEggHook.Load(this);
             #endregion
         }
         public void LoadClient()
@@ -172,8 +174,10 @@ namespace CalamityInheritance
             CIWeaponsResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
+            /*
             DumbMods = null;
             FuckTheseMod = null;
+            */
             DifficultyModeUI.Unload();
             base.Unload();
         }
@@ -185,6 +189,8 @@ namespace CalamityInheritance
         public override void PostSetupContent()
         {
             CIWeakReferenceSupport.Setup();
+
+            /*
             //尝试给每个mod加载
             try
             {
@@ -198,7 +204,7 @@ namespace CalamityInheritance
             {
                 Logger.Error("CalamityInheritance PostSetupContent Error: " + e.StackTrace + e.Message);
             }
-
+            */
         }
         #endregion
 

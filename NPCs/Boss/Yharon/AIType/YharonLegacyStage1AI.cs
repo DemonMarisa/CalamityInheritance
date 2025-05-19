@@ -14,6 +14,7 @@ using Terraria.ModLoader;
 using static CalamityInheritance.NPCs.Boss.Yharon.YharonLegacy;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.Yharon.Proj;
+using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -26,7 +27,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public const float PreEclipse_Phase2LifeRatio = 0.7f;
 
         public const float PreEclipse_Phase3LifeRatio = 0.4f;
-        public void Stage1AI(float lifeRatio,ref float currentPhase,ref float attackType,ref float attackTimer,ref float circleCount, bool postEclipse)
+        public void Stage1AI(float lifeRatio,ref float currentPhase,ref float attackType,ref float attackTimer,ref float circleCount)
         {
             #region 阶段判定
             // 进入新阶段
@@ -61,15 +62,17 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
             if (lifeRatio <= stage2LifeRatio && currentPhase == 3f)
             {
-                if (postEclipse == true)
+                if (CIDownedBossSystem.DownedBuffedSolarEclipse)
+                {
                     attackType = (int)YharonAttacksType.PhaseTransition;
+                    isStage2 = true;
+                }
                 else
                     attackType = (int)YharonAttacksType.FlyAway;
 
                 attackTimer = 0;
                 circleCount = 0;
                 currentPhase++;
-                isStage2 = true;
                 NPC.netUpdate = true;
                 return;
             }
@@ -449,7 +452,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         #endregion
         #region 飞走
-        public void DoBehavior_FlyAway(float attacktimer, ref float frameType)
+        public void DoBehavior_FlyAway(float attacktimer, ref float frameType, bool isTrueDead)
         {
             invincible = true;
             //奶奶的不要走之前创思我好不好
@@ -473,7 +476,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.velocity.Y -= 0.4f;
                 if (attacktimer == 160)
                 {
-                    FirstDown();
+                    if(isTrueDead)
+                        FirstDown();
+
                     NPC.active = false;
                 }
                 NPC.Opacity -= 0.04f;

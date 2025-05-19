@@ -1,4 +1,5 @@
 using CalamityInheritance.NPCs.Boss.Yharon.Proj;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Boss;
@@ -19,7 +20,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public const float PostEclipse_Phase3LifeRatio = 0.6f;
         public const float PostEclipse_Phase4LifeRatio = 0.4f;
         public const float PostEclipse_Phase5LifeRatio = 0.2f;
-        public void Stage2AI(float lifeRatio, ref float currentPhase, ref float attackType, ref float attackTimer, ref float circleCount, bool postEclipse)
+        public void Stage2AI(float lifeRatio, ref float currentPhase, ref float attackType, ref float attackTimer, ref float circleCount)
         {
             if (lifeRatio <= PostEclipse_Phase1LifeRatio && currentPhase == 4f && isStage2)
             {
@@ -32,7 +33,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase2LifeRatio && currentPhase == 5f && isStage2 && !doRebornEffect)
+            if (lifeRatio <= PostEclipse_Phase2LifeRatio && currentPhase == 5f && isStage2 && !doRebornEffect )
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -41,7 +42,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase3LifeRatio && currentPhase == 6f && isStage2 && !doRebornEffect)
+            if (lifeRatio <= PostEclipse_Phase3LifeRatio && currentPhase == 6f && isStage2 && !doRebornEffect )
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -50,7 +51,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase4LifeRatio && currentPhase == 7f && isStage2 && !doRebornEffect)
+            if (lifeRatio <= PostEclipse_Phase4LifeRatio && currentPhase == 7f && isStage2 && !doRebornEffect )
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -59,7 +60,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase5LifeRatio && currentPhase == 8f && isStage2 && !doRebornEffect)
+            if (lifeRatio <= PostEclipse_Phase5LifeRatio && currentPhase == 8f && isStage2 && !doRebornEffect )
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;

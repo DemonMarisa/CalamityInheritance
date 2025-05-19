@@ -22,9 +22,14 @@ namespace CalamityInheritance.Common.CIHook
         // 这一段是为了修复神殇模式导致的飞行条绘制bug
         // 原灾判断了坐骑，但是刚进入世界没有坐骑记录，导致抛出异常
         // 用另一种材质获取方法替代了原方法
-        //我进不去游戏
         public static void Load()
         {
+            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+
+            MethodInfo original = typeof(FlightBar).GetMethod("DrawFlightBar", bindingFlags);
+            var hook = new Hook(original, DrawFlightBar_Hook);
+            hook.Apply();
+
             MethodInfo originalMethod = typeof(FlightBar).GetMethod("Draw");
             MonoModHooks.Add(originalMethod, Draw_Hook);
         }
@@ -148,13 +153,13 @@ namespace CalamityInheritance.Common.CIHook
                 }
             }
             Texture2D correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorder").Value;
-            // 妈的进去吧你
+
             if (modPlayer.Player.equippedWings != null && modPlayer.Player.wingTimeMax == 0)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderDisabled").Value;
-            if (modPlayer.weakPetrification || modPlayer.vHex || modPlayer.icarusFolly || modPlayer.DoGExtremeGravity)
-                correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderReduced").Value;
             if ((modPlayer.infiniteFlight || FlightBar.RidingInfiniteFlightMount(modPlayer.Player)) && FlightBar.completedAnimation)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderInfinite").Value;
+            if (modPlayer.weakPetrification || modPlayer.vHex || modPlayer.icarusFolly || modPlayer.DoGExtremeGravity)
+                correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderReduced").Value;
             if (CIWorld.defiled)
                 correctBorder = ModContent.Request<Texture2D>("CalamityMod/UI/FlightBar/FlightBarBorderDisabled").Value;
 

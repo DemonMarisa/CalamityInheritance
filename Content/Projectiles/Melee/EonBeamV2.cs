@@ -21,7 +21,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Projectile.width = 20;
             Projectile.height = 20;
-            Projectile.aiStyle = 27;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 3;
@@ -34,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-            Projectile.rotation = Projectile.velocity.ToRotation();
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
             int num36 = Main.rand.Next(3);
             int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, num36 switch

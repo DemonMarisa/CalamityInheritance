@@ -172,6 +172,15 @@ Configs: {
 			Tooltip: 关闭进入游戏时的文字
 		}
 
+		debugint1: {
+			// Label: debugint1
+			// Tooltip: ""
+		}
+
+		debugint2: {
+			// Label: debugint2
+			// Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

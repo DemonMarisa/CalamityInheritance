@@ -315,8 +315,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool invincible = false;
         // 转阶段效果控制
         public bool playerP2PEffect = false;
-        // 判定释放过了日食
-        public bool postEclipse = false;
         // 激怒
         public bool Enraged = false;
         // 第二面
@@ -401,7 +399,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             net1[2] = canLookTarget;
             net1[3] = invincible;
             net1[4] = playerP2PEffect;
-            net1[5] = postEclipse;
+            net1[5] = false;
             net1[6] = hasCharge;
             net1[7] = Enraged;
             writer.Write(net1);
@@ -437,7 +435,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             canLookTarget = net1[2];
             invincible = net1[3];
             playerP2PEffect = net1[4];
-            postEclipse = net1[5];
+            _ = net1[5];
             hasCharge = net1[6];
             Enraged = net1[7];
 
@@ -528,15 +526,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             target.AddBuffSafer<BossEffects>(1);
             #region 阶段判定
             // 第一大阶段
-            Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount, postEclipse);
+            Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
             // 第二大阶段
-            Stage2AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount, postEclipse);
+            if(CIDownedBossSystem.DownedBuffedSolarEclipse && CIDownedBossSystem.DownedLegacyYharonP1)
+                Stage2AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
             #endregion
 
             // 目标死亡后消失
             if (!target.active || target.dead)
             {
-                DoBehavior_FlyAway(attackTimer, ref frameType);
+                DoBehavior_FlyAway(attackTimer, ref frameType, false);
                 return;
             }
 
@@ -581,7 +580,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     DoBehavior_TelephoneCharge(target, ref attackTimer, ref frameType);
                     break;
                 case YharonAttacksType.FlyAway:
-                    DoBehavior_FlyAway(attackTimer, ref frameType);
+                    DoBehavior_FlyAway(attackTimer, ref frameType, true);
                     break;
                 case YharonAttacksType.OpacityToZero:
                     DoBehavior_OpacityToZero(attackTimer, ref frameType);
@@ -1009,8 +1008,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public override void OnKill()
         {
             Player player = Main.LocalPlayer;
-            CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipse", Color.Orange);
-            CIFunction.SendTextOnPlayer("Boss.Text.YharonPreEclipse", Color.Orange);
 
             SoundEngine.PlaySound(CISoundID.SoundCurseFlamesAttack, NPC.position);
 
