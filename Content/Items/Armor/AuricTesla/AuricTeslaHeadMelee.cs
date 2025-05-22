@@ -66,6 +66,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             calPlayer.bloodflareMelee = true;
             calPlayer.godSlayer = true;
             usPlayer.GodSlayerMelee= true;
+            usPlayer.AuricDebuffImmune = true;
 
             usPlayer.SilvaMeleeSetLegacy = true;
             usPlayer.GodSlayerReflect = true;

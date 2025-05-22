@@ -29,18 +29,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的1/8，这是一个防后效果
-            //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害1/4
-            if (IsColdDivityActiving && ColdDivityTier3 && proj.type == ModContent.ProjectileType<CryogenPtr>())
-            {
-                int dmg = proj.damage / 9;
-                if (target.HasBuff(ModContent.BuffType<CryoDrain>()))
-                    dmg += proj.damage / 9;
-                if (proj.CalamityInheritance().PingWhipStrike)
-                    dmg /= 2;
-                modifiers.FinalDamage += dmg;
-            }
-
             if (SilvaMeleeSetLegacy)
             {
                 if (Main.rand.NextBool(4) && proj.TrueMeleeClass())

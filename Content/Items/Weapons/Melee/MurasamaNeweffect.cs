@@ -11,6 +11,7 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using System;
+using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -19,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         
         public int frameCounter = 0;
         public int frame = 0;
-        public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues";
+        public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues" || CIDownedBossSystem.DownedLegacyYharonP2;
 
         public override void SetStaticDefaults()
         {

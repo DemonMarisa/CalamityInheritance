@@ -11,6 +11,7 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Particles;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -99,8 +100,28 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, drawStart, texture.Width, frameHeight)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture.Width / 2f, frameHeight / 2f), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
+        public override bool CanHitPlayer(Player player)
+        {
+            // 这一段还是复制的原灾爆改的，详情看原灾吧
+            if (Projectile.Opacity != 1f)
+                return false;
 
-        public override bool CanHitPlayer(Player target) => Projectile.Opacity == 1f;
+            bool cannotBeHurt = player.HasIFrames() || player.creativeGodMode;
+            if (cannotBeHurt)
+                return true;
+
+            if (Colliding(Projectile.Hitbox, player.Hitbox) == false)
+                return false;
+
+            GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+            GeneralParticleHandler.SpawnParticle(orb);
+            if (Main.rand.NextBool())
+            {
+                GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                GeneralParticleHandler.SpawnParticle(orb2);
+            }
+            return true;
+        }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {

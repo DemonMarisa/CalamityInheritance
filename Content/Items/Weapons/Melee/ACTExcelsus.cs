@@ -53,7 +53,7 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         Item.useAnimation = 14;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = 14;
-        Item.useTurn = true;
+        Item.useTurn = false;
         Item.knockBack = 8f;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;

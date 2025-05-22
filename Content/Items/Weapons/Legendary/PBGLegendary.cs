@@ -30,11 +30,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type]= true;
         }
+        public int baseDamage = 50;
         public override void SetDefaults()
         {
             Item.width = 26;
             Item.height = 58;
-            Item.damage = 70;
+            Item.damage = baseDamage;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -81,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getdmg = LegendaryDamage() + Generic.GenericLegendBuff();
-            int boostPercent = (int)(getdmg * 100);
+            int boostPercent = (int)(getdmg);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -91,7 +92,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+            // 必须手动转换，不然会按照int进行加成
+            float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
+            damage *= Buff;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -115,21 +118,29 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             }
             return false;
         }
-        //总共8个tier, 终灾与exo本身属于同一个tier
-        public static float LegendaryDamage()
+        public static int LegendaryDamage()
         {
-            float damageBuff = 0f;
-            damageBuff += NPC.downedAncientCultist ? 0.1f : 0f;
-            damageBuff += NPC.downedMoonlord ? 0.1f : 0f;
-            damageBuff += DownedBossSystem.downedProvidence ? 0.3f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.3f : 0f;
-            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedDoG ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedYharon ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 0.8f : 0f;
-            //恭喜击败至尊灾厄眼，所以。500%?
-            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 5f : 0f;
-            return 1f + damageBuff;
+            int dmgBuff = 0;
+            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 5 : 0;    // 55
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 5 : 0; // 60
+            dmgBuff += DownedBossSystem.downedRavager ? 5 : 0;         // 65
+            dmgBuff += Condition.DownedCultist.IsMet() ? 10 : 0;       // 75
+            dmgBuff += DownedBossSystem.downedAstrumDeus ? 10 : 0;     // 85
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 25 : 0;      // 110
+            dmgBuff += DownedBossSystem.downedGuardians ? 10 : 0;      // 120
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 10 : 0;    // 130
+            dmgBuff += DownedBossSystem.downedProvidence ? 85 : 0;    // 225
+            dmgBuff += DownedBossSystem.downedSignus ? 15 : 0;         // 240
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 15 : 0;  // 255
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 15 : 0;    // 270
+            dmgBuff += DownedBossSystem.downedPolterghast ? 155 : 0;   // 425
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 25 : 0;     // 450
+            dmgBuff += DownedBossSystem.downedDoG ? 350 : 0;           // 800
+            dmgBuff += DownedBossSystem.downedYharon ? 1000 : 0;       // 1800
+            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1900
+            dmgBuff += DownedBossSystem.downedExoMechs ? 100 : 0;      // 2000
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 2000 : 0;
+            return dmgBuff;
         }
     }
 }

@@ -33,10 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-            if (!Main.zenithWorld)
-            CalamityUtils.HomeInOnNPC(Projectile, true, 400f, 12f, 20f);
-            else
-            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 14f, 90f);
+            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 12f, 35f);
 
             Lighting.AddLight(Projectile.Center, 0f, (255 - Projectile.alpha) * 0.75f / 255f, 0f);
         }

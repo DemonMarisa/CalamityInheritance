@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -85,6 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         const float BuffColdPointer = 1f;
         const int T1CD = 75;
         const int NOT1CD = 180;
+        public int EXdamage = 0;
         #region 别名
         public ref float AttackAngle => ref Projectile.ai[0];
         public ref float AttackType => ref Projectile.ai[1];
@@ -139,6 +141,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             int realTar = reader.ReadInt32();
             tar = realTar == -1 ? null : Main.npc[realTar];
         }
+        public override void OnSpawn(IEntitySource source)
+        {
+            EXdamage = Projectile.damage;
+        }
+
         /*
         *我要去杀了所有写代码不写注释的人的亲妈
         *这串代码中，ai[1]用于表示是否为右键功能的射弹标记，如果ai[1] == 2f, 则右键射弹， ai[1] == 1f, 则是左键常规的射弹逻辑, 需注意
@@ -269,8 +276,10 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                             AttackBuffer = BuffColdPointer;
                         int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, Projectile.damage, Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr, AttackBuffer);
                         //动态变化其伤害
+                        
                         if (Main.projectile.IndexInRange(s))
                             Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1.01f);
+                        
                     }
                     Projectile.netUpdate = Projectile.owner == Main.myPlayer;
                 }
@@ -352,6 +361,23 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 NewDust(5);
                 //操你妈灾厄
                 modifiers.SourceDamage *= 0.8f;
+            }
+
+            //T3效果：寒冰神性最后结算时总会附加造成射弹初始伤害的1/8，这是一个防后效果
+            //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害1/4
+            if (Owner.CIMod().IsColdDivityActiving && Owner.CIMod().ColdDivityTier3)
+            {
+                
+                int dmg = EXdamage / 8;
+
+                if (target.HasBuff(ModContent.BuffType<CryoDrain>()))
+                    dmg = EXdamage / 4;
+
+                if (Projectile.CalamityInheritance().PingWhipStrike)
+                    dmg = dmg / 2;
+                float finalDmgMult = (float)((float)(EXdamage + dmg) / (float)EXdamage) - 1;
+
+                modifiers.FinalDamage += finalDmgMult;
             }
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)

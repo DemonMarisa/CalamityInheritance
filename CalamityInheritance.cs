@@ -19,6 +19,7 @@ using Terraria.ModLoader.Config;
 using System.Collections.Generic;
 using System;
 using CalamityInheritance.Common.EventChange;
+using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance
 {
@@ -109,6 +110,14 @@ namespace CalamityInheritance
                 CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
                 CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
                 CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
+            }
+            if (CalamityLists.debuffList != null)
+            {
+                CalamityLists.debuffList.Add(ModContent.BuffType<AbyssalFlames>());
+                CalamityLists.debuffList.Add(ModContent.BuffType<Horror>());
+                CalamityLists.debuffList.Add(ModContent.BuffType<MaliceModeCold>());
+                CalamityLists.debuffList.Add(ModContent.BuffType<MaliceModeHot>());
+                CalamityLists.debuffList.Add(ModContent.BuffType<VulnerabilityHexLegacy>());
             }
             CIResprite.LoadTexture();
             CIWeaponsResprite.LoadTexture();

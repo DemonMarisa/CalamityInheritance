@@ -452,7 +452,7 @@ DukeLegendary: {
 		[TIERTHREE]
 		'''
 	DisplayName: Briny Baron Legendary
-	LegendaryScaling: "[c/35FFFF:Damage Scaling]: +{0}%"
+	LegendaryScaling: "[c/35FFFF:Damage Scaling]: +{0} Weapon base Damage"
 	TierOne: "[c/35FFFF:Upgrade]: Removed the limite of briny typhoon and reworked razorwind homing style"
 	TierTwo: "[c/35FFFF:Upgrade]: Call up a bunch of razorwind support you upon launching razorwind"
 	TierThree: "[c/35FFFF:Upgrade]: Gives various melee effects upon enemy hits"
@@ -478,7 +478,7 @@ DefenseBlade: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	LegendaryScaling: "[c/9173B1:Damage Scaling]: +{0}% weapon damage"
+	LegendaryScaling: "[c/9173B1:Damage Scaling]: +{0} Weapon base Damage"
 	TierOne: "[c/9173B1:Upgrade]: +1% defense on enemy hit, capped at 25%"
 	TierTwo: "[c/9173B1:Upgrade]: Striking enemy with blade will let you ignore defense damage"
 	TierThree: "[c/9173B1:Upgrade] Grants damage buff base on your current defense"

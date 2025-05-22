@@ -66,6 +66,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             calPlayer.bloodflareSet = true;
             calPlayer.bloodflareMage = true;
+            usPlayer.AuricDebuffImmune = true;
 
             calPlayer.godSlayer = true;
 

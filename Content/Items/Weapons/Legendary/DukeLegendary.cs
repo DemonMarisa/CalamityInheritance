@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
-        
+        public int baseDamage = 75;
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Melee.DukeLegendary";
         public override void SetStaticDefaults()
         {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.width = 100;
             Item.height = 102;
-            Item.damage = 75;
+            Item.damage = baseDamage;
             Item.scale *= 1.5f;
             Item.knockBack = 4f;
             Item.useAnimation = Item.useTime = 15;
@@ -54,10 +54,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
+                Item.useTurn = false;
                 Item.noMelee = true;
             }
             else
             {
+                Item.useTurn = true;
                 Item.noMelee = false;
             }
 
@@ -80,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage() + Generic.GenericLegendBuff();
-            int boostPercent = (int)(getDmg * 100);
+            int boostPercent = (int)(getDmg);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -90,7 +92,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+            // 必须手动转换，不然会按照int进行加成
+            float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
+            damage *= Buff;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -167,24 +171,29 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             }
         }
         //8个Boss
-        public static float LegendaryDamage()
+        public static int LegendaryDamage()
         {
-            float damageBuff = 0f;
-            //+3个boss
-            damageBuff += DownedBossSystem.downedPlaguebringer ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedRavager ? 0.2f : 0f;
-            damageBuff += NPC.downedEmpressOfLight ? 0.2f : 0f;
-            damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
-            damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedDoG ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedYharon ? 1.0f : 0f;
-            damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
-            //恭喜击败至尊灾厄眼，所以。500%?
-            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
-            return 1f + damageBuff;
+            int dmgBuff = 0;
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 5 : 0; // 80
+            dmgBuff += DownedBossSystem.downedRavager ? 5 : 0;         // 85
+            dmgBuff += DownedBossSystem.downedPlaguebringer ? 5 : 0;   // 90
+            dmgBuff += Condition.DownedCultist.IsMet() ? 15 : 0;       // 105
+            dmgBuff += DownedBossSystem.downedAstrumDeus ? 10 : 0;     // 115
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 120 : 0;     // 235
+            dmgBuff += DownedBossSystem.downedGuardians ? 10 : 0;      // 245
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 10 : 0;    // 255
+            dmgBuff += DownedBossSystem.downedProvidence ? 205 : 0;    // 460
+            dmgBuff += DownedBossSystem.downedSignus ? 15 : 0;         // 475
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 15 : 0;  // 490
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 15 : 0;    // 505
+            dmgBuff += DownedBossSystem.downedPolterghast ? 295 : 0;   // 800
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 80 : 0;     // 880
+            dmgBuff += DownedBossSystem.downedDoG ? 220 : 0;           // 1100
+            dmgBuff += DownedBossSystem.downedYharon ? 3500 : 0;        // 4600
+            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1400
+            dmgBuff += DownedBossSystem.downedExoMechs ? 100 : 0;      // 1500
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 1500 : 0;
+            return dmgBuff;
         }
     }
 }

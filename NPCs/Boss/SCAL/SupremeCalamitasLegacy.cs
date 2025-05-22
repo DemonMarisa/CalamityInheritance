@@ -57,6 +57,7 @@ using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Buffs.Potions;
 using CalamityInheritance.Buffs.Potions;
 using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -879,6 +880,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 float chargeVelocity = isWormAlive ? 26f : 30f;
                 chargeVelocity += 1f * currentPhase;
 
+                if(isSeekerAlive)
+                    chargeVelocity += 5f;
+
                 Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation + MathHelper.PiOver2) ;
                 direction = direction.SafeNormalize(Vector2.UnitX);
                 NPC.velocity = direction * chargeVelocity;
@@ -1436,7 +1440,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (attacktimer == 360)
             { 
                 canNextPhase = true;
-                SelectNextAttack();
+                SelectNextAttack(19);
             }
         }
         #endregion
@@ -1479,6 +1483,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 SendBattleText(15);
                 canDead = true;
+                NPC.DR_NERD(0);
             }
         }
         #endregion
@@ -1626,7 +1631,28 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {
             cooldownSlot = ImmunityCooldownID.Bosses;
+
+            bool cannotBeHurt = target.HasIFrames() || target.creativeGodMode;
+
+            if (cannotBeHurt)
+                return true;
+
+            if (NPC.Center.Distance(target.Center) > NPC.width / 2)
+                return false;
+
+            GlowOrbParticle orb = new GlowOrbParticle(target.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+            GeneralParticleHandler.SpawnParticle(orb);
+            if (Main.rand.NextBool())
+            {
+                GlowOrbParticle orb2 = new GlowOrbParticle(target.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                GeneralParticleHandler.SpawnParticle(orb2);
+            }
+
             return true;
+        }
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            target.ScalDebuffs(300, 480, 480);
         }
         public override void FindFrame(int frameHeight)
         {
@@ -1740,10 +1766,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             return false;
         }
-        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
-        {
-            target.ScalDebuffs(300, 480, 480);
-        }
+
         public override void HitEffect(NPC.HitInfo hit)
         {
             for (int k = 0; k < 5; k++)

@@ -177,6 +177,7 @@ namespace CalamityInheritance.System
             #endregion
             #region 神长添加
             PostDOGWeapons.Add(ModContent.ItemType<ACTExcelsus>());
+            PostDOGWeapons.Add(ModContent.ItemType<ACTExcelsus>());
             #endregion
             #region 龙后
             PostyharonWeapons.Add(ModContent.ItemType<Murasama>());
@@ -630,6 +631,9 @@ namespace CalamityInheritance.System
             #region 射手
             if (item.type == ModContent.ItemType<DrataliornusLegacy>())
                 item.damage = 700;
+
+            if (item.type == ModContent.ItemType<TyrannysEndOld>())
+                item.damage = 6100;
             #endregion
             #region 法师
             if (item.type == ModContent.ItemType<VoidVortexLegacy>())

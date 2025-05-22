@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 for (int i = 0; i < flameAmt; i++)
                 {
                     Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<DefenseFlame>(), (int)(Projectile.damage * 0.75), 0f, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<DefenseFlame>(), (int)(Projectile.damage * 0.33), 0f, Projectile.owner, 0f, 0f);
                 }
             }
         }

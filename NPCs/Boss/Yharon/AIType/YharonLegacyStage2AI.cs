@@ -355,7 +355,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // 向指定位置移动并准备冲刺
                 Vector2 destination = target.Center + new Vector2(CIFunction.PlayerAndNPCDir(NPC, target) * hoverX, hoverY);
                 Vector2 idealVelocity = NPC.SafeDirectionTo(destination) * splittingMeteorBombingSpeed;
-                NPC.velocity = Vector2.Lerp(NPC.velocity, idealVelocity, 0.035f);
+                NPC.velocity = Vector2.Lerp(NPC.velocity, idealVelocity, 0.08f);
             }
             else if (attacktimer == splittingMeteorRiseTime)
             {
@@ -386,7 +386,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, ModContent.ProjectileType<FlareDust2>(), 515, 0f, Main.myPlayer, 0f, 0f);
                 
-                if (NPC.Distance(target.Center) > 6000f)
+                if (NPC.Distance(target.Center) > 4000f)
                     attacktimer = TotalTimer;
             }
             if (attacktimer > TotalTimer)

@@ -37,9 +37,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
                 float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
-                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
-                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.DarkOrange);
+                Particle eclipseTrai2 = new StarProjBlack(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.Black);
+                GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
             }
             if(Projectile.Calamity().stealthStrike)
             {
@@ -47,9 +47,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
                     float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
-                    Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
-                    Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
-                    GeneralParticleHandler.SpawnParticle(eclipseTrail);
+                    Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.DarkOrange);
+                    Particle eclipseTrai2 = new StarProjBlack(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.Black);
+                    GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
                 }
             }
         }

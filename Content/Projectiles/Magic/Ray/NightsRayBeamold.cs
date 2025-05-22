@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
+                    Vector2 dustSpawnPos = Projectile.Center - Projectile.velocity * i / 2f;
                     Dust corruptMagic = Dust.NewDustPerfect(dustSpawnPos, 27);
                     corruptMagic.color = Color.Lerp(Color.Fuchsia, Color.Magenta, Main.rand.NextFloat(0.6f));
                     corruptMagic.scale = Main.rand.NextFloat(0.96f, 1.04f);

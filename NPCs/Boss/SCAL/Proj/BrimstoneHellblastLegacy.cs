@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using CalamityInheritance.Content.Items;
+using CalamityMod.Particles;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -102,20 +103,38 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1, texture);
             return false;
         }
+        public override bool CanHitPlayer(Player player)
+        {
+            // 这一段还是复制的原灾爆改的，详情看原灾吧
+            if (Projectile.timeLeft <= 51)
+                return false;
 
-        public override bool CanHitPlayer(Player target) => Projectile.timeLeft >= 51;
+            bool cannotBeHurt = player.HasIFrames() || player.creativeGodMode;
+            if (cannotBeHurt)
+                return true;
 
+            if (Colliding(Projectile.Hitbox, player.Hitbox) == false)
+                return false;
+
+            GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+            GeneralParticleHandler.SpawnParticle(orb);
+            if (Main.rand.NextBool())
+            {
+                GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                GeneralParticleHandler.SpawnParticle(orb2);
+            }
+
+            return true;
+        }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            // 用于普灾的差分
             if (Projectile.ai[2] == 0f)
                 target.ScalDebuffs(180, 240, 0);
             else
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 90);
-
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 30);
         }
 
         public override void OnKill(int timeLeft)

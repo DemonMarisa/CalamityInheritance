@@ -27,12 +27,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
         }
-
+        public int baseDamage = 60;
         public override void SetDefaults()
         {
             Item.width = 62;
             Item.height = 62;
-            Item.damage = 80;
+            Item.damage = baseDamage;
             Item.mana = 9;
             Item.DamageType = DamageClass.Magic;
             Item.useAnimation = Item.useTime = 11;
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             // 以下，用于比较复杂的计算
-            int boostPercent = (int)((LegendaryDamage() + Generic.GenericLegendBuff()) * 100);
+            int boostPercent = (int)((LegendaryBuff() + Generic.GenericLegendBuff()));
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -81,25 +81,35 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+            // 必须手动转换，不然会按照int进行加成
+            float Buff = (float)((float)(baseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
+            damage *= Buff;
         }
-        public static float LegendaryDamage()
-        {
-            float newDamage = 0f;
-            newDamage += DownedBossSystem.downedRavager ? 0.1f : 0f;
-            newDamage += Condition.DownedEmpressOfLight.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedDukeFishron.IsMet() ? 0.1f : 0f;
-            newDamage += Condition.DownedCultist.IsMet() ? 0.2f : 0f;
-            newDamage += Condition.DownedMoonLord.IsMet() ? 0.2f : 0f;
-            newDamage += DownedBossSystem.downedGuardians ? 0.6f : 0f;
-            newDamage += DownedBossSystem.downedProvidence  ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedDoG ? 0.8f : 0f;
-            newDamage += DownedBossSystem.downedYharon ? 1.5f : 0f;
-            newDamage += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas ? 1.5f : 0f;
-            newDamage += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
-            return 1f + newDamage;
 
+        public static int LegendaryBuff()
+        {
+            int dmgBuff = 0;
+            bool yharon = DownedBossSystem.downedYharon || CIDownedBossSystem.DownedLegacyYharonP2; ;
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 2 : 0;  // 47
+            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 2 : 0;     // 49
+            dmgBuff += DownedBossSystem.downedPlaguebringer ? 2 : 0;    // 51
+            dmgBuff += Condition.DownedCultist.IsMet() ? 9 : 0;         // 60
+            dmgBuff += DownedBossSystem.downedAstrumDeus ? 5 : 0;       // 65
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 30 : 0;       // 95
+            dmgBuff += DownedBossSystem.downedGuardians ? 5 : 0;        // 100
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 5 : 0;      // 105
+            dmgBuff += DownedBossSystem.downedProvidence ? 100 : 0;     // 155
+            dmgBuff += DownedBossSystem.downedSignus ? 10 : 0;          // 165
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 10 : 0;   // 175
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 10 : 0;     // 185
+            dmgBuff += DownedBossSystem.downedPolterghast ? 90 : 0;     // 275
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 20 : 0;      // 295
+            dmgBuff += DownedBossSystem.downedDoG ? 265 : 0;            // 480
+            dmgBuff += yharon ? 620 : 0;                                // 1100
+            dmgBuff += DownedBossSystem.downedCalamitas ? 50 : 0;       // 1150
+            dmgBuff += DownedBossSystem.downedExoMechs ? 50 : 0;        // 1200
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 1200 : 0;
+            return dmgBuff;
         }
         public override float UseSpeedMultiplier(Player player)
         {

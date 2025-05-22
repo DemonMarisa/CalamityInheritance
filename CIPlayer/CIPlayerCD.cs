@@ -46,6 +46,11 @@ namespace CalamityInheritance.CIPlayer
         public int maliceModeUnderworldTime = 0;
         //远古弑神闪避计时
         public int AncinetGodSlayerDodgeCount = 3;
+
+        #region 林海复活
+        // 用于计时
+        public int SilvaRebornTimer = 0;
+        #endregion
         public void ResetCD()
         {
             if (GodSlayerDMGprotect)

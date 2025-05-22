@@ -23,8 +23,9 @@ namespace CalamityInheritance.Content.Projectiles
         public float MinionProjDamageValue = 0f;
 
         public bool AMRextra = false;
-        // 100个额外射弹AI
-        internal const int MaxAIMode = 100;
+        public bool ignoreDrAndDef = false;
+        // 10个额外射弹AI
+        internal const int MaxAIMode = 10;
         public float[] ProjNewAI = new float[MaxAIMode];
 
         public bool AMRextraTy = false;
@@ -141,14 +142,11 @@ namespace CalamityInheritance.Content.Projectiles
                     projectile.ArmorPenetration += gloveArmorPenAmt;
             }
 
-            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
+            if (AMRextra == true)
             {
-
-                if (AMRextra == true && hitInfo.Crit)
-                {
-                    IEntitySource source = projectile.GetSource_FromThis();
-                    int extraProjectileAmt = 4;
-                    if (projectile.owner == Main.myPlayer)
+                IEntitySource source = projectile.GetSource_FromThis();
+                int extraProjectileAmt = 4;
+                if (projectile.owner == Main.myPlayer)
                     for (int x = 0; x < extraProjectileAmt; x++)
                     {
                         bool fromRight = x > 2;
@@ -156,25 +154,33 @@ namespace CalamityInheritance.Content.Projectiles
                         CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                     }
 
-                    AMRextra = false;
-                }
-                if (AMRextraTy == true && hitInfo.Crit)
+                AMRextra = false;
+            }
+            if (AMRextraTy == true)
+            {
+                IEntitySource source = projectile.GetSource_FromThis();
+                int extraProjectileAmt = 8;
+                for (int x = 0; x < extraProjectileAmt; x++)
                 {
-                    IEntitySource source = projectile.GetSource_FromThis();
-                    int extraProjectileAmt = 8;
-                    for (int x = 0; x < extraProjectileAmt; x++)
+                    if (projectile.owner == Main.myPlayer)
                     {
-                        if (projectile.owner == Main.myPlayer)
-                        {
-                            bool fromRight = x > 3;
-                            Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
-                            CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
-                        }
+                        bool fromRight = x > 3;
+                        Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
+                        CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                     }
-                    AMRextraTy = false;
                 }
-            };
+                AMRextraTy = false;
+            }
 
+            if(ignoreDrAndDef)
+            {
+                //Avoid touching things that you probably aren't meant to damage
+                if (modifiers.SuperArmor || target.defense > 999 || target.Calamity().DR >= 0.95f || target.Calamity().unbreakableDR)
+                    return;
+                //Bypass defense
+                modifiers.DefenseEffectiveness *= 0f;
+                modifiers.FinalDamage *= 1f / (1f - target.Calamity().DR);
+            }
             LevelBoost(projectile, usPlayer);
         }
         #region 元素箭袋

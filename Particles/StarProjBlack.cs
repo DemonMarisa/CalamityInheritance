@@ -19,18 +19,18 @@ namespace CalamityInheritance.Particles
         public bool AffectedByGravity;
         public override bool SetLifetime => true;
         public override bool UseCustomDraw => true;
-        public override bool UseAdditiveBlend => true;
+        public override bool UseAdditiveBlend => false;
 
-        public override string Texture => "CalamityInheritance/Particles/StarProjBlack";
+        public override string Texture => "CalamityMod/Projectiles/StarProj";
 
-        public StarProjBlack(Vector2 relativePosition, Vector2 velocity, bool affectedByGravity, int lifetime, float scale)
+        public StarProjBlack(Vector2 relativePosition, Vector2 velocity, bool affectedByGravity, int lifetime, float scale, Color color)
         {
             Position = relativePosition;
             Velocity = velocity;
             AffectedByGravity = affectedByGravity;
             Scale = scale;
             Lifetime = lifetime;
-            Color = Color.White;
+            Color = InitialColor = color;
         }
 
         public override void Update()

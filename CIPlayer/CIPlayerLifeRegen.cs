@@ -59,7 +59,7 @@ namespace CalamityInheritance.CIPlayer
             float calamityDebuffMultiplier = 1f;
 
             // 总共降低的生命值
-            float totalNegativeLifeRegen = 0;
+            float totalPowerfulNegativeLifeRegen = 0;
 
             void ApplyDoTDebuff(bool hasDebuff, int negativeLifeRegenToApply, bool immuneCondition = false)
             {
@@ -70,13 +70,13 @@ namespace CalamityInheritance.CIPlayer
                     Player.lifeRegen = 0;
 
                 Player.lifeRegenTime = 0;
-                totalNegativeLifeRegen += negativeLifeRegenToApply * calamityDebuffMultiplier;
+                totalPowerfulNegativeLifeRegen += negativeLifeRegenToApply * calamityDebuffMultiplier;
             }
             //150 -> 90 （75HP/s -> 50HP/s) 比超位崩解(40HP/s)强一些
             ApplyDoTDebuff(abyssalFlames, 100);
             ApplyDoTDebuff(vulnerabilityHexLegacy, 32);
 
-            Player.lifeRegen -= (int)totalNegativeLifeRegen;
+            Player.lifeRegen -= (int)totalPowerfulNegativeLifeRegen;
         }
         #region Update Life Regen
         public override void UpdateLifeRegen()
@@ -123,16 +123,23 @@ namespace CalamityInheritance.CIPlayer
             if (AncientAstralSet && Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
             {
                 Player.lifeRegen = 4;
+                Player.lifeRegenTime = 0;
             }
             if (AncientSilvaForceRegen)
             {
                 // 旧林海新增: 生命再生速度无法低于0
                 // 删了旧終灾在场降低回血
                 // 这一段就是魔君能随便站撸終灾的罪魁祸首
-                int lifeRegenSpeed = 8;
+                int lifeRegen = 1;
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
-                    Player.lifeRegen = lifeRegenSpeed; //承受Debuff伤害时获得4HP/s
-                
+                {
+                    // 现在应该会需要跑逐渐递增的回血了
+                    Player.lifeRegen = 0; //承受Debuff伤害时获得4HP/s
+                    if(Player.miscCounter % 15 == 0)
+                        Player.Heal(lifeRegen);
+                    Player.lifeRegenTime = 0;
+                }
+
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子
@@ -179,7 +186,7 @@ namespace CalamityInheritance.CIPlayer
 
                     if(Main.zenithWorld) minTimer = 3600; //林海强回血在天顶世界下会强行回1分钟
 
-                    int timer = Main.rand.Next(minTimer, minTimer + 15); //回血刻由45 -> 55内随机
+                    int timer = 50; // 现在固定50帧
                     AncientSilvaRegenTimer = timer;
                 }
             }

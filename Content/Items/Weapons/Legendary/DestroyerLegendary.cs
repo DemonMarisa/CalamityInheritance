@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
-        public static readonly int BaseDamage = 22;
+        public static readonly int BaseDamage = 17;
         public override void SetDefaults()
         {
             Item.width = 96;
@@ -47,7 +47,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= (BaseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / BaseDamage;
+            // 必须手动转换，不然会按照int进行加成
+            float Buff = (float)((float)(BaseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / (float)BaseDamage);
+            damage *= Buff;
         }
         public override bool AltFunctionUse(Player player)
         {
@@ -132,34 +134,35 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static int LegendaryBuff()
         {
             //SHPC时期较早，因此具备时期较多的伤害增长. 同时，此处也采用与叶流类似的机制——即使用加算，而非乘算的增伤
+            // 砍了一刀增幅，后期太超模了
             int dmgBuff = 0;
-            dmgBuff += DownedBossSystem.downedCalamitasClone ? 5 : 0;   //27
-            dmgBuff += Condition.DownedPlantera.IsMet() ? 5: 0;         //32
-            dmgBuff += DownedBossSystem.downedLeviathan ? 5 : 0;        //37
-            dmgBuff += DownedBossSystem.downedAstrumAureus? 5 : 0;      //42
-            dmgBuff += Condition.DownedGolem.IsMet() ? 8 : 0;           //50
-            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 10 : 0; //60
-            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 10 : 0;    //70
-            dmgBuff += DownedBossSystem.downedRavager ? 10 : 0;         //80
-            dmgBuff += DownedBossSystem.downedPlaguebringer ? 10 : 0;   //90
-            dmgBuff += Condition.DownedCultist.IsMet() ? 10 : 0;        //100
+            bool DownCalclone = DownedBossSystem.downedCalamitasClone || CIDownedBossSystem.DownedCalClone;
+            dmgBuff += DownCalclone ? 2 : 0;   //27 - 19
+            dmgBuff += Condition.DownedPlantera.IsMet() ? 3: 0;         //32 - 22
+            dmgBuff += DownedBossSystem.downedLeviathan ? 3 : 0;        //37 - 25
+            dmgBuff += DownedBossSystem.downedAstrumAureus? 3 : 0;      //42 - 28
+            dmgBuff += Condition.DownedGolem.IsMet() ? 4 : 0;           //50 - 32
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 4 : 0; //60 - 36
+            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 4 : 0;    //70 - 40
+            dmgBuff += DownedBossSystem.downedRavager ? 4 : 0;         //80 - 44
+            dmgBuff += DownedBossSystem.downedPlaguebringer ? 4 : 0;   //90 - 48
+            dmgBuff += Condition.DownedCultist.IsMet() ? 5 : 0;        //100 - 53
             //没有星神游龙是故意的，我不希望有人说在冲线阶段浪费时间打这个玩意
-            dmgBuff += Condition.DownedMoonLord.IsMet() ? 20: 0;        //120
-            dmgBuff += DownedBossSystem.downedGuardians ? 50 : 0;       //170
-            dmgBuff += DownedBossSystem.downedProvidence ? 50 : 0;      //220
-            dmgBuff += DownedBossSystem.downedSignus ? 30 : 0;          //250
-            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 30 : 0;   //280
-            dmgBuff += DownedBossSystem.downedStormWeaver ? 30 : 0;     //310
-            dmgBuff += DownedBossSystem.downedPolterghast ? 60 : 0;     //370
-            dmgBuff += DownedBossSystem.downedBoomerDuke ? 100 : 0;     //470
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 47: 0;        //120 - 90
+            dmgBuff += DownedBossSystem.downedGuardians ? 20 : 0;       //170 - 110
+            dmgBuff += DownedBossSystem.downedProvidence ? 110 : 0;      //220 - 220
+            dmgBuff += DownedBossSystem.downedSignus ? 10 : 0;          //250 - 230
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 10 : 0;   //280 - 240
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 10 : 0;     //310 - 250
+            dmgBuff += DownedBossSystem.downedPolterghast ? 150 : 0;     //370 - 400
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 40 : 0;     //470 - 440
             //我tm又忘记金龙了，不管了，fuckyou
-            dmgBuff += DownedBossSystem.downedDragonfolly? 20 : 0;      //490
-            dmgBuff += DownedBossSystem.downedDoG ? 120 : 0;            //610
-            dmgBuff += DownedBossSystem.downedYharon ? 150 : 0;         //760
-            dmgBuff += DownedBossSystem.downedCalamitas ? 200 : 0;      //960
-            dmgBuff += DownedBossSystem.downedExoMechs ? 200 : 0;       //1060
-            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm ? 500 : 0; //1560
-            dmgBuff += CIDownedBossSystem.DownedLegacyScal ? 500 : 0;
+            dmgBuff += DownedBossSystem.downedDragonfolly? 10 : 0;      //490 - 450
+            dmgBuff += DownedBossSystem.downedDoG ? 460 : 0;            //610 - 800
+            dmgBuff += DownedBossSystem.downedYharon ? 1460 : 0;         //760 - 2060
+            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;      //960 - 2160
+            dmgBuff += DownedBossSystem.downedExoMechs ? 100 : 0;       //1060 - 2260
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 500 : 0; //1560 - 2760
             return dmgBuff;
         }
     }

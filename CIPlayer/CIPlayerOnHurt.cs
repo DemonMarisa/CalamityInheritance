@@ -128,92 +128,31 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             if (GodSlayerReborn && !Player.HasCooldown(GodSlayerCooldown.ID))
             {
-                SoundEngine.PlaySound(CISoundID.SoundRainbowGun, Player.Center);
-                for (int j = 0; j < 50; j++)
-                {
-                    int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                    Dust dust = Main.dust[nebulousReviveDust];
-                    dust.position.X += Main.rand.Next(-20, 21);
-                    dust.position.Y += Main.rand.Next(-20, 21);
-                    dust.velocity *= 0.9f;
-                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    // Change this accordingly if we have a proper equipped sprite.
-                    dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
-                    if (Main.rand.NextBool())
-                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                }
-
-                Player.statLife = +100;
-
-                if (BuffStatsDraconicSurge || AncientGodSlayerSet)
-                {
-                    Player.Heal(Player.statLifeMax2);
-                    //给耐药性
-                    Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
-                    //直接给30秒。
-                    Player.AddBuff(BuffID.PotionSickness, 1800);
-                }
-                Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
+                GSReborn();
                 return false;
             }
-            //先判是否为林海套
-            if (SilvaFakeDeath && DoSilvaCountDown > 0)
+            // 远古林海
+            if (AncientSilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
             {
-                //赋予一次。
-                if (DoSilvaCountDown == SilvaRebornDura)
-                {
-                    Player.AddBuff(ModContent.BuffType<SilvaRevival>(), SilvaRebornDura);
-                    //我们只发送一次音效。
-                    SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-                }
-
-                if (!IsUsedSilvaReborn)
-                    DoSilvaHeal(calPlayer.silvaWings);
-
-                DoSilvaHeal(calPlayer.silvaWings);
-                IsUsedSilvaReborn = true;
-                //如果都没有，或者已经执行过一次，我们才会执行锁1血的防处死
-                if (Player.statLife < 1)
-                    Player.statLife = 1;
-                //血神圣杯的特判
-                if (calPlayer.chaliceOfTheBloodGod)
-                {
-                    calPlayer.chaliceBleedoutBuffer = 0D;
-                    calPlayer.chaliceDamagePointPartialProgress = 0D;
-                }
+                SilvaReborn(300, calPlayer);
                 return false;
             }
-            //金源套，附带弑神复活的特判, 从上方复制了一遍。
-            if (AuricSilvaFakeDeath && DoAuricSilvaCountdown > 0 && Player.HasCooldown(GodSlayerCooldown.ID))
+            // 金源套
+            if (AuricSilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
             {
-                //赋予一次。
-                if (DoAuricSilvaCountdown == AuricSilvaRebornDura)
-                {
-                    Player.AddBuff(ModContent.BuffType<SilvaRevival>(), AuricSilvaRebornDura);
-                    //我们只发送一次音效
-                    SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
-                }
-                //三个检测，优先判定龙魂秘药(恢复至最大生命值)
-                if (!IsUsedSilvaReborn)
-                    DoSilvaHeal(calPlayer.silvaWings);
-                    
-                IsUsedSilvaReborn = true;               //如果都没有，或者已经执行过一次，我们才会执行锁1血的防处死
-                if (Player.statLife < 1)
-                    Player.statLife = 1;
-                //血神圣杯的特判
-                if (calPlayer.chaliceOfTheBloodGod)
-                {
-                    calPlayer.chaliceBleedoutBuffer = 0D;
-                    calPlayer.chaliceDamagePointPartialProgress = 0D;
-                }
-                //防处死
+                SilvaReborn(600, calPlayer);
                 return false;
             }
-
+            // 林海套
+            if (SilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
+            {
+                SilvaReborn(900, calPlayer);
+                return false;
+            }
             //目前用于龙魂与原灾金源和复活效果的互动
             if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
             {
-                DoSilvaHeal(calPlayer.silvaWings);
+                DoSilvaHeal();
                 return false;
             }
             // 終灾期间玩家死亡计数
@@ -225,8 +164,56 @@ namespace CalamityInheritance.CIPlayer
 
             return true;
         }
-        public void DoSilvaHeal(bool isUsingWings)
+        #region 弑神复活
+        public bool GSReborn()
         {
+            SoundEngine.PlaySound(CISoundID.SoundRainbowGun, Player.Center);
+            for (int j = 0; j < 50; j++)
+            {
+                int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                Dust dust = Main.dust[nebulousReviveDust];
+                dust.position.X += Main.rand.Next(-20, 21);
+                dust.position.Y += Main.rand.Next(-20, 21);
+                dust.velocity *= 0.9f;
+                dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+                // Change this accordingly if we have a proper equipped sprite.
+                dust.shader = GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
+                if (Main.rand.NextBool())
+                    dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
+            }
+
+            Player.statLife = +100;
+
+            if (BuffStatsDraconicSurge || AncientGodSlayerSet)
+            {
+                Player.Heal(Player.statLifeMax2);
+                //给耐药性
+                Player.AddCooldown(DraconicElixirCooldown.ID, CalamityUtils.SecondsToFrames(30));
+                //直接给30秒。
+                Player.AddBuff(BuffID.PotionSickness, 1800);
+            }
+            Player.AddCooldown(GodSlayerCooldown.ID, CalamityUtils.SecondsToFrames(45));
+            return false;
+        }
+        #endregion
+        #region 林海复活
+        public bool SilvaReborn(int TotalTimer, CalamityPlayer calPlayer)
+        {
+            // 在刚触发时的初始化，判断治疗玩家与添加buff
+            if(!Player.HasBuff(ModContent.BuffType<SilvaRevival>()))
+            {
+                Player.AddBuff(ModContent.BuffType<SilvaRevival>(), TotalTimer);
+                SilvaRebornTimer = TotalTimer;
+            }
+
+            SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+            DoSilvaHeal();
+            return false;
+        }
+        #endregion
+        public void DoSilvaHeal()
+        {
+            CalamityPlayer calPlayer = Player.Calamity();
             //有龙魂秘药的优先判龙魂秘药。
             if (BuffStatsDraconicSurge)
             {
@@ -238,7 +225,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
             }
             //仅在不佩戴龙魂秘药的时候判定是否佩戴翅膀
-            if (!BuffStatsDraconicSurge && isUsingWings)
+            if (!BuffStatsDraconicSurge && calPlayer.silvaWings)
             {
                 Player.Heal(Player.statLifeMax2 / 2);
                 return;

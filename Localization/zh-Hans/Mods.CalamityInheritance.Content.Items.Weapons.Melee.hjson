@@ -441,7 +441,7 @@ DukeLegendary: {
 		[TIERTHREE]
 		'''
 	DisplayName: 海爵剑[Legendary]
-	LegendaryScaling: "[c/35FFFF:武器强化]:{0}%"
+	LegendaryScaling: "[c/35FFFF:武器强化]: +{0} 基础伤害"
 	TierOne: "[c/35FFFF:强化]:移除涡流台风的数量上限, 并重写水刃龙卷的追踪方式"
 	TierTwo: "[c/35FFFF:强化]:发射水刃龙卷时将会呼叫水刃龙卷支援"
 	TierThree: "[c/35FFFF:强化]:击中敌人时会强化综合近战属性"
@@ -468,7 +468,7 @@ DefenseBlade: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	LegendaryScaling: "[c/9173B1:武器强化]: {0}%"
+	LegendaryScaling: "[c/9173B1:武器增强]: +{0} 武器基础伤害"
 	TierOne: "[c/9173B1:强化]:攻击时会增强1%防御力, 最高增强25%"
 	TierTwo: "[c/9173B1:强化]:刀片击中敌人时会使你无视防御损伤"
 	TierThree: "[c/9173B1:强化]:防御力会以一定比例加强你的武器伤害"

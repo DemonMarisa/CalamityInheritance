@@ -76,7 +76,7 @@ CyrogenLegendary: {
 		[TIERTWO]
 		[TIERTHREE]
 		'''
-	LegendaryScaling: "[c/1E90FF:Damage Scaling]: +{0} weapon damage"
+	LegendaryScaling: "[c/1E90FF:Damage Scaling]: +{0} weapon base damage"
 	TierOne: "[c/1E90FF:Upgrade]: Significantly increased the firing rates of ice spikes"
 	TierTwo: "[c/1E90FF:Upgrade]: Forcibly launching ice spike on whip striking, grants them the ability to heal upon hitting"
 	TierThree: "[c/1E90FF:Upgrade]: Ice spike will ignore target's defense stats and inflicting Cryo Drain"

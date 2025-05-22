@@ -408,9 +408,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             float currentPhase = NPC.ai[2];
             float closeVelocity = 18f;
             float closeVelocityAcc = 1.4f;
-            int TotalHover = 30;
+            int TotalHover = 45;
             frameType = (float)YharonFrameType.PlayOnce;
-            float distance = 250 * Math.Sign((NPC.Center - target.Center).X);
+            float distance = 550 * Math.Sign((NPC.Center - target.Center).X);
 
             if (attacktimer <= 1)
             {

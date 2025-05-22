@@ -444,7 +444,7 @@ PlanteraLegendary: {
 	TierOne: "[c/00CB67:强化]:增强叶之箭与孢子球攻击速度与飞行速度"
 	TierTwo: "[c/00CB67:强化]:增加叶之箭与孢子球的发射数量"
 	TierThree: "[c/00CB67:强化]:叶之箭50%概率发起追踪, 孢子球必定跟踪"
-	LegendaryScaling: "[c/00CB67:强化属性]: +{0} 武器伤害"
+	LegendaryScaling: "[c/00CB67:强化属性]: +{0} 武器基础伤害"
 	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
 	TierTwoTint: "[c/818589:在丛林食用黄金菜肴]"
 	TierThreeTint: "[c/818589:携带元素箭袋，在丛林范围内召唤一只丛林龙]"

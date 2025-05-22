@@ -17,6 +17,7 @@ using Terraria.Localization;
 using Mono.Cecil;
 using Terraria.DataStructures;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -31,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.width = 150;
             Item.height = 48;
-            Item.damage = 2500;
+            Item.damage = 2200;
             Item.knockBack = 9.5f;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 55;
@@ -109,19 +110,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (CIConfig.Instance.AmmoConversion == true)
             {
-                type = ModContent.ProjectileType<PiercingBullet>();
-                Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
+                type = ModContent.ProjectileType<BetterAMR>();
+                Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
+                proj.CalamityInheritance().ignoreDrAndDef = true;
             }
             if (CIConfig.Instance.AmmoConversion == false)
             {
                 if (type == ProjectileID.Bullet)
                 {
-                    type = ModContent.ProjectileType<PiercingBullet>();
+                    type = ModContent.ProjectileType<BetterAMR>();
                 }
-                if (type != ModContent.ProjectileType<PiercingBullet>())
+                if (type != ModContent.ProjectileType<BetterAMR>())
                 {
                     Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
                     proj.CalamityInheritance().AMRextraTy = true;
+                    proj.CalamityInheritance().ignoreDrAndDef = true;
                 }
             }
             return false;

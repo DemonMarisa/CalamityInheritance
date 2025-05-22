@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(9); // was 6
-        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(6);
+        public static int CIShieldRechargeRelay = CalamityUtils.SecondsToFrames(9);
         public static int CITotalShieldRechargeTime = CalamityUtils.SecondsToFrames(6);
 
         // While active, The Sponge gives 30 defense and 10% DR

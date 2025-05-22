@@ -68,6 +68,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             calPlayer.godSlayer = true;
             calPlayer.godSlayerThrowing = true;
             usPlayer.AuricSilvaFakeDeath = true;
+            usPlayer.AuricDebuffImmune = true;
 
             player.setBonus = this.GetLocalizedValue("SetBonus");
             usPlayer.GodSlayerReborn = true;

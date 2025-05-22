@@ -111,7 +111,7 @@ namespace CalamityInheritance.CIPlayer
             ShieldEffect();
 
             // 杂项条件与重置
-            ReSet();
+            // ReSet();
 
             // 神殇
             Defiled();
@@ -440,8 +440,6 @@ namespace CalamityInheritance.CIPlayer
         {
             // 因为较高等级的护盾更亮，所以这里从最高等级到最低等级处理护盾。
             bool shieldAddedLight = false;
-
-
             // 如果“海绵”装备没有装备，则消除其耐久冷却时间。
             // 故意保留充电冷却时间以防止快速切换来重新充电护盾。
             if (!CIsponge)
@@ -578,67 +576,10 @@ namespace CalamityInheritance.CIPlayer
             if (triggerSilvaFakeDeath)
                 DoSilvaFakeDeathEffect();
 
-            //所有金源林海套装的新效果
-            if (AuricSilvaFakeDeath && Player.lifeRegen < -10)
-            {
-                //将绝对值的1/10转化为生命恢复，间接降低烧血debuff的伤害
-                int getCurLifeRegenAbs = Math.Abs(Player.lifeRegen);
-                Player.lifeRegen += getCurLifeRegenAbs / 10;
-            }
             // 林海无敌的视觉效果。与其他的。
-            if (DoSilvaCountDown > 0 && IsUsedSilvaReborn)
+            if (SilvaRebornTimer > 0)
             {
-                //计时器往下跑。
-                DoSilvaCountDown -= 1;
-                //打表的debuff免疫
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
-                //效果补充：低于0的的生命恢复在此期间会被强制置零
-                if (Player.lifeRegen < 0)
-                    Player.lifeRegen = 0;
-                //粒子。 
-                DoSilvaDust();
-                //给CD
-                if (DoSilvaCountDown <= 0)
-                {
-                    SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                    //林海自起为啥要跑180秒的CD， wtf?
-                    Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
-                }
-                
-            }
-            //CD结束后重置林海效果
-            if (!Player.HasCooldown(SilvaRevive.ID) && IsUsedSilvaReborn && DoSilvaCountDown <= 0)
-            {
-                DoSilvaCountDown = SilvaRebornDura;
-                IsUsedSilvaReborn = false;
-            }
-            //金源林海效果，与其他。
-            if (DoAuricSilvaCountdown > 0 && IsUsedSilvaReborn)
-            {
-                //计时器往下跑。
-                DoAuricSilvaCountdown -= 1;
-                //打表的debuff免疫
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
-                //效果补充：低于0的的生命恢复在此期间会被强制置零
-                if (Player.lifeRegen < 0)
-                    Player.lifeRegen = 0;
-                //粒子。 
-                DoSilvaDust();
-                //给CD
-                if (DoAuricSilvaCountdown <= 0)
-                {
-                    SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
-                    //林海自起为啥要跑180秒的CD， wtf?
-                    Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(60));
-                }
-            }
-            //CD结束，重置林海效果
-            if (!Player.HasCooldown(SilvaRevive.ID) && IsUsedSilvaReborn && DoAuricSilvaCountdown <= 0)
-            {
-                DoAuricSilvaCountdown = AuricSilvaRebornDura;
-                IsUsedSilvaReborn = false;
+                SilvaRebornEffect();
             }
             if (SilvaMeleeSetLegacy)
             {
@@ -654,7 +595,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (AuricDebuffImmune)
             {
-                foreach (int debuff in CalamityLists.debuffList)
+                // 好你个小子免疫这游戏所有Debuff了
+                // foreach (int debuff in CalamityLists.debuffList)
+                foreach (int debuff in CalamityInheritanceLists.AuricdebuffList)
                     Player.buffImmune[debuff] = true;
             } 
         }
@@ -693,7 +636,23 @@ namespace CalamityInheritance.CIPlayer
             if (SilvaRougeSetLegacy)
                 Player.GetDamage<RogueDamageClass>() += 0.40f;
         }
-
+        public void SilvaRebornEffect()
+        {
+            // 计时器
+            SilvaRebornTimer -= 1;
+            // 粒子
+            DoSilvaDust();
+            // CD
+            if (SilvaRebornTimer == 1)
+            {
+                SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                // 45秒
+                Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(90));
+            }
+            // 重置到100血防止反复触发复活
+            if (Player.statLife < 100)
+                Player.statLife = 100;
+        }
         public void DoSilvaDust()
         {
             for (int j = 0; j < 2; j++)
@@ -1473,7 +1432,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             // 海绵的保底
-            if (Player.statLifeMax2 > 800 && !calPlayer.chaliceOfTheBloodGod) //
+            if (Player.statLifeMax2 > 800)
                 ShieldDurabilityMax = Player.statLifeMax2;
             else
                 ShieldDurabilityMax = 800;

@@ -434,7 +434,7 @@ PlanteraLegendary: {
 	TierOne: "[c/00CB67:Upgrade]: Boost the firing rate and flying speed of leaves and spore orbs"
 	TierTwo: "[c/00CB67:Upgrade]: Increased the numbers of leaves and spore orbs fired"
 	TierThree: "[c/00CB67:Upgrade]: Leaves have a 50% chance to homing in, spore orbs gauranteed homing in"
-	LegendaryScaling: "[c/00CB67:Damage Scaling]: +{0} weapon damage"
+	LegendaryScaling: "[c/00CB67:Damage Scaling]: +{0} weapon base damage"
 	TierOneTint: "[c/818589:Maybe try get close to shimmer?]"
 	TierTwoTint: "[c/818589:Eat a Golden Delight on Jungle Surface]"
 	TierThreeTint: "[c/818589:Summon Yharon with the Elemental Quiver equipped]"

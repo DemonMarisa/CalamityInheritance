@@ -253,7 +253,7 @@ PBGLegendary: {
 	TierOne: "[c/00FF7F:Upgrade]: +1 ultra-fast light kunai"
 	TierTwo: "[c/00FF7F:Upgrade]: Increased the hit times of ultra-fast light kunai"
 	TierThree: "[c/00FF7F:Upgrade]: All of your attacks will make you receive 25% less damage for 15 seconds"
-	LegendaryScaling: "[c/00FF7F:Damage Scaling] +{0}% weapon damage"
+	LegendaryScaling: "[c/00FF7F:Damage Scaling] +{0} weapon base damage"
 	TierOneTint: "[c/818589:Maybe try get close to shimmer?]"
 	TierTwoTint: "[c/818589:Finished Polterghast with kunai]"
 	TierThreeTint: "[c/818589:Summon Devourer of Gods with Deific Amulet equipped]"

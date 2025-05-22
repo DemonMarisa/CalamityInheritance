@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.DamageType = DamageClass.Melee;
             Item.damage = 432;
             Item.knockBack = 2.5f;
-            Item.useAnimation = 19;
-            Item.useTime = 19;
+            Item.useAnimation = 10;
+            Item.useTime = 10;
             Item.autoReuse = true;
 
             Item.useStyle = ItemUseStyleID.Swing;
@@ -86,6 +86,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         private void OnHitEffects(Player player, Vector2 targetPos)
         {
+            SoundStyle fire = new("CalamityMod/Sounds/Item/CursedDaggerThrow");
+            SoundEngine.PlaySound(fire with { Volume = 0.5f, Pitch = 0.9f, PitchVariance = 0.2f, MaxInstances = -1 }, player.Center);
             // Individual true melee homing missiles deal 10% of the weapon's base damage.
             int numSplits = 5;
             int trueMeleeID = ModContent.ProjectileType<AtaraxiaHoming>();

@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             {
                 for (int num447 = 0; num447 < 2; num447++)
                 {
-                    Vector2 vector33 = Projectile.position;
+                    Vector2 vector33 = Projectile.Center;
                     vector33 -= Projectile.velocity * (num447 * 0.25f);
                     int num448 = Dust.NewDust(vector33, 1, 1, DustID.BoneTorch, 0f, 0f, 0, default, 1.25f);
                     Main.dust[num448].noGravity = true;

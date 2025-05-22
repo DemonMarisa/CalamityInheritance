@@ -27,11 +27,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
+        public int baseDamage = 75;
         public override void SetDefaults()
         {
             Item.height = Item.width = 72;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
-            Item.damage = 75;
+            Item.damage = baseDamage;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useAnimation = Item.useTime = 10;
             Item.scale *= 1.25f;
@@ -51,6 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 Item.DamageType = DamageClass.Melee;
                 //谁家好人射弹剑刀刃不造成伤害啊?
                 Item.noMelee = false;
+                Item.useTurn = false;
                 Item.UseSound = SoundID.Item73;
                 Item.shoot = ModContent.ProjectileType<DefenseBeam>();
             }
@@ -58,10 +60,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             {
                 Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
                 Item.noMelee = false;
+                Item.useTurn = true;
                 Item.UseSound = SoundID.Item1;
                 Item.shoot = ProjectileID.None;
             }
             return true;
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+                Projectile.NewProjectile(source, position, velocity, type, damage / 2, knockback, player.whoAmI);
+            else
+                return false;
+
+            return false; // Return false because we've manually created the projectiles.
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
@@ -84,8 +96,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
-            float getDmg = LegendaryDamage() + Generic.GenericLegendBuff();
-            int boostPercent = (int)(getDmg * 100);
+            float getDmg = LegendaryDamage() + Generic.GenericLegendBuffInt();
+            int boostPercent = (int)(getDmg);
             string update = this.GetLocalization("LegendaryScaling").Format(
                 boostPercent.ToString()
             );
@@ -95,24 +107,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= LegendaryDamage() + Generic.GenericLegendBuff();
+            // 必须手动转换，不然会按照int进行加成
+            float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt(1000)) / (float)baseDamage);
+            damage *= Buff;
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
         public static float LegendaryDamage()
         {
-            float damageBuff = 1f;
-            damageBuff += NPC.downedAncientCultist ? 0.2f : 0f;
-            damageBuff += NPC.downedMoonlord ? 0.2f : 0f;
-            damageBuff += DownedBossSystem.downedProvidence ? 0.4f : 0f;
-            damageBuff += DownedBossSystem.downedPolterghast ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedBoomerDuke ? 0.8f : 0f;
-            damageBuff += DownedBossSystem.downedDoG ? 1.0f : 0f;
-            damageBuff += DownedBossSystem.downedYharon ? 1.2f : 0f;
-            damageBuff += DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas? 1f : 0f;
-            //恭喜击败至尊灾厄眼，所以。500%?
-            damageBuff += CIDownedBossSystem.DownedLegacyScal ? 2.5f : 0f;
-            return damageBuff;
+            int dmgBuff = 0;
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 5 : 0; // 80
+            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 5 : 0;    // 85
+            dmgBuff += DownedBossSystem.downedRavager ? 5 : 0;         // 90
+            dmgBuff += DownedBossSystem.downedPlaguebringer ? 5 : 0;   // 95
+            dmgBuff += Condition.DownedCultist.IsMet() ? 40 : 0;       // 135
+            dmgBuff += DownedBossSystem.downedAstrumDeus ? 20 : 0;     // 135
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 185 : 0;     // 320
+            dmgBuff += DownedBossSystem.downedGuardians ? 20 : 0;      // 340
+            dmgBuff += DownedBossSystem.downedProvidence ? 160 : 0;    // 500
+            dmgBuff += DownedBossSystem.downedSignus ? 30 : 0;         // 530
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 30 : 0;  // 560
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 30 : 0;    // 590
+            dmgBuff += DownedBossSystem.downedPolterghast ? 210 : 0;   // 800
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 40 : 0;     // 840
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 20 : 0;    // 860
+            dmgBuff += DownedBossSystem.downedDoG ? 1600 : 0;          // 2460
+            dmgBuff += DownedBossSystem.downedYharon ? 2540 : 0;       // 5000
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 5000 : 0; //9200
+            return dmgBuff;
         }
 
         

@@ -63,9 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             for (int index = 0; index < 4; ++index)
             {
-                float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
-                float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.5), knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, player.Center, velocity.RotatedByRandom(MathHelper.ToRadians(5f)), type, (int)(damage * 0.5), knockback, player.whoAmI, 0f, 0f);
             }
             return false;
         }

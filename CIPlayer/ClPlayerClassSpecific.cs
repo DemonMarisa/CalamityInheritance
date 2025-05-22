@@ -101,7 +101,7 @@ namespace CalamityInheritance.CIPlayer
                 float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
-                Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage * 5, proj.knockBack);
+                Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, direction * randomSpeed, projectileTypes, finalDamage, proj.knockBack);
             }
             //林海
             var source = proj.GetSource_FromThis();

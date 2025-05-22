@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
@@ -39,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<SilvaLeggings>().
+                AddIngredient<SilvaLeggingsold>().
                 AddIngredient<EffulgentFeather>(30).
                 AddIngredient<PlantyMush>(25).
                 AddTile<CosmicAnvil>().

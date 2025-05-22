@@ -59,11 +59,6 @@ namespace CalamityInheritance.CIPlayer
         public int AncientAuricHealCooldown = 0; //暴君套回血CD
         public int PerunofYharimCooldown = 0; //暴君套打击cd
         public bool PerunofYharimStats= false;
-        public bool IsUsedSilvaReborn = false;
-        public const int SilvaRebornDura = 900;
-        public int DoSilvaCountDown = SilvaRebornDura;
-        public const int AuricSilvaRebornDura = 600;
-        public int DoAuricSilvaCountdown = AuricSilvaRebornDura;
         #endregion
         #region Reaver
         //永恒套
@@ -106,7 +101,8 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         #region
         public bool YharimAuricSet = false;
-        #endregion
+        #endregion 远古林海套
+        public bool AncientSilvaFakeDeath = false;
         #endregion
         public void ResetArmorSet()
         {
@@ -159,18 +155,21 @@ namespace CalamityInheritance.CIPlayer
             ReaverMageBurst = false;
             ReaverSummoner = false;
             FuckYouGolem = false;
+            ReaverRogueExProj = false;
             #endregion
             #region Xeroc
             AncientXerocSet     = false;
             AncientXerocWrath   = false;
             #endregion
-
             AncientAstralSet = false;
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
             Test = false;
+            #region 远古林海
+            AncientSilvaFakeDeath = false;
             #endregion
-           
+            #endregion
+
         }
         public void UpdateDeadArmorSet()
         {
@@ -214,9 +213,6 @@ namespace CalamityInheritance.CIPlayer
             #region Auric
             AuricDebuffImmune = false;
             AuricbloodflareRangedSoul = false;
-            IsUsedSilvaReborn = false;
-            DoAuricSilvaCountdown = AuricSilvaRebornDura;
-            DoSilvaCountDown = SilvaRebornDura;
             auricBoostold = false;
             AncientAuricSet = false;
             AuricSilvaFakeDeath = false;
@@ -231,6 +227,7 @@ namespace CalamityInheritance.CIPlayer
             ReaverBurstCooldown = 0;
             ReaverRangedRocket = false;
             ReaverSummoner = false;
+            ReaverRogueExProj = false;
             #endregion
             #region Xeroc
             AncientXerocSet     = false;
@@ -244,6 +241,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
+
         }
     }
 }

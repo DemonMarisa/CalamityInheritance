@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.System.DownedBoss;
+﻿using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Events;
@@ -23,6 +24,9 @@ namespace CalamityInheritance.Common.EventChange
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<YharonEgg>();
         public override bool CanUseItem(Item item, Player player)
         {
+            if(!CIServerConfig.Instance.SolarEclipseChange)
+                return true;
+
             if (!CIDownedBossSystem.DownedBuffedSolarEclipse)
             {
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Boss.Text.YharonPreEclipseSummon", Color.Orange);

@@ -164,7 +164,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
             AddIngredient<ElementalRayold>().
             AddIngredient<PhantasmalFuryOld>().
-            AddIngredient<ArchAmaryllis>().
+            AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
             AddIngredient<ShadowboltStaff>().
             AddIngredient<UltraLiquidator>().
@@ -177,7 +177,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
             AddRecipeGroup("CalamityInheritance:AnyElementalRay").
             AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
-            AddIngredient<ArchAmaryllis>().
+            AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
             AddIngredient<ShadowboltStaff>().
             AddIngredient<UltraLiquidator>().
@@ -190,7 +190,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
             AddRecipeGroup("CalamityInheritance:AnyElementalRay").
             AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
-            AddIngredient<ArchAmaryllis>().
+            AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
             AddIngredient<ShadowboltStaff>().
             AddIngredient<UltraLiquidator>().

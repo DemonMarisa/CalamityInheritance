@@ -20,7 +20,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ACTKarasawa : CIRanged, ILocalizedModType
     {
-        public static readonly SoundStyle FireSound = new("CalamityMod/Sounds/Item/MechGaussRifle");
         public override void SetStaticDefaults()
         {
             Type.ShimmerEach<Karasawa>();
@@ -37,7 +36,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
 
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.UseSound = FireSound;
             Item.noMelee = true;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;

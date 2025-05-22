@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             CalamityPlayer calPlayer = player.Calamity();
             usPlayer.AncientSilvaForceRegen = true;
             usPlayer.AncientSilvaStat = true;
-            usPlayer.SilvaFakeDeath = true;
+            usPlayer.AncientSilvaFakeDeath = true;
             calPlayer.wearingRogueArmor = true;
             calPlayer.rogueStealthMax += 1.25f;
             calPlayer.WearingPostMLSummonerSet = true;
@@ -47,15 +48,18 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             player.maxMinions += 5;
             player.maxTurrets += 3;
             player.statLifeMax2 += 200;
-            player.GetDamage<GenericDamageClass>() += 0.20f;
-            player.GetCritChance<GenericDamageClass>() += 0.20f;
+            player.GetDamage<GenericDamageClass>() += 0.10f;
+            player.GetCritChance<GenericDamageClass>() += 0.10f;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<SilvaHeadMagic>().
-                AddIngredient<SilvaHeadSummon>().
+                AddIngredient<SilvaHeadMagicold>().
+                AddIngredient<SilvaHeadSummonold>().
+                AddIngredient<SilvaHeadMelee>().
+                AddIngredient<SilvaHeadRanged>().
+                AddIngredient<SilvaHeadRogue>().
                 AddIngredient<EffulgentFeather>(40).
                 AddIngredient<PlantyMush>(75).
                 AddTile<CosmicAnvil>().

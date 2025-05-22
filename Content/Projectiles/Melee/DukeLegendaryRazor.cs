@@ -61,7 +61,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else if(Projectile.ai[0] == 0f)
                 TrailLine();
             //彻底发挥轮椅之光
-            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 3200f : 450f; 
+            // 砍了一刀，搜索范围太大会导致打长直boss非常卡
+            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 1600f : 450f; 
             NPC getTar = CIFunction.FindClosestTarget(Projectile, homingDist, true, false);
             switch (Projectile.ai[0])
             {

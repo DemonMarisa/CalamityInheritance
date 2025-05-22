@@ -18,13 +18,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 
         public override void SetDefaults()
         {
-            Item.damage = 50;
+            Item.damage = 45;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 46;
             Item.height = 46;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3.25f;
@@ -35,11 +35,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.shoot = ModContent.ProjectileType<BloodRayold>();
             Item.shootSpeed = 6f;
         }
-        public override Vector2? HoldoutOrigin()
-        {
-            return new Vector2(0, -2);
-        }
-
         public override void AddRecipes()
         {
             CreateRecipe().

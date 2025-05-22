@@ -53,12 +53,14 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
                     drawData.position = original.position - drawPlayer.position + oldPos;
                     drawData.color = Color.Goldenrod with { A = 0 } * opacity; // 金色
                     drawData.scale *= scale;
+                    drawData.rotation = original.rotation;
 
                     // 深色描边
                     DrawData outlineData = original;
                     outlineData.position = drawData.position + new Vector2(2f * scale);
                     outlineData.color = Color.DarkGoldenrod * (opacity * 0.3f);
                     outlineData.scale *= scale;
+                    outlineData.rotation = original.rotation;
 
                     afterimages.Add(outlineData);
                     afterimages.Add(drawData);

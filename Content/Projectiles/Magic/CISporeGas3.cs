@@ -26,6 +26,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.tileCollide = false;
             Projectile.aiStyle = 569;
             Projectile.DamageType = DamageClass.Magic;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
 
         public override void AI()

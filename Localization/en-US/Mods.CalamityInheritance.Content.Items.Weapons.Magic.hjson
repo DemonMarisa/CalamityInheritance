@@ -276,7 +276,7 @@ RavagerLegendary: {
 	TierTwoTint: "[c/818589:Keep striking Providence in underworld]"
 	TierThree: "[c/FF009B:Upgrade]: Grants life regen and damage buff when using the weapon"
 	TierThreeTint: "[c/818589:Meet up a betsy with the Calamitas' Sigil equipped]"
-	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0}% weapon damage"
+	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0} weapon base damage"
 }
 
 FuckVoid: {
@@ -303,7 +303,7 @@ DestroyerLegendary: {
 	TierTwoTint: "[c/818589:Drinks an Purple Juice during the Inpending Doom]"
 	TierThree: "[c/4169E1:Upgrade]: This Weapon no longer consume any mana"
 	TierThreeTint: "[c/818589:Summon Polterghast after used Comet Shard and Ethereal Core]"
-	LegendaryScaling: "[c/4169E1:Damage Scaling]: +{0} weapon damage"
+	LegendaryScaling: "[c/4169E1:Damage Scaling]: +{0} weapon base damage"
 }
 
 SubsumingVortexChange:

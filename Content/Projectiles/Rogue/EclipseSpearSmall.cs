@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -53,9 +54,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 sVel = Projectile.velocity.RotatedByRandom(0.3f) * Main.rand.NextFloat(0.6f, 1.2f);
                 int sLife = Main.rand.Next(20, 30);
                 float sScale = Main.rand.NextFloat(1.6f, 2f) * 0.955f;
-                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
+                Color trailColor = Color.DarkOrange;
                 Particle spark = new SparkParticle(Projectile.Center, sVel, false, sLife, sScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(spark);
+                Particle eclipseTrai2 = new StarProjBlack(Projectile.Center, sVel, false, sLife, sScale, Color.Black);
+                GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? spark : eclipseTrai2);
             }
         }
         public override bool PreDraw(ref Color lightColor)

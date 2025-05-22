@@ -64,9 +64,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Vector2 trailPos = Projectile.Center + Vector2.UnitY.RotatedBy(Projectile.rotation) * Main.rand.NextFloat(-16f, 16f);
                 float trailScale = Main.rand.NextFloat(0.8f, 1.2f);
-                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
-                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+                Particle eclipseTrail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.DarkOrange);
+                Particle eclipseTrai2 = new StarProjBlack(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.Black);
+                GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
             }
         }
 
@@ -91,9 +91,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 sVel = Projectile.velocity.RotatedByRandom(0.3f) * Main.rand.NextFloat(0.6f, 2f);
                 int sLife = Main.rand.Next(23, 50);
                 float sScale = Main.rand.NextFloat(1.6f, 2f) * 0.955f;
-                Color trailColor = Main.rand.NextBool() ? Color.White : Color.DarkOrange;
+                Color trailColor = Color.DarkOrange;
                 Particle eclipseTrail = new SparkParticle(sVel, Projectile.velocity * 0.2f, false, sLife, sScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(eclipseTrail);
+                Particle eclipseTrai2 = new StarProjBlack(sVel, Projectile.velocity * 0.2f, false, sLife, sScale, Color.Black);
+                GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
             }
         }
         //现在我们需要开始从天上降下投矛
