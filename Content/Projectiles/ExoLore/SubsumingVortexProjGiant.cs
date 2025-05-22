@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public const float IdealScale = 2.7f;
         const float StartHomingNPCTime = 480f;
-
+        const float SuicideTime = 240f;
         public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
         public bool InitSound = false;
 

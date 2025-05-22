@@ -436,7 +436,7 @@ PlanteraLegendary: {
 	TierThree: "[c/00CB67:Upgrade]: Leaves have a 50% chance to homing in, spore orbs gauranteed homing in"
 	LegendaryScaling: "[c/00CB67:Damage Scaling]: +{0} weapon base damage"
 	TierOneTint: "[c/818589:Maybe try get close to shimmer?]"
-	TierTwoTint: "[c/818589:Eat a Golden Delight on Jungle Surface]"
+	TierTwoTint: "[c/818589:Eat a Golden Delight on Jungle Surface when defeated Moon Lord]"
 	TierThreeTint: "[c/818589:Summon Yharon with the Elemental Quiver equipped]"
 }
 

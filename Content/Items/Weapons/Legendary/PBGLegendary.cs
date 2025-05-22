@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             else
             {
                 int pNum = player.CIMod().PBGTier1 ? 6 : 5;
-                int dmg =  player.CIMod().PBGTier1 ? (int)(damage * 0.8f) : (int)(damage * 0.7f);
+                int dmg =  (int)(damage * 0.7f);
                 for (int j = 1; j <= pNum; j++)
                 {
                     Vector2 spread = new Vector2(velocity.X, velocity.Y).RotatedBy(j / 11f + 0.2f) * j / 5f;

@@ -36,10 +36,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 {
                     //将暴击加成小数点前置两位。
                     getCrits /= 100f;
-                    //暴击加成取1/3，折算掉射弹本身的伤害
-                    int pDamage = (int)(Projectile.damage * getCrits / 3);
-                    //直接补到最终伤害上
-                    modifiers.FinalDamage += pDamage / 10f;
+                    //与1结算。
+                    float realReduceDefense = 1f - getCrits;
+                    if (realReduceDefense < 0f)
+                        realReduceDefense = 0f;
+                    //直接补到伤害上
+                    modifiers.DefenseEffectiveness *= realReduceDefense;
                 }
             }
         }

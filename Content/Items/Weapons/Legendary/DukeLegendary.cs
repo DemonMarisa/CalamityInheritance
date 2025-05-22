@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (player.altFunctionUse == 2)
             {
                 Vector2 speed = player.CIMod().DukeTier1 ? velocity * 2f : velocity;
-                int realDamage = player.CIMod().DukeTier1? damage : (int)(damage * 0.6);
+                int realDamage = (int)(damage * 0.8f);
                 Projectile.NewProjectile(source, position, speed, ModContent.ProjectileType<DukeLegendaryRazor>(), realDamage, knockback, player.whoAmI);
                 if (player.CIMod().DukeTier2)
                 {
@@ -135,7 +135,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
-                damage = player.CIMod().DukeTier1? damage: (int)(damage * 0.6);
+                damage = (int)(damage * 0.8f);
                 type = ModContent.ProjectileType<DukeLegendaryRazor>();
             }
 
