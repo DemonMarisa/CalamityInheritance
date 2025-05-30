@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Pink;
             Item.value = CIShopValue.RarityPricePink;
             Item.shootSpeed = 12f;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

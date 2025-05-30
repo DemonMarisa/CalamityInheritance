@@ -55,8 +55,10 @@ namespace CalamityInheritance.System.ModeChange.Malice
             #region 加载与卸载IL和ON
             public override void Load()
             {
+                
                 IL_NPC.UpdateNPC_Inner += ModifyVelocityIL;
                 On_NPC.UpdateNPC_Inner += AccelerateAIUpdates;
+                
             }
             public override void Unload()
             {

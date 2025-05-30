@@ -15,25 +15,25 @@ namespace CalamityInheritance.Content.BaseClass
         /// <summary>
         /// X 方向的偏移量<br/>
         /// </summary>
-        public virtual float OffsetX { get; }
+        public virtual float OffsetX { get; set; }
 
         /// <summary>
         /// Y 方向的偏移量<br/>
         /// </summary>
-        public virtual float OffsetY { get; }
+        public virtual float OffsetY { get; set; }
 
         /// <summary>
         /// Y 方向的基础偏移量，不会被朝向影响<br/>
         /// </summary>
-        public virtual float BaseOffsetY { get; }
+        public virtual float BaseOffsetY { get; set; }
         /// <summary>
         /// 武器的旋转<br/>
         /// </summary>
-        public virtual float WeaponRotation { get; }
+        public virtual float WeaponRotation { get; set; }
         /// <summary>
         /// 武器转动的速度，越大越快<br/>
         /// </summary>
-        public virtual float AimResponsiveness { get; }
+        public virtual float AimResponsiveness { get; set; }
         //你小子jb给手持射弹创个新图片都不愿意用路径是吧
         public override void SetStaticDefaults()
         {

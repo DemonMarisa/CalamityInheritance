@@ -494,5 +494,23 @@ namespace CalamityInheritance.Utilities
         /// <param name="proj"></param>
         /// <returns></returns>
         public static bool TrueMeleeClass(this Projectile proj) => proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
+        /// <summary>
+        public static bool DistanceToPlayer(Player player, float distanceRe)
+        {
+            if (player == null || !player.active || player.dead)
+                return false;
+            // 计算与玩家的距离
+            float distanceToPlayer = Vector2.Distance(player.Center, Main.MouseWorld);
+            // 如果距离小于等于distanceRe像素，则返回true
+            return distanceToPlayer <= distanceRe;
+        }
+
+        public static bool DistanceTo(Vector2 vector2, float distanceRe)
+        {
+            // 计算与玩家的距离
+            float distanceToPlayer = Vector2.Distance(vector2, Main.MouseWorld);
+            // 如果距离小于等于distanceRe像素，则返回true
+            return distanceToPlayer <= distanceRe;
+        }
     }
 }

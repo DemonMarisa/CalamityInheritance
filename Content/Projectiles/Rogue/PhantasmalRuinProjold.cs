@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<PhantasmalSoulold>() };
+                int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<SoulEdgeSoulLegacySmall>() };
                 int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
                 int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, randomProjectileType, (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                 if (Projectile.Calamity().stealthStrike)

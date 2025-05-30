@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
@@ -92,6 +93,24 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), VulnerabilityHexLegacyduration, true);
             if (Horrorduration > 1)
                 target.AddBuff(ModContent.BuffType<Horror>(), Horrorduration, true);
+        }
+        /// <summary>
+        /// 让原版的手持也可以像手持弹幕一样旋转<br/>
+        /// 随便找一个每帧调用的方法调用即可<br/>
+        /// </summary>
+        public static void NoHeldProjUpdateAim(Player player, float rotationOffset = 0f, float rotationSpeed = 1f)
+        {
+            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+
+            Vector2 aimVect = Main.MouseWorld - player.Center;
+            aimVect.SafeNormalize(Vector2.UnitX);
+
+            float targetRotation = aimVect.ToRotation();
+
+            if(Main.MouseWorld.X < player.Center.X)
+                player.itemRotation = player.itemRotation.AngleLerp(targetRotation - MathHelper.ToRadians(rotationOffset) + MathHelper.Pi, rotationSpeed);
+            else
+                player.itemRotation = player.itemRotation.AngleLerp(targetRotation + MathHelper.ToRadians(rotationOffset), rotationSpeed);
         }
     }
 }

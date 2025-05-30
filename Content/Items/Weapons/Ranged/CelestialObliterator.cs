@@ -19,6 +19,8 @@ using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using System.Diagnostics.Metrics;
+using System;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -56,7 +58,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             return Utils.NextFloat(Main.rand) >= 0.9f;
         }
-
+        public override void UseItemFrame(Player player)
+        {
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
@@ -64,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
             int pCounts = 10;
-            Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position.X, position.Y - 6, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
             if (shot >= 8)
             {
                 shot = 0;
@@ -73,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 {
                     Vector2 vector = Utils.RotatedByRandom(new Vector2(SpeedX, SpeedY), (double)MathHelper.ToRadians(2f));
                     vector *= 0.4f + Utils.NextFloat(Main.rand, 10f) / 25f;
-                    Projectile.NewProjectile(source, position.X, position.Y, vector.X, vector.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector.X, vector.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
                 }
             }
             else
@@ -89,8 +94,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     SoundEngine.PlaySound(SoundID.Item38);
                     Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 60, default) * 9f;
                     Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -60, default) * 9f;
-                    Projectile.NewProjectile(source, position.X, position.Y, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
-                    Projectile.NewProjectile(source, position.X, position.Y, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
                 }
                 else
                 {
@@ -98,8 +103,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     SoundEngine.PlaySound(SoundID.Item38);
                     Vector2 vector4 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 45, default) * 9f;
                     Vector2 vector5 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -45, default) * 9f;
-                    Projectile.NewProjectile(source, position.X, position.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
-                    Projectile.NewProjectile(source, position.X, position.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector4.X, vector4.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector5.X, vector5.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
                 }
             }
             return false;

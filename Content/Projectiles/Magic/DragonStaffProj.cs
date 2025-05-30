@@ -33,6 +33,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void AI()
         {
             Projectile.alpha -= 3;
+            if (Projectile.alpha <= 0)
+            {
+                Projectile.Kill();
+            }
             Projectile.frame = CIFunction.FramesChanger(Projectile, 4, 3);
             Lighting.AddLight(Projectile.Center, 0.5f, 0.5f, 0f);
         }

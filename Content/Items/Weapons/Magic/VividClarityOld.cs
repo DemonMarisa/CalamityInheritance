@@ -113,8 +113,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
                 Projectile.NewProjectile(projSource, source, velocityReal, ModContent.ProjectileType<CIVividBeamExoLore>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
 
-                Vector2 targetPosition = Main.MouseWorld;
-                player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
             }
             else
             {
@@ -133,9 +131,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 velocityReal = Vector2.Lerp(velocityReal, velocityVariation, 0.25f);
 
                 Projectile.NewProjectile(projSource, sourceExoLore, velocityReal, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
-
-                Vector2 targetPosition = Main.MouseWorld;
-                player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
             }
 
             return false;
@@ -158,7 +153,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }
-
+        public override void UseItemFrame(Player player)
+        {
+            CIFunction.NoHeldProjUpdateAim(player, 7, 1);
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

@@ -69,6 +69,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LostSoulFriendly, damage, knockback, player.whoAmI, 2f, 0f);
                 Main.projectile[proj].DamageType = DamageClass.Ranged;
                 Main.projectile[proj].extraUpdates += 2;
+                Main.projectile[proj].usesLocalNPCImmunity = true;
+                Main.projectile[proj].localNPCHitCooldown = 12;
             }
             if (CIConfig.Instance.AmmoConversion == false && !Main.zenithWorld)
             {
@@ -77,7 +79,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     int proj = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.LostSoulFriendly, damage, knockback, player.whoAmI, 2f, 0f);
                     Main.projectile[proj].DamageType = DamageClass.Ranged;
                     Main.projectile[proj].extraUpdates += 2;
-                    
+                    Main.projectile[proj].usesLocalNPCImmunity = true;
+                    Main.projectile[proj].localNPCHitCooldown = 12;
                 }
                 else
                     Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);

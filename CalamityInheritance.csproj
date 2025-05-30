@@ -210,7 +210,6 @@
 		<None Remove="Content\Projectiles\Rogue\ExoSpearStealthProj.png" />
 		<None Remove="Content\Projectiles\Rogue\ExoSpearTrail.png" />
 		<None Remove="Content\Projectiles\Rogue\PhantasmalRuinGhost.png" />
-		<None Remove="Content\Projectiles\Rogue\PhantasmalSoulold.png" />
 		<None Remove="Content\Projectiles\StarProj.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
@@ -422,7 +421,6 @@
 		<None Remove="Content\Projectiles\Rogue\ExoSpearStealthProj.png" />
 		<None Remove="Content\Projectiles\Rogue\ExoSpearTrail.png" />
 		<None Remove="Content\Projectiles\Rogue\PhantasmalRuinGhost.png" />
-		<None Remove="Content\Projectiles\Rogue\PhantasmalSoulold.png" />
 		<None Remove="Content\Projectiles\StarProj.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 		<None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
@@ -634,7 +632,6 @@
 	  <None Remove="Content\Projectiles\Rogue\ExoSpearStealthProj.png" />
 	  <None Remove="Content\Projectiles\Rogue\ExoSpearTrail.png" />
 	  <None Remove="Content\Projectiles\Rogue\PhantasmalRuinGhost.png" />
-	  <None Remove="Content\Projectiles\Rogue\PhantasmalSoulold.png" />
 	  <None Remove="Content\Projectiles\StarProj.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />
@@ -846,7 +843,6 @@
 	  <None Remove="Content\Projectiles\Rogue\ExoSpearStealthProj.png" />
 	  <None Remove="Content\Projectiles\Rogue\ExoSpearTrail.png" />
 	  <None Remove="Content\Projectiles\Rogue\PhantasmalRuinGhost.png" />
-	  <None Remove="Content\Projectiles\Rogue\PhantasmalSoulold.png" />
 	  <None Remove="Content\Projectiles\StarProj.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunBeamold.png" />
 	  <None Remove="Content\Projectiles\Summon\MidnightSunLaserold.png" />

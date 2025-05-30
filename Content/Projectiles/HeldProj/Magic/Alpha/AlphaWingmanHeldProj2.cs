@@ -324,10 +324,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             // 纹理
             Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
-            Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, Laser);
-            DrawTailEffect(tailTexture, baseColor, beamRotation, laserLength, Scale);
         }
         #endregion
         #region 绘制本体辉光
@@ -353,17 +351,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 SpriteEffects.None);
         }
         // 你画的啥
-        private void DrawTailEffect(Texture2D texture, Color color, float rotation, int length, float Scale)
-        {
-            Vector2 tailPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * (length - 18) - Main.screenPosition;
-            Vector2 origin = new Vector2(texture.Width, texture.Height / 4);
-            Vector2 scale = new Vector2(0.5f, 0.5f);
-
-            Rectangle rect = new Rectangle(0, 0, length, texture.Height / 4);
-            Main.EntitySpriteDraw(texture, tailPosition, rect, color,
-                rotation - MathHelper.PiOver2, origin, scale * Scale,
-                SpriteEffects.None);
-        }
         #endregion
         #endregion
     }

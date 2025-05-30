@@ -63,14 +63,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             int numShots = 2;
             int soulDamage = (int)(damage * 0.8f);
+            int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacySmall>() };
             for (int i = 0; i < numShots; ++i)
             {
                 float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
                 float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
                 float ai1 = Main.rand.NextFloat() + 0.5f;
-                // TODO -- unchecked type addition math assumes we can guarantee load order
-                // this is extremely unsafe and if TML optimizes autoloading or asset loading it could fail
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, Main.rand.Next(type, type + 3), soulDamage, knockback, player.whoAmI, 0.0f, ai1);
+                int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, randomProjectileType, soulDamage, knockback, player.whoAmI, 0.0f, ai1);
             }
             return false;
         }

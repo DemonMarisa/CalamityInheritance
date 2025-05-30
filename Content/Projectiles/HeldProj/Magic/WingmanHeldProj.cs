@@ -220,12 +220,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             // 纹理
             Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
-            Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
 
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);
 
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, Laser);
-            DrawTailEffect(tailTexture, baseColor, beamRotation, laserLength, Scale);
         }
         #endregion
         #region 绘制本体辉光

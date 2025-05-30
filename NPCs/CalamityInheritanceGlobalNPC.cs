@@ -119,15 +119,37 @@ namespace CalamityInheritance.NPCs
         #region Pre AI
         public override bool PreAI(NPC npc)
         {
-            if (Main.player[npc.target].CIMod().LoreQueenBee || Main.player[npc.target].CIMod().PanelsLoreQueenBee)
+            BeeAI(npc);
+            return true;
+        }
+        public static bool BeeAI(NPC npc)
+        {
+            if (npc.target >= 0 && npc.target < Main.maxPlayers)
             {
-                if (npc.type == NPCID.Bee || npc.type == NPCID.BeeSmall || npc.type == NPCID.Hornet || npc.type == NPCID.HornetFatty || npc.type == NPCID.HornetHoney ||
-                    npc.type == NPCID.HornetLeafy || npc.type == NPCID.HornetSpikey || npc.type == NPCID.HornetStingy || npc.type == NPCID.BigHornetStingy || npc.type == NPCID.LittleHornetStingy ||
-                    npc.type == NPCID.BigHornetSpikey || npc.type == NPCID.LittleHornetSpikey || npc.type == NPCID.BigHornetLeafy || npc.type == NPCID.LittleHornetLeafy ||
-                    npc.type == NPCID.BigHornetHoney || npc.type == NPCID.LittleHornetHoney || npc.type == NPCID.BigHornetFatty || npc.type == NPCID.LittleHornetFatty)
+                Player targetPlayer = Main.player[npc.target];
+
+                // 确认玩家实例有效且活跃
+                if (targetPlayer != null && targetPlayer.active)
                 {
-                    CIGlobalAI.LoreQueenBeeEffect(npc);
-                    return false;
+                    // 检查玩家的ModPlayer条件
+                    if (targetPlayer.CIMod().LoreQueenBee || targetPlayer.CIMod().PanelsLoreQueenBee)
+                    {
+                        // NPC类型检查列表
+                        int[] beeNPCs =
+                        [
+                    NPCID.Bee, NPCID.BeeSmall, NPCID.Hornet, NPCID.HornetFatty, NPCID.HornetHoney,
+                    NPCID.HornetLeafy, NPCID.HornetSpikey, NPCID.HornetStingy, NPCID.BigHornetStingy, NPCID.LittleHornetStingy,
+                    NPCID.BigHornetSpikey, NPCID.LittleHornetSpikey, NPCID.BigHornetLeafy, NPCID.LittleHornetLeafy,
+                    NPCID.BigHornetHoney, NPCID.LittleHornetHoney, NPCID.BigHornetFatty, NPCID.LittleHornetFatty
+                        ];
+
+                        // 检查当前NPC类型是否在列表中
+                        if (beeNPCs.Contains(npc.type))
+                        {
+                            CIGlobalAI.LoreQueenBeeEffect(npc);
+                            return false;
+                        }
+                    }
                 }
             }
             return true;

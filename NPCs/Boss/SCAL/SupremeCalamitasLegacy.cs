@@ -712,6 +712,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 vectorMultiplier = 1f;
                 NPC.DR_NERD(DR);
             }
+
+            if ((LegacySCalAttackType)attackType == LegacySCalAttackType.DesperationPhase)
+            {
+                NPC.damage = 0;
+                NPC.DR_NERD(-1f);
+                NPC.defense = 0;
+            }
         }
         #endregion
         #region 音乐
@@ -1441,6 +1448,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             { 
                 canNextPhase = true;
                 SelectNextAttack(19);
+                OnlyGlow = true;
             }
         }
         #endregion

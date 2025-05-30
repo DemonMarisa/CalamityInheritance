@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -55,14 +56,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
             {
-                if (Projectile.Distance(Main.player[Projectile.owner].Center) > 900f)
+                NPC npc = CIFunction.FindClosestTarget(Projectile, 1500, true, true);
+                if (npc == null && !CIFunction.DistanceTo(Projectile.Center, 900))
                 {
                     Vector2 moveDirection = Projectile.SafeDirectionTo(Main.player[Projectile.owner].Center, Vector2.UnitY);
                     Projectile.velocity = (Projectile.velocity * (projVelocityFactor - 1f) + moveDirection * scaleFactor) / projVelocityFactor;
-                    return;
                 }
-
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, 12f, 20f);
+                else
+                    CIFunction.HomingNPCBetter(Projectile, npc, 1500f, 12f, 20f);
             }
             else
             {
