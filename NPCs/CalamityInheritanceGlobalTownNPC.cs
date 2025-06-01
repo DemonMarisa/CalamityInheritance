@@ -28,12 +28,6 @@ namespace CalamityInheritance.NPCs
                 shop.ShopHelper<SylvanSlasher>(Item.buyPrice(platinum: 1), Condition.DownedMoonLord);
                 shop.ShopHelper<LatcherMine>(Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
             }
-            if (type == ModContent.NPCType<FAP>())
-            {
-                shop.AddWithCustomValue(ModContent.ItemType<DoGNonStop>(), Item.buyPrice(gold: 50), CalamityConditions.DownedDevourerOfGods);
-                shop.AddWithCustomValue(ModContent.ItemType<TyrantPart1>(), Item.buyPrice(gold: 50), CalamityConditions.DownedYharon);
-                shop.AddWithCustomValue(ModContent.ItemType<RequiemsOfACruelWorld>(), Item.buyPrice(gold: 50), CalamityConditions.DownedExoMechs);
-            }
             if (type == NPCID.ArmsDealer)
             {
                 shop.AddWithCustomValue(ModContent.ItemType<MagnumRounds>(), Item.buyPrice(gold: 10))

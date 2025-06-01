@@ -3,6 +3,7 @@ ScalPotionShopOption: Potions Shop
 ScalAmmoShopOption: Ammos Shop
 ScalMiscShopOption: Misc Shop
 ScalItemShopOption: Items Shop
+ScalMusicBoxShopOpt: MusicBox Shop
 Scalbutton2Option: Next
 ScalChatOption: Chat
 DownedAnySentinels: One of the Sentinels is defeated... welp, good job I think?
@@ -33,7 +34,7 @@ NightTime6: What are you doing up at this hour? Can I not get some peace and qui
 eclipse1: The powers of the dark sun run rampant at times like these. I'd tell you to be cautious but if you're able to beat me then you can probably handle yourself.
 BloodMoon1: Stay on your guard, we are being watched
 BloodMoon2: You can stop looking at me like i'm about to stab you, the blood moon doesn't effect me like it does the rest anymore
-ScalFAPChat: What's the deal with Cirrus anyway? Not even Yharim knew where she comes from.
+ScalFAPChat: What's the deal with Cirrus anyway? Not even Yharim knew where she comes from.It's a pity she's dead now.
 ScalSeahoeChat: I would have expected Amidias to hold more of a grudge, but he has been one of the most welcoming.
 armdealer1: I Swear, how do the rest of you put up with
 armdealer2: "'s flirting. I am THIS close to vaporizing him on the spot."

@@ -50,6 +50,7 @@ using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using Terraria.GameContent.Bestiary;
 using CalamityMod.CalPlayer;
+using CalamityInheritance.Content.Items.Accessories.Wings;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {

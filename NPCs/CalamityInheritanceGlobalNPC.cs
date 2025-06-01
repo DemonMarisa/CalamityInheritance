@@ -34,6 +34,8 @@ namespace CalamityInheritance.NPCs
         public bool horrorNPC = false;
         // 孱弱巫咒
         public bool vulnerabilityHexLegacyNPC = false;
+        // yanm刀
+        public bool kamiFlu = false;
         #endregion
 
         public static int rageOfChairDoTDamage = 30000;
@@ -70,6 +72,12 @@ namespace CalamityInheritance.NPCs
             {
                 npc.lifeRegen -= CryoDrainDotDamage; 
             }
+            // Kami Debuff from Yanmei's Knife
+            if (kamiFlu)
+            {
+                int baseKamiFluDoTValue = 250;
+                ApplyDPSDebuff(baseKamiFluDoTValue, baseKamiFluDoTValue / 10, ref npc.lifeRegen);
+            }
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
@@ -95,6 +103,16 @@ namespace CalamityInheritance.NPCs
                 modifiers.Defense.Flat -= 30;
                 modifiers.FinalDamage *= 1.5f;
             }
+            if (kamiFlu)
+            {
+                //Avoid touching things that you probably aren't meant to damage
+                if (modifiers.SuperArmor || npc.defense > 999 || npc.Calamity().DR >= 0.95f || npc.Calamity().unbreakableDR)
+                    return;
+                float impact = 0.2f;
+                //Bypass defense
+                modifiers.DefenseEffectiveness *= 0f;
+                modifiers.FinalDamage *= 1f / (1f - impact);
+            }
         }
         public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen)
         {
@@ -115,6 +133,11 @@ namespace CalamityInheritance.NPCs
         {
             Player plr = Main.player[projectile.owner];
             var mplr = plr.CIMod();
+
+
+
+
+
         }
         #region Pre AI
         public override bool PreAI(NPC npc)

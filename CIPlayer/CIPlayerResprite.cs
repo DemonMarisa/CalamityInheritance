@@ -86,6 +86,7 @@ namespace CalamityInheritance.CIPlayer
                 GI<MeleeTypeElementalDisk>() != null ||
                 GI<ElementalLance>() != null ||
                 GI<ElementalGauntletold>() != null ||
+                // 冲击波已经离开了我们
                 GI<ElementalBlaster>() != null ||
                 GI<ArkoftheElementsold>() != null ||
                 GI<Swordsplosion>() != null) 
@@ -107,6 +108,7 @@ namespace CalamityInheritance.CIPlayer
                     IR<ElementalRayold>(CIWeaponsResprite.ElemRayCal);
                     //手套
                     IR<ElementalGauntletold>(CIResprite.ElemGloveCal);
+                    // 冲击波已经离开了我们
                     //元素BYD
                     IR<ElementalBlaster>(CIWeaponsResprite.ElemBYDCal);
                     //爆破
@@ -132,8 +134,10 @@ namespace CalamityInheritance.CIPlayer
                     IR<ElementalRayold>(CIWeaponsResprite.ElemRayAlt);
                     //手套
                     IR<ElementalGauntletold>(CIResprite.ElemGloveAlt);
+                    
                     //byd
                     IR<ElementalBlaster>(CIWeaponsResprite.ElemBYDAlt);
+                    
                     //爆破
                     IR<Swordsplosion>(CIWeaponsResprite.RareArkAlt);
                     //元素喷火器

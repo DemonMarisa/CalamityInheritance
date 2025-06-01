@@ -104,6 +104,9 @@ namespace CalamityInheritance.CIPlayer
             // Debuff的效果
             DebuffEffect();
 
+            // 正面Buff
+            BuffEffect();
+
             //升级
             LevelUp();
 

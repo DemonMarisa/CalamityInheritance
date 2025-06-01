@@ -80,5 +80,9 @@ namespace CalamityInheritance.Sounds.Custom
         #region »¨¸ÚÑÒ²½Ç¹
         public static readonly SoundStyle MarniteBayonetShoot = new($"{ItemSoundRoute}/MarniteBayonet/MarniteBayonetShoot") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
+        #region Yameiµ¶
+        public static readonly SoundStyle YanmeiKnifeHit = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeHit") { Volume = 0.9f, Pitch = 0.3f };
+        public static readonly SoundStyle YanmeiKnifeExpire = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeExpire") { Volume = 0.9f, Pitch = 0.3f };
+        #endregion
     }
 }

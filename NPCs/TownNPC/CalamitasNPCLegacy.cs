@@ -39,6 +39,7 @@ using CalamityMod.Particles;
 using CalamityMod.Events;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityInheritance.Core;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -57,6 +58,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         const short AmmoShopOpt = 3;
         const short MiscShopOpt = 4;
         const short ItemShopOpt = 5;
+        const short MusicBoxShopOpt = 6;
         #endregion
         public static int WhichButton;
 
@@ -69,6 +71,8 @@ namespace CalamityInheritance.NPCs.TownNPC
         public static bool AmmoShop;
 
         public static bool MiscShop;
+
+        public static bool MusicBoxShop;
 
         public override void SetStaticDefaults()
         {
@@ -246,12 +250,8 @@ namespace CalamityInheritance.NPCs.TownNPC
                     list.Add(Language.GetTextValue($"{DialogueRoute}.BloodMoon2"));
                 }
             }
-            int fab = NPC.FindFirstNPC(ModContent.NPCType<FAP>());
             int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SEAHOE>());
-            if (fab != -1)
-            {
-                list.Add(Language.GetTextValue($"{DialogueRoute}.ScalFAPChat"));
-            }
+            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalFAPChat"));
             if (seahoe != -1)
             {
                 list.Add(Language.GetTextValue($"{DialogueRoute}.ScalSeahoeChat"));
@@ -326,6 +326,9 @@ namespace CalamityInheritance.NPCs.TownNPC
                 case ItemShopOpt:
                     button = Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption");
                     break;
+                case MusicBoxShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt");
+                    break;
             }
 
             button2 = Language.GetTextValue($"{DialogueRoute}.Scalbutton2Option");
@@ -338,6 +341,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             AmmoShop_List();
             MiscShop_List();
             ItemShop_List();
+            MusicBoxShop_List();
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)
@@ -379,6 +383,10 @@ namespace CalamityInheritance.NPCs.TownNPC
                 if (WhichButton == ItemShopOpt)
                 {
                     shop = Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption");
+                }
+                if (WhichButton == MusicBoxShopOpt)
+                {
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt");
                 }
             }
         }
@@ -576,6 +584,15 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
                 .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon);
             ItemShop.Register();
+        }
+
+        public void MusicBoxShop_List()
+        {
+            var MusicShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt"))
+                .Add(new Item(ModContent.ItemType<DoGNonStop>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
+                .Add(new Item(ModContent.ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
+                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode);
+            MusicShop.Register();
         }
 
         // Make this Town NPC teleport to the Queen statue when triggered.

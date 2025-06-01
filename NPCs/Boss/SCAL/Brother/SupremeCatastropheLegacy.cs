@@ -18,6 +18,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityMod.NPCs.SupremeCalamitas;
 using Terraria.GameContent.Bestiary;
+using CalamityMod.Items.Potions;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 {
@@ -246,8 +247,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                 Main.dust[d].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
             }
         }
-
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ModContent.ItemType<OmegaHealingPotion>();
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             if (NPC.IsABestiaryIconDummy)
                 return true;

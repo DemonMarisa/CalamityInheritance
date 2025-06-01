@@ -40,6 +40,8 @@ namespace CalamityInheritance.CIPlayer
         public bool vulnerabilityHexLegacy = false;
         #endregion
         public bool CryoDrainPlayer = false;
+        // yanm刀
+        public bool kamiBoost = false;
         public void ResetBuff()
         {
             #region Buffs
@@ -67,6 +69,7 @@ namespace CalamityInheritance.CIPlayer
             vulnerabilityHexLegacy = false;
             #endregion
             CryoDrainPlayer = false;
+            kamiBoost = false;
         }
         public void UpdateDeadBuff()
         {
@@ -95,6 +98,7 @@ namespace CalamityInheritance.CIPlayer
             vulnerabilityHexLegacy = false;
             CryoDrainPlayer = false;
             #endregion
+            kamiBoost = false;
         }
         public void DebuffEffect()
         {
@@ -114,6 +118,15 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
+            }
+        }
+        public void BuffEffect()
+        {
+            if(kamiBoost)
+            {
+                Player.moveSpeed *= 1.15f;
+                Player.maxRunSpeed *= 1.15f;
+                Player.GetDamage<GenericDamageClass>() += 0.15f;
             }
         }
     }

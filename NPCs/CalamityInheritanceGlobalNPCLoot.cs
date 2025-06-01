@@ -393,6 +393,7 @@ namespace CalamityInheritance.NPCs
                 npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
                 LegendaryDropHelper(ModContent.ItemType<YharimsCrystalLegendary>(), ref npcLoot);
                 CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<YharonBag>());
+                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DrewsWings>());
             }
             if (npc.type == ModContent.NPCType<AresBody>() || npc.type == ModContent.NPCType<ThanatosHead>() || npc.type == ModContent.NPCType<Apollo>())
             {

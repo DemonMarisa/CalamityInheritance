@@ -71,6 +71,7 @@ using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Items;
 using System;
 using CalamityInheritance.Content.Items.Placeables.Banner;
+using CalamityInheritance.Content.Items.Accessories.Wings;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -1424,7 +1425,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<Azathoth>()).
+            Recipe.Create(ModContent.ItemType<Ozzathoth>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
 
@@ -1464,7 +1465,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ModContent.ItemType<Fabstaff>()).
+            Recipe.Create(ModContent.ItemType<Sylvestaff>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
 

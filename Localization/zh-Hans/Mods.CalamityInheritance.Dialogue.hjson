@@ -3,6 +3,7 @@ ScalPotionShopOption: 药水商店
 ScalAmmoShopOption: 弹药商店
 ScalMiscShopOption: 杂项商店
 ScalItemShopOption: 物品商店
+ScalMusicBoxShopOpt: 音乐盒商店
 Scalbutton2Option: 下一个选项
 ScalChatOption: 聊天
 DownedAnySentinels: 击败任何神之使徒
@@ -33,7 +34,7 @@ NightTime6: 你想干什么？这里不能安静一点吗？
 eclipse1: 日蚀的力量在时最为猖獗。我会告诉你要小心，但既然你能打败我，那么你大概也可以处理这件事。
 BloodMoon1: 保持警惕，祂正在看着我们
 BloodMoon2: 你可以停止看着我，就好像我要打你一样，血月不会影响到我
-ScalFAPChat: 醉仙女到底是谁？就连亚利姆都不知道她来自哪里。
+ScalFAPChat: 醉仙女到底是谁？就连亚利姆都不知道她来自哪里。可惜她现在已经死了。
 ScalSeahoeChat: 我本以为阿米迪亚斯会怀恨在心，但他却是对我最热情的人。
 armdealer1: 我发誓，你们其他人是怎么忍受
 armdealer2: 的调情，我差点的当场就把他蒸发了。

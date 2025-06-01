@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using System.Reflection;
+using CalamityMod.Balancing;
 
 namespace CalamityInheritance.Common.CIHook
 {
@@ -65,27 +66,20 @@ namespace CalamityInheritance.Common.CIHook
                 }
             }
 
-            if (self.Player.dashDelay > 0) //Speed Blaster
-            {
-                self.VerticalSpeedBlasterDashTimer = 0;
-                self.LastUsedDashID = string.Empty;
-                return;
-            }
-
             if (self.Player.dashDelay > 0)
             {
-                self.VerticalGodslayerDashTimer = 0;
+                self.VerticalOmnidashTimer = 0;
                 self.LastUsedDashID = string.Empty;
                 return;
             }
 
             if (self.Player.dashDelay < 0)
             {
-                int dashDelayToApply = DashCoolDown;
+                int dashDelayToApply = BalancingConstants.UniversalDashCooldown;
                 if (self.UsedDash.CollisionType == DashCollisionType.ShieldSlam)
-                    dashDelayToApply = DashCoolDown;
+                    dashDelayToApply = BalancingConstants.UniversalShieldSlamCooldown;
                 else if (self.UsedDash.CollisionType == DashCollisionType.ShieldBonk)
-                    dashDelayToApply = DashCoolDown;
+                    dashDelayToApply = BalancingConstants.UniversalShieldBonkCooldown;
                 if (self.DashID == "Deep Diver")
                     dashDelayToApply = 23;
 
@@ -98,21 +92,10 @@ namespace CalamityInheritance.Common.CIHook
 
                 // Handle mid-dash effects.
                 self.UsedDash.MidDashEffects(self.Player, ref dashSpeed, ref dashSpeedDecelerationFactor, ref runSpeedDecelerationFactor);
-                if (self.UsedDash.IsOmnidirectional && self.VerticalGodslayerDashTimer < 25)
+                if (self.UsedDash.IsOmnidirectional && self.VerticalOmnidashTimer < 25)
                 {
-                    self.VerticalGodslayerDashTimer++;
-                    if (self.VerticalGodslayerDashTimer >= 25)
-                    {
-                        self.Player.dashDelay = dashDelayToApply;
-                        // Stop the player from going flying
-                        self.Player.velocity *= 0.2f;
-                    }
-                }
-
-                if (self.UsedDash.IsOmnidirectional && self.VerticalSpeedBlasterDashTimer < 25)
-                {
-                    self.VerticalSpeedBlasterDashTimer++;
-                    if (self.VerticalSpeedBlasterDashTimer >= 25)
+                    self.VerticalOmnidashTimer++;
+                    if (self.VerticalOmnidashTimer >= 25)
                     {
                         self.Player.dashDelay = dashDelayToApply;
                         // Stop the player from going flying
@@ -123,11 +106,11 @@ namespace CalamityInheritance.Common.CIHook
                 if (self.HasCustomDash)
                 {
                     self.Player.vortexStealthActive = false;
-                    /*
+
                     // Decide the player's facing direction.
                     if (self.Player.velocity.X != 0f)
                         self.Player.ChangeDir(Math.Sign(self.Player.velocity.X));
-                    */
+
                     // Handle mid-dash movement.
                     if (self.UsedDash.IsOmnidirectional)
                     {

@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.Items.Potions;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
@@ -239,7 +240,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             return !CalamityUtils.AntiButcher(NPC, ref damage, 0.5f);
         }
         */
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ModContent.ItemType<OmegaHealingPotion>();
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             if (NPC.IsABestiaryIconDummy)
                 return true;

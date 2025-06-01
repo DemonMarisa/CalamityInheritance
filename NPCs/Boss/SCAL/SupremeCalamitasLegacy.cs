@@ -1320,7 +1320,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         #endregion
         #region 删除所有弹幕
-        public void DeSpawn()
+        public static void DeSpawn()
         {
             for (int x = 0; x < Main.maxProjectiles; x++)
             {
@@ -1838,7 +1838,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             [
                 ModContent.ItemType<AngelicAlliance>(),
                 ModContent.ItemType<Animus>(),
-                ModContent.ItemType<Azathoth>(),
+                ModContent.ItemType<Ozzathoth>(),
                 ModContent.ItemType<AzathothLegacy>(),
                 ModContent.ItemType<CrystylCrusher>(),
                 ModContent.ItemType<DraconicDestruction>(),
@@ -1855,7 +1855,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 ModContent.ItemType<SomaPrimeOld>(),
                 ModContent.ItemType<Svantechnical>(),
                 ModContent.ItemType<SvantechnicalLegacy>(),
-                ModContent.ItemType<Fabstaff>(),
+                ModContent.ItemType<Sylvestaff>(),
                 ModContent.ItemType<FabstaffOld>(),
                 ModContent.ItemType<StaffofBlushie>(),
                 ModContent.ItemType<Apotheosis>(),
