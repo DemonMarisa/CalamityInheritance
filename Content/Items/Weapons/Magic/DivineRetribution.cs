@@ -19,7 +19,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DivineRetribution : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

@@ -18,7 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ElementalBlaster : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Ranged";
 
         public override void SetStaticDefaults()
         {

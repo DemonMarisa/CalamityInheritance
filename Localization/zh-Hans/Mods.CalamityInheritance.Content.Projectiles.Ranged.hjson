@@ -82,5 +82,6 @@ MarniteBayonetSpikesProj.DisplayName: 花岗岩突刺
 SuperballBulletProj.DisplayName: 弹球弹
 NewExoFire.DisplayName: 纯粹射线
 PhotovisceratorLaser.DisplayName: 星火激光
-// BetterAMR.DisplayName: Better A M R
-// BetterAMR2.DisplayName: Better A M R2
+BetterAMR.DisplayName: 金源穿甲弹
+BetterAMR2.DisplayName: 金源穿甲弹
+RainbowBlast.DisplayName: 彩虹冲击波

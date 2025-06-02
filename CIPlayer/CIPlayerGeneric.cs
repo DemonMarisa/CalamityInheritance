@@ -23,6 +23,7 @@ using CalamityInheritance.System.Configs;
 using Hjson;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Wulfrum;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -167,6 +168,7 @@ namespace CalamityInheritance.CIPlayer
             IsAncientClasper = false;
             bloodClot = false;
             CosmicEnergyExtra = false;
+            wulfrumDroidOld = false;
             #endregion
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;

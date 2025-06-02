@@ -107,7 +107,7 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
-        /*
+        
         
         [BackgroundColor(192, 54, 64, 192)]
         [SliderColor(224, 165, 56, 128)]
@@ -122,6 +122,6 @@ namespace CalamityInheritance.System.Configs
         [Increment(1)]
         [DefaultValue(1)]
         public int debugint2 { get; set; }
-        */
+        
     }
 }

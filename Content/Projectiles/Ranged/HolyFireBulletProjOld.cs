@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.MaxUpdates = 5;
             Projectile.timeLeft = Lifetime;
             Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+            Projectile.usesLocalNPCImmunity = true;
         }
 
         public override void AI()

@@ -242,6 +242,16 @@ CosmicEnergyExtra: {
 }
 
 WulfrumDroidOldBuff: {
-	DisplayName: Wulfrum Droid Old Buff
-	Description: Mods.CalamityInheritance.Buffs.WulfrumDroidOldBuff.Description
+	DisplayName: Wulfrum Droid Legacy
+	Description: The wulfrum droid will protect you
+}
+
+KamiBuff: {
+	DisplayName: Kami Injection
+	Description: 15% increased max movement speed, acceleration and damage
+}
+
+KamiFlu: {
+	DisplayName: Kami Flu
+	Description: Defenseless and dying
 }

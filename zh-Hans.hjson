@@ -61,7 +61,12 @@ Mods: {
 			VerdantYoyo.DisplayName: 葱茏
 			ApothMarkLegacy.DisplayName: 光子标记
 			OpalStrikeLegacy.DisplayName: 鹅软石冲击波
-			Ranged.NorfleetExplosionLegacy.DisplayName: 星界陨石
+
+			Ranged: {
+				NorfleetExplosionLegacy.DisplayName: 星界陨石
+				HighExplosivePeanutShell.DisplayName: 高爆花生壳
+			}
+
 			Typeless.NanoFlareLegacy.DisplayName: 纳米火焰
 			FossilSpike.DisplayName: 化石尖刺
 			MarianaProjectile.DisplayName: 花岗岩步枪
@@ -84,6 +89,6 @@ Mods: {
 			}
 		}
 
-		// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
+		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: 死亡能量
 	}
 }

@@ -61,7 +61,12 @@ Mods: {
 			VerdantYoyo.DisplayName: Verdant Yoyo
 			ApothMarkLegacy.DisplayName: Apoth Mark Legacy
 			OpalStrikeLegacy.DisplayName: Opal Strike Legacy
-			Ranged.NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+
+			Ranged: {
+				NorfleetExplosionLegacy.DisplayName: Norfleet Explosion Legacy
+				HighExplosivePeanutShell.DisplayName: High Explosive Peanut Shell
+			}
+
 			Typeless.NanoFlareLegacy.DisplayName: Nano Flare Legacy
 			FossilSpike.DisplayName: Fossil Spike
 			MarianaProjectile.DisplayName: Mariana Projectile

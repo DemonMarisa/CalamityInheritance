@@ -422,3 +422,12 @@ MagnaCannonLegacy: {
 		依旧是魔法武器
 		'''
 }
+
+DivineRetribution: {
+	DisplayName: 神圣天罚[Legacy]
+	Tooltip:
+		'''
+		法师才是盗贼大师，看，我们终于有了个捐赠武器来证明这一点！
+		作者留：嗯...至少以前是的
+		'''
+}

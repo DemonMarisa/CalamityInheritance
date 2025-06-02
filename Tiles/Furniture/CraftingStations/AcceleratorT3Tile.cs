@@ -29,6 +29,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles =
             [
+                ModContent.TileType<AcceleratorT1Tile>(),
                 ModContent.TileType<AcceleratorT2Tile>(),
                 ModContent.TileType<ProfanedCrucible>(),
                 ModContent.TileType<BotanicPlanter>(),

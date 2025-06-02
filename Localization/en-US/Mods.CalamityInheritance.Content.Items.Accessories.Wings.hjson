@@ -106,3 +106,15 @@ AncientAeroWings: {
 		Thie effect will be disabled if taking damage
 		'''
 }
+
+DrewsWings: {
+	DisplayName: Drew's Wings Legacy
+	Tooltip:
+		'''
+		Horizontal speed: 11.50
+		Acceleration multiplier: 2.9
+		Excellent vertical speed
+		Flight time: 361
+		'Absolutely Fabulous'
+		'''
+}

@@ -392,3 +392,12 @@ MagnaCannonLegacy: {
 		Still a magic weapon
 		'''
 }
+
+DivineRetribution: {
+	DisplayName: Divine Retribution Legacy
+	Tooltip:
+		'''
+		Mage is superior to rogue; look, we got a donor weapon to prove it!
+		Modder Stay: Hmm... At least it used to be
+		'''
+}

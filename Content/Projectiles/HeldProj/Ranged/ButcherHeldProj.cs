@@ -11,13 +11,15 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class ButcherHeldProj : ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<ButcherLegacy>();
-        public override string Texture => "CalamityMod/Items/Weapons/Ranged/Butcher";
 
         public override void SetDefaults()
         {
@@ -148,13 +150,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     Projectile.Kill();
                 }
             }
-            Projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - Projectile.Size / 2f;
-            float rotationAmt = 0f;
-            if (Projectile.spriteDirection == -1)
-            {
-                rotationAmt = MathHelper.Pi;
-            }
-            Projectile.rotation = Projectile.velocity.ToRotation() + rotationAmt;
+            Vector2 rrp = player.RotatedRelativePoint(player.MountedCenter, true);
+            UpdateAim(rrp, player.HeldItem.shootSpeed);
+
+            Projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - Projectile.Size / 2f + new Vector2(5, 0).RotatedBy(Projectile.rotation) + new Vector2(0, -3);
+            Projectile.rotation = Projectile.velocity.ToRotation();
             Projectile.spriteDirection = Projectile.direction;
             Projectile.timeLeft = 2;
             player.ChangeDir(Projectile.direction);
@@ -166,5 +166,37 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 
         public override bool? CanDamage() => false;
         public const float AimResponsiveness = 1f;
+        public void UpdateAim(Vector2 source, float speed)
+        {
+            // 获取玩家当前的瞄准方向作为归一化向量
+
+            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            if (aim.HasNaNs())
+            {
+                aim = -Vector2.UnitY;
+            }
+
+            // 改变棱镜当前速度的一部分，使其指向鼠标，这会随着时间的推移提供平滑的运动。
+
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, AimResponsiveness));
+            aim *= speed;
+
+            if (aim != Projectile.velocity)
+            {
+                Projectile.netUpdate = true;
+            }
+            Projectile.velocity = aim;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
+            Vector2 drawPosition = Projectile.Center - Main.screenPosition;
+            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            Vector2 rotationPoint = texture.Size() * 0.5f;
+            SpriteEffects flipSprite = (Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
+            return false;
+        }
     }
 }

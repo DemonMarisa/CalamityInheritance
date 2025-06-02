@@ -26,6 +26,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientSilvaStat = false; //林海数值
         public int AncientSilvaRegenCD = 0;
         public int AncientSilvaRegenTimer = 120; //一秒
+        public float AncientSilvaRegenCounter = 0;
         #endregion
         #region AncientTarragon
         public bool AncientTarragonSet = false;

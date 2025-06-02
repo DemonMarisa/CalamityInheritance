@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {
@@ -25,10 +26,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if (npc.Calamity().kamiFlu < npc.buffTime[buffIndex])
-                npc.Calamity().kamiFlu = npc.buffTime[buffIndex];
-            if ((CalamityLists.enemyImmunityList.Contains(npc.type) || npc.boss) && npc.Calamity().debuffResistanceTimer <= 0)
-                npc.Calamity().debuffResistanceTimer = CalamityGlobalNPC.slowingDebuffResistanceMin + npc.Calamity().kamiFlu;
+            npc.CIMod().kamiFlu = true;
             npc.DelBuff(buffIndex);
             buffIndex--;
         }

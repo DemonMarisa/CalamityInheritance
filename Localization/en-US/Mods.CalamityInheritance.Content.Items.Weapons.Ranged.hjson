@@ -528,3 +528,30 @@ MagnaStrikerLegacy: {
 	DisplayName: Magna Striker Legacy
 	Tooltip: Fires a string of opal and magna strikes
 }
+
+ButcherLegacy: {
+	DisplayName: Butcher Legacy
+	Tooltip:
+		'''
+		Fires bullets faster and more accurately the longer you hold the trigger
+		25% chance to save ammo
+		'''
+}
+
+DodusHandcannon: {
+	DisplayName: Dodu's Handcannon Legacy
+	Tooltip:
+		'''
+		Fires high explosive peanut shells, literally
+		'The power of the nut rests in your hands'
+		'''
+}
+
+ElementalBlaster: {
+	DisplayName: Elemental Blaster Legacy
+	Tooltip:
+		'''
+		Fires a storm of rainbow blasts
+		Does not consume ammo
+		'''
+}

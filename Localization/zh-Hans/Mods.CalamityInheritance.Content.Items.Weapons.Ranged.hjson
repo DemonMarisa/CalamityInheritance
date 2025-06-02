@@ -546,3 +546,30 @@ MagnaStrikerLegacy: {
 	DisplayName: 麦格纳冲锋炮[Legacy]
 	Tooltip: 发射鹅卵石和麦格纳冲击波
 }
+
+ButcherLegacy: {
+	DisplayName: 屠夫[Legacy]
+	Tooltip:
+		'''
+		使用时间越长，发射速度和精确度越高
+		25%几率节省弹药
+		'''
+}
+
+DodusHandcannon: {
+	DisplayName: Dodu的手炮[Legacy]
+	Tooltip:
+		'''
+		发射高爆花生壳，字面意义的花生壳
+		“坚果之力被你握在手中”
+		'''
+}
+
+ElementalBlaster: {
+	DisplayName: 元素冲击波[Legacy]
+	Tooltip:
+		'''
+		发射彩虹风暴
+		不消耗弹药
+		'''
+}

@@ -99,3 +99,15 @@ AncientAeroWings: {
 		这一效果在受击时会被禁用7秒
 		'''
 }
+
+DrewsWings: {
+	DisplayName: Drew之翼[Legacy]
+	Tooltip:
+		'''
+		精妙绝伦
+		水平飞行速度: 12
+		加速倍率: 3
+		绝佳的垂直飞行速度
+		飞行时间: 361
+		'''
+}

@@ -133,11 +133,22 @@ namespace CalamityInheritance.CIPlayer
                 int lifeRegen = 1;
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
                 {
-                    // 现在应该会需要跑逐渐递增的回血了
-                    Player.lifeRegen = 0; //承受Debuff伤害时获得4HP/s
+                    // 储存具体的回血进度
+                    // 因为回血的数值1 = 0.5HP/s，所以除120
+                    float lifeRegenTimer = Player.lifeRegen / 120;
+                    AncientSilvaRegenCounter += lifeRegenTimer;
+
+                    while (AncientSilvaRegenCounter > 1f)
+                    {
+                        AncientSilvaRegenCounter -= 1f;
+                        Player.Heal(lifeRegen);
+                    }
+
                     if(Player.miscCounter % 15 == 0)
                         Player.Heal(lifeRegen);
-                    Player.lifeRegenTime = 0;
+
+                    if (AncientSilvaRegenCounter < 0f)
+                        AncientSilvaRegenCounter = 0f;
                 }
 
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
