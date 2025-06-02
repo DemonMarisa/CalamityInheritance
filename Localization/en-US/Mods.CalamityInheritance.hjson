@@ -609,5 +609,14 @@ Configs: {
 			Label: Environmental changes
 			Tooltip: When enabled, environmental changes will always take effect.
 		}
+
+		FuckYouLGBT: {
+			Label: Remove Gender Change Potion in Sylvestaff Recipe
+			Tooltip:
+				'''
+				Enbales to removed Gender Change Potion in Sylvestaff Recipe
+				Enable by default;
+				'''
+		}
 	}
 }

@@ -63,7 +63,7 @@ namespace CalamityInheritance.System.Configs
         public bool WeatherChange { get; set; } //环境改变
 
         [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool FuckYouLGBT { get; set; } //🤗
         
 

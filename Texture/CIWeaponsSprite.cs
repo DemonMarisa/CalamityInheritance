@@ -300,7 +300,7 @@ namespace CalamityInheritance.Texture
 
             #region 远程
             //元素BYD
-            ElemBYDCal = ModContent.Request<Texture2D>          ($"{CalRangedWeaponRoute}/ElementalBlaster");
+            ElemBYDCal = ModContent.Request<Texture2D>          ($"{CIRangedWeaponRoute}/ElementalBlaster");
             ElemBYDAlt = ModContent.Request<Texture2D>          ($"{CIRangedExtraRoute}/ElemBYD");
             //元素喷火器
             ElemFlamethrowerCal = ModContent.Request<Texture2D> ($"{CIRangedWeaponRoute}/ElementalEruptionLegacy");

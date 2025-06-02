@@ -245,3 +245,13 @@ WulfrumDroidOldBuff: {
 	DisplayName: Wulfrum Droid Old Buff
 	Description: Mods.CalamityInheritance.Buffs.WulfrumDroidOldBuff.Description
 }
+
+KamiBuff: {
+	DisplayName: Kami Buff
+	Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
+}
+
+KamiFlu: {
+	DisplayName: Kami Flu
+	Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
+}

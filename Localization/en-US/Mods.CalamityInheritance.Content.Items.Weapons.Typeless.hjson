@@ -67,3 +67,8 @@ ShizukuEdge: {
 	DisplayName: Shizuku Edge
 	Tooltip: ""
 }
+
+YanmeisKnife: {
+	DisplayName: Yanmeis Knife
+	Tooltip: ""
+}

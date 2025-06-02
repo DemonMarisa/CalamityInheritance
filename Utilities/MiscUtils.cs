@@ -182,10 +182,14 @@ namespace CalamityInheritance.Utilities
         }
         /// <summary>
         /// 可以直接用Color的发光，为啥要求用Vector3啊
+        /// 我不到啊
         /// </summary>
         public static void BetterAddLight(Vector2 position, Color color)
         {
             Lighting.AddLight(position, color.ToVector3());
         }
+        public static void LootAdd<T>(this ItemLoot itemLoot, int dropRate = 1, int dropMin = 1, int dropMax = 1) where T : ModItem => LootCommon(itemLoot, ModContent.ItemType<T>(), dropRate, dropMin, dropMax);
+        public static void LootAdd(this ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => LootCommon(itemLoot, lootItem, dropRate, dropMin, dropMax);
+        public static void LootCommon(ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => itemLoot.Add(lootItem, dropRate, dropMin, dropMax);
     }
 }

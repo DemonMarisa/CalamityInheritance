@@ -528,3 +528,8 @@ MagnaStrikerLegacy: {
 	DisplayName: Magna Striker Legacy
 	Tooltip: Fires a string of opal and magna strikes
 }
+
+ButcherLegacy: {
+	DisplayName: Butcher Legacy
+	Tooltip: ""
+}

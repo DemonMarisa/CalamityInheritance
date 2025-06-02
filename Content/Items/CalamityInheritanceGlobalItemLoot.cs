@@ -58,121 +58,115 @@ namespace CalamityInheritance.Content.Items
     public class CalamityInheritanceGlobalItemLoot : GlobalItem
     {
         public override bool InstancePerEntity => false;
-        public override void ModifyItemLoot(Item item, ItemLoot itemloot)
+        public static bool CheckBag<T>(int type) where T : ModItem => type == ModContent.ItemType<T>();
+        public override void ModifyItemLoot(Item item, ItemLoot loot)
         {
             if (item.type == ModContent.ItemType<StarterBag>())
             {
-                itemloot.Add(ModContent.ItemType<Death>());
-                itemloot.Add(ModContent.ItemType<Armageddon>());
-                itemloot.Add(ModContent.ItemType<DefiledRune>());
-                itemloot.Add(ModContent.ItemType<IronHeart>());
-                itemloot.Add(ModContent.ItemType<Malice>());
-                itemloot.Add(ModContent.ItemType<Revenge>());
-                itemloot.Add(ModContent.ItemType<DraedonsPanel>());
+                loot.LootAdd<Death>();
+                loot.LootAdd<Armageddon>();
+                loot.LootAdd<DefiledRune>();
+                loot.LootAdd<IronHeart>();
+                loot.LootAdd<Malice>();
+                loot.LootAdd<Revenge>();
+                loot.LootAdd<DraedonsPanel>();
             }
 
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
-                itemloot.Add(ModContent.ItemType<Skullmasher>(), 10);
+                loot.LootAdd<Skullmasher>(10);
 
             if (item.type == ModContent.ItemType<OldDukeBag>())
             {
-                itemloot.Add(ModContent.ItemType<LeadCore>(), 1);
-                itemloot.Add(ModContent.ItemType<InsidiousImpalerLegacy>(), 3);
+                loot.LootAdd<LeadCore>(1);
+                loot.LootAdd<InsidiousImpalerLegacy>(3);
             }
 
             if (item.type == ModContent.ItemType<AstrumDeusBag>())
             {
-                itemloot.Add(ModContent.ItemType<Quasar>(), 10);
-                itemloot.Add(ModContent.ItemType<AstralBulwark>(), 1);
+                loot.LootAdd<Quasar>(10);
+                loot.LootAdd<AstralBulwark>(1);
             }
             if (item.type == ModContent.ItemType<YharonBag>())
             {
-                itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
-                itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
-                itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
+                loot.LootAdd<DragonsBreathold>(5);
+                loot.LootAdd<VoidVortexLegacy>(10);
+                loot.LootAdd<YharimsGiftLegacy>(1);
             }
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
-                itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);
+                loot.LootAdd<ArcanumoftheVoid>(1);
 
             if (item.type == ModContent.ItemType<RavagerBag>())
-                itemloot.Add(ModContent.ItemType<BloodPactLegacy>(), 10);
+                loot.LootAdd<BloodPactLegacy>(10);
 
             if (item.type == ModContent.ItemType<LeviathanBag>())
             {
-                itemloot.Add(ModContent.ItemType<LeviathanAmbergrisLegacy>(), 3);//利维坦龙涎香现在掉落概率为1/3
+                loot.LootAdd<LeviathanAmbergrisLegacy>(3);//利维坦龙涎香现在掉落概率为1/3
             }
             if (item.type == ModContent.ItemType<CryogenBag>())
             {
-                itemloot.Add(ModContent.ItemType<CryoBar>(), 3, 10, 20); //33%概率，数量10-20
-                itemloot.Add(ModContent.ItemType<GlacialCrusher>(), 3, 1 ,1);
-                itemloot.Add(ModContent.ItemType<BittercoldStaff>(), 3, 1 ,1);
-
-                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
-                {
-                    itemloot.Add(ItemID.SoulofMight, 1, 35, 45);
-                }
+                loot.LootAdd<CryoBar>(3, 10, 20); //33%概率，数量10-20
+                loot.LootAdd<GlacialCrusher>(3, 1 ,1);
+                loot.LootAdd<BittercoldStaff>(3, 1 ,1);
             }
             if (item.type == ModContent.ItemType<PerforatorBag>())
             {
-                itemloot.Add(ModContent.ItemType<BloodClotStaff>(), 3);
+                loot.LootAdd<BloodClotStaff>(3);
             }
-            if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
+            //重写了掉魂的方法
+            #region DropSoul
+            bool dropSoul = CIServerConfig.Instance.CalBossesCanDropSoul;
+            if (dropSoul)
             {
-
-                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
+                if (CheckBag<AquaticScourgeBag>(item.type))
+                    GiveSoul(ItemID.SoulofSight);
+                if (CheckBag<BrimstoneWaifuBag>(item.type))
+                    GiveSoul(ItemID.SoulofFright);
+                if (CheckBag<CryogenBag>(item.type))
+                    GiveSoul(ItemID.SoulofMight);
+                void GiveSoul(int soulID)
                 {
-                    itemloot.Add(ItemID.SoulofFright, 1, 35, 45);
+                    loot.LootAdd(soulID, 1, 35, 45);
                 }
             }
-
-            if (item.type == ModContent.ItemType<AquaticScourgeBag>())
-            {
-
-                if(CIServerConfig.Instance.CalBossesCanDropSoul == true)
-                {
-                    itemloot.Add(ItemID.SoulofSight, 1, 35, 45);
-                }
-            }
-            //1.31 Scarlet:灾三王现在再次掉三王魂（可用config开关），掉魂的类型依据灾三王的boss主题色。掉落量为35-45随机
-
+            #endregion
             if (item.type == ModContent.ItemType<ProvidenceBag>())
             {
-                itemloot.Add(ModContent.ItemType<PristineFuryLegacy>(), 4);
-                itemloot.Add(ModContent.ItemType<SamuraiBadge>(), 10);
+                loot.LootAdd<PristineFuryLegacy>(4);
+                loot.LootAdd<SamuraiBadge>(10);
             }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
-                itemloot.Add(ModContent.ItemType<MeleeTypeEradicator>(), 3);
+                loot.LootAdd<MeleeTypeEradicator>(3);
 
             if (item.type == ModContent.ItemType<RavagerBag>())
             {
-                itemloot.Add(ModContent.ItemType<MeleeTypeCorpusAvertor>(), 3);
+                loot.LootAdd<MeleeTypeCorpusAvertor>(3);
             }
             if (item.type == ModContent.ItemType<PlaguebringerGoliathBag>())
             {
-                itemloot.Add(ModContent.ItemType<BlightSpewerLegacy>(), 4);
+                loot.LootAdd<BlightSpewerLegacy>(4);
             }
             if (item.type == ModContent.ItemType<HiveMindBag>())
             {
-                itemloot.Add(ModContent.ItemType<ShadethrowerLegacy>(), 4);
+                loot.LootAdd<ShadethrowerLegacy>(4);
                 //暗影之雨
-                itemloot.Add(ModContent.ItemType<ShadowdropStaff>(), 5);
+                loot.LootAdd<ShadowdropStaff>(5);
             }
                 
             if (item.type == ModContent.ItemType<SlimeGodBag>())
-                itemloot.Add(ModContent.ItemType<OverloadedBlasterLegacy>(), 4);
+                loot.LootAdd<OverloadedBlasterLegacy>(4);
 
             if (item.type == ModContent.ItemType<AstrumAureusBag>())
-                itemloot.Add(ModContent.ItemType<AuroraBlazerLegacy>(), 4);
+                loot.LootAdd<AuroraBlazerLegacy>(4);
             switch (item.type)
             {
                 #region Boss Treasure Bags
                 case ItemID.MoonLordBossBag:
-                    itemloot.Add(ModContent.ItemType<GrandDad>(), 10);
+                    loot.LootAdd<GrandDad>(10);
                     break;
                 case ItemID.GolemBossBag:
-                    itemloot.Add(ModContent.ItemType<LeadWizard>(), 10);
+                    loot.LootAdd<LeadWizard>(10);
                     break;
-                    #endregion
+                #endregion
             }
         }
     }

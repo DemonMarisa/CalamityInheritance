@@ -11,13 +11,14 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Texture;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class ButcherHeldProj : ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<ButcherLegacy>();
-        public override string Texture => "CalamityMod/Items/Weapons/Ranged/Butcher";
+        public override string Texture => $"{CIWeaponsResprite.CIRangedWeaponRoute}/ButcherLegacy";
 
         public override void SetDefaults()
         {

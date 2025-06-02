@@ -99,3 +99,8 @@ AncientAeroWings: {
 		这一效果在受击时会被禁用7秒
 		'''
 }
+
+DrewsWings: {
+	// DisplayName: Drews Wings
+	// Tooltip: ""
+}

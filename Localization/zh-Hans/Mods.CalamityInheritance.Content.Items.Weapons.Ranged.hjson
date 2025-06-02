@@ -546,3 +546,8 @@ MagnaStrikerLegacy: {
 	DisplayName: 麦格纳冲锋炮[Legacy]
 	Tooltip: 发射鹅卵石和麦格纳冲击波
 }
+
+ButcherLegacy: {
+	// DisplayName: Butcher Legacy
+	// Tooltip: ""
+}
