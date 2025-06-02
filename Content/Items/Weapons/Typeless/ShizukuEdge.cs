@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             Item.height = 108;
             Item.damage = BaseDamage;
             Item.DamageType = DamageClass.Generic;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             //it dosen't matter.
             Item.useTime = 14;
             Item.useAnimation = 14;
@@ -45,13 +45,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage *= player.GetBestClassDamage().ApplyTo(BaseDamage);
         }
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectile>()] < 1;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //发射逻辑：往后方发射三个鬼魂， 往前方发射两个镰刀
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ShizukuEdgeProjectile>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<ShizukuEdgeProjectile>(), damage, knockback, player.whoAmI);
             return false;
         }
 

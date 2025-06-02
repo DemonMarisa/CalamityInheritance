@@ -61,7 +61,12 @@ Mods: {
 			VerdantYoyo.DisplayName: 葱茏
 			ApothMarkLegacy.DisplayName: 光子标记
 			OpalStrikeLegacy.DisplayName: 鹅软石冲击波
-			Ranged.NorfleetExplosionLegacy.DisplayName: 星界陨石
+
+			Ranged: {
+				NorfleetExplosionLegacy.DisplayName: 星界陨石
+				// HighExplosivePeanutShell.DisplayName: High Explosive Peanut Shell
+			}
+
 			Typeless.NanoFlareLegacy.DisplayName: 纳米火焰
 			FossilSpike.DisplayName: 化石尖刺
 			MarianaProjectile.DisplayName: 花岗岩步枪
@@ -70,6 +75,7 @@ Mods: {
 			YharonArenaProj.DisplayName: 地狱龙卷
 			YharonFireball2Legacy.DisplayName: 龙炎弹
 			YharonFireballLegacy.DisplayName: 龙炎弹
+			// MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {
@@ -85,5 +91,28 @@ Mods: {
 		}
 
 		// Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
+
+		Items: {
+			Weapons: {
+				Magic: {
+					DivineRetribution: {
+						// DisplayName: Divine Retribution
+						// Tooltip: ""
+					}
+				}
+
+				Ranged: {
+					DodusHandcannon: {
+						// DisplayName: Dodus Handcannon
+						// Tooltip: ""
+					}
+
+					ElementalBlaster: {
+						// DisplayName: Elemental Blaster
+						// Tooltip: ""
+					}
+				}
+			}
+		}
 	}
 }

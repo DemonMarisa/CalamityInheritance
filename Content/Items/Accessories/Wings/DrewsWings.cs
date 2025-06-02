@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
+    [AutoloadEquip(EquipType.Wings)]
     public class DrewsWings : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
