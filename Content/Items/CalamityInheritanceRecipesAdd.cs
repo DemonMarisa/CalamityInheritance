@@ -230,10 +230,16 @@ namespace CalamityInheritance.Content.Items
         {
             if (!CIServerConfig.Instance.FuckYouLGBT)
                 return;
+
+
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe LGBTStaff = Main.recipe[i];
                 Recipe LGBTPot = Main.recipe[i];
+
+                if (!LGBTStaff.HasIngredient(ItemID.GenderChangePotion))
+                    return;
+
                 if (LGBTStaff.HasResult(ModContent.ItemType<Sylvestaff>()) && LGBTStaff.createItem.stack == 1)
                 {
                     LGBTStaff.RemoveIngredient(ItemID.GenderChangePotion);

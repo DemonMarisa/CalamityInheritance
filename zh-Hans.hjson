@@ -75,7 +75,7 @@ Mods: {
 			YharonArenaProj.DisplayName: 地狱龙卷
 			YharonFireball2Legacy.DisplayName: 龙炎弹
 			YharonFireballLegacy.DisplayName: 龙炎弹
-			// MoonPlaceholder.DisplayName: Moon Placeholder
+			MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {

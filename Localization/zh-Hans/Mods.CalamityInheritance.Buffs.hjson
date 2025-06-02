@@ -239,16 +239,6 @@ WulfrumDroidOldBuff: {
 }
 
 KamiBuff: {
-	DisplayName: Kami之佑
-	Description: 提高15%最大移动速度，加速度和伤害
-}
-
-KamiFlu: {
-	DisplayName: Kami之疫
-	Description: 手无寸铁，奄奄一息
-}
-
-KamiBuff: {
 	// DisplayName: Kami Buff
 	// Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
 }

@@ -65,13 +65,7 @@ MarkedMagnum: {
 
 ShizukuEdge: {
 	DisplayName: Shizuku's Frigid Lunar Glow
-	Tooltip:
-		"[c/98F5FF:Beneath the glacial glare of the moon, the Creator's heart throbs with melancholic anguish.]"	
-}
-
-YanmeisKnife: {
-	DisplayName: Yanmeis Knife
-	Tooltip: ""
+	Tooltip: "[c/98F5FF:Beneath the glacial glare of the moon, the Creator's heart throbs with melancholic anguish.]"
 }
 
 YanmeisKnife: {

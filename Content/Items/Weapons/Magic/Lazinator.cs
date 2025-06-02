@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Items.Materials;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -36,7 +37,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ProjectileID.PurpleLaser;
             Item.shootSpeed = 20f;
         }
-
+        public override void UseItemFrame(Player player)
+        {
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
+        }
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (Main.rand.NextBool(2))

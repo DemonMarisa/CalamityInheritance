@@ -89,7 +89,6 @@ namespace CalamityInheritance.World
         #region 开启与关闭
         public void UpdateMalice()
         {
-
             if (!Malice)
             {
                 if (!CalamityWorld.revenge)

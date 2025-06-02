@@ -4,8 +4,10 @@ using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -135,7 +137,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     // 储存具体的回血进度
                     // 因为回血的数值1 = 0.5HP/s，所以除120
-                    float lifeRegenTimer = Player.lifeRegen / 120;
+                    float lifeRegenTimer = Math.Abs((float)(Player.lifeRegen / 120f));
                     AncientSilvaRegenCounter += lifeRegenTimer;
 
                     while (AncientSilvaRegenCounter > 1f)
@@ -149,6 +151,16 @@ namespace CalamityInheritance.CIPlayer
 
                     if (AncientSilvaRegenCounter < 0f)
                         AncientSilvaRegenCounter = 0f;
+
+                    int green = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ChlorophyteWeapon, 0f, 0f, 100, new Color(Main.DiscoR, 203, 103), 2f);
+                    Main.dust[green].position.X += Main.rand.Next(-20, 21);
+                    Main.dust[green].position.Y += Main.rand.Next(-20, 21);
+                    Main.dust[green].velocity *= 0.9f;
+                    Main.dust[green].noGravity = true;
+                    Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
+                    Main.dust[green].shader = GameShaders.Armor.GetSecondaryShader(Player.ArmorSetDye(), Player);
+                    if (Main.rand.NextBool())
+                        Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                 }
 
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)

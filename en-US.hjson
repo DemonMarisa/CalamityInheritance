@@ -91,28 +91,5 @@ Mods: {
 		}
 
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
-
-		Items: {
-			Weapons: {
-				Magic: {
-					DivineRetribution: {
-						DisplayName: Divine Retribution
-						Tooltip: ""
-					}
-				}
-
-				Ranged: {
-					DodusHandcannon: {
-						DisplayName: Dodus Handcannon
-						Tooltip: ""
-					}
-
-					ElementalBlaster: {
-						DisplayName: Elemental Blaster
-						Tooltip: ""
-					}
-				}
-			}
-		}
 	}
 }

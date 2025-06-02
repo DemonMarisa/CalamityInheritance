@@ -467,8 +467,7 @@ namespace CalamityInheritance.NPCs
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ItemMod<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
                 LegendaryDropHelper(ItemMod<YharimsCrystalLegendary>(), ref Loot);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<YharonBag>());
-                //?
-                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DrewsWings>());
+                Loot.DropCommonVanilla(ItemMod<DrewsWings>());
                 Loot.DropCommonMod<DragonsBreathold>();
                 Loot.DropCommonMod<VoidVortexLegacy>(10);
                 Loot.DropCommonMod<YharimsGiftLegacy>(1);

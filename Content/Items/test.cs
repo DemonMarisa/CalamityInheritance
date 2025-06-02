@@ -47,10 +47,15 @@ namespace CalamityInheritance.Content.Items
             else
                 Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
             */
+            /*
             if (player.altFunctionUse == 2)
                 Main.NewText($"LegacyYharon P2: {CIGlobalNPC.LegacyYharon}");
             else
                 Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
+            */
+
+            Main.NewText($"PlayerLife: {player.lifeRegen}");
+            Main.NewText($"PlayerSR: {player.CIMod().AncientSilvaRegenCounter}");
             return true;
         }
     }

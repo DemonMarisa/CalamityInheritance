@@ -247,16 +247,6 @@ WulfrumDroidOldBuff: {
 }
 
 KamiBuff: {
-	DisplayName: Kami Injection
-	Description: 15% increased max movement speed, acceleration and damage
-}
-
-KamiFlu: {
-	DisplayName: Kami Flu
-	Description: Defenseless and dying
-}
-
-KamiBuff: {
 	DisplayName: Kami Buff
 	Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
 }
