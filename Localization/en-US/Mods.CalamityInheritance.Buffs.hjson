@@ -255,3 +255,13 @@ KamiFlu: {
 	DisplayName: Kami Flu
 	Description: Defenseless and dying
 }
+
+KamiBuff: {
+	DisplayName: Kami Buff
+	Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
+}
+
+KamiFlu: {
+	DisplayName: Kami Flu
+	Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
+}

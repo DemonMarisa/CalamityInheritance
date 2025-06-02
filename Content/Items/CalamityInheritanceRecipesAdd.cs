@@ -224,7 +224,23 @@ namespace CalamityInheritance.Content.Items
         {
             PostModifyModYharon();
             YharonEclispe();        //龙一/龙二, 请确保这一修改最后被执行。
+            FuckYouLGBTStaff(); // 🤗
         }
+        public static void FuckYouLGBTStaff()
+        {
+            if (!CIServerConfig.Instance.FuckYouLGBT)
+                return;
+            for (int i = 0; i < Recipe.numRecipes; i++)
+            {
+                Recipe LGBTStaff = Main.recipe[i];
+                Recipe LGBTPot = Main.recipe[i];
+                if (LGBTStaff.HasResult(ModContent.ItemType<Sylvestaff>()) && LGBTStaff.createItem.stack == 1)
+                {
+                    LGBTStaff.RemoveIngredient(ItemID.GenderChangePotion);
+                }
+            }
+        }
+
 
         public static void PostModifyModYharon()
         {

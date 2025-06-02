@@ -75,6 +75,7 @@ Mods: {
 			YharonArenaProj.DisplayName: Yharon Arena Proj
 			YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
 			YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
+			MoonPlaceholder.DisplayName: Moon Placeholder
 		}
 
 		Content/Projectiles/Summon: {
@@ -90,5 +91,28 @@ Mods: {
 		}
 
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: Shrine Marnite Proj
+
+		Items: {
+			Weapons: {
+				Magic: {
+					DivineRetribution: {
+						DisplayName: Divine Retribution
+						Tooltip: ""
+					}
+				}
+
+				Ranged: {
+					DodusHandcannon: {
+						DisplayName: Dodus Handcannon
+						Tooltip: ""
+					}
+
+					ElementalBlaster: {
+						DisplayName: Elemental Blaster
+						Tooltip: ""
+					}
+				}
+			}
+		}
 	}
 }

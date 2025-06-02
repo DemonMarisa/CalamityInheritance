@@ -247,3 +247,13 @@ KamiFlu: {
 	DisplayName: Kami之疫
 	Description: 手无寸铁，奄奄一息
 }
+
+KamiBuff: {
+	// DisplayName: Kami Buff
+	// Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
+}
+
+KamiFlu: {
+	// DisplayName: Kami Flu
+	// Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
+}
