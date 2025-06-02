@@ -90,7 +90,6 @@ namespace CalamityInheritance.Content.Items
                 itemloot.Add(ModContent.ItemType<DragonsBreathold>(), 5);
                 itemloot.Add(ModContent.ItemType<VoidVortexLegacy>(), 10);
                 itemloot.Add(ModContent.ItemType<YharimsGiftLegacy>(), 1);
-                itemloot.Add(ModContent.ItemType<DragonsBreathold>(),3);
             }
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 itemloot.Add(ModContent.ItemType<ArcanumoftheVoid>(),1);

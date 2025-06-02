@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Security.Cryptography.X509Certificates;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
@@ -99,315 +100,392 @@ namespace CalamityInheritance.NPCs
             return count <= 1;
         }
         #region Modify NPC Loot Main Hook
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        public override void ModifyNPCLoot(NPC npc, NPCLoot Loot)
         {
-            LeadingConditionRule postDoG = npcLoot.DefineConditionalDropSet(DropHelper.PostDoG());
-
-            if (npc.type == ModContent.NPCType<IrradiatedSlime>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 3 );
-
-            if (npc.type == ModContent.NPCType<GammaSlime>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 3);
-
-            if (npc.type == ModContent.NPCType<CragmawMire>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 2);
-
-            if (npc.type == ModContent.NPCType<Mauler>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 2);
-
-            if (npc.type == ModContent.NPCType<NuclearTerror>())
-                npcLoot.Add(ModContent.ItemType<LeadCore>(), 1);
-
-            if (npc.type == ModContent.NPCType<EutrophicRay>())
-                npcLoot.Add(ModContent.ItemType<EutrophicShank>(), 3);
-            if (npc.type == ModContent.NPCType<IceClasper>())
-                npcLoot.Add(ModContent.ItemType<AncientAncientIceChunk>(), 3);
-
-            LeadingConditionRule postPolter = npcLoot.DefineConditionalDropSet(DropHelper.PostPolter());
-
-            if (npc.type == ModContent.NPCType<EidolonWyrmHead>())
-                postPolter.Add(ModContent.ItemType<SoulEdge>(), 1);
-
-            if (npc.type == ModContent.NPCType<WulfrumDrone>())
+            LeadingConditionRule postDoG = Loot.DefineConditionalDropSet(DropHelper.PostDoG());
+            bool dropSoul = CIServerConfig.Instance.CalBossesCanDropSoul;
+            if (dropSoul)
             {
-                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+                if (npc.CheckNPCMod<BrimstoneElemental>())
+                    DropSoul(ItemID.SoulofFright);
+                if (npc.CheckNPCMod<Cryogen>())
+                    DropSoul(ItemID.SoulofMight);
+                if (npc.CheckNPCMod<AquaticScourgeHead>())
+                DropSoul(ItemID.SoulofSight);
             }
-
-            if (npc.type == ModContent.NPCType<WulfrumGyrator>())
+            void DropSoul(int soulType, int dropRate = 1, int dropMin = 35, int dropMax = 45)
             {
-                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+                Loot.DropCommonVanilla(soulType, dropRate, dropMin, dropMax);
             }
+            if (npc.CheckNPCMod<IrradiatedSlime>())
+                Loot.Add(ItemMod<LeadCore>(), 3);
 
-            if (npc.type == ModContent.NPCType<WulfrumHovercraft>())
-            {
-                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
-            }
+            if (npc.CheckNPCMod<GammaSlime>())
+                Loot.Add(ItemMod<LeadCore>(), 3);
 
-            if (npc.type == ModContent.NPCType<WulfrumAmplifier>())
-            {
-                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
-            }
+            if (npc.CheckNPCMod<CragmawMire>())
+                Loot.Add(ItemMod<LeadCore>(), 2);
 
-            if (npc.type == ModContent.NPCType<WulfrumRover>())
+            if (npc.CheckNPCMod<Mauler>())
+                Loot.Add(ItemMod<LeadCore>(), 2);
+
+            if (npc.CheckNPCMod<NuclearTerror>())
+                Loot.Add(ItemMod<LeadCore>(), 1);
+
+            if (npc.CheckNPCMod<EutrophicRay>())
+                Loot.Add(ItemMod<EutrophicShank>(), 3);
+            if (npc.CheckNPCMod<IceClasper>())
+                Loot.Add(ItemMod<AncientAncientIceChunk>(), 3);
+
+            LeadingConditionRule postPolter = Loot.DefineConditionalDropSet(DropHelper.PostPolter());
+
+            if (npc.CheckNPCMod<EidolonWyrmHead>())
+                postPolter.Add(ItemMod<SoulEdge>(), 1);
+            const int wulfrumArmorDropRate = 100;
+            int[] wulfurm =
+            [
+                ModContent.NPCType<WulfrumDrone>(),
+                ModContent.NPCType<WulfrumGyrator>(),
+                ModContent.NPCType<WulfrumHovercraft>(),
+                ModContent.NPCType<WulfrumAmplifier>(),
+                ModContent.NPCType<WulfrumRover>()
+            ];
+            foreach (var wulfrumEnemy in wulfurm)
             {
-                npcLoot.Add(ModContent.ItemType<MageWulfrumHoodLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<MeleeWulfrumHelmLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<RangedWulfrumHeadgearLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<SummonerWulfrumHelmetLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<ThrowerWulfrumMaskLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumArmorLegacy>(), 100);
-                npcLoot.Add(ModContent.ItemType<WulfrumLeggingsLegacy>(), 100);
+                if (npc.CheckNPCID(wulfrumEnemy))
+                {
+                    Loot.DropCommonMod<MageWulfrumHoodLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<MeleeWulfrumHelmLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<RangedWulfrumHeadgearLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<SummonerWulfrumHelmetLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<ThrowerWulfrumMaskLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<WulfrumLeggingsLegacy>(wulfrumArmorDropRate);
+                    Loot.DropCommonMod<WulfrumArmorLegacy>(wulfrumArmorDropRate);
+                }
+
             }
-            if (npc.type == ModContent.NPCType<Cnidrion>())
+            // if (npc.CheckNPCMod<WulfrumDrone>())
+            // {
+            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
+            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
+            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
+            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
+            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
+            // }
+
+            // if (npc.CheckNPCMod<WulfrumGyrator>())
+            // {
+            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
+            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
+            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
+            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
+            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
+            // }
+
+            // if (npc.CheckNPCMod<WulfrumHovercraft>())
+            // {
+            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
+            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
+            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
+            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
+            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
+            // }
+
+            // if (npc.CheckNPCMod<WulfrumAmplifier>())
+            // {
+            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
+            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
+            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
+            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
+            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
+            // }
+
+            // if (npc.CheckNPCMod<WulfrumRover>())
+            // {
+            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
+            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
+            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
+            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
+            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
+            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
+            // }
+            if (npc.CheckNPCMod<Cnidrion>())
             {
                 if (CIServerConfig.Instance.CalExtraDrop == true)
                 {
-                    npcLoot.Add(ModContent.ItemType<PearlShard> (), 1, 6, 12);
+                    Loot.Add(ItemMod<PearlShard> (), 1, 6, 12);
                 }
             }
             #region 深渊掉落
-            var postCalClone = npcLoot.DefineConditionalDropSet(CIDropHelper.CIPostCalClone());
+            var postCalClone = Loot.DefineConditionalDropSet(CIDropHelper.CIPostCalClone());
             // 魔鬼鱼
-            if (npc.type == ModContent.NPCType<DevilFish>())
+            int[] shouldDropLumenyl =
+            [
+                ModNPC<DevilFish>(),
+                ModNPC<Viperfish>(),
+                ModNPC<LuminousCorvina>(),
+                ModNPC<ToxicMinnow>(),
+                ModNPC<GiantSquid>(),
+                ModNPC<OarfishHead>(),
+                ModNPC<MirageJelly>(),
+                ModNPC<Bloatfish>(),
+                ModNPC<GulperEelHead>()
+            ];
+            foreach (var dropLumenylNPC in shouldDropLumenyl)
             {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
             }
-            // 蝰蛇鱼
-            if (npc.type == ModContent.NPCType<Viperfish>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 流光石首鱼
-            if (npc.type == ModContent.NPCType<LuminousCorvina>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 剧毒米诺鱼
-            if (npc.type == ModContent.NPCType<ToxicMinnow>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 巨大乌贼
-            if (npc.type == ModContent.NPCType<GiantSquid>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 桨鱼
-            if (npc.type == ModContent.NPCType<OarfishHead>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 幻海水母
-            if (npc.type == ModContent.NPCType<MirageJelly>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 肿胀翻车鱼
-            if (npc.type == ModContent.NPCType<Bloatfish>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
-            // 大嘴鳗
-            if (npc.type == ModContent.NPCType<GulperEelHead>())
-            {
-                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<DepthCells>(), 2, 1, 2, 2, 3));
-                postCalClone.Add(ModContent.ItemType<Lumenyl>(), 2);
-            }
+            // if (npc.CheckNPCMod<DevilFish>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 蝰蛇鱼
+            // if (npc.CheckNPCMod<Viperfish>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 流光石首鱼
+            // if (npc.CheckNPCMod<LuminousCorvina>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 剧毒米诺鱼
+            // if (npc.CheckNPCMod<ToxicMinnow>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 巨大乌贼
+            // if (npc.CheckNPCMod<GiantSquid>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 桨鱼
+            // if (npc.CheckNPCMod<OarfishHead>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 幻海水母
+            // if (npc.CheckNPCMod<MirageJelly>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 肿胀翻车鱼
+            // if (npc.CheckNPCMod<Bloatfish>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
+            // // 大嘴鳗
+            // if (npc.CheckNPCMod<GulperEelHead>())
+            // {
+            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            // }
             #endregion
             #region ModBoss
 
-            if (npc.type == ModContent.NPCType<DesertScourgeHead>())
+            if (npc.CheckNPCMod<DesertScourgeHead>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ModContent.ItemType<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ModContent.ItemType<AeroStoneLegacy>(),1);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DesertScourgeBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ItemMod<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
+                Loot.Add(ItemMod<AeroStoneLegacy>(),1);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DesertScourgeBag>());
             }
-            if (npc.type == ModContent.NPCType<Crabulon>())
+            if (npc.CheckNPCMod<Crabulon>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ModContent.ItemType<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CrabulonBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCrabulon, ItemMod<KnowledgeCrabulon>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<CrabulonBag>());
             }
-            if (npc.type == ModContent.NPCType<HiveMind>())
+            if (npc.CheckNPCMod<HiveMind>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedHiveMind, ModContent.ItemType<KnowledgeHiveMind>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<HiveMindBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedHiveMind, ItemMod<KnowledgeHiveMind>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<HiveMindBag>());
+                Loot.DropCommonMod<ShadethrowerLegacy>();
+                Loot.DropCommonMod<ShadowdropStaff>();
             }
-            if (npc.type == ModContent.NPCType<PerforatorHive>())
+            if (npc.CheckNPCMod<PerforatorHive>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ModContent.ItemType<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PerforatorBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ItemMod<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<PerforatorBag>());
+                Loot.DropCommonMod<BloodClotStaff>();
             }
-            if (npc.type == ModContent.NPCType<SlimeGodCore>())
+            if (npc.CheckNPCMod<SlimeGodCore>())
             {
-                npcLoot.Add(ModContent.ItemType<PurifiedJam>(), 1);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedSlimeGod, ModContent.ItemType<KnowledgeSlimeGod>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<SlimeGodBag>());
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PurifiedJam>());
+                Loot.Add(ItemMod<PurifiedJam>(), 1);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedSlimeGod, ItemMod<KnowledgeSlimeGod>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<SlimeGodBag>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<PurifiedJam>());
+                Loot.DropCommonMod<OverloadedBlasterLegacy>();
             }
 
-            if (npc.type == ModContent.NPCType<Cryogen>())
+            if (npc.CheckNPCMod<Cryogen>())
             {
-                LegendaryDropHelper(ModContent.ItemType<CyrogenLegendary>(), ref npcLoot);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ModContent.ItemType<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CryogenBag>());
+                LegendaryDropHelper(ItemMod<CyrogenLegendary>(), ref Loot);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCryogen, ItemMod<KnowledgeCryogen>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<CryogenBag>());
+                //新东西
+                Loot.DropCommonMod<CryoBar>(3, 10, 20);
+                Loot.DropCommonMod<GlacialCrusher>();
+                Loot.DropCommonMod<BittercoldStaff>();
+                if (CIServerConfig.Instance.CalBossesCanDropSoul)
+                    Loot.DropCommonVanilla(ItemID.SoulofMight, 1, 35, 45);
             }
-            if (npc.type == ModContent.NPCType<BrimstoneElemental> ())
+            if (npc.CheckNPCMod<BrimstoneElemental> ())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ModContent.ItemType<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ModContent.ItemType<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<BrimstoneWaifuBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<BrimstoneWaifuBag>());
             }
-            if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
+            if (npc.CheckNPCMod<AquaticScourgeHead>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ModContent.ItemType<KnowledgeAquaticScourge>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ModContent.ItemType<KnowledgeSulphurSea>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AquaticScourgeBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ItemMod<KnowledgeAquaticScourge>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAquaticScourge, ItemMod<KnowledgeSulphurSea>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<AquaticScourgeBag>());
             }
-            if (npc.type == ModContent.NPCType<CalamitasClone>())
+            if (npc.CheckNPCMod<CalamitasClone>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ItemMod<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
                 if (CIServerConfig.Instance.CalExtraDrop == true)
                 {
-                    npcLoot.Add(ItemID.BrokenHeroSword, 3, 2, 3);
+                    Loot.Add(ItemID.BrokenHeroSword, 3, 2, 3);
                 }
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCloneBag>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<CalamitasCloneBag>());
             }
-            if (npc.type == ModContent.NPCType<Cataclysm>() )
-                npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
-            if (npc.type == ModContent.NPCType<Catastrophe>())
-                npcLoot.Add(ModContent.ItemType<BrimstoneFlameblaster>(), 4);
-            if (npc.type == ModContent.NPCType<Anahita>() || npc.type == ModContent.NPCType<Leviathan>())
+            if (npc.CheckNPCMod<Cataclysm>() )
+                Loot.Add(ItemMod<HavocsBreathLegacy>(), 4);
+            if (npc.CheckNPCMod<Catastrophe>())
+                Loot.Add(ItemMod<BrimstoneFlameblaster>(), 4);
+            if (npc.CheckNPCMod<Anahita>() || npc.CheckNPCMod<Leviathan>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
-                npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<LeviathanBag>());
+                Loot.AddConditionalPerPlayer(shouldDropLore, ItemMod<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(shouldDropLore, ItemMod<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<LeviathanBag>());
+                
             }
-            if (npc.type == ModContent.NPCType<AstrumAureus>())
+            if (npc.CheckNPCMod<AstrumAureus>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumAureus, ModContent.ItemType<KnowledgeAstrumAureus>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AstrumAureusBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedAstrumAureus, ItemMod<KnowledgeAstrumAureus>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<AstrumAureusBag>());
+                Loot.DropCommonMod<AuroraBlazerLegacy>();
             }
-            if (npc.type == ModContent.NPCType<PlaguebringerGoliath>())
+            if (npc.CheckNPCMod<PlaguebringerGoliath>())
             {
-                LegendaryDropHelper(ModContent.ItemType<PBGLegendary>(), ref npcLoot);
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPlaguebringer, ModContent.ItemType<KnowledgePlaguebringerGoliath>(), desc: DropHelper.FirstKillText);
-                var onlyMasterDeath = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, ModContent.ItemType<PBGLegendary>(), 1);
-                onlyMasterDeath.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ModContent.ItemType<PBGLegendary>(), 100), true);
-                npcLoot.Add(onlyMasterDeath);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PlaguebringerGoliathBag>());
+                LegendaryDropHelper(ItemMod<PBGLegendary>(), ref Loot);
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPlaguebringer, ItemMod<KnowledgePlaguebringerGoliath>(), desc: DropHelper.FirstKillText);
+                var onlyMasterDeath = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, ItemMod<PBGLegendary>(), 1);
+                onlyMasterDeath.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), ItemMod<PBGLegendary>(), 100), true);
+                Loot.Add(onlyMasterDeath);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<PlaguebringerGoliathBag>());
+                Loot.DropCommonMod<BlightSpewerLegacy>();
             }
-            if (npc.type == ModContent.NPCType<RavagerBody>())
+            if (npc.CheckNPCMod<RavagerBody>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ModContent.ItemType<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<RavagerBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ItemMod<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<RavagerBag>());
+                Loot.DropCommonMod<BloodPactLegacy>();
+                Loot.DropCommonMod<MeleeTypeCorpusAvertor>();
             }
-            if (npc.type == ModContent.NPCType<AstrumDeusHead>())
+            if (npc.CheckNPCMod<AstrumDeusHead>())
             {
                 bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
-                npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
-                npcLoot.AddConditionalPerPlayer( firstDeusKill, ModContent.ItemType<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ModContent.ItemType<ConclaveCrossfire>(), 10);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<AstrumDeusBag>());
+                Loot.AddConditionalPerPlayer( firstDeusKill, ItemMod<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer( firstDeusKill, ItemMod<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                Loot.Add(ItemMod<ConclaveCrossfire>(), 10);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<AstrumDeusBag>());
             }
-            if (npc.type == ModContent.NPCType<ProfanedGuardianCommander> ())
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ModContent.ItemType<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
-            if (npc.type == ModContent.NPCType<Bumblefuck>())
+            if (npc.CheckNPCMod<ProfanedGuardianCommander> ())
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ItemMod<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
+            if (npc.CheckNPCMod<Bumblefuck>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ModContent.ItemType<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DragonfollyBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ItemMod<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DragonfollyBag>());
             }
-            if (npc.type == ModContent.NPCType<Providence>())
+            if (npc.CheckNPCMod<Providence>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ModContent.ItemType<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ModContent.ItemType<PristineFuryLegacy>(), 10);
-                npcLoot.AddConditionalPerPlayer(() => Condition.InUnderworld.IsMet(), ModContent.ItemType<ElysianAegisold>());
-               
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<ProvidenceBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedProvidence, ItemMod<KnowledgeProvidence>(), desc: DropHelper.FirstKillText);
+                Loot.Add(ItemMod<PristineFuryLegacy>(), 10);
+                Loot.AddConditionalPerPlayer(() => Condition.InUnderworld.IsMet(), ItemMod<ElysianAegisold>());
+                Loot.DropCommonMod<PristineFuryLegacy>(4);
+                Loot.DropCommonMod<SamuraiBadge>(10);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<ProvidenceBag>());
             }
-            if (npc.type == ModContent.NPCType<StormWeaverHead>())
+            bool downedVoid = DownedBossSystem.downedCeaselessVoid;
+            bool downedSW = DownedBossSystem.downedStormWeaver;
+            bool downedSig = DownedBossSystem.downedSignus;
+            bool shouldDropTheirLore = (downedVoid && downedSW && !downedSig) || (downedVoid && !downedSW && downedSig) || (!downedVoid && downedSW && downedSig);
+            if (npc.CheckNPCMod<StormWeaverHead>())
             {
-                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<StormWeaverBag>());
+                Loot.AddConditionalPerPlayer(() => shouldDropTheirLore, ItemMod<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<StormWeaverBag>());
             }
-            if (npc.type == ModContent.NPCType<CeaselessVoid>())
+            if (npc.CheckNPCMod<CeaselessVoid>())
             {
-                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CeaselessVoidBag>());
+                Loot.AddConditionalPerPlayer(() => shouldDropTheirLore, ItemMod<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<CeaselessVoidBag>());
             }
-            if (npc.type == ModContent.NPCType<Signus>())
+            if (npc.CheckNPCMod<Signus>())
             {
-                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedCeaselessVoid && !DownedBossSystem.downedStormWeaver && DownedBossSystem.downedSignus, ModContent.ItemType<KnowledgeSentinels>());
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<SignusBag>());
+                Loot.AddConditionalPerPlayer(() => shouldDropTheirLore, ItemMod<KnowledgeSentinels>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<SignusBag>());
             }
-            if (npc.type == ModContent.NPCType<Polterghast>())
+            if (npc.CheckNPCMod<Polterghast>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPolterghast, ModContent.ItemType<KnowledgePolterghast>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<PolterghastBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPolterghast, ItemMod<KnowledgePolterghast>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<PolterghastBag>());
             }
-            if (npc.type == ModContent.NPCType<OldDuke>())
+            if (npc.CheckNPCMod<OldDuke>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBoomerDuke, ModContent.ItemType<KnowledgeOldDuke>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<OldDukeBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBoomerDuke, ItemMod<KnowledgeOldDuke>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<OldDukeBag>());
             }
-            if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
+            if (npc.CheckNPCMod<DevourerofGodsHead>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ModContent.ItemType<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ItemDropRule.ByCondition(DropHelper.RevAndMaster, ModContent.ItemType<AncientMurasama>(), 1));
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DevourerofGodsBag>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ItemMod<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
+                Loot.Add(ItemDropRule.ByCondition(DropHelper.RevAndMaster, ItemMod<AncientMurasama>(), 1));
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DevourerofGodsBag>());
+                Loot.DropCommonMod<MeleeTypeEradicator>();
             }
-            if (npc.type == ModContent.NPCType<Yharon>())
+            if (npc.CheckNPCMod<Yharon>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
-                LegendaryDropHelper(ModContent.ItemType<YharimsCrystalLegendary>(), ref npcLoot);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<YharonBag>());
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DrewsWings>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ItemMod<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+                LegendaryDropHelper(ItemMod<YharimsCrystalLegendary>(), ref Loot);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<YharonBag>());
+                //?
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DrewsWings>());
+                Loot.DropCommonMod<DragonsBreathold>();
+                Loot.DropCommonMod<VoidVortexLegacy>(10);
+                Loot.DropCommonMod<YharimsGiftLegacy>(1);
             }
-            if (npc.type == ModContent.NPCType<AresBody>() || npc.type == ModContent.NPCType<ThanatosHead>() || npc.type == ModContent.NPCType<Apollo>())
+            if (npc.CheckNPCMod<AresBody>() || npc.CheckNPCMod<ThanatosHead>() || npc.CheckNPCMod<Apollo>())
             {
                 bool shouldDropLore(DropAttemptInfo info) => !DownedBossSystem.downedExoMechs && ExoCanDropLoot();
-                npcLoot.AddConditionalPerPlayer(shouldDropLore, ModContent.ItemType<KnowledgeExoMechs>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<DraedonBag>());
+                Loot.AddConditionalPerPlayer(shouldDropLore, ItemMod<KnowledgeExoMechs>(), desc: DropHelper.FirstKillText);
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<DraedonBag>());
             }
-            if (npc.type == ModContent.NPCType<SupremeCalamitas>())
+            if (npc.CheckNPCMod<SupremeCalamitas>())
             {
-                npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
-                npcLoot.Add(ModContent.ItemType<VehemencOld>(), 1);
-                npcLoot.AddConditionalPerPlayer(() => DownedBossSystem.downedExoMechs, ModContent.ItemType<CalamitousEssence>());
-                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ModContent.ItemType<Armageddon>(), 1, 3000, 9999));
-                CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCoffer>());
+                Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ItemMod<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
+                Loot.Add(ItemMod<VehemencOld>(), 1);
+                Loot.AddConditionalPerPlayer(() => DownedBossSystem.downedExoMechs, ItemMod<CalamitousEssence>());
+                Loot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ItemMod<Armageddon>(), 1, 3000, 9999));
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<CalamitasCoffer>());
             }
             #endregion
             #region 掉落lore的条件
@@ -436,6 +514,7 @@ namespace CalamityInheritance.NPCs
                 bool lastTwinStanding = IsLastTwinStanding(info);
                 return !NPC.downedMechBossAny && (lastTwinStanding || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime);
             }
+
             #endregion
             switch (npc.type)
             {
@@ -443,38 +522,38 @@ namespace CalamityInheritance.NPCs
                 // AnomuraFungus
                 // FungalCarapace @ 14.29% Normal, 25% Expert+
                 case NPCID.AnomuraFungus:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FungalCarapace>(), 7, 4));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<FungalCarapace>(), 7, 4));
                     break;
                 case NPCID.PossessedArmor:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PsychoticAmulet>(), 40, 20));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<PsychoticAmulet>(), 40, 20));
                     break;
                 case NPCID.PirateCrossbower:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<RaidersGlory>(), 25, 15));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<RaidersGlory>(), 25, 15));
                     break;
                 case NPCID.PirateDeadeye:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ProporsePistol>(), 25, 15));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<ProporsePistol>(), 25, 15));
                     break;
                 case NPCID.IchorSticker:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<IchorSpearLegacy>(), 100, 50));
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpearofDestinyLegacy>(), 200, 100));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<IchorSpearLegacy>(), 100, 50));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<SpearofDestinyLegacy>(), 200, 100));
                     break;
                 case NPCID.VortexRifleman:
                     //我能问个问题吗，为啥交叉集火是星璇小怪掉的？
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ConclaveCrossfire>(), 100, 50));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<ConclaveCrossfire>(), 100, 50));
                     break;
                 case NPCID.SeaSnail:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SeaShell>(), 2, 1));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<SeaShell>(), 2, 1));
                     break;
                 case NPCID.DarkCaster:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AncientShiv>(),25,15));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<AncientShiv>(),25,15));
                     break;
                 //礼物宝箱怪掉节日矛
                 case NPCID.PresentMimic:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<HolidayHalberd>(), 7, 5));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<HolidayHalberd>(), 7, 5));
                     break;
                 case NPCID.MartianWalker:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<WingmanLegacy>(), 7, 5));
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ACTWingman>(), 7, 5));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<WingmanLegacy>(), 7, 5));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<ACTWingman>(), 7, 5));
                     break;
                 //蚁狮掉弓和爪子
                 case NPCID.Antlion:
@@ -482,253 +561,258 @@ namespace CalamityInheritance.NPCs
                 case NPCID.WalkingAntlion:
                 case NPCID.GiantWalkingAntlion:
                 case NPCID.GiantFlyingAntlion:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<AntlionBow>(), 50, 33));
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MandibleClaws>(), 50, 33));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<AntlionBow>(), 50, 33));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<MandibleClaws>(), 50, 33));
                     break;
                 case NPCID.GoblinWarrior:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Warblade>(), 25, 20));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<Warblade>(), 25, 20));
                     break;
                 //骷髅掉战斧
                 case NPCID.Skeleton:
                 case NPCID.ArmoredSkeleton:
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Waraxe>(), 20, 15));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<Waraxe>(), 20, 15));
                     break;
                 //符文法师掉马格努斯眼
                 case NPCID.RuneWizard:
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MagnusEye>(), 10));
+                    Loot.Add(ItemDropRule.Common(ItemMod<MagnusEye>(), 10));
                     break;
                 #endregion
                 #region LoreItems
                 // Dreadnautilus drops the Blood Moon lore
                 case NPCID.BloodNautilus:
-                    npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDreadnautilus, ModContent.ItemType<KnowledgeBloodMoon>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDreadnautilus, ItemMod<KnowledgeBloodMoon>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.DD2Betsy:
-                    LegendaryDropHelper(ModContent.ItemType<RavagerLegendary>(), ref npcLoot);
+                    LegendaryDropHelper(ItemMod<RavagerLegendary>(), ref Loot);
                     break;
                 case NPCID.KingSlime:
                     // More gel is not dropped on Expert because he has more minions, which increases the amount of gel provided.
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedSlimeKing, ModContent.ItemType<KnowledgeKingSlime>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedSlimeKing, ItemMod<KnowledgeKingSlime>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.EyeofCthulhu:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedBoss1, ModContent.ItemType<KnowledgeEyeofCthulhu>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedBoss1, ItemMod<KnowledgeEyeofCthulhu>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.EaterofWorldsHead:
                 case NPCID.EaterofWorldsBody:
                 case NPCID.EaterofWorldsTail:
                     // Corruption World OR Drunk World: Corruption Lore
                     LeadingConditionRule eowLoreCorruption = new(DropHelper.If((info) => info.npc.boss && (!WorldGen.crimson || WorldGen.drunkWorldGen) && !NPC.downedBoss2, desc: DropHelper.FirstKillText));
-                    eowLoreCorruption.Add(ModContent.ItemType<KnowledgeCorruption>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    eowLoreCorruption.Add(ModContent.ItemType<KnowledgeEaterofWorlds>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    npcLoot.Add(eowLoreCorruption);
+                    eowLoreCorruption.Add(ItemMod<KnowledgeCorruption>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    eowLoreCorruption.Add(ItemMod<KnowledgeEaterofWorlds>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    Loot.Add(eowLoreCorruption);
 
                     // Crimson World OR Drunk World: Crimson Lore
                     LeadingConditionRule eowLoreCrimson = new(DropHelper.If((info) => info.npc.boss && (WorldGen.crimson || WorldGen.drunkWorldGen) && !NPC.downedBoss2, desc: DropHelper.FirstKillText));
-                    eowLoreCrimson.Add(ModContent.ItemType<KnowledgeCrimson>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    eowLoreCrimson.Add(ModContent.ItemType<KnowledgeBrainofCthulhu>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    npcLoot.Add(eowLoreCrimson);
+                    eowLoreCrimson.Add(ItemMod<KnowledgeCrimson>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    eowLoreCrimson.Add(ItemMod<KnowledgeBrainofCthulhu>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    Loot.Add(eowLoreCrimson);
                     break;
                 case NPCID.BrainofCthulhu:
                     // Corruption World OR Drunk World: Corruption Lore
                     LeadingConditionRule bocLoreCorruption = new(DropHelper.If(() => (!WorldGen.crimson || WorldGen.drunkWorldGen) && !NPC.downedBoss2, desc: DropHelper.FirstKillText));
-                    bocLoreCorruption.Add(ModContent.ItemType<KnowledgeCorruption>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    bocLoreCorruption.Add(ModContent.ItemType<KnowledgeEaterofWorlds>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    npcLoot.Add(bocLoreCorruption);
+                    bocLoreCorruption.Add(ItemMod<KnowledgeCorruption>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    bocLoreCorruption.Add(ItemMod<KnowledgeEaterofWorlds>(), hideLootReport: WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    Loot.Add(bocLoreCorruption);
 
                     // Crimson World OR Drunk World: Crimson Lore
                     LeadingConditionRule bocLoreCrimson = new(DropHelper.If(() => (WorldGen.crimson || WorldGen.drunkWorldGen) && !NPC.downedBoss2, desc: DropHelper.FirstKillText));
-                    bocLoreCrimson.Add(ModContent.ItemType<KnowledgeCrimson>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    bocLoreCrimson.Add(ModContent.ItemType<KnowledgeBrainofCthulhu>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
-                    npcLoot.Add(bocLoreCrimson);
+                    bocLoreCrimson.Add(ItemMod<KnowledgeCrimson>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    bocLoreCrimson.Add(ItemMod<KnowledgeBrainofCthulhu>(), hideLootReport: !WorldGen.crimson && !WorldGen.drunkWorldGen);
+                    Loot.Add(bocLoreCrimson);
                     break;
                 case NPCID.QueenBee:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedQueenBee, ModContent.ItemType<KnowledgeQueenBee>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedQueenBee, ItemMod<KnowledgeQueenBee>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.SkeletronHead:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedBoss3, ModContent.ItemType<KnowledgeSkeletron>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedBoss3, ItemMod<KnowledgeSkeletron>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.WallofFlesh:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeUnderworld>(), desc: DropHelper.FirstKillText);
-                    npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<KnowledgeWallofFlesh>(), desc: DropHelper.FirstKillText);
-                    npcLoot.AddConditionalPerPlayer(() => !Main.hardMode, ModContent.ItemType<MLGRune>(), desc: DropHelper.FirstKillText);
-                    npcLoot.Add(ModContent.ItemType<MeowthrowerLegacy>(), 4);
+                    Loot.AddConditionalPerPlayer(() => !Main.hardMode, ItemMod<KnowledgeUnderworld>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !Main.hardMode, ItemMod<KnowledgeWallofFlesh>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !Main.hardMode, ItemMod<MLGRune>(), desc: DropHelper.FirstKillText);
+                    Loot.Add(ItemMod<MeowthrowerLegacy>(), 4);
                     break;
                 case NPCID.TheDestroyer:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedMechBoss1, ModContent.ItemType<KnowledgeDestroyer>(), desc: DropHelper.FirstKillText);
-                    npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedMechBoss1, ItemMod<KnowledgeDestroyer>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(ShouldDropMechLore, ItemMod<KnowledgeMechs>(), desc: DropHelper.MechBossText);
                     //三个机械boss都会掉，有意为之的
-                    LegendaryDropHelper(ModContent.ItemType<DestroyerLegendary>(), ref npcLoot);
+                    LegendaryDropHelper(ItemMod<DestroyerLegendary>(), ref Loot);
                     break;
                 case NPCID.Retinazer:
                 case NPCID.Spazmatism:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer((info) => !NPC.downedMechBoss2 && IsLastTwinStanding(info), ModContent.ItemType<KnowledgeTwins>(), desc: DropHelper.FirstKillText);
-                    npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
+                    Loot.AddConditionalPerPlayer((info) => !NPC.downedMechBoss2 && IsLastTwinStanding(info), ItemMod<KnowledgeTwins>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(ShouldDropMechLore, ItemMod<KnowledgeMechs>(), desc: DropHelper.MechBossText);
                     break;
                 case NPCID.SkeletronPrime:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedMechBoss3, ModContent.ItemType<KnowledgeSkeletronPrime>(), desc: DropHelper.FirstKillText);
-                    npcLoot.AddConditionalPerPlayer(ShouldDropMechLore, ModContent.ItemType<KnowledgeMechs>(), desc: DropHelper.MechBossText);
-                    npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<SpearofDestinyLegacy>()));
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedMechBoss3, ItemMod<KnowledgeSkeletronPrime>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(ShouldDropMechLore, ItemMod<KnowledgeMechs>(), desc: DropHelper.MechBossText);
+                    Loot.Add(ItemDropRule.MasterModeCommonDrop(ItemMod<SpearofDestinyLegacy>()));
                     break;
                 case NPCID.Plantera:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedPlantBoss, ModContent.ItemType<KnowledgePlantera>(), desc: DropHelper.FirstKillText);
-                    LegendaryDropHelper(ModContent.ItemType<PlanteraLegendary>(), ref npcLoot);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedPlantBoss, ItemMod<KnowledgePlantera>(), desc: DropHelper.FirstKillText);
+                    LegendaryDropHelper(ItemMod<PlanteraLegendary>(), ref Loot);
                     break;
                 case NPCID.Golem:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedGolemBoss, ModContent.ItemType<KnowledgeGolem>(), desc: DropHelper.FirstKillText);
-                    LegendaryDropHelper(ModContent.ItemType<DefenseBlade>(), ref npcLoot);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedGolemBoss, ItemMod<KnowledgeGolem>(), desc: DropHelper.FirstKillText);
+                    LegendaryDropHelper(ItemMod<DefenseBlade>(), ref Loot);
                     break;
                 case NPCID.DukeFishron:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedFishron, ModContent.ItemType<KnowledgeDukeFishron>(), desc: DropHelper.FirstKillText);
-                    LegendaryDropHelper(ModContent.ItemType<DukeLegendary>(), ref npcLoot);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedFishron, ItemMod<KnowledgeDukeFishron>(), desc: DropHelper.FirstKillText);
+                    LegendaryDropHelper(ItemMod<DukeLegendary>(), ref Loot);
                     break;
                 case NPCID.CultistBoss:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedAncientCultist, ModContent.ItemType<KnowledgeLunaticCultist>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedAncientCultist, ItemMod<KnowledgeLunaticCultist>(), desc: DropHelper.FirstKillText);
                     break;
                 case NPCID.MoonLordCore:
                     // Lore
-                    npcLoot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ModContent.ItemType<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
+                    Loot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ItemMod<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
                     break;
 
                #endregion
 
             }
-            GFBDrop(npc, npcLoot);
+            GFBDrop(npc, Loot);
         }
-        public void GFBDrop(NPC npc, NPCLoot npcLoot)
+        public void GFBDrop(NPC npc, NPCLoot Loot)
         {
             // GFB掉落
-            var GFBOnly = npcLoot.DefineConditionalDropSet(DropHelper.GFB);
+            var GFBOnly = Loot.DefineConditionalDropSet(DropHelper.GFB);
             #region ModBoss
-            if (npc.type == ModContent.NPCType<DesertScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AsgardianAegisold>(), 1), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<CalamitasClone>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AcceleratorT3>(), 1, 100, 999), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<AstrumAureus>())
+            if (npc.CheckNPCMod<DesertScourgeHead>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AsgardianAegisold>(), 1), hideLootReport: true);
+            if (npc.CheckNPCMod<AquaticScourgeHead>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
+            if (npc.CheckNPCMod<AquaticScourgeHead>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
+            if (npc.CheckNPCMod<CalamitasClone>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AcceleratorT3>(), 1, 100, 999), hideLootReport: true);
+            if (npc.CheckNPCMod<AstrumAureus>())
             {
-                var astralArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientAstralHelm>(), 1);
-                astralArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientAstralBreastplate>()));
-                astralArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientAstralLeggings>()));
+                var astralArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientAstralHelm>(), 1);
+                astralArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientAstralBreastplate>()));
+                astralArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientAstralLeggings>()));
                 GFBOnly.Add(astralArmorLoot, hideLootReport: true);
             }
-            if (npc.type == ModContent.NPCType<AstrumDeusHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<FourSeasonsGalaxiaold>(), 1, 1), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<Bumblefuck>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<YharimsGiftLegacy>(), 1), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<Providence>())
+            if (npc.CheckNPCMod<AstrumDeusHead>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<FourSeasonsGalaxiaold>(), 1, 1), hideLootReport: true);
+            if (npc.CheckNPCMod<Bumblefuck>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<YharimsGiftLegacy>(), 1), hideLootReport: true);
+            if (npc.CheckNPCMod<Providence>())
             {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientTarragonHelm>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonBreastplate>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientTarragonLeggings>()));
+                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientTarragonHelm>(), 1);
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientTarragonBreastplate>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientTarragonLeggings>()));
                 GFBOnly.Add(tarragon, hideLootReport: true);
             }
-            if (npc.type == ModContent.NPCType<Polterghast>())
+            if (npc.CheckNPCMod<Polterghast>())
             {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientBloodflareMask>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientBloodflareBodyArmor>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientBloodflareCuisses>()));
+                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientBloodflareMask>(), 1);
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientBloodflareBodyArmor>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientBloodflareCuisses>()));
                 GFBOnly.Add(tarragon, hideLootReport: true);
             }
-            if (npc.type == ModContent.NPCType<OldDuke>())
+            if (npc.CheckNPCMod<OldDuke>())
             {
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<TriumphPotion>(), 1, 3000, 9999), hideLootReport: true);
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<TriumphPotion>(), 1, 3000, 9999), hideLootReport: true);
+                Loot.DropCommonMod<InsidiousImpalerLegacy>();
+                Loot.DropCommonMod<LeadCore>();
             }
-            if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
+            if (npc.CheckNPCMod<DevourerofGodsHead>())
             {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientGodSlayerChestplate>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientGodSlayerHelm>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientGodSlayerLeggings>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientSilvaHelm>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientSilvaLeggings>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientSilvaArmor>()));
+                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientGodSlayerChestplate>(), 1);
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientGodSlayerHelm>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientGodSlayerLeggings>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaHelm>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaLeggings>()));
+                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaArmor>()));
                 GFBOnly.Add(tarragon, hideLootReport: true);
+                Loot.DropCommonMod<Skullmasher>(10);
             }
-            if (npc.type == ModContent.NPCType<Yharon>())
+            if (npc.CheckNPCMod<Yharon>())
             {
-                var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 100000);
-                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
-                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
+                var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ItemMod<YharimAuricTeslaHelm>(), 100000);
+                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaBodyArmor>()));
+                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaCuisses>()));
                 GFBOnly.Add(yharimArmorLoot, hideLootReport: true);
 
-                var yharimArmorLoot2 = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<YharimAuricTeslaHelm>(), 1);
-                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>()));
-                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>()));
+                var yharimArmorLoot2 = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<YharimAuricTeslaHelm>(), 1);
+                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaBodyArmor>()));
+                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaCuisses>()));
                 GFBOnly.Add(yharimArmorLoot2, hideLootReport: true);
             }
-            if (npc.type == ModContent.NPCType<AresBody>() || npc.type == ModContent.NPCType<ThanatosHead>() || npc.type == ModContent.NPCType<Apollo>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<Malice>(), 1, 1000, 2000), hideLootReport: true);
-            if (npc.type == ModContent.NPCType<SupremeCalamitas>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<Armageddon>(), 1, 3000, 9999), hideLootReport: true);
+            if (npc.CheckNPCMod<AresBody>() || npc.CheckNPCMod<ThanatosHead>() || npc.CheckNPCMod<Apollo>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<Malice>(), 1, 1000, 2000), hideLootReport: true);
+            if (npc.CheckNPCMod<SupremeCalamitas>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<Armageddon>(), 1, 3000, 9999), hideLootReport: true);
             #endregion
             #region 原版boss
             switch (npc.type)
             {
                 case NPCID.KingSlime:
-                    GFBOnly.Add(ModContent.ItemType<AstralArcanum>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<AstralArcanum>(), hideLootReport: true);
                     break;
                 case NPCID.EyeofCthulhu:
-                    GFBOnly.Add(ModContent.ItemType<DarkSunRingold>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<DarkSunRingold>(), hideLootReport: true);
                     break;
                 case NPCID.EaterofWorldsTail:
-                    GFBOnly.Add(ModContent.ItemType<CoreOfTheBloodGod>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<CoreOfTheBloodGod>(), hideLootReport: true);
                     break;
                 case NPCID.QueenBee:
-                    GFBOnly.Add(ModContent.ItemType<AncientTarragonWings>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<AncientTarragonWings>(), hideLootReport: true);
                     break;
                 case NPCID.WallofFlesh:
-                    var allClass = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<ElementalGauntletold>());
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Content.Items.Accessories.Ranged.ElementalQuiver>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientEtherealTalisman>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NucleogenesisLegacy>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NanotechOld>()));
+                    var allClass = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<ElementalGauntletold>());
+                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<Content.Items.Accessories.Ranged.ElementalQuiver>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<AncientEtherealTalisman>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<NucleogenesisLegacy>()));
+                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<NanotechOld>()));
                     GFBOnly.Add(allClass, hideLootReport: true);
                     break;
                 case NPCID.TheDestroyer:
-                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
                     break;
                 case NPCID.Spazmatism:
-                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
                     break;
                 case NPCID.SkeletronPrime:
-                    GFBOnly.Add(ModContent.ItemType<AncientMiracleMatter>(), hideLootReport: true);
+                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
                     break;
                 case NPCID.Plantera:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<VoidVortexLegacy>(), 1), hideLootReport: true);
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<VoidVortexLegacy>(), 1), hideLootReport: true);
                     break;
                 case NPCID.Golem:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AcceleratorT3>(), 1), hideLootReport: true);
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AcceleratorT3>(), 1), hideLootReport: true);
                     break;
                 case NPCID.CultistBoss:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<NebulaBar>(), 1, 3000, 9999), hideLootReport: true);
+                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<NebulaBar>(), 1, 3000, 9999), hideLootReport: true);
                     break;
                 case NPCID.MoonLordCore:
-                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ModContent.ItemType<AncientXerocPlateMail>(), 1);
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocMask>()));
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AncientXerocCuisses>()));
+                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientXerocPlateMail>(), 1);
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientXerocMask>()));
+                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientXerocCuisses>()));
                     GFBOnly.Add(mlArmorLoot);
                     break;
             }
             #endregion
         }
-        public void LegendaryDropHelper(int legendary, ref NPCLoot npcLoot)
+        public static int ItemMod<T>() where T : ModItem => ModContent.ItemType<T>();
+        public static int ModNPC<T>() where T : ModNPC => ModContent.NPCType<T>();
+        public void LegendaryDropHelper(int legendary, ref NPCLoot Loot)
         {
             var dropRule = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, legendary);
             dropRule.OnFailedConditions(ItemDropRule.ByCondition(new Conditions.NotMasterMode(), legendary, 100));
-            npcLoot.Add(dropRule);
+            Loot.Add(dropRule);
         }
         #endregion
 
