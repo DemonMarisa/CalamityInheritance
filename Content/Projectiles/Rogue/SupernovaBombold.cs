@@ -16,6 +16,7 @@ using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -29,13 +30,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-        public override bool? CanDamage()
-        {
-            Rectangle mouseHitBox = new ((int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, Projectile.width, Projectile.height);
-            bool normalCanHit = !Projectile.CalamityInheritance().GlobalRightClickListener;
-            bool rightClickCanHIt = Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.Hitbox.Intersects(mouseHitBox);
-            return normalCanHit || rightClickCanHIt;
-        }
         public override void SetDefaults()
         {
             Projectile.width = 34;
@@ -46,17 +40,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = true;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
+        public bool hasPressRight = false;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(MouseInit);
+            writer.Write(hasPressRight);
             Projectile.DoSyncHandlerWrite(ref writer);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             MouseInit = reader.ReadBoolean();
+            hasPressRight = reader.ReadBoolean();
             Projectile.DoSyncHandlerRead(ref reader);
-
         }
+
         public override void AI()
         {
             //dust and lighting
@@ -73,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             //速度
             float gravSpeed = 0.2f;
-            if (Projectile.CalamityInheritance().GlobalRightClickListener)
+            if (hasPressRight)
             {
                 gravSpeed = 0f;
                 Projectile.netUpdate = true;
@@ -91,7 +88,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.netUpdate = true;
                     }
                 }
-                Projectile.velocity.Y += gravSpeed;
+
+                if(!hasPressRight)
+                    Projectile.velocity.Y += gravSpeed;
             }
 
             //转角
@@ -100,11 +99,22 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //stealth strike
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.UnitY * 2f, ModContent.ProjectileType<SupernovaHoming>(), (int)(Projectile.damage * 0.48), Projectile.knockBack, Projectile.owner, 0f, 0f);
-            
-            if (Projectile.CalamityInheritance().GlobalRightClickListener && Projectile.owner == Main.myPlayer)
+            Player player = Main.player[Projectile.owner];
+            if (Main.mouseRight && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
             {
-                Projectile.timeLeft = 3000;
-                Projectile.extraUpdates += 4;
+                if (!hasPressRight)
+                {
+
+                    SoundEngine.PlaySound(CISoundMenu.SupernovaRightClick, player.Center);
+                    hasPressRight = true;
+                }
+            }
+            if (hasPressRight && Projectile.owner == Main.myPlayer)
+            {
+                Projectile.ignoreWater = true;
+                Projectile.tileCollide = false;
+                Projectile.timeLeft = 500;
+                Projectile.extraUpdates = 8;
                 //除非你没有鼠标，不然这里肯定会在下方赋予成鼠标位置
                 Vector2 tar = Main.MouseWorld;
                 Rectangle mouseHitBox = new ((int)tar.X, (int)tar.Y, Projectile.width, Projectile.height);
@@ -116,7 +126,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 else if (!MouseInit)
                 {
                     Projectile.scale *= 0.98f;
-                    CIFunction.HomeInOnMouseBetter(Projectile, 20f, 0f, 2, true);
+                    CIFunction.HomeInOnMouseBetter(Projectile, 16f, 0f, 2, true);
                     SparkParticle line = new SparkParticle(Projectile.Center - Projectile.velocity * 1.1f, Projectile.velocity * 0.01f, false, 18, 1f, Color.GhostWhite);
                     GeneralParticleHandler.SpawnParticle(line);
                 }

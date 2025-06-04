@@ -11,6 +11,8 @@ using CalamityInheritance.System;
 using CalamityInheritance.NPCs;
 using CalamityMod.NPCs.Yharon;
 using CalamityInheritance.NPCs.Boss.Yharon;
+using CalamityInheritance.UI.MusicUI;
+using CalamityInheritance.UI.MusicUI.MusicButton;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -53,9 +55,20 @@ namespace CalamityInheritance.Content.Items
             else
                 Main.NewText($"Calamitas Clone P1: {CIGlobalNPC.LegacyCalamitasClone}");
             */
-
+            /*
             Main.NewText($"PlayerLife: {player.lifeRegen}");
             Main.NewText($"PlayerSR: {player.CIMod().AncientSilvaRegenCounter}");
+            */
+            if (player.altFunctionUse == 2 && MusicChoiceUI.ChangeCd == 0)
+                MusicChoiceUI.active = !MusicChoiceUI.active;
+            else
+            {
+                Main.NewText($"MusicChoiceUIProg: {MusicChoiceUI.aniProg}");
+                Main.NewText($"ArrowBehavior: {ArrowBehavior.FadeTime}");
+                Main.NewText($"MusicBoxVerBehavior: {MusicBoxVerBehavior.FadeTime}");
+                Main.NewText($"NorVerBehavior: {NorVerBehavior.FadeTime}");
+                Main.NewText($"PianoVerBehavior: {PianoVerBehavior.FadeTime}");
+            }
             return true;
         }
     }

@@ -3,6 +3,8 @@ using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using CalamityMod;
+using Terraria.ID;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 {
     public class CatastropheBall : ModProjectile, ILocalizedModType
@@ -10,7 +12,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         public new string LocalizationCategory => "Boss.Projectiles";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Brimstone Fireball");
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public override void SetDefaults()
@@ -18,7 +21,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.hostile = true;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 2;
             Projectile.timeLeft = 300;
         }
 
@@ -40,6 +43,12 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
         }
     }
 }

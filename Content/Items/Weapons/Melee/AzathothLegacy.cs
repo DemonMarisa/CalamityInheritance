@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage = Main.zenithWorld? 90 : 650;
+            Item.damage =  90;
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;

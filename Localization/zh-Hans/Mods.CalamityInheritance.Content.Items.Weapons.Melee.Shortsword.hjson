@@ -152,3 +152,8 @@ HeartRapier: {
 	DisplayName: 心之刺剑[Legacy]
 	Tooltip: 击中敌人恢复生命值
 }
+
+AquaticDischarge: {
+	DisplayName: 水电剑[Legacy]
+	Tooltip: 击中敌人出现电火花
+}

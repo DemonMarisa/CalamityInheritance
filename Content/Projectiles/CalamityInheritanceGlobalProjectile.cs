@@ -32,8 +32,6 @@ namespace CalamityInheritance.Content.Projectiles
         public bool ThrownMode = false;
         //标记这个射弹为魔法伤害, 目前用于归元漩涡(原灾)消失后生成的星流光束的斩切标记
         public bool PingAsMagic = false;
-        //标记这个射弹是否是右键掷出
-        public bool GlobalRightClickListener = false;
         //用于主射弹与附属射弹的单一敌怪单位的针对
         public int GlobalMainProjForceTarget = -1;
         //禁用超高频武器降低纳米火花生成数量的标记(主要是及高频，太卡了)

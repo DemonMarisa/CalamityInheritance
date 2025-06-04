@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CalamityInheritance.UI;
+using CalamityInheritance.UI.MusicUI;
 using CalamityMod.UI;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -46,6 +47,13 @@ namespace CalamityInheritance.System
             layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Mode Indicator UI", () =>
             {
                 DifficultyModeUI.Draw(Main.spriteBatch);
+                return true;
+            }, InterfaceScaleType.UI));
+
+            // 音乐盒UI
+            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Music Choice UI", () =>
+            {
+                MusicChoiceUI.UpdateAndDraw(Main.spriteBatch);
                 return true;
             }, InterfaceScaleType.UI));
         }

@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System;
 using CalamityInheritance.Common.EventChange;
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.UI.MusicUI;
 
 namespace CalamityInheritance
 {
@@ -156,6 +157,7 @@ namespace CalamityInheritance
 
             AstralArcanumUI.Load(this);
             DifficultyModeUI.Load();
+            MusicChoiceUI.Load();
         }
 
         #region Unload
@@ -188,6 +190,7 @@ namespace CalamityInheritance
             FuckTheseMod = null;
             */
             DifficultyModeUI.Unload();
+            MusicChoiceUI.Unload();
             base.Unload();
         }
         #endregion

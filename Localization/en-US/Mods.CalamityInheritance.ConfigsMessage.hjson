@@ -6,11 +6,21 @@ AmmoConversion:
 AmmoConversionCIWeapon: Ammo Conversion is enabled
 FirstText:
 	'''
-	This subtitle reminds you to check CalamityInheritance's settings
+	This is the display text shown upon entering Calamity Inheritance.
+	This message reminds you to review the mod's configuration settings.
+
+	Server Settings Location:
+	Settings => Mod Configuration => CalamityInheritance => Server Config
+	This section contains settings requiring reloads and major gameplay-impacting options,
 	The "Brings back stat bloat" and "Brings back Yharon(Phase 1) and Yharon(Phase 2)" settings will significantly alter progression and game balance
-	We strongly advise against changing these settings mid-playthrough
-	Other settings include legacy mechanics like:
-	- Aquatic Scourge / Brimstone Elemental / Cryogen dropping Souls
-	- Music event configurations
-	Please carefully review all setting descriptions before starting your journey
+	We strongly advise against modifying these mid-playthrough.
+
+	Texture Switching Location:
+	Settings => Mod Configuration => CalamityInheritance => Legacy Sprite
+	This section provides extensive texture toggle options for flexible customization.
+
+	General Settings Location:
+	Settings => Mod Configuration => CalamityInheritance => Mod Config
+	Includes subtitle toggles, special features, music event switches, and UI watermark controls.
+	Please thoroughly review the Server Settings to understand all changes applied.
 	'''

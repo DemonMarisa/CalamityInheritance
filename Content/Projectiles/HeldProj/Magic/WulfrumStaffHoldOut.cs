@@ -1,4 +1,8 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -66,6 +70,30 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             if (secondcount > 0 && secondcount % 10 == 0)
             {
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
+                
+                if(Main.zenithWorld)
+                {
+                    int[] pType =
+                    [
+                        ModContent.ProjectileType<GalaxyStarold>(),
+                        ModContent.ProjectileType<ProfanedNuke>(),
+                        ModContent.ProjectileType<ExoFlareClusterold>(),
+                        ModContent.ProjectileType<ChickenRound>(),
+                        ModContent.ProjectileType<Celestus2>(),
+                        ModContent.ProjectileType<DragonRageProj>(),
+                        ModContent.ProjectileType<PhantasmalRuinProjold>(),
+                        ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(),
+                        ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(),
+                        ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(),
+                        ModContent.ProjectileType<SupernovaBombold>(),
+                        ModContent.ProjectileType<CIVividBeamExoLore>(),
+                        ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(),
+                        ModContent.ProjectileType<DragonsBreathRound>(),
+                    ];
+                    int randomProjectileType = pType[Main.rand.Next(pType.Length)];
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * 9f, randomProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                }
+
                 SoundEngine.PlaySound(SoundID.Item43, Projectile.Center);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * 9f, ModContent.ProjectileType<WulfrumBoltOld>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }

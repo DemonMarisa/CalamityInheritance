@@ -138,3 +138,8 @@ HeartRapier: {
 	DisplayName: Heart Rapier
 	Tooltip: Heals the player on enemy hits
 }
+
+AquaticDischarge: {
+	DisplayName: Aquatic Discharge
+	Tooltip: Releases sparks when hitting enemies
+}

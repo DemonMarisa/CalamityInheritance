@@ -37,6 +37,8 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using static CalamityInheritance.System.CalStatInflationBACK;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityInheritance.Content.Items.Tools;
 
 namespace CalamityInheritance.System
 {
@@ -755,6 +757,35 @@ namespace CalamityInheritance.System
                 item.damage = 4000;
             if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
                 item.damage = 10000; //一万面板
+            if (item.type == ModContent.ItemType<Ozzathoth>())
+                item.damage = 200; //一万面板
+            #region 遗产魔影
+            if (item.type == ModContent.ItemType<FabstaffOld>())
+                item.damage = 800;
+            if (item.type == ModContent.ItemType<SomaPrimeOld>())
+                item.damage = 2400;
+            if (item.type == ModContent.ItemType<CrystylCrusherLegacy>())
+                item.damage = 2000;
+            if (item.type == ModContent.ItemType<Animus>())
+                item.damage = 10000;
+            if (item.type == ModContent.ItemType<AzathothLegacy>())
+                item.damage = 200;
+            if (item.type == ModContent.ItemType<RogueTypeKnivesShadowspec>())
+                item.damage = 2000;
+            if (item.type == ModContent.ItemType<MeleeTypeNanoblackReaper>())
+                item.damage = 800;
+            if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
+                item.damage = 6800;
+            if (item.type == ModContent.ItemType<Apotheosis>())
+                item.damage = 420;
+            if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
+                item.damage = 720;
+            if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())
+                item.damage = 963;
+            if (item.type == ModContent.ItemType<DanceofLightLegacy>())
+                item.damage = 5400;
+            #endregion
+
         }
         #endregion
         #region 弹药

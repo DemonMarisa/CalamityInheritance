@@ -13,5 +13,5 @@ PostEclipseYharon: {
 CalCloneLegacy: {
 	EntryName: 灾厄之眼[Legacy]
 	SpawnInfo: 使用荒芜之眼[i:CalamityInheritance/EyeofDesolationLegacy]在夜晚召唤灾厄之眼[Legacy]
-	DespawnMessage: "[c/FFA500:女巫继续回荡在夜晚]"
+	DespawnMessage: "[c/FFA500:女巫继续回荡在夜晚。]"
 }

@@ -873,6 +873,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="SceneEffect\" />
+	  <Folder Include="System\DynamicIconSystem\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Krafs.Publicizer" Version="2.3.0">

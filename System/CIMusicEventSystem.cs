@@ -85,10 +85,17 @@ namespace CalamityInheritance.System
                 () => DownedBossSystem.downedExoMechs, () => CIConfig.Instance.Exomechs,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
-            AddEntry(null, "CatastrophesbeforeCalamity", TimeSpan.FromSeconds(364.1d),
+            // 任何一次击杀終灾后都会播放
+            AddEntry("CalamityScalDefeated", "CalamitasDefeat_LongFade", TimeSpan.FromSeconds(58.689d),
                 () => CalamityGlobalNPC.SCalAcceptance != -1, () => CIConfig.Instance.Scal,
                 outroSilence: TimeSpan.FromSeconds(7.5f));
 
+            // 仅第一次击杀終灾后播放
+            CalAddEntry("CIScalDefeated", "Interlude3", TimeSpan.FromSeconds(295.932d),
+                () => DownedBossSystem.downedCalamitas, () => CIConfig.Instance.Scal,
+                outroSilence: TimeSpan.FromSeconds(7.5f));
+
+            // 仅第一次击杀終灾后播放
             CalAddEntry("LegacyScalDefeated", "Interlude3", TimeSpan.FromSeconds(295.932d),
                 () => CIDownedBossSystem.DownedLegacyScal, () => CIConfig.Instance.Scal,
                 outroSilence: TimeSpan.FromSeconds(7.5f));

@@ -9,3 +9,18 @@ Cooldowns: {
 	Totem: Flesh Totem CD
 	CotbgTotem: Core of Blood God CD
 }
+
+CalTitleMusicBoxVer: The MusicBox version is currently playing
+CalTitleNorVer: The Original version is currently playing
+CalTitlePianoVer: The piano version is currently playing
+CalTitleMusicBoxVerOff: Turn Off The MusicBox version
+CalTitleNorVerOff: Turn Off The Original version
+CalTitlePianoVerOff: Turn Off The piano version
+CalTitleAllOff: You turned off all MusicBox
+CalTitleAllOn: You didn't turn off all MusicBox
+CalTitleMusicBoxVerHover: Press it to play the music box version
+CalTitleNorVerHover: Press it to play the Original version
+CalTitlePianoVerHover: Press it to play the Piano version
+CalTitleMusicBoxVerHoverOff: Press it to Unplay the music box version
+CalTitleNorVerHoverOff: Press it to Unplay the Original version
+CalTitlePianoVerHoverOff: Press it to Unplay the Piano version

@@ -81,3 +81,13 @@ Kunoji: {
 		"A taste of...fairy tale."
 		'''
 }
+
+CalamityTitleMusicBoxLegacy: {
+	DisplayName: Music Box(The Tale of a Cruel World)
+	Tooltip:
+		'''
+		Play [c/FF8C00:The Tale of a Cruel World](02:37) by DM DOKURO
+		A version of the old Texture
+		Right-click to open the UI and select More Music Versions
+		'''
+}

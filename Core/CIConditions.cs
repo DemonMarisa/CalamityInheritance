@@ -24,6 +24,8 @@ namespace CalamityInheritance.Core
         public static readonly Condition DownedBloodMoon = Create("DownedBloodMoon", () => CIDownedBossSystem.DownedBloodMoon);
         public static readonly Condition DownedLegacyScal = Create("DownedLegacyScal", () => CIDownedBossSystem.DownedLegacyScal);
         public static readonly Condition DownedLegacyYharonP1 = Create("DownedLegacyYharonP1", () => CIDownedBossSystem.DownedLegacyYharonP1);
+        public static readonly Condition DownedLegacyYharonP2 = Create("DownedLegacyYharonP2", () => CIDownedBossSystem.DownedLegacyYharonP2);
+        public static readonly Condition DownedAnyYharon = Create("DownedAnyYharon", () => CIDownedBossSystem.DownedLegacyYharonP2 || DownedBossSystem.downedYharon);
         public static readonly Condition DownedBuffedSolarEclipse = Create("DownedBuffedSolarEclipse", () => CIDownedBossSystem.DownedBuffedSolarEclipse);
         public static readonly Condition ArmageddonNoNor = Create("ArmageddonDrop", () => CIWorld.armageddon && (Main.expertMode || Main.masterMode));
         public static readonly Condition Malice = Create("Malice", () => CIWorld.malice);

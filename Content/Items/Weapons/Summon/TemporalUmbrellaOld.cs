@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetDefaults()
         {
             Item.mana = 99;
-            Item.damage = Main.zenithWorld ? 150 : 4000;
+            Item.damage = 193;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.width = 74;
             Item.height = 72;

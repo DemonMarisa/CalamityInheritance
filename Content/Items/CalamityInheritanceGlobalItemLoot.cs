@@ -20,6 +20,9 @@ using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Qol;
 using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityMod.NPCs.DesertScourge;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -70,8 +73,12 @@ namespace CalamityInheritance.Content.Items
                 loot.LootAdd<Malice>();
                 loot.LootAdd<Revenge>();
                 loot.LootAdd<DraedonsPanel>();
+                loot.LootAdd<CalamityTitleMusicBoxLegacy>();
             }
-
+            if (item.type == ModContent.ItemType<DesertScourgeBag>())
+            {
+                loot.LootAdd<AquaticDischarge>(4);
+            }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 loot.LootAdd<Skullmasher>(10);
 
@@ -92,6 +99,7 @@ namespace CalamityInheritance.Content.Items
                 loot.LootAdd<VoidVortexLegacy>(10);
                 loot.LootAdd<YharimsGiftLegacy>(1);
             }
+
             if (item.type == ModContent.ItemType<CeaselessVoidBag>())
                 loot.LootAdd<ArcanumoftheVoid>(1);
 

@@ -228,76 +228,59 @@ namespace CalamityInheritance.NPCs
             #region 深渊掉落
             var postCalClone = Loot.DefineConditionalDropSet(CIDropHelper.CIPostCalClone());
             // 魔鬼鱼
-            int[] shouldDropLumenyl =
-            [
-                ModNPC<DevilFish>(),
-                ModNPC<Viperfish>(),
-                ModNPC<LuminousCorvina>(),
-                ModNPC<ToxicMinnow>(),
-                ModNPC<GiantSquid>(),
-                ModNPC<OarfishHead>(),
-                ModNPC<MirageJelly>(),
-                ModNPC<Bloatfish>(),
-                ModNPC<GulperEelHead>()
-            ];
-            foreach (var dropLumenylNPC in shouldDropLumenyl)
+            if (npc.CheckNPCMod<DevilFish>())
             {
                 postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
                 postCalClone.Add(ItemMod<Lumenyl>(), 2);
             }
-            // if (npc.CheckNPCMod<DevilFish>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 蝰蛇鱼
-            // if (npc.CheckNPCMod<Viperfish>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 流光石首鱼
-            // if (npc.CheckNPCMod<LuminousCorvina>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 剧毒米诺鱼
-            // if (npc.CheckNPCMod<ToxicMinnow>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 巨大乌贼
-            // if (npc.CheckNPCMod<GiantSquid>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 桨鱼
-            // if (npc.CheckNPCMod<OarfishHead>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 幻海水母
-            // if (npc.CheckNPCMod<MirageJelly>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 肿胀翻车鱼
-            // if (npc.CheckNPCMod<Bloatfish>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
-            // // 大嘴鳗
-            // if (npc.CheckNPCMod<GulperEelHead>())
-            // {
-            //     postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
-            //     postCalClone.Add(ItemMod<Lumenyl>(), 2);
-            // }
+            // 蝰蛇鱼
+            if (npc.CheckNPCMod<Viperfish>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 流光石首鱼
+            if (npc.CheckNPCMod<LuminousCorvina>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 剧毒米诺鱼
+            if (npc.CheckNPCMod<ToxicMinnow>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 巨大乌贼
+            if (npc.CheckNPCMod<GiantSquid>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 桨鱼
+            if (npc.CheckNPCMod<OarfishHead>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 幻海水母
+            if (npc.CheckNPCMod<MirageJelly>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 肿胀翻车鱼
+            if (npc.CheckNPCMod<Bloatfish>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
+            // 大嘴鳗
+            if (npc.CheckNPCMod<GulperEelHead>())
+            {
+                postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
+                postCalClone.Add(ItemMod<Lumenyl>(), 2);
+            }
             #endregion
             #region ModBoss
 

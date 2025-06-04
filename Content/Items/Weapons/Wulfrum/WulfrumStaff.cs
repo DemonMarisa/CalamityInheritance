@@ -51,7 +51,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         {
             if (Main.zenithWorld)
             {
-                Item.damage = 1145;
                 Item.rare = ModContent.RarityType<IchikaBlack>();
                 Item.value = CIShopValue.RarityPricePureRed;
                 Item.UseSound = CISoundID.SoundFart;
@@ -59,7 +58,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             }
             else
             {
-                Item.damage = 13;
                 Item.rare = ItemRarityID.Blue;
                 Item.value = CIShopValue.RarityPriceBlue;
                 Item.UseSound = CISoundID.SoundStaffDiamond;
@@ -72,59 +70,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         {
             if(player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] < 1)
                 Projectile.NewProjectileDirect(projSource, position, velocity, ModContent.ProjectileType<WulfrumStaffHoldOut>(), damage, knockback, player.whoAmI);
-
-            if (!Main.zenithWorld)
-                return false;
-
-            int[] pType=
-            [
-                ModContent.ProjectileType<GalaxyStarold>(),
-                ModContent.ProjectileType<ProfanedNuke>(),
-                ModContent.ProjectileType<ExoFlareClusterold>(),
-                ModContent.ProjectileType<ChickenRound>(),
-                ModContent.ProjectileType<Celestus2>(),
-                ModContent.ProjectileType<DragonRageProj>(),
-                ModContent.ProjectileType<PhantasmalRuinProjold>(),
-                ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(),
-                ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(),
-                ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>(),
-                ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(),
-                ModContent.ProjectileType<SupernovaBombold>(),
-            ];
-            if (!Main.zenithWorld)
-            {
-                Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI, 0, 0, 1f);
-                Projectile.NewProjectile(projSource, position, velocity, type, damage, knockback, player.whoAmI, 0, 0, -1f);
-            }
-            else
-            {
-                float rotAngle = 360f / pType.Length;
-                for (int j = 0; j < pType.Length; j++)
-                {
-                    //随机get数组内的一个元素, 方便给予随机性
-                    int whatType = j + Main.rand.Next(1,4);
-                    //如果发现其比数组长度大
-                    if(whatType >= pType.Length)
-                    {
-                        //将其重新赋值
-                        whatType = pType.Length - Main.rand.Next(1,5);
-                    }
-                    //获取这个元素
-                    int getType = pType[whatType];
-                    //开始处理发射逻辑
-                    float rot = MathHelper.ToRadians(j * rotAngle);
-                    Vector2 spreadPos = new Vector2(velocity.X, 0f).RotatedBy(rot);
-                    Vector2 spreadVel = new Vector2(velocity.X, 0f).RotatedBy(rot); 
-                    int i = Projectile.NewProjectile(projSource, spreadPos, spreadVel* 2, getType, damage, knockback, player.whoAmI);
-                    Main.projectile[i].DamageType = DamageClass.Magic;
-                    Main.projectile[i].ArmorPenetration += 100;
-                    Main.projectile[i].usesLocalNPCImmunity = true;
-                    Main.projectile[i].localNPCHitCooldown = 10;
-                }
-            }
-            
-            Vector2 targetPosition = Main.MouseWorld;
-            player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, -18);
             return false;
         }
 

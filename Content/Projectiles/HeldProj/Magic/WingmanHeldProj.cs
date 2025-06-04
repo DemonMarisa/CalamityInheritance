@@ -248,18 +248,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
                 color, rotation, origin, scale * Scale,
                 SpriteEffects.None);
         }
-        // 你画的啥
-        private void DrawTailEffect(Texture2D texture, Color color, float rotation, int length, float Scale)
-        {
-            Vector2 tailPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * (length - 18) - Main.screenPosition;
-            Vector2 origin = new Vector2(texture.Width, texture.Height / 4);
-            Vector2 scale = new Vector2(0.5f, 0.5f);
-
-            Rectangle rect = new Rectangle(0, 0, length, texture.Height / 4);
-            Main.EntitySpriteDraw(texture, tailPosition, rect, color,
-                rotation - MathHelper.PiOver2, origin, scale * Scale,
-                SpriteEffects.None);
-        }
         #endregion
         #endregion
     }

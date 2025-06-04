@@ -40,6 +40,10 @@ using CalamityMod.Events;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityInheritance.Core;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityMod.Items.Placeables.Furniture;
+using CalamityMod.Items.Potions.Alcohol;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -59,6 +63,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         const short MiscShopOpt = 4;
         const short ItemShopOpt = 5;
         const short MusicBoxShopOpt = 6;
+        const short WineShopOpt = 7;
         #endregion
         public static int WhichButton;
 
@@ -74,6 +79,7 @@ namespace CalamityInheritance.NPCs.TownNPC
 
         public static bool MusicBoxShop;
 
+        public static bool WineShop;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 23;
@@ -171,6 +177,11 @@ namespace CalamityInheritance.NPCs.TownNPC
             CalamityInheritancePlayer CIPlayer = player.CIMod();
 
             WeightedRandom<string> list = new WeightedRandom<string>();
+            if(Main.rand.NextBool(100))
+            {
+                return Language.GetTextValue($"{DialogueRoute}.ScalFAPChat");
+            }
+
 
             if (NPC.homeless)
             {
@@ -251,7 +262,6 @@ namespace CalamityInheritance.NPCs.TownNPC
                 }
             }
             int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SEAHOE>());
-            list.Add(Language.GetTextValue($"{DialogueRoute}.ScalFAPChat"));
             if (seahoe != -1)
             {
                 list.Add(Language.GetTextValue($"{DialogueRoute}.ScalSeahoeChat"));
@@ -329,6 +339,9 @@ namespace CalamityInheritance.NPCs.TownNPC
                 case MusicBoxShopOpt:
                     button = Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt");
                     break;
+                case WineShopOpt:
+                    button = Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt");
+                    break;
             }
 
             button2 = Language.GetTextValue($"{DialogueRoute}.Scalbutton2Option");
@@ -342,6 +355,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             MiscShop_List();
             ItemShop_List();
             MusicBoxShop_List();
+            WineShop_List();
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)
@@ -349,7 +363,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             if (!firstButton)
             {
                 WhichButton++;
-                if (WhichButton > ItemShopOpt)
+                if (WhichButton > WineShopOpt)
                 {
                     WhichButton = ChatOpt;
                 }
@@ -387,6 +401,10 @@ namespace CalamityInheritance.NPCs.TownNPC
                 if (WhichButton == MusicBoxShopOpt)
                 {
                     shop = Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt");
+                }
+                if (WhichButton == WineShopOpt)
+                {
+                    shop = Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt");
                 }
             }
         }
@@ -528,6 +546,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         {
             var MiscShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption"))
                 .Add(new Item(ModContent.ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver:19, copper: 19) })
+                .Add(new Item(ModContent.ItemType<WulfrumMetalScrap>()) { shopCustomPrice = Item.buyPrice(silver: 5) })
                 .Add(new Item(ModContent.ItemType<EnergyCore>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
                 .Add(new Item(ModContent.ItemType<WulfrumBattery>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
                 .Add(new Item(ModContent.ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
@@ -589,10 +608,55 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void MusicBoxShop_List()
         {
             var MusicShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt"))
-                .Add(new Item(ModContent.ItemType<DoGNonStop>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
-                .Add(new Item(ModContent.ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
-                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode);
+                .Add(new Item(ModContent.ItemType<CalamityTitleMusicBoxLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<Arcueid>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<BlessingOftheMoon>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<ProvidenceLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ModContent.ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
+                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon);
             MusicShop.Register();
+        }
+        public void WineShop_List()
+        {
+            NPCShop shop = new(Type, Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt"));
+            shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), CalamityConditions.PotionSellingConfig, Condition.HappyEnough)
+                .AddWithCustomValue(ModContent.ItemType<GrapeBeer>(), Item.buyPrice(silver: 30))
+                .AddWithCustomValue(ModContent.ItemType<RedWine>(), Item.buyPrice(gold: 1))
+                .AddWithCustomValue(ModContent.ItemType<Whiskey>(), Item.buyPrice(gold: 2))
+                .AddWithCustomValue(ModContent.ItemType<Rum>(), Item.buyPrice(gold: 2))
+                .AddWithCustomValue(ModContent.ItemType<Tequila>(), Item.buyPrice(gold: 2))
+                .AddWithCustomValue(ModContent.ItemType<Fireball>(), Item.buyPrice(gold: 3))
+                .AddWithCustomValue(ModContent.ItemType<PurpleHaze>(), Item.buyPrice(gold: 4))
+                .AddWithCustomValue(ModContent.ItemType<Vodka>(), Item.buyPrice(gold: 2), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ModContent.ItemType<Screwdriver>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ModContent.ItemType<WhiteWine>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ModContent.ItemType<EvergreenGin>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ModContent.ItemType<CaribbeanRum>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ModContent.ItemType<Margarita>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ModContent.ItemType<OldFashioned>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ItemID.EmpressButterfly, Item.buyPrice(gold: 10), Condition.DownedPlantera)
+                .AddWithCustomValue(ModContent.ItemType<Everclear>(), Item.buyPrice(gold: 3), CalamityConditions.DownedAstrumAureus)
+                .AddWithCustomValue(ModContent.ItemType<BloodyMary>(), Item.buyPrice(gold: 4), CalamityConditions.DownedAstrumAureus, Condition.BloodMoon)
+                .AddWithCustomValue(ModContent.ItemType<StarBeamRye>(), Item.buyPrice(gold: 6), CalamityConditions.DownedAstrumAureus, Condition.TimeNight)
+                .AddWithCustomValue(ModContent.ItemType<Moonshine>(), Item.buyPrice(gold: 2), Condition.DownedGolem)
+                .AddWithCustomValue(ModContent.ItemType<MoscowMule>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
+                .AddWithCustomValue(ModContent.ItemType<CinnamonRoll>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
+                .AddWithCustomValue(ModContent.ItemType<TequilaSunrise>(), Item.buyPrice(gold: 10), Condition.DownedGolem)
+                .AddWithCustomValue(ItemID.BloodyMoscato, Item.buyPrice(gold: 1), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
+                .AddWithCustomValue(ItemID.BananaDaiquiri, Item.buyPrice(silver: 75), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
+                .AddWithCustomValue(ItemID.PeachSangria, Item.buyPrice(silver: 50), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
+                .AddWithCustomValue(ItemID.PinaColada, Item.buyPrice(gold: 1), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
+                .AddWithCustomValue(ModContent.ItemType<WeightlessCandle>(), Item.buyPrice(gold: 50))
+                .AddWithCustomValue(ModContent.ItemType<VigorousCandle>(), Item.buyPrice(gold: 50))
+                .AddWithCustomValue(ModContent.ItemType<ResilientCandle>(), Item.buyPrice(gold: 50))
+                .AddWithCustomValue(ModContent.ItemType<SpitefulCandle>(), Item.buyPrice(gold: 50))
+                .AddWithCustomValue(ModContent.ItemType<OddMushroom>(), Item.buyPrice(1))
+                .AddWithCustomValue(ItemID.UnicornHorn, Item.buyPrice(0, 2, 50), Condition.HappyEnough, Condition.InHallow)
+                .AddWithCustomValue(ItemID.Milkshake, Item.buyPrice(gold: 5), Condition.HappyEnough, Condition.InHallow, Condition.NpcIsPresent(NPCID.Stylist))
+                .Register();
         }
 
         // Make this Town NPC teleport to the Queen statue when triggered.

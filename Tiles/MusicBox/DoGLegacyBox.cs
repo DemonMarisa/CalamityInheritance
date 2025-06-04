@@ -14,7 +14,7 @@ using Terraria.Utilities;
 namespace CalamityInheritance.Tiles.MusicBox
 {
 	// See ExampleMod/Common/Systems/MusicLoadingSystem for an explanation on music.
-	public class DoGLegacyBox: ModTile
+	public class DoGLegacyBox : ModTile
 	{
         public new string LocalizationCategory => "Tiles.MusicBox";
         public override void SetStaticDefaults() {

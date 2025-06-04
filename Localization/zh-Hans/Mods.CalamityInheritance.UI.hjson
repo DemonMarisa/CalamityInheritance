@@ -1,4 +1,4 @@
-﻿Cooldowns: {
+Cooldowns: {
 	GodSlayerCooldown: 弑神者之息
 	CISpongeDurability: 护盾值
 	CISpongeRecharge: 护盾基础充能
@@ -9,3 +9,18 @@
 	Totem: 血肉图腾正在重塑
 	CotbgTotem: 血神的能量正在重聚
 }
+
+CalTitleMusicBoxVer: 当前播放音乐盒版本
+CalTitleNorVer: 当前播放原曲
+CalTitlePianoVer: 当前播放钢琴版
+CalTitleMusicBoxVerOff: 取消播放音乐盒版本
+CalTitleNorVerOff: 取消播放原曲
+CalTitlePianoVerOff: 取消播放钢琴版
+CalTitleAllOff: 你关闭了所有播放
+CalTitleAllOn: 你未关闭所有播放
+CalTitleMusicBoxVerHover: 按下后播放音乐盒版本
+CalTitleNorVerHover: 按下后播放原版
+CalTitlePianoVerHover: 按下后播放钢琴版
+CalTitleMusicBoxVerHoverOff: 按下后取消播放音乐盒版本
+CalTitleNorVerHoverOff: 按下后取消播放原版
+CalTitlePianoVerHoverOff: 按下后取消播放钢琴版

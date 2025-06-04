@@ -47,6 +47,7 @@ Mods: {
 			CryoBarTile: 极寒锭
 			NebulaBarTile: 星云合金
 			AuricBarLegacyTile: 圣金源锭[rLegacy]
+			CalTitleMusicBox: 音乐盒(残酷世界之传说)
 		}
 
 		Projectiles: {
@@ -76,6 +77,7 @@ Mods: {
 			YharonFireball2Legacy.DisplayName: 龙炎弹
 			YharonFireballLegacy.DisplayName: 龙炎弹
 			MoonPlaceholder.DisplayName: Moon Placeholder
+			// Melee.AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
 		}
 
 		Content/Projectiles/Summon: {

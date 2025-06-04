@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<CatastropheBall>();
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = 18f;
             Item.useAmmo = AmmoID.Gel;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -39,11 +39,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f);
             Main.projectile[p].friendly = true;
             Main.projectile[p].hostile = false;
+            Main.projectile[p].DamageType = DamageClass.Ranged;
             return false;
         }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-10, 0);
         }
+
     }
 }

@@ -13,7 +13,7 @@ using CalamityInheritance.Content.Items.Placeables.MusicBox;
 
 namespace CalamityInheritance.Tiles.MusicBox
 {
-    public class ArcueidTile: ModTile
+    public class ArcueidTile : ModTile
     {
         public new string LocalizationCategory => "Tiles.MusicBox";
         public override void SetStaticDefaults()

@@ -5,7 +5,7 @@ using CalamityInheritance.Tiles.MusicBox;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {
-	public class DoGLegacy: CIPlaceable, ILocalizedModType
+	public class DoGLegacy : CIPlaceable, ILocalizedModType
 	{
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {

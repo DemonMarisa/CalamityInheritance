@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -52,10 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (heal > 100)
                 heal = 100;
 
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, 3000f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<GlobalHealthProj>(), 0, Projectile.knockBack, Projectile.owner, 0f, 0f, heal);
         }
     }
 }

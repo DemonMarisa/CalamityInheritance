@@ -47,6 +47,7 @@ Mods: {
 			CryoBarTile: CryoBar
 			NebulaBarTile: NebulaBar
 			AuricBarLegacyTile: AuricBar
+			CalTitleMusicBox: Music Box(The Tale of a Cruel World)
 		}
 
 		Projectiles: {
@@ -76,6 +77,7 @@ Mods: {
 			YharonFireball2Legacy.DisplayName: Yharon Fireball2 Legacy
 			YharonFireballLegacy.DisplayName: Yharon Fireball Legacy
 			MoonPlaceholder.DisplayName: Moon Placeholder
+			Melee.AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
 		}
 
 		Content/Projectiles/Summon: {

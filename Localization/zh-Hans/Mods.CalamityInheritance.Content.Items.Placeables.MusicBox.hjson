@@ -84,3 +84,13 @@ Kunoji: {
 		"童话的气息..."
 		'''
 }
+
+CalamityTitleMusicBoxLegacy: {
+	DisplayName: 音乐盒(The Tale of a Cruel World)
+	Tooltip:
+		'''
+		播放 [c/FF8C00:The Tale of a Cruel World](02:37) 由DM DOKURO制作
+		旧贴图的版本
+		右键打开UI，选择更多的音乐版本
+		'''
+}
