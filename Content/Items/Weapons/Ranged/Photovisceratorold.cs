@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
+            bool isLoreExo = player.CheckExoLore();
             SoundStyle leftClick = isLoreExo ? CISoundMenu.ExoFlameLeft : CISoundID.SoundFlamethrower;
             SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
             float ai0 = 0f;
@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Player player = Main.LocalPlayer;
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
+            if (player.CheckExoLore())
             {
                 string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Ranged.Photovisceratorold.ExoLoreOn");
 
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 低一点伤害
-            if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
+            if (player.CheckExoLore())
                 damage.Base *= 0.8f;
         }
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;

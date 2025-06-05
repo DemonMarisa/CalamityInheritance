@@ -6,12 +6,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
     public class SoulMidPlaceholder: ModProjectile, ILocalizedModType
     {
+        public ref float AttackTimer => ref Projectile.ai[0];
         public ref float BuffPing => ref Projectile.ai[2];
+        
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetStaticDefaults()
         {
@@ -32,6 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.extraUpdates = 1;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
+            Projectile.tileCollide = false; 
         }
         public override bool PreAI()
         {
@@ -41,27 +45,17 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 
             return false;
         }
+        public override bool? CanDamage() => AttackTimer > 10f;
         public override void AI()
         {
-            Projectile.frameCounter++;
-            if (Projectile.frameCounter > 6)
-            {
-                Projectile.frame++;
-                Projectile.frameCounter = 0;
-            }
-            if (Projectile.frame > 3)
-            {
-                Projectile.frame = 0;
-            }
-            int ghostlyDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
-            Dust dust = Main.dust[ghostlyDust];
-            dust.velocity *= 0.1f;
-            Main.dust[ghostlyDust].scale = 1.3f;
-            Main.dust[ghostlyDust].noGravity = true;
+            Projectile.FramesChanger(6, 4);
+            
             float projVelocityFactor = 35f * Projectile.ai[1]; //100
             float scaleFactor = 7f * Projectile.ai[1]; //5
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
+            //保留这个AI
+
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
             {
                 if (Projectile.Distance(Main.player[Projectile.owner].Center) > 900f)
@@ -70,8 +64,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                     Projectile.velocity = (Projectile.velocity * (projVelocityFactor - 1f) + moveDirection * scaleFactor) / projVelocityFactor;
                     return;
                 }
-
-                CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 1500f, 12f, 20f);
+                AttackTimer++;
+                if (AttackTimer > 10f)
+                {
+                    if (Main.rand.NextBool(3))
+                        CIFunction.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
+                }
             }
             else
             {
@@ -80,6 +78,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                     Projectile.timeLeft = 30;
                 }
             }
+            //粒子
+            int ghostlyDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
+            Dust dust = Main.dust[ghostlyDust];
+            dust.velocity *= 0.1f;
+            Main.dust[ghostlyDust].scale = 1.3f;
+            Main.dust[ghostlyDust].noGravity = true;
         }
 
         public override bool PreDraw(ref Color lightColor)

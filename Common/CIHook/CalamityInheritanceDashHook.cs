@@ -75,11 +75,12 @@ namespace CalamityInheritance.Common.CIHook
 
             if (self.Player.dashDelay < 0)
             {
-                int dashDelayToApply = BalancingConstants.UniversalDashCooldown;
+                int dashCD = 30;
+                int dashDelayToApply = dashCD;
                 if (self.UsedDash.CollisionType == DashCollisionType.ShieldSlam)
-                    dashDelayToApply = BalancingConstants.UniversalShieldSlamCooldown;
+                    dashDelayToApply = dashCD;
                 else if (self.UsedDash.CollisionType == DashCollisionType.ShieldBonk)
-                    dashDelayToApply = BalancingConstants.UniversalShieldBonkCooldown;
+                    dashDelayToApply = dashCD;
                 if (self.DashID == "Deep Diver")
                     dashDelayToApply = 23;
 

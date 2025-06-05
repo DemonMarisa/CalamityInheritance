@@ -152,7 +152,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             }
             if (UseCounter % rightUseCD == 0)
             {
-                bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
+                bool isLoreExo = player.CheckExoLore();
                 SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
 
                 SoundEngine.PlaySound(rightClick, Projectile.Center);
