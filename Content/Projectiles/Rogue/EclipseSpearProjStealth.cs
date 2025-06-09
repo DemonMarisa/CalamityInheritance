@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.Center = Main.npc[Target].Center - Projectile.velocity * 2f;
                 Projectile.gfxOffY = Main.npc[Target].gfxOffY;
                 timer++;
-                if (timer > 30 && timer % 15 == 0)
+                if (timer > 30 && timer % 25 == 0)
                 {
                     RainDownSpears();
                     if (timer > 75)
@@ -164,7 +164,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             //潜伏情况下一直在发起挂载，则每次从天上落下3~5个
             Vector2 tarPos = Projectile.Center;
-            int pAmt = Main.rand.Next(3,6);
+            int pAmt = Main.rand.Next(2,4);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置
@@ -183,7 +183,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 speed.X *= tarDist;
                 speed.Y *= tarDist;
                 //生崽
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 5, Projectile.knockBack, Projectile.owner);
             }
         }
         public override bool PreDraw(ref Color lightColor)

@@ -44,6 +44,7 @@ using CalamityMod.Items.Placeables.Furniture;
 using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.System.DownedBoss;
+using CalamityModMusic.Items.Placeables;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -612,24 +613,26 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<Arcueid>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(new Item(ModContent.ItemType<BlessingOftheMoon>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(new Item(ModContent.ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ModContent.ItemType<Interlude1MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedCalClone)
+                .Add(new Item(ModContent.ItemType<Interlude2MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedMoonLord)
                 .Add(new Item(ModContent.ItemType<ProvidenceLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedProvidence)
                 .Add(new Item(ModContent.ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
-                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon);
+                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedExoMechs)
+                .Add(new Item(ModContent.ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
+                .Add(new Item(ModContent.ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
             MusicShop.Register();
         }
         public void WineShop_List()
         {
             NPCShop shop = new(Type, Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt"));
-            shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), CalamityConditions.PotionSellingConfig, Condition.HappyEnough)
-                .AddWithCustomValue(ModContent.ItemType<GrapeBeer>(), Item.buyPrice(silver: 30))
-                .AddWithCustomValue(ModContent.ItemType<RedWine>(), Item.buyPrice(gold: 1))
-                .AddWithCustomValue(ModContent.ItemType<Whiskey>(), Item.buyPrice(gold: 2))
-                .AddWithCustomValue(ModContent.ItemType<Rum>(), Item.buyPrice(gold: 2))
-                .AddWithCustomValue(ModContent.ItemType<Tequila>(), Item.buyPrice(gold: 2))
-                .AddWithCustomValue(ModContent.ItemType<Fireball>(), Item.buyPrice(gold: 3))
-                .AddWithCustomValue(ModContent.ItemType<PurpleHaze>(), Item.buyPrice(gold: 4))
+            shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), CalamityConditions.PotionSellingConfig, Condition.HappyEnough, Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<GrapeBeer>(), Item.buyPrice(silver: 30), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<RedWine>(), Item.buyPrice(gold: 1), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<Whiskey>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<Rum>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<Tequila>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<Fireball>(), Item.buyPrice(gold: 3), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<PurpleHaze>(), Item.buyPrice(gold: 4), Condition.Hardmode)
                 .AddWithCustomValue(ModContent.ItemType<Vodka>(), Item.buyPrice(gold: 2), Condition.DownedMechBossAll)
                 .AddWithCustomValue(ModContent.ItemType<Screwdriver>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
                 .AddWithCustomValue(ModContent.ItemType<WhiteWine>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
@@ -649,13 +652,13 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .AddWithCustomValue(ItemID.BananaDaiquiri, Item.buyPrice(silver: 75), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
                 .AddWithCustomValue(ItemID.PeachSangria, Item.buyPrice(silver: 50), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
                 .AddWithCustomValue(ItemID.PinaColada, Item.buyPrice(gold: 1), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
-                .AddWithCustomValue(ModContent.ItemType<WeightlessCandle>(), Item.buyPrice(gold: 50))
-                .AddWithCustomValue(ModContent.ItemType<VigorousCandle>(), Item.buyPrice(gold: 50))
-                .AddWithCustomValue(ModContent.ItemType<ResilientCandle>(), Item.buyPrice(gold: 50))
-                .AddWithCustomValue(ModContent.ItemType<SpitefulCandle>(), Item.buyPrice(gold: 50))
-                .AddWithCustomValue(ModContent.ItemType<OddMushroom>(), Item.buyPrice(1))
+                .AddWithCustomValue(ModContent.ItemType<WeightlessCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<VigorousCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<ResilientCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<SpitefulCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ModContent.ItemType<OddMushroom>(), Item.buyPrice(1), Condition.Hardmode)
                 .AddWithCustomValue(ItemID.UnicornHorn, Item.buyPrice(0, 2, 50), Condition.HappyEnough, Condition.InHallow)
-                .AddWithCustomValue(ItemID.Milkshake, Item.buyPrice(gold: 5), Condition.HappyEnough, Condition.InHallow, Condition.NpcIsPresent(NPCID.Stylist))
+                .AddWithCustomValue(ItemID.Milkshake, Item.buyPrice(gold: 5), Condition.HappyEnough, Condition.InHallow, Condition.NpcIsPresent(NPCID.Stylist), Condition.Hardmode)
                 .Register();
         }
 

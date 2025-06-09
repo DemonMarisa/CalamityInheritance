@@ -120,15 +120,6 @@ namespace CalamityInheritance.CIPlayer
         public int ShieldDurabilityMax = 0;
 
         #endregion
-        #region Summon
-        public bool MagicHatOld = false;
-        public bool MidnnightSunBuff = false;
-        public bool cosmicEnergy = false;
-        public bool IsAncientClasper = false;
-        public bool bloodClot = false;
-        public bool CosmicEnergyExtra = false;
-        public bool wulfrumDroidOld = false;
-        #endregion
         #region 禁止生成物品
         public bool cIdisableVoodooSpawns = false;
         public bool cIdisablePerfCystSpawns = false;
@@ -154,22 +145,15 @@ namespace CalamityInheritance.CIPlayer
             ResetBuff();
             //熟练度处理
             GiveBoost();
+            // 召唤物
+            ReSetSummon();
             IsColdDivityActiving = false;
             PBGLegendaryDyeable = false;
             PBGBeamColor = default;
             ForceHammerStealth = false;
             CIDashID = string.Empty;
             ElysianAegis = false;
-            #region Summon
-            MagicHatOld = false;
-            MidnnightSunBuff = false;
-            ReaverSummonerOrb = false;
-            cosmicEnergy = false;
-            IsAncientClasper = false;
-            bloodClot = false;
-            CosmicEnergyExtra = false;
-            wulfrumDroidOld = false;
-            #endregion
+
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;
             cIdisablePerfCystSpawns = false;

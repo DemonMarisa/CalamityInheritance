@@ -47,8 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
                 AddIngredient(ItemID.Vilethorn).
                 AddIngredient(ItemID.MagicMissile).
                 AddIngredient(ItemID.WandofSparking).
-                AddIngredient(ItemID.AmberStaff).
-                AddIngredient<PurifiedGel>(10).
+                AddIngredient(ItemID.ThunderStaff).
                 AddTile(TileID.DemonAltar).
                 Register();
         }

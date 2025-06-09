@@ -75,25 +75,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 int t = Projectile.NewProjectile(source, position, velocity, pTypeLore, damage, knockback, player.whoAmI);
                 Main.projectile[t].Calamity().stealthStrike = canStealth;
-                
-                int locketDamage = player.ApplyArmorAccDamageBonusesTo((int)(damage * 0.8f));
-                //改了下逻辑，让他在鼠标上方生成而非从……玩家头顶身上生成
-                float srcPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
-                float srcPosY = Main.MouseWorld.Y + Main.rand.NextFloat(-600f, -801f);
-                //补一个特判，看鼠标位置是否低于玩家位置，如果低于则修改为玩家位置
-                if (Main.MouseWorld.Y > player.Center.Y)
-                    srcPosY = player.Center.Y + Main.rand.NextFloat(-600f, -801f);
-                float pSpeed = Item.shootSpeed;
-                //起点向量
-                Vector2 srcPos = new (srcPosX, srcPosY);
-                //距离向量
-                Vector2 distVec = Main.MouseWorld - srcPos;
-                //转为速度向量
-                float dist = distVec.Length();
-                dist = pSpeed / dist;
-                distVec.X *= dist;
-                distVec.Y *= dist;
-                int p = Projectile.NewProjectile(source, srcPos, distVec, ModContent.ProjectileType<CelestusBoomerangExoLore>(), locketDamage, knockback * 0.5f, player.whoAmI);
+                // 全部修改为了从鼠标X与玩家X的中点处发射
+                int fireOffset = -800;
+                Vector2 mousePos = Main.MouseWorld;
+                int firePosX = (int)(mousePos.X + player.Center.X) / 2;
+                int firePosY = (int)player.Center.Y + fireOffset;
+                Vector2 firePos = new(firePosX + Main.rand.Next(-100, 100), firePosY);
+
+                Vector2 direction = mousePos - firePos;
+                direction.Normalize();
+                Vector2 newVelocity = direction * velocity.Length();
+
+                int p = Projectile.NewProjectile(source, firePos, newVelocity, ModContent.ProjectileType<CelestusBoomerangExoLore>(), (int)(damage * 0.8f), knockback * 0.5f, player.whoAmI);
                 //允许其吃潜伏
                 if (canStealth)
                 {

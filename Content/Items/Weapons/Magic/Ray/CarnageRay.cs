@@ -41,8 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
                 AddIngredient(ItemID.CrimsonRod).
                 AddIngredient(ItemID.MagicMissile).
                 AddRecipeGroup(CIRecipeGroup.WandofSparking).
-                AddIngredient(ItemID.AmberStaff).
-                AddIngredient<PurifiedGel>(10).
+                AddIngredient(ItemID.ThunderStaff).
                 AddTile(TileID.DemonAltar).
                 Register();
         }

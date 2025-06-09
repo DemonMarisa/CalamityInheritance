@@ -675,7 +675,7 @@ namespace CalamityInheritance.System
                 item.damage = 935;
             // 耀界之光
             if (item.type == ModContent.ItemType<VividClarityOld>())
-                item.damage = 650;
+                item.damage = 1250;
             // 星流短剑
             if (item.type == ModContent.ItemType<ExoGladius>())
                 item.damage = 2000;

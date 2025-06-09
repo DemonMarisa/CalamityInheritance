@@ -1755,7 +1755,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
             spriteBatch.Draw(Scal, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-            Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
+            Color color37 = Color.Lerp(Color.White, CIGlobalNPC.LegacySCalLament == -1 ? Color.Red : Color.White, 0.5f);
             if (CalamityConfig.Instance.Afterimages)
             {
                 for (int num163 = 1; num163 < num153; num163++)

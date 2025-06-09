@@ -97,11 +97,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
             }
         }
-        //现在我们需要开始从天上降下投矛
+        // 现在我们需要开始从天上降下投矛
         public void RainDownSomeSpears(Vector2 tarPos)
         {
             //4-7个
-            int pAmt = Main.rand.Next(4, 7);
+            int pAmt = Main.rand.Next(2, 5);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置
@@ -120,7 +120,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 speed.X *= tarDist;
                 speed.Y *= tarDist;
                 //生崽
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 5, Projectile.knockBack, Projectile.owner);
                 //在那个位置生成粒子
                 SpawndDust(pPos);
             }

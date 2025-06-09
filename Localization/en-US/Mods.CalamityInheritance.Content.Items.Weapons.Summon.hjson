@@ -104,3 +104,13 @@ BloodClotStaff: {
 	DisplayName: Blood Clot Staff
 	Tooltip: Summons a blood clot to fight for you
 }
+
+SarosPossessionLegacy: {
+	DisplayName: Saros Possession Legacy
+	Tooltip: ""
+}
+
+SiriusLegacy: {
+	DisplayName: Sirius Legacy
+	Tooltip: ""
+}

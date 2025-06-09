@@ -78,6 +78,8 @@ Mods: {
 			YharonFireballLegacy.DisplayName: 龙炎弹
 			MoonPlaceholder.DisplayName: Moon Placeholder
 			// Melee.AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
+			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
+			// SarosAuraLegacy.DisplayName: Saros Aura Legacy
 		}
 
 		Content/Projectiles/Summon: {
@@ -93,5 +95,12 @@ Mods: {
 		}
 
 		Contente.Projectiles.Typeless.ShrineMarniteProj.DisplayName: 死亡能量
+
+		Items: {
+			heldProjTest: {
+				// DisplayName: held Proj Test
+				// Tooltip: ""
+			}
+		}
 	}
 }

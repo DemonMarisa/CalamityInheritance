@@ -181,6 +181,21 @@ Configs: {
 			// Label: debugint2
 			// Tooltip: ""
 		}
+
+		Debugint: {
+			// Label: Debugint
+			// Tooltip: ""
+		}
+
+		Debugint2: {
+			// Label: Debugint2
+			// Tooltip: ""
+		}
+
+		Debugfloat: {
+			// Label: Debugfloat
+			// Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

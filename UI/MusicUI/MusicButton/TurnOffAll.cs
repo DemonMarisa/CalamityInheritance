@@ -59,9 +59,9 @@ namespace CalamityInheritance.UI.MusicUI.MusicButton
             float targetscale = 0.5f;
             Scale = MathHelper.Lerp(0, targetscale, EasingHelper.EaseOutBack(progress));
             #endregion
-            string text = "CalTitleAll";
+            string text = "CalTitleAllOn";
             if(MusicChoiceUI.turnOffAll)
-                text = "CalTitleAllOn";
+                text = "CalTitleAll";
             #region 判定悬停
             MusicChoiceUI.FastButton(FadeTime, FadeTimeMax, ref Scale, ref Pos, ref IsHovering, ref SecondFadeTime, ref SecondFadeTimeMax, ref wasMouseDown, text, ref MusicChoiceUI.turnOffAll);
             #endregion

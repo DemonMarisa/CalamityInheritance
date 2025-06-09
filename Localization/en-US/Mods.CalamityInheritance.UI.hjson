@@ -16,8 +16,8 @@ CalTitlePianoVer: The piano version is currently playing
 CalTitleMusicBoxVerOff: Turn Off The MusicBox version
 CalTitleNorVerOff: Turn Off The Original version
 CalTitlePianoVerOff: Turn Off The piano version
-CalTitleAllOff: You turned off all MusicBox
-CalTitleAllOn: You didn't turn off all MusicBox
+CalTitleAllOff: You turn On all MusicBox
+CalTitleAllOn: You turned off all MusicBox
 CalTitleMusicBoxVerHover: Press it to play the music box version
 CalTitleNorVerHover: Press it to play the Original version
 CalTitlePianoVerHover: Press it to play the Piano version

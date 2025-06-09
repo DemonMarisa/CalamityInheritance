@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<CIBlood>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<CIBlood>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

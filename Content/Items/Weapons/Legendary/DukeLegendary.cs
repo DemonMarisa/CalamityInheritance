@@ -92,9 +92,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
+            
             // 必须手动转换，不然会按照int进行加成
             float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
             damage *= Buff;
+            
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -122,8 +124,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 
                             Vector2 pos = new (posX, posY);
                             Vector2 realSpeed = new Vector2(Item.shootSpeed * 3, 0f).RotatedBy(MathHelper.PiOver2 * j);
-                            //直接让其从天上降落。
-                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), damage * 2, knockback, player.whoAmI);
+                            // 直接让其从天上降落。
+                            // bro两倍伤害我靠
+                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), (int)(damage * 0.25f), knockback, player.whoAmI);
                         }
                         player.CIMod().GlobalFireDelay = 10;
                     }

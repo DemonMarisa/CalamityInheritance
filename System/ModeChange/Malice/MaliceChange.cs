@@ -99,7 +99,8 @@ namespace CalamityInheritance.System.ModeChange.Malice
             // NPC的额外更新
             public static void PerformExtraUpdate(NPC npc)
             {
-                if (!npc.active) return;
+                if (!npc.active) 
+                    return;
 
                 NPCLoader.ResetEffects(npc);
                 if (npc.life <= 0)

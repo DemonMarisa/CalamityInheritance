@@ -301,11 +301,11 @@ RavagerLegendary: {
 		[TIERTHREE]
 		'''
 	TierOne: "[c/FF009B:强化:]熔岩巨石将会完全穿墙, 且更容易命中"
-	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierOneTint: "[c/818589:尝试一下前往微光环境, 如何?]"
 	TierTwo: "[c/FF009B:强化:]允许从地下喷发熔岩巨石"
 	TierTwoTint: "[c/818589:在地狱内不断攻击亵渎天神]"
 	TierThree: "[c/FF009B:强化:]使用时提供生命再生与伤害加成"
-	TierThreeTint: "[c/818589:佩戴灾厄符章去地狱会会双足翼龙]"
+	TierThreeTint: "[c/818589:佩戴灾厄符章，在地狱中用此武器击杀双足翼龙]"
 	LegendaryScaling: "[c/FF009B:强化属性]: +{0} 基础伤害"
 }
 
@@ -328,11 +328,11 @@ DestroyerLegendary: {
 		'''
 	DisplayName: SHPC[Legendary]
 	TierOne: "[c/4169E1:强化]:能量束与相位激光球必定暴击"
-	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierOneTint: "[c/818589:尝试一下前往微光环境, 如何?]"
 	TierTwo: "[c/4169E1:强化]:能量束与相位激光球根据暴击概率造成真实伤害"
 	TierTwoTint: "[c/818589:于月球末日之际饮用一瓶葡萄汁]"
 	TierThree: "[c/4169E1:强化]:这把武器不再消耗任何魔力"
-	TierThreeTint: "[c/818589:在使用彗星碎片与永恒核心后, 召唤一次噬魂幽花]"
+	TierThreeTint: "[c/818589:在使用彗星碎片与缥缈之核后, 召唤一次噬魂幽花]"
 	LegendaryScaling: "[c/4169E1:武器增强]: +{0} 武器基础伤害"
 }
 

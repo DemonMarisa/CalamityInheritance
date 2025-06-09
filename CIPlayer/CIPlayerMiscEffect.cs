@@ -605,7 +605,7 @@ namespace CalamityInheritance.CIPlayer
             } 
         }
 
-        private void RefreshGodSlayerDash(CalamityPlayer calPlayer)
+        public void RefreshGodSlayerDash(CalamityPlayer calPlayer)
         {
             if (Player.HasCooldown(GodSlayerDash.ID))
             {

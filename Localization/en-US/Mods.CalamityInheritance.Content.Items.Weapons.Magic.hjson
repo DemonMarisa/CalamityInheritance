@@ -275,7 +275,7 @@ RavagerLegendary: {
 	TierTwo: "[c/FF009B:Upgrade]: Allows the eruption of molten asteroids from underground"
 	TierTwoTint: "[c/818589:Keep striking Providence in underworld]"
 	TierThree: "[c/FF009B:Upgrade]: Grants life regen and damage buff when using the weapon"
-	TierThreeTint: "[c/818589:Meet up a betsy with the Calamitas' Sigil equipped]"
+	TierThreeTint: "[c/818589:Equipped Calamitas' Sigil and use this weapon to kill betsy in the Underworld]"
 	LegendaryScaling: "[c/FF009B:Damage Scaling]: +{0} weapon base damage"
 }
 

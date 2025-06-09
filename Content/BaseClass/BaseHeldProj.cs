@@ -40,6 +40,10 @@ namespace CalamityInheritance.Content.BaseClass
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
             ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
         }
+        public override bool? CanHitNPC(NPC target)
+        {
+            return false;
+        }
         public override void AI()
         {
             Vector2 offset = new(0, BaseOffsetY);

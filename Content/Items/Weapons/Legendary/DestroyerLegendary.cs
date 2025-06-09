@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             var p = player.CIMod();
             int bCounts = 3;
             int lCounts = 3;
-            if (player.altFunctionUse == 2)
+            if (player.Calamity().mouseRight)
             {
                 for (int i = 0; i < lCounts; i++)
                 {

@@ -16,8 +16,8 @@ CalTitlePianoVer: 当前播放钢琴版
 CalTitleMusicBoxVerOff: 取消播放音乐盒版本
 CalTitleNorVerOff: 取消播放原曲
 CalTitlePianoVerOff: 取消播放钢琴版
-CalTitleAllOff: 你关闭了所有播放
-CalTitleAllOn: 你未关闭所有播放
+CalTitleAllOff: 你开启了所有播放
+CalTitleAllOn: 你关闭了所有播放
 CalTitleMusicBoxVerHover: 按下后播放音乐盒版本
 CalTitleNorVerHover: 按下后播放原版
 CalTitlePianoVerHover: 按下后播放钢琴版

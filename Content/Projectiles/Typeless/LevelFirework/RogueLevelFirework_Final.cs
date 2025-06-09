@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Melee;
 using CalamityInheritance.Content.Items;
 using Terraria.Audio;
+using CalamityMod.Projectiles.Rogue;
+using CalamityMod;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
 {
@@ -137,20 +140,55 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
                 float scale = Main.rand.NextFloat(1.5f, 1.9f);
                 float randomWhitingValue = Main.rand.NextFloat(0.0f, 0.2f);
                 Color color = Color.Lerp(CosmicShivTrail.DustColors[Main.rand.Next(0, CosmicShivTrail.DustColors.Count)], Color.White, randomWhitingValue);  // Just for even more variety in colors idk
+                
                 Vector2 velocity = StarPolarEquation(petalCount, k, 0f) * speed * 1.5f;
                 Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.FireworksRGB, velocity, 0, color, scale);
                 dust.noGravity = true;
-                //dust.fadeIn = -1f;      // I don't know if this does anything but it looks like the dust fades out faster with this
-
-                Vector2 velocity2 = StarPolarEquation(petalCount, k - 0.04f, 0f) * speed * 2 * 0.5f;   // Inner star
+                
+                Vector2 velocity2 = StarPolarEquation(petalCount, k - 0.04f, 0f) * speed * 2 * 0.5f;
                 Dust dust2 = Dust.NewDustPerfect(Projectile.Center, DustID.FireworksRGB, velocity2, 0, color, scale);
                 dust2.noGravity = true;
-                //dust2.fadeIn = -1f;
+            }
+        }
+        internal void SpawnOnStealthStrikeBullets()
+        {
+            float starSpeed = 25f;
+
+            // Spawn a circle of fast bullets.
+            for (int i = 0; i < 40; i++)
+            {
+                Vector2 shootVelocity = (MathHelper.TwoPi * i / 40f).ToRotationVector2() * starSpeed;
+                int bullet = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + shootVelocity, shootVelocity, ModContent.ProjectileType<ScarletDevilBullet>(), (int)(Projectile.damage * 0.01), 0f, Projectile.owner);
+                if (Main.projectile.IndexInRange(bullet))
+                    Main.projectile[bullet].Calamity().stealthStrike = true;
+            }
+
+            // Spawn a pair of stars, one slow, one fast.
+            int pointsOnStar = 6;
+            for (int k = 0; k < 1; k++)
+            {
+                for (int i = 0; i < pointsOnStar; i++)
+                {
+                    float angle = MathHelper.Pi * 1.5f - i * MathHelper.TwoPi / pointsOnStar;
+                    float nextAngle = MathHelper.Pi * 1.5f - (i + 3) % pointsOnStar * MathHelper.TwoPi / pointsOnStar;
+                    if (k == 1)
+                        nextAngle = MathHelper.Pi * 1.5f - (i + 2) * MathHelper.TwoPi / pointsOnStar;
+                    Vector2 start = angle.ToRotationVector2();
+                    Vector2 end = nextAngle.ToRotationVector2();
+                    int pointsOnStarSegment = 18;
+                    for (int j = 0; j < pointsOnStarSegment; j++)
+                    {
+                        Vector2 shootVelocity = Vector2.Lerp(start, end, j / (float)pointsOnStarSegment) * starSpeed;
+                        int bullet = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + shootVelocity, shootVelocity, ModContent.ProjectileType<ScarletDevilBullet>(), (int)(Projectile.damage * 0.01), 0f, Projectile.owner);
+                        if (Main.projectile.IndexInRange(bullet))
+                            Main.projectile[bullet].Calamity().stealthStrike = true;
+                    }
+                }
             }
         }
         public static Vector2 StarPolarEquation(int pointCount, float angle, float offset)
         {
-            float numerator = MathF.Cos(MathHelper.Pi);// 分子
+            float numerator = MathF.Cos(MathHelper.Pi);
             float starAdjustedAngle = MathF.Asin(MathF.Cos(pointCount * angle + offset)) * 2f;
             float denominator = MathF.Cos((starAdjustedAngle + MathHelper.PiOver2 * pointCount) / (pointCount * 2f));// 分母
             Vector2 result = angle.ToRotationVector2() * numerator / denominator;

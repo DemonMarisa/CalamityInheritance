@@ -93,9 +93,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			//远古血炎产红心, 远古林海强回血整合在这里面
 			modPlayer.AncientSilvaForceRegen = true;
 			modPlayer.AncientAuricSet = true;
-			#endregion
-			#region 五职业头盔套的各自套装效果
-			modPlayer.auricBoostold = true;
+            modPlayer.RefreshGodSlayerDash(calPlayer);
+            #endregion
+            #region 五职业头盔套的各自套装效果
+            modPlayer.auricBoostold = true;
 			//战士
 			calPlayer.tarraMelee = true;
 			calPlayer.bloodflareMelee = true;

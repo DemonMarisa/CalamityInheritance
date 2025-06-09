@@ -80,7 +80,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
                 Color color = Color.Lerp(DustColors[Main.rand.Next(0, DustColors.Count)], Color.White, randomWhitingValue);
 
                 Vector2 velocity = k.ToRotationVector2() * (2f + (float)(Math.Sin((double)(k * rosePetalCount)) + 1.0) * speed2) * Main.rand.NextFloat(0.95f, 1.05f);
+
                 Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.FireworksRGB, new Vector2?(velocity), 0, color, scale);
+
                 dust.noGravity = true;
 
                 dust.velocity *= 0.65f;

@@ -130,7 +130,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 1).LoreBtnX, GetLorePos(1, 1).LoreBtnY, ref unAny, ref cIPlayer.nullType, ref LoreBloodMoonID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 2).LoreBtnX, GetLorePos(1, 2).LoreBtnY, ref DownedHive, ref cIPlayer.CorruptionPanelType, ref LoreCorruptionID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 3).LoreBtnX, GetLorePos(1, 3).LoreBtnY, ref DownedPerf, ref cIPlayer.CrimsonPanelType, ref LoreCrimsonID);
-                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 4).LoreBtnX, GetLorePos(1, 4).LoreBtnY, ref DownedWoF, ref cIPlayer.CrabPanelType, ref LoreUnderworldID);
+                CIFunction.DrawBton(genericBtonData, GetLorePos(1, 4).LoreBtnX, GetLorePos(1, 4).LoreBtnY, ref DownedWoF, ref cIPlayer.UnderworldPanelType, ref LoreUnderworldID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 5).LoreBtnX, GetLorePos(1, 5).LoreBtnY, ref DownedAS, ref cIPlayer.SulphurSeaType, ref LoreSulphurSeaID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(1, 6).LoreBtnX, GetLorePos(1, 6).LoreBtnY, ref unAny, ref cIPlayer.nullType, ref LoreBrimstoneCragID);
                 CIFunction.DrawBton(genericBtonData, GetLorePos(2, 1).LoreBtnX, GetLorePos(2, 1).LoreBtnY, ref unAny, ref cIPlayer.nullType, ref LoreMechID);

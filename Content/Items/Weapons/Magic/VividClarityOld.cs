@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             float f = Main.rand.NextFloat() * MathHelper.TwoPi;
             float spreadX = 20f;
             float spreadY = 60f;
-            float sourceVariationLow = 120f;
+            float sourceVariationLow = 90f;
             float sourceVariationHigh = 180f;
             Vector2 source = playerPos + f.ToRotationVector2() * MathHelper.Lerp(sourceVariationLow, sourceVariationHigh, Main.rand.NextFloat());
             Vector2 sourceExoLore = playerPos + f.ToRotationVector2() * MathHelper.Lerp(spreadX, spreadY, Main.rand.NextFloat());
@@ -109,7 +109,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Vector2 velocityReal = Main.MouseWorld - source;
                 Vector2 velocityVariation = new Vector2(xPos, yPos).SafeNormalize(Vector2.UnitY) * speed;
                 velocityReal = velocityReal.SafeNormalize(velocityVariation) * speed;
-                velocityReal = Vector2.Lerp(velocityReal, velocityVariation, 0.25f);
 
                 Projectile.NewProjectile(projSource, source, velocityReal, ModContent.ProjectileType<CIVividBeamExoLore>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
 
@@ -128,7 +127,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Vector2 velocityReal = Main.MouseWorld - sourceExoLore;
                 Vector2 velocityVariation = new Vector2(xPos, yPos).SafeNormalize(Vector2.UnitY) * speed;
                 velocityReal = velocityReal.SafeNormalize(velocityVariation) * speed;
-                velocityReal = Vector2.Lerp(velocityReal, velocityVariation, 0.25f);
 
                 Projectile.NewProjectile(projSource, sourceExoLore, velocityReal, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
             }

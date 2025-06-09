@@ -50,10 +50,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             int heal = (int)Math.Round(hit.Damage * 0.075);
+
             if (heal > 100)
                 heal = 100;
 
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<GlobalHealthProj>(), 0, Projectile.knockBack, Projectile.owner, 0f, 0f, heal);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<NorHealthProj>(), 0, Projectile.knockBack, Projectile.owner, 12f, 1f, heal);
         }
     }
 }

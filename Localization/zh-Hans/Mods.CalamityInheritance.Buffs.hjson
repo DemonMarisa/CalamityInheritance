@@ -247,3 +247,13 @@ KamiFlu: {
 	// DisplayName: Kami Flu
 	// Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
 }
+
+SiriusBuffLegacy: {
+	// DisplayName: Sirius Buff Legacy
+	// Description: Mods.CalamityInheritance.Buffs.SiriusBuffLegacy.Description
+}
+
+SarosPossessionBuffLegacy: {
+	// DisplayName: Saros Possession Buff Legacy
+	// Description: Mods.CalamityInheritance.Buffs.SarosPossessionBuffLegacy.Description
+}

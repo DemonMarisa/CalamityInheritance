@@ -37,12 +37,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public void DoReady()
         {
             //往AI里面不断检查是否应该生成这个射弹，如果不允许生成，则自动干掉自己
+            /*
             if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
             {
                 Projectile.Kill();
                 Projectile.netUpdate = true;
                 return;
             }
+            */
 
         }
 
@@ -55,9 +57,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         {
             //如果玩家没有激活武器，干掉下方的AI，不要执行
             //Todo: 这里改为检测手持射弹。
+            /*
             if (Owner.ActiveItem().type != ModContent.ItemType<ShizukuEdge>() || Owner.dead)
                 return;
-
+            */
             //加强类型
             foreach (var proj in Main.ActiveProjectiles)
             {

@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
+    /*
     public class ShizukuEdge : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
@@ -64,4 +65,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             return false;
         }
     } 
+    */
 }

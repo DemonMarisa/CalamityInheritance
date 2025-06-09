@@ -42,5 +42,7 @@
 
 [b]模组冲突问题[/b]
 目前和ClamityMod加载有冲突，需要关闭对原灾合成表的修改才能正常加载
+[b]是ClamityMod！！！C L A M I T Y！！！[/b]
+[b]是那个添加了至尊灾蛤的MOD！！！[/b]
 [quote=tModLoader CalamityInheritance]
 Developed By DemonMarisa[/quote]

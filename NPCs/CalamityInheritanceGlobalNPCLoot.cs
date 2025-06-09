@@ -666,13 +666,15 @@ namespace CalamityInheritance.NPCs
             }
             GFBDrop(npc, Loot);
         }
-        public void GFBDrop(NPC npc, NPCLoot Loot)
+        public static void GFBDrop(NPC npc, NPCLoot Loot)
         {
             // GFB掉落
             var GFBOnly = Loot.DefineConditionalDropSet(DropHelper.GFB);
             #region ModBoss
             if (npc.CheckNPCMod<DesertScourgeHead>())
                 GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AsgardianAegisold>(), 1), hideLootReport: true);
+            if (npc.CheckNPCMod<SlimeGodCore>())
+                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<PurifiedJam>(), 9998), hideLootReport: true);
             if (npc.CheckNPCMod<AquaticScourgeHead>())
                 GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
             if (npc.CheckNPCMod<AquaticScourgeHead>())

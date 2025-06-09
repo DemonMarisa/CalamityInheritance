@@ -127,7 +127,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         #region 方法列表
         public void KillProj()
         {
-            if (Owner.dead || !Owner.channel)
+            if (Owner.dead /*|| !Owner.channel*/)
             {
                 Projectile.Kill();
                 Owner.reuseDelay = 2;

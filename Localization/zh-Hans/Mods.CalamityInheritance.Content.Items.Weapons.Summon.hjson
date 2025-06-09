@@ -80,7 +80,7 @@ CyrogenLegendary: {
 	TierOne: "[c/1E90FF:强化]: 大幅度提高冰钉的发射频率"
 	TierTwo: "[c/1E90FF:强化]: 鞭子命中时强制发射冰钉，同时冰刺获得命中治疗的能力"
 	TierThree: "[c/1E90FF:强化]: 冰钉将会贯穿敌怪防御属性，并使敌怪持续失温"
-	TierOneTint: "[c/818589:尝试一下把武器扔进微光湖内, 如何?]"
+	TierOneTint: "[c/818589:尝试一下前往微光环境, 如何?]"
 	TierTwoTint: "[c/818589:雪原地表饮用一瓶温暖药水]"
 	TierThreeTint: "[c/818589:于雪原地表召唤亵渎天神]"
 }
@@ -103,4 +103,14 @@ AncientAncientIceChunk: {
 BloodClotStaff: {
 	DisplayName: 血块召唤杖[Legacy]
 	Tooltip: 召唤一个血块为你而战
+}
+
+SarosPossessionLegacy: {
+	// DisplayName: Saros Possession Legacy
+	// Tooltip: ""
+}
+
+SiriusLegacy: {
+	// DisplayName: Sirius Legacy
+	// Tooltip: ""
 }

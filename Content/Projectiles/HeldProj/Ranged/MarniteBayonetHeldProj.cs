@@ -37,6 +37,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.ignoreWater = true;
             Projectile.MaxUpdates = 1;
         }
+        public override bool? CanHitNPC(NPC target)
+        {
+            return true;
+        }
         public override void HoldoutAI()
         {
             Projectile.extraUpdates = 0;

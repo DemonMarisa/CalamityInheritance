@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization.Formatters;
 using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.SummonItems;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Summon;
@@ -127,7 +128,7 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
-            if (item.type == ModContent.ItemType<YharonEgg>() && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
+            if ((item.type == ModContent.ItemType<YharonEgg>()|| item.type == ModContent.ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
             {
                 if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
                 {
