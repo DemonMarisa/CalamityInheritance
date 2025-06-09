@@ -559,6 +559,7 @@ namespace CalamityInheritance.CIPlayer
             if(AncientAuricSet)
             {
                 Player.noKnockback = true;
+                RefreshGodSlayerDash(calPlayer);
                 if(Player.statLife <= Player.statLifeMax2 * 0.5f)
                 {
                     int getDef = Player.GetCurrentDefense();

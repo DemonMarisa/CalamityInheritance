@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			var modPlayer = player.CIMod();
 			var calPlayer = player.Calamity();
 			modPlayer.ManaHealMutipler = 2.0f;
-			player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + GodSlayerChestplateold.GetSpecial(3);
+			player.setBonus = this.GetLocalizedValue("SetBonus");
 			//标记为魔君金源甲
 			modPlayer.YharimAuricSet = true;
             #region 灾厄的月后套通用效果
@@ -84,10 +84,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 				player.lifeRegen += 60;
 			}
 			#endregion
-			#region 远古甲的弑神免伤, 龙蒿降防损, 林海强回血与血炎掉红心
-			//弑神免伤
-			calPlayer.contactDamageReduction += 0.50f;
-			player.endurance += 0.15f;
+			#region 龙蒿降防损, 林海强回血与血炎掉红心
 			//远古龙蒿降防损
 			calPlayer.defenseDamageRatio *= 0.5f;
 			//远古血炎产红心, 远古林海强回血整合在这里面

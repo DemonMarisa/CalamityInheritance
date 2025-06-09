@@ -12,8 +12,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
     public class MoonPlaceholder : ModProjectile, ILocalizedModType
     {
-        public ref float Rotated => ref Projectile.ai[0];
+        public ref float Timer => ref Projectile.ai[0];
+        
         public Player Owner => Main.player[Projectile.owner];
+        public int OwnedProjectileType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
+        public const float FloatingMoonDistance = 16f;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -37,12 +40,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public void DoReady()
         {
             //往AI里面不断检查是否应该生成这个射弹，如果不允许生成，则自动干掉自己
-            if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
+            if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>() || Owner.ownedProjectileCounts[OwnedProjectileType] < 1)
             {
                 Projectile.Kill();
                 Projectile.netUpdate = true;
                 return;
             }
+            //高举法器 -> 将法器投影至半空，并将月球放置在其之上而非绕身旋转（主要是为了消除任何可能存在的车万neta）
+            //将加强射弹的功能默认设定为弹幕属性，明月
 
         }
 
