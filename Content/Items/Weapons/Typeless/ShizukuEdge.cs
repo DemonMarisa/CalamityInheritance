@@ -9,6 +9,10 @@ using Terraria.ModLoader;
 using CalamityInheritance.Rarity.Special;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
@@ -51,18 +55,33 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
         {
         }
         public override bool AltFunctionUse(Player player) => true;
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectileAlter>()] < 1 || player.altFunctionUse == 2;
+        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectile>()] < 1 || player.altFunctionUse == 2;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //发射逻辑：往后方发射三个鬼魂， 往前方发射两个镰刀
-            int projRightType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
             int projLeftType = ModContent.ProjectileType<ShizukuEdgeProjectile>();
+            int projRightType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
             //这个右键我看不懂。
             if (player.altFunctionUse == 2 && player.ownedProjectileCounts[projLeftType] < 1)
-                Projectile.NewProjectile(source, position, Vector2.Zero, projLeftType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, Vector2.Zero, projRightType, damage, knockback, player.whoAmI);
             else
-                Projectile.NewProjectile(source, position, velocity, projRightType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, Main.MouseWorld, velocity, projLeftType, damage, knockback, player.whoAmI);
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                    AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
+                    AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
+                    AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
+                    AddRecipeGroup(CIRecipeGroup.AnyChest).
+                    AddIngredient<CosmiliteBar>(10).
+                    AddIngredient(ItemID.LunarBar, 20).
+                    AddIngredient<ShadowspecBar>(5).
+                    AddIngredient<Lumenyl>(30).
+                    AddCondition(Condition.NearShimmer).
+                    Register();
+                    
         }
     } 
     */

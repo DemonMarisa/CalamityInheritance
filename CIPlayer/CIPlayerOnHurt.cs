@@ -302,7 +302,7 @@ namespace CalamityInheritance.CIPlayer
             //日食魔镜的闪避优于所有闪避之前执行
             if (CheckEMirror())
                 return true;
-            if (AncientGodSlayerSet && Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount > 0)
+            if ((AncientGodSlayerSet || YharimAuricSet) && Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount > 0)
             {
                 if (Player.HasCooldown(GodSlayerDash.ID))
                     Player.RemoveCooldown(GodSlayerCooldown.ID);

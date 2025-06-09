@@ -170,5 +170,7 @@ namespace CalamityInheritance.Utilities
         public static void LootAdd<T>(this ItemLoot itemLoot, int dropRate = 1, int dropMin = 1, int dropMax = 1) where T : ModItem => LootCommon(itemLoot, ModContent.ItemType<T>(), dropRate, dropMin, dropMax);
         public static void LootAdd(this ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => LootCommon(itemLoot, lootItem, dropRate, dropMin, dropMax);
         public static void LootCommon(ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => itemLoot.Add(lootItem, dropRate, dropMin, dropMax);
+        #region RecipeHelper
+        #endregion
     }
 }

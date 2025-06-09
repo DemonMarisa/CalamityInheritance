@@ -12,8 +12,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
     public class MoonPlaceholder : ModProjectile, ILocalizedModType
     {
-        public ref float Rotated => ref Projectile.ai[0];
+        public ref float Timer => ref Projectile.ai[0];
+        
         public Player Owner => Main.player[Projectile.owner];
+        public int OwnedProjectileType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
+        public const float FloatingMoonDistance = 16f;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

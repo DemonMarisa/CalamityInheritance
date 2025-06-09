@@ -72,8 +72,17 @@ MarkedMagnum: {
 }
 
 ShizukuEdge: {
-	// DisplayName: Shizuku's Frigid Lunar Glow
-	// Tooltip: "[c/98F5FF:Beneath the glacial glare of the moon, the Creator's heart throbs with melancholic anguish.]"
+	DisplayName: 雫之寒月[Shizuku]
+	Tooltip:
+		'''
+		投射一把明月法器，跟随你的鼠标，并以散射的形式发射寒月之魂与寒月飞镰
+		右键高举法器，使寒月之刃与暗月之星向上发射，并召唤一轮围绕着你的明月
+		寒月之刃/暗月之星穿过明月时提升伤害与弹幕速度
+		敌对弹幕与绕身明月接触时将会被无害化处理
+		生成一把星月飞剑为你而战
+		[c/98F5FF:-开发者物品-]
+		[c/98F5FF:「冰寒明月，映出创造者哀怨如渊之心」]
+		'''
 }
 
 YanmeisKnife: {

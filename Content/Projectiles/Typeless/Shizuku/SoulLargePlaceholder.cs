@@ -34,6 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.extraUpdates = 1;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
+            Projectile.tileCollide = false; 
         }
         public override bool PreAI()
         {

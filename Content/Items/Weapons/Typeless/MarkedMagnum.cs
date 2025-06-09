@@ -39,7 +39,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
         }
 
         // Marked Magnum scales off of all damage types simultaneously (meaning it scales 5x from universal damage boosts).
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
@@ -48,12 +47,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.HellstoneBar, 7);
-            recipe.AddIngredient(ItemID.Obsidian, 15);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 15);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe().
+                AddIngredient(ItemID.HellstoneBar, 7).
+                AddIngredient(ItemID.Obsidian, 15).
+                AddIngredient(ItemID.GlowingMushroom, 15).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }
