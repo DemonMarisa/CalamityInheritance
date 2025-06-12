@@ -40,8 +40,6 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingAsSplit = false;
         public bool PingWhipStrike = false;
         public int StoreEU = -1;
-        // 新建了四个可以储存数据的Vector2
-        public Vector2[] DateStock = new Vector2[4];
         // 1帧影响
         public bool oneFrameEffect = false;
         public override void AI(Projectile projectile)
@@ -56,30 +54,6 @@ namespace CalamityInheritance.Content.Projectiles
                     && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);
-                //回调原版所有悠悠球的无敌帧
-                //注意其他方面都不会回调，只回调了无敌帧，但也足够了
-                //砍无敌帧太傻逼了，纯纯砍手感的
-                switch(projectile.type)
-                {
-                    case ProjectileID.JungleYoyo:
-                    case ProjectileID.Amarok:
-                    case ProjectileID.CrimsonYoyo:
-                    case ProjectileID.Chik:
-                    case ProjectileID.Code1:
-                    case ProjectileID.Code2:
-                    case ProjectileID.FormatC:
-                    case ProjectileID.Gradient:
-                    case ProjectileID.HiveFive:
-                    case ProjectileID.CorruptYoyo:
-                    case ProjectileID.RedsYoyo:
-                    case ProjectileID.ValkyrieYoyo:
-                    case ProjectileID.Rally:
-                    case ProjectileID.Valor:
-                    case ProjectileID.Yelets:
-                    case ProjectileID.WoodYoyo:
-                        projectile.localNPCHitCooldown = 10;
-                        break;
-                }
             
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {

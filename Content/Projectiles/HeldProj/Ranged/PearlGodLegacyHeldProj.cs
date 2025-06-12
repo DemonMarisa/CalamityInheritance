@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             }
             else if (AniProgress > Halfrecoilani && AniProgress < recoilani)
             {
-                rotProg = MathHelper.Lerp(rotProg, 0f, 0.25f);
+                rotProg = MathHelper.Lerp(rotProg, 0f, 0.5f);
             }
             else
             {

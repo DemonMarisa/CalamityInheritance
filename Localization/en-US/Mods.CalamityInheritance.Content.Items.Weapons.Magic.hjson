@@ -300,7 +300,7 @@ DestroyerLegendary: {
 	TierOne: "[c/4169E1:Upgrade]: Energy beams and plasma orbs guaranteed critical hits"
 	TierOneTint: "[c/818589:Maybe try get close to Shimmer?]"
 	TierTwo: "[c/4169E1:Upgrade]: Beams and orbs deal true damage base on your current critical strike chance"
-	TierTwoTint: "[c/818589:Drinks an Purple Juice during the Inpending Doom]"
+	TierTwoTint: "[c/818589:Drinks an Grape Juice during the Inpending Doom]"
 	TierThree: "[c/4169E1:Upgrade]: This Weapon no longer consume any mana"
 	TierThreeTint: "[c/818589:Summon Polterghast after used Comet Shard and Ethereal Core]"
 	LegendaryScaling: "[c/4169E1:Damage Scaling]: +{0} weapon base damage"

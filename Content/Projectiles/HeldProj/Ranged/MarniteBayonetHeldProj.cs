@@ -36,6 +36,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
             Projectile.MaxUpdates = 1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
         public override bool? CanHitNPC(NPC target)
         {

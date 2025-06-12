@@ -247,21 +247,21 @@ WulfrumDroidOldBuff: {
 }
 
 KamiBuff: {
-	DisplayName: Kami Buff
-	Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
+	DisplayName: Kami Injection
+	Description: 15% increased max movement speed, acceleration and damage
 }
 
 KamiFlu: {
 	DisplayName: Kami Flu
-	Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
+	Description: Defenseless and dying
 }
 
 SiriusBuffLegacy: {
-	DisplayName: Sirius Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.SiriusBuffLegacy.Description
+	DisplayName: Sirius Legacy
+	Description: A bit too bright, but it helps you
 }
 
 SarosPossessionBuffLegacy: {
-	DisplayName: Saros Possession Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.SarosPossessionBuffLegacy.Description
+	DisplayName: Saros Possession Legacy
+	Description: A radiant aura protects you
 }

@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
             }
             */
             // Spawn a pair of stars, one slow, one fast.
-
+            /*
             int pointsOnStar = 6;
             for (int k = 0; k < CIConfig.Instance.Debugint; k++)
             {
@@ -97,6 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
                     }
                 }
             }
+            */
             /*
             float anglestep = MathHelper.TwoPi / pointsOnStar;
             float angle = 0 * anglestep - MathHelper.Pi * 1.5f;
@@ -117,6 +118,7 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
                     Main.projectile[bullet].Calamity().stealthStrike = true;
             }
             */
+            
             return false;
         }
         public override bool? UseItem(Player player)

@@ -60,10 +60,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
         public void CheckHeldItem()
         {
-            if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
-            {
-                Projectile.Kill();
-            }
+            //if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
+            //{
+            //    Projectile.Kill();
+            //}
         }
     }
 }

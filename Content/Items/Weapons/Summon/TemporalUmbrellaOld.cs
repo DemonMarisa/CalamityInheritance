@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                     projectile.Kill();
                 }
             }
-            Projectile.NewProjectile(source, position , Vector2.Zero , type, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position , Vector2.Zero , type, damage * 2, knockback, player.whoAmI);
             return false;
         }
 

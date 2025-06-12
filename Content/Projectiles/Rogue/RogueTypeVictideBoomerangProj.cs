@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Rogue
@@ -25,12 +26,24 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ai[0] += 1f;
             if (Projectile.Calamity().stealthStrike)
             {
-                if (Projectile.ai[0] % 8f == 0)
+                NPC npc = Projectile.FindClosestTarget(800f, true, true);
+                if(npc != null)
                 {
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VictideShell>(), Projectile.damage, Projectile.knockBack);
+                    Vector2 AimToTarget = npc.Center - Projectile.Center;
+                    AimToTarget.Normalize();
+
+                    if (Projectile.ai[0] % 8f == 0)
+                    {
+                        int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, AimToTarget * 6f, ModContent.ProjectileType<VictideShell>(), Projectile.damage / 3, Projectile.knockBack);
+                        Main.projectile[p].Calamity().stealthStrike = true;
+                        Main.projectile[p].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    }
+                }
+                else if (Projectile.ai[0] % 8f == 0)
+                {
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<VictideShell>(), Projectile.damage / 3, Projectile.knockBack);
                     Main.projectile[p].Calamity().stealthStrike = true;
-                    Main.projectile[p].extraUpdates = 2;
-                    Main.projectile[p].velocity *= 1.2f;
+                    Main.projectile[p].DamageType = ModContent.GetInstance<RogueDamageClass>();
                 }
             }
             Player owner = Main.player[Projectile.owner];

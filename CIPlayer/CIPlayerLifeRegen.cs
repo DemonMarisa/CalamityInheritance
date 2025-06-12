@@ -15,6 +15,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        public float vulnerabilityHexLegacyProgress = 0f;
         #region Update Bad Life Regen
         public override void UpdateBadLifeRegen()
         {
@@ -59,10 +60,10 @@ namespace CalamityInheritance.CIPlayer
             // 死亡模式debuff伤害+25%
             // 移除死亡增幅
             float calamityDebuffMultiplier = 1f;
-
             // 总共降低的生命值
             float totalPowerfulNegativeLifeRegen = 0;
 
+            // 走原版掉血的Debuff
             void ApplyDoTDebuff(bool hasDebuff, int negativeLifeRegenToApply, bool immuneCondition = false)
             {
                 if (!hasDebuff || immuneCondition)
@@ -74,11 +75,24 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegenTime = 0;
                 totalPowerfulNegativeLifeRegen += negativeLifeRegenToApply * calamityDebuffMultiplier;
             }
+
             //150 -> 90 （75HP/s -> 50HP/s) 比超位崩解(40HP/s)强一些
-            ApplyDoTDebuff(abyssalFlames, 100);
-            ApplyDoTDebuff(vulnerabilityHexLegacy, 32);
+            // 削弱，50HP/s - 40P/s
+            ApplyDoTDebuff(abyssalFlames, 80);
+            // 一秒1点，剩余的是真实伤害
+            ApplyDoTDebuff(vulnerabilityHexLegacy, 2);
 
             Player.lifeRegen -= (int)totalPowerfulNegativeLifeRegen;
+
+            // 孱弱巫咒的真伤，因为应该只有这一个，所以不写系统了
+            if(vulnerabilityHexLegacy)
+            {
+                // 每秒30点真实伤害
+                if(Player.miscCounter % 2 == 0)
+                {
+                    Player.statLife -= 1;
+                }
+            }
         }
         #region Update Life Regen
         public override void UpdateLifeRegen()

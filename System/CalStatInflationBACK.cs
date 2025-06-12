@@ -900,7 +900,7 @@ namespace CalamityInheritance.System
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 6.6f);
                     npc.life = (int)(npc.life * 6.6f);
-                    npc.defense = (int)(npc.life * 1.2f);
+                    npc.defense = (int)(npc.defense * 1.2f);
                 }
                     
             }

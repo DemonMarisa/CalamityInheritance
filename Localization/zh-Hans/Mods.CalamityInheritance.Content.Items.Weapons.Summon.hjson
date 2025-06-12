@@ -106,11 +106,24 @@ BloodClotStaff: {
 }
 
 SarosPossessionLegacy: {
-	// DisplayName: Saros Possession Legacy
-	// Tooltip: ""
+	DisplayName: 星律之握揽[Legacy]
+	Tooltip:
+		'''
+		取得对光芒本身的绝对控制
+		召唤一个璀璨光环
+		使用时消耗所有召唤栏
+		必须在快捷栏使用
+		随消耗召唤栏增加而增强
+		'''
 }
 
 SiriusLegacy: {
-	// DisplayName: Sirius Legacy
-	// Tooltip: ""
+	DisplayName: 天狼星[Legacy]
+	Tooltip:
+		'''
+		召唤夜空中最亮的星照耀你的敌人
+		消耗所剩余的所有召唤栏
+		必须在快捷栏才可以使用
+		随着消耗的召唤栏数量增加伤害
+		'''
 }

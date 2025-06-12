@@ -239,21 +239,21 @@ WulfrumDroidOldBuff: {
 }
 
 KamiBuff: {
-	// DisplayName: Kami Buff
-	// Description: Mods.CalamityInheritance.Buffs.KamiBuff.Description
+	DisplayName: Kami之佑
+	Description: 提高15%最大移动速度，加速度和伤害
 }
 
 KamiFlu: {
-	// DisplayName: Kami Flu
-	// Description: Mods.CalamityInheritance.Buffs.KamiFlu.Description
+	DisplayName: Kami之疫
+	Description: 手无寸铁，奄奄一息
 }
 
 SiriusBuffLegacy: {
-	// DisplayName: Sirius Buff Legacy
-	// Description: Mods.CalamityInheritance.Buffs.SiriusBuffLegacy.Description
+	DisplayName: 天狼星[Legacy]
+	Description: 有点亮，但这对你很有用
 }
 
 SarosPossessionBuffLegacy: {
-	// DisplayName: Saros Possession Buff Legacy
-	// Description: Mods.CalamityInheritance.Buffs.SarosPossessionBuffLegacy.Description
+	DisplayName: 星律掌控[Legacy]
+	Description: 闪熠的流光日环保护着你
 }

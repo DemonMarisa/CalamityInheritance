@@ -129,7 +129,9 @@ namespace CalamityInheritance
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
-            // FlightBarDrawHook.Load();
+            FlightBarDrawHook.Load();
+            // 干掉伊布法杖中的变性药水
+            DisableSylvestaffRecipe.Load();
             #endregion
         }
         public void LoadClient()

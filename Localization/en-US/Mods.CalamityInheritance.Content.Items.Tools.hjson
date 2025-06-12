@@ -61,3 +61,8 @@ LevelItem: {
 		Right Click to set the level to the lowest level
 		'''
 }
+
+GreatbayPickaxeLegacy: {
+	DisplayName: Greatbay Pickaxe Legacy
+	Tooltip: Can mine Demonite, Crimtane, Meteorite, Sea Prisms and Sea Prism Crystals
+}

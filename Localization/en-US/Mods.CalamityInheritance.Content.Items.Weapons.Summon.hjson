@@ -107,10 +107,21 @@ BloodClotStaff: {
 
 SarosPossessionLegacy: {
 	DisplayName: Saros Possession Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Gain absolute control over light itself
+		Summons a radiant aura
+		Consumes all of the remaining minion slots on use
+		Must be used from the hotbar
+		Increased power based on the number of minion slots used
+		'''
 }
 
 SiriusLegacy: {
 	DisplayName: Sirius Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Summons the brightest star in the night sky to shine upon your foes
+		Increased power based on the number of slots used
+		'''
 }

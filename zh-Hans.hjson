@@ -80,6 +80,7 @@ Mods: {
 			// Melee.AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
 			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
 			// SarosAuraLegacy.DisplayName: Saros Aura Legacy
+			// ShizukuSword.DisplayName: Shizuku Sword
 		}
 
 		Content/Projectiles/Summon: {

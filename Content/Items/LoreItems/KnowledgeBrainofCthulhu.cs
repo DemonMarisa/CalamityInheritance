@@ -24,7 +24,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
         }
         public override void UpdateInventory(Player player)
         {
-
             if (CIConfig.Instance.BoCLoreUnconditional == true)
             {
                 if (Item.favorited)

@@ -167,7 +167,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             player.ScalDebuffs(360, 480, 300);
 
-            player.statLife -= Projectile.damage;
+            player.statLife -= Projectile.damage * 3;
 
             GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
             GeneralParticleHandler.SpawnParticle(orb);
@@ -185,8 +185,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
-
-            target.statLife -= Projectile.damage / 3;
 
             target.ScalDebuffs(360, 480 , 300);
         }

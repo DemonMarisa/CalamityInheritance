@@ -419,3 +419,12 @@ ShrineMushroom: {
 		真近战攻击造成15%额外伤害 
 		'''
 }
+
+ShieldoftheOceanLegacy: {
+	DisplayName: 海之盾[Legacy]
+	Tooltip:
+		'''
+		浸没在液体中时增加5点防御
+		当你穿着胜潮套装时，增加10%移动速度和+2HP/s生命再生
+		'''
+}

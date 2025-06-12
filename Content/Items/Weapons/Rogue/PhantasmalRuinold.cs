@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void SetDefaults()
         {
-            Item.damage = 955;
+            Item.damage = 655;
             Item.knockBack = 8f;
 
             Item.width = 102;

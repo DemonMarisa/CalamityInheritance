@@ -13,23 +13,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.width = 14;
             Projectile.height = 14;
             Projectile.friendly = true;
-            Projectile.penetrate = 2;
-            Projectile.aiStyle = 3;
             Projectile.timeLeft = 300;
-            AIType = ProjectileID.WoodenBoomerang;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
         public override void AI()
         {
-            if (Projectile.Calamity().stealthStrike)
-            {
-                Projectile.aiStyle = 0;
-                Projectile.rotation += 0.10f;
-                Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] > 10f)
-                    CIFunction.HomeInOnNPC(Projectile, false, 400f , 14f, 20f);
-            }
+            Projectile.rotation += 0.10f;
+            CIFunction.HomeInOnNPC(Projectile, false, 500f, 12f, 35f);
         }
 
 

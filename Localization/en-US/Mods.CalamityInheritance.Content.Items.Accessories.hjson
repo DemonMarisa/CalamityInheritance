@@ -414,3 +414,12 @@ ShrineMushroom: {
 		25% increased true melee damage
 		'''
 }
+
+ShieldoftheOceanLegacy: {
+	DisplayName: Shieldofthe Ocean Legacy
+	Tooltip:
+		'''
+		Increased defense by 5 when submerged in liquid
+		10% increased movement speed and +2 HP/s life regen while wearing Victide armor
+		'''
+}

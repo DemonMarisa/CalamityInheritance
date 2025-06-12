@@ -61,3 +61,8 @@ LevelItem: {
 		右键使用清空等级进度
 		'''
 }
+
+GreatbayPickaxeLegacy: {
+	DisplayName: 海湾镐[Legacy]
+	Tooltip: 可开采狱石、魔矿、猩红矿、陨石、海棱晶和棱晶碎片
+}

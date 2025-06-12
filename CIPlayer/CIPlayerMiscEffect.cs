@@ -1388,20 +1388,20 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
                     Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
-                Player.GetDamage<GenericDamageClass>() += 0.5f;
+                Player.GetDamage<GenericDamageClass>() += 0.25f;
                 Player.ClearBuff(BuffID.Featherfall);
             }
 
             if (LoreProvidence || PanelsLoreProvidence)
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
-                Player.GetDamage<GenericDamageClass>() *= 1.1f;
+                Player.GetDamage<GenericDamageClass>() *= 1.05f;
                 Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
 
             if (LoreDevourer || PanelsLoreDevourer)
             {
-                Player.GetDamage<TrueMeleeDamageClass>() += 0.5f;
+                Player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
             }
             if (LoreJungleDragon || PanelsLoreJungleDragon)
             {

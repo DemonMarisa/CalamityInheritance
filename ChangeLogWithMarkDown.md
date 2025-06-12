@@ -48,3 +48,7 @@
 - Edge需要描边绘制(参考微元Lore)
 - [] Custom sound for Shizuku Edge
 - [] 攻击特效重置
+
+削弱老龙息
+削弱一下数值，现在莫名其妙的高
+修复終灾击败后BGM的bug

@@ -1648,6 +1648,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (NPC.Center.Distance(target.Center) > NPC.width / 2)
                 return false;
 
+            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 480);
+
             GlowOrbParticle orb = new GlowOrbParticle(target.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
             GeneralParticleHandler.SpawnParticle(orb);
             if (Main.rand.NextBool())
