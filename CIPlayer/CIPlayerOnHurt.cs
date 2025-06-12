@@ -517,6 +517,11 @@ namespace CalamityInheritance.CIPlayer
                 int healAmt = (int)(hurtInfo.Damage / 20D);
                 Player.Heal(healAmt);
             }
+            if (AncientSilvaStat)
+            {
+                int healAmt = (int)(hurtInfo.Damage / 10D);
+                Player.Heal(healAmt);
+            }
             //神圣护符落星
             if (deificAmuletEffect)
             {

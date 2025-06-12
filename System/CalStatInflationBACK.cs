@@ -699,13 +699,13 @@ namespace CalamityInheritance.System
                 item.damage = 1054;
             // 超新星
             if (item.type == ModContent.ItemType<Supernovaold>())
-                item.damage = 3500;
+                item.damage = 4820;
             // 弧光
             if (item.type == ModContent.ItemType<ExoTheApostle>())
                 item.damage = 9000;
             // 归墟
             if (item.type == ModContent.ItemType<CosmicImmaterializerOld>())
-                item.damage = 2000;
+                item.damage = 2400;
             // 热寂
             if (item.type == ModContent.ItemType<CelestialObliterator>())
                 item.damage = 600;
@@ -733,7 +733,7 @@ namespace CalamityInheritance.System
                 item.damage = 450;
             // 归墟
             if (item.type == ModContent.ItemType<CosmicImmaterializer>())
-                item.damage = 1500;
+                item.damage = 1800;
         }
         #endregion
         #region 魔影
@@ -756,12 +756,14 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<NanoblackReaper>())
                 item.damage = 4000;
             if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
-                item.damage = 10000; //一万面板
+                item.damage = 50000; //一万面板
             if (item.type == ModContent.ItemType<Ozzathoth>())
                 item.damage = 200; //一万面板
+            if (item.type == ModContent.ItemType<Sylvestaff>())
+                item.damage = 1000;
             #region 遗产魔影
             if (item.type == ModContent.ItemType<FabstaffOld>())
-                item.damage = 800;
+                item.damage = 1400;
             if (item.type == ModContent.ItemType<SomaPrimeOld>())
                 item.damage = 2400;
             if (item.type == ModContent.ItemType<CrystylCrusherLegacy>())
@@ -775,15 +777,17 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<MeleeTypeNanoblackReaper>())
                 item.damage = 800;
             if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
-                item.damage = 6800;
+                item.damage = 5800;
             if (item.type == ModContent.ItemType<Apotheosis>())
                 item.damage = 420;
             if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
                 item.damage = 720;
             if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())
-                item.damage = 963;
+                item.damage = 1000;
             if (item.type == ModContent.ItemType<DanceofLightLegacy>())
-                item.damage = 5400;
+                item.damage = 4800;
+            if (CheckModItem<StepToolShadow>(item.type))
+                item.damage = 114514;
             #endregion
 
         }
@@ -900,7 +904,7 @@ namespace CalamityInheritance.System
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 6.6f);
                     npc.life = (int)(npc.life * 6.6f);
-                    npc.defense = (int)(npc.life * 1.2f);
+                    npc.defense = (int)(npc.defense* 1.2f);
                 }
                     
             }

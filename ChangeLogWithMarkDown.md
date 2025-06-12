@@ -1,42 +1,59 @@
-# Changelog
-1. 远古弑神套装追加效果：潜伏攻击成功时重置弑神大冲CD
-2. 远古弑神套降低总共200点血上限，远古林海套降低总共100点血上限与魔力上限
-3. 庇护之刃初始伤害135 -> 75
-4. 将绝学法杖与圣神之像的输出全部对半砍使其不会溢出int上限。
-5. 叶流启用攻速加强时降低15%伤害而非10%伤害
-6. 加了一点合成表
-7. 玩家启用FargoSoul的时候可以用宇宙坩埚合成50个魔影锭
-8. 重做SHPC的升级效果。
-    - Tier1 右键也可发射左键炸弹 -> 左键/右键必定暴击
-    - Tier2 左键/右键射弹+2 -> 左键/右键依据SHPC暴击概率转化为真实伤害
-9. 干掉了暴君水晶发射神秘探魂眼的效果
-10. 修复一个远古弑神套错误地使玩家获得85%当前血量上限的问题
-11. 移除远古弑神套降低接触伤害的加强
-12. 再次重置远古弑神套：
-    - 干掉了现有增加免伤、潜伏值转化防御值的效果
-    - 远古弑神套现在在玩家完全恢复潜伏值时重置弑神大冲的CD(如果存在这个CD).
-    - 玩家此时使用弑神大冲时会消耗25%的潜伏值。
-    - 远古弑神套在弑神自起后给予自己3次闪避机会。每个闪避成功都会刷新弑神大冲CD
-    - 远古弑神套的弑神自起默认恢复满状态，无需判定龙魂秘药
-13. 修复远古林海、远古弑神、远古龙蒿未能正确加成哨兵栏的问题
-14. 远古林海的伤害暴击加成降低5%
-# 2.0.1.0后
-1. 移除SHPC无视免伤的功能，现在仅且正确地仅使其无视防御
-2. 孔雀翎潜伏攻击伤害倍率现在固定为70%，而非80%~70%之间
-3. 维苏威阿斯基础面板80 -> 60, 并把月前的属性加成拆出一部分移交给月后
-4. 庇护之刃基础面板75 -? 55， 降低总50%属性增长
-5. 移除海爵剑进行T1样式升级后右键取1倍伤害的属性，现在无论升级与否都被固定为80%倍率（原60% -> 100%）
-6. 调整叶流T2任务：现在限制在击败月球领主后方可完成
-//附综述：月前一万DPS。我很痛恨灾厄，但我还不觉得在月前就能打一万DPS是什么很健康的数字。而且月前并没有数值膨胀。
-7. 微元劫掠者 开启ExoLore：基础面板 1710 -> 1457, 基础暴击概率 4% -> 20%
-//为什么这个东西开启Lore后能在25%伤害加成与125潜伏条的情况下搭配纳米技术能打出几乎40w的秒伤？
-8. ACT宙能：移除跟随鼠标功能，这个太怪了而且没符合描述。
-# 6/9:
-1. 引入Shizuku剑贴图与初始AI。
-2. 引入特殊合成表注册方法
-3. 彻底修复魔君套的弑神冲刺问题
-4. 删除过期本地化
-- Shizuku Edge还没敲完，不要发布
+
+# 6/11:
+1. 调整部分龙后武器数值膨胀下的基本数值：
+   - 魔影系列： 
+   - 仙子伊布法杖：伤害固定为1000而非跟随全局改动
+   - 绝学法杖(Legacy)：伤害1000 -> 1400
+   - 光之舞(Legacy): 伤害5400 -> 4800
+   - 光阴流时伞(Legacy)：伤害963 -> 1000
+   - 至尊板凳：伤害调整为114514
+   - 圣泰阿克提斯之锤(近战)：伤害10000 -> 50000
+   - 圣泰阿克提斯之锤(盗贼)：伤害6800 -> 5800
+   - 星流系列/奇迹物质系列：
+   - 超新星(Legacy)：伤害3500 -> 4820，略微延展其场上的存续时间，并获得135%潜伏伤害倍率
+   - 归墟之灵(新)：伤害1500 -> 1800
+   - 归墟之灵(旧)：伤害2000 -> 2400
+2. 调整远古弑神套装与远古林海套装，从而尽可能修改两者的定位
+   1. 远古弑神套装：
+   - 胸甲部件的血量/魔力上限加成从400 -> 500
+   - 头盔部件增伤由25% -> 40%
+   - 移除潜伏攻击击中提供20%增伤效果
+   - 降低生命恢复 6HP/s -> 4HP/s
+   - 提高治疗药水恢复量 50% -> 70%
+   - 为远古弑神套重新带回并提供15%常驻接触伤害减免
+  
+   2. 远古林海套装
+   - 移除头盔部件的增伤，最大仆从栏位 5 -> 3, 哨兵栏位 3 -> 2
+   - 胸甲部件的血量/魔力上限加成 300 -> 250
+   - 提升常驻生命恢复速度 8HP/s -> 12HP/s
+   - 降低治疗药水恢复量 40% -> 30%
+   - 现在自带一个将承受的伤害转化为治疗的效果，转化量为10%
+
+1. Rebalanced some post-yharon weapons if stat bloat is enable:
+   - Shadowspec Tier:
+   - Slylvestaff grants 1000 damage instead of grants global stat bloat change
+   - Buffed Fabstaff Legacy damage from 1000 to 1400
+   - Nerfed Dance of Light Revamped damage from 5400 to 4800
+   - Buffed Temporal Umbrella Legacy damage from 963 to 1000
+   - Buffed Supreme Step Stool damage to 114514
+   - Buffed Triactis' Hammer (Melee) damage from 10000 to 50000
+   - Nerfed Triactis' Hammer (Rogue) damage from 6800 to 5800
+   - Exo/Miracle Tier:
+   - Buffed Supernova Legacy damage from 3500 to 4820, slightly extended its time before        exploding, and grants 135% stealth damage multipler
+   - Buffed Cosmic Immaterializer damage from 1500 to 1800
+   - Buffed Cosmic Immaterializer Legacy damage from 2000 to 2400
+2. Rebalanced (again) Ancinet God Slayer Armor and Ancinet Silva Armor
+   1. Ancient God Slayer:
+   - +400 -> +500 max life and max mana from body part
+   - 25% -> 40% increased damage from helmet part 
+   - +6HP/s -> +4 HP/s life regen speed, 50% -> 70% increased efficenicy of healing potion from Armor Bonus
+   - Grants 15% contact damage reduction
+   1. Ancinet Silva Armor:
+   - Removed damage bonus from helmet part. Max minion 5 -> 3, max sentry 3 -> 2
+   - +300 -> +250 max life and mana
+   - +8HP/s -> +12HP/s life regen speed, 40% -> 30% increased efficenicy from healing potion from Armor bonus
+   - Now can converted damage that from enemy attack into healing.
+
 # 一些可能代办的事情：
 - []所有传奇武器对终灾眼的balance
 - []微元劫掠者
