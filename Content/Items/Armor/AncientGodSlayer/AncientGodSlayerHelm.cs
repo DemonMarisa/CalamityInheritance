@@ -43,6 +43,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             usPlayer.AncientGodSlayerSet = true;
             usPlayer.AncientGodSlayerStat = true;
             usPlayer.GodSlayerReborn = true;
+            calPlayer.contactDamageReduction += 0.15f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {
@@ -59,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             player.maxMinions += 5;
             player.maxTurrets += 3;
             player.statLifeMax2 += 200;
-            player.GetDamage<GenericDamageClass>() += 0.25f;
+            player.GetDamage<GenericDamageClass>() += 0.40f;
             player.GetCritChance<GenericDamageClass>() += 0.25f;
         }
 

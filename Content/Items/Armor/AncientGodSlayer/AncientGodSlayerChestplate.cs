@@ -31,8 +31,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             var modPlayer = player.CIMod();
             modPlayer.GodSlayerReflect = true;
             player.thorns = 1f;
-            player.statLifeMax2 += 400;
-            player.statManaMax2 += 400;
+            player.statLifeMax2 += 500;
+            player.statManaMax2 += 500;
         }
 
         public override void AddRecipes()

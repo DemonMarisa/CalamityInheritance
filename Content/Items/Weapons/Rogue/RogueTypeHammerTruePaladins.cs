@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             if (!stealth)
                 return true;
 
-            int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f , type, (int)(damage * 1.2f), knockback, player.whoAmI, 0f, 0f, -3f);
-            int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), (int)(damage * 0.8f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f , type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f ,ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(), (int)(damage * 0.65f), knockback, player.whoAmI, 0f, 0f, -3f);
             Main.projectile[onlyHoming].Calamity().stealthStrike = true;
             Main.projectile[homeAndHanging].Calamity().stealthStrike = true;
             return false;

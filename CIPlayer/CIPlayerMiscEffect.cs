@@ -543,16 +543,14 @@ namespace CalamityInheritance.CIPlayer
             if (AncientGodSlayerStat)
             {
                 //旧套装通用新增；血上限，血药，回血
-                calPlayer.healingPotionMultiplier += 0.50f;
-                float getStealth = calPlayer.rogueStealthMax;
-                int getCurDef = Player.GetCurrentDefense();
-                Player.lifeRegen += 12; //+6HP/s
+                calPlayer.healingPotionMultiplier += 0.70f;
+                Player.lifeRegen += 8; //+4HP/s
                 RefreshGodSlayerDash(calPlayer);
             }
             if (AncientSilvaStat)
             {
-                calPlayer.healingPotionMultiplier += 0.40f; 
-                Player.lifeRegen += 16; //+8HP/s
+                calPlayer.healingPotionMultiplier += 0.30f; 
+                Player.lifeRegen += 24; //+12HP/s
                 Player.lifeRegenTime = 2000;
             }
             

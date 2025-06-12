@@ -834,25 +834,25 @@ AncientSilvaHelm: {
 	DisplayName: Ancient Silva Helm Revamped
 	Tooltip:
 		'''
-		20% increased damage and crticial strike chance
 		+200 max life
-		+5 max minions
-		+3 max sentries
+		+3 max minions
+		+2 max sentries
 		'''
 	SetBonus:
 		'''
 		+125 max stealth
-		Healing potions are 40% more effective
-		+8 HP/s life regen speed
+		Healing potions are 30% more effective
+		+12 HP/s life regen speed
 		Boosts your natural life regen speed, debuffs can not negate your life regen
 		Sometimes you will be heal swiftly for a brief time
 		Grants silva invulnerability for 5 seconds if you are reduced to 1 HP.
+		10% of the damage from enemy attacks is absorbed and converted into healing
 		'''
 }
 
 AncientSilvaArmor: {
 	DisplayName: Ancient Silva Armor Revamped
-	Tooltip: +300 max HP and mana
+	Tooltip: +250 max HP and mana
 }
 
 AncientGodSlayerLeggings: {
@@ -869,7 +869,7 @@ AncientGodSlayerHelm: {
 	DisplayName: Ancient God Slayer Helm Revamped
 	Tooltip:
 		'''
-		25% increased damage and critical strike chance
+		40% increased damage, 25% increasedcritical strike chance
 		+200 max life
 		+5 max minions
 		+3 max sentries
@@ -877,10 +877,9 @@ AncientGodSlayerHelm: {
 	SetBonus:
 		'''
 		+125 max stealth
-		Healing potions are 50% more effective, +6 HP/s life regen speed
+		Healing potions are 70% more effective, +4 HP/s life regen speed
+		15% reduced contact damage
 		Press God Slayer Dash Hotkey while holding down the movement keys in the direction you want to dash
-		Hitting an enemy with stealth strikes will boost your damage by 20% in 10 seconds
-		This effect has 30 seconds cooldown if triggered
 		Reset your God Slayer Dash cooldown if you reached max stealth
 		At that time, do the dash will cost your 25% of your max stealth
 		Taking hit make you completely invincibile for a moment
@@ -893,7 +892,7 @@ AncientGodSlayerChestplate: {
 	DisplayName: Ancient God Slayer Chestplate Revamped
 	Tooltip:
 		'''
-		+400 max HP and mana
+		+500 max HP and mana
 		Enemies take more damage when they hit you
 		'''
 }

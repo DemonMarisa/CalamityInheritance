@@ -212,14 +212,6 @@ namespace CalamityInheritance.CIPlayer
             Player player = Main.player[proj.owner];
             var calPlayer = player.Calamity(); 
             var usPlayer = player.CIMod();
-            //远古弑神套
-            if (AncientGodSlayerSet && isStealth && PerunofYharimCooldown == 0)
-            {
-                //潜伏攻击成功时提供20%增伤
-                player.GetDamage<GenericDamageClass>() += 0.2f;
-                PerunofYharimCooldown = 2700;
-                
-            }
             //星幻套
             if (AncientAstralSet)
             {
