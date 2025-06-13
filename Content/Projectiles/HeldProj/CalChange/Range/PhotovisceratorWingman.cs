@@ -103,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
 
                 Vector2 firseoffset = new Vector2(20, 0).RotatedBy(Projectile.rotation);
 
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + firseoffset, Projdirection * shootSpeed, ModContent.ProjectileType<PhotovisceratorLaser>(), damage, knockback, Projectile.owner, 0f, Projectile.whoAmI, 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + firseoffset, Projdirection * shootSpeed, ModContent.ProjectileType<PhotovisceratorLaser>(), damage / 2, knockback, Projectile.owner, 0f, Projectile.whoAmI, 1f);
                 Projectile.localAI[0] = Main.projectile[p].whoAmI;
             }
 
@@ -187,7 +187,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
                 int yDirection = (i == 0).ToDirectionInt();
                 Vector2 bombVel = Projdirection.RotatedBy(0.2f * yDirection);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), bombPos, bombVel * shootSpeed, ModContent.ProjectileType<ExoLight>(), damage, knockback, Projectile.owner, yDirection);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), bombPos, bombVel * shootSpeed, ModContent.ProjectileType<ExoLight>(), damage / 2, knockback, Projectile.owner, yDirection);
             }
         }
         #endregion

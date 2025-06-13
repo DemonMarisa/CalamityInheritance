@@ -14,6 +14,8 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -38,12 +40,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 3.25f;
-            Item.UseSound = SoundID.Item92;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<DestroyerLegendaryBomb>();
+            Item.shoot = ModContent.ProjectileType<LegacySHPCHeldProj>();
             Item.shootSpeed = 20f;
             Item.value = CIShopValue.RarityMaliceDrop;
             Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<SHPCAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
+
+            Item.noUseGraphic = true;
+            Item.channel = true;
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -55,6 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             return true;
         }
+        
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player p = Main.LocalPlayer;
@@ -83,19 +88,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
-                Item.useTime = Item.useAnimation = 6;
-                Item.UseSound = CommonCalamitySounds.LaserCannonSound;
+                Item.useTime = Item.useAnimation = 7;
             }
             else
             {
                 Item.useTime = Item.useAnimation = 60;
-                Item.UseSound = SoundID.Item92;
             }
-            return base.CanUseItem(player);
-        }
-        public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
-        {
-            mult *= player.CIMod().DestroyerTier3 ? 0f : 0.3f;
+            Item.mana = player.CIMod().DestroyerTier3 ? 0 : 20;
+            return player.ownedProjectileCounts[ModContent.ProjectileType<LegacySHPCHeldProj>()] < 1;
         }
 
         public override Vector2? HoldoutOffset()
@@ -105,31 +105,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            var p = player.CIMod();
-            int bCounts = 3;
-            int lCounts = 3;
             if (player.altFunctionUse == 2)
-            {
-                for (int i = 0; i < lCounts; i++)
-                {
-                    float velX = velocity.X + Main.rand.Next(-20, 21) * 0.05f;
-                    float velY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
-                    // 向上偏移和手持偏移一样的-8
-                    Projectile.NewProjectile(source, position + new Vector2(0f, -8f), new(velX,velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
-                }
-                return false;
-            }
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             else
-            {
-                for (int j = 0; j < bCounts; j++)
-                {
-                    float velX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
-                    float velY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
-                    Projectile.NewProjectile(source, position.X, position.Y - 8, velX, velY, ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(damage * 1.1), knockback, player.whoAmI, 0f, 0f);
-                }
-                
-                return false;
-            }
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 1f, 0f, 0f);
+            return false;
         }
         public static int LegendaryBuff()
         {

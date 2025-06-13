@@ -760,7 +760,7 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<Ozzathoth>())
                 item.damage = 200; //一万面板
             if (item.type == ModContent.ItemType<Sylvestaff>())
-                item.damage = 1000;
+                item.damage = 700;
             #region 遗产魔影
             if (item.type == ModContent.ItemType<FabstaffOld>())
                 item.damage = 1400;

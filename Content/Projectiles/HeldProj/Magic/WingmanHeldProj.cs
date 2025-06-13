@@ -130,7 +130,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 
             if (attackTimer % 8 == 0)
             {
-
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);

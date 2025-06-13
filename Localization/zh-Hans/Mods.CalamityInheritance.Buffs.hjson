@@ -190,7 +190,7 @@ Horror: {
 
 VulnerabilityHexLegacy: {
 	DisplayName: 孱弱巫咒[Legacy]
-	Description: 你的身体力不从心
+	Description: 你的身体虚弱至极
 }
 
 CyrogenLegendaryBuff: {

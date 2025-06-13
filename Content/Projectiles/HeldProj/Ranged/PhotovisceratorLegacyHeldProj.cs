@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), (int)(damage * 0.5f), 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage / 5, 0f, Projectile.owner);
             }
         }
         #endregion
@@ -117,7 +117,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 发射主体火焰
                 for (int i = 0; i < 2; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFireold>(), damage, knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFireold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
                 }
             }
             if (UseCounter % leftBombUseCD == 0)
@@ -133,7 +133,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     Vector2 position = Projectile.Center + newVector.ToRotation().ToRotationVector2() * 64f;
                     int yDirection = (i == 0).ToDirectionInt();
                     newVector = newVector.RotatedBy(0.2f * yDirection);
-                    Projectile lightBomb = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), position, newVector, ModContent.ProjectileType<ExoLightold>(), damage * 2, knockback, player.whoAmI);
+                    Projectile lightBomb = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), position, newVector, ModContent.ProjectileType<ExoLightold>(), damage, knockback, player.whoAmI);
 
                     lightBomb.localAI[1] = yDirection;
                     lightBomb.netUpdate = true;
@@ -160,7 +160,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
                 // 发射主体火焰
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFlareClusterold>(), damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFlareClusterold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
             }
         }
         #endregion

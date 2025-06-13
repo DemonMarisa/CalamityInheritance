@@ -46,6 +46,8 @@ namespace CalamityInheritance.Content.BaseClass
         }
         public override void AI()
         {
+            Projectile.extraUpdates = 0;
+
             Vector2 offset = new(0, BaseOffsetY);
 
             Player player = Main.player[Projectile.owner];

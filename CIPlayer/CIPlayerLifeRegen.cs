@@ -77,18 +77,27 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //150 -> 90 （75HP/s -> 50HP/s) 比超位崩解(40HP/s)强一些
-            // 削弱，50HP/s - 40P/s
-            ApplyDoTDebuff(abyssalFlames, 80);
+            // 削弱，50HP/s - 25P/s
+            ApplyDoTDebuff(abyssalFlames, 50);
             // 一秒1点，剩余的是真实伤害
-            ApplyDoTDebuff(vulnerabilityHexLegacy, 2);
+            ApplyDoTDebuff(vulnerabilityHexLegacy, 10);
 
             Player.lifeRegen -= (int)totalPowerfulNegativeLifeRegen;
 
-            // 孱弱巫咒的真伤，因为应该只有这一个，所以不写系统了
+            // 孱弱巫咒的真伤，因为应该只有这两个，所以不写系统了
             if(vulnerabilityHexLegacy)
             {
                 // 每秒30点真实伤害
-                if(Player.miscCounter % 2 == 0)
+                if (Player.miscCounter % 2 == 0)
+                {
+                    Player.statLife -= 1;
+                }
+            }
+            // 深渊之火低一点
+            if (abyssalFlames)
+            {
+                // 每秒10点真实伤害
+                if (Player.miscCounter % 6 == 0)
                 {
                     Player.statLife -= 1;
                 }

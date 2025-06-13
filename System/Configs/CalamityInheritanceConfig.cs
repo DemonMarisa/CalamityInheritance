@@ -101,9 +101,11 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool DoGLegacyMusic { get; set; }
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Arcueid{ get; set; }
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }

@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-            Item.damage = 750;
+            Item.damage = 230;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 84;
             Item.height = 30;
@@ -100,9 +100,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
+            damage.Base *= 0.9f;
             // 低一点伤害
             if (player.CheckExoLore())
-                damage.Base *= 0.8f;
+                damage.Base *= 0.7f;
         }
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

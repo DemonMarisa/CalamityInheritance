@@ -59,6 +59,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             {
                 CIWorld world = ModContent.GetInstance<CIWorld>();
                 world.UpdateIronHeart();
+                return true;
             }
             return true;
         }

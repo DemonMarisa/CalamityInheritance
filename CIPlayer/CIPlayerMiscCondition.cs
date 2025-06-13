@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.Utilities;
+using System.Reflection;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -35,6 +36,6 @@ namespace CalamityInheritance.CIPlayer
 
             inSpace = (float)((double)((Main.screenPosition.Y + (float)(Main.screenHeight / 2)) / spacef - (65f + 10f * spaceh)) / (Main.worldSurface / 5.0)) < 1f;
         }
-        
+
     }
 }

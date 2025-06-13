@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
 
             Item.DamageType = DamageClass.Summon;
             Item.mana = 10;
-            Item.damage = 175;
+            Item.damage = 225;
             Item.knockBack = 3f;
             Item.useTime = Item.useAnimation = 10;
             Item.shoot = ModContent.ProjectileType<SiriusMinionLegacy>();

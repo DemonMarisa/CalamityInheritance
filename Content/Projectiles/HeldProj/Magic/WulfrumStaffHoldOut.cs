@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             UseCounter++;
             if (secondcount > 0)
                 secondcount--;
-            if (UseCounter == 4)
+            if (UseCounter == 1)
             {
                 secondcount = 30;
             }

@@ -132,6 +132,8 @@ namespace CalamityInheritance
             FlightBarDrawHook.Load();
             // 干掉伊布法杖中的变性药水
             DisableSylvestaffRecipe.Load();
+            // 修复星火bug的hook
+            PhotovisceratorCalHook.Load(this);
             #endregion
         }
         public void LoadClient()
