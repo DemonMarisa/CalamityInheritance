@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
 using CalamityInheritance.Utilities;
 using Terraria.Localization;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -88,6 +89,9 @@ namespace CalamityInheritance.CIPlayer
         #region 等级升级与特效
         public void LevelUp()
         {
+            if (CIServerConfig.Instance.TurnOffLevelSystem)
+                return;
+
             if (levelUpCD > 0)
             {
                 levelUpCD--;
@@ -192,6 +196,8 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public void GiveBoost()
         {
+            if (CIServerConfig.Instance.TurnOffLevelSystem)
+                return;
             var modPlayer = Player.Calamity();
             #region 战士增幅
             Player.GetDamage<MeleeDamageClass>() += meleeLevel * 0.01f;

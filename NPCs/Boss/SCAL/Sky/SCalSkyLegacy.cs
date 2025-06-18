@@ -100,7 +100,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             }
         }
         public static float OverridingIntensity = 0f;
-
         public override void Update(GameTime gameTime)
         {
             if (SCalIndex == -1)
@@ -158,7 +157,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             // Clear away all dead cinders.
             Cinders.RemoveAll(c => c.Time >= c.Lifetime);
         }
-
         private float GetIntensity()
         {
             if (RitualDramaProjectileIsPresent)
@@ -175,9 +173,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             }
             return 0f;
         }
-
         public Color Phase1Colore = new(205, 100, 100);
-
         private bool UpdateSCalIndex()
         {
             int SCalType = ModContent.NPCType<SupremeCalamitasLegacy>();

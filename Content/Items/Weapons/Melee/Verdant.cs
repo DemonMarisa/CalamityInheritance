@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 30;
             Item.DamageType = DamageClass.MeleeNoSpeed;
             // 原天顶伤害1800，在天顶使用时伤害乘3
-            Item.damage = 600;
+            Item.damage = 180;
             Item.knockBack = 6f;
             Item.useTime = 22;
             Item.useAnimation = 22;

@@ -85,7 +85,7 @@ Configs: {
 				'''
 		}
 
-		turnoffCorner: {
+		TurnoffCorner: {
 			Label: "[i:CalamityInheritance/KnowledgeCalamitas]Toggle Corner Icon"
 			Tooltip: Determines whether the corner badge can be shown for mod items.
 		}
@@ -150,7 +150,7 @@ Configs: {
 			Tooltip:
 				'''
 				If you need or have to micro control while can't give up those accessories, this might be help.
-				30% decreased movement speed, acceleration and max run speed if active
+				Enable the Reduce Move Speed Multiplier
 				Only works in Post-DoG.
 				Default by false
 				'''
@@ -194,13 +194,8 @@ Configs: {
 			Tooltip: ""
 		}
 
-		debugint1: {
-			Label: debugint1
-			Tooltip: ""
-		}
-
-		debugint2: {
-			Label: debugint2
+		ReduceMoveSpeedMult: {
+			Label: Reduce Move Speed Multiplier
 			Tooltip: ""
 		}
 
@@ -632,6 +627,11 @@ Configs: {
 				Enbales to removed Gender Change Potion in Sylvestaff Recipe
 				Enable by default;
 				'''
+		}
+
+		TurnOffLevelSystem: {
+			Label: Turn Off Level System
+			Tooltip: ""
 		}
 	}
 }

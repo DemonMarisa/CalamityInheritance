@@ -1,10 +1,4 @@
-﻿using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -12,6 +6,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -41,7 +36,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAmmo = AmmoID.Bullet;
             Item.Calamity().canFirePointBlankShots = true;
         }
-
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-5, 0);
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.CursedBullet, damage, knockback, player.whoAmI, 0f, 0f);

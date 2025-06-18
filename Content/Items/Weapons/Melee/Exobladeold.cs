@@ -111,12 +111,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<Exocomet>()] < 8)
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<CIExocomet>()] < 8)
                 {
                     for (int comet = 0; comet < 2; comet++)
                     {
                         float ai1 = Main.rand.NextFloat() + 0.5f;
-                        Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<Exocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
+                        Projectile.NewProjectile(player.GetSource_OnHit(target), startPos, velocity, ModContent.ProjectileType<CIExocomet>(), damageDone, (int)Item.knockBack, player.whoAmI, 0f, ai1);
                     }
                 }
 

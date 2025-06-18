@@ -50,8 +50,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         // Terraria seems to really dislike high crit values in SetDefaults
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 30;
-
-        public override Vector2? HoldoutOffset() => new Vector2(-25, 0);
+        public override void UseItemFrame(Player player)
+        {
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
+        }
+        public override Vector2? HoldoutOffset() => new Vector2(-25, -5);
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -71,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             velocity.X += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);
             velocity.Y += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);
             Vector2 vel = velocity;
-            Projectile shot = Projectile.NewProjectileDirect(source, position, vel, type, damage, knockback, player.whoAmI);
+            Projectile shot = Projectile.NewProjectileDirect(source, position + new Vector2(0 , -6), vel, type, damage, knockback, player.whoAmI);
             CalamityGlobalProjectile cgp = shot.Calamity();
             cgp.appliesSomaShred = true;
             return false;

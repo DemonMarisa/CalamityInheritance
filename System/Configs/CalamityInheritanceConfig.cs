@@ -54,7 +54,7 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
-        public bool turnoffCorner { get; set; }
+        public bool TurnoffCorner { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
@@ -68,9 +68,15 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool GodSlayerWorm{ get; set;} //是否允许弑神蠕虫
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
-        public bool ReduceMoveSpeed{ get; set;}
+        public bool ReduceMoveSpeed { get; set; } //是否允许弑神蠕虫
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [Range(0, 1)]
+        [DefaultValue(1f)]
+        public float ReduceMoveSpeedMult{ get; set;}
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -109,5 +115,25 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
+
+
+        //[BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        //[Range(-1000, 1000)]
+        //[DefaultValue(1)]
+        //public int Debugint { get; set; }
+
+        //[BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        //[Range(-1000, 1000)]
+        //[DefaultValue(1)]
+        //public int Debugint2 { get; set; }
+
+
+        //[BackgroundColor(192, 54, 64, 192)]
+        //[SliderColor(224, 165, 56, 128)]
+        //[Range(-1, 1)]
+        //[DefaultValue(1)]
+        //public float Debugfloat { get; set; }
     }
 }

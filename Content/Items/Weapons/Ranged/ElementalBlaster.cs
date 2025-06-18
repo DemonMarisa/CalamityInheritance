@@ -13,6 +13,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.System.Configs;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -44,13 +46,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-15, 0);
+            return new Vector2(-15, -12);
         }
         public override void UseItemFrame(Player player)
         {
             CIFunction.NoHeldProjUpdateAim(player, 0, 1);
         }
-
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Vector2 offset = new Vector2(20, 0);
+            Projectile.NewProjectile(source, position + offset.RotatedBy(velocity.ToRotation()) + new Vector2(0, -12), velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
+            return false;
+        }
         public override void AddRecipes()
         {
             CreateRecipe().

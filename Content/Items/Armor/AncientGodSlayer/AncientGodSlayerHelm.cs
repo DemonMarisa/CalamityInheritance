@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             player.maxTurrets += 3;
             player.statLifeMax2 += 200;
             player.GetDamage<GenericDamageClass>() += 0.40f;
-            player.GetCritChance<GenericDamageClass>() += 0.25f;
+            player.GetCritChance<GenericDamageClass>() += 25;
         }
 
         public override void AddRecipes()

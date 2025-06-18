@@ -86,7 +86,7 @@ namespace CalamityInheritance.CIPlayer
         private void ProjLifesteal(NPC target, Projectile proj, int damage, bool crit)
         {
             int heal = Main.rand.Next(5, 11);
-            int CD = Main.rand.Next(30, 60);
+            int CD = Main.rand.Next(1, 50);
 
             int gsheal = Main.rand.Next(7, 14);
             int gsCD = Main.rand.Next(10, 30);

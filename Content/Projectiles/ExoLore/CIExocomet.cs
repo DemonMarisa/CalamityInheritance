@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 if (Projectile.timeLeft > 320)
                 {
-                    Projectile.velocity *= 0.94f;
+                    Projectile.velocity *= 0.95f;
                 }
 
                 if (Projectile.timeLeft < 320)

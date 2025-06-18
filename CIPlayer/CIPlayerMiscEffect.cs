@@ -691,11 +691,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.moveSpeed += 0.12f;
                 calPlayer.infiniteFlight = true; //再次准许无限飞行
             }
-            if (CIConfig.Instance.ReduceMoveSpeed && CalamityConditions.DownedDevourerOfGods.IsMet())
+            if (CIConfig.Instance.ReduceMoveSpeed)
             {
-                player.moveSpeed -= 0.40f;
-                player.runAcceleration *= 0.80f;
-                player.accRunSpeed -= 0.40f;
+                player.moveSpeed *= CIConfig.Instance.ReduceMoveSpeedMult;
             }
 
             //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。

@@ -25,9 +25,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public int maxXdistance = 3;
         public float aniXdistance = 0;
-        public override float OffsetX => -8 + aniXdistance;
-        public override float OffsetY => 0;
-        public override float BaseOffsetY => 12;
+        public override float OffsetX => -10 + aniXdistance;
+        public override float OffsetY => -12;
+        public override float BaseOffsetY => 0;
         public override float WeaponRotation => 0;
         // 旋转速度
         public override float AimResponsiveness => 0.25f;
@@ -58,12 +58,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             ref float UseCounter = ref Projectile.ai[1];
             // 第一次的计数
             ref float firstFire = ref Projectile.ai[2];
-            if(firstFire == 0 && Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false))
-            {
-                CustomShoot();
-                firstFire++;
-            }
-
             if (UseCounter == 0 && Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false))
             {
                 CustomShoot();

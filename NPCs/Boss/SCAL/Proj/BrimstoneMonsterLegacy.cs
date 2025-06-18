@@ -148,7 +148,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
             lightColor.R = (byte)(255 * Projectile.Opacity);
-            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
 

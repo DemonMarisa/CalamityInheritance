@@ -374,7 +374,7 @@ namespace CalamityInheritance.Content.Items
 
         public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (CIConfig.Instance.turnoffCorner)
+            if (CIConfig.Instance.TurnoffCorner)
             {
                 if (item.ModItem != null && item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
                 {

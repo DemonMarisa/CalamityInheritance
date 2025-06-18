@@ -24,6 +24,8 @@ using Hjson;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
+using CalamityMod.Items.Armor.GodSlayer;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -165,7 +167,7 @@ namespace CalamityInheritance.CIPlayer
 
         #endregion
         #region 旧位置保存
-        public readonly Queue<Vector2> oldPositions = new Queue<Vector2>();
+        public readonly Queue<Vector2> oldPositions = new();
         public int MaxoldPositions = 6; // 最多保存多少个
         #endregion
         #region UpdateDead
@@ -259,7 +261,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (GodSlayerMelee && hurtInfo.Damage > 80)
             {
-                var source = Player.GetSource_Misc("24");
+                var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<GodSlayerHeadMeleeold>()));
                 SoundEngine.PlaySound(SoundID.Item73, Player.Center);
                 float spread = 45f * 0.0174f;
                 double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
@@ -271,8 +273,8 @@ namespace CalamityInheritance.CIPlayer
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 10f), (float)(Math.Cos(offsetAngle) * 10f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 10f), (float)(-Math.Cos(offsetAngle) * 10f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 32f), (float)(Math.Cos(offsetAngle) * 32f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 32f), (float)(-Math.Cos(offsetAngle) * 32f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
                     }
                 }
             }

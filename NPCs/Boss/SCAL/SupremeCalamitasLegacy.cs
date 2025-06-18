@@ -1642,10 +1642,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             bool cannotBeHurt = target.HasIFrames() || target.creativeGodMode;
 
+            if (NPC.Center.Distance(target.Center) > NPC.width / 2)
+                return false;
+
             if (cannotBeHurt)
                 return false;
 
-            if (NPC.Center.Distance(target.Center) > NPC.width / 2)
+            if (target != Main.player[Main.myPlayer])
                 return false;
 
             target.ScalDebuffs(300, 480, 480);

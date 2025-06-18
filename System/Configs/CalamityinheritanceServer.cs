@@ -65,7 +65,11 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool FuckYouLGBT { get; set; } //🤗
-        
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool TurnOffLevelSystem { get; set; } // 关闭等级系统
+
 
     }
 }

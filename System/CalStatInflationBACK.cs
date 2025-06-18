@@ -163,6 +163,7 @@ namespace CalamityInheritance.System
             PostPolterghastWeapons.Add(ModContent.ItemType<SulphuricAcidCannon>());
             PostPolterghastWeapons.Add(ModContent.ItemType<PhosphorescentGauntlet>());
             PostPolterghastWeapons.Add(ModContent.ItemType<SoulEdge>());
+            PostPolterghastWeapons.Add(ModContent.ItemType<SiriusLegacy>());
             #endregion
             #region 幽花表单删除
             PostPolterghastWeapons.Remove(ModContent.ItemType<SpectreRifle>());
@@ -453,10 +454,11 @@ namespace CalamityInheritance.System
                 item.damage = (int)(item.damage * 1.6f);
             #endregion
             #region 召唤
-
             if (item.type == ModContent.ItemType<Sirius>())
                 item.damage = (int)(item.damage * 3.5f);
 
+            if (item.type == ModContent.ItemType<SiriusLegacy>())
+                item.damage = (int)(item.damage * 3.5f);
             #endregion
             #region 盗贼
             if (item.type == ModContent.ItemType<Valediction>())
@@ -491,7 +493,7 @@ namespace CalamityInheritance.System
                 item.damage = (int)(item.damage * 1.5f);
 
             if (item.type == ModContent.ItemType<TheObliterator>())
-                item.damage = (int)(item.damage * 2f);
+                item.damage = 522;
 
             if (item.type == ModContent.ItemType<EssenceFlayer>())
                 item.damage = (int)(item.damage * 2f);
@@ -503,6 +505,7 @@ namespace CalamityInheritance.System
             }
             if (item.type == ModContent.ItemType<TheEnforcer>())
             {
+                item.damage = 670;
                 item.useAnimation = 10;
                 item.useTime = 10;
             }
@@ -758,7 +761,7 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
                 item.damage = 50000; //一万面板
             if (item.type == ModContent.ItemType<Ozzathoth>())
-                item.damage = 200; //一万面板
+                item.damage = 1000;
             if (item.type == ModContent.ItemType<Sylvestaff>())
                 item.damage = 700;
             #region 遗产魔影
@@ -771,7 +774,7 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<Animus>())
                 item.damage = 10000;
             if (item.type == ModContent.ItemType<AzathothLegacy>())
-                item.damage = 200;
+                item.damage = 1000;
             if (item.type == ModContent.ItemType<RogueTypeKnivesShadowspec>())
                 item.damage = 2000;
             if (item.type == ModContent.ItemType<MeleeTypeNanoblackReaper>())

@@ -61,7 +61,7 @@ Configs: {
 			Tooltip: 关闭后不会转换除基础弹药外的所有弹药
 		}
 
-		turnoffCorner: {
+		TurnoffCorner: {
 			Label: "[i:CalamityInheritance/KnowledgeCalamitas]关闭角标"
 			Tooltip: 关闭后，Mod物品右下角不会出现时钟角标
 		}
@@ -126,9 +126,8 @@ Configs: {
 		ReduceMoveSpeed: {
 			Tooltip:
 				'''
-				且仅在神明吞噬者被击败之后才有效
 				如果感觉移动速度太快,又不想放弃一些饰品,就可以启用这个
-				启用后会降低30%的移速,最大疾跑速度和加速度
+				启用后再调整下方的速度乘数便可降低速度
 				对于一些需要精确控制的情况很有帮助
 				默认关闭
 				'''
@@ -172,14 +171,9 @@ Configs: {
 			Tooltip: 关闭进入游戏时的文字
 		}
 
-		debugint1: {
-			// Label: debugint1
-			// Tooltip: ""
-		}
-
-		debugint2: {
-			// Label: debugint2
-			// Tooltip: ""
+		ReduceMoveSpeedMult: {
+			Label: 移动速度乘数
+			Tooltip: ""
 		}
 
 		Debugint: {
@@ -600,6 +594,11 @@ Configs: {
 				开启后，移除仙子伊布法杖合成表里的变性药水
 				默认开启
 				'''
+		}
+
+		TurnOffLevelSystem: {
+			Label: 关闭等级系统
+			Tooltip: 关闭后无法获取经验和加成
 		}
 	}
 }
