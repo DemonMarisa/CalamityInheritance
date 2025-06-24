@@ -154,6 +154,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         */
         public override bool PreAI()
         {
+            Projectile.damage = EXdamage;
             int fireCD = OnTier1 ? T1CD : NOT1CD; 
             //常规射弹：如果是常规的射弹，则发射cd重置为10
             //计时器初始为-1.
@@ -256,7 +257,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (Idle)
                 {
                     //?
-                    float num = AttackTimer == 0 ? 60f : (300 - AttackTimer) /3;
+                    float num = AttackTimer == 0 ? 60f : (300 - AttackTimer) / 3;
                     float stdDist = num > 60f ? 60f : num;
                     //取玩家中心点，绕着玩家转
                     Projectile.Center = Owner.Center + AttackAngle.ToRotationVector2() * stdDist;
@@ -276,10 +277,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                             AttackBuffer = BuffColdPointer;
                         int s = Projectile.NewProjectile(src, Projectile.position, vel, Projectile.type, Projectile.damage, Projectile.knockBack, Projectile.owner, AttackAngle, RegulaPtr, AttackBuffer);
                         //动态变化其伤害
-                        
-                        if (Main.projectile.IndexInRange(s))
-                            Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1.01f);
-                        
+                        //if (Main.projectile.IndexInRange(s))
+                        //    Main.projectile[s].originalDamage = (int)(Projectile.originalDamage * 1f);
+
                     }
                     Projectile.netUpdate = Projectile.owner == Main.myPlayer;
                 }
@@ -301,6 +301,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.Atan(90);
                 Homing();
             }
+            Projectile.damage = EXdamage;
         }
         public override bool? CanDamage()
         {

@@ -23,7 +23,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary";
         public static readonly float ShootSpeed = 10f;
-        public int baseDamage = 48;
+        public static int baseDamage = 48;
+        public static int TrueDamage = 0;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -113,9 +114,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            TrueDamage = damage;
             //搜寻世界上存在可能的由本人提供的召唤物
             float allMinions = 0f;
-            foreach(Projectile pro in Main.ActiveProjectiles)
+            foreach (Projectile pro in Main.ActiveProjectiles)
             {
                 //如果是本人的召唤物，把这个召唤物的栏位需求赋值
                 if (pro.minion && pro.owner == player.whoAmI)
@@ -130,9 +132,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 position = Main.MouseWorld;
                 int p = Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI);
                 //实时刷新伤害
-                if (Main.projectile.IndexInRange(p))
-                    Main.projectile[p].originalDamage = Item.damage;
-                
+                //if (Main.projectile.IndexInRange(p))
+                //    Main.projectile[p].originalDamage = damage;
+
                 //查询当前在玩家身上持有的射弹数量
                 int ptr = 0;
                 foreach (Projectile pro in Main.ActiveProjectiles)

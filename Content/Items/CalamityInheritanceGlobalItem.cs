@@ -208,9 +208,9 @@ namespace CalamityInheritance.Content.Items
                         {
                             if (Main.projectile.Length == Main.maxProjectiles)
                                 break;
-                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(80);
+                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(CyrogenLegendary.baseDamage);
                             int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
-                            Main.projectile[projj].originalDamage = item.damage;
+                            // Main.projectile[projj].originalDamage = item.damage;
 
                             angle += angleVariance;
                             for (int j = 0; j < 22; j++)
