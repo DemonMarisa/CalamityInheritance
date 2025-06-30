@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
                 {
                     float velX = Projdirection.X + Main.rand.Next(-20, 21) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-20, 21) * 0.05f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), Projectile.damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
                 }
             }
             else
@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
                 {
                     float velX = Projdirection.X + Main.rand.Next(-40, 41) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-40, 41) * 0.05f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(damage * 1.1), knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(Projectile.damage * 1.1), knockback, player.whoAmI, 0f, 0f);
                 }
             }
         }

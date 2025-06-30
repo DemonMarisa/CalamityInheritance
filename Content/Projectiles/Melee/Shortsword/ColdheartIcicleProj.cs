@@ -21,7 +21,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.scale *= Main.zenithWorld? 10f : 1f;
             Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
@@ -47,6 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             if (target.type != NPCID.TargetDummy && target.type != ModContent.NPCType<Providence>())
                 target.life -= target.lifeMax * 2 / 100;
             target.checkDead();
+            Projectile.netUpdate = true;
         }
     }
 }

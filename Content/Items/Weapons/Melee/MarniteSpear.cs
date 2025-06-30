@@ -22,7 +22,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.damage = 26;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
-            Item.useTurn = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Shoot;

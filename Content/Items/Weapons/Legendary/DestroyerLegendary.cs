@@ -49,12 +49,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.noUseGraphic = true;
             Item.channel = true;
         }
+        
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 必须手动转换，不然会按照int进行加成
             float Buff = (float)((float)(BaseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / (float)BaseDamage);
             damage *= Buff;
         }
+        
         public override bool AltFunctionUse(Player player)
         {
             return true;

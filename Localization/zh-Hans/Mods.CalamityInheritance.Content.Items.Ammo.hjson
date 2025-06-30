@@ -59,3 +59,22 @@ SuperballBullet: {
 	DisplayName: 弹球弹[Legacy]
 	Tooltip: 快速弹跳
 }
+
+ArcticArrow: {
+	DisplayName: 北极箭[Legacy]
+	Tooltip: 将敌人冻住一小段时间
+}
+
+NapalmArrow: {
+	DisplayName: 汽油箭[Legacy]
+	Tooltip: 爆出火花
+}
+
+VeriumBullet: {
+	DisplayName: 钫弹[Legacy]
+	Tooltip:
+		'''
+		你逃不掉了！
+		穿透一次后获得追踪能力
+		'''
+}

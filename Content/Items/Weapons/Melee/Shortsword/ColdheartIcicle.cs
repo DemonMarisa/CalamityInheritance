@@ -23,7 +23,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.UseSound = CISoundID.SoundWeaponSwing;
-            Item.useTurn = true;
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPricePink;
             Item.shoot = ModContent.ProjectileType<ColdheartIcicleProj>();

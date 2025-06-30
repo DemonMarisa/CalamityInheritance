@@ -432,7 +432,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
             if (hasCharge == false && attacktimer > TotalHover)
             {
-                canLookTarget = false;
                 float chargeVelocity = currentPhase > 5 ? 35f : 28f;
                 float fastChargeVelocityMultiplier = 1.5f;
 
@@ -445,7 +444,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
                 SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
             }
-            if (attacktimer > TotalHover + 15)
+            if (attacktimer > TotalHover && attacktimer < TotalHover + 20)
+            {
+                canLookTarget = false;
+            }
+            if (attacktimer > TotalHover + 20)
                 NPC.velocity *= currentPhase > 5 ? 0.95f : 0.96f;
             if (attacktimer > 80)
                 SelectNextAttack();

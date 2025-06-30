@@ -976,14 +976,14 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 normalOnly.Add(ModContent.ItemType<ForgottenDragonEgg>(), 10);
                 normalOnly.Add(ModContent.ItemType<McNuggets>(), 10);
                 normalOnly.Add(ModContent.ItemType<ThankYouPainting>(), ThankYouPainting.DropInt);
-
-                // 随机1000-2000龙魂碎片
-                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
-
-                // Equipment
-                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
-                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
             }
+
+            // 随机1000-2000龙魂碎片
+            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
+
+            // Equipment
+            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
+            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
 
             // Trophy (always directly from boss, never in bag)
             npcLoot.Add(ModContent.ItemType<YharonTrophy>(), 10);

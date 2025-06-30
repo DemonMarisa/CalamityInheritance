@@ -55,3 +55,22 @@ SuperballBullet: {
 	DisplayName: Superball Bullet
 	Tooltip: Bounces at extreme speeds
 }
+
+ArcticArrow: {
+	DisplayName: Arctic Arrow
+	Tooltip: Freezes enemies for a short time
+}
+
+NapalmArrow: {
+	DisplayName: Napalm Arrow
+	Tooltip: Explodes into fire shards
+}
+
+VeriumBullet: {
+	DisplayName: Verium Bullet
+	Tooltip:
+		'''
+		There is no escape!
+		Homes in after striking an enemy
+		'''
+}

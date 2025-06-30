@@ -166,10 +166,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.statDefense += 16;
                 Player.wingAccRunSpeed += 0.1f;
                 Player.accRunSpeed += 0.1f;
-                if(LoreJungleDragon || PanelsLoreJungleDragon)
-                {
-                    Player.GetDamage<GenericDamageClass>() += 0.25f;
-                }
 
                 if (Player.HasCooldown(DraconicElixirCooldown.ID))
                 {
@@ -1404,7 +1400,9 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.infiniteFlight = true;
                 Player.wingAccRunSpeed += 0.2f;
                 Player.accRunSpeed += 0.2f;
-                Player.GetDamage<GenericDamageClass>() -= 0.25f;
+
+                if (!BuffStatsDraconicSurge)
+                    Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
             if(LoreCryoDash || PanelsLoreCryoDash)
             {

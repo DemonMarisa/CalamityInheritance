@@ -108,10 +108,6 @@ namespace CalamityInheritance.Common.CIHook
                 {
                     self.Player.vortexStealthActive = false;
 
-                    // Decide the player's facing direction.
-                    if (self.Player.velocity.X != 0f)
-                        self.Player.ChangeDir(Math.Sign(self.Player.velocity.X));
-
                     // Handle mid-dash movement.
                     if (self.UsedDash.IsOmnidirectional)
                     {
