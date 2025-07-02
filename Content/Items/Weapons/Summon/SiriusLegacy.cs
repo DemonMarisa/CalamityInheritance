@@ -16,6 +16,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -43,8 +44,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.shoot = ModContent.ProjectileType<SiriusMinionLegacy>();
             Item.shootSpeed = 10f;
 
-            Item.value = CalamityGlobalItem.Rarity13BuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CIShopValue.RarityPriceAbsoluteGreen;
+            Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
 
         public override void HoldItem(Player player)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Security.Cryptography.X509Certificates;
-using CalamityInheritance.Content.Items.Accessories;
+﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
@@ -23,7 +19,6 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
-using CalamityInheritance.Content.Items.TreasureBags;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
@@ -33,17 +28,12 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
-using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Events;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.TreasureBags;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
@@ -81,8 +71,6 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CalamityInheritance.NPCs
 {
@@ -184,7 +172,7 @@ namespace CalamityInheritance.NPCs
             //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
             //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
             //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // }
+            // 
 
             // if (npc.CheckNPCMod<WulfrumHovercraft>())
             // {

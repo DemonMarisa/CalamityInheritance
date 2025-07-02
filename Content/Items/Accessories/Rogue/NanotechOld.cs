@@ -24,9 +24,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         {
             Item.width = 46;
             Item.height = 46;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.accessory = true;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -38,8 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             modPlayer.electricianGlove = true;
             modPlayer.filthyGlove = true;
             modPlayer.bloodyGlove = true;
-            player.GetDamage<RogueDamageClass>() += 0.15f;
-            player.GetCritChance<RogueDamageClass>() += 0.15f;
+            player.GetDamage<RogueDamageClass>() += 0.50f;
             player.Calamity().rogueVelocity += 0.15f;
         }
 

@@ -1,21 +1,14 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -43,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.shoot = ModContent.ProjectileType<SarosAuraLegacy>();
             Item.shootSpeed = 10f;
 
-            Item.value = CalamityGlobalItem.Rarity14BuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void HoldItem(Player player)
