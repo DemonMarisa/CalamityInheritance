@@ -574,3 +574,16 @@ ElementalBlaster: {
 		不消耗弹药
 		'''
 }
+
+HalibutCannonLegendary: {
+	DisplayName: 大比目鱼炮[Legendary]
+	Tooltip:
+		'''
+		自始至终，他就没有弱过
+		[c/4169E1:-传奇武器-]
+		[SCALING]
+		'''
+	LegendaryScaling: "[c/4169E1:强化属性]: +{0} 武器基础伤害"
+	OnInfernumToolTip: "[c/DA70D6:你开启了炼狱模式，直接导致你没法在深渊四层获得这把武器了，所以不要疑问为什么他能在终灾商店里卖了。]"
+	OnPreKnockDownedSkeletron: "[c/7CFC00:你在困难模式的骷髅王前拿到了这把武器，只能说你也是个人物。]"
+}

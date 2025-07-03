@@ -65,7 +65,8 @@ namespace CalamityInheritance.CIPlayer
             //这个请先于之前所有计算执行，不然他吃不完所有的爆伤加成
             if (EMirror && isRogue && Player.CheckStealth())
                 modifiers.SetCrit();
-
+            if (nanotechold && isRogue && !Player.CheckStealth())
+                modifiers.SetCrit();
             #region 暴伤乘区
             float totalCritsBuff = 0f;
             //氦闪爆伤加成

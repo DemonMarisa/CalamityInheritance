@@ -1,13 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.Items.Armor.Victide;
-using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Creative;
+﻿using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -27,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Item.width = 24;
             Item.height = 28;
-            Item.value = CalamityGlobalItem.Rarity2BuyPrice;
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.defense = 2;
             Item.accessory = true;

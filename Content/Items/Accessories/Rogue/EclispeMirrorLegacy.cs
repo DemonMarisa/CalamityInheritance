@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
             calPlayer.rogueStealthMax += 0.30f;
             calPlayer.stealthStrikeHalfCost = true;
             calPlayer.wearingRogueArmor = true;
-            player.GetCritChance<RogueDamageClass>() += 30;
+            player.GetCritChance<RogueDamageClass>() += 50;
             usPlayer.EMirror = true;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
