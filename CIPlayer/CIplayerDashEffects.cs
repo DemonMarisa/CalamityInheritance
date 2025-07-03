@@ -258,7 +258,7 @@ namespace CalamityInheritance.CIPlayer
                     UsedDash.OnDashEffects(Player);
                     if (CIDashDelay > -2)
                     {
-                        CIDashDelay = 30; // 冷却时间
+                        CIDashDelay = 20; // 冷却时间
                         //Main.NewText("初始冲刺冷却时间已设置！");
                     }
                 }

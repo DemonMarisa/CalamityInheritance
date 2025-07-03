@@ -979,11 +979,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
 
             // 随机1000-2000龙魂碎片
-            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
+            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
 
             // Equipment
-            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
-            normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
+            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
+            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
 
             // Trophy (always directly from boss, never in bag)
             npcLoot.Add(ModContent.ItemType<YharonTrophy>(), 10);
@@ -999,7 +999,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
 
             // Lore
-            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedYharon, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyYharonP2, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
         }
 
         public override void BossLoot(ref string name, ref int potionType)

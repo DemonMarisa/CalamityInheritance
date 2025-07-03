@@ -1379,14 +1379,14 @@ namespace CalamityInheritance.CIPlayer
             {
                 calPlayer.weakPetrification = true;
                 if (Player.wingTimeMax > 0)
-                    Player.wingTimeMax = (int)(Player.wingTimeMax * 0.5);
-                Player.GetDamage<GenericDamageClass>() += 0.25f;
+                    Player.wingTimeMax = (int)(Player.wingTimeMax * 0.25);
+                Player.GetDamage<GenericDamageClass>() += 0.2f;
                 Player.ClearBuff(BuffID.Featherfall);
             }
 
             if (LoreProvidence || PanelsLoreProvidence)
             {
-                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.8);
+                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.6);
                 Player.GetDamage<GenericDamageClass>() *= 1.05f;
                 Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
@@ -1437,6 +1437,9 @@ namespace CalamityInheritance.CIPlayer
 
             if (calPlayer.chaliceOfTheBloodGod)
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
+
+            if (LoreProvidence || PanelsLoreProvidence)
+                ShieldDurabilityMax = (int)(ShieldDurabilityMax * 0.5f);
         }
     }
 }

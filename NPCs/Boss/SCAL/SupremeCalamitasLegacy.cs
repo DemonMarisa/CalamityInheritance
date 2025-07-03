@@ -1648,7 +1648,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (cannotBeHurt)
                 return false;
 
-            if (target != Main.player[Main.myPlayer])
+            if (!NPC.Hitbox.Intersects(target.Hitbox))
                 return false;
 
             target.ScalDebuffs(300, 480, 480);

@@ -92,9 +92,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
+            /*
             // 必须手动转换，不然会按照int进行加成
             float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
             damage *= Buff;
+            */
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -136,10 +138,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedPolterghast ? 155 : 0;   // 425
             dmgBuff += DownedBossSystem.downedBoomerDuke ? 25 : 0;     // 450
             dmgBuff += DownedBossSystem.downedDoG ? 350 : 0;           // 800
+
             dmgBuff += DownedBossSystem.downedYharon ? 1000 : 0;       // 1800
             dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1900
             dmgBuff += DownedBossSystem.downedExoMechs ? 100 : 0;      // 2000
             dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 2000 : 0;
+
             return dmgBuff;
         }
     }

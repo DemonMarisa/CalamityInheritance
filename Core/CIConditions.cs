@@ -30,7 +30,7 @@ namespace CalamityInheritance.Core
         public static readonly Condition ArmageddonNoNor = Create("ArmageddonDrop", () => CIWorld.armageddon && (Main.expertMode || Main.masterMode));
         public static readonly Condition Malice = Create("Malice", () => CIWorld.malice);
         public static readonly Condition Defiled = Create("Defiled", () => CIWorld.defiled);
-        public static readonly Condition MasterDeath = Create("MD", () => Main.masterMode && CalamityWorld.death);
+        public static readonly Condition MasterDeath = Create("MD", () => (Main.masterMode && CalamityWorld.death) || CIWorld.malice);
         public static readonly Condition MAD = Create("MAD", () => CIWorld.armageddon && CIWorld.malice && CIWorld.defiled && Main.masterMode);
         public static readonly Condition DownedCalClone = Create("DownedCalClone", () => CIDownedBossSystem.DownedCalClone);
     }

@@ -76,13 +76,17 @@ namespace CalamityInheritance.Common.CIHook
             if (self.Player.dashDelay < 0)
             {
                 int dashCD = 30;
+
+                if (CalamityInheritance.Instance.infernumMode is not null)
+                    dashCD = 20;
+
                 int dashDelayToApply = dashCD;
                 if (self.UsedDash.CollisionType == DashCollisionType.ShieldSlam)
                     dashDelayToApply = dashCD;
                 else if (self.UsedDash.CollisionType == DashCollisionType.ShieldBonk)
                     dashDelayToApply = dashCD;
                 if (self.DashID == "Deep Diver")
-                    dashDelayToApply = 23;
+                    dashDelayToApply = dashCD - 7;
 
                 float dashSpeed = 12f;
                 float dashSpeedDecelerationFactor = 0.985f;

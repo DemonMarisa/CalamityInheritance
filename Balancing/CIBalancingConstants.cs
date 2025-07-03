@@ -2,8 +2,8 @@
 {
     public static class CIBalancingConstants
     {
-        public const int UniversalDashCooldown = 30;
-        public const int UniversalShieldSlamCooldown = 30;
-        public const int UniversalShieldBonkCooldown = 30;
+        public const int UniversalDashCooldown = 20;
+        public const int UniversalShieldSlamCooldown = 20;
+        public const int UniversalShieldBonkCooldown = 20;
     }
 }

@@ -39,6 +39,7 @@ using CalamityInheritance.Content.Items.Weapons.Summon;
 using static CalamityInheritance.System.CalStatInflationBACK;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Tools;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.System
 {
@@ -853,7 +854,7 @@ namespace CalamityInheritance.System
     }
     public class CalamityStatInflationBACKNPC : GlobalNPC
     {
-        public override void SetDefaults(NPC npc)
+        public override void OnSpawn(NPC npc, IEntitySource source)
         {
             if (CIServerConfig.Instance.CalStatInflationBACK)
             {
@@ -909,9 +910,7 @@ namespace CalamityInheritance.System
                     npc.life = (int)(npc.life * 6.6f);
                     npc.defense = (int)(npc.defense * 1.2f);
                 }
-                    
             }
         }
-
     }
 }

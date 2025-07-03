@@ -108,10 +108,10 @@ namespace CalamityInheritance.Utilities
         ///<param name="acceleration">加速度，一般填1-3左右.</param>
         ///<param name="homingVelocity">跟踪速度</param>
         ///</summary>
-        public static void HomeInPlayer(this Player player, Projectile proj, float inertia, float homingVelocity, float? acceleration, bool needALittleBitFarAwayFromPlayer = false, float awayDist = 0f)
+        public static void HomeInPlayer(this Player player, Projectile proj, float inertia, float homingVelocity, float? acceleration, bool needALittleBitFarAwayFromPlayer = false, float awayDist = 0f, bool usePrognosis = false)
         {
             // 计算制导向量
-            Vector2 homeDirection = (player.Center - proj.Center).SafeNormalize(Vector2.UnitY);
+            Vector2 homeDirection = (player.Center + player.velocity - proj.Center).SafeNormalize(Vector2.UnitY);
             Vector2 newVelocity = (proj.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
 
             proj.velocity = newVelocity;

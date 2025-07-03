@@ -165,16 +165,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (Colliding(Projectile.Hitbox, player.Hitbox) == false)
                 return false;
 
-            player.ScalDebuffs(360, 480, 300);
-
-            player.statLife -= Projectile.damage * 3;
-
-            GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
-            GeneralParticleHandler.SpawnParticle(orb);
-            if (Main.rand.NextBool())
+            if ((bool)Colliding(Projectile.Hitbox, player.Hitbox))
             {
-                GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
-                GeneralParticleHandler.SpawnParticle(orb2);
+                player.ScalDebuffs(360, 480, 300);
+
+                player.statLife -= Projectile.damage * 3;
+
+                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+                GeneralParticleHandler.SpawnParticle(orb);
+                if (Main.rand.NextBool())
+                {
+                    GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                    GeneralParticleHandler.SpawnParticle(orb2);
+                }
             }
 
             return true;

@@ -3,5 +3,5 @@ author = DemonMarisa
 hideCode = false
 hideResources = false
 modReferences = CalamityMod
-version = 2.0.1.37
-sortBefore = UnCalamityModMusic
+version = 2.0.1.39
+sortBefore = UnCalamityModMusic, InfernumMode

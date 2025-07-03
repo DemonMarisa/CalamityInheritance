@@ -46,7 +46,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         public int dustType = CIGlobalNPC.LegacySCalLament == -1 ? (int)CalamityDusts.Brimstone : CIDustID.DustMushroomSpray113 ;
         public override void AI()
         {
-
             Projectile.frameCounter++;
             if (Projectile.frameCounter >= 10)
             {
@@ -114,19 +113,21 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (cannotBeHurt)
                 return true;
 
-            if (Colliding(Projectile.Hitbox, player.Hitbox) == false)
-                return false;
-
-            player.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 240);
-
-            GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
-            GeneralParticleHandler.SpawnParticle(orb);
-            if (Main.rand.NextBool())
+            if (Projectile.Hitbox.Intersects(player.Hitbox))
             {
-                GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
-                GeneralParticleHandler.SpawnParticle(orb2);
-            }
+                if (Projectile.ai[2] == 0f)
+                    player.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 240);
+                else
+                    player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 30);
 
+                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+                GeneralParticleHandler.SpawnParticle(orb);
+                if (Main.rand.NextBool())
+                {
+                    GlowOrbParticle orb2 = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Color.Black, false, true, false);
+                    GeneralParticleHandler.SpawnParticle(orb2);
+                }
+            }
             return true;
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
