@@ -33,8 +33,10 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Events;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
@@ -68,10 +70,14 @@ using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using BadgeofBravery = CalamityInheritance.Content.Items.Accessories.Melee.BadgeofBravery;
+using ElementalQuiver = CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver;
+using StatisVoidSash = CalamityInheritance.Content.Items.Accessories.DashAccessories.StatisVoidSash;
 
 namespace CalamityInheritance.NPCs
 {
@@ -657,123 +663,141 @@ namespace CalamityInheritance.NPCs
         }
         public static void GFBDrop(NPC npc, NPCLoot Loot)
         {
-            // GFB掉落
-            var GFBOnly = Loot.DefineConditionalDropSet(DropHelper.GFB);
-            // var dropSpecifcArmor = DropArmorSet();
+            //我完全重做了gfb的掉落。
             #region ModBoss
             if (npc.CheckNPCMod<DesertScourgeHead>())
-                Loot.QuickGFB(ItemMod<AsgardianAegisold>(), true);
+                Loot.QuickGFBItemMod<AsgardianAegisold>(true);
+
+            if (npc.CheckNPCMod<Crabulon>())
+                Loot.QuickGFBItemMod<CIRampartofDeities>(true);
+
+            if (npc.CheckNPCMod<PerforatorHive>())
+                Loot.QuickGFBItemMod<RogueTypeKnivesEmpyrean>(true);
+
+            if (npc.CheckNPCMod<HiveMind>())
+                Loot.QuickGFBItemMod<EclipseSpear>(true);
+
             if (npc.CheckNPCMod<SlimeGodCore>())
-                Loot.QuickGFB(ItemMod<PurifiedJam>());
+                Loot.QuickGFBItemMod<PurifiedJam>();
+
+            if (npc.CheckNPCMod<BrimstoneElemental>())
+                Loot.QuickGFBItemMod<WaifuHeart>(true);
+
+            if (npc.CheckNPCMod<Cryogen>())
+                Loot.QuickGFBItemMod<DragonsBreathold>(true);
+
             if (npc.CheckNPCMod<AquaticScourgeHead>())
-                Loot.QuickGFB(ItemMod<AncientVictideBar>());
+                Loot.QuickGFBItemMod<AncientVictideBar>();
+
             if (npc.CheckNPCMod<CalamitasClone>())
-                Loot.QuickGFB(ItemMod<AcceleratorT3>());
+                Loot.QuickGFBItemMod<AcceleratorT3>();
+
             if (npc.CheckNPCMod<AstrumAureus>())
-            {
-                var astralArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientAstralHelm>(), 1);
-                astralArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientAstralBreastplate>()));
-                astralArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientAstralLeggings>()));
-                GFBOnly.Add(astralArmorLoot, hideLootReport: true);
-            }
+                Loot.QuickGFBGroupMod<AncientAstralHelm>(ItemMod<AncientAstralBreastplate>(), ItemMod<AncientAstralLeggings>());
+
+            if ((npc.CheckNPCMod<Leviathan>() || npc.CheckNPCMod<Anahita>()) && LastAnLStanding())
+                Loot.QuickGFBGroupMod<ReaperToothNecklace>(ItemMod<PolarisParrotfishLegacy>());
+
+            if (npc.CheckNPCMod<PlaguebringerGoliath>())
+                Loot.QuickGFBGroupMod<PlagueHive>(ItemMod<KnowledgeExoMechs>());
+
+            if (npc.CheckNPCMod<RavagerBody>())
+                Loot.QuickGFBItemMod<PristineFuryLegacy>(true);
+
             if (npc.CheckNPCMod<AstrumDeusHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<FourSeasonsGalaxiaold>(), 1, 1), hideLootReport: true);
+                Loot.QuickGFBItemMod<ArkoftheCosmosold>(true);
+
             if (npc.CheckNPCMod<Bumblefuck>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<YharimsGiftLegacy>(), 1), hideLootReport: true);
+                Loot.QuickGFBItemMod<DragonSpear>(true);
+
             if (npc.CheckNPCMod<Providence>())
-            {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientTarragonHelm>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientTarragonBreastplate>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientTarragonLeggings>()));
-                GFBOnly.Add(tarragon, hideLootReport: true);
-            }
+                Loot.QuickGFBGroupMod<AncientTarragonHelm>(ItemMod<AncientTarragonBreastplate>(), ItemMod<AncientTarragonLeggings>(), ItemMod<AncientTarragonWings>());
+
+            if (npc.CheckNPCMod<CeaselessVoid>())
+                Loot.QuickGFBItemMod<VividClarityOld>(true);
+
+            if (npc.CheckNPCMod<Signus>())
+                Loot.QuickGFBItemMod<PhantasmalRuinold>(true);
+
+            if (npc.CheckNPCMod<StormWeaverHead>())
+                Loot.QuickGFBItemMod<SarosPossessionLegacy>(true);
+
             if (npc.CheckNPCMod<Polterghast>())
-            {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientBloodflareMask>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientBloodflareBodyArmor>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientBloodflareCuisses>()));
-                GFBOnly.Add(tarragon, hideLootReport: true);
-            }
+                Loot.QuickGFBGroupMod<AncientBloodflareMask>(ItemMod<AncientBloodflareBodyArmor>(), ItemMod<AncientBloodflareCuisses>());
+
             if (npc.CheckNPCMod<OldDuke>())
             {
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<TriumphPotion>(), 1, 3000, 9999), hideLootReport: true);
+                Loot.QuickGFBItemMod<MeleeTypeNanoblackReaper>(true);
                 Loot.DropCommonMod<InsidiousImpalerLegacy>();
                 Loot.DropCommonMod<LeadCore>();
             }
             if (npc.CheckNPCMod<DevourerofGodsHead>())
             {
-                var tarragon = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientGodSlayerChestplate>(), 1);
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientGodSlayerHelm>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientGodSlayerLeggings>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaHelm>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaLeggings>()));
-                tarragon.OnSuccess(ItemDropRule.Common(ItemMod<AncientSilvaArmor>()));
-                GFBOnly.Add(tarragon, hideLootReport: true);
+                Loot.QuickGFBGroupMod<AncientGodSlayerHelm>(ItemMod<AncientGodSlayerChestplate>(), ItemMod<AncientGodSlayerLeggings>(), ItemMod<AncientSilvaHelm>(), ItemMod<AncientSilvaArmor>(), ItemMod<AncientSilvaLeggings>(), ItemMod<FasterGodSlayerTracers>());
                 Loot.DropCommonMod<Skullmasher>(10);
             }
             if (npc.CheckNPCMod<Yharon>())
-            {
-                var yharimArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsNotUp(), ItemMod<YharimAuricTeslaHelm>(), 100000);
-                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaBodyArmor>()));
-                yharimArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaCuisses>()));
-                GFBOnly.Add(yharimArmorLoot, hideLootReport: true);
+                Loot.QuickGFBGroupMod<YharimAuricTeslaHelm>(ItemMod<YharimAuricTeslaBodyArmor>(), ItemMod<YharimAuricTeslaCuisses>(), ItemMod<FasterAuricTracers>());
 
-                var yharimArmorLoot2 = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<YharimAuricTeslaHelm>(), 1);
-                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaBodyArmor>()));
-                yharimArmorLoot2.OnSuccess(ItemDropRule.Common(ItemMod<YharimAuricTeslaCuisses>()));
-                GFBOnly.Add(yharimArmorLoot2, hideLootReport: true);
-            }
             if (npc.CheckNPCMod<AresBody>() || npc.CheckNPCMod<ThanatosHead>() || npc.CheckNPCMod<Apollo>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<Malice>(), 1, 1000, 2000), hideLootReport: true);
+                Loot.QuickGFBItemMod<Malice>();
+
             if (npc.CheckNPCMod<SupremeCalamitas>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<Armageddon>(), 1, 3000, 9999), hideLootReport: true);
+                Loot.QuickGFBItemMod<Armageddon>();
+
             #endregion
             #region 原版boss
             switch (npc.type)
             {
                 case NPCID.KingSlime:
-                    GFBOnly.Add(ItemMod<AstralArcanum>(), hideLootReport: true);
+                    Loot.QuickGFBGroupMod<ElementalGauntletold>(ItemMod<ElementalQuiver>(), ItemMod<AncientEtherealTalisman>(), ItemMod<NucleogenesisLegacy>(), ItemMod<EclispeMirrorLegacy>());
                     break;
                 case NPCID.EyeofCthulhu:
-                    GFBOnly.Add(ItemMod<DarkSunRingold>(), hideLootReport: true);
+                    Loot.QuickGFBItemMod<DarkSunRingold>(true);
                     break;
                 case NPCID.EaterofWorldsTail:
-                    GFBOnly.Add(ItemMod<CoreOfTheBloodGod>(), hideLootReport: true);
+                    Loot.QuickGFBGroupMod<AncientXerocMask>(ItemMod<AncientXerocPlateMail>(), ItemMod<AncientXerocCuisses>(), ItemMod<AncientXerocWings>());
+                    break;
+                case NPCID.BrainofCthulhu:
+                    Loot.QuickGFBItemMod<CoreOfTheBloodGod>(true);
                     break;
                 case NPCID.QueenBee:
-                    GFBOnly.Add(ItemMod<AncientTarragonWings>(), hideLootReport: true);
+                    Loot.QuickGFBItemMod<DrewsWings>(true);
+                    break;
+                case NPCID.SkeletronHead:
+                    Loot.QuickGFBGroupMod<MeleeTypeHammerStellarContemptLegacy>(ItemMod<RogueTypeHammerStellarContempt>());
+                    break;
+                case NPCID.Deerclops:
+                    Loot.QuickGFBItemMod<ColdheartIcicle>(true);
                     break;
                 case NPCID.WallofFlesh:
-                    var allClass = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<ElementalGauntletold>());
-                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<Content.Items.Accessories.Ranged.ElementalQuiver>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<AncientEtherealTalisman>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<NucleogenesisLegacy>()));
-                    allClass.OnSuccess(ItemDropRule.Common(ItemMod<NanotechOld>()));
-                    GFBOnly.Add(allClass, hideLootReport: true);
+                    Loot.QuickGFBGroupMod<BadgeofBravery>(ItemMod<SamuraiBadge>(), ItemMod<YharimsInsignia>(), ItemMod<DaedalusEmblem>(), ItemMod<ManaOverloader>(),ItemMod<DoubleSonYharon>(), ItemMod<NanotechOld>());
+                    break;
+                case NPCID.QueenSlimeBoss:
+                    Loot.QuickGFBItemMod<NeptunesBountyOld>(true);
                     break;
                 case NPCID.TheDestroyer:
-                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
-                    break;
                 case NPCID.Spazmatism:
-                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
-                    break;
                 case NPCID.SkeletronPrime:
-                    GFBOnly.Add(ItemMod<AncientMiracleMatter>(), hideLootReport: true);
+                    Loot.QuickGFBItemMod<AncientMiracleMatter>(true);
                     break;
                 case NPCID.Plantera:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<VoidVortexLegacy>(), 1), hideLootReport: true);
+                    Loot.QuickGFBItemMod<SubsumingVortexold>(true);
                     break;
                 case NPCID.Golem:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AcceleratorT3>(), 1), hideLootReport: true);
+                    Loot.QuickGFBItemMod<Exobladeold>(true);
+                    break;
+                case NPCID.DukeFishron:
+                    Loot.QuickGFBItemMod<Celestusold>(true);
+                    break;
+                case NPCID.HallowBoss:
+                    Loot.QuickGFBItemMod<StepToolShadow>(true);
                     break;
                 case NPCID.CultistBoss:
-                    GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<NebulaBar>(), 1, 3000, 9999), hideLootReport: true);
+                    Loot.QuickGFBItemMod<CelestialObliterator>(true);
                     break;
                 case NPCID.MoonLordCore:
-                    var mlArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientXerocPlateMail>(), 1);
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientXerocMask>()));
-                    mlArmorLoot.OnSuccess(ItemDropRule.Common(ItemMod<AncientXerocCuisses>()));
-                    GFBOnly.Add(mlArmorLoot);
+                    Loot.QuickGFBItemMod<CosmicImmaterializerOld>(true);
                     break;
             }
             #endregion
@@ -793,12 +817,23 @@ namespace CalamityInheritance.NPCs
     }
     public static class ExtendedDropMethods
     {
+        public static void QuickGFBItemID(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) => QuickGFB(loot, itemID, justDropOne, chance, minCount, maxCount);
+        public static void QuickGFBItemMod<T>(this NPCLoot loot, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) where T : ModItem => QuickGFB(loot, ModContent.ItemType<T>(), justDropOne, chance, minCount, maxCount);
         public static void QuickGFB(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145)
         {
             var GFB = loot.DefineConditionalDropSet(DropHelper.GFB);
             if (justDropOne)
                 minCount = maxCount = 1;
             GFB.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), itemID, chance, minCount, maxCount), hideLootReport: true);
+        }
+        public static void QuickGFBGroupMod<T>(this NPCLoot loot, params int[] itemIDs) where T : ModItem => QuickGFBGroup(loot, ModContent.ItemType<T>(), itemIDs);
+        public static void QuickGFBGroup(this NPCLoot loot, int dropItemIDFirst, params int[] itemIDs)
+        {
+            var GFB = loot.DefineConditionalDropSet(DropHelper.GFB);
+            var dropGroup = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), dropItemIDFirst, 1, 1, 1);
+            foreach (var otherItem in itemIDs)
+                dropGroup.OnSuccess(ItemDropRule.Common(otherItem));
+            GFB.Add(dropGroup, true);
         }
     }
 }
