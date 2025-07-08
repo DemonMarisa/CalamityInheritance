@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Accessories;
+﻿using System;
+using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
@@ -658,17 +659,16 @@ namespace CalamityInheritance.NPCs
         {
             // GFB掉落
             var GFBOnly = Loot.DefineConditionalDropSet(DropHelper.GFB);
+            // var dropSpecifcArmor = DropArmorSet();
             #region ModBoss
             if (npc.CheckNPCMod<DesertScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AsgardianAegisold>(), 1), hideLootReport: true);
+                Loot.QuickGFB(ItemMod<AsgardianAegisold>(), true);
             if (npc.CheckNPCMod<SlimeGodCore>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<PurifiedJam>(), 9998), hideLootReport: true);
+                Loot.QuickGFB(ItemMod<PurifiedJam>());
             if (npc.CheckNPCMod<AquaticScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
-            if (npc.CheckNPCMod<AquaticScourgeHead>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientVictideBar>(), 1, 3000, 9999), hideLootReport: true);
+                Loot.QuickGFB(ItemMod<AncientVictideBar>());
             if (npc.CheckNPCMod<CalamitasClone>())
-                GFBOnly.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AcceleratorT3>(), 1, 100, 999), hideLootReport: true);
+                Loot.QuickGFB(ItemMod<AcceleratorT3>());
             if (npc.CheckNPCMod<AstrumAureus>())
             {
                 var astralArmorLoot = ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<AncientAstralHelm>(), 1);
@@ -778,6 +778,8 @@ namespace CalamityInheritance.NPCs
             }
             #endregion
         }
+
+
         public static int ItemMod<T>() where T : ModItem => ModContent.ItemType<T>();
         public static int ModNPC<T>() where T : ModNPC => ModContent.NPCType<T>();
         public void LegendaryDropHelper(int legendary, ref NPCLoot Loot)
@@ -789,4 +791,15 @@ namespace CalamityInheritance.NPCs
         #endregion
 
     }
+    public static class ExtendedDropMethods
+    {
+        public static void QuickGFB(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145)
+        {
+            var GFB = loot.DefineConditionalDropSet(DropHelper.GFB);
+            if (justDropOne)
+                minCount = maxCount = 1;
+            GFB.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), itemID, chance, minCount, maxCount), hideLootReport: true);
+        }
+    }
 }
+
