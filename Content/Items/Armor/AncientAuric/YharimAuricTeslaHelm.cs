@@ -3,19 +3,11 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Terraria;
-using CalamityInheritance.Content.Items.Armor.AuricTesla;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.CalPlayer.Dashes;
-using CalamityInheritance.Content.Items.Armor.AncientTarragon;
-using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
-using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
-using CalamityInheritance.Content.Items.Armor.AncientSilva;
-using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Buffs.Statbuffs;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -33,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			Item.height = 18;
 			Item.value = CIShopValue.RarityMaliceDrop;
 			Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
-			Item.defense = 20; //150
+			Item.defense = 100; //150
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
@@ -57,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.wearingRogueArmor = true;
 			calPlayer.WearingPostMLSummonerSet = true;
 			//继承制盗贼弑神盔甲
-			calPlayer.rogueStealthMax += 1.50f;
+			calPlayer.rogueStealthMax += 2.00f;
 			
 			#endregion
 			#region 弑神自活, 反伤, 弑神冲刺
@@ -70,7 +62,20 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			{
 				calPlayer.DeferredDashID = GodslayerArmorDash.ID;
 				if (modPlayer.AncinetGodSlayerDashReset)
-					calPlayer.rogueStealth = calPlayer.rogueStealthMax / 4 * 3;
+				{
+					calPlayer.rogueStealth = calPlayer.rogueStealthMax * 0.99f;
+					//每次冲刺时，提供魔君之怒Buff。并刷新其消失前的CD。
+					modPlayer.PerunofYharimCooldown = 1800;
+					//魔君的弑神冲刺触发时，每次叠加一层魔君之怒的时候提供一个很难得到的短CD
+					//因为出于某些原因弑神冲刺一旦触发会直接从0快速跳变至3.
+					if (modPlayer.AncientAuricDashCounter < 3 && modPlayer.AncientAuricDashCache <= 0)
+					{
+						modPlayer.AncientAuricDashCounter += 1;
+						modPlayer.AncientAuricDashCache = 30;
+					}
+                    player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
+					
+				}
 				player.dash = 0;
 			}
 			#endregion
@@ -84,6 +89,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 				player.lifeRegen += 60;
 			}
 			#endregion
+			calPlayer.infiniteFlight = true;
 			#region 龙蒿降防损, 林海强回血与血炎掉红心
 			//远古龙蒿降防损
 			calPlayer.defenseDamageRatio *= 0.5f;
@@ -105,7 +111,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			modPlayer.SilvaRangedSetLegacy = true;
 			modPlayer.AuricbloodflareRangedSoul = true;
 			if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType == DamageClass.Ranged)
-            player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
+				player.GetAttackSpeed<RangedDamageClass>() += 0.2f;
 			//法师
 			calPlayer.tarraMage = true;
 			calPlayer.bloodflareMage = true;

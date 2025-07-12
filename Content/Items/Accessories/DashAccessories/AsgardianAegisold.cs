@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.height = 54;
             Item.rare = ModContent.RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 28;
+            Item.defense = 32;
             Item.accessory = true;
         }
 
@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             //启用共享且不重复的debuff免疫
             usPlayer.AsgardsValorImmnue = true;
             usPlayer.ElysianAegisImmnue = true;
-
+            player.statLifeMax2 += 80;
             //上述两者共享的debuff免疫单独打表:
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true; //出于某些原因我没有看到阿斯加德本身免疫狱火
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             {
-                player.endurance += 0.1f;
+                player.endurance += 0.5f;
             }
         }
         public override void AddRecipes()

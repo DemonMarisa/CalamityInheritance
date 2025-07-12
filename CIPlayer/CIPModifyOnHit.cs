@@ -84,7 +84,7 @@ namespace CalamityInheritance.CIPlayer
             }
             //远古鲨牙项链获得30%的暴击伤害加成。
             if (SpeedrunNecklace)
-                totalCritsBuff += 0.3f;
+                totalCritsBuff += 0.10f;
             //除非特殊，不然不要尝试在基于暴击概率上给爆伤的计算里面试图不取溢出暴击概率计算
             //但凡多10%爆伤加成都是翻倍的输出
             if (OverloadManaPower && Player.statMana > Player.statManaMax2 / 2 && isMagic)

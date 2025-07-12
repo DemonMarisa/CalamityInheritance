@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
@@ -132,22 +133,25 @@ namespace CalamityInheritance.CIPlayer
                 return false;
             }
             // 远古林海
-            if (AncientSilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
+            if (!Player.HasCooldown(SilvaRevive.ID))
             {
-                SilvaReborn(300, calPlayer);
-                return false;
-            }
-            // 金源套
-            if (AuricSilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
-            {
-                SilvaReborn(600, calPlayer);
-                return false;
-            }
-            // 林海套
-            if (SilvaFakeDeath && !Player.HasCooldown(SilvaRevive.ID))
-            {
-                SilvaReborn(900, calPlayer);
-                return false;
+                if (AncientSilvaFakeDeath)
+                {
+                    SilvaReborn(300);
+                    return false;
+                }
+                // 金源套
+                if (AuricSilvaFakeDeath)
+                {
+                    SilvaReborn(600);
+                    return false;
+                }
+                // 林海套
+                if (SilvaFakeDeath)
+                {
+                    SilvaReborn(900);
+                    return false;
+                }
             }
             //目前用于龙魂与原灾金源和复活效果的互动
             if (calPlayer.silvaSet && calPlayer.silvaCountdown > 0)
@@ -197,7 +201,7 @@ namespace CalamityInheritance.CIPlayer
         }
         #endregion
         #region 林海复活
-        public bool SilvaReborn(int TotalTimer, CalamityPlayer calPlayer)
+        public void SilvaReborn(int TotalTimer)
         {
             // 在刚触发时的初始化，判断治疗玩家与添加buff
             if(!Player.HasBuff(ModContent.BuffType<SilvaRevival>()))
@@ -208,7 +212,6 @@ namespace CalamityInheritance.CIPlayer
 
             SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
             DoSilvaHeal();
-            return false;
         }
         #endregion
         public void DoSilvaHeal()
@@ -256,7 +259,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             //庇护刃T2: 尝试使你无视防御损伤
-            if (DefenderPower)
+            if (DefenderPower || AncientAuricSet)
             {
                 npc.Calamity().canBreakPlayerDefense = false;;
             }
@@ -325,7 +328,7 @@ namespace CalamityInheritance.CIPlayer
 
         public bool CheckEMirror()
         {
-            //如果玩家没有触i发必闪, 返回
+            //如果玩家没有触发必闪, 返回
             if (!Player.HasCooldown(GlobalDodge.ID))
                 return false;
             //没有佩戴日食魔镜返回回去，不要浪费任何时间
@@ -431,7 +434,7 @@ namespace CalamityInheritance.CIPlayer
             
             
             //庇护刃T2: 尝试使你无视防御损伤
-            if (DefenderPower)
+            if (DefenderPower || AncientAuricSet)
             {
                 proj.Calamity().DealsDefenseDamage = false;;
             }
@@ -501,9 +504,8 @@ namespace CalamityInheritance.CIPlayer
             //海绵
             if (Modplayer1.CIsponge)
             {
-                int healAmt = (int)(hurtInfo.Damage / 15D);
-                Player.statLife += healAmt;
-                Player.HealEffect(healAmt);
+                int shouldHeal = CIConfig.Instance.TheSpongeBarrier ? (int)(hurtInfo.Damage / 15D) : (int)(hurtInfo.Damage / 5D);
+                Player.Heal(shouldHeal);
             }
             //再生
             if (Modplayer1.Revivify)
@@ -621,14 +623,14 @@ namespace CalamityInheritance.CIPlayer
             if(AncientAuricSet)
             {
                 //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
-                int DamageCap = Main.zenithWorld ? 2 : 300;
+                int DamageCap = Main.zenithWorld ? 2 : 200;
                 if(hurtInfo.Damage> DamageCap && AncientAuricHealCooldown == 0) 
-                //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有10秒的内置CD
+                //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有5秒的内置CD
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
-                    Player.Heal((int)(hurtInfo.Damage * 2f));
+                    Player.Heal((int)(hurtInfo.Damage * 5f));
                     //魔君套处于天顶世界下，高伤保护的CD只有一秒
-                    AncientAuricHealCooldown = Main.zenithWorld? 1 : 600;
+                    AncientAuricHealCooldown = Main.zenithWorld? 1 : 300;
                 }
             }
 

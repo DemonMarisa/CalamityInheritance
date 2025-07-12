@@ -50,6 +50,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
                 calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 if (usPlayer.AncinetGodSlayerDashReset)
                     calPlayer.rogueStealth = calPlayer.rogueStealthMax / 4 * 3;
+                if (usPlayer.AncientGodSlayerBuffCD == 0)
+                {
+                    usPlayer.AncientGodSlayerBuffCounter = 600;
+                    usPlayer.AncientGodSlayerBuffCD = 1500;
+                }
                 
                 player.dash = 0;
             }

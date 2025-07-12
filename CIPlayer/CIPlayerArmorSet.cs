@@ -59,6 +59,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncientAuricSet = false; //暴君套
         public int AncientAuricHealCooldown = 0; //暴君套回血CD
         public int PerunofYharimCooldown = 0; //暴君套打击cd
+        public int AncientAuricDashCounter = 0;
         public bool PerunofYharimStats= false;
         #endregion
         #region Reaver
@@ -184,6 +185,8 @@ namespace CalamityInheritance.CIPlayer
             #region AncientGodSlayer
             AncientGodSlayerSet = false;
             AncientGodSlayerStat = false;
+            AncientGodSlayerBuffCounter = 0;
+            AncientGodSlayerBuffCD = 0;
             #endregion
             #region AncientSilva
             AncientSilvaForceRegen = false;
@@ -220,6 +223,8 @@ namespace CalamityInheritance.CIPlayer
             AncientAuricHealCooldown = 0;
             PerunofYharimCooldown = 0;
             PerunofYharimStats = false;
+            AncientAuricDashCounter = 0;
+            AncientAuricDashCache = 0;
             #endregion
             #region Reaver
             ReaverMeleeBlast = false;
