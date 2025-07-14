@@ -24,13 +24,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Rogue.PBGLegendary";
-        public int BaseDamage = 70;
+        public int BaseDamage = 30;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type]= true;
         }
-        public int baseDamage = 50;
+        public int baseDamage = 30;
         public override void SetDefaults()
         {
             Item.width = 26;
@@ -92,11 +92,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            /*
             // 必须手动转换，不然会按照int进行加成
-            float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
+            float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt(0)) / (float)baseDamage);
             damage *= Buff;
-            */
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -123,26 +121,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public static int LegendaryDamage()
         {
             int dmgBuff = 0;
-            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 5 : 0;    // 55
-            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 5 : 0; // 60
-            dmgBuff += DownedBossSystem.downedRavager ? 5 : 0;         // 65
-            dmgBuff += Condition.DownedCultist.IsMet() ? 10 : 0;       // 75
-            dmgBuff += DownedBossSystem.downedAstrumDeus ? 10 : 0;     // 85
-            dmgBuff += Condition.DownedMoonLord.IsMet() ? 25 : 0;      // 110
-            dmgBuff += DownedBossSystem.downedGuardians ? 10 : 0;      // 120
-            dmgBuff += DownedBossSystem.downedDragonfolly ? 10 : 0;    // 130
-            dmgBuff += DownedBossSystem.downedProvidence ? 85 : 0;    // 225
-            dmgBuff += DownedBossSystem.downedSignus ? 15 : 0;         // 240
-            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 15 : 0;  // 255
-            dmgBuff += DownedBossSystem.downedStormWeaver ? 15 : 0;    // 270
-            dmgBuff += DownedBossSystem.downedPolterghast ? 155 : 0;   // 425
-            dmgBuff += DownedBossSystem.downedBoomerDuke ? 25 : 0;     // 450
-            dmgBuff += DownedBossSystem.downedDoG ? 350 : 0;           // 800
-
-            dmgBuff += DownedBossSystem.downedYharon ? 1000 : 0;       // 1800
-            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1900
-            dmgBuff += DownedBossSystem.downedExoMechs ? 100 : 0;      // 2000
-            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 2000 : 0;
+            dmgBuff += Condition.DownedDukeFishron.IsMet() ? 5 : 0;    // 35
+            dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 5 : 0; // 40
+            dmgBuff += DownedBossSystem.downedRavager ? 5 : 0;         // 45
+            dmgBuff += Condition.DownedCultist.IsMet() ? 10 : 0;       // 55
+            dmgBuff += DownedBossSystem.downedAstrumDeus ? 5 : 0;      // 60
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 10 : 0;      // 70
+            dmgBuff += DownedBossSystem.downedGuardians ? 10 : 0;      // 80
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 10 : 0;    // 90
+            dmgBuff += DownedBossSystem.downedProvidence ? 50 : 0;     // 140
+            dmgBuff += DownedBossSystem.downedSignus ? 5 : 0;          // 145
+            dmgBuff += DownedBossSystem.downedCeaselessVoid ? 5 : 0;   // 150
+            dmgBuff += DownedBossSystem.downedStormWeaver ? 5 : 0;     // 155
+            dmgBuff += DownedBossSystem.downedPolterghast ? 50 : 0;    // 205
+            dmgBuff += DownedBossSystem.downedBoomerDuke ? 25 : 0;     // 230
+            dmgBuff += DownedBossSystem.downedDoG ? 100 : 0;           // 330
+            dmgBuff += DownedBossSystem.downedYharon ? 600 : 0;        // 930
+            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1030
+            dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;       // 1100
+            dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 3100 : 0;
 
             return dmgBuff;
         }

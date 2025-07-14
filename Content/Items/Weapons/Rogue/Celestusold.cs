@@ -96,8 +96,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             else
             {
-                int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-                Main.projectile[stealth].Calamity().stealthStrike = true;
+                bool ifStealth = player.CheckStealth();
+                if (ifStealth)
+                {
+                    int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                    Main.projectile[stealth].Calamity().stealthStrike = true;
+                }
+                else
+                    Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             }
             return false;
         }

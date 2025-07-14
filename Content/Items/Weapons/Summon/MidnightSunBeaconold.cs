@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;
-            Item.damage = 240;
+            Item.damage = 60;
             Item.mana = 10;
             Item.useTime = Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -40,7 +40,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         {
             int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             if (Main.projectile.IndexInRange(p))
+            {
                 Main.projectile[p].originalDamage = Item.damage;
+            }
             return false;
         }
         public override void AddRecipes()

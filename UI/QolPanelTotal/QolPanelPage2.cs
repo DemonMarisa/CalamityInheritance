@@ -135,7 +135,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedDeus = DownedBossSystem.downedAstrumDeus;
             bool DownedBoC = CIDownedBossSystem.DownedBOC || Condition.DownedBrainOfCthulhu.IsMet();
             bool DownedBrimmy = DownedBossSystem.downedBrimstoneElemental;
-            bool DownedCalClone = DownedBossSystem.downedCalamitasClone;
+            bool DownedCalClone = DownedBossSystem.downedCalamitasClone || CIDownedBossSystem.DownedCalClone;
             bool DownedSCal = DownedBossSystem.downedCalamitas || CIDownedBossSystem.DownedLegacyScal;
             bool DownedCrab = DownedBossSystem.downedCrabulon;
             bool DownedCryo = DownedBossSystem.downedCryogen;
@@ -165,7 +165,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedSG = DownedBossSystem.downedSlimeGod;
             bool DownedTwins = Condition.DownedTwins.IsMet();
             bool DownedWoF = Condition.Hardmode.IsMet();
-            bool DownedYharon = DownedBossSystem.downedYharon;
+            bool DownedYharon = DownedBossSystem.downedYharon || CIDownedBossSystem.DownedLegacyYharonP2;
             #endregion
 
             #region 什么嘛……不就是打表吗

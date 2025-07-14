@@ -6,6 +6,7 @@ using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.tileCollide = false;
             Projectile.timeLeft = TrueTimeLeft;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 0;
+            Projectile.localNPCHitCooldown = 5;
             Projectile.DamageType = DamageClass.Summon;
         }
 

@@ -251,7 +251,7 @@ namespace CalamityInheritance.CIPlayer
                         Vector2 source = new Vector2(target.Center.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
                         Vector2 velocity = (target.Center- source) / 40f;
 
-                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.15), 3f, proj.owner);
+                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.05), 3f, proj.owner);
                     }
                 }
                 //固定生成一个治疗量为10的射弹。

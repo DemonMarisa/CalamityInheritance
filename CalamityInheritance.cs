@@ -134,6 +134,8 @@ namespace CalamityInheritance
             DisableSylvestaffRecipe.Load();
             // 修复星火bug的hook
             PhotovisceratorCalHook.Load(this);
+            // 邪染特判补全
+            ElementalExcaliburTaintedDamageMultHook.Load();
             #endregion
         }
         public void LoadClient()

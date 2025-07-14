@@ -45,6 +45,7 @@ using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.System.DownedBoss;
 using CalamityModMusic.Items.Placeables;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -553,8 +554,8 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ModContent.ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ItemID.BlackInk) { shopCustomPrice = Item.buyPrice(gold: 1) })
-
-                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) })
+                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CIConditions.DownedBloodMoon)
                 .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
 
@@ -601,8 +602,10 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
                 .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<Abaddon>()) { shopCustomPrice = Item.buyPrice(gold: 32) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
-                .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon);
+                .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon)
+                .Add(new Item(ModContent.ItemType<HalibutCannonLegendary>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CIConditions.NoInfernumMode);
             ItemShop.Register();
         }
 

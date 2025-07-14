@@ -763,7 +763,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (nanotechold)
             {
-                float damageMult =  0.15f;
+                float damageMult =  0.075f;
                 Player.GetDamage<GenericDamageClass>() *= 1 + RaiderStacks / 150f * damageMult;
             }
             if (Player.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] == 1 && 
@@ -1386,7 +1386,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (LoreProvidence || PanelsLoreProvidence)
             {
-                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.6);
+                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75);
                 Player.GetDamage<GenericDamageClass>() *= 1.05f;
                 Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
             }
@@ -1439,7 +1439,7 @@ namespace CalamityInheritance.CIPlayer
                 ShieldDurabilityMax = Main.zenithWorld ? Player.statLifeMax2 : 20;
 
             if (LoreProvidence || PanelsLoreProvidence)
-                ShieldDurabilityMax = (int)(ShieldDurabilityMax * 0.5f);
+                ShieldDurabilityMax = (int)(ShieldDurabilityMax * 0.25f);
         }
     }
 }

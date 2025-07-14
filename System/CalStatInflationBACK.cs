@@ -583,7 +583,6 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<EndoHydraStaff>())
                 item.damage = (int)(item.damage * 1.5f);
-
             #endregion
             #region 盗贼
             if (item.type == ModContent.ItemType<Penumbra>())

@@ -33,5 +33,6 @@ namespace CalamityInheritance.Core
         public static readonly Condition MasterDeath = Create("MD", () => (Main.masterMode && CalamityWorld.death) || CIWorld.malice);
         public static readonly Condition MAD = Create("MAD", () => CIWorld.armageddon && CIWorld.malice && CIWorld.defiled && Main.masterMode);
         public static readonly Condition DownedCalClone = Create("DownedCalClone", () => CIDownedBossSystem.DownedCalClone);
+        public static readonly Condition NoInfernumMode = Create("NoInfernumMode", () => CalamityInheritance.Instance.infernumMode != null);
     }
 }

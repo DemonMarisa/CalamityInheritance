@@ -84,5 +84,8 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle YanmeiKnifeHit = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeHit") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle YanmeiKnifeExpire = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeExpire") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
+        #region ±ÈÄ¿ÓãÅÚ
+        public static readonly SoundStyle HalibutCannonFire = new($"{ItemSoundRoute}/HalibutCannon/HalibutCannonFire") { Volume = 0.9f, Pitch = 0.3f };
+        #endregion
     }
 }

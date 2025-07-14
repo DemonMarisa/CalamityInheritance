@@ -453,7 +453,6 @@ namespace CalamityInheritance.NPCs
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ItemMod<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
                 Loot.Add(ItemMod<VehemencOld>(), 1);
-                Loot.AddConditionalPerPlayer(() => DownedBossSystem.downedExoMechs, ItemMod<CalamitousEssence>());
                 Loot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ItemMod<Armageddon>(), 1, 3000, 9999));
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<CalamitasCoffer>());
             }

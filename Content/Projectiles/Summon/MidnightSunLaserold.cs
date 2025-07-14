@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -25,8 +26,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.extraUpdates = 2;
             Projectile.tileCollide = false;
             Projectile.friendly = true;
-            Projectile.minion = true;
-            Projectile.minionSlots = 0f;
             Projectile.ignoreWater = true;
             Projectile.aiStyle = 1;
             AIType = 242;
@@ -34,10 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.timeLeft = 120;
             Projectile.DamageType = DamageClass.Summon;
         }
-        public override void AI()
-        {
-            CalamityUtils.HomeInOnNPC(Projectile, true, 200f, 18f, 20f);
-        }
+
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 5);

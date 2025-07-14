@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -19,15 +21,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     {
         //待办事项：1.与炼狱模组的匹配，2.数值平衡
         //注：大比目鱼的进化设定上只有数值与弹丸数，我们不做其他的升级了
-        public const int BaseDamage = 5;
+        public const int BaseDamage = 1;
         public static string TextRoute => $"{Generic.GetWeaponLocal}.Ranged.HalibutCannonLegendary";
         internal bool IsDownedWallOfFlesh = Main.hardMode;
         internal bool IsDownedMoonLord = Condition.DownedMoonLord.IsMet();
         internal bool IsDownedPostYharonBoss = (CIDownedBossSystem.DownedLegacyScal || DownedBossSystem.downedCalamitas) && DownedBossSystem.downedExoMechs;
-        public override void SetStaticDefaults()
-        {
-
-        }
         public override void SetDefaults()
         {
             Item.width = 112;
@@ -35,18 +33,28 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.damage = BaseDamage;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 10;
-            Item.useAnimation = 20;
+            Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.rare = ModContent.RarityType<DonatorPink>();
             Item.noMelee = true;
             Item.knockBack = 1f;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.UseSound = null;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
             Item.Calamity().canFirePointBlankShots = true;
+            Item.UseSound = CISoundMenu.HalibutCannonFire;
+        }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-30, 0);
+        }
+        public override void UseItemFrame(Player player)
+        {
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
+            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
         public override void ModifyWeaponCrit(Player player, ref float crit)
         {
@@ -55,27 +63,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            float buff = (float)((float)(BaseDamage + DamageScaling() + Generic.GenericLegendBuffInt()) / BaseDamage);
+            float buff = (float)((float)(BaseDamage + DamageScaling() + Generic.GenericLegendBuffInt(0)) / BaseDamage);
             damage *= buff;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            //shoot分三个阶段，分别代表不同的情况。
-            int everyBulletAddPerStage = 6;
-            int basewMinBullet = 7;
-            int baseMaxBullet = 9;
-            bool stage1 = Condition.Hardmode.IsMet();
-            bool stage2 = Condition.DownedMoonLord.IsMet();
-            bool stage3 = (DownedBossSystem.downedCalamitas || CIDownedBossSystem.DownedLegacyScal) && DownedBossSystem.downedExoMechs;
-            //boolenm转int
-            int stageCounter = Convert.ToInt32(stage1) + Convert.ToInt32(stage2) + Convert.ToInt32(stage3);
-            int addBulletCount = stageCounter * everyBulletAddPerStage;
+            // 重写了加成
+            int basewMinBullet = 1;
+            int baseMaxBullet = 2;
+            int addBulletCount = 0;
+            addBulletCount = AddBullet();
             int bulletAmt = Main.rand.Next(basewMinBullet + addBulletCount, baseMaxBullet + addBulletCount);
             for (int index = 0; index < bulletAmt; ++index)
             {
-                float SpeedX = velocity.X + Main.rand.Next(-10, 11) * 0.05f;
-                float SpeedY = velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
-                int shot = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+                int shot = Projectile.NewProjectile(source, position + new Vector2(0, 8), velocity.RotatedByRandom(MathHelper.ToRadians(3)) * Main.rand.NextFloat(0.8f, 1.1f), type, damage, knockback, player.whoAmI);
                 Main.projectile[shot].timeLeft = 120;
             }
             return false;
@@ -85,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             int booster = DamageScaling() + Generic.GenericLegendBuffInt();
-            string update = this.GetLocalization("LegendaryScaling").Format(booster.ToString());
+            string update = this.GetLocalization("LegendaryScaling").Format(booster.ToString(), AddBullet().ToString());
             tooltips.FindAndReplace("[SCALING]", update);
             string myGodDude = !Condition.DownedSkeletron.IsMet() && !Main.hardMode ? Language.GetTextValue($"{TextRoute}.OnPreKnockDownedSkeletron") : null;
             if (myGodDude is not null)
@@ -95,6 +96,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             string getInfernum = Language.GetTextValue($"{TextRoute}.OnInfernumTooltip");
             if (getInfernum is not null)
                 tooltips.Add(new TooltipLine(Mod, "infer", getInfernum));
+        }
+        public static int AddBullet()
+        {
+            int totaladd = 0;
+            totaladd += CheckDownedAndBuff(NPC.downedBoss3, 1);                                                          // 1
+            totaladd += CheckDownedAndBuff(Main.hardMode, 1);                                                            // 2
+            totaladd += CheckDownedAndBuff(Condition.DownedMoonLord.IsMet(), 2);                                         // 4
+            totaladd += CheckDownedAndBuff(DownedBossSystem.downedProvidence, 4);                                        // 8
+            totaladd += CheckDownedAndBuff(DownedBossSystem.downedPolterghast, 4);                                       // 12
+            totaladd += CheckDownedAndBuff(DownedBossSystem.downedDoG, 4);                                               // 16
+            totaladd += CheckDownedAndBuff(DownedBossSystem.downedYharon || CIDownedBossSystem.DownedLegacyYharonP2, 8); // 24
+            totaladd += CheckDownedAndBuff(CIDownedBossSystem.DownedLegacyScal, 6);                                      // 30
+            return totaladd;
         }
         public static int DamageScaling()
         {
@@ -110,40 +124,39 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             downedSentinelsBoss += CheckDownedSentinels();
             int mul = 0;
             //Calamity has over 40 bosses, should i have to do every stage?
-            mul += CheckDownedAndBuff(Condition.DownedKingSlime.IsMet(), 1);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedDesertScourge, 2);
-            mul += CheckDownedAndBuff(Condition.DownedEyeOfCthulhu.IsMet(), 3);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedCrabulon, 4);
-            mul += CheckDownedAndBuff(isDownedAnyEvilBoss, 5);
-            mul += CheckDownedAndBuff(isDownedAnyEvilBossCalamity, 6);
-            mul += CheckDownedAndBuff(Condition.DownedQueenBee.IsMet(), 7);
-            mul += CheckDownedAndBuff(Condition.DownedSkeletron.IsMet(), 8);
-            mul += CheckDownedAndBuff(Condition.DownedDeerclops.IsMet(), 9);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedSlimeGod, 10);
-            mul += CheckDownedAndBuff(Main.hardMode, 11);
-            mul += CheckDownedAndBuff(Condition.DownedQueenSlime.IsMet(), 12);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedCryogen, 13);
-            mul += downedMechsOrCalTripleBoss * 15;
-            mul += CheckDownedAndBuff(isDownedAnyCalClone, 16);
-            mul += CheckDownedAndBuff(Condition.DownedPlantera.IsMet(), 17);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedAstrumAureus, 18);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedLeviathan, 19);
-            mul += CheckDownedAndBuff(Condition.DownedGolem.IsMet(), 20);
-            mul += downedPostGolemPreCutlistBoss * 21;
-            mul += CheckDownedAndBuff(Condition.DownedCultist.IsMet(), 22);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedAstrumDeus, 23);
-            mul += CheckDownedAndBuff(Condition.DownedMoonLord.IsMet(), 24);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedGuardians, 25);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedDragonfolly, 26);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedProvidence, 27);
-            mul += downedSentinelsBoss * 28;
-            mul += CheckDownedAndBuff(DownedBossSystem.downedPolterghast, 29);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedBoomerDuke, 30);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedDoG, 31);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedYharon, 32);
-            mul += CheckDownedAndBuff(isDownedExoOrCalamitas, 33);
-            mul += CheckDownedAndBuff(CIDownedBossSystem.DownedLegacyScal, 34);
-            mul += CheckDownedAndBuff(DownedBossSystem.downedPrimordialWyrm, 35);
+            mul += CheckDownedAndBuff(Condition.DownedKingSlime.IsMet(), 1);     // 2
+            mul += CheckDownedAndBuff(DownedBossSystem.downedDesertScourge, 1);  // 3
+            mul += CheckDownedAndBuff(Condition.DownedEyeOfCthulhu.IsMet(), 1);  // 4
+            mul += CheckDownedAndBuff(DownedBossSystem.downedCrabulon, 1);       // 5
+            mul += CheckDownedAndBuff(isDownedAnyEvilBoss, 1);                   // 6
+            mul += CheckDownedAndBuff(isDownedAnyEvilBossCalamity, 1);           // 7
+            mul += CheckDownedAndBuff(Condition.DownedQueenBee.IsMet(), 1);      // 8
+            mul += CheckDownedAndBuff(Condition.DownedSkeletron.IsMet(), 1);     // 9
+            mul += CheckDownedAndBuff(Condition.DownedDeerclops.IsMet(), 1);     // 10
+            mul += CheckDownedAndBuff(DownedBossSystem.downedSlimeGod, 1);       // 11
+            mul += CheckDownedAndBuff(Main.hardMode, 4);                         // 15
+            mul += CheckDownedAndBuff(Condition.DownedQueenSlime.IsMet(), 1);    // 16
+            mul += downedMechsOrCalTripleBoss * 2;                               // 18 20 22 24 26 28
+            mul += CheckDownedAndBuff(isDownedAnyCalClone, 3);                   // 31
+            mul += CheckDownedAndBuff(Condition.DownedPlantera.IsMet(), 1);      // 32
+            mul += CheckDownedAndBuff(DownedBossSystem.downedAstrumAureus, 1);   // 33
+            mul += CheckDownedAndBuff(DownedBossSystem.downedLeviathan, 1);      // 34
+            mul += CheckDownedAndBuff(Condition.DownedGolem.IsMet(), 1);         // 35
+            mul += downedPostGolemPreCutlistBoss * 2;                            // 37 39 41 43
+            mul += CheckDownedAndBuff(Condition.DownedCultist.IsMet(), 2);       // 45
+            mul += CheckDownedAndBuff(DownedBossSystem.downedAstrumDeus, 2);     // 47
+            mul += CheckDownedAndBuff(Condition.DownedMoonLord.IsMet(), 10);     // 57
+            mul += CheckDownedAndBuff(DownedBossSystem.downedGuardians, 3);      // 60
+            mul += CheckDownedAndBuff(DownedBossSystem.downedDragonfolly, 3);    // 63
+            mul += CheckDownedAndBuff(DownedBossSystem.downedProvidence, 62);    // 125
+            mul += downedSentinelsBoss * 1;                                      // 126 127 128
+            mul += CheckDownedAndBuff(DownedBossSystem.downedPolterghast, 2);    // 130
+            mul += CheckDownedAndBuff(DownedBossSystem.downedBoomerDuke, 5);     // 135
+            mul += CheckDownedAndBuff(DownedBossSystem.downedDoG, 5);            // 140
+            mul += CheckDownedAndBuff(DownedBossSystem.downedYharon, 85);        // 225
+            mul += CheckDownedAndBuff(isDownedExoOrCalamitas, 10);               // 235 245
+            mul += CheckDownedAndBuff(CIDownedBossSystem.DownedLegacyScal, 255);  // 500
+            mul += CheckDownedAndBuff(DownedBossSystem.downedPrimordialWyrm, 250);// 750
             return mul;
         }
 

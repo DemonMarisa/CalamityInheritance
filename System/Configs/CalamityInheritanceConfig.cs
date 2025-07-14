@@ -116,19 +116,19 @@ namespace CalamityInheritance.System.Configs
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
 
+        /*
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-1000, 1000)]
+        [DefaultValue(1)]
+        public int Debugint { get; set; }
 
-        //[BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        //[Range(-1000, 1000)]
-        //[DefaultValue(1)]
-        //public int Debugint { get; set; }
-
-        //[BackgroundColor(192, 54, 64, 192)]
-        //[SliderColor(224, 165, 56, 128)]
-        //[Range(-1000, 1000)]
-        //[DefaultValue(1)]
-        //public int Debugint2 { get; set; }
-
+        [BackgroundColor(192, 54, 64, 192)]
+        [SliderColor(224, 165, 56, 128)]
+        [Range(-1000, 1000)]
+        [DefaultValue(1)]
+        public int Debugint2 { get; set; }
+        */
 
         //[BackgroundColor(192, 54, 64, 192)]
         //[SliderColor(224, 165, 56, 128)]

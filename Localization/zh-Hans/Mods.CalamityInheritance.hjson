@@ -167,7 +167,7 @@ Configs: {
 		}
 
 		TurnOffFirstText: {
-			Label: 关闭文字
+			Label: 文本显示开关
 			Tooltip: 关闭进入游戏时的文字
 		}
 

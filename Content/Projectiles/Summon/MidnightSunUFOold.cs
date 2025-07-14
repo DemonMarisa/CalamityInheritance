@@ -9,6 +9,8 @@ using CalamityMod;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using System.Collections.Generic;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -44,6 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 
         public override void AI()
         {
+            // 伤害再/2是因为生成后莫名其妙伤害翻倍
             Lighting.AddLight(Projectile.Center, Color.SkyBlue.ToVector3());
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
@@ -93,11 +96,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     float angle = MathHelper.ToRadians(2f * Projectile.ai[0] % 180f);
                     Vector2 destination = potentialTarget.Center - new Vector2((float)Math.Cos(angle) * potentialTarget.width * 0.65f, 250f);
                     Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(destination) * 24f, 0.03f);
-                    if (Projectile.ai[0] % 3f == 2f && potentialTarget.Top.Y > Projectile.Bottom.Y)
+                    if (Projectile.ai[0] % 6f == 2f && potentialTarget.Top.Y > Projectile.Bottom.Y)
                     {
+                        // 伤害再/2是因为生成后莫名其妙伤害翻倍
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Bottom, Projectile.DirectionTo(potentialTarget.Center).RotatedByRandom(0.15f) * 25f,
-                            ModContent.ProjectileType<MidnightSunLaserold>(),
-                            Projectile.damage, Projectile.knockBack, Projectile.owner);
+                            ModContent.ProjectileType<MidnightSunLaserold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                     float acceleration = 0.35f;
                     for (int index = 0; index < Main.projectile.Length; index++)
@@ -146,7 +149,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         if (Projectile.ai[1] == 0f)
                         {
                             SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, (Projectile.velocity.ToRotation() + MathHelper.PiOver2).ToRotationVector2(),
+                            int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, (Projectile.velocity.ToRotation() + MathHelper.PiOver2).ToRotationVector2(),
                                 ModContent.ProjectileType<MidnightSunBeamold>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner,
                                 radiansToSpinPerFrame, Projectile.whoAmI);
                             Projectile.ai[1] = 1f;
@@ -185,6 +188,10 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
                 Projectile.rotation = Projectile.velocity.X * 0.03f;
             }
+        }
+        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+        {
+            overPlayers.Add(index);
         }
         public override bool PreDraw(ref Color lightColor)
         {
