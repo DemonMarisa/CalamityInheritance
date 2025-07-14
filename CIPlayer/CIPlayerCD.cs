@@ -46,7 +46,10 @@ namespace CalamityInheritance.CIPlayer
         public int maliceModeUnderworldTime = 0;
         //远古弑神闪避计时
         public int AncinetGodSlayerDodgeCount = 3;
-
+        
+        public int AncientAuricDashCache = 0;
+        public int AncientGodSlayerBuffCounter = 0;
+        public int AncientGodSlayerBuffCD = 0;
         #region 林海复活
         // 用于计时
         public int SilvaRebornTimer = 0;
@@ -63,6 +66,14 @@ namespace CalamityInheritance.CIPlayer
                 if (yharimArmorinvincibility > 0)
                     yharimArmorinvincibility--;
             }
+            if (AncientAuricDashCache > 0)
+                AncientAuricDashCache--;
+                
+            if (AncientGodSlayerBuffCounter > 0)
+                AncientGodSlayerBuffCounter--;
+
+            if (AncientGodSlayerBuffCD > 0)
+                AncientGodSlayerBuffCD--;
             
             if (summonProjCooldown > 0f)
                 summonProjCooldown -= 1;

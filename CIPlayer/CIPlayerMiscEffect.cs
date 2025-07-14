@@ -201,14 +201,17 @@ namespace CalamityInheritance.CIPlayer
 
             if (PerunofYharimStats)
             {
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.35f; 
-                Player.GetAttackSpeed<RangedDamageClass>() += 0.35f; 
-                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f;
-                Player.GetCritChance<GenericDamageClass>() += 100; //所有职业获得100暴击概率
+                Player.GetAttackSpeed<MeleeDamageClass>() += 0.40f * AncientAuricDashCounter; 
+                Player.GetAttackSpeed<RangedDamageClass>() += 0.30f * AncientAuricDashCounter; 
+                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f * AncientAuricDashCounter;
+                Player.GetCritChance<GenericDamageClass>() += 100 * AncientAuricDashCounter; //所有职业获得100暴击概率
                 Player.manaCost *= 0.20f;
-                Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 3.5f;
+                Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 2f * AncientAuricDashCounter;
             }
-            
+            if (PerunofYharimCooldown <= 0)
+            {
+                AncientAuricDashCounter = 0;
+            }
             /*
             *2/25:
             *移除淬火debuff的伤害削减, 因为龙弓承伤后的resueDelay惩罚已经足够高了 
@@ -302,7 +305,7 @@ namespace CalamityInheritance.CIPlayer
             if(SpeedrunNecklace)
             {
                 Player.GetArmorPenetration<GenericDamageClass>() += 300;
-                Player.GetDamage<GenericDamageClass>() += 0.5f;
+                Player.GetDamage<GenericDamageClass>() *= 1.20f;
                 Player.GetCritChance<GenericDamageClass>() += 50;
                 Player.endurance *= 0.01f;
                 Player.statDefense /= 100;
@@ -543,9 +546,12 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen += 8; //+4HP/s
                 RefreshGodSlayerDash(calPlayer);
             }
+            if (AncientGodSlayerBuffCounter > 0)
+                Player.GetDamage<GenericDamageClass>() += 0.2f;
+            
             if (AncientSilvaStat)
             {
-                calPlayer.healingPotionMultiplier += 0.30f; 
+                calPlayer.healingPotionMultiplier += 0.30f;
                 Player.lifeRegen += 24; //+12HP/s
                 Player.lifeRegenTime = 2000;
             }
@@ -595,6 +601,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 // 好你个小子免疫这游戏所有Debuff了
                 // foreach (int debuff in CalamityLists.debuffList)
+                //byd关我屁事，跟灾厄说去吧
                 foreach (int debuff in CalamityInheritanceLists.AuricdebuffList)
                     Player.buffImmune[debuff] = true;
             } 

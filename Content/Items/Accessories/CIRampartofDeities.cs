@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.longInvince =true;
             usPlayer.RoDPaladianShieldActive = true; //启用帕拉丁盾
             player.lifeRegen += 4;
-            player.GetArmorPenetration<GenericDamageClass>() += 25;
+            player.GetArmorPenetration<GenericDamageClass>() += 50;
             if (player.statLife <= player.statLifeMax2 * 0.5)
                 player.AddBuff(BuffID.IceBarrier, 5);
             player.noKnockback = true;

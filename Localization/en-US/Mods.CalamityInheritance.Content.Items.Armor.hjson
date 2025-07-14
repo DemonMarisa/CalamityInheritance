@@ -714,26 +714,27 @@ YharimAuricTeslaHelm: {
 	ExtraDetails:
 		'''
 		[c/7DDA58:Inherited From Ancient Tarragon][i:CalamityInheritance/AncientTarragonHelm]
-		Increases heart pick range, grants immnuity to knockback, reduces defense damage by 50%
-		Boost your defense and damage reduction by 30% when below 50% of your max HP.
+		Increases heart pick range, grants immnuity to knockback and defense damage
+		Boost your defense and damage reduction by 30% when below 50% of your max HP
 		[c/D21E20:Inherited From Ancient Bloodflare][i:CalamityInheritance/AncientBloodflareMask]
 		Massively boost your natural life regen speed, have a chance to drops heart and mana star on enemies hit
 		+60 HP/s life regen speed and when below 50% of you max HP
 		+30 HP/s life regen speed and extra 30 defense while submerged in Lava
-		Taking over 600 damage from an attack will be converted by 200% into healing
-		This effect has 10 seconds cooldown if triggered
+		Taking over 200 damage from an attack will be converted by 500% into healing
+		This effect has 5 seconds cooldown if triggered
 		[c/CC6CE7:Inherited From Ancient God Slayer][i:CalamityInheritance/AncientGodSlayerHelm]
-		Hitting an enemy by stealth strike will boost your damage and non-rogue class attack speed for 30 seconds
-		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
 		This effect has 30 seconds cooldown
+		Everytime release a God Slay Dash will boost your damage and non-rogue class attack speed for 30 seconds
+		Your mana usage also is dropped by 80%, mana consumed can be fully converted into healing
+		This effect can be stacked, capped at 3 times.	
 		Reset your God Slayer Dash cooldown if you reached max stealth
-		At that time, do the dash will cost your 25% of your max stealth
+		At that time, do the dash will cost your 1% of your max stealth
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown
 		[c/DFC57B:Inherited From Ancient Silva][i:CalamityInheritance/AncientSilvaHelm]
 		Boosts your natural life regen speed, debuffs can not negate your life regen
-		Sometimes you will be heal swiftly for a brief time
+		Sometimes you will be healed by 50 HP/frames for a brief time
 		Grants silva invulnerability for 15 seconds if you are reduced to 1 HP.
 		[c/DFC578:'No, I won't let you down']
 		'''
@@ -882,6 +883,8 @@ AncientGodSlayerHelm: {
 		Press God Slayer Dash Hotkey while holding down the movement keys in the direction you want to dash
 		Reset your God Slayer Dash cooldown if you reached max stealth
 		At that time, do the dash will cost your 25% of your max stealth
+		Finished a God Slayer Dash will increased your damage by 20%
+		This effect will last 10 seconds and has 25 seconds cooldown if triggered
 		Taking hit make you completely invincibile for a moment
 		You will revive and be healed 150 HP if an attack would killed you
 		This effect has 45 seconds cooldown

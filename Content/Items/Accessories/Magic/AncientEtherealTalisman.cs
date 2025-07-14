@@ -35,12 +35,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
             if (!hideVisual)
                 player.manaFlower = true;
 
-            player.statManaMax2 += 150;
-            player.GetDamage<MagicDamageClass>() += 0.20f;
+            player.statManaMax2 += 250;
+            player.GetDamage<MagicDamageClass>() += 0.30f;
             player.manaCost -= 0.2f;
-            player.GetCritChance<MagicDamageClass>() += 15;
+            player.GetCritChance<MagicDamageClass>() += 25;
             player.pStone = true;
-            player.lifeRegen += 1;
+            player.lifeRegen += 6;
         }
 
         public override void AddRecipes()

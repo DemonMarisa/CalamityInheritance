@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             Item.accessory = true;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.defense = 5;
+            Item.defense = 30;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
                 modplayer.ElemQuiver= false;
             }
             player.GetDamage(DamageClass.Ranged) += 0.20f;
-            player.GetCritChance(DamageClass.Ranged) += 15;
+            player.GetCritChance(DamageClass.Ranged) += 20;
             player.ammoCost80 = true;
             player.lifeRegen += 4;
             player.pickSpeed -= 0.15f;

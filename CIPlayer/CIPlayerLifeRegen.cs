@@ -214,7 +214,7 @@ namespace CalamityInheritance.CIPlayer
                         }
                     }
                     Player.AddBuff(ModContent.BuffType<SilvaPrice>(), 2);
-                    int healAmt = AncientAuricSet ? 5 : 3;
+                    int healAmt = AncientAuricSet ? 50 : 3;
                     int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
 
                     if(Main.zenithWorld) healAmt = 10;  //林海强回血在天顶下一次回10

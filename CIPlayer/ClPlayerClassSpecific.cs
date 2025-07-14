@@ -296,28 +296,6 @@ namespace CalamityInheritance.CIPlayer
                         AncientBloodflareHeartDropCD = 90; //1.5秒一次
                     }
                 }
-                //魔君之怒
-                if (proj.DamageType == ModContent.GetInstance<RogueDamageClass>()
-                    && proj.Calamity().stealthStrike
-                    && PerunofYharimCooldown == 0
-                    )
-                {
-                    SoundEngine.PlaySound(CISoundMenu.YharimsThuner with { Volume = 0.5f });
-                    for (int j = 0; j < 50; j++)
-                    {
-                        int nebulousReviveDust = Dust.NewDust(Player.position, Player.width, Player.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
-                        Dust dust = Main.dust[nebulousReviveDust];
-                        dust.position.X += Main.rand.Next(-20, 21);
-                        dust.position.Y += Main.rand.Next(-20, 21);
-                        dust.velocity *= 0.9f;
-                        dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                        if (Main.rand.NextBool())
-                            dust.scale *= 1f + Main.rand.Next(40) * 0.01f;
-                    }
-                    Player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-                    PerunofYharimCooldown = 1800;
-
-                }
             }
             //花岗岩核心
             if (SMarnite && hit.Crit && SparkTimer == 0)

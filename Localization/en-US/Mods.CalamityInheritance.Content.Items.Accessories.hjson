@@ -34,7 +34,7 @@ CIRampartofDeities: {
 		Causes stars to fall and increases length of invincibility after taking damage
 		Frozen Turtel Shell and Paladin Shield effects
 		+2 HP/s life regen speed and reduces the cooldown of healings potion by 25%
-		Increases armor penetration by 25
+		Increases armor penetration by 50
 		'Strongest defensive accessory ever'
 		'''
 }
@@ -74,8 +74,9 @@ DashAccessories: {
 			This dash can slam through enemies without taking damage
 			Grants immunity to knockback and fire blocks
 			Grants immunity to the vast majority of debuffs, including God Slayer Inferno
-			+40 max life
+			+80 max life
 			Press [KEY] to receive the Elysian Guard buff
+			50% increased damage redcution while submerged in water
 			This buff will boosts damage, critical strike chance and defense, but at the cost of your movement speed
 			Enemies are more likely to target you while the buff is being active
 			'''
@@ -330,9 +331,9 @@ AncientReaperToothNecklace: {
 	Tooltip:
 		'''
 		+300 armor penetration
-		50% increased damage and critical strike chance
-		30% increased critical strike damage
-		Your damage reduction and defense will be reduced by a hundred.
+		1.20x damage, 50% increasedcritical strike chance
+		10% increased critical strike damage
+		Your damage reduction, defense and life regen speed will be reduced by a hundred.
 		'I don't think this should exist...'
 		'''
 }

@@ -22,7 +22,7 @@ ElementalQuiver: {
 	DisplayName: Elemental Quiver Legacy
 	Tooltip:
 		'''
-		20% increased ranged damage, 15% increased ranged critical strike chance
+		20% increased ranged damage and ranged critical strike chance
 		+2 HP/s life regen speed, 15% increased mining speed
 		20% chance not consume ammo 
 		Greatly increases all ranged projectiles velocity
