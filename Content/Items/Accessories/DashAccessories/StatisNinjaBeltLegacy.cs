@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -22,7 +23,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.rare = ItemRarityID.Purple;
             Item.accessory = true;
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<StatisNinjaBelt>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.autoJump = true;

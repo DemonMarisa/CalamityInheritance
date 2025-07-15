@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -22,7 +23,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.value = CIShopValue.RarityPriceLightRed;
             Item.accessory = true;
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<DeificAmulet>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CIMod();

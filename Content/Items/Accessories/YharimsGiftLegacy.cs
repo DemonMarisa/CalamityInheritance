@@ -29,7 +29,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<YharimsGift>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var source = player.GetSource_Accessory(Item);

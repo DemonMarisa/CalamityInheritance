@@ -11,6 +11,7 @@ using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -37,6 +38,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.accessory = true;
         }
 
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<AsgardianAegis>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
@@ -56,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
             //阿斯加德庇佑本身免疫弑神怒火
             player.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = true;
-            
+
             //所谓的. 更强的"Debuff"
             player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true; // 更强的, 碎甲
             player.buffImmune[ModContent.BuffType<BrainRot>()] = true; // 更强的"流血"
@@ -65,7 +70,6 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true; // 更强的"剧毒"
             player.buffImmune[BuffID.Webbed] = true; // 更强的"缓慢"
             player.buffImmune[BuffID.Blackout] = true; // 更强的"黑暗"
-            
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             {

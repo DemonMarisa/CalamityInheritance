@@ -2,10 +2,10 @@ NucleogenesisLegacy: {
 	DisplayName: Nucleogenesis Legacy
 	Tooltip:
 		'''
-		Increases max minions by 4, can stack with downgrades
+		Increases max minions by 5, can stack with downgrades
 		Increases max sentries by 1, whip range by 40%
 		Grants immunity to Shadowflame and Irradiated
-		15% increased summon damage
+		50% increased summon damage
 		Increased minion knockback
 		Minions inflict Electrified, Holy Flames, Irradiated and Shadowflame
 		Minions spawn damage sparks on enemy hits

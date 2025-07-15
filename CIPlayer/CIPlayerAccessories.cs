@@ -67,8 +67,15 @@ namespace CalamityInheritance.CIPlayer
         public bool IsWearingBloodyScarf = false;
         public bool IsWearingElemQuiverCal = false;
         public bool OverloadManaPower = false;
+        
         //日食魔镜
         public bool EMirror = false;
+        #region 削弱同类职业饰品堆叠
+        public bool NerfFinalMeleeAcc = false;
+        public bool NerfFinalRangedAcc = false;
+        public bool NerfFinalMagicAcc = false;
+        public bool NerfFinalSummonAcc = false;
+        #endregion
         #endregion
         /// <summary>
         /// 这个是在MaxLife后边的
@@ -114,8 +121,8 @@ namespace CalamityInheritance.CIPlayer
             TheAbsorberOld = false;//阴阳石受击回血
             FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
-            SpeedrunNecklace= false;//肃杀项链
-            AncientCotbg = false ;//肃杀核心
+            SpeedrunNecklace = false;//肃杀项链
+            AncientCotbg = false;//肃杀核心
             AncientBloodPact = false;//血契
             ElemGauntlet = false;//元素之握
             BloodflareCoreStat = false;
@@ -124,14 +131,14 @@ namespace CalamityInheritance.CIPlayer
             FuckEHeart = false;
             NucleogenesisLegacy = false;//核子
             WearingStatisCurse = false;
-            
+
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;
             AmbrosialImmnue = false;
             AmbrosialStats = false;
             DraedonsHeartLegacyStats = false;
             EmpressBooster = false;
-            AeroStonePower = false; 
+            AeroStonePower = false;
             IsWearingBloodyScarf = false;
             IsWearingElemQuiverCal = false;
             anyShield = false; //是否有任何护盾

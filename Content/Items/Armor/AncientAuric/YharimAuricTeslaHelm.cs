@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Buffs.Statbuffs;
+using Terraria.ID;
+using System;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -37,9 +40,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			player.setBonus = this.GetLocalizedValue("SetBonus");
 			//标记为魔君金源甲
 			modPlayer.YharimAuricSet = true;
-            #region 灾厄的月后套通用效果
-            player.Calamity().WearingPostMLSummonerSet = true;
-            calPlayer.tarraSet = true;
+			#region 灾厄的月后套通用效果
+			player.Calamity().WearingPostMLSummonerSet = true;
+			calPlayer.tarraSet = true;
 			calPlayer.bloodflareSet = true;
 			calPlayer.godSlayer = true;
 			// 去除了原灾金源套的判定，没啥用，而且还有巨难看的残影
@@ -50,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.WearingPostMLSummonerSet = true;
 			//继承制盗贼弑神盔甲
 			calPlayer.rogueStealthMax += 2.00f;
-			
+
 			#endregion
 			#region 弑神自活, 反伤, 弑神冲刺
 			//弑神自活与反伤
@@ -73,8 +76,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 						modPlayer.AncientAuricDashCounter += 1;
 						modPlayer.AncientAuricDashCache = 30;
 					}
-                    player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
-					
+					player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
+
 				}
 				player.dash = 0;
 			}
@@ -96,10 +99,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			//远古血炎产红心, 远古林海强回血整合在这里面
 			modPlayer.AncientSilvaForceRegen = true;
 			modPlayer.AncientAuricSet = true;
-            modPlayer.RefreshGodSlayerDash(calPlayer);
-            #endregion
-            #region 五职业头盔套的各自套装效果
-            modPlayer.auricBoostold = true;
+			modPlayer.RefreshGodSlayerDash(calPlayer);
+			#endregion
+			#region 五职业头盔套的各自套装效果
+			modPlayer.auricBoostold = true;
 			//战士
 			calPlayer.tarraMelee = true;
 			calPlayer.bloodflareMelee = true;
@@ -125,8 +128,51 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			calPlayer.godSlayerThrowing = true;
 			modPlayer.SilvaRougeSetLegacy = true;
 			#endregion
+			ImmuneDebuffSoul(player);
+			ImmuneDebuffSoulDLC(player);
+			ImmnueDebuffCalamity(player);
+			
     	}
-		public override void ModifyTooltips(List<TooltipLine> tooltips)
+
+        private void ImmnueDebuffCalamity(Player player)
+        {
+			foreach (int debuff in CalamityLists.debuffList)
+				player.buffImmune[debuff] = true;
+        }
+
+        private void ImmuneDebuffSoulDLC(Player player)
+        {
+			if (!ModLoader.TryGetMod("FargowiltasCrossmod", out Mod DLC))
+				return;
+			player.ImmnueDebuff(DLC, "CalamitousPresenceBuff");
+        }
+
+		private void ImmuneDebuffSoul(Player player)
+		{
+			if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSoul))
+				return;
+			player.ImmnueDebuff(fargoSoul, "MutantPresenceBuff");
+			player.ImmnueDebuff(fargoSoul, "MutantFangBuff");
+			player.ImmnueDebuff(fargoSoul, "AbomPresenceBuff");
+			player.ImmnueDebuff(fargoSoul, "AbomFangBuff");
+			player.ImmnueDebuff(fargoSoul, "MutantDesperationBuff");
+			player.ImmnueDebuff(fargoSoul, "MoonFangBuff");
+			player.ImmnueDebuff(fargoSoul, "OceanicMaulBuff");
+			player.ImmnueDebuff(fargoSoul, "CurseoftheMoonBuff");
+			player.ImmnueDebuff(fargoSoul, "AntisocialBuff");
+			player.ImmnueDebuff(fargoSoul, "AtrophiedBuff");
+			player.ImmnueDebuff(fargoSoul, "LightningRodBuff");
+			player.ImmnueDebuff(fargoSoul, "FusedBuff");
+			player.ImmnueDebuff(fargoSoul, "MutantNibbleBuff");
+			player.ImmnueDebuff(fargoSoul, "HexedBuff");
+			player.ImmnueDebuff(fargoSoul, "DefenselessBuff");
+			player.ImmnueDebuff(fargoSoul, "HolyPriceBuff");
+			player.ImmnueDebuff(fargoSoul, "ClippedWingsBuff");
+			player.ImmnueDebuff(fargoSoul, "LethargicBuff");
+			player.ImmnueDebuff(fargoSoul, "JammedBuff");
+			player.ImmnueDebuff(fargoSoul, "UnstableBuff");
+		}
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
             var mplr = player.CIMod();
@@ -146,6 +192,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			player.statLifeMax2 += 600;
 			player.GetDamage<GenericDamageClass>() += 0.40f;
 			player.GetCritChance<GenericDamageClass>() += 40;
+		}
+	}
+	public static class ImmnueMethods
+	{
+		internal static void ImmnueDebuff(this Player player, Mod otherMod, string buffName)
+		{
+			player.buffImmune[otherMod.Find<ModBuff>(buffName).Type] = true;
 		}
 	}
 }

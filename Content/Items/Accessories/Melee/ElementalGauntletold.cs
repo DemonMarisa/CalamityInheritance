@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
@@ -25,21 +26,22 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             Item.height = 38;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.accessory = true;
+            Item.defense = 10;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) => Item.type.SetConflictMod<ElementalGauntlet>(equippedItem, incomingItem);
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CIMod();
             modPlayer1.ElemGauntlet = true;
             modPlayer1.YharimsInsignia = true;
-            player.GetDamage<MeleeDamageClass>() += 0.15f;
+            player.GetDamage<MeleeDamageClass>() += 0.30f;
             player.GetCritChance<MeleeDamageClass>() += 15;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
             player.kbGlove = true;
             player.autoReuseGlove = true;
             player.meleeScaleGlove = true;
-            player.GetDamage<TrueMeleeDamageClass>() += 0.25f;
+            player.GetDamage<TrueMeleeDamageClass>() += 0.15f;
         }
 
         public override void AddRecipes()

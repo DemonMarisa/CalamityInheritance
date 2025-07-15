@@ -245,7 +245,6 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ModContent.ItemType<ElementalQuiver>())
                 usPlayer.IsWearingElemQuiverCal = true;
                 
-                
             if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaAccesoriesUnnerf(item, player);  //饰品

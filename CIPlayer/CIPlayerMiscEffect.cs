@@ -207,6 +207,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetCritChance<GenericDamageClass>() += 100 * AncientAuricDashCounter; //所有职业获得100暴击概率
                 Player.manaCost *= 0.20f;
                 Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 2f * AncientAuricDashCounter;
+                Player.GetAttackSpeed<RogueDamageClass>() += 0.30f * AncientAuricDashCounter;
             }
             if (PerunofYharimCooldown <= 0)
             {
@@ -234,8 +235,9 @@ namespace CalamityInheritance.CIPlayer
         }
         private void Accessories()
         {
+
             CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CIMod();
+            NerfStackAccessories();
             if (YharimsInsignia)
             {
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
@@ -408,6 +410,16 @@ namespace CalamityInheritance.CIPlayer
                 Player.pickSpeed -= 0.5f; //这样会使挖矿速度上下位不能叠加, 但是有一说一都到四柱/神后了, 挖矿速度又不缺这点
             }
         }
+
+        private void NerfStackAccessories()
+        {
+            if (NerfFinalSummonAcc)
+            {
+                Player.maxMinions -= 2;
+                Player.GetDamage<SummonDamageClass>() -= 0.05f;
+            }
+        }
+
         private void Nanotechs()
         {
             CalamityPlayer modPlayer = Player.Calamity();

@@ -24,6 +24,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<CalamityMod.Items.Accessories.ElementalQuiver>(false);
         }
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            int conflict = ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>();
+            return Item.type.SetConflict(equippedItem, incomingItem, conflict);
+        }
         public override void SetDefaults()
         {
             Item.width = 28;
@@ -71,11 +76,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             {
                 modplayer.ElemQuiver= false;
             }
-            player.GetDamage(DamageClass.Ranged) += 0.20f;
+            player.GetDamage(DamageClass.Ranged) += 0.25f;
             player.GetCritChance(DamageClass.Ranged) += 20;
             player.ammoCost80 = true;
             player.lifeRegen += 4;
-            player.pickSpeed -= 0.15f;
+            player.pickSpeed -= 0.100f;
             player.magicQuiver = true;
             if (!modPlayer1.deadshotBrooch)
                 modplayer.DeadshotBroochCI = true;
