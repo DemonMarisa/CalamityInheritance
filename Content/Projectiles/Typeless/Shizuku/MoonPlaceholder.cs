@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override void AI()
         {
-            
             DoReady();
             //这里会需要类似于虚空箭袋的逻辑
             DoRotated();
@@ -40,14 +39,19 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public void DoReady()
         {
             //往AI里面不断检查是否应该生成这个射弹，如果不允许生成，则自动干掉自己
-            /*
             if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
             {
                 Projectile.Kill();
                 Projectile.netUpdate = true;
                 return;
             }
-            */
+            Timer += 1f;
+            //开始生成, 向上投射
+            // Projectile.Opacita
+            if (Timer > 15f)
+            {
+
+            }
 
         }
 

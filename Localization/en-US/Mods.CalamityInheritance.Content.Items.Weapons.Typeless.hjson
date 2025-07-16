@@ -79,3 +79,8 @@ YanmeisKnife: {
 		A heart of iron and valor'
 		'''
 }
+
+ShizukuSword: {
+	DisplayName: Shizuku Sword
+	Tooltip: ""
+}
