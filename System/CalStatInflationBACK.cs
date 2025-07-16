@@ -197,7 +197,7 @@ namespace CalamityInheritance.System
             #region 魔影
             PostShadowspecWeapons.Add(ModContent.ItemType<IridescentExcalibur>());
             PostShadowspecWeapons.Add(ModContent.ItemType<HalibutCannon>());
-            PostShadowspecWeapons.Removed(ModContent.ItemType<>());
+            PostShadowspecWeapons.Remove(ModContent.ItemType<ApotheosisLegacy>());
             #endregion
         }
 
