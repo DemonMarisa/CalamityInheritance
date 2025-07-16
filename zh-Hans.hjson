@@ -81,6 +81,7 @@ Mods: {
 			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
 			// SarosAuraLegacy.DisplayName: Saros Aura Legacy
 			// ShizukuSword.DisplayName: Shizuku Sword
+			// ShizukuSwordProjectile.DisplayName: Shizuku Sword Projectile
 		}
 
 		Content/Projectiles/Summon: {

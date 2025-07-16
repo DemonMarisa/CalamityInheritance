@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
     public class ShizukuEdgeProjectileAlter : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Typeless/ShizukuEdge";
+        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Typeless/ShizukuItem/ShizukuEdge";
         public Player Owner => Main.player[Projectile.owner];
         public static Vector2 HoldingOffset => new (-5, 10f);
         public ref float AttackTimer => ref Projectile.ai[1];

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -25,7 +26,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<RampartofDeities>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer= player.CIMod();

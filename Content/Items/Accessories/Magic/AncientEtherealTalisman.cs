@@ -25,7 +25,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<EtherealTalisman>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();
@@ -38,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
             player.statManaMax2 += 250;
             player.GetDamage<MagicDamageClass>() += 0.30f;
             player.manaCost -= 0.2f;
-            player.GetCritChance<MagicDamageClass>() += 25;
+            player.GetCritChance<MagicDamageClass>() += 30;
             player.pStone = true;
             player.lifeRegen += 6;
         }

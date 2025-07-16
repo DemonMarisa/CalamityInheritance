@@ -26,7 +26,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<HeartoftheElements>();
         }
-
         public override void SetDefaults()
         {
             Item.width = 20;

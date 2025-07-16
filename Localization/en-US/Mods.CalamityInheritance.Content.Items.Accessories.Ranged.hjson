@@ -3,7 +3,7 @@ DaedalusEmblem: {
 	Tooltip:
 		'''
 		+1 HP/s life regen speed
-		10% increased ranged damage, 5% increased ranged critical strike chance
+		15% increased ranged damage, 5% increased ranged critical strike chance
 		20% not consumed ammo
 		Greatly increased ranged projectiles speed
 		'''
@@ -22,10 +22,11 @@ ElementalQuiver: {
 	DisplayName: Elemental Quiver Legacy
 	Tooltip:
 		'''
-		20% increased ranged damage and ranged critical strike chance
-		+2 HP/s life regen speed, 15% increased mining speed
-		20% chance not consume ammo 
+		25% increased ranged damage, 20% increased ranged critical strike chance
+		+2 HP/s life regen speed, 100% increased mining speed
+		20% chance not consume ammo
 		Greatly increases all ranged projectiles velocity
+		Most of your ranged projectiles can split
 		[TEXT]
 		'''
 	DefaultText: "[c/BEBEBE:Currently can not split, toggle by mod config]"

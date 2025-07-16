@@ -22,10 +22,13 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<ReaperToothNecklace>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage<GenericDamageClass>() += 0.15f;
+            player.GetDamage<GenericDamageClass>() += 0.20f;
             player.GetArmorPenetration<GenericDamageClass>() += 100;
         }
 

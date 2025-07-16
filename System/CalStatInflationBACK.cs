@@ -783,7 +783,7 @@ namespace CalamityInheritance.System
             if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
                 item.damage = 5800;
             if (item.type == ModContent.ItemType<Apotheosis>())
-                item.damage = 420;
+                item.damage = 328;
             if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
                 item.damage = 720;
             if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())

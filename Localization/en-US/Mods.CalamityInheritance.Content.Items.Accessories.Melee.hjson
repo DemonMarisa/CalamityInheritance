@@ -11,8 +11,8 @@ ElementalGauntletold: {
 	DisplayName: Elemental Gauntlet Legacy
 	Tooltip:
 		'''
-		15% increased melee damage and critical strike chance
-		25% increased true melee damage
+		30% increased melee damage
+		15% increased melee critical strike chance and true melee damage
 		10% increased max life
 		Increased melee knockback
 		Increases the size of melee weapon
@@ -25,8 +25,7 @@ YharimsInsignia: {
 	DisplayName: Yharims' Insigna Legacy
 	Tooltip:
 		'''
-		10% increased melee damage and speed
-		10% increased true melee damage
+		15% increased melee damage and true melee damage
 		10% increased damage while below 50% HP
 		Increases melee knockback power
 		Your melee strikes and projectiles inflict Holy Flame

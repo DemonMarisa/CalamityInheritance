@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
             modPlayer.YharimsInsignia = true;
+            player.lavaMax = 600;
             player.GetDamage<MeleeDamageClass>() += 0.15f;
             player.GetDamage<TrueMeleeDamageClass>() += 0.15f;
         }

@@ -82,7 +82,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             Item.ResearchUnlockCount = 1;
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<TheSponge>(equippedItem, incomingItem);
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

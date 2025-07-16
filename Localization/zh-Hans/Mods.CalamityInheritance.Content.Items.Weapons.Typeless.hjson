@@ -96,3 +96,8 @@ YanmeisKnife: {
 		荣誉相随的钢铁雄心”
 		'''
 }
+
+ShizukuSword: {
+	// DisplayName: Shizuku Sword
+	// Tooltip: ""
+}

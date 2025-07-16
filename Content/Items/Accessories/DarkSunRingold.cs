@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -33,7 +34,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<DarkSunRing>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();

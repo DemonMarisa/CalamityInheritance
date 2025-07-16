@@ -32,6 +32,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<ElysianAegis>();
         }
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<ElysianAegis>(equippedItem, incomingItem);
+        }
         public override void SetDefaults()
         {
             Item.width = 48;

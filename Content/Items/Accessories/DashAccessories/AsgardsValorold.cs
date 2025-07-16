@@ -32,6 +32,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.defense = 16;
             Item.accessory = true;
         }
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            return Item.type.SetConflictMod<AsgardsValor>(equippedItem, incomingItem);
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
@@ -49,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             { 
-                player.endurance += 0.1f;
+                player.endurance += 0.25f;
             }
         }
 

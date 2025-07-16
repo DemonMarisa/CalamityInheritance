@@ -27,18 +27,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) => Item.type.SetConflictMod<Nucleogenesis>(equippedItem, incomingItem); 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer CIplayer = player.CIMod();
 
             CIplayer.NucleogenesisLegacy = true;
             player.GetKnockback<SummonDamageClass>() += 3f;
-            player.GetDamage<SummonDamageClass>() += 0.15f;
+            player.GetDamage<SummonDamageClass>() += 0.50f;
             player.buffImmune[ModContent.BuffType<Shadowflame>()] = true;
             player.buffImmune[ModContent.BuffType<Irradiated>()] = true;
-            player.whipRangeMultiplier += 0.40f;
-            player.maxMinions += 4;
+            player.whipRangeMultiplier += 0.20f;
+            player.maxMinions += 5;
             player.maxTurrets += 1;
         }
 
