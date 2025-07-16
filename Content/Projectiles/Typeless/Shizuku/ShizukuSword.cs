@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
     public class ShizukuSwordProjectile : ModProjectile
     {
         public Player Owner => Main.player[Projectile.owner];
-        public override string Texture => $"{Generic.WeaponPath}/Typeless/ShizukuSword";
+        public override string Texture => $"{Generic.WeaponPath}/Typeless/ShizukuItem/ShizukuSword";
         //目前没有作用，我认为应该去掉。
         public int TargetIndex
         {

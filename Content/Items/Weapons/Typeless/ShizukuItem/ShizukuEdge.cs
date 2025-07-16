@@ -67,20 +67,20 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
                 Projectile.NewProjectile(source, Main.MouseWorld, velocity, projLeftType, damage, knockback, player.whoAmI);
             return false;
         }
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                    AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
-                    AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
-                    AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
-                    AddRecipeGroup(CIRecipeGroup.AnyChest).
-                    AddIngredient<CosmiliteBar>(10).
-                    AddIngredient(ItemID.LunarBar, 20).
-                    AddIngredient<ShadowspecBar>(5).
-                    AddIngredient<Lumenyl>(30).
-                    AddCondition(Condition.NearShimmer).
-                    Register();
+        // public override void AddRecipes()
+        // {
+        //     CreateRecipe().
+        //             AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
+        //             AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
+        //             AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
+        //             AddRecipeGroup(CIRecipeGroup.AnyChest).
+        //             AddIngredient<CosmiliteBar>(10).
+        //             AddIngredient(ItemID.LunarBar, 20).
+        //             AddIngredient<ShadowspecBar>(5).
+        //             AddIngredient<Lumenyl>(30).
+        //             AddCondition(Condition.NearShimmer).
+        //             Register();
                     
-        }
+        // }
     } 
 }
