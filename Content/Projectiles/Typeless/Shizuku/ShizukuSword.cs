@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
@@ -37,12 +38,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         #endregion
         #region 顶点绘制使用
         public float totalOldPos = 20;
-        public static Asset<Texture2D> TrailTexture;
         #endregion
 
         public override void SetStaticDefaults()
         {
-            TrailTexture = ModContent.Request<Texture2D>($"{Generic.ProjPath}/Typeless/Shizuku/ShizukuSword_Trail");
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = (int)totalOldPos;
         }
@@ -170,58 +169,97 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Projectile.BaseProjPreDraw(texture, lightColor, MathHelper.ToRadians(7));
+            // 基础传入属性
+            SpriteBatch spriteBatch = Main.spriteBatch;
+            GraphicsDevice graphicsDevice = Main.graphics.GraphicsDevice;
 
+            #region 顶点绘制拖尾
             Vector2[] oldPos = Projectile.oldPos;
-
+            #region 重置绘制批次，采用屏幕矩阵绘制
             spriteBatch.End();
             spriteBatch.Begin(
-                SpriteSortMode.Immediate, 
+                SpriteSortMode.Immediate,
                 BlendState.Additive,
                 SamplerState.AnisotropicClamp,
                 DepthStencilState.None,
                 RasterizerState.CullNone,
                 null,
                 Main.GameViewMatrix.TransformationMatrix);// 屏幕矩阵
+            #endregion
 
-            List<CIVertexPositionColorTexture> Vertexlist = [];
-
-            var halftextureWidth = texture.Width / 2;
-            var halftextureHeight = texture.Height / 2;
+            #region 过滤掉零向量
+            List<Vector2> validPositions = new List<Vector2>();
+            List<float> OldRot = new List<float>();
 
             for (int i = 0; i < oldPos.Length; i++)
             {
-                Vector2 DrawPos = new Vector2(oldPos[i].X + halftextureWidth, oldPos[i].Y + halftextureHeight) - Main.screenPosition;
-                // 如果第一个点是0,0，那么会飞到世界远点，会画一条巨远的线，所以这里要判断一下。
                 if (oldPos[i] != Vector2.Zero)
                 {
-                    // DrawPos.Y - halftextureHeight 这减用于确定一个片的Y高度，不一定必须要是贴图的一半，也可以是任意数值
-                    // 贴图的正上方
-                    Vertexlist.Add(new CIVertexPositionColorTexture(
-                        position: new Vector2(DrawPos.X, DrawPos.Y - 40),
-                        color: Color.White,
-                        // 将一个片平均分成20份，这里是上半部分的点
-                        textureCoordinate: new Vector3(i / totalOldPos, 0, 1)
-                        ));
-
-                    // 贴图的正上方
-                    Vertexlist.Add(new CIVertexPositionColorTexture(
-                        position: new Vector2(DrawPos.X, DrawPos.Y + 40),
-                        color: Color.White,
-                        // 将一个片平均分成20份，这里是下半部分的点
-                        textureCoordinate: new Vector3(i / totalOldPos, 0, 1)
-                        ));
+                    validPositions.Add(oldPos[i]);
+                    OldRot.Add(Projectile.oldRot[i]);
                 }
             }
+            #endregion
 
-            // 因为至少有三个点才可以绘制，所以这里要判断一下。
-            if (Vertexlist.Count > 3)
+            #region 保存对应点
+            List<CIVertexPositionColorTexture> Vertexlist = new List<CIVertexPositionColorTexture>();
+
+            for (int i = 0; i < validPositions.Count; i++)
             {
-                graphicsDevice.Textures[0] = TrailTexture.Value;
-                graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count / 2);
-            }
+                Vector2 DrawPos = validPositions[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f) - Main.screenPosition;
 
+                float progress = (float)i / validPositions.Count;
+
+                // DrawPos.Y - halftextureHeight 这减用于确定一个片的Y高度，不一定必须要是贴图的一半，也可以是任意数值
+                // 贴图的正上方
+                Vertexlist.Add(new CIVertexPositionColorTexture(
+                    position: new Vector2(DrawPos.X, DrawPos.Y) - new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
+                    color: Color.White,
+                    // 将一个片平均分成20份，这里是上半部分的点
+                    textureCoordinate: new Vector3(progress, 0, 0) // V=0表示上端
+                    ));
+
+                // 贴图的正上方
+                Vertexlist.Add(new CIVertexPositionColorTexture(
+                    position: new Vector2(DrawPos.X, DrawPos.Y) + new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
+                    color: Color.White,
+                    // 将一个片平均分成20份，这里是下半部分的点
+                    textureCoordinate: new Vector3(progress, 1, 0) // V=1表示下端
+                    ));
+            }
+            #endregion
+
+            #region 最终绘制
+            // Main.NewText(Vertexlist.Count);
+            // 因为至少有三个点才可以绘制，所以这里要判断一下。
+            if (Vertexlist.Count >= 3)
+            {
+                graphicsDevice.Textures[0] = CITextureRegistry.ShizukuSwordTrail.Value;
+                graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count - 2);
+            }
+            #endregion
+
+            #endregion
+
+            #region 绘制基础弹幕
+            spriteBatch.End();
+            spriteBatch.Begin();
+
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Projectile.BaseProjPreDraw(texture, lightColor, MathHelper.ToRadians(7));
+            #endregion
+            
+            #region 在基础弹幕上层绘制发光
+            spriteBatch.End();
+            spriteBatch.Begin(
+                SpriteSortMode.Immediate,
+                BlendState.Additive);
+
+            Texture2D Glowtexture = CITextureRegistry.ShizukuSwordGlow.Value;
+            Projectile.BaseProjPreDraw(Glowtexture, lightColor, MathHelper.ToRadians(7), 0.5f);
+            #endregion
+            
+            // 重置批次到默认状态
             spriteBatch.End();
             spriteBatch.Begin();
             return false;
