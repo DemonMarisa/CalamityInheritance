@@ -243,22 +243,32 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
             #region 绘制基础弹幕
             spriteBatch.End();
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+                BlendState.AlphaBlend,
+                SamplerState.AnisotropicClamp,
+                DepthStencilState.None,
+                RasterizerState.CullNone,
+                null,
+                Main.GameViewMatrix.TransformationMatrix);
 
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Projectile.BaseProjPreDraw(texture, lightColor, MathHelper.ToRadians(7));
             #endregion
-            
+
             #region 在基础弹幕上层绘制发光
             spriteBatch.End();
-            spriteBatch.Begin(
-                SpriteSortMode.Immediate,
-                BlendState.Additive);
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+                BlendState.Additive,
+                SamplerState.AnisotropicClamp,
+                DepthStencilState.None,
+                RasterizerState.CullNone,
+                null,
+                Main.GameViewMatrix.TransformationMatrix);
 
             Texture2D Glowtexture = CITextureRegistry.ShizukuSwordGlow.Value;
-            Projectile.BaseProjPreDraw(Glowtexture, lightColor, MathHelper.ToRadians(7), 0.5f);
+            Projectile.BaseProjPreDraw(Glowtexture, Color.White, MathHelper.ToRadians(7), 0.5f);
             #endregion
-            
+
             // 重置批次到默认状态
             spriteBatch.End();
             spriteBatch.Begin();
