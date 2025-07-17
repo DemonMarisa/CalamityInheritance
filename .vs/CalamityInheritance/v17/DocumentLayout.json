@@ -7,6 +7,26 @@
       "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\projectiles\\typeless\\shizuku\\shizukusword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\particles\\bloomshockwave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:particles\\bloomshockwave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\particles\\opticalflaresline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:particles\\opticalflaresline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\system\\configs\\calamityinheritanceconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:system\\configs\\calamityinheritanceconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\baseclass\\baseheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\baseclass\\baseheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\particles\\starprojblack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:particles\\starprojblack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\projectiles\\heldproj\\ranged\\pearlgodlegacyheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\projectiles\\heldproj\\ranged\\pearlgodlegacyheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -47,14 +67,6 @@
       "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\projectiles\\heldproj\\magic\\wingmanheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\baseclass\\baseheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\baseclass\\baseheldproj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\system\\configs\\calamityinheritanceconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:system\\configs\\calamityinheritanceconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|c:\\users\\administrator\\documents\\my games\\terraria\\tmodloader\\modsources\\calamityinheritance\\content\\items\\weapons\\typeless\\shizukuitem\\shizukusword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{356AC74C-25D8-4E93-92DC-F652848F1E7D}|CalamityInheritance.csproj|solutionrelative:content\\items\\weapons\\typeless\\shizukuitem\\shizukusword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -70,24 +82,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "BloomShockWave.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\BloomShockWave.cs",
+              "RelativeDocumentMoniker": "Particles\\BloomShockWave.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\BloomShockWave.cs",
+              "RelativeToolTip": "Particles\\BloomShockWave.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwCIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:57:44.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OpticalFlaresLine.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\OpticalFlaresLine.cs",
+              "RelativeDocumentMoniker": "Particles\\OpticalFlaresLine.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\OpticalFlaresLine.cs",
+              "RelativeToolTip": "Particles\\OpticalFlaresLine.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAtwCMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:57:37.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StarProjBlack.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\StarProjBlack.cs",
+              "RelativeDocumentMoniker": "Particles\\StarProjBlack.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Particles\\StarProjBlack.cs",
+              "RelativeToolTip": "Particles\\StarProjBlack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:54:53.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PearlGodLegacyHeldProj.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\HeldProj\\Ranged\\PearlGodLegacyHeldProj.cs",
               "RelativeDocumentMoniker": "Content\\Projectiles\\HeldProj\\Ranged\\PearlGodLegacyHeldProj.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\HeldProj\\Ranged\\PearlGodLegacyHeldProj.cs",
               "RelativeToolTip": "Content\\Projectiles\\HeldProj\\Ranged\\PearlGodLegacyHeldProj.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAmwOQAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOQAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-17T11:29:23.034Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "DrawingUtils.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Utilities\\DrawingUtils.cs",
               "RelativeDocumentMoniker": "Utilities\\DrawingUtils.cs",
@@ -99,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "ShizukuSword_Trail.png",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\ExtraTextures\\Trails\\ShizukuSword_Trail.png",
               "RelativeDocumentMoniker": "ExtraTextures\\Trails\\ShizukuSword_Trail.png",
@@ -110,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "CITextureRegistry.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Texture\\CITextureRegistry.cs",
               "RelativeDocumentMoniker": "Texture\\CITextureRegistry.cs",
@@ -118,12 +169,11 @@
               "RelativeToolTip": "Texture\\CITextureRegistry.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T07:52:44.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T07:52:44.184Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "CalamityInheritanceTexture.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Texture\\CalamityInheritanceTexture.cs",
               "RelativeDocumentMoniker": "Texture\\CalamityInheritanceTexture.cs",
@@ -135,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "WingmanHeldProj.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\HeldProj\\Magic\\WingmanHeldProj.cs",
               "RelativeDocumentMoniker": "Content\\Projectiles\\HeldProj\\Magic\\WingmanHeldProj.cs",
@@ -147,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "ACTGenisisHeldProj.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\HeldProj\\Magic\\ACTGenisisHeldProj.cs",
               "RelativeDocumentMoniker": "Content\\Projectiles\\HeldProj\\Magic\\ACTGenisisHeldProj.cs",
@@ -159,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "AccelerationRoundProj.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\Ammo\\AccelerationRoundProj.cs",
               "RelativeDocumentMoniker": "Content\\Projectiles\\Ammo\\AccelerationRoundProj.cs",
@@ -171,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ShizukuSword.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Typeless\\ShizukuItem\\ShizukuSword.cs",
               "RelativeDocumentMoniker": "Content\\Items\\Weapons\\Typeless\\ShizukuItem\\ShizukuSword.cs",
@@ -183,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "ProjectileUtils.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Utilities\\ProjectileUtils.cs",
               "RelativeDocumentMoniker": "Utilities\\ProjectileUtils.cs",
@@ -195,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "Generic.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Items\\Weapons\\Generic.cs",
               "RelativeDocumentMoniker": "Content\\Items\\Weapons\\Generic.cs",
@@ -207,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "CIVertexPositionColorTexture.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Core\\CIVertexPositionColorTexture.cs",
               "RelativeDocumentMoniker": "Core\\CIVertexPositionColorTexture.cs",
@@ -215,24 +265,24 @@
               "RelativeToolTip": "Core\\CIVertexPositionColorTexture.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T17:40:36.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-16T17:40:36.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "CalamityInheritanceConfig.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\System\\Configs\\CalamityInheritanceConfig.cs",
               "RelativeDocumentMoniker": "System\\Configs\\CalamityInheritanceConfig.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\System\\Configs\\CalamityInheritanceConfig.cs",
               "RelativeToolTip": "System\\Configs\\CalamityInheritanceConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAMwIkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T16:09:56.858Z"
+              "WhenOpened": "2025-07-16T16:09:56.858Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "BaseHeldProj.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\BaseClass\\BaseHeldProj.cs",
               "RelativeDocumentMoniker": "Content\\BaseClass\\BaseHeldProj.cs",
@@ -240,7 +290,8 @@
               "RelativeToolTip": "Content\\BaseClass\\BaseHeldProj.cs",
               "ViewState": "AgIAAH0AAAAAAAAAAAAswJcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T16:07:20.114Z"
+              "WhenOpened": "2025-07-16T16:07:20.114Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -250,7 +301,7 @@
               "RelativeDocumentMoniker": "Content\\Projectiles\\Typeless\\Shizuku\\ShizukuSword.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CalamityInheritance\\Content\\Projectiles\\Typeless\\Shizuku\\ShizukuSword.cs*",
               "RelativeToolTip": "Content\\Projectiles\\Typeless\\Shizuku\\ShizukuSword.cs*",
-              "ViewState": "AgIAANQAAAAAAAAAAAAUwP0AAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAuwLEAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T16:01:02.457Z",
               "EditorCaption": ""

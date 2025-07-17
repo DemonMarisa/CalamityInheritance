@@ -213,6 +213,11 @@ Configs: {
 			Label: Debugfloat
 			Tooltip: ""
 		}
+
+		DebugColor: {
+			Label: Debug Color
+			Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

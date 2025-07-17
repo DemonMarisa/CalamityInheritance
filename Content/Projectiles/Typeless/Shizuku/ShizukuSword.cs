@@ -4,9 +4,11 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Core;
+using CalamityInheritance.Particles;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
+using CalamityMod.Particles;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -163,6 +165,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             //{
             //    Projectile.Kill();
             //}
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Particle OpFlares = new OpticalFlaresLine(Projectile.Center, Vector2.Zero, 25, 0f, new Color(105, 255, 255, 255));
+            GeneralParticleHandler.SpawnParticle(OpFlares);
+
+            Particle BloomShockWave = new BloomShockWave(Projectile.Center, Vector2.Zero, 25, 0f, new Color(35, 255, 255, 255));
+            GeneralParticleHandler.SpawnParticle(BloomShockWave);
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }
         public GraphicsDevice graphicsDevice { get => Main.graphics.GraphicsDevice; }
