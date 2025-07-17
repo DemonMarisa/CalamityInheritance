@@ -14,12 +14,12 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityMod.Items.Materials;
 
-namespace CalamityInheritance.Content.Items.Weapons.Typeless
+namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
 {
     public class ShizukuEdge : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
-        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f};
+        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f };
         public static readonly int BaseDamage = 15000;
         public override void SetStaticDefaults()
         {
@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
         //             AddIngredient<Lumenyl>(30).
         //             AddCondition(Condition.NearShimmer).
         //             Register();
-                    
+
         // }
-    } 
+    }
 }

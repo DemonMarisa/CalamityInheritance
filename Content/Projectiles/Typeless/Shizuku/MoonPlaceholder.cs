@@ -1,5 +1,5 @@
 using System;
-using CalamityInheritance.Content.Items.Weapons.Typeless;
+using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Utilities;
 using CalamityMod;

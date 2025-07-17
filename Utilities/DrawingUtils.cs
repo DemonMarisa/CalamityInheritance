@@ -784,5 +784,16 @@ namespace CalamityInheritance.Utilities
             return array;
         }
         #endregion
+        #region 基础PreDrew绘制
+        public static void BaseProjPreDraw(this Projectile proj, Texture2D texture, Color lightColor, float rotOffset = 0f)
+        {
+            Vector2 drawPosition = proj.Center - Main.screenPosition;
+            float drawRotation = proj.rotation + (proj.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            Vector2 rotationPoint = texture.Size() * 0.5f;
+            SpriteEffects flipSprite = (proj.spriteDirection * Main.player[proj.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+            Main.EntitySpriteDraw(texture, drawPosition, null, lightColor, drawRotation + rotOffset, rotationPoint, proj.scale * Main.player[proj.owner].gravDir, flipSprite);
+        }
+        #endregion
     }
 }

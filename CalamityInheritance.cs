@@ -125,7 +125,7 @@ namespace CalamityInheritance
             #region Hook
             CalamityInheritanceDashHook.Load(this);
             HeavenlyGaleProjHook.Load(this);
-            //日掉原灾归元的发光贴图
+            // 日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
@@ -133,7 +133,7 @@ namespace CalamityInheritance
             // 干掉伊布法杖中的变性药水
             DisableSylvestaffRecipe.Load();
             // 修复星火bug的hook
-            PhotovisceratorCalHook.Load(this);
+            PhotovisceratorCalHook.Load();
             // 邪染特判补全
             ElementalExcaliburTaintedDamageMultHook.Load();
             #endregion

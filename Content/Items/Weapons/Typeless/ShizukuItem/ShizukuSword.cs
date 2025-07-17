@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Typeless
+namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
 {
     public class ShizukuSword : ModItem, ILocalizedModType
     {

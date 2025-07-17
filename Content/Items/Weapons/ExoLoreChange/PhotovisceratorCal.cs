@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     */
     public class PhotovisceratorCalHook
     {
-        public static void Load(Mod mod)
+        public static void Load()
         {
             MethodInfo originalMethod = typeof(Photoviscerator).GetMethod(nameof(Photoviscerator.HoldItem));
             MonoModHooks.Add(originalMethod, HoldItem_Hook);

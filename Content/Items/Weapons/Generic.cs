@@ -7,6 +7,7 @@ namespace CalamityInheritance.Content.Items.Weapons
     public class Generic
     {
         public static string WeaponPath => "CalamityInheritance/Content/Items/Weapons";
+        public static string ProjPath => "CalamityInheritance/Content/Projectiles";
         public static string WeaponLocal => "Content.Items.Weapons";
         public static string GetWeaponLocal => "Mods.CalamityInheritance.Content.Items.Weapons";
         public static float GenericLegendBuff() => NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) ? 2.0f : 0f;
