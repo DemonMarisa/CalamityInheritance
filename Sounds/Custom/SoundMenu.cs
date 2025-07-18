@@ -59,33 +59,34 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle KarasawaEnergyPulse = new($"{KarasawaSound}/KarasawaEnergyPulse") { MaxInstances = 0, IsLooped = false };
         public static readonly SoundStyle KarasawaLaunch = new($"{KarasawaSound}/KarasawaLaunch", 2) { MaxInstances = 0, PitchVariance = 0.1f };
         public static readonly SoundStyle KarasawaChargeFailed = new($"{KarasawaSound}/KarasawaChargeFailed") { MaxInstances = 2 };
-        #region ÌúÐÄ
+        #region ï¿½ï¿½ï¿½ï¿½
         public static readonly SoundStyle IronHeartDeath = new($"{IronHeartSound}/IronHeartDeath") { Volume = 0.6f, Pitch = 0.9f };
         public static readonly SoundStyle IronHeartBigHurt = new($"{IronHeartSound}/IronHeartBigHurt") { Volume = 0.9f, Pitch = 0.7f };
         public static readonly SoundStyle IronHeartHurt = new($"{IronHeartSound}/IronHeartHurt") { Volume = 0.9f, Pitch = 0.7f };
         #endregion
-        #region ÈÕÊ´Ã¬
+        #region ï¿½ï¿½Ê´Ã¬
         public static readonly SoundStyle EclipseSpearAttackNor = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearAttackNor") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle EclipseSpearAttackStealth = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearAttackStealth") { Volume = 0.9f, Pitch = 0.7f };
         public static readonly SoundStyle EclipseSpearBoom = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearBoom") { Volume = 0.9f, Pitch = 0.7f };
         #endregion
-        #region ÔÂÃ÷Í¶Ã¬
+        #region ï¿½ï¿½ï¿½ï¿½Í¶Ã¬
         public static readonly SoundStyle LumiShardHit = new($"{ItemSoundRoute}/LumiSpear/LumiShardHit") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle LumiSpearAttackNor = new($"{ItemSoundRoute}/LumiSpear/LumiSpearAttackNor") { Volume = 0.6f, Pitch = 0.3f };
         #endregion
-        #region °¢¶û·¨ÉäÏßÏà¹Ø
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         public static readonly SoundStyle WingManFire = new($"{ItemSoundRoute}/AlphaRay/WingManFire") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle GenisisFire = new($"{ItemSoundRoute}/AlphaRay/GenisisFire") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
-        #region »¨¸ÚÑÒ²½Ç¹
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½Ç¹
         public static readonly SoundStyle MarniteBayonetShoot = new($"{ItemSoundRoute}/MarniteBayonet/MarniteBayonetShoot") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
-        #region Yameiµ¶
+        #region Yameiï¿½ï¿½
         public static readonly SoundStyle YanmeiKnifeHit = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeHit") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle YanmeiKnifeExpire = new($"{ItemSoundRoute}/YanmeisKnifeSounds/YanmeiKnifeExpire") { Volume = 0.9f, Pitch = 0.3f };
         #endregion
-        #region ±ÈÄ¿ÓãÅÚ
+        #region ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
         public static readonly SoundStyle HalibutCannonFire = new($"{ItemSoundRoute}/HalibutCannon/HalibutCannonFire") { Volume = 0.9f, Pitch = 0.3f };
+        public static readonly SoundStyle ShizukuSwordCharge = new($"{ItemSoundRoute}/WaterMirror");
         #endregion
     }
 }

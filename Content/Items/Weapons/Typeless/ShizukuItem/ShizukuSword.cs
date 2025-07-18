@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Item.rare = ModContent.RarityType<ShizukuAqua>();
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ShizukuSwordProjectile>();
-            Item.UseSound = SoundID.Item82;
+            // Item.UseSound = SoundID.Item82;
             Item.shootSpeed = 12f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

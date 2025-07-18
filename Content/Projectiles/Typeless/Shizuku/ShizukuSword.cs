@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Core;
 using CalamityInheritance.Particles;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
@@ -13,6 +15,7 @@ using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -33,10 +36,15 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public ref float AttackTimer => ref Projectile.ai[1];
         public ref float AttackType => ref Projectile.ai[2];
+        public ref float GlowingFadingTimer => ref Projectile.CalamityInheritance().ProjNewAI[1];
         #region AttackType
         const float IsSpawning = 0f;
         const float IsAngleTo = 1f;
         const float IsDashing = 2f;
+        #endregion
+        #region Arg
+        const float AngleToTargetTime = 25f;
+        internal bool DoneGlowing = false;
         #endregion
         #region 顶点绘制使用
         public float totalOldPos = 20;
@@ -64,10 +72,22 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         {
             return AttackType == IsDashing;
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(GlowingFadingTimer);
+            base.SendExtraAI(writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            GlowingFadingTimer = reader.ReadSingle();
+        }
         public override void AI()
         {
             //暂时禁用，这个射弹最后会和Shizuku Edge融为一体
             // CheckHeldItem();
+            GlowingFadingTimer += 0.5f;
+            if (GlowingFadingTimer > 25f)
+                GlowingFadingTimer = 25f;
             NPC anyTarget = Projectile.FindClosestTarget(CIFunction.SetDistance(100));
             switch (AttackType)
             {
@@ -85,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         //拖尾粒子
         private void TrailingDust()
         {
-            if (Main.rand.NextBool(4))
+            if (Main.rand.NextBool(4) && Projectile.velocity.Length() > 0.4f)
             {
                 int dustType = Main.rand.NextBool(5) ? 226 : 220;
                 float scale = 0.8f + Main.rand.NextFloat(0.3f);
@@ -115,11 +135,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             float shouldAngleTo = Projectile.AngleTo(anyTarget.Center) + MathHelper.PiOver4;
             //这个没生效。
             if (Projectile.rotation == shouldAngleTo)
-                AttackTimer = 25f;
+                AttackTimer = AngleToTargetTime;
             
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, shouldAngleTo, 0.15f);
             AttackTimer++;
-            if (AttackTimer > 25f)
+            if (AttackTimer > AngleToTargetTime)
             {
                 Projectile.netUpdate = true;
                 AttackType = IsDashing;
@@ -132,7 +152,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             //减速
             Projectile.velocity *= 0.92f;
             //渐变
+            if (Projectile.Opacity == 0)
+                SoundEngine.PlaySound(CISoundMenu.ShizukuSwordCharge with { Volume = 0.9f }, Projectile.Center);
             Projectile.Opacity += 0.05f;
+            
             if (anyTarget is not null)
             {
                 float shouldAngleTo = Projectile.AngleTo(anyTarget.Center) + MathHelper.PiOver4;
@@ -176,7 +199,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }
         public GraphicsDevice graphicsDevice { get => Main.graphics.GraphicsDevice; }
-
         public override bool PreDraw(ref Color lightColor)
         {
             // 基础传入属性
@@ -212,40 +234,43 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             #endregion
 
             #region 保存对应点
-            List<CIVertexPositionColorTexture> Vertexlist = new List<CIVertexPositionColorTexture>();
-
-            for (int i = 0; i < validPositions.Count; i++)
+            if (Projectile.velocity.Length() > 0.4f && AttackType != IsAngleTo)
             {
-                Vector2 DrawPos = validPositions[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f) - Main.screenPosition;
+                List<CIVertexPositionColorTexture> Vertexlist = new List<CIVertexPositionColorTexture>();
 
-                float progress = (float)i / validPositions.Count;
+                for (int i = 0; i < validPositions.Count; i++)
+                {
+                    Vector2 DrawPos = validPositions[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f) - Main.screenPosition;
 
-                // DrawPos.Y - halftextureHeight 这减用于确定一个片的Y高度，不一定必须要是贴图的一半，也可以是任意数值
-                // 贴图的正上方
-                Vertexlist.Add(new CIVertexPositionColorTexture(
-                    position: new Vector2(DrawPos.X, DrawPos.Y) - new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
-                    color: Color.White,
-                    // 将一个片平均分成20份，这里是上半部分的点
-                    textureCoordinate: new Vector3(progress, 0, 0) // V=0表示上端
-                    ));
+                    float progress = (float)i / validPositions.Count;
 
-                // 贴图的正上方
-                Vertexlist.Add(new CIVertexPositionColorTexture(
-                    position: new Vector2(DrawPos.X, DrawPos.Y) + new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
-                    color: Color.White,
-                    // 将一个片平均分成20份，这里是下半部分的点
-                    textureCoordinate: new Vector3(progress, 1, 0) // V=1表示下端
-                    ));
-            }
-            #endregion
+                    // DrawPos.Y - halftextureHeight 这减用于确定一个片的Y高度，不一定必须要是贴图的一半，也可以是任意数值
+                    // 贴图的正上方
+                    Vertexlist.Add(new CIVertexPositionColorTexture(
+                        position: new Vector2(DrawPos.X, DrawPos.Y) - new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
+                        color: Color.White,
+                        // 将一个片平均分成20份，这里是上半部分的点
+                        textureCoordinate: new Vector3(progress, 0, 0) // V=0表示上端
+                        ));
 
-            #region 最终绘制
-            // Main.NewText(Vertexlist.Count);
-            // 因为至少有三个点才可以绘制，所以这里要判断一下。
-            if (Vertexlist.Count >= 3)
-            {
-                graphicsDevice.Textures[0] = CITextureRegistry.ShizukuSwordTrail.Value;
-                graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count - 2);
+                    // 贴图的正上方
+                    Vertexlist.Add(new CIVertexPositionColorTexture(
+                        position: new Vector2(DrawPos.X, DrawPos.Y) + new Vector2(0, 35).RotatedBy(OldRot[i] - MathHelper.PiOver4),
+                        color: Color.White,
+                        // 将一个片平均分成20份，这里是下半部分的点
+                        textureCoordinate: new Vector3(progress, 1, 0) // V=1表示下端
+                        ));
+                }
+                #endregion
+
+                #region 最终绘制
+                // Main.NewText(Vertexlist.Count);
+                // 因为至少有三个点才可以绘制，所以这里要判断一下。
+                if (Vertexlist.Count >= 3)
+                {
+                    graphicsDevice.Textures[0] = CITextureRegistry.ShizukuSwordTrail.Value;
+                    graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count - 2);
+                }
             }
             #endregion
 
@@ -274,9 +299,18 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 RasterizerState.CullNone,
                 null,
                 Main.GameViewMatrix.TransformationMatrix);
-
+            //发光绘制只在准备发起攻击的时候进行
+            Player player = Main.player[Projectile.owner];
+            //获取辉光。
             Texture2D Glowtexture = CITextureRegistry.ShizukuSwordGlow.Value;
-            Projectile.BaseProjPreDraw(Glowtexture, Color.White, MathHelper.ToRadians(7), 0.5f);
+            float glowRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            Vector2 glowPostion = Projectile.Center - Main.screenPosition;
+            Vector2 glowRotationPoint = Glowtexture.Size() / 2f;
+            SpriteEffects glowSpriteFlip = (Projectile.spriteDirection * player.gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            //进行渐变
+            Color setColor = Color.White;
+            setColor.A = (byte)(255 / AngleToTargetTime * GlowingFadingTimer);
+            Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor, glowRotation + MathHelper.ToRadians(7), glowRotationPoint, Projectile.scale * player.gravDir * 0.5f, glowSpriteFlip, 0f);
             #endregion
 
             // 重置批次到默认状态
