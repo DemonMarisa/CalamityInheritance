@@ -191,10 +191,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Particle OpFlares = new OpticalFlaresLine(Projectile.Center, Vector2.Zero, 25, 0f, new Color(105, 255, 255, 255));
+            Particle OpFlares = new OpticalFlaresLine(Projectile.Center + new Vector2(Projectile.width / 2, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), Vector2.Zero, 25, 0f, new Color(105, 255, 255, 255));
             GeneralParticleHandler.SpawnParticle(OpFlares);
 
-            Particle BloomShockWave = new BloomShockWave(Projectile.Center, Vector2.Zero, 25, 0f, new Color(35, 255, 255, 255));
+            Particle BloomShockWave = new BloomShockWave(Projectile.Center + new Vector2(Projectile.width / 2, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), Vector2.Zero, 25, 0f, new Color(35, 255, 255, 255));
             GeneralParticleHandler.SpawnParticle(BloomShockWave);
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }
