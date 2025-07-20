@@ -24,11 +24,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<CalamityMod.Items.Accessories.ElementalQuiver>(false);
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            int conflict = ModContent.ItemType<CalamityMod.Items.Accessories.ElementalQuiver>();
-            return Item.type.SetConflict(equippedItem, incomingItem, conflict);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().IsWearingElemQuiverCal;
         public override void SetDefaults()
         {
             Item.width = 28;

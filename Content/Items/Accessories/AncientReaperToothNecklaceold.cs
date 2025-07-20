@@ -2,9 +2,6 @@
 using Terraria;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories

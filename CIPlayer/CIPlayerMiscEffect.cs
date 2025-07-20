@@ -125,8 +125,112 @@ namespace CalamityInheritance.CIPlayer
 
             // 铁心
             IronHeartChange();
+
+            //融合脑Buff相关
+            AmalgamBuffBuff();
         }
 
+        private void AmalgamBuffBuff()
+        {
+            if (Main.myPlayer != Player.whoAmI && !AmalgamLegacy)
+            {
+                return;
+            }
+            for (int i = 0; i < Player.MaxBuffs; i++)
+            {
+                int hasBuff = Player.buffType[i];
+                #region 孩子们这全是Buff
+                bool wellFedFamily = SameBuffType(hasBuff, BuffID.WellFed) || SameBuffType(hasBuff, BuffID.WellFed2) || SameBuffType(hasBuff, BuffID.WellFed3);
+                bool vanillaBuffs = hasBuff >= BuffID.ObsidianSkin
+                    && hasBuff <= BuffID.Gravitation
+                    || SameBuffType(hasBuff, BuffID.Honey)
+                    || SameBuffType(hasBuff, BuffID.Tipsy)
+                    || SameBuffType(hasBuff, BuffID.SugarRush)
+                    || (hasBuff >= BuffID.Mining && hasBuff <= BuffID.Wrath)
+                    || (hasBuff >= BuffID.Lovestruck && hasBuff <= BuffID.Warmth)
+                    || wellFedFamily;
+
+                bool weaponImbueBuff = SameBuffType(hasBuff, BuffID.WeaponImbueConfetti)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueCursedFlames)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueFire)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueGold)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueIchor)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueNanites)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbuePoison)
+                    || SameBuffType(hasBuff, BuffID.WeaponImbueVenom)
+                    || SameBuffType<WeaponImbueBrimstone>(hasBuff)
+                    || SameBuffType<WeaponImbueCrumbling>(hasBuff)
+                    || SameBuffType<WeaponImbueHolyFlames>(hasBuff);
+
+                bool legacyBuff = SameBuffType<ArmorShattering>(hasBuff)
+                    || SameBuffType<CadancesGrace>(hasBuff)
+                    || SameBuffType<DraconicSurgeBuff>(hasBuff)
+                    || SameBuffType<PenumbraBuff>(hasBuff)
+                    || SameBuffType<HolyWrathBuff>(hasBuff)
+                    || SameBuffType<ProfanedRageBuff>(hasBuff)
+                    || SameBuffType<Revivify>(hasBuff)
+                    || SameBuffType<TitanScale>(hasBuff)
+                    || SameBuffType<YharimPower>(hasBuff)
+                    || SameBuffType<TriumphBuff>(hasBuff)
+                    || SameBuffType<Invincible>(hasBuff);
+
+                bool calamityBuff = SameBuffType<AnechoicCoatingBuff>(hasBuff)
+                    || SameBuffType<Crumbling>(hasBuff)
+                    || SameBuffType<BloodfinBoost>(hasBuff)
+                    || SameBuffType<AstralInjectionBuff>(hasBuff)
+                    || SameBuffType<BaguetteBuff>(hasBuff)
+                    || SameBuffType<BoundingBuff>(hasBuff)
+                    || SameBuffType<CalciumBuff>(hasBuff)
+                    || SameBuffType<GravityNormalizerBuff>(hasBuff)
+                    || SameBuffType<CeaselessHunger>(hasBuff)
+                    || SameBuffType<Omniscience>(hasBuff)
+                    || SameBuffType<ShadowBuff>(hasBuff)
+                    || SameBuffType<Soaring>(hasBuff)
+                    || SameBuffType<TeslaBuff>(hasBuff)
+                    || SameBuffType<SulphurskinBuff>(hasBuff)
+                    || SameBuffType<Zerg>(hasBuff)
+                    || SameBuffType<Zen>(hasBuff);
+
+                bool alcohol = SameBuffType<BloodyMaryBuff>(hasBuff)
+                    || SameBuffType<CaribbeanRumBuff>(hasBuff)
+                    || SameBuffType<CinnamonRollBuff>(hasBuff)
+                    || SameBuffType<MoonshineBuff>(hasBuff)
+                    || SameBuffType<EverclearBuff>(hasBuff)
+                    || SameBuffType<EvergreenGinBuff>(hasBuff)
+                    || SameBuffType<VodkaBuff>(hasBuff)
+                    || SameBuffType<PurpleHazeBuff>(hasBuff)
+                    || SameBuffType<MargaritaBuff>(hasBuff)
+                    || SameBuffType<RedWineBuff>(hasBuff)
+                    || SameBuffType<RumBuff>(hasBuff)
+                    || SameBuffType<MoscowMuleBuff>(hasBuff)
+                    || SameBuffType<ScrewdriverBuff>(hasBuff)
+                    || SameBuffType<TequilaBuff>(hasBuff)
+                    || SameBuffType<TequilaSunriseBuff>(hasBuff)
+                    || SameBuffType<Trippy>(hasBuff)
+                    || SameBuffType<WhiteWineBuff>(hasBuff)
+                    || SameBuffType<WhiskeyBuff>(hasBuff)
+                    || SameBuffType<FireballBuff>(hasBuff)
+                    || SameBuffType<GrapeBeerBuff>(hasBuff);
+
+                bool someCustomBuff = SameBuffType<AbsorberRegen>(hasBuff)
+                    || SameBuffType<TarraLifeRegen>(hasBuff);
+                #endregion
+                if (vanillaBuffs || alcohol || calamityBuff || legacyBuff || weaponImbueBuff || someCustomBuff)
+                {
+                    if (Player.miscCounter % 2 == 0)
+                    {
+                        Player.buffTime[i] += 1;
+                    }
+                    if (!Main.persistentBuff[hasBuff])
+                    {
+                        Main.persistentBuff[hasBuff] = true;
+                    }
+                }
+            }
+        }
+        internal static int GetModBuff<R>() where R : ModBuff => ModContent.BuffType<R>();
+        internal bool SameBuffType<T>(int hasType) where T : ModBuff => SameBuffType(hasType, ModContent.BuffType<T>());
+        internal bool SameBuffType(int buffType, int alterType) => buffType == alterType;
         public void Buffs()
         {
             Player player = Main.player[Main.myPlayer];

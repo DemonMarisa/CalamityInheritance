@@ -40,6 +40,7 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingAsSplit = false;
         public bool PingWhipStrike = false;
         public int StoreEU = -1;
+        public bool PingRampartFallenStar = false;
         // 1帧影响
         public bool oneFrameEffect = false;
         public override void AI(Projectile projectile)

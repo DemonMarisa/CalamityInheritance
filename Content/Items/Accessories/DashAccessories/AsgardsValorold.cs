@@ -32,14 +32,12 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.defense = 16;
             Item.accessory = true;
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<AsgardsValor>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ValorOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = AsgardsValorDashold.ID;
+            usPlayer.ValorLegacyOn = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
             player.noKnockback = true;

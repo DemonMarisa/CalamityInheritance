@@ -265,3 +265,8 @@ SarosPossessionBuffLegacy: {
 	DisplayName: Saros Possession Legacy
 	Description: A radiant aura protects you
 }
+
+FungalClumpLegacyBuff: {
+	DisplayName: Fungal Clump Legacy Buff
+	Description: Mods.CalamityInheritance.Buffs.FungalClumpLegacyBuff.Description
+}

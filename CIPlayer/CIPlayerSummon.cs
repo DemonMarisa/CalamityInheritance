@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CalamityInheritance.Buffs.Summon;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -19,6 +20,8 @@ namespace CalamityInheritance.CIPlayer
         public bool wulfrumDroidOld = false;
         public bool siriusLegacy = false;
         public bool sarosPossessionLegacy = false;
+        public bool FungalClumpLegacySummonBuff = false;
+        public bool FungalClumpLegacySummon = false;
         #endregion
         public void ReSetSummon()
         {
@@ -33,6 +36,8 @@ namespace CalamityInheritance.CIPlayer
             wulfrumDroidOld = false;
             siriusLegacy = false;
             sarosPossessionLegacy = false;
+            FungalClumpLegacySummon = false;
+            FungalClumpLegacySummonBuff = false;
             #endregion
         }
     } 

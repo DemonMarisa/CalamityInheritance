@@ -34,10 +34,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<DarkSunRing>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().darkSunRing;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();

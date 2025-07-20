@@ -41,6 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         const float IsSpawning = 0f;
         const float IsAngleTo = 1f;
         const float IsDashing = 2f;
+        const float IsFading = 3f;
         #endregion
         #region Arg
         const float AngleToTargetTime = 25f;
@@ -61,12 +62,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.height = 112;
             Projectile.DamageType = DamageClass.Generic;
             Projectile.friendly = true;
-            Projectile.timeLeft = 18000;
+            Projectile.timeLeft = 1800;
             Projectile.tileCollide = false;
             Projectile.Opacity = 0f;
             Projectile.ignoreWater = true;
+            Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 5;
+            Projectile.localNPCHitCooldown = -1;
         }
         public override bool? CanDamage()
         {
@@ -100,8 +102,28 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 case IsDashing:
                     DoDashing(anyTarget);
                     break;
+                case IsFading:
+                    DoFading();
+                    break;
             }
         }
+
+        private void DoFading()
+        {
+            if (Projectile.Opacity == 1)
+            {
+                Vector2 spawnPosition = Projectile.Center + new Vector2(Projectile.width / 2, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4);
+                Vector2 speed = Projectile.velocity * 0.01f;
+                Particle OpFlares = new OpticalFlaresLine(spawnPosition, speed, 30, 0f, new Color(105, 255, 255, 255), Projectile.velocity.ToRotation());
+                GeneralParticleHandler.SpawnParticle(OpFlares);
+                Particle BloomShockWave = new BloomShockWave(spawnPosition, speed, 30, 0f, new Color(35, 255, 255, 255));
+                GeneralParticleHandler.SpawnParticle(BloomShockWave);
+            }
+            Projectile.Opacity -= 0.05f;
+            Projectile.timeLeft = (Projectile.Opacity != 0).ToInt() * Projectile.timeLeft;
+            Projectile.velocity *= 0.92f;
+        }
+
         //拖尾粒子
         private void TrailingDust()
         {
@@ -177,11 +199,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
         }
 
-        public void IdlePosition()
-        {
-
-        }
-
         public void CheckHeldItem()
         {
             //if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
@@ -191,11 +208,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Particle OpFlares = new OpticalFlaresLine(Projectile.Center + new Vector2(Projectile.width / 2, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), Vector2.Zero, 25, 0f, new Color(105, 255, 255, 255));
-            GeneralParticleHandler.SpawnParticle(OpFlares);
-
-            Particle BloomShockWave = new BloomShockWave(Projectile.Center + new Vector2(Projectile.width / 2, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), Vector2.Zero, 25, 0f, new Color(35, 255, 255, 255));
-            GeneralParticleHandler.SpawnParticle(BloomShockWave);
+            if (AttackType == IsDashing)
+            {
+                AttackType = IsFading;
+                Projectile.netUpdate = true;
+            }
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }
         public GraphicsDevice graphicsDevice { get => Main.graphics.GraphicsDevice; }
@@ -310,6 +327,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             //进行渐变
             Color setColor = Color.White;
             setColor.A = (byte)(255 / AngleToTargetTime * GlowingFadingTimer);
+            if (AttackType == IsFading)
+            {
+                setColor.A = (byte)(255 * Projectile.Opacity);
+            }
             Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor, glowRotation + MathHelper.ToRadians(7), glowRotationPoint, Projectile.scale * player.gravDir * 0.5f, glowSpriteFlip, 0f);
             #endregion
 

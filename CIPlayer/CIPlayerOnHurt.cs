@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Schema;
 using CalamityInheritance.Buffs.Melee;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
@@ -16,7 +17,9 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
@@ -303,6 +306,10 @@ namespace CalamityInheritance.CIPlayer
                 return false;
 
             //日食魔镜的闪避优于所有闪避之前执行
+            if (AmalgamLegacy && Main.rand.NextBool(5))
+            {
+                return true;
+            }
             if (CheckEMirror())
                 return true;
             if ((AncientGodSlayerSet || YharimAuricSet) && Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount > 0)
@@ -450,7 +457,27 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer Modplayer1 = Player.CIMod();
-            
+            //融合恼乘伤给debuff
+            if (AmalgamLegacy)
+            {
+                float distance = CIFunction.SetDistance(50);
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC otherTarget = Main.npc[i];
+                    if ((otherTarget.Center - Player.Center).Length() > distance)
+                        continue;
+                    if (!otherTarget.active || otherTarget.friendly || otherTarget.dontTakeDamage)
+                        continue;
+                    int duration = CIFunction.SecondsToFrames(8) + hurtInfo.Damage / 3;
+          
+                    otherTarget.AddBuff(ModContent.BuffType<GodSlayerInferno>(), duration);
+                    otherTarget.AddBuff(ModContent.BuffType<BrimstoneFlames>(), duration);
+                    otherTarget.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), duration);
+                    otherTarget.AddBuff(ModContent.BuffType<Irradiated>(), duration);
+                    otherTarget.AddBuff(BuffID.Ichor, duration);
+                    otherTarget.AddBuff(BuffID.BetsysCurse, duration);
+                }
+            }
             //正常受伤，日食魔镜也会提供潜伏值的恢复(恢复50%)
             if (EMirror && calPlayer.rogueStealth < calPlayer.rogueStealthMax / 2)
                 calPlayer.rogueStealth += calPlayer.rogueStealthMax / 2;
@@ -535,13 +562,39 @@ namespace CalamityInheritance.CIPlayer
 
                     Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, 
                     ProjectileID.StarVeilStar, deificStarDamage, 4f, Player.whoAmI);
-                    
+
                     if (star.whoAmI.WithinBounds(Main.maxProjectiles))
                     {
                         star.DamageType = DamageClass.Generic;
                         star.usesLocalNPCImmunity = true;
                         star.localNPCHitCooldown = 5;
                     }
+                }
+            }
+            if (RampartOfDeitiesStar)
+            {
+                var src = Player.GetSource_FromThis();
+                int totalStars = 4 + 8 * deificAmuletEffect.ToInt();
+                int basicDamage = 500 + 2500 * CIServerConfig.Instance.CalStatInflationBACK.ToInt();
+
+                int totalDamage = (int)Player.GetBestClassDamage().ApplyTo(basicDamage);
+                totalDamage = Player.ApplyArmorAccDamageBonusesTo(totalDamage);
+                for (int i = 0; i < totalStars; i++)
+                {
+                    float pPosX = Player.Center.X + Main.rand.NextFloat(-200f, 201f);
+                    float pPosY = Player.Center.Y + Main.rand.NextFloat(-670f, -1145f);
+                    Vector2 newPos = new(pPosX, pPosY);
+                    Vector2 speed = Player.Center - newPos;
+                    speed.X += Main.rand.NextFloat(-15f, 16f);
+                    float pSpeed = 32f;
+                    float tarDist = speed.Length();
+                    tarDist = pSpeed / tarDist;
+                    speed.X *= tarDist;
+                    speed.Y *= tarDist;
+                    int p = Projectile.NewProjectile(src, newPos, speed, ProjectileID.StarVeilStar, totalDamage, 11.45f, Player.whoAmI);
+                    Main.projectile[p].DamageType = DamageClass.Generic;
+                    Main.projectile[p].usesLocalNPCImmunity = true;
+                    Main.projectile[p].localNPCHitCooldown = 5;
                 }
             }
             if(AncientAstralSet)

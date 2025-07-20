@@ -20,13 +20,14 @@ namespace CalamityInheritance.Particles
         public override bool UseAdditiveBlend => true;
         public override string Texture => "CalamityInheritance/Particles/OpticalFlaresLine";
 
-        public OpticalFlaresLine(Vector2 relativePosition, Vector2 velocity, int lifetime, float scale, Color color)
+        public OpticalFlaresLine(Vector2 relativePosition, Vector2 velocity, int lifetime, float scale, Color color, float rotation)
         {
             Position = relativePosition;
             Velocity = velocity;
             Scale = scale;
             Lifetime = lifetime;
             Color = InitialColor = color;
+            Rotation = rotation;
         }
         public override void Update()
         {

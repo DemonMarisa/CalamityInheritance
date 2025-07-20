@@ -6,6 +6,7 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -26,10 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.accessory = true;
             Item.rare = ModContent.RarityType<CatalystViolet>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<RampartofDeities>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().rampartOfDeities;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer= player.CIMod();
@@ -38,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             usPlayer.RoDPaladianShieldActive = true; //启用帕拉丁盾
             player.lifeRegen += 4;
             player.GetArmorPenetration<GenericDamageClass>() += 50;
+            usPlayer.RampartOfDeitiesStar = true;
             if (player.statLife <= player.statLifeMax2 * 0.5)
                 player.AddBuff(BuffID.IceBarrier, 5);
             player.noKnockback = true;

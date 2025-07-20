@@ -244,15 +244,85 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ModContent.ItemType<ElementalQuiver>())
                 usPlayer.IsWearingElemQuiverCal = true;
-                
-            if(CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
+
+            usPlayer.ReaperToothNecklaceEquipper = item.SameType<ReaperToothNecklace>();
+            usPlayer.YGiftOn = item.SameType<YharimsGift>();
+            usPlayer.AegisOn = item.SameType<AsgardianAegis>();
+            usPlayer.ValorOn = item.SameType<AsgardsValor>();
+            usPlayer.BeltOn = item.SameType<StatisNinjaBelt>();
+            usPlayer.SashOn = item.SameType<StatisVoidSash>();
+            usPlayer.ElysianOn = item.SameType<ElysianAegis>();
+            if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaAccesoriesUnnerf(item, player);  //饰品
                 CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
             }
-            
         }
-       
+        public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
+        {
+            var mp = player.CIMod();
+            if (item.SameType<ElementalQuiver>())
+            {
+                return !mp.ElemQuiver;
+            }
+            if (item.SameType<ElementalGauntlet>())
+            {
+                return !mp.ElemGauntlet;
+            }
+            if (item.SameType<Nucleogenesis>())
+            {
+                return !mp.NucleogenesisLegacy;
+            }
+            if (item.SameType<EtherealTalisman>())
+            {
+                return !mp.EtherealTalismanLegacy;
+            }
+            if (item.SameType<ReaperToothNecklace>())
+            {
+                return !mp.ReaperToothNecklaceLegacyEquipped;
+            }
+            if (item.SameType<RampartofDeities>())
+            {
+                return !mp.RampartOfDeitiesStar;
+            }
+            if (item.SameType<DeificAmulet>())
+            {
+                return !mp.deificAmuletEffect;
+            }
+            if (item.SameType<TheSponge>())
+            {
+                return !mp.CIsponge;
+            }
+            if (item.SameType<YharimsGift>())
+            {
+                return !mp.YGiftLegacyOn;
+            }
+            if (item.SameType<AsgardianAegis>())
+            {
+                return !mp.AegisLegacyOn;
+            }
+            if (item.SameType<ElysianAegis>())
+            {
+                return !mp.ElysianLegacyOn;
+            }
+            if (item.SameType<AsgardsValor>())
+            {
+                return !mp.ValorLegacyOn;
+            }
+            if (item.SameType<DarkSunRing>())
+            {
+                return !mp.DarkSunRings;
+            }
+            if (item.SameType<StatisVoidSash>())
+            {
+                return !mp.SashLegacyOn;
+            }
+            if (item.SameType<StatisNinjaBelt>())
+            {
+                return !mp.BeltLegacyOn;
+            }
+            return base.CanEquipAccessory(item, player, slot, modded);
+        }
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
             #region 补正饰品挖矿速度
@@ -854,5 +924,10 @@ namespace CalamityInheritance.Content.Items
 
             return true;
         }
+    }
+    public static class GeneralExtendedHelper
+    {
+        public static bool SameType<T>(this Item item) where T : ModItem => SameType(item, ModContent.ItemType<T>());
+        public static bool SameType(this Item item, int type) => item.type == type;
     }
 }
