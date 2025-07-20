@@ -81,7 +81,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             bool againstWall = !Collision.CanHit(source, 0, 0, source + baseOffset, 0, 0);
 
             int numArrows = (usPlayer.LoreExo || usPlayer.PanelsLoreExo) ? 7 : 5;
-            float dmgMult = 1f;
 
             for (int i = 0; i < numArrows; i++)
             {
@@ -104,10 +103,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     {
                         thisArrowType = Main.rand.Next(ExoArrows);
                     }
-                }
-                else
-                {
-                    dmgMult = NormalArrowDamageMult;
                 }
             }
             if (CIConfig.Instance.AmmoConversion == true)

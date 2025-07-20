@@ -15,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
     public class NanotechOld : CIAccessories, ILocalizedModType
     {
         public static int nanotechDMGStack  = 150;
+        public static float nanotechDMGBoost = 0.10f;
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
         public override void SetStaticDefaults()
         {

@@ -10,7 +10,7 @@ using CalamityMod.Particles;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class NanotechOld : ModProjectile, ILocalizedModType
+    public class NanotechOldProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public ref float AttackType => ref Projectile.ai[0];

@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOld>(), (int)(projectile.damage * 0.05) , 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOldProj>(), (int)(projectile.damage * 0.05) , 0f, projectile.owner);
                                 //确保这个东西指定为全局伤害
                                 Main.projectile[p].DamageType = DamageClass.Generic;
                                 Main.projectile[p].alpha = 255;

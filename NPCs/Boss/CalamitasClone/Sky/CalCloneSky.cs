@@ -37,7 +37,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
         }
 
         private bool isActive = false;
-        private int Index = -1;
         public List<Cinder> Cinders = [];
 
         public static bool RitualDramaProjectileIsPresent

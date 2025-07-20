@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
         public override bool AltFunctionUse(Player player) => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float starSpeed = 25f;
+            // float starSpeed = 25f;
             /*
             // Spawn a circle of fast bullets.
             for (int i = 0; i < 40; i++)

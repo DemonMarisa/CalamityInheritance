@@ -23,8 +23,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         private int increment;
 
-        private int splits;
-
         private int phase;
 
         private NPC teleportTarget;

@@ -19,7 +19,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class StepToolShadowChair: ModProjectile, ILocalizedModType
     {
-        private static readonly int TrueDamage = 25000;
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetDefaults()
         {

@@ -12,7 +12,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         private int counter = 0;
-        private bool canHome = false;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Rifle");

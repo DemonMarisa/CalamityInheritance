@@ -46,8 +46,6 @@ namespace CalamityInheritance
         internal bool MusicAvailable => musicMod is not null;
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
-        private string[] DumbMods;
-        internal static Dictionary<string, bool> FuckTheseMod;
 
         public override void Load()
         {
@@ -130,8 +128,6 @@ namespace CalamityInheritance
             DOGHook.Load(this);
             // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
             FlightBarDrawHook.Load();
-            // 干掉伊布法杖中的变性药水
-            DisableSylvestaffRecipe.Load();
             // 修复星火bug的hook
             PhotovisceratorCalHook.Load();
             // 邪染特判补全

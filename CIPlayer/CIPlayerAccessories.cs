@@ -71,9 +71,6 @@ namespace CalamityInheritance.CIPlayer
         //日食魔镜
         public bool EMirror = false;
         #region 削弱同类职业饰品堆叠
-        public bool NerfFinalMeleeAcc = false;
-        public bool NerfFinalRangedAcc = false;
-        public bool NerfFinalMagicAcc = false;
         public bool NerfFinalSummonAcc = false;
         #endregion
         #endregion

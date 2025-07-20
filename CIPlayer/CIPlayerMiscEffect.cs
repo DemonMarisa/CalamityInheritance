@@ -39,6 +39,7 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
+using CalamityInheritance.Content.Items.Accessories.Rogue;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -782,7 +783,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (nanotechold)
             {
-                float damageMult =  0.075f;
+                float damageMult = NanotechOld.nanotechDMGBoost;
                 Player.GetDamage<GenericDamageClass>() *= 1 + RaiderStacks / 150f * damageMult;
             }
             if (Player.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] == 1 && 

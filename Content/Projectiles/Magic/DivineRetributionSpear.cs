@@ -15,6 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class DivineRetributionSpear : ModProjectile, ILocalizedModType
     {
+        public bool CanHomeIn = false;
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()
         {
@@ -40,7 +41,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             float aiVelocityMult = 25f * Projectile.ai[1]; //100
             float scaleFactor = 5f * Projectile.ai[1]; //5
             float homingRange = 1000f;
-
+            if(Projectile.Center.Y < Main.player[Projectile.owner].Center.Y)
+            {
+                CanHomeIn = true;
+            }
             if (Projectile.velocity.X < 0f)
             {
                 Projectile.spriteDirection = -1;
@@ -61,8 +65,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Projectile.velocity = (Projectile.velocity * (aiVelocityMult - 1f) + moveDirection * scaleFactor) / aiVelocityMult;
                     return;
                 }
-
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, 12f, 35f);
+                if (CanHomeIn)
+                    CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, 12f, 35f);
             }
             else
             {
