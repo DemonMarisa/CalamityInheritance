@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories.Summon
 {
@@ -27,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) => Item.type.SetConflictMod<Nucleogenesis>(equippedItem, incomingItem); 
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().nucleogenesis;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer CIplayer = player.CIMod();

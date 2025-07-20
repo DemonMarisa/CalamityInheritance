@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using Terraria;
@@ -23,13 +24,11 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.rare = ItemRarityID.Purple;
             Item.accessory = true;
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<StatisNinjaBelt>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().BeltOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.autoJump = true;
+            player.CIMod().BeltLegacyOn = true;
             player.jumpSpeedBoost += 1.6f;
             player.moveSpeed += 0.1f; //斯塔提斯腰带怎么少了10%移速
             player.extraFall += 35;

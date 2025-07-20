@@ -1,28 +1,26 @@
-﻿using CalamityInheritance.Content.Projectiles.Summon;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {
-    public class BloodClot : ModBuff
+    public class FungalClumpLegacyBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
-            //Main.persistentBuff[Type] = true;
+            Main.buffNoTimeDisplay[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
-            CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BloodClotMinion>()] > 0)
+            var usPlayer = player.CIMod();
+            bool minion = usPlayer.FungalClumpLegacySummonBuff;
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<FungalClumpLegacyMinion>()] > 0)
             {
-                modPlayer.bloodClot = true;
+                minion = true;
             }
-            if (!modPlayer.bloodClot)
+            if (!minion)
             {
                 player.DelBuff(buffIndex);
                 buffIndex--;

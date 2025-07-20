@@ -1,5 +1,6 @@
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Accessories.Summon;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod.Items.Accessories;
@@ -15,6 +16,7 @@ namespace CalamityInheritance.CIPlayer
         public bool FUCKYOUREDMOON = false;
         public bool IfGodHand = false;
         public bool IfCalamitasSigile = false;
+        public bool EtherealTalismanLegacy = false;
         public bool EHeartStats = false;
         public bool EHeartStatsBoost = false;
         public bool ElemQuiver = false;
@@ -54,6 +56,9 @@ namespace CalamityInheritance.CIPlayer
         public bool DraedonsHeartLegacyStats = false;
         public bool WearingStatisCurse = false;
         public bool anyShield = false; //是否有任何护盾
+        public bool RampartOfDeitiesStar = false;
+        public bool ReaperToothNecklaceLegacyEquipped = false;
+        public bool ReaperToothNecklaceEquipper = false;
         //两个肥鸡
         public bool GodlySons = false;
         public bool EmpressBooster = false;
@@ -67,6 +72,7 @@ namespace CalamityInheritance.CIPlayer
         public bool IsWearingBloodyScarf = false;
         public bool IsWearingElemQuiverCal = false;
         public bool OverloadManaPower = false;
+        public bool AmalgamLegacy = false;
         
         //日食魔镜
         public bool EMirror = false;
@@ -75,6 +81,18 @@ namespace CalamityInheritance.CIPlayer
         public bool NerfFinalRangedAcc = false;
         public bool NerfFinalMagicAcc = false;
         public bool NerfFinalSummonAcc = false;
+        public bool YGiftOn = false;
+        public bool YGiftLegacyOn = false;
+        public bool AegisOn = false;
+        public bool AegisLegacyOn = false;
+        public bool ValorOn = false;
+        public bool ValorLegacyOn = false;
+        public bool SashOn = false;
+        public bool SashLegacyOn = false;
+        public bool BeltOn = false;
+        public bool BeltLegacyOn = false;
+        public bool ElysianOn = false;
+        public bool ElysianLegacyOn = false;
         #endregion
         #endregion
         /// <summary>
@@ -86,10 +104,15 @@ namespace CalamityInheritance.CIPlayer
             FUCKYOUREDMOON = false;
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否正在攻击
+            EtherealTalismanLegacy = false;
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
             IfCalamitasSigile = false;
+            ReaperToothNecklaceEquipper = false;
+            ReaperToothNecklaceLegacyEquipped = false;
+            YGiftLegacyOn = false;
+            YGiftOn = false;
             SMushroom = false;
             SMarble = false;
             SMarbleSword = false;
@@ -111,6 +134,7 @@ namespace CalamityInheritance.CIPlayer
             DarkSunRings = false;
             AuricTracersFrames = false; //天界跑鞋无敌帧
             deificAmuletEffect = false; //神圣护符的效果
+            RampartOfDeitiesStar = false;
             RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾
             projRef = false;
             AstralBulwark = false;
@@ -144,6 +168,13 @@ namespace CalamityInheritance.CIPlayer
             anyShield = false; //是否有任何护盾
             EMirror = false;
             OverloadManaPower = false;
+            AmalgamLegacy = false;
+            AegisLegacyOn = false;
+            AegisOn = false;
+            ValorOn = false;
+            ValorLegacyOn = false;
+            ElysianOn = false;
+            ElysianLegacyOn = false;
             #endregion
 
         }
@@ -184,6 +215,7 @@ namespace CalamityInheritance.CIPlayer
             anyShield = false;
             OverloadManaPower = false;
             GodlySons = false;
+            AmalgamLegacy = false;
         }
     }
 }

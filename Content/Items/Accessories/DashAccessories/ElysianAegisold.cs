@@ -32,10 +32,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<ElysianAegis>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<ElysianAegis>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ElysianOn;
         public override void SetDefaults()
         {
             Item.width = 48;
@@ -52,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             usPlayer.CIDashID = ElysianAegisDashold.ID;
             usPlayer.ElysianAegis = true;
             usPlayer.ElysianAegisImmnue = true;
-            
+            usPlayer.ElysianLegacyOn = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true;
             player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;

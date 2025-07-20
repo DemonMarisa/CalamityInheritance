@@ -34,12 +34,14 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CalamityPlayer calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
+            player.GetDamage<GenericDamageClass>() += 0.10f;
             calPlayer.healingPotionMultiplier += 0.25f;
             //同时标记他是血神核心与给血上限。
             //这个标记主要是给后面血肉图腾被移除时给CD用
             usPlayer.CoreOfTheBloodGod = true;
             usPlayer.FUCKYOUREDMOON = true;
-            player.endurance += 0.15f;
+
+            player.endurance += 0.20f;
 
         }
 
@@ -47,6 +49,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddRecipeGroup(CIRecipeGroup.BloodPact).
+                AddIngredient<BloodyWormScarf>().
                 AddIngredient<FleshTotem>().
                 AddIngredient<CosmiliteBar>(5).
                 AddIngredient<AscendantSpiritEssence>(4).

@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             Item.defense = 10;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) => Item.type.SetConflictMod<ElementalGauntlet>(equippedItem, incomingItem);
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eGauntlet;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CIMod();

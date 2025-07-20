@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Rarity;
 using System.Runtime.CompilerServices;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -22,14 +23,12 @@ namespace CalamityInheritance.Content.Items.Accessories
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = ModContent.RarityType<AbsoluteGreen>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<ReaperToothNecklace>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ReaperToothNecklaceEquipper;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetDamage<GenericDamageClass>() += 0.20f;
             player.GetArmorPenetration<GenericDamageClass>() += 100;
+            player.CIMod().ReaperToothNecklaceLegacyEquipped = true;
         }
 
         public override void AddRecipes()

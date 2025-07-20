@@ -257,3 +257,8 @@ SarosPossessionBuffLegacy: {
 	DisplayName: 星律掌控[Legacy]
 	Description: 闪熠的流光日环保护着你
 }
+
+FungalClumpLegacyBuff: {
+	// DisplayName: Fungal Clump Legacy Buff
+	// Description: Mods.CalamityInheritance.Buffs.FungalClumpLegacyBuff.Description
+}

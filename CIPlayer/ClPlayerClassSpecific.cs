@@ -265,6 +265,35 @@ namespace CalamityInheritance.CIPlayer
         /// </summary>
         public void GenericOnhit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
+            //让融合脑主动给debuff
+            if (AmalgamLegacy)
+            {
+                float distance = CIFunction.SetDistance(50);
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC otherTarget = Main.npc[i];
+                    if ((otherTarget.Center - target.Center).Length() > distance)
+                        continue;
+                    if (!otherTarget.active || otherTarget.friendly || otherTarget.dontTakeDamage)
+                        continue;
+                    int duration = CIFunction.SecondsToFrames(8) + dmgDone / 3;
+                    NPC[] shouldAdd =
+                    [
+                        otherTarget,
+                        target
+                    ];
+                    foreach (var addBuffToTarget in shouldAdd)
+                    {
+                        addBuffToTarget.AddBuff(ModContent.BuffType<GodSlayerInferno>(), duration);
+                        addBuffToTarget.AddBuff(ModContent.BuffType<BrimstoneFlames>(), duration);
+                        addBuffToTarget.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), duration);
+                        addBuffToTarget.AddBuff(ModContent.BuffType<Irradiated>(), duration);
+                        addBuffToTarget.AddBuff(BuffID.Ichor, duration);
+                        addBuffToTarget.AddBuff(BuffID.BetsysCurse, duration);
+                    }
+                    
+                }
+            }
             //远古血炎的红心生成
             if (AncientBloodflareSet && hit.Damage > 300 && target.IsAnEnemy(false) && target.lifeMax > 5 && AncientBloodflareHeartDropCD == 0) //大于300伤害才能产出红心与魔力星 
             {

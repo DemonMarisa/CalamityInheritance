@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
@@ -25,14 +26,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
             Item.accessory = true;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<EtherealTalisman>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eTalisman;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.eTalisman = true;
+            var modPlayer = player.CIMod();
+            modPlayer.EtherealTalismanLegacy = true;
 
             player.manaMagnet = true;
             if (!hideVisual)

@@ -23,10 +23,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             Item.ResearchUnlockCount = 1;
         }
-        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
-        {
-            return Item.type.SetConflictMod<CalamityMod.Items.Accessories.StatisVoidSash>(equippedItem, incomingItem);
-        }
+        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().SashOn;
         public override void SetDefaults()
         {
             Item.width = 28;
@@ -39,6 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
+            modPlayer1.SashLegacyOn = true;
             player.GetDamage<GenericDamageClass>() += 0.10f;
             player.jumpSpeedBoost += 1.6f;
             player.moveSpeed += 0.10f;
