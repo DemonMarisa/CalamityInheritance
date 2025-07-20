@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         const float IsFading = 3f;
         #endregion
         #region Arg
-        const float AngleToTargetTime = 25f;
+        const float AngleToTargetTime = 20f;
         internal bool DoneGlowing = false;
         #endregion
         #region 顶点绘制使用
@@ -88,8 +88,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             //暂时禁用，这个射弹最后会和Shizuku Edge融为一体
             // CheckHeldItem();
             GlowingFadingTimer += 0.5f;
-            if (GlowingFadingTimer > 25f)
-                GlowingFadingTimer = 25f;
+            if (GlowingFadingTimer > AngleToTargetTime)
+                GlowingFadingTimer = AngleToTargetTime;
             NPC anyTarget = Projectile.FindClosestTarget(CIFunction.SetDistance(100));
             switch (AttackType)
             {

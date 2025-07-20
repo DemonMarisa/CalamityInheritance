@@ -1,18 +1,11 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity.Special;
-using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
 {
@@ -34,8 +27,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Item.DamageType = DamageClass.Generic;
             Item.useStyle = ItemUseStyleID.HoldUp;
             //it dosen't matter.
-            Item.useTime = 14;
-            Item.useAnimation = 14;
+            Item.useTime = 18;
+            Item.useAnimation = 18;
             Item.knockBack = 5.5f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.shoot = ProjectileID.PurificationPowder;
@@ -54,17 +47,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         {
         }
         public override bool AltFunctionUse(Player player) => true;
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectile>()] < 1 || player.altFunctionUse == 2;
+        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectile2>()] < 1 || player.altFunctionUse == 2;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             //发射逻辑：往后方发射三个鬼魂， 往前方发射两个镰刀
-            int projLeftType = ModContent.ProjectileType<ShizukuEdgeProjectile>();
+            int projLeftType = ModContent.ProjectileType<ShizukuEdgeProjectile2>();
             int projRightType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
             //这个右键我看不懂。
             if (player.altFunctionUse == 2 && player.ownedProjectileCounts[projLeftType] < 1)
                 Projectile.NewProjectile(source, position, Vector2.Zero, projRightType, damage, knockback, player.whoAmI);
             else
-                Projectile.NewProjectile(source, Main.MouseWorld, velocity, projLeftType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity, projLeftType, damage, knockback, player.whoAmI);
             return false;
         }
         // public override void AddRecipes()

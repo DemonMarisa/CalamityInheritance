@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Sounds.Custom;
@@ -50,6 +51,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
                 }
                 
             }
+            int proj2 = ModContent.ProjectileType<MoonPlaceholder>();
+            Vector2 newspeed = new Vector2(30f, 0f).RotatedBy(-MathHelper.PiOver2);
+            if (player.ownedProjectileCounts[proj2] < 1)
+                Projectile.NewProjectile(source, position, newspeed, proj2, 0, 0f, player.whoAmI);
+
             return false;
         }
     }

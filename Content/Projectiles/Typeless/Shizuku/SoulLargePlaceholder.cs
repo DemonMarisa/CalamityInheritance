@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
@@ -36,49 +37,21 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.timeLeft = 600;
             Projectile.tileCollide = false; 
         }
-        public override bool PreAI()
-        {
-            //如果ai2 != -1f，不执行preAI
-            if (BuffPing != -1f)
-                return true;
-                
-            return false;
-        }
         public override bool? CanDamage() => AttackTimer > 10f;
         public override void AI()
         {
             Projectile.FramesChanger(6, 4);
-            
-            float projVelocityFactor = 35f * Projectile.ai[1]; //100
-            float scaleFactor = 7f * Projectile.ai[1]; //5
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
             Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
             //保留这个AI
-
-            if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
+            AttackTimer++;
+            if (AttackTimer > 10f)
             {
-                if (Projectile.Distance(Main.player[Projectile.owner].Center) > 900f)
-                {
-                    Vector2 moveDirection = Projectile.SafeDirectionTo(Main.player[Projectile.owner].Center, Vector2.UnitY);
-                    Projectile.velocity = (Projectile.velocity * (projVelocityFactor - 1f) + moveDirection * scaleFactor) / projVelocityFactor;
-                    return;
-                }
-                AttackTimer++;
-                if (AttackTimer > 10f)
-                {
-                    if (Main.rand.NextBool(3))
-                        CIFunction.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
-                }
-            }
-            else
-            {
-                if (Projectile.timeLeft > 30)
-                {
-                    Projectile.timeLeft = 30;
-                }
+                if (Main.rand.NextBool(3))
+                    CIFunction.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
             }
             //粒子
-            int ghostlyDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f);
+            int ghostlyDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueFlare, 0f, 0f, 0, Color.SkyBlue, 1f);
             Dust dust = Main.dust[ghostlyDust];
             dust.velocity *= 0.1f;
             Main.dust[ghostlyDust].scale = 1.3f;
@@ -101,7 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 byte a2 = (byte)(100f * (b2 / 255f));
                 return new Color(b2, b2, b2, a2);
             }
-            return new Color(255, 255, 255, 100);
+            return CIConfig.Instance.DebugColor;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -127,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
                 rotate = rotate.RotatedBy((double)((i - (dustAmt / 2 - 1)) * 6.28318548f / dustAmt), default) + Projectile.Center;
                 Vector2 faceDirection = rotate - Projectile.Center;
-                int killedDust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.ShadowbeamStaff, faceDirection.X * 1.5f, faceDirection.Y * 1.5f, 100, default, 2f);
+                int killedDust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.BlueFlare, faceDirection.X * 1.5f, faceDirection.Y * 1.5f, 100, Color.SkyBlue, 2f);
                 Main.dust[killedDust].noGravity = true;
                 Main.dust[killedDust].noLight = true;
                 Main.dust[killedDust].velocity = faceDirection;

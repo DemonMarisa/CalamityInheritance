@@ -1,11 +1,15 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Boss;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
@@ -13,9 +17,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
     public class MoonPlaceholder : ModProjectile, ILocalizedModType
     {
         public ref float Timer => ref Projectile.ai[0];
-        
         public Player Owner => Main.player[Projectile.owner];
         public int OwnedProjectileType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
+        public override string Texture => "CalamityInheritance/Content/Projectiles/Typeless/Shizuku/HolyMollyMoon";
         public const float FloatingMoonDistance = 16f;
         public override void SetStaticDefaults()
         {
@@ -23,7 +27,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override void SetDefaults()
         {
-            base.SetDefaults();
+            Projectile.width = 240;
+            Projectile.height = 234;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = 18000;
+            Projectile.Opacity = 0f;
         }
         public override void AI()
         {
@@ -35,28 +43,57 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             //擦撞消弹的效果
             DoClearHostileProj();
         }
+        public SpriteBatch Sprite { get => Main.spriteBatch; }
+        public GraphicsDevice GraphicsMachine { get => Main.graphics.GraphicsDevice; }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            //我tm有点绷不住了
+            #region DrawGlowMask
+            Sprite.End();
+            Sprite.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+            Texture2D moonTex = TextureAssets.Projectile[Projectile.type].Value;
+            Projectile.BaseProjPreDraw(moonTex, lightColor, MathHelper.ToRadians(7));
+            Sprite.End();
+            Sprite.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.AnisotropicClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+            Texture2D glowMask = TextureAssets.Projectile[Projectile.type].Value;
+            float glowRotation = Projectile.rotation + MathHelper.Pi * (Projectile.spriteDirection == -1).ToInt();
+            Vector2 glowPosition = Projectile.Center - Main.screenPosition;
+            Vector2 glowRotationPoint = glowMask.Size() / 2f;
+            SpriteEffects glowSpriteFlipper = (Projectile.spriteDirection * Owner.gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            Color glowColor = Color.White;
+            glowColor.A = (byte)(255 * Projectile.Opacity);
+            Sprite.Draw(glowMask, glowPosition, null, glowColor, glowRotation + MathHelper.ToRadians(7), glowRotationPoint, Projectile.scale * Owner.gravDir, glowSpriteFlipper, 0f);
+            Sprite.End();
+            Sprite.Begin();
+            #endregion
+
+            return false;
+        }
 
         public void DoReady()
         {
             //往AI里面不断检查是否应该生成这个射弹，如果不允许生成，则自动干掉自己
-            if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
+            if (Owner.HeldItem.type != ModContent.ItemType<ShizukuSword>())
             {
-                Projectile.Kill();
+                Projectile.Opacity -= 0.05f;
                 Projectile.netUpdate = true;
+                if (Projectile.Opacity == 0f)
+                    Projectile.Kill();
                 return;
             }
-            Timer += 1f;
             //开始生成, 向上投射
-            // Projectile.Opacita
-            if (Timer > 15f)
-            {
-
-            }
-
+            Projectile.Opacity += 0.05f;
+            Projectile.velocity *= 0.84f;
         }
 
         public void DoRotated()
         {
+            //水平位置固定与玩家一个方位
+            if (Projectile.Center.X != Owner.Center.X)
+            {
+
+            };
+            Projectile.rotation += 0.01f;
         }
 
         //Todo: 我应该需要用一种方法来降低开销...
