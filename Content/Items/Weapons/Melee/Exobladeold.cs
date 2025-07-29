@@ -61,9 +61,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            int lifeAmount = player.statLifeMax2 - player.statLife;
-            damage.Flat += lifeAmount;
-            base.ModifyWeaponDamage(player, ref damage);
+            float lifeAmount = player.statLife / player.statLifeMax2;
+            lifeAmount = 1 - lifeAmount;
+            damage *= 1 + (lifeAmount  * 0.1f);
+            CalamityInheritancePlayer usPlayer = player.CIMod();
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                damage *= 0.5f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

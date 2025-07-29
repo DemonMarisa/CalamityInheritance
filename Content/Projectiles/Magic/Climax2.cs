@@ -82,6 +82,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            lightColor.R = (byte)(lightColor.R * 0.5f);
+            lightColor.G = (byte)(lightColor.G * 0.5f);
+
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor * 0.5f, 1);
             return false;
         }

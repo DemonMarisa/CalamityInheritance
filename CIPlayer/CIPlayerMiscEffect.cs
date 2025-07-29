@@ -40,25 +40,27 @@ using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
+using CalamityMod.Buffs.Alcohol;
+using CalamityMod.Buffs.Potions;
+using CalamityInheritance.Buffs.Potions;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
 //灾厄Player的变量名现在统一为calPlayer。本模组player的变量名统一为usPlayer
 
 /*
-*3/6:“玩家”类内的各种……对象现在更加严格地分类整理
-*此处的一些分类标准:
-*ArmorSetbonus()现在存放不会通过提供buff来间接修改玩家数值的套装效果
-*Buffs()所有的buff都应该转到这里面曲
-*Accessories()饰品的数值都应该跑到这里来
-*/
+ * 3/6:“玩家”类内的各种……对象现在更加严格地分类整理
+ * 此处的一些分类标准:
+ * ArmorSetbonus()现在存放不会通过提供buff来间接修改玩家数值的套装效果
+ * Buffs()所有的buff都应该转到这里面曲
+ * Accessories()饰品的数值都应该跑到这里来
+ */
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly int darkSunRingDayRegen = 6;
         public static readonly int darkSunRingNightDefense = 20;
-
         public override void PostUpdateMiscEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -123,21 +125,22 @@ namespace CalamityInheritance.CIPlayer
             // 恶意
             Malice();
 
-            // 铁心
-            IronHeartChange();
-
             //融合脑Buff相关
             AmalgamBuffBuff();
         }
 
         private void AmalgamBuffBuff()
         {
-            if (Main.myPlayer != Player.whoAmI && !AmalgamLegacy)
+            if (!AmalgamLegacy)
             {
                 return;
             }
             for (int i = 0; i < Player.MaxBuffs; i++)
             {
+                // 因为一些无限buff的缘故，这里需要排除掉一些存在时间太短的buff，不然会反复闪烁buff存在时间
+                if (Player.buffTime[i] < 30)
+                    continue;
+
                 int hasBuff = Player.buffType[i];
                 #region 孩子们这全是Buff
                 bool wellFedFamily = SameBuffType(hasBuff, BuffID.WellFed) || SameBuffType(hasBuff, BuffID.WellFed2) || SameBuffType(hasBuff, BuffID.WellFed3);
@@ -571,7 +574,6 @@ namespace CalamityInheritance.CIPlayer
                 // 如果玩家哪怕只有一帧没有装备这个配件，就会完全耗尽所有护盾。
 
                 CISpongeShieldDurability = 0;
-
             }
             else
             {
@@ -1564,6 +1566,15 @@ namespace CalamityInheritance.CIPlayer
 
             if (LoreProvidence || PanelsLoreProvidence)
                 ShieldDurabilityMax = (int)(ShieldDurabilityMax * 0.25f);
+
+            if (CIConfig.Instance.TheSpongeBarrier == true)
+            {
+                if(usPlayer.CISpongeShieldDurability == 0 && CIsponge)
+                {
+                    Player.statDefense -= Player.statDefense * 0.5f;
+                    Player.endurance *= 0.5f;
+                }
+            }
         }
     }
 }

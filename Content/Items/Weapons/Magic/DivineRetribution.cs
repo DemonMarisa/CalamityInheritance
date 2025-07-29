@@ -90,11 +90,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 float speedX6 = mouseXDist + (float)Main.rand.Next(-60, 61) * 0.02f;
                 float speedY7 = mouseYDist + (float)Main.rand.Next(-60, 61) * 0.02f;
                 float ai1 = Main.rand.NextFloat() + 0.5f;
-                // 故意反着减的，这样好看一点
-                Vector2 realPlayerPos2 = realPlayerPos - player.Center;
-                float rotoffset = player.direction == 1 ? MathHelper.Pi : 0f;
-                player.itemRotation = realPlayerPos2.ToRotation() + rotoffset;
-
                 Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX6, -speedY7, type, damage, knockback, player.whoAmI, 0.0f, ai1);
             }
             return false;

@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             num74 = player.GetWeaponKnockback(Item, num74);
             player.itemTime = Item.useTime;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            Vector2 vector3 = Main.MouseWorld + vector2;
+
             float num78 = (float)Main.mouseX + Main.screenPosition.X + vector2.X;
             float num79 = (float)Main.mouseY + Main.screenPosition.Y + vector2.Y;
             if (player.gravDir == -1f)
@@ -88,10 +88,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 num130++;
             }
 
-            Vector2 realPlayerPos2 = vector2 - player.Center;
-            float rotoffset = player.direction == 1 ? MathHelper.Pi : 0f;
-            player.itemRotation = realPlayerPos2.ToRotation() + rotoffset;
-
             for (int num131 = 0; num131 < num130; num131++)
             {
                 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y);
@@ -118,6 +114,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Main.projectile[projectile].timeLeft = 240;
                 Main.projectile[projectile].noDropItem = true;
             }
+
+            Vector2 realPlayerPos2 = player.Center - vector2;
+            float rotoffset = player.direction == 1 ? MathHelper.Pi : 0f;
+            player.itemRotation = realPlayerPos2.ToRotation() - rotoffset;
+
             return false;
         }
     }

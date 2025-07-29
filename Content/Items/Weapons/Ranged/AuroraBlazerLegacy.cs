@@ -42,9 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float SpeedX = velocity.X + Main.rand.NextFloat(-15f, 15f) * 0.05f;
-            float SpeedY = velocity.Y + Main.rand.NextFloat(-15f, 15f) * 0.05f;
-            Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, Main.rand.Next(4, 11), 0f);
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, Main.rand.Next(4, 11), 0f);
             return false;
         }
 

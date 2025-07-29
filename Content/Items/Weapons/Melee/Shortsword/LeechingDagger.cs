@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.rare = ItemRarityID.Orange;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.shoot = ModContent.ProjectileType<LeechingDaggerProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

@@ -12,6 +12,7 @@ using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
+using CalamityMod.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {
@@ -19,32 +20,35 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
     {
         public override void SetStaticDefaults()
         {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            base.SetStaticDefaults();
         }
-
         public override void SetDefaults()
         {
+            Item.damage = 114;
             Item.width = 60;
             Item.height = 64;
-            Item.scale = 1.5f;
-            Item.damage = 70;
-            Item.DamageType = DamageClass.Melee;
-            Item.useAnimation = 22;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 22;
-            Item.useTurn = true;
-            Item.knockBack = 5f;
-            Item.UseSound = SoundID.Item1;
+            Item.knockBack = 1f;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
             Item.autoReuse = true;
-            Item.value = CIShopValue.RarityPricePink;
-            Item.rare = ItemRarityID.Pink;
-            Item.shootSpeed = 8f;
-            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
+            Item.UseSound = SoundID.Item82;
+            Item.shootSpeed = 12f;
         }
-
         public override bool AltFunctionUse(Player player)
         {
             return true;
+        }
+        public override void HoldStyle(Player player, Rectangle heldItemFrame)
+        {
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
+            Item.useTurn = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.shoot = ProjectileID.None;
         }
 
         public override bool CanUseItem(Player player)
@@ -53,6 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             {
                 Item.noMelee = true;
                 Item.noUseGraphic = true;
+                Item.useTurn = false;
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
                 return base.CanUseItem(player);
@@ -61,18 +66,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             {
                 Item.noMelee = false;
                 Item.noUseGraphic = false;
+                Item.useTurn = true;
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.shoot = ProjectileID.None;
                 return base.CanUseItem(player);
             }
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool? UseItem(Player player)
         {
-            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<FulgurationHalberdProj>(), damage, knockback, player.whoAmI, 0f, 0f);
-            return false;
+            return true;
         }
-
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<BurningBlood>(), 300);

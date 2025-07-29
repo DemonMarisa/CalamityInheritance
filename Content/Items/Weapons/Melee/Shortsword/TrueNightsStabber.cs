@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<TrueNightsStabberProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2.6f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

@@ -40,15 +40,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         }
 
         public bool isAlive = true;
-        public float currentNPCDist;
-        public int foreachCD;
-        public NPC target = null;
+        public Vector2 target = Vector2.Zero;
+        public int MaxKillDistance = 800;
+        public bool reset = false;
         public override void AI()
         {
             //获取玩家
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer usPlayer = player.CIMod();
-
 
             Projectile.alpha += (int)Utils.GetLerpValue(0, 255, 15);
             Projectile.frameCounter++;
@@ -67,11 +66,9 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if (Projectile.alpha < 0)
                 Projectile.alpha = 0;
 
-            Projectile.ai[1]++;
-
             if (Projectile.alpha < 40)
             {
-                if(Projectile.ai[1] % 2 == 0)
+                if(Projectile.timeLeft % 2 == 0)
                 {
                     int exo = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
                     Main.dust[exo].velocity *= -0.25f;
@@ -85,45 +82,31 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             Lighting.AddLight(Projectile.Center, 0f, 0.5f, 0.5f);
 
+
             if (Projectile.timeLeft > 280)
             {
-                Projectile.velocity *= 0.97f;
+                Projectile.velocity *= 0.96f;
             }
+
+            Vector2 target = new Vector2(Projectile.ai[1], Projectile.ai[2]);
             // 自爆的范围
-            float npcDistCompare = 800f;
             if (Projectile.timeLeft < 280)
             {
-                if(Projectile.timeLeft == 279)
+                float distance = Vector2.Distance(Projectile.Center, target);
+                if (distance < MaxKillDistance)
                 {
-                    target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
-                    if (target != null)
-                        currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
+                    isAlive = false;
                 }
-                foreachCD++;
-                if(foreachCD % 60 == 0)
-                {
-                    target = CIFunction.FindClosestTarget(Projectile, 3000f, true, true, false);
-                    if (target != null)
-                        currentNPCDist = Vector2.Distance(target.Center, Projectile.Center);
-                }
-                if (foreachCD % 5 == 0)
-                {
-                    if (currentNPCDist < npcDistCompare)
-                        isAlive = false;
-                }
-                if (isAlive == false && Projectile.ai[2] == 0f)
+                if (!isAlive && !reset)
                 {
                     Projectile.timeLeft = 200;
-                    Projectile.ai[2] += 1f;
+                    reset = true;
                     Projectile.timeLeft -= Main.rand.Next(80, 180);
-                    Projectile.velocity *= 0.98f;
                 }
-
                 float maxSpeed = 18f;
                 float acceleration = 0.015f * 15f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
-                if (target != null)
-                    CIFunction.HomingNPCBetter(Projectile, target, 3000f, homeInSpeed, 0f, 1, null, 0.08f);
+                Projectile.HomingTarget(target, 3000f, homeInSpeed, 0f, 0.08f);
             }
         }
 

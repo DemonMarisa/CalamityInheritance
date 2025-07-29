@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<TrueBloodyEdge>().
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient<LivingShard>(7).
-                // AddIngredient(ItemID.BrokenHeroSword). //不是, 为什么泰拉边锋还需要断剑, 明明泰拉刃不需要断剑啊
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.TrueNightsEdge).
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient<LivingShard>(7).
-                // AddIngredient(ItemID.BrokenHeroSword).
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
 
             Vector2 beamVelocity = Vector2.Normalize(velocity) * 20f;
-            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TrueBloodyBladeProj>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TrueBloodyBladeProj>(), (int)(damage * 0.75f), knockback, player.whoAmI);
 
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 

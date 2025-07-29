@@ -401,6 +401,7 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ModContent.ItemType<StellarContempt>()).
                 AddIngredient<MeleeTypeHammerFallenPaladinsLegacy>().
+                AddIngredient(ItemID.LunarBar, 10).
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();

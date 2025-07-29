@@ -89,14 +89,20 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-            if (CIGlobalNPC.LegacySCalLament != -1)
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneWaveLegacy_Blue").Value;
+
 
             int framing = texture.Height / Main.projFrames[Projectile.type];
             int y6 = framing * Projectile.frame;
-            lightColor.R = (byte)(255 * Projectile.Opacity);
 
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture.Width, framing)), Color.White, Projectile.rotation, new Vector2(texture.Width / 2f, framing / 2f), Projectile.scale, spriteEffects, 0);
+            Color DrawColor = Color.Red;
+            if (CIGlobalNPC.LegacySCalLament != -1)
+            {
+                DrawColor = Color.White;
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneWaveLegacy_Blue").Value;
+            }
+            DrawColor *= Projectile.Opacity;
+
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture.Width, framing)), DrawColor, Projectile.rotation, new Vector2(texture.Width / 2f, framing / 2f), Projectile.scale, spriteEffects, 0);
             return false;
         }
         public override bool CanHitPlayer(Player player)
@@ -115,8 +121,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (Projectile.Hitbox.Intersects(player.Hitbox))
             {
                 player.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 360);
+                Color orbcolor = Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f);
+                if (CIGlobalNPC.LegacySCalLament != -1)
+                    orbcolor = Main.rand.NextBool() ? Color.Blue : Color.Lerp(Color.Blue, Color.DeepSkyBlue, 0.5f);
 
-                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), orbcolor, true, true);
                 GeneralParticleHandler.SpawnParticle(orb);
                 if (Main.rand.NextBool())
                 {

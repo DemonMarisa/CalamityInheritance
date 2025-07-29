@@ -125,6 +125,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Player player = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
+
+            // 计算玩家到鼠标的向量
             Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
             for (int k = 0; k < 3; k++)
             {
@@ -136,10 +138,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
                 Vector2 mouseToPlayer = (player.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitY);
                 // 方向计算
-                float randomAngle = mouseToPlayer.ToRotation() +  Main.rand.NextFloat(-MathHelper.ToRadians(8), MathHelper.ToRadians(8));
-                Vector2 randomDirection = new((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
-
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -randomDirection * 15f, ModContent.ProjectileType<CIExocometMagic>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                // Proj的ai1和2用于传进去跟踪目标
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -mouseToPlayer.RotatedByRandom(MathHelper.ToRadians(16f)) * 15f, ModContent.ProjectileType<CIExocometMagic>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, Projectile.Center.X, Projectile.Center.Y);
             }
         }
         public void SummonLasers()

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 20;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 300;
         }
@@ -69,7 +69,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
-            target.immune[Projectile.owner] = 9;
             target.AddBuff(ModContent.BuffType<BurningBlood>(), 60);
             target.AddBuff(BuffID.Ichor, 60);
 

@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10 * (Projectile.extraUpdates + 1);
             AIType = 132;
         }
         private int hitCount = 0;

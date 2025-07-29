@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             //右键：投掷
             if (player.altFunctionUse == 2)
             {
-                int thrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteSpearProj>(), damage, knockback, player.whoAmI);
+                int thrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteThrowSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[thrown].CalamityInheritance().ThrownMode = true;
             }
             //左键：正常矛

@@ -26,6 +26,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.penetrate = 3;
             Projectile.timeLeft = 600;
             Projectile.extraUpdates = 1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10 * (Projectile.extraUpdates + 1);
             AIType = 132;
         }
 

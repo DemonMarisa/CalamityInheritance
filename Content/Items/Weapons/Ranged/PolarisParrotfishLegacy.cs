@@ -62,10 +62,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             return true;
         }
-
-        public override Vector2? HoldoutOrigin() 
-        {
-            return new Vector2(10, 10);
-        }
     }
 }

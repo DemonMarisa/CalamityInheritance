@@ -62,11 +62,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             else
                 //贴图朝右，转135°
                 Projectile.rotation += MathHelper.ToRadians(135f);
-            if (Projectile.ai[0] == 0f)
-            {
-                //让矛刺出的第一帧发射弹幕，而非顶点发射
-                Projectile.ai[0] = 1f;
-            }
 
             Vector2 rrp = owner.RotatedRelativePoint(owner.MountedCenter, true);
             UpdateAim(rrp, owner.HeldItem.shootSpeed);

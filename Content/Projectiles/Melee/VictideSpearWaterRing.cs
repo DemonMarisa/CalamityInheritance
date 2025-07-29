@@ -49,7 +49,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.ai[0] > 40f)
             {
                 Projectile.tileCollide = true;
-                CIFunction.HomeInOnNPC(Projectile, false, 200f, 12f, 20f);
+                if (Projectile.ai[1] > 0)
+                    Projectile.HomingNPCBetter(Main.npc[(int)Projectile.ai[1]], 300f, 12f, 20f);
+                else if (Projectile.ai[0] > 60f)
+                    CIFunction.HomeInOnNPC(Projectile, false, 300f, 12f, 20f);
             }
             //发起追踪前这个玩意无视墙体
             else Projectile.tileCollide = false;

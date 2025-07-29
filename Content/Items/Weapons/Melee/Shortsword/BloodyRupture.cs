@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<BloodyRuptureProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2.1f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

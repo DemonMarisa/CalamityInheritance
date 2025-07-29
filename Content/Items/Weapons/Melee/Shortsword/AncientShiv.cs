@@ -1,5 +1,9 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,10 +32,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
             Item.shoot = ModContent.ProjectileType<AncientShivProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }
         public override bool MeleePrefix() => true;
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15f)), type, damage, knockback, player.whoAmI);
+
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<BlueAura>()] < 1)
+                Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<BlueAura>(), damage, knockback, player.whoAmI);
+            return false;
+        }
     }
 }

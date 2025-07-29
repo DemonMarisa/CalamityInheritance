@@ -222,7 +222,7 @@ TheSpongetest: {
 		[c/7DDA58:Inherited from The Absorber Legacy:][i:CalamityInheritance/TheAbsorberOld]
 		Grants immnuity of knockback
 		Enemies take damage when they hit you
-		6.25% of the damage from enemy attacks is absorbed and converted into healing
+		10% of the damage from enemy attacks is absorbed and converted into healing
 		[c/FFA500:Active Sponge Barrier if toggle 'Sponge Barrier' in config]
 
 		'''
@@ -231,7 +231,7 @@ TheSpongetest: {
 		Active a barrier can absorb damage, which durability is the same as your max HP
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
-		Takes up more time to recharge if your barrier is broken
+		Takes up more time to recharge and Reduces defense and damage redcution by 50% if your barrier is broken
 		[c/FF3030:Significantly reduce durability of shield while being equipped with an accessory that being eager for a drop of blood]
 		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''

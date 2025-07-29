@@ -91,16 +91,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         {
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            if (CIGlobalNPC.LegacySCalLament != -1)
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneHellblastLegacy_Blue").Value;
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-            int drawStart = frameHeight * Projectile.frame;
-            lightColor.R = (byte)(255 * Projectile.Opacity);
 
-            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, drawStart, texture.Width, frameHeight)), Color.White, Projectile.rotation, new Vector2(texture.Width / 2f, frameHeight / 2f), Projectile.scale, spriteEffects, 0);
-            lightColor.R = (byte)(255 * Projectile.Opacity);
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], Color.White, 1, texture);
+            int drawStart = frameHeight * Projectile.frame;
+            Color DrawColor = Color.Red;
+
+            if (CIGlobalNPC.LegacySCalLament != -1)
+            {
+                DrawColor = Color.White;
+                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneHellblastLegacy_Blue").Value;
+            }
+
+            DrawColor *= Projectile.Opacity;
+
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, drawStart, texture.Width, frameHeight)), DrawColor, Projectile.rotation, new Vector2(texture.Width / 2f, frameHeight / 2f), Projectile.scale, spriteEffects, 0);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], DrawColor, 1, texture);
             return false;
         }
         public override bool CanHitPlayer(Player player)
@@ -120,7 +126,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 else
                     player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 30);
 
-                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+                Color orbcolor = Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f);
+                if (CIGlobalNPC.LegacySCalLament != -1)
+                    orbcolor = Main.rand.NextBool() ? Color.Blue : Color.Lerp(Color.Blue, Color.DeepSkyBlue, 0.5f);
+
+                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), orbcolor, true, true);
                 GeneralParticleHandler.SpawnParticle(orb);
                 if (Main.rand.NextBool())
                 {

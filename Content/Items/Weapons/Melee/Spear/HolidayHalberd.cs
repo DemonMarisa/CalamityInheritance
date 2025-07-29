@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
+            Item.shoot = ModContent.ProjectileType<HolidayHalberdProj>();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

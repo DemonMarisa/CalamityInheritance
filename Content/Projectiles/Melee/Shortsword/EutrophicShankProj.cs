@@ -66,8 +66,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-                var source = Projectile.GetSource_FromThis();
-                Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<EutrophicSpark>(), Projectile.damage * 2, Projectile.knockBack);
+            var source = Projectile.GetSource_FromThis();
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<EutrophicSpark>(), Projectile.damage, Projectile.knockBack);
         }
     }
 }

@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             #endregion
         }
 
-        private void SummonMinion(CalamityInheritancePlayer usPlayer, CalamityPlayer calPlayer, Player player, bool hideVisual)
+        public static void SummonMinion(CalamityInheritancePlayer usPlayer, CalamityPlayer calPlayer, Player player, bool hideVisual)
         {
             int pType = ModContent.ProjectileType<FungalClumpLegacyMinion>();
             int buffType = ModContent.BuffType<FungalClumpLegacyBuff>();

@@ -103,9 +103,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             //只有投掷模式下被任意形式干掉才会生成粒子
             if (Projectile.CalamityInheritance().ThrownMode)
             {
+                NPC npc = CIFunction.FindClosestTarget(Projectile, 400f, true);
+
+                int npcindex;
+
+                if (npc == null)
+                    npcindex = 0;
+                else
+                    npcindex = npc.whoAmI;
+
                 CIFunction.DustCircle(Projectile.position, 24, 2f, CIDustID.DustWater, true, 12f);
                 //而后，生成水环
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3,-6)), ModContent.ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3,-6)), ModContent.ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, npcindex);
                 Projectile.netUpdate = true;
             }
         }

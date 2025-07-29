@@ -48,17 +48,5 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 int MagicMirror = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.MagicMirror, Projectile.direction * 2, 0f, 15, default, 1.3f);
             }
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            CalamityInheritancePlayer modPlayer = Main.player[Projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
-
-            modPlayer.ProjectilHitCounter++;
-            if (modPlayer.ProjectilHitCounter >= 5)
-            {
-                var source = Projectile.GetSource_FromThis();
-                Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<BlueAura>(), Projectile.damage * 2, Projectile.knockBack);
-                modPlayer.ProjectilHitCounter = 0;
-            }
-        }
     }
 }

@@ -19,12 +19,6 @@ namespace CalamityInheritance.Utilities
     
     public static partial class CIFunction
     {
-        struct GetVectorDistance
-        {
-            public float vector2Distance;
-            public Vector2 NpcCenter;
-            public Vector2 PlayerCenter;
-        }
         public static int SecondsToFrames(int seconds) => seconds * 60;
         /// <summary>
         /// 获取npc的“正中心”位置

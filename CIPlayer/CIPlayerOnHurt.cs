@@ -57,7 +57,10 @@ namespace CalamityInheritance.CIPlayer
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
 
             if (world.IronHeart)
+            {
+                modifiers.DisableSound();
                 ModeHit(ref modifiers);
+            }
 
             #region Custom Hurt Sounds
             if (calPlayer.hurtSoundTimer == 0)
@@ -70,12 +73,13 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
+
             #region Player Incoming Damage Multiplier (Increases)
             double damageMult = 1D;
             CalamityInheritancePlayer modPlayer1 = Player.CIMod();
 
             if (modPlayer1.LoreDevourer || PanelsLoreDevourer)
-                damageMult += 0.05;
+                damageMult += 0.15;
 
             if(AncientBloodPact && Main.rand.NextBool(4))
             {
@@ -92,6 +96,7 @@ namespace CalamityInheritance.CIPlayer
             }
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
+
             #region 免伤
             double damageReduce = 1D;
             var usPlayer = Player.CIMod();
@@ -117,7 +122,6 @@ namespace CalamityInheritance.CIPlayer
             }
             modifiers.FinalDamage *= (float)damageReduce;
             #endregion
-
         }
         #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -529,9 +533,9 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             //海绵
-            if (Modplayer1.CIsponge)
+            if (Modplayer1.CIspongeHurtHeal)
             {
-                int shouldHeal = CIConfig.Instance.TheSpongeBarrier ? (int)(hurtInfo.Damage / 15D) : (int)(hurtInfo.Damage / 5D);
+                int shouldHeal = (int)(hurtInfo.Damage / 10D);
                 Player.Heal(shouldHeal);
             }
             //再生
@@ -1028,5 +1032,19 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
+
+        public static void On_Player_UpdateLifeRegen(On_Player.orig_UpdateLifeRegen orig, Player self)
+        {
+            bool isIronHeart = ModContent.GetInstance<CIWorld>().IronHeart;
+            if (isIronHeart)
+            {
+                orig(self);
+                return;
+            }
+
+            int temp = self.statLife;
+            orig(self);
+
+        }
     }
 }

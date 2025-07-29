@@ -143,7 +143,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[Projectile.owner];
-            if ((target.damage > 5 || target.boss) && Projectile.owner == Main.myPlayer && !target.SpawnedFromStatue)
+            if (Projectile.owner == Main.myPlayer)
             {
                 player.AddBuff(ModContent.BuffType<PolarisBuffLegacy>(), 480);
             }

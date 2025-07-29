@@ -46,7 +46,9 @@ namespace CalamityInheritance
         internal bool MusicAvailable => musicMod is not null;
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
-
+        #region Mod Support
+        public override object Call(params object[] args) => CIModCall.Call(args);
+        #endregion
         public override void Load()
         {
             Instance = this;

@@ -24,14 +24,7 @@ namespace CalamityInheritance.Utilities
         public static void RemoveCooldown(this Player player, string id)
         {
             CalamityPlayer calamityPlayer = player.Calamity();
-            CalamityInheritancePlayer inheritancePlayer = player.CIMod();
-
-            RemoveCooldownFromModPlayer(calamityPlayer, id);
-            RemoveCooldownFromModPlayer(inheritancePlayer, id);
-        }
-        private static void RemoveCooldownFromModPlayer(dynamic player, string id)
-        {
-            player.cooldowns.Remove(id);
+            calamityPlayer.cooldowns.Remove(id);
         }
         #endregion
         public static CalamityInheritanceGlobalProjectile CalamityInheritance(this Projectile proj)
@@ -44,7 +37,7 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="player">The player whose extra immunity frames are being computed.</param>
         /// <returns>The amount of extra immunity frames to grant.</returns>
-        public static int GetExtraHitIFrames(this Player player, HurtInfo hurtInfo)
+        public static int CIGetExtraHitIFrames(this Player player, HurtInfo hurtInfo)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
             int extraIFrames = 0;

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<ExcaliburShortswordProj>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 2.4f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }

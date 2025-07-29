@@ -214,7 +214,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
         {
             Projectile Laser = Main.projectile[(int)Projectile.localAI[0]];
             // 基础参数
-            const int laserLength = 4400;
+            const int laserLength = 8800;
             float alphaMultiplier = Math.Max(0, Laser.Opacity * Math.Min(1, Laser.timeLeft / 3f));
             float beamRotation = Projectile.rotation;
             float Scale = Laser.ai[2] == 1 ? 0.3f : 1.5f * Laser.ai[0];
@@ -228,7 +228,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
 
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Vector2.Zero, Laser);
-            //DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Vector2.Zero);
 
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale * 1.4f, Vector2.Zero, Laser);
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, new Vector2(0, -8f), Laser);

@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             bool checkPrism = player.ownedProjectileCounts[Item.shoot] <= 0;
             if (player.CIMod().YharimsKilledScal)
             {
-                Item.mana = 200;
+                Item.mana = 100;
                 return checkPrism;
             }
             else

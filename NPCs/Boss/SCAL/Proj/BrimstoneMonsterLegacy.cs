@@ -147,8 +147,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-            lightColor.R = (byte)(255 * Projectile.Opacity);
-            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            Color DrawColor = Color.Red;
+            DrawColor *= Projectile.Opacity;
+
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, DrawColor, Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
 
@@ -170,8 +172,11 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 player.ScalDebuffs(360, 480, 300);
 
                 player.statLife -= Projectile.damage * 3;
+                Color orbcolor = Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f);
+                if (CIGlobalNPC.LegacySCalLament != -1)
+                    orbcolor = Main.rand.NextBool() ? Color.Blue : Color.Lerp(Color.Blue, Color.DeepSkyBlue, 0.5f);
 
-                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f), true, true);
+                GlowOrbParticle orb = new GlowOrbParticle(player.Center, new Vector2(6, 6).RotatedByRandom(360) * Main.rand.NextFloat(0.3f, 1.1f), false, 60, Main.rand.NextFloat(1.55f, 3.75f), orbcolor, true, true);
                 GeneralParticleHandler.SpawnParticle(orb);
                 if (Main.rand.NextBool())
                 {

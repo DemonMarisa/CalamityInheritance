@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Projectile.tileCollide = false;
             Projectile.timeLeft = TrueTimeLeft;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 30;
+            Projectile.idStaticNPCHitCooldown = 5;
             Projectile.DamageType = DamageClass.Summon;
         }
 

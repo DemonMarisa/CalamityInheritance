@@ -61,12 +61,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 if (!player.Calamity().StealthStrikeAvailable())
                 {
                     Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
-                    Projectile.NewProjectileDirect(source, position, -velocity * 1.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 1.2f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
                 }
                 SoundEngine.PlaySound(ThrowSound1, player.Center);
                 if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
                 {
-                    Projectile.NewProjectileDirect(source, position, -velocity * 3.5f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 2.6f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
                     int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
                     SoundEngine.PlaySound(ThrowSound2, player.Center);
                     if (stealth.WithinBounds(Main.maxProjectiles))

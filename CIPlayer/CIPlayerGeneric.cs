@@ -26,6 +26,7 @@ using CalamityMod.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Utilities;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -105,7 +106,6 @@ namespace CalamityInheritance.CIPlayer
         public float shieldInvinc = 5f;
         #endregion
         #region Energy Shields
-        public Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();//没有任何用处，仅用来防止报错，至少目前是
         public bool CIHasAnyEnergyShield => CIsponge;
         public bool freeDodgeFromShieldAbsorption = false;
         public bool CIdrawnAnyShieldThisFrame = false;
@@ -121,6 +121,7 @@ namespace CalamityInheritance.CIPlayer
 
         public int ShieldDurabilityMax = 0;
 
+        public bool CIspongeHurtHeal = false;
         #endregion
         #region 禁止生成物品
         public bool cIdisableVoodooSpawns = false;
@@ -155,7 +156,7 @@ namespace CalamityInheritance.CIPlayer
             ForceHammerStealth = false;
             CIDashID = string.Empty;
             ElysianAegis = false;
-
+            CIspongeHurtHeal = false;
             #region 禁止生成物品
             cIdisableVoodooSpawns = false;
             cIdisablePerfCystSpawns = false;
@@ -194,7 +195,8 @@ namespace CalamityInheritance.CIPlayer
         }
         public override void PostUpdate()
         {
-            
+            // 铁心
+            IronHeartChange();
         }
         #region TeleportMethods
         public static Vector2? GetJunglePosition(Player player)
@@ -280,6 +282,15 @@ namespace CalamityInheritance.CIPlayer
             }
             if (Player.whoAmI == Main.myPlayer)
             {
+                // Add extra iframes on hit based on various Calamity effects.
+                int iFramesToAdd = Player.CIGetExtraHitIFrames(hurtInfo);
+
+                // Give bonus immunity frames based on the type of damage dealt
+                if (hurtInfo.CooldownCounter != -1)
+                    Player.hurtCooldowns[hurtInfo.CooldownCounter] += iFramesToAdd;
+                else
+                    Player.immuneTime += iFramesToAdd;
+
                 if (AstralBulwark)
                 {
                     var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
@@ -349,7 +360,6 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            
         }
         #endregion
         #region PreUpdate

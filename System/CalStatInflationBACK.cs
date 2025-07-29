@@ -676,19 +676,19 @@ namespace CalamityInheritance.System
             #region 遗产
             // 归元旋涡
             if (item.type == ModContent.ItemType<SubsumingVortexold>())
-                item.damage = 935;
+                item.damage = 1085;
             // 耀界之光
             if (item.type == ModContent.ItemType<VividClarityOld>())
                 item.damage = 1250;
             // 星流短剑
             if (item.type == ModContent.ItemType<ExoGladius>())
-                item.damage = 2000;
+                item.damage = 2800;
             // 星流之刃
             if (CheckModItem<Exobladeold>(item.type))
                 item.damage = 5175;
             // 链刃
             if (CheckModItem<ExoFlail>(item.type))
-                item.damage = 3125;
+                item.damage = 6125;
             // 磁极异变
             if (item.type == ModContent.ItemType<MagnomalyCannon>())
                 item.damage = 2100;

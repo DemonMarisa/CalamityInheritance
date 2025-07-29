@@ -512,5 +512,42 @@ namespace CalamityInheritance.Utilities
             // 如果距离小于等于distanceRe像素，则返回true
             return distanceToPlayer <= distanceRe;
         }
+
+        /// <summary>
+        /// 用于跟踪指定地点的方法
+        /// 只会跟踪你传进去的目标
+        /// </summary>
+        /// <param name="proj">射弹</param>
+        /// <param name="target">射弹目标</param>
+        /// <param name="distRequired">最大范围</param>
+        /// <param name="speed">射弹速度</param>
+        /// <param name="inertia">惯性</param>
+        /// <param name="maxAngleChage">角度限制，默认为空. </param>
+        public static void HomingTarget(this Projectile proj, Vector2 target, float distRequired, float speed, float inertia, float? maxAngleChage = null)
+        {
+            float curDist = Vector2.Distance(target, proj.Center);
+
+            //开始追踪target
+            Vector2 home = (target - proj.Center).SafeNormalize(Vector2.UnitY);
+            Vector2 velo = (proj.velocity * inertia + home * speed) / (inertia + 1f);
+            //这里给了一个角度限制
+            if (maxAngleChage.HasValue)
+            {
+                float curAngle = proj.velocity.ToRotation();
+                float tarAngle = velo.ToRotation();
+                float angleDiffer = MathHelper.WrapAngle(tarAngle - curAngle);
+                //转弧度
+                float maxRadians = MathHelper.ToRadians(maxAngleChage.Value);
+                if (Math.Abs(angleDiffer) > maxRadians)
+                {
+                    float clampedAngle = curAngle + Math.Sign(angleDiffer) * maxRadians;
+                    float setSpeed = velo.Length();
+                    velo = new Vector2((float)Math.Cos(clampedAngle), (float)Math.Sin(clampedAngle)) * setSpeed;
+                }
+            }
+
+            //设定速度
+            proj.velocity = velo;
+        }
     }
 }
