@@ -82,6 +82,7 @@ Mods: {
 			SarosAuraLegacy.DisplayName: Saros Aura Legacy
 			ShizukuSword.DisplayName: Shizuku Sword
 			ShizukuSwordProjectile.DisplayName: Shizuku Sword Projectile
+			ShizukuEdgeProjectile2.DisplayName: Shizuku Edge Projectile2
 		}
 
 		Content/Projectiles/Summon: {
