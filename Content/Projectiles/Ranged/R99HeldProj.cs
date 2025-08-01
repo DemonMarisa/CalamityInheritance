@@ -16,7 +16,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class R99HeldProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectile.Ranged";
-        public override string Texture => $"{Generic.WeaponPath}/Ranged/R99";
         public Player Owner => Main.player[Projectile.owner];
         public const float OffsetX = 0f;
         public const float OffsetY = 0f;
@@ -51,13 +50,12 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             Projectile.extraUpdates = 0;
-            Vector2 offset = new(0, 0f);
             Vector2 rrp = Owner.RotatedRelativePoint(Owner.MountedCenter, true);
             //更新手持位置
             UpdateVisual(rrp);
             if (Projectile.owner == Main.myPlayer)
             {
-                UpdateAiming(rrp, Owner.HeldItem.shootSpeed);
+                UpdateAiming(rrp, 1);
                 bool ifStillUse = (Owner.channel || Owner.controlUseTile) && !Owner.noItems && !Owner.CCed;
                 if (ifStillUse)
                     HoldoutAI();
@@ -68,12 +66,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            Vector2 offset = new(10 * Owner.direction, -2);
+
             Texture2D tex = TextureAssets.Projectile[Type].Value;
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
             float drawRot = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0);
             Vector2 rotationPoint = tex.Size() * 0.5f;
             SpriteEffects flipSprite = Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            Main.spriteBatch.Draw(tex, drawPos, null, Projectile.GetAlpha(lightColor), drawRot, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite, default);
+            Main.spriteBatch.Draw(tex, drawPos + offset.RotatedBy(drawRot), null, Projectile.GetAlpha(lightColor), drawRot, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir * 0.6f, flipSprite, default);
             return false;
         }
         private void DelCondition()
@@ -93,33 +93,47 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Vector2 fireDir = Vector2.UnitX.RotatedBy(Projectile.rotation);
             fireDir = fireDir.SafeNormalize(Vector2.UnitX);
 
-            Owner.PickAmmo(Owner.ActiveItem(), out int Proj, out float shootSpeed, out int damage, out float kb, out int ammoID);
+            Owner.PickAmmo(ActiveItem(Owner), out int Proj, out float shootSpeed, out int damage, out float kb, out int ammoID);
+
             Vector2 velocity = fireDir * shootSpeed;
             AttackTimer += 1f;
             if (AttackTimer % 1 == 0)
             {
+                Vector2 offset = new(0, -13);
                 SoundEngine.PlaySound(SoundID.Item41 with { MaxInstances = 0 }, Projectile.Center);
-                int p = Projectile.NewProjectile(src, Projectile.Center, fireDir * shootSpeed, Proj, damage, kb, Projectile.owner);
-                Main.projectile[p].CalamityInheritance().IfR99 = true;
+                int p = Projectile.NewProjectile(src, Projectile.Center + offset, fireDir * shootSpeed, Proj, damage, kb, Projectile.owner);
                 Main.projectile[p].extraUpdates += 4;
             }
+        }
+        public static Item ActiveItem(Player player)
+        {
+            if (!Main.mouseItem.IsAir)
+            {
+                return Main.mouseItem;
+            }
+
+            return player.HeldItem;
         }
 
         private void RecoilAnimation()
         {
             //Shaking这个武器即可
-            // Projectile.position += Main.rand.NextVector2Circular(1.4f, 1.4f);
+            Projectile.position += Main.rand.NextVector2Circular(1.4f, 1.4f);
         }
 
         private void UpdateAiming(Vector2 rrp, float shootSpeed)
         {
             Vector2 aim = Vector2.Normalize(Main.MouseWorld - rrp);
+
             if (aim.HasNaNs())
                 aim = -Vector2.UnitY;
+
             aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, 0.5f));
             aim *= shootSpeed;
+
             if (aim != Projectile.velocity)
                 Projectile.netUpdate = true;
+
             Projectile.velocity = aim;
         }
 
@@ -133,7 +147,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Owner.heldProj = Projectile.whoAmI;
             Owner.itemTime = 2;
             Owner.itemAnimation = 2;
-            Owner.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
+            Owner.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation() - MathHelper.PiOver2 * Owner.direction;
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Owner.itemRotation);
         }
     }
 }
