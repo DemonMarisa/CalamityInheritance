@@ -42,7 +42,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             if (Main.zenithWorld)
             {
-                Item.damage =  100;
                 Item.DamageType = DamageClass.Ranged; 
                 Item.mana = 0;
                 Item.useTime =  15;
@@ -50,13 +49,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             }
             else
             {
-                Item.damage = 295;
                 Item.DamageType = DamageClass.Magic;
                 Item.mana = 20;
                 Item.useTime = 20;
                 Item.useAnimation = 20;
             }
             return base.CanUseItem(player);
+        }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (Main.zenithWorld)
+            {
+                damage.Base = 100;
+            }
         }
         public override void AddRecipes()
         {

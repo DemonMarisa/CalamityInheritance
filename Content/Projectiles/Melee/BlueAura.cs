@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using Terraria.Audio;
+using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -35,10 +37,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnSpawn(IEntitySource source)
         {
+            SoundEngine.PlaySound(CISoundMenu.AncientShivProjSpawn, Projectile.position);
             CIFunction.DustCircle(Projectile.Center, 24, 1, DustID.MagicMirror, false, 0, 255, 0, 6f);
         }
         public override void OnKill(int timeLeft)
         {
+            SoundEngine.PlaySound(CISoundMenu.AncientShivProjSpawn, Projectile.position);
             CIFunction.DustCircle(Projectile.Center, 24, 1, DustID.MagicMirror, false, 0, 255, 0, 6f);
         }
 

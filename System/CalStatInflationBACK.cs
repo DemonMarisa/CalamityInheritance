@@ -454,6 +454,9 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<VenusianTrident>())
                 item.damage = (int)(item.damage * 1.6f);
+
+            if (item.type == ModContent.ItemType<PhantasmalFuryOld>())
+                item.damage = 1295;
             #endregion
             #region 召唤
             if (item.type == ModContent.ItemType<Sirius>())

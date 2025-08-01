@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.height = 86;
             Item.width = 102;
-            Item.damage = 180;
+            Item.damage = 90;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.useAnimation = 30;
             Item.useTime = 30;

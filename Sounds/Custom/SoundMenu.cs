@@ -88,5 +88,6 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle HalibutCannonFire = new($"{ItemSoundRoute}/HalibutCannon/HalibutCannonFire") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle ShizukuSwordCharge = new($"{ItemSoundRoute}/WaterMirror");
         #endregion
+        public static readonly SoundStyle AncientShivProjSpawn = new($"{ItemSoundRoute}/AncientShivSounds/AncientShivProjSpawn") { Volume = 0.9f, Pitch = 0.3f };
     }
 }

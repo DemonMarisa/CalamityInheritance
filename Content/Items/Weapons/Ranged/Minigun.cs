@@ -1,15 +1,17 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.CalProjChange;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -37,7 +39,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;
-            Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
@@ -47,6 +48,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-10, 0);
+        }
+        public override void UseItemFrame(Player player)
+        {
+            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
         }
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

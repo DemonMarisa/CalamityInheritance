@@ -1,10 +1,12 @@
-using Microsoft.Xna.Framework;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod.Items.Materials;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -55,7 +57,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             return true;
         }
-
+        public override void UseItemFrame(Player player)
+        {
+            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
+            CIFunction.NoHeldProjUpdateAim(player, 0, 1);
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
                 float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;

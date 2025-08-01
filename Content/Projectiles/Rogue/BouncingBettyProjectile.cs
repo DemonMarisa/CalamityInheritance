@@ -22,6 +22,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = 3;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.ignoreWater = true;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
         private void Explode()
         {

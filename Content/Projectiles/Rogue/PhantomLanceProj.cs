@@ -1,11 +1,12 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Projectiles.Magic;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -62,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     if (Projectile.Calamity().stealthStrike)
                         damageMult = 0.7f;
                     int soulDamage = (int)(Projectile.damage * damageMult);
-                    int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
+                    int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhantomLegacy>(), soulDamage, Projectile.knockBack, Projectile.owner);
                     Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
                     if (soul.WithinBounds(Main.maxProjectiles))
                     {

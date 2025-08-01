@@ -19,11 +19,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PearlGodLegacy : CIRanged, ILocalizedModType
     {
+        public static int damage = 110;
         public override void SetDefaults()
         {
             Item.width = 80;
             Item.height = 46;
-            Item.damage = 120;
+            Item.damage = damage;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 10;
             Item.useAnimation = 10;

@@ -34,6 +34,8 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
             Projectile.extraUpdates = 1;
             AIType = ProjectileID.Bullet;
             Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10 * (Projectile.extraUpdates + 1);
         }
 
         public override void AI()
@@ -43,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
             {
                 if (Main.rand.NextBool(3))
                 {
-                    int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), 1, 1, 87, 0f, 0f, 0, default, 0.5f);
+                    int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), 1, 1, DustID.GemTopaz, 0f, 0f, 0, default, 0.5f);
                     Main.dust[dust].alpha = Projectile.alpha;
                     Main.dust[dust].velocity *= 0f;
                     Main.dust[dust].noGravity = true;
@@ -84,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 87, Projectile.oldVelocity.X * 0.05f, Projectile.oldVelocity.Y * 0.05f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GemTopaz, Projectile.oldVelocity.X * 0.05f, Projectile.oldVelocity.Y * 0.05f);
             }
         }
     }

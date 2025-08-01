@@ -44,10 +44,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Ichor, 60);
-            if (target.type == NPCID.TargetDummy || target.type == NPCID.TheDestroyerBody)
-            {
-                return;
-            }
             float num72 = Item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num78 = Main.mouseX - Main.screenPosition.X - vector2.X;
@@ -92,7 +88,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 num79 *= num80;
                 float speedX4 = num78;
                 float speedY5 = num79 + Main.rand.Next(-180, 181) * 0.02f;
-                Projectile.NewProjectile(player.GetSource_OnHit(target), vector2.X, vector2.Y, speedX4, speedY5, ProjectileID.GoldenShowerFriendly, hit.Damage, hit.Knockback, player.whoAmI, 1f, (float)Main.rand.Next(10));
+                int p = Projectile.NewProjectile(player.GetSource_OnHit(target), vector2.X, vector2.Y, speedX4, speedY5, ProjectileID.GoldenShowerFriendly, hit.Damage, hit.Knockback, player.whoAmI, 1f, (float)Main.rand.Next(10));
+                Main.projectile[p].DamageType = DamageClass.Melee;
             }
         }
 

@@ -1,17 +1,19 @@
-﻿using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Projectiles;
+﻿using CalamityInheritance.Content.Projectiles.Typeless.Heal;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+using CalamityMod.Projectiles;
+using CalamityMod.Projectiles.Healing;
+using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -33,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
             Projectile.light = 0.5f;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             AIType = ProjectileID.Bullet;
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -83,17 +85,29 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AeriesShockblast>(), Projectile.damage, 0f, Projectile.owner, 0f, Projectile.ai[1]);
                 Main.projectile[proj].scale = (Projectile.ai[1] * 0.5f) + 1f;
             }
-            if (Main.player[Projectile.owner].moonLeech)
+            Player player = Main.player[Projectile.owner];
+            if (player.moonLeech)
+                return;
+            if (player.CIMod().GlobalHealProjCD > 0)
                 return;
             float healAmt = damage * 0.05f;
-            if ((int)healAmt == 0)
-                return;
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f)
-                return;
-            if (healAmt > 100)
-                healAmt = 100;
+            int CD = Main.rand.Next(40, 60);
+            float rot = (player.Center - Projectile.Center).ToRotation();
+            for (int i = 0; i < 3; i++)
+            {
+                int angleoffset = 145;
+                Vector2 direction = new Vector2(12f, 0).RotatedBy(rot);
 
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], healAmt, ModContent.ProjectileType<TransfusionTrail>(), 1200f, 3f);
+                if (i == 1)
+                    direction = new Vector2(12f, 0).RotatedBy(rot).RotatedBy(MathHelper.ToRadians(angleoffset));
+
+                if (i == 2)
+                    direction = new Vector2(12f, 0).RotatedBy(rot).RotatedBy(MathHelper.ToRadians(-angleoffset));
+
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<BlueHealProj>(), 0, 0f, player.whoAmI, 0, 0, healAmt);
+            }
+
+            player.CIMod().GlobalHealProjCD = CD;
         }
     }
 }

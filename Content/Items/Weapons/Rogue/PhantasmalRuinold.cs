@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             CreateRecipe().
                 AddRecipeGroup(CIRecipeGroup.LumiStriker).
-                AddIngredient<PhantomLance>(500).
+                AddIngredient<PhantomLance>().
                 AddIngredient<RuinousSoul>(4).
                 AddIngredient<Necroplasm> (20).
                 AddTile(TileID.LunarCraftingStation).

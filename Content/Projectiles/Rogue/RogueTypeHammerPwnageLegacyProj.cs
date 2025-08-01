@@ -159,7 +159,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         private void OnStuckEffect()
         {
-            CIFunction.DustCircle(Projectile.position, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);
+            CIFunction.DustCircle(Projectile.Center, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);
             SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f}, Projectile.Center);
         }
         private void OnChasingDust()
