@@ -94,6 +94,7 @@ Mods: {
 			Projectile: {
 				Summon.MountedScannerSummonLegacy.DisplayName: Mounted Scanner Summon Legacy
 				Magic.YharimsExtraPrism.DisplayName: Yharims Extra Prism
+				Ranged.R99HeldProj.DisplayName: R99 Held Proj
 			}
 		}
 

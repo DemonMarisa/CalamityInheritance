@@ -53,6 +53,8 @@ namespace CalamityInheritance.CIPlayer
         #region 林海复活
         // 用于计时
         public int SilvaRebornTimer = 0;
+        public int R99Shooting = 0;
+        public int R99TargetWhoAmI = -1;
         #endregion
         public void ResetCD()
         {
@@ -68,13 +70,13 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientAuricDashCache > 0)
                 AncientAuricDashCache--;
-                
+
             if (AncientGodSlayerBuffCounter > 0)
                 AncientGodSlayerBuffCounter--;
 
             if (AncientGodSlayerBuffCD > 0)
                 AncientGodSlayerBuffCD--;
-            
+
             if (summonProjCooldown > 0f)
                 summonProjCooldown -= 1;
 
@@ -95,33 +97,33 @@ namespace CalamityInheritance.CIPlayer
 
             if (AncientAuricHealCooldown > 0)
                 AncientAuricHealCooldown--;
-            
+
             if (PerunofYharimCooldown > 0)
                 PerunofYharimCooldown--;
 
             if (AncientBloodflareHeartDropCD > 0)
                 AncientBloodflareHeartDropCD--;
-            
+
             if (AncientSilvaRegenCD > 0)
                 AncientSilvaRegenCD--;
-            
+
             //生命恢复消失前的CD
             if (AncientAstralStealthGap > 0)
                 AncientAstralStealthGap--;
             //暴击CD 
             if (AncientAstralCritsCD > 0) //暴击内置CD
                 AncientAstralCritsCD--;
-            
+
             //星辉套重置暴击达到指定次数时重置 
             if (AncientAstralCritsCount > RequireCrits)
                 AncientAstralCritsCount = 0;
             //星辉套每次潜伏攻击的CD
             if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD
                 AncientAstralStealthCD--;
-            
+
             if (statisTimerOld > 0 && CIDashDelay >= 0)
                 statisTimerOld = 0;//斯塔提斯CD
-            
+
             if (Player.miscCounter % 150 == 0)
             {
                 ReaverRocketFires = true;
@@ -136,20 +138,20 @@ namespace CalamityInheritance.CIPlayer
                 DukeDefenseCounter--;
 
             if (SparkTimer > 0)
-                SparkTimer --;
+                SparkTimer--;
 
             if (fireCD > 0)
                 fireCD--;
-                
+
             if (AeroFlightPower > 0)
                 AeroFlightPower--;
 
             if (GlobalSoundDelay > 0)
-                GlobalSoundDelay --;
+                GlobalSoundDelay--;
 
             if (GlobalFireDelay > 0)
                 GlobalFireDelay--;
-                
+
             if (BrimstoneDartsCD > 0)
                 BrimstoneDartsCD--;
 
@@ -158,19 +160,19 @@ namespace CalamityInheritance.CIPlayer
 
             if (DNAImmnue > 0)
                 DNAImmnue--;
-            
+
             if (DNAImmnueActive > 0)
                 DNAImmnueActive--;
-            
+
             if (GlobalHealProjCD > 0)
                 GlobalHealProjCD--;
-            
+
             if (InitNanotechSound > 0)
                 InitNanotechSound--;
 
             if (GlobalGodSlayerHealProjCD > 0)
                 GlobalGodSlayerHealProjCD--;
-            
+
             if (BuffSubsumingVortexFireRate > 0)
                 BuffSubsumingVortexFireRate--;
 

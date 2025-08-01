@@ -1,4 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.System.Configs;
@@ -9,6 +11,7 @@ using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -43,6 +46,8 @@ namespace CalamityInheritance.Content.Projectiles
         public bool PingRampartFallenStar = false;
         // 1帧影响
         public bool oneFrameEffect = false;
+        public bool IfR99 = false;
+        public int CurR99Chance = 0;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -51,7 +56,9 @@ namespace CalamityInheritance.Content.Projectiles
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
+                //禁止R99射出的子弹使用分裂
                 if (projectile.DamageType == DamageClass.Ranged
+                    && IfR99
                     && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);
@@ -153,6 +160,34 @@ namespace CalamityInheritance.Content.Projectiles
                 //Bypass defense
                 modifiers.DefenseEffectiveness *= 0f;
                 modifiers.FinalDamage *= 1f / (1f - target.Calamity().DR);
+            }
+            if (IfR99)
+            {
+                Player R99Owner = Main.player[projectile.owner];
+                //R99无视防御与dr
+                modifiers.DefenseEffectiveness *= 0f;
+                modifiers.FinalDamage *= 1f / (1f - target.Calamity().DR);
+                ref int isShooted = ref R99Owner.CIMod().R99Shooting;
+                ref int targetIndex = ref R99Owner.CIMod().R99TargetWhoAmI;
+                isShooted += 1;
+                targetIndex = target.whoAmI;
+                if (targetIndex != target.whoAmI)
+                    isShooted = 0;
+                else
+                {
+                    isShooted += 1;
+                    if (isShooted > 75)
+                    {
+                        SoundEngine.PlaySound(CISoundID.SoundBomb, target.Center);
+                        if (Main.rand.Next(15) - CurR99Chance <= 0)
+                        {
+                            modifiers.FinalDamage *= 4.5f;
+                            CurR99Chance = 0;
+                        }
+                        else
+                            CurR99Chance += 1;
+                    }
+                }
             }
             LevelBoost(projectile, usPlayer);
         }

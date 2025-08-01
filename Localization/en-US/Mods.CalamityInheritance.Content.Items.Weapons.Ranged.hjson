@@ -568,3 +568,8 @@ HalibutCannonLegendary: {
 	OnInfernumToolTip: ""
 	OnPreKnockDownedSkeletron: ""
 }
+
+R99: {
+	DisplayName: R99
+	Tooltip: ""
+}
