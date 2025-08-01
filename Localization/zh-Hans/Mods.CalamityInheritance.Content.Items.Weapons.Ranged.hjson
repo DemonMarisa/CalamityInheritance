@@ -592,3 +592,8 @@ HalibutCannonLegendary: {
 	OnInfernumToolTip: "[c/DA70D6:你开启了炼狱模式，直接导致你没法在深渊四层获得这把武器了，所以不要疑问为什么他能在终灾商店里卖了。]"
 	OnPreKnockDownedSkeletron: "[c/7CFC00:你在困难模式的骷髅王前拿到了这把武器，只能说你也是个人物。]"
 }
+
+R99: {
+	// DisplayName: R99
+	// Tooltip: ""
+}

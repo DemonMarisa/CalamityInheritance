@@ -94,6 +94,7 @@ Mods: {
 			Projectile: {
 				Summon.MountedScannerSummonLegacy.DisplayName: 架式扫射机
 				Magic.YharimsExtraPrism.DisplayName: 暴君水晶
+				// Ranged.R99HeldProj.DisplayName: R99 Held Proj
 			}
 		}
 

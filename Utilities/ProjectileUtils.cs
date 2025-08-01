@@ -466,7 +466,7 @@ namespace CalamityInheritance.Utilities
             if (player.CIMod().GlobalGodSlayerHealProjCD > 0)
                 return;
 
-            float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
+            float randomAngleOffset = (float)Main.rand.NextFloat(MathHelper.TwoPi);
             Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
             float randomSpeed = Main.rand.NextFloat(12f, 16f);
 
