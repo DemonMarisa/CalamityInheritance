@@ -74,3 +74,14 @@ VeriumBullet: {
 		Homes in after striking an enemy
 		'''
 }
+
+LightAmmo: {
+	Tooltip:
+		'''
+		An ultra-fast bullet that always deals true damage on hit
+		When paired with Exsanguination, the bullet will be supercharged after a certain number of hits.
+		This effect resets when switching enemy units.
+		"I need light ammo."
+		'''
+	DisplayName: Light Bullet
+}

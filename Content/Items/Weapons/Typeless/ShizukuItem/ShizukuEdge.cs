@@ -54,10 +54,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             int projLeftType = ModContent.ProjectileType<ShizukuEdgeProjectile2>();
             int projRightType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
             //这个右键我看不懂。
+            //设定垂直速度
+            Vector2 newVec = new Vector2(12f, 0f).RotatedBy(MathHelper.PiOver2);
             if (player.altFunctionUse == 2 && player.ownedProjectileCounts[projLeftType] < 1)
-                Projectile.NewProjectile(source, position, Vector2.Zero, projRightType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, newVec, projRightType, damage, knockback, player.whoAmI);
             else
-                Projectile.NewProjectile(source, position, velocity, projLeftType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, Main.MouseWorld, velocity, projLeftType, damage, knockback, player.whoAmI);
             return false;
         }
         // public override void AddRecipes()

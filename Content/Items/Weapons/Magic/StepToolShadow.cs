@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.shoot = ModContent.ProjectileType<StepToolShadowChair>();
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<TrueScarlet>() : ModContent.RarityType<PureRed>();
+            Item.rare =  ModContent.RarityType<PureRed>();
             Item.value = CIShopValue.RarityPricePureRed;
         }
 

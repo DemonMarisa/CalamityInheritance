@@ -110,6 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
         private void DoJustSpawn()
         {
+            //生成时的粒子
             if (AttackTimer == -1f)
             {
                 SoundEngine.PlaySound(CISoundID.SoundIceRodBlockPlaced, Projectile.Center);

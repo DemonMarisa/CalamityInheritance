@@ -594,6 +594,12 @@ HalibutCannonLegendary: {
 }
 
 R99: {
-	// DisplayName: R99
-	// Tooltip: ""
+	DisplayName: 放血疗法[TrueScarlet]
+	Tooltip:
+		'''
+		以超高的频率发射超高速的子弹流
+		射出的所有子弹都会造成真实伤害
+		[c/E4080A:-开发者物品-]
+		“这里有一把冲锋枪，她就跟我一样快”
+		'''
 }

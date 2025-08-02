@@ -1,4 +1,6 @@
 using System;
+using CalamityMod;
+using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -15,7 +17,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public Player Owner => Main.player[Projectile.owner];
         public static Vector2 HoldingOffset => new (-5, 10f);
         public ref float AttackTimer => ref Projectile.ai[1];
-
+        public ref float AttackType => ref Projectile.ai[0];
+        public float YOffset = 0f;
+        public const float IsSpawned = 0f;
+        public const float IsSpining = 1f;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
@@ -36,12 +41,198 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 1;
         }
+        // public override void AI()
+        // {
+        //     KillProj();
+        //     PlayerPostionRotation();
+        //     AddLight();
+        //     ShootProjectile();
+        // }
+        //重新制作AI
         public override void AI()
         {
-            KillProj();
-            PlayerPostionRotation();
-            AddLight();
-            ShootProjectile();
+            Projectile.extraUpdates = 0;
+            //刚生成的时候，水平固定，并使其向上攀升
+            if (AttackType == IsSpawned)
+            {
+                Projectile.rotation += 0.25f;
+                Projectile.velocity *= 0.95f;
+                //期间射弹的水平位置跟随玩家位置
+                Projectile.position.X = Owner.Center.X;
+                if (Projectile.velocity.Length() == 0)
+                {
+                    //记录此时高度，开始自转
+                    YOffset = Projectile.Center.Y - Owner.Center.Y;
+                    AttackType = IsSpining;
+                    Projectile.netUpdate = true;
+                }
+            }
+            else
+            {
+                Vector2 offset = new(0, YOffset);
+                Vector2 rrp = Owner.RotatedRelativePoint(Owner.MountedCenter, true) - offset;
+                UpdateVisual(rrp);
+                //开始处理AI
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    bool stillInUse = (Owner.channel || Owner.controlUseTile) && !Owner.noItems && !Owner.CCed;
+                    if (stillInUse)
+                    {
+                        HoldoutAI();
+                    }
+                    else
+                    {
+                        DeleteAI();
+                    }
+
+                }
+            }
+        }
+
+        private void HoldoutAI()
+        {
+            //开始处理攻击AI
+            //发射的射弹类型
+            int[] ghostType =
+            [
+                ModContent.ProjectileType<SoulSmallPlaceholder>(),
+                ModContent.ProjectileType<SoulMidPlaceholder>(),
+                ModContent.ProjectileType<SoulLargePlaceholder>()
+            ];
+            #region 伤害倍率计算
+            //1.获取穿甲量
+            float AP = Owner.GetArmorPenetration<GenericDamageClass>();
+            //2.获取玩家（除盗贼外）最高伤害职业
+            DamageClass damageClass = BestClass();
+            //3.获取加算伤害加成
+            float additiveDamageMult = Owner.GetTotalDamage(damageClass).Additive;
+            //4.获取当前暴击概率最高的职业
+            DamageClass critClass = BestCrit();
+            //5.获取暴击加成
+            float critsAdd = Owner.GetCritChance(critClass);
+            //6.获取玩家当前防御力
+            int baseDef = Owner.statDefense;
+            //7. 假定穿甲量 + 伤害加成 < 200%(2f)，给予保底2f倍率
+            float damageMult = (AP + additiveDamageMult);
+            if (damageMult < 2f)
+                damageMult = 2f;
+            //8. 假定暴击概率+当前防御力 低于 500, 给予保底500
+            int damageBase = (int)critsAdd + baseDef;
+            if (damageBase < 500)
+                damageBase = 500;
+            //9.将上述所有计算代入下方自定义公式：(穿甲倍率加算+伤害加成) * 武器伤害 + (暴击概率 + 当前防御力) * 5 = 最终的射弹伤害
+            int finalProjDamage = (int)(damageMult * Projectile.damage + damageBase * 5);
+
+            //10.根据玩家当前的仆从和哨兵上限，获得射弹数量加成
+            int baseProjCounts = 5;
+            int extraProjCounts = Owner.maxMinions + Owner.maxTurrets;
+            int finalProjCounts = baseProjCounts + extraProjCounts;
+            #endregion
+            //开始攻击
+            AttackTimer += 1f;
+            IEntitySource src = Projectile.GetSource_FromThis();
+            if (AttackTimer % 15 == 0)
+            {
+                for (int i = 0; i < finalProjCounts; i++)
+                {
+                    //随机取用一个射弹
+                    int realProj = Utils.SelectRandom(Main.rand, ghostType);
+                    float speedX = Main.rand.NextFloat(Projectile.rotation * 1.1f, Projectile.rotation * 2.4f);
+                    //发射方向
+                    Vector2 fireDir = new Vector2(speedX, 0f).RotatedByRandom(MathHelper.TwoPi);
+                    int p = Projectile.NewProjectile(src, Projectile.Center, fireDir, realProj, finalProjDamage, 0f, Owner.whoAmI);
+                    //给予所有射弹盗贼潜伏标记
+                    Main.projectile[p].Calamity().stealthStrike = true;
+                }
+            }
+            //释放冲击波，灭弹效果
+            if (AttackTimer % 90 == 0)
+            {
+                Projectile.NewProjectile(src, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ShizukuShockwave>(), finalProjDamage / 10, 0f, Owner.whoAmI);
+            }
+            //重置一轮计数器
+            if (AttackTimer > 180)
+                AttackTimer = 0;
+        }
+
+        private DamageClass BestCrit()
+        {
+            float statCrit = 0f;
+            DamageClass best = DamageClass.Generic;
+            float meleeCrits = Owner.GetCritChance<MeleeDamageClass>();
+            float rangedCrits = Owner.GetCritChance<RangedDamageClass>();
+            float magicCrits = Owner.GetCritChance<MagicDamageClass>();
+            float rogueCrits = Owner.GetCritChance<RogueDamageClass>();
+            if (meleeCrits > statCrit)
+            {
+                statCrit = meleeCrits;
+                best = DamageClass.Melee;
+            }
+            if (rangedCrits > statCrit)
+            {
+                statCrit = rangedCrits;
+                best = DamageClass.Ranged;
+            }
+            if (magicCrits > statCrit)
+            {
+                statCrit = magicCrits;
+                best = DamageClass.Magic;
+            }
+            if (rogueCrits > statCrit)
+            {
+                best = ModContent.GetInstance<RogueDamageClass>();
+            }
+            return best;
+        }
+
+        public DamageClass BestClass()
+        {
+            float statDamage = 1f;
+            DamageClass best = DamageClass.Generic;
+            float melee = Owner.GetTotalDamage<MeleeDamageClass>().Additive;
+            float ranged = Owner.GetTotalDamage<RangedDamageClass>().Additive;
+            float magic = Owner.GetTotalDamage<MagicDamageClass>().Additive;
+            //召唤加成相对更高
+            float summon = Owner.GetTotalDamage<SummonDamageClass>().Additive / 1.5f;
+            if (melee > statDamage)
+            {
+                statDamage = melee;
+                best = DamageClass.Melee;
+            }
+            if (ranged > statDamage)
+            {
+                statDamage = ranged;
+                best = DamageClass.Ranged;
+            }
+            if (magic > statDamage)
+            {
+                statDamage = magic;
+                best = DamageClass.Magic;
+            }
+            if (summon > statDamage)
+            {
+                best = DamageClass.Summon;
+            }
+            return best;
+        }
+
+        private void DeleteAI()
+        {
+        }
+
+        private void UpdateVisual(Vector2 rrp)
+        {
+            //自转
+            Projectile.rotation += 0.25f;
+            //我只需要让射弹中心位于头顶上方，不考虑其他
+            Projectile.Center = rrp;
+            Projectile.spriteDirection = Projectile.direction;
+            Owner.ChangeDir(Projectile.direction);
+            Owner.heldProj = Projectile.whoAmI;
+            Owner.itemTime = 2;
+            Owner.itemAnimation = 2;
+            Owner.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
+
         }
 
         public void ShootProjectile()

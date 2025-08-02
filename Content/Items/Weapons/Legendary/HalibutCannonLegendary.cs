@@ -7,6 +7,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -26,6 +27,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         internal bool IsDownedWallOfFlesh = Main.hardMode;
         internal bool IsDownedMoonLord = Condition.DownedMoonLord.IsMet();
         internal bool IsDownedPostYharonBoss = (CIDownedBossSystem.DownedLegacyScal || DownedBossSystem.downedCalamitas) && DownedBossSystem.downedExoMechs;
+        public override void AddRecipes()
+        {
+            //微光转化……
+            ModContent.ItemType<HalibutCannon>().ShimmetTo<HalibutCannonLegendary>();
+            base.AddRecipes();
+        }
         public override void SetDefaults()
         {
             Item.width = 112;

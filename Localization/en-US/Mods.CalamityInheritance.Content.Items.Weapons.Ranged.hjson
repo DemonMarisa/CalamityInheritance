@@ -561,15 +561,31 @@ HalibutCannonLegendary: {
 	DisplayName: Halibut Cannon Legendary
 	Tooltip:
 		'''
-		-Legendary-
+		'Yes, it's still overpowered...for the all time'
+		[c/4169E1:-Legendary-]
 		[SCALING]
 		'''
-	LegendaryScaling: ""
-	OnInfernumToolTip: ""
-	OnPreKnockDownedSkeletron: ""
+	LegendaryScaling:
+		'''
+		[c/4169E1:Legendary Scaling]:
+		+{0} weapon base damage
+		+{1} bullets per fire time
+		'''
+	OnInfernumToolTip:
+		'''
+		"[c/DA70D6:You enabled Infernum mod, that mean you can not loot this weapon from Abyss]"
+		"[c/DA70D6:So do not have any question about why SCal shop would sell this]"
+		'''
+	OnPreKnockDownedSkeletron: '''"[c/7CFC00:You just obtained this weapon in Pre-Hardmode before Skeletron defeated, great.]'''
 }
 
 R99: {
-	DisplayName: R99
-	Tooltip: ""
+	DisplayName: Exsanguination TrueScarlet
+	Tooltip:
+		'''
+		Fires a stream of ultra-high-speed bullets at an extremely high frequency.
+		All bullets fired deal true damage.
+		[c/E4080A:-Developer Item-]
+		"SMG's here, she's just fast like me."
+		'''
 }
