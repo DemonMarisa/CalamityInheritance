@@ -152,10 +152,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 initialized = true;
             }
             Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
-            if (AttackType != IsShooted)
-                Projectile.rotation += 1f;
-            else
+            if (AttackType != IsStealth)
                 Projectile.rotation = Projectile.velocity.ToRotation();
+            else
+                Projectile.rotation += 1f;
         }
 
         private void SpawnExtraProj()

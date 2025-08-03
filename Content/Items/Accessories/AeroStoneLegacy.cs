@@ -19,6 +19,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<AeroStone>();
+
         }
         public override void SetDefaults()
         {

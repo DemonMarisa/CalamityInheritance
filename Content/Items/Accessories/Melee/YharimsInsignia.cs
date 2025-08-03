@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<AscendantInsignia>();
         }
         public override void SetDefaults()
         {

@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 Projectile.rotation += 0.25f;
                 Projectile.velocity *= 0.95f;
                 //期间射弹的水平位置跟随玩家位置
-                Projectile.position.X = Owner.Center.X;
+                // Projectile.position.X = Owner.Center.X;
                 if (Projectile.velocity.Length() == 0)
                 {
                     //记录此时高度，开始自转
@@ -75,7 +75,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 //开始处理AI
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    bool stillInUse = (Owner.channel || Owner.controlUseTile) && !Owner.noItems && !Owner.CCed;
+                    UpdateAiming(rrp, 1);
+                    bool stillInUse = (/*Owner.channel ||*/ Owner.controlUseTile) && !Owner.noItems && !Owner.CCed;
                     if (stillInUse)
                     {
                         HoldoutAI();
@@ -84,9 +85,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                     {
                         DeleteAI();
                     }
-
                 }
             }
+            Projectile.timeLeft = 2;
         }
 
         private void HoldoutAI()
@@ -152,7 +153,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             }
             //重置一轮计数器
             if (AttackTimer > 180)
+            {
+                //在玩家的位置释放飞剑
+                // Vector2 swordDirection = new Vector2(12f, 0f).RotatedBy(Main.rand.NextFloat(MathHelper.PiOver4))
                 AttackTimer = 0;
+            }
         }
 
         private DamageClass BestCrit()
@@ -234,7 +239,21 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Owner.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
 
         }
+        private void UpdateAiming(Vector2 rrp, float shootSpeed)
+        {
+            Vector2 aim = Vector2.Normalize(Main.MouseWorld - rrp);
 
+            if (aim.HasNaNs())
+                aim = -Vector2.UnitY;
+
+            aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, 0.5f));
+            aim *= shootSpeed;
+
+            if (aim != Projectile.velocity)
+                Projectile.netUpdate = true;
+
+            Projectile.velocity = aim;
+        }
         public void ShootProjectile()
         {
             #region 初始化

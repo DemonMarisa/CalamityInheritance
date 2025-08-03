@@ -1,16 +1,13 @@
 ﻿using CalamityMod.Items;
 using CalamityMod.Rarities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories.Wings;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -22,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void SetStaticDefaults()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(361, 11.5f, 2.9f);
+            Type.ShimmerEach<WingsofRebirth>(false);
         }
 
         public override void SetDefaults()

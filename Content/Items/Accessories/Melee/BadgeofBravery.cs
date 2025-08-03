@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -14,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<BadgeofBravery>();
         }
         public override void SetDefaults()
         {

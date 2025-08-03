@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     DoHoming(tar);
                     break;
                 case IsPointMouse:
-                    DoPointMouse(tar.Center);
+                    DoPointMouse();
                     break;
                 case IsOnHitHoming:
                     DoOnHitHoming(tar);
@@ -147,7 +147,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (AnotherTimer > ACTExcelsus.IdleTimer * 2)
             {
                 CIFunction.HomingNPCBetter(Projectile, tar, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f, 1, 10f);
-                // CIFunction.HomeInOnNPC(Projectile, true, ACTExcelsus.MaxSearchDist, ACTExcelsus.HomingSpeed, 20f);
             }
             //正式发起追踪前这个Timer得……变一下。
             else Projectile.timeLeft = 85;
@@ -159,18 +158,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             float rot = Projectile.AngleTo(tar) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
         }
-        //没有搜索到目标的时候，指向鼠标, 并尝试追及
-        private void DoPointMouse(Vector2 tar)
+        //没有搜索到目标的时候，指向鼠标
+        private void DoPointMouse()
         {
-            float rot = Projectile.AngleTo(tar) + MathHelper.PiOver4;
+            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= 0.9f;
-            MouseTimer += 1;
-            if (MouseTimer > ACTExcelsus.IdleTimer)
-            {
-                Projectile.extraUpdates += 2;
-                CIFunction.HomeInOnMouseBetter(Projectile, 16f, 20f, 1, false, Vector2.Distance(Projectile.Center, Main.MouseWorld) / 3);
-            }
         }
 
         //发起追踪前正常飞行

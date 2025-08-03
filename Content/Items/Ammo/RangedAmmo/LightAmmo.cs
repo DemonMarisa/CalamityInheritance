@@ -1,7 +1,12 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,7 +38,14 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         {
             CreateRecipe(999).
                 AddIngredient(ItemID.HighVelocityBullet).
-                AddIngredient<ShadowspecBar>(1).
+                AddIngredient<ExoPrism>(5).
+                AddIngredient<AshesofAnnihilation>(5).
+                AddTile<DraedonsForge>().
+                Register();
+
+            CreateRecipe(9999).
+                AddIngredient(ItemID.HighVelocityBullet).
+                AddIngredient<CalamitousEssence>(1).
                 AddTile<DraedonsForge>().
                 Register();
 

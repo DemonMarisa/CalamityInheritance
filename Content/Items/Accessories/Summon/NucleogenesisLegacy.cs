@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<Nucleogenesis>(false);
         }
         public override void SetDefaults()
         {

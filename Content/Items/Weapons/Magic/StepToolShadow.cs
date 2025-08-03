@@ -13,6 +13,7 @@ using CalamityMod.Items.Placeables.Banners;
 using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -60,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 AddIngredient<ReaperTooth>(9).
                 AddIngredient<ReaperSharkBanner>(1).
                 AddIngredient<CosmiliteBar>(9).
-                AddIngredient<ShadowspecBar>(8).
+                AddIngredient<CalamitousEssence>(8).
                 AddIngredient<DeepSeaDumbbell>(1).
                 AddIngredient<Valediction>(1).
                 AddIngredient<KnowledgeCalamitas>(1).

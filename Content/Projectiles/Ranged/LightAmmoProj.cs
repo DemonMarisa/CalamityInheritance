@@ -45,7 +45,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
             Projectile.spriteDirection = Projectile.direction;
 
-            // Flaking dust
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 4f)
             {
@@ -173,7 +172,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     for (int i = 0; i < 2; i++)
                         Dust.NewDust(Projectile.position, 10, 10, DustID.PlatinumCoin, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
-
                     AttackHit = 1;
                 }
             }

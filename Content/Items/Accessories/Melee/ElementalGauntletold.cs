@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<ElementalGauntlet>(false);
         }
         public override void SetDefaults()
         {

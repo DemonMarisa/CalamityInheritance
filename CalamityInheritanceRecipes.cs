@@ -165,6 +165,8 @@ namespace CalamityInheritance
         public static RecipeGroup OhMyGodIsChest;
         public static RecipeGroup MoonMusicBox;
         public static RecipeGroup RareReaper;
+        //下版本处理
+        public static RecipeGroup SeaShield;
 
         public override void Unload()
         {
@@ -227,6 +229,7 @@ namespace CalamityInheritance
                 OhMyGodIsChest,
                 MoonMusicBox,
                 RareReaper,
+                SeaShield,
 
                 GodSlayerBodyGroup,
                 GodSlayerLegGroup,
@@ -473,7 +476,7 @@ namespace CalamityInheritance
             LumiStriker         = SetUpTwo<RealityRupture>              (Item<LumiStriker>());
             OpalStriker         = SetUpTwo<OpalStriker>                 (Item<OpalStrikerLegacy>());
             MagnaCannon         = SetUpTwo<MagnaCannon>                 (Item<MagnaCannonLegacy>());
-            SoulEdge            = InstallGroupMod<SoulEdge>             (Item<VoidEdge>());
+            SoulEdge            = InstallGroupMod<SoulEdge>             (Item<SoulEdge>(),Item<VoidEdge>());
             RareReaper          = InstallGroupMod<Valediction>          (Item<Valediction>(), Item<TheOldReaper>());
             DartGun             = SetUpTwoVanilia                       (ItemID.DartRifle, ItemID.DartPistol);
             Arkhalis            = SetUpTwoVanilia                       (ItemID.Arkhalis, ItemID.Terragrim);
@@ -505,6 +508,7 @@ namespace CalamityInheritance
             CosmicTracer    = SetUpTwo<TracersElysian>          (Item<FasterGodSlayerTracers>());
             LunicTarcer     = SetUpTwo<TracersCelestial>        (Item<FasterLunarTracers>());
             BraveBadge      = SetUpTwo<CalamityMod.Items.Accessories.BadgeofBravery>          (Item<BadgeofBravery>());
+            SeaShield = InstallGroupMod<ShieldoftheOceanLegacy>(Item<ShieldoftheOceanLegacy>(), Item<ShieldoftheOcean>());
             #endregion
 
             #region 传颂之物
@@ -566,6 +570,7 @@ namespace CalamityInheritance
             CryoBar.                    NameHelper("AnyCryoBar");
             OhMyGodIsChest.             NameHelper("AnyChest");
             MoonMusicBox.               NameHelper("AnyMoonMusicBox");
+            SeaShield.NameHelper("AnyShieldOfTheOcean");
 
 
             #region 新旧弑神
@@ -729,6 +734,7 @@ namespace CalamityInheritance
         public static string AnyChest           => "AnyChest".GetGroupName();
         public static string AnyMoonMusicBox    => "AnyMoonMusicBox".GetGroupName();
         public static string AnyRareReaper      => "AnyRareReaper".GetGroupName();
+        public static string ShieldoftheOcean => "AnyShieldOfTheOcean".GetGroupName();
     }
 
 }

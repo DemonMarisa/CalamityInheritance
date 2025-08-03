@@ -14,6 +14,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<DeificAmulet>();
         }
         public override void SetDefaults()
         {

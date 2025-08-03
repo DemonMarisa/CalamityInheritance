@@ -1,5 +1,8 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
@@ -50,9 +53,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Minigun>().
                 AddIngredient<CelestialObliterator>().
                 AddRecipeGroup(CIRecipeGroup.DragonGun).
-                AddIngredient<ShadowspecBar>(5).
+                AddIngredient<ExoPrism>(5).
+                AddIngredient<AshesofAnnihilation>(5).
                 AddTile<DraedonsForge>().
                 Register();
+
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                DisableDecraft().
+                Register();
+
         }
     }
 }

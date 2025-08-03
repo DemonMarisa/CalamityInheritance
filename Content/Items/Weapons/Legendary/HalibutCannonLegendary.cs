@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public override void AddRecipes()
         {
             //微光转化……
-            ModContent.ItemType<HalibutCannon>().ShimmetTo<HalibutCannonLegendary>();
+            Type.ShimmerEach<HalibutCannon>();
             base.AddRecipes();
         }
         public override void SetDefaults()
