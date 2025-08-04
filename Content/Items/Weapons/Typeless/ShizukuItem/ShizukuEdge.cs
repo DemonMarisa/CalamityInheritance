@@ -47,20 +47,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         {
         }
         public override bool AltFunctionUse(Player player) => true;
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeProjectile2>()] < 1 || player.altFunctionUse == 2;
+        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeSword>()] < 1 || player.altFunctionUse == 2;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            //发射逻辑：往后方发射三个鬼魂， 往前方发射两个镰刀
-            int projLeftType = ModContent.ProjectileType<ShizukuEdgeProjectile2>();
-            int projRightType = ModContent.ProjectileType<ShizukuEdgeProjectileAlter>();
-            projLeftType = projRightType;
-            //这个右键我看不懂。
-            //设定垂直速度
-            Vector2 newVec = new Vector2(12f, 0f).RotatedBy(MathHelper.PiOver2);
-            if (player.ownedProjectileCounts[projRightType] < 1)
-                Projectile.NewProjectile(source, position, newVec, projRightType, damage, knockback, player.whoAmI);
-            // else
-                // Projectile.NewProjectile(source, Main.MouseWorld, velocity, projLeftType, damage, knockback, player.whoAmI);
+            int projLeft = ModContent.ProjectileType<ShizukuEdgeSword>();
+            int projRight = ModContent.ProjectileType<ShizukuEdgeMoon>();
+            
+            if (player.ownedProjectileCounts[projRight] < 1 && player.altFunctionUse == 2)
+                Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y - 24f), velocity, projRight, damage, knockback, player.whoAmI);
+            else
+                Projectile.NewProjectile(source, position, velocity, projLeft, damage, knockback, player.whoAmI);
             return false;
         }
         // public override void AddRecipes()
