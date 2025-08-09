@@ -38,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            #region 
+            /*
             int count = 2;
             int proj = ModContent.ProjectileType<ShizukuSwordProjectile>();
             for (int i = -1; i < count; i += 2)
@@ -55,7 +57,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Vector2 newspeed = new Vector2(30f, 0f).RotatedBy(-MathHelper.PiOver2);
             if (player.ownedProjectileCounts[proj2] < 1)
                 Projectile.NewProjectile(source, position, newspeed, proj2, 0, 0f, player.whoAmI);
-
+            */
+            #endregion
+            int proj = ModContent.ProjectileType<ShizukuShockwave>();
+            Projectile.NewProjectile(source, Main.MouseWorld, velocity * 0.1f, proj, damage, knockback, player.whoAmI);
             return false;
         }
     }

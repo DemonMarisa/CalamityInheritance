@@ -12,6 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class VictideSpearWaterRing: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/VictideSwordProj";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3;

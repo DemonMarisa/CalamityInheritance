@@ -1083,24 +1083,31 @@ namespace CalamityInheritance.Content.Items
         }
         public static void Auric()
         {
-            bool isEnableDragonRecpieModiflication = CIServerConfig.Instance.SolarEclipseChange; 
+            bool isEnableDragonRecpieModiflication = CIServerConfig.Instance.SolarEclipseChange;
             #region Accessories
             //辐辉
             Recipe.Create(ModContent.ItemType<Radiance>()).
+                AddIngredient<AmbrosialAmpouleOld>().
+                AddIngredient<InfectedJewel>().
+                AddIngredient<AscendantSpiritEssence>(4).
+                AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
+                Register();
+            Recipe.Create(ModContent.ItemType<Radiance>()).
                 AddRecipeGroup(CIRecipeGroup.GoldBottle).
-                AddRecipeGroup(CIRecipeGroup.AstralArcanum).
+                AddIngredient<InfectedJewel>().
                 AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
                 AddIngredient(ModContent.ItemType<AuricBarold>()).
                 AddTile<CosmicAnvil>().
                 Register();
-
-            Recipe.Create(ModContent.ItemType<Radiance>()).
-                AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
-                AddIngredient(ModContent.ItemType<AstralArcanum>()).
-                AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
-                AddIngredient(ModContent.ItemType<AuricBar>(), 5).
-                AddTile<CosmicAnvil>().
-                Register();
+            //干掉了跟星辉秘术有关的配方，因为我加入了限定时期的微光转化
+            // Recipe.Create(ModContent.ItemType<Radiance>()).
+            //     AddIngredient(ModContent.ItemType<AmbrosialAmpouleOld>()).
+            //     AddIngredient(ModContent.ItemType<AstralArcanum>()).
+            //     AddIngredient(ModContent.ItemType<AscendantSpiritEssence>(), 4).
+            //     AddIngredient(ModContent.ItemType<AuricBar>(), 5).
+            //     AddTile<CosmicAnvil>().
+            //     Register();
             //神壁
             Recipe.Create(ModContent.ItemType<RampartofDeities>()).
                 AddIngredient(ItemID.FrozenShield).

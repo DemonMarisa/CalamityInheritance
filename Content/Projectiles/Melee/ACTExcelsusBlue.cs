@@ -115,12 +115,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
             MouseTimer += 1;
-            if (MouseTimer > ACTExcelsus.IdleTimer)
-            {
-                Projectile.extraUpdates += 1;
-                CIFunction.HomeInOnMouseBetter(Projectile, 16f, 20f, 1, false, Vector2.Distance(Projectile.Center, Main.MouseWorld) / 3);
-            }
-
         }
 
         public void DoFlying()

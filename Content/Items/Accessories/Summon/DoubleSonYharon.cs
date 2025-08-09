@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Placeables.Plates;
@@ -12,6 +13,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
     public class DoubleSonYharon: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Summon";
+        public override void SetStaticDefaults()
+        {
+            Type.ShimmerEach<AuricSoulArtifact>();
+        }
         public override void SetDefaults()
         {
             Item.width = 28;

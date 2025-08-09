@@ -799,6 +799,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
+            
             if (ShroomiteFlameBooster && item.useAmmo == AmmoID.Gel)
             {
                 Player.GetDamage<RangedDamageClass>() += 0.30f;

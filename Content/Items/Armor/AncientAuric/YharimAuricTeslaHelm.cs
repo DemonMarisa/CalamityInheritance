@@ -8,9 +8,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Buffs.Statbuffs;
-using Terraria.ID;
-using System;
-using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {

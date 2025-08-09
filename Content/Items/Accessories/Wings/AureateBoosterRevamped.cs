@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(120, 8f, 1.5f);
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<AureateBooster>();
+            Type.ShimmerEach<AureateBooster>(false);
         }
 
         public override void SetDefaults()

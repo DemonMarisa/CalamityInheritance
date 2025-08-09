@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -47,6 +48,7 @@ namespace CalamityInheritance.Content.Projectiles
         // 1帧影响
         public bool oneFrameEffect = false;
         public bool IfR99 = false;
+        public int R99TargetIndex = -1;
         public int CurR99Chance = 0;
         public override void AI(Projectile projectile)
         {
@@ -62,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles
                     && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);
-            
+
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
                     if (usPlayer.ReaverRogueExProj)
@@ -84,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOldProj>(), (int)(projectile.damage * 0.05) , 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOldProj>(), (int)(projectile.damage * 0.05), 0f, projectile.owner);
                                 //确保这个东西指定为全局伤害
                                 Main.projectile[p].DamageType = DamageClass.Generic;
                                 Main.projectile[p].alpha = 255;
@@ -94,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles
                 }
             }
 
-            if(!oneFrameEffect)
+            if (!oneFrameEffect)
             {
                 if (usPlayer.DeadshotBroochCI && projectile.CountsAsClass<RangedDamageClass>() && player.heldProj != projectile.whoAmI)
                 {
@@ -163,31 +165,9 @@ namespace CalamityInheritance.Content.Projectiles
             }
             if (IfR99)
             {
-                Player R99Owner = Main.player[projectile.owner];
                 //R99无视防御与dr
                 modifiers.DefenseEffectiveness *= 0f;
                 modifiers.FinalDamage *= 1f / (1f - target.Calamity().DR);
-                ref int isShooted = ref R99Owner.CIMod().R99Shooting;
-                ref int targetIndex = ref R99Owner.CIMod().R99TargetWhoAmI;
-                isShooted += 1;
-                targetIndex = target.whoAmI;
-                if (targetIndex != target.whoAmI)
-                    isShooted = 0;
-                else
-                {
-                    isShooted += 1;
-                    if (isShooted > 75)
-                    {
-                        SoundEngine.PlaySound(CISoundID.SoundBomb, target.Center);
-                        if (Main.rand.Next(15) - CurR99Chance <= 0)
-                        {
-                            modifiers.FinalDamage *= 4.5f;
-                            CurR99Chance = 0;
-                        }
-                        else
-                            CurR99Chance += 1;
-                    }
-                }
             }
             LevelBoost(projectile, usPlayer);
         }

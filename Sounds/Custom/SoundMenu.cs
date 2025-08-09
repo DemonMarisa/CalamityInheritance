@@ -88,6 +88,23 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle HalibutCannonFire = new($"{ItemSoundRoute}/HalibutCannon/HalibutCannonFire") { Volume = 0.9f, Pitch = 0.3f, MaxInstances = 0 };
         public static readonly SoundStyle ShizukuSwordCharge = new($"{ItemSoundRoute}/WaterMirror");
         #endregion
-        public static readonly SoundStyle AncientShivProjSpawn = new($"{ItemSoundRoute}/AncientShivSounds/AncientShivProjSpawn") { Volume = 0.9f, Pitch = 0.3f};
+        public static readonly SoundStyle AncientShivProjSpawn = new($"{ItemSoundRoute}/AncientShivSounds/AncientShivProjSpawn") { Volume = 0.9f, Pitch = 0.3f };
+        #region  R99
+        public static string R99Shield => "/" + "R99/R99Shield";
+        public static readonly SoundStyle R99ShieldHit1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit1");
+        public static readonly SoundStyle R99ShieldHit2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit2");
+        public static readonly SoundStyle R99ShieldCracked1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked1");
+        public static readonly SoundStyle R99ShieldCracked2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked2");
+        public static readonly SoundStyle R99ShieldCracked3 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked3");
+        public static readonly SoundStyle R99ShieldCracked4 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked4");
+        public static readonly SoundStyle R99FleshHit1 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit1");
+        public static readonly SoundStyle R99FleshHit2 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit2");
+        public static readonly SoundStyle R99FleshHit3 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit3");
+        public static readonly SoundStyle R99FleshHit4 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit4");
+        public static readonly SoundStyle R99Fired1 = new($"{SoundRoute}/R99/R99Fired1");
+        public static readonly SoundStyle R99Fired2 = new($"{SoundRoute}/R99/R99Fired2");
+        public static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
+        #endregion
+        
     }
 }

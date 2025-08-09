@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Items.Armor.AncientAero;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.DataStructures;
@@ -18,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         {
             Item.ResearchUnlockCount = 1;
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(80, 6.5f, 1f);
+            Type.ShimmerEach<SkylineWings>(false);
         }
         public override void SetDefaults()
         {

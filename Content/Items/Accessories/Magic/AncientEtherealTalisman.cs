@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<EtherealTalisman>(false);
         }
         public override void SetDefaults()
         {

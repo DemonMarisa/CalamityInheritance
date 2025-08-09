@@ -1,5 +1,10 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,6 +15,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class R99 : CIRanged, ILocalizedModType
     {
+        public const int CrackedShieldTime = 300;
+        public const int FleshHitTime = 310;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -40,6 +47,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<R99HeldProj>(), damage, knockback, player.whoAmI);
             return false;
         }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<Minigun>().
+                AddIngredient<CelestialObliterator>().
+                AddRecipeGroup(CIRecipeGroup.DragonGun).
+                AddIngredient<ExoPrism>(5).
+                AddIngredient<AshesofAnnihilation>(5).
+                AddTile<DraedonsForge>().
+                Register();
 
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                DisableDecraft().
+                Register();
+
+        }
     }
 }

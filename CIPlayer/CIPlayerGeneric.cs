@@ -163,6 +163,7 @@ namespace CalamityInheritance.CIPlayer
             cIdisableHiveCystSpawns = false;
             cIdisableNaturalScourgeSpawns = false;
             cIdisableAnahitaSpawns = false;
+            
             #endregion
         }
 
@@ -192,6 +193,7 @@ namespace CalamityInheritance.CIPlayer
             DefenseBoost = 0f;
             DNAImmnueActive = 0;
             CosmicEnergyExtra = false;
+            R99TargetWhoAmI = -1;
         }
         public override void PostUpdate()
         {

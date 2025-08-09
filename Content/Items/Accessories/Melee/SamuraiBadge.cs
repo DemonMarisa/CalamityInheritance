@@ -5,9 +5,9 @@ using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.LoreItems;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<WarbanneroftheSun>();
         }
         public override void SetDefaults()
         {

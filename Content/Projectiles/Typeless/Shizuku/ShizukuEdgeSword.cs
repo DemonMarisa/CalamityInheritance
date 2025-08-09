@@ -1,22 +1,16 @@
-using System;
-using System.Drawing;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
-using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Color = Microsoft.Xna.Framework.Color;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
-    public class ShizukuEdgeProjectile2 : ModProjectile, ILocalizedModType
+    public class ShizukuEdgeSword: ModProjectile, ILocalizedModType
     {
        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public Player Owner => Main.player[Projectile.owner];
@@ -85,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                 length = projSpeed / length;
                 distanceVector.X *= length;
                 distanceVector.Y *= length;
-                Projectile.NewProjectile(projSrc, srcPositon, distanceVector, ghostType, ghostDamage, 0f, Owner.whoAmI);
+                Projectile.NewProjectile(projSrc, srcPositon, distanceVector, ghostType, ghostDamage, 0f, Owner.whoAmI, ai1: ShizukuBaseGhost.MoreTrailingDust);
             }
 
         }
@@ -111,6 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 
         private void DoJustSpawn()
         {
+            //生成时的粒子
             if (AttackTimer == -1f)
             {
                 SoundEngine.PlaySound(CISoundID.SoundIceRodBlockPlaced, Projectile.Center);

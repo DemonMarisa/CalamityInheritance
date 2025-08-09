@@ -198,6 +198,9 @@ namespace CalamityInheritance.System
             PostShadowspecWeapons.Add(ModContent.ItemType<IridescentExcalibur>());
             PostShadowspecWeapons.Add(ModContent.ItemType<HalibutCannon>());
             PostShadowspecWeapons.Remove(ModContent.ItemType<ApotheosisLegacy>());
+            PostShadowspecWeapons.Add(ModContent.ItemType<R99>());
+            PostShadowspecWeapons.Add(ModContent.ItemType<LightAmmo>());
+            PostShadowspecWeapons.Add(ModContent.ItemType<StepToolShadow>());
             #endregion
         }
 

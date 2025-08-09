@@ -1,21 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Core;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod.Particles;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -24,9 +17,10 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
 {
-    public class ShizukuSwordProjectile : ModProjectile
+    public class ShizukuSwordProjectile : ModProjectile, ILocalizedModType
     {
         public Player Owner => Main.player[Projectile.owner];
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override string Texture => $"{Generic.WeaponPath}/Typeless/ShizukuItem/ShizukuSword";
         //目前没有作用，我认为应该去掉。
         public int TargetIndex
@@ -175,7 +169,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             Projectile.velocity *= 0.92f;
             //渐变
             if (Projectile.Opacity == 0)
-                SoundEngine.PlaySound(CISoundMenu.ShizukuSwordCharge with { Volume = 0.9f }, Projectile.Center);
+                SoundEngine.PlaySound(CISoundMenu.ShizukuSwordCharge with { Volume = 0.9f, MaxInstances = 0 }, Projectile.Center);
+
             Projectile.Opacity += 0.05f;
             
             if (anyTarget is not null)
@@ -193,19 +188,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             }
         }
 
-        public void DoAttacking()
-        {
-            NPC target = Main.npc[TargetIndex];
-
-        }
-
-        public void CheckHeldItem()
-        {
-            //if (Owner.HeldItem.type != ModContent.ItemType<ShizukuEdge>())
-            //{
-            //    Projectile.Kill();
-            //}
-        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (AttackType == IsDashing)

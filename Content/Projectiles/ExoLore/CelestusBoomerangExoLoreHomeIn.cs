@@ -26,13 +26,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private float Timer = 0f;
         private float Timer2 = 0f;
         #region 攻击类型枚举
-        const float IsReturning = -1f;
+        const float IsReturning = -3f;
         const float IsAttacking = 1f;
         const float IsIdleing = 2f;
         #endregion
         #region 数组别名
-        const int AttackType = 0;
-        const int PhaseTimer = 1;
+        public ref float AttackType => ref Projectile.ai[0];
+        public ref float AttackTimer => ref Projectile.ai[1];
         public int AttackTarget
         {
             get => (int)Projectile.ai[2];
@@ -57,9 +57,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
+            //我在想是不是因为这个无敌帧导致他一个射弹短时间内进行了多判导致c出问题
+            Projectile.localNPCHitCooldown = -1;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.alpha = 255;
-            Projectile.localNPCHitCooldown = 20;
             Projectile.timeLeft = 600;
             Projectile.velocity *= -1f;
             Projectile.netUpdate = true;
@@ -81,9 +82,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             ColorTimer = reader.ReadInt32();
             initialized = reader.ReadBoolean();
         }
-        public override bool? CanDamage()
+        //取消返程伤害
+        public override bool? CanHitNPC(NPC target)
         {
-            return Projectile.ai[AttackType] == IsAttacking || Projectile.ai[AttackType] == IsReturning;
+            return AttackType == IsAttacking;
         }
         public override void AI()
         {
@@ -94,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //重做AI逻辑, 我们先获取这个敌怪单位
             NPC target = CIFunction.FindClosestTarget(Projectile, 5000f, true);
             //如果目标不存在直接执行返程AI
-            if (target == null)
+            if (target is null)
             {
                 DoRetuningAI(player);
                 Projectile.netUpdate = true;
@@ -103,19 +105,17 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //先直接让他直线飞行追踪最近的敌怪,
             if (!initialized)
                 DoHoming(target);
-            else
-                Projectile.velocity *= 0.96f;
 
             //不出意外，上方的AI执行完下方的是可以正常执行的
             if (Projectile.owner == Main.myPlayer)
             {
-                switch (Projectile.ai[AttackType])
+                switch (AttackType)
                 {
                     case IsAttacking:
                         DoAttacking(target, player);
                         break;
                     case IsIdleing:
-                        DoIdleing(target, player);
+                        DoIdleing(player);
                         break;
                     case IsReturning:
                         DoRetuningAI(player);
@@ -126,8 +126,9 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
         }
 
-        private void DoIdleing(NPC target, Player player)
+        private void DoIdleing(Player player)
         {
+            NPC target = Main.npc[AttackTarget];
             Vector2 angleToTarget;
             if (target != null) angleToTarget = target.Center;
             else angleToTarget = player.Center;
@@ -136,25 +137,28 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
             Projectile.velocity *= 0.97f;
             //启用这个计时器
-            Projectile.ai[PhaseTimer] += 1f;
+            AttackTimer += 1f;
             //计时器达到要求，执行ai逻辑
-            if (Projectile.ai[PhaseTimer] > 66f)
+            if (AttackTimer > 60f)
             {
                 //回程至玩家手上
                 //置为-1f, 不做任何事情
-                Projectile.ai[AttackType] = IsReturning;
+                AttackType = IsReturning;
                 Projectile.netUpdate = true;
                 //Timer置零
-                Projectile.ai[PhaseTimer] = 0f;
+                AttackTimer = 0f;
             }
         }
 
         //攻击AI逻辑，直接穿透1次然后返回
         public void DoAttacking(NPC target, Player player)
         {
-            if (target == null) return;
-            float setAngle = Projectile.AngleTo(player.Center) - MathHelper.PiOver4;
-            Projectile.rotation = Utils.AngleLerp(Projectile.rotation, setAngle, 0.01f);
+            if (target == null)
+                return;
+
+            //移除这一段
+            // float setAngle = Projectile.AngleTo(player.Center) - MathHelper.PiOver4;
+            // Projectile.rotation = Utils.AngleLerp(Projectile.rotation, setAngle, 0.01f);
             Timer2++;
             if (Timer2 % 2 == 0)
                 Timer += 5f;
@@ -163,9 +167,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public void DoRetuningAI(Player player)
         {
-            Projectile.ai[PhaseTimer] += 1f;
-            if (Projectile.ai[PhaseTimer] > 10f)
-            Projectile.rotation += 1f;
+            AttackTimer += 1f;
+            if (AttackTimer > 10f)
+                Projectile.rotation += 1f;
+            
             float returnSpeed = 25f;
             float acceleration = 5f;
             CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
@@ -180,42 +185,24 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public void DoHoming(NPC target)
         {
-            //不断检测与敌怪的距离
-            float distCheck = (Projectile.Center - target.Center).Length();
-            //与上方一样，飞行过程周不断保持跟踪和转向。不过也有点区别。
-            //射弹如果与这个距离相同，停止射弹的追踪，并执行Attacking的指令
-            if (distCheck <= 1800f)
+            //移除距离检测
+            if (AttackTimer < 60f)
             {
-                //检测射弹的AI是否还是低于30f, 如果是，直接设为30f
-                if (Projectile.ai[PhaseTimer] < 30f)
-                    Projectile.ai[PhaseTimer] = 30f;
-                
+                AttackTimer += 1f;
                 float rot = Projectile.AngleTo(target.Center) - MathHelper.PiOver4;
                 Lighting.AddLight(Projectile.Center, Main.DiscoR * 0.5f / 255f, Main.DiscoG * 0.5f / 255f, Main.DiscoB * 0.5f / 255f);
                 Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, 0.2f);
                 //同时逐渐降低速度
                 Projectile.velocity *= 0.90f;
-                //启用新的计时器
-                Projectile.ai[PhaseTimer] += 1f;
-                //符合条件启用新的AI
-                if (Projectile.ai[PhaseTimer] > 90f)
-                {
-                    //标记射弹已经完成了第一个指令
-                    initialized = true;
-                    Projectile.ai[AttackType] = IsAttacking;
-                    Projectile.ai[PhaseTimer] = 0f;
-                    Projectile.netUpdate = true;
-                }
             }
-            //我们去追及这个敌怪
-            else if (Projectile.ai[PhaseTimer] < 30f) 
+            else
             {
                 Projectile.rotation += 1f;
-                CIFunction.HomingNPCBetter(Projectile, target, 1800f, Celestusold.SetProjSpeed, 20f);
-                Projectile.ai[PhaseTimer] += 1f;
+                //标记射弹已经完成了第一个指令
+                initialized = true;
+                AttackType = IsAttacking;
+                Projectile.netUpdate = true;
             }
-            
-            
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -238,11 +225,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
-            if (Projectile.ai[AttackType] == IsAttacking)
+            if (AttackType == IsAttacking)
             {
-                Projectile.ai[AttackType] = IsIdleing;
+                //在这个位置置零Timer
+                AttackTimer = 0f;
+                AttackType = IsIdleing;
                 Projectile.netUpdate = true;
+                //我不太确定是不是丢判了
+                AttackTarget = target.whoAmI;
                 //播放一次。
                 SoundStyle[] getSound =
                 [
@@ -250,7 +240,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     CISoundMenu.CelestusOnHit2,
                     CISoundMenu.CelestusOnHit3
                 ];
-                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, getSound), Projectile.position);
+                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, getSound) with {MaxInstances = 0}, Projectile.position);
             }
             target.ExoDebuffs();
             OnHitEffects();

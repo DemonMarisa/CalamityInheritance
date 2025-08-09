@@ -1,6 +1,7 @@
 using CalamityInheritance.Content.Items.Armor.AncientTarragon;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -19,6 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 9f, 2.5f);
             Item.ResearchUnlockCount = 1;
+            Type.ShimmerEach<TarragonWings>(false);
         }
         public override void SetDefaults()
         {
