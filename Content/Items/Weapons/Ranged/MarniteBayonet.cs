@@ -43,6 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noUseGraphic = true;
             Item.channel = true;
         }
+
         public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
@@ -50,6 +51,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (player.altFunctionUse == 2)
             {
                 Item.UseSound = CISoundID.SoundWeaponSwing;
+                Item.useAmmo = AmmoID.None;
+            }
+            else
+            {
+                Item.UseSound = SoundID.Item41;
+                Item.useAmmo = AmmoID.Bullet;
             }
             return player.ownedProjectileCounts[ModContent.ProjectileType<MarniteBayonetHeldProj>()] < 1;
         }

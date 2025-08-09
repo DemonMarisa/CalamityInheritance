@@ -53,13 +53,13 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             // 第一次的计数
             ref float firstFire = ref Projectile.ai[2];
 
-            Owner.PickAmmo(Owner.ActiveItem(), out int Proj, out float shootSpeed, out int damage, out float knockback, out _, false);
             // 开火方向
             Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
             firedirection = firedirection.SafeNormalize(Vector2.UnitX);
 
             if (UseCounter == 0)
             {
+                Owner.PickAmmo(Owner.ActiveItem(), out int Proj, out float shootSpeed, out int damage, out float knockback, out _, false);
                 SoundEngine.PlaySound(SoundID.Item41, Projectile.Center);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * shootSpeed, Proj, damage, knockback, Projectile.owner);
             }

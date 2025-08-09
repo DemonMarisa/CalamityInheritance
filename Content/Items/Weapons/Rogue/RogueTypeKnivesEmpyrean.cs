@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeKnivesEmpyrean: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public static int BaseDamage = 250;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -28,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 18;
             Item.height = 20;
-            Item.damage = 400;
+            Item.damage = BaseDamage;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;

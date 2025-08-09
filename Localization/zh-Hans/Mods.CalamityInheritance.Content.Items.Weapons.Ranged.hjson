@@ -529,7 +529,11 @@ BrimstoneFlameblaster: {
 
 AeriesLegacy: {
 	DisplayName: 白羊座[Legacy]
-	Tooltip: 发射可以吸血的震爆弹
+	Tooltip: 
+	'''
+	发射可以吸血的震爆弹
+	无视吸血CD
+	'''
 }
 
 PearlGodLegacy: {

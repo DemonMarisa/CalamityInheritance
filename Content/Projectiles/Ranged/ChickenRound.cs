@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             int p =Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ChickenNukeExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             Main.projectile[p].CalamityInheritance().PingAsSplit = true;
-            Vector2 dPos = new(Projectile.Center.X - (ExplosionHitboxW / 2), Projectile.Center.Y - (ExplosionHitboxH / 2));
+            Vector2 dPos = new(Projectile.Center.X, Projectile.Center.Y);
             OnKillDust(CIDustID.DustSmoke, CIDustID.DustTorchNormal, dPos);
         }
 

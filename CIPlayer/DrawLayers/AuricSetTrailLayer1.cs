@@ -20,10 +20,11 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
         {
             Player drawPlayer = drawInfo.drawPlayer;
-            if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.Calamity().AdrenalineTrail || drawPlayer.Calamity().ascendantTrail)
+
+            if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.Calamity().AdrenalineTrail || drawPlayer.Calamity().ascendantTrail || drawPlayer.mount.Active)
                 return false;
 
-            return drawPlayer.CIMod().AuricSilvaFakeDeath;
+            return drawPlayer.CIMod().AuricSilvaFakeDeath && CIPlayerTrailManager.CanDrawAfterImage;
         }
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
@@ -34,8 +35,6 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
             Vector2[] validOldPositions = modPlayer.oldPositions.ToArray();
             // 残影数量
             int maxAfterimages = validOldPositions.Length;
-            // 移动速度乘数
-            float movementSpeedInterpolant = CobaltArmorSetChange.CalculateMovementSpeedInterpolant(drawPlayer);
 
             List<DrawData> afterimages = new List<DrawData>();
 
@@ -45,7 +44,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
                 Vector2 oldPos = validOldPositions[i];
                 float completionRatio = (float)i / maxAfterimages;
                 float scale = MathHelper.Lerp(0.8f, 1f, completionRatio);
-                float opacity = MathHelper.Lerp(0f, 0.2f, completionRatio) * movementSpeedInterpolant;
+                float opacity = MathHelper.Lerp(0f, 0.2f, completionRatio);
                 foreach (DrawData original in existingDrawData)
                 {
                     // 主残影
@@ -66,6 +65,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
                     afterimages.Add(drawData);
                 }
             }
+
             drawInfo.DrawDataCache.AddRange(afterimages);
         }
     }

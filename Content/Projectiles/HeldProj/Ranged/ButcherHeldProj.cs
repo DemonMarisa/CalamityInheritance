@@ -17,7 +17,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     public class ButcherHeldProj : ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<ButcherLegacy>();
-        public override string Texture => $"{CIWeaponsResprite.CIRangedWeaponRoute}/ButcherLegacy";
 
         public override void SetDefaults()
         {

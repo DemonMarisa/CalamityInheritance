@@ -1,11 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Security.Cryptography;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
+using System.Security.Cryptography;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +27,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         #endregion
         #region 基本属性
         public int SwitchTime = 0;
-        public int DmaagePool = 0;
         #endregion
         #region 别名
         public ref float AttackType => ref Projectile.ai[0];
@@ -45,12 +46,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool? CanDamage() => AttackType == IsFlying;
         public override void SendExtraAI(BinaryWriter writer)
         {
-            writer.Write(DmaagePool);
             writer.Write(SwitchTime);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            DmaagePool = reader.ReadInt32();
             SwitchTime = reader.ReadInt32();
         }
         public override void SetDefaults()
@@ -88,12 +87,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             CIFunction.BoomerangReturningAI(Owner, Projectile, 20f, 2.4f);
             if (Projectile.Hitbox.Intersects(Owner.Hitbox))
             {
-                int healAmt = Owner.statLifeMax2 / Owner.statLife * (DmaagePool / 40);
-                if (healAmt > 20)
-                {
-                    healAmt = 20 + healAmt / 2;
-                }
-                Owner.Heal(healAmt);
+                int healdamage = Owner.DamageBoostApply<RogueDamageClass>(RogueTypeKnivesEmpyrean.BaseDamage);
+                healdamage = (int)(healdamage * 0.01f);
+                Owner.Heal(healdamage);
                 Projectile.Kill();
             }
         }
@@ -178,7 +174,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 AttackType = IsHit;
                 Projectile.netUpdate = true;
-                DmaagePool += damageDone / 10;
             }
         }
         public override bool PreDraw(ref Color lightColor)

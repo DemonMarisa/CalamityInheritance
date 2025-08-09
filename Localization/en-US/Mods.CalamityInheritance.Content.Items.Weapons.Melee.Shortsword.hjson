@@ -3,7 +3,8 @@ AncientShiv: {
 	Tooltip:
 		'''
 		Do not underestimate the power of shivs...
-		Releases ancient energy upon striking enemies with blade
+		Releases ancient energy
+		The ancient energy will follow the mouse cursor
 		'''
 }
 

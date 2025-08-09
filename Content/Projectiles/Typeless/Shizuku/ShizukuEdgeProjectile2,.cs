@@ -91,9 +91,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         private void ShootSwords()
         {
+            /*
             if (AttackTimer % CIConfig.Instance.Debugint != 0)
                 return;
-            
+            */
             int count = 2;
             int proj = ModContent.ProjectileType<ShizukuSwordProjectile>();
             for (int i = -1; i < count; i += 2)

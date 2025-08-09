@@ -55,16 +55,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 Projectile.localAI[0] += 0.05f;
                 Projectile.scale += 0.05f;
-                /*
-                Projectile.width = (int)(36f * Projectile.scale);
-                Projectile.height = (int)(36f * Projectile.scale);
-                */
+
             }
-            else
-            {
-                Projectile.width = 36;
-                Projectile.height = 36;
-            }
+
             if (echoCooldown > 0)
                 echoCooldown--;
 

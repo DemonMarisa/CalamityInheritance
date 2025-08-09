@@ -1,15 +1,16 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using Terraria.Audio;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -59,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 damageMult = 1.35f;
             if (counter == 4)
                 damageMult = 1.5f;
-            Projectile.NewProjectile(source,position.X, position.Y-5, velocity.X, velocity.Y, type, (int)(damage * damageMult), knockback, player.whoAmI, counter, 0f);
+            Projectile.NewProjectile(source,position.X, position.Y + 2, velocity.X, velocity.Y, type, (int)(damage * damageMult), knockback, player.whoAmI, counter, 0f);
             counter++;
             if (counter >= 5)
                 counter = 0;

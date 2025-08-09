@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -166,5 +167,16 @@ namespace CalamityInheritance.Utilities
         public static void LootCommon(ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => itemLoot.Add(lootItem, dropRate, dropMin, dropMax);
         #region RecipeHelper
         #endregion
+
+        public static int DamageBoostApply<T>(this Player player ,int baseDamage) where T : DamageClass
+        {
+            return (int)player.GetDamage<T>().ApplyTo(baseDamage);
+        }
+        
+        public static int DamageBoostApply(this Player player, DamageClass damageclass, int baseDamage)
+        {
+            return (int)player.GetDamage(damageclass).ApplyTo(baseDamage);
+        }
+        
     }
 }

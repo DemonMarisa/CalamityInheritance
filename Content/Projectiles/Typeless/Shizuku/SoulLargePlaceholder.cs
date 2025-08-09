@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
-
+        /*
         public override Color? GetAlpha(Color lightColor)
         {
             if (Projectile.timeLeft < 85)
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             }
             return CIConfig.Instance.DebugColor;
         }
-
+        */
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);

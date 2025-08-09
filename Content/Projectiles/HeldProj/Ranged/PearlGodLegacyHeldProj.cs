@@ -234,6 +234,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             SpriteEffects BaseflipSprite = (player.direction * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipVertically : SpriteEffects.None;
             Main.EntitySpriteDraw(texture, drawBasePosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
             Main.EntitySpriteDraw(Glowtexture, drawBasePosition, null, Color.White, Projectile.rotation, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
+
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
             return false;
         }
     }

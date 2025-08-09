@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 return;
             if (player.CIMod().GlobalHealProjCD > 0)
                 return;
-            int healdamage = (int)player.GetDamage<RangedDamageClass>().ApplyTo(PearlGodLegacy.damage); ;
+            int healdamage = (int)player.GetDamage<RangedDamageClass>().ApplyTo(PearlGodLegacy.damage);
             if (hit.Crit)
                 healdamage *= 2;
             float healAmt = healdamage * 0.05f;
