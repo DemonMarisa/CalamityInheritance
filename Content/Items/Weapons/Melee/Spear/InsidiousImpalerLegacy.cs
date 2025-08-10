@@ -10,6 +10,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Rarity;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.FutureContent.JavelinHarpoon;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {
@@ -18,6 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Spears[Item.type] = true;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
 
         public override void SetDefaults()
@@ -42,5 +46,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
+        public override bool AltFunctionUse(Player player) => true;
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            bool isUpdateToNew = false;
+            int thrownSpear = ModContent.ProjectileType<Insidiousjavelin>();
+            if (player.altFunctionUse == 2 && isUpdateToNew)
+            {
+                Projectile.NewProjectile(source, position, velocity, thrownSpear, damage, knockback, player.whoAmI);
+                return false;
+            }
+            else
+                return true;
+        }
     }
 }

@@ -603,3 +603,8 @@ InsidiousImpalerLegacy: {
 	DisplayName: Insidious Impaler Legacy
 	Tooltip: Fires infected harpoons that stick to enemies and explode
 }
+
+CometQuasherLegacy: {
+	DisplayName: Comet Quasher Legacy
+	Tooltip: ""
+}
