@@ -401,3 +401,8 @@ DivineRetribution: {
 		Modder Stay: Hmm... At least it used to be
 		'''
 }
+
+ShadowboltStaffLegacy: {
+	DisplayName: Shadowbolt Staff Legacy
+	Tooltip: ""
+}

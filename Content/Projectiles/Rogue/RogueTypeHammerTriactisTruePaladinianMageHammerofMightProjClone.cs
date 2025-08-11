@@ -183,7 +183,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //kill掉后锤子会尝试收回
             //这个收回的实现方法实际上就是生成一个直接拥有返程AI的新锤子
             //这样除了比较方便一点，而且也可以让他返程时“如果路径上可能的话”造成一些额外伤害, 作为给玩家的一种奖励
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>(), (int)(4500 * 0.15), Projectile.knockBack, Projectile.owner, 0f, 34f, -1f);
+            int projID = ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj>();
+            float IsReturning = RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj.IsReturning;
+            float isClone = RogueTypeHammerTriactisTruePaladinianMageHammerofMightProj.OnHangingBack;
+            int damage = (int)Main.player[Projectile.owner].GetTotalDamage<RogueDamageClass>().ApplyTo(5000);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, projID, damage, Projectile.knockBack, Projectile.owner, IsReturning, 0f, isClone);
             
         }
         private void SpawnDust()

@@ -795,5 +795,23 @@ namespace CalamityInheritance.Utilities
             Main.spriteBatch.Draw(texture, drawPosition + (Vector2)drawOffset, null, lightColor, drawRotation + rotOffset, rotationPoint, proj.scale * Main.player[proj.owner].gravDir * scale, flipSprite, 0f);
         }
         #endregion
+        /// <summary>
+        /// j基础射弹边缘绘制方法
+        /// </summary>
+        /// <param name="proj"></param>
+        /// <param name="texture"></param>
+        /// <param name="edgeColor"></param>
+        /// <param name="edgeDrawTimes">边缘绘制次数</param>
+        /// <param name="offset">偏移量</param>
+        public static void DrawEdgeProj(this Projectile proj, Texture2D texture, Color edgeColor, int edgeDrawTimes, float offset = 12f)
+        {
+            Vector2 origin = texture.Size() / 2f;
+            Vector2 baseDrawPos = proj.Center - Main.screenPosition;
+            for (int i = 0; i < edgeDrawTimes; i++)
+            {
+                Vector2 edgeDir = baseDrawPos + (MathHelper.TwoPi * i / edgeDrawTimes).ToRotationVector2() * offset;
+                Main.EntitySpriteDraw(texture, edgeDir, null, edgeColor, proj.rotation, origin, proj.scale, SpriteEffects.None, 0);
+            }   
+        }
     }
 }

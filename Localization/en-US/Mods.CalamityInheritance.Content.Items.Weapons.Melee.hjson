@@ -608,3 +608,13 @@ CometQuasherLegacy: {
 	DisplayName: Comet Quasher Legacy
 	Tooltip: ""
 }
+
+GalactusBladeLegacy: {
+	DisplayName: Galactus Blade Legacy
+	Tooltip: ""
+}
+
+StellarStrikerLegacy: {
+	DisplayName: Stellar Striker Legacy
+	Tooltip: ""
+}

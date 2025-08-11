@@ -14,6 +14,8 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.JavelinHarpoon
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<InsidiousImpaler>();
+        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/Spear/InsidiousImpalerLegacy";
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

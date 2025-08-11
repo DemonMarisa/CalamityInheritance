@@ -431,3 +431,8 @@ DivineRetribution: {
 		作者留：嗯...至少以前是的
 		'''
 }
+
+ShadowboltStaffLegacy: {
+	// DisplayName: Shadowbolt Staff Legacy
+	// Tooltip: ""
+}

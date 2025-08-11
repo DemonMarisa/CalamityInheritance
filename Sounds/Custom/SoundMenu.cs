@@ -105,6 +105,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle R99Fired2 = new($"{SoundRoute}/R99/R99Fired2");
         public static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
         #endregion
+        public static readonly SoundStyle Pipes = new($"{SoundRoute}/Pipes");
         
     }
 }

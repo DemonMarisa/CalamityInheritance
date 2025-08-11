@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
 {
-    public class ShadowblotStaffLegacy : CIMagic, ILocalizedModType
+    public class ShadowboltStaffLegacy : CIMagic, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

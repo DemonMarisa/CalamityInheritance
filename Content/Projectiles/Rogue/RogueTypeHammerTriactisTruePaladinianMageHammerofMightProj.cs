@@ -8,11 +8,6 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items;
-using System.Linq.Expressions;
-using System;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Items.Weapons.Melee;
-using System.Security;
 using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
@@ -32,6 +27,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public const float IsShooted = 0f;
         public const float IsReturning = 1f;
         public const float IsStealth = 2f;
+        #endregion
+        #region 公用属性
+        public const float OnHangingBack = -1f;
         #endregion
         public override void SetStaticDefaults()
         {
@@ -109,7 +107,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 //ai[2]用于查看锤子是否已经挂载过敌人，如果挂载过了就会赋一个-1f的值
                 //这个主要是为了实现锤子的返程效果，具体看Clone那写的注释
-                bool isNotClonedReturnProj = IsCloned != -1f;
+                bool isNotClonedReturnProj = IsCloned != OnHangingBack;
                 int pWidth  = isNotClonedReturnProj ? Owner.width  * 2 : (int)(Owner.width  * 1.5f);
                 int pHeight = isNotClonedReturnProj ? Owner.height * 2 : (int)(Owner.height * 1.5f);
                 //大锤子体积太大了，所以为了防止视觉上像是“锤子”敲了玩家头一样， 因此这个锤子会在离玩家更远的地方判定
