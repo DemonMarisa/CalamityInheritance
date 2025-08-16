@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             }
             return new(68, 216, 229, 255);
         }
-        
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<CrushDepth>(), 60);

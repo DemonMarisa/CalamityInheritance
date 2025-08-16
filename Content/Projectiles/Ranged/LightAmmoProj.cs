@@ -144,7 +144,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 //专门处理碎甲音效
                 if (shootedTime > R99.CrackedShieldTime && shootedTime < R99.FleshHitTime)
                 {
-                    SoundEngine.PlaySound(crackedShield with { Volume = 1.15f }, target.Center);
+                    if (Main.zenithWorld)
+                        SoundEngine.PlaySound(CISoundMenu.Pipes with { MaxInstances = 0, Volume = 0.85f }, target.Center);
+
+                    else
+                        SoundEngine.PlaySound(crackedShield with { Volume = 1.15f }, target.Center);
                     shootedTime = R99.FleshHitTime;
                     soundDelay = 60;
                 }

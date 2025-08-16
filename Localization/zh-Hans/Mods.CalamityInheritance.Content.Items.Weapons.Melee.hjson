@@ -597,3 +597,18 @@ InsidiousImpalerLegacy: {
 	DisplayName: 阴险穿刺者[Legacy]
 	Tooltip: 发射一柄感染鱼叉，黏附于敌人并产生爆炸
 }
+
+CometQuasherLegacy: {
+	// DisplayName: Comet Quasher Legacy
+	// Tooltip: ""
+}
+
+GalactusBladeLegacy: {
+	// DisplayName: Galactus Blade Legacy
+	// Tooltip: ""
+}
+
+StellarStrikerLegacy: {
+	// DisplayName: Stellar Striker Legacy
+	// Tooltip: ""
+}
