@@ -82,6 +82,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             int healtimer = 980;
             RebornTimer++;
 
+            NPC.netUpdate = true;
+
             if (RebornTimer == 1)
                 needhealLife = NPC.lifeMax - NPC.life;
 
@@ -103,6 +105,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (RebornTimer > healtimer)
             {
+                NPC.netUpdate = true;
                 doRebornEffect = false;
                 attacktype = (float)YharonAttacksType.PhaseTransition;
                 stage2SPDraw = false;

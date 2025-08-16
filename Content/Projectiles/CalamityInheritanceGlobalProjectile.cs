@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles
                 // 元素箭袋的额外AI, ban掉了打表的弹幕
                 //禁止R99射出的子弹使用分裂
                 if (projectile.DamageType == DamageClass.Ranged
-                    && IfR99
+                    && !IfR99
                     && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
                     && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
                     ElemQuiver(projectile);

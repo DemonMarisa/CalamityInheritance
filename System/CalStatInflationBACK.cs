@@ -329,10 +329,7 @@ namespace CalamityInheritance.System
             // 龙
             int yharonType = ModContent.NPCType<Yharon>(); // 获取指定Boss的NPC类型ID
             var lootItems6 = CIFunction.FindLoots(yharonType, false); // 获取所有掉落物，除了材料
-            if(CIServerConfig.Instance.SolarEclipseChange)
-                PostDOGWeapons.AddRange(lootItems6.Where(id => !PostDOGWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
-            else
-                PostyharonWeapons.AddRange(lootItems6.Where(id => !PostyharonWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
+            PostDOGWeapons.AddRange(lootItems6.Where(id => !PostDOGWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
 
             // 巨械
             int ExoType = ModContent.NPCType<AresBody>(); // 获取指定Boss的NPC类型ID
@@ -828,33 +825,6 @@ namespace CalamityInheritance.System
         #endregion
         #endregion
         #region 龙一龙二改变
-        public static void EclipseChange(Item item)
-        {
-            if (CIServerConfig.Instance.SolarEclipseChange)
-            {
-                // 巨龙之怒
-                if (item.type == ModContent.ItemType<DragonRage>())
-                    item.damage = 2000;
-                // 氦闪
-                if (item.type == ModContent.ItemType<HeliumFlash>())
-                    item.damage = 6666;
-
-                // 巨龙七星灯，极昼信标
-                if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
-                    item.damage = (int)(item.damage * 1.5f);
-            }
-            else
-            {
-                if (item.type == ModContent.ItemType<DragonRage>())
-                    item.damage = 4000;
-
-                if (item.type == ModContent.ItemType<HeliumFlash>())
-                    item.damage = 6666;
-
-                if (item.type == ModContent.ItemType<YharonsKindleStaff>() || item.type == ModContent.ItemType<MidnightSunBeacon>())
-                    item.damage = (int)(item.damage * 2.4f);
-            }
-        }
         #endregion
         public static bool CheckModItem<T>(int type) where T : ModItem => type == ModContent.ItemType<T>();
     }

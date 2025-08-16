@@ -51,6 +51,8 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using Terraria.GameContent.Bestiary;
 using CalamityMod.CalPlayer;
 using CalamityInheritance.Content.Items.Accessories.Wings;
+using CalamityInheritance.System.Configs;
+using Terraria.DataStructures;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -328,8 +330,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public bool DrawRotate = false;
         // 是否可以死亡
         public bool canDie = false;
-        // 场地
-        public bool SpawnArea = false;
         #endregion
         #region SSD
         public override void SetStaticDefaults()
@@ -371,6 +371,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.lifeMax = LifeMax;
             double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+
+
             NPC.knockBackResist = 0f;
             NPC.aiStyle = -1;
             AIType = -1;
@@ -427,6 +429,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             writer.Write(CIGlobalNPC.Arena.Y);
             writer.Write(CIGlobalNPC.Arena.Width);
             writer.Write(CIGlobalNPC.Arena.Height);
+
+            writer.Write(NPC.lifeMax);
+            writer.Write(NPC.life);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
@@ -459,6 +464,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIGlobalNPC.Arena.Y = reader.ReadInt32();
             CIGlobalNPC.Arena.Width = reader.ReadInt32();
             CIGlobalNPC.Arena.Height = reader.ReadInt32();
+
+            NPC.lifeMax = reader.ReadInt32();
+            NPC.life = reader.ReadInt32();
         }
         public override void AI()
         {
@@ -489,7 +497,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (initialized == false)
             {
-                NPC.damage = 760;
                 initialized = true;
                 // 场地生成
                 if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -519,17 +526,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             ref float frameType = ref NPC.localAI[1];
             ref float RebornTimer = ref NPC.CIMod().BossNewAI[2];
             #endregion
-            if(!SpawnArea)
-            {
-                SpawnArea = true;
-            }
             //给BossZen
             target.AddBuffSafer<BossEffects>(1);
             #region 阶段判定
             // 第一大阶段
             Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
             // 第二大阶段
-            if(CIDownedBossSystem.DownedBuffedSolarEclipse && CIDownedBossSystem.DownedLegacyYharonP1)
+            if (CIDownedBossSystem.DownedBuffedSolarEclipse || !CIServerConfig.Instance.SolarEclipseChange)
                 Stage2AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
             #endregion
 
@@ -621,7 +624,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             // 激怒
             NPC.Calamity().CurrentlyEnraged = Enraged;
 
-            if (NPC.Calamity().CurrentlyEnraged)
+            if (Enraged)
             {
                 NPC.damage = 760 * 114;
                 NPC.DR_NERD(10f);
@@ -638,11 +641,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 NPC.dontTakeDamage = true;
                 NPC.chaseable = false;
+                NPC.netUpdate = true;
             }
             else
             {
                 NPC.dontTakeDamage = false;
                 NPC.chaseable = true;
+                NPC.netUpdate = true;
             }
         }
         #region 音乐
@@ -672,7 +677,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 return;
             // ai1对应的啥
             // float attackTimer = NPC.ai[1];
-
             // 置零攻击计时器和选择攻击类型
             float currentPhase = NPC.ai[2];
             NPC.ai[1] = 0f;
@@ -904,6 +908,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         {
             if (canDie)
                 return true;
+
             NPC.life = 1;
             NPC.active = true;
             NPC.dontTakeDamage = true;
@@ -934,7 +939,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIWorld world = ModContent.GetInstance<CIWorld>();
             if(world.Armageddon)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 5);
-            // Mark Calamitas as defeated
+
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CalamityNetcode.SyncWorld();
         }
@@ -1027,6 +1032,36 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CIDownedBossSystem.DownedLegacyYharonP2 = true;
             CalamityNetcode.SyncWorld();
+
+            DoFireRing(300, 99999, -1f, 0f);
+            NPC.position.X = NPC.position.X + (NPC.width / 2);
+            NPC.position.Y = NPC.position.Y + (NPC.height / 2);
+            NPC.width = 300;
+            NPC.height = 280;
+            NPC.position.X = NPC.position.X - (NPC.width / 2);
+            NPC.position.Y = NPC.position.Y - (NPC.height / 2);
+            for (int i = 0; i < 40; i++)
+            {
+                int fieryDust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
+                Main.dust[fieryDust].velocity *= 3f;
+                if (Main.rand.NextBool())
+                {
+                    Main.dust[fieryDust].scale = 0.5f;
+                    Main.dust[fieryDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                }
+            }
+            for (int j = 0; j < 70; j++)
+            {
+                int fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 3f);
+                Main.dust[fieryDust2].noGravity = true;
+                Main.dust[fieryDust2].velocity *= 5f;
+                fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
+                Main.dust[fieryDust2].velocity *= 2f;
+            }
+
+            // Turn into dust on death.
+            if (NPC.life <= 0)
+                DeathAshParticle.CreateAshesFromNPC(NPC);
         }
         #endregion
         #endregion
@@ -1043,38 +1078,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             for (int k = 0; k < 5; k++)
             {
                 Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, hit.HitDirection, -1f, 0, default, 1f);
-            }
-            if (NPC.life <= 0)
-            {
-                DoFireRing(300, 99999, -1f, 0f);
-                NPC.position.X = NPC.position.X + (NPC.width / 2);
-                NPC.position.Y = NPC.position.Y + (NPC.height / 2);
-                NPC.width = 300;
-                NPC.height = 280;
-                NPC.position.X = NPC.position.X - (NPC.width / 2);
-                NPC.position.Y = NPC.position.Y - (NPC.height / 2);
-                for (int i = 0; i < 40; i++)
-                {
-                    int fieryDust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
-                    Main.dust[fieryDust].velocity *= 3f;
-                    if (Main.rand.NextBool())
-                    {
-                        Main.dust[fieryDust].scale = 0.5f;
-                        Main.dust[fieryDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
-                    }
-                }
-                for (int j = 0; j < 70; j++)
-                {
-                    int fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 3f);
-                    Main.dust[fieryDust2].noGravity = true;
-                    Main.dust[fieryDust2].velocity *= 5f;
-                    fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
-                    Main.dust[fieryDust2].velocity *= 2f;
-                }
-
-                // Turn into dust on death.
-                if (NPC.life <= 0)
-                    DeathAshParticle.CreateAshesFromNPC(NPC);
             }
         }
         #endregion

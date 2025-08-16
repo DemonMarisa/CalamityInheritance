@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
@@ -38,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<GodSlayerChestplate>().
+                AddIngredient<GodSlayerChestplateold>().
                 AddIngredient<CosmiliteBar>(40).
                 AddIngredient<AscendantSpiritEssence>(15).
                 AddTile<CosmicAnvil>().

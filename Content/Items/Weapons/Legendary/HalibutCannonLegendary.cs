@@ -77,13 +77,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             // 重写了加成
             int basewMinBullet = 1;
-            int baseMaxBullet = 2;
+            int baseMaxBullet = 4;
             int addBulletCount = 0;
             addBulletCount = AddBullet();
             int bulletAmt = Main.rand.Next(basewMinBullet + addBulletCount, baseMaxBullet + addBulletCount);
             for (int index = 0; index < bulletAmt; ++index)
             {
-                int shot = Projectile.NewProjectile(source, position + new Vector2(0, 8), velocity.RotatedByRandom(MathHelper.ToRadians(3)) * Main.rand.NextFloat(0.8f, 1.1f), type, damage, knockback, player.whoAmI);
+                int shot = Projectile.NewProjectile(source, position + new Vector2(0, 8), velocity.RotatedByRandom(MathHelper.ToRadians(3)) * Main.rand.NextFloat(0.65f, 1.1f), type, damage, knockback, player.whoAmI);
                 Main.projectile[shot].timeLeft = 120;
             }
             return false;

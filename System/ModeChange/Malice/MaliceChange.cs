@@ -21,6 +21,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
         {
             #region 弹幕速度
             public override bool InstancePerEntity => true;
+
             public static bool BadProj(Projectile proj)
             {
                 if (proj.active && proj.hostile && !proj.friendly)
@@ -36,6 +37,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
                 if (BadProj(projectile) && world.Malice)
                     projectile.velocity *= 1.5f;
             }
+
             #endregion
         }
         public class MaliceModeNPC : GlobalNPC

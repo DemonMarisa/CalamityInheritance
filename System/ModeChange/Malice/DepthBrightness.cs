@@ -15,7 +15,12 @@ namespace CalamityInheritance.System.ModeChange.Malice
     {
         public override void ModifyLightingBrightness(ref float brightness)
         {
+            Player player = Main.player[Main.myPlayer];
             CIWorld world = ModContent.GetInstance<CIWorld>();
+
+            if (player.ZoneUnderworldHeight)
+                return;
+
             if (world.Malice || CIServerConfig.Instance.WeatherChange)
             {
                 // 获取玩家当前Y坐标
@@ -33,7 +38,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
                 float brightnessMultiplier = 1f - MathHelper.SmoothStep(0f, 0.20f, (float)depthFactor);
 
                 // 保留至少80%的亮度
-                brightnessMultiplier = MathHelper.Clamp(brightnessMultiplier, 0.80f, 1f);
+                brightnessMultiplier = MathHelper.Clamp(brightnessMultiplier, 0.90f, 1f);
 
                 // 应用亮度调整
                 brightness *= brightnessMultiplier;

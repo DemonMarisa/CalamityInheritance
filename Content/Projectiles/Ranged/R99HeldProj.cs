@@ -134,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public Vector2 CorrectedAngle(Vector2 fireDir)
         {
             //角度的最大校准值
-            float maxCalibra = CIConfig.Instance.Debugint;
+            float maxCalibra = 14;
             //有效校准范围(45~135)
             float angleThre = 45f;
             //速度相关的最大校准，额外补充的玩家相关

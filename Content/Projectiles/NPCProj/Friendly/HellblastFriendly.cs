@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
 {
@@ -74,10 +75,9 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 600, false);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 600, false);
-            target.AddBuff(ModContent.BuffType<RancorBurn>(), 600, false);
-            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 600, false);
+            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), 600, false);
+            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 600, false);
+            target.AddBuff(ModContent.BuffType<Horror>(), 600, false);
         }
 
         public override void OnKill(int timeLeft)

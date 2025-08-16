@@ -379,14 +379,15 @@ namespace CalamityInheritance.Content.Items
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<UniverseSplitterField>()] > 0)
-
+            float speedmult = 1;
             if (usPlayer.LoreWallofFlesh || usPlayer.PanelsLoreWallofFlesh)
-                velocity *= 1.10f;
+                speedmult += 0.05f;
             if (usPlayer.LorePlantera || usPlayer.PanelsLorePlantera)
-                velocity *= 1.15f;
+                speedmult += 0.1f;
             if (usPlayer.LorePolter || usPlayer.PanelsLorePolter)
-                velocity *= 1.20f;
+                speedmult += 0.15f;
+
+            velocity *= speedmult;
         }
         #endregion
 

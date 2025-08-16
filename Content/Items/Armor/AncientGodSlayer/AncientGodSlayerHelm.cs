@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -72,9 +73,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<GodSlayerHeadMelee>().
-                AddIngredient<GodSlayerHeadRanged>().
-                AddIngredient<GodSlayerHeadRogue>().
+                AddIngredient<GodSlayerHeadMeleeold>().
+                AddIngredient<GodSlayerHeadRangedold>().
+                AddIngredient<GodSlayerHeadRogueold>().
+                AddIngredient<GodSlayerHeadMagicold>().
+                AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<CosmiliteBar>(25).
                 AddIngredient<AscendantSpiritEssence>(10).
                 AddTile<CosmicAnvil>().

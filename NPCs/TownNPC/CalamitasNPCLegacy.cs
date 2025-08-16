@@ -523,6 +523,16 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void AmmoShop_List()
         {
             var AmmoShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalAmmoShopOption"))
+                .Add(new Item(ModContent.ItemType<AccelerationRound>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ModContent.ItemType<SuperballBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
+
+                .Add(new Item(ModContent.ItemType<NapalmArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                .Add(new Item(ModContent.ItemType<ArcticArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ModContent.ItemType<FrostsparkBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ModContent.ItemType<VeriumBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+
+                .Add(new Item(ModContent.ItemType<AccelerationRound>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
+
                 .Add(new Item(ModContent.ItemType<HyperiusBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedAstrumDeus)
 
                 .Add(new Item(ModContent.ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
@@ -554,10 +564,13 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ModContent.ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ItemID.BlackInk) { shopCustomPrice = Item.buyPrice(gold: 1) })
-                .Add(new Item(ModContent.ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) })
-                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CIConditions.DownedBloodMoon)
+                .Add(new Item(ModContent.ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) }, CIConditions.DownedBloodMoon)
+                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+
+                .Add(new Item(ModContent.ItemType<DepthCells>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
+                .Add(new Item(ModContent.ItemType<Lumenyl>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
 
                 //瀚海狂鲨的鳞片出售就9银币，哥们你造15金币说是
                 .Add(new Item(ModContent.ItemType<GrandScale>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera)

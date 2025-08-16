@@ -1,15 +1,16 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
 {
     public class BrimstoneExplosion : ModProjectile
     {
-        private int Dusts = 5;
+        private readonly int Dusts = 5;
 
         public override void SetDefaults()
         {
@@ -40,10 +41,9 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 2;
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 600, false);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 600, false);
-            target.AddBuff(ModContent.BuffType<RancorBurn>(), 600, false);
-            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 600, false);
+            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), 600, false);
+            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 600, false);
+            target.AddBuff(ModContent.BuffType<Horror>(), 600, false);
         }
     }
 }

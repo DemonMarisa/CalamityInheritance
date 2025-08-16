@@ -63,11 +63,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 float num796 = Projectile.oldVelocity.X * (30f / num795);
                 float num797 = Projectile.oldVelocity.Y * (30f / num795);
-                int num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
+                int num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796 + Projectile.width / 2, Projectile.oldPosition.Y - num797 + Projectile.height / 2), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
                 Main.dust[num798].noGravity = true;
                 Dust dust = Main.dust[num798];
                 dust.velocity *= 0.5f;
-                num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
+                num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796 + Projectile.width / 2, Projectile.oldPosition.Y - num797 + Projectile.height / 2), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
                 dust = Main.dust[num798];
                 dust.velocity *= 0.05f;
                 num3 = num795;

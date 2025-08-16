@@ -1,5 +1,5 @@
-﻿using CalamityInheritance.Rarity;
-using CalamityMod.Items.Armor.GodSlayer;
+﻿using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<GodSlayerLeggings>().
+                AddIngredient<GodSlayerLeggingsold>().
                 AddIngredient<CosmiliteBar>(20).
                 AddIngredient<AscendantSpiritEssence>(10).
                 AddTile<CosmicAnvil>().

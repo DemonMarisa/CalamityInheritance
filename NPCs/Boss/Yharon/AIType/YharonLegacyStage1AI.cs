@@ -1,20 +1,21 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Boss;
+﻿using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
+using CalamityInheritance.NPCs.Boss.Yharon.Proj;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Projectiles.Boss;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 using static CalamityInheritance.NPCs.Boss.Yharon.YharonLegacy;
-using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
-using CalamityInheritance.NPCs.Boss.Yharon.Proj;
-using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -62,7 +63,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
             if (lifeRatio <= stage2LifeRatio && currentPhase == 3f)
             {
-                if (CIDownedBossSystem.DownedBuffedSolarEclipse)
+                if (CIDownedBossSystem.DownedBuffedSolarEclipse || !CIServerConfig.Instance.SolarEclipseChange)
                 {
                     attackType = (int)YharonAttacksType.PhaseTransition;
                     isStage2 = true;
@@ -74,6 +75,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 circleCount = 0;
                 currentPhase++;
                 NPC.netUpdate = true;
+                CalamityNetcode.SyncWorld();
                 return;
             }
             #endregion
@@ -284,6 +286,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             if (attacktimer < p1Timer)
             {
+                NPC.netUpdate = true;
                 frameType = (float)YharonFrameType.Normal;
                 NPC.velocity *= 0.97f;
             }
@@ -298,6 +301,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)NPC.direction * 4, 8f, ModContent.ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
+                NPC.netUpdate = true;
                 playerP2PEffect = true;
                 frameType = (float)YharonFrameType.Roar;
                 NPC.velocity *= 0.97f;
@@ -306,6 +310,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (attacktimer > totalTimer)
             {
                 SelectNextAttack(0);
+                NPC.netUpdate = true;
             }
         }
         #endregion
@@ -462,8 +467,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.damage = 0;
             if (Main.zenithWorld)
                 NPC.damage = 114514;
+
             if (attacktimer < 90)
             {
+                NPC.netUpdate = true;
                 if (attacktimer == 8)
                     SoundEngine.PlaySound(RoarSound, NPC.Center);
                 NPC.velocity *= 0.96f;
@@ -474,12 +481,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
             else
             {
+                NPC.netUpdate = true;
                 frameType = (float)YharonFrameType.Normal;
                 NPC.velocity.X *= 0.96f;
                 NPC.velocity.Y -= 0.4f;
                 if (attacktimer == 160)
                 {
-                    if(isTrueDead)
+                    if (isTrueDead)
                         FirstDown();
 
                     NPC.active = false;
