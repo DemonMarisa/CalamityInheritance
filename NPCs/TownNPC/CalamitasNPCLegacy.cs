@@ -46,6 +46,7 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.System.DownedBoss;
 using CalamityModMusic.Items.Placeables;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityMod.Items.Tools;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -531,8 +532,6 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<FrostsparkBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
                 .Add(new Item(ModContent.ItemType<VeriumBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
 
-                .Add(new Item(ModContent.ItemType<AccelerationRound>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
-
                 .Add(new Item(ModContent.ItemType<HyperiusBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedAstrumDeus)
 
                 .Add(new Item(ModContent.ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
@@ -617,6 +616,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<Abaddon>()) { shopCustomPrice = Item.buyPrice(gold: 32) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
+                .Add(new Item(ModContent.ItemType<BobbitHook>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedPolterghast)
                 .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon)
                 .Add(new Item(ModContent.ItemType<HalibutCannonLegendary>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CIConditions.NoInfernumMode);
             ItemShop.Register();

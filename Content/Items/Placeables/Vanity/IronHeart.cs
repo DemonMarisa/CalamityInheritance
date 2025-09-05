@@ -23,9 +23,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.height = 12;
             Item.maxStack = 9999;
             Item.useTurn = true;
-            Item.autoReuse = true;
-            Item.useAnimation = 15;
-            Item.useTime = 10;
+            Item.useAnimation = 45;
+            Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
             Item.createTile = ModContent.TileType<IronHeartTiles>();

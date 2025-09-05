@@ -48,6 +48,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                     DoFading();
                     break;
             }
+
+            if (AttackTimer > 180)
+                AttackType = IsFading;
         }
 
         private void DoFading()
@@ -65,7 +68,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         private void DoGeneric()
         {
             Lighting.AddLight(Projectile.Center, new Vector3(0.075f, 0.4f, 0.15f));
-            Projectile.rotation += Projectile.velocity.X * 0.8f;
+            Projectile.rotation += Projectile.velocity.X * 0.2f;
+            if (Projectile.velocity.X > 0f)
+                Projectile.rotation += 0.08f;
+            else
+                Projectile.rotation -= 0.08f;
             //这个计时器是外置的
             AttackTimer += 1f;
         }

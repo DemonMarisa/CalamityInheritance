@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.BaseClass
         /// </summary>
         public virtual float AimResponsiveness { get; }
 
+        public int UseDelay = 0;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
@@ -42,6 +43,9 @@ namespace CalamityInheritance.Content.BaseClass
         }
         public override void AI()
         {
+            if (UseDelay > 0)
+                UseDelay--;
+
             Vector2 offset = new(0, BaseOffsetY);
 
             Player player = Main.player[Projectile.owner];

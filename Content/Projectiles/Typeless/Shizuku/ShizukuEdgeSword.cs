@@ -85,10 +85,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         private void ShootSwords()
         {
-            /*
-            if (AttackTimer % CIConfig.Instance.Debugint != 0)
+            if (AttackTimer % 30 != 0)
                 return;
-            */
+            
             int count = 2;
             int proj = ModContent.ProjectileType<ShizukuSwordProjectile>();
             for (int i = -1; i < count; i += 2)
@@ -116,11 +115,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         private void DoShooted()
         {
             ShootSwords();
+
             AttackTimer += 1f;
             Projectile.Opacity += 0.1f;
             if (AttackTimer < 35f)
                 return;
-            
+
             AttackType = IsHomingBack;
             AttackTimer = 0f;
             Projectile.netUpdate = true;

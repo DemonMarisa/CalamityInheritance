@@ -395,6 +395,7 @@ namespace CalamityInheritance.System
                 ProfanedBlance(item);
                 AmmoChange(item);
                 ExoWeapons(item);
+                YharonBlance(item);
             }
         }
         #endregion
@@ -636,6 +637,12 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<TheOracle>())
                 item.damage = 1500;
+
+            if (item.type == ModContent.ItemType<MurasamaNeweffect>())
+                item.damage = 20001;
+
+            if (item.type == ModContent.ItemType<Murasamaold>())
+                item.damage = 20001;
             #endregion
             #region 射手
             if (item.type == ModContent.ItemType<DrataliornusLegacy>())
@@ -824,7 +831,34 @@ namespace CalamityInheritance.System
         }
         #endregion
         #endregion
+
         #region 龙一龙二改变
+        public static void YharonBlance(Item item)
+        {
+            if (item.type == ModContent.ItemType<DragonSword>())
+                item.damage = 1005;
+
+            if (item.type == ModContent.ItemType<BurningSkyLegacy>())
+                item.damage = 652;
+
+            if (item.type == ModContent.ItemType<DragonsBreathold>())
+                item.damage = 256;
+
+            if (item.type == ModContent.ItemType<AncientDragonsBreath>())
+                item.damage = 200;
+
+            if (item.type == ModContent.ItemType<DragonRage>())
+                item.damage = 2200;
+
+            if (item.type == ModContent.ItemType<DragonStaff>())
+                item.damage = 200;
+
+            if (item.type == ModContent.ItemType<PhoenixFlameBarrage>())
+                item.damage = 220;
+
+            if (item.type == ModContent.ItemType<YharonSonStaff>())
+                item.damage = 320;
+        }
         #endregion
         public static bool CheckModItem<T>(int type) where T : ModItem => type == ModContent.ItemType<T>();
     }

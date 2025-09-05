@@ -55,10 +55,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     Projectile.localAI[0] = 0f;
                 }
             }
-            if (Projectile.ai[2] == -1f)
-            {
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
-            }
+
+            Projectile.velocity *= 0.98f;
         }
 
         public override Color? GetAlpha(Color lightColor)

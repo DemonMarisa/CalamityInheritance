@@ -429,7 +429,7 @@ ShieldoftheOceanLegacy: {
 }
 
 TheAmalgamLegacy: {
-	DisplayName: 融合之脑[Legacy]
+	DisplayName: 聚合之脑[Legacy]
 	Tooltip:
 		'''
 		增加20%伤害

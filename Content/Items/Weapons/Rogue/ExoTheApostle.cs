@@ -81,7 +81,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
                 if (player.Calamity().StealthStrikeAvailable())
                 {
-                    Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                    if (stealth.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[stealth].Calamity().stealthStrike = true;
+                        Main.projectile[stealth].usesLocalNPCImmunity = true;
+                    }
                 }
             }
             return false;

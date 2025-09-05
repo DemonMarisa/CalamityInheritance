@@ -792,6 +792,9 @@ namespace CalamityInheritance.Utilities
             Vector2 rotationPoint = texture.Size() / 2f;
             SpriteEffects flipSprite = (proj.spriteDirection * Main.player[proj.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
+            if (drawOffset is null)
+                drawOffset = new Vector2(0, 0);
+
             Main.spriteBatch.Draw(texture, drawPosition + (Vector2)drawOffset, null, lightColor, drawRotation + rotOffset, rotationPoint, proj.scale * Main.player[proj.owner].gravDir * scale, flipSprite, 0f);
         }
         #endregion

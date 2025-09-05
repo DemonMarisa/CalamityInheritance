@@ -34,6 +34,9 @@ namespace CalamityInheritance.Content.BaseClass
         /// 武器转动的速度，越大越快<br/>
         /// </summary>
         public virtual float AimResponsiveness { get; set; }
+
+
+        public int UseDelay = 0;
         //你小子jb给手持射弹创个新图片都不愿意用路径是吧
         public override void SetStaticDefaults()
         {
@@ -46,6 +49,8 @@ namespace CalamityInheritance.Content.BaseClass
         }
         public override void AI()
         {
+            if (UseDelay > 0)
+                UseDelay--;
             Projectile.extraUpdates = 0;
 
             Vector2 offset = new(0, BaseOffsetY);

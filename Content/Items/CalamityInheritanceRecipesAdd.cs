@@ -472,9 +472,16 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ModContent.ItemType<TrueBloodyEdge>()).
                 AddIngredient(ItemID.TrueExcalibur).
                 AddIngredient(ModContent.ItemType<LivingShard>(),7). //我不是很清楚为啥这个生命碎片还留着
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
+            Recipe.Create(ModContent.ItemType<RoverDrive>()).
+                AddIngredient(ModContent.ItemType<WulfrumMetalScrap>(), 10).
+                AddIngredient(ModContent.ItemType<WulfrumBattery>()).
+                AddIngredient(ModContent.ItemType<EnergyCore>(), 2).
+                AddTile(TileID.MythrilAnvil).
+                Register();
         }
         public static void Accelerator()
         {

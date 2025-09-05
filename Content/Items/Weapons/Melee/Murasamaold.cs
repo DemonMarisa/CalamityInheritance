@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.height = 128;
             Item.width = 56;
-            Item.damage = 20001;
+            Item.damage = 2001;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;

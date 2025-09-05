@@ -39,6 +39,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         public int Xoffset = 7;
         // 发射偏移
         public int XRightoffset = 30;
+        // 炸弹发射的计数
+        public int BombCounts = 0;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
@@ -69,6 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             // 重置计时器
             if (UseCounter > 300)
                 UseCounter = 0;
+
             // 开火方向
             Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
             firedirection = firedirection.SafeNormalize(Vector2.UnitX);
@@ -76,12 +79,16 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             if (UseCounter % CrystalUseCD == 0)
                 FireCrystal(player, usPlayer, firedirection);
 
+            if (Main.mouseLeft)
+                UseStyle = 0;
+            else
+                UseStyle = 1;
             // 左键发射
             if (UseStyle == 0)
-                LeftFire(UseCounter, firedirection, player);
+                LeftFire(ref UseCounter, firedirection, player);
             // 右键发射
             else
-                RightFire(UseCounter, fireFire, firedirection, player);
+                RightFire(ref UseCounter, fireFire, firedirection, player);
 
             SpawnDust(player);
         }
@@ -103,12 +110,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         }
         #endregion
         #region 左键
-        public void LeftFire(float UseCounter, Vector2 mouseToPlayer, Player player)
+        public void LeftFire(ref float UseCounter, Vector2 mouseToPlayer, Player player)
         {
             bool isLoreExo = player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
             SoundStyle leftClick = isLoreExo ? CISoundMenu.ExoFlameLeft : CISoundID.SoundFlamethrower;
 
-            if (UseCounter % leftUseCD == 0)
+            if (UseDelay == 0)
             {
                 SoundEngine.PlaySound(leftClick, Projectile.Center);
                 Vector2 offset = new Vector2(Xoffset, 0).RotatedBy(Projectile.rotation);
@@ -119,8 +126,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFireold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
                 }
+                UseDelay = leftUseCD;
+                BombCounts++;
             }
-            if (UseCounter % leftBombUseCD == 0)
+            if (BombCounts >= 5)
             {
                 SoundEngine.PlaySound(leftClick, Projectile.Center);
                 for (int i = 0; i < 2; i++)
@@ -138,19 +147,16 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     lightBomb.localAI[1] = yDirection;
                     lightBomb.netUpdate = true;
                 }
+                BombCounts = 0;
             }
         }
         #endregion
         #region 右键
-        public void RightFire(float UseCounter, float firefire, Vector2 mouseToPlayer, Player player)
+        public void RightFire(ref float UseCounter, float firefire, Vector2 mouseToPlayer, Player player)
         {
             rightUseCD = (int)(25 / Owner.GetWeaponAttackSpeed(Owner.HeldItem));
-            if (UseCounter == 1 && firefire == 0f)
-            {
-                firefire += 1f;
-                UseCounter = rightUseCD;
-            }
-            if (UseCounter % rightUseCD == 0)
+
+            if (UseDelay == 0)
             {
                 bool isLoreExo = player.CheckExoLore();
                 SoundStyle rightClick = isLoreExo ? CISoundMenu.ExoFlameRight : CISoundID.SoundFlamethrower;
@@ -161,6 +167,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
                 // 发射主体火焰
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFlareClusterold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
+                UseDelay = rightUseCD;
             }
         }
         #endregion
@@ -174,6 +181,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             SpriteEffects flipSprite = (Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
         }
         #endregion
         #region 召唤粒子

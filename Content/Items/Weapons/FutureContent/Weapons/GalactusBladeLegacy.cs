@@ -23,7 +23,6 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
             Item.useAnimation = 17;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 17;
-            Item.useTurn = true;
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item105;
             Item.autoReuse = true;

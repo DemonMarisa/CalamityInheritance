@@ -23,14 +23,16 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
     public class LegacySHPCHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public int maxXdistance = 3;
         public float aniXdistance = 0;
-        public override float OffsetX => -10 + aniXdistance;
+        public override float OffsetX => -10 - aniXdistance;
         public override float OffsetY => -12;
         public override float BaseOffsetY => 0;
         public override float WeaponRotation => 0;
+
+        public int LeftCD = 49;
+        public int RightCD = 7;
         // 旋转速度
-        public override float AimResponsiveness => 0.25f;
+        public override float AimResponsiveness => 0.5f;
         public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
@@ -58,69 +60,82 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             ref float UseCounter = ref Projectile.ai[1];
             // 第一次的计数
             ref float firstFire = ref Projectile.ai[2];
-            if (UseCounter == 0 && Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false))
-            {
-                CustomShoot();
-            }
-            RecoilAnimation(ref UseCounter);
-        }
-        public void CustomShoot()
-        {
-            Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= 0);
-            Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
-            Projdirection.SafeNormalize(Vector2.UnitX);
-            Projdirection *= shootSpeed / 2;
 
-            Player player = Main.player[Projectile.owner];
-            var p = player.CIMod();
-            int bCounts = 3;
-            int lCounts = 3;
-            if (Projectile.ai[0] == 0)
+            if (Main.mouseLeft)
+                UseStyle = 0;
+            else
+                UseStyle = 1;
+
+            if (UseStyle == 0)
+                LeftShoot();
+            else
+                RightShoot();
+
+            aniXdistance = MathHelper.Lerp(aniXdistance, 0, 0.25f);
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
+        }
+        public void RightShoot()
+        {
+            if (UseDelay == 0)
             {
+                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost * 0.33f), true, false);
+                Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= 0);
+                Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+                Projdirection.SafeNormalize(Vector2.UnitX);
+                Projdirection *= shootSpeed / 2;
+
+                Player player = Main.player[Projectile.owner];
+                var p = player.CIMod();
+                int lCounts = 3;
+
                 SoundEngine.PlaySound(SoundID.Item92, Projectile.Center);
-                maxXdistance = 2;
+                aniXdistance = 2;
                 for (int i = 0; i < lCounts; i++)
                 {
+
                     float velX = Projdirection.X + Main.rand.Next(-20, 21) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-20, 21) * 0.05f;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), Projectile.damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
                 }
+                UseDelay = RightCD;
             }
-            else
+        }
+
+        public void LeftShoot()
+        {
+            if (UseDelay == 0)
             {
+                Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
+                Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= 0);
+                Vector2 Projdirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+                Projdirection.SafeNormalize(Vector2.UnitX);
+                Projdirection *= shootSpeed / 2;
+
+                Player player = Main.player[Projectile.owner];
+                var p = player.CIMod();
+                int bCounts = 3;
+
                 SoundEngine.PlaySound(CommonCalamitySounds.LaserCannonSound, Projectile.Center);
-                maxXdistance = 3;
+                aniXdistance = 4;
                 for (int j = 0; j < bCounts; j++)
                 {
                     float velX = Projdirection.X + Main.rand.Next(-40, 41) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-40, 41) * 0.05f;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(Projectile.damage * 1.1), knockback, player.whoAmI, 0f, 0f);
                 }
+                UseDelay = LeftCD;
             }
         }
-        #region 后坐力动画
-        public void RecoilAnimation(ref float UseCounter)
-        {
-            int recoilani = Owner.HeldItem.useTime;
-            UseCounter++;
-            if (UseCounter < recoilani)
-            {
-                float progress = EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
-                aniXdistance = MathHelper.Lerp(0, maxXdistance, progress);
-            }
-            else
-                UseCounter = 0;
-        }
-        #endregion
+
         #region 删除条件
         public override void DelCondition()
         {
             // 偷了个懒，用了第一次发射的判定，不过第一次发射只有+1，影响不大
             Projectile.ai[2]++;
-            if (Projectile.ai[2] > Owner.HeldItem.useTime)
+            if (Projectile.ai[2] > Owner.HeldItem.useTime || Owner.dead)
                 Projectile.Kill();
 
-            aniXdistance = MathHelper.Lerp(aniXdistance, maxXdistance, 0.08f);
+            aniXdistance = MathHelper.Lerp(aniXdistance, 0, 0.08f);
         }
         #endregion
     }
