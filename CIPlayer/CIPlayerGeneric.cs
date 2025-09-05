@@ -131,6 +131,7 @@ namespace CalamityInheritance.CIPlayer
         public bool cIdisableAnahitaSpawns = false;
         #endregion
         public bool AncinetGodSlayerDashReset = false;
+        public bool NerfedDSA = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -163,7 +164,7 @@ namespace CalamityInheritance.CIPlayer
             cIdisableHiveCystSpawns = false;
             cIdisableNaturalScourgeSpawns = false;
             cIdisableAnahitaSpawns = false;
-            
+            NerfedDSA = false;
             #endregion
         }
 

@@ -265,7 +265,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 dust.velocity = velOffset;
                 dust.scale = Main.rand.NextFloat(1.5f, 3.2f);
             }
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(), (int)(Projectile.damage*1.3f), Projectile.knockBack, Main.myPlayer, target.whoAmI);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, target.whoAmI);
             //也会生成一个新的锤子, 这一锤子不会再生成新的克隆锤子
             ifSummonClone = false;
         }

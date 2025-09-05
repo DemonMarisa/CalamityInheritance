@@ -791,30 +791,40 @@ namespace CalamityInheritance.Utilities
             float drawRotation = proj.rotation + (proj.spriteDirection == -1 ? MathHelper.Pi : 0f);
             Vector2 rotationPoint = texture.Size() / 2f;
             SpriteEffects flipSprite = (proj.spriteDirection * Main.player[proj.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-            if (drawOffset is null)
-                drawOffset = new Vector2(0, 0);
-
-            Main.spriteBatch.Draw(texture, drawPosition + (Vector2)drawOffset, null, lightColor, drawRotation + rotOffset, rotationPoint, proj.scale * Main.player[proj.owner].gravDir * scale, flipSprite, 0f);
+            Vector2 offset = Vector2.Zero;
+            if (drawOffset is not null)
+                offset = drawOffset.Value;
+            Main.spriteBatch.Draw(texture, drawPosition + offset, null, lightColor, drawRotation + rotOffset, rotationPoint, proj.scale * Main.player[proj.owner].gravDir * scale, flipSprite, 0f);
         }
         #endregion
         /// <summary>
-        /// j基础射弹边缘绘制方法
+        /// 以平方放缩的形式附带残影绘制，而非原灾的线性 
         /// </summary>
         /// <param name="proj"></param>
-        /// <param name="texture"></param>
-        /// <param name="edgeColor"></param>
-        /// <param name="edgeDrawTimes">边缘绘制次数</param>
-        /// <param name="offset">偏移量</param>
-        public static void DrawEdgeProj(this Projectile proj, Texture2D texture, Color edgeColor, int edgeDrawTimes, float offset = 12f)
+        /// <param name="tex"></param>
+        /// <param name="lightColor"></param>
+        /// <param name="trailingCount"></param>
+        /// <param name="trailingLength"></param>
+        /// <param name="rotOffset"></param>
+        /// <param name="scale"></param>
+        /// <param name="drawOffset"></param>
+        public static void BaseProjPreDraw(this Projectile proj, Texture2D tex, int trailingCount ,Color lightColor, float trailingLength = 0.4f, float rotOffset = 0f, float scale = 1f, Vector2? drawOffset = null)
         {
-            Vector2 origin = texture.Size() / 2f;
-            Vector2 baseDrawPos = proj.Center - Main.screenPosition;
-            for (int i = 0; i < edgeDrawTimes; i++)
+            Vector2 drawPos = proj.Center - Main.screenPosition;
+            float drawRot = proj.rotation + (proj.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            Vector2 origi = tex.Size() / 2f;
+            SpriteEffects flip = proj.spriteDirection * Main.player[proj.owner].gravDir is -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            Vector2 offset = Vector2.Zero;
+            if (drawOffset is not null)
+                offset = drawOffset.Value;
+            for (int i = 0; i < trailingCount; i++)
             {
-                Vector2 edgeDir = baseDrawPos + (MathHelper.TwoPi * i / edgeDrawTimes).ToRotationVector2() * offset;
-                Main.EntitySpriteDraw(texture, edgeDir, null, edgeColor, proj.rotation, origin, proj.scale, SpriteEffects.None, 0);
-            }   
+                Vector2 realDrawPos = drawPos - proj.velocity * i * trailingLength;
+                float faded = 1 - (i / (float)trailingCount);
+                faded = MathF.Pow(faded, 2);
+                Color trailColor = lightColor * faded;
+                Main.spriteBatch.Draw(tex, realDrawPos + offset, null, trailColor, drawRot + rotOffset, origi, proj.scale * Main.player[proj.owner].gravDir * scale, flip, 0);
+            }
         }
     }
 }

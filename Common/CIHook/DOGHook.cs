@@ -1,14 +1,7 @@
 ﻿using CalamityMod.NPCs.TownNPCs;
 using CalamityMod.NPCs;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.CalPlayer;
 using System.Reflection;
 using CalamityMod.NPCs.DevourerofGods;
 using Microsoft.Xna.Framework;

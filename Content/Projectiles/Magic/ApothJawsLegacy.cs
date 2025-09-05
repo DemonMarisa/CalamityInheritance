@@ -34,14 +34,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void AI()
         {
-            if (Projectile.timeLeft % 10 == 0)
+            if (Projectile.timeLeft % 30 == 0)
             {
                 double angle = Main.rand.Next(360) * Math.PI / 180;
                 float offsetX = Projectile.position.X + Main.rand.Next(Projectile.width);
                 float offsetY = Projectile.position.Y + Main.rand.Next(Projectile.height);
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),offsetX, offsetY, 14 * (float)Math.Cos(angle), 14 * (float)Math.Sin(angle), ModContent.ProjectileType<ApothChloroLegacy>(), Projectile.damage, Projectile.knockBack / 2, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),offsetX, offsetY, 14 * (float)Math.Cos(angle), 14 * (float)Math.Sin(angle), ModContent.ProjectileType<ApothChloroLegacy>(), Projectile.damage * 3, Projectile.knockBack / 2, Projectile.owner);
                 }
             }
             if (Projectile.timeLeft < 30)

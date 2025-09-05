@@ -41,14 +41,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProj>();
             Item.shootSpeed = 20f;
         }
-        public override float StealthDamageMultiplier => 1.20f;
+        public override float StealthDamageMultiplier => 0.9f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool stealth = player.CheckStealth();
             if (!stealth)
                 return true;
 
-            int t = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage*1.15f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int t = Projectile.NewProjectile(source, position, velocity ,type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
             Main.projectile[t].Calamity().stealthStrike = true;
             return false;
         }

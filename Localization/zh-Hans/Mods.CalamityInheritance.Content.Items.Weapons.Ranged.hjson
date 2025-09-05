@@ -606,4 +606,17 @@ R99: {
 		[c/E4080A:-开发者物品-]
 		“这里有一把冲锋枪，她就跟我一样快”
 		'''
+	EnhancedBullet:
+		'''
+		追杀敌人
+		[c/E4080A:由][i:CalamityInheritance/R99][c/E4080A:放血疗法强化]
+		大幅度增强索敌距离，准许穿墙
+		与放血疗法共同搭配时，命中一定次数后会超强化子弹伤害
+		强化倍率为600倍，这一效果更换敌人单位时重置
+		'''
+}
+
+PaintballBlaster: {
+	// DisplayName: Paintball Blaster
+	// Tooltip: ""
 }

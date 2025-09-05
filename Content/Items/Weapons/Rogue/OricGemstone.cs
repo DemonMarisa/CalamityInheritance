@@ -1,19 +1,21 @@
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
-using Microsoft.Build.Tasks;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class OricGemstone : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizedCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+        }
         public override void SetDefaults()
         {
             Item.width = 12;
@@ -30,14 +32,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Pink;
             Item.value = CIShopValue.RarityPricePink;
-            Item.shoot = ModContent.ProjectileType<OriGemstoneProj>();
-            Item.shootSpeed = 28f;
+            Item.shoot = ModContent.ProjectileType<OricGemstoneProj>();
+            Item.shootSpeed = 16f;
         }
+        public override bool AltFunctionUse(Player player) => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            var modPlayer = player.CIMod();
+            damage /= 1 + player.CheckStealth().ToInt();
             int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Main.projectile[stealth].Calamity().stealthStrike = player.CheckStealth();
+            Projectile proj = Main.projectile[stealth];
+            if (player.altFunctionUse is 2 && !player.CheckStealth())
+                proj.CalamityInheritance().MouseRight = true;
+                
+            if (player.CheckStealth())
+            {
+                proj.Calamity().stealthStrike = true;
+                proj.timeLeft = 480;
+                proj.penetrate = -1;
+            }
+
+            return false;
         }
     }
 }

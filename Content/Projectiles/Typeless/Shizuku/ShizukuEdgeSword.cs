@@ -1,7 +1,10 @@
+using System;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -17,13 +20,23 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Typeless/ShizukuItem/ShizukuEdge";
         public ref float AttackTimer => ref Projectile.ai[0];
         public ref float AttackType => ref Projectile.ai[1];
+        public int[] GhostType =
+            [
+                ModContent.ProjectileType<SoulSmallPlaceholder>(),
+                ModContent.ProjectileType<SoulMidPlaceholder>(),
+                ModContent.ProjectileType<SoulLargePlaceholder>()
+            ];
         #region AttackType
         const float IsShooted = 0f;
         const float IsHomingBack = 1f;
         #endregion
+        #region Attack Args
+        const float MaxShootAngles = 45;
+        #endregion
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
+            ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
+            ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
         }
         public override void SetDefaults()
         {
@@ -40,48 +53,134 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override void AI()
         {
-            Projectile.rotation += 0.10f;
+            SpiningAI();
             DoJustSpawn();
-            DoGeneral();
-            switch (AttackType)
+            // DoGeneral();
+            float basicAttackSpeed = 30f;
+            float getAttackSpeed = Owner.GetTotalAttackSpeed<MeleeDamageClass>();
+            //将其转化为等比例攻速摸
+            float speedMul = basicAttackSpeed / (1 + getAttackSpeed);
+            //向下取整获得真正的攻速摸
+            float actualSpeed = Math.Max(1, speedMul);
+            if (AttackTimer % basicAttackSpeed == 0)
             {
-                case IsShooted:
-                    DoShooted();
-                    break;
-                case IsHomingBack:
-                    DoHomingBack();
-                    break;
+                ShootGhosts();
+            }
+            //飞剑的发射是固定模
+            if (AttackTimer % 50f == 0)
+            {
+                ShootSwords();
+            }
+            // switch (AttackType)
+            // {
+            //     case IsShooted:
+            //         DoShooted();
+            //         break;
+            //     case IsHomingBack:
+            //         DoHomingBack();
+            //         break;
+            // }
+        }
+
+        public void ShootGhosts()
+        {
+            int baseCount = 3;
+            int realCount = baseCount + (Owner.maxMinions + Owner.maxTurrets) / 2;
+            Vector2 shootDirection = Main.MouseWorld - Owner.Center;
+            //将其标准化
+            shootDirection.Normalize();
+            //获取实际散射范围与固定的间隔
+            float angleStep = MaxShootAngles * 2 / (realCount - 1);
+            for (int i = 0; i < realCount; i++)
+            {
+                //每次执行随机选择的鬼魂
+                int projID = Utils.SelectRandom(Main.rand, GhostType);
+                float angleStepOffset = MathHelper.ToRadians(-angleStep + (i * angleStep));
+                Vector2 spreadDirection = RotateVector(shootDirection, angleStepOffset);
+                //获取实际速度
+                Vector2 spreadVelocity = spreadDirection * 16f;
+                //发射鬼魂
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, spreadVelocity, projID, Projectile.damage, Projectile.knockBack, Owner.whoAmI, ShizukuBaseGhost.MoreTrailingDust);
             }
         }
-        public override void OnKill(int timeLeft)
+        //旋转向辅助方法
+        public static Vector2 RotateVector(Vector2 vector, float angle)
         {
-            #region 初始化
-            int ghostCounts = Main.rand.Next(12, 18);
-            int ghostType = Main.rand.Next(0, 3);
-            ghostType = ghostType switch
+            float cos = (float)Math.Cos(angle);
+            float sin = (float)Math.Sin(angle);
+            return new Vector2(vector.X * cos - vector.Y * sin, vector.X * sin + vector.Y * cos);
+        }
+        private void SpiningAI()
+        {
+            float spinTime = 50f;
+            if (Owner.dead || !Owner.channel)
             {
-                0 => ModContent.ProjectileType<SoulSmallPlaceholder>(),
-                1 => ModContent.ProjectileType<SoulMidPlaceholder>(),
-                _ => ModContent.ProjectileType<SoulLargePlaceholder>(),
-            };
-            var projSrc = Projectile.GetSource_FromThis();
-            int ghostDamage = (int)(Projectile.damage * 1.5f);
-            #endregion
-            for (int i = 0; i < ghostCounts; i++)
-            {
-                Vector2 srcPositon = Projectile.Center;
-                Vector2 finalPostion = new Vector2(Projectile.Center.X + 15f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                //距离向量
-                Vector2 distanceVector = srcPositon - finalPostion;
-                //速度向量
-                float projSpeed = 14f;
-                float length = distanceVector.Length();
-                length = projSpeed / length;
-                distanceVector.X *= length;
-                distanceVector.Y *= length;
-                Projectile.NewProjectile(projSrc, srcPositon, distanceVector, ghostType, ghostDamage, 0f, Owner.whoAmI, ai1: ShizukuBaseGhost.MoreTrailingDust);
+                // Main.NewText("FuckedMoon, Velocity:" + Projectile.velocity.Length().ToString());
+                Projectile.Kill();
+                Owner.reuseDelay = 2;
+                return;
             }
-
+            int spinDir = Math.Sign(Projectile.velocity.X);
+            Projectile.velocity = new Vector2(spinDir, 0f);
+            if (AttackTimer == 0f)
+            {
+                Projectile.rotation = new Vector2(Projectile.velocity.X, -Owner.gravDir).ToRotation() + MathHelper.ToRadians(135f);
+                if (Projectile.velocity.X < 0f)
+                {
+                    Projectile.rotation -= MathHelper.PiOver2;
+                }
+            }
+            AttackTimer += 1f;
+            Projectile.rotation += MathHelper.TwoPi * 2f / spinTime * spinDir;
+            int wantedDire = (Owner.SafeDirectionTo(Main.MouseWorld).X > 0f).ToDirectionInt();
+            if (AttackTimer % spinTime > spinTime * 0.5f && wantedDire != Projectile.velocity.X)
+            {
+                Owner.ChangeDir(wantedDire);
+                Projectile.velocity = Vector2.UnitX * wantedDire;
+                Projectile.rotation -= MathHelper.Pi;
+                Projectile.netUpdate = true;
+            }
+            PosAndRot();
+        }
+        public void PosAndRot()
+        {
+            Vector2 ifPlayerControl = Owner.RotatedRelativePoint(Owner.MountedCenter, true);
+            Projectile.Center = new Vector2(ifPlayerControl.X, ifPlayerControl.Y);
+            Projectile.spriteDirection = Projectile.direction;
+            Projectile.timeLeft = 2;
+            Owner.ChangeDir(Projectile.direction);
+            Owner.heldProj = Projectile.whoAmI;
+            Owner.itemTime = Owner.itemAnimation = 2;
+            Owner.itemRotation = MathHelper.WrapAngle(Projectile.rotation);
+        }
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            if (projHitbox.Intersects(targetHitbox))
+            {
+                return true;
+            }
+            float spinning = Projectile.rotation - MathHelper.PiOver4 * (float)Math.Sign(Projectile.velocity.X);
+            float staffRadiusHit = 110f;
+            float useless = 0f;
+            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center + spinning.ToRotationVector2() * -staffRadiusHit, Projectile.Center + spinning.ToRotationVector2() * staffRadiusHit, 23f * Projectile.scale, ref useless))
+            {
+                return true;
+            }
+            return false;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            //手动接管绘制
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Vector2 drawPos = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+            Rectangle rec = new Rectangle(0, 0, texture.Width, texture.Height);
+            Vector2 ori = texture.Size() / 2f;
+            Color color = Color.White;
+            SpriteEffects sE = SpriteEffects.None;
+            if (Projectile.spriteDirection == -1)
+                sE = SpriteEffects.FlipHorizontally;
+            Main.EntitySpriteDraw(texture, drawPos, new Rectangle?(rec), color, Projectile.rotation, ori, Projectile.scale, sE, 0);
+            return false;
         }
         private void ShootSwords()
         {
@@ -92,16 +191,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             int proj = ModContent.ProjectileType<ShizukuSwordProjectile>();
             for (int i = -1; i < count; i += 2)
             {
-                Vector2 setSpeed = Projectile.velocity.RotatedBy(MathHelper.PiOver4 / 1.5f * i) * 1.1f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, setSpeed * 1.1f + Projectile.velocity, proj, Projectile.damage, Projectile.knockBack, Owner.whoAmI);
+                //获得指针与玩家的位置并归一化
+                Vector2 direction = Main.MouseWorld - Owner.Center;
+                direction.Normalize();
+                Vector2 setSpeed = direction.RotatedBy(MathHelper.PiOver4 / 1.5f * i) * -24f;
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, setSpeed * 1.1f, proj, Projectile.damage, Projectile.knockBack, Owner.whoAmI, ShizukuSwordProjectile.ShouldSlash);
             }
         }
-
-        private void DoGeneral()
-        {
-            Projectile.rotation += 0.05f;
-        }
-
         private void DoJustSpawn()
         {
             //生成时的粒子
@@ -149,32 +245,5 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             int dType = Main.rand.NextBool() ? DustID.IceRod : DustID.IceTorch;
             CIFunction.DustCircle(Projectile.Center, 32f, Main.rand.NextFloat(0.8f, 1.21f), dType, true, 12f, 200);
         }
-        //我怎么还得手动接管绘制？
-        // public override bool PreDraw(ref Color lightColor)
-        // {
-        //      //手动接管绘制
-        //     Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-        //     //Clone多个射弹的位置, 并将原本射弹的指向临时记录下来
-        //     Vector2[] multipleDrawPos = (Vector2[])Projectile.oldPos.Clone();
-        //     Vector2 aimDirection = (Projectile.rotation - MathHelper.PiOver2).ToRotationVector2();
-        //         //给每个射弹贴图提供不同的角度
-        //     multipleDrawPos[0] += aimDirection * -12f;
-        //     multipleDrawPos[1] = multipleDrawPos[0] - (Projectile.rotation + MathHelper.PiOver4).ToRotationVector2() * Vector2.Distance(multipleDrawPos[0], multipleDrawPos[1]);
-        //     for (int i = 0; i < multipleDrawPos.Length; i++)
-        //     {
-        //         //转角。
-        //         multipleDrawPos[i] -= (Projectile.oldRot[i] + MathHelper.PiOver4).ToRotationVector2() * Projectile.height / 2f;
-        //     }
-        //     //常规绘制。
-        //     Vector2 manProjDrawPos = Projectile.Center - Main.screenPosition;
-        //     for (int j = 0; j < 6; j++)
-        //     {
-        //         float rotation = Projectile.oldRot[j] - MathHelper.PiOver2;
-        //         rotation += 0.05f;
-        //         Color afterImageColor = Color.Lerp(Color.White, Color.Transparent, 1f - (float)Math.Pow(Utils.GetLerpValue(0, 6, j), 1.4D)) * Projectile.Opacity;
-        //         Main.EntitySpriteDraw(texture, manProjDrawPos, null, afterImageColor, rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-        //     }
-        //     return false;
-        // }
     } 
 }

@@ -588,4 +588,17 @@ R99: {
 		[c/E4080A:-Developer Item-]
 		"SMG's here, she's just fast like me."
 		'''
+	EnhancedBullet:
+		'''
+		Chases after your enemy
+		[c/E4080A:Powered by][i/CalamityInheritance:Exsanguination][c/E4080A:Exsanguination]
+		Significantly increased homing distance
+		Paired with Exsanguination will be supercharged by 600x after a certain number of hits
+		This effect resets when switching your target.
+		'''
+}
+
+PaintballBlaster: {
+	DisplayName: Paintball Blaster
+	Tooltip: ""
 }

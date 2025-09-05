@@ -177,6 +177,8 @@ namespace CalamityInheritance.Utilities
         {
             return (int)player.GetDamage(damageclass).ApplyTo(baseDamage);
         }
+        public static bool Same(this Item item, int itemID) => item.type == itemID;
+        public static bool Same<T>(this Item item) where T :ModItem => Same(item, ModContent.ItemType<T>());
         
     }
 }

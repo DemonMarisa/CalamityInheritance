@@ -1,6 +1,7 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -124,9 +125,20 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 for (int i = -1; i < 2; i += 2)
                 {
                     //应用水平位置、垂直位置校准值
+                    Vector2 greenPos = new((Projectile.Center + offset).X + dynamicCalibra.X, (Projectile.Center + offset).Y + yetAnotherOffset + dynamicCalibra.Y);
                     Vector2 firePos = new((Projectile.Center + offset).X + dynamicCalibra.X, (Projectile.Center + offset).Y + yetAnotherOffset * i + dynamicCalibra.Y);
-                    int p = Projectile.NewProjectile(src, firePos, fireDir * shootSpeed, Proj, damage, kb, Projectile.owner);
-                    Main.projectile[p].extraUpdates += 4;
+                    if (Proj is ProjectileID.ChlorophyteBullet)
+                    {
+                        Projectile.NewProjectileDirect(src, greenPos, fireDir * shootSpeed, ModContent.ProjectileType<R99ChlorophyteBullet>(), damage, kb, Projectile.owner);
+                        //break出去，只发射一个。
+                        break;
+                    }
+                    else
+                    {
+                        int p = Projectile.NewProjectile(src, firePos, fireDir * shootSpeed, Proj, damage, kb, Projectile.owner);
+                        Main.projectile[p].extraUpdates += 4;
+                        Main.projectile[p].CalamityInheritance().IfR99 = true;
+                    }
                 }
             }
         }
@@ -138,7 +150,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             //有效校准范围(45~135)
             float angleThre = 45f;
             //速度相关的最大校准，额外补充的玩家相关
-            float maxSpeedCalibration = 12f; 
+            float maxSpeedCalibration = 13f; 
             //速度对校准的影响系数
             float speedInfluenceFactor = 0.6f;
             //获取玩家移动向量并标准化处理

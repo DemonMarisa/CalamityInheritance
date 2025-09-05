@@ -43,6 +43,7 @@ using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.Buffs.Potions;
 using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Common.CIHook;
 
 
 //Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
@@ -346,6 +347,23 @@ namespace CalamityInheritance.CIPlayer
 
             CalamityPlayer calPlayer = Player.Calamity();
             NerfStackAccessories();
+            if (NerfedDSA)
+            {
+                Mod mod = CalamityInheritance.WrathoftheGods;
+                if (mod is not null)
+                {
+                    bool anyBoss = mod.AnyWrathBoss("NamelessDeityBoss") || mod.AnyWrathBoss("AvatarRift") || mod.AnyWrathBoss("AvatarOfEmptiness");
+                    if (anyBoss)
+                    {
+                        Player.GetDamage<GenericDamageClass>() += 0.75f;
+                        Player.Calamity().projectileDamageReduction -= 0.10f;
+                    }
+                    else
+                        Player.Calamity().dArtifact = true;
+                }
+                else
+                    Player.Calamity().dArtifact = true;
+            }
             if (YharimsInsignia)
             {
                 if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
@@ -353,7 +371,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AeroStonePower)
             {
-                Player.jumpSpeedBoost +=0.2f;
+                Player.jumpSpeedBoost += 0.2f;
                 Player.moveSpeed += 0.1f;
                 Player.wingTime += 0.1f;
             }

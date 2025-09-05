@@ -40,6 +40,7 @@ using static CalamityInheritance.System.CalStatInflationBACK;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Tools;
 using Terraria.DataStructures;
+using System;
 
 namespace CalamityInheritance.System
 {
@@ -370,23 +371,23 @@ namespace CalamityInheritance.System
                         item.damage = (int)(item.damage * 1.3f);
                     item.damage = (int)(item.damage * PostPolterghastWeaponsBoost);
                 }
-                if (CalStatInflationBACK.PostOldDukeWeapons.Contains(item.type))
+                if (PostOldDukeWeapons.Contains(item.type))
                 {
                     item.damage = (int)(item.damage * PostOldDukeWeaponsBoost);
                     if (item.type == ModContent.ItemType<InsidiousImpalerLegacy>())
                         item.damage = 420;
                 }
-                if (CalStatInflationBACK.PostDOGWeapons.Contains(item.type))
+                if (PostDOGWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostDOGWeaponsBoost);
-                if (CalStatInflationBACK.PostyharonWeapons.Contains(item.type))
+                if (PostyharonWeapons.Contains(item.type))
                 {
                     item.damage = (int)(item.damage * PostYharonWeaponsBoost);
                     if (item.DamageType == DamageClass.Ranged || item.DamageType == ModContent.GetInstance<RogueDamageClass>())
                         item.damage = (int)(item.damage * 1.5f);
                 }
-                if (CalStatInflationBACK.PostExoAndScalWeapons.Contains(item.type))
+                if (PostExoAndScalWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostExoAndScalWeaponsBoost);
-                if (CalStatInflationBACK.PostShadowspecWeapons.Contains(item.type))
+                if (PostShadowspecWeapons.Contains(item.type))
                     item.damage = (int)(item.damage * PostShadowspecWeaponsBoost);
                 AuricBlance(item);
                 ShadowspecBlance(item);
@@ -604,6 +605,8 @@ namespace CalamityInheritance.System
 
             if (item.type == ModContent.ItemType<PlasmaGrenade>())
                 item.damage = (int)(item.damage * 1.8f);
+            if (item.type == ModContent.ItemType<RogueTypeHammerGalaxySmasher>())
+                item.damage = 540; //925 -> 540
 
             #endregion
         }
@@ -792,8 +795,12 @@ namespace CalamityInheritance.System
                 item.damage = 800;
             if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
                 item.damage = 5800;
-            if (item.type == ModContent.ItemType<Apotheosis>())
-                item.damage = 328;
+            //为啥开数值膨胀之后面板比没开低了？
+            //不对，这jb的是原版神吞书我草
+            //无敌了
+            //if (item.type == ModContent.ItemType<Apotheosis>())
+            if (item.type == ModContent.ItemType<ApotheosisLegacy>())
+                item.damage = 600;
             if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
                 item.damage = 720;
             if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())
@@ -868,6 +875,7 @@ namespace CalamityInheritance.System
         {
             if (CIServerConfig.Instance.CalStatInflationBACK)
             {
+                SetWarthofGods(npc);
                 if (CalamityInheritanceLists.PostMLBoss.Contains(npc.type))
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 1.2f);
@@ -920,6 +928,39 @@ namespace CalamityInheritance.System
                     npc.life = (int)(npc.life * 6.6f);
                     npc.defense = (int)(npc.defense * 1.2f);
                 }
+
+            }
+        }
+
+        private void SetWarthofGods(NPC npc)
+        {
+            //暗神的两个阶段血量与npc独立
+            string noxusP1 = "AvatarRift";
+            string noxusP2 = "AvatarOfEmptiness";
+            string xeroc = "NamelessDeityBoss";
+            //暗神一阶段8500w，看看得了，打一半会自己进二阶段的
+            int noxusP1HP = 85000000;
+            //暗神二阶段2.5亿
+            int noxuseP2HP = (int)(25 * Math.Pow(10, 7));
+            //光神暂时采用7亿的数值
+            int namelessHP = (int)(4 * Math.Pow(10, 8));
+            Mod mod = CalamityInheritance.WrathoftheGods;
+            if (mod is null)
+                return;
+            ModNPC avatarRift = mod.Find<ModNPC>(noxusP1);
+            ModNPC avatarOfEmptiness = mod.Find<ModNPC>(noxusP2);
+            ModNPC namelessDeity = mod.Find<ModNPC>(xeroc);
+            if (npc.type == avatarRift.Type)
+            {
+                npc.lifeMax = npc.life = noxusP1HP;
+            }
+            if (npc.type == avatarOfEmptiness.Type)
+            {
+                npc.lifeMax = npc.life = noxuseP2HP;
+            }
+            if (npc.type == namelessDeity.Type)
+            {
+                npc.lifeMax = npc.life = namelessHP;
             }
         }
     }

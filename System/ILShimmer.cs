@@ -1,10 +1,12 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
+using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.System.DownedBoss;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Aerospec;
+using CalamityMod.Items.Armor.Empyrean;
 using CalamityMod.Items.Weapons.Ranged;
 using Terraria;
 using Terraria.GameContent;
@@ -65,6 +67,19 @@ namespace CalamityInheritance.System
             if (type.SameItem<SamuraiBadge>() || type.SameItem<WarbanneroftheSun>())
             {
                 return !DownedBossSystem.downedProvidence;
+            }
+            //克希洛克与黄天
+            if (type.SameItem<AncientXerocMask>() || type.SameItem<EmpyreanMask>())
+            {
+                return !Condition.DownedMoonLord.IsMet();
+            }
+            if (type.SameItem<AncientXerocPlateMail>() || type.SameItem<EmpyreanCloak>())
+            {
+                return !Condition.DownedMoonLord.IsMet();
+            }
+            if (type.SameItem<AncientXerocCuisses>() || type.SameItem<EmpyreanCuisses>())
+            {
+                return !Condition.DownedMoonLord.IsMet();
             }
             return orig(type);
         }

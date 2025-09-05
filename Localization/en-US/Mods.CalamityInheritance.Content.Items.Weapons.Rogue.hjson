@@ -312,3 +312,13 @@ BouncingBetty: {
 		Stealth strikes explode into a violent blast of fire and shrapnel when it bounces
 		'''
 }
+
+OricGemstone: {
+	DisplayName: Oric Gemstone
+	Tooltip: ""
+}
+
+CursedDaggerLegacy: {
+	Tooltip: ""
+	DisplayName: Cursed Dagger Legacy
+}

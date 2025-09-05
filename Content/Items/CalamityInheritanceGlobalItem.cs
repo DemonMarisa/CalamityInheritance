@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.SummonItems;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
@@ -23,6 +26,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items
@@ -30,6 +34,29 @@ namespace CalamityInheritance.Content.Items
     public partial class CalamityInheritanceGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            bool type = player.HeldItem.type == ModContent.ItemType<R99>();
+            string r99TypeName = ModContent.GetInstance<R99>().GetType().Name;
+            if (item.type is ItemID.ChlorophyteBullet && type)
+            {
+                string path = CIFunction.GetTextValue($"Content.Items.Weapons.Ranged.{r99TypeName}.EnhancedBullet");
+                FuckThisTooltipAndReplace(tooltips, path);
+            }
+        }
+        /// <summary>
+        /// 用替换的方法完全重写Tooltip
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="replacedTextPath"></param>
+        public static void FuckThisTooltipAndReplace(List<TooltipLine> tooltips, string replacedTextPath)
+        {
+            tooltips.RemoveAll((line) => line.Mod == "Terraria" && line.Name != "Tooltip0" && line.Name.StartsWith("Tooltip"));
+            TooltipLine getTooltip = tooltips.FirstOrDefault((x) => x.Name == "Tooltip0" && x.Mod == "Terraria");
+            if (getTooltip is not null)
+                getTooltip.Text = Language.GetTextValue(replacedTextPath);
+        }
         public override void UpdateInventory(Item item, Player player)
         {
             var mplr = player.CIMod();
@@ -761,11 +788,6 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.WormScarf)
             {
                 player.endurance += 0.03f; //回调17%
-            }
-            if (item.type == ItemID.EmpressFlightBooster)
-            {
-                player.CIMod().EmpressBooster = true;
-                
             }
             #endregion
         }

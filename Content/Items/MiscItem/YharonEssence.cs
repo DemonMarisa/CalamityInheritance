@@ -3,12 +3,20 @@ using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
 using CalamityInheritance.Content.Items.Armor.AncientSilva;
 using CalamityInheritance.Content.Items.Armor.AncientTarragon;
+using CalamityInheritance.Content.Items.Armor.AuricTesla;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.SummonItems;
+using CalamityInheritance.Content.Items.TreasureBags;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.Armor.Auric;
+using CalamityMod.Items.Armor.Bloodflare;
+using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -45,6 +53,21 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes)
                 CreateRecipe().
+                    AddIngredient<YharimsCrystalLegendary>().
+                    AddIngredient<AuricTeslaHeadMelee>().
+                    AddIngredient<AuricTeslaHeadRanged>().
+                    AddIngredient<AuricTeslaHeadMagic>().
+                    AddIngredient<AuricTeslaHeadSummon>().
+                    AddIngredient<AuricTeslaHeadRogue>().
+                    AddIngredient<AuricTeslaBodyArmorold>().
+                    AddIngredient<AuricTeslaCuissesold>().
+                    AddIngredient<AuricTeslaRoyalHelm>().
+                    AddIngredient<AuricTeslaHoodedFacemask>().
+                    AddIngredient<AuricTeslaWireHemmedVisage>().
+                    AddIngredient<AuricTeslaSpaceHelmet>().
+                    AddIngredient<AuricTeslaPlumedHelm>().
+                    AddIngredient<AuricTeslaBodyArmor>().
+                    AddIngredient<AuricTeslaCuisses>().
                     AddIngredient<AncientTarragonHelm>().
                     AddIngredient<AncientTarragonBreastplate>().
                     AddIngredient<AncientTarragonLeggings>().
@@ -57,11 +80,8 @@ namespace CalamityInheritance.Content.Items.MiscItem
                     AddIngredient<AncientGodSlayerHelm>().
                     AddIngredient<AncientGodSlayerChestplate>().
                     AddIngredient<AncientGodSlayerLeggings>().
-                    AddIngredient<AuricBarold>(15).
-                    AddIngredient<CalamitousEssence>(15).
-                    DisableDecraft().
                     AddRecipeGroup(CIRecipeGroup.DragonGift).
-                    AddIngredient<YharonSoulFragment>(15).
+                    DisableDecraft().
                     AddTile<DemonshadeTile>().
                     Register();
         }
