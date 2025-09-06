@@ -1,14 +1,13 @@
 ﻿using CalamityMod.Projectiles;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityInheritance.Utilities;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
 {
@@ -16,12 +15,23 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         private float speed = 0f;
+        public int TargetIndex
+        {
+            get => (int)Projectile.ai[1];
+            set => Projectile.ai[1] = value;
+        }
+        public ref float AttackTimer => ref Projectile.ai[0];
+        public bool IsHit
+        {
+            get => Projectile.ai[2] is 1f;
+            set => Projectile.ai[2] = value ? 1f : 0f;
+        }
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -37,111 +47,97 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
             Projectile.localNPCHitCooldown = 10;
             Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
         }
-
+        //byd谁想的残影，我重画了
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, lightColor);
+            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+            Projectile.BaseProjPreDraw(tex, 4, lightColor);
             return false;
         }
-
+        internal float _cacheProgress = 0f;
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return base.GetAlpha(lightColor);
+        }
         public override bool PreAI()
         {
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+            //wtf is this？
+            ref float TrailingDust = ref Projectile.localAI[0];
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             Projectile.spriteDirection = Projectile.direction;
-
-            Projectile.localAI[0] += 1f;
-            if (Projectile.localAI[0] > 4f)
+            TrailingDust += 1f;
+            //常规粒子。
+            if (TrailingDust > 4f)
             {
-                if (Main.rand.NextBool())
+                if (!IsHit)
                 {
-                    int purple = Dust.NewDust(Projectile.position, 1, 1, 70, 0f, 0f, 0, default, 0.5f);
-                    Main.dust[purple].alpha = Projectile.alpha;
-                    Main.dust[purple].velocity *= 0f;
-                    Main.dust[purple].noGravity = true;
+                    if (Main.rand.NextBool())
+                    {
+                        int purple = Dust.NewDust(Projectile.position, 1, 1, DustID.PurpleCrystalShard, 0f, 0f, 0, default, 0.5f);
+                        Main.dust[purple].alpha = Projectile.alpha;
+                        Main.dust[purple].velocity *= 0f;
+                        Main.dust[purple].noGravity = true;
+                    }
+                }
+                else
+                {
+                    if (Projectile.Opacity > 0)
+                        Projectile.Opacity -= 0.5f;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        Vector2 newVec = new(Projectile.Center.X - Projectile.velocity.X / 10f * i, Projectile.Center.Y - Projectile.velocity.Y / 10f * i);
+                        Dust d = Dust.NewDustDirect(newVec, 1, 1, Main.rand.NextBool() ? DustID.PurpleCrystalShard : DustID.BlueCrystalShard);
+                        d.noGravity = true;
+                        d.velocity *= 0f;
+                        d.position = newVec;
+                        d.scale = _cacheProgress;
+                        d.alpha = Projectile.alpha;
+                    }
+                    if (_cacheProgress < 1f)
+                        _cacheProgress += 0.1f;
                 }
             }
 
-            if (Projectile.ai[0] > 0f)
-                Projectile.ai[0]--;
+            if (AttackTimer > 0f)
+                AttackTimer--;
             if (speed == 0f)
                 speed = Projectile.velocity.Length();
-            if (Projectile.penetrate == 1 && Projectile.ai[0] <= 0f)
+            if (AttackTimer <= 0f && IsHit)
             {
-                float inertia = 15f;
-                Vector2 center = Projectile.Center;
-                float maxDistance = 300f;
-                bool homeIn = false;
-
-                int targetIndex = (int)Projectile.ai[1];
-                NPC target = Main.npc[targetIndex];
-                if (target.CanBeChasedBy(Projectile, false))
+                NPC target = Main.npc[TargetIndex];
+                //没有目标重新在300f里面找新目标
+                if(!target.active || !target.chaseable)
+                    target = Projectile.FindClosestTarget(300f);
+                //直接使用追踪即可 
+                if (target is not null)
                 {
-                    float extraDistance = (target.width / 2) + (target.height / 2);
-
-                    bool canHit = true;
-                    if (extraDistance < maxDistance)
-                        canHit = Collision.CanHit(Projectile.Center, 1, 1, target.Center, 1, 1);
-
-                    if (Vector2.Distance(target.Center, Projectile.Center) < (maxDistance + extraDistance) && canHit)
-                    {
-                        center = target.Center;
-                        homeIn = true;
-                    }
+                    Projectile.HomingNPCBetter(target, speed, 15f);
+                    return false;
                 }
-
-                if (!homeIn)
-                {
-                    for (int i = 0; i < Main.maxNPCs; i++)
-                    {
-                        NPC npc = Main.npc[i];
-                        if (npc.CanBeChasedBy(Projectile, false))
-                        {
-                            float extraDistance = (npc.width / 2) + (npc.height / 2);
-
-                            bool canHit = true;
-                            if (extraDistance < maxDistance)
-                                canHit = Collision.CanHit(Projectile.Center, 1, 1, npc.Center, 1, 1);
-
-                            if (Vector2.Distance(npc.Center, Projectile.Center) < (maxDistance + extraDistance) && canHit)
-                            {
-                                center = npc.Center;
-                                homeIn = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (!Projectile.friendly)
-                {
-                    homeIn = false;
-                }
-
-                if (homeIn)
-                {
-                    Vector2 moveDirection = Projectile.SafeDirectionTo(center, Vector2.UnitY);
-                    Projectile.velocity = (Projectile.velocity * inertia + moveDirection * speed) / (inertia + 1f);
-                }
-                return false;
             }
             return true;
         }
+            
+        
 
-        public override bool? CanHitNPC(NPC target) => Projectile.ai[0] <= 0f && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => AttackTimer <= 0f && target.CanBeChasedBy(Projectile);
 
-        public override bool CanHitPvp(Player target) => Projectile.ai[0] <= 0f;
+        public override bool CanHitPvp(Player target) => AttackTimer <= 0f;
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.ai[0] = 10f;
+            AttackTimer = 10f;
             Projectile.damage /= 2;
             if (target.life > 0)
+            {
                 Projectile.ai[1] = target.whoAmI;
+                IsHit = true;
+            }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            Projectile.ai[0] = 10f;
+            AttackTimer = 10f;
             Projectile.damage /= 2;
         }
     }

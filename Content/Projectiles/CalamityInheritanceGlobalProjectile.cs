@@ -50,6 +50,7 @@ namespace CalamityInheritance.Content.Projectiles
         public bool IfR99 = false;
         public int R99TargetIndex = -1;
         public int CurR99Chance = 0;
+        public bool MouseRight = false;
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];

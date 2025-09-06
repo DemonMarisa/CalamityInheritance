@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
-        {
+            {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 240); //对玩家则造成硫磺火
             OnHitEffect();
         }

@@ -23,11 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override string Texture => $"{Generic.WeaponPath}/Typeless/ShizukuItem/ShizukuSword";
         //目前没有作用，我认为应该去掉。
-        public int TargetIndex
-        {
-            get => (int)Projectile.ai[0];
-            set => Projectile.ai[0] = value;
-        }
+        public ref float SwordType => ref Projectile.ai[0];
         public ref float AttackTimer => ref Projectile.ai[1];
         public ref float AttackType => ref Projectile.ai[2];
         public ref float GlowingFadingTimer => ref Projectile.CalamityInheritance().ProjNewAI[1];
@@ -39,6 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         #endregion
         #region Arg
         const float AngleToTargetTime = 20f;
+        public const float ShouldSlash = 1f;
         internal bool DoneGlowing = false;
         #endregion
         #region 顶点绘制使用
@@ -194,6 +191,51 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             {
                 AttackType = IsFading;
                 Projectile.netUpdate = true;
+            }
+            if (SwordType == ShouldSlash)
+            {
+                //在target上与下发射极其迅捷的光刃
+                int j = 0;
+                var source = Projectile.GetSource_FromThis();
+                int type = ModContent.ProjectileType<ShizukuUltraBlade>();
+                int damage = Projectile.damage;
+                float ai0 = target.whoAmI;
+                //下
+                for ( ; j < 3; j++)
+                {
+                    float pPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
+                    float pPosY = Main.MouseWorld.Y + Main.rand.NextFloat(670f, 1080f);
+                    Vector2 newPos = new (pPosX, pPosY);
+                    //速度
+                    Vector2 spd = Main.MouseWorld - newPos;
+                    //水平速度随机度
+                    spd.X += Main.rand.NextFloat(-15f, 16f);
+                    float pSpeed = 24f;
+                    float tarDist =  spd.Length();
+                    //转向量
+                    tarDist = pSpeed / tarDist;
+                    spd.X *= tarDist;
+                    spd.Y *= tarDist;
+                    Projectile.NewProjectile(source, newPos, spd, type, damage, 0f, Owner.whoAmI, ai0);
+                }
+                //上
+                for (; j < 3; j++)
+                {
+                    float pPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
+                    float pPosY = Main.MouseWorld.Y + Main.rand.NextFloat(-670f, -1080f);
+                    Vector2 newPos = new (pPosX, pPosY);
+                    //速度
+                    Vector2 spd = Main.MouseWorld - newPos;
+                    //水平速度随机度
+                    spd.X += Main.rand.NextFloat(-15f, 16f);
+                    float pSpeed = 24f;
+                    float tarDist =  spd.Length();
+                    //转向量
+                    tarDist = pSpeed / tarDist;
+                    spd.X *= tarDist;
+                    spd.Y *= tarDist;
+                    Projectile.NewProjectile(source, newPos, spd, type, damage, 0f, Owner.whoAmI, ai0);
+                }
             }
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }

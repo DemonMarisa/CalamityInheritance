@@ -206,9 +206,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void SpawnNebulaShot(Vector2 targetPos)
         {
             Projectile.netUpdate = true;
-            // Three death lasers (aka "Nebula Shots") swarm the target.
             int laserID = ModContent.ProjectileType<RogueTypeNebulaShot>();
-            int laserDamage = (int)(1.05f * Projectile.damage);
+            int laserDamage = Projectile.damage / 2;
             float laserKB = 2.5f;
             int numLasers = 3;
             for (int i = 0; i < numLasers; ++i)

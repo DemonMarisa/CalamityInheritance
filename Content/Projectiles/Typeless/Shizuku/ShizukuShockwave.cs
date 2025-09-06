@@ -3,9 +3,12 @@ using System.Composition.Hosting.Core;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Projectiles.Boss;
+using Microsoft.Build.Tasks;
+using Microsoft.Build.Tasks.Deployment.ManifestUtilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public float LifeTimeCompletion => 1f - Projectile.timeLeft / (float)120;
         public override string Texture => "CalamityMod/Projectiles/Typeless/ChlorophyteLifePulse";
+        public static string ShockwavePath => "CalamityInheritance/Content/Projectiles/Typeless/Shizuku/Shockwave";
         public Player Owner => Main.player[Projectile.owner];
         public ref float AttackType => ref Projectile.ai[0];
         public override void SetDefaults()
@@ -35,15 +39,38 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D floor = ModContent.Request<Texture2D>(Path("Shockwave" + "4")).Value;
+            Texture2D middle = ModContent.Request<Texture2D>(Path("Shockwave" + "5")).Value;
+            Texture2D top = ModContent.Request<Texture2D>(Path("BloomShockWave")).Value;
+            SpriteBatch draw = Main.spriteBatch;
             Color drawColor = Projectile.GetAlpha(lightColor) * 0.4f;
-            for (int i = 0; i < 8; i++)
+            GraphicsDevice device = Main.graphics.GraphicsDevice;
+            //叠最底层的片 
+            draw.End();
+            //叽里咕噜说什么呢
+            draw.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.AnisotropicClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+            //第一层片
+            ShockwaveDraw(drawColor, floor);
+            //中间层
+            ShockwaveDraw(drawColor, middle);
+            //顶层
+            ShockwaveDraw(drawColor, top);
+            draw.End();
+            draw.Begin();
+            return false;
+        }
+        public void ShockwaveDraw(Color drawColor, Texture2D tex, int drawTime = 8)
+        {
+            for (int i = 0; i < drawTime; i++)
             {
                 Vector2 drawOffset = (MathHelper.TwoPi * i / 8f).ToRotationVector2() * 4f;
-                Vector2 drawPosition = Projectile.Center - Main.screenPosition + drawOffset;
-                Main.EntitySpriteDraw(texture, drawPosition, null, drawColor, 0f, texture.Size() * 0.5f, Projectile.scale, 0, 0);
+                Vector2 drawPos = Projectile.Center - Main.screenPosition + drawOffset;
+                Main.EntitySpriteDraw(tex, drawPos, null, drawColor, 0f, tex.Size() / 2f, Projectile.scale, 0, 0);
             }
-            return false;
+        }
+        public string Path(string name)
+        {
+            return ShockwavePath + "/XJ-" + name;
         }
         public override void AI()
         {

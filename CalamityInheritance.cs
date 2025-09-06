@@ -40,7 +40,7 @@ namespace CalamityInheritance
         //Goozma
         internal Mod Goozma = null;
         //众神
-        internal Mod WrathoftheGods = null;
+        public static Mod WrathoftheGods = null;
         // 获取灾厄音乐
         internal Mod musicMod = null;
         internal bool MusicAvailable => musicMod is not null;
@@ -129,10 +129,12 @@ namespace CalamityInheritance
             FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
-            FlightBarDrawHook.Load();
+            // FlightBarDrawHook.Load();
+            // 干掉伊布法杖中的变性药水
             // 修复星火bug的hook
             PhotovisceratorCalHook.Load();
             // 邪染特判补全
+            
             ElementalExcaliburTaintedDamageMultHook.Load();
             #endregion
         }
@@ -225,10 +227,12 @@ namespace CalamityInheritance
         #endregion
 
         #region Force ModConfig save (Reflection)
+
         internal static void SaveConfig(CalamityConfig cfg)
         {
             // There is no current way to manually save a mod configuration file in tModLoader.
             // The method which saves mod config files is private in ConfigManager, so reflection is used to invoke it.
+            //TODO：8月更新已经提供了保存config的方法，不需要用反射了，看情况最好改一下
             try
             {
                 MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);

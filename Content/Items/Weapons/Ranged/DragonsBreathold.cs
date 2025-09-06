@@ -82,32 +82,37 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             int[] bulletIDs = new int[PelletsPerShot];
             float spreadFactor = 1f;
 
-            // Right click full auto: Randomly intermix three regular bullets and three Dragon's Breath Rounds in a wider spread
             if (player.altFunctionUse == 2)
             {
-                damage = (int)(damage * FullAutoDamageMult);
 
+                damage = (int)(damage * FullAutoDamageMult);
+                //初始化子弹ID数组，全部设定为Type
                 for (int i = 0; i < PelletsPerShot; ++i)
                     bulletIDs[i] = type;
                 int dragonsBreathAdded = 0;
+                //然后，随机替换其中的一半为龙息子弹
                 while (dragonsBreathAdded < PelletsPerShot / 2)
                 {
                     int i = Main.rand.Next(PelletsPerShot);
+                    //如果这个位置被替换，跳过
                     if (bulletIDs[i] == Item.shoot)
                         continue;
+                    //将其改为龙息弹
                     bulletIDs[i] = Item.shoot;
                     ++dragonsBreathAdded;
                 }
 
                 spreadFactor = 1.22f;
             }
-            // Left click first shot: Six regular bullets, low spread
+            //左键第一帧，直接设定六个普通子弹（重设定）
+            //WTF is this?
             else if (player.itemAnimation == player.itemAnimationMax - 1)
             {
                 for (int i = 0; i < PelletsPerShot; ++i)
                     bulletIDs[i] = type;
             }
-            // Left click second shot: Six Dragon's Breath Rounds, very low spread. Extra sound and dust blast.
+            //左键，修改所有龙息弹音效和子弹类型为龙息弹
+            //所以上面是图他妈什么？
             else
             {
                 SoundEngine.PlaySound(SoundID.Item74, position);
@@ -118,7 +123,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 doDust = true;
             }
 
-            // Actually fire the chosen bullets.
+            //最后才是实际发射逻辑
             float angleOffset = Spread * -0.5f * (PelletsPerShot - 1) * spreadFactor;
             for (int i = 0; i < PelletsPerShot; ++i)
             {

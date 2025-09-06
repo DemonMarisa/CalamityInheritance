@@ -37,8 +37,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.mana = 7;
             Item.width = 30;
             Item.height = 34;
-            Item.useTime = 7;
-            Item.useAnimation = 7;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.useTurn = false;
             Item.noMelee = true;

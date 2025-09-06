@@ -212,12 +212,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 float flareSpeed = Main.rand.NextFloat(9f, 13f);
 
-                // Flares never come from straight up, there is always at least an 80 pixel horizontal offset
                 float xDist = Main.rand.NextFloat(80f, 320f) * (Main.rand.NextBool() ? -1f : 1f);
                 float yDist = Main.rand.NextFloat(1200f, 1440f);
                 Vector2 startPoint = targetPos + new Vector2(xDist, -yDist);
 
-                // The flare is somewhat inaccurate based on the size of the target.
                 float xVariance = width / 4f;
                 if (xVariance < 8f)
                     xVariance = 8f;
@@ -228,7 +226,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float yOffset = Main.rand.NextFloat(-yVariance, yVariance);
                 Vector2 offsetTarget = targetPos + new Vector2(xOffset, yOffset);
 
-                // Finalize the velocity vector and make sure it's going at the right speed.
                 Vector2 velocity = offsetTarget - startPoint;
                 velocity.Normalize();
                 velocity *= flareSpeed;

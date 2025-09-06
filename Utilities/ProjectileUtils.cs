@@ -266,7 +266,7 @@ namespace CalamityInheritance.Utilities
             //否则返回射弹原本的额外更新
             else proj.extraUpdates = proj.CalamityInheritance().StoreEU;
         }
-        /// <summary>
+        public static void HomingNPCBetter(this Projectile proj, NPC target, float speed, float inertia, int giveExtraUpdate = 1, float? forceSpeed = null, float? maxAngleChage = null) => HomingNPCBetter(proj, target, 1f, speed, inertia, giveExtraUpdate, forceSpeed, maxAngleChage, true);
         /// 使你的射弹追随你的鼠标。有使其判定鼠标是否在墙体内与给予额外更新的输入
         /// </summary>
         /// <param name="projectile">射弹</param>
@@ -479,7 +479,10 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="tileCounts">你想要的物块数</param>
         /// <returns>返回一个浮点数，这个浮点数为内部代码中物块的距离(tileCounts * 16)</returns>
+        [Obsolete("弃用：建议使用更容易理解的拓展方法")]
         public static float SetDistance(float tileCounts) => tileCounts * 16;
+        public static float ToDistance(this float tileCounts) => tileCounts * 16;
+
         /// <summary>
         /// bro，这真的很多字
         /// 判定是否为近战职业伤害（射弹）。已包括真近战
@@ -512,7 +515,27 @@ namespace CalamityInheritance.Utilities
             // 如果距离小于等于distanceRe像素，则返回true
             return distanceToPlayer <= distanceRe;
         }
-
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = -oldVel.X;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = oldVel.Y;
+        }
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel, Vector2 wantedNewVel)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = wantedNewVel.X;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = wantedNewVel.Y;
+        }
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel, float newVelX, float newVelY)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = newVelX;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = newVelX;
+        }
         /// <summary>
         /// 用于跟踪指定地点的方法
         /// 只会跟踪你传进去的目标

@@ -1,8 +1,5 @@
 using System;
-using CalamityInheritance.Content.BaseClass;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
-using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -76,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
         private void PosAndRot()
         {
             Vector2 ifPlayerControl = Owner.RotatedRelativePoint(Owner.MountedCenter, true);
-            Projectile.Center = new Vector2(ifPlayerControl.X, ifPlayerControl.Y - 45f);
+            Projectile.Center = new Vector2(ifPlayerControl.X, ifPlayerControl.Y - 180f);
             Projectile.spriteDirection = Projectile.direction;
             Projectile.timeLeft = 2;
             Owner.ChangeDir(Projectile.direction);
