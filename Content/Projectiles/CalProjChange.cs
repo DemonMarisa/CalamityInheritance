@@ -12,13 +12,6 @@ namespace CalamityInheritance.Content.Projectiles
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Projectile proj)
         {
-            if (proj.type == ModContent.ProjectileType<StarmageddonStar>())
-                proj.CalamityInheritance().PingAsSplit = true;
-            if (proj.type == ModContent.ProjectileType<StarmageddonStar2>())
-                proj.CalamityInheritance().PingAsSplit = true;
-            if (proj.type == ModContent.ProjectileType<StarmageddonBinaryStarCenter>())
-                proj.CalamityInheritance().PingAsSplit = true;
-
             if(CIServerConfig.Instance.VanillaUnnerf)
             {
                 //回调原版所有悠悠球的无敌帧

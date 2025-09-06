@@ -75,7 +75,6 @@ namespace CalamityInheritance
                 ProjectileID.IchorDart,
                 ProjectileID.RainbowBack,
                 ProjectileID.PhantasmArrow,
-                ProjectileType<StarfleetMK2Gun>(),
                 ProjectileType<DryadsTearSplit>(),
                 ProjectileType<NorfleetCannon>(),
                 ProjectileType<NorfleetComet>(),
@@ -97,7 +96,11 @@ namespace CalamityInheritance
                 //小鸡大炮爆炸，太卡了
                 ProjectileType<ChickenExplosion>(),
                 //脉冲步枪光球，不然无限分裂了
-                ProjectileType<PulseRifleShot>()
+                ProjectileType<PulseRifleShot>(),
+
+                ProjectileType<StarmageddonStar>(),
+                ProjectileType<StarmageddonStar2>(),
+                ProjectileType<StarmageddonBinaryStarCenter>()
             };
             #endregion
             #region 用于金源的buff免疫

@@ -57,7 +57,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void OnKill(int timeLeft)
         {
             int p =Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ChickenNukeExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-            Main.projectile[p].CalamityInheritance().PingAsSplit = true;
             Vector2 dPos = new(Projectile.Center.X, Projectile.Center.Y);
             OnKillDust(CIDustID.DustSmoke, CIDustID.DustTorchNormal, dPos);
         }

@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles
         //禁用超高频武器降低纳米火花生成数量的标记(主要是及高频，太卡了)
         public bool PingReducedNanoFlare = false;
         public int PingBeamMagic = -1;
-        public bool PingAsSplit = false;
+
         public bool PingWhipStrike = false;
         public int StoreEU = -1;
         public bool PingRampartFallenStar = false;
@@ -57,13 +57,6 @@ namespace CalamityInheritance.Content.Projectiles
             CalamityPlayer calPlayer = player.Calamity();
             if (!projectile.npcProj && !projectile.trap && projectile.friendly && projectile.damage > 0)
             {
-                // 元素箭袋的额外AI, ban掉了打表的弹幕
-                //禁止R99射出的子弹使用分裂
-                if (projectile.DamageType == DamageClass.Ranged
-                    && !IfR99
-                    && usPlayer.ElemQuiver && CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x)
-                    && Vector2.Distance(projectile.Center, Main.player[projectile.owner].Center) > 200f)// 他妈200像素，你泰能有200像素的手持弹幕？？？
-                    ElemQuiver(projectile);
 
                 if (projectile.CountsAsClass<RogueDamageClass>())
                 {
@@ -171,68 +164,8 @@ namespace CalamityInheritance.Content.Projectiles
             }
             LevelBoost(projectile, usPlayer);
         }
-        #region 元素箭袋
-        //哈哈，已经变成史山了
-        public static void ElemQuiver(Projectile projectile)
-        {
 
-            //特判: ban掉分裂的弹幕
-            if (projectile.CalamityInheritance().PingAsSplit)
-                return;
-
-            #region 大量转字段
-            //转具有实际意义的字段方便可读……应该。
-            const short StyleSplitOnceShorterLifeTime   = 1;
-            const short StyleSplitOnceSameLifeTime      = 2;
-            const short StyleSplitRandomShorterLifeTime = 3;
-            const short StyleSplitRandomSameLifeTime    = 4;
-            int mode = CIConfig.Instance.ElementalQuiverSplitstyle; 
-
-            //转bool字段，减少下方的代码冗余
-            bool splitOnce    = mode == StyleSplitOnceSameLifeTime   || mode == StyleSplitOnceShorterLifeTime;
-            bool splitRandome = mode == StyleSplitRandomSameLifeTime || mode == StyleSplitRandomShorterLifeTime;
-            //查阅是否超出最大弹幕上限（数组上限）
-            bool checkIfOutIndex = projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200;
-            #endregion
-            //下列是射弹的基础属性
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - MathHelper.PiOver2;
-            int pDamage = (int)(projectile.damage * 0.5f);
-            int i = -1;
-
-            //这个是只分裂一次
-            if (splitOnce && Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate() && checkIfOutIndex)
-            {
-                //-1 -> 1, 用于修改生成方向
-                for (; i < 2; i += 2)
-                {
-                    Vector2 vel = new ((float)(Math.Sin(startAngle) * 8.0 * i), (float)(Math.Cos(startAngle) * 8.0 * i));
-                    int p = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center, vel, projectile.type, pDamage, projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                    if (mode == StyleSplitOnceShorterLifeTime)
-                        Main.projectile[p].timeLeft = 60;
-                    Main.projectile[p].noDropItem = true;
-                    Main.projectile[p].CalamityInheritance().PingAsSplit = true;
-                    Main.projectile[p].netUpdate = true;
-                }
-            }
-            //随机分裂
-            if (splitRandome && checkIfOutIndex && Main.rand.Next(200) > 198)
-            {
-                //同上
-                for (; i < 2; i += 2)
-                {
-                    Vector2 vel = new ((float)(Math.Sin(startAngle) * 8.0 * i), (float)(Math.Cos(startAngle) * 8.0 * i));
-                    int p = Projectile.NewProjectile(Entity.GetSource_None(), projectile.Center, vel, projectile.type, pDamage, projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                    Main.projectile[p].DamageType = DamageClass.Default;
-                    if (mode == StyleSplitRandomShorterLifeTime)
-                        Main.projectile[p].timeLeft = 60;
-                    Main.projectile[p].noDropItem = true;
-                    Main.projectile[p].CalamityInheritance().PingAsSplit = true;
-                    Main.projectile[p].netUpdate = true;
-                }
-            }
-        }
-        #endregion
-        public void LevelBoost(Projectile projectile, CalamityInheritancePlayer cIPlayer)
+        public static void LevelBoost(Projectile projectile, CalamityInheritancePlayer cIPlayer)
         {
             projectile.ArmorPenetration += cIPlayer.rangeLevel * 2;
         }
