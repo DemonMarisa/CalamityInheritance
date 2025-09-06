@@ -26,11 +26,11 @@ namespace CalamityInheritance.NPCs.NorNPC
         {
             NPC.aiStyle = 2;
             AIType = NPCID.TheHungryII;
-            NPC.damage = 32;
+            NPC.damage = 16;
             NPC.width = 30;
             NPC.height = 32;
             NPC.defense = 8;
-            NPC.lifeMax = 120;
+            NPC.lifeMax = 60;
             NPC.knockBackResist = 0.6f;
             AnimationType = NPCID.DemonEye;
             NPC.value = Item.buyPrice(0, 0, 2, 0);
@@ -68,7 +68,7 @@ namespace CalamityInheritance.NPCs.NorNPC
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (spawnInfo.PlayerSafe || !Main.hardMode || spawnInfo.Player.Calamity().ZoneSulphur)
+            if (spawnInfo.PlayerSafe || spawnInfo.Player.Calamity().ZoneSulphur)
             {
                 return 0f;
             }

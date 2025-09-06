@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetStaticDefaults()
         {
-            Item.ResearchUnlockCount = 25;
+            Item.ResearchUnlockCount = 3;
         }
 
         public override void SetDefaults()

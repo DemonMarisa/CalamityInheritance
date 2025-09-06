@@ -217,6 +217,14 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.IceTorch, 10).
                 AddTile(TileID.IceMachine).
                 Register();
+            //魔法箭袋
+            Recipe.Create(ItemID.MagicQuiver).
+                AddIngredient(ModContent.ItemType<BlightedLens>(), 5).
+                AddIngredient(ItemID.EndlessQuiver).
+                AddIngredient(ItemID.PixieDust, 10).
+                AddIngredient(ItemID.SoulofLight, 8).
+                AddTile(TileID.IceMachine).
+                Register();
             #endregion
         }
 

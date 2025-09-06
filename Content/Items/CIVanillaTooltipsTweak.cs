@@ -10,11 +10,16 @@ namespace CalamityInheritance.Content.Items
 {
     public class CIVaniilaTooltipsTweak : GlobalItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public static Player LocalPlayer => Main.LocalPlayer;
         public override bool InstancePerEntity => true;
         //灾厄是硬编码，考虑到和汉化补丁的问题，这里所有的写法都是全部干掉原本的tooltip重写
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+
             if (!CIServerConfig.Instance.VanillaUnnerf)
                 return;
             string General = CIFunction.GetTextValue("Content.Items.VanillaTweaks.");
@@ -116,10 +121,6 @@ namespace CalamityInheritance.Content.Items
                 case ItemID.DiamondRobe:
                     tooltips.FuckThisTooltipAndReplace(General + "DiamondRobe", "80", "15%");
                     break;
-
-                
-
-
             }
             //机械手套：可堆叠，10伤害和12速
             

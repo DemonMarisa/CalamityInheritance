@@ -12,6 +12,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class DragonbreathHoldout : BaseHeldProj, ILocalizedModType
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Ranged/DragonsBreathold";
         public Player Owner => Main.player[Projectile.owner];
@@ -51,24 +55,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 for (int i = 0; i < PelletsPerShot; ++i)
                 {
                     Vector2 rotatedVel = (fireDirection * shootSpeed).RotatedBy(angleOffset);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), GetBulletFirePos(), rotatedVel , bulletIDs[i], damage, kb, Owner.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Vector2.Zero /*GetBulletFirePos()*/, rotatedVel , bulletIDs[i], damage, kb, Owner.whoAmI);
                     angleOffset += Spread * spreadFactor;
                 }
             }
-        }
-        public Vector2 GetBulletFirePos()
-        {
-            var instance = CIConfig.Instance.Debugint;
-            var instance2 = CIConfig.Instance.Debugint2;
-            Vector2 holdoutPosition = Owner.RotatedRelativePoint(Owner.MountedCenter, true);
-            //根据玩家朝向调整偏移量
-            Vector2 adjustedOffset = new(instance, instance2);
-            if (Owner.direction is -1)
-                adjustedOffset.X = -adjustedOffset.X;
-            //获取角度
-            float rotation = Projectile.rotation * Owner.direction;
-            adjustedOffset = adjustedOffset.RotatedBy(rotation);
-            return holdoutPosition + adjustedOffset;
         }
     }
 }

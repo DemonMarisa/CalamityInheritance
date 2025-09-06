@@ -138,6 +138,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         int p = Projectile.NewProjectile(src, firePos, fireDir * shootSpeed, Proj, damage, kb, Projectile.owner);
                         Main.projectile[p].extraUpdates += 4;
                         Main.projectile[p].CalamityInheritance().IfR99 = true;
+                        Main.projectile[p].GetGlobalProjectile<CIElementalQuiverSplit>().canSplit = false;
                     }
                 }
             }
