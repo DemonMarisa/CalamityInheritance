@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
     public class YanmeisKnife : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
 
         public override void SetDefaults()
         {

@@ -1,13 +1,7 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.NPCs.NormalNPCs;
-using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -16,7 +10,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 {
     public class R99HeldProj : ModProjectile, ILocalizedModType
     {

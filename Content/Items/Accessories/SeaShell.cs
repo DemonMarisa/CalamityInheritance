@@ -8,21 +8,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class SeaShell : CIAccessories, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            CIFunction.ShimmetTo<SeaShell>(ItemID.Seashell);
-        }
-        public override void SetDefaults()
-        {
-            Item.defense = 3;
-            Item.width = 20;
-            Item.height = 24;
-            Item.value = CIShopValue.RarityPriceGreen;
-            Item.rare = ItemRarityID.Green;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:44,
+            itemHeight:50,
+            itemRare:ItemRarityID.Green,
+            itemValue:CIShopValue.RarityPriceGreen
+        );
+        public override void ExSSD() => CIFunction.ShimmetTo<SeaShell>(ItemID.Seashell);
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.ignoreWater = true;

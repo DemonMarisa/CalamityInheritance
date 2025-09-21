@@ -14,21 +14,15 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AstralArcanum : CIAccessories, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<Radiance>();
-        }
-        public override void SetDefaults()
-        {
-            Item.defense = 12;
-            Item.width = 26;
-            Item.height = 26;
-            Item.accessory = true;
-            Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemValue:CIShopValue.RarityPriceBlueGreen,
+            itemDefense:12
+        );
+        public override void ExSSD() => Type.ShimmerEach<Radiance>();
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AstralArcanumUIHotkey);
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -13,23 +13,13 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AeroStoneLegacy : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
-            ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<AeroStone>();
-
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 40;
-            Item.height = 50;
-            Item.value = CIShopValue.RarityPriceGreen;
-            Item.rare = ItemRarityID.Green;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:48,
+            itemHeight:50,
+            itemRare:ItemRarityID.Green,
+            itemValue:CIShopValue.RarityPriceGreen
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.CIMod().AeroStonePower = true;

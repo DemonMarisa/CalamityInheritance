@@ -1,5 +1,5 @@
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet;
 using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
 using CalamityMod;

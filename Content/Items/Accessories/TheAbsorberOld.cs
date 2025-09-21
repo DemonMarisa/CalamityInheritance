@@ -14,21 +14,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class TheAbsorberOld : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 20;
-            Item.height = 24;
-            Item.defense = 10;
-            Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ItemRarityID.Red;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:24,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed,
+            itemDefense:10
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer calPlayer = player.Calamity();

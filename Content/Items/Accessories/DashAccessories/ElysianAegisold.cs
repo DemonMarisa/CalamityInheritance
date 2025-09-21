@@ -27,22 +27,19 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const float RamExplosionKnockback = 20f;
 
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:48,
+            itemHeight:42,
+            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemValue:CIShopValue.RarityPriceBlueGreen,
+            itemDefense:18
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<ElysianAegis>();
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ElysianOn;
-        public override void SetDefaults()
-        {
-            Item.width = 48;
-            Item.height = 42;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.defense = 18;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

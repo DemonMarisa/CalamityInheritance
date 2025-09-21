@@ -19,23 +19,19 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class FasterLunarTracers: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:36,
+            itemHeight:32,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed
+        );
 
-        public override void SetStaticDefaults()
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(160, 9f, 2.5f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<TracersCelestial>(false);
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 36;
-            Item.height = 32;
-            Item.value = CalamityGlobalItem.RarityRedBuyPrice;
-            Item.rare = ItemRarityID.Red;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)

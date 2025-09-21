@@ -16,20 +16,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
         internal const float MaxBonus = 0.3f;
         internal const float MaxDistance = 600f;
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:30,
+            itemHeight:30,
+            itemRare:ItemRarityID.Purple,
+            itemValue:CIShopValue.RarityPricePurple
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<WarbanneroftheSun>();
         }
-        public override void SetDefaults()
-        {
-            Item.width = 30;
-            Item.height = 30;
-            Item.value = CIShopValue.RarityPricePurple;
-            Item.rare = ItemRarityID.Purple;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();

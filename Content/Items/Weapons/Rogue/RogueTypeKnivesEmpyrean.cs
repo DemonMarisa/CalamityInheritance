@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     [LegacyName("EmpyreanKnivesLegacyRogue")]
     public class RogueTypeKnivesEmpyrean: RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public static int BaseDamage = 250;
         public override void SetStaticDefaults()
         {

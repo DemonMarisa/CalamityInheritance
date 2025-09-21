@@ -1,67 +1,66 @@
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using MonoMod.Logs;
-using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Utilities;
+using Terraria.Audio;
+using CalamityInheritance.Sounds.Custom;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
+namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 {
-    public class R99ChlorophyteBullet : ModProjectile, ILocalizedModType
+    public class LightAmmoProj: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        private const int Lifetime = 600;
+        public override string Texture => $"{GetType().Namespace}.ScarletLightAmmo".Replace('.', '/');
+        private static readonly Color Alpha = new(1f, 1f, 1f, 0f);
+        public ref float AttackHit => ref Projectile.ai[0];
 
-        public int AttackHit
+        public override void SetStaticDefaults()
         {
-            get => (int)Projectile.ai[0];
-            set => Projectile.ai[0] = value;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
         public override void SetDefaults()
         {
-            Projectile.width = 20;
-            Projectile.height = 2;
-            Projectile.timeLeft = 600;
-            Projectile.tileCollide = false;
-            Projectile.ignoreWater = true;
+            Projectile.width = 4;
+            Projectile.height = 4;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.extraUpdates = 2;
+            Projectile.MaxUpdates = 5;
+            Projectile.timeLeft = Lifetime;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.penetrate = 1;
+            Projectile.localNPCHitCooldown = 1;
         }
+
         public override void AI()
         {
-            Projectile.light = 1f;
-            Projectile.rotation = Projectile.velocity.ToRotation();
-            Projectile.localAI[0]++;
-            if (Projectile.alpha > 0)
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+            Projectile.spriteDirection = Projectile.direction;
+
+            Projectile.localAI[0] += 1f;
+            if (Projectile.localAI[0] > 4f)
             {
-                Projectile.alpha -= 50;
-            }
-            if (Projectile.alpha < 170)
-            {
-                if (Projectile.localAI[0] > 1f)
+                if (Main.rand.NextBool())
                 {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        float x2 = Projectile.Center.X - Projectile.velocity.X / 10f * i;
-                        float y2 = Projectile.Center.Y - Projectile.velocity.Y / 10f * i;
-                        Vector2 newVec = new(x2, y2);
-                        int dust = Dust.NewDust(newVec, 1, 1, DustID.CursedTorch);
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].velocity *= 0f;
-                        Main.dust[dust].position = newVec;
-                        Main.dust[dust].alpha = Projectile.alpha;
-                    }
+                    float scale = Main.rand.NextFloat(0.6f, 1.6f);
+                    int dustID = Dust.NewDust(Projectile.Center, 1, 1, DustID.PlatinumCoin);
+                    Main.dust[dustID].position = Projectile.Center;
+                    Main.dust[dustID].noGravity = true;
+                    Main.dust[dustID].scale = scale;
+                    float angleDeviation = 0.08f;
+                    float angle = Main.rand.NextFloat(-angleDeviation, angleDeviation);
+                    Vector2 sprayVelocity = Projectile.velocity.RotatedBy(angle) * 0.6f;
+                    Main.dust[dustID].velocity = sprayVelocity;
                 }
             }
-            NPC target = Projectile.FindClosestTarget(1800f);
-            if (target != null)
-                Projectile.HomingNPCBetter(target, 1800f, 18f, 20f, ignoreDist: true);
         }
+
+        public override Color? GetAlpha(Color lightColor) => Alpha;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             modifiers.DefenseEffectiveness *= 0f;
@@ -80,43 +79,42 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
                 {
                     if (Main.rand.Next(15) - Projectile.CalamityInheritance().CurR99Chance <= 0)
                     {
-                        modifiers.FinalDamage *= 600;
+                        modifiers.FinalDamage *= 50f;
                         Projectile.CalamityInheritance().CurR99Chance = 0;
                     }
                     else
                         Projectile.CalamityInheritance().CurR99Chance += 1;
                 }
-            } 
+            }   
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(target, hit, damageDone);
             Player player = Main.player[Projectile.owner];
             if (player.ActiveItem().type == ModContent.ItemType<R99>())
             {
                 //处理声音
-                //大残！
+                //大残
                 SoundStyle[] R99HitShield =
                 [
                     CISoundMenu.R99ShieldHit1,
                     CISoundMenu.R99ShieldHit2
 
                 ];
-                //碎甲！！
-                SoundStyle[] R99ShieldCracked =
-                [
-                    CISoundMenu.R99ShieldCracked1,
-                    CISoundMenu.R99ShieldCracked2,
-                    CISoundMenu.R99ShieldCracked3,
-                    CISoundMenu.R99ShieldCracked4
-                ];
-                //一丝！！！
+                //一丝
                 SoundStyle[] R99FleshHit =
                 [
                     CISoundMenu.R99FleshHit1,
                     CISoundMenu.R99FleshHit2,
                     CISoundMenu.R99FleshHit3,
                     CISoundMenu.R99FleshHit4
+                ];
+                //碎甲
+                SoundStyle[] R99ShieldCracked =
+                [
+                    CISoundMenu.R99ShieldCracked1,
+                    CISoundMenu.R99ShieldCracked2,
+                    CISoundMenu.R99ShieldCracked3,
+                    CISoundMenu.R99ShieldCracked4
                 ];
                 SoundStyle crackedShield = Utils.SelectRandom(Main.rand, R99ShieldCracked);
                 SoundStyle hitSoundShield = Utils.SelectRandom(Main.rand, R99HitShield);
@@ -127,7 +125,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
                 if (AttackHit == 0f)
                 {
                     for (int i = 0; i < 2; i++)
-                        Dust.NewDust(Projectile.position, 10, 10, shootedTime < R99.CrackedShieldTime ? DustID.CursedTorch: DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
+                        Dust.NewDust(Projectile.position, 10, 10, shootedTime < R99.CrackedShieldTime ? DustID.PlatinumCoin : DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
 
                     AttackHit = 1;
                 }

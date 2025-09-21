@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class BouncingBetty : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public const int BaseDamage = 52;
         public override void SetStaticDefaults()
         {

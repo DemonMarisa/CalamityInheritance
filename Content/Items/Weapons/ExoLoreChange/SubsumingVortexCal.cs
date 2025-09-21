@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Magic.SubsumingVortexChange") : null;
+            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Magic.SubsumingVortexChange") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));
         }
         public override Vector2? HoldoutOffset(int type)

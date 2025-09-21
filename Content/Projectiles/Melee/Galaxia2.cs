@@ -106,6 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Player player = Main.player[Projectile.owner];
             CalamityPlayer modPlayer = player.Calamity();
+            //创建列表映射
             bool astral = modPlayer.ZoneAstral;
             bool jungle = player.ZoneJungle;
             bool snow = player.ZoneSnow;

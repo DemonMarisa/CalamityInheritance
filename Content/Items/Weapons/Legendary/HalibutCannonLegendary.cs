@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         //待办事项：1.与炼狱模组的匹配，2.数值平衡
         //注：大比目鱼的进化设定上只有数值与弹丸数，我们不做其他的升级了
         public const int BaseDamage = 1;
-        public static string TextRoute => $"{Generic.GetWeaponLocal}.Ranged.HalibutCannonLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}.Ranged.HalibutCannonLegendary";
         internal bool IsDownedWallOfFlesh = Main.hardMode;
         internal bool IsDownedMoonLord = Condition.DownedMoonLord.IsMet();
         internal bool IsDownedPostYharonBoss = (CIDownedBossSystem.DownedLegacyScal || DownedBossSystem.downedCalamitas) && DownedBossSystem.downedExoMechs;

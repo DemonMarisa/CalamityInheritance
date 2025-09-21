@@ -8,20 +8,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ShrineForest: CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<TrinketofChi>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 34;
-            Item.height = 32;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = CIShopValue.RarityPriceOrange;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:34,
+            itemHeight:32,
+            itemRare:ItemRarityID.Orange,
+            itemValue:CIShopValue.RarityPriceOrange
+        );
+        public override void ExSSD() => Type.ShimmerEach<TrinketofChi>();
         public override void UpdateAccessory(Player player, bool hideVisual) => player.CIMod().SForest = true;
     }
 }

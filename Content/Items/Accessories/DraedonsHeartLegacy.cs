@@ -21,22 +21,19 @@ namespace CalamityInheritance.Content.Items.Accessories
         //因为就嘉登心这个时期的武器就算-50%伤害也能打出比原灾更高的dps
         public static readonly float DamageReduceRatio = 0.5f; //50%伤害的降低
         public static readonly int LifeRegenSpeed = 16; //8HP/s生命恢复
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ModContent.RarityType<PureRed>(),
+            itemValue:CIShopValue.RarityPricePureRed,
+            itemDefense:48
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
             Type.ShimmerEach<DraedonsHeart>();
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = Item.height = 26;
-            Item.accessory = true;
-            Item.defense = 48;
-            Item.rare = ModContent.RarityType<PureRed>();
-            Item.value = CIShopValue.RarityPricePureRed;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer calPlayer = player.Calamity();

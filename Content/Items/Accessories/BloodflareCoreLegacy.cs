@@ -10,22 +10,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class BloodflareCoreLegacy : CIAccessories, ILocalizedModType
     {
-
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<BloodflareCore>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemValue:CIShopValue.RarityPriceBlueGreen
+        );
+        public override void ExSSD() => Type.ShimmerEach<BloodflareCore>();
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CIMod();

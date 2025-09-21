@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class BloodyRupture : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee.Shortsword";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.33f;

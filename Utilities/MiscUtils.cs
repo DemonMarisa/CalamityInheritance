@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -178,7 +180,40 @@ namespace CalamityInheritance.Utilities
             return (int)player.GetDamage(damageclass).ApplyTo(baseDamage);
         }
         public static bool Same(this Item item, int itemID) => item.type == itemID;
-        public static bool Same<T>(this Item item) where T : ModItem => Same(item, ModContent.ItemType<T>());
-        
+        public static bool Same<T>(this Item item) where T :ModItem => Same(item, ModContent.ItemType<T>());
+        public static bool ActiveWrath()
+        {
+            Mod mod = ModLoader.GetMod("NoxusBoss");
+            if (mod != null && CIServerConfig.Instance.CalStatInflationBACK)
+                return true;
+            else return false;
+        }
+        public static List<string> GetNamespaceByClassName(this string targetClassName)
+        {
+            List<string> result = [];
+            //加载所需dll文件
+            var dll = AppDomain.CurrentDomain.GetAssemblies();
+            //遍历所有加载的dll类名
+            foreach (var type in dll)
+            {
+                try
+                {
+                    foreach (Type theType in type.GetTypes())
+                        if (theType.IsClass && string.Equals(theType.Name, targetClassName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            string @namespace = theType.Namespace ?? "NoNameSpace";
+                            string fullTypeName = $"{@namespace}.{theType.Name}";
+                            result.Add(fullTypeName);
+                        }
+                }
+                catch (Exception ex)
+                {
+                    ModContent.GetInstance<CalamityInheritance>().Logger.Warn($"Skipped assembly:{type.FullName}: {ex.Message}");
+                }
+            }
+            if(result.Count is 0)
+                ModContent.GetInstance<CalamityInheritance>().Logger.Warn($"NoClassName:{targetClassName}");
+            return result;
+        }
     }
 }

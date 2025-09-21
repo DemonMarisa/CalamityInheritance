@@ -19,21 +19,19 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         public static string TextPath => $"Mods.CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:28,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue,
+            itemDefense:30
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<CalamityMod.Items.Accessories.ElementalQuiver>(false);
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().IsWearingElemQuiverCal;
-        public override void SetDefaults()
-        {
-            Item.width = 28;
-            Item.height = 32;
-            Item.accessory = true;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.defense = 30;
-        }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             bool allowSplit = CIConfig.Instance.ElementalQuiversplit;

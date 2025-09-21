@@ -8,6 +8,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories.Wings;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -15,22 +16,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class DrewsWings : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:22,
+            itemHeight:20,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(361, 11.5f, 2.9f);
             Type.ShimmerEach<WingsofRebirth>(false);
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 22;
-            Item.height = 20;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)

@@ -11,25 +11,19 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AncientCotBG: CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = Item.height = 48;
-            Item.accessory = true;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-        }
 
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:48,
+            itemHeight:48,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.AncientCotbg = true;
         }
-
         public override void AddRecipes()
         {   
             //Scarlet:旧血核与旧血契的加入已经没有必要微光转化了

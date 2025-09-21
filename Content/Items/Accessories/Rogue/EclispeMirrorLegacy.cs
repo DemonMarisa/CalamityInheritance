@@ -14,18 +14,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
     public class EclispeMirrorLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 38;
-            Item.height = 38;
-            Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:38,
+            itemHeight:38,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CIMod();

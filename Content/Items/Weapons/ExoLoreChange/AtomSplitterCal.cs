@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Rogue.AtomChange") : null;
+            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Rogue.AtomChange") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));   
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class LumiStriker: RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle ThrowSound2 = new("CalamityMod/Sounds/Item/LanceofDestinyStrong") { Volume = 0.4f, PitchVariance = 0.3f };
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

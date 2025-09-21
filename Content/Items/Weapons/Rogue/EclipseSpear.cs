@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class EclipseSpear: RogueWeapon , ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

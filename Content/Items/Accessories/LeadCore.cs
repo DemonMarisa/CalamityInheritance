@@ -7,20 +7,13 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class LeadCore : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.rare = ItemRarityID.Pink;
-            Item.value = CIShopValue.RarityPricePink;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ItemRarityID.Pink,
+            itemValue:CIShopValue.RarityPricePink
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.buffImmune[ModContent.BuffType<Irradiated>()] = true;

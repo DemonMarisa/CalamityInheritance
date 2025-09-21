@@ -16,22 +16,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class AureateBoosterRevamped : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:54,
+            itemHeight:26,
+            itemRare:ItemRarityID.Lime,
+            itemValue:CIShopValue.RarityPriceLime
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(120, 8f, 1.5f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<AureateBooster>(false);
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 54;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPriceLime;
-            Item.rare = ItemRarityID.Lime;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if((player.armor[0].type == ModContent.ItemType<ReaverCapRevamped>()        ||

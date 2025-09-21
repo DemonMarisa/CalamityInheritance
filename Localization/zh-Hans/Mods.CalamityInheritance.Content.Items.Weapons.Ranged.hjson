@@ -629,3 +629,8 @@ PumplerLegacy: {
 		右键以发射爆炸南瓜
 		'''
 }
+
+PumplerLegacy: {
+	// Tooltip: ""
+	// DisplayName: Pumpler Legacy
+}

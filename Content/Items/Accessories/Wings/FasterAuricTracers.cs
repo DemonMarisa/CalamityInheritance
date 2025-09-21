@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -23,23 +24,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class FasterAuricTracers: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:36,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(280, 12f, 3f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<TracersSeraph>(false);
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 36;
-            Item.height = 32;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<Violet>();
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.controlJump && player.wingTime > 0f && player.jump == 0 && player.velocity.Y != 0f && !hideVisual)

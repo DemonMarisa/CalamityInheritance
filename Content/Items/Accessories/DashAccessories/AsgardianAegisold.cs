@@ -24,19 +24,14 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const int ShieldSlamIFrames = 12;
         public const int RamExplosionDamage = 1000;
         public const float RamExplosionKnockback = 20f;
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 60;
-            Item.height = 54;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 32;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:60,
+            itemHeight:54,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue,
+            itemDefense:32
+        );
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().AegisOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

@@ -11,21 +11,15 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class LeviathanAmbergrisLegacy : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<LeviathanAmbergris>();
-        }
-        public override void SetDefaults()
-        {
-            Item.defense = 20;
-            Item.width = 20;
-            Item.height = 22;
-            Item.value = CIShopValue.RarityPriceLime;
-            Item.accessory = true;
-            Item.rare = ItemRarityID.Lime;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:22,
+            itemRare:ItemRarityID.Lime,
+            itemValue:CIShopValue.RarityPriceLime,
+            itemDefense:20
+        );
+        public override void ExSSD() => Type.ShimmerEach<LeviathanAmbergris>();
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var source = player.GetSource_Accessory(Item);

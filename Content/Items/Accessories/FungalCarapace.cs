@@ -7,21 +7,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class FungalCarapace : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.defense = 6;
-            Item.width = 20;
-            Item.height = 24;
-            Item.value = CIShopValue.RarityPriceGreen;
-            Item.rare = ItemRarityID.Green;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:24,
+            itemRare:ItemRarityID.Green,
+            itemValue:CIShopValue.RarityPriceGreen,
+            itemDefense:6
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();

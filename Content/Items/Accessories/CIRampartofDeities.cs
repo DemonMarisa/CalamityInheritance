@@ -13,21 +13,15 @@ namespace CalamityInheritance.Content.Items.Accessories
     [AutoloadEquip(EquipType.Shield)]
     public class CIRampartofDeities : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<RampartofDeities>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 64;
-            Item.height = 62;
-            Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.defense = 18;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:64,
+            itemHeight:62,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet,
+            itemDefense:18
+        );
+        public override void ExSSD() => Type.ShimmerEach<RampartofDeities>();
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().rampartOfDeities;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

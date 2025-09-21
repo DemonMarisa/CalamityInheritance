@@ -13,20 +13,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
     public class DoubleSonYharon: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Summon";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:28,
+            itemHeight:28,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet,
+            itemDefense:5
+        );
+        public override void ExSSD()
         {
             Type.ShimmerEach<AuricSoulArtifact>();
         }
-        public override void SetDefaults()
-        {
-            Item.width = 28;
-            Item.height = 28;
-            Item.defense = 5;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.value = CIShopValue.RarityPriceCatalystViolet;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CIMod();

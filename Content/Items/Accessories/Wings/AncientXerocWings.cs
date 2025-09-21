@@ -17,23 +17,18 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class AncientXerocWings: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:22,
+            itemHeight:20,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 9f, 2.5f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<ExodusWings>(false);
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 22;
-            Item.height = 20;
-            Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ItemRarityID.Red;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modplayer1 = player.CIMod();

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
     public class GoldenGun : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

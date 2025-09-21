@@ -15,19 +15,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class AncientAeroWings : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:22,
+            itemHeight:32,
+            itemRare:ItemRarityID.Orange,
+            itemValue:CIShopValue.RarityPriceOrange
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(80, 6.5f, 1f);
             Type.ShimmerEach<SkylineWings>(false);
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 22;
-            Item.height = 32;
-            Item.value = CIShopValue.RarityPriceOrange;
-            Item.rare = ItemRarityID.Orange;
-            Item.accessory = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

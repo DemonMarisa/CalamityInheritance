@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class RavagerLegendary: CIMagic, ILocalizedModType
     {
         
-        public static string TextRoute => $"{Generic.GetWeaponLocal}.Magic.RavagerLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}.Magic.RavagerLegendary";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
             // 以下，用于比较复杂的计算
             int boostPercent = (int)((LegendaryBuff() + Generic.GenericLegendBuff()));
             string update = this.GetLocalization("LegendaryScaling").Format(

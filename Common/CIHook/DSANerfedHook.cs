@@ -20,13 +20,13 @@ namespace CalamityInheritance.Common.CIHook
         public static void FuckUpdate_AccHook(DimensionalSoulArtifact self, Player player, bool hideVisual)
         {
             Mod mod = CalamityInheritance.WrathoftheGods;
-            if (mod is null)
+            if (mod != null && CIServerConfig.Instance.CalStatInflationBACK)
             {
-                self.UpdateAccessory(player, hideVisual);
+                
             }
-            else if (CIServerConfig.Instance.CalStatInflationBACK)
+            else
             {
-                player.CIMod().NerfedDSA = true;
+                player.Calamity().dArtifact = true;
             }
         }
     }

@@ -83,4 +83,9 @@ YanmeisKnife: {
 ShizukuSword: {
 	DisplayName: Shizuku Sword
 	Tooltip: ""
+	General: ""
+	Evil: ""
+	Hallowed: ""
+	TripEvent: ""
+	Pillar: ""
 }

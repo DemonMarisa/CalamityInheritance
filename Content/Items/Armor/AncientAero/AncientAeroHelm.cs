@@ -13,18 +13,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
     [AutoloadEquip(EquipType.Head)]
     public class AncientAeroHelm :CIArmor, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
         public override void SetDefaults()
         {
-            Item.width = 22;
-            Item.height = 20;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = CIShopValue.RarityPriceOrange;
-            Item.defense = 5;
+             Item.width = 22;
+             Item.height = 20;
+             Item.rare = ItemRarityID.Orange;
+             Item.value = CIShopValue.RarityPriceOrange;
+             Item.defense = 5;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientAeroArmor>() && legs.type == ModContent.ItemType<AncientAeroLeggings>();
         public override void UpdateEquip(Player p)

@@ -24,6 +24,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using CalamityInheritance.System.Configs;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -74,23 +75,20 @@ namespace CalamityInheritance.Content.Items.Accessories
                 return result;
             }
         }
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:20,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue,
+            itemDefense:30
+        );
+        public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 30));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Item.ResearchUnlockCount = 1;
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().sponge;
-        public override void SetDefaults()
-        {
-            Item.width = 20;
-            Item.height= 20;
-            Item.defense = 30; //转移至基础属性
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<DarkBlue>();
-        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

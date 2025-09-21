@@ -9,20 +9,13 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AstralBulwark : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPriceCyan;
-            Item.rare = ItemRarityID.Cyan;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ItemRarityID.Cyan,
+            itemValue:CIShopValue.RarityPriceCyan
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();

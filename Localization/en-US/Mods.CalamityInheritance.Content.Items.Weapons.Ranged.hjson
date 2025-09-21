@@ -611,3 +611,8 @@ PumplerLegacy: {
 		Right click to fire an explosive pumpkin
 		'''
 }
+
+PumplerLegacy: {
+	Tooltip: ""
+	DisplayName: Pumpler Legacy
+}
