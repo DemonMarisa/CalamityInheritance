@@ -82,8 +82,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 Item.UseSound = leftClick;
             }
-            if(player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] < 1)
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, ai0);
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] < 1)
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, ai0);
             return false;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)

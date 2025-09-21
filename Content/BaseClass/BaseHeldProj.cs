@@ -76,9 +76,8 @@ namespace CalamityInheritance.Content.BaseClass
                     DelCondition();
                 }
             }
-
-            // 确保不会使用的时候消失
             Projectile.timeLeft = 2;
+            // 确保不会使用的时候消失
         }
         public virtual void UpdatePlayerVisuals(Player player, Vector2 playerHandPos)
         {
@@ -149,7 +148,7 @@ namespace CalamityInheritance.Content.BaseClass
             Vector2 rotationPoint = texture.Size() * 0.5f;
             SpriteEffects flipSprite = (Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-            Main.spriteBatch.Draw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite, default);
+            Main.spriteBatch.Draw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation + MathHelper.ToRadians(7), rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite, default);
             MorePreDraw(ref lightColor);
             return false;
         }

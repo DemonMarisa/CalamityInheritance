@@ -39,32 +39,26 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override bool PreKill(int timeLeft)
         {
-            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] > 0)
-                Main.NewText($"先处死手持射弹");
+            Main.NewText($"ShizukuSwordHoldout被删除，channel状态：{Owner.channel}，帧数：{Main.GameUpdateCount}");
+            Main.NewText($"其余状态：noItems：{Owner.noItems}，CCed：{Owner.CCed}，时间：{Projectile.timeLeft}");
             return base.PreKill(timeLeft);
+        }
+        public override void DelCondition()
+        {
+
         }
         public override void HoldoutAI()
         {
             GlowingFadingTimer += 1f;
             if (GlowingFadingTimer > 20f)
                 GlowingFadingTimer = 20f;
-            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] == 0)
-            {
-                Projectile star = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Main.MouseWorld, Projectile.velocity, ModContent.ProjectileType<ShizukuStarHoldout>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI);
-
-            }
-            NPC target = Owner.FindClosestTargetPlayer(1800f);
-            // if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarMark>()] < 1)
-            // {
-            //     if (target != null)
-            //     {
-            //         Projectile mark = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<ShizukuStarMark>(), 0, 0f, Owner.whoAmI, target.whoAmI);
-            //         mark.originalDamage = Projectile.damage;
-            //     }
-            // }
         }
         public SpriteBatch spriteBatch { get => Main.spriteBatch; }
         public GraphicsDevice graphicsDevice { get => Main.graphics.GraphicsDevice; }
+        public override bool ExtraPreDraw(ref Color lightColor)
+        {
+            return base.ExtraPreDraw(ref lightColor);
+        }
         public override void MorePreDraw(ref Color lightColor)
         {
             #region 在基础弹幕上层绘制发光
@@ -87,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             //进行渐变
             Color setColor = Color.White;
             setColor.A = (byte)(255 / 20f * GlowingFadingTimer);
-            Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor, glowRotation, glowRotationPoint, Projectile.scale * player.gravDir * 0.5f, glowSpriteFlip, 0f);
+            Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor, glowRotation + MathHelper.ToRadians(7), glowRotationPoint, Projectile.scale * player.gravDir * 0.5f, glowSpriteFlip, 0f);
             #endregion
             spriteBatch.End();
             spriteBatch.Begin();

@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             Player Owner = Main.player[Projectile.owner];
 
             Vector2 armPosition = Owner.RotatedRelativePoint(Owner.MountedCenter, true);
-            var source = Projectile.GetSource_FromThis(); ;
+            var source = Projectile.GetSource_FromThis();
             firedely--;
             float baseAngle = Projectile.velocity.ToRotation();
             int numberOfProjectiles = 8;

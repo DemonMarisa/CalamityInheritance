@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Item.rare = ModContent.RarityType<ShizukuAqua>();
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ShizukuStar>();
-            // Item.UseSound = SoundID.Item82;
+            Item.channel = true;
             Item.shootSpeed = 12f;
         }
         public override bool AltFunctionUse(Player player)
@@ -57,19 +57,19 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         public override bool CanUseItem(Player player)
         {
             ShizukuSwordType shizukuSwordType = player.CIMod().ShizukuSwordStyle;
-            if (shizukuSwordType is ShizukuSwordType.TargetSpawn)
+            switch (shizukuSwordType)
             {
-                Item.channel = true;
-                Item.noUseGraphic = true;
-                return true;
+                case ShizukuSwordType.ArkoftheCosmos:
+                    Item.channel = false;
+                    Item.noUseGraphic = false;
+                    return true;
+                case ShizukuSwordType.TargetSpawn:
+                    Item.channel = true;
+                    Item.noUseGraphic = true;
+                    return true;
+                default:
+                    return false;
             }
-            if (shizukuSwordType is ShizukuSwordType.ArkoftheCosmos)
-            {
-                Item.channel = false;
-                Item.noUseGraphic = false;
-                return true;
-            }
-            return false;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -131,8 +131,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         private static void ShootTarget(CalamityInheritancePlayer modPlayer, CalamityPlayer calPlayer, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.IsOwnedProj<ShizukuSwordHoldout>())
+            if  (player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] < 1)
                 Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ShizukuSwordHoldout>(), damage, knockback, player.whoAmI);
+            if  (player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] < 1)
+                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ShizukuStarHoldout>(), damage, knockback, player.whoAmI);
+
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

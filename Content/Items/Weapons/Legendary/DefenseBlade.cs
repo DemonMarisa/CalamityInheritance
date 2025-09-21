@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Core;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
@@ -8,7 +7,6 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
