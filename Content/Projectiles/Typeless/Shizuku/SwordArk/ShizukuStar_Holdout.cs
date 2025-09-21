@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -55,8 +56,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             AttackTimer++;
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
-            if (Owner.channel && !Owner.noItems && !Owner.CCed)
-                Projectile.timeLeft = 2;
+            if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ModContent.ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] > 0)
+                Projectile.timeLeft = 3;
             //控制射弹运动，在鼠标指针位置更新
             //这里射弹运动都是通过velocity实现的
             // DrawDynamicArc();
@@ -72,9 +73,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             bool notActiveTarget = Target != null && Target.active && Target.chaseable && !Target.dontTakeDamage;
             if (notActiveTarget)
                 drawCenter = Target.Center;
+
+            ShootDarkStar(drawCenter);
             // ShootDarkStar(drawCenter);
             ShootStarTimer += 1f;
-            
         }
         public override bool PreKill(int timeLeft)
         {

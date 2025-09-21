@@ -604,15 +604,6 @@ PaintballBlaster: {
 }
 
 PumplerLegacy: {
-	DisplayName: Pumpler Legacy
-	Tooltip:
-		'''
-		33% chance to not consume ammo
-		Right click to fire an explosive pumpkin
-		'''
-}
-
-PumplerLegacy: {
 	Tooltip: ""
 	DisplayName: Pumpler Legacy
 }

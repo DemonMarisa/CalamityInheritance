@@ -56,6 +56,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         public override bool CanUseItem(Player player)
         {
+            // 问题出在这里，二模式的情况下必须要按住右键射弹才不会凭空消失
+            // 但是就算按住右键，channel也不会是true
             ShizukuSwordType shizukuSwordType = player.CIMod().ShizukuSwordStyle;
             if (shizukuSwordType is ShizukuSwordType.TargetSpawn)
             {

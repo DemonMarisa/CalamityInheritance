@@ -412,7 +412,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public void LookAtTarget(Player player, float rotationSpeed)
         {
             NPC.rotation = NPC.rotation.AngleLerp(NPC.AngleTo(player.Center) - MathHelper.PiOver2, rotationSpeed);
-            NPC.velocity =NPC.velocity.RotatedBy
         }
         #endregion
         #region 发射激光

@@ -622,15 +622,6 @@ PaintballBlaster: {
 }
 
 PumplerLegacy: {
-	DisplayName: 气泵枪[Legacy]
-	Tooltip:
-		'''
-		33%几率不消耗弹药
-		右键以发射爆炸南瓜
-		'''
-}
-
-PumplerLegacy: {
 	// Tooltip: ""
 	// DisplayName: Pumpler Legacy
 }
