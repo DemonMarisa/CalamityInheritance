@@ -22,8 +22,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
     {
         public Player Owner => Projectile.GetProjOwner();
         public ref float AttackTimer => ref Projectile.ai[0];
-        public ref float ShootStarTimer => ref Projectile.ai[1];
         public ref float SizeTimer => ref Projectile.ai[2];
+        public int FireDelay = 0;
+        public int ShootStarTimer = 0;
         private bool _isGrowing = true;
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override string Texture => GenericProjRoute.InvisProjRoute;
@@ -31,6 +32,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 
         public override void SetStaticDefaults()
         {
+            ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
+            ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
         }
         public override void SetDefaults()
         {
@@ -45,22 +48,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.localNPCHitCooldown = 60;
             Projectile.timeLeft = 40000;
         }
-        public override void OnSpawn(IEntitySource source)
-        {
-            // _lastAnchorPos = Projectile.Center;
-            // _rotCenter = Projectile.Center;
-        }
         public override void AI()
         {
-            NPC Target = Projectile.FindClosestTarget(1800f);
             AttackTimer++;
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
             if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ModContent.ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] > 0)
                 Projectile.timeLeft = 3;
             //控制射弹运动，在鼠标指针位置更新
-            //这里射弹运动都是通过velocity实现的
-            // DrawDynamicArc();
             Vector2 topHead = new(Main.MouseWorld.X, Main.MouseWorld.Y);
             Vector2 distance = topHead - Projectile.Center;
             Vector2 homeDirection = distance.SafeNormalize(Vector2.UnitY);
@@ -68,32 +63,39 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.velocity = newVelocity;
             Projectile.velocity *= 1 + 1.0f / 100;
             DrawMetaball(sizeStruct);
-            //目前排查到的问题是检索敌怪之后固定在181帧后处死自己
-            Vector2 drawCenter = Main.MouseWorld;
-            bool notActiveTarget = Target != null && Target.active && Target.chaseable && !Target.dontTakeDamage;
-            if (notActiveTarget)
-                drawCenter = Target.Center;
-
-            ShootDarkStar(drawCenter);
-            // ShootDarkStar(drawCenter);
-            ShootStarTimer += 1f;
+            ShootDarkStar();
         }
+
+        private void UpdateOwner()
+        {
+            Owner.itemTime = 2;
+            Owner.itemAnimation = 2;
+            Owner.channel = true;
+        }
+
         public override bool PreKill(int timeLeft)
         {
             Main.NewText($"存续时间：{AttackTimer}", Color.SkyBlue);
             Main.NewText($"拥有的星数量：{Owner.ownedProjectileCounts[Type]}个");
+            Main.NewText($"武器状态：{Owner.CIMod().ShizukuSwordStyle}");
             return base.PreKill(timeLeft);
         }
-        private void ShootDarkStar(Vector2 Target)
+        private void ShootDarkStar()
         {
             //准备发射射弹，这个算很简单了。
-            Vector2 dire = (Target- Projectile.Center).SafeNormalize(Vector2.UnitX);
-            if (ShootStarTimer > 60)
+            float baseAngle = Projectile.velocity.ToRotation();
+            float count = 8;
+            float spreadAngle = MathHelper.TwoPi;
+            float step = spreadAngle / count;
+            float radStart = 22.5f + 45 * Main.rand.Next(0, 9);
+            float curAngle = baseAngle - spreadAngle / 2 + (step * ShootStarTimer) + MathHelper.ToRadians(radStart);
+            Vector2 dire = new((float)Math.Cos(curAngle), (float)Math.Sin(curAngle));
+            if (FireDelay is 0 && ShootStarTimer < count)
             {
-                if (ShootStarTimer % 20 is 0)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, dire * 23f, ModContent.ProjectileType<ShizukuStar>(), Projectile.damage, 0f, Owner.whoAmI);
-                if (ShootStarTimer > 60 + 20 * 3)
-                    ShootStarTimer = 0;
+                Projectile.NewProjectile(Terraria.Entity.GetSource_None(), Projectile.Center, dire * 23f, ModContent.ProjectileType<ShizukuStar>(), Projectile.damage, 0f, Owner.whoAmI);
+                FireDelay = 3;
+                ShootStarTimer += 1;
+                Projectile.netUpdate = true;
             }
         }
 

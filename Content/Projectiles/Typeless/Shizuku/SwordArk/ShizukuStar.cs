@@ -90,10 +90,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             //创建列表映射 
             var handlers = new List<(Func<bool> Condition, Action<NPC, NPC.HitInfo, int> Handler)>
             {
-                ( () => bestDamageClass == ModContent.GetInstance<RogueDamageClass>(), HandleEvilBiome),
-                ( () => bestDamageClass == DamageClass.Summon, HandleHallowedBiome),
-                ( () => bestDamageClass == DamageClass.Magic, HandlePillarEvent),
-                ( () => bestDamageClass == DamageClass.Ranged, HandleThreeEvent),
+                ( () => bestDamageClass == ModContent.GetInstance<RogueDamageClass>(), HandleRogue),
+                ( () => bestDamageClass == DamageClass.Summon, HandleSummon),
+                ( () => bestDamageClass == DamageClass.Magic, HandleMagic),
+                ( () => bestDamageClass == DamageClass.Ranged, HandleRanged),
                 ( () => true, HandleDefault),
             };
             handlers.First(t => t.Condition()).Handler(target, hit, damageDone);
