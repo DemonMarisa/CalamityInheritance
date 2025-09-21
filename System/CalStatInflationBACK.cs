@@ -928,7 +928,6 @@ namespace CalamityInheritance.System
                     npc.life = (int)(npc.life * 6.6f);
                     npc.defense = (int)(npc.defense * 1.2f);
                 }
-
             }
         }
 

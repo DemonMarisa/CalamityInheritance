@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 {
                     for(int i = 0; i < 12 ; i++)
                     {
-                        Vector2 spread = new Vector2(SpeedX,SpeedY).RotatedByRandom(180f)*Main.rand.NextFloat(0.9f, 1.2f);
+                        Vector2 spread = new Vector2(SpeedX,SpeedY).RotatedByRandom(180f) * Main.rand.NextFloat(0.9f, 1.2f);
                         Projectile.NewProjectile(source, position, spread, type, damage, knockback, player.whoAmI, 0f, 0f);
                     }
                     Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);

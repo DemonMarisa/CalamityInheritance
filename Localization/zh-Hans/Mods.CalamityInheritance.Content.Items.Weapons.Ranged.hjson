@@ -617,6 +617,15 @@ R99: {
 }
 
 PaintballBlaster: {
-	// DisplayName: Paintball Blaster
-	// Tooltip: ""
+	DisplayName: 彩蛋冲锋枪[Legacy]
+	Tooltip: 发射一束颜料弹
+}
+
+PumplerLegacy: {
+	DisplayName: 气泵枪[Legacy]
+	Tooltip:
+		'''
+		33%几率不消耗弹药
+		右键以发射爆炸南瓜
+		'''
 }

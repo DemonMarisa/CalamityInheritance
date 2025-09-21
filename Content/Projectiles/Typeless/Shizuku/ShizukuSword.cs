@@ -312,8 +312,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
                     graphicsDevice.Textures[0] = CITextureRegistry.ShizukuSwordTrail.Value;
                     graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count - 2);
                 }
+                #endregion
             }
-            #endregion
 
             #endregion
 
