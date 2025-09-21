@@ -16,18 +16,16 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
     public class NucleogenesisLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Summon";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:34,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<Nucleogenesis>(false);
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 34;
-            Item.height = 32;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<DeepBlue>();
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().nucleogenesis;
         public override void UpdateAccessory(Player player, bool hideVisual)

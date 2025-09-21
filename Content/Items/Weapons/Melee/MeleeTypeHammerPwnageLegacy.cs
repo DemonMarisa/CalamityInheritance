@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class MeleeTypeHammerPwnageLegacy : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory =>$"{Generic.WeaponLocal}.Melee";
+        public new string LocalizationCategory =>$"{Generic.BaseWeaponCategory}.Melee";
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {

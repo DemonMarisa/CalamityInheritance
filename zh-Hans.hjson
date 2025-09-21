@@ -83,6 +83,7 @@ Mods: {
 			// ShizukuSword.DisplayName: Shizuku Sword
 			// ShizukuSwordProjectile.DisplayName: Shizuku Sword Projectile
 			// ShizukuEdgeProjectile2.DisplayName: Shizuku Edge Projectile2
+			// ShizukuStarMark.DisplayName: Shizuku Star Mark
 		}
 
 		Content/Projectiles/Summon: {

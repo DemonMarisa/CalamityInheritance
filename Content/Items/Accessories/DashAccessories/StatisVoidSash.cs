@@ -17,22 +17,19 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:28,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue
+        );
+        public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 3));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Item.ResearchUnlockCount = 1;
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().SashOn;
-        public override void SetDefaults()
-        {
-            Item.width = 28;
-            Item.height = 32;
-            Item.accessory = true;
-            Item.value= CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-        }
-        
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();

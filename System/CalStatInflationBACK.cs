@@ -667,7 +667,7 @@ namespace CalamityInheritance.System
                 return;
             if (item.type == ItemID.Zenith)
             {
-                string text = Language.GetTextValue($"{Generic.GetWeaponLocal}.Melee.ZenithBuff");
+                string text = Language.GetTextValue($"{Generic.WeaponTextPath}.Melee.ZenithBuff");
                 tooltips.Add(new TooltipLine(Mod, "buff", text));
             }
 
@@ -756,31 +756,62 @@ namespace CalamityInheritance.System
         #region 魔影
         public static void ShadowspecBlance(Item item)
         {
-            if (item.type == ModContent.ItemType<Earth>())
-                item.damage = 1750; //无限大地: 200 -> 1750
-            if (item.type == ModContent.ItemType<IllustriousKnives>())
-                item.damage = 3500; //圣光飞刀转为3500
-            if (item.type == ModContent.ItemType<Contagion>())
-                item.damage = 10000; //瘟疫弓恢复为10000面板
             if (item.type == ModContent.ItemType<Eternity>())
                 item.damage = 5000; //恒：5000面板
             if (item.type == ModContent.ItemType<Apotheosis>())
-                item.damage = 7777; //原版神吞书：7777
+                item.damage = 9999;
+            //这玩意菜的有点逆天了
             if (item.type == ModContent.ItemType<ScarletDevil>())
-                item.damage = 14571; //绯红恶魔回调至14571面板
-            if (item.type == ModContent.ItemType<HalibutCannon>())
-                item.damage = 1500; //比目鱼
+                item.damage = 45678;
             if (item.type == ModContent.ItemType<NanoblackReaper>())
-                item.damage = 4000;
+                item.damage = 2000;
             if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
-                item.damage = 50000; //一万面板
-            if (item.type == ModContent.ItemType<Ozzathoth>())
-                item.damage = 1000;
+                item.damage = 60000;
             if (item.type == ModContent.ItemType<Sylvestaff>())
-                item.damage = 700;
+                item.damage = 950;
+            if (item.Same<TheDanceofLight>())
+                item.damage *= 6000;
+            
+            //红日需要100的倍率
+            if (item.Same<RedSun>())
+                item.damage *= 10;
+            //光辉飞刀需要接近四万五的面板，比大锤子稍低
+            //这个面板已经是灾厄基础近50倍了
+            if (item.Same<IllustriousKnives>())
+                item.damage = 42000;
+            //魔影悠悠球面板需要x10
+            if (item.Same<Ozzathoth>())
+                item.damage *= 10;
+            //考虑到实战，无限大地起码需要额外10倍的面板+超高的scale
+            if (item.Same<Earth>())
+            {
+                item.damage = 17000;
+                item.scale *= 2.5f;
+            }
+            //圣剑翻倍一下就行了，因为有血染等一些玩法
+            if (item.Same<IridescentExcalibur>())
+            {
+                item.damage *= 2;
+            }
+            //龙破斩谁爱玩玩去（
+            //瘟疫需要起码30000的面板
+            if (item.Same<Contagion>())
+                item.damage = 30000;
+            //太虚炮起码需要额外7倍
+            if (item.Same<Voidragon>())
+                item.damage *= 7;
+            //斯万不需补强
+            //大比目鱼需要额外补强一点
+            if (item.Same<HalibutCannon>())
+                item.damage = 2500;
+            if (item.Same<NanoblackReaper>())
+            {
+                
+            }
             #region 遗产魔影
+            //这个需要两倍
             if (item.type == ModContent.ItemType<FabstaffOld>())
-                item.damage = 1400;
+                item.damage = 2890;
             if (item.type == ModContent.ItemType<SomaPrimeOld>())
                 item.damage = 2400;
             if (item.type == ModContent.ItemType<CrystylCrusherLegacy>())
@@ -789,22 +820,28 @@ namespace CalamityInheritance.System
                 item.damage = 10000;
             if (item.type == ModContent.ItemType<AzathothLegacy>())
                 item.damage = 1000;
+            //这个不需要补强了，回血效率问题
             if (item.type == ModContent.ItemType<RogueTypeKnivesShadowspec>())
                 item.damage = 2000;
-            if (item.type == ModContent.ItemType<MeleeTypeNanoblackReaper>())
-                item.damage = 800;
+            //很难想象这个东西居然是需要加强的
+            //800 -> 1000
+            if (item.Same<MeleeTypeNanoblackReaper>())
+                item.damage = 1000;
+            //同样不需要补强，强度足够了，还有武器特性问题
             if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
                 item.damage = 5800;
             //为啥开数值膨胀之后面板比没开低了？
             //不对，这jb的是原版神吞书我草
             //无敌了
             //if (item.type == ModContent.ItemType<Apotheosis>())
+            //圣神之象需要翻4倍
             if (item.type == ModContent.ItemType<ApotheosisLegacy>())
-                item.damage = 600;
+                item.damage = 2450;
             if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
                 item.damage = 720;
             if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())
                 item.damage = 1000;
+            //光之舞不需要
             if (item.type == ModContent.ItemType<DanceofLightLegacy>())
                 item.damage = 4800;
             if (CheckModItem<StepToolShadow>(item.type))

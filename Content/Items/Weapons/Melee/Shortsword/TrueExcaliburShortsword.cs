@@ -7,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
     public class TrueExcaliburShortsword : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee.Shortsword";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Melee.Shortsword";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

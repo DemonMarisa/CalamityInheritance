@@ -22,8 +22,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class PBGLegendary: RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
-        public static string TextRoute => $"{Generic.GetWeaponLocal}.Rogue.PBGLegendary";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
+        public static string TextRoute => $"{Generic.WeaponTextPath}.Rogue.PBGLegendary";
         public int BaseDamage = 30;
         public override void SetStaticDefaults()
         {
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getdmg = LegendaryDamage() + Generic.GenericLegendBuff();
             int boostPercent = (int)(getdmg);

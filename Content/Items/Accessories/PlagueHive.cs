@@ -10,20 +10,13 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class PlagueHive : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 42;
-            Item.height = 48;
-            Item.value = CIShopValue.RarityPriceCyan;
-            Item.rare = ItemRarityID.Cyan;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:42,
+            itemHeight:48,
+            itemRare:ItemRarityID.Cyan,
+            itemValue:CIShopValue.RarityPriceCyan
+        );
         public override void AddRecipes()
         {
             CreateRecipe().

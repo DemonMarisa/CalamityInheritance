@@ -11,19 +11,13 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
     public class StatisNinjaBeltLegacy : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.width = 30;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPricePurple;
-            Item.rare = ItemRarityID.Purple;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:48,
+            itemHeight:42,
+            itemRare:ItemRarityID.Purple,
+            itemValue:CIShopValue.RarityPricePurple
+        );
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().BeltOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

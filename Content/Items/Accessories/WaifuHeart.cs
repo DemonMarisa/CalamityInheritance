@@ -18,24 +18,20 @@ namespace CalamityInheritance.Content.Items.Accessories
     public class WaifuHeart : CIAccessories, ILocalizedModType
     {
         public static bool FuckYouEHeart { get => fuckYouEHeart; set => fuckYouEHeart = value; }
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:20,
+            itemRare:ItemRarityID.Cyan,
+            itemValue:CIShopValue.RarityPriceCyan,
+            itemDefense:10
+        );
+        public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<HeartoftheElements>();
         }
-        public override void SetDefaults()
-        {
-            Item.width = 20;
-            Item.height = 20;
-            Item.defense = 10;
-            Item.value = CIShopValue.RarityPriceCyan;
-            Item.accessory = true;
-            Item.rare = ItemRarityID.Red;
-        }
-
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
             CalamityPlayer modPlayer = player.Calamity();

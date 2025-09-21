@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Build.Evaluation;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -50,6 +50,76 @@ namespace CalamityInheritance.Utilities
             if (getTooltip is not null)
                 getTooltip.Text = formateText;
         }
+        /// <summary>
+        /// 从最后一行Tooltip后插入值
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="textPath"></param>
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath)
+        {
+            string text = textPath.ToLangValue();
+            var newLine = new TooltipLine(mod, "ModName", text)
+            {
+                OverrideColor = tooltips.Count > 0 ? tooltips[^1].OverrideColor : Color.White
+            };
+            if (tooltips.Count is 0)
+                tooltips.Add(newLine);
+            else
+                tooltips.Insert(tooltips.Count, newLine);
+        }
+        /// <summary>
+        /// 从最后一行Tooltip后插入值，重载传参方法
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="textPath"></param>
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod, string textPath, params object[] args)
+        {
+            string text = textPath.ToLangValue().ToFormatValue(args);
+            var newLine = new TooltipLine(mod, "ModName", text)
+            {
+                OverrideColor = tooltips.Count > 0 ? tooltips[^1].OverrideColor : Color.White
+            };
+            if (tooltips.Count is 0)
+                tooltips.Add(newLine);
+            else
+                tooltips.Insert(tooltips.Count, newLine);
+        }
+        /// <summary>
+        /// 从最后一行Tooltip后插入值，重载颜色代码
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="textPath"></param>
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath, Color color)
+        {
+            string text = textPath.ToLangValue();
+            var newLine = new TooltipLine(mod, "ModName", text)
+            {
+                OverrideColor = color
+            };
+            if (tooltips.Count is 0)
+                tooltips.Add(newLine);
+            else
+                tooltips.Insert(tooltips.Count, newLine);
+        }
+        /// <summary>
+        /// 从最后一行Tooltip后插入值，重载传参方法，颜色代码
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="textPath"></param>
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath, Color color, params object[] args)
+        {
+            string text = textPath.ToLangValue().ToFormatValue(args);
+            var newLine = new TooltipLine(mod, "ModName", text)
+            {
+                OverrideColor = color
+            };
+            if (tooltips.Count is 0)
+                tooltips.Add(newLine);
+            else
+                tooltips.Insert(tooltips.Count, newLine);
+        }
+        public static string ToHexColor(this Color color) => $"{color.R:X2}{color.G:X2}{color.B:X2}";
+
         public static string ToLangValue(this string textPath) => Language.GetTextValue(textPath);
 
         public static string ToFormatValue(this string baseTextValue, params object[] args)

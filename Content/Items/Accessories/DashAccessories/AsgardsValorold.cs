@@ -18,20 +18,14 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const int ShieldSlamDamage = 200;
         public const float ShieldSlamKnockback = 9f;
         public const int ShieldSlamIFrames = 12;
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.width = 38;
-            Item.height = 44;
-            Item.rare = ItemRarityID.Lime;
-            Item.value = CIShopValue.RarityPriceLime;
-            Item.defense = 16;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:38,
+            itemHeight:44,
+            itemRare:ItemRarityID.Lime,
+            itemValue:CIShopValue.RarityPriceLime,
+            itemDefense:16
+        );
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ValorOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

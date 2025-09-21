@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     internal class LatcherMine : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public const int BaseDamage = 80;
         public override void SetStaticDefaults()
         {

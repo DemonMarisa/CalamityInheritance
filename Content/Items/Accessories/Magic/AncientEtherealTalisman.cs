@@ -14,19 +14,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
     public class AncientEtherealTalisman : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
-        public override void SetStaticDefaults()
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<EtherealTalisman>(false);
         }
-        public override void SetDefaults()
-        {
-            Item.width = 28;
-            Item.height = 32;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:28,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue
+        );
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eTalisman;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

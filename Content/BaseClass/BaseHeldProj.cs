@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.BaseClass
 
             Player player = Main.player[Projectile.owner];
             Vector2 rrp = player.RotatedRelativePoint(player.MountedCenter, true) - offset;
-
+            player.heldProj = Projectile.whoAmI;
             // Update the Prism's position in the world and relevant variables of the player holding it.
             UpdatePlayerVisuals(player, rrp);
 

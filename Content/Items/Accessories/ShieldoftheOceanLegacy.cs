@@ -9,20 +9,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ShieldoftheOceanLegacy : CIAccessories, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.width = 24;
-            Item.height = 28;
-            Item.value = CIShopValue.RarityPriceGreen;
-            Item.rare = ItemRarityID.Green;
-            Item.defense = 2;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:24,
+            itemHeight:28,
+            itemRare:ItemRarityID.Green,
+            itemValue:CIShopValue.RarityPriceGreen,
+            itemDefense:2
+        );
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

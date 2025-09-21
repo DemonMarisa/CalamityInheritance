@@ -8,20 +8,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class BloodPactLegacy : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<BloodPact>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.rare = ItemRarityID.Yellow;
-            Item.value = CIShopValue.RarityPriceYellow;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ItemRarityID.Yellow,
+            itemValue:CIShopValue.RarityPriceYellow
+        );
+        public override void ExSSD() => Type.ShimmerEach<BloodPact>();
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

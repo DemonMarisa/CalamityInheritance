@@ -16,23 +16,20 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class AncientTarragonWings: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:22,
+            itemHeight:38,
+            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemValue:CIShopValue.RarityPriceBlueGreen
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 9f, 2.5f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<TarragonWings>(false);
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 28;
-            Item.height = 38;
-            Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.accessory = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var usPlayer = player.CIMod();
             if (player.armor[0].type == ModContent.ItemType<AncientTarragonHelm>() &&
                 player.armor[1].type == ModContent.ItemType<AncientTarragonBreastplate>() &&
                 player.armor[2].type == ModContent.ItemType<AncientTarragonLeggings>())

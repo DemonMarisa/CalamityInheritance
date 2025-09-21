@@ -13,21 +13,18 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class YharimsGiftLegacy : CIAccessories, ILocalizedModType
     {
-        
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:22,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet,
+            itemDefense:30
+        );   
         public int dragonTimer = 60;
-        public override void SetStaticDefaults()
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<YharimsGift>();
-        }
-        public override void SetDefaults()
-        {
-            Item.defense = 30;
-            Item.width = 20;
-            Item.height = 22;
-            Item.accessory = true;
-            Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().YGiftOn;
         public override void UpdateAccessory(Player player, bool hideVisual)

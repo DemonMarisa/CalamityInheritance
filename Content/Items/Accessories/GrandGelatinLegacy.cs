@@ -9,22 +9,17 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class GrandGelatinLegacy : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:24,
+            itemRare:ItemRarityID.LightRed,
+            itemValue:CIShopValue.RarityPriceLightRed
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<GrandGelatin>();
         }
-
-        public override void SetDefaults()
-        {
-            Item.width = 20;
-            Item.height = 24;
-            Item.value = CIShopValue.RarityPriceLightRed;
-            Item.rare = ItemRarityID.LightRed;
-            Item.accessory = true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.moveSpeed += 0.1f;

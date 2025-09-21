@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AltFunctionUse(Item item, Player player) => player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CheckExoLore() ? Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.ChainWeaponChange") : null;
+            string t = Main.LocalPlayer.CheckExoLore() ? Language.GetTextValue($"{Generic.WeaponTextPath}.Ranged.ChainWeaponChange") : null;
             if (t != null)
                 tooltips.Add(new TooltipLine(Mod, "Name", t));
 

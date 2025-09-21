@@ -17,23 +17,20 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class DarkSunRingold : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:32,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue,
+            itemDefense:10
+        );
+        public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 6));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Item.ResearchUnlockCount = 1;
         }
 
-        public override void SetDefaults()
-        {
-            Item.width = 32;
-            Item.height = 32;
-            Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.defense = 10;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-        }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().darkSunRing;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

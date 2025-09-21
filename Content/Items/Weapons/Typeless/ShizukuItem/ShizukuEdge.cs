@@ -6,12 +6,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
+using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
 {
     public class ShizukuEdge : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
         public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f };
         public static readonly int BaseDamage = 15000;
         public override void SetStaticDefaults()
@@ -46,33 +47,36 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
         }
+        public override void RightClick(Player player)
+        {
+            base.RightClick(player);
+        }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuEdgeSword>()] < 1 || player.altFunctionUse == 2;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int projLeft = ModContent.ProjectileType<ShizukuEdgeSword>();
             int projRight = ModContent.ProjectileType<ShizukuEdgeMoon>();
-            
             if (player.ownedProjectileCounts[projRight] < 1 && player.altFunctionUse == 2)
                 Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y - 24f), velocity, projRight, damage, knockback, player.whoAmI);
             else
                 Projectile.NewProjectile(source, position, velocity, projLeft, damage, knockback, player.whoAmI);
             return false;
         }
-        // public override void AddRecipes()
-        // {
-        //     CreateRecipe().
-        //             AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
-        //             AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
-        //             AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
-        //             AddRecipeGroup(CIRecipeGroup.AnyChest).
-        //             AddIngredient<CosmiliteBar>(10).
-        //             AddIngredient(ItemID.LunarBar, 20).
-        //             AddIngredient<ShadowspecBar>(5).
-        //             AddIngredient<Lumenyl>(30).
-        //             AddCondition(Condition.NearShimmer).
-        //             Register();
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                    AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
+                    AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
+                    AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
+                    AddRecipeGroup(CIRecipeGroup.AnyChest).
+                    AddIngredient<CosmiliteBar>(10).
+                    AddIngredient(ItemID.LunarBar, 20).
+                    AddIngredient<ShadowspecBar>(5).
+                    AddIngredient<Lumenyl>(30).
+                    AddCondition(Condition.NearShimmer).
+                    Register();
 
-        // }
+        }
     }
 }

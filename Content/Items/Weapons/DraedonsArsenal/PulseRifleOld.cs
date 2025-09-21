@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
     public class PulseRifleOld : CIRanged, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.DraedonsArsenal";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.DraedonsArsenal";
         public static readonly SoundStyle FireSound = new("CalamityMod/Sounds/Item/PulseRifleFire");
 
         private readonly int BaseDamage = 1200;

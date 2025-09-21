@@ -11,12 +11,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ShrineMarble : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<GladiatorsLocket>();
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:36,
+            itemHeight:42,
+            itemRare:ItemRarityID.Orange,
+            itemValue:CIShopValue.RarityPriceOrange
+        );
+        public override void ExSSD() => Type.ShimmerEach<GladiatorsLocket>();
         public override void SetDefaults()
         {
             Item.height = 36;

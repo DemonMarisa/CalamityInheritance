@@ -11,19 +11,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
     public class PsychoticAmulet : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPricePink;
-            Item.rare = ItemRarityID.Pink;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ItemRarityID.Pink,
+            itemValue:CIShopValue.RarityPricePink
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();

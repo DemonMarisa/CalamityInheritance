@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Weapons
 {
     public abstract class CIMelee: ModItem
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Melee";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Melee";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

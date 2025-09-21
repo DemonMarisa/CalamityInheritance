@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class Celestusold : RogueWeapon, ILocalizedModType
     {
-        public static string SetRoute => $"{Generic.WeaponLocal}";
+        public static string SetRoute => $"{Generic.BaseWeaponCategory}";
         public const float SetProjSpeed = 27f;
         public SoundStyle[] getSound =
             [

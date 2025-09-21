@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
     public class MarkedMagnum : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
 
         public override void SetDefaults()
         {

@@ -12,16 +12,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
     public class ManaOverloader : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.CloneDefaults(ModContent.ItemType<ManaPolarizer>());
-            Item.rare = ItemRarityID.Red;
-            Item.value = CIShopValue.RarityPriceRed;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:50,
+            itemHeight:28,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed
+        );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var usPlayer = player.CIMod();

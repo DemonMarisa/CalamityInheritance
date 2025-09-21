@@ -14,22 +14,15 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class AmbrosialAmpouleOld : CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<AmbrosialAmpoule>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 20;
-            Item.height = 20;
-            Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ItemRarityID.Red;
-            Item.defense = 4;
-            Item.accessory = true;
-        }
-
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:20,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed,
+            itemDefense:4
+        );
+        public override void ExSSD() => Type.ShimmerEach<AmbrosialAmpoule>();
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer calPlayer = player.Calamity();

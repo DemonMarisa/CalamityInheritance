@@ -12,20 +12,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
     {
 
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:30,
+            itemHeight:30,
+            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemValue:CIShopValue.RarityPriceBlueGreen
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<BadgeofBravery>();
         }
-        public override void SetDefaults()
-        {
-            Item.width = 30;
-            Item.height = 30;
-            Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CIMod();

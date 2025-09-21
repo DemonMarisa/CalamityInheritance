@@ -9,20 +9,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ShrineMushroom: CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<FungalSymbiote>();
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 38;
-            Item.height = 36;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = CIShopValue.RarityPriceOrange;
-            Item.accessory = true;
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:38,
+            itemHeight:36,
+            itemRare:ItemRarityID.Orange,
+            itemValue:CIShopValue.RarityPriceOrange
+        );
+        public override void ExSSD() => Type.ShimmerEach<FungalSymbiote>();
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 

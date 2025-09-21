@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 {
     public class ElephantKiller : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Item/Magnum");
         public override void SetStaticDefaults()
         {

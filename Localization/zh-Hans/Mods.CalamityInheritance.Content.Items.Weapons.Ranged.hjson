@@ -620,3 +620,8 @@ PaintballBlaster: {
 	// DisplayName: Paintball Blaster
 	// Tooltip: ""
 }
+
+PumplerLegacy: {
+	// Tooltip: ""
+	// DisplayName: Pumpler Legacy
+}

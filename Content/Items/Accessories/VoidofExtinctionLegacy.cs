@@ -17,20 +17,17 @@ namespace CalamityInheritance.Content.Items.Accessories
         public const int FireProjectiles = 2;
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:26,
+            itemHeight:26,
+            itemRare:ItemRarityID.Yellow,
+            itemValue:CIShopValue.RarityPriceYellow,
+            itemDefense:12
+        );
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<VoidofExtinction>(false);
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 26;
-            Item.height = 26;
-            Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ItemRarityID.Yellow;
-            Item.accessory = true;
-            Item.defense = 12;
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().voidOfCalamity;
         public override void UpdateAccessory(Player player, bool hideVisual)

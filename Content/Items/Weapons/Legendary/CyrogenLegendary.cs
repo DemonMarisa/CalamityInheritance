@@ -20,8 +20,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     //我本人完全看不懂这个代码，如果需要的话可能重写？
     public class CyrogenLegendary: CISummon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Summon";
-        public static string TextRoute => $"{Generic.GetWeaponLocal}.Summon.CyrogenLegendary";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Summon";
+        public static string TextRoute => $"{Generic.WeaponTextPath}.Summon.CyrogenLegendary";
         public static readonly float ShootSpeed = 10f;
         public static int baseDamage = 48;
         public static int TrueDamage = 0;
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.GetWeaponLocal}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             string update = this.GetLocalization("LegendaryScaling").Format(

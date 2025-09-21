@@ -8,12 +8,14 @@ namespace CalamityInheritance.Content.Items.Accessories
 {
     public class ShrineMarnite: CIAccessories, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<UnstableGraniteCore>();
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:28,
+            itemHeight:36,
+            itemRare:ItemRarityID.Orange,
+            itemValue:CIShopValue.RarityPriceOrange
+        );
+        public override void ExSSD() => Type.ShimmerEach<UnstableGraniteCore>();
         public override void SetDefaults()
         {
             Item.width = 28;

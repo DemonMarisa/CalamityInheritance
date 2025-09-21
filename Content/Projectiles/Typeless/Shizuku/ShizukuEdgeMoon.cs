@@ -207,7 +207,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku
             if (AttackTimer > 240)
             {
                 //在玩家的位置释放飞剑
-                // Vector2 swordDirection = new Vector2(12f, 0f).RotatedBy(Main.rand.NextFloat(MathHelper.PiOver4))
+                // Vector2 spawnPos = new Vector2(Owner.Center.X, Owner.MountedCenter.Y - 24f)
                 AttackTimer = 0;
             }   
         }

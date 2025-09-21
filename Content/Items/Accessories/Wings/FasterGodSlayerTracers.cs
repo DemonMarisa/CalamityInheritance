@@ -18,6 +18,7 @@ using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -25,21 +26,17 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
     public class FasterGodSlayerTracers: CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
-
-        public override void SetStaticDefaults()
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:36,
+            itemHeight:32,
+            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemValue:CIShopValue.RarityPriceDeepBlue
+        );
+        public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(180, 10.5f, 2.75f);
-            Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<TracersElysian>(false);
-        }
-
-        public override void SetDefaults()
-        {
-            Item.width = 36;
-            Item.height = 32;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<DarkBlue>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

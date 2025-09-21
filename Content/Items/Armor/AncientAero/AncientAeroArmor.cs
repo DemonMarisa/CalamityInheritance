@@ -11,11 +11,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
     [AutoloadEquip(EquipType.Body)]
     public class AncientAeroArmor :CIArmor, ILocalizedModType
     {
-        
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
         public override void SetDefaults()
         {
             Item.height = 18;

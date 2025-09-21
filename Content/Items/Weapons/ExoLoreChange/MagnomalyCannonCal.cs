@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 
             if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
-                string ExoLoreOn = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.MagnomalyCannon.ExoLoreOn");
+                string ExoLoreOn = Language.GetTextValue($"{Generic.WeaponTextPath}.Ranged.MagnomalyCannon.ExoLoreOn");
 
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }

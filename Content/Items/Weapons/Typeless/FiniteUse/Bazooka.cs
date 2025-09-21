@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 {
     public class Bazooka : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Typeless";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Item/BazookaFull");
         public override void SetStaticDefaults()
         {

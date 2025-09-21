@@ -17,18 +17,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         public static int nanotechDMGStack  = 150;
         public static float nanotechDMGBoost = 0.10f;
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-        public override void SetDefaults()
-        {
-            Item.width = 46;
-            Item.height = 46;
-            Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.accessory = true;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
-        }
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:46,
+            itemHeight:46,
+            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemValue:CIShopValue.RarityPriceCatalystViolet
+        );
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

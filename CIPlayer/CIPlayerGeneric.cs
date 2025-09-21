@@ -9,31 +9,27 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod.Buffs.DamageOverTime;
-using Terraria.GameInput;
-using CalamityMod.Cooldowns;
-using CalamityMod.Dusts;
-using CalamityMod.Items.Armor.Bloodflare;
-using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
-using CalamityInheritance.UI;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.Core;
-using CalamityInheritance.System.Configs;
-using Hjson;
 using CalamityInheritance.Sounds.Custom;
-using CalamityMod.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Wulfrum;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Utilities;
 
 
 namespace CalamityInheritance.CIPlayer
 {
+    public enum ShizukuSwordType
+    {
+        TargetSpawn,
+        ArkoftheCosmos 
+    }
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly SoundStyle AbsorberHit = new("CalamityMod/Sounds/Custom/AbilitySounds/SilvaActivation") { Volume = 0.7f };
+        public ShizukuSwordType ShizukuSwordStyle = ShizukuSwordType.ArkoftheCosmos;
+        public int StoredTargetIndex = -1;
+        public int StoredDamage = -1;
 
         #region Timer and Counter
         public int modStealth = 1000;
@@ -131,7 +127,6 @@ namespace CalamityInheritance.CIPlayer
         public bool cIdisableAnahitaSpawns = false;
         #endregion
         public bool AncinetGodSlayerDashReset = false;
-        public bool NerfedDSA = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -164,8 +159,9 @@ namespace CalamityInheritance.CIPlayer
             cIdisableHiveCystSpawns = false;
             cIdisableNaturalScourgeSpawns = false;
             cIdisableAnahitaSpawns = false;
-            NerfedDSA = false;
             #endregion
+            StoredTargetIndex = -1;
+            StoredDamage = -1;
         }
 
         #endregion
@@ -176,6 +172,7 @@ namespace CalamityInheritance.CIPlayer
         #region UpdateDead
         public override void UpdateDead()
         {
+            StoredDamage = -1;
             //套装奖励全部封装
             UpdateDeadArmorSet();
             //饰品效果全部封装
@@ -195,6 +192,7 @@ namespace CalamityInheritance.CIPlayer
             DNAImmnueActive = 0;
             CosmicEnergyExtra = false;
             R99TargetWhoAmI = -1;
+            StoredTargetIndex = -1;
         }
         public override void PostUpdate()
         {

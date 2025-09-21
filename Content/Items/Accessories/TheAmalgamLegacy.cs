@@ -24,11 +24,19 @@ namespace CalamityInheritance.Content.Items.Accessories
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
         public override string Texture => $"{CIResprite.CalItemsRoute}/Accessories/TheAmalgam";
-        public override void SetStaticDefaults()
+        //在下面会直接被替换了
+        protected override BaseSetDefault BaseSD => new
+        (
+            itemWidth:20,
+            itemHeight:24,
+            itemRare:ItemRarityID.Red,
+            itemValue:CIShopValue.RarityPriceRed,
+            itemDefense:10
+        );
+        public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(9, 6));
             Type.ShimmerEach<TheAmalgam>();
-            base.SetStaticDefaults();
         }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().amalgam;
         public override void SetDefaults()

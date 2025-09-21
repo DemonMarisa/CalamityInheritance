@@ -134,12 +134,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (Main.zenithWorld)
             {
-                string fuck = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.TyrannysEndOld.Fuck");
+                string fuck = Language.GetTextValue($"{Generic.WeaponTextPath}.Ranged.TyrannysEndOld.Fuck");
                 tooltips.FindAndReplace("[FUCK]", fuck);
             }
             else
             {
-                string notFuck = Language.GetTextValue($"{Generic.GetWeaponLocal}.Ranged.TyrannysEndOld.NotFuck");
+                string notFuck = Language.GetTextValue($"{Generic.WeaponTextPath}.Ranged.TyrannysEndOld.NotFuck");
                 tooltips.FindAndReplace("[FUCK]", notFuck);
             }
 

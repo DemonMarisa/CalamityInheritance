@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public abstract class FlamethrowerSpecial: ModItem
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Ranged";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Ranged";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

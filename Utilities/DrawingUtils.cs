@@ -811,20 +811,99 @@ namespace CalamityInheritance.Utilities
         public static void BaseProjPreDraw(this Projectile proj, Texture2D tex, int trailingCount ,Color lightColor, float trailingLength = 0.4f, float rotOffset = 0f, float scale = 1f, Vector2? drawOffset = null)
         {
             Vector2 drawPos = proj.Center - Main.screenPosition;
-            float drawRot = proj.rotation + (proj.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            SpriteEffects flip = SpriteEffects.None;
+            float gravDir = Main.player[proj.owner].gravDir;
+            if (proj.spriteDirection is -1)
+                flip |= SpriteEffects.FlipHorizontally;
+            if (gravDir is -1f)
+                flip |= SpriteEffects.FlipVertically;
+            
+            float drawRot = proj.rotation + (proj.spriteDirection is -1 ? MathHelper.Pi : 0f);
             Vector2 origi = tex.Size() / 2f;
-            SpriteEffects flip = proj.spriteDirection * Main.player[proj.owner].gravDir is -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            Vector2 offset = Vector2.Zero;
-            if (drawOffset is not null)
-                offset = drawOffset.Value;
+            Vector2 offset = drawOffset ?? Vector2.Zero;
+
             for (int i = 0; i < trailingCount; i++)
             {
                 Vector2 realDrawPos = drawPos - proj.velocity * i * trailingLength;
-                float faded = 1 - (i / (float)trailingCount);
+                float fadedProgress = (float)i / trailingCount;
+                float faded = 1 - fadedProgress;
                 faded = MathF.Pow(faded, 2);
-                Color trailColor = lightColor * faded;
-                Main.spriteBatch.Draw(tex, realDrawPos + offset, null, trailColor, drawRot + rotOffset, origi, proj.scale * Main.player[proj.owner].gravDir * scale, flip, 0);
+                faded = MathHelper.Clamp(faded, 0f, 1f);
+                Color trailColor = Color.Lerp(Color.Transparent, lightColor, faded);
+                trailColor.A = (byte)(lightColor.A * faded);
+                float finalScale = proj.scale * scale * gravDir;
+                Main.spriteBatch.Draw(tex, realDrawPos + offset, null, trailColor, drawRot + rotOffset, origi, finalScale, flip, 0);
             }
+        }
+        public struct BaseBezierCurveInfo(List<Vector2> rawPosList, List<float> rawRotList)
+    {
+        public List<Vector2> CurvePositionList = rawPosList;
+        public List<float> CurveRotationList = rawRotList;
+    }
+        public static BaseBezierCurveInfo GetValidBeizerCurvePow(List<Vector2> rawPositionList, List<float> rawRotationList, int drawPointTime = 3)
+        {
+            List<Vector2> smoothPos = [];
+            List<float> smoothRot = [];
+            for (int i = 0; i < rawPositionList.Count - 1; i++)
+            {
+                Vector2 startPos = rawPositionList[i];
+                Vector2 endPos = rawPositionList[i + 1];
+                Vector2 controlPoint = CalculateControlPoint(rawPositionList, i);
+                float rot0 = rawRotationList[i];
+                float rot1 = rawRotationList[i + 1];
+                //处理插值问题
+                float normalRot1 = rot1;
+                float deltaRot = rot1 - rot0;
+                //标准化rot1避免突变
+                if (deltaRot > MathHelper.Pi)
+                    normalRot1 = rot0 + (deltaRot - MathHelper.TwoPi);
+                else if (deltaRot < -MathHelper.Pi)
+                    normalRot1 = rot0 + (deltaRot + MathHelper.TwoPi);
+                for (int t = 0; t <= drawPointTime; t++)
+                {
+                    float progress = (float)t / drawPointTime;
+                    Vector2 thePos = BezierCurve(startPos, controlPoint, endPos, progress);
+                    float theRot = MathHelper.Lerp(rot0, normalRot1, progress);
+                    //将其限制在0~2pi内
+                    theRot = MathHelper.WrapAngle(theRot);
+                    smoothPos.Add(thePos);
+                    smoothRot.Add(theRot);
+                }
+            }
+            return new BaseBezierCurveInfo(smoothPos, smoothRot);
+        }
+        private static Vector2 BezierCurve(Vector2 startPos, Vector2 controlPos, Vector2 endPos, float t)
+        {
+            float u = 1 - t;
+            return u * u * startPos + 2 * u * t * controlPos + t * t * endPos;
+        }
+        private static Vector2 CalculateControlPoint(List<Vector2> points, int index)
+        {
+            if (index == 0)
+            {
+                //第一个点的控制点：使用下下个点方向
+                Vector2 nextNext = points[index + 2];
+                return points[index + 1] - (nextNext - points[index + 1]) * 0.25f;
+            }
+            else if (index == points.Count - 2)
+            {
+                //最后一个点的控制点：使用前前点方向
+                Vector2 prevPrev = points[index - 1];
+                return points[index] + (points[index] - prevPrev) * 0.25f;
+            }
+            else
+            {
+                //中间点的控制点：使用前后点的切线方向
+                Vector2 prev = points[index - 1];
+                Vector2 next = points[index + 2];
+                return (points[index] + points[index + 1]) / 2f + (next - prev) * 0.1f;
+            }
+        }
+        public static void GetBaseDrawField(this Projectile proj, out Texture2D texture, out Vector2 drawPosBase, out Vector2 orig)
+        {
+            texture = TextureAssets.Projectile[proj.type].Value;
+            drawPosBase = proj.Center - Main.screenPosition;
+            orig = texture.Size() / 2;
         }
     }
 }

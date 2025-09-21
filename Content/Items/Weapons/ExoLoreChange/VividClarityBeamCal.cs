@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
     public class VividClarityBeamCal : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Magic";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Magic";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         private bool initialized = false;

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     [LegacyName("RogueTypeGalaxySmasher")]
     public class RogueTypeHammerGalaxySmasher : RogueWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.WeaponLocal}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
 
         public override void SetStaticDefaults()
         {
