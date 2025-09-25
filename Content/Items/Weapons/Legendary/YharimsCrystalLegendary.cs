@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         //彩蛋颜色: Tristan, 皇家蓝
         private static Color TristanColorRoyalBlue => Color.RoyalBlue;
         #endregion
-        public static string TextRoute => $"{Generic.WeaponTextPath}.Magic.YharimsCrystalLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}Magic.YharimsCrystalLegendary";
         public override void SetDefaults()
         {
             Item.width = 16;

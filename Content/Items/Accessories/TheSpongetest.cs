@@ -2,7 +2,6 @@
 using CalamityMod.DataStructures;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.World;
 using CalamityMod;
@@ -22,7 +21,6 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityInheritance.System.Configs;
-using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Rarity;
 

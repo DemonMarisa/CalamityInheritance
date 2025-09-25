@@ -127,15 +127,18 @@ namespace CalamityInheritance.CIPlayer
         public bool cIdisableAnahitaSpawns = false;
         #endregion
         public bool AncinetGodSlayerDashReset = false;
+
+        public float LifeMaxPercentBoost = 0f;
         #region ResetEffects
         public override void ResetEffects()
         {
+            LifeMaxPercentBoost = 0f;
             //生命上限（们）
             ResetLifeMax();
             //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
-            RespriteOptions(); 
+            RespriteOptions();
             //传颂全部包装
-            ResetLore(); 
+            ResetLore();
             //套装奖励全部封装
             ResetArmorSet();
             //饰品全部封装

@@ -84,6 +84,8 @@ Mods: {
 			// ShizukuSwordProjectile.DisplayName: Shizuku Sword Projectile
 			// ShizukuEdgeProjectile2.DisplayName: Shizuku Edge Projectile2
 			// ShizukuStarMark.DisplayName: Shizuku Star Mark
+			// DesertMark.DisplayName: Desert Mark
+			// DesertTornado.DisplayName: Desert Tornado
 		}
 
 		Content/Projectiles/Summon: {
@@ -106,6 +108,16 @@ Mods: {
 				// DisplayName: held Proj Test
 				// Tooltip: ""
 			}
+
+			DesertFeather: {
+				DisplayName: 荒漠之羽
+				Tooltip: 曾被用来合成多种沙漠相关物品的材料
+			}
+		}
+
+		DamageClasses: {
+			ShizukuDamageClass.DisplayName: "[c/98F5FF:月明伤害]"
+			ScarletDamageClass.DisplayName: "[c/E4080A:真实远程伤害]"
 		}
 	}
 }

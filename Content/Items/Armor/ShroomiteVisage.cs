@@ -30,8 +30,13 @@ namespace CalamityInheritance.Content.Items.Armor
         }
         public override void UpdateEquip(Player player)
         {
-            player.CIMod().ShroomiteFlameBooster = true;
-            base.UpdateEquip(player);
+            if (player.HeldItem.useAmmo == AmmoID.Gel)
+            {
+                player.GetDamage<RangedDamageClass>() += 0.30f;
+                player.GetCritChance<RangedDamageClass>() += 5;
+                if (Main.zenithWorld)
+                    player.GetDamage<RangedDamageClass>() *= 15f;
+            }
         }
         public override void AddRecipes()
         {

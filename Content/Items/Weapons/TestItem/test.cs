@@ -1,22 +1,11 @@
 ﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
-using System.Security.Authentication;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.System;
-using CalamityInheritance.NPCs;
-using CalamityMod.NPCs.Yharon;
-using CalamityInheritance.NPCs.Boss.Yharon;
-using CalamityInheritance.UI.MusicUI;
-using CalamityInheritance.UI.MusicUI.MusicButton;
 using CalamityMod.Projectiles.Rogue;
-using CalamityMod;
 using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.TestItem
 {

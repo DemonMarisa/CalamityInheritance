@@ -1,4 +1,5 @@
 using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.NPCs;
 using CalamityInheritance.Utilities;
 using Terraria;
 
@@ -12,7 +13,8 @@ namespace CalamityInheritance.Buffs.Legendary
     {
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().CryoDrainPlayer = true;
+            player.lifeRegen += CIGlobalNPC.CryoDrainDotDamage / 10;
+            player.whipRangeMultiplier += 0.2f;
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

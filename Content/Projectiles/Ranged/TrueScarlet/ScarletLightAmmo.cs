@@ -3,10 +3,10 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 {

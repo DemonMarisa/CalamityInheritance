@@ -2,13 +2,11 @@
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.Summon;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.CalProjChange;

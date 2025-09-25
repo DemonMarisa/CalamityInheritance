@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Schema;
 using CalamityInheritance.Buffs.Melee;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
@@ -26,9 +25,9 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Particles;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -265,11 +264,6 @@ namespace CalamityInheritance.CIPlayer
                     Player.thorns += 200;
                 }
             }
-            //庇护刃T2: 尝试使你无视防御损伤
-            if (DefenderPower || AncientAuricSet)
-            {
-                npc.Calamity().canBreakPlayerDefense = false;;
-            }
             //在血神图腾被移除游戏的时候，这里会改成血神图腾的样式
             if (CoreOfTheBloodGod)
             {
@@ -295,6 +289,8 @@ namespace CalamityInheritance.CIPlayer
                 if (CalamityInheritanceLists.beeEnemyList.Contains(npc.type))
                     calPlayer.contactDamageReduction += 0.25;
             }
+            bool ignoreDefenseDamage = DefenderPower || AncientAuricSet || (ShizukuMoon && moonClass == ShizukuMoonlight.ClassType.Magic);
+            npc.Calamity().canBreakPlayerDefense= !ignoreDefenseDamage;
 
         }
         #endregion
@@ -442,13 +438,8 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            
-            
-            //庇护刃T2: 尝试使你无视防御损伤
-            if (DefenderPower || AncientAuricSet)
-            {
-                proj.Calamity().DealsDefenseDamage = false;;
-            }
+            bool ignoreDefenseDamage = DefenderPower || AncientAuricSet || (ShizukuMoon && moonClass == ShizukuMoonlight.ClassType.Magic);
+            proj.Calamity().DealsDefenseDamage = ignoreDefenseDamage;
             if (FuckYouBees)
             {
                 if (CalamityInheritanceLists.beeProjectileList.Contains(proj.type))

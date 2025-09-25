@@ -195,6 +195,16 @@ Configs: {
 			// Label: Debug Color
 			// Tooltip: ""
 		}
+
+		Debugint3: {
+			// Label: Debugint3
+			// Tooltip: ""
+		}
+
+		Debugint4: {
+			// Label: Debugint4
+			// Tooltip: ""
+		}
 	}
 
 	CIRespriteConfig: {

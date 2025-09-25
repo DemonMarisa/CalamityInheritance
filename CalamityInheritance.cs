@@ -134,7 +134,6 @@ namespace CalamityInheritance
             // 修复星火bug的hook
             PhotovisceratorCalHook.Load();
             // 邪染特判补全
-            
             ElementalExcaliburTaintedDamageMultHook.Load();
             #endregion
         }

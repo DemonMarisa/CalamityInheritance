@@ -1,8 +1,6 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet;
-using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
-using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
@@ -11,16 +9,12 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Ranged
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet
 {
     public class R99 : CIRanged, ILocalizedModType
     {
         public const int CrackedShieldTime = 300;
         public const int FleshHitTime = 310;
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
         public override void SetDefaults()
         {
             Item.width = 172;
@@ -29,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.knockBack = 5f;
-            Item.DamageType = DamageClass.Ranged;
+            Item.DamageType = ScarletDamageClass.Instance;
             Item.autoReuse = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = CIShopValue.RarityPricePureRed;

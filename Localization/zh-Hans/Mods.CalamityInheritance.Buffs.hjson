@@ -262,3 +262,19 @@ FungalClumpLegacyBuff: {
 	// DisplayName: Fungal Clump Legacy Buff
 	// Description: Mods.CalamityInheritance.Buffs.FungalClumpLegacyBuff.Description
 }
+
+ShizukuMoonlight: {
+	Description:
+		'''
+		[c/98F5FF:「The power of the stars and the moon aids you in eradicating all obstacles on your path to godhood」]
+
+		'''
+	Default:
+		'''
+		[c/98F5FF:「群星与月之力将助你抹除登神之路上的所有阻碍」]
+		对敌怪造成额外50%伤害并无视20%减伤
+		'''
+	Melee: 提升50%防御力
+	Magic: 提升100%生命恢复速度，免疫防御损伤
+	DisplayName: 幽月极寒
+}

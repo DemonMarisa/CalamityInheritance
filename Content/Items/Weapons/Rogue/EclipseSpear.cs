@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;

@@ -2,16 +2,10 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
-using CalamityMod.NPCs.Cryogen;
-using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityMod;
-using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
-using Terraria.WorldBuilding;
 using CalamityInheritance.System.DownedBoss;
-using System.Collections.Generic;
 using System.Linq;
-using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Buffs.Statbuffs;
 
 namespace CalamityInheritance.NPCs
 {
@@ -24,7 +18,9 @@ namespace CalamityInheritance.NPCs
                 return true;
             }
         }
+        public ShizukuMoonlight.ClassType @moonClass;
         #region Debuff
+        public bool ShizukuMoon = false;
         public bool SilvaStunDebuff = false;
         // 梯凳之怒
         public bool rageOfChair = false;
@@ -56,6 +52,10 @@ namespace CalamityInheritance.NPCs
                 npc.lifeRegen -= rageOfChairDoTDamage;
                 if (damage < rageOfChairDoTDamage)
                     damage = 114514;
+            }
+            if (ShizukuMoon)
+            {
+                ApplyDPSDebuff(15000, 15000 / 5, ref npc.lifeRegen);
             }
             if(abyssalFlamesNPC)
             {
@@ -133,11 +133,7 @@ namespace CalamityInheritance.NPCs
         {
             Player plr = Main.player[projectile.owner];
             var mplr = plr.CIMod();
-
-
-
-
-
+            modifiers.DefenseEffectiveness *= 0.5f;
         }
         #region Pre AI
         public override bool PreAI(NPC npc)

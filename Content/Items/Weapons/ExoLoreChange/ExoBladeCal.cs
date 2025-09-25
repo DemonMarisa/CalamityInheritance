@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
-            string t = mp.PanelsLoreExo || mp.LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Melee.ExoBladeChange") : null;
+            string t = mp.PanelsLoreExo || mp.LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Melee.ExoBladeChange") : null;
             if (t != null)
                 tooltips.Add(new TooltipLine(Mod, "Name", t));
         }

@@ -50,13 +50,15 @@ namespace CalamityInheritance.Rarity.Special
     {
         //给予...的特殊稀有度颜色，仅在config开启特殊稀有度时生效
         //近似银白
-        public override Color RarityColor => new(248,248,255);//#F8F8FF
+        public static Color Color = new(248,248,255);
+        public override Color RarityColor => Color;//#F8F8FF
     }
     public class ShizukuAqua: ModRarity
     {
         //给予..的特殊稀有度颜色，仅在config开启特殊稀有度时生效
         //近似青蓝
-        public override Color RarityColor => new(152,245,255);//#98F5FF
+        public static Color color = new(152, 245, 255);
+        public override Color RarityColor => color;//#98F5FF
     }
     public class ArcueidColor: ModRarity
     {

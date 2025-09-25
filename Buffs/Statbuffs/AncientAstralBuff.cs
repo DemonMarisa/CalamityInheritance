@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Armor.AncientAstral;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Terraria;
@@ -19,10 +20,10 @@ namespace CalamityInheritance.Buffs.Statbuffs
         {
             var calPlayer = player.Calamity();    
             int getDef = player.statDefense;
-            int defenseBuff = (int)(getDef * 0.30f);
+            int defenseBuff = (int)(getDef * AncientAstralHelm.DefenseAndDR);
             player.statDefense += defenseBuff;
-            player.endurance += 0.3f;
-            calPlayer.defenseDamageRatio *= 0.5f;
+            player.endurance += AncientAstralHelm.DefenseAndDR;
+            calPlayer.defenseDamageRatio *= AncientAstralHelm.DefenseDamageReduction;
         }
 
     }

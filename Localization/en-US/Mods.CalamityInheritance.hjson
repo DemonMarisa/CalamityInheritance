@@ -16,7 +16,7 @@ Configs: {
 		}
 
 		ElementalQuiverSplitstyle: {
-			Label: "[i:CalamityInheritance/ElementalQuiver]Elemental Quiver Splitstyle"
+			Label: "[i:CalamityInheritance/ElementalQuiver]Elemental Quiver Split Style"
 			Tooltip:
 				'''
 				Determines the style of projectile spilt.
@@ -216,6 +216,16 @@ Configs: {
 
 		DebugColor: {
 			Label: Debug Color
+			Tooltip: ""
+		}
+
+		Debugint3: {
+			Label: Debugint3
+			Tooltip: ""
+		}
+
+		Debugint4: {
+			Label: Debugint4
 			Tooltip: ""
 		}
 	}

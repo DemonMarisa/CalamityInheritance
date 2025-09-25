@@ -1,12 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
-using CalamityMod.Projectiles.Boss;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture

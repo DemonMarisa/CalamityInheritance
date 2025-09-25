@@ -1,7 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod;
-using System;
 using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.ID;

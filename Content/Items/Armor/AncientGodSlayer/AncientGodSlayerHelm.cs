@@ -10,6 +10,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
+using static CalamityInheritance.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
 {
@@ -29,9 +30,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 30; //130
         }
-        
-
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientGodSlayerChestplate>() && legs.type == ModContent.ItemType<AncientGodSlayerLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.ThisBodyPart<AncientGodSlayerChestplate>(ArmorPart.Body) && legs.ThisBodyPart<AncientGodSlayerLeggings>(ArmorPart.Legs); 
 
         public override void UpdateArmorSet(Player player)
         {
@@ -42,7 +41,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             calPlayer.godSlayer = true;
             calPlayer.rogueStealthMax += 1.25f;
             usPlayer.AncientGodSlayerSet = true;
-            usPlayer.AncientGodSlayerStat = true;
             usPlayer.GodSlayerReborn = true;
             calPlayer.contactDamageReduction += 0.15f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
@@ -58,6 +56,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
                 }
                 
                 player.dash = 0;
+                //旧套装通用新增；血上限，血药，回血
+                calPlayer.healingPotionMultiplier += 0.70f;
+                player.lifeRegen += 8; //+4HP/s
             }
         }
         

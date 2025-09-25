@@ -270,3 +270,15 @@ FungalClumpLegacyBuff: {
 	DisplayName: Fungal Clump Legacy Buff
 	Description: Mods.CalamityInheritance.Buffs.FungalClumpLegacyBuff.Description
 }
+
+ShizukuMoonlight: {
+	Description: "[c/98F5FF:「The power of the stars and the moon aids you in eradicating all obstacles on your path to godhood」]"
+	Default:
+		'''
+		[c/98F5FF:「The power of the stars and the moon aids you in eradicating all obstacles on your path to godhood」]
+		Ignore target's defense by 50% and damage reduction by 20%
+		'''
+	Melee: 50% increased defense
+	Magic: 100% increased lige regen speed, immnue to Defense Damage
+	DisplayName: Luanr Gloom Frost
+}

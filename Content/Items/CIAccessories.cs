@@ -1,7 +1,3 @@
-using System;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Melee;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,6 +29,7 @@ namespace CalamityInheritance.Content.Items
             Item.height = BaseSD.Height;
             Item.value = BaseSD.Value;
             Item.rare = BaseSD.Rare;
+            Item.defense = BaseSD.Defense;
             Item.accessory = true;
             ExSD();
 

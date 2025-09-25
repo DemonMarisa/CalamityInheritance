@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Projectiles.Environment;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
@@ -9,19 +8,13 @@ using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Events;
 using CalamityMod.Projectiles.Boss;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.CIPlayer
 {

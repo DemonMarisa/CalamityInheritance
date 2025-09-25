@@ -177,7 +177,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             var source = player.GetSource_Accessory(Item);
             Vector2 velocity = new(0f, -1f);
 
-            // 08DEC2023: Ozzatron: Elementals spawned with... Hold on a second. Why the fuck are we doing damage calculations when the accessory is in vanity?!
             int baseDamage = player.ApplyArmorAccDamageBonusesTo(200);
             int elementalDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
 

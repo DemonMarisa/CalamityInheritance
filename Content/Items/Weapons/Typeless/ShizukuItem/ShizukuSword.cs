@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Typeless.Shizuku;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.CalPlayer;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,93 +22,96 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
     public class ShizukuSword : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Typeless";
+        private const int ManaUsage = 200;
         public override void SetStaticDefaults()
         {
-            // Item.staff[Type] = true;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
             Item.damage = 1140;
-            Item.width = 100;
+            //仅标记作用。
+            Item.DamageType = ShizukuDamageClass.Instance;
+            Item.channel = true;
+            Item.noUseGraphic = true;
             Item.height = 112;
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
-            Item.noMelee = true;
-            // Item.noUseGraphic = true;
             Item.value = CIShopValue.RarityPricePureRed;
             Item.rare = ModContent.RarityType<ShizukuAqua>();
-            Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ShizukuStar>();
-            Item.channel = true;
+            Item.shoot = ModContent.ProjectileType<ShizukuEnergy>();
             Item.shootSpeed = 12f;
         }
-        public override bool AltFunctionUse(Player player)
-        {
-            //右键切换攻击模式
-            ref ShizukuSwordType Style = ref player.CIMod().ShizukuSwordStyle;
-            Style = Style switch
-            {
-                ShizukuSwordType.ArkoftheCosmos => ShizukuSwordType.TargetSpawn,
-                _ => ShizukuSwordType.ArkoftheCosmos
-            };
-            return true;
-        }
+        public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
         {
             // 问题出在这里，二模式的情况下必须要按住右键射弹才不会凭空消失
             // 但是就算按住右键，channel也不会是true
-            ShizukuSwordType shizukuSwordType = player.CIMod().ShizukuSwordStyle;
-            switch (shizukuSwordType)
+
+            /*这里的问题非常逆天：
+            Item.channel仅表示武器支持长按模式，j即允许player.channel状态生效，但不会主动设置player.channel为true。
+            其次：若未设置item.useStyle = ItemUseStyleID.HoldUp（长按使用的动画样式），会导致长按输入无法触发player.channel
+            最后：CanUseItem在每次玩家点击时触发，若返回true的时机与长按输入不同步，会导致player.channel无法被激活。
+            武器设置了item.autoReuse = true，导致短按后自动重复使用，覆盖了长按的channel逻辑。
+            综合上述才导致了射弹自杀现象
+            */
+            int OwnerAttackType = player.altFunctionUse;
+            switch (OwnerAttackType)
             {
-                case ShizukuSwordType.ArkoftheCosmos:
-                    Item.channel = false;
-                    Item.noUseGraphic = false;
-                    return true;
-                case ShizukuSwordType.TargetSpawn:
-                    Item.channel = true;
-                    Item.noUseGraphic = true;
-                    return true;
                 default:
-                    return false;
+                    Item.channel = false;
+                    Item.shootsEveryUse = true;
+                    Item.useStyle = ItemUseStyleID.Swing;
+                    Item.autoReuse = true;
+                    Item.noMelee = false;
+                    return true;
+                case 2:
+                    Item.channel = true;
+                    Item.shootsEveryUse = false;
+                    Item.useStyle = ItemUseStyleID.Shoot;
+                    Item.autoReuse = false;
+                    Item.noMelee = true;
+                    return true;
             }
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player owner = Main.LocalPlayer;
-            ShizukuSwordType attackType = owner.CIMod().ShizukuSwordStyle;
+            //->change it to holding shift
+            bool isHoldingShift = Main.keyState.IsKeyDown(Keys.LeftAlt);
             string defaultPath = $"{Generic.WeaponTextPath}Typeless.{GetType().Name}.";
             //创建列表映射，老样子。
             var handlers = new List<(Func<bool> Condition, Action<List<TooltipLine>, string> Handler)>
             {
-                ( () => attackType is ShizukuSwordType.TargetSpawn, TooltipHallowedBiome),
+                ( () => isHoldingShift, TooltipHallowedBiome),
                 ( () => true, TooltipDefault)
             };
             handlers.First(t => t.Condition()).Handler(tooltips, defaultPath);
             string path = defaultPath + "Pillar";
+            string dayPath = defaultPath + "Evil";
+            string nightPath = defaultPath + "TripEvent";
             Color shizukuColor = new(152, 245, 255);
-            tooltips.InsertNewLineToFinalLine(Mod, path, shizukuColor);
+            if (Main.dayTime || Main.eclipse)
+                tooltips.InsertNewLineToFinalLine(Mod, dayPath);
+            if (!Main.dayTime)
+                tooltips.InsertNewLineToFinalLine(Mod, nightPath);
+            tooltips.InsertNewLineToFinalLine(Mod, path);
         }
         #region 特殊情况下的效果
         private void TooltipDefault(List<TooltipLine> tooltips, string defaultPath)
         {
             string path = defaultPath + "General";
-            tooltips.FuckThisTooltipAndReplace(path);
+            tooltips.FuckThisTooltipAndReplace(path, "Alt");
         }
         private void TooltipHallowedBiome(List<TooltipLine> tooltips, string defaultPath)
         {
             string path = defaultPath + "Hallowed";
-            tooltips.FuckThisTooltipAndReplace(path);
+            tooltips.FuckThisTooltipAndReplace(path, GetManaUsage());
         }
         #endregion
-        private delegate void ShootAction(CalamityInheritancePlayer modPlayer, CalamityPlayer calPlayer, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback);
-        private readonly Dictionary<ShizukuSwordType, ShootAction> _shootActionMap = new()
-        {
-            {ShizukuSwordType.ArkoftheCosmos,ShootAOTC},
-            {ShizukuSwordType.TargetSpawn,ShootTarget}
-        };
-        private static void ShootAOTC(CalamityInheritancePlayer modPlayer, CalamityPlayer calPlayer, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        private static void ShootAOTC(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int fireOffset = -65;
             Vector2 mousePos = Main.MouseWorld;
@@ -129,26 +133,47 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
 
                 int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ModContent.ProjectileType<ShizukuStar>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
                 Main.projectile[projectileFire].timeLeft = 160;
+                Main.projectile[projectileFire].DamageType = DamageClass.Melee;
             }
+            SoundStyle starToss = Utils.SelectRandom(Main.rand, ShizukuSounds.StarToss.ToArray());
+            SoundEngine.PlaySound(starToss with { MaxInstances = 0, Volume = 0.6f }, position);
+            Projectile.NewProjectile(source, player.MountedCenter, new Vector2(player.direction, 0f), type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax, 1.0f);
         }
-        private static void ShootTarget(CalamityInheritancePlayer modPlayer, CalamityPlayer calPlayer, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        private static void ShootTarget(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if  (player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] < 1)
-                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ShizukuSwordHoldout>(), damage, knockback, player.whoAmI);
-            if  (player.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] < 1)
-                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ShizukuStarHoldout>(), damage, knockback, player.whoAmI);
-
+            int target = ModContent.ProjectileType<ShizukuSwordHoldout>();
+            if  (player.ownedProjectileCounts[target] < 1 && player.statMana > GetManaUsage())
+                Projectile.NewProjectileDirect(source, position, velocity, target, damage, knockback, player.whoAmI);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            ShizukuSwordType attackType = player.CIMod().ShizukuSwordStyle;
-            CalamityPlayer calPlayer = player.Calamity();
-            CalamityInheritancePlayer modPlayer = player.CIMod();
             if (player.altFunctionUse is 2)
-                return false;
-            if (_shootActionMap.TryGetValue(attackType, out var shootAction))
-                shootAction(modPlayer, calPlayer, player, source, position, velocity, type, damage, knockback);
+                ShootTarget(player, source, position, velocity, type, damage, knockback);
+            else
+                ShootAOTC(player, source, position, velocity, type, damage, knockback);
+            
             return false;
         }
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Typeless/ShizukuItem/{GetType().Name}"+"_GlowMask").Value);
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                    AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
+                    AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
+                    AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
+                    AddRecipeGroup(CIRecipeGroup.AnyChest).
+                    AddIngredient(ItemID.LunarBar, 30).
+                    AddIngredient<Lumenyl>(30).
+                    AddIngredient<AshesofAnnihilation>(15).
+                    AddIngredient<AncientMiracleMatter>().
+                    AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
+                    AddCondition(Condition.NearShimmer).
+                    Register();
+
+        }
+        public static int GetManaUsage() => Main.dayTime ? ManaUsage : ManaUsage / 2;
     }
 }

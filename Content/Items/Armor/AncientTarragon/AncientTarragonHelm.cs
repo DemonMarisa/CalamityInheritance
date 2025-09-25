@@ -43,6 +43,17 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             calPlayer.wearingRogueArmor = true;
             calPlayer.WearingPostMLSummonerSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
+            calPlayer.defenseDamageRatio *= 0.45f; //防损减免
+            if(player.statLife <= player.statLifeMax2 * 0.5f)
+            {
+                int getDef = player.GetCurrentDefense();
+                int buffDef = (int)(getDef * 0.2f);
+                player.statDefense += buffDef;
+                player.endurance += 0.2f;
+            }
+            calPlayer.healingPotionMultiplier += 0.45f; 
+            player.crimsonRegen = true;
+            player.lifeRegen += 8; //+4HP/s
         }
         
         public override void UpdateEquip(Player player)

@@ -7,6 +7,8 @@ using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod.Items.Armor.Empyrean;
+using CalamityMod.CalPlayer;
+using CalamityInheritance.Buffs.Statbuffs;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
@@ -40,16 +42,43 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod();
             modPlayer.wearingRogueArmor = true;
-            modPlayer1.AncientXerocSet = true;
             modPlayer.rogueStealthMax += 1.10f;
-            player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer.rogueVelocity += 0.10f;
-
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            XerocSetbouns(player, modPlayer);
             player.Calamity().WearingPostMLSummonerSet = true;
         }
+        public static void XerocSetbouns(Player player, CalamityPlayer calPlayer)
+        {
+            calPlayer.stealthStrikeHalfCost = true;
+            if (player.statLife <= (player.statLifeMax2 * 0.8f) && player.statLife > (player.statLifeMax2 * 0.6f))
+            {
+                player.GetDamage<GenericDamageClass>() += 0.10f;
+                player.GetCritChance<GenericDamageClass>() += 10;
+            }
 
+            else if (player.statLife <= (player.statLifeMax2 * 0.6f) && player.statLife > (player.statLifeMax2 * 0.25f))
+            {
+                player.GetDamage<GenericDamageClass>() += 0.15f;
+                player.GetCritChance<GenericDamageClass>() += 15;
+            }
+
+            else if (player.statLife <= (player.statLifeMax2 * 0.25f) && player.statLife > (player.statLifeMax2 * 0.15f))
+            {
+                player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
+                player.GetDamage<GenericDamageClass>() += 0.40f;
+                player.GetCritChance<GenericDamageClass>() += 40;
+                player.manaCost *= 0.10f;
+                calPlayer.healingPotionMultiplier += 0.10f;
+            }
+            else if (player.statLife <= (player.statLifeMax2 * 0.15f))
+            {
+                player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
+                player.GetDamage<GenericDamageClass>() -= 0.40f;
+                player.GetCritChance<GenericDamageClass>() -= 40;
+            }
+        }
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<GenericDamageClass>() += 0.05f;

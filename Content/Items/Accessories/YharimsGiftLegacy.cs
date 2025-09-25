@@ -2,11 +2,9 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories

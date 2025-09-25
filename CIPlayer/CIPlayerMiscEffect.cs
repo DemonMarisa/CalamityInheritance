@@ -15,7 +15,6 @@ using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
 using Terraria.ID;
 using CalamityMod.Cooldowns;
-using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Armor.Silva;
@@ -32,38 +31,24 @@ using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
-using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.NPCs;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.Buffs.Potions;
 using CalamityInheritance.Buffs.Potions;
-using CalamityInheritance.Common.CIHook;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
-using CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk;
+using static CalamityInheritance.Buffs.Statbuffs.ShizukuMoonlight;
+using System.Net.Sockets;
 
-
-//Scarlet:将全部灾厄的Player与CI的Player的变量名统一修改，byd modPlayer和modPlayer1飞来飞去的到底在整啥😡
-//灾厄Player的变量名现在统一为calPlayer。本模组player的变量名统一为usPlayer
-
-/*
- * 3/6:“玩家”类内的各种……对象现在更加严格地分类整理
- * 此处的一些分类标准:
- * ArmorSetbonus()现在存放不会通过提供buff来间接修改玩家数值的套装效果
- * Buffs()所有的buff都应该转到这里面曲
- * Accessories()饰品的数值都应该跑到这里来
- */
 namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         public static readonly int darkSunRingDayRegen = 6;
         public static readonly int darkSunRingNightDefense = 20;
+        //当务之急是把这个文件所有东西都整理一遍……
         public override void PostUpdateMiscEffects()
         {
             CalamityPlayer calPlayer = Player.Calamity();
@@ -94,9 +79,6 @@ namespace CalamityInheritance.CIPlayer
 
             //各种套装效果的封装
             ArmorSetbonus();
-
-            //克希洛克套装效果的封装(因为太长了所以单独封装起来了)
-            XerocSetbouns();
             
             //冷却变动
             ResetCD();
@@ -240,6 +222,29 @@ namespace CalamityInheritance.CIPlayer
         public void Buffs()
         {
             Player player = Main.player[Main.myPlayer];
+            //溯月的效果需要后置于modbuff更新
+            if (ShizukuMoon)
+            {
+                //获取玩家当前的类型
+                ClassType moonClass = player.CIMod().moonClass;
+                switch (moonClass)
+                {
+                    case ClassType.Magic:
+                        int curLifeRegen = player.lifeRegen;
+                        int addRegen = curLifeRegen;
+                        if (addRegen < 15)
+                            addRegen = 15;
+                        player.lifeRegen += addRegen;
+                        break;
+                    case ClassType.Melee:
+                        int curDefense = player.GetCurrentDefense();
+                        int addDefense = curDefense;
+                        player.statDefense += addDefense;
+                        break;
+                    default:
+                        break;
+                }
+            }
             //庇护之刃T3: 你的防御力将会被转化为伤害加成
             if (player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && DefendTier3)
             {
@@ -255,11 +260,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.GetAttackSpeed<MagicDamageClass>() += 0.10f;
                 Player.manaCost -= 0.10f;
-            }
-            if (CryoDrainPlayer)
-            {
-                Player.lifeRegen += CIGlobalNPC.CryoDrainDotDamage / 10;
-                Player.whipRangeMultiplier += 0.2f;
             }
 
             if (BuffPolarisBoost)
@@ -310,16 +310,6 @@ namespace CalamityInheritance.CIPlayer
                     AnimusDamage = 1f;
             }
 
-            if (PerunofYharimStats)
-            {
-                Player.GetAttackSpeed<MeleeDamageClass>() += 0.40f * AncientAuricDashCounter; 
-                Player.GetAttackSpeed<RangedDamageClass>() += 0.30f * AncientAuricDashCounter; 
-                Player.GetAttackSpeed<MagicDamageClass>() += 0.35f * AncientAuricDashCounter;
-                Player.GetCritChance<GenericDamageClass>() += 100 * AncientAuricDashCounter; //所有职业获得100暴击概率
-                Player.manaCost *= 0.20f;
-                Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 2f * AncientAuricDashCounter;
-                Player.GetAttackSpeed<RogueDamageClass>() += 0.30f * AncientAuricDashCounter;
-            }
             if (PerunofYharimCooldown <= 0)
             {
                 AncientAuricDashCounter = 0;
@@ -348,12 +338,6 @@ namespace CalamityInheritance.CIPlayer
         {
 
             CalamityPlayer calPlayer = Player.Calamity();
-            NerfStackAccessories();
-            if (YharimsInsignia)
-            {
-                if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
-                    Player.GetDamage<GenericDamageClass>() += 0.1f;
-            }
             if (AeroStonePower)
             {
                 Player.jumpSpeedBoost += 0.2f;
@@ -384,18 +368,6 @@ namespace CalamityInheritance.CIPlayer
                 if(Main.eclipse || !Main.dayTime)
                     Player.statDefense += darkSunRingNightDefense;
             }
-            
-            if (BraveBadge && calPlayer.tarraMelee && !calPlayer.auricSet) //如果启用
-            {
-                Player.GetCritChance<MeleeDamageClass>() += 10;
-                Player.GetDamage<MeleeDamageClass>() += 0.10f;
-                Player.GetArmorPenetration<MeleeDamageClass>() += 15; 
-            }
-            
-            if (deificAmuletEffect)
-            {
-                Player.lifeRegen += 1; //生命恢复
-            }
             if (RoDPaladianShieldActive) //如果佩戴壁垒
             {
                 // 符合条件就启用圣骑士盾效果
@@ -413,61 +385,6 @@ namespace CalamityInheritance.CIPlayer
                                 Main.player[myPlayer].AddBuff(BuffID.PaladinsShield, 20);
                         }
                     }
-                }
-            }
-            if(SpeedrunNecklace)
-            {
-                
-            }
-            if(AncientCotbg)
-            /*
-            远古血神加强：
-            ·+10%血上限
-            ·10%常驻增伤和5%免伤与血肉图腾效果
-            ·少于50%血量5%免伤，10%增伤
-            ·少于15%血量10%免伤，20%增伤
-            ·低于100防御20%增伤
-            ·低于100防御追加一个10%的全局攻速加成
-            ↑上述效果可以与返厂的旧血炎叠加.
-            */
-            {
-                calPlayer.fleshTotem = true;
-                // Player.statLifeMax2 += (int)(Player.statLifeMax * 0.1f);
-                Player.endurance += 0.05f;
-                Player.GetDamage<GenericDamageClass>() += 0.05f;
-                if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
-                {
-                    Player.endurance += 0.05f;
-                    Player.GetDamage<GenericDamageClass>() += 0.1f;
-                    if(Player.statLife <= (int)(Player.statLifeMax2 * 0.15f))
-                    {
-                        Player.endurance += 0.10f;
-                        Player.GetDamage<GenericDamageClass>() += 0.20f;
-                    }
-                }
-                if(Player.statDefense <= 100)
-                {
-                    Player.GetDamage<GenericDamageClass>() += 0.20f;
-                    Player.GetAttackSpeed<GenericDamageClass>() += 0.1f;
-                }
-            }
-
-            if(BloodflareCoreStat)
-            /*旧血炎：低于50%血量5%免伤与10%增伤，低于15%血量10免伤与20增伤。低于100防御力20增伤*/
-            {
-                if(Player.statLife <= (int)(Player.statLifeMax2 * 0.5f))
-                {
-                    Player.endurance += 0.05f;
-                    Player.GetDamage<GenericDamageClass>() += 0.1f;
-                    if(Player.statLife <= (int)(Player.statLifeMax2 * 0.15f))
-                    {
-                        Player.endurance += 0.10f;
-                        Player.GetDamage<GenericDamageClass>() += 0.20f;
-                    }
-                }
-                if(Player.statDefense <= 100)
-                {
-                    Player.GetDamage<GenericDamageClass>() += 0.15f;
                 }
             }
             if(EHeartStats)
@@ -511,20 +428,8 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.livingDewHalveDebuffs = true;
             }
             if(AmbrosialStats)
-            {
-                Player.pickSpeed -= 0.5f; //这样会使挖矿速度上下位不能叠加, 但是有一说一都到四柱/神后了, 挖矿速度又不缺这点
-            }
+                Player.pickSpeed -= 0.5f;
         }
-
-        private void NerfStackAccessories()
-        {
-            if (NerfFinalSummonAcc)
-            {
-                Player.maxMinions -= 2;
-                Player.GetDamage<SummonDamageClass>() -= 0.05f;
-            }
-        }
-
         private void Nanotechs()
         {
             CalamityPlayer modPlayer = Player.Calamity();
@@ -621,7 +526,6 @@ namespace CalamityInheritance.CIPlayer
         public void ArmorSetbonus()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            var usPlayer = Player.CIMod();
             
             if (GodSlayerRangedSet) 
             {
@@ -631,46 +535,11 @@ namespace CalamityInheritance.CIPlayer
                     Player.GetCritChance<RangedDamageClass>() += 20;
             }
             #region 远古套装系列
-            if (AncientTarragonSet)
-            {
-                calPlayer.defenseDamageRatio *= 0.45f; //防损减免
-                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
-                {
-                    int getDef = Player.GetCurrentDefense();
-                    int buffDef = (int)(getDef * 0.2f);
-                    Player.statDefense += buffDef;
-                    Player.endurance += 0.2f;
-                }
-                calPlayer.healingPotionMultiplier += 0.45f; 
-                Player.crimsonRegen = true;
-                Player.lifeRegen += 8; //+4HP/s
-                
-            }
 
-            if (AncientBloodflareStat)
-            {
-                calPlayer.healingPotionMultiplier += 0.35f; 
-                Player.lifeRegen += 10; //+10HP/s
-                if(Player.statLife <= Player.statLifeMax2/2)
-                Player.lifeRegen += 16; //+8HP/s
-            }
-
-            if (AncientGodSlayerStat)
-            {
-                //旧套装通用新增；血上限，血药，回血
-                calPlayer.healingPotionMultiplier += 0.70f;
-                Player.lifeRegen += 8; //+4HP/s
+            if (AncientGodSlayerSet)
                 RefreshGodSlayerDash(calPlayer);
-            }
             if (AncientGodSlayerBuffCounter > 0)
                 Player.GetDamage<GenericDamageClass>() += 0.2f;
-            
-            if (AncientSilvaStat)
-            {
-                calPlayer.healingPotionMultiplier += 0.30f;
-                Player.lifeRegen += 24; //+12HP/s
-                Player.lifeRegenTime = 2000;
-            }
             
             if(AncientAuricSet)
             {
@@ -796,12 +665,14 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Player player = Main.player[Main.myPlayer];
             Item item = player.HeldItem;
-            if (ShroomiteFlameBooster && item.useAmmo == AmmoID.Gel)
+            if (item.type == ModContent.ItemType<ShizukuSword>())
             {
-                Player.GetDamage<RangedDamageClass>() += 0.30f;
-                Player.GetCritChance<RangedDamageClass>() += 5;
-                if (Main.zenithWorld)
-                    Player.GetDamage<RangedDamageClass>() *= 3f;
+                Player.GetDamage<GenericDamageClass>() += 0.15f;
+                Player.GetAttackSpeed<GenericDamageClass>() += 0.15f;
+                Player.GetCritChance<GenericDamageClass>() += 15;
+                Player.statDefense += 10;
+                Player.endurance += 0.10f;
+                Player.lifeRegen += 10;
             }
             if (EmpressBooster)
             {
@@ -879,10 +750,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
-            {
                 AncientAstralStealth = 0; //置零就行了 
-            }
-
             
             if (nanotechold)
             {
@@ -1094,47 +962,7 @@ namespace CalamityInheritance.CIPlayer
             else
                 ElysianGuard = false;
         }
-        public void XerocSetbouns()
-        {
-            CalamityPlayer calPlayer= Player.Calamity();
-            if(AncientXerocSet)
-            {
-                calPlayer.stealthStrikeHalfCost = true; //使盗贼的潜伏值只消耗一半
-     
-                if(Player.statLife<=(Player.statLifeMax2 * 0.8f) && Player.statLife > (Player.statLifeMax2 * 0.6f))
-                {
-                    Player.GetDamage<GenericDamageClass>() +=0.10f;
-                    Player.GetCritChance<GenericDamageClass>() += 10;
-                }
-
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.6f) && Player.statLife > (Player.statLifeMax2 * 0.25f))
-                {
-                    Player.GetDamage<GenericDamageClass>() +=0.15f;
-                    Player.GetCritChance<GenericDamageClass>() += 15;
-                }
-                
-                else if(Player.statLife<=(Player.statLifeMax2 * 0.25f) && Player.statLife > (Player.statLifeMax2 * 0.15f))
-                {
-                    //进一步压缩血量 阈值。现在最高收益需要的血量区间为最大生命值的25%到15%.（此前为35%）
-                    Player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
-                    Player.GetDamage<GenericDamageClass>() += 0.40f; //玩家血量30%下的数值加成：50%伤害与50%暴击率
-                    Player.GetCritChance<GenericDamageClass>() += 40;
-                    Player.manaCost *= 0.10f; //魔法武器几乎不耗魔力
-                    calPlayer.healingPotionMultiplier += 0.10f;
-                    //Scarlet:追加了10%治疗量加成，这一效果会使150血药的治疗变成165治疗，保证使用150血治疗后不会让玩家继续停留在这个增伤区间
-                    //附：我并不是很喜欢这种卖血换输出的设计，但原作如此。
-                }
-                else if(Player.statLife<=(Player.statLifeMax2 *0.15f))
-                {
-                    Player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
-                    Player.GetDamage<GenericDamageClass>() -= 0.40f; //低于15%血量时-40%伤害与暴击率 - 这一效果可以通过搭配克希洛克翅膀免疫
-                    Player.GetCritChance<GenericDamageClass>() -= 40;
-                    // Player.statDefense -= 50; //削减其防御力，使损失的防御力几乎足以致死
-                    //25.2.11:移除防御力削减的负面效果，我也不知道我是出于什么心态才加的
-                    AncientXerocWrath = true;
-                }
-            }
-        }
+        
         public void LoreEffects()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();

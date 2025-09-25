@@ -1,9 +1,6 @@
-using System;
-using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -77,7 +74,7 @@ namespace CalamityInheritance.CIPlayer
                     totalCritsBuff += 1f;
             }
             //魔君之怒，这个是全局加成。
-            if (PerunofYharimStats)
+            if (Player.HasBuff<yharimOfPerun>())
             {
                 float giveBuff = GetWantedCrits<GenericDamageClass>();
                 totalCritsBuff += giveBuff;

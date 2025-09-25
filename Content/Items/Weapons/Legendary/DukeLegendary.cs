@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class DukeLegendary: CIMelee, ILocalizedModType
     {
         public int baseDamage = 75;
-        public static string TextRoute => $"{Generic.WeaponTextPath}.Melee.DukeLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}Melee.DukeLegendary";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage() + Generic.GenericLegendBuff();
             int boostPercent = (int)(getDmg);

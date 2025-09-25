@@ -1,4 +1,3 @@
-using CalamityInheritance.Content.Items.Accessories;
 using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
@@ -11,11 +10,8 @@ namespace CalamityInheritance.CIPlayer
         {
             float LifePercentMax = 0f;
             if (CoreOfTheBloodGod)
-            {
                 LifePercentMax += 0.25f;
-            }
-            if (AncientCotbg)
-                LifePercentMax += 0.1f;
+            
             //元素手套10%
             if (ElemGauntlet)
                 LifePercentMax += 0.1f;

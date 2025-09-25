@@ -91,24 +91,24 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             NPC.damage = 0;
 
             CIGlobalNPC.LegacySCalWorm = NPC.whoAmI;
-            // Ä¿±ê²éÕÒ
+            // Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
             if (!Main.player[NPC.target].active || Main.player[NPC.target].dead)
                 NPC.TargetClosest(true);
 
             Player player = Main.player[NPC.target];
 
-            // ÉíÌåÉú³ÉÂß¼­
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 HandleWormBodySpawning(player);
             }
 
-            // ´æÔÚ×´Ì¬¼ì²é
+            // ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½
             HandleExistenceConditions();
 
-            // ÎÒ²Ý£¬ÎÒ²»¹ÜÁË£¬ÀÁÁË
-            #region ÔÖ·Ø³æÒÆ¶¯
-            // ÒÆ¶¯Âß¼­
+            // ï¿½Ò²Ý£ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½
+            #region ï¿½Ö·Ø³ï¿½ï¿½Æ¶ï¿½
+            // ï¿½Æ¶ï¿½ï¿½ß¼ï¿½
             Vector2 vector18 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
             float num191 = Main.player[NPC.target].position.X + Main.player[NPC.target].width / 2;
             float num192 = Main.player[NPC.target].position.Y + Main.player[NPC.target].height / 2;
@@ -239,7 +239,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 }
             }
             #endregion
-            // ¸üÐÂÐý×ª
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
             NPC.rotation = NPC.velocity.ToRotation() + MathHelper.PiOver2;
         }
         public void HandleWormBodySpawning(Player player)
@@ -261,16 +261,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                         else if (i >= 0 && i < minLength)
                         {
                             lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<SCalWormBody>(), NPC.whoAmI);
-                            // localAI[3] »æÖÆÄÄ¸ö°æ±¾µÄÌå½Ú
+                            // localAI[3] ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½
                             Main.npc[lol].localAI[3] = i;
                         }
                         else
                             lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<SCalWormTail>(), NPC.whoAmI);
 
                         Main.npc[lol].realLife = NPC.whoAmI;
-                        // AI2£¬´«µÝRealLife
+                        // AI2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RealLife
                         Main.npc[lol].ai[2] = NPC.whoAmI;
-                        // AI1£¬´«µÝÊÇ·ñËÀÍö
+                        // AI1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
                         Main.npc[lol].ai[1] = Previous;
                         Previous = lol;
                     }
@@ -283,7 +283,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             }
         }
 
-        // ¼ì²âÊÇ·ñÓ¦¸Ã´æÔÚ
+        // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ó¦ï¿½Ã´ï¿½ï¿½ï¿½
         public void HandleExistenceConditions()
         {
             bool shouldDespawn = Main.player[NPC.target].dead || !NPC.AnyNPCs(ModContent.NPCType<SCalWormHeart>()) || CIGlobalNPC.LegacySCal < 0 || !Main.npc[CIGlobalNPC.LegacySCal].active;
@@ -300,7 +300,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 NPC.alpha = Math.Max(NPC.alpha - 42, 0);
             }
         }
-        // Ö±½Ó½«ËùÓÐÈä³æÉèÖÃÎª²»»îÔ¾
+        // Ö±ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ô¾
         public void DespawnAllWormParts()
         {
             SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);

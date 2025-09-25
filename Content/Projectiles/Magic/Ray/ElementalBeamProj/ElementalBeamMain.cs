@@ -5,7 +5,6 @@ using ReLogic.Content;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Typeless;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
