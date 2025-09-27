@@ -46,6 +46,8 @@ namespace CalamityInheritance
         internal bool MusicAvailable => musicMod is not null;
         // 获取莉莉音乐包
         internal Mod liliesmusicMod = null;
+
+        internal Mod UCA = null;
         #region Mod Support
         public override object Call(params object[] args) => CIModCall.Call(args);
         #endregion
@@ -53,6 +55,8 @@ namespace CalamityInheritance
         {
             Instance = this;
 
+            UCA = null;
+            ModLoader.TryGetMod("UCA", out UCA);
             // 获取灾厄音乐
             musicMod = null;
             ModLoader.TryGetMod("CalamityModMusic", out musicMod);
@@ -169,6 +173,7 @@ namespace CalamityInheritance
         #region Unload
         public override void Unload()
         {
+            UCA = null;
             // 卸载灾厄音乐
             musicMod = null;
             // 卸载莉莉音乐包

@@ -401,8 +401,13 @@ namespace CalamityInheritance.CIPlayer
         {
             if (GI<HeliumFlashLegacy>() != null)
                 IR<HeliumFlashLegacy>(R.HeliumFlashResprite ? CIWeaponsResprite.HeliumFlashLegacy : CIWeaponsResprite.HeliumCal);
-            if (GI<PlasmaRod>() is not null)
-                IR<PlasmaRod>(R.PlasmaRod ? CIWeaponsResprite.PlasmaRodAlter : CIWeaponsResprite.PlasmaRod);
+
+            if (CalamityInheritance.Instance.UCA is not null)
+            {
+                if (GI<PlasmaRod>() is not null)
+                    IR<PlasmaRod>(R.PlasmaRod ? CIWeaponsResprite.PlasmaRodAlter : CIWeaponsResprite.PlasmaRod);
+            }
+
             if (GI<StaffofBlushie>() is not null)
                 IR<StaffofBlushie>(R.StaffofBlushie ? CIWeaponsResprite.StaffofBlushieLegacy : CIWeaponsResprite.StaffofBlushie);
         }
