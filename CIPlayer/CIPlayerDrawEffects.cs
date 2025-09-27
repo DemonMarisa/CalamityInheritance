@@ -8,10 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
-using CalamityMod.Dusts;
 using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityMod.Graphics.Renderers;
-using CalamityMod.CalPlayer;
 using CalamityMod.Particles;
 
 namespace CalamityInheritance.CIPlayer

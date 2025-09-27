@@ -476,6 +476,11 @@ namespace CalamityInheritance.Utilities
         [Obsolete("弃用：建议使用更容易理解的拓展方法")]
         public static float SetDistance(float tileCounts) => tileCounts * 16;
         public static float ToDistance(this float tileCounts) => tileCounts * 16;
+        public static string ToPercent(this float floatCount) => $"{(int)(floatCount * 100f)}%";
+        public static string ToPercent(this int intCount) => $"{intCount}%";
+        public static string ToStealthInt(this float single) => $"{(int)(single * 100f)}";
+        public static string ToTooltipHP(this float innerLifeRegen) => $"+{(int)(innerLifeRegen * 2f)} HP/s";
+        public static int ToInnerLifeRegen(this float innerLifeRegen) => (int)(innerLifeRegen * 2f);
 
         /// <summary>
         /// bro，这真的很多字
@@ -565,6 +570,7 @@ namespace CalamityInheritance.Utilities
             //设定速度
             proj.velocity = velo;
         }
+        public static bool LegalTarget(this NPC target, Projectile proj) => target != null && target.CanBeChasedBy(proj);
         public static Player GetProjOwner(this Projectile proj) => Main.player[proj.owner];
         public static bool IsOwnedProj<T>(this Player player, int count = 1) where T : ModProjectile => IsOwnedProj(player, ModContent.ProjectileType<T>(), count);
         public static bool IsOwnedProj(this Player player, int Type, int count = 1) => player.ownedProjectileCounts[Type] < count;

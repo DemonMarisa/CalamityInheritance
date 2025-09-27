@@ -84,6 +84,8 @@ Mods: {
 			ShizukuSwordProjectile.DisplayName: Shizuku Sword Projectile
 			ShizukuEdgeProjectile2.DisplayName: Shizuku Edge Projectile2
 			ShizukuStarMark.DisplayName: Shizuku Star Mark
+			DesertMark.DisplayName: Desert Mark
+			DesertTornado.DisplayName: Desert Tornado
 		}
 
 		Content/Projectiles/Summon: {
@@ -106,6 +108,16 @@ Mods: {
 				DisplayName: held Proj Test
 				Tooltip: ""
 			}
+
+			DesertFeather: {
+				DisplayName: Desert Feather Legacy
+				Tooltip: Used to craft multiple items related on Desert
+			}
+		}
+
+		DamageClasses: {
+			ShizukuDamageClass.DisplayName: "[c/98F5FF:Moonlight Damage]"
+			ScarletDamageClass.DisplayName: "[c/E4080A:True Ranged Damage]"
 		}
 	}
 }

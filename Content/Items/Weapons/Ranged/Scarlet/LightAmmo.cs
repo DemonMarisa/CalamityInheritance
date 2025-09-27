@@ -1,16 +1,14 @@
+using CalamityInheritance.Content.Items.Ammo;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet;
-using CalamityInheritance.Core;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.DownedBoss;
-using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet
 {
     public class LightAmmo : CIAmmo, ILocalizedModType
     {

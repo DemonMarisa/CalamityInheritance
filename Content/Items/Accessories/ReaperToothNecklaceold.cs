@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Rarity;
-using System.Runtime.CompilerServices;
 using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories

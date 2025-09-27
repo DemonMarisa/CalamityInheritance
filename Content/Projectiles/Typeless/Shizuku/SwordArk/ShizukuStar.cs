@@ -1,16 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Core;
 using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using rail;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -19,7 +18,7 @@ using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 {
-    public partial class ShizukuStar : ModProjectile,ILocalizedModType
+    public class ShizukuStar : ModProjectile,ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public Player Owner => Main.player[Projectile.owner];
@@ -45,6 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.penetrate = 4;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
+            Projectile.noEnchantmentVisuals = true;
             Projectile.timeLeft = 400;
         }
         public override Color? GetAlpha(Color lightColor)
@@ -62,12 +62,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 //生成“粒子”
                 for (int i = 0; i < 8; i++)
                 {
-                    float scale = MathHelper.Lerp(12f, 19f, CalamityUtils.Convert01To010(i / 12f));
+                    float scale = MathHelper.Lerp(18f, 26f, CalamityUtils.Convert01To010(i / 12f));
                     offset = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.UnitY) * MathHelper.Lerp(-40f, 40f, i / 12f);
                     Vector2 particleVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedByRandom(0.25f) * Main.rand.NextFloat(2.5f, 3.5f);
                     ShizukuStarMetaball.SpawnParticle(offset, particleVelocity, scale);
                 }
             }
+            DrawDust();
             if (AttackTimer < 10)
                 ShizukuStarMetaball.SpawnParticle(_cacheStartPosition, Vector2.Zero, 54f);
             AttackTimer += 1;
@@ -78,25 +79,66 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 Projectile.HomingNPCBetter(target, 1f, 20f, 20f, ignoreDist: true);
             
         }
+
+        private void DrawDust()
+        {
+            if (Main.rand.NextBool(4))
+            {
+                Dust d = Dust.NewDustDirect(Projectile.Center, 24, 24, Main.rand.NextBool() ? DustID.PortalBoltTrail : DustID.PortalBolt, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f);
+                d.scale = Main.rand.NextFloat(0.8f, 1.2f);
+                d.color = new(91, 222, 255);
+                d.noGravity = true;
+            }
+        }
         #region 地形效果
         #endregion
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            DamageClass bestDamageClass = Owner.GetBestClass();
-            ShizukuSwordType attackType = Owner.CIMod().ShizukuSwordStyle;
-            if (attackType != ShizukuSwordType.ArkoftheCosmos)
-                return;
-
-            //创建列表映射 
-            var handlers = new List<(Func<bool> Condition, Action<NPC, NPC.HitInfo, int> Handler)>
+            target.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 600);
+            if (Projectile.DamageType == DamageClass.Magic)
             {
-                ( () => bestDamageClass == ModContent.GetInstance<RogueDamageClass>(), HandleRogue),
-                ( () => bestDamageClass == DamageClass.Summon, HandleSummon),
-                ( () => bestDamageClass == DamageClass.Magic, HandleMagic),
-                ( () => bestDamageClass == DamageClass.Ranged, HandleRanged),
-                ( () => true, HandleDefault),
-            };
-            handlers.First(t => t.Condition()).Handler(target, hit, damageDone);
+                target.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
+                Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
+            }
+            if (Projectile.DamageType == DamageClass.Melee)
+            {
+                target.CIMod().moonClass = ShizukuMoonlight.ClassType.Melee;
+                Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Melee;
+            }
+
+            Owner.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 60);
+        }
+        public override bool PreKill(int timeLeft)
+        {
+            if (Projectile.DamageType == DamageClass.Melee)
+                HandleDefault();
+            else
+                DrawAquaStarParticle();
+            return true;
+        }
+        private void HandleDefault()
+        {
+            //树妖增防
+            Owner.AddBuff(BuffID.DryadsWard, 600);
+            Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ProjectileID.TerrarianBeam, Projectile.damage / 2, Projectile.knockBack, Owner.whoAmI);
+            proj.DamageType = DamageClass.Generic;
+        }
+        private void DrawAquaStarParticle()
+        {
+            //绘制3个，扇形散射
+            int count = 3;
+            float fanAngle = MathHelper.ToRadians(80f);
+            float angleStep = fanAngle / (count - 1);
+            float startAngle = Projectile.rotation - fanAngle / 2f;
+            for (int i = 0; i < count; i++)
+            {
+                float curAngle = startAngle + Main.rand.NextFloat(MathHelper.ToRadians(5), MathHelper.ToRadians(15)) + angleStep * i;
+                Vector2 vel = curAngle.ToRotationVector2() * Projectile.velocity.Length();
+                float scale = Main.rand.NextFloat(1f, 1.5f);
+                int lifeTime = Main.rand.Next(30, 60);
+                CuteManaStarParticle manaStar = new(Projectile.Center, vel, scale, 1, lifeTime);
+                GeneralParticleHandler.SpawnParticle(manaStar);
+            }
         }
         //这里用Metaball代替了绘制。
         private SpriteBatch SB { get => Main.spriteBatch; }
@@ -146,10 +188,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 if (i < drawPointTime || i > smoothPositions.Count - drawPointTime - 1)
                     alpha = MathHelper.Lerp(0f, 1f, Math.Min(1f, (float)Math.Abs(i - drawPointTime) / drawPointTime));
                 Color vertexColor = Color.SkyBlue * alpha;
-                //添加顶点
-                //这绘制哪来那么多有的没的问题？
-                //我难不成要去改AI吗？也行？
-                //我就像那个黑奴，唯一区别是黑奴收棉花我收的tm代码
                 CIVertexPositionColorTexture UpClass = new(drawPos + posOffset, vertexColor, new Vector3(progress, 0, 0));
                 CIVertexPositionColorTexture DownClass = new(drawPos - posOffset, vertexColor, new Vector3(progress, 1, 0));
                 vertexList.Add(UpClass);

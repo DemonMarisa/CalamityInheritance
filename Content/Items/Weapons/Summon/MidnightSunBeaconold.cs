@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.DataStructures;
 using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon

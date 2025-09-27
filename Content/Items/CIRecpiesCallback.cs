@@ -17,6 +17,11 @@ namespace CalamityInheritance.Content.Items
                 amount = 0;
             }
         }
+        public static void DConsumeMatter(Recipe recipe, int type, ref int amount, bool isDecrafting)
+        {
+            if (type == ModContent.ItemType<AncientMiracleMatter>())
+                amount = 0;
+        }
         public static void DontConsumeExoWeapons(Recipe recipe, int type, ref int amount)
         {
             if (type == ModContent.ItemType<HeavenlyGaleold>())

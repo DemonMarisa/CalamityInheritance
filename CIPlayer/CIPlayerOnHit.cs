@@ -7,7 +7,10 @@ using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
-using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
+using Terraria.ID;
+using CalamityInheritance.Buffs.Statbuffs;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -76,6 +79,14 @@ namespace CalamityInheritance.CIPlayer
         {
             if (BuffStatsYharimsStin)
                 knockback += item.knockBack * 0.25f;
+        }
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            //光棱破碎者和R99都使用了独立的远程伤害职业类，因此需要特判。
+            //问我月后了还在用沙漠行者？随意啦。
+            if (DesertProwler && (item.CountsAsClass<RangedDamageClass>() || item.type == ModContent.ItemType<PrismaticBreaker>() || item.type == ModContent.ItemType<R99>()) && item.ammo == AmmoID.None)
+                damage.Flat += 1f;
+            
         }
         public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
         {

@@ -1,3 +1,4 @@
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using Terraria;
@@ -7,6 +8,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer
     {
+        public ShizukuMoonlight.ClassType moonClass;
         #region Buffs
         public bool BuffStatsArmorShatter = false;
         public bool Revivify = false;
@@ -18,7 +20,6 @@ namespace CalamityInheritance.CIPlayer
         public bool Triumph = false;
         public bool BuffStatsYharimsStin = false;
         public bool InvincibleJam = false;
-        public bool BloodflareCoreStat = false;//旧血炎
         public bool BuffStatsBackfire = false;   //淬火
         public int StepToolShadowChairSmallCD = 0;
         public float ManaHealMutipler = 1f; //增强魔力药水恢复量
@@ -39,9 +40,9 @@ namespace CalamityInheritance.CIPlayer
         public bool horror = false;
         public bool vulnerabilityHexLegacy = false;
         #endregion
-        public bool CryoDrainPlayer = false;
         // yanm刀
         public bool kamiBoost = false;
+        public bool ShizukuMoon = false;
         public void ResetBuff()
         {
             #region Buffs
@@ -68,8 +69,8 @@ namespace CalamityInheritance.CIPlayer
             horror = false;
             vulnerabilityHexLegacy = false;
             #endregion
-            CryoDrainPlayer = false;
             kamiBoost = false;
+            ShizukuMoon = false;
         }
         public void UpdateDeadBuff()
         {
@@ -96,9 +97,9 @@ namespace CalamityInheritance.CIPlayer
             abyssalFlames = false;
             horror = false;
             vulnerabilityHexLegacy = false;
-            CryoDrainPlayer = false;
             #endregion
             kamiBoost = false;
+            ShizukuMoon = false;
         }
         public void DebuffEffect()
         {

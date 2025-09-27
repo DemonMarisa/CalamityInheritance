@@ -3,17 +3,8 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Magic;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using System;
-using CalamityMod.Projectiles.Rogue;
 using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.CalPlayer;
-using System.Reflection;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
@@ -31,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Magic.VividChange") : null;
+            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Magic.VividChange") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));
         }
         public override bool CanUseItem(Item item, Player player)

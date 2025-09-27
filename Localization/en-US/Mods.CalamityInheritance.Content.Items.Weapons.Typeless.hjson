@@ -81,11 +81,38 @@ YanmeisKnife: {
 }
 
 ShizukuSword: {
-	DisplayName: Shizuku Sword
+	DisplayName: Luna's Frigid Rime Shizuku
 	Tooltip: ""
-	General: ""
-	Evil: ""
-	Hallowed: ""
-	TripEvent: ""
-	Pillar: ""
+	General:
+		'''
+		[c/98F5FF:Attack Style]: Swing(Melee)
+		Fires homing dark moon stars towards your target
+		Press Left {0} to check the alter attack style
+		Provides different effects based on the current in-game time
+		'''
+	Evil:
+		'''
+		Effect of Day Time or Eclipse
+		Enchanced almost all of your stats
+		'''
+	Hallowed:
+		'''
+		[c/98F5FF:Attack Style]: Mark(Magic)
+		Required {0} mana to hold the blade
+		Press Right Click to released a galaxy rift follows your cursor
+		Galaxy rift will continuously summon homing dark moon stars to your target
+		Mark the enemy nearby, marked enemy will be attacked by a dagger array at fixed intervals
+		Provides different effects based on the current in-game time
+		'''
+	TripEvent:
+		'''
+		Night:
+		Grants immunity to all the debuffs that deals damage when holding the blade
+		'''
+	Pillar:
+		'''
+		[c/98F5FF: Moonlight Damage]: Damage type that receives both melee and magic damage bonuses
+		[c/98F5FF: -Developer Item-]
+		[c/98F5FF: The cold, clear moon mirrors the creator’s grief, a sorrow as boundless as the abyss]
+		'''
 }

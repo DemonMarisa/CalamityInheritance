@@ -3,15 +3,21 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Intrinsics;
 using System.Xml.Linq;
+using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Particles;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,6 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public Player Owner => Projectile.GetProjOwner();
         public ref float AttackTimer => ref Projectile.ai[0];
+        public Vector2 _lastMousePosition = Vector2.One;
         public int TargetIndex
         {
             get => (int)Projectile.ai[1];
@@ -40,8 +47,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             get =>(Style)Projectile.ai[2];
             set => Projectile.ai[2] = (float)value;
         }
+
         public ref float DashingTimer => ref Projectile.CalamityInheritance().ProjNewAI[0];
-        private int ShouldHoming = 0;
+        public ref float InitAngle => ref Projectile.CalamityInheritance().ProjNewAI[1];
+        public bool NotStirke = true;
         private const float SpiningTime = 45;
         private const float ShootTime = 25; 
         public override void SetStaticDefaults() => ProjectileID.Sets.CultistIsResistantTo[Type] = true;
@@ -51,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.height = 50;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = -1;
             Projectile.timeLeft = 150;
             Projectile.MaxUpdates = 2;
             Projectile.alpha = 0;
@@ -75,7 +84,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public override void AI()
         {
             NPC target = Main.npc[TargetIndex];
-            if (target.CanBeChasedBy(Projectile) || !target.active)
+            if (!target.CanBeChasedBy(Projectile))
                 target = Projectile.FindClosestTarget(1800f);
             DashingTimer += 1;
             Projectile.Opacity = Utils.GetLerpValue(0f, 1f, DashingTimer, true) * Utils.GetLerpValue(0f, 1f, Projectile.timeLeft, true);
@@ -83,7 +92,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             switch (DoType)
             {
                 case Style.IsShooted:
-                    DoShooted(target);
+                    DoShooted();
                     break;
                 case Style.IsAngleTo:
                     DoAngleTo(target);
@@ -92,14 +101,27 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     DoFlying(target);
                     break;
                 case Style.DropOut:
-                    Droppper();
+                    Droppper(target);
                     break;
+            }
+            //计算玩家后方基准位置（基于鼠标方向）
+            float rearDistance = 120f;
+            Vector2 targetRearPosition = Owner.Center + InitAngle.ToRotationVector2() * rearDistance;
+            bool isRearPosState = DoType is Style.IsShooted || DoType is Style.IsAngleTo;
+            if (isRearPosState)
+            {
+                float lerpFac = DoType is Style.IsShooted ? 0.12f : 0.18f;
+                Projectile.Center = Vector2.Lerp(Projectile.Center, targetRearPosition, lerpFac);
             }
         }
 
-        private void Droppper()
+        private void Droppper(NPC target)
         {
+            if (!target.LegalTarget(Projectile))
+                Projectile.Kill();
+
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+            Projectile.HomingNPCBetter(target, 20f + AttackTimer/3, 20f, 1);
             DrawSparkLine();
         }
 
@@ -123,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         private void DoFlying(NPC target)
         {
             //查看敌对单是否不可用或者为空
-            bool shouldPointToMouse = target is null || !target.CanBeChasedBy(Projectile) || !target.active;
+            bool shouldPointToMouse = !target.LegalTarget(Projectile);
             //如果符合，设定射弹初始为指向指针的速度。且不再变化
             DrawSparkLine();
             if (shouldPointToMouse)
@@ -134,31 +156,39 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 {
                     Vector2 direction = (Projectile.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitX);
                     Projectile.velocity = direction * 23;
-                    Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver4;
+                    Projectile.rotation = Projectile.velocity.ToRotation() +  MathHelper.PiOver4;
                     AttackTimer = -1;
                 }
             }
             //敌对单位如果可用，则正常冲向敌对单位
             else if (AttackTimer != -1 && !shouldPointToMouse)
             {
+                float angleTo = Projectile.AngleTo(target.Center) + MathHelper.PiOver4;
                 if (AttackTimer is 0)
                 {
-                    float angleTo = Projectile.AngleTo(target.Center) + MathHelper.PiOver4;
-                    Projectile.rotation = angleTo;
-                    Projectile.velocity = (angleTo - MathHelper.PiOver4).ToRotationVector2() * 20f; 
+                    Projectile.velocity = (angleTo - MathHelper.PiOver4).ToRotationVector2() * 24f;
                 }
                 AttackTimer += 1;
                 if (AttackTimer > 15)
                 {
-                    Projectile.HomingNPCBetter(target, 18f + AttackTimer / 2, 20f, 1);
-                    Projectile.rotation = MathHelper.Lerp(Projectile.rotation,Projectile.velocity.ToRotation() - MathHelper.PiOver4, 0.2f);
+                    Projectile.rotation = MathHelper.Lerp(Projectile.rotation, Projectile.velocity.ToRotation() + MathHelper.PiOver4, 0.2f);
+                    if (NotStirke)
+                        Projectile.HomingNPCBetter(target, 20f + AttackTimer, 20f, 1);
+                }
+                else
+                    Projectile.rotation = Utils.AngleLerp(Projectile.rotation, angleTo, 0.15f);
+
+                if (AttackTimer > 60f)
+                {
+                    DoType = Style.DropOut;
+                    Projectile.netUpdate = true;
                 }
             }
         }
         private void DoAngleTo(NPC target)
         {
             //指向你的敌人。
-            Vector2 tar = target is null || !target.CanBeChasedBy(Projectile) || !target.active ? Main.MouseWorld : target.Center;
+            Vector2 tar = target.LegalTarget(Projectile) ? target.Center : Owner.Center;
             float angleTo = Projectile.AngleTo(tar) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, angleTo, 0.15f);
             Projectile.velocity *= 0.92f;
@@ -170,15 +200,14 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 Projectile.netUpdate = true;
             }
         }
-
-        private void DoShooted(NPC target)
+        private void DoShooted()
         {
             if (DashingTimer < SpiningTime / 2)
                 DrawSparkLine();
             //缓动
             Projectile.velocity *= 0.95f;
             //转角速度修改
-            Vector2 tar = target is null || !target.CanBeChasedBy(Projectile) || !target.active ? Main.MouseWorld : target.Center;
+            Vector2 tar = Owner.Center;
             float angleTo = Projectile.AngleTo(tar) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, angleTo, 0.10f);
             //切换攻击模式
@@ -186,6 +215,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 DoType = Style.IsAngleTo;
                 DashingTimer = 0;
+                
                 Projectile.netUpdate = true;
             }
         }
@@ -193,9 +223,25 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         {
             if (DoType is Style.IsFlying)
             {
-                DoType = Style.DropOut;
                 Projectile.netUpdate = true;
+                //非返程追踪时每次命中获得10%乘算增伤
+                Projectile.damage = (int)(Projectile.damage * 1.10);
+                SoundStyle strikeSound = Utils.SelectRandom(Main.rand, ShizukuSounds.DaggerHitDirectly.ToArray());
+                SoundEngine.PlaySound(strikeSound, target.Center);
+                NotStirke = false;
             }
+            if (DoType is Style.DropOut)
+            {
+                SoundEngine.PlaySound(ShizukuSounds.DaggerHit with { MaxInstances = 1 }, target.Center);
+                //击杀射弹
+                Projectile.Kill();
+            }
+            target.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 600);
+            Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
+            target.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
+            Owner.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 60);
+            
+            
         }
         public override bool PreDraw(ref Color lightColor)
         {

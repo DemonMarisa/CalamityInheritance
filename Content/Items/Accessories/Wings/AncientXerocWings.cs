@@ -31,12 +31,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var modplayer1 = player.CIMod();
-
+            bool activeXeroc = player.statLife <= player.statLifeMax2 * 0.15f;
             if(player.armor[0].type == ModContent.ItemType<AncientXerocMask>() && 
                player.armor[1].type == ModContent.ItemType<AncientXerocPlateMail>() &&
                player.armor[2].type == ModContent.ItemType<AncientXerocCuisses>() &&
-               modplayer1.AncientXerocWrath
+               activeXeroc
                )
             {
                 //Scarlet: 这次真的抵消掉伤害惩罚了

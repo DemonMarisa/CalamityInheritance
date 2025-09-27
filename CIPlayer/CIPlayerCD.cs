@@ -1,7 +1,6 @@
 using CalamityInheritance.CICooldowns;
+using CalamityInheritance.Content.Items.Armor.AncientAstral;
 using CalamityMod;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Projectiles.Melee;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -115,7 +114,7 @@ namespace CalamityInheritance.CIPlayer
                 AncientAstralCritsCD--;
 
             //星辉套重置暴击达到指定次数时重置 
-            if (AncientAstralCritsCount > RequireCrits)
+            if (AncientAstralCritsCount > AncientAstralHelm.RogueCritsTimes)
                 AncientAstralCritsCount = 0;
             //星辉套每次潜伏攻击的CD
             if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD

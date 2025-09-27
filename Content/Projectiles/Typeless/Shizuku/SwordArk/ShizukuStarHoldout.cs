@@ -1,11 +1,13 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.ExtraTextures.Metaballs;
+using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,15 +23,16 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
     public class ShizukuStarHoldout : ModProjectile, ILocalizedModType
     {
         public Player Owner => Projectile.GetProjOwner();
-        public ref float AttackTimer => ref Projectile.ai[0];
+        public bool _isGrowing
+        {
+            get => Projectile.ai[0] == 1f;
+            set => Projectile.ai[0] = value ? 1f : 0f;
+        }
+        public ref float ShootStarTimer => ref Projectile.ai[1];
         public ref float SizeTimer => ref Projectile.ai[2];
-        public int FireDelay = 0;
-        public int ShootStarTimer = 0;
-        private bool _isGrowing = true;
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override string Texture => GenericProjRoute.InvisProjRoute;
         public Vector2 _lastAnchorPos = Vector2.Zero;
-
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
@@ -46,11 +49,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 60;
+            Projectile.DamageType = DamageClass.Magic;
             Projectile.timeLeft = 40000;
         }
         public override void AI()
         {
-            AttackTimer++;
+            NPC Target = Projectile.FindClosestTarget(1800f);
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
             if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ModContent.ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] > 0)
@@ -59,46 +63,47 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Vector2 topHead = new(Main.MouseWorld.X, Main.MouseWorld.Y);
             Vector2 distance = topHead - Projectile.Center;
             Vector2 homeDirection = distance.SafeNormalize(Vector2.UnitY);
-            Vector2 newVelocity = (Projectile.velocity * 18f + homeDirection * 16f) / (18f + 1f);
+            //这里追踪速度一会被一定程度上降低
+            Vector2 newVelocity = (Projectile.velocity * 15f + homeDirection * 16f) / (15f + 1f);
             Projectile.velocity = newVelocity;
             Projectile.velocity *= 1 + 1.0f / 100;
             DrawMetaball(sizeStruct);
-            ShootDarkStar();
-        }
-
-        private void UpdateOwner()
-        {
-            Owner.itemTime = 2;
-            Owner.itemAnimation = 2;
-            Owner.channel = true;
-        }
-
-        public override bool PreKill(int timeLeft)
-        {
-            Main.NewText($"存续时间：{AttackTimer}", Color.SkyBlue);
-            Main.NewText($"拥有的星数量：{Owner.ownedProjectileCounts[Type]}个");
-            Main.NewText($"武器状态：{Owner.CIMod().ShizukuSwordStyle}");
-            return base.PreKill(timeLeft);
-        }
-        private void ShootDarkStar()
-        {
-            //准备发射射弹，这个算很简单了。
-            float baseAngle = Projectile.velocity.ToRotation();
-            float count = 8;
-            float spreadAngle = MathHelper.TwoPi;
-            float step = spreadAngle / count;
-            float radStart = 22.5f + 45 * Main.rand.Next(0, 9);
-            float curAngle = baseAngle - spreadAngle / 2 + (step * ShootStarTimer) + MathHelper.ToRadians(radStart);
-            Vector2 dire = new((float)Math.Cos(curAngle), (float)Math.Sin(curAngle));
-            if (FireDelay is 0 && ShootStarTimer < count)
+            if (Target != null && Target.CanBeChasedBy(Projectile))
             {
-                Projectile.NewProjectile(Terraria.Entity.GetSource_None(), Projectile.Center, dire * 23f, ModContent.ProjectileType<ShizukuStar>(), Projectile.damage, 0f, Owner.whoAmI);
-                FireDelay = 3;
-                ShootStarTimer += 1;
-                Projectile.netUpdate = true;
+                ShootDarkStar(Target.Center);
+                DrawMark(Target);
+            }
+        }
+        private void DrawMark(NPC target)
+        {
+            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarMark>()] < 1)
+            {
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<ShizukuStarMark>(), 0, 0f, Owner.whoAmI, target.whoAmI);
+                proj.DamageType = DamageClass.Magic;
+                proj.originalDamage = Projectile.damage;
             }
         }
 
+   
+        private void ShootDarkStar(Vector2 Target)
+        {
+            ShootStarTimer += 1;
+            //准备发射射弹，这个算很简单了。
+            Vector2 dire = (Target - Projectile.Center).SafeNormalize(Vector2.UnitX);
+            if (ShootStarTimer > 60)
+            {
+                if (ShootStarTimer % 20 is 0)
+                {
+                    //每次发射消耗20点魔力值
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, dire * 23f, ModContent.ProjectileType<ShizukuStar>(), (int)(Projectile.damage * 1.5f), 0f, Owner.whoAmI);
+                    proj.DamageType = DamageClass.Magic;
+                    SoundStyle starToss = Utils.SelectRandom(Main.rand, ShizukuSounds.StarToss.ToArray());
+                    SoundEngine.PlaySound(starToss with { MaxInstances = 0, Volume = 0.6f}, Projectile.Center);
+                }
+                if (ShootStarTimer > 60 + 20 * 3)
+                    ShootStarTimer = 0;
+            }
+        }
         private void DrawMetaball(BaseEasingSize sizeStruct)
         {
             //控制Metaball的大小缓动
@@ -121,7 +126,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 }
             }
             float curSize = MathHelper.Lerp(sizeStruct.MinSize, sizeStruct.MaxSize, SizeTimer);
-            // Main.NewText($"{AttackTimer}");
             //大型星
             ShizukuStarMetaball.SpawnParticle(Projectile.Center, Vector2.Zero, curSize);
         }

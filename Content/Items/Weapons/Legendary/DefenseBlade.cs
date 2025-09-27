@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class DefenseBlade: CIMelee, ILocalizedModType
     {
         
-        public static string TextRoute => $"{Generic.WeaponTextPath}.Melee.DefenseBlade";
+        public static string TextRoute => $"{Generic.WeaponTextPath}Melee.DefenseBlade";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage() + Generic.GenericLegendBuffInt();
             int boostPercent = (int)(getDmg);

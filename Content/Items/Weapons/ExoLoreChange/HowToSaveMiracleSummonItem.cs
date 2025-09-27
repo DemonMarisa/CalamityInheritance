@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Summon.SaveCosmic") : null;
+            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Summon.SaveCosmic") : null;
             if (t != null) tooltips.Add(new TooltipLine(Mod, "Name", t));
         }
     }

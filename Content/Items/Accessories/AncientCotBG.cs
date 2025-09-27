@@ -6,6 +6,7 @@ using CalamityInheritance.Rarity;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -22,7 +23,26 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            usPlayer.AncientCotbg = true;
+            usPlayer.LifeMaxPercentBoost += 0.1f;
+            var calPlayer = player.Calamity();
+            calPlayer.fleshTotem = true;
+            player.endurance += 0.05f;
+            player.GetDamage<GenericDamageClass>() += 0.05f;
+            if (player.statLife <= (int)(player.statLifeMax2 * 0.5f))
+            {
+                player.endurance += 0.05f;
+                player.GetDamage<GenericDamageClass>() += 0.1f;
+                if (player.statLife <= (int)(player.statLifeMax2 * 0.15f))
+                {
+                    player.endurance += 0.10f;
+                    player.GetDamage<GenericDamageClass>() += 0.20f;
+                }
+            }
+            if (player.statDefense <= 100)
+            {
+                player.GetDamage<GenericDamageClass>() += 0.20f;
+                player.GetAttackSpeed<GenericDamageClass>() += 0.1f;
+            }
         }
         public override void AddRecipes()
         {   

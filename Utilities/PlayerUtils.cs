@@ -4,21 +4,41 @@ using static Terraria.Player;
 using CalamityMod;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles;
-using System.Reflection;
 using System;
 using Terraria.ModLoader;
-using CalamityMod.Balancing;
-using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.World;
 using Terraria.Audio;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using static CalamityInheritance.Core.Enums;
 
 namespace CalamityInheritance.Utilities
 {
     public static partial class CIFunction
     {
+        public static bool ThisBodyPart(this Player player, ArmorPart slot, int itemID)
+        {
+            return slot switch
+            {
+                ArmorPart.Head => player.armor[0].type == itemID,
+                ArmorPart.Body => player.armor[1].type == itemID,
+                ArmorPart.Legs => player.armor[2].type == itemID,
+                _ => false,
+            };
+        }
+        public static bool ThisBodyPart(this Item part, ArmorPart slot, int itemID)
+        {
+            return slot switch
+            {
+                ArmorPart.Head => part.type == itemID,
+                ArmorPart.Body => part.type == itemID,
+                ArmorPart.Legs => part.type == itemID,
+                _ => false,
+            };
+        }
+        public static bool ThisBodyPart<T>(this Player player, ArmorPart slot) where T : ModItem => ThisBodyPart(player, slot, ModContent.ItemType<T>());
+        public static bool ThisBodyPart<T>(this Item part, ArmorPart slot) where T : ModItem => ThisBodyPart(part, slot, ModContent.ItemType<T>());
         #region Cooldowns
         // 移除冷却
         public static void RemoveCooldown(this Player player, string id)

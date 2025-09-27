@@ -34,13 +34,18 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             CalamityInheritancePlayer usPlayer = player.CIMod();
             var calPlayer = player.Calamity();
             usPlayer.AncientBloodflareSet = true;
-            usPlayer.AncientBloodflareStat = true;
             calPlayer.rogueStealthMax += 1.20f;
             calPlayer.wearingRogueArmor = true;
             calPlayer.WearingPostMLSummonerSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.crimsonRegen = true;
             player.aggro += 900;
+            //血炎数值
+            calPlayer.healingPotionMultiplier += 0.35f; 
+            player.lifeRegen += 10;
+            if (player.statLife <= player.statLifeMax2 / 2)
+                player.lifeRegen += 16;
+
         }
         
         public override void UpdateEquip(Player player)

@@ -65,7 +65,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             }
 
             bool flag = false;
-            // ¼ì²éËÀÍö£¨µ±Í·ÏûÊ§/ËÀÍöÊ±£©
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ê§/ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
             bool shouldDie = false;
             if (NPC.ai[1] <= 0f)
@@ -116,12 +116,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
 
         public void ProcessAlpha()
         {
-            // »ñÈ¡¸¸¼¶NPC¶ÔÏó£¨Èä³æBossµÄÍ·£©
+            // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bossï¿½ï¿½Í·ï¿½ï¿½
             NPC parent = Main.npc[(int)NPC.ai[1]];
 
             if (parent.alpha < 128 && !setAlpha)
             {
-                // ½¥ÏÔÐ§¹û
+                // ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
                 if (NPC.alpha != 0)
                 {
                     for (int i = 0; i < 2; i++)
@@ -137,7 +137,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             }
             else
             {
-                // Í¬²½¸¸¼¶Í¸Ã÷¶È
+                // Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½
                 NPC.alpha = parent.alpha;
             }
         }
@@ -148,12 +148,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             Vector2 npcCenter = NPC.Center;
             Vector2 parentCenter = parent.Center;
 
-            // ¼ÆËã³¯Ïò¸¸½ÚµãµÄ·½Ïò
+            // ï¿½ï¿½ï¿½ã³¯ï¿½ò¸¸½Úµï¿½Ä·ï¿½ï¿½ï¿½
             Vector2 directionToParent = parentCenter - npcCenter;
 
             NPC.rotation = directionToParent.ToRotation() + MathHelper.PiOver2;
 
-            // ±£³ÖÓë¸¸½ÚµãµÄÁ¬½Ó
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ë¸¸ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             float distanceToParent = directionToParent.Length();
             float maintainDistance = NPC.width / 2f + parent.width / 2f;
 
@@ -163,7 +163,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 NPC.position += movement;
             }
 
-            // ¸üÐÂÃæÏò·½Ïò
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             NPC.spriteDirection = (directionToParent.X > 0f).ToDirectionInt();
         }
 

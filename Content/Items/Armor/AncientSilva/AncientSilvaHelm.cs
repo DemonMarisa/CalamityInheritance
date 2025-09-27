@@ -40,6 +40,9 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             calPlayer.wearingRogueArmor = true;
             calPlayer.rogueStealthMax += 1.25f;
             calPlayer.WearingPostMLSummonerSet = true;
+            calPlayer.healingPotionMultiplier += 0.30f;
+            player.lifeRegen += 24; //+12HP/s
+            player.lifeRegenTime = 2000;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
         

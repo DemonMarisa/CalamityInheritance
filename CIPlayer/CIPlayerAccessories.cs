@@ -1,10 +1,3 @@
-using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.Content.Items.Accessories.Summon;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Projectiles.Typeless;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -43,7 +36,6 @@ namespace CalamityInheritance.CIPlayer
         public int RaiderStacks = 0;//纳米技术击中计数器
         public int nanoTechStackDurability = 0;//纳米技术充能进度
         public bool SpeedrunNecklace = false;//速杀项链
-        public bool AncientCotbg = false; //肃杀核心
         public bool AncientBloodPact = false;//血契
         public bool ElemGauntlet = false;//元素之握
         public bool FuckEHeart = false;
@@ -106,10 +98,7 @@ namespace CalamityInheritance.CIPlayer
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
             IfCalamitasSigile = false;
-            ReaperToothNecklaceEquipper = false;
-            ReaperToothNecklaceLegacyEquipped = false;
-            YGiftLegacyOn = false;
-            YGiftOn = false;
+            
             SMushroom = false;
             SMarble = false;
             SMarbleSword = false;
@@ -143,10 +132,8 @@ namespace CalamityInheritance.CIPlayer
             FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
             SpeedrunNecklace = false;//肃杀项链
-            AncientCotbg = false;//肃杀核心
             AncientBloodPact = false;//血契
             ElemGauntlet = false;//元素之握
-            BloodflareCoreStat = false;
             EHeartStats = false;
             EHeartStatsBoost = false;
             FuckEHeart = false;
@@ -172,6 +159,14 @@ namespace CalamityInheritance.CIPlayer
             ValorLegacyOn = false;
             ElysianOn = false;
             ElysianLegacyOn = false;
+            SashOn = false;
+            SashLegacyOn = false;
+            BeltLegacyOn = false;
+            BeltOn = false;
+            ReaperToothNecklaceEquipper = false;
+            ReaperToothNecklaceLegacyEquipped = false;
+            YGiftLegacyOn = false;
+            YGiftOn = false;
             #endregion
 
         }
@@ -196,10 +191,7 @@ namespace CalamityInheritance.CIPlayer
             RaiderStacks = 0;//纳米技术击中计数器
             nanoTechStackDurability = 0;//纳米技术充能进度
             SpeedrunNecklace = false; //肃杀项链
-            AncientCotbg = false; //肃杀核心
             AncientBloodPact = false;
-            PerunofYharimStats = false;
-            BloodflareCoreStat = false;
             EHeartStats = false;
             EHeartStatsBoost = false;
             StepToolShadowChairSmallCD = 0;

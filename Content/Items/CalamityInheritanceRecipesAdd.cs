@@ -45,16 +45,14 @@ using CalamityMod.Items.Placeables.FurnitureOtherworldly;
 using CalamityMod.Items.Placeables.FurnitureProfaned;
 using CalamityMod.Items.Placeables.FurnitureStatigel;
 using CalamityMod.Items.LoreItems;
-using CalamityInheritance.Content.Items.LoreItems;
+using CalamityModMusic.Items.Placeables;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Accessories;
 using VividClarity = CalamityMod.Items.Weapons.Magic.VividClarity;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Armor.Demonshade;
-using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityMod.Items.Dyes;
-using CalamityModMusic.Items.Placeables;
 using CalamityMod.Items.Tools.ClimateChange;
 using CalamityInheritance.Content.Items.Tools;
 using CalamityMod.Items.SummonItems;
@@ -69,7 +67,6 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Items;
-using System;
 using CalamityInheritance.Content.Items.Placeables.Banner;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 
@@ -366,6 +363,12 @@ namespace CalamityInheritance.Content.Items
 
         public static void Misc()
         {
+            Recipe.Create(ItemID.Feather).
+                AddIngredient<DesertFeather>().
+                AddCondition(Condition.NearWater).
+                DisableDecraft().
+                Register();
+
             Recipe.Create(ModContent.ItemType<Rock>()).
                 AddIngredient<DefiledFeather>().
                 DisableDecraft().

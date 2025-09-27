@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.pStone = true;
             player.longInvince = true;
             modPlayer1.deificAmuletEffect = true;
+            player.lifeRegen += 1;
             player.GetArmorPenetration<GenericDamageClass>() += 10;
             modPlayer.jellyfishNecklace = true;
         }

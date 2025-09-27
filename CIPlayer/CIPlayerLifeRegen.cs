@@ -1,9 +1,11 @@
 ﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
+using rail;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -150,6 +152,11 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen = 4;
                 Player.lifeRegenTime = 0;
             }
+            if (Player.HeldItem.type == ModContent.ItemType<ShizukuSword>())
+            {
+                if (Player.lifeRegen < 0)
+                    Player.lifeRegen = 1;
+            }
             if (AncientSilvaForceRegen)
             {
                 // 旧林海新增: 生命再生速度无法低于0
@@ -185,7 +192,7 @@ namespace CalamityInheritance.CIPlayer
                     if (Main.rand.NextBool())
                         Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                 }
-
+                
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子

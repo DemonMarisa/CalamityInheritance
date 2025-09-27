@@ -3,13 +3,8 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -46,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Vector2 offset = new Vector2(0, -10);
+            Vector2 offset = new(0, -10);
             if(CIConfig.Instance.AmmoConversion)
             {
                 Projectile.NewProjectile(source, position + offset, velocity, ModContent.ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);

@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class DestroyerLegendary: CIMagic, ILocalizedModType
     {
         
-        public static string TextRoute => $"{Generic.WeaponTextPath}.Magic.DestroyerLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}Magic.DestroyerLegendary";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryBuff() + Generic.GenericLegendBuffInt();
             string update = this.GetLocalization("LegendaryScaling").Format(

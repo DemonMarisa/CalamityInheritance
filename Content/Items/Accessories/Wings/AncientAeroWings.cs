@@ -1,7 +1,5 @@
 using CalamityInheritance.Content.Items.Armor.AncientAero;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using Terraria;

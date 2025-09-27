@@ -1,25 +1,21 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.ExoLore;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged

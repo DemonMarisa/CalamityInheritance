@@ -1,9 +1,11 @@
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
+using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
@@ -29,24 +31,27 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override void AI()
         {
-            if (Owner.channel && Owner.ActiveItem().type == ModContent.ItemType<ShizukuSword>() && !Owner.noItems && !Owner.CCed)
+            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] > 0 && Target.CanBeChasedBy() && Target.active && !Target.dontTakeDamage)
                 Projectile.timeLeft = 2;
-             
             //缓动
             Projectile.rotation += MathHelper.ToRadians(1);
             Projectile.Opacity = MathHelper.Clamp(Projectile.Opacity + 0.04f, 0f, 1f);
             //以世界插值
-            // 远离鼠标时，直接插值追踪鼠标（位置插值）
+            //远离鼠标时，直接插值追踪鼠标（位置插值）
             Projectile.Center = Vector2.Lerp(Projectile.Center, Target.Center, 0.5f);
             Projectile.scale = Projectile.Opacity;
             //有mark的情况下才会发射飞剑
             TheAttackTimer += 1;
-            if (TheAttackTimer > 30f)
+            if (TheAttackTimer > 45f)
             {
                 float rad = 120f;
                 int count = 4;
-                float startAngle = -MathHelper.PiOver4;
-                float endAngle = MathHelper.PiOver4;
+                float spreadAngle= -MathHelper.PiOver4;
+                Vector2 tarDir = (Main.MouseWorld - Owner.Center).SafeNormalize(Vector2.UnitX);
+                float mouseAngle = tarDir.ToRotation();
+                float rearBaseAngle = mouseAngle + MathHelper.Pi;
+                float startAngle = rearBaseAngle - spreadAngle / 2;
+                float endAngle = rearBaseAngle + spreadAngle / 2;
                 float angleStep = (endAngle - startAngle) / (count - 1);
                 for (int i = 0; i < count; i++)
                 {
@@ -55,8 +60,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     Vector2 direction = (targetPos - Owner.Center).SafeNormalize(Vector2.UnitX);
                     Vector2 velocity = 12f * direction;
                     Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Owner.Center, velocity, ModContent.ProjectileType<ShizukuDagger>(), Projectile.originalDamage, 12f, Owner.whoAmI, ai1: Target.whoAmI);
-                    proj.timeLeft = 240;
+                    proj.DamageType = DamageClass.Magic;
+                    proj.timeLeft = 6000;
+                    proj.CalamityInheritance().ProjNewAI[1] = curAngle;
                 }
+                SoundEngine.PlaySound(ShizukuSounds.DaggerToss, Owner.Center);
                 TheAttackTimer = 0;
             }
         }

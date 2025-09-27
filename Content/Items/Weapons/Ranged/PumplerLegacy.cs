@@ -107,7 +107,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (player.altFunctionUse == 2)
             {
                 float animProgress = 0.5f - player.itemTime / (float)player.itemTimeMax;
-                // ÏòÊó±êµÄÐý×ª
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
                 float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
                 float offset = -0.05f * (float)Math.Pow((0.6f - animProgress) / 0.6f, 2);
                 if (animProgress < 0.4f)

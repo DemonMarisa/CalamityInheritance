@@ -4,17 +4,12 @@ using CalamityMod.Projectiles.Magic;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
@@ -45,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 initialized = true;
                 float dustAmt = 16f;
                 int d = 0;
-                while ((float)d < dustAmt)
+                while (d < dustAmt)
                 {
                     Vector2 offset = Vector2.UnitX * 0f;
                     offset += -Vector2.UnitY.RotatedBy((double)((float)d * (MathHelper.TwoPi / dustAmt)), default) * new Vector2(1f, 4f);

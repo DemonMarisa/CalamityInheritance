@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class CyrogenLegendary: CISummon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Summon";
-        public static string TextRoute => $"{Generic.WeaponTextPath}.Summon.CyrogenLegendary";
+        public static string TextRoute => $"{Generic.WeaponTextPath}Summon.CyrogenLegendary";
         public static readonly float ShootSpeed = 10f;
         public static int baseDamage = 48;
         public static int TrueDamage = 0;
@@ -51,16 +51,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
-            string t1 = mp.ColdDivityTier1? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
-            tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.ColdDivityTier2? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
-            tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.ColdDivityTier3? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
-            tooltips.FindAndReplace("[TIERTHREE]", t3);
+            var tiers = new List<(string placehloder, bool isEnable, string textKey)>
+            {
+                ("[TIERONE]",mp.ColdDivityTier1,"TierOne"),
+                ("[TIERTWO]",mp.ColdDivityTier2,"TierTwo"),
+                ("[TIERTHREE]",mp.ColdDivityTier3,"TierThree")
+            };
+            static void ReplaceTierTooltip(List<TooltipLine> tooltips,string placeholder,bool isEnable,string textKey)
+            {
+                string text = isEnable ? Language.GetTextValue($"{TextRoute}.{textKey}") : Language.GetTextValue($"{TextRoute}.{textKey}Tint");
+                tooltips.FindAndReplace(placeholder, text);
+            }
+            foreach (var (placehloder, isEnable, textKey) in tiers)
+                ReplaceTierTooltip(tooltips, placehloder, isEnable, textKey);
+            
+            
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
-                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}.EmpoweredTooltip.Generic");
+                t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
             string update = this.GetLocalization("LegendaryScaling").Format(

@@ -1,31 +1,24 @@
 using System;
-using System.Numerics;
-using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Armor.AncientAstral;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Cooldowns;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Summon;
-using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
-using static System.Net.Mime.MediaTypeNames;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.CIPlayer
@@ -80,6 +73,14 @@ namespace CalamityInheritance.CIPlayer
         {
             if (!proj.DamageType.CountsAsClass<RangedDamageClass>())
                 return;
+
+            if (DesertProwler && hit.Crit && proj.CountsAsClass<RangedDamageClass>())
+            {
+                int mark = ModContent.ProjectileType<DesertMark>();
+                bool noTornado = Player.ownedProjectileCounts[mark] < 1 && Player.ownedProjectileCounts[ModContent.ProjectileType<DesertTornado>()] < 1;
+                if (noTornado && Main.rand.NextBool(10))
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), proj.Center, Vector2.Zero, mark, hit.Damage, 0f, Player.whoAmI);
+            }
         }
         public void MagicOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
@@ -219,7 +220,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     Player.Heal(20);
                     AncientAstralCritsCount += 1;// 自增
-                    if (AncientAstralCritsCount == RequireCrits)
+                    if (AncientAstralCritsCount == AncientAstralHelm.RogueCritsTimes)
                     {
                         SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = 0.7f }, Player.Center);
                         Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
@@ -229,16 +230,15 @@ namespace CalamityInheritance.CIPlayer
                 }
                 if (AncientAstralStealthCD == 0 && isStealth)
                 {
+                    int maxTime = (int)(2f * AncientAstralHelm.MaxStealthLifeRegenSpeed);
                     AncientAstralStealthGap = 900; //15s
                     AncientAstralStealthCD = 60; //1秒间隔
                     AncientAstralStealth++;
                     //使其不超过12，即我们需要的上限
-                    if (AncientAstralStealth > 12)
-                        AncientAstralStealth = 12;
-                    if (AncientAstralStealth < 13)
-                    {
-                        player.lifeRegen += AncientAstralStealth; //(6)
-                    }
+                    if (AncientAstralStealth > maxTime)
+                        AncientAstralStealth = maxTime;
+                    if (AncientAstralStealth < maxTime + 1)
+                        player.lifeRegen += AncientAstralStealth;
                 }
             }
             //纳米技术

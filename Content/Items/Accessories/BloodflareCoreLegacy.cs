@@ -1,9 +1,7 @@
 ﻿using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
@@ -20,8 +18,19 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void ExSSD() => Type.ShimmerEach<BloodflareCore>();
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var usPlayer = player.CIMod();
-            usPlayer.BloodflareCoreStat = true;
+            if (player.statLife <= (int)(player.statLifeMax2 * 0.5f))
+            {
+                player.endurance += 0.05f;
+                player.GetDamage<GenericDamageClass>() += 0.1f;
+                if (player.statLife <= (int)(player.statLifeMax2 * 0.15f))
+                {
+                    player.endurance += 0.10f;
+                    player.GetDamage<GenericDamageClass>() += 0.20f; ;
+                }
+            }
+            
+            if (player.statDefense <= 100)
+                player.GetDamage<GenericDamageClass>() += 0.15f;
         }
     }
 }

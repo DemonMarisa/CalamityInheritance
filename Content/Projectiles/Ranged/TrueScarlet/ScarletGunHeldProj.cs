@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
     public class R99HeldProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectile.Ranged";
-        public override string Texture => $"{Generic.WeaponPath}/Ranged/R99";
+        public override string Texture => $"{Generic.WeaponPath}/Ranged/Scarlet/R99";
         public Player Owner => Main.player[Projectile.owner];
         public const float OffsetX = 0f;
         public const float OffsetY = 0f;

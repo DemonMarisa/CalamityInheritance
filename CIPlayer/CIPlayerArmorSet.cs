@@ -6,20 +6,16 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         #region Set Bonuses
-        //蘑菇喷火头
-        public bool ShroomiteFlameBooster = false;
         #region AncientAeroArmor
         public bool AncientAeroSet = false;
         public bool AncientAeroWingsPower = false;
         #endregion
         #region  AncientBloodflare
         public bool AncientBloodflareSet = false; //远古血炎套
-        public bool AncientBloodflareStat = false; //血炎数值
         public int AncientBloodflareHeartDropCD = 0; //产红心CD
         #endregion
         #region  AncientGodSlayer
         public bool AncientGodSlayerSet = false;
-        public bool AncientGodSlayerStat = false; //弑神数值
         #endregion
         #region AncientSilva
         public bool AncientSilvaForceRegen = false;
@@ -60,7 +56,6 @@ namespace CalamityInheritance.CIPlayer
         public int AncientAuricHealCooldown = 0; //暴君套回血CD
         public int PerunofYharimCooldown = 0; //暴君套打击cd
         public int AncientAuricDashCounter = 0;
-        public bool PerunofYharimStats= false;
         #endregion
         #region Reaver
         //永恒套
@@ -86,16 +81,11 @@ namespace CalamityInheritance.CIPlayer
         #endregion
         public bool Test = false;
         #region AncientXeroc
-        public bool AncientXerocSet     = false;
-        //克希洛克翅膀的远古狂怒效果
-        public bool AncientXerocWrath   = false;
-        
         //xeroc套装 
         #endregion
         #region 远古星辉套(Revamped)
         public bool AncientAstralSet = false; //是否为远古星辉
         public int AncientAstralCritsCount = 0; //星辉的暴击次
-        const int RequireCrits = 20;//星辉套触发暴击效果需要的攻击次数
         public int AncientAstralCritsCD = 0;//星辉每次暴击的间隔
         public int AncientAstralStealthCD = 0; //星辉每次潜伏的间隔
         public int AncientAstralStealth = 0; //星辉潜伏次数
@@ -106,17 +96,15 @@ namespace CalamityInheritance.CIPlayer
         #endregion 远古林海套
         public bool AncientSilvaFakeDeath = false;
         #endregion
+        public bool DesertProwler = false;
         public void ResetArmorSet()
         {
-            ShroomiteFlameBooster = false;
             #region Set Bonuses
             #region AncientBloodflare
             AncientBloodflareSet = false;
-            AncientBloodflareStat = false;
             #endregion
             #region AncientGodSlayer
             AncientGodSlayerSet = false;
-            AncientGodSlayerStat = false;
             #endregion
             #region AncientSilva
             AncientSilvaForceRegen = false;
@@ -149,7 +137,6 @@ namespace CalamityInheritance.CIPlayer
             auricBoostold = false;
             AuricSilvaFakeDeath = false;
             AncientAuricSet = false;
-            PerunofYharimStats = false;
             #endregion
             #region Reaver
             ReaverMeleeBlast = false;
@@ -159,10 +146,6 @@ namespace CalamityInheritance.CIPlayer
             FuckYouGolem = false;
             ReaverRogueExProj = false;
             #endregion
-            #region Xeroc
-            AncientXerocSet     = false;
-            AncientXerocWrath   = false;
-            #endregion
             AncientAstralSet = false;
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
@@ -170,21 +153,19 @@ namespace CalamityInheritance.CIPlayer
             #region 远古林海
             AncientSilvaFakeDeath = false;
             #endregion
+            DesertProwler = false;
             #endregion
 
         }
         public void UpdateDeadArmorSet()
         {
-            ShroomiteFlameBooster = false;
             #region Set Bonuses
             #region AncientBloodflare
             AncientBloodflareSet = false;
             AncientBloodflareHeartDropCD = 0;
-            AncientBloodflareStat = false;
             #endregion
             #region AncientGodSlayer
             AncientGodSlayerSet = false;
-            AncientGodSlayerStat = false;
             AncientGodSlayerBuffCounter = 0;
             AncientGodSlayerBuffCD = 0;
             #endregion
@@ -222,7 +203,6 @@ namespace CalamityInheritance.CIPlayer
             AuricSilvaFakeDeath = false;
             AncientAuricHealCooldown = 0;
             PerunofYharimCooldown = 0;
-            PerunofYharimStats = false;
             AncientAuricDashCounter = 0;
             AncientAuricDashCache = 0;
             #endregion
@@ -235,10 +215,6 @@ namespace CalamityInheritance.CIPlayer
             ReaverSummoner = false;
             ReaverRogueExProj = false;
             #endregion
-            #region Xeroc
-            AncientXerocSet     = false;
-            AncientXerocWrath   = false;
-            #endregion
             AncientAstralSet = false;
             AncientAstralCritsCount = 0;
             AncientAstralCritsCD = 0;
@@ -247,6 +223,8 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
+
+            DesertProwler = false;
 
         }
     }

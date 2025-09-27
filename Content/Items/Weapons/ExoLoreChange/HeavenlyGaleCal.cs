@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<HeavenlyGale>();
         public override void ModifyTooltips(Item item, List<TooltipLine> o)
         {
-            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}.Ranged.HeavenlyGaleChange") : null;
+            string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Ranged.HeavenlyGaleChange") : null;
             if (t != null) o.Add(new TooltipLine(Mod, "Name", t));
         }
     }

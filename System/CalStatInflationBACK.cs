@@ -41,6 +41,8 @@ using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Tools;
 using Terraria.DataStructures;
 using System;
+using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 
 namespace CalamityInheritance.System
 {
@@ -202,6 +204,7 @@ namespace CalamityInheritance.System
             PostShadowspecWeapons.Add(ModContent.ItemType<R99>());
             PostShadowspecWeapons.Add(ModContent.ItemType<LightAmmo>());
             PostShadowspecWeapons.Add(ModContent.ItemType<StepToolShadow>());
+            PostShadowspecWeapons.Add(ModContent.ItemType<ShizukuSword>());
             #endregion
         }
 
@@ -667,7 +670,7 @@ namespace CalamityInheritance.System
                 return;
             if (item.type == ItemID.Zenith)
             {
-                string text = Language.GetTextValue($"{Generic.WeaponTextPath}.Melee.ZenithBuff");
+                string text = Language.GetTextValue($"{Generic.WeaponTextPath}Melee.ZenithBuff");
                 tooltips.Add(new TooltipLine(Mod, "buff", text));
             }
 
@@ -846,6 +849,9 @@ namespace CalamityInheritance.System
                 item.damage = 4800;
             if (CheckModItem<StepToolShadow>(item.type))
                 item.damage = 114514;
+            if (item.Same<ShizukuSword>())
+                item.damage = 5000;
+
             #endregion
 
         }
@@ -978,8 +984,8 @@ namespace CalamityInheritance.System
             int noxusP1HP = 85000000;
             //暗神二阶段2.5亿
             int noxuseP2HP = (int)(25 * Math.Pow(10, 7));
-            //光神暂时采用7亿的数值
-            int namelessHP = (int)(4 * Math.Pow(10, 8));
+            //光神暂时采用3亿的数值
+            int namelessHP = (int)(3 * Math.Pow(10, 8));
             Mod mod = CalamityInheritance.WrathoftheGods;
             if (mod is null)
                 return;

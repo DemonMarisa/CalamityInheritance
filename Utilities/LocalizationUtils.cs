@@ -118,6 +118,40 @@ namespace CalamityInheritance.Utilities
             else
                 tooltips.Insert(tooltips.Count, newLine);
         }
+        /// <summary>
+        /// 从最后一行Tooltip后插入值
+        /// </summary>
+        /// <param name="tooltips"></param>
+        /// <param name="textPath"></param>
+        public static void InsertNewLineToFinalLineTest(this List<TooltipLine> tooltips, Mod mod,string textPath)
+        {
+            string text = textPath.ToLangValue();
+            var newLine = new TooltipLine(mod, "ModName", text)
+            {
+                OverrideColor = tooltips.Count > 0 ? tooltips[^1].OverrideColor : Color.White
+            };
+            List<TooltipLine> customLine = [newLine]; 
+            if (tooltips.Count is 0)
+                tooltips.Add(newLine);
+            else
+            {
+                //搜寻可能存在的重铸文本
+                //似乎重铸文名字不是"Modifier"
+                int modifyIndex = -1;
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (tooltips[i].Name == "Modifier")
+                    {
+                        modifyIndex = i;
+                        break;
+                    }
+                }
+                if (modifyIndex != -1)
+                    tooltips.InsertRange(modifyIndex - 1, customLine);
+                else
+                    tooltips.Insert(tooltips.Count, newLine);
+            }
+        }
         public static string ToHexColor(this Color color) => $"{color.R:X2}{color.G:X2}{color.B:X2}";
 
         public static string ToLangValue(this string textPath) => Language.GetTextValue(textPath);

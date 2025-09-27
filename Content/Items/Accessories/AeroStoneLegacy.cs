@@ -20,14 +20,14 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemRare:ItemRarityID.Green,
             itemValue:CIShopValue.RarityPriceGreen
         );
-        public override void SetStaticDefaults()
-        {
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 4));
-            ItemID.Sets.AnimatesAsSoul[Type] = true;
-        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.CIMod().AeroStonePower = true;
+        }
+        public override void ExSSD()
+        {
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 8));
+            ItemID.Sets.AnimatesAsSoul[Type] = true;   
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

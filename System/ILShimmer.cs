@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Armor.Xeroc;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.System.DownedBoss;
 using CalamityMod;
@@ -21,7 +23,10 @@ namespace CalamityInheritance.System
         {
             On_ShimmerTransforms.IsItemTransformLocked += ShimmerRequirementHandler;
         }
-
+        public override void PostSetupContent()
+        {
+            CalamityInheritance.Calamity.Call("MakeItemExhumable", ModContent.ItemType<DesertFeather>(), ModContent.ItemType<DefiledFeather>());
+        }
     }
     public partial class ILShimmer
     {
