@@ -15,6 +15,14 @@ using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Utilities;
+using CalamityMod.NPCs.Yharon;
+using CalamityInheritance.NPCs.Boss.Yharon;
+using CalamityInheritance.World;
+using CalamityInheritance.Core;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Achievements;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -165,6 +173,8 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             StoredTargetIndex = -1;
             StoredDamage = -1;
+            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
+                Player.Calamity().rogueStealthMax += 1.45f;
         }
 
         #endregion
@@ -449,6 +459,13 @@ namespace CalamityInheritance.CIPlayer
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            bool isYharonP2 = target.type == ModContent.NPCType<YharonLegacy>() && CIConditions.DownedLegacyYharonP1.IsMet();
+            bool isYharon = target.type == ModContent.NPCType<Yharon>() || isYharonP2;
+            //最后一击、遗产海绵护盾开启、佩戴原灾海绵、世界状态非GFB
+            //要是这么多情况下选择干掉了丛林龙，那也是个神人。
+            if (isYharon && hit.Damage > target.life && CIConfig.Instance.TheSpongeBarrier && Player.Calamity().sponge && !Main.zenithWorld)
+                ModContent.GetInstance<SpongeJoke>().LastHitToYharon.Complete(); 
+
             if (nanotechold && RaiderStacks < 150 && hit.DamageType == ModContent.GetInstance<RogueDamageClass>())
             {
                 RaiderStacks++;

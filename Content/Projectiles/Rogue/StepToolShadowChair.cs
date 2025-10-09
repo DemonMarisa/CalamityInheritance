@@ -13,17 +13,17 @@ using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.SupremeCalamitas;
 
-
-namespace CalamityInheritance.Content.Projectiles.Magic
+namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class StepToolShadowChair: ModProjectile, ILocalizedModType
     {
+        //只改了伤害类型，其他不动
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetDefaults()
         {
             Projectile.width = 900;
             Projectile.height = 900;
-            Projectile.DamageType = DamageClass.Magic;
+            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 90000;

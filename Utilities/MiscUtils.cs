@@ -183,8 +183,8 @@ namespace CalamityInheritance.Utilities
         public static bool Same<T>(this Item item) where T :ModItem => Same(item, ModContent.ItemType<T>());
         public static bool ActiveWrath()
         {
-            Mod mod = ModLoader.GetMod("NoxusBoss");
-            if (mod != null && CIServerConfig.Instance.CalStatInflationBACK)
+            bool isAcitve = ModLoader.TryGetMod("NoxusBoss", out Mod mod);
+            if (isAcitve && CIServerConfig.Instance.CalStatInflationBACK)
                 return true;
             else return false;
         }

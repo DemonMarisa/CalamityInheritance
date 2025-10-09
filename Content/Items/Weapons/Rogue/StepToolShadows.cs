@@ -2,7 +2,6 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityMod.Items.Weapons.Rogue;
@@ -10,15 +9,18 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityMod.Items.Placeables.Banners;
-using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
-using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using Terraria.Localization;
 
-namespace CalamityInheritance.Content.Items.Weapons.Magic
+namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class StepToolShadow : CIMagic, ILocalizedModType
+    public class StepToolShadows : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -27,11 +29,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             Item.width = 960;
             Item.height = 1120;
-            Item.damage = 11451;
-            Item.DamageType = DamageClass.Magic;
+            Item.damage = 1145;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.mana = 15;
             Item.knockBack = 114f;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundWeaponSwing;
@@ -45,6 +46,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPricePureRed;
         }
 
+        public override float StealthDamageMultiplier => 1145.14f;
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs("Alt");
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            bool isHoldingAlt = Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftAlt);
+            string defaultPath = $"{Generic.WeaponTextPath}Rogue.{GetType().Name}.Lore";
+            if (isHoldingAlt)
+                tooltips.FuckThisTooltipAndReplace(defaultPath);
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float getTrueMeleeBoost = player.GetTotalDamage<TrueMeleeDamageClass>().ApplyTo(Item.damage); //梯凳现在可以吃到真近战伤害加成
@@ -56,16 +66,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             CreateRecipe().
                 AddIngredient(ItemID.PortableStool, 1).
-                AddIngredient(ItemID.Wood, 1451).
-                AddIngredient<DepthCells>(41).
-                AddIngredient<ReaperTooth>(9).
-                AddIngredient<ReaperSharkBanner>(1).
-                AddIngredient<CosmiliteBar>(9).
-                AddIngredient<CalamitousEssence>(8).
-                AddIngredient<DeepSeaDumbbell>(1).
-                AddIngredient<Valediction>(1).
-                AddIngredient<KnowledgeCalamitas>(1).
-                AddTile(TileID.HeavyWorkBench).
+                AddIngredient(ItemID.Wood, 1145).
+                AddIngredient<ReaperTooth>(14).
+                AddIngredient<CosmiliteBar>(19).
+                AddIngredient<DeepSeaDumbbell>(19).
+                AddIngredient<ReaperSharkBanner>().
+                AddIngredient<CalamitousEssence>().
+                AddIngredient<KnowledgeCalamitas>().
+                AddTile<DemonshadeTile>().
                 Register();
         }
     } 

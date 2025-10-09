@@ -119,5 +119,64 @@ Mods: {
 			ShizukuDamageClass.DisplayName: "[c/98F5FF:Moonlight Damage]"
 			ScarletDamageClass.DisplayName: "[c/E4080A:True Ranged Damage]"
 		}
+
+		Achievements: {
+			CraftDoubleArk: {
+				FriendlyName: Rite of Old Passing, New Taking
+				Description: Which is in your taste, Scissors or Sword?
+			}
+
+			CraftMemeChair: {
+				FriendlyName: Step Stool of Eternity, Olympustine
+				Description: Mortal or Immortal, all things acknowledge your claim to...wait a second.
+			}
+
+			CraftScarletGun: {
+				FriendlyName: The Fastest Submachine Gun
+				Description: I broke an enemy shield!
+			}
+
+			CraftShizukuSword: {
+				FriendlyName: Bless of the Moonlight
+				Description: The power of the stars and the moon aids you in eradicating all obstacles on your path to godhood
+			}
+
+			DownedCal: {
+				FriendlyName: The Shabby Copy
+				Description: Defeated Calamitas Legacy
+			}
+
+			GetMalaLegendary: {
+				Description:
+					'''
+					Obtains Malatche Legendary, and unlocks all of the upgrades.
+					One of the weapons that show the mechanics of legendary and the unique features of Calamity Inheritance
+					'''
+				FriendlyName: Ultra-Fast Kunai
+			}
+
+			DownedYharonP2: {
+				Description: Defeated Jungle Dragon, Yharon (Phase 2), Yharim's best servant.
+				FriendlyName: Son of the Eclipse
+			}
+
+			DownedScal: {
+				Description:
+					'''
+					Defeated Supreme Calamitas, before you defeat both Exo Mechs and Supreme Witch
+					Witness the Fate of the Cursed.
+					'''
+				FriendlyName: The Passing Day
+			}
+
+			SpongeJoke: {
+				FriendlyName: Bro, don't do that
+				Description:
+					'''
+					Defeated Yharon, while activating Sponge Barrier that from Calamity Inheritance, and equipping orignal Sponge
+					Don't do that.
+					'''
+			}
+		}
 	}
 }

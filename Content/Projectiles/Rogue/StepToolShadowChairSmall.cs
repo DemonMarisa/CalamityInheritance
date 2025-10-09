@@ -1,16 +1,18 @@
 using System;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Magic
+namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class StepToolShadowChairSmall: ModProjectile, ILocalizedModType 
     {
+        //只改了伤害类型，其他不动
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetDefaults()
         {
@@ -21,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 420;
-            Projectile.DamageType = DamageClass.Magic;
+            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft <= 350 &&target.CanBeChasedBy(Projectile);
         public override void AI()

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles
         {
             base.SetDefaults(projectile);
 
-            if (CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type != x))
+            if (CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type == x))
                 canSplit = false;
         }
         public override void PostAI(Projectile projectile)

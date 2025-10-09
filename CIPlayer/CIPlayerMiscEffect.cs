@@ -24,7 +24,6 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Buffs.StatDebuffs;
@@ -40,7 +39,9 @@ using CalamityMod.Buffs.Potions;
 using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using static CalamityInheritance.Buffs.Statbuffs.ShizukuMoonlight;
-using System.Net.Sockets;
+using CalamityInheritance.Content.Achievements;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Core;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -661,10 +662,32 @@ namespace CalamityInheritance.CIPlayer
 
         public void MiscEffects()
         {
-            CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
-            Player player = Main.player[Main.myPlayer];
-            Item item = player.HeldItem;
+            Item item = Player.HeldItem;
+            var delePBG = ModContent.GetInstance<GetMalaLegendary>();
+            var deleJoke = ModContent.GetInstance<SpongeJoke>();
+            if (PBGTier1)
+                delePBG.LegendaryComplete1.Complete();
+            if (PBGTier2)
+                delePBG.LegendaryComplete2.Complete();
+            if (PBGTier3)
+                delePBG.LegendaryComplete3.Complete();
+            
+            if (calPlayer.sponge)
+                deleJoke.EquippedCalamitySponge.Complete();
+
+            if (CIConfig.Instance.TheSpongeBarrier)
+                deleJoke.ActivedSpongeBarrier.Complete();
+
+            if (CIConditions.DownedLegacyYharonP1.IsMet())
+                ModContent.GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
+            
+            bool lastHitToSCal = CIServerConfig.Instance.CalStatInflationBACK;
+            bool isNotBothDowned = (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedExoMechs) || (DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs) || (!DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs);
+            //非双王后世界，数值膨胀
+            if (lastHitToSCal && isNotBothDowned)
+                ModContent.GetInstance<DownedScal>().ForceKilledCondition.Complete();
+
             if (item.type == ModContent.ItemType<ShizukuSword>())
             {
                 Player.GetDamage<GenericDamageClass>() += 0.15f;
@@ -683,7 +706,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (CIConfig.Instance.ReduceMoveSpeed)
             {
-                player.moveSpeed *= CIConfig.Instance.ReduceMoveSpeedMult;
+                Player.moveSpeed *= CIConfig.Instance.ReduceMoveSpeedMult;
             }
 
             //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。
@@ -739,14 +762,14 @@ namespace CalamityInheritance.CIPlayer
                 float actualDamage = 1.0f + damageBoost; 
                 //避免伤害变成0乃至负数倍, 不惜一切代价
                 if(actualDamage <= 0f) actualDamage = 1.0f;
-                player.GetDamage<RangedDamageClass>() *= actualDamage;
+                Player.GetDamage<RangedDamageClass>() *= actualDamage;
             }           
             
             //玩家佩戴创造之手，挥舞板凳时，提供30%伤害与暴击概率
-            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadow>() && IfGodHand)
+            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
             {
-                player.GetDamage<MagicDamageClass>() += 0.30f;
-                player.GetCritChance<MagicDamageClass>() += 30;
+                Player.GetDamage<RogueDamageClass>() += 0.30f;
+                Player.GetCritChance<RogueDamageClass>() += 30;
             }
 
             if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
@@ -760,7 +783,7 @@ namespace CalamityInheritance.CIPlayer
             if (Player.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] == 1 && 
                 Player.ActiveItem().type == ModContent.ItemType<ExoTheApostle>()) 
             {
-                player.GetDamage<RogueDamageClass>() *= 2;
+                Player.GetDamage<RogueDamageClass>() *= 2;
             }
         }
         private void StandingStill()

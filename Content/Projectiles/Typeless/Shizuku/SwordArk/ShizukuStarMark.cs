@@ -1,7 +1,5 @@
-using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

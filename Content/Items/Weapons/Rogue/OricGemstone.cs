@@ -50,8 +50,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 proj.timeLeft = 480;
                 proj.penetrate = -1;
             }
-
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.OrichalcumBar, 12).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+                
         }
     }
 }

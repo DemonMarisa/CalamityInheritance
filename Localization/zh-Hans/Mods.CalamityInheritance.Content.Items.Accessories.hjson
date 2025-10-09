@@ -339,6 +339,7 @@ AncientReaperToothNecklace: {
 		你的防御值、伤害减免与生命恢复都会被减少至原本的1/100
 		"所以...这玩意应该存在吗...?"
 		'''
+	// Nerfed: ""
 }
 
 BloodPactLegacy: {

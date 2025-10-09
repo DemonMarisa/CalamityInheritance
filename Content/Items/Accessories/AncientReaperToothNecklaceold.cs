@@ -3,8 +3,6 @@ using Terraria;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons;
 using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Items.Accessories

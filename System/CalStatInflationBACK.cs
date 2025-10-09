@@ -203,7 +203,6 @@ namespace CalamityInheritance.System
             PostShadowspecWeapons.Remove(ModContent.ItemType<ApotheosisLegacy>());
             PostShadowspecWeapons.Add(ModContent.ItemType<R99>());
             PostShadowspecWeapons.Add(ModContent.ItemType<LightAmmo>());
-            PostShadowspecWeapons.Add(ModContent.ItemType<StepToolShadow>());
             PostShadowspecWeapons.Add(ModContent.ItemType<ShizukuSword>());
             #endregion
         }
@@ -847,8 +846,8 @@ namespace CalamityInheritance.System
             //光之舞不需要
             if (item.type == ModContent.ItemType<DanceofLightLegacy>())
                 item.damage = 4800;
-            if (CheckModItem<StepToolShadow>(item.type))
-                item.damage = 114514;
+            if (item.type == ModContent.ItemType<StepToolShadows>())
+                item.damage = 5141;
             if (item.Same<ShizukuSword>())
                 item.damage = 5000;
 
@@ -895,7 +894,7 @@ namespace CalamityInheritance.System
                 item.damage = 256;
 
             if (item.type == ModContent.ItemType<AncientDragonsBreath>())
-                item.damage = 200;
+                item.damage = 500;
 
             if (item.type == ModContent.ItemType<DragonRage>())
                 item.damage = 2200;
@@ -985,7 +984,7 @@ namespace CalamityInheritance.System
             //暗神二阶段2.5亿
             int noxuseP2HP = (int)(25 * Math.Pow(10, 7));
             //光神暂时采用3亿的数值
-            int namelessHP = (int)(3 * Math.Pow(10, 8));
+            int namelessHP = (int)(5 * Math.Pow(10, 8));
             Mod mod = CalamityInheritance.WrathoftheGods;
             if (mod is null)
                 return;

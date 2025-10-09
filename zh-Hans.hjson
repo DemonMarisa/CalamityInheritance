@@ -119,5 +119,64 @@ Mods: {
 			ShizukuDamageClass.DisplayName: "[c/98F5FF:月明伤害]"
 			ScarletDamageClass.DisplayName: "[c/E4080A:真实远程伤害]"
 		}
+
+		Achievements: {
+			CraftDoubleArk: {
+				FriendlyName: 新旧交接仪式
+				Description: 你更喜欢新的裁决之剪，还是旧的宇宙之剑？
+			}
+
+			CraftMemeChair: {
+				FriendlyName: 永恒之梯凳，奥里帕斯汀
+				Description: “无论凡人或不朽，都愿意承认你是五字神人。”
+			}
+
+			CraftScarletGun: {
+				FriendlyName: 史上最快的冲锋枪
+				Description: 我粉碎了一个敌人的护盾！
+			}
+
+			CraftShizukuSword: {
+				FriendlyName: 月光大剑的祝福
+				Description: 群星与月之力将助你抹除登神之路上的所有阻碍。
+			}
+
+			DownedCal: {
+				FriendlyName: 劣质的复制品
+				Description: 击败灾厄之影[Legacy]，最为劣质的复制品
+			}
+
+			GetMalaLegendary: {
+				Description:
+					'''
+					获得孔雀翎[Legendary]，并解锁所有升级。
+					最能体现旧版传奇武器机制与灾厄遗产特色的武器之一。
+					'''
+				FriendlyName: 高速苦无
+			}
+
+			DownedYharonP2: {
+				Description: 击败丛林龙(阶段2)，魔君最忠实的仆从
+				FriendlyName: 日食之子
+			}
+
+			DownedScal: {
+				Description:
+					'''
+					开启数值膨胀选项且尚未同时击败至尊女巫与星流巨械时，击败至尊灾厄[Legacy]。
+					见证被诅咒者的结局。
+					'''
+				FriendlyName: 往日不在
+			}
+
+			SpongeJoke: {
+				FriendlyName: 你应该问自己为什么要这么做...
+				Description:
+					'''
+					在灾厄遗产Mod设置中启用化棉留香石护盾的前提下，佩戴原灾化棉留香石击败丛林龙。
+					……你为什么要这么做啊？
+					'''
+			}
+		}
 	}
 }
