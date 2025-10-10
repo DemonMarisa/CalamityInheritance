@@ -1,11 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -37,7 +32,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 6f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            // Item.maxStack = 9999;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<LatcherMineProjectile>();

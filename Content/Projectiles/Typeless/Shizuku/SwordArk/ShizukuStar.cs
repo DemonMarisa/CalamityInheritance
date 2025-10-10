@@ -6,7 +6,6 @@ using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

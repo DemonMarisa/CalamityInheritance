@@ -45,7 +45,6 @@ namespace CalamityInheritance.CIPlayer
                 GiveExpMelee(target, isTrueMelee, isMelee, hit.Crit);
         }
         #endregion
-
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if (Player.whoAmI != Main.myPlayer)

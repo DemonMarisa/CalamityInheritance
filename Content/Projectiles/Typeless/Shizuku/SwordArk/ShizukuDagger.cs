@@ -1,23 +1,13 @@
-using System;
 using System.IO;
-using System.Linq;
-using System.Runtime.Intrinsics;
-using System.Xml.Linq;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Particles;
-using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 

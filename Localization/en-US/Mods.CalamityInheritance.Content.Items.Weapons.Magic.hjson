@@ -154,7 +154,7 @@ VoidVortexLegacy: {
 	Tooltip: Fires a circular spread of magnetic orbs around the mouse cursor
 }
 
-StepToolShadow: {
+StepToolShadows: {
 	DisplayName: Supreme Step Stool of Eternity, Olympustine
 	Tooltip:
 		'''

@@ -692,8 +692,8 @@ namespace CalamityInheritance.Utilities
 
             // 按换行拆分后存入list
             // 把list1拆分后再按空格拆分存入list2
-            List<string> list = new List<string>(text.Split('\n'));
-            List<string> list2 = new List<string>(list[0].Split(' '));
+            List<string> list = [.. text.Split('\n')];
+            List<string> list2 = [.. list[0].Split(' ')];
 
             // 最多处理maxLines - 1个段落
             for (int i = 1; i < list.Count && i < maxLines; i++)

@@ -1,14 +1,10 @@
-using System;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 

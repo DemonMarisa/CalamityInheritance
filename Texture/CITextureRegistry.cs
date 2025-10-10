@@ -15,6 +15,7 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShizukuSwordGlow { get; private set; }
         public static Asset<Texture2D> ShizukuSwordTrail { get; private set; }
         public static Asset<Texture2D> ShizukuArkTrail { get; private set; }
+        public static Asset<Texture2D> BaseTrail{ get; private set; }
         #endregion
         #endregion
 
@@ -24,6 +25,7 @@ namespace CalamityInheritance.Texture
             ShizukuSwordTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Trail", AssetRequestMode.ImmediateLoad);
             ShizukuSwordGlow = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Glow", AssetRequestMode.ImmediateLoad);
             ShizukuArkTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuArk_Trail", AssetRequestMode.ImmediateLoad);
+            BaseTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/BasicTrail", AssetRequestMode.ImmediateLoad);
         }
 
         public override void Unload()
@@ -31,6 +33,7 @@ namespace CalamityInheritance.Texture
             ShizukuSwordTrail = null;
             ShizukuSwordGlow = null;
             ShizukuArkTrail = null;
+            BaseTrail = null;
         }
         #endregion
 

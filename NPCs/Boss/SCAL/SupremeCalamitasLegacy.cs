@@ -1837,7 +1837,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             //yysy 20个都够你把所有魔影物品做完了
             npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 20, 30);
             //魔影梯凳掉率为0.0005%
-            npcLoot.Add(ModContent.ItemType<StepToolShadow>(), 2000);
+            npcLoot.Add(ModContent.ItemType<StepToolShadows>(), 2000);
 
             int[] weapons =
             [
@@ -1873,13 +1873,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 ModContent.ItemType<Eternity>(),
                 ModContent.ItemType<TemporalUmbrella>(),
                 ModContent.ItemType<TemporalUmbrellaOld>(),
-                // ModContent.ItemType<FlamsteedRing>(),
             ];
             // 随机掉一个
             var weaponDropRule = ItemDropRule.OneFromOptions(1, weapons);
             npcLoot.Add(weaponDropRule);
-            //MAD模式击败下给羽毛
-            npcLoot.Add(ItemDropRule.ByCondition(CIDropHelper.MADRule, ModContent.ItemType<DefiledFeather>()));
             // 爆裂与利锥
             npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<VehemencOld>());
             npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<Levi>());

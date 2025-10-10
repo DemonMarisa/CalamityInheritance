@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Items.Armor.AncientAstral;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;

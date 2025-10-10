@@ -790,7 +790,7 @@ namespace CalamityInheritance.NPCs
                     Loot.QuickGFBItemMod<Celestusold>(true);
                     break;
                 case NPCID.HallowBoss:
-                    Loot.QuickGFBItemMod<StepToolShadow>(true);
+                    Loot.QuickGFBItemMod<StepToolShadows>(true);
                     break;
                 case NPCID.CultistBoss:
                     Loot.QuickGFBItemMod<CelestialObliterator>(true);
@@ -814,7 +814,7 @@ namespace CalamityInheritance.NPCs
         #endregion
 
     }
-    public static class ExtendedDropMethods
+    static class ExtendedDropMethods
     {
         public static void QuickGFBItemID(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) => QuickGFB(loot, itemID, justDropOne, chance, minCount, maxCount);
         public static void QuickGFBItemMod<T>(this NPCLoot loot, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) where T : ModItem => QuickGFB(loot, ModContent.ItemType<T>(), justDropOne, chance, minCount, maxCount);
