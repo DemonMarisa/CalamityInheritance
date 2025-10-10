@@ -59,6 +59,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.Center = offsetY - Projectile.velocity;
             if (CurTime >= MaxTime)
                 Projectile.Kill();
+
+            Owner.heldProj = Projectile.whoAmI;
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -79,6 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             // 圆锥的旋转角度是投射物的旋转角度加上碰撞旋转。
             if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength, coneRotation, maximumAngle))
                 return true;
+
             // 第一个圆锥并不是整个挥动弧线，因此我们需要检查第二个圆锥以覆盖弧线的后部。
             float backOfTheSwing = Utils.Remap(CurTime, MaxTime * 0.3f, MaxTime * 0.5f, 1f, 0f);
             if (backOfTheSwing > 0f)

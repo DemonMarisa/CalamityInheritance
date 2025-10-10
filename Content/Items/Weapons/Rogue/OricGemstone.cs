@@ -53,5 +53,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
             return false;
         }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe(1).
+                AddIngredient(ItemID.OrichalcumBar, 12).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+        }
     }
 }

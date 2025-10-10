@@ -181,7 +181,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 Vector2 worldCenter = smoothPositions[i] + Projectile.Size / 2f;
                 Vector2 oldCenter = worldCenter - Main.screenPosition;
                 float progress = (float)i / (smoothPositions.Count - 1);
-                Vector2 posOffset = new Vector2(0, 12).RotatedBy(smoothRots[i] + MathHelper.PiOver4);
+                Vector2 posOffset = new Vector2(0, 12).RotatedBy(smoothRots[i]);
                 Vector2 drawPos = new(oldCenter.X, oldCenter.Y);
                 float alpha = 1f;
                 //默认3顶点绘制方案

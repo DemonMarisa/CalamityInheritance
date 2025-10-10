@@ -59,6 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Time++;
             Lighting.AddLight(Projectile.Center + Projectile.velocity * 0.6f, 0.6f, 0.2f, 0.9f);
+
             float radiusFactor = MathHelper.Lerp(0f, 1f, Utils.GetLerpValue(10f, 50f, Time, true));
             for (int i = 0; i < 9; i++)
             {
