@@ -77,12 +77,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Color color = Color.White;
             Projectile.BaseProjPreDraw(sharpTears, color, Projectile.rotation + MathHelper.PiOver2);
             Projectile.BaseProjPreDraw(sharpTears, color, Projectile.rotation + 0f);
-            BlendState defaultBlend = SB.GraphicsDevice.BlendState;
-            SamplerState defaultSampler = SB.GraphicsDevice.SamplerStates[0];
-            DrawVertex(Projectile.oldPos, defaultBlend, defaultSampler, Color.White);
+            DrawVertex(Projectile.oldPos, Color.White);
             return false;
         }
-        public void DrawVertex(Vector2[] oldP, BlendState defaultBlend, SamplerState defaultSampler, Color lightColor)
+        public void DrawVertex(Vector2[] oldP, Color lightColor)
         {
             //ban掉原本的绘制
             SB.End();
@@ -127,8 +125,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             }
             SB.End();
             SB.Begin(SpriteSortMode.Deferred,
-            defaultBlend,
-            defaultSampler,
+BlendState.AlphaBlend, SamplerState.PointClamp,
             DepthStencilState.None,
             RasterizerState.CullNone,
             null,

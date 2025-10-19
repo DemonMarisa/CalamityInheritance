@@ -146,13 +146,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         {
             Texture2D tex = TextureAssets.Projectile[Type].Value;
             Projectile.BaseProjPreDraw(tex, 8, Color.White);
-            //绘制拖尾
-            BlendState defaultBlend = SB.GraphicsDevice.BlendState;
-            SamplerState defaultSampler = SB.GraphicsDevice.SamplerStates[0];
-            DrawVertex(Projectile.oldPos, defaultBlend, defaultSampler, Color.White);
+            DrawVertex(Projectile.oldPos, Color.White);
             return false;
         }
-        public void DrawVertex(Vector2[] oldP, BlendState defaultBlend, SamplerState defaultSampler, Color lightColor)
+        public void DrawVertex(Vector2[] oldP, Color lightColor)
         {
             //ban掉原本的绘制
             SB.End();
@@ -201,8 +198,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             }
             SB.End();
             SB.Begin(SpriteSortMode.Deferred,
-            defaultBlend,
-            defaultSampler,
+                BlendState.AlphaBlend,
+                SamplerState.PointClamp,
             DepthStencilState.None,
             RasterizerState.CullNone,
             null,

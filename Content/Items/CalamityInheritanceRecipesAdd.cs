@@ -175,7 +175,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.Seashell).
                 AddIngredient(ItemID.Chain, 5).
                 AddIngredient(ItemID.HellstoneBar, 10).
-                AddTile(ItemID.Hellforge).
+                AddTile(TileID.Hellforge).
                 Register();
             //维生素
             Recipe.Create(ItemID.Vitamins).

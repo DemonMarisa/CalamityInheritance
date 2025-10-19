@@ -215,9 +215,6 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Vector2 orig = new(0, laserTexture.Height / 2);
             SpriteEffects flipSprite = (player.direction * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 
-            // 保存原始混合状态
-            var originalBlendState = Main.spriteBatch.GraphicsDevice.BlendState;
-
             // 重置绘制批次来设置叠加混合模式
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
@@ -226,7 +223,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 
             // 绘制后恢复原始状态
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, originalBlendState, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
 
             Vector2 Baseorig = new(0, texture.Height / 2);
 

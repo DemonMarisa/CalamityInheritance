@@ -1,11 +1,12 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityInheritance.System.DownedBoss;
 using System.Linq;
-using CalamityInheritance.Buffs.Statbuffs;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.NPCs
 {
@@ -56,16 +57,19 @@ namespace CalamityInheritance.NPCs
             if (ShizukuMoon)
             {
                 ApplyDPSDebuff(15000, 15000 / 5, ref npc.lifeRegen);
+                damage = 15000 / 5;
             }
             if(abyssalFlamesNPC)
             {
                 // 深渊之火
                 ApplyDPSDebuff(12222, 12222 / 5, ref npc.lifeRegen);
+                damage = 12222 / 5;
             }
             if(vulnerabilityHexLegacyNPC)
             {
                 // 深渊之火
                 ApplyDPSDebuff(6666, 6666 / 5, ref npc.lifeRegen);
+                damage = 6666 / 5;
             }
             //不要试图修改这个dot伤害太多，因为这个会直接用于玩家生命恢复的计算。
             if (CryoDrainDoT)
@@ -77,6 +81,12 @@ namespace CalamityInheritance.NPCs
             {
                 int baseKamiFluDoTValue = 250;
                 ApplyDPSDebuff(baseKamiFluDoTValue, baseKamiFluDoTValue / 10, ref npc.lifeRegen);
+            }
+            void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen)
+            {
+                if (lifeRegen > 0)
+                    lifeRegen = 0;
+                lifeRegen -= lifeRegenValue;
             }
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
@@ -113,13 +123,6 @@ namespace CalamityInheritance.NPCs
                 modifiers.DefenseEffectiveness *= 0f;
                 modifiers.FinalDamage *= 1f / (1f - impact);
             }
-        }
-        public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen)
-        {
-            if (lifeRegen > 0)
-                lifeRegen = 0;
-
-            lifeRegen -= lifeRegenValue;
         }
         #region Reset Effects
         public override void ResetEffects(NPC npc)
