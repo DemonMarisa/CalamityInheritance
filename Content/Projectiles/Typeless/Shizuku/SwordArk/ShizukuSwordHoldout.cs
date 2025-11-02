@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.spriteDirection = Projectile.direction;
 
 
-            player.ChangeDir(Projectile.direction);
+            player.ChangeDir(Main.MouseWorld.X - player.Center.X > 0 ? 1 : -1);
             player.heldProj = Projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
@@ -167,7 +167,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Main.spriteBatch.Draw(Glowtexture, drawPosition, null, setColor, rot, glowRotationPoint, Projectile.scale * Owner.gravDir * 0.5f, flipSprite, 0f);
             #endregion
             spriteBatch.End();
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+                BlendState.AlphaBlend,
+                Main.DefaultSamplerState,
+                DepthStencilState.None,
+                Main.Rasterizer,
+                null,
+                Main.GameViewMatrix.TransformationMatrix);
         }
         //绘制剑本体
         public void DrawSword(float rot, SpriteEffects flip, Vector2 drawPos, ref Color lightColor)

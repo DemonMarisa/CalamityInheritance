@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.UI;
-using CalamityInheritance.UI.BaseUI;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.UI.MusicUI.MusicButton;
 using static CalamityInheritance.Utilities.CIFunction;

@@ -615,5 +615,10 @@ Configs: {
 			Label: 关闭等级系统
 			Tooltip: 关闭后无法获取经验和加成
 		}
+
+		CalSIBEOtherMod: {
+			// Label: Cal S I B E Other Mod
+			// Tooltip: ""
+		}
 	}
 }

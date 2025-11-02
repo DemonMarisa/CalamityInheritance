@@ -7,6 +7,8 @@ using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.Yharon;
+using CalamityMod.NPCs.DevourerofGods;
+using CalamityInheritance.System;
 
 namespace CalamityInheritance.NPCs
 {
@@ -40,7 +42,6 @@ namespace CalamityInheritance.NPCs
         public static int LegacySCalEpiphany = -1;
         public static int LegacySCalAcceptance = -1;
         #endregion
-
         #region Reset Effects
         public static void BossResetEffects(NPC npc)
         {
@@ -81,15 +82,13 @@ namespace CalamityInheritance.NPCs
             ResetSavedIndex(ref LegacyYharon, ModContent.NPCType<YharonLegacy>());
             ResetSavedIndex(ref LegacyYharonStage2FadeIn, ModContent.NPCType<YharonLegacy>());
             ResetSavedIndex(ref LegacyYharonStage2, ModContent.NPCType<YharonLegacy>());
-            /*
-            // Reset the enraged state every frame. The expectation is that bosses will continuously set it back to true if necessary.
-            CurrentlyEnraged = false;
-            CurrentlyIncreasingDefenseOrDR = false;
-            CanHaveBossHealthBar = false;
-            ShouldCloseHPBar = false;
-            if (arcZapCooldown > 0) { arcZapCooldown--; }
-            */
         }
         #endregion
+
+        public override void PostAI(NPC npc)
+        {
+            if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
+                MiscFlagReset.PlayDogLegacyMusic = true;
+        }
     }
 }

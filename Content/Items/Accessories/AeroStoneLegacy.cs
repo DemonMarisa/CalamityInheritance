@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         }
         public override void ExSSD()
         {
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 4));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
             ItemID.Sets.AnimatesAsSoul[Type] = true;   
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

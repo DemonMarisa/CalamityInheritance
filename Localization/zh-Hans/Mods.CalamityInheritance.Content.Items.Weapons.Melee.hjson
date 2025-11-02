@@ -496,11 +496,11 @@ ACTExcelsus: {
 		'''
 }
 
-ZenithBuff:
+/* ZenithBuff:
 	'''
-	数值膨胀选项强化:
-	获得150点护甲穿透
-	'''
+	Stat Bloat Config Buff:
+	+150 armor penetration
+	''' */
 ChainsawCal:
 	'''
 	[i:CalamityInheritance/KnowledgeExoMechs][c/FFFF00:启用:星流传颂强化]

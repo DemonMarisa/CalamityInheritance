@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.Localization;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.System.Configs;
+using LAP.Core.LAPConditions;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -133,7 +134,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedAS = DownedBossSystem.downedAquaticScourge;
             bool DownedAureus = DownedBossSystem.downedAstrumAureus;
             bool DownedDeus = DownedBossSystem.downedAstrumDeus;
-            bool DownedBoC = CIDownedBossSystem.DownedBOC || Condition.DownedBrainOfCthulhu.IsMet();
+            bool DownedBoC = DownedBoss.DownedBOC || Condition.DownedBrainOfCthulhu.IsMet();
             bool DownedBrimmy = DownedBossSystem.downedBrimstoneElemental;
             bool DownedCalClone = DownedBossSystem.downedCalamitasClone || CIDownedBossSystem.DownedCalClone;
             bool DownedSCal = DownedBossSystem.downedCalamitas || CIDownedBossSystem.DownedLegacyScal;
@@ -144,7 +145,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedDoG = DownedBossSystem.downedDoG;
             bool DownedDuke = Condition.DownedDukeFishron.IsMet();
             bool DownedEoC = Condition.DownedEyeOfCthulhu.IsMet();
-            bool DownedEoW = CIDownedBossSystem.DownedEOW || Condition.DownedEaterOfWorlds.IsMet();
+            bool DownedEoW = DownedBoss.DownedEOW || Condition.DownedEaterOfWorlds.IsMet();
             bool DownedExo = DownedBossSystem.downedExoMechs;
             bool DownedGolem = Condition.DownedGolem.IsMet();
             bool DownedHive = DownedBossSystem.downedHiveMind;

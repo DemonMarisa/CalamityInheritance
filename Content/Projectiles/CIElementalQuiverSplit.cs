@@ -45,10 +45,10 @@ namespace CalamityInheritance.Content.Projectiles
             if (!projectile.friendly)
                 return false;
 
-            if (projectile.damage < 1)
+            if (projectile.DamageType != DamageClass.Ranged)
                 return false;
 
-            if (projectile.DamageType != DamageClass.Ranged)
+            if (projectile.damage < 5)
                 return false;
 
             if (projectile.whoAmI == player.heldProj)

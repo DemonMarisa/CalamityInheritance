@@ -648,5 +648,10 @@ Configs: {
 			Label: Turn Off Level System
 			Tooltip: ""
 		}
+
+		CalSIBEOtherMod: {
+			Label: Cal S I B E Other Mod
+			Tooltip: ""
+		}
 	}
 }

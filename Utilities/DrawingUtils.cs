@@ -561,9 +561,7 @@ namespace CalamityInheritance.Utilities
             {
                 // 计算实际可用宽度（考虑缩放）
                 float actualMaxWidth = maxWidth / xResolutionScale;
-                wrappedLines = BetterWordwrapString(textContent, font, (int)actualMaxWidth, 999, out _)
-                    .Where(line => !string.IsNullOrEmpty(line))
-                    .ToList();
+                wrappedLines = BetterWordwrapString(textContent, font, (int)actualMaxWidth, 999, out _).Where(line => !string.IsNullOrEmpty(line)).ToList();
             }
 
             // 计算基准行高

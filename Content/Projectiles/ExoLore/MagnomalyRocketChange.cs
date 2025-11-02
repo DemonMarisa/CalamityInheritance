@@ -69,7 +69,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
             if (projectile.owner == Main.myPlayer && !spawnedAura)
             {
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<MagnomalyAura>(), (int)(projectile.damage * 0.5f), projectile.knockBack * 0.5f, projectile.owner, projectile.identity, 0f);
+                int p =  Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<MagnomalyAura>(), (int)(projectile.damage * 0.5f), projectile.knockBack * 0.5f, projectile.owner, projectile.identity, 0f);
+                Main.projectile[p].GetGlobalProjectile<CIElementalQuiverSplit>().canSplit = false;
                 spawnedAura = true;
             }
             float dustOffsetX = projectile.velocity.X * 0.5f;

@@ -6,11 +6,6 @@ using static CalamityInheritance.Utilities.CIFunction;
 using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.CIPlayer;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
-using Terraria.GameContent;
-using Terraria.Localization;
-using System.Linq;
 using CalamityInheritance.UI.QolPanelTotal;
 
 namespace CalamityInheritance.UI

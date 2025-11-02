@@ -200,14 +200,8 @@ namespace CalamityInheritance.NPCs
 
         public override void OnKill(NPC npc)
         {
-            Player player = Main.player[Main.myPlayer];
-            if (npc.type == NPCID.EaterofWorldsHead)
-                CIDownedBossSystem.DownedEOW = true;
-            if (npc.type == NPCID.BrainofCthulhu)
-                CIDownedBossSystem.DownedBOC = true;
             if (npc.type == NPCID.Mothron && CIDownedBossSystem.DownedLegacyYharonP1)
                 CIDownedBossSystem.DownedBuffedSolarEclipse = true;
-
         }
     }
 }

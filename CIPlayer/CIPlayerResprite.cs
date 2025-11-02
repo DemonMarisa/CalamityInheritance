@@ -222,40 +222,6 @@ namespace CalamityInheritance.CIPlayer
                 IR<DestroyerLegendary>(R.SHPC ? CIWeaponsResprite.P90Legacy: CIWeaponsResprite.SHPC);
             if (GI<PBGLegendary>() != null)
                 IR<PBGLegendary>(R.Mala ? CIWeaponsResprite.MalaLegacy : CIWeaponsResprite.Mala);
-            //核子与星系是动图（现灾厄）不能直接用
-            /*DemonMarisa: 开修
-             *单独去注册hook替换帧图算法了
-             *应该是修完了
-             *把核子的删了，改成了单独注册了
-             *星系异石和灵质不会改，保留了注册，删除了贴图读取
-             */
-            /*
-            if (GI<GalacticaSingularity>() != null)
-            {
-                if (R.GalacticaSingularityResprite)
-                {
-                    GI<GalacticaSingularity>() = CIResprite.GS;
-                }
-                if (R.GalacticaSingularityResprite == 2)
-                {
-                    GI<GalacticaSingularity>() = CIResprite.GSAlter;
-                }
-            }
-
-            if (GI<Necroplasm>() != null)
-            {
-                if (R.NecroplasmResprite)
-                {
-                    GI<Necroplasm>() = CIResprite.RedSoul;
-                }
-                if (R.NecroplasmResprite == 2)
-                {
-                    GI<Necroplasm>() = CIResprite.RedSoulAlter;
-                }
-            }
-            */
-            
-
             #endregion
             #endregion
         }
@@ -401,11 +367,8 @@ namespace CalamityInheritance.CIPlayer
             if (GI<HeliumFlashLegacy>() != null)
                 IR<HeliumFlashLegacy>(R.HeliumFlashResprite ? CIWeaponsResprite.HeliumFlashLegacy : CIWeaponsResprite.HeliumCal);
 
-            if (CalamityInheritance.Instance.UCA is null)
-            {
-                if (GI<PlasmaRod>() is not null)
-                    IR<PlasmaRod>(R.PlasmaRod ? CIWeaponsResprite.PlasmaRodAlter : CIWeaponsResprite.PlasmaRod);
-            }
+            if (GI<PlasmaRod>() is not null)
+                IR<PlasmaRod>(R.PlasmaRod ? CIWeaponsResprite.PlasmaRodAlter : CIWeaponsResprite.PlasmaRod);
 
             if (GI<StaffofBlushie>() is not null)
                 IR<StaffofBlushie>(R.StaffofBlushie ? CIWeaponsResprite.StaffofBlushieLegacy : CIWeaponsResprite.StaffofBlushie);

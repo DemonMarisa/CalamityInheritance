@@ -14,36 +14,12 @@ namespace CalamityInheritance.System.DownedBoss
     // RE我草你妈，为什么不给EOW和BOC写单独的DownedBoss
     public class CIDownedBossSystem : ModSystem
     {
-        internal static bool _downedEOW = false;
-        internal static bool _downedBOC = false;
         internal static bool _downedBloodMoon = false;
         internal static bool _downedLegacySCal = false;
         internal static bool _downedLegacyYharonP1 = false;
         internal static bool _downedLegacyYharonP2 = false;
         internal static bool _downedBuffedSolarEclipse = false;
         internal static bool _downedCalClone = false;
-        public static bool DownedEOW
-        {
-            get => _downedEOW;
-            set
-            {
-                if (!value)
-                    _downedEOW = false;
-                else
-                    NPC.SetEventFlagCleared(ref _downedEOW, -1);
-            }
-        }
-        public static bool DownedBOC
-        {
-            get => _downedBOC;
-            set
-            {
-                if (!value)
-                    _downedBOC = false;
-                else
-                    NPC.SetEventFlagCleared(ref _downedBOC, -1);
-            }
-        }
         public static bool DownedBloodMoon
         {
             get => _downedBloodMoon;
@@ -112,8 +88,6 @@ namespace CalamityInheritance.System.DownedBoss
         }
         public static void ResetAllFlags()
         {
-            DownedEOW = false;
-            DownedBOC = false;
             DownedBloodMoon = false;
             DownedLegacyScal = false;
             DownedLegacyYharonP1 = false;
@@ -129,11 +103,6 @@ namespace CalamityInheritance.System.DownedBoss
         {
             List<string> downed = new List<string>();
 
-            // 肉前击败的boss
-            if (DownedEOW)
-                downed.Add("CIEOW");
-            if (DownedBOC)
-                downed.Add("CIBOC");
             if (DownedBloodMoon)
                 downed.Add("CIBloodMoon");
             if (DownedLegacyScal)
@@ -153,8 +122,6 @@ namespace CalamityInheritance.System.DownedBoss
         {
             IList<string> downed = tag.GetList<string>("CIdownedFlags");
 
-            DownedEOW = downed.Contains("CIEOW");
-            DownedBOC = downed.Contains("CIBOC");
             DownedBloodMoon = downed.Contains("CIBloodMoon");
             DownedLegacyScal = downed.Contains("CILegacyScal");
             DownedLegacyYharonP1 = downed.Contains("CILegacyYharonP1");
@@ -169,8 +136,8 @@ namespace CalamityInheritance.System.DownedBoss
             BitsByte net1 = new BitsByte();
             //一个比特=8个字节，如果有部分字节暂时用不上，这些字节是一定得用各种方法占用掉让其形成一个完整的比特的
             //不然发送的时候会有点问题
-            net1[0] = DownedEOW;
-            net1[1] = DownedBOC;
+            net1[0] = false;
+            net1[1] = false;
             net1[2] = DownedBloodMoon;
             net1[3] = DownedLegacyScal;
             net1[4] = DownedLegacyYharonP1;
@@ -182,8 +149,8 @@ namespace CalamityInheritance.System.DownedBoss
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte net1 = reader.ReadByte();
-            DownedEOW = net1[0];
-            DownedBOC = net1[1];
+            _ = net1[0];
+            _ = net1[1];
             DownedBloodMoon = net1[2];
             DownedLegacyScal = net1[3];
             //空字节接收的时候就丢弃

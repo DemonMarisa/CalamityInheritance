@@ -46,8 +46,12 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
-        [ReloadRequired]
         public bool CalStatInflationBACK { get; set; } //灾厄数据膨胀回来了
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool CalSIBEOtherMod { get; set; }// 是否可以影响其它mod的武器
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
